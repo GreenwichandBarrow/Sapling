@@ -41,9 +41,14 @@ If session exists, offer:
 # Get absolute path
 PROJECT_PATH="$(pwd)"
 
-# Start detached session
-tmux new-session -d -s "loop-NAME" -c "$PROJECT_PATH" './scripts/loop/loop.sh 50'
+# Extract session name without 'loop-' prefix for beads tag
+SESSION_TAG="${NAME}"  # e.g., "auth-refactor" from "loop-auth-refactor"
+
+# Start detached session with session name for beads
+tmux new-session -d -s "loop-NAME" -c "$PROJECT_PATH" "./scripts/loop/loop.sh 50 $SESSION_TAG"
 ```
+
+The session name is passed to `loop.sh` so beads are tagged `loop/{session-tag}`.
 
 ## Step 5: Update State File
 
@@ -85,6 +90,9 @@ Display:
 ║  Attach:   tmux attach -t loop-NAME                      ║
 ║  Detach:   Ctrl+b, then d                                ║
 ║  Kill:     tmux kill-session -t loop-NAME                ║
+║                                                          ║
+║  Beads:    bd ready --tag=loop/SESSION_TAG               ║
+║  Progress: cat scripts/loop/progress-SESSION_TAG.txt     ║
 ║                                                          ║
 ║  ⚠️  Remember to check on this session!                   ║
 ║                                                          ║

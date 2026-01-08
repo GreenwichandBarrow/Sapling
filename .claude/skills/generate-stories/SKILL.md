@@ -14,26 +14,22 @@ Never output questions as text in your response. If you need information, invoke
 
 ## What This Skill Produces
 
-A `prd.json` file with stories that an agent (autonomous or assisted) can execute:
+Beads tagged with `loop/{session-name}` that an agent can execute autonomously:
 
-```json
-{
-  "branchName": "feature/feature-name",
-  "userStories": [
-    {
-      "id": "US-001",
-      "title": "Story title",
-      "acceptanceCriteria": [
-        "Criterion that can be verified",
-        "Test: specific test case",
-        "npm test passes"
-      ],
-      "priority": 1,
-      "passes": false,
-      "notes": ""
-    }
-  ]
-}
+```bash
+# Each story becomes a bead
+bd create --title="US-001: Story title" --type=task --assignee=agent --tag=loop/feature-name
+
+# Body contains acceptance criteria
+```
+
+**Bead body format:**
+```markdown
+## Acceptance Criteria
+- [ ] Criterion that can be verified
+- [ ] Test: specific test case
+- [ ] npm test passes
+- [ ] typecheck passes
 ```
 
 ## Process
@@ -61,20 +57,28 @@ Break the PRD into stories. Each story should be:
 - **Self-contained** - can be implemented and verified independently
 - **Verifiable** - has clear done criteria
 
-Present the story list to the user:
+Present the story list and use `AskUserQuestion` for approval:
 
 ```
 ## Stories
 
-1. US-001: [Title] (Priority 1)
-2. US-002: [Title] (Priority 2)
-3. US-003: [Title] (Priority 3)
+1. US-001: [Title]
+2. US-002: [Title]
+3. US-003: [Title]
 ...
-
-Reply "Go" to generate acceptance criteria, or suggest changes.
 ```
 
-**Wait for user to say "Go"** before proceeding.
+```yaml
+question: "Does this story breakdown look right?"
+header: "Stories"
+options:
+  - label: "Yes, generate acceptance criteria"
+    description: "Looks good, proceed to next phase"
+  - label: "Add more stories"
+    description: "I want to add something"
+  - label: "Adjust these"
+    description: "Let me suggest changes"
+```
 
 ### 4. Phase 2: Generate Acceptance Criteria
 
@@ -101,29 +105,82 @@ For each story, generate acceptance criteria that:
 - Code is clean
 ```
 
-### 5. Ask About Verification Commands
+### 5. Ask About Session and Verification
 
-Use `AskUserQuestion` to confirm:
-- What test command? (npm test, pytest, etc.)
-- What typecheck command? (tsc, pyright, etc.)
-- Any other verification? (ubs, lint, etc.)
+Use `AskUserQuestion` for each:
 
-### 6. Generate prd.json
+**Session name:**
+```yaml
+question: "What should we call this session? (used for tagging beads)"
+header: "Session"
+options:
+  - label: "{suggested-slug}"
+    description: "Based on the PRD name"
+  - label: "Let me name it"
+    description: "I'll type a custom name"
+```
 
-Create the file at `scripts/autonomous/prd.json` (or ask where if project-specific).
+**Verification commands:**
+```yaml
+question: "What commands verify the code works?"
+header: "Verify"
+multiSelect: true
+options:
+  - label: "npm test"
+    description: "Run test suite"
+  - label: "npm run typecheck"
+    description: "TypeScript type checking"
+  - label: "npm run lint"
+    description: "Linting"
+  - label: "No tests yet"
+    description: "Skip verification step"
+```
 
-Include:
-- `branchName` based on feature name
-- All stories with acceptance criteria
-- Priority order (dependencies first)
-- All `passes: false` initially
+### 6. Create Beads
 
-### 7. Confirm Output
+For each story, create a bead with the `loop/{session-name}` tag:
+
+```bash
+bd create \
+  --title="US-001: Story title" \
+  --type=task \
+  --assignee=agent \
+  --tag=loop/{session-name}
+```
+
+Then write the acceptance criteria to the bead body using `bd edit` or by editing the bead file directly at `.beads/beads-xxx.md`.
+
+**Dependencies:** Only add `bd dep add` when story B literally cannot be implemented without story A being complete. The agent will use judgment to pick the most logical next task from available beads.
+
+Example with dependency:
+```bash
+# Create stories
+bd create --title="US-001: User model" --type=task --assignee=agent --tag=loop/user-auth
+bd create --title="US-002: Password hashing" --type=task --assignee=agent --tag=loop/user-auth
+bd create --title="US-003: Login endpoint" --type=task --assignee=agent --tag=loop/user-auth
+
+# Login truly depends on User model
+bd dep add beads-003 beads-001
+```
+
+### 7. Confirm Output and Return Session Name
 
 Show the user:
-- Path to generated file
-- Number of stories
-- Suggested next step: `./autonomous-once.sh` to test one iteration
+- **Session name: `{session-name}`** ← This is the key output
+- Number of stories created
+- List beads: `bd list --tag=loop/{session-name}`
+
+**IMPORTANT:** The session name must be clearly outputted so `/loop` can capture it for launching tmux.
+
+Example output:
+```
+✅ Created 5 stories for session: user-auth
+
+Stories: bd list --tag=loop/user-auth
+Ready:   bd ready --tag=loop/user-auth
+
+Session name: user-auth
+```
 
 ## Story Sizing Guidelines
 
@@ -144,4 +201,5 @@ A story is too small if:
 - [ ] Every acceptance criterion is objectively verifiable
 - [ ] Test cases are explicit (not "write tests")
 - [ ] Verification commands included
-- [ ] prd.json saved and valid JSON
+- [ ] Beads created with correct tag: `loop/{session-name}`
+- [ ] Dependencies added only where truly required

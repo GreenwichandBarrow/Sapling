@@ -1,175 +1,218 @@
 # /loop Command
 
-Plan, generate tasks, and launch autonomous loop agents.
+**Automated end-to-end flow:** Gather context → Generate PRD → Create tasks → Launch autonomous agent
+
+Execute phases adaptively based on context. Always use `AskUserQuestion` for interactions - be quick and conversational.
 
 ## Usage
 
 ```
-/loop                    # Full flow: plan → tasks → launch
+/loop                    # Full adaptive flow
 /loop status             # Check running loops
 /loop attach NAME        # Attach to a session
 /loop kill NAME          # Stop a session
 ```
 
-## Full Planning Flow
+---
 
-### Phase 1: Understand Intent
+## ADAPTIVE EXECUTION
 
-Ask what they want to accomplish:
+**Key principle:** Be intelligent about what's needed. Skip phases that aren't necessary. Always use `AskUserQuestion` with an "Other" option so users can type custom responses quickly.
 
+### Phase 1: Gather Context (Adaptive)
+
+**If invoked with no context** (user just typed `/loop`):
+
+Use `AskUserQuestion`:
 ```yaml
-question: "What do you want the loop to work on?"
+question: "What do you want to build or accomplish?"
 header: "Goal"
-multiSelect: false
 options:
-  - label: "Build something new"
-    description: "New feature, integration, or capability"
+  - label: "Build a new feature"
+    description: "Add new functionality to the codebase"
   - label: "Improve existing code"
-    description: "Refactor, optimize, or clean up"
+    description: "Refactor, optimize, or fix something"
   - label: "Batch operation"
-    description: "Process multiple files, records, or items"
+    description: "Process multiple items (files, records, etc.)"
   - label: "I have a PRD ready"
-    description: "Skip to task generation"
+    description: "Skip planning, go straight to task generation"
 ```
 
-### Phase 2: Research with Subagents
-
-**Spawn subagents to gather context in parallel:**
-
+Then ask for specifics:
+```yaml
+question: "Briefly describe what you want to build:"
+header: "Description"
+options:
+  - label: "Let me type it out"
+    description: "I'll describe it in the 'Other' field below"
 ```
-Task(subagent_type="Explore", prompt="Find all files related to {topic}. Understand current architecture and patterns.")
 
-Task(subagent_type="Explore", prompt="Search for existing implementations of {similar feature}. Note patterns we should follow.")
+**If invoked with context** (user described what they want):
+
+Ask deeper clarifying questions based on what they said. Examples:
+- "What's the scope?" (MVP vs full feature)
+- "Any specific tech/patterns to use?"
+- "What should it integrate with?"
+
+**If context is already clear** (enough detail provided):
+
+Confirm and move to PRD generation:
+```yaml
+question: "Ready to generate a PRD for: {summary}?"
+header: "Confirm"
+options:
+  - label: "Yes, generate PRD"
+    description: "I'll review and refine it"
+  - label: "Let me add more details"
+    description: "I want to clarify something first"
 ```
 
-This gives you real codebase knowledge to inform the plan.
+### Phase 2: Research Codebase (Skip if Not Needed)
 
-### Phase 3: Generate PRD (if needed)
+**Only spawn Explore subagents if:**
+- Building on existing code
+- Need to understand patterns/architecture
+- Integrating with existing systems
 
-If no PRD exists, invoke the generate-prd skill:
+**Skip exploration if:**
+- Greenfield/new project
+- User already knows the codebase well
+- The feature is standalone
 
+When exploring, spawn 1-2 focused agents:
+```
+Task(subagent_type="Explore", prompt="Find files related to {topic}. Understand patterns to follow.")
+```
+
+### Phase 3: Generate PRD
+
+Invoke the generate-prd skill:
 ```
 Skill(skill="generate-prd")
 ```
 
-This asks adaptive questions until confident, then creates:
+This asks adaptive questions and creates: `brain/outputs/{date}-{slug}-prd.md`
+
+**Skip if user said "I have a PRD ready"** - use `AskUserQuestion` to ask which PRD:
+```yaml
+question: "Which PRD should I use?"
+header: "PRD"
+options:
+  - label: "{most recent PRD}"
+    description: "brain/outputs/{filename}"
+  - label: "Let me specify"
+    description: "I'll provide the path"
 ```
-brain/outputs/{date}-{slug}-prd.md
-```
 
-### Phase 4: Generate Stories → prd.json
+### Phase 4: Generate Stories → Beads
 
-Invoke generate-stories skill:
-
+Invoke the generate-stories skill:
 ```
 Skill(skill="generate-stories")
 ```
 
-This:
-1. Reads the PRD
-2. Breaks into small, executable stories
-3. Generates acceptance criteria with test cases
-4. Creates `scripts/loop/prd.json`
+This creates beads tagged `loop/{session-name}` and returns the session name.
 
-### Phase 5: Ensure prompt.md Exists
+### Phase 5: Confirm and Launch
 
-If `scripts/loop/prompt.md` doesn't exist, create the standard template:
+**Calculate suggested iterations:** stories + buffer for retries/fixes
+- 5 stories → suggest ~8 iterations
+- 10 stories → suggest ~15 iterations
+- 15 stories → suggest ~20 iterations
+- Formula: `stories * 1.3 + 3` (rounded up)
 
-```markdown
-# Loop Agent Instructions
-
-You are an autonomous agent executing tasks from prd.json.
-
-## Per-Iteration Workflow
-
-1. **Read context:**
-   - `prd.json` - Find next story where `passes: false`
-   - `progress.txt` - Learn from previous iterations
-
-2. **Execute the story:**
-   - Implement the feature/fix
-   - Verify ALL acceptance criteria pass
-   - Run test commands (npm test, typecheck, etc.)
-
-3. **Commit:**
-   - Stage relevant changes only
-   - Write descriptive commit message referencing story ID
-   - Example: "US-003: Add email validation with test cases"
-
-4. **Update progress:**
-   - Append to progress.txt what you did and learned
-   - Note any blockers or patterns discovered
-
-5. **Mark complete:**
-   - Update prd.json: set `passes: true` for the story
-   - Add any notes about implementation
-
-6. **Check if done:**
-   - If ALL stories have `passes: true`: output `<promise>COMPLETE</promise>`
-   - Otherwise: end iteration (next iteration picks up next story)
-
-## Constraints
-
-- One story per iteration (fresh context each time)
-- If stuck on same story for 2 iterations, document blocker and skip
-- Always run verification commands before marking complete
-- Never mark a story complete if tests fail
-
-## Files
-
-| File | Purpose |
-|------|---------|
-| prd.json | Stories with acceptance criteria |
-| progress.txt | Accumulated learnings |
-| prompt.md | These instructions (you're reading it) |
+Use `AskUserQuestion` for final confirmation:
+```yaml
+question: "Ready to launch loop-{session-name} with {N} stories?"
+header: "Launch"
+options:
+  - label: "Yes, start it ({suggested} iterations)"
+    description: "Recommended based on {N} stories"
+  - label: "Test one iteration first"
+    description: "Run loop-once.sh to verify setup"
+  - label: "Fewer iterations ({stories + 2})"
+    description: "Tighter run, less buffer"
 ```
 
 ### Phase 6: Launch in tmux
 
-1. Generate session name: `loop-{feature-slug}`
-2. Start session:
-   ```bash
-   tmux new-session -d -s "loop-NAME" -c "$(pwd)" './scripts/loop/loop.sh'
-   ```
-3. Update `.claude/loop-sessions.json`
-4. Display:
+```bash
+SESSION_NAME="{from phase 4}"
+ITERATIONS="{from phase 5, default 15}"
+
+tmux new-session -d -s "loop-$SESSION_NAME" -c "$(pwd)" "./scripts/loop/loop.sh $ITERATIONS $SESSION_NAME"
+```
+
+**Show confirmation:**
 
 ```
 ╔════════════════════════════════════════════════════════════╗
-║  🚀 Loop Launched: loop-{name}                             ║
+║  🚀 Loop Launched: loop-{session-name}                     ║
 ╠════════════════════════════════════════════════════════════╣
 ║                                                            ║
-║  Stories: {N} tasks in prd.json                            ║
-║  Model: Opus                                               ║
+║  Running autonomously ({iterations} iterations max)        ║
+║                                                            ║
+║  Check progress:                                           ║
+║    bd ready --tag=loop/{session-name}                      ║
+║    tmux capture-pane -t loop-{session-name} -p | tail -20  ║
 ║                                                            ║
 ║  Commands:                                                 ║
-║    /loop status          - Check all loops                 ║
-║    /loop attach {name}   - Watch live (Ctrl+b d to exit)   ║
-║    /loop kill {name}     - Stop the loop                   ║
-║                                                            ║
-║  Direct:                                                   ║
-║    tmux capture-pane -t loop-{name} -p | tail -30          ║
+║    /loop status                - Check all loops           ║
+║    /loop attach {session-name} - Watch live                ║
+║    /loop kill {session-name}   - Stop the loop             ║
 ║                                                            ║
 ╚════════════════════════════════════════════════════════════╝
 ```
+
+---
+
+## ALWAYS USE AskUserQuestion
+
+**Every interaction should use `AskUserQuestion`** with practical options plus the ability to type custom input (users can always select "Other").
+
+Good pattern:
+```yaml
+question: "What testing framework does this project use?"
+header: "Tests"
+options:
+  - label: "npm test"
+    description: "Standard npm test command"
+  - label: "pytest"
+    description: "Python pytest"
+  - label: "No tests yet"
+    description: "Skip test verification"
+```
+
+This keeps things quick and interactive - user clicks an option or types something custom.
+
+---
 
 ## Subcommands
 
 ### /loop status
 ```bash
-bash .claude/skills/run-loop/scripts/check-sessions.sh
+tmux list-sessions 2>/dev/null | grep "^loop-" || echo "No loop sessions running"
+bd ready --tag=loop/ 2>/dev/null | head -10
 ```
 
 ### /loop attach NAME
-Attach to session. Remind: `Ctrl+b` then `d` to detach.
+```bash
+tmux attach -t loop-NAME
+```
+Remind: `Ctrl+b` then `d` to detach.
 
 ### /loop kill NAME
-Confirm completion status, then terminate.
+```bash
+tmux kill-session -t loop-NAME
+```
 
-## Key Principles
+---
 
-1. **Subagents for research** - Always spawn Explore agents to understand codebase before planning
-2. **PRD is the source of truth** - Tasks come from a structured PRD, not ad-hoc
-3. **prd.json is executable** - Each story has verifiable acceptance criteria
-4. **prompt.md is standard** - Same instructions for every loop, tasks vary
-5. **Fresh context per iteration** - Loop restarts Claude each iteration to avoid degradation
+## Multi-Agent Support
+
+Multiple loops run simultaneously with separate beads and progress files:
+
+```bash
+tmux new-session -d -s "loop-auth" "./scripts/loop/loop.sh 15 auth"
+tmux new-session -d -s "loop-dashboard" "./scripts/loop/loop.sh 15 dashboard"
+```

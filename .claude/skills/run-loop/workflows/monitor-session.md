@@ -23,7 +23,14 @@ tmux capture-pane -t loop-NAME -p -S -1000
 ## Step 3: Check Completion Status
 
 ```bash
-# Check for completion signal
+# Extract session tag from name (e.g., "auth" from "loop-auth")
+SESSION_TAG="${NAME#loop-}"
+
+# Check remaining beads
+bd ready --tag="loop/$SESSION_TAG" 2>/dev/null | wc -l
+# 0 = complete, >0 = work remaining
+
+# Check for completion signal in output
 tmux capture-pane -t loop-NAME -p | grep -q "<promise>COMPLETE</promise>" \
   && echo "✅ COMPLETE" || echo "⏳ In progress"
 
@@ -51,6 +58,7 @@ Show summary:
 Session: loop-NAME
 Status:  Running / Complete / Possibly stuck
 Runtime: ~X hours
+Stories remaining: bd ready --tag=loop/SESSION_TAG | wc -l
 Last output: [last 3 lines]
 ```
 

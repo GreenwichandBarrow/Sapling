@@ -27,6 +27,27 @@ echo "  Today: $TODAY"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 python3 "$SCRIPT_DIR/daily-init.py"
 
+# Check for completed loops since last session
+COMPLETIONS_FILE="$VAULT_PATH/.claude/loop-completions.json"
+if [ -f "$COMPLETIONS_FILE" ]; then
+  if command -v jq &> /dev/null; then
+    COUNT=$(jq 'length' "$COMPLETIONS_FILE" 2>/dev/null || echo "0")
+    if [ "$COUNT" -gt 0 ]; then
+      echo ""
+      echo "✅ COMPLETED LOOPS SINCE LAST SESSION:"
+      jq -r '.[] | "  \(.status): loop-\(.session) at \(.completed_at)"' "$COMPLETIONS_FILE"
+      # Clear the file after displaying
+      rm "$COMPLETIONS_FILE"
+    fi
+  else
+    # Fallback without jq
+    echo ""
+    echo "✅ LOOPS COMPLETED (install jq for details):"
+    cat "$COMPLETIONS_FILE"
+    rm "$COMPLETIONS_FILE"
+  fi
+fi
+
 # Check for running tmux loop sessions
 LOOP_SESSIONS=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | grep "^loop-" | wc -l | tr -d ' ')
 if [ "$LOOP_SESSIONS" -gt 0 ]; then

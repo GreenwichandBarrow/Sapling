@@ -8,8 +8,45 @@ set -e
 MAX_ITERATIONS=${1:-25}
 SESSION_NAME=${2:-"default"}
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 export SESSION_NAME
+
+# Record completion status for notification system
+record_completion() {
+  local status=$1
+  local session=$2
+  local file="$PROJECT_ROOT/.claude/loop-completions.json"
+  local timestamp=$(date -Iseconds 2>/dev/null || date +%Y-%m-%dT%H:%M:%S)
+
+  # Ensure .claude directory exists
+  mkdir -p "$PROJECT_ROOT/.claude"
+
+  # Create JSON entry
+  local entry="{\"session\": \"$session\", \"status\": \"$status\", \"completed_at\": \"$timestamp\"}"
+
+  if [ -f "$file" ]; then
+    # Append to existing array using jq if available, else recreate
+    if command -v jq &> /dev/null; then
+      jq ". += [$entry]" "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+    else
+      # Fallback: read existing, append manually
+      local existing=$(cat "$file" | tr -d '\n' | sed 's/]$//')
+      echo "$existing, $entry]" > "$file"
+    fi
+  else
+    echo "[$entry]" > "$file"
+  fi
+
+  # Desktop notification (cross-platform)
+  if command -v osascript &> /dev/null; then
+    # macOS
+    osascript -e "display notification \"Loop $session $status\" with title \"Loop Agent\"" 2>/dev/null || true
+  elif command -v notify-send &> /dev/null; then
+    # Linux
+    notify-send "Loop Agent" "Loop $session $status" 2>/dev/null || true
+  fi
+}
 
 echo "🤖 Starting Loop Agent (AFK Mode)"
 echo "📊 Max iterations: $MAX_ITERATIONS"
@@ -42,6 +79,7 @@ for i in $(seq 1 $MAX_ITERATIONS); do
     echo ""
     echo "✅ All tasks complete!"
     echo "🎉 Loop agent finished successfully"
+    record_completion "complete" "$SESSION_NAME"
     exit 0
   fi
 
@@ -59,6 +97,7 @@ for i in $(seq 1 $MAX_ITERATIONS); do
     echo ""
     echo "✅ All tasks complete!"
     echo "🎉 Loop agent finished successfully"
+    record_completion "complete" "$SESSION_NAME"
     exit 0
   fi
 
@@ -71,4 +110,5 @@ echo ""
 echo "⚠️  Maximum iterations ($MAX_ITERATIONS) reached"
 echo "📝 Check progress-${SESSION_NAME}.txt for status"
 echo "💡 Run with higher limit: ./loop.sh 50 $SESSION_NAME"
+record_completion "max_iterations" "$SESSION_NAME"
 exit 1

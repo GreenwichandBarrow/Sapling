@@ -29,3 +29,19 @@ node_modules/
 # Obsidian (if vault root doubles as repo)
 .obsidian/workspace.json
 .obsidian/workspaces.json
+
+# Personal brain content (user-specific, not boilerplate)
+brain/notes/daily/
+brain/notes/weekly/
+brain/notes/monthly/
+brain/notes/quarterly/
+brain/notes/yearly/
+brain/plans/
+brain/context/about-me.md
+brain/context/business.md
+brain/context/voice-and-style.md
+brain/context/preferences.md
+
+# Plugin symlinks (user-specific)
+.claude/loop-agents
+.claude/loop-completions.json

@@ -69,8 +69,10 @@ Only proceed if both checks pass.
 11. Generate context files from collected data
 12. Explain how /task, /calibrate, /today work
 13. Show creature + personalized welcome banner
-14. Commit with /commit
-15. Suggest `/today` to start first daily note
+14. GitHub CLI auth (optional): `gh auth login` for GitHub features
+15. ⭐ Ask about starring the repo (optional): auto-star if authed, else manual link
+16. Commit with /commit
+17. Suggest `/today` to start first daily note
 </quick_start>
 
 <routing>

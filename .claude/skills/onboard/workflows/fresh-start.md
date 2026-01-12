@@ -302,7 +302,86 @@ The more you use it, the better it gets.
 ╚═══════════════════════════════════════════════════════════════╝
 ```
 
-### Step 12: Commit with /commit
+### Step 12: GitHub CLI Setup (Optional)
+Check if GitHub CLI is available and authenticated:
+
+```bash
+# Check if gh is installed
+which gh >/dev/null 2>&1
+```
+
+**If `gh` is NOT installed:** Skip to Step 13.
+
+**If `gh` is installed, check auth status:**
+```bash
+gh auth status >/dev/null 2>&1
+```
+
+**If NOT authenticated:**
+Use AskUserQuestion:
+
+```yaml
+question: "Want to connect your GitHub account? Enables repo management, PR workflows, and more."
+header: "GitHub"
+multiSelect: false
+options:
+  - label: "Yes, sign in to GitHub"
+    description: "Opens browser to authenticate (~30 seconds)"
+  - label: "Skip for now"
+    description: "I can set this up later"
+```
+
+**If "Yes, sign in to GitHub":**
+```bash
+gh auth login --web
+```
+- Wait for auth to complete
+- On success: "GitHub connected! You now have access to GitHub features."
+- On failure: "No worries, you can run `gh auth login` anytime."
+
+**If already authenticated or "Skip":** Continue to Step 13.
+
+### Step 13: Support the Project (Optional)
+Use AskUserQuestion:
+
+```yaml
+question: "Would you like to ⭐ star the Sapling repository on GitHub to support the project?"
+header: "Support"
+multiSelect: false
+options:
+  - label: "Yes, star that repo!"
+    description: "Takes 2 seconds, helps the project grow"
+  - label: "No thanks"
+    description: "No worries, you're all set!"
+```
+
+**If "Yes, star that repo!":**
+1. Check if `gh` is available AND authenticated:
+   ```bash
+   gh auth status >/dev/null 2>&1
+   ```
+
+2. **If authenticated:**
+   ```bash
+   gh api -X PUT /user/starred/anthropics/sapling-os
+   ```
+   - On success: "Done! Thanks for the support! ⭐"
+   - On failure: Provide manual link as fallback
+
+3. **If NOT authenticated or `gh` unavailable:**
+   ```
+   No worries! You can star it manually here:
+   https://github.com/anthropics/sapling-os
+
+   Just click the ⭐ Star button in the top right!
+   ```
+
+**If "No thanks":**
+```
+No problem at all! You're completely set up and ready to go.
+```
+
+### Step 14: Commit with /commit
 
 Use the `/commit` skill to save all onboarding files:
 
@@ -317,7 +396,7 @@ Use the `/commit` skill to save all onboarding files:
 
 Invoke `/commit` - it will create an appropriate commit message.
 
-### Step 13: Clean Up & Next Steps
+### Step 15: Clean Up & Next Steps
 - Delete `.claude/onboard-state.json` if exists
 - Mark onboarding complete in stats.yaml: `onboarded_at: {date}`
 
@@ -340,7 +419,7 @@ Save state after each step to `.claude/onboard-state.json`:
   "started_at": "2025-01-08T10:00:00Z",
   "name": "Harrison",
   "creature": "ember",
-  "completed_steps": ["name", "welcome", "creature", "business", "role", "usecase", "writing", "image_gen"],
+  "completed_steps": ["name", "welcome", "creature", "business", "role", "usecase", "writing", "image_gen", "github_auth", "star_repo"],
   "collected_data": {
     "company_url": "https://example.com",
     "company_extracted": {...},

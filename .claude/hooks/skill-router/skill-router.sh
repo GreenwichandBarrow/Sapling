@@ -27,7 +27,8 @@ if [[ ! -f "$PYTHON_SCRIPT" ]]; then
 fi
 
 # Auto-generate rules if they don't exist or skills have changed
-SKILLS_DIR="$CLAUDE_PROJECT_DIR/.claude/skills"
+PROJECT_ROOT="${CLAUDE_PROJECT_DIR:-$(cd "$SCRIPT_DIR/../.." && pwd)}"
+SKILLS_DIR="$PROJECT_ROOT/.claude/skills"
 REGENERATE=false
 
 if [[ ! -f "$RULES_FILE" ]]; then

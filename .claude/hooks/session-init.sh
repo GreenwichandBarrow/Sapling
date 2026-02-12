@@ -2,8 +2,8 @@
 # Session initialization hook for Obsidian PKM vault
 # Sets up environment variables and ensures daily note exists
 
-# Set vault path (defaults to current directory)
-VAULT_PATH="${VAULT_PATH:-$(pwd)}"
+# Set vault path (prefer CLAUDE_PROJECT_DIR, fall back to cwd)
+VAULT_PATH="${VAULT_PATH:-${CLAUDE_PROJECT_DIR:-$(pwd)}}"
 
 # Date variables for daily operations
 TODAY=$(date +%Y-%m-%d)

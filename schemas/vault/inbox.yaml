@@ -185,21 +185,21 @@ example_call: |
   ---
   schema_version: 1.0.0
   date: 2025-12-27
-  title: Send AI strategy proposal to Todd
+  title: Send AI strategy proposal to Jane
   status: backlog
   source: call
   urgency: high
   due_date: 2025-12-30
-  entity: "[[entities/todd-ablowitz]]"
-  source_ref: "[[calls/2025-12-27-todd-strategy]]"
+  entity: "[[entities/jane-smith]]"
+  source_ref: "[[calls/2025-12-27-jane-strategy]]"
   automated: true
-  tags: [date/2025-12-27, inbox, source/call, urgency/high, client/double-diamond]
+  tags: [date/2025-12-27, inbox, source/call, urgency/high, client/acme-corp]
   ---
 
-  # Send AI strategy proposal to Todd
+  # Send AI strategy proposal to Jane
 
   ## Description
-  Follow up from strategy call. Todd needs proposal by EOY for board review.
+  Follow up from strategy call. Jane needs proposal by EOY for board review.
 
   Action item extracted from call: "Send proposal by Friday"
 

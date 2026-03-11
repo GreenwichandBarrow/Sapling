@@ -41,5 +41,5 @@ When updating an existing daily note:
 
 **Task with entity link (when known):**
 ```markdown
-- [ ] Send proposal to [[entities/todd-ablowitz|Todd]] (due: Dec 30)
+- [ ] Send proposal to [[entities/jane-smith|Jane]] (due: Dec 30)
 ```

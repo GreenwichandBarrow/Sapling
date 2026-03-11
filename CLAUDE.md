@@ -1,131 +1,169 @@
 # Sapling OS
 
-A personal knowledge system built on Obsidian + Claude Code that learns user preferences over time.
+Personal knowledge system: Obsidian vault + Claude Code + learning loop.
+You manage `brain/`, skills, hooks. Execute tasks; capture decisions; system gets smarter.
 
-You manage this system: a structured vault (`brain/`), reusable workflows (`skills/`), and a learning loop that improves from decisions. Your job is to execute tasks with minimal context pollution while capturing decisions that make the system smarter.
+**Core loop:** Request → Execute → Trace decisions → Skills improve → Better next time.
 
-**Core loop:** User requests → You execute → Decisions traced → Skills improve → Better execution next time.
+## Vault Writing Rules (CRITICAL)
 
-<querying>
-**By Path (fastest):**
-- `brain/entities/` → People and companies
-- `brain/calls/` → Call notes
-- `brain/outputs/` → Deliverables (posts, PRDs, emails)
-- `brain/traces/` → Decision traces
-- `brain/inbox/` → Tasks pending action
-- `brain/context/` → Identity, business, voice
+Every file in `brain/` builds an Obsidian knowledge graph. **Wiki-links and tags are mandatory** — without them, files are isolated and useless.
 
-**By Tag (most flexible):**
-Tags follow `/schemas/tags/taxonomy.yaml`. Key namespaces:
-- `client/{slug}` - All content for a client
-- `person/{slug}` - All content involving a person
-- `company/{slug}` - All content involving a company
-- `topic/{topic}` - Subject matter (check registry first)
-- `status/{status}` - State (draft, published, done, etc.)
-- `output/{type}` - Output type (linkedin-post, prd, email)
+### Wiki-Links
 
-**Example: "Find everything about John"**
-```bash
-grep -r "person/john-doe" brain/
-grep -r "\[\[entities/john-doe\]\]" brain/
+**Always link.** Every person, company, call, output, or trace you reference MUST be a wiki-link.
+
+```markdown
+# Good
+people: ["[[entities/jane-smith]]"]
+Follow up from [[calls/2025-12-27-strategy-update]].
+Send deliverable to [[entities/jane-smith|Jane]].
+
+# Bad — broken graph, no connections
+people: ["jane-smith"]
+Follow up from strategy call.
+Send deliverable to Jane.
 ```
 
-**By Frontmatter (structured):**
-- `people:` - Wiki-links to person entities
-- `companies:` - Wiki-links to company entities
-- `schema_version:` - File format version
-- `type:` / `status:` - Entity classification
+**Format:** `[[entities/{slug}]]` or `[[entities/{slug}|Display Name]]` for inline.
+**Entities are flat:** `entities/{slug}` — never `entities/people/` or `entities/companies/`.
 
-**Before querying topics:** Read `/schemas/tags/registry.yaml` for existing topics. Use existing tags before creating new ones.
+**Cross-reference rule:** If file A mentions entity/file B, file A MUST wiki-link to B.
+- Mention a person → `[[entities/{slug}]]`
+- Reference a call → `[[calls/{date}-{slug}]]`
+- Cite an output → `[[outputs/{date}-{slug}]]`
+- Link to daily note → `[[notes/daily/{date}]]`
+
+**Entity creation:** If you reference an entity that doesn't exist yet, create it in `brain/entities/{slug}.md` with proper schema. Don't leave broken links.
+
+### Tags
+
+**Every `brain/` file needs tags.** Tags are how Obsidian queries work — no tags = invisible file.
+
+Required tag namespaces (per schema `required_patterns`):
+- `date/YYYY-MM-DD` — always
+- Type literal — `call`, `entity`, `output`, `trace`, `inbox`, `library`, `daily`, `weekly`
+- Context tags — `person/{slug}`, `company/{slug}`, `client/{slug}`, `source/{source}`, `output/{type}`, `status/{status}`
+
+**Derive tags from frontmatter:**
+```yaml
+# If frontmatter has:
+people: ["[[entities/jane-smith]]"]
+companies: ["[[entities/acme-corp]]"]
+
+# Then tags MUST include:
+tags:
+  - person/jane-smith
+  - company/acme-corp
+```
+
+**Topic tags:** Use `topic/{slug}`. Check existing files for prior topics before inventing new ones.
+
+### Frontmatter
+
+Every `brain/` file needs YAML frontmatter. Hook `validate-edits.py` enforces required fields per schema — if it rejects a write, read the error + schema example, fix in one retry.
+
+Schema mapping:
+| Path | Schema |
+|------|--------|
+| `brain/calls/` | `schemas/vault/call.yaml` |
+| `brain/entities/` | `schemas/vault/entity.yaml` |
+| `brain/inbox/` | `schemas/vault/inbox.yaml` |
+| `brain/library/` | `schemas/vault/library.yaml` |
+| `brain/outputs/` | `schemas/vault/output.yaml` |
+| `brain/traces/` | `schemas/vault/trace.yaml` |
+| `brain/notes/daily/` | `schemas/vault/daily-note.yaml` |
+| `brain/notes/weekly/` | `schemas/vault/weekly-note.yaml` |
+
+**Before creating a file:** Read the schema's `example:` block. Match it exactly.
+
+### Knowledge Graph Checklist
+
+Before finishing any `brain/` write, verify:
+- [ ] Frontmatter has all required fields per schema
+- [ ] All people/companies in frontmatter are wiki-links to `entities/`
+- [ ] Tags include namespaces for every linked entity (`person/`, `company/`, `client/`)
+- [ ] Body text uses wiki-links for any entity, call, output, or trace mentioned
+- [ ] Referenced entities exist — if not, create them
+
+## Querying
+
+**By Path:**
+- `brain/entities/` → People + companies
+- `brain/calls/` → Call notes
+- `brain/outputs/` → Deliverables
+- `brain/traces/` → Decision traces
+- `brain/inbox/` → Pending tasks
+- `brain/context/` → Identity, business, voice
+
+**By Tag:**
+- `client/{slug}` — all content for a client
+- `person/{slug}` — all content involving a person
+- `company/{slug}` — all content involving a company
+- `topic/{topic}` — subject matter
+- `status/{status}` — state (draft, published, done)
+- `output/{type}` — output type (linkedin-post, prd, email)
+
+**Find everything about someone:**
+```bash
+grep -r "person/jane-smith" brain/
+grep -r "\[\[entities/jane-smith\]\]" brain/
+```
 
 **Source of Truth:**
-- **Beads** owns: All tasks (human and agent), dependencies, work status
-- **Obsidian (brain/)** owns: Knowledge—entities, calls, outputs, traces, context
-</querying>
+- **Beads** owns: tasks, dependencies, work status
+- **Obsidian (brain/)** owns: knowledge — entities, calls, outputs, traces, context
 
-<tools>
-**Beads (`bd`):** File-based issue tracking in `.beads/`. Use for multi-session work, dependencies, discovered tasks. Commands: `bd ready`, `bd create`, `bd close`, `bd sync`. See `agents.md` for full reference.
+## Tools
 
-**Skills:** Reusable workflows in `.claude/skills/`. Each skill has a `SKILL.md` defining its purpose, triggers, and workflow. Invoked via slash commands (`/task`, `/onboard`, `/calibrate`).
+**Beads (`bd`):** File-based issue tracking. `bd ready`, `bd create`, `bd close`, `bd sync`.
+**Skills:** `.claude/skills/` — reusable workflows. Invoked via `/task`, `/onboard`, `/calibrate`.
+**Commands:** `.claude/commands/` — slash command wrappers.
+**Hooks:** `.claude/hooks/` — event handlers (schema validation, session start).
 
-**Commands:** Slash commands in `.claude/commands/`. Lightweight wrappers that may invoke skills or run standalone workflows.
+## Context Engineering
 
-**Hooks:** Event handlers in `.claude/hooks/`. Run on file edits (schema validation), session start, etc.
-</tools>
+Context window = public good. Every token competes.
 
-<context_engineering>
-The context window is a public good. Every token competes for attention.
+- Progressive disclosure: metadata first (~50 tok), skill content on trigger (~1,500 tok), references only when needed.
+- Sub-agents when reading/editing 3+ files — for context isolation, not complexity.
+- Sub-agent output: max 2,000 words. Summaries, not prose. Analysis stays in sub-agent.
+- Context resumption: verify `git status` + read files before trusting summaries.
+- 2+ parallel sub-agents → invoke `agent-chatroom` skill first.
 
-**Progressive Disclosure:**
-- Load metadata first (~50 tokens)
-- Load skill content only when triggered (~1,500 tokens)
-- Load references only when workflows require them (0 tokens until needed)
+## Task Management
 
-**Sub-Agent Trigger Rule:**
-Spawn sub-agents when reading OR editing 3+ files, regardless of task complexity.
-Subagents are for context management, not complexity. The orchestrator should know *what* was done, not *how* every file looks. Orchestrator receives only summaries, not raw outputs.
+**Beads (`bd`)** is the single task system.
 
-**Sub-Agent Output Limits:**
-Max 2,000 words per sub-agent. Return structured proposals or summaries, not prose analysis. Analysis stays in sub-agent context; only actionable output returns to orchestrator.
-
-**Context Resumption:**
-After context compaction or session resume, verify actual file state (`git status`, read files) before trusting completion claims from summaries. Summaries may report "done" when work is staged but uncommitted.
-
-**Chatroom Coordination:**
-When spawning 2+ parallel sub-agents, invoke `agent-chatroom` skill first.
-</context_engineering>
-
-<evolution>
-This system learns from decisions. When `/task` completes:
-1. `decision-traces` skill captures meaningful choices
-2. Traces marked with `target_skill` identify improvement opportunities
-3. `/review-traces` (upcoming) proposes skill upgrades
-
-**Litmus Test:** Only capture choices between alternatives that change future behavior with non-obvious reasoning.
-</evolution>
-
-<task_management>
-**Beads (`bd`)** is the single task system. All work—human and agent—lives here.
-
-| Assignee | Use For | Example |
-|----------|---------|---------|
-| `human` | Tasks requiring user action | "Review PR", "Approve design" |
-| `agent` | Tasks Claude executes | "Implement feature", "Fix bug" |
-
-**Core workflow:**
 ```bash
 bd ready                    # What can I work on?
 bd update <id> --status=in_progress
-# ... do the work ...
 bd close <id>
 bd sync                     # Push to git
 ```
 
-**TodoWrite** is optional—use it to show the user progress during long sessions. It's ephemeral (memory only).
+Rules: create beads for multi-step/multi-session work. `--assignee=agent` for agent, `--assignee=human` for human. Dependencies: `bd dep add <blocker> <blocked-by>`.
 
-**Rules:**
-- Create beads for multi-step work, discovered tasks, anything that might span sessions
-- Use `--assignee=agent` for agent work, `--assignee=human` for human work
-- Dependencies: `bd dep add <blocker> <blocked-by>` when tasks must sequence
-</task_management>
+## Commands
 
-<commands>
 | Command | Purpose |
 |---------|---------|
-| `/task` | Start task with decision tracing |
+| `/task` | Task + decision tracing |
 | `/today` | Daily note workflow |
-| `/weekly` | Weekly review process |
-| `/commit` | Git commit with Linear sync |
-| `/migrate` | Run schema migrations |
-| `/review-traces` | Upgrade skills from decision traces |
-| `/create-skill` | Create new skills |
-</commands>
+| `/weekly` | Weekly review |
+| `/commit` | Git commit |
+| `/migrate` | Schema migrations |
 
-<behaviors>
-- **Start simple:** Default to simpler approach. Build sharp knife first. Add complexity only when constraints prove insufficient in practice.
-- **Wait for failure:** Before adding infrastructure (new hooks, state directories, multi-file solutions), require the simpler fix to fail first through actual use.
-- **Before acting:** Query the system for relevant context (entities, calls, prior outputs).
-- **Use skills:** Invoke available skills rather than reinventing workflows.
-- **Parallel over sequential:** Run independent tool calls in parallel.
-- **Use beads for persistence:** Multi-step work, API-heavy tasks, anything that might span sessions—create beads so progress isn't lost.
-</behaviors>
+## Evolution
+
+System learns from decisions. `/task` completes → `decision-traces` skill captures choices → traces identify improvement targets → skills upgrade.
+
+Litmus: only trace choices between alternatives that change future behavior with non-obvious reasoning.
+
+## Behaviors
+
+- Start simple. Sharp knife first. Complexity only after simpler approach fails.
+- Before acting: query system for context (entities, calls, prior outputs).
+- Use skills; don't reinvent workflows.
+- Parallel over sequential for independent work.
+- Beads for persistence on multi-step/multi-session tasks.

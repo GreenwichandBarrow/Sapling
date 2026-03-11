@@ -126,23 +126,23 @@ example: |
   date: 2025-09-15
   type: person
   status: client
-  company: "[[entities/double-diamond]]"
+  company: "[[entities/acme-corp]]"
   role: CEO
-  email: todd@example.com
+  email: jane@example.com
   phone: 555-123-4567
   linear_project: DD-AI
   tags:
     - date/2025-09-15
     - entity
     - person
-    - person/todd-ablowitz  # Self-reference for entity-centric queries
-    - client/double-diamond
+    - person/jane-smith  # Self-reference for entity-centric queries
+    - client/acme-corp
   ---
 
-  # Todd Ablowitz
+  # Jane Smith
 
   ## Quick Facts
-  - CEO of [[entities/double-diamond|Double Diamond 2.0]]
+  - CEO of [[entities/acme-corp|Acme Corp]]
   - Based in Chicago
 
   ## Communication Style
@@ -166,4 +166,4 @@ example: |
 
   ### Weekly Update (2025-12-20)
   Quick summary of weekly progress format. Direct, bullet-focused.
-  → Query Gmail for full: `to:todd@example.com subject:"Weekly Update" after:2025-12-15`
+  → Query Gmail for full: `to:jane@example.com subject:"Weekly Update" after:2025-12-15`

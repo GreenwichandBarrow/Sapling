@@ -133,8 +133,8 @@ example: |
   date: 2025-12-27
   type: linkedin-post
   status: draft
-  people: ["[[entities/todd-ablowitz]]"]
-  companies: ["[[entities/double-diamond]]"]
+  people: ["[[entities/jane-smith]]"]
+  companies: ["[[entities/acme-corp]]"]
   projects: []
   hypothesis: "[[hypotheses/2025-12-27-short-posts-engagement]]"
   trace: "[[traces/2025-12-27-linkedin-vibe-coding]]"
@@ -145,8 +145,8 @@ example: |
     - output
     - output/linkedin-post
     - status/draft
-    - person/todd-ablowitz
-    - company/double-diamond
+    - person/jane-smith
+    - company/acme-corp
   ---
 
   # Vibe Coding and Executive Buy-In

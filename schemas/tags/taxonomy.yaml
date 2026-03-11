@@ -1,0 +1,100 @@
+# Tag Taxonomy — Sapling OS
+# All valid tag namespaces. Agents: use existing tags before inventing new ones.
+
+namespaces:
+  date:
+    pattern: "date/YYYY-MM-DD"
+    required_by: all schemas
+    description: ISO date for temporal queries
+
+  # Type literals (one per file)
+  call:
+    pattern: "call"
+    used_by: [call]
+  entity:
+    pattern: "entity"
+    used_by: [entity]
+  output:
+    pattern: "output"
+    used_by: [output]
+  trace:
+    pattern: "trace"
+    used_by: [trace]
+  inbox:
+    pattern: "inbox"
+    used_by: [inbox]
+  library:
+    pattern: "library"
+    used_by: [library]
+  daily:
+    pattern: "daily"
+    used_by: [daily-note]
+  weekly:
+    pattern: "weekly"
+    used_by: [weekly-note]
+
+  # Entity namespaces — derived from frontmatter people/companies
+  person:
+    pattern: "person/{slug}"
+    description: Tag for every person referenced in file
+    derive_from: "people: [[entities/{slug}]] → person/{slug}"
+  company:
+    pattern: "company/{slug}"
+    description: Tag for every company referenced in file
+    derive_from: "companies: [[entities/{slug}]] → company/{slug}"
+  client:
+    pattern: "client/{slug}"
+    description: Client relationship tag
+
+  # Content classification
+  topic:
+    pattern: "topic/{slug}"
+    description: Subject matter. Check existing usage before creating new topics.
+  output_type:
+    pattern: "output/{type}"
+    values: [linkedin-post, email, proposal, prd, script, article, client-update, research, calibration]
+    extensible: true
+  status:
+    pattern: "status/{status}"
+    values: [draft, review, published, sent, archived, done, cancelled, testing, verified, falsified]
+  source:
+    pattern: "source/{source}"
+    values: [call, email, recurring, manual]
+    used_by: [inbox]
+  urgency:
+    pattern: "urgency/{level}"
+    values: [critical, high, normal, low]
+    used_by: [inbox]
+
+  # Trace-specific
+  domain:
+    pattern: "domain/{domain}"
+    values: [content, process, client, technical, sales]
+    used_by: [trace]
+  pattern:
+    pattern: "pattern/{slug}"
+    description: Reusable decision pattern name
+    used_by: [trace]
+  signal:
+    pattern: "signal/{type}-{value}"
+    description: Client signals from calls
+    used_by: [call]
+
+  # Library-specific
+  library_origin:
+    pattern: "library/{origin}"
+    values: [external, internal]
+    used_by: [library]
+  author:
+    pattern: "author/{slug}"
+    used_by: [library]
+
+  # Entity type literals
+  person_literal:
+    pattern: "person"
+    description: Entity type marker for people
+    used_by: [entity]
+  company_literal:
+    pattern: "company"
+    description: Entity type marker for companies
+    used_by: [entity]

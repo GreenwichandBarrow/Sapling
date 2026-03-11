@@ -105,12 +105,12 @@ When creating files in `brain/outputs/`, derive entity tags from frontmatter:
 
 ```yaml
 # If frontmatter has:
-people: ["[[entities/todd-ablowitz]]"]
+people: ["[[entities/jane-smith]]"]
 companies: ["[[entities/brown-robin]]"]
 
 # Then tags MUST include:
 tags:
-  - person/todd-ablowitz
+  - person/jane-smith
   - company/brown-robin
 ```
 

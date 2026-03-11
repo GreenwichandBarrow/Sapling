@@ -122,25 +122,25 @@ example: |
   call_id: 550e8400-e29b-41d4-a716-446655440000
   source: granola
   classification_type: client
-  people: ["[[entities/todd-ablowitz]]", "[[entities/rhonda-hoopingarner]]"]
-  companies: ["[[entities/double-diamond]]"]
+  people: ["[[entities/jane-smith]]", "[[entities/rhonda-hoopingarner]]"]
+  companies: ["[[entities/acme-corp]]"]
   tags:
     - date/2025-12-27
     - call
-    - client/double-diamond
-    - person/todd-ablowitz
+    - client/acme-corp
+    - person/jane-smith
     - person/rhonda-hoopingarner
-    - company/double-diamond
+    - company/acme-corp
     - topic/ai-strategy
     - signal/satisfaction-high
     - signal/expansion-high
   granola_link: https://granola.so/...
   ---
 
-  # AI Strategy Update - Double Diamond
+  # AI Strategy Update - Acme Corp
 
   **Date:** 2025-12-27
-  **Attendees:** Todd Ablowitz, Rhonda Hoopingarner
+  **Attendees:** Jane Smith, Rhonda Hoopingarner
 
   ---
 
@@ -154,7 +154,7 @@ example: |
 
   ### Action Items
   - [ ] Send proposal draft by Friday @harrison
-  - [ ] Review budget numbers @todd
+  - [ ] Review budget numbers @jane
 
   ### Signals
   - **Satisfaction:** High

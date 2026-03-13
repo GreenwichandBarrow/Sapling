@@ -10,6 +10,7 @@ from router.framework import dispatch
 from router.models import HandlerConfig
 from router.handlers.vault import stats_protection, validate_vault_schema
 from router.handlers.skills import inject_skill_context
+from router.handlers.gmail import block_gmail_send
 
 HANDLERS = [
     HandlerConfig(
@@ -26,6 +27,11 @@ HANDLERS = [
         fn=inject_skill_context,
         matcher=r"^Skill$",
         name="inject-skill-context",
+    ),
+    HandlerConfig(
+        fn=block_gmail_send,
+        matcher=r"^Bash$",
+        name="block-gmail-send",
     ),
 ]
 

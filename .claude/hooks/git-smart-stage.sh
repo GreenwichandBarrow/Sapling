@@ -136,22 +136,22 @@ build_commit_msg() {
     local areas
     areas=$(git diff --cached --name-only | while IFS= read -r path; do
         case "$path" in
-            brain/notes/daily/*)  echo "daily notes" ;;
-            brain/notes/weekly/*) echo "weekly notes" ;;
-            brain/notes/*)        echo "notes" ;;
-            brain/entities/*)     echo "entities" ;;
-            brain/calls/*)        echo "calls" ;;
-            brain/outputs/*)      echo "outputs" ;;
-            brain/traces/*)       echo "traces" ;;
-            brain/library/*)      echo "library" ;;
-            brain/templates/*)    echo "templates" ;;
-            brain/context/*)      echo "context" ;;
-            brain/inbox/*)        echo "inbox" ;;
-            brain/*)              echo "brain" ;;
-            schemas/*)            echo "schemas" ;;
-            .claude/*)            echo "config" ;;
-            .beads/*)             echo "beads" ;;
-            *)                    echo "${path%%/*}" ;;
+            (brain/notes/daily/*)  echo "daily notes" ;;
+            (brain/notes/weekly/*) echo "weekly notes" ;;
+            (brain/notes/*)        echo "notes" ;;
+            (brain/entities/*)     echo "entities" ;;
+            (brain/calls/*)        echo "calls" ;;
+            (brain/outputs/*)      echo "outputs" ;;
+            (brain/traces/*)       echo "traces" ;;
+            (brain/library/*)      echo "library" ;;
+            (brain/templates/*)    echo "templates" ;;
+            (brain/context/*)      echo "context" ;;
+            (brain/inbox/*)        echo "inbox" ;;
+            (brain/*)              echo "brain" ;;
+            (schemas/*)            echo "schemas" ;;
+            (.claude/*)            echo "config" ;;
+            (.beads/*)             echo "beads" ;;
+            (*)                    echo "${path%%/*}" ;;
         esac
     done | sort -u | paste -sd, - | sed 's/,/, /g')
     echo "update ${areas:-files}"

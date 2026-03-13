@@ -117,6 +117,15 @@ grep -r "\[\[entities/jane-smith\]\]" brain/
 ## Tools
 
 **Beads (`bd`):** File-based issue tracking. `bd ready`, `bd create`, `bd close`, `bd sync`.
+**GOG (`gog`):** CLI for Google Workspace. Gmail, Calendar, Drive, Docs, Sheets, Slides, Tasks, Contacts, Forms, Chat, and more.
+- Account: `kay.s@greenwichandbarrow.com` (OAuth). Invoke via `/gogcli` skill.
+- Use `--json` when parsing output. Use `--dry-run` before destructive ops.
+- Prefer `--readonly` scopes when full access isn't needed.
+- Never expose OAuth tokens or credentials in logs/commits.
+- Skill references: `.claude/skills/gogcli/references/commands.md` (full command ref), `auth-setup.md`.
+- Env vars: `$GOG_ACCOUNT`, `$GOG_TIMEZONE`, `$GOG_ENABLE_COMMANDS` (sandbox for automation).
+- Supports batch ops, cross-service workflows (email → sheet → calendar), and pub/sub watches.
+
 **Skills:** `.claude/skills/` — reusable workflows. Invoked via `/task`, `/onboard`, `/calibrate`.
 **Commands:** `.claude/commands/` — slash command wrappers.
 **Hooks:** `.claude/hooks/` — event handlers (schema validation, session start).

@@ -1,0 +1,408 @@
+[
+  {
+    "id": 81887,
+    "team": 66743,
+    "name": "Outreach: Network Pipeline",
+    "order": 4,
+    "recurring": false,
+    "expected_customer_lifetime_months": null,
+    "standard_price_per_unit_annually": null,
+    "standard_price_per_unit_monthly": null,
+    "standard_price_per_unit_weekly": null,
+    "standard_price_per_unit_daily": null,
+    "archived": false,
+    "creation_date": "2025-03-07T02:01:22.000Z",
+    "modification_date": "2026-01-13T23:37:02.000Z",
+    "follows_default_team_currency": true,
+    "currency": {
+      "id": 1,
+      "iso": "USD",
+      "html": "&#36;"
+    },
+    "stages": [
+      {
+        "id": 521389,
+        "name": "Identitifed",
+        "order": 1,
+        "probability": 0,
+        "color": "255,68,68",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 521390,
+        "name": "Contacted - Need to Schedule",
+        "order": 2,
+        "probability": 0,
+        "color": "255,138,101",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 521391,
+        "name": "Call Scheduled",
+        "order": 3,
+        "probability": 20,
+        "color": "255,183,77",
+        "fixed_stage": 0,
+        "days_until_account_inactive": 2147483647
+      },
+      {
+        "id": 531017,
+        "name": "Need to Reschedule",
+        "order": 4,
+        "probability": 0,
+        "color": "255,202,40",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 521392,
+        "name": "Need to Send Thank you",
+        "order": 5,
+        "probability": 50,
+        "color": "255,213,79",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 521508,
+        "name": "Nurture (Quarterly)",
+        "order": 6,
+        "probability": 0,
+        "color": "255,241,118",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 521393,
+        "name": "Nurture (Occassionally)",
+        "order": 7,
+        "probability": 100,
+        "color": "174,213,129",
+        "fixed_stage": 1,
+        "days_until_account_inactive": 2147483647
+      },
+      {
+        "id": 521394,
+        "name": "Dormant (Revisit Quarterly)",
+        "order": 8,
+        "probability": 0,
+        "color": "189,189,189",
+        "fixed_stage": 2,
+        "days_until_account_inactive": 2147483647
+      }
+    ],
+    "groups": [],
+    "default_pipeline": true
+  },
+  {
+    "id": 81963,
+    "team": 66743,
+    "name": "Outreach: Intermediary Pipeline",
+    "order": 5,
+    "recurring": false,
+    "expected_customer_lifetime_months": null,
+    "standard_price_per_unit_annually": null,
+    "standard_price_per_unit_monthly": null,
+    "standard_price_per_unit_weekly": null,
+    "standard_price_per_unit_daily": null,
+    "archived": false,
+    "creation_date": "2025-03-11T18:17:33.000Z",
+    "modification_date": "2026-01-13T23:37:02.000Z",
+    "follows_default_team_currency": true,
+    "currency": {
+      "id": 1,
+      "iso": "USD",
+      "html": "&#36;"
+    },
+    "stages": [
+      {
+        "id": 521912,
+        "name": "Identified",
+        "order": 1,
+        "probability": 0,
+        "color": "255,68,68",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 521913,
+        "name": "Contacted",
+        "order": 2,
+        "probability": 0,
+        "color": "255,138,101",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 523643,
+        "name": "Warmed",
+        "order": 3,
+        "probability": 0,
+        "color": "255,213,79",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 525301,
+        "name": "Actively Receiving Deal Flow",
+        "order": 4,
+        "probability": 0,
+        "color": "255,241,118",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 521935,
+        "name": "Daily Check in on Matches",
+        "order": 5,
+        "probability": 0,
+        "color": "174,213,129",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 521918,
+        "name": "Quarterly Check In",
+        "order": 6,
+        "probability": 100,
+        "color": "129,199,132",
+        "fixed_stage": 1,
+        "days_until_account_inactive": 2147483647
+      },
+      {
+        "id": 521919,
+        "name": "Dormant (Revisit Quarterly)",
+        "order": 7,
+        "probability": 0,
+        "color": "189,189,189",
+        "fixed_stage": 2,
+        "days_until_account_inactive": 2147483647
+      }
+    ],
+    "groups": [],
+    "default_pipeline": false
+  },
+  {
+    "id": 82036,
+    "team": 66743,
+    "name": "Investor Engagement",
+    "order": 7,
+    "recurring": false,
+    "expected_customer_lifetime_months": null,
+    "standard_price_per_unit_annually": null,
+    "standard_price_per_unit_monthly": null,
+    "standard_price_per_unit_weekly": null,
+    "standard_price_per_unit_daily": null,
+    "archived": false,
+    "creation_date": "2025-03-14T16:46:47.000Z",
+    "modification_date": "2026-01-13T23:37:02.000Z",
+    "follows_default_team_currency": true,
+    "currency": {
+      "id": 1,
+      "iso": "USD",
+      "html": "&#36;"
+    },
+    "stages": [
+      {
+        "id": 522392,
+        "name": "Q1",
+        "order": 1,
+        "probability": 0,
+        "color": "85,139,47",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 522393,
+        "name": "Q2",
+        "order": 2,
+        "probability": 0,
+        "color": "124,179,66",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 522394,
+        "name": "Q3",
+        "order": 3,
+        "probability": 20,
+        "color": "174,213,129",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 522395,
+        "name": "Q4",
+        "order": 4,
+        "probability": 50,
+        "color": "129,199,132",
+        "fixed_stage": 0,
+        "days_until_account_inactive": 90
+      },
+      {
+        "id": 522398,
+        "name": "YR 2 Q1",
+        "order": 5,
+        "probability": 0,
+        "color": "79,195,247",
+        "fixed_stage": 0,
+        "days_until_account_inactive": 90
+      },
+      {
+        "id": 522400,
+        "name": "YR 2 Q2",
+        "order": 6,
+        "probability": 0,
+        "color": "41,182,246",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 522399,
+        "name": "YR 2 Q3",
+        "order": 7,
+        "probability": 0,
+        "color": "33,150,243",
+        "fixed_stage": 0,
+        "days_until_account_inactive": 90
+      },
+      {
+        "id": 522396,
+        "name": "YR 2 Q4",
+        "order": 8,
+        "probability": 100,
+        "color": "2,119,189",
+        "fixed_stage": 1,
+        "days_until_account_inactive": 2147483647
+      },
+      {
+        "id": 522397,
+        "name": "Lost",
+        "order": 9,
+        "probability": 0,
+        "color": "166,166,166",
+        "fixed_stage": 2,
+        "days_until_account_inactive": 2147483647
+      }
+    ],
+    "groups": [],
+    "default_pipeline": false
+  },
+  {
+    "id": 88014,
+    "team": 66743,
+    "name": "Active Deals \u2013 Owners",
+    "order": 8,
+    "recurring": false,
+    "expected_customer_lifetime_months": null,
+    "standard_price_per_unit_annually": null,
+    "standard_price_per_unit_monthly": null,
+    "standard_price_per_unit_weekly": null,
+    "standard_price_per_unit_daily": null,
+    "archived": false,
+    "creation_date": "2026-02-12T02:22:02.000Z",
+    "modification_date": "2026-02-12T02:22:02.000Z",
+    "follows_default_team_currency": true,
+    "currency": {
+      "id": 1,
+      "iso": "USD",
+      "html": "&#36;"
+    },
+    "stages": [
+      {
+        "id": 561067,
+        "name": "Identitifed",
+        "order": 1,
+        "probability": 0,
+        "color": "255,68,68",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 561068,
+        "name": "Contacted",
+        "order": 2,
+        "probability": 0,
+        "color": "250,187,61",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 561069,
+        "name": "First Conversation",
+        "order": 3,
+        "probability": 20,
+        "color": "253,221,101",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 561070,
+        "name": "Second Conversation",
+        "order": 4,
+        "probability": 50,
+        "color": "203,223,50",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 561074,
+        "name": "NDA Executed",
+        "order": 5,
+        "probability": 0,
+        "color": "129,199,132",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 561075,
+        "name": "Financials Received",
+        "order": 6,
+        "probability": 0,
+        "color": "67,160,71",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 561076,
+        "name": "Active Diligence",
+        "order": 7,
+        "probability": 0,
+        "color": "79,195,247",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 561073,
+        "name": "LOI / Offer Submitted",
+        "order": 8,
+        "probability": 0,
+        "color": "3,155,229",
+        "fixed_stage": 0,
+        "days_until_account_inactive": null
+      },
+      {
+        "id": 561071,
+        "name": "LOI Signed",
+        "order": 9,
+        "probability": 100,
+        "color": "186,104,200",
+        "fixed_stage": 1,
+        "days_until_account_inactive": 2147483647
+      },
+      {
+        "id": 561072,
+        "name": "Closed / Not Proceeding",
+        "order": 10,
+        "probability": 0,
+        "color": "166,166,166",
+        "fixed_stage": 2,
+        "days_until_account_inactive": 2147483647
+      }
+    ],
+    "groups": [],
+    "default_pipeline": false
+  }
+]

@@ -1,7 +1,11 @@
 # G&B Industry Scorecard Structure
 
-Source: `G&B Scorecard Industry & Company 7.24.25.xlsx` (Drive ID: `1Zen-snMZKmKUjnihrn9O6AdIYMb2B_Zm`)
-Local copy: `brain/library/internal/scorecard/G&B Scorecard Industry & Company 7.24.25.xlsx`
+Source: `G&B Industry & Company Scorecard Template.xlsx` (Drive ID: `1kCCbEBpAgwX2TMn095W8-EzUUqvXIpWO`)
+Location: MANAGER DOCUMENTS / G&B MASTER TEMPLATES (Drive folder: `19TxdV5GHHbYq_O8YupQ-gkEH7V00iykx`)
+Local copy: `brain/library/internal/scorecard/G&B Industry & Company Scorecard Template.xlsx`
+
+**This template is the canonical reference. It does not change.**
+**Completed scorecards** (with filled-in data) are in the older file: `G&B Scorecard Industry & Company 7.24.25.xlsx` (also saved locally)
 
 ## Industry Scorecard (9 criteria, weighted, score 1-4)
 

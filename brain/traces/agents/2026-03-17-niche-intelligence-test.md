@@ -154,3 +154,74 @@ Only one meeting recorded in Granola for the past 7 days:
 
 ---
 
+## [niche-intel-email] — 2026-03-17T15:15:00-04:00
+**Source:** Gmail deal flow scan (past 7 days, excluding Axios)
+**Status:** complete
+
+### Signals Found
+
+**Broker Deal Teasers / CIMs:**
+- **Benchmark International (Cindy Turgeman, Mar 12):** Energy-efficient lighting company listed and already taken off market before Kay could sign NDA. Kay expressed interest, was told "no longer on market." Reinforces pattern that brokered listings move fast — need faster response pipeline.
+- **Everingham & Kerr (Mar 11):** Managed Cybersecurity Services and IT Consulting Company in New Jersey. $2M revenue, ~$400K normalized EBITDA. Specializes in managed cybersecurity services, compliance support, and IT consulting for regulated industries. Outside G&B's active niches but the compliance-for-regulated-industries angle is adjacent to the compliance infrastructure thesis.
+- **Business Exits (Mar 17):** Multi-location gym franchise group in California. Revenue $2.07M, profit $656K, asking $2.35M (3.5x). SBA eligible. Not in G&B target niches — fitness/franchise is outside buy box.
+
+**SMB Deal Flow Newsletters (Helen Guo / SMB Deal Hunter):**
+- **Mar 12:** "I'm Investing In This Deal" — Helen investing in a GovTech traffic analytics platform via Hunter Equity Partners. Passive investment, purchasing shares from existing shareholder. Not directly relevant to G&B niches but signals growing SMB investor community.
+- **Mar 12:** New deals roundup — property management company, healthcare SaaS, and 3 others. No details on specific deals matching G&B niches.
+- **Mar 13:** Invitation to same GovTech deal (repeated).
+- **Mar 16:** Case study of woman earning $72K/month while keeping her 9-5. Acquisition education content, not direct deal flow.
+
+**Search Fund / Acquisition Community Activity:**
+- **Women's Search Network (WSN):** Major activity this week:
+  - **Mar 11:** QSBS Deep Dive webinar with Paul Hastings law firm — practical guidance on equity structuring for QSBS eligibility and tax savings at exit. Directly relevant to G&B's deal structuring.
+  - **Mar 12-16:** Kay's WSN mentorship group formed. Mentor: Sarah Rowell (Ridgeway MH) — acquired Kantola (harassment prevention eLearning) in 2018, operated 5 years, sold to strategic. Group members: Adilene (Belen Partners), Megan (ML Capital), Ali (Potomac View Partners), Kay (G&B). Scheduling inaugural meeting.
+  - **Mar 16:** WSN Mentorship Commitment and Confidentiality Pledge 2026 sent for signature. Expires March 31.
+- **BK Growth (Mar 12):** 1st Thursday Zoom featuring Nina Chen who recently acquired North American Trade Schools. Education/vocational training acquisition — signals ETA community activity in services acquisitions.
+- **Acquiring Minds (Mar 15):** Two webinars — "How to Handle Common Employee Issues When Buying a Business" (attorneys Bill Barlow and James David Williams) and "Add-Backs to Cash Flow for SBA Loans." Both practical acquisition education.
+- **Walker Deibel / Buy Then Build (Mar 15):** Case study — someone bought a $9.5M business 9 months after being laid off. Acquisition Lab promotion embedded.
+- **Acquisition Lab (Tim Ericson, Mar 16):** New ecosystem launch for entrepreneurs. Marketing/promotional.
+- **Rejigg Report (Mar 11):** 170 new business listings added in February (surpassing 150 goal). Launched case studies and podcasts. Growing marketplace for SMB deals.
+- **SMBootcamp (Mar 11):** 34 searchers attended Tampa LIVE event. Growing in-person ETA community.
+
+**Trust & Estate / Wealth Management Signals (relevant to Trust Admin #1 and Estate Mgmt #2):**
+- **Trusts & Estates / Wealth Management (Mar 12):** "Tax Year in Review 2025" supplement offered. Signals active content for trust/estate professionals.
+- **Trusts & Estates (Mar 17):** Live webinar: "Unlock the Secret to Retaining Next-Gen Clients: Philanthropy Strategies That Work." Next-gen client retention is a key challenge for trust administration firms — validates the $84T wealth transfer as a driver of M&A interest.
+- **Wealth Management (Mar 12):** Webinar on navigating retirement income risks. Adjacent to trust/estate services.
+- **Wealth Stack Weekly (Mar 17):** Newsletter focused on wealth management trends. Content-oriented, not direct deal flow.
+
+**Art / Art Logistics (relevant to Art Insurance Brokerage #5):**
+- **Crozier Fine Arts (Mar 16):** Marketing email: "A Steady Global Partner for your Art Logistics." Crozier actively monitoring global logistics networks amid evolving international shipping conditions. Signals the art logistics/infrastructure space is sensitive to geopolitical disruption (Strait of Hormuz, per Axios data). Crozier is a potential strategic acquirer or partner for art insurance brokerages — confirms the ecosystem exists.
+
+**PE Hub (relevant to all niches — market context):**
+- **PE Hub Top Stories (Mar 16):** Kinderhook Industries won Mid-Cap North America Deal of the Year for sale of VAI to RealTruck. Blackstone coverage included. Mid-cap PE activity continues.
+- **PE Hub Deals Wire (Mar 13):** E2P sold Furlani Foods to Arbor Investments after 3-year hold. Blackstone taking majority stake in Advanced Cooling Technologies. PE cycling through portfolio companies.
+
+**Network / Relationship Activity:**
+- **Dan Tanzilli (Third Eye, Mar 16-17):** Coffee meeting confirmed and held today. Third Eye is a NYC-based firm at 1133 Broadway. Nature of conversation unknown from email alone — worth checking Granola for meeting notes.
+- **Katie Walker (Plexus Capital, Mar 11-12):** Coming to NYC April 15-16, coffee scheduled with Kay. Plexus Capital is a Raleigh-based lower middle market PE firm. Potential deal flow source or co-investor relationship.
+- **Harrison Wells (Dodo Digital, Mar 13-16):** AI consulting sessions, invoice sent. Ongoing tech stack development relationship.
+- **Peter Lang (Digital Agency Business, Mar 13):** Newsletter about merging with friendly competitors. Case study of Bayshore Solutions + Spinutech (met through YPO). Relevant M&A philosophy — trust-based transactions rather than formal auction processes.
+
+**Tax / Structuring (relevant to all acquisitions):**
+- **Roger Ledbetter CPA (Mar 14):** S-Corp newsletter + soft launch of taxreview.ai. S-Corp structuring relevant to acquisition vehicles.
+- **Karlton Dennis / Tax Alchemy (Mar 16):** Tax strategy content. General educational.
+
+### Industries/Companies Mentioned
+- **Brokers/Deal Sources:** Benchmark International (Cindy Turgeman), Everingham & Kerr, Business Exits, Rejigg, SMB Deal Hunter (Helen Guo / Hunter Equity Partners)
+- **Search/Acquisition Community:** Women's Search Network (Andrea Johnson, Sarah Rowell/Ridgeway MH), BK Growth (GJ King), Acquiring Minds (Will), Acquisition Lab (Tim Ericson), Buy Then Build (Walker Deibel), SMBootcamp
+- **WSN Group Members:** Adilene (Belen Partners), Megan (ML Capital), Ali (Potomac View Partners), Sarah Rowell (Ridgeway MH, mentor)
+- **Art/Logistics:** Crozier Fine Arts
+- **PE:** Plexus Capital (Katie Walker), Kinderhook Industries, Blackstone
+- **Network:** Dan Tanzilli (Third Eye), Harrison Wells (Dodo Digital), Peter Lang (Digital Agency Business)
+
+### Data Points for Scoring
+- Everingham & Kerr cybersecurity deal: $2M revenue, $400K EBITDA (compliance-adjacent services in regulated industries)
+- Business Exits gym franchise: $2.07M revenue, $656K profit, 3.5x asking multiple
+- Rejigg marketplace: 170 new listings added in February 2026 (growing SMB deal flow)
+- Benchmark deal moved off market before NDA could be signed — speed-to-respond is critical
+- WSN mentorship group: 4 women searchers + 1 mentor (Sarah Rowell, successful acquisition and exit of Kantola)
+- Plexus Capital coffee Apr 16 — potential lower middle market PE deal flow connection
+- Crozier Fine Arts actively monitoring international shipping disruption — relevant to art insurance thesis (geopolitical risk drives insurance demand)
+
+---
+

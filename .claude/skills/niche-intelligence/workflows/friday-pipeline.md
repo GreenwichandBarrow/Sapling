@@ -81,14 +81,20 @@ Each agent:
 6. Uploads the pptx to the new folder
 7. Posts folder ID and file confirmation to chatroom
 
-### Verification Gate 3
+### Verification Gate 3 (STOP — must pass before Step 4)
 
-For each niche, verify:
-- [ ] .pptx file exists locally
-- [ ] Drive folder created in IDEATION subfolder (folder ID returned)
-- [ ] File uploaded to Drive (confirmed via gog)
+After ALL one-pager agents complete, the orchestrator MUST verify each niche before proceeding:
 
-If any niche fails, log the error and continue with remaining niches.
+For each niche:
+1. Confirm .pptx file exists locally (`ls /tmp/{niche-slug}-onepager.pptx`)
+2. Confirm Drive folder was created in IDEATION subfolder:
+   `gog drive ls -a kay.s@greenwichandbarrow.com --parent 1fQNl6mogJW-6u5XJeE5uYQGsDPx495_O -j`
+3. Confirm exactly ONE file exists in each new folder (no duplicates):
+   `gog drive ls -a kay.s@greenwichandbarrow.com --parent {folder_id} -j`
+4. Confirm Assessment/Status says "Pending Scoring" (no scores leaked into one-pager)
+
+**If any niche fails:** Log the error in the chatroom, exclude that niche from Steps 4-5, and continue with passing niches.
+**If ALL niches fail:** Stop pipeline, post error summary to chatroom, notify user.
 
 ## Step 4: ADD TO TRACKER (Sequential)
 
@@ -98,9 +104,14 @@ This agent:
 1. Appends each new niche to IDEATION tab with columns populated (Score left blank, notes = "Pending scoring")
 2. Posts confirmation of all sheet updates to chatroom
 
-### Verification Gate 4
+### Verification Gate 4 (STOP — must pass before Step 5)
 
-- [ ] Each niche appears in IDEATION tab (re-read tab to confirm)
+After tracker update completes, verify:
+1. Re-read IDEATION tab: `gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "IDEATION!A:J" -a kay.s@greenwichandbarrow.com -j`
+2. Confirm each new niche appears as a row
+3. Confirm Score column is blank or "Pending"
+
+**If verification fails:** Retry the append once. If still fails, log error and continue to Step 5 (scorer can add rows itself as fallback).
 
 ## Step 5: SCORE (Sequential)
 

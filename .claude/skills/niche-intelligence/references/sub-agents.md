@@ -325,8 +325,9 @@ FILE NAMING: `{Niche Name} {Month} {Year}.pptx`
 Save locally to: `/tmp/{niche-slug}-onepager.pptx`
 
 DRIVE UPLOAD:
+New niches go into the IDEATION subfolder (ID: 1fQNl6mogJW-6u5XJeE5uYQGsDPx495_O).
 1. Create folder:
-   gog drive mkdir "{NICHE NAME}" -a kay.s@greenwichandbarrow.com --parent 1tiAc7lVveBwi_DlYcFUX2tFP6FVwYKmQ -j
+   gog drive mkdir "{NICHE NAME}" -a kay.s@greenwichandbarrow.com --parent 1fQNl6mogJW-6u5XJeE5uYQGsDPx495_O -j
 2. Upload file:
    gog drive upload "/tmp/{niche-slug}-onepager.pptx" -a kay.s@greenwichandbarrow.com --parent {new_folder_id}
 

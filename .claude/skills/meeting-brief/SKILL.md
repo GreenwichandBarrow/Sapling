@@ -1,0 +1,189 @@
+---
+name: meeting-brief
+description: "Generate meeting prep briefs for external meetings with new contacts. Saves to Google Drive (RESEARCH/BRIEFS) and brain/briefs/."
+user_invocable: true
+---
+
+<objective>
+Generate a concise meeting brief for any upcoming external meeting where Kay is meeting someone for the first time (or hasn't met in a long time). The brief answers: how were we introduced, who is this person, how can they help the search, and what should Kay share about herself. Saves to Google Drive and the vault automatically.
+</objective>
+
+<essential_principles>
+## When to Trigger
+
+This skill should run:
+- When Kay asks for a meeting brief or prep
+- Proactively when /start or calendar review reveals an upcoming meeting with someone Kay hasn't met before (no prior call notes in brain/calls/)
+
+## Core Questions Every Brief Must Answer
+
+1. **How were we introduced?** — Trace the connection chain (who introduced whom, when, context)
+2. **Who is this person?** — Role, company, background, relevance
+3. **How could they be useful to the search?** — Specific ways they connect to G&B's acquisition thesis
+4. **What should Kay share about herself?** — Tailored talking points based on what they already know and what would resonate
+5. **What NOT to over-share** — What to keep high-level or avoid entirely
+
+## Delivery
+
+Save to TWO locations, no email:
+- **Google Doc** in RESEARCH/BRIEFS folder (ID: `1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ`)
+- **Vault file** at `brain/briefs/{YYYY-MM-DD}-{person-slug}.md`
+</essential_principles>
+
+<quick_start>
+## Execution Flow
+
+1. **Identify the meeting** — Check calendar for details (time, location, attendees)
+2. **Gather intel** — Run these in parallel:
+   - Search Gmail for intro thread / prior correspondence
+   - Search brain/ (entities, calls, SalesFlare data) for any existing context
+   - Web search for the person and their company
+3. **Trace the introduction chain** — Who introduced whom, through whom, what context was given
+4. **Assess relevance to the search** — Map their expertise/network to G&B's active niches and thesis
+5. **Draft the brief** — Use the template structure below
+6. **Save to both locations** — Google Doc + vault file
+</quick_start>
+
+<research_phase>
+## Phase 1: Parallel Research
+
+Spawn or run these queries in parallel:
+
+### Calendar
+```
+gog calendar list --from {date} --to {date} --json
+```
+Extract: meeting title, time, location, attendee emails.
+
+### Email History
+```
+gog gmail search "from:{email} OR to:{email} OR {person_name}" --max 15
+```
+Then read the intro thread. Look for:
+- Who made the introduction
+- What context they gave about Kay
+- What context they gave about the other person
+- Any prior scheduling back-and-forth
+
+### Vault Search
+- `brain/entities/` — existing entity file?
+- `brain/calls/` — any prior call notes?
+- `brain/library/internal/salesflare/contacts.json` — CRM data?
+- `brain/library/internal/salesflare/accounts.json` — company data?
+
+### Web Search
+```
+{Person Name} {Company} {Role}
+```
+Get: background, company description, LinkedIn summary, recent news.
+</research_phase>
+
+<brief_structure>
+## Phase 2: Brief Structure
+
+Every brief follows this exact structure:
+
+```
+MEETING BRIEF: {Person Name}
+{Meeting Type} | {Day} {Date}, {Time}
+{Location}
+
+—
+
+HOW YOU WERE INTRODUCED
+
+{Full connection chain: who introduced whom, when, what context was provided,
+what the introducer said about Kay, what they said about the other person.
+Note if this is the first conversation or if there's been prior contact.}
+
+—
+
+WHO {FIRST NAME} IS
+
+• {Role and company — one line}
+• {What the company does — one line}
+• {Background/previous roles — one line}
+• {Education/credentials if relevant — one line}
+• {Network/relationships of note — one line}
+
+—
+
+HOW THEY COULD BE USEFUL TO YOUR SEARCH
+
+1. {Specific connection to G&B thesis or active niches}
+2. {Network/intro potential}
+3. {Industry insight they could provide}
+4. {Any other strategic value}
+
+—
+
+WHAT TO SHARE ABOUT YOURSELF
+
+• {What they already know — build on this}
+• {G&B positioning — tailored to their world}
+• {Relevant thesis angles — only what resonates with their expertise}
+• {Mutual value framing — what you can offer them}
+
+—
+
+WHAT NOT TO OVER-SHARE
+
+• {Topics to keep high-level}
+• {Things to avoid entirely}
+
+—
+
+SUGGESTED TALKING POINTS
+
+1. {About their business/work}
+2. {Specific question connecting their expertise to your search}
+3. {Your search — brief, conversational framing}
+4. {Mutual value — relationship-first}
+```
+</brief_structure>
+
+<save_phase>
+## Phase 3: Save & Deliver
+
+### Google Doc
+```
+gog docs create "{title}" --parent "1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ" --file {tmp_file}
+```
+
+### Vault File
+Save to `brain/briefs/{YYYY-MM-DD}-{person-slug}.md` with frontmatter:
+
+```yaml
+---
+schema_version: "1.0.0"
+date: {YYYY-MM-DD}
+type: brief
+title: "Meeting Brief: {Person Name}"
+people: ["[[entities/{person-slug}]]"]
+companies: ["[[entities/{company-slug}]]"]
+tags:
+  - date/{YYYY-MM-DD}
+  - brief
+  - person/{person-slug}
+  - company/{company-slug}
+  - {relevant topic tags}
+  - source/claude
+---
+```
+
+Ensure all referenced entities exist. Create entity files if needed.
+
+### Confirm to User
+Share the Google Doc link so Kay can open it on her phone.
+</save_phase>
+
+<success_criteria>
+Brief is complete when:
+- [ ] All 6 sections populated with specific, sourced information
+- [ ] Introduction chain fully traced (not generic)
+- [ ] Talking points tailored to the specific person (not boilerplate)
+- [ ] Google Doc saved in RESEARCH/BRIEFS
+- [ ] Vault file saved in brain/briefs/
+- [ ] Referenced entities exist in brain/entities/
+- [ ] Google Doc link shared with user
+</success_criteria>

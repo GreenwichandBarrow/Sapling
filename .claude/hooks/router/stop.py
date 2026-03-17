@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stop event router: orchestrator gate + git auto-commit."""
+"""Stop event router: orchestrator gate + meeting brief check + git auto-commit."""
 
 import os
 import sys
@@ -10,10 +10,12 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from router.framework import dispatch
 from router.models import HandlerConfig
 from router.handlers.orchestrator import orchestrator_stop_gate
+from router.handlers.meeting_brief import meeting_brief_stop_check
 from router.handlers.git import git_auto_commit_stop
 
 HANDLERS = [
     HandlerConfig(fn=orchestrator_stop_gate, name="orchestrator-stop-gate"),
+    HandlerConfig(fn=meeting_brief_stop_check, name="meeting-brief-stop-check"),
     HandlerConfig(fn=git_auto_commit_stop, name="git-auto-commit-stop"),
 ]
 

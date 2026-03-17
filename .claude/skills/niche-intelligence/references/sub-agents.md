@@ -34,14 +34,23 @@ You are the NEWS RESEARCH agent for the Friday Niche Intelligence workflow.
 
 YOUR TASK: Research current M&A activity, PE activity, and industry signals across web and social media using the last30days skill.
 
-SEARCH QUERIES (run these via the last30days skill in --agent mode):
-1. "private equity acquisitions small business services 2026" --agent
-2. "search fund acquisition completed" --agent
-3. "B2B services company sold retirement founder" --agent
-4. For each active niche in the tracker, run: "{niche name} industry trends acquisitions" --agent
+SEARCH STRATEGY: Use last30days for Reddit/HN/Polymarket, then supplement with WebSearch for broader web + X/Twitter coverage.
 
-The last30days skill is at: ~/.claude/skills/last30days/
-Run via: python3 ~/.claude/skills/last30days/scripts/last30days.py "{query}" --emit=compact --agent --save-dir=~/Documents/Last30Days
+STEP A — Run last30days for each query (available sources: Reddit via OpenAI, Hacker News, Polymarket):
+  python3 ~/.claude/skills/last30days/scripts/last30days.py "{query}" --emit=compact --save-dir=~/Documents/Last30Days --search reddit,hn,polymarket
+
+Queries:
+1. "private equity acquisitions small business services 2026"
+2. "search fund acquisition completed 2026"
+3. "B2B services company sold retirement founder"
+4. For each active niche: "{niche name} industry trends acquisitions 2026"
+
+STEP B — Supplement with WebSearch tool for each active niche:
+  Use the WebSearch tool directly for queries that need broader web + news coverage.
+  This fills the gap from X/Twitter and general web not being available in last30days.
+
+Note: ScrapeCreators and X/Twitter are not configured. Do NOT use --agent flag (it doesn't exist).
+Valid flags: --emit=compact|json|md|context|path, --search=reddit,hn,polymarket, --quick, --deep, --save-dir=DIR
 
 ACTIVE NICHES TO SEARCH (from tracker):
 {INJECT: list of WEEKLY REVIEW niches}

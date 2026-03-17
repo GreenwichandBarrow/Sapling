@@ -92,8 +92,35 @@ Classify each event:
 Cross-reference with `brain/calls/` for logged call notes. Use Granola MCP to verify meeting counts if available.
 
 ### Agent 3: Attio Pipeline Collector
-**Task:** Pull pipeline movements and deal stage data.
+**Task:** Pull pipeline movements and deal stage data from all 4 Lists.
 **Tools:** Attio API (curl)
+**API:** Bearer token from `.env` (`ATTIO_API_KEY`), base URL `https://api.attio.com/v2`
+
+**CRITICAL:** All pipelines are Attio **Lists**. Query the Lists API, not the Deals object.
+
+**Lists to query:**
+- Active Deals – Owners: `0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b`
+- Outreach: Network Pipeline: `94ccb017-2b86-4e12-b674-e27de8e146c9`
+- Outreach: Intermediary Pipeline: `7faac55b-a183-4afe-b7ea-fc8a4ccace10`
+
+**Active Deals stage mapping (report ALL stages, even if 0 deals):**
+
+| Attio Stage | Tracker Metric |
+|---|---|
+| Identified | (sourcing) |
+| Contacted | (sourcing) |
+| First Conversation | Stage 1 Calls |
+| Second Conversation | Stage 2 Calls |
+| NDA Executed | NDAs Signed |
+| Financials Received | Financials Received |
+| Active Diligence | Deals in Active Review |
+| LOI / Offer Submitted | LOIs Submitted |
+| LOI Signed | LOIs Signed |
+| Closed / Not Proceeding | Deals Killed |
+
+**To get all stage names:** `GET /v2/lists/{list_id}/attributes/stage/statuses`
+**To get entries:** `POST /v2/lists/{list_id}/entries/query` with `{}`
+
 **Returns:**
 ```json
 {
@@ -105,16 +132,11 @@ Cross-reference with `brain/calls/` for logged call notes. Use Granola MCP to ve
   "deals_added": 0,
   "deals_killed": 0,
   "qualified_a_count": 0,
-  "deals_in_review": 0
+  "deals_in_review": 0,
+  "stage_counts": {"Identified": 0, "Contacted": 0, ...}
 }
 ```
-**Source:** Attio deal pipeline. Check for stage transitions this week:
-- Moved to NDA stage → NDAs Signed
-- Moved to Financials stage → Financials Received
-- Moved to LOI stage → LOIs Submitted
-- LOI signed → LOIs Signed
-- New records → Deals Added
-- Archived/lost → Deals Killed
+Count deals per stage. For weekly changes, compare `created_at` timestamps against the week window for new deals. For killed deals, count entries at "Closed / Not Proceeding".
 
 ### Agent 4: Vault Activity Collector
 **Task:** Count vault activity for the week.

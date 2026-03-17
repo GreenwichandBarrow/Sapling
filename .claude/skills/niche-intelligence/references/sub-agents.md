@@ -392,7 +392,7 @@ Include valid Obsidian vault frontmatter.
 
 Post summary scores to chatroom.
 
-UPDATE ONE-PAGERS WITH SCORES (Step 4b):
+UPDATE ONE-PAGERS WITH SCORES:
 After scoring all niches, go back and update each one-pager's "Assessment/Status" section with the final score.
 
 For each niche one-pager:
@@ -402,8 +402,11 @@ For each niche one-pager:
    - Overall score (X.XX/3)
    - Score breakdown by category
    - Final verdict (Promising / Moderate / Weak)
-3. Re-upload the updated file to the same Drive folder, overwriting the original:
-   gog drive upload "/tmp/{niche-slug}-onepager.pptx" -a kay.s@greenwichandbarrow.com --parent {folder_id}
+3. Save the updated file with the SAME filename as the original (e.g., "Niche Name March 2026.pptx"), NOT a slug name
+4. Delete the original file from Drive FIRST, then upload the updated version:
+   gog drive rm {original_file_id} -a kay.s@greenwichandbarrow.com --force
+   gog drive upload "/tmp/Niche Name March 2026.pptx" -a kay.s@greenwichandbarrow.com --parent {folder_id}
+   This ensures one file per folder, not duplicates.
 
 Post confirmation of one-pager updates to chatroom.
 

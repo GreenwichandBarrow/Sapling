@@ -362,6 +362,33 @@ The tabled niche is specifically software. The research agent surfaced full-serv
 
 ---
 
+## [niche-intel-onepager-1] — 2026-03-17T17:00:00-04:00
+**Niche:** Workplace Compliance Training Companies
+**Status:** complete
+**Drive Folder:** 1v0Me-eq9FJS_yoldpD3GLFTX08dxlVHF
+**File:** Workplace Compliance Training March 2026.pptx
+
+### Key Research Findings
+- Sarah Rowell acquired Kantola (harassment prevention eLearning) in 2018, grew recurring revenue 5x, improved net revenue retention ~40 percentage points, and exited to Traliant (PSG Equity-backed) in Jan 2024. Traliant also acquired Clear Law Institute — active consolidator in the space.
+- The market is moderately fragmented: SHRM lists 71+ compliance training vendors. Below the top tier (Traliant, NAVEX, Skillsoft, EVERFI), there is a long tail of regional and niche players serving state-specific or industry-specific needs.
+- Compliance is mandatory by state law — California, New York, Illinois, Connecticut, Delaware, Maine, and others require annual harassment prevention training for all employers above threshold sizes. Each new state mandate expands the addressable market.
+- VC-backed competitors (Ethena $30M Series B, EasyLlama) are targeting the modern SMB segment with self-serve platforms, which could compress pricing at the low end but also validates market demand.
+- 11 major acquisitions occurred in compliance eLearning in 2023 alone, indicating active consolidation and clear exit pathways.
+- PSG Equity (Traliant), Thoma Bravo (NAVEX), and HRIS strategics (ADP, Paychex, Rippling) are all potential exit buyers.
+
+### Data Points for Scoring
+- **Market size:** eLearning compliance training ~$8.6B globally (2026), 9.1% CAGR to $23B by 2032. Harassment training segment ~$1.2B (14% of market).
+- **Pricing:** $15-$50/employee/year standard; $50-$150 comprehensive suites; volume discounts to $8-$20 for enterprise.
+- **Margins:** 75-85% gross margins; 20-35% EBITDA margins for established players.
+- **Retention:** 85-90%+ renewal rates (compliance mandate = cannot lapse). Kantola achieved ~40pp NRR improvement over 5 years.
+- **Fragmentation:** 71+ vendors in SHRM directory. Moderate concentration — top 5 hold significant share but dozens of $1-10M players exist.
+- **Acquisitions:** Traliant acquired Kantola (Jan 2024) + Clear Law Institute. HSI acquired Skillko (Oct 2024). 11 major deals in 2023.
+- **Key competitors:** Traliant (PSG), NAVEX (Thoma Bravo), Skillsoft (public), EVERFI ($80M+ revenue), Ethena ($30M raised), EasyLlama, Emtrain, LRN, SHIFT.
+- **Regulatory tailwind:** 6+ states with mandatory annual training; Chicago requires additional bystander intervention training. State-level changes accelerating.
+- **Proven search fund model:** Sarah Rowell/Kantola = acquisition (2018) to 5-year hold to strategic exit (2024). Directly repeatable.
+
+---
+
 ## [niche-intel-onepager-3] — 2026-03-17T17:00:00-04:00
 **Niche:** Third-Party Licensing Management
 **Status:** complete

@@ -100,3 +100,57 @@ Only one meeting recorded in Granola for the past 7 days:
 
 ---
 
+## [niche-intel-research] — 2026-03-17T14:45:00-04:00
+**Source:** Prior research outputs and vault review
+**Status:** complete
+
+### Signals Found
+
+**Three major research outputs from March 14-15 contain extensive scoring data and niche candidates not yet on the active tracker:**
+
+**1. Luxury Infrastructure Niche Scoring (Mar 14)** — Scored 30+ niches across Private Aviation and Yachting/Marine verticals. Top-scoring niches (22/24): Full-service yacht management, Aircraft management companies. Multiple niches at 21/24: Aviation insurance brokerage, Yacht insurance brokers, Aviation/yacht accounting firms, Aircraft acquisition advisory. Also identified 8 additional niches NOT previously tracked, including Luxury Estate/Property Management (~21), UHNW Household Staffing (~20), Fine Art Logistics & Storage (~19), Private Security/Executive Protection (~19), and UHNW Tax/Family Office Accounting (~20).
+
+**2. Master Ranked List of 150+ Niches (Mar 15)** — Pre-scored 150+ niches across 15 luxury verticals. The top 3 overall are: Family Office Travel Coordination (23/24), Estate Management Companies (23/24, aligns with active niche #2), and Trust Administration (23/24, aligns with active niche #1). Identified three strategic clusters: (a) UHNW Property & Estate Management, (b) UHNW Asset Infrastructure, (c) UHNW Family Infrastructure. Notable high-scorers not on active tracker: Luxury Watch Servicing (22), Estate Valuation Consultants (22), Concierge Medical Practices (21), K-12 Admissions Consulting (21).
+
+**3. Trade Credit Insurance Deep Dive (Mar 15)** — Comprehensive research brief on TCI brokerage. Overall rating: B+ niche. Key findings: $13B global market growing 11% CAGR, US underpenetrated (2-5% vs 10-15% Europe), 20-50 independent US specialist brokers, 85-95% renewal rates, 20-35% EBITDA margins. No dedicated PE roll-up in TCI = less deal competition. Luxury/fashion angle is moderate (textile/apparel is a major TCI vertical, Neiman/Barneys bankruptcies validated need). Recommendation was for expert calls before go/no-go. Aligns with active niche #3.
+
+**4. Call Intelligence (Mar 12 — Camilla/Kay)** — Third-party licensing management selected as the next niche to explore for rest of March. Camilla refining one-pager. ERP/Warehouse management systems ruled out (players too large or too small, no middle market). Kay noted a brokered listing came off market in 3 days, reinforcing need for speed in deal flow. Conference attendance target: weekly, starting mid-March.
+
+**5. Patterns Across Sources:**
+- Insurance brokerage appears as a top-scoring category across multiple verticals (aviation, yacht, art, jewelry, TCI) — the recurring revenue + high margins + aging owners pattern repeats everywhere
+- "Family office for [asset class]" roll-up thesis identified independently in both aviation and yachting research — multi-service platform combining management + insurance + accounting
+- Compliance infrastructure thesis validated by newsletter signals (TradingHub acquisition by Nordic Capital, ACA Group/FX Transparency acquisition)
+- PE underperformance + GDP slowdown = more motivated sellers, less competition from PE for smaller deals
+
+**6. Research Gaps:**
+- Third-party licensing management has NO vault research output yet — only a call discussion. Needs a full research brief like the TCI one.
+- Family Office Travel Coordination scored highest (23/24) in master list but has no dedicated research brief
+- No conference/event mapping has been completed for ANY of the 5 active niches
+- Insurance Producer License Compliance (active niche #4) has a one-pager but no deep-dive comparable to the TCI brief
+- Art Insurance Brokerage (active niche #5) is in field testing but has no dedicated research brief in vault
+
+### Industries/Companies Mentioned
+- **Aviation:** Aircraft management cos (200-300 US), Aviation insurance brokers (50-100), Aviation accounting firms (30-60), Charter brokers (500+), FBOs (3,300+), Pilot staffing agencies (50-100)
+- **Yachting/Marine:** Yacht management (100-200), Yacht insurance brokers (50-100), Yacht accounting (20-40), Crew recruitment (50-80), Maritime legal advisory (30-50)
+- **Trade Credit Insurance:** Allianz Trade, Atradius, Coface (Big 3, ~85% global premiums); Meridian Finance Group, RFR Insurance, AU Group, ACTI (independent US specialists)
+- **Luxury Services:** Sienna Charles (travel coordination), Xerendipity/Celebrity Estate Management (estate mgmt), Starkey International/British American Household Staffing (luxury staffing)
+- **Watch/Jewelry:** Non-OEM luxury watch servicing (300-800 US firms), Fine jewelry appraisal (500-1,000+)
+- **Automotive:** Exotic vehicle servicing boutiques (500-1,000), Climate-controlled car storage (100-300)
+- **Third-Party Licensing Management:** Under research by Camilla, no specific companies identified yet
+
+### Data Points for Scoring
+- Full-service yacht management: $11.2B global market, 7.8% CAGR
+- Aviation insurance brokerage: 25-30% EBITDA, 85-90% renewal, 8-14x acquisition multiples
+- Trust administration: 37% operating margins, $84T wealth transfer tailwind, 500-800 US firms
+- Trade credit insurance: $13B global GWP, 11% CAGR, US $2-3B, 2-5% US penetration, 20-50 independent US brokers, 85-95% renewal, 20-35% EBITDA
+- Estate management companies: 300-800 US firms, $500K-$10M revenue range
+- Family office travel coordination: 30-80 US firms, $500K-$5M revenue, 9%+ growth
+- Luxury watch servicing: 10% CAGR, 300-800 US firms
+- Fine jewelry appraisal: $3.3B market, 500-1,000+ firms
+- Exotic vehicle servicing: 43M collector vehicles in US, 500-1,000 firms
+- Pilot staffing: 300K new pilots needed globally by 2035
+- Concierge medical practices: 5,000-10,000 practices, $8B market
+- K-12 admissions consulting: 2,800 IECA members
+
+---
+

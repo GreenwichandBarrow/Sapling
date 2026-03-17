@@ -73,22 +73,36 @@ If 0 new niches identified, document why (e.g., "all signals pointed to already-
 For each niche from Step 2, spawn a `niche-intel-onepager` agent. If 3 niches identified, spawn 3 agents in parallel.
 
 Each agent:
-1. Performs web research to fill all one-pager sections (Industry Overview, Thesis, Trends, Economics, Competition, Customers, Barriers, Key Success Factors, Exit)
-2. Uses `python-pptx` to create the pptx file following the template structure
-3. Creates a Drive folder for the niche under parent `1tiAc7lVveBwi_DlYcFUX2tFP6FVwYKmQ`
-4. Uploads the pptx to the new folder
-5. Posts folder ID and file confirmation to chatroom
+1. Checks if a one-pager already exists (pre-flight check in Drive + brain/outputs/)
+2. Performs web research to fill all one-pager sections (Industry Overview, Thesis, Trends, Economics, Competition, Customers, Barriers, Key Success Factors, Exit)
+3. Does NOT score or rate the niche — Assessment/Status is left as "Pending Scoring"
+4. Uses `python-pptx` to create the pptx file following the template structure
+5. Creates a Drive folder for the niche under IDEATION subfolder (`1fQNl6mogJW-6u5XJeE5uYQGsDPx495_O`)
+6. Uploads the pptx to the new folder
+7. Posts folder ID and file confirmation to chatroom
 
 ### Verification Gate 3
 
 For each niche, verify:
 - [ ] .pptx file exists locally
-- [ ] Drive folder created (folder ID returned)
+- [ ] Drive folder created in IDEATION subfolder (folder ID returned)
 - [ ] File uploaded to Drive (confirmed via gog)
 
 If any niche fails, log the error and continue with remaining niches.
 
-## Step 4: SCORE (Sequential)
+## Step 4: ADD TO TRACKER (Sequential)
+
+Spawn `niche-intel-tracker` agent to add new niches to IDEATION tab BEFORE scoring.
+
+This agent:
+1. Appends each new niche to IDEATION tab with columns populated (Score left blank, notes = "Pending scoring")
+2. Posts confirmation of all sheet updates to chatroom
+
+### Verification Gate 4
+
+- [ ] Each niche appears in IDEATION tab (re-read tab to confirm)
+
+## Step 5: SCORE (Sequential)
 
 Spawn `niche-intel-scorer` agent with:
 - All gathered intelligence from Step 1
@@ -103,6 +117,9 @@ This agent:
 4. Normalizes to /3 scale for IDEATION tab compatibility
 5. Also fills in IDEATION-specific columns: Margins, Recurring Revenue, AI Defensibility, Right to Win, Network Access
 6. Writes the final output report to `brain/outputs/{date}-niche-intelligence-report.md`
+7. **Updates one-pagers** with final scores (downloads pptx, updates Assessment/Status, re-uploads)
+8. **Updates tracker** with scores (writes score + IDEATION columns to the rows added in Step 4)
+9. Checks if any scored niche warrants promotion to WEEKLY REVIEW (score > lowest WEEKLY REVIEW score AND >= 2.50)
 
 ### Output Report Structure
 
@@ -169,28 +186,13 @@ tags:
 2. {action}
 ```
 
-### Verification Gate 4
+### Verification Gate 5
 
 - [ ] Output report exists at `brain/outputs/{date}-niche-intelligence-report.md`
 - [ ] Report has valid vault frontmatter
 - [ ] Each niche has a complete scorecard
-
-## Step 5: UPDATE TRACKER (Sequential)
-
-Spawn `niche-intel-tracker` agent with:
-- The scored niche list from Step 4
-- Current WEEKLY REVIEW tab data (for promotion threshold)
-- IDEATION tab column structure
-
-This agent:
-1. Appends each new niche to IDEATION tab with all columns populated
-2. Checks if any new niche scores above the lowest score in WEEKLY REVIEW
-3. If yes: adds to WEEKLY REVIEW, sets Status = "New - Pending Review", Start Date = today
-4. Posts confirmation of all sheet updates to chatroom
-
-### Verification Gate 5
-
-- [ ] Each niche appears in IDEATION tab (re-read tab to confirm)
+- [ ] One-pagers updated with scores on Drive
+- [ ] Tracker IDEATION rows updated with scores
 - [ ] Promoted niches appear in WEEKLY REVIEW tab (if applicable)
 
 ## Completion
@@ -221,10 +223,12 @@ Ready for your Monday review.
 This workflow is complete when:
 - [ ] All 5 gathering agents ran and posted to chatroom
 - [ ] 0-5 new niches identified with documented reasoning
-- [ ] One-pager .pptx created and uploaded for each new niche
+- [ ] One-pager .pptx created and uploaded (no scores — "Pending Scoring")
+- [ ] Niches added to IDEATION tab in tracker (no scores yet)
 - [ ] Each niche scored against detailed G&B scorecard
-- [ ] Output report written with valid vault frontmatter
-- [ ] IDEATION tab updated in Google Sheets
+- [ ] Scores written back to one-pagers (Assessment/Status updated)
+- [ ] Scores written back to tracker (IDEATION rows updated)
 - [ ] High-scoring niches promoted to WEEKLY REVIEW if warranted
+- [ ] Output report written with valid vault frontmatter
 - [ ] User notified with summary
 </success_criteria>

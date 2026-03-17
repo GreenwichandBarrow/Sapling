@@ -2,7 +2,7 @@
 
 Living document of non-obvious insights from Kay's search fund journey. Used by the Niche Intelligence skill to inform what makes a good niche and what pitfalls to avoid. Updated as new learnings emerge from calls, deals, and research.
 
-Last updated: 2026-03-16
+Last updated: 2026-03-17
 
 ---
 
@@ -95,6 +95,10 @@ Last updated: 2026-03-16
 - **5 essential diagnostic questions:** (1) Top 3 P&L expenses? (2) Client retention? (3) What happens if service stops? (4) What makes clients choose you? (5) Can you grow with existing customers alone?
 
 - **Macro industry attractiveness ≠ niche-level opportunity.** Commercial cleaning passed initial screening but failed on fragmentation, differentiation, and market growth at niche level.
+
+- **Niche ≠ industry.** "Workplace compliance training" is an industry. "OSHA safety compliance eLearning for construction firms" is a niche. Always evaluate at the niche level — specific enough to name the customer type, exact service, and competitive set. If it breaks into 3+ distinct sub-segments with different customers and competitors, it's too broad.
+
+- **A niche already run by a searcher is a negative signal, not validation.** If another searcher acquired, operated, and exited in a specific niche, that means informed competition exists, low-hanging targets may be gone, and remaining owners may have inflated expectations. Look for adjacent niches with the same economics but no searcher footprint. Example: harassment prevention eLearning is taken (Kantola → Traliant/PSG), but workplace health & safety compliance eLearning is open whitespace with the same playbook.
 
 - **Revenue quality > revenue growth.** Key components: % recurring, customer concentration (<30% from top 5), LTV:CAC (>3:1), switching costs. Initial scorecard weighted growth too heavily at 40%.
 

@@ -236,11 +236,17 @@ BONUS CRITERIA (from Kay's right-to-win):
 - Clear PE exit pathway (look for PE firms already buying in the space)
 - AI-enhanceable but not AI-disruptable
 
-DUPLICATE DETECTION (CRITICAL):
-Before proposing any niche, check whether it is a VARIANT or SUBSET of an existing active, ideation, killed, or tabled niche — not just an exact name match. Niches can appear under different names but describe the same underlying business. Examples of duplicates:
-- "Third-Party Licensing Management" = "Insurance Producer License Compliance" (both are license compliance services)
-- "UHNW Property Services" = "Estate Management Companies" (same business, different label)
-- "Regulatory Filing Services" could overlap with multiple compliance niches
+DUPLICATE DETECTION AND NICHE INTERPRETATION (CRITICAL):
+Before proposing any niche, you MUST:
+
+1. **Check for duplicates** — not just exact name matches but semantic overlaps. Niches can appear under different names but describe the same underlying business. Examples:
+   - "UHNW Property Services" = "Estate Management Companies" (same business, different label)
+   - "Regulatory Filing Services" could overlap with multiple compliance niches
+
+2. **Resolve ambiguous niche names** — When a niche name comes from a call note, email, or internal discussion, do NOT guess what it means. Instead:
+   - Read existing one-pagers and research briefs for related active niches to understand context
+   - Check the Drive folders for existing research: gog drive ls -a kay.s@greenwichandbarrow.com --parent 1tiAc7lVveBwi_DlYcFUX2tFP6FVwYKmQ -j
+   - If the niche name is ambiguous or could be interpreted multiple ways, flag it for human clarification rather than picking an interpretation
 
 For each candidate, explicitly state: "Checked against active niches — not a duplicate of: {list which active niches you compared it to and why it's distinct}." If there is ANY ambiguity, flag it rather than proposing it as new.
 

@@ -225,3 +225,74 @@ Only one meeting recorded in Granola for the past 7 days:
 
 ---
 
+## [niche-intel-news] — 2026-03-17T15:45:00-04:00
+**Source:** Web/Social research via last30days + WebSearch fallback
+**Status:** complete (last30days Reddit API errored on all 8 queries — HTTP 400; X/Twitter not authenticated; fell back to web search for all signals)
+
+### Signals Found
+
+**Trust Administration (Niche #1 — ACTIVE, Month Focus):**
+- **GTCR acquiring Fiduciary Trust Company** — Chicago PE firm GTCR signed a definitive agreement to acquire Fiduciary Trust Company, a Boston-based wealth manager and trust company with **$34B in client AUA/AUM**. Expected to close Q1 2026. This is a marquee PE acquisition directly in the trust administration space, confirming PE sees value in trust/fiduciary businesses. The deal validates the thesis that trust administration firms are attractive acquisition targets.
+- **JTC completed acquisition of Citi's Global Fiduciary and Trust Administration Business** (formerly Citi Trust). Brought ~300 professionals from offices worldwide. JTC previously acquired South Dakota Trust Company in 2023, positioning itself as "the leading independent provider of administration services to the US personal trust sector." This signals active consolidation by a strategic acquirer — JTC is building a global trust administration platform through serial acquisitions.
+- **Wealth Enhancement Group** announced multiple 2026 acquisitions including a $1.2B RIA breakaway team from TFB Advisors, bringing combined assets to **$143.8B**. Wealth management transactions rose **27% quarter-over-quarter** — fee-based recurring revenue models remain the top PE target.
+- **Bain Capital acquiring Perpetual's wealth management unit for A$500m** (per Axios, confirmed by web search). PE continuing to consolidate wealth/trust platforms globally.
+- **RIA M&A expected to rival or surpass 2025 deal volume** — strong buyer/seller sentiment, rate cuts fueling consolidation.
+- **Why it matters for G&B:** Trust administration is the most validated niche right now. Two major strategic acquirers (JTC, Wealth Enhancement) are actively rolling up trust/fiduciary firms, and PE (GTCR, Bain) is entering at scale. This confirms a clear exit pathway — acquire a smaller trust admin firm, grow it, sell to JTC/Wealth Enhancement or a PE platform. The $84T wealth transfer tailwind is attracting capital from all directions.
+
+**Estate Management Companies (Niche #2 — Resurrected):**
+- **Real estate M&A shifting to local deals** — National firms slowing acquisitions while local/regional combinations accelerate. "In-market combinations are particularly attractive" due to cultural compatibility and operational fit. This pattern favors G&B's approach of acquiring smaller, local firms.
+- **PURE Property Management + HomeRiver Group merged** to form PURE HomeRiver — nation's largest third-party single-family rental property manager with **40,000+ homes across 80+ offices in 35+ states**, secured **$80M growth capital from PGIM**. While this is residential property management (not UHNW estate management), it demonstrates the platform/roll-up playbook working in property management services.
+- **Hale Capital acquired Apex Analytics** — real estate data and valuation solutions. Adjacent to estate management infrastructure.
+- **Why it matters for G&B:** Estate management is less directly validated by M&A activity than trust admin — no specific UHNW estate management acquisitions found. But the broader property management consolidation wave (PURE HomeRiver) proves the roll-up model works in related services. The gap between institutional property management M&A and UHNW estate management M&A could represent an opportunity to be an early mover.
+
+**Trade Credit Insurance (Niche #3 — One-Pager Complete):**
+- **Global TCI market valued at $14.9B in 2023, projected to reach $41.1B by 2033** (CAGR 10.7%). Alternative projections: $29.8B by 2035 at 8.6% CAGR. Either way, strong double-digit growth.
+- **SME segment growing fastest** at 10.9% CAGR — driven by digital onboarding via brokers/fintech, embedded cover in receivables finance, and ECA support.
+- **U.S. corporate bankruptcies surged 15% in late 2025** — directly drives demand for trade credit insurance as companies seek protection against buyer defaults.
+- **World Bank partnered with global insurers for $6B facility** to expand access to trade credit finance in emerging markets. Institutional-scale capital entering the space.
+- **ADNIC + Allianz Trade announced strategic partnership** (Sep 2025) — the Big 3 carriers continuing to expand distribution.
+- **Key challenge:** "Lower broker investment in distributing this line of business is a primary reason restricting market growth." This is actually bullish for acquisition — it means incumbent TCI brokers who DO have distribution are scarce and valuable.
+- **Shift to bank-embedded coverage models** — banks integrating TCI into supply chain finance, invoice discounting, and factoring solutions. This could commoditize standalone brokerage but also creates partnership opportunities.
+- **Why it matters for G&B:** The TCI brokerage niche continues to look strong. The market is large and growing fast, the U.S. is underpenetrated, and the fact that broker investment in distribution is LOW means the few dedicated TCI brokers have defensible positions. Bankruptcies rising = more demand. The bank-embedded trend is a watch item — could disintermediate brokers long-term, but near-term it expands the overall market.
+
+**Insurance Producer License Compliance (Niche #4 — One-Pager Complete, Queued):**
+- **Regulatory changes accelerating in 2026:** Maine launched a new Apprentice Insurance Producer license (Jan 1, 2026). Georgia changing to state-direct applications (Apr 1, 2026). Colorado eliminating "Sole Proprietor" as a business type for firm licenses (Mar 12, 2026). Each state-level change creates compliance burden for multi-state insurers.
+- **AgentSync** has raised **$161M total funding** (Series B $50M in Oct 2023, 183 employees as of Jan 2026). This is the dominant VC-backed player in insurance producer compliance software. No 2026 acquisition or new funding found — potentially a sign the company is in a growth plateau or pre-exit phase.
+- **Agenzee** emerging as a competitor with compliance management software, publishing 2026 compliance guides and software rankings. Smaller player.
+- **Key insight from web search:** "Any sales activity conducted by an unlicensed producer can result in regulatory fines for both the individual and their affiliated agency or carrier." Compliance is non-optional. The penalty structure creates inelastic demand for compliance services.
+- **Why it matters for G&B:** This niche is validated by the existence of well-funded tech players (AgentSync at $161M) targeting the same pain point. However, the tech players are going after the software layer while many carriers and agencies still use manual/outsourced compliance services. A services firm (not software) doing license compliance could be acquirable at much lower multiples than AgentSync, with the option to layer in technology post-acquisition. The constant stream of state-level regulatory changes is a durable demand driver.
+
+**Art Insurance Brokerage (Niche #5 — Field Testing in Attio):**
+- **Insurance M&A remains robust in 2026** but increasingly selective. Brown & Brown, AJG, Aon, and Marsh continue leading dealmaking in insurance distribution.
+- **Hilb Group completed its 200th acquisition** (Feb 2026) — South Carolina P&C and employee benefits agency. Hilb is an active acquirer of specialty insurance agencies and could be an exit buyer for an art insurance brokerage.
+- **No specific art insurance brokerage acquisitions found in 2026.** The niche is too specialized to generate frequent M&A headlines.
+- **Risk Strategies** and **AJG (Gallagher)** both have dedicated fine art insurance practices, suggesting the category has enough scale to attract national brokers but is still served by specialists.
+- **Crozier Fine Arts** (from email scan) actively monitoring international shipping disruption — geopolitical risk (Strait of Hormuz) is increasing demand for art transit/logistics insurance.
+- **Why it matters for G&B:** The art insurance brokerage niche is harder to validate via public M&A data because deals are small and specialized. But the existence of dedicated fine art practices at national brokers (Risk Strategies, AJG) confirms the category is real. The exit pathway would likely be to a national broker building out a specialty practice. Geopolitical disruption is a near-term tailwind for art insurance demand.
+
+**General PE / M&A Market Context:**
+- **79% of GPs expect PE acquisitions to increase** over the next 6 months. Sentiment is strongly positive for deal activity.
+- **Add-ons expected to represent most PE activity in 2026** — firms seeking synergies, geographic expansion, cost efficiencies. This favors roll-up strategies in fragmented niches.
+- **Business/professional services = 19% of PE transactions** in Q3 2025. The sector remains a top PE target.
+- **PE pushback from small business owners** — Bloomberg reports (Mar 16) that owners are "increasingly refusing to take part in acquisitions." This could mean G&B faces less PE competition for smaller deals, as founders prefer selling to individuals/search funds rather than PE platforms.
+- **6 million small/medium businesses face ownership transitions by 2035** as boomers retire. Over **1 million firms are viable candidates for sale**, representing up to **$5 trillion in enterprise value**. Lower middle market firms ($2M-$25M) in regional services are the sweet spot.
+- **Cherry Bekaert outlook:** Sectors with predictable cash flow and margin strength remain most attractive — healthcare services, tech-enabled B2B, and business services leading.
+
+### Industries/Companies Mentioned
+- **Trust Administration:** JTC (acquired Citi Trust + South Dakota Trust Co.), GTCR (acquiring Fiduciary Trust Company, $34B AUM), Wealth Enhancement Group ($143.8B combined assets), Bain Capital (acquiring Perpetual wealth mgmt, A$500m)
+- **Estate/Property Management:** PURE HomeRiver (40K homes, $80M PGIM capital), Compass (acquired Rogers Healy, Mar 2026), Hale Capital (acquired Apex Analytics)
+- **Trade Credit Insurance:** Allianz Trade, Coface (acquired Rel8ed), ADNIC, World Bank/IFC ($6B facility)
+- **Insurance Producer Compliance:** AgentSync ($161M total funding, 183 employees), Agenzee (competitor), Harbor Compliance
+- **Art Insurance:** Risk Strategies (fine art practice), AJG/Gallagher (fine art practice), Hilb Group (200th acquisition Feb 2026)
+- **Insurance M&A Platforms:** Brown & Brown, Aon, Marsh, Hilb Group
+- **Search Fund/SMB Ecosystem:** McKinsey (ownership transfer research), Rejigg, Acquiring Minds
+
+### Data Points for Scoring
+- **Trust Admin:** GTCR/Fiduciary Trust Company deal: $34B AUM. JTC acquired Citi Trust (~300 employees). Wealth Enhancement: $143.8B combined assets. Wealth mgmt transactions up 27% QoQ. RIA M&A expected to match/exceed 2025.
+- **Trade Credit Insurance:** $14.9B market (2023) → $41.1B by 2033 (10.7% CAGR). SME segment fastest at 10.9% CAGR. U.S. bankruptcies up 15% in late 2025. World Bank $6B TCI facility for emerging markets. Bank-embedded coverage models growing.
+- **Insurance Producer Compliance:** AgentSync raised $161M total, 183 employees. 3 state-level regulatory changes taking effect Q1 2026 alone (Maine, Georgia, Colorado).
+- **Art Insurance:** Hilb Group at 200 acquisitions — active specialty insurance acquirer. No art-specific deal data found.
+- **General Market:** 79% of GPs expect increased PE acquisitions. Professional services = 19% of PE deal volume. 6M businesses facing ownership transition by 2035, 1M+ viable sale candidates, up to $5T enterprise value. Add-on acquisitions dominating PE strategy. Bloomberg: PE pushback from small business owners growing.
+
+---
+

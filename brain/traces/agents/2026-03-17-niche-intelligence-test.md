@@ -621,6 +621,16 @@ Calculation: (0.75 + 0.30 + 0.20 + 0.45 + 0.22 + 0.20 + 0.25 + 0.15) = 2.52
 | **Network Access** | Strong (Sarah Rowell = WSN mentor who did this exact acquisition, operated 5 years, and exited; direct access to playbook, deal flow, buyer relationships) | Some (E&K listing came through existing broker relationships; Plexus Capital connection for PE context; but no deep cybersecurity industry network) |
 
 ### One-Pager Updates
-Pending — will update both Google Drive one-pagers with scores next.
+Both one-pagers updated with scores and re-uploaded to Google Drive:
+
+1. **Workplace Compliance Training** — Assessment updated to "Promising 2.59/3", Status to "Scored — recommend active", thesis paragraph rewritten with scoring highlights.
+   - Drive link: https://docs.google.com/presentation/d/1Zs8zsmxWQuMoRp-06irkX6pw8wFnLANr/edit
+   - Folder: 1v0Me-eq9FJS_yoldpD3GLFTX08dxlVHF
+
+2. **Managed Cybersecurity Compliance** — Assessment updated to "Moderate 2.52/3", Status to "Scored — not pursuing", thesis paragraph rewritten with scoring highlights and rationale.
+   - Drive link: https://docs.google.com/presentation/d/1aLTy2G8KQkgBskVLXQ0gzooTw6WMDaHR/edit
+   - Folder: 1nwSzB7lRx9XXpWR34Y5AtTluID-ZCQbO
+
+**Output report written to:** brain/outputs/2026-03-17-niche-intelligence-report.md
 
 ---

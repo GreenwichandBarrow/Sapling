@@ -1,17 +1,19 @@
 ---
 name: weekly-tracker
-description: "Generate the weekly activity tracker — pulls data from Gmail, Calendar, Attio, and vault, writes to Google Sheet + vault. Run every Friday or on demand."
+description: "Weekly activity tracker — sub-agents pull data from Gmail, Calendar, Attio, and vault in parallel, populate Google Sheet + vault snapshot, Slack notify on completion. Run every Friday."
 user_invocable: true
 ---
 
 <objective>
-Populate the G&B Weekly Activity Tracker with the current week's data. The tracker is a cumulative Google Sheet spanning the full search, with one column per week.
+Populate the G&B Weekly Activity Tracker with the current week's data.
 
 This is **Stage 7: Model Updating** of the G&B acquisition methodology. It answers two questions:
 - **Signal Quality** — Are we reaching the right people? Are conversations converting?
 - **System Throughput** — Is the machine producing enough volume to hit the goal?
 
 Goal: 1 interesting deal reviewed per week, fed by 2–5 owner conversations per week.
+
+The Google Sheet already exists (one-time creation done). Each run adds a new weekly column to the existing sheet.
 </objective>
 
 <essential_principles>
@@ -35,52 +37,277 @@ Everything else is diagnostic — it shows whether the activity machine is conve
 
 ## Schedule
 
-Run every Friday (or on demand via `/weekly-tracker`). The sheet is cumulative — each run adds a new column for the current week.
+Run every Friday morning (or on demand via `/weekly-tracker`). The sheet is cumulative — each run adds a new column for the current week.
 </essential_principles>
 
+<sub_agents>
+## Sub-Agent Architecture
+
+Spawn 4 specialized sub-agents in parallel to collect data. Each returns a structured JSON summary. Use `agent-chatroom` if 3+ agents are needed concurrently.
+
+### Agent 1: Gmail Collector
+**Task:** Count outreach volume and responses for the week.
+**Tools:** gog gmail search
+**Returns:**
+```json
+{
+  "outreach_emails_sent": 0,
+  "cold_calls_logged": 0,
+  "responses_received": 0,
+  "intro_threads": []
+}
+```
+**Queries:**
+```bash
+# Outreach sent (from Kay or JJ)
+gog gmail search "from:me subject:(introduction OR intro OR regarding OR reaching out) after:{WEEK_START} before:{WEEK_END}" --json
+# Responses received
+gog gmail search "to:me subject:(re: introduction OR re: intro OR re: regarding) after:{WEEK_START} before:{WEEK_END}" --json
+```
+Count unique threads, not individual messages. Look for cold call confirmation/follow-up emails to estimate call volume.
+
+### Agent 2: Calendar & Meetings Collector
+**Task:** Classify all meetings for the week.
+**Tools:** gog calendar list, Granola MCP, vault reads
+**Returns:**
+```json
+{
+  "stage_1_calls": 0,
+  "stage_2_calls": 0,
+  "networking_meetings": 0,
+  "introductions_received": 0,
+  "meeting_details": []
+}
+```
+**Queries:**
+```bash
+gog calendar list --from {WEEK_START} --to {WEEK_END} --json
+```
+Classify each event:
+- **Stage 1 call** — first call with a deal contact / broker / owner
+- **Stage 2 call** — follow-up / deep dive on a specific deal
+- **Networking** — river guides, advisors, fellow searchers, introductions
+- **Internal** — skip (team calls, recurring standups)
+
+Cross-reference with `brain/calls/` for logged call notes. Use Granola MCP to verify meeting counts if available.
+
+### Agent 3: Attio Pipeline Collector
+**Task:** Pull pipeline movements and deal stage data.
+**Tools:** Attio API (curl)
+**Returns:**
+```json
+{
+  "ndas_signed": 0,
+  "financials_received": 0,
+  "lois_submitted": 0,
+  "lois_signed": 0,
+  "total_active_pipeline": 0,
+  "deals_added": 0,
+  "deals_killed": 0,
+  "qualified_a_count": 0,
+  "deals_in_review": 0
+}
+```
+**Source:** Attio deal pipeline. Check for stage transitions this week:
+- Moved to NDA stage → NDAs Signed
+- Moved to Financials stage → Financials Received
+- Moved to LOI stage → LOIs Submitted
+- LOI signed → LOIs Signed
+- New records → Deals Added
+- Archived/lost → Deals Killed
+
+### Agent 4: Vault Activity Collector
+**Task:** Count vault activity for the week.
+**Tools:** Glob, Grep, git log
+**Returns:**
+```json
+{
+  "new_contacts_added": 0,
+  "call_notes_logged": 0,
+  "entities_created": []
+}
+```
+**Queries:**
+```bash
+# Call notes in date range
+Glob: brain/calls/{YYYY-MM-DD}*  (for each day in the week)
+
+# New entities created this week
+git log --after={WEEK_START} --before={WEEK_END} --name-only --diff-filter=A -- brain/entities/
+```
+</sub_agents>
+
+<execution_flow>
+## Execution Flow
+
+### Step 1: Define the Week
+```
+WEEK_START = Monday 00:00 of current week
+WEEK_END = Friday (today) or Sunday if running retroactively
+WEEK_ENDING_DATE = Friday date in YYYY-MM-DD format
+```
+
+### Step 2: Spawn Data Collection Sub-Agents
+Launch all 4 agents in parallel:
+```
+Agent 1: Gmail Collector (background)
+Agent 2: Calendar & Meetings Collector (background)
+Agent 3: Attio Pipeline Collector (background)
+Agent 4: Vault Activity Collector (background)
+```
+Wait for all to return.
+
+### Step 3: Aggregate & Calculate
+Merge all agent results into a single data object. Calculate derived metrics:
+- **Response Rate** = responses_received / outreach_emails_sent
+- **Outreach → Owner Conversation** = stage_1_calls / outreach_emails_sent
+- **Owner Conversation → NDA** = ndas_signed / stage_1_calls
+
+### Step 4: Write to Google Sheet
+Read current sheet to find next empty column, then write data to all 3 tabs:
+
+**Weekly Topline tab** — write new column with:
+- Week ending date (header)
+- NDAs Signed
+- Financials Received
+- LOIs Submitted
+- LOIs Signed
+
+**Weekly Detail tab** — write new column with all metrics:
+- System Throughput: outreach, calls, responses, contacts, networking, intros
+- Signal Quality: response rate, Stage 1 calls, A count, Stage 2 calls, deals in review, conversion rates
+- Pipeline Health: total active, added, killed
+
+**Quarterly Summary tab** — update current quarter column with cumulative totals (SUM formulas referencing Weekly Detail)
+
+```bash
+SHEET_ID="1NGGZY_iq9h8cNzLAXSJ1vTcsfXWNU9oin2RiOMtl9NE"
+
+# Find next empty column
+gog sheets get "$SHEET_ID" "'Weekly Topline'!1:1" --json
+
+# Write to all 3 tabs
+gog sheets update "$SHEET_ID" "'Weekly Topline'!{COL}1:{COL}9" --values-json '{...}'
+gog sheets update "$SHEET_ID" "'Weekly Detail'!{COL}1:{COL}23" --values-json '{...}'
+gog sheets update "$SHEET_ID" "'Quarterly Summary'!{QCOL}3:{QCOL}31" --values-json '{...}'
+```
+
+### Step 5: Save Vault Snapshot
+Write `brain/trackers/weekly/{YYYY-MM-DD}-weekly-tracker.md` with frontmatter and diagnostic narrative.
+
+### Step 6: Validation (Stop Hook)
+Before notifying, validate all deliverables exist:
+
+```python
+# Validation checks (stop hook logic)
+checks = {
+    "sheet_updated": verify_sheet_column_exists(SHEET_ID, WEEK_ENDING_DATE),
+    "vault_file": file_exists(f"brain/trackers/weekly/{WEEK_ENDING_DATE}-weekly-tracker.md"),
+    "topline_populated": verify_tab_has_data("Weekly Topline", COL),
+    "detail_populated": verify_tab_has_data("Weekly Detail", COL),
+}
+
+# If any check fails, halt and report — do NOT send Slack notification
+for check, passed in checks.items():
+    if not passed:
+        raise ValidationError(f"STOP: {check} failed. Fix before notifying.")
+```
+
+**Validation rules:**
+1. Google Sheet has a new column with the correct week-ending date in all 3 tabs
+2. Key metrics (NDAs, financials, LOIs submitted, LOIs signed) are populated (even if 0)
+3. Vault snapshot file exists at the expected path with valid frontmatter
+4. Vault snapshot contains all 4 key metrics in the body
+
+**If validation fails:** Do NOT send Slack. Report the failure and what's missing. Fix and re-validate.
+
+### Step 7: Notify
+Only after validation passes:
+```bash
+curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+  -H "Content-Type: application/json" \
+  -d '{"text":"Weekly Activity Tracker updated for week ending {date}.\nNDAs: {n} | Financials: {n} | LOIs submitted: {n} | LOIs signed: {n}\nhttps://docs.google.com/spreadsheets/d/1NGGZY_iq9h8cNzLAXSJ1vTcsfXWNU9oin2RiOMtl9NE/edit"}'
+```
+The Slack message must always include the 4 key metrics and the Sheet link.
+</execution_flow>
+
 <sheet_structure>
-## Google Sheet Layout
+## Google Sheet Structure
 
-The sheet has three tabs:
-1. **Weekly Topline** — Kay's 4 key metrics only. Clean, glanceable.
-2. **Weekly Detail** — System Throughput + Signal Quality diagnostics. Analyzed weekly/monthly to see if the process is improving toward the goal.
-3. **Quarterly Summary** — Cumulative investor-grade metrics rolled up from weekly data.
+### Tab 1: Weekly Topline
+Kay's glanceable view. 4 key metrics only.
 
-### Row Structure
+| Row | Metric | Target | {Week Col} |
+|-----|--------|--------|------------|
+| 1 | Header | | Week ending {date} |
+| 2 | | | |
+| 3 | KEY METRICS | Target | |
+| 4 | NDAs Signed | 1/wk | {n} |
+| 5 | Financials Received | 1/wk | {n} |
+| 6 | LOIs Submitted | — | {n} |
+| 7 | LOIs Signed | — | {n} |
+| 8 | | | |
+| 9 | Goal: 1 interesting deal reviewed per week | | |
 
-| Row | Metric | Target | Week 1 | Week 2 | ... |
-|-----|--------|--------|--------|--------|-----|
-| **Header** | | | Week ending {date} | Week ending {date} | |
-| | | | | | |
-| **KEY METRICS** | | | | | |
-| 1 | NDAs Signed | 1/wk | {n} | {n} | |
-| 2 | Financials Received | 1/wk | {n} | {n} | |
-| 3 | LOIs Submitted | — | {n} | {n} | |
-| 4 | LOIs Signed | — | {n} | {n} | |
-| | | | | | |
-| **SYSTEM THROUGHPUT** *(is the machine producing enough?)* | | | | | |
-| 5 | Outreach Emails Sent | — | {n} | {n} | |
-| 6 | Cold Calls Made | — | {n} | {n} | |
-| 7 | Responses Received | — | {n} | {n} | |
-| 8 | New Contacts Added | — | {n} | {n} | |
-| 9 | Networking Meetings | — | {n} | {n} | |
-| 10 | Introductions Received | — | {n} | {n} | |
-| | | | | | |
-| **SIGNAL QUALITY** *(are we reaching the right people?)* | | | | | |
-| 11 | Response Rate | — | =(responses/outreach) | | |
-| 12 | Stage 1 Calls (Owner Conversations) | 2–5/wk | {n} | {n} | |
-| 13 | Qualified Opportunities ("A" count) | — | {n} | {n} | |
-| 14 | Stage 2 Calls (Deep Dives) | — | {n} | {n} | |
-| 15 | Deals in Active Review | — | {n} | {n} | |
-| 16 | Conversion: Outreach → Owner Conversation | — | =(R12/R5) | | |
-| 17 | Conversion: Owner Conversation → NDA | — | =(R1/R12) | | |
-| | | | | | |
-| **PIPELINE HEALTH** | | | | | |
-| 18 | Total Active Pipeline | — | {n} | {n} | |
-| 19 | Deals Added This Week | — | {n} | {n} | |
-| 20 | Deals Killed/Passed | — | {n} | {n} | |
+### Tab 2: Weekly Detail
+Diagnostic view organized by Stage 7 questions.
 
-Key metrics rows (1–4) should be **bold** with a distinct background color to stand out visually.
+| Row | Metric | Target | {Week Col} |
+|-----|--------|--------|------------|
+| 1 | Header | | Week ending {date} |
+| 2 | | | |
+| 3 | SYSTEM THROUGHPUT | Target | |
+| 4 | Outreach Emails Sent | — | {n} |
+| 5 | Cold Calls Made | — | {n} |
+| 6 | Responses Received | — | {n} |
+| 7 | New Contacts Added | — | {n} |
+| 8 | Networking Meetings | — | {n} |
+| 9 | Introductions Received | — | {n} |
+| 10 | | | |
+| 11 | SIGNAL QUALITY | Target | |
+| 12 | Response Rate | — | {calculated} |
+| 13 | Stage 1 Calls (Owner Conversations) | 2–5/wk | {n} |
+| 14 | Qualified Opportunities (A count) | — | {n} |
+| 15 | Stage 2 Calls (Deep Dives) | — | {n} |
+| 16 | Deals in Active Review | — | {n} |
+| 17 | Conversion: Outreach to Owner Conversation | — | {calculated} |
+| 18 | Conversion: Owner Conversation to NDA | — | {calculated} |
+| 19 | | | |
+| 20 | PIPELINE HEALTH | Target | |
+| 21 | Total Active Pipeline | — | {n} |
+| 22 | Deals Added This Week | — | {n} |
+| 23 | Deals Killed/Passed | — | {n} |
+
+### Tab 3: Quarterly Summary
+Investor-grade rollup. Cumulative totals and conversion funnels.
+
+| Row | Metric | Q1 2026 | Q2 2026 | ... |
+|-----|--------|---------|---------|-----|
+| DEAL FLOW | | | | |
+| Total Owner Conversations | =SUM(weekly) | | | |
+| Total Deals Reviewed | =SUM(weekly) | | | |
+| NDAs Signed (cumulative) | =SUM(weekly) | | | |
+| Financials Received (cumulative) | =SUM(weekly) | | | |
+| LOIs Submitted (cumulative) | =SUM(weekly) | | | |
+| LOIs Signed (cumulative) | =SUM(weekly) | | | |
+| CONVERSION RATES | | | | |
+| Outreach to Response | =responses/outreach | | | |
+| Response to Owner Conversation | =stage1/responses | | | |
+| Owner Conversation to NDA | =NDAs/stage1 | | | |
+| NDA to Financials | =financials/NDAs | | | |
+| Financials to LOI | =LOIs/financials | | | |
+| PIPELINE HEALTH | | | | |
+| Active Pipeline (end of quarter) | {snapshot} | | | |
+| Deals Killed/Passed | =SUM(weekly) | | | |
+| Net Pipeline Growth | =added-killed | | | |
+| ACTIVITY VOLUME | | | | |
+| Total Outreach Sent | =SUM(emails+calls) | | | |
+| Networking Meetings | =SUM(weekly) | | | |
+| Introductions Received | =SUM(weekly) | | | |
+| THESIS | | | | |
+| Active Niches | {list} | | | |
+| Niches Activated This Quarter | {count} | | | |
+| Niches Killed This Quarter | {count} | | | |
 
 ### Why These Supporting Metrics
 
@@ -104,8 +331,8 @@ Every supporting metric maps to one of the two Stage 7 diagnostic questions:
 | Qualified "A" count | Are conversations with the right type of owner? |
 | Stage 2 calls (deep dives) | Are qualified leads progressing? |
 | Deals in active review | Are we modeling enough financials? |
-| Outreach → owner conversation rate | Is volume converting to real conversations? |
-| Owner conversation → NDA rate | Are conversations converting to deals? |
+| Outreach to owner conversation rate | Is volume converting to real conversations? |
+| Owner conversation to NDA rate | Are conversations converting to deals? |
 
 ### Trend Analysis (Monthly)
 
@@ -115,141 +342,12 @@ On the **4th week of each month** (or on demand), include a trend analysis in th
 - **Volume vs. conversion:** is the problem not enough activity, or poor conversion at a specific stage?
 - **Month-over-month comparison** of key metrics
 - **Recommendation:** 1–2 specific process changes based on the data
-
-### Investor Quarterly View
-
-The weekly data rolls up into quarterly investor metrics. Add a **second tab** to the Google Sheet: **Quarterly Summary**
-
-This tab auto-calculates from the weekly data and is designed to feed directly into quarterly investor updates.
-
-| Metric | Q1 | Q2 | Q3 | Q4 |
-|--------|----|----|----|----|
-| **Deal Flow** | | | | |
-| Total Owner Conversations | =SUM(weekly Stage 1 calls) | | | |
-| Total Deals Reviewed | =SUM(weekly deals added) | | | |
-| NDAs Signed (cumulative) | =SUM(weekly NDAs) | | | |
-| Financials Received (cumulative) | =SUM(weekly financials) | | | |
-| LOIs Submitted (cumulative) | =SUM(weekly LOIs submitted) | | | |
-| LOIs Signed (cumulative) | =SUM(weekly LOIs signed) | | | |
-| **Conversion Rates** | | | | |
-| Outreach → Response | =total responses / total outreach | | | |
-| Response → Owner Conversation | =total Stage 1 / total responses | | | |
-| Owner Conversation → NDA | =total NDAs / total Stage 1 | | | |
-| NDA → Financials | =total financials / total NDAs | | | |
-| Financials → LOI | =total LOIs / total financials | | | |
-| **Pipeline Health** | | | | |
-| Active Pipeline (end of quarter) | {snapshot} | | | |
-| Deals Killed/Passed | =SUM(weekly kills) | | | |
-| Net Pipeline Growth | =added - killed | | | |
-| **Activity Volume** | | | | |
-| Total Outreach Sent | =SUM(emails + calls) | | | |
-| Networking Meetings | =SUM(weekly networking) | | | |
-| Introductions Received | =SUM(weekly intros) | | | |
-| **Thesis** | | | | |
-| Active Niches | {list} | | | |
-| Niches Activated This Quarter | {count} | | | |
-| Niches Killed This Quarter | {count} | | | |
-
-**Why this differs from weekly:** Investors want cumulative totals, conversion funnels, and thesis evolution — not weekly operational noise. This tab tells the story: "We're running a disciplined process, here's the proof."
-
-**How to use:** When generating quarterly investor updates, pull directly from this tab. The data is already structured to drop into a narrative report.
 </sheet_structure>
 
-<data_sources>
-## Phase 1: Data Collection
-
-Run these queries in parallel to gather the week's numbers.
-
-### Define the Week
-Week = Monday 00:00 to Sunday 23:59 of the current week (or specified week).
-```
-WEEK_START={Monday date}
-WEEK_END={Sunday date}
-```
-
-### Gmail — Outreach & Responses
-```bash
-# Outreach sent (from Kay or JJ)
-gog gmail search "from:me subject:(introduction OR intro OR regarding OR reaching out) after:{WEEK_START} before:{WEEK_END}" --json
-
-# Responses received
-gog gmail search "to:me subject:(re: introduction OR re: intro OR re: regarding) after:{WEEK_START} before:{WEEK_END}" --json
-```
-Count unique threads, not individual messages.
-
-### Calendar — Meetings & Calls
-```bash
-gog calendar list --from {WEEK_START} --to {WEEK_END} --json
-```
-Classify each event:
-- **Stage 1 call** — first call with a deal contact / broker
-- **Stage 2 call** — follow-up / deep dive on a specific deal
-- **Networking** — river guides, advisors, fellow searchers, introductions
-- **Internal** — skip (team calls, recurring standups)
-
-Cross-reference with `brain/calls/` for any logged call notes in the date range.
-
-### Attio — Pipeline Data
-```bash
-# Query Attio API for deal pipeline movements this week
-# NDAs, financials, LOIs from pipeline stage changes
-```
-Check Attio pipeline for:
-- Deals that moved to NDA stage → NDAs Signed count
-- Deals that moved to Financials stage → Financials Received count
-- Deals that moved to LOI stage → LOIs Submitted count
-- Signed LOIs → LOIs Signed count
-- Total active deals, new deals added, deals killed/passed
-
-### Vault — Activity Counts
-```bash
-# Call notes logged this week
-ls brain/calls/{WEEK_START}* through brain/calls/{WEEK_END}*
-
-# New contacts/entities created
-git log --after={WEEK_START} --before={WEEK_END} --name-only -- brain/entities/
-```
-
-### Granola — Meeting Cross-Reference
-Use Granola MCP to verify meeting counts against calendar data if needed.
-</data_sources>
-
-<write_phase>
-## Phase 2: Write to Google Sheet
-
-### First Run (Sheet Creation)
-If no sheet exists yet in the tracker folder, create one:
-```bash
-# Create a new Google Sheet
-gog sheets create "G&B Weekly Activity Tracker" --parent "1-TcRl74G0Ezc0lEJC9__BiBPwnG7gwfR"
-```
-Then populate the row labels (column A), targets (column B), and first week's data (column C).
-
-### Subsequent Runs (Add Column)
-1. Read the existing sheet to find the next empty column
-2. Write the week-ending date in the header row
-3. Write all metric values down the column
-4. Formulas (response rate, ratios) should be cell formulas, not pre-calculated
-
-```bash
-# Read current sheet to find next column
-gog sheets read {SHEET_ID} --range "A1:ZZ1" --json
-
-# Write new column
-gog sheets write {SHEET_ID} --range "{COL}1:{COL}20" --values '{json_array}'
-```
-
-### Formatting
-Apply on first run:
-- Key metrics rows (1–4): bold text, light blue background
-- Section headers: bold, grey background
-- Target column: italic
-</write_phase>
-
 <vault_save>
-## Phase 3: Save to Vault
+## Vault Snapshot
 
-Save a markdown snapshot to `brain/trackers/weekly/{YYYY-MM-DD}-weekly-tracker.md`:
+Save to `brain/trackers/weekly/{YYYY-MM-DD}-weekly-tracker.md`:
 
 ```yaml
 ---
@@ -275,25 +373,30 @@ Body contains the week's numbers in readable markdown format, plus a short diagn
 - **Flags** — anything that needs attention next week
 </vault_save>
 
-<notify>
-## Phase 4: Notify
-
-Send Slack notification with the Google Sheet link:
-```bash
-curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
-  -H "Content-Type: application/json" \
-  -d '{"text":"Weekly Activity Tracker updated for week ending {date}.\nNDAs: {n} | Financials: {n} | LOIs submitted: {n} | LOIs signed: {n}\n{Google Sheet link}"}'
-```
-The Slack message must always include the 4 key metrics and the Sheet link.
-</notify>
-
 <success_criteria>
-Tracker update is complete when:
-- [ ] All data sources queried (Gmail, Calendar, Attio, vault)
-- [ ] Key metrics (NDAs, financials, LOIs submitted, LOIs signed) populated
-- [ ] Supporting metrics populated
-- [ ] New column added to Google Sheet (or sheet created on first run)
-- [ ] Vault snapshot saved to brain/trackers/weekly/
-- [ ] Slack notification sent with key metrics and Sheet link
+## Success Criteria
+
+Tracker update is complete when ALL checks pass:
+
+### Data Collection
+- [ ] All 4 sub-agents returned data (Gmail, Calendar, Attio, Vault)
+- [ ] No sub-agent errored silently (check for empty/null returns)
+
+### Google Sheet
+- [ ] New column added to Weekly Topline with week-ending date
+- [ ] New column added to Weekly Detail with week-ending date
+- [ ] Key metrics populated in Topline (even if 0)
+- [ ] All metrics populated in Detail (even if 0)
+- [ ] Quarterly Summary updated with current quarter cumulative totals
+
+### Vault
+- [ ] Snapshot file exists at `brain/trackers/weekly/{date}-weekly-tracker.md`
+- [ ] Frontmatter passes schema validation
+- [ ] Body contains all 4 key metrics
+- [ ] Diagnostic narrative present (throughput + signal quality)
+
+### Notification
+- [ ] Validation stop hook passed (all above checks green)
+- [ ] Slack notification sent with 4 key metrics and Sheet link
 - [ ] Google Sheet link shared with user
 </success_criteria>

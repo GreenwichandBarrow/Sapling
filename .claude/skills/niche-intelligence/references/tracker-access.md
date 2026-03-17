@@ -77,22 +77,47 @@ gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichan
 
 ## Writing to Tabs
 
-```bash
-# Append row to IDEATION
-gog sheets append 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "IDEATION!A:J" --values '[["Section","Rank","Niche Name","2.50","High","High","Medium","Strong","Medium","Notes here"]]'
+**CRITICAL: IDEATION tab has section headers.** Do NOT blindly append — new niches must go in the correct section.
 
-# Append row to WEEKLY REVIEW
-gog sheets append 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:I" --values '[["6","Niche Name","2026-03-21","New - Pending Review","2.75","0","TBD","None identified","Promoted from IDEATION via Niche Intelligence"]]'
+IDEATION section headers (separator rows in column A):
+- `— INTERSECTION (Luxury + Compliance) —`
+- `— LUXURY INFRASTRUCTURE —`
+- `— COMPLIANCE INFRASTRUCTURE —`
+- `— OTHER / WATCH LIST —`
+- `— REVISIT (From Tabled/Killed — New Insights) —`
+
+**Process for adding to IDEATION:**
+1. First READ the full tab to find the correct section and its row range
+2. Determine which section the niche belongs to (Intersection, Luxury, Compliance, Other)
+3. Find the last row of that section (the row before the NEXT section header)
+4. INSERT a new row at that position: `gog sheets insert {sheetId} "IDEATION" rows {row} -a {account} --count 1 -j`
+5. WRITE the niche data to the newly inserted row: `gog sheets update {sheetId} "IDEATION!A{row}:J{row}" -a {account} --values-json '[["Section","Rank","Niche","Score","Margins","Recurring","AI","RTW","Network","Notes"]]' -j`
+
+```bash
+# Append row to WEEKLY REVIEW (no sections — append is fine)
+gog sheets append 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:I" --values-json '[["6","Niche Name","2026-03-21","New - Pending Review","2.75","0","TBD","None identified","Promoted from IDEATION via Niche Intelligence"]]'
 ```
 
 ## Drive Folder Operations
 
+Drive is organized by status subfolders (mirrors tracker tabs):
+
+| Status | Folder ID |
+|--------|-----------|
+| WEEKLY REVIEW | `1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT` |
+| IDEATION | `1fQNl6mogJW-6u5XJeE5uYQGsDPx495_O` |
+| TABLED | `1_k_c1F11ZNrv4MilATFrURLHdkNx0kRx` |
+| KILLED | `19xsNk5KTVHF2jb6m_li8IAGjcw34nlMX` |
+
 ```bash
-# Create new niche folder under Industry Research parent
-gog drive mkdir "NICHE NAME" -a kay.s@greenwichandbarrow.com --parent 1tiAc7lVveBwi_DlYcFUX2tFP6FVwYKmQ
+# Create new niche folder under IDEATION (default for new niches)
+gog drive mkdir "NICHE NAME" -a kay.s@greenwichandbarrow.com --parent 1fQNl6mogJW-6u5XJeE5uYQGsDPx495_O -j
 
 # Upload one-pager to niche folder
 gog drive upload "/path/to/file.pptx" -a kay.s@greenwichandbarrow.com --parent {folder_id}
+
+# Move niche folder when promoted/tabled/killed
+gog drive move {folder_id} --parent {target_status_folder_id} -a kay.s@greenwichandbarrow.com -j
 ```
 
 ## Promotion Logic

@@ -296,3 +296,67 @@ Only one meeting recorded in Granola for the past 7 days:
 
 ---
 
+## [niche-intel-identifier] — 2026-03-17T16:15:00-04:00
+**Source:** Synthesis of all Step 1 gathering agents (calls, newsletters, research, email, news)
+**Status:** complete
+
+### New Niche Candidates
+
+**Candidate 1: Workplace Compliance Training Companies (Harassment Prevention / HR eLearning)**
+
+- **Thesis:** Mandatory workplace training (harassment prevention, DEI, safety) is compliance-driven with regulatory tailwinds — California, New York, Illinois, and other states now require annual harassment prevention training for all employers above threshold sizes. These firms sell recurring, subscription-like annual training licenses to mid-market employers. Sarah Rowell (Kay's new WSN mentor) acquired Kantola in this exact space in 2018, operated for 5 years, and sold to a strategic — a proven search fund playbook with a known exit pathway.
+- **Source Signal:** WSN mentorship group formation (email agent). Sarah Rowell's track record with Kantola (harassment prevention eLearning acquisition → 5-year hold → strategic exit). This is not a market signal — it is a demonstrated, repeatable search fund acquisition model from someone now in Kay's direct network.
+- **Key Question:** How fragmented is the market below the top players (Traliant, NAVEX, Kantola)? Are there $2-10M EBITDA independent providers with aging owners, or has the space consolidated since Sarah's exit?
+- **Preliminary Fit Assessment:**
+  - Clearly meets: B2B, compliance-driven (mandatory by law), recurring revenue (annual licenses), asset-light, remote-operable, proven PE/strategic exit pathway (Sarah's Kantola exit), AI-enhanceable (content generation, personalization)
+  - Needs validation: Fragmentation below top tier, current margin profiles, whether VC-backed players have commoditized pricing, whether Sarah's playbook is still repeatable post-consolidation
+- **Note:** Distinct from "compliance e-learning for hospitality" on ideation tab — this is broader, cross-industry mandatory HR compliance training, not vertical-specific.
+
+---
+
+**Candidate 2: Managed Cybersecurity Compliance Services for Regulated Industries**
+
+- **Thesis:** Companies in regulated industries (healthcare, financial services, government contractors) face mandatory cybersecurity compliance requirements (HIPAA, SOC 2, CMMC, PCI-DSS) and increasingly outsource compliance management to specialized MSPs. The Everingham & Kerr listing this week — a $2M revenue, $400K EBITDA NJ firm specializing in managed cybersecurity and compliance support for regulated industries — is a live proof point that acquirable targets exist at the right size. Cybersecurity compliance is non-discretionary and tightening annually.
+- **Source Signal:** Everingham & Kerr broker listing (email agent) — managed cybersecurity/IT consulting company in NJ, $2M revenue, ~$400K normalized EBITDA, serving regulated industries. Also supported by Nordic Capital acquiring TradingHub (surveillance compliance software) and ACA Group acquiring FX Transparency (newsletters agent) — PE is actively buying compliance infrastructure for financial institutions.
+- **Key Question:** Can you find firms that are primarily compliance-focused (not general IT/MSP) with sticky, recurring contracts? The E&K listing blends cybersecurity services with IT consulting — need to determine whether pure-play compliance MSPs exist at scale, or if compliance is always bundled with general IT.
+- **Preliminary Fit Assessment:**
+  - Clearly meets: B2B, compliance-driven (HIPAA/SOC 2/CMMC mandates), recurring revenue (managed services contracts), asset-light, mission-critical ("if you lose compliance, you lose your license to operate"), PE exit pathway (Brown & Brown, Hilb Group actively acquiring insurance-adjacent risk services; cybersecurity PE roll-ups like Thoma Bravo's portfolio)
+  - Needs validation: Whether pure-play compliance MSPs exist vs. bundled IT/MSP, margin profiles for compliance-heavy vs. general MSP, fragmentation (MSP market is enormous but compliance-focused subset is unclear), Kay's right-to-win (no luxury/HNW angle)
+  - Concern: No direct luxury/UHNW angle. Would need to score well enough on other criteria to compensate.
+
+---
+
+**Candidate 3: Third-Party Licensing Management**
+
+- **Thesis:** Companies that manage intellectual property licensing programs for brands — handling compliance, royalty collection, licensee onboarding, and contract administration. This is a B2B services niche where the licensing owner (brand, university, sports league, entertainment IP) outsources the operational complexity of managing dozens to hundreds of licensees. Revenue is typically a percentage of royalties collected, creating recurring alignment with client success. Camilla has already identified this as the next niche to explore.
+- **Source Signal:** Research agent — Camilla/Kay call (Mar 12) selected third-party licensing management as the next niche to explore for the rest of March. No vault research output exists yet. The niche surfaced from internal strategy discussions, not external market signals, which means it has not been validated or invalidated by data.
+- **Key Question:** How large is the addressable market of independent licensing management firms (not in-house brand teams or mega-agencies like IMG/WME)? Are there $2-10M EBITDA firms with retirement-age owners, or is this a market of small boutiques and large agencies with nothing in between?
+- **Preliminary Fit Assessment:**
+  - Clearly meets: B2B, asset-light, recurring revenue (percentage of royalties = contractual recurring), remote-operable, AI-enhanceable (contract analysis, compliance monitoring, royalty auditing)
+  - Needs validation: Market size and fragmentation (completely unresearched), whether this is compliance-driven or discretionary, margin profiles, PE exit pathway (unknown), Kay's right-to-win (luxury brand licensing could be an angle given Chanel background)
+  - Note: This is the least validated candidate — included because Camilla flagged it and no research has been done. Needs a full research brief before scoring.
+
+---
+
+### Tabled Niches Reviewed
+
+**Yacht/Fleet Maintenance Software (TABLED) — Should NOT resurface, but adjacent services niche is worth noting**
+
+The tabled niche is specifically software. The research agent surfaced full-service yacht management companies scoring 22/24 in the luxury infrastructure analysis — but this is a services business (managing crew, maintenance schedules, regulatory compliance, insurance, provisioning for yacht owners), not a software play. Full-service yacht management is already captured in the research agent's master ranked list at 22/24 and would belong on the ideation tab as a distinct niche from the tabled software play. However, I am NOT surfacing it as a "new" candidate here because it was already scored in prior research — it just needs to be added to the ideation tracker if not already there.
+
+**All other tabled niches** — No new data from this week's gathering addresses the specific reasons they were tabled. EV Software/Charging, Escrow & Custodial Software, Specialized Document Lifecycle, Corporate Entity & Record Management, Legal Software, High-End Property Management Platform, High-End Home Services, High-End Electrical & Lighting — none received signals this week.
+
+---
+
+### Strategic Observations
+
+1. **Compliance infrastructure thesis is the strongest cross-cutting theme.** Every gathering agent surfaced compliance-adjacent signals: Nordic Capital/TradingHub (newsletters), AgentSync at $161M (news), state-level regulatory changes accelerating (news), Everingham & Kerr compliance MSP listing (email), mandatory workplace training laws expanding (email/WSN). The thesis is validated from multiple independent directions. The question is no longer "is compliance infrastructure a good category" but "which specific compliance sub-niche has the best acquisition targets."
+
+2. **Sarah Rowell is a high-value network node.** Her Kantola acquisition-to-exit arc is the single most relevant data point Kay has encountered — a woman searcher who acquired a compliance training company, operated it for 5 years, and exited to a strategic. She is now Kay's WSN mentor. This relationship should be leveraged for deep intelligence on the workplace compliance training space, and potentially for deal flow referrals in adjacent compliance niches.
+
+3. **Speed-to-respond is a confirmed bottleneck.** The Benchmark International listing that went off-market before Kay could sign an NDA (email agent) and the prior observation that a brokered listing came off market in 3 days (research agent) both confirm that deal flow response time is a binding constraint. This is an operational issue, not a niche selection issue, but it affects all niches equally.
+
+4. **PE pushback from small business owners is a strategic tailwind.** Bloomberg's report (news agent) that owners are increasingly refusing PE acquisitions creates a structural advantage for search fund acquirers like Kay who can offer a personal, founder-to-founder transaction. This is especially relevant in niches where owners built businesses over decades and care about legacy — trust administration, estate management, specialty insurance.
+
+5. **This week's signal density was low for NEW niches.** Most intelligence reinforced existing active niches (trust admin, TCI, insurance compliance, art insurance) rather than surfacing genuinely new candidates. This is not a failure — it suggests the current niche portfolio is well-selected and the market is validating it. The three new candidates above are incremental additions, not thesis pivots.
+

@@ -102,7 +102,7 @@ Every supporting metric maps to one of the two Stage 7 diagnostic questions:
 | Outreach → owner conversation rate | Is volume converting to real conversations? |
 | Owner conversation → NDA rate | Are conversations converting to deals? |
 
-### Trend Analysis
+### Trend Analysis (Monthly)
 
 On the **4th week of each month** (or on demand), include a trend analysis in the vault snapshot:
 - **Conversion rates over time:** outreach → response → Stage 1 → qualified → NDA → financials → LOI
@@ -110,6 +110,44 @@ On the **4th week of each month** (or on demand), include a trend analysis in th
 - **Volume vs. conversion:** is the problem not enough activity, or poor conversion at a specific stage?
 - **Month-over-month comparison** of key metrics
 - **Recommendation:** 1–2 specific process changes based on the data
+
+### Investor Quarterly View
+
+The weekly data rolls up into quarterly investor metrics. Add a **second tab** to the Google Sheet: **Quarterly Summary**
+
+This tab auto-calculates from the weekly data and is designed to feed directly into quarterly investor updates.
+
+| Metric | Q1 | Q2 | Q3 | Q4 |
+|--------|----|----|----|----|
+| **Deal Flow** | | | | |
+| Total Owner Conversations | =SUM(weekly Stage 1 calls) | | | |
+| Total Deals Reviewed | =SUM(weekly deals added) | | | |
+| NDAs Signed (cumulative) | =SUM(weekly NDAs) | | | |
+| Financials Received (cumulative) | =SUM(weekly financials) | | | |
+| LOIs Submitted (cumulative) | =SUM(weekly LOIs submitted) | | | |
+| LOIs Signed (cumulative) | =SUM(weekly LOIs signed) | | | |
+| **Conversion Rates** | | | | |
+| Outreach → Response | =total responses / total outreach | | | |
+| Response → Owner Conversation | =total Stage 1 / total responses | | | |
+| Owner Conversation → NDA | =total NDAs / total Stage 1 | | | |
+| NDA → Financials | =total financials / total NDAs | | | |
+| Financials → LOI | =total LOIs / total financials | | | |
+| **Pipeline Health** | | | | |
+| Active Pipeline (end of quarter) | {snapshot} | | | |
+| Deals Killed/Passed | =SUM(weekly kills) | | | |
+| Net Pipeline Growth | =added - killed | | | |
+| **Activity Volume** | | | | |
+| Total Outreach Sent | =SUM(emails + calls) | | | |
+| Networking Meetings | =SUM(weekly networking) | | | |
+| Introductions Received | =SUM(weekly intros) | | | |
+| **Thesis** | | | | |
+| Active Niches | {list} | | | |
+| Niches Activated This Quarter | {count} | | | |
+| Niches Killed This Quarter | {count} | | | |
+
+**Why this differs from weekly:** Investors want cumulative totals, conversion funnels, and thesis evolution — not weekly operational noise. This tab tells the story: "We're running a disciplined process, here's the proof."
+
+**How to use:** When generating quarterly investor updates, pull directly from this tab. The data is already structured to drop into a narrative report.
 </sheet_structure>
 
 <data_sources>

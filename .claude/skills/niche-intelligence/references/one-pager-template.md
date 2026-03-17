@@ -24,9 +24,22 @@
 - Naming: `{Niche Name} {Month} {Year}.pptx`
 - Save to: New subfolder in Industry Research Drive folder (parent: `1tiAc7lVveBwi_DlYcFUX2tFP6FVwYKmQ`)
 
-## Existing Examples
+## Drive Folder Structure
 
-### Active (Top 5)
+Industry Research parent folder: `1tiAc7lVveBwi_DlYcFUX2tFP6FVwYKmQ`
+
+Subfolders by status (niche folders go INSIDE these):
+| Status | Folder ID |
+|--------|-----------|
+| WEEKLY REVIEW | `1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT` |
+| IDEATION | `1fQNl6mogJW-6u5XJeE5uYQGsDPx495_O` |
+| TABLED | `1_k_c1F11ZNrv4MilATFrURLHdkNx0kRx` |
+| KILLED | `19xsNk5KTVHF2jb6m_li8IAGjcw34nlMX` |
+
+When creating a new niche folder, place it under the appropriate status subfolder (usually IDEATION for new niches). When a niche is promoted or killed, move the folder to the corresponding status subfolder.
+
+### Current Niche Folders
+**WEEKLY REVIEW:**
 | Niche | Folder ID |
 |-------|-----------|
 | Trust Administration | `1kStCWA4JQ31tzsOMqume2XEeeoaT0fWi` |
@@ -35,6 +48,8 @@
 | Insurance Producer License Compliance | `1pjOHPBLxly2PsUnd8hmxVZOsfboRB7hH` |
 | Art Insurance Brokerage (SPECIALTY INSURANCE) | `18Rv_m76SPsVZgUv6-yHCKH-sv1Cnwmm7` |
 
-### Killed Examples (for reference)
-- Folder ID: `19xsNk5KTVHF2jb6m_li8IAGjcw34nlMX`
-- Contains one-pagers for previously evaluated and killed niches
+**TABLED:**
+| Niche | Folder ID |
+|-------|-----------|
+| Art Storage | `1yFRqoTgTXViZdk6Lg6gQzOgOd1PpYFjF` |
+| Estate Planning | `1-upIdD7QrGZUQIcqq1jrHsCJ7s-KiVO0` |

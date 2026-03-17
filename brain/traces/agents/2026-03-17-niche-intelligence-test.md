@@ -451,3 +451,176 @@ The tabled niche is specifically software. The research agent surfaced full-serv
 
 ---
 
+## [niche-intel-scorer] — 2026-03-17T18:00:00-04:00
+**Source:** Detailed scorecard scoring of 2 niches
+**Status:** complete
+
+### Niche 1: Workplace Compliance Training Companies (Harassment Prevention / HR eLearning)
+
+**1. Growth, Penetration & Catalyst (25%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| Growth relative to GDP (5yr CAGR) | + (3) | 9.1% CAGR vs ~2% GDP = >4x GDP. Market $8.6B globally (2026) growing to $23B by 2032. |
+| Industry penetration / catalyst strength | + (3) | State mandates expanding — CA, NY, IL, CT, DE, ME now require annual training. Chicago added bystander intervention. Each new state law = forced adoption. Legislative pipeline is the catalyst. |
+| Future growth expectations | + (3) | All trends are tailwinds: regulatory expansion, remote workforce (more digital training), DEI mandates, #MeToo cultural shift permanent, AI enabling personalized content at lower cost. |
+| Evidence to support catalyst | + (3) | 11 major acquisitions in compliance eLearning in 2023 alone. PSG Equity backing Traliant roll-up. 6+ states with mandatory laws, more pending. $161M into AgentSync (adjacent). |
+**Category Average: 3.00** | Weighted: 0.75
+
+**2. Size & Fragmentation (10%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| Number of players | +/- (2) | 71+ vendors in SHRM directory. Hundreds including regional/niche players, but not "thousands." Moderate fragmentation — long tail below top tier but not massively fragmented. |
+| Market share concentration | +/- (2) | Top 5 (Traliant/PSG, NAVEX/Thoma Bravo, Skillsoft, EVERFI, Cornerstone) hold significant share. Largest player likely <25% but the top tier is consolidating. Dozens of $1-10M players remain. |
+**Category Average: 2.00** | Weighted: 0.20
+
+**3. Industry Economics (10%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| Average gross margins | + (3) | 75-85% gross margins for eLearning platforms. Asset-light, digital delivery, content creation is one-time cost amortized across customers. |
+| Average EBITDA margins | + (3) | 20-35% EBITDA for established players. Kantola improved margins significantly over 5-year hold. Software-like economics. |
+| Average ROTC | + (3) | Asset-light business = minimal capital requirements. No inventory, no facilities, no equipment. Cloud-hosted. ROTC likely >30% for established players given negligible capital base. |
+**Category Average: 3.00** | Weighted: 0.30
+
+**4. Mission Criticality (15%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| Customer feedback quality | +/- (2) | Training is often seen as "checkbox" exercise — employees don't love it, but employers must provide it. Not enthusiastic customer feedback, but steady demand. |
+| Clarity of value proposition | + (3) | Crystal clear: "comply with state law or face lawsuits/fines." Non-discretionary. Every employer above threshold size MUST provide training annually. |
+| Customer switching costs | +/- (2) | Moderate. LMS integration creates some stickiness ($2M annual cost of siloed systems per industry research), but content is somewhat interchangeable. Completion records and reporting integrations create friction. Not as high as enterprise software. |
+**Category Average: 2.33** | Weighted: 0.35
+
+**5. Exogenous Risks (10%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| Tech adoption/obsolescence | +/- (2) | AI is both opportunity and risk. AI can generate training content cheaply (threatening premium pricing) but also enables personalization (competitive advantage for early adopters). VC-backed competitors (Ethena $30M, EasyLlama) are modernizing the space. |
+| Regulatory risk frequency | + (3) | Regulatory TAILWIND, not risk. More regulation = more demand. Very low chance of deregulation — harassment training mandates are politically difficult to repeal. |
+| Liability risks | + (3) | Low liability for training providers. Risk sits with employers who fail to train, not with training vendors. |
+| Cyclicality | + (3) | Counter-cyclical in recessions — companies still must comply with training mandates. May actually increase during layoffs (severance compliance, retraining). |
+| Exposure to trends | +/- (2) | DEI backlash could slow some voluntary training purchases, but mandatory harassment prevention is not DEI-dependent. Anti-woke sentiment is a watch item but doesn't affect legal mandates. |
+**Category Average: 2.60** | Weighted: 0.26
+
+**6. Porter's Five Forces (15%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| VC-backed startup prevalence | +/- (2) | Ethena ($30M Series B), EasyLlama — VC is present targeting modern SMB segment with self-serve. Could compress pricing at low end. Not overwhelming but notable. |
+| Level of competition | +/- (2) | Moderate-to-high. Many players at various tiers. Top tier consolidating (Traliant acquiring). But long tail of sub-scale players = acquisition opportunities. |
+| New entrants | +/- (2) | AI lowers content creation barriers, potentially enabling new entrants. But distribution, compliance expertise, and LMS integrations create moats for incumbents. |
+| Supplier power | + (3) | Low. Content is created in-house or by subject matter experts (low cost). Cloud infrastructure is commodity. No concentrated supplier base. |
+| Customer power | +/- (2) | Moderate. Mid-market employers have choices among many vendors. Enterprise clients have more negotiating power (volume discounts to $8-20/employee). But compliance mandate means they MUST buy from someone. |
+| Threat of substitutes | +/- (2) | In-house training departments could build own content. Large HRIS platforms (ADP, Paychex, Rippling) could bundle training. But regulatory complexity and update requirements favor specialists. |
+**Category Average: 2.17** | Weighted: 0.33
+
+**7. Value Creation Opportunities (10%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| Business complexity | +/- (2) | Moderate. Content creation + technology + compliance monitoring. Not trivially simple but manageable for a non-technical operator. Sarah Rowell (non-technical) ran Kantola successfully for 5 years. |
+| Professionalization opportunities | + (3) | High. Sub-scale players likely have poor technology, limited content libraries, manual processes. AI integration, content modernization, cross-sell expansion, and add-on acquisitions are all clear levers. Kantola's 5x recurring revenue growth proves the playbook. |
+**Category Average: 2.50** | Weighted: 0.25
+
+**8. Impact & Externalities (5%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| Net impact to society | + (3) | Positive. Reduces workplace harassment, improves employee safety, promotes ethical behavior. Clear social benefit. |
+| Positive/negative externalities | + (3) | Strongly positive externalities. Better-trained workplaces = fewer lawsuits, safer environments, more inclusive cultures. No meaningful negative externalities. |
+**Category Average: 3.00** | Weighted: 0.15
+
+**Overall Weighted Score: 2.59/3.00**
+
+Calculation: (0.75 + 0.20 + 0.30 + 0.35 + 0.26 + 0.33 + 0.25 + 0.15) = 2.59
+
+**Verdict: PROMISING** — Strong compliance-driven fundamentals with a proven search fund playbook (Sarah Rowell/Kantola). Excellent economics, regulatory tailwinds, and clear exit pathway. Main risks are AI disruption to content creation pricing and VC-backed modernizers. The direct network connection to Sarah Rowell is a unique advantage.
+
+---
+
+### Niche 2: Managed Cybersecurity Compliance Services for Regulated Industries
+
+**1. Growth, Penetration & Catalyst (25%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| Growth relative to GDP (5yr CAGR) | + (3) | 11-14% CAGR vs ~2% GDP = >5x GDP. Managed security services market $38B (2025) growing to $69B by 2030. |
+| Industry penetration / catalyst strength | + (3) | CMMC became mandatory Nov 2025, phasing through 2028 for 200K+ defense contractors. HIPAA, SOC 2, PCI-DSS all tightening. 43% of organizations now outsource cybersecurity to MSSPs. |
+| Future growth expectations | + (3) | All tailwinds: cyberattacks up 47% YoY, regulatory tightening across all sectors, remote work expanding attack surfaces, cyber insurance requirements forcing compliance. |
+| Evidence to support catalyst | + (3) | GRC deal volume hit 5-year peak of 82 transactions in 2025. 267 MSP acquisitions in 2025. Nordic Capital acquired TradingHub. PE deployed $6.4B in cybersecurity 2025. E&K listing is live proof. |
+**Category Average: 3.00** | Weighted: 0.75
+
+**2. Size & Fragmentation (10%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| Number of players | + (3) | 40,000-45,000 MSPs/MSSPs in the US. Thousands of providers. Highly fragmented below the Top 250 tracked by MSSP Alert. |
+| Market share concentration | + (3) | Top 20 PE platforms control ~12% of market (up from 6% in 2022). Largest individual players (IBM, AT&T, Verizon) are enterprise-focused, leaving enormous long tail. Largest share <10% in addressable sub-$5M segment. |
+**Category Average: 3.00** | Weighted: 0.30
+
+**3. Industry Economics (10%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| Average gross margins | +/- (2) | 50-60% gross margins for mature MSSPs. Lower than pure software (compliance training) because labor-intensive monitoring and consulting services are required. |
+| Average EBITDA margins | +/- (2) | 15-25% EBITDA margins. Operating margins dropping due to tool sprawl (avg 76 security products in stack). The E&K listing showed 20% EBITDA ($400K on $2M). |
+| Average ROTC | +/- (2) | Moderate. Requires investment in security tooling, SOC infrastructure, and skilled labor. Not as capital-light as pure eLearning. Some technology capex. Estimated 10-20% ROTC. |
+**Category Average: 2.00** | Weighted: 0.20
+
+**4. Mission Criticality (15%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| Customer feedback quality | + (3) | Security services create "long-term, high-trust relationships that reduce churn." Customers rely on MSSPs for critical infrastructure protection. |
+| Clarity of value proposition | + (3) | "Lose compliance = lose license to operate." HIPAA violations up to $2M/incident. CMMC non-compliance = loss of defense contracts. Non-discretionary. |
+| Customer switching costs | + (3) | High. MSSPs are deeply embedded in client infrastructure — security tools, monitoring systems, incident response plans, compliance documentation all tied to provider. Switching requires months of migration and re-certification. |
+**Category Average: 3.00** | Weighted: 0.45
+
+**5. Exogenous Risks (10%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| Tech adoption/obsolescence | - (1) | HIGH RISK. Compliance-as-a-Service platforms (Vanta $242M, Drata $328M, Secureframe $97M) are automating manual compliance work. AI-powered security tools could commoditize monitoring. Tool sprawl already compressing margins. |
+| Regulatory risk frequency | + (3) | Regulatory TAILWIND. More regulation = more demand. CMMC, SEC cyber rules, state-level privacy laws all expanding requirements. |
+| Liability risks | +/- (2) | Moderate. MSSPs carry cyber liability if they miss a breach. E&O insurance required. Client breaches can trigger lawsuits against the MSSP. |
+| Cyclicality | + (3) | Counter-cyclical. Cybersecurity spend is last to be cut. Regulatory mandates don't pause in recessions. |
+| Exposure to trends | +/- (2) | AI is transforming the space rapidly. Trend exposure is high — both positive (AI-enhanced services) and negative (AI-powered threats, AI replacing human analysts). |
+**Category Average: 2.20** | Weighted: 0.22
+
+**6. Porter's Five Forces (15%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| VC-backed startup prevalence | - (1) | Heavy. Vanta ($242M), Drata ($328M), Secureframe ($97M) all targeting compliance automation. VC flooding the space with well-funded competitors attacking the services layer from below. |
+| Level of competition | - (1) | Intense. 40,000+ MSPs/MSSPs. 72% of acquisitions PE-backed. Top 20 PE platforms growing from 6% to 12% market share in 3 years. Arms race dynamics. |
+| New entrants | - (1) | Low barriers for general MSP entry. Many IT firms adding "compliance" to their offerings without deep expertise. Race to the bottom on commoditized services. |
+| Supplier power | +/- (2) | Moderate. Security vendors (CrowdStrike, Palo Alto, Splunk) have pricing power. Average tool stack of 76 products = high supplier costs. |
+| Customer power | +/- (2) | Moderate. Many choices for customers. But switching costs are high once embedded, which limits customer power post-contract. |
+| Threat of substitutes | - (1) | High. CaaS platforms directly substitute manual compliance services. In-house security teams at larger organizations. Bundled offerings from major cloud providers (AWS, Azure, Google). |
+**Category Average: 1.33** | Weighted: 0.20
+
+**7. Value Creation Opportunities (10%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| Business complexity | + (3) | High complexity = harder to replicate = competitive moat for those who figure it out. Requires deep regulatory knowledge + technical cybersecurity expertise. |
+| Professionalization opportunities | +/- (2) | Some opportunity to professionalize sub-scale MSSPs with better tooling, processes, and automation. But the space is already being professionalized by PE roll-ups and CaaS platforms. Less greenfield than compliance training. |
+**Category Average: 2.50** | Weighted: 0.25
+
+**8. Impact & Externalities (5%)**
+| Sub-criterion | Score | Evidence |
+|---|---|---|
+| Net impact to society | + (3) | Positive. Protects critical infrastructure, personal data, healthcare records. Essential for national security (CMMC for defense contractors). |
+| Positive/negative externalities | + (3) | Strongly positive. Better cybersecurity posture reduces data breaches, protects consumers, supports regulatory compliance. No meaningful negative externalities. |
+**Category Average: 3.00** | Weighted: 0.15
+
+**Overall Weighted Score: 2.52/3.00**
+
+Calculation: (0.75 + 0.30 + 0.20 + 0.45 + 0.22 + 0.20 + 0.25 + 0.15) = 2.52
+
+**Verdict: MODERATE** — Extremely strong growth and mission criticality, but heavily competed by both PE roll-ups and well-funded CaaS startups. Economics are good but not exceptional (lower margins than compliance training). No UHNW/luxury angle for Kay. The E&K listing proves targets exist, but the competitive intensity and tech disruption risk temper the score.
+
+---
+
+### IDEATION Tab Values
+
+| Metric | Workplace Compliance Training | Managed Cybersecurity Compliance |
+|---|---|---|
+| **Overall Score** | 2.59/3 | 2.52/3 |
+| **Margins** | Very High (75-85% gross, 20-35% EBITDA) | Medium (50-60% gross, 15-25% EBITDA) |
+| **Recurring Revenue** | High (annual mandated licenses, 85-90% renewal) | High (managed service contracts, 90%+ renewal) |
+| **AI Defensibility** | Medium (AI enables content creation but also threatens pricing; compliance expertise + integrations provide some defense) | Low (CaaS platforms Vanta/Drata/Secureframe directly automating manual compliance; AI monitoring replacing human analysts) |
+| **Right to Win (Kay)** | Moderate (no direct luxury connection, but Sarah Rowell as mentor provides direct playbook + network; MBA/operator fit for eLearning business) | None (no luxury/UHNW angle, no cybersecurity background, no relevant network connections) |
+| **Network Access** | Strong (Sarah Rowell = WSN mentor who did this exact acquisition, operated 5 years, and exited; direct access to playbook, deal flow, buyer relationships) | Some (E&K listing came through existing broker relationships; Plexus Capital connection for PE context; but no deep cybersecurity industry network) |
+
+### One-Pager Updates
+Pending — will update both Google Drive one-pagers with scores next.
+
+---

@@ -634,3 +634,19 @@ Both one-pagers updated with scores and re-uploaded to Google Drive:
 **Output report written to:** brain/outputs/2026-03-17-niche-intelligence-report.md
 
 ---
+
+## [niche-intel-tracker] — 2026-03-17T16:15:00-04:00
+**Source:** Tracker update
+**Status:** complete
+
+### Updates Made
+- Appended 2 rows to **IDEATION** tab (rows 22-23) in Industry Research Tracker:
+  1. **Workplace Compliance Training Companies** — Score 2.59/3, Section: Compliance, Rank: NEW
+  2. **Managed Cybersecurity Compliance Services** — Score 2.52/3, Section: Compliance, Rank: NEW
+
+### Promotion Check
+Neither niche was promoted to WEEKLY REVIEW:
+- **Workplace Compliance Training (2.59):** Score exceeds lowest WEEKLY REVIEW entry (2.50), but score is likely inflated. The harassment prevention sub-niche is already consolidated by Traliant/PSG via searcher Sarah Rowell. Right to Win = None, Network Access = Some. Adjacent compliance training niches (H&S, OSHA, environmental) remain open but unvalidated. Holding in IDEATION until sub-niche viability is clarified.
+- **Managed Cybersecurity Compliance (2.52):** Recommended not to add. PE-saturated (72% of deals), heavy VC competition (Vanta, Drata), no luxury angle, Right to Win = None, Network Access = None.
+
+---

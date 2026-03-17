@@ -5,9 +5,13 @@ user_invocable: true
 ---
 
 <objective>
-Populate the G&B Weekly Activity Tracker with the current week's data. The tracker is a cumulative Google Sheet spanning the full search, with one column per week. Key metrics (NDAs signed, financials received, LOIs submitted, LOIs signed) are featured prominently at the top. Supporting activity metrics fill in below.
+Populate the G&B Weekly Activity Tracker with the current week's data. The tracker is a cumulative Google Sheet spanning the full search, with one column per week.
 
-Goal: 1 interesting deal per week.
+This is **Stage 7: Model Updating** of the G&B acquisition methodology. It answers two questions:
+- **Signal Quality** — Are we reaching the right people? Are conversations converting?
+- **System Throughput** — Is the machine producing enough volume to hit the goal?
+
+Goal: 1 interesting deal reviewed per week, fed by 2–5 owner conversations per week.
 </objective>
 
 <essential_principles>
@@ -49,48 +53,54 @@ The sheet has a single tab: **Weekly Tracker**
 | 3 | LOIs Submitted | — | {n} | {n} | |
 | 4 | LOIs Signed | — | {n} | {n} | |
 | | | | | | |
-| **SOURCING** | | | | | |
+| **SYSTEM THROUGHPUT** *(is the machine producing enough?)* | | | | | |
 | 5 | Outreach Emails Sent | — | {n} | {n} | |
 | 6 | Cold Calls Made | — | {n} | {n} | |
 | 7 | Responses Received | — | {n} | {n} | |
-| 8 | Response Rate | — | =(R7/R5) | | |
-| 9 | New Contacts Added | — | {n} | {n} | |
+| 8 | New Contacts Added | — | {n} | {n} | |
+| 9 | Networking Meetings | — | {n} | {n} | |
+| 10 | Introductions Received | — | {n} | {n} | |
 | | | | | | |
-| **QUALIFICATION** | | | | | |
-| 10 | Stage 1 Calls Completed | — | {n} | {n} | |
-| 11 | Qualified Opportunities ("A" count) | — | {n} | {n} | |
-| | | | | | |
-| **CONVERSION** | | | | | |
-| 12 | Stage 2 Calls Completed | — | {n} | {n} | |
-| 13 | Deals in Active Review | — | {n} | {n} | |
+| **SIGNAL QUALITY** *(are we reaching the right people?)* | | | | | |
+| 11 | Response Rate | — | =(responses/outreach) | | |
+| 12 | Stage 1 Calls (Owner Conversations) | 2–5/wk | {n} | {n} | |
+| 13 | Qualified Opportunities ("A" count) | — | {n} | {n} | |
+| 14 | Stage 2 Calls (Deep Dives) | — | {n} | {n} | |
+| 15 | Deals in Active Review | — | {n} | {n} | |
+| 16 | Conversion: Outreach → Owner Conversation | — | =(R12/R5) | | |
+| 17 | Conversion: Owner Conversation → NDA | — | =(R1/R12) | | |
 | | | | | | |
 | **PIPELINE HEALTH** | | | | | |
-| 14 | Total Active Pipeline | — | {n} | {n} | |
-| 15 | Deals Added This Week | — | {n} | {n} | |
-| 16 | Deals Killed/Passed | — | {n} | {n} | |
-| | | | | | |
-| **RELATIONSHIPS** | | | | | |
-| 17 | Networking Meetings | — | {n} | {n} | |
-| 18 | Introductions Received | — | {n} | {n} | |
+| 18 | Total Active Pipeline | — | {n} | {n} | |
+| 19 | Deals Added This Week | — | {n} | {n} | |
+| 20 | Deals Killed/Passed | — | {n} | {n} | |
 
 Key metrics rows (1–4) should be **bold** with a distinct background color to stand out visually.
 
 ### Why These Supporting Metrics
 
-Every supporting metric exists to answer a diagnostic question when key metrics underperform:
+Every supporting metric maps to one of the two Stage 7 diagnostic questions:
 
+**System Throughput** — Is the machine producing enough?
 | Metric | Diagnoses |
 |--------|-----------|
-| Outreach emails sent | Are we generating enough top-of-funnel volume? |
-| Cold calls made | Is JJ's call activity consistent? |
-| Responses received + rate | Is our messaging working? |
+| Outreach emails sent | Is outbound volume sufficient? |
+| Cold calls made | Is phone activity consistent? |
+| Responses received | Is outreach generating engagement? |
 | New contacts added | Is the network growing? |
-| Stage 1 calls | Are responses converting to conversations? |
-| Qualified "A" count | Are we talking to the right people? |
-| Stage 2 calls | Are qualified leads progressing to deep dives? |
+| Networking meetings | Is the relationship engine active? |
+| Introductions received | Are relationships producing warm leads? |
+
+**Signal Quality** — Are we reaching the right people?
+| Metric | Diagnoses |
+|--------|-----------|
+| Response rate | Is our messaging resonating? |
+| Stage 1 calls (owner conversations) | Are we hitting 2–5/wk? The critical conversion point. |
+| Qualified "A" count | Are conversations with the right type of owner? |
+| Stage 2 calls (deep dives) | Are qualified leads progressing? |
 | Deals in active review | Are we modeling enough financials? |
-| Pipeline totals / adds / kills | Is the pipeline growing, flat, or shrinking? |
-| Networking + intros | Is the relationship engine feeding the deal engine? |
+| Outreach → owner conversation rate | Is volume converting to real conversations? |
+| Owner conversation → NDA rate | Are conversations converting to deals? |
 
 ### Trend Analysis
 
@@ -214,9 +224,10 @@ tags:
 ---
 ```
 
-Body contains the week's numbers in readable markdown format, plus a short diagnostic narrative:
+Body contains the week's numbers in readable markdown format, plus a short diagnostic narrative structured around Stage 7:
 - **Key metrics vs. goal** — Are we hitting 1 interesting deal/week?
-- **Funnel diagnosis** — Are we getting 2–5 owner conversations/week? If not, where is the funnel leaking? (volume? response rate? qualification?)
+- **System Throughput** — Is outbound volume sufficient? Are enough conversations being generated?
+- **Signal Quality** — Are we reaching the right people? Where is conversion breaking down?
 - **Notable pipeline movements** — deals advancing, stalling, or killed
 - **Flags** — anything that needs attention next week
 </vault_save>

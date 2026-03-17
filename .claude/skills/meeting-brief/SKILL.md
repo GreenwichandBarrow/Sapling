@@ -173,6 +173,14 @@ tags:
 
 Ensure all referenced entities exist. Create entity files if needed.
 
+### Slack Notification
+After saving to both locations, ping Kay via Slack webhook:
+```bash
+curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+  -H "Content-Type: application/json" \
+  -d '{"text":"Meeting brief ready for {Person Name} ({Date}) — saved to Drive & vault.\n{Google Doc link}"}'
+```
+
 ### Confirm to User
 Share the Google Doc link so Kay can open it on her phone.
 </save_phase>
@@ -185,5 +193,6 @@ Brief is complete when:
 - [ ] Google Doc saved in RESEARCH/BRIEFS
 - [ ] Vault file saved in brain/briefs/
 - [ ] Referenced entities exist in brain/entities/
+- [ ] Slack notification sent with person name, date, and Doc link
 - [ ] Google Doc link shared with user
 </success_criteria>

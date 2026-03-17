@@ -419,3 +419,35 @@ The tabled niche is specifically software. The research agent surfaced full-serv
 - **PE investment in brand IP:** BlackRock $875M into ABG, Ares $375M into WHP, Neuberger Berman $462M into Marquee
 - **Software competitors:** Flowhaven ($21.5M raised), Octane5 (Coca-Cola, Ford, Mattel clients), FADEL, Brainbase
 
+---
+
+## [niche-intel-onepager-2] — 2026-03-17T17:00:00-04:00
+**Niche:** Managed Cybersecurity Compliance Services
+**Status:** complete
+**Drive Folder:** 1nwSzB7lRx9XXpWR34Y5AtTluID-ZCQbO
+**File:** Managed Cybersecurity Compliance Services March 2026.pptx
+
+### Key Research Findings
+- Managed security services market valued at $35-49B (2025), growing 11-14% CAGR. Compliance-specific subset estimated $8-12B in the U.S.
+- CMMC became mandatory Nov 2025, phasing in through 2028 for 200K+ defense contractors — massive near-term demand driver for compliance services
+- GRC (governance, risk, compliance) deal volume hit a 5-year peak of 82 transactions in 2025, signaling PE conviction in the category
+- PE is heavily involved: 72% of MSP acquisitions in 2025 had PE backing. 267 MSP acquisitions in 2025 (up from 234 in 2024). Top 20 PE platforms now control ~12% of U.S. managed services market (up from 6% in 2022)
+- Compliance-as-a-Service platforms (Vanta $242M raised, Drata $328M raised, Secureframe $97M) are automating manual compliance work — potential threat to services-only MSSPs
+- Pure-play compliance MSSPs exist (Omega Systems for regulated industries, Clearwater for healthcare) but most blend compliance with general IT/MSP services — the E&K listing ($2M rev, $400K EBITDA) is typical of this bundled model
+- Key concern confirmed: no luxury/UHNW angle. PE saturation is high. Differentiation between compliance-focused and general MSPs is blurry at the lower middle market
+
+### Data Points for Scoring
+- **Market size:** $35-49B global managed security services (2025); $8-12B U.S. compliance subset (estimated)
+- **CAGR:** 11-14% for managed security services overall
+- **EBITDA margins:** 15-20% for mature MSSPs; gross margins 50-60%
+- **Retention:** 90%+ for managed services contracts
+- **Revenue per employee:** $125K-200K+
+- **Valuation multiples:** 5-8x EBITDA for sub-$5M revenue MSSPs; 1-3x revenue pure service
+- **Company count:** Thousands of MSPs/MSSPs in U.S.; MSSP Alert tracks Top 250; highly fragmented below that
+- **PE activity:** 267 MSP acquisitions in 2025; 125 MSSP-specific deals; 82 GRC deals (5-year peak); PE deployed $6.4B in cybersecurity 2025
+- **CMMC addressable market:** 200,000+ defense contractors needing compliance by 2028
+- **Proof point:** Everingham & Kerr listing — $2M revenue, $400K EBITDA, NJ managed cybersecurity/compliance for regulated industries
+- **Assessment:** Moderate B (2.0/3) — strong fundamentals but PE saturation, no UHNW angle, and CaaS platform risk limit attractiveness for G&B specifically
+
+---
+

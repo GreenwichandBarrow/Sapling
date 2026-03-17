@@ -278,9 +278,11 @@ Local template: brain/library/internal/one-pager-template/customs-bonds-template
 RESEARCH REQUIREMENTS:
 You MUST perform web research (using WebSearch) to fill every section with real data. Do not use placeholder text. Supplement with any data provided from Step 1/2.
 
+IMPORTANT: Do NOT score or rate the niche. No numerical scores, no letter grades, no "X/3" ratings. Leave all scoring to Step 4. Your job is research and presentation only.
+
 SECTIONS TO COMPLETE:
 1. **Title:** {Niche Name} {Month} {Year}
-2. **Assessment/Status:** Your preliminary verdict based on research
+2. **Assessment/Status:** Leave as "Pending Scoring" — Step 4 will fill this in
 3. **Industry Overview:** Market size, key players, how the industry works, who the customers are
 4. **Industry Thesis:** Why this niche fits G&B's acquisition criteria specifically
 5. **Macro Trends & Growth Drivers | Risks & Concerns:** Split — tailwinds left, risks right
@@ -365,6 +367,21 @@ Follow the report template from workflows/friday-pipeline.md exactly.
 Include valid Obsidian vault frontmatter.
 
 Post summary scores to chatroom.
+
+UPDATE ONE-PAGERS WITH SCORES (Step 4b):
+After scoring all niches, go back and update each one-pager's "Assessment/Status" section with the final score.
+
+For each niche one-pager:
+1. Download the pptx from Drive (or read from /tmp/ if still available):
+   gog drive download {file_id} -a kay.s@greenwichandbarrow.com -o /tmp/{niche-slug}-onepager.pptx
+2. Use python-pptx to open the file and update the Assessment/Status cell with:
+   - Overall score (X.XX/3)
+   - Score breakdown by category
+   - Final verdict (Promising / Moderate / Weak)
+3. Re-upload the updated file to the same Drive folder, overwriting the original:
+   gog drive upload "/tmp/{niche-slug}-onepager.pptx" -a kay.s@greenwichandbarrow.com --parent {folder_id}
+
+Post confirmation of one-pager updates to chatroom.
 
 {CHATROOM_PROTOCOL}
 ```

@@ -236,10 +236,18 @@ BONUS CRITERIA (from Kay's right-to-win):
 - Clear PE exit pathway (look for PE firms already buying in the space)
 - AI-enhanceable but not AI-disruptable
 
+DUPLICATE DETECTION (CRITICAL):
+Before proposing any niche, check whether it is a VARIANT or SUBSET of an existing active, ideation, killed, or tabled niche — not just an exact name match. Niches can appear under different names but describe the same underlying business. Examples of duplicates:
+- "Third-Party Licensing Management" = "Insurance Producer License Compliance" (both are license compliance services)
+- "UHNW Property Services" = "Estate Management Companies" (same business, different label)
+- "Regulatory Filing Services" could overlap with multiple compliance niches
+
+For each candidate, explicitly state: "Checked against active niches — not a duplicate of: {list which active niches you compared it to and why it's distinct}." If there is ANY ambiguity, flag it rather than proposing it as new.
+
 PROCESS:
 1. Read all chatroom posts
 2. Extract every potential niche signal
-3. Cross-reference against killed/tabled/active lists
+3. Cross-reference against killed/tabled/active/ideation lists — CHECK FOR SEMANTIC DUPLICATES, not just name matches
 4. For tabled niches: does new data address the specific reason they were tabled?
 5. Apply identification criteria to filter
 6. Rank remaining candidates by fit
@@ -270,6 +278,12 @@ If a tabled niche should resurface:
 You are the ONE-PAGER CREATION agent for the Friday Niche Intelligence workflow.
 
 YOUR TASK: Create a professional one-pager (.pptx) for {NICHE_NAME} following G&B's standard template.
+
+PRE-FLIGHT CHECK (do this FIRST):
+Before creating anything, check if a one-pager already exists for this niche (or a variant name):
+1. List existing Drive folders: gog drive list -a kay.s@greenwichandbarrow.com --parent 1tiAc7lVveBwi_DlYcFUX2tFP6FVwYKmQ -j
+2. Check brain/outputs/ for existing research briefs on this niche
+3. If a one-pager or folder already exists for this niche (even under a different name), STOP and post to the chatroom: "One-pager already exists at {location}. Skipping creation."
 
 TEMPLATE REFERENCE:
 Read: .claude/skills/niche-intelligence/references/one-pager-template.md

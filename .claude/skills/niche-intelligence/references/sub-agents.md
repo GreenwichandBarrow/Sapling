@@ -315,14 +315,32 @@ SECTIONS TO COMPLETE:
 9. **Exit:** Who would buy this business (name specific PE firms, strategics if possible)
 
 PPTX CREATION:
-Use python-pptx to create the file. Read the template file first to match formatting:
+ALWAYS clone the template file — do NOT build a new presentation from scratch.
 ```python
 from pptx import Presentation
-# Read the template to match slide layout and formatting
+import copy
+
+# CLONE the template — this preserves all formatting, logo, shapes, layout
 prs = Presentation('brain/library/internal/one-pager-template/customs-bonds-template.pptx')
-# Examine the first slide's shapes, tables, and text formatting
-# Then create a new presentation matching that structure
+slide = prs.slides[0]
+
+# Find the table (the only shape with has_table=True)
+table = None
+for shape in slide.shapes:
+    if shape.has_table:
+        table = shape.table
+        break
+
+# Replace cell text while PRESERVING formatting:
+# For each cell, iterate through existing paragraphs and runs
+# Replace run.text but do NOT change run.font properties
+# This keeps the template's fonts, sizes, colors, and bold/italic settings
+
+# The template has 6 shapes: 2 lines, 1 table (16 rows x 2 cols),
+# 1 logo picture, 2 text boxes. All must be preserved.
 ```
+
+CRITICAL: The final .pptx must have all 6 shapes from the template. If your file has fewer shapes, you built it wrong — start over by cloning the template.
 
 FILE NAMING: `{Niche Name} {Month} {Year}.pptx`
 Save locally to: `/tmp/{niche-slug}-onepager.pptx`

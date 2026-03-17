@@ -16,6 +16,26 @@ tags:
 
 ---
 
+## [niche-intel-calls] — 2026-03-17T14:45:00-04:00
+**Source:** Granola meeting transcripts (Mar 10-17, 2026)
+**Status:** complete — no niche signals found
+
+### Signals Found
+
+Only one meeting recorded in Granola for the past 7 days:
+
+- **Mar 16 — "Harrison <> Kay: AI Session"** (Kay Schneider + Harrison Wells, Dodo Digital): This was a Claude Code working session focused on designing the Niche Intelligence automation workflow itself (sub-agents, orchestration, cron jobs, skill architecture). No external deals, industries, investor feedback, or market intelligence were discussed. The only niche-adjacent content was a brief anecdote about luxury watch repair services being embedded inside retail jewelers (not standalone acquisition targets) — but this was used as an example of domain knowledge that AI misses, not as a new signal.
+
+**Bottom line:** No call-sourced niche intelligence this week. The meeting cadence appears light — either calls were not recorded in Granola, or this was a low-meeting week.
+
+### Industries/Companies Mentioned
+- None (niche-relevant)
+
+### Data Points for Scoring
+- None
+
+---
+
 ## [niche-intel-newsletters] — 2026-03-17T14:30:00-04:00
 **Source:** Axios Pro Rata newsletters (Gmail, 5 issues: Mar 11-17, 2026)
 **Status:** complete

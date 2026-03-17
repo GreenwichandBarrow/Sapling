@@ -360,3 +360,35 @@ The tabled niche is specifically software. The research agent surfaced full-serv
 
 5. **This week's signal density was low for NEW niches.** Most intelligence reinforced existing active niches (trust admin, TCI, insurance compliance, art insurance) rather than surfacing genuinely new candidates. This is not a failure — it suggests the current niche portfolio is well-selected and the market is validating it. The three new candidates above are incremental additions, not thesis pivots.
 
+---
+
+## [niche-intel-onepager-3] — 2026-03-17T17:00:00-04:00
+**Niche:** Third-Party Licensing Management
+**Status:** complete
+**Drive Folder:** 1djL8JhYP_M-jy0EQn_H-KCay6_JHB9B6
+**File:** Third-Party Licensing Management March 2026.pptx
+
+### Key Research Findings
+- Third-party licensing management firms operate as outsourced managers of brand licensing programs, earning 25-40% commission on royalties collected from licensees
+- The global brand licensing industry reached $369.6B in retail sales in 2024 (+3.7% YoY), with North America at $110.6B (40%+ share)
+- The top licensing agents collectively drove $74.3B in retail sales; market is bifurcated between mega-agencies (IMG at $8.7B, Beanstalk at $10.1B) and a long tail of boutiques
+- PE-backed brand management platforms (ABG at $30B+ retail, WHP at $8B, Marquee Brands) are aggressively acquiring brand IP, creating downstream demand for licensing management services
+- IVEST Consumer Partners (~$500M AUM, official PE partner of Licensing International) acquiring licensees at 6.5x EBITDA and agencies at up to 20x EBITDA
+- Technology platforms (Flowhaven $21.5M raised, Octane5, FADEL, Dependable Solutions) represent both disintermediation risk and potential acquirers of service-layer firms
+- Kay's Chanel background provides a direct right-to-win in luxury brand licensing specifically
+- Key risk: unclear whether an acquirable middle market exists between the mega-agencies and small boutiques — needs validation via expert calls
+
+### Data Points for Scoring
+- **Market size:** $369.6B global licensed retail sales (2024), $110.6B North America
+- **Growth rate:** 3-5% overall; Fashion +8.1%, Music +11.6%, Celebrity +8.8%, Corporate +6.1% (2024)
+- **Agent commission:** 25-40% of gross royalties collected
+- **Retainer models:** $5K-$20K/month plus lower commission for early-stage brands
+- **Brand royalty rates:** 5-15% of wholesale (trending down from 8.5% to 8.2%)
+- **Estimated EBITDA margins:** 25-40% (asset-light, people-driven)
+- **Top agencies by retail sales:** Beanstalk $10.1B, IMG/WME $8.7B, LMCA $7.7B, Brand Central $3.9B, Global Icons $3.9B
+- **Mid-market agencies:** Seltzer Licensing $1.2B, Joester Loria $2.8B, IMC Licensing $6B+ cumulative
+- **PE multiples:** 6.5x EBITDA (licensees), up to 20x EBITDA (agencies) per IVEST
+- **Company count:** 35+ agencies on License Global's top list; total independent agencies estimated 100-300+ in US
+- **PE investment in brand IP:** BlackRock $875M into ABG, Ares $375M into WHP, Neuberger Berman $462M into Marquee
+- **Software competitors:** Flowhaven ($21.5M raised), Octane5 (Coca-Cola, Ford, Mattel clients), FADEL, Brainbase
+

@@ -49,6 +49,42 @@ Present stage change recommendations one at a time. Kay approves/rejects.
 
 Each recommendation updates the People record on approval.
 
+## Architecture: Manager + 3 Specialized Sub-Agents
+
+Claude acts as the **manager** overseeing 3 specialized sub-agents that run in parallel on session start. The manager:
+- Launches all 3 agents simultaneously
+- Reviews their outputs for quality and consistency
+- Flags any red flags or conflicts to Kay before presenting
+- Presents recommendations sequentially: pipelines → relationships → tasks
+- Executes approved changes
+- Runs stop hooks to validate execution
+
+### Sub-Agent 1: Pipeline Agent
+**Scope:** Intermediary, Active Deals, and Investor Lists
+**Scans:** Email (NDAs, financials, LOIs, broker correspondence), calendar (deal meetings), vault (call notes)
+**Returns:** Stage change recommendations with signal evidence
+
+### Sub-Agent 2: Relationships Agent
+**Scope:** People records with custom attributes
+**Scans:** Calendar (meetings with contacts), email (thank yous sent, intros received), overdue nurture cadences
+**Returns:** Attribute update recommendations (next_action, nurture_cadence, relationship_type)
+
+### Sub-Agent 3: Granola Agent
+**Scope:** All meeting transcripts since last run
+**Scans:** Granola MCP for transcripts, extracts action items, next steps, commitments, intro promises
+**Returns:** Proposed Motion tasks with titles, descriptions, due dates
+
+### Stop Hooks (post-execution validation)
+1. **Pipeline validation** — confirms all approved stage changes were executed in Attio Lists
+2. **Relationships validation** — confirms all approved People attribute updates were executed, no blank next_actions left behind
+
+### Manager Red Flags
+The manager raises these to Kay before executing:
+- Conflicting signals (email says deal killed but calendar shows meeting scheduled)
+- Missing data (meeting happened but no Granola transcript and no call notes)
+- Unusual patterns (deal jumping 2+ stages, contact going from Dormant to active without clear signal)
+- Sub-agent returned empty results when activity was expected
+
 ## Trigger
 
 - **Auto:** Runs on session start via hook (before `/start` daily workflow)

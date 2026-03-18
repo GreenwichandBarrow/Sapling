@@ -247,7 +247,7 @@ Kay Schneider
 Greenwich & Barrow
 ```
 
-Draft in Gmail via gog. Kay reviews and sends from Superhuman.
+Draft in Superhuman via the `superhuman` MCP server using the `superhuman_draft` tool with `--account kay.s@greenwichandbarrow.com`. Do NOT use `gog gmail drafts create` — Gmail API drafts do not sync to Superhuman. Kay reviews and sends from Superhuman.
 
 Create Motion task: "Review and send {conference} pre-outreach emails" with due date T-minus 5 days.
 </outreach>

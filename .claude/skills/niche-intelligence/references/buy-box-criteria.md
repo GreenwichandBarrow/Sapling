@@ -55,11 +55,7 @@ VC/PE-backed, public companies, franchises, consumer retail/DTC, restaurants/hos
 
 ## Industry Flags (signals a niche is worth investigating)
 
-- Licensing and renewals
 - Regulatory/compliance infrastructure
-- Trade credit, surety, bonds
-- Insurance infrastructure
-- Asset custody, inventory, documentation
 - "Boring but essential" service businesses
 - Specialty services supporting HNW individuals or enterprises
 

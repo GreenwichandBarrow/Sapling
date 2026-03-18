@@ -92,12 +92,6 @@ Active thesis niches rotate and are tracked in the Industry Research Tracker, no
 - **Priority 3:** Anywhere in the US if remote-manageable or if the business warrants relocation consideration
 Industry relevance always outweighs geography. A perfect-fit company in Texas beats a marginal fit in NYC.
 
-## Scoring Methodology
-
-- **Industry Scorecard:** 9 criteria, 30 pts max
-- **Company Scorecard:** 70% hard gates / 30% discretionary
-- **KS Fit (15% weight):** 50%+ recurring, 15%+ margins, steady/growing, B2B
-
 ## Contact Requirements
 
 - Owner/CEO/President/Principal only

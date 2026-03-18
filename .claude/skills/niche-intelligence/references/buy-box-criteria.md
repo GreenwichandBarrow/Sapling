@@ -72,12 +72,6 @@ Active thesis niches rotate and are tracked in the Industry Research Tracker, no
 - **Priority 3:** Anywhere in the US if remote-manageable or if the business warrants relocation consideration
 Industry relevance always outweighs geography.
 
-## Scoring Reference
-
-- **Industry Scorecard:** 9 criteria, 30 pts max (see scorecard-structure.md)
-- **Company Scorecard:** 70% hard gates / 30% discretionary
-- **KS Fit (15% weight):** 50%+ recurring, 15%+ margins, steady/growing, B2B
-
 ## Contact Requirements (for outreach lists)
 
 - Owner/CEO/President/Principal only

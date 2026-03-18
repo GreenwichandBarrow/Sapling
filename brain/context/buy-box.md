@@ -15,7 +15,7 @@ tags:
 
 Consolidated from: G&B Lead Gen Criteria (2.10.26), G&B Acquisition Criteria (Feb 2026), G&B One Pager (7.9.25), and deal history lessons.
 
-Google Doc: [G&B Buy Box 3.18.26](https://docs.google.com/document/d/1TlDfBg7z-IMP4KIj1dxg_2U1KeC_5nGGZVzeJJbNh9A/edit)
+Google Doc: [G&B Buy Box 3.18.26](https://docs.google.com/document/d/16rNUO7MsjVMZdSu373NOfh3Z0mOx7cw-I-FEV2QYOmk/edit)
 
 ## Search Mandate
 

@@ -152,6 +152,8 @@ Maintain in `brain/trackers/conference-calendar.md`:
 ```
 
 Statuses: Discovered, Evaluating, Registered, Prep Complete, Attending, Attended, Skipped, Register-Only
+
+**Sort order:** Always chronological — earliest/closest date at top, farthest away at bottom.
 </discovery>
 
 <registration>

@@ -58,7 +58,7 @@ If verification fails, log the failure to chatroom and notify user — do NOT pr
 
 ### Schedule
 
-**Every Friday, complete by 1:00 PM EST** so Kay has 1 hour to review before end of day.
+**Runs Tuesday night (automated).** Report delivered Wednesday morning, ready for Kay's midday analyst meeting.
 
 </essential_principles>
 

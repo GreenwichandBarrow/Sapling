@@ -26,7 +26,7 @@ Reference: Colin Woolway and Will Gallagher attended 1-2 conferences/week and la
 
 ### Weekly Rhythm
 
-**Friday (during weekly review):** Claude surfaces next 2-4 weeks of conference options. Kay picks next week's conference.
+**Sunday night (automated):** Claude surfaces next 2-4 weeks of conference options. Kay reviews Monday morning during travel to conference and picks next week's.
 
 **T-minus 2 weeks:** Register. Begin attendee/exhibitor list acquisition.
 
@@ -104,7 +104,7 @@ Claude handles all phases directly (no sub-agents needed). The workflow is seque
 <discovery>
 ## Phase 1: Conference Discovery
 
-Run weekly (Friday or on-demand). Find conferences for the next 2-6 weeks.
+Run weekly (Sunday night, ready Monday morning). Find conferences for the next 2-6 weeks.
 
 ### Search Strategy
 

@@ -48,7 +48,7 @@ Everything else is diagnostic — it shows whether the activity machine is conve
 
 ## Schedule
 
-Run every Friday morning (or on demand via `/weekly-tracker`). The sheet is cumulative — each run adds a new column for the current week.
+Run Friday night (automated, ready Friday morning review). Or on demand via `/weekly-tracker`. The sheet is cumulative — each run adds a new column for the current week.
 </essential_principles>
 
 <sub_agents>

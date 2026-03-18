@@ -166,7 +166,10 @@ Before spending any Linkt credits, build a raw target list from free sources:
 - Niche one-pagers from niche-intelligence skill
 - Industry Research Tracker
 
-**Output:** Raw list in a Google Sheet with: company name, website, location, estimated size, source, owner name if found.
+**Output:** Raw list in a Google Sheet in the LINKT TARGET LISTS folder (OPERATIONS > LINKT TARGET LISTS) with one row per company+owner:
+Company | Website | Headquarters | Industry | Employees | Revenue | Ownership | Owner Name | Owner Title | Email | Phone | LinkedIn (Owner) | LinkedIn (Company) | Source
+
+All Linkt exports use this same single-tab format. No separate tabs for companies and people — always combined on one row.
 
 ### Step 2: Kay Reviews Raw List
 Present the raw list to Kay. She marks which targets are worth a Linkt credit. This is the gate that protects the 150 credits/month.

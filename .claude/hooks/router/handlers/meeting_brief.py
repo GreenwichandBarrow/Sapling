@@ -15,20 +15,25 @@ def meeting_brief_stop_check(input_data: dict) -> HandlerResult:
     transcript = input_data.get("transcript_summary", "")
     tool_history = input_data.get("tool_use_history", "")
 
-    # Heuristic: check if this session involved meeting brief work
-    # Look for signals in the conversation context
-    session_text = str(input_data)
+    # Only trigger if the meeting-brief skill was actually invoked (not just mentioned)
+    # Check tool_use_history for Skill tool calls with meeting-brief
+    tool_text = str(tool_history)
 
-    brief_signals = [
-        "meeting-brief",
-        "meeting brief",
-        "Meeting Brief:",
-        "brain/briefs/",
-        "RESEARCH/BRIEFS",
-        "1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ",
+    skill_invocation_signals = [
+        '"skill": "meeting-brief"',
+        "'skill': 'meeting-brief'",
+        "skill: meeting-brief",
     ]
 
-    session_involved_brief = any(signal in session_text for signal in brief_signals)
+    # Also check if a brief file was actually written this session
+    write_signals = [
+        "brain/briefs/" in tool_text and ("Write" in tool_text or "write" in tool_text),
+    ]
+
+    session_involved_brief = (
+        any(signal in tool_text for signal in skill_invocation_signals)
+        or any(write_signals)
+    )
 
     if not session_involved_brief:
         return None

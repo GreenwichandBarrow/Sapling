@@ -69,9 +69,7 @@ Active thesis niches rotate and are tracked in the Industry Research Tracker, no
 
 - **Priority 1:** Northeast corridor (NY, CT, NJ, Boston, Philly, DC, Hartford)
 - **Priority 2:** Midwest / Southeast (Chicago, Charlotte, Atlanta)
-- **Priority 3:** Anywhere US if remote-manageable or business warrants it
-- **Excluded:** West Coast (California regulatory concerns)
-
+- **Priority 3:** Anywhere in the US if remote-manageable or if the business warrants relocation consideration
 Industry relevance always outweighs geography.
 
 ## Financial Targets

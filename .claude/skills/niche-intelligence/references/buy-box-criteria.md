@@ -72,14 +72,6 @@ Active thesis niches rotate and are tracked in the Industry Research Tracker, no
 - **Priority 3:** Anywhere in the US if remote-manageable or if the business warrants relocation consideration
 Industry relevance always outweighs geography.
 
-## Financial Targets
-
-- Entry multiple: 4-7x EBITDA
-- Target MOIC: 3-5x over 4-7 years
-- Exit validation: PE would acquire at year 4-7
-- Growth levers: organic → price → margin → tuck-ins (year 3+)
-- QSBS note: Insurance brokerage excluded from QSBS treatment
-
 ## Scoring Reference
 
 - **Industry Scorecard:** 9 criteria, 30 pts max (see scorecard-structure.md)

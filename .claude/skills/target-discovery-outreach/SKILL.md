@@ -38,7 +38,7 @@ When a conference is coming up, this skill works with conference-prep to identif
 1. **Claude researches 4-6 new targets** in the activated niche using free sources first (web, associations, directories)
 2. **Kay reviews the raw list** — approves which to spend Linkt credits on
 3. **Claude enriches approved targets via Linkt** — gets validated email, phone, owner details
-4. **Claude drafts personalized emails** for Tier A targets (top 10 per week)
+4. **Claude drafts personalized emails** for each approved target
 5. **Claude adds targets to JJ's call sheet** with phone numbers and script
 6. **Kay reviews and sends emails** from Superhuman
 7. **JJ cold calls** from the sheet
@@ -80,7 +80,7 @@ When a conference is coming up, this skill works with conference-prep to identif
 
 **Analyst:**
 - Landscape memo at niche activation (Week 1)
-- Company scorecards for Tier A targets
+- Company scorecards for approved targets
 - Financial analysis when financials received
 </essential_principles>
 
@@ -140,51 +140,24 @@ Search vault entities and Attio People records for existing contacts in this nic
 <target_discovery>
 ## Phase 2: Target Discovery (Daily, Weeks 2+)
 
-### Step 1: Free Research (Claude, no credits)
-Before spending any Linkt credits, build a raw target list from free sources:
+### Step 1: Run Linkt Search
+Linkt is the primary list builder. It finds companies matching the ICP, enriches them, and returns validated owner contact info — all in one step.
 
-**Web Search:**
 ```
-"{niche} companies {state/region}"
-"{niche} firms independent"
-"site:linkedin.com {niche} owner founder CEO"
-"{industry association} member directory"
-"{niche} companies list"
+Execute the niche ICP Search flow in Linkt:
+POST /v1/task/{task_id}/execute
 ```
 
-**Association Directories:**
-- Industry association member lists (often public or behind free registration)
-- State licensing board registries (public records of licensed firms)
-- Professional certification directories
+Linkt's AI agents will:
+- Find companies matching the ICP criteria (industry, size, geography, ownership)
+- Enrich each company with revenue, employee count, ownership status
+- Identify the owner/CEO with validated email and phone
+- Verify criteria matches against the ICP
 
-**Conference Exhibitor Lists:**
-- From conference-prep skill outputs
-- Past conference attendee lists in the CONFERENCES Drive folder
+**Run smaller, focused searches** (10-20 entities per run) rather than large broad ones. Each entity = 1 credit. 150 credits/month.
 
-**Existing Intelligence:**
-- Attio pipeline (already tracked companies)
-- Vault entities and call notes
-- Niche one-pagers from niche-intelligence skill
-- Industry Research Tracker
-
-**Output:** Raw list in a Google Sheet in the LINKT TARGET LISTS folder (OPERATIONS > LINKT TARGET LISTS) with one row per company+owner:
-Company | Website | Headquarters | Industry | Employees | Revenue | Ownership | Owner Name | Owner Title | Email | Phone | LinkedIn (Owner) | LinkedIn (Company) | Source
-
-All Linkt exports use this same single-tab format. No separate tabs for companies and people — always combined on one row.
-
-### Step 2: Kay Reviews Raw List
-Present the raw list to Kay. She marks which targets are worth a Linkt credit. This is the gate that protects the 150 credits/month.
-
-### Step 3: Linkt Enrichment (approved targets only)
-For each approved target:
-```
-Run Linkt Search flow with the niche ICP
-OR search existing Linkt entities first to avoid re-spending credits
-```
-
-**Output per target:**
-- Company: name, website, HQ, industry, employees, revenue, ownership status
-- Person: owner/CEO name, title, email (validated), phone, LinkedIn
+**Output:** Linkt returns enriched entities in sheets. Export to Google Sheet in LINKT TARGET LISTS folder with one row per company+owner:
+Company | Website | Headquarters | Industry | Employees | Revenue | Ownership | Owner Name | Owner Title | Email | Phone | LinkedIn (Owner) | LinkedIn (Company)
 
 **Phone number formatting:** Linkt returns phones as `+1 973-770-9090`. When writing to Google Sheets:
 1. Strip the country code prefix (`+1 `)
@@ -192,9 +165,26 @@ OR search existing Linkt entities first to avoid re-spending credits
 3. Write with `--input USER_ENTERED` and apostrophe prefix (`'(973) 770-9090`) to prevent formula interpretation
 This must happen on every Linkt pull, not as a cleanup step.
 
+### Step 2: Supplement with Free Sources
+Linkt won't find everything. Supplement with free research:
+
+- **Association directories** — member lists, state licensing board registries
+- **Conference exhibitor lists** — from conference-prep skill outputs
+- **Web search** — industry-specific searches for companies Linkt may have missed
+- **Existing intelligence** — Attio pipeline, vault entities, niche one-pagers from niche-intelligence
+- **Intermediary referrals** — deals forwarded by brokers, CPAs, network contacts
+
+For companies found through free sources, use Linkt to enrich them (get validated contact info) if worth a credit.
+
+### Step 3: Kay Reviews Target List
+Present the combined list (Linkt + supplemental) to Kay. She reviews:
+- Which targets are real acquisition candidates
+- Remove any that don't fit (wrong size, PE-backed, already contacted, etc.)
+- Flag any she has existing connections to (warm intro path)
+
 ### Step 4: Outreach Assignment
-Every target gets quality attention. For each approved target, Claude:
-- Does deep research on the company and owner
+Every approved target gets quality attention. For each target, Claude:
+- Does deep web research on the company and owner (beyond what Linkt provides)
 - Drafts a personalized email for Kay to send
 - Adds the owner to JJ's call sheet (phone + script)
 - Both channels hit the same target — email from Kay, call from JJ
@@ -234,7 +224,7 @@ Greenwich & Barrow
 
 Draft in Gmail via gog. Kay reviews and sends from Superhuman.
 
-### JJ's Call List (Tier C)
+### JJ's Call List
 
 Populate a Google Sheet in OPERATIONS with:
 | Company | Owner Name | Phone | Location | Script | Status | Notes | Date Called |

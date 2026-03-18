@@ -43,11 +43,27 @@ Present stage change recommendations one at a time. Kay approves/rejects.
 
 **Part 2: Network Relationship Updates (People Records)**
 1. **Recent contacts** — "You met Dan Tanzilli yesterday. Update next_action to 'follow up on art attorney intro'?"
-2. **Overdue nurture** — "Colin Woolway is set to Monthly, last contact was 6 weeks ago. Reach out?"
-3. **Stale next_actions** — "You've had 'send thank you to Denning' as next_action for 2 weeks. Still pending?"
-4. **New contacts to add** — "You met someone new at the One Hanover happy hour. Add them?"
+2. **Stale next_actions** — "You've had 'send thank you to Denning' as next_action for 2 weeks. Still pending?"
+3. **New contacts to add** — "You met someone new at the One Hanover happy hour. Add them?"
 
 Each recommendation updates the People record on approval.
+
+**Part 2b: Nurture Reminders**
+After relationship updates, check ALL People with nurture_cadence set against their `last_interaction` date in Attio. Surface anyone overdue:
+
+"Consider following up with {name} ({relationship_type}, {nurture_cadence}). Last contact: {date}."
+- **Approve** → Motion task created: "Follow up with {name}" with appropriate due date
+- **Skip** → no action
+- **Snooze** → skip for 1 week, surface again next run
+
+Cadence thresholds:
+- Weekly: overdue after 10 days
+- Monthly: overdue after 5 weeks
+- Quarterly: overdue after 14 weeks
+- Occasionally: overdue after 7 months
+- Dormant: never surfaced
+
+Present max 5 nurture reminders per session to avoid overwhelm. Prioritize by: relationship value (value_to_search), days overdue, relationship_type.
 
 ## Architecture: Manager + 3 Specialized Sub-Agents
 
@@ -84,6 +100,26 @@ The manager raises these to Kay before executing:
 - Missing data (meeting happened but no Granola transcript and no call notes)
 - Unusual patterns (deal jumping 2+ stages, contact going from Dormant to active without clear signal)
 - Sub-agent returned empty results when activity was expected
+
+## Data Ingestion (runs before signal detection)
+
+Before scanning for signals, ingest new data from external tools into the vault. The vault is the single source of truth.
+
+### Granola → brain/calls/
+1. Query `mcp__granola__list_meetings` for meetings since last run
+2. For each new meeting, get full transcript via `mcp__granola__get_meeting_transcript`
+3. Check idempotency: if `call_id` already exists in brain/calls/, skip
+4. Write to `brain/calls/YYYY-MM-DD-{slug}.md` using call schema (schemas/vault/call.yaml)
+5. Set `source: granola`, populate people/companies as wiki-links, generate tags
+6. Create any missing entities in brain/entities/
+
+### Gmail → brain/inbox/
+1. Query `gog gmail search "newer_than:2d" --json --max 50` for recent emails
+2. Parse for actionable items: explicit requests, questions, deadlines, documents needing action
+3. Check idempotency: if `source_ref` (message ID) already exists in brain/inbox/, skip
+4. Write to `brain/inbox/YYYY-MM-DD-{slug}.md` using inbox schema (schemas/vault/inbox.yaml)
+5. Set `source: email`, assign confidence level (high/medium/low)
+6. High confidence items surface in Part 1. Medium/low go to /triage.
 
 ## Trigger
 

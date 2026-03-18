@@ -70,12 +70,13 @@ Current top 5 niches:
 - Business expos and showcases
 
 ### Conference Selection Preferences
-- **Smaller > bigger.** 30-200 person events with booths/expos beat 1,000+ person conferences where you get lost in crowds.
+- **Smaller > bigger.** 50-500 attendees is the sweet spot. NAEPC (~400) is the gold standard.
 - **Booth/expo format > panel/speaker format.** Kay needs face time with owners at their tables, not keynote audiences.
-- **Industry association chapter meetings are ideal.** NAEPC DC was the gold standard — intimate, business owners present, real conversations.
-- **Skip consumer-facing fairs.** Art fairs, consumer expos = visitors and collectors, not acquisition targets. Exception: industry-specific events AT art fairs (e.g., insurance roundtable during Art Basel).
-- **Large conferences (1,000+) are "Register Only" candidates** — get the attendee list for outreach, but don't attend unless booth format or high-value niche.
-- **Association memberships worth joining** if they unlock regular chapter meetings with business owners (e.g., EPCNYC for estate planners, local insurance agent associations).
+- **Industry association chapter meetings are ideal.** Intimate, business owners present, real conversations.
+- **Skip consumer-facing fairs.** Art fairs, consumer expos = visitors and collectors, not acquisition targets.
+- **Large conferences (500+) are "Register Only" candidates** — get the attendee list for outreach, don't attend.
+- **Budget: $5,000 max per event.** Most right-sized events should be $50-300. Anything over $500 needs strong justification. Flag events over $1,000 for explicit approval.
+- **Association memberships worth joining** if they unlock regular chapter meetings with business owners (e.g., EPCNYC for estate planners, local insurance agent associations). Most are $200-500/year.
 
 ### Register-Only Events
 Some conferences are worth registering for without attending — to access the attendee/exhibitor list for outreach. Flag these separately. Large conferences (1,000+) default to this category unless booth format.

@@ -140,7 +140,11 @@ For each conference found, capture:
 - Conference website URL
 - Register-only candidate? (Y/N)
 
-Present to Kay as a ranked list. She picks which to attend and which to register-only.
+Present to Kay in the Conference Pipeline sheet with two separate columns:
+- **Agent Recommendation (col L):** Claude's POV on each event — Attend, Register Only, Skip, or Investigate — with a brief rationale
+- **Decision (col M):** Kay's final call — Attend, Register Only, or Skip
+
+Claude always fills in recommendations. Kay always makes the final decision. These are separate columns so Kay can see Claude's reasoning and agree or override.
 
 ### Conference Calendar
 

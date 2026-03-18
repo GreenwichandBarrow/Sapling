@@ -75,7 +75,7 @@ Current top 5 niches:
 - **Industry association chapter meetings are ideal.** Intimate, business owners present, real conversations.
 - **Skip consumer-facing fairs.** Art fairs, consumer expos = visitors and collectors, not acquisition targets.
 - **Large conferences (500+) are "Register Only" candidates** — get the attendee list for outreach, don't attend.
-- **Budget: $5,000 max per event.** Most right-sized events should be $50-300. Anything over $500 needs strong justification. Flag events over $1,000 for explicit approval.
+- **Budget: $10K/year total T&E.** This covers ALL travel and entertainment, not just conferences. Target free or under $100/event. Association memberships ($200-500/year) are worth it if they unlock multiple free chapter meetings. Flag anything over $200 for explicit approval. A $50 chapter dinner 40 times a year is better than one $2,000 conference.
 - **Association memberships worth joining** if they unlock regular chapter meetings with business owners (e.g., EPCNYC for estate planners, local insurance agent associations). Most are $200-500/year.
 
 ### Register-Only Events

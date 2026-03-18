@@ -185,6 +185,12 @@ OR search existing Linkt entities first to avoid re-spending credits
 - Company: name, website, HQ, industry, employees, revenue, ownership status
 - Person: owner/CEO name, title, email (validated), phone, LinkedIn
 
+**Phone number formatting:** Linkt returns phones as `+1 973-770-9090`. When writing to Google Sheets:
+1. Strip the country code prefix (`+1 `)
+2. Reformat to `(XXX) XXX-XXXX` (e.g., `(973) 770-9090`)
+3. Write with `--input USER_ENTERED` and apostrophe prefix (`'(973) 770-9090`) to prevent formula interpretation
+This must happen on every Linkt pull, not as a cleanup step.
+
 ### Step 4: Tier Assignment
 Based on enrichment data + Kay's review:
 - Tier A → deep research + Kay's personalized email

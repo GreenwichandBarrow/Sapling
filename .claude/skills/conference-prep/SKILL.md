@@ -75,7 +75,7 @@ Current top 5 niches:
 - **Industry association chapter meetings are ideal.** Intimate, business owners present, real conversations.
 - **Skip consumer-facing fairs.** Art fairs, consumer expos = visitors and collectors, not acquisition targets.
 - **Large conferences (500+) are "Register Only" candidates** — get the attendee list for outreach, don't attend.
-- **Budget: $10K annual T&E ($20K buffer available).** Evaluate each conference on its merits — value of attendees, content quality, agenda, location, niche relevance. A $1,500 event with 200 target-rich owners is a better spend than a $50 event with no one relevant. Show registration cost in the Pipeline sheet so Kay can make informed decisions. Track cumulative spend in the Attended tab.
+- **Budget: $10K annual T&E ($20K buffer available).** Evaluate each conference on its merits — value of attendees, content quality, agenda, location, niche relevance. A $1,500 event with 200 target-rich owners is a better spend than a $50 event with no one relevant. Show registration cost in the Pipeline sheet so Kay can make informed decisions.
 - **Association memberships worth joining** if they unlock regular chapter meetings with business owners (e.g., EPCNYC for estate planners, local insurance agent associations). Most are $200-500/year.
 
 ### Register-Only Events
@@ -140,11 +140,24 @@ For each conference found, capture:
 - Conference website URL
 - Register-only candidate? (Y/N)
 
-Present to Kay in the Conference Pipeline sheet with two separate columns:
-- **Agent Recommendation (col L):** Claude's POV on each event — Attend, Register Only, Skip, or Investigate — with a brief rationale
-- **Decision (col M):** Kay's final call — Attend, Register Only, or Skip
+Populate the Conference Pipeline Google Sheet. All columns have dropdown data validation where applicable.
 
-Claude always fills in recommendations. Kay always makes the final decision. These are separate columns so Kay can see Claude's reasoning and agree or override.
+**Column layout:**
+A: Date of Conference | B: Event Name | C: Location | D: Travel | E: Niche | F: Registration Cost | G: Reg Deadline | H: Est. Attendees | I: Attendee List | J: Website | K: Status | L: Agent Rec | M: Decision | N: Notes | O: Agent Notes
+
+**Dropdown columns:**
+- **Status (col K):** Discovered, Evaluating, Registered, Prep Complete, Attended, Skipped
+- **Agent Rec (col L):** Attend, Register Only, Skip, Investigate — Claude's recommendation
+- **Decision (col M):** Attend, Register Only, Skip — Kay's final call
+
+**Agent Notes (col O):** Far right column. Claude's rationale for the recommendation. Separate from the rec itself so it doesn't clutter.
+
+**Notes (col N):** Kay's own notes column.
+
+Claude fills in: all columns A-L, O (everything except Decision and Notes).
+Kay fills in: Decision (M) and Notes (N).
+
+When Kay marks Decision = Skip, Claude moves the row to the Skipped tab.
 
 ### Conference Calendar
 

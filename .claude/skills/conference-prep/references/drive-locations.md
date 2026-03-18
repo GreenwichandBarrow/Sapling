@@ -4,8 +4,11 @@
 - **Sheet ID:** 1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY
 - **URL:** https://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit
 - **Tabs:**
-  - `Pipeline` — All active conferences: Discovered through Attended, including Register Only. Single view of everything active. (Date of Conference, Event, Location, Travel, Niche, Cost, Deadline, Attendees, List Availability, Website, Status, Agent Recommendation, Decision, Notes)
-  - `Skipped` — Archive for conferences Kay passes on. Same columns as Pipeline.
+  - `Pipeline` — All active conferences: Discovered through Attended, including Register Only. Single view.
+  - `Skipped` — Archive for conferences Kay passes on. Same columns.
+- **Columns:** Date of Conference (A), Event Name (B), Location (C), Travel (D), Niche (E), Registration Cost (F), Reg Deadline (G), Est. Attendees (H), Attendee List (I), Website (J), Status (K), Agent Rec (L), Decision (M), Notes (N), Agent Notes (O)
+- **Dropdowns:** Status (K), Agent Rec (L), Decision (M) all have data validation dropdowns
+- **Claude fills:** A-L, O. **Kay fills:** M, N.
 
 ## Drive Folders
 

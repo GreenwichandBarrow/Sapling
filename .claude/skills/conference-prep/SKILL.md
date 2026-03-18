@@ -63,14 +63,22 @@ Current top 5 niches:
 5. Trade Credit Insurance (trade finance, credit insurance, textile/fashion)
 
 ### Conference Types (all qualify if 5+ business owners present)
-- Trade shows with exhibitor booths
-- Association meetups and chapter meetings
-- Industry conferences and summits
+- Trade shows with exhibitor booths (PREFERRED — booth = business owner you can talk to)
+- Association meetups and chapter meetings (PREFERRED — smaller, intimate, high-quality conversations)
+- Regional industry conferences (30-200 people ideal)
 - Professional networking events
 - Business expos and showcases
 
+### Conference Selection Preferences
+- **Smaller > bigger.** 30-200 person events with booths/expos beat 1,000+ person conferences where you get lost in crowds.
+- **Booth/expo format > panel/speaker format.** Kay needs face time with owners at their tables, not keynote audiences.
+- **Industry association chapter meetings are ideal.** NAEPC DC was the gold standard — intimate, business owners present, real conversations.
+- **Skip consumer-facing fairs.** Art fairs, consumer expos = visitors and collectors, not acquisition targets. Exception: industry-specific events AT art fairs (e.g., insurance roundtable during Art Basel).
+- **Large conferences (1,000+) are "Register Only" candidates** — get the attendee list for outreach, but don't attend unless booth format or high-value niche.
+- **Association memberships worth joining** if they unlock regular chapter meetings with business owners (e.g., EPCNYC for estate planners, local insurance agent associations).
+
 ### Register-Only Events
-Some conferences are worth registering for without attending — to access the attendee/exhibitor list for outreach. Flag these separately.
+Some conferences are worth registering for without attending — to access the attendee/exhibitor list for outreach. Flag these separately. Large conferences (1,000+) default to this category unless booth format.
 
 ### Association Memberships
 Some events require association membership. Kay is open to joining if it unlocks multiple relevant conferences. Flag membership cost and number of accessible events. Ask Kay before purchasing.

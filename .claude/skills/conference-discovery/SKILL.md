@@ -1,6 +1,6 @@
 ---
-name: conference-prep
-description: "Weekly conference discovery, registration, target identification, pre-conference outreach, and post-conference follow-up. Goal: 1+ conference per week to meet business owners in person."
+name: conference-discovery
+description: "Weekly conference discovery, registration, and attendee list processing. Finds conferences, registers Kay, processes attendee/exhibitor lists into targets. Hands targets to outreach-manager."
 user_invocable: true
 context_budget:
   skill_md: 3000
@@ -9,11 +9,16 @@ context_budget:
 ---
 
 <objective>
-Get Kay in front of business owners every week. Conferences are the highest-ROI channel for direct owner conversations. This skill handles the full lifecycle so Kay's only job is showing up and talking to people.
+Get Kay in front of business owners every week. Conferences are the highest-ROI channel for direct owner conversations. This skill handles discovery, registration, and attendee list processing. All outreach (pre-conference emails, post-conference follow-ups) is handled by skill/outreach-manager.
 
 Target rhythm: 1 conference every Monday. Tuesday/Wednesday NYC-only as backup. Thursday possible but less preferred.
 
 Reference: Colin Woolway and Will Gallagher attended 1-2 conferences/week and landed their acquisition. Kay is a solo searcher with a lean team (Claude, analyst, VA, bookkeeper). Claude owns conference logistics end-to-end.
+
+**Outputs to other skills:**
+- Processed attendee/exhibitor target lists → skill/outreach-manager (conference outreach subagent)
+- Post-conference conversation data (Granola transcripts + notes) → skill/outreach-manager (conference outreach subagent)
+- New contacts → Attio Active Deals at appropriate stage → skill/pipeline-manager takes over
 </objective>
 
 <essential_principles>
@@ -25,11 +30,11 @@ Reference: Colin Woolway and Will Gallagher attended 1-2 conferences/week and la
 
 **T-minus 2 weeks:** Register. Begin attendee/exhibitor list acquisition.
 
-**T-minus 1 week:** Scrape attendee list for targets. Score and rank. Draft pre-conference emails to top 5-10 targets. Kay reviews and sends.
+**T-minus 1 week:** Process attendee list into scored target list. Hand targets to outreach-manager's conference outreach subagent for pre-conference emails.
 
 **Day of conference:** Kay attends. Runs Granola at booths to capture conversations. Talks to as many owners as possible within 2 hours.
 
-**Next morning:** Claude processes Granola transcripts + Kay's notes. Drafts follow-up emails. Adds contacts to Attio (People records + Active Deals pipeline). Kay reviews and sends follow-ups during morning pipeline-manager review.
+**Next morning:** Claude processes Granola transcripts + Kay's notes. Hands conversation data to outreach-manager's conference outreach subagent for follow-up drafting. Adds contacts to Attio.
 
 ### Scheduling Constraints
 
@@ -89,10 +94,11 @@ Some events require association membership. Kay is open to joining if it unlocks
 Claude handles all phases directly (no sub-agents needed). The workflow is sequential and runs weekly.
 
 ## Team Roles
-- **Claude:** Discovery, registration logistics, attendee scraping, target scoring, email drafting, pipeline integration, follow-up drafts
-- **Kay:** Picks conferences, reviews/sends emails, attends, provides post-conference notes
+- **Claude:** Discovery, registration logistics, attendee scraping, target scoring, pipeline integration
+- **Kay:** Picks conferences, attends, provides post-conference notes
+- **Outreach Manager:** All email drafting (pre-conference and post-conference follow-ups)
 - **Analyst:** Not involved (focused on financial analysis and deck building)
-- **VA (JJ):** Not involved in conference prep (focused on cold calling and validation)
+- **VA (JJ):** Not involved in conference discovery (focused on cold calling and validation)
 </essential_principles>
 
 <discovery>
@@ -202,10 +208,8 @@ For each exhibitor/attendee:
 Store processed list in vault: `brain/outputs/{date}-{conference-slug}-targets.md`
 </registration>
 
-<outreach>
-## Phase 3: Pre-Conference Target Outreach
-
-Run T-minus 1 week before the conference.
+<target_scoring>
+## Phase 3: Target Scoring & Handoff
 
 ### Target Scoring
 
@@ -216,64 +220,24 @@ Rank targets by:
 4. **Geography** — bonus for northeast businesses
 5. **Not already in pipeline** — new contacts get priority
 
-Present top 10 to Kay. She selects 5-10 for outreach.
+Present top 10 to Kay. She selects 5-10 for pre-conference outreach.
 
-### Email Drafts
+### Handoff to Outreach Manager
 
-For each approved target, draft a personalized email:
+Pass approved targets to skill/outreach-manager's conference outreach subagent with:
+- Company name, person name, title, email
+- Conference name, date, booth number (if applicable)
+- Scoring notes and research context
+- Whether pre-conference email or post-conference follow-up
 
-**Voice:** Use Kay's calibrated outreach voice (see memory: user_outreach_voice.md)
-**Rules:**
-- No em dashes. Use periods, commas, line breaks.
-- Conversational, warm, direct
-- Reference the specific conference by name
-- Mention Kay will be attending and would love to connect briefly
-- Keep it short (3-4 sentences max)
-- Propose a specific ask: "Would love to stop by your booth" or "Grab a coffee during the break"
+### Post-Conference Data Capture
 
-**Template structure:**
-```
-Subject: {Conference Name} — quick hello
-
-Hi {first name},
-
-{1 sentence about finding them on the exhibitor list / their company}.
-{1 sentence about why Kay is interested — niche connection, not "I want to buy your company"}.
-{1 sentence proposing a brief connection at the conference}.
-
-Looking forward to it.
-
-Kay Schneider
-Greenwich & Barrow
-```
-
-Draft in Superhuman via the `superhuman` MCP server using the `superhuman_draft` tool with `--account kay.s@greenwichandbarrow.com`. Do NOT use `gog gmail drafts create` — Gmail API drafts do not sync to Superhuman. Kay reviews and sends from Superhuman.
-
-Create Motion task: "Review and send {conference} pre-outreach emails" with due date T-minus 5 days.
-</outreach>
-
-<post_conference>
-## Phase 4: Post-Conference Follow-Up
-
-### Data Capture (Day of)
-
-Kay captures booth conversations via:
-1. **Granola** running on phone at each booth — transcripts auto-ingest into brain/calls/ via pipeline-manager
+**Day of conference:** Kay captures booth conversations via:
+1. **Granola** running on phone at each booth — transcripts auto-ingest into brain/calls/
 2. **Manual notes** — Kay texts or types names/companies/notes to Claude after the event
 3. **Business cards** — Kay photographs and shares
 
-### Follow-Up Drafts (Next Morning)
-
-The morning after the conference, as part of the pipeline-manager daily briefing:
-
-1. Process Granola transcripts from the conference day
-2. Match conversations to companies/people
-3. For each person Kay spoke with:
-   - Draft personalized follow-up email referencing specific conversation points
-   - Use Kay's voice, no em dashes
-   - Propose a next step (call, meeting, send info)
-   - Short and specific — reference something from the actual conversation
-4. Present all drafts during morning review. Kay approves and sends.
+**Next morning:** Claude processes Granola transcripts + Kay's notes, then passes conversation data to outreach-manager's conference outreach subagent for follow-up drafting.
 
 ### Pipeline Integration
 
@@ -302,7 +266,7 @@ Create `brain/calls/{date}-{conference-slug}.md` with:
 - Key takeaways and opportunities identified
 - Follow-up actions
 - Tagged: `call`, `source/conference`, relevant niche tags
-</post_conference>
+</target_scoring>
 
 <success_criteria>
 ## Success Criteria
@@ -311,10 +275,9 @@ Create `brain/calls/{date}-{conference-slug}.md` with:
 - [ ] Conference discovered and evaluated with full details
 - [ ] Registration completed (or flagged for register-only)
 - [ ] Attendee/exhibitor list acquired and processed
-- [ ] Top targets identified and scored
-- [ ] Pre-conference emails drafted and sent to 5-10 targets
+- [ ] Top targets identified, scored, and handed to outreach-manager
 - [ ] Kay attended and captured conversations (Granola + notes)
-- [ ] Follow-up emails drafted next morning
+- [ ] Conversation data handed to outreach-manager for follow-up drafting
 - [ ] All contacts added to Attio (People + Active Deals)
 - [ ] Vault entities created for each new contact
 - [ ] Conference debrief note saved to brain/calls/

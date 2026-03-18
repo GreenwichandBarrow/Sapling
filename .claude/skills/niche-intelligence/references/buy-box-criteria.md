@@ -9,7 +9,7 @@ Google Doc: G&B Buy Box 3.18.26 in ANALYST / PROJECTS / G AND B BUY BOX folder
 |------|------------------------|----------------------|
 | Revenue | $10-50M | $5-40M |
 | EBITDA | $2-5M preferred | $2M+ acceptable |
-| EBITDA Margins | 20%+ required | 20%+ required |
+| EBITDA Margins | 15%+ required | 15%+ required |
 | Operating History | 10+ years preferred | 5+ years |
 | Employees | 11-200 preferred | 11-200 preferred |
 | Revenue Quality | Recurring or convertible | Recurring |
@@ -27,16 +27,17 @@ Google Doc: G&B Buy Box 3.18.26 in ANALYST / PROJECTS / G AND B BUY BOX folder
 
 **Operating history exception (5-9 years for services):** Acceptable IF the company shows strong consistent growth, established market position, and durable customer relationships.
 
-**Small team exception (<11 employees):** Acceptable IF EBITDA margins are strong (20%+), revenue per employee is high, and the model doesn't require a large team to scale. Tradeoff: more operational burden on Kay, higher key-person risk.
+**Small team exception (<11 employees):** Acceptable IF EBITDA margins are strong (15%+), revenue per employee is high, and the model doesn't require a large team to scale. Tradeoff: more operational burden on Kay, higher key-person risk.
 
-**Margin lesson:** Hangman (8% blended) and Acumen (8-9%) both failed investor threshold. Sub-20% is structural, not fixable.
+**Margin lesson:** Hangman (8% blended) and Acumen (8-9%) both failed investor threshold. Sub-15% is a red flag.
 
 ## Owner Profile
 
-- Actively involved today
+- Founder-owned or closely held
+- Owner may be actively involved or stepped back from day-to-day (absentee ownership is a plus)
 - Succession horizon: 1-5 years
 - Typically 55+ or succession-relevant (retirement, fatigue, health, lifestyle)
-- Values legacy, continuity, employee stability
+- Values legacy, continuity, and employee stability
 - No requirement for full Day 1 exit
 
 ## Must-Have Characteristics

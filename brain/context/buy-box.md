@@ -27,7 +27,7 @@ Greenwich & Barrow is acquiring one exceptional, privately owned business where 
 |------|------------------------|----------------------|
 | Revenue | $10-50M | $5-40M |
 | EBITDA | $2-5M preferred | $2M+ acceptable |
-| EBITDA Margins | 20%+ required | 20%+ required |
+| EBITDA Margins | 15%+ required | 15%+ required |
 | Operating History | 10+ years preferred | 5+ years |
 | Employees | 11-200 preferred | 11-200 preferred |
 | Revenue Quality | Recurring or convertible | Recurring |
@@ -46,16 +46,17 @@ Greenwich & Barrow is acquiring one exceptional, privately owned business where 
 
 **Operating history exception (5-9 years for services):** Acceptable IF the company demonstrates strong, consistent growth trajectory, established market position, and durable customer relationships. A 5-year-old services company growing at 20%+ with high retention is a stronger candidate than a 15-year-old company that's been flat.
 
-**Small team exception (<11 employees):** Acceptable IF EBITDA margins are strong (20%+), revenue per employee is high, and the business model doesn't require a large team to scale. A 6-person company doing $3M EBITDA with 30% margins is a better target than a 50-person company doing $2M EBITDA at 10% margins. **Tradeoff:** Smaller team = more operational burden on Kay. Key-person risk is higher. Ensure no single employee is irreplaceable.
+**Small team exception (<11 employees):** Acceptable IF EBITDA margins are strong (15%+), revenue per employee is high, and the business model doesn't require a large team to scale. A 6-person company doing $3M EBITDA with 30% margins is a better target than a 50-person company doing $2M EBITDA at 10% margins. **Tradeoff:** Smaller team = more operational burden on Kay. Key-person risk is higher. Ensure no single employee is irreplaceable.
 
-**Margin lesson:** Hangman (8% blended) and Acumen (8-9%) both failed investor threshold. Sub-20% is structural, not fixable.
+**Margin lesson:** Hangman (8% blended) and Acumen (8-9%) both failed investor threshold. Sub-15% is a red flag.
 
 ## Owner Profile
 
-- Actively involved today
+- Founder-owned or closely held
+- Owner may be actively involved or stepped back from day-to-day (absentee ownership is a plus, not a negative)
 - Succession horizon: 1-5 years
 - Typically 55+ or succession-relevant (retirement, fatigue, health, lifestyle)
-- Values legacy, continuity, employee stability
+- Values legacy, continuity, and employee stability
 - No requirement for full Day 1 exit
 
 ## Must-Have Characteristics

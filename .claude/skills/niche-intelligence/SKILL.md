@@ -11,11 +11,12 @@ user-invocable: true
 This skill implements a **sequential pipeline** where each step depends on the previous step's output. Within steps, sub-agents run in **parallel** where possible.
 
 ```
-Step 1: GATHER (parallel)     → raw intelligence
-Step 2: IDENTIFY (sequential) → new niche candidates
-Step 3: ONE-PAGER (parallel per niche) → pptx deliverables
-Step 4: SCORE (sequential)    → scored niches + final report
-Step 5: UPDATE (sequential)   → tracker updated + notification
+Step 1: GATHER (parallel)      → raw intelligence
+Step 2: IDENTIFY (sequential)  → new niche candidates
+Step 3: ONE-PAGER (parallel)   → pptx deliverables
+Step 4: SCORE (sequential)     → scored niches + final report
+Step 4b: VALIDATE (parallel)   → buy-box target count (gate before promotion)
+Step 5: UPDATE (sequential)    → tracker updated + notification
 ```
 
 ### Chatroom Coordination
@@ -116,6 +117,33 @@ No intake question needed — this is a fully automated workflow.
 | Agent Name | Type | Description |
 |------------|------|-------------|
 | `niche-intel-scorer` | general-purpose | Score each niche using G&B detailed scorecard |
+
+### Step 4b: Buy-Box Target Validation (NEW — gate before promotion)
+
+Before any niche gets promoted to the top 5, run a target validation step:
+
+| Agent Name | Type | Description |
+|------------|------|-------------|
+| `niche-intel-target-validator` | general-purpose | Count real acquirable targets that fit the buy box |
+
+**What it does:**
+1. Search for actual companies in the niche (web search, Linkt profile flow, association directories, industry databases)
+2. Filter for buy-box fit: independently owned, $2-5M+ EBITDA, 10+ employees, 10+ year history, not PE-backed, owner-operator
+3. Check for PE consolidation activity (are targets being scooped?)
+4. Count how many **real, acquirable targets** exist — not TAM, not total firms
+
+**Output per niche:**
+- Total firms in market: {n}
+- Firms fitting buy box: {n}
+- Already PE-backed/acquired: {n}
+- Net acquirable targets: {n}
+- Named examples (top 5 with company name, revenue, employees, location, owner)
+- PE consolidation risk: High/Medium/Low
+- Verdict: Sufficient targets (20+) / Thin (10-20) / Insufficient (<10)
+
+**Gate rule:** Niches with fewer than 10 net acquirable targets get flagged as "Thin Target Pool" in the tracker. Niches with fewer than 5 are not promoted to top 5 regardless of scorecard score. Kay can override with explicit approval.
+
+**Why this was added:** Trust Administration scored 2.88 (highest) but had almost no acquirable targets — all one-person practices. Insurance Producer License Compliance had 5-10 targets with half already PE-acquired. High scorecard scores with empty target pools waste sprint time. This gate prevents that.
 
 ### Step 5: Tracker Update
 

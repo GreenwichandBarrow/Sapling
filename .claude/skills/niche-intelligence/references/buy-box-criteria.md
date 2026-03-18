@@ -10,8 +10,8 @@ Google Doc: G&B Buy Box 3.18.26 in ANALYST / PROJECTS / G AND B BUY BOX folder
 | Revenue | $10-50M | $5-40M |
 | EBITDA | $2-5M preferred | $2M+ acceptable |
 | EBITDA Margins | 20%+ required | 20%+ required |
-| Operating History | 10+ years | 5+ years |
-| Employees | 11-200 | 11-200 |
+| Operating History | 10+ years preferred | 5+ years |
+| Employees | 11-200 preferred | 11-200 preferred |
 | Revenue Quality | Recurring or convertible | Recurring |
 | Ownership | Founder/closely held, no VC/PE | Same |
 | Customer Concentration | No single customer >15% | Same |
@@ -24,6 +24,10 @@ Google Doc: G&B Buy Box 3.18.26 in ANALYST / PROJECTS / G AND B BUY BOX folder
 - No additional capital required
 - Clear path to $3M+ EBITDA within 3 years
 - Tradeoff: no management team, searcher does every job
+
+**Operating history exception (5-9 years for services):** Acceptable IF the company shows strong consistent growth, established market position, and durable customer relationships.
+
+**Small team exception (<11 employees):** Acceptable IF EBITDA margins are strong (20%+), revenue per employee is high, and the model doesn't require a large team to scale. Tradeoff: more operational burden on Kay, higher key-person risk.
 
 **Margin lesson:** Hangman (8% blended) and Acumen (8-9%) both failed investor threshold. Sub-20% is structural, not fixable.
 
@@ -47,28 +51,28 @@ Google Doc: G&B Buy Box 3.18.26 in ANALYST / PROJECTS / G AND B BUY BOX folder
 
 ## Explicit Exclusions
 
-VC/PE-backed, public companies, franchises, consumer retail/DTC, restaurants/hospitality, construction/labor-heavy, capital-intensive manufacturing, real-estate-dependent, physician practices, seasonal businesses, blue-collar culture, West Coast geography
+VC/PE-backed, public companies, franchises, consumer retail/DTC, restaurants/hospitality, construction/labor-heavy, capital-intensive manufacturing, physician practices, seasonal businesses, blue-collar culture
 
-## Current Thesis Niches (March 2026)
-
-1. Insurance Producer License Compliance (active sprint)
-2. Trust Administration
-3. Estate Management Companies
-4. Art Insurance Brokerage
-5. Trade Credit Insurance
-
-## Industry Flags (signals worth investigating)
+## Industry Flags (signals a niche is worth investigating)
 
 - Licensing and renewals
 - Regulatory/compliance infrastructure
 - Trade credit, surety, bonds
 - Insurance infrastructure
 - Asset custody, inventory, documentation
+- "Boring but essential" service businesses
+- Specialty services supporting HNW individuals or enterprises
+
+Active thesis niches rotate and are tracked in the Industry Research Tracker, not here.
 
 ## Geography
 
-- **Track A (Opportunistic):** Within ~1.5hr of NYC (10014), priority NY/CT/NJ
-- **Track B (Thesis-Driven):** Anywhere US, industry relevance > geography
+- **Priority 1:** Northeast corridor (NY, CT, NJ, Boston, Philly, DC, Hartford)
+- **Priority 2:** Midwest / Southeast (Chicago, Charlotte, Atlanta)
+- **Priority 3:** Anywhere US if remote-manageable or business warrants it
+- **Excluded:** West Coast (California regulatory concerns)
+
+Industry relevance always outweighs geography.
 
 ## Financial Targets
 

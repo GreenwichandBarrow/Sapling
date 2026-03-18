@@ -28,8 +28,8 @@ Greenwich & Barrow is acquiring one exceptional, privately owned business where 
 | Revenue | $10-50M | $5-40M |
 | EBITDA | $2-5M preferred | $2M+ acceptable |
 | EBITDA Margins | 20%+ required | 20%+ required |
-| Operating History | 10+ years | 5+ years |
-| Employees | 11-200 | 11-200 |
+| Operating History | 10+ years preferred | 5+ years |
+| Employees | 11-200 preferred | 11-200 preferred |
 | Revenue Quality | Recurring or convertible | Recurring |
 | Ownership | Founder/closely held, no VC/PE | Same |
 | Customer Concentration | No single customer >15% | Same |
@@ -43,6 +43,10 @@ Greenwich & Barrow is acquiring one exceptional, privately owned business where 
 - Clear path to $3M+ EBITDA within 3 years
 - Per 2025 investor survey: 3 search funds acquired at <$3M enterprise value, all at <4x EBITDA. RIA in a Box (~$1.5M rev, ~$600K EBITDA) worked due to 35%+ growth.
 - **Tradeoff:** No management team. Searcher does every job. Must be willing to operate hands-on.
+
+**Operating history exception (5-9 years for services):** Acceptable IF the company demonstrates strong, consistent growth trajectory, established market position, and durable customer relationships. A 5-year-old services company growing at 20%+ with high retention is a stronger candidate than a 15-year-old company that's been flat.
+
+**Small team exception (<11 employees):** Acceptable IF EBITDA margins are strong (20%+), revenue per employee is high, and the business model doesn't require a large team to scale. A 6-person company doing $3M EBITDA with 30% margins is a better target than a 50-person company doing $2M EBITDA at 10% margins. **Tradeoff:** Smaller team = more operational burden on Kay. Key-person risk is higher. Ensure no single employee is irreplaceable.
 
 **Margin lesson:** Hangman (8% blended) and Acumen (8-9%) both failed investor threshold. Sub-20% is structural, not fixable.
 
@@ -67,29 +71,28 @@ Greenwich & Barrow is acquiring one exceptional, privately owned business where 
 
 ## Explicit Exclusions
 
-VC/PE-backed, public companies, franchises, consumer retail/DTC, restaurants/hospitality, construction/labor-heavy, capital-intensive manufacturing, real-estate-dependent, physician practices, seasonal businesses, blue-collar culture, West Coast geography
+VC/PE-backed, public companies, franchises, consumer retail/DTC, restaurants/hospitality, construction/labor-heavy, capital-intensive manufacturing, physician practices, seasonal businesses, blue-collar culture
 
-## Current Thesis Niches (March 2026)
-
-1. Insurance Producer License Compliance (active sprint)
-2. Trust Administration
-3. Estate Management Companies
-4. Art Insurance Brokerage
-5. Trade Credit Insurance
-
-## Industry Flags (signals worth investigating)
+## Industry Flags (signals a niche is worth investigating)
 
 - Licensing and renewals
 - Regulatory/compliance infrastructure
 - Trade credit, surety, bonds
 - Insurance infrastructure
 - Asset custody, inventory, documentation
+- "Boring but essential" service businesses
+- Specialty services supporting HNW individuals or enterprises
+
+Active thesis niches rotate and are tracked in the Industry Research Tracker, not here.
 
 ## Geography
 
-- **Track A (Opportunistic):** Within ~1.5hr of NYC (10014), priority NY/CT/NJ
-- **Track B (Thesis-Driven):** Anywhere US, industry relevance > geography
-- **Excluded:** West Coast (California regulatory concerns, travel time)
+- **Priority 1:** Northeast corridor (NY, CT, NJ, Boston, Philly, DC, Hartford)
+- **Priority 2:** Midwest / Southeast (Chicago, Charlotte, Atlanta)
+- **Priority 3:** Anywhere US if remote-manageable or business warrants it
+- **Excluded:** West Coast (California regulatory concerns, travel time prohibitive)
+
+Industry relevance always outweighs geography. A perfect-fit company in Texas beats a marginal fit in NYC.
 
 ## Financial Targets
 
@@ -104,21 +107,6 @@ VC/PE-backed, public companies, franchises, consumer retail/DTC, restaurants/hos
 - **Industry Scorecard:** 9 criteria, 30 pts max
 - **Company Scorecard:** 70% hard gates / 30% discretionary
 - **KS Fit (15% weight):** 50%+ recurring, 15%+ margins, steady/growing, B2B
-
-## Two Parallel Tracks
-
-**Track A: Opportunistic / Geographic**
-- Industry-agnostic within buy box
-- NYC metro radius (~1.5 hours)
-- Higher volume: 50 new companies/week
-- Email workflow
-
-**Track B: Thesis-Driven / Vertical Focus**
-- Industry relevance primary
-- Geography secondary
-- Lower volume: 15-25 companies per thesis/week
-- Manual outreach by Kay (Claude drafts)
-- Thesis rotates every 2-8 weeks
 
 ## Contact Requirements
 

@@ -70,19 +70,36 @@ Present the combined list (Linkt + supplemental) to Kay. She reviews:
 - Remove any that don't fit (wrong size, PE-backed, already contacted, etc.)
 - Flag any she has existing connections to (warm intro path)
 
+### Step 3b: Attio Dedup Check
+Before moving to outreach, check every approved target against Attio Active Deals. If the person/company already exists in the pipeline, skip them. If they're already receiving a pre-conference email from conference-prep, exclude from cold outreach — the conference framing is stronger and you don't want to dilute it.
+
 ### Step 4: Outreach Assignment
 Every approved target gets quality attention. For each target, Claude:
 - Does deep web research on the company and owner (beyond what Linkt provides)
-- Drafts a personalized email for Kay to send
-- Adds the owner to JJ's call sheet (phone + script)
-- Both channels hit the same target — email from Kay, call from JJ
+- Drafts a personalized email for Kay to send (Day 1 of cadence)
+- Adds the owner to JJ's call sheet with confirmation call date (Day 3)
 - Adds target to Attio Active Deals at "Identified" (pipeline-manager takes over from here)
 </target_discovery>
 
 <outreach>
-## Phase 2: Outreach Drafting (Daily, Tue-Thu)
+## Phase 2: Outreach Cadence (Per Target)
 
-### Email Drafts
+Each target goes through a sequenced multi-channel cadence. Email first, then JJ confirms, then follow-up if needed.
+
+### Outreach Sequence
+
+| Day | Channel | Who | Action |
+|-----|---------|-----|--------|
+| Day 1 | Email | Kay (via Superhuman draft) | Personalized cold email |
+| Day 3 | Phone | JJ | Confirmation call — "wanted to make sure you received Kay's note" |
+| Day 5-6 | Email | Kay (via Superhuman draft) | Follow-up email if no response — short, one line |
+| Day 8-10 | LinkedIn DM | Kay (manually) | High-value targets only, if email + call didn't land |
+
+After Day 10 with no response, move to nurture cadence (pipeline-manager handles from here).
+
+**Why this sequence:** The email establishes who Kay is and gives the owner time to check LinkedIn (where Kay's Chanel/luxury background closes the credibility gap). JJ's call 2 days later references the email, making it a warm confirmation rather than a cold call. The follow-up email is a lightweight bump. LinkedIn DM is the escalation reserved for high-fit targets.
+
+### Day 1: Kay's Email
 
 Every target gets a deeply personalized email. At 4-6 targets per day, there's no reason for templates.
 
@@ -113,32 +130,57 @@ Greenwich & Barrow
 
 Draft in Superhuman via the `superhuman` MCP server using the `superhuman_draft` tool with `--account kay.s@greenwichandbarrow.com`. This creates native Superhuman drafts that appear in Kay's drafts folder. Do NOT use `gog gmail drafts create` — Gmail API drafts do not sync to Superhuman. Kay reviews and sends from Superhuman.
 
-### JJ's Call List
+### Day 3: JJ's Confirmation Call
 
-Populate a Google Sheet in LINKT TARGET LISTS folder:
-| Company | Owner Name | Phone | Location | Script | Status | Notes | Date Called |
+JJ calls to confirm receipt of Kay's email. This is NOT a cold call — it's a warm follow-up.
 
-**Script** is niche-specific, written once at niche activation (by niche-intelligence) and refined based on JJ's feedback.
-
-**Script structure:**
+**Script:**
 ```
 Hi, this is JJ calling on behalf of Kay Schneider at Greenwich & Barrow.
-We're reaching out to {niche description} companies in the {region} area.
-Kay is exploring the {niche} industry and would love to speak with the
-owner about their experience in the space. Is {owner name} available
-for a brief conversation?
+Kay sent {owner name} a note a couple days ago and I just wanted to make
+sure it came through. She's been researching the {niche} space and would
+love to connect briefly with {owner name} about their experience.
+Would {owner name} have 15 minutes for a quick call?
 ```
 
+**Call sheet** — Google Sheet in LINKT TARGET LISTS folder:
+| Company | Owner Name | Phone | Location | Email Sent Date | Call Date (Day 3) | Script | Status | Notes |
+
 JJ logs status: Connected, Voicemail, Callback Requested, Not Interested, Wrong Number.
+
+### Day 5-6: Follow-Up Email
+
+If no response to email or call, Kay sends a short follow-up. One or two sentences max.
+
+```
+Hi {first name},
+
+Just circling back on my note from earlier this week. Would love to find a time to connect.
+
+Kay
+```
+
+Draft in Superhuman. Kay reviews and sends.
+
+### Day 8-10: LinkedIn DM (High-Value Only)
+
+Reserved for targets that are a strong fit but haven't responded to email or phone. Kay sends personally from her LinkedIn. Claude drafts the message, Kay copies and sends.
+
+Not every target gets this. Only use for owners where the company is a clear buy-box match and worth the extra touch.
+
+### Conference Exclusion Rule
+
+If a target is already receiving pre-conference outreach from conference-prep, do NOT run the cold outreach cadence. The conference framing ("I'll be at your booth Thursday") is stronger than cold email. Let conference-prep own that relationship until post-conference follow-up is complete.
 </outreach>
 
 <essential_principles>
 ## Principles
 
-### Volume
+### Volume & Cadence
 - 4-6 owners contacted per day (funds that acquired averaged 4, not 9)
 - Quality over quantity — deep research on each target, personalized outreach
-- Both channels (email + phone) hit the same target
+- Sequenced multi-channel: email Day 1 → JJ confirmation call Day 3 → follow-up email Day 5-6 → LinkedIn DM Day 8-10 (high-value only)
+- Conference targets excluded from cold cadence (conference-prep owns that relationship)
 
 ### Linkt Credit Management
 - 150 credits/month = ~5-6 companies/day if running daily

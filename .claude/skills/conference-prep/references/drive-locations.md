@@ -4,9 +4,8 @@
 - **Sheet ID:** 1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY
 - **URL:** https://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit
 - **Tabs:**
-  - `Pipeline` — Upcoming conferences to evaluate (Date, Event, Location, Travel, Niche, Cost, Deadline, Attendees, List Availability, Website, Status, Agent Recommendation, Decision, Notes)
-  - `Attended` — Conferences attended with results (Date, Event, Location, Niche, Targets, Conversations, Pipeline Adds, Follow-ups, Takeaways, Folder Link)
-  - `Register Only` — Events registered for attendee list only (Date, Event, Niche, Cost, Targets Scraped, Outreach Sent, Website, Notes)
+  - `Pipeline` — All active conferences: Discovered through Attended, including Register Only. Single view of everything active. (Date of Conference, Event, Location, Travel, Niche, Cost, Deadline, Attendees, List Availability, Website, Status, Agent Recommendation, Decision, Notes)
+  - `Skipped` — Archive for conferences Kay passes on. Same columns as Pipeline.
 
 ## Drive Folders
 

@@ -148,14 +148,13 @@ Claude always fills in recommendations. Kay always makes the final decision. The
 
 ### Conference Calendar
 
-Maintain in `brain/trackers/conference-calendar.md`:
-```markdown
-| Date | Event | Location | Niche | Status | Targets | Notes |
-|------|-------|----------|-------|--------|---------|-------|
-| 2026-03-24 | NAEPC Regional | NYC | Trust Admin | Registered | 8 | Pre-outreach sent |
-```
+Maintain in the **Conference Pipeline Google Sheet** (see references/drive-locations.md).
 
-Statuses: Discovered, Evaluating, Registered, Prep Complete, Attending, Attended, Skipped, Register-Only
+**Two tabs:**
+- **Pipeline** — all active conferences: Discovered through Attended, including Register Only. This is the single view.
+- **Skipped** — archive for conferences Kay passes on. Move rows here when Decision = Skip.
+
+Statuses: Discovered, Evaluating, Registered, Prep Complete, Attended, Skipped
 
 **Sort order:** Always chronological — earliest/closest date at top, farthest away at bottom.
 </discovery>

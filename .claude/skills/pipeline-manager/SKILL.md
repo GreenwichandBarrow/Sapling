@@ -141,6 +141,31 @@ Before scanning for signals, ingest new data from external tools into the vault.
 5. Set `source: email`, assign confidence level (high/medium/low)
 6. High confidence items surface in Part 1. Medium/low go to /triage.
 
+## Niche Signal Detection (runs during data ingestion)
+
+While processing Granola transcripts and Gmail, scan for niche-relevant signals that Kay may not have flagged. These feed into Friday's niche-intelligence run.
+
+**What to look for:**
+- Industry names or business types mentioned in calls that match buy box characteristics (B2B, recurring revenue, compliance-driven, fragmented market, founder-owned)
+- Brokers or contacts mentioning deal flow in specific industries ("we're seeing a lot of activity in X")
+- Multiple unrelated conversations referencing the same type of business in a week
+- River guides naming industries with succession dynamics ("all these guys are retiring")
+- Conference attendee clusters in unfamiliar niches
+- Email threads referencing business types Kay hasn't explored
+
+**What to flag:**
+- The signal (exact quote or paraphrase)
+- Source (which call, email, or meeting)
+- Why it matches buy box (which characteristics align)
+
+**Where to save:**
+Write each signal to `brain/inbox/YYYY-MM-DD-niche-signal-{slug}.md` using inbox schema with:
+- `tags: [inbox, topic/niche-signal, source/{source}]`
+- `confidence: low` (these are passive observations, not validated niches)
+- Body: the signal, source context, and buy box alignment
+
+These signals are NOT surfaced during the daily pipeline review. They queue silently for Friday's niche-intelligence GATHER step.
+
 ## Trigger
 
 - **Auto:** Runs on session start via hook (before `/start` daily workflow)

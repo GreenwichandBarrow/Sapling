@@ -99,6 +99,26 @@ No intake question needed — this is a fully automated workflow.
 | `niche-intel-calls` | general-purpose | Pull niche-related meeting notes from Granola |
 | `niche-intel-email` | general-purpose | Scan Gmail for deal flow / niche signals |
 | `niche-intel-research` | general-purpose | Read recent brain/outputs/ research files |
+| `niche-intel-passive-signals` | general-purpose | Pull queued niche signals from pipeline-manager |
+
+#### Passive Signal Intake (niche-intel-passive-signals)
+
+Pipeline-manager flags niche signals daily while processing Granola and Gmail. These accumulate in `brain/inbox/` tagged `topic/niche-signal` throughout the week.
+
+**This agent:**
+1. Glob for `brain/inbox/*niche-signal*` files created since last Friday
+2. Read each signal: what was said, who said it, source, buy box alignment
+3. Look for patterns: did multiple signals point to the same industry?
+4. Cluster related signals into candidate niches
+5. Post findings to chatroom alongside other gathering agents
+
+**Pattern recognition priorities:**
+- Same industry mentioned by 2+ unrelated sources = strong signal
+- Broker mentioning deal flow in an industry = strong signal
+- Single offhand mention = weak signal (include but don't weight heavily)
+- Signal aligns with buy box characteristics (regulatory, recurring, fragmented) = boost
+
+After niche-intelligence processes the signals, mark the inbox files as `status: processed` so they don't get re-scanned next week.
 
 ### Step 2: Identification
 

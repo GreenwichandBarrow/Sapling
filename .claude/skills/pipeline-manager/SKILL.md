@@ -253,12 +253,45 @@ curl -s -X POST "https://api.attio.com/v2/objects/companies/records" \
   -d '{"data":{"values":{"name":[{"value":"{company_name}"}]}}}'
 ```
 
+### Update People record attributes (Network relationships)
+```bash
+curl -s -X PATCH "https://api.attio.com/v2/objects/people/records/{record_id}" \
+  -H "Authorization: Bearer {API_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"data":{"values":{
+    "relationship_type": "{type}",
+    "nurture_cadence": "{cadence}",
+    "value_to_search": "{value}",
+    "next_action": "{action}",
+    "how_introduced": "{intro_context}"
+  }}}'
+```
+
+### Search for a person
+```bash
+curl -s -X POST "https://api.attio.com/v2/objects/people/records/query" \
+  -H "Authorization: Bearer {API_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"filter":{"name":{"$contains":"{person_name}"}}}'
+```
+
+### Query all people with a specific nurture cadence (for overdue checks)
+```bash
+curl -s -X POST "https://api.attio.com/v2/objects/people/records/query" \
+  -H "Authorization: Bearer {API_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"filter":{"nurture_cadence":"{cadence}"}}'
+```
+
 After all updates, confirm:
 ```
 Pipeline updates complete:
-- {n} entries moved to new stages
-- {n} new entries added
+- {n} pipeline entries moved to new stages
+- {n} People records updated (network relationships)
+- {n} new entries/contacts added
 - {n} stale deals flagged
+- {n} overdue nurture contacts surfaced
+- {n} Motion tasks created
 ```
 </execute>
 
@@ -301,11 +334,15 @@ This ensures nothing falls through the cracks between pipeline updates and actua
 ## Success Criteria
 
 Pipeline manager run is complete when:
-- [ ] Yesterday's calendar, email, and vault scanned for signals
-- [ ] Signals matched against Attio pipeline entries
-- [ ] Recommendations presented to Kay (or "no updates needed" if clean)
-- [ ] Approved changes executed via Attio API
+- [ ] Yesterday's calendar, email, Granola, and vault scanned for signals
+- [ ] Signals matched against Attio pipeline entries AND People records
+- [ ] Pipeline stage recommendations presented one at a time
+- [ ] Network relationship recommendations presented one at a time
+- [ ] Approved pipeline changes executed via Attio Lists API
+- [ ] Approved People record updates executed via Attio People API
+- [ ] Overdue nurture contacts surfaced
 - [ ] Stale deals flagged (2+ weeks in same stage)
-- [ ] Follow-up actions surfaced
+- [ ] Thank you emails drafted for approved contacts
+- [ ] Motion tasks created for all approved follow-up actions
 - [ ] Summary confirmed to user
 </success_criteria>

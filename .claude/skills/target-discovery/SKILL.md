@@ -100,28 +100,81 @@ Pass approved, deduped targets to skill/outreach-manager's cold outreach subagen
 - **Outreach Manager:** All outreach drafting (email, call list, follow-ups) — separate skill
 - **Analyst:** Company scorecards for approved targets (when requested)
 
-### Sprint Check-In (Every 2 Weeks)
-At the 2-week mark, evaluate:
-- How many targets found in this niche?
-- Response rate from owners?
-- Any meaningful conversations?
-- Is the target pool deep enough to continue?
-- Kill, advance, or table this niche?
+### ICP Calibration Loop
 
-If the niche is running dry, escalate to Kay. Don't wait 8 weeks.
+The ICP is a living document. Track these signals to know if it needs adjustment:
+
+**After Kay reviews target list:**
+- Track accept/reject rate. Rejecting 50%+ = ICP too loose. Accepting all but pool is tiny = ICP too tight.
+- Log rejection reasons (wrong size, PE-backed, wrong industry, wrong geography). Patterns in rejections = ICP criteria to tighten.
+
+**After JJ's calls (from outreach-manager):**
+- High "Wrong Number" rate = bad contact data from Linkt, not an ICP problem.
+- High "Not Interested" rate = wrong type of company. ICP may need adjustment.
+- Connected + positive conversations = ICP is working.
+
+**After outreach responses (from outreach-manager):**
+- Response rate by batch. No responses from an entire batch = wrong audience.
+- Response quality. "Not selling" = ICP identified the right companies but wrong timing. "Wrong person" = contact criteria need tightening.
+
+**Sprint check-in (every 2 weeks):**
+Pull all the above metrics and explicitly evaluate:
+- Should we tighten, loosen, or shift the ICP criteria?
+- Are Linkt search parameters matching what Kay actually approves?
+- Credit efficiency: how many credits per approved target?
+
+If the niche is running dry or ICP is consistently off, escalate to Kay. Don't wait 8 weeks.
 </essential_principles>
+
+<validation>
+## Validation (Stop Hooks)
+
+After target discovery completes, verify all deliverables before notifying Kay:
+
+### Step 1: Sheet Validation
+- Confirm Google Sheet in LINKT TARGET LISTS folder has new rows with today's date
+- Verify all required columns are populated (Company, Owner Name, Email, Phone at minimum)
+- Verify phone numbers are formatted correctly: `(XXX) XXX-XXXX`
+
+### Step 2: Attio Validation
+- Confirm all approved targets exist in Attio Active Deals at "Identified" stage
+- Confirm no duplicates were created (query by company name)
+
+### Step 3: Handoff Validation
+- Confirm target data was passed to outreach-manager with all required fields
+- Confirm no targets are missing email (required for Day 1 email)
+
+### Step 4: Credit Tracking
+- Log credits consumed this run
+- Calculate remaining monthly credits
+- Flag if <20 credits remaining this month
+
+### Step 5: Slack Notification
+Only after all validation passes:
+```bash
+curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+  -H "Content-Type: application/json" \
+  -d '{"text":"Target list ready for review — {n} new targets in {niche}.\n{n} credits used ({n} remaining this month).\nhttps://docs.google.com/spreadsheets/d/{SHEET_ID}/edit"}'
+```
+
+If validation fails, do NOT send Slack. Report the failure and fix before notifying.
+</validation>
 
 <success_criteria>
 ## Success Criteria
 
 ### Daily
 - [ ] 4-6 new targets discovered and researched
+- [ ] Google Sheet populated with new targets
+- [ ] Kay notified via Slack with sheet link
 - [ ] Target list reviewed by Kay
 - [ ] Approved targets deduped against Attio
+- [ ] Approved targets added to Attio Active Deals at "Identified"
 - [ ] Approved targets handed to outreach-manager
-- [ ] New targets added to Attio Active Deals at "Identified"
+- [ ] Credits consumed logged
 
 ### Weekly
 - [ ] 20-30 targets discovered and handed off
-- [ ] Sprint progress reviewed (Friday)
+- [ ] ICP accept/reject rate tracked
+- [ ] Sprint progress reviewed
 </success_criteria>

@@ -11,8 +11,13 @@ context_budget:
 <objective>
 Turn an activated niche into owner conversations. This skill executes the Field Execution phase of the G&B 8-week research cycle.
 
-Input: An activated niche with ICP defined.
-Output: 4-6 qualified targets per day → personalized email drafts for Kay + call list for JJ → targets in Attio Active Deals pipeline.
+This skill builds on three prior skills:
+- **skill/niche-intelligence** — provides the one-pager, scorecard, buy-box target validation (Step 4b), and Industry Research Tracker data for the activated niche
+- **skill/pipeline-manager** — tracks all targets in Attio, manages stage progression, captures meaningful conversations, handles nurture reminders and follow-ups
+- **skill/conference-prep** — provides conference calendar, attendee/exhibitor lists, pre/post conference outreach for events in the activated niche
+
+Input: An activated niche that has already been scored, validated, and promoted via niche-intelligence.
+Output: 4-6 qualified targets per day → personalized email drafts for Kay + call list for JJ → targets in Attio Active Deals pipeline (managed by pipeline-manager).
 
 Goal: 1 interesting deal reviewed per week, fed by 2-5 meaningful owner conversations per week.
 </objective>
@@ -82,28 +87,33 @@ When a conference is coming up, this skill works with conference-prep to identif
 <niche_activation>
 ## Phase 1: Niche Activation (Week 1 of sprint)
 
-When a new niche is activated:
+When a new niche is activated, pull from existing skill outputs — don't rebuild what's already been created.
 
-### 1. Write Thesis
-Kay writes 2-3 sentence thesis positioning. Claude can draft for review.
-```
-Example: "Insurance producer license compliance firms manage multi-state
-broker license renewals and CE compliance for insurance agencies. Regulatory
-complexity by state creates switching costs and recurring revenue.
-Consolidation is underway (Altaline/Haven, Kelso, Wolters Kluwer) validating
-the economics."
-```
+### 1. Pull Existing Intelligence
 
-### 2. Define ICP
-Claude drafts ICP parameters for Kay's approval:
-- Company size: revenue range, employee count
+**From skill/niche-intelligence:**
+- One-pager (already created in Google Drive, RESEARCH > INDUSTRY ANALYSIS & SCORING)
+- Scorecard (already scored on Industry Research Tracker)
+- Buy-box target validation (Step 4b) — confirmed acquirable target count
+- Thesis positioning — already written in the one-pager
+
+**From skill/pipeline-manager:**
+- Existing contacts in Attio who are in this niche (intermediaries, industry experts, network contacts)
+- Any deals already in the Active Deals pipeline for this niche
+
+**From skill/conference-prep:**
+- Conference Pipeline sheet — events already discovered for this niche
+- Any attendee/exhibitor lists already acquired
+
+### 2. Define ICP for Linkt
+Using the one-pager and scorecard criteria, Claude drafts ICP parameters for Kay's approval:
+- Company size: revenue range, employee count (from scorecard)
 - Ownership: independent, owner-operated, not PE-backed
-- Geography: within buy box (1hr of home preferred, anywhere US if remote)
+- Geography: within buy box
 - Age: 10+ years operating history
 - Model: recurring revenue, B2B services
 - Owner profile: retiring, fatigued, or succession-planning
 
-### 3. Create Linkt ICP
 ```
 POST /v1/icp with:
 - Name: "{Niche Name} - G&B Acquisition Target"
@@ -111,29 +121,20 @@ POST /v1/icp with:
 - Criteria from ICP definition above
 ```
 
-### 4. Conference Mapping
-Check conference-prep Pipeline sheet for events in this niche. Flag relevant upcoming conferences.
-
-### 5. Intermediary Mapping
-Search vault and Attio for existing contacts who could be river guides in this niche:
-- Brokers who cover this industry
+### 3. Map Intermediaries and River Guides
+Search vault entities and Attio People records for existing contacts in this niche:
+- Brokers who cover this industry (Intermediary pipeline)
 - CPAs/attorneys who serve these businesses
-- Association leaders
-- Industry consultants
+- Association leaders (from one-pager research)
+- Industry consultants and experts (People records with relationship_type = Industry Expert)
+- River guides who could accompany Kay to conferences in this niche
 
-### 6. Define Tier Framework
-- **Tier A (top 10):** Best-fit targets. Kay sends personalized email. Claude does deep research per company.
-- **Tier B (next 20-30):** Good fit. Claude drafts personalized email. Kay reviews/sends.
-- **Tier C (remaining):** JJ cold calls with script.
-
-### Deliverables (Week 1)
-- [ ] Thesis written and approved
-- [ ] ICP created in Linkt
-- [ ] Tier A/B/C framework defined
-- [ ] Conference calendar checked for relevant events
-- [ ] Intermediary map drafted
-- [ ] JJ's call script written for this niche
-- [ ] Niche sprint Google Sheet created (see references/drive-locations.md)
+### 4. Create Sprint Assets
+- [ ] ICP created in Linkt (informed by one-pager + scorecard)
+- [ ] Conference calendar reviewed for this niche (from conference-prep)
+- [ ] Intermediary/river guide map drafted (from pipeline-manager + vault)
+- [ ] JJ's cold call script written for this niche
+- [ ] Niche sprint Google Sheet created in LINKT TARGET LISTS folder (see references/drive-locations.md)
 </niche_activation>
 
 <target_discovery>
@@ -191,28 +192,31 @@ OR search existing Linkt entities first to avoid re-spending credits
 3. Write with `--input USER_ENTERED` and apostrophe prefix (`'(973) 770-9090`) to prevent formula interpretation
 This must happen on every Linkt pull, not as a cleanup step.
 
-### Step 4: Tier Assignment
-Based on enrichment data + Kay's review:
-- Tier A → deep research + Kay's personalized email
-- Tier B → Claude's personalized email
-- Tier C → JJ's call list
+### Step 4: Outreach Assignment
+Every target gets quality attention. For each approved target, Claude:
+- Does deep research on the company and owner
+- Drafts a personalized email for Kay to send
+- Adds the owner to JJ's call sheet (phone + script)
+- Both channels hit the same target — email from Kay, call from JJ
 </target_discovery>
 
 <outreach>
 ## Phase 3: Outreach Drafting (Daily, Tue-Thu)
 
-### Email Drafts (Tier A + B)
+### Email Drafts
+
+Every target gets a deeply personalized email. At 4-6 targets per day, there's no reason for templates.
 
 **Voice:** Kay's calibrated outreach voice (see memory: user_outreach_voice.md)
 **Rules:**
 - No em dashes. Periods, commas, line breaks.
 - Conversational, warm, direct
-- Reference something specific about the owner or business (from research)
+- Reference something specific about the owner or business (from Claude's deep research)
 - Never mention "I want to buy your company" — frame as exploring the industry, learning from experts
 - Keep it short (3-5 sentences)
 - Propose a specific next step (phone call, coffee if local)
 
-**Tier A Template (Kay sends, deeply personalized):**
+**Structure:**
 ```
 Subject: {Something specific to their business}
 
@@ -223,21 +227,6 @@ Hi {first name},
 {1 sentence proposing a conversation — learning about the industry, not pitching}.
 
 Would love to connect for 15 minutes.
-
-Kay Schneider
-Greenwich & Barrow
-```
-
-**Tier B Template (personalized but lighter touch):**
-```
-Subject: Quick question about {their niche/specialty}
-
-Hi {first name},
-
-{1 sentence about their company and what caught your attention}.
-{1 sentence about what you're exploring in the space}.
-
-Would you be open to a brief call?
 
 Kay Schneider
 Greenwich & Barrow

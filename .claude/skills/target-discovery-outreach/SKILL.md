@@ -111,7 +111,7 @@ Kay Schneider
 Greenwich & Barrow
 ```
 
-Draft in Superhuman (via MCP when connected) or Gmail via gog as fallback. Kay reviews and sends.
+Draft in Superhuman via the `superhuman` MCP server using the `superhuman_draft` tool with `--account kay.s@greenwichandbarrow.com`. This creates native Superhuman drafts that appear in Kay's drafts folder. Do NOT use `gog gmail drafts create` — Gmail API drafts do not sync to Superhuman. Kay reviews and sends from Superhuman.
 
 ### JJ's Call List
 

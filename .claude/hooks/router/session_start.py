@@ -11,12 +11,14 @@ from router.models import HandlerConfig
 from router.handlers.session import session_init, dedup_cleanup
 from router.handlers.git import git_sync_startup
 from router.handlers.continuation import load_continuation_state
+from router.handlers.pipeline import pipeline_pulse
 
 HANDLERS = [
     HandlerConfig(fn=session_init, name="session-init"),
     HandlerConfig(fn=git_sync_startup, name="git-sync-startup"),
     HandlerConfig(fn=dedup_cleanup, matcher="startup", name="dedup-cleanup"),
     HandlerConfig(fn=load_continuation_state, matcher="compact", name="load-continuation"),
+    HandlerConfig(fn=pipeline_pulse, matcher="startup", name="pipeline-pulse"),
 ]
 
 if __name__ == "__main__":

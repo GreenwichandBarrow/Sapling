@@ -1,6 +1,6 @@
 ---
 name: pipeline-manager
-description: "Daily pipeline management — scans yesterday's activity, recommends stage changes, Kay approves/rejects, Attio updates automatically. Flags stale deals. Runs on session start via hook."
+description: "Daily morning briefing — pipeline stage changes, outreach recommendations (nurture cadence), and action items (Granola). Kay reviews, approved items become Motion tasks automatically. Runs on session start."
 user_invocable: true
 ---
 
@@ -38,23 +38,21 @@ For **all network contacts**. Person-based. Non-linear relationship management.
 
 ### Daily Review Flow
 
-**Part 1: Pipeline Updates (Intermediary, Active Deals, Investor)**
-Present stage change recommendations one at a time. Kay approves/rejects.
+On morning sign-on, Claude presents three sections sequentially. Kay reviews each item and approves or skips. Approved outreach and action items become Motion tasks automatically.
 
-**Part 2: Network Relationship Updates (People Records)**
-1. **Recent contacts** — "You met Dan Tanzilli yesterday. Update next_action to 'follow up on art attorney intro'?"
-2. **Stale next_actions** — "You've had 'send thank you to Denning' as next_action for 2 weeks. Still pending?"
-3. **New contacts to add** — "You met someone new at the One Hanover happy hour. Add them?"
+**Part 1: Pipeline Changes**
+Present any pipeline stage changes detected from yesterday's activity (Intermediary, Active Deals, Investor). One at a time.
+- Show: company/person, current stage, recommended stage, signal evidence
+- Kay approves → Attio updated immediately
+- Kay rejects → no change
+- Also flag stale deals (same stage 2+ weeks): "Kill, advance, or keep watching?"
 
-Each recommendation updates the People record on approval.
+**Part 2: Outreach Recommendations (Nurture Cadence)**
+Check ALL People with nurture_cadence set against their `last_interaction` date in Attio. Surface anyone overdue. One at a time.
 
-**Part 2b: Nurture Reminders**
-After relationship updates, check ALL People with nurture_cadence set against their `last_interaction` date in Attio. Surface anyone overdue:
-
-"Consider following up with {name} ({relationship_type}, {nurture_cadence}). Last contact: {date}."
-- **Approve** → Motion task created: "Follow up with {name}" with appropriate due date
+Format: "Consider following up with {name} ({relationship_type}, {nurture_cadence}). Last contact: {date}."
+- **Approve** → Motion task created: "Follow up with {name}" with due date based on urgency
 - **Skip** → no action
-- **Snooze** → skip for 1 week, surface again next run
 
 Cadence thresholds:
 - Weekly: overdue after 10 days
@@ -63,7 +61,28 @@ Cadence thresholds:
 - Occasionally: overdue after 7 months
 - Dormant: never surfaced
 
-Present max 5 nurture reminders per session to avoid overwhelm. Prioritize by: relationship value (value_to_search), days overdue, relationship_type.
+Also surface:
+- Stale next_actions (same next_action for 2+ weeks)
+- New contacts from yesterday's meetings that need to be added
+- Recent contacts whose attributes need updating
+
+Present max 5 nurture reminders per session. Prioritize by: relationship value, days overdue, relationship_type.
+
+**Part 3: Action Items (from Granola transcripts)**
+Present action items extracted from recent meeting transcripts. One at a time.
+
+Format: "From your meeting with {name} on {date}: '{action item}'"
+- **Approve** → Motion task created with title, description, and due date
+- **Skip** → no action
+
+After all three sections, confirm summary:
+```
+Pipeline manager complete:
+- {n} pipeline stages updated
+- {n} outreach tasks created in Motion
+- {n} action item tasks created in Motion
+- {n} stale deals flagged
+```
 
 ## Architecture: Manager + 3 Specialized Sub-Agents
 
@@ -71,7 +90,7 @@ Claude acts as the **manager** overseeing 3 specialized sub-agents that run in p
 - Launches all 3 agents simultaneously
 - Reviews their outputs for quality and consistency
 - Flags any red flags or conflicts to Kay before presenting
-- Presents recommendations sequentially: pipelines → relationships → tasks
+- Presents recommendations sequentially: Part 1 (pipeline changes) → Part 2 (outreach/nurture) → Part 3 (action items)
 - Executes approved changes
 - Runs stop hooks to validate execution
 

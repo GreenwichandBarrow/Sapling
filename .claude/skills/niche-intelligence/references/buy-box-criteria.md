@@ -8,7 +8,7 @@ Google Doc: G&B Buy Box 3.18.26 in ANALYST / PROJECTS / G AND B BUY BOX folder
 | Gate | Services/Infrastructure | Vertical SaaS/Software |
 |------|------------------------|----------------------|
 | Revenue | $10-50M | $5-40M |
-| EBITDA | $3M+ preferred | $2M+ acceptable |
+| EBITDA | $2-5M preferred | $2M+ acceptable |
 | EBITDA Margins | 20%+ required | 20%+ required |
 | Operating History | 10+ years | 5+ years |
 | Employees | 11-200 | 11-200 |
@@ -16,6 +16,14 @@ Google Doc: G&B Buy Box 3.18.26 in ANALYST / PROJECTS / G AND B BUY BOX folder
 | Ownership | Founder/closely held, no VC/PE | Same |
 | Customer Concentration | No single customer >15% | Same |
 | Business Type | B2B or B2B2C | B2B or B2B2C |
+
+**Small deal exception ($1-2M EBITDA):** Acceptable IF all are true:
+- 20%+ annual revenue growth over multiple years
+- Large industry TAM (business is small, industry is not)
+- Entry at 3-4x EBITDA (don't stretch on multiple)
+- No additional capital required
+- Clear path to $3M+ EBITDA within 3 years
+- Tradeoff: no management team, searcher does every job
 
 **Margin lesson:** Hangman (8% blended) and Acumen (8-9%) both failed investor threshold. Sub-20% is structural, not fixable.
 

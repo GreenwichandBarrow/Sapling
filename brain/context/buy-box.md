@@ -26,7 +26,7 @@ Greenwich & Barrow is acquiring one exceptional, privately owned business where 
 | Gate | Services/Infrastructure | Vertical SaaS/Software |
 |------|------------------------|----------------------|
 | Revenue | $10-50M | $5-40M |
-| EBITDA | $3M+ preferred | $2M+ acceptable |
+| EBITDA | $2-5M preferred | $2M+ acceptable |
 | EBITDA Margins | 20%+ required | 20%+ required |
 | Operating History | 10+ years | 5+ years |
 | Employees | 11-200 | 11-200 |
@@ -34,6 +34,15 @@ Greenwich & Barrow is acquiring one exceptional, privately owned business where 
 | Ownership | Founder/closely held, no VC/PE | Same |
 | Customer Concentration | No single customer >15% | Same |
 | Business Type | B2B or B2B2C | B2B or B2B2C |
+
+**Small deal exception ($1-2M EBITDA):** Acceptable IF all of the following are true:
+- 20%+ annual revenue growth demonstrated over multiple years
+- Large industry TAM (business is small, industry is not)
+- Entry price at 3-4x EBITDA (don't stretch on multiple)
+- No additional capital required to grow
+- Clear path to $3M+ EBITDA within 3 years
+- Per 2025 investor survey: 3 search funds acquired at <$3M enterprise value, all at <4x EBITDA. RIA in a Box (~$1.5M rev, ~$600K EBITDA) worked due to 35%+ growth.
+- **Tradeoff:** No management team. Searcher does every job. Must be willing to operate hands-on.
 
 **Margin lesson:** Hangman (8% blended) and Acumen (8-9%) both failed investor threshold. Sub-20% is structural, not fixable.
 

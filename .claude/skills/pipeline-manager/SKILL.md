@@ -42,6 +42,7 @@ On morning sign-on, Claude presents three sections sequentially. Kay reviews eac
 
 **Part 1: Pipeline Changes**
 Present any pipeline stage changes detected from yesterday's activity (Intermediary, Active Deals, Investor). One at a time.
+After each owner call or meeting, ask: "Was this a meaningful owner conversation?" If yes, check the `meaningful_conversation` checkbox on the Active Deals entry in Attio.
 - Show: company/person, current stage, recommended stage, signal evidence
 - Kay approves → Attio updated immediately
 - Kay rejects → no change

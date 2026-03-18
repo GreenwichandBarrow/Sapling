@@ -19,14 +19,25 @@ The Google Sheet already exists (one-time creation done). Each run adds a new we
 <essential_principles>
 ## What Kay Cares About
 
-These 4 metrics are the only ones that matter. They go at the top of the sheet, visually distinct:
+These metrics are what matter, in priority order. They go at the top of the sheet, visually distinct:
 
-1. **NDAs Signed** — deals progressing past intro
-2. **Financials Received** — real diligence happening
-3. **LOIs Submitted** — active pursuit
-4. **LOIs Signed** — committed deal
+**Deal Progress (the scoreboard):**
+1. **LOIs Signed** — committed deal
+2. **LOIs Submitted** — active pursuit
+3. **Financials Received** — real diligence happening
+4. **NDAs Signed** — deals progressing past intro
 
-Everything else is diagnostic — it shows whether the activity machine is converting into those numbers. The core question the supporting data answers: **Are we getting 2–5 owner conversations per week that turn into 1 interesting deal per week?** If key metrics are low, the supporting data shows where the funnel is leaking.
+**Conversation Quality (the leading indicator):**
+5. **Meaningful Owner Conversations** — owner discussed selling, shared business details, or agreed to next steps. Captured via `meaningful_conversation` checkbox on Active Deals list entries in Attio. Includes calls, in-person meetings, and Zoom. This is the #3 most tracked metric by experienced searchers (2025 investor survey).
+6. **Calls 15+ minutes** — quality signal separating real conversations from quick intros
+7. **Owner Response Rate (%)** — responses received / outreach sent. Experienced searchers track this over raw email count.
+
+**Source Attribution (where conversations come from):**
+8. **Conversations by source** — conference, email outreach, broker, network intro, cold call. Tracks which channels are actually converting.
+
+Everything else is diagnostic — it shows whether the activity machine is converting into those numbers. The core question the supporting data answers: **Are we getting 2-5 meaningful owner conversations per week that turn into 1 interesting deal per week?** If key metrics are low, the source attribution and supporting data show where the funnel is leaking.
+
+**Context:** 2025 investor survey of 54 searchers showed experienced searchers (24+ months) shift from tracking top-of-funnel (emails sent, open rates) to tracking direct connections (meetings, meaningful conversations, response rates, LOIs). Emails sent is a vanity metric. Meaningful conversations is the leading indicator.
 
 ## Locations
 
@@ -54,7 +65,9 @@ Spawn 4 specialized sub-agents in parallel to collect data. Each returns a struc
   "outreach_emails_sent": 0,
   "cold_calls_logged": 0,
   "responses_received": 0,
-  "intro_threads": []
+  "owner_response_rate_pct": 0,
+  "intro_threads": [],
+  "outreach_by_source": {"email": 0, "cold_call": 0, "conference_followup": 0, "broker": 0, "network": 0}
 }
 ```
 **Queries:**
@@ -121,6 +134,12 @@ Cross-reference with `brain/calls/` for logged call notes. Use Granola MCP to ve
 **To get all stage names:** `GET /v2/lists/{list_id}/attributes/stage/statuses`
 **To get entries:** `POST /v2/lists/{list_id}/entries/query` with `{}`
 
+**Also query `meaningful_conversation` checkbox on Active Deals entries:**
+```
+For each entry, check if meaningful_conversation is checked.
+Count total meaningful conversations this week (by comparing timestamps).
+```
+
 **Returns:**
 ```json
 {
@@ -128,6 +147,7 @@ Cross-reference with `brain/calls/` for logged call notes. Use Granola MCP to ve
   "financials_received": 0,
   "lois_submitted": 0,
   "lois_signed": 0,
+  "meaningful_conversations": 0,
   "total_active_pipeline": 0,
   "deals_added": 0,
   "deals_killed": 0,

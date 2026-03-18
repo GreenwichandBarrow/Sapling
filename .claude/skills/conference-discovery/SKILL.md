@@ -268,6 +268,54 @@ Create `brain/calls/{date}-{conference-slug}.md` with:
 - Tagged: `call`, `source/conference`, relevant niche tags
 </target_scoring>
 
+<validation>
+## Validation & Stop Hooks
+
+Before reporting success, validate all outputs. If any check fails, do NOT send Slack. Report the failure and fix it.
+
+### 1. Sheet Validation (after discovery)
+Verify the Conference Pipeline Google Sheet has new rows with data in all required columns:
+- Columns A-L (Date, Event Name, Location, Travel, Niche, Reg Cost, Reg Deadline, Est. Attendees, Attendee List, Website, Status, Agent Rec)
+- Column O (Agent Notes)
+- No blank cells in required columns for newly added rows
+
+### 2. Attendee List Validation (if processing attendees)
+Verify `brain/outputs/{date}-{conference-slug}-targets.md` exists with:
+- Valid frontmatter per output schema
+- Populated target list (not empty/placeholder)
+- Each target has company name, person name, title at minimum
+
+### 3. Attio Validation (post-conference processing)
+Verify all conference contacts were created in Attio:
+- People records exist with all 5 custom attributes populated
+- Active Deals entries exist at correct pipeline stage
+- No duplicates (cross-reference before creating)
+
+### 4. Vault Validation (post-conference processing)
+Verify:
+- Entity file exists at `brain/entities/{slug}.md` for each new contact, with proper schema
+- Debrief note exists at `brain/calls/{date}-{conference-slug}.md` with proper schema
+- All wiki-links resolve (no broken links)
+
+### 5. Slack Notification (only after validation passes)
+
+**After discovery run:**
+```bash
+curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+  -H "Content-Type: application/json" \
+  -d '{"text":"Conference discovery complete — {n} conferences found for next 4 weeks. {n} new options added to Pipeline sheet.\nhttps://docs.google.com/spreadsheets/d/{SHEET_ID}/edit"}'
+```
+
+**After post-conference processing:**
+```bash
+curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+  -H "Content-Type: application/json" \
+  -d '{"text":"Post-conference processing complete for {conference name}. {n} contacts added to Attio. Follow-up drafts handed to outreach-manager.\nhttps://docs.google.com/spreadsheets/d/{SHEET_ID}/edit"}'
+```
+
+**If validation fails:** Do NOT send Slack. Report which checks failed and fix before retrying.
+</validation>
+
 <success_criteria>
 ## Success Criteria
 

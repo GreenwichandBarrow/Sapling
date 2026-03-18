@@ -203,6 +203,39 @@ Draft in Superhuman. Present all drafts during morning pipeline-manager review. 
 - **weekly-tracker:** Outreach metrics (emails sent, calls made, response rates) feed into the weekly activity tracker.
 </essential_principles>
 
+<validation>
+## Validation / Stop Hooks
+
+Before reporting completion, run these checks in order. If any check fails, do NOT send the Slack notification. Report the failure and fix it before retrying.
+
+### 1. Superhuman Draft Validation
+Confirm every email draft was created via the `superhuman` MCP server (`superhuman_draft` tool). For each target, verify the tool returned a success response. If any draft creation failed or fell back to Gmail API, flag it — drafts must exist in Superhuman, not Gmail.
+
+### 2. Call Sheet Validation
+For every new cold target added this session, verify JJ's call columns in the Linkt target sheet are populated:
+- **Company** — non-empty
+- **Owner Name** — non-empty
+- **Phone** — non-empty
+- **Call Date** — Day 3 date populated
+
+Missing fields mean JJ can't execute. Fix before proceeding.
+
+### 3. Dedup Validation
+Confirm Attio was checked before any drafting began. No person should have outreach queued from both the cold outreach and conference outreach subagents. If a person appears in both queues, conference outreach takes priority and the cold draft must be removed.
+
+### 4. Cadence Tracking
+Every Day 1 email must have a corresponding Day 3 call entry scheduled in JJ's call sheet. Cross-reference the list of drafted emails against the call sheet. Any email without a matching Day 3 entry is a gap — add it before proceeding.
+
+### 5. Slack Notification (Only After Validation Passes)
+Only send once checks 1-4 all pass:
+```bash
+curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+  -H "Content-Type: application/json" \
+  -d '{"text":"Outreach ready — {n} email drafts in Superhuman, {n} targets added to JJ call list. Review and send when ready."}'
+```
+Replace `{n}` with actual counts. If validation failed, report the failure details instead — never send the "ready" notification when outreach is incomplete.
+</validation>
+
 <success_criteria>
 ## Success Criteria
 

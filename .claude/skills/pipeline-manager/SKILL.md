@@ -113,6 +113,11 @@ Claude acts as the **manager** overseeing 3 specialized sub-agents that run in p
 ### Stop Hooks (post-execution validation)
 1. **Pipeline validation** — confirms all approved stage changes were executed in Attio Lists
 2. **Relationships validation** — confirms all approved People attribute updates were executed, no blank next_actions left behind
+3. **Granola ingestion validation** — count meetings returned by `mcp__granola__list_meetings` vs files actually written to `brain/calls/`. Every meeting must have a corresponding file (or an idempotency skip logged). Mismatch = data loss.
+4. **Gmail ingestion validation** — count actionable emails identified during ingestion vs inbox files written to `brain/inbox/`. Every actionable email must have a corresponding file (or an idempotency skip logged). Mismatch = dropped action items.
+5. **Motion task validation** — for every approved action item (outreach tasks, follow-up tasks, Granola action items), verify a corresponding Motion task was created via the Motion API (`GET /tasks`). Compare approved count vs created count. Mismatch = tasks Kay thinks exist but don't.
+6. **Niche signal validation** — if any niche signals were detected during data ingestion, confirm each was written to `brain/inbox/` with the `topic/niche-signal` tag. Glob `brain/inbox/*niche-signal*` and verify count matches signals detected. Missing signals = lost intelligence for Friday's niche run.
+7. **Slack notification validation** — confirm the Slack webhook POST returned HTTP 200 OK. If non-200, retry once. If still failing, warn Kay directly in the session summary that Slack notification failed.
 
 ### Manager Red Flags
 The manager raises these to Kay before executing:

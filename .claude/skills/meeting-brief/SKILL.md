@@ -186,6 +186,45 @@ The Doc link is required — never send the notification without it.
 Share the Google Doc link so Kay can open it on her phone.
 </save_phase>
 
+<validation_phase>
+## Phase 4: Validation
+
+Run all validation checks before sending Slack. If any check fails, fix the issue and re-validate.
+
+### 1. Google Doc Validation
+Confirm `gog docs create` returned a document ID. Store it as `DOC_ID`.
+- If no ID returned, retry the create once. If it fails again, stop and report the error.
+- Verify the ID looks valid (non-empty string).
+
+### 2. Vault File Validation
+Confirm `brain/briefs/{YYYY-MM-DD}-{person-slug}.md` exists on disk.
+- Read the file and parse frontmatter.
+- Verify all required fields are present: `schema_version`, `date`, `type`, `title`, `people`, `companies`, `tags`.
+- If any field is missing, add it and re-save.
+
+### 3. Entity Validation
+Extract all wiki-links from `people` and `companies` frontmatter fields.
+- For each `[[entities/{slug}]]` reference, confirm `brain/entities/{slug}.md` exists.
+- If any entity file is missing, create it with proper schema before proceeding.
+- Re-read the entity schema at `schemas/vault/entity.yaml` if needed.
+
+### 4. Content Validation
+Confirm all 6 brief sections are populated (non-empty) in the vault file:
+- How Introduced
+- Who They Are
+- How Useful
+- What to Share
+- What Not to Over-Share
+- Talking Points
+
+If any section is empty or placeholder-only, stop and fill it with sourced content before proceeding.
+
+### 5. Slack Notification Validation
+Only send the Slack webhook call after checks 1-4 all pass.
+- Confirm the curl response includes `"ok"` (Slack returns the string `ok` on success).
+- If Slack returns an error, retry once. If it fails again, report the error to the user but do not block — the brief is already saved.
+</validation_phase>
+
 <success_criteria>
 Brief is complete when:
 - [ ] All 6 sections populated with specific, sourced information

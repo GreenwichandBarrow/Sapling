@@ -52,7 +52,7 @@ Google Doc: G&B Buy Box 3.18.26 in ANALYST / PROJECTS / G AND B BUY BOX folder
 
 ## Explicit Exclusions
 
-VC/PE-backed, public companies, franchises, consumer retail/DTC, restaurants/hospitality, construction/labor-heavy, capital-intensive manufacturing, physician practices, seasonal businesses, blue-collar culture
+VC/PE-backed, public companies, franchises, consumer retail/DTC, restaurants/hospitality, construction/labor-heavy, capital-intensive manufacturing, physician practices, seasonal businesses
 
 ## Industry Flags (signals a niche is worth investigating)
 

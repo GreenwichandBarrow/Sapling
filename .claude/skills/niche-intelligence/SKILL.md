@@ -1,6 +1,6 @@
 ---
 name: niche-intelligence
-description: "Friday Niche Intelligence workflow. Gathers data from newsletters, web, calls, email, and research — identifies new niches — creates one-pagers — scores against G&B scorecard — updates Industry Research Tracker. Run every Friday by 1pm EST."
+description: "Niche Intelligence workflow. Gathers data from newsletters, web, calls, email, and research — identifies new niches — creates one-pagers — scores against G&B scorecard — updates Industry Research Tracker. Run every Tuesday night (ready Wednesday AM for analyst meeting) by 1pm EST."
 user-invocable: true
 ---
 
@@ -106,7 +106,7 @@ No intake question needed — this is a fully automated workflow.
 Pipeline-manager flags niche signals daily while processing Granola and Gmail. These accumulate in `brain/inbox/` tagged `topic/niche-signal` throughout the week.
 
 **This agent:**
-1. Glob for `brain/inbox/*niche-signal*` files created since last Friday
+1. Glob for `brain/inbox/*niche-signal*` files created since last Tuesday
 2. Read each signal: what was said, who said it, source, buy box alignment
 3. Look for patterns: did multiple signals point to the same industry?
 4. Cluster related signals into candidate niches
@@ -206,6 +206,6 @@ Niche Intelligence run is complete when:
 - [ ] Output report written to `brain/outputs/{date}-niche-intelligence-report.md`
 - [ ] IDEATION tab updated with new niches + scores
 - [ ] High-scoring niches promoted to WEEKLY REVIEW if warranted
-- [ ] User notified that Friday Niche Intelligence is complete
+- [ ] User notified that Niche Intelligence is complete
 
 </success_criteria>

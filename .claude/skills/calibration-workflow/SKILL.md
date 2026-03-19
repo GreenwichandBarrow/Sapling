@@ -65,6 +65,8 @@ python3 .claude/scripts/list-unreviewed-traces.py [date_filter]
 - Hooks: `.claude/hooks/*.py`
 - CLAUDE.md files: `CLAUDE.md`, `brain/CLAUDE.md`, `.claude/CLAUDE.md`
 - Schemas: `schemas/vault/*.yaml`
+- **SOP:** `G&B Weekly Operating Schedule` in Google Drive (MANAGER DOCUMENTS / AI OPERATIONS). This is the master operating document showing team roles, daily deliverables, notification schedule, and event-driven workflows. Calibration agents MUST review this when proposing changes — any improvement that changes a deliverable, schedule, or notification must update the SOP as part of the change.
+  - Drive folder ID: `1F98mmZy6I89YBA9GT_OrOum1Hn4wu9SG`
 
 ## Phase 2: Coordinated Analysis
 

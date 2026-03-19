@@ -139,6 +139,21 @@ Before scanning for signals, ingest new data from external tools into the vault.
 5. Set `source: granola`, populate people/companies as wiki-links, generate tags
 6. Create any missing entities in brain/entities/
 
+### Superhuman Draft Status Check
+Check Superhuman via the `superhuman` MCP server for the status of outreach drafts created by outreach-manager:
+1. Use `superhuman_search` or `superhuman_inbox` to check if drafts created yesterday are still in drafts or were sent
+2. For each draft that was sent:
+   - Update Attio: move target from "Identified" to "Contacted"
+   - Calculate the Day 3 call date (2 business days later) and update JJ's call columns in the master sheet
+   - Log the sent date for cadence tracking
+3. For drafts still unsent after 2+ days:
+   - Flag in Kay's morning review: "{n} outreach drafts unsent in Superhuman. Review and send?"
+4. For any replies detected (responses to outreach emails):
+   - Flag as high-priority pipeline signal
+   - Recommend stage change based on reply content
+
+This is how the system knows Kay sent the email and triggers the rest of the cadence (JJ's Day 3 call, follow-up email at Day 5-6).
+
 ### Conference Decision Scan
 Check the Conference Pipeline Google Sheet for any row where Kay marked Decision (Col M) = "Attend" or "Register Only" since last scan. For each new decision:
 1. Create Motion task: "Register for {conference name}" with deadline 2 days before registration closes (Col G)

@@ -47,6 +47,7 @@ After each owner call or meeting, ask: "Was this a meaningful owner conversation
 - Kay approves → Attio updated immediately
 - Kay rejects → no change
 - Also flag stale deals (same stage 2+ weeks): "Kill, advance, or keep watching?"
+- Also present any new conference decisions detected (Attend/Register Only) with registration details and Motion task confirmation.
 
 **Part 2: Outreach Recommendations (Nurture Cadence)**
 Check ALL People with nurture_cadence set against their `last_interaction` date in Attio. Surface anyone overdue. One at a time.
@@ -137,6 +138,42 @@ Before scanning for signals, ingest new data from external tools into the vault.
 4. Write to `brain/calls/YYYY-MM-DD-{slug}.md` using call schema (schemas/vault/call.yaml)
 5. Set `source: granola`, populate people/companies as wiki-links, generate tags
 6. Create any missing entities in brain/entities/
+
+### Conference Decision Scan
+Check the Conference Pipeline Google Sheet for any row where Kay marked Decision (Col M) = "Attend" or "Register Only" since last scan. For each new decision:
+1. Create Motion task: "Register for {conference name}" with deadline 2 days before registration closes (Col G)
+2. Provide registration link from conference website (Col J)
+3. If attendee list is publicly available (Col I), begin attendee list acquisition
+4. Update Status (Col K) to "Registered" after Motion task created
+5. Slack Kay: "Saw you picked {conference name} for {date}. Registration task created in Motion. Link: {url}"
+
+Kay picks conferences Monday morning. Pipeline-manager scans overnight. This gives Kay a grace period to change her mind before registration is kicked off.
+
+### Target List Monitoring (JJ Call Outcomes)
+Read the active niche sprint's master sheet ("{Niche} - Target List") in LINKT TARGET LISTS folder. Scan JJ's call columns (Q-T) for new entries since last scan:
+- New "Connected" + "Interested" → move Attio from "Contacted" to "First Conversation"
+- New "Connected" + "Not Selling" → flag for Kay's review (keep or kill?)
+- New "Voicemail" → no stage change, note logged
+- New "Wrong Number" → flag data quality issue
+- New "Not Interested" → move to "Closed / Not Proceeding" or flag for Kay
+
+### JJ Daily Slack Notification
+Each morning, after processing pipeline changes, send JJ his call list for the day via Slack:
+```bash
+curl -s -X POST "{JJ_SLACK_WEBHOOK}" \
+  -H "Content-Type: application/json" \
+  -d '{"text":"Good morning JJ. Here are your calls for today:\n\n{list of names, companies, phones where Call Date = today}\n\nScript: {niche script}\n\nSheet: {link to master sheet}"}'
+```
+JJ webhook URL will be stored in references once the #jj-calls channel is created.
+
+### Warm Intro Detection
+When processing new targets (from target-discovery handoff), scan for warm intro paths before presenting to Kay:
+- Search Attio People records for connections to the target's company or owner
+- Search vault entities for any prior mentions
+- Search Gmail for any prior correspondence with the company or person
+- If a warm path exists, flag it: "Warm intro possible via {contact name} — {how connected}"
+
+This replaces the previous approach where Kay manually flagged warm intros. The agent does the research, Kay just sees the result.
 
 ### Gmail → brain/inbox/
 1. Query `gog gmail search "newer_than:2d" --json --max 50` for recent emails

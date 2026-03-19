@@ -37,6 +37,9 @@ Before either subagent drafts outreach, check Attio Active Deals:
 3. **Has this person been contacted in the last 30 days?** If yes, skip unless there's a new context (conference, referral, signal change).
 
 The dedup check runs once when targets are received, before any drafting begins.
+
+**How outreach-manager knows Kay sent the email:**
+Check Superhuman via the `superhuman` MCP server for sent status on drafted emails. If the draft was sent (no longer in drafts folder), the email was sent. Update Attio accordingly.
 </dedup_layer>
 
 <cold_outreach>
@@ -87,6 +90,13 @@ Greenwich & Barrow
 ```
 
 Draft in Superhuman via the `superhuman` MCP server using the `superhuman_draft` tool with `--account kay.s@greenwichandbarrow.com`. This creates native Superhuman drafts that appear in Kay's drafts folder. Do NOT use `gog gmail drafts create` — Gmail API drafts do not sync to Superhuman. Kay reviews and sends from Superhuman.
+
+**Attio State Machine:**
+- Outreach-manager monitors Attio for targets at "Identified" stage — these are Kay-approved targets ready for outreach
+- When outreach-manager drafts the Day 1 email → target stays at "Identified" (draft only, not sent yet)
+- When Kay sends the email from Superhuman → outreach-manager moves Attio to "Contacted"
+- Pipeline-manager then picks up the "Contacted" status and notifies JJ with Day 3 call date
+- After Day 10 with no response → pipeline-manager moves to nurture cadence
 
 ### Day 3: JJ's Confirmation Call
 

@@ -70,7 +70,7 @@ For companies found through free sources, use Linkt to enrich them (get validate
 Present the combined list (Linkt + supplemental) to Kay. She reviews:
 - Which targets are real acquisition candidates
 - Remove any that don't fit (wrong size, PE-backed, already contacted, etc.)
-- Flag any she has existing connections to (warm intro path)
+- Warm intro paths pre-identified by pipeline-manager (Kay reviews, does not need to flag manually)
 
 ### Step 4: Attio Dedup & Pipeline Entry
 Before handing off to outreach-manager:

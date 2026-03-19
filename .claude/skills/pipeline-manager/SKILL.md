@@ -146,8 +146,12 @@ Check Superhuman via the `superhuman` MCP server for the status of outreach draf
    - Update Attio: move target from "Identified" to "Contacted"
    - Calculate the Day 3 call date (2 business days later) and update JJ's call columns in the master sheet
    - Log the sent date for cadence tracking
-3. For drafts still unsent after 2+ days:
-   - Flag in Kay's morning review: "{n} outreach drafts unsent in Superhuman. Review and send?"
+3. For drafts still unsent, flag with escalating urgency:
+   - **Thank-you drafts (time-sensitive):**
+     - Unsent after 24 hours: "Thank-you to {name} still unsent. Approaching 48-hour window."
+     - Unsent after 48 hours: "Thank-you to {name} is 48+ hours old. Send today or it loses impact."
+   - **Outreach drafts (less urgent):**
+     - Unsent after 2+ business days: "{n} outreach drafts unsent in Superhuman. Review and send?"
 4. For any replies detected (responses to outreach emails):
    - Flag as high-priority pipeline signal
    - Recommend stage change based on reply content

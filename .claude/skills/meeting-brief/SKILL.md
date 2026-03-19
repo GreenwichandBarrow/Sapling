@@ -13,7 +13,9 @@ Generate a concise meeting brief for any upcoming external meeting where Kay is 
 
 This skill should run:
 - When Kay asks for a meeting brief or prep
-- Proactively when /start or calendar review reveals an upcoming meeting with someone Kay hasn't met before (no prior call notes in brain/calls/)
+- **Proactively the night before** any external meeting with someone Kay hasn't met before (no prior call notes in brain/calls/). Brief must be ready in the RESEARCH/BRIEFS folder and Slack notification sent by the morning before the meeting day. Example: Wednesday meeting → brief ready Tuesday morning.
+
+**How pipeline-manager triggers this:** During its daily calendar scan, pipeline-manager looks 2 days ahead. If it sees a meeting tomorrow with a new contact, it triggers the meeting-brief skill that night. The brief is ready the next morning.
 
 ## Core Questions Every Brief Must Answer
 

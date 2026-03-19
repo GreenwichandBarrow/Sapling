@@ -30,12 +30,16 @@ Local copy: `brain/library/internal/scorecard/G&B Industry & Company Scorecard T
 - **Criterion 9 (Valuation)** also 5% — this is a screening filter, not the primary decision driver.
 - **Criteria 1-2 carry 30% combined** — mission criticality and market growth are the most important factors.
 
-## When to Use
+## When to Use (Situational, Not Universal)
 
-- **Conference Discovery:** Score conference attendees/exhibitors to prioritize pre-conference outreach (top 10 targets)
-- **Target Discovery:** Score Linkt-sourced targets to prioritize outreach order
-- **Deal Intake & Evaluation:** Full scorecard when financials are received and deep analysis begins
-- **Sprint Check-In:** Re-score the niche's target pool to evaluate ICP quality
+The scorecard adds value when differentiating within a large pool or making go/no-go decisions. It's overhead on small daily batches where buy box hard gates already filter.
+
+| Situation | Score? | Why |
+|-----------|--------|-----|
+| Conference attendee list (50-200 people) | YES — quick partial score | Need to prioritize a large pool for pre-conference outreach (top 10) |
+| Linkt daily batch (4-6 targets) | NO — buy box hard gates are enough | Every approved target gets outreach anyway |
+| Deal progresses to financials received | YES — full score with real data | Structured evaluation for go/no-go decision |
+| Sprint check-in (2-week ICP review) | YES — score a sample retrospectively | Calibrate whether ICP is producing the right companies |
 
 ## Distinction from Industry Scorecard
 

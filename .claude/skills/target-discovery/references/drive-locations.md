@@ -19,22 +19,23 @@ Targets Kay rejected. Rows move here when Kay marks "Reject" in Col N. Reject re
 ## Column Layout (both tabs, same structure)
 
 ### Linkt Data (Claude populates)
-A: Company | B: Website | C: Headquarters | D: Industry | E: Employees | F: Revenue | G: Ownership | H: Owner Name | I: Owner Title | J: Email | K: Phone | L: LinkedIn (Owner) | M: LinkedIn (Company)
+A: **Source** — dropdown: Linkt, Association Directory, Conference List, Web Research, Intermediary Referral, Broker
+B: Company | C: Website | D: Headquarters | E: Industry | F: Employees | G: Revenue | H: Ownership | I: Owner Name | J: Owner Title | K: Email | L: Phone | M: LinkedIn (Owner) | N: LinkedIn (Company)
 
 ### Kay's Review (Kay populates)
-N: **Kay Decision** — dropdown: Approve, Reject, Maybe
-O: **Reject Reason** — dropdown: Wrong Size, PE-Backed, Wrong Industry, Wrong Geography, Already Contacted, Not a Fit, Other
-P: **Kay Notes** — freeform
+O: **Kay Decision** — dropdown: Approve, Reject, Maybe
+P: **Reject Reason** — dropdown: Wrong Size, PE-Backed, Wrong Industry, Wrong Geography, Already Contacted, Not a Fit, Other
+Q: **Kay Notes** — freeform
 
 ### JJ's Calls (JJ populates)
-Q: **Call Status** — dropdown: Not Called, Connected, Voicemail, Callback Requested, Not Interested, Wrong Number
-R: **Call Date**
-S: **Call Notes** — freeform
-T: **Owner Sentiment** — dropdown: Interested, Neutral, Not Selling, Hostile
+R: **Call Status** — dropdown: Not Called, Connected, Voicemail, Callback Requested, Not Interested, Wrong Number
+S: **Call Date**
+T: **Call Notes** — freeform
+U: **Owner Sentiment** — dropdown: Interested, Neutral, Not Selling, Hostile
 
 ### ICP Calibration (Claude auto-calculates)
-U: **ICP Match** — TRUE if Kay=Approve AND JJ call was positive (Connected + Interested/Neutral)
-V: **ICP Miss Reason** — auto-populated from Kay's Reject Reason or JJ's negative outcomes
+V: **ICP Match** — TRUE if Kay=Approve AND JJ call was positive (Connected + Interested/Neutral)
+W: **ICP Miss Reason** — auto-populated from Kay's Reject Reason or JJ's negative outcomes
 
 ## Row Lifecycle
 
@@ -48,10 +49,11 @@ V: **ICP Miss Reason** — auto-populated from Kay's Reject Reason or JJ's negat
 ## Dropdown Data Validation
 
 Set on sheet creation:
-- Col N (Kay Decision): Approve, Reject, Maybe
-- Col O (Reject Reason): Wrong Size, PE-Backed, Wrong Industry, Wrong Geography, Already Contacted, Not a Fit, Other
-- Col Q (Call Status): Not Called, Connected, Voicemail, Callback Requested, Not Interested, Wrong Number
-- Col T (Owner Sentiment): Interested, Neutral, Not Selling, Hostile
+- Col A (Source): Linkt, Association Directory, Conference List, Web Research, Intermediary Referral, Broker
+- Col O (Kay Decision): Approve, Reject, Maybe
+- Col P (Reject Reason): Wrong Size, PE-Backed, Wrong Industry, Wrong Geography, Already Contacted, Not a Fit, Other
+- Col R (Call Status): Not Called, Connected, Voicemail, Callback Requested, Not Interested, Wrong Number
+- Col U (Owner Sentiment): Interested, Neutral, Not Selling, Hostile
 
 ## ICP Calibration Metrics (every 2 weeks, from weekly-tracker)
 

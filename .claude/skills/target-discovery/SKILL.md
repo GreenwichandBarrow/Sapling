@@ -1,6 +1,6 @@
 ---
 name: target-discovery
-description: "Find acquisition targets via Linkt + web research. Runs daily Tue-Thu during active sprint. Hands approved targets to outreach-manager."
+description: "Find acquisition targets via Linkt + web research. Runs daily Mon-Fri during active sprint. Hands approved targets to outreach-manager."
 user_invocable: true
 context_budget:
   skill_md: 2000
@@ -25,7 +25,7 @@ Goal: 4-6 qualified targets per day.
 </objective>
 
 <target_discovery>
-## Target Discovery (Daily, Tue-Thu)
+## Target Discovery (Daily, Mon-Fri)
 
 ### Step 1: Run Linkt Search
 Linkt is the primary list builder. It has the database. It finds companies matching the ICP, enriches them, and returns validated owner contact info — all in one step.

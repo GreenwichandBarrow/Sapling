@@ -186,15 +186,27 @@ Draft both emails (intro response + thank-you) in Superhuman via the `superhuman
 
 Handles all outreach related to conferences — pre-conference emails to attendees and post-conference follow-ups.
 
-### Pre-Conference Emails (T-minus 1 week)
+### Conference Outreach Cadence
 
-Receives scored target list from conference-discovery. For each approved target:
+Outreach-manager pulls the conference date from the **Conference Pipeline Google Sheet** (Col A: Date of Conference, Sheet ID: `1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY`). This is the source of truth for timing — no dependency on Kay's calendar. All timing works backwards from this date.
+
+**Pre-Conference Cadence:**
+
+| When | Action | Details |
+|------|--------|---------|
+| T-minus 14 days | First outreach email | Introduce Kay, mention the conference, propose connecting |
+| T-minus 7 days | Follow-up (if no response) | Shorter, reference the first note, re-propose meeting |
+| T-minus 3 days | Final nudge (high-value only) | Very short — "Looking forward to {conference} on Monday. Hope to connect." |
+| Conference day | Kay meets in person | Granola captures conversations |
+| T+1 day (morning) | Post-conference follow-up | References specific conversation from Granola |
+
+### Pre-Conference Email — First Touch (T-minus 14 days)
 
 **Voice:** Kay's calibrated outreach voice (see memory: user_outreach_voice.md)
 **Rules:**
 - No em dashes. Use periods, commas, line breaks.
 - Conversational, warm, direct
-- Reference the specific conference by name
+- Reference the specific conference by name and date
 - Mention Kay will be attending and would love to connect briefly
 - Keep it short (3-4 sentences max)
 - Propose a specific ask: "Would love to stop by your booth" or "Grab a coffee during the break"
@@ -207,7 +219,7 @@ Hi {first name},
 
 {1 sentence about finding them on the exhibitor list / their company}.
 {1 sentence about why Kay is interested — niche connection, not "I want to buy your company"}.
-{1 sentence proposing a brief connection at the conference}.
+{1 sentence proposing a brief connection at the conference on {date}}.
 
 Looking forward to it.
 
@@ -217,19 +229,50 @@ Greenwich & Barrow
 
 Draft in Superhuman via the `superhuman` MCP server using the `superhuman_draft` tool with `--account kay.s@greenwichandbarrow.com`. Kay reviews and sends from Superhuman.
 
-Create Motion task: "Review and send {conference} pre-outreach emails" with due date T-minus 5 days.
+Create Motion task: "Review and send {conference} pre-outreach emails" with due date T-minus 12 days.
 
-### Post-Conference Follow-Ups (Next Morning)
+### Pre-Conference Follow-Up (T-minus 7 days)
+
+If no response to first touch:
+```
+Hi {first name},
+
+Just circling back. I'll be at {Conference Name} next {day} and would love to connect briefly. Happy to stop by your booth or grab a quick coffee.
+
+Kay
+```
+
+### Pre-Conference Final Nudge (T-minus 3 days, high-value targets only)
+
+Only for top 3-5 targets Kay most wants to meet. Very short:
+```
+Hi {first name},
+
+Looking forward to {Conference Name} on {day}. Hope to connect.
+
+Kay
+```
+
+### Post-Conference Follow-Ups (T+1 Morning)
 
 Receives conversation data from conference-discovery (Granola transcripts + Kay's notes).
 
 For each person Kay spoke with:
-1. Draft personalized follow-up email referencing specific conversation points
+1. Draft personalized follow-up email referencing specific conversation points from the booth
 2. Use Kay's voice, no em dashes
-3. Propose a next step (call, meeting, send info)
-4. Short and specific — reference something from the actual conversation
+3. Propose a specific next step (call, meeting, send info)
+4. Short and specific — reference something from the actual conversation, not generic
 
-Draft in Superhuman. Present all drafts during morning pipeline-manager review. Kay approves and sends.
+For people Kay didn't get to meet but emailed pre-conference:
+```
+Hi {first name},
+
+Sorry I missed you at {Conference Name}. Would still love to connect. Do you have 15 minutes this week?
+
+Kay
+```
+
+Draft all in Superhuman. Present during morning pipeline-manager review. Kay approves and sends.
 </conference_outreach>
 
 <essential_principles>

@@ -179,11 +179,11 @@ Read the active niche sprint's master sheet ("{Niche} - Target List") in LINKT T
 ### JJ Daily Slack Notification
 Each morning, after processing pipeline changes, send JJ his call list for the day via Slack:
 ```bash
-curl -s -X POST "{JJ_SLACK_WEBHOOK}" \
+curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
   -H "Content-Type: application/json" \
   -d '{"text":"Good morning JJ. Here are your calls for today:\n\n{list of names, companies, phones where Call Date = today}\n\nScript: {niche script}\n\nSheet: {link to master sheet}"}'
 ```
-JJ webhook URL will be stored in references once the #jj-calls channel is created.
+JJ webhook posts to #operations-sva channel.
 
 ### Warm Intro Detection
 When processing new targets (from target-discovery handoff), scan for warm intro paths before presenting to Kay:

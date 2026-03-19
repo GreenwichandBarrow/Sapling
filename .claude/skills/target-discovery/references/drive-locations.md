@@ -14,7 +14,7 @@
 Targets being outreached. Kay approved, JJ calling, emails going out. New Linkt results append here.
 
 ### Tab 2: Passed
-Targets Kay rejected. Rows move here when Kay marks "Reject" in Col N. Reject reason preserved. Not deleted — may revisit if ICP shifts. This tab is the dataset for "why did we reject these" analysis during ICP calibration.
+Targets Kay passed on. Rows move here when Kay marks "Pass" in Col O. Pass reason preserved. Not deleted — may revisit if ICP shifts. This tab is the dataset for "why did we pass" analysis during ICP calibration.
 
 ## Column Layout (both tabs, same structure)
 
@@ -24,7 +24,7 @@ B: Company | C: Website | D: Headquarters | E: Industry | F: Employees | G: Reve
 
 ### Kay's Review (Kay populates)
 O: **Kay Decision** — dropdown: Approve, Pass, Maybe
-P: **Reject Reason** — dropdown: Wrong Size, PE-Backed, Wrong Industry, Wrong Geography, Already Contacted, Not a Fit, Other
+P: **Pass Reason** — dropdown: Wrong Size, PE-Backed, Wrong Industry, Wrong Geography, Already Contacted, Not a Fit, Other
 Q: **Kay Notes** — freeform
 
 ### JJ's Calls (JJ populates)
@@ -35,12 +35,12 @@ U: **Owner Sentiment** — dropdown: Interested, Neutral, Not Selling, Hostile
 
 ### ICP Calibration (Claude auto-calculates)
 V: **ICP Match** — TRUE if Kay=Approve AND JJ call was positive (Connected + Interested/Neutral)
-W: **ICP Miss Reason** — auto-populated from Kay's Reject Reason or JJ's negative outcomes
+W: **ICP Miss Reason** — auto-populated from Kay's Pass Reason or JJ's negative outcomes
 
 ## Row Lifecycle
 
 1. **Claude** appends new target to **Active** tab (cols A-N)
-2. **Kay** reviews → marks Approve, Reject, or Maybe in Col O, reason in Col P, notes in Col Q
+2. **Kay** reviews → marks Approve, Pass, or Maybe in Col O, reason in Col P, notes in Col Q
 3. If Pass → **Claude** moves row to **Passed** tab (with all data preserved)
 4. If Approve → row stays in Active, outreach-manager picks it up for Day 1 email
 5. **JJ** fills in call columns (R-U) as he calls
@@ -62,18 +62,18 @@ W: **ICP Miss Reason** — auto-populated from Kay's Reject Reason or JJ's negat
 Set on sheet creation:
 - Col A (Source): Linkt, Association Directory, Conference List, Web Research, Intermediary Referral, Broker
 - Col O (Kay Decision): Approve, Pass, Maybe
-- Col P (Reject Reason): Wrong Size, PE-Backed, Wrong Industry, Wrong Geography, Already Contacted, Not a Fit, Other
+- Col P (Pass Reason): Wrong Size, PE Backed, Wrong Industry, Wrong Geography, Already Contacted, Not a Fit, Other
 - Col R (Call Status): Not Called, Connected, Voicemail, Callback Requested, Not Interested, Wrong Number
 - Col U (Owner Sentiment): Interested, Neutral, Not Selling, Hostile
 
 ## ICP Calibration Metrics (every 2 weeks, from weekly-tracker)
 
 Calculated from Active + Passed tabs combined:
-- **Kay Accept Rate:** Approve / (Approve + Reject) — target: 70%+
+- **Kay Accept Rate:** Approve / (Approve + Pass) — target: 70%+
 - **JJ Connection Rate:** Connected / total called
 - **Positive Sentiment Rate:** (Interested + Neutral) / Connected
 - **ICP Accuracy:** ICP Match TRUE / total targets
-- **Top Reject Reasons:** ranked frequency of Reject Reason values
+- **Top Pass Reasons:** ranked frequency of Pass Reason values
 - **Credit Efficiency:** credits spent / Kay-approved targets
 
 Output: Google Doc in LINKT TARGET LISTS folder + vault file + Slack notification with key metrics.

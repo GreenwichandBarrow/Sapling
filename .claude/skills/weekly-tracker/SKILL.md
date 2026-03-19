@@ -207,7 +207,7 @@ git log --after={WEEK_START} --before={WEEK_END} --name-only --diff-filter=A -- 
 curl -s -X GET "https://api.linkt.ai/v1/run" -H "x-api-key: {API_KEY}" | # filter runs by date range
 
 # Master sheet ICP data (Kay + JJ columns)
-gog sheets get "{MASTER_SHEET_ID}" "'Active'!N:T" --json  # Kay Decision, Reject Reason, Call Status, Sentiment
+gog sheets get "{MASTER_SHEET_ID}" "'Active'!O:U" --json  # Kay Decision, Pass Reason, Call Status, Sentiment
 ```
 </sub_agents>
 
@@ -404,8 +404,8 @@ Tracks credit consumption, list quality, and ICP efficiency week over week.
 | 13 | | | |
 | 14 | ICP ACCURACY | | |
 | 15 | Kay Accept Rate | 70%+ | {%} |
-| 16 | Kay Reject Rate | — | {%} |
-| 17 | Top Reject Reason | — | {reason} |
+| 16 | Kay Pass Rate | — | {%} |
+| 17 | Top Pass Reason | — | {reason} |
 | 18 | | | |
 | 19 | OUTREACH CONVERSION | | |
 | 20 | JJ Connection Rate | — | {%} |

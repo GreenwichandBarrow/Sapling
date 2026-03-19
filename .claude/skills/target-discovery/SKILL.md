@@ -47,7 +47,7 @@ Linkt's AI agents will:
 
 If the master sheet doesn't exist yet (first run of a new sprint), create it with two tabs (Active, Passed), all columns A-V, and dropdown data validation. See references/drive-locations.md for full column layout.
 
-When Kay marks a row "Reject" in Col N, move it to the "Passed" tab with all data preserved.
+When Kay marks a row "Pass" in Col O, move it to the "Passed" tab with all data preserved.
 
 **Phone number formatting:** Linkt returns phones as `+1 973-770-9090`. When writing to Google Sheets:
 1. Strip the country code prefix (`+1 `)

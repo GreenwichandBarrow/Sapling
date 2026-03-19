@@ -54,7 +54,7 @@ Run Friday night (automated, ready Friday morning review). Or on demand via `/we
 <sub_agents>
 ## Sub-Agent Architecture
 
-Spawn 4 specialized sub-agents in parallel to collect data. Each returns a structured JSON summary. Use `agent-chatroom` if 3+ agents are needed concurrently.
+Spawn 6 specialized sub-agents in parallel to collect data. Each returns a structured JSON summary. Use `agent-chatroom` if 3+ agents are needed concurrently.
 
 ### Agent 1: Gmail Collector
 **Task:** Count outreach volume and responses for the week.
@@ -177,7 +177,24 @@ Glob: brain/calls/{YYYY-MM-DD}*  (for each day in the week)
 # New entities created this week
 git log --after={WEEK_START} --before={WEEK_END} --name-only --diff-filter=A -- brain/entities/
 ```
-### Agent 5: Linkt Credit & ICP Collector
+### Agent 5: Tool & Integration Monitor
+**Task:** Check parked/pending tool integrations for new features that would be valuable to G&B.
+**Tools:** WebFetch
+**Checks:**
+- **Happenstance:** Fetch `https://developer.happenstance.ai/llms.txt` and `https://happenstance.ai` — look for LinkedIn integration, Chrome extension, or any new data source beyond Gmail/Calendar/Instagram/Twitter. If found, flag as high-priority in report.
+- *(Add future tools to monitor here)*
+
+**Returns:**
+```json
+{
+  "tools_checked": ["happenstance"],
+  "changes_detected": [],
+  "flags": []
+}
+```
+If no changes, return empty arrays. Only flag meaningful integration additions, not minor UI/docs changes.
+
+### Agent 6: Linkt Credit & ICP Collector
 **Task:** Pull Linkt credit usage, list quality metrics, and ICP accuracy from the master sheet.
 **Tools:** Linkt API (curl), gog sheets
 **Returns:**
@@ -222,13 +239,14 @@ WEEK_ENDING_DATE = Friday date in YYYY-MM-DD format
 ```
 
 ### Step 2: Spawn Data Collection Sub-Agents
-Launch all 5 agents in parallel:
+Launch all 6 agents in parallel:
 ```
 Agent 1: Gmail Collector (background)
 Agent 2: Calendar & Meetings Collector (background)
 Agent 3: Attio Pipeline Collector (background)
 Agent 4: Vault Activity Collector (background)
-Agent 5: Linkt Credit & ICP Collector (background)
+Agent 5: Tool & Integration Monitor (background)
+Agent 6: Linkt Credit & ICP Collector (background)
 ```
 Wait for all to return.
 
@@ -501,7 +519,7 @@ Body contains the week's numbers in readable markdown format, plus a short diagn
 Tracker update is complete when ALL checks pass:
 
 ### Data Collection
-- [ ] All 4 sub-agents returned data (Gmail, Calendar, Attio, Vault)
+- [ ] All 5 data sub-agents returned data (Gmail, Calendar, Attio, Vault, Linkt)
 - [ ] No sub-agent errored silently (check for empty/null returns)
 
 ### Google Sheet

@@ -101,10 +101,13 @@ love to connect briefly with {owner name} about their experience.
 Would {owner name} have 15 minutes for a quick call?
 ```
 
-**Call sheet** — Google Sheet in LINKT TARGET LISTS folder:
-| Company | Owner Name | Phone | Location | Email Sent Date | Call Date (Day 3) | Script | Status | Notes |
+**Call columns** — JJ works directly from the niche sprint master sheet ("{Niche} - Target List" in LINKT TARGET LISTS folder). No separate call list. JJ fills in columns Q-T on the Active tab:
+- Col Q: Call Status (dropdown)
+- Col R: Call Date
+- Col S: Call Notes
+- Col T: Owner Sentiment (dropdown)
 
-JJ logs status: Connected, Voicemail, Callback Requested, Not Interested, Wrong Number.
+See target-discovery/references/drive-locations.md for full column layout.
 
 ### Day 5-6: Follow-Up Email
 

@@ -5,42 +5,57 @@
 - **Path:** G&B Shared Drive > OPERATIONS > LINKT TARGET LISTS
 - **URL:** https://drive.google.com/drive/folders/1WfbzezRkD7Kr0FOA76y99x5wV8lwRkVc
 
-All Linkt exports and target lists live here. One sheet per ICP/niche run.
+## Master Sheet (one per niche sprint)
 
-## Sheet Format (single "Targets" tab per sheet)
+**Naming:** "{Niche} - Target List"
+**Created once** at niche sprint activation. All Linkt runs append to the same sheet. Do NOT create new sheets per run.
 
-### Linkt Data Columns (Claude populates)
+### Tab 1: Active
+Targets being outreached. Kay approved, JJ calling, emails going out. New Linkt results append here.
+
+### Tab 2: Passed
+Targets Kay rejected. Rows move here when Kay marks "Reject" in Col N. Reject reason preserved. Not deleted — may revisit if ICP shifts. This tab is the dataset for "why did we reject these" analysis during ICP calibration.
+
+## Column Layout (both tabs, same structure)
+
+### Linkt Data (Claude populates)
 A: Company | B: Website | C: Headquarters | D: Industry | E: Employees | F: Revenue | G: Ownership | H: Owner Name | I: Owner Title | J: Email | K: Phone | L: LinkedIn (Owner) | M: LinkedIn (Company)
 
-### Kay's Review Columns (Kay populates)
+### Kay's Review (Kay populates)
 N: **Kay Decision** — dropdown: Approve, Reject, Maybe
 O: **Reject Reason** — dropdown: Wrong Size, PE-Backed, Wrong Industry, Wrong Geography, Already Contacted, Not a Fit, Other
 P: **Kay Notes** — freeform
 
-### JJ's Call Columns (JJ populates)
+### JJ's Calls (JJ populates)
 Q: **Call Status** — dropdown: Not Called, Connected, Voicemail, Callback Requested, Not Interested, Wrong Number
 R: **Call Date**
 S: **Call Notes** — freeform
 T: **Owner Sentiment** — dropdown: Interested, Neutral, Not Selling, Hostile
 
-### ICP Calibration Columns (Claude calculates from Kay + JJ data)
-U: **ICP Match** — auto-calculated: TRUE if Kay=Approve AND JJ call was positive (Connected + Interested/Neutral)
+### ICP Calibration (Claude auto-calculates)
+U: **ICP Match** — TRUE if Kay=Approve AND JJ call was positive (Connected + Interested/Neutral)
 V: **ICP Miss Reason** — auto-populated from Kay's Reject Reason or JJ's negative outcomes
 
-No separate tabs for companies and people. Always combined on one row.
-No separate JJ call list sheet — JJ works directly from this same sheet.
+## Row Lifecycle
+
+1. Claude appends new target to **Active** tab
+2. Kay reviews → marks Approve, Reject, or Maybe in Col N
+3. If Reject → Claude moves row to **Passed** tab (with all data preserved)
+4. If Approve → row stays in Active, outreach-manager picks it up for Day 1 email
+5. JJ fills in call columns (Q-T) as he calls
+6. Claude calculates ICP Match (U) and ICP Miss Reason (V) from Kay + JJ data
 
 ## Dropdown Data Validation
 
-When creating a new sheet, set data validation on these columns:
+Set on sheet creation:
 - Col N (Kay Decision): Approve, Reject, Maybe
 - Col O (Reject Reason): Wrong Size, PE-Backed, Wrong Industry, Wrong Geography, Already Contacted, Not a Fit, Other
 - Col Q (Call Status): Not Called, Connected, Voicemail, Callback Requested, Not Interested, Wrong Number
 - Col T (Owner Sentiment): Interested, Neutral, Not Selling, Hostile
 
-## ICP Calibration Metrics (calculated at sprint check-in)
+## ICP Calibration Metrics (every 2 weeks, from weekly-tracker)
 
-From these columns, Claude calculates:
+Calculated from Active + Passed tabs combined:
 - **Kay Accept Rate:** Approve / (Approve + Reject) — target: 70%+
 - **JJ Connection Rate:** Connected / total called
 - **Positive Sentiment Rate:** (Interested + Neutral) / Connected
@@ -48,9 +63,11 @@ From these columns, Claude calculates:
 - **Top Reject Reasons:** ranked frequency of Reject Reason values
 - **Credit Efficiency:** credits spent / Kay-approved targets
 
-These metrics feed the sprint check-in and drive ICP adjustments.
+Output: Google Doc in LINKT TARGET LISTS folder + vault file + Slack notification with key metrics.
 
-## Existing Linkt Export Sheets
+## Archived Raw Exports (pre-sprint format)
+
+These are older Linkt exports from before the master sheet format. Kept for reference:
 - Specialty Insurance Compliance: 1fsHYA8ljX6rXT-HIb69ZelJZiW3h38C925ci3i8E3cg
 - NYC Tri-State Private OpCo: 1_FB15QIRNb23ASPjv-0YsJprdYXufy1x0lo5UNiYg8Y
 - NYC Tri-State Private Business: 12Ty5T1V6JqnTI744JvxiN5Bjp7Pwr_-KUJJjEDXnNjE

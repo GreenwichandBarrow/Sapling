@@ -43,8 +43,11 @@ Linkt's AI agents will:
 
 **Run smaller, focused searches** (10-20 entities per run) rather than large broad ones. Each entity = 1 credit. 150 credits/month.
 
-**Output:** Linkt returns enriched entities in sheets. Export to Google Sheet in LINKT TARGET LISTS folder with one row per company+owner:
-Company | Website | Headquarters | Industry | Employees | Revenue | Ownership | Owner Name | Owner Title | Email | Phone | LinkedIn (Owner) | LinkedIn (Company)
+**Output:** Linkt returns enriched entities in sheets. Append to the niche sprint's master sheet ("{Niche} - Target List") in LINKT TARGET LISTS folder. One master sheet per niche sprint — do NOT create new sheets per run. New results append to the "Active" tab.
+
+If the master sheet doesn't exist yet (first run of a new sprint), create it with two tabs (Active, Passed), all columns A-V, and dropdown data validation. See references/drive-locations.md for full column layout.
+
+When Kay marks a row "Reject" in Col N, move it to the "Passed" tab with all data preserved.
 
 **Phone number formatting:** Linkt returns phones as `+1 973-770-9090`. When writing to Google Sheets:
 1. Strip the country code prefix (`+1 `)

@@ -316,14 +316,14 @@ Verify:
 
 **After discovery run:**
 ```bash
-curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
   -d '{"text":"Conference discovery complete — {n} conferences found for next 4 weeks. {n} new options added to Pipeline sheet.\nhttps://docs.google.com/spreadsheets/d/{SHEET_ID}/edit"}'
 ```
 
 **After post-conference processing:**
 ```bash
-curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
   -d '{"text":"Post-conference processing complete for {conference name}.\n{n} contacts added to Attio. Follow-up drafts in Superhuman.\n\nDebrief: {Google Doc link}\n\nReview the debrief for anything you might have missed."}'
 ```

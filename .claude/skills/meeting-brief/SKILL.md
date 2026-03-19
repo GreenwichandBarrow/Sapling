@@ -178,7 +178,7 @@ Ensure all referenced entities exist. Create entity files if needed.
 ### Slack Notification
 After saving to both locations, ping Kay via Slack webhook with the Google Doc link so she can open it directly from the notification:
 ```bash
-curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
   -d '{"text":"Meeting brief ready for {Person Name} ({Date}) — saved to Drive & vault.\nhttps://docs.google.com/document/d/{DOC_ID}/edit"}'
 ```

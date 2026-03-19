@@ -407,7 +407,7 @@ Every Day 1 email must have a corresponding Day 3 call entry scheduled in JJ's c
 ### 5. Slack Notification (Only After Validation Passes)
 Only send once checks 1-4 all pass:
 ```bash
-curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
   -d '{"text":"Outreach ready — {n} email drafts in Superhuman, {n} targets added to JJ call list. Review and send when ready."}'
 ```

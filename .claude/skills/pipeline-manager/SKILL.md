@@ -179,7 +179,7 @@ Read the active niche sprint's master sheet ("{Niche} - Target List") in LINKT T
 ### JJ Daily Slack Notification
 Each morning, after processing pipeline changes, send JJ his call list for the day via Slack:
 ```bash
-curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+curl -s -X POST "$SLACK_WEBHOOK_SVA" \
   -H "Content-Type: application/json" \
   -d '{"text":"Good morning JJ. Here are your calls for today:\n\n{list of names, companies, phones where Call Date = today}\n\nScript: {niche script}\n\nSheet: {link to master sheet}"}'
 ```
@@ -267,7 +267,7 @@ These signals are NOT surfaced during the daily pipeline review. They queue sile
 
 Send a nudge only (not full detail):
 ```bash
-curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
   -d '{"text":"Pipeline updates waiting — {n} recommended changes + {n} stale deals. Open Claude Code to review."}'
 ```

@@ -155,7 +155,7 @@ After target discovery completes, verify all deliverables before notifying Kay:
 ### Step 5: Slack Notification
 Only after all validation passes:
 ```bash
-curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
   -d '{"text":"Target list ready for review — {n} new targets in {niche}.\n{n} credits used ({n} remaining this month).\nhttps://docs.google.com/spreadsheets/d/{SHEET_ID}/edit"}'
 ```

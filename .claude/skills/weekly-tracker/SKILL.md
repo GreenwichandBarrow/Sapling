@@ -317,7 +317,7 @@ for check, passed in checks.items():
 ### Step 7: Notify
 Only after validation passes:
 ```bash
-curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
   -d '{"text":"Weekly Activity Tracker updated for week ending {date}.\nNDAs: {n} | Financials: {n} | LOIs submitted: {n} | LOIs signed: {n}\nhttps://docs.google.com/spreadsheets/d/1NGGZY_iq9h8cNzLAXSJ1vTcsfXWNU9oin2RiOMtl9NE/edit"}'
 ```

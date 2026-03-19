@@ -166,8 +166,10 @@ gog sheets get "1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins" "'WEEKLY REVIEW'!A
 **Tools:** gog slides or gog drive copy + edit
 
 **Steps:**
-1. Copy most recent quarterly deck as starting point (preserves letterhead, formatting, branding)
-2. Update all slide content with new narrative
+1. Create from template using `gog slides create-from-template`:
+   - Template ID: `16LUAOazJEufkncRS2E_VvYH9HRGw7x5GlSZovvUq9r0`
+   - Use `--exact` mode with replacements JSON
+2. All placeholder tags ({{QUARTER}}, {{EXECUTIVE_SUMMARY}}, etc.) populated with new narrative
 3. Update quarter label
 4. Save to DRAFTS folder first
 5. Present to Kay for review
@@ -250,41 +252,56 @@ After Kay sends the quarterly update:
    - Weekly tracker highlights since last call
 3. Build talking points:
 
-**Talking Points Structure:**
+**Call Prep Structure (matches Kay's existing agenda):**
 ```
 CALL PREP: {Investor Name} — {Date}
-Last call: {date} — discussed: {summary}
+Last call: {date}
 
-DEALS TO DISCUSS:
-- {Deal code}: {1-line status update since last call}
-- {Deal code}: {1-line status update}
+1. QUICK UPDATE
+   - {1-2 sentence headline: what's new since last call}
 
-PIPELINE HIGHLIGHTS (since last call):
-- {X} new targets contacted
-- {X} meaningful conversations
-- {Any stage progressions}
+2. LATEST THINKING / APPROACH
+   - {Current thesis focus, any strategic pivots}
+   - {How the search approach is evolving}
 
-NICHES:
-- {Active niche}: {status/update}
+3. UPDATE FROM CALLS / TRIPS
+   - {Recent owner calls with coded names}
+   - {Conference/event takeaways}
+   - {Site visits or in-person meetings}
 
-ASK:
-- "Are you seeing any deal activity or trends I should be aware of?"
-- {Specific ask if relevant: intro, industry insight, etc.}
+4. INDUSTRY BUCKETS
+   - {Active niche}: {status, what's working}
+   - {Other niche}: {status, tabled/killed/exploring}
 
-NOTES FROM LAST CALL:
-- {Key items from previous Granola transcript}
-- {Any action items that were discussed}
+5. ADDITIONAL CONVERSATIONS
+   - {Broker/intermediary conversations}
+   - {Network intros received or made}
+   - {River guide insights}
+
+6. DISCUSS NEXT STEPS
+   - {Open items from last call}
+   - {Upcoming milestones or decisions}
+   - {Ask: "Any deal activity or trends I should be aware of?"}
+
+7. INTERESTING TRENDS TO SHARE
+   - {Market observations, niche intelligence signals}
+   - {Industry news relevant to active niches}
 ```
 
-4. Deliver as Slack message to #operations before the call
+**Deliverable locations:**
+- **Jeff (monthly):** Save as Google Doc in INVESTOR COMMUNICATION / MONTHLY + brain/briefs/
+- **Guillermo (bi-weekly):** Save as Google Doc in INVESTOR COMMUNICATION / BI-WEEKLY + brain/briefs/
+
+4. Deliver Slack ping to #operations before the call with link to the doc
 
 **Returns:** Formatted talking points
 
 **Stop Hook:**
 - [ ] Last call date and summary included
-- [ ] At least one deal to discuss
-- [ ] Pipeline numbers since last call
-- [ ] "Any deal activity or trends" question included
+- [ ] All 7 agenda sections populated (even if some are "No updates")
+- [ ] "Any deal activity or trends" question in Next Steps
+- [ ] Google Doc saved to correct investor folder (MONTHLY or BI-WEEKLY)
+- [ ] Vault copy saved to brain/briefs/
 - [ ] Delivered before the scheduled call time
 
 ### Call Prep Delivery
@@ -292,11 +309,9 @@ NOTES FROM LAST CALL:
 curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
   -d '{
-    "text": "Call Prep: {Investor} — {Date}\n\nDeals: {summary}\nPipeline: {X} conversations, {X} targets\n\nFull prep: {google_doc_link}"
+    "text": "Call Prep: {Investor} — {Date}\nQuick update: {headline}\nDeals: {active deal summary}\nFull prep: {google_doc_link}"
   }'
 ```
-
-If the prep is longer than a Slack message, save as Google Doc in the appropriate MONTHLY or BI-WEEKLY folder and link from Slack.
 
 ---
 

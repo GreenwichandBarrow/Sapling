@@ -1,0 +1,530 @@
+---
+name: deal-evaluation
+description: "Deal evaluation pipeline — post-call follow-up, NDA generation, financials intake, financial modeling, company scorecard, Thumbs Up/Down deck, LOI generation, decline handling. Triggered after first owner call or when financials arrive."
+user_invocable: true
+---
+
+<objective>
+Manage the full deal evaluation lifecycle from first owner call through go/no-go decision.
+
+This skill picks up where pipeline-manager leaves off. Pipeline-manager handles sourcing through first contact. This skill handles everything from post-call follow-up through LOI or decline.
+
+**Core question:** Does this deal work for Kay's personal economics, and does it pass the company scorecard for the analyst and investors?
+</objective>
+
+<essential_principles>
+## Two Folder Architecture (CRITICAL)
+
+Every deal has TWO folders. Never mix them.
+
+**Shared folder** — analyst can see:
+```
+ANALYST / PROJECTS / ACTIVE DEALS / {COMPANY} / DEAL {YEAR} /
+  OUTREACH/
+  CALLS/
+  DILIGENCE/
+  MODELS/        ← analyst's models only
+  FINANCIALS/    ← raw financials from owner
+  CIM/
+  NOTES/
+```
+- **Parent folder ID:** Find ACTIVE DEALS under ANALYST / PROJECTS
+- **Template folder ID:** `1Ao4pF-DbwOo_ZADcD4EvVvJuogvEK0NI` (ABC COMPANY template)
+
+**Private folder** — Kay only:
+```
+MANAGER DOCUMENTS / DEALS IN REVIEW / {COMPANY} /
+```
+- **Parent folder ID:** `1j8vx4DuJeOCBO7dh4lGzIWi2k2T868iv`
+- Contains: G&B Financial Model with Kay's personal terms, equity modeling, exit scenarios
+
+## Templates (Native Google Docs in Master Templates)
+
+| Template | Drive ID | Type |
+|----------|----------|------|
+| NDA Template | `1bdK5h6hY8RP49_etMQGUCNurR1L7sG3rb5NKCruHUyE` | Google Doc |
+| LOI Template | `1d6ooLHHOvPHCamz37RhcVyD7zXWfcNHvNpBtYF4GQ-E` | Google Doc |
+| Financial Model | `1d6hhIf6sCRWMNf3gj30g23rYQAQbig2m` | Excel (.xlsx) |
+| Company Scorecard | `1kCCbEBpAgwX2TMn095W8-EzUUqvXIpWO` | Excel (.xlsx) |
+| Thumbs Up/Down | `1JV_B2IzUYYf66o-oDPTtNv-IHWc3nBQb5TQzthSovbg` | Google Slides |
+| Email Templates | `1_04RPBCKs4HsSBn2FzUIU4gt3acidB0d` | Word (.docx) |
+
+## Email Rules
+- Always open with a warm nicety before substance
+- Sign off "Very best, Kay" — signature is built in
+- No em dashes — use periods, commas, line breaks
+- Show person names, not just companies
+</essential_principles>
+
+<phases>
+## Phase 1: Post-Call Follow-Up
+
+**Trigger:** First owner call logged (vault call note or Granola transcript detected)
+
+### Sub-Agent 1: Deal Folder Setup
+**Task:** Create both deal folders and organize initial documents.
+**Tools:** gog drive
+
+**Steps:**
+1. Create company folder in ACTIVE DEALS: `{COMPANY NAME} / DEAL {YEAR}` with all 7 subfolders (OUTREACH, CALLS, DILIGENCE, MODELS, FINANCIALS, CIM, NOTES)
+2. Create company folder in DEALS IN REVIEW: `{COMPANY NAME}`
+3. Copy NDA template → shared deal folder root
+4. Rename: "Greenwich & Barrow LLC NDA - {Company Name}"
+5. Populate via `gog docs edit`:
+   - `[COMPANY LEGAL NAME]` → actual company legal name
+   - `[DATE]` → today's date
+6. Export as PDF (via `gog drive export`)
+7. Save call notes to CALLS/ subfolder
+
+**Returns:**
+```json
+{
+  "shared_folder_id": "",
+  "private_folder_id": "",
+  "nda_doc_id": "",
+  "nda_pdf_id": "",
+  "subfolders": {"OUTREACH": "", "CALLS": "", "DILIGENCE": "", "MODELS": "", "FINANCIALS": "", "CIM": "", "NOTES": ""}
+}
+```
+
+**Stop Hook:**
+- [ ] Shared folder exists with all 7 subfolders
+- [ ] Private folder exists in DEALS IN REVIEW
+- [ ] NDA doc populated with correct company name and date
+- [ ] NDA exported as PDF
+- [ ] Call notes filed in CALLS/
+
+### Sub-Agent 2: Email Draft
+**Task:** Draft the thank-you + NDA + financials request email.
+**Tools:** gog gmail (read call notes for context), email templates reference
+
+**Steps:**
+1. Read call notes / Granola transcript for personalization points
+2. Draft email using Template #9 (NDA & Financials Request)
+3. Personalize:
+   - [Name] → owner's first name
+   - [Company] → company name
+   - [specific items] → adjust financials list based on business type (e.g., add equipment for manufacturing, capacity for services)
+4. Attach NDA PDF
+5. Present draft to Kay for review
+
+**Returns:** Draft email text with personalization notes
+
+**Stop Hook:**
+- [ ] Email draft includes warm nicety opening
+- [ ] Financials request list is present and tailored to business type
+- [ ] NDA PDF is referenced for attachment
+- [ ] Sign-off is "Very best, Kay"
+
+### Phase 1 Deliverable
+Present to Kay:
+- Thank-you email draft (Kay reviews, tweaks, sends)
+- NDA PDF (Kay signs in Adobe, attaches, sends)
+- Confirmation of folder structure created
+
+---
+
+## Phase 2: Document Filing (Ongoing)
+
+**Trigger:** New attachments detected from deal contacts in Gmail
+
+This runs as a lightweight check — either invoked manually or detected by pipeline-manager during daily scan.
+
+**Steps:**
+1. Scan email thread with owner for new attachments (exclude image signatures like image001.png)
+2. Classify each attachment:
+   - NDA / legal docs → shared deal folder root
+   - CIM / company profiles → CIM/
+   - Financials (P&L, balance sheet, tax returns, xlsx) → FINANCIALS/
+   - Other documents → NOTES/
+3. Download and upload to appropriate subfolder
+4. Update vault entity with received documents list
+
+**Stop Hook:**
+- [ ] All non-image attachments from owner are filed
+- [ ] No documents left in email without a Drive copy
+
+---
+
+## Phase 3: Financial Evaluation
+
+**Trigger:** Financials received from owner (detected in FINANCIALS/ folder or email)
+
+### Sub-Agent 3: Financial Model Prep
+**Task:** Extract historical data and populate the G&B Financial Model.
+**Tools:** gog drive, gog sheets (or openpyxl for Excel)
+
+**Steps:**
+1. Read incoming financials (Excel, PDF, or email body)
+2. Extract:
+   - Revenue for 3+ years
+   - EBITDA for 3+ years
+   - LTM EBITDA
+   - LTM period end date
+3. Copy Financial Model template → DEALS IN REVIEW / {COMPANY}
+4. Rename: "G&B Financial Model - {Company Name}.xlsx"
+5. Populate historical data ONLY:
+   - C37-E37: Revenue (3 years)
+   - C40-E40: EBITDA (3 years)
+   - N17: LTM EBITDA
+   - N18: LTM Period
+6. **Do NOT touch:** Transaction assumptions, projections, growth rates, deal structure — these are Kay's to play with
+
+**Returns:**
+```json
+{
+  "model_file_id": "",
+  "revenue_history": [0, 0, 0],
+  "ebitda_history": [0, 0, 0],
+  "ltm_ebitda": 0,
+  "margins": [0, 0, 0],
+  "data_quality": "clean|partial|needs_manual_review"
+}
+```
+
+**Stop Hook:**
+- [ ] Financial model exists in DEALS IN REVIEW / {COMPANY}
+- [ ] Historical revenue populated (at least 2 years)
+- [ ] Historical EBITDA populated (at least 2 years)
+- [ ] LTM EBITDA populated
+- [ ] Model named correctly: "G&B Financial Model - {Company Name}.xlsx"
+- [ ] No projection or assumption cells were modified
+
+### Phase 3 Deliverable
+Present to Kay:
+- Link to Financial Model in DEALS IN REVIEW
+- Quick summary: "{Company}: Revenue ${X}M, EBITDA ${X}M, {X}% margins, {trend}"
+- Flag any data quality issues (missing years, inconsistencies)
+- Kay plays with assumptions and decides if math works
+
+---
+
+## Phase 4: Scorecard & Thumbs Up/Down
+
+**Trigger:** Kay confirms the math works in the financial model
+
+### Sub-Agent 4: Company Scorecard
+**Task:** Run the company scorecard against real financials and call notes.
+**Tools:** gog drive, vault reads, Attio API
+
+**Steps:**
+1. Read the 10 scorecard criteria from the template
+2. Score each criterion using:
+   - Financial data from the model
+   - Call notes from vault
+   - Entity data from Attio
+   - Any CIM or company profile received
+3. Calculate total score (70% hard gates / 30% discretionary)
+4. Save completed scorecard to shared folder: MODELS/
+
+**Returns:**
+```json
+{
+  "scorecard_file_id": "",
+  "total_score": 0,
+  "hard_gate_score": 0,
+  "discretionary_score": 0,
+  "flags": [],
+  "recommendation": "proceed|caution|pass"
+}
+```
+
+**Stop Hook:**
+- [ ] Scorecard exists in shared folder MODELS/
+- [ ] All 10 criteria scored
+- [ ] Total score calculated
+
+### Sub-Agent 5: Thumbs Up/Down Deck
+**Task:** Create the deal evaluation presentation.
+**Tools:** gog slides create-from-template, gog drive
+
+**Steps:**
+1. Gather all data:
+   - Company info from vault entity / Attio
+   - Financial data from the model
+   - Call notes for qualitative assessment
+   - Scorecard results
+2. Create deck from template using `gog slides create-from-template`:
+   ```bash
+   gog slides create-from-template "{TEMPLATE_ID}" "{Company Name} - Thumbs Up Down" \
+     --exact \
+     --replacements /tmp/{company}_replacements.json \
+     --parent "{SHARED_FOLDER_DEAL_YEAR_ID}"
+   ```
+3. Populate all fields:
+   - Slide 1: Company snapshot, deal overview, business description, preliminary checklist
+   - Slide 2: Historical financials table, link to financial model, "What We Like", "What We Need to Validate"
+4. Save to shared deal folder root
+
+**Replacements JSON structure:**
+```json
+{
+  "{{COMPANY_NAME}}": "Actual Company Name",
+  "{{WEBSITE}}": "https://...",
+  "{{HEADQUARTERS}}": "City, State",
+  "{{SECTOR}}": "Sector",
+  "{{INDUSTRY}}": "Industry",
+  "{{FOUNDED}}": "Year",
+  "{{EMPLOYEES}}": "Count",
+  "{{SOURCE}}": "Cold Outreach|Conference|Broker|Network",
+  "{{STAGE}}": "Pre-LOI|LOI Submitted",
+  "{{VALUATION}}": "$X.XM or TBD",
+  "{{BUSINESS_DESCRIPTION_1}}": "...",
+  "{{BUSINESS_DESCRIPTION_2}}": "...",
+  "{{BUSINESS_DESCRIPTION_3}}": "...",
+  "{{BUSINESS_DESCRIPTION_4}}": "...",
+  "{{BUSINESS_DESCRIPTION_5}}": "...",
+  "{{FINANCIALS_NOTES}}": "...",
+  "{{FINANCIALS_METRICS}}": "...",
+  "{{CUSTOMERS_NOTES}}": "...",
+  "{{CUSTOMERS_METRICS}}": "...",
+  "{{SELLERS_NOTES}}": "...",
+  "{{SELLERS_METRICS}}": "...",
+  "{{KEYMAN_NOTES}}": "...",
+  "{{GROWTH_NOTES}}": "...",
+  "{{INDUSTRY_NOTES}}": "...",
+  "{{LIKE_1}}": "...",
+  "{{LIKE_2}}": "...",
+  "{{LIKE_3}}": "...",
+  "{{LIKE_4}}": "...",
+  "{{VALIDATE_1}}": "...",
+  "{{VALIDATE_2}}": "...",
+  "{{VALIDATE_3}}": "...",
+  "{{TIMING}}": "LOI due: ...\nFormal DD start: ...\nClosing: ...",
+  "{{FINANCIAL_MODEL_LINK}}": "https://docs.google.com/spreadsheets/d/..."
+}
+```
+
+**Returns:**
+```json
+{
+  "deck_id": "",
+  "deck_url": "",
+  "scorecard_summary": "",
+  "recommendation": ""
+}
+```
+
+**Stop Hook:**
+- [ ] Deck exists in shared deal folder
+- [ ] All company snapshot fields populated
+- [ ] Financial table on slide 2 has data
+- [ ] "What We Like" has at least 3 items
+- [ ] "What We Need to Validate" has at least 2 items
+- [ ] Link to financial model is present
+
+### Phase 4 Deliverable
+Notify via Slack (#strategy-active-deals):
+```bash
+curl -s -X POST "$SLACK_WEBHOOK_ACTIVE_DEALS" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "text": "Deal Evaluation Ready: {Company Name}\nScorecard: {score}/100 — {recommendation}\nDeck: {deck_url}\nModel: {model_url}\nScorecard: {scorecard_url}"
+  }'
+```
+
+Kay and analyst review the deck, scorecard, and model together.
+
+---
+
+## Phase 5A: LOI (If Go)
+
+**Trigger:** Kay decides to proceed
+
+### Sub-Agent 6: LOI Generation
+**Task:** Create the LOI from template with deal terms.
+**Tools:** gog docs, gog drive
+
+**Steps:**
+1. Read Kay's financial model for terms:
+   - Enterprise valuation (N15)
+   - LTM EBITDA (N17)
+   - Entry multiple (calculated)
+   - Debt structure (C16-C18)
+   - Equity rollover (N25)
+2. Copy LOI template → shared deal folder
+3. Rename: "G&B LOI - {Company Name}.doc"
+4. Populate via `gog docs edit`:
+   - `[COMPANY LEGAL NAME]` → company legal name
+   - `[OWNER NAME]` → owner name(s)
+   - `[DATE]` → today's date
+   - `[ENTERPRISE VALUATION]` → from model
+   - `[RUN-RATE REVENUE]` → from model
+   - `[RUN-RATE EBITDA]` → from model
+   - `[DEFERRED PURCHASE PRICE]` → from model
+   - `[DEFERRED PURCHASE PRICE WRITTEN]` → written form
+   - `[ESCROW AMOUNT]` → typically 10% of TEV
+   - `[MAX ROLLOVER %]` → from model
+   - `[MIN ROLLOVER %]` → from model
+   - `[NON-COMPETE YEARS]` → typically 5
+   - `[EXCLUSIVITY DAYS]` → typically 90
+   - `[NUMBER]` → number of partners/owners
+   - `[PROPERTY ADDRESS]` → if applicable, otherwise remove section
+   - `[NDA DATE]` → date NDA was signed
+5. Flag sections needing Kay's custom input:
+   - Due diligence items (customize per business)
+   - Partner-specific language (adjust for single owner vs. multi-partner)
+   - Real property section (include/remove based on deal)
+
+**Returns:**
+```json
+{
+  "loi_doc_id": "",
+  "loi_url": "",
+  "terms_summary": {
+    "tev": "",
+    "multiple": "",
+    "debt": "",
+    "equity": "",
+    "rollover": ""
+  },
+  "flags": ["sections needing manual review"]
+}
+```
+
+**Stop Hook:**
+- [ ] LOI doc exists in shared deal folder
+- [ ] All financial placeholders populated from model
+- [ ] Company name and owner names correct
+- [ ] Flagged sections for Kay's review clearly marked
+
+### Phase 5A Deliverable
+Present to Kay:
+- Link to LOI document
+- Terms summary table
+- List of sections needing manual review
+- Kay reviews, finalizes, sends
+
+---
+
+## Phase 5B: Decline (If No-Go)
+
+**Trigger:** Kay decides to pass
+
+### Sub-Agent 7: Decline & Close
+**Task:** Draft decline email, update systems, capture learnings.
+**Tools:** gog gmail, Attio API, vault writes
+
+**Steps:**
+1. Ask Kay: "What was the primary reason for passing?"
+2. Ask Kay: "Is there someone we should introduce them to?" (warm handoff option)
+3. Draft decline email:
+   - If warm handoff → Template 10b (Decline with Warm Handoff)
+   - If standard decline → Template 10a (Decline)
+   - Personalize with specific compliments about the business and reasoning
+4. Present draft to Kay for review
+5. After Kay sends:
+   - Update Attio: move to "Closed / Not Proceeding" stage
+   - Create vault trace: `brain/traces/{date}-deal-decline-{company}.md`
+   - Log: company, reason for passing, what scorecard missed/got right, lessons learned
+
+**Returns:**
+```json
+{
+  "decline_email_draft": "",
+  "attio_updated": false,
+  "trace_created": false,
+  "warm_handoff": false
+}
+```
+
+**Stop Hook:**
+- [ ] Decline email draft presented to Kay
+- [ ] After Kay confirms send: Attio stage updated
+- [ ] Vault trace created with decline reasoning
+- [ ] If warm handoff: introduction email also drafted
+
+---
+
+## Phase 6: Decision Trace (Always — Go or No-Go)
+
+**Trigger:** After Phase 5A or 5B completes
+
+**Steps:**
+1. Ask Kay: "What was the deciding factor in this deal?"
+2. Ask Kay: "Is there anything the scorecard or model didn't capture that mattered?"
+3. Create vault trace: `brain/traces/{date}-deal-evaluation-{company}.md`
+
+**Trace captures:**
+- Deal outcome (proceed / pass)
+- Deciding factor
+- Scorecard accuracy (what it got right / missed)
+- Model assumptions that held / broke
+- Process improvements for next time
+- Any calibration recommendations
+
+This trace feeds into `/calibrate` for system improvement.
+</phases>
+
+<execution_flow>
+## Invocation
+
+This skill can be triggered in multiple ways:
+
+1. **Manual:** `/deal-evaluation {company name}` — starts from wherever the deal currently is
+2. **Phase 1 trigger:** Pipeline-manager detects first owner call logged
+3. **Phase 3 trigger:** Pipeline-manager detects financials received in email
+4. **Phase 5 trigger:** Kay says "proceed" or "pass" on a deal
+
+The skill detects the current state and picks up at the right phase:
+- No deal folder exists → Phase 1
+- Deal folder exists, no financials → Phase 2 (monitor)
+- Financials in folder, no model → Phase 3
+- Model exists, Kay confirmed → Phase 4
+- Scorecard + deck done, Kay decided → Phase 5A or 5B
+
+## Sub-Agent Summary
+
+| Agent | Phase | Task | Parallel? |
+|-------|-------|------|-----------|
+| 1: Folder Setup | 1 | Create folders, populate NDA | Yes (with Agent 2) |
+| 2: Email Draft | 1 | Draft thank-you email | Yes (with Agent 1) |
+| 3: Model Prep | 3 | Extract financials, populate model | Solo |
+| 4: Scorecard | 4 | Run company scorecard | Yes (with Agent 5) |
+| 5: Deck Builder | 4 | Create Thumbs Up/Down deck | Yes (with Agent 4) |
+| 6: LOI Generator | 5A | Populate LOI template | Solo |
+| 7: Decline & Close | 5B | Draft decline, update systems, trace | Solo |
+</execution_flow>
+
+<success_criteria>
+## Success Criteria
+
+### Phase 1 Complete
+- [ ] Shared deal folder with 7 subfolders exists
+- [ ] Private deal folder exists in DEALS IN REVIEW
+- [ ] NDA populated and exported as PDF
+- [ ] Thank-you email draft presented to Kay
+- [ ] Call notes filed
+
+### Phase 3 Complete
+- [ ] Financial model in DEALS IN REVIEW with historical data
+- [ ] Summary presented to Kay
+- [ ] No projection/assumption cells touched
+
+### Phase 4 Complete
+- [ ] Company scorecard completed in shared folder
+- [ ] Thumbs Up/Down deck created in shared folder
+- [ ] Slack notification sent to #strategy-active-deals with all links
+- [ ] All deliverable links are valid and accessible
+
+### Phase 5 Complete (either path)
+- [ ] LOI populated and presented (if go) OR decline email drafted (if no-go)
+- [ ] Attio updated to correct stage
+- [ ] Vault trace created capturing decision reasoning
+- [ ] If decline with handoff: introduction email also drafted
+
+### Validation (run before any Slack notification)
+```python
+checks = {
+    "shared_folder": folder_exists(shared_folder_id),
+    "private_folder": folder_exists(private_folder_id),
+    "deliverables_filed": all_docs_in_correct_subfolders(),
+    "attio_current": attio_stage_matches_deal_state(),
+    "vault_entity": entity_exists_and_linked(),
+}
+
+for check, passed in checks.items():
+    if not passed:
+        raise ValidationError(f"STOP: {check} failed. Fix before notifying.")
+```
+</success_criteria>

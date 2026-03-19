@@ -177,6 +177,38 @@ Glob: brain/calls/{YYYY-MM-DD}*  (for each day in the week)
 # New entities created this week
 git log --after={WEEK_START} --before={WEEK_END} --name-only --diff-filter=A -- brain/entities/
 ```
+### Agent 5: Linkt Credit & ICP Collector
+**Task:** Pull Linkt credit usage, list quality metrics, and ICP accuracy from the master sheet.
+**Tools:** Linkt API (curl), gog sheets
+**Returns:**
+```json
+{
+  "credits_used_this_week": 0,
+  "credits_used_this_month": 0,
+  "credits_remaining": 150,
+  "entities_returned": 0,
+  "search_runs": 0,
+  "avg_entities_per_run": 0,
+  "kay_accept_rate": 0,
+  "kay_reject_rate": 0,
+  "top_reject_reason": "",
+  "jj_connection_rate": 0,
+  "positive_sentiment_rate": 0,
+  "credits_per_approved_target": 0,
+  "credits_per_conversation": 0,
+  "active_icp_name": "",
+  "requested_list_size": 0,
+  "icp_changed_this_week": false
+}
+```
+**Queries:**
+```bash
+# Linkt credit usage
+curl -s -X GET "https://api.linkt.ai/v1/run" -H "x-api-key: {API_KEY}" | # filter runs by date range
+
+# Master sheet ICP data (Kay + JJ columns)
+gog sheets get "{MASTER_SHEET_ID}" "'Active'!N:T" --json  # Kay Decision, Reject Reason, Call Status, Sentiment
+```
 </sub_agents>
 
 <execution_flow>
@@ -190,12 +222,13 @@ WEEK_ENDING_DATE = Friday date in YYYY-MM-DD format
 ```
 
 ### Step 2: Spawn Data Collection Sub-Agents
-Launch all 4 agents in parallel:
+Launch all 5 agents in parallel:
 ```
 Agent 1: Gmail Collector (background)
 Agent 2: Calendar & Meetings Collector (background)
 Agent 3: Attio Pipeline Collector (background)
 Agent 4: Vault Activity Collector (background)
+Agent 5: Linkt Credit & ICP Collector (background)
 ```
 Wait for all to return.
 
@@ -350,6 +383,53 @@ Investor-grade rollup. Cumulative totals and conversion funnels.
 | Active Niches | {list} | | | |
 | Niches Activated This Quarter | {count} | | | |
 | Niches Killed This Quarter | {count} | | | |
+
+### Tab 4: Linkt Credit Tracker
+Tracks credit consumption, list quality, and ICP efficiency week over week.
+
+| Row | Metric | Target | {Week Col} |
+|-----|--------|--------|------------|
+| 1 | Header | | Week ending {date} |
+| 2 | | | |
+| 3 | CREDIT USAGE | | |
+| 4 | Credits Used This Week | — | {n} |
+| 5 | Credits Used This Month (cumulative) | 150/mo | {n} |
+| 6 | Credits Remaining This Month | — | {n} |
+| 7 | | | |
+| 8 | LIST QUALITY | | |
+| 9 | Entities Returned | — | {n} |
+| 10 | Entities per Credit | — | {calculated} |
+| 11 | Search Runs This Week | — | {n} |
+| 12 | Avg Entities per Run | — | {calculated} |
+| 13 | | | |
+| 14 | ICP ACCURACY | | |
+| 15 | Kay Accept Rate | 70%+ | {%} |
+| 16 | Kay Reject Rate | — | {%} |
+| 17 | Top Reject Reason | — | {reason} |
+| 18 | | | |
+| 19 | OUTREACH CONVERSION | | |
+| 20 | JJ Connection Rate | — | {%} |
+| 21 | Positive Sentiment Rate | — | {%} |
+| 22 | Credits per Approved Target | — | {calculated} |
+| 23 | Credits per Conversation | — | {calculated} |
+| 24 | | | |
+| 25 | ICP CONFIGURATION | | |
+| 26 | Active ICP Name | — | {name} |
+| 27 | Requested List Size | — | {n} |
+| 28 | ICP Change This Week? | — | Y/N |
+
+**Data sources:**
+- Credits used: Linkt API (`/v1/run` endpoint, sum credits per run this week)
+- Entities returned: Linkt API (`/v1/entity/search` count) or from master sheet row count
+- Kay accept/reject: Master sheet Col N (Kay Decision)
+- JJ rates: Master sheet Col Q (Call Status) and Col T (Owner Sentiment)
+
+**What this tab tells you:**
+- Are we burning credits too fast? (Credits remaining vs days left in month)
+- Are the lists good quality? (Accept rate, entities per credit)
+- Should we change the list size request? (If 20 entities/run and 50% rejected, try 10 tighter ones)
+- Should we upgrade the subscription? (If consistently hitting 150 by week 3)
+- Is the ICP working? (Credits per conversation is the ultimate efficiency metric)
 
 ### Why These Supporting Metrics
 

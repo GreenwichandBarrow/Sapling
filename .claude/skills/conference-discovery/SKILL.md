@@ -186,8 +186,9 @@ After Kay approves a conference:
 ### Registration
 1. Provide direct registration link
 2. Create Motion task: "Register for {conference name}" with deadline 2 days before registration closes
-3. If association membership required, present cost and ask Kay for approval first
-4. Update conference calendar status to "Registered"
+3. Create Drive subfolder in RESEARCH/CONFERENCES: `gog drive mkdir "{CONFERENCE NAME}" --parent "18H0L-5UgHObt_0Reb6YlRshbWakEozk5"` — all conference materials live here (attendee lists, target list, debrief note, slides, reports)
+4. If association membership required, present cost and ask Kay for approval first
+5. Update conference calendar status to "Registered"
 
 ### Attendee/Exhibitor List
 1. Check conference website for public exhibitor/sponsor list
@@ -261,12 +262,25 @@ For each conference contact:
 
 ### Conference Debrief Note
 
-Create `brain/calls/{date}-{conference-slug}.md` with:
+Create in **three locations:**
+
+1. **Google Doc** in the conference's own Drive folder (RESEARCH/CONFERENCES/{CONFERENCE NAME}) — easy to read on phone, lives with all conference materials
+2. **Vault file** at `brain/calls/{date}-{conference-slug}.md` — searchable context for future reference
+3. **Slack notification** with Doc link — triggers Kay's review the morning after
+
+Note: A Drive subfolder is created for each conference at registration time (see references/drive-locations.md). All conference materials — attendee lists, debrief note, target list, slides — live in that folder.
+
+**Debrief structure:**
 - Conference name, date, location
-- List of people met with notes
-- Key takeaways and opportunities identified
-- Follow-up actions
+- Total people met
+- **People met** — for each person: name, company, what they do, what you talked about, how promising (hot/warm/cold), follow-up action
+- **Key takeaways** — what you learned about the niche from being there, surprises, patterns
+- **Opportunities identified** — which conversations could lead somewhere
+- **Things you might have missed** — Claude flags anything from Granola transcripts that Kay didn't explicitly note (names mentioned in passing, intros promised, business details shared)
+- **Follow-up actions** — consolidated list of next steps
 - Tagged: `call`, `source/conference`, relevant niche tags
+
+The debrief is designed to be easily digestible on a phone screen — short bullets, person names bolded, no walls of text. It should trigger thoughts and catch things Kay missed in the moment.
 </target_scoring>
 
 <validation>
@@ -311,7 +325,7 @@ curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
 ```bash
 curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
   -H "Content-Type: application/json" \
-  -d '{"text":"Post-conference processing complete for {conference name}. {n} contacts added to Attio. Follow-up drafts handed to outreach-manager.\nhttps://docs.google.com/spreadsheets/d/{SHEET_ID}/edit"}'
+  -d '{"text":"Post-conference processing complete for {conference name}.\n{n} contacts added to Attio. Follow-up drafts in Superhuman.\n\nDebrief: {Google Doc link}\n\nReview the debrief for anything you might have missed."}'
 ```
 
 **If validation fails:** Do NOT send Slack. Report which checks failed and fix before retrying.

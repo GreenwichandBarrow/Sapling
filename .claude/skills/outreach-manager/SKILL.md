@@ -22,9 +22,10 @@ This skill receives targets from two upstream skills and runs personalized outre
 - JJ's call outcomes feed back into pipeline-manager
 - Weekly outreach metrics → skill/weekly-tracker
 
-Two subagents:
+Three subagents:
 1. **Cold Outreach** — sequenced multi-channel cadence for Linkt-sourced targets
 2. **Conference Outreach** — pre-conference emails and post-conference follow-ups
+3. **Intermediary Outreach** — relationship-building with association heads, brokers, river guides
 </objective>
 
 <dedup_layer>
@@ -276,6 +277,84 @@ Kay
 
 Draft all in Superhuman. Present during morning pipeline-manager review. Kay approves and sends.
 </conference_outreach>
+
+<intermediary_outreach>
+## Subagent 3: Intermediary Outreach
+
+Handles outreach to force multipliers — people who know every owner in the niche and can open doors. These are NOT acquisition targets. They are relationship-building contacts who go into the Attio Intermediary Pipeline, not Active Deals.
+
+### Who Are Intermediaries?
+- **Association heads and executive directors** — run the industry organization, know every member
+- **Conference organizers** — can introduce Kay to exhibitors and speakers
+- **Industry brokers and M&A advisors** — actively seeing deal flow in the niche
+- **CPAs and lawyers** — serve business owners in the niche, know who's thinking about succession
+- **Industry consultants** — "river guides" who can walk Kay through the landscape
+- **Fellow searchers** who've explored adjacent niches — can share intel and introductions
+
+### Different Framing (Not a Pitch)
+
+Intermediary outreach positions Kay as a **student of the industry**, not a buyer. The goal is to learn and build a relationship, not pitch an acquisition.
+
+**Email structure:**
+```
+Subject: {Something specific to their role in the industry}
+
+Hi {first name},
+
+{1 sentence showing you know their role — association they run, event they organize, practice area}.
+{1 sentence about Kay researching the {niche} space and wanting to learn from someone who sees the full landscape}.
+{1 sentence proposing a conversation — positioned as learning, not deal-sourcing}.
+
+Would love to find 20 minutes to hear your perspective.
+
+Kay Schneider
+Greenwich & Barrow
+```
+
+### Conference River Guide Play
+
+When an upcoming conference is registered, identify the association head or organizer and reach out T-minus 3 weeks (before attendee outreach starts). The goal: meet them before the conference so they walk Kay through the room making introductions.
+
+**Conference river guide cadence:**
+
+| When | Action |
+|------|--------|
+| T-minus 21 days | First email to association head / organizer — "I'm attending {conference}, would love to connect beforehand" |
+| T-minus 14 days | Follow-up if no response — "Would love 15 minutes before the conference" |
+| T-minus 7 days | If connected, ask: "Who should I make sure to meet at {conference}?" |
+| Conference day | Meet in person. They introduce Kay to key people. |
+| T+1 day | Thank-you email + follow-up on any introductions they made |
+
+### General Intermediary Cadence (non-conference)
+
+For intermediaries identified through niche research, not tied to a specific conference:
+
+| Day | Channel | Action |
+|-----|---------|--------|
+| Day 1 | Email (Superhuman) | Personalized "learning about the industry" email |
+| Day 5 | Email (Superhuman) | Follow-up if no response |
+| Day 10 | LinkedIn DM (Kay) | High-value only |
+
+No JJ call. Intermediaries should only hear from Kay directly.
+
+### Attio Pipeline
+
+Intermediaries go into the **Intermediary Pipeline** in Attio, not Active Deals:
+- New contact → "Identified"
+- First email sent → "Contacted"
+- Positive response → "Warmed"
+- Actively sending introductions → "Actively Receiving Deal Flow"
+
+### Sources for Intermediary Discovery
+
+- **Niche intelligence** — when a niche is activated, identify the key associations, brokers, and advisors in the space
+- **Conference discovery** — conference organizers and association hosts
+- **Web research** — industry blogs, podcasts, LinkedIn thought leaders in the niche
+- **Existing network** — vault entities tagged with `relationship_type: River Guide` or `relationship_type: Intermediary`
+- **Referrals** — one intermediary often knows others ("You should also talk to...")
+
+Draft all emails in Superhuman via the `superhuman` MCP server using `superhuman_draft` with `--account kay.s@greenwichandbarrow.com`.
+</intermediary_outreach>
 
 <essential_principles>
 ## Principles

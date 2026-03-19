@@ -213,14 +213,15 @@ Store processed list in vault: `brain/outputs/{date}-{conference-slug}-targets.m
 
 ### Target Scoring
 
-Rank targets by:
-1. **Niche fit** — direct match to top 5 niches (highest weight)
-2. **Owner presence** — confirmed business owner/operator at booth
-3. **Company size** — within buy box (~$1-10M revenue, 5-50 employees)
-4. **Geography** — bonus for northeast businesses
-5. **Not already in pipeline** — new contacts get priority
+Score each target using the **G&B Company Scorecard** (10 criteria, 1-10 weighted scale). See `niche-intelligence/references/company-scorecard.md` for full rubric.
 
-Present top 10 to Kay. She selects 5-10 for pre-conference outreach.
+For conference attendees, not all criteria will have data available pre-conference. Score what you can from public information (value proposition, market size, revenue concentration, technology) and flag unknowns. A partial score is fine for prioritizing pre-conference outreach — the full scorecard gets completed after the conversation.
+
+Additional conference-specific filters:
+- **Owner presence** — confirmed business owner/operator at booth (not a vendor or employee)
+- **Not already in pipeline** — new contacts get priority
+
+Present top 10 to Kay with scores. She selects 5-10 for pre-conference outreach.
 
 ### Handoff to Outreach Manager
 

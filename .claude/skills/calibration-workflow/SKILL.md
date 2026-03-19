@@ -68,6 +68,12 @@ python3 .claude/scripts/list-unreviewed-traces.py [date_filter]
 - **SOP:** `G&B Weekly Operating Schedule` in Google Drive (MANAGER DOCUMENTS / AI OPERATIONS). This is the master operating document showing team roles, daily deliverables, notification schedule, and event-driven workflows. Calibration agents MUST review this when proposing changes — any improvement that changes a deliverable, schedule, or notification must update the SOP as part of the change.
   - Drive folder ID: `1F98mmZy6I89YBA9GT_OrOum1Hn4wu9SG`
 
+## Schedule
+
+**Runs:** Every Friday at 10am ET (automated). Processes all unreviewed traces from the week. Slack notification to #operations with summary and link to full calibration report.
+
+This follows the weekly tracker (9am Friday) — Kay reviews the numbers first, then reviews system improvement proposals at 10am.
+
 ## Phase 2: Coordinated Analysis
 
 Create chatroom with proper frontmatter, then spawn ALL 4 agents in parallel.
@@ -174,6 +180,17 @@ Based on user choice:
 - Mark applied traces as `review_status: applied`
 - Mark skipped traces as `review_status: skipped`
 - Continue with steps 3-6 above
+
+## Notification
+
+After calibration analysis is complete (before human approval), notify Kay:
+```bash
+curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "text": "Weekly Calibration Ready (Friday 10am)\nTraces analyzed: {n}\nProposals: {n} ({critical} critical, {high} high)\nTop proposal: {title}\nReview in Claude Code to approve/reject changes."
+  }'
+```
 
 **Option 4 (Cancel):**
 - No changes made

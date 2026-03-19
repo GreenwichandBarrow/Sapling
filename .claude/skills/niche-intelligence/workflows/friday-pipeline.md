@@ -211,7 +211,15 @@ tags:
 After all steps complete:
 
 1. Read the full chatroom to compile final status
-2. Output to user:
+2. Send Slack notification:
+
+```bash
+curl -s -X POST "SLACK_WEBHOOK_REDACTED" \
+  -H "Content-Type: application/json" \
+  -d '{"text":"Niche Intelligence complete — {count} new niches identified.\n{For each: \"• {Niche Name} ({X.XX}/3)\"}\n\nOne-pagers: {count} | Promoted: {count or \"None\"}\nReport: brain/outputs/{date}-niche-intelligence-report.md\n\nReady for Monday review."}'
+```
+
+3. Output to user:
 
 ```
 Friday Niche Intelligence Complete — {date}
@@ -241,5 +249,6 @@ This workflow is complete when:
 - [ ] Scores written back to tracker (IDEATION rows updated)
 - [ ] High-scoring niches promoted to WEEKLY REVIEW if warranted
 - [ ] Output report written with valid vault frontmatter
+- [ ] Slack notification sent with niche count, names, scores
 - [ ] User notified with summary
 </success_criteria>

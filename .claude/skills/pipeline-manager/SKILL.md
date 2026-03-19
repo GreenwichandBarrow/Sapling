@@ -507,6 +507,26 @@ Pipeline updates complete:
 <followup_actions>
 ## Phase 5: Follow-up Actions
 
+### Upcoming Meeting Prep Triggers
+
+Scan calendar 2 days ahead. If upcoming meetings match these contacts, trigger the appropriate skill:
+
+| Contact | Cadence | Trigger |
+|---------|---------|---------|
+| Jeff Stevens (Anacapa) | Monthly | `/investor-update call-prep jeff` → saves to INVESTOR COMMUNICATION / MONTHLY |
+| Guillermo Lavergne | Bi-weekly | `/investor-update call-prep guillermo` → saves to INVESTOR COMMUNICATION / BI-WEEKLY |
+| Any new external contact | As needed | `/meeting-brief {contact}` → saves to RESEARCH / BRIEFS |
+
+```bash
+# Look 2 days ahead for investor calls
+gog calendar list --from {TODAY} --to {DAY_AFTER_TOMORROW} --json
+# If Jeff Stevens or Guillermo Lavergne appears, trigger call prep
+```
+
+Brief is ready the next morning, one full day before the call. Slack ping to #operations with the doc link.
+
+### Follow-Up Actions
+
 After pipeline updates, surface any follow-up tasks:
 
 - **"Need to Send Thank You"** → immediately draft a personalized thank you email using Kay's voice (see memory: user_outreach_voice.md). Reference specifics from the meeting (Granola transcript, call notes, or calendar context). Present draft for Kay's review, then queue to send via gog gmail.

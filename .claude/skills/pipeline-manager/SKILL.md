@@ -183,6 +183,37 @@ This replaces the previous approach where Kay manually flagged warm intros. The 
 5. Set `source: email`, assign confidence level (high/medium/low)
 6. High confidence items surface in Part 1. Medium/low go to /triage.
 
+### Inbound Introduction Detection
+During Gmail ingestion, detect introduction emails — someone introducing Kay to a new person/company. Signals:
+- Subject contains "introduction", "intro", "meet", "connecting you with", "wanted to introduce"
+- Email has 3+ recipients (introducer + Kay + new person)
+- Body mentions a company name + person name Kay hasn't corresponded with before
+
+**For each detected intro:**
+1. Extract: introducer name, new person name, new person's company, new person's email, context given by introducer
+2. Create vault entity at `brain/entities/{slug}.md` for the new person
+3. Create vault entity for their company if it doesn't exist
+4. Add to the active niche sprint master sheet with Source = "Intermediary Referral"
+5. Add to Attio Active Deals at "Identified" with `how_introduced: "Intro from {introducer name}, {date}"`
+6. Flag in Kay's morning pipeline review: "New intro received from {introducer} to {person} at {company}. Added to target list. Draft warm intro response?"
+7. If Kay approves, outreach-manager drafts a warm intro email (different framing than cold — leads with the connection: "So-and-so suggested I reach out")
+
+**Key difference from cold targets:**
+- Warm intro email references the introducer by name
+- Skips JJ confirmation call — the intro IS the warm touch
+- Higher priority than cold targets in the daily review
+- Also draft a thank-you email to the introducer
+
+**Cadence for warm intros:**
+| Day | Channel | Action |
+|-----|---------|--------|
+| Day 1 | Email (Superhuman) | Warm intro email referencing introducer |
+| Day 1 | Email (Superhuman) | Thank-you to introducer |
+| Day 5-6 | Email (Superhuman) | Follow-up if no response |
+| Day 8-10 | LinkedIn DM (Kay) | High-value only |
+
+No Day 3 JJ call. The introducer already warmed the connection.
+
 ## Niche Signal Detection (runs during data ingestion)
 
 While processing Granola transcripts and Gmail, scan for niche-relevant signals that Kay may not have flagged. These feed into Friday's niche-intelligence run.

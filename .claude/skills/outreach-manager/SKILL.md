@@ -138,6 +138,47 @@ Draft in Superhuman. Kay reviews and sends.
 Reserved for targets that are a strong fit but haven't responded to email or phone. Kay sends personally from her LinkedIn. Claude drafts the message, Kay copies and sends.
 
 Not every target gets this. Only use for owners where the company is a clear buy-box match and worth the extra touch.
+
+### Warm Intro Outreach (from pipeline-manager intro detection)
+
+When pipeline-manager detects an inbound introduction via email, the target enters the outreach flow differently than cold targets.
+
+**Warm intro email structure:**
+```
+Subject: {Introducer's first name} suggested I reach out
+
+Hi {first name},
+
+{Introducer} mentioned we should connect. {1 sentence about why — what the introducer said or the context of the intro}.
+{1 sentence about G&B and why Kay is interested in their space}.
+
+Would love to find 15 minutes to chat.
+
+Kay Schneider
+Greenwich & Barrow
+```
+
+**Thank-you to introducer:**
+```
+Subject: Thank you for the intro
+
+Hi {introducer first name},
+
+Really appreciate you connecting me with {person}. I reached out to them today.
+
+Kay
+```
+
+**Warm intro cadence (no JJ call):**
+| Day | Channel | Action |
+|-----|---------|--------|
+| Day 1 | Email (Superhuman) | Warm intro email + thank-you to introducer |
+| Day 5-6 | Email (Superhuman) | Follow-up if no response |
+| Day 8-10 | LinkedIn DM (Kay) | High-value only |
+
+No Day 3 JJ confirmation call — the introduction already warmed the connection. JJ's time is better spent on cold targets.
+
+Draft both emails (intro response + thank-you) in Superhuman via the `superhuman` MCP server using `superhuman_draft` with `--account kay.s@greenwichandbarrow.com`.
 </cold_outreach>
 
 <conference_outreach>

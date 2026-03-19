@@ -148,8 +148,10 @@ SUGGESTED TALKING POINTS
 ## Phase 3: Save & Deliver
 
 ### Google Doc
+Start from the G&B letterhead template (ID: `1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF`) — copy it, rename, then add brief content. Logo must be centered. Use Avenir font, black text only.
 ```
-gog docs create "{title}" --parent "1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ" --file {tmp_file}
+gog drive copy "1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF" "{title}" --parent "1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ"
+# Then populate content via gog docs edit or batch update
 ```
 
 ### Vault File

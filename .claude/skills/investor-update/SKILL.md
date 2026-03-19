@@ -289,8 +289,8 @@ Last call: {date}
 ```
 
 **Deliverable locations:**
-- **Jeff (monthly):** Save as Google Doc in INVESTOR COMMUNICATION / MONTHLY + brain/briefs/
-- **Guillermo (bi-weekly):** Save as Google Doc in INVESTOR COMMUNICATION / BI-WEEKLY + brain/briefs/
+- **Jeff (monthly):** Copy G&B letterhead template (ID: `1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF`), rename with date, populate content. Save to INVESTOR COMMUNICATION / MONTHLY (ID: `1FGxl4_q44sHK-Kv7t1hHfCMfYXA3H9YW`) + brain/briefs/. Logo centered, Avenir font, black text only.
+- **Guillermo (bi-weekly):** Same approach. Save to INVESTOR COMMUNICATION / BI-WEEKLY (ID: `1SFkrxnkBpyng6dWIcW3eDXqab9sf8wui`) + brain/briefs/.
 
 4. Deliver Slack ping to #operations before the call with link to the doc
 

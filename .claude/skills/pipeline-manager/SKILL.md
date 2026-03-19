@@ -176,13 +176,36 @@ Read the active niche sprint's master sheet ("{Niche} - Target List") in LINKT T
 - New "Wrong Number" → flag data quality issue
 - New "Not Interested" → move to "Closed / Not Proceeding" or flag for Kay
 
-### JJ Daily Slack Notification
-Each morning, after processing pipeline changes, send JJ his call list for the day via Slack:
+### JJ Daily Call Prep (10am ET)
+
+**JJ's hours:** 10am - 2pm ET, Mon-Fri. All notifications at 10am, not 9am.
+
+**Overnight (before 10am):**
+1. Select 4-6 targets from the master target sheet where Kay: Decision = Approved and JJ: Call Status is empty
+2. For each target, create a Call Log doc from template (ID: `1nvvdOU7I5NLAwxrYgHIFTRNrEZmc67X8`):
+   - Copy template → save to OPERATIONS / CALL LOGS (`1nGSQIa28fhQ9dXuKdMks_172gyxAinEs`)
+   - Name: "Call Log - {Company Name} {M.DD.YY}.docx"
+   - Pre-populate COMPANY INFO section from Linkt data in the master target sheet
+   - Customize SCRIPT section with company-specific operational signal
+3. Send Slack at 10am:
+
 ```bash
 curl -s -X POST "$SLACK_WEBHOOK_SVA" \
   -H "Content-Type: application/json" \
-  -d '{"text":"Good morning JJ. Here are your calls for today:\n\n{list of names, companies, phones where Call Date = today}\n\nScript: {niche script}\n\nSheet: {link to master sheet}"}'
+  -d '{"text":"Good morning JJ. Here are your calls for today:\n\n1. {Owner Name} - {Company}\n   Phone: {phone}\n   Call Log: {google_doc_link}\n\n2. {Owner Name} - {Company}\n   Phone: {phone}\n   Call Log: {google_doc_link}\n\n..."}'
 ```
+
+**JJ's workflow:** Click link → read script + company info → make call → fill in Call Outcome + Call Notes in the doc. JJ does NOT touch the master target sheet.
+
+**Overnight (after JJ's shift):**
+1. Read all Call Log docs updated today in OPERATIONS / CALL LOGS
+2. Extract call outcomes and update master target sheet:
+   - R: JJ: Call Status ← from Call Status field
+   - S: JJ: Call Date ← from Call Date field
+   - T: JJ: Call Notes ← summarize detailed notes into one line
+   - U: JJ: Owner Sentiment ← from Owner Sentiment field
+3. If Call Status = "Interested" → flag for Kay's morning briefing, trigger deal-evaluation Phase 1
+
 JJ webhook posts to #operations-sva channel.
 
 ### Warm Intro Detection

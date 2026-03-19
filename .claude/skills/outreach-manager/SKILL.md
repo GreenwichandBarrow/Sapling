@@ -58,6 +58,8 @@ Handles outreach for targets sourced from skill/target-discovery (Linkt + free s
 
 After Day 10 with no response, move to nurture cadence (pipeline-manager handles from here).
 
+**Business days only.** All day counts are business days (Mon-Fri). No emails drafted for weekends, no JJ calls scheduled on weekends. If Day 1 is Thursday, Day 3 is the following Monday, not Saturday.
+
 **Why this sequence:** The email establishes who Kay is and gives the owner time to check LinkedIn (where Kay's Chanel/luxury background closes the credibility gap). JJ's call 2 days later references the email, making it a warm confirmation rather than a cold call. The follow-up email is a lightweight bump. LinkedIn DM is the escalation reserved for high-fit targets.
 
 ### Day 1: Kay's Email

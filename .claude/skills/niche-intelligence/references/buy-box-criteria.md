@@ -1,7 +1,7 @@
 # G&B Buy Box Criteria (March 2026)
 
 Source: Consolidated from G&B Lead Gen Criteria (2.10.26), G&B Acquisition Criteria (Feb 2026), G&B One Pager (7.9.25), deal history lessons, and Kay's latest direction.
-Google Doc: G&B Buy Box 3.18.26 in ANALYST / PROJECTS / G AND B BUY BOX folder
+Google Doc: G&B Buy Box 3.18.26 in ANALYST / G AND B BUY BOX folder
 
 ## Hard Gates (Pass/Fail)
 

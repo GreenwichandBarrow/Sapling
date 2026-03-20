@@ -19,7 +19,7 @@ Every deal has TWO folders. Never mix them.
 
 **Shared folder** — analyst can see:
 ```
-ANALYST / PROJECTS / ACTIVE DEALS / {COMPANY} / DEAL {YEAR} /
+ANALYST / ACTIVE DEALS / {COMPANY} / DEAL {YEAR} /
   OUTREACH/
   CALLS/
   DILIGENCE/
@@ -28,7 +28,7 @@ ANALYST / PROJECTS / ACTIVE DEALS / {COMPANY} / DEAL {YEAR} /
   CIM/
   NOTES/
 ```
-- **Parent folder ID:** Find ACTIVE DEALS under ANALYST / PROJECTS
+- **Parent folder ID:** Find ACTIVE DEALS under ANALYST
 - **Template folder ID:** `1Ao4pF-DbwOo_ZADcD4EvVvJuogvEK0NI` (ABC COMPANY template)
 
 **Private folder** — Kay only:

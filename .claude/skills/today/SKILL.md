@@ -22,7 +22,7 @@ Spawn three sub-agents with chatroom coordination:
 Orchestrator reads chatroom, deduplicates findings, writes directly to daily note without confirmation.
 
 **Phase 3 - Handoff:**
-If any medium/low confidence items exist, invoke /triage for human decisions.
+Present async items as a **numbered list** for Kay to confirm which become Motion tasks. Then invoke /triage for medium/low confidence items.
 
 ### Key Behaviors
 
@@ -159,23 +159,34 @@ For triage items, include source to help user understand origin.
 </phase_2_synthesis>
 
 <phase_3_handoff>
-## Phase 3: Triage Handoff
+## Phase 3: Review & Handoff
+
+### Async Item Review (always numbered)
+
+After writing the daily note, present all async (external action) items as a **numbered list** for Kay to confirm which to create as Motion tasks:
+
+```
+Here are today's async items. Which should become Motion tasks?
+
+1. {title} — {one-line context}
+2. {title} — {one-line context}
+3. {title} — {one-line context}
+```
+
+**Always use numbered lists when presenting items for Kay's review.** This lets Kay respond with just numbers (e.g., "1, 3 yes, 2 no").
+
+After confirmation:
+- Create Motion tasks for approved items (status: "Todo", workspace: ws_fnSjxkfnWpcCPke4cknr9r)
+- Mark declined inbox items as done if already complete
+
+### Triage Handoff
 
 If any items were placed in the Triage section:
 
-1. **Summarize triage queue:** List the items and their confidence levels
-2. **Invoke /triage skill:** Hand off to human decision-making
+1. **Summarize triage queue** as a numbered list with confidence levels
+2. **Invoke /triage skill** for human decisions
 
-```
-Ready for triage: {n} items need your decision
-
-1. {title} (medium - implied deadline from email)
-2. {title} (low - FYI that might need response)
-
-Invoking /triage for human review...
-```
-
-If no triage items, skip this phase and complete the command.
+If no triage items, skip triage and complete the command.
 </phase_3_handoff>
 
 <email_scanning>

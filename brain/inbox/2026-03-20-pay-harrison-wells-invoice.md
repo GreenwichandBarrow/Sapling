@@ -2,7 +2,7 @@
 schema_version: 1.2.0
 date: 2026-03-20
 title: "Pay Harrison Wells session invoice ($250)"
-status: backlog
+status: done
 source: email
 urgency: high
 entity: "[[entities/harrison-wells]]"

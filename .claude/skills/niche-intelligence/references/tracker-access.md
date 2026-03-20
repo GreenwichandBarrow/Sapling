@@ -8,10 +8,10 @@
 
 ```bash
 # Read IDEATION tab (all rows)
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "IDEATION!A:J" -j
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "IDEATION!A:K" -j
 
 # Read WEEKLY REVIEW tab
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:I" -j
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:J" -j
 
 # Read KILLED tab (to exclude)
 gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "KILLED!A:I" -j
@@ -32,8 +32,9 @@ gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichan
 | E | Score |
 | F | Days in Review |
 | G | QSBS |
-| H | Red flags |
-| I | Quick notes |
+| H | Target Pool |
+| I | Red flags |
+| J | Quick notes |
 
 ### IDEATION
 | Col | Field |
@@ -47,7 +48,8 @@ gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichan
 | G | AI Defensibility |
 | H | Right to Win (Kay) |
 | I | Network Access |
-| J | Notes |
+| J | Target Pool |
+| K | Notes |
 
 ### TABLED
 | Col | Field |
@@ -91,11 +93,11 @@ IDEATION section headers (separator rows in column A):
 2. Determine which section the niche belongs to (Intersection, Luxury, Compliance, Other)
 3. Find the last row of that section (the row before the NEXT section header)
 4. INSERT a new row at that position: `gog sheets insert {sheetId} "IDEATION" rows {row} -a {account} --count 1 -j`
-5. WRITE the niche data to the newly inserted row: `gog sheets update {sheetId} "IDEATION!A{row}:J{row}" -a {account} --values-json '[["Section","Rank","Niche","Score","Margins","Recurring","AI","RTW","Network","Notes"]]' -j`
+5. WRITE the niche data to the newly inserted row: `gog sheets update {sheetId} "IDEATION!A{row}:K{row}" -a {account} --values-json '[["Section","Rank","Niche","Score","Margins","Recurring","AI","RTW","Network","Target Pool","Notes"]]' -j
 
 ```bash
 # Append row to WEEKLY REVIEW (no sections — append is fine)
-gog sheets append 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:I" --values-json '[["6","Niche Name","2026-03-21","New - Pending Review","2.75","0","TBD","None identified","Promoted from IDEATION via Niche Intelligence"]]'
+gog sheets append 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:J" --values-json '[["6","Niche Name","2026-03-21","New - Pending Review","2.75","0","TBD","TBD","None identified","Promoted from IDEATION via Niche Intelligence"]]'
 ```
 
 ## Drive Folder Operations

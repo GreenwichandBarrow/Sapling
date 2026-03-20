@@ -1,13 +1,29 @@
 # G&B Industry Scorecard Structure
 
-Source: `G&B Industry & Company Scorecard Template.xlsx` (Drive ID: `1kCCbEBpAgwX2TMn095W8-EzUUqvXIpWO`)
-Location: MANAGER DOCUMENTS / G&B MASTER TEMPLATES (Drive folder: `19TxdV5GHHbYq_O8YupQ-gkEH7V00iykx`)
-Local copy: `brain/library/internal/scorecard/G&B Industry & Company Scorecard Template.xlsx`
+Source: `G&B Industry & Company Scorecard Template.xlsx`
+- **Original Drive ID:** `1kCCbEBpAgwX2TMn095W8-EzUUqvXIpWO`
+- **Updated copy (3/20/2026, with INITIAL SCREEN tab):** `1_67yuJOFLvBX-1U5hEpTAO1q74-fr4aH`
+- **Location:** MANAGER DOCUMENTS / G&B MASTER TEMPLATES (Drive folder: `19TxdV5GHHbYq_O8YupQ-gkEH7V00iykx`)
+- **Local copy:** `brain/library/internal/scorecard/G&B Industry & Company Scorecard Template.xlsx`
+- **Completed scorecards** (with filled-in data) are in the older file: `G&B Scorecard Industry & Company 7.24.25.xlsx` (also saved locally)
 
-**This template is the canonical reference. It does not change.**
-**Completed scorecards** (with filled-in data) are in the older file: `G&B Scorecard Industry & Company 7.24.25.xlsx` (also saved locally)
+## INITIAL SCREEN (Tab 1 — Pass/Fail Gate)
 
-## Industry Scorecard (9 criteria, weighted, score 1-4)
+Run BEFORE the Industry Scorecard. All 4 must pass to proceed.
+
+| Criterion | Pass Threshold | What to evaluate |
+|-----------|---------------|------------------|
+| Margins | 15%+ EBITDA | Typical EBITDA margins for companies in this industry |
+| Recurring Revenue | Existing or convertible | Is there contractual/subscription revenue, or a clear path to convert? |
+| Industry Growth | Above GDP (~3%+) | Industry CAGR relative to GDP growth |
+| Growth TAM | $500M+ market size | Total addressable market. $500M is the investor floor — below this is a red flag. |
+
+**Target TAM (informational — NOT scored, NOT a gate):**
+- Number of independently owned acquisition candidates in this niche
+- Determines sprint duration: 50+ = long, 20-50 = focused, 10-20 = fast, <10 = very fast
+- Reported as a column on the Industry Research Tracker (like QSBS)
+
+## Industry Scorecard (Tab 2 — 9 criteria, weighted, score 1-4)
 
 | Category | Criterion | Weight | 4 (Best) | 3 | 2 | 1 (Worst) | What to evaluate |
 |----------|-----------|--------|-----------|---|---|-----------|------------------|

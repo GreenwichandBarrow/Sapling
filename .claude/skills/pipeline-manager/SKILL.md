@@ -250,7 +250,7 @@ This replaces the previous approach where Kay manually flagged warm intros. The 
 2. **Identify what was received:** CIM, financials, LOI draft, NDA response, broker follow-up
 3. **File to Drive immediately:**
    - Download any attachments from the email
-   - Upload to the correct subfolder in `ANALYST / ACTIVE DEALS / {COMPANY} /` (create CIM, FINANCIALS, DILIGENCE subfolders as needed)
+   - Upload to the correct subfolder in `ANALYST / ACTIVE DEALS / {COMPANY} /` — **ALWAYS check if subfolder exists before creating** (`gog drive ls --parent {folder_id} --json` and check for matching name). Only create if it doesn't exist. Never create duplicates.
 4. **Update Attio stage** based on what was received:
    - CIM/financials received → move to "Financials Received"
    - LOI response → move to appropriate LOI stage
@@ -265,10 +265,22 @@ This replaces the previous approach where Kay manually flagged warm intros. The 
    ```
 6. **Auto-trigger deal-evaluation:** After filing, invoke `/deal-evaluation {company name}` which will detect the current state (financials in folder) and pick up at the right phase (Phase 3 for CIM/financials, Phase 5 for LOI response).
 
+**Validation (MUST pass before Slack ping):**
+```
+checks = {
+    "file_in_drive": verify file exists in correct subfolder (ls the folder, confirm filename),
+    "no_duplicates": verify only ONE subfolder of each type exists (no CIM + CIM(1)),
+    "attio_updated": verify Attio entry stage matches the expected new stage,
+    "attachment_size": verify uploaded file size > 0 (not an empty/corrupt upload),
+}
+
+If any check fails → DO NOT send Slack. Fix the issue, re-validate, then send.
+```
+
 **This fast-path ensures:**
 - Active deal documents are filed same-day, not queued for Monday
 - Attio reflects reality in real-time
-- Kay gets a Slack ping immediately
+- Kay gets a Slack ping only after verified filing
 - Deal evaluation begins automatically — no manual invocation needed
 - Brokers see fast response times, which signals seriousness
 

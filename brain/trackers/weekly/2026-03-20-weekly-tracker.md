@@ -14,26 +14,24 @@ tags:
 
 # Weekly Activity Tracker — Week Ending 2026-03-20
 
-*Note: Partial week (Mon-Tue data only). First test run of automated tracker.*
-
 ## Key Metrics
 
 | Metric | This Week | Target |
 |--------|-----------|--------|
-| **NDAs Signed** | 0 | 1/wk |
-| **Financials Received** | 1 | 1/wk |
-| **LOIs Submitted** | 0 | — |
-| **LOIs Signed** | 0 | — |
+| **NDAs Signed** | 2 | 1/wk |
+| **Financials Received** | 0 | 1/wk |
+| **LOIs Submitted** | 0 | -- |
+| **LOIs Signed** | 0 | -- |
 
 ## System Throughput
 
 | Metric | This Week |
 |--------|-----------|
-| Outreach Emails Sent | 2 |
+| Outreach Emails Sent | 1 |
 | Cold Calls Made | 0 |
 | Responses Received | 3 |
 | New Contacts Added | 0 |
-| Networking Meetings | 2 |
+| Networking Meetings | 1 |
 | Introductions Received | 0 |
 
 ## Signal Quality
@@ -48,28 +46,33 @@ tags:
 | Conversion: Outreach to Owner Conversation | 0% |
 | Conversion: Owner Conversation to NDA | N/A |
 
-*Response rate >100% — responses from prior-week outreach.
+*Response rate >100% -- responses from prior-week outreach.
 
 ## Pipeline Health
 
 | Metric | This Week |
 |--------|-----------|
 | Total Active Pipeline | 44 |
-| Deals Added This Week | 0 |
-| Deals Killed/Passed | 0 |
+| Deals Added This Week | 2 |
+| Deals Killed/Passed | 9 |
 
 ## Diagnostic Narrative
 
-**Key metrics vs. goal:** 1 deal has financials in hand, but no NDAs or LOIs this week. Partial week — only Mon-Tue data collected.
+**Context:** This was build week (Mar 17-21) -- focused on standing up the full Sapling OS automation stack. Outreach volume intentionally low. System is now live for Monday.
 
-**System Throughput:** Low volume so far — 2 outreach emails, 0 cold calls. JJ's cold calling hasn't generated trackable activity yet. 2 networking coffees (Robe, Dan Tanzilli) show the relationship engine is active but not yet feeding deal flow.
+**Key metrics vs. goal:** 2 NDAs signed (Project Restoration via Eight Quarter Advisors). No financials or LOIs. The NDA is a positive signal -- art ecosystem deal sourced through Stanley Rodos at Crate Capital.
 
-**Signal Quality:** 0 owner conversations this week. The 3 responses received (WSN Group, Art Restoration/Crate Capital, Lighting/Benchmark Intl) are positive signals but haven't converted to scheduled Stage 1 calls yet. The pipeline is heavily concentrated in early stages (36 of 44 deals at "Identified").
+**System Throughput:** Minimal -- 1 outreach email (broker intro), 0 cold calls. JJ not yet active on new niche sprint (pending Google Voice setup). 1 networking meeting (Dan Tanzilli coffee, 3/17).
 
-**Notable pipeline movements:** Attio migration completed 2026-03-14 — all 44 active deals and 133 network/intermediary contacts now tracked. 1 deal at Financials Received stage.
+**Signal Quality:** 0 owner conversations. Pipeline heavily concentrated in early stages (36 of 44 at Identified). 3 responses received are from prior-week outreach threads. The 2-5/wk owner conversation target is not being met, but this was expected during build week.
+
+**Notable pipeline movements:**
+- Project Restoration added to Active Deals at NDA Executed
+- Eight Quarter Advisors added to Intermediary Pipeline
+- 5 People records updated during pipeline review (Kendall, Rachel, AquaVita, Sasha, Jessica moved to Dormant/Occasionally)
 
 **Flags:**
-- Cold calling volume is 0 — need to confirm JJ's activity is being captured
-- 0 Stage 1 owner conversations — the critical 2-5/wk target is not being met
-- Pipeline is front-loaded (Identified stage) — need conversion into Contacted/First Conversation
-- Response rate looks high but outreach volume is very low — need more top-of-funnel activity
+- 36 deals at Identified need triage pass next week
+- 2 Superhuman drafts from 3/17 still unsent
+- JJ call prep workflow ready but not activated
+- No Granola recordings this week except Harrison AI session

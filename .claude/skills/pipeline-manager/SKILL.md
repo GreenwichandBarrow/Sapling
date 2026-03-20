@@ -241,6 +241,37 @@ This replaces the previous approach where Kay manually flagged warm intros. The 
 5. Set `source: email`, assign confidence level (high/medium/low)
 6. High confidence items surface in Part 1. Medium/low go to /triage.
 
+### Active Deal Fast-Path (PRIORITY — runs during Gmail ingestion)
+
+**Before standard inbox processing**, check every email against Active Deals in stages 3-9 (First Conversation through LOI Signed). Match by company name, contact name, or intermediary firm.
+
+**If an email matches an active deal:**
+1. **Tag as `urgency: critical`** — this is not a standard inbox item
+2. **Identify what was received:** CIM, financials, LOI draft, NDA response, broker follow-up
+3. **File to Drive immediately:**
+   - Download any attachments from the email
+   - Upload to the correct subfolder in `ANALYST / ACTIVE DEALS / {COMPANY} /` (create CIM, FINANCIALS, DILIGENCE subfolders as needed)
+4. **Update Attio stage** based on what was received:
+   - CIM/financials received → move to "Financials Received"
+   - LOI response → move to appropriate LOI stage
+   - Other correspondence → no stage change, just log
+5. **Send immediate Slack ping to #active-deals:**
+   ```
+   Active Deal Update: {Company Name}
+   {What was received} from {sender}. Filed to Drive.
+   Attio updated: {old stage} → {new stage}
+   File: {drive link}
+   Deal folder: {folder link}
+   ```
+6. **Auto-trigger deal-evaluation:** After filing, invoke `/deal-evaluation {company name}` which will detect the current state (financials in folder) and pick up at the right phase (Phase 3 for CIM/financials, Phase 5 for LOI response).
+
+**This fast-path ensures:**
+- Active deal documents are filed same-day, not queued for Monday
+- Attio reflects reality in real-time
+- Kay gets a Slack ping immediately
+- Deal evaluation begins automatically — no manual invocation needed
+- Brokers see fast response times, which signals seriousness
+
 ### Inbound Introduction Detection
 During Gmail ingestion, detect introduction emails — someone introducing Kay to a new person/company. Signals:
 - Subject contains "introduction", "intro", "meet", "connecting you with", "wanted to introduce"

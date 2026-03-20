@@ -101,16 +101,23 @@
       "source": "description"
     },
     "today": {
-      "description": "/start Command",
-      "priority": 5,
+      "description": "/start Command — daily morning workflow triggered by greeting or /start",
+      "priority": 8,
       "triggers": {
         "keywords": [
           "today",
           "command",
-          "start"
+          "start",
+          "good morning"
         ],
-        "keywordPatterns": [],
-        "intentPatterns": [],
+        "keywordPatterns": [
+          "good\\s+morning"
+        ],
+        "intentPatterns": [
+          "good\\s+morning",
+          "^morning\\b",
+          "^gm\\b"
+        ],
         "pathPatterns": []
       },
       "excludePatterns": [],

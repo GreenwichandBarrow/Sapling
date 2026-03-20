@@ -128,13 +128,22 @@ After niche-intelligence processes the signals, mark the inbox files as `status:
 
 **CRITICAL: The buy box is for evaluating COMPANIES, not INDUSTRIES. Do NOT apply company-level criteria (revenue range, EBITDA threshold, customer concentration) to niche evaluation.**
 
-**Niche-level evaluation uses these 5 questions only:**
+**Niche-level evaluation has two layers:**
 
-1. **Margins** — Do companies in this industry typically have strong margins? (Strong/Moderate/Weak)
-2. **Recurring Revenue** — Is the revenue model in this industry sticky or contractual? (High/Moderate/Low)
-3. **Industry Growth** — Is the market growing? What drives demand? (CAGR + drivers)
-4. **Target TAM** — How many independently owned companies exist in this niche that could be acquisition candidates? (Not filtered to exact buy-box specs — just owner-operated firms of meaningful size)
-5. **Market TAM** — How big is the total market opportunity?
+**INITIAL SCREEN (pass/fail — must pass all 4 to proceed):**
+1. **Margins** — Do companies in this industry typically have 15%+ EBITDA margins?
+2. **Recurring Revenue** — Is there existing recurring/contractual revenue, or a clear path to convert?
+3. **Industry Growth** — Is the market growing above GDP?
+4. **Growth TAM** — Is the total addressable market $500M+? (Investor floor — below $500M is a red flag)
+
+**INDUSTRY SCORECARD (reference for ranking — does NOT gate decisions):**
+- Full 7-category weighted evaluation (Growth, Size, Economics, Criticality, Risks, Porter's, Value Creation, Impact)
+
+**TARGET TAM (informational — NOT scored, NOT in scorecard):**
+- How many independently owned companies exist that could be acquisition candidates?
+- Reported as an informational column on the Industry Research Tracker (like QSBS)
+- Determines sprint duration: 50+ = long sprint, 20-50 = focused sprint, 10-20 = fast sprint, <10 = very fast
+- Per investor feedback: target count determines how long you spend in an industry, not whether to enter it
 
 **The identifier agent must, for each candidate niche:**
 1. Identify the niche from gathered signals

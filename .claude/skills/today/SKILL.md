@@ -163,10 +163,10 @@ For triage items, include source to help user understand origin.
 
 ### Async Item Review (always numbered)
 
-After writing the daily note, present all async (external action) items as a **numbered list** for Kay to confirm which to create as Motion tasks:
+After writing the daily note, present all async (external action) items as a **numbered list** with the title **"Proposed Action Items for Motion"**:
 
 ```
-Here are today's async items. Which should become Motion tasks?
+**Proposed Action Items for Motion**
 
 1. {title} — {one-line context}
 2. {title} — {one-line context}

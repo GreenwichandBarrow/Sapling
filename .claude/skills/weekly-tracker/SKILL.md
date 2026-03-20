@@ -304,10 +304,20 @@ Read current sheet to find next empty column, then write data to all 3 tabs:
 - LOIs Submitted
 - LOIs Signed
 
-**Weekly Detail tab** — write new column with all metrics:
-- System Throughput: outreach, calls, responses, contacts, networking, intros
-- Signal Quality: response rate, Stage 1 calls, A count, Stage 2 calls, deals in review, conversion rates
-- Pipeline Health: total active, added, killed
+**Weekly Detail tab** — write new column with all metrics. **CRITICAL: distinguish delta vs snapshot.**
+
+**WEEKLY DELTAS (what happened this week):**
+- Outreach Emails Sent, Cold Calls Made, Responses Received, New Contacts Added, Networking Meetings, Introductions Received
+- Stage 1 Calls, Qualified Opportunities (newly qualified this week), Stage 2 Calls
+- NDAs Signed (moved to NDA Executed THIS week), Financials Received (THIS week), LOIs Submitted (THIS week), LOIs Signed (THIS week)
+- Deals Added This Week, Deals Killed/Passed (moved to Closed THIS week)
+- Response Rate, Conversion rates (calculated from this week's deltas)
+
+**SNAPSHOTS (current state, not delta):**
+- Deals in Active Review (current count: First Conversation through LOI Signed)
+- Total Active Pipeline (current count: all except Closed/Not Proceeding)
+
+To compute deltas: check each entry's stage `active_from` timestamp. Only count entries that moved INTO a stage during the week window.
 
 **Quarterly Summary tab** — update current quarter column with cumulative totals (SUM formulas referencing Weekly Detail)
 

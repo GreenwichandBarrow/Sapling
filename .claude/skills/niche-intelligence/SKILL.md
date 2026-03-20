@@ -120,11 +120,46 @@ Pipeline-manager flags niche signals daily while processing Granola and Gmail. T
 
 After niche-intelligence processes the signals, mark the inbox files as `status: processed` so they don't get re-scanned next week.
 
-### Step 2: Identification
+### Step 2: Identification + Target Validation (FUSED)
 
 | Agent Name | Type | Description |
 |------------|------|-------------|
-| `niche-intel-identifier` | general-purpose | Identify 1-5 new niches from gathered data |
+| `niche-intel-identifier` | general-purpose | Identify 1-5 new niches AND validate target pool for each |
+
+**CRITICAL: No niche gets named without answering the two investor questions:**
+
+1. **Target TAM:** How many real, acquirable companies exist that fit the buy box? (Not total firms — specifically independently owned, $2-5M+ EBITDA, 10+ employees, 10+ year history, not PE-backed, owner-operator)
+2. **Market TAM:** What is the total addressable market size for this niche? (Revenue of the industry segment, growth rate, what drives demand)
+
+**The identifier agent must, for each candidate niche:**
+1. Identify the niche from gathered signals
+2. Immediately research target count (web search, association directories, industry databases, Linkt profile flow)
+3. Research market size (industry reports, analyst estimates)
+4. Filter targets for buy-box fit
+5. Check PE consolidation activity (how many already acquired?)
+
+**Output per niche candidate (required — no exceptions):**
+```
+Niche: {name}
+Thesis: {2-3 sentences}
+
+TARGET TAM:
+- Total firms in market: {n}
+- Firms fitting buy box: {n}
+- Already PE-backed/acquired: {n}
+- Net acquirable targets: {n}
+- Named examples: {top 5 with company name, revenue, employees, location}
+- PE consolidation risk: High/Medium/Low
+
+MARKET TAM:
+- Market size: ${n} (year)
+- Growth rate: {n}% CAGR
+- Key demand drivers: {list}
+
+Verdict: Sufficient (20+ targets) / Thin (10-20) / Insufficient (<10)
+```
+
+**Gate rule:** Niches with <10 net acquirable targets are flagged "Thin Target Pool." Niches with <5 are rejected outright (Kay can override). This gate runs BEFORE one-pagers or scoring — no wasted effort on empty pools.
 
 ### Step 3: One-Pager Creation
 
@@ -138,32 +173,11 @@ After niche-intelligence processes the signals, mark the inbox files as `status:
 |------------|------|-------------|
 | `niche-intel-scorer` | general-purpose | Score each niche using G&B detailed scorecard |
 
-### Step 4b: Buy-Box Target Validation (NEW — gate before promotion)
+### Step 4b: REMOVED — Target validation now fused into Step 2
 
-Before any niche gets promoted to the top 5, run a target validation step:
+Target validation was moved into the identification step (Step 2) so no niche is ever named without a target count and market TAM attached. This prevents wasted effort building one-pagers and scorecards for niches with empty target pools.
 
-| Agent Name | Type | Description |
-|------------|------|-------------|
-| `niche-intel-target-validator` | general-purpose | Count real acquirable targets that fit the buy box |
-
-**What it does:**
-1. Search for actual companies in the niche (web search, Linkt profile flow, association directories, industry databases)
-2. Filter for buy-box fit: independently owned, $2-5M+ EBITDA, 10+ employees, 10+ year history, not PE-backed, owner-operator
-3. Check for PE consolidation activity (are targets being scooped?)
-4. Count how many **real, acquirable targets** exist — not TAM, not total firms
-
-**Output per niche:**
-- Total firms in market: {n}
-- Firms fitting buy box: {n}
-- Already PE-backed/acquired: {n}
-- Net acquirable targets: {n}
-- Named examples (top 5 with company name, revenue, employees, location, owner)
-- PE consolidation risk: High/Medium/Low
-- Verdict: Sufficient targets (20+) / Thin (10-20) / Insufficient (<10)
-
-**Gate rule:** Niches with fewer than 10 net acquirable targets get flagged as "Thin Target Pool" in the tracker. Niches with fewer than 5 are not promoted to top 5 regardless of scorecard score. Kay can override with explicit approval.
-
-**Why this was added:** Trust Administration scored 2.88 (highest) but had almost no acquirable targets — all one-person practices. Insurance Producer License Compliance had 5-10 targets with half already PE-acquired. High scorecard scores with empty target pools waste sprint time. This gate prevents that.
+**History:** Trust Administration scored 2.88 (highest) but had almost no acquirable targets. IPLC had only 20-30 firms with half PE-acquired. This lesson drove the fusion.
 
 ### Step 5: Tracker Update
 

@@ -49,7 +49,7 @@ After all agents complete, read the chatroom. Verify:
 
 If fewer than 2 agents returned data, log a warning but continue — Step 2 can still work with limited input by doing its own web research.
 
-## Step 2: IDENTIFY (Sequential)
+## Step 2: IDENTIFY + VALIDATE (Sequential — fused)
 
 Spawn `niche-intel-identifier` agent with:
 - All gathered intelligence from chatroom
@@ -60,13 +60,20 @@ Spawn `niche-intel-identifier` agent with:
 This agent:
 1. Synthesizes all Step 1 data
 2. Identifies 1-5 niche candidates NOT already in the tracker (killed, tabled, ideation, or active)
-3. Checks if any tabled niches should resurface based on new data
-4. For each candidate, provides: niche name, 2-3 sentence thesis, why it fits G&B criteria
-5. Posts list to chatroom
+3. **For each candidate, IMMEDIATELY validates target pool and market TAM** (web search, association directories, Linkt profile flow)
+4. Checks if any tabled niches should resurface based on new data
+5. Posts list to chatroom with full TAM data
 
-**Output:** A list of niche names with minimal context (enough for Step 3 to research).
+**CRITICAL — Every niche must include (no exceptions):**
+- **Target TAM:** Total firms → buy-box fit → PE-acquired → net acquirable targets + 5 named examples
+- **Market TAM:** Market size ($), growth rate (CAGR%), key demand drivers
+- **Verdict:** Sufficient (20+ targets) / Thin (10-20) / Insufficient (<10)
 
-If 0 new niches identified, document why (e.g., "all signals pointed to already-tracked niches") and skip Steps 3-4. Proceed directly to Step 5 with status update only.
+**Gate rule:** Niches with <10 net acquirable targets are flagged "Thin Target Pool." Niches with <5 are rejected — do NOT proceed to one-pager. Kay can override.
+
+**Output:** A list of validated niches with target counts and market TAM. Only niches passing the gate proceed to Step 3.
+
+If 0 new niches identified (or all fail the gate), document why and skip Steps 3-4. Proceed to Step 5 with status update only.
 
 ## Step 3: ONE-PAGER (Parallel per Niche)
 

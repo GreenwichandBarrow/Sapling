@@ -104,5 +104,16 @@ Kay demonstrated her Claude Code skills-based workflow:
 
 Kay's Claude Code skills workflow is significantly more advanced than what peers are doing. Most are either: (a) using ChatGPT with copy-pasted prompts, (b) building one-off tools in Lovable, or (c) writing Python scripts for scraping. None have the integrated system (skills + hooks + vault + pipeline management) that Kay has built. This is a competitive advantage in the search.
 
+### Kay's Takeaways
+
+**Deal evaluation at volume:** The group is largely brokered search — one person mentioned 30 CIMs in a day. That's a completely different evaluation workflow than G&B's current approach. But as G&B's intermediary pipeline matures and deal flow increases, there's a deal-evaluation volume play worth building:
+- Auto-scoring CIMs against buy box criteria
+- Continuous ranking across days (the "day 1 grade 3 vs day 5 grade 2" problem)
+- This is a future enhancement to the deal-evaluation skill, not needed now
+
+**Proprietary scraping as a funnel layer:** G&B's current funnel is conferences + intermediary pipeline + network intros. The broader scraping approach (40K companies from databases, enrichment, auto-filtering) could be a third channel. But the right move is to see what Linkt produces first before building custom scraping. If Linkt gaps emerge, proprietary scraping becomes the fill.
+
+**G&B's system advantage:** Kay's system is significantly more robust than peers'. Most searchers are using ChatGPT prompts, Lovable one-offs, or manual spreadsheets. The integrated skills + hooks + vault + pipeline automation is a genuine competitive edge in search velocity.
+
 ---
 *Transcribed via Wispr Flow, cleaned and filed by Claude*

@@ -535,6 +535,21 @@ Present to Kay:
 - Any calibration recommendations
 
 This trace feeds into `/calibrate` for system improvement.
+
+## Future: Cross-Deal Comparison (build when volume justifies)
+
+**Trigger:** When 5+ deals have completed scorecards (Phase 4+).
+
+**Purpose:** Maintain a cumulative deal ranking that compares all evaluated deals — active and killed — so Kay can see how a current deal stacks against prior deals at the same stage.
+
+**Planned capabilities:**
+- Running ranking of all scored deals (sortable by scorecard total, EBITDA, margins, thesis fit)
+- "How does this deal compare?" overlay during Phase 4 — shows where current deal ranks vs all prior
+- Pattern detection across killed deals: "Every deal you've passed on had X characteristic"
+- Pattern detection across advanced deals: "Deals that reached LOI all had Y"
+- Feeds into calibration: refine buy box criteria based on what actually converts
+
+**Not needed yet.** Current deal volume (~1-2 active at a time) doesn't justify the build. When intermediary pipeline ramps and Kay is seeing 5-10 CIMs/week, this becomes critical. Inspired by peer feedback (AI in Search group call, 3/20/2026).
 </phases>
 
 <execution_flow>

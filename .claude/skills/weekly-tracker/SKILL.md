@@ -57,14 +57,21 @@ Run Friday night (automated, ready Friday morning review). Or on demand via `/we
 Spawn 6 specialized sub-agents in parallel to collect data. Each returns a structured JSON summary. Use `agent-chatroom` if 3+ agents are needed concurrently.
 
 ### Agent 1: Gmail Collector
-**Task:** Count outreach volume and responses for the week.
+**Task:** Count outreach volume, responses, and introductions for the week.
 **Tools:** gog gmail search
+
+**Metric definitions:**
+- **Outreach Emails Sent:** All acquisition-related outreach — cold emails to owners, broker intros, intermediary emails, network intro emails. NOT internal ops, personal, or support emails.
+- **Responses Received:** Replies to outreach from owners, brokers, intermediaries, or network contacts on acquisition-related threads. NOT automated/support/promo emails.
+- **Introductions Received:** Any email where someone introduces Kay to a new person — broker intros (e.g., "FW: Acquisition Opportunity"), network intros, investor intros. Look for 3+ recipients, forwarded teasers/CIMs, or subject lines with "intro/introduction/meet/connecting you."
+
 **Returns:**
 ```json
 {
   "outreach_emails_sent": 0,
   "cold_calls_logged": 0,
   "responses_received": 0,
+  "introductions_received": 0,
   "owner_response_rate_pct": 0,
   "intro_threads": [],
   "outreach_by_source": {"email": 0, "cold_call": 0, "conference_followup": 0, "broker": 0, "network": 0}
@@ -72,12 +79,21 @@ Spawn 6 specialized sub-agents in parallel to collect data. Each returns a struc
 ```
 **Queries:**
 ```bash
-# Outreach sent (from Kay or JJ)
-gog gmail search "from:me subject:(introduction OR intro OR regarding OR reaching out) after:{WEEK_START} before:{WEEK_END}" --json
-# Responses received
-gog gmail search "to:me subject:(re: introduction OR re: intro OR re: regarding) after:{WEEK_START} before:{WEEK_END}" --json
+# Outreach sent — use specific OUTREACH sublabels (parent label doesn't work in Gmail search)
+gog gmail search "(label:OUTREACH/INTERMEDIARIES OR label:OUTREACH/NETWORK) from:me after:{WEEK_START} before:{WEEK_END}" --json
+# Manually filter out non-outreach (invoices, receipts, consultant payments that happen to have outreach labels)
+# Only count threads where Kay initiated or continued acquisition-related correspondence
+
+# Responses — same label query, filter to threads with messageCount > 1
+gog gmail search "(label:OUTREACH/INTERMEDIARIES OR label:OUTREACH/NETWORK) after:{WEEK_START} before:{WEEK_END}" --json
+# Thread with messageCount > 1 where the other party replied = 1 response
+
+# Introductions received — someone introducing Kay to a new person
+gog gmail search "to:me (subject:intro OR subject:introduction OR subject:meet OR subject:connecting) after:{WEEK_START} before:{WEEK_END}" --json
+gog gmail search "to:me (subject:FW: OR subject:Fwd:) (subject:acquisition OR subject:opportunity OR subject:restoration OR subject:teaser) after:{WEEK_START} before:{WEEK_END}" --json
+# Count: any thread where a third party introduced Kay to someone new (broker forwarding a deal, investor making a connection, etc.)
 ```
-Count unique threads, not individual messages. Look for cold call confirmation/follow-up emails to estimate call volume.
+Count unique threads, not individual messages. For each thread, verify it's acquisition-relevant before counting. Exclude: automated emails, support threads, internal ops, personal correspondence, newsletters, consultant invoices.
 
 ### Agent 2: Calendar & Meetings Collector
 **Task:** Classify all meetings for the week.
@@ -160,15 +176,26 @@ Count total meaningful conversations this week (by comparing timestamps).
 ```
 Count deals per stage. **CRITICAL: Key metrics (NDAs, Financials, LOIs) must be WEEKLY DELTAS, not total snapshot counts.** Compare each entry's stage `active_from` timestamp against the week window to determine which entries *moved into* that stage this week. For example, if 2 entries are at "NDA Executed" but only 1 moved there this week, report ndas_signed=1. For deals added, compare `created_at` timestamps against the week window. For deals killed, count entries that moved to "Closed / Not Proceeding" this week (not total at that stage).
 
-### Agent 4: Vault Activity Collector
-**Task:** Count vault activity for the week.
-**Tools:** Glob, Grep, git log
+### Agent 4: Vault & Attio Activity Collector
+**Task:** Count new contacts added across both vault AND Attio this week.
+**Tools:** Glob, Grep, git log, Attio API (curl)
+
+**"New Contacts Added" includes:**
+- New vault entities created in `brain/entities/`
+- New Company records created in Attio (by `created_at` timestamp this week)
+- New People records created in Attio (by `created_at` timestamp this week)
+- New list entries added to any pipeline (by `created_at` timestamp this week)
+
+Deduplicate: if a company appears in both vault and Attio, count once.
+
 **Returns:**
 ```json
 {
   "new_contacts_added": 0,
   "call_notes_logged": 0,
-  "entities_created": []
+  "entities_created": [],
+  "attio_companies_created": 0,
+  "attio_people_created": 0
 }
 ```
 **Queries:**
@@ -176,8 +203,17 @@ Count deals per stage. **CRITICAL: Key metrics (NDAs, Financials, LOIs) must be 
 # Call notes in date range
 Glob: brain/calls/{YYYY-MM-DD}*  (for each day in the week)
 
-# New entities created this week
+# New vault entities created this week
 git log --after={WEEK_START} --before={WEEK_END} --name-only --diff-filter=A -- brain/entities/
+
+# New Attio companies created this week
+curl -s -X POST "https://api.attio.com/v2/objects/companies/records/query" \
+  -H "Authorization: Bearer {API_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"filter":{"created_at":{"$gte":"{WEEK_START}T00:00:00Z"}}}'
+
+# New Attio list entries created this week (check each pipeline)
+# Filter entries by created_at >= WEEK_START
 ```
 ### Agent 5: Tool & Integration Monitor
 **Task:** Check parked/pending tool integrations for new features that would be valuable to G&B.

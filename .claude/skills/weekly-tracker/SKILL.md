@@ -338,6 +338,8 @@ gog sheets update "$SHEET_ID" "'Quarterly Summary'!{QCOL}3:{QCOL}31" --values-js
 Write `brain/trackers/weekly/{YYYY-MM-DD}-weekly-tracker.md` with frontmatter and diagnostic narrative.
 
 ### Step 6: Validation (Stop Hook)
+**Enforced by:** `.claude/hooks/router/handlers/weekly_tracker_validation.py` (PreToolUse hook on Bash — blocks Slack webhook if validation fails)
+
 Before notifying, validate all deliverables exist:
 
 ```python
@@ -416,7 +418,7 @@ Diagnostic view organized by Stage 7 questions.
 | 18 | Conversion: Owner Conversation to NDA | — | {calculated} |
 | 19 | | | |
 | 20 | PIPELINE HEALTH | Target | |
-| 21 | Total Active Pipeline | — | {n} |
+| 21 | Top of Funnel (Total Pipeline) | — | {n} |
 | 22 | Deals Added This Week | — | {n} |
 | 23 | Deals Killed/Passed | — | {n} |
 

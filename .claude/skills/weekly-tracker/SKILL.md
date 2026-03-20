@@ -63,7 +63,7 @@ Spawn 6 specialized sub-agents in parallel to collect data. Each returns a struc
 **Metric definitions:**
 - **Outreach Emails Sent:** All acquisition-related outreach — cold emails to owners, broker intros, intermediary emails, network intro emails. NOT internal ops, personal, or support emails.
 - **Responses Received:** Replies to outreach from owners, brokers, intermediaries, or network contacts on acquisition-related threads. NOT automated/support/promo emails.
-- **Introductions Received:** Any email where someone introduces Kay to a new person — broker intros (e.g., "FW: Acquisition Opportunity"), network intros, investor intros. Look for 3+ recipients, forwarded teasers/CIMs, or subject lines with "intro/introduction/meet/connecting you."
+- **Introductions Received:** A **first-time personal introduction** where someone connects Kay to a new person she hasn't met before — NOT forwarded deal flow (teasers/CIMs are inbound deals, not intros). An introduction means: "Kay, meet {person}. {Person}, meet Kay." Look for: 3+ recipients, subject lines with "intro/introduction/meet/connecting you with." Do NOT count: ongoing threads from prior-week intros that just had activity this week, forwarded deal documents, or deal flow from intermediaries.
 
 **Returns:**
 ```json

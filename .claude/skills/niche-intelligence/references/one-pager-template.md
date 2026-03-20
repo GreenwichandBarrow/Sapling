@@ -27,6 +27,7 @@
 ## Drive Folder Structure
 
 Industry Research parent folder: `1tiAc7lVveBwi_DlYcFUX2tFP6FVwYKmQ`
+**Location:** `ANALYST / INDUSTRY RESEARCH` (flattened from ANALYST / PROJECTS / INDUSTRY RESEARCH as of 3/20/2026)
 
 Subfolders by status (niche folders go INSIDE these):
 | Status | Folder ID |

@@ -38,7 +38,7 @@ For **all network contacts**. Person-based. Non-linear relationship management.
 
 ### Daily Review Flow
 
-On morning sign-on, Claude presents four sections sequentially. Kay reviews each item and approves or skips. Approved outreach and action items become Motion tasks automatically.
+On morning sign-on, Claude presents the review with the header **"Pipeline Review"** at the top. All sections are presented sequentially. Kay reviews each item and approves or skips. Approved outreach and action items become Motion tasks automatically. **All items presented for review must be numbered.**
 
 **Inbound Deal Flow (before Part 1):**
 If any inbound intermediary deals were detected during Gmail ingestion, present them first. These are time-sensitive — intermediaries shop deals to multiple buyers. See "Inbound Intermediary Deal Detection" section below for format and actions.

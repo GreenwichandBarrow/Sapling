@@ -99,10 +99,21 @@ Regardless of the screening outcome, ALWAYS produce:
    - One-line reasoning
    - Links: CIM, Buy-Box Screen doc, Deal folder
 
+**The Buy-Box Screen doc includes a QUICK SCREEN section with three pre-scorecard metrics:**
+
+| Metric | What to assess | Rating |
+|--------|---------------|--------|
+| **Margins** | Gross margins and EBITDA margins from CIM financials | Strong (20%+ EBITDA) / Moderate (10-20%) / Weak (<10%) |
+| **Recurring Revenue** | Revenue model: contractual, subscription, project-based, one-time | High (80%+ recurring/contractual) / Moderate (50-80%) / Low (<50%) |
+| **Industry Growth** | Market CAGR and key demand drivers from CIM industry section + web research | Strong (8%+ CAGR) / Moderate (3-8%) / Weak (<3%) |
+
+These three map directly to the IDEATION tab columns (E: Margins, F: Recurring Revenue) and inform whether the full company scorecard is worth running. Include them in the Buy-Box Screen doc.
+
 **Stop Hook (must pass before Slack):**
 - [ ] Buy-Box Screen doc exists in NOTES subfolder
 - [ ] Doc is populated (not empty template)
 - [ ] Financial summary table has data
+- [ ] Quick Screen section (Margins, Recurring Revenue, Industry Growth) is populated
 - [ ] Verdict line is present
 - [ ] Slack message includes doc link + CIM link + deal folder link
 

@@ -232,6 +232,27 @@ Pass approved targets to skill/outreach-manager's conference outreach subagent w
 - Scoring notes and research context
 - Whether pre-conference email or post-conference follow-up
 
+### Conference Prep Doc (Saturday before Monday conferences)
+
+If a Monday conference has scheduled in-person meetings or outreach targets attending, generate a Conference Prep doc Saturday night. Save to the conference's Drive folder (RESEARCH/CONFERENCES/{CONFERENCE NAME}).
+
+**Template:** Conference Prep Template (Drive ID: `1nAm1BWsnomiuwDAd7km4Ur4kLUqfqrBxoRlea8MiUH8`) in G&B MASTER TEMPLATES. Copy to the conference folder and populate.
+
+**Structure — two sections:**
+
+**Scheduled Meetings** — for each confirmed meeting:
+- **Name, company, role**
+- **How they got on your radar** — outreach response, attendee list match, intro, etc.
+- **Key context** — what they do, why they're relevant, any prior touchpoints (emails, calls, Attio history)
+- **What you want to get out of the conversation** — specific questions, information to confirm, relationship goal
+
+**Outreach Targets Attending** — for targets who were outreached to pre-conference:
+- Same structure as above, plus outreach status (email sent, response received, no response)
+
+**Conference Notes** — general intel: what to expect, layout, key sessions, networking opportunities.
+
+Kay reviews this Sunday afternoon on MacBook/iMac. No Slack notification — she knows to check the conference folder.
+
 ### Post-Conference Data Capture
 
 **Day of conference:** Kay captures booth conversations via:
@@ -335,6 +356,7 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 ## Success Criteria
 
 ### Per Conference
+- [ ] Conference Prep doc created in conference Drive folder (if Monday conference with meetings/targets)
 - [ ] Conference discovered and evaluated with full details
 - [ ] Registration completed (or flagged for register-only)
 - [ ] Attendee/exhibitor list acquired and processed

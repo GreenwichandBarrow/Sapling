@@ -11,6 +11,7 @@ from router.models import HandlerConfig
 from router.handlers.vault import stats_protection, validate_vault_schema
 from router.handlers.skills import inject_skill_context
 from router.handlers.gmail import block_gmail_send
+from router.handlers.weekly_tracker_validation import validate_weekly_tracker_before_slack
 
 HANDLERS = [
     HandlerConfig(
@@ -32,6 +33,11 @@ HANDLERS = [
         fn=block_gmail_send,
         matcher=r"^Bash$",
         name="block-gmail-send",
+    ),
+    HandlerConfig(
+        fn=validate_weekly_tracker_before_slack,
+        matcher=r"^Bash$",
+        name="weekly-tracker-validation",
     ),
 ]
 

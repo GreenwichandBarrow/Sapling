@@ -316,7 +316,7 @@ Read current sheet to find next empty column, then write data to all 3 tabs:
 **SNAPSHOTS (current state, not delta):**
 - Qualified Opportunities / A count (current count: deals Kay is actively pursuing — requested financials, initiated diligence, etc.)
 - Deals in Active Review (current count: First Conversation through LOI Signed)
-- Total Active Pipeline (current count: all except Closed/Not Proceeding)
+- Top of Funnel / Total Pipeline (current count: all except Closed/Not Proceeding — includes Identified and Contacted not yet engaged)
 
 To compute deltas: check each entry's stage `active_from` timestamp. Only count entries that moved INTO a stage during the week window.
 

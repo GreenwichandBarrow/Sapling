@@ -68,9 +68,32 @@ python3 .claude/scripts/list-unreviewed-traces.py [date_filter]
 - **SOP:** `G&B Weekly Operating Schedule` in Google Drive (MANAGER DOCUMENTS / AI OPERATIONS). This is the master operating document showing team roles, daily deliverables, notification schedule, and event-driven workflows. Calibration agents MUST review this when proposing changes — any improvement that changes a deliverable, schedule, or notification must update the SOP as part of the change.
   - Drive folder ID: `1F98mmZy6I89YBA9GT_OrOum1Hn4wu9SG`
 
+**Weekly Tracker Data (metrics for system health assessment):**
+- Vault snapshots: `brain/trackers/weekly/*.md` — read the last 4 weeks to identify trends
+- Google Sheet: `1NGGZY_iq9h8cNzLAXSJ1vTcsfXWNU9oin2RiOMtl9NE` — Weekly Detail tab has full metrics
+
+**Calibration agents MUST read weekly tracker data** and assess system performance:
+
+| Signal Quality Metric | What it tells the calibration agent |
+|---|---|
+| Stage 1 Calls < 2/wk for 2+ weeks | Outreach volume or targeting problem → review outreach-manager, target-discovery skills |
+| Response Rate declining | Messaging/positioning problem → review outreach templates, email voice |
+| Introductions Received = 0 for 3+ weeks | Network not converting → review pipeline-manager nurture cadence, meeting-brief follow-up |
+| Deals in Active Review not growing | Funnel stuck → review deal-evaluation skill, identify bottleneck stage |
+| NDAs = 0 for 3+ weeks | Conversations not converting → review deal-evaluation Phase 1-2 |
+
+| System Throughput Metric | What it tells the calibration agent |
+|---|---|
+| Outreach Emails < 5/wk when sprint active | outreach-manager underperforming → check Linkt integration, template quality |
+| Cold Calls = 0 when JJ active | JJ workflow broken → check call log creation, target sheet population |
+| New Contacts = 0 for 2+ weeks | target-discovery not adding pipeline → check Linkt credits, ICP config |
+| Networking Meetings = 0 for 3+ weeks | Relationship engine stalled → review nurture cadence thresholds |
+
+The calibration agent should propose skill improvements that address the specific funnel gap the data reveals — not generic improvements.
+
 ## Schedule
 
-**Runs:** Every Friday at 10am ET (automated). Processes all unreviewed traces from the week. Slack notification to #operations with summary and link to full calibration report.
+**Runs:** Every Friday at 10am ET (automated). Processes all unreviewed traces from the week AND the weekly tracker data. Slack notification to #operations with summary and link to full calibration report.
 
 This follows the weekly tracker (9am Friday) — Kay reviews the numbers first, then reviews system improvement proposals at 10am.
 

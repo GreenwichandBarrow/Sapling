@@ -120,46 +120,53 @@ Pipeline-manager flags niche signals daily while processing Granola and Gmail. T
 
 After niche-intelligence processes the signals, mark the inbox files as `status: processed` so they don't get re-scanned next week.
 
-### Step 2: Identification + Target Validation (FUSED)
+### Step 2: Identification + Industry Validation (FUSED)
 
 | Agent Name | Type | Description |
 |------------|------|-------------|
-| `niche-intel-identifier` | general-purpose | Identify 1-5 new niches AND validate target pool for each |
+| `niche-intel-identifier` | general-purpose | Identify 1-5 new niches AND validate industry fundamentals for each |
 
-**CRITICAL: No niche gets named without answering the two investor questions:**
+**CRITICAL: The buy box is for evaluating COMPANIES, not INDUSTRIES. Do NOT apply company-level criteria (revenue range, EBITDA threshold, customer concentration) to niche evaluation.**
 
-1. **Target TAM:** How many real, acquirable companies exist that fit the buy box? (Not total firms — specifically independently owned, $2-5M+ EBITDA, 10+ employees, 10+ year history, not PE-backed, owner-operator)
-2. **Market TAM:** What is the total addressable market size for this niche? (Revenue of the industry segment, growth rate, what drives demand)
+**Niche-level evaluation uses these 5 questions only:**
+
+1. **Margins** — Do companies in this industry typically have strong margins? (Strong/Moderate/Weak)
+2. **Recurring Revenue** — Is the revenue model in this industry sticky or contractual? (High/Moderate/Low)
+3. **Industry Growth** — Is the market growing? What drives demand? (CAGR + drivers)
+4. **Target TAM** — How many independently owned companies exist in this niche that could be acquisition candidates? (Not filtered to exact buy-box specs — just owner-operated firms of meaningful size)
+5. **Market TAM** — How big is the total market opportunity?
 
 **The identifier agent must, for each candidate niche:**
 1. Identify the niche from gathered signals
-2. Immediately research target count (web search, association directories, industry databases, Linkt profile flow)
-3. Research market size (industry reports, analyst estimates)
-4. Filter targets for buy-box fit
-5. Check PE consolidation activity (how many already acquired?)
+2. Research industry margins and revenue model
+3. Research market size and growth rate
+4. Estimate how many independently owned firms exist (web search, association directories, industry databases)
+5. Check PE consolidation activity (is the window closing?)
 
 **Output per niche candidate (required — no exceptions):**
 ```
 Niche: {name}
 Thesis: {2-3 sentences}
 
+QUICK SCREEN:
+- Margins: {Strong/Moderate/Weak} — {typical industry margins}
+- Recurring Revenue: {High/Moderate/Low} — {revenue model description}
+- Industry Growth: {Strong/Moderate/Weak} — {CAGR}%, {key drivers}
+
 TARGET TAM:
 - Total firms in market: {n}
-- Firms fitting buy box: {n}
+- Independently owned (potential targets): {n}
 - Already PE-backed/acquired: {n}
-- Net acquirable targets: {n}
-- Named examples: {top 5 with company name, revenue, employees, location}
 - PE consolidation risk: High/Medium/Low
+- Named examples: {top 5 with company name, location}
 
 MARKET TAM:
 - Market size: ${n} (year)
 - Growth rate: {n}% CAGR
 - Key demand drivers: {list}
-
-Verdict: Sufficient (20+ targets) / Thin (10-20) / Insufficient (<10)
 ```
 
-**No automated rejection.** All niches proceed through the full pipeline regardless of target count. The target TAM is data for Kay's decision, not a gate. Flag thin pools clearly in the output — "Thin Target Pool (8 targets)" — but do NOT auto-kill or auto-table any niche. Kay makes all niche decisions.
+**No automated rejection.** All niches proceed through the full pipeline. The data is for Kay's decision, not a gate. Flag thin target pools clearly but do NOT auto-kill or auto-table. Kay makes all niche decisions.
 
 ### Step 3: One-Pager Creation
 
@@ -167,11 +174,15 @@ Verdict: Sufficient (20+ targets) / Thin (10-20) / Insufficient (<10)
 |------------|------|-------------|
 | `niche-intel-onepager` | general-purpose | Create pptx one-pager (one per niche, parallel) |
 
-### Step 4: Scoring
+### Step 4: Industry Scoring (NOT the company scorecard)
 
 | Agent Name | Type | Description |
 |------------|------|-------------|
-| `niche-intel-scorer` | general-purpose | Score each niche using G&B detailed scorecard |
+| `niche-intel-scorer` | general-purpose | Score each niche using G&B **INDUSTRY** scorecard |
+
+**CRITICAL: This is the INDUSTRY scorecard (7 categories: Growth & Catalyst, Size & Fragmentation, Industry Economics, Mission Criticality, Exogenous Risks, Porter's Forces, Value Creation, Impact). NOT the company scorecard (which evaluates a specific deal in deal-evaluation Phase 4). These are different tools for different purposes.**
+
+The industry scorecard is for Kay's reference when ranking niches. It does NOT gate decisions — Kay decides what to advance, table, or kill.
 
 ### Step 4b: REMOVED — Target validation now fused into Step 2
 

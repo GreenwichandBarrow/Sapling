@@ -147,7 +147,7 @@ Cross-reference with `brain/calls/` for logged call notes. Use Granola MCP to ve
 | LOI Signed | LOIs Signed |
 | Closed / Not Proceeding | Deals Killed |
 
-**Deals in Active Review** = ALL entries in Active Deals pipeline EXCEPT "Closed / Not Proceeding". Any deal Kay is actively working, regardless of stage.
+**Deals in Active Review** = Entries from **First Conversation through LOI Signed** (stages 3-9). Excludes Identified, Contacted, and Closed/Not Proceeding. A deal becomes "active" once Kay has had a real conversation with an owner.
 
 **To get all stage names:** `GET /v2/lists/{list_id}/attributes/stage/statuses`
 **To get entries:** `POST /v2/lists/{list_id}/entries/query` with `{}`

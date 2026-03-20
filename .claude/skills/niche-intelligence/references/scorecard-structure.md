@@ -13,7 +13,8 @@ Local copy: `brain/library/internal/scorecard/G&B Industry & Company Scorecard T
 |----------|-----------|--------|-----------|---|---|-----------|------------------|
 | Growth | Industry Growth | 10% | 20%+ CAGR | 10-20% CAGR | 5-10% | <5% CAGR | CAGR trends with 5-7yr staying power in fragmented & sizable market |
 | Growth | Future Growth | 10% | All trends = tailwinds | Majority tailwinds | Mix | Majority headwinds | LTM revenue growth, historic growth, resilience in downturn, macro trends |
-| Size | Business Quality / TAM | 10% | >$1.5B | $750M-1.5B | $300M-750M | <$300M | Scalability, TAM vs number operating in space |
+| Size | Growth TAM (Market Size) | 10% | >$1.5B | $750M-1.5B | $500M-750M | <$500M (investor floor) | Total addressable market the acquired company can grow into. <$500M is a red flag for investors. |
+| Size | Target TAM (Acquirable Pool) | 5% | 50+ targets | 20-50 targets | 10-20 targets | <10 targets | Number of independently owned, acquisition-eligible companies. Determines sprint duration, not go/no-go. |
 | Size | Market Position | 10% | No competitive entrance possible | Major barriers to entry | Some barriers | No barriers | Market share, penetration, switching costs, differentiation, pricing power |
 | Criticality | Revenue Concentration | 10% | Co has power over suppliers & customers | Power over one, parity with other | Supplier or customer has power | Both have power over co | % revenue from top 5 customers, retention, underserved customers |
 | Criticality | Predictable Revenue | 15% | Majority recurring | Mostly recurring | Mix of recurring/project/seasonal | Limited recurring | % recurring revenue |
@@ -35,7 +36,9 @@ Used for deep-dive scoring of individual niches:
 - Future growth expectations: tailwinds vs headwinds
 - Evidence to support catalyst
 
-### 2. Size & Fragmentation (10%)
+### 2. Size & Fragmentation (15%)
+- **Growth TAM (Market Size):** How big is the market the acquired company can grow into? + = >$1.5B, +/- = $500M-1.5B, - = <$500M. Investor floor is $500M — below this is a red flag.
+- **Target TAM (Acquirable Pool):** How many independently owned companies could be acquired? + = 50+, +/- = 20-50, - = <20. Thin pool = fast sprint, not a disqualifier. Per investor feedback: target count determines how long you spend in an industry, not whether to enter it.
 - Number of players: + = thousands, +/- = hundreds, - = dozens
 - Market share concentration: + = largest <10%, +/- = largest <25%, - = largest >50%
 

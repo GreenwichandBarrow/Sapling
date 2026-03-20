@@ -40,20 +40,33 @@ For **all network contacts**. Person-based. Non-linear relationship management.
 
 On morning sign-on, Claude presents the review with the header **"Pipeline Review"** at the top. All sections are presented sequentially. Kay reviews each item and approves or skips. Approved outreach and action items become Motion tasks automatically. **All items presented for review must be numbered.**
 
-**Inbound Deal Flow (before Part 1):**
+**Inbound Deal Flow (before sections):**
 If any inbound intermediary deals were detected during Gmail ingestion, present them first. These are time-sensitive — intermediaries shop deals to multiple buyers. See "Inbound Intermediary Deal Detection" section below for format and actions.
 
-**Part 1: Pipeline Changes**
-Present any pipeline stage changes detected from yesterday's activity (Intermediary, Active Deals, Investor). One at a time.
+**Present the review in these sections, in this order:**
+
+### Section 1: Active Deals Pipeline
+Stage changes, new entries, and stale deals for the Active Deals – Owners list.
 After each owner call or meeting, ask: "Was this a meaningful owner conversation?" If yes, check the `meaningful_conversation` checkbox on the Active Deals entry in Attio.
-- Show: company/person, current stage, recommended stage, signal evidence
+- Show: company, current stage, recommended stage, signal evidence
 - Kay approves → Attio updated immediately
 - Kay rejects → no change
-- Also flag stale deals (same stage 2+ weeks): "Kill, advance, or keep watching?"
-- Also present any new conference decisions detected (Attend/Register Only) with registration details and Motion task confirmation.
+- Flag stale deals (same stage 2+ weeks): "Kill, advance, or keep watching?"
 
-**Part 2: Outreach Recommendations (Nurture Cadence)**
-Check ALL People with nurture_cadence set against their `last_interaction` date in Attio. Surface anyone overdue. One at a time.
+### Section 2: Intermediary Pipeline
+Stage changes, new entries, and stale entries for the Intermediary list.
+- New intermediaries to add, existing ones to advance
+- Flag intermediaries going cold (no deal flow in 8+ weeks)
+
+### Section 3: Investor Pipeline
+Stage changes for the Investor Engagement list.
+- Quarterly update status, meeting prep triggers
+- Conference decisions detected (Attend/Register Only) with registration details
+
+### Section 4: Relationship Building
+Everything related to People records (not in a pipeline list). Nurture cadence, next_actions, thank-yous, intros.
+
+Check ALL People with nurture_cadence set against their `last_interaction` date in Attio. Surface anyone overdue.
 
 Format: "Consider following up with {name} ({relationship_type}, {nurture_cadence}). Last contact: {date}."
 - **Approve** → Motion task created: "Follow up with {name}" with due date based on urgency
@@ -73,8 +86,8 @@ Also surface:
 
 Present max 5 nurture reminders per session. Prioritize by: relationship value, days overdue, relationship_type.
 
-**Part 3: Action Items (from Granola transcripts)**
-Present action items extracted from recent meeting transcripts. One at a time.
+### Section 5: Action Items (from Granola transcripts)
+Present action items extracted from recent meeting transcripts.
 
 Format: "From your meeting with {name} on {date}: '{action item}'"
 - **Approve** → Motion task created with title, description, and due date

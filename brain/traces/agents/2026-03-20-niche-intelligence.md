@@ -255,3 +255,44 @@ Kushner's Affinity Partners pre-marketing Fund II with 36% gross IRR / 25% net I
 ### Actionable Items
 - **E&K Healthcare Compliance SaaS CIM:** Consider requesting the CIM as a business model comparable for the insurance compliance thesis. $700K recurring revenue compliance platform is a useful data point for sizing and pricing.
 - **PE + AI pattern:** File for investor update narrative -- validates that the largest PE firms see "buy + layer AI" as the dominant playbook, which is exactly G&B's thesis at smaller scale.
+
+## [niche-identifier] — 2026-03-20T16:00
+**Task:** Identify 0-5 NEW niche candidates from gathered intelligence
+**Status:** complete
+
+### Analysis
+
+After reviewing all 6 gathering agents' signals against the full tracked/killed/tabled list, the overwhelming finding is: **this week's intelligence reinforces existing niches rather than surfacing new ones.** The 5 active niches all received validation signals. Most "new" patterns map back to already-tracked or already-scored categories.
+
+### New Niche Candidates: 1
+
+#### 1. Third-Party Business License Compliance Services
+**Thesis:** Companies operating across multiple states need ongoing management of business licenses, tax registrations, and operational permits — a recurring compliance burden distinct from insurance producer licensing. Camilla validated this directly from her own company's experience needing third-party tax registration across every state with retail stores. The compliance infrastructure pattern is identical to IPLC but serves a broader commercial audience.
+
+**Buy box fit:**
+- B2B services with recurring/contractual revenue (annual renewals across jurisdictions)
+- Regulatory mandate = sticky demand, high switching costs
+- Fragmented market — Harbor Compliance, CT Corporation, CSC Global serve the enterprise end; many small regional firms serve SMBs
+- 15%+ EBITDA margins (services model, low COGS)
+- Founder-operated firms with 10+ year histories exist in this space
+
+**IDEATION tab section:** Compliance
+
+**Source signal:** Camilla call (3/12) — explicitly named third-party licensing management as interesting, drew analogy to her own company's multi-state compliance needs. Adjacent to IPLC (already active) but serves different end market (all commercial entities, not just insurance producers). Also adjacent to the E&K healthcare compliance SaaS teaser — same "compliance-as-a-service" pattern.
+
+**Risk/caveat:** This may be too adjacent to IPLC to justify a separate niche track. Could instead be framed as an expansion lane from an IPLC platform acquisition. Recommend scoring before adding to active tracker — if it scores below 2.5, treat as a post-acquisition adjacency for the IPLC thesis rather than a standalone niche.
+
+### Niches Considered But NOT Identified
+
+- **Workplace Compliance Training** — Already scored 2.59/3 on March 17. Recommended for active tracker in that report but not yet formally added. This is NOT new — it's a pending action item from last cycle.
+- **Healthcare Regulatory Compliance Software** — E&K teaser is a data point, not a niche. Healthcare SaaS is PE-saturated and outside Kay's right-to-win.
+- **Wealth Management Technology / Wealthtech Infrastructure** — GeoWealth $42.5M raise signals active category, but this is VC/growth equity territory, not search fund acquisition targets.
+- **Specialty Insurance Brokerage (Aviation, Yacht)** — Already scored on master list (21/24 each). Art Insurance Brokerage is the active representative of this cluster.
+
+### Tabled Niches — Resurface Recommendation
+
+**None warrant resurfacing this cycle.** No new data points emerged for EV Software/Charging, Computer Related Services, Escrow & Custodial, or Document Lifecycle. The PE + AI consulting signals (Axios) are too macro-level to change any specific tabled niche's calculus.
+
+### Pending Action (Carried Forward)
+
+**Workplace Compliance Training should be added to the active WEEKLY REVIEW list.** It scored 2.59/3 (higher than IPLC at 2.50 and Art Insurance at 2.50), has a proven playbook via Sarah Rowell, and was explicitly recommended for addition on March 17. This is the highest-priority action from the niche identification process — not because it's new, but because it's overdue.

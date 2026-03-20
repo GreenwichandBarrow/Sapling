@@ -216,7 +216,7 @@ After all steps complete:
 ```bash
 curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
-  -d '{"text":"Niche Intelligence complete — {count} new niches identified.\n{For each: \"• {Niche Name} ({X.XX}/3)\"}\n\nOne-pagers: {count} | Promoted: {count or \"None\"}\nReport: brain/outputs/{date}-niche-intelligence-report.md\n\nReady for Monday review."}'
+  -d '{"text":"Niche Intelligence complete — {count} new niches identified.\n{For each: \"• {Niche Name} ({X.XX}/3)\"}\n\nOne-pagers: {count} | Promoted: {count or \"None\"}\nReport: brain/outputs/{date}-niche-intelligence-report.md\n\nReady for analyst call."}'
 ```
 
 3. Output to user:
@@ -233,7 +233,7 @@ Promoted to Weekly Review: {count or "None"}
 
 Output report: brain/outputs/{date}-niche-intelligence-report.md
 
-Ready for your Monday review.
+Ready for analyst call — link posted to #operations.
 ```
 
 </process>

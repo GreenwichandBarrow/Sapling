@@ -58,7 +58,7 @@ If verification fails, log the failure to chatroom and notify user — do NOT pr
 
 ### Schedule
 
-**Runs Tuesday night (automated).** Report delivered Wednesday morning, ready for Kay's midday analyst meeting.
+**Runs Tuesday night (automated).** Claude posts the Niche Intel Report link to #operations by 10am Wednesday for the analyst call. Kay reviews the report live on the call, not beforehand.
 
 </essential_principles>
 

@@ -126,10 +126,12 @@ Cross-reference with `brain/calls/` for logged call notes. Use Granola MCP to ve
 | Second Conversation | Stage 2 Calls |
 | NDA Executed | NDAs Signed |
 | Financials Received | Financials Received |
-| Active Diligence | Deals in Active Review |
+| Active Diligence | (part of Deals in Active Review) |
 | LOI / Offer Submitted | LOIs Submitted |
 | LOI Signed | LOIs Signed |
 | Closed / Not Proceeding | Deals Killed |
+
+**Deals in Active Review** = ALL entries in Active Deals pipeline EXCEPT "Closed / Not Proceeding". Any deal Kay is actively working, regardless of stage.
 
 **To get all stage names:** `GET /v2/lists/{list_id}/attributes/stage/statuses`
 **To get entries:** `POST /v2/lists/{list_id}/entries/query` with `{}`

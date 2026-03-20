@@ -159,7 +159,7 @@ MARKET TAM:
 Verdict: Sufficient (20+ targets) / Thin (10-20) / Insufficient (<10)
 ```
 
-**Gate rule:** Niches with <10 net acquirable targets are flagged "Thin Target Pool." Niches with <5 are rejected outright (Kay can override). This gate runs BEFORE one-pagers or scoring — no wasted effort on empty pools.
+**No automated rejection.** All niches proceed through the full pipeline regardless of target count. The target TAM is data for Kay's decision, not a gate. Flag thin pools clearly in the output — "Thin Target Pool (8 targets)" — but do NOT auto-kill or auto-table any niche. Kay makes all niche decisions.
 
 ### Step 3: One-Pager Creation
 

@@ -50,6 +50,21 @@ MANAGER DOCUMENTS / DEALS IN REVIEW / {COMPANY} /
 | Thumbs Up/Down | `1JV_B2IzUYYf66o-oDPTtNv-IHWc3nBQb5TQzthSovbg` | Google Slides |
 | Email Templates | `1_04RPBCKs4HsSBn2FzUIU4gt3acidB0d` | Word (.docx) |
 
+## Document Formatting (G&B Brand)
+All Google Docs created by this skill must use G&B brand standards:
+- **G&B logo** centered at top of document
+- **Avenir font** throughout (body text, headers, tables)
+- **Black text only** (no colored text)
+- **"Strictly Confidential"** in document footer
+
+**IMPORTANT:** These cannot be applied via basic gog CLI commands. Use Google Apps Script (`gog appscript run`) to apply formatting programmatically. Build and deploy a G&B brand formatting script that:
+1. Sets all text to Avenir font
+2. Inserts G&B logo (from Brand Kit folder) centered at top
+3. Adds "Strictly Confidential" footer
+4. Sets all text color to black
+
+Until the Apps Script is built, all templates in Master Templates must be manually pre-formatted once so copies inherit styling. **This is Claude's task to automate, not Kay's — Kay does not know Google Docs formatting.**
+
 ## Email Rules
 - Always open with a warm nicety before substance
 - Sign off "Very best, Kay" — signature is built in

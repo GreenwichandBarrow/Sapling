@@ -70,8 +70,8 @@ Run against available information from the CIM, teaser, or email body:
 
 | Criterion | Target | Hard Fail? |
 |-----------|--------|------------|
-| Revenue | $10-50M (services) / $5-40M (SaaS) | Yes |
-| EBITDA | $2-5M | Yes |
+| Revenue | $10-50M (services) / $5-40M (SaaS) | Soft — size is situational |
+| EBITDA | $2-5M | Soft — size is situational |
 | Margins | 15%+ | Yes |
 | Years in business | 10+ | Yes |
 | Owner profile | Founder-owned, succession-relevant (age 55+, no successor, retirement planning) | Soft |
@@ -79,9 +79,12 @@ Run against available information from the CIM, teaser, or email body:
 | Customer concentration | <15% single customer | Yes |
 | Industry fit | B2B, recurring/contractual revenue, compliance-driven, fragmented market | Soft |
 
+**Size is situational:** A sub-scale business can still be a fit if it's a platform play in a fragmented niche (bolt-on acquisition strategy), has exceptional margins, or is in a thesis-aligned space with clear roll-up potential. The buy-box screen flags below-range size but does NOT auto-reject. The full evaluation continues.
+
 **Scoring:**
 - All hard-fail criteria met + 2+ soft criteria → **PASS** (proceed)
 - Any hard-fail criterion missed → **FAIL** (decline)
+- Hard-fail criteria met but size below range + strong thesis fit → **FLAG** (continue evaluation with size noted)
 - Hard-fail criteria met but insufficient info on 2+ soft criteria → **INSUFFICIENT** (request more info)
 
 ### Step 2A: Screen PASSES

@@ -1,11 +1,11 @@
 ---
 name: meeting-brief
-description: "Generate meeting prep briefs for external meetings with new contacts. Saves to Google Drive (RESEARCH/BRIEFS) and brain/briefs/."
+description: "Generate meeting prep briefs for external meetings. Auto-detects new vs. repeat contacts and uses the appropriate template. Saves to Google Drive (RESEARCH/BRIEFS) and brain/briefs/."
 user_invocable: true
 ---
 
 <objective>
-Generate a concise meeting brief for any upcoming external meeting where Kay is meeting someone for the first time (or hasn't met in a long time). The brief answers: how were we introduced, who is this person, how can they help the search, and what should Kay share about herself. Saves to Google Drive and the vault automatically.
+Generate a concise meeting brief for any upcoming external meeting. Auto-detects whether the contact is new or already in the Active Deals pipeline and uses the appropriate template. New contacts get an intro-focused brief. Repeat contacts get a deal-progression brief with full history, open questions, and what to push for. Saves to Google Drive and the vault automatically.
 </objective>
 
 <essential_principles>
@@ -25,11 +25,21 @@ This skill should run:
 4. **What should Kay share about herself?** — Tailored talking points based on what they already know and what would resonate
 5. **What NOT to over-share** — What to keep high-level or avoid entirely
 
+## Contact Type Detection (Step 0)
+
+Before researching, determine if this is a **new contact** or a **repeat contact**:
+
+1. Search Attio Active Deals pipeline for the person's name or company
+2. If found at "First Conversation" stage or later → **repeat contact** → use repeat contact template
+3. If not found, or only at "Identified"/"Contacted" → **new contact** → use standard template
+
+This detection is automatic. The skill figures out which template to use.
+
 ## Delivery
 
 Save to TWO locations, no email:
 - **Google Doc** in RESEARCH/BRIEFS folder (ID: `1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ`)
-- **Vault file** at `brain/briefs/{YYYY-MM-DD}-{person-slug}.md`
+- **Vault file** at `brain/briefs/{YYYY-MM-DD}-{person-slug}.md` (new contacts) or `brain/briefs/{YYYY-MM-DD}-{company-slug}-call-{n}.md` (repeat contacts, where n = call number)
 </essential_principles>
 
 <quick_start>
@@ -144,6 +154,139 @@ SUGGESTED TALKING POINTS
 ```
 </brief_structure>
 
+<repeat_contact_flow>
+## Repeat Contact Flow (Active Deals pipeline, "First Conversation" stage or later)
+
+### Phase 1R: Parallel Research (Repeat Contact)
+
+Spawn these queries in parallel:
+
+#### Attio Pipeline Data
+Query Active Deals pipeline for the company. Extract:
+- Current stage and how long at that stage
+- All custom attributes (meaningful_conversation checkbox, etc.)
+- Entry history (when added, stage progression dates)
+
+#### Prior Call Notes
+Search `brain/calls/` for all files mentioning this person or company:
+```
+grep -r "person/{slug}" brain/calls/
+grep -r "[[entities/{slug}]]" brain/calls/
+```
+Read each call file chronologically. Extract key points, commitments made, questions asked.
+
+#### Granola Transcripts
+Query `mcp__granola__list_meetings` filtered by the person's name. Get full transcripts for any meetings not yet in brain/calls/.
+
+#### Email History
+```
+gog gmail search "from:{email} OR to:{email}" --max 30
+```
+Full correspondence thread. Note tone, responsiveness, any concerns raised.
+
+#### Financials Status
+- Check Attio: NDA executed? Financials received?
+- Check Drive: DEALS IN REVIEW/{Company} folder exists? What's in it?
+- Check brain/outputs/ for any scorecard or financial model files
+
+### Phase 2R: Call Number
+Count prior call files in brain/calls/ for this company to determine call number:
+```
+ls brain/calls/*{company-slug}* | wc -l
+```
+Next call = count + 1. Use for filename.
+
+### Phase 3R: Repeat Contact Brief Template
+
+```
+CALL PREP: {Person Name} — Call #{n}
+{Meeting Type} | {Day} {Date}, {Time}
+{Location}
+
+—
+
+RELATIONSHIP ARC
+
+{Timeline of all touchpoints:}
+• {Date} — {How introduced, by whom}
+• {Date} — {First email / outreach}
+• {Date} — {Call #1: key topics, outcome}
+• {Date} — {Follow-up email / NDA sent}
+• {Date} — {Call #2: key topics, outcome}
+{Continue chronologically...}
+
+—
+
+CURRENT PIPELINE STAGE
+
+Stage: {current stage}
+Days at stage: {n}
+Next milestone: {what needs to happen to advance}
+
+—
+
+PRIOR CALL NOTES
+
+Call #1 ({date}):
+• {Key points discussed}
+• {Their concerns / questions}
+• {Commitments made by either side}
+
+Call #2 ({date}):
+• {Key points discussed}
+• {Progress since last call}
+• {Open items carried forward}
+
+{Continue for all prior calls...}
+
+—
+
+FINANCIALS STATUS
+
+NDA: {Signed / Not yet / Sent on {date}}
+Financials: {Received / Requested / Not yet}
+Preliminary numbers: {Revenue, EBITDA, margins if known}
+Financial model: {Started / Not yet / Key findings}
+
+—
+
+OPEN QUESTIONS
+
+{Items flagged as "need to follow up" from prior calls that haven't been resolved:}
+1. {Question — from Call #{n}}
+2. {Question — from email on {date}}
+3. {Question — flagged by Kay}
+
+—
+
+WHAT TO PUSH FOR
+
+Based on current stage ({stage}), the next milestone is:
+• {E.g., "Get NDA signed so we can request financials"}
+• {E.g., "Schedule site visit"}
+• {E.g., "Understand customer concentration — ask for top 10 client list"}
+• {Specific questions to advance the deal}
+
+—
+
+SELLER PERSONALITY NOTES
+
+• {Communication style — formal/casual, responsive/slow}
+• {Motivations — why selling, timeline pressure, emotional attachment}
+• {Concerns expressed — about process, confidentiality, employees, legacy}
+• {What resonates — topics that engaged them, what they care about}
+
+—
+
+RED FLAGS / WATCH ITEMS
+
+• {Anything flagged in prior conversations}
+• {Initial screening concerns}
+• {Inconsistencies noticed}
+• {Items to verify this call}
+```
+</repeat_contact_flow>
+
 <save_phase>
 ## Phase 3: Save & Deliver
 
@@ -155,7 +298,7 @@ gog drive copy "1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF" "{title}" --parent "1qDTfP3YI
 ```
 
 ### Vault File
-Save to `brain/briefs/{YYYY-MM-DD}-{person-slug}.md` with frontmatter:
+Save to `brain/briefs/{YYYY-MM-DD}-{person-slug}.md` (new contacts) or `brain/briefs/{YYYY-MM-DD}-{company-slug}-call-{n}.md` (repeat contacts) with frontmatter:
 
 ```yaml
 ---
@@ -230,13 +373,22 @@ Only send the Slack webhook call after checks 1-4 all pass.
 </validation_phase>
 
 <success_criteria>
-Brief is complete when:
-- [ ] All 6 sections populated with specific, sourced information
-- [ ] Introduction chain fully traced (not generic)
-- [ ] Talking points tailored to the specific person (not boilerplate)
-- [ ] Google Doc saved in RESEARCH/BRIEFS
+## Shared (both types)
+- [ ] Google Doc saved in RESEARCH/BRIEFS with G&B letterhead, Avenir font, black text only
 - [ ] Vault file saved in brain/briefs/
 - [ ] Referenced entities exist in brain/entities/
 - [ ] Slack notification sent with person name, date, and Doc link
 - [ ] Google Doc link shared with user
+
+## New Contact
+- [ ] All 6 sections populated with specific, sourced information
+- [ ] Introduction chain fully traced (not generic)
+- [ ] Talking points tailored to the specific person (not boilerplate)
+
+## Repeat Contact
+- [ ] All 8 sections populated (Relationship Arc, Pipeline Stage, Prior Call Notes, Financials Status, Open Questions, What to Push For, Seller Personality, Red Flags)
+- [ ] Every prior call/meeting included in Relationship Arc chronologically
+- [ ] Open Questions pulled from actual prior conversations (not generic)
+- [ ] What to Push For aligned with current pipeline stage and next milestone
+- [ ] Filename includes call number: `{date}-{company-slug}-call-{n}.md`
 </success_criteria>

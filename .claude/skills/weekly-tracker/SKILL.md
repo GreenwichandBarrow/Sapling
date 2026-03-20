@@ -314,6 +314,7 @@ Read current sheet to find next empty column, then write data to all 3 tabs:
 - Response Rate, Conversion rates (calculated from this week's deltas)
 
 **SNAPSHOTS (current state, not delta):**
+- Qualified Opportunities / A count (current count: deals Kay is actively pursuing — requested financials, initiated diligence, etc.)
 - Deals in Active Review (current count: First Conversation through LOI Signed)
 - Total Active Pipeline (current count: all except Closed/Not Proceeding)
 

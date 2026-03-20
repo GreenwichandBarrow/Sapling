@@ -18,7 +18,7 @@ tags:
 
 | Metric | This Week | Target |
 |--------|-----------|--------|
-| **NDAs Signed** | 2 | 1/wk |
+| **NDAs Signed** | 1 | 1/wk |
 | **Financials Received** | 0 | 1/wk |
 | **LOIs Submitted** | 0 | -- |
 | **LOIs Signed** | 0 | -- |
@@ -60,7 +60,7 @@ tags:
 
 **Context:** This was build week (Mar 17-21) -- focused on standing up the full Sapling OS automation stack. Outreach volume intentionally low. System is now live for Monday.
 
-**Key metrics vs. goal:** 2 NDAs signed (Project Restoration via Eight Quarter Advisors). No financials or LOIs. The NDA is a positive signal -- art ecosystem deal sourced through Stanley Rodos at Crate Capital.
+**Key metrics vs. goal:** 1 NDA signed (Project Restoration via Eight Quarter Advisors). No financials or LOIs. The NDA is a positive signal -- art ecosystem deal sourced through Stanley Rodos at Crate Capital.
 
 **System Throughput:** Minimal -- 1 outreach email (broker intro), 0 cold calls. JJ not yet active on new niche sprint (pending Google Voice setup). 1 networking meeting (Dan Tanzilli coffee, 3/17).
 

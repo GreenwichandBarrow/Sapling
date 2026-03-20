@@ -156,7 +156,7 @@ Count total meaningful conversations this week (by comparing timestamps).
   "stage_counts": {"Identified": 0, "Contacted": 0, ...}
 }
 ```
-Count deals per stage. For weekly changes, compare `created_at` timestamps against the week window for new deals. For killed deals, count entries at "Closed / Not Proceeding".
+Count deals per stage. **CRITICAL: Key metrics (NDAs, Financials, LOIs) must be WEEKLY DELTAS, not total snapshot counts.** Compare each entry's stage `active_from` timestamp against the week window to determine which entries *moved into* that stage this week. For example, if 2 entries are at "NDA Executed" but only 1 moved there this week, report ndas_signed=1. For deals added, compare `created_at` timestamps against the week window. For deals killed, count entries that moved to "Closed / Not Proceeding" this week (not total at that stage).
 
 ### Agent 4: Vault Activity Collector
 **Task:** Count vault activity for the week.

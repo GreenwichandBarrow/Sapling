@@ -42,6 +42,7 @@ MANAGER DOCUMENTS / DEALS IN REVIEW / {COMPANY} /
 
 | Template | Drive ID | Type |
 |----------|----------|------|
+| Buy-Box Screen | `1MEIkGgyhoF2P3Iwt3U3-8fCGTpDIwF5trTI3mCuk-xw` | Google Doc |
 | NDA Template | `1bdK5h6hY8RP49_etMQGUCNurR1L7sG3rb5NKCruHUyE` | Google Doc |
 | LOI Template | `1d6ooLHHOvPHCamz37RhcVyD7zXWfcNHvNpBtYF4GQ-E` | Google Doc |
 | Financial Model | `1d6hhIf6sCRWMNf3gj30g23rYQAQbig2m` | Excel (.xlsx) |
@@ -86,6 +87,24 @@ Run against available information from the CIM, teaser, or email body:
 - Any hard-fail criterion missed → **FAIL** (decline)
 - Hard-fail criteria met but size below range + strong thesis fit → **FLAG** (continue evaluation with size noted)
 - Hard-fail criteria met but insufficient info on 2+ soft criteria → **INSUFFICIENT** (request more info)
+
+### Buy-Box Screen Deliverable (ALL outcomes — PASS, FLAG, FAIL, INSUFFICIENT)
+
+Regardless of the screening outcome, ALWAYS produce:
+
+1. **Buy-Box Screen Google Doc** — Copy template (`1MEIkGgyhoF2P3Iwt3U3-8fCGTpDIwF5trTI3mCuk-xw`), populate with CIM data, save to `ANALYST / ACTIVE DEALS / {COMPANY} / NOTES /`. Name: "Buy-Box Screen - {Company Name} {M.DD.YY}"
+2. **Slack ping to #active-deals** — Single message containing:
+   - Verdict (PASS/FLAG/FAIL)
+   - Key numbers (revenue, EBITDA, margins)
+   - One-line reasoning
+   - Links: CIM, Buy-Box Screen doc, Deal folder
+
+**Stop Hook (must pass before Slack):**
+- [ ] Buy-Box Screen doc exists in NOTES subfolder
+- [ ] Doc is populated (not empty template)
+- [ ] Financial summary table has data
+- [ ] Verdict line is present
+- [ ] Slack message includes doc link + CIM link + deal folder link
 
 ### Step 2A: Screen PASSES
 

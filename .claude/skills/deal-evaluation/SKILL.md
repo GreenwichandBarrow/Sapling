@@ -56,6 +56,87 @@ MANAGER DOCUMENTS / DEALS IN REVIEW / {COMPANY} /
 - Show person names, not just companies
 </essential_principles>
 
+
+<intermediary_inbound_pathway>
+## Intermediary Inbound Pathway (Fast Buy-Box Screen)
+
+**Trigger:** Pipeline-manager flags an inbound deal from an intermediary and Kay approves screening. Invoked with `source: intermediary-inbound` and `intermediary: {name}`.
+
+**Key principle:** Intermediary deals get a FAST response. These people send deals to multiple buyers simultaneously. A same-day or next-morning reply keeps Kay top-of-mind. Every hour of delay is a competitive disadvantage.
+
+### Step 1: Automated Buy-Box Screen
+
+Run against available information from the CIM, teaser, or email body:
+
+| Criterion | Target | Hard Fail? |
+|-----------|--------|------------|
+| Revenue | $10-50M (services) / $5-40M (SaaS) | Yes |
+| EBITDA | $2-5M | Yes |
+| Margins | 15%+ | Yes |
+| Years in business | 10+ | Yes |
+| Owner profile | Founder-owned, succession-relevant (age 55+, no successor, retirement planning) | Soft |
+| Geography | US-based, prefer non-coastal for value | Soft |
+| Customer concentration | <15% single customer | Yes |
+| Industry fit | B2B, recurring/contractual revenue, compliance-driven, fragmented market | Soft |
+
+**Scoring:**
+- All hard-fail criteria met + 2+ soft criteria → **PASS** (proceed)
+- Any hard-fail criterion missed → **FAIL** (decline)
+- Hard-fail criteria met but insufficient info on 2+ soft criteria → **INSUFFICIENT** (request more info)
+
+### Step 2A: Screen PASSES
+
+1. Log deal in vault: `brain/inbox/YYYY-MM-DD-intermediary-deal-{company-slug}.md`
+2. Present to Kay: "Buy-box screen passed. Revenue ${X}M, EBITDA ${X}M, {X}% margins, {years} years. Proceed to Phase 1?"
+3. On approval, proceed to **Phase 1 (Post-Call Follow-Up)** with these modifications:
+   - **Skip NDA generation** — intermediary deals typically come with the intermediary's own NDA or CA already in place. If no NDA/CA was included, ask Kay whether to send G&B's NDA or request the intermediary's.
+   - **Email draft targets the intermediary**, not the owner directly (unless the intermediary explicitly invited direct contact). Frame as: "Thank you for sending this over. We'd like to learn more. Can you arrange an introduction to the owner?"
+   - **Source field** in all vault files and Attio: `Intermediary Referral — {intermediary name} ({firm})`
+   - **Attio Active Deals entry** created at "Identified" with intermediary linked
+
+### Step 2B: Screen FAILS
+
+1. Draft polite decline email to the intermediary:
+   - Keep it SHORT — intermediaries send dozens of deals and don't want lengthy explanations
+   - Thank them for thinking of Kay
+   - Give a brief, honest reason: "outside our size range", "industry doesn't align with our thesis", "customer concentration concern"
+   - Explicitly invite future deal flow: "Please keep us in mind for B2B services businesses in the $10-50M revenue range with 15%+ margins"
+   - Sign off "Very best, Kay"
+2. Log in vault: `brain/traces/YYYY-MM-DD-intermediary-decline-{company-slug}.md`
+   - Capture: company, intermediary, reason for passing, what buy-box criteria failed
+3. Tag the intermediary's Attio record:
+   - `deal_types_sent: [{industry/type}]` (append)
+   - `deals_passed: [{company} — {reason}, {date}]` (append)
+   - This builds a profile of what each intermediary sends, enabling future filtering
+4. Update Attio: do NOT create an Active Deals entry for failed screens
+
+### Step 2C: INSUFFICIENT Information
+
+1. Draft reply to the intermediary requesting key data points:
+   - Revenue (last 3 years or LTM)
+   - EBITDA or seller's discretionary earnings
+   - Years in business
+   - Owner age and succession situation
+   - Largest customer as % of revenue
+   - Frame as: "This looks interesting. Before we dive deeper, could you share a few data points so we can confirm fit?"
+2. Create a pending inbox item: `brain/inbox/YYYY-MM-DD-intermediary-pending-{slug}.md`
+   - Tag: `source/intermediary-inbound`, `status/awaiting-info`
+   - Set follow-up: if no response in 5 business days, draft a gentle nudge
+3. When info arrives (detected in next Gmail scan): re-run buy-box screen automatically
+
+### Differences from Direct Owner Deals
+
+| Aspect | Direct Owner Deal | Intermediary Inbound |
+|--------|------------------|---------------------|
+| NDA | G&B sends their NDA | Use intermediary's NDA/CA (or ask) |
+| First contact | Email owner directly | Email intermediary, request intro |
+| Speed | Normal cadence | Same-day/next-morning response |
+| Source tracking | Cold Outreach / Network | Intermediary Referral — {name} |
+| JJ Day 3 call | Yes (if cold) | No (intermediary manages contact) |
+| Decline handling | Standard decline email | Short decline + invite future flow |
+| Information available | Usually minimal | Usually CIM/teaser with financials |
+</intermediary_inbound_pathway>
+
 <phases>
 ## Phase 1: Post-Call Follow-Up
 
@@ -462,11 +543,13 @@ This trace feeds into `/calibrate` for system improvement.
 This skill can be triggered in multiple ways:
 
 1. **Manual:** `/deal-evaluation {company name}` — starts from wherever the deal currently is
-2. **Phase 1 trigger:** Pipeline-manager detects first owner call logged
-3. **Phase 3 trigger:** Pipeline-manager detects financials received in email
-4. **Phase 5 trigger:** Kay says "proceed" or "pass" on a deal
+2. **Intermediary inbound trigger:** Pipeline-manager flags inbound deal from intermediary, Kay approves screening → runs Intermediary Inbound Pathway (fast buy-box screen) before Phase 1
+3. **Phase 1 trigger:** Pipeline-manager detects first owner call logged
+4. **Phase 3 trigger:** Pipeline-manager detects financials received in email
+5. **Phase 5 trigger:** Kay says "proceed" or "pass" on a deal
 
 The skill detects the current state and picks up at the right phase:
+- Intermediary inbound with `source: intermediary-inbound` → Intermediary Inbound Pathway (buy-box screen first)
 - No deal folder exists → Phase 1
 - Deal folder exists, no financials → Phase 2 (monitor)
 - Financials in folder, no model → Phase 3

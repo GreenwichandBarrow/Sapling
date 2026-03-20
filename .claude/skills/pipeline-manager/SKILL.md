@@ -38,7 +38,10 @@ For **all network contacts**. Person-based. Non-linear relationship management.
 
 ### Daily Review Flow
 
-On morning sign-on, Claude presents three sections sequentially. Kay reviews each item and approves or skips. Approved outreach and action items become Motion tasks automatically.
+On morning sign-on, Claude presents four sections sequentially. Kay reviews each item and approves or skips. Approved outreach and action items become Motion tasks automatically.
+
+**Inbound Deal Flow (before Part 1):**
+If any inbound intermediary deals were detected during Gmail ingestion, present them first. These are time-sensitive — intermediaries shop deals to multiple buyers. See "Inbound Intermediary Deal Detection" section below for format and actions.
 
 **Part 1: Pipeline Changes**
 Present any pipeline stage changes detected from yesterday's activity (Intermediary, Active Deals, Investor). One at a time.
@@ -255,6 +258,66 @@ During Gmail ingestion, detect introduction emails — someone introducing Kay t
 | Day 8-10 | LinkedIn DM (Kay) | High-value only |
 
 No Day 3 JJ call. The introducer already warmed the connection.
+
+## Inbound Intermediary Deal Detection (runs during Gmail ingestion)
+
+During Gmail ingestion, detect inbound deal flow from intermediaries — brokers, lawyers, CPAs, wealth advisors, M&A advisors, and other referral sources who send deals to multiple buyers. Speed is critical: these people shop deals simultaneously, and a fast response wins.
+
+### Detection Signals
+Scan incoming emails for:
+- CIMs, teasers, deal summaries, or blind profiles attached or inline
+- Subject lines containing: "opportunity", "deal flow", "confidential opportunity", "teaser", "investment opportunity", "acquisition opportunity", "company for sale", "business for sale"
+- Body language: revenue/EBITDA figures, asking price, "under NDA", "exclusive mandate", "we represent"
+- Attachments: PDFs named with CIM/teaser/profile/summary patterns
+- Sender domain matches known intermediary patterns (advisory firms, brokerage firms, law firms)
+
+### Sender Classification
+1. **Check Attio Intermediary Pipeline** — is the sender (or their firm) already tracked?
+   - If yes: tag as `source/intermediary-inbound`, associate with existing intermediary record
+   - If no: create a new entity at `brain/entities/{slug}.md`, add to Attio Intermediary Pipeline at "Identified" stage with `how_introduced: "Inbound deal email, {date}"`
+2. Cross-reference sender against vault entities and Gmail history for prior correspondence
+
+### Inbox File Creation
+Write each inbound deal to `brain/inbox/YYYY-MM-DD-intermediary-inbound-{slug}.md` using inbox schema with:
+- `tags: [inbox, source/intermediary-inbound, person/{intermediary-slug}, company/{intermediary-firm-slug}]`
+- `confidence: high` (explicit deal flow is always actionable)
+- `source: email`
+- Body: intermediary name, intermediary firm, deal summary (company description, industry, revenue/EBITDA if stated, geography), any attachments listed
+
+### Morning Review Presentation
+
+Present inbound intermediary deals as a **separate category BEFORE Part 1 (pipeline changes)**:
+
+```
+INBOUND DEAL FLOW
+─────────────────
+From: {Intermediary Name} ({Firm Name})
+  Intermediary status: {Attio stage or "New — just added to Intermediary Pipeline"}
+  Deal: {Company name or "Blind profile"}
+  Industry: {if stated}
+  Revenue: {if stated, else "Not disclosed"}
+  EBITDA: {if stated, else "Not disclosed"}
+  Geography: {if stated}
+  Attachment: {CIM/teaser/profile filename}
+
+  Screen against buy box?
+  - Yes → fast-track to deal-evaluation (intermediary buy-box screen)
+  - Pass → draft polite decline to intermediary
+  - Need more info → draft reply requesting key financials
+  - Save for later → keep in inbox, revisit Friday
+```
+
+### On Kay's Approval
+- **"Yes"** → trigger deal-evaluation skill with `source: intermediary-inbound` and `intermediary: {name}`. The deal-evaluation skill runs its fast buy-box screen (see deal-evaluation Intermediary Inbound Pathway).
+- **"Pass"** → draft a short, polite decline email to the intermediary. Log the deal in vault with reason. Tag the intermediary's Attio record with the deal type they sent (e.g., `sends: manufacturing`, `sends: healthcare`) for future filtering.
+- **"Need more info"** → draft reply requesting: revenue, EBITDA, years in business, owner age/succession situation, customer concentration. Keep the ask short — intermediaries are busy.
+- **"Save for later"** → no action, stays in inbox queue.
+
+### Intermediary Relationship Tracking
+After processing inbound deals, update the intermediary's Attio record:
+- `last_deal_sent: {date}`
+- `deal_types_sent: [{industry/type}]` (append, don't overwrite)
+- If intermediary is at "Identified" and sent a real deal: recommend stage change to "Actively Receiving Deal Flow"
 
 ## Niche Signal Detection (runs during data ingestion)
 

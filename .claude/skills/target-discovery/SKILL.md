@@ -27,8 +27,10 @@ Goal: 4-6 qualified targets per day.
 <target_discovery>
 ## Target Discovery (Daily, Mon-Fri)
 
-### Step 1: Run Linkt Search
-Linkt is the primary list builder. It has the database. It finds companies matching the ICP, enriches them, and returns validated owner contact info — all in one step.
+### Step 1: Run Linkt Search (DISCOVERY ONLY)
+Linkt is the primary list builder for discovering NEW companies. It finds companies matching the ICP and returns enriched data including owner contact info.
+
+**Linkt discovers AND enriches** — companies it finds come back with full contact data. That's fine, that's what a credit buys you. **But do NOT use Linkt credits to enrich companies found through OTHER sources** (free research, associations, referrals, conferences). Those get contact-scraped manually (Step 2b). Linkt credits = discovering companies we don't know about yet.
 
 ```
 Execute the niche ICP Search flow in Linkt:
@@ -64,7 +66,18 @@ Linkt won't find everything. Supplement with free research:
 - **Existing intelligence** — Attio pipeline, vault entities, niche one-pagers from niche-intelligence
 - **Intermediary referrals** — deals forwarded by brokers, CPAs, network contacts
 
-For companies found through free sources, use Linkt to enrich them (get validated contact info) if worth a credit.
+### Step 2b: Contact Enrichment (FREE — do not use Linkt credits)
+For companies found through free research (Step 2), scrape contact info manually:
+
+1. **Company website** — About Us, Team, Leadership pages for owner/CEO name and title
+2. **LinkedIn** — company page → People tab → filter by CEO/President/Owner/Founder
+3. **State business registrations** — registered agent/officer filings (Secretary of State websites)
+4. **Press releases / news** — owner names often appear in local business news
+5. **Industry association member directories** — sometimes list key contacts
+
+Populate cols I-N (Owner Name, Title, Email, Phone, LinkedIn Owner, LinkedIn Company). If company phone is all that's findable, note "(main)" in the cell. JJ validates phone numbers on his calls.
+
+**Do NOT burn Linkt credits on enrichment.** If we already know the company exists, the contact info can be found manually or by JJ.
 
 ### Step 3: Kay Reviews Target List
 Present the combined list (Linkt + supplemental) to Kay. She reviews:
@@ -136,8 +149,27 @@ After target discovery completes, verify all deliverables before notifying Kay:
 
 ### Step 1: Sheet Validation
 - Confirm Google Sheet in LINKT TARGET LISTS folder has new rows with today's date
-- Verify all required columns are populated (Company, Owner Name, Email, Phone at minimum)
 - Verify phone numbers are formatted correctly: `(XXX) XXX-XXXX`
+
+### Step 1b: Contact Completeness Check (STOP HOOK)
+Read every row on the Active tab. For each row, check cols I-L (Owner Name, Title, Email, Phone):
+
+```bash
+gog sheets get {SHEET_ID} "Active!B:L" -a kay.s@greenwichandbarrow.com -p
+```
+
+**Flag every row missing ANY of these:**
+- Col I (Owner Name) — empty or "Unknown"
+- Col K (Email) — empty
+- Col L (Phone) — empty
+
+**If missing contacts found:**
+1. Spawn a sub-agent to scrape contact info for those companies (Step 2b process: company website, LinkedIn, state registrations, press releases)
+2. Update the sheet with whatever is found
+3. Re-check after scraping
+4. Any STILL missing after scraping → flag in the daily briefing: "{n} targets missing contact info. JJ to validate."
+
+**A target cannot be handed to outreach-manager without at minimum: Owner Name + (Email OR Phone).** This is a hard gate. No contact info = no outreach.
 
 ### Step 2: Attio Validation
 - Confirm all approved targets exist in Attio Active Deals at "Identified" stage
@@ -146,6 +178,7 @@ After target discovery completes, verify all deliverables before notifying Kay:
 ### Step 3: Handoff Validation
 - Confirm target data was passed to outreach-manager with all required fields
 - Confirm no targets are missing email (required for Day 1 email)
+- Confirm no targets are missing phone (required for JJ Day 3 call)
 
 ### Step 4: Credit Tracking
 - Log credits consumed this run

@@ -53,6 +53,7 @@ If verification fails, log the failure to chatroom and notify user — do NOT pr
 | `gog` CLI | Gmail (newsletters), Google Sheets (tracker), Google Drive (one-pagers) |
 | `last30days` skill | Web/social research via `/last30days` |
 | Granola MCP | Meeting transcript retrieval |
+| OneNote MCP | SEARCH FUND notebook — industry memos, deal convos, research notes |
 | `python-pptx` | One-pager generation |
 | `WebSearch` | Supplemental research for scoring |
 
@@ -100,7 +101,8 @@ No intake question needed — this is a fully automated workflow.
 | `niche-intel-email` | general-purpose | Scan Gmail for deal flow / niche signals |
 | `niche-intel-research` | general-purpose | Read recent brain/outputs/ research files |
 | `niche-intel-passive-signals` | general-purpose | Pull queued niche signals from pipeline-manager |
-| `niche-intel-brain-miner` | general-purpose | Mine Kay's own data (calls, emails, transcripts, OneNote) for overlooked niches and leads |
+| `niche-intel-passive-signals` | general-purpose | Pull queued niche signals from pipeline-manager inbox items |
+| `niche-intel-onenote` | general-purpose | Mine Kay's SEARCH FUND OneNote notebook for industry memos, deal convos, and research |
 
 #### Passive Signal Intake (niche-intel-passive-signals)
 
@@ -234,7 +236,7 @@ Target validation was moved into the identification step (Step 2) so no niche is
 <success_criteria>
 
 Niche Intelligence run is complete when:
-- [ ] All 5 gathering agents posted to chatroom
+- [ ] All 7 gathering agents posted to chatroom
 - [ ] 1-5 new niches identified (or 0 with documented reasoning)
 - [ ] One-pager .pptx created and uploaded for each new niche
 - [ ] Each niche scored against detailed G&B scorecard

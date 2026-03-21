@@ -159,3 +159,198 @@ The Feb 11, 2026 call with Denning contains a signal the overnight report missed
 5. **Prioritize owner conversations over more niche research.** The Guillermo Jan 15 call makes clear: Kay's bottleneck is volume of owner conversations, not thesis refinement. Every hour spent researching premium audit firms is an hour not spent getting on the phone with insurance agency owners.
 
 ---
+
+## [niche-intel-recent] — 2026-03-21T09:15:00-04:00
+**Source:** Recent (last 14 days, March 7-21 2026)
+**Status:** complete
+
+### Source 1: Web/Social Research
+
+**last30days:** Reddit/HN returned no results (API rate-limited). WebSearch provided strong coverage.
+
+**Key Signals Found:**
+
+1. **Lee Equity Partners acquired KCIC** (March 2, 2026) -- PE expanding insurance services platform. KCIC is a consulting firm for tort-system liabilities, insurance asset management, and litigation challenges. Joins McLarens and Halliwell on the platform. Validates the "insurance infrastructure/services" thesis -- PE is building platforms around non-brokerage insurance services.
+   - Niche: Insurance BPO / Infrastructure (new candidate)
+   - Why it matters: Demonstrates PE appetite for insurance-adjacent consulting/services businesses, not just brokerages
+
+2. **Davies acquired Afirm Solutions** (premium audit + loss control specialist) -- Davies expanding North American premium audit and loss control offering by acquiring Afirm from Kaufman Financial Group. Afirm operates in all 50 states + Canada.
+   - Niche: Premium Audit / Loss Control (new candidate)
+   - Why it matters: Validates target pool, shows PE consolidation activity, but many independents remain
+
+3. **Kansas joins SLIP+ platform April 1, 2026** -- New surplus lines filing platform going live. Montana moved to SLIP+ January 2026. States migrating to centralized surplus lines platforms = more regulatory complexity = more demand for compliance service providers.
+   - Niche: Surplus Lines Compliance (new candidate)
+   - Why it matters: Regulatory expansion creates demand tailwind for service firms
+
+4. **Insurity + InsCipher partnership** -- Strategic partnership to streamline surplus lines tax filing. Shows the sector is active with tech consolidation and partnerships.
+   - Niche: Surplus Lines Compliance
+   - Why it matters: Tech partnerships signal growing market, but also potential tech disruption to pure-service players
+
+5. **Emigrant Bancorp acquiring Fortis Management Group** (closing April 2026) -- Family office services for UHNW families. Banks building out estate/family office management capabilities.
+   - Niche: Estate Management Companies
+   - Why it matters: Adjacent signal showing institutional buyers entering UHNW services market
+
+6. **Insurance brokerage M&A outlook (PwC, A&M reports):** 2026 deal volume expected on par with 2025. PE expected to pursue distribution more aggressively as financing conditions improve. Organic revenue growth slowing = more acquisition appetite.
+   - Niche: All insurance niches
+   - Why it matters: Macro backdrop supports acquisition activity across insurance services
+
+7. **SBA "One Strike Rule" may reshape self-funded search investing** (This Week in ETA, March 20) -- SBA potentially expanding loan delinquency restrictions to minority investors. Could impact search fund capital formation.
+   - Niche: All (structural)
+   - Why it matters: If confirmed, changes the economics of search fund investor participation with SBA financing
+
+### Source 2: Newsletters (Axios Pro Rata)
+
+Three Pro Rata editions read (March 18-20). Key signals:
+
+1. **Dealmaking up significantly in 2026** -- Dan Primack reports 2026 "gone gangbusters" for M&A, in line with consensus optimism (March 19 edition).
+   - Niche: All
+   - Why it matters: Active deal market means more competition for targets but also more exit optionality
+
+2. **AI + PE joint ventures forming** -- Multiple references to AI-driven deal platforms and PE operational improvements using AI.
+   - Niche: All (operational)
+   - Why it matters: Validates Kay's AI-native search approach as competitive advantage
+
+3. No specific insurance or compliance M&A deals mentioned in Pro Rata editions reviewed. Newsletters heavy on macro, TikTok, tech VC.
+
+### Source 3: Granola Calls (Last 14 Days)
+
+Only 1 Granola meeting in the window: Harrison/Kay AI Session (March 16). AI tooling session, not niche-related.
+
+**Vault call files in the window (March 7-21):**
+
+1. **Camilla/Kay call (March 12)** -- Camilla validated the third-party licensing management niche from her own company's multi-state retail operations. She noted the operational pain of managing licenses across states. They agreed to focus on this niche with conference scouting and one-pager refinement.
+   - Niche: IPLC / Third-Party Business License Compliance
+   - Why it matters: First-person validation from someone operating a multi-state business
+
+2. **AI in Search Group Call (March 20)** -- Fellow searchers discussing deal sourcing automation. One attendee processes 5 CIMs/day. Another built scraper with 40,000 companies. Key insight: Kay's system is significantly more advanced than peers'. No niche-specific signals but confirms competitive advantage.
+   - Niche: All (operational advantage)
+
+### Source 4: Gmail Deal Flow (Last 14 Days)
+
+1. **Project Restoration -- Art Restoration CIM received** (March 17-20 thread). Stanley Rodos (Crate Capital) forwarded teaser from Eric Dreyer (Eight Quarter Advisors) for "Colorado Art Restoration Services." Kay signed NDA March 19, received CIM March 20. Kay noted "interesting about the proprietary software piece and their clientele."
+   - Niche: Art Insurance Brokerage / Art Ecosystem (adjacent)
+   - Why it matters: ACTIVE DEAL. CIM in hand. Art ecosystem deal flow materializing. Broker relationship (Eight Quarter Advisors) now established.
+   - Signal strength: STRONG -- same-day CIM turnaround after NDA
+
+2. **E&K: Healthcare Compliance SaaS teaser** (March 18) -- "Cloud-Based SaaS Healthcare / Regulatory Compliance Software Company" for sale. Virtual/remote business. NDA available.
+   - Niche: Compliance Infrastructure (adjacent)
+   - Why it matters: Compliance SaaS businesses are coming to market through E&K. Study as comparable business model for IPLC.
+
+3. **E&K: Soma Labs acquired by Icelandirect/New Heritage Capital** (March 17) -- Not insurance-related but shows E&K deal flow is active.
+
+4. **Guillermo Lavergne intro to Austin Yoder** (thread active March 19) -- Fellow searcher focused on AI-driven cold outreach personalization.
+   - Niche: All (network)
+
+5. **SMB Deal Hunter listings** (multiple March 17-20) -- Weekly deal flow emails. None in insurance or compliance services. Signal strength: WEAK.
+
+### Source 5: Vault Research (Last 14 Days)
+
+Extensive vault output created during March 7-21 window:
+
+1. **Overnight Niche Deep-Dive (March 21)** -- Comprehensive insurance ecosystem map identifying 8 ranked niche candidates:
+   - Trade Credit Insurance Brokerage: 30-60 firms, HIGH confidence, 4 sources
+   - Premium Audit / Loss Control: 50-100+ firms, MEDIUM-HIGH confidence
+   - Surplus Lines Compliance: 20-40 firms, MEDIUM-HIGH confidence
+   - Insurance BPO: 40-80 firms, MEDIUM confidence
+   - IMO/FMO: 100+ firms but revenue validation needed
+   - 35+ named companies across all niches
+   - 10+ named river guide contacts
+   - KEY THESIS SHIFT: Insurance BACK-END (operations, compliance, infrastructure) may have richer target pools than FRONT-END (brokerage)
+
+2. **IPLC Industry Map (March 18)** -- 21 named companies mapped across 6 tiers. Only 5-10 truly independent pure-play targets remain. PE already took 3H, NLC, ILSA, SIS, LicenseLogix. Window narrowing.
+   - Data: $1.45B total market, ~$200-400M services segment, 10% CAGR
+
+3. **Niche Intelligence Report (March 20)** -- Prior cycle synthesis confirming JTC $270M trust deal, Brown & Brown $9.8B specialty insurance deal, Audax/AKAM estate management deal.
+
+4. **Niche Scoring (March 17)** -- Workplace Compliance Training scored 2.59/3 (higher than IPLC and Art Insurance). Sarah Rowell/Kantola connection is unique advantage. Cybersecurity killed (PE saturated).
+
+5. **Trade Credit Insurance Research (March 15)** -- Full research brief. $13B+ market, 8.6% CAGR, US 2-5% penetration vs Europe 10-15%. Counter-cyclical.
+
+### Source 6: Passive Signals
+
+No `brain/inbox/*niche-signal*` or `brain/inbox/*signal*` files found. Pipeline manager system just launched; passive signal capture not yet generating files.
+
+---
+
+### Cross-Source Pattern Analysis
+
+**4+ Source Signals (Highest Conviction):**
+- **Insurance Infrastructure/Back-End Services** -- Web (Lee Equity/KCIC, Davies/Afirm), Vault (overnight deep-dive, IPLC map), Calls (Camilla validation), Email (E&K compliance SaaS). The thesis that insurance back-end > front-end has the most multi-source validation of any theme this cycle.
+
+**3 Source Signals:**
+- **Trade Credit Insurance** -- Vault (research brief, scoring, deep-dive), Web (WTW marketplace report), Calls (Jeremy Black references in vault). 30-60 firm target pool, under-penetrated US market.
+- **Premium Audit / Loss Control** -- Web (Davies/Afirm acquisition), Vault (deep-dive identifies 50-100+ firms), multiple named companies. Largest target pool in insurance infrastructure.
+
+**2 Source Signals:**
+- **Surplus Lines Compliance** -- Web (Kansas SLIP+, Insurity/InsCipher), Vault (deep-dive, IPLC map cross-reference). 20-40 firms, same embedded compliance thesis as IPLC.
+- **Art Ecosystem** -- Email (Project Restoration CIM), Vault (niche intelligence report, Brown & Brown $9.8B deal). Active deal in hand.
+- **Estate Management** -- Web (Emigrant/Fortis acquisition), Vault (deep-dive). 25-40 firms but size validation needed.
+- **IPLC** -- Vault (industry map, deep-dive), Calls (Camilla validation). Target pool concerning at 5-10 pure-play independents.
+
+**1 Source Signals (Weak):**
+- **IMO/FMO** -- Vault only (Jeremy Black lead, never followed up). 100+ firms but revenue validation needed.
+- **Workplace Compliance Training** -- Vault only (scoring 2.59/3, Sarah Rowell connection). Not yet on active tracker.
+- **Insurance BPO** -- Vault only (Jeremy Black lead). 40-80 US-based firms. Note: on KILLED list generically.
+
+### Industries/Companies Mentioned
+
+**Recently Acquired/Active Deal Signals:**
+- KCIC (acquired by Lee Equity Partners, March 2, 2026)
+- Afirm Solutions (acquired by Davies, premium audit/loss control)
+- Fortis Management Group (being acquired by Emigrant Bancorp, closing April 2026)
+- Colorado Art Restoration Services ("Project Restoration" -- CIM received by G&B March 20)
+- Supportive Insurance Services (acquired by ReSource Pro, Nov 2025)
+- 3H Compliance Group + NLC Group (combined into Saratoga Compliance, Oct/Nov 2025)
+
+**Named Potential Targets (from vault research this cycle):**
+- ACCEL Compliance ($1.4M rev, CT) -- IPLC
+- Kennedy Licensing Service ($4M rev, TX) -- IPLC
+- Trade Acceptance Group -- TCI brokerage
+- Texel (fka Meridian) -- TCI brokerage
+- Insurance Audit Services, Premium Audit Consultants, Accelevant, Lowry & Associates, NEIS -- Premium Audit
+- Cox and Smith, Loss Control Services, National Risk Services -- Loss Control
+- 3H Compliance Group, Veracity Insurance -- Surplus Lines
+- Covenir, TPA Engine, Insuserve -- Insurance BPO
+- Crown Estate Services, Celebrity Estate Management -- Estate Management
+- InsCipher (57 employees, UT) -- Surplus Lines tech/services
+
+**Broker/Intermediary Relationships Active:**
+- Eight Quarter Advisors (Eric Dreyer) -- art ecosystem, CIM received
+- Everingham & Kerr (Joe Vanore) -- monthly deal listings, compliance SaaS teaser
+- Crate Capital (Stanley Rodos) -- forwarded Project Restoration
+
+### Data Points for Scoring
+
+| Metric | Value | Source |
+|--------|-------|--------|
+| Insurance producer licensing compliance market | $1.45B (2024), 10% CAGR | Vault / Growth Market Reports |
+| IPLC human-services segment | $200-400M | Vault estimate |
+| Trade credit insurance global market | $13B+, 8.6% CAGR | Vault research |
+| US TCI penetration | 2-5% (vs Europe 10-15%) | Vault research |
+| Premium audit/loss control target pool | 50-100+ firms | Vault deep-dive |
+| Surplus lines compliance target pool | 20-40 firms | Vault deep-dive |
+| TCI brokerage target pool | 30-60 firms | Vault deep-dive |
+| Estate management target pool | 25-40 firms | Vault deep-dive |
+| IMO/FMO target pool | 100+ firms | Vault deep-dive |
+| Insurance BPO target pool (US-based) | 40-80 firms | Vault deep-dive |
+| IPLC pure-play independents remaining | 5-10 firms | IPLC industry map |
+| Workplace Compliance Training margins | 75-85% gross, 20-35% EBITDA | Vault scoring |
+| Insurance brokerage valuations | 11.8x EBITDA, 19% above 10yr avg | Vault research |
+| Emigrant/Fortis deal | Closing April 2026 | Web search |
+| Lee Equity/KCIC deal | Announced March 2, 2026 | Web search |
+| Kansas SLIP+ go-live | April 1, 2026 | ReSource Pro |
+| Montana SLIP+ go-live | January 1, 2026 | ReSource Pro |
+| NLC Group revenue | $10.6M (est.) | IPLC industry map |
+| Harbor Compliance revenue | $27.5M (2025) | IPLC industry map |
+| InsCipher employees | 57 | IPLC industry map |
+| SBA One Strike Rule | Expanding restrictions to minority investors | This Week in ETA (March 20) |
+
+### Recommended Actions
+
+1. **Review Project Restoration CIM immediately** -- active deal, art ecosystem, CIM received March 20
+2. **Follow up with Jeremy Black THIS WEEK** on back-office operations and TCI leads -- 6+ weeks without pursuit
+3. **Score Premium Audit / Loss Control and Surplus Lines Compliance** against industry scorecard -- both have stronger target pools than IPLC
+4. **Add Workplace Compliance Training to active tracker** -- scores 2.59/3, higher than IPLC and Art Insurance, Sarah Rowell mentor connection
+5. **Decision needed: should insurance infrastructure replace insurance brokerage as primary thesis track?** -- all signals point to back-end services having richer targets, lower multiples, and less PE competition than front-end brokerage
+
+---

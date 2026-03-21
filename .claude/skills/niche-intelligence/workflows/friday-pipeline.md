@@ -174,13 +174,10 @@ tags:
 {2-3 sentences: how many niches identified, top signal, recommended actions}
 
 ## Data Sources This Week
-| Source | Agent | Key Signals |
-|--------|-------|-------------|
-| Web/Social | niche-intel-news | {summary} |
-| Newsletters | niche-intel-newsletters | {summary} |
-| Calls | niche-intel-calls | {summary} |
-| Email | niche-intel-email | {summary} |
-| Prior Research | niche-intel-research | {summary} |
+| Track | Sources Covered | Key Signals |
+|-------|----------------|-------------|
+| RECENT (last 14 days) | Web/social, newsletters, Granola calls, Gmail, vault research, passive signals | {summary} |
+| HISTORICAL (full search) | Fireflies calls, older Granola, Gmail full history, OneNote SEARCH FUND, ChatGPT conversations | {summary} |
 
 ## New Niches Identified
 
@@ -254,7 +251,7 @@ Ready for analyst call — link posted to #operations.
 
 <success_criteria>
 This workflow is complete when:
-- [ ] All 5 gathering agents ran and posted to chatroom
+- [ ] Both gathering tracks (RECENT + HISTORICAL) ran and posted to chatroom
 - [ ] 0-5 new niches identified with documented reasoning
 - [ ] One-pager .pptx created and uploaded (no scores — "Pending Scoring")
 - [ ] Niches added to IDEATION tab in tracker (no scores yet)

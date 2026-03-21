@@ -134,6 +134,7 @@ STEP 4 — Cross-reference findings:
 - Niche with named contacts = actionable (highlight)
 - Niche with quantitative data = ready for scoring (highlight)
 - Niche already in tracker = skip unless new data changes the picture
+- CRITICAL: If a lead was proposed in one source but rejected/challenged in another, flag the rejection. Do NOT surface dead ideas as live recommendations. Present the full lifecycle (proposed → challenged → outcome).
 
 STEP 5 — Post consolidated report to chatroom, organized by niche (not by source):
 - Niche name
@@ -170,6 +171,12 @@ WHAT TO EXTRACT:
 - Niche ideas mentioned but never pursued
 - People who could be river guides for specific industries
 - Kay's own stated interest or conviction about specific industries
+
+CRITICAL — TRACK THE FULL LIFECYCLE OF EVERY LEAD:
+When a niche or strategy is mentioned in a call, read the FULL conversation context. If the idea is proposed but then challenged, rejected, or dismissed (by Kay, an investor, or an advisor) later in the same call or in a follow-up call, you MUST flag both sides:
+- "Proposed by {person} in {call}: {idea}"
+- "Challenged/rejected by {person} in {same or other call}: {reason}"
+Do NOT surface rejected ideas as live recommendations. Present the full lifecycle.
 
 ALREADY TRACKED NICHES (do not re-surface unless new data):
 {INJECT: tracked niches list from orchestrator}

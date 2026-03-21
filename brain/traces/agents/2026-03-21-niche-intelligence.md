@@ -354,3 +354,152 @@ No `brain/inbox/*niche-signal*` or `brain/inbox/*signal*` files found. Pipeline 
 5. **Decision needed: should insurance infrastructure replace insurance brokerage as primary thesis track?** -- all signals point to back-end services having richer targets, lower multiples, and less PE competition than front-end brokerage
 
 ---
+
+## [niche-intel-identifier] — 2026-03-21T10:30:00-04:00
+**Source:** Identification + Validation
+**Status:** complete
+
+### New Niche Candidates
+
+After synthesizing all chatroom intelligence (historical, recent, overnight deep-dive), cross-referencing against active/killed/tabled/ideation lists, and validating target pools via web research, I am surfacing **3 new niche candidates**. Two additional signals were evaluated but did not pass initial screening.
+
+**Methodology:** Each candidate was checked for semantic duplication against all tracked niches (WEEKLY REVIEW: Estate Management, Trade Credit Insurance, IPLC, Art Insurance Brokerage; IDEATION: Food safety compliance, Compliance e-learning hospitality, Insurance licensing SaaS, AML compliance training, Luxury residence concierge, Private art advisory, Collection management consultants) and all killed/tabled entries. Only genuinely new niches are presented.
+
+---
+
+### CANDIDATE 1: Premium Audit & Loss Control Services (Outsourced)
+
+```
+Niche: Premium Audit & Loss Control Services
+Thesis: Insurance carriers must annually audit every commercial policyholder's payroll, revenue, and exposures to set correct premiums. Most carriers outsource this to independent audit firms. The market is fragmented, asset-light, recurring (annual carrier contracts), and largely invisible to searchers focused on front-end brokerage. Recent PE entry (Davies/Afirm) validates exit pathway without saturating the market.
+Source Signal: Davies acquired Afirm Solutions (March 2026); overnight deep-dive identified 50-100+ firms; historical agent verified Jeremy Black's "insurance back-end" thesis across multiple sources; chatroom cross-source analysis rated this a 3-source signal.
+
+QUICK SCREEN:
+- Margins: Strong — 20-30% EBITDA (service-based, low overhead, field inspectors)
+- Recurring Revenue: High — annual carrier contracts, every commercial policy requires audit
+- Industry Growth: Moderate — 5-7% CAGR, tied to commercial insurance premium growth
+
+TARGET TAM:
+- Total firms in market: 75-120 (premium audit + loss control combined)
+- Independently owned (potential targets): 40-70
+- Already PE-backed/acquired: 10-15 (EXL/Overland Solutions, Davies/Afirm, Sedgwick, Global Risk Consultants)
+- PE consolidation risk: Medium — early-stage consolidation, still many independents
+- Named examples:
+  1. NEIS, Inc. (Davenport, IA) — family-owned since 1945, premium audit + loss control, 28-state coverage
+  2. Insurance Audit Services, Inc. (Davenport, IA) — founded 1989, 201-500 employees, $1-5M revenue, independent
+  3. Premium Audit Consultants (PAC) — fee-for-service, workers comp + GL + garage liability
+  4. Cox and Smith Risk Management — founded 1969, professional safety inspection
+  5. Loss Control Services — founded 1996, nationwide loss control
+
+MARKET TAM:
+- Market size: $2-4B (premium audit outsourcing segment of broader insurance services)
+- Growth rate: 5-7% CAGR
+- Key demand drivers: commercial insurance premium growth, carrier cost reduction via outsourcing, regulatory audit requirements, workers comp reform
+
+Checked against active niches — not a duplicate of: IPLC (different service: audit/inspection vs. license management), Trade Credit Insurance (different customer: carriers vs. businesses), Estate Management (different industry entirely), Art Insurance Brokerage (different service entirely)
+```
+
+**FLAG:** Insurance Audit Services revenue at $1-5M and 201-500 employees is an unusual ratio — suggests many part-time/contract field inspectors, which is the standard model. Accelevant ($15M rev, 51 employees) was acquired by Ascential Care in 2019 and is no longer independent. The key question is whether enough independents reach the $2M+ EBITDA threshold. NEIS (family-owned, 75+ years) is the strongest identified target.
+
+**OWNER REACHABILITY:** HIGH — family-owned firms with long operating histories are exactly the profile that responds to personal outreach. NEIS has a named owner family (Wemple). 10+ owners identifiable within 2 weeks via industry directories and ARCO membership list.
+
+---
+
+### CANDIDATE 2: Surplus Lines Compliance & Tax Filing Services
+
+```
+Niche: Surplus Lines Compliance & Tax Filing Services
+Thesis: Every surplus lines (E&S) insurance policy requires state-specific tax filings, stamps, and regulatory reports. As the E&S market has grown from 3.6% to 12.3% of total P&C premium ($125B+ market), the compliance filing burden has exploded. States are migrating to new platforms (SLIP+), creating regulatory complexity that benefits outsourced service providers. This is the exact same "embedded compliance" thesis as IPLC but applied to a much larger underlying market.
+Source Signal: Kansas SLIP+ go-live April 2026; Montana SLIP+ January 2026; Insurity/InsCipher partnership; overnight deep-dive identified 20-40 firms; chatroom rated this a 2-source signal.
+
+QUICK SCREEN:
+- Margins: Strong — 30-45% EBITDA (compliance + software platform model)
+- Recurring Revenue: High — every surplus lines policy requires state filings, annually or more frequently
+- Industry Growth: Strong — E&S market grew 9.7% in 2025, compliance demand grows proportionally; overall 10-15% CAGR for the compliance filing segment
+
+TARGET TAM:
+- Total firms in market: 20-40 (pure-play surplus lines compliance filers)
+- Independently owned (potential targets): 10-20
+- Already PE-backed/acquired: 5-8 (InsCipher acquired by Vertafore; ILSA acquired by ReSource Pro; 3H Compliance Group merged into Saratoga Compliance)
+- PE consolidation risk: Medium-High — consolidation is active but small pure-plays remain
+- Named examples:
+  1. KnK Compliance Services (Dickson, TN) — founded 2016 by Kimberly Snavely (16 years experience), independently owned, surplus lines tax + insurance licensing
+  2. 3H Compliance Group — surplus lines policy filings, cloud-based compliance platform (note: merged into Saratoga Compliance Oct 2025, may no longer be independent)
+  3. ACCEL Compliance (CT) — surplus lines tax filing system + compliance services, also does IPLC
+  4. Veracity Insurance — surplus lines filing services
+  5. ReSource Pro Compliance (fka ILSA) — surplus lines + licensing (PE-backed, not a target but validates the model)
+
+MARKET TAM:
+- Market size: $500M-$1B (surplus lines compliance/filing services, derived from $125B+ E&S premium market)
+- Growth rate: 10-15% CAGR (driven by E&S market growth + state platform migrations)
+- Key demand drivers: E&S market growth (12.3% of P&C and rising), state platform migrations (SLIP+), increasing regulatory complexity, multi-state filing burden
+
+Checked against active niches — not a duplicate of: IPLC (different regulatory domain: surplus lines tax vs. producer licensing, though some firms do both — e.g., ACCEL, KnK), Trade Credit Insurance (different service entirely), Art Insurance Brokerage (different service)
+```
+
+**FLAG: THIN POOL WARNING.** After removing PE-acquired firms, the independently-owned pure-play pool may be as low as 10-15 targets. However, several firms (KnK, ACCEL) straddle both surplus lines and IPLC, so this niche could be pursued AS AN EXTENSION of IPLC rather than as a standalone track. The overlap firms are the most interesting — they've already built the compliance platform for one domain and can expand to the other.
+
+**OWNER REACHABILITY:** HIGH — KnK founder Kimberly Snavely is named, has a public profile, and founded her firm after 16 years of doing the work in-house. Classic "built the company I was buying services from" founder story. ACCEL Compliance overlaps with IPLC target list.
+
+---
+
+### CANDIDATE 3: Workplace Health & Safety Compliance Training (eLearning)
+
+```
+Niche: Workplace Health & Safety Compliance Training (eLearning)
+Thesis: Employers are legally required to provide OSHA safety training, harassment prevention training, and industry-specific compliance training. The eLearning delivery model is asset-light, recurring (annual refresh mandates), and high-margin. PSG/Traliant rolled up harassment prevention (acquiring Kantola and Clear Law Institute), but workplace SAFETY compliance training remains fragmented with many independent providers. Kay's mentor Sarah Rowell ran exactly this playbook (acquired Kantola, operated 5 years, exited to PE). This is the single most relevant precedent in Kay's network.
+Source Signal: Vault scoring (2.59/3, higher than IPLC and Art Insurance); Sarah Rowell/Kantola connection (Kay's WSN mentor); WorkWise Compliance acquired Bizhaven (Dec 2025); HSI acquired SafetySkills; $7.6B+ e-learning compliance market at 13% CAGR.
+
+QUICK SCREEN:
+- Margins: Strong — 75-85% gross, 20-35% EBITDA (from vault scoring)
+- Recurring Revenue: High — annual training mandates, subscription/per-seat licensing
+- Industry Growth: Strong — 7-13% CAGR depending on segment definition
+
+TARGET TAM:
+- Total firms in market: 50-100+ (workplace safety/compliance eLearning providers)
+- Independently owned (potential targets): 30-50
+- Already PE-backed/acquired: 10-15 (Kantola by PSG/Traliant, SafetySkills by HSI, Bizhaven by WorkWise, ClickSafety by Fortive/Intelex)
+- PE consolidation risk: Medium — active roll-ups in harassment prevention, less so in safety-specific training
+- Named examples:
+  1. Atlantic Training (est. 2005) — $25-50M revenue, independently owned, safety/compliance/soft skills, serves Tesla/BP/Pepsi
+  2. OSHA Outreach Courses (est. 2015) — online OSHA training, 2M+ workers trained
+  3. WorkWise Compliance (Tampa, FL) — 35+ years, 1.5M+ organizations served, actively acquiring (bought Bizhaven Dec 2025)
+  4. KPA — online safety + compliance training, independently owned
+  5. OSHAcademy — online OSHA training, free-to-paid model
+
+MARKET TAM:
+- Market size: $7.6B (e-learning corporate compliance training, 2025)
+- Growth rate: 7-13% CAGR (projected to $8.6B in 2026)
+- Key demand drivers: OSHA enforcement, state harassment prevention mandates, remote workforce training needs, DEI/inclusion requirements, litigation risk mitigation
+
+Checked against active niches — not a duplicate of: "Compliance e-learning hospitality" (IDEATION — that's hospitality-specific, this is cross-industry workplace safety), "Compliance E-Learning (General)" (KILLED — but the kill was on GENERAL compliance e-learning; workplace SAFETY compliance is a specific sub-segment with different buyers, competitors, and regulatory drivers, same distinction the learnings file makes: "harassment prevention eLearning is taken... but workplace health & safety compliance eLearning is open whitespace with the same playbook")
+```
+
+**CRITICAL FLAG:** "Compliance E-Learning (General)" is on the KILLED list. This candidate is the SPECIFIC carve-out the learnings file itself recommends: "workplace health & safety compliance eLearning is open whitespace with the same playbook." The learnings file explicitly distinguishes between the general killed niche and this specific sub-segment. However, Kay should confirm she agrees with this distinction before this advances.
+
+**RIGHT-TO-WIN:** Sarah Rowell (Kay's WSN mentor) executed this exact acquisition playbook — acquired Kantola (compliance training), operated it, exited to PSG/Traliant. She can provide: target names, valuation benchmarks, operational playbook, buyer introduction. This is the strongest mentor-to-niche alignment in Kay's entire network.
+
+**OWNER REACHABILITY:** HIGH — Atlantic Training alone is a $25-50M revenue independently-owned target. The space has many small providers founded by OSHA professionals who built training businesses. 10+ owners identifiable within 1 week via eLearning Industry directory + OSHA Outreach Training Program authorized provider lists.
+
+---
+
+### SIGNALS EVALUATED BUT NOT ADVANCED
+
+**Insurance Continuing Education Providers:** Evaluated but NOT advanced. The major players are all PE-backed or corporate-owned (Kaplan/Graham Holdings, ExamFX/Ascend Learning, WebCE/IRMI). The independently-owned segment is too small and too fragmented (individual instructors, not companies). Does not meet the $2-10M EBITDA target pool requirement.
+
+**Insurance Back-Office BPO (U.S.-based):** Evaluated but NOT advanced as a new candidate because "BPO / Business Support Services" is on the KILLED list. The historical agent correctly flagged this: insurance-specific BPO IS different from general BPO, but advancing it requires Kay's explicit override. If Kay wants to unkill this specifically for insurance BPO, there are 40-80 U.S.-based firms (Covenir, Insuserve, TPA Engine) with the right profile. Flagged for Kay's decision.
+
+---
+
+### CROSS-NICHE STRATEGIC OBSERVATION
+
+All three candidates share the same meta-thesis: **"embedded operational infrastructure that regulated industries cannot function without."** This is the "shovel seller" framework from the learnings file, and it's the Allyant archetype (compliance-driven, B2B, recurring, essential, regulatory tailwinds).
+
+The three candidates also form a natural progression:
+- **Premium Audit / Loss Control** = largest target pool, lowest PE saturation, easiest to build a 10-company list
+- **Surplus Lines Compliance** = highest margins, strongest growth tailwind, but thinner pool (can extend IPLC track)
+- **Workplace Safety Compliance Training** = strongest right-to-win (Sarah Rowell), highest margins, but closest to a killed niche
+
+**Recommended next step:** Score all three against the industry scorecard. For Premium Audit, start building a target list immediately — this has the richest pool and the most identifiable owners. For Surplus Lines, merge into the IPLC track as an expansion play. For Workplace Safety Training, get Kay's explicit confirmation that this is distinct from the killed "Compliance E-Learning (General)" before investing more time.
+
+---

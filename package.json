@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "mcp-server-onenote": "github:danosb/onenote-mcp"
+  }
+}

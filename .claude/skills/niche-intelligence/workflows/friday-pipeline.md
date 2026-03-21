@@ -21,33 +21,40 @@
    - TABLED tab (niches that could resurface with new data)
 3. Store the killed/tabled/active niche lists — these feed into Step 2
 
-## Step 1: GATHER (Parallel Sub-Agents)
+## Step 1: GATHER (2 Parallel Tracks)
 
-Spawn ALL five gathering agents in a **single message** for parallel execution.
-
-Each agent posts a structured summary to the chatroom with:
-- Source identifier (newsletter / web / calls / email / research)
-- Key signals found (with relevance to M&A, PE activity, niche opportunities)
-- Specific industries or companies mentioned
-- Any data points useful for scoring (market size, growth rates, margins, etc.)
+Spawn BOTH gathering agents in a **single message** for parallel execution.
 
 ### Sub-Agents to Spawn (parallel)
 
 ```
-Agent("niche-intel-news", prompt from references/sub-agents.md §1a)
-Agent("niche-intel-newsletters", prompt from references/sub-agents.md §1b)
-Agent("niche-intel-calls", prompt from references/sub-agents.md §1c)
-Agent("niche-intel-email", prompt from references/sub-agents.md §1d)
-Agent("niche-intel-research", prompt from references/sub-agents.md §1e)
+Agent("niche-intel-recent", prompt from references/sub-agents.md §1a)
+  → Single agent covering 6 sources from last 14 days:
+    web/social, newsletters, Granola calls, Gmail, vault research, passive signals
+
+Agent("niche-intel-historical", prompt from references/sub-agents.md §1b)
+  → Orchestrator that spawns 4 sub-agents in parallel:
+    hist-calls (Fireflies + older Granola)
+    hist-email (Gmail full history)
+    hist-onenote (OneNote SEARCH FUND notebook)
+    hist-chatgpt (ChatGPT conversations)
+  → Collects, cross-references, and posts consolidated report
 ```
+
+Each track posts a structured summary to the chatroom with:
+- Source identifier and time horizon
+- Key signals found (with relevance to M&A, PE activity, niche opportunities)
+- Specific industries or companies mentioned
+- Any data points useful for scoring (market size, growth rates, margins, etc.)
+- Cross-source signals (same niche from multiple sources = strong signal)
 
 ### Verification Gate 1
 
-After all agents complete, read the chatroom. Verify:
-- [ ] All 5 agents posted (some may post "no relevant data found" — that's OK)
-- [ ] At least 2 agents returned substantive signals
+After both agents complete, read the chatroom. Verify:
+- [ ] RECENT agent posted findings
+- [ ] HISTORICAL agent posted consolidated findings (from all 4 sub-agents)
 
-If fewer than 2 agents returned data, log a warning but continue — Step 2 can still work with limited input by doing its own web research.
+If either agent failed, log a warning but continue — Step 2 can work with partial input.
 
 ## Step 2: IDENTIFY + VALIDATE (Sequential — fused)
 

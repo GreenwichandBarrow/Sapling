@@ -400,6 +400,31 @@ Write each signal to `brain/inbox/YYYY-MM-DD-niche-signal-{slug}.md` using inbox
 
 These signals are NOT surfaced during the daily pipeline review. They queue silently for Friday's niche-intelligence GATHER step.
 
+## Active Niche Sprint Detection (runs daily)
+
+Check the Industry Research Tracker WEEKLY REVIEW tab for any niche with status = "Active":
+
+```bash
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B3:D20" -a kay.s@greenwichandbarrow.com -j
+```
+
+The "Current Status" column (D) has an **orange header** — this is an agent-trigger column. When Kay sets a niche's status to "Active" during the analyst call, it means: run target-discovery on this niche.
+
+**Detection logic:**
+1. Read all WEEKLY REVIEW rows
+2. For each row where Status = "Active", check if target-discovery is already running for this niche:
+   - Check LINKT TARGET LISTS folder for a "{Niche} - Target List" sheet
+   - If sheet exists with rows dated today → already running, skip
+   - If no sheet or no recent rows → trigger target-discovery
+3. Log which niches are in Active sprint to the daily briefing
+
+**When a new "Active" status is detected:**
+- Note it in the daily briefing: "New active sprint detected: {Niche Name}. Target discovery will run."
+- Target-discovery skill runs automatically for this niche (daily, Mon-Fri)
+- Continue running until Kay changes the status away from "Active"
+
+**Convention:** The orange column header on any G&B tracker sheet means "this column triggers agent behavior." Kay knows that changing values in orange-header columns will cause agents to act.
+
 ## Trigger
 
 - **Auto:** Runs on session start via hook (before `/start` daily workflow)

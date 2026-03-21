@@ -50,6 +50,7 @@ gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichan
 | I | Network Access |
 | J | Target Pool |
 | K | Notes |
+| L | QSBS |
 
 ### TABLED
 | Col | Field |

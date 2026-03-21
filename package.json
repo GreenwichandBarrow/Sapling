@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
     "mcp-server-onenote": "github:danosb/onenote-mcp"
   }
 }

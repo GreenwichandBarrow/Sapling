@@ -125,21 +125,28 @@ gog drive move {folder_id} --parent {target_status_folder_id} -a kay.s@greenwich
 
 ## Promotion Logic
 
-## Placement Logic (WEEKLY REVIEW vs IDEATION)
+## Placement Logic
 
-**Default: WEEKLY REVIEW.** Any niche that passes the initial screen (margins, recurring revenue, growth, target pool) and is worth discussing with the analyst goes directly to WEEKLY REVIEW. The analyst call is the decision forum — niches need to be there to get worked.
+**ALL scored niches go to WEEKLY REVIEW with status "New".** There is no separate staging area. WEEKLY REVIEW is the single working list for the analyst call. Kay and her analyst decide what to pursue, table, or kill during the call. The nightly audit (pipeline-manager) moves Tabled/Killed niches to their respective tabs and re-sorts the list.
 
-**IDEATION is the bench.** Only put niches in IDEATION if they are:
-- Speculative (need more data before analyst discussion)
-- Clearly backup options (only relevant if WEEKLY REVIEW items fail)
-- Flagged with unresolved questions (e.g., overlaps with killed niche, needs Kay's explicit ruling)
+**IDEATION tab is archived.** It contains historical data but nothing new gets added there. All pipeline output goes to WEEKLY REVIEW.
 
-**IDEATION → WEEKLY REVIEW promotion** happens when:
-1. New data resolves the question that kept it in IDEATION, OR
-2. Kay explicitly decides to advance it
+**Nightly audit sort order (pipeline-manager):**
+1. Active
+2. Under Review
+3. New
+4. Wind-Down
+(Tabled and Killed get moved to their own tabs overnight — never appear in sorted list)
+
+**Status dropdown values (orange header, column D):**
+- New — just came through pipeline
+- Under Review — analyst evaluating
+- Active — target-discovery sprinting (agent trigger)
+- Wind-Down — finishing in-flight outreach
+- Tabled — moved to TABLED tab overnight
+- Killed — moved to KILLED tab overnight
 
 When adding to WEEKLY REVIEW:
-1. Add row to WEEKLY REVIEW with Start Date = today, Status = "New - Pending Review"
-2. Remove from IDEATION tab (or mark as promoted)
-3. Create Drive folder under parent
-4. Upload one-pager to the new folder
+1. Append row with Status = "New", Start Date = today, Score, Target Pool, Quick notes
+2. Create Drive folder if one-pager exists
+3. Upload one-pager to the folder

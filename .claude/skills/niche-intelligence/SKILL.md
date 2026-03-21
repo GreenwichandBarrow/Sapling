@@ -29,7 +29,7 @@ brain/traces/agents/{YYYY-MM-DD}-niche-intelligence.md
 ### Deliverable Verification (Stop Hooks)
 
 After each step that produces a deliverable, verify before proceeding:
-- **Step 1:** Chatroom has posts from all gathering agents
+- **Step 1:** Chatroom has posts from both gathering agents (RECENT + HISTORICAL)
 - **Step 3:** Each niche has a .pptx file created and uploaded to Drive
 - **Step 4:** Output report exists at `brain/outputs/{date}-niche-intelligence-report.md`
 - **Step 5:** Google Sheet updated with new rows
@@ -91,37 +91,36 @@ No intake question needed — this is a fully automated workflow.
 
 ## Sub-Agent Registry
 
-### Step 1: Gathering (all run in parallel)
+### Step 1: Gathering (2 parallel tracks, HISTORICAL spawns sub-agents)
 
 | Agent Name | Type | Description |
 |------------|------|-------------|
-| `niche-intel-news` | general-purpose | Web/social research via last30days skill |
-| `niche-intel-newsletters` | general-purpose | Scan Axios + Axios Pro Rata from Gmail |
-| `niche-intel-calls` | general-purpose | Pull niche-related meeting notes from Granola |
-| `niche-intel-email` | general-purpose | Scan Gmail for deal flow / niche signals |
-| `niche-intel-research` | general-purpose | Read recent brain/outputs/ research files |
-| `niche-intel-passive-signals` | general-purpose | Pull queued niche signals from pipeline-manager |
-| `niche-intel-passive-signals` | general-purpose | Pull queued niche signals from pipeline-manager inbox items |
-| `niche-intel-onenote` | general-purpose | Mine Kay's SEARCH FUND OneNote notebook for industry memos, deal convos, and research |
+| `niche-intel-recent` | general-purpose | Last 2 weeks: web research, newsletters, Granola calls, recent emails, vault outputs, passive signals |
+| `niche-intel-historical` | general-purpose | Orchestrator that spawns 4 parallel sub-agents to mine the full search history |
 
-#### Passive Signal Intake (niche-intel-passive-signals)
+**Architecture:** Two time-horizon tracks run in parallel. RECENT is a single agent covering 6 sources from the last 14 days. HISTORICAL is an orchestrator that spawns 4 sub-agents in parallel (one per source cluster), collects their findings, and posts a consolidated report to the chatroom.
 
-Pipeline-manager flags niche signals daily while processing Granola and Gmail. These accumulate in `brain/inbox/` tagged `topic/niche-signal` throughout the week.
+#### RECENT agent (single agent, 6 sources):
+1. **Web/social** — last30days skill (Reddit, HN, Polymarket) + WebSearch
+2. **Newsletters** — Axios + Axios Pro Rata from Gmail (last 7 days)
+3. **Granola calls** — meeting transcripts from last 2 weeks
+4. **Gmail deal flow** — broker teasers, CIMs, investor emails (last 14 days)
+5. **Vault research** — brain/outputs/ and brain/calls/ from last 2 weeks
+6. **Passive signals** — brain/inbox/ items tagged `topic/niche-signal` since last Tuesday
 
-**This agent:**
-1. Glob for `brain/inbox/*niche-signal*` files created since last Tuesday
-2. Read each signal: what was said, who said it, source, buy box alignment
-3. Look for patterns: did multiple signals point to the same industry?
-4. Cluster related signals into candidate niches
-5. Post findings to chatroom alongside other gathering agents
+#### HISTORICAL orchestrator (spawns 4 parallel sub-agents):
+| Sub-Agent | Source |
+|-----------|--------|
+| `hist-calls` | Fireflies (42 calls in brain/calls/) + Granola (all meetings beyond 14-day window) |
+| `hist-email` | Gmail full history — brokers, operators, investors, intermediaries (older_than:14d) |
+| `hist-onenote` | OneNote SEARCH FUND notebook — all 16 sections via MCP |
+| `hist-chatgpt` | 16 ChatGPT conversations at ~/Downloads/031aafe3.../selected_business_conversations.json |
 
-**Pattern recognition priorities:**
-- Same industry mentioned by 2+ unrelated sources = strong signal
-- Broker mentioning deal flow in an industry = strong signal
-- Single offhand mention = weak signal (include but don't weight heavily)
-- Signal aligns with buy box characteristics (regulatory, recurring, fragmented) = boost
-
-After niche-intelligence processes the signals, mark the inbox files as `status: processed` so they don't get re-scanned next week.
+The HISTORICAL orchestrator:
+1. Spawns all 4 sub-agents in parallel
+2. Waits for all to complete
+3. Cross-references findings (same niche from multiple sources = strong signal)
+4. Posts consolidated report to chatroom
 
 ### Step 2: Identification + Industry Validation (FUSED)
 
@@ -236,7 +235,7 @@ Target validation was moved into the identification step (Step 2) so no niche is
 <success_criteria>
 
 Niche Intelligence run is complete when:
-- [ ] All 7 gathering agents posted to chatroom
+- [ ] Both gathering agents (RECENT + HISTORICAL) posted to chatroom
 - [ ] 1-5 new niches identified (or 0 with documented reasoning)
 - [ ] One-pager .pptx created and uploaded for each new niche
 - [ ] Each niche scored against detailed G&B scorecard

@@ -124,11 +124,20 @@ gog drive move {folder_id} --parent {target_status_folder_id} -a kay.s@greenwich
 
 ## Promotion Logic
 
-A niche should be promoted from IDEATION to WEEKLY REVIEW when:
-1. Its score exceeds the lowest score currently in WEEKLY REVIEW, OR
-2. It scores 2.50+ (/3 normalized) on the quick scorecard AND has strong Right to Win + Network Access
+## Placement Logic (WEEKLY REVIEW vs IDEATION)
 
-When promoted:
+**Default: WEEKLY REVIEW.** Any niche that passes the initial screen (margins, recurring revenue, growth, target pool) and is worth discussing with the analyst goes directly to WEEKLY REVIEW. The analyst call is the decision forum — niches need to be there to get worked.
+
+**IDEATION is the bench.** Only put niches in IDEATION if they are:
+- Speculative (need more data before analyst discussion)
+- Clearly backup options (only relevant if WEEKLY REVIEW items fail)
+- Flagged with unresolved questions (e.g., overlaps with killed niche, needs Kay's explicit ruling)
+
+**IDEATION → WEEKLY REVIEW promotion** happens when:
+1. New data resolves the question that kept it in IDEATION, OR
+2. Kay explicitly decides to advance it
+
+When adding to WEEKLY REVIEW:
 1. Add row to WEEKLY REVIEW with Start Date = today, Status = "New - Pending Review"
 2. Remove from IDEATION tab (or mark as promoted)
 3. Create Drive folder under parent

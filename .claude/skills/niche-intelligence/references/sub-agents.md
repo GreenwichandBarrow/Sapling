@@ -331,15 +331,61 @@ Rules:
 - 1 source, qualitative only = WEAK
 - Same person mentioning it in 2 different contexts (call + email) counts as 1.5 sources, not 2
 
-### OUTPUT 2: NAMED COMPANY REGISTRY
+### OUTPUT 2: NAMED COMPANY REGISTRY (with Attio + Contact Cross-Reference)
 
-Extract EVERY company mentioned across all chatroom posts as a potential acquisition target or comp:
+Extract EVERY company mentioned across all chatroom posts as a potential acquisition target or comp.
+
+**STEP A — Extract companies from chatroom posts:**
 
 | Company Name | Niche | Source | Est. Revenue | Independence | Location | Notes |
 |-------------|-------|--------|-------------|-------------|----------|-------|
 
 Deduplicate: if the same company appears in multiple sources, merge into one row and note all sources.
 Flag: PE-owned, recently acquired, or too small/large for buy box.
+
+**STEP B — Cross-reference against Attio CRM:**
+
+For each company, check if it already exists in Attio:
+```bash
+# Search Attio for the company
+curl -s -H "Authorization: Bearer $(cat .env | grep ATTIO_API_KEY | cut -d= -f2)" \
+  -H "Content-Type: application/json" \
+  -X POST "https://api.attio.com/v2/objects/companies/records/query" \
+  -d '{"filter":{"name":{"$contains":"COMPANY_NAME"}}}' | python3 -m json.tool
+```
+
+Also check the Active Deals pipeline:
+```bash
+curl -s -H "Authorization: Bearer $(cat .env | grep ATTIO_API_KEY | cut -d= -f2)" \
+  -H "Content-Type: application/json" \
+  -X POST "https://api.attio.com/v2/lists/0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b/entries/query" \
+  -d '{}' | python3 -m json.tool
+```
+
+**STEP C — Check vault for prior contact:**
+```bash
+grep -rl "COMPANY_NAME" brain/entities/ brain/calls/ brain/outputs/
+```
+
+**STEP D — Assign outreach routing flag:**
+
+| Flag | Meaning | Action |
+|------|---------|--------|
+| `ACTIVE_DEAL` | Already in Active Deals pipeline | DO NOT add to any outreach. Already being worked. |
+| `IN_CRM` | In Attio but not Active Deals | Check stage. May need re-engagement, not cold outreach. |
+| `WARM_INTRO` | Kay has a contact who can introduce | Route to warm intro workflow, NOT cold outreach. Note the contact. |
+| `VAULT_HISTORY` | Mentioned in prior calls/outputs but not in CRM | Check context — may have been contacted informally. |
+| `NEW_TARGET` | Not in Attio, no vault history, no warm contact | Eligible for cold outreach pipeline via target-discovery. |
+
+Add the flag column to the company registry:
+
+| Company Name | Niche | Source | Independence | Outreach Flag | Warm Contact | Notes |
+|-------------|-------|--------|-------------|---------------|-------------|-------|
+
+**This prevents:**
+- Cold-emailing someone Kay already knows
+- Adding a company to outreach that's already in an active deal
+- Missing a warm intro opportunity by defaulting to cold
 
 ### OUTPUT 3: CONTACT-TO-NICHE MAP
 

@@ -503,3 +503,43 @@ The three candidates also form a natural progression:
 **Recommended next step:** Score all three against the industry scorecard. For Premium Audit, start building a target list immediately — this has the richest pool and the most identifiable owners. For Surplus Lines, merge into the IPLC track as an expansion play. For Workplace Safety Training, get Kay's explicit confirmation that this is distinct from the killed "Compliance E-Learning (General)" before investing more time.
 
 ---
+
+## [niche-intel-onepager] — 2026-03-21T11:15:00-04:00
+**Source:** One-Pager Creation
+**Status:** complete
+
+### One-Pagers Created
+
+**1. Premium Audit & Loss Control Services (Outsourced)**
+- Drive folder: PREMIUM AUDIT & LOSS CONTROL SERVICES (`1WvYdOI2SUMuNyqk-va_Hqh6SJ0IMNdiH`) in IDEATION
+- File: `premium-audit-loss-control-onepager.pptx` ([Drive link](https://docs.google.com/presentation/d/1sxxtnsmlpokaUEZG1EW94dw-sm1Zv0Dh/edit))
+- Status: Pending Scoring
+- Key research findings:
+  - Outsourced premium audit market estimated at $2-4B (U.S.), 5-7% CAGR
+  - EXL/Overland Solutions serves 21 of Top 25 P&C carriers with 450+ auditors
+  - Davies acquired Afirm (250 employees, all 50 states) from Kaufman in April 2023
+  - Sedgwick (Carlyle-backed) operates 700+ independent loss control consultants
+  - NEIS Inc. family-owned since 1945, 28-state coverage — strongest identified independent target
+  - 40-70 independently owned firms estimated in target pool
+  - Exit validated by Davies/Afirm (2023) and EXL/Overland (2014)
+
+**2. Surplus Lines Compliance & Tax Filing Services**
+- Drive folder: SURPLUS LINES COMPLIANCE & TAX FILING (`1mRa1sSsmLC1nP7zYtR_PgU1Sy2ro0KZf`) in IDEATION
+- File: `surplus-lines-compliance-onepager.pptx` ([Drive link](https://docs.google.com/presentation/d/1pWCwEw033m4XX1Up2gkYf1otgbpa6zm4/edit))
+- Status: Pending Scoring
+- Key research findings:
+  - E&S market reached $129.8B direct premiums written (2024), $90.3B through stamping offices in 2025 (up 7.8% YoY)
+  - 3.7M surplus lines items filed at mid-year 2025, up 12.4%
+  - 42% of carriers report compliance challenges from varying state regulations
+  - Kansas joined SLIP+ April 2026, Montana January 2026 — platform migrations creating complexity
+  - KnK Compliance Services (Dickson TN, founded 2016) and ACCEL Compliance (CT) are key independent targets
+  - Both KnK and ACCEL straddle surplus lines + IPLC, enabling platform extension strategy
+  - 10-20 independently owned pure-play targets estimated (thin pool warning)
+  - Exit validated by ReSource Pro/ILSA (2021), Saratoga/3H+NLC (2025)
+
+**3. Workplace Health & Safety Compliance Training (eLearning)**
+- SKIPPED — one-pager already exists in Drive
+- Existing folder: WORKPLACE COMPLIANCE TRAINING (`1v0Me-eq9FJS_yoldpD3GLFTX08dxlVHF`) in IDEATION
+- Existing file: `compliance-training-onepager.pptx` (created 2026-03-17)
+
+---

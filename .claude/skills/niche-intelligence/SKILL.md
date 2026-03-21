@@ -135,7 +135,7 @@ The HISTORICAL orchestrator:
 
 1. **Cross-Source Signal Matrix** — Which niches appeared in which sources (RECENT vs HISTORICAL sub-agents). 2+ sources = STRONG, 3+ = VERY STRONG.
 
-2. **Named Company Registry** — Every company mentioned across ALL sources, deduplicated, with: name, industry/niche, source, size (if known), independence status (PE-owned vs independent).
+2. **Named Company Registry** — Every company mentioned across ALL sources, deduplicated, cross-referenced against Attio CRM and vault history. Each company gets an outreach routing flag: `ACTIVE_DEAL` (already being worked), `IN_CRM` (exists but not active), `WARM_INTRO` (Kay has a contact who can introduce), `VAULT_HISTORY` (mentioned in prior calls/outputs), or `NEW_TARGET` (eligible for cold outreach). Prevents cold-emailing someone Kay already knows.
 
 3. **Contact-to-Niche Map** — Every person mentioned who could be a river guide, mapped to which niches they can help with and relationship warmth (met / emailed / referred / cold).
 

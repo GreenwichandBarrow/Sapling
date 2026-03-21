@@ -100,6 +100,7 @@ No intake question needed — this is a fully automated workflow.
 | `niche-intel-email` | general-purpose | Scan Gmail for deal flow / niche signals |
 | `niche-intel-research` | general-purpose | Read recent brain/outputs/ research files |
 | `niche-intel-passive-signals` | general-purpose | Pull queued niche signals from pipeline-manager |
+| `niche-intel-brain-miner` | general-purpose | Mine Kay's own data (calls, emails, transcripts, OneNote) for overlooked niches and leads |
 
 #### Passive Signal Intake (niche-intel-passive-signals)
 

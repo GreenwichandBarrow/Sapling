@@ -447,6 +447,15 @@ READ THESE FILES:
 - brain/context/learnings.md (critical — this shapes your judgment)
 - The chatroom at brain/traces/agents/{date}-niche-intelligence.md
 
+CRITICAL RULE — SIGNALS ARE TRIGGERS, NOT VALIDATION:
+A contact mentioning a niche is a LEAD, not evidence of fit. Jeremy Black saying "I'm bullish on trade credit insurance" means it's worth investigating — it does NOT mean it passes the buy box. Every niche must be independently validated against the criteria below using real data (market research, industry reports, association directories). The score comes from the DATA, not the referral.
+
+For each niche, explicitly separate:
+- **Signal source:** Who suggested it and why (this is context, not evidence)
+- **Independent validation:** What the data shows on margins, target pool, recurring revenue, etc. (this is what the score is based on)
+
+If a niche was suggested by a trusted contact but fails the criteria on data, say so clearly: "{Contact} recommended this, but the data shows {reason it fails}. Flagging for Kay's decision."
+
 IDENTIFICATION CRITERIA (from learnings.md and buy box):
 A niche MUST be:
 - B2B services or vertical SaaS
@@ -464,6 +473,12 @@ BONUS CRITERIA (from Kay's right-to-win):
 - Can be operated remotely or within 1hr of home
 - Clear PE exit pathway (look for PE firms already buying in the space)
 - AI-enhanceable but not AI-disruptable
+
+FIT FOR KAY (beyond the buy box):
+- Is this something Kay would want to OPERATE for 5-7 years?
+- Does her background (Chanel, luxury, fashion, MBA) give her credibility with owners/customers?
+- Can she have meaningful conversations with owners, or is this a domain where she'd be seen as an outsider?
+- Does this align with her thesis evolution (luxury infrastructure → insurance → compliance)?
 
 DUPLICATE DETECTION AND NICHE INTERPRETATION (CRITICAL):
 Before proposing any niche, you MUST:

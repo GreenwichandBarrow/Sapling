@@ -54,12 +54,30 @@ After both agents complete, read the chatroom. Verify:
 - [ ] RECENT agent posted findings
 - [ ] HISTORICAL agent posted consolidated findings (from all 4 sub-agents)
 
-If either agent failed, log a warning but continue — Step 2 can work with partial input.
+If either agent failed, log a warning but continue — Step 1b can work with partial input.
+
+## Step 1b: SYNTHESIZE (Sequential — Pattern Recognition)
+
+Spawn `niche-intel-synthesizer` agent AFTER both gathering agents complete.
+
+This agent reads all chatroom posts and produces 5 structured outputs:
+1. **Cross-Source Signal Matrix** — which niches appeared in which sources, with strength ratings
+2. **Named Company Registry** — every company mentioned, deduplicated, with independence status
+3. **Contact-to-Niche Map** — every person who could help, mapped to niches and relationship warmth
+4. **Lead Lifecycle Tracker** — proposed → challenged → outcome for every lead (prevents dead ideas from resurfacing)
+5. **Convergence Report** — top 5 signals ranked by source count, named companies, contacts, buy box fit, and actionability
+
+**Why this step exists:** Pattern recognition is what separates good PE professionals from great ones. The same industry appearing in an operator call, a broker email, and a conference attendee list is a signal no single source would reveal.
+
+### Verification Gate 1b
+
+- [ ] Synthesizer posted all 5 outputs to chatroom
+- [ ] Lead Lifecycle Tracker flags any dead/killed leads
 
 ## Step 2: IDENTIFY + VALIDATE (Sequential — fused)
 
 Spawn `niche-intel-identifier` agent with:
-- All gathered intelligence from chatroom
+- The synthesizer's 5 outputs (NOT raw gathering posts — the synthesis is the input)
 - The killed/tabled/active niche lists from pre-flight
 - `brain/context/learnings.md` as evaluation context
 - Buy box criteria and thesis context

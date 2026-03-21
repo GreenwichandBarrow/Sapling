@@ -12,6 +12,7 @@ This skill implements a **sequential pipeline** where each step depends on the p
 
 ```
 Step 1: GATHER (parallel)      → raw intelligence
+Step 1b: SYNTHESIZE (sequential) → cross-source pattern recognition
 Step 2: IDENTIFY (sequential)  → new niche candidates
 Step 3: ONE-PAGER (parallel)   → pptx deliverables
 Step 4: SCORE (sequential)     → scored niches + final report
@@ -121,6 +122,28 @@ The HISTORICAL orchestrator:
 2. Waits for all to complete
 3. Cross-references findings (same niche from multiple sources = strong signal)
 4. Posts consolidated report to chatroom
+
+### Step 1b: Pattern Recognition & Synthesis
+
+| Agent Name | Type | Description |
+|------------|------|-------------|
+| `niche-intel-synthesizer` | general-purpose | Cross-source pattern recognition, company extraction, contact mapping, lead lifecycle tracking |
+
+**This agent runs AFTER both gathering tracks post to the chatroom and BEFORE the identifier agent.** It transforms raw intelligence into structured patterns.
+
+**The synthesizer produces 5 outputs:**
+
+1. **Cross-Source Signal Matrix** — Which niches appeared in which sources (RECENT vs HISTORICAL sub-agents). 2+ sources = STRONG, 3+ = VERY STRONG.
+
+2. **Named Company Registry** — Every company mentioned across ALL sources, deduplicated, with: name, industry/niche, source, size (if known), independence status (PE-owned vs independent).
+
+3. **Contact-to-Niche Map** — Every person mentioned who could be a river guide, mapped to which niches they can help with and relationship warmth (met / emailed / referred / cold).
+
+4. **Lead Lifecycle Tracker** — For every niche or strategy surfaced, track: who proposed it, when, who challenged/rejected it, outcome (live / dead / tabled). Prevents dead ideas from being resurfaced as live recommendations.
+
+5. **Convergence Report** — Top 3-5 strongest signals ranked by: number of independent sources, named companies available, contacts available, alignment with buy box. This is what the Identifier agent reads first.
+
+**Why this exists:** Pattern recognition is what separates good PE professionals from great ones. The same industry appearing in an operator call, a broker email, and a conference attendee list is a signal that no single source would reveal. The synthesizer is the "connect the dots" agent.
 
 ### Step 2: Identification + Industry Validation (FUSED)
 

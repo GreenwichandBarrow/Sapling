@@ -543,3 +543,39 @@ The three candidates also form a natural progression:
 - Existing file: `compliance-training-onepager.pptx` (created 2026-03-17)
 
 ---
+
+## [niche-intel-scoring] — 2026-03-21T12:00:00-04:00
+**Source:** Scoring Agent (Steps 4-5)
+**Status:** complete
+
+### Scoring Results
+
+All three niches scored against G&B industry scorecard (7 categories, weighted, +/+/-/- scale normalized to /3).
+
+| Niche | Score | Margins | Recurring | AI Def | RTW Kay | Network | Target Pool | Recommendation |
+|-------|-------|---------|-----------|--------|---------|---------|-------------|----------------|
+| Premium Audit & Loss Control (Outsourced) | 2.32/3 | Medium | High | Medium | None | Some | 40-70 | IDEATION |
+| Surplus Lines Compliance & Tax Filing | 2.65/3 | Very High | High | High | Moderate | Some | 10-20 | WEEKLY REVIEW (promoted) |
+| Workplace H&S Compliance Training (eLearning) | 2.51/3 | High | High | Medium | None | Some | 30-50 | IDEATION (pending Kay kill-list ruling) |
+
+### Key Scoring Insights
+
+**Surplus Lines (2.65/3)** — Highest score driven by near-perfect marks in Growth (3.0), Economics (3.0), and Mission Criticality (3.0). The E&S market's explosive growth (9.7% in 2025, filings up 12.4%) and mandatory filing requirements create a powerful combination. Weakness: thin target pool (10-20), mitigated by cross-domain overlap with IPLC targets. Promoted to WEEKLY REVIEW at rank #5.
+
+**Workplace H&S Training (2.51/3)** — Strong on growth (3.0) and economics (2.83) but dragged down by Porter's Five Forces (1.83) — the lowest category score across all three niches. Low barriers to entry, free alternatives (OSHAcademy), and adjacent VC-backed platforms (Ethena, Mineral) create real competitive risk. Sarah Rowell connection is the strongest mentor-to-niche alignment in Kay's network but does not offset structural competitive concerns.
+
+**Premium Audit (2.32/3)** — Solid fundamentals but moderate growth (2.25) and carrier customer power keep the score down. The 40-70 firm target pool is the largest of the three and the largest in the insurance infrastructure thesis. Best pursued as secondary track or through owner conversations that surface during IPLC/Surplus Lines outreach.
+
+### Tracker Updates Completed
+
+1. **IDEATION tab:** 2 new rows added (Premium Audit row 20, Surplus Lines row 21). Workplace H&S Training row 18 updated with full IDEATION columns and scoring.
+2. **WEEKLY REVIEW tab:** Surplus Lines Compliance added as rank #5 (score 2.65 > threshold 2.50).
+3. **One-pagers:** 2 created (Premium Audit, Surplus Lines), 1 existing (Workplace H&S Training).
+4. **Output report:** `brain/outputs/2026-03-21-niche-intelligence-report.md`
+
+### Decisions Pending Kay
+
+1. Is "Workplace H&S Compliance Training" distinct from killed "Compliance E-Learning (General)"? If yes, promote to WEEKLY REVIEW next cycle (score 2.51 meets threshold).
+2. Should Surplus Lines be merged into IPLC sprint or pursued as separate track?
+
+---

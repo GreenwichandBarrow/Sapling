@@ -77,13 +77,70 @@ No intake question needed — this is a fully automated workflow.
 
 </intake>
 
+<niche_inbox>
+
+## Niche Inbox: How New Niche Ideas Enter the Pipeline
+
+Niche ideas come from many places — not just the Tuesday night gathering agents. The pipeline must accept ideas from ANY source and route them through the full process (Identify → One-Pager → Score → Add to tracker). **Nothing skips steps. Nothing goes straight to WEEKLY REVIEW without a one-pager and score.**
+
+### Sources that feed niche ideas into the pipeline:
+
+| Source | How it arrives | Entry point |
+|--------|---------------|-------------|
+| Tuesday night gathering agents (RECENT + HISTORICAL) | Automated Step 1 run | Step 1b (Synthesize) → Step 2 (Identify) |
+| Kay + Claude conversations | Kay mentions a niche idea, contact shares a list, brainstorming session | Written to `brain/inbox/` as niche signal → picked up at Step 2 |
+| OneNote research notes | Kay's handwritten notes reference industries (e.g., Mike Horowitz's insurance back-end list) | Written to `brain/inbox/` as niche signal → picked up at Step 2 |
+| Linkt data analysis | Patterns found across old or new Linkt exports (e.g., environmental compliance cluster) | Written to `brain/inbox/` as niche signal → picked up at Step 2 |
+| Pipeline-manager | Niche signals detected in Granola calls or Gmail during daily ingestion | Written to `brain/inbox/` as `topic/niche-signal` → picked up at Step 1 (RECENT passive signals) |
+| Contact referrals | Investor, operator, or advisor suggests a niche (e.g., Jeremy Black → TCI, Mike Horowitz → insurance back-end) | Written to `brain/inbox/` as niche signal → picked up at Step 2 |
+| Conference attendee analysis | Conference-discovery surfaces an industry cluster | Written to `brain/inbox/` as niche signal → picked up at Step 2 |
+
+### Writing a niche idea to the inbox:
+
+When a niche idea surfaces outside of the Tuesday run, write it to:
+`brain/inbox/YYYY-MM-DD-niche-idea-{slug}.md`
+
+```yaml
+---
+date: YYYY-MM-DD
+type: inbox
+status: pending
+confidence: medium
+source: conversation | onenote | linkt-analysis | contact-referral | conference | pipeline-manager
+tags:
+  - inbox
+  - topic/niche-signal
+  - source/{source}
+---
+
+## Niche Idea: {name}
+
+**Source:** {who/what surfaced it}
+**Context:** {why it came up, any data points}
+**Initial fit assessment:** {quick gut check against buy box}
+**Named companies (if any):** {list}
+**Contacts who can help (if any):** {list}
+```
+
+### Processing niche ideas:
+
+**Option A (queue for Tuesday):** Leave in inbox. The RECENT agent's passive signal source picks up `topic/niche-signal` items automatically during the next Tuesday run.
+
+**Option B (run now):** Invoke `/niche-intelligence --from-inbox` to process all pending niche ideas through Steps 2-5 immediately. Useful for testing or when Kay wants results before the next Tuesday cycle.
+
+### The rule:
+**Every niche idea, regardless of source, must go through: Identify → One-Pager → Score → Tracker.** The only question is timing (now vs. Tuesday).
+
+</niche_inbox>
+
 <routing>
 
 | Trigger | Workflow |
 |---------|----------|
-| `/niche-intelligence` | `workflows/friday-pipeline.md` |
+| `/niche-intelligence` | `workflows/friday-pipeline.md` (full pipeline) |
 | `/niche-intelligence --step 1` | Run only Step 1 (gathering) |
 | `/niche-intelligence --step 2` | Run Steps 1-2 (gather + identify) |
+| `/niche-intelligence --from-inbox` | Process pending niche ideas from brain/inbox/ through Steps 2-5 (skip gathering, use inbox items as input) |
 | `/niche-intelligence --dry-run` | Run Steps 1-4, skip Step 5 (no tracker writes) |
 
 </routing>

@@ -423,6 +423,30 @@ The "Current Status" column (D) has an **orange header** — this is an agent-tr
 - Target-discovery skill runs automatically for this niche (daily, Mon-Fri)
 - Continue running until Kay changes the status away from "Active"
 
+**When status = "Tabled" or "Killed" detected:**
+
+Kay sets these during the analyst call. Pipeline-manager moves the niche to the correct tab overnight:
+
+1. **Read the niche's full row** from WEEKLY REVIEW (cols A-J)
+2. **Append to the target tab:**
+   - "Tabled" → append to TABLED tab with: Niche Hypothesis, Start Date, "Tabled", Quick notes, Red flags, Score, Why Tabled (from quick notes or ask Kay), What would need to change (from quick notes or ask Kay), Date tabled (today)
+   - "Killed" → append to KILLED tab with: Niche Hypothesis, Start Date, "Killed", Quick notes, Red flags, Score, Primary reason (from quick notes or ask Kay), Pattern learned, Date killed (today)
+3. **Delete the row from WEEKLY REVIEW** (use gog sheets delete-row or clear the row)
+4. **Move the Drive folder:**
+   - Tabled: move niche folder from WEEKLY REVIEW or IDEATION Drive folder to TABLED folder (`1_k_c1F11ZNrv4MilATFrURLHdkNx0kRx`)
+   - Killed: move niche folder to KILLED folder (`19xsNk5KTVHF2jb6m_li8IAGjcw34nlMX`)
+5. **Stop target-discovery** for that niche (no more daily runs)
+6. **Log in daily briefing:** "Niche {name} moved to {Tabled/Killed} per analyst call decision."
+
+**Status dropdown values (orange column D):**
+- New — just added from pipeline, pending analyst review
+- Under Review — analyst evaluating
+- Active — triggers target-discovery sprint
+- Wind-Down — finish in-flight outreach, no new targets
+- Paused — temporarily halted
+- Tabled — moves to TABLED tab overnight
+- Killed — moves to KILLED tab overnight
+
 **Convention:** The orange column header on any G&B tracker sheet means "this column triggers agent behavior." Kay knows that changing values in orange-header columns will cause agents to act.
 
 ## Trigger

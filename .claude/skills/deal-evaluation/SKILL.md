@@ -522,24 +522,25 @@ Present to Kay:
 ```
 
 **Stop Hook:**
-- [ ] Deck exists in shared deal folder
-- [ ] All company snapshot fields populated
-- [ ] Financial table on slide 2 has data
-- [ ] "What We Like" has at least 3 items
-- [ ] "What We Need to Validate" has at least 2 items
+- [ ] Thumbs Up/Down exists in shared deal folder
+- [ ] All company snapshot fields populated from 3a/3b data
+- [ ] Financial table on slide 2 has data from 3a
+- [ ] "What We Like" has placeholder: "Kay to complete after model review"
+- [ ] "What We Need to Validate" has placeholder: "Kay to complete after model review"
 - [ ] Link to financial model is present
+- [ ] Recommendation field says "PENDING — Kay to decide after model + scorecard review"
 
 ### Phase 4 Deliverable
-Notify via Slack (#strategy-active-deals):
+Notify via Slack (#active-deals):
 ```bash
 curl -s -X POST "$SLACK_WEBHOOK_ACTIVE_DEALS" \
   -H "Content-Type: application/json" \
   -d '{
-    "text": "Deal Evaluation Ready: {Company Name}\nScorecard: {score}/100 — {recommendation}\nDeck: {deck_url}\nModel: {model_url}\nScorecard: {scorecard_url}"
+    "text": "Deal Evaluation Ready: {Company Name}\nPreliminary scorecard (hard gates): {hard_gate_score}/70\nModel: {model_url}\nScorecard: {scorecard_url}\nThumbs Up/Down: {thumbs_url}\nResearch: {research_url}\n\nKay: complete 30% discretionary + What We Like/Validate + recommendation"
   }'
 ```
 
-Kay and analyst review the deck, scorecard, and model together.
+Kay reviews model (toggle assumptions) → fills in 30% discretionary on scorecard → completes "What We Like / Validate" on Thumbs Up/Down → go/no-go.
 
 ---
 
@@ -702,9 +703,9 @@ The skill detects the current state and picks up at the right phase:
 - Intermediary inbound with `source: intermediary-inbound` → Intermediary Inbound Pathway (buy-box screen first)
 - No deal folder exists → Phase 1
 - Deal folder exists, no financials → Phase 2 (monitor)
-- Financials in folder, no model → Phase 3
-- Model exists, Kay confirmed → Phase 4
-- Scorecard + deck done, Kay decided → Phase 5A or 5B
+- Financials in folder, no model → Phase 3 (3a+3b parallel, then 3c, then auto-trigger Phase 4)
+- Model + scorecard + Thumbs Up/Down pre-populated → Kay reviews all at once, completes discretionary sections, decides go/no-go
+- Kay decided → Phase 5A or 5B
 
 ## Sub-Agent Summary
 
@@ -712,11 +713,13 @@ The skill detects the current state and picks up at the right phase:
 |-------|-------|------|-----------|
 | 1: Folder Setup | 1 | Create folders, populate NDA | Yes (with Agent 2) |
 | 2: Email Draft | 1 | Draft thank-you email | Yes (with Agent 1) |
-| 3: Model Prep | 3 | Extract financials, populate model | Solo |
-| 4: Scorecard | 4 | Run company scorecard | Yes (with Agent 5) |
-| 5: Deck Builder | 4 | Create Thumbs Up/Down deck | Yes (with Agent 4) |
-| 6: LOI Generator | 5A | Populate LOI template | Solo |
-| 7: Decline & Close | 5B | Draft decline, update systems, trace | Solo |
+| 3a: Data Extractor | 3 | Extract financials from Excel/PDF/email | Yes (with 3b) |
+| 3b: Company Researcher | 3 | Deep research on company + owner | Yes (with 3a) |
+| 3c: Model Builder | 3 | Populate Financial Model with 3a output | After 3a |
+| 4a: Pre-Scorecard | 4 | Score 70% hard gates from 3a+3b | Yes (with 4b), auto after 3 |
+| 4b: Pre-Thumbs Up/Down | 4 | Pre-populate Thumbs Up/Down from 3a+3b | Yes (with 4a), auto after 3 |
+| 5: LOI Generator | 5A | Populate LOI template | Solo |
+| 6: Decline & Close | 5B | Draft decline, update systems, trace | Solo |
 </execution_flow>
 
 <success_criteria>
@@ -730,12 +733,17 @@ The skill detects the current state and picks up at the right phase:
 - [ ] Call notes filed
 
 ### Phase 3 Complete
-- [ ] Financial model in DEALS IN REVIEW with historical data
-- [ ] Summary presented to Kay
+- [ ] 3a: Clean financial data extracted, data quality assessed
+- [ ] 3b: Company research brief saved to NOTES/
+- [ ] 3c: Financial model in DEALS IN REVIEW with historical data from 3a
 - [ ] No projection/assumption cells touched
+- [ ] Phase 4 auto-triggered
 
 ### Phase 4 Complete
-- [ ] Company scorecard completed in shared folder
+- [ ] 4a: Scorecard 70% hard gates pre-scored, 30% discretionary blank for Kay
+- [ ] 4b: Thumbs Up/Down pre-populated, "What We Like/Validate" + recommendation blank for Kay
+- [ ] All deliverable links sent via Slack
+- [ ] Kay reviews model + scorecard + Thumbs Up/Down in one session
 - [ ] Thumbs Up/Down deck created in shared folder
 - [ ] Slack notification sent to #strategy-active-deals with all links
 - [ ] All deliverable links are valid and accessible

@@ -72,9 +72,17 @@ Return: how many emails scanned, how many actionable, how many inbox items creat
    - Note any failures
    If no log exists: "Intermediary scan did not run overnight."
 
-8. **Outreach prep** — Invoke /outreach-manager to:
+8. **Intermediary deal feedback** — Check for any Slack-pinged intermediary deals from the previous day that Kay did NOT act on (no NDA signed, no folder created, no email sent). Present as a numbered quick review:
+   ```
+   Intermediary deals from yesterday (no action taken):
+   1. {Company} ({Platform}) — ${revenue}, ${SDE/EBITDA}
+      → Pass / Relationship / Revisit later?
+   ```
+   One word from Kay. Log the decision with reason for Skill Calibration tracking. If no pending deals, skip this step.
+
+9. **Outreach prep** — Invoke /outreach-manager to:
    - Pick up approved targets from target sheets (Col O = "Approve")
    - Run warm intro check against Attio
-   - Draft today's cold emails in Superhuman
+   - Draft today's cold emails in Superhuman (schedule for Monday AM if today is weekend)
    - Generate JJ's call list
    - Slack notification when ready

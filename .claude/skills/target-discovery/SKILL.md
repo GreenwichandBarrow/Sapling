@@ -73,16 +73,21 @@ Linkt won't find everything. Supplement with free research:
 - **Existing intelligence** — Attio pipeline, vault entities, niche one-pagers from niche-intelligence
 - **Intermediary referrals** — deals forwarded by brokers, CPAs, network contacts
 
-### Step 2b: Contact Enrichment (FREE — do not use Linkt credits)
-For companies found through free research (Step 2), scrape contact info manually:
+### Step 2b: Enrichment for Free-Source Companies (FREE — do not use Linkt credits)
+For companies found through free research (Step 2), research and populate ALL missing fields — not just contacts. Every row must have the same data quality as Linkt-sourced rows.
 
-1. **Company website** — About Us, Team, Leadership pages for owner/CEO name and title
-2. **LinkedIn** — company page → People tab → filter by CEO/President/Owner/Founder
-3. **State business registrations** — registered agent/officer filings (Secretary of State websites)
-4. **Press releases / news** — owner names often appear in local business news
-5. **Industry association member directories** — sometimes list key contacts
+**Website is mandatory.** Every target MUST have a website (col C) before being added to the sheet. Web search "{Company Name} {City}" to find it. No blank website cells.
 
-Populate cols I-N (Owner Name, Title, Email, Phone, LinkedIn Owner, LinkedIn Company). If company phone is all that's findable, note "(main)" in the cell. JJ validates phone numbers on his calls.
+Enrich in this order:
+1. **Company website** (col C) — find via web search first, then use the site for everything else
+2. **Company details** — Headquarters, Employees, Revenue, Ownership (cols D-H) from website, LinkedIn, press
+3. **Owner/CEO contact** — About Us, Team, Leadership pages for name and title
+4. **LinkedIn** — company page → People tab → filter by CEO/President/Owner/Founder
+5. **State business registrations** — registered agent/officer filings (Secretary of State websites)
+6. **Press releases / news** — owner names often appear in local business news
+7. **Industry association member directories** — sometimes list key contacts
+
+Populate cols C-N (Website, Headquarters, Industry, Employees, Revenue, Ownership, Owner Name, Title, Email, Phone, LinkedIn Owner, LinkedIn Company). If company phone is all that's findable, note "(main)" in the cell. JJ validates phone numbers on his calls.
 
 **Do NOT burn Linkt credits on enrichment.** If we already know the company exists, the contact info can be found manually or by JJ.
 
@@ -166,6 +171,7 @@ gog sheets get {SHEET_ID} "Active!B:L" -a kay.s@greenwichandbarrow.com -p
 ```
 
 **Flag every row missing ANY of these:**
+- Col C (Website) — empty (mandatory for all targets, no exceptions)
 - Col I (Owner Name) — empty or "Unknown"
 - Col K (Email) — empty
 - Col L (Phone) — empty

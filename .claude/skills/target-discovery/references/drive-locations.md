@@ -25,7 +25,7 @@ B: Company | C: Website | D: Headquarters | E: Industry | F: Employees | G: Reve
 ### Kay's Review (Kay populates)
 O: **Kay Decision** — dropdown: Approve, Pass, Maybe
 P: **Pass Reason** — dropdown: Wrong Size, PE-Backed, Wrong Industry, Wrong Geography, Already Contacted, Not a Fit, Other
-Q: **Kay Notes** — freeform
+Q: **Agent Notes** — freeform (Claude populates with research context, routing flags, niche-specific data)
 
 ### JJ's Calls (JJ populates)
 R: **Call Status** — dropdown: Not Called, Connected, Voicemail, Callback Requested, Not Interested, Wrong Number
@@ -51,7 +51,8 @@ W: **ICP Miss Reason** — auto-populated from Kay's Pass Reason or JJ's negativ
 | Owner | Columns | Description |
 |-------|---------|-------------|
 | **Claude** | A-N | Source + all Linkt enrichment data |
-| **Kay** | O-Q | Decision, reject reason, notes |
+| **Kay** | O-P | Decision, reject reason |
+| **Claude** | Q | Agent Notes (research context, routing flags) |
 | **JJ** | R-U | Call status, date, notes, sentiment |
 | **Claude** | V-W | ICP calibration (auto-calculated) |
 

@@ -45,7 +45,7 @@ Linkt's AI agents will:
 
 **Run smaller, focused searches** (10-20 entities per run) rather than large broad ones. Each entity = 1 credit. 150 credits/month.
 
-**Output:** Linkt returns enriched entities in sheets. Append to the niche sprint's master sheet ("{Niche} - Target List") in LINKT TARGET LISTS folder. One master sheet per niche sprint — do NOT create new sheets per run. New results append to the "Active" tab.
+**Output:** Linkt returns enriched entities. Only write to the sheet after verifying minimum data bar (see Write Gate below). Append to the niche sprint's master sheet ("{Niche} - Target List") in LINKT TARGET LISTS folder. One master sheet per niche sprint — do NOT create new sheets per run. New results append to the "Active" tab.
 
 If the master sheet doesn't exist yet (first run of a new sprint), **COPY the template sheet** — do NOT create a blank sheet. The template has all headers, dropdowns, column formatting, and orange header on Col O already configured.
 
@@ -90,6 +90,14 @@ Enrich in this order:
 Populate cols C-N (Website, Headquarters, Industry, Employees, Revenue, Ownership, Owner Name, Title, Email, Phone, LinkedIn Owner, LinkedIn Company). If company phone is all that's findable, note "(main)" in the cell. JJ validates phone numbers on his calls.
 
 **Do NOT burn Linkt credits on enrichment.** If we already know the company exists, the contact info can be found manually or by JJ.
+
+### Write Gate (HARD RULE)
+**No row hits the Active tab until it meets ALL of these:**
+- Col C (Website) — populated and verified (loads a real page, not a redirect to a parent company)
+- Col I (Owner Name) — real person identified, not "Unknown"
+- Col K (Email) OR Col L (Phone) — at least one contact method
+
+This applies to ALL sources — Linkt, free research, associations, referrals. No exceptions. If enrichment can't meet this bar after a reasonable research effort, log the company name in the daily briefing as "could not enrich" with what's missing. Do NOT add it to the sheet with blank fields for Kay to catch.
 
 ### Step 3: Kay Reviews Target List
 Present the combined list (Linkt + supplemental) to Kay. She reviews:

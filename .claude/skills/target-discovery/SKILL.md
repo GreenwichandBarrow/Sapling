@@ -58,7 +58,7 @@ Linkt's AI agents will:
 - Identify the owner/CEO with validated email and phone
 - Verify criteria matches against the ICP
 
-**Run smaller, focused searches** (10-20 entities per run) rather than large broad ones. Each entity = 1 credit. 150 credits/month.
+**Run smaller, focused searches** (10-20 entities per run) rather than large broad ones. Each entity = 1 credit. 150 credits/month. **Always set the entity limit parameter in the Linkt API call** — never run an open-ended search without a cap. Default to 15 entities per search. If the ICP is narrow (e.g., one niche in one state), use 10. If broad (national search), use 20 max.
 
 **Output:** Linkt returns enriched entities. Only write to the sheet after verifying minimum data bar (see Write Gate below). Append to the niche sprint's master sheet ("{Niche} - Target List") in LINKT TARGET LISTS folder. One master sheet per niche sprint — do NOT create new sheets per run. New results append to the "Active" tab.
 

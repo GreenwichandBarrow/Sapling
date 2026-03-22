@@ -66,3 +66,15 @@ Return: how many emails scanned, how many actionable, how many inbox items creat
 5. **Update** `brain/context/processing-state.md` with new timestamp
 
 6. **If triage items exist**, invoke /triage
+
+7. **Overnight results** — Check for today's intermediary-manager log at `logs/scheduled/intermediary-manager-{YYYY-MM-DD}*.log`. If found:
+   - Summarize: platforms scanned, matches found, direct emails flagged
+   - Note any failures
+   If no log exists: "Intermediary scan did not run overnight."
+
+8. **Outreach prep** — Invoke /outreach-manager to:
+   - Pick up approved targets from target sheets (Col O = "Approve")
+   - Run warm intro check against Attio
+   - Draft today's cold emails in Superhuman
+   - Generate JJ's call list
+   - Slack notification when ready

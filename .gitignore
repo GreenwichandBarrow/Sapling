@@ -1,5 +1,9 @@
 # Environment secrets
 .env
+scripts/.env.launchd
+
+# Scheduled skill logs
+logs/
 
 # Claude Code runtime
 .claude/settings.local.json

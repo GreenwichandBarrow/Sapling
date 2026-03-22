@@ -169,6 +169,26 @@ System learns from decisions. `/task` completes → `decision-traces` skill capt
 
 Litmus: only trace choices between alternatives that change future behavior with non-obvious reasoning.
 
+## Scheduled Skills (launchd)
+
+Three skills run on a schedule via macOS launchd, independent of active sessions:
+
+| Skill | Schedule | Purpose |
+|-------|----------|---------|
+| `intermediary-manager` | Mon-Fri 6am ET | Platform scanning + email screening |
+| `niche-intelligence` | Tuesday 11pm ET | Newsletter scrape, niche identification, one-pagers, scorecards |
+| `weekly-tracker` | Friday 8pm ET | Weekly activity data compilation |
+
+**Infrastructure:**
+- Wrapper: `scripts/run-skill.sh` (shared by all jobs)
+- Env: `scripts/.env.launchd` (secrets for headless runs, not committed)
+- Logs: `logs/scheduled/{skill}-{date}.log` (14-day rotation)
+- Plists: `~/Library/LaunchAgents/com.greenwich-barrow.{skill}.plist`
+
+**Status check:** `launchctl list | grep greenwich`
+**Manual trigger:** `launchctl start com.greenwich-barrow.{skill}`
+**Mac must be in sleep mode (not shut down) for scheduled runs to fire.**
+
 ## Behaviors
 
 - Start simple. Sharp knife first. Complexity only after simpler approach fails.

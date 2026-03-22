@@ -31,13 +31,14 @@ Three subagents:
 <dedup_layer>
 ## Attio Dedup Layer
 
-Before either subagent drafts outreach, check Attio Active Deals:
+Before either subagent drafts outreach, run these checks:
 
 1. **Does this person already exist in the pipeline?** If yes, check their current stage and last outreach date. Don't double-contact someone already in an active cadence.
 2. **Is this person receiving outreach from the other subagent?** If a conference target is also in the cold outreach queue (or vice versa), the conference outreach subagent takes priority — the conference framing ("I'll be at your booth Thursday" or "Great meeting you yesterday") is always stronger than cold email.
 3. **Has this person been contacted in the last 30 days?** If yes, skip unless there's a new context (conference, referral, signal change).
+4. **Warm intro check (CRITICAL).** Before cold outreach, search Attio People records for the target owner AND anyone at their company. If Kay has an existing connection (LinkedIn import, prior email, meeting), flag as "Warm Intro" on the target sheet. Warm intro targets skip cold email + JJ call entirely — instead, draft a warm intro request email for Kay referencing the mutual connection. See Warm Intro Outreach section below.
 
-The dedup check runs once when targets are received, before any drafting begins.
+The dedup + warm intro check runs once when targets are received, before any drafting begins.
 
 **How outreach-manager knows Kay sent the email:**
 Check Superhuman via the `superhuman` MCP server for sent status on drafted emails. If the draft was sent (no longer in drafts folder), the email was sent. Update Attio accordingly.
@@ -62,6 +63,15 @@ After Day 10 with no response, move to nurture cadence (pipeline-manager handles
 **Business days only.** All day counts are business days (Mon-Fri). No emails drafted for weekends, no JJ calls scheduled on weekends. If Day 1 is Thursday, Day 3 is the following Monday, not Saturday.
 
 **Why this sequence:** The email establishes who Kay is and gives the owner time to check LinkedIn (where Kay's Chanel/luxury background closes the credibility gap). JJ's call 2 days later references the email, making it a warm confirmation rather than a cold call. The follow-up email is a lightweight bump. LinkedIn DM is the escalation reserved for high-fit targets.
+
+### Target Sheet Columns (added by outreach-manager)
+
+When outreach-manager receives approved targets, it writes two new columns on the niche sprint target sheet:
+
+- **Col X: Warm Intro** — "Warm - {connection name}" if a mutual connection is found in Attio, blank if cold. Agent checks Attio People records for the target owner and anyone at their company. A match means Kay knows someone there — route to warm intro path, NOT cold outreach.
+- **Col Y: Outreach Stage** — Tracks where each target is in the sequence: `Email Drafted` → `Email Sent` → `JJ Called` → `Follow-Up Drafted` → `Follow-Up Sent` → `LinkedIn DM` → `Nurture`. Updated as each step completes.
+
+**JJ trigger rule:** JJ's call sheet only includes targets where Col X (Warm Intro) is BLANK. Warm intro targets never go to JJ — Kay handles them personally.
 
 ### Day 1: Kay's Email
 
@@ -359,6 +369,9 @@ Draft all emails in Superhuman via the `superhuman` MCP server using `superhuman
 <essential_principles>
 ## Principles
 
+### Kay Decision Column (Temporary — Testing Phase)
+During the testing phase, outreach-manager only drafts outreach for targets where Col O (Kay: Decision) = "Approve". This is a temporary human-in-the-loop gate. Once target-discovery's accept rate stabilizes at 85%+ for 2 consecutive weeks (tracked on Skill Calibration tab of Weekly Tracker), this gate graduates to Spot Check and then Auto-Advance. Kay decides when to graduate — the system proposes it with data.
+
 ### Volume & Cadence
 - 4-6 cold targets per day (funds that acquired averaged 4, not 9)
 - Quality over quantity — deep research on each target, personalized outreach
@@ -398,14 +411,20 @@ For every new cold target added this session, verify JJ's call columns in the Li
 
 Missing fields mean JJ can't execute. Fix before proceeding.
 
-### 3. Dedup Validation
+### 3. Warm Intro Validation
+Confirm Attio People records were checked for every target before drafting. For each target:
+- If Col X (Warm Intro) says "Warm - {name}" → verify NO cold email was drafted AND no JJ call was scheduled. Warm intros get a different email template and skip JJ entirely.
+- If Col X is blank → verify cold outreach was drafted normally.
+A cold email sent to a warm intro target wastes the relationship advantage and looks impersonal. This is a hard gate.
+
+### 4. Dedup Validation
 Confirm Attio was checked before any drafting began. No person should have outreach queued from both the cold outreach and conference outreach subagents. If a person appears in both queues, conference outreach takes priority and the cold draft must be removed.
 
-### 4. Cadence Tracking
-Every Day 1 email must have a corresponding Day 3 call entry scheduled in JJ's call sheet. Cross-reference the list of drafted emails against the call sheet. Any email without a matching Day 3 entry is a gap — add it before proceeding.
+### 5. Cadence Tracking
+Every cold Day 1 email (NOT warm intros) must have a corresponding Day 3 call entry scheduled in JJ's call sheet. Cross-reference the list of drafted cold emails against the call sheet. Any cold email without a matching Day 3 entry is a gap — add it before proceeding. Warm intro emails should NOT have a Day 3 call entry.
 
-### 5. Slack Notification (Only After Validation Passes)
-Only send once checks 1-4 all pass:
+### 6. Slack Notification (Only After Validation Passes)
+Only send once checks 1-5 all pass:
 ```bash
 curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \

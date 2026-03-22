@@ -443,11 +443,36 @@ Kay sets these during the analyst call. Pipeline-manager moves the niche to the 
 - Under Review — analyst evaluating
 - Active — triggers target-discovery sprint
 - Wind-Down — finish in-flight outreach, no new targets
-- Paused — temporarily halted
 - Tabled — moves to TABLED tab overnight
 - Killed — moves to KILLED tab overnight
 
 **Convention:** The orange column header on any G&B tracker sheet means "this column triggers agent behavior." Kay knows that changing values in orange-header columns will cause agents to act.
+
+### Nightly Audit Stop Hooks
+
+After processing Tabled/Killed moves and re-sorting WEEKLY REVIEW, validate:
+
+**1. Tabled/Killed Move Validation:**
+- Re-read the TABLED/KILLED tab to confirm the niche row was appended
+- Re-read WEEKLY REVIEW to confirm the row was removed
+- If the niche had a Drive folder, verify it was moved to the correct status folder (TABLED or KILLED)
+- If target-discovery was running for this niche, verify no Linkt task is still active
+
+**2. Sort Validation:**
+- Re-read WEEKLY REVIEW after sorting
+- Confirm sort order: Active rows first, then Under Review, then New, then Wind-Down
+- Confirm no data was lost during sort (row count before = row count after)
+
+**3. Target List Template Validation (on new Active sprints):**
+- When a niche is newly set to "Active," check if a target list sheet exists in LINKT TARGET LISTS
+- If no sheet exists, create one from the template with all 23 columns A-W
+- Verify orange header on Col O (Kay Decision)
+
+**4. Kay Decision Column Validation (on all active target lists):**
+- For each niche with status "Active," read the target list sheet
+- Check for any rows where Col O = "Pass" that haven't been moved to the Passed tab
+- Move them and preserve all data
+- Check for any rows where Col O = "Approve" that aren't yet in Attio — flag for outreach-manager pickup
 
 ## Trigger
 

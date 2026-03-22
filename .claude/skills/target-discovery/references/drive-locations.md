@@ -58,7 +58,12 @@ W: **ICP Miss Reason** — auto-populated from Kay's Pass Reason or JJ's negativ
 | **JJ** | R-U | Call status, date, notes, sentiment |
 | **Claude** | V-W | ICP calibration (auto-calculated) |
 
-**Rule:** Never write to another owner's columns. Claude does not fill Kay's or JJ's columns. Kay does not fill JJ's columns. JJ does not fill Kay's columns.
+**Rule:** Never write to another owner's columns.
+- Claude writes: A-N (Linkt data) + Q (Agent Notes) + V-W (ICP calibration)
+- Kay writes: O-P (Decision, Pass Reason) — ONLY Kay marks Approve/Pass
+- JJ writes: R-U (Call Status, Date, Notes, Sentiment)
+
+**Agent filtering:** When the agent identifies companies that are clearly disqualified (PE-backed, acquired, public, too large), it puts them directly on the Passed tab with the reason in Agent Notes (Col Q). It does NOT fill Kay: Decision (Col O). The Passed tab should show whether Kay passed or the agent filtered — blank Col O = agent filtered, filled Col O = Kay's decision.
 
 ## Dropdown Data Validation
 

@@ -47,7 +47,14 @@ Linkt's AI agents will:
 
 **Output:** Linkt returns enriched entities in sheets. Append to the niche sprint's master sheet ("{Niche} - Target List") in LINKT TARGET LISTS folder. One master sheet per niche sprint — do NOT create new sheets per run. New results append to the "Active" tab.
 
-If the master sheet doesn't exist yet (first run of a new sprint), create it with two tabs (Active, Passed), all columns A-V, and dropdown data validation. See references/drive-locations.md for full column layout.
+If the master sheet doesn't exist yet (first run of a new sprint), **COPY the template sheet** — do NOT create a blank sheet. The template has all headers, dropdowns, column formatting, and orange header on Col O already configured.
+
+```bash
+# Copy the template sheet (preserves all formatting, dropdowns, orange headers)
+gog drive copy 1wIK4Jv56QIZejcmpq-gGrCWAPe07eJWUbKsWTRwh778 "{Niche} - Target List" -a kay.s@greenwichandbarrow.com --parent 1WfbzezRkD7Kr0FOA76y99x5wV8lwRkVc -j
+```
+
+This ensures Kay never has to manually copy dropdowns. The template is the single source of truth for sheet structure.
 
 When Kay marks a row "Pass" in Col O, move it to the "Passed" tab with all data preserved.
 

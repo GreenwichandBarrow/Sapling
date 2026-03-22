@@ -114,8 +114,15 @@ Claude acts as the **manager** overseeing 3 specialized sub-agents that run in p
 
 ### Sub-Agent 1: Pipeline Agent
 **Scope:** Intermediary, Active Deals, and Investor Lists
-**Scans:** Email (NDAs, financials, LOIs, broker correspondence), calendar (deal meetings), vault (call notes)
+**Scans:** Email (NDAs, financials, LOIs, broker correspondence), calendar (deal meetings), vault (call notes), Drive ACTIVE DEALS folder (new subfolders)
 **Returns:** Stage change recommendations with signal evidence
+
+**ACTIVE DEALS folder detection (catch-all for broker platform NDA edge cases):**
+Scan the ACTIVE DEALS Drive folder for any subfolder that does not have a matching Attio Active Deals entry. This catches the case where Kay signs an NDA on a broker platform (no email sent), creates a folder, and saves the NDA manually. When detected:
+1. Create Attio Active Deals entry at "NDA Signed" stage with `source: intermediary`
+2. Create entity in vault if needed
+3. File any documents in the folder into the standard subfolder structure
+4. Present in morning briefing: "New deal folder detected: {Company}. Created Attio entry at NDA Signed."
 
 ### Sub-Agent 2: Relationships Agent
 **Scope:** People records with custom attributes
@@ -135,6 +142,7 @@ Claude acts as the **manager** overseeing 3 specialized sub-agents that run in p
 5. **Motion task validation** — for every approved action item (outreach tasks, follow-up tasks, Granola action items), verify a corresponding Motion task was created via the Motion API (`GET /tasks`). Compare approved count vs created count. Mismatch = tasks Kay thinks exist but don't.
 6. **Niche signal validation** — if any niche signals were detected during data ingestion, confirm each was written to `brain/inbox/` with the `topic/niche-signal` tag. Glob `brain/inbox/*niche-signal*` and verify count matches signals detected. Missing signals = lost intelligence for Friday's niche run.
 7. **Slack notification validation** — confirm the Slack webhook POST returned HTTP 200 OK. If non-200, retry once. If still failing, warn Kay directly in the session summary that Slack notification failed.
+8. **ACTIVE DEALS folder sync** — compare ACTIVE DEALS Drive subfolders against Attio Active Deals entries. Every folder must have a matching Attio entry. Any orphaned folder = missed deal entry. Create Attio entry and flag in morning briefing.
 
 ### Manager Red Flags
 The manager raises these to Kay before executing:

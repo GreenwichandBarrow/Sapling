@@ -51,7 +51,6 @@ Scan searchable broker platforms for new listings matching the buy box.
 - Rejigg (rejigg.com) — automated deal match emails + searchable
 - Quiet Light (quietlight.com) — email + searchable
 - Flippa (flippa.com) — email alerts + searchable
-- Empire Flippers (empireflippers.com) — email alerts + searchable
 - DealForce (dealforce.com) — email alerts + searchable
 
 **Platform scan only (no email, agent must scrape):**
@@ -240,7 +239,7 @@ Before sending niche signals to niche-intelligence:
 ## Success Criteria
 
 ### Phase 1 (Testing — first 2 weeks)
-- [ ] Platform scanning runs daily for all 16 platforms
+- [ ] Platform scanning runs daily for all 17 platforms
 - [ ] Email classification accuracy >90% (verify with Kay)
 - [ ] Zero DIRECT emails accidentally archived
 - [ ] Slack pings include working links

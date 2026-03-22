@@ -152,46 +152,25 @@ Reserved for targets that are a strong fit but haven't responded to email or pho
 
 Not every target gets this. Only use for owners where the company is a clear buy-box match and worth the extra touch.
 
-### Warm Intro Outreach (from pipeline-manager intro detection)
+### Warm Intro Handling
 
-When pipeline-manager detects an inbound introduction via email, the target enters the outreach flow differently than cold targets.
+Two scenarios trigger a warm intro flag:
 
-**Warm intro email structure:**
-```
-Subject: {Introducer's first name} suggested I reach out
+**A. Shared Attio connection found** (during outreach-manager warm intro check):
+1. Write "Warm - {connection name}" in Col X on the target sheet
+2. Slack ping to #operations: "Warm intro available: {target owner} at {company}. You're connected to {connection name}. Cold outreach paused for this target."
+3. Cold outreach is PAUSED for this target — no email drafted, no JJ call scheduled
+4. Kay decides approach case by case (ask for intro, mention connection directly, etc.)
+5. Claude drafts per Kay's direction — no template, each is unique
 
-Hi {first name},
+**B. Inbound introduction via email** (pipeline-manager detects intro):
+1. Pipeline-manager surfaces the intro in morning briefing
+2. Kay decides approach
+3. Claude drafts per Kay's direction
+4. Thank-you to introducer is always drafted (short, same day)
+5. No JJ call — warm intros are Kay-only
 
-{Introducer} mentioned we should connect. {1 sentence about why — what the introducer said or the context of the intro}.
-{1 sentence about G&B and why Kay is interested in their space}.
-
-Would love to find 15 minutes to chat.
-
-Kay Schneider
-Greenwich & Barrow
-```
-
-**Thank-you to introducer:**
-```
-Subject: Thank you for the intro
-
-Hi {introducer first name},
-
-Really appreciate you connecting me with {person}. I reached out to them today.
-
-Kay
-```
-
-**Warm intro cadence (no JJ call):**
-| Day | Channel | Action |
-|-----|---------|--------|
-| Day 1 | Email (Superhuman) | Warm intro email + thank-you to introducer |
-| Day 5-6 | Email (Superhuman) | Follow-up if no response |
-| Day 8-10 | LinkedIn DM (Kay) | High-value only |
-
-No Day 3 JJ confirmation call — the introduction already warmed the connection. JJ's time is better spent on cold targets.
-
-Draft both emails (intro response + thank-you) in Superhuman via the `superhuman` MCP server using `superhuman_draft` with `--account kay.s@greenwichandbarrow.com`.
+Warm intros are the exception, not the rule. Don't over-automate — just flag and pause.
 </cold_outreach>
 
 <conference_outreach>

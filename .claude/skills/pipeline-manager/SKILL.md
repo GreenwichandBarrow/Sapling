@@ -604,8 +604,17 @@ Use Attio's auto-enriched email/calendar interaction data for "last contact" tim
 |--------|--------------|-------------------|
 | First owner conversation | Identified / Contacted | First Conversation |
 | Follow-up deep dive | First Conversation | Second Conversation |
-| NDA document in email | Any pre-NDA | NDA Executed |
+| NDA document in email | Any pre-NDA | NDA Executed + Slack ping |
 | Financials/CIM received | NDA Executed | Financials Received |
+
+**NDA Executed Slack Notification (all sources — cold outreach, intermediary, conference):**
+When a deal moves to NDA Executed (from any source), immediately ping #active-deals:
+```bash
+curl -s -X POST "$SLACK_WEBHOOK_ACTIVE_DEALS" \
+  -H "Content-Type: application/json" \
+  -d '{"text":"New Active Deal: {Company Name}\nSource: {Cold Outreach / Intermediary / Conference}\nOwner: {Owner Name}\nNDA signed: {date}\nDeal folder: {folder_link}\n\nAnalyst: deal folder created, financials pending."}'
+```
+This ensures the analyst is looped in the moment a deal becomes real, regardless of how it entered the pipeline.
 | Started modeling/analysis | Financials Received | Active Diligence |
 | LOI drafted/sent | Active Diligence | LOI / Offer Submitted |
 | LOI signed by both parties | LOI / Offer Submitted | LOI Signed |

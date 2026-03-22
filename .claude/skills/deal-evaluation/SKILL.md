@@ -282,127 +282,185 @@ Present to Kay:
 
 ---
 
-## Phase 2: Document Filing (Ongoing)
+## Phase 2: Automated Document Filing (Ongoing)
 
-**Trigger:** New attachments detected from deal contacts in Gmail
+**Trigger:** Pipeline-manager's daily Gmail scan detects new attachments from deal contacts. Fully automated — no manual invocation needed.
 
-This runs as a lightweight check — either invoked manually or detected by pipeline-manager during daily scan.
+**How it works:**
+Pipeline-manager Sub-Agent 1 (Pipeline Agent) scans emails from contacts linked to Active Deals entries in Attio. When new attachments are detected:
 
-**Steps:**
-1. Scan email thread with owner for new attachments (exclude image signatures like image001.png)
-2. Classify each attachment:
-   - NDA / legal docs → shared deal folder root
-   - CIM / company profiles → CIM/
-   - Financials (P&L, balance sheet, tax returns, xlsx) → FINANCIALS/
-   - Other documents → NOTES/
-3. Download and upload to appropriate subfolder
+1. Download each attachment (exclude image signatures: image001.png, logo.png, etc.)
+2. Auto-classify by filename and content:
+   - `*NDA*`, `*confidential*`, `*agreement*` → shared deal folder root
+   - `*CIM*`, `*memorandum*`, `*profile*`, `*teaser*` → CIM/
+   - `*P&L*`, `*balance*`, `*tax*`, `*financial*`, `*.xlsx` → FINANCIALS/
+   - Everything else → NOTES/
+3. Upload to the correct subfolder in the deal's ACTIVE DEALS folder
 4. Update vault entity with received documents list
+5. **Auto-trigger Phase 3** when new files land in FINANCIALS/ — no waiting for Kay to notice
 
 **Stop Hook:**
-- [ ] All non-image attachments from owner are filed
+- [ ] All non-image attachments from deal contacts are filed
 - [ ] No documents left in email without a Drive copy
+- [ ] If financials detected, Phase 3 auto-triggered
 
 ---
 
-## Phase 3: Financial Evaluation
+## Phase 3: Financial Evaluation (Parallel)
 
-**Trigger:** Financials received from owner (detected in FINANCIALS/ folder or email)
+**Trigger:** Financials received from owner (auto-detected by Phase 2 filing, or manually invoked)
 
-### Sub-Agent 3: Financial Model Prep
-**Task:** Extract historical data and populate the G&B Financial Model.
-**Tools:** gog drive, gog sheets (or openpyxl for Excel)
+**Architecture:** Three sub-agents run in parallel to compress the evaluation timeline. 3a and 3b run simultaneously. 3c waits for 3a to complete, then runs.
 
-**Steps:**
-1. Read incoming financials (Excel, PDF, or email body)
-2. Extract:
-   - Revenue for 3+ years
-   - EBITDA for 3+ years
-   - LTM EBITDA
-   - LTM period end date
-3. Copy Financial Model template → DEALS IN REVIEW / {COMPANY}
-4. Rename: "G&B Financial Model - {Company Name}.xlsx"
-5. Populate historical data ONLY:
-   - C37-E37: Revenue (3 years)
-   - C40-E40: EBITDA (3 years)
-   - N17: LTM EBITDA
-   - N18: LTM Period
-6. **Do NOT touch:** Transaction assumptions, projections, growth rates, deal structure — these are Kay's to play with
+### Sub-Agent 3a: Data Extractor
+**Task:** Extract clean financial data from whatever format the owner/broker sent.
+**Tools:** gog drive (download files), Claude PDF reading, openpyxl for Excel
+
+**Handles mixed formats:**
+- **Excel/CSV:** Read directly, identify revenue/EBITDA/margin rows, extract 3+ years
+- **PDF (CPA-prepared):** Use Claude's PDF reading to extract financial tables, normalize to standard format
+- **PDF (scanned/image):** Flag as `data_quality: needs_manual_review` — do NOT guess on unclear numbers
+- **CIM:** Search for financial summary section (usually pages 15-25), extract key metrics
+- **Email body:** Parse inline financials if owner typed numbers in the email
 
 **Returns:**
 ```json
 {
-  "model_file_id": "",
-  "revenue_history": [0, 0, 0],
-  "ebitda_history": [0, 0, 0],
-  "ltm_ebitda": 0,
-  "margins": [0, 0, 0],
-  "data_quality": "clean|partial|needs_manual_review"
+  "company": "Company Name",
+  "source_files": ["P&L 2023.xlsx", "Tax Return 2024.pdf"],
+  "data_quality": "clean|partial|needs_manual_review",
+  "revenue": {"2022": 0, "2023": 0, "2024": 0, "ltm": 0},
+  "ebitda": {"2022": 0, "2023": 0, "2024": 0, "ltm": 0},
+  "margins": {"2022": 0, "2023": 0, "2024": 0},
+  "ltm_period_end": "2024-12-31",
+  "employees": 0,
+  "customer_concentration": {"top_customer_pct": 0, "top_5_pct": 0},
+  "flags": ["missing 2022 data", "EBITDA calculated not stated"],
+  "addbacks": {"owner_compensation": 0, "one_time_items": 0}
 }
 ```
 
 **Stop Hook:**
+- [ ] At least 2 years of revenue data extracted
+- [ ] At least 2 years of EBITDA data extracted
+- [ ] LTM figures populated (or flagged if not available)
+- [ ] Data quality assessment is honest (don't claim "clean" if numbers were inferred)
+- [ ] Source files listed so Kay can verify
+
+### Sub-Agent 3b: Company Researcher (runs parallel with 3a)
+**Task:** Deep research on the company and owner. Feeds scorecard and Thumbs Up/Down later.
+**Tools:** Web search, LinkedIn, Glassdoor, vault reads, Attio API
+
+**Research areas:**
+- Company website (services, team, clients, history)
+- LinkedIn company page (employee count, growth trajectory, recent hires)
+- Owner LinkedIn (age estimate for succession signal, background, tenure, education)
+- Glassdoor/Indeed (employee reviews, culture signals, rating trends)
+- News/press (growth, awards, lawsuits, regulatory actions)
+- Competitor landscape (who else does this, how fragmented, market position)
+- Industry data (market size, growth rate, regulatory drivers)
+
+**Output:** Research brief (markdown, max 1500 words) saved to `ANALYST / ACTIVE DEALS / {COMPANY} / NOTES / "Company Research - {Company Name} {M.DD.YY}.md"`
+
+Structured with headers matching scorecard criteria so Sub-Agent 4a can directly reference it:
+- Business Overview
+- Owner & Succession Profile
+- Market Position & Competitors
+- Industry Dynamics & Growth
+- Employee & Culture Signals
+- Risk Flags
+
+**Stop Hook:**
+- [ ] Research brief saved to NOTES subfolder
+- [ ] All 6 sections have content (even if "No data found" for some)
+- [ ] Owner age/tenure estimated with confidence level
+- [ ] At least 3 competitors identified
+- [ ] No fabricated information — "not found" is better than guessing
+
+### Sub-Agent 3c: Model Builder (runs after 3a completes)
+**Task:** Populate the G&B Financial Model with 3a's extracted data.
+**Tools:** gog drive, openpyxl for Excel
+
+**Steps:**
+1. Read 3a's clean JSON output
+2. Copy Financial Model template (`1d6hhIf6sCRWMNf3gj30g23rYQAQbig2m`) → DEALS IN REVIEW / {COMPANY}
+3. Rename: "G&B Financial Model - {Company Name}.xlsx"
+4. Populate historical data ONLY:
+   - C37-E37: Revenue (3 years)
+   - C40-E40: EBITDA (3 years)
+   - N17: LTM EBITDA
+   - N18: LTM Period
+5. **Do NOT touch:** Transaction assumptions, projections, growth rates, deal structure — these are Kay's to play with
+
+**Stop Hook:**
 - [ ] Financial model exists in DEALS IN REVIEW / {COMPANY}
-- [ ] Historical revenue populated (at least 2 years)
-- [ ] Historical EBITDA populated (at least 2 years)
-- [ ] LTM EBITDA populated
+- [ ] Historical data from 3a's JSON matches what's in the model cells
 - [ ] Model named correctly: "G&B Financial Model - {Company Name}.xlsx"
 - [ ] No projection or assumption cells were modified
+- [ ] If 3a flagged `needs_manual_review`, model has a note in cell A1: "MANUAL REVIEW NEEDED — see data quality flags"
 
 ### Phase 3 Deliverable
 Present to Kay:
 - Link to Financial Model in DEALS IN REVIEW
+- Link to Research Brief in NOTES
 - Quick summary: "{Company}: Revenue ${X}M, EBITDA ${X}M, {X}% margins, {trend}"
-- Flag any data quality issues (missing years, inconsistencies)
+- Flag any data quality issues from 3a
+- Key research findings from 3b (owner profile, competitive position, risk flags)
 - Kay plays with assumptions and decides if math works
+- **Phase 4 pre-population runs automatically** — Kay does NOT need to "confirm" before scorecard and Thumbs Up/Down start building
 
 ---
 
-## Phase 4: Scorecard & Thumbs Up/Down
+## Phase 4: Scorecard & Thumbs Up/Down (Pre-Populated, Parallel)
 
-**Trigger:** Kay confirms the math works in the financial model
+**Trigger:** Phase 3 sub-agents complete (auto-triggers — NO waiting for Kay to "confirm the math"). Kay reviews the model, scorecard, and Thumbs Up/Down all at once.
 
-### Sub-Agent 4: Company Scorecard
-**Task:** Run the company scorecard against real financials and call notes.
+**Architecture:** 4a and 4b run in parallel after 3a/3b/3c complete. They pre-populate everything they can from data. Kay fills in the 30% discretionary and final recommendation.
+
+### Sub-Agent 4a: Pre-Scorecard
+**Task:** Score the 70% hard gates using 3a (financials) and 3b (research). Leave 30% discretionary blank for Kay.
 **Tools:** gog drive, vault reads, Attio API
 
 **Steps:**
 1. Read the 10 scorecard criteria from the template
-2. Score each criterion using:
-   - Financial data from the model
-   - Call notes from vault
-   - Entity data from Attio
-   - Any CIM or company profile received
-3. Calculate total score (70% hard gates / 30% discretionary)
-4. Save completed scorecard to shared folder: MODELS/
+2. Auto-score the 70% hard gate criteria using:
+   - Revenue, EBITDA, margins from 3a's JSON output
+   - Employee count, geography, operating history from 3b's research brief
+   - Owner age/succession signals from 3b
+   - Customer concentration from 3a
+3. Leave 30% discretionary criteria blank with note: "Kay to assess: culture fit, growth story, personal conviction"
+4. Calculate partial score (70% portion only)
+5. Save to shared folder: MODELS/
 
 **Returns:**
 ```json
 {
   "scorecard_file_id": "",
-  "total_score": 0,
   "hard_gate_score": 0,
-  "discretionary_score": 0,
+  "discretionary_score": "PENDING - Kay to complete",
   "flags": [],
-  "recommendation": "proceed|caution|pass"
+  "preliminary_recommendation": "proceed|caution|pass (based on hard gates only)"
 }
 ```
 
 **Stop Hook:**
 - [ ] Scorecard exists in shared folder MODELS/
-- [ ] All 10 criteria scored
-- [ ] Total score calculated
+- [ ] 70% hard gate criteria scored with data from 3a/3b
+- [ ] 30% discretionary clearly marked as "Kay to complete"
+- [ ] No discretionary scores invented — blank is correct
+- [ ] Preliminary recommendation based on hard gates only (not final)
 
-### Sub-Agent 5: Thumbs Up/Down Deck
-**Task:** Create the deal evaluation presentation.
+### Sub-Agent 4b: Pre-Thumbs Up/Down (runs parallel with 4a)
+**Task:** Pre-populate the Thumbs Up/Down with data from 3a (financials) and 3b (research). Leave "What We Like", "What We Need to Validate", and recommendation for Kay.
 **Tools:** gog slides create-from-template, gog drive
 
 **Steps:**
-1. Gather all data:
-   - Company info from vault entity / Attio
-   - Financial data from the model
-   - Call notes for qualitative assessment
-   - Scorecard results
-2. Create deck from template using `gog slides create-from-template`:
+1. Gather data from 3a and 3b outputs:
+   - Company info from 3b research brief + vault entity / Attio
+   - Financial data from 3a JSON
+   - Call notes for qualitative context
+   - 4a scorecard preliminary results
+2. Create Thumbs Up/Down from template using `gog slides create-from-template`:
    ```bash
    gog slides create-from-template "{TEMPLATE_ID}" "{Company Name} - Thumbs Up Down" \
      --exact \

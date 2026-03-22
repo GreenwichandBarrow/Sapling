@@ -27,10 +27,25 @@ Goal: 4-6 qualified targets per day.
 <target_discovery>
 ## Target Discovery (Daily, Mon-Fri)
 
+### Industry Name Aliases (CRITICAL)
+Niches often have multiple names. **Every search — Linkt, web, association directories — must use ALL known aliases**, not just the primary name. Missing an alias = missing targets.
+
+The niche one-pager (from niche-intelligence) must include an "Also Known As" section listing all aliases. Pull aliases from:
+- Industry association websites (how they describe the service)
+- Target company websites (how they brand themselves)
+- Carrier/underwriter sites (how they categorize the product)
+
+Example: "Trade Credit Insurance" is also called "Accounts Receivable Insurance", "A/R Insurance", "Credit Insurance", "Receivables Insurance". A broker branding as "accounts receivable insurance specialist" won't show up in a TCI-only search.
+
+**For Linkt:** Run separate searches for each alias if the ICP search field is keyword-based.
+**For web research:** Rotate through all aliases in searches. Don't stop at the primary name.
+
 ### Step 1: Run Linkt Search (DISCOVERY ONLY)
 Linkt is the primary list builder for discovering NEW companies. It finds companies matching the ICP and returns enriched data including owner contact info.
 
 **Linkt discovers AND enriches** — companies it finds come back with full contact data. That's fine, that's what a credit buys you. **But do NOT use Linkt credits to enrich companies found through OTHER sources** (free research, associations, referrals, conferences). Those get contact-scraped manually (Step 2b). Linkt credits = discovering companies we don't know about yet.
+
+**Use ALL niche aliases in Linkt searches.** Run separate search tasks per alias if needed. Each alias may surface different companies.
 
 ```
 Execute the niche ICP Search flow in Linkt:
@@ -69,7 +84,7 @@ Linkt won't find everything. Supplement with free research:
 
 - **Association directories** — member lists, state licensing board registries
 - **Conference exhibitor lists** — from conference-discovery skill outputs
-- **Web search** — industry-specific searches for companies Linkt may have missed
+- **Web search** — search ALL niche aliases (not just the primary name) for companies Linkt may have missed
 - **Existing intelligence** — Attio pipeline, vault entities, niche one-pagers from niche-intelligence
 - **Intermediary referrals** — deals forwarded by brokers, CPAs, network contacts
 

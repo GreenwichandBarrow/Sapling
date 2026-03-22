@@ -99,11 +99,18 @@ Run against available information from the CIM, teaser, or email body:
 
 **Scoring:**
 - All hard-fail criteria met + 2+ soft criteria → **PASS** (proceed)
-- Any hard-fail criterion missed → **FAIL** (decline)
+- Any hard-fail criterion missed BUT broker is in a thesis-relevant space → **RELATIONSHIP** (decline deal, invest in broker)
+- Any hard-fail criterion missed AND broker is NOT thesis-relevant → **FAIL** (decline)
 - Hard-fail criteria met but size below range + strong thesis fit → **FLAG** (continue evaluation with size noted)
 - Hard-fail criteria met but insufficient info on 2+ soft criteria → **INSUFFICIENT** (request more info)
 
-### Buy-Box Screen Deliverable (ALL outcomes — PASS, FLAG, FAIL, INSUFFICIENT)
+**Agent recommends RELATIONSHIP (not FAIL) when:**
+- Broker's firm focuses on industries adjacent to active theses (insurance, compliance, B2B services)
+- Broker is in Attio Intermediary Pipeline at "Identified" or "Contacted" (worth warming)
+- Deal missed on size/margins but industry alignment is right
+- Broker sent a personalized email (not a blast) — they thought of G&B specifically
+
+### Buy-Box Screen Deliverable (ALL outcomes — PASS, FLAG, RELATIONSHIP, FAIL, INSUFFICIENT)
 
 Regardless of the screening outcome, ALWAYS produce:
 
@@ -171,6 +178,28 @@ These three map directly to the IDEATION tab columns (E: Margins, F: Recurring R
    - Tag: `source/intermediary-inbound`, `status/awaiting-info`
    - Set follow-up: if no response in 5 business days, draft a gentle nudge
 3. When info arrives (detected in next Gmail scan): re-run buy-box screen automatically
+
+### Step 2D: Screen Result is RELATIONSHIP (Pass on Deal, Invest in Broker)
+
+The deal doesn't fit, but the broker is in a thesis-relevant space and could send better-fit deals. This is the highest-value intermediary outcome — training brokers to think of G&B when the right deal appears.
+
+1. Draft polite decline with specific reasoning (what didn't fit):
+   - Be specific: "The margins are below our floor" or "Revenue is below our range"
+   - Keep it short per broker email rules
+2. Draft buy-box education email (can be same email or follow-up):
+   - "Here's exactly what we're looking for: B2B services businesses with $10-50M revenue, 15%+ EBITDA margins, 10+ years operating history, founder-owned with succession relevance. Insurance, compliance, and infrastructure services are our primary focus."
+   - "Please keep us top of mind when you see something in this range."
+3. Move broker in Attio Intermediary Pipeline:
+   - If at "Identified" → advance to "Contacted"
+   - If at "Contacted" → advance to "Warmed"
+   - If already "Warmed" or higher → no change, just update `deal_types_sent`
+4. Tag broker's Attio record:
+   - `deal_types_sent: [{industry/type}]` (append)
+   - `thesis_alignment: {notes on how their deal flow could align}`
+5. Log in vault: `brain/traces/YYYY-MM-DD-intermediary-relationship-{company-slug}.md`
+   - Capture: company, intermediary, why deal didn't fit, why broker is worth investing in
+   - Tag: `outcome: relationship-invest`
+6. Do NOT create Active Deals entry for the deal
 
 ### Differences from Direct Owner Deals
 

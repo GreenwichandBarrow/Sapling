@@ -44,23 +44,29 @@ This is the 20% channel. It supplements proprietary outreach (target-discovery +
 ### Channel 1: Platform Scanning (Daily)
 Scan searchable broker platforms for new listings matching the buy box.
 
-**Currently subscribed (searchable):**
-- DealForce (dealforce.com)
+**Platform scan + email listings (both channels):**
+- Everingham & Kerr (everkerr.com) — most active broker, email listings
+- Business Exits (businessexits.com/listings/) — email + searchable
+- Benchmark International (embracebenchmark.com/search-deals) — email + searchable
+- Rejigg (rejigg.com) — automated deal match emails + searchable
+- Quiet Light (quietlight.com) — email + searchable
+- Flippa (flippa.com) — email alerts + searchable
+- Empire Flippers (empireflippers.com) — email alerts + searchable
+- DealForce (dealforce.com) — email alerts + searchable
+
+**Platform scan only (no email, agent must scrape):**
+- BizBuySell (bizbuysell.com) — Kay has account
+- FE International (feinternational.com) — Kay has account
+- IAG M&A Advisors (iagmerger.com) — Kay has account
 - Gottesman (gottesman-company.com)
 - ProNova Partners (pronovapartners.com)
-- IAG M&A Advisors (iagmerger.com)
 - Woodbridge International (woodbridgegrp.com)
 - Paine Pacific (painepacific.com)
 - Graphic Arts Advisors (graphicartsadvisors.com)
 - Website Closers (websiteclosers.com)
-- Rejigg (rejigg.com)
-- Business Exits (businessexits.com/listings/)
-- Benchmark International (embracebenchmark.com/search-deals)
-- BizBuySell (bizbuysell.com)
-- Flippa (flippa.com)
-- Empire Flippers (empireflippers.com)
-- FE International (feinternational.com)
-- Quiet Light (quietlight.com)
+
+**Email only (no searchable platform):**
+- Viking Mergers (vikingmergers.com) — periodic deal blasts
 
 **Scanning process:**
 1. Sub-agent visits each platform's listing page
@@ -160,6 +166,50 @@ Every listing scanned (match or not) generates data. Track patterns across all p
 
 **Pipeline-manager must check for new ACTIVE DEALS subfolders that don't have Attio entries.** This is the catch-all for edge cases.
 </folder_management>
+
+<stop_hooks>
+## Sub-Agent Stop Hooks
+
+### Platform Scan Stop Hook
+After each platform scan completes, verify before reporting results:
+- [ ] Every match includes: platform name, listing URL, company description, industry, revenue/EBITDA (or "not disclosed"), geography
+- [ ] Listing URL is a working link (not a search results page or homepage)
+- [ ] Match is classified as "Thesis match" or "Buy-box match, new niche" — never both, never neither
+- [ ] No duplicate listings (same company appearing from multiple platforms counted once, note all sources)
+- [ ] Buy-box screen applied: $1-5M EBITDA, $3-20M revenue, independently owned. Anything outside these ranges is NOT a match regardless of industry fit.
+- [ ] If zero matches found across all platforms, report "No matches" — don't fabricate or stretch criteria to surface something
+
+**If any check fails:** Fix before sending Slack notification. A bad link or wrong match wastes Kay's time.
+
+### Email Classification Stop Hook
+After classifying deal flow emails, verify:
+- [ ] Every DIRECT email is surfaced — zero false negatives on this category
+- [ ] BLAST classification confirmed by at least 2 signals (BCC header, generic greeting, mass-send pattern)
+- [ ] No email from a sender in Attio at "Warmed" or higher stage was classified as BLAST
+- [ ] NEWSLETTER classification only for actual newsletters (recurring, editorial content, not deal-specific)
+- [ ] Every archived email logged with classification reason
+
+**If uncertain on classification:** Default to DIRECT. Surface it. Let Kay decide.
+
+### New Introduction Stop Hook
+After processing a broker introduction:
+- [ ] Entity created in vault with proper schema
+- [ ] Attio Intermediary Pipeline entry created at "Identified"
+- [ ] Website researched and platform scrapability assessed
+- [ ] If scrapable: URL documented, added to platform scanning list
+- [ ] Draft response created in Superhuman (not sent) — short, warm, offers NDA
+- [ ] Introducer thanked (separate draft if Kay didn't already reply)
+
+**If the broker's website is down or has no listings page:** Note "No searchable platform" and classify as email-only or relationship-only intermediary. Don't invent a URL.
+
+### Niche Signal Stop Hook
+Before sending niche signals to niche-intelligence:
+- [ ] Signal based on 2+ listings across different platforms or 3+ from same platform in 30 days — not a single one-off listing
+- [ ] Industry/niche clearly named and described
+- [ ] Financial data summarized (average revenue, EBITDA, asking price across listings)
+- [ ] Checked against existing niche-intelligence tracker — don't signal a niche that's already active, tabled, or killed
+- [ ] Signal framed as a question, not a recommendation: "Consider for screening?" not "This is a good niche"
+</stop_hooks>
 
 <validation>
 ## Validation

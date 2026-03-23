@@ -562,6 +562,8 @@ from pptx import Presentation
 import copy
 
 # CLONE the template — this preserves all formatting, logo, shapes, layout
+# Master template: G&B Master Templates / G&B Niche One-Pager Template (Drive ID: 1HfhQkl1-0iAZKIb7pIdIGEjw_o90DkaZ)
+# Local copy kept in sync:
 prs = Presentation('brain/library/internal/one-pager-template/customs-bonds-template.pptx')
 slide = prs.slides[0]
 
@@ -573,9 +575,18 @@ for shape in slide.shapes:
         break
 
 # Replace cell text while PRESERVING formatting:
-# For each cell, iterate through existing paragraphs and runs
-# Replace run.text but do NOT change run.font properties
-# This keeps the template's fonts, sizes, colors, and bold/italic settings
+# For each cell, iterate through existing paragraphs and runs.
+# Replace run.text but do NOT change run.font properties.
+# This keeps the template's fonts, sizes, colors, and bold/italic settings.
+#
+# CRITICAL: Do NOT clear paragraphs and add new runs — that strips formatting.
+# Instead, set text on the EXISTING first run: para.runs[0].text = "new text"
+# If the cell has multiple runs, clear extra runs but keep the first one.
+# If you must add content to a cell with no runs, copy font properties from
+# the template's original run BEFORE replacing text:
+#   run.font.size = Pt(16)
+#   run.font.color.rgb = RGBColor(0, 0, 0)
+# Without explicit solidFill, text may render as white/invisible.
 
 # The template has 6 shapes: 2 lines, 1 table (16 rows x 2 cols),
 # 1 logo picture, 2 text boxes. All must be preserved.

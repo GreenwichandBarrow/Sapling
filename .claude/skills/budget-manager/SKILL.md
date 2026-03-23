@@ -17,6 +17,26 @@ The fund has $551,825 invested with a February 2027 deadline. Every dollar and e
 **4 modes:** `monthly`, `runway`, `tech-audit`, `transition`
 
 Invoke: `/budget monthly`, `/budget runway`, `/budget tech-audit`, `/budget transition`
+
+## Trigger Flow (Monthly Mode)
+
+The monthly mode is trigger-based, NOT scheduled. The pipeline-manager detects Anthony's monthly reports during its morning email scan and triggers the flow:
+
+```
+Anthony emails P&L + BS PDFs
+  → Pipeline-manager morning scan detects bookkeeper reports
+  → Pipeline-manager saves PDFs to MONTHLY REPORTING/{MONTH YEAR} folder on Drive
+  → Pipeline-manager creates brain/inbox item: "Monthly financials received"
+  → Morning briefing surfaces under "Other items":
+    "Monthly P&L received from Anthony. Run /budget monthly?"
+  → Kay approves → budget-manager monthly mode runs
+```
+
+**Detection signal:** Email from StartVirtual or Anthony containing PDF attachments with "Profit and Loss" or "Balance Sheet" in the filename or subject.
+
+**Why trigger-based:** Anthony's delivery schedule varies. A fixed schedule (e.g., first Friday) would run with no data if he's late. This ensures we only run when real data exists.
+
+**Future state:** When confident, remove the approval step and auto-run on detection.
 </objective>
 
 <essential_principles>

@@ -12,11 +12,12 @@ Company | Website | Headquarters | Industry | Employees | Revenue | Ownership | 
 
 No separate tabs for companies and people. Always combined on one row.
 
-## JJ's Call List
-Create a separate sheet per niche sprint in the same folder:
-- **Name:** "{Niche} - JJ Call List"
-- **Columns:** Company | Owner Name | Phone | Location | Script | Status | Notes | Date Called
-- **Status dropdown:** Not Called, Connected, Voicemail, Callback, Not Interested, Wrong Number
+## JJ's Call Columns (on Master Target Sheet)
+JJ works directly from the niche sprint master sheet ("{Niche} - Target List") — no separate call list. JJ fills in columns Q-T on the Active tab:
+- **Col Q:** Call Status (Not Called, Connected, Voicemail, Callback, Not Interested, Wrong Number)
+- **Col R:** Call Date
+- **Col S:** Call Notes
+- **Col T:** Owner Sentiment
 
 ## Existing Linkt Export Sheets
 - Specialty Insurance Compliance: 1fsHYA8ljX6rXT-HIb69ZelJZiW3h38C925ci3i8E3cg

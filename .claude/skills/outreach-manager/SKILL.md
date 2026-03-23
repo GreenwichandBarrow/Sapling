@@ -223,7 +223,11 @@ Kay Schneider
 Greenwich & Barrow
 ```
 
-Draft in Superhuman via the `superhuman` MCP server using the `superhuman_draft` tool with `--account kay.s@greenwichandbarrow.com`. Kay reviews and sends from Superhuman.
+Draft in Superhuman via the CLI (NOT the MCP tool — it uses Gmail API which creates invisible drafts). Use the same Bash command as cold outreach:
+```bash
+cd ~/.local/share/superhuman-cli && CDP_PORT=9400 bun run src/cli.ts draft create --account kay.s@greenwichandbarrow.com --to "{email}" --subject "{subject}" --body "{body}"
+```
+Kay reviews and sends from Superhuman.
 
 Create Motion task: "Review and send {conference} pre-outreach emails" with due date T-minus 12 days.
 

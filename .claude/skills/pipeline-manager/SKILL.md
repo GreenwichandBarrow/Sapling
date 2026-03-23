@@ -112,9 +112,15 @@ Email drafts for your review in Superhuman:
 1. {Thank you to person} — re: {meeting/context}
 2. {Follow up email to person} — re: {topic}
 3. ...
+
+Other items / today's agenda:
+1. {Stale deal to discuss} — kill, advance, or keep watching?
+2. {Niche signal detected} — worth investigating?
+3. {Upcoming meeting prep needed} — brief ready?
+4. {Open question from yesterday} — {context}
 ```
 
-Each item numbered. Each has a clear action. No informational items without an ask.
+Each item numbered. Each has a clear action or question. No informational items without an ask.
 
 After Kay reviews all three categories, confirm summary:
 ```

@@ -306,16 +306,25 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 <integration>
 ## Investor-Update Integration
 
-The investor-update skill's Data Collector (Agent 1) should read budget data from this skill's output.
+The quarterly investor deck gets exactly **one bullet** on budget. Single line, inline format:
 
-**Preferred method:** Invoke `/budget runway` to get structured JSON.
+```
+• $255K (46% remaining of $550K raised) [context note]
+```
+
+That's it. Three data points in one sentence: dollar amount, percentage of fund, brief context (e.g., "slightly under budget", "on track", "elevated due to DD costs").
+
+Historical examples from actual quarterly updates:
+- Q1: `$478K (86% remaining of $550K raised)`
+- Q2: `$433K (79% remaining of $550K raised) slightly under budget`
+- Q3: `$359K (65% remaining of $550K raised)`
+
+No burn rate, no runway months, no DD reserve, no table. Those are internal numbers for Kay's CFO brief (monthly mode), not for investors.
+
+**Preferred method:** Invoke `/budget runway` — it returns more fields but investor-update MUST only use `budget_remaining` and `budget_pct`.
 
 **Fallback method:** Read directly from Budget Dashboard Tab 2:
 ```bash
-gog sheets get "1vTeGviuQk9zLqacJrdBZS2Bopk8kQZtmEHWheqpCdq0" "'Runway Forecast'!A25:B28" --json
+gog sheets get "1vTeGviuQk9zLqacJrdBZS2Bopk8kQZtmEHWheqpCdq0" "'Runway Forecast'!A25:B26" --json
 ```
-
-This returns: budget_remaining, budget_pct, burn_rate, runway_months.
-
-These values feed into the quarterly investor deck, Slide 2 (Progress).
 </integration>

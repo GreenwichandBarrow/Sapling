@@ -93,7 +93,10 @@ Per Suggested COA from StartVirtual bookkeeper:
 
 ## Runway Target
 
-- **Target monthly burn:** $17,300 (post health installments, based on $190K available / 11 months)
-- **Current steady-state:** $19,000-22,000/month
-- **Gap to close:** $2,000-5,000/month via tech stack, databases, bookkeeper cuts
-- **Interest income offset:** ~$500-600/month
+- **Steady-state monthly burn:** $22,100 (includes $2,750/mo ongoing health insurance)
+- **Net steady-state (after interest):** $21,550
+- **Available for operations:** $207,474 ($247K after last health installment, minus $40K DD reserve)
+- **Runway at steady-state:** 9.6 months from April 1 (through Jan 2027)
+- **Fund deadline:** Feb 2027 (shortfall of ~1 month)
+- **Monthly savings needed:** $3,500-4,000/month via tech stack, databases, bookkeeper, rent
+- **Interest income offset:** ~$550/month

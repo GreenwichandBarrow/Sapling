@@ -1,10 +1,13 @@
 # One-Pager Template Reference
 
 ## Source
-- **Template file:** Customs Bonds pptx format (single slide, table-based)
-- **Drive ID:** `1FfZ_r3IJAnd0AMqAcKCGd3anGyGGFV-6`
+- **Master template:** G&B Niche One-Pager Template (in G&B MASTER TEMPLATES folder)
+- **Drive ID:** `1HfhQkl1-0iAZKIb7pIdIGEjw_o90DkaZ`
 - **Local copy:** `brain/library/internal/one-pager-template/customs-bonds-template.pptx`
 - **Built with:** python-pptx library
+
+## Title Formatting (CRITICAL)
+Row 0 of the table is the niche title. When replacing text, preserve the template run's font properties — especially the explicit `solidFill` with `srgbClr val="000000"` (black). If you create a new run instead of reusing the template's existing run, the text renders invisible (white on white). Always set `run.font.color.rgb = RGBColor(0, 0, 0)` and `run.font.size = Pt(16)` on Row 0.
 
 ## Sections (in order on the slide)
 

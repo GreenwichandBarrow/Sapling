@@ -45,7 +45,7 @@ Anthony emails P&L + BS PDFs
 1. **How much runway do I have?** The single most important number. Fund balance minus DD reserve, divided by steady-state burn rate.
 2. **Am I on track vs the budget my investors approved?** Variance flags for any category >10% over YTD prorated budget.
 3. **Where can I cut costs?** Tech stack overlap, unused subscriptions, bookkeeper replacement.
-4. **Feed investor reporting.** Quarterly investor updates need budget_remaining, budget_pct, burn_rate, runway_months.
+4. **Feed investor reporting.** Quarterly investor updates need one bullet: `$XXXK (XX% remaining of $550K raised) [context]`. Two data points only — dollar amount and percentage. No burn rate or runway.
 
 Kay does not want to be in the weeds of bookkeeping. She wants a monthly "here's where you stand" with actionable flags. Think of this as a CFO brief, not an accounting report.
 

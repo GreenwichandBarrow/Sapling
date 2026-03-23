@@ -100,32 +100,31 @@ Kay does not want to be in the weeds of bookkeeping. She wants a monthly "here's
 4. Read both PDFs and extract every line item into structured JSON
 5. Map QBO account names to budget categories using the COA crosswalk in `brain/context/budget.md`
 
-**Output JSON:**
+**Output JSON — keys MUST match QBO Chart of Accounts from `brain/context/budget.md`:**
 ```json
 {
   "period": "2026-02",
   "p_and_l": {
-    "regular_wages": 12692.32,
-    "payroll_taxes": 1172.17,
-    "health_insurance": 8250.00,
-    "business_insurance": 54.78,
-    "outsourcing_jj": 394.00,
-    "contract_labor_analyst": 490.00,
-    "outsourcing_bookkeeper": 0,
-    "rent": 1000.00,
-    "office_supplies": -9.04,
-    "postage": 1.04,
-    "crm_storage": 318.25,
-    "office_use_software": 584.56,
+    "owners_distribution_regular_wages": 12692.32,
+    "payroll_expenses_payroll_taxes": 1172.17,
+    "payroll_expenses_health_accident_plans": 8250.00,
+    "payroll_expenses_business_insurance": 54.78,
+    "contractors_outsourcing": 394.00,
+    "contractors_contract_labor": 490.00,
+    "office_expenses_rent_lease": 1000.00,
+    "office_expenses_office_supplies": -9.04,
+    "office_expenses_postage": 1.04,
+    "office_expenses_apps_software_crm_storage": 318.25,
+    "office_expenses_apps_software_office_use": 584.56,
     "databases_research": 282.00,
     "advertising_marketing": 247.39,
-    "airfare": 0,
-    "car_rides": 178.27,
-    "meals_entertainment": 1720.16,
-    "vehicle_gas": 47.92,
-    "accounting_fees": 3200.00,
-    "bank_fees": 4.56,
-    "interest_income": 532.00,
+    "travel_airfare": 0,
+    "travel_car_rides": 178.27,
+    "travel_meals_entertainment": 1720.16,
+    "travel_vehicle_gas": 47.92,
+    "professional_fees_accounting": 3200.00,
+    "bank_fees_service_charges": 4.56,
+    "other_income_interest": 532.00,
     "total_expenses": 30628.38,
     "net_income": -30096.38
   },
@@ -242,7 +241,7 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 
 ## Mode 3: Tech Audit (`/budget tech-audit`)
 
-**Trigger:** On demand. Recommended quarterly, or when evaluating new tools.
+**Trigger:** On demand. Run monthly during active search sprint. Quarterly once acquisition closes.
 
 **3 parallel agents, then sequential synthesis:**
 

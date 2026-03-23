@@ -120,11 +120,11 @@ Present the combined list (Linkt + supplemental) to Kay. She reviews:
 - Remove any that don't fit (wrong size, PE-backed, already contacted, etc.)
 - Warm intro paths pre-identified by pipeline-manager (Kay reviews, does not need to flag manually)
 
-### Step 4: Attio Dedup & Pipeline Entry
+### Step 4: Attio Dedup Check (Read-Only)
 Before handing off to outreach-manager:
-- Check every approved target against Attio Active Deals. If the person/company already exists in the pipeline, skip them.
+- Check every approved target against Attio Active Deals. If the person/company already exists in the pipeline, flag them on the target sheet (Col P: "Already in Attio") and skip.
 - If they're already receiving outreach from conference-discovery (pre-conference email in flight), exclude from cold outreach.
-- Add approved new targets to Attio Active Deals at "Identified" stage.
+- **Do NOT create Attio records.** Target-discovery only writes to the Google Sheet. Outreach-manager creates Attio entries at "Identified" stage after Kay approves in Col O. This keeps the CRM clean — only approved targets enter the pipeline.
 
 ### Step 5: Handoff to Outreach Manager
 Pass approved, deduped targets to skill/outreach-manager's cold outreach subagent with:
@@ -207,9 +207,9 @@ gog sheets get {SHEET_ID} "Active!B:L" -a kay.s@greenwichandbarrow.com -p
 
 **A target cannot be handed to outreach-manager without at minimum: Owner Name + (Email OR Phone).** This is a hard gate. No contact info = no outreach.
 
-### Step 2: Attio Validation
-- Confirm all approved targets exist in Attio Active Deals at "Identified" stage
-- Confirm no duplicates were created (query by company name)
+### Step 2: Attio Dedup Validation
+- Confirm Attio was checked (read-only) for existing entries before handoff
+- Confirm no Attio records were CREATED by target-discovery (Attio writes happen in outreach-manager only)
 
 ### Step 3: Handoff Validation
 - Confirm target data was passed to outreach-manager with all required fields
@@ -240,9 +240,8 @@ If validation fails, do NOT send Slack. Report the failure and fix before notify
 - [ ] Google Sheet populated with new targets
 - [ ] Kay notified via Slack with sheet link
 - [ ] Target list reviewed by Kay
-- [ ] Approved targets deduped against Attio
-- [ ] Approved targets added to Attio Active Deals at "Identified"
-- [ ] Approved targets handed to outreach-manager
+- [ ] Approved targets deduped against Attio (read-only check)
+- [ ] Approved targets handed to outreach-manager (which creates Attio entries)
 - [ ] Credits consumed logged
 
 ### Weekly

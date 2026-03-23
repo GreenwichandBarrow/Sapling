@@ -109,7 +109,7 @@ cd ~/.local/share/superhuman-cli && CDP_PORT=9400 bun run src/cli.ts draft creat
 This creates native Superhuman drafts via CDP. Kay reviews and sends from Superhuman. Sign off "Very best, Kay" only — signature is built in.
 
 **Attio State Machine:**
-- Outreach-manager monitors Attio for targets at "Identified" stage — these are Kay-approved targets ready for outreach
+- Outreach-manager CREATES the Attio records for approved targets. Target-discovery only writes to Google Sheets — it never touches Attio. When outreach-manager receives an approved target (Col O = "Approve"), it creates the company + person in Attio and adds the company to Active Deals at "Identified" stage.
 - When outreach-manager drafts the Day 1 email → target stays at "Identified" (draft only, not sent yet)
 - When Kay sends the email from Superhuman → outreach-manager moves Attio to "Contacted"
 - Pipeline-manager then picks up the "Contacted" status and notifies JJ with Day 3 call date

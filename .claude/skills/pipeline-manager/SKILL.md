@@ -93,12 +93,35 @@ Format: "From your meeting with {name} on {date}: '{action item}'"
 - **Approve** → Motion task created with title, description, and due date
 - **Skip** → no action
 
-After all three sections, confirm summary:
+## Output Format
+
+After gathering all data from the 5 sections above, RE-ORGANIZE the output into these three action categories. This is what Kay sees. Items from any section can land in any category based on what the action is.
+
+```
+Pipeline shifts to review/approve:
+1. {Company}: {current stage} → {recommended stage} ({signal evidence})
+2. {Contact}: nurture overdue, last contact {date}
+3. ...
+
+Action steps for Motion - review/approve:
+1. {Action item from Granola/email/signal} — due {date}
+2. {Follow up with person} — {context}
+3. ...
+
+Email drafts for your review in Superhuman:
+1. {Thank you to person} — re: {meeting/context}
+2. {Follow up email to person} — re: {topic}
+3. ...
+```
+
+Each item numbered. Each has a clear action. No informational items without an ask.
+
+After Kay reviews all three categories, confirm summary:
 ```
 Pipeline manager complete:
 - {n} pipeline stages updated
-- {n} outreach tasks created in Motion
-- {n} action item tasks created in Motion
+- {n} tasks created in Motion
+- {n} email drafts in Superhuman
 - {n} stale deals flagged
 ```
 

@@ -109,11 +109,17 @@ cd ~/.local/share/superhuman-cli && CDP_PORT=9400 bun run src/cli.ts draft creat
 This creates native Superhuman drafts via CDP. Kay reviews and sends from Superhuman. Sign off "Very best, Kay" only — signature is built in.
 
 **Attio State Machine:**
-- Outreach-manager CREATES the Attio records for approved targets. Target-discovery only writes to Google Sheets — it never touches Attio. When outreach-manager receives an approved target (Col O = "Approve"), it creates the company + person in Attio and adds the company to Active Deals at "Identified" stage.
-- When outreach-manager drafts the Day 1 email → target stays at "Identified" (draft only, not sent yet)
-- When Kay sends the email from Superhuman → outreach-manager moves Attio to "Contacted"
-- Pipeline-manager then picks up the "Contacted" status and notifies JJ with Day 3 call date
-- After Day 10 with no response → pipeline-manager moves to nurture cadence
+
+Outreach-manager is the only skill that writes to Attio for targets. The sequence:
+
+1. Read the target sheet, find rows where Col O = "Approve" that weren't approved in the prior run (new approvals)
+2. For each newly approved target, search Attio for the person AND company:
+   - **If found** → someone Kay already knows. Flag as warm intro (Col X), skip cold outreach. This is both the dedup check AND the warm intro check in one step.
+   - **If not found** → create the company + person in Attio, add company to Active Deals at "Identified" stage. Proceed with cold outreach.
+3. When outreach-manager drafts the Day 1 email → target stays at "Identified" (draft only, not sent yet)
+4. When Kay sends the email from Superhuman → outreach-manager moves Attio to "Contacted"
+5. Pipeline-manager then picks up the "Contacted" status and notifies JJ with Day 3 call date
+6. After Day 10 with no response → pipeline-manager moves to nurture cadence
 
 ### Day 3: JJ's Confirmation Call
 

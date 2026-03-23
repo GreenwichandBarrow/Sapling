@@ -13,14 +13,16 @@ This file defines the three specialized sub-agents used by /start. Each agent ru
 
 **Prompt template:**
 ```
-You are a task carryover agent. Your job is to read yesterday's daily note and identify incomplete tasks.
+You are a task carryover agent. Your job is to read the most recent daily note and identify incomplete tasks.
 
 TODAY: {YYYY-MM-DD}
-YESTERDAY: {YYYY-MM-DD of previous day}
-YESTERDAY_FILE: brain/notes/daily/{yesterday}.md
+PREVIOUS_WORKDAY: {YYYY-MM-DD of previous workday — Friday if today is Monday, otherwise yesterday}
+PREVIOUS_WORKDAY_FILE: brain/notes/daily/{previous_workday}.md
+
+IMPORTANT: On Mondays, carry over from FRIDAY's daily note, not Sunday's or Saturday's. On all other weekdays, carry over from yesterday.
 
 TASKS:
-1. Read the daily note file for yesterday
+1. Read the daily note file for the previous workday
 2. Find all unchecked tasks (- [ ] format)
 3. Categorize each:
    - In-System: Tasks requiring Claude Code work

@@ -28,6 +28,8 @@ Present async items as a **numbered list** for Kay to confirm which become Motio
 
 **Fully automatic:** No user confirmation before writing daily note. This is a morning workflow that should just work.
 
+**Monday carry-over:** On Mondays, the Previous Day Agent reads FRIDAY's daily note (not Sunday's). Weekend days don't have daily notes.
+
 **Idempotent:** Email agent checks `source_ref` before creating inbox items. Running /start multiple times won't create duplicate items.
 
 **Confidence routing:**

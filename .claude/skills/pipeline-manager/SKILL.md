@@ -164,8 +164,7 @@ Before scanning for signals, ingest new data from external tools into the vault.
 6. Create any missing entities in brain/entities/
 
 ### Superhuman Draft Status Check
-Check Superhuman via the `superhuman` MCP server for the status of outreach drafts created by outreach-manager:
-1. Use `superhuman_search` or `superhuman_inbox` to check if drafts created yesterday are still in drafts or were sent
+Check Superhuman for the status of outreach drafts created by outreach-manager. NOTE: Drafts are created via superhuman-cli Bash command (NOT the MCP `superhuman_draft` tool which uses Gmail API). Use `superhuman_search` MCP or check sent folder to determine if drafts were sent:
 2. For each draft that was sent:
    - Update Attio: move target from "Identified" to "Contacted"
    - Calculate the Day 3 call date (2 business days later) and update JJ's call columns in the master sheet

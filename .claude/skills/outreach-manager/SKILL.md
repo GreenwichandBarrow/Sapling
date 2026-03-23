@@ -102,7 +102,11 @@ Kay Schneider
 Greenwich & Barrow
 ```
 
-Draft in Superhuman via the `superhuman` MCP server using the `superhuman_draft` tool with `--account kay.s@greenwichandbarrow.com`. This creates native Superhuman drafts that appear in Kay's drafts folder. Do NOT use `gog gmail drafts create` — Gmail API drafts do not sync to Superhuman. Kay reviews and sends from Superhuman.
+Draft in Superhuman via the CLI (NOT the MCP tool — it uses Gmail API which creates invisible drafts). Use Bash:
+```bash
+cd ~/.local/share/superhuman-cli && CDP_PORT=9400 bun run src/cli.ts draft create --account kay.s@greenwichandbarrow.com --to "{email}" --subject "{subject}" --body "{body}"
+```
+This creates native Superhuman drafts via CDP. Kay reviews and sends from Superhuman. Sign off "Very best, Kay" only — signature is built in.
 
 **Attio State Machine:**
 - Outreach-manager monitors Attio for targets at "Identified" stage — these are Kay-approved targets ready for outreach
@@ -342,7 +346,7 @@ Intermediaries go into the **Intermediary Pipeline** in Attio, not Active Deals:
 - **Existing network** — vault entities tagged with `relationship_type: River Guide` or `relationship_type: Intermediary`
 - **Referrals** — one intermediary often knows others ("You should also talk to...")
 
-Draft all emails in Superhuman via the `superhuman` MCP server using `superhuman_draft` with `--account kay.s@greenwichandbarrow.com`.
+Draft all emails in Superhuman via CLI (see Cold Outreach section for exact command). Do NOT use the MCP `superhuman_draft` tool.
 </intermediary_outreach>
 
 <essential_principles>
@@ -379,7 +383,7 @@ During the testing phase, outreach-manager only drafts outreach for targets wher
 Before reporting completion, run these checks in order. If any check fails, do NOT send the Slack notification. Report the failure and fix it before retrying.
 
 ### 1. Superhuman Draft Validation
-Confirm every email draft was created via the `superhuman` MCP server (`superhuman_draft` tool). For each target, verify the tool returned a success response. If any draft creation failed or fell back to Gmail API, flag it — drafts must exist in Superhuman, not Gmail.
+Confirm every email draft was created via the superhuman-cli Bash command (NOT the MCP `superhuman_draft` tool which uses Gmail API). For each target, verify the CLI returned a success response. If any draft creation failed, flag it. Drafts must exist in Superhuman's native draft system, not Gmail.
 
 ### 2. Call Sheet Validation
 For every new cold target added this session, verify JJ's call columns in the Linkt target sheet are populated:

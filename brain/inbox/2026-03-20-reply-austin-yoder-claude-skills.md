@@ -2,7 +2,7 @@
 schema_version: 1.2.0
 date: 2026-03-20
 title: "Reply to Austin Yoder re: Claude Code skills"
-status: backlog
+status: done
 source: email
 urgency: normal
 entity: "[[entities/austin-yoder]]"

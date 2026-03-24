@@ -194,7 +194,11 @@ Before scanning for signals, ingest new data from external tools into the vault.
 6. Create any missing entities in brain/entities/
 
 ### Superhuman Draft Status Check
-Check Superhuman for the status of outreach drafts created by outreach-manager. NOTE: Drafts are created via superhuman-cli Bash command (NOT the MCP `superhuman_draft` tool which uses Gmail API). Use `superhuman_search` MCP or check sent folder to determine if drafts were sent:
+Check Superhuman for the status of outreach drafts created by outreach-manager. NOTE: Drafts are created via superhuman-cli Bash command (NOT the MCP `superhuman_draft` tool which uses Gmail API). Use `superhuman_search` MCP or check sent folder to determine if drafts were sent.
+
+Results from this check feed directly into the **Draft Status** section of `brain/context/email-scan-results-{YYYY-MM-DD}.md` (see Email Scan Results Artifact below).
+
+1. Query Superhuman for all drafts and recently sent emails matching known outreach targets
 2. For each draft that was sent:
    - Update Attio: move target from "Identified" to "Contacted"
    - Calculate the Day 3 call date (2 business days later) and update JJ's call columns in the master sheet
@@ -292,9 +296,9 @@ This replaces the previous approach where Kay manually flagged warm intros. The 
 
 ### Deal Flow Email Classification (absorbed from intermediary-manager Channel 2)
 
-During Gmail ingestion, every email labeled "DEAL FLOW" must be classified as one of:
+During Gmail ingestion, every email labeled "DEAL FLOW" must be classified as one of three categories. Classification counts (DIRECT/BLAST/NEWSLETTER) are written to the email-scan-results artifact for downstream consumption.
 
-1. **BLAST** — BCC'd distribution, generic greeting, "New Listing" subject, sent to broker's full network of 3000+. Agent screens against buy box. **Auto-reject any deal with stated revenue below $1.5M** — archive silently, do not flag even if thesis-aligned. Remaining matches → Slack ping. No match → archive silently. Kay never sees these unless there's a match above the revenue floor.
+1. **BLAST** — BCC'd distribution, generic greeting, "New Listing" subject, sent to broker's full network of 3000+. Agent screens against buy box. **Revenue floor (auto-reject):** Any deal with stated revenue below $1.5M is auto-rejected regardless of industry fit or broker relationship — archive silently, do not flag, do not Slack, do not surface. These are too small. Remaining deals above the revenue floor are screened against active thesis criteria and the financial buy box ($1-5M EBITDA, $3-20M revenue, independently owned). Matches → Slack ping to #active-deals. No match → archive silently. Kay never sees BLAST emails unless there's a match above the revenue floor that passes the buy box.
 
 2. **DIRECT** — Addressed to Kay by name, references prior conversation or specific criteria Kay shared, expects a response, may include "Introduction" or "RE:" in subject, sometimes has CIM/teaser attached. These ALWAYS get surfaced to Kay — never auto-archived. Present in morning briefing via Inbound Intermediary Deal Detection flow.
 
@@ -311,7 +315,7 @@ During Gmail ingestion, every email labeled "DEAL FLOW" must be classified as on
 
 ### Email Scan Results Artifact
 
-After Gmail ingestion completes (including deal flow classification), write a structured results file so downstream skills (e.g., /start) can read email findings without re-scanning Gmail.
+After Gmail ingestion completes (including deal flow classification and Superhuman draft status check), write a structured results file so downstream skills (e.g., /start, intermediary-manager) can read email findings without re-scanning Gmail.
 
 **Location:** `brain/context/email-scan-results-{YYYY-MM-DD}.md`
 
@@ -327,24 +331,31 @@ emails_scanned: N
 ```markdown
 ## Actionable Items Created
 - brain/inbox/YYYY-MM-DD-{slug}.md (source_ref: msg:{id})
+- brain/inbox/YYYY-MM-DD-{slug}.md (source_ref: msg:{id})
 
 ## Deal Flow Classified
-- DIRECT: {count}
-- BLAST: {count}
-- NEWSLETTER: {count}
+- DIRECT: {count} emails surfaced
+- BLAST: {count} archived
+- NEWSLETTER: {count} archived
 
 ## Draft Status
-- Sent: {list}
-- Unsent: {list with age}
+- Sent: {list of targets where draft was sent, with sent date}
+- Unsent: {list with age in days since draft creation}
 
 ## Introductions Detected
 - {introducer} -> {person} at {company}
 
 ## Niche Signals
-- {signal} -> brain/inbox/...
+- {signal} -> brain/inbox/YYYY-MM-DD-niche-signal-{slug}.md
 ```
 
-This artifact is the handoff contract between pipeline-manager (which scans Gmail) and /start (which reads results). /start never scans Gmail directly.
+**Draft Status population:** The Superhuman Draft Status Check (see section above) feeds this section. For each outreach or thank-you draft created by outreach-manager or pipeline-manager:
+- Check Superhuman sent folder / `superhuman_search` MCP for matching sent emails
+- If sent: record target name, company, and sent date
+- If unsent: record target name, company, and age in days since draft was created
+- This gives downstream skills (and Kay's morning review) a single place to see what was sent vs. pending without re-querying Superhuman.
+
+This artifact is the handoff contract between pipeline-manager (which scans Gmail and checks Superhuman) and downstream consumers (/start, intermediary-manager). They never scan Gmail directly — they read this file.
 
 ### Active Deal Fast-Path (PRIORITY — runs during Gmail ingestion)
 
@@ -979,15 +990,14 @@ Pipeline updates complete:
 
 ### Upcoming Meeting Prep Triggers
 
-Scan calendar for **tomorrow's meetings** and prep briefs today. The brief must be ready the day before the meeting. On Fridays, scan Monday's calendar too (so Monday morning briefs are ready over the weekend). If upcoming meetings match these contacts, trigger the appropriate skill:
+Scan calendar for **tomorrow's investor meetings only** and trigger investor-specific call prep. Pipeline-manager only handles investor call prep (Jeff, Guillermo) because these use specialized templates.
+
+**Meeting prep is handled by meeting-brief-manager (runs nightly at 10pm ET via launchd). Pipeline-manager no longer triggers meeting-brief directly.** All external meeting briefs, new contact research, and general meeting prep are owned by meeting-brief-manager. Do not duplicate that work here.
 
 | Contact | Cadence | Trigger |
 |---------|---------|---------|
 | Jeff Stevens (Anacapa) | Monthly | `/investor-update call-prep jeff` → saves to INVESTOR COMMUNICATION / MONTHLY |
 | Guillermo Lavergne | Bi-weekly | `/investor-update call-prep guillermo` → saves to INVESTOR COMMUNICATION / BI-WEEKLY |
-| Any new external contact | As needed | meeting-brief-manager handles this via launchd |
-
-**Note:** meeting-brief-manager runs nightly at 10pm ET to handle all meeting prep. Pipeline-manager does NOT trigger meeting-brief directly. It only triggers investor-specific call-prep skills (Jeff monthly, Guillermo bi-weekly) which have different templates.
 
 ```bash
 # Look at tomorrow's calendar for investor meetings only
@@ -996,7 +1006,7 @@ gog calendar list --from {TOMORROW} --to {TOMORROW} --json
 # gog calendar list --from {NEXT_MONDAY} --to {NEXT_MONDAY} --json
 ```
 
-Investor call prep is done here. All other meeting briefs are handled by meeting-brief-manager's nightly launchd run.
+Only investor call prep runs here. Everything else is meeting-brief-manager's responsibility via its nightly launchd schedule.
 
 ### Follow-Up Actions
 

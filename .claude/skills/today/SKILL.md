@@ -10,14 +10,14 @@ Aggregate tasks from multiple sources (yesterday's incomplete and inbox) using p
 <essential_principles>
 ## Orchestrator Architecture
 
-This skill implements a **three-phase orchestrator pattern**:
+This skill implements a **three-phase orchestrator pattern** using two sub-agents:
 
 **Phase 1 - Parallel Gathering:**
 Spawn two sub-agents with chatroom coordination:
 - Previous Day Agent: Reads yesterday's daily note, extracts incomplete tasks
 - Inbox Scanner Agent: Queries brain/inbox/ for critical/overdue/in-progress items
 
-Read `brain/context/email-scan-results-{date}.md` for email findings (pipeline-manager scans Gmail, /start reads results).
+Email findings come from pipeline-manager's scan results at `brain/context/email-scan-results-{date}.md`. Pipeline-manager runs first during morning workflow, so these results are available when /start runs.
 
 **Phase 2 - Synthesis:**
 Orchestrator reads chatroom, deduplicates findings, writes directly to daily note without confirmation.
@@ -201,7 +201,7 @@ If the file doesn't exist (pipeline-manager hasn't run yet), log a warning in th
 
 | Reference | Purpose |
 |-----------|---------|
-| `sub-agents.md` | Complete prompt templates for both sub-agents |
+| `sub-agents.md` | Complete prompt templates for the two sub-agents |
 </references_index>
 
 <templates_index>
@@ -220,7 +220,7 @@ Templates point to schemas and add skill-specific context:
 <success_criteria>
 Command execution is complete when:
 - [ ] Chatroom created for agent coordination
-- [ ] All three sub-agents spawned in parallel
+- [ ] Both sub-agents spawned in parallel
 - [ ] Sub-agents posted findings to chatroom
 - [ ] Results synthesized and deduplicated
 - [ ] Daily note written/updated automatically

@@ -1,15 +1,15 @@
 ---
 name: investor-update
-description: "Investor communication — quarterly deck to all 12 investors, monthly/bi-weekly call prep for lead investors, post-LOI weekly meeting prep. Three modes: quarterly, call-prep, weekly-dd."
+description: "Investor communication — quarterly deck to all 12 investors, post-LOI weekly meeting prep. Two modes: quarterly, weekly-dd. Call prep for investor meetings is handled by meeting-brief-manager."
 user_invocable: true
 ---
 
 <objective>
-Keep investors informed and engaged across three cadences.
+**Call prep for investor meetings is now handled by meeting-brief-manager (Subagent 2). This skill handles quarterly reporting and weekly DD updates only.**
+
+Keep investors informed and engaged across two cadences.
 
 **Quarterly** — 3-slide deck summarizing the quarter, emailed to all 12 investors. Uses Start/Stop/Continue framework (investors love it). Triggers follow-up scheduling.
-
-**Call Prep** — Talking points for monthly (Jeff Stevens/Anacapa) and bi-weekly (Guillermo Lavergne) calls. Pulls recent activity, references last call, drives conversation toward deals.
 
 **Weekly DD** (post-LOI only) — Deal-specific update materials for weekly investor group meetings during due diligence.
 
@@ -231,95 +231,11 @@ After Kay sends the quarterly update:
 
 ---
 
-## Mode 2: Call Prep (Monthly / Bi-Weekly)
-
-**Trigger:** Calendar event detected for Jeff Stevens or Guillermo Lavergne, or on-demand via `/investor-update call-prep {investor}`
-
-### Sub-Agent 5: Call Prep Builder
-**Task:** Prepare talking points for the upcoming investor call.
-**Tools:** gog calendar, Granola MCP, vault reads, Attio, gog gmail
-
-**Steps:**
-1. Find the last call with this investor:
-   - Check Granola for transcript
-   - Check vault brain/calls/ for notes
-   - Check Gmail for any recent threads
-2. Pull current state:
-   - Active deals and their stages (Attio)
-   - Recent pipeline movements since last call
-   - Niche sprint status
-   - Any conferences attended/upcoming
-   - Weekly tracker highlights since last call
-3. Build talking points:
-
-**Call Prep Structure (matches Kay's existing agenda):**
-```
-CALL PREP: {Investor Name} — {Date}
-Last call: {date}
-
-1. QUICK UPDATE
-   - {1-2 sentence headline: what's new since last call}
-
-2. LATEST THINKING / APPROACH
-   - {Current thesis focus, any strategic pivots}
-   - {How the search approach is evolving}
-
-3. UPDATE FROM CALLS / TRIPS
-   - {Recent owner calls with coded names}
-   - {Conference/event takeaways}
-   - {Site visits or in-person meetings}
-
-4. INDUSTRY BUCKETS
-   - {Active niche}: {status, what's working}
-   - {Other niche}: {status, tabled/killed/exploring}
-
-5. ADDITIONAL CONVERSATIONS
-   - {Broker/intermediary conversations}
-   - {Network intros received or made}
-   - {River guide insights}
-
-6. DISCUSS NEXT STEPS
-   - {Open items from last call}
-   - {Upcoming milestones or decisions}
-   - {Ask: "Any deal activity or trends I should be aware of?"}
-
-7. INTERESTING TRENDS TO SHARE
-   - {Market observations, niche intelligence signals}
-   - {Industry news relevant to active niches}
-```
-
-**Deliverable locations:**
-- **Jeff (monthly):** Copy G&B letterhead template (ID: `1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF`), rename with date, populate content. Save to INVESTOR COMMUNICATION / MONTHLY (ID: `1FGxl4_q44sHK-Kv7t1hHfCMfYXA3H9YW`) + brain/briefs/. Logo centered, Avenir font, black text only.
-- **Guillermo (bi-weekly):** Same approach. Save to INVESTOR COMMUNICATION / BI-WEEKLY (ID: `1SFkrxnkBpyng6dWIcW3eDXqab9sf8wui`) + brain/briefs/.
-
-4. Deliver Slack ping to #operations before the call with link to the doc
-
-**Returns:** Formatted talking points
-
-**Stop Hook:**
-- [ ] Last call date and summary included
-- [ ] All 7 agenda sections populated (even if some are "No updates")
-- [ ] "Any deal activity or trends" question in Next Steps
-- [ ] Google Doc saved to correct investor folder (MONTHLY or BI-WEEKLY)
-- [ ] Vault copy saved to brain/briefs/
-- [ ] Delivered before the scheduled call time
-
-### Call Prep Delivery
-```bash
-curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "text": "Call Prep: {Investor} — {Date}\nQuick update: {headline}\nDeals: {active deal summary}\nFull prep: {google_doc_link}"
-  }'
-```
-
----
-
-## Mode 3: Weekly DD (Post-LOI)
+## Mode 2: Weekly DD (Post-LOI)
 
 **Trigger:** Active deal in LOI Signed stage in Attio, or on-demand via `/investor-update weekly-dd`
 
-### Sub-Agent 6: DD Update Builder
+### Sub-Agent 5: DD Update Builder
 **Task:** Prepare weekly due diligence update for investor group meeting.
 **Tools:** gog drive (deal folder), vault reads, Attio
 
@@ -381,9 +297,7 @@ DECISION POINT:
 
 ```
 /investor-update quarterly          → Mode 1: Full quarterly deck + emails
-/investor-update call-prep jeff     → Mode 2: Prep for Jeff Stevens monthly
-/investor-update call-prep guillermo → Mode 2: Prep for Guillermo bi-weekly
-/investor-update weekly-dd          → Mode 3: Weekly DD update (post-LOI only)
+/investor-update weekly-dd          → Mode 2: Weekly DD update (post-LOI only)
 ```
 
 ## Sub-Agent Summary
@@ -394,16 +308,16 @@ DECISION POINT:
 | 2: Narrative Drafter | Quarterly | Write 3-slide content | Solo (after Agent 1) |
 | 3: Deck Builder | Quarterly | Create/update PowerPoint | Solo (after Agent 2) |
 | 4: Email Drafter | Quarterly | 12 personalized email drafts | Solo (after Agent 3) |
-| 5: Call Prep | Call Prep | Talking points for investor call | Solo |
-| 6: DD Update | Weekly DD | Due diligence progress update | Solo |
+| 5: DD Update | Weekly DD | Due diligence progress update | Solo |
 
 Quarterly mode runs sequentially (each agent depends on the previous).
-Call Prep and Weekly DD are standalone single-agent modes.
+Weekly DD is a standalone single-agent mode.
+
+**Note:** Investor call prep (Jeff monthly, Guillermo bi-weekly) is handled by meeting-brief-manager (Subagent 2), which auto-detects investor meetings on the calendar and routes them to the appropriate prep template.
 
 ## Pipeline-Manager Integration
 
 Pipeline-manager should:
-- Detect upcoming investor calls on calendar → trigger call-prep mode automatically
 - After quarterly update sent → track investor responses, surface non-responders
 - During DD → remind Kay to run weekly-dd before investor meetings
 </execution_flow>
@@ -421,12 +335,6 @@ Pipeline-manager should:
 - [ ] 12 personalized email drafts created
 - [ ] Motion follow-up tasks created for all 12 investors
 - [ ] Slack notification sent to #operations
-
-### Call Prep Mode
-- [ ] Last call summary retrieved (Granola or vault)
-- [ ] Current deal/pipeline status included
-- [ ] Talking points delivered before call time
-- [ ] "Any deal activity or trends" question included
 
 ### Weekly DD Mode
 - [ ] DD progress summarized

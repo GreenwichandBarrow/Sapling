@@ -1,6 +1,6 @@
 ---
 name: intermediary-manager
-description: "Manage the 20% intermediary deal channel — platform scanning, new intro processing, and niche signal detection. Flags matches for Kay, feeds signals to niche-intelligence."
+description: "Manage the 20% intermediary deal channel — platform scanning, new intro processing, and niche signal detection. Flags matches for Kay, feeds signals to niche-intelligence. Email scanning (broker classification) is handled by pipeline-manager."
 user_invocable: true
 context_budget:
   skill_md: 2500
@@ -13,11 +13,14 @@ Manage the intermediary deal flow channel. Screen broker platforms against the b
 
 This is the 20% channel. It supplements proprietary outreach (target-discovery + outreach-manager), never replaces it. Broker deals go to 3000+ buyers — we rarely win competitive bids. The value here is: early detection of thesis-matching deals, niche signal intelligence, and growing the intermediary network over time.
 
+**Email scanning note:** Pipeline-manager now handles all inbound email scanning, including broker email classification (BLAST/DIRECT/NEWSLETTER). This skill reads introduction signals from `brain/context/email-scan-results-{date}.md` rather than scanning Gmail directly.
+
 **This skill does NOT:**
 - Create targets on the target list (broker deals go through broker, not direct)
 - Draft outreach to owners (broker is the gatekeeper)
 - Enter deals into Attio (pipeline-manager handles that when NDA is signed)
 - File documents into ACTIVE DEALS folders (pipeline-manager handles that)
+- Scan Gmail for broker emails (pipeline-manager handles email scanning)
 
 **This skill DOES:**
 - Scan searchable broker platforms daily for buy-box matches
@@ -36,7 +39,7 @@ This is the 20% channel. It supplements proprietary outreach (target-discovery +
 </objective>
 
 <channels>
-## Two Channels
+## Channels
 
 ### Channel 1: Platform Scanning (Daily)
 Scan searchable broker platforms for new listings matching the buy box.
@@ -187,7 +190,7 @@ Before sending niche signals to niche-intelligence:
 - [ ] All platforms scanned (or on rotation schedule if throttled)
 - [ ] Matches sent to Slack with links
 - [ ] Non-matches archived
-- [ ] New introductions processed from `brain/context/email-scan-results-{date}.md` (if any)
+- [ ] New introductions checked in `brain/context/email-scan-results-{date}.md` (if any)
 
 ### Weekly (on Weekly Tracker)
 - [ ] Intermediary vs proprietary ratio calculated

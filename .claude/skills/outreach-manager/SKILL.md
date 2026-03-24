@@ -165,8 +165,8 @@ Outreach-manager is the only skill that writes to Attio for targets. The sequenc
    - **If found** → someone Kay already knows. Flag as warm intro (Col X), skip cold outreach. This is both the dedup check AND the warm intro check in one step.
    - **If not found** → create the company + person in Attio, add company to Active Deals at "Identified" stage. Proceed with cold outreach.
 3. When outreach-manager drafts the Day 1 email → target stays at "Identified" (draft only, not sent yet)
-4. When Kay sends the email from Superhuman → outreach-manager moves Attio to "Contacted"
-5. Pipeline-manager then picks up the "Contacted" status and notifies JJ with Day 3 call date
+4. Pipeline-manager detects when Kay sends the email from Superhuman and moves Attio to "Contacted"
+5. Pipeline-manager then notifies JJ with Day 3 call date
 6. After Day 10 with no response → pipeline-manager moves to nurture cadence
 
 ### Day 3: JJ's Confirmation Call

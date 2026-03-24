@@ -1,6 +1,6 @@
 # Sub-Agent Definitions
 
-This file defines the three specialized sub-agents used by /start. Each agent runs in an isolated context and posts findings to the chatroom for coordination.
+This file defines the two sub-agents used by /start. Each agent runs in an isolated context and posts findings to the chatroom for coordination. Email scanning is handled by pipeline-manager, not a sub-agent.
 
 **All sub-agents must include the chatroom protocol in their prompts.**
 
@@ -121,58 +121,16 @@ CHATROOM:
 - Keep under 400 words
 </inbox_scanner_agent>
 
-<email_scanner_agent>
-## Email Scanner Agent
-
-**Purpose:** Scan Gmail for actionable emails, create inbox items.
-
-**When to spawn:** Always (Phase 1 of /start)
-
-**Prompt template:**
-```
-Scan Gmail for actionable emails and create inbox items.
-
-1. Call mcp__gmail-autoauth__search_emails with query='in:inbox category:primary newer_than:30d' and maxResults=200
-2. Review the email summaries (Subject, From) to identify potentially actionable emails
-3. For potentially actionable emails, call mcp__gmail-autoauth__read_email to get full content
-4. For each email, decide: ACTIONABLE or SKIP
-   - SKIP: noreply@, notifications@, receipts@, affiliates@, *@rewardful.com, *@howie.ai, Railway alerts, commission notifications, receipt requests
-   - ACTIONABLE: everything else (default to actionable when unsure)
-5. For actionable emails, create inbox item at brain/inbox/{date}-{slug}.md
-
-Inbox item format:
----
-schema_version: 1.2.0
-title: {what needs to be done}
-status: backlog
-source: email
-source_ref: msg:{email_id}
-tags: [inbox, source/email]
----
-# {title}
-From {sender} on {date}: {one line summary}
-
-Return: how many emails scanned, how many actionable, how many inbox items created.
-```
-
-**Tools required:** Gmail MCP (mcp__gmail-autoauth__search_emails, mcp__gmail-autoauth__read_email), Write
-
-**Classification rules:**
-- Default to ACTIONABLE
-- Skip only: noreply@, notifications@, no-reply@, obvious newsletters
-- When in doubt, create the inbox item
-</email_scanner_agent>
-
 <spawning_pattern>
 ## Complete Spawning Example
 
-The orchestrator spawns all three agents in parallel with a single message:
+The orchestrator spawns both agents in parallel with a single message:
 
 ```
 // First, create chatroom
 Write chatroom to: brain/traces/agents/{YYYY-MM-DD}-today.md
 
-// Then spawn all three in parallel:
+// Then spawn both in parallel:
 
 Task(
   subagent_type="general-purpose",
@@ -210,25 +168,6 @@ CHATROOM:
 - Format: ## [{time}] inbox-scanner\n{message}
 - Use naturally"
 )
-
-Task(
-  subagent_type="general-purpose",
-  description="Scan Gmail for action items",
-  prompt="You are an email scanner agent...
-
-TODAY: 2025-12-28
-PROCESSING_STATE_PATH: brain/context/processing-state.md
-INBOX_PATH: brain/inbox/
-
-[Full prompt from email_scanner_agent section]
-
-CHATROOM:
-- File: brain/traces/agents/2025-12-28-today.md
-- Read at start to see what others have posted
-- Post what you find
-- Format: ## [{time}] email-scanner\n{message}
-- Use naturally"
-)
 ```
 </spawning_pattern>
 
@@ -237,22 +176,19 @@ CHATROOM:
 
 Agents should watch for these signals from each other:
 
-### Previous Day → Others
+### Previous Day → Inbox Scanner
 - If many incomplete tasks: "Heavy carryover day"
 - If specific blockers: Mention what blocked progress
 
-### Inbox Scanner → Email Scanner
-- If inbox already has item for email: Prevent duplicate creation
+### Inbox Scanner → Previous Day
 - If critical item exists: Flag priority
-
-### Email Scanner → Inbox Scanner
-- If email confirms inbox item: Cross-reference
-- If new email relates to existing inbox: Note relationship
+- If inbox item relates to yesterday's incomplete: Note relationship
 
 ### Example Chatroom Flow
 ```markdown
 ## [09:00] orchestrator
-Starting /start for 2025-12-28. Spawning: previous-day, inbox-scanner, email-scanner
+Starting /start for 2025-12-28. Spawning: previous-day, inbox-scanner
+Email scan results read from brain/context/email-scan-results-2025-12-28.md
 
 ## [09:01] previous-day
 Found 2 incomplete tasks from yesterday:
@@ -261,14 +197,9 @@ Found 2 incomplete tasks from yesterday:
 
 ## [09:01] inbox-scanner
 Inbox has 3 items: 1 critical (overdue proposal), 2 normal
-→ @email-scanner heads up: proposal@acme.com might have follow-up
-
-## [09:02] email-scanner
-Creating 4 new inbox items (2 high, 1 medium, 1 low)
-→ @inbox-scanner confirmed: found Acme follow-up email, already in inbox as critical item - skipping duplicate
 
 ## [09:02] orchestrator
-All agents complete. Synthesizing results...
+All agents complete. Synthesizing results with email scan findings...
 ```
 </coordination_signals>
 
@@ -299,17 +230,5 @@ Each agent must return structured output that the orchestrator can parse:
 Found {n} actionable items
 ```
 
-### Email Scanner Agent
-```markdown
-## Email Scan Results
-
-### Created Inbox Items
-| Title | From | Confidence | File |
-|-------|------|------------|------|
-
-### Summary
-Created {x} new inbox items ({h} high, {m} medium, {l} low confidence)
-```
-
-The orchestrator parses these outputs to build the daily note.
+The orchestrator parses these outputs, along with email scan results from `brain/context/email-scan-results-{date}.md`, to build the daily note.
 </output_contracts>

@@ -91,6 +91,28 @@ python3 .claude/scripts/list-unreviewed-traces.py [date_filter]
 
 The calibration agent should propose skill improvements that address the specific funnel gap the data reveals — not generic improvements.
 
+### Active Experiment: Cold Email A/B Test
+
+Outreach-manager is running an A/B test on cold email positioning (started March 2026):
+- **Variant A:** "Looking to get into the space" — curiosity-first, loose approach
+- **Variant B:** "Well-capitalized buyer" — direct intent, "you or someone you know"
+
+Variant is logged in **Col Z ("Email Approach")** on each niche target sheet as `Learning` or `Direct`. Warm intros are excluded (Col Z blank). The calibration agent must:
+
+1. Read Col Z + outreach outcomes (response, call booked, tone) from the target sheets
+2. After 20-30 total sends, run the first analysis:
+   - Response rate by variant (A vs B)
+   - Time to response by variant
+   - Tone of response (warm/curious vs defensive/transactional)
+   - Conversion to Stage 1 call by variant
+3. Report findings in the weekly calibration report
+4. At 30+ sends, recommend whether to:
+   - Declare a winner and standardize
+   - Continue testing (results too close)
+   - Propose a Variant C based on what's working from both
+
+**Do not recommend ending the test before 20 sends per variant.** Small samples lie.
+
 ## Schedule
 
 **Runs:** Every Friday at 10am ET (automated). Processes all unreviewed traces from the week AND the weekly tracker data. Slack notification to #operations with summary and link to full calibration report.

@@ -78,34 +78,57 @@ When outreach-manager receives approved targets, it writes two new columns on th
 Every target gets a deeply personalized email. At 4-6 targets per day, there's no reason for templates.
 
 **Voice:** Kay's calibrated outreach voice (see memory: user_outreach_voice.md)
-**Rules:**
-- No em dashes. Periods, commas, line breaks.
-- Conversational, warm, direct
-- Reference something specific about the owner or business (from deep research)
-- Never mention "I want to buy your company" — frame as exploring the industry, learning from experts
-- Keep it short (3-5 sentences)
-- Propose a specific next step (phone call, coffee if local)
 
-**Structure:**
+### A/B Test: Two Email Variants (Active Experiment)
+
+Outreach-manager alternates between two variants on every cold email. Targets are assigned **alternating** — odd-numbered approved cold targets get Variant A, even get Variant B. Log the variant in **Col Z ("Email Approach")** on the target sheet as `Learning` or `Direct`. Warm intro targets are excluded from this experiment — Col Z stays blank for warm intros.
+
+Kay knows about this test and will generally stick to the assigned variant when reviewing drafts in Superhuman. She may tweak wording but will preserve the core positioning.
+
+**Learning (curiosity-first, loose approach)**
 ```
-Subject: {Something specific to their business or name}
+Subject: Quick question about {company}
 
 Hi {first name},
 
-{1-2 sentences showing you researched THEIR business — what they built, their journey, their market position}.
-{1 sentence with a genuine question about their experience or perspective}.
+{warm opener}. I came across {company} while looking into {niche} and was impressed by {something specific they built}. {Optional: real connection point — shared location, school, mutual contact}.
 
-Would you have 15 minutes to share your perspective?
+I've been looking to get into the {niche} space and trying to learn as much as I can. Given your expertise I'd welcome the chance to hear your perspective.
+
+If you're open, I'd love to find a short time to connect.
 
 Very best,
 Kay
 ```
 
-**HARD RULES:**
+**Direct (transparent intent)**
+```
+Subject: {niche} — quick introduction
+
+Hi {first name},
+
+{warm opener}. I came across {company} while looking into {niche} and was impressed by {something specific they built}.
+
+I'm a well-capitalized buyer looking to acquire a {niche} business and wondered if you or someone you know in the industry might be open to a conversation. I'm trying to learn as much as I can about the space.
+
+If you're open, I'd love to find a short time to connect.
+
+Very best,
+Kay
+```
+
+**What we're testing:** Does transparency about acquisition intent help or hurt response rates? Variant A positions Kay as a curious learner. Variant B is upfront about being a buyer but uses "you or someone you know" to take pressure off.
+
+**Tracking:** Col Z on the target sheet. Calibration agent analyzes after 20-30 sends (roughly 1 month at 4-6/day). Metrics: response rate, time to response, tone of response (warm vs defensive), conversion to call.
+
+**HARD RULES (apply to BOTH variants):**
 - The email is about THEM, not Kay or G&B. Never mention Greenwich & Barrow. Never describe what Kay does. LinkedIn handles credibility (they'll check).
 - NEVER reference revenue, employee count, or financial metrics. Could be wrong, and it signals you care about money not legacy.
-- NEVER call G&B a "fund." Sounds like PE and kills trust. Kay is a woman building something for her family, not a fund manager.
-- Lead with curiosity about what they've built. The email is a mirror reflecting their accomplishment with a genuine question attached.
+- NEVER call G&B a "fund." Sounds like PE and kills trust.
+- NEVER reveal thesis/growth strategy (underpenetration, consolidation, market size).
+- Don't make claims you can't source. Every line must be grounded in real research.
+- No em dashes. Periods, commas, line breaks.
+- Lead with curiosity about what they've built, even in Variant B.
 
 Draft in Superhuman via the CLI (NOT the MCP tool — it uses Gmail API which creates invisible drafts). Use Bash:
 ```bash

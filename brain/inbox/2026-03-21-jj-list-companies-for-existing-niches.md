@@ -1,7 +1,7 @@
 ---
 schema_version: 1.0.0
 date: 2026-03-21
-title: "JJ prospect list: companies flagged for existing niche target lists"
+title: "Review JJ-sourced companies: approve/pass for existing niche target lists"
 status: backlog
 source: manual
 urgency: normal

@@ -72,7 +72,8 @@ Scan searchable broker platforms for new listings matching the buy box.
 2. Scrape new listings since last scan (track by listing ID or date)
 3. For each listing, extract: company description, industry, revenue, EBITDA, asking price, geography, employee count
 4. Screen against buy box criteria (from niche-intelligence active theses)
-5. Two types of matches:
+5. **Revenue floor (auto-reject):** Any listing with stated revenue below $1.5M is auto-rejected regardless of industry fit or broker relationship. Do not flag, do not Slack, do not surface. These are too small.
+6. Two types of matches (only after passing revenue floor):
    - **Thesis match** — fits an active niche thesis (e.g., TCI brokerage, insurance compliance). High priority.
    - **Buy-box match, new niche** — fits the financial buy box ($1-5M EBITDA, $3-20M revenue, independently owned) but in a niche we haven't evaluated. Route to niche-intelligence as a discovery signal.
 
@@ -91,7 +92,7 @@ Screen deal flow emails that arrive in Kay's inbox.
 **Email classification (CRITICAL):**
 Every email labeled "DEAL FLOW" must be classified as one of:
 
-1. **BLAST** — BCC'd distribution, generic greeting, "New Listing" subject, sent to broker's full network of 3000+. Agent screens against buy box. Match → Slack ping. No match → archive silently. Kay never sees these unless there's a match.
+1. **BLAST** — BCC'd distribution, generic greeting, "New Listing" subject, sent to broker's full network of 3000+. Agent screens against buy box. **Auto-reject any deal with stated revenue below $1.5M** — archive silently, do not flag even if thesis-aligned. Remaining matches → Slack ping. No match → archive silently. Kay never sees these unless there's a match above the revenue floor.
 
 2. **DIRECT** — Addressed to Kay by name, references prior conversation or specific criteria Kay shared, expects a response, may include "Introduction" or "RE:" in subject, sometimes has CIM/teaser attached. These ALWAYS get surfaced to Kay — never auto-archived. Present in morning briefing via pipeline-manager's Inbound Intermediary Deal Detection flow.
 
@@ -175,6 +176,7 @@ After each platform scan completes, verify before reporting results:
 - [ ] Listing URL is a working link (not a search results page or homepage)
 - [ ] Match is classified as "Thesis match" or "Buy-box match, new niche" — never both, never neither
 - [ ] No duplicate listings (same company appearing from multiple platforms counted once, note all sources)
+- [ ] Revenue floor enforced: any listing with stated revenue below $1.5M is auto-rejected, not flagged, regardless of thesis fit or broker relationship
 - [ ] Buy-box screen applied: $1-5M EBITDA, $3-20M revenue, independently owned. Anything outside these ranges is NOT a match regardless of industry fit.
 - [ ] If zero matches found across all platforms, report "No matches" — don't fabricate or stretch criteria to surface something
 
@@ -233,6 +235,7 @@ Before sending niche signals to niche-intelligence:
 - **Never exceed 25% intermediary ratio** without flagging Kay.
 - **Never contact an owner directly** on a broker-sourced deal. Always go through the broker.
 - **Never burn time on competitive auctions.** If a deal is clearly going to multiple bidders with higher offers, flag it but recommend pass.
+- **Auto-reject sub-$1.5M revenue deals.** Any broker deal with stated revenue below $1.5M is silently archived. No exceptions for thesis fit, broker relationship, or niche signal. Too small.
 </validation>
 
 <success_criteria>

@@ -88,19 +88,24 @@ Every target gets a deeply personalized email. At 4-6 targets per day, there's n
 
 **Structure:**
 ```
-Subject: {Something specific to their business}
+Subject: {Something specific to their business or name}
 
 Hi {first name},
 
-{1 sentence showing you researched their specific business}.
-{1 sentence connecting your background to their world — why you're credible}.
-{1 sentence proposing a conversation — learning about the industry, not pitching}.
+{1-2 sentences showing you researched THEIR business — what they built, their journey, their market position}.
+{1 sentence with a genuine question about their experience or perspective}.
 
-Would love to connect for 15 minutes.
+Would you have 15 minutes to share your perspective?
 
-Kay Schneider
-Greenwich & Barrow
+Very best,
+Kay
 ```
+
+**HARD RULES:**
+- The email is about THEM, not Kay or G&B. Never mention Greenwich & Barrow. Never describe what Kay does. LinkedIn handles credibility (they'll check).
+- NEVER reference revenue, employee count, or financial metrics. Could be wrong, and it signals you care about money not legacy.
+- NEVER call G&B a "fund." Sounds like PE and kills trust. Kay is a woman building something for her family, not a fund manager.
+- Lead with curiosity about what they've built. The email is a mirror reflecting their accomplishment with a genuine question attached.
 
 Draft in Superhuman via the CLI (NOT the MCP tool — it uses Gmail API which creates invisible drafts). Use Bash:
 ```bash

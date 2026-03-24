@@ -143,8 +143,8 @@ Claude acts as the **manager** overseeing 3 specialized sub-agents that run in p
 
 ### Sub-Agent 1: Pipeline Agent
 **Scope:** Intermediary, Active Deals, and Investor Lists
-**Scans:** Email (NDAs, financials, LOIs, broker correspondence), calendar (deal meetings), vault (call notes), Drive ACTIVE DEALS folder (new subfolders)
-**Returns:** Stage change recommendations with signal evidence
+**Scans:** Email (NDAs, financials, LOIs, broker correspondence, CIM attachments), calendar (deal meetings), vault (call notes), Drive ACTIVE DEALS folder (new subfolders)
+**Returns:** Stage change recommendations with signal evidence. Also executes CIM auto-trigger (folder creation, filing, inbox item, deal-eval invocation) before returning recommendations — CIM deals arrive pre-screened.
 
 **ACTIVE DEALS folder detection (catch-all for broker platform NDA edge cases):**
 Scan the ACTIVE DEALS Drive folder for any subfolder that does not have a matching Attio Active Deals entry. This catches the case where Kay signs an NDA on a broker platform (no email sent), creates a folder, and saves the NDA manually. When detected:
@@ -172,6 +172,7 @@ Scan the ACTIVE DEALS Drive folder for any subfolder that does not have a matchi
 6. **Niche signal validation** — if any niche signals were detected during data ingestion, confirm each was written to `brain/inbox/` with the `topic/niche-signal` tag. Glob `brain/inbox/*niche-signal*` and verify count matches signals detected. Missing signals = lost intelligence for Friday's niche run.
 7. **Slack notification validation** — confirm the Slack webhook POST returned HTTP 200 OK. If non-200, retry once. If still failing, warn Kay directly in the session summary that Slack notification failed.
 8. **ACTIVE DEALS folder sync** — compare ACTIVE DEALS Drive subfolders against Attio Active Deals entries. Every folder must have a matching Attio entry. Any orphaned folder = missed deal entry. Create Attio entry and flag in morning briefing.
+9. **CIM auto-trigger validation** — for every CIM detected during Gmail ingestion, verify all 4 steps completed: (a) ACTIVE DEALS folder exists with CIM/ subfolder, (b) CIM file uploaded to CIM/ subfolder with size > 0, (c) inbox item written to `brain/inbox/` with `urgency: critical` and `topic/cim-received` tag, (d) deal-evaluation was invoked with `source: intermediary-inbound`. If any step failed, retry once. If still failing, flag in morning briefing: "CIM auto-trigger incomplete for {company} — {which step failed}." A missed CIM is a missed deal.
 
 ### Manager Red Flags
 The manager raises these to Kay before executing:
@@ -388,9 +389,147 @@ Write each inbound deal to `brain/inbox/YYYY-MM-DD-intermediary-inbound-{slug}.m
 - `source: email`
 - Body: intermediary name, intermediary firm, deal summary (company description, industry, revenue/EBITDA if stated, geography), any attachments listed
 
+### CIM Auto-Trigger (same-day fast-track — runs before morning review)
+
+When the inbound deal detection finds a CIM attachment or CIM-level content (not just a teaser or blind profile), skip the morning review queue and fast-track immediately. Active deal signals get same-day treatment.
+
+**CIM detection criteria** — email must match at least ONE:
+- Attachment filename contains: `CIM`, `Confidential Information Memorandum`, `confidential-information-memorandum`, `offering-memorandum`, `information-memorandum`
+- Attachment is a PDF/DOCX > 5 pages (teasers are typically 1-2 pages; CIMs are 20+)
+- Email body or subject contains the phrase "Confidential Information Memorandum" or "CIM attached"
+- Email body contains structured financials (revenue + EBITDA + multiples) AND a company name (not a blind profile)
+
+**Also detect adjacent deal documents** with the same logic:
+- Keywords: `teaser`, `investment opportunity`, `deal summary`, `offering memorandum`, `executive summary`, `company overview`
+- These are lower-confidence but still trigger the fast-track if from a known intermediary (already in Attio Intermediary Pipeline at "Warmed" or later)
+
+**When CIM is detected, execute all 4 steps automatically:**
+
+**Step 1: Create/find ACTIVE DEALS folder**
+```bash
+# Check if company folder already exists
+gog drive ls --parent {ACTIVE_DEALS_FOLDER_ID} --json | grep -i "{company_name}"
+
+# If not found, create it with standard subfolder structure
+gog drive mkdir "{COMPANY NAME}" --parent {ACTIVE_DEALS_FOLDER_ID}
+gog drive mkdir "CIM" --parent {new_company_folder_id}
+gog drive mkdir "FINANCIALS" --parent {new_company_folder_id}
+gog drive mkdir "LEGAL" --parent {new_company_folder_id}
+gog drive mkdir "DILIGENCE" --parent {new_company_folder_id}
+gog drive mkdir "CORRESPONDENCE" --parent {new_company_folder_id}
+```
+
+**Step 2: File the CIM**
+```bash
+# Download attachment from email
+gog gmail attachment {message_id} {attachment_id} --output /tmp/{filename}
+
+# Upload to CIM subfolder
+gog drive upload /tmp/{filename} --parent {cim_folder_id} --name "{filename}"
+```
+- Verify upload: `gog drive ls --parent {cim_folder_id} --json` — confirm file exists and size > 0
+- If the CIM subfolder already has a file with the same name, do NOT overwrite. Append `_v2` and flag the duplicate in the inbox item.
+
+**Step 3: Create inbox item**
+Write to `brain/inbox/YYYY-MM-DD-cim-received-{company-slug}.md` using inbox schema:
+```yaml
+---
+title: "CIM Received: {Company Name}"
+date: YYYY-MM-DD
+type: inbox
+source: email
+source_ref: "{gmail_message_id}"
+confidence: high
+urgency: critical
+tags:
+  - inbox
+  - date/YYYY-MM-DD
+  - source/intermediary-inbound
+  - topic/cim-received
+  - person/{intermediary-slug}
+  - company/{intermediary-firm-slug}
+  - company/{target-company-slug}
+---
+
+## CIM Received — {Company Name}
+
+**From:** [[entities/{intermediary-slug}|{Intermediary Name}]] at [[entities/{intermediary-firm-slug}|{Firm Name}]]
+**Company:** {Company Name}
+**Industry:** {if stated}
+**Revenue:** {if stated}
+**EBITDA:** {if stated}
+**Geography:** {if stated}
+
+**CIM filed to:** [Drive link]({drive_link})
+**Deal folder:** [Drive link]({folder_link})
+
+**Status:** Auto-triggered deal-evaluation (intermediary-inbound pathway)
+**Next:** Deal-eval buy-box screen running. Results in morning briefing.
+```
+
+**Step 4: Auto-invoke deal-evaluation**
+Trigger deal-evaluation with:
+- `source: intermediary-inbound`
+- `intermediary: {intermediary name}`
+- `company: {company name}`
+- `cim_location: {drive_file_link}`
+
+Deal-eval reads the CIM from Drive, runs the buy-box screen, and stages results for Kay's morning review. Kay sees the completed screen (not just a "should we screen?" prompt).
+
+**Attio updates (parallel with deal-eval):**
+- Create Attio Active Deals entry at "Financials Received" stage (CIM = financials) with `source: intermediary`
+- If intermediary is at "Identified" or "Contacted" in Intermediary Pipeline: recommend stage change to "Actively Receiving Deal Flow"
+- Create vault entity for the target company if it doesn't exist
+
+**Slack notification (after filing + Attio update verified):**
+```bash
+curl -s -X POST "$SLACK_WEBHOOK_ACTIVE_DEALS" \
+  -H "Content-Type: application/json" \
+  -d '{"text":"CIM Received: {Company Name}\nFrom: {Intermediary Name} ({Firm})\nIndustry: {industry}\nCIM filed to Drive: {drive_link}\nDeal folder: {folder_link}\nAttio: Created at Financials Received\n\nDeal-eval running buy-box screen. Results in morning briefing."}'
+```
+
+**Validation (must pass before Slack):**
+```
+checks = {
+    "cim_in_drive": verify CIM file exists in CIM/ subfolder and size > 0,
+    "no_duplicate_folders": verify only ONE company folder exists (no {Company} + {Company}(1)),
+    "attio_entry_created": verify Active Deals entry exists at Financials Received,
+    "inbox_item_written": verify brain/inbox/ file exists with urgency: critical,
+    "deal_eval_triggered": verify deal-evaluation was invoked with correct parameters,
+}
+
+If any check fails → fix the issue, re-validate, then send Slack.
+```
+
+**Edge cases:**
+- **Blind profile (no company name):** Cannot create ACTIVE DEALS folder or Attio entry. Fall through to standard morning review presentation. Inbox item still created with `urgency: high` and tag `topic/blind-profile`.
+- **CIM for existing active deal:** Route to the Active Deal Fast-Path (line 292 above) instead. Do NOT create a duplicate folder or Attio entry.
+- **Multiple CIMs in one email batch:** Process each independently. Each gets its own folder, inbox item, and deal-eval invocation.
+- **CIM from unknown sender (not in Attio Intermediary Pipeline):** Still fast-track the CIM filing. Create the intermediary entity and Attio entry at "Identified" stage. Flag in morning briefing: "New intermediary detected: {name} at {firm}. Sent CIM for {company}."
+
 ### Morning Review Presentation
 
-Present inbound intermediary deals as a **separate category BEFORE Part 1 (pipeline changes)**:
+**Deals WITH CIM auto-triggered** are presented differently — Kay sees the completed buy-box screen results, not a "should we screen?" prompt:
+
+```
+INBOUND DEAL FLOW — CIM AUTO-SCREENED
+──────────────────────────────────────
+From: {Intermediary Name} ({Firm Name})
+  Deal: {Company Name}
+  CIM: Filed to Drive ✓ | Deal-eval: {Pass / Proceed / Need More Info}
+  Buy-box result: {summary from deal-eval}
+  Industry: {from CIM}
+  Revenue: {from CIM}
+  EBITDA: {from CIM}
+  Geography: {from CIM}
+
+  Action:
+  - Proceed → continue deal-evaluation (Phase 3: financial analysis)
+  - Pass → draft polite decline to intermediary
+  - Table → keep in inbox, revisit later
+```
+
+**Deals WITHOUT CIM (teasers, blind profiles, deal summaries)** use the standard presentation:
 
 ```
 INBOUND DEAL FLOW
@@ -412,10 +551,11 @@ From: {Intermediary Name} ({Firm Name})
 ```
 
 ### On Kay's Approval
-- **"Yes"** → trigger deal-evaluation skill with `source: intermediary-inbound` and `intermediary: {name}`. The deal-evaluation skill runs its fast buy-box screen (see deal-evaluation Intermediary Inbound Pathway).
+- **"Proceed"** (CIM auto-screened) → continue deal-evaluation at Phase 3 (financial analysis on the CIM already in Drive). The buy-box screen is done — this advances to deep analysis.
+- **"Yes"** (no CIM) → trigger deal-evaluation skill with `source: intermediary-inbound` and `intermediary: {name}`. The deal-evaluation skill runs its fast buy-box screen (see deal-evaluation Intermediary Inbound Pathway).
 - **"Pass"** → draft a short, polite decline email to the intermediary. Log the deal in vault with reason. Tag the intermediary's Attio record with the deal type they sent (e.g., `sends: manufacturing`, `sends: healthcare`) for future filtering.
 - **"Need more info"** → draft reply requesting: revenue, EBITDA, years in business, owner age/succession situation, customer concentration. Keep the ask short — intermediaries are busy.
-- **"Save for later"** → no action, stays in inbox queue.
+- **"Save for later" / "Table"** → no action, stays in inbox queue.
 
 ### Intermediary Relationship Tracking
 After processing inbound deals, update the intermediary's Attio record:
@@ -559,6 +699,7 @@ gog gmail search "after:{YESTERDAY} before:{TODAY}" --json --max 30
 Look for:
 - NDA documents (PDF attachments with "NDA" in subject/filename) → NDA Executed
 - Financial documents (CIM, P&L, balance sheet) → Financials Received
+- **CIM attachments from intermediaries** → CIM Auto-Trigger (folder + filing + inbox + deal-eval, see "CIM Auto-Trigger" section)
 - LOI drafts or signed documents → LOI stage changes
 - Thank you emails sent → move from "Need to Send Thank You" to nurture
 - New introductions → new pipeline entries needed

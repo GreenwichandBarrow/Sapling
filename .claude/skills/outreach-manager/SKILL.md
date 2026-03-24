@@ -132,7 +132,7 @@ Kay
 
 Draft in Superhuman via the CLI (NOT the MCP tool — it uses Gmail API which creates invisible drafts). Use Bash:
 ```bash
-cd ~/.local/share/superhuman-cli && CDP_PORT=9400 bun run src/cli.ts draft create --account kay.s@greenwichandbarrow.com --to "{email}" --subject "{subject}" --body "{body}"
+superhuman-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
 ```
 This creates native Superhuman drafts via CDP. Kay reviews and sends from Superhuman. Sign off "Very best, Kay" only — signature is built in.
 
@@ -259,7 +259,7 @@ Greenwich & Barrow
 
 Draft in Superhuman via the CLI (NOT the MCP tool — it uses Gmail API which creates invisible drafts). Use the same Bash command as cold outreach:
 ```bash
-cd ~/.local/share/superhuman-cli && CDP_PORT=9400 bun run src/cli.ts draft create --account kay.s@greenwichandbarrow.com --to "{email}" --subject "{subject}" --body "{body}"
+superhuman-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
 ```
 Kay reviews and sends from Superhuman.
 

@@ -23,9 +23,19 @@ When updating an existing daily note:
 | Inbox item (confidence: high, in-system work) | ### In-System |
 | Inbox item (confidence: high, async work) | ### Async |
 | Inbox item (confidence: medium/low) | ### Triage |
-| Email item (confidence: high, in-system) | ### In-System |
-| Email item (confidence: high, async) | ### Async |
-| Email item (confidence: medium/low) | ### Triage |
+| Email scan results (actionable items) | ### Async or ### In-System |
+| Email scan results (medium/low) | ### Triage |
+| In-person meetings from email-scan-results | Granola reminder (top of daily note) |
+
+## Granola Reminder
+
+If `brain/context/email-scan-results-{date}.md` contains an "In-Person Meetings Today" section, add a reminder at the top of the daily note, right after the Focus section:
+
+```markdown
+**Granola reminder:** Turn on Granola before your {time} with {person} at {location}
+```
+
+One line per in-person meeting. Skip if no in-person meetings today.
 
 ## Task Formatting
 

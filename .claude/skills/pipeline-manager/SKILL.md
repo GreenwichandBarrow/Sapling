@@ -755,9 +755,22 @@ Scan these sources for yesterday's date (or since last run):
 
 ### Calendar
 ```bash
+# Yesterday's meetings (pipeline signals)
 gog calendar list --from {YESTERDAY} --to {TODAY} --json
+
+# Today's meetings (Granola reminder detection)
+gog calendar list --from {TODAY} --to {TOMORROW} --json
 ```
 Extract all external meetings (skip internal/team calls). Each meeting is a signal that a pipeline entry may need updating.
+
+**In-person meeting detection (today):** For today's meetings, check for in-person meetings (no conferenceData, no hangoutLink, no Zoom/Meet/Teams/Webex URLs in description or location). Write any in-person meetings to the email-scan-results artifact under a new section:
+
+```
+## In-Person Meetings Today (Granola Reminder)
+- {time} {title} at {location} — attendees: {names}
+```
+
+/start reads this and includes a Granola reminder in the daily note.
 
 ### Gmail
 ```bash

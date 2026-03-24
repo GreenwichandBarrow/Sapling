@@ -174,6 +174,21 @@ Scan the ACTIVE DEALS Drive folder for any subfolder that does not have a matchi
 8. **ACTIVE DEALS folder sync** — compare ACTIVE DEALS Drive subfolders against Attio Active Deals entries. Every folder must have a matching Attio entry. Any orphaned folder = missed deal entry. Create Attio entry and flag in morning briefing.
 9. **CIM auto-trigger validation** — for every CIM detected during Gmail ingestion, verify all 4 steps completed: (a) ACTIVE DEALS folder exists with CIM/ subfolder, (b) CIM file uploaded to CIM/ subfolder with size > 0, (c) inbox item written to `brain/inbox/` with `urgency: critical` and `topic/cim-received` tag, (d) deal-evaluation was invoked with `source: intermediary-inbound`. If any step failed, retry once. If still failing, flag in morning briefing: "CIM auto-trigger incomplete for {company} — {which step failed}." A missed CIM is a missed deal.
 
+### Email Scan Results Validation (post-ingestion)
+After Gmail ingestion completes and `brain/context/email-scan-results-{date}.md` is written, validate:
+
+- [ ] **File exists and is non-empty** — `brain/context/email-scan-results-{YYYY-MM-DD}.md` must exist and contain content beyond just frontmatter
+- [ ] **Required sections present** — file contains ALL of these section headers:
+  - `## Actionable Items Created`
+  - `## Deal Flow Classified`
+  - `## Draft Status`
+  - `## Introductions Detected`
+  - `## Niche Signals`
+  - `## In-Person Meetings`
+- [ ] **Sections populated or explicitly empty** — each section must have either item entries or an explicit "None" / "No items" marker. A missing section header means the ingestion skipped that scan entirely, which is a bug.
+
+If any section is missing, re-run the corresponding ingestion step (e.g., missing Draft Status → re-run Superhuman draft check). If the file doesn't exist at all, the entire Gmail ingestion failed — log error and retry once before alerting Kay.
+
 ### Manager Red Flags
 The manager raises these to Kay before executing:
 - Conflicting signals (email says deal killed but calendar shows meeting scheduled)

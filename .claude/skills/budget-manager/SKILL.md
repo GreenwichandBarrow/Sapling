@@ -237,6 +237,13 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 
 4. If invoked standalone (not by another skill), also print a human-readable summary.
 
+**Stop hooks (Mode 2 — Runway):**
+- [ ] **Runway calculation exists** — JSON output contains `runway_months` with a numeric value
+- [ ] **Runway non-negative** — `runway_months` >= 0. A negative value means the fund is already past zero — flag immediately
+- [ ] **Dates populated** — `as_of_date` and `fund_deadline` are both present and valid ISO dates
+- [ ] **Staleness check passed** — if data is >45 days old, warning was logged to Kay before returning results
+- [ ] **Available for operations calculated** — `available_for_operations` = `budget_remaining` - `dd_reserve` (verify the math)
+
 ---
 
 ## Mode 3: Tech Audit (`/budget tech-audit`)
@@ -275,6 +282,12 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 6. Create vault output: `brain/outputs/YYYY-MM-DD-tech-stack-audit.md`
 7. Slack notification with savings estimate + sheet link
 
+**Stop hooks (Mode 3 — Tech Audit):**
+- [ ] **Tab 3 updated** — Budget Dashboard Tab 3 (Tech Stack Inventory) was written to via `gog sheets update` and contains current data
+- [ ] **Vault output written** — `brain/outputs/YYYY-MM-DD-tech-stack-audit.md` exists with valid frontmatter per output schema
+- [ ] **Recommendations listed** — at least one recommendation exists with a status (KEEP / EVALUATE / CUT CANDIDATE / DOWNGRADE)
+- [ ] **Savings calculated** — total potential monthly and annual savings figures are present and non-negative
+
 ---
 
 ## Mode 4: Transition (`/budget transition`)
@@ -289,6 +302,12 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 3. Flag overdue items (target date < today AND status != Done)
 4. Report progress and next action
 5. When all milestones are Done, suggest removing this mode and Tab 4
+
+**Stop hooks (Mode 4 — Transition):**
+- [ ] **Checklist updated** — Tab 4 (Transition Tracker) was read and any status changes were written back
+- [ ] **Timeline populated** — every milestone has a target date and a current status (not blank)
+- [ ] **Overdue items flagged** — any milestone with target date < today AND status != Done was surfaced to Kay with recommended action
+- [ ] **Next action clear** — the report includes a single next action item (the earliest non-Done milestone)
 
 **Milestones:**
 1. Anthony completes March close (Apr 7)

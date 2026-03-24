@@ -226,9 +226,20 @@ Based on user choice:
 - Mark skipped traces as `review_status: skipped`
 - Continue with steps 3-6 above
 
+## Validation Gate (before Slack notification)
+
+Before sending the Slack notification, validate all outputs. If any check fails, fix before notifying.
+
+- [ ] **Chatroom properly closed** — `brain/traces/agents/{date}-calibrate.md` has `status: completed` in frontmatter and contains a `-> CLOSE` post from the coordinator
+- [ ] **Calibration proposal generated** — `brain/outputs/calibrations/{date}-calibration.md` exists at the expected path and is non-empty
+- [ ] **At least one actionable proposal** — the calibration output contains at least one proposal with a target file and a concrete edit (not just observations or "no changes needed")
+- [ ] **SOP version bumped if changes applied** — if any applied proposal modifies a deliverable, schedule, or notification referenced in the SOP (G&B Weekly Operating Schedule), verify the SOP was updated as part of the change. If SOP update is missing, add it before committing.
+
+If validation fails: fix the issue and re-validate. Do NOT send Slack until all checks pass. If chatroom is stuck (agents never posted READY), log the failure and present a degraded summary to Kay directly in the session.
+
 ## Notification
 
-After calibration analysis is complete (before human approval), notify Kay:
+After validation passes, notify Kay:
 ```bash
 curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \

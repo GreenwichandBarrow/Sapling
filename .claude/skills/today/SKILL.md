@@ -150,6 +150,22 @@ Read `templates/daily-note.md` for merge behavior and section mapping, then read
 For triage items, include source to help user understand origin.
 </phase_2_synthesis>
 
+<stop_hooks_before_handoff>
+## Stop Hooks: Pre-Handoff Validation
+
+Before proceeding to Phase 3, validate all Phase 1-2 outputs. If any check fails, fix before continuing.
+
+- [ ] **Chatroom exists** — `brain/traces/agents/{date}-start.md` was created and is non-empty
+- [ ] **Both sub-agents posted** — chatroom contains findings from Previous Day Agent AND Inbox Scanner Agent (look for their signed posts)
+- [ ] **Daily note written** — `brain/notes/daily/{date}.md` exists at the expected path
+- [ ] **Daily note frontmatter valid** — file contains `schema_version`, `date`, `type`, and `tags` fields in YAML frontmatter (per `schemas/vault/daily-note.yaml`)
+- [ ] **Email scan results read** — `brain/context/email-scan-results-{date}.md` was read successfully. If missing, log warning to chatroom: "email-scan-results not found — pipeline-manager may not have run yet. Proceeding with sub-agent findings only." This is non-blocking.
+- [ ] **High-confidence items placed** — all items with `confidence: high` appear in the Tasks sections (In-System or Async)
+- [ ] **Medium/low items placed** — all items with `confidence: medium` or `confidence: low` appear in the Triage section with source annotation
+
+If daily note frontmatter is invalid, read the schema example block and fix in one retry. If both sub-agents returned empty, log a warning but still write the daily note (it may only contain email scan findings).
+</stop_hooks_before_handoff>
+
 <phase_3_handoff>
 ## Phase 3: Review & Handoff
 

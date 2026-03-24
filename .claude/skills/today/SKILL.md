@@ -4,7 +4,7 @@ description: "/start Command"
 ---
 
 <objective>
-Aggregate tasks from multiple sources (yesterday's incomplete, inbox, and email) using parallel sub-agents, then synthesize into today's daily note automatically. Routes high-confidence items to Tasks section, defers medium/low to /triage.
+Aggregate tasks from multiple sources (yesterday's incomplete and inbox) using parallel sub-agents, then synthesize into today's daily note automatically. Reads email findings from pipeline-manager's scan results. Routes high-confidence items to Tasks section, defers medium/low to /triage.
 </objective>
 
 <essential_principles>
@@ -13,10 +13,11 @@ Aggregate tasks from multiple sources (yesterday's incomplete, inbox, and email)
 This skill implements a **three-phase orchestrator pattern**:
 
 **Phase 1 - Parallel Gathering:**
-Spawn three sub-agents with chatroom coordination:
+Spawn two sub-agents with chatroom coordination:
 - Previous Day Agent: Reads yesterday's daily note, extracts incomplete tasks
 - Inbox Scanner Agent: Queries brain/inbox/ for critical/overdue/in-progress items
-- Email Scanner Agent: Scans Gmail for actionable emails, creates inbox items
+
+Read `brain/context/email-scan-results-{date}.md` for email findings (pipeline-manager scans Gmail, /start reads results).
 
 **Phase 2 - Synthesis:**
 Orchestrator reads chatroom, deduplicates findings, writes directly to daily note without confirmation.
@@ -30,22 +31,13 @@ Present async items as a **numbered list** for Kay to confirm which become Motio
 
 **Monday carry-over:** On Mondays, the Previous Day Agent reads FRIDAY's daily note (not Sunday's). Weekend days don't have daily notes.
 
-**Idempotent:** Email agent checks `source_ref` before creating inbox items. Running /start multiple times won't create duplicate items.
-
 **Confidence routing:**
 - `confidence: high` → Goes directly to Tasks section
 - `confidence: medium/low` → Deferred to Triage section (handled by /triage)
 
-### State Tracking
+### Email Findings
 
-Processing state is tracked in `brain/context/processing-state.md`:
-
-```yaml
-last_email_scan: 2025-12-28T09:00:00Z  # ISO timestamp
-backfill_complete: true                  # Whether 30-day backfill ran
-```
-
-On first run, email agent scans 30 days. Subsequently, scans since `last_email_scan`.
+Pipeline-manager scans Gmail overnight and writes results to `brain/context/email-scan-results-{YYYY-MM-DD}.md`. The /start command reads this file during Phase 2 synthesis instead of scanning Gmail directly. This eliminates redundant Gmail scanning.
 </essential_principles>
 
 <quick_start>
@@ -53,28 +45,27 @@ On first run, email agent scans 30 days. Subsequently, scans since `last_email_s
 
 When /start is invoked:
 
-1. **Read processing state** from `brain/context/processing-state.md`
+1. **Read email scan results** from `brain/context/email-scan-results-{date}.md` (written by pipeline-manager)
 2. **Create chatroom** at `brain/traces/agents/{date}-start.md`
 3. **Spawn sub-agents in parallel:**
    - Previous Day Agent
    - Inbox Scanner Agent
-   - Email Scanner Agent
 4. **Wait for all agents** to complete
 5. **Synthesize results:**
+   - Merge sub-agent findings with email scan results
    - Deduplicate items (by source_ref, title similarity)
    - Separate high-confidence from medium/low
 6. **Write daily note:**
    - Create/update `brain/notes/daily/{date}.md`
    - High-confidence → Tasks sections
    - Medium/low → Triage section
-7. **Update processing state** with new `last_email_scan`
-8. **Hand off to /triage** if triage items exist
+7. **Hand off to /triage** if triage items exist
 </quick_start>
 
 <phase_1_parallel>
 ## Phase 1: Parallel Sub-Agent Spawning
 
-Spawn all three agents in a **single message** for parallel execution. Each agent posts findings to the chatroom.
+Spawn both agents in a **single message** for parallel execution. Each agent posts findings to the chatroom.
 
 ### Chatroom Setup
 
@@ -97,13 +88,11 @@ Task(
   description="Scan inbox for actionable items",
   prompt="[Inbox Scanner Agent prompt with chatroom protocol]"
 )
-
-Task(
-  subagent_type="general-purpose",
-  description="Scan Gmail for action items",
-  prompt="[Email Scanner Agent prompt with chatroom protocol]"
-)
 ```
+
+### Email Scan Results (no sub-agent needed)
+
+Read `brain/context/email-scan-results-{date}.md` directly in the orchestrator. This file is written by pipeline-manager during its overnight/morning run and contains all actionable email items, deal flow classification, draft status, introductions, and niche signals. No Gmail scanning sub-agent needed.
 
 See `references/sub-agents.md` for complete prompt templates.
 </phase_1_parallel>
@@ -117,8 +106,9 @@ After all sub-agents complete:
 
 Read the full chatroom at `brain/traces/agents/{date}-start.md` to see:
 - What each agent found
-- Any cross-agent signals (e.g., email agent confirming inbox item)
 - Blockers or empty results
+
+Also read `brain/context/email-scan-results-{date}.md` for email findings from pipeline-manager's scan.
 
 ### Deduplicate
 
@@ -191,121 +181,27 @@ If any items were placed in the Triage section:
 If no triage items, skip triage and complete the command.
 </phase_3_handoff>
 
-<email_scanning>
-## Email Scanning Logic
+<email_scan_results>
+## Email Scan Results (from pipeline-manager)
 
-The Email Scanner Agent implements the following:
+Pipeline-manager scans Gmail and writes results to `brain/context/email-scan-results-{YYYY-MM-DD}.md`. The /start command reads this file during Phase 2 synthesis.
 
-### Timeframe Determination
+The file contains:
+- **Actionable Items Created** — inbox items created from emails (with source_ref)
+- **Deal Flow Classified** — DIRECT/BLAST/NEWSLETTER counts
+- **Draft Status** — sent vs unsent drafts with age
+- **Introductions Detected** — new intros found in email
+- **Niche Signals** — passive niche observations from email content
 
-Read `brain/context/processing-state.md`:
-
-```yaml
-last_email_scan: null
-backfill_complete: false
-```
-
-**If `backfill_complete: false`:**
-- Scan last 30 days
-- After completion, set `backfill_complete: true`
-
-**If `backfill_complete: true`:**
-- Scan since `last_email_scan`
-- Typical: last 24-48 hours
-
-### Email Classification
-
-For each email, determine:
-
-1. **Is it actionable?** Direct request, question needing response, deadline mentioned
-2. **Confidence level:**
-   - `high`: Explicit request ("please send", "can you review"), clear deadline, direct question
-   - `medium`: Implied action ("FYI - might want to look at"), suggested deadline
-   - `low`: Possibly actionable, unclear intent
-
-### Idempotency Check
-
-Before creating inbox item, check if `source_ref` already exists:
-
-```
-grep -r "source_ref: \"msg:{message_id}\"" brain/inbox/
-```
-
-If found, skip creation. If not found, create inbox item.
-
-### Inbox Item Creation
-
-Create file at `brain/inbox/{YYYY-MM-DD}-{slug}.md`:
-
-```yaml
----
-schema_version: 1.2.0
-date: {YYYY-MM-DD}
-title: {action title}
-status: backlog
-source: email
-urgency: {normal|high based on deadline}
-source_ref: "msg:{gmail_message_id}"
-source_url: "https://mail.google.com/mail/u/0/#inbox/{message_id}"
-confidence: {high|medium|low}
-automated: true
-tags: [date/{date}, inbox, source/email]
----
-
-# {action title}
-
-## Description
-Email from {sender} on {date}.
-
-{Brief context from email}
-
-## Notes
-*Not started*
-
-## Outcome
-*Pending*
-```
-</email_scanning>
-
-<processing_state>
-## Processing State Management
-
-### State File Location
-`brain/context/processing-state.md`
-
-### State Schema
-
-```yaml
-# Email Scan State
-last_email_scan: 2025-12-28T09:00:00Z   # ISO timestamp
-backfill_complete: true                   # boolean
-```
-
-### Update Pattern
-
-After email scan completes:
-
-1. Read current state
-2. Set `last_email_scan` to current ISO timestamp
-3. If first run, set `backfill_complete: true`
-4. Write updated state
-
-```markdown
-## Email Scan State
-
-\`\`\`yaml
-last_email_scan: {new_timestamp}
-backfill_complete: true
-\`\`\`
-```
-</processing_state>
+If the file doesn't exist (pipeline-manager hasn't run yet), log a warning in the chatroom and proceed with sub-agent findings only. The daily note will be updated when pipeline-manager runs.
+</email_scan_results>
 
 <references_index>
 ## References
 
 | Reference | Purpose |
 |-----------|---------|
-| `sub-agents.md` | Complete prompt templates for all three sub-agents |
+| `sub-agents.md` | Complete prompt templates for both sub-agents |
 </references_index>
 
 <templates_index>

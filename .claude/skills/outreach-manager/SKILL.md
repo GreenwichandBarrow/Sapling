@@ -40,8 +40,7 @@ Before either subagent drafts outreach, run these checks:
 
 The dedup + warm intro check runs once when targets are received, before any drafting begins.
 
-**How outreach-manager knows Kay sent the email:**
-Check Superhuman via the `superhuman` MCP server for sent status on drafted emails. If the draft was sent (no longer in drafts folder), the email was sent. Update Attio accordingly.
+**Delivery tracking note:** Pipeline-manager tracks Superhuman draft send status and updates Attio stages. Outreach-manager focuses on drafting only.
 </dedup_layer>
 
 <cold_outreach>

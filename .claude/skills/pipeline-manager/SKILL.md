@@ -290,6 +290,62 @@ This replaces the previous approach where Kay manually flagged warm intros. The 
 5. Set `source: email`, assign confidence level (high/medium/low)
 6. High confidence items surface in Part 1. Medium/low go to /triage.
 
+### Deal Flow Email Classification (absorbed from intermediary-manager Channel 2)
+
+During Gmail ingestion, every email labeled "DEAL FLOW" must be classified as one of:
+
+1. **BLAST** — BCC'd distribution, generic greeting, "New Listing" subject, sent to broker's full network of 3000+. Agent screens against buy box. **Auto-reject any deal with stated revenue below $1.5M** — archive silently, do not flag even if thesis-aligned. Remaining matches → Slack ping. No match → archive silently. Kay never sees these unless there's a match above the revenue floor.
+
+2. **DIRECT** — Addressed to Kay by name, references prior conversation or specific criteria Kay shared, expects a response, may include "Introduction" or "RE:" in subject, sometimes has CIM/teaser attached. These ALWAYS get surfaced to Kay — never auto-archived. Present in morning briefing via Inbound Intermediary Deal Detection flow.
+
+3. **NEWSLETTER** — Industry newsletters, deal roundups, educational content (e.g., Helen Guo / SMB Deal Hunter). Not actionable deal flow. Move to a "DEAL FLOW/ARCHIVE" label. Scan for niche signals only — patterns in what industries are being listed, new niche ideas.
+
+**Pattern detection for classification:**
+- BCC header present → BLAST
+- Kay's name in greeting ("Hi Kay", "Dear Kay") + personalized context → DIRECT
+- Unsubscribe link + no personalization → NEWSLETTER or BLAST
+- Sender in Attio Intermediary Pipeline at "Warmed" or higher + personalized → DIRECT
+- Sender not in Attio + mass-email patterns → BLAST
+
+**Guardrail:** When uncertain, default to DIRECT. It's better to surface an email Kay doesn't need than to archive one that needed a response.
+
+### Email Scan Results Artifact
+
+After Gmail ingestion completes (including deal flow classification), write a structured results file so downstream skills (e.g., /start) can read email findings without re-scanning Gmail.
+
+**Location:** `brain/context/email-scan-results-{YYYY-MM-DD}.md`
+
+**Format:**
+```yaml
+---
+date: YYYY-MM-DD
+scan_timestamp: ISO-8601
+emails_scanned: N
+---
+```
+
+```markdown
+## Actionable Items Created
+- brain/inbox/YYYY-MM-DD-{slug}.md (source_ref: msg:{id})
+
+## Deal Flow Classified
+- DIRECT: {count}
+- BLAST: {count}
+- NEWSLETTER: {count}
+
+## Draft Status
+- Sent: {list}
+- Unsent: {list with age}
+
+## Introductions Detected
+- {introducer} -> {person} at {company}
+
+## Niche Signals
+- {signal} -> brain/inbox/...
+```
+
+This artifact is the handoff contract between pipeline-manager (which scans Gmail) and /start (which reads results). /start never scans Gmail directly.
+
 ### Active Deal Fast-Path (PRIORITY — runs during Gmail ingestion)
 
 **Before standard inbox processing**, check every email against Active Deals in stages 3-9 (First Conversation through LOI Signed). Match by company name, contact name, or intermediary firm.
@@ -929,16 +985,18 @@ Scan calendar for **tomorrow's meetings** and prep briefs today. The brief must 
 |---------|---------|---------|
 | Jeff Stevens (Anacapa) | Monthly | `/investor-update call-prep jeff` → saves to INVESTOR COMMUNICATION / MONTHLY |
 | Guillermo Lavergne | Bi-weekly | `/investor-update call-prep guillermo` → saves to INVESTOR COMMUNICATION / BI-WEEKLY |
-| Any new external contact | As needed | `/meeting-brief {contact}` → saves to RESEARCH / BRIEFS |
+| Any new external contact | As needed | meeting-brief-manager handles this via launchd |
+
+**Note:** meeting-brief-manager runs nightly at 10pm ET to handle all meeting prep. Pipeline-manager does NOT trigger meeting-brief directly. It only triggers investor-specific call-prep skills (Jeff monthly, Guillermo bi-weekly) which have different templates.
 
 ```bash
-# Look at tomorrow's calendar (on Fridays, also scan Monday)
+# Look at tomorrow's calendar for investor meetings only
 gog calendar list --from {TOMORROW} --to {TOMORROW} --json
 # On Fridays: also run for Monday
 # gog calendar list --from {NEXT_MONDAY} --to {NEXT_MONDAY} --json
 ```
 
-Brief is ready today, one full day before the meeting. Slack ping to #operations with the doc link.
+Investor call prep is done here. All other meeting briefs are handled by meeting-brief-manager's nightly launchd run.
 
 ### Follow-Up Actions
 

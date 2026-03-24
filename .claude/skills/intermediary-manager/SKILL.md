@@ -1,6 +1,6 @@
 ---
 name: intermediary-manager
-description: "Manage the 20% intermediary deal channel — platform scanning, email screening, new intro processing, and niche signal detection. Flags matches for Kay, feeds signals to niche-intelligence."
+description: "Manage the 20% intermediary deal channel — platform scanning, new intro processing, and niche signal detection. Flags matches for Kay, feeds signals to niche-intelligence."
 user_invocable: true
 context_budget:
   skill_md: 2500
@@ -9,7 +9,7 @@ context_budget:
 ---
 
 <objective>
-Manage the intermediary deal flow channel. Screen broker platforms and inbound listing emails against the buy box, surface matches, and detect niche signals.
+Manage the intermediary deal flow channel. Screen broker platforms against the buy box, process new introductions, surface matches, and detect niche signals.
 
 This is the 20% channel. It supplements proprietary outreach (target-discovery + outreach-manager), never replaces it. Broker deals go to 3000+ buyers — we rarely win competitive bids. The value here is: early detection of thesis-matching deals, niche signal intelligence, and growing the intermediary network over time.
 
@@ -21,10 +21,7 @@ This is the 20% channel. It supplements proprietary outreach (target-discovery +
 
 **This skill DOES:**
 - Scan searchable broker platforms daily for buy-box matches
-- Screen inbound deal flow emails (blasts vs. direct)
 - Flag matches via Slack (#active-deals) with link to listing
-- Archive non-matching blasts silently
-- Surface direct broker-to-Kay emails that need a response
 - Feed listing patterns to niche-intelligence as market signals and new thesis ideas
 - Process new broker introductions (research platform, assess scrapability, add to rotation)
 
@@ -39,7 +36,7 @@ This is the 20% channel. It supplements proprietary outreach (target-discovery +
 </objective>
 
 <channels>
-## Three Channels
+## Two Channels
 
 ### Channel 1: Platform Scanning (Daily)
 Scan searchable broker platforms for new listings matching the buy box.
@@ -86,31 +83,12 @@ curl -s -X POST "$SLACK_WEBHOOK_ACTIVE_DEALS" \
 
 **Platform rotation:** If intermediary channel exceeds 25% of weekly targets (tracked on Weekly Tracker), reduce platform scanning to every other day and only surface exact thesis matches.
 
-### Channel 2: Inbound Email Screening (Overnight)
-Screen deal flow emails that arrive in Kay's inbox.
+### Channel 2: New Introductions
+When Kay receives a broker introduction (someone introduces her to a new intermediary).
 
-**Email classification (CRITICAL):**
-Every email labeled "DEAL FLOW" must be classified as one of:
+**Note:** Pipeline-manager now handles all email scanning, including deal flow classification (BLAST/DIRECT/NEWSLETTER). Any broker introductions detected via email are written to `brain/context/email-scan-results-{date}.md`. This channel reads from that file for introduction signals rather than scanning Gmail directly.
 
-1. **BLAST** — BCC'd distribution, generic greeting, "New Listing" subject, sent to broker's full network of 3000+. Agent screens against buy box. **Auto-reject any deal with stated revenue below $1.5M** — archive silently, do not flag even if thesis-aligned. Remaining matches → Slack ping. No match → archive silently. Kay never sees these unless there's a match above the revenue floor.
-
-2. **DIRECT** — Addressed to Kay by name, references prior conversation or specific criteria Kay shared, expects a response, may include "Introduction" or "RE:" in subject, sometimes has CIM/teaser attached. These ALWAYS get surfaced to Kay — never auto-archived. Present in morning briefing via pipeline-manager's Inbound Intermediary Deal Detection flow.
-
-3. **NEWSLETTER** — Industry newsletters, deal roundups, educational content (e.g., Helen Guo / SMB Deal Hunter). Not actionable deal flow. Move to a "DEAL FLOW/ARCHIVE" label. Scan for niche signals only — patterns in what industries are being listed, new niche ideas.
-
-**Pattern detection for classification:**
-- BCC header present → BLAST
-- Kay's name in greeting ("Hi Kay", "Dear Kay") + personalized context → DIRECT
-- Unsubscribe link + no personalization → NEWSLETTER or BLAST
-- Sender in Attio Intermediary Pipeline at "Warmed" or higher + personalized → DIRECT
-- Sender not in Attio + mass-email patterns → BLAST
-
-**Guardrail:** When uncertain, default to DIRECT. It's better to surface an email Kay doesn't need than to archive one that needed a response.
-
-### Channel 3: New Introductions
-When Kay receives a broker introduction (someone introduces her to a new intermediary):
-
-1. **Detect** — Agent scans for intro patterns: "I'd like to introduce you to...", "Connecting you with...", "Meet [name] who...", CC'd introductions
+1. **Detect** — Read `brain/context/email-scan-results-{date}.md` for introduction signals. Also scan for intro patterns in other channels: "I'd like to introduce you to...", "Connecting you with...", "Meet [name] who...", CC'd introductions
 2. **Research** — Visit the broker's website. Determine:
    - Do they have a searchable listing platform?
    - What industries/deal sizes do they focus on?
@@ -119,7 +97,7 @@ When Kay receives a broker introduction (someone introduces her to a new interme
    - Create entity in `brain/entities/{slug}.md`
    - Add to Attio Intermediary Pipeline at "Identified"
    - If scrapable platform → add to Channel 1 scanning rotation
-   - If email-only deal flow → note for Channel 2 monitoring
+   - If email-only deal flow → note as email-only intermediary (pipeline-manager handles email scanning)
 4. **Draft response** — Warm reply in Superhuman (thank introducer, express interest to broker, mention search criteria). Per feedback: short, offer NDA, don't over-explain.
 5. **Update this skill** — Add new platform to the scanning list in Channel 1 if applicable
 </channels>
@@ -182,16 +160,6 @@ After each platform scan completes, verify before reporting results:
 
 **If any check fails:** Fix before sending Slack notification. A bad link or wrong match wastes Kay's time.
 
-### Email Classification Stop Hook
-After classifying deal flow emails, verify:
-- [ ] Every DIRECT email is surfaced — zero false negatives on this category
-- [ ] BLAST classification confirmed by at least 2 signals (BCC header, generic greeting, mass-send pattern)
-- [ ] No email from a sender in Attio at "Warmed" or higher stage was classified as BLAST
-- [ ] NEWSLETTER classification only for actual newsletters (recurring, editorial content, not deal-specific)
-- [ ] Every archived email logged with classification reason
-
-**If uncertain on classification:** Default to DIRECT. Surface it. Let Kay decide.
-
 ### New Introduction Stop Hook
 After processing a broker introduction:
 - [ ] Entity created in vault with proper schema
@@ -217,11 +185,9 @@ Before sending niche signals to niche-intelligence:
 
 ### Daily Check
 - [ ] All platforms scanned (or on rotation schedule if throttled)
-- [ ] All DEAL FLOW emails classified (BLAST/DIRECT/NEWSLETTER)
 - [ ] Matches sent to Slack with links
 - [ ] Non-matches archived
-- [ ] Direct emails surfaced in morning briefing
-- [ ] New introductions processed (if any)
+- [ ] New introductions processed from `brain/context/email-scan-results-{date}.md` (if any)
 
 ### Weekly (on Weekly Tracker)
 - [ ] Intermediary vs proprietary ratio calculated
@@ -231,7 +197,6 @@ Before sending niche signals to niche-intelligence:
 - [ ] Platform scanning working? (any sites changed structure/blocked?)
 
 ### Guardrails
-- **Never auto-archive DIRECT emails.** When in doubt, surface it.
 - **Never exceed 25% intermediary ratio** without flagging Kay.
 - **Never contact an owner directly** on a broker-sourced deal. Always go through the broker.
 - **Never burn time on competitive auctions.** If a deal is clearly going to multiple bidders with higher offers, flag it but recommend pass.
@@ -243,8 +208,6 @@ Before sending niche signals to niche-intelligence:
 
 ### Phase 1 (Testing — first 2 weeks)
 - [ ] Platform scanning runs daily for all 17 platforms
-- [ ] Email classification accuracy >90% (verify with Kay)
-- [ ] Zero DIRECT emails accidentally archived
 - [ ] Slack pings include working links
 - [ ] Niche signals generated weekly
 

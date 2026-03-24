@@ -130,7 +130,27 @@ Kay
 - No em dashes. Periods, commas, line breaks.
 - Lead with curiosity about what they've built, even in Variant B.
 
-Draft in Superhuman via the CLI (NOT the MCP tool — it uses Gmail API which creates invisible drafts). Use Bash:
+### Email Verification (Non-Linkt Targets Only)
+
+Before drafting, verify email addresses for targets where **Col A (Source) is NOT "Linkt."** Linkt does its own enrichment and verification — skip this step for Linkt-sourced targets.
+
+```bash
+source .env && curl -s "https://api.apollo.io/v1/people/match" \
+  -H "Content-Type: application/json" \
+  -H "X-Api-Key: $APOLLO_API_KEY" \
+  -d '{"first_name":"{first}","last_name":"{last}","organization_name":"{company}","domain":"{domain}"}'
+```
+
+**Gate logic based on `email_status`:**
+- `verified` → proceed to draft
+- `guessed` / `unavailable` / `bounced` → do NOT draft. Write status to Col W (Email Verified) on target sheet. Notify Kay: "{owner} at {company} — email not verified ({status}). Skip or find alternate?"
+- `pending` → retry once after 5 minutes. If still pending, flag.
+
+**Why:** Bounced emails burn Kay's sender domain reputation. Linkt validates its own data. Non-Linkt sources (association directories, conference lists, web scraping) need verification.
+
+### Draft Creation
+
+Draft in Superhuman via the wrapper script (NOT the MCP tool — it uses Gmail API which creates invisible drafts). Use Bash:
 ```bash
 superhuman-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
 ```
@@ -141,7 +161,8 @@ This creates native Superhuman drafts via CDP. Kay reviews and sends from Superh
 Outreach-manager is the only skill that writes to Attio for targets. The sequence:
 
 1. Read the target sheet, find rows where Col O = "Approve" that weren't approved in the prior run (new approvals)
-2. For each newly approved target, search Attio for the person AND company:
+2. For non-Linkt targets, verify email via Apollo API. Only proceed if `verified`.
+3. For each verified approved target, search Attio for the person AND company:
    - **If found** → someone Kay already knows. Flag as warm intro (Col X), skip cold outreach. This is both the dedup check AND the warm intro check in one step.
    - **If not found** → create the company + person in Attio, add company to Active Deals at "Identified" stage. Proceed with cold outreach.
 3. When outreach-manager drafts the Day 1 email → target stays at "Identified" (draft only, not sent yet)

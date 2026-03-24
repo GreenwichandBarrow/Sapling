@@ -782,7 +782,7 @@ Pipeline updates complete:
 
 ### Upcoming Meeting Prep Triggers
 
-Scan calendar 2 days ahead. If upcoming meetings match these contacts, trigger the appropriate skill:
+Scan calendar for **tomorrow's meetings** and prep briefs today. The brief must be ready the day before the meeting. On Fridays, scan Monday's calendar too (so Monday morning briefs are ready over the weekend). If upcoming meetings match these contacts, trigger the appropriate skill:
 
 | Contact | Cadence | Trigger |
 |---------|---------|---------|
@@ -791,12 +791,13 @@ Scan calendar 2 days ahead. If upcoming meetings match these contacts, trigger t
 | Any new external contact | As needed | `/meeting-brief {contact}` → saves to RESEARCH / BRIEFS |
 
 ```bash
-# Look 2 days ahead for investor calls
-gog calendar list --from {TODAY} --to {DAY_AFTER_TOMORROW} --json
-# If Jeff Stevens or Guillermo Lavergne appears, trigger call prep
+# Look at tomorrow's calendar (on Fridays, also scan Monday)
+gog calendar list --from {TOMORROW} --to {TOMORROW} --json
+# On Fridays: also run for Monday
+# gog calendar list --from {NEXT_MONDAY} --to {NEXT_MONDAY} --json
 ```
 
-Brief is ready the next morning, one full day before the call. Slack ping to #operations with the doc link.
+Brief is ready today, one full day before the meeting. Slack ping to #operations with the doc link.
 
 ### Follow-Up Actions
 

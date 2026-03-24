@@ -6,7 +6,7 @@ description: Processing state for automated workflows
 ## Email Scan State
 
 ```yaml
-last_email_scan: 2026-03-24T06:00:00Z
+last_email_scan: 2026-03-24T13:00:00Z
 backfill_complete: true
 ```
 

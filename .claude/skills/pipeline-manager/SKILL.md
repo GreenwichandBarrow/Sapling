@@ -1,6 +1,6 @@
 ---
 name: pipeline-manager
-description: "Daily morning briefing — pipeline stage changes, outreach recommendations (nurture cadence), and action items (Granola). Kay reviews, approved items become Motion tasks automatically. Runs on session start."
+description: "Daily morning briefing — pipeline stage changes, outreach recommendations (nurture cadence), and action items (Granola). Kay reviews, approved items become Motion tasks automatically. Runs when Kay says good morning."
 user_invocable: true
 ---
 
@@ -524,7 +524,7 @@ After processing Tabled/Killed moves and re-sorting WEEKLY REVIEW, validate:
 
 ## Trigger
 
-- **Auto:** Runs on session start via hook (before `/start` daily workflow)
+- **Auto:** Runs when Kay says "good morning" (triggers the daily workflow)
 - **Manual:** `/pipeline-manager` on demand
 
 ## Slack Notification

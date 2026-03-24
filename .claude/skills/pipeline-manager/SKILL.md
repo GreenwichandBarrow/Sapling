@@ -233,8 +233,20 @@ Read the active niche sprint's master sheet ("{Niche} - Target List") in LINKT T
 **JJ's hours:** 10am - 2pm ET, Mon-Fri. All notifications at 10am, not 9am.
 
 **Overnight (before 10am):**
-1. Select 4-6 targets from the master target sheet where Kay: Decision = Approved and JJ: Call Status is empty
-2. For each target, create a Call Log doc from template (ID: `1nvvdOU7I5NLAwxrYgHIFTRNrEZmc67X8`):
+1. Select targets from the master target sheet where:
+   - Col O (Kay: Decision) = "Approve"
+   - Col Y (Outreach Stage) = "Email Sent"
+   - Col R (JJ: Call Date) = today
+   - Col Q (JJ: Call Status) is empty
+2. **Reply check (CRITICAL):** Before adding ANY target to JJ's call list, search Gmail for replies from that target's email address since the outreach was sent:
+   ```bash
+   gog gmail search "from:{target_email}" --max 5 --plain
+   ```
+   - **If reply found** → owner already responded. Remove from JJ's call list. Update Col Y to "Reply Received". Flag in Kay's morning briefing: "{owner} at {company} replied. JJ call canceled."
+   - **If no reply** → proceed with JJ call assignment.
+
+   JJ only calls targets who haven't responded. A call after a reply is redundant and could annoy the owner.
+3. For each verified no-reply target, create a Call Log doc from template (ID: `1nvvdOU7I5NLAwxrYgHIFTRNrEZmc67X8`):
    - Copy template → save to OPERATIONS / CALL LOGS (`1nGSQIa28fhQ9dXuKdMks_172gyxAinEs`)
    - Name: "Call Log - {Company Name} {M.DD.YY}.docx"
    - Pre-populate COMPANY INFO section from Linkt data in the master target sheet

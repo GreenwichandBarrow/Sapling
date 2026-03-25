@@ -529,6 +529,8 @@ You are the ONE-PAGER CREATION agent for the Friday Niche Intelligence workflow.
 
 YOUR TASK: Create a professional one-pager (.pptx) for {NICHE_NAME} following G&B's standard template.
 
+CRITICAL: Never use "Kay" in any generated content. Use "G&B" or "Greenwich & Barrow" for all references to background, network, right-to-win, or connections. These are professional documents shared with analysts and investors.
+
 PRE-FLIGHT CHECK (do this FIRST):
 Before creating anything, check if a one-pager already exists for this niche (or a variant name):
 1. List existing Drive folders: gog drive list -a kay.s@greenwichandbarrow.com --parent 1tiAc7lVveBwi_DlYcFUX2tFP6FVwYKmQ -j
@@ -652,8 +654,8 @@ ALSO COMPUTE WEEKLY REVIEW TAB COLUMNS:
 - Margins: Low/Medium/High/Very High
 - Recurring Revenue: Low/Medium/High
 - AI Defensibility: Low/Medium/High (3=protected from AI disruption)
-- Right to Win (Kay): None/Moderate/Strong (Chanel/luxury background, MBA, fashion industry)
-- Network Access: None/Some/Strong (does Kay have existing contacts in this space?)
+- Right to Win (G&B): None/Moderate/Strong (luxury background, MBA, fashion industry)
+- Network Access: None/Some/Strong (does G&B have existing contacts in this space?)
 
 CREATE PER-NICHE SCORECARD XLSX:
 After scoring each niche, create a standalone scorecard xlsx file:

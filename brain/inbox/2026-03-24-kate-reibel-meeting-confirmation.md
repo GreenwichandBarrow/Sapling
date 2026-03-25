@@ -2,7 +2,7 @@
 schema_version: 1.2.0
 date: 2026-03-24
 title: "Confirm meeting time with Kate Reibel (Rauschenberg Foundation) - TODAY"
-status: backlog
+status: done
 source: email
 urgency: critical
 entity: "[[entities/kate-reibel]]"

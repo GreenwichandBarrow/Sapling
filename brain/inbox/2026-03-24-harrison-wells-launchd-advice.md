@@ -2,7 +2,7 @@
 schema_version: 1.2.0
 date: 2026-03-24
 title: "Note Harrison Wells advice: launchd over cron for laptop scheduling"
-status: backlog
+status: done
 source: email
 urgency: low
 entity: "[[entities/harrison-wells]]"

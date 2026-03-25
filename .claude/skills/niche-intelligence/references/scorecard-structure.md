@@ -1,5 +1,23 @@
 # G&B Industry Scorecard Structure
 
+## Per-Niche xlsx Architecture
+
+Each niche gets its own standalone scorecard xlsx file, stored in its Drive folder alongside the one-pager pptx.
+
+**Structure of each niche xlsx:**
+- **Tab 1: INITIAL SCREEN** -- Pass/fail gate on 4 criteria (margins, recurring revenue, growth, Growth TAM). Must pass all 4 to proceed to detailed scoring.
+- **Tab 2: Industry Scorecard** -- Detailed 7-category scoring with weighted formulas (renamed from TEMPLATE tab in the master). Sub-criteria scored as +/+/-/-, formulas auto-calculate weighted totals.
+- **Tab 3+: Company Scorecards** -- Added by deal-evaluation skill as individual acquisition targets within the niche are scored. Each company gets its own tab.
+
+**Template source:** `brain/library/internal/scorecard/G&B Industry & Company Scorecard Template.xlsx`
+
+**The xlsx is the source of truth for scores.** The one-pager pptx reflects the score in its Assessment/Status section. The Industry Research Tracker Google Sheet summarizes scores for cross-niche comparison. If there is ever a discrepancy, the xlsx wins.
+
+**Naming convention:** `{Niche Name} Scorecard {Month} {Year}.xlsx`
+**Location:** Same Drive folder as the niche one-pager, under WEEKLY REVIEW subfolder (`1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT`)
+
+---
+
 Source: `G&B Industry & Company Scorecard Template.xlsx`
 - **Original Drive ID:** `1kCCbEBpAgwX2TMn095W8-EzUUqvXIpWO`
 - **Updated copy (3/20/2026, with INITIAL SCREEN tab):** `1_67yuJOFLvBX-1U5hEpTAO1q74-fr4aH`

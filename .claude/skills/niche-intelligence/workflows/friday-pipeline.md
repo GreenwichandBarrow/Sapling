@@ -15,8 +15,7 @@
 
 1. Create chatroom at `brain/traces/agents/{YYYY-MM-DD}-niche-intelligence.md`
 2. Read current tracker state:
-   - IDEATION tab (existing niches under consideration)
-   - WEEKLY REVIEW tab (active niches — need current scores for promotion threshold)
+   - WEEKLY REVIEW tab (all niches under active consideration — new niches go here directly)
    - KILLED tab (niche names to exclude)
    - TABLED tab (niches that could resurface with new data)
 3. Store the killed/tabled/active niche lists — these feed into Step 2
@@ -109,7 +108,7 @@ Each agent:
 2. Performs web research to fill all one-pager sections (Industry Overview, Thesis, Trends, Economics, Competition, Customers, Barriers, Key Success Factors, Exit)
 3. Does NOT score or rate the niche — Assessment/Status is left as "Pending Scoring"
 4. Uses `python-pptx` to create the pptx file following the template structure
-5. Creates a Drive folder for the niche under IDEATION subfolder (`1fQNl6mogJW-6u5XJeE5uYQGsDPx495_O`)
+5. Creates a Drive folder for the niche under WEEKLY REVIEW subfolder (`1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT`)
 6. Uploads the pptx to the new folder
 7. Posts folder ID and file confirmation to chatroom
 
@@ -119,8 +118,8 @@ After ALL one-pager agents complete, the orchestrator MUST verify each niche bef
 
 For each niche:
 1. Confirm .pptx file exists locally (`ls /tmp/{niche-slug}-onepager.pptx`)
-2. Confirm Drive folder was created in IDEATION subfolder:
-   `gog drive ls -a kay.s@greenwichandbarrow.com --parent 1fQNl6mogJW-6u5XJeE5uYQGsDPx495_O -j`
+2. Confirm Drive folder was created in WEEKLY REVIEW subfolder:
+   `gog drive ls -a kay.s@greenwichandbarrow.com --parent 1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT -j`
 3. Confirm exactly ONE file exists in each new folder (no duplicates):
    `gog drive ls -a kay.s@greenwichandbarrow.com --parent {folder_id} -j`
 4. Confirm Assessment/Status says "Pending Scoring" (no scores leaked into one-pager)
@@ -130,16 +129,16 @@ For each niche:
 
 ## Step 4: ADD TO TRACKER (Sequential)
 
-Spawn `niche-intel-tracker` agent to add new niches to IDEATION tab BEFORE scoring.
+Spawn `niche-intel-tracker` agent to add new niches directly to WEEKLY REVIEW tab BEFORE scoring.
 
 This agent:
-1. Appends each new niche to IDEATION tab with columns populated (Score left blank, notes = "Pending scoring")
+1. Appends each new niche to WEEKLY REVIEW tab with columns populated (Score left blank, notes = "Pending scoring")
 2. Posts confirmation of all sheet updates to chatroom
 
 ### Verification Gate 4 (STOP — must pass before Step 5)
 
 After tracker update completes, verify:
-1. Re-read IDEATION tab: `gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "IDEATION!A:J" -a kay.s@greenwichandbarrow.com -j`
+1. Re-read WEEKLY REVIEW tab: `gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!A:I" -a kay.s@greenwichandbarrow.com -j`
 2. Confirm each new niche appears as a row
 3. Confirm Score column is blank or "Pending"
 
@@ -157,12 +156,12 @@ This agent:
 1. For each niche, evaluates against the **detailed scorecard** (TEMPLATE tab structure — 7 categories, 20+ sub-criteria)
 2. Performs additional web research where data gaps exist
 3. Computes weighted scores
-4. Normalizes to /3 scale for IDEATION tab compatibility
-5. Also fills in IDEATION-specific columns: Margins, Recurring Revenue, AI Defensibility, Right to Win, Network Access
-6. Writes the final output report to `brain/outputs/{date}-niche-intelligence-report.md`
-7. **Updates one-pagers** with final scores (downloads pptx, updates Assessment/Status, re-uploads)
-8. **Updates tracker** with scores (writes score + IDEATION columns to the rows added in Step 4)
-9. Checks if any scored niche warrants promotion to WEEKLY REVIEW (score > lowest WEEKLY REVIEW score AND >= 2.50)
+4. Normalizes to /3 scale for WEEKLY REVIEW tab compatibility
+5. Also fills in WEEKLY REVIEW-specific columns: Margins, Recurring Revenue, AI Defensibility, Right to Win, Network Access
+6. **Creates per-niche scorecard xlsx** — copies template from `brain/library/internal/scorecard/G&B Industry & Company Scorecard Template.xlsx`, fills INITIAL SCREEN + Industry Scorecard tabs with scored data using `openpyxl`, uploads to the niche's Drive folder (same folder as the one-pager)
+7. Writes the final output report to `brain/outputs/{date}-niche-intelligence-report.md`
+8. **Updates one-pagers** with final scores (downloads pptx, updates Assessment/Status, re-uploads)
+9. **Updates tracker** with scores (writes score + WEEKLY REVIEW columns to the rows added in Step 4)
 
 ### Output Report Structure
 
@@ -212,9 +211,10 @@ tags:
 | Porter's Forces | {1-3} | 15% | {brief} |
 | Value Creation | {1-3} | 10% | {brief} |
 | Impact | {1-3} | 5% | {brief} |
-**IDEATION Columns:** Margins={}, Recurring={}, AI Defensibility={}, Right to Win={}, Network Access={}
+**WEEKLY REVIEW Columns:** Margins={}, Recurring={}, AI Defensibility={}, Right to Win={}, Network Access={}
 **One-Pager:** [Drive link]
-**Recommendation:** Add to IDEATION / Promote to WEEKLY REVIEW / Table / Kill
+**Scorecard xlsx:** [Drive link]
+**Recommendation:** Keep in WEEKLY REVIEW / Table / Kill
 
 {Repeat for each niche}
 
@@ -231,14 +231,35 @@ tags:
 - [ ] Output report exists at `brain/outputs/{date}-niche-intelligence-report.md`
 - [ ] Report has valid vault frontmatter
 - [ ] Each niche has a complete scorecard
+- [ ] Per-niche scorecard xlsx uploaded to each niche's Drive folder (same folder as one-pager)
 - [ ] One-pagers updated with scores on Drive
-- [ ] Tracker IDEATION rows updated with scores
-- [ ] Promoted niches appear in WEEKLY REVIEW tab (if applicable)
-- [ ] Promoted niches have their Drive folder moved from IDEATION (`1fQNl6mogJW-6u5XJeE5uYQGsDPx495_O`) to WEEKLY REVIEW (`1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT`): `gog drive move {folder_id} --parent 1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT -a kay.s@greenwichandbarrow.com -y`
+- [ ] Tracker WEEKLY REVIEW rows updated with scores
+- [ ] New niches appear in WEEKLY REVIEW tab with scores populated
+- [ ] Each niche Drive folder in WEEKLY REVIEW subfolder (`1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT`) contains both one-pager pptx and scorecard xlsx
 
 ## Completion
 
-After all steps complete:
+### Pre-Notification Stop Hook (MUST pass before Slack notification)
+
+**CRITICAL: Slack notification is the LAST thing that happens. Never notify before deliverables are complete.** Kay and her analyst use the notification as a signal that everything is ready to review.
+
+For EACH new niche, verify ALL deliverables exist in its Drive folder:
+- [ ] One-pager .pptx uploaded to niche folder in WEEKLY REVIEW
+- [ ] Scorecard .xlsx uploaded to SAME niche folder in WEEKLY REVIEW
+- [ ] Tracker WEEKLY REVIEW row has score populated (not blank or "Pending")
+- [ ] One-pager Assessment/Status updated with final score (not "Pending Scoring")
+
+**Verification command (run for each niche):**
+```bash
+gog drive ls -a kay.s@greenwichandbarrow.com --parent {niche_folder_id} -p
+# Must show exactly 2 files: one .pptx and one .xlsx
+```
+
+**If ANY niche fails this check:** Fix it before sending notification. Download, re-upload, or re-run the failed step. Do NOT send Slack with incomplete deliverables.
+
+**If ALL niches pass:** Proceed to notification.
+
+After all steps complete and stop hook passes:
 
 1. Read the full chatroom to compile final status
 2. Send Slack notification:
@@ -273,11 +294,11 @@ This workflow is complete when:
 - [ ] Both gathering tracks (RECENT + HISTORICAL) ran and posted to chatroom
 - [ ] 0-5 new niches identified with documented reasoning
 - [ ] One-pager .pptx created and uploaded (no scores — "Pending Scoring")
-- [ ] Niches added to IDEATION tab in tracker (no scores yet)
+- [ ] Niches added to WEEKLY REVIEW tab in tracker (no scores yet)
 - [ ] Each niche scored against detailed G&B scorecard
+- [ ] Per-niche scorecard xlsx created and uploaded to niche Drive folder
 - [ ] Scores written back to one-pagers (Assessment/Status updated)
-- [ ] Scores written back to tracker (IDEATION rows updated)
-- [ ] High-scoring niches promoted to WEEKLY REVIEW if warranted
+- [ ] Scores written back to tracker (WEEKLY REVIEW rows updated)
 - [ ] Output report written with valid vault frontmatter
 - [ ] Slack notification sent with niche count, names, scores
 - [ ] User notified with summary

@@ -40,7 +40,7 @@ Subfolders by status (niche folders go INSIDE these):
 | TABLED | `1_k_c1F11ZNrv4MilATFrURLHdkNx0kRx` |
 | KILLED | `19xsNk5KTVHF2jb6m_li8IAGjcw34nlMX` |
 
-When creating a new niche folder, place it under the appropriate status subfolder (usually IDEATION for new niches). When a niche is promoted or killed, move the folder to the corresponding status subfolder.
+When creating a new niche folder, place it directly under the WEEKLY REVIEW subfolder (new niches skip IDEATION). When a niche is killed or tabled, move the folder to the corresponding status subfolder.
 
 ### Current Niche Folders
 **WEEKLY REVIEW:**

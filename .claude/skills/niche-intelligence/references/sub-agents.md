@@ -311,7 +311,7 @@ YOUR TASK: Read all chatroom posts from RECENT and HISTORICAL gathering agents a
 READ: brain/traces/agents/{DATE}-niche-intelligence.md (all posts from Step 1)
 
 ALSO READ:
-- The KILLED, TABLED, IDEATION, and WEEKLY REVIEW niche lists (provided by orchestrator)
+- The KILLED, TABLED, and WEEKLY REVIEW niche lists (provided by orchestrator)
 - brain/context/learnings.md
 
 PRODUCE THESE 5 OUTPUTS (post all to chatroom):
@@ -440,7 +440,7 @@ INPUTS PROVIDED:
 1. Chatroom findings from all 5 gathering agents
 2. Killed niches list (EXCLUDE these — they failed for documented reasons)
 3. Tabled niches list (CAN resurface if new data warrants it)
-4. Active niches in IDEATION and WEEKLY REVIEW (don't duplicate)
+4. Active niches in WEEKLY REVIEW (don't duplicate)
 5. Learnings context from brain/context/learnings.md
 
 READ THESE FILES:
@@ -598,9 +598,9 @@ FILE NAMING: `{Niche Name} {Month} {Year}.pptx`
 Save locally to: `/tmp/{niche-slug}-onepager.pptx`
 
 DRIVE UPLOAD:
-New niches go into the IDEATION subfolder (ID: 1fQNl6mogJW-6u5XJeE5uYQGsDPx495_O).
+New niches go directly into the WEEKLY REVIEW subfolder (ID: 1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT).
 1. Create folder:
-   gog drive mkdir "{NICHE NAME}" -a kay.s@greenwichandbarrow.com --parent 1fQNl6mogJW-6u5XJeE5uYQGsDPx495_O -j
+   gog drive mkdir "{NICHE NAME}" -a kay.s@greenwichandbarrow.com --parent 1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT -j
 2. Upload file:
    gog drive upload "/tmp/{niche-slug}-onepager.pptx" -a kay.s@greenwichandbarrow.com --parent {new_folder_id}
 
@@ -648,12 +648,63 @@ SCORING PROCESS:
 5. Compute overall weighted score
 6. Normalize to /3 scale (divide weighted total by max possible)
 
-ALSO COMPUTE IDEATION TAB COLUMNS:
+ALSO COMPUTE WEEKLY REVIEW TAB COLUMNS:
 - Margins: Low/Medium/High/Very High
 - Recurring Revenue: Low/Medium/High
 - AI Defensibility: Low/Medium/High (3=protected from AI disruption)
 - Right to Win (Kay): None/Moderate/Strong (Chanel/luxury background, MBA, fashion industry)
 - Network Access: None/Some/Strong (does Kay have existing contacts in this space?)
+
+CREATE PER-NICHE SCORECARD XLSX:
+After scoring each niche, create a standalone scorecard xlsx file:
+
+1. Copy the template:
+```python
+import shutil
+from openpyxl import load_workbook
+
+shutil.copy(
+    'brain/library/internal/scorecard/G&B Industry & Company Scorecard Template.xlsx',
+    f'/tmp/{niche_slug}-scorecard.xlsx'
+)
+wb = load_workbook(f'/tmp/{niche_slug}-scorecard.xlsx')
+```
+
+2. Fill INITIAL SCREEN tab:
+   - B3 = niche name
+   - C6 = Pass/Fail (Margins >= 15% EBITDA)
+   - C7 = Pass/Fail (Recurring revenue existing or convertible)
+   - C8 = Pass/Fail (Industry growth above GDP ~3%+)
+   - C9 = Pass/Fail (Growth TAM $500M+)
+   - E6-E9 = notes/evidence for each criterion
+   - D11 = overall verdict (Pass/Fail)
+   - C14 = target pool count (number of acquirable targets)
+   - C15 = sprint duration estimate (based on target count)
+
+3. Fill TEMPLATE tab (rename to "Industry Scorecard"):
+   - B3 = niche name, B5 = niche name
+   - For each sub-criterion row: E column = rating (+, +/-, or -), J column = commentary
+   - The template formulas auto-calculate weighted scores — do NOT overwrite formula cells
+```python
+screen = wb['INITIAL SCREEN']
+screen['B3'] = niche_name
+screen['C6'] = 'Pass'  # or 'Fail'
+# ... fill all cells
+
+template = wb['TEMPLATE']
+template.title = 'Industry Scorecard'
+template['B3'] = niche_name
+template['B5'] = niche_name
+# For each sub-criterion row, set E column (rating) and J column (commentary)
+# Example: template['E8'] = '+', template['J8'] = 'CAGR 12% vs 3% GDP'
+
+wb.save(f'/tmp/{niche_slug}-scorecard.xlsx')
+```
+
+4. Upload to the same Drive folder as the one-pager:
+   `gog drive upload "/tmp/{Niche Name} Scorecard March 2026.xlsx" -a kay.s@greenwichandbarrow.com --parent {niche_folder_id}`
+
+5. Naming convention: `{Niche Name} Scorecard {Month} {Year}.xlsx`
 
 OUTPUT:
 Write the full output report to: brain/outputs/{date}-niche-intelligence-report.md
@@ -690,7 +741,7 @@ Post confirmation of one-pager updates to chatroom.
 ```
 You are the TRACKER UPDATE agent for the Friday Niche Intelligence workflow.
 
-YOUR TASK: Update the Industry Research Tracker Google Sheet with new niche scores and handle promotions.
+YOUR TASK: Update the Industry Research Tracker Google Sheet — add new niches directly to WEEKLY REVIEW tab.
 
 READ: .claude/skills/niche-intelligence/references/tracker-access.md
 
@@ -698,24 +749,18 @@ SHEET ID: 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins
 ACCOUNT: kay.s@greenwichandbarrow.com
 
 INPUTS:
-- Scored niches from Step 4 (scores, IDEATION columns, recommendation)
-- Current WEEKLY REVIEW tab data (for promotion threshold)
+- Scored niches from Step 4 (scores, WEEKLY REVIEW columns, recommendation)
 
 PROCESS:
 
-1. READ current WEEKLY REVIEW to get lowest score:
+1. READ current WEEKLY REVIEW tab:
    gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:I" -j
 
-2. For each new niche, APPEND to IDEATION:
-   gog sheets append 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "IDEATION!A:J" --values '[["New","","NICHE_NAME","SCORE","MARGINS","RECURRING","AI_DEFENSE","RTW","NETWORK","NOTES"]]'
+2. For each new niche, APPEND directly to WEEKLY REVIEW:
+   gog sheets append 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:I" --values '[["RANK","NICHE_NAME","TODAY_DATE","New - Pending Review","SCORE","0","TBD","None identified","Added via Niche Intelligence"]]'
 
-3. CHECK promotion threshold:
-   - If niche score > lowest WEEKLY REVIEW score AND score >= 2.50:
-     - Append to WEEKLY REVIEW:
-       gog sheets append 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:I" --values '[["RANK","NICHE_NAME","TODAY_DATE","New - Pending Review","SCORE","0","TBD","None identified","Promoted from IDEATION via Niche Intelligence"]]'
-
-4. VERIFY writes by re-reading the tabs:
-   gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "IDEATION!A:J" -j
+3. VERIFY writes by re-reading the tab:
+   gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:I" -j
 
 Post confirmation of all updates to chatroom.
 

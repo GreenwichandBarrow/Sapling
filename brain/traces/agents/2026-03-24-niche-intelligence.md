@@ -917,3 +917,67 @@ One-pager complete. Scoring agent can proceed with industry scorecard evaluation
 - **Fraud Driver:** $79B annual P&C/WC fraud, $308.6B global insurance fraud, NICB projects 49% rise in identity theft fraud
 - **Adjacent Thesis:** Complements IPLC and Premium Audit/Loss Control within insurance infrastructure platform
 - **Assessment/Status:** Pending Scoring
+
+---
+
+## [SCORER] — 2026-03-24
+**Status:** complete
+
+### Scoring Results (Detailed Industry Scorecard — 7 categories, weighted)
+
+| Niche | Score | Strongest Category | Weakest Category | Key Differentiator |
+|-------|-------|--------------------|------------------|--------------------|
+| **HNW Personal Lines Concierge Brokerage** | **2.49** | Mission Criticality (3.00) | Porter's Five Forces (2.17) | ~100% renewal rates, strongest right-to-win via Kay's luxury background |
+| **IMO/FMO Aggregator** | **2.37** | Growth/Catalyst (2.75) | Exogenous Risks (2.00) & Porter's (2.00) | Largest target pool (50-100+), override commission model avoids brokerage multiples |
+| **Insurance Back-Office/SIU** | **2.17** | Value Creation (3.00) & Impact (3.00) | Porter's Five Forces (1.83) | SIU sub-segment most defensible, but AI threat to basic processing |
+
+### IDEATION Column Summary
+
+| Niche | Margins | Recurring Rev | AI Defensibility | Right to Win | Network Access |
+|-------|---------|--------------|-----------------|-------------|---------------|
+| HNW Personal Lines | High | High | High | Strong | Strong |
+| IMO/FMO | High | High | Medium | Moderate | Some |
+| Insurance Back-Office/SIU | Medium | High | Low | Moderate | Some |
+
+### Scoring Notes
+- **HNW Personal Lines** achieved the highest mission criticality score (3.00) of any niche scored to date. The ~100% renewal rate per August Felker is exceptional. Score held back by small target pool (20-40) and carrier supplier power.
+- **IMO/FMO** has the strongest growth story (8-12% CAGR, baby boomer Medicare wave) but CMS regulatory risk on Medicare commissions ($626 cap) is a genuine headwind. The long tail of 50-100+ regional independents beneath Integrity/AmeriLife is the opportunity.
+- **Insurance Back-Office/SIU** scored lowest due to AI/automation threat and offshore BPO competition. However, the SIU fraud investigation sub-segment is materially more defensible (licensed investigators, compliance-driven, human judgment required). If entering this space, SIU is the entry point, not commodity claims processing.
+
+### All 3 recommended for WEEKLY REVIEW with "New" status. No promotions this cycle.
+
+---
+
+## [TRACKER] — 2026-03-24
+**Status:** complete
+
+### Tracker Updates Applied
+
+| Action | Niche | Rank | Score | Status | Notes |
+|--------|-------|------|-------|--------|-------|
+| **ADDED** | Insurance Marketing Organization (IMO/FMO) Aggregator | 25 | 2.37 | New | Target pool 50-100+, QSBS TBD |
+| **ADDED** | HNW Personal Lines Concierge Insurance Brokerage | 26 | 2.49 | New | Target pool 20-40, separated from Art Insurance Brokerage |
+| **ADDED** | Insurance Back-Office Outsourcing & SIU Services | 27 | 2.17 | New | Target pool 40-80, SIU sub-segment preferred entry |
+
+### Verification
+All 3 rows confirmed in WEEKLY REVIEW tab (rows 28-30). Existing entries unchanged.
+
+### Output Report
+Written to: `brain/outputs/2026-03-24-niche-intelligence-report.md`
+
+### One-Pagers (created by prior agents)
+1. IMO/FMO: [Drive](https://drive.google.com/drive/folders/1RloERdhfyJqGlUeWNUC7XjGGe86v_0d8)
+2. HNW Personal Lines: [Drive](https://drive.google.com/drive/folders/1ZryW7c3b7s6mB7SLF1MEMWdOpW-91lJL)
+3. Insurance Back-Office/SIU: [Drive](https://drive.google.com/drive/folders/1bNwGXDbVJv6eE_Tf5VG4TllIAr9gqJWW)
+
+### Unfollowed Leads Flagged
+1. Jeremy Black — IMO/FMO contact, back-office friend, Santa Fe listing (51 days stale)
+2. August Felker — HNW personal lines target name (4+ months stale)
+3. Jonathan Crystal — Fine jewelry insurance connections (never contacted)
+
+### Recommended for Wednesday Analyst Call
+- Review all 3 scores and one-pagers
+- Formally separate HNW Personal Lines from Art Insurance Brokerage (Wind-Down)
+- Decide on Jeremy Black and August Felker outreach timing
+- Update Art Advisory (#11) with Kate Reibel meeting intel
+- Rule on Workplace H&S Training (#17) kill-list distinction

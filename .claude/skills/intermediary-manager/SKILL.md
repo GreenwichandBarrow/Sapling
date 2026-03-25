@@ -88,6 +88,27 @@ curl -s -X POST "$SLACK_WEBHOOK_ACTIVE_DEALS" \
 
 **CRITICAL: If 5 matches are found, send 5 separate Slack messages.** Each deal must be independently reactable.
 
+**Results file (REQUIRED after every run):** Write a structured results file to `brain/context/intermediary-scan-{YYYY-MM-DD}.md` with all matches, passes, and platform status. This is the recall source — Slack messages can be deleted, but this file persists for 48 hours minimum. Format:
+
+```markdown
+---
+date: {YYYY-MM-DD}
+matches_found: {n}
+platforms_scanned: {n}
+---
+# Intermediary Scan — {date}
+
+## Matches (sent to Slack individually)
+1. **{Company/Profile}** — {Platform} | {Revenue} | {EBITDA} | {Match type} | {Link}
+2. ...
+
+## Near Misses (not Slacked)
+- {listing} — {reason not flagged}
+
+## Platform Status
+- {Platform}: {accessible/blocked/login required}
+```
+
 **Platform rotation:** If intermediary channel exceeds 25% of weekly targets (tracked on Weekly Tracker), reduce platform scanning to every other day and only surface exact thesis matches.
 
 ### Channel 2: New Introductions

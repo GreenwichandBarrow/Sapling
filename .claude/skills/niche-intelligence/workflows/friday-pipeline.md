@@ -265,7 +265,7 @@ After all steps complete and stop hook passes:
 2. Send Slack notification:
 
 ```bash
-curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
+curl -s -X POST "$SLACK_WEBHOOK_STRATEGY_OPS" \
   -H "Content-Type: application/json" \
   -d '{"text":"Niche Intelligence complete — {count} new niches identified.\n{For each: \"• {Niche Name} ({X.XX}/3)\"}\n\nOne-pagers: {count} | Promoted: {count or \"None\"}\nReport: brain/outputs/{date}-niche-intelligence-report.md\n\nReady for analyst call."}'
 ```

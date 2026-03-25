@@ -896,3 +896,24 @@ One-pager complete. Scoring agent can proceed with industry scorecard evaluation
 - **Key Risk:** PE saturation at top (Integrity, AmeriLife dominate) but market remains fragmented below top 5
 - **Named Companies (mid-tier independents):** Senior Market Sales, PSM Brokerage, Ritter Insurance Marketing, Gordon Marketing, Western Marketing Associates (18,000+ agent network acquired by Integrity)
 - **Assessment/Status:** Pending Scoring
+
+## [ONE-PAGER: INSURANCE BACK-OFFICE/SIU] — 2026-03-24
+**Agent:** One-Pager Creation
+**Status:** complete
+
+- **Drive Folder:** Insurance Back-Office Outsourcing & SIU Services (ID: 1bNwGXDbVJv6eE_Tf5VG4TllIAr9gqJWW)
+- **File:** Insurance Back-Office Outsourcing & SIU Services March 2026.pptx (ID: 1LZbVjHRn1m15a4foliimsfnSQZio0N_1)
+- **Drive Link:** https://drive.google.com/drive/folders/1bNwGXDbVJv6eE_Tf5VG4TllIAr9gqJWW
+
+### Key Research Findings for Scoring
+- **Market Size:** $7.5B insurance BPO (2024), growing 7.5-12% CAGR; $7.2B fraud detection market (2025) growing 22-26% CAGR
+- **Revenue Model:** Per-policy/per-claim ($15-75/transaction), per-case SIU ($500-5,000+), FTE-based dedicated teams
+- **Gross Margins:** 35-50% BPO, 40-55% SIU/investigation
+- **EBITDA Margins:** 15-25% at scale with technology leverage
+- **PE Validation:** Davies Group (BC Partners, 30+ acquisitions, $1B+ platform), Verisk Analytics IPO
+- **Competitive Landscape:** Fragmented mid-market (40-80 independent US firms), large offshore players (EXL, WNS, Genpact) dominate enterprise tier
+- **Key SIU Players:** Frasco (60+ years, nationwide), Command Investigations (FL-based), CovertSIU
+- **Barriers:** Carrier trust (12-24 month sales cycles), licensed investigators (state PI licenses, 5+ years experience), SOC 2/ISO 27001, state SIU regulations (NY Reg 95)
+- **Fraud Driver:** $79B annual P&C/WC fraud, $308.6B global insurance fraud, NICB projects 49% rise in identity theft fraud
+- **Adjacent Thesis:** Complements IPLC and Premium Audit/Loss Control within insurance infrastructure platform
+- **Assessment/Status:** Pending Scoring

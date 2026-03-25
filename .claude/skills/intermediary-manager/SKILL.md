@@ -77,12 +77,16 @@ Scan searchable broker platforms for new listings matching the buy box.
    - **Thesis match** — fits an active niche thesis (e.g., TCI brokerage, insurance compliance). High priority.
    - **Buy-box match, new niche** — fits the financial buy box ($1-5M EBITDA, $3-20M revenue, independently owned) but in a niche we haven't evaluated. Route to niche-intelligence as a discovery signal.
 
-**When a match is found:**
+**When a match is found — send ONE Slack notification PER DEAL (never batch multiple deals into one message).** Kay and her analyst use Slack thumbs up/down reactions on each notification to quickly decide go/no-go. Batching breaks this workflow.
+
 ```bash
+# Send this ONCE per matching deal — never combine deals
 curl -s -X POST "$SLACK_WEBHOOK_ACTIVE_DEALS" \
   -H "Content-Type: application/json" \
-  -d '{"text":"Broker listing match\nSource: {Platform}\nCompany: {Name or blind profile}\nIndustry: {Industry}\nRevenue: {Revenue} | EBITDA: {EBITDA}\nMatch type: {Thesis match / Buy-box new niche}\n{Link to listing}\n\nAction: Sign NDA on platform to receive CIM."}'
+  -d '{"text":"🔔 Broker listing match\nSource: {Platform}\nCompany: {Name or blind profile}\nIndustry: {Industry}\nRevenue: {Revenue} | EBITDA: {EBITDA}\nMatch type: {Thesis match / Buy-box new niche}\n{Link to listing}\n\nAction: Sign NDA on platform to receive CIM.\n\n👍 = pursue  |  👎 = pass"}'
 ```
+
+**CRITICAL: If 5 matches are found, send 5 separate Slack messages.** Each deal must be independently reactable.
 
 **Platform rotation:** If intermediary channel exceeds 25% of weekly targets (tracked on Weekly Tracker), reduce platform scanning to every other day and only surface exact thesis matches.
 

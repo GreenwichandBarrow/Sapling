@@ -656,3 +656,183 @@ Distinct from IPLC (which focuses on licensing compliance) and from IMO/FMO (whi
 - IPLC window narrowing: Agenzee (tech) + Saratoga (PE) squeezing independents. If pursuing, must move in next 4-6 weeks.
 - TCI consolidation: Impello was ON the target list and is now a BUYER. Every cycle of delay removes targets.
 - Concierge Medicine: 6-10x EBITDA likely exceeds search fund range despite strong fundamentals.
+
+---
+
+## [IDENTIFIER] — 2026-03-24
+**Status:** complete
+
+---
+
+### EVALUATION SUMMARY
+
+Evaluated the Synthesizer's 5 convergence signals against buy box criteria, tracked niches, killed/tabled lists, and independent web research. Result: **3 NEW niches recommended for scoring**, 1 signal flagged as UPDATE to existing tracked niche (not new), 1 signal assessed as too nascent for scoring.
+
+---
+
+### CANDIDATE 1: IMO/FMO Aggregator (Insurance Marketing Organization / Field Marketing Organization)
+
+**Niche:** IMO/FMO — intermediary firms that aggregate independent insurance agents, provide carrier access, back-office support, training, and earn override commissions on agent production. Focused on life, annuities, Medicare, and health products.
+
+**Thesis:** IMOs/FMOs sit at a structural chokepoint in insurance distribution: independent agents cannot access top carrier contracts without them, creating sticky, recurring override revenue. The business is asset-light, B2B, and critically avoids the 10-14x brokerage multiples that killed the general insurance brokerage path because IMOs earn override commissions (a percentage of agent production), not brokerage fees. Integrity Marketing Group's 154+ acquisitions prove both the consolidation playbook and the PE exit pathway.
+
+**QUICK SCREEN:**
+- Margins: **Strong** — 20-40% estimated. Override commissions are pure margin on agent production volume. Minimal COGS once carrier contracts and agent relationships are established. FMO revenue model is volume-based: carrier pays override to FMO independent of what agent earns.
+- Recurring Revenue: **High** — Override commissions recur as long as agents produce. Agent retention is the key metric. Medicare and annuity renewals provide annual recurring streams. Some FMOs report 85-95% agent retention.
+- Industry Growth: **Strong** — 8-12% CAGR driven by Medicare Advantage enrollment growth (10,000 baby boomers turning 65 daily through 2030), increasing complexity of insurance products pushing agents toward FMO support, and growing independent agent channel vs. captive.
+
+**TARGET TAM:**
+- Total firms in market: 100-200+ nationally. The Lead Heroes IMO/FMO Directory and SafeMoney Broadcasting list both catalog dozens. Many are regional or product-specialized.
+- Independently owned (potential targets): 50-100+. Many are founder-led, family-owned businesses (The Brokerage Inc. self-describes as "family-owned national FMO"). The space has a long tail of small-to-mid-size players beneath the mega-platforms.
+- Already PE-backed/acquired: 30-50+. Integrity Marketing Group alone has acquired 154+ organizations including Agent Pipeline, Holland, NAA, AGA, Premier Marketing, Western Marketing, AIMCOR. Senior Market Sales is PE-backed. The top tier is consolidating rapidly.
+- PE consolidation risk: **Medium-High** — Integrity is the dominant roll-up, but it focuses on Medicare/senior market FMOs. Life/annuity and P&C FMOs have less PE attention. The long tail of regional IMOs remains largely independent.
+- Named examples:
+  1. **Ritter Insurance Marketing** (Harrisburg, PA) — Medicare-focused FMO, independent, 30+ years
+  2. **The Brokerage Inc.** (multiple locations) — family-owned national FMO, life/health/Medicare
+  3. **Alliance Group** (Longwood, FL) — national IMO, 25+ years, life/annuity focus
+  4. **New Horizons Marketing** — independent FMO
+  5. **Gordon Marketing** (Overland Park, KS) — independent FMO/IMO, operating in 2026
+
+**MARKET TAM:**
+- Market size: $5B+ (US insurance distribution intermediary market). The broader insurance distribution market is $200B+; IMOs/FMOs represent the mid-layer.
+- Growth rate: 8-12% CAGR (driven by Medicare enrollment, independent agent growth, product complexity)
+- Key demand drivers: (1) 10,000 daily baby boomer Medicare eligibility through 2030, (2) independent agent channel growing vs. captive, (3) carrier product complexity requiring FMO support, (4) regulatory compliance burden on agents, (5) technology/CRM tools that FMOs provide as value-add
+
+**DUPLICATE CHECK:** Compared against Insurance Back-Office Outsourcing (#24 area on tracker via Mike Horowitz), IPLC, Surplus Lines, Premium Audit/Loss Control, and all 24 tracked niches. IMO/FMO is **distinct** because: (a) revenue comes from override commissions on agent production, not service fees or outsourcing contracts; (b) the customer is the independent insurance agent, not the carrier or agency; (c) it is a distribution aggregation model, not an operations/compliance model. The closest tracked niche is "Insurance Back-Office Outsourcing" but that covers claims processing/policy admin for carriers/agencies — a completely different service, customer, and revenue model.
+
+**Signal source:** Jeremy Black (Feb 2 call — mother's client ran an IMO/FMO, "a lot of money in it"), Richard Augustyn ("embedded services" advice), Mike Horowitz (adjacent insurance back-end validation), Mar 21 overnight analysis
+**Independent validation:** Integrity Marketing Group's 154+ acquisitions at scale proves the roll-up thesis. The Brokerage Inc., Alliance Group, Ritter, and Gordon Marketing all confirm a large pool of independent, founder-led firms. Override commission model confirmed across multiple industry sources. Medicare enrollment growth is a structural, demographic tailwind with a 10+ year horizon.
+
+**VERDICT: RECOMMEND FOR FULL SCORING. Highest-priority new niche this cycle.**
+
+---
+
+### CANDIDATE 2: HNW Personal Lines Concierge Brokerage (separated from Art Insurance)
+
+**Niche:** Specialty insurance brokerages focused exclusively on personal lines for high-net-worth individuals — multi-property homes, yachts, jewelry collections, fine art, classic cars, wine cellars. NOT commercial lines. NOT general P&C. The concierge model: white-glove risk assessment, carrier access (Chubb, AIG Private Client, PURE), claims advocacy, and ongoing portfolio management.
+
+**Thesis:** HNW personal lines is the stickiest segment in insurance brokerage — August Felker called it "some of the most valuable parts of the business right now" with "very sticky, very high recurring revenue, like 100%." The $106.6B global HNW insurance market (4.5% CAGR) is growing as wealth concentrates. Unlike general brokerage (10-14x multiples), smaller independent HNW personal lines shops may trade at lower multiples because they lack the scale that PE platforms want. A specific target exists: two women near retirement running a specialty HNW brokerage who actively declined PE acquisition.
+
+**QUICK SCREEN:**
+- Margins: **Strong** — 25-35% for specialty personal lines brokerages. Commission-based revenue with minimal overhead. HNW policies carry higher premiums = higher per-policy revenue.
+- Recurring Revenue: **High** — ~100% renewal rates per August Felker. HNW clients don't switch brokers — relationships are deeply personal and trust-based. Multi-year engagement cycles.
+- Industry Growth: **Strong** — 4.5% CAGR for HNW insurance overall, but the concierge/specialty segment is growing faster due to climate risk (wildfire, flood driving standard carriers out of luxury markets), wealth concentration, and increasing asset complexity.
+
+**TARGET TAM:**
+- Total firms in market: 40-60 specialty HNW personal lines brokerages nationally. Distinct from general independent agencies that dabble in HNW.
+- Independently owned (potential targets): 20-40. Many are founder-led boutiques built on personal relationships with affluent communities.
+- Already PE-backed/acquired: 10-20. Risk Strategies (now Brown & Brown), PSA Financial, and several regional players have been acquired. But the boutique tier is largely untouched by PE.
+- PE consolidation risk: **Medium** — PE is active in insurance brokerage broadly, but HNW personal lines boutiques are relationship-dependent and small, making them less attractive to large platform acquirers. This is actually favorable for search fund entry.
+- Named examples:
+  1. **Bullen Insurance Group** (independent, century-old, HNW specialist)
+  2. **NSM Insurance Brokers** (specialty personal lines, concierge model)
+  3. **Harbour Insurance Agency** (independent, HNW focus)
+  4. **Howard Insurance** (private client insurance)
+  5. **C&S Insurance** (HNW household specialist, Massachusetts)
+  6. **Unnamed target via August Felker** (two women, near retirement, declined PE)
+
+**MARKET TAM:**
+- Market size: $106.6B global HNW insurance market (2024), US portion ~$40-50B. Personal lines subset ~$46.25B (HNW household).
+- Growth rate: 4.5% CAGR (2025-2033)
+- Key demand drivers: (1) Climate risk pushing HNW clients out of standard carriers into specialty markets, (2) wealth concentration creating more UHNW households, (3) $84T intergenerational wealth transfer, (4) increasing asset complexity (crypto, art, multiple residences), (5) carrier retrenchment from high-risk geographies creating broker value
+
+**DUPLICATE CHECK:** Compared against Art Insurance Brokerage (Wind-Down, #4 on tracker), Estate Management (#1), Private Art Advisory Firms (#11), Collection Management Consultants (#12). **Distinct because:** (a) Art Insurance Brokerage covers fine art specifically and is in wind-down — HNW personal lines covers ALL personal assets (homes, yachts, jewelry, cars) with art as only one component; (b) the customer base is broader (any HNW individual, not just art collectors); (c) the target pool is larger (20-40 vs. the handful of art-specific brokers); (d) August Felker explicitly called this out as a DIFFERENT market from art insurance in his Oct 2025 call. This was incorrectly merged into "Art Insurance Brokerage" on the tracker and should be tracked separately.
+
+**Signal source:** August Felker (two calls, Oct-Nov 2025), investment banker validation ("most valuable" segment), specific unnamed target identified
+**Independent validation:** Global HNW insurance market data ($106.6B, 4.5% CAGR) confirmed via multiple market research reports. Brokered distribution accounts for 82-88% of HNW placements, confirming the broker's structural role. Multiple independent HNW specialist brokerages confirmed via web search (Bullen, NSM, Harbour, Howard, C&S). Climate-driven carrier retrenchment creating broker demand is well-documented.
+
+**VERDICT: RECOMMEND FOR FULL SCORING. Separation from Art Insurance Brokerage is overdue — different market, different targets, different economics.**
+
+---
+
+### CANDIDATE 3: Insurance Back-Office Outsourcing (Claims, Policy Admin, Underwriting Support)
+
+**Niche:** US-based firms providing outsourced operational support to insurance carriers and agencies: claims processing, policy administration, underwriting support, agency management, and compliance documentation. Distinct from offshore BPO (which is commodity); this is domestic, specialized, often serving independent agencies and regional carriers who lack in-house operational scale.
+
+**Thesis:** The insurance BPO market ($7.47B in 2024, 3.6-7.1% CAGR) is a structural necessity — carriers and agencies cannot scale operations without outsourcing non-core back-office functions. The domestic US segment serves agencies and carriers that require US-based staff for regulatory, quality, or client-facing reasons. Mike Horowitz specifically identified SIU/Fraud Investigation and Underwriting Support as the best sub-niches: both are compliance-driven, mission-critical, and have identifiable independent firms. Combined with the IMO/FMO signal, the insurance infrastructure thesis has 90-180+ potential targets across sub-niches.
+
+**QUICK SCREEN:**
+- Margins: **Moderate-to-Strong** — 25-35% for specialized domestic providers. Higher for niche services (SIU: specialized investigative work commands premium pricing). Lower for commodity claims processing.
+- Recurring Revenue: **High** — Contract-based, typically multi-year service agreements. Carriers and agencies rarely switch BPO providers due to data migration costs and relationship dependency.
+- Industry Growth: **Moderate** — 3.6-7.1% CAGR depending on segment. SIU/fraud investigation growing faster (7.5-12% CAGR) due to rising fraud complexity and AI-driven detection requirements. Underwriting support growing with insurance market expansion.
+
+**TARGET TAM:**
+- Total firms in market: 60-100+ US-based insurance BPO/back-office providers. Includes specialists (SIU only, underwriting only) and generalists.
+- Independently owned (potential targets): 40-80. Many are founder-led, US-based firms that differentiate on domestic staffing and specialization. The offshore giants (Cognizant, Wipro, TCS) dominate volume but leave a large independent domestic tier.
+- Already PE-backed/acquired: 10-20 in the US domestic segment. ReSource Pro (Kelso & Company) is the largest PE-backed platform. Most PE attention has gone to offshore BPO, leaving domestic specialists less consolidated.
+- PE consolidation risk: **Low-Medium** — PE focus is on large offshore BPO platforms, not small domestic specialists. This is a favorable window for search fund entry.
+- Named examples:
+  1. **Focus Insurance BPO** (US-based, 300+ US professionals, claims processing)
+  2. **ARDEM** (insurance outsourcing, claims data entry, applications)
+  3. **DATAMARK** (claims processing, underwriting, policy admin)
+  4. **Staff Boom** (insurance back-office, agents/brokers/carriers)
+  5. **Marble Box** (affordable back-office for independent agencies)
+
+**MARKET TAM:**
+- Market size: $7.47B (2024) for insurance BPO broadly. US domestic segment estimated at $2-3B. SIU/fraud investigation outsourcing: $570M-$2.5B (varies by scope definition).
+- Growth rate: 3.6-7.1% CAGR overall; SIU segment 7.5-12% CAGR
+- Key demand drivers: (1) Rising insurance fraud (10% of claims are fraudulent, 38% of investigations outsourced), (2) regulatory complexity increasing admin burden, (3) independent agencies lacking operational scale, (4) AI/automation creating need for hybrid human+tech service models, (5) carrier cost pressure driving outsourcing adoption
+
+**DUPLICATE CHECK:** Compared against IPLC (#9 on tracker), Surplus Lines (#6), Premium Audit/Loss Control (#19), all 24 tracked niches, and Candidate 1 (IMO/FMO) above. **Distinct because:** (a) IPLC is about licensing compliance specifically — this covers broader operational support (claims, underwriting, policy admin); (b) Premium Audit/Loss Control is a carrier-facing inspection/assessment service — this is back-office operations; (c) IMO/FMO (Candidate 1) earns override commissions on agent distribution — this earns service fees on operational outsourcing. Different customer (carrier/agency ops teams vs. agents), different revenue model (contracts vs. overrides), different service (operations vs. distribution).
+
+**Signal source:** Jeremy Black (Feb 2 call — insurance back-office friend contact), Mike Horowitz (9 back-end niches, specifically SIU and underwriting support), Mar 21 overnight analysis (40-80 firms confirmed)
+**Independent validation:** Insurance BPO market data ($7.47B, growing) confirmed via IMARC Group and Mordor Intelligence. Multiple US-based independent firms confirmed (Focus, ARDEM, DATAMARK, Staff Boom, Marble Box). SIU/fraud investigation outsourcing market confirmed at $570M-$2.5B with 7.5-12% CAGR. PE focus is on offshore BPO, leaving domestic specialists with low consolidation — favorable timing.
+
+**VERDICT: RECOMMEND FOR FULL SCORING. Best entered via SIU/Fraud Investigation sub-niche (highest growth, most compliance-driven) or Underwriting Support (most recurring).**
+
+---
+
+### SIGNAL 4: Art Advisory Services — UPDATE TO EXISTING TRACKED NICHE, NOT NEW
+
+**"Private Art Advisory Firms" is already tracked as #11 in WEEKLY REVIEW. "Collection Management Consultants" is already tracked as #12.**
+
+The Synthesizer's Art Advisory signal contains valuable NEW data that should UPDATE the existing entries:
+- Market size: $4.78B (2024), projected $7.82B by 2032, 6.4% CAGR
+- Specific companies: Patti Wong & Associates ($1B+ deals since 2023 launch), Art Agency Partners (acquired by Sotheby's as precedent)
+- Contact paths: Kate Reibel (meeting today), Dan Tanzilli (warm)
+- Boutique firm example: Arcadia Art Consultancy (independent, tangible asset management + appraisals)
+
+**Action:** Update Private Art Advisory Firms (#11) score and notes with this data. Do NOT create a new niche entry. The Kate Reibel meeting today is the primary intelligence-gathering opportunity.
+
+---
+
+### SIGNAL 5: Hard Asset Transition Management for Family Offices — TOO NASCENT FOR SCORING
+
+**Assessment:** This is a compelling macro insight (80% of family offices being asked to manage hard assets for first time, $84T wealth transfer) but it fails the niche identification test:
+
+1. **Cannot name the customer precisely** — "family offices" is too broad. Which family offices? Single-family? Multi-family? What AUM threshold?
+2. **Cannot name the exact service** — "transition management" is a category description, not a defined service offering. Does it mean inventory documentation? Insurance procurement? Storage coordination? Conservation assessment? All of these?
+3. **Cannot name the competitive set** — No identified firms offering this as a standalone service. The closest are (a) art advisory firms (already tracked as #11), (b) estate management firms (already tracked as #1), (c) collection management consultants (already tracked as #12). These three tracked niches collectively cover the components of "hard asset transition management."
+4. **No acquirable targets identified** — Web search found that major institutions (UBS, BofA, Stonehage Fleming, Northern Trust) offer this as an add-on service within wealth management. The only independent firm identified was Arcadia Art Consultancy, which is an art appraisal/advisory firm, not a transition management firm. EstateSpace is a technology platform, not a service firm.
+
+**DUPLICATE CHECK:** Compared against Estate Management (#1), Private Art Advisory Firms (#11), Collection Management Consultants (#12). This signal is the INTERSECTION of these three existing niches, not a distinct new one.
+
+**Action:** Flag this as a strategic insight for the existing tracked niches (especially Estate Management #1 and Collection Management #12), not as a new niche. If Kate Reibel's meeting today reveals firms that specifically do "hard asset transition management" as a standalone service, revisit.
+
+**VERDICT: DO NOT SCORE. Too nascent. No defined service category. No identifiable independent firms. The components are already covered by 3 tracked niches.**
+
+---
+
+### TABLED NICHE RESURFACE CHECK
+
+Reviewed all 25 tabled niches against new data this cycle:
+
+1. **Trust Administration** (tabled for thin target pool, scored 2.88): No new data on target pool expansion. The JTC $270M deal from Mar 20 validated the thesis but at a scale far above search fund range. **Remains tabled.**
+
+2. **Art Packing/Transport** (tabled generically as "Fine Art Logistics"): Jeremy Black's Santa Fe listing (retiring owner, strong margins) was never evaluated. This is a SPECIFIC DEAL OPPORTUNITY, not a niche to score. **Recommendation: Do not resurface the niche, but flag the Santa Fe listing as a deal-level evaluation for deal-eval skill when Jeremy is contacted about the IMO/FMO lead.**
+
+3. **Art Storage/Logistics** (tabled Oct 2024-Jan 2025): No new data changes the fundamental concern — balance sheet business, 5-8% EBITDA margins, capital-intensive. **Remains tabled.**
+
+**No tabled niches recommended for resurfacing this cycle.**
+
+---
+
+### FINAL RECOMMENDATIONS
+
+| Priority | Niche | Action | Rationale |
+|----------|-------|--------|-----------|
+| **1** | IMO/FMO Aggregator | Full scoring + outreach to Jeremy Black | Largest target pool (50-100+), highest signal strength (4 sources), named contact path, never pursued in 51 days |
+| **2** | HNW Personal Lines Concierge Brokerage | Full scoring + separate from Art Insurance on tracker + reconnect August Felker | Specific target exists, incorrectly merged with wind-down niche, 100% renewal rates, $106.6B market |
+| **3** | Insurance Back-Office Outsourcing (SIU/Underwriting) | Full scoring | 40-80 firms, low PE saturation in domestic segment, two warm contact paths (Jeremy + Mike Horowitz) |
+| **UPDATE** | Private Art Advisory Firms (#11) | Update existing entry with new market data | $4.78B market, 6.4% CAGR, Kate Reibel meeting today |
+| **NO ACTION** | Hard Asset Transition Management | Monitor via existing tracked niches | Too nascent, no defined service category, no independent firms identified |

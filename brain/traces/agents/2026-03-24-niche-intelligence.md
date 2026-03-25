@@ -278,3 +278,169 @@ Pipeline started. Gathering agents deploying.
 6. **SBA "One Strike" rule is a watch item.** If expanded to minority investors, could affect G&B's investor base willingness to back multiple searchers.
 
 ---
+
+## [HISTORICAL] — 2026-03-24
+**Source:** Call transcripts (65 vault files), Gmail (120+ threads from E&K, Business Exits, Benchmark, SMB Deal Hunter, WSN), Memory files (ChatGPT export summaries covering Sep 2023-Mar 2026, thesis evolution, deal history, network contacts, frameworks)
+**Status:** complete (OneNote: unavailable, auth expired; Granola: no meetings in historical range; ChatGPT export: in Trash, mined via extracted memory files)
+
+---
+
+### CONSOLIDATED FINDINGS BY NICHE
+
+Organized by niche. Already-tracked niches only included if genuinely new data emerged.
+
+---
+
+#### 1. INSURANCE BACK-OFFICE SERVICES / IMO-FMO AGGREGATOR
+**Sources:** Jeremy Black call (2026-02-02), Insurance pivot strategy memory, Mar 21 overnight niche deep-dive (40-80 firms confirmed)
+**Signal strength:** STRONG — multi-source, named contacts, never pursued
+**Kay's sentiment:** Not expressed (leads mentioned but not discussed in depth)
+
+**Intelligence:**
+- Jeremy Black mentioned his mother's client ran an "insurance marketing firm" (IMO/FMO) in annuities and life insurance. "There was a lot of money in it." The woman who ran it day-to-day was "super brilliant, super smart." Jeremy offered to connect Kay but no follow-up is documented.
+- Jeremy separately discussed "insurance agency back-office models creating scalable revenue from multiple agents servicing territories" (52:14 timestamp). He offered to follow up with his "insurance industry friend about scalable back-office operation model" — no follow-up documented.
+- These are TWO distinct leads from one conversation, neither pursued:
+  1. **IMO/FMO** — aggregates independent agents, provides carrier access, back-office, commissions override. Recurring revenue from agent production. 50-100+ firms nationally, $5B+ market, 20-40% margins.
+  2. **Insurance back-office outsourcing** — operational support (claims processing, policy admin, agency management) for independent agencies. 40-80 firms per Mar 21 analysis, 25-35% margins.
+- Both are asset-light, recurring, B2B, within insurance thesis, and critically AVOID the 10-14x brokerage multiples that killed the insurance brokerage path.
+- Richard Augustyn's original advice to Kay was to look at "embedded/tightly integrated services" — Kay applied this to IPLC, but IMO/FMO and back-office are the OTHER branches of that same tree.
+
+**People/Contacts:**
+- Jeremy Black's mother — corporate lawyer whose client ran an IMO/FMO
+- Unnamed woman who ran the IMO/FMO day-to-day (may still be active)
+- Jeremy's insurance industry friend (back-office model expertise)
+- Mike Horowitz (Streetlight Capital) — validated adjacent insurance back-end niches (SIU, underwriting support)
+
+**Scoring potential:** Large target pool (50-100+), recurring revenue, 20-40% margins, asset-light, avoids brokerage multiples. QSBS status TBD. Ready for full scoring.
+
+---
+
+#### 2. HNW PERSONAL LINES CONCIERGE BROKERAGE (distinct from Art Insurance)
+**Sources:** August Felker call 1 (2025-10-15), August Felker call 2 (2025-11-19)
+**Signal strength:** STRONG — expert-validated, specific target identified
+**Kay's sentiment:** Strong interest, deferred due to investor multiples concern
+
+**Full lifecycle:**
+- **Proposed:** August Felker, Oct 2025. Highlighted "concierge-level personal insurance for multi-property HNW individuals" as distinct from fine art insurance.
+- **Validated:** Nov 2025. August: "Those are really valuable. Personal lines for HNW: very sticky, very high recurring revenue, like 100%." Investment bankers confirming personal lines "some of the most valuable parts of the business right now."
+- **Specific target identified:** "Two women running a specialty brokerage, near retirement age. Very women-centric brokerage focused on HNW personal lines (yachts, houses, high-value assets). Did not want to be acquired by PE." Personal lines only (no commercial) — potentially LOWER acquisition multiples.
+- **Stalled:** Investors pushed back on insurance multiples generally (12-14x). BUT August's counter: "If you can find a smaller deal, I don't think the multiples are gonna be that high."
+- **Current status:** Subsumed under "Art Insurance Brokerage" on tracker — but HNW personal lines (yachts, multi-property, jewelry) is a DIFFERENT market from art insurance with different targets.
+
+**People/Contacts:**
+- August Felker (knows the specific target, offered to help with investors)
+- The two women running the brokerage (unnamed, near retirement)
+- Kay's insurance specialist (ready to join post-acquisition)
+
+**Why overlooked:** Merged with "Art Insurance Brokerage" in tracking. Worth evaluating separately — different client base, potentially lower multiples, larger target pool (20-40 firms).
+
+---
+
+#### 3. ART PACKING & TRANSPORT (SANTA FE LISTING)
+**Sources:** Jeremy Black call (2026-02-02), thesis evolution memory
+**Signal strength:** MODERATE — specific listing mentioned, persistent interest from Kay
+**Kay's sentiment:** "That's been an area that has kind of like lingered the longest that I keep looking at opportunities."
+
+**Intelligence:**
+- Jeremy identified a specific listing in Santa Fe: retiring owner, strong margins, established team, regional packing/transport with dedicated line. "Pretty good numbers."
+- Jeremy offered to share listing details. No documented follow-up.
+- Jeremy noted: could layer insurance, manage remotely, and a female-led company would do well.
+- Later tabled generically as "Fine Art Logistics" (March 20) but the specific deal was never evaluated.
+- Santa Fe is #2 western art market after LA.
+
+**People/Contacts:**
+- Jeremy Black (has listing details, offered to share)
+
+**Why potentially relevant now:** The specific Santa Fe listing may still be available (retiring owner, 2 months since mention). Worth a quick check with Jeremy.
+
+---
+
+#### 4. EQUINE INSURANCE / CLASSIC CAR INSURANCE BROKERAGE
+**Sources:** August Felker call 1 (2025-10-15)
+**Signal strength:** WEAK — mentioned as examples, never explored
+**Kay's sentiment:** Not expressed
+
+**Intelligence:**
+- August mentioned "equine insurance, classic cars" alongside fine art as examples of niche specialty insurance that "no one else goes after" with high margins and recurring revenue.
+- Classic car insurance market ~$1.5B, growing with collector car values. 15-30 independent specialty brokerages.
+- Equine insurance ~$2B market, 10-20 independent specialists.
+- Same economics as art insurance (recurring, high-margin, specialized) but different target pools.
+
+**Why likely not actionable:** Small target pools (10-30), no personal network access, same brokerage multiples problem. Including for completeness.
+
+---
+
+#### 5. HARD ASSET TRANSITION MANAGEMENT FOR FAMILY OFFICES
+**Sources:** August Felker call 2 (2025-11-19, Deloitte conference data), network contacts (Margot Romano at BofA Art Services, Sarah de Blasio, Naomi Baigell), trust administration research ($84T)
+**Signal strength:** MODERATE — strong macro tailwind, but no defined service category
+**Kay's sentiment:** Excited by Deloitte conference data
+
+**Intelligence:**
+- From Deloitte Private art and finance conference: 80% of family offices being asked to manage hard assets for the first time. They lack operational structure.
+- First priority: making sure assets are protected = insurance. Then documentation, storage, conservation.
+- Points to a broader service: "hard asset transition management" for family offices — combining inventory documentation, insurance procurement, storage coordination, conservation assessment.
+- The demand driver ($84T wealth transfer) is structural and decoupled from art market cycles.
+
+**Why potentially overlooked:** The insight was captured as a TAILWIND for insurance, but the SERVICE ORCHESTRATION layer between family offices and providers was never evaluated as a standalone acquisition target. This could be the "estate management for objects" niche — distinct from estate management for properties.
+
+---
+
+#### 6. HEALTHCARE/REGULATORY COMPLIANCE SaaS (E&K LISTING)
+**Sources:** E&K broker email (2026-03-23)
+**Signal strength:** MODERATE — active listing, within thesis but below buy box
+**Kay's sentiment:** Not yet reviewed
+
+**Intelligence:**
+- $700K revenue (mostly recurring), mission-critical SaaS for Environment of Care compliance
+- Served 1,500+ healthcare facilities nationwide
+- Cross-industry applicability (healthcare + aerospace temperature monitoring)
+- Completely virtual company
+- Too small ($700K vs. $5-40M software buy box) BUT 1,500 facility install base is valuable if platform strategy applies
+
+---
+
+#### 7. E&K DEAL FLOW PATTERNS (Historical)
+**Sources:** 60+ E&K emails dating back to Jan 2026
+**Signal strength:** INFORMATIONAL
+
+E&K sends 3-5 deals/week. Historical pattern shows mostly manufacturing, construction, physical services. Occasional compliance/tech deals worth monitoring:
+- Healthcare Compliance SaaS (Mar 23)
+- Managed Cybersecurity (Mar 10)
+- Health Information Management App (Mar 6)
+- EAS Retail Systems (Jan 30) — too small, manufacturing
+- No insurance brokerage or compliance services deals surfaced through E&K in Jan-Mar 2026
+
+---
+
+### CROSS-REFERENCE: HISTORICAL vs. RECENT INTELLIGENCE
+
+| Niche | Historical Signal | Recent Signal | Combined Assessment |
+|-------|------------------|---------------|-------------------|
+| **IMO/FMO** | Jeremy Black (Feb 2), Richard Augustyn "embedded services" advice | Mike Horowitz back-end list (Mar 21), Mar 21 overnight analysis (40-80 firms) | STRONGEST overlooked niche. 3+ sources, named contacts, never pursued. |
+| **Insurance Back-Office** | Jeremy Black (Feb 2) | Mike Horowitz list, overnight analysis | Confirmed by multiple sources. Distinct from IPLC. |
+| **HNW Personal Lines** | August Felker (Oct-Nov 2025), specific target | No new recent signals | Stalled but specific target may still be available. |
+| **Art Packing/Transport** | Jeremy Black (Feb 2), Santa Fe listing | Art Advisory now Priority #1 (adjacent) | Specific deal opportunity, check with Jeremy. |
+| **Hard Asset Transition** | Deloitte conference (Nov 2025), $84T data | Estate Management PE validation (Audax, Keystone) | Emerging service category. No defined targets yet. |
+
+### UNFOLLOWED LEADS — PRIORITY RANKED
+
+1. **Jeremy Black: IMO/FMO contact via his mother** — highest priority. Specific person, specific business type, never followed up.
+2. **Jeremy Black: Insurance back-office model friend** — second-highest. Offered to connect, never followed up.
+3. **August Felker: Women-led HNW personal lines brokerage** — specific target, partial pursuit, stalled. Reconnect to get target name.
+4. **Jeremy Black: Santa Fe art transport listing** — specific deal, quick check on availability.
+5. **Jonathan Crystal (from Hunter's network)** — fine jewelry insurance connections. Referenced in Jan 12 call, no follow-up documented.
+
+### DATA POINTS FOR SCORING
+
+| Metric | IMO/FMO | Insurance Back-Office | HNW Personal Lines | Art Transport |
+|--------|---------|---------------------|-------------------|---------------|
+| Market Size | $5B+ | $3B+ | Subset of $200B P&C | $500M-1B |
+| CAGR | 8-12% | 10%+ | Growing (climate, wealth transfer) | 5-8% |
+| Margins | 20-40% | 25-35% | 25-35% | 15-25% |
+| Target Pool | 50-100+ | 40-80+ | 20-40 | 50-100+ |
+| Recurring Revenue | Yes (override commissions) | Yes (contracts) | Yes (renewals) | Partial (gallery relationships) |
+| Kay's Right-to-Win | Moderate (insurance thesis) | Moderate (insurance thesis) | Strong (luxury/HNW) | Strong (art world) |
+| PE Saturation | Low-Moderate | Low | High for large, Low for small | Low |
+| Named Contacts | Jeremy's mother's contact | Jeremy's friend | August's target | Jeremy's listing |
+
+---

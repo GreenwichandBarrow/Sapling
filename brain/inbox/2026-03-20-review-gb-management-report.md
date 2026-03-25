@@ -2,7 +2,7 @@
 schema_version: 1.2.0
 date: 2026-03-20
 title: "Review G&B management report (Jan-Feb 2026)"
-status: backlog
+status: done
 source: email
 urgency: normal
 source_ref: "msg:19d07be1095438e8"

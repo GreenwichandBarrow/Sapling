@@ -836,3 +836,63 @@ Reviewed all 25 tabled niches against new data this cycle:
 | **3** | Insurance Back-Office Outsourcing (SIU/Underwriting) | Full scoring | 40-80 firms, low PE saturation in domestic segment, two warm contact paths (Jeremy + Mike Horowitz) |
 | **UPDATE** | Private Art Advisory Firms (#11) | Update existing entry with new market data | $4.78B market, 6.4% CAGR, Kate Reibel meeting today |
 | **NO ACTION** | Hard Asset Transition Management | Monitor via existing tracked niches | Too nascent, no defined service category, no independent firms identified |
+
+---
+
+## [ONE-PAGER: HNW PERSONAL LINES] — 2026-03-24
+**Agent:** One-Pager Creation
+**Status:** complete
+
+### Output
+- **File:** HNW Personal Lines Concierge Insurance Brokerage March 2026.pptx
+- **Drive folder:** [HNW PERSONAL LINES CONCIERGE INSURANCE BROKERAGE](https://drive.google.com/drive/folders/1ZryW7c3b7s6mB7SLF1MEMWdOpW-91lJL)
+- **Drive file:** [One-Pager PPTX](https://docs.google.com/presentation/d/1vfjgjNTUV7j43vNfW3-wIv09LwOVC5Jz/edit)
+- **Assessment/Status:** Pending Scoring (no score assigned per instructions)
+
+### Key Research Findings
+- **Market:** $106.6B global HNW insurance market (2024), 4.5% CAGR, North America ~$41.4B (40%+)
+- **Carriers:** PURE (policyholder-owned), Vault (2016, admitted/E&S), Chubb (largest), Private Client Select (formerly AIG, now MGA with Stone Point)
+- **Fragmentation:** ~20-40 independent boutiques nationally, typically $1-10M revenue, owner-operated
+- **Economics:** 8-15% commission on premium, ~100% renewal rates, 25-30% EBITDA margins, low capital intensity
+- **Valuations:** Small independents at 1.5-2.5x revenue / 6-8x EBITDA; PE platforms pay 8-12x+ EBITDA
+- **Exit:** PE highly active (Risk Strategies, NFP/Aon $13.4B, Marsh McLennan Agency, Hub International)
+- **Differentiation from Art Insurance Brokerage:** Distinct niche — HNW personal lines covers homes, yachts, autos, liability; Art Insurance covers fine art collections specifically. Different carriers, different competitive set, different customer base.
+
+### Sections Completed
+1. Title, Assessment, Status
+2. Industry Overview (market structure, key carriers, broker landscape)
+3. Industry Thesis (recurring revenue, retention, Kay's luxury alignment, aging principals)
+4. Macro Trends & Growth Drivers (wealth transfer, climate, UHNW growth, carrier exits, asset complexity)
+5. Risks & Concerns (hard markets, carrier consolidation, cat concentration, client concentration, regulatory)
+6. Economics & Pricing (commission structure, retention, margins, valuations)
+7. Competitive Landscape (carriers, large broker divisions, independent boutiques)
+8. Customers (UHNW individuals/families, family offices)
+9. Barriers to Entry (carrier appointments, trust relationships, expertise, licensing, referral networks)
+10. Key Success Factors (relationships, carrier access, claims advocacy, risk management, operations, referrals)
+11. Exit (PE roll-ups, strategic exits, book value drivers)
+
+### Ready for Scoring Agent
+One-pager complete. Scoring agent can proceed with industry scorecard evaluation.
+
+---
+
+## [ONE-PAGER: IMO/FMO] — 2026-03-24
+**Agent:** One-Pager Creation
+**Status:** complete
+
+- **Drive Folder:** Insurance Marketing Organization (IMO-FMO) Aggregator (ID: 1RloERdhfyJqGlUeWNUC7XjGGe86v_0d8)
+- **File:** Insurance Marketing Organization (IMO-FMO) Aggregator March 2026.pptx (ID: 1nH3-y12vyg_EPJMIiBoBAtoG3rua3kQ0)
+- **Drive Link:** https://drive.google.com/drive/folders/1RloERdhfyJqGlUeWNUC7XjGGe86v_0d8
+
+### Key Research Findings for Scoring
+- **Market Size:** $5B+, 8-12% CAGR, 100+ independent firms nationally
+- **Revenue Model:** Override commissions from carriers, recurring as long as policies in force (life/annuity trails 10+ years)
+- **EBITDA Margins:** 20-40% depending on scale and product mix
+- **PE Validation:** Integrity Marketing Group (154+ acquisitions, HGGC/Harvest Partners), AmeriLife (23+ acquisitions, THL/Genstar), Ash Brokerage (Parthenon Capital)
+- **Integrity acquired AIMCOR Group January 2026** — roll-up activity ongoing
+- **Commission Structure:** Carriers split 70-80% to agent, 20-30% to IMO hierarchy. Override and agent commission are separate (carrier pays both)
+- **Medicare commission cap:** CMS set $626/beneficiary max for MA in 2025
+- **Baby Boomer Tailwind:** 73M boomers reaching Medicare age by 2030, average agent age 59 creating succession opportunities
+- **Key Risk:** PE saturation at top (Integrity, AmeriLife dominate) but market remains fragmented below top 5
+- **Named Companies (mid-tier independents):** Senior Market Sales, PSM Brokerage, Ritter Insurance Marketing, Gordon Marketing, Western Marketing Associates (18,000+ agent network acquired by Integrity)
+- **Assessment/Status:** Pending Scoring

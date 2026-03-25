@@ -722,6 +722,7 @@ Kay sets these during the analyst call. Pipeline-manager moves the niche to the 
 - New — just added from pipeline, pending analyst review
 - Under Review — analyst evaluating
 - Active — triggers target-discovery sprint
+- Ideation — deprioritized, not actively reviewing. Stays on WEEKLY REVIEW but sorted to bottom.
 - Wind-Down — finish in-flight outreach, no new targets
 - Tabled — moves to TABLED tab overnight
 - Killed — moves to KILLED tab overnight
@@ -740,7 +741,7 @@ After processing Tabled/Killed moves and re-sorting WEEKLY REVIEW, validate:
 
 **2. Sort Validation:**
 - Re-read WEEKLY REVIEW after sorting
-- Confirm sort order: Active rows first, then Under Review, then New, then Wind-Down
+- Confirm sort order: Active first, then Under Review, then New, then Wind-Down, then Ideation (bottom)
 - Confirm no data was lost during sort (row count before = row count after)
 
 **3. Target List Template Validation (on new Active sprints):**

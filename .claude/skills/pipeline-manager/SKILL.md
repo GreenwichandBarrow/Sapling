@@ -362,6 +362,14 @@ emails_scanned: N
 
 ## Niche Signals
 - {signal} -> brain/inbox/YYYY-MM-DD-niche-signal-{slug}.md
+
+## Draft Calibration (draft vs sent diffs)
+{For each email where both a Superhuman draft AND a matching sent email exist:}
+- **{recipient} — {subject}**
+  - Draft: {first 2 lines of original draft}
+  - Sent: {first 2 lines of what Kay actually sent}
+  - Edits: {summary of changes — tone, length, phrases added/removed, structure}
+{If no draft-vs-sent pairs found: "No draft calibration data today."}
 ```
 
 **Draft Status population:** The Superhuman Draft Status Check (see section above) feeds this section. For each outreach or thank-you draft created by outreach-manager or pipeline-manager:

@@ -91,6 +91,54 @@ python3 .claude/scripts/list-unreviewed-traces.py [date_filter]
 
 The calibration agent should propose skill improvements that address the specific funnel gap the data reveals — not generic improvements.
 
+### Draft Calibration Loop
+
+The agent drafts emails in Superhuman. Kay edits before sending. The edits are learning signal.
+
+**How it works:**
+1. **Pipeline-manager morning scan** reads sent emails from the last 24 hours via Gmail
+2. For each sent email, checks if a matching Superhuman draft exists (by recipient + subject + approximate time)
+3. If a draft match is found, diffs the two: draft (what the agent wrote) vs sent (what Kay actually sent)
+4. Captures the diff as a **draft calibration trace** at `brain/traces/{date}-draft-calibration.md`
+
+**Draft calibration trace format:**
+```markdown
+---
+schema_version: 1.0.0
+date: {YYYY-MM-DD}
+type: trace
+tags: [date/{YYYY-MM-DD}, trace, topic/draft-calibration]
+---
+
+# Draft Calibration — {date}
+
+## Email 1: {recipient} — {subject}
+**Draft (agent):**
+{original draft text}
+
+**Sent (Kay):**
+{final sent text}
+
+**Edits detected:**
+- {what changed: tone, length, opening, specific phrases, structure}
+```
+
+**What the calibration agents look for (after 10+ diffs):**
+- Patterns in Kay's edits: Does she always shorten? Always change the opening? Remove certain phrases?
+- Tone shifts: Does she make it warmer? More direct? Less formal?
+- Structural changes: Does she reorder paragraphs? Add/remove sections?
+- Phrase preferences: Specific words or constructions she consistently adds or removes
+
+**Output:** The pattern-recognizer agent generates a **voice calibration update** — concrete rules like "Always open with a warm nicety" or "Keep to 3 sentences max" — and proposes updates to the outreach-manager email templates, pipeline-manager draft instructions, or Kay's voice profile at `brain/context/voice.md`.
+
+**Maturity model:**
+- **0-10 diffs:** Collecting data, no recommendations yet
+- **10-20 diffs:** First patterns emerge, propose initial voice rules
+- **20+ diffs:** High-confidence voice profile, agent drafts should need minimal editing
+- **Goal:** Draft acceptance rate (sent without edits) increases over time
+
+**Implementation:** Pipeline-manager adds a `draft_calibration` section to `brain/context/email-scan-results-{date}.md` when draft-vs-sent diffs are detected. The calibration-workflow reads these during its Friday run alongside decision traces.
+
 ### Active Experiment: Cold Email A/B Test
 
 Outreach-manager is running an A/B test on cold email positioning (started March 2026):

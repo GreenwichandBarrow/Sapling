@@ -182,11 +182,15 @@ love to connect briefly with {owner name} about their experience.
 Would {owner name} have 15 minutes for a quick call?
 ```
 
+**If the owner wants to schedule a call with Kay:** JJ books a time directly with the owner on the phone, then emails Howie (barrie@greenwichandbarrow.com) with: owner name, owner email, and agreed time. Howie creates the calendar invite and sends it to the owner. Kay gets notified via calendar. JJ does NOT manage Kay's calendar directly.
+
 **Call columns** — JJ works directly from the niche sprint master sheet ("{Niche} - Target List" in LINKT TARGET LISTS folder). No separate call list. JJ fills in columns Q-T on the Active tab:
-- Col Q: Call Status (dropdown)
+- Col Q: Call Status (dropdown: Not Called, Connected, Voicemail, Callback, Not Interested, Wrong Number, Schedule Requested)
 - Col R: Call Date
 - Col S: Call Notes
 - Col T: Owner Sentiment (dropdown)
+
+**Feedback:** JJ is encouraged to share qualitative observations on Slack anytime (e.g., "owners in this niche seem skeptical" or "getting a lot of voicemails"). This is normal team communication, not a formal process.
 
 See target-discovery/references/drive-locations.md for full column layout.
 
@@ -410,8 +414,8 @@ Draft all emails in Superhuman via CLI (see Cold Outreach section for exact comm
 <essential_principles>
 ## Principles
 
-### Kay Decision Column (Temporary — Testing Phase)
-During the testing phase, outreach-manager only drafts outreach for targets where Col O (Kay: Decision) = "Approve". This is a temporary human-in-the-loop gate. Once target-discovery's accept rate stabilizes at 85%+ for 2 consecutive weeks (tracked on Skill Calibration tab of Weekly Tracker), this gate graduates to Spot Check and then Auto-Advance. Kay decides when to graduate — the system proposes it with data.
+### Kay/Camilla Decision Column (Temporary — Testing Phase)
+During the testing phase, outreach-manager only drafts outreach for targets where Col O (Kay/Camilla: Decision) = "Approve". Either Kay or Camilla can approve targets. This is a temporary human-in-the-loop gate. Once target-discovery's accept rate stabilizes at 85%+ for 2 consecutive weeks (tracked on Skill Calibration tab of Weekly Tracker), this gate graduates to Spot Check and then Auto-Advance. Kay decides when to graduate — the system proposes it with data.
 
 ### Volume & Cadence
 - 4-6 cold targets per day (funds that acquired averaged 4, not 9)

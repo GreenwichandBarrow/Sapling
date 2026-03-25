@@ -293,6 +293,9 @@ Merge all agent results into a single data object. Calculate derived metrics:
 - **Response Rate** = responses_received / outreach_emails_sent
 - **Outreach → Owner Conversation** = stage_1_calls / outreach_emails_sent
 - **Owner Conversation → NDA** = ndas_signed / stage_1_calls
+- **Daily Outreach Average** = outreach_emails_sent / business_days_this_week (target: 4-6/day)
+- **Daily Call Average** = cold_calls_made / business_days_this_week (should match email volume)
+- **Volume Flag:** If daily outreach average exceeds 6/day, flag in the weekly summary: "Outreach volume above target (X/day vs 4-6 target). Review quality vs quantity." If below 3/day when a sprint is active, flag: "Outreach volume below target. Check target-discovery pipeline."
 
 ### Step 4: Write to Google Sheet
 Read current sheet to find next empty column, then write data to all 3 tabs:

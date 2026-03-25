@@ -281,6 +281,8 @@ curl -s -X POST "$SLACK_WEBHOOK_SVA" \
 
 **JJ's workflow:** Click link → read script + company info → make call → fill in Call Outcome + Call Notes in the doc. JJ does NOT touch the master target sheet.
 
+**If owner wants to schedule:** JJ books a time with the owner on the call, then emails Howie (barrie@greenwichandbarrow.com) with: owner name, owner email, and agreed time. Howie creates the calendar invite. Include Howie's email in every call log doc.
+
 **Overnight (after JJ's shift):**
 1. Read all Call Log docs updated today in OPERATIONS / CALL LOGS
 2. Extract call outcomes and update master target sheet:

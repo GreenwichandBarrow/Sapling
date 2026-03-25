@@ -13,11 +13,22 @@ One task = one commit. Intelligently detect ALL files related to the current wor
 
 ## Process
 
+**Before committing, always run the session wrap-up checklist:**
+
+### Session Wrap-Up (runs every /commit)
+1. **Memory** — Save any new memories from this session (user preferences, feedback, project updates). Check if existing memories need updating.
+2. **Skills** — Update any skills that were discussed, modified, or need fixes identified during the session. Apply feedback to skill instructions.
+3. **Stop hooks** — Add any sub-agent stop hooks or verification gates that came up during the session.
+4. **Context** — Update daily note, processing state, or any context files that changed.
+5. **Then commit** — proceed with the git workflow below.
+
+### Git Workflow
 1. **Identify the task** - What was the user trying to accomplish?
 2. **Detect related files** - Scan for all changes connected to this task (see detection below)
 3. **Verify completeness** - Would someone checking out this commit have everything they need?
 4. **Stage atomically** - All related files in one commit, nothing more, nothing less
 5. **Write message** - Describe what was accomplished, not just what files changed
+6. **Push to remote** - `git push origin main` so the other machine can pull
 
 ## Message Format
 

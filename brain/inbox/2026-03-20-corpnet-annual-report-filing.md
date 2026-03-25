@@ -2,7 +2,7 @@
 schema_version: 1.2.0
 date: 2026-03-20
 title: "File G&B annual report before deadline (CorpNet)"
-status: backlog
+status: done
 source: email
 urgency: high
 source_ref: "msg:19cd8b215cf99c61"

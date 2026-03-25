@@ -234,6 +234,7 @@ tags:
 - [ ] One-pagers updated with scores on Drive
 - [ ] Tracker IDEATION rows updated with scores
 - [ ] Promoted niches appear in WEEKLY REVIEW tab (if applicable)
+- [ ] Promoted niches have their Drive folder moved from IDEATION (`1fQNl6mogJW-6u5XJeE5uYQGsDPx495_O`) to WEEKLY REVIEW (`1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT`): `gog drive move {folder_id} --parent 1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT -a kay.s@greenwichandbarrow.com -y`
 
 ## Completion
 

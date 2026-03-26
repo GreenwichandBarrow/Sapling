@@ -68,20 +68,27 @@ Filter for rows where Current Status (col D) contains "Active". Use the Niche Hy
 
 **Why Active-Diligence triggers conference discovery:** Conferences are a form of customer validation. Attending an industry conference and talking to practitioners is diligence — you learn how the niche works, what matters, who the players are. This makes conferences a natural fit for the Active-Diligence phase, not just Active-Outreach.
 
-### Conference Types (all qualify if 5+ business owners present)
+### Audience Filter (CRITICAL — apply before anything else)
+
+Only surface conferences where the attendees are one of these two groups:
+1. **Owners of businesses G&B wants to buy** — insurance agency/brokerage owners, TCI broker principals, art advisory firm owners, collection management firm owners
+2. **Clients of businesses G&B wants to buy** — people who hire those firms (family offices, UHNW individuals, corporate risk managers, art collectors, estate planners who refer to art advisors)
+
+If the audience is primarily vendors, tech providers, carrier executives, curators, academics, industry analysts, or other people who are NOT owners or clients of target businesses — do NOT put it on the sheet. This filter eliminates InsurTech vendor conferences, museum professional events, general business expos, and industry analyst summits.
+
+**Ask yourself:** "Will Kay meet someone who either owns a business she could acquire, or hires the kind of business she wants to acquire?" If no, skip it.
+
+### Conference Types (all qualify if they pass the audience filter)
 - Trade shows with exhibitor booths (PREFERRED — booth = business owner you can talk to)
 - Association meetups and chapter meetings (PREFERRED — smaller, intimate, high-quality conversations)
 - Regional industry conferences (30-200 people ideal)
-- Professional networking events
-- Business expos and showcases
+- Client-facing events where target business owners exhibit or network
 
 ### Conference Selection Preferences
 - **Smaller > bigger.** 50-500 attendees is the sweet spot. NAEPC (~400) is the gold standard.
 - **Booth/expo format > panel/speaker format.** Kay needs face time with owners at their tables, not keynote audiences. Kay strongly prefers expo halls — walkable floors where companies have booths/tables. When evaluating, always check whether the event has a dedicated expo hall, exhibition area, or "expo safari" component. Flag this clearly in Agent Notes.
 - **Industry association chapter meetings are ideal.** Intimate, business owners present, real conversations.
-- **Skip consumer-facing fairs.** Art fairs, consumer expos = visitors and collectors, not acquisition targets.
-- **Skip curator/museum professional conferences.** Curators are not art advisory firm owners or their clients. AAM, AAMC, and similar museum-focused events are the wrong audience.
-- **Avoid redundant conferences.** If Kay is already attending one conference for a niche in a given month, don't surface more of the same type in different cities. One InsurTech conference per quarter is enough.
+- **Avoid redundant conferences from the same organizer.** Multiple PIA chapter meetings or different association events in the same niche are fine — different attendees each time. But don't surface the same conference company's events twice (e.g., two InsurTech NY events in one quarter).
 - **Large conferences (500+) are "Register Only" candidates** — get the attendee list for outreach, don't attend.
 - **Budget: $10K annual T&E ($20K buffer available).** Evaluate each conference on its merits — value of attendees, content quality, agenda, location, niche relevance. A $1,500 event with 200 target-rich owners is a better spend than a $50 event with no one relevant. Show registration cost in the Pipeline sheet so Kay can make informed decisions.
 - **Association memberships worth joining** if they unlock regular chapter meetings with business owners (e.g., EPCNYC for estate planners, local insurance agent associations). Most are $200-500/year.

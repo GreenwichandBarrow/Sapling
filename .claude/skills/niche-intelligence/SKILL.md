@@ -327,6 +327,45 @@ Doc: {google_doc_link}
 
 **Stop hook:** Call list doc exists in Drive AND contains at least 5 targets with at least one contact method each.
 
+**After JJ completes 5 calls — Customer Validation Summary:**
+
+Claude synthesizes JJ's 5 call log docs into a one-page **Customer Validation Summary** saved to `OPERATIONS / CALL LOGS / {Niche} - Customer Validation Summary.docx`:
+
+```
+CUSTOMER VALIDATION: {Niche Name}
+Date: {date}
+Calls Completed: 5 of 5
+
+RISK VALIDATION:
+1. "{Risk from one-pager}"
+   - {n}/5 validated (customer quotes) ✓
+   - {n}/5 contradicted (customer quotes) ✗
+   - {n}/5 mixed
+   → VERDICT: {Low risk / Moderate risk / High risk}
+
+2. "{Next risk}"
+   ...
+
+OVERALL SIGNAL: [Strong / Mixed / Weak]
+- Strong = 4-5 customers converge on the same answers → ready for Kay's decision
+- Mixed = answers split, no clear pattern → recommend 3-5 more calls
+- Weak = 4-5 customers raise concerns → recommend table or kill
+
+KEY QUOTES: {2-3 verbatim quotes that capture the signal}
+
+RECOMMENDATION: [Advance to Active-Outreach / More calls needed / Table]
+```
+
+Also saved to vault: `brain/outputs/{date}-customer-validation-summary-{niche-slug}.md`
+
+**Decision gate:** Kay and analyst review the summary (typically at Wednesday analyst call). Kay decides: advance to Active-Outreach, request more calls, table, or kill. This is NOT an automatic promotion — Kay always decides.
+
+**JJ's call volume during Active-Diligence:**
+- Owner confirmation calls ALWAYS take priority (4-6/day)
+- Customer validation calls fill remaining time (~3-4/day on a typical day)
+- 5 completed customer conversations = ~2 days of JJ time
+- JJ logs each customer call in a Call Log doc ("Customer Validation" variant) with structured answers to each question + overall sentiment
+
 </sub_agents>
 
 <reference_index>

@@ -74,7 +74,7 @@ Spawn 6 specialized sub-agents in parallel to collect data. Each returns a struc
   "introductions_received": 0,
   "owner_response_rate_pct": 0,
   "intro_threads": [],
-  "outreach_by_source": {"email": 0, "cold_call": 0, "conference_followup": 0, "broker": 0, "network": 0}
+  "outreach_by_source": {"email": 0, "cold_call": 0, "conference_followup": 0, "broker": 0, "network": 0, "linkedin_dm": 0}
 }
 ```
 **Queries:**
@@ -264,6 +264,31 @@ curl -s -X GET "https://api.linkt.ai/v1/run" -H "x-api-key: {API_KEY}" | # filte
 # Master sheet ICP data (Kay + JJ columns)
 gog sheets get "{MASTER_SHEET_ID}" "'Active'!O:U" --json  # Kay Decision, Pass Reason, Call Status, Sentiment
 ```
+### Agent 6 (extended): LinkedIn DM Collector
+**Additional task for Agent 6:** Pull LinkedIn DM metrics from the active niche sprint target sheet(s).
+
+**Queries:**
+```bash
+# Read LinkedIn DM Status column from each active target sheet
+gog sheets get "{SHEET_ID}" "'Active'!AB:AB" --json
+```
+
+**Counts:**
+- LinkedIn DMs Drafted (Col AB = "Drafted")
+- LinkedIn DMs Sent (Col AB = "Sent")
+- LinkedIn DMs Responded (Col AB = "Responded")
+- LinkedIn DMs No Response (Col AB = "No Response")
+- LinkedIn DM Response Rate = Responded / (Sent + No Response)
+
+Include in Agent 6 returns:
+```json
+{
+  "linkedin_dms_drafted": 0,
+  "linkedin_dms_sent": 0,
+  "linkedin_dms_responded": 0,
+  "linkedin_dm_response_rate": 0
+}
+```
 </sub_agents>
 
 <execution_flow>
@@ -335,6 +360,7 @@ gog sheets get "$SHEET_ID" "'Weekly Topline'!1:1" --json
 gog sheets update "$SHEET_ID" "'Weekly Topline'!{COL}1:{COL}9" --values-json '{...}'
 gog sheets update "$SHEET_ID" "'Weekly Detail'!{COL}1:{COL}23" --values-json '{...}'
 gog sheets update "$SHEET_ID" "'Quarterly Summary'!{QCOL}3:{QCOL}31" --values-json '{...}'
+gog sheets update "$SHEET_ID" "'Channel x Sprint Analytics'!{COL}1:{COL}34" --values-json '{...}'
 ```
 
 ### Step 5: Save Vault Snapshot
@@ -406,24 +432,28 @@ Diagnostic view organized by Stage 7 questions.
 | 3 | SYSTEM THROUGHPUT | Target | |
 | 4 | Outreach Emails Sent | — | {n} |
 | 5 | Cold Calls Made | — | {n} |
-| 6 | Responses Received | — | {n} |
-| 7 | New Contacts Added | — | {n} |
-| 8 | Networking Meetings | — | {n} |
-| 9 | Introductions Received | — | {n} |
-| 10 | | | |
-| 11 | SIGNAL QUALITY | Target | |
-| 12 | Response Rate | — | {calculated} |
-| 13 | Stage 1 Calls (Owner Conversations) | 2–5/wk | {n} |
-| 14 | Qualified Opportunities (A count) | — | {n} |
-| 15 | Stage 2 Calls (Deep Dives) | — | {n} |
-| 16 | Deals in Active Review | — | {n} |
-| 17 | Conversion: Outreach to Owner Conversation | — | {calculated} |
-| 18 | Conversion: Owner Conversation to NDA | — | {calculated} |
-| 19 | | | |
-| 20 | PIPELINE HEALTH | Target | |
-| 21 | Top of Funnel (Total Pipeline) | — | {n} |
-| 22 | Deals Added This Week | — | {n} |
-| 23 | Deals Killed/Passed | — | {n} |
+| 6 | JJ Dials (total) | 8-12/day | {n} |
+| 7 | LinkedIn DMs Drafted | — | {n} |
+| 8 | LinkedIn DMs Sent | — | {n} |
+| 9 | Responses Received | — | {n} |
+| 10 | New Contacts Added | — | {n} |
+| 11 | Networking Meetings | — | {n} |
+| 12 | Introductions Received | — | {n} |
+| 13 | | | |
+| 14 | SIGNAL QUALITY | Target | |
+| 15 | Response Rate | — | {calculated} |
+| 16 | Stage 1 Calls (Owner Conversations) | 2–5/wk | {n} |
+| 17 | Qualified Opportunities (A count) | — | {n} |
+| 18 | Stage 2 Calls (Deep Dives) | — | {n} |
+| 19 | Deals in Active Review | — | {n} |
+| 20 | Conversion: Outreach to Owner Conversation | — | {calculated} |
+| 21 | Conversion: Owner Conversation to NDA | — | {calculated} |
+| 22 | LinkedIn DM Response Rate | — | {calculated} |
+| 23 | | | |
+| 24 | PIPELINE HEALTH | Target | |
+| 25 | Top of Funnel (Total Pipeline) | — | {n} |
+| 26 | Deals Added This Week | — | {n} |
+| 27 | Deals Killed/Passed | — | {n} |
 
 ### Tab 3: Quarterly Summary
 Investor-grade rollup. Cumulative totals and conversion funnels.
@@ -502,6 +532,57 @@ Tracks credit consumption, list quality, and ICP efficiency week over week.
 - Should we change the list size request? (If 20 entities/run and 50% rejected, try 10 tighter ones)
 - Should we upgrade the subscription? (If consistently hitting 150 by week 3)
 - Is the ICP working? (Credits per conversation is the ultimate efficiency metric)
+
+
+### Tab 5: Channel x Sprint Analytics
+Per-channel performance broken down by niche sprint. Updated weekly. Answers "which channel works best in which niche?"
+
+| Row | Metric | {Sprint 1} | {Sprint 2} | ... |
+|-----|--------|-----------|-----------|-----|
+| 1 | Header | {Niche Name} | {Niche Name} | |
+| 2 | | | | |
+| 3 | EMAIL | | | |
+| 4 | Emails Sent | {n} | {n} | |
+| 5 | Email Responses | {n} | {n} | |
+| 6 | Email Response Rate | {%} | {%} | |
+| 7 | Email → Owner Conversation | {n} | {n} | |
+| 8 | | | | |
+| 9 | PHONE (JJ) | | | |
+| 10 | JJ Dials | {n} | {n} | |
+| 11 | JJ Connections | {n} | {n} | |
+| 12 | JJ Connection Rate | {%} | {%} | |
+| 13 | JJ → Meeting Booked | {n} | {n} | |
+| 14 | | | | |
+| 15 | LINKEDIN DM | | | |
+| 16 | DMs Sent | {n} | {n} | |
+| 17 | DM Responses | {n} | {n} | |
+| 18 | DM Response Rate | {%} | {%} | |
+| 19 | DM → Owner Conversation | {n} | {n} | |
+| 20 | | | | |
+| 21 | CONFERENCE | | | |
+| 22 | Conferences Attended | {n} | {n} | |
+| 23 | Booth Conversations | {n} | {n} | |
+| 24 | Conference → Owner Conversation | {n} | {n} | |
+| 25 | | | | |
+| 26 | WARM INTRO | | | |
+| 27 | Warm Intros Identified | {n} | {n} | |
+| 28 | Warm Intros Sent | {n} | {n} | |
+| 29 | Warm Intro Response Rate | {%} | {%} | |
+| 30 | | | | |
+| 31 | COMBINED | | | |
+| 32 | Total Outreach (all channels) | {n} | {n} | |
+| 33 | Total Owner Conversations | {n} | {n} | |
+| 34 | Overall Conversion Rate | {%} | {%} | |
+
+**Data sources:**
+- Email metrics: Gmail collector (Agent 1) + target sheet Col Y (Outreach Stage) filtered by niche
+- Phone metrics: Target sheet Cols Q-T (JJ call columns) filtered by niche
+- LinkedIn DM metrics: Target sheet Col AB (LinkedIn DM Status) filtered by niche
+- Conference metrics: Conference Pipeline Sheet + Granola transcripts
+- Warm intro metrics: Target sheet Col X (Warm Intro) filtered by niche
+- Niche identification: Target sheet identifies which niche sprint each target belongs to via the sheet name ("{Niche} - Target List")
+
+**Why per-sprint matters:** Different niches may respond differently to different channels. Insurance compliance owners might prefer phone. Luxury service providers might prefer LinkedIn. This data informs channel allocation per niche.
 
 ### Why These Supporting Metrics
 
@@ -582,6 +663,9 @@ Tracker update is complete when ALL checks pass:
 - [ ] Key metrics populated in Topline (even if 0)
 - [ ] All metrics populated in Detail (even if 0)
 - [ ] Quarterly Summary updated with current quarter cumulative totals
+- [ ] Channel x Sprint Analytics tab updated with per-niche channel metrics
+- [ ] LinkedIn DM metrics populated (even if 0)
+- [ ] JJ dial count populated
 
 ### Vault
 - [ ] Snapshot file exists at `brain/trackers/weekly/{date}-weekly-tracker.md`

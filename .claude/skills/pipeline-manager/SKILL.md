@@ -248,6 +248,21 @@ Read the active niche sprint's master sheet ("{Niche} - Target List") in LINKT T
 - New "Wrong Number" → flag data quality issue
 - New "Not Interested" → move to "Closed / Not Proceeding" or flag for Kay
 
+### Niche Sprint Status Tracking
+
+Niche sprints have two active phases tracked on the Industry Research Tracker:
+
+| Status | Meaning | Target Discovery Volume | Outreach |
+|--------|---------|------------------------|----------|
+| Active - Diligence | Customer validation in progress. JJ calling customers/experts. | 2-3 targets/day (reduced) | No owner outreach yet |
+| Active - Outreach | Customer validation passed. Full owner outreach active. | 4-6 targets/day (full) | Full cadence (email → JJ call → follow-up → LinkedIn DM) |
+
+**Transition trigger:** When JJ completes 5 customer validation calls for a niche in "Active - Diligence" and Kay reviews the findings, Kay decides to either:
+- Promote to "Active - Outreach" → full target discovery and outreach cadence begins
+- Table/Kill the niche → sprint stops, findings logged to vault
+
+Multiple niches can be in different phases simultaneously. The Linkt credit budget splits accordingly: ~100 credits/month for "Active - Outreach" niches, ~50 credits/month for "Active - Diligence" niches.
+
 ### JJ Daily Call Prep (10am ET)
 
 **JJ's hours:** 10am - 2pm ET, Mon-Fri. All notifications at 10am, not 9am.
@@ -266,18 +281,29 @@ Read the active niche sprint's master sheet ("{Niche} - Target List") in LINKT T
    - **If no reply** → proceed with JJ call assignment.
 
    JJ only calls targets who haven't responded. A call after a reply is redundant and could annoy the owner.
-3. For each verified no-reply target, create a Call Log doc from template (ID: `1nvvdOU7I5NLAwxrYgHIFTRNrEZmc67X8`):
+3. For each verified no-reply target, find a personal tidbit via WebSearch:
+   ```bash
+   # Search for recent news, awards, milestones about the owner
+   WebSearch: "{Owner Name}" "{Company Name}"
+   ```
+   Extract ONE personal detail: recent award, conference appearance, company anniversary, industry publication, community involvement, or career milestone. Write it as a single sentence. If nothing found, leave blank — don't force it.
+4. For each verified no-reply target, create a Call Log doc from template (ID: `1nvvdOU7I5NLAwxrYgHIFTRNrEZmc67X8`):
    - Copy template → save to OPERATIONS / CALL LOGS (`1nGSQIa28fhQ9dXuKdMks_172gyxAinEs`)
    - Name: "Call Log - {Company Name} {M.DD.YY}.docx"
    - Pre-populate COMPANY INFO section from Linkt data in the master target sheet
    - Customize SCRIPT section with company-specific operational signal
-3. Send Slack at 10am:
+   - Add "Personal Note for JJ" field after SCRIPT section with the personal tidbit (if found)
+5. Send Slack at 10am:
 
 ```bash
 curl -s -X POST "$SLACK_WEBHOOK_SVA" \
   -H "Content-Type: application/json" \
   -d '{"text":"Good morning JJ. Here are your calls for today:\n\n1. {Owner Name} - {Company}\n   Phone: {phone}\n   Call Log: {google_doc_link}\n\n2. {Owner Name} - {Company}\n   Phone: {phone}\n   Call Log: {google_doc_link}\n\n..."}'
 ```
+
+**JJ Dial Target: 8-12 dials/day.** This includes owner confirmation calls (from outreach cadence), customer validation calls (from niche diligence), and callback attempts from prior days. Include the target count in the Slack message:
+
+Add to the Slack message text: `"\n\nDial target today: {n} (includes {n} confirmation + {n} callbacks + {n} customer validation)"`
 
 **JJ's workflow:** Click link → read script + company info → make call → fill in Call Outcome + Call Notes in the doc. JJ does NOT touch the master target sheet.
 

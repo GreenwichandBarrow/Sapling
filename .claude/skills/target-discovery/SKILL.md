@@ -69,6 +69,9 @@ If the master sheet doesn't exist yet (first run of a new sprint), **COPY the te
 gog drive copy 1wIK4Jv56QIZejcmpq-gGrCWAPe07eJWUbKsWTRwh778 "{Niche} - Target List" -a kay.s@greenwichandbarrow.com --parent 1WfbzezRkD7Kr0FOA76y99x5wV8lwRkVc -j
 ```
 
+
+**Template must include:** All columns A through AB, with dropdowns on Col AA (1st, 2nd, 3rd) and Col AB (Drafted, Sent, Responded, No Response). If the template doesn't have these columns yet, add them before the first run of a new sprint.
+
 This ensures Kay never has to manually copy dropdowns. The template is the single source of truth for sheet structure.
 
 When Kay marks a row "Pass" in Col O, move it to the "Passed" tab with all data preserved.
@@ -114,6 +117,11 @@ Populate cols C-N (Website, Headquarters, Industry, Employees, Revenue, Ownershi
 
 This applies to ALL sources — Linkt, free research, associations, referrals. No exceptions. If enrichment can't meet this bar after a reasonable research effort, log the company name in the daily briefing as "could not enrich" with what's missing. Do NOT add it to the sheet with blank fields for Kay to catch.
 
+### LinkedIn Tracking Columns (added by outreach-manager overnight prep)
+
+- **Col AA: LinkedIn Connection Degree** — "1st", "2nd - {mutual name}", "3rd", or blank. Auto-populated during overnight prep by cross-referencing against Kay's 901 imported LinkedIn connections. Kay manually updates "2nd - {mutual name}" when she spots mutual connections.
+- **Col AB: LinkedIn DM Status** — Dropdown: `Drafted` | `Sent` | `Responded` | `No Response`. Set to "Drafted" when outreach-manager creates the Slack DM. Kay updates to "Sent" after sending. Kay updates to "Responded" when reply received. Auto-set to "No Response" after 10 business days.
+
 ### Step 3: Kay Reviews Target List
 Present the combined list (Linkt + supplemental) to Kay. She reviews:
 - Which targets are real acquisition candidates
@@ -130,6 +138,7 @@ Before handing off to outreach-manager:
 Pass approved, deduped targets to skill/outreach-manager's cold outreach subagent with:
 - Company name, website, headquarters
 - Owner name, title, email, phone, LinkedIn
+- LinkedIn Owner URL (Col M) — for LinkedIn DM drafting and connection degree lookup
 - Research context (what makes them a good target, any personal hooks found)
 - Linkt enrichment data
 </target_discovery>

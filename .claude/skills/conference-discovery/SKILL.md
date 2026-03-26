@@ -56,16 +56,17 @@ Reference: Colin Woolway and Will Gallagher attended 1-2 conferences/week and la
 ### Niche Targeting
 
 Search for conferences in this priority order:
-1. **Top 5 active niches** (from Industry Research Tracker)
-2. **Adjacent/runner-up niches** (from IDEATION list) — only if top 5 exhausted for a given week
+1. **Active-Diligence and Active-Outreach niches** (from Industry Research Tracker WEEKLY REVIEW tab, status = "Active - Diligence" or "Active - Outreach")
+2. **Under Review niches** — only if active niches exhausted for a given week
 3. **General small business owner gatherings** — ETA events, SBA conferences, local business expos
 
-Current top 5 niches:
-1. Trust Administration (NAEPC, fiduciary associations, estate planning)
-2. Estate Management Companies (luxury/UHNW events, property management)
-3. Insurance Producer License Compliance (insurance industry, compliance events)
-4. Art Insurance Brokerage (art fairs, insurance conferences)
-5. Trade Credit Insurance (trade finance, credit insurance, textile/fashion)
+**Do NOT hardcode niches here.** Always read the current active niches from the Industry Research Tracker at runtime:
+```bash
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B3:D20" -a kay.s@greenwichandbarrow.com -j
+```
+Filter for rows where Current Status (col D) contains "Active". Use the Niche Hypothesis (col B) as the search term.
+
+**Why Active-Diligence triggers conference discovery:** Conferences are a form of customer validation. Attending an industry conference and talking to practitioners is diligence — you learn how the niche works, what matters, who the players are. This makes conferences a natural fit for the Active-Diligence phase, not just Active-Outreach.
 
 ### Conference Types (all qualify if 5+ business owners present)
 - Trade shows with exhibitor booths (PREFERRED — booth = business owner you can talk to)

@@ -313,7 +313,7 @@ Target validation was moved into the identification step (Step 2) so no niche is
    - For each target: Name, Company, Title, Phone (if findable), LinkedIn URL, why they're relevant
 4. Write the call list to Google Drive: `OPERATIONS / CALL LOGS / {Niche} - Customer Validation Calls.docx`
    - Include: niche name, the 5-8 questions, the 5-10 targets with contact info
-   - Use the Customer Validation Call Log template (Doc ID: `11uSGeSB8YjpQfrERCipq6x5PzdyU_Khlj27aos-FaH8`, in OPERATIONS / CALL LOGS)
+   - Use the Customer Validation Call Log template (Doc ID: `1pHkrOw63E9epFgTOOpLj6VsfjWWe1qCv`, .docx format with G&B letterhead, in OPERATIONS / CALL LOGS)
    - Copy the template for each individual call target, pre-populate niche name and validation questions
 5. Write a vault file: `brain/outputs/{date}-customer-validation-calllist-{niche-slug}.md`
 

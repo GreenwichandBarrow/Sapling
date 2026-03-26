@@ -176,6 +176,18 @@ Maintain in the **Conference Pipeline Google Sheet** (see references/drive-locat
 Statuses: Discovered, Evaluating, Registered, Prep Complete, Attended, Skipped
 
 **Sort order:** Always chronological — earliest/closest date at top, farthest away at bottom.
+
+### Slack Notification (end of Phase 1)
+
+After discovery is complete, sheet is populated, and sort validation passes, send a Slack notification:
+
+```bash
+curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
+  -H "Content-Type: application/json" \
+  -d '{"text":"Conference discovery complete — {n} new conferences found for {date range} across {niches searched}. Pipeline sheet updated and sorted.\nhttps://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit"}'
+```
+
+**Draft the Slack message and present to Kay for review before sending.** Only send after approval.
 </discovery>
 
 <registration>

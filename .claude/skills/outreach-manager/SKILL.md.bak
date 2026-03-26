@@ -53,10 +53,9 @@ Handles outreach for targets sourced from skill/target-discovery (Linkt + free s
 | Day | Channel | Who | Action |
 |-----|---------|-----|--------|
 | Day 1 | Email | Kay (via Superhuman draft) | Personalized cold email |
-| Day 1 | LinkedIn DM | Kay (via Slack draft) | 1st/2nd degree connections only — DM goes same day as email |
 | Day 3 | Phone | JJ | Confirmation call — "wanted to make sure you received Kay's note" |
-| Day 3-5 | LinkedIn DM | Kay (via Slack draft) | 3rd degree / no connection — DM timed with JJ's call |
 | Day 5-6 | Email | Kay (via Superhuman draft) | Follow-up email if no response — short, one line |
+| Day 8-10 | LinkedIn DM | Kay (manually) | High-value targets only, if email + call didn't land |
 
 After Day 10 with no response, move to nurture cadence (pipeline-manager handles from here).
 
@@ -70,8 +69,6 @@ When outreach-manager receives approved targets, it writes two new columns on th
 
 - **Col X: Warm Intro** — "Warm - {connection name}" if a mutual connection is found in Attio, blank if cold. Agent checks Attio People records for the target owner and anyone at their company. A match means Kay knows someone there — route to warm intro path, NOT cold outreach.
 - **Col Y: Outreach Stage** — Tracks where each target is in the sequence: `Email Drafted` → `Email Sent` → `JJ Called` → `Follow-Up Drafted` → `Follow-Up Sent` → `LinkedIn DM` → `Nurture`. Updated as each step completes.
-- **Col AA: LinkedIn Connection Degree** — "1st", "2nd - {mutual name}", "3rd", or blank (Unknown). Populated during overnight prep by cross-referencing targets against Kay's imported LinkedIn connections (901 contacts in vault). Kay updates this manually for 2nd degree when she spots mutual connections during her LinkedIn lookup.
-- **Col AB: LinkedIn DM Status** — Dropdown: `Drafted` → `Sent` → `Responded` → `No Response`. Updated by outreach-manager when draft is created (Drafted), by Kay when she sends (Sent), and by Kay when they reply (Responded). After 10 business days with no response, auto-set to "No Response".
 
 **JJ trigger rule:** JJ's call sheet only includes targets where Col X (Warm Intro) is BLANK. Warm intro targets never go to JJ — Kay handles them personally.
 
@@ -211,67 +208,11 @@ Kay
 
 Draft in Superhuman. Kay reviews and sends.
 
-### LinkedIn DM (Connection-Degree Based)
+### Day 8-10: LinkedIn DM (High-Value Only)
 
-LinkedIn DMs are a first-class outreach channel, not a last resort. Timing and personalization are driven by connection degree.
+Reserved for targets that are a strong fit but haven't responded to email or phone. Kay sends personally from her LinkedIn. Claude drafts the message, Kay copies and sends.
 
-**Connection degree detection (overnight prep):**
-1. Cross-reference each new approved target's name and company against Kay's 901 imported LinkedIn connections (stored in vault from LinkedIn data export)
-2. If match found → Col AA = "1st"
-3. If no match → Col AA = "3rd" (Kay manually updates to "2nd - {mutual name}" when she spots mutual connections during her LinkedIn lookup)
-
-**Cadence by connection degree:**
-
-| Degree | When | Why |
-|--------|------|-----|
-| 1st degree | Day 1 (alongside email) | Kay already knows them — DM is the warmer channel |
-| 2nd degree (mutual connection) | Day 1 (alongside email) | Reference the mutual connection — strongest possible opener |
-| 3rd degree / unknown | Day 3-5 (after JJ's call) | JJ's call warms them up, then DM hits while name is fresh |
-
-**DM delivery via Slack:**
-
-One Slack message per DM to #ai-operations containing:
-- The drafted DM text (ready to copy-paste into LinkedIn)
-- Clickable LinkedIn profile URL (from Col M on target sheet)
-- Link to the target's row in the Google Sheet
-- Connection degree note
-
-```bash
-curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
-  -H "Content-Type: application/json" \
-  -d '{"text":"LinkedIn DM for {Owner Name} at {Company} ({connection degree}):\n\n{DM text}\n\nLinkedIn: {linkedin_url}\nTarget sheet: {sheet_url}"}'
-```
-
-**DM personalization by connection degree:**
-
-**1st degree:**
-```
-Hey {first name}, hope you're doing well. I came across {company} while looking into {niche} and was impressed by {something specific}. Would love to catch up for 15 minutes if you're open.
-```
-
-**2nd degree:**
-```
-Hi {first name}, {mutual connection} and I were chatting and your name came up in the context of {niche}. I've been looking into the space and would love to hear your perspective. Open to a quick call?
-```
-
-**3rd degree / cold:**
-```
-Hi {first name}, I came across {company} while researching {niche} and was impressed by {something specific}. I'm trying to learn as much as I can about the space. Would you be open to a quick conversation?
-```
-
-**HARD RULES (same as email):**
-- Never mention Greenwich & Barrow in DMs
-- Never reference revenue, employee count, or financials
-- LinkedIn tone is MORE casual than email — no "Very best, Kay" sign-off
-- Keep DMs to 3-4 sentences max
-- Lead with curiosity about THEM, not Kay
-
-**Attio tracking:**
-- When outreach-manager creates the Slack DM draft → log "LinkedIn DM - Drafted" as a note on the Attio entry
-- Kay updates Col AB on target sheet when she sends (Sent) and when they reply (Responded)
-- Pipeline-manager reads Col AB during overnight scan for cadence tracking and stage progression
-
-**Do NOT send LinkedIn DMs on weekends.** Business days only, same as email.
+Not every target gets this. Only use for owners where the company is a clear buy-box match and worth the extra touch.
 
 ### Warm Intro Handling
 
@@ -485,7 +426,7 @@ During the testing phase, outreach-manager only drafts outreach for targets wher
 ### Channel Rules
 - **Email:** Always via Superhuman drafts. Never Gmail API.
 - **Phone:** JJ's call sheet in Google Sheets. JJ logs outcomes.
-- **LinkedIn DM:** Kay sends manually from LinkedIn. Outreach-manager drafts and delivers via Slack (#ai-operations). Connection degree determines timing (1st/2nd = Day 1, 3rd = Day 3-5). Tracked in Attio and target sheet (Col AB).
+- **LinkedIn DM:** Kay sends manually. Claude drafts. High-value escalation only.
 - **All channels:** Same voice, same framing (curiosity, not acquisition pitch).
 
 ### Team Roles (for this skill only)
@@ -527,11 +468,6 @@ Confirm Attio was checked before any drafting began. No person should have outre
 ### 5. Cadence Tracking
 Every cold Day 1 email (NOT warm intros) must have a corresponding Day 3 call entry scheduled in JJ's call sheet. Cross-reference the list of drafted cold emails against the call sheet. Any cold email without a matching Day 3 entry is a gap — add it before proceeding. Warm intro emails should NOT have a Day 3 call entry.
 
-### 5b. LinkedIn DM Validation
-For every target where Col AA (LinkedIn Connection Degree) = "1st" or "2nd", verify a LinkedIn DM Slack message was created on Day 1. For targets where Col AA = "3rd" or blank, verify LinkedIn DM was scheduled for Day 3-5 (only if target has a LinkedIn URL in Col M).
-
-Targets without a LinkedIn URL in Col M skip LinkedIn DM entirely — this is expected, not a gap.
-
 ### 6. Slack Notification (Only After Validation Passes)
 Only send once checks 1-5 all pass:
 ```bash
@@ -549,13 +485,10 @@ Replace `{n}` with actual counts. If validation failed, report the failure detai
 - [ ] Email drafts ready for Kay's review (cold + any conference follow-ups)
 - [ ] JJ's call sheet updated with Day 3 confirmation calls
 - [ ] No duplicate outreach across funnels (dedup layer verified)
-- [ ] LinkedIn DM drafts delivered via Slack for targets with LinkedIn URLs
-- [ ] LinkedIn connection degree populated (Col AA) for new targets
 
 ### Weekly
 - [ ] 20-30 owners contacted (email + phone combined across both funnels)
 - [ ] Pre-conference emails sent for upcoming conferences
 - [ ] Post-conference follow-ups drafted within 24 hours
 - [ ] Outreach metrics available for weekly tracker
-- [ ] LinkedIn DM response rates tracked for channel analytics
 </success_criteria>

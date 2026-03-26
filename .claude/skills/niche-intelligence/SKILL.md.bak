@@ -18,7 +18,6 @@ Step 3: ONE-PAGER (parallel)   → pptx deliverables
 Step 4: SCORE (sequential)     → scored niches + final report
 Step 4b: VALIDATE (parallel)   → buy-box target count (gate before promotion)
 Step 5: UPDATE (sequential)    → tracker updated + notification
-Step 5b: CUSTOMER CALL LIST (parallel) → validation call targets for JJ
 ```
 
 ### Chatroom Coordination
@@ -35,7 +34,6 @@ After each step that produces a deliverable, verify before proceeding:
 - **Step 3:** Each niche has a .pptx file created and uploaded to Drive
 - **Step 4:** Output report exists at `brain/outputs/{date}-niche-intelligence-report.md`
 - **Step 5:** Google Sheet updated with new rows
-- **Step 5b:** Customer call list doc created in Drive for any niche flagged for activation
 
 If verification fails, log the failure to chatroom and notify user — do NOT proceed to next step.
 
@@ -289,44 +287,6 @@ Target validation was moved into the identification step (Step 2) so no niche is
 |------------|------|-------------|
 | `niche-intel-tracker` | general-purpose | Update IDEATION + WEEKLY REVIEW tabs |
 
-### Step 5b: Customer Validation Call List
-
-| Agent Name | Type | Description |
-|------------|------|-------------|
-| `niche-intel-customer-calls` | general-purpose | Generate customer/expert call list for niche validation |
-
-**Purpose:** Before owner outreach begins on a new niche, JJ makes 5 customer/expert validation calls. These conversations surface red flags that desk research can't catch (e.g., weak demand, price-driven competition, declining relevance). This step generates the call list.
-
-**When this runs:** Only for niches that pass all 4 initial screen gates AND are candidates for sprint activation (scored 2.5+ on industry scorecard or Kay requests activation).
-
-**The agent:**
-1. Read the niche one-pager, specifically the **Risks** section and **Mission Criticality** section
-2. Generate 5-8 validation questions derived from the one-pager risks. Examples:
-   - If risk says "price competition eroding margins" → "What drives your vendor selection — price, quality, relationships, or something else?"
-   - If risk says "regulation may change" → "How dependent is your need for this service on current regulations?"
-   - If risk says "PE consolidation" → "Have you noticed larger players entering your market? How has that changed the service?"
-   - Always include: "How critical is {service} to your operations?" and "If your current provider disappeared, what would you do?"
-3. Identify 5-10 potential call targets (customers/experts who USE the niche's service):
-   - Search web for companies that are CUSTOMERS of this niche (not competitors)
-   - Check industry association member directories for customer-side contacts
-   - Search LinkedIn via WebSearch for titles like "VP Operations", "Procurement Director" at companies in the customer vertical
-   - For each target: Name, Company, Title, Phone (if findable), LinkedIn URL, why they're relevant
-4. Write the call list to Google Drive: `OPERATIONS / CALL LOGS / {Niche} - Customer Validation Calls.docx`
-   - Include: niche name, the 5-8 questions, the 5-10 targets with contact info
-   - Format matches JJ's existing call log template
-5. Write a vault file: `brain/outputs/{date}-customer-validation-calllist-{niche-slug}.md`
-
-**Output posted to chatroom:**
-```
-CUSTOMER VALIDATION CALL LIST: {Niche Name}
-Status: Active - Diligence
-Targets: {n} customers/experts identified
-Questions: {n} derived from one-pager risks
-Doc: {google_doc_link}
-```
-
-**Stop hook:** Call list doc exists in Drive AND contains at least 5 targets with at least one contact method each.
-
 </sub_agents>
 
 <reference_index>
@@ -363,6 +323,5 @@ Niche Intelligence run is complete when:
 - [ ] IDEATION tab updated with new niches + scores
 - [ ] High-scoring niches promoted to WEEKLY REVIEW if warranted
 - [ ] User notified that Niche Intelligence is complete
-- [ ] For niches flagged for sprint activation: customer validation call list generated with 5+ targets
 
 </success_criteria>

@@ -76,7 +76,7 @@ Current top 5 niches:
 
 ### Conference Selection Preferences
 - **Smaller > bigger.** 50-500 attendees is the sweet spot. NAEPC (~400) is the gold standard.
-- **Booth/expo format > panel/speaker format.** Kay needs face time with owners at their tables, not keynote audiences.
+- **Booth/expo format > panel/speaker format.** Kay needs face time with owners at their tables, not keynote audiences. Kay strongly prefers expo halls — walkable floors where companies have booths/tables. When evaluating, always check whether the event has a dedicated expo hall, exhibition area, or "expo safari" component. Flag this clearly in Agent Notes.
 - **Industry association chapter meetings are ideal.** Intimate, business owners present, real conversations.
 - **Skip consumer-facing fairs.** Art fairs, consumer expos = visitors and collectors, not acquisition targets.
 - **Large conferences (500+) are "Register Only" candidates** — get the attendee list for outreach, don't attend.

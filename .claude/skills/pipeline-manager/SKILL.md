@@ -98,6 +98,11 @@ Format: "From your meeting with {name} on {date}: '{action item}'"
 After gathering all data from the 5 sections above, RE-ORGANIZE the output into these three action categories. This is what Kay sees. Items from any section can land in any category based on what the action is.
 
 ```
+Pipeline snapshot:
+Active Deals: {total} ({n} Identified, {n} Contacted, {n} Financials Received, {n} Active Diligence, {n} Closed)
+Intermediary: {total} ({n} Actively Receiving, {n} Warmed, {n} Contacted)
+Niches: {n} Active-Diligence, {n} Active-Outreach
+
 Pipeline shifts to review/approve:
 1. {Company}: {current stage} → {recommended stage} ({signal evidence})
 2. {Contact}: nurture overdue, last contact {date}

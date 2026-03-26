@@ -30,6 +30,11 @@ Anthony emails P&L + BS PDFs
   → Morning briefing surfaces under "Other items":
     "Monthly P&L received from Anthony. Run /budget monthly?"
   → Kay approves → budget-manager monthly mode runs
+  → After processing, create a Slack reminder for the FIRST FRIDAY at 9am ET following the run:
+    "Budget update ready for your Friday review.
+    Dashboard: https://docs.google.com/spreadsheets/d/1vTeGviuQk9zLqacJrdBZS2Bopk8kQZtmEHWheqpCdq0/edit
+    Key highlights: {runway months} months runway, {burn vs budget}, {flags if any}."
+  → Budget review is ALWAYS a Friday activity regardless of when the data arrives.
 ```
 
 **Detection signal:** Email from StartVirtual or Anthony containing PDF attachments with "Profit and Loss" or "Balance Sheet" in the filename or subject.

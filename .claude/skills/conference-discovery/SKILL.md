@@ -79,10 +79,27 @@ If the audience is primarily vendors, tech providers, carrier executives, curato
 **Ask yourself:** "Will Kay meet someone who either owns a business she could acquire, or hires the kind of business she wants to acquire?" If no, skip it.
 
 ### Conference Types (all qualify if they pass the audience filter)
-- Trade shows with exhibitor booths (PREFERRED — booth = business owner you can talk to)
-- Association meetups and chapter meetings (PREFERRED — smaller, intimate, high-quality conversations)
+- **Association chapter meetings and dinners** (HIGHEST VALUE — intimate, business owners present, real conversations, recurring monthly. One membership = 10+ events/year)
+- **Industry niche meetups and gatherings** (small groups of practitioners in the exact niche — TCI brokers dinner, art advisory roundtable, insurance agent networking)
+- Trade shows with exhibitor booths (expo halls where owners have tables)
 - Regional industry conferences (30-200 people ideal)
 - Client-facing events where target business owners exhibit or network
+
+### Search Strategy — Prioritize Associations
+
+The best source of weekly conferences is **association event calendars**, not conference aggregators. For each active niche, identify the relevant professional associations and monitor their events pages directly.
+
+**Search pattern for each niche:**
+```
+WebSearch: "{niche} professional association"
+WebSearch: "{niche} industry association events {region}"
+WebSearch: "{niche} chapter meeting {city} {month} {year}"
+WebSearch: "{niche} networking event {city}"
+```
+
+Then visit each association's website → Events/Calendar page → capture all upcoming events.
+
+**Skip "pay to be in the room" events** where non-members pay premium rates ($2,000+) to access a curated audience. These attract vendors, not peers. The pricing model itself is the red flag — if it's free for one group and expensive for everyone else, you're the product.
 
 ### Conference Selection Preferences
 - **Smaller > bigger.** 50-500 attendees is the sweet spot. NAEPC (~400) is the gold standard.

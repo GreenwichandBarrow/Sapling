@@ -178,12 +178,14 @@ JJ calls to confirm receipt of Kay's email. This is NOT a cold call — it's a w
 
 **Script:**
 ```
-Hi, this is JJ calling on behalf of Kay Schneider at Greenwich & Barrow.
-Kay sent {owner name} a note a couple days ago and I just wanted to make
-sure it came through. She's been researching the {niche} space and would
-love to connect briefly with {owner name} about their experience.
+Hi, this is JJ with Greenwich & Barrow. We sent {owner name} a note
+a couple days ago and I just wanted to make sure it came through.
+We've been researching the {niche} space and would love to connect
+briefly with {owner name} about their experience.
 Would {owner name} have 15 minutes for a quick call?
 ```
+
+**JJ positioning:** JJ is a team member at G&B, not an assistant. He speaks as "we" and represents the firm in his own right. Never frame JJ as calling "on behalf of" anyone.
 
 **If the owner wants to schedule a call with Kay:** JJ books a time directly with the owner on the phone, then emails Howie (barrie@greenwichandbarrow.com) with: owner name, owner email, and agreed time. Howie creates the calendar invite and sends it to the owner. Kay gets notified via calendar. JJ does NOT manage Kay's calendar directly.
 

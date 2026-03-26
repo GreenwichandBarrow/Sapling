@@ -182,7 +182,7 @@ Hi, this is JJ with Greenwich & Barrow. We sent {owner name} a note
 a couple days ago and I just wanted to make sure it came through.
 We've been researching the {niche} space and would love to connect
 briefly with {owner name} about their experience.
-Would {owner name} have 15 minutes for a quick call?
+Would {owner name} have a few minutes for a quick call?
 ```
 
 **JJ positioning:** JJ is a team member at G&B, not an assistant. He speaks as "we" and represents the firm in his own right. Never frame JJ as calling "on behalf of" anyone.
@@ -248,7 +248,7 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 
 **1st degree:**
 ```
-Hey {first name}, hope you're doing well. I came across {company} while looking into {niche} and was impressed by {something specific}. Would love to catch up for 15 minutes if you're open.
+Hey {first name}, hope you're doing well. I came across {company} while looking into {niche} and was impressed by {something specific}. Would love to catch up for a few minutes if you're open.
 ```
 
 **2nd degree:**
@@ -386,7 +386,7 @@ For people Kay didn't get to meet but emailed pre-conference:
 ```
 Hi {first name},
 
-Sorry I missed you at {Conference Name}. Would still love to connect. Do you have 15 minutes this week?
+Sorry I missed you at {Conference Name}. Would still love to connect. Do you have a few minutes this week?
 
 Kay
 ```
@@ -436,7 +436,7 @@ When an upcoming conference is registered, identify the association head or orga
 | When | Action |
 |------|--------|
 | T-minus 21 days | First email to association head / organizer — "I'm attending {conference}, would love to connect beforehand" |
-| T-minus 14 days | Follow-up if no response — "Would love 15 minutes before the conference" |
+| T-minus 14 days | Follow-up if no response — "Would love a few minutes before the conference" |
 | T-minus 7 days | If connected, ask: "Who should I make sure to meet at {conference}?" |
 | Conference day | Meet in person. They introduce Kay to key people. |
 | T+1 day | Thank-you email + follow-up on any introductions they made |

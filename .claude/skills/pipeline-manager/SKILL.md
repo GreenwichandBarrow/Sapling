@@ -708,26 +708,36 @@ These signals are NOT surfaced during the daily pipeline review. They queue sile
 
 ## Active Niche Sprint Detection (runs daily)
 
-Check the Industry Research Tracker WEEKLY REVIEW tab for any niche with status = "Active":
+Check the Industry Research Tracker WEEKLY REVIEW tab for any niche with status starting with "Active" (either "Active - Diligence" or "Active - Outreach"):
 
 ```bash
 gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B3:D20" -a kay.s@greenwichandbarrow.com -j
 ```
 
-The "Current Status" column (D) has an **orange header** — this is an agent-trigger column. When Kay sets a niche's status to "Active" during the analyst call, it means: run target-discovery on this niche.
+The "Current Status" column (D) has an **orange header** — this is an agent-trigger column. When Kay sets a niche's status to "Active - Diligence" or "Active - Outreach" during the analyst call, it means: run target-discovery on this niche at the appropriate intensity.
 
 **Detection logic:**
 1. Read all WEEKLY REVIEW rows
-2. For each row where Status = "Active", check if target-discovery is already running for this niche:
+2. For each row where Status starts with "Active" (matches "Active - Diligence" or "Active - Outreach"), check if target-discovery is already running for this niche:
    - Check LINKT TARGET LISTS folder for a "{Niche} - Target List" sheet
    - If sheet exists with rows dated today → already running, skip
    - If no sheet or no recent rows → trigger target-discovery
-3. Log which niches are in Active sprint to the daily briefing
+3. **Phase-specific behavior:**
+   - **Active - Diligence:** Target-discovery runs at 2-3 targets/day. NO owner outreach cadence starts. Only JJ customer validation calls are in progress.
+   - **Active - Outreach:** Target-discovery runs at full 4-6 targets/day with full outreach cadence (cold emails, LinkedIn DMs via outreach-manager).
+4. Log which niches are in Active sprint (with phase) to the daily briefing
 
-**When a new "Active" status is detected:**
-- Note it in the daily briefing: "New active sprint detected: {Niche Name}. Target discovery will run."
-- Target-discovery skill runs automatically for this niche (daily, Mon-Fri)
-- Continue running until Kay changes the status away from "Active"
+**When a new "Active - Diligence" status is detected:**
+- Note it in the daily briefing: "New active sprint detected: {Niche Name} (Active - Diligence). Target discovery at 2-3/day. Customer validation calls needed before owner outreach."
+- Target-discovery skill runs at reduced pace (2-3/day, Mon-Fri)
+- NO outreach-manager cadence starts — only JJ customer validation calls
+- Continue running until Kay changes the status to "Active - Outreach" or away from Active
+
+**When a new "Active - Outreach" status is detected:**
+- Note it in the daily briefing: "New active sprint detected: {Niche Name} (Active - Outreach). Full target discovery at 4-6/day with outreach cadence."
+- Target-discovery skill runs at full pace (4-6/day, Mon-Fri)
+- Outreach-manager cadence starts (cold emails, LinkedIn DMs)
+- Continue running until Kay changes the status away from Active
 
 **When status = "Tabled" or "Killed" detected:**
 
@@ -747,7 +757,8 @@ Kay sets these during the analyst call. Pipeline-manager moves the niche to the 
 **Status dropdown values (orange column D):**
 - New — just added from pipeline, pending analyst review
 - Under Review — analyst evaluating
-- Active — triggers target-discovery sprint
+- Active - Diligence — customer validation in progress, reduced target discovery (2-3/day), no owner outreach
+- Active - Outreach — full target discovery (4-6/day) with owner outreach cadence
 - Ideation — deprioritized, not actively reviewing. Stays on WEEKLY REVIEW but sorted to bottom.
 - Wind-Down — finish in-flight outreach, no new targets
 - Tabled — moves to TABLED tab overnight
@@ -767,19 +778,29 @@ After processing Tabled/Killed moves and re-sorting WEEKLY REVIEW, validate:
 
 **2. Sort Validation:**
 - Re-read WEEKLY REVIEW after sorting
-- Confirm sort order: Active first, then Under Review, then New, then Wind-Down, then Ideation (bottom)
+- Confirm sort order: Active - Outreach first, then Active - Diligence, then Under Review, then New, then Wind-Down, then Ideation (bottom)
 - Confirm no data was lost during sort (row count before = row count after)
 
 **3. Target List Template Validation (on new Active sprints):**
-- When a niche is newly set to "Active," check if a target list sheet exists in LINKT TARGET LISTS
-- If no sheet exists, create one from the template with all 23 columns A-W
-- Verify orange header on Col O (Kay Decision)
+- When a niche is newly set to "Active - Diligence":
+  - Check that a customer validation call list exists in Drive (from niche-intelligence Step 5b)
+  - Check that NO outreach-manager cold email drafts were created for this niche
+  - If no target list sheet exists in LINKT TARGET LISTS, create one from the template with all 23 columns A-W
+  - Verify orange header on Col O (Kay Decision)
+- When a niche is newly set to "Active - Outreach":
+  - Check that a customer validation summary exists (indicating diligence was completed)
+  - Check that target list sheet exists and outreach cadence is running
+  - If no target list sheet exists, create one from the template with all 23 columns A-W
+  - Verify orange header on Col O (Kay Decision)
 
 **4. Kay Decision Column Validation (on all active target lists):**
-- For each niche with status "Active," read the target list sheet
+- For each niche with status starting with "Active," read the target list sheet
 - Check for any rows where Col O = "Pass" that haven't been moved to the Passed tab
 - Move them and preserve all data
 - Check for any rows where Col O = "Approve" that aren't yet in Attio — flag for outreach-manager pickup
+
+**5. Phase Compliance Check:**
+- For each niche in "Active - Diligence", verify that outreach-manager has NOT drafted any cold emails or LinkedIn DMs for targets in this niche. Diligence niches should only have JJ customer validation calls, not owner outreach. If owner outreach is detected for a Diligence niche, flag immediately: "ALERT: Owner outreach detected for {Niche} which is still in Diligence phase. Halt outreach until customer validation complete."
 
 ## Trigger
 

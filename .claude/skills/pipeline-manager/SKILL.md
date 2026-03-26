@@ -230,6 +230,24 @@ Results from this check feed directly into the **Draft Status** section of `brai
 
 This is how the system knows Kay sent the email and triggers the rest of the cadence (JJ's Day 3 call, follow-up email at Day 5-6).
 
+### Outbound Email Scan (catches manually-sent emails)
+The Superhuman Draft Status Check above only catches emails that originated as outreach-manager drafts. Kay also sends emails manually — typed directly in Superhuman, forwarded from another thread, or replied inline. These must also trigger pipeline stage changes.
+
+1. Query Gmail for all outbound emails:
+   ```bash
+   gog gmail search "from:kay.s@greenwichandbarrow.com newer_than:2d" --json --max 50
+   ```
+2. For each sent email, extract the recipient address(es) and cross-reference against Attio Active Deals entries at "Identified" stage (match by contact email, company domain, or contact name)
+3. **When a match is found:**
+   - Move Attio Active Deals entry from "Identified" → "Contacted"
+   - Calculate Day 3 JJ call date (2 business days after sent date) and update JJ's call columns (Col R: Call Date) on the master target sheet
+   - Update Col Y (Outreach Stage) to "Email Sent" on the master target sheet
+   - Log the signal: record sent date, recipient, and subject in the email-scan-results artifact under Draft Status → Sent
+4. **Deduplication:** Skip any recipient already captured by the Superhuman Draft Status Check above (avoid double-processing outreach-manager drafts that were sent). Use the recipient email as the dedup key.
+5. **Scope:** Only process emails sent to external recipients. Ignore internal emails (to @greenwichandbarrow.com addresses).
+
+This ensures manually-sent outreach emails (not just outreach-manager drafts) trigger the full cadence: Attio stage change → JJ Day 3 call → follow-up at Day 5-6.
+
 ### Conference Decision Scan
 Check the Conference Pipeline Google Sheet for any row where Kay marked Decision (Col M) = "Attend" or "Register Only" since last scan. For each new decision:
 1. Create Motion task: "Register for {conference name}" with deadline 2 days before registration closes (Col G)
@@ -330,7 +348,7 @@ When processing new targets (from target-discovery handoff), scan for warm intro
 This replaces the previous approach where Kay manually flagged warm intros. The agent does the research, Kay just sees the result.
 
 ### Gmail → brain/inbox/
-1. Query `gog gmail search "newer_than:2d" --json --max 50` for recent emails
+1. Query `gog gmail search "newer_than:2d label:INBOX" --json --max 50` for recent inbound emails (outbound scanning is handled separately by the Outbound Email Scan step above)
 2. Parse for actionable items: explicit requests, questions, deadlines, documents needing action
 3. Check idempotency: if `source_ref` (message ID) already exists in brain/inbox/, skip
 4. Write to `brain/inbox/YYYY-MM-DD-{slug}.md` using inbox schema (schemas/vault/inbox.yaml)
@@ -400,11 +418,14 @@ emails_scanned: N
 {If no draft-vs-sent pairs found: "No draft calibration data today."}
 ```
 
-**Draft Status population:** The Superhuman Draft Status Check (see section above) feeds this section. For each outreach or thank-you draft created by outreach-manager or pipeline-manager:
+**Draft Status population:** The Superhuman Draft Status Check AND the Outbound Email Scan (see sections above) both feed this section. For each outreach or thank-you draft created by outreach-manager or pipeline-manager:
 - Check Superhuman sent folder / `superhuman_search` MCP for matching sent emails
 - If sent: record target name, company, and sent date
 - If unsent: record target name, company, and age in days since draft was created
-- This gives downstream skills (and Kay's morning review) a single place to see what was sent vs. pending without re-querying Superhuman.
+
+For each manually-sent email detected by the Outbound Email Scan that matched an Attio Active Deals entry:
+- Record target name, company, sent date, and note "(manual — not from draft)"
+- This gives downstream skills (and Kay's morning review) a single place to see what was sent vs. pending without re-querying Superhuman or Gmail.
 
 This artifact is the handoff contract between pipeline-manager (which scans Gmail and checks Superhuman) and downstream consumers (/start, intermediary-manager). They never scan Gmail directly — they read this file.
 

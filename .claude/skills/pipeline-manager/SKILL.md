@@ -95,25 +95,26 @@ Format: "From your meeting with {name} on {date}: '{action item}'"
 
 ## Output Format
 
-After gathering all data from the 5 sections above, RE-ORGANIZE the output into these three action categories. This is what Kay sees. Items from any section can land in any category based on what the action is.
+After gathering all data from the 5 sections above, RE-ORGANIZE the output into these 5 consistent sections. This is what Kay sees every morning. Same sections, same order, every day. Items from any data source can land in any section based on what the action is.
 
 ```
-Pipeline snapshot:
-Active Deals: {total} ({n} Identified, {n} Contacted, {n} Financials Received, {n} Active Diligence, {n} Closed)
-Intermediary: {total} ({n} Actively Receiving, {n} Warmed, {n} Contacted)
-Niches: {n} Active-Diligence, {n} Active-Outreach
-
 Pipeline shifts to review/approve:
 1. {Company}: {current stage} → {recommended stage} ({signal evidence})
 2. {Contact}: nurture overdue, last contact {date}
 3. ...
 
-Action steps for Motion - review/approve:
+Pipeline summary:
+Active Deals: {total} ({n} Identified, {n} Contacted, {n} Financials Received, {n} Active Diligence, {n} Closed)
+Intermediary: {total} ({n} Actively Receiving, {n} Warmed, {n} Contacted)
+Niches: {n} Active-Diligence, {n} Active-Outreach
+Stale deals: {n} entries in same stage 2+ weeks
+
+Motion action steps to review/approve:
 1. {Action item from Granola/email/signal} — due {date}
 2. {Follow up with person} — {context}
 3. ...
 
-Email drafts for your review in Superhuman:
+Superhuman email drafts to review/approve:
 1. {Thank you to person} — re: {meeting/context}
 2. {Follow up email to person} — re: {topic}
 3. ...

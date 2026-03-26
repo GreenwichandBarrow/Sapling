@@ -80,6 +80,8 @@ Filter for rows where Current Status (col D) contains "Active". Use the Niche Hy
 - **Booth/expo format > panel/speaker format.** Kay needs face time with owners at their tables, not keynote audiences. Kay strongly prefers expo halls — walkable floors where companies have booths/tables. When evaluating, always check whether the event has a dedicated expo hall, exhibition area, or "expo safari" component. Flag this clearly in Agent Notes.
 - **Industry association chapter meetings are ideal.** Intimate, business owners present, real conversations.
 - **Skip consumer-facing fairs.** Art fairs, consumer expos = visitors and collectors, not acquisition targets.
+- **Skip curator/museum professional conferences.** Curators are not art advisory firm owners or their clients. AAM, AAMC, and similar museum-focused events are the wrong audience.
+- **Avoid redundant conferences.** If Kay is already attending one conference for a niche in a given month, don't surface more of the same type in different cities. One InsurTech conference per quarter is enough.
 - **Large conferences (500+) are "Register Only" candidates** — get the attendee list for outreach, don't attend.
 - **Budget: $10K annual T&E ($20K buffer available).** Evaluate each conference on its merits — value of attendees, content quality, agenda, location, niche relevance. A $1,500 event with 200 target-rich owners is a better spend than a $50 event with no one relevant. Show registration cost in the Pipeline sheet so Kay can make informed decisions.
 - **Association memberships worth joining** if they unlock regular chapter meetings with business owners (e.g., EPCNYC for estate planners, local insurance agent associations). Most are $200-500/year.

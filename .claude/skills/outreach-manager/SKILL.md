@@ -71,7 +71,7 @@ When outreach-manager receives approved targets, it writes two new columns on th
 - **Col X: Warm Intro** — "Warm - {connection name}" if a mutual connection is found in Attio, blank if cold. Agent checks Attio People records for the target owner and anyone at their company. A match means Kay knows someone there — route to warm intro path, NOT cold outreach.
 - **Col Y: Outreach Stage** — Tracks where each target is in the sequence: `Email Drafted` → `Email Sent` → `JJ Called` → `Follow-Up Drafted` → `Follow-Up Sent` → `LinkedIn DM` → `Nurture`. Updated as each step completes.
 - **Col AA: LinkedIn Connection Degree** — "1st", "2nd - {mutual name}", "3rd", or blank (Unknown). Populated during overnight prep by cross-referencing targets against Kay's imported LinkedIn connections (901 contacts in vault). Kay updates this manually for 2nd degree when she spots mutual connections during her LinkedIn lookup.
-- **Col AB: LinkedIn DM Status** — Dropdown: `Drafted` → `Sent` → `Responded` → `No Response`. Updated by outreach-manager when draft is created (Drafted), by Kay when she sends (Sent), and by Kay when they reply (Responded). After 10 business days with no response, auto-set to "No Response".
+- **Col AB: Kay: LinkedIn DM Status** — Dropdown: `Drafted` → `Sent` → `Responded` → `No Response`. Updated by outreach-manager when draft is created (Drafted), by Kay when she sends (Sent), and by Kay when they reply (Responded). After 10 business days with no response, auto-set to "No Response".
 
 **JJ trigger rule:** JJ's call sheet only includes targets where Col X (Warm Intro) is BLANK. Warm intro targets never go to JJ — Kay handles them personally.
 

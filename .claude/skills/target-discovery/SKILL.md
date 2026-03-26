@@ -120,7 +120,7 @@ This applies to ALL sources — Linkt, free research, associations, referrals. N
 ### LinkedIn Tracking Columns (added by outreach-manager overnight prep)
 
 - **Col AA: LinkedIn Connection Degree** — "1st", "2nd - {mutual name}", "3rd", or blank. Auto-populated during overnight prep by cross-referencing against Kay's 901 imported LinkedIn connections. Kay manually updates "2nd - {mutual name}" when she spots mutual connections.
-- **Col AB: LinkedIn DM Status** — Dropdown: `Drafted` | `Sent` | `Responded` | `No Response`. Set to "Drafted" when outreach-manager creates the Slack DM. Kay updates to "Sent" after sending. Kay updates to "Responded" when reply received. Auto-set to "No Response" after 10 business days.
+- **Col AB: Kay: LinkedIn DM Status** — Dropdown: `Drafted` | `Sent` | `Responded` | `No Response`. Set to "Drafted" when outreach-manager creates the Slack DM. Kay updates to "Sent" after sending. Kay updates to "Responded" when reply received. Auto-set to "No Response" after 10 business days.
 
 ### Step 3: Kay Reviews Target List
 Present the combined list (Linkt + supplemental) to Kay. She reviews:

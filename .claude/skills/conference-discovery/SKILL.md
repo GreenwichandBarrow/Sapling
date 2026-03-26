@@ -315,6 +315,15 @@ Verify the Conference Pipeline Google Sheet has new rows with data in all requir
 - Column O (Agent Notes)
 - No blank cells in required columns for newly added rows
 
+### 1b. Chronological Sort Validation (REQUIRED after every write)
+After adding, removing, or modifying any rows in the Pipeline tab, re-sort ALL data rows (A2 onwards) by Column A (Date of Conference) in chronological order. Then verify:
+- Read back Pipeline!A2:A{last_row} and confirm dates are in ascending order
+- No header row was displaced
+- No data was lost during sort (row count before = row count after)
+- All columns preserved their association (no misaligned rows)
+
+**This is mandatory.** The sheet must always be sorted chronologically — earliest date at top, farthest at bottom. Never leave the sheet unsorted after a write operation.
+
 ### 2. Attendee List Validation (if processing attendees)
 Verify `brain/outputs/{date}-{conference-slug}-targets.md` exists with:
 - Valid frontmatter per output schema

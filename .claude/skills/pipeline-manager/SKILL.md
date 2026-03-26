@@ -311,17 +311,35 @@ Multiple niches can be in different phases simultaneously. The Linkt credit budg
    - Pre-populate COMPANY INFO section from Linkt data in the master target sheet
    - Customize SCRIPT section with company-specific operational signal
    - Add "Personal Note for JJ" field after SCRIPT section with the personal tidbit (if found)
-5. Send Slack at 10am:
+5. **Draft Slack message** and present to Kay for review before sending. Send at 10am after approval.
 
-```bash
-curl -s -X POST "$SLACK_WEBHOOK_SVA" \
-  -H "Content-Type: application/json" \
-  -d '{"text":"Good morning JJ. Here are your calls for today:\n\n1. {Owner Name} - {Company}\n   Phone: {phone}\n   Call Log: {google_doc_link}\n\n2. {Owner Name} - {Company}\n   Phone: {phone}\n   Call Log: {google_doc_link}\n\n..."}'
+**Call type labels (CRITICAL):** Every call must be clearly labeled as OWNER CALL or CUSTOMER CALL. These have different scripts, goals, and approaches. JJ needs to know which type before dialing.
+
+**Slack message format:**
+```
+Hey JJ, here are your calls for today:
+
+OWNER CALL:
+1. {Owner Name} - {Company} ({Industry})
+   Phone: {phone}
+   Call Log: {google_doc_link}
+
+CUSTOMER CALL:
+2. {Contact Name} - {Company} (validating {niche name})
+   Phone: {phone}
+   Call Log: {google_doc_link}
+
+CALLBACK:
+3. {Owner Name} - {Company} (follow-up from {date})
+   Phone: {phone}
+   Call Log: {google_doc_link}
+
+Dial target today: {n} ({n} owner + {n} customer validation + {n} callbacks)
 ```
 
-**JJ Dial Target: 8-12 dials/day.** This includes owner confirmation calls (from outreach cadence), customer validation calls (from niche diligence), and callback attempts from prior days. Include the target count in the Slack message:
+**Important:** Claude identifies as "Claude" in all JJ messages. Never mention Kay by name or say "Kay wanted me to." Claude speaks on its own authority as a team member.
 
-Add to the Slack message text: `"\n\nDial target today: {n} (includes {n} confirmation + {n} callbacks + {n} customer validation)"`
+**JJ Dial Target: 8-12 dials/day.** This includes owner confirmation calls (from outreach cadence), customer validation calls (from niche diligence), and callback attempts from prior days.
 
 **JJ's workflow:** Click link → read script + company info → make call → fill in Call Outcome + Call Notes in the doc. JJ does NOT touch the master target sheet.
 

@@ -149,6 +149,8 @@ For each conference found, capture:
 
 Populate the Conference Pipeline Google Sheet. All columns have dropdown data validation where applicable.
 
+**One conference = one row.** Multi-day conferences get a single row with the date range in column A (e.g., "2026-05-03 - 05-06"). Never create separate rows for different days of the same conference. Kay makes one attend/skip decision per conference, not per day. Which specific day she attends is her choice, not a pipeline decision.
+
 **Column layout:**
 A: Date of Conference | B: Event Name | C: Location | D: Travel | E: Niche | F: Registration Cost | G: Reg Deadline | H: Est. Attendees | I: Attendee List | J: Website | K: Status | L: Agent Rec | M: Decision | N: Notes | O: Agent Notes
 

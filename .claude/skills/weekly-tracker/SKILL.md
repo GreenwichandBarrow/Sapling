@@ -423,7 +423,9 @@ Kay's glanceable view. 4 key metrics only.
 | 9 | Goal: 1 interesting deal reviewed per week | | |
 
 ### Tab 2: Weekly Detail
-Diagnostic view organized by Stage 7 questions.
+Diagnostic view organized by Stage 7 questions. **This tab is a ROLLUP of Channel x Sprint Analytics (Tab 5).** Outreach metrics here should equal the SUM of the corresponding rows across all sprint columns in Tab 5. Do not collect these independently — Tab 5 is the source of truth for per-channel, per-niche data. Tab 2 aggregates it.
+
+When writing to the sheet, use SUM formulas referencing Tab 5 where possible. For metrics that don't break down by niche (e.g., New Contacts Added, Networking Meetings), collect directly.
 
 | Row | Metric | Target | {Week Col} |
 |-----|--------|--------|------------|
@@ -534,8 +536,10 @@ Tracks credit consumption, list quality, and ICP efficiency week over week.
 - Is the ICP working? (Credits per conversation is the ultimate efficiency metric)
 
 
-### Tab 5: Channel x Sprint Analytics
+### Tab 5: Channel x Sprint Analytics (SOURCE OF TRUTH for outreach metrics)
 Per-channel performance broken down by niche sprint. Updated weekly. Answers "which channel works best in which niche?"
+
+**This tab is the primary data entry point for all outreach/channel metrics.** Sub-agents write data here first (per niche, per channel). Weekly Detail (Tab 2) rolls up from this tab using SUM formulas. Never write outreach totals to Tab 2 directly — always populate Tab 5 first, then Tab 2 sums across sprints.
 
 | Row | Metric | {Sprint 1} | {Sprint 2} | ... |
 |-----|--------|-----------|-----------|-----|

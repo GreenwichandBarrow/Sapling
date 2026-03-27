@@ -43,7 +43,8 @@ Everything else is diagnostic — it shows whether the activity machine is conve
 
 - **Google Sheet:** `OPERATIONS / WEEKLY ACTIVITY TRACKER` (folder ID: `1-TcRl74G0Ezc0lEJC9__BiBPwnG7gwfR`)
   - Sheet ID: `1NGGZY_iq9h8cNzLAXSJ1vTcsfXWNU9oin2RiOMtl9NE`
-  - Tabs: `Weekly Topline`, `Weekly Detail`, `Quarterly Summary`
+  - Tabs: `Weekly Topline`, `Weekly Detail`, `Quarterly Summary`, `Linkt Credit Tracker`
+  - Weekly snapshots: `OPERATIONS/WEEKLY ACTIVITY TRACKER/WEEKLY SNAPSHOTS/` (Drive)
 - **Vault:** `brain/trackers/weekly/{YYYY-MM-DD}-weekly-tracker.md` (week-ending date)
 
 ## Schedule
@@ -356,12 +357,30 @@ SHEET_ID="1NGGZY_iq9h8cNzLAXSJ1vTcsfXWNU9oin2RiOMtl9NE"
 # Find next empty column
 gog sheets get "$SHEET_ID" "'Weekly Topline'!1:1" --json
 
-# Write to all 3 tabs
+# Write to all 4 tabs
 gog sheets update "$SHEET_ID" "'Weekly Topline'!{COL}1:{COL}9" --values-json '{...}'
-gog sheets update "$SHEET_ID" "'Weekly Detail'!{COL}1:{COL}23" --values-json '{...}'
+# Weekly Detail: write aggregate total to next historical column (left), then overwrite niche breakdown columns (right)
+gog sheets update "$SHEET_ID" "'Weekly Detail'!{COL}1:{COL}27" --values-json '{...}'
 gog sheets update "$SHEET_ID" "'Quarterly Summary'!{QCOL}3:{QCOL}31" --values-json '{...}'
-gog sheets update "$SHEET_ID" "'Channel x Sprint Analytics'!{COL}1:{COL}34" --values-json '{...}'
+gog sheets update "$SHEET_ID" "'Linkt Credit Tracker'!{COL}1:{COL}28" --values-json '{...}'
 ```
+
+### Step 4.5: Save Weekly Detail Snapshot to Drive
+After writing to the sheet, export the Weekly Detail tab as an xlsx file to preserve the niche breakdown before it gets overwritten next week.
+
+```bash
+SNAPSHOT_FOLDER="OPERATIONS/WEEKLY ACTIVITY TRACKER/WEEKLY SNAPSHOTS"
+SNAPSHOT_FILENAME="Weekly Detail - {WEEK_ENDING_DATE}.xlsx"
+
+# Export Weekly Detail tab as xlsx and upload to Drive snapshots folder
+# 1. Use gog to export the sheet tab as xlsx
+gog sheets export "$SHEET_ID" --tab "Weekly Detail" --format xlsx --output "/tmp/${SNAPSHOT_FILENAME}"
+
+# 2. Upload to Drive
+gog drive upload "/tmp/${SNAPSHOT_FILENAME}" --folder "$SNAPSHOT_FOLDER"
+```
+
+**Purpose:** The niche breakdown (right section of Weekly Detail) is overwritten each week with the current sprint's data. This snapshot preserves the full niche breakdown for historical reference. Drive folder: `OPERATIONS/WEEKLY ACTIVITY TRACKER/WEEKLY SNAPSHOTS/`.
 
 ### Step 5: Save Vault Snapshot
 Write `brain/trackers/weekly/{YYYY-MM-DD}-weekly-tracker.md` with frontmatter and diagnostic narrative.
@@ -423,9 +442,15 @@ Kay's glanceable view. 4 key metrics only.
 | 9 | Goal: 1 interesting deal reviewed per week | | |
 
 ### Tab 2: Weekly Detail
-Diagnostic view organized by Stage 7 questions. **This tab is a ROLLUP of Channel x Sprint Analytics (Tab 5).** Outreach metrics here should equal the SUM of the corresponding rows across all sprint columns in Tab 5. Do not collect these independently — Tab 5 is the source of truth for per-channel, per-niche data. Tab 2 aggregates it.
+Diagnostic view organized by Stage 7 questions. **This tab serves dual purpose: historical totals on the left (one column per week), niche breakdown on the right (current week only), Description column at the far right.**
 
-When writing to the sheet, use SUM formulas referencing Tab 5 where possible. For metrics that don't break down by niche (e.g., New Contacts Added, Networking Meetings), collect directly.
+**Left section (historical):** Each week adds a new Total column. Metrics are aggregate weekly deltas — one column per week ending date.
+
+**Right section (current week niche breakdown):** Per-niche columns for the current week only. Each active niche sprint gets its own column showing outreach, calls, and conversations broken down by niche. This section is overwritten each week — history is preserved via Drive snapshot (see Step 4.5).
+
+**Description column (far right):** Static labels/row headers for human readability.
+
+When writing to the sheet, write aggregate totals to the left historical column, then write per-niche breakdown to the right niche columns. For metrics that don't break down by niche (e.g., New Contacts Added, Networking Meetings), populate in aggregate total only.
 
 | Row | Metric | Target | {Week Col} |
 |-----|--------|--------|------------|
@@ -536,58 +561,6 @@ Tracks credit consumption, list quality, and ICP efficiency week over week.
 - Is the ICP working? (Credits per conversation is the ultimate efficiency metric)
 
 
-### Tab 5: Channel x Sprint Analytics (SOURCE OF TRUTH for outreach metrics)
-Per-channel performance broken down by niche sprint. Updated weekly. Answers "which channel works best in which niche?"
-
-**This tab is the primary data entry point for all outreach/channel metrics.** Sub-agents write data here first (per niche, per channel). Weekly Detail (Tab 2) rolls up from this tab using SUM formulas. Never write outreach totals to Tab 2 directly — always populate Tab 5 first, then Tab 2 sums across sprints.
-
-| Row | Metric | {Sprint 1} | {Sprint 2} | ... |
-|-----|--------|-----------|-----------|-----|
-| 1 | Header | {Niche Name} | {Niche Name} | |
-| 2 | | | | |
-| 3 | EMAIL | | | |
-| 4 | Emails Sent | {n} | {n} | |
-| 5 | Email Responses | {n} | {n} | |
-| 6 | Email Response Rate | {%} | {%} | |
-| 7 | Email → Owner Conversation | {n} | {n} | |
-| 8 | | | | |
-| 9 | PHONE (JJ) | | | |
-| 10 | JJ Dials | {n} | {n} | |
-| 11 | JJ Connections | {n} | {n} | |
-| 12 | JJ Connection Rate | {%} | {%} | |
-| 13 | JJ → Meeting Booked | {n} | {n} | |
-| 14 | | | | |
-| 15 | LINKEDIN DM | | | |
-| 16 | DMs Sent | {n} | {n} | |
-| 17 | DM Responses | {n} | {n} | |
-| 18 | DM Response Rate | {%} | {%} | |
-| 19 | DM → Owner Conversation | {n} | {n} | |
-| 20 | | | | |
-| 21 | CONFERENCE | | | |
-| 22 | Conferences Attended | {n} | {n} | |
-| 23 | Booth Conversations | {n} | {n} | |
-| 24 | Conference → Owner Conversation | {n} | {n} | |
-| 25 | | | | |
-| 26 | WARM INTRO | | | |
-| 27 | Warm Intros Identified | {n} | {n} | |
-| 28 | Warm Intros Sent | {n} | {n} | |
-| 29 | Warm Intro Response Rate | {%} | {%} | |
-| 30 | | | | |
-| 31 | COMBINED | | | |
-| 32 | Total Outreach (all channels) | {n} | {n} | |
-| 33 | Total Owner Conversations | {n} | {n} | |
-| 34 | Overall Conversion Rate | {%} | {%} | |
-
-**Data sources:**
-- Email metrics: Gmail collector (Agent 1) + target sheet Col Y (Outreach Stage) filtered by niche
-- Phone metrics: Target sheet Cols Q-T (JJ call columns) filtered by niche
-- LinkedIn DM metrics: Target sheet Col AB (LinkedIn DM Status) filtered by niche
-- Conference metrics: Conference Pipeline Sheet + Granola transcripts
-- Warm intro metrics: Target sheet Col X (Warm Intro) filtered by niche
-- Niche identification: Target sheet identifies which niche sprint each target belongs to via the sheet name ("{Niche} - Target List")
-
-**Why per-sprint matters:** Different niches may respond differently to different channels. Insurance compliance owners might prefer phone. Luxury service providers might prefer LinkedIn. This data informs channel allocation per niche.
-
 ### Why These Supporting Metrics
 
 Every supporting metric maps to one of the two Stage 7 diagnostic questions:
@@ -648,6 +621,7 @@ Body contains the week's numbers in readable markdown format, plus a short diagn
 - **Key metrics vs. goal** — Are we hitting 1 interesting deal/week?
 - **System Throughput** — Is outbound volume sufficient? Are enough conversations being generated?
 - **Signal Quality** — Are we reaching the right people? Where is conversion breaking down?
+- **Niche breakdown** — per-niche outreach, calls, and conversations for the current week (mirrors the right section of Weekly Detail). Include a table with one row per active niche sprint.
 - **Notable pipeline movements** — deals advancing, stalling, or killed
 - **Flags** — anything that needs attention next week
 </vault_save>
@@ -663,13 +637,15 @@ Tracker update is complete when ALL checks pass:
 
 ### Google Sheet
 - [ ] New column added to Weekly Topline with week-ending date
-- [ ] New column added to Weekly Detail with week-ending date
+- [ ] New column added to Weekly Detail (historical left section) with week-ending date
+- [ ] Weekly Detail niche breakdown (right section) updated for current week
 - [ ] Key metrics populated in Topline (even if 0)
 - [ ] All metrics populated in Detail (even if 0)
 - [ ] Quarterly Summary updated with current quarter cumulative totals
-- [ ] Channel x Sprint Analytics tab updated with per-niche channel metrics
+- [ ] Linkt Credit Tracker tab updated
 - [ ] LinkedIn DM metrics populated (even if 0)
 - [ ] JJ dial count populated
+- [ ] Weekly Detail snapshot exported as xlsx to Drive (`OPERATIONS/WEEKLY ACTIVITY TRACKER/WEEKLY SNAPSHOTS/Weekly Detail - {date}.xlsx`)
 
 ### Vault
 - [ ] Snapshot file exists at `brain/trackers/weekly/{date}-weekly-tracker.md`

@@ -160,17 +160,19 @@ This creates native Superhuman drafts via CDP. Kay reviews and sends from Superh
 
 **Attio State Machine:**
 
-Outreach-manager is the only skill that writes to Attio for targets. The sequence:
+Outreach-manager is the only skill that writes to Attio for targets. **No Attio entry exists until Kay approves.** Linkt discovering a target does NOT create an Attio record. The sequence:
 
-1. Read the target sheet, find rows where Col O = "Approve" that weren't approved in the prior run (new approvals)
+1. Read the target sheet, find rows where **Col O = "Approve"** that weren't approved in the prior run (new approvals). Col O = "Approve" is the ONLY trigger for Attio entry creation.
 2. For non-Linkt targets, verify email via Apollo API. Only proceed if `verified`.
 3. For each verified approved target, search Attio for the person AND company:
    - **If found** → someone Kay already knows. Flag as warm intro (Col X), skip cold outreach. This is both the dedup check AND the warm intro check in one step.
    - **If not found** → create the company + person in Attio, add company to Active Deals at "Identified" stage. Proceed with cold outreach.
-3. When outreach-manager drafts the Day 1 email → target stays at "Identified" (draft only, not sent yet)
-4. Pipeline-manager detects when Kay sends the email from Superhuman and moves Attio to "Contacted"
-5. Pipeline-manager then notifies JJ with Day 3 call date
-6. After Day 10 with no response → pipeline-manager moves to nurture cadence
+4. When outreach-manager drafts the Day 1 email → target stays at "Identified" (draft only, not sent yet)
+5. Pipeline-manager detects when Kay sends the email from Superhuman and moves Attio to "Contacted"
+6. Pipeline-manager then notifies JJ with Day 3 call date
+7. After Day 10 with no response → pipeline-manager moves to nurture cadence
+
+**Key rule:** Targets live on the Google Sheet ONLY until Kay sets Col O = "Approve". The sheet is the staging area. Attio is the pipeline. The approval gate keeps the CRM clean.
 
 ### Day 3: JJ's Confirmation Call
 

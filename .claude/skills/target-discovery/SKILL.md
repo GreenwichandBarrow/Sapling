@@ -19,7 +19,7 @@ This skill discovers acquisition targets via Linkt (primary list builder) and su
 
 **Outputs to other skills:**
 - Approved target list → skill/outreach-manager (cold outreach subagent)
-- New targets added to Attio Active Deals at "Identified" → skill/pipeline-manager takes over from here
+- Approved target list (Col O = "Approve") → skill/outreach-manager creates Attio entry at "Identified" → skill/pipeline-manager takes over from here
 
 Goal: 4-6 qualified targets per day.
 </objective>

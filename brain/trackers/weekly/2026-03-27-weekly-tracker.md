@@ -12,12 +12,12 @@ tags: ["date/2026-03-27", "output", "output/tracker", "status/published", "topic
 
 | Metric | This Week | Target |
 |--------|-----------|--------|
-| NDAs Signed | 0 | 1/wk |
-| Financials Received | 0 | 1/wk |
+| NDAs Signed | 1 | 1/wk |
+| Financials Received | 1 | 1/wk |
 | LOIs Submitted | 0 | — |
 | LOIs Signed | 0 | — |
 
-**Goal: 1 interesting deal reviewed per week.** Not yet hitting target. Pipeline is in early build phase with 4 niches in Active-Diligence.
+**Goal: 1 interesting deal reviewed per week.** Hit target this week: E&K Healthcare SaaS (NDA signed 3/22, CIM received 3/23, killed at $700K revenue). Pipeline is in early build phase with 4 niches in Active-Diligence.
 
 ## System Throughput
 
@@ -43,7 +43,7 @@ tags: ["date/2026-03-27", "output", "output/tracker", "status/published", "topic
 | Stage 1 Calls (Owner Conversations) | 0 |
 | Qualified Opportunities | 0 |
 | Stage 2 Calls | 0 |
-| Deals in Active Review | 0 |
+| Deals in Active Review | 1 (E&K Healthcare SaaS — killed) |
 | Outreach → Owner Conversation | 0% |
 | Owner Conversation → NDA | N/A |
 
@@ -54,8 +54,8 @@ tags: ["date/2026-03-27", "output", "output/tracker", "status/published", "topic
 | Metric | Count |
 |--------|-------|
 | Top of Funnel (Total Active) | 44 |
-| Deals Added This Week | 1 |
-| Deals Killed/Passed | 1 |
+| Deals Added This Week | 2 |
+| Deals Killed/Passed | 2 |
 | Active Deals by Stage | Identified: 37, Contacted: 7, Review+: 0 |
 | Network Pipeline | 111 entries |
 | Intermediary Pipeline | 24 entries |
@@ -87,7 +87,7 @@ tags: ["date/2026-03-27", "output", "output/tracker", "status/published", "topic
 
 ## Diagnostic Narrative
 
-**Where is conversion breaking down?** The funnel gap is between Identified/Contacted (44 entries) and First Conversation (0). This is a volume + activation problem: outreach scripts are being built, JJ just onboarded, and the first cold outreach emails only started going out this week (Kirk Elken at Securitas). The machine is being assembled, not yet running at production speed.
+**Where is conversion breaking down?** The funnel gap is between Identified/Contacted (44 entries) and First Conversation (0). However, the intermediary channel produced one full cycle this week: E&K Healthcare SaaS moved NDA (3/22) to CIM (3/23) to killed ($700K revenue, too small) in 2 days. This shows the deal evaluation pipeline works when deals arrive. The volume + activation problem remains on proprietary outreach: scripts are being built, JJ just onboarded, and first cold emails only started this week.
 
 **What needs to happen next week:**
 1. Deploy outreach cadence for art insurance brokerage Wind-Down targets (12 companies)

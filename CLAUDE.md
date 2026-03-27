@@ -237,7 +237,10 @@ Two skills run on a schedule via macOS launchd, independent of active sessions:
 
 When Kay says good morning:
 1. Run pipeline-manager (data gathering — email, calendar, Granola, Attio, tracker)
-2. If Friday → run weekly-tracker skill (Kay needs results by 10am ET)
+2. If Friday → run three review skills in parallel (Kay needs results by 10am ET):
+   - weekly-tracker (activity data → sheet + vault)
+   - health-monitor (system health → dashboard + alerts)
+   - calibration-workflow (decision traces → skill improvements)
 3. Read the results and judge what needs to happen
 4. Present the briefing in 5 consistent sections (ascending numbering across all sections):
    - Pipeline shifts to review/approve

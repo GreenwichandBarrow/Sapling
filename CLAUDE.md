@@ -201,13 +201,14 @@ Litmus: only trace choices between alternatives that change future behavior with
 
 ## Scheduled Skills (launchd)
 
-Three skills run on a schedule via macOS launchd, independent of active sessions:
+Two skills run on a schedule via macOS launchd, independent of active sessions:
 
 | Skill | Schedule | Purpose |
 |-------|----------|---------|
 | `intermediary-manager` | Mon-Fri 6am ET | Platform scanning + email screening |
 | `niche-intelligence` | Tuesday 11pm ET | Newsletter scrape, niche identification, one-pagers, scorecards |
-| `weekly-tracker` | Friday 8pm ET | Weekly activity data compilation |
+
+`weekly-tracker` runs on Fridays but is triggered by the orchestrator during the morning workflow (not launchd). Kay needs results by 10am ET.
 
 **Infrastructure:**
 - Wrapper: `scripts/run-skill.sh` (shared by all jobs)
@@ -236,18 +237,18 @@ Three skills run on a schedule via macOS launchd, independent of active sessions
 
 When Kay says good morning:
 1. Run pipeline-manager (data gathering — email, calendar, Granola, Attio, tracker)
-2. Read the results and judge what needs to happen
-3. Present the briefing in 5 consistent sections:
+2. If Friday → run weekly-tracker skill (Kay needs results by 10am ET)
+3. Read the results and judge what needs to happen
+4. Present the briefing in 5 consistent sections (ascending numbering across all sections):
    - Pipeline shifts to review/approve
    - Pipeline summary
    - Motion action steps to review/approve
    - Superhuman email drafts to review/approve
    - Other items / today's agenda
-4. Based on signals, invoke downstream skills:
+5. Based on signals, invoke downstream skills:
    - Niche status changed to Active-Diligence → target-discovery (customer validation mode, surfaces Thursday)
    - Monday → conference pipeline review
    - CIM received → deal-evaluation
    - Email sent to target → Attio update + JJ call countdown
    - Target approved on sheet → outreach-manager + call log generation
-   - Friday → weekly-tracker review
-5. Kay reviews outputs as they arrive
+6. Kay reviews outputs as they arrive

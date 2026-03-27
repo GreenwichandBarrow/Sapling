@@ -148,6 +148,11 @@ grep -r "\[\[entities/jane-smith\]\]" brain/
 - Env vars: `$GOG_ACCOUNT`, `$GOG_TIMEZONE`, `$GOG_ENABLE_COMMANDS` (sandbox for automation).
 - Supports batch ops, cross-service workflows (email → sheet → calendar), and pub/sub watches.
 
+**Superhuman:** Email drafts MUST use the Bash wrapper `~/.local/bin/superhuman-draft.sh`, NEVER the MCP `superhuman_draft` or `superhuman_ask_ai` tools for composing. The MCP tools route through Gmail API, creating invisible drafts Kay never sees. MCP read tools (`superhuman_search`, `superhuman_inbox`) are fine.
+```bash
+~/.local/bin/superhuman-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
+```
+
 **Skills:** `.claude/skills/` — reusable workflows. Invoked via `/task`, `/onboard`, `/calibrate`.
 **Commands:** `.claude/commands/` — slash command wrappers.
 **Hooks:** `.claude/hooks/` — event handlers (schema validation, session start).

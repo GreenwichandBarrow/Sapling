@@ -302,6 +302,12 @@ WEEK_END = Friday (today) or Sunday if running retroactively
 WEEK_ENDING_DATE = Friday date in YYYY-MM-DD format
 ```
 
+**Weekend rollover rule:** Saturday and Sunday activity counts toward the FOLLOWING week (Monday-Friday). When scanning for signals, include the prior Saturday and Sunday in the current week's window:
+```
+EFFECTIVE_WEEK_START = Saturday 00:00 before WEEK_START (i.e., 2 days before Monday)
+```
+This ensures that weekend NDAs, emails, or CIM receipts land in the next week's tracker, not the prior week's.
+
 ### Step 2: Spawn Data Collection Sub-Agents
 Launch all 6 agents in parallel:
 ```

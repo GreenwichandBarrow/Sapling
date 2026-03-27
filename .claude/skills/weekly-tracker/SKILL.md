@@ -147,7 +147,7 @@ Cross-reference with `brain/calls/` for logged call notes. Use Granola MCP to ve
 | LOI Signed | LOIs Signed |
 | Closed / Not Proceeding | Deals Killed |
 
-**Deals in Active Review** = Entries from **First Conversation through LOI Signed** (stages 3-9). Excludes Identified, Contacted, and Closed/Not Proceeding. A deal becomes "active" once Kay has had a real conversation with an owner.
+**Deals in Active Review** = Entries from **Financials Received through LOI Signed** (stages 6-9). A deal is "in active review" once Kay has a CIM or financials and is evaluating whether to proceed. Earlier stages (Identified, Contacted, First Conversation, NDA Executed) are sourcing/top-of-funnel. Closed/Not Proceeding are resolved. This is a weekly delta — count deals that were in these stages at any point during the week, including deals that entered and were killed within the same week.
 
 **To get all stage names:** `GET /v2/lists/{list_id}/attributes/stage/statuses`
 **To get entries:** `POST /v2/lists/{list_id}/entries/query` with `{}`
@@ -343,7 +343,7 @@ Read current sheet to find next empty column, then write data to all 3 tabs:
 
 **SNAPSHOTS (current state, not delta):**
 - Qualified Opportunities / A count (current count: deals Kay is actively pursuing — requested financials, initiated diligence, etc.)
-- Deals in Active Review (current count: First Conversation through LOI Signed)
+- Deals in Active Review (weekly delta: deals at Financials Received through LOI Signed at any point this week, including deals that entered and exited within the week)
 - Top of Funnel / Total Pipeline (current count: all except Closed/Not Proceeding — includes Identified and Contacted not yet engaged)
 
 To compute deltas: check each entry's stage `active_from` timestamp. Only count entries that moved INTO a stage during the week window.

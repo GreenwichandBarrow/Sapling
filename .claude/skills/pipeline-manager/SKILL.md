@@ -79,6 +79,9 @@ Cadence thresholds:
 - Occasionally: overdue after 7 months
 - Dormant: never surfaced
 
+**Auto-resolve "Need to..." stages BEFORE surfacing:**
+Before presenting any relationship items, the Relationships Agent must run the Action-Already-Taken Verification (see Sub-Agent 2). For each contact in a "Need to..." stage (Need Thank You, Need to Schedule, Need to Reschedule), search for outbound emails by recipient + recency — NOT by subject keyword. If Kay already acted, auto-move and don't surface. Only present contacts where the action is genuinely still pending.
+
 Also surface:
 - Stale next_actions (same next_action for 2+ weeks)
 - New contacts from yesterday's meetings that need to be added
@@ -163,6 +166,19 @@ Scan the ACTIVE DEALS Drive folder for any subfolder that does not have a matchi
 **Scope:** People records with custom attributes
 **Scans:** Calendar (meetings with contacts), email (thank yous sent, intros received), overdue nurture cadences
 **Returns:** Attribute update recommendations (next_action, nurture_cadence, relationship_type)
+
+**Action-Already-Taken Verification (CRITICAL):**
+Before surfacing any "Need to..." stage contact (e.g., "Need to Send Thank You", "Need to Schedule", "Need to Reschedule"), verify whether Kay already took the action between sessions. Search by **recipient + recency**, NOT by subject keyword — Kay's thank-yous are often replies in existing threads with unrelated subjects.
+
+```bash
+# For each contact in a "Need to..." stage:
+gog gmail search "from:kay.s@greenwichandbarrow.com to:{contact_email} newer_than:7d" --json --max 5
+```
+
+- **If outbound email found** → the action was already taken. Auto-move the contact to the appropriate next stage (e.g., "Need Thank You" → "Nurture Occasionally") WITHOUT surfacing to Kay. Log: "Auto-resolved: {name} moved to {stage} — email sent {date}."
+- **If no email found** → surface in the briefing as usual.
+
+This applies to ALL action-pending stages, not just thank-yous. The pattern: if the stage implies Kay needs to do something, check if she already did it before asking her about it.
 
 ### Sub-Agent 3: Granola Agent
 **Scope:** All meeting transcripts since last run
@@ -899,7 +915,7 @@ Look for:
 - Financial documents (CIM, P&L, balance sheet) → Financials Received
 - **CIM attachments from intermediaries** → CIM Auto-Trigger (folder + filing + inbox + deal-eval, see "CIM Auto-Trigger" section)
 - LOI drafts or signed documents → LOI stage changes
-- Thank you emails sent → move from "Need to Send Thank You" to nurture
+- Thank you emails sent → move from "Need to Send Thank You" to nurture. **Detection method:** search by recipient email + recency (`to:{email} newer_than:7d`), NOT by subject keyword. Thank-yous are often replies in existing threads.
 - New introductions → new pipeline entries needed
 - Broker correspondence → intermediary pipeline updates
 
@@ -1143,7 +1159,7 @@ Only investor call prep runs here. Everything else is meeting-brief-manager's re
 
 After pipeline updates, surface any follow-up tasks:
 
-- **"Need to Send Thank You"** → immediately draft a personalized thank you email using Kay's voice (see memory: user_outreach_voice.md). Reference specifics from the meeting (Granola transcript, call notes, or calendar context). Present draft for Kay's review, then queue to send via gog gmail.
+- **"Need to Send Thank You"** → FIRST verify Kay hasn't already sent the thank you (search `from:kay.s@greenwichandbarrow.com to:{contact_email} newer_than:7d`). If already sent, auto-move to Nurture and skip. If not sent, draft a personalized thank you email using Kay's voice (see memory: user_outreach_voice.md). Reference specifics from the meeting (Granola transcript, call notes, or calendar context). Create as Superhuman draft via `~/.local/bin/superhuman-draft.sh`.
 - **Introduction promised** → ask Kay for the person's name/company. Create `brain/entities/{slug}.md` in the vault with proper schema. Add them to the appropriate Attio pipeline at "Identified" stage. When the intro email arrives later, they're already tracked.
 - **Introduction received** → match the intro email to the tracked entity, move to "Contacted" stage
 - **NDA Executed** → remind to request financials if not already received

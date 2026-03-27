@@ -29,7 +29,7 @@ These metrics are what matter, in priority order. They go at the top of the shee
 
 **Conversation Quality (the leading indicator):**
 5. **Meaningful Owner Conversations** — owner discussed selling, shared business details, or agreed to next steps. Captured via `meaningful_conversation` checkbox on Active Deals list entries in Attio. Includes calls, in-person meetings, and Zoom. This is the #3 most tracked metric by experienced searchers (2025 investor survey).
-6. **Calls 15+ minutes** — quality signal separating real conversations from quick intros
+6. **Owner Calls 15+ minutes** — quality signal separating real owner conversations from quick intros. Only counts calls with business owners, not investor calls, networking, or internal meetings.
 7. **Owner Response Rate (%)** — responses received / outreach sent. Experienced searchers track this over raw email count.
 
 **Source Attribution (where conversations come from):**

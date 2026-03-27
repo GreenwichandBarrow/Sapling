@@ -54,9 +54,42 @@ def validate_weekly_tracker_before_slack(input_data: dict) -> HandlerResult:
                 failures.append(f"Vault missing metric: {metric}")
 
     # Check 3: Sheet has data for this week
+    # First read the header row to find the column for the current week
+    result = None
     try:
+        # Read header row to find the column matching today's week ending date
+        header_result = subprocess.run(
+            ["gog", "sheets", "get", SHEET_ID, "'Weekly Topline'!A1:Z1", "--json"],
+            capture_output=True,
+            text=True,
+            timeout=10,
+            cwd=project_dir,
+        )
+        # Determine which column has today's week ending date
+        # Default to column D (index 3) if we can't find it
+        col_index = 3  # 0-based: A=0, B=1, C=2, D=3
+        if header_result.returncode == 0:
+            header_data = json.loads(header_result.stdout)
+            header_values = header_data.get("values", [[]])[0] if header_data.get("values") else []
+            # Look for a header containing today's date in M/D/YY or M/D/YYYY format
+            today_dt = datetime.now()
+            date_variants = [
+                today_dt.strftime("%-m/%-d/%y"),   # e.g. "3/27/26"
+                today_dt.strftime("%-m/%-d/%Y"),   # e.g. "3/27/2026"
+                today_dt.strftime("%m/%d/%y"),     # e.g. "03/27/26"
+            ]
+            for idx, header in enumerate(header_values):
+                for variant in date_variants:
+                    if variant in str(header):
+                        col_index = idx
+                        break
+
+        # Convert col_index to column letter (A=0, B=1, ...)
+        col_letter = chr(ord('A') + col_index)
+        sheet_range = f"'Weekly Topline'!{col_letter}4:{col_letter}7"
+
         result = subprocess.run(
-            ["gog", "sheets", "get", SHEET_ID, "'Weekly Topline'!C4:C7", "--json"],
+            ["gog", "sheets", "get", SHEET_ID, sheet_range, "--json"],
             capture_output=True,
             text=True,
             timeout=10,

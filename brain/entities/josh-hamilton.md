@@ -2,14 +2,15 @@
 schema_version: 1.1.0
 date: 2026-03-27
 type: person
-status: prospect
+status: internal
 tags: ["date/2026-03-27", "entity", "person", "person/josh-hamilton"]
 ---
 
 # Josh Hamilton
 
 ## Quick Facts
-- Context TBD — referenced as orphaned wiki-link
+- Had multiple 1:1 calls with Kay (July-August 2025, weekly cadence)
+- Internal contact (classified as internal relationship)
 
 ## Communication Style
 - **Tone:** TBD
@@ -17,4 +18,4 @@ tags: ["date/2026-03-27", "entity", "person", "person/josh-hamilton"]
 - **Frequency:** TBD
 
 ## Key Context
-- Created to resolve orphaned wiki-link identified by health monitor
+- Referenced in: [[calls/2025-07-15-josh-i-kay]], [[calls/2025-08-19-josh-i-kay-weekly-tb]], [[calls/2025-11-19-sync-kay-ali]]

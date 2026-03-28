@@ -50,3 +50,5 @@ brain/context/preferences.md
 .claude/loop-agents
 .claude/loop-completions.json
 .mcp.json
+.granola-key
+.motion-key

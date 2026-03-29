@@ -150,13 +150,48 @@ source .env && curl -s "https://api.apollo.io/v1/people/match" \
 
 **Why:** Bounced emails burn Kay's sender domain reputation. Linkt validates its own data. Non-Linkt sources (association directories, conference lists, web scraping) need verification.
 
+### Pre-Draft Research Brief (REQUIRED before any draft)
+
+Before writing any outreach email, build a research brief for the target. This eliminates Kay's manual research step (she was searching LinkedIn + company website + company LinkedIn for every draft).
+
+**For each target, collect:**
+1. **Owner LinkedIn profile:** Background, tenure, posts, mutual connections with Kay, career arc
+2. **Company website:** Services offered, team page, about us, any news/press, geographic focus
+3. **Company LinkedIn page:** Employee count, recent posts, growth signals, follower count
+4. **Search Activity tracker cross-reference:** River guide comments (SD/BN ratings), prior outreach history, snail mail sent
+5. **Kay's LinkedIn connections:** Warm intro path (from Attio People cross-reference)
+6. **Apollo data:** If available from verification step, any additional context (title, seniority, department)
+
+```bash
+# LinkedIn profile (via web search — no LinkedIn API)
+WebSearch: "{owner_name} {company_name} LinkedIn"
+# Company website
+WebFetch: "{company_domain}" with prompt "Extract: services, team, about us, news, geographic focus"
+# Company LinkedIn
+WebSearch: "{company_name} LinkedIn company page employees"
+```
+
+**Embed research into the draft:**
+- Weave 1-2 specific details into the email body (not generic "came across your firm")
+- Reference something real: their career background, a specific service they offer, their geographic market, years in business
+
+**Flag before drafting (do NOT draft if any of these):**
+- Owner appears retired or no longer at the company
+- Company appears acquired or part of a larger group
+- Company website is down or domain expired
+- Owner is a Kay LinkedIn connection (route to warm intro instead of cold)
+
+**Get it right the first time.** Superhuman CLI cannot update or delete drafts. Every draft created is permanent until Kay manually deletes it. Do not create drafts that will need to be replaced.
+
 ### Draft Creation
 
 Draft in Superhuman via the wrapper script (NOT the MCP tool — it uses Gmail API which creates invisible drafts). Use Bash:
 ```bash
-superhuman-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
+~/.local/bin/superhuman-draft.sh --to "{email}" --subject "Introduction, Greenwich & Barrow" --body "{body}"
 ```
 This creates native Superhuman drafts via CDP. Kay reviews and sends from Superhuman. Sign off "Very best, Kay" only — signature is built in.
+
+**Subject line:** Default to "Introduction, Greenwich & Barrow" for all cold outreach. Kay adjusts for warm intros or shared interests when reviewing.
 
 **Attio State Machine:**
 

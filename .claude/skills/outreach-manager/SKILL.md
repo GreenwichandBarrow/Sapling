@@ -185,6 +185,15 @@ WebSearch: "{company_name} LinkedIn company page employees"
 
 ### Draft Creation
 
+**STOP HOOK: No draft may be created without a completed research brief.** Before calling the Superhuman draft wrapper, verify that the Pre-Draft Research Brief (above) has been completed for this target. Required evidence:
+- Owner LinkedIn data extracted
+- Company website scanned
+- PE ownership checked (hard stop if PE-owned)
+- Search Activity tracker cross-referenced
+- At least one personalization hook identified
+
+If any of these are missing, HALT and complete the research first. Never create a generic or placeholder draft. Every draft must contain specific details from the research that Kay would otherwise have to look up herself.
+
 Draft in Superhuman via the wrapper script (NOT the MCP tool — it uses Gmail API which creates invisible drafts). Use Bash:
 ```bash
 ~/.local/bin/superhuman-draft.sh --to "{email}" --subject "Introduction, Greenwich & Barrow" --body "{body}"

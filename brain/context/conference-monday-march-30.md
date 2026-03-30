@@ -6,7 +6,7 @@ type: context
 # InsurTech Spring Conference — Monday March 30
 
 ## Confirmed Meetings
-1. **Tobias Milchereit (MarshBerry)** — 11am at the conference. MarshBerry is the top sell-side M&A advisor in insurance distribution. He represents owners who are selling. River guide potential. Confirmed via Brella.
+1. **Tobias Milchereit (MarshBerry)** — scheduling for 11am. MarshBerry is the top sell-side M&A advisor in insurance distribution. He represents owners who are selling. River guide potential. Confirmed via Brella. His schedule is wide open (just registered Friday).
 
 ## Booth Walk-Up
 2. **Troutman Pepper Locke** — Bronze sponsor booth. Ask for Zachary Lerner (chairs insurance M&A regulatory practice) or Brian Casey (insurance transactions partner). Owners call their M&A lawyer before they call a banker.

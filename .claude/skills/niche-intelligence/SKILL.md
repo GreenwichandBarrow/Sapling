@@ -330,10 +330,12 @@ Doc: {google_doc_link}
 
 **HARD REQUIREMENT — Kay Approval Gate (before JJ receives anything):**
 
-Customer validation call lists MUST be reviewed and approved by Kay before being sent to JJ. This is not optional.
+Customer validation call lists MUST be reviewed and approved by Kay before being sent to JJ. This is not optional. There are TWO separate approval gates: doc content and Slack message.
 
-1. After the call list doc is created in Drive, present the Google Doc link(s) to Kay for review.
-2. Format the approval request clearly:
+**Gate 1: Doc Content Approval**
+
+1. Claude preps the call list docs (contacts, script, diagnostic questions) in Drive.
+2. Present EACH doc to Kay individually for review:
    ```
    CUSTOMER VALIDATION CALL LIST — APPROVAL NEEDED
 
@@ -344,9 +346,42 @@ Customer validation call lists MUST be reviewed and approved by Kay before being
 
    Please review the call list and approve before it goes to JJ.
    ```
-3. Wait for Kay's explicit approval on each list. Do NOT proceed to Slack notification until approved.
+3. Wait for Kay's explicit approval on each list. Do NOT proceed until approved.
 4. If Kay requests changes, update the doc and re-present for approval.
-5. Only after Kay approves should the list be shared with JJ via Slack.
+
+**Gate 2: Slack Message Approval**
+
+5. For EACH approved doc, Claude drafts the Slack message and presents it to Kay for approval before sending.
+6. Only after Kay approves the message draft does Claude send it.
+7. Send ONE Slack message per niche to JJ. Never batch multiple niches into a single message.
+8. Each Slack message must include:
+   - Identify as Claude (never mention Kay by name)
+   - Label as **CLIENT VALIDATION CALL** (not "customer validation")
+   - Link to the call list doc
+   - Link to the niche one-pager for background context
+   - "Any feedback on this process at all along the way is welcome and appreciated"
+   - "Any questions, reply here and I will get them to the right person"
+
+**Example Slack message (draft for Kay's approval):**
+```
+Hi JJ — this is Claude.
+
+CLIENT VALIDATION CALL — {Niche Name}
+
+Here is the call list for customer validation on {Niche Name}:
+{google_doc_link}
+
+For background context on the niche, here is the one-pager:
+{one_pager_link}
+
+Any feedback on this process at all along the way is welcome and appreciated. Any questions, reply here and I will get them to the right person.
+```
+
+**Key rules:**
+- Kay approves BOTH the doc content (Gate 1) AND the Slack message draft (Gate 2) separately
+- One message per niche, never batched
+- Always identify as Claude, never mention Kay by name
+- Always label as CLIENT VALIDATION CALL
 
 This gate exists because JJ acts on these lists immediately. Bad targets or bad questions waste JJ's limited call time and can damage relationships. Kay reviews every list.
 

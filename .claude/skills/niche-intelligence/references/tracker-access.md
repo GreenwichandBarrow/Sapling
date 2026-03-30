@@ -132,17 +132,19 @@ gog drive move {folder_id} --parent {target_status_folder_id} -a kay.s@greenwich
 **IDEATION tab is archived.** It contains historical data but nothing new gets added there. All pipeline output goes to WEEKLY REVIEW.
 
 **Nightly audit sort order (pipeline-manager):**
-1. Active
-2. Under Review
-3. New
-4. Wind-Down
+1. Active - Outreach
+2. Active - Diligence
+3. Active - Wind Down
+4. Under Review
+5. New
 (Tabled and Killed get moved to their own tabs overnight — never appear in sorted list)
 
 **Status dropdown values (orange header, column D):**
 - New — just came through pipeline
 - Under Review — analyst evaluating
-- Active — target-discovery sprinting (agent trigger)
-- Wind-Down — finishing in-flight outreach
+- Active - Outreach — full target discovery (4-6/day) with owner outreach cadence (agent trigger)
+- Active - Diligence — customer validation in progress, reduced target discovery (2-3/day), no owner outreach (agent trigger)
+- Active - Wind Down — finishing in-flight outreach, no NEW targets but continue existing outreach sequences
 - Tabled — moved to TABLED tab overnight
 - Killed — moved to KILLED tab overnight
 

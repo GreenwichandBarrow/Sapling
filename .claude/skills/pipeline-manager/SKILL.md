@@ -821,7 +821,7 @@ Kay sets these during the analyst call. Pipeline-manager moves the niche to the 
 - Active - Diligence — customer validation in progress, reduced target discovery (2-3/day), no owner outreach
 - Active - Outreach — full target discovery (4-6/day) with owner outreach cadence
 - Ideation — deprioritized, not actively reviewing. Stays on WEEKLY REVIEW but sorted to bottom.
-- Wind-Down — finish in-flight outreach, no new targets
+- Active - Wind Down — finishing in-flight outreach, no NEW targets but continue existing outreach sequences
 - Tabled — moves to TABLED tab overnight
 - Killed — moves to KILLED tab overnight
 
@@ -839,7 +839,7 @@ After processing Tabled/Killed moves and re-sorting WEEKLY REVIEW, validate:
 
 **2. Sort Validation:**
 - Re-read WEEKLY REVIEW after sorting
-- Confirm sort order: Active - Outreach first, then Active - Diligence, then Under Review, then New, then Wind-Down, then Ideation (bottom)
+- Confirm sort order: Active - Outreach first, then Active - Diligence, then Active - Wind Down, then Under Review, then New, then Ideation (bottom)
 - Confirm no data was lost during sort (row count before = row count after)
 
 **3. Target List Template Validation (on new Active sprints):**

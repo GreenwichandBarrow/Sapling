@@ -173,7 +173,7 @@ For each conference found, capture:
 - Conference website URL
 - Register-only candidate? (Y/N)
 
-Populate the Conference Pipeline Google Sheet. All columns have dropdown data validation where applicable.
+Prepare rows for the Conference Pipeline Google Sheet (do NOT write yet — the Stop Hook in the Validation section requires Kay's approval first). All columns have dropdown data validation where applicable.
 
 **One conference = one row.** Multi-day conferences get a single row with the date range in column A (e.g., "2026-05-03 - 05-06"). Never create separate rows for different days of the same conference. Kay makes one attend/skip decision per conference, not per day. Which specific day she attends is her choice, not a pipeline decision.
 
@@ -208,15 +208,7 @@ Statuses: Discovered, Evaluating, Registered, Prep Complete, Attended, Skipped
 
 ### Slack Notification (end of Phase 1)
 
-After discovery is complete, sheet is populated, and sort validation passes, send a Slack notification:
-
-```bash
-curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
-  -H "Content-Type: application/json" \
-  -d '{"text":"Conference discovery complete — {n} new conferences found for {date range} across {niches searched}. Pipeline sheet updated and sorted.\nhttps://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit"}'
-```
-
-**Draft the Slack message and present to Kay for review before sending.** Only send after approval.
+After discovery is complete, Kay has approved the proposed changes via the Stop Hook, sheet is updated, and sort validation passes, send a Slack notification to the SVA channel. See Validation section (Step 5) for the notification format and webhook details.
 </discovery>
 
 <registration>
@@ -350,7 +342,34 @@ The debrief is designed to be easily digestible on a phone screen — short bull
 
 Before reporting success, validate all outputs. If any check fails, do NOT send Slack. Report the failure and fix it.
 
-### 1. Sheet Validation (after discovery)
+### STOP HOOK: Sheet Update Confirmation (REQUIRED before any sheet write)
+
+**Before writing ANY data to the Conference Pipeline Google Sheet, you MUST stop and get Kay's approval.**
+
+This applies to: adding new conference rows, modifying existing rows, moving rows between tabs, re-sorting, or any other sheet mutation.
+
+**Procedure:**
+1. Prepare all proposed changes but do NOT write them to the sheet yet
+2. Present the changes to Kay in a numbered, scannable format:
+
+**New conferences to add:**
+For each new row, show:
+- Event name | Date | Location | Niche | Agent Rec (Attend/Register Only/Skip) | Agent Notes (1-line rationale)
+
+**Modifications to existing rows:**
+For each change, show:
+- Row identifier (Event name) | Column being changed | Current value → Proposed value
+
+**Rows to move (e.g., to Skipped tab):**
+- Event name | Reason for move
+
+3. Ask Kay: "Approve all, or tell me which to change/remove?"
+4. Wait for Kay's explicit approval before executing any sheet writes
+5. After approval, write all changes, run sort validation, then proceed to Slack notification
+
+**Why this exists:** The Conference Pipeline sheet is Kay's decision-making surface. No agent writes without her seeing exactly what's going in first. This prevents junk conferences from cluttering her view and ensures every row has passed human judgment.
+
+### 1. Sheet Validation (after discovery, post-approval)
 Verify the Conference Pipeline Google Sheet has new rows with data in all required columns:
 - Columns A-L (Date, Event Name, Location, Travel, Niche, Reg Cost, Reg Deadline, Est. Attendees, Attendee List, Website, Status, Agent Rec)
 - Column O (Agent Notes)
@@ -383,21 +402,30 @@ Verify:
 - Debrief note exists at `brain/calls/{date}-{conference-slug}.md` with proper schema
 - All wiki-links resolve (no broken links)
 
-### 5. Slack Notification (only after validation passes)
+### 5. Slack Notification via SVA Channel (only after validation passes)
 
-**After discovery run:**
+All conference discovery notifications go to the SVA Slack channel. Use the `SLACK_WEBHOOK_SVA` webhook from `scripts/.env.launchd`.
+
+**After discovery run (sheet updates confirmed and written):**
 ```bash
-curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
+source scripts/.env.launchd
+curl -s -X POST "$SLACK_WEBHOOK_SVA" \
   -H "Content-Type: application/json" \
-  -d '{"text":"Conference discovery complete — {n} conferences found for next 4 weeks. {n} new options added to Pipeline sheet.\nhttps://docs.google.com/spreadsheets/d/{SHEET_ID}/edit"}'
+  -d '{"text":"Conference Pipeline updated — {n} new conferences added, {n} modified, {n} moved to Skipped.\n\nChanges:\n{bullet summary of what was added/changed}\n\nReview the pipeline:\nhttps://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit"}'
 ```
 
 **After post-conference processing:**
 ```bash
-curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
+source scripts/.env.launchd
+curl -s -X POST "$SLACK_WEBHOOK_SVA" \
   -H "Content-Type: application/json" \
-  -d '{"text":"Post-conference processing complete for {conference name}.\n{n} contacts added to Attio. Follow-up drafts in Superhuman.\n\nDebrief: {Google Doc link}\n\nReview the debrief for anything you might have missed."}'
+  -d '{"text":"Post-conference processing complete for {conference name}.\n{n} contacts added to Attio. Follow-up drafts in Superhuman.\n\nDebrief: {Google Doc link}\n\nReview the debrief for anything you might have missed.\n\nConference Pipeline:\nhttps://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit"}'
 ```
+
+**Slack message content:**
+- Summary of what was added/changed (numbered list matching what Kay approved)
+- Direct link to the Conference Pipeline sheet
+- Keep it scannable, no walls of text
 
 **If validation fails:** Do NOT send Slack. Report which checks failed and fix before retrying.
 </validation>

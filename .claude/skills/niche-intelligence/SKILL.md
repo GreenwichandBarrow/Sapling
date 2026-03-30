@@ -462,6 +462,107 @@ Also saved to vault: `brain/outputs/{date}-customer-validation-summary-{niche-sl
 
 </workflows_index>
 
+<niche_sprint_tracking>
+
+## Niche Sprint Status Tracking (Moved from pipeline-manager)
+
+This section monitors the WEEKLY REVIEW tab for status changes and executes transitions. It runs daily (not just Tuesday nights) because Kay can change niche statuses at any time during analyst calls.
+
+### Reading the Tracker
+
+```bash
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B3:D20" -a kay.s@greenwichandbarrow.com -j
+```
+
+Column D (Current Status) has an **orange header** — this is an agent-trigger column. When Kay sets a niche's status, agents act.
+
+### Detection Logic
+
+1. Read all WEEKLY REVIEW rows
+2. For each row where Status starts with "Active" (matches Active - Diligence, Active - Outreach, Active - Wind Down):
+   - Check LINKT TARGET LISTS folder for a "{Niche} - Target List" sheet
+   - If sheet exists with rows dated today → already running, skip
+   - If no sheet or no recent rows → trigger target-discovery
+3. Phase-specific behavior:
+   - **Active - Diligence:** Target-discovery at 2-3 targets/day. NO owner outreach. Only JJ customer validation calls.
+   - **Active - Outreach:** Target-discovery at full 4-6 targets/day with full outreach cadence.
+   - **Active - Wind Down:** Continue existing outreach sequences, no NEW targets.
+
+### New Active Sprint Detection
+
+**Active - Diligence detected:**
+- Write to niche-sprint-status artifact: "New active sprint: {Niche Name} (Active - Diligence)"
+- Target-discovery runs at reduced pace (2-3/day, Mon-Fri)
+- NO outreach-manager cadence starts
+
+**Active - Outreach detected:**
+- Write to niche-sprint-status artifact: "New active sprint: {Niche Name} (Active - Outreach)"
+- Target-discovery runs at full pace (4-6/day, Mon-Fri)
+- Outreach-manager cadence starts
+
+### Tabled/Killed Processing
+
+When status = "Tabled" or "Killed":
+
+1. Read the niche's full row from WEEKLY REVIEW (cols A-J)
+2. Append to the target tab:
+   - "Tabled" → append to TABLED tab with: Niche Hypothesis, Start Date, "Tabled", Quick notes, Red flags, Score, Why Tabled, What would need to change, Date tabled (today)
+   - "Killed" → append to KILLED tab with: Niche Hypothesis, Start Date, "Killed", Quick notes, Red flags, Score, Primary reason, Pattern learned, Date killed (today)
+3. Delete the row from WEEKLY REVIEW
+4. Move the Drive folder:
+   - Tabled: move niche folder to TABLED folder (1_k_c1F11ZNrv4MilATFrURLHdkNx0kRx)
+   - Killed: move niche folder to KILLED folder (19xsNk5KTVHF2jb6m_li8IAGjcw34nlMX)
+5. Stop target-discovery for that niche
+
+### Status Dropdown Values (orange column D)
+
+- New — just added from pipeline, pending analyst review
+- Under Review — analyst evaluating
+- Active - Diligence — customer validation in progress, reduced target discovery, no owner outreach
+- Active - Outreach — full target discovery with owner outreach cadence
+- Active - Wind Down — finishing in-flight outreach, no NEW targets but continue existing sequences
+- Ideation — deprioritized, stays on WEEKLY REVIEW but sorted to bottom
+- Tabled — moves to TABLED tab overnight
+- Killed — moves to KILLED tab overnight
+
+Convention: Orange column header = agent-trigger column.
+
+### Sprint Status Artifact
+
+After processing, write a lightweight artifact for pipeline-manager to read:
+
+```
+brain/context/niche-sprint-status-{date}.md
+```
+
+Contents: list of active niches with their phase (Diligence/Outreach/Wind Down) and any transitions detected. Pipeline-manager reads this for the morning briefing summary line.
+
+### Nightly Audit Stop Hooks
+
+**1. Tabled/Killed Move Validation:**
+- Confirm niche row was appended to TABLED/KILLED tab
+- Confirm row was removed from WEEKLY REVIEW
+- Verify Drive folder was moved to correct status folder
+- Verify target-discovery stopped for this niche
+
+**2. Sort Validation:**
+- Confirm sort order: Active - Outreach > Active - Diligence > Active - Wind Down > Under Review > New > Ideation
+- Confirm no data lost (row count before = row count after)
+
+**3. Target List Template Validation (new Active sprints):**
+- Active - Diligence: customer validation call list exists, NO outreach drafts created, target list sheet created if missing
+- Active - Outreach: customer validation summary exists, target list sheet exists, outreach cadence running
+- Verify orange header on Col O (Kay Decision) in target list sheets
+
+**4. Kay Decision Column Validation (all active target lists):**
+- Check for rows where Col O = "Pass" not yet moved to Passed tab → move them
+- Check for rows where Col O = "Approve" not yet in Attio → flag for outreach-manager
+
+**5. Phase Compliance Check:**
+- For each Active - Diligence niche, verify NO cold emails or LinkedIn DMs drafted by outreach-manager. Flag immediately if detected.
+
+</niche_sprint_tracking>
+
 <success_criteria>
 
 Niche Intelligence run is complete when:

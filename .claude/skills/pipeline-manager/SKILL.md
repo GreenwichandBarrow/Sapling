@@ -162,23 +162,10 @@ Scan the ACTIVE DEALS Drive folder for any subfolder that does not have a matchi
 3. File any documents in the folder into the standard subfolder structure
 4. Present in morning briefing: "New deal folder detected: {Company}. Created Attio entry at NDA Signed."
 
-### Sub-Agent 2: Relationships Agent
-**Scope:** People records with custom attributes
-**Scans:** Calendar (meetings with contacts), email (thank yous sent, intros received), overdue nurture cadences
-**Returns:** Attribute update recommendations (next_action, nurture_cadence, relationship_type)
+### Sub-Agent 2: Relationships (now relationship-manager skill)
+Relationship management (nurture cadence monitoring, action-already-taken verification, overdue contacts, People record updates) is now handled by the relationship-manager skill. It writes an artifact to `brain/context/relationship-status-{date}.md` that pipeline-manager reads for Section 4 of the morning briefing.
 
-**Action-Already-Taken Verification (CRITICAL):**
-Before surfacing any "Need to..." stage contact (e.g., "Need to Send Thank You", "Need to Schedule", "Need to Reschedule"), verify whether Kay already took the action between sessions. Search by **recipient + recency**, NOT by subject keyword — Kay's thank-yous are often replies in existing threads with unrelated subjects.
-
-```bash
-# For each contact in a "Need to..." stage:
-gog gmail search "from:kay.s@greenwichandbarrow.com to:{contact_email} newer_than:7d" --json --max 5
-```
-
-- **If outbound email found** → the action was already taken. Auto-move the contact to the appropriate next stage (e.g., "Need Thank You" → "Nurture Occasionally") WITHOUT surfacing to Kay. Log: "Auto-resolved: {name} moved to {stage} — email sent {date}."
-- **If no email found** → surface in the briefing as usual.
-
-This applies to ALL action-pending stages, not just thank-yous. The pattern: if the stage implies Kay needs to do something, check if she already did it before asking her about it.
+**Fallback:** If the relationship-status artifact doesn't exist (relationship-manager didn't run), pipeline-manager does a lightweight Attio People query to surface any contacts with overdue nurture cadences for the briefing. This fallback will be removed once relationship-manager is proven stable.
 
 ### Sub-Agent 3: Granola Agent
 **Scope:** All meeting transcripts since last run
@@ -296,80 +283,9 @@ Niche sprints have two active phases tracked on the Industry Research Tracker:
 
 Multiple niches can be in different phases simultaneously. The Linkt credit budget splits accordingly: ~100 credits/month for "Active - Outreach" niches, ~50 credits/month for "Active - Diligence" niches.
 
-### JJ Daily Call Prep (10am ET)
+### JJ Daily Call Prep
 
-**JJ's hours:** 10am - 2pm ET, Mon-Fri. All notifications at 10am, not 9am.
-
-**Overnight (before 10am):**
-1. Select targets from the master target sheet where:
-   - Col O (Kay: Decision) = "Approve"
-   - Col Y (Outreach Stage) = "Email Sent"
-   - Col R (JJ: Call Date) = today
-   - Col Q (JJ: Call Status) is empty
-2. **Reply check (CRITICAL):** Before adding ANY target to JJ's call list, search Gmail for replies from that target's email address since the outreach was sent:
-   ```bash
-   gog gmail search "from:{target_email}" --max 5 --plain
-   ```
-   - **If reply found** → owner already responded. Remove from JJ's call list. Update Col Y to "Reply Received". Flag in Kay's morning briefing: "{owner} at {company} replied. JJ call canceled."
-   - **If no reply** → proceed with JJ call assignment.
-
-   JJ only calls targets who haven't responded. A call after a reply is redundant and could annoy the owner.
-3. For each verified no-reply target, find a personal tidbit via WebSearch:
-   ```bash
-   # Search for recent news, awards, milestones about the owner
-   WebSearch: "{Owner Name}" "{Company Name}"
-   ```
-   Extract ONE personal detail: recent award, conference appearance, company anniversary, industry publication, community involvement, or career milestone. Write it as a single sentence. If nothing found, leave blank — don't force it.
-4. For each verified no-reply target, create a Call Log doc from template (ID: `1nvvdOU7I5NLAwxrYgHIFTRNrEZmc67X8`):
-   - Copy template → save to OPERATIONS / CALL LOGS (`1nGSQIa28fhQ9dXuKdMks_172gyxAinEs`)
-   - Name: "Call Log - {Company Name} {M.DD.YY}.docx"
-   - Pre-populate COMPANY INFO section from Linkt data in the master target sheet
-   - Customize SCRIPT section with company-specific operational signal
-   - Add "Personal Note for JJ" field after SCRIPT section with the personal tidbit (if found)
-5. **Draft Slack message** and present to Kay for review before sending. Send at 10am after approval.
-
-**Call type labels (CRITICAL):** Every call must be clearly labeled as OWNER CALL or CUSTOMER CALL. These have different scripts, goals, and approaches. JJ needs to know which type before dialing.
-
-**Slack message format:**
-```
-Hey JJ, here are your calls for today:
-
-OWNER CALL:
-1. {Owner Name} - {Company} ({Industry})
-   Phone: {phone}
-   Call Log: {google_doc_link}
-
-CUSTOMER CALL:
-2. {Contact Name} - {Company} (validating {niche name})
-   Phone: {phone}
-   Call Log: {google_doc_link}
-
-CALLBACK:
-3. {Owner Name} - {Company} (follow-up from {date})
-   Phone: {phone}
-   Call Log: {google_doc_link}
-
-Dial target today: {n} ({n} owner + {n} customer validation + {n} callbacks)
-```
-
-**Important:** Claude identifies as "Claude" in all JJ messages. Never mention Kay by name or say "Kay wanted me to." Claude speaks on its own authority as a team member.
-
-**JJ Dial Target: 8-12 dials/day.** This includes owner confirmation calls (from outreach cadence), customer validation calls (from niche diligence), and callback attempts from prior days.
-
-**JJ's workflow:** Click link → read script + company info → make call → fill in Call Outcome + Call Notes in the doc. JJ does NOT touch the master target sheet.
-
-**If owner wants to schedule:** JJ books a time with the owner on the call, then emails Howie (barrie@greenwichandbarrow.com) with: owner name, owner email, and agreed time. Howie creates the calendar invite. Include Howie's email in every call log doc.
-
-**Overnight (after JJ's shift):**
-1. Read all Call Log docs updated today in OPERATIONS / CALL LOGS
-2. Extract call outcomes and update master target sheet:
-   - R: JJ: Call Status ← from Call Status field
-   - S: JJ: Call Date ← from Call Date field
-   - T: JJ: Call Notes ← summarize detailed notes into one line
-   - U: JJ: Owner Sentiment ← from Owner Sentiment field
-3. If Call Status = "Interested" → flag for Kay's morning briefing, trigger deal-evaluation Phase 1
-
-JJ webhook posts to #operations-sva channel.
+JJ call prep, Call Log creation, 10am Slack delivery, and post-shift outcome harvesting are now handled by jj-operations. Pipeline-manager reads JJ call outcomes from the master target sheet for stage change signals (e.g., "Connected + Interested" triggers First Conversation recommendation in the morning briefing).
 
 ### Warm Intro Detection
 When processing new targets (from target-discovery handoff), scan for warm intro paths before presenting to Kay:
@@ -768,93 +684,13 @@ Check the Industry Research Tracker WEEKLY REVIEW tab for any niche with status 
 gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B3:D20" -a kay.s@greenwichandbarrow.com -j
 ```
 
-The "Current Status" column (D) has an **orange header** — this is an agent-trigger column. When Kay sets a niche's status to "Active - Diligence" or "Active - Outreach" during the analyst call, it means: run target-discovery on this niche at the appropriate intensity.
+Niche sprint status tracking (WEEKLY REVIEW monitoring, Active/Tabled/Killed transitions, folder moves, target-discovery triggers, phase compliance checks) is now handled by niche-intelligence. Pipeline-manager reads the niche-sprint-status artifact at `brain/context/niche-sprint-status-{date}.md` for the morning briefing summary line:
 
-**Detection logic:**
-1. Read all WEEKLY REVIEW rows
-2. For each row where Status starts with "Active" (matches "Active - Diligence" or "Active - Outreach"), check if target-discovery is already running for this niche:
-   - Check LINKT TARGET LISTS folder for a "{Niche} - Target List" sheet
-   - If sheet exists with rows dated today → already running, skip
-   - If no sheet or no recent rows → trigger target-discovery
-3. **Phase-specific behavior:**
-   - **Active - Diligence:** Target-discovery runs at 2-3 targets/day. NO owner outreach cadence starts. Only JJ customer validation calls are in progress.
-   - **Active - Outreach:** Target-discovery runs at full 4-6 targets/day with full outreach cadence (cold emails, LinkedIn DMs via outreach-manager).
-4. Log which niches are in Active sprint (with phase) to the daily briefing
+```
+Niches: {n} Active-Diligence, {n} Active-Outreach, {n} Active-Wind Down
+```
 
-**When a new "Active - Diligence" status is detected:**
-- Note it in the daily briefing: "New active sprint detected: {Niche Name} (Active - Diligence). Target discovery at 2-3/day. Customer validation calls needed before owner outreach."
-- Target-discovery skill runs at reduced pace (2-3/day, Mon-Fri)
-- NO outreach-manager cadence starts — only JJ customer validation calls
-- Continue running until Kay changes the status to "Active - Outreach" or away from Active
-
-**When a new "Active - Outreach" status is detected:**
-- Note it in the daily briefing: "New active sprint detected: {Niche Name} (Active - Outreach). Full target discovery at 4-6/day with outreach cadence."
-- Target-discovery skill runs at full pace (4-6/day, Mon-Fri)
-- Outreach-manager cadence starts (cold emails, LinkedIn DMs)
-- Continue running until Kay changes the status away from Active
-
-**When status = "Tabled" or "Killed" detected:**
-
-Kay sets these during the analyst call. Pipeline-manager moves the niche to the correct tab overnight:
-
-1. **Read the niche's full row** from WEEKLY REVIEW (cols A-J)
-2. **Append to the target tab:**
-   - "Tabled" → append to TABLED tab with: Niche Hypothesis, Start Date, "Tabled", Quick notes, Red flags, Score, Why Tabled (from quick notes or ask Kay), What would need to change (from quick notes or ask Kay), Date tabled (today)
-   - "Killed" → append to KILLED tab with: Niche Hypothesis, Start Date, "Killed", Quick notes, Red flags, Score, Primary reason (from quick notes or ask Kay), Pattern learned, Date killed (today)
-3. **Delete the row from WEEKLY REVIEW** (use gog sheets delete-row or clear the row)
-4. **Move the Drive folder:**
-   - Tabled: move niche folder from WEEKLY REVIEW or IDEATION Drive folder to TABLED folder (`1_k_c1F11ZNrv4MilATFrURLHdkNx0kRx`)
-   - Killed: move niche folder to KILLED folder (`19xsNk5KTVHF2jb6m_li8IAGjcw34nlMX`)
-5. **Stop target-discovery** for that niche (no more daily runs)
-6. **Log in daily briefing:** "Niche {name} moved to {Tabled/Killed} per analyst call decision."
-
-**Status dropdown values (orange column D):**
-- New — just added from pipeline, pending analyst review
-- Under Review — analyst evaluating
-- Active - Diligence — customer validation in progress, reduced target discovery (2-3/day), no owner outreach
-- Active - Outreach — full target discovery (4-6/day) with owner outreach cadence
-- Ideation — deprioritized, not actively reviewing. Stays on WEEKLY REVIEW but sorted to bottom.
-- Active - Wind Down — finishing in-flight outreach, no NEW targets but continue existing outreach sequences
-- Tabled — moves to TABLED tab overnight
-- Killed — moves to KILLED tab overnight
-
-**Convention:** The orange column header on any G&B tracker sheet means "this column triggers agent behavior." Kay knows that changing values in orange-header columns will cause agents to act.
-
-### Nightly Audit Stop Hooks
-
-After processing Tabled/Killed moves and re-sorting WEEKLY REVIEW, validate:
-
-**1. Tabled/Killed Move Validation:**
-- Re-read the TABLED/KILLED tab to confirm the niche row was appended
-- Re-read WEEKLY REVIEW to confirm the row was removed
-- If the niche had a Drive folder, verify it was moved to the correct status folder (TABLED or KILLED)
-- If target-discovery was running for this niche, verify no Linkt task is still active
-
-**2. Sort Validation:**
-- Re-read WEEKLY REVIEW after sorting
-- Confirm sort order: Active - Outreach first, then Active - Diligence, then Active - Wind Down, then Under Review, then New, then Ideation (bottom)
-- Confirm no data was lost during sort (row count before = row count after)
-
-**3. Target List Template Validation (on new Active sprints):**
-- When a niche is newly set to "Active - Diligence":
-  - Check that a customer validation call list exists in Drive (from niche-intelligence Step 5b)
-  - Check that NO outreach-manager cold email drafts were created for this niche
-  - If no target list sheet exists in LINKT TARGET LISTS, create one from the template with all 23 columns A-W
-  - Verify orange header on Col O (Kay Decision)
-- When a niche is newly set to "Active - Outreach":
-  - Check that a customer validation summary exists (indicating diligence was completed)
-  - Check that target list sheet exists and outreach cadence is running
-  - If no target list sheet exists, create one from the template with all 23 columns A-W
-  - Verify orange header on Col O (Kay Decision)
-
-**4. Kay Decision Column Validation (on all active target lists):**
-- For each niche with status starting with "Active," read the target list sheet
-- Check for any rows where Col O = "Pass" that haven't been moved to the Passed tab
-- Move them and preserve all data
-- Check for any rows where Col O = "Approve" that aren't yet in Attio — flag for outreach-manager pickup
-
-**5. Phase Compliance Check:**
-- For each niche in "Active - Diligence", verify that outreach-manager has NOT drafted any cold emails or LinkedIn DMs for targets in this niche. Diligence niches should only have JJ customer validation calls, not owner outreach. If owner outreach is detected for a Diligence niche, flag immediately: "ALERT: Owner outreach detected for {Niche} which is still in Diligence phase. Halt outreach until customer validation complete."
+If the artifact is missing (niche-intelligence didn't run overnight), pipeline-manager does a lightweight read of the WEEKLY REVIEW tab column D to count active niches for the summary line only — it does NOT process transitions or move rows.
 
 ## Trigger
 

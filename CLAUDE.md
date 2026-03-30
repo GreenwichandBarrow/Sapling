@@ -201,12 +201,16 @@ Litmus: only trace choices between alternatives that change future behavior with
 
 ## Scheduled Skills (launchd)
 
-Two skills run on a schedule via macOS launchd, independent of active sessions:
+Skills run on a schedule via macOS launchd, independent of active sessions:
 
 | Skill | Schedule | Purpose |
 |-------|----------|---------|
 | `intermediary-manager` | Mon-Fri 6am ET | Platform scanning + email screening |
+| `email-intelligence` | Mon-Fri 7am ET | Gmail/Superhuman/Granola scanning, email-scan-results artifact |
+| `jj-operations` (prep) | Mon-Fri 8am ET | JJ call prep, Call Log creation, Slack draft |
+| `jj-operations` (harvest) | Mon-Fri 4pm ET | Read Call Logs, update master sheet |
 | `niche-intelligence` | Tuesday 11pm ET | Newsletter scrape, niche identification, one-pagers, scorecards |
+| `niche-intelligence` (daily) | Nightly | Sprint status tracking, Tabled/Killed processing |
 
 `weekly-tracker` runs on Fridays but is triggered by the orchestrator during the morning workflow (not launchd). Kay needs results by 10am ET.
 
@@ -236,22 +240,25 @@ Two skills run on a schedule via macOS launchd, independent of active sessions:
 ## Morning Workflow
 
 When Kay says good morning:
-1. Run pipeline-manager (data gathering — email, calendar, Granola, Attio, tracker)
-2. If Friday → run three review skills in parallel (Kay needs results by 10am ET):
+1. Run email-intelligence (Gmail, Superhuman, Granola scanning → writes email-scan-results artifact)
+2. Run relationship-manager in parallel (nurture cadences, overdue contacts → writes relationship-status artifact)
+3. Run pipeline-manager (reads both artifacts + calendar + vault + Attio → assembles briefing)
+4. jj-operations runs independently (8am launchd → 10am Slack to JJ)
+5. If Friday → run three review skills in parallel (Kay needs results by 10am ET):
    - weekly-tracker (activity data → sheet + vault)
    - health-monitor (system health → dashboard + alerts)
    - calibration-workflow (decision traces → skill improvements)
-3. Read the results and judge what needs to happen
-4. Present the briefing in 5 consistent sections (ascending numbering across all sections):
+6. Read the results and judge what needs to happen
+7. Present the briefing in 5 consistent sections (ascending numbering across all sections):
    - Pipeline shifts to review/approve
    - Pipeline summary
    - Motion action steps to review/approve
    - Superhuman email drafts to review/approve
    - Other items / today's agenda
-5. Based on signals, invoke downstream skills:
+8. Based on signals, invoke downstream skills:
    - Niche status changed to Active-Diligence → target-discovery (customer validation mode, surfaces Thursday)
-   - Monday → conference pipeline review
-   - CIM received → deal-evaluation
+   - Monday → conference pipeline review (conference-discovery owns decisions)
+   - CIM received → deal-evaluation (email-intelligence auto-triggers)
    - Email sent to target → Attio update + JJ call countdown
    - Target approved on sheet → outreach-manager + call log generation
-6. Kay reviews outputs as they arrive
+9. Kay reviews outputs as they arrive

@@ -140,10 +140,11 @@ Pipeline manager complete:
 - {n} stale deals flagged
 ```
 
-## Architecture: Manager + 3 Specialized Sub-Agents
+## Architecture: Manager + 2 Sub-Agents + 1 External Skill
 
-Claude acts as the **manager** overseeing 3 specialized sub-agents that run in parallel on session start. The manager:
-- Launches all 3 agents simultaneously
+Claude acts as the **manager** overseeing 2 specialized sub-agents that run in parallel on session start, plus reading an artifact from the relationship-manager skill. The manager:
+- Launches both agents simultaneously
+- Reads the relationship-status artifact from relationship-manager
 - Reviews their outputs for quality and consistency
 - Flags any red flags or conflicts to Kay before presenting
 - Presents recommendations sequentially: Part 1 (pipeline changes) → Part 2 (outreach/nurture) → Part 3 (action items)

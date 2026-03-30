@@ -82,6 +82,9 @@ When Kay marks a row "Pass" in Col O, move it to the "Passed" tab with all data 
 3. Write with `--input USER_ENTERED` and apostrophe prefix (`'(973) 770-9090`) to prevent formula interpretation
 This must happen on every Linkt pull, not as a cleanup step.
 
+### Art Storage Niche: Activity Report Cross-Reference (STOP HOOK)
+When discovering targets for the art storage niche, cross-reference every candidate against the Activity Report (Google Sheet) which contains companies already contacted in prior outreach rounds. Do NOT rediscover or re-add companies that are already on the Activity Report. This avoids duplicate outreach and wasted research time on known companies.
+
 ### Step 2: Supplement with Free Sources
 Linkt won't find everything. Supplement with free research:
 

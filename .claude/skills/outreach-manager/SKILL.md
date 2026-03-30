@@ -551,6 +551,12 @@ During the testing phase, outreach-manager only drafts outreach for targets wher
 
 Before reporting completion, run these checks in order. If any check fails, do NOT send the Slack notification. Report the failure and fix it before retrying.
 
+### 0a. Jessica Prior Contact Check (STOP HOOK — before drafting)
+Before drafting outreach for ANY company, check if they were previously contacted by Jessica. Cross-reference against the Activity Report (Google Sheet) or check Attio notes for "Cold emailed by Jessica" text. If the company was previously contacted by Jessica, the email MUST be framed as a re-introduction ("We reached out previously and wanted to reconnect"), NOT as cold outreach. A cold email to someone Jessica already contacted looks disorganized.
+
+### 0b. Tracker Verification (STOP HOOK — before drafting)
+Before drafting outreach for any target, verify the target is on Kay's tracker (the active niche sprint master sheet in LINKT TARGET LISTS folder). If the target is not on the tracker, flag it: "{company} is not on the tracker. Add first or skip?" Do NOT draft outreach for unknown targets.
+
 ### 1. Superhuman Draft Validation
 Confirm every email draft was created via the superhuman-cli Bash command (NOT the MCP `superhuman_draft` tool which uses Gmail API). For each target, verify the CLI returned a success response. If any draft creation failed, flag it. Drafts must exist in Superhuman's native draft system, not Gmail.
 

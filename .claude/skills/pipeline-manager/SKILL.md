@@ -271,14 +271,7 @@ The Superhuman Draft Status Check above only catches emails that originated as o
 This ensures manually-sent outreach emails (not just outreach-manager drafts) trigger the full cadence: Attio stage change → JJ Day 3 call → follow-up at Day 5-6.
 
 ### Conference Decision Scan
-Check the Conference Pipeline Google Sheet for any row where Kay marked Decision (Col M) = "Attend" or "Register Only" since last scan. For each new decision:
-1. Create Motion task: "Register for {conference name}" with deadline 2 days before registration closes (Col G)
-2. Provide registration link from conference website (Col J)
-3. If attendee list is publicly available (Col I), begin attendee list acquisition
-4. Update Status (Col K) to "Registered" after Motion task created
-5. Slack Kay: "Saw you picked {conference name} for {date}. Registration task created in Motion. Link: {url}"
-
-Kay picks conferences Monday morning. Pipeline-manager scans overnight. This gives Kay a grace period to change her mind before registration is kicked off.
+Conference decisions (Col M = "Attend"/"Register Only") are now handled by conference-discovery. Pipeline-manager does not scan the Conference Pipeline sheet.
 
 ### Target List Monitoring (JJ Call Outcomes)
 Read the active niche sprint's master sheet ("{Niche} - Target List") in LINKT TARGET LISTS folder. Scan JJ's call columns (Q-T) for new entries since last scan:

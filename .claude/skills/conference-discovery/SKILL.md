@@ -337,6 +337,25 @@ Note: A Drive subfolder is created for each conference at registration time (see
 The debrief is designed to be easily digestible on a phone screen — short bullets, person names bolded, no walls of text. It should trigger thoughts and catch things Kay missed in the moment.
 </target_scoring>
 
+<conference_decision_scan>
+## Conference Decision Scan (Moved from pipeline-manager)
+
+After Kay reviews the Conference Pipeline sheet Monday morning and marks decisions in Col M ("Attend" or "Register Only"), this scan picks them up and executes.
+
+**When to run:** Monday morning scan, or any time Kay marks a new decision on the sheet.
+
+**Process:**
+1. Check Conference Pipeline Google Sheet for any row where Decision (Col M) = "Attend" or "Register Only" AND Status (Col K) is NOT yet "Registered"
+2. For each new decision:
+   - Create Motion task: "Register for {conference name}" with deadline 2 days before registration closes (Col G)
+   - Include registration link from conference website (Col J)
+   - If attendee list is publicly available (Col I), begin attendee list acquisition
+   - Update Status (Col K) to "Registered" after Motion task created
+3. Present changes to Kay before writing (per Stop Hook above)
+
+**Note:** Kay picks conferences Monday morning. This scan runs after her review. Gives Kay a grace period to change her mind before registration is kicked off.
+</conference_decision_scan>
+
 <validation>
 ## Validation & Stop Hooks
 

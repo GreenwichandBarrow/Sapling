@@ -308,13 +308,26 @@ Target validation was moved into the identification step (Step 2) so no niche is
    - Always include: "How critical is {service} to your operations?" and "If your current provider disappeared, what would you do?"
 3. Identify 5-10 potential call targets (customers/experts who USE the niche's service):
    - Search web for companies that are CUSTOMERS of this niche (not competitors)
+   - Include a MIX of company sizes — do NOT only select Fortune 500. Include small/mid-market businesses (50-500 employees) that would realistically be customers of the independent firms we'd acquire
    - Check industry association member directories for customer-side contacts
    - Search LinkedIn via WebSearch for titles like "VP Operations", "Procurement Director" at companies in the customer vertical
    - For each target: Name, Company, Title, Phone (if findable), LinkedIn URL, why they're relevant
-4. Write the call list to Google Drive: `OPERATIONS / CALL LOGS / {Niche} - Customer Validation Calls.docx`
-   - Include: niche name, the 5-8 questions, the 5-10 targets with contact info
-   - Use the Customer Validation Call Log template (Doc ID: `1gw5qYUpBm6LMa-jtvKeY0rDYTxL9IOWE`, .docx format with G&B letterhead, in OPERATIONS / CALL LOGS)
-   - Copy the template for each individual call target, pre-populate niche name and validation questions
+4. Write the call list to Google Drive: `OPERATIONS / CALL LOGS / CLIENT VALIDATION CALLS / {Niche} - Customer Validation Calls`
+   - G&B letterhead (Avenir font, black text, centered logo)
+   - Include: niche name, the 5-8 questions, the 5-10 targets with contact info, call script, call outcome form
+   - Contact formatting — use numbered entries with plain labeled lines (NOT bulleted lists):
+     ```
+     1. Company Name
+     Contact: Name or Department
+     Title: Their title
+     Phone: (xxx) xxx-xxxx
+     LinkedIn: linkedin.com/in/slug or linkedin.com/company/slug
+     Location: City, State
+     Why: One paragraph explanation of why they're a good validation call.
+     ```
+   - Diagnostic questions as a numbered list with "Answer:" field after each
+   - Call Script section with labeled lines for Intro, Gatekeeper, Voicemail
+   - Call Outcome section as a clean form (Call Date, Duration, Status, Sentiment, Next Steps)
 5. Write a vault file: `brain/outputs/{date}-customer-validation-calllist-{niche-slug}.md`
 
 **Output posted to chatroom:**

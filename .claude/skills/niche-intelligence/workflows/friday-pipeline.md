@@ -259,7 +259,38 @@ gog drive ls -a kay.s@greenwichandbarrow.com --parent {niche_folder_id} -p
 
 **If ALL niches pass:** Proceed to notification.
 
-After all steps complete and stop hook passes:
+## Step 5b: CUSTOMER VALIDATION CALL LISTS (Conditional — Approval Required)
+
+For any niche flagged for sprint activation (scored 2.5+ or Kay requests), spawn `niche-intel-customer-calls` agent to generate the customer validation call list.
+
+### Kay Approval Gate (HARD REQUIREMENT)
+
+Customer validation call lists MUST be reviewed and approved by Kay before being sent to JJ. This is not optional.
+
+1. After the call list doc is created in Drive, present the Google Doc link(s) to Kay:
+   ```
+   CUSTOMER VALIDATION CALL LIST — APPROVAL NEEDED
+
+   Niche: {Niche Name}
+   Targets: {n} customers/experts
+   Questions: {n} validation questions
+   Doc: {google_doc_link}
+
+   Please review the call list and approve before it goes to JJ.
+   ```
+2. Wait for Kay's explicit approval on each list. Do NOT send to JJ until approved.
+3. If Kay requests changes, update the doc and re-present for approval.
+4. Only after Kay approves should the list be shared with JJ via Slack.
+
+### Verification Gate 5b
+
+- [ ] Call list doc exists in Drive with 5+ targets
+- [ ] Kay has explicitly approved the call list
+- [ ] Only approved lists are sent to JJ via Slack
+
+---
+
+After all steps complete and stop hooks pass:
 
 1. Read the full chatroom to compile final status
 2. Send Slack notification:
@@ -302,4 +333,5 @@ This workflow is complete when:
 - [ ] Output report written with valid vault frontmatter
 - [ ] Slack notification sent with niche count, names, scores
 - [ ] User notified with summary
+- [ ] For niches flagged for activation: customer validation call lists created, approved by Kay, then sent to JJ
 </success_criteria>

@@ -328,6 +328,28 @@ Doc: {google_doc_link}
 
 **Stop hook:** Call list doc exists in Drive AND contains at least 5 targets with at least one contact method each.
 
+**HARD REQUIREMENT — Kay Approval Gate (before JJ receives anything):**
+
+Customer validation call lists MUST be reviewed and approved by Kay before being sent to JJ. This is not optional.
+
+1. After the call list doc is created in Drive, present the Google Doc link(s) to Kay for review.
+2. Format the approval request clearly:
+   ```
+   CUSTOMER VALIDATION CALL LIST — APPROVAL NEEDED
+
+   Niche: {Niche Name}
+   Targets: {n} customers/experts
+   Questions: {n} validation questions
+   Doc: {google_doc_link}
+
+   Please review the call list and approve before it goes to JJ.
+   ```
+3. Wait for Kay's explicit approval on each list. Do NOT proceed to Slack notification until approved.
+4. If Kay requests changes, update the doc and re-present for approval.
+5. Only after Kay approves should the list be shared with JJ via Slack.
+
+This gate exists because JJ acts on these lists immediately. Bad targets or bad questions waste JJ's limited call time and can damage relationships. Kay reviews every list.
+
 **After JJ completes 5 calls — Customer Validation Summary:**
 
 Claude synthesizes JJ's 5 call log docs into a one-page **Customer Validation Summary** saved to `OPERATIONS / CALL LOGS / {Niche} - Customer Validation Summary.docx`:

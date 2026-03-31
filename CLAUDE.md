@@ -235,6 +235,7 @@ Skills run on a schedule via macOS launchd, independent of active sessions:
 - Beads for persistence on multi-step/multi-session tasks.
 - Never make Kay's decisions for her. Present options and information, she decides.
 - Always draft external messages (Slack, email) and present for Kay's review before sending.
+- **NEVER guess or construct email addresses.** Before any email draft, verify the address is from a verified source (Linkt, prior correspondence, company website, email signature). If unverified, run Apollo API verification. If no verified email exists, tell Kay and stop. Bounced emails damage Kay's sender domain, which is her entire business.
 - Pipeline-manager is a data-gathering step. You are the brain that decides what to do with the results.
 
 ## Morning Workflow

@@ -1031,6 +1031,15 @@ gog calendar list --from {TOMORROW} --to {TOMORROW} --json
 
 Only investor call prep runs here. Everything else is meeting-brief-manager's responsibility via its nightly launchd schedule.
 
+### Email Verification Gate (CRITICAL — applies to ALL drafts from this skill)
+
+Before creating ANY email draft (thank-you, follow-up, decline, intro), verify the recipient email:
+- **Prior correspondence exists** (Kay has emailed/received email from this address) → verified, proceed
+- **Linkt-sourced email** → verified (Linkt validates its own data), proceed
+- **All other emails** → run through Apollo API verification. Only proceed if `verified`. If `guessed`/`unavailable`/`bounced`, tell Kay: "no verified email for {name}" and stop. NEVER guess an email from name + domain.
+
+Bounced emails damage Kay's sender domain reputation. Her email is her entire business.
+
 ### Follow-Up Actions
 
 After pipeline updates, surface any follow-up tasks:

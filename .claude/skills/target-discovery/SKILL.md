@@ -41,16 +41,53 @@ Example: "Trade Credit Insurance" is also called "Accounts Receivable Insurance"
 **For web research:** Rotate through all aliases in searches. Don't stop at the primary name.
 
 ### Step 1: Run Linkt Search (DISCOVERY ONLY)
+
+**NOTE: Linkt subscription is cancelled as of March 31, 2026. Re-subscribe in sprints when needed. When re-subscribing, run a full E2E test first (create ICP → sheets → task → execute → verify results) before burning credits on real searches.**
+
 Linkt is the primary list builder for discovering NEW companies. It finds companies matching the ICP and returns enriched data including owner contact info.
 
 **Linkt discovers AND enriches** — companies it finds come back with full contact data. That's fine, that's what a credit buys you. **But do NOT use Linkt credits to enrich companies found through OTHER sources** (free research, associations, referrals, conferences). Those get contact-scraped manually (Step 2b). Linkt credits = discovering companies we don't know about yet.
 
 **Use ALL niche aliases in Linkt searches.** Run separate search tasks per alias if needed. Each alias may surface different companies.
 
+#### Linkt API Flow (All Steps Required — STOP HOOK)
+
+**Before running any Linkt search, verify ALL of these or the search will silently fail:**
+1. ICP has `entity_targets` array (company + person entries)
+2. Sheets exist for the ICP (company sheet + person sheet created via POST /v1/sheet)
+3. ICP description includes the target count as text (e.g., "Find 50 independently owned...")
+4. `desired_count` parameter is IGNORED — only the description text matters
+
+**Correct flow:**
 ```
-Execute the niche ICP Search flow in Linkt:
+# Step 1: Create ICP with entity_targets
+POST /v1/icp
+{
+  "name": "Niche Search",
+  "description": "Find 50 independently owned {criteria}...",
+  "entity_targets": [
+    {"entity_type": "company", "root": true},
+    {"entity_type": "person"}
+  ]
+}
+
+# Step 2: Create sheets (REQUIRED before task execution)
+POST /v1/sheet
+{"name": "Niche - Companies", "icp_id": "{icp_id}", "entity_type": "company"}
+POST /v1/sheet
+{"name": "Niche - People", "icp_id": "{icp_id}", "entity_type": "person"}
+
+# Step 3: Create task
+POST /v1/task
+{"icp_id": "{icp_id}", "type": "search"}
+
+# Step 4: Execute (empty JSON body required)
 POST /v1/task/{task_id}/execute
+Content-Type: application/json
+Body: {}
 ```
+
+**CRITICAL LESSON:** ICPs created without `entity_targets` will show status "Complete" immediately with 0 results. This is a silent failure — it looks like Linkt ran and found nothing, but it never actually searched. This was the root cause of all failed searches in March 2026.
 
 Linkt's AI agents will:
 - Find companies matching the ICP criteria (industry, size, geography, ownership)
@@ -58,7 +95,7 @@ Linkt's AI agents will:
 - Identify the owner/CEO with validated email and phone
 - Verify criteria matches against the ICP
 
-**Run smaller, focused searches** (10-20 entities per run) rather than large broad ones. Each entity = 1 credit. 150 credits/month. **Always set the entity limit parameter in the Linkt API call** — never run an open-ended search without a cap. Default to 15 entities per search. If the ICP is narrow (e.g., one niche in one state), use 10. If broad (national search), use 20 max.
+**Run smaller, focused searches** (10-20 entities per run) rather than large broad ones. Each entity = 1 credit. Pro plan = 300 credits/month. Put the target count in the ICP description text (the `desired_count` API parameter is ignored). Default to requesting 15 entities per search in the description. If the ICP is narrow (e.g., one niche in one state), request 10. If broad (national search), request 20 max.
 
 **Output:** Linkt returns enriched entities. Only write to the sheet after verifying minimum data bar (see Write Gate below). Append to the niche sprint's master sheet ("{Niche} - Target List") in LINKT TARGET LISTS folder. One master sheet per niche sprint — do NOT create new sheets per run. New results append to the "Active" tab.
 
@@ -150,12 +187,12 @@ Pass approved, deduped targets to skill/outreach-manager's cold outreach subagen
 ## Principles
 
 ### Linkt Credit Management
-- 150 credits/month = ~5-6 companies/day if running daily
+- Pro plan: 300 credits/month ($300/mo) — subscribe in sprints only, cancelled as of March 31 2026
 - 1 credit = 1 entity (company or person)
 - Linkt IS the list builder — discovery is what it's for, just keep searches tight and focused
 - Run smaller, focused searches (10-20 entities) rather than large broad ones
 - Supplemental free research extends the target pool without burning credits
-- Save some credits for signal monitoring and conference attendee enrichment
+- When re-subscribing: run full E2E test (ICP with entity_targets → sheets → task → execute → verify) before real searches
 
 ### Team Roles (for this skill only)
 - **Claude:** Run Linkt, supplement with free research, present list to Kay, dedup against Attio, hand off to outreach-manager

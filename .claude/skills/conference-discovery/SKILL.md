@@ -78,6 +78,18 @@ If the audience is primarily vendors, tech providers, carrier executives, curato
 
 **Ask yourself:** "Will Kay meet someone who either owns a business she could acquire, or hires the kind of business she wants to acquire?" If no, skip it.
 
+### Owner Verification Gate (CRITICAL — learned from InsurTech Spring 2026)
+
+Before recommending ANY conference, verify that **target business owners are confirmed on the exhibitor/booth list or attendee/meetup list.** A conference in the right industry is not enough. The exhibitor list must contain actual acquisition targets, not just vendors and tech providers serving that industry.
+
+**Process:**
+1. Get the exhibitor/booth list and attendee list (if available)
+2. Cross-reference against G&B's target profile: independently-owned businesses in active niches
+3. Count confirmed owner matches. If zero owners on the list, do NOT recommend the conference.
+4. In the recommendation, list the specific owners/companies Kay would target at booths
+
+**InsurTech Spring 2026 lesson:** Conference was insurance-industry-adjacent but exhibitors were all InsurTech vendors (AI, SaaS, data platforms). Zero brokerage owners had booths. Conference was a waste of time. The audience filter alone is not sufficient — must verify the exhibitor list contains actual targets.
+
 ### Conference Types (all qualify if they pass the audience filter)
 - **Association chapter meetings and dinners** (HIGHEST VALUE — intimate, business owners present, real conversations, recurring monthly. One membership = 10+ events/year)
 - **Industry niche meetups and gatherings** (small groups of practitioners in the exact niche — TCI brokers dinner, art advisory roundtable, insurance agent networking)

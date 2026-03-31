@@ -156,6 +156,14 @@ Claude acts as the **manager** overseeing 2 specialized sub-agents that run in p
 **Scans:** Email (NDAs, financials, LOIs, broker correspondence, CIM attachments), calendar (deal meetings), vault (call notes), Drive ACTIVE DEALS folder (new subfolders)
 **Returns:** Stage change recommendations with signal evidence. Also executes CIM auto-trigger (folder creation, filing, inbox item, deal-eval invocation) before returning recommendations — CIM deals arrive pre-screened.
 
+**Pipeline Agent Quality Gates (CRITICAL):**
+
+1. **Name resolution required.** Every pipeline entry presented to Kay MUST include the company/person name, not just a record ID. If the Attio API does not return a name for a record, try: (a) `mcp__attio__get_record_details` with the record ID, (b) `mcp__attio__search_records` by record ID, (c) cross-reference against the outreach tracker Google Sheet. If name STILL cannot be resolved, do NOT present the entry as a recommendation — log it as "unresolvable" and flag for investigation. Kay cannot act on nameless entries.
+
+2. **Calendar day verification.** When presenting "today's agenda" items, verify the day of week matches. Cross-check: `date +%A` returns today's day name. Only include events from TODAY's calendar query in the "today's agenda" section. Events from yesterday's scan go in "pipeline signals" only. Events from tomorrow go in "upcoming" only. Never mix days.
+
+3. **No unactionable items.** Every item presented to Kay must have: a name, a clear action or question, and enough context to decide. If any of these is missing, the subagent must resolve it before returning results — or exclude the item.
+
 **ACTIVE DEALS folder detection (catch-all for broker platform NDA edge cases):**
 Scan the ACTIVE DEALS Drive folder for any subfolder that does not have a matching Attio Active Deals entry. This catches the case where Kay signs an NDA on a broker platform (no email sent), creates a folder, and saves the NDA manually. When detected:
 1. Create Attio Active Deals entry at "NDA Signed" stage with `source: intermediary`
@@ -205,6 +213,18 @@ The manager raises these to Kay before executing:
 - Missing data (meeting happened but no Granola transcript and no call notes)
 - Unusual patterns (deal jumping 2+ stages, contact going from Dormant to active without clear signal)
 - Sub-agent returned empty results when activity was expected
+
+### Manager Quality Review (CRITICAL — runs before presenting to Kay)
+
+Before presenting the briefing, the manager (Claude orchestrator) MUST review all sub-agent outputs for these errors:
+
+1. **Nameless entries** — Any pipeline recommendation without a resolved company/person name is REJECTED. Do not present it.
+2. **Wrong-day calendar items** — Cross-check every "today" item against the actual day of week. Remove any misfiled items.
+3. **Imprecise characterizations** — Compare sub-agent summaries of email actions against the email-scan-results artifact. If the sub-agent says "cancelled" but the artifact says "downgraded", use the artifact's language.
+4. **Stale items without names** — "8 entries stale for 17 days" is useless without company names. Either resolve names or don't present the stat.
+5. **Relationship items already handled** — Cross-check relationship-manager artifact's overdue contacts against Attio `next_action` for trigger-based conditions. Filter out trigger-based contacts before presenting.
+
+The manager is the last line of defense. Sub-agents will make errors. The manager catches them so Kay doesn't have to.
 
 ## Data Ingestion (runs before signal detection)
 

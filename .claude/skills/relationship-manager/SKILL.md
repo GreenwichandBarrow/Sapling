@@ -39,14 +39,28 @@ Check these in order (most recent wins):
 1. Gmail: last email to/from contact (`gog gmail search "to:{email} OR from:{email}" --max 1 --plain`)
 2. Calendar: last meeting with contact
 3. Vault: last call note in `brain/calls/` mentioning the entity
+4. Attio `next_action` field: if it references recent contact (e.g., "Texted recently", "Spoke at event"), treat as recent interaction even without Gmail/calendar evidence
+
+**Limitation:** Gmail and calendar are the only channels this skill can verify. Kay also communicates via text, phone, and in-person. When surfacing overdue contacts, note this caveat. If Attio `next_action` was recently updated with evidence of contact, trust it over Gmail silence.
+
+### Trigger-Based vs Cadence-Based Contacts (CRITICAL)
+
+Before surfacing ANY contact, check their `next_action` field in Attio:
+- If `next_action` contains trigger language ("when", "once", "after", "if", "re-engage when") → this is a **trigger-based contact**. Do NOT surface based on time elapsed. Only surface when the trigger condition is met.
+- If `next_action` is empty or contains a standard action (e.g., "Send thank you", "Schedule call") → this is cadence-based, surface normally.
+- If `nurture_cadence` is "Dormant" → NEVER surface regardless of next_action content.
+
+**Example:** `next_action: "Re-engage when we have an insurance deal for him to review"` → Do NOT surface this person as overdue. The trigger is having a deal, not elapsed time.
 
 ### Processing
 
 1. Query all Attio People records where `nurture_cadence` is set and not "Dormant"
-2. For each, determine last interaction date from data sources above
-3. Compare against cadence threshold
-4. Surface the top 5 overdue contacts (prioritized by: how far overdue, relationship value, recency of last interaction)
-5. For each overdue contact, suggest an action: email, coffee, event invite, or just a check-in
+2. For each, check `next_action` for trigger language — skip trigger-based contacts
+3. For remaining contacts, determine last interaction date from data sources above
+4. Compare against cadence threshold
+5. Surface the top 5 overdue contacts (prioritized by: how far overdue, relationship value, recency of last interaction)
+6. For each overdue contact, suggest an action: email, coffee, event invite, or just a check-in
+7. Note in the artifact that Gmail/calendar are the only verified channels — text and phone interactions may not be captured
 </nurture_monitoring>
 
 <action_verification>
@@ -140,10 +154,12 @@ Pipeline-manager reads this artifact and presents it in Section 4 (Superhuman em
 ## Stop Hooks
 
 - [ ] All overdue contacts verified against Gmail before surfacing (no false positives)
+- [ ] Trigger-based contacts (next_action contains "when"/"once"/"after"/"if") excluded from overdue list
 - [ ] Auto-resolved contacts had their Attio records updated
 - [ ] Artifact written to `brain/context/relationship-status-{date}.md`
 - [ ] Artifact has all 4 sections (even if empty, mark "None")
 - [ ] No contacts surfaced that Kay already emailed in the last 7 days
+- [ ] Artifact notes that Gmail/calendar are the only verified channels (text/phone not captured)
 </stop_hooks>
 
 <success_criteria>

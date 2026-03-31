@@ -49,6 +49,17 @@ gog gmail search "from:kay.s@greenwichandbarrow.com newer_than:2d" --json --max 
 
 Detect manually-sent outreach emails not created by outreach-manager. If Kay sent an email to a target in the Active Deals pipeline, update the cadence tracking.
 
+### Precision Rules for Email Characterization (CRITICAL)
+
+When describing actions Kay took via email, use the **exact language from the confirmation/reply email**, not a paraphrase. Common errors to avoid:
+- "Downgrade" ≠ "Cancel" — if the vendor confirmed a downgrade, say downgrade
+- "Pause" ≠ "Cancel" — if Kay paused a subscription, say pause
+- "Inquiry" ≠ "Complaint" — match tone exactly
+
+**Process:** For service-related emails (subscriptions, vendors, support), ALWAYS read the vendor's reply to determine the actual outcome. Kay's outbound request may differ from what was processed. Report the **confirmed outcome**, not Kay's request.
+
+**When the reply from the vendor is available, quote the key phrase** (e.g., "downgraded back to Starter tier" per Reid at Linkt). When no reply exists, say "requested" not "confirmed."
+
 ### Superhuman Draft Status
 Check Superhuman MCP for draft status:
 - Which drafts were sent vs still pending

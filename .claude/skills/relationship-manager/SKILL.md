@@ -72,10 +72,12 @@ Search by **recipient + recency**, NOT by subject keyword — Kay's follow-ups a
 
 ```bash
 # For each contact about to be surfaced:
-gog gmail search "from:kay.s@greenwichandbarrow.com to:{contact_email} newer_than:7d" --json --max 5
+gog gmail search "from:kay.s@greenwichandbarrow.com to:{contact_email} newer_than:14d" --json --max 5
 ```
 
-- **Outbound email found** → Action was taken. Auto-update the contact's last interaction date. Do NOT surface to Kay. Log: "Auto-resolved: {name} — email sent {date}."
+**Use a 14-day search window** (not 7 days) to catch thank-yous and follow-ups that were sent earlier in the period. A thank-you sent 8 days ago is still a valid interaction.
+
+- **Outbound email found** → Read the email content to confirm it's a substantive interaction (not just a calendar confirmation). If substantive → Action was taken. Auto-update the contact's last interaction date. Do NOT surface to Kay. Log: "Auto-resolved: {name} — email sent {date}."
 - **No email found** → Surface in the relationship-status artifact.
 
 This applies to ALL relationship actions: thank-yous, follow-ups, check-ins, intros owed. The pattern: if the system thinks Kay needs to do something, check if she already did it.

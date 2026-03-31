@@ -235,7 +235,7 @@ If no changes, return empty arrays. Only flag meaningful integration additions, 
 
 ### Agent 6: Linkt Credit & ICP Collector
 **Task:** Pull Linkt credit usage, list quality metrics, and ICP accuracy from the master sheet.
-**Tools:** Linkt API (curl), gog sheets
+**Tools:** Linkt MCP tools, gog sheets
 **Returns:**
 ```json
 {
@@ -259,8 +259,9 @@ If no changes, return empty arrays. Only flag meaningful integration additions, 
 ```
 **Queries:**
 ```bash
-# Linkt credit usage
-curl -s -X GET "https://api.linkt.ai/v1/run" -H "x-api-key: {API_KEY}" | # filter runs by date range
+# Linkt credit usage — use MCP tools:
+# mcp__linkt__get_runs_v1_run_get (filter by created_after/created_before for date range)
+# mcp__linkt__get_entity_counts_v1_entity_counts_get (entity counts with hide_duplicates: true)
 
 # Master sheet ICP data (Kay + JJ columns)
 gog sheets get "{MASTER_SHEET_ID}" "'Active'!O:U" --json  # Kay Decision, Pass Reason, Call Status, Sentiment

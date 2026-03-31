@@ -42,52 +42,74 @@ Example: "Trade Credit Insurance" is also called "Accounts Receivable Insurance"
 
 ### Step 1: Run Linkt Search (DISCOVERY ONLY)
 
-**NOTE: Linkt subscription is cancelled as of March 31, 2026. Re-subscribe in sprints when needed. When re-subscribing, run a full E2E test first (create ICP → sheets → task → execute → verify results) before burning credits on real searches.**
+**NOTE: Linkt is on Starter plan as of March 31, 2026. Upgrade to Pro in sprints when needed. When upgrading, run a full E2E test first via MCP (create ICP → sheets → task → execute → verify results with hide_duplicates) before burning credits on real searches.**
 
-Linkt is the primary list builder for discovering NEW companies. It finds companies matching the ICP and returns enriched data including owner contact info.
+Linkt is the primary list builder for discovering NEW companies. It finds companies matching the ICP and returns enriched data including owner contact info. **All Linkt operations use MCP tools** (not raw API calls).
 
 **Linkt discovers AND enriches** — companies it finds come back with full contact data. That's fine, that's what a credit buys you. **But do NOT use Linkt credits to enrich companies found through OTHER sources** (free research, associations, referrals, conferences). Those get contact-scraped manually (Step 2b). Linkt credits = discovering companies we don't know about yet.
 
 **Use ALL niche aliases in Linkt searches.** Run separate search tasks per alias if needed. Each alias may surface different companies.
 
-#### Linkt API Flow (All Steps Required — STOP HOOK)
+#### Linkt Integration via MCP (All Steps Required — STOP HOOK)
+
+**Linkt is connected as an MCP server.** Use MCP tools (not raw API calls) for all Linkt operations. The MCP server handles authentication and request formatting.
 
 **Before running any Linkt search, verify ALL of these or the search will silently fail:**
-1. ICP has `entity_targets` array (company + person entries)
-2. Sheets exist for the ICP (company sheet + person sheet created via POST /v1/sheet)
+1. ICP has `entity_targets` array (company + person entries, one marked `root: true`)
+2. Sheets exist for the ICP (company sheet + person sheet)
 3. ICP description includes the target count as text (e.g., "Find 50 independently owned...")
 4. `desired_count` parameter is IGNORED — only the description text matters
 
-**Correct flow:**
+**ICP Naming Convention:** Always name ICPs with the date they are created: `"{Niche} {YYYY-MM-DD}"` (e.g., "IPLC 2026-04-01"). Never use version numbers (v1, v2, v3).
+
+**Correct MCP flow:**
 ```
 # Step 1: Create ICP with entity_targets
-POST /v1/icp
-{
-  "name": "Niche Search",
-  "description": "Find 50 independently owned {criteria}...",
-  "entity_targets": [
-    {"entity_type": "company", "root": true},
-    {"entity_type": "person"}
+mcp__linkt__create_icp_v1_icp_post
+  name: "{Niche} {YYYY-MM-DD}"
+  description: "Find 50 independently owned {criteria}..."
+  entity_targets: [
+    {"entity_type": "company", "description": "{what makes a good target company}", "root": true},
+    {"entity_type": "person", "description": "{decision-maker criteria}", "desired_count": 1}
   ]
-}
 
 # Step 2: Create sheets (REQUIRED before task execution)
-POST /v1/sheet
-{"name": "Niche - Companies", "icp_id": "{icp_id}", "entity_type": "company"}
-POST /v1/sheet
-{"name": "Niche - People", "icp_id": "{icp_id}", "entity_type": "person"}
+mcp__linkt__create_sheet_v1_sheet_post
+  name: "{Niche} - Companies {YYYY-MM-DD}", icp_id: "{icp_id}", entity_type: "company"
+mcp__linkt__create_sheet_v1_sheet_post
+  name: "{Niche} - People {YYYY-MM-DD}", icp_id: "{icp_id}", entity_type: "person"
 
-# Step 3: Create task
-POST /v1/task
-{"icp_id": "{icp_id}", "type": "search"}
+# Step 3: Create search task
+mcp__linkt__create_task_v1_task_post
+  name: "{Niche} Search {YYYY-MM-DD}"
+  flow_name: "search"
+  deployment_name: "search"
+  icp_id: "{icp_id}"
+  task_config: {"type": "search", "desired_contact_count": 1}
 
-# Step 4: Execute (empty JSON body required)
-POST /v1/task/{task_id}/execute
-Content-Type: application/json
-Body: {}
+# Step 4: Execute task
+mcp__linkt__execute_task_v1_task
+  task_id: "{task_id}", icp_id: "{icp_id}"
+
+# Step 5: Monitor run
+mcp__linkt__get_run_v1_run  (check status)
+mcp__linkt__get_run_queue_v1_run  (see processed entities)
+
+# Step 6: Export results (ALWAYS use hide_duplicates)
+mcp__linkt__export_entities_v1_entity_export_get
+  icp_id: ["{icp_id}"], format: "combined", hide_duplicates: true
+# OR list entities:
+mcp__linkt__list_entities_v1_entity_get
+  icp_id: ["{icp_id}"], hide_duplicates: true, page_size: 100
 ```
 
+**Deduplication:** ALWAYS pass `hide_duplicates: true` when listing or exporting entities. Without this flag, Linkt returns multiple entries per company (company entity + person entities + potential duplicates). This was the cause of the Howard & Gay triple-entry issue on 2026-03-30.
+
+**Credit model:** Each entity costs 1 credit. A company + 1 person contact = 2 credits per target. With 15 targets requested, expect ~30 credits per search.
+
 **CRITICAL LESSON:** ICPs created without `entity_targets` will show status "Complete" immediately with 0 results. This is a silent failure — it looks like Linkt ran and found nothing, but it never actually searched. This was the root cause of all failed searches in March 2026.
+
+**Platform bug (2026-03-30):** 4 of 5 ICPs failed because icp_id was null on run documents. If this recurs with MCP, delete the broken ICP + task and recreate from scratch. The MCP server may use a different code path that avoids the bug.
 
 Linkt's AI agents will:
 - Find companies matching the ICP criteria (industry, size, geography, ownership)
@@ -187,12 +209,13 @@ Pass approved, deduped targets to skill/outreach-manager's cold outreach subagen
 ## Principles
 
 ### Linkt Credit Management
-- Pro plan: 300 credits/month ($300/mo) — subscribe in sprints only, cancelled as of March 31 2026
-- 1 credit = 1 entity (company or person)
+- Starter plan as of March 31, 2026 — upgrade to Pro ($300/mo, 300 credits) in sprints when actively running discovery
+- 1 credit = 1 entity (company or person). Each target = ~2 credits (1 company + 1 person contact).
 - Linkt IS the list builder — discovery is what it's for, just keep searches tight and focused
-- Run smaller, focused searches (10-20 entities) rather than large broad ones
+- Run smaller, focused searches (10-15 entities) rather than large broad ones
 - Supplemental free research extends the target pool without burning credits
-- When re-subscribing: run full E2E test (ICP with entity_targets → sheets → task → execute → verify) before real searches
+- When upgrading: run full E2E test via MCP (create ICP → sheets → task → execute → verify results with hide_duplicates) before burning credits on real searches
+- ALWAYS export/list with `hide_duplicates: true` to avoid inflated entity counts
 
 ### Team Roles (for this skill only)
 - **Claude:** Run Linkt, supplement with free research, present list to Kay, dedup against Attio, hand off to outreach-manager

@@ -132,9 +132,11 @@ Kay
 - No em dashes. Periods, commas, line breaks.
 - Lead with curiosity about what they've built, even in Variant B.
 
-### Email Verification (Non-Linkt Targets Only)
+### Email Verification (ALL Targets — NO EXCEPTIONS)
 
-Before drafting, verify email addresses for targets where **Col A (Source) is NOT "Linkt."** Linkt does its own enrichment and verification — skip this step for Linkt-sourced targets.
+**NEVER draft an email to an address that was guessed or constructed from name + domain patterns.** If the email address does not come from a verified source (Linkt enrichment, company website, email signature, LinkedIn profile, direct correspondence), do NOT use it. Guessing email formats (e.g., cjanuski@domain.com from "Chris Januski" + domain) burns Kay's sender reputation and wastes outreach. This rule applies EVERYWHERE — inside outreach-manager, inside pipeline-manager, and in ad-hoc conversation drafting.
+
+Before drafting, verify email addresses. Linkt does its own enrichment — skip Apollo for Linkt-sourced targets. For all other sources:
 
 ```bash
 source .env && curl -s "https://api.apollo.io/v1/people/match" \

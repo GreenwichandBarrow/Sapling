@@ -102,6 +102,14 @@ This applies to ALL relationship actions: thank-yous, follow-ups, check-ins, int
 - Never overwrite `how_introduced` — it's historical
 - `next_action` should be cleared when the action is verified complete
 - `nurture_cadence` can be adjusted based on interaction frequency (upgrade if engaging more, downgrade if going cold)
+
+### Assistant vs Principal Detection (CRITICAL)
+
+When surfacing a contact for outreach, check whether the person is an assistant or the decision-maker:
+- If the contact's role contains "assistant", "admin", "coordinator", "EA", or "office manager" — they are likely an assistant
+- If next_action references a different person's name (e.g., "Reschedule call" but the principal is someone else at the same company) — surface the principal, not the assistant
+- Cross-check: search Attio for other People at the same company. If one is clearly the owner/principal and the other is support staff, the outreach recommendation should name the principal.
+- **Example:** Chase Lacson (assistant) at Goodman Taft has next_action "Reschedule call" — but the email should go to Molly Epstein (principal). Surface as "Molly Epstein (Goodman Taft)" not "Chase Lacson."
 </people_records>
 
 <intro_tracking>

@@ -139,8 +139,11 @@ Motion action steps to review/approve:
 2. {Follow up with person} — {context}
 
 Superhuman email drafts to review/approve:
-1. {Thank you to person} — re: {context}
-2. {Follow up email to person} — re: {topic}
+Reminder to send:
+- {Name} — {one-word context: thank-you / follow-up / reschedule}
+- {Name} — {one-word context}
+Reminder to delete:
+- {Draft description} — orphaned/stale
 
 Other items / today's agenda:
 1. {Today's meetings with times}

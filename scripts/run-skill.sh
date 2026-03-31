@@ -10,6 +10,9 @@ LOG_FILE="$LOG_DIR/${SKILL_NAME}-$(date +%Y-%m-%d-%H%M).log"
 # Source env (launchd doesn't read .zshrc)
 source "$WORKDIR/scripts/.env.launchd"
 
+# Raise file descriptor limit (launchd defaults to 256, Claude needs more)
+ulimit -n 2147483646 2>/dev/null || ulimit -n 65536 2>/dev/null || true
+
 # Ensure log dir exists, rotate old logs (14 days)
 mkdir -p "$LOG_DIR"
 find "$LOG_DIR" -name "*.log" -mtime +14 -delete 2>/dev/null

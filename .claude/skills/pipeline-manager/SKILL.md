@@ -98,38 +98,56 @@ Format: "From your meeting with {name} on {date}: '{action item}'"
 
 ## Output Format
 
-After gathering all data from the 5 sections above, RE-ORGANIZE the output into these 5 consistent sections. This is what Kay sees every morning. Same sections, same order, every day. Items from any data source can land in any section based on what the action is.
+### Briefing vs Slack Routing (CRITICAL)
+
+The morning briefing in conversation must be **brief** — a quick reminder of what needs Kay's yes/no decision. It is NOT where Kay learns about new information that requires deep review.
+
+**Route to Slack (not briefing):**
+- New deals in pipeline (intermediary inbound, new targets discovered)
+- Tracker/list updates that need scrolling or detailed review
+- New intermediaries added to pipeline
+- Attendee lists processed
+- Any item requiring more than 2 lines of context to understand
+
+**Keep in briefing (conversation):**
+- Pipeline stage changes needing yes/no approval (1 line each)
+- Pipeline summary stats (3-4 lines)
+- Quick action items (send email, make call)
+- Today's calendar/agenda items
+- Stale deal flags (kill/advance/keep)
+- Overdue contacts needing a touchpoint
+
+**Rule of thumb:** If Kay needs to read more than a sentence of context to act on it, send it to Slack with a link. The briefing is a checklist, not a report.
+
+### Briefing Format
+
+After gathering all data from the 5 sections above, RE-ORGANIZE the output into these 5 consistent sections. This is what Kay sees every morning. Same sections, same order, every day. Keep each item to 1 line.
 
 ```
 Pipeline shifts to review/approve:
 1. {Company}: {current stage} → {recommended stage} ({signal evidence})
 2. {Contact}: nurture overdue, last contact {date}
-3. ...
 
 Pipeline summary:
-Active Deals: {total} ({n} Identified, {n} Contacted, {n} Financials Received, {n} Active Diligence, {n} Closed)
+Active Deals: {total} ({n} Identified, {n} Contacted, {n} Financials Received, {n} Active Diligence)
 Intermediary: {total} ({n} Actively Receiving, {n} Warmed, {n} Contacted)
 Niches: {n} Active-Diligence, {n} Active-Outreach
 Stale deals: {n} entries in same stage 2+ weeks
 
 Motion action steps to review/approve:
-1. {Action item from Granola/email/signal} — due {date}
+1. {Action item} — due {date}
 2. {Follow up with person} — {context}
-3. ...
 
 Superhuman email drafts to review/approve:
-1. {Thank you to person} — re: {meeting/context}
+1. {Thank you to person} — re: {context}
 2. {Follow up email to person} — re: {topic}
-3. ...
 
 Other items / today's agenda:
-1. {Stale deal to discuss} — kill, advance, or keep watching?
-2. {Niche signal detected} — worth investigating?
-3. {Upcoming meeting prep needed} — brief ready?
-4. {Open question from yesterday} — {context}
+1. {Today's meetings with times}
+2. {Quick flags or reminders}
 ```
 
-Each item numbered. Each has a clear action or question. No informational items without an ask.
+Each item numbered. Each has a clear action or question. No informational items without an ask. No items requiring deep review — those go to Slack.
 
 After Kay reviews all three categories, confirm summary:
 ```

@@ -1,26 +1,30 @@
 ---
 schema_version: 1.1.0
-date: 2026-03-27
+date: 2026-03-30
 type: person
-status: partner
-tags: ["date/2026-03-27", "entity", "person", "person/sarah-rowell", "topic/compliance-training"]
+status: prospect
+company: Ridgeway MH
+role: Searcher
+email: sarah@ridgewaymh.com
+tags: ["date/2026-03-30", "entity", "person", "person/sarah-rowell", "topic/searcher-network"]
 ---
 
 # Sarah Rowell
 
 ## Quick Facts
-- Acquired Kantola (compliance training company) in 2018
-- Grew recurring revenue 5x, improved NRR ~40pp
-- Sold Kantola to Traliant (PSG Equity) in January 2024
-- Kay's WSN (Women's Search Network) mentor
-- Direct access to the exact playbook for compliance training acquisitions
+- Fellow searcher at Ridgeway MH
+- Met via WSN Group Intro call organized by [[entities/adilene-dominguez|Adilene Dominguez]] (Belen Partners), March 30, 2026
+- Monthly WSN group call with Kay, [[entities/megan-lawlor|Megan Lawlor]], [[entities/ali-potomac-view|Ali]], and [[entities/adilene-dominguez|Adilene]]
+- Email: sarah@ridgewaymh.com
 
 ## Communication Style
-- **Tone:** TBD
-- **Format:** TBD
-- **Frequency:** TBD
+- **Tone:** Peer — fellow searcher, collaborative register
+- **Format:** Email or group call
+- **Frequency:** Monthly WSN group call cadence
 
 ## Key Context
-- Referenced in: [[outputs/2026-03-17-niche-intelligence-report]], [[outputs/2026-03-21-niche-intelligence-report]]
-- Key resource for compliance training niche validation and target identification
-- Her Kantola acquisition is the proof case for the compliance training thesis
+- In the WSN Searcher Network; intro came through [[entities/adilene-dominguez|Adilene Dominguez]]'s group call on 2026-03-30
+- Ongoing relationship via monthly call alongside [[entities/megan-lawlor|Megan Lawlor]], [[entities/ali-potomac-view|Ali]], and [[entities/adilene-dominguez|Adilene]]
+
+## Relationship Notes
+- 2026-03-30: Met on WSN Group Intro call organized by [[entities/adilene-dominguez|Adilene Dominguez]]

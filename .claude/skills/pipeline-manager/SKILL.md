@@ -145,12 +145,17 @@ Reminder to send:
 Reminder to delete:
 - {Draft description} — orphaned/stale
 
+On deck for JJ (tomorrow):
+- {Target name} — {action: Day 3 call / follow-up / first outreach}
+
 Other items / today's agenda:
 1. {Today's meetings with times}
 2. {Quick flags or reminders}
 ```
 
 Each item numbered. Each has a clear action or question. No informational items without an ask. No items requiring deep review — those go to Slack.
+
+**JJ "On Deck" timing rule:** Only show JJ items the day BEFORE they are due. Not earlier. Example: if Freedman Risk follow-up is due Thursday April 2, it appears in Wednesday April 1's briefing — not before. This prevents noise and keeps Kay focused on what's actionable today/tomorrow only.
 
 After Kay reviews all three categories, confirm summary:
 ```

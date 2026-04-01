@@ -461,3 +461,12 @@ No tabled niches should resurface based on this cycle's new data. Specific notes
 - **Cybersecurity Compliance (#18)** — 400+ PE deals/year is a strong negative signal for G&B entry timing. Recommend downgrading from LIVE to TABLED with note: "PE competition too intense at current entry point."
 
 ---
+
+## [niche-intel-onepager-env] — 2026-03-31T16:45:00-04:00
+**Niche:** Environmental Compliance Consulting
+**Status:** complete
+**Folder ID:** 1I0m81lQRsCta7DJN-AK4zvl55vM_UnGA
+**File:** uploaded (environmental-compliance-consulting-onepager.pptx)
+**Key research findings:** $27.4B US market, 53,973 firms (highly fragmented), 5.9% CAGR. EBITDA margins 17-43% on live listings. PFAS regulations expanding rapidly (206 compounds on TRI, new RCRA designations April 2026). PE exit validated: Montrose (NYSE: MEG, 20+ acquisitions), Morgan Stanley/Apex, Tetra Tech (27 acquisitions), Pace Analytical (18 acquisitions). Platform deals at 8-12x EBITDA, PE add-on volume up 23.3% YoY. Risk factors: regulatory rollback attempts under current admin, PE competition at historic highs, talent scarcity. Three live Rejigg listings at $2.8M-$8.1M confirm deal flow at G&B target size.
+
+---

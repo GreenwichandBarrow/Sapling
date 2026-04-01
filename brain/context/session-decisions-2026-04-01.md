@@ -14,7 +14,7 @@ last_updated: 2026-04-01T18:30:00Z
 - PASS: Kevin Hong / Caprae Capital — anti-traditional-search-fund LinkedIn posts, 2% non-negotiable success fee, crosses out Kay's investor Jeff's articles, conflict of interest. Kay cancelled Monday call.
 - PASS: Keeping JJ in current role — JJ isn't working, missed team call, 2 months for 50 bad companies, Kay doesn't have time to train
 - APPROVE: DealsX as potential outsourced outreach provider — call with Sam Singh tomorrow Apr 2 at 11am
-- APPROVE: Let JJ go pending DealsX outcome — communicate to Abigail (StartVirtual) after DealsX confirms
+- APPROVE: Let JJ go once DealsX is onboarded and live — no gap in process. Keep JJ running current workflow (follow-up calls on sent emails) until handoff is complete. Communicate to Abigail (StartVirtual) only after DealsX is operational.
 - APPROVE: Cancel Google Voice 2nd line when JJ goes
 - APPROVE: Don't re-subscribe Linkt Pro — use 500 free credits from Reid, then reassess
 - APPROVE: Use Kevin's downloaded playbook materials (scripts, templates, branding bible) to inform our own process
@@ -37,7 +37,7 @@ last_updated: 2026-04-01T18:30:00Z
 ## Deferred
 
 - DEFER: DealsX decision → after tomorrow's call (Apr 2, 11am). Key questions: list building, cold calling, pricing, references, success fee terms
-- DEFER: JJ termination → after DealsX confirms
+- DEFER: JJ termination → after DealsX is onboarded and operational, not just signed. No process gap.
 - DEFER: Google Voice cancellation → same time as JJ
 - DEFER: Adilene Dominguez sourcing bots → ask her about it after Granola transcript reviewed
 - DEFER: UPS mailbox renewal → come back later or tomorrow

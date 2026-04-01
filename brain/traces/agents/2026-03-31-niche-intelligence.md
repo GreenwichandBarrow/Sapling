@@ -368,3 +368,96 @@ This pattern matters because the software version was killed but the SERVICE ver
 This pattern matters because a warm intro to a named expert with Sotheby's connections has been sitting untouched since January. Fine jewelry insurance is a natural extension of the art insurance thesis but with potentially smaller, more acquirable operators. Mark Gardella's Markel fine art intro from today could also connect to this sub-niche.
 
 ---
+
+## [niche-intel-identifier] — 2026-04-01T00:30Z
+**Source:** Niche identification + validation
+**Status:** complete
+
+### New Niches Identified: 2
+
+```
+Niche: Environmental Compliance Consulting
+Thesis: EPA and state environmental regulations mandate ongoing compliance
+(permits, audits, remediation plans, reporting) for any facility with
+emissions, waste, or water discharge. Small independent consultancies
+serve mid-market manufacturers and developers who cannot afford in-house
+environmental staff. 53,000+ firms nationally, highly fragmented, with
+PE roll-ups accelerating — validated by 3 live Rejigg listings showing
+$2.8-8.1M revenue and 17-43% EBITDA margins squarely in buy box.
+
+QUICK SCREEN:
+- Margins: Strong — 17-43% EBITDA on Rejigg listings; industry benchmark 20%+ for established firms
+- Recurring Revenue: High — annual permit renewals, quarterly reporting, ongoing monitoring contracts
+- Industry Growth: Strong — 5.9% CAGR ($49B 2026 → $66B 2031), driven by EPA enforcement, PFAS regulation, state-level climate mandates
+
+TARGET TAM:
+- Total firms in market: 53,973 (IBISWorld 2025)
+- Independently owned (potential targets): ~45,000+ (top 5 hold ~50% revenue but are large public cos; vast long tail of small firms)
+- Already PE-backed/acquired: Accelerating — Azuria (New Mountain) made ~20 add-ons, Trinity Consultants active acquirer, PE deal volume up 33% YoY
+- PE consolidation risk: Medium — PE is active but focused on remediation/water infrastructure; pure compliance consulting less consolidated
+- Named examples: (1) ECS Compliance LLC (Denver, stormwater compliance), (2) SWCA Environmental Consultants (employee-owned, 1,000+ staff — comp, not target), (3) 3 unnamed Rejigg listings ($2.8M, $5.4M, $8.1M rev), (4) SCS Engineers (employee-owned — comp), (5) Parametrix (employee-owned — comp). NOTE: Target-level companies are the thousands of 5-30 person firms doing permit compliance for local manufacturers and developers — names require Rejigg/broker engagement.
+
+MARKET TAM:
+- Market size: $27.4B (US, 2026, IBISWorld) / $49B (global, 2026)
+- Growth rate: 5.9% CAGR (2026-2031)
+- Key demand drivers: PFAS regulation ("forever chemicals"), EPA enforcement expansion, state climate mandates, infrastructure spending (IIJA), industrial reshoring
+
+Checked against active niches — not a duplicate of: Insurance Producer License Compliance (#3), Managed Cybersecurity Compliance (#18), or any other tracked niche. Closest adjacency is the compliance infrastructure thesis generally.
+```
+
+```
+Niche: Commercial Property Tax Appeal Services
+Thesis: Every commercial property in the US is assessed annually for
+property taxes; owners routinely overpay. Specialized consulting firms
+protest valuations on contingency (25-40% of savings), creating recurring
+annual engagements with zero client acquisition cost after year one.
+Regulation-driven (mandatory assessments), asset-light (people +
+data), fragmented (hundreds of independent firms per state), and
+validated by active PE roll-up: Ryan LLC acquired 5+ firms in 2024-2026
+including Altus Group's property tax business for CAD $700M.
+
+QUICK SCREEN:
+- Margins: Strong — contingency model with 25-40% of tax savings; low COGS (labor + data access); estimated 20-30% EBITDA for established firms
+- Recurring Revenue: High — properties are reassessed annually; clients re-engage every year; multi-year contracts common for portfolio owners
+- Industry Growth: Moderate — 7.2% CAGR; driven by rising property valuations, reassessment frequency, commercial real estate activity
+
+TARGET TAM:
+- Total firms in market: Hundreds nationally; Texas alone has 10+ independent firms visible in search
+- Independently owned (potential targets): Estimated 200-500+ independent firms nationally (every major metro has 2-5 specialists)
+- Already PE-backed/acquired: Ryan LLC is dominant acquirer (Altus $700M, Hucke & Associates, Meritax, Morrison & Head, Popp Hutcheson, Albano Group — 6+ acquisitions 2022-2026). Skylark PE acquired Tax Advisors Group (Dallas).
+- PE consolidation risk: Medium-High — Ryan is aggressively rolling up, but market is so fragmented that hundreds of independents remain
+- Named examples: (1) Texas Protax (35+ years, Houston), (2) Rainbolt & Co (Houston, boutique), (3) Gill Denson & Company (all 254 TX counties), (4) Novotny & Company (TX-based), (5) O'Connor & Associates (Houston, one of largest independents). Also: Harding & Carbone, BTANO.
+
+MARKET TAM:
+- Market size: $12.6B (global property tax advisory, 2026)
+- Growth rate: 7.2% CAGR
+- Key demand drivers: Rising commercial property valuations, annual reassessment mandates, increased property tax rates post-COVID municipal budgets, complexity of appeals process
+
+Checked against active niches — not a duplicate of: No overlap with any tracked niche. Fits compliance infrastructure thesis (mandatory, boring, recurring).
+```
+
+### Skipped Signals (with reasoning)
+
+**1. IMO/FMO Aggregator — SKIP (already on tracker at #25, scored 2.37)**
+Three independent sources (Jeremy Black, Katie Walker, Mike Horowitz) surfaced this, which is notable signal strength. However, it is already tracked and scored. The unfollowed leads (Jeremy Black's specific company names, Horowitz's 9-niche list) should be routed to target-discovery, not re-identified as a new niche. Recommend: re-engage Jeremy Black for specific IMO names and feed to outreach-manager.
+
+**2. Art Transaction Processing Services — SKIP (too thin, service market undefined)**
+Two independent sources validated the pain point (Chris Wise, Amanda Lo Iacono), and the software version was killed while the service version was never evaluated. However, web research reveals this is not a defined market with acquirable companies. Art escrow is handled by general escrow companies (Escrow.com), law firms (Alderman Law Office), and a handful of boutique operators. There is no industry association, no directory, and no evidence of firms with $2-10M EBITDA doing standalone art transaction processing. Amanda Lo Iacono is building something new, which means this is greenfield/startup territory — wrong for search fund acquisition. **Flagged: Thin Target Pool (<5 identifiable firms). REJECTED per gate rule.** If art advisory (#1 priority) advances, revisit as a potential add-on service line post-acquisition rather than a standalone acquisition niche.
+
+**3. Fine Jewelry Insurance — SKIP (sub-niche overlap, dominated by one carrier)**
+Jewelers Mutual (founded 1913) dominates the space and recently acquired JIBNA (Jewelry Insurance Brokerage of North America). The market is heavily concentrated around one carrier with a 100+ year moat. Independent brokers placing jewelry coverage exist but are generalist specialty insurance brokers, not standalone jewelry insurance firms. This overlaps significantly with Art Insurance Brokerage (#4, already winding down due to structural size mismatch). Jonathan Crystal intro is worth completing for intelligence gathering, but this does not warrant a standalone niche track. **Flagged: Thin Target Pool (<10 standalone firms). Not proceeding to one-pager.**
+
+**4. FDA/Life Sciences Compliance — SKIP (weak right-to-win, crowded)**
+JJ's 85-company list surfaced PRP Compliance, DSP Clinical, CMK Select with 20-40%+ margins. Structural fit to compliance thesis is real. However: (a) Kay has zero network in life sciences/pharma, (b) the space requires deep domain expertise (FDA 510(k), GMP, clinical trials), (c) hundreds of established consultancies already serve this market with no differentiation path for G&B, (d) PE is already active here (ProPharma Group is a roll-up). No river guides, no right-to-win, no competitive advantage. Park unless a warm introduction to the space materializes.
+
+### Tabled Niche Review
+
+No tabled niches should resurface based on this cycle's new data. Specific notes:
+
+- **Art Storage** — No new positive data. Graham's negative signal (1/26) and investor margin concerns remain. Still needs a $2M+ EBITDA deal to be viable. No change.
+- **Commercial Cleaning (backstop)** — Clock is at ~month 13 of 18. No new data to accelerate or de-prioritize. Stays in reserve.
+- **Collection Management** — Deep research (3/30) confirmed market too small (~12 listed contractors). New data this cycle reinforces the kill. Should be formally moved from "LIVE but weak" to KILLED.
+- **Insurance Brokerage (general)** — InsurTech Spring (3/31) added another structural negative. Should be formally KILLED, not just "effectively dead."
+- **Cybersecurity Compliance (#18)** — 400+ PE deals/year is a strong negative signal for G&B entry timing. Recommend downgrading from LIVE to TABLED with note: "PE competition too intense at current entry point."
+
+---

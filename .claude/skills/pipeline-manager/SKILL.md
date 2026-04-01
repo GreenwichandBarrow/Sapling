@@ -249,6 +249,11 @@ Before presenting the briefing, the manager (Claude orchestrator) MUST review al
 3. **Imprecise characterizations** — Compare sub-agent summaries of email actions against the email-scan-results artifact. If the sub-agent says "cancelled" but the artifact says "downgraded", use the artifact's language.
 4. **Stale items without names** — "8 entries stale for 17 days" is useless without company names. Either resolve names or don't present the stat.
 5. **Relationship items already handled** — Cross-check relationship-manager artifact's overdue contacts against Attio `next_action` for trigger-based conditions. Filter out trigger-based contacts before presenting.
+6. **Session decisions from prior day** — Read `brain/context/session-decisions-{previous-workday}.md`. Cross-reference all recommendations against it:
+   - **Suppress** items that were PASS'd or had action confirmed (SENT/CREATED/UPDATED)
+   - **Verify** items that were APPROVE'd but have no action recorded — surface as: "You approved X yesterday — was it completed?"
+   - **Honor deferrals** — DEFER'd with a date → suppress until that date. DEFER'd with a trigger condition → suppress until the trigger is detected in today's signals.
+   - **Carry forward open loops** — items in the Open Loops section should appear in the briefing unless resolved by today's scans.
 
 The manager is the last line of defense. Sub-agents will make errors. The manager catches them so Kay doesn't have to.
 

@@ -243,23 +243,40 @@ Skills run on a schedule via macOS launchd, independent of active sessions:
 When Kay says good morning:
 1. Run email-intelligence (Gmail, Superhuman, Granola scanning → writes email-scan-results artifact)
 2. Run relationship-manager in parallel (nurture cadences, overdue contacts → writes relationship-status artifact)
-3. Run pipeline-manager (reads both artifacts + calendar + vault + Attio → assembles briefing)
-4. jj-operations runs independently (8am launchd → 10am Slack to JJ)
-5. If Friday → run three review skills in parallel (Kay needs results by 10am ET):
+3. Read `brain/context/session-decisions-{previous-workday}.md` — cross-reference all items against today's scan results. Suppress decided items. Surface verification for decisions without confirmed actions. Honor deferrals until trigger date.
+4. Run pipeline-manager (reads all artifacts including session decisions + calendar + vault + Attio → assembles briefing)
+5. jj-operations runs independently (8am launchd → 10am Slack to JJ)
+6. If Friday → run three review skills in parallel (Kay needs results by 10am ET):
    - weekly-tracker (activity data → sheet + vault)
    - health-monitor (system health → dashboard + alerts)
    - calibration-workflow (decision traces → skill improvements)
-6. Read the results and judge what needs to happen
-7. Present the briefing in 5 consistent sections (ascending numbering across all sections):
+7. Read the results and judge what needs to happen
+8. Present the briefing in 5 consistent sections (ascending numbering across all sections):
    - Pipeline shifts to review/approve
    - Pipeline summary
    - Motion action steps to review/approve
    - Superhuman email drafts to review/approve
    - Other items / today's agenda
-8. Based on signals, invoke downstream skills:
+9. Based on signals, invoke downstream skills:
    - Niche status changed to Active-Diligence → target-discovery (customer validation mode, surfaces Thursday)
    - Monday → conference pipeline review (conference-discovery owns decisions)
    - CIM received → deal-evaluation (email-intelligence auto-triggers)
    - Email sent to target → Attio update + JJ call countdown
    - Target approved on sheet → outreach-manager + call log generation
-9. Kay reviews outputs as they arrive
+10. Kay reviews outputs as they arrive
+
+## Evening Workflow
+
+When Kay says good evening:
+1. Review the day's conversation(s) for all decisions, approvals, rejections, actions taken, and deferrals
+2. Write `brain/context/session-decisions-{date}.md` with 4 sections:
+   - **Decisions** — PASS/APPROVE/REJECT on briefing items, contacts, deals, drafts
+   - **Actions Taken** — SENT/CREATED/UPDATED/DELETED confirmations
+   - **Deferred** — items explicitly postponed with trigger date or condition
+   - **Open Loops** — unresolved items carried forward
+3. Present the summary to Kay for review — she may correct or add items
+4. Commit to git
+
+**Litmus test:** "Would tomorrow's briefing present this differently if it knew?" If yes, log it. If no, skip.
+
+**Verb tags:** PASS, APPROVE, REJECT, SENT, CREATED, UPDATED, DELETED, DRAFTED, DEFER — for machine-parseable scanning by the morning engine.

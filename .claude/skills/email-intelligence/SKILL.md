@@ -65,6 +65,12 @@ Check Superhuman MCP for draft status:
 - Which drafts were sent vs still pending
 - Age of unsent drafts (flag if > 48 hours)
 - Cadence triggers from sent drafts
+
+### Session Decision Log Cross-Check
+Before flagging any draft as "stale" or "unsent," check `brain/context/session-decisions-{previous-workday}.md`:
+- If the decision log shows SENT/DRAFTED for a draft, do not flag it as stale
+- If the decision log shows DELETED for a draft, do not surface it at all
+- This prevents re-surfacing items Kay already handled via Superhuman when the MCP is unavailable
 </gmail_scanning>
 
 <deal_flow_classification>

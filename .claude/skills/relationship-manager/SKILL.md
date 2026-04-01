@@ -80,6 +80,12 @@ gog gmail search "from:kay.s@greenwichandbarrow.com to:{contact_email} newer_tha
 - **Outbound email found** → Read the email content to confirm it's a substantive interaction (not just a calendar confirmation). If substantive → Action was taken. Auto-update the contact's last interaction date. Do NOT surface to Kay. Log: "Auto-resolved: {name} — email sent {date}."
 - **No email found** → Surface in the relationship-status artifact.
 
+### Session Decision Log Check
+Also check `brain/context/session-decisions-{previous-workday}.md` for prior decisions on contacts:
+- If Kay PASS'd a contact (e.g., "don't contact X"), do not surface regardless of cadence status
+- If Kay APPROVE'd an action on a contact and it appears in Actions Taken (SENT/DRAFTED), treat as resolved
+- If Kay DEFER'd a contact with a trigger condition, exclude from overdue list until trigger is met
+
 This applies to ALL relationship actions: thank-yous, follow-ups, check-ins, intros owed. The pattern: if the system thinks Kay needs to do something, check if she already did it.
 </action_verification>
 

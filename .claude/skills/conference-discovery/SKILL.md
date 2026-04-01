@@ -433,14 +433,14 @@ Verify:
 - Debrief note exists at `brain/calls/{date}-{conference-slug}.md` with proper schema
 - All wiki-links resolve (no broken links)
 
-### 5. Slack Notification via SVA Channel (only after validation passes)
+### 5. Slack Notification via AI-Operations Channel (only after validation passes)
 
-All conference discovery notifications go to the SVA Slack channel. Use the `SLACK_WEBHOOK_SVA` webhook from `scripts/.env.launchd`.
+All conference discovery notifications go to the AI-Operations Slack channel. Use the `SLACK_WEBHOOK_OPERATIONS` webhook from `scripts/.env.launchd`. (Kay attends conferences, not JJ — SVA is JJ's channel.)
 
 **After discovery run (sheet updates confirmed and written):**
 ```bash
 source scripts/.env.launchd
-curl -s -X POST "$SLACK_WEBHOOK_SVA" \
+curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
   -d '{"text":"Conference Pipeline updated — {n} new conferences added, {n} modified, {n} moved to Skipped.\n\nChanges:\n{bullet summary of what was added/changed}\n\nReview the pipeline:\nhttps://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit"}'
 ```
@@ -448,7 +448,7 @@ curl -s -X POST "$SLACK_WEBHOOK_SVA" \
 **After post-conference processing:**
 ```bash
 source scripts/.env.launchd
-curl -s -X POST "$SLACK_WEBHOOK_SVA" \
+curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
   -d '{"text":"Post-conference processing complete for {conference name}.\n{n} contacts added to Attio. Follow-up drafts in Superhuman.\n\nDebrief: {Google Doc link}\n\nReview the debrief for anything you might have missed.\n\nConference Pipeline:\nhttps://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit"}'
 ```

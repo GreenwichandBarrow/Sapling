@@ -243,3 +243,128 @@ Referenced across multiple calls as Kay's "backstop" at 18 months. Currently at 
 7. **Art Tech / Software** — KILLED per ArtBinder founder: "lots of reluctance to pay," gallery count shrinking, Constellation/Volaris already acquired top 3 players.
 
 ---
+
+## [niche-intel-synthesizer] — 2026-03-31T23:59Z
+**Source:** Cross-source synthesis
+**Status:** complete
+
+### OUTPUT 1: CROSS-SOURCE SIGNAL MATRIX
+
+| Niche/Industry | RECENT Sources | HISTORICAL Sources | Total | Strength |
+|---|---|---|---|---|
+| **Art Advisory** | Web (Frieze, Patti Wong deal), Granola (Gardella/Markel intro), Vault (validation list, 2 referrals), Inbox (Reibel + Tanzilli) | Calls (multiple), Memory (priority #1) | 5.5 | VERY STRONG |
+| **Insurance Back-Office/IMO-FMO** | Inbox (Horowitz 9-niche list) | Calls (Jeremy Black 2/2, Katie Walker 2/20 -- independent sources) | 3 | STRONG |
+| **Compliance Services Roll-Up** | Web (Axiom GRC 5 acqs, ACA Group, PPL UK), Gmail (E&K SaaS NDA) | Calls (Katie Walker compliance mention), Memory (compliance thesis) | 4 | VERY STRONG |
+| **Cybersecurity Compliance** | Web (400+ deals, 42/month, CMMC regs) | Memory (tracker at 2.52) | 2 | STRONG |
+| **Domestic TCI** | Web (market $13B, 11.3% CAGR), Vault (validation list) | Memory (tracker at 2.75) | 2.5 | STRONG |
+| **Art Insurance Brokerage** | Granola (Tobias negative, Gardella positive/Markel intro) | Calls (August pro, Hunter negative, Chris Wise negative) | 3.5 | STRONG (but conflicting) |
+| **Environmental Compliance** | Inbox (3 Rejigg listings, $2.8-8.1M, 17-43% margins) | None found | 1 | MODERATE |
+| **Property Tax Dispute Services** | None | Calls (Katie Walker, deal example) | 1 | MODERATE |
+| **Fine Jewelry Insurance** | None | Calls (Hunter/Crystal intro, August/niche mapping) | 1.5 | MODERATE |
+| **Art Transaction Services (non-software)** | None | Calls (Chris Wise, Amanda Lo Iacono -- independent) | 2 | STRONG |
+| **Collection Management** | Vault (deep research -- market too small, ~12 firms) | None | 1 | WEAK (negative data) |
+| **Estate/Property Mgmt** | Web (Audax PE, ProperXPM roll-ups) | Memory (tracker at 2.88) | 2 | STRONG |
+| **Export TCI** | Inbox (split from domestic) | Memory (brother = river guide) | 1.5 | MODERATE |
+
+### OUTPUT 2: NAMED COMPANY REGISTRY
+
+**Potential Acquisition Targets (independent, in buy box):**
+
+| Company | Niche | Source | Size | CRM/Vault Status | Routing |
+|---|---|---|---|---|---|
+| Winston Art Group | Collection Mgmt / Art Advisory | Vault research | $11M rev, 30 emp | NOT in CRM | NEW_TARGET |
+| IS Partners | Compliance (SOC/ISO/HIPAA) | Web -- acquired by Axiom | ~600 customers, Philly | NOT in CRM | DEAD (acquired) |
+| AssurancePoint | Compliance (SOC/ISO) | Web -- acquired by Axiom | Atlanta | NOT in CRM | DEAD (acquired) |
+| Compliance Resource Partners | RIA Compliance | Web -- acquired by ACA | Colorado | NOT in CRM | DEAD (acquired) |
+| Sertis (MGA) | Insurance/MGA | Granola (Gardella) | ~17 emp, Reno NV | IN_CRM | WARM_INTRO |
+| PRMS (Celia Santana) | Insurance | Historical calls | Unknown | NOT in vault entities | NEW_TARGET |
+| Genser Insurance (David Genser) | Insurance | Historical calls | Unknown | NOT in vault entities | NEW_TARGET |
+| J.W. Allen Co. (Bill Yennie) | Insurance | Historical calls | Unknown | NOT in vault entities | NEW_TARGET |
+| Lackner Group | Insurance | Historical calls | $6.2M rev | NOT in CRM | NEW_TARGET |
+| Patti Wong & Associates | Art Advisory | Web -- acquired | HK-based | NOT in CRM | DEAD (acquired) |
+| 3x Environmental firms (Rejigg) | Environmental Compliance | Inbox | $2.8-8.1M rev | NOT in CRM | NEW_TARGET |
+| PRP Compliance | FDA/Life Sciences | Inbox (JJ list) | Unknown | NOT in CRM | NEW_TARGET |
+| E&K (healthcare compliance SaaS) | Compliance SaaS | Gmail deal | NDA signed | ACTIVE_DEAL | ACTIVE_DEAL |
+
+**Comp/Reference Companies (too large to acquire, PE-owned, or not targets):**
+Gallagher, Hilb Group (Carlyle), Baldwin Group, Axiom GRC (Inflexion PE), Markel (IN_CRM), Integrity Marketing, Akam/Orsid (Audax PE), ProperXPM (TriSpan PE), Alert Logic/LevelBlue
+
+### OUTPUT 3: CONTACT-TO-NICHE MAP
+
+| Contact | Warmth | Niches They Can Help With | What to Ask | Last Contact |
+|---|---|---|---|---|
+| **Mark Gardella** (Sertis CEO) | HOT (met 3/31) | Art Insurance, MGA model, Fine Art practice at Markel | Complete the Markel fine art intro he offered | 3/31/26 |
+| **Jeremy Black** | WARM (call 2/2) | Insurance Back-Office, IMO/FMO | Revisit the 2 insurance leads he surfaced -- names, specifics | 2/2/26 |
+| **Katie Walker** | WARM (call 2/20) | Property Tax Disputes, Compliance Services, Luxury Home Integration | Get the TX property tax deal details, compliance contacts | 2/20/26 |
+| **August Felker** | WARM (call 10/25, 11/25) | Fine Jewelry Insurance, Niche Insurance Mapping | Accept his niche insurance mapping offer (never followed up) | 11/19/25 |
+| **Hunter Hartwell** | WARM (call 1/12) | Fine Jewelry Insurance (Jonathan Crystal intro), Insurance Carve-Outs | Complete Jonathan Crystal intro; explore carve-out strategy | 1/12/26 |
+| **Amanda Lo Iacono** | WARM (call 1/29) | Art Transaction Services/Escrow | Discuss service (not software) opportunity, market sizing | 1/29/26 |
+| **Kate Reibel** (Rauschenberg) | WARM (referral 3/24) | Art Advisory customer validation | On validation call list -- schedule | 3/24/26 |
+| **Dan Tanzilli** | WARM (referral 3/24) | Art Advisory | Independent referral confirming art advisory signal | 3/24/26 |
+| **Mike Horowitz** | COOL (inbox 3/21) | Insurance Back-Office, SIU, Underwriting Support | Deep-dive his 9-niche list for target companies | 3/21/26 |
+| **Jonathan Crystal** | COLD (referred by Hunter, never contacted) | Fine Jewelry Insurance | Sotheby's connections, NY insurance expert | Never contacted |
+| **Jeff Stevens** (Anacapa) | HOT (call 3/25) | Sourcing strategy, Ruby Au intro | Get Ruby Au connection for AI-driven sourcing intel | 3/25/26 |
+
+### OUTPUT 4: LEAD LIFECYCLE TRACKER
+
+| Niche/Strategy | Proposed By | When | Challenged By | When | Reason | Status |
+|---|---|---|---|---|---|---|
+| Art Insurance Brokerage | August Felker | 10/25 | Hunter (1/26), Chris Wise (1/26), Tobias/MarshBerry (3/31) | 1/26-3/31 | High multiples (12-14x), entrenched competitors, structural size mismatch | WINDING DOWN |
+| Art Storage | Phase 5 research | Mid-2025 | Investors (margin/capex), Graham (1/26) | Late 2025-1/26 | 8% blended margins, capital-intensive, long payback | WINDING DOWN |
+| Insurance Brokerage (general) | Kay/thesis | 10/25 | August (QSBS, 11/25), Hunter (no targets, 1/26), Tobias (size, 3/31) | 11/25-3/31 | Multiple sources say "start your own, don't buy one" | EFFECTIVELY DEAD |
+| Collection Management | Vault research | 3/30 | Deep research (3/30) | 3/30 | Market too small (~12 firms), largest is $11M with CM as secondary | LIVE but weak |
+| Cybersecurity Compliance | Tracker | Ongoing | Web research (3/31) | 3/31 | PE competition intense (400+ deals/yr), may be too late for G&B entry | LIVE but risky |
+| Concierge Medicine | Tracker | Prior | 3 searchers + lead investor | 3/26 | Searcher competition + investor veto | KILLED |
+| Women's Health | Phase 2 | Jan-Jun 2024 | Research | Mid-2024 | Targets are VC startups, not established businesses | KILLED |
+| Art Tech/Software | Exploration | 2024-25 | ArtBinder founder | Late 2025 | Reluctance to pay, market ceiling, Constellation already rolled up | KILLED |
+| Insurance Carve-Outs | Hunter Hartwell | 1/12/26 | Guillermo (no carve-outs) | Prior | "Too tricky" per Guillermo | KILLED per memory |
+| Fine Art Escrow Software | Chris Wise/Amanda | 1/22-1/29/26 | Tracker kill | Prior | Software killed, but SERVICE opportunity never evaluated | PARTIALLY DEAD |
+
+### OUTPUT 5: CONVERGENCE REPORT -- TOP 5 NEW SIGNALS
+
+**1. Environmental Compliance Services (NEW -- not on tracker)**
+- Sources: 1 (Rejigg listings with financials)
+- Companies: 3 named with $2.8-8.1M revenue, 17-43% margins
+- Contacts: None warm, but Katie Walker may know adjacent operators
+- Buy box fit: Regulation-driven (EPA/state mandated), recurring (annual compliance cycles), asset-light, B2B, fragmented
+- Actionability: Rejigg listings are live -- can engage brokers this week
+
+This pattern matters because it is the first niche with multiple LIVE LISTINGS showing real financials in the buy box. Every other active niche has zero companies currently for sale. The margins (17-43%) and regulatory mandate check every box. The only gap is right-to-win -- no network contacts yet.
+
+**2. Property Tax Dispute Services (NEW -- not on tracker)**
+- Sources: 1 (Katie Walker, with concrete deal example from Texas)
+- Companies: 0 named, but every commercial property market has specialists
+- Contacts: Katie Walker (WARM) has deal data
+- Buy box fit: Regulation-driven (annual tax assessments), recurring, asset-light, B2B, massive fragmented market
+- Actionability: One call to Katie Walker to get details, then web research to size it
+
+This pattern matters because it shares the exact DNA of Kay's compliance infrastructure thesis -- mandatory, boring, recurring, regulation-driven -- but targets an enormous addressable market (every commercial property) with no PE competition signal. Katie Walker already has a deal example, which means targets exist and trade.
+
+**3. Insurance Back-Office + IMO/FMO Aggregator (on tracker but unfollowed leads)**
+- Sources: 3 independent (Jeremy Black, Katie Walker, Mike Horowitz)
+- Companies: 500+ independent IMOs nationally, specific leads from Jeremy
+- Contacts: Jeremy Black (WARM), Mike Horowitz (COOL), Katie Walker (WARM)
+- Buy box fit: Asset-light, recurring override commissions, fragmented, distribution layer
+- Actionability: Re-engage Jeremy Black for specific company names this week
+
+This pattern matters because THREE independent sources surfaced insurance infrastructure services without being prompted, and Kay never followed up on any of them. IMO/FMO is a pure aggregator play (override commissions, carrier access, agent services) with 500+ independents nationally. It solves the insurance brokerage size-mismatch problem because IMOs are the layer BELOW the brokerages Tobias said are too expensive.
+
+**4. Art Transaction Processing Services (TABLED adjacent -- software killed, service never evaluated)**
+- Sources: 2 independent (Chris Wise, Amanda Lo Iacono)
+- Companies: Amanda is literally building one; market is underserved per both sources
+- Contacts: Amanda Lo Iacono (WARM), Chris Wise (via referral chain)
+- Buy box fit: B2B, recurring (transaction-based), KYC/compliance-driven, asset-light
+- Actionability: One call to Amanda to assess service vs software viability
+
+This pattern matters because the software version was killed but the SERVICE version (outsourced KYC, wire processing, reporting for art transactions) was never formally evaluated. Two independent sources validated the pain point. With art advisory as priority #1, this could be a natural adjacency -- art advisors need transaction processing infrastructure.
+
+**5. Fine Jewelry Insurance (unfollowed lead with named contact)**
+- Sources: 1.5 (Hunter Hartwell + August Felker independently mentioned it)
+- Companies: None named as targets yet, but Jonathan Crystal has Sotheby's network
+- Contacts: Jonathan Crystal (COLD -- intro offered, never completed), Hunter (WARM)
+- Buy box fit: Sub-niche of specialty insurance, recurring premiums, HNW clients, independent operators
+- Actionability: Complete the Jonathan Crystal intro Hunter offered 2+ months ago
+
+This pattern matters because a warm intro to a named expert with Sotheby's connections has been sitting untouched since January. Fine jewelry insurance is a natural extension of the art insurance thesis but with potentially smaller, more acquirable operators. Mark Gardella's Markel fine art intro from today could also connect to this sub-niche.
+
+---

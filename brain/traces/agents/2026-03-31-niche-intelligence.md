@@ -470,3 +470,12 @@ No tabled niches should resurface based on this cycle's new data. Specific notes
 **Key research findings:** $27.4B US market, 53,973 firms (highly fragmented), 5.9% CAGR. EBITDA margins 17-43% on live listings. PFAS regulations expanding rapidly (206 compounds on TRI, new RCRA designations April 2026). PE exit validated: Montrose (NYSE: MEG, 20+ acquisitions), Morgan Stanley/Apex, Tetra Tech (27 acquisitions), Pace Analytical (18 acquisitions). Platform deals at 8-12x EBITDA, PE add-on volume up 23.3% YoY. Risk factors: regulatory rollback attempts under current admin, PE competition at historic highs, talent scarcity. Three live Rejigg listings at $2.8M-$8.1M confirm deal flow at G&B target size.
 
 ---
+
+## [niche-intel-onepager-tax] — 2026-03-31T16:45:00-04:00
+**Niche:** Commercial Property Tax Appeal Services
+**Status:** complete
+**Folder ID:** 1NyONygvGO2LsZfSvQ6HX1LIvyNf-FGlg
+**File:** uploaded (commercial-property-tax-appeal-services-onepager.pptx)
+**Key research findings:** $12.6B US property tax consulting market, 7.2% CAGR. Contingency fee model (25-40% of tax savings) creates inherent recurring revenue via annual reassessment cycles. 200-500+ independent firms nationally, most founder-operated with $1-10M revenue. EBITDA margins estimated 40-60%. Ryan LLC acquired Altus Group for CAD $700M, validating PE exit pathway. Client retention 85-95% due to assessor relationships and local expertise. Key growth drivers: rising CRE valuations, post-COVID reassessment waves, SALT deduction caps. Risks: AI-powered automated valuation models, consolidation by Ryan/Altus, jurisdictional fragmentation. Katie Walker has concrete TX deal example.
+
+---

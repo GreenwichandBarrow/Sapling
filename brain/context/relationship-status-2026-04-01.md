@@ -1,130 +1,157 @@
 ---
 date: 2026-04-01
-scan_timestamp: 2026-04-01T10:00:00Z
+scan_timestamp: 2026-04-01T11:30:00Z
 type: relationship-status
+rerun: true
 contacts_reviewed: 51
 cadence_contacts_total: 51
-trigger_skipped: 5
+trigger_skipped: 7
 dormant_skipped: 0
-overdue_surfaced: 5
-auto_resolved_count: 12
+overdue_surfaced: 4
+auto_resolved_count: 5
 ---
 
-# Relationship Status — 2026-04-01
+# Relationship Status — 2026-04-01 (Updated)
 
-> **Data note:** Gmail and calendar are the only channels this skill can verify. Kay also communicates via text, phone, and in-person. 51 People records reviewed across Monthly (3), Quarterly (20), and Occasionally (28) cadences. 0 Weekly, 0 Dormant. 5 trigger-based contacts excluded (their `next_action` requires a deal condition, not elapsed time).
+> **Data note:** Gmail and calendar are the only channels this skill can verify. Kay also communicates via text, phone, and in-person. 51 People records reviewed across Monthly (3), Quarterly (20), and Occasionally (28) cadences. 0 Weekly, 0 Dormant. 7 trigger-based contacts excluded (next_action contains trigger language). Cross-referenced against session-decisions-2026-04-01.md.
 
 ---
 
-## Overdue Contacts (Top 5)
+## Overdue Contacts (Top 4)
 
-### 1. Carlos Nieto — (In3o)
-- **Cadence:** Quarterly — last contact: 2025-06-17 (288 days ago, **190 days overdue**)
-- **Email in last 14 days:** None found
+### 1. Carlos Nieto (ROS & Asociados) — Occasionally
+- **Last contact:** 2025-06-17 (288 days ago, **75 days overdue** past 7-month threshold)
+- **Gmail last 14d:** No outbound email found
 - **Next action (Attio):** *(empty)*
-- **Suggested action:** Reconnect check-in. It has been 9+ months. A warm "catching up" note. He is a fellow searcher / operator contact. Note: duplicate record exists (carlos@in3o.com / carlosnietov@gmail.com). Recommend merging.
-- **Email:** carlos@in3o.com
+- **Cadence:** Changed from Quarterly to Occasionally on 3/31. Still overdue under Occasionally (213-day threshold).
+- **Status vs yesterday:** Unchanged. No action taken.
+- **Suggested action:** Light reconnect email. 9+ months of silence. "Catching up, hope all is well." No specific ask.
+- **Email:** carlosnietov@gmail.com
+- **Note:** Duplicate Attio records still present (carlos@in3o.com + carlosnietov@gmail.com). Recommend merging.
 
-### 2. Chase Lacson — (Goodman Taft)
-- **Cadence:** Monthly — last contact: 2025-10-28 (155 days ago, **120 days overdue**)
-- **Email in last 14 days:** None found
-- **Next action (Attio):** "Reconnection email sent to Molly 3/30. Awaiting reply." *(Note: this next_action appears misplaced, likely referencing Molly Epstein, not Chase. Chase's original action was "Reschedule call.")*
-- **Suggested action:** Reschedule the call that lapsed. Short note: "Still want to connect, does [date] work?"
-- **Email:** mee_admin@goodmantaft.com
-
-### 3. Kanayo Oweazim — (Chase)
-- **Cadence:** Occasionally — last contact: 2025-05-13 (323 days ago, **110 days overdue**)
-- **Email in last 14 days:** None found
+### 2. Kanayo Oweazim (JPMorgan Chase) — Occasionally
+- **Last contact:** 2025-05-13 (323 days ago, **110 days overdue** past 7-month threshold)
+- **Gmail last 14d:** No outbound email found
 - **Next action (Attio):** *(empty)*
-- **Suggested action:** Light check-in. Nearly a year of silence. A brief "hope things are going well" note or LinkedIn touch. No hard ask.
+- **Status vs yesterday:** Unchanged. No action taken.
+- **Suggested action:** Warm check-in. Nearly a year since last meeting. Brief "hope you're doing well" note or LinkedIn message.
 - **Email:** kanayo.oweazim@chase.com
 
-### 4. Lauren Della Monica — (LPDM Fine Art)
-- **Cadence:** Quarterly — last contact: 2025-10-10 (173 days ago, **75 days overdue**)
-- **Email in last 14 days:** None found
-- **Next action (Attio):** "Maintain quarterly touchpoint."
-- **Suggested action:** Quarterly check-in. She is a fine art world contact. Good hook is Frieze NY season (May) or any art insurance brokerage development.
-- **Email:** lauren@lpdmfineart.com
+### 3. Michael Topol (MGT Insurance) — Quarterly
+- **Last contact:** 2025-12-08 (114 days ago, **16 days overdue** past 98-day threshold)
+- **Gmail last 14d:** No outbound email found
+- **Next action (Attio):** "Quarterly touch-base due (last contact Nov 2025 meeting)."
+- **Relationship type:** Industry Expert (insurance AI startup, former Co-CEO MGT Insurance)
+- **Status vs yesterday:** Was #6 borderline. Promoted to top list after Alexandra Kelly removed (maternity leave trigger).
+- **Suggested action:** Quarterly check-in. Insurance industry intel. Intro'd by Luka Salamunic.
+- **Email:** michael.i.topol@gmail.com / michael@mgtinsurance.com
 
-### 5. Emily Schaffer — (Risk Strategies)
-- **Cadence:** Quarterly — last contact: 2025-11-06 (146 days ago, **48 days overdue**)
-- **Email in last 14 days:** None found
-- **Next action (Attio):** "No follow-up needed at this time."
-- **Relationship type:** Industry Expert (fine art insurance)
-- **Suggested action:** Quarterly check-in. Same firm as Chris Wise. Good opportunity to combine art advisory validation with insurance brokerage intel.
-- **Email:** eschaffer@risk-strategies.com
+### 4. Ashley Emerole (Saunders Street Capital) — Monthly
+- **Last contact:** 2026-02-19 (41 days ago, **6 days overdue** past 35-day threshold)
+- **Gmail last 14d:** No outbound email found
+- **Next action (Attio):** "Reschedule coffee (cancelled Mar 5 due to sick kid). Circle back to set new date."
+- **Relationship type:** Fellow Searcher
+- **Status vs yesterday:** Was borderline, now officially 6 days past Monthly threshold.
+- **Suggested action:** Text or email to reschedule coffee. She cancelled Mar 5 — enough time has passed.
+- **Email:** ashley@saundersstreet.com
+
+---
+
+## Removed from Yesterday's Overdue List
+
+### Alexandra Kelly (UOVO) — Now Trigger-Based
+- **next_action updated:** "On maternity leave. Do not contact until she returns."
+- **Cadence:** Changed from Quarterly to Occasionally on 3/31.
+- **Result:** Trigger-based. Will not surface until she returns from leave.
+
+### Chase Lacson / Molly Epstein (Goodman Taft) — Resolved
+- **Status:** Reconnection email sent to Molly Epstein on 3/31 (confirmed in Gmail: "Follow Up call"). Molly is the principal; Chase is the assistant.
+- **Attio:** Chase's next_action correctly reads "Reconnection email sent to Molly 3/30. Awaiting reply." Molly's last_email_interaction updated to 2026-03-31.
+- **Result:** Active outreach in progress. Awaiting Molly's reply.
+
+### Emily Schaffer (Risk Strategies) — Hold per next_action
+- **Cadence:** Quarterly. Last contact: 2025-11-06 (146 days ago, 48 days overdue by cadence math).
+- **next_action:** "No follow-up needed at this time."
+- **Result:** Explicit hold in next_action. Not surfacing as overdue. However, she is a fine art insurance specialist — relevant for art advisory validation if Kay wants to re-engage.
+
+### Lauren Della Monica (LPDM Fine Art) — No Longer Overdue
+- **Cadence:** Changed from Quarterly to Occasionally on 3/31.
+- **Last contact:** 2025-10-10 (173 days ago). Under Occasionally (213-day threshold), she is **40 days away** from overdue.
+- **next_action:** "Maintain quarterly touchpoint."
+- **Result:** Not overdue under new cadence. But with art advisory as April #1 priority, proactive outreach is strategic. Hook: Frieze NY season (May) or art advisory validation questions.
 
 ---
 
 ## Auto-Resolved (No Action Needed)
 
-| Contact | Cadence | Last Contact | Reason |
-|---------|---------|-------------|--------|
-| Dan Tanzilli | Monthly | 2026-03-26 (6d ago) | Email thread active 3/26. Within monthly window. **But: "Send thank you email" still in next_action. See Pending Intros.** |
-| Ashley Emerole | Monthly | 2026-02-19 (41d ago) | **Borderline overdue (6 days past 35d threshold).** Next_action: "Reschedule coffee (cancelled Mar 5 due to sick kid). Circle back to set new date." No Gmail in 14d. Consider surfacing next run if no action. |
-| Kendall Warson | Quarterly | 2026-03-02 (30d ago) | Next_action: "Thank you sent, introduced to Amanda. No pending action." Within window. |
-| Nikki Higgins | Quarterly | ~2026-03-12 (20d ago) | Within quarterly window. |
-| Austin Yoder | Quarterly | 2026-03-23 (9d ago) | Recent. Within window. |
-| Stanley Rodos | Quarterly | ~2026-03-17 (15d ago) | Within quarterly window. |
-| Christopher Wise | Quarterly | 2026-02-18 (42d ago) | Within quarterly window. |
-| Kyle McGrath | Quarterly | 2026-02-10 (50d ago) | Within quarterly window. |
-| Hunter Hartwell | Quarterly | 2026-01-14 (77d ago) | Within quarterly window (77d < 98d). |
-| Britta Nelson | Quarterly | ~2025-11-25 (127d) | Next_action: "Texted recently (late March 2026)." Trusting Attio over Gmail silence. |
-| Harrison Wells | Occasionally | 2026-03-26 (6d ago) | Very recent. |
-| Will Gallagher | Occasionally | 2025-12-12 (110d ago) | Next_action: "No immediate action. See regularly at shared office." Office presence = recent contact. |
-| Molly Epstein | Occasionally | 2026-03-31 (1d ago) | New reconnection email sent 3/30, Molly replied 3/31. Active thread. |
-| Alexandra Kelly | Occasionally | 2025-11-17 (135d ago) | **Cadence changed to Occasionally (was Quarterly).** Next_action: "On maternity leave. Do not contact until she returns." Skip. |
-| Margot Romano | Quarterly | Active email thread | Call booked Friday 2026-04-03 at 9:30am. Very active. |
-| Megan Lawlor | Occasionally | Active | Meeting today 2026-04-01 at 1:30pm. |
+| Contact | Resolution |
+|---------|------------|
+| Rachel Tepper → Zoe intro | **RESOLVED TODAY.** Kay sent intro email April 1 ("Introduction, Rachel and Zoe"). Pending intro cleared. |
+| Molly Epstein (Goodman Taft) | Reconnection email confirmed sent March 31 via Gmail. Awaiting reply. |
+| Chase Lacson (Goodman Taft) | Assistant record. next_action accurately reflects Molly reconnection status. No separate action needed. |
+| Margot Romano (BofA Art Services) | Active. Last email March 30. Call scheduled Friday 4/3 at 9:30am ET. |
+| Dan Tanzilli (Third Eye) | Within Monthly window (6d since 3/26). **BUT:** "Send thank you email" still pending in next_action. See Pending Actions. |
 
-**Trigger-based contacts skipped (5):** Richard Augustyn ("Reach out when insurance deal enters Active Deals pipeline"), Sarah de Blasio ("Contact immediately when fine art insurance brokerage deal surfaces"), Jeremy Black ("send relevant leads when they come up"), Robert DiMartini ("Occasional coffee when schedules align. Don't expect quick email responses"), Lauren Young.
+**Trigger-based contacts skipped (7):** Richard Augustyn, Sarah de Blasio, Rachele Adelman, Jeremy Black, Robert DiMartini, Lauren Young (USV), Alexandra Kelly (maternity leave).
 
 ---
 
-## Pending Intros
+## Pending Actions
 
-### 1. Rachel (Tepper) + Zoe — RESOLVED
-- **Status:** Intro email **sent 2026-03-31** (subject: "Introduction, Rachel and Zoe"). Found in Gmail SENT folder.
-- **Action:** None. Intro completed. Attio `next_action` can be cleared.
+### 1. Dan Tanzilli — Thank You Email Still Pending
+- **Status:** Last email thread 2026-03-26 (6 days ago, within Monthly cadence). Attio `next_action` still reads "Send thank you email." No outbound thank-you from Kay found in Gmail.
+- **Action:** Send thank you to dan@hellothirdeye.com. Short, warm note. Clear next_action after sending.
 
-### 2. Dan Tanzilli — Thank You Email Still Pending
-- **Status:** Last email thread 2026-03-26 (6 days ago, within monthly cadence). But Attio `next_action` still reads "Send thank you email." No outbound thank-you found in last 14d. The thread from 3/26 was FROM Dan, not a thank-you FROM Kay.
-- **Action:** Send thank you to dan@hellothirdeye.com. Short, warm note. Clear the next_action in Attio after sending.
-
-### 3. Ashley Emerole — Coffee Reschedule Pending
-- **Status:** Monthly cadence, last email 2026-02-19 (41 days, 6 days over threshold). Next_action: "Reschedule coffee (cancelled Mar 5 due to sick kid)."
-- **Action:** Short note to ashley@saundersstreet.com to reschedule coffee. Fellow searcher, mutual deal sharing relationship.
-
-### 4. Q4 Investor Update — Still Outstanding
+### 2. Q4 Investor Update — Still Outstanding
 - **Status:** Q4 2025 (ended Feb 7) investor update not yet sent. ~54 days past Q4 close.
-- **Recommendation:** Run `/investor-update` this week. The AI system build is the headline narrative.
+- **Per session decisions 4/1:** DEFER'd to "this week." Run `/investor-update` when ready.
 
 ---
 
 ## Warm Intro Opportunities
 
-### 1. Margot Romano — Friday 4/3 call
-- **Status:** Call booked Friday 2026-04-03 at 9:30am ET.
-- **Context:** Bank of America Art Services. Has produced high-value intros (Emily Schaffer, Sarah de Blasio). Art advisory is the #1 priority for April.
-- **Recommendation:** Use Friday's call to surface any art advisory or art insurance brokerage owner contacts she knows. Also probe on art advisory market structure.
+### 1. Margot Romano — Friday 4/3 Call (Art Advisory Intel)
+- **Call:** Friday April 3 at 9:30am ET (confirmed in Attio calendar).
+- **Context:** Bank of America Art Services. Has produced Emily Schaffer (Risk Strategies) and Sarah de Blasio (Chartwell) intros. Art advisory is #1 priority for April.
+- **Recommendation:** Prep brief needed before Friday. Use call to:
+  - Surface art advisory firm owners she knows
+  - Probe art advisory market structure (reputation dynamics, firm economics)
+  - Ask about art insurance brokerage connections not yet introduced
+  - Mine the 13 diagnostic questions for art advisory validation
 
-### 2. Megan Lawlor — Today's meeting
-- **Status:** Meeting today 2026-04-01 at 1:30pm ET.
-- **Context:** Kevin Hong (Caprea Capital) intro pending from Megan's side. Relevant if JJ eval doesn't go well.
-- **Action:** No prep needed. Wait for natural conversation to progress.
+### 2. Kevin Hong / Caprea Capital — CANCELLED
+- **Per session decisions 4/1:** Kay PASS'd. Anti-search-fund positioning, 2% success fee, conflict with investor Jeff.
 
-### 3. Sarah de Blasio — Timing flag
-- **Cadence:** Quarterly. Last contact: 2026-01-23 (68 days). Not yet overdue (threshold ~98d).
-- **Context:** SHORT LIST contact. Contact immediately when fine art insurance brokerage deal surfaces.
-- **Recommendation:** No action today. Flag for May if no deal surfaces.
+### 3. Sarah de Blasio — Timing Flag (Not Yet Due)
+- **Cadence:** Quarterly. Last contact: 2026-01-23 (68 days). Overdue threshold: ~Apr 22.
+- **Trigger:** "Contact immediately when fine art insurance brokerage deal surfaces."
+- **Action:** No action now. Monitor through April.
 
 ---
 
-## Data Notes
+## Upcoming Cadences This Week (Apr 1-7)
 
-- 51 People records scanned: Monthly (3), Quarterly (20), Occasionally (28). 0 Weekly, 0 Dormant.
-- Chase Lacson's `next_action` appears to have been overwritten with Molly Epstein's reconnection note. Recommend correcting.
-- Carlos Nieto duplicate records still present (carlos@in3o.com + carlosnietov@gmail.com). Recommend merging.
-- Alexandra Kelly cadence changed from Quarterly to Occasionally, next_action updated to maternity leave.
-- Kristina Marcigliano (WTW, Quarterly): last contact 2025-12-23 (99 days, borderline 1 day overdue). No Gmail in 14d. Not surfaced in top 5 but worth monitoring.
-- Ashley Emerole is borderline overdue on Monthly cadence (41d vs 35d threshold). Flagged in Pending Intros for coffee reschedule.
+| Contact | Cadence | Last Contact | Days Since | Overdue Date | Status |
+|---------|---------|-------------|-----------|-------------|--------|
+| Ashley Emerole | Monthly | Feb 19 | 41d | Mar 26 | **6d overdue** — in top 4 |
+| Dan Tanzilli | Monthly | Mar 26 | 6d | Apr 30 | OK (thank-you pending) |
+| Hunter Hartwell | Quarterly | Jan 14 | 77d | Apr 13 | Due in 12 days |
+| Sarah de Blasio | Quarterly | Jan 23 | 68d | Apr 22 | Due in 21 days (trigger-based) |
+| Kyle McGrath | Quarterly | Feb 10 | 50d | May 10 | OK |
+| Christopher Wise | Quarterly | Feb 18 | 42d | May 18 | OK |
+
+---
+
+## Changes Since Yesterday (Mar 31)
+
+1. **Rachel Tepper → Zoe intro: RESOLVED.** Sent today April 1.
+2. **Molly Epstein reconnection: CONFIRMED SENT** March 31 via Gmail. Awaiting reply.
+3. **Alexandra Kelly: REMOVED from overdue.** Trigger-based (maternity leave). Cadence changed to Occasionally.
+4. **Lauren Della Monica: NOT OVERDUE** under new Occasionally cadence. Strategic outreach optional for art advisory.
+5. **Emily Schaffer: ON HOLD** per next_action. Available for art advisory validation if Kay chooses.
+6. **Kevin Hong intro: CANCELLED** per Kay's PASS decision.
+7. **Chase Lacson: Record accurate.** next_action correctly reflects Molly reconnection. No fix needed.
+8. **Michael Topol: PROMOTED** to top 4 (was #6 borderline yesterday).
+9. **No new contacts became overdue** since yesterday.
+
+> **Caveat:** Gmail and calendar are the only verified channels. Text, phone, and in-person interactions may have occurred but are not captured here.

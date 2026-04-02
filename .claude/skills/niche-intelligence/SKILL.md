@@ -434,7 +434,7 @@ After processing, write a lightweight artifact for pipeline-manager to read:
 brain/context/niche-sprint-status-{date}.md
 ```
 
-Contents: list of active niches with their phase (Diligence/Outreach/Wind Down) and any transitions detected. Pipeline-manager reads this for the morning briefing summary line.
+Contents: list of active niches with their phase (Outreach/Wind Down) and any transitions detected. Pipeline-manager reads this for the morning briefing summary line.
 
 ### Nightly Audit Stop Hooks
 
@@ -445,20 +445,16 @@ Contents: list of active niches with their phase (Diligence/Outreach/Wind Down) 
 - Verify target-discovery stopped for this niche
 
 **2. Sort Validation:**
-- Confirm sort order: Active - Outreach > Active - Diligence > Active - Wind Down > Under Review > New > Ideation
+- Confirm sort order: Active - Outreach > Active - Wind Down > Under Review > New > Ideation
 - Confirm no data lost (row count before = row count after)
 
 **3. Target List Template Validation (new Active sprints):**
-- Active - Diligence: customer validation call list exists, NO outreach drafts created, target list sheet created if missing
-- Active - Outreach: customer validation summary exists, target list sheet exists, outreach cadence running
+- Active - Outreach: target list sheet exists, outreach cadence running
 - Verify orange header on Col O (Kay Decision) in target list sheets
 
 **4. Kay Decision Column Validation (all active target lists):**
 - Check for rows where Col O = "Pass" not yet moved to Passed tab → move them
 - Check for rows where Col O = "Approve" not yet in Attio → flag for outreach-manager
-
-**5. Phase Compliance Check:**
-- For each Active - Diligence niche, verify NO cold emails or LinkedIn DMs drafted by outreach-manager. Flag immediately if detected.
 
 </niche_sprint_tracking>
 
@@ -473,6 +469,6 @@ Niche Intelligence run is complete when:
 - [ ] IDEATION tab updated with new niches + scores
 - [ ] High-scoring niches promoted to WEEKLY REVIEW if warranted
 - [ ] User notified that Niche Intelligence is complete
-- [ ] For niches flagged for sprint activation: customer validation call list generated with 5+ targets
+- [ ] For niches flagged for sprint activation: validation contacts page generated with 5+ contacts and key risks
 
 </success_criteria>

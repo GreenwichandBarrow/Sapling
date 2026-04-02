@@ -335,6 +335,17 @@ New niches go straight from Under Review to Active-Outreach when Kay approves. N
 
 Multiple niches can be in different states simultaneously.
 
+### Post-Meeting Niche Status Cleanup Triggers
+
+When Kay changes a niche status during a session (e.g., approves a niche to Active-Outreach, tables or kills a niche), pipeline-manager fires downstream cleanup immediately -- not deferred to the next morning run:
+
+1. **Sort tracker** -- Re-sort the WEEKLY REVIEW tab so active niches are at the top, Tabled/Killed at the bottom
+2. **Move Drive folders** -- Move the niche's folder to the appropriate parent (ACTIVE SPRINTS for Active-Outreach, ARCHIVE for Tabled/Killed)
+3. **Fire downstream skills:**
+   - Active-Outreach approved --> trigger target-discovery for that niche (begins building target list)
+   - Tabled/Killed --> cancel any pending target-discovery runs, stop outreach-manager drafts for that niche
+   - Active-Wind Down --> stop target-discovery, let existing outreach cadences complete
+
 ### JJ Daily Call Prep
 
 JJ call prep, Call Log creation, 10am Slack delivery, and post-shift outcome harvesting are now handled by jj-operations. Pipeline-manager reads JJ call outcomes from the master target sheet for stage change signals (e.g., "Connected + Interested" triggers First Conversation recommendation in the morning briefing).

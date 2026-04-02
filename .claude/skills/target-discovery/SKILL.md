@@ -1,6 +1,6 @@
 ---
 name: target-discovery
-description: "Find acquisition targets via Linkt + web research. Runs daily Mon-Fri during active sprint. Hands approved targets to outreach-manager."
+description: "Find acquisition targets via list-builder (Apollo) + web research. Runs daily Mon-Fri for Active-Outreach niches. Hands approved targets to outreach-manager."
 user_invocable: true
 context_budget:
   skill_md: 2000
@@ -11,14 +11,18 @@ context_budget:
 <objective>
 Find targets. That's it.
 
-This skill discovers acquisition targets via Linkt (primary list builder) and supplemental free research. Kay reviews the list. Approved targets go to skill/outreach-manager for all outreach drafting.
+This skill discovers acquisition targets via skill/list-builder (Apollo, primary) and supplemental free research. Kay reviews the list. Approved targets go to skill/outreach-manager for all outreach drafting.
+
+**Trigger:** Niche status changes to Active-Outreach on the Industry Research Tracker. All Active-Outreach niches run at full 4-6 targets/day.
+
+**Pipeline stages:** Under Review → Active-Outreach → Wind Down → Tabled/Killed
 
 **Inputs from other skills:**
-- **skill/niche-intelligence** — activated niche with one-pager, scorecard, buy-box target validation, ICP criteria, Linkt ICP already created
+- **skill/niche-intelligence** — activated niche with one-pager, scorecard, buy-box target validation, ICP criteria
 - **skill/pipeline-manager** — existing Attio contacts in this niche, intermediary referrals, deals already in pipeline (to avoid duplicates)
 
 **Outputs to other skills:**
-- Approved target list → skill/outreach-manager (cold outreach subagent)
+- Approved target list → skill/list-builder (Apollo search) + skill/outreach-manager (email drafts)
 - Approved target list (Col O = "Approve") → skill/outreach-manager creates Attio entry at "Identified" → skill/pipeline-manager takes over from here
 
 Goal: 4-6 qualified targets per day.

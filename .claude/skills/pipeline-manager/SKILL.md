@@ -129,9 +129,9 @@ Pipeline shifts to review/approve:
 2. {Contact}: nurture overdue, last contact {date}
 
 Pipeline summary:
-Active Deals: {total} ({n} Identified, {n} Contacted, {n} Financials Received, {n} Active Diligence)
+Active Deals: {total} ({n} Identified, {n} Contacted, {n} Financials Received)
 Intermediary: {total} ({n} Actively Receiving, {n} Warmed, {n} Contacted)
-Niches: {n} Active-Diligence, {n} Active-Outreach
+Niches: {n} Active-Outreach, {n} Active-Wind Down
 Stale deals: {n} entries in same stage 2+ weeks
 
 Motion action steps to review/approve:
@@ -322,18 +322,18 @@ Read the active niche sprint's master sheet ("{Niche} - Target List") in LINKT T
 
 ### Niche Sprint Status Tracking
 
-Niche sprints have two active phases tracked on the Industry Research Tracker:
+Niche sprints have 4 active states tracked on the Industry Research Tracker:
 
 | Status | Meaning | Target Discovery Volume | Outreach |
 |--------|---------|------------------------|----------|
-| Active - Diligence | Customer validation in progress. JJ calling customers/experts. | 2-3 targets/day (reduced) | No owner outreach yet |
-| Active - Outreach | Customer validation passed. Full owner outreach active. | 4-6 targets/day (full) | Full cadence (email → JJ call → follow-up → LinkedIn DM) |
+| Under Review | Niche identified, one-pager and scorecard in progress. | None | None |
+| Active-Outreach | Full owner outreach active. | 4-6 targets/day | Full cadence (email → JJ call → follow-up → LinkedIn DM) |
+| Active-Wind Down | Niche winding down, finishing existing pipeline. | No new targets | Complete existing cadences only |
+| Tabled/Killed | Sprint stopped. | None | None |
 
-**Transition trigger:** When JJ completes 5 customer validation calls for a niche in "Active - Diligence" and Kay reviews the findings, Kay decides to either:
-- Promote to "Active - Outreach" → full target discovery and outreach cadence begins
-- Table/Kill the niche → sprint stops, findings logged to vault
+New niches go straight from Under Review to Active-Outreach when Kay approves. No intermediate validation gate. Customer validation happens organically through owner conversations and deal flow, not as a separate phase.
 
-Multiple niches can be in different phases simultaneously. The Linkt credit budget splits accordingly: ~100 credits/month for "Active - Outreach" niches, ~50 credits/month for "Active - Diligence" niches.
+Multiple niches can be in different states simultaneously.
 
 ### JJ Daily Call Prep
 
@@ -730,7 +730,7 @@ These signals are NOT surfaced during the daily pipeline review. They queue sile
 
 ## Active Niche Sprint Detection (runs daily)
 
-Check the Industry Research Tracker WEEKLY REVIEW tab for any niche with status starting with "Active" (either "Active - Diligence" or "Active - Outreach"):
+Check the Industry Research Tracker WEEKLY REVIEW tab for any niche with status starting with "Active" (Active-Outreach or Active-Wind Down):
 
 ```bash
 gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B3:D20" -a kay.s@greenwichandbarrow.com -j
@@ -739,7 +739,7 @@ gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B3:D2
 Niche sprint status tracking (WEEKLY REVIEW monitoring, Active/Tabled/Killed transitions, folder moves, target-discovery triggers, phase compliance checks) is now handled by niche-intelligence. Pipeline-manager reads the niche-sprint-status artifact at `brain/context/niche-sprint-status-{date}.md` for the morning briefing summary line:
 
 ```
-Niches: {n} Active-Diligence, {n} Active-Outreach, {n} Active-Wind Down
+Niches: {n} Active-Outreach, {n} Active-Wind Down, {n} Under Review
 ```
 
 If the artifact is missing (niche-intelligence didn't run overnight), pipeline-manager does a lightweight read of the WEEKLY REVIEW tab column D to count active niches for the summary line only — it does NOT process transitions or move rows.
@@ -891,8 +891,7 @@ curl -s -X POST "$SLACK_WEBHOOK_ACTIVE_DEALS" \
   -d '{"text":"New Active Deal: {Company Name}\nSource: {Cold Outreach / Intermediary / Conference}\nOwner: {Owner Name}\nNDA signed: {date}\nDeal folder: {folder_link}\n\nAnalyst: deal folder created, financials pending."}'
 ```
 This ensures the analyst is looped in the moment a deal becomes real, regardless of how it entered the pipeline.
-| Started modeling/analysis | Financials Received | Active Diligence |
-| LOI drafted/sent | Active Diligence | LOI / Offer Submitted |
+| LOI drafted/sent | Financials Received | LOI / Offer Submitted |
 | LOI signed by both parties | LOI / Offer Submitted | LOI Signed |
 | Deal passed/killed | Any | Closed / Not Proceeding |
 

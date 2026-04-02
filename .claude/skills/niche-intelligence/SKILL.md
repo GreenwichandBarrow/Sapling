@@ -289,153 +289,59 @@ Target validation was moved into the identification step (Step 2) so no niche is
 |------------|------|-------------|
 | `niche-intel-tracker` | general-purpose | Update IDEATION + WEEKLY REVIEW tabs |
 
-### Step 5b: Customer Validation Call List
+### Step 5b: Validation Contacts
 
 | Agent Name | Type | Description |
 |------------|------|-------------|
-| `niche-intel-customer-calls` | general-purpose | Generate customer/expert call list for niche validation |
+| `niche-intel-validation-contacts` | general-purpose | Identify validation contacts and key risk questions for Kay |
 
-**Purpose:** Before owner outreach begins on a new niche, JJ makes 5 customer/expert validation calls. These conversations surface red flags that desk research can't catch (e.g., weak demand, price-driven competition, declining relevance). This step generates the call list.
+**Purpose:** Surface people who could validate a niche's risks and the specific questions worth answering. Kay decides how to use these contacts (her own calls, informal conversations, email, etc.). This is an intelligence deliverable, not a call program.
 
 **When this runs:** Only for niches that pass all 4 initial screen gates AND are candidates for sprint activation (scored 2.5+ on industry scorecard or Kay requests activation).
 
 **The agent:**
 1. Read the niche one-pager, specifically the **Risks** section and **Mission Criticality** section
-2. Generate 5-8 validation questions derived from the one-pager risks. Examples:
-   - If risk says "price competition eroding margins" → "What drives your vendor selection — price, quality, relationships, or something else?"
-   - If risk says "regulation may change" → "How dependent is your need for this service on current regulations?"
-   - If risk says "PE consolidation" → "Have you noticed larger players entering your market? How has that changed the service?"
-   - Always include: "How critical is {service} to your operations?" and "If your current provider disappeared, what would you do?"
-3. Identify 5-10 potential call targets (customers/experts who USE the niche's service):
+2. Extract 3-5 key risks/assumptions from the one-pager that need real-world validation
+3. For each risk, write 1-2 questions that would confirm or contradict it
+4. Identify 5-10 people (customers, operators, experts) who could answer those questions:
    - Search web for companies that are CUSTOMERS of this niche (not competitors)
-   - Include a MIX of company sizes — do NOT only select Fortune 500. Include small/mid-market businesses (50-500 employees) that would realistically be customers of the independent firms we'd acquire
-   - Check industry association member directories for customer-side contacts
-   - Search LinkedIn via WebSearch for titles like "VP Operations", "Procurement Director" at companies in the customer vertical
-   - For each target: Name, Company, Title, Phone (if findable), LinkedIn URL, why they're relevant
-4. Write the call list to Google Drive: `OPERATIONS / CALL LOGS / CLIENT VALIDATION CALLS / {Niche} - Customer Validation Calls`
-   - G&B letterhead (Avenir font, black text, centered logo)
-   - Include: niche name, the 5-8 questions, the 5-10 targets with contact info, call script, call outcome form
-   - Contact formatting — use numbered entries with plain labeled lines (NOT bulleted lists):
-     ```
-     1. Company Name
-     Contact: Name or Department
-     Title: Their title
-     Phone: (xxx) xxx-xxxx
-     LinkedIn: linkedin.com/in/slug or linkedin.com/company/slug
-     Location: City, State
-     Why: One paragraph explanation of why they're a good validation call.
-     ```
-   - Diagnostic questions as a numbered list with "Answer:" field after each
-   - Call Script section with labeled lines for Intro, Gatekeeper, Voicemail
-   - Call Outcome section as a clean form (Call Date, Duration, Status, Sentiment, Next Steps)
-5. Write a vault file: `brain/outputs/{date}-customer-validation-calllist-{niche-slug}.md`
+   - Include a MIX of company sizes (SMBs through enterprise)
+   - Check industry association directories
+   - Search LinkedIn via WebSearch for relevant titles
+   - Cross-reference against Kay's network (vault entities, Attio) for warm connections
+   - For each contact: Name, Company, Title, LinkedIn URL, why they're relevant, relationship warmth (warm intro / cold)
+5. Write a vault file: `brain/outputs/{date}-validation-contacts-{niche-slug}.md`
+
+**Output format (one page max):**
+```
+VALIDATION CONTACTS: {Niche Name}
+Date: {date}
+
+RISKS TO VALIDATE:
+1. {Risk statement} — {Question to ask}
+2. {Risk statement} — {Question to ask}
+3. ...
+
+CONTACTS:
+1. {Name} — {Title}, {Company}
+   LinkedIn: {url}
+   Connection: {warm intro via X / cold}
+   Why: {one line on what they'd validate}
+
+2. ...
+```
+
+**Delivery:** Slack notification to Kay (not JJ) with the vault file link. Kay decides how to pursue validation.
 
 **Output posted to chatroom:**
 ```
-CUSTOMER VALIDATION CALL LIST: {Niche Name}
-Status: Active - Diligence
-Targets: {n} customers/experts identified
-Questions: {n} derived from one-pager risks
-Doc: {google_doc_link}
+VALIDATION CONTACTS: {Niche Name}
+Contacts: {n} identified ({n} warm, {n} cold)
+Risks: {n} to validate
+Vault: brain/outputs/{date}-validation-contacts-{niche-slug}.md
 ```
 
-**Stop hook:** Call list doc exists in Drive AND contains at least 5 targets with at least one contact method each.
-
-**HARD REQUIREMENT — Kay Approval Gate (before JJ receives anything):**
-
-Customer validation call lists MUST be reviewed and approved by Kay before being sent to JJ. This is not optional. There are TWO separate approval gates: doc content and Slack message.
-
-**Gate 1: Doc Content Approval**
-
-1. Claude preps the call list docs (contacts, script, diagnostic questions) in Drive.
-2. Present EACH doc to Kay individually for review:
-   ```
-   CUSTOMER VALIDATION CALL LIST — APPROVAL NEEDED
-
-   Niche: {Niche Name}
-   Targets: {n} customers/experts
-   Questions: {n} validation questions
-   Doc: {google_doc_link}
-
-   Please review the call list and approve before it goes to JJ.
-   ```
-3. Wait for Kay's explicit approval on each list. Do NOT proceed until approved.
-4. If Kay requests changes, update the doc and re-present for approval.
-
-**Gate 2: Slack Message Approval**
-
-5. For EACH approved doc, Claude drafts the Slack message and presents it to Kay for approval before sending.
-6. Only after Kay approves the message draft does Claude send it.
-7. Send ONE Slack message per niche to JJ. Never batch multiple niches into a single message.
-8. Each Slack message must include:
-   - Identify as Claude (never mention Kay by name)
-   - Label as **CLIENT VALIDATION CALL** (not "customer validation")
-   - Link to the call list doc
-   - Link to the niche one-pager for background context
-   - "Any feedback on this process at all along the way is welcome and appreciated"
-   - "Any questions, reply here and I will get them to the right person"
-
-**Example Slack message (draft for Kay's approval):**
-```
-Hi JJ — this is Claude.
-
-CLIENT VALIDATION CALL — {Niche Name}
-
-Here is the call list for customer validation on {Niche Name}:
-{google_doc_link}
-
-For background context on the niche, here is the one-pager:
-{one_pager_link}
-
-Any feedback on this process at all along the way is welcome and appreciated. Any questions, reply here and I will get them to the right person.
-```
-
-**Key rules:**
-- Kay approves BOTH the doc content (Gate 1) AND the Slack message draft (Gate 2) separately
-- One message per niche, never batched
-- Always identify as Claude, never mention Kay by name
-- Always label as CLIENT VALIDATION CALL
-
-This gate exists because JJ acts on these lists immediately. Bad targets or bad questions waste JJ's limited call time and can damage relationships. Kay reviews every list.
-
-**After JJ completes 5 calls — Customer Validation Summary:**
-
-Claude synthesizes JJ's 5 call log docs into a one-page **Customer Validation Summary** saved to `OPERATIONS / CALL LOGS / {Niche} - Customer Validation Summary.docx`:
-
-```
-CUSTOMER VALIDATION: {Niche Name}
-Date: {date}
-Calls Completed: 5 of 5
-
-RISK VALIDATION:
-1. "{Risk from one-pager}"
-   - {n}/5 validated (customer quotes) ✓
-   - {n}/5 contradicted (customer quotes) ✗
-   - {n}/5 mixed
-   → VERDICT: {Low risk / Moderate risk / High risk}
-
-2. "{Next risk}"
-   ...
-
-OVERALL SIGNAL: [Strong / Mixed / Weak]
-- Strong = 4-5 customers converge on the same answers → ready for Kay's decision
-- Mixed = answers split, no clear pattern → recommend 3-5 more calls
-- Weak = 4-5 customers raise concerns → recommend table or kill
-
-KEY QUOTES: {2-3 verbatim quotes that capture the signal}
-
-RECOMMENDATION: [Advance to Active-Outreach / More calls needed / Table]
-```
-
-Also saved to vault: `brain/outputs/{date}-customer-validation-summary-{niche-slug}.md`
-
-**Decision gate:** Kay and analyst review the summary (typically at Wednesday analyst call). Kay decides: advance to Active-Outreach, request more calls, table, or kill. This is NOT an automatic promotion — Kay always decides.
-
-**JJ's call volume during Active-Diligence:**
-- Owner confirmation calls ALWAYS take priority (4-6/day)
-- Customer validation calls fill remaining time (~3-4/day on a typical day)
-- 5 completed customer conversations = ~2 days of JJ time
-- JJ logs each customer call in a Call Log doc ("Customer Validation" variant) with structured answers to each question + overall sentiment
+**Stop hook:** Vault file exists with at least 5 contacts and at least 3 risks to validate.
 
 </sub_agents>
 
@@ -479,21 +385,15 @@ Column D (Current Status) has an **orange header** — this is an agent-trigger 
 ### Detection Logic
 
 1. Read all WEEKLY REVIEW rows
-2. For each row where Status starts with "Active" (matches Active - Diligence, Active - Outreach, Active - Wind Down):
+2. For each row where Status starts with "Active" (matches Active - Outreach, Active - Wind Down):
    - Check LINKT TARGET LISTS folder for a "{Niche} - Target List" sheet
    - If sheet exists with rows dated today → already running, skip
    - If no sheet or no recent rows → trigger target-discovery
 3. Phase-specific behavior:
-   - **Active - Diligence:** Target-discovery at 2-3 targets/day. NO owner outreach. Only JJ customer validation calls.
    - **Active - Outreach:** Target-discovery at full 4-6 targets/day with full outreach cadence.
    - **Active - Wind Down:** Continue existing outreach sequences, no NEW targets.
 
 ### New Active Sprint Detection
-
-**Active - Diligence detected:**
-- Write to niche-sprint-status artifact: "New active sprint: {Niche Name} (Active - Diligence)"
-- Target-discovery runs at reduced pace (2-3/day, Mon-Fri)
-- NO outreach-manager cadence starts
 
 **Active - Outreach detected:**
 - Write to niche-sprint-status artifact: "New active sprint: {Niche Name} (Active - Outreach)"
@@ -518,7 +418,6 @@ When status = "Tabled" or "Killed":
 
 - New — just added from pipeline, pending analyst review
 - Under Review — analyst evaluating
-- Active - Diligence — customer validation in progress, reduced target discovery, no owner outreach
 - Active - Outreach — full target discovery with owner outreach cadence
 - Active - Wind Down — finishing in-flight outreach, no NEW targets but continue existing sequences
 - Ideation — deprioritized, stays on WEEKLY REVIEW but sorted to bottom

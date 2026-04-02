@@ -273,7 +273,7 @@ When Kay says good morning:
   - **Friday:** + weekly-tracker, health-monitor, calibration-workflow (ran or pending)
 - Only expand beyond 1 line if something is broken, blocked, or needs Kay's decision
 9. Based on signals, invoke downstream skills:
-   - Niche status changed to Active-Diligence → target-discovery (customer validation mode, surfaces Thursday)
+   - Niche status changed to Active-Outreach → target-discovery (full 4-6 targets/day) + list-builder (Apollo search) + outreach-manager (email drafts)
    - Monday → conference pipeline review (conference-discovery owns decisions)
    - CIM received → deal-evaluation (email-intelligence auto-triggers)
    - Email sent to target → Attio update + JJ call countdown

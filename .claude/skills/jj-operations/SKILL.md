@@ -90,7 +90,7 @@ For each target, create a Call Log doc from template (ID: `1nvvdOU7I5NLAwxrYgHIF
 
 Draft the Slack message and present to Kay for approval before sending. Use two-gate process: Kay approves content, then approves the message draft.
 
-**Call type labels (CRITICAL):** Every call must be labeled OWNER CALL, CUSTOMER CALL, or CALLBACK. JJ needs this before dialing.
+**Call type labels (CRITICAL):** Every call must be labeled OWNER CALL or CALLBACK. JJ needs this before dialing.
 
 **Slack message format:**
 ```
@@ -101,23 +101,18 @@ OWNER CALL:
    Phone: {phone}
    Call Log: {google_doc_link}
 
-CUSTOMER CALL:
-2. {Contact Name} - {Company} (validating {niche name})
-   Phone: {phone}
-   Call Log: {google_doc_link}
-
 CALLBACK:
-3. {Owner Name} - {Company} (follow-up from {date})
+2. {Owner Name} - {Company} (follow-up from {date})
    Phone: {phone}
    Call Log: {google_doc_link}
 
-Dial target today: {n} ({n} owner + {n} customer validation + {n} callbacks)
+Dial target today: {n} ({n} owner + {n} callbacks)
 ```
 
 **Rules:**
 - Claude identifies as "Claude" in all JJ messages. Never mention Kay by name.
 - Send to #operations-sva channel via SLACK_WEBHOOK_SVA
-- JJ dial target: 8-12 dials/day (owner + customer validation + callbacks)
+- JJ dial target: 8-12 dials/day (owner + callbacks)
 - Add at bottom: "Any feedback on this process at all along the way is welcome and appreciated. Any questions, reply here and I will get them to the right person."
 
 ### 6. Scheduling Protocol
@@ -148,21 +143,6 @@ For each completed call, update the master target sheet:
 If Call Status = "Connected" and sentiment is positive → flag for pipeline-manager's morning briefing, trigger deal-evaluation Phase 1.
 </call_harvest>
 
-<customer_validation_calls>
-## Customer Validation Call Lists
-
-Customer validation calls follow a separate process managed by niche-intelligence (Step 5b). JJ-operations delivers approved lists to JJ via Slack using the two-gate process:
-
-1. Niche-intelligence preps the call list docs
-2. Kay reviews and approves each doc individually
-3. For each approved doc, Claude drafts the Slack message and presents to Kay
-4. Once Kay approves the message, Claude sends ONE Slack message per niche
-5. Each message includes the call list link AND the niche one-pager link
-6. "Any feedback on this process at all along the way is welcome and appreciated"
-
-See niche-intelligence SKILL.md Step 5b for the full customer validation call list process.
-</customer_validation_calls>
-
 <stop_hooks>
 ## Stop Hooks
 
@@ -184,7 +164,7 @@ See niche-intelligence SKILL.md Step 5b for the full customer validation call li
 ## Success Criteria
 
 - [ ] JJ receives call list by 10am ET with all links working
-- [ ] Call types correctly labeled (OWNER/CUSTOMER/CALLBACK)
+- [ ] Call types correctly labeled (OWNER/CALLBACK)
 - [ ] No targets with prior replies included in call list
 - [ ] Call outcomes harvested same day and sheet updated
 - [ ] Interested leads flagged immediately

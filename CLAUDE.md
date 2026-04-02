@@ -259,7 +259,9 @@ When Kay says good morning:
    - System Status (1 bullet per item, no detail unless broken/blocked)
    - Other items / today's agenda
    
-   **Briefing hygiene:** Only surface items that need action or decision. If something is done, resolved, or loop-closed — omit it entirely. The briefing is a to-do list, not a recap.
+   **Briefing hygiene:**
+   - Only surface items that need action or decision. If something is done, resolved, or loop-closed — omit it entirely.
+   - Pipeline summary shows what the *system* completed that morning (skills ran, results). Never report back things Kay did herself — she already knows.
 
 **System Status section rules:**
 - Shows the system's work, not Kay's — scheduled skills, tool health, subscriptions

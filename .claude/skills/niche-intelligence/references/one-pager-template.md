@@ -12,14 +12,21 @@ Row 0 of the table is the niche title. When replacing text, preserve the templat
 ## Sections (in order on the slide)
 
 1. **Title** — Niche name + date
-2. **Assessment / Status** — Quick verdict (Promising / Needs More Research / Concerns)
+2. **Assessment / Status** — Score as `X.XX / 3.0 (XX%)` — no letter grades. Status: Active-Outreach / Active-Diligence / Under Review / Tabled / Killed.
 3. **Industry Overview** — What the industry is, key players, market size
-4. **Industry Thesis** — Why this niche fits G&B's search criteria
+4. **Industry Thesis** — Why the industry structure is attractive for acquisition. This is NOT growth drivers or macro trends (those go in section 5). The thesis is a statement about fragmentation, margins, value chain position, or structural advantage. Do NOT include the score, G&B, or any personal references in the thesis.
 5. **Macro Trends & Growth Drivers | Risks & Concerns** — Split column: tailwinds on left, risks on right
-6. **Economics & Pricing | Competitive Landscape** — Split column: margins/pricing on left, competition on right
+6. **Economics & Pricing | Competitive Landscape** — Split column: margins/pricing on left, competition on right. Include revenue tiers by firm size where data is available.
 7. **Customers | Barriers to Entry** — Split column: who buys on left, moats on right
 8. **Key Success Factors** — What matters for operating in this niche
 9. **Exit** — Who would buy this business (PE firms, strategics, roll-ups)
+
+## One-Pager Rules (CRITICAL)
+- **Scoring format:** Always `X.XX / 3.0 (XX%)` — no letter grades (A, B+, etc.)
+- **No personal names:** Never use "Kay" — use "G&B" if referencing the firm
+- **Thesis ≠ growth drivers:** The thesis explains why the industry STRUCTURE is attractive, not why the market is growing. Growth drivers go in section 5.
+- **No score in thesis:** The thesis section must not reference the scorecard score
+- **No G&B in thesis:** The thesis is about the industry, not about G&B's fit
 
 ## Output Specifications
 - Format: .pptx (PowerPoint)

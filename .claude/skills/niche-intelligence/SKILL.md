@@ -303,13 +303,11 @@ Target validation was moved into the identification step (Step 2) so no niche is
 1. Read the niche one-pager, specifically the **Risks** section and **Mission Criticality** section
 2. Extract 3-5 key risks/assumptions from the one-pager that need real-world validation
 3. For each risk, write 1-2 questions that would confirm or contradict it
-4. Identify 5-10 people (customers, operators, experts) who could answer those questions:
-   - Search web for companies that are CUSTOMERS of this niche (not competitors)
-   - Include a MIX of company sizes (SMBs through enterprise)
-   - Check industry association directories
-   - Search LinkedIn via WebSearch for relevant titles
-   - Cross-reference against Kay's network (vault entities, Attio) for warm connections
-   - For each contact: Name, Company, Title, LinkedIn URL, why they're relevant, relationship warmth (warm intro / cold)
+4. Identify 5-10 people who could answer those questions, **prioritizing Kay's existing network first:**
+   - **Kay's network (PRIMARY):** Search vault entities, Attio contacts, and call history for people connected to this niche. Kay's network spans luxury, art, insurance, finance, and real estate — most niches in the luxury ecosystem will have a warm contact. Tag each as "warm" with the relationship context.
+   - **Investor network (SECONDARY):** Kay's 12 investors are a key resource for niche validation and a natural touchpoint to stay connected. If no warm contacts exist in Kay's direct network, suggest specific investors who may have relevant connections or industry knowledge. Tag as "investor intro."
+   - **External (LAST RESORT):** Only if Kay's network and investors don't cover the niche, identify external experts — industry association leaders, conference speakers, published authors in the space. Tag as "cold."
+   - For each contact: Name, Company, Title, why they're relevant, relationship warmth (warm / investor intro / cold)
 5. Write a vault file: `brain/outputs/{date}-validation-contacts-{niche-slug}.md`
 
 **Output format (one page max):**

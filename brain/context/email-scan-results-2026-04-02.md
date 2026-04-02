@@ -1,7 +1,7 @@
 ---
 date: 2026-04-02
 scan_timestamp: 2026-04-02T09:00:00Z
-scan_revision: 1
+scan_revision: 2
 emails_scanned: 45
 prior_scan: 2026-04-01T18:30:00Z
 ---
@@ -33,7 +33,7 @@ prior_scan: 2026-04-01T18:30:00Z
 
 ## Introductions Detected
 
-- **Rachel/Zoe intro** — Kay sent Mar 31, Zoe replied Apr 1 moving Kay to BCC. Loop closed, no action needed.
+- **Rachel/Zoe intro** — Fully closed. Rachel replied to Zoe proposing 4/10 or 4/13. Kay replied "My pleasure, hope you have a great convo!" No further action.
 
 ## Niche Signals
 
@@ -41,8 +41,10 @@ prior_scan: 2026-04-01T18:30:00Z
 
 ## In-Person Meetings Today
 
-- **DealsX call with Sam Singh** — 11:00-11:30am ET via Zoom. Intel-gathering per yesterday's decisions. Key questions: list building, cold calling, pricing, references, success fee terms.
-- **Tomorrow (Fri 4/3):** Margot Romano — 9:30am (pending reschedule to 10am), West Village, art advisory intel.
+- No meetings today (Apr 2).
+- **Tomorrow (Fri 4/3):**
+  - Margot Romano — 10:00-11:00am ET, TBD West Village, art advisory intel (time confirmed, updated on calendar)
+  - DealsX with Sam Singh — 12:00-12:30pm ET via Zoom (RESCHEDULED from today). Intel-gathering per yesterday's decisions.
 
 ## Tech Stack Confirmations
 

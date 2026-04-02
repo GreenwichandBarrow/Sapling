@@ -251,12 +251,23 @@ When Kay says good morning:
    - health-monitor (system health → dashboard + alerts)
    - calibration-workflow (decision traces → skill improvements)
 7. Read the results and judge what needs to happen
-8. Present the briefing in 5 consistent sections (ascending numbering across all sections):
+8. Present the briefing in 6 consistent sections (ascending numbering across all sections):
    - Pipeline shifts to review/approve
    - Pipeline summary
-   - Motion action steps to review/approve
-   - Superhuman email drafts to review/approve
+   - Action items to review/approve
+   - Carried items (needs Kay's direction)
+   - System Status (1 bullet per item, no detail unless broken/blocked)
    - Other items / today's agenda
+
+**System Status section rules:**
+- Shows the system's work, not Kay's — scheduled skills, tool health, subscriptions
+- Every item is 1 line max: `Skill name — status phrase`
+- Daily items (every morning): email-intelligence, intermediary-manager, jj-operations, relationship-manager, Superhuman CLI health, Apollo/Reply.io status
+- Day-of-week overlays:
+  - **Monday:** + conference-discovery (last scan, flagged events)
+  - **Wednesday:** + niche-intelligence (sprint status, new niches this week)
+  - **Friday:** + weekly-tracker, health-monitor, calibration-workflow (ran or pending)
+- Only expand beyond 1 line if something is broken, blocked, or needs Kay's decision
 9. Based on signals, invoke downstream skills:
    - Niche status changed to Active-Diligence → target-discovery (customer validation mode, surfaces Thursday)
    - Monday → conference pipeline review (conference-discovery owns decisions)

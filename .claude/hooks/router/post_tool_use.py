@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""PostToolUse event router: schema migration, chatroom, calibration."""
+"""PostToolUse event router: secret redaction, schema migration, chatroom, calibration."""
 
 import os
 import sys
@@ -8,11 +8,17 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from router.framework import dispatch
 from router.models import HandlerConfig
+from router.handlers.redact_secrets import redact_bash_secrets
 from router.handlers.schema_migration import schema_update_prompt
 from router.handlers.chatroom import chatroom_state_sync
 from router.handlers.calibration import calibration_stats_updater
 
 HANDLERS = [
+    HandlerConfig(
+        fn=redact_bash_secrets,
+        matcher=r"^Bash$",
+        name="redact-secrets",
+    ),
     HandlerConfig(
         fn=schema_update_prompt,
         matcher=r"Write|Edit",

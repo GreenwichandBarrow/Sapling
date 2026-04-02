@@ -161,6 +161,60 @@ Variant is logged in **Col Z ("Email Approach")** on each niche target sheet as 
 
 **Do not recommend ending the test before 20 sends per variant.** Small samples lie.
 
+### Agent-Kay Alignment (Calibration Dimension)
+
+Measures how well the agent's target recommendations match Kay's decisions. This is the tightest feedback loop in the system — every mismatch is a learning opportunity.
+
+**Data source:** All 5 target list sheets, comparing Col Q (Agent Notes) against Col O (Kay: Decision).
+
+**Sheet IDs:**
+- Art Insurance: `15M76-gpcklwc47HDXIwyFC9Tj8K4wDOor4i0uxCYyHQ`
+- Domestic TCI: `1lEAx-3pEshsSc0Rix4KunJ38mzHahjAmV6nQA_cuwLw`
+- IPLC: `1Cdw6yb8-yBQtx5mTB8Hu4rENkJfpmt3t7HZdGqtdylQ`
+- Art Storage: `1PDprJ_gApm7T_kzpNWlWk7qItQ11M95ssL9_UD5sE9g`
+- Art Advisory: `1c6Db21D2qDpiT7LnEQ4l0AROlA-gucDQD1ZGOlrZ-K0`
+
+**How it works:**
+1. For each sheet, read all rows where Col Q starts with `RECOMMEND:` and Col O is non-empty (Kay has decided)
+2. Parse the recommendation: `RECOMMEND: Approve` or `RECOMMEND: Pass`
+3. Compare against Col O value (`Approve` or `Pass`/blank)
+4. Calculate alignment rate: `(matches / total decided rows) * 100`
+
+**Mismatch analysis — surface these as learning opportunities:**
+
+| Mismatch Type | What It Means | Action |
+|---|---|---|
+| Agent said Approve, Kay said Pass | Agent missed a disqualifying signal Kay caught | Extract Kay's reasoning (if available in Col O notes or session decisions). Update target-discovery ICP or screening rules. |
+| Agent said Pass, Kay said Approve | Agent was too conservative or missed a positive signal | Identify what Kay saw that the agent didn't. Relax the relevant filter or add the signal to the scoring model. |
+
+**Report format (included in weekly calibration output):**
+
+```
+## Agent-Kay Alignment
+
+Overall: {X}% aligned ({matches}/{total} decisions)
+
+By sheet:
+- Art Insurance: {X}% ({n}/{n})
+- Domestic TCI: {X}% ({n}/{n})
+- IPLC: {X}% ({n}/{n})
+- Art Storage: {X}% ({n}/{n})
+- Art Advisory: {X}% ({n}/{n})
+
+Mismatches this week:
+1. {Company} — Agent: {Approve/Pass}, Kay: {Approve/Pass}. Reasoning gap: {what the agent missed}
+2. ...
+
+Trend: {improving / declining / stable} vs last week ({X}% → {Y}%)
+```
+
+**Maturity targets:**
+- 0-70%: System is learning. High-value mismatches, prioritize fixes.
+- 70-85%: Good alignment. Focus on edge cases.
+- 85%+: Strong alignment. Consider graduating Col O gate from Active Review to Spot Check.
+
+The pattern-recognizer agent owns this dimension during calibration runs. It reads the sheets, computes alignment, and proposes specific skill updates to close the gap.
+
 ## Schedule
 
 **Runs:** Every Friday at 10am ET (automated). Processes all unreviewed traces from the week AND the weekly tracker data. Slack notification to #operations with summary and link to full calibration report.

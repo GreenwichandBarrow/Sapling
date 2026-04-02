@@ -251,13 +251,15 @@ When Kay says good morning:
    - health-monitor (system health → dashboard + alerts)
    - calibration-workflow (decision traces → skill improvements)
 7. Read the results and judge what needs to happen
-8. Present the briefing in 6 consistent sections (ascending numbering across all sections):
+8. Present the briefing in 6 consistent sections (ascending numbering across all sections, including pipeline summary):
    - Pipeline shifts to review/approve
-   - Pipeline summary
+   - Pipeline summary (numbered, open items only)
    - Action items to review/approve
    - Carried items (needs Kay's direction)
    - System Status (1 bullet per item, no detail unless broken/blocked)
    - Other items / today's agenda
+   
+   **Briefing hygiene:** Only surface items that need action or decision. If something is done, resolved, or loop-closed — omit it entirely. The briefing is a to-do list, not a recap.
 
 **System Status section rules:**
 - Shows the system's work, not Kay's — scheduled skills, tool health, subscriptions

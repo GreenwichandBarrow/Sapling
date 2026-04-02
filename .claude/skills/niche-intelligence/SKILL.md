@@ -18,7 +18,7 @@ Step 3: ONE-PAGER (parallel)   → pptx deliverables
 Step 4: SCORE (sequential)     → scored niches + final report
 Step 4b: VALIDATE (parallel)   → buy-box target count (gate before promotion)
 Step 5: UPDATE (sequential)    → tracker updated + notification
-Step 5b: CUSTOMER CALL LIST (parallel) → validation call targets for JJ
+Step 5b: VALIDATION CONTACTS (parallel) → key contacts + risk questions for Kay
 ```
 
 ### Chatroom Coordination
@@ -35,7 +35,7 @@ After each step that produces a deliverable, verify before proceeding:
 - **Step 3:** Each niche has a .pptx file created and uploaded to Drive
 - **Step 4:** Output report exists at `brain/outputs/{date}-niche-intelligence-report.md`
 - **Step 5:** Google Sheet updated with new rows
-- **Step 5b:** Customer call list doc created in Drive for any niche flagged for activation
+- **Step 5b:** Validation contacts page created for any niche flagged for activation
 
 If verification fails, log the failure to chatroom and notify user — do NOT proceed to next step.
 

@@ -1,35 +1,37 @@
 ---
 schema_version: 1.1.0
-date: 2026-03-31
+date: 2026-04-02
 type: person
-status: partner
-company: "[[entities/sertis]]"
-role: CEO
-email: mgardella@sertisins.com
-attio_id: f0b2e173-452b-44cf-819d-1d046f82e7d7
-tags: ["date/2026-03-31", "entity", "person", "person/mark-gardella", "company/sertis", "topic/insurance-mga", "topic/fine-art-insurance"]
+status: prospect
+company: "[[entities/zi-advisor]]"
+role: Founder & CEO
+email: Mark.gardella@ziadvisor.com
+tags:
+  - date/2026-04-02
+  - entity
+  - person
+  - person/mark-gardella
+  - company/zi-advisor
+  - topic/insurance
 ---
 
 # Mark Gardella
 
 ## Quick Facts
-- CEO of [[entities/sertis|Sertis (MGA)]], ~17 employees
-- Based in Reno, Nevada (loves the warmth, spent time in London, found it too wet and cold)
-- Met at InsurTech Spring Conference, Chelsea Piers, March 31, 2026
-- Has a friend who built the fine art practice at Markel, has since moved on — offered to intro
+- Founder & CEO of [[entities/zi-advisor|ZI Advisor]]
+- 3rd generation Nevadan
+- LinkedIn bio: Building the Future of Insurance
 
 ## Communication Style
-- **Tone:** Supportive, encouraging, direct
-- **Format:** In-person conference meeting
-- **Frequency:** Follow up on Markel intro, then assess
+- **Tone:** Warm, connector personality
+- **Format:** LinkedIn DMs, in-person at conferences
+- **Frequency:** TBD
 
 ## Key Context
-- MGA operator with deep insurance knowledge
-- His framework for a great MGA: solid careful underwriting, distribution, operational efficiency (AI/systems), capital efficiency
-- Liked Kay's angle, would need to understand how big the market is
-- Liked that Kay is bringing an insurance broker, felt that would resonate with carriers
-- Suggested InsurTech has accelerator-type programs that don't take equity — worth exploring if building from scratch
-- Impressed with Kay's AI building, believes that's what all leaders need to do now
+- Met Kay at InsurTech Spring conference (late March 2026)
+- Wants to make introductions to Kay in the insurance space
+- Proactively reached out via LinkedIn DM on March 31, 2026
 
 ## Relationship Notes
-- 2026-03-31: Met at InsurTech Spring. Offered intro to friend who built fine art practice at Markel. Follow up if no intro by April 7.
+- 2026-03-31: Sent LinkedIn DM saying he enjoyed the conversation and wants to introduce Kay to a few people
+- 2026-04-02: Vault entity created, added to Attio

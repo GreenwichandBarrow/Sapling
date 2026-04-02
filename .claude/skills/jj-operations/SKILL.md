@@ -32,11 +32,30 @@ JJ does NOT touch the master target sheet. He works from Call Log docs and Slack
 
 ### 1. Target Selection
 
-Read the active niche sprint's master sheet ("{Niche} - Target List") in LINKT TARGET LISTS folder. Select targets where:
+Read the active niche sprint's master sheet ("{Niche} - Target List"). Select targets where:
 - Col O (Kay: Decision) = "Approve"
-- Col Y (Outreach Stage) = "Email Sent"
-- Col R (JJ: Call Date) = today
-- Col Q (JJ: Call Status) is empty
+- Col X (Outreach Stage) = "Email Sent"
+- Col R (JJ: Call Status) is empty
+
+**Sheet IDs (all 5 target lists):**
+- Art Insurance: `15M76-gpcklwc47HDXIwyFC9Tj8K4wDOor4i0uxCYyHQ`
+- Domestic TCI: `1lEAx-3pEshsSc0Rix4KunJ38mzHahjAmV6nQA_cuwLw`
+- IPLC: `1Cdw6yb8-yBQtx5mTB8Hu4rENkJfpmt3t7HZdGqtdylQ`
+- Art Storage: `1PDprJ_gApm7T_kzpNWlWk7qItQ11M95ssL9_UD5sE9g`
+- Art Advisory: `1c6Db21D2qDpiT7LnEQ4l0AROlA-gucDQD1ZGOlrZ-K0`
+
+**Master sheet columns (A-X, 24 columns):**
+- A-N: Source through LinkedIn (Company) — list building data
+- O: Kay: Decision (Approve/Pass)
+- P: Kay: Pass Reason
+- Q: Agent Notes (RECOMMEND: Approve/Pass prefix)
+- R: JJ: Call Status
+- S: JJ: Call Date
+- T: JJ: Call Notes
+- U: JJ: Owner Sentiment
+- V: ICP Match
+- W: ICP Miss Reason
+- X: Outreach Stage (trigger column: Approved → Email Drafted → Email Sent → JJ Queued → JJ Called)
 
 ### 2. Reply Check (CRITICAL)
 
@@ -44,7 +63,7 @@ Before adding ANY target to JJ's call list, search Gmail for replies:
 ```bash
 gog gmail search "from:{target_email}" --max 5 --plain
 ```
-- **Reply found** → Remove from call list. Update Col Y to "Reply Received". Flag in pipeline-manager's morning briefing: "{owner} at {company} replied. JJ call canceled."
+- **Reply found** → Remove from call list. Update Col X to "Reply Received". Flag in pipeline-manager's morning briefing: "{owner} at {company} replied. JJ call canceled."
 - **No reply** → Proceed with call assignment.
 
 JJ only calls targets who haven't responded. A call after a reply is redundant and could annoy the owner.
@@ -118,14 +137,15 @@ Read all Call Log docs updated today in OPERATIONS / CALL LOGS:
 ### 2. Update Master Sheet
 
 For each completed call, update the master target sheet:
-- Col Q: JJ: Call Status ← from Call Status field
-- Col R: JJ: Call Date ← from Call Date field
-- Col S: JJ: Call Notes ← summarize detailed notes into one line
-- Col T: JJ: Owner Sentiment ← from Owner Sentiment field
+- Col R: JJ: Call Status ← from Call Status field (Connected/Voicemail/No Answer/Wrong Number)
+- Col S: JJ: Call Date ← from Call Date field
+- Col T: JJ: Call Notes ← summarize detailed notes into one line
+- Col U: JJ: Owner Sentiment ← from Owner Sentiment field
+- Col X: Outreach Stage ← "JJ Called"
 
 ### 3. Flag Interested Targets
 
-If Call Status = "Interested" → flag for pipeline-manager's morning briefing, trigger deal-evaluation Phase 1.
+If Call Status = "Connected" and sentiment is positive → flag for pipeline-manager's morning briefing, trigger deal-evaluation Phase 1.
 </call_harvest>
 
 <customer_validation_calls>
@@ -155,8 +175,8 @@ See niche-intelligence SKILL.md Step 5b for the full customer validation call li
 
 ### Harvest Mode Validation
 - [ ] All updated Call Log docs were read
-- [ ] Master sheet columns Q-T updated for each call
-- [ ] "Interested" targets flagged for pipeline-manager
+- [ ] Master sheet columns R-U updated for each call, Col X set to "JJ Called"
+- [ ] Positive-sentiment targets flagged for pipeline-manager
 - [ ] No duplicate entries in master sheet
 </stop_hooks>
 

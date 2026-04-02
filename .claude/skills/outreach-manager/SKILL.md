@@ -68,12 +68,13 @@ After Day 10 with no response, move to nurture cadence (pipeline-manager handles
 
 When outreach-manager receives approved targets, it writes two new columns on the niche sprint target sheet:
 
-- **Col X: Warm Intro** — "Warm - {connection name}" if a mutual connection is found in Attio, blank if cold. Agent checks Attio People records for the target owner and anyone at their company. A match means Kay knows someone there — route to warm intro path, NOT cold outreach.
-- **Col Y: Outreach Stage** — Tracks where each target is in the sequence: `Email Drafted` → `Email Sent` → `JJ Called` → `Follow-Up Drafted` → `Follow-Up Sent` → `LinkedIn DM` → `Nurture`. Updated as each step completes.
+- **Col Q: Agent Notes** — Agent recommendation for each target. Must start with `RECOMMEND: Approve` or `RECOMMEND: Pass` followed by reasoning (e.g., "RECOMMEND: Approve — strong niche fit, verified email, no PE ownership" or "RECOMMEND: Pass — PE-owned since 2023, skip"). This format enables calibration-workflow to programmatically compare agent recommendations against Kay's decisions in Col O.
+- **Col W: Warm Intro** — "Warm - {connection name}" if a mutual connection is found in Attio, blank if cold. Agent checks Attio People records for the target owner and anyone at their company. A match means Kay knows someone there — route to warm intro path, NOT cold outreach.
+- **Col X: Outreach Stage** — Tracks where each target is in the sequence: `Email Drafted` → `Email Sent` → `JJ Called` → `Follow-Up Drafted` → `Follow-Up Sent` → `LinkedIn DM` → `Nurture`. Updated as each step completes. When creating email drafts for approved targets, set to `Email Drafted`. After confirming email sent, set to `Email Sent`.
 - **Col AA: LinkedIn Connection Degree** — "1st", "2nd - {mutual name}", "3rd", or blank (Unknown). Populated during overnight prep by cross-referencing targets against Kay's imported LinkedIn connections (901 contacts in vault). Kay updates this manually for 2nd degree when she spots mutual connections during her LinkedIn lookup.
 - **Col AB: Kay: LinkedIn DM Status** — Dropdown: `Drafted` → `Sent` → `Responded` → `No Response`. Updated by outreach-manager when draft is created (Drafted), by Kay when she sends (Sent), and by Kay when they reply (Responded). After 10 business days with no response, auto-set to "No Response".
 
-**JJ trigger rule:** JJ's call sheet only includes targets where Col X (Warm Intro) is BLANK. Warm intro targets never go to JJ — Kay handles them personally.
+**JJ trigger rule:** JJ's call sheet only includes targets where Col W (Warm Intro) is BLANK. Warm intro targets never go to JJ — Kay handles them personally.
 
 ### Day 1: Kay's Email
 
@@ -211,7 +212,7 @@ Outreach-manager is the only skill that writes to Attio for targets. **No Attio 
 1. Read the target sheet, find rows where **Col O = "Approve"** that weren't approved in the prior run (new approvals). Col O = "Approve" is the ONLY trigger for Attio entry creation.
 2. For non-Linkt targets, verify email via Apollo API. Only proceed if `verified`.
 3. For each verified approved target, search Attio for the person AND company:
-   - **If found** → someone Kay already knows. Flag as warm intro (Col X), skip cold outreach. This is both the dedup check AND the warm intro check in one step.
+   - **If found** → someone Kay already knows. Flag as warm intro (Col W), skip cold outreach. This is both the dedup check AND the warm intro check in one step.
    - **If not found** → create the company + person in Attio, add company to Active Deals at "Identified" stage. Proceed with cold outreach.
 4. When outreach-manager drafts the Day 1 email → target stays at "Identified" (draft only, not sent yet)
 5. Pipeline-manager detects when Kay sends the email from Superhuman and moves Attio to "Contacted"
@@ -328,7 +329,7 @@ Hi {first name}, I came across {company} while researching {niche} and was impre
 Two scenarios trigger a warm intro flag:
 
 **A. Shared Attio connection found** (during outreach-manager warm intro check):
-1. Write "Warm - {connection name}" in Col X on the target sheet
+1. Write "Warm - {connection name}" in Col W on the target sheet
 2. Slack ping to #operations: "Warm intro available: {target owner} at {company}. You're connected to {connection name}. Cold outreach paused for this target."
 3. Cold outreach is PAUSED for this target — no email drafted, no JJ call scheduled
 4. Kay decides approach case by case (ask for intro, mention connection directly, etc.)
@@ -573,8 +574,8 @@ Missing fields mean JJ can't execute. Fix before proceeding.
 
 ### 3. Warm Intro Validation
 Confirm Attio People records were checked for every target before drafting. For each target:
-- If Col X (Warm Intro) says "Warm - {name}" → verify NO cold email was drafted AND no JJ call was scheduled. Warm intros get a different email template and skip JJ entirely.
-- If Col X is blank → verify cold outreach was drafted normally.
+- If Col W (Warm Intro) says "Warm - {name}" → verify NO cold email was drafted AND no JJ call was scheduled. Warm intros get a different email template and skip JJ entirely.
+- If Col W is blank → verify cold outreach was drafted normally.
 A cold email sent to a warm intro target wastes the relationship advantage and looks impersonal. This is a hard gate.
 
 ### 4. Dedup Validation

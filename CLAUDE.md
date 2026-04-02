@@ -262,7 +262,7 @@ When Kay says good morning:
 **System Status section rules:**
 - Shows the system's work, not Kay's — scheduled skills, tool health, subscriptions
 - Every item is 1 line max: `Skill name — status phrase`
-- Daily items (every morning): email-intelligence, intermediary-manager, jj-operations, relationship-manager, Superhuman CLI health, Apollo/Reply.io status
+- Daily items (every morning): email-intelligence, intermediary-manager, jj-operations, relationship-manager, target-discovery, outreach-manager
 - Day-of-week overlays:
   - **Monday:** + conference-discovery (last scan, flagged events)
   - **Wednesday:** + niche-intelligence (sprint status, new niches this week)

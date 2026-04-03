@@ -69,6 +69,19 @@ Apollo won't find everything. Also search:
 - **Existing intelligence** — Attio pipeline, vault entities, niche one-pagers
 - **Intermediary referrals** — deals forwarded by brokers, CPAs, network contacts
 
+**MINIMUM SEARCH BREADTH (CRITICAL):**
+- Run 10-15+ keyword variations per niche, not just the primary name
+- Pull keyword aliases from the niche one-pager’s "Also Known As" section
+- If the one-pager doesn’t have enough aliases, generate them: synonyms, industry jargon, service descriptions, regional terms
+- Apollo org search is FREE — there is zero cost to running more keyword variations. Run liberally.
+
+**SUPPLEMENTAL SOURCES ARE MANDATORY, NOT OPTIONAL:**
+- If Apollo returns < 10 candidates across all keyword variations, the agent MUST run supplemental sources before stopping
+- Supplemental sources: association directories, web search for "{niche} companies", LinkedIn company search, conference exhibitor lists, state licensing board registries
+- Target: 15-20 candidates discovered, filtered to 4-6 that pass the write gate
+- Log in the briefing: "Apollo returned {n} candidates across {n} keyword searches. Supplemental sources added {n} more."
+- If total candidates (Apollo + supplemental) is still < 10 after exhausting all sources, log it as a niche intelligence signal — the niche may be smaller than estimated
+
 ### Step 2: Enrich Each Target (Inline — Before Writing to Sheet)
 
 For EVERY discovered company, run these enrichment phases in order. This applies to ALL sources — Apollo, web research, associations, referrals. No exceptions.

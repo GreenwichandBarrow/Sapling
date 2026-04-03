@@ -57,6 +57,17 @@ Read the active niche sprint's master sheet ("{Niche} - Target List"). Select ta
 - W: ICP Miss Reason
 - X: Outreach Stage (trigger column: Approved → Email Drafted → Email Sent → JJ Queued → JJ Called)
 
+### Ad-Hoc Call Queue
+
+In addition to niche target sheets, jj-operations reads a "JJ Ad-Hoc Calls" Google Sheet for one-off calls that don't belong to any niche (intermediary follow-ups, conference contacts, warm intro follow-ups, etc.).
+
+**Sheet location:** OPERATIONS folder in Google Drive
+**Columns:** A (Company), B (Contact Name), C (Phone), D (Context/Script Notes), E (Target Call Date), F (Priority: Normal/Urgent), G (Call Status: Pending/Called/Voicemail/Connected/Cancelled), H (Call Date), I (Call Notes), J (Source Link)
+
+**Morning prep reads:** Col G = "Pending" AND Col E <= today
+**Harvest:** jj-operations reads ad-hoc sheet during harvest mode and updates Col G, H, I.
+**Stale check:** If Col E (Target Call Date) is 3+ business days past and Col G is still "Pending", flag in morning briefing.
+
 ### 2. Reply Check (CRITICAL)
 
 Before adding ANY target to JJ's call list, search Gmail for replies:
@@ -105,6 +116,12 @@ CALLBACK:
 2. {Owner Name} - {Company} (follow-up from {date})
    Phone: {phone}
    Call Log: {google_doc_link}
+
+AD-HOC:
+{n}. {Contact Name} - {Company} ({context summary})
+   Phone: {phone}
+   Context: {full context from Col D}
+   Call Log: {link}
 
 Dial target today: {n} ({n} owner + {n} callbacks)
 ```

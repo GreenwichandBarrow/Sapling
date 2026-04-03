@@ -128,6 +128,24 @@ When Kay receives a broker introduction (someone introduces her to a new interme
    - If email-only deal flow → note as email-only intermediary (pipeline-manager handles email scanning)
 4. **Draft response** — Warm reply in Superhuman (thank introducer, express interest to broker, mention search criteria). Per feedback: short, offer NDA, don't over-explain.
 5. **Update this skill** — Add new platform to the scanning list in Channel 1 if applicable
+
+### New Intermediary Surfacing
+
+When the morning scan detects intermediaries at "Identified" stage in Attio, classify and surface them with specific next steps:
+
+1. **Classify type:**
+   - **Platform** (has a website with deal listings, e.g., Gottesman, ProNova) → "Next step: register as buyer on their site"
+   - **Boutique** (small advisory firm, NDA-gated listings, e.g., Paine Pacific) → "Next step: send broker intro email to managing director"
+   - **Association** (industry group, trade org) → "Next step: research membership and deal flow programs"
+
+2. **Surface in morning briefing** with the specific next step:
+   - "New intermediary: {name} — {type} with {detail}. Next step: {action}."
+
+3. **Track registration status:** After Kay registers on a platform or sends a broker email, note it on the intermediary’s Attio record. Watch for deal flow within 4 weeks of registration.
+
+4. **Cold alert:** If registered/contacted but no deal flow after 4 weeks, flag: "{intermediary} — registered {date}, no deal flow in 4 weeks. Still active?"
+
+5. **Removal recommendation:** If the intermediary is in the wrong sector (flagged 2+ consecutive scans), recommend removal from pipeline with reason.
 </channels>
 
 <niche_signals>

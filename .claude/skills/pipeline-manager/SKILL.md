@@ -217,6 +217,10 @@ Relationship management (nurture cadence monitoring, action-already-taken verifi
 7. **Slack notification validation** — confirm the Slack webhook POST returned HTTP 200 OK. If non-200, retry once. If still failing, warn Kay directly in the session summary that Slack notification failed.
 8. **ACTIVE DEALS folder sync** — compare ACTIVE DEALS Drive subfolders against Attio Active Deals entries. Every folder must have a matching Attio entry. Any orphaned folder = missed deal entry. Create Attio entry and flag in morning briefing.
 9. **CIM auto-trigger validation** — for every CIM detected during Gmail ingestion, verify all 4 steps completed: (a) ACTIVE DEALS folder exists with CIM/ subfolder, (b) CIM file uploaded to CIM/ subfolder with size > 0, (c) inbox item written to `brain/inbox/` with `urgency: critical` and `topic/cim-received` tag, (d) deal-evaluation was invoked with `source: intermediary-inbound`. If any step failed, retry once. If still failing, flag in morning briefing: "CIM auto-trigger incomplete for {company} — {which step failed}." A missed CIM is a missed deal.
+10. **Attio-Sheet Reconciliation** — after the morning scan completes, compare Attio Active Deals stages against sheet Col X values for all active targets:
+   - For each Attio entry at "Identified": find matching row in niche sheet. If Col X = "Email Sent" or later → MISMATCH. Auto-advance Attio to "Contacted" and log.
+   - For each Attio entry at "Contacted": if sheet shows Col R = "Connected" + positive sentiment → MISMATCH. Flag for review (potential First Conversation).
+   This reconciliation runs as a safety net — it catches drift that the real-time detection missed.
 
 ### Email Scan Results Validation (post-ingestion)
 After Gmail ingestion completes and `brain/context/email-scan-results-{date}.md` is written, validate:
@@ -302,12 +306,47 @@ The Superhuman Draft Status Check above only catches emails that originated as o
 3. **When a match is found:**
    - Move Attio Active Deals entry from "Identified" → "Contacted"
    - Calculate Day 3 JJ call date (2 business days after sent date) and update JJ's call columns (Col R: Call Date) on the master target sheet
-   - Update Col Y (Outreach Stage) to "Email Sent" on the master target sheet
+   - Update Col X (Outreach Stage) to "Email Sent" and Col Y (1st Email Date) to the sent date
    - Log the signal: record sent date, recipient, and subject in the email-scan-results artifact under Draft Status → Sent
 4. **Deduplication:** Skip any recipient already captured by the Superhuman Draft Status Check above (avoid double-processing outreach-manager drafts that were sent). Use the recipient email as the dedup key.
 5. **Scope:** Only process emails sent to external recipients. Ignore internal emails (to @greenwichandbarrow.com addresses).
 
 This ensures manually-sent outreach emails (not just outreach-manager drafts) trigger the full cadence: Attio stage change → JJ Day 3 call → follow-up at Day 5-6.
+
+
+### Cadence Advancement (runs during morning scan)
+
+Read ALL active niche target sheets. For each row where Col O = "Approve" and Col X is not terminal (not "Cadence Complete", "Reply Received", "Warm Intro"):
+
+1. **Email send detection:** If Col X = "Email Drafted" or "In Sequence" and Col Y (1st Email Date) is empty:
+   → Check Reply.io contact statistics or Gmail for sent email to the target's email address
+   → If delivered: set Col X = "Email Sent", Col Y = sent date, advance Attio from Identified to Contacted
+
+2. **Day 3 JJ call due:** If Col Y has a date and business_days_since(Col Y) >= 2 and Col R is empty:
+   → Flag for jj-operations pickup (Col X = "Email Sent" is the trigger jj-operations reads)
+   → No sheet write needed — jj-operations handles this
+
+3. **Day 5-6 follow-up email due:** If Col Y has a date and business_days_since(Col Y) >= 4 and no reply detected and Col AC (Follow-Up Email Status) is empty:
+   → Reply.io handles this automatically via sequence Step 2
+   → If NOT using Reply.io for this target: draft follow-up email, set Col AC = "Drafted"
+   → Present in briefing: "Follow-up email due for {owner} at {company} (Day 5)"
+
+4. **Reply detected (any stage):** If Reply.io shows "replied" or inbound email from target detected:
+   → Set Col X = "Reply Received"
+   → Pause Reply.io sequence for this contact
+   → Flag in briefing as high-priority pipeline signal
+
+5. **Day 10+ no response:** If Col Y has a date and business_days_since(Col Y) >= 10 and Col X is not "Reply Received":
+   → Set Col X = "Cadence Complete"
+   → Present: "{owner} at {company} — cadence complete, no response. Move to nurture?"
+
+Business day calculation: count weekdays (Mon-Fri) forward from the date, skipping Sat/Sun.
+
+### New Approval Detection
+
+For each row where Col O = "Approve" and Col X is empty (no outreach started):
+→ These are newly approved targets. Trigger outreach-manager to begin the outreach sequence (add to Reply.io sequence).
+→ Present in briefing: "{n} new approvals on {niche} target list. Outreach sequence starting."
 
 ### Conference Decision Scan
 Conference decisions (Col M = "Attend"/"Register Only") are now handled by conference-discovery. Pipeline-manager does not scan the Conference Pipeline sheet.

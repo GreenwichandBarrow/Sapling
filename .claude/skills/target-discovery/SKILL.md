@@ -120,7 +120,7 @@ When discovering targets for the art storage niche, cross-reference every candid
 **No row hits the Active tab until it meets ALL of these:**
 - Col C (Website) — populated and verified (loads a real page, not a redirect to a parent company)
 - Col I (Owner Name) — real person identified, not "Unknown"
-- Col K (Email) OR Col L (Phone) — at least one contact method
+- Col K (Email) OR Col L (Phone) OR Col M (LinkedIn Owner) — at least one contact method. LinkedIn DM is a valid outreach channel.
 - Col M (LinkedIn Owner) — populated with URL, or explicitly "No LinkedIn presence"
 - Col N (LinkedIn Company) — populated with URL, or explicitly "No company page"
 - Col F (Employees) — sourced number or LinkedIn range, never unsourced estimate

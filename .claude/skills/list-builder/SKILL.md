@@ -170,7 +170,7 @@ For Apollo results NOT already on the target sheet.
 **Write gate (hard rule from target-discovery):** No row hits the Active tab without:
 - Col C (Website) — populated
 - Col I (Owner Name) — real person identified
-- Col K (Email) OR Col L (Phone) — at least one contact method
+- Col K (Email) OR Col L (Phone) OR Col M (LinkedIn Owner) — at least one contact method. LinkedIn DM is a valid outreach channel.
 
 If a company can't meet this bar, log it as "could not enrich" in the run summary. Do NOT add it to the sheet.
 

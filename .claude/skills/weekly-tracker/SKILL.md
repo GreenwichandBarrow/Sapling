@@ -43,7 +43,7 @@ Everything else is diagnostic — it shows whether the activity machine is conve
 
 - **Google Sheet:** `OPERATIONS / WEEKLY ACTIVITY TRACKER` (folder ID: `1-TcRl74G0Ezc0lEJC9__BiBPwnG7gwfR`)
   - Sheet ID: `1NGGZY_iq9h8cNzLAXSJ1vTcsfXWNU9oin2RiOMtl9NE`
-  - Tabs: `Weekly Topline`, `Weekly Detail`, `Quarterly Summary`, `Linkt Credit Tracker`
+  - Tabs: `Weekly Topline`, `Weekly Detail`, `Quarterly Summary`, `Apollo Credit Tracker`
   - Weekly snapshots: `OPERATIONS/WEEKLY ACTIVITY TRACKER/WEEKLY SNAPSHOTS/` (Drive)
 - **Vault:** `brain/trackers/weekly/{YYYY-MM-DD}-weekly-tracker.md` (week-ending date)
 

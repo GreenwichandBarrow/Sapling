@@ -23,7 +23,7 @@ This skill receives targets from two upstream skills and runs personalized outre
 - Weekly outreach metrics → skill/weekly-tracker
 
 Three subagents:
-1. **Cold Outreach** — sequenced multi-channel cadence for Linkt-sourced targets
+1. **Cold Outreach** — sequenced multi-channel cadence for Apollo-sourced targets
 2. **Conference Outreach** — pre-conference emails and post-conference follow-ups
 3. **Intermediary Outreach** — relationship-building with association heads, brokers, river guides
 </objective>
@@ -46,7 +46,7 @@ The dedup + warm intro check runs once when targets are received, before any dra
 <cold_outreach>
 ## Subagent 1: Cold Outreach
 
-Handles outreach for targets sourced from skill/target-discovery (Linkt + free sources).
+Handles outreach for targets sourced from skill/target-discovery (Apollo + free sources).
 
 ### Outreach Cadence (Per Target)
 

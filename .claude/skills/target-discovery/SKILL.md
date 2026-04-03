@@ -150,15 +150,11 @@ If the master sheet doesn't exist yet (first run of a new sprint), **COPY the te
 gog drive copy 1wIK4Jv56QIZejcmpq-gGrCWAPe07eJWUbKsWTRwh778 "{Niche} - Target List" -a kay.s@greenwichandbarrow.com --parent 1WfbzezRkD7Kr0FOA76y99x5wV8lwRkVc -j
 ```
 
-**Template columns A-X:**
+**Template columns A-Q:**
 - A-N: Source through LinkedIn (Company) — list building data
 - O: Kay: Decision (Approve/Pass)
 - P: Kay: Pass Reason
 - Q: Agent Notes (MUST start with "RECOMMEND: Approve" or "RECOMMEND: Pass" + reasoning)
-- R-U: JJ columns (Call Status, Call Date, Call Notes, Owner Sentiment)
-- V: ICP Match
-- W: ICP Miss Reason
-- X: Outreach Stage (Approved → Email Drafted → Email Sent → JJ Queued → JJ Called)
 
 When Kay marks a row "Pass" in Col O, move it to the "Passed" tab with all data preserved.
 
@@ -166,15 +162,6 @@ When Kay marks a row "Pass" in Col O, move it to the "Passed" tab with all data 
 1. Strip country code prefix (`+1` or `+1 `)
 2. Reformat to `(XXX) XXX-XXXX`
 3. Write with apostrophe prefix and `--input USER_ENTERED`
-
-### Outreach Stage Flow (Col X — trigger column)
-`Approved` → `Email Drafted` → `Email Sent` → `JJ Queued` → `JJ Called`
-
-Each stage transition triggers the next skill in the pipeline:
-- Kay sets Col O = "Approve" → outreach-manager drafts email, sets Col X = "Email Drafted"
-- Email confirmed sent → Col X = "Email Sent"
-- jj-operations picks up targets where Col X = "Email Sent" → sets Col X = "JJ Queued"
-- JJ completes call → Col X = "JJ Called", JJ columns R-U populated
 
 ### Step 3: Kay Reviews Target List
 Present the combined list (Apollo + supplemental) to Kay. She reviews:

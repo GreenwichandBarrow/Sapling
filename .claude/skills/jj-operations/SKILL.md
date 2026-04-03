@@ -32,9 +32,10 @@ JJ does NOT touch the master target sheet. He works from Call Log docs and Slack
 
 ### 1. Target Selection
 
+**JJ is decoupled from Salesforge cold outreach cadences.** JJ's call list is managed independently by jj-operations, not triggered by email send events. Targets come from Kay's approvals and the ad-hoc queue, not from Col X.
+
 Read the active niche sprint's master sheet ("{Niche} - Target List"). Select targets where:
 - Col O (Kay: Decision) = "Approve"
-- Col X (Outreach Stage) = "Email Sent"
 - Col R (JJ: Call Status) is empty
 
 **Sheet IDs (all 5 target lists):**
@@ -55,7 +56,7 @@ Read the active niche sprint's master sheet ("{Niche} - Target List"). Select ta
 - U: JJ: Owner Sentiment
 - V: ICP Match
 - W: ICP Miss Reason
-- X: Outreach Stage (trigger column: Approved → Email Drafted → Email Sent → JJ Queued → JJ Called)
+- X: Outreach Stage (managed by outreach-manager/Salesforge, not read or written by jj-operations)
 
 ### Ad-Hoc Call Queue
 
@@ -74,7 +75,7 @@ Before adding ANY target to JJ's call list, search Gmail for replies:
 ```bash
 gog gmail search "from:{target_email}" --max 5 --plain
 ```
-- **Reply found** → Remove from call list. Update Col X to "Reply Received". Flag in pipeline-manager's morning briefing: "{owner} at {company} replied. JJ call canceled."
+- **Reply found** → Remove from call list. Flag in pipeline-manager's morning briefing: "{owner} at {company} replied. JJ call canceled."
 - **No reply** → Proceed with call assignment.
 
 JJ only calls targets who haven't responded. A call after a reply is redundant and could annoy the owner.
@@ -153,7 +154,6 @@ For each completed call, update the master target sheet:
 - Col S: JJ: Call Date ← from Call Date field
 - Col T: JJ: Call Notes ← summarize detailed notes into one line
 - Col U: JJ: Owner Sentiment ← from Owner Sentiment field
-- Col X: Outreach Stage ← "JJ Called"
 
 ### 3. Flag Interested Targets
 
@@ -172,7 +172,7 @@ If Call Status = "Connected" and sentiment is positive → flag for pipeline-man
 
 ### Harvest Mode Validation
 - [ ] All updated Call Log docs were read
-- [ ] Master sheet columns R-U updated for each call, Col X set to "JJ Called"
+- [ ] Master sheet columns R-U updated for each call
 - [ ] Positive-sentiment targets flagged for pipeline-manager
 - [ ] No duplicate entries in master sheet
 </stop_hooks>

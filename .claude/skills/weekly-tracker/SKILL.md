@@ -271,20 +271,25 @@ curl -s -X GET "https://api.apollo.io/api/v1/auth/health" \
 gog sheets get "{MASTER_SHEET_ID}" "'Active'!O:U" --json  # Kay Decision, Pass Reason, Call Status, Sentiment
 ```
 ### Agent 6 (extended): LinkedIn DM Collector
-**Additional task for Agent 6:** Pull LinkedIn DM metrics from the active niche sprint target sheet(s).
+**Additional task for Agent 6:** Pull LinkedIn DM metrics from Salesforge MCP for sequenced targets.
+
+LinkedIn DM tracking comes from Salesforge, which automates LinkedIn actions as part of sequences. The target sheet no longer has LinkedIn DM columns (Cols X-AF removed).
 
 **Queries:**
 ```bash
-# Read LinkedIn DM Status column from each active target sheet
-gog sheets get "{SHEET_ID}" "'Active'!AB:AB" --json
+# Use Salesforge MCP to get LinkedIn activity from sequences
+# 1. List sequences that include LinkedIn steps
+mcp__salesforge__list_sequences
+# 2. For each sequence with LinkedIn steps, get contact-level status
+mcp__salesforge__list_contacts  # filter by sequence, check LinkedIn step completion
+# 3. Cross-reference with Gmail scan for any manual LinkedIn DM threads
 ```
 
 **Counts:**
-- LinkedIn DMs Drafted (Col AB = "Drafted")
-- LinkedIn DMs Sent (Col AB = "Sent")
-- LinkedIn DMs Responded (Col AB = "Responded")
-- LinkedIn DMs No Response (Col AB = "No Response")
-- LinkedIn DM Response Rate = Responded / (Sent + No Response)
+- LinkedIn DMs Drafted (Salesforge: contacts enrolled in sequence with pending LinkedIn step)
+- LinkedIn DMs Sent (Salesforge: contacts where LinkedIn step executed)
+- LinkedIn DMs Responded (Salesforge: contacts with LinkedIn reply detected, or Gmail scan for LinkedIn notification emails)
+- LinkedIn DM Response Rate = Responded / Sent
 
 Include in Agent 6 returns:
 ```json

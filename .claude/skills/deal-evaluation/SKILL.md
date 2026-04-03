@@ -209,7 +209,7 @@ The deal doesn't fit, but the broker is in a thesis-relevant space and could sen
 | First contact | Email owner directly | Email intermediary, request intro |
 | Speed | Normal cadence | Same-day/next-morning response |
 | Source tracking | Cold Outreach / Network | Intermediary Referral — {name} |
-| JJ Day 3 call | Yes (if cold) | No (intermediary manages contact) |
+| JJ follow-up call | Separate from email cadence — managed by jj-operations if needed | No (intermediary manages contact) |
 | Decline handling | Standard decline email | Short decline + invite future flow |
 | Information available | Usually minimal | Usually CIM/teaser with financials |
 </intermediary_inbound_pathway>

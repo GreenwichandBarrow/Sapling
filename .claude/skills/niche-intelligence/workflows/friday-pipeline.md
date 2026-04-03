@@ -20,9 +20,9 @@
    - TABLED tab (niches that could resurface with new data)
 3. Store the killed/tabled/active niche lists — these feed into Step 2
 
-## Step 1: GATHER (2 Parallel Tracks)
+## Step 1: GATHER (3 Parallel Tracks)
 
-Spawn BOTH gathering agents in a **single message** for parallel execution.
+Spawn ALL THREE gathering agents in a **single message** for parallel execution.
 
 ### Sub-Agents to Spawn (parallel)
 
@@ -38,6 +38,19 @@ Agent("niche-intel-historical", prompt from references/sub-agents.md §1b)
     hist-onenote (OneNote SEARCH FUND notebook)
     hist-chatgpt (ChatGPT conversations)
   → Collects, cross-references, and posts consolidated report
+
+Agent("niche-intel-pe-trends", general-purpose)
+  → PE trend scan: what industries are PE firms and search funds actively acquiring?
+  → Uses WebSearch for:
+    - "private equity lower middle market acquisition trends {current_year} services businesses"
+    - "PE platform acquisitions fragmented industries roll-up {current_year}"
+    - "search fund acquisitions {current_year} which industries"
+    - "PE acquisitions {niche}" for each Active-Outreach and Under Review niche
+  → Posts to chatroom:
+    - Which industries PE is consolidating (with deal examples)
+    - PE entry signals for niches Kay is watching (move faster or walk away)
+    - New fragmented industries appearing in PE deal flow that match G&B buy box
+    - Overlap alert: if PE saturation is high (>50% PE-driven deal volume), flag it
 ```
 
 Each track posts a structured summary to the chatroom with:
@@ -46,12 +59,14 @@ Each track posts a structured summary to the chatroom with:
 - Specific industries or companies mentioned
 - Any data points useful for scoring (market size, growth rates, margins, etc.)
 - Cross-source signals (same niche from multiple sources = strong signal)
+- PE activity level (from PE trends track): none / early / active / saturated
 
 ### Verification Gate 1
 
-After both agents complete, read the chatroom. Verify:
+After all three agents complete, read the chatroom. Verify:
 - [ ] RECENT agent posted findings
 - [ ] HISTORICAL agent posted consolidated findings (from all 4 sub-agents)
+- [ ] PE TRENDS agent posted industry consolidation signals
 
 If either agent failed, log a warning but continue — Step 1b can work with partial input.
 

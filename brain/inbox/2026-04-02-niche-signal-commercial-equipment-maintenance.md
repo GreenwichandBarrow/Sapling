@@ -15,7 +15,13 @@ SBA 7(a) FOIA data analysis — 132 loans in $500K-$5M range in FY2024-2025, acr
 
 Sub-niches: AED/medical device maintenance, fire suppression inspection, commercial kitchen equipment, industrial scales/calibration, lab equipment, POS/payment terminal servicing, generator maintenance, security systems.
 
-Hard filter: no union trades (elevator, heavy HVAC in NYC, electrical in union states).
+Hard filters:
+- No union trades (elevator, heavy HVAC in NYC, electrical in union states)
+- **Asset-light only.** Target service-only firms where the customer owns the equipment and the company provides recurring inspection/maintenance under contract. Avoid asset-heavy models (laundry machine placement, vending, generator rental) where capital is tied up in owned equipment with depreciation and replacement cycles.
+
+Asset-light sub-niches (prioritize): AED/medical device inspection, fire extinguisher/suppression inspection, calibration services, security system maintenance, POS/payment terminal servicing.
+
+Asset-heavy sub-niches (avoid): commercial laundry placement, vending/ATM, generator rental + maintenance.
 
 Validation: contact who bought a defibrillator maintenance company (mentioned in conversation).
 

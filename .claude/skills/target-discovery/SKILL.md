@@ -164,7 +164,7 @@ Each stage transition triggers the next skill in the pipeline:
 - JJ completes call → Col X = "JJ Called", JJ columns R-U populated
 
 ### Step 3: Kay Reviews Target List
-Present the combined list (Linkt + supplemental) to Kay. She reviews:
+Present the combined list (Apollo + supplemental) to Kay. She reviews:
 - Which targets are real acquisition candidates
 - Remove any that don't fit (wrong size, PE-backed, already contacted, etc.)
 - Warm intro paths pre-identified by pipeline-manager (Kay reviews, does not need to flag manually)

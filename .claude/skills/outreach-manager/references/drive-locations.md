@@ -1,11 +1,11 @@
 # Target Discovery & Outreach â€” Drive Locations
 
-## LINKT TARGET LISTS folder
+## TARGET LISTS folder
 - **Folder ID:** 1WfbzezRkD7Kr0FOA76y99x5wV8lwRkVc
-- **Path:** G&B Shared Drive > OPERATIONS > LINKT TARGET LISTS
+- **Path:** G&B Shared Drive > OPERATIONS > TARGET LISTS
 - **URL:** https://drive.google.com/drive/folders/1WfbzezRkD7Kr0FOA76y99x5wV8lwRkVc
 
-All Linkt exports and target lists live here. One sheet per ICP/niche run.
+All target lists live here. One sheet per ICP/niche run.
 
 ## Sheet Format (single "Targets" tab per sheet)
 Company | Website | Headquarters | Industry | Employees | Revenue | Ownership | Owner Name | Owner Title | Email | Phone | LinkedIn (Owner) | LinkedIn (Company)
@@ -19,7 +19,7 @@ JJ works directly from the niche sprint master sheet ("{Niche} - Target List") â
 - **Col S:** Call Notes
 - **Col T:** Owner Sentiment
 
-## Existing Linkt Export Sheets
+## Legacy Linkt Export Sheets (historical reference)
 - Specialty Insurance Compliance: 1fsHYA8ljX6rXT-HIb69ZelJZiW3h38C925ci3i8E3cg
 - NYC Tri-State Private OpCo: 1_FB15QIRNb23ASPjv-0YsJprdYXufy1x0lo5UNiYg8Y
 - NYC Tri-State Private Business: 12Ty5T1V6JqnTI744JvxiN5Bjp7Pwr_-KUJJjEDXnNjE

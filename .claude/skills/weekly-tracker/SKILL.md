@@ -233,15 +233,15 @@ curl -s -X POST "https://api.attio.com/v2/objects/companies/records/query" \
 ```
 If no changes, return empty arrays. Only flag meaningful integration additions, not minor UI/docs changes.
 
-### Agent 6: Linkt Credit & ICP Collector
-**Task:** Pull Linkt credit usage, list quality metrics, and ICP accuracy from the master sheet.
-**Tools:** Linkt MCP tools, gog sheets
+### Agent 6: Apollo Credit & ICP Collector
+**Task:** Pull Apollo credit usage, list quality metrics, and ICP accuracy from the master sheet.
+**Tools:** Apollo API (curl), gog sheets
 **Returns:**
 ```json
 {
   "credits_used_this_week": 0,
   "credits_used_this_month": 0,
-  "credits_remaining": 150,
+  "credits_remaining": 0,
   "entities_returned": 0,
   "search_runs": 0,
   "avg_entities_per_run": 0,
@@ -259,9 +259,13 @@ If no changes, return empty arrays. Only flag meaningful integration additions, 
 ```
 **Queries:**
 ```bash
-# Linkt credit usage — use MCP tools:
-# mcp__linkt__get_runs_v1_run_get (filter by created_after/created_before for date range)
-# mcp__linkt__get_entity_counts_v1_entity_counts_get (entity counts with hide_duplicates: true)
+# Apollo credit usage — check account credit consumption via API:
+# GET https://api.apollo.io/api/v1/auth/health (returns credit balance and usage)
+# Count email reveals logged this week by querying Apollo people/search with reveal dates
+# or by counting new email reveals on the master sheet (Col with Apollo-sourced emails)
+curl -s -X GET "https://api.apollo.io/api/v1/auth/health" \
+  -H "X-Api-Key: ${APOLLO_API_KEY}" \
+  -H "Content-Type: application/json"
 
 # Master sheet ICP data (Kay + JJ columns)
 gog sheets get "{MASTER_SHEET_ID}" "'Active'!O:U" --json  # Kay Decision, Pass Reason, Call Status, Sentiment
@@ -317,7 +321,7 @@ Agent 2: Calendar & Meetings Collector (background)
 Agent 3: Attio Pipeline Collector (background)
 Agent 4: Vault Activity Collector (background)
 Agent 5: Tool & Integration Monitor (background)
-Agent 6: Linkt Credit & ICP Collector (background)
+Agent 6: Apollo Credit & ICP Collector (background)
 ```
 Wait for all to return.
 
@@ -369,7 +373,7 @@ gog sheets update "$SHEET_ID" "'Weekly Topline'!{COL}1:{COL}9" --values-json '{.
 # Weekly Detail: write aggregate total to next historical column (left), then overwrite niche breakdown columns (right)
 gog sheets update "$SHEET_ID" "'Weekly Detail'!{COL}1:{COL}27" --values-json '{...}'
 gog sheets update "$SHEET_ID" "'Quarterly Summary'!{QCOL}3:{QCOL}31" --values-json '{...}'
-gog sheets update "$SHEET_ID" "'Linkt Credit Tracker'!{COL}1:{COL}28" --values-json '{...}'
+gog sheets update "$SHEET_ID" "'Apollo Credit Tracker'!{COL}1:{COL}28" --values-json '{...}'
 ```
 
 ### Step 4.5: Save Weekly Detail Snapshot to Drive
@@ -520,7 +524,7 @@ Investor-grade rollup. Cumulative totals and conversion funnels.
 | Niches Activated This Quarter | {count} | | | |
 | Niches Killed This Quarter | {count} | | | |
 
-### Tab 4: Linkt Credit Tracker
+### Tab 4: Apollo Credit Tracker
 Tracks credit consumption, list quality, and ICP efficiency week over week.
 
 | Row | Metric | Target | {Week Col} |
@@ -555,8 +559,8 @@ Tracks credit consumption, list quality, and ICP efficiency week over week.
 | 28 | ICP Change This Week? | — | Y/N |
 
 **Data sources:**
-- Credits used: Linkt API (`/v1/run` endpoint, sum credits per run this week)
-- Entities returned: Linkt API (`/v1/entity/search` count) or from master sheet row count
+- Credits used: Apollo API (`/api/v1/auth/health` endpoint for balance, count email reveals this week)
+- Entities returned: Apollo API (people/search results count) or from master sheet row count
 - Kay accept/reject: Master sheet Col N (Kay Decision)
 - JJ rates: Master sheet Col Q (Call Status) and Col T (Owner Sentiment)
 
@@ -639,7 +643,7 @@ Body contains the week's numbers in readable markdown format, plus a short diagn
 Tracker update is complete when ALL checks pass:
 
 ### Data Collection
-- [ ] All 5 data sub-agents returned data (Gmail, Calendar, Attio, Vault, Linkt)
+- [ ] All 5 data sub-agents returned data (Gmail, Calendar, Attio, Vault, Apollo)
 - [ ] No sub-agent errored silently (check for empty/null returns)
 
 ### Google Sheet
@@ -649,7 +653,7 @@ Tracker update is complete when ALL checks pass:
 - [ ] Key metrics populated in Topline (even if 0)
 - [ ] All metrics populated in Detail (even if 0)
 - [ ] Quarterly Summary updated with current quarter cumulative totals
-- [ ] Linkt Credit Tracker tab updated
+- [ ] Apollo Credit Tracker tab updated
 - [ ] LinkedIn DM metrics populated (even if 0)
 - [ ] JJ dial count populated
 - [ ] Weekly Detail snapshot exported as xlsx to Drive (`OPERATIONS/WEEKLY ACTIVITY TRACKER/WEEKLY SNAPSHOTS/Weekly Detail - {date}.xlsx`)

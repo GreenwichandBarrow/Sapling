@@ -19,7 +19,7 @@ Tests every external API and integration. Each check: can we authenticate and ge
 | Service | Check | Method | GREEN | YELLOW | RED |
 |---------|-------|--------|-------|--------|-----|
 | Attio | API key valid, can query | `POST /v2/objects/companies/records/query` with `{"limit":1}` | 200 OK | — | Non-200 or timeout |
-| Linkt | API key valid | `GET /v1/run` | 200 OK | — | Non-200 or timeout |
+| Apollo | API key valid | `POST /organizations/search` | 200 OK | — | Non-200 or timeout |
 | Motion | API key valid | `GET /tasks?limit=1` | 200 OK | — | Non-200 or timeout |
 | Gmail (gog) | OAuth valid | `gog gmail search "newer_than:1d" --max 1 --json` | Returns results | — | Auth error or empty |
 | Calendar (gog) | OAuth valid | `gog calendar list --from today --to today --json` | Returns data | — | Auth error |
@@ -52,8 +52,8 @@ tail -50 logs/scheduled/{skill}-{date}.log
 **Usage Limits:**
 | Resource | Check | YELLOW | RED |
 |----------|-------|--------|-----|
-| Linkt credits | `GET /v1/run` + calculate remaining | < 50 remaining | < 10 remaining |
-| Linkt subscription | Days until downgrade deadline | < 7 days | < 3 days |
+| Apollo credits | Track email reveals consumed | < 500 remaining | < 100 remaining |
+| Apollo subscription | Basic plan $64/mo, auto-renews | — | Payment failed |
 
 **Webhook Health:**
 Read the last health report from `brain/trackers/health/` to check prior Slack webhook status. Do NOT re-test webhooks every run (per Kay's feedback: one test per setup). Only re-test if prior report showed a failure.
@@ -159,7 +159,7 @@ Dashboard format:
 | Service | Status | Detail |
 |---------|--------|--------|
 | Attio | GREEN | API responding, 54 Active Deals entries |
-| Linkt | YELLOW | 92 credits remaining (< 100 threshold) |
+| Apollo | YELLOW | 487 credits remaining (< 500 threshold) |
 | ... | ... | ... |
 
 ### Infrastructure
@@ -183,7 +183,7 @@ Dashboard format:
 ## Action Items
 1. [RED] Fix intermediary-manager launchd permissions
 2. [RED] Backfill skipped stages for Project Restoration and E&K SaaS
-3. [YELLOW] Linkt credits at 92 — monitor consumption
+3. [YELLOW] Apollo credits at 487 — monitor consumption
 ```
 
 ### Step 4: Trend comparison

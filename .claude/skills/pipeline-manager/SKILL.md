@@ -1050,7 +1050,7 @@ Only investor call prep runs here. Everything else is meeting-brief-manager's re
 
 Before creating ANY email draft (thank-you, follow-up, decline, intro), verify the recipient email:
 - **Prior correspondence exists** (Kay has emailed/received email from this address) → verified, proceed
-- **Linkt-sourced email** → verified (Linkt validates its own data), proceed
+- **Apollo-verified email** → proceed (all emails verified via Apollo people match)
 - **All other emails** → run through Apollo API verification. Only proceed if `verified`. If `guessed`/`unavailable`/`bounced`, tell Kay: "no verified email for {name}" and stop. NEVER guess an email from name + domain.
 
 Bounced emails damage Kay's sender domain reputation. Her email is her entire business.

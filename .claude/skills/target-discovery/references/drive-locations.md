@@ -8,18 +8,18 @@
 ## Master Sheet (one per niche sprint)
 
 **Naming:** "{Niche} - Target List"
-**Created once** at niche sprint activation. All Linkt runs append to the same sheet. Do NOT create new sheets per run.
+**Created once** at niche sprint activation. All discovery runs append to the same sheet. Do NOT create new sheets per run.
 
 ### Tab 1: Active
-Targets being outreached. Kay approved, JJ calling, emails going out. New Linkt results append here.
+Targets being outreached. Kay approved, JJ calling, emails going out. New discovery results append here.
 
 ### Tab 2: Passed
 Targets Kay passed on. Rows move here when Kay marks "Pass" in Col O. Pass reason preserved. Not deleted — may revisit if ICP shifts. This tab is the dataset for "why did we pass" analysis during ICP calibration.
 
 ## Column Layout (both tabs, same structure)
 
-### Linkt Data (Claude populates)
-A: **Source** — dropdown: Linkt, Association Directory, Conference List, Web Research, Intermediary Referral, Broker
+### Discovery Data (Claude populates)
+A: **Source** — dropdown: Apollo, Association Directory, Conference List, Web Research, Intermediary Referral, Broker
 B: Company | C: Website | D: Headquarters | E: Industry | F: Employees | G: Revenue | H: Ownership | I: Owner Name | J: Owner Title | K: Email | L: Phone | M: LinkedIn (Owner) | N: LinkedIn (Company)
 
 ### Kay's Review (Kay populates)
@@ -52,14 +52,14 @@ W: **ICP Miss Reason** — auto-populated from Kay's Pass Reason or JJ's negativ
 
 | Owner | Columns | Description |
 |-------|---------|-------------|
-| **Claude** | A-N | Source + all Linkt enrichment data |
+| **Claude** | A-N | Source + all enrichment data |
 | **Kay** | O-P | Decision, reject reason |
 | **Claude** | Q | Agent Notes (research context, routing flags) |
 | **JJ** | R-U | Call status, date, notes, sentiment |
 | **Claude** | V-W | ICP calibration (auto-calculated) |
 
 **Rule:** Never write to another owner's columns.
-- Claude writes: A-N (Linkt data) + Q (Agent Notes) + V-W (ICP calibration)
+- Claude writes: A-N (enrichment data) + Q (Agent Notes) + V-W (ICP calibration)
 - Kay writes: O-P (Decision, Pass Reason) — ONLY Kay marks Approve/Pass
 - JJ writes: R-U (Call Status, Date, Notes, Sentiment)
 
@@ -68,7 +68,7 @@ W: **ICP Miss Reason** — auto-populated from Kay's Pass Reason or JJ's negativ
 ## Dropdown Data Validation
 
 Set on sheet creation:
-- Col A (Source): Linkt, Association Directory, Conference List, Web Research, Intermediary Referral, Broker
+- Col A (Source): Apollo, Association Directory, Conference List, Web Research, Intermediary Referral, Broker
 - Col O (Kay: Decision): Approve, Pass, Maybe
 - Col P (Kay: Pass Reason): Wrong Size, PE Backed, Wrong Industry, Wrong Geography, Already Contacted, Not a Fit, Other
 - Col R (JJ: Call Status): Not Called, Connected, Voicemail, Callback Requested, Not Interested, Wrong Number
@@ -88,7 +88,7 @@ Output: Google Doc in LINKT TARGET LISTS folder + vault file + Slack notificatio
 
 ## Archived Raw Exports (pre-sprint format)
 
-These are older Linkt exports from before the master sheet format. Kept for reference:
+Legacy Linkt exports (historical, pre-April 2026). Kept for reference:
 - Specialty Insurance Compliance: 1fsHYA8ljX6rXT-HIb69ZelJZiW3h38C925ci3i8E3cg
 - NYC Tri-State Private OpCo: 1_FB15QIRNb23ASPjv-0YsJprdYXufy1x0lo5UNiYg8Y
 - NYC Tri-State Private Business: 12Ty5T1V6JqnTI744JvxiN5Bjp7Pwr_-KUJJjEDXnNjE

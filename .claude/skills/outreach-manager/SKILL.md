@@ -134,9 +134,9 @@ Kay
 
 ### Email Verification (ALL Targets — NO EXCEPTIONS)
 
-**NEVER draft an email to an address that was guessed or constructed from name + domain patterns.** If the email address does not come from a verified source (Linkt enrichment, company website, email signature, LinkedIn profile, direct correspondence), do NOT use it. Guessing email formats (e.g., cjanuski@domain.com from "Chris Januski" + domain) burns Kay's sender reputation and wastes outreach. This rule applies EVERYWHERE — inside outreach-manager, inside pipeline-manager, and in ad-hoc conversation drafting.
+**NEVER draft an email to an address that was guessed or constructed from name + domain patterns.** If the email address does not come from a verified source (Apollo enrichment, company website, email signature, LinkedIn profile, direct correspondence), do NOT use it. Guessing email formats (e.g., cjanuski@domain.com from "Chris Januski" + domain) burns Kay's sender reputation and wastes outreach. This rule applies EVERYWHERE — inside outreach-manager, inside pipeline-manager, and in ad-hoc conversation drafting.
 
-Before drafting, verify email addresses. Linkt does its own enrichment — skip Apollo for Linkt-sourced targets. For all other sources:
+All targets are enriched via Apollo before reaching outreach-manager. Before drafting, verify the email address status:
 
 ```bash
 source .env && curl -s "https://api.apollo.io/v1/people/match" \
@@ -150,7 +150,7 @@ source .env && curl -s "https://api.apollo.io/v1/people/match" \
 - `guessed` / `unavailable` / `bounced` → do NOT draft. Note status in Col Q (Agent Notes). Notify Kay: "{owner} at {company} — email not verified ({status}). Skip or find alternate?"
 - `pending` → retry once after 5 minutes. If still pending, flag.
 
-**Why:** Bounced emails burn Kay's sender domain reputation. Linkt validates its own data. Non-Linkt sources (association directories, conference lists, web scraping) need verification.
+**Why:** Bounced emails burn Kay's sender domain reputation. All email addresses are verified via Apollo people match before outreach.
 
 ### Pre-Draft Research Brief (REQUIRED before any draft)
 
@@ -206,10 +206,10 @@ This creates native Superhuman drafts via CDP. Kay reviews and sends from Superh
 
 **Attio State Machine:**
 
-Outreach-manager is the only skill that writes to Attio for targets. **No Attio entry exists until Kay approves.** Linkt discovering a target does NOT create an Attio record. The sequence:
+Outreach-manager is the only skill that writes to Attio for targets. **No Attio entry exists until Kay approves.** Target-discovery discovering a target does NOT create an Attio record. The sequence:
 
 1. Read the target sheet, find rows where **Col O = "Approve"** that weren't approved in the prior run (new approvals). Col O = "Approve" is the ONLY trigger for Attio entry creation.
-2. For non-Linkt targets, verify email via Apollo API. Only proceed if `verified`.
+2. Verify email via Apollo API. Only proceed if `verified`.
 3. For each verified approved target, search Attio for the person AND company:
    - **If found** → someone Kay already knows. Note "WARM INTRO via {connection}" in Col Q, set Col X to "Warm Intro", skip cold outreach. This is both the dedup check AND the warm intro check in one step.
    - **If not found** → create the company + person in Attio, add company to Active Deals at "Identified" stage. Proceed with cold outreach.
@@ -237,7 +237,7 @@ Would {owner name} have a few minutes for a quick call?
 
 **If the owner wants to schedule a call with Kay:** JJ books a time directly with the owner on the phone, then emails Howie (barrie@greenwichandbarrow.com) with: owner name, owner email, and agreed time. Howie creates the calendar invite and sends it to the owner. Kay gets notified via calendar. JJ does NOT manage Kay's calendar directly.
 
-**Call columns** — JJ works directly from the niche sprint master sheet ("{Niche} - Target List" in LINKT TARGET LISTS folder). No separate call list. JJ fills in columns Q-T on the Active tab:
+**Call columns** — JJ works directly from the niche sprint master sheet ("{Niche} - Target List" in TARGET LISTS folder). No separate call list. JJ fills in columns Q-T on the Active tab:
 - Col Q: Call Status (dropdown: Not Called, Connected, Voicemail, Callback, Not Interested, Wrong Number, Schedule Requested)
 - Col R: Call Date
 - Col S: Call Notes
@@ -557,13 +557,13 @@ Before reporting completion, run these checks in order. If any check fails, do N
 Before drafting outreach for ANY company, check if they were previously contacted by Jessica. Cross-reference against the Activity Report (Google Sheet) or check Attio notes for "Cold emailed by Jessica" text. If the company was previously contacted by Jessica, the email MUST be framed as a re-introduction ("We reached out previously and wanted to reconnect"), NOT as cold outreach. A cold email to someone Jessica already contacted looks disorganized.
 
 ### 0b. Tracker Verification (STOP HOOK — before drafting)
-Before drafting outreach for any target, verify the target is on Kay's tracker (the active niche sprint master sheet in LINKT TARGET LISTS folder). If the target is not on the tracker, flag it: "{company} is not on the tracker. Add first or skip?" Do NOT draft outreach for unknown targets.
+Before drafting outreach for any target, verify the target is on Kay's tracker (the active niche sprint master sheet in TARGET LISTS folder). If the target is not on the tracker, flag it: "{company} is not on the tracker. Add first or skip?" Do NOT draft outreach for unknown targets.
 
 ### 1. Superhuman Draft Validation
 Confirm every email draft was created via the superhuman-cli Bash command (NOT the MCP `superhuman_draft` tool which uses Gmail API). For each target, verify the CLI returned a success response. If any draft creation failed, flag it. Drafts must exist in Superhuman's native draft system, not Gmail.
 
 ### 2. Call Sheet Validation
-For every new cold target added this session, verify JJ's call columns in the Linkt target sheet are populated:
+For every new cold target added this session, verify JJ's call columns in the target sheet are populated:
 - **Company** — non-empty
 - **Owner Name** — non-empty
 - **Phone** — non-empty

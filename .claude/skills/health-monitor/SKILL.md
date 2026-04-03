@@ -26,6 +26,7 @@ Tests every external API and integration. Each check: can we authenticate and ge
 | Drive (gog) | OAuth valid | `gog drive ls --parent root --json --max 1` | Returns data | — | Auth error |
 | Sheets (gog) | Can read tracker | `gog sheets get {TRACKER_ID} "'Weekly Topline'!A1" -j` | Returns data | — | Auth error |
 | Granola | MCP responding | `mcp__granola__list_meetings` | Returns data | — | Error or timeout |
+| Salesforge | API key valid, workspace accessible | `list_sequences(wks_90dzvksqb1zcm2aifcfk6)` via MCP | Returns data | — | Error or timeout |
 | Superhuman | Token fresh, draft path works | Check `~/.local/bin/superhuman-draft.sh` exists + LaunchAgent running | Both present | Script exists, agent not running | Script missing |
 
 ### Sub-Agent 2: Infrastructure Agent
@@ -54,6 +55,10 @@ tail -50 logs/scheduled/{skill}-{date}.log
 |----------|-------|--------|-----|
 | Apollo credits | Track email reveals consumed | < 500 remaining | < 100 remaining |
 | Apollo subscription | Basic plan $64/mo, auto-renews | — | Payment failed |
+| Salesforge emails | Trial: 100 total | < 20 remaining | < 5 remaining |
+| Salesforge contacts | Trial: 50 total | < 10 remaining | < 5 remaining |
+| Salesforge social actions | Trial: 100 total | < 20 remaining | < 5 remaining |
+| Salesforge trial days | Expires ~Apr 16, 2026 | < 5 days remaining | < 2 days remaining |
 
 **Webhook Health:**
 Read the last health report from `brain/trackers/health/` to check prior Slack webhook status. Do NOT re-test webhooks every run (per Kay's feedback: one test per setup). Only re-test if prior report showed a failure.
@@ -84,6 +89,11 @@ For each, check if the company/contact has an Attio Active Deals entry. Missing 
 **Stale Entry Detection:**
 - YELLOW: Entry in same stage > 14 days with no email or calendar activity
 - RED: Entry in same stage > 21 days with no activity
+
+**Outreach Deliverability:**
+- Bounce rate: Count bounced emails over 7 days vs total sent. YELLOW at 2%, RED at 3%.
+- Reply rate: Track weekly trend. YELLOW if declining 2+ consecutive weeks.
+- Method: Read Salesforge contact statuses via MCP, cross-reference with Gmail sent folder scan.
 
 **Missing Vault Entities:**
 For each Attio Active Deals entry, check if a corresponding `brain/entities/{slug}.md` exists. Missing = YELLOW.

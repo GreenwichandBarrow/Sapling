@@ -20,9 +20,9 @@
    - TABLED tab (niches that could resurface with new data)
 3. Store the killed/tabled/active niche lists — these feed into Step 2
 
-## Step 1: GATHER (3 Parallel Tracks)
+## Step 1: GATHER (7 Parallel Tracks)
 
-Spawn ALL THREE gathering agents in a **single message** for parallel execution.
+Spawn ALL SEVEN gathering agents in a **single message** for parallel execution.
 
 ### Sub-Agents to Spawn (parallel)
 
@@ -51,6 +51,69 @@ Agent("niche-intel-pe-trends", general-purpose)
     - PE entry signals for niches Kay is watching (move faster or walk away)
     - New fragmented industries appearing in PE deal flow that match G&B buy box
     - Overlap alert: if PE saturation is high (>50% PE-driven deal volume), flag it
+
+Agent("niche-intel-sba-heatmap", general-purpose)
+  → SBA loan data mining: which industries have the most independently-owned businesses?
+  → Process:
+    1. Download SBA 7(a) FOIA dataset from data.sba.gov (FY2020-present CSV)
+    2. Filter: most recent 2 fiscal years, loan amount $500K-$5M
+    3. Filter to B2B services NAICS sectors (52-56, 61-62, 81)
+    4. Group by 6-digit NAICS code, count loans, sum amounts
+    5. Rank by loan count (high count = fragmented industry with many independents)
+    6. Cross-reference top 30 against KILLED/TABLED niches (exclude known rejects)
+    7. Cross-reference against current Active-Outreach niches (validate existing bets)
+  → Posts to chatroom:
+    - Top 20 NAICS codes by loan density with descriptions
+    - Any NEW industries not previously considered (flag for Step 2)
+    - Validation signals for current niches (e.g., "insurance agencies: 362 loans confirms thesis")
+    - Industries where loan density is growing vs shrinking (compare FY2024 vs FY2025)
+
+Agent("niche-intel-associations", general-purpose)
+  → Trade association mining: discover niches through organized industry groups
+  → Process:
+    1. WebSearch ASAE Gateway to Associations directory for B2B services categories
+    2. WebSearch for trade association directories in sectors matching G&B buy box:
+       - "trade association" + "B2B services" / "professional services" / "compliance"
+       - "industry association directory" + "small business" / "independent operators"
+    3. For each association found, extract: industry served, member count (if available), 
+       whether members are mostly independent/small businesses
+    4. Cross-reference against KILLED/TABLED/IDEATION niches (skip known)
+    5. Flag associations with 500+ members (indicates fragmented industry)
+  → Posts to chatroom:
+    - New associations discovered with member counts and industry descriptions
+    - Associations that serve industries not on any tracker tab (true new signals)
+    - Member directories that could feed target-discovery (direct target pool source)
+
+Agent("niche-intel-regulation", general-purpose)
+  → Regulation change scanning: new compliance requirements that create service demand
+  → Process:
+    1. WebSearch Wolters Kluwer regulatory compliance developments {current_year}
+    2. WebSearch Paychex top regulatory issues {current_year}
+    3. WebSearch "new regulation {current_year}" + "compliance requirements" + "small business"
+    4. WebSearch Federal Register recent final rules affecting small businesses
+    5. For each new regulation, identify: who must comply, what service they need to comply,
+       whether independent service providers exist in that compliance space
+  → Posts to chatroom:
+    - New regulations creating compliance service demand
+    - Existing regulations being tightened (expanded scope = expanded market)
+    - Match to G&B compliance infrastructure thesis
+    - Specific service categories spawned by each regulation
+
+Agent("niche-intel-franchise-signal", general-purpose)
+  → Franchise-as-niche-signal: identify industries where franchises prove the model is repeatable
+  → Process:
+    1. WebSearch FDD Exchange for B2B services franchise categories
+    2. WebSearch "B2B services franchise" / "commercial services franchise" / "compliance franchise"
+    3. For each franchise category found, identify:
+       - The franchise model (what service they provide)
+       - Number of franchise units (indicates market size)
+       - Non-franchise independent competitors (the acquisition target pool)
+    4. Filter: B2B only, not restaurants/retail/consumer
+    5. Cross-reference against existing niches on tracker
+  → Posts to chatroom:
+    - Franchise categories with 100+ units (proven, repeatable model)
+    - The non-franchise independent competitors in each category (target pool)
+    - Any franchise categories serving luxury/HNW clients (G&B thesis overlap)
 ```
 
 Each track posts a structured summary to the chatroom with:
@@ -60,22 +123,27 @@ Each track posts a structured summary to the chatroom with:
 - Any data points useful for scoring (market size, growth rates, margins, etc.)
 - Cross-source signals (same niche from multiple sources = strong signal)
 - PE activity level (from PE trends track): none / early / active / saturated
+- SBA density (from SBA heatmap track): loan count in G&B's size range
 
 ### Verification Gate 1
 
-After all three agents complete, read the chatroom. Verify:
+After all seven agents complete, read the chatroom. Verify:
 - [ ] RECENT agent posted findings
 - [ ] HISTORICAL agent posted consolidated findings (from all 4 sub-agents)
 - [ ] PE TRENDS agent posted industry consolidation signals
+- [ ] SBA HEATMAP agent posted NAICS density rankings
+- [ ] ASSOCIATIONS agent posted new association discoveries
+- [ ] REGULATION agent posted new compliance requirements
+- [ ] FRANCHISE SIGNAL agent posted franchise category analysis
 
-If either agent failed, log a warning but continue — Step 1b can work with partial input.
+If any agent failed, log a warning but continue — Step 1b can work with partial input.
 
 ## Step 1b: SYNTHESIZE (Sequential — Pattern Recognition)
 
-Spawn `niche-intel-synthesizer` agent AFTER both gathering agents complete.
+Spawn `niche-intel-synthesizer` agent AFTER all gathering agents complete.
 
-This agent reads all chatroom posts and produces 5 structured outputs:
-1. **Cross-Source Signal Matrix** — which niches appeared in which sources, with strength ratings
+This agent reads all chatroom posts (RECENT, HISTORICAL, PE TRENDS, SBA HEATMAP, ASSOCIATIONS, REGULATION, FRANCHISE SIGNAL) and produces 5 structured outputs:
+1. **Cross-Source Signal Matrix** — which niches appeared in which sources, with strength ratings. A niche appearing in SBA data + association directory + PE trends = VERY STRONG signal.
 2. **Named Company Registry** — every company mentioned, deduplicated, with independence status
 3. **Contact-to-Niche Map** — every person who could help, mapped to niches and relationship warmth
 4. **Lead Lifecycle Tracker** — proposed → challenged → outcome for every lead (prevents dead ideas from resurfacing)

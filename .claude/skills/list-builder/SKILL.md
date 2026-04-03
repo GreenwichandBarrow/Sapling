@@ -37,9 +37,9 @@ APOLLO_KEY=$(cat /tmp/apollo-key.txt)
 
 | Endpoint | Method | Cost | Purpose |
 |----------|--------|------|---------|
-| `/api/v1/mixed_companies/search` | POST | Free (0 credits) | Organization search by keyword, size, location |
-| `/api/v1/mixed_people/search` | POST | Free (0 credits) | People search by title, company, seniority |
-| `/api/v1/people/match` | POST | 1 credit (email) / 8 credits (phone) | Email and phone reveal |
+| `/api/v1/organizations/search` | POST | Free (0 credits) | Organization search — returns company LinkedIn, employee count, HQ, revenue |
+| `/api/v1/mixed_people/search` | POST | Free but USELESS for contact data | Returns None for names and LinkedIn URLs without credit spend. Only confirms people exist. **Do NOT rely on this for owner names or LinkedIn profiles.** |
+| `/api/v1/people/match` | POST | 1 credit (email) / 8 credits (phone) | Email and phone reveal — use AFTER identifying owner via web research |
 
 ### Credit Budget
 - Plan: Basic ($64/mo), 2,500 credits/month
@@ -65,17 +65,19 @@ Takes ICP parameters from target-discovery: industry keywords, employee range, l
 ```bash
 APOLLO_KEY=$(cat /tmp/apollo-key.txt)
 
-curl -s -X POST "https://api.apollo.io/api/v1/mixed_companies/search" \
+curl -s -X POST "https://api.apollo.io/api/v1/organizations/search" \
   -H "Content-Type: application/json" \
   -H "X-Api-Key: $APOLLO_KEY" \
   -d '{
-    "q_organization_keyword_tags": ["{keyword}"],
+    "q_organization_name": "{keyword}",
     "organization_num_employees_ranges": ["{min}-{max}"],
     "organization_locations": ["{location}"],
     "page": 1,
     "per_page": 25
   }'
 ```
+
+**Returns (free):** company name, website, `linkedin_url` (company page), `estimated_num_employees`, headquarters, revenue. This is the primary source for company LinkedIn pages and real employee counts.
 
 **Deduplication:** After all keyword searches complete, deduplicate results by domain. Same domain = same company regardless of which keyword surfaced it. Keep the richest record (most populated fields) when merging duplicates.
 
@@ -98,21 +100,32 @@ Separate results into three buckets:
 
 ## Step 3: Enrich Existing Rows
 
-For matched companies on the sheet that are missing email (Col K), phone (Col L), or LinkedIn (Col M):
+For matched companies on the sheet that are missing contacts (owner name, email, LinkedIn):
 
-**People search (free)** — find owner/CEO/founder/president/principal:
+**Owner identification (free — web search, NOT Apollo People Search):**
+Apollo People Search returns `None` for names and LinkedIn URLs without credit spend. Use these sources instead:
+
+1. **Company website** → About/Team/Leadership page (highest quality)
+2. **LinkedIn company page** → People tab, filter by Founder/CEO/Owner/President
+3. **Web search** → `"{company name}" founder OR owner OR CEO`
+4. **State business registrations** → registered agent/officer
+
+**Owner LinkedIn (free — web search):**
+```
+Web search: site:linkedin.com/in/ "{Owner Name}" "{Company Name}"
+```
+If no result: try without company name, verify by title/location match. If genuinely no LinkedIn presence, write "No LinkedIn presence" in Col M.
+
+**Company LinkedIn + Employee Count (free — Apollo org search):**
 ```bash
-curl -s -X POST "https://api.apollo.io/api/v1/mixed_people/search" \
+curl -s -X POST "https://api.apollo.io/api/v1/organizations/search" \
   -H "Content-Type: application/json" \
   -H "X-Api-Key: $APOLLO_KEY" \
-  -d '{
-    "q_organization_domains": ["{domain}"],
-    "person_titles": ["owner", "ceo", "founder", "president", "principal", "managing director", "managing partner"],
-    "person_seniorities": ["owner", "founder", "c_suite"],
-    "page": 1,
-    "per_page": 5
-  }'
+  -d '{"q_organization_name": "{company name}", "per_page": 1}'
 ```
+Returns: `linkedin_url` (company page), `estimated_num_employees`. If Apollo misses, web search `site:linkedin.com/company/ "{company name}"` and use LinkedIn's employee range.
+
+**Employee count rules:** Apollo actual number (e.g., "40") or LinkedIn range (e.g., "11-50") — both are data-sourced and acceptable. Never write unsourced estimates.
 
 **Email reveal (1 credit per contact):**
 ```bash
@@ -283,11 +296,14 @@ Before reporting completion to target-discovery, verify all of the following. If
 Linkt was cancelled March 31, 2026. Apollo replaces it as the primary company discovery and contact enrichment tool. Organization search and people search are free. Only email/phone reveals cost credits. This makes Apollo dramatically more cost-effective for discovery at scale.
 
 ### Free First, Credits Second
-Always exhaust free endpoints before spending credits:
-1. Organization search (free) — find companies
-2. People search (free) — find owners and titles
-3. Email reveal (1 credit) — only after confirming the person is the right contact
-4. Phone reveal (8 credits) — only when explicitly needed
+Always exhaust free sources before spending credits:
+1. Organization search (free) — find companies, get company LinkedIn + employee count
+2. Web search (free) — find owners via company website, LinkedIn People tab, web search
+3. Web search (free) — find owner LinkedIn profiles via `site:linkedin.com/in/`
+4. Email reveal (1 credit) — only after confirming the person is the right contact
+5. Phone reveal (8 credits) — only when explicitly needed
+
+**Apollo People Search is NOT useful for contact discovery.** It returns `None` for names and LinkedIn URLs without credit spend. Use web research for owner identification and LinkedIn lookups.
 
 ### Sheet is the Staging Area
 The target sheet is where targets live until Kay approves them. This skill writes to the sheet. It never writes to Attio. The flow is: list-builder populates sheet → Kay reviews → outreach-manager reads approvals → outreach-manager creates Attio entries.

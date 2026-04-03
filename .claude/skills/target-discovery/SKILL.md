@@ -32,7 +32,7 @@ Goal: 4-6 qualified targets per day.
 ## Target Discovery (Daily, Mon-Fri)
 
 ### Industry Name Aliases (CRITICAL)
-Niches often have multiple names. **Every search — Linkt, web, association directories — must use ALL known aliases**, not just the primary name. Missing an alias = missing targets.
+Niches often have multiple names. **Every search — Apollo, web, association directories — must use ALL known aliases**, not just the primary name. Missing an alias = missing targets.
 
 The niche one-pager (from niche-intelligence) must include an "Also Known As" section listing all aliases. Pull aliases from:
 - Industry association websites (how they describe the service)
@@ -41,155 +41,118 @@ The niche one-pager (from niche-intelligence) must include an "Also Known As" se
 
 Example: "Trade Credit Insurance" is also called "Accounts Receivable Insurance", "A/R Insurance", "Credit Insurance", "Receivables Insurance". A broker branding as "accounts receivable insurance specialist" won't show up in a TCI-only search.
 
-**For Linkt:** Run separate searches for each alias if the ICP search field is keyword-based.
+**For Apollo:** Run separate keyword searches for each alias.
 **For web research:** Rotate through all aliases in searches. Don't stop at the primary name.
 
-### Step 1: Run Linkt Search (DISCOVERY ONLY)
+### INLINE ENRICHMENT MANDATE (CRITICAL)
 
-**NOTE: Linkt is on Starter plan as of March 31, 2026. Upgrade to Pro in sprints when needed. When upgrading, run a full E2E test first via MCP (create ICP → sheets → task → execute → verify results with hide_duplicates) before burning credits on real searches.**
+**No row is written to the sheet until ALL enrichment steps complete for that target.** Discovery and enrichment are one atomic operation, not two phases. By the time Kay sees the target list, every row must have real, sourced data — not estimates or gaps to backfill later.
 
-Linkt is the primary list builder for discovering NEW companies. It finds companies matching the ICP and returns enriched data including owner contact info. **All Linkt operations use MCP tools** (not raw API calls).
+For EVERY target, regardless of source (Apollo, web research, associations, referrals), run all 5 enrichment phases before writing to the sheet:
 
-**Linkt discovers AND enriches** — companies it finds come back with full contact data. That's fine, that's what a credit buys you. **But do NOT use Linkt credits to enrich companies found through OTHER sources** (free research, associations, referrals, conferences). Those get contact-scraped manually (Step 2b). Linkt credits = discovering companies we don't know about yet.
+1. **Company data** (Apollo org search or web) → LinkedIn page, employee count, HQ
+2. **Owner identification** (company website, LinkedIn People tab, web search)
+3. **Owner LinkedIn** (web search)
+4. **Email verification** (Apollo people match, 1 credit)
+5. **Write complete row** → only after all phases pass
 
-**Use ALL niche aliases in Linkt searches.** Run separate search tasks per alias if needed. Each alias may surface different companies.
+### Step 1: Discover Companies
 
-#### Linkt Integration via MCP (All Steps Required — STOP HOOK)
+**Primary: Apollo Organization Search (free, via skill/list-builder)**
+Invoke skill/list-builder with ICP parameters. Apollo finds companies matching industry keywords, employee range, location. Returns company name, website, LinkedIn page, employee count, HQ, revenue.
 
-**Linkt is connected as an MCP server.** Use MCP tools (not raw API calls) for all Linkt operations. The MCP server handles authentication and request formatting.
-
-**Before running any Linkt search, verify ALL of these or the search will silently fail:**
-1. ICP has `entity_targets` array (company + person entries, one marked `root: true`)
-2. Sheets exist for the ICP (company sheet + person sheet)
-3. ICP description includes the target count as text (e.g., "Find 50 independently owned...")
-4. `desired_count` parameter is IGNORED — only the description text matters
-
-**ICP Naming Convention:** Always name ICPs with the date they are created: `"{Niche} {YYYY-MM-DD}"` (e.g., "IPLC 2026-04-01"). Never use version numbers (v1, v2, v3).
-
-**Correct MCP flow:**
-```
-# Step 1: Create ICP with entity_targets
-mcp__linkt__create_icp_v1_icp_post
-  name: "{Niche} {YYYY-MM-DD}"
-  description: "Find 50 independently owned {criteria}..."
-  entity_targets: [
-    {"entity_type": "company", "description": "{what makes a good target company}", "root": true},
-    {"entity_type": "person", "description": "{decision-maker criteria}", "desired_count": 1}
-  ]
-
-# Step 2: Create sheets (REQUIRED before task execution)
-mcp__linkt__create_sheet_v1_sheet_post
-  name: "{Niche} - Companies {YYYY-MM-DD}", icp_id: "{icp_id}", entity_type: "company"
-mcp__linkt__create_sheet_v1_sheet_post
-  name: "{Niche} - People {YYYY-MM-DD}", icp_id: "{icp_id}", entity_type: "person"
-
-# Step 3: Create search task
-mcp__linkt__create_task_v1_task_post
-  name: "{Niche} Search {YYYY-MM-DD}"
-  flow_name: "search"
-  deployment_name: "search"
-  icp_id: "{icp_id}"
-  task_config: {"type": "search", "desired_contact_count": 1}
-
-# Step 4: Execute task
-mcp__linkt__execute_task_v1_task
-  task_id: "{task_id}", icp_id: "{icp_id}"
-
-# Step 5: Monitor run
-mcp__linkt__get_run_v1_run  (check status)
-mcp__linkt__get_run_queue_v1_run  (see processed entities)
-
-# Step 6: Export results (ALWAYS use hide_duplicates)
-mcp__linkt__export_entities_v1_entity_export_get
-  icp_id: ["{icp_id}"], format: "combined", hide_duplicates: true
-# OR list entities:
-mcp__linkt__list_entities_v1_entity_get
-  icp_id: ["{icp_id}"], hide_duplicates: true, page_size: 100
-```
-
-**Deduplication:** ALWAYS pass `hide_duplicates: true` when listing or exporting entities. Without this flag, Linkt returns multiple entries per company (company entity + person entities + potential duplicates). This was the cause of the Howard & Gay triple-entry issue on 2026-03-30.
-
-**Credit model:** Each entity costs 1 credit. A company + 1 person contact = 2 credits per target. With 15 targets requested, expect ~30 credits per search.
-
-**CRITICAL LESSON:** ICPs created without `entity_targets` will show status "Complete" immediately with 0 results. This is a silent failure — it looks like Linkt ran and found nothing, but it never actually searched. This was the root cause of all failed searches in March 2026.
-
-**Platform bug (2026-03-30):** 4 of 5 ICPs failed because icp_id was null on run documents. If this recurs with MCP, delete the broken ICP + task and recreate from scratch. The MCP server may use a different code path that avoids the bug.
-
-Linkt's AI agents will:
-- Find companies matching the ICP criteria (industry, size, geography, ownership)
-- Enrich each company with revenue, employee count, ownership status
-- Identify the owner/CEO with validated email and phone
-- Verify criteria matches against the ICP
-
-**Run smaller, focused searches** (10-20 entities per run) rather than large broad ones. Each entity = 1 credit. Pro plan = 300 credits/month. Put the target count in the ICP description text (the `desired_count` API parameter is ignored). Default to requesting 15 entities per search in the description. If the ICP is narrow (e.g., one niche in one state), request 10. If broad (national search), request 20 max.
-
-**Output:** Linkt returns enriched entities. Only write to the sheet after verifying minimum data bar (see Write Gate below). Append to the niche sprint's master sheet ("{Niche} - Target List") in LINKT TARGET LISTS folder. One master sheet per niche sprint — do NOT create new sheets per run. New results append to the "Active" tab.
-
-If the master sheet doesn't exist yet (first run of a new sprint), **COPY the template sheet** — do NOT create a blank sheet. The template has all headers, dropdowns, column formatting, and orange header on Col O already configured.
-
-```bash
-# Copy the template sheet (preserves all formatting, dropdowns, orange headers)
-gog drive copy 1wIK4Jv56QIZejcmpq-gGrCWAPe07eJWUbKsWTRwh778 "{Niche} - Target List" -a kay.s@greenwichandbarrow.com --parent 1WfbzezRkD7Kr0FOA76y99x5wV8lwRkVc -j
-```
-
-
-**Template must include:** All columns A through X. Standardized layout:
-- A-N: Source through LinkedIn (Company) — list building data
-- O: Kay: Decision (Approve/Pass)
-- P: Kay: Pass Reason
-- Q: Agent Notes (MUST start with "RECOMMEND: Approve" or "RECOMMEND: Pass" followed by reasoning)
-- R-U: JJ columns (Call Status, Call Date, Call Notes, Owner Sentiment)
-- V: ICP Match
-- W: ICP Miss Reason
-- X: Outreach Stage (trigger column: Approved → Email Drafted → Email Sent → JJ Queued → JJ Called)
-
-This ensures Kay never has to manually copy dropdowns. The template is the single source of truth for sheet structure.
-
-When Kay marks a row "Pass" in Col O, move it to the "Passed" tab with all data preserved.
-
-**Phone number formatting:** Linkt returns phones as `+1 973-770-9090`. When writing to Google Sheets:
-1. Strip the country code prefix (`+1 `)
-2. Reformat to `(XXX) XXX-XXXX` (e.g., `(973) 770-9090`)
-3. Write with `--input USER_ENTERED` and apostrophe prefix (`'(973) 770-9090`) to prevent formula interpretation
-This must happen on every Linkt pull, not as a cleanup step.
-
-### Art Storage Niche: Activity Report Cross-Reference (STOP HOOK)
-When discovering targets for the art storage niche, cross-reference every candidate against the Activity Report (Google Sheet) which contains companies already contacted in prior outreach rounds. Do NOT rediscover or re-add companies that are already on the Activity Report. This avoids duplicate outreach and wasted research time on known companies.
-
-### Step 2: Supplement with Free Sources
-Linkt won't find everything. Supplement with free research:
-
+**Supplemental: Free Sources**
+Apollo won't find everything. Also search:
 - **Association directories** — member lists, state licensing board registries
 - **Conference exhibitor lists** — from conference-discovery skill outputs
-- **Web search** — search ALL niche aliases (not just the primary name) for companies Linkt may have missed
-- **Existing intelligence** — Attio pipeline, vault entities, niche one-pagers from niche-intelligence
+- **Web search** — search ALL niche aliases for companies Apollo missed
+- **Existing intelligence** — Attio pipeline, vault entities, niche one-pagers
 - **Intermediary referrals** — deals forwarded by brokers, CPAs, network contacts
 
-### Step 2b: Enrichment for Free-Source Companies (FREE — do not use Linkt credits)
-For companies found through free research (Step 2), research and populate ALL missing fields — not just contacts. Every row must have the same data quality as Linkt-sourced rows.
+### Step 2: Enrich Each Target (Inline — Before Writing to Sheet)
 
-**Website is mandatory.** Every target MUST have a website (col C) before being added to the sheet. Web search "{Company Name} {City}" to find it. No blank website cells.
+For EVERY discovered company, run these enrichment phases in order. This applies to ALL sources — Apollo, web research, associations, referrals. No exceptions.
 
-Enrich in this order:
-1. **Company website** (col C) — find via web search first, then use the site for everything else
-2. **Company details** — Headquarters, Employees, Revenue, Ownership (cols D-H) from website, LinkedIn, press
-3. **Owner/CEO contact** — About Us, Team, Leadership pages for name and title
-4. **LinkedIn** — company page → People tab → filter by CEO/President/Owner/Founder
-5. **State business registrations** — registered agent/officer filings (Secretary of State websites)
-6. **Press releases / news** — owner names often appear in local business news
-7. **Industry association member directories** — sometimes list key contacts
+#### Phase A: Company Data (free)
+```
+Apollo /organizations/search → {
+  linkedin_url, estimated_num_employees, headquarters, revenue
+}
+```
+If Apollo misses: web search `site:linkedin.com/company/ "{company name}"` for company LinkedIn page. Get employee count from LinkedIn company page (range like "11-50" is fine — it's sourced data).
 
-Populate cols C-N (Website, Headquarters, Industry, Employees, Revenue, Ownership, Owner Name, Title, Email, Phone, LinkedIn Owner, LinkedIn Company). If company phone is all that's findable, note "(main)" in the cell. JJ validates phone numbers on his calls.
+**Employee count rules:**
+- Apollo actual number (e.g., "40") → use it
+- LinkedIn range (e.g., "11-50") → use it as-is, it's data-sourced
+- NEVER write unsourced estimates (e.g., "10-25" from guesswork)
 
-**Do NOT burn Linkt credits on enrichment.** If we already know the company exists, the contact info can be found manually or by JJ.
+#### Phase B: Owner Identification (free)
+Find the owner/founder/CEO in this priority order:
+1. **Company website** → About/Team/Leadership page (highest quality)
+2. **LinkedIn company page** → People tab, filter by Founder/CEO/Owner/President
+3. **Web search** → `"{company name}" founder OR owner OR CEO`
+4. **State business registrations** → registered agent/officer filings
+
+#### Phase C: Owner LinkedIn (free)
+```
+Web search: site:linkedin.com/in/ "{Owner Name}" "{Company Name}"
+```
+If no result: try without company name, verify by title/location match.
+
+**Not a gate** — some people genuinely don't have LinkedIn (common in fine art world). Mark Col M as "No LinkedIn presence" and move on.
+
+#### Phase D: Email Verification (1 credit per target)
+```
+Apollo /people/match → {
+  first_name, last_name, organization_name, domain
+} → verified business email
+```
+
+#### Phase E: Assemble Complete Row
+Only after Phases A-D complete, assemble the row with all columns populated. Then check the Write Gate.
+
+**CRITICAL: Apollo People Search (`/mixed_people/search`) returns `None` for names and LinkedIn URLs without credit spend.** The "free" endpoint only confirms people exist at a company. Do NOT rely on it for owner names or LinkedIn profiles. Use web search (Phase B and C) instead.
+
+### Art Storage Niche: Activity Report Cross-Reference (STOP HOOK)
+When discovering targets for the art storage niche, cross-reference every candidate against the Activity Report (Google Sheet) which contains companies already contacted in prior outreach rounds. Do NOT rediscover or re-add companies that are already on the Activity Report.
 
 ### Write Gate (HARD RULE)
 **No row hits the Active tab until it meets ALL of these:**
 - Col C (Website) — populated and verified (loads a real page, not a redirect to a parent company)
 - Col I (Owner Name) — real person identified, not "Unknown"
 - Col K (Email) OR Col L (Phone) — at least one contact method
+- Col M (LinkedIn Owner) — populated with URL, or explicitly "No LinkedIn presence"
+- Col N (LinkedIn Company) — populated with URL, or explicitly "No company page"
+- Col F (Employees) — sourced number or LinkedIn range, never unsourced estimate
 
-This applies to ALL sources — Linkt, free research, associations, referrals. No exceptions. If enrichment can't meet this bar after a reasonable research effort, log the company name in the daily briefing as "could not enrich" with what's missing. Do NOT add it to the sheet with blank fields for Kay to catch.
+This applies to ALL sources. No exceptions. If enrichment can't meet this bar after reasonable effort, log the company name in the daily briefing as "could not enrich" with what's missing. Do NOT add it to the sheet with blank fields for Kay to catch.
+
+### Sheet Structure
+
+Append to the niche sprint's master sheet ("{Niche} - Target List") in LINKT TARGET LISTS folder. One master sheet per niche sprint — do NOT create new sheets per run. New results append to the "Active" tab.
+
+If the master sheet doesn't exist yet (first run of a new sprint), **COPY the template sheet**:
+
+```bash
+gog drive copy 1wIK4Jv56QIZejcmpq-gGrCWAPe07eJWUbKsWTRwh778 "{Niche} - Target List" -a kay.s@greenwichandbarrow.com --parent 1WfbzezRkD7Kr0FOA76y99x5wV8lwRkVc -j
+```
+
+**Template columns A-X:**
+- A-N: Source through LinkedIn (Company) — list building data
+- O: Kay: Decision (Approve/Pass)
+- P: Kay: Pass Reason
+- Q: Agent Notes (MUST start with "RECOMMEND: Approve" or "RECOMMEND: Pass" + reasoning)
+- R-U: JJ columns (Call Status, Call Date, Call Notes, Owner Sentiment)
+- V: ICP Match
+- W: ICP Miss Reason
+- X: Outreach Stage (Approved → Email Drafted → Email Sent → JJ Queued → JJ Called)
+
+When Kay marks a row "Pass" in Col O, move it to the "Passed" tab with all data preserved.
+
+**Phone number formatting:** Always:
+1. Strip country code prefix (`+1` or `+1 `)
+2. Reformat to `(XXX) XXX-XXXX`
+3. Write with apostrophe prefix and `--input USER_ENTERED`
 
 ### Outreach Stage Flow (Col X — trigger column)
 `Approved` → `Email Drafted` → `Email Sent` → `JJ Queued` → `JJ Called`
@@ -218,26 +181,25 @@ Pass approved, deduped targets to skill/outreach-manager's cold outreach subagen
 - Owner name, title, email, phone, LinkedIn
 - LinkedIn Owner URL (Col M) — for LinkedIn DM drafting and connection degree lookup
 - Research context (what makes them a good target, any personal hooks found)
-- Linkt enrichment data
+- Apollo enrichment data
 </target_discovery>
 
 <essential_principles>
 ## Principles
 
-### Linkt Credit Management
-- Starter plan as of March 31, 2026 — upgrade to Pro ($300/mo, 300 credits) in sprints when actively running discovery
-- 1 credit = 1 entity (company or person). Each target = ~2 credits (1 company + 1 person contact).
-- Linkt IS the list builder — discovery is what it's for, just keep searches tight and focused
-- Run smaller, focused searches (10-15 entities) rather than large broad ones
-- Supplemental free research extends the target pool without burning credits
-- When upgrading: run full E2E test via MCP (create ICP → sheets → task → execute → verify results with hide_duplicates) before burning credits on real searches
-- ALWAYS export/list with `hide_duplicates: true` to avoid inflated entity counts
+### Apollo Credit Management
+- Plan: Basic ($64/mo), 2,500 credits/month
+- Organization search: FREE — run liberally
+- People search: FREE — but returns None for names/LinkedIn (useless for contact data)
+- Email reveal: 1 credit each — reveal for all targets
+- Phone reveal: 8 credits each — skip by default
+- Hard cap: never exceed 100 credits in a single run without Kay's approval
+- At ~1 credit per target (email only), supports ~2,500 targets/month
 
 ### Team Roles (for this skill only)
-- **Claude:** Run Linkt, supplement with free research, present list to Kay, dedup against Attio, hand off to outreach-manager
+- **Claude:** Run Apollo via list-builder, supplement with free research, enrich inline, present complete list to Kay, dedup against Attio, hand off to outreach-manager
 - **Kay:** Review target list, flag warm intro paths
 - **Outreach Manager:** All outreach drafting (email, call list, follow-ups) — separate skill
-- **Analyst:** Company scorecards for approved targets (when requested)
 
 ### ICP Calibration Loop
 
@@ -248,18 +210,18 @@ The ICP is a living document. Track these signals to know if it needs adjustment
 - Log rejection reasons (wrong size, PE-backed, wrong industry, wrong geography). Patterns in rejections = ICP criteria to tighten.
 
 **After JJ's calls (from outreach-manager):**
-- High "Wrong Number" rate = bad contact data from Linkt, not an ICP problem.
+- High "Wrong Number" rate = bad contact data, not an ICP problem.
 - High "Not Interested" rate = wrong type of company. ICP may need adjustment.
 - Connected + positive conversations = ICP is working.
 
 **After outreach responses (from outreach-manager):**
 - Response rate by batch. No responses from an entire batch = wrong audience.
-- Response quality. "Not selling" = ICP identified the right companies but wrong timing. "Wrong person" = contact criteria need tightening.
+- Response quality. "Not selling" = right companies, wrong timing. "Wrong person" = contact criteria need tightening.
 
 **Sprint check-in (every 2 weeks):**
 Pull all the above metrics and explicitly evaluate:
 - Should we tighten, loosen, or shift the ICP criteria?
-- Are Linkt search parameters matching what Kay actually approves?
+- Are Apollo search parameters matching what Kay actually approves?
 - Credit efficiency: how many credits per approved target?
 
 If the niche is running dry or ICP is consistently off, escalate to Kay. Don't wait 8 weeks.

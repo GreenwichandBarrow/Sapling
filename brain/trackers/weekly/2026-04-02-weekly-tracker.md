@@ -1,9 +1,9 @@
 ---
 schema_version: "1.0.0"
-date: 2026-04-03
+date: 2026-04-02
 type: tracker
-title: "Weekly Activity Tracker — Week Ending 2026-04-03"
-tags: ["date/2026-04-03", "output", "output/tracker", "status/published", "topic/weekly-tracker", "source/claude"]
+title: "Weekly Activity Tracker — Week Ending 2026-04-02"
+tags: ["date/2026-04-02", "output", "output/tracker", "status/published", "topic/weekly-tracker", "source/claude"]
 ---
 
 # Weekly Activity Tracker — Week Ending April 3, 2026

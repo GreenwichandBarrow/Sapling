@@ -237,25 +237,25 @@ After target discovery completes, verify all deliverables before notifying Kay:
 - Verify phone numbers are formatted correctly: `(XXX) XXX-XXXX`
 
 ### Step 1b: Contact Completeness Check (STOP HOOK)
-Read every row on the Active tab. For each row, check cols I-L (Owner Name, Title, Email, Phone):
+Read every row on the Active tab. For each row, check cols I-N (Owner Name, Title, Email, Phone, LinkedIn Owner, LinkedIn Company):
 
 ```bash
-gog sheets get {SHEET_ID} "Active!B:L" -a kay.s@greenwichandbarrow.com -p
+gog sheets get {SHEET_ID} "Active!B:N" -a kay.s@greenwichandbarrow.com -p
 ```
 
 **Flag every row missing ANY of these:**
 - Col C (Website) — empty (mandatory for all targets, no exceptions)
 - Col I (Owner Name) — empty or "Unknown"
-- Col K (Email) — empty
-- Col L (Phone) — empty
+- Col F (Employees) — empty or unsourced estimate
+- ALL of Col K (Email), Col L (Phone), AND Col M (LinkedIn Owner) empty — must have at least one contact method
 
 **If missing contacts found:**
-1. Spawn a sub-agent to scrape contact info for those companies (Step 2b process: company website, LinkedIn, state registrations, press releases)
+1. Spawn a sub-agent to enrich (company website, LinkedIn People tab, web search, state registrations)
 2. Update the sheet with whatever is found
-3. Re-check after scraping
-4. Any STILL missing after scraping → flag in the daily briefing: "{n} targets missing contact info. JJ to validate."
+3. Re-check after enrichment
+4. Any STILL missing after enrichment → flag in the daily briefing: "{n} targets missing contact info."
 
-**A target cannot be handed to outreach-manager without at minimum: Owner Name + (Email OR Phone).** This is a hard gate. No contact info = no outreach.
+**A target cannot be handed to outreach-manager without at minimum: Owner Name + (Email OR Phone OR LinkedIn Owner).** LinkedIn DM is a valid outreach channel.
 
 ### Step 2: Attio Dedup Validation
 - Confirm Attio was checked (read-only) for existing entries before handoff
@@ -263,8 +263,8 @@ gog sheets get {SHEET_ID} "Active!B:L" -a kay.s@greenwichandbarrow.com -p
 
 ### Step 3: Handoff Validation
 - Confirm target data was passed to outreach-manager with all required fields
-- Confirm no targets are missing email (required for Day 1 email)
-- Confirm no targets are missing phone (required for JJ Day 3 call)
+- Confirm every target has at least one contact method (Email OR Phone OR LinkedIn Owner)
+- Flag targets with LinkedIn-only contact (no email/phone) — outreach-manager routes these to LinkedIn DM instead of email sequence
 
 ### Step 4: Credit Tracking
 - Log credits consumed this run

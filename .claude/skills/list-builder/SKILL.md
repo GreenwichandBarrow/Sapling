@@ -269,7 +269,7 @@ Before reporting completion to target-discovery, verify all of the following. If
 - [ ] Any rows that could not be enriched are logged in run summary
 
 ### 3. New Row Data Quality
-- [ ] Every new row meets the write gate: Company name + Website + Owner Name + (Email OR LinkedIn)
+- [ ] Every new row meets the write gate: Company name + Website + Owner Name + (Email OR Phone OR LinkedIn Owner)
 - [ ] No rows added with blank Website (Col C)
 - [ ] No rows added with "Unknown" in Owner Name (Col I)
 - [ ] Agent Notes (Col Q) starts with "RECOMMEND: Approve" or "RECOMMEND: Pass" for every row

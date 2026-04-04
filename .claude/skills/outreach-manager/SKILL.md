@@ -54,7 +54,7 @@ Cold outreach emails are sent via **Salesforge** (MCP + API), NOT Superhuman dra
 - Salesforge handles: cold email sequences + LinkedIn DMs + follow-up automation
 - Superhuman stays for: warm/relationship emails only (thank-yous, intros, investor comms)
 
-**Review Model (Phase 1):** Morning briefing includes 5 rendered cold emails for Kay's review. Each shows target name, company, variant (Learning/Direct), and full email text with customVars filled in. Kay approves/edits. On approval, outreach-manager enrolls the batch in Salesforge. Edit rate determines graduation to Phase 2 (auto-enrollment with spot-check summary).
+**Review Model:** Auto-advance targets that pass buy box + ICP criteria are enrolled in Salesforge automatically — no Kay review needed. Warm intro targets and edge cases are surfaced in the morning briefing for Kay to decide (personal draft or Salesforge). Kay spot-checks Salesforge outputs. If she sees bad emails flowing, tighten criteria or adjust templates.
 
 Flow per approved target:
 ```
@@ -72,23 +72,22 @@ Flow per approved target:
 Salesforge API key: /tmp/salesforge-key.txt (read silently, never echo)
 Salesforge MCP: configured in .mcp.json with X-Salesforge-Key header
 
-### Outreach Cadence (Per Target)
+### G&B Cold Email Outreach Cadence (Universal — All Niches)
 
 | Day | Channel | Action |
 |-----|---------|--------|
 | Day 0 | Email (Salesforge) | Personalized cold email, A/B variant auto-assigned |
-| Day 2 | LinkedIn (Salesforge) | LinkedIn profile view |
-| Day 3 | Condition (Salesforge) | Replied? If yes, stop sequence |
-| Day 5 | Email (Salesforge) | Follow-up email, auto-send |
-| Day 7 | Condition (Salesforge) | Replied? + LinkedIn connection request if has URL |
-| Day 10 | Email (Salesforge) | Final email, auto-send |
-| Day 14 | LinkedIn (Salesforge) | If connection accepted, LinkedIn DM |
+| Day 3 | Email (Salesforge) | Follow-up email #1, auto-send (same thread) |
+| Day 6 | LinkedIn DM (Salesforge) | Standalone LinkedIn DM (must work without email context) |
+| Day 14 | Email (Salesforge) | Follow-up email #2 (final), auto-send (same thread) |
 
 After Day 14 with no response, move to nurture cadence (pipeline-manager handles from here).
 
-**Business days only.** All day counts are business days (Mon-Fri). No emails sent on weekends. If Day 0 is Thursday, Day 2 is the following Monday, not Saturday.
+**Business days only.** All day counts are business days (Mon-Fri). No emails sent on weekends.
 
-**Why this sequence:** The email establishes who Kay is and gives the owner time to check LinkedIn (where Kay's Chanel/luxury background closes the credibility gap). The Day 2 profile view creates a notification nudge. The Day 5 follow-up is a lightweight bump. LinkedIn connection request at Day 7 opens a second channel. The Day 14 DM (if connected) is the final touch in a warmer context.
+**Why this cadence:** 4 touchpoints across 14 days, two channels. Day 0 email establishes who Kay is and gives time to check LinkedIn. Day 3 follow-up shows genuine interest. Day 6 LinkedIn DM reaches them on a different channel (and works standalone if they never read emails). Day 14 final email references elapsed time ("since I first reached out") showing Kay's serious, not mass-emailing. No connection requests — they clutter Kay's network.
+
+**Reference doc:** "G&B Cold Email Outreach Cadence & Templates 4.4.26" in the master templates Drive folder.
 
 ### Target Sheet Columns (added by outreach-manager)
 
@@ -104,9 +103,9 @@ When outreach-manager receives approved targets, it writes to the target sheet:
 
 **Warm intro handling:** When a warm intro is found, note it in Col Q. Warm intro targets skip cold email entirely — instead, draft a warm intro request email for Kay via Superhuman.
 
-### Day 1: Kay's Email
+### Personalization Layer
 
-Every target gets a deeply personalized email. At 4-6 targets per day, there's no reason for templates.
+Every target gets personalized variables filled from the Pre-Draft Research Brief. The templates above are the structure — {specific detail}, {specific question}, and {connection point} are what make each email unique.
 
 **Voice:** Kay's calibrated outreach voice (see memory: user_outreach_voice.md)
 
@@ -116,41 +115,86 @@ Salesforge handles A/B variant distribution natively at 50/50 on the Day 0 email
 
 Warm intro targets are excluded from this experiment (they go through Superhuman, not Salesforge).
 
-**Learning (curiosity-first, loose approach)**
+**Subject line (both variants):** Intro {first name} & Kay
+
+**VARIANT A — Learning (curiosity-first)**
+
+Day 0:
 ```
-Subject: Quick question about {company}
+Hope this finds you well. I came across {company} and was really impressed by {specific detail}.
 
-Hi {first name},
+I am spending some time getting to know the {niche} space. {connection point}.
 
-{warm opener}. I came across {company} while looking into {niche} and was impressed by {something specific they built}. {Optional: real connection point — shared location, school, mutual contact}.
+I'd love to learn more about how you think about the business, especially {specific question}.
 
-I've been looking to get into the {niche} space and trying to learn as much as I can. Given your expertise I'd welcome the chance to hear your perspective.
+If you're available over the next few weeks, I'd greatly appreciate a short time to connect.
 
-If you're open, I'd love to find a short time to connect.
-
-Very best,
-Kay
-```
-
-**Direct (transparent intent)**
-```
-Subject: {niche} — quick introduction
-
-Hi {first name},
-
-{warm opener}. I came across {company} while looking into {niche} and was impressed by {something specific they built}.
-
-I'm a well-capitalized buyer looking to acquire a {niche} business and wondered if you or someone you know in the industry might be open to a conversation. I'm trying to learn as much as I can about the space.
-
-If you're open, I'd love to find a short time to connect.
-
-Very best,
-Kay
+Very best, Kay
 ```
 
-**What we're testing:** Does transparency about acquisition intent help or hurt response rates? Variant A positions Kay as a curious learner. Variant B is upfront about being a buyer but uses "you or someone you know" to take pressure off.
+Day 3 (same thread):
+```
+Was thinking more about {company}. Still hoping we can find some time to connect.
 
-**Tracking:** Salesforge tracks variant performance natively (open rate, reply rate per variant). Calibration agent analyzes after 20-30 sends (roughly 1 month at 4-6/day). Metrics: response rate, time to response, tone of response (warm vs defensive), conversion to call.
+Very best, Kay
+```
+
+Day 6 (LinkedIn DM — standalone):
+```
+Hi {first name}, your work at {company} caught my eye. I'm exploring the {industry} space and would love to chat if you're able.
+```
+
+Day 14 (same thread):
+```
+I've been learning more about the {industry} space since I first reached out and have some key questions I'd love to ask, as your reputation really stands out. Would love to connect if you're available.
+
+Very best, Kay
+```
+
+**VARIANT B — Direct (transparent acquisition intent)**
+
+Day 0:
+```
+Hope this finds you well. I came across {company} and was impressed by {specific detail}.
+
+Coming from the luxury industry, I'm looking to either build or acquire a business in the {industry} space. {connection point}.
+
+If you'd be open to a conversation, I'd greatly appreciate some time over the next few weeks.
+
+Very best, Kay
+```
+
+Day 3 (same thread):
+```
+Was thinking more about {company}. I'm a well capitalized buyer and think we could have a great conversation. Let me know when would be best to connect.
+
+Very best, Kay
+```
+
+Day 6 (LinkedIn DM — standalone):
+```
+Hi {first name}, I came across {company}. As you can see I've spent my career in the luxury space and am now looking to acquire a great business in the {industry} space. {company}'s reputation really stands out. Please let me know if you're free to chat.
+```
+
+Day 14 (same thread):
+```
+Since I first reached out I've explored the {industry} space and keep thinking back to {company}. Would love to connect if you're available.
+
+Very best, Kay
+```
+
+**Variables:**
+- {first name} — contact first name
+- {company} — company name
+- {specific detail} — researched detail about the company (unique per target, never generic)
+- {specific question} — researched question about their business (Variant A Day 0 only)
+- {niche} — niche name as on tracker (e.g., "art advisory", "fractional CFO")
+- {industry} — broader industry term (e.g., "art advisory", "financial advisory", "commercial pest management")
+- {connection point} — shared school, mutual contact, location. Omit entirely if none exists.
+
+**What we're testing:** Does transparency about acquisition intent help or hurt response rates? Variant A positions Kay as a curious learner. Variant B is upfront about being a buyer.
+
+**Tracking:** Salesforge tracks variant performance natively. Weekly tracker dashboard (Signal Quality lens) reviews A/B performance per niche. Metrics: response rate, time to response, tone of response (warm vs defensive), conversion to call.
 
 **HARD RULES (apply to BOTH variants):**
 - The email is about THEM, not Kay or G&B. Never mention Greenwich & Barrow. Never describe what Kay does. LinkedIn handles credibility (they'll check).
@@ -235,7 +279,7 @@ This creates native Superhuman drafts via CDP. Kay reviews and sends from Superh
 
 For cold outreach, add the contact to a Salesforge sequence via MCP with all personalized variables populated. Salesforge handles sending through Gmail automatically.
 
-**Subject line:** Default to "Introduction, Greenwich & Barrow" for all cold outreach. Kay adjusts for warm intros or shared interests when reviewing.
+**Subject line:** Default to "Intro {first name} & Kay" for all cold outreach. Warm intro emails through Superhuman may use a different subject.
 
 **Attio State Machine:**
 

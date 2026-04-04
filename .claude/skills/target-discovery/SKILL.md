@@ -21,9 +21,13 @@ This skill discovers acquisition targets via skill/list-builder (Apollo, primary
 - **skill/niche-intelligence** — activated niche with one-pager, scorecard, buy-box target validation, ICP criteria
 - **skill/pipeline-manager** — existing Attio contacts in this niche, intermediary referrals, deals already in pipeline (to avoid duplicates)
 
-**Outputs to other skills:**
-- Approved target list → skill/list-builder (Apollo search) + skill/outreach-manager (email drafts)
-- Approved target list (Col O = "Approve") → skill/outreach-manager creates Attio entry at "Identified" → skill/pipeline-manager takes over from here
+**Outputs to other skills (routed by Outreach Channel — Col K on WEEKLY REVIEW):**
+- `Salesforge` → Approved targets go to skill/outreach-manager for email sequences + Attio entry at "Identified"
+- `JJ-Call-Only` → Approved targets go to skill/jj-operations call queue. No Salesforge email sequences. JJ cold calls only.
+- `Salesforge+JJ` → Both email sequence via outreach-manager AND JJ call queue
+- `TBD` → Hold, do not route until Kay sets the channel
+
+**CRITICAL:** Always read Col K (Outreach Channel) from WEEKLY REVIEW before routing approved targets. Default is Salesforge if column is empty, but never assume — check first.
 
 Goal: 4-6 qualified targets per day.
 </objective>
@@ -231,6 +235,26 @@ If the niche is running dry or ICP is consistently off, escalate to Kay. Don't w
 ## Validation (Stop Hooks)
 
 After target discovery completes, verify all deliverables before notifying Kay:
+
+### Step 0: Outreach Channel Gate (HARD STOP — runs FIRST before any routing)
+
+Before routing ANY approved targets to outreach-manager or jj-operations, read Col K (Outreach Channel) from WEEKLY REVIEW for this niche:
+
+```bash
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B4:K20" -a kay.s@greenwichandbarrow.com -j
+```
+
+**Match the niche name to the correct row, then read Col K.**
+
+| Col K Value | Route To | Action |
+|-------------|----------|--------|
+| `Salesforge` | skill/outreach-manager | Email sequences via Salesforge |
+| `JJ-Call-Only` | skill/jj-operations call queue | JJ cold calls only. NO Salesforge. NO email sequences. |
+| `Salesforge+JJ` | Both outreach-manager AND jj-operations | Email sequence + JJ calls |
+| `TBD` | **STOP. Do not route.** | Notify Kay: "Outreach Channel not set for {niche}. Cannot route targets." |
+| Empty/missing | **STOP. Do not route.** | Notify Kay: "Outreach Channel column (K) is empty for {niche}. Cannot route targets." |
+
+**This is a HARD STOP.** If Col K is empty, missing, or "TBD", target-discovery MUST NOT hand targets to any downstream skill. Discovery can continue (finding and enriching targets), but routing is blocked until Kay sets the channel. Log the block in the daily briefing.
 
 ### Step 1: Sheet Validation
 - Confirm Google Sheet in LINKT TARGET LISTS folder has new rows with today's date

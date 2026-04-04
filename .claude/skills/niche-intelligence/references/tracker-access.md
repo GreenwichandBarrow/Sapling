@@ -35,6 +35,7 @@ gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichan
 | H | Target Pool |
 | I | Red flags |
 | J | Quick notes |
+| K | Outreach Channel (orange header — agent-trigger) |
 
 ### IDEATION
 | Col | Field |

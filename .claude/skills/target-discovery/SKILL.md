@@ -124,8 +124,21 @@ Apollo /people/match → {
 } → verified business email
 ```
 
-#### Phase E: Assemble Complete Row
-Only after Phases A-D complete, assemble the row with all columns populated. Then check the Write Gate.
+#### Phase E: Warm Intro Check (STOP HOOK — runs BEFORE any sheet write)
+
+**No target is written to the sheet until this check completes.** This is a HARD STOP.
+
+Run warm-intro-finder for each target: search Attio People records for the owner name AND anyone at their company. Check vault entities, Gmail history, and network contacts.
+
+| Result | Action |
+|--------|--------|
+| Warm intro path found | **DO NOT write to sheet.** Route to morning briefing: "{Name}, {Company} — warm intro via {connection}. Draft or Salesforge?" Kay decides. |
+| No warm intro path | Proceed to Phase F (assemble row). |
+
+**Why this exists:** Warm intros are higher-conversion than cold email. If Kay has a path to the owner through her network, burning that with a Salesforge sequence is worse than no outreach at all. The warm intro check MUST run before the target enters any automated pipeline.
+
+#### Phase F: Assemble Complete Row
+Only after Phases A-E complete, assemble the row with all columns populated. Then check the Write Gate.
 
 **CRITICAL: Apollo People Search (`/mixed_people/search`) returns `None` for names and LinkedIn URLs without credit spend.** The "free" endpoint only confirms people exist at a company. Do NOT rely on it for owner names or LinkedIn profiles. Use web search (Phase B and C) instead.
 
@@ -175,21 +188,23 @@ This checklist runs sequentially for EVERY target BEFORE Col O is set to "Approv
 **Hard Stops (block auto-advance, set Col O = "Pass"):**
 
 1. **PE ownership check.** Search for PE/VC ownership signals: Apollo org data, web search `"{company name}" "portfolio company" OR "acquired by" OR "backed by"`. If PE ownership detected → Col O = "Pass", Col P = "PE-owned ({evidence})". STOP — skip remaining checks.
-2. **Email verification check.** Read Apollo email status from Phase D enrichment. If status is guessed, unavailable, or bounced → Col O = "Pass", Col P = "Email not verified ({status})". STOP — skip remaining checks.
-3. **Owner identification check.** Read Col I (Owner Name). If name is "Unknown", blank, or generic (e.g., "Info", "Admin", "Contact", "Office") → Col O = "Pass", Col P = "Owner not identified". STOP — skip remaining checks.
+2. **Email verification check.** Read Apollo email status from Phase D enrichment. If status is guessed, unavailable, or bounced AND no LinkedIn Owner URL exists → Col O = "Pass", Col P = "Email not verified ({status})". STOP — skip remaining checks. (If email is unavailable but LinkedIn Owner exists, target is still valid as a LinkedIn DM target — do not pass.)
+3. **Generic email check.** If the only email is a generic address (info@, office@, contact@, hello@, admin@, general@, gallery@, art@) → Col O = "Pass", Col P = "Email not verified (generic)". STOP — skip remaining checks. Generic emails are never used for outreach.
+4. **Wrong domain email check.** If Apollo returned an email on a different domain than the company (e.g., university email, previous employer) → Col O = "Pass", Col P = "Email not verified (wrong domain)". STOP — skip remaining checks.
+5. **Owner identification check.** Read Col I (Owner Name). If name is "Unknown", blank, or generic (e.g., "Info", "Admin", "Contact", "Office") → Col O = "Pass", Col P = "Owner not identified". STOP — skip remaining checks.
 
 **Soft Filters (flag but do NOT block auto-advance):**
 
-4. **California check.** If HQ state is California → add note in Col Q: "CAUTION: California-based". Do not block.
-5. **Very small company check.** If employee count < 5 → add note in Col Q: "CAUTION: Very small ({count} employees)". Do not block.
+6. **California check.** If HQ state is California → add note in Col Q: "CAUTION: California-based". Do not block.
+7. **Very small company check.** If employee count < 5 → add note in Col Q: "CAUTION: Very small ({count} employees)". Do not block.
 
-**Warm Intro Check (routes differently, not a block):**
+**Warm Intro Check (routes differently, not a block — already ran in Phase E):**
 
-6. **Warm intro check.** Run warm-intro-finder: search Attio People records for the target owner AND anyone at their company. If Kay has an existing connection → do NOT auto-advance. Instead, route to morning briefing as warm intro target. Format: "{Name}, {Company} — warm intro via {connection}. Draft or Salesforge?"
+8. **Warm intro check.** This was already executed in Phase E before the target reached the sheet. If Phase E flagged a warm intro path, the target was routed to the morning briefing and never reached this point. This check is a safety net: if a target somehow reached the sheet without Phase E running, re-run warm-intro-finder now. If warm intro found → do NOT auto-advance. Route to morning briefing: "{Name}, {Company} — warm intro via {connection}. Draft or Salesforge?"
 
 **Edge Case Routing:**
 
-7. **Multi-flag edge case.** If a target passes all hard stops but has 2+ soft filter flags from checks 4-5 → do NOT auto-advance. Route to morning briefing as edge case. Format: "{Name}, {Company} — multiple flags: {list flags}. Approve or Pass?"
+9. **Multi-flag edge case.** If a target passes all hard stops but has 2+ soft filter flags from checks 6-7 → do NOT auto-advance. Route to morning briefing as edge case. Format: "{Name}, {Company} — multiple flags: {list flags}. Approve or Pass?"
 
 Only targets that clear all hard stops, have 0-1 soft flags, and have no warm intro path proceed to auto-advance below.
 

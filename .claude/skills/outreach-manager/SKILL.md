@@ -66,7 +66,7 @@ Flow per approved target:
 3. Create Attio entry at "Identified" stage
 ```
 4. Salesforge sends Day 0 email automatically through Gmail
-5. Salesforge sends Day 5 follow-up and Day 10 final touch automatically
+5. Salesforge sends Day 3 follow-up, Day 6 LinkedIn DM, and Day 14 final email automatically
 6. Pipeline-manager reads Salesforge stats via MCP for tracking
 
 Salesforge API key: /tmp/salesforge-key.txt (read silently, never echo)
@@ -325,9 +325,9 @@ Would {owner name} have a few minutes for a quick call?
 
 See target-discovery/references/drive-locations.md for full column layout.
 
-### Day 5-6: Follow-Up Email
+### Follow-Up Emails
 
-For Salesforge sequences, the Day 5 follow-up email is automatic (no manual drafting needed). Salesforge sends it as the second email node in the sequence.
+For Salesforge sequences, Day 3 and Day 14 follow-ups are automatic (no manual drafting needed). Salesforge sends them as same-thread replies per the approved templates above.
 
 Manual follow-up drafting applies only to warm/relationship emails sent via Superhuman. For those:
 
@@ -343,7 +343,7 @@ Draft in Superhuman via CLI. Kay reviews and sends.
 
 ### LinkedIn Actions (Connection-Degree Based)
 
-For targets in Salesforge sequences, LinkedIn actions (profile view, connection request, DM) are automated via Salesforge social actions at the cadence defined above (Day 2 profile view, Day 7 connection request, Day 14 DM if accepted). No manual Slack DM drafts needed for sequenced targets.
+For targets in Salesforge sequences, the Day 6 LinkedIn DM is automated via Salesforge social actions per the approved templates above. The DM must work standalone — the recipient may not have seen the emails. No manual Slack DM drafts needed for sequenced targets.
 
 **Manual Slack DM drafts only for:**
 - Warm intros (not in Salesforge)
@@ -567,9 +567,10 @@ For intermediaries identified through niche research, not tied to a specific con
 
 | Day | Channel | Action |
 |-----|---------|--------|
-| Day 1 | Email (Superhuman) | Personalized "learning about the industry" email |
-| Day 5 | Email (Superhuman) | Follow-up if no response |
-| Day 10 | LinkedIn DM (Kay) | High-value only |
+| Day 0 | Email (Superhuman) | Personalized "learning about the industry" email |
+| Day 3 | Email (Superhuman) | Follow-up if no response |
+| Day 6 | LinkedIn DM (Kay) | High-value only |
+| Day 14 | Email (Superhuman) | Final touch if no response |
 
 No JJ call. Intermediaries should only hear from Kay directly.
 
@@ -601,13 +602,13 @@ During the testing phase, outreach-manager only drafts outreach for targets wher
 ### Volume & Cadence
 - 4-6 cold targets per day (funds that acquired averaged 4, not 9)
 - Quality over quantity — deep research on each target, personalized outreach
-- Sequenced multi-channel via Salesforge: email Day 0 → profile view Day 2 → follow-up Day 5 → connection request Day 7 → final email Day 10 → DM Day 14
+- Sequenced multi-channel via Salesforge: email Day 0 → follow-up Day 3 → LinkedIn DM Day 6 → final email Day 14
 - Conference targets excluded from cold cadence (conference outreach subagent owns that relationship)
 
 ### Channel Rules
 - **Email (cold):** Via Salesforge sequences (auto-send through Gmail). **Email (warm/relationship):** Via Superhuman drafts. Never Gmail API directly.
 - **Phone:** JJ's call sheet in Google Sheets. JJ logs outcomes.
-- **LinkedIn DM:** For Salesforge sequences, LinkedIn actions are automated (profile view, connection request, DM). For warm/conference targets, Kay sends manually from LinkedIn. Outreach-manager drafts and delivers via Slack (#ai-operations). Tracked in Attio and Salesforge.
+- **LinkedIn DM:** For Salesforge sequences, Day 6 LinkedIn DM is automated. For warm/conference targets, Kay sends manually from LinkedIn. Outreach-manager drafts and delivers via Slack (#ai-operations). Tracked in Attio and Salesforge.
 - **All channels:** Same voice, same framing (curiosity, not acquisition pitch).
 
 ### Team Roles (for this skill only)
@@ -616,7 +617,7 @@ During the testing phase, outreach-manager only drafts outreach for targets wher
 - **JJ:** Confirmation calls from sheet, log outcomes
 
 ### Coordination with Other Skills
-- **pipeline-manager:** After Day 10 with no response, pipeline-manager takes over with nurture cadence. Outreach-manager does not re-contact nurture targets unless pipeline-manager flags them.
+- **pipeline-manager:** After Day 14 with no response, pipeline-manager takes over with nurture cadence. Outreach-manager does not re-contact nurture targets unless pipeline-manager flags them.
 - **weekly-tracker:** Outreach metrics (emails sent, calls made, response rates) feed into the weekly activity tracker.
 </essential_principles>
 
@@ -659,7 +660,7 @@ Confirm Attio was checked before any drafting began. No person should have outre
 For Salesforge-sequenced cold targets, cadence tracking is handled by Salesforge natively. Verify each target was successfully enrolled in the correct sequence. No JJ call entry is required for Salesforge targets. For warm intro targets where Kay requested a JJ call, verify the call entry exists. Warm intro emails sent via Superhuman should NOT have an automatic Day 3 call entry unless Kay specifically requested one.
 
 ### 5b. LinkedIn DM Validation
-For Salesforge-sequenced targets with a LinkedIn URL, verify the sequence includes LinkedIn social action nodes (profile view at Day 2, connection request at Day 7, DM at Day 14). Salesforge handles these automatically.
+For Salesforge-sequenced targets with a LinkedIn URL, verify the sequence includes a Day 6 LinkedIn DM node. Salesforge handles this automatically.
 
 For warm/conference targets, verify a LinkedIn DM Slack message was created if the target has a LinkedIn URL in Col M.
 
@@ -682,7 +683,7 @@ Replace `{n}` with actual counts. If validation failed, report the failure detai
 - [ ] Cold targets enrolled in Salesforge sequences (confirmed via MCP)
 - [ ] Warm/conference email drafts ready for Kay's review in Superhuman
 - [ ] No duplicate outreach across funnels (dedup layer verified)
-- [ ] LinkedIn actions configured in Salesforge sequence for targets with LinkedIn URLs
+- [ ] Day 6 LinkedIn DM configured in Salesforge sequence for targets with LinkedIn URLs
 - [ ] Manual LinkedIn DM drafts delivered via Slack for warm/conference targets only
 
 ### Weekly
@@ -691,4 +692,5 @@ Replace `{n}` with actual counts. If validation failed, report the failure detai
 - [ ] Post-conference follow-ups drafted within 24 hours
 - [ ] Outreach metrics available for weekly tracker (Salesforge stats + Attio stages)
 - [ ] Salesforge sequence health check (bounce rates, reply rates, LinkedIn action completion)
+- [ ] A/B variant performance reviewed (Signal Quality on weekly tracker dashboard)
 </success_criteria>

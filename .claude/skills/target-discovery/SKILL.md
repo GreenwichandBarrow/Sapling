@@ -56,8 +56,9 @@ For EVERY target, regardless of source (Apollo, web research, associations, refe
 1. **Company data** (Apollo org search or web) → LinkedIn page, employee count, HQ
 2. **Owner identification** (company website, LinkedIn People tab, web search)
 3. **Owner LinkedIn** (web search)
-4. **Email verification** (Apollo people match, 1 credit)
-5. **Write complete row** → only after all phases pass
+4. **Email verification** (Apollo people match, 1 credit — ONLY email source)
+5. **Warm intro check** (HARD STOP — Attio, vault, Gmail network search)
+6. **Write complete row** → only after all phases pass, warm intro cleared
 
 ### Step 1: Discover Companies
 

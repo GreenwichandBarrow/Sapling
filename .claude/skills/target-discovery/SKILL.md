@@ -118,6 +118,9 @@ If no result: try without company name, verify by title/location match.
 **Not a gate** — some people genuinely don't have LinkedIn (common in fine art world). Mark Col M as "No LinkedIn presence" and move on.
 
 #### Phase D: Email Verification (1 credit per target)
+
+**Apollo is the ONLY source for emails.** Web research provides owner names, titles, and LinkedIn URLs. It does NOT provide emails. Never scrape emails from company websites, directories, or web search results — those are unverified and frequently wrong (generic inboxes, old addresses, wrong people).
+
 ```
 Apollo /people/match → {
   first_name, last_name, organization_name, domain
@@ -125,16 +128,12 @@ Apollo /people/match → {
 ```
 
 **Domain-match validation (runs on ALL emails, including pre-existing):**
-Before accepting any email — whether from Apollo, web research, or already on the sheet — validate that the email domain matches the company domain. If the email domain ≠ company website domain, treat the email as invalid and either:
-1. Run Apollo `/people/match` to get the correct email (1 credit), OR
-2. If Apollo returns unavailable, mark the email as empty and flag for LinkedIn DM
+If a row already has an email from a prior data source (Linkt, manual entry, etc.), do NOT trust it. Validate that the email domain matches the company website domain. If email domain ≠ company domain → discard the email and run Apollo `/people/match` to get the correct one. If Apollo returns unavailable, mark email as empty (target becomes LinkedIn DM candidate).
 
 Examples of domain mismatches to catch:
 - Owner works at Company A, but email is `name@companyB.com` (previous employer)
 - Email is a university address (`name@university.edu`) for a business owner
 - Email belongs to a different person at a different company
-
-**This check prevents inherited bad data from upstream sources (web research, Linkt) from bypassing Apollo validation.** If a row already has an email, do NOT assume it's correct — verify the domain matches first.
 
 #### Phase E: Warm Intro Check (STOP HOOK — runs BEFORE any sheet write)
 

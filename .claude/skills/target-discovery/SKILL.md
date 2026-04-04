@@ -124,6 +124,18 @@ Apollo /people/match → {
 } → verified business email
 ```
 
+**Domain-match validation (runs on ALL emails, including pre-existing):**
+Before accepting any email — whether from Apollo, web research, or already on the sheet — validate that the email domain matches the company domain. If the email domain ≠ company website domain, treat the email as invalid and either:
+1. Run Apollo `/people/match` to get the correct email (1 credit), OR
+2. If Apollo returns unavailable, mark the email as empty and flag for LinkedIn DM
+
+Examples of domain mismatches to catch:
+- Owner works at Company A, but email is `name@companyB.com` (previous employer)
+- Email is a university address (`name@university.edu`) for a business owner
+- Email belongs to a different person at a different company
+
+**This check prevents inherited bad data from upstream sources (web research, Linkt) from bypassing Apollo validation.** If a row already has an email, do NOT assume it's correct — verify the domain matches first.
+
 #### Phase E: Warm Intro Check (STOP HOOK — runs BEFORE any sheet write)
 
 **No target is written to the sheet until this check completes.** This is a HARD STOP.

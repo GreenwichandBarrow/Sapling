@@ -27,7 +27,7 @@ This skill discovers acquisition targets via skill/list-builder (Apollo, primary
 - `Salesforge+JJ` → Both email sequence via outreach-manager AND JJ call queue
 - `TBD` → Hold, do not route until Kay sets the channel
 
-**CRITICAL:** Always read Col K (Outreach Channel) from WEEKLY REVIEW before routing approved targets. Default is Salesforge if column is empty, but never assume — check first.
+**CRITICAL:** Always read Col D (Outreach Channel) from WEEKLY REVIEW before routing approved targets. Default is Salesforge if column is empty, but never assume — check first.
 
 Goal: 4-6 qualified targets per day.
 </objective>
@@ -238,7 +238,7 @@ After target discovery completes, verify all deliverables before notifying Kay:
 
 ### Step 0: Outreach Channel Gate (HARD STOP — runs FIRST before any routing)
 
-Before routing ANY approved targets to outreach-manager or jj-operations, read Col K (Outreach Channel) from WEEKLY REVIEW for this niche:
+Before routing ANY approved targets to outreach-manager or jj-operations, read Col D (Outreach Channel) from WEEKLY REVIEW for this niche:
 
 ```bash
 gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B4:K20" -a kay.s@greenwichandbarrow.com -j

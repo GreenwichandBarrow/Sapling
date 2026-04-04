@@ -23,19 +23,19 @@ gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichan
 ## Tab Column Structures
 
 ### WEEKLY REVIEW
-| Col | Field |
-|-----|-------|
-| A | Rank |
-| B | Niche Hypothesis |
-| C | Start Date |
-| D | Current Status |
-| E | Score |
-| F | Days in Review |
-| G | QSBS |
-| H | Target Pool |
-| I | Red flags |
-| J | Quick notes |
-| K | Outreach Channel (orange header — agent-trigger) |
+| Col | Field | Agent-Trigger? |
+|-----|-------|----------------|
+| A | Rank | |
+| B | Niche Hypothesis | |
+| C | Current Status | ORANGE — triggers pipeline-manager, target-discovery |
+| D | Outreach Channel | ORANGE — gates target routing (Salesforge / JJ-Call-Only / Salesforge+JJ / TBD) |
+| E | Score | |
+| F | QSBS | |
+| G | Target Pool | |
+| H | Quick notes | |
+| I | Red flags noted | |
+| J | Start Date | |
+| K | Days in Review | |
 
 ### IDEATION
 | Col | Field |

@@ -209,7 +209,7 @@ Skills run on a schedule via macOS launchd, independent of active sessions:
 | `email-intelligence` | Mon-Fri 7am ET | Gmail/Superhuman/Granola scanning, email-scan-results artifact |
 | `jj-operations` (prep) | Mon-Fri 8am ET | JJ call prep, Call Log creation, Slack draft |
 | `jj-operations` (harvest) | Mon-Fri 4pm ET | Read Call Logs, update master sheet |
-| `target-discovery` | Mon-Fri 10am ET | Daily target finding for Active-Outreach niches, hands to outreach-manager |
+| `target-discovery` | Morning workflow (not launchd) | Daily target finding for Active-Outreach niches, triggered by pipeline-manager |
 | `niche-intelligence` | Tuesday 11pm ET | Newsletter scrape, niche identification, one-pagers, scorecards |
 | `niche-intelligence` (daily) | Nightly | Sprint status tracking, Tabled/Killed processing |
 
@@ -246,13 +246,14 @@ When Kay says good morning:
 2. Run relationship-manager in parallel (nurture cadences, overdue contacts → writes relationship-status artifact)
 3. Read `brain/context/session-decisions-{previous-workday}.md` — cross-reference all items against today's scan results. Suppress decided items. Surface verification for decisions without confirmed actions. Honor deferrals until trigger date.
 4. Run pipeline-manager (reads all artifacts including session decisions + calendar + vault + Attio → assembles briefing)
-5. jj-operations runs independently (8am launchd → 10am Slack to JJ)
-6. If Friday → run three review skills in parallel (Kay needs results by 10am ET):
+5. Run target-discovery for all Active-Outreach niches (reads tracker → finds niches needing targets → runs list-builder → populates sheets). Routes by Outreach Channel: Salesforge Email → outreach-manager, JJ-Call-Only → jj-operations.
+6. jj-operations runs independently (8am launchd → 10am Slack to JJ)
+7. If Friday → run three review skills in parallel (Kay needs results by 10am ET):
    - weekly-tracker (activity data → sheet + vault)
    - health-monitor (system health → dashboard + alerts)
    - calibration-workflow (decision traces → skill improvements)
-7. Read the results and judge what needs to happen
-8. Present the briefing in 6 consistent sections (ascending numbering across all sections, including pipeline summary):
+8. Read the results and judge what needs to happen
+9. Present the briefing in 6 consistent sections (ascending numbering across all sections, including pipeline summary):
    - Pipeline shifts to review/approve
    - Pipeline summary (numbered, open items only)
    - Action items to review/approve
@@ -273,13 +274,13 @@ When Kay says good morning:
   - **Wednesday:** + niche-intelligence (sprint status, new niches this week)
   - **Friday:** + weekly-tracker, health-monitor, calibration-workflow (ran or pending)
 - Only expand beyond 1 line if something is broken, blocked, or needs Kay's decision
-9. Based on signals, invoke downstream skills:
+10. Based on signals, invoke downstream skills:
    - Niche status changed to Active-Outreach → target-discovery (full 4-6 targets/day) + list-builder (Apollo search) + outreach-manager (email drafts)
    - Monday → conference pipeline review (conference-discovery owns decisions)
    - CIM received → deal-evaluation (email-intelligence auto-triggers)
    - Email sent to target → Attio update + JJ call countdown
    - Target approved on sheet → outreach-manager + call log generation
-10. Kay reviews outputs as they arrive
+11. Kay reviews outputs as they arrive
 
 ## Evening Workflow
 

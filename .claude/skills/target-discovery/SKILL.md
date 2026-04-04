@@ -243,9 +243,9 @@ Before routing ANY approved targets to outreach-manager or jj-operations, read C
 gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B4:K20" -a kay.s@greenwichandbarrow.com -j
 ```
 
-**Match the niche name to the correct row, then read Col K.**
+**Match the niche name to the correct row, then read Col D.**
 
-| Col K Value | Route To | Action |
+| Col D Value | Route To | Action |
 |-------------|----------|--------|
 | `Salesforge Email` | skill/outreach-manager | Email sequences via Salesforge |
 | `JJ-Call-Only` | skill/jj-operations call queue | JJ cold calls only. NO Salesforge. NO email sequences. |

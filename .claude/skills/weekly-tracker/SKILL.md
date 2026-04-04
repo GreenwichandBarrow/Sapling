@@ -442,6 +442,43 @@ The Slack message must always include the 4 key metrics and the Sheet link.
 <sheet_structure>
 ## Google Sheet Structure
 
+### Tab 0: Dashboard
+Kay's process optimization view. Presents 10 high-level questions that surface where the pipeline needs tuning. This is NOT system health (that's health-monitor's job) — it's about **process optimization decisions** through two lenses:
+
+- **Signal Quality** — Are we reaching the right people with the right message?
+- **System Throughput** — Is the pipeline flowing or stuck?
+
+**Current questions (populated):**
+
+| # | Question | Lens | Data Source | Decision Trigger |
+|---|----------|------|-------------|-----------------|
+| 1 | Do any niches need more targets? | System Throughput | Read each niche's target sheet — count rows by Col O status (Identified, Contacted, etc.) and outreach status. Flag any niche where remaining uncontacted targets < 10. | "Fractional CFO needs refill" → triggers target-discovery for that niche |
+| 2 | Which email variant is winning per niche? | Signal Quality | Salesforge MCP sequence analytics — pull open rate, reply rate, meeting rate per variant (A vs B) for each active niche. | "Variant A outperforming in Art Advisory" → shift more targets to Variant A |
+
+**Placeholder questions (3-10):**
+
+| # | Question | Lens |
+|---|----------|------|
+| 3 | [Placeholder — to be added as process matures] | — |
+| 4 | [Placeholder — to be added as process matures] | — |
+| 5 | [Placeholder — to be added as process matures] | — |
+| 6 | [Placeholder — to be added as process matures] | — |
+| 7 | [Placeholder — to be added as process matures] | — |
+| 8 | [Placeholder — to be added as process matures] | — |
+| 9 | [Placeholder — to be added as process matures] | — |
+| 10 | [Placeholder — to be added as process matures] | — |
+
+**Data collection for active questions:**
+- **Q1 (target refill):** For each active niche sprint, read the niche's target sheet. Count total rows, rows where Col O = any contacted/outreached status, and rows where Col O = Identified (uncontacted). If uncontacted < 10, flag the niche name and remaining count.
+- **Q2 (variant performance):** Use Salesforge MCP (`list_sequences` → `get_sequence` per niche). For each sequence with A/B variants, pull: open rate, reply rate, and meeting-booked rate per variant. Present side-by-side comparison.
+
+**How dashboard feeds decisions:**
+- Dashboard presents data and recommendations. Kay decides. Do NOT auto-act on dashboard findings.
+- Q1 refill recommendation → Kay approves → target-discovery runs for that niche.
+- Q2 variant recommendation → Kay approves → sequence settings updated in Salesforge.
+
+**Sheet layout:** One row per question. Columns: Question #, Question, Lens, Current Answer, Recommendation, Last Updated. Answers and recommendations are overwritten each week.
+
 ### Tab 1: Weekly Topline
 Kay's glanceable view. 4 key metrics only.
 

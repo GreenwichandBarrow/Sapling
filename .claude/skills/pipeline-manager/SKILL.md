@@ -131,7 +131,7 @@ Pipeline shifts to review/approve:
 Pipeline summary:
 Active Deals: {total} ({n} Identified, {n} Contacted, {n} Financials Received)
 Intermediary: {total} ({n} Actively Receiving, {n} Warmed, {n} Contacted)
-Niches: {n} Active-Outreach, {n} Active-Wind Down
+Niches: {n} Active-Outreach, {n} Active-Long Term
 Stale deals: {n} entries in same stage 2+ weeks
 
 Motion action steps to review/approve:
@@ -363,7 +363,7 @@ Niche sprints have 4 active states tracked on the Industry Research Tracker:
 |--------|---------|------------------------|----------|
 | Under Review | Niche identified, one-pager and scorecard in progress. | None | None |
 | Active-Outreach | Full owner outreach active. | 4-6 targets/day | Full cadence via Salesforge (email sequence → follow-ups → LinkedIn DM) |
-| Active-Wind Down | Niche winding down, finishing existing pipeline. | No new targets | Complete existing cadences only |
+| Active-Long Term | Niche winding down, finishing existing pipeline. | No new targets | Complete existing cadences only |
 | Tabled/Killed | Sprint stopped. | None | None |
 
 New niches go straight from Under Review to Active-Outreach when Kay approves. No intermediate validation gate. Customer validation happens organically through owner conversations and deal flow, not as a separate phase.
@@ -379,7 +379,7 @@ When Kay changes a niche status during a session (e.g., approves a niche to Acti
 3. **Fire downstream skills:**
    - Active-Outreach approved --> trigger target-discovery for that niche (begins building target list)
    - Tabled/Killed --> cancel any pending target-discovery runs, stop outreach-manager drafts for that niche
-   - Active-Wind Down --> stop target-discovery, let existing outreach cadences complete
+   - Active-Long Term --> stop target-discovery, let existing outreach cadences complete
 
 ### JJ Daily Call Prep
 
@@ -776,7 +776,7 @@ These signals are NOT surfaced during the daily pipeline review. They queue sile
 
 ## Active Niche Sprint Detection (runs daily)
 
-Check the Industry Research Tracker WEEKLY REVIEW tab for any niche with status starting with "Active" (Active-Outreach or Active-Wind Down):
+Check the Industry Research Tracker WEEKLY REVIEW tab for any niche with status starting with "Active" (Active-Outreach or Active-Long Term):
 
 ```bash
 gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B3:D20" -a kay.s@greenwichandbarrow.com -j
@@ -785,7 +785,7 @@ gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B3:D2
 Niche sprint status tracking (WEEKLY REVIEW monitoring, Active/Tabled/Killed transitions, folder moves, target-discovery triggers, phase compliance checks) is now handled by niche-intelligence. Pipeline-manager reads the niche-sprint-status artifact at `brain/context/niche-sprint-status-{date}.md` for the morning briefing summary line:
 
 ```
-Niches: {n} Active-Outreach, {n} Active-Wind Down, {n} Under Review
+Niches: {n} Active-Outreach, {n} Active-Long Term, {n} Under Review
 ```
 
 If the artifact is missing (niche-intelligence didn't run overnight), pipeline-manager does a lightweight read of the WEEKLY REVIEW tab column D to count active niches for the summary line only — it does NOT process transitions or move rows.

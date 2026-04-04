@@ -134,7 +134,7 @@ gog drive move {folder_id} --parent {target_status_folder_id} -a kay.s@greenwich
 
 **Nightly audit sort order (pipeline-manager):**
 1. Active - Outreach
-2. Active - Wind Down
+2. Active - Long Term
 3. Under Review
 4. New
 (Tabled and Killed get moved to their own tabs overnight — never appear in sorted list)
@@ -143,7 +143,7 @@ gog drive move {folder_id} --parent {target_status_folder_id} -a kay.s@greenwich
 - New — just came through pipeline
 - Under Review — analyst evaluating
 - Active - Outreach — full target discovery (4-6/day) with owner outreach cadence (agent trigger)
-- Active - Wind Down — finishing in-flight outreach, no NEW targets but continue existing outreach sequences
+- Active - Long Term — finishing in-flight outreach, no NEW targets but continue existing outreach sequences
 - Tabled — moved to TABLED tab overnight
 - Killed — moved to KILLED tab overnight
 

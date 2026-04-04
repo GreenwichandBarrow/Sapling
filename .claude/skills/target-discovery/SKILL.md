@@ -15,7 +15,7 @@ This skill discovers acquisition targets via skill/list-builder (Apollo, primary
 
 **Trigger:** Niche status changes to Active-Outreach on the Industry Research Tracker. All Active-Outreach niches run at full 4-6 targets/day.
 
-**Pipeline stages:** Under Review → Active-Outreach → Wind Down → Tabled/Killed
+**Pipeline stages:** Under Review → Active-Outreach → Long Term → Tabled/Killed
 
 **Inputs from other skills:**
 - **skill/niche-intelligence** — activated niche with one-pager, scorecard, buy-box target validation, ICP criteria

@@ -383,13 +383,13 @@ Column D (Current Status) has an **orange header** — this is an agent-trigger 
 ### Detection Logic
 
 1. Read all WEEKLY REVIEW rows
-2. For each row where Status starts with "Active" (matches Active - Outreach, Active - Wind Down):
+2. For each row where Status starts with "Active" (matches Active - Outreach, Active - Long Term):
    - Check LINKT TARGET LISTS folder for a "{Niche} - Target List" sheet
    - If sheet exists with rows dated today → already running, skip
    - If no sheet or no recent rows → trigger target-discovery
 3. Phase-specific behavior:
    - **Active - Outreach:** Target-discovery at full 4-6 targets/day with full outreach cadence.
-   - **Active - Wind Down:** Continue existing outreach sequences, no NEW targets.
+   - **Active - Long Term:** Continue existing outreach sequences, no NEW targets.
 
 ### New Active Sprint Detection
 
@@ -417,7 +417,7 @@ When status = "Tabled" or "Killed":
 - New — just added from pipeline, pending analyst review
 - Under Review — analyst evaluating
 - Active - Outreach — full target discovery with owner outreach cadence
-- Active - Wind Down — finishing in-flight outreach, no NEW targets but continue existing sequences
+- Active - Long Term — finishing in-flight outreach, no NEW targets but continue existing sequences
 - Ideation — deprioritized, stays on WEEKLY REVIEW but sorted to bottom
 - Tabled — moves to TABLED tab overnight
 - Killed — moves to KILLED tab overnight
@@ -432,7 +432,7 @@ After processing, write a lightweight artifact for pipeline-manager to read:
 brain/context/niche-sprint-status-{date}.md
 ```
 
-Contents: list of active niches with their phase (Outreach/Wind Down) and any transitions detected. Pipeline-manager reads this for the morning briefing summary line.
+Contents: list of active niches with their phase (Outreach/Long Term) and any transitions detected. Pipeline-manager reads this for the morning briefing summary line.
 
 ### Nightly Audit Stop Hooks
 
@@ -443,7 +443,7 @@ Contents: list of active niches with their phase (Outreach/Wind Down) and any tr
 - Verify target-discovery stopped for this niche
 
 **2. Sort Validation:**
-- Confirm sort order: Active - Outreach > Active - Wind Down > Under Review > New > Ideation
+- Confirm sort order: Active - Outreach > Active - Long Term > Under Review > New > Ideation
 - Confirm no data lost (row count before = row count after)
 
 **3. Target List Template Validation (new Active sprints):**

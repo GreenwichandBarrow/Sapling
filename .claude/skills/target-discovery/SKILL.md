@@ -168,17 +168,44 @@ When Kay marks a row "Pass" in Col O, move it to the "Passed" tab with all data 
 
 ### Step 3: Auto-Advance & Triage
 
-After enrichment and write gate, the agent scores each target against buy box criteria (no PE-owned, no California soft filter, right size range, owner identified with verified email) AND niche ICP criteria. Targets are triaged into three buckets:
+#### Auto-Advance Stop Hook (CRITICAL)
+
+This checklist runs sequentially for EVERY target BEFORE Col O is set to "Approve". If any hard stop triggers, skip remaining checks and set Pass immediately.
+
+**Hard Stops (block auto-advance, set Col O = "Pass"):**
+
+1. **PE ownership check.** Search for PE/VC ownership signals: Apollo org data, web search `"{company name}" "portfolio company" OR "acquired by" OR "backed by"`. If PE ownership detected → Col O = "Pass", Col P = "PE-owned ({evidence})". STOP — skip remaining checks.
+2. **Email verification check.** Read Apollo email status from Phase D enrichment. If status is guessed, unavailable, or bounced → Col O = "Pass", Col P = "Email not verified ({status})". STOP — skip remaining checks.
+3. **Owner identification check.** Read Col I (Owner Name). If name is "Unknown", blank, or generic (e.g., "Info", "Admin", "Contact", "Office") → Col O = "Pass", Col P = "Owner not identified". STOP — skip remaining checks.
+
+**Soft Filters (flag but do NOT block auto-advance):**
+
+4. **California check.** If HQ state is California → add note in Col Q: "CAUTION: California-based". Do not block.
+5. **Very small company check.** If employee count < 5 → add note in Col Q: "CAUTION: Very small ({count} employees)". Do not block.
+
+**Warm Intro Check (routes differently, not a block):**
+
+6. **Warm intro check.** Run warm-intro-finder: search Attio People records for the target owner AND anyone at their company. If Kay has an existing connection → do NOT auto-advance. Instead, route to morning briefing as warm intro target. Format: "{Name}, {Company} — warm intro via {connection}. Draft or Salesforge?"
+
+**Edge Case Routing:**
+
+7. **Multi-flag edge case.** If a target passes all hard stops but has 2+ soft filter flags from checks 4-5 → do NOT auto-advance. Route to morning briefing as edge case. Format: "{Name}, {Company} — multiple flags: {list flags}. Approve or Pass?"
+
+Only targets that clear all hard stops, have 0-1 soft flags, and have no warm intro path proceed to auto-advance below.
+
+---
+
+After the stop hook, the agent scores each target against buy box criteria AND niche ICP criteria. Targets are triaged into three buckets:
 
 **Auto-Approve (no Kay review needed):**
-Targets that PASS all buy box + ICP criteria. Agent sets Col O = "Approve" and flows them straight to outreach-manager or jj-operations based on Outreach Channel (Col D). Col Q notes: "AUTO-APPROVED: meets all criteria."
+Targets that PASS all buy box + ICP criteria AND clear the stop hook above. Agent sets Col O = "Approve" and flows them straight to outreach-manager or jj-operations based on Outreach Channel (Col D). Col Q notes: "AUTO-APPROVED: meets all criteria." (plus any soft filter cautions appended).
 
 **Warm Intro Path (surface in morning briefing):**
 Targets where warm-intro-finder (checking Attio, vault, Gmail, network) finds a connection. Surface for Kay to decide: personal draft or Salesforge sequence.
 Briefing format: "{Name}, {Company} — warm intro via {path}. Draft or Salesforge?"
 
 **Edge Cases (surface in morning briefing):**
-Targets with borderline size, geography (California soft filter), unclear ownership, or possible PE backing. Surface for Kay to decide: approve to Salesforge/JJ or pass.
+Targets with borderline size, geography (California soft filter), unclear ownership, possible PE backing, or 2+ soft filter flags. Surface for Kay to decide: approve to Salesforge/JJ or pass.
 Briefing format: "{Name}, {Company} — {reason for review}. Draft or Salesforge?"
 
 Kay no longer reviews every target. She spot-checks outputs. If she sees bad targets flowing through, she tightens the criteria (see ICP Calibration Loop).

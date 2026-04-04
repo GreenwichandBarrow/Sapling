@@ -209,7 +209,7 @@ Skills run on a schedule via macOS launchd, independent of active sessions:
 | `email-intelligence` | Mon-Fri 7am ET | Gmail/Superhuman/Granola scanning, email-scan-results artifact |
 | `jj-operations` (prep) | Mon-Fri 8am ET | JJ call prep, Call Log creation, Slack draft |
 | `jj-operations` (harvest) | Mon-Fri 4pm ET | Read Call Logs, update master sheet |
-| `target-discovery` | Morning workflow (not launchd) | Daily target finding for Active-Outreach niches, triggered by pipeline-manager |
+| `target-discovery` | On activation + weekly refill (morning workflow) | Target finding for Active-Outreach niches on initial activation or when weekly dashboard signals refill needed |
 | `niche-intelligence` | Tuesday 11pm ET | Newsletter scrape, niche identification, one-pagers, scorecards |
 | `niche-intelligence` (daily) | Nightly | Sprint status tracking, Tabled/Killed processing |
 
@@ -246,7 +246,7 @@ When Kay says good morning:
 2. Run relationship-manager in parallel (nurture cadences, overdue contacts → writes relationship-status artifact)
 3. Read `brain/context/session-decisions-{previous-workday}.md` — cross-reference all items against today's scan results. Suppress decided items. Surface verification for decisions without confirmed actions. Honor deferrals until trigger date.
 4. Run pipeline-manager (reads all artifacts including session decisions + calendar + vault + Attio → assembles briefing)
-5. Run target-discovery for all Active-Outreach niches (reads tracker → finds niches needing targets → runs list-builder → populates sheets). Routes by Outreach Channel: Salesforge Email → outreach-manager, JJ-Call-Only → jj-operations.
+5. Check Active-Outreach niches for target needs. Run target-discovery only for niches that need targets (new activation with no target sheet, or weekly dashboard flagged refill needed). Auto-advance qualifying targets, surface warm intros and edge cases in briefing. Skip niches with adequate pipeline.
 6. jj-operations runs independently (8am launchd → 10am Slack to JJ)
 7. If Friday → run three review skills in parallel (Kay needs results by 10am ET):
    - weekly-tracker (activity data → sheet + vault)

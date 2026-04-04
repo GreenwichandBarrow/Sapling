@@ -56,6 +56,19 @@ Cold outreach emails are sent via **Salesforge** (MCP + API), NOT Superhuman dra
 
 **Review Model:** Auto-advance targets that pass buy box + ICP criteria are enrolled in Salesforge automatically — no Kay review needed. Warm intro targets and edge cases are surfaced in the morning briefing for Kay to decide (personal draft or Salesforge). Kay spot-checks Salesforge outputs. If she sees bad emails flowing, tighten criteria or adjust templates.
 
+### Salesforge Enrollment Stop Hook (CRITICAL)
+
+Before creating a Salesforge contact and enrolling in a sequence, verify ALL of these:
+
+1. **Attio record created successfully** — company + person exist at "Identified" stage. If Attio creation failed, STOP. Do not enroll a target that has no CRM record.
+2. **Email verified** — Apollo status = "verified". If guessed/unavailable/bounced, STOP. Do not enroll. Note in Col Q.
+3. **Not already in any Salesforge sequence** — check via `list_contacts` MCP call filtered by email. If already enrolled, SKIP (not an error, just dedup).
+4. **Not receiving outreach from conference subagent** — check Attio for conference tag. If found, conference outreach takes priority. SKIP cold enrollment.
+5. **LinkedIn URL check for Day 6 DM** — if Col M (LinkedIn Owner URL) is empty or missing, create the sequence WITHOUT the Day 6 LinkedIn DM node. Email-only cadence (Day 0, 3, 14). This is expected for some targets, not an error.
+6. **Warm intro check** — if Col Q contains "WARM INTRO", do NOT enroll in Salesforge. Route to Superhuman draft instead. This is the final gate preventing cold outreach on warm intro targets.
+
+If any hard check (1-4, 6) fails, do NOT proceed with enrollment. Log the reason.
+
 Flow per approved target:
 ```
 1. create_contact(workspaceId="wks_90dzvksqb1zcm2aifcfk6", firstName, lastName, email, company,
@@ -273,13 +286,15 @@ If any of these are missing, HALT and complete the research first. Never create 
 
 For warm intros and relationship emails, draft in Superhuman via the wrapper script (NOT the MCP tool — it uses Gmail API which creates invisible drafts). Use Bash:
 ```bash
-~/.local/bin/superhuman-draft.sh --to "{email}" --subject "Introduction, Greenwich & Barrow" --body "{body}"
+~/.local/bin/superhuman-draft.sh --to "{email}" --subject "Intro {first name} & Kay" --body "{body}"
 ```
 This creates native Superhuman drafts via CDP. Kay reviews and sends from Superhuman. Sign off "Very best, Kay" only — signature is built in.
 
 For cold outreach, add the contact to a Salesforge sequence via MCP with all personalized variables populated. Salesforge handles sending through Gmail automatically.
 
-**Subject line:** Default to "Intro {first name} & Kay" for all cold outreach. Warm intro emails through Superhuman may use a different subject.
+**Subject lines:**
+- **Cold outreach (Salesforge):** "Intro {first name} & Kay"
+- **Warm intro emails (Superhuman):** At Kay's discretion — default to "Intro {first name} & Kay" but Kay may customize for relationship context.
 
 **Attio State Machine:**
 

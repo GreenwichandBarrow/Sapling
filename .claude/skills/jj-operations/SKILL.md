@@ -53,7 +53,7 @@ Build a map of **niche name (Col B) → outreach channel (Col D)**. Then for eac
 - Match the sheet's niche to the WEEKLY REVIEW map
 - **Include** targets only if their niche's outreach channel = `JJ-Call-Only`
 - **Skip** targets if their niche's outreach channel = `Salesforge Email` or any other value
-- If a niche is missing from WEEKLY REVIEW, skip it and flag in the morning briefing
+- **HARD STOP:** If a niche is missing from WEEKLY REVIEW, do NOT add ANY targets from that niche to the call list. Flag in morning briefing as requiring manual review. This is a safety gate — unknown channel means unknown routing.
 
 This filter runs BEFORE the reply check — no point checking replies for targets JJ won't call.
 

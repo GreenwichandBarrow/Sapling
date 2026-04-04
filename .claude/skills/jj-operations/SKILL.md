@@ -37,6 +37,25 @@ JJ does NOT touch the master target sheet. He works from Call Log docs and Slack
 Read the active niche sprint's master sheet ("{Niche} - Target List"). Select targets where:
 - Col O (Kay: Decision) = "Approve"
 - Col R (JJ: Call Status) is empty
+- Target's niche has Outreach Channel = "JJ-Call-Only" on WEEKLY REVIEW (see Channel Filter below)
+
+### Channel Filter (CRITICAL)
+
+**Why this exists:** JJ is decoupled from Salesforge email cadences. Calling a target who's in an active email sequence creates conflicting touchpoints.
+
+Before building the call list, read the WEEKLY REVIEW tab to determine which niches route to JJ:
+
+```bash
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins --range "WEEKLY REVIEW!A3:D20" --json
+```
+
+Build a map of **niche name (Col B) → outreach channel (Col D)**. Then for each target sheet:
+- Match the sheet's niche to the WEEKLY REVIEW map
+- **Include** targets only if their niche's outreach channel = `JJ-Call-Only`
+- **Skip** targets if their niche's outreach channel = `Salesforge Email` or any other value
+- If a niche is missing from WEEKLY REVIEW, skip it and flag in the morning briefing
+
+This filter runs BEFORE the reply check — no point checking replies for targets JJ won't call.
 
 **Sheet IDs (all 5 target lists):**
 - Art Insurance: `15M76-gpcklwc47HDXIwyFC9Tj8K4wDOor4i0uxCYyHQ`

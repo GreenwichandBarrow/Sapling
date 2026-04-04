@@ -209,6 +209,7 @@ Skills run on a schedule via macOS launchd, independent of active sessions:
 | `email-intelligence` | Mon-Fri 7am ET | Gmail/Superhuman/Granola scanning, email-scan-results artifact |
 | `jj-operations` (prep) | Mon-Fri 8am ET | JJ call prep, Call Log creation, Slack draft |
 | `jj-operations` (harvest) | Mon-Fri 4pm ET | Read Call Logs, update master sheet |
+| `target-discovery` | Mon-Fri 10am ET | Daily target finding for Active-Outreach niches, hands to outreach-manager |
 | `niche-intelligence` | Tuesday 11pm ET | Newsletter scrape, niche identification, one-pagers, scorecards |
 | `niche-intelligence` (daily) | Nightly | Sprint status tracking, Tabled/Killed processing |
 

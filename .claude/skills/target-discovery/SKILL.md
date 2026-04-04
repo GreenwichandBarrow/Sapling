@@ -1,6 +1,6 @@
 ---
 name: target-discovery
-description: "Find acquisition targets via list-builder (Apollo) + web research. Runs daily Mon-Fri for Active-Outreach niches. Hands approved targets to outreach-manager."
+description: "Find acquisition targets via list-builder (Apollo) + web research. Runs on initial niche activation and when weekly review signals pipeline needs refilling. Auto-advances qualifying targets to outreach-manager."
 user_invocable: true
 context_budget:
   skill_md: 2000
@@ -11,9 +11,9 @@ context_budget:
 <objective>
 Find targets. That's it.
 
-This skill discovers acquisition targets via skill/list-builder (Apollo, primary) and supplemental free research. Kay reviews the list. Approved targets go to skill/outreach-manager for all outreach drafting.
+This skill discovers acquisition targets via skill/list-builder (Apollo, primary) and supplemental free research. Targets that pass all buy box + ICP criteria auto-advance to outreach. Edge cases and warm intro paths surface in the morning briefing for Kay. Approved targets go to skill/outreach-manager for all outreach drafting.
 
-**Trigger:** Niche status changes to Active-Outreach on the Industry Research Tracker. All Active-Outreach niches run at full 4-6 targets/day.
+**Trigger:** Niche status changes to Active-Outreach on the Industry Research Tracker. Target-discovery does a one-time initial load when a niche first enters Active-Outreach (fill the sheet with a solid batch). After that, the weekly tracker dashboard determines if more targets are needed based on pipeline throughput data. Do not run daily — run on initial activation and when the weekly review signals the pipeline needs refilling.
 
 **Pipeline stages:** Under Review → Active-Outreach → Long Term → Tabled/Killed
 
@@ -28,11 +28,11 @@ This skill discovers acquisition targets via skill/list-builder (Apollo, primary
 
 **CRITICAL:** Always read Col D (Outreach Channel) from WEEKLY REVIEW before routing approved targets. If Col D is empty or unrecognized, STOP and ask Kay. Never assume a default.
 
-Goal: 4-6 qualified targets per day.
+Goal: Fill the pipeline with qualified targets on activation, then refill as needed based on weekly throughput data.
 </objective>
 
 <target_discovery>
-## Target Discovery (Daily, Mon-Fri)
+## Target Discovery (On Activation + Weekly Refill)
 
 ### Industry Name Aliases (CRITICAL)
 Niches often have multiple names. **Every search — Apollo, web, association directories — must use ALL known aliases**, not just the primary name. Missing an alias = missing targets.
@@ -81,7 +81,7 @@ Apollo won't find everything. Also search:
 **SUPPLEMENTAL SOURCES ARE MANDATORY, NOT OPTIONAL:**
 - If Apollo returns < 10 candidates across all keyword variations, the agent MUST run supplemental sources before stopping
 - Supplemental sources: association directories, web search for "{niche} companies", LinkedIn company search, conference exhibitor lists, state licensing board registries
-- Target: 15-20 candidates discovered, filtered to 4-6 that pass the write gate
+- Target: discover enough candidates to fill the sheet with a solid initial batch (or refill batch when weekly review triggers a run)
 - Log in the briefing: "Apollo returned {n} candidates across {n} keyword searches. Supplemental sources added {n} more."
 - If total candidates (Apollo + supplemental) is still < 10 after exhausting all sources, log it as a niche intelligence signal — the niche may be smaller than estimated
 
@@ -166,11 +166,22 @@ When Kay marks a row "Pass" in Col O, move it to the "Passed" tab with all data 
 2. Reformat to `(XXX) XXX-XXXX`
 3. Write with apostrophe prefix and `--input USER_ENTERED`
 
-### Step 3: Kay Reviews Target List
-Present the combined list (Apollo + supplemental) to Kay. She reviews:
-- Which targets are real acquisition candidates
-- Remove any that don't fit (wrong size, PE-backed, already contacted, etc.)
-- Warm intro paths pre-identified by pipeline-manager (Kay reviews, does not need to flag manually)
+### Step 3: Auto-Advance & Triage
+
+After enrichment and write gate, the agent scores each target against buy box criteria (no PE-owned, no California soft filter, right size range, owner identified with verified email) AND niche ICP criteria. Targets are triaged into three buckets:
+
+**Auto-Approve (no Kay review needed):**
+Targets that PASS all buy box + ICP criteria. Agent sets Col O = "Approve" and flows them straight to outreach-manager or jj-operations based on Outreach Channel (Col D). Col Q notes: "AUTO-APPROVED: meets all criteria."
+
+**Warm Intro Path (surface in morning briefing):**
+Targets where warm-intro-finder (checking Attio, vault, Gmail, network) finds a connection. Surface for Kay to decide: personal draft or Salesforge sequence.
+Briefing format: "{Name}, {Company} — warm intro via {path}. Draft or Salesforge?"
+
+**Edge Cases (surface in morning briefing):**
+Targets with borderline size, geography (California soft filter), unclear ownership, or possible PE backing. Surface for Kay to decide: approve to Salesforge/JJ or pass.
+Briefing format: "{Name}, {Company} — {reason for review}. Draft or Salesforge?"
+
+Kay no longer reviews every target. She spot-checks outputs. If she sees bad targets flowing through, she tightens the criteria (see ICP Calibration Loop).
 
 ### Step 4: Attio Dedup Check (Read-Only)
 Before handing off to outreach-manager:
@@ -200,16 +211,17 @@ Pass approved, deduped targets to skill/outreach-manager's cold outreach subagen
 - At ~1 credit per target (email only), supports ~2,500 targets/month
 
 ### Team Roles (for this skill only)
-- **Claude:** Run Apollo via list-builder, supplement with free research, enrich inline, present complete list to Kay, dedup against Attio, hand off to outreach-manager
-- **Kay:** Review target list, flag warm intro paths
+- **Claude:** Run Apollo via list-builder, supplement with free research, enrich inline, auto-advance qualifying targets, surface edge cases and warm intros to Kay, dedup against Attio, hand off to outreach-manager
+- **Kay:** Spot-check auto-approved targets, decide on edge cases and warm intro routing, tighten criteria if needed
 - **Outreach Manager:** All outreach drafting (email, call list, follow-ups) — separate skill
 
 ### ICP Calibration Loop
 
 The ICP is a living document. Track these signals to know if it needs adjustment:
 
-**After Kay reviews target list:**
-- Track accept/reject rate. Rejecting 50%+ = ICP too loose. Accepting all but pool is tiny = ICP too tight.
+**Auto-advance feedback loop:**
+- If auto-advance is producing targets Kay would reject, tighten buy box or ICP criteria. The accept/reject rate now comes from Kay's spot-checks and response data, not manual Col O review.
+- Track spot-check rejection rate. If Kay rejects 2+ auto-approved targets in a single review, pause auto-advance for that niche and tighten criteria before resuming.
 - Log rejection reasons (wrong size, PE-backed, wrong industry, wrong geography). Patterns in rejections = ICP criteria to tighten.
 
 **After JJ's calls (from outreach-manager):**
@@ -307,17 +319,16 @@ If validation fails, do NOT send Slack. Report the failure and fix before notify
 <success_criteria>
 ## Success Criteria
 
-### Daily
-- [ ] 4-6 new targets discovered and researched
-- [ ] Google Sheet populated with new targets
+### Per Run (initial activation or weekly refill)
+- [ ] Sheet populated with new targets (solid batch on activation, refill batch on weekly trigger)
+- [ ] Auto-approved targets deduped against Attio (read-only check) and handed to outreach-manager
+- [ ] Edge cases and warm intro paths surfaced in morning briefing
 - [ ] Kay notified via Slack with sheet link
-- [ ] Target list reviewed by Kay
-- [ ] Approved targets deduped against Attio (read-only check)
-- [ ] Approved targets handed to outreach-manager (which creates Attio entries)
 - [ ] Credits consumed logged
 
 ### Weekly
-- [ ] 20-30 targets discovered and handed off
-- [ ] ICP accept/reject rate tracked
+- [ ] Weekly tracker reviewed for pipeline throughput — trigger refill if needed
+- [ ] Auto-advance accept/reject rate tracked via Kay's spot-checks and response data
 - [ ] Sprint progress reviewed
+- [ ] If Kay flagged bad auto-approves, criteria tightened before next run
 </success_criteria>

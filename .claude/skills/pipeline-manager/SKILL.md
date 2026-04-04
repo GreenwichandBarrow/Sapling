@@ -145,6 +145,10 @@ Reminder to send:
 Reminder to delete:
 - {Draft description} — orphaned/stale
 
+Targets for review ({niche}):
+1. {Name}, {Company} — Warm intro via {contact}. Draft or Salesforge?
+2. {Name}, {Company} — Borderline: {specific concern}. Approve or Pass?
+
 On deck for JJ (tomorrow):
 - {Target name} — {action: follow-up / first outreach}
 
@@ -152,6 +156,19 @@ Other items / today's agenda:
 1. {Today's meetings with times}
 2. {Quick flags or reminders}
 ```
+
+**Targets for Review rules:**
+- This section surfaces targets from target-discovery's auto-advance system that need Kay's decision. Two categories only:
+  1. **Warm intro targets** — warm-intro-finder found a connection path (via Attio, vault, Gmail, Kay's network). Kay decides: "draft" (create a Superhuman draft for her personal outreach) or "salesforge" (enroll in the automated sequence).
+  2. **Edge case targets** — borderline on buy box/ICP criteria (borderline size, geography, unclear ownership, possible PE backing). Kay decides: "approve" (send to Salesforge + JJ based on channel) or "pass" (move to Passed tab on tracker).
+- **Auto-approved targets do NOT appear here.** Targets that passed all buy box + ICP criteria with no warm intro flow automatically to Salesforge/JJ. Only exceptions surface.
+- Group by niche when multiple niches are active. One header per niche.
+- Kay responds with decisions per item: "1 draft, 2 approve" or "1 salesforge, 2 pass"
+- On Kay's decision:
+  - "draft" → create Superhuman draft via `superhuman-draft.sh` for Kay's review before sending
+  - "salesforge" → enroll contact in the niche's Salesforge sequence
+  - "approve" → route to Salesforge sequence + JJ call list based on channel
+  - "pass" → move target to Passed tab on the tracker sheet
 
 Each item numbered. Each has a clear action or question. No informational items without an ask. No items requiring deep review — those go to Slack.
 

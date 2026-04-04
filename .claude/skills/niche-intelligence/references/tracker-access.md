@@ -28,7 +28,7 @@ gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichan
 | A | Rank | |
 | B | Niche Hypothesis | |
 | C | Current Status | ORANGE — triggers pipeline-manager, target-discovery |
-| D | Outreach Channel | ORANGE — gates target routing (Salesforge / JJ-Call-Only / Salesforge+JJ / TBD) |
+| D | Outreach Channel | ORANGE — gates target routing (Salesforge Email / JJ-Call-Only / Other) |
 | E | Score | |
 | F | QSBS | |
 | G | Target Pool | |

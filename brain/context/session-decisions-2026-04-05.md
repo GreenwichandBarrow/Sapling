@@ -1,8 +1,8 @@
 ---
 date: 2026-04-05
 type: context
-sessions: 2
-last_updated: 2026-04-05T12:00:00Z
+sessions: 3
+last_updated: 2026-04-05T12:45:00Z
 ---
 
 # Session Decisions — April 5, 2026
@@ -105,3 +105,59 @@ last_updated: 2026-04-05T12:00:00Z
 - Salesforge trial ~10 days — account deletion requested, let expire
 - Schwartzman warm intro routing — still needs Kay's decision
 - Domain reputation check pending
+
+---
+
+# Session 3 — Sunday Morning (Outreach Templates + Target Sheet Redesign + Pest Management)
+
+## Decisions
+
+- APPROVE: Per-touchpoint outreach tracking columns (Variant, Day 0 Sent, Day 3 Sent, Day 6 DM Sent, Day 14 Sent, Cadence Status) replacing single Outreach Stage column
+- APPROVE: "Year Founded" and "Rev Source" columns added to all target sheets (from Caprae LeadGen template review)
+- APPROVE: "LinkedIn Connection" column moved next to LinkedIn (Owner) for Kay to mark 1st/2nd/3rd degree
+- APPROVE: Variant A Day 0 template rewritten — curiosity framing, light on target, "After a decade in the luxury world, I recognized the client crossover in the art world and have been really curious to learn more about art advisory"
+- APPROVE: Variant B Day 0 template rewritten — direct intent, branding session content: father's entrepreneurship, mix of art and commerce, Chanel, "acquire one business and run it myself, full time"
+- APPROVE: Kevin Hong branding pointers added to cadence doc — concise, every sentence adds value, bold and personable
+- APPROVE: LinkedIn links included with every draft presentation (new standard for morning briefings)
+- APPROVE: 4 new hard stops in target-discovery: HQ country verification, solo practitioner check, business type verification, company age (<5 years)
+- APPROVE: Young owner check (<35) as soft filter in target-discovery
+- APPROVE: Philip Hoffman routed as warm intro (2nd connection) — explore intro via Ana, Anton, or Chris Wise
+- PASS: Todd Levin (one-man shop), Gurr Johns (London HQ), Beaumont Nathan (London HQ), Capital Art Advisory (one person, too young), Arcadia (owner too young), Kinzelman (one person), Private Art Consulting (design firm, not advisory)
+- APPROVE: Premium Pest Management target sheet created, Apollo search in progress
+
+## Actions Taken
+
+- CREATED: 6 outreach tracking columns on Art Advisory sheet (Variant through Cadence Status)
+- CREATED: Premium Pest Management target sheet (ID: 1Y0ZjEkc2LHhBoO4QGO8Ny9MvG90NpojQn8bloKA291I)
+- UPDATED: Art Advisory sheet — 66 targets marked "Approve", 14 marked "Pass"
+- UPDATED: Art Advisory sheet — "Rev Source" column inserted, "Year Founded" column added
+- UPDATED: Art Advisory sheet — "LinkedIn Connection" moved next to LinkedIn (Owner)
+- UPDATED: All 5 other target sheets aligned with new column layout (Rev Source, Year Founded, outreach tracking)
+- UPDATED: outreach-manager/SKILL.md — both Day 0 templates rewritten, hard rules updated, variables simplified
+- UPDATED: pipeline-manager/SKILL.md — Outreach Stage references replaced with per-touchpoint columns
+- UPDATED: jj-operations/SKILL.md — column references updated
+- UPDATED: target-discovery/SKILL.md — 4 new hard stops + 1 soft filter added
+- UPDATED: list-builder/SKILL.md — column template updated with all new fields
+- UPDATED: user_outreach_voice.md — branding session beats and key lines added
+- UPDATED: G&B Cold Email Outreach Cadence doc on Drive — Variant A and B Day 0 rewritten (Kay updated)
+- CREATED: feedback_linkedin_in_drafts.md — always include LinkedIn links with draft presentations
+- MARKED: Philip Hoffman as 2nd connection on Art Advisory sheet
+
+## Deferred
+
+- DEFER: Art Advisory re-run with new stop hooks — tomorrow morning, present 5 clean drafts
+- DEFER: Pest Management Apollo enrichment — search running, need to filter before spending credits on phone reveals
+- DEFER: Variant B follow-up templates (Day 3/6/14) — may need updating to match new Day 0 tone
+- DEFER: JJ cold call script for Pest Management
+- DEFER: Philip Hoffman warm intro — surface in Monday briefing with Ana/Anton/Chris Wise paths
+
+## Open Loops
+
+- Pest Management Apollo search in progress — hundreds of results, need filtering before enrichment. JJ needs calls for Monday.
+- Art Advisory 5 clean drafts needed — re-run with new stop hooks tomorrow
+- Philip Hoffman warm intro routing — Ana, Anton, or Chris Wise
+- Reply.io trial expires April 16 — no action needed, $0 invoice
+- Salesforge trial — account deletion requested, let expire
+- Schwartzman warm intro — still needs Kay's routing decision
+- Kevin Hong call Sunday 12:30pm
+- Domain reputation check still pending

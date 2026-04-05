@@ -213,7 +213,9 @@ Hope this finds you well. I'm reaching out because I've been looking to build or
 
 I grew up around small business through my father, a serial entrepreneur, and went into luxury because I loved the mix of art and commerce. After a decade at Chanel, I recognized the client crossover in the art world and am now looking to build my next chapter here.
 
-I'm looking to acquire one business and run it myself, full time. I'd love to connect and learn more about yours. Looking forward to connecting. Let me know when would be a good time to speak.
+I'm looking to acquire one business and run it myself, full time. I'd love to connect and learn more about yours. If you're open to an exploratory conversation, let me know when would be a good time to speak.
+
+Looking forward to connecting.
 
 Very best, Kay
 ```

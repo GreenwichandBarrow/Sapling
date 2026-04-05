@@ -234,9 +234,9 @@ Relationship management (nurture cadence monitoring, action-already-taken verifi
 7. **Slack notification validation** — confirm the Slack webhook POST returned HTTP 200 OK. If non-200, retry once. If still failing, warn Kay directly in the session summary that Slack notification failed.
 8. **ACTIVE DEALS folder sync** — compare ACTIVE DEALS Drive subfolders against Attio Active Deals entries. Every folder must have a matching Attio entry. Any orphaned folder = missed deal entry. Create Attio entry and flag in morning briefing.
 9. **CIM auto-trigger validation** — for every CIM detected during Gmail ingestion, verify all 4 steps completed: (a) ACTIVE DEALS folder exists with CIM/ subfolder, (b) CIM file uploaded to CIM/ subfolder with size > 0, (c) inbox item written to `brain/inbox/` with `urgency: critical` and `topic/cim-received` tag, (d) deal-evaluation was invoked with `source: intermediary-inbound`. If any step failed, retry once. If still failing, flag in morning briefing: "CIM auto-trigger incomplete for {company} — {which step failed}." A missed CIM is a missed deal.
-10. **Attio-Target Sheet Reconciliation** — after the morning scan completes, compare Attio Active Deals stages against target sheet outreach columns (Last Email Date, Outreach Stage) for all active targets:
-   - For each Attio entry at "Identified": check target sheet Outreach Stage. If sheet shows Day 0 Sent → MISMATCH. Auto-advance Attio to "Contacted" and log.
-   - For each Attio entry at "Contacted": if sheet shows Col R = "Connected" + positive sentiment → MISMATCH. Flag for review (potential First Conversation).
+10. **Attio-Target Sheet Reconciliation** — after the morning scan completes, compare Attio Active Deals stages against target sheet outreach columns for all active targets. Use col-lookup.py to resolve header names to cells (never hardcode column letters):
+   - For each Attio entry at "Identified": check target sheet "Day 0 Sent" column. If sheet has a date → MISMATCH. Auto-advance Attio to "Contacted" and log.
+   - For each Attio entry at "Contacted": if "JJ: Call Status" = "Connected" + positive sentiment → MISMATCH. Flag for review (potential First Conversation).
    This reconciliation runs as a safety net — it catches drift that the real-time detection missed.
 
 ### Email Scan Results Validation (post-ingestion)
@@ -297,7 +297,7 @@ Results from this check feed directly into the **Draft Status** section of `brai
 
 1. Query Superhuman for all drafts and recently sent emails matching known outreach targets
 2. For each draft that was sent:
-   - Update Attio: move target from "Identified" to "Contacted" (source: Gmail sent folder scan + target sheet Outreach Stage column)
+   - Update Attio: move target from "Identified" to "Contacted" (source: Gmail sent folder scan + target sheet "Day 0 Sent" column)
    - Log the sent date in the email-scan-results artifact
 3. For drafts still unsent, flag with escalating urgency:
    - **Thank-you drafts (time-sensitive):**
@@ -320,7 +320,7 @@ The Superhuman Draft Status Check above only catches emails that originated as o
    ```
 2. For each sent email, extract the recipient address(es) and cross-reference against Attio Active Deals entries at "Identified" stage (match by contact email, company domain, or contact name)
 3. **When a match is found:**
-   - Move Attio Active Deals entry from "Identified" → "Contacted" (source: Gmail sent folder scan + target sheet Outreach Stage column)
+   - Move Attio Active Deals entry from "Identified" → "Contacted" (source: Gmail sent folder scan + target sheet "Day 0 Sent" column)
    - Log the signal: record sent date, recipient, and subject in the email-scan-results artifact under Draft Status → Sent
 4. **Deduplication:** Skip any recipient already captured by the Superhuman Draft Status Check above (avoid double-processing outreach-manager drafts that were sent). Use the recipient email as the dedup key.
 5. **Scope:** Only process emails sent to external recipients. Ignore internal emails (to @greenwichandbarrow.com addresses).
@@ -330,26 +330,34 @@ This ensures manually-sent outreach emails (not just outreach-manager drafts) tr
 
 ### Cadence Advancement (runs during morning scan)
 
-The target sheet is the source of truth for outreach cadence status. Claude manages cadence tracking via Last Email Date and Outreach Stage columns on the target sheet. Pipeline-manager reads these columns to detect cadence progression.
+The target sheet is the source of truth for outreach cadence status. Claude manages cadence tracking via per-touchpoint date columns on the target sheet. Pipeline-manager reads these columns to detect cadence progression. All column references use header names resolved by col-lookup.py — never hardcoded letters.
 
-For each approved target (Col O = "Approve" on the sheet), check target sheet Outreach Stage + Gmail sent folder:
+**Outreach tracking columns (one date per touchpoint, never overwritten):**
+- "Variant" — A or B (set once at Day 0)
+- "Day 0 Sent" — date Day 0 email was sent
+- "Day 3 Sent" — date Day 3 follow-up was sent
+- "Day 6 DM Sent" — date LinkedIn DM was sent
+- "Day 14 Sent" — date Day 14 final email was sent
+- "Cadence Status" — Active / Complete / Replied
 
-1. **Email send detection:** Read target sheet Outreach Stage column + Gmail sent folder scan.
+For each approved target ("Kay: Decision" = "Approve"), check target sheet date columns + Gmail sent folder:
+
+1. **Email send detection:** Read "Day 0 Sent" column + Gmail sent folder scan.
    → If Day 0 sent: advance Attio from Identified to Contacted
 
-2. **Follow-up emails:** Claude drafts Day 3/14 follow-ups in Superhuman each morning for targets at the appropriate cadence stage. Pipeline-manager checks Last Email Date to identify targets due for follow-up.
+2. **Follow-up emails:** Claude drafts Day 3/14 follow-ups in Superhuman each morning. Pipeline-manager checks "Day 0 Sent" / "Day 3 Sent" dates to identify targets due for follow-up based on business days elapsed.
 
 3. **Reply detected (any stage):** If inbound email from target detected in Gmail:
-   → Update Attio to "Engaged", mark Outreach Stage as "Replied" on target sheet
+   → Update Attio to "Engaged", set "Cadence Status" to "Replied" on target sheet
    → Advance Attio stage as appropriate (Contacted → First Conversation if reply is substantive)
    → Flag in briefing as high-priority pipeline signal
 
-4. **Cadence complete (no response):** If Day 14 sent and no reply after 7 business days:
+4. **Cadence complete (no response):** If "Day 14 Sent" has a date and no reply after 7 business days:
    → Present: "{owner} at {company} — cadence complete, no response. Move to nurture?"
 
 ### New Approval Detection
 
-For each row where Col O = "Approve" and Outreach Stage is empty (no cadence started):
+For each row where "Kay: Decision" = "Approve" and "Day 0 Sent" is blank (no cadence started):
 → These are newly approved targets. Signal outreach-manager to draft initial outreach in Superhuman.
 → Present in briefing: "{n} new approvals on {niche} target list. Outreach drafts queued."
 

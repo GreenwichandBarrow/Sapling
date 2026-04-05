@@ -75,7 +75,7 @@ This filter runs BEFORE the reply check — no point checking replies for target
 - U: JJ: Owner Sentiment
 - V: ICP Match
 - W: ICP Miss Reason
-- X: Outreach Stage (managed by outreach-manager/Salesforge, not read or written by jj-operations)
+- Outreach tracking columns: "Variant", "Day 0 Sent", "Day 3 Sent", "Day 6 DM Sent", "Day 14 Sent", "Cadence Status" (managed by outreach-manager, not read or written by jj-operations)
 
 ### Ad-Hoc Call Queue
 

@@ -60,32 +60,27 @@ All cold outreach emails are drafted in **Superhuman** via the CLI wrapper. Kay 
 
 ### Cadence Tracking (Claude-Managed)
 
-Claude manages the outreach cadence by tracking per-touchpoint date columns on the target sheet + Attio notes:
+Claude manages the outreach cadence by tracking two columns on the target sheet + Attio notes:
 
-**Target sheet columns (managed by Claude, referenced by header name via col-lookup.py):**
-- **Variant** — `A` or `B` (set once when Day 0 is drafted, never changes)
-- **Day 0 Sent** — date when Day 0 email was sent
-- **Day 3 Sent** — date when Day 3 follow-up was sent
-- **Day 6 DM Sent** — date when LinkedIn DM was sent
-- **Day 14 Sent** — date when Day 14 final email was sent
-- **Cadence Status** — current state: `Active`, `Complete`, `Replied`
+**Target sheet columns (managed by Claude):**
+- **Last Email Date** — date of most recent email sent (updated in real-time when Kay confirms send)
+- **Outreach Stage** — current cadence position: `Day 0 Sent`, `Day 3 Sent`, `Day 6 DM Sent`, `Day 14 Sent`, `Cadence Complete`, `Replied`
+- **LinkedIn DM Sent** — date LinkedIn DM was sent (updated when Kay confirms)
 
 **Real-time tracking flow:**
 1. Claude drafts email/DM in Superhuman (or surfaces DM text in briefing)
 2. Kay says "looks good" or confirms sent
-3. Claude immediately updates: target sheet (writes date to the specific touchpoint column, e.g. "Day 0 Sent", "Day 3 Sent"; sets "Cadence Status" to `Active` or `Complete`) + Attio note on the contact record
-
-**Picking new targets:** `"Kay: Decision" = "Approve"` AND `"Day 0 Sent"` is blank.
+3. Claude immediately updates: target sheet (Last Email Date, Outreach Stage) + Attio note on the contact record
 
 **Daily cadence check (runs each morning):**
-1. Read target sheet: find all targets where "Cadence Status" = `Active`
-2. For each active target, check which touchpoint columns are blank:
-   - "Day 0 Sent" filled, "Day 3 Sent" blank, 3+ business days since Day 0 → draft Day 3 follow-up in Superhuman
-   - "Day 3 Sent" filled, "Day 6 DM Sent" blank, 3+ business days since Day 3 → surface LinkedIn DM in briefing (message text + LinkedIn URL)
-   - "Day 6 DM Sent" filled, "Day 14 Sent" blank, 8+ business days since Day 6 → draft Day 14 final email in Superhuman
-   - "Day 14 Sent" filled → set "Cadence Status" to `Complete`
-3. Draft 5 new Day 0 emails for fresh targets (approved, Day 0 Sent blank)
-4. Present in morning briefing: "5 new drafts to review, X follow-ups to send, X LinkedIn DMs to send"
+1. Read target sheet: find all targets with an Outreach Stage that isn't `Cadence Complete` or `Replied`
+2. Calculate business days since Last Email Date
+3. Draft what's due today:
+   - Day 3 due → draft follow-up email in Superhuman
+   - Day 6 due → surface LinkedIn DM in briefing (message text + LinkedIn URL)
+   - Day 14 due → draft final follow-up email in Superhuman
+4. Draft 5 new Day 0 emails for fresh targets
+5. Present in morning briefing: "5 new drafts to review, X follow-ups to send, X LinkedIn DMs to send"
 
 **Kay's daily effort:**
 - Day 0 emails: review, edit if needed, send (~5-10 min)
@@ -133,20 +128,17 @@ Kay decides per-niche whether JJ calls are appropriate. Default is email + Linke
 
 ### Target Sheet Columns
 
-**Discovery columns:** Source, Company, Website, Headquarters, Industry, Employees, Revenue, Ownership, Owner Name, Owner Title, Email, Phone, LinkedIn (Owner), LinkedIn (Company)
+**Discovery columns (A-N):** Source, Company, Website, Headquarters, Industry, Employees, Revenue, Ownership, Owner Name, Owner Title, Email, Phone, LinkedIn (Owner), LinkedIn (Company)
 
 **Decision columns:**
-- **Kay: Decision** — `Approve` or `Pass`. The ONLY trigger for Attio entry creation and outreach.
-- **Kay: Pass Reason** — Why Kay passed (if applicable).
-- **Agent Notes** — Agent recommendation. Must start with `RECOMMEND: Approve` or `RECOMMEND: Pass` followed by reasoning. If a warm intro path is found, include: "RECOMMEND: Approve — WARM INTRO via {connection name}".
+- **Col O: Kay: Decision** — `Approve` or `Pass`. The ONLY trigger for Attio entry creation and outreach.
+- **Col P: Kay: Pass Reason** — Why Kay passed (if applicable).
+- **Col Q: Agent Notes** — Agent recommendation. Must start with `RECOMMEND: Approve` or `RECOMMEND: Pass` followed by reasoning. If a warm intro path is found, include: "RECOMMEND: Approve — WARM INTRO via {connection name}".
 
-**Outreach tracking columns (managed by Claude, after "LinkedIn Connection"):**
-- **Variant** — `A` or `B` (set once at Day 0)
-- **Day 0 Sent** — date Day 0 email was sent
-- **Day 3 Sent** — date Day 3 follow-up was sent
-- **Day 6 DM Sent** — date LinkedIn DM was sent
-- **Day 14 Sent** — date Day 14 final email was sent
-- **Cadence Status** — `Active` / `Complete` / `Replied`
+**Outreach tracking columns (managed by Claude):**
+- **Last Email Date** — date of most recent email sent
+- **Outreach Stage** — current cadence position
+- **LinkedIn DM Sent** — date LinkedIn DM was sent
 - **LinkedIn Connection** — Kay marks 1st/2nd/3rd degree manually
 
 **JJ call columns (managed by JJ, for niches where calls are approved):**
@@ -163,7 +155,7 @@ Every Day 0 target gets personalized variables filled from the Pre-Draft Researc
 
 ### A/B Test: Two Email Variants (Active Experiment)
 
-Claude alternates variants 50/50 on Day 0 emails. Record the assigned variant in the "Variant" column (`A` or `B`) when Day 0 is drafted. This value is set once and never changes.
+Claude alternates variants 50/50 on Day 0 emails. Track which variant each target received in the Outreach Stage column (e.g., `Day 0 Sent (A)` or `Day 0 Sent (B)`).
 
 Warm intro targets are excluded from this experiment.
 
@@ -272,7 +264,7 @@ source .env && curl -s "https://api.apollo.io/v1/people/match" \
 
 **Gate logic based on `email_status`:**
 - `verified` → proceed to draft
-- `guessed` / `unavailable` / `bounced` → do NOT draft. Note status in "Agent Notes" column. Notify Kay: "{owner} at {company} — email not verified ({status}). Skip or find alternate?"
+- `guessed` / `unavailable` / `bounced` → do NOT draft. Note status in Col Q (Agent Notes). Notify Kay: "{owner} at {company} — email not verified ({status}). Skip or find alternate?"
 - `pending` → retry once after 5 minutes. If still pending, flag.
 
 ### Pre-Draft Research Brief (REQUIRED before any Day 0 draft)
@@ -311,10 +303,10 @@ Sign off "Very best, Kay" only — signature is built in.
 
 Outreach-manager is the only skill that writes to Attio for targets. **No Attio entry exists until Kay approves.** The sequence:
 
-1. Read the target sheet, find rows where **"Kay: Decision" = "Approve"** that weren't approved in the prior run (new approvals). "Kay: Decision" = "Approve" is the ONLY trigger for Attio entry creation.
+1. Read the target sheet, find rows where **Col O = "Approve"** that weren't approved in the prior run (new approvals). Col O = "Approve" is the ONLY trigger for Attio entry creation.
 2. Verify email via Apollo API. Only proceed if `verified`.
 3. For each verified approved target, search Attio for the person AND company:
-   - **If found** → someone Kay already knows. Note "WARM INTRO via {connection}" in "Agent Notes", skip cold outreach.
+   - **If found** → someone Kay already knows. Note "WARM INTRO via {connection}" in Col Q, skip cold outreach.
    - **If not found** → create the company + person in Attio, add company to Active Deals at "Identified" stage.
 4. When Day 0 email is sent → update Attio stage to "Contacted"
 5. When reply received → update Attio stage to "Engaged"
@@ -371,7 +363,7 @@ LinkedIn DMs due today:
 
 Kay opens LinkedIn, pastes or adapts the message, sends. Then confirms in conversation.
 
-Claude immediately logs to Attio and updates the target sheet ("Day 6 DM Sent" column with today's date).
+Claude immediately logs to Attio and updates the target sheet (LinkedIn DM Sent column).
 
 **DM personalization by connection degree:**
 
@@ -403,7 +395,7 @@ Hi {first name}, I came across {company} while researching {niche} and was impre
 Two scenarios trigger a warm intro flag:
 
 **A. Shared Attio connection found** (during outreach-manager warm intro check):
-1. Note "WARM INTRO via {connection name}" in "Agent Notes"
+1. Note "WARM INTRO via {connection name}" in Col Q
 2. Surface in morning briefing: "Warm intro available: {target owner} at {company}. You're connected to {connection name}. Cold outreach paused for this target."
 3. Cold outreach is PAUSED for this target — no email draft, no JJ call
 4. Kay decides approach case by case
@@ -424,7 +416,7 @@ Handles all outreach related to conferences — pre-conference emails to attende
 
 ### Conference Outreach Cadence
 
-Outreach-manager pulls the conference date from the **Conference Pipeline Google Sheet** ("Date of Conference" column, Sheet ID: `1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY`). This is the source of truth for timing. All timing works backwards from this date.
+Outreach-manager pulls the conference date from the **Conference Pipeline Google Sheet** (Col A: Date of Conference, Sheet ID: `1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY`). This is the source of truth for timing. All timing works backwards from this date.
 
 **Pre-Conference Cadence:**
 
@@ -631,13 +623,13 @@ Confirm every email draft was created via the Superhuman CLI Bash wrapper (NOT t
 
 ### 2. Cadence Tracking Validation
 Verify the target sheet has been updated for every outreach action:
-- Correct touchpoint date column populated (Day 0 Sent / Day 3 Sent / Day 6 DM Sent / Day 14 Sent)
-- Variant column set (A or B) on Day 0
-- Cadence Status reflects current state (Active / Complete / Replied)
+- Last Email Date populated
+- Outreach Stage reflects current cadence position
+- LinkedIn DM Sent populated (if Day 6 completed)
 - Attio note created for each outreach action
 
 ### 3. Warm Intro Validation
-For each target: if "Agent Notes" contains "WARM INTRO" → verify NO cold email was drafted and no JJ call was scheduled. Warm intros get a different approach and skip JJ entirely.
+For each target: if Col Q contains "WARM INTRO" → verify NO cold email was drafted and no JJ call was scheduled. Warm intros get a different approach and skip JJ entirely.
 
 ### 4. Dedup Validation
 No person should have outreach queued from both cold outreach and conference outreach subagents. Conference outreach takes priority.

@@ -173,13 +173,13 @@ Warm intro targets are excluded from this experiment.
 
 Day 0:
 ```
-Hope this finds you well. I came across {company} and was really impressed by {specific detail}.
+Hi {first name},
 
-I am spending some time getting to know the {niche} space. {connection point}.
+Hope this finds you well. I came across {company} and was impressed by the work you've done in the {industry} space.
 
-I'd love to learn more about how you think about the business, especially {specific question}.
+After a decade in the luxury world, I recognized the client crossover in the art world and have been really curious to learn more about art advisory. I'd welcome the chance to connect and hear your perspective.
 
-If you're available over the next few weeks, I'd greatly appreciate a short time to connect.
+I'd love to connect and learn more about your business. When would be a good time to speak? Looking forward to hearing from you.
 
 Very best, Kay
 ```
@@ -207,11 +207,13 @@ Very best, Kay
 
 Day 0:
 ```
-Hope this finds you well. I came across {company} and was impressed by {specific detail}.
+Hi {first name},
 
-Coming from the luxury industry, I'm looking to either build or acquire a business in the {industry} space. {connection point}.
+Hope this finds you well. I'm reaching out because I've been looking to build or acquire a business in the {industry} space and I'm interested in {company}.
 
-If you'd be open to a conversation, I'd greatly appreciate some time over the next few weeks.
+I grew up around small business through my father, a serial entrepreneur, and went into luxury because I loved the mix of art and commerce. After a decade at Chanel, I recognized the client crossover in the art world and am now looking to build my next chapter here.
+
+I'm looking to acquire one business and run it myself, full time. I'd love to connect and learn more about yours. Looking forward to connecting. Let me know when would be a good time to speak.
 
 Very best, Kay
 ```
@@ -238,20 +240,21 @@ Very best, Kay
 **Variables:**
 - {first name} — contact first name
 - {company} — company name
-- {specific detail} — researched detail about the company (unique per target, never generic)
-- {specific question} — researched question about their business (Variant A Day 0 only)
-- {niche} — niche name as on tracker (e.g., "art advisory", "fractional CFO")
 - {industry} — broader industry term (e.g., "art advisory", "financial advisory", "commercial pest management")
-- {connection point} — shared school, mutual contact, location. Omit entirely if none exists.
 
 **What we're testing:** Does transparency about acquisition intent help or hurt response rates? Variant A positions Kay as a curious learner. Variant B is upfront about being a buyer.
 
 **Tracking:** Claude tracks variant assignment per target. Weekly tracker dashboard (Signal Quality lens) reviews A/B performance per niche. Metrics: response rate, time to response, tone of response (warm vs defensive), conversion to call.
 
 **HARD RULES (apply to BOTH variants):**
-- The email is about THEM, not Kay or G&B. Never mention Greenwich & Barrow. Never describe what Kay does. LinkedIn handles credibility (they'll check).
+- Never mention Greenwich & Barrow in Day 0 emails. LinkedIn handles credibility (they'll check).
 - NEVER reference revenue, employee count, or financial metrics. Could be wrong, and it signals you care about money not legacy.
 - NEVER call G&B a "fund." Sounds like PE and kills trust.
+- Keep it light on the target. Don't over-research or reference specifics that could land wrong (partner names, articles, characterizations of their skills). The research is for follow-ups and the actual conversation, not the first email.
+- Use Kay's exact phrasing for key lines ("After a decade in the luxury world", "the mix of art and commerce"). Don't paraphrase.
+- Every sentence must add independent value. If it doesn't earn the reply, cut it.
+- Variant A: "I came across {company}" — curiosity framing. Variant B: lead with why you're reaching out, then who you are, then the ask.
+- Kevin Hong branding pointers: concise, customization early and clear, show why it matters to the seller, be bold and personable.
 - NEVER reveal thesis/growth strategy (underpenetration, consolidation, market size).
 - Don't make claims you can't source. Every line must be grounded in real research.
 - No em dashes. Periods, commas, line breaks.

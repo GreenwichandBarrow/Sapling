@@ -174,31 +174,39 @@ For Apollo results NOT already on the target sheet.
 
 If a company can't meet this bar, log it as "could not enrich" in the run summary. Do NOT add it to the sheet.
 
-**Append to sheet with standardized columns A-X:**
+**Append to sheet with standardized columns (use col-lookup.py for cell references, never hardcode letters):**
 
-| Col | Field | Source |
-|-----|-------|--------|
-| A | Source | "Apollo" |
-| B | Company | Apollo org name |
-| C | Website | Apollo domain |
-| D | Headquarters | Apollo city, state |
-| E | Industry | Apollo industry or niche keyword |
-| F | Employees | Apollo employee count |
-| G | Revenue | Apollo estimated revenue (if available) |
-| H | Ownership | "Independent" or flag if unclear |
-| I | Owner Name | People search result |
-| J | Owner Title | People search result |
-| K | Email | Match/reveal result |
-| L | Phone | Match/reveal result (if revealed) |
-| M | LinkedIn (Owner) | People search result |
-| N | LinkedIn (Company) | Apollo org LinkedIn URL |
-| O | Kay: Decision | (blank — Kay fills) |
-| P | Kay: Pass Reason | (blank — Kay fills) |
-| Q | Agent Notes | "RECOMMEND: Approve" or "RECOMMEND: Pass" + reasoning |
-| R-U | JJ Columns | (blank — JJ fills) |
-| V | ICP Match | Assessment from Apollo data vs ICP criteria |
-| W | ICP Miss Reason | If V is not a full match, explain why |
-| X | Outreach Stage | (blank — outreach-manager fills) |
+| Field | Source |
+|-------|--------|
+| Source | "Apollo" |
+| Company | Apollo org name |
+| Website | Apollo domain |
+| Headquarters | Apollo city, state |
+| Industry | Apollo industry or niche keyword |
+| Employees | Apollo employee count |
+| Rev Source | "Apollo" or "ZoomInfo" or "Website" etc. |
+| Revenue | Apollo estimated revenue (if available) |
+| Ownership | "Independent" or flag if unclear |
+| Owner Name | People search result |
+| Owner Title | People search result |
+| Email | Match/reveal result |
+| Phone | Match/reveal result (if revealed) |
+| LinkedIn (Owner) | People search result |
+| LinkedIn (Company) | Apollo org LinkedIn URL |
+| Kay: Decision | (blank — agent auto-advances or Kay fills) |
+| Kay: Pass Reason | (blank — agent or Kay fills) |
+| Agent Notes | "RECOMMEND: Approve" or "RECOMMEND: Pass" + reasoning |
+| JJ: Call Status through JJ: Owner Sentiment | (blank — JJ fills) |
+| ICP Match | Assessment from Apollo data vs ICP criteria |
+| ICP Miss Reason | If not a full match, explain why |
+| Year Founded | Apollo founding year or web research |
+| LinkedIn Connection | (blank — Kay fills manually) |
+| Variant | (blank — outreach-manager fills A or B) |
+| Day 0 Sent | (blank — outreach-manager fills date) |
+| Day 3 Sent | (blank — outreach-manager fills date) |
+| Day 6 DM Sent | (blank — outreach-manager fills date) |
+| Day 14 Sent | (blank — outreach-manager fills date) |
+| Cadence Status | (blank — outreach-manager fills) |
 
 **Phone number formatting:** Apollo returns phones as `+1XXXXXXXXXX` or `+1 XXX-XXX-XXXX`. Always:
 1. Strip country code prefix (`+1` or `+1 `)

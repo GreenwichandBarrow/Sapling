@@ -110,13 +110,12 @@ last_updated: 2026-04-04T23:59:00Z
 
 ## Open Loops
 
-- Salesforge trial ~12 days remaining — sequences need creation + testing before expiry
-- Art Advisory 67 targets ready for Salesforge (post warm-intro) — blocked on sequence creation
 - Schwartzman & Associates — warm intro via Margot Romano, needs Kay's routing decision
-- col-lookup.sh needs bash fix → Python rewrite for the parsing logic
 - 6+ skills need migration from hardcoded Col letters to header-based lookups
-- Art Advisory PE ownership check not yet run
-- Fractional CFO 28 targets awaiting processing
 - Premium Pest Management initial target load — Sunday
 - Reply.io trial ~11 days — cancel before charge
-- .mcp.json security: Salesforge API key in plain text
+- Salesforge trial ~11 days — disconnected (spam), decide: cancel or re-evaluate
+- Outreach tool decision: personal-send (5/day from Kay) vs outsourced (DealsX, Austin's tool)
+- Cross-validate Art Advisory targets against Linkt's old lists
+- Art Advisory 67 targets ready for outreach — blocked on outreach tool decision
+- Fractional CFO 25 auto-approved targets — blocked on outreach tool decision

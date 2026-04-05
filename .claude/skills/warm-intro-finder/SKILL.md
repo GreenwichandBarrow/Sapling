@@ -30,6 +30,25 @@ For every new acquisition target, this skill checks whether Kay already knows so
 <sources>
 ## Network Sources (checked in priority order)
 
+### 0. LinkedIn Connections — Kay's Full Network (FASTEST CHECK)
+```bash
+# Search Kay's 901 LinkedIn connections by company name or person name
+grep -i "{company_name}" archives/linkedin/connections.csv
+grep -i "{owner_last_name}" archives/linkedin/connections.csv
+```
+
+**File:** `archives/linkedin/connections.csv` (exported 2026-03-23, 901 connections)
+**Columns:** First Name, Last Name, URL, Email Address, Company, Position, Connected On
+
+What to look for:
+- Is the target owner a direct LinkedIn connection? (search by last name)
+- Does Kay have a connection at the target company? (search by company name)
+- Does Kay have a connection at a company in the same niche/industry? (search by industry keywords)
+
+**This is a flat file grep — zero API calls, instant results.** Always run this FIRST before hitting Attio or other sources. A LinkedIn connection is a warm path even if there's no email/calendar interaction in Attio.
+
+**Scoring:** LinkedIn 1st-degree connection = WARM (Kay has met or accepted this person). If the connection is at the target company, that's a direct intro path. If they're in the same industry, that's a shared-background bridge.
+
 ### 1. Attio CRM — Kay's Direct Network (PRIMARY)
 ```bash
 # Search for connections to the target company

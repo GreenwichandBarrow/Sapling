@@ -146,7 +146,7 @@ Reminder to delete:
 - {Draft description} — orphaned/stale
 
 Targets for review ({niche}):
-1. {Name}, {Company} — Warm intro via {contact}. Draft or Salesforge?
+1. {Name}, {Company} — Warm intro via {contact}. Draft personal email or standard cadence?
 2. {Name}, {Company} — Borderline: {specific concern}. Approve or Pass?
 
 On deck for JJ (tomorrow):
@@ -159,15 +159,15 @@ Other items / today's agenda:
 
 **Targets for Review rules:**
 - This section surfaces targets from target-discovery's auto-advance system that need Kay's decision. Two categories only:
-  1. **Warm intro targets** — warm-intro-finder found a connection path (via Attio, vault, Gmail, Kay's network). Kay decides: "draft" (create a Superhuman draft for her personal outreach) or "salesforge" (enroll in the automated sequence).
-  2. **Edge case targets** — borderline on buy box/ICP criteria (borderline size, geography, unclear ownership, possible PE backing). Kay decides: "approve" (send to Salesforge + JJ based on channel) or "pass" (move to Passed tab on tracker).
-- **Auto-approved targets do NOT appear here.** Targets that passed all buy box + ICP criteria with no warm intro flow automatically to Salesforge/JJ. Only exceptions surface.
+  1. **Warm intro targets** — warm-intro-finder found a connection path (via Attio, vault, Gmail, Kay's network). Kay decides: "draft" (create a Superhuman draft for her personal outreach) or "cadence" (enroll in Claude-managed email cadence via Superhuman drafts).
+  2. **Edge case targets** — borderline on buy box/ICP criteria (borderline size, geography, unclear ownership, possible PE backing). Kay decides: "approve" (send to Superhuman drafts + JJ based on channel) or "pass" (move to Passed tab on tracker).
+- **Auto-approved targets do NOT appear here.** Targets that passed all buy box + ICP criteria with no warm intro flow automatically to Superhuman drafts + JJ. Only exceptions surface.
 - Group by niche when multiple niches are active. One header per niche.
-- Kay responds with decisions per item: "1 draft, 2 approve" or "1 salesforge, 2 pass"
+- Kay responds with decisions per item: "1 draft, 2 approve" or "1 cadence, 2 pass"
 - On Kay's decision:
   - "draft" → create Superhuman draft via `superhuman-draft.sh` for Kay's review before sending
-  - "salesforge" → enroll contact in the niche's Salesforge sequence
-  - "approve" → route to Salesforge sequence + JJ call list based on channel
+  - "cadence" → enroll in Claude-managed email cadence via Superhuman drafts
+  - "approve" → route to Superhuman drafts + JJ call list based on channel
   - "pass" → move target to Passed tab on the tracker sheet
 
 Each item numbered. Each has a clear action or question. No informational items without an ask. No items requiring deep review — those go to Slack.
@@ -234,8 +234,8 @@ Relationship management (nurture cadence monitoring, action-already-taken verifi
 7. **Slack notification validation** — confirm the Slack webhook POST returned HTTP 200 OK. If non-200, retry once. If still failing, warn Kay directly in the session summary that Slack notification failed.
 8. **ACTIVE DEALS folder sync** — compare ACTIVE DEALS Drive subfolders against Attio Active Deals entries. Every folder must have a matching Attio entry. Any orphaned folder = missed deal entry. Create Attio entry and flag in morning briefing.
 9. **CIM auto-trigger validation** — for every CIM detected during Gmail ingestion, verify all 4 steps completed: (a) ACTIVE DEALS folder exists with CIM/ subfolder, (b) CIM file uploaded to CIM/ subfolder with size > 0, (c) inbox item written to `brain/inbox/` with `urgency: critical` and `topic/cim-received` tag, (d) deal-evaluation was invoked with `source: intermediary-inbound`. If any step failed, retry once. If still failing, flag in morning briefing: "CIM auto-trigger incomplete for {company} — {which step failed}." A missed CIM is a missed deal.
-10. **Attio-Salesforge Reconciliation** — after the morning scan completes, compare Attio Active Deals stages against Salesforge MCP contact status for all active targets:
-   - For each Attio entry at "Identified": check Salesforge MCP (list_contacts or get_contact) for matching contact. If Salesforge shows email delivered/opened → MISMATCH. Auto-advance Attio to "Contacted" and log.
+10. **Attio-Target Sheet Reconciliation** — after the morning scan completes, compare Attio Active Deals stages against target sheet outreach columns (Last Email Date, Outreach Stage) for all active targets:
+   - For each Attio entry at "Identified": check target sheet Outreach Stage. If sheet shows Day 0 Sent → MISMATCH. Auto-advance Attio to "Contacted" and log.
    - For each Attio entry at "Contacted": if sheet shows Col R = "Connected" + positive sentiment → MISMATCH. Flag for review (potential First Conversation).
    This reconciliation runs as a safety net — it catches drift that the real-time detection missed.
 
@@ -297,7 +297,7 @@ Results from this check feed directly into the **Draft Status** section of `brai
 
 1. Query Superhuman for all drafts and recently sent emails matching known outreach targets
 2. For each draft that was sent:
-   - Update Attio: move target from "Identified" to "Contacted" (source: Gmail sent folder scan; Salesforge MCP status as backup)
+   - Update Attio: move target from "Identified" to "Contacted" (source: Gmail sent folder scan + target sheet Outreach Stage column)
    - Log the sent date in the email-scan-results artifact
 3. For drafts still unsent, flag with escalating urgency:
    - **Thank-you drafts (time-sensitive):**
@@ -309,7 +309,7 @@ Results from this check feed directly into the **Draft Status** section of `brai
    - Flag as high-priority pipeline signal
    - Recommend stage change based on reply content
 
-This is how the system knows Kay sent the email and triggers the Attio stage advancement. Salesforge handles follow-up cadence automatically for sequenced targets. JJ's call list is managed independently by jj-operations.
+This is how the system knows Kay sent the email and triggers the Attio stage advancement. Claude manages follow-up cadence via Superhuman drafts (Day 3/14 follow-ups drafted each morning). JJ's call list is managed independently by jj-operations.
 
 ### Outbound Email Scan (catches manually-sent emails)
 The Superhuman Draft Status Check above only catches emails that originated as outreach-manager drafts. Kay also sends emails manually — typed directly in Superhuman, forwarded from another thread, or replied inline. These must also trigger pipeline stage changes.
@@ -320,46 +320,38 @@ The Superhuman Draft Status Check above only catches emails that originated as o
    ```
 2. For each sent email, extract the recipient address(es) and cross-reference against Attio Active Deals entries at "Identified" stage (match by contact email, company domain, or contact name)
 3. **When a match is found:**
-   - Move Attio Active Deals entry from "Identified" → "Contacted" (source: Gmail sent folder scan; Salesforge MCP status as backup confirmation)
+   - Move Attio Active Deals entry from "Identified" → "Contacted" (source: Gmail sent folder scan + target sheet Outreach Stage column)
    - Log the signal: record sent date, recipient, and subject in the email-scan-results artifact under Draft Status → Sent
 4. **Deduplication:** Skip any recipient already captured by the Superhuman Draft Status Check above (avoid double-processing outreach-manager drafts that were sent). Use the recipient email as the dedup key.
 5. **Scope:** Only process emails sent to external recipients. Ignore internal emails (to @greenwichandbarrow.com addresses).
 
-This ensures manually-sent outreach emails (not just outreach-manager drafts) trigger the Attio stage change (Identified → Contacted). Salesforge handles follow-up cadence automatically for sequenced targets.
+This ensures manually-sent outreach emails (not just outreach-manager drafts) trigger the Attio stage change (Identified → Contacted). Claude manages follow-up cadence via Superhuman drafts for all targets.
 
 
 ### Cadence Advancement (runs during morning scan)
 
-Salesforge is the source of truth for outreach cadence status. Pipeline-manager reads Salesforge MCP (contact sequence status via list_contacts or get_contact) and Gmail sent folder to detect cadence progression. The target sheet no longer tracks outreach columns — Salesforge owns that data.
+The target sheet is the source of truth for outreach cadence status. Claude manages cadence tracking via Last Email Date and Outreach Stage columns on the target sheet. Pipeline-manager reads these columns to detect cadence progression.
 
-**Salesforge MCP access:**
-```
-Configured in .mcp.json
-Workspace ID: wks_90dzvksqb1zcm2aifcfk6
-Sender Profile ID: 4116
-Key tools: list_sequences, list_contacts, get_contact, enroll_contacts, remove_enrollments
-```
+For each approved target (Col O = "Approve" on the sheet), check target sheet Outreach Stage + Gmail sent folder:
 
-For each approved target (Col O = "Approve" on the sheet), check Salesforge MCP for sequence status:
+1. **Email send detection:** Read target sheet Outreach Stage column + Gmail sent folder scan.
+   → If Day 0 sent: advance Attio from Identified to Contacted
 
-1. **Email send detection:** Check Salesforge MCP (list_contacts or get_contact) for contact delivery status, with Gmail sent folder scan as primary source (Salesforge sends through Gmail).
-   → If delivered: advance Attio from Identified to Contacted
+2. **Follow-up emails:** Claude drafts Day 3/14 follow-ups in Superhuman each morning for targets at the appropriate cadence stage. Pipeline-manager checks Last Email Date to identify targets due for follow-up.
 
-2. **Day 5/10 follow-up emails:** Salesforge handles Day 5/10 follow-up emails automatically via sequence nodes. No manual drafting needed for sequenced targets.
-
-3. **Reply detected (any stage):** If Salesforge MCP shows "replied" status or inbound email from target detected in Gmail:
-   → Call remove_enrollments(workspaceId, sequenceId, contactIds) via Salesforge MCP to stop the sequence for this contact
+3. **Reply detected (any stage):** If inbound email from target detected in Gmail:
+   → Update Attio to "Engaged", mark Outreach Stage as "Replied" on target sheet
    → Advance Attio stage as appropriate (Contacted → First Conversation if reply is substantive)
    → Flag in briefing as high-priority pipeline signal
 
-4. **Cadence complete (no response):** If Salesforge shows sequence completed with no reply:
+4. **Cadence complete (no response):** If Day 14 sent and no reply after 7 business days:
    → Present: "{owner} at {company} — cadence complete, no response. Move to nurture?"
 
 ### New Approval Detection
 
-For each row where Col O = "Approve" and no Salesforge enrollment exists (check via list_contacts):
-→ These are newly approved targets. Signal outreach-manager to begin Salesforge enrollment (create_contact + enroll_contacts via MCP).
-→ Present in briefing: "{n} new approvals on {niche} target list. Outreach sequence starting."
+For each row where Col O = "Approve" and Outreach Stage is empty (no cadence started):
+→ These are newly approved targets. Signal outreach-manager to draft initial outreach in Superhuman.
+→ Present in briefing: "{n} new approvals on {niche} target list. Outreach drafts queued."
 
 ### Conference Decision Scan
 Conference decisions (Col M = "Attend"/"Register Only") are now handled by conference-discovery. Pipeline-manager does not scan the Conference Pipeline sheet.
@@ -379,7 +371,7 @@ Niche sprints have 4 active states tracked on the Industry Research Tracker:
 | Status | Meaning | Target Discovery Volume | Outreach |
 |--------|---------|------------------------|----------|
 | Under Review | Niche identified, one-pager and scorecard in progress. | None | None |
-| Active-Outreach | Full owner outreach active. | 4-6 targets/day | Full cadence via Salesforge (email sequence → follow-ups → LinkedIn DM) |
+| Active-Outreach | Full owner outreach active. | 4-6 targets/day | Full cadence via Superhuman drafts (Claude-managed) |
 | Active-Long Term | Niche winding down, finishing existing pipeline. | No new targets | Complete existing cadences only |
 | Tabled/Killed | Sprint stopped. | None | None |
 

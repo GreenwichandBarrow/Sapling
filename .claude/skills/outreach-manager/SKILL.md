@@ -1,6 +1,6 @@
 ---
 name: outreach-manager
-description: "Owns all outreach across all channels and funnels. Two subagents: cold outreach (from target-discovery) and conference outreach (from conference-discovery). Attio dedup catches crossover."
+description: "Owns all outreach across all channels and funnels. Three subagents: cold outreach (from target-discovery), conference outreach (from conference-discovery), intermediary outreach. Attio dedup catches crossover."
 user_invocable: true
 context_budget:
   skill_md: 3000
@@ -11,7 +11,7 @@ context_budget:
 <objective>
 Own all outreach. Every email, call, DM, and follow-up flows through this skill.
 
-This skill receives targets from two upstream skills and runs personalized outreach via two subagents. A shared dedup layer prevents any person from receiving overlapping outreach from both funnels.
+This skill receives targets from two upstream skills and runs personalized outreach via three subagents. A shared dedup layer prevents any person from receiving overlapping outreach from both funnels.
 
 **Inputs from other skills:**
 - **skill/target-discovery** — approved cold targets with enriched contact info and research context
@@ -23,9 +23,11 @@ This skill receives targets from two upstream skills and runs personalized outre
 - Weekly outreach metrics → skill/weekly-tracker
 
 Three subagents:
-1. **Cold Outreach** — sequenced multi-channel cadence for Apollo-sourced targets
+1. **Cold Outreach** — multi-channel cadence for Apollo-sourced targets, Claude-drafted in Superhuman
 2. **Conference Outreach** — pre-conference emails and post-conference follow-ups
 3. **Intermediary Outreach** — relationship-building with association heads, brokers, river guides
+
+**Delivery model (ALL outreach):** Claude drafts in Superhuman via CLI. Kay reviews and sends. No third-party tool ever touches Kay's SMTP credentials.
 </objective>
 
 <dedup_layer>
@@ -39,8 +41,6 @@ Before either subagent drafts outreach, run these checks:
 4. **Warm intro check (CRITICAL).** Before cold outreach, search Attio People records for the target owner AND anyone at their company. If Kay has an existing connection (LinkedIn import, prior email, meeting), flag as "Warm Intro" on the target sheet. Warm intro targets skip cold email + JJ call entirely — instead, draft a warm intro request email for Kay referencing the mutual connection. See Warm Intro Outreach section below.
 
 The dedup + warm intro check runs once when targets are received, before any drafting begins.
-
-**Delivery tracking note:** For cold outreach, pipeline-manager reads Salesforge stats via MCP for tracking and updates Attio stages. For warm/relationship emails, pipeline-manager tracks Superhuman draft send status. Outreach-manager focuses on drafting/sequencing only.
 </dedup_layer>
 
 <cold_outreach>
@@ -48,85 +48,116 @@ The dedup + warm intro check runs once when targets are received, before any dra
 
 Handles outreach for targets sourced from skill/target-discovery (Apollo + free sources).
 
-### Cold Outreach Delivery (UPDATED April 3, 2026)
+### Cold Outreach Delivery
 
-Cold outreach emails are sent via **Salesforge** (MCP + API), NOT Superhuman drafts.
-- Salesforge handles: cold email sequences + LinkedIn DMs + follow-up automation
-- Superhuman stays for: warm/relationship emails only (thank-yous, intros, investor comms)
+All cold outreach emails are drafted in **Superhuman** via the CLI wrapper. Kay reviews Day 0 emails, then hits send on all emails (Day 0 reviewed, Day 3/6/14 follow-ups sent without editing).
 
-**Review Model:** Auto-advance targets that pass buy box + ICP criteria are enrolled in Salesforge automatically — no Kay review needed. Warm intro targets and edge cases are surfaced in the morning briefing for Kay to decide (personal draft or Salesforge). Kay spot-checks Salesforge outputs. If she sees bad emails flowing, tighten criteria or adjust templates.
-
-### Salesforge Enrollment Stop Hook (CRITICAL)
-
-Before creating a Salesforge contact and enrolling in a sequence, verify ALL of these:
-
-1. **Attio record created successfully** — company + person exist at "Identified" stage. If Attio creation failed, STOP. Do not enroll a target that has no CRM record.
-2. **Email verified** — Apollo status = "verified". If guessed/unavailable/bounced, STOP. Do not enroll. Note in Col Q.
-3. **Not already in any Salesforge sequence** — check via `list_contacts` MCP call filtered by email. If already enrolled, SKIP (not an error, just dedup).
-4. **Not receiving outreach from conference subagent** — check Attio for conference tag. If found, conference outreach takes priority. SKIP cold enrollment.
-5. **LinkedIn URL check for Day 6 DM** — if Col M (LinkedIn Owner URL) is empty or missing, create the sequence WITHOUT the Day 6 LinkedIn DM node. Email-only cadence (Day 0, 3, 14). This is expected for some targets, not an error.
-6. **Warm intro check** — if Col Q contains "WARM INTRO", do NOT enroll in Salesforge. Route to Superhuman draft instead. This is the final gate preventing cold outreach on warm intro targets.
-
-If any hard check (1-4, 6) fails, do NOT proceed with enrollment. Log the reason.
-
-Flow per approved target:
+```bash
+~/.local/bin/superhuman-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
 ```
-1. create_contact(workspaceId="wks_90dzvksqb1zcm2aifcfk6", firstName, lastName, email, company,
-   linkedinUrl, position, tags=["niche:{niche}"],
-   customVars={warm_opener, specific_hook, niche, company,
-   connection_point, followup_hook, li_note})
-2. enroll_contacts(workspaceId, sequenceId, filters={leadIds: [contactId]})
-3. Create Attio entry at "Identified" stage
-```
-4. Salesforge sends Day 0 email automatically through Gmail
-5. Salesforge sends Day 3 follow-up, Day 6 LinkedIn DM, and Day 14 final email automatically
-6. Pipeline-manager reads Salesforge stats via MCP for tracking
 
-Salesforge API key: /tmp/salesforge-key.txt (read silently, never echo)
-Salesforge MCP: configured in .mcp.json with X-Salesforge-Key header
+**No third-party email tool ever gets SMTP credentials.** Kay sends every email herself from Superhuman. Claude drafts, Kay sends.
+
+### Cadence Tracking (Claude-Managed)
+
+Claude manages the outreach cadence by tracking two columns on the target sheet + Attio notes:
+
+**Target sheet columns (managed by Claude):**
+- **Last Email Date** — date of most recent email sent (updated in real-time when Kay confirms send)
+- **Outreach Stage** — current cadence position: `Day 0 Sent`, `Day 3 Sent`, `Day 6 DM Sent`, `Day 14 Sent`, `Cadence Complete`, `Replied`
+- **LinkedIn DM Sent** — date LinkedIn DM was sent (updated when Kay confirms)
+
+**Real-time tracking flow:**
+1. Claude drafts email/DM in Superhuman (or surfaces DM text in briefing)
+2. Kay says "looks good" or confirms sent
+3. Claude immediately updates: target sheet (Last Email Date, Outreach Stage) + Attio note on the contact record
+
+**Daily cadence check (runs each morning):**
+1. Read target sheet: find all targets with an Outreach Stage that isn't `Cadence Complete` or `Replied`
+2. Calculate business days since Last Email Date
+3. Draft what's due today:
+   - Day 3 due → draft follow-up email in Superhuman
+   - Day 6 due → surface LinkedIn DM in briefing (message text + LinkedIn URL)
+   - Day 14 due → draft final follow-up email in Superhuman
+4. Draft 5 new Day 0 emails for fresh targets
+5. Present in morning briefing: "5 new drafts to review, X follow-ups to send, X LinkedIn DMs to send"
+
+**Kay's daily effort:**
+- Day 0 emails: review, edit if needed, send (~5-10 min)
+- Follow-up emails (Day 3/14): just hit send, no review needed (~1 min each)
+- LinkedIn DMs (Day 6): copy message from briefing, paste in LinkedIn, send (~1 min each)
+
+### Review Model
+
+- **Day 0 emails:** Kay reviews every one (personalized, needs her eye)
+- **Day 3/14 follow-ups:** Pre-approved templates, Kay just hits send
+- **Day 6 LinkedIn DMs:** Pre-approved templates, Kay pastes and sends
+- **Warm intros + edge cases:** Surfaced in morning briefing for Kay to decide
 
 ### G&B Cold Email Outreach Cadence (Universal — All Niches)
 
-| Day | Channel | Action |
-|-----|---------|--------|
-| Day 0 | Email (Salesforge) | Personalized cold email, A/B variant auto-assigned |
-| Day 3 | Email (Salesforge) | Follow-up email #1, auto-send (same thread) |
-| Day 6 | LinkedIn DM (Salesforge) | Standalone LinkedIn DM (must work without email context) |
-| Day 14 | Email (Salesforge) | Follow-up email #2 (final), auto-send (same thread) |
+| Day | Channel | Action | Kay's Role |
+|-----|---------|--------|------------|
+| Day 0 | Email (Superhuman) | Personalized cold email, A/B variant | Review + send |
+| Day 3 | Email (Superhuman) | Follow-up email #1 (same thread) | Just send |
+| Day 6 | LinkedIn DM | Standalone LinkedIn DM | Copy-paste + send |
+| Day 14 | Email (Superhuman) | Follow-up email #2, final (same thread) | Just send |
 
 After Day 14 with no response, move to nurture cadence (pipeline-manager handles from here).
 
-**Business days only.** All day counts are business days (Mon-Fri). No emails sent on weekends.
+**Business days only.** All day counts are business days (Mon-Fri). No emails sent on weekends. No Sunday drafts scheduled for send.
 
-**Why this cadence:** 4 touchpoints across 14 days, two channels. Day 0 email establishes who Kay is and gives time to check LinkedIn. Day 3 follow-up shows genuine interest. Day 6 LinkedIn DM reaches them on a different channel (and works standalone if they never read emails). Day 14 final email references elapsed time ("since I first reached out") showing Kay's serious, not mass-emailing. No connection requests — they clutter Kay's network.
+**Why this cadence:** 4 touchpoints across 14 business days, two channels. Day 0 email establishes who Kay is and gives time to check LinkedIn. Day 3 follow-up shows genuine interest. Day 6 LinkedIn DM reaches them on a different channel (and works standalone if they never read emails). Day 14 final email references elapsed time ("since I first reached out") showing Kay's serious, not mass-emailing. No connection requests — they clutter Kay's network.
+
+**Volume:** 5 new targets per day, every weekday. No zero days. 25+ emails per week minimum.
 
 **Reference doc:** "G&B Cold Email Outreach Cadence & Templates 4.4.26" in the master templates Drive folder.
 
-### Target Sheet Columns (added by outreach-manager)
+### Niche-Specific Channel Rules
 
-When outreach-manager receives approved targets, it writes to the target sheet:
+Some niches restrict certain channels:
 
-- **Col O: Kay's Approval Gate** — `Approve` or `Pass`. The ONLY trigger for Attio entry creation and Salesforge enrollment.
-- **Col P: Pass Reason** — Why Kay passed (if applicable).
-- **Col Q: Agent Notes** — Agent recommendation for each target. Must start with `RECOMMEND: Approve` or `RECOMMEND: Pass` followed by reasoning (e.g., "RECOMMEND: Approve — strong niche fit, verified email, no PE ownership" or "RECOMMEND: Pass — PE-owned since 2023, skip"). This format enables calibration-workflow to programmatically compare agent recommendations against Kay's decisions in Col O. If a warm intro path is found (mutual connection in Attio), include it here: "RECOMMEND: Approve — WARM INTRO via {connection name}".
+| Niche | Email | LinkedIn DM | JJ Call |
+|-------|-------|-------------|---------|
+| Art Advisory | Yes | Yes | NO — small world, cold call burns relationships |
+| Fractional CFO | Yes | Yes | TBD per Kay |
+| Pest Management | Yes | Yes | TBD per Kay |
+| Other niches | Yes | Yes | TBD per Kay |
 
-**Standardized sheet layout:** A-N (list building / discovery data), O (Kay: Decision), P (Kay: Pass Reason), Q (Agent Notes).
+Kay decides per-niche whether JJ calls are appropriate. Default is email + LinkedIn only until Kay approves calls.
 
-**Outreach tracking lives in Salesforge.** Pipeline-manager reads Salesforge MCP directly for sequence status, reply tracking, and cadence progression. The target sheet is the staging area for discovery and approval only. No outreach tracking columns on the sheet.
+### Target Sheet Columns
 
-**Warm intro handling:** When a warm intro is found, note it in Col Q. Warm intro targets skip cold email entirely — instead, draft a warm intro request email for Kay via Superhuman.
+**Discovery columns (A-N):** Source, Company, Website, Headquarters, Industry, Employees, Revenue, Ownership, Owner Name, Owner Title, Email, Phone, LinkedIn (Owner), LinkedIn (Company)
+
+**Decision columns:**
+- **Col O: Kay: Decision** — `Approve` or `Pass`. The ONLY trigger for Attio entry creation and outreach.
+- **Col P: Kay: Pass Reason** — Why Kay passed (if applicable).
+- **Col Q: Agent Notes** — Agent recommendation. Must start with `RECOMMEND: Approve` or `RECOMMEND: Pass` followed by reasoning. If a warm intro path is found, include: "RECOMMEND: Approve — WARM INTRO via {connection name}".
+
+**Outreach tracking columns (managed by Claude):**
+- **Last Email Date** — date of most recent email sent
+- **Outreach Stage** — current cadence position
+- **LinkedIn DM Sent** — date LinkedIn DM was sent
+- **LinkedIn Connection** — Kay marks 1st/2nd/3rd degree manually
+
+**JJ call columns (managed by JJ, for niches where calls are approved):**
+- **JJ: Call Status** — dropdown: Not Called, Connected, Voicemail, Callback, Not Interested, Wrong Number, Schedule Requested
+- **JJ: Call Date**
+- **JJ: Call Notes**
+- **JJ: Owner Sentiment** — dropdown
 
 ### Personalization Layer
 
-Every target gets personalized variables filled from the Pre-Draft Research Brief. The templates above are the structure — {specific detail}, {specific question}, and {connection point} are what make each email unique.
+Every Day 0 target gets personalized variables filled from the Pre-Draft Research Brief. The templates are the structure — {specific detail}, {specific question}, and {connection point} are what make each email unique.
 
 **Voice:** Kay's calibrated outreach voice (see memory: user_outreach_voice.md)
 
 ### A/B Test: Two Email Variants (Active Experiment)
 
-Salesforge handles A/B variant distribution natively at 50/50 on the Day 0 email node. Each variant tracks open/reply rates independently. No manual variant assignment needed.
+Claude alternates variants 50/50 on Day 0 emails. Track which variant each target received in the Outreach Stage column (e.g., `Day 0 Sent (A)` or `Day 0 Sent (B)`).
 
-Warm intro targets are excluded from this experiment (they go through Superhuman, not Salesforge).
+Warm intro targets are excluded from this experiment.
 
 **Subject line (both variants):** Intro {first name} & Kay
 
@@ -207,7 +238,7 @@ Very best, Kay
 
 **What we're testing:** Does transparency about acquisition intent help or hurt response rates? Variant A positions Kay as a curious learner. Variant B is upfront about being a buyer.
 
-**Tracking:** Salesforge tracks variant performance natively. Weekly tracker dashboard (Signal Quality lens) reviews A/B performance per niche. Metrics: response rate, time to response, tone of response (warm vs defensive), conversion to call.
+**Tracking:** Claude tracks variant assignment per target. Weekly tracker dashboard (Signal Quality lens) reviews A/B performance per niche. Metrics: response rate, time to response, tone of response (warm vs defensive), conversion to call.
 
 **HARD RULES (apply to BOTH variants):**
 - The email is about THEM, not Kay or G&B. Never mention Greenwich & Barrow. Never describe what Kay does. LinkedIn handles credibility (they'll check).
@@ -220,7 +251,7 @@ Very best, Kay
 
 ### Email Verification (ALL Targets — NO EXCEPTIONS)
 
-**NEVER draft an email to an address that was guessed or constructed from name + domain patterns.** If the email address does not come from a verified source (Apollo enrichment, company website, email signature, LinkedIn profile, direct correspondence), do NOT use it. Guessing email formats (e.g., cjanuski@domain.com from "Chris Januski" + domain) burns Kay's sender reputation and wastes outreach. This rule applies EVERYWHERE — inside outreach-manager, inside pipeline-manager, and in ad-hoc conversation drafting.
+**NEVER draft an email to an address that was guessed or constructed from name + domain patterns.** If the email address does not come from a verified source (Apollo enrichment, company website, email signature, LinkedIn profile, direct correspondence), do NOT use it. Guessing email formats burns Kay's sender reputation. This rule applies EVERYWHERE.
 
 All targets are enriched via Apollo before reaching outreach-manager. Before drafting, verify the email address status:
 
@@ -236,32 +267,17 @@ source .env && curl -s "https://api.apollo.io/v1/people/match" \
 - `guessed` / `unavailable` / `bounced` → do NOT draft. Note status in Col Q (Agent Notes). Notify Kay: "{owner} at {company} — email not verified ({status}). Skip or find alternate?"
 - `pending` → retry once after 5 minutes. If still pending, flag.
 
-**Why:** Bounced emails burn Kay's sender domain reputation. All email addresses are verified via Apollo people match before outreach.
+### Pre-Draft Research Brief (REQUIRED before any Day 0 draft)
 
-### Pre-Draft Research Brief (REQUIRED before any draft)
-
-Before writing any outreach email, build a research brief for the target. This eliminates Kay's manual research step (she was searching LinkedIn + company website + company LinkedIn for every draft).
+Before writing any Day 0 outreach email, build a research brief for the target. This eliminates Kay's manual research step.
 
 **For each target, collect:**
 1. **Owner LinkedIn profile:** Background, tenure, posts, mutual connections with Kay, career arc
 2. **Company website:** Services offered, team page, about us, any news/press, geographic focus
 3. **Company LinkedIn page:** Employee count, recent posts, growth signals, follower count
-4. **Search Activity tracker cross-reference:** River guide comments (SD/BN ratings), prior outreach history, snail mail sent
-5. **Kay's LinkedIn connections:** Warm intro path (from Attio People cross-reference)
-6. **Apollo data:** If available from verification step, any additional context (title, seniority, department)
-
-```bash
-# LinkedIn profile (via web search — no LinkedIn API)
-WebSearch: "{owner_name} {company_name} LinkedIn"
-# Company website
-WebFetch: "{company_domain}" with prompt "Extract: services, team, about us, news, geographic focus"
-# Company LinkedIn
-WebSearch: "{company_name} LinkedIn company page employees"
-```
-
-**Embed research into the draft:**
-- Weave 1-2 specific details into the email body (not generic "came across your firm")
-- Reference something real: their career background, a specific service they offer, their geographic market, years in business
+4. **Search Activity tracker cross-reference:** River guide comments, prior outreach history
+5. **Kay's LinkedIn connections:** Warm intro path (from Attio People cross-reference + LinkedIn CSV)
+6. **Apollo data:** If available from verification step, any additional context
 
 **Flag before drafting (do NOT draft if any of these):**
 - Owner appears retired or no longer at the company
@@ -269,53 +285,48 @@ WebSearch: "{company_name} LinkedIn company page employees"
 - Company website is down or domain expired
 - Owner is a Kay LinkedIn connection (route to warm intro instead of cold)
 
-**Get it right the first time.** Superhuman CLI cannot update or delete drafts. Every draft created is permanent until Kay manually deletes it. Do not create drafts that will need to be replaced.
+**Get it right the first time.** Superhuman CLI cannot update or delete drafts. Every draft created is permanent until Kay manually deletes it.
 
 ### Draft Creation
 
-**STOP HOOK: No draft may be created without a completed research brief.** Before calling the Superhuman draft wrapper, verify that the Pre-Draft Research Brief (above) has been completed for this target. Required evidence:
-- Owner LinkedIn data extracted
-- Company website scanned
-- PE ownership checked (hard stop if PE-owned)
-- Search Activity tracker cross-referenced
-- At least one personalization hook identified
+All outreach drafts use the Superhuman CLI wrapper (NOT the MCP tool — it uses Gmail API which creates invisible drafts):
 
-If any of these are missing, HALT and complete the research first. Never create a generic or placeholder draft. Every draft must contain specific details from the research that Kay would otherwise have to look up herself.
-
-**For cold outreach, use Salesforge MCP instead. Superhuman drafts are for warm/relationship emails only.**
-
-For warm intros and relationship emails, draft in Superhuman via the wrapper script (NOT the MCP tool — it uses Gmail API which creates invisible drafts). Use Bash:
 ```bash
 ~/.local/bin/superhuman-draft.sh --to "{email}" --subject "Intro {first name} & Kay" --body "{body}"
 ```
-This creates native Superhuman drafts via CDP. Kay reviews and sends from Superhuman. Sign off "Very best, Kay" only — signature is built in.
 
-For cold outreach, add the contact to a Salesforge sequence via MCP with all personalized variables populated. Salesforge handles sending through Gmail automatically.
+**CRITICAL:** Always verify the Superhuman CLI is using the G&B account (`kay.s@greenwichandbarrow.com`), not the personal email. If the G&B token is expired, the CLI silently falls back to the personal account. Check the output for the account confirmation line.
 
-**Subject lines:**
-- **Cold outreach (Salesforge):** "Intro {first name} & Kay"
-- **Warm intro emails (Superhuman):** At Kay's discretion — default to "Intro {first name} & Kay" but Kay may customize for relationship context.
+Sign off "Very best, Kay" only — signature is built in.
 
-**Attio State Machine:**
+### Attio State Machine
 
-Outreach-manager is the only skill that writes to Attio for targets. **No Attio entry exists until Kay approves.** Target-discovery discovering a target does NOT create an Attio record. The sequence:
+Outreach-manager is the only skill that writes to Attio for targets. **No Attio entry exists until Kay approves.** The sequence:
 
 1. Read the target sheet, find rows where **Col O = "Approve"** that weren't approved in the prior run (new approvals). Col O = "Approve" is the ONLY trigger for Attio entry creation.
 2. Verify email via Apollo API. Only proceed if `verified`.
 3. For each verified approved target, search Attio for the person AND company:
-   - **If found** → someone Kay already knows. Note "WARM INTRO via {connection}" in Col Q, skip cold outreach. This is both the dedup check AND the warm intro check in one step.
-   - **If not found** → create the company + person in Attio, add company to Active Deals at "Identified" stage. Proceed with cold outreach.
-4. When outreach-manager enrolls target in Salesforge sequence → target stays at "Identified" (enrolled, pending first send)
-5. Pipeline-manager reads Salesforge events (email sent, opened, replied) and advances Attio stages: "Identified" → "Contacted" (first email sent) → "Engaged" (reply received)
+   - **If found** → someone Kay already knows. Note "WARM INTRO via {connection}" in Col Q, skip cold outreach.
+   - **If not found** → create the company + person in Attio, add company to Active Deals at "Identified" stage.
+4. When Day 0 email is sent → update Attio stage to "Contacted"
+5. When reply received → update Attio stage to "Engaged"
 6. After Day 14 with no response → pipeline-manager moves to nurture cadence
 
-**Key rule:** Targets live on the Google Sheet ONLY until Kay sets Col O = "Approve". The sheet is the staging area. Attio is the pipeline. The approval gate keeps the CRM clean.
+### Attio Note Logging (Real-Time)
 
-### Day 3: JJ's Confirmation Call
+When Kay confirms an email was sent or a LinkedIn DM was sent, immediately create an Attio note on the person's record:
 
-**NOTE: JJ is fully decoupled from Salesforge cold outreach cadences.** JJ cannot see Salesforge, so follow-up calls tied to email timing are too fragile. This section applies ONLY to warm intro follow-ups or targets where Kay specifically requests a JJ call.
+- **Email sent:** "Cold outreach Day {N} email sent. Variant {A/B}. Subject: {subject}"
+- **LinkedIn DM sent:** "LinkedIn DM sent. Message: {message text}"
+- **Reply received:** "Reply received from {owner}. {brief summary}"
 
-JJ calls to confirm receipt of Kay's email. This is NOT a cold call — it's a warm follow-up.
+This ensures the full outreach timeline lives in Attio alongside the automatically-tracked email history.
+
+### JJ Call Prep (for niches where calls are approved)
+
+For niches where Kay has approved JJ calls, outreach-manager populates the call columns on the target sheet after Day 0 email is sent.
+
+**JJ call timing:** JJ calls on Day 3 (same day as follow-up email). The call is a confirmation call, not a cold call — "We sent {owner name} a note a couple days ago and I just wanted to make sure it came through."
 
 **Script:**
 ```
@@ -328,56 +339,31 @@ Would {owner name} have a few minutes for a quick call?
 
 **JJ positioning:** JJ is a team member at G&B, not an assistant. He speaks as "we" and represents the firm in his own right. Never frame JJ as calling "on behalf of" anyone.
 
-**If the owner wants to schedule a call with Kay:** JJ books a time directly with the owner on the phone, then emails Howie (barrie@greenwichandbarrow.com) with: owner name, owner email, and agreed time. Howie creates the calendar invite and sends it to the owner. Kay gets notified via calendar. JJ does NOT manage Kay's calendar directly.
+**If the owner wants to schedule a call with Kay:** JJ books a time directly with the owner on the phone, then emails Howie (barrie@greenwichandbarrow.com) with: owner name, owner email, and agreed time. Howie creates the calendar invite.
 
-**Call columns** — JJ works directly from the niche sprint master sheet ("{Niche} - Target List" in TARGET LISTS folder). No separate call list. JJ fills in columns Q-T on the Active tab:
-- Col Q: Call Status (dropdown: Not Called, Connected, Voicemail, Callback, Not Interested, Wrong Number, Schedule Requested)
-- Col R: Call Date
-- Col S: Call Notes
-- Col T: Owner Sentiment (dropdown)
+**JJ works directly from the target sheet.** No separate call list. JJ fills in the JJ columns on the Active tab.
 
-**Feedback:** JJ is encouraged to share qualitative observations on Slack anytime (e.g., "owners in this niche seem skeptical" or "getting a lot of voicemails"). This is normal team communication, not a formal process.
-
-See target-discovery/references/drive-locations.md for full column layout.
+**Feedback:** JJ is encouraged to share qualitative observations on Slack anytime.
 
 ### Follow-Up Emails
 
-For Salesforge sequences, Day 3 and Day 14 follow-ups are automatic (no manual drafting needed). Salesforge sends them as same-thread replies per the approved templates above.
+Day 3 and Day 14 follow-ups are drafted by Claude from the approved templates above. They are same-thread replies.
 
-Manual follow-up drafting applies only to warm/relationship emails sent via Superhuman. For those:
+**Claude drafts these proactively each morning** for any target where the follow-up is due. Kay just hits send — no review needed unless she wants to customize.
+
+### LinkedIn Actions
+
+On Day 6, Claude surfaces the LinkedIn DM in the morning briefing:
 
 ```
-Hi {first name},
-
-Just circling back on my note from earlier this week. Would love to find a time to connect.
-
-Kay
+LinkedIn DMs due today:
+1. {Owner Name} at {Company} — {LinkedIn URL}
+   Message: {DM text from template}
 ```
 
-Draft in Superhuman via CLI. Kay reviews and sends.
+Kay opens LinkedIn, pastes or adapts the message, sends. Then confirms in conversation.
 
-### LinkedIn Actions (Connection-Degree Based)
-
-For targets in Salesforge sequences, the Day 6 LinkedIn DM is automated via Salesforge social actions per the approved templates above. The DM must work standalone — the recipient may not have seen the emails. No manual Slack DM drafts needed for sequenced targets.
-
-**Manual Slack DM drafts only for:**
-- Warm intros (not in Salesforge)
-- Conference outreach (not in Salesforge)
-- Targets where Kay specifically requests a manual LinkedIn touch
-
-**DM delivery via Slack (warm intros and conference only):**
-
-One Slack message per DM to #ai-operations containing:
-- The drafted DM text (ready to copy-paste into LinkedIn)
-- Clickable LinkedIn profile URL (from Col M on target sheet)
-- Link to the target's row in the Google Sheet
-- Connection degree note
-
-```bash
-curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
-  -H "Content-Type: application/json" \
-  -d '{"text":"LinkedIn DM for {Owner Name} at {Company} ({connection degree}):\n\n{DM text}\n\nLinkedIn: {linkedin_url}\nTarget sheet: {sheet_url}"}'
-```
+Claude immediately logs to Attio and updates the target sheet (LinkedIn DM Sent column).
 
 **DM personalization by connection degree:**
 
@@ -402,13 +388,7 @@ Hi {first name}, I came across {company} while researching {niche} and was impre
 - LinkedIn tone is MORE casual than email — no "Very best, Kay" sign-off
 - Keep DMs to 3-4 sentences max
 - Lead with curiosity about THEM, not Kay
-
-**Attio tracking:**
-- Salesforge logs LinkedIn actions automatically for sequenced targets
-- Pipeline-manager reads Salesforge MCP for LinkedIn action status
-- For manual DMs (warm/conference), log "LinkedIn DM - Drafted" as a note on the Attio entry
-
-**Do NOT send LinkedIn DMs on weekends.** Business days only, same as email.
+- Do NOT send LinkedIn DMs on weekends. Business days only.
 
 ### Warm Intro Handling
 
@@ -416,9 +396,9 @@ Two scenarios trigger a warm intro flag:
 
 **A. Shared Attio connection found** (during outreach-manager warm intro check):
 1. Note "WARM INTRO via {connection name}" in Col Q
-2. Slack ping to #operations: "Warm intro available: {target owner} at {company}. You're connected to {connection name}. Cold outreach paused for this target."
-3. Cold outreach is PAUSED for this target — no Salesforge enrollment, no JJ call scheduled
-4. Kay decides approach case by case (ask for intro, mention connection directly, etc.)
+2. Surface in morning briefing: "Warm intro available: {target owner} at {company}. You're connected to {connection name}. Cold outreach paused for this target."
+3. Cold outreach is PAUSED for this target — no email draft, no JJ call
+4. Kay decides approach case by case
 5. Claude drafts per Kay's direction — no template, each is unique
 
 **B. Inbound introduction via email** (pipeline-manager detects intro):
@@ -427,8 +407,6 @@ Two scenarios trigger a warm intro flag:
 3. Claude drafts per Kay's direction
 4. Thank-you to introducer is always drafted (short, same day)
 5. No JJ call — warm intros are Kay-only
-
-Warm intros are the exception, not the rule. Don't over-automate — just flag and pause.
 </cold_outreach>
 
 <conference_outreach>
@@ -438,7 +416,7 @@ Handles all outreach related to conferences — pre-conference emails to attende
 
 ### Conference Outreach Cadence
 
-Outreach-manager pulls the conference date from the **Conference Pipeline Google Sheet** (Col A: Date of Conference, Sheet ID: `1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY`). This is the source of truth for timing — no dependency on Kay's calendar. All timing works backwards from this date.
+Outreach-manager pulls the conference date from the **Conference Pipeline Google Sheet** (Col A: Date of Conference, Sheet ID: `1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY`). This is the source of truth for timing. All timing works backwards from this date.
 
 **Pre-Conference Cadence:**
 
@@ -477,13 +455,11 @@ Kay Schneider
 Greenwich & Barrow
 ```
 
-Draft in Superhuman via the CLI (NOT the MCP tool — it uses Gmail API which creates invisible drafts). Use the same Bash command as cold outreach:
+Draft in Superhuman via the CLI wrapper:
 ```bash
-superhuman-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
+~/.local/bin/superhuman-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
 ```
 Kay reviews and sends from Superhuman.
-
-Create Motion task: "Review and send {conference} pre-outreach emails" with due date T-minus 12 days.
 
 ### Pre-Conference Follow-Up (T-minus 7 days)
 
@@ -512,7 +488,7 @@ Kay
 Receives conversation data from conference-discovery (Granola transcripts + Kay's notes).
 
 For each person Kay spoke with:
-1. Draft personalized follow-up email referencing specific conversation points from the booth
+1. Draft personalized follow-up email referencing specific conversation points
 2. Use Kay's voice, no em dashes
 3. Propose a specific next step (call, meeting, send info)
 4. Short and specific — reference something from the actual conversation, not generic
@@ -526,7 +502,7 @@ Sorry I missed you at {Conference Name}. Would still love to connect. Do you hav
 Kay
 ```
 
-Draft all in Superhuman. Present during morning pipeline-manager review. Kay approves and sends.
+Draft all in Superhuman. Present during morning briefing. Kay approves and sends.
 </conference_outreach>
 
 <intermediary_outreach>
@@ -544,7 +520,7 @@ Handles outreach to force multipliers — people who know every owner in the nic
 
 ### Different Framing (Not a Pitch)
 
-Intermediary outreach positions Kay as a **student of the industry**, not a buyer. The goal is to learn and build a relationship, not pitch an acquisition.
+Intermediary outreach positions Kay as a **student of the industry**, not a buyer.
 
 **Email structure:**
 ```
@@ -562,23 +538,7 @@ Kay Schneider
 Greenwich & Barrow
 ```
 
-### Conference River Guide Play
-
-When an upcoming conference is registered, identify the association head or organizer and reach out T-minus 3 weeks (before attendee outreach starts). The goal: meet them before the conference so they walk Kay through the room making introductions.
-
-**Conference river guide cadence:**
-
-| When | Action |
-|------|--------|
-| T-minus 21 days | First email to association head / organizer — "I'm attending {conference}, would love to connect beforehand" |
-| T-minus 14 days | Follow-up if no response — "Would love a few minutes before the conference" |
-| T-minus 7 days | If connected, ask: "Who should I make sure to meet at {conference}?" |
-| Conference day | Meet in person. They introduce Kay to key people. |
-| T+1 day | Thank-you email + follow-up on any introductions they made |
-
 ### General Intermediary Cadence (non-conference)
-
-For intermediaries identified through niche research, not tied to a specific conference:
 
 | Day | Channel | Action |
 |-----|---------|--------|
@@ -588,6 +548,18 @@ For intermediaries identified through niche research, not tied to a specific con
 | Day 14 | Email (Superhuman) | Final touch if no response |
 
 No JJ call. Intermediaries should only hear from Kay directly.
+
+### Conference River Guide Play
+
+When an upcoming conference is registered, identify the association head or organizer and reach out T-minus 3 weeks (before attendee outreach starts). The goal: meet them before the conference so they walk Kay through the room making introductions.
+
+| When | Action |
+|------|--------|
+| T-minus 21 days | First email to association head / organizer |
+| T-minus 14 days | Follow-up if no response |
+| T-minus 7 days | If connected, ask: "Who should I make sure to meet at {conference}?" |
+| Conference day | Meet in person. They introduce Kay to key people. |
+| T+1 day | Thank-you email + follow-up on any introductions they made |
 
 ### Attio Pipeline
 
@@ -599,113 +571,91 @@ Intermediaries go into the **Intermediary Pipeline** in Attio, not Active Deals:
 
 ### Sources for Intermediary Discovery
 
-- **Niche intelligence** — when a niche is activated, identify the key associations, brokers, and advisors in the space
+- **Niche intelligence** — when a niche is activated, identify the key associations, brokers, and advisors
 - **Conference discovery** — conference organizers and association hosts
-- **Web research** — industry blogs, podcasts, LinkedIn thought leaders in the niche
+- **Web research** — industry blogs, podcasts, LinkedIn thought leaders
 - **Existing network** — vault entities tagged with `relationship_type: River Guide` or `relationship_type: Intermediary`
-- **Referrals** — one intermediary often knows others ("You should also talk to...")
+- **Referrals** — one intermediary often knows others
 
-Draft all intermediary emails in Superhuman via CLI (see Cold Outreach section for exact command). Do NOT use the MCP `superhuman_draft` tool. Intermediary outreach is relationship-building, not cold outreach, so it stays in Superhuman.
+Draft all intermediary emails in Superhuman via CLI.
 </intermediary_outreach>
 
 <essential_principles>
 ## Principles
 
-### Kay/Camilla Decision Column (Temporary — Testing Phase)
-During the testing phase, outreach-manager only drafts outreach for targets where Col O (Kay/Camilla: Decision) = "Approve". Either Kay or Camilla can approve targets. This is a temporary human-in-the-loop gate. Once target-discovery's accept rate stabilizes at 85%+ for 2 consecutive weeks (tracked on Skill Calibration tab of Weekly Tracker), this gate graduates to Spot Check and then Auto-Advance. Kay decides when to graduate — the system proposes it with data.
-
 ### Volume & Cadence
-- 4-6 cold targets per day (funds that acquired averaged 4, not 9)
-- Quality over quantity — deep research on each target, personalized outreach
-- Sequenced multi-channel via Salesforge: email Day 0 → follow-up Day 3 → LinkedIn DM Day 6 → final email Day 14
-- Conference targets excluded from cold cadence (conference outreach subagent owns that relationship)
+- 5 new cold targets per day, every weekday. No zero days.
+- 25+ owner emails per week minimum
+- Quality over quantity — deep research on each target, personalized Day 0 outreach
+- Follow-ups (Day 3/14) are templated — Kay just hits send
+- LinkedIn DMs (Day 6) are templated — Kay copy-pastes and sends
+- Conference targets excluded from cold cadence
 
 ### Channel Rules
-- **Email (cold):** Via Salesforge sequences (auto-send through Gmail). **Email (warm/relationship):** Via Superhuman drafts. Never Gmail API directly.
-- **Phone:** JJ's call sheet in Google Sheets. JJ logs outcomes.
-- **LinkedIn DM:** For Salesforge sequences, Day 6 LinkedIn DM is automated. For warm/conference targets, Kay sends manually from LinkedIn. Outreach-manager drafts and delivers via Slack (#ai-operations). Tracked in Attio and Salesforge.
+- **Email:** All via Superhuman CLI wrapper. Kay sends every email herself. No third-party SMTP access ever.
+- **Phone:** JJ's call columns in the target sheet. JJ logs outcomes. Only for niches where Kay approves calls.
+- **LinkedIn DM:** Kay sends manually from LinkedIn. Claude drafts and surfaces in morning briefing. Tracked in Attio notes.
 - **All channels:** Same voice, same framing (curiosity, not acquisition pitch).
 
 ### Team Roles (for this skill only)
-- **Claude:** Deep research per target, draft all emails, build call list, track cadence timing
-- **Kay:** Review/send emails, send LinkedIn DMs, take Stage 1 calls
-- **JJ:** Confirmation calls from sheet, log outcomes
+- **Claude:** Deep research per target, draft all emails/DMs, track cadence timing, update sheet + Attio in real-time
+- **Kay:** Review Day 0 emails, send all emails, send LinkedIn DMs, take calls
+- **JJ:** Confirmation calls from sheet (approved niches only), log outcomes
 
 ### Coordination with Other Skills
 - **pipeline-manager:** After Day 14 with no response, pipeline-manager takes over with nurture cadence. Outreach-manager does not re-contact nurture targets unless pipeline-manager flags them.
-- **weekly-tracker:** Outreach metrics (emails sent, calls made, response rates) feed into the weekly activity tracker.
+- **weekly-tracker:** Outreach metrics (emails sent, DMs sent, response rates) feed into the weekly activity tracker.
 </essential_principles>
 
 <validation>
 ## Validation / Stop Hooks
 
-Before reporting completion, run these checks in order. If any check fails, do NOT send the Slack notification. Report the failure and fix it before retrying.
+Before reporting completion, run these checks. If any check fails, fix before proceeding.
 
 ### 0a. Jessica Prior Contact Check (STOP HOOK — before drafting)
-Before drafting outreach for ANY company, check if they were previously contacted by Jessica. Cross-reference against the Activity Report (Google Sheet) or check Attio notes for "Cold emailed by Jessica" text. If the company was previously contacted by Jessica, the email MUST be framed as a re-introduction ("We reached out previously and wanted to reconnect"), NOT as cold outreach. A cold email to someone Jessica already contacted looks disorganized.
+Before drafting outreach for ANY company, check if they were previously contacted by Jessica. Cross-reference against the Activity Report (Google Sheet) or check Attio notes for "Cold emailed by Jessica" text. If previously contacted, frame as re-introduction, NOT cold outreach.
 
 ### 0b. Tracker Verification (STOP HOOK — before drafting)
-Before drafting outreach for any target, verify the target is on Kay's tracker (the active niche sprint master sheet in TARGET LISTS folder). If the target is not on the tracker, flag it: "{company} is not on the tracker. Add first or skip?" Do NOT draft outreach for unknown targets.
+Before drafting outreach for any target, verify the target is on Kay's tracker. If not on the tracker, flag: "{company} is not on the tracker. Add first or skip?" Do NOT draft outreach for unknown targets.
 
-### 1. Outreach Delivery Validation
-**Cold outreach:** Confirm every approved target was enrolled in a Salesforge sequence via MCP (create_contact + enroll_contacts). Verify Salesforge MCP returned success for each contact creation and enrollment. If any failed, flag with the error.
-**Warm/relationship emails:** Confirm every email draft was created via the superhuman-cli Bash command (NOT the MCP `superhuman_draft` tool which uses Gmail API). For each target, verify the CLI returned a success response. Drafts must exist in Superhuman's native draft system, not Gmail.
+### 1. Draft Delivery Validation
+Confirm every email draft was created via the Superhuman CLI Bash wrapper (NOT the MCP `superhuman_draft` tool). Verify the CLI returned a success response AND confirmed the G&B account (not personal email fallback).
 
-### 2. Call Sheet Validation
-**For Salesforge-sequenced targets, this validation is optional.** JJ is decoupled from Salesforge cadences, so call sheet population is not required for cold outreach targets.
-
-For warm intro targets or targets where Kay explicitly requested a JJ call, verify JJ's call columns in the target sheet are populated:
-- **Company** — non-empty
-- **Owner Name** — non-empty
-- **Phone** — non-empty
-- **Call Date** — populated per Kay's direction
-
-Missing fields mean JJ can't execute. Fix before proceeding.
+### 2. Cadence Tracking Validation
+Verify the target sheet has been updated for every outreach action:
+- Last Email Date populated
+- Outreach Stage reflects current cadence position
+- LinkedIn DM Sent populated (if Day 6 completed)
+- Attio note created for each outreach action
 
 ### 3. Warm Intro Validation
-Confirm Attio People records were checked for every target before drafting. For each target:
-- If Col Q (Agent Notes) contains "WARM INTRO" → verify NO cold email was drafted AND no JJ call was scheduled. Warm intros get a different email template and skip JJ entirely.
-- If Col Q has no warm intro flag → verify cold outreach was drafted normally.
-A cold email sent to a warm intro target wastes the relationship advantage and looks impersonal. This is a hard gate.
+For each target: if Col Q contains "WARM INTRO" → verify NO cold email was drafted and no JJ call was scheduled. Warm intros get a different approach and skip JJ entirely.
 
 ### 4. Dedup Validation
-Confirm Attio was checked before any drafting began. No person should have outreach queued from both the cold outreach and conference outreach subagents. If a person appears in both queues, conference outreach takes priority and the cold draft must be removed.
+No person should have outreach queued from both cold outreach and conference outreach subagents. Conference outreach takes priority.
 
-### 5. Cadence Tracking
-For Salesforge-sequenced cold targets, cadence tracking is handled by Salesforge natively. Verify each target was successfully enrolled in the correct sequence. No JJ call entry is required for Salesforge targets. For warm intro targets where Kay requested a JJ call, verify the call entry exists. Warm intro emails sent via Superhuman should NOT have an automatic Day 3 call entry unless Kay specifically requested one.
+### 5. Email Verification Validation
+Every email address drafted to must have a `verified` status from Apollo. No guessed or constructed emails.
 
-### 5b. LinkedIn DM Validation
-For Salesforge-sequenced targets with a LinkedIn URL, verify the sequence includes a Day 6 LinkedIn DM node. Salesforge handles this automatically.
-
-For warm/conference targets, verify a LinkedIn DM Slack message was created if the target has a LinkedIn URL in Col M.
-
-Targets without a LinkedIn URL skip LinkedIn actions entirely — this is expected, not a gap.
-
-### 6. Slack Notification (Only After Validation Passes)
-Only send once checks 1-5 all pass:
-```bash
-curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
-  -H "Content-Type: application/json" \
-  -d '{"text":"Outreach ready — {n} targets enrolled in Salesforge, {n} warm/conference drafts in Superhuman. Review and approve when ready."}'
-```
-Replace `{n}` with actual counts. If validation failed, report the failure details instead — never send the "ready" notification when outreach is incomplete.
+### 6. PE Ownership Check
+HARD STOP: never outreach to PE-owned companies. If PE ownership detected, do not draft.
 </validation>
 
 <success_criteria>
 ## Success Criteria
 
 ### Daily
-- [ ] Cold targets enrolled in Salesforge sequences (confirmed via MCP)
-- [ ] Warm/conference email drafts ready for Kay's review in Superhuman
-- [ ] No duplicate outreach across funnels (dedup layer verified)
-- [ ] Day 6 LinkedIn DM configured in Salesforge sequence for targets with LinkedIn URLs
-- [ ] Manual LinkedIn DM drafts delivered via Slack for warm/conference targets only
+- [ ] 5 new Day 0 drafts in Superhuman (personalized, research brief completed)
+- [ ] All due follow-ups (Day 3/14) drafted in Superhuman
+- [ ] All due LinkedIn DMs (Day 6) surfaced in briefing
+- [ ] Target sheet updated in real-time as Kay confirms sends
+- [ ] Attio notes logged for every outreach action
+- [ ] No duplicate outreach across funnels
 
 ### Weekly
-- [ ] 20-30 owners contacted (email via Salesforge + conference/warm via Superhuman)
+- [ ] 25+ owners contacted (email + LinkedIn DM)
 - [ ] Pre-conference emails sent for upcoming conferences
 - [ ] Post-conference follow-ups drafted within 24 hours
-- [ ] Outreach metrics available for weekly tracker (Salesforge stats + Attio stages)
-- [ ] Salesforge sequence health check (bounce rates, reply rates, LinkedIn action completion)
-- [ ] A/B variant performance reviewed (Signal Quality on weekly tracker dashboard)
+- [ ] Outreach metrics available for weekly tracker
+- [ ] A/B variant performance tracked
 </success_criteria>

@@ -203,21 +203,25 @@ This checklist runs sequentially for EVERY target BEFORE Col O is set to "Approv
 2. **Email verification check.** Read Apollo email status from Phase D enrichment. If status is guessed, unavailable, or bounced AND no LinkedIn Owner URL exists → Col O = "Pass", Col P = "Email not verified ({status})". STOP — skip remaining checks. (If email is unavailable but LinkedIn Owner exists, target is still valid as a LinkedIn DM target — do not pass.)
 3. **Generic email check.** If the only email is a generic address (info@, office@, contact@, hello@, admin@, general@, gallery@, art@) → Col O = "Pass", Col P = "Email not verified (generic)". STOP — skip remaining checks. Generic emails are never used for outreach.
 4. **Wrong domain email check.** If Apollo returned an email on a different domain than the company (e.g., university email, previous employer) → Col O = "Pass", Col P = "Email not verified (wrong domain)". STOP — skip remaining checks.
-5. **Owner identification check.** Read Col I (Owner Name). If name is "Unknown", blank, or generic (e.g., "Info", "Admin", "Contact", "Office") → Col O = "Pass", Col P = "Owner not identified". STOP — skip remaining checks.
+5. **Owner identification check.** Read "Owner Name" column. If name is "Unknown", blank, or generic (e.g., "Info", "Admin", "Contact", "Office") → Col O = "Pass", Col P = "Owner not identified". STOP — skip remaining checks.
+6. **HQ country verification (CRITICAL).** Do NOT trust Apollo HQ data alone — Apollo often lists a US satellite office as HQ for international firms. Verify by checking the company LinkedIn page and/or website "About" page for actual headquarters location. If HQ is outside the US → Col O = "Pass", Col P = "International HQ ({actual location})". STOP — skip remaining checks.
+7. **Solo practitioner check.** Cross-reference Apollo employee count against LinkedIn company page and website team page. If the firm appears to be a solo practitioner or 1-2 person operation regardless of what Apollo says → Col O = "Pass", Col P = "Solo practitioner ({evidence})". STOP — skip remaining checks. Apollo employee counts are frequently inflated for small firms.
+8. **Business type verification.** Check the company website to confirm it is actually the type of business in the target niche (e.g., art advisory, not a design firm, gallery, auction house, or art moving company). If the business doesn't match the niche → Col O = "Pass", Col P = "Not {niche} ({actual business type})". STOP — skip remaining checks.
+9. **Company age check.** Check "Year Founded" (from Apollo or website). If the company is less than 5 years old → Col O = "Pass", Col P = "Too young (founded {year})". STOP — skip remaining checks.
 
 **Soft Filters (flag but do NOT block auto-advance):**
 
-6. **California check.** If HQ state is California → add note in Col Q: "CAUTION: California-based". Do not block.
-7. **Very small company check.** If employee count < 5 → add note in Col Q: "CAUTION: Very small ({count} employees)". Do not block.
-8. **Young owner check.** Estimate owner age from LinkedIn (college graduation year + 22). If owner appears under 35 → add note in Col Q: "CAUTION: Owner appears under 35 (est. ~{age})". Do not block, but flag for review. Owners in their 20s-early 30s are rarely thinking about succession.
+10. **California check.** If HQ state is California → add note in "Agent Notes": "CAUTION: California-based". Do not block.
+11. **Very small company check.** If verified employee count is 5-9 → add note in "Agent Notes": "CAUTION: Small team ({count} employees)". Do not block. (Under 5 is caught by hard stop #7.)
+12. **Young owner check.** Estimate owner age from LinkedIn (college graduation year + 22). If owner appears under 35 → add note in "Agent Notes": "CAUTION: Owner appears under 35 (est. ~{age})". Do not block, but flag for review. Owners in their 20s-early 30s are rarely thinking about succession.
 
 **Warm Intro Check (routes differently, not a block — already ran in Phase E):**
 
-9. **Warm intro check.** This was already executed in Phase E before the target reached the sheet. If Phase E flagged a warm intro path, the target was routed to the morning briefing and never reached this point. This check is a safety net: if a target somehow reached the sheet without Phase E running, re-run warm-intro-finder now. If warm intro found → do NOT auto-advance. Route to morning briefing: "{Name}, {Company} — warm intro via {connection}. Draft or Salesforge?"
+13. **Warm intro check.** This was already executed in Phase E before the target reached the sheet. If Phase E flagged a warm intro path, the target was routed to the morning briefing and never reached this point. This check is a safety net: if a target somehow reached the sheet without Phase E running, re-run warm-intro-finder now. If warm intro found → do NOT auto-advance. Route to morning briefing: "{Name}, {Company} — warm intro via {connection}. Draft or Salesforge?"
 
 **Edge Case Routing:**
 
-10. **Multi-flag edge case.** If a target passes all hard stops but has 2+ soft filter flags from checks 6-8 → do NOT auto-advance. Route to morning briefing as edge case. Format: "{Name}, {Company} — multiple flags: {list flags}. Approve or Pass?"
+14. **Multi-flag edge case.** If a target passes all hard stops but has 2+ soft filter flags from checks 10-12 → do NOT auto-advance. Route to morning briefing as edge case. Format: "{Name}, {Company} — multiple flags: {list flags}. Approve or Pass?"
 
 Only targets that clear all hard stops, have 0-1 soft flags, and have no warm intro path proceed to auto-advance below.
 

@@ -1,8 +1,8 @@
 ---
 date: 2026-04-04
 type: context
-sessions: 1
-last_updated: 2026-04-04T23:00:00Z
+sessions: 2
+last_updated: 2026-04-04T23:59:00Z
 ---
 
 # Session Decisions — April 4, 2026
@@ -55,9 +55,68 @@ last_updated: 2026-04-04T23:00:00Z
 ## Open Loops
 
 - Salesforge trial 12 days remaining — sequences need to be created and tested before expiry
-- Art Advisory 81 targets sitting 14+ days with no outreach — highest priority for next session
 - Fractional CFO 28 targets awaiting processing
-- Premium Pest Management has no target sheet yet — needs initial load via target-discovery
+- Premium Pest Management has no target sheet yet — needs initial load via target-discovery (Sunday)
 - ARTMOVEMENT positive response from 6+ months ago — dropped lead, worth re-approach?
 - .mcp.json security: Salesforge API key in plain text in committed file
 - Reply.io trial ~11 days — cancel before charge
+
+---
+
+# Session 2 — Evening (Target Discovery Pipeline Test Run)
+
+## Decisions
+
+- APPROVE: Art Advisory full pipeline test run — Apollo org search → web research (owners) → Apollo email reveal → warm intro check → sheet write
+- APPROVE: 5+ employees threshold for art advisory (not standard 10+) — small-firm niche, acquirable at 5+
+- APPROVE: Art Advisory is Salesforge Email only, no JJ calls — small world, everyone knows everyone, cold call would burn the relationship
+- APPROVE: Apollo is the ONLY source for emails — web research provides names/titles/LinkedIn only, never scrape emails from websites
+- APPROVE: Generic emails (info@, office@, etc.) are auto-pass — never used for outreach
+- APPROVE: Wrong-domain emails are auto-pass — email domain must match company domain
+- APPROVE: Warm intro check is a HARD STOP (Phase E) before any sheet write — no target enters automated pipeline without checking for warm paths first
+- APPROVE: LinkedIn connections CSV stored in archives/linkedin/ and wired into warm-intro-finder as Source 0 (fastest check, grep before Attio)
+- APPROVE: No LinkedIn Sales Navigator — no API/MCP, manual tool doesn't fit the system
+- APPROVE: Add "LinkedIn Connection" column to target sheets for Kay to manually mark 1st/2nd/3rd degree
+- APPROVE: Header-based column lookup plan — replace all hardcoded Col letter references with a script that resolves header names to column letters at runtime (INDEX/MATCH pattern, both axes)
+
+## Actions Taken
+
+- CREATED: Apollo API connection verified and tested (key in /tmp/apollo-key.txt)
+- UPDATED: Art Advisory target sheet — 27 verified personal emails written via Apollo /people/match (40 credits)
+- UPDATED: Art Advisory target sheet — 4 wrong-domain emails fixed (2 corrected via Apollo, 2 passed)
+- UPDATED: Art Advisory target sheet — 13 total passes written (8 no-owner, 3 wrong-domain/generic from morning, 2 wrong-domain from evening)
+- UPDATED: Art Advisory target sheet — LinkedIn URLs added for 6 unavailable-email targets
+- UPDATED: Art Advisory target sheet — Col Y header "LinkedIn Connection" added
+- UPDATED: target-discovery/SKILL.md — Phase E warm intro hard stop added before sheet write
+- UPDATED: target-discovery/SKILL.md — Stop hooks 2-4 added (email verification allows LinkedIn-only, generic email check, wrong domain check)
+- UPDATED: target-discovery/SKILL.md — Phase D Apollo-only email rule + domain-match validation
+- UPDATED: target-discovery/SKILL.md — Summary list updated to 6 phases (A-F) including warm intro
+- UPDATED: warm-intro-finder/SKILL.md — Source 0 LinkedIn CSV grep added before Attio check
+- CREATED: archives/linkedin/connections.csv — 901 LinkedIn connections from 2026-03-23 export
+- CREATED: scripts/col-lookup.sh — header-based column lookup script (needs bash fix, not yet tested)
+- CREATED: Plan for header-based column lookups (approved, implementation Sunday)
+
+## Deferred
+
+- DEFER: col-lookup.sh script fix + testing — bash associative array issue, rewrite needed. Do Sunday.
+- DEFER: Skill migrations to header-based lookups — 6+ skills, 100+ references. Do incrementally starting Sunday with Pest Management test.
+- DEFER: LinkedIn Connection column placement — currently Col Y (end of sheet), move next to LinkedIn (Owner) after col-lookup.sh protects references
+- DEFER: Salesforge sequence creation — cadence designed but sequences not created. Do when test-running.
+- DEFER: Art Advisory 67 targets cleared for Salesforge — warm intro check complete, ready to route. Blocked on Salesforge sequences.
+- DEFER: Schwartzman warm intro routing — Margot Romano path confirmed, needs Kay's decision: personal draft or Salesforge
+- DEFER: Fractional CFO 28 targets — need auto-advance processing
+- DEFER: Art Advisory PE ownership check — not yet run on any of the 70 active targets
+- DEFER: .mcp.json cleanup — Salesforge API key exposed, Linkt dead config
+
+## Open Loops
+
+- Salesforge trial ~12 days remaining — sequences need creation + testing before expiry
+- Art Advisory 67 targets ready for Salesforge (post warm-intro) — blocked on sequence creation
+- Schwartzman & Associates — warm intro via Margot Romano, needs Kay's routing decision
+- col-lookup.sh needs bash fix → Python rewrite for the parsing logic
+- 6+ skills need migration from hardcoded Col letters to header-based lookups
+- Art Advisory PE ownership check not yet run
+- Fractional CFO 28 targets awaiting processing
+- Premium Pest Management initial target load — Sunday
+- Reply.io trial ~11 days — cancel before charge
+- .mcp.json security: Salesforge API key in plain text

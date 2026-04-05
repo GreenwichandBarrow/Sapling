@@ -209,14 +209,15 @@ This checklist runs sequentially for EVERY target BEFORE Col O is set to "Approv
 
 6. **California check.** If HQ state is California → add note in Col Q: "CAUTION: California-based". Do not block.
 7. **Very small company check.** If employee count < 5 → add note in Col Q: "CAUTION: Very small ({count} employees)". Do not block.
+8. **Young owner check.** Estimate owner age from LinkedIn (college graduation year + 22). If owner appears under 35 → add note in Col Q: "CAUTION: Owner appears under 35 (est. ~{age})". Do not block, but flag for review. Owners in their 20s-early 30s are rarely thinking about succession.
 
 **Warm Intro Check (routes differently, not a block — already ran in Phase E):**
 
-8. **Warm intro check.** This was already executed in Phase E before the target reached the sheet. If Phase E flagged a warm intro path, the target was routed to the morning briefing and never reached this point. This check is a safety net: if a target somehow reached the sheet without Phase E running, re-run warm-intro-finder now. If warm intro found → do NOT auto-advance. Route to morning briefing: "{Name}, {Company} — warm intro via {connection}. Draft or Salesforge?"
+9. **Warm intro check.** This was already executed in Phase E before the target reached the sheet. If Phase E flagged a warm intro path, the target was routed to the morning briefing and never reached this point. This check is a safety net: if a target somehow reached the sheet without Phase E running, re-run warm-intro-finder now. If warm intro found → do NOT auto-advance. Route to morning briefing: "{Name}, {Company} — warm intro via {connection}. Draft or Salesforge?"
 
 **Edge Case Routing:**
 
-9. **Multi-flag edge case.** If a target passes all hard stops but has 2+ soft filter flags from checks 6-7 → do NOT auto-advance. Route to morning briefing as edge case. Format: "{Name}, {Company} — multiple flags: {list flags}. Approve or Pass?"
+10. **Multi-flag edge case.** If a target passes all hard stops but has 2+ soft filter flags from checks 6-8 → do NOT auto-advance. Route to morning briefing as edge case. Format: "{Name}, {Company} — multiple flags: {list flags}. Approve or Pass?"
 
 Only targets that clear all hard stops, have 0-1 soft flags, and have no warm intro path proceed to auto-advance below.
 

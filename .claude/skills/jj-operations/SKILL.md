@@ -39,6 +39,21 @@ Read the active niche sprint's master sheet ("{Niche} - Target List"). Select ta
 - Col R (JJ: Call Status) is empty
 - Target's niche has Outreach Channel = "JJ-Call-Only" on WEEKLY REVIEW (see Channel Filter below)
 
+### Two-Tier Target Selection (Calls-First)
+
+Calls-first niches load 500-1000 targets via Phase 1 volume load. Not all will have owner names yet (owner enrichment happens weekly in Phase 2). JJ handles both tiers:
+
+**Tier 1 (enriched):** Col J (Owner Name) is populated. JJ asks the gatekeeper for the owner by name: "Is {Owner Name} available?" Higher conversion.
+
+**Tier 2 (raw):** Col J (Owner Name) is blank. JJ uses generic opener: "May I speak with the owner or person in charge?" Lower conversion but still valuable. JJ can extract the owner's name from the call for future attempts.
+
+**Daily target selection priority:**
+1. Fill from Tier 1 first (up to 40)
+2. If Tier 1 has fewer than 40 available, backfill from Tier 2
+3. Always prefer Tier 1
+
+**Owner name backfill:** If JJ learns the owner's name during a call (gatekeeper tells him, voicemail greeting, owner introduces themselves), capture it in Call Notes. Harvest mode writes it to Col J — free enrichment from the call itself.
+
 ### Channel Filter (CRITICAL)
 
 **Why this exists:** JJ is decoupled from Salesforge email cadences. Calling a target who's in an active email sequence creates conflicting touchpoints.
@@ -175,9 +190,22 @@ For each completed call, update the master target sheet:
 - Col T: JJ: Call Notes ← summarize detailed notes into one line
 - Col U: JJ: Owner Sentiment ← from Owner Sentiment field
 
-### 3. Flag Interested Targets
+### 3. Owner Name Backfill
 
-If Call Status = "Connected" and sentiment is positive → flag for pipeline-manager's morning briefing, trigger deal-evaluation Phase 1.
+If JJ's Call Notes or Call Log contain an owner name AND Col J (Owner Name) is blank on the sheet, write the name to Col J. Free enrichment from the call itself.
+
+### 4. Post-Engagement Enrichment (Phase 3 Trigger)
+
+If Call Status = "Connected" AND Owner Sentiment = "Interested" or "Neutral":
+1. Run Apollo `/people/match` for email reveal (1 credit) — need email for follow-up
+2. Run warm-intro-finder — check if Kay has a connection for a warmer follow-up
+3. Flag for pipeline-manager: "JJ connected with {owner} at {company}. Sentiment: {sentiment}. Ready for follow-up."
+4. If owner said "send me more info" → draft follow-up email in Superhuman immediately
+5. Trigger deal-evaluation Phase 1
+
+### 5. Flag Interested Targets
+
+If Call Status = "Connected" and sentiment is positive → flag for pipeline-manager's morning briefing.
 </call_harvest>
 
 <stop_hooks>

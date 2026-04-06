@@ -212,6 +212,7 @@ Skills run on a schedule via macOS launchd, independent of active sessions:
 | `target-discovery` | On activation + weekly refill (morning workflow) | Target finding for Active-Outreach niches on initial activation or when weekly dashboard signals refill needed |
 | `niche-intelligence` | Tuesday 11pm ET | Newsletter scrape, niche identification, one-pagers, scorecards |
 | `niche-intelligence` (daily) | Nightly | Sprint status tracking, Tabled/Killed processing |
+| `target-discovery` (Phase 2) | Sunday 11pm ET | Weekly owner enrichment: web research for next 200 un-enriched targets on JJ-Call-Only sheets |
 
 `weekly-tracker` runs on Fridays but is triggered by the orchestrator during the morning workflow (not launchd). Kay needs results by 10am ET.
 

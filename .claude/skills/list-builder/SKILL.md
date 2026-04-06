@@ -17,6 +17,10 @@ This skill is the list-building engine called by target-discovery. It takes ICP 
 **Feeds into:** target sheet → Kay reviews (Col O) → skill/outreach-manager drafts outreach
 **Replaces:** Linkt list building (legacy, cancelled March 31, 2026)
 
+**Two modes (set by target-discovery based on Outreach Channel):**
+- `email-first` (default) — full inline enrichment: owner ID, email reveal, warm intro check. ~30-40 vetted targets per run.
+- `calls-first` — volume load: company + business phone + HQ. No owner ID, no email reveal. 500-1000 targets per run at 0 credits.
+
 **What this skill does NOT do:**
 - Does not decide which niches to search (that's target-discovery)
 - Does not create outreach drafts (that's outreach-manager)
@@ -229,6 +233,79 @@ gog sheets get {SHEET_ID} "Active!B:F" -a kay.s@greenwichandbarrow.com -p
 Report any rows where Col F (Employees) is below the niche's minimum threshold. Do NOT remove them. Flag for Kay's review in the run summary:
 - "{Company} — {N} employees (minimum is {min} for this niche)"
 </process>
+
+<calls_first_mode>
+## Calls-First Mode (JJ-Call-Only niches)
+
+When target-discovery passes `mode: calls-first`, the entire enrichment pipeline changes. This mode prioritizes volume over depth — JJ dials 40 business main lines per day and works gatekeepers. He doesn't need owner emails or cell phones upfront.
+
+### What Changes
+
+| Step | Email-First | Calls-First |
+|------|-------------|-------------|
+| Apollo org search | Same | Same, but paginate aggressively (10+ pages per keyword) |
+| Extract business phone | Not extracted | **Extract `phone` field from org response** — this is the business main line |
+| Cross-reference sheet | Same | Same |
+| Owner identification | Web research per target | **Skip** — deferred to Phase 2 weekly enrichment |
+| Owner LinkedIn | Web search per target | **Skip** — deferred to Phase 2 |
+| Email reveal | 1 credit per target | **Skip entirely** — deferred to Phase 3 post-engagement |
+| Phone reveal | 8 credits, skip by default | **Skip** — use business main line from org search |
+| Warm intro check | Per target before write | **Skip** — not relevant for cold calling |
+
+### Apollo Org Search: Phone Extraction
+
+Apollo's `/organizations/search` response includes a `phone` field on each organization object. This is the company's business main line (the number on their website/Google listing). In calls-first mode, **always extract this field**.
+
+```python
+phone = org.get("phone")  # e.g., "+1 386-767-7451"
+```
+
+Format the same way as always: strip +1, format as `(XXX) XXX-XXXX`, apostrophe prefix for Sheets.
+
+### Calls-First Write Gate
+
+Relaxed from email-first. A row needs:
+- Col B (Company) — populated
+- Col C (Website) — populated
+- Col D (Headquarters) — populated (city, state)
+- Col F (Employees) — sourced number from Apollo
+- Col M (Phone) — business main line from Apollo org search
+
+**Not required:** Owner Name, Email, LinkedIn Owner, LinkedIn Company. These are blank in Phase 1 and filled in later phases.
+
+If Apollo didn't return a phone for a company, that company **fails the calls-first write gate**. Log it as "could not enrich (no business phone)" and do NOT add to sheet.
+
+### Calls-First Validation
+
+Reduced checklist:
+- [ ] Apollo search completed across all keyword aliases
+- [ ] Deduplicated by domain
+- [ ] No duplicate rows on sheet
+- [ ] Phone numbers formatted correctly
+- [ ] All rows meet calls-first write gate
+- [ ] Sub-threshold rows flagged
+- [ ] Credit usage: **0 credits** (log it anyway)
+
+### Three-Phase Enrichment Pipeline
+
+**Phase 1 (this skill, on activation):** Volume load. 500-1000 companies with business phones. 0 credits.
+
+**Phase 2 (target-discovery, weekly Sunday 11pm):** Enrich next 200 un-enriched targets with owner names via web research. 0 credits.
+
+**Phase 3 (jj-operations harvest trigger):** When JJ gets a positive engagement (Connected + Interested/Neutral), reveal owner email via Apollo people/match. ~1 credit per engagement.
+
+### gog Sheets Write: Use `--values-json`
+
+For bulk writes (50+ rows), use `gog sheets update` with `--values-json` flag, NOT `gog sheets append`. Append can fail when phantom rows exist from prior failed writes.
+
+```bash
+gog sheets update {SHEET_ID} "Active!A{start}:Z{end}" \
+  --values-json '{json_2d_array}' \
+  -a kay.s@greenwichandbarrow.com --input USER_ENTERED
+```
+
+Write in batches of 50 rows. Pause 0.3s between batches.
+</calls_first_mode>
 
 <credit_management>
 ## Credit Management Rules

@@ -15,6 +15,10 @@ This skill discovers acquisition targets via skill/list-builder (Apollo, primary
 
 **Trigger:** Niche status changes to Active-Outreach on the Industry Research Tracker. Target-discovery does a one-time initial load when a niche first enters Active-Outreach (fill the sheet with a solid batch). After that, the weekly tracker dashboard determines if more targets are needed based on pipeline throughput data. Do not run daily — run on initial activation and when the weekly review signals the pipeline needs refilling.
 
+**Channel-aware enrichment (CRITICAL):** Read Col D (Outreach Channel) from WEEKLY REVIEW BEFORE invoking list-builder. The channel determines enrichment depth:
+- `Salesforge Email` → invoke list-builder in `email-first` mode (full inline enrichment, all 9 stop hooks)
+- `JJ-Call-Only` → invoke list-builder in `calls-first` mode (volume load, 5 stop hooks, 0 credits)
+
 **Pipeline stages:** Under Review → Active-Outreach → Long Term → Tabled/Killed
 
 **Inputs from other skills:**
@@ -300,6 +304,66 @@ Pull all the above metrics and explicitly evaluate:
 
 If the niche is running dry or ICP is consistently off, escalate to Kay. Don't wait 8 weeks.
 </essential_principles>
+
+<calls_first_flow>
+## Calls-First Flow (JJ-Call-Only Niches)
+
+When Col D = `JJ-Call-Only`, the entire discovery pipeline changes. Three phases replace the single inline enrichment:
+
+### Phase 1: Volume Load (on activation + monthly refill)
+
+Invoke list-builder in `calls-first` mode. Target: 500-1000 companies.
+
+**Reduced stop hooks (5 of 9):**
+1. PE ownership check — still critical
+2. HQ country verification — still matters
+3. Business type verification — confirm it's actually pest control (or whatever the niche is)
+4. Company age check — skip if < 5 years old
+5. Solo practitioner check — via Apollo employee count only (no cross-reference needed)
+
+**Skipped stop hooks:**
+- Email verification, generic email, wrong domain email — no email in Phase 1
+- Owner identification check — no owner name in Phase 1
+
+**Auto-advance:** Targets passing 5 reduced stop hooks auto-advance to Col O = "Approve". Kay spot-checks.
+
+### Phase 2: Weekly Enrichment (Sunday 11pm ET)
+
+Scheduled run. Enriches the next 200 un-enriched targets (Col J = Owner Name is blank) with owner names via web research.
+
+**Process:**
+1. Read sheet, find rows where Col O = "Approve" AND Col J (Owner Name) is blank
+2. Sort by row number (oldest first)
+3. Take next 200
+4. For each: web research for owner name + title (company website, LinkedIn People tab, web search)
+5. Write owner name (Col J), title (Col K), and owner LinkedIn (Col O) to sheet
+6. Log: "Phase 2: {n}/200 owners identified"
+
+**Cost:** 0 credits. All web research.
+
+### Phase 3: Post-Engagement Enrichment (triggered by jj-operations harvest)
+
+When JJ connects with an owner and gets positive sentiment:
+1. jj-operations harvest updates call outcome on sheet
+2. If Call Status = "Connected" AND Sentiment = "Interested" or "Neutral":
+   - Run Apollo `/people/match` for email reveal (1 credit)
+   - Run warm-intro-finder (now it matters for follow-up routing)
+   - Flag for pipeline-manager: "JJ connected with {owner} at {company}. Ready for follow-up."
+3. If owner said "send me more info" → draft follow-up email in Superhuman
+
+**Cost:** ~1 credit per positive engagement. At 5-10% connect rate, ~5-10 credits/week.
+
+### Weekly Timeline
+
+| Day | What Happens |
+|-----|-------------|
+| Sunday 11pm | Phase 2: enrich next 200 targets with owner names |
+| Monday 9am | jj-operations prep: select 40 targets, create Call Logs |
+| Monday 10am-2pm | JJ calls 40 targets |
+| Monday overnight | jj-operations harvest: update sheet, trigger Phase 3 for positive calls |
+| Tue-Fri | Same daily cycle |
+| Friday | Weekly tracker reports: calls made, connection rate, enrichment pipeline depth |
+</calls_first_flow>
 
 <validation>
 ## Validation (Stop Hooks)

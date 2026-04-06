@@ -63,6 +63,7 @@ This filter runs BEFORE the reply check — no point checking replies for target
 - IPLC: `1Cdw6yb8-yBQtx5mTB8Hu4rENkJfpmt3t7HZdGqtdylQ`
 - Art Storage: `1PDprJ_gApm7T_kzpNWlWk7qItQ11M95ssL9_UD5sE9g`
 - Art Advisory: `1c6Db21D2qDpiT7LnEQ4l0AROlA-gucDQD1ZGOlrZ-K0`
+- Premium Pest Management: `1Y0ZjEkc2LHhBoO4QGO8Ny9MvG90NpojQn8bloKA291I`
 
 **Master sheet columns (A-X, 24 columns):**
 - A-N: Source through LinkedIn (Company) — list building data
@@ -149,7 +150,7 @@ Dial target today: {n} ({n} owner + {n} callbacks)
 **Rules:**
 - Claude identifies as "Claude" in all JJ messages. Never mention Kay by name.
 - Send to #operations-sva channel via SLACK_WEBHOOK_SVA
-- JJ dial target: 8-12 dials/day (owner + callbacks)
+- JJ dial target: 40 dials/day (1,000/month). Most will be voicemails, gatekeepers, or no-answers — that's expected. Volume is how cold calling works.
 - Add at bottom: "Any feedback on this process at all along the way is welcome and appreciated. Any questions, reply here and I will get them to the right person."
 
 ### 6. Scheduling Protocol

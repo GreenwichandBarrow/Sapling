@@ -34,4 +34,6 @@ tags:
 - First call scheduled April 2, 2026
 
 ## Relationship Notes
-- 2026-04-01: Calendly booking received for April 2 intro call. Referred by another searcher (likely Megan Lawlor).
+- 2026-04-01: Calendly booking received for April 2 intro call. Referred by another searcher (likely [[entities/megan-lawlor|Megan Lawlor]]).
+- 2026-04-02: Call rescheduled to April 3 at noon.
+- 2026-04-03: Call rescheduled again to April 6 at 1:30 PM ET.

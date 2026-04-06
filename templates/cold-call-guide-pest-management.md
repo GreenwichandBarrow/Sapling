@@ -1,15 +1,14 @@
-# COLD CALL GUIDE: Premium Pest Management
+# G&B Cold Call Guide
 
-**Niche:** Premium Pest Management
-**Prepared:** April 6, 2026
 **For:** JJ (Jerome)
 **Version:** 1.0
+**Last Updated:** April 6, 2026
 
 ---
 
 ## 1. YOUR GOAL
 
-You are calling pest control company owners on behalf of Greenwich & Barrow. Your job is to **connect the owner with Kay** — that's it. You are not selling anything. You are not negotiating. You are opening a door.
+You are calling business owners on behalf of Greenwich & Barrow. Your job is to **connect the owner with Kay** — that's it. You are not selling anything. You are not negotiating. You are opening a door.
 
 A successful call: the owner agrees to a 15-minute introductory call with Kay.
 
@@ -31,7 +30,7 @@ A successful voicemail: the owner has heard our name and knows we'll follow up.
 
 *[Let them respond — don't rush past this.]*
 
-> "Great — the reason I'm calling is Kay is looking to acquire one pest management company to own and operate herself, long-term. She's not a private equity firm, not a roll-up — she wants to run one great company. She came across yours and would love to have a quick 15-minute introductory call to learn more about your business. Would you be open to that?"
+> "Great — the reason I'm calling is Kay is looking to acquire one {industry} company to own and operate herself, long-term. She's not a private equity firm, not a roll-up — she wants to run one great company. She came across yours and would love to have a quick 15-minute introductory call to learn more about your business. Would you be open to that?"
 
 ### Tier 2: You Don't Know the Owner's Name
 
@@ -43,7 +42,7 @@ A successful voicemail: the owner has heard our name and knows we'll follow up.
 
 *[Get and note the name.]*
 
-> "Nice to meet you, {Name}. The reason I'm calling is Kay is looking to acquire one pest management company to own and operate herself, long-term. She's not a private equity firm, not a roll-up — she wants to run one great company. She came across yours and would love to have a quick 15-minute introductory call to learn more about your business. Would you be open to that?"
+> "Nice to meet you, {Name}. The reason I'm calling is Kay is looking to acquire one {industry} company to own and operate herself, long-term. She's not a private equity firm, not a roll-up — she wants to run one great company. She came across yours and would love to have a quick 15-minute introductory call to learn more about your business. Would you be open to that?"
 
 ### If They Say Yes
 
@@ -72,10 +71,10 @@ Book directly on Kay's calendar if possible. If not:
 
 Keep it under 20 seconds. Speak slowly and clearly.
 
-> "Hi {Owner Name}, this is JJ calling on behalf of Kay Schneider with Greenwich & Barrow. Kay is looking to acquire one pest management company to operate long-term and was interested in learning more about your business. I'll try you again, or you can reach us at barrie@greenwichandbarrow.com. Thanks, have a great day."
+> "Hi {Owner Name}, this is JJ calling on behalf of Kay Schneider with Greenwich & Barrow. Kay is looking to acquire one {industry} company to operate long-term and was interested in learning more about your business. I'll try you again, or you can reach us at barrie@greenwichandbarrow.com. Thanks, have a great day."
 
 **If you don't know the owner's name:**
-> "Hi, this is JJ calling on behalf of Kay Schneider with Greenwich & Barrow. Kay is looking to acquire one pest management company to operate long-term and was interested in learning more about your business. I'll try you again, or you can reach us at barrie@greenwichandbarrow.com. Thanks, have a great day."
+> "Hi, this is JJ calling on behalf of Kay Schneider with Greenwich & Barrow. Kay is looking to acquire one {industry} company to operate long-term and was interested in learning more about your business. I'll try you again, or you can reach us at barrie@greenwichandbarrow.com. Thanks, have a great day."
 
 **Rules:**
 - Leave a voicemail on the FIRST call only. If you call back later and get voicemail again, hang up.
@@ -92,7 +91,7 @@ You will talk to receptionists, office managers, and dispatchers more than owner
 > "Hi, this is JJ with Greenwich & Barrow. I'm trying to reach the owner — is he/she available?"
 
 **If they ask what it's regarding:**
-> "Sure — we're a company that acquires and operates pest management businesses, and Kay Schneider, our principal, was hoping to connect with the owner for a brief introductory call."
+> "Sure — we're a company that acquires and operates businesses in this space, and Kay Schneider, our principal, was hoping to connect with the owner for a brief introductory call."
 
 **If they say the owner is busy/unavailable:**
 > "No problem — when's usually a good time to catch them? And may I get their name so I know who to ask for next time?"
@@ -115,13 +114,13 @@ You will talk to receptionists, office managers, and dispatchers more than owner
 > "Totally understand — most of the owners Kay has spoken with weren't actively looking either. She's really just hoping to introduce herself and learn about your business. No pressure at all. Would a 15-minute call be okay?"
 
 ### "Who is Greenwich & Barrow?"
-> "Greenwich & Barrow is Kay Schneider's company — she's looking to acquire one pest management business to run full-time as CEO. She's not a private equity firm or a roll-up. She wants to operate one great company long-term."
+> "Greenwich & Barrow is Kay Schneider's company — she's looking to acquire one business to run full-time as CEO. She's not a private equity firm or a roll-up. She wants to operate one great company long-term."
 
 ### "We already have offers / we're working with a broker."
 > "Got it — that's great. Kay is always happy to have a conversation even if you're already exploring options. Sometimes it's helpful to see a different approach. Would a quick call make sense?"
 
 ### "How did you find us?"
-> "We've been researching the pest management industry and your company stood out based on your reputation and track record in the area."
+> "We've been researching the industry and your company stood out based on your reputation and track record in the area."
 
 ### "What's the offer / what would you pay?"
 > "That's a great question and honestly one that Kay would be much better suited to discuss. She'd want to understand your business first before talking numbers. Can I set up a quick call?"
@@ -133,7 +132,7 @@ You will talk to receptionists, office managers, and dispatchers more than owner
 
 ---
 
-## 6. NICHE CONTEXT: What You Should Know
+## 6. NICHE CONTEXT: Premium Pest Management
 
 You don't need to be a pest control expert. But knowing a few things helps you sound credible.
 

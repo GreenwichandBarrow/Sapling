@@ -132,39 +132,7 @@ You will talk to receptionists, office managers, and dispatchers more than owner
 
 ---
 
-## 6. NICHE CONTEXT: Premium Pest Management
-
-You don't need to be a pest control expert. But knowing a few things helps you sound credible.
-
-**The industry:**
-- There are 19,000+ pest management companies in the US — it's very fragmented
-- The biggest company (Rentokil/Terminix) only has ~12% of the market
-- The industry is growing 5-6% per year — faster than most
-- Private equity firms have been actively buying pest control companies (60% of M&A activity)
-
-**What owners care about:**
-- **Their people** — many owners built the business from scratch and care deeply about their employees
-- **Their reputation** — pest control is a trust business, built on years of reliable service
-- **Succession** — many founders are 55+ with no family member taking over
-- **Competition from roll-ups** — PE firms are consolidating the industry, which worries independent operators
-
-**Why G&B is different from PE:**
-- Kay acquires ONE company to run herself — not 10 companies to smash together
-- She becomes the CEO and operates day-to-day
-- No layoffs, no dramatic changes on Day 1
-- The owner's legacy and team are preserved
-
-**Service types you might hear about:**
-- General pest (ants, roaches, spiders) — most common
-- Termite control — high-value, often separate contracts
-- Wildlife/animal removal
-- Fumigation
-- Commercial food safety / HACCP compliance — this is the premium segment
-- Bed bug treatment — growing specialty
-
----
-
-## 7. LOGISTICS
+## 6. LOGISTICS
 
 **Scheduling contact:** barrie@greenwichandbarrow.com (Howie)
 **Kay's availability:** Weekdays, flexible — Howie manages her calendar

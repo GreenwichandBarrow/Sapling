@@ -114,12 +114,43 @@ Some niches (blue collar services, fractional/advisory, niche storage) have very
 
 **Report gaps explicitly.** If after the expanded search a niche still has zero upcoming gatherings, report it with what was searched and recommend alternative owner-access strategies (direct outreach, warm intros, LinkedIn engagement).
 
+### Niche Association Registry
+
+Each niche's target sheet should have an **"Associations" tab** listing relevant professional associations. This is the primary source for conference discovery — check association event calendars before using aggregators.
+
+**Associations tab columns:**
+| Column | Header |
+|--------|--------|
+| A | Association Name |
+| B | Website |
+| C | Events Page URL |
+| D | Scope (National / State / Local) |
+| E | Membership Cost |
+| F | Member? (Y/N) |
+| G | Notes |
+
+**When to populate:** During the first discovery cycle for a niche, research and populate the Associations tab. Update it whenever new associations are discovered. This tab is also used by intermediary-manager (association leaders as intro sources) and niche-intelligence (understanding industry structure).
+
+**How to find associations:**
+```
+WebSearch: "{niche} professional association"
+WebSearch: "{niche} trade association United States"
+WebSearch: "{niche} industry association {state}"
+WebSearch: "{niche} owners association"
+```
+
+Capture national associations first, then state/regional chapters in the Northeast corridor (NY, NJ, CT, PA, MA).
+
 ### Search Strategy — Prioritize Associations, Then Expand
 
-The best source of weekly conferences is **association event calendars**, not conference aggregators. For each active niche, identify the relevant professional associations and monitor their events pages directly.
+The best source of weekly conferences is **association event calendars**, not conference aggregators. For each active niche, read the Associations tab first and check each association's events page directly.
+
+**Step 0: Read the Associations tab** on the niche's target sheet. If it's empty, populate it first (see above), then proceed to Step 1.
 
 **Search pattern for each niche (standard):**
 ```
+# First: check each association's events page from the Associations tab
+# Then supplement with broader searches:
 WebSearch: "{niche} professional association"
 WebSearch: "{niche} industry association events {region}"
 WebSearch: "{niche} chapter meeting {city} {month} {year}"

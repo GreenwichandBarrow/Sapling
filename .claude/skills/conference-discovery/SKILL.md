@@ -373,32 +373,30 @@ After Kay reviews the Conference Pipeline sheet Monday morning and marks decisio
 
 Before reporting success, validate all outputs. If any check fails, do NOT send Slack. Report the failure and fix it.
 
-### STOP HOOK: Sheet Update Confirmation (REQUIRED before any sheet write)
+### Sheet Write & Review Flow
 
-**Before writing ANY data to the Conference Pipeline Google Sheet, you MUST stop and get Kay's approval.**
+**Write directly to the sheet. Kay reviews there, not in the conversation.**
 
-This applies to: adding new conference rows, modifying existing rows, moving rows between tabs, re-sorting, or any other sheet mutation.
+The Conference Pipeline sheet IS the review surface. Don't dump raw search results or proposed rows into the conversation — that's noise. Write the filtered, quality-checked rows to the sheet, send Kay the link, and she marks Decision (col N) on the sheet itself.
 
 **Procedure:**
-1. Prepare all proposed changes but do NOT write them to the sheet yet
-2. Present the changes to Kay in a numbered, scannable format:
+1. Run discovery searches (parallel subagents for each niche)
+2. Apply audience filter and owner verification gate — only conferences that pass go on the sheet
+3. Write new rows to the Pipeline tab using `gog sheets update` or `gog sheets append` with `--values-json` flag (NOT `--values`)
+4. Re-sort all data rows chronologically by Column A
+5. Send Slack notification with link to the sheet
+6. Kay reviews on the sheet and marks Decision column
 
-**New conferences to add:**
-For each new row, show:
-- Event name | Date | Location | Niche | Agent Rec (Attend/Register Only/Skip) | Agent Notes (1-line rationale)
+**gog sheets syntax:**
+```bash
+# Append new rows
+gog sheets append {SHEET_ID} "Pipeline!A:O" --values-json '[["col1","col2",...],...]' -a kay.s@greenwichandbarrow.com
 
-**Modifications to existing rows:**
-For each change, show:
-- Row identifier (Event name) | Column being changed | Current value → Proposed value
+# Update specific range
+gog sheets update {SHEET_ID} "Pipeline!A{row}:O{row}" --values-json '[["col1","col2",...]]' -a kay.s@greenwichandbarrow.com
+```
 
-**Rows to move (e.g., to Skipped tab):**
-- Event name | Reason for move
-
-3. Ask Kay: "Approve all, or tell me which to change/remove?"
-4. Wait for Kay's explicit approval before executing any sheet writes
-5. After approval, write all changes, run sort validation, then proceed to Slack notification
-
-**Why this exists:** The Conference Pipeline sheet is Kay's decision-making surface. No agent writes without her seeing exactly what's going in first. This prevents junk conferences from cluttering her view and ensures every row has passed human judgment.
+**Do NOT present conference results in the conversation.** The sheet is the single source of truth. Keep the conversation clean — just confirm what was added and send the link.
 
 ### 1. Sheet Validation (after discovery, post-approval)
 Verify the Conference Pipeline Google Sheet has new rows with data in all required columns:

@@ -156,7 +156,7 @@ Instead of individual Call Log docs, create a single tab on the master target sh
 **Niche Call Guide reference:** Add a merged header row above the table (row 1): "Call Guide: {link to niche call guide Google Doc}" — data table starts at row 2.
 
 **Niche Call Guide locations (Google Docs):**
-- Premium Pest Management: TBD (upload after script opener finalized)
+- Premium Pest Management: https://docs.google.com/document/d/1EGDgKvIHm4EtmP87YM9ffibmpKs4JqVbsuYGLvHWj5M/edit
 - Other niches: create from `templates/cold-call-guide-{niche-slug}.md` on niche activation
 
 **Tab archival:** Old daily tabs accumulate. On Monday prep, archive previous week's tabs by hiding them (not deleting — harvest may need re-reads).

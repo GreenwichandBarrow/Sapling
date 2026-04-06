@@ -1,6 +1,6 @@
 ---
 name: jj-operations
-description: "JJ daily call prep, call log creation, 10am Slack delivery, and post-shift outcome harvesting. Owns all JJ-facing operations."
+description: "JJ daily call prep, daily call tab creation, 10am Slack delivery, and post-shift outcome harvesting. Owns all JJ-facing operations."
 user_invocable: true
 context_budget:
   skill_md: 2000
@@ -10,15 +10,15 @@ context_budget:
 
 <objective>
 Manage JJ's daily calling operations end-to-end. JJ is a VA (Philippines) working Mon-Fri 10am-2pm ET. This skill handles:
-1. Overnight call prep (target selection, reply checking, Call Log doc creation)
-2. 10am Slack delivery (call list with links)
-3. Post-shift outcome harvesting (reading Call Logs, updating master sheet)
+1. Overnight call prep (target selection, reply checking, daily call tab creation)
+2. 10am Slack delivery (call list with sheet link)
+3. Post-shift outcome harvesting (reading daily call tab, updating master sheet)
 
-JJ does NOT touch the master target sheet. He works from Call Log docs and Slack messages only.
+JJ works from the daily call tab on the master target sheet and Slack messages. Each niche has a static Call Guide doc he references for scripts, objections, and niche context.
 
 **Two run modes:**
-- `prep` — overnight before 10am, selects targets and creates Call Logs
-- `harvest` — overnight after 2pm, reads completed Call Logs and updates the sheet
+- `prep` — overnight before 10am, selects targets and creates daily call tab
+- `harvest` — overnight after 2pm, reads daily call tab and updates the master sheet
 
 **This skill does NOT:**
 - Create outreach drafts (that's outreach-manager)
@@ -35,8 +35,8 @@ JJ does NOT touch the master target sheet. He works from Call Log docs and Slack
 **JJ is decoupled from Salesforge cold outreach cadences.** JJ's call list is managed independently by jj-operations, not triggered by email send events. Targets come from Kay's approvals and the ad-hoc queue, not from Col X.
 
 Read the active niche sprint's master sheet ("{Niche} - Target List"). Select targets where:
-- Col O (Kay: Decision) = "Approve"
-- Col R (JJ: Call Status) is empty
+- Col Q (Kay: Decision) = "Approve"
+- Col T (JJ: Call Status) is empty
 - Target's niche has Outreach Channel = "JJ-Call-Only" on WEEKLY REVIEW (see Channel Filter below)
 
 ### Two-Tier Target Selection (Calls-First)
@@ -81,17 +81,18 @@ This filter runs BEFORE the reply check — no point checking replies for target
 - Premium Pest Management: `1Y0ZjEkc2LHhBoO4QGO8Ny9MvG90NpojQn8bloKA291I`
 
 **Master sheet columns (A-X, 24 columns):**
-- A-N: Source through LinkedIn (Company) — list building data
-- O: Kay: Decision (Approve/Pass)
-- P: Kay: Pass Reason
-- Q: Agent Notes (RECOMMEND: Approve/Pass prefix)
-- R: JJ: Call Status
-- S: JJ: Call Date
-- T: JJ: Call Notes
-- U: JJ: Owner Sentiment
-- V: ICP Match
-- W: ICP Miss Reason
-- Outreach tracking columns: "Variant", "Day 0 Sent", "Day 3 Sent", "Day 6 DM Sent", "Day 14 Sent", "Cadence Status" (managed by outreach-manager, not read or written by jj-operations)
+- A: Source, B: Company, C: Website, D: Headquarters, E: Industry, F: Employees
+- G: Rev Source, H: Revenue, I: Ownership, J: Owner Name, K: Owner Title
+- L: Email, M: Phone, N: LinkedIn Connection, O: LinkedIn (Owner), P: LinkedIn (Company)
+- Q: Kay: Decision (Approve/Pass)
+- R: Kay: Pass Reason
+- S: Agent Notes (RECOMMEND: Approve/Pass prefix)
+- T: JJ: Call Status
+- U: JJ: Call Date
+- V: JJ: Call Notes
+- W: JJ: Owner Sentiment
+- X: ICP Match
+- Outreach tracking columns (managed by outreach-manager, not read or written by jj-operations)
 
 ### Ad-Hoc Call Queue
 
@@ -123,15 +124,42 @@ WebSearch: "{Owner Name}" "{Company Name}"
 ```
 Extract ONE detail: recent award, conference appearance, company anniversary, industry publication, community involvement, or career milestone. Single sentence. If nothing found, leave blank.
 
-### 4. Call Log Creation
+### 4. Daily Call Tab Creation
 
-For each target, create a Call Log doc from template (ID: `1nvvdOU7I5NLAwxrYgHIFTRNrEZmc67X8`):
-- Copy template → save to OPERATIONS / CALL LOGS / TARGET LIST CALLS
-- Name: "Call Log - {Company Name} {M.DD.YY}.docx"
-- Pre-populate COMPANY INFO from master target sheet
-- Customize SCRIPT section with company-specific operational signal
-- Add "Personal Note for JJ" field with tidbit (if found)
-- Include Howie's email (barrie@greenwichandbarrow.com) for scheduling
+Instead of individual Call Log docs, create a single tab on the master target sheet for the day's calls.
+
+**Tab name:** `Calls {M.DD.YY}` (e.g., `Calls 4.07.26`)
+
+**Columns (A-I):**
+| Col | Header | Source | JJ Fills |
+|-----|--------|--------|----------|
+| A | # | Row number | |
+| B | Company | Col B from master | |
+| C | Owner Name | Col J from master (blank if Tier 2) | |
+| D | Phone | Col M from master | |
+| E | Signal | One-line tidbit from web search (Step 3) | |
+| F | Call Status | | Yes |
+| G | Duration | | Yes |
+| H | Notes | | Yes |
+| I | Sentiment | | Yes |
+
+**Call Status dropdown values:** Connected, Voicemail, No Answer, Wrong Number, Gatekeeper, Callback Requested
+**Sentiment dropdown values:** Interested, Neutral, Not Interested
+
+**Tab formatting:**
+- Freeze row 1 (headers)
+- Bold headers
+- Columns F-I highlighted light yellow (JJ's input columns)
+- Add data validation dropdowns on Col F (Call Status) and Col I (Sentiment)
+- Row order: Tier 1 targets first (owner name known), then Tier 2 (owner name blank), then ad-hoc calls at bottom with "AD-HOC" prefix in Col B
+
+**Niche Call Guide reference:** Add a merged header row above the table (row 1): "Call Guide: {link to niche call guide Google Doc}" — data table starts at row 2.
+
+**Niche Call Guide locations (Google Docs):**
+- Premium Pest Management: TBD (upload after script opener finalized)
+- Other niches: create from `templates/cold-call-guide-{niche-slug}.md` on niche activation
+
+**Tab archival:** Old daily tabs accumulate. On Monday prep, archive previous week's tabs by hiding them (not deleting — harvest may need re-reads).
 
 ### 5. Slack Message Draft
 
@@ -143,23 +171,16 @@ Draft the Slack message and present to Kay for approval before sending. Use two-
 ```
 Hey JJ, here are your calls for today:
 
-OWNER CALL:
-1. {Owner Name} - {Company} ({Industry})
-   Phone: {phone}
-   Call Log: {google_doc_link}
+{n} calls on the sheet: {link to daily call tab on master sheet}
+Call Guide: {link to niche call guide Google Doc}
 
-CALLBACK:
-2. {Owner Name} - {Company} (follow-up from {date})
-   Phone: {phone}
-   Call Log: {google_doc_link}
+OWNER CALLS: {n}
+CALLBACKS: {n}
+AD-HOC: {n}
 
-AD-HOC:
-{n}. {Contact Name} - {Company} ({context summary})
-   Phone: {phone}
-   Context: {full context from Col D}
-   Call Log: {link}
+Dial target today: {n} total
 
-Dial target today: {n} ({n} owner + {n} callbacks)
+Reminder: Log results directly on the sheet tab (columns F-I). If you learn an owner's name, add it to Notes.
 ```
 
 **Rules:**
@@ -176,23 +197,23 @@ If owner wants to schedule during JJ's call: JJ books a time with the owner, the
 <call_harvest>
 ## Mode: Harvest (After 2pm ET)
 
-### 1. Read Call Logs
+### 1. Read Daily Call Tab
 
-Read all Call Log docs updated today in OPERATIONS / CALL LOGS:
-- Check for docs with today's date in the filename
-- Read Call Outcome and Call Notes fields
+Read the `Calls {M.DD.YY}` tab from the master target sheet for today's date.
+- Read columns F-I for all rows where Col F (Call Status) is not empty
+- Match each row back to the master sheet's main tab by company name (Col B)
 
 ### 2. Update Master Sheet
 
-For each completed call, update the master target sheet:
-- Col R: JJ: Call Status ← from Call Status field (Connected/Voicemail/No Answer/Wrong Number)
-- Col S: JJ: Call Date ← from Call Date field
-- Col T: JJ: Call Notes ← summarize detailed notes into one line
-- Col U: JJ: Owner Sentiment ← from Owner Sentiment field
+For each completed call on the daily tab, update the master sheet's main tab:
+- Col T (JJ: Call Status) ← from daily tab Col F
+- Col U (JJ: Call Date) ← today's date
+- Col V (JJ: Call Notes) ← from daily tab Col H
+- Col W (JJ: Owner Sentiment) ← from daily tab Col I
 
 ### 3. Owner Name Backfill
 
-If JJ's Call Notes or Call Log contain an owner name AND Col J (Owner Name) is blank on the sheet, write the name to Col J. Free enrichment from the call itself.
+If JJ's Notes (daily tab Col H) contain an owner name AND Col J (Owner Name) is blank on the master sheet, write the name to Col J. Free enrichment from the call itself.
 
 ### 4. Post-Engagement Enrichment (Phase 3 Trigger)
 
@@ -213,14 +234,17 @@ If Call Status = "Connected" and sentiment is positive → flag for pipeline-man
 
 ### Prep Mode Validation
 - [ ] All selected targets passed reply check (no false positives)
-- [ ] Call Log docs created in Drive with correct naming
-- [ ] Each Call Log has pre-populated company info and customized script
-- [ ] Slack message draft matches expected format with correct call type labels
+- [ ] Daily call tab created on master sheet with correct date naming (`Calls {M.DD.YY}`)
+- [ ] Tab has all columns (A-I) with headers and data validation dropdowns
+- [ ] Tier 1 targets listed before Tier 2 targets
+- [ ] Niche call guide link included in tab header or Slack message
+- [ ] Slack message draft matches expected format with sheet link
 - [ ] Kay approved the Slack message before sending
 
 ### Harvest Mode Validation
-- [ ] All updated Call Log docs were read
-- [ ] Master sheet columns R-U updated for each call
+- [ ] Daily call tab read for all rows with Call Status filled
+- [ ] Master sheet columns T-W updated for each call
+- [ ] Owner name backfill applied where applicable (Col J)
 - [ ] Positive-sentiment targets flagged for pipeline-manager
 - [ ] No duplicate entries in master sheet
 </stop_hooks>
@@ -228,9 +252,10 @@ If Call Status = "Connected" and sentiment is positive → flag for pipeline-man
 <success_criteria>
 ## Success Criteria
 
-- [ ] JJ receives call list by 10am ET with all links working
-- [ ] Call types correctly labeled (OWNER/CALLBACK)
+- [ ] JJ receives call list by 10am ET with sheet link working
+- [ ] Daily call tab has correct columns, dropdowns, and call guide link
+- [ ] Call types correctly labeled in Slack (OWNER/CALLBACK/AD-HOC counts)
 - [ ] No targets with prior replies included in call list
-- [ ] Call outcomes harvested same day and sheet updated
+- [ ] Call outcomes harvested same day and master sheet columns T-W updated
 - [ ] Interested leads flagged immediately
 </success_criteria>

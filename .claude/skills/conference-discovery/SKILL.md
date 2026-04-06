@@ -96,17 +96,45 @@ Before recommending ANY conference, verify that **target business owners are con
 - Trade shows with exhibitor booths (expo halls where owners have tables)
 - Regional industry conferences (30-200 people ideal)
 - Client-facing events where target business owners exhibit or network
+- **Supplier/vendor events where target owners are buyers** — e.g., chemical supplier hosts pest control operators for product training. The owners attend as customers.
+- **Certification and continuing education events** — owners often attend in person for license renewals, CE credits, or new certifications. These are small, regional, and full of practitioners.
+- **Award dinners and galas** — "Best of" industry awards, chamber of commerce business awards. Owners show up to be recognized or network with peers.
+- **Local business association meetups** — BNI chapters, Rotary, local chamber events. Not niche-specific but owners attend. Lower hit rate, higher frequency.
 
-### Search Strategy — Prioritize Associations
+### Broadening for Conference-Thin Niches
+
+Some niches (blue collar services, fractional/advisory, niche storage) have very few formal conferences. When the standard search returns zero results for a niche, escalate to these alternative gathering types:
+
+1. **Supplier-hosted events** — search "{niche} supplier training event", "{niche} manufacturer demo day". Equipment/chemical/materials suppliers regularly host their customers (the owners) for product demos, training days, and networking dinners.
+2. **State/local licensing and CE events** — search "{niche} continuing education {state}", "{niche} license renewal class {region}". In-person CE classes are intimate and full of owner-operators.
+3. **Facebook/LinkedIn groups with meetups** — search "Facebook group {niche} owners {region}", "LinkedIn group {niche} professionals". Many niche industries organize informal meetups through social groups. Check for pinned event posts.
+4. **Franchise/buying group meetings** — search "{niche} franchise convention", "{niche} buying group meeting". Franchise systems and cooperative buying groups hold annual or quarterly meetings where independent operators gather.
+5. **Adjacent-industry conferences** — if pest management has no events, check property management, facilities management, or real estate investor conferences where pest control owners exhibit or attend as vendors/partners.
+6. **State association chapter events** — many niche industries have state-level associations with regular chapter dinners that don't appear on conference aggregators. Go directly to the state association website.
+
+**Report gaps explicitly.** If after the expanded search a niche still has zero upcoming gatherings, report it with what was searched and recommend alternative owner-access strategies (direct outreach, warm intros, LinkedIn engagement).
+
+### Search Strategy — Prioritize Associations, Then Expand
 
 The best source of weekly conferences is **association event calendars**, not conference aggregators. For each active niche, identify the relevant professional associations and monitor their events pages directly.
 
-**Search pattern for each niche:**
+**Search pattern for each niche (standard):**
 ```
 WebSearch: "{niche} professional association"
 WebSearch: "{niche} industry association events {region}"
 WebSearch: "{niche} chapter meeting {city} {month} {year}"
 WebSearch: "{niche} networking event {city}"
+```
+
+**Expanded search for conference-thin niches (when standard returns <2 results):**
+```
+WebSearch: "{niche} owner meetup {region}"
+WebSearch: "{niche} supplier training event {year}"
+WebSearch: "{niche} continuing education in person {state}"
+WebSearch: "{niche} awards dinner {region} {year}"
+WebSearch: "{niche} franchise convention {year}"
+WebSearch: "{adjacent industry} conference exhibitors {niche}"
+WebSearch: "Facebook group {niche} owners {state}"
 ```
 
 Then visit each association's website → Events/Calendar page → capture all upcoming events.
@@ -206,13 +234,30 @@ Kay fills in: Decision (M) and Notes (N).
 
 When Kay marks Decision = Skip, Claude moves the row to the Skipped tab.
 
+### Auto-Archival (runs every discovery cycle)
+
+Before adding new conferences, scan the Pipeline tab and auto-move rows to the Skipped tab when:
+1. **Decision = Skip** — Kay explicitly passed
+2. **Date is past** — Conference date (Col A) is before today's date, regardless of Status or Decision
+3. **Status = Attended** — Conference already happened and was attended
+
+**Process:**
+1. Read all Pipeline rows
+2. Identify rows matching any archival criteria above
+3. Copy matching rows to the Skipped tab (append at bottom)
+4. Delete matching rows from the Pipeline tab
+5. Re-sort both tabs chronologically after changes
+6. Report in Slack notification: "{n} past/skipped conferences archived"
+
+This keeps the Pipeline tab clean — only future conferences that still need decisions or action.
+
 ### Conference Calendar
 
 Maintain in the **Conference Pipeline Google Sheet** (see references/drive-locations.md).
 
 **Two tabs:**
-- **Pipeline** — all active conferences: Discovered through Attended, including Register Only. This is the single view.
-- **Skipped** — archive for conferences Kay passes on. Move rows here when Decision = Skip.
+- **Pipeline** — future conferences only: Discovered through Registered/Prep Complete. Active decisions and upcoming events.
+- **Skipped** — archive for conferences Kay passed on AND conferences whose dates have passed (attended or not).
 
 Statuses: Discovered, Evaluating, Registered, Prep Complete, Attended, Skipped
 

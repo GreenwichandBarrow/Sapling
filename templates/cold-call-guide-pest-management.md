@@ -21,19 +21,17 @@ A successful voicemail: the owner has heard our name and knows we'll follow up.
 
 ## 2. THE SCRIPT
 
-> **NOTE:** The exact opening line and framing (e.g., "calling on behalf of" vs. "calling from" vs. other) is TBD — Kay is getting Kevin Hong's proven script framework from their call on Mon 4/7 at 12:30pm. This section will be finalized after that call.
-
 ### Tier 1: You Know the Owner's Name
 
 **Opening:**
 > "Hi, is this {Owner Name}?"
 
 *[If yes:]*
-> "Hi {Owner Name}, this is JJ [OPENER TBD — finalize after Kevin Hong call]. How are you doing today?"
+> "Hi {Owner Name}, this is JJ calling on behalf of Kay Schneider with Greenwich & Barrow. How are you doing today?"
 
 *[Let them respond — don't rush past this.]*
 
-> "[PITCH TBD — core message: Kay is acquiring one pest management company to operate long-term, not PE, not a roll-up. Ask for 15-min intro call.]"
+> "Great — the reason I'm calling is Kay is looking to acquire one pest management company to own and operate herself, long-term. She's not a private equity firm, not a roll-up — she wants to run one great company. She came across yours and would love to have a quick 15-minute introductory call to learn more about your business. Would you be open to that?"
 
 ### Tier 2: You Don't Know the Owner's Name
 
@@ -41,11 +39,11 @@ A successful voicemail: the owner has heard our name and knows we'll follow up.
 > "Hi, may I speak with the owner or the person in charge of the business?"
 
 *[If transferred or owner answers:]*
-> "Hi, this is JJ [OPENER TBD]. And who am I speaking with?"
+> "Hi, this is JJ calling on behalf of Kay Schneider with Greenwich & Barrow. And who am I speaking with?"
 
 *[Get and note the name.]*
 
-> "Nice to meet you, {Name}. [PITCH TBD — same core message as Tier 1.]"
+> "Nice to meet you, {Name}. The reason I'm calling is Kay is looking to acquire one pest management company to own and operate herself, long-term. She's not a private equity firm, not a roll-up — she wants to run one great company. She came across yours and would love to have a quick 15-minute introductory call to learn more about your business. Would you be open to that?"
 
 ### If They Say Yes
 

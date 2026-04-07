@@ -188,20 +188,19 @@ If a company can't meet this bar, log it as "could not enrich" in the run summar
 | Headquarters | Apollo city, state |
 | Industry | Apollo industry or niche keyword |
 | Employees | Apollo employee count |
-| Rev Source | "Apollo" or "ZoomInfo" or "Website" etc. |
-| Revenue | Apollo estimated revenue (if available) |
+| Rev Source | ONLY populate if Revenue has a value. Write the source name ("Apollo", "ZoomInfo", "Website", etc.). If Revenue is blank, leave Rev Source blank too. |
+| Revenue | Apollo estimated revenue (if available). Leave blank if Apollo has no data — never write "$0" or estimates. |
 | Ownership | "Independent" or flag if unclear |
 | Owner Name | People search result |
 | Owner Title | People search result |
 | Email | Match/reveal result |
-| Phone | Match/reveal result (if revealed) |
+| Phone (Company) | Apollo org phone |
+| Phone (Owner) | Match/reveal result (if revealed) |
+| LinkedIn Connection | (blank — Kay marks 1st/2nd/3rd degree) |
 | LinkedIn (Owner) | People search result |
 | LinkedIn (Company) | Apollo org LinkedIn URL |
-| Kay: Decision | (blank — agent auto-advances or Kay fills) |
-| Kay: Pass Reason | (blank — agent or Kay fills) |
-| Agent Notes | "RECOMMEND: Approve" or "RECOMMEND: Pass" + reasoning |
+| Agent Notes | "AUTO-APPROVED: meets all criteria" or screening notes |
 | JJ: Call Status through JJ: Owner Sentiment | (blank — JJ fills) |
-| ICP Match | Assessment from Apollo data vs ICP criteria |
 | ICP Miss Reason | If not a full match, explain why |
 | Year Founded | Apollo founding year or web research |
 | LinkedIn Connection | (blank — Kay fills manually) |

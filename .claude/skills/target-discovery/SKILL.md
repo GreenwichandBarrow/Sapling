@@ -150,7 +150,7 @@ Run warm-intro-finder for each target: search Attio People records for the owner
 
 | Result | Action |
 |--------|--------|
-| Warm intro path found | **DO NOT write to sheet.** Route to morning briefing: "{Name}, {Company} — warm intro via {connection}. Personal draft or cold outreach?" Kay decides. |
+| Warm intro path found | **Write to "Do Not Call" tab** with all enriched data + Col S note: "WARM INTRO: {connection} — {path details}". Also surface in morning briefing: "{Name}, {Company} — warm intro via {connection}. Personal draft or cold outreach?" Kay decides. |
 | No warm intro path | Proceed to Phase F (assemble row). |
 
 **Why this exists:** Warm intros are higher-conversion than cold email. If Kay has a path to the owner through her network, burning that with a cold outreach cadence is worse than no outreach at all. The warm intro check MUST run before the target enters any automated pipeline.
@@ -208,7 +208,7 @@ Targets that fail screening are not written to the sheet. Warm intro targets go 
 
 #### Auto-Advance Stop Hook (CRITICAL)
 
-This checklist runs sequentially for EVERY target BEFORE Col O is set to "Approve". If any hard stop triggers, skip remaining checks and set Pass immediately.
+This checklist runs sequentially for EVERY target BEFORE it is written to the Full Target List tab. If any hard stop triggers, skip remaining checks and reject the target (do not write to sheet).
 
 **Hard Stops (block auto-advance, set do not write to sheet):**
 
@@ -230,7 +230,7 @@ This checklist runs sequentially for EVERY target BEFORE Col O is set to "Approv
 
 **Warm Intro Check (routes differently, not a block — already ran in Phase E):**
 
-13. **Warm intro check.** This was already executed in Phase E before the target reached the sheet. If Phase E flagged a warm intro path, the target was routed to the morning briefing and never reached this point. This check is a safety net: if a target somehow reached the sheet without Phase E running, re-run warm-intro-finder now. If warm intro found → do NOT auto-advance. Route to morning briefing: "{Name}, {Company} — warm intro via {connection}. Personal draft or cold outreach?"
+13. **Warm intro check.** This was already executed in Phase E before the target reached the sheet. If Phase E flagged a warm intro path, the target was written to the "Do Not Call" tab and surfaced in the morning briefing. This check is a safety net: if a target somehow reached auto-advance without Phase E running, re-run warm-intro-finder now. If warm intro found → write to "Do Not Call" tab with Col S note: "WARM INTRO: {connection} — {path details}". Route to morning briefing: "{Name}, {Company} — warm intro via {connection}. Personal draft or cold outreach?"
 
 **Edge Case Routing:**
 
@@ -245,8 +245,8 @@ After the stop hook, the agent scores each target against buy box criteria AND n
 **Auto-Approve (no Kay review needed):**
 Targets that PASS all buy box + ICP criteria AND clear the stop hook above. Agent writes the target to the Full Target List tab and flows them to the appropriate channel based on Outreach Channel (Col D): Kay Email → outreach-manager Kay Email subagent, DealsX Email → outreach-manager DealsX Coordination subagent, JJ-Call-Only → jj-operations. Col S notes: "AUTO-APPROVED: meets all criteria." (plus any soft filter cautions appended).
 
-**Warm Intro Path (surface in morning briefing):**
-Targets where warm-intro-finder (checking Attio, vault, Gmail, network) finds a connection. Surface for Kay to decide: personal draft or cold outreach cadence.
+**Warm Intro Path (write to Do Not Call tab + surface in morning briefing):**
+Targets where warm-intro-finder (checking Attio, vault, Gmail, network) finds a connection. Write to "Do Not Call" tab with warm intro details in Col S. Surface for Kay to decide: personal draft or cold outreach cadence.
 Briefing format: "{Name}, {Company} — warm intro via {path}. Personal draft or cold outreach?"
 
 **Edge Cases (surface in morning briefing):**
@@ -257,9 +257,9 @@ Kay no longer reviews every target. She spot-checks outputs. If she sees bad tar
 
 ### Step 4: Attio Dedup Check (Read-Only)
 Before handing off to outreach-manager:
-- Check every approved target against Attio Active Deals. If the person/company already exists in the pipeline, flag them on the target sheet (Col P: "Already in Attio") and skip.
+- Check every approved target against Attio Active Deals. If the person/company already exists in the pipeline, flag them on the target sheet (Col S: "Already in Attio") and skip.
 - If they're already receiving outreach from conference-discovery (pre-conference email in flight), exclude from cold outreach.
-- **Do NOT create Attio records.** Target-discovery only writes to the Google Sheet. Outreach-manager creates Attio entries at "Identified" stage after Kay approves in Col O. This keeps the CRM clean — only approved targets enter the pipeline.
+- **Do NOT create Attio records.** Target-discovery only writes to the Google Sheet. Outreach-manager creates Attio entries at "Identified" stage after auto-approval. This keeps the CRM clean — only approved targets enter the pipeline.
 
 ### Step 5: Handoff to Outreach Manager
 Pass approved, deduped targets to skill/outreach-manager's cold outreach subagent with:
@@ -292,7 +292,7 @@ Pass approved, deduped targets to skill/outreach-manager's cold outreach subagen
 The ICP is a living document. Track these signals to know if it needs adjustment:
 
 **Auto-advance feedback loop:**
-- If auto-advance is producing targets Kay would reject, tighten buy box or ICP criteria. The accept/reject rate now comes from Kay's spot-checks and response data, not manual Col O review.
+- If auto-advance is producing targets Kay would reject, tighten buy box or ICP criteria. The accept/reject rate now comes from Kay's spot-checks and response data, not manual review.
 - Track spot-check rejection rate. If Kay rejects 2+ auto-approved targets in a single review, pause auto-advance for that niche and tighten criteria before resuming.
 - Log rejection reasons (wrong size, PE-backed, wrong industry, wrong geography). Patterns in rejections = ICP criteria to tighten.
 
@@ -334,14 +334,14 @@ Invoke list-builder in `calls-first` mode. Target: 500-1000 companies.
 - Email verification, generic email, wrong domain email — no email in Phase 1
 - Owner identification check — no owner name in Phase 1
 
-**Auto-advance:** Targets passing 5 reduced stop hooks auto-advance to Col O = "Approve". Kay spot-checks.
+**Auto-advance:** Targets passing 5 reduced stop hooks are written directly to the "Full Target List" tab. Kay spot-checks.
 
 ### Phase 2: Weekly Enrichment (Sunday 11pm ET)
 
-Scheduled run. Enriches the next 200 un-enriched targets (Col J = Owner Name is blank) with owner names via web research.
+Scheduled run. Enriches the next 200 un-enriched targets (Col K = Owner Name is blank) with owner names via web research.
 
 **Process:**
-1. Read sheet, find rows where Col K (Owner Name) is blank
+1. Read sheet, find rows on "Full Target List" tab where Col K (Owner Name) is blank
 2. Sort by row number (oldest first)
 3. Take next 200
 4. For each: web research for owner name + title (company website, LinkedIn People tab, web search)
@@ -394,7 +394,7 @@ When Col D = `DealsX Email`, Sam Singh's team at DealsX handles list building, e
 
 1. Receive Sam's target list (CSV or shared sheet)
 2. Run warm-intro-finder against EVERY name on the list: check Attio People records, vault entities, Gmail history, network contacts
-3. Flag any warm intro matches: "{Name}, {Company} — warm intro via {connection}. EXCLUDE from DealsX batch."
+3. Flag any warm intro matches: "{Name}, {Company} — warm intro via {connection}. EXCLUDE from DealsX batch." Write these to the "Do Not Call" tab on the niche's target sheet.
 4. Return exclusion list to outreach-manager DealsX Coordination subagent, who communicates it to Sam
 
 **Why this is non-negotiable:** If Sam cold-emails someone Kay has a personal relationship with, it damages the relationship and Kay's reputation. This check runs BEFORE Sam sends, not after.
@@ -506,6 +506,7 @@ If validation fails, do NOT send Slack. Report the failure and fix before notify
 - [ ] Sheet populated with new targets (solid batch on activation, refill batch on weekly trigger)
 - [ ] Auto-approved targets deduped against Attio (read-only check) and handed to outreach-manager
 - [ ] Edge cases and warm intro paths surfaced in morning briefing
+- [ ] Warm intro targets written to "Do Not Call" tab
 - [ ] Kay notified via Slack with sheet link
 - [ ] Credits consumed logged
 

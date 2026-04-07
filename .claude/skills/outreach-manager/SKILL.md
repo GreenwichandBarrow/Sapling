@@ -1,6 +1,6 @@
 ---
 name: outreach-manager
-description: "Owns all outreach across all channels and funnels. Three subagents: cold outreach (from target-discovery), conference outreach (from conference-discovery), intermediary outreach. Attio dedup catches crossover."
+description: "Owns all outreach across all channels and funnels. Four subagents: Kay Email cold outreach, DealsX coordination, conference outreach, intermediary outreach. Channel routing by niche (Kay Email / DealsX Email / JJ-Call-Only). Attio dedup catches crossover."
 user_invocable: true
 context_budget:
   skill_md: 3000
@@ -11,7 +11,7 @@ context_budget:
 <objective>
 Own all outreach. Every email, call, DM, and follow-up flows through this skill.
 
-This skill receives targets from two upstream skills and runs personalized outreach via three subagents. A shared dedup layer prevents any person from receiving overlapping outreach from both funnels.
+This skill receives targets from two upstream skills and runs personalized outreach via four subagents. A shared dedup layer prevents any person from receiving overlapping outreach from both funnels.
 
 **Inputs from other skills:**
 - **skill/target-discovery** — approved cold targets with enriched contact info and research context
@@ -22,12 +22,30 @@ This skill receives targets from two upstream skills and runs personalized outre
 - JJ's call outcomes feed back into pipeline-manager
 - Weekly outreach metrics → skill/weekly-tracker
 
-Three subagents:
-1. **Cold Outreach** — multi-channel cadence for Apollo-sourced targets, Claude-drafted in Superhuman
-2. **Conference Outreach** — pre-conference emails and post-conference follow-ups
-3. **Intermediary Outreach** — relationship-building with association heads, brokers, river guides
+Four subagents:
+1. **Kay Email Cold Outreach** — multi-channel cadence for Kay Email niches, Claude-drafted in Superhuman
+1b. **DealsX Coordination** — coordination with Sam Singh / DealsX for mass email + LinkedIn outreach on DealsX niches
+2. **Conference Outreach** — pre-conference emails and post-conference follow-ups (Kay always, regardless of niche channel)
+3. **Intermediary Outreach** — relationship-building with association heads, brokers, river guides (Kay always)
 
-**Delivery model (ALL outreach):** Claude drafts in Superhuman via CLI. Kay reviews and sends. No third-party tool ever touches Kay's SMTP credentials.
+### Niche Channel Routing
+
+Each niche is assigned a channel on the WEEKLY REVIEW tab (Col D). This determines which subagent handles outreach.
+
+| Niche | Channel | Notes |
+|-------|---------|-------|
+| Art Advisory | Kay Email | Small TAM, relationship-driven, no JJ calls |
+| Art Storage | Kay Email | Small TAM, Active-Long Term |
+| Fractional CFO | DealsX Email | Sam handles outreach |
+| Specialty Insurance Brokerage | DealsX Email | Sam handles, Margot geographic arbitrage thesis |
+| Estate Management | DealsX Email | Sam handles, UHNW focus |
+| Premium Pest Management | JJ-Call-Only | Decoupled, handled by jj-operations, not outreach-manager's scope |
+
+**Channel routing rule:** Before running any subagent, read the WEEKLY REVIEW tab Col D for the niche. Route to the correct subagent. Never cross channels.
+
+**Delivery model (Kay Email channel):** Claude drafts in Superhuman via CLI. Kay reviews and sends. No third-party tool ever touches Kay's SMTP credentials.
+**Delivery model (DealsX Email channel):** Sam/DealsX handles all outreach. We provide templates, exclusion lists, and warm intro intercepts. We draft replies to inbound responses.
+**Delivery model (JJ-Call-Only channel):** Handled entirely by jj-operations skill, not outreach-manager.
 </objective>
 
 <dedup_layer>
@@ -44,9 +62,11 @@ The dedup + warm intro check runs once when targets are received, before any dra
 </dedup_layer>
 
 <cold_outreach>
-## Subagent 1: Cold Outreach
+## Subagent 1: Kay Email Cold Outreach
 
-Handles outreach for targets sourced from skill/target-discovery (Apollo + free sources).
+**Channel gate:** This subagent ONLY runs for niches where Col D on WEEKLY REVIEW = "Kay Email". For DealsX Email niches, see Subagent 1b. For JJ-Call-Only niches, see jj-operations skill.
+
+Handles outreach for Kay Email targets sourced from skill/target-discovery (Apollo + free sources).
 
 ### Cold Outreach Delivery
 

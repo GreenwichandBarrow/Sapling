@@ -32,7 +32,7 @@ JJ works from the daily call tab on the master target sheet and Slack messages. 
 
 ### 1. Target Selection
 
-**JJ is decoupled from Salesforge cold outreach cadences.** JJ's call list is managed independently by jj-operations, not triggered by email send events. Targets come from Kay's approvals and the ad-hoc queue, not from Col X.
+**JJ is decoupled from email outreach cadences (Kay Email and DealsX Email channels).** JJ's call list is managed independently by jj-operations, not triggered by email send events. Targets come from Kay's approvals and the ad-hoc queue, not from Col X.
 
 Read the active niche sprint's master sheet ("{Niche} - Target List"). Select targets where:
 - Col Q (Kay: Decision) = "Approve"

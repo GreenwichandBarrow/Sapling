@@ -336,19 +336,41 @@ Invoke list-builder in `calls-first` mode. Target: 500-1000 companies.
 
 **Auto-advance:** Targets passing 5 reduced stop hooks are written directly to the "Full Target List" tab. Kay spot-checks.
 
-### Phase 2: Weekly Enrichment (Sunday 11pm ET)
+### Phase 2: Sunday Night Pipeline (Sunday 11pm ET)
 
-Scheduled run. Enriches the next 200 un-enriched targets (Col K = Owner Name is blank) with owner names via web research.
+**This is a single sequential pipeline that runs every Sunday night. All steps must complete before jj-operations creates the week's Call Log tabs on Monday morning. The order is critical — enrichment first, then screening, then call log creation.**
 
-**Process:**
+#### Step 1: Owner Enrichment (web research, 0 credits)
+Enrich the next 200 un-enriched targets (Col K = Owner Name is blank) with owner names via web research.
+
 1. Read sheet, find rows on "Full Target List" tab where Col K (Owner Name) is blank
 2. Sort by row number (oldest first)
 3. Take next 200
 4. For each: web research for owner name + title (company website, LinkedIn People tab, web search)
 5. Write owner name (Col K), title (Col L), and owner LinkedIn (Col Q) to sheet
-6. Log: "Phase 2: {n}/200 owners identified"
+6. Log: "Phase 2 Step 1: {n}/200 owners identified"
 
-**Cost:** 0 credits. All web research.
+#### Step 2: PE Re-Screen (on newly enriched targets)
+Re-check all targets enriched in Step 1 for PE/VC ownership. Web research for owner names often surfaces acquisition info (e.g., "John Smith, former owner — company acquired by Rentokil 2022").
+
+1. For each newly enriched target, search: `"{company name}" "acquired by" OR "portfolio company" OR "backed by" OR "subsidiary"`
+2. Also flag: franchise models, government entities, non-target business types
+3. PE-owned → move to "Do Not Call" tab with Col S: "PE-OWNED: {evidence}"
+4. Government/franchise → delete from Full Target List (not acquisition targets)
+5. Log: "Phase 2 Step 2: {n} PE-owned removed, {n} govt/franchise removed"
+
+#### Step 3: Warm Intro Check (on all targets going to next week's call logs)
+Run warm-intro-finder on the top 200 targets (by row order) that have Col T (JJ: Call Status) = empty. These are the pool jj-operations will draw from.
+
+1. For each target with owner name populated: check Attio, Gmail, vault entities for connections
+2. Warm intro found → move to "Do Not Call" tab with Col S: "WARM INTRO: {connection} — {path details}"
+3. Surface in Monday morning briefing: "{Name}, {Company} — warm intro via {connection}. Personal draft or cold outreach?"
+4. Log: "Phase 2 Step 3: {n} warm intros found, moved to Do Not Call"
+
+#### Step 4: Create Week's Call Log Tabs (hand off to jj-operations)
+After Steps 1-3 complete, the Full Target List is clean: enriched, PE-screened, warm-intro-cleared. jj-operations prep then runs to create 5 Call Log tabs (Mon-Fri) from the clean pool.
+
+**Cost:** 0 credits. All web research + Attio/Gmail/vault lookups.
 
 ### Phase 3: Post-Engagement Enrichment (triggered by jj-operations harvest)
 
@@ -356,7 +378,7 @@ When JJ connects with an owner and gets positive sentiment:
 1. jj-operations harvest updates call outcome on sheet
 2. If Call Status = "Connected" AND Sentiment = "Interested" or "Neutral":
    - Run Apollo `/people/match` for email reveal (1 credit)
-   - Run warm-intro-finder (now it matters for follow-up routing)
+   - Run warm-intro-finder (check if Kay has a connection for warmer follow-up)
    - Flag for pipeline-manager: "JJ connected with {owner} at {company}. Ready for follow-up."
 3. If owner said "send me more info" → draft follow-up email in Superhuman
 
@@ -364,14 +386,16 @@ When JJ connects with an owner and gets positive sentiment:
 
 ### Weekly Timeline
 
-| Day | What Happens |
-|-----|-------------|
-| Sunday 11pm | Phase 2: enrich next 200 targets with owner names |
-| Monday 9am | jj-operations prep: select 40 targets, create Call Logs |
-| Monday 10am-2pm | JJ calls 40 targets |
-| Monday overnight | jj-operations harvest: update sheet, trigger Phase 3 for positive calls |
-| Tue-Fri | Same daily cycle |
-| Friday | Weekly tracker reports: calls made, connection rate, enrichment pipeline depth |
+| Day | Time | What Happens |
+|-----|------|-------------|
+| Sunday | 11pm | Phase 2 Step 1: Owner enrichment (200 targets, web research) |
+| Sunday | 11pm | Phase 2 Step 2: PE re-screen (sequential after Step 1) |
+| Sunday | 11pm | Phase 2 Step 3: Warm intro check (sequential after Step 2) |
+| Monday | 9am | jj-operations prep: Create 5 Call Log tabs (Mon-Fri, 40/day) from clean pool |
+| Monday | 10am | Slack to JJ: week's sheet link + call guide |
+| Mon-Fri | 10am-2pm | JJ calls 40 targets/day |
+| Mon-Fri | 4pm | jj-operations harvest: update Full Target List, trigger Phase 3 for positive calls |
+| Friday | | Weekly tracker reports: calls made, connection rate, enrichment pipeline depth |
 </calls_first_flow>
 
 <dealsx_list_ingestion>

@@ -9,16 +9,23 @@ context_budget:
 ---
 
 <objective>
-Manage JJ's daily calling operations end-to-end. JJ is a VA (Philippines) working Mon-Fri 10am-2pm ET. This skill handles:
-1. Overnight call prep (target selection, reply checking, daily call log creation)
-2. 10am Slack delivery (call list with sheet link)
-3. Post-shift outcome harvesting (reading daily call log, updating master sheet)
+Manage JJ's calling operations end-to-end. JJ is a VA (Philippines) working Mon-Fri 10am-2pm ET. This skill handles:
+1. Monday morning prep: create the full week's 5 Call Log tabs (Mon-Fri, 40 targets each) from the clean Full Target List
+2. Monday 10am Slack delivery: week's sheet link + call guide
+3. Daily harvest (Mon-Fri after 2pm): read each day's Call Log tab, update Full Target List
 
 JJ works from the daily Call Log tab on the master target sheet and Slack messages. Each niche has a static Call Guide doc he references for scripts, objections, and niche context.
 
 **Two run modes:**
-- `prep` — overnight before 10am, selects targets and creates daily Call Log tab
-- `harvest` — overnight after 2pm, reads daily Call Log tab and updates the master sheet
+- `prep` — Monday 9am, creates 5 Call Log tabs (Mon-Fri) for the full week. Runs AFTER target-discovery's Sunday night pipeline (owner enrichment → PE re-screen → warm intro check) has cleaned the Full Target List.
+- `harvest` — Mon-Fri after 2pm, reads that day's Call Log tab and updates the Full Target List
+
+**Weekly cadence (Option A):**
+- Sunday 11pm: target-discovery Phase 2 pipeline runs (enrich → PE screen → warm intro check)
+- Monday 9am: jj-operations `prep` creates 5 tabs from clean pool
+- Monday 10am: Slack to JJ with week's sheet link
+- Mon-Fri 4pm: jj-operations `harvest` reads each day's results
+- Monday morning: previous week's tabs archived (hidden, not deleted)
 
 **This skill does NOT:**
 - Create outreach drafts (that's outreach-manager)
@@ -125,43 +132,41 @@ WebSearch: "{Owner Name}" "{Company Name}"
 ```
 Extract ONE detail: recent award, conference appearance, company anniversary, industry publication, community involvement, or career milestone. Single sentence. If nothing found, leave blank.
 
-### 4. Daily Call Log Tab Creation
+### 4. Weekly Call Log Tab Creation (Monday Morning)
 
-Create a new tab on the master target sheet for the day's calls. The Call Log tab uses the **same 23 columns (A-W) as the Full Target List** — this makes it a straight copy of rows.
+Create **5 Call Log tabs (Mon-Fri)** on the master target sheet for the full week's calls. Each tab uses the **same 23 columns (A-W) as the Full Target List** — a straight copy of rows.
 
-**Tab name:** `Call Log {M.DD.YY}` (e.g., `Call Log 4.08.26`)
+**Tab names:** `Call Log {M.DD.YY}` for each weekday (e.g., `Call Log 4.14.26` through `Call Log 4.18.26`)
 
 **Process:**
-1. Create the new tab
-2. Write header row (same A-W headers as Full Target List)
-3. Copy the 40 selected target rows from Full Target List with all their data
-4. Tier 1 targets (Col K populated) listed first, then Tier 2, then ad-hoc calls at bottom
+1. Archive previous week's Call Log tabs (hide, don't delete)
+2. Create 5 new tabs (Mon through Fri)
+3. Write header row on each (same A-W headers as Full Target List)
+4. Select 200 targets total (40 per tab) from Full Target List where Col T (JJ: Call Status) is empty
+5. Copy target rows with all their data — 40 per tab
+6. Tier 1 targets (Col K populated) listed first, then Tier 2, then ad-hoc calls at bottom
+
+**CRITICAL DEPENDENCY:** Prep MUST run AFTER target-discovery's Sunday night pipeline completes. The Full Target List must already be enriched, PE-screened, and warm-intro-cleared before targets are copied to Call Log tabs. If the Sunday pipeline hasn't run, do NOT create tabs — flag in morning briefing.
 
 **Call Status dropdown values (Col T):** Connected, Voicemail, No Answer, Wrong Number, Gatekeeper, Callback Requested, Not In Service
 **Sentiment dropdown values (Col W):** Interested, Neutral, Not Interested
 
-**Tab archival:** Old Call Log tabs accumulate. On Monday prep, archive previous week's tabs by hiding them (not deleting — harvest may need re-reads).
+### 5. Monday Slack Message (10am ET)
 
-### 5. Slack Message Draft
-
-Draft the Slack message and present to Kay for approval before sending. Use two-gate process: Kay approves content, then approves the message draft.
-
-**Call type labels (CRITICAL):** Every call must be labeled OWNER CALL or CALLBACK. JJ needs this before dialing.
+One Slack message per week on Monday at 10am with the full week's sheet link. Draft and present to Kay for approval before sending.
 
 **Slack message format:**
 ```
-Hey JJ, here are your calls for today:
+Hey JJ, here are your calls for this week:
 
-{n} calls on the sheet: {link to daily Call Log tab on master sheet}
+This week's call logs are ready on the sheet: {link to master target sheet}
+Tabs: Call Log {M.DD.YY} through Call Log {M.DD.YY} (Mon-Fri)
 Call Guide: {link to niche call guide Google Doc}
 
-OWNER CALLS: {n}
-CALLBACKS: {n}
-AD-HOC: {n}
+40 calls per day, 200 total this week.
+{n} Tier 1 (owner name known), {n} Tier 2 (ask for the owner).
 
-Dial target today: {n} total
-
-Reminder: Log results directly on the sheet tab (columns T-W). If you learn an owner's name, add it to Notes.
+Reminder: Log results directly on each day's tab (columns T-W). If you learn an owner's name, add it to Notes — we'll update the master list.
 ```
 
 **Rules:**
@@ -169,6 +174,7 @@ Reminder: Log results directly on the sheet tab (columns T-W). If you learn an o
 - Send to #operations-sva channel via SLACK_WEBHOOK_SVA
 - JJ dial target: 40 dials/day (1,000/month). Most will be voicemails, gatekeepers, or no-answers — that's expected. Volume is how cold calling works.
 - Add at bottom: "Any feedback on this process at all along the way is welcome and appreciated. Any questions, reply here and I will get them to the right person."
+- First week only: add "This is our first week running the new call log format. Please review and share any feedback on the layout."
 
 ### 6. Scheduling Protocol
 

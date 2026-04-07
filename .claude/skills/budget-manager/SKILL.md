@@ -75,7 +75,8 @@ Kay does not want to be in the weeds of bookkeeping. She wants a monthly "here's
 - **Fund deadline:** February 2027
 - **DD reserve:** $40,000 (graduated to $80,000 at LOI stage)
 - **Target monthly burn:** $17,300 (based on $190K available / 11 remaining months)
-- **Steady-state burn (current):** $19,000-22,000/month
+- **Steady-state burn (current):** $20,500-23,500/month (includes DealsX $1,500/mo)
+- **DealsX (Sam Singh):** $1,500/mo + $25K success fee (contingent on deal close — not in monthly burn)
 - **Interest income:** ~$500-600/month
 
 ## Data Source Phases

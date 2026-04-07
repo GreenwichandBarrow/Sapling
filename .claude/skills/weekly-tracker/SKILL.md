@@ -270,31 +270,40 @@ curl -s -X GET "https://api.apollo.io/api/v1/auth/health" \
 # Master sheet ICP data (Kay + JJ columns)
 gog sheets get "{MASTER_SHEET_ID}" "'Active'!O:U" --json  # Kay Decision, Pass Reason, Call Status, Sentiment
 ```
-### Agent 6 (extended): LinkedIn DM Collector
-**Additional task for Agent 6:** Pull LinkedIn DM metrics from Salesforge MCP for sequenced targets.
+### Agent 6 (extended): Outreach Channel Collector
+**Additional task for Agent 6:** Pull outreach metrics by channel.
 
-LinkedIn DM tracking comes from Salesforge, which automates LinkedIn actions as part of sequences. The target sheet no longer has LinkedIn DM columns (Cols X-AF removed).
+Outreach tracking varies by niche channel type:
+- **DealsX Email niches:** Metrics come from Sam's shared Google Sheet (company, owner, email, date contacted, response status, meetings booked). Read the shared sheet for emails sent, responses, and meetings.
+- **Kay Email niches:** Metrics come from Gmail/Superhuman (existing tracking via Agent 1).
+- **JJ-Call-Only niches:** Metrics come from target sheet call columns (existing tracking via Agent 3).
 
 **Queries:**
 ```bash
-# Use Salesforge MCP to get LinkedIn activity from sequences
-# 1. List sequences that include LinkedIn steps
-mcp__salesforge__list_sequences
-# 2. For each sequence with LinkedIn steps, get contact-level status
-mcp__salesforge__list_contacts  # filter by sequence, check LinkedIn step completion
-# 3. Cross-reference with Gmail scan for any manual LinkedIn DM threads
+# DealsX shared sheet — read Sam's report for outreach metrics
+# Sheet contains: company, owner, email, date contacted, response status, meetings booked
+gog sheets get "{DEALSX_SHARED_SHEET_ID}" "'Sheet1'!A:F" --json
+# Filter rows by date range for this week
+
+# LinkedIn DMs — track manually from Gmail notification emails
+gog gmail search "from:linkedin.com subject:accepted subject:invitation after:{WEEK_START} before:{WEEK_END}" --json
 ```
 
 **Counts:**
-- LinkedIn DMs Drafted (Salesforge: contacts enrolled in sequence with pending LinkedIn step)
-- LinkedIn DMs Sent (Salesforge: contacts where LinkedIn step executed)
-- LinkedIn DMs Responded (Salesforge: contacts with LinkedIn reply detected, or Gmail scan for LinkedIn notification emails)
-- LinkedIn DM Response Rate = Responded / Sent
+- DealsX Emails Sent (from Sam's shared sheet: rows with date contacted this week)
+- DealsX Responses (from Sam's shared sheet: rows with response status this week)
+- DealsX Meetings Booked (from Sam's shared sheet: rows with meetings booked this week)
+- Kay Emails Sent (from Gmail Agent 1 data, filtered to Kay Email niches)
+- LinkedIn DMs Sent (from Gmail notification scan)
+- LinkedIn DMs Responded (from Gmail LinkedIn reply notifications)
 
 Include in Agent 6 returns:
 ```json
 {
-  "linkedin_dms_drafted": 0,
+  "dealsx_emails_sent": 0,
+  "dealsx_responses": 0,
+  "dealsx_meetings_booked": 0,
+  "kay_emails_sent": 0,
   "linkedin_dms_sent": 0,
   "linkedin_dms_responded": 0,
   "linkedin_dm_response_rate": 0
@@ -453,7 +462,7 @@ Kay's process optimization view. Presents 10 high-level questions that surface w
 | # | Question | Lens | Data Source | Decision Trigger |
 |---|----------|------|-------------|-----------------|
 | 1 | Do any niches need more targets? | System Throughput | Read each niche's target sheet — count rows by Col O status (Identified, Contacted, etc.) and outreach status. Flag any niche where remaining uncontacted targets < 10. | "Fractional CFO needs refill" → triggers target-discovery for that niche |
-| 2 | Which email variant is winning per niche? | Signal Quality | Salesforge MCP sequence analytics — pull open rate, reply rate, meeting rate per variant (A vs B) for each active niche. | "Variant A outperforming in Art Advisory" → shift more targets to Variant A |
+| 2 | Which email variant is winning per niche? | Signal Quality | A/B testing for DealsX niches managed by Sam. Kay Email niches track variants on target sheet. Pull open rate, reply rate, meeting rate per variant (A vs B) from channel-appropriate source. | "Variant A outperforming in Art Advisory" → shift more targets to Variant A |
 
 **Placeholder questions (3-10):**
 
@@ -470,12 +479,12 @@ Kay's process optimization view. Presents 10 high-level questions that surface w
 
 **Data collection for active questions:**
 - **Q1 (target refill):** For each active niche sprint, read the niche's target sheet. Count total rows, rows where Col O = any contacted/outreached status, and rows where Col O = Identified (uncontacted). If uncontacted < 10, flag the niche name and remaining count.
-- **Q2 (variant performance):** Use Salesforge MCP (`list_sequences` → `get_sequence` per niche). For each sequence with A/B variants, pull: open rate, reply rate, and meeting-booked rate per variant. Present side-by-side comparison.
+- **Q2 (variant performance):** For DealsX niches, request A/B variant data from Sam's shared sheet or weekly report. For Kay Email niches, check target sheet variant column for open rate, reply rate, and meeting-booked rate per variant. Present side-by-side comparison.
 
 **How dashboard feeds decisions:**
 - Dashboard presents data and recommendations. Kay decides. Do NOT auto-act on dashboard findings.
 - Q1 refill recommendation → Kay approves → target-discovery runs for that niche.
-- Q2 variant recommendation → Kay approves → sequence settings updated in Salesforge.
+- Q2 variant recommendation → Kay approves → variant mix adjusted (DealsX: Sam updates; Kay Email: target sheet updated).
 
 **Sheet layout:** One row per question. Columns: Question #, Question, Lens, Current Answer, Recommendation, Last Updated. Answers and recommendations are overwritten each week.
 

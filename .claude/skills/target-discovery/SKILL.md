@@ -367,6 +367,56 @@ When JJ connects with an owner and gets positive sentiment:
 | Friday | Weekly tracker reports: calls made, connection rate, enrichment pipeline depth |
 </calls_first_flow>
 
+<dealsx_list_ingestion>
+## DealsX List Ingestion (DealsX Email Niches)
+
+When Col D = `DealsX Email`, Sam Singh's team at DealsX handles list building, enrichment, and mass email + LinkedIn outreach. target-discovery does NOT run the full 6-phase pipeline. Instead, target-discovery's role is limited to two critical guard rails on Sam's list.
+
+**Current DealsX niches:** Fractional CFO, Specialty Insurance Brokerage, Estate Management.
+
+### What Sam Handles (Phases A-D equivalent)
+- Company discovery (his own sources)
+- Owner identification
+- Email/LinkedIn enrichment
+- Mass email + LinkedIn outreach sequences
+
+### What target-discovery Handles (Phase E + Phase F only)
+
+#### Phase E: Warm Intro Check (HARD STOP — same as Kay Email flow)
+**This is the most critical step.** Sam must NOT cold-email anyone in Kay's network. Before Sam sends any batch:
+
+1. Receive Sam's target list (CSV or shared sheet)
+2. Run warm-intro-finder against EVERY name on the list: check Attio People records, vault entities, Gmail history, network contacts
+3. Flag any warm intro matches: "{Name}, {Company} — warm intro via {connection}. EXCLUDE from DealsX batch."
+4. Return exclusion list to outreach-manager DealsX Coordination subagent, who communicates it to Sam
+
+**Why this is non-negotiable:** If Sam cold-emails someone Kay has a personal relationship with, it damages the relationship and Kay's reputation. This check runs BEFORE Sam sends, not after.
+
+#### Phase F: Attio Dedup + ICP Screening
+1. **Attio dedup** — Check every target on Sam's list against Attio Active Deals. If the person/company already exists in the pipeline, exclude from Sam's batch.
+2. **Conference overlap** — If a target is already receiving outreach from conference-discovery, exclude.
+3. **ICP screening (simplified)** — Sam already pre-screens for basic fit, but run these hard stops as a safety net:
+   - PE ownership check
+   - HQ country verification
+   - Business type verification (is it actually the right niche?)
+
+**Output:** Return to outreach-manager DealsX Coordination subagent:
+- Exclusion list (warm intros + Attio duplicates + conference overlap + ICP failures) with reasons
+- Cleared list (targets safe for Sam to contact)
+
+### Timing
+- Sam sends his list before each batch
+- target-discovery runs Phase E + F within 24 hours
+- Cleared list returned to Sam via outreach-manager before he sends
+
+### What target-discovery Does NOT Do for DealsX Niches
+- No Apollo searches (Sam builds his own lists)
+- No inline enrichment (Sam handles this)
+- No sheet population (Sam manages his own tracking)
+- No auto-advance logic (Sam decides send timing)
+- No email drafting (Sam handles outreach copy)
+</dealsx_list_ingestion>
+
 <validation>
 ## Validation (Stop Hooks)
 
@@ -422,9 +472,9 @@ gog sheets get {SHEET_ID} "Active!B:N" -a kay.s@greenwichandbarrow.com -p
 - Confirm no Attio records were CREATED by target-discovery (Attio writes happen in outreach-manager only)
 
 ### Step 3: Handoff Validation
-- Confirm target data was passed to outreach-manager with all required fields
+- Confirm target data was passed to the correct downstream skill based on Col D (Kay Email → outreach-manager Kay Email subagent, DealsX Email → outreach-manager DealsX Coordination subagent, JJ-Call-Only → jj-operations)
 - Confirm every target has at least one contact method (Email OR Phone OR LinkedIn Owner)
-- Flag targets with LinkedIn-only contact (no email/phone) — outreach-manager routes these to LinkedIn DM instead of email sequence
+- Flag targets with LinkedIn-only contact (no email/phone) — outreach-manager routes these to LinkedIn DM instead of email outreach
 
 ### Step 4: Credit Tracking
 - Log credits consumed this run

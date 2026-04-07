@@ -161,7 +161,11 @@ When invoked via `/warm-intro-finder`:
 When outreach-manager picks up approved targets:
 - **Warm intro targets** → different email template (reference the connection)
 - **Investor intro targets** → Kay reaches out to investor first, then outreach after intro
-- **Cold targets** → standard Salesforge sequence
+- **Cold targets** → standard outreach cadence via niche's assigned channel (Kay Email or DealsX Email)
+
+## DealsX Screen Mode
+
+When invoked in `dealsx-screen` mode, takes Sam's outreach list as input, runs all 5 source checks (LinkedIn grep, Attio, vault, Gmail, investor network), and returns flagged targets that should be pulled from Sam's send list because Kay has a warm intro path. This prevents Sam from cold-emailing Kay's network.
 </workflow>
 
 <sub_agents>

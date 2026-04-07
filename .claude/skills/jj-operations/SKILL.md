@@ -56,7 +56,7 @@ Calls-first niches load 500-1000 targets via Phase 1 volume load. Not all will h
 
 ### Channel Filter (CRITICAL)
 
-**Why this exists:** JJ is decoupled from Salesforge email cadences. Calling a target who's in an active email sequence creates conflicting touchpoints.
+**Why this exists:** JJ is decoupled from email outreach cadences (Kay Email and DealsX Email). Calling a target who's in an active email sequence creates conflicting touchpoints.
 
 Before building the call list, read the WEEKLY REVIEW tab to determine which niches route to JJ:
 
@@ -67,7 +67,7 @@ gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins --range "WEEKLY REVI
 Build a map of **niche name (Col B) → outreach channel (Col D)**. Then for each target sheet:
 - Match the sheet's niche to the WEEKLY REVIEW map
 - **Include** targets only if their niche's outreach channel = `JJ-Call-Only`
-- **Skip** targets if their niche's outreach channel = `Salesforge Email` or any other value
+- **Skip** targets if their niche's outreach channel = `Kay Email`, `DealsX Email`, or any other value
 - **HARD STOP:** If a niche is missing from WEEKLY REVIEW, do NOT add ANY targets from that niche to the call list. Flag in morning briefing as requiring manual review. This is a safety gate — unknown channel means unknown routing.
 
 This filter runs BEFORE the reply check — no point checking replies for targets JJ won't call.

@@ -122,7 +122,7 @@ Web search: site:linkedin.com/in/ "{Owner Name}" "{Company Name}"
 ```
 If no result: try without company name, verify by title/location match.
 
-**Not a gate** — some people genuinely don't have LinkedIn (common in fine art world). Mark Col M as "No LinkedIn presence" and move on.
+**Not a gate** — some people genuinely don't have LinkedIn (common in fine art world). Mark Col Q as "No LinkedIn presence" and move on.
 
 #### Phase D: Email Verification (1 credit per target)
 
@@ -164,19 +164,19 @@ Only after Phases A-E complete, assemble the row with all columns populated. The
 When discovering targets for the art storage niche, cross-reference every candidate against the Activity Report (Google Sheet) which contains companies already contacted in prior outreach rounds. Do NOT rediscover or re-add companies that are already on the Activity Report.
 
 ### Write Gate (HARD RULE)
-**No row hits the Active tab until it meets ALL of these:**
+**No row hits the Full Target List tab until it meets ALL of these:**
 - Col C (Website) — populated and verified (loads a real page, not a redirect to a parent company)
-- Col I (Owner Name) — real person identified, not "Unknown"
-- Col K (Email) OR Col L (Phone) OR Col M (LinkedIn Owner) — at least one contact method. LinkedIn DM is a valid outreach channel.
-- Col M (LinkedIn Owner) — populated with URL, or explicitly "No LinkedIn presence"
-- Col N (LinkedIn Company) — populated with URL, or explicitly "No company page"
+- Col K (Owner Name) — real person identified, not "Unknown"
+- Col M (Email) OR Col N (Phone Company) OR Col O (Phone Owner) OR Col Q (LinkedIn Owner) — at least one contact method. LinkedIn DM is a valid outreach channel.
+- Col Q (LinkedIn Owner) — populated with URL, or explicitly "No LinkedIn presence"
+- Col R (LinkedIn Company) — populated with URL, or explicitly "No company page"
 - Col F (Employees) — sourced number or LinkedIn range, never unsourced estimate
 
 This applies to ALL sources. No exceptions. If enrichment can't meet this bar after reasonable effort, log the company name in the daily briefing as "could not enrich" with what's missing. Do NOT add it to the sheet with blank fields for Kay to catch.
 
 ### Sheet Structure
 
-Append to the niche sprint's master sheet ("{Niche} - Target List") in LINKT TARGET LISTS folder. One master sheet per niche sprint — do NOT create new sheets per run. New results append to the "Active" tab.
+Append to the niche sprint's master sheet ("{Niche} - Target List") in TARGET LISTS folder. One master sheet per niche sprint — do NOT create new sheets per run. New results append to the "Full Target List" tab.
 
 If the master sheet doesn't exist yet (first run of a new sprint), **COPY the template sheet**:
 
@@ -184,13 +184,20 @@ If the master sheet doesn't exist yet (first run of a new sprint), **COPY the te
 gog drive copy 1wIK4Jv56QIZejcmpq-gGrCWAPe07eJWUbKsWTRwh778 "{Niche} - Target List" -a kay.s@greenwichandbarrow.com --parent 1WfbzezRkD7Kr0FOA76y99x5wV8lwRkVc -j
 ```
 
-**Template columns A-Q:**
-- A-N: Source through LinkedIn (Company) — list building data
-- O: Kay: Decision (Approve/Pass)
-- P: Kay: Pass Reason
-- Q: Agent Notes (MUST start with "RECOMMEND: Approve" or "RECOMMEND: Pass" + reasoning)
+Template: "G&B Target List Template" in MANAGER DOCUMENTS / G&B MASTER TEMPLATES (folder ID: 19TxdV5GHHbYq_O8YupQ-gkEH7V00iykx)
 
-When Kay marks a row "Pass" in Col O, move it to the "Passed" tab with all data preserved.
+**Template tabs:** Full Target List | Do Not Call | Niche Context | Associations | Call Log M.DD.YY
+
+**Template columns A-W (23 columns):**
+- A: Source, B: Company, C: Website, D: Headquarters, E: Industry, F: Employees
+- G: Rev Source, H: Revenue, I: Year Founded, J: Ownership
+- K: Owner Name, L: Owner Title, M: Email
+- N: Phone (Company), O: Phone (Owner)
+- P: LinkedIn Connection, Q: LinkedIn (Owner), R: LinkedIn (Company)
+- S: Agent Notes (MUST start with "RECOMMEND: Approve" or "RECOMMEND: Pass" + reasoning)
+- T: JJ: Call Status, U: JJ: Call Date, V: JJ: Call Notes, W: JJ: Owner Sentiment
+
+Targets that fail screening are not written to the sheet. Warm intro targets go to the "Do Not Call" tab (and surface in morning briefing for Kay).
 
 **Phone number formatting:** Always:
 1. Strip country code prefix (`+1` or `+1 `)
@@ -203,17 +210,17 @@ When Kay marks a row "Pass" in Col O, move it to the "Passed" tab with all data 
 
 This checklist runs sequentially for EVERY target BEFORE Col O is set to "Approve". If any hard stop triggers, skip remaining checks and set Pass immediately.
 
-**Hard Stops (block auto-advance, set Col O = "Pass"):**
+**Hard Stops (block auto-advance, set do not write to sheet):**
 
-1. **PE ownership check.** Search for PE/VC ownership signals: Apollo org data, web search `"{company name}" "portfolio company" OR "acquired by" OR "backed by"`. If PE ownership detected → Col O = "Pass", Col P = "PE-owned ({evidence})". STOP — skip remaining checks.
-2. **Email verification check.** Read Apollo email status from Phase D enrichment. If status is guessed, unavailable, or bounced AND no LinkedIn Owner URL exists → Col O = "Pass", Col P = "Email not verified ({status})". STOP — skip remaining checks. (If email is unavailable but LinkedIn Owner exists, target is still valid as a LinkedIn DM target — do not pass.)
-3. **Generic email check.** If the only email is a generic address (info@, office@, contact@, hello@, admin@, general@, gallery@, art@) → Col O = "Pass", Col P = "Email not verified (generic)". STOP — skip remaining checks. Generic emails are never used for outreach.
-4. **Wrong domain email check.** If Apollo returned an email on a different domain than the company (e.g., university email, previous employer) → Col O = "Pass", Col P = "Email not verified (wrong domain)". STOP — skip remaining checks.
-5. **Owner identification check.** Read "Owner Name" column. If name is "Unknown", blank, or generic (e.g., "Info", "Admin", "Contact", "Office") → Col O = "Pass", Col P = "Owner not identified". STOP — skip remaining checks.
-6. **HQ country verification (CRITICAL).** Do NOT trust Apollo HQ data alone — Apollo often lists a US satellite office as HQ for international firms. Verify by checking the company LinkedIn page and/or website "About" page for actual headquarters location. If HQ is outside the US → Col O = "Pass", Col P = "International HQ ({actual location})". STOP — skip remaining checks.
-7. **Solo practitioner check.** Cross-reference Apollo employee count against LinkedIn company page and website team page. If the firm appears to be a solo practitioner or 1-2 person operation regardless of what Apollo says → Col O = "Pass", Col P = "Solo practitioner ({evidence})". STOP — skip remaining checks. Apollo employee counts are frequently inflated for small firms.
-8. **Business type verification.** Check the company website to confirm it is actually the type of business in the target niche (e.g., art advisory, not a design firm, gallery, auction house, or art moving company). If the business doesn't match the niche → Col O = "Pass", Col P = "Not {niche} ({actual business type})". STOP — skip remaining checks.
-9. **Company age check.** Check "Year Founded" (from Apollo or website). If the company is less than 5 years old → Col O = "Pass", Col P = "Too young (founded {year})". STOP — skip remaining checks.
+1. **PE ownership check.** Search for PE/VC ownership signals: Apollo org data, web search `"{company name}" "portfolio company" OR "acquired by" OR "backed by"`. If PE ownership detected → do not write to sheet, Col S (Agent Notes) = "PE-owned ({evidence})". STOP — skip remaining checks.
+2. **Email verification check.** Read Apollo email status from Phase D enrichment. If status is guessed, unavailable, or bounced AND no LinkedIn Owner URL exists → do not write to sheet, Col S (Agent Notes) = "Email not verified ({status})". STOP — skip remaining checks. (If email is unavailable but LinkedIn Owner exists, target is still valid as a LinkedIn DM target — do not pass.)
+3. **Generic email check.** If the only email is a generic address (info@, office@, contact@, hello@, admin@, general@, gallery@, art@) → do not write to sheet, Col S (Agent Notes) = "Email not verified (generic)". STOP — skip remaining checks. Generic emails are never used for outreach.
+4. **Wrong domain email check.** If Apollo returned an email on a different domain than the company (e.g., university email, previous employer) → do not write to sheet, Col S (Agent Notes) = "Email not verified (wrong domain)". STOP — skip remaining checks.
+5. **Owner identification check.** Read "Owner Name" column. If name is "Unknown", blank, or generic (e.g., "Info", "Admin", "Contact", "Office") → do not write to sheet, Col S (Agent Notes) = "Owner not identified". STOP — skip remaining checks.
+6. **HQ country verification (CRITICAL).** Do NOT trust Apollo HQ data alone — Apollo often lists a US satellite office as HQ for international firms. Verify by checking the company LinkedIn page and/or website "About" page for actual headquarters location. If HQ is outside the US → do not write to sheet, Col S (Agent Notes) = "International HQ ({actual location})". STOP — skip remaining checks.
+7. **Solo practitioner check.** Cross-reference Apollo employee count against LinkedIn company page and website team page. If the firm appears to be a solo practitioner or 1-2 person operation regardless of what Apollo says → do not write to sheet, Col S (Agent Notes) = "Solo practitioner ({evidence})". STOP — skip remaining checks. Apollo employee counts are frequently inflated for small firms.
+8. **Business type verification.** Check the company website to confirm it is actually the type of business in the target niche (e.g., art advisory, not a design firm, gallery, auction house, or art moving company). If the business doesn't match the niche → do not write to sheet, Col S (Agent Notes) = "Not {niche} ({actual business type})". STOP — skip remaining checks.
+9. **Company age check.** Check "Year Founded" (from Apollo or website). If the company is less than 5 years old → do not write to sheet, Col S (Agent Notes) = "Too young (founded {year})". STOP — skip remaining checks.
 
 **Soft Filters (flag but do NOT block auto-advance):**
 
@@ -236,7 +243,7 @@ Only targets that clear all hard stops, have 0-1 soft flags, and have no warm in
 After the stop hook, the agent scores each target against buy box criteria AND niche ICP criteria. Targets are triaged into three buckets:
 
 **Auto-Approve (no Kay review needed):**
-Targets that PASS all buy box + ICP criteria AND clear the stop hook above. Agent sets Col O = "Approve" and flows them to the appropriate channel based on Outreach Channel (Col D): Kay Email → outreach-manager Kay Email subagent, DealsX Email → outreach-manager DealsX Coordination subagent, JJ-Call-Only → jj-operations. Col Q notes: "AUTO-APPROVED: meets all criteria." (plus any soft filter cautions appended).
+Targets that PASS all buy box + ICP criteria AND clear the stop hook above. Agent writes the target to the Full Target List tab and flows them to the appropriate channel based on Outreach Channel (Col D): Kay Email → outreach-manager Kay Email subagent, DealsX Email → outreach-manager DealsX Coordination subagent, JJ-Call-Only → jj-operations. Col S notes: "AUTO-APPROVED: meets all criteria." (plus any soft filter cautions appended).
 
 **Warm Intro Path (surface in morning briefing):**
 Targets where warm-intro-finder (checking Attio, vault, Gmail, network) finds a connection. Surface for Kay to decide: personal draft or cold outreach cadence.
@@ -257,8 +264,8 @@ Before handing off to outreach-manager:
 ### Step 5: Handoff to Outreach Manager
 Pass approved, deduped targets to skill/outreach-manager's cold outreach subagent with:
 - Company name, website, headquarters
-- Owner name, title, email, phone, LinkedIn
-- LinkedIn Owner URL (Col M) — for LinkedIn DM drafting and connection degree lookup
+- Owner name, title, email, phone (company + owner), LinkedIn
+- LinkedIn Owner URL (Col Q) — for LinkedIn DM drafting and connection degree lookup
 - Research context (what makes them a good target, any personal hooks found)
 - Apollo enrichment data
 </target_discovery>
@@ -334,11 +341,11 @@ Invoke list-builder in `calls-first` mode. Target: 500-1000 companies.
 Scheduled run. Enriches the next 200 un-enriched targets (Col J = Owner Name is blank) with owner names via web research.
 
 **Process:**
-1. Read sheet, find rows where Col O = "Approve" AND Col J (Owner Name) is blank
+1. Read sheet, find rows where Col K (Owner Name) is blank
 2. Sort by row number (oldest first)
 3. Take next 200
 4. For each: web research for owner name + title (company website, LinkedIn People tab, web search)
-5. Write owner name (Col J), title (Col K), and owner LinkedIn (Col O) to sheet
+5. Write owner name (Col K), title (Col L), and owner LinkedIn (Col Q) to sheet
 6. Log: "Phase 2: {n}/200 owners identified"
 
 **Cost:** 0 credits. All web research.
@@ -443,21 +450,21 @@ gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B4:K2
 **This is a HARD STOP.** If Col D is empty, missing, or "Other", target-discovery MUST NOT hand targets to any downstream skill. Discovery can continue (finding and enriching targets), but routing is blocked until Kay sets the channel. Log the block in the daily briefing.
 
 ### Step 1: Sheet Validation
-- Confirm Google Sheet in LINKT TARGET LISTS folder has new rows with today's date
+- Confirm Google Sheet in TARGET LISTS folder has new rows with today's date
 - Verify phone numbers are formatted correctly: `(XXX) XXX-XXXX`
 
 ### Step 1b: Contact Completeness Check (STOP HOOK)
-Read every row on the Active tab. For each row, check cols I-N (Owner Name, Title, Email, Phone, LinkedIn Owner, LinkedIn Company):
+Read every row on the Full Target List tab. For each row, check cols K-R (Owner Name, Title, Email, Phone, LinkedIn Owner, LinkedIn Company):
 
 ```bash
-gog sheets get {SHEET_ID} "Active!B:N" -a kay.s@greenwichandbarrow.com -p
+gog sheets get {SHEET_ID} "Full Target List!B:R" -a kay.s@greenwichandbarrow.com -p
 ```
 
 **Flag every row missing ANY of these:**
 - Col C (Website) — empty (mandatory for all targets, no exceptions)
-- Col I (Owner Name) — empty or "Unknown"
+- Col K (Owner Name) — empty or "Unknown"
 - Col F (Employees) — empty or unsourced estimate
-- ALL of Col K (Email), Col L (Phone), AND Col M (LinkedIn Owner) empty — must have at least one contact method
+- ALL of Col M (Email), Col N (Phone Company), Col O (Phone Owner), AND Col Q (LinkedIn Owner) empty — must have at least one contact method
 
 **If missing contacts found:**
 1. Spawn a sub-agent to enrich (company website, LinkedIn People tab, web search, state registrations)

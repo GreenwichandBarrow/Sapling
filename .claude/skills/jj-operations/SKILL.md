@@ -10,19 +10,19 @@ context_budget:
 
 <objective>
 Manage JJ's daily calling operations end-to-end. JJ is a VA (Philippines) working Mon-Fri 10am-2pm ET. This skill handles:
-1. Overnight call prep (target selection, reply checking, daily call tab creation)
+1. Overnight call prep (target selection, reply checking, daily call log creation)
 2. 10am Slack delivery (call list with sheet link)
-3. Post-shift outcome harvesting (reading daily call tab, updating master sheet)
+3. Post-shift outcome harvesting (reading daily call log, updating master sheet)
 
-JJ works from the daily call tab on the master target sheet and Slack messages. Each niche has a static Call Guide doc he references for scripts, objections, and niche context.
+JJ works from the daily Call Log tab on the master target sheet and Slack messages. Each niche has a static Call Guide doc he references for scripts, objections, and niche context.
 
 **Two run modes:**
-- `prep` — overnight before 10am, selects targets and creates daily call tab
-- `harvest` — overnight after 2pm, reads daily call tab and updates the master sheet
+- `prep` — overnight before 10am, selects targets and creates daily Call Log tab
+- `harvest` — overnight after 2pm, reads daily Call Log tab and updates the master sheet
 
 **This skill does NOT:**
 - Create outreach drafts (that's outreach-manager)
-- Decide which targets get approved (that's Kay via the tracker)
+- Decide which targets get approved (that's target-discovery auto-approve)
 - Manage the target list sheet (that's target-discovery)
 - Move Attio pipeline stages (that's pipeline-manager)
 </objective>
@@ -32,27 +32,26 @@ JJ works from the daily call tab on the master target sheet and Slack messages. 
 
 ### 1. Target Selection
 
-**JJ is decoupled from email outreach cadences (Kay Email and DealsX Email channels).** JJ's call list is managed independently by jj-operations, not triggered by email send events. Targets come from Kay's approvals and the ad-hoc queue, not from Col X.
+**JJ is decoupled from email outreach cadences (Kay Email and DealsX Email channels).** JJ's call list is managed independently by jj-operations, not triggered by email send events. Targets come from the Full Target List (all pre-approved by target-discovery auto-screening).
 
 Read the active niche sprint's master sheet ("{Niche} - Target List"). Select targets where:
-- Col Q (Kay: Decision) = "Approve"
-- Col T (JJ: Call Status) is empty
+- Col T (JJ: Call Status) is empty (hasn't been called yet)
 - Target's niche has Outreach Channel = "JJ-Call-Only" on WEEKLY REVIEW (see Channel Filter below)
 
 ### Two-Tier Target Selection (Calls-First)
 
 Calls-first niches load 500-1000 targets via Phase 1 volume load. Not all will have owner names yet (owner enrichment happens weekly in Phase 2). JJ handles both tiers:
 
-**Tier 1 (enriched):** Col J (Owner Name) is populated. JJ asks the gatekeeper for the owner by name: "Is {Owner Name} available?" Higher conversion.
+**Tier 1 (enriched):** Col K (Owner Name) is populated. JJ asks the gatekeeper for the owner by name: "Is {Owner Name} available?" Higher conversion.
 
-**Tier 2 (raw):** Col J (Owner Name) is blank. JJ uses generic opener: "May I speak with the owner or person in charge?" Lower conversion but still valuable. JJ can extract the owner's name from the call for future attempts.
+**Tier 2 (raw):** Col K (Owner Name) is blank. JJ uses generic opener: "May I speak with the owner or person in charge?" Lower conversion but still valuable. JJ can extract the owner's name from the call for future attempts.
 
 **Daily target selection priority:**
 1. Fill from Tier 1 first (up to 40)
 2. If Tier 1 has fewer than 40 available, backfill from Tier 2
 3. Always prefer Tier 1
 
-**Owner name backfill:** If JJ learns the owner's name during a call (gatekeeper tells him, voicemail greeting, owner introduces themselves), capture it in Call Notes. Harvest mode writes it to Col J — free enrichment from the call itself.
+**Owner name backfill:** If JJ learns the owner's name during a call (gatekeeper tells him, voicemail greeting, owner introduces themselves), capture it in Call Notes. Harvest mode writes it to Col K — free enrichment from the call itself.
 
 ### Channel Filter (CRITICAL)
 
@@ -72,7 +71,7 @@ Build a map of **niche name (Col B) → outreach channel (Col D)**. Then for eac
 
 This filter runs BEFORE the reply check — no point checking replies for targets JJ won't call.
 
-**Sheet IDs (all 5 target lists):**
+**Sheet IDs (all target lists):**
 - Art Insurance: `15M76-gpcklwc47HDXIwyFC9Tj8K4wDOor4i0uxCYyHQ`
 - Domestic TCI: `1lEAx-3pEshsSc0Rix4KunJ38mzHahjAmV6nQA_cuwLw`
 - IPLC: `1Cdw6yb8-yBQtx5mTB8Hu4rENkJfpmt3t7HZdGqtdylQ`
@@ -80,19 +79,21 @@ This filter runs BEFORE the reply check — no point checking replies for target
 - Art Advisory: `1c6Db21D2qDpiT7LnEQ4l0AROlA-gucDQD1ZGOlrZ-K0`
 - Premium Pest Management: `1Y0ZjEkc2LHhBoO4QGO8Ny9MvG90NpojQn8bloKA291I`
 
-**Master sheet columns (A-X, 24 columns):**
+**Master sheet columns (A-W, 23 columns):**
 - A: Source, B: Company, C: Website, D: Headquarters, E: Industry, F: Employees
-- G: Rev Source, H: Revenue, I: Ownership, J: Owner Name, K: Owner Title
-- L: Email, M: Phone, N: LinkedIn Connection, O: LinkedIn (Owner), P: LinkedIn (Company)
-- Q: Kay: Decision (Approve/Pass)
-- R: Kay: Pass Reason
-- S: Agent Notes (RECOMMEND: Approve/Pass prefix)
-- T: JJ: Call Status
-- U: JJ: Call Date
-- V: JJ: Call Notes
-- W: JJ: Owner Sentiment
-- X: ICP Match
-- Outreach tracking columns (managed by outreach-manager, not read or written by jj-operations)
+- G: Rev Source, H: Revenue, I: Year Founded, J: Ownership
+- K: Owner Name, L: Owner Title, M: Email
+- N: Phone (Company), O: Phone (Owner)
+- P: LinkedIn Connection, Q: LinkedIn (Owner), R: LinkedIn (Company)
+- S: Agent Notes
+- T: JJ: Call Status, U: JJ: Call Date, V: JJ: Call Notes, W: JJ: Owner Sentiment
+
+**Master sheet tabs:**
+- Full Target List — all pre-approved targets
+- Do Not Call — warm intro targets (Kay handles personally, JJ never calls)
+- Niche Context — industry overview for JJ
+- Associations — niche associations and events
+- Call Log {M.DD.YY} — daily call log tabs
 
 ### Ad-Hoc Call Queue
 
@@ -124,42 +125,22 @@ WebSearch: "{Owner Name}" "{Company Name}"
 ```
 Extract ONE detail: recent award, conference appearance, company anniversary, industry publication, community involvement, or career milestone. Single sentence. If nothing found, leave blank.
 
-### 4. Daily Call Tab Creation
+### 4. Daily Call Log Tab Creation
 
-Instead of individual Call Log docs, create a single tab on the master target sheet for the day's calls.
+Create a new tab on the master target sheet for the day's calls. The Call Log tab uses the **same 23 columns (A-W) as the Full Target List** — this makes it a straight copy of rows.
 
-**Tab name:** `Calls {M.DD.YY}` (e.g., `Calls 4.07.26`)
+**Tab name:** `Call Log {M.DD.YY}` (e.g., `Call Log 4.08.26`)
 
-**Columns (A-I):**
-| Col | Header | Source | JJ Fills |
-|-----|--------|--------|----------|
-| A | # | Row number | |
-| B | Company | Col B from master | |
-| C | Owner Name | Col J from master (blank if Tier 2) | |
-| D | Phone | Col M from master | |
-| E | Signal | One-line tidbit from web search (Step 3) | |
-| F | Call Status | | Yes |
-| G | Duration | | Yes |
-| H | Notes | | Yes |
-| I | Sentiment | | Yes |
+**Process:**
+1. Create the new tab
+2. Write header row (same A-W headers as Full Target List)
+3. Copy the 40 selected target rows from Full Target List with all their data
+4. Tier 1 targets (Col K populated) listed first, then Tier 2, then ad-hoc calls at bottom
 
-**Call Status dropdown values:** Connected, Voicemail, No Answer, Wrong Number, Gatekeeper, Callback Requested
-**Sentiment dropdown values:** Interested, Neutral, Not Interested
+**Call Status dropdown values (Col T):** Connected, Voicemail, No Answer, Wrong Number, Gatekeeper, Callback Requested, Not In Service
+**Sentiment dropdown values (Col W):** Interested, Neutral, Not Interested
 
-**Tab formatting:**
-- Freeze row 1 (headers)
-- Bold headers
-- Columns F-I highlighted light yellow (JJ's input columns)
-- Add data validation dropdowns on Col F (Call Status) and Col I (Sentiment)
-- Row order: Tier 1 targets first (owner name known), then Tier 2 (owner name blank), then ad-hoc calls at bottom with "AD-HOC" prefix in Col B
-
-**Niche Call Guide reference:** Add a merged header row above the table (row 1): "Call Guide: {link to niche call guide Google Doc}" — data table starts at row 2.
-
-**Niche Call Guide locations (Google Docs):**
-- G&B Cold Call Guide (universal): https://docs.google.com/document/d/12Hqfwxg4qJA3YdZh36ndd-flvYgWNZeL8sMZ9NAHlTY/edit
-- Other niches: create from `templates/cold-call-guide-{niche-slug}.md` on niche activation
-
-**Tab archival:** Old daily tabs accumulate. On Monday prep, archive previous week's tabs by hiding them (not deleting — harvest may need re-reads).
+**Tab archival:** Old Call Log tabs accumulate. On Monday prep, archive previous week's tabs by hiding them (not deleting — harvest may need re-reads).
 
 ### 5. Slack Message Draft
 
@@ -171,7 +152,7 @@ Draft the Slack message and present to Kay for approval before sending. Use two-
 ```
 Hey JJ, here are your calls for today:
 
-{n} calls on the sheet: {link to daily call tab on master sheet}
+{n} calls on the sheet: {link to daily Call Log tab on master sheet}
 Call Guide: {link to niche call guide Google Doc}
 
 OWNER CALLS: {n}
@@ -180,7 +161,7 @@ AD-HOC: {n}
 
 Dial target today: {n} total
 
-Reminder: Log results directly on the sheet tab (columns F-I). If you learn an owner's name, add it to Notes.
+Reminder: Log results directly on the sheet tab (columns T-W). If you learn an owner's name, add it to Notes.
 ```
 
 **Rules:**
@@ -197,23 +178,23 @@ If owner wants to schedule during JJ's call: JJ books a time with the owner, the
 <call_harvest>
 ## Mode: Harvest (After 2pm ET)
 
-### 1. Read Daily Call Tab
+### 1. Read Daily Call Log Tab
 
-Read the `Calls {M.DD.YY}` tab from the master target sheet for today's date.
-- Read columns F-I for all rows where Col F (Call Status) is not empty
-- Match each row back to the master sheet's main tab by company name (Col B)
+Read the `Call Log {M.DD.YY}` tab from the master target sheet for today's date.
+- Read columns T-W for all rows where Col T (JJ: Call Status) is not empty
+- Match each row back to the Full Target List tab by company name (Col B)
 
 ### 2. Update Master Sheet
 
-For each completed call on the daily tab, update the master sheet's main tab:
-- Col T (JJ: Call Status) ← from daily tab Col F
+For each completed call on the daily Call Log tab, update the Full Target List tab:
+- Col T (JJ: Call Status) ← from daily Call Log Col T
 - Col U (JJ: Call Date) ← today's date
-- Col V (JJ: Call Notes) ← from daily tab Col H
-- Col W (JJ: Owner Sentiment) ← from daily tab Col I
+- Col V (JJ: Call Notes) ← from daily Call Log Col V
+- Col W (JJ: Owner Sentiment) ← from daily Call Log Col W
 
 ### 3. Owner Name Backfill
 
-If JJ's Notes (daily tab Col H) contain an owner name AND Col J (Owner Name) is blank on the master sheet, write the name to Col J. Free enrichment from the call itself.
+If JJ's Notes (Col V) contain an owner name AND Col K (Owner Name) is blank on the Full Target List, write the name to Col K. Free enrichment from the call itself.
 
 ### 4. Post-Engagement Enrichment (Phase 3 Trigger)
 
@@ -234,17 +215,18 @@ If Call Status = "Connected" and sentiment is positive → flag for pipeline-man
 
 ### Prep Mode Validation
 - [ ] All selected targets passed reply check (no false positives)
-- [ ] Daily call tab created on master sheet with correct date naming (`Calls {M.DD.YY}`)
-- [ ] Tab has all columns (A-I) with headers and data validation dropdowns
+- [ ] Daily Call Log tab created on master sheet with correct date naming (`Call Log {M.DD.YY}`)
+- [ ] Tab has all 23 columns (A-W) matching Full Target List
 - [ ] Tier 1 targets listed before Tier 2 targets
-- [ ] Niche call guide link included in tab header or Slack message
+- [ ] Niche call guide link included in Slack message
 - [ ] Slack message draft matches expected format with sheet link
 - [ ] Kay approved the Slack message before sending
+- [ ] No targets from Do Not Call tab included in call list
 
 ### Harvest Mode Validation
-- [ ] Daily call tab read for all rows with Call Status filled
-- [ ] Master sheet columns T-W updated for each call
-- [ ] Owner name backfill applied where applicable (Col J)
+- [ ] Daily Call Log tab read for all rows with Call Status filled
+- [ ] Full Target List columns T-W updated for each call
+- [ ] Owner name backfill applied where applicable (Col K)
 - [ ] Positive-sentiment targets flagged for pipeline-manager
 - [ ] No duplicate entries in master sheet
 </stop_hooks>
@@ -253,9 +235,9 @@ If Call Status = "Connected" and sentiment is positive → flag for pipeline-man
 ## Success Criteria
 
 - [ ] JJ receives call list by 10am ET with sheet link working
-- [ ] Daily call tab has correct columns, dropdowns, and call guide link
+- [ ] Daily Call Log tab has correct 23 columns matching Full Target List
 - [ ] Call types correctly labeled in Slack (OWNER/CALLBACK/AD-HOC counts)
 - [ ] No targets with prior replies included in call list
-- [ ] Call outcomes harvested same day and master sheet columns T-W updated
+- [ ] Call outcomes harvested same day and Full Target List columns T-W updated
 - [ ] Interested leads flagged immediately
 </success_criteria>

@@ -31,10 +31,10 @@ This skill is the list-building engine called by target-discovery. It takes ICP 
 <apollo_api>
 ## Apollo API Reference
 
-API key stored at `/tmp/apollo-key.txt`. Read silently via Bash. Never echo.
+API key stored in `scripts/.env.launchd` as `APOLLO_API_KEY`. Read silently via Bash. Never echo.
 
 ```bash
-APOLLO_KEY=$(cat /tmp/apollo-key.txt)
+APOLLO_KEY="${APOLLO_API_KEY:-$(grep APOLLO_API_KEY scripts/.env.launchd | cut -d'"' -f2)}"
 ```
 
 ### Endpoints
@@ -67,7 +67,7 @@ Takes ICP parameters from target-discovery: industry keywords, employee range, l
 **Run multiple keyword searches to maximize coverage.** Niches have aliases (e.g., "Trade Credit Insurance" = "Accounts Receivable Insurance" = "Credit Insurance"). Every alias gets its own search. Missing an alias = missing targets.
 
 ```bash
-APOLLO_KEY=$(cat /tmp/apollo-key.txt)
+APOLLO_KEY="${APOLLO_API_KEY:-$(grep APOLLO_API_KEY scripts/.env.launchd | cut -d'"' -f2)}"
 
 curl -s -X POST "https://api.apollo.io/api/v1/organizations/search" \
   -H "Content-Type: application/json" \

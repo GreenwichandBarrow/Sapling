@@ -29,7 +29,8 @@ This is the 20% channel. It supplements proprietary outreach (target-discovery +
 - Process new broker introductions (research platform, assess scrapability, add to rotation)
 
 **Inputs from other skills:**
-- **skill/niche-intelligence** — active thesis criteria, buy box, industry scorecards
+- **Industry Research Tracker** (Sheet: `1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins`, WEEKLY REVIEW tab) — active niche list read at scan start. This is the live source of truth for which niches are active.
+- **skill/niche-intelligence** — buy box, industry scorecards
 - **skill/pipeline-manager** — Attio Intermediary Pipeline (broker stages, relationship status)
 
 **Outputs to other skills:**
@@ -68,10 +69,22 @@ Scan searchable broker platforms for new listings matching the buy box.
 - Viking Mergers (vikingmergers.com) — periodic deal blasts
 
 **Scanning process:**
+
+**Step 0 — Load active theses (REQUIRED before scanning):**
+Read the Industry Research Tracker WEEKLY REVIEW tab to get the current active niches:
+```bash
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "'WEEKLY REVIEW'!A3:D20" -a kay.s@greenwichandbarrow.com --json
+```
+Row 3 is headers: Rank, Niche Hypothesis, Current Status, Outreach Channel. Filter for rows where Current Status starts with "Active" (Active-Outreach or Active-Long Term). Build a thesis list from the Niche Hypothesis column. This is what "thesis match" means — a listing in an industry that matches one of these active niches.
+
+Example output: `["Premium Pest Management", "Private art advisory", "Fractional CFO / Advisory Accounting", "Specialty Insurance Brokerage", "Art Storage"]`
+
+This ensures that when a new niche enters Active-Outreach (e.g., Pest Management), the very next scan automatically knows to flag matching listings as thesis matches. No manual update needed.
+
 1. Sub-agent visits each platform's listing page
 2. Scrape new listings since last scan (track by listing ID or date)
 3. For each listing, extract: company description, industry, revenue, EBITDA, asking price, geography, employee count
-4. Screen against buy box criteria (from niche-intelligence active theses)
+4. Screen against buy box criteria AND the active thesis list from Step 0
 5. **Revenue floor (auto-reject):** Any listing with stated revenue below $1.5M is auto-rejected regardless of industry fit or broker relationship. Do not flag, do not Slack, do not surface. These are too small.
 6. Two types of matches (only after passing revenue floor):
    - **Thesis match** — fits an active niche thesis (e.g., TCI brokerage, insurance compliance). High priority.

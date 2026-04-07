@@ -34,6 +34,13 @@ Row 0 of the table is the niche title. When replacing text, preserve the templat
 - Naming: `{Niche Name} {Month} {Year}.pptx`
 - Save to: New subfolder in Industry Research Drive folder (parent: `1tiAc7lVveBwi_DlYcFUX2tFP6FVwYKmQ`)
 
+## No Duplicate Files (CRITICAL)
+Each niche folder must contain exactly ONE one-pager and ONE scorecard. Before uploading a new version:
+1. List existing files in the niche's Drive folder
+2. If an older one-pager or scorecard already exists, **delete it first** (`gog drive delete {id} --force`)
+3. Then upload the new version
+Never leave old versions alongside new ones. The folder should be clean at all times.
+
 ## Drive Folder Structure
 
 Industry Research parent folder: `1tiAc7lVveBwi_DlYcFUX2tFP6FVwYKmQ`

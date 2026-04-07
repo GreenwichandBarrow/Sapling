@@ -16,6 +16,8 @@ Each niche gets its own standalone scorecard xlsx file, stored in its Drive fold
 **Naming convention:** `{Niche Name} Scorecard {Month} {Year}.xlsx`
 **Location:** Same Drive folder as the niche one-pager, under WEEKLY REVIEW subfolder (`1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT`)
 
+**No duplicate files:** Before uploading a new scorecard, list existing files in the niche folder and delete any older scorecard (`gog drive delete {id} --force`). Each folder must have exactly one scorecard and one one-pager at all times.
+
 ---
 
 Source: `G&B Industry & Company Scorecard Template.xlsx`

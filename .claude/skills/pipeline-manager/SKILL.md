@@ -157,6 +157,8 @@ Other items / today's agenda:
 2. {Quick flags or reminders}
 ```
 
+**Intermediary matches rule:** Daily broker listing matches from intermediary-manager are posted directly to #strategy-active-deals as individual Slack messages (one per deal, thumbs up/down reactions). Do NOT include individual match details in the morning briefing. The System Status line should only report: "intermediary-manager — {n} new lead matches posted to Slack".
+
 **Targets for Review rules:**
 - This section surfaces targets from target-discovery's auto-advance system that need Kay's decision. Two categories only:
   1. **Warm intro targets** — warm-intro-finder found a connection path (via Attio, vault, Gmail, Kay's network). Kay decides: "draft" (create a Superhuman draft for her personal outreach) or "cadence" (enroll in Claude-managed email cadence via Superhuman drafts).

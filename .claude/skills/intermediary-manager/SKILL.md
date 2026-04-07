@@ -77,16 +77,18 @@ Scan searchable broker platforms for new listings matching the buy box.
    - **Thesis match** — fits an active niche thesis (e.g., TCI brokerage, insurance compliance). High priority.
    - **Buy-box match, new niche** — fits the financial buy box ($1-5M EBITDA, $3-20M revenue, independently owned) but in a niche we haven't evaluated. Route to niche-intelligence as a discovery signal.
 
-**When a match is found — send ONE Slack notification PER DEAL (never batch multiple deals into one message).** Kay and her analyst use Slack thumbs up/down reactions on each notification to quickly decide go/no-go. Batching breaks this workflow.
+**When a match is found — send ONE Slack notification PER DEAL to #strategy-active-deals (never batch multiple deals into one message).** Kay and her analyst use Slack thumbs up/down reactions on each notification to quickly decide go/no-go. Batching breaks this workflow.
 
 ```bash
 # Send this ONCE per matching deal — never combine deals
 curl -s -X POST "$SLACK_WEBHOOK_ACTIVE_DEALS" \
   -H "Content-Type: application/json" \
-  -d '{"text":"🔔 Broker listing match\nSource: {Platform}\nCompany: {Name or blind profile}\nIndustry: {Industry}\nRevenue: {Revenue} | EBITDA: {EBITDA}\nMatch type: {Thesis match / Buy-box new niche}\n{Link to listing}\n\nAction: Sign NDA on platform to receive CIM.\n\n👍 = pursue  |  👎 = pass"}'
+  -d '{"text":"🔔 Broker listing match\nSource: {Platform}\nCompany: {Name or blind profile}\nIndustry: {Industry description}\nRevenue: {Revenue} | EBITDA: {EBITDA} | Margins: {margin%}\nGeography: {Geography or \"Not disclosed\"}\nMatch type: {Thesis match / Buy-box match, new niche}\nTeaser:\n{Link to listing or teaser document}\n\nNote: {1-2 sentence analyst note — why this matches or key risk}\n\n👍 = pursue  |  👎 = pass"}'
 ```
 
 **CRITICAL: If 5 matches are found, send 5 separate Slack messages.** Each deal must be independently reactable.
+
+**Morning briefing behavior:** Do NOT include individual match details in the morning briefing. The briefing System Status line should only report: "intermediary-manager — {n} new lead matches posted to Slack". Kay and her analyst review matches on Slack, not in the briefing.
 
 **Results file (REQUIRED after every run):** Write a structured results file to `brain/context/intermediary-scan-{YYYY-MM-DD}.md` with all matches, passes, and platform status. This is the recall source — Slack messages can be deleted, but this file persists for 48 hours minimum. Format:
 

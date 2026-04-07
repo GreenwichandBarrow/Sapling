@@ -202,7 +202,7 @@ Targets that fail screening are not written to the sheet. Warm intro targets go 
 **Phone number formatting:** Always:
 1. Strip country code prefix (`+1` or `+1 `)
 2. Reformat to `(XXX) XXX-XXXX`
-3. Write with apostrophe prefix and `--input USER_ENTERED`
+3. Write with `--input RAW` (NEVER use USER_ENTERED for phone numbers — Sheets interprets `+1` prefix as a formula, causing #ERROR!)
 
 ### Step 3: Auto-Advance & Triage
 

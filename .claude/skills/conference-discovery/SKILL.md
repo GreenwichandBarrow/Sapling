@@ -267,18 +267,18 @@ When Kay marks Decision = Skip, Claude moves the row to the Skipped tab.
 
 ### Auto-Archival (runs every discovery cycle)
 
-Before adding new conferences, scan the Pipeline tab and auto-move rows to the Skipped tab when:
-1. **Decision = Skip** — Kay explicitly passed
-2. **Date is past** — Conference date (Col A) is before today's date, regardless of Status or Decision
-3. **Status = Attended** — Conference already happened and was attended
+Before adding new conferences, scan the Pipeline tab and auto-move rows off Pipeline when:
+1. **Decision = Skip** → move to **Skipped** tab
+2. **Status = Attended** (or Decision = Attend AND date is past) → move to **Attended** tab
+3. **Date is past AND no Decision/Status indicating attendance** → move to **Skipped** tab (conference passed without attending)
 
 **Process:**
 1. Read all Pipeline rows
 2. Identify rows matching any archival criteria above
-3. Copy matching rows to the Skipped tab (append at bottom)
+3. Route each row to the correct tab (Attended or Skipped)
 4. Delete matching rows from the Pipeline tab
-5. Re-sort both tabs chronologically after changes
-6. Report in Slack notification: "{n} past/skipped conferences archived"
+5. Re-sort all three tabs chronologically after changes
+6. Report in Slack notification: "{n} moved to Attended, {n} moved to Skipped"
 
 This keeps the Pipeline tab clean — only future conferences that still need decisions or action.
 
@@ -286,9 +286,10 @@ This keeps the Pipeline tab clean — only future conferences that still need de
 
 Maintain in the **Conference Pipeline Google Sheet** (see references/drive-locations.md).
 
-**Two tabs:**
+**Three tabs:**
 - **Pipeline** — future conferences only: Discovered through Registered/Prep Complete. Active decisions and upcoming events.
-- **Skipped** — archive for conferences Kay passed on AND conferences whose dates have passed (attended or not).
+- **Attended** — conferences Kay attended. Permanent record of attendance for debrief, follow-up tracking, and ROI assessment.
+- **Skipped** — conferences Kay passed on or that passed without attending.
 
 Statuses: Discovered, Evaluating, Registered, Prep Complete, Attended, Skipped
 

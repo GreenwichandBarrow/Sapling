@@ -70,6 +70,21 @@ Until the Apps Script is built, all templates in Master Templates must be manual
 - Sign off "Very best, Kay" — signature is built in
 - No em dashes — use periods, commas, line breaks
 - Show person names, not just companies
+
+## Attio Stage Transitions
+
+| Phase | Action | Set Attio Stage To |
+|-------|--------|-------------------|
+| Intermediary PASS | Create entry | Identified |
+| Post-outreach email sent | Update | Contacted |
+| After first owner call | Update | First Conversation |
+| After second call | Update | Second Conversation |
+| NDA signed | Update | NDA Executed |
+| Financials received | Update | Financials Received |
+| Evaluation in progress | Update | Active Diligence |
+| LOI submitted | Update | LOI / Offer Submitted |
+| LOI signed | Update | LOI Signed (handoff to post-loi) |
+| Decline at any stage | Update | Closed / Not Proceeding |
 </essential_principles>
 
 
@@ -79,6 +94,16 @@ Until the Apps Script is built, all templates in Master Templates must be manual
 **Trigger:** Pipeline-manager flags an inbound deal from an intermediary and Kay approves screening. Invoked with `source: intermediary-inbound` and `intermediary: {name}`.
 
 **Key principle:** Intermediary deals get a FAST response. These people send deals to multiple buyers simultaneously. A same-day or next-morning reply keeps Kay top-of-mind. Every hour of delay is a competitive disadvantage.
+
+### Step 0: Quick Folder Setup
+
+Before running the buy-box screen, create a minimal folder structure so the screen doc has somewhere to go:
+
+1. Create `{COMPANY NAME}` folder under ACTIVE DEALS parent (`18EWix44hnWOkq_pLqdxuWir39RY4K8v5`)
+2. Create `DEAL {YEAR}` subfolder
+3. Create `NOTES` subfolder
+
+Full folder structure (remaining 6 subfolders + private folder) is created in Phase 1.
 
 ### Step 1: Automated Buy-Box Screen
 
@@ -224,14 +249,29 @@ The deal doesn't fit, but the broker is in a thesis-relevant space and could sen
 **Tools:** gog drive
 
 **Steps:**
-1. Create company folder in ACTIVE DEALS: `{COMPANY NAME} / DEAL {YEAR}` with all 7 subfolders (OUTREACH, CALLS, DILIGENCE, MODELS, FINANCIALS, CIM, NOTES)
-2. Create company folder in DEALS IN REVIEW: `{COMPANY NAME}`
+1. Create deal folder structure via 9 sequential `gog drive mkdir` calls (Drive has no batch folder creation or folder copy):
+   ```bash
+   # 1. Company folder
+   gog drive mkdir "{COMPANY NAME}" --parent "{ACTIVE_DEALS_PARENT_ID}"
+   # 2. Deal year folder
+   gog drive mkdir "DEAL {YEAR}" --parent "{COMPANY_FOLDER_ID}"
+   # 3-9. Seven subfolders under DEAL {YEAR}
+   gog drive mkdir "OUTREACH" --parent "{DEAL_YEAR_FOLDER_ID}"
+   gog drive mkdir "CALLS" --parent "{DEAL_YEAR_FOLDER_ID}"
+   gog drive mkdir "DILIGENCE" --parent "{DEAL_YEAR_FOLDER_ID}"
+   gog drive mkdir "MODELS" --parent "{DEAL_YEAR_FOLDER_ID}"
+   gog drive mkdir "FINANCIALS" --parent "{DEAL_YEAR_FOLDER_ID}"
+   gog drive mkdir "CIM" --parent "{DEAL_YEAR_FOLDER_ID}"
+   gog drive mkdir "NOTES" --parent "{DEAL_YEAR_FOLDER_ID}"
+   ```
+   Each call returns the folder ID needed for subsequent calls. These must run sequentially (child depends on parent ID).
+2. Create private company folder in DEALS IN REVIEW: `gog drive mkdir "{COMPANY NAME}" --parent "1j8vx4DuJeOCBO7dh4lGzIWi2k2T868iv"`
 3. Copy NDA template → shared deal folder root
 4. Rename: "Greenwich & Barrow LLC NDA - {Company Name}"
 5. Populate via `gog docs edit`:
    - `[COMPANY LEGAL NAME]` → actual company legal name
    - `[DATE]` → today's date
-6. Export as PDF (via `gog drive export`)
+6. Export as PDF (via `gog drive download --format=pdf`)
 7. Save call notes to CALLS/ subfolder
 
 **Returns:**
@@ -392,11 +432,14 @@ Structured with headers matching scorecard criteria so Sub-Agent 4a can directly
    - N18: LTM Period
 5. **Do NOT touch:** Transaction assumptions, projections, growth rates, deal structure — these are Kay's to play with
 
+**Excel round-trip cleanup:** After uploading the edited .xlsx, delete the original empty copy from Drive to avoid orphan files: `gog drive delete {original_copy_id} --force`
+
 **Stop Hook:**
 - [ ] Financial model exists in DEALS IN REVIEW / {COMPANY}
 - [ ] Historical data from 3a's JSON matches what's in the model cells
 - [ ] Model named correctly: "G&B Financial Model - {Company Name}.xlsx"
 - [ ] No projection or assumption cells were modified
+- [ ] Original empty copy deleted from Drive (no orphan files)
 - [ ] If 3a flagged `needs_manual_review`, model has a note in cell A1: "MANUAL REVIEW NEEDED — see data quality flags"
 
 ### Phase 3 Deliverable
@@ -431,6 +474,8 @@ Present to Kay:
 3. Leave 30% discretionary criteria blank with note: "Kay to assess: culture fit, growth story, personal conviction"
 4. Calculate partial score (70% portion only)
 5. Save to shared folder: MODELS/
+
+**Excel round-trip cleanup:** After uploading the edited .xlsx, delete the original empty copy from Drive to avoid orphan files: `gog drive delete {original_copy_id} --force`
 
 **Returns:**
 ```json

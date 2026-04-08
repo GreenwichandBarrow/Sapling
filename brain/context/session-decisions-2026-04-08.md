@@ -58,13 +58,38 @@ tags: ["date/2026-04-08", "context", "topic/session-decisions"]
 - DEFER: Conference pipeline weekly view — design a way to track 1-2 conferences/week goal
 - DEFER: Gusto payroll failed — insufficient funds for Apr 6 payroll, needs funding
 
+## Additional Actions (Late Morning)
+
+- CREATED: Conference Pipeline Template in G&B MASTER TEMPLATES folder
+- UPDATED: Conference Pipeline restructured with "Week Of" section headers, empty weeks visible for filling
+- UPDATED: Conference Pipeline dates cleaned — removed all day-of-week references, M/D/YY format only
+- UPDATED: APAA 4/13 marked Skip (members only)
+- CREATED: ACG NY DealSource Series (4/14/26) added to pipeline — Registered, Attend
+- UPDATED: ACG NY FO/LP Series (4/21/26) — Decision: Attend
+- UPDATED: Guillermo call prep rewritten — 5 bullets with Insight lines, Kay revised further
+- UPDATED: Intermediary-manager expansion in progress — researching new platforms, removing dead ones
+- REGISTERED: ACG portal profile completed (Corporate/Strategic Buyer, Under $50M, Business Services/Insurance)
+- REQUESTED: Transfer ACG DealSource registration to WOL Summit (May 14, daytime) — pending ACG response
+
+## Additional Decisions (Late Morning)
+
+- APPROVE: SaaS is in buy box when vertical + compliance + people/platform model. Queue for niche-intelligence.
+- APPROVE: No evening conferences. Daytime events only. Flag timing BEFORE registration.
+- APPROVE: Never mention personal life logistics (babysitters, childcare). Outside scope.
+- APPROVE: Always compute day-of-week, never guess. Remove day-of-week from spreadsheets.
+- APPROVE: Investor/advisor call preps include "Insight:" lines — conclusions, not just status.
+- APPROVE: Always end investor calls asking about recent deals or trends.
+
 ## Open Loops
 
 - Three skills to build: river-guide-builder, intermediary-manager enhancement, deal-evaluation dry-run
+- Intermediary-manager expansion agent running (new platforms, dead platform removal, SKILL.md update)
 - Art Advisory list scrub approved but not executed
 - Art Advisory warm-only: Philip Hoffman intro path undecided
 - Both Superhuman drafts (Andy Lock, Mark Gardella) on personal account — need to move to G&B before sending
-- Conference pipeline needs weekly tracking view for 1-2/week goal
-- Intermediary-manager running at 25% platform capacity (12 of 16 blocked/gated)
-- Tomorrow packed: Robe coffee 8:30, JJ team call 11:00, Guillermo 12:00
+- ACG DealSource transfer to WOL Summit — pending ACG response
+- Conference pipeline has 6 empty weeks to fill (6/8, 6/22, 6/29, 7/6, 7/13, 7/20)
+- Vertical Compliance SaaS queued for niche-intelligence
+- Tomorrow: Robe coffee 8:30, Guillermo 12:00 (JJ call may move to next week per Kay's request)
 - DMARC at quarantine, tighten to reject ~Apr 20
+- Gusto payroll failed — needs funding

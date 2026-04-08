@@ -1,6 +1,6 @@
 ---
 name: intermediary-manager
-description: "Manage the 20% intermediary deal channel — platform scanning, new intro processing, and niche signal detection. Flags matches for Kay, feeds signals to niche-intelligence. Email scanning (broker classification) is handled by pipeline-manager."
+description: "Manage the 20% intermediary deal channel — lead aggregation across broker platforms, industry-specific deal sources, and association deal boards. Flags matches for Kay, feeds signals to niche-intelligence. Email scanning (broker classification) is handled by pipeline-manager."
 user_invocable: true
 context_budget:
   skill_md: 2500
@@ -9,7 +9,7 @@ context_budget:
 ---
 
 <objective>
-Manage the intermediary deal flow channel. Screen broker platforms against the buy box, process new introductions, surface matches, and detect niche signals.
+Manage the intermediary deal flow channel. Aggregate leads from broker platforms, industry-specific deal sources, and association deal boards. Screen against the buy box, process new introductions, surface matches, and detect niche signals.
 
 This is the 20% channel. It supplements proprietary outreach (target-discovery + outreach-manager), never replaces it. Broker deals go to 3000+ buyers — we rarely win competitive bids. The value here is: early detection of thesis-matching deals, niche signal intelligence, and growing the intermediary network over time.
 
@@ -24,6 +24,8 @@ This is the 20% channel. It supplements proprietary outreach (target-discovery +
 
 **This skill DOES:**
 - Scan searchable broker platforms daily for buy-box matches
+- Scan industry-specific deal sources for niche-relevant listings
+- Monitor association deal boards and classified sections
 - Flag matches via Slack (#active-deals) with link to listing
 - Feed listing patterns to niche-intelligence as market signals and new thesis ideas
 - Process new broker introductions (research platform, assess scrapability, add to rotation)
@@ -45,28 +47,29 @@ This is the 20% channel. It supplements proprietary outreach (target-discovery +
 ### Channel 1: Platform Scanning (Daily)
 Scan searchable broker platforms for new listings matching the buy box.
 
-**Platform scan + email listings (both channels):**
-- Everingham & Kerr (everkerr.com) — most active broker, email listings
-- Business Exits (businessexits.com/listings/) — email + searchable
-- Benchmark International (embracebenchmark.com/search-deals) — email + searchable
+**General broker platforms (cross-industry):**
+- Business Exits (businessexits.com/listings/) — email + searchable, consistently accessible
+- DealStream (dealstream.com/businesses-for-sale) — searchable marketplace, filter by industry/size/location, 15K+ listings
+- SMERGERS (smergers.com) — publicly searchable, AI-powered M&A marketplace, filter by industry/geography
+- DealForce (dealforce.com) — Generational Equity buyer platform, registration required, filter by SIC/EBITDA/revenue
 - Rejigg (rejigg.com) — automated deal match emails + searchable
-- Quiet Light (quietlight.com) — email + searchable
-- Flippa (flippa.com) — email alerts + searchable
-- DealForce (dealforce.com) — email alerts + searchable
+- Flippa (flippa.com) — email alerts + searchable (mostly digital/online businesses)
 
-**Platform scan only (no email, agent must scrape):**
-- BizBuySell (bizbuysell.com) — Kay has account
-- FE International (feinternational.com) — Kay has account
-- IAG M&A Advisors (iagmerger.com) — Kay has account
-- Gottesman (gottesman-company.com)
-- ProNova Partners (pronovapartners.com)
-- Woodbridge International (woodbridgegrp.com)
-- Paine Pacific (painepacific.com)
-- Graphic Arts Advisors (graphicartsadvisors.com)
-- Website Closers (websiteclosers.com)
-
-**Email only (no searchable platform):**
+**General broker platforms (email-only, no searchable platform):**
+- Everingham & Kerr (everkerr.com) — most active broker, email listings
+- Benchmark International (embracebenchmark.com) — email deal flow, advisory only
 - Viking Mergers (vikingmergers.com) — periodic deal blasts
+- Quiet Light (quietlight.com) — email + searchable but persistently Cloudflare-blocked
+
+**Relationship-only intermediaries (no public listings):**
+- Woodbridge International (woodbridgegrp.com) — homepage accessible, no public listings
+- Paine Pacific (painepacific.com) — few public listings, mostly NDA-gated
+- IAG M&A Advisors (iagmerger.com) — Kay has account, advisory
+- ProNova Partners (pronovapartners.com) — 403 blocked, relationship-only
+
+**Gated platforms (need Kay's registration):**
+- FE International (app.feinternational.com) — requires buyer registration
+- Website Closers (websiteclosers.com) — no public listings page
 
 **Scanning process:**
 
@@ -126,7 +129,56 @@ platforms_scanned: {n}
 
 **Platform rotation:** If intermediary channel exceeds 25% of weekly targets (tracked on Weekly Tracker), reduce platform scanning to every other day and only surface exact thesis matches.
 
-### Channel 2: New Introductions
+### Channel 2: Industry-Specific Deal Sources
+
+Scan niche-specific platforms and brokers that specialize in the active thesis industries. These sources surface deals that general platforms miss.
+
+**Premium Pest Management:**
+- PCO Bookkeepers & M&A Specialists (pcobookkeepers.com) — Advisory only, no public listings. Dan Gordon (CPA) leads. $1B+ in sell-side transactions. Monitor their newsletter/blog for market signals. Contact for buy-side representation.
+- Keystone Business Advisors (keystonebusinessadvisors.com/business-listings/) — Registration required. Pest control up to $50M revenue. Southern California base, national reach.
+- Cetane (cetane.com/industries/pest-control/) — Lower middle market M&A advisory. No public listings, advisory relationship.
+- DealFlow Agent (dealflowagent.com/home-services/pest-control) — AI-powered M&A marketplace. 200+ active pest control buyers. Buyer registration available. Monitor for sell-side mandates.
+- Anticimex (us.anticimex.com/selling-your-business/) — Strategic acquirer (not broker). Tracks which companies they approach — useful for market intelligence, not deal sourcing.
+
+**Specialty Insurance Brokerage:**
+- Sica Fletcher (sicafletcher.com/announcements) — #1 insurance M&A advisory. $19B+ in transactions since 2014. JS-rendered (not scrapable). Track their quarterly index for market trends. Relationship-only deal flow.
+- MarshBerry (marshberry.com) — Investment banking + consulting for insurance. Proprietary deal flow, relationship-gated. Publishes market reports.
+- Reagan Consulting (reaganconsulting.com) — Insurance M&A advisory, valuations, perpetuation planning. No public marketplace. IIABA partner for Best Practices Study.
+- Agency Checklists (agencychecklists.com) — Tracks insurance M&A transactions quarterly. Public, scrapable. Good for market intelligence and identifying active sellers.
+
+**Fractional CFO / Advisory Accounting:**
+- Poe Group Advisors (poegroupadvisors.com/buying/listings/) — Premier accounting practice marketplace. Publicly searchable, filter by location/price. CPA firms, virtual CFO practices, cloud accounting firms.
+- Accounting Practice Sales (accountingpracticesales.com) — Global leader, 301 practices sold in 2025. Registration may be needed for full listings. $2B+ in closed deals.
+- Accounting Practice Exchange (accountingpracticeexchange.com) — Classified advertising platform ($199/listing). Publicly browsable. Not a broker.
+- Accounting Firm Sold (accountingfirmsold.com/listings/) — 35+ years experience. Publicly browsable, 27+ states. Revenue, cash flow, staff details per listing.
+- ABA Advisors (acctsales.com/practices-for-sale/) — 40+ active listings. Publicly searchable with filters (region, revenue, practice type). Midwest/Northeast heavy.
+- Private Practice Transitions (privatepracticetransitions.com/business-industry/accounting-tax/) — Pacific Northwest focus (OR, WA). 6 active listings. Revenue, SDE, EBITDA shown.
+
+**Estate Management Companies:**
+- Exit Strategies Group (exitstrategiesgroup.com/propertymanagement/) — Property management M&A advisory. Sell-side focused, no public listings.
+- Synergy Business Brokers (synergybb.com/businesses-for-sale/real-estate-businesses-for-sale/) — Real estate management listings. Publicly browsable.
+
+### Channel 3: Association Deal Boards
+
+Industry associations sometimes have classified sections, member transition programs, or business-for-sale boards. Monitor these for off-market opportunities.
+
+**Pest Management:**
+- NPMA (npmapestworld.org) — No dedicated marketplace found. 5,000 members. Monitor member newsletters and PestWorld conference for transition announcements.
+- State PMAs — Check state-level pest management associations (e.g., FPMA, TPCA) for classified sections.
+
+**Insurance:**
+- IIABA / Big I (independentagent.com) — Member resources include agency perpetuation planning. No public marketplace, but member networks surface transitions.
+- State insurance agent associations — Many state-level associations have classifieds or transition programs for retiring agents.
+
+**Accounting:**
+- AICPA PCPS (aicpa.org/PCPS) — Succession Planning Resource Center. Not a marketplace, but connects firms seeking buyers/sellers.
+- State CPA societies — Several (e.g., FICPA) have classified sections where Poe Group and other brokers list practices.
+
+**Estate Management:**
+- IREM (irem.org) — Institute of Real Estate Management. Member networking, no deal board.
+- NARPM (narpm.org) — National Association of Residential Property Managers. Member transitions occasionally posted.
+
+### Channel 4: New Introductions
 When Kay receives a broker introduction (someone introduces her to a new intermediary).
 
 **Note:** Pipeline-manager now handles all email scanning, including deal flow classification (BLAST/DIRECT/NEWSLETTER). Any broker introductions detected via email are written to `brain/context/email-scan-results-{date}.md`. This channel reads from that file for introduction signals rather than scanning Gmail directly.
@@ -139,24 +191,25 @@ When Kay receives a broker introduction (someone introduces her to a new interme
 3. **Add to system:**
    - Create entity in `brain/entities/{slug}.md`
    - Add to Attio Intermediary Pipeline at "Identified"
-   - If scrapable platform → add to Channel 1 scanning rotation
+   - If scrapable platform → add to Channel 1 or Channel 2 scanning rotation
    - If email-only deal flow → note as email-only intermediary (pipeline-manager handles email scanning)
 4. **Draft response** — Warm reply in Superhuman (thank introducer, express interest to broker, mention search criteria). Per feedback: short, offer NDA, don't over-explain.
-5. **Update this skill** — Add new platform to the scanning list in Channel 1 if applicable
+5. **Update this skill** — Add new platform to the scanning list in the appropriate channel if applicable
 
 ### New Intermediary Surfacing
 
 When the morning scan detects intermediaries at "Identified" stage in Attio, classify and surface them with specific next steps:
 
 1. **Classify type:**
-   - **Platform** (has a website with deal listings, e.g., Gottesman, ProNova) → "Next step: register as buyer on their site"
+   - **Platform** (has a website with deal listings, e.g., DealStream, Poe Group) → "Next step: register as buyer on their site"
    - **Boutique** (small advisory firm, NDA-gated listings, e.g., Paine Pacific) → "Next step: send broker intro email to managing director"
+   - **Industry specialist** (niche-specific M&A advisor, e.g., PCO Bookkeepers, Sica Fletcher) → "Next step: introduce as buyer in their specialty"
    - **Association** (industry group, trade org) → "Next step: research membership and deal flow programs"
 
 2. **Surface in morning briefing** with the specific next step:
    - "New intermediary: {name} — {type} with {detail}. Next step: {action}."
 
-3. **Track registration status:** After Kay registers on a platform or sends a broker email, note it on the intermediary’s Attio record. Watch for deal flow within 4 weeks of registration.
+3. **Track registration status:** After Kay registers on a platform or sends a broker email, note it on the intermediary's Attio record. Watch for deal flow within 4 weeks of registration.
 
 4. **Cold alert:** If registered/contacted but no deal flow after 4 weeks, flag: "{intermediary} — registered {date}, no deal flow in 4 weeks. Still active?"
 
@@ -245,7 +298,7 @@ Before sending niche signals to niche-intelligence:
 ## Validation
 
 ### Daily Check
-- [ ] All platforms scanned (or on rotation schedule if throttled)
+- [ ] All accessible platforms scanned (general + industry-specific for active niches)
 - [ ] Matches sent to Slack with links
 - [ ] Non-matches archived
 - [ ] New introductions checked in `brain/context/email-scan-results-{date}.md` (if any)
@@ -256,6 +309,7 @@ Before sending niche signals to niche-intelligence:
 - [ ] Niche signals compiled and sent to niche-intelligence
 - [ ] Intermediary pipeline stages reviewed (any gone cold?)
 - [ ] Platform scanning working? (any sites changed structure/blocked?)
+- [ ] Industry-specific sources checked for new listings
 
 ### Guardrails
 - **Never exceed 25% intermediary ratio** without flagging Kay.
@@ -268,7 +322,8 @@ Before sending niche signals to niche-intelligence:
 ## Success Criteria
 
 ### Phase 1 (Testing — first 2 weeks)
-- [ ] Platform scanning runs daily for all 17 platforms
+- [ ] General platform scanning runs daily for all accessible platforms
+- [ ] Industry-specific sources scanned for each active niche
 - [ ] Slack pings include working links
 - [ ] Niche signals generated weekly
 
@@ -278,4 +333,5 @@ Before sending niche signals to niche-intelligence:
 - [ ] New introductions processed within 24 hours
 - [ ] Intermediary network grows by 1-2 per month
 - [ ] Platform list maintained (broken sites removed, new ones added)
+- [ ] Industry-specific sources reviewed monthly for new platforms
 </success_criteria>

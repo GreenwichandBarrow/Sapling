@@ -1,6 +1,6 @@
 ---
-name: intermediary-manager
-description: "Manage the 20% intermediary deal channel — lead aggregation across broker platforms, industry-specific deal sources, and association deal boards. Flags matches for Kay, feeds signals to niche-intelligence. Email scanning (broker classification) is handled by pipeline-manager."
+name: lead-aggregator
+description: "Daily deal lead aggregation across broker platforms, industry-specific deal sources, DealsX, and association deal boards. Flags matches for Kay, feeds signals to niche-intelligence. Email scanning (broker classification) is handled by pipeline-manager."
 user_invocable: true
 context_budget:
   skill_md: 2500

@@ -207,7 +207,7 @@ Skills run on a schedule via macOS launchd, independent of active sessions:
 
 | Skill | Schedule | Purpose |
 |-------|----------|---------|
-| `intermediary-manager` | Mon-Fri 6am ET | Platform scanning + email screening |
+| `lead-aggregator` | Mon-Fri 6am ET | Platform scanning + email screening |
 | `email-intelligence` | Mon-Fri 7am ET | Gmail/Superhuman/Granola scanning, email-scan-results artifact |
 | `jj-operations` (prep) | Sunday 11pm ET | Creates Mon-Fri Call Log tabs for the week. Runs after target-discovery's Sunday night pipeline. |
 | `jj-operations` (harvest) | Manual (no launchd) | Read Call Logs, update master sheet. Triggered by orchestrator or manually after JJ's 2pm shift ends. |
@@ -271,7 +271,7 @@ When Kay says good morning:
 **System Status section rules:**
 - Shows the system's work, not Kay's — scheduled skills, tool health, subscriptions
 - Every item is 1 line max: `Skill name — status phrase`
-- Daily items (every morning): email-intelligence, intermediary-manager, jj-operations, relationship-manager, target-discovery, outreach-manager
+- Daily items (every morning): email-intelligence, lead-aggregator, jj-operations, relationship-manager, target-discovery, outreach-manager
 - Day-of-week overlays:
   - **Monday:** + conference-discovery (last scan, flagged events)
   - **Wednesday:** + niche-intelligence (sprint status, new niches this week)

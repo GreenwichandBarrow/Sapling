@@ -209,8 +209,8 @@ Skills run on a schedule via macOS launchd, independent of active sessions:
 |-------|----------|---------|
 | `intermediary-manager` | Mon-Fri 6am ET | Platform scanning + email screening |
 | `email-intelligence` | Mon-Fri 7am ET | Gmail/Superhuman/Granola scanning, email-scan-results artifact |
-| `jj-operations` (prep) | Mon-Fri 8am ET | JJ call prep, Call Log creation, Slack draft |
-| `jj-operations` (harvest) | Mon-Fri 4pm ET | Read Call Logs, update master sheet |
+| `jj-operations` (prep) | Sunday 11pm ET | Creates Mon-Fri Call Log tabs for the week. Runs after target-discovery's Sunday night pipeline. |
+| `jj-operations` (harvest) | Manual (no launchd) | Read Call Logs, update master sheet. Triggered by orchestrator or manually after JJ's 2pm shift ends. |
 | `target-discovery` | On activation + weekly refill (morning workflow) | Target finding for Active-Outreach niches on initial activation or when weekly dashboard signals refill needed |
 | `niche-intelligence` | Tuesday 11pm ET | Newsletter scrape, niche identification, one-pagers, scorecards |
 | `niche-intelligence` (daily) | Nightly | Sprint status tracking, Tabled/Killed processing |

@@ -178,7 +178,9 @@ Reminder: Log results directly on each day's tab (columns T-W). If you learn an 
 
 ### 6. Scheduling Protocol
 
-If owner wants to schedule during JJ's call: JJ books a time with the owner, then emails Howie (barrie@greenwichandbarrow.com) with owner name, owner email, and agreed time. Howie creates the calendar invite.
+If owner asks for contact info: JJ shares Kay's direct email (kay.s@greenwichandbarrow.com).
+
+If owner wants to schedule during JJ's call: JJ books a time with the owner, then emails Kay (kay.s@greenwichandbarrow.com) with owner name, owner email, and agreed time. Kay confirms the calendar invite.
 </call_prep>
 
 <call_harvest>

@@ -49,6 +49,10 @@ COMMIT_AREAS = {
     ".beads/": "beads",
 }
 
+# Continuation state directory (mid-day session handoffs)
+CONTINUATION_DIR = PROJECT_DIR / "brain" / "context"
+CONTINUATION_PREFIX = "continuation-"
+
 # Skill schemas: map skill names to schema files for context injection
 # Users populate this with their project-specific skill schemas.
 # Format: {"skill-name": {"schema": "path/to/schema.yaml", "example_key": "example:"}}

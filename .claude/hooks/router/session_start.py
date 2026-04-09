@@ -11,6 +11,7 @@ from router.models import HandlerConfig
 from router.handlers.session import session_init, calendar_check, dedup_cleanup
 from router.handlers.git import git_sync_startup
 from router.handlers.continuation import load_continuation_state
+from router.handlers.handoff import load_today_continuation
 from router.handlers.pipeline import pipeline_pulse
 
 HANDLERS = [
@@ -19,6 +20,7 @@ HANDLERS = [
     HandlerConfig(fn=git_sync_startup, name="git-sync-startup"),
     HandlerConfig(fn=dedup_cleanup, matcher="startup", name="dedup-cleanup"),
     HandlerConfig(fn=load_continuation_state, matcher="compact", name="load-continuation"),
+    HandlerConfig(fn=load_today_continuation, matcher="startup", name="midday-continuation"),
     HandlerConfig(fn=pipeline_pulse, matcher="startup", name="pipeline-pulse"),
 ]
 

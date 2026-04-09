@@ -136,6 +136,7 @@ grep -r "\[\[entities/jane-smith\]\]" brain/
 - **Beads** owns: tasks, dependencies, work status
 - **Obsidian (brain/)** owns: knowledge — entities, calls, outputs, traces, context
 - **Google Sheets (Industry Research Tracker)** owns: niche statuses, target lists, outreach channels. NEVER reconstruct niche statuses from session decisions or vault context — always read the tracker sheet. Session decisions record what changed; the sheet reflects current state.
+- **Google Drive** owns: living documents (call preps, briefs, deliverables). Kay edits Drive docs directly. Vault copies (`brain/briefs/`, `brain/outputs/`) are creation-time snapshots. When referencing a document that exists in both Drive and vault, check Drive modifiedTime first — if newer than vault, read Drive.
 
 ## Tools
 

@@ -54,6 +54,8 @@ Save to TWO locations, no email:
 4. **Assess relevance to the search** — Map their expertise/network to G&B's active niches and thesis
 5. **Draft the brief** — Use the template structure below
 6. **Save to both locations** — Google Doc + vault file
+
+**READ-SIDE RULE:** When referencing an existing brief (e.g., for a morning briefing or call prep review), always check the Google Drive version first — Kay edits the Google Doc directly. The vault copy is a snapshot from creation time and may be stale. Search Drive: `gog drive search "{person name} call prep" --json` and compare modifiedTime.
 </quick_start>
 
 <research_phase>

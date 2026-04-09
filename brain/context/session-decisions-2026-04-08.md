@@ -110,6 +110,19 @@ tags: ["date/2026-04-08", "context", "topic/session-decisions"]
 - DEFER: 4 platform registrations needed: Keystone, DealForce, FE International, DealFlow Agent
 - DEFER: Intermediary-manager: remove SMERGERS and DealStream (not viable per test scan)
 - DEFER: Jimmy Gillespie (New Cheval / Surge Solutions) — vertical SaaS acquirer in investor portfolio, potential conversation about sourcing/evaluating platform businesses. Kay declined intro draft for now.
+- DEFER: Intermediary-manager test scan: remove SMERGERS + DealStream (not viable), Poe Group Virtual CFO listing worth broker inquiry
+
+## Late Evening Additions
+
+### Decisions
+- APPROVE: JJ shares Kay's direct email (kay.s@greenwichandbarrow.com) with owners, not Barrie's
+- APPROVE: JJ Slack updates for 1-2 actionable items per day is sufficient — no automated harvesting needed at this volume
+- APPROVE: Call guide updated — Kay's email for both contact sharing and scheduling
+
+### Actions Taken
+- CREATED: Superhuman draft to Timothy Wong (timothy.wong@mmenviro.net) — follow-up to JJ's cold call at MMPC New York City (personal account, G&B token expired)
+- UPDATED: jj-operations SKILL.md — replaced Barrie's email with Kay's direct email for owner contact sharing and scheduling
+- SENT: Kay sent Slack message to JJ — thank you for Timothy Wong info, share Kay's direct email going forward, guide will be updated
 
 ## Open Loops
 

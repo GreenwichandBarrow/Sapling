@@ -135,6 +135,7 @@ grep -r "\[\[entities/jane-smith\]\]" brain/
 **Source of Truth:**
 - **Beads** owns: tasks, dependencies, work status
 - **Obsidian (brain/)** owns: knowledge — entities, calls, outputs, traces, context
+- **Google Sheets (Industry Research Tracker)** owns: niche statuses, target lists, outreach channels. NEVER reconstruct niche statuses from session decisions or vault context — always read the tracker sheet. Session decisions record what changed; the sheet reflects current state.
 
 ## Tools
 

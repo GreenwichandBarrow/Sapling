@@ -131,7 +131,9 @@ Pipeline shifts to review/approve:
 Pipeline summary:
 Active Deals: {total} ({n} Identified, {n} Contacted, {n} Financials Received)
 Intermediary: {total} ({n} Actively Receiving, {n} Warmed, {n} Contacted)
-Niches: {n} Active-Outreach, {n} Active-Long Term
+Niches (from tracker, not session decisions):
+- {Rank}. {Niche Name} — {Status}, {Channel}
+- ...
 Stale deals: {n} entries in same stage 2+ weeks
 
 Motion action steps to review/approve:
@@ -795,19 +797,21 @@ These signals are NOT surfaced during the daily pipeline review. They queue sile
 
 ## Active Niche Sprint Detection (runs daily)
 
-Check the Industry Research Tracker WEEKLY REVIEW tab for any niche with status starting with "Active" (Active-Outreach or Active-Long Term):
+**CRITICAL: The Industry Research Tracker Google Sheet is the SINGLE SOURCE OF TRUTH for niche statuses.** Never reconstruct niche statuses from session decisions, vault context, call preps, or memory. Niches get Tabled/Killed/moved between sessions and the sheet reflects reality.
+
+**Always read the tracker directly:**
 
 ```bash
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B3:D20" -a kay.s@greenwichandbarrow.com -j
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!A3:D20" -a kay.s@greenwichandbarrow.com -j
 ```
 
-Niche sprint status tracking (WEEKLY REVIEW monitoring, Active/Tabled/Killed transitions, folder moves, target-discovery triggers, phase compliance checks) is now handled by niche-intelligence. Pipeline-manager reads the niche-sprint-status artifact at `brain/context/niche-sprint-status-{date}.md` for the morning briefing summary line:
+Use this data for both:
+1. The pipeline summary niche list (each niche with its status and channel)
+2. Downstream decisions (target-discovery needs, outreach routing)
 
-```
-Niches: {n} Active-Outreach, {n} Active-Long Term, {n} Under Review
-```
+If the sheet read fails, say so in the briefing — do NOT fall back to session decisions or stale artifacts.
 
-If the artifact is missing (niche-intelligence didn't run overnight), pipeline-manager does a lightweight read of the WEEKLY REVIEW tab column D to count active niches for the summary line only — it does NOT process transitions or move rows.
+Niche sprint status tracking (transitions, folder moves, target-discovery triggers) is handled by niche-intelligence. Pipeline-manager consumes the sheet state, not the transition logic.
 
 ## Trigger
 

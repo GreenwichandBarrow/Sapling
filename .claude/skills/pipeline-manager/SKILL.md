@@ -159,7 +159,7 @@ Other items / today's agenda:
 2. {Quick flags or reminders}
 ```
 
-**Intermediary matches rule:** Daily broker listing matches from intermediary-manager are posted directly to #strategy-active-deals as individual Slack messages (one per deal, thumbs up/down reactions). Do NOT include individual match details in the morning briefing. The System Status line should only report: "intermediary-manager — {n} new lead matches posted to Slack".
+**Intermediary matches rule:** Daily broker listing matches from lead-aggregator are posted directly to #strategy-active-deals as individual Slack messages (one per deal, thumbs up/down reactions). Do NOT include individual match details in the morning briefing. The System Status line should only report: "lead-aggregator — {n} new lead matches posted to Slack".
 
 **Targets for Review rules:**
 - This section surfaces targets from target-discovery's auto-advance system that need Kay's decision. Two categories only:
@@ -423,7 +423,7 @@ This replaces the previous approach where Kay manually flagged warm intros. The 
 5. Set `source: email`, assign confidence level (high/medium/low)
 6. High confidence items surface in Part 1. Medium/low go to /triage.
 
-### Deal Flow Email Classification (absorbed from intermediary-manager Channel 2)
+### Deal Flow Email Classification (absorbed from lead-aggregator Channel 2)
 
 During Gmail ingestion, every email labeled "DEAL FLOW" must be classified as one of three categories. Classification counts (DIRECT/BLAST/NEWSLETTER) are written to the email-scan-results artifact for downstream consumption.
 
@@ -444,7 +444,7 @@ During Gmail ingestion, every email labeled "DEAL FLOW" must be classified as on
 
 ### Email Scan Results Artifact
 
-After Gmail ingestion completes (including deal flow classification and Superhuman draft status check), write a structured results file so downstream skills (e.g., /start, intermediary-manager) can read email findings without re-scanning Gmail.
+After Gmail ingestion completes (including deal flow classification and Superhuman draft status check), write a structured results file so downstream skills (e.g., /start, lead-aggregator) can read email findings without re-scanning Gmail.
 
 **Location:** `brain/context/email-scan-results-{YYYY-MM-DD}.md`
 
@@ -495,7 +495,7 @@ For each manually-sent email detected by the Outbound Email Scan that matched an
 - Record target name, company, sent date, and note "(manual — not from draft)"
 - This gives downstream skills (and Kay's morning review) a single place to see what was sent vs. pending without re-querying Superhuman or Gmail.
 
-This artifact is the handoff contract between pipeline-manager (which scans Gmail and checks Superhuman) and downstream consumers (/start, intermediary-manager). They never scan Gmail directly — they read this file.
+This artifact is the handoff contract between pipeline-manager (which scans Gmail and checks Superhuman) and downstream consumers (/start, lead-aggregator). They never scan Gmail directly — they read this file.
 
 ### Active Deal Fast-Path (PRIORITY — runs during Gmail ingestion)
 

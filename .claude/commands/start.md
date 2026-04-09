@@ -67,7 +67,7 @@ Return: how many emails scanned, how many actionable, how many inbox items creat
 
 6. **If triage items exist**, invoke /triage
 
-7. **Overnight results** — Check for today's intermediary-manager log at `logs/scheduled/intermediary-manager-{YYYY-MM-DD}*.log`. If found:
+7. **Overnight results** — Check for today's lead-aggregator log at `logs/scheduled/lead-aggregator-{YYYY-MM-DD}*.log`. If found:
    - Summarize: platforms scanned, matches found, direct emails flagged
    - Note any failures
    If no log exists: "Intermediary scan did not run overnight."

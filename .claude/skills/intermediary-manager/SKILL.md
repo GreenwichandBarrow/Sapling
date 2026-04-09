@@ -49,8 +49,6 @@ Scan searchable broker platforms for new listings matching the buy box.
 
 **General broker platforms (cross-industry):**
 - Business Exits (businessexits.com/listings/) — email + searchable, consistently accessible
-- DealStream (dealstream.com/businesses-for-sale) — searchable marketplace, filter by industry/size/location, 15K+ listings
-- SMERGERS (smergers.com) — publicly searchable, AI-powered M&A marketplace, filter by industry/geography
 - DealForce (dealforce.com) — Generational Equity buyer platform, registration required, filter by SIC/EBITDA/revenue
 - Rejigg (rejigg.com) — automated deal match emails + searchable
 - Flippa (flippa.com) — email alerts + searchable (mostly digital/online businesses)
@@ -201,7 +199,7 @@ When Kay receives a broker introduction (someone introduces her to a new interme
 When the morning scan detects intermediaries at "Identified" stage in Attio, classify and surface them with specific next steps:
 
 1. **Classify type:**
-   - **Platform** (has a website with deal listings, e.g., DealStream, Poe Group) → "Next step: register as buyer on their site"
+   - **Platform** (has a website with deal listings, e.g., Poe Group, Business Exits) → "Next step: register as buyer on their site"
    - **Boutique** (small advisory firm, NDA-gated listings, e.g., Paine Pacific) → "Next step: send broker intro email to managing director"
    - **Industry specialist** (niche-specific M&A advisor, e.g., PCO Bookkeepers, Sica Fletcher) → "Next step: introduce as buyer in their specialty"
    - **Association** (industry group, trade org) → "Next step: research membership and deal flow programs"

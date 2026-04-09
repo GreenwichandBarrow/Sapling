@@ -129,7 +129,7 @@ Each niche's target sheet should have an **"Associations" tab** listing relevant
 | F | Member? (Y/N) |
 | G | Notes |
 
-**When to populate:** During the first discovery cycle for a niche, research and populate the Associations tab. Update it whenever new associations are discovered. This tab is also used by lead-aggregator (association leaders as intro sources) and niche-intelligence (understanding industry structure).
+**When to populate:** During the first discovery cycle for a niche, research and populate the Associations tab. Update it whenever new associations are discovered. This tab is also used by deal-aggregator (association leaders as intro sources) and niche-intelligence (understanding industry structure).
 
 **How to find associations:**
 ```

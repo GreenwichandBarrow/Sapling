@@ -5,7 +5,7 @@ trigger: Friday morning (alongside weekly-tracker) or on-demand via /health-chec
 ---
 
 <objective>
-Detect silent failures before they become lost deals or broken workflows. Every issue found in production this month (lead-aggregator failing silently, Project Restoration skipping stages, E&K deal untracked, Superhuman drafts routing to Gmail) would have been caught by this skill.
+Detect silent failures before they become lost deals or broken workflows. Every issue found in production this month (deal-aggregator failing silently, Project Restoration skipping stages, E&K deal untracked, Superhuman drafts routing to Gmail) would have been caught by this skill.
 </objective>
 
 <essential_principles>
@@ -33,7 +33,7 @@ Checks scheduled jobs, usage limits, and webhook health.
 
 **Launchd Jobs:**
 Expected jobs:
-- `com.greenwich-barrow.lead-aggregator` (Mon-Fri 6am)
+- `com.greenwich-barrow.deal-aggregator` (Mon-Fri 6am)
 - `com.greenwich-barrow.niche-intelligence` (Tue 11pm)
 
 For each:
@@ -171,7 +171,7 @@ Dashboard format:
 ### Infrastructure
 | Component | Status | Detail |
 |-----------|--------|--------|
-| lead-aggregator | RED | Exit code 126, permission error since 3/23 |
+| deal-aggregator | RED | Exit code 126, permission error since 3/23 |
 | ... | ... | ... |
 
 ### Pipeline Hygiene
@@ -187,7 +187,7 @@ Dashboard format:
 | ... | ... | ... |
 
 ## Action Items
-1. [RED] Fix lead-aggregator launchd permissions
+1. [RED] Fix deal-aggregator launchd permissions
 2. [RED] Backfill skipped stages for Project Restoration and E&K SaaS
 3. [YELLOW] Apollo credits at 487 — monitor consumption
 ```
@@ -217,7 +217,7 @@ If ALL GREEN, no Slack notification. Silence = healthy.
 
 | Incident | Check | How |
 |----------|-------|-----|
-| lead-aggregator exit 126 | Infrastructure → launchd | Non-zero exit code flagged RED |
+| deal-aggregator exit 126 | Infrastructure → launchd | Non-zero exit code flagged RED |
 | Project Restoration skipped stages | Pipeline Hygiene → stage skipping | Identified → Closed without NDA/Financials |
 | E&K deal not in Attio | Pipeline Hygiene → untracked deals | Gmail NDA/CIM signals with no Attio entry |
 | Superhuman draft → Gmail | Service Connectivity → Superhuman | LaunchAgent not running or script missing |

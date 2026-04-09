@@ -11,12 +11,12 @@ context_budget:
 <objective>
 Map the professional ecosystem around each active niche to identify people who know business owners and can make introductions. These are "river guides" — people who touch deal flow before it gets listed.
 
-**This is PROACTIVE relationship building** — distinct from lead-aggregator (passive deal scanning) and outreach-manager (direct owner outreach).
+**This is PROACTIVE relationship building** — distinct from deal-aggregator (passive deal scanning) and outreach-manager (direct owner outreach).
 
 **Proof of concept: Margot Romano.** She introduced Kay to Alexandra Kelly (UOVO), Sarah De Blasio (Chartwell Insurance), and Christopher Wise (Risk Strategies). Every conversation produced at least one high-quality introduction. This skill systematizes finding more Margots.
 
 **This skill does NOT:**
-- Scan broker platforms for posted deals (lead-aggregator)
+- Scan broker platforms for posted deals (deal-aggregator)
 - Draft outreach emails to business owners (outreach-manager)
 - Create or manage target sheets (target-discovery)
 - Track nurture cadences (relationship-manager)
@@ -177,7 +177,7 @@ When Kay schedules a coffee chat, meeting-brief-manager generates prep automatic
 | **warm-intro-finder** | Checks Kay's network for paths to identified targets |
 | **meeting-brief-manager** | Generates prep for coffee chats with river guides |
 | **relationship-manager** | Tracks nurture cadence after first contact |
-| **lead-aggregator** | When a river guide surfaces a deal, it enters the intermediary pipeline |
+| **deal-aggregator** | When a river guide surfaces a deal, it enters the intermediary pipeline |
 | **outreach-manager** | Initial outreach to new river guide targets (via Kay Email channel) |
 | **Attio** | Uses existing intermediary pipeline for tracking. relationship_type: "River Guide" |
 </integrations>

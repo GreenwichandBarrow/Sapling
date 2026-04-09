@@ -27,7 +27,7 @@
     ".claude/skills/today": "today",
     ".claude/skills/cass": "cass",
     ".claude/skills/obsidian-vault-ops": "obsidian-vault-ops",
-    ".claude/skills/lead-aggregator": "lead-aggregator",
+    ".claude/skills/deal-aggregator": "deal-aggregator",
     ".claude/skills/calibration-workflow": "calibration-workflow",
     ".claude/skills/jj-operations": "jj-operations",
     ".claude/skills/plan-refinery": "plan-refinery",
@@ -418,7 +418,7 @@
       "excludePatterns": [],
       "source": "description"
     },
-    "lead-aggregator": {
+    "deal-aggregator": {
       "description": "Daily deal lead aggregation across broker platforms, industry-specific deal sources, DealsX, and association deal boards. Flags matches for Kay, feeds signals to niche-intelligence. Email scanning (broker classification) is handled by pipeline-manager.",
       "priority": 5,
       "triggers": {

@@ -3,8 +3,8 @@ schema_version: 1.1.0
 date: 2026-04-09
 type: context
 title: "Session Decisions — April 9, 2026"
-sessions: 1
-last_updated: 2026-04-09T22:00:00Z
+sessions: 2
+last_updated: 2026-04-09T23:59:00Z
 tags: ["date/2026-04-09", "context", "topic/session-decisions"]
 ---
 
@@ -108,7 +108,95 @@ tags: ["date/2026-04-09", "context", "topic/session-decisions"]
 - [[entities/ashley-emerole]] coffee tomorrow 9:30am — no prep needed
 - Umbrella vertical SaaS niche needs one-pager and scorecard before analyst call
 - [[entities/guillermo-lavergne]] challenged estate management defensibility — one-pager needs update
-- Kay's end-of-April goals not yet formalized
 - Yahoo archive migration pending Gmail throttle resolution
 - Pest Management Compliance Software on tracker as New — needs Kay's decision at next analyst call
 - StartVirtual QA form for JJ still pending
+
+---
+
+# Session 2 — April 9, 2026 (Thursday Evening)
+
+## Decisions
+
+### System & Skills
+- APPROVE: Session handoff system built — "save state" / "picking back up" protocol with hooks
+- APPROVE: Calendar check hook added to session start (verify dates, never guess)
+- APPROVE: Deal eval skill tabled — focus all energy on sourcing engine
+- APPROVE: Intermediary-manager renamed → deal-aggregator (prepped deals, not leads)
+- APPROVE: Deal aggregator rewritten — primary deal source, no volume cap, 1-3 deals/day target, email inbound as Channel 2, DealsX excluded (separate dashboard)
+
+### Pipeline & Niches
+- APPROVE: April goals formalized — (1) 1 deal ready for Jeff & Guillermo, (2) sourcing engine fully loaded
+- APPROVE: Vertical Software for Luxury & High-Value Asset Service Industries added to WEEKLY REVIEW as rank 6, Active-Outreach, DealsX Email
+- APPROVE: 3 DealsX niches confirmed for onboarding call — Insurance, Estate Management, Vertical Software. Also mention Art Advisory + Art Storage as side explorations.
+- APPROVE: Timothy Wong / MMPC outreach email sent (pest management follow-up to JJ's call)
+- APPROVE: BK Growth / Pacific Lake hotel booked for May 18-19 Boston
+
+### Niche Conviction (explored, not decided)
+- NOTED: Premium pest management thesis challenged — fine dining restaurant uses Western Pest (Rollins subsidiary). Same pattern as commercial cleaning — luxury clients don't pay for premium pest.
+- NOTED: Insurance doubts — Hunter Hartwell had deals but couldn't get investors to table at insurance multiples. [[entities/mike-horowitz]] advised avoid areas "done already" by search.
+- NOTED: [[entities/guillermo-lavergne]] — investors being more conservative (macro), software bar raised. Andrew S. stressed by software multiples on current exit.
+- NOTED: Luxury travel explored as niche — failed criticality test (discretionary). Concierge/membership clubs interesting but thin deal flow.
+- NOTED: Luxury brand vendor angle explored — all killed by Kay (overseas, project-based, huge 3PLs, tiny businesses). Fashion industry in structural decline (Saks/Neiman bankruptcy).
+- NOTED: Kay inspired by [[entities/amanda-neilson]] (Andrew Freiman's wife) — acquired Peace Care Experts through personal conviction + search fund criteria alignment. Kay wants that level of thesis clarity.
+- NOTED: Kay requested thesis discovery questions — cross personal conviction with buy box filters. Prepare for next session.
+
+### Investor Intel
+- NOTED: Compounding Labs article — [[entities/andrew-freiman]] & [[entities/will-thorndike]]'s firm. Own capital only, decadal holds, serial acquisition holding companies. Anti-PE positioning.
+- NOTED: Will Thorndike is in Kay's cap table 3 times.
+- NOTED: VDC / Nashton Company (mosquito/pest control search fund exit) — same investor circle as Kay's investors. Pest management thesis validated by community, though 2011 vintage.
+
+## Actions Taken
+
+### Skills & System
+- CREATED: Session handoff hooks — handoff.py (save state / picking back up detection), calendar_check in session.py
+- UPDATED: settings wired — session_start.py and user_prompt_submit.py updated with new handlers
+- RENAMED: intermediary-manager → deal-aggregator (skill dir, SKILL.md, CLAUDE.md, 6 skill files, skill-rules.json, start command, launchd plist)
+- UPDATED: deal-aggregator SKILL.md fully rewritten — removed 20% channel framing, 25% cap, added email inbound channel, 1-3 deals/day target, volume tracking
+- UPDATED: WEEKLY REVIEW tracker — Vertical Software added rank 6
+- SENT: Timothy Wong / MMPC outreach email via Superhuman
+
+### Deal Aggregator Test Run
+- RAN: Full deal-aggregator test — BusinessExits (21 listings), Rejigg (10 listings), 4 niche platforms. Result: 0 thesis matches. General platforms don't surface luxury/premium deals. Niche platforms mostly login-gated.
+- RESEARCHED: Broker platform email alert capabilities — 5 free registrations identified
+- RESEARCHED: SMB Deal Hunter aggregator — scrapes BizBuySell/BizQuest, not proprietary flow
+- RESEARCHED: IBBA, M&A Source, AM&AA broker associations for member deal lists
+
+### Research
+- RAN: Luxury travel niche screen — failed criticality test
+- RAN: Search fund closed deal database — 70+ specific acquisitions across Pacific Lake, Broadtree, Kingsway, Chenmark, SFA, Acquiring Minds
+- RAN: Kay's resume cross-reference against closed deals and transferable skills
+- RESEARCHED: PeaceCare Experts (Amanda Neilson's acquisition) and Compounding Labs (Freiman/Thorndike)
+
+## Deferred
+
+- DEFER: 5 broker platform registrations — DealFlow Agent, DealForce, BizBuySell, BusinessBroker.net, BizQuest
+- DEFER: Thesis discovery questions — prepare for next session (conviction + buy box intersection)
+- DEFER: River guide builder — discussed, not started
+- DEFER: Yahoo archive import — still throttled
+- DEFER: Estate Management one-pager defensibility update
+- DEFER: Umbrella Vertical Software one-pager + scorecard
+- DEFER: M&A Source DEALMATCH membership evaluation
+- DEFER: Axial buyer mandate platform evaluation
+- DEFER: Superhuman G&B token still expired
+- DEFER: DMARC tighten to reject ~Apr 20
+- DEFER: Deal-eval remaining template items
+- DEFER: Download Otter.ai for cell phone call recording
+- DEFER: Andy Lock / DealsX contract review — pending
+- DEFER: 4 platform registrations: Keystone, DealForce, FE International, DealFlow Agent
+- DEFER: Philip Hoffman warm intro path — undecided
+- DEFER: ACG DealSource transfer to WOL Summit — no response
+- DEFER: [[entities/sam-singh]]'s references — not contacted
+- DEFER: StartVirtual QA form for JJ
+
+## Open Loops
+
+- DealsX onboarding call Fri 4/10 10:30am with [[entities/sam-singh]]
+- [[entities/ashley-emerole]] coffee Fri 4/10 9:30am
+- Team TB Camilla/Kay Fri 4/10 12pm
+- BK Growth 1st Thursday Zoom Fri 4/10 1pm
+- Premium pest management thesis — Western Pest data point challenges premium angle
+- Insurance thesis — Hunter Hartwell couldn't close with investors
+- Kay's core conviction thesis — discovery questions to prepare
+- Pest Management Compliance Software on tracker as New
+- Kay's end-of-April goals need to be shared with investors

@@ -294,8 +294,9 @@ When Kay says good evening:
    - **Actions Taken** — SENT/CREATED/UPDATED/DELETED confirmations
    - **Deferred** — items explicitly postponed with trigger date or condition
    - **Open Loops** — unresolved items carried forward
-3. Present the summary to Kay for review — she may correct or add items
-4. Commit to git
+3. Extract decision traces — scan the session-decisions file for APPROVE/REJECT decisions with non-obvious reasoning (human overrides, judgment calls between alternatives, surprising choices). For each, write a trace to `brain/traces/{date}-{slug}.md` using the trace schema. Skip routine approvals (briefing acknowledgments, standard pipeline moves). Litmus: "Would a future agent make a different choice without knowing this?"
+4. Present the summary to Kay for review — she may correct or add items
+5. Commit to git
 
 **Litmus test:** "Would tomorrow's briefing present this differently if it knew?" If yes, log it. If no, skip.
 

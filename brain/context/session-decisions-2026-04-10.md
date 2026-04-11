@@ -84,13 +84,33 @@ tags:
 - DEFER: Pest Management Compliance Software tracker update — tabled in Camilla call, needs to move from New to Tabled on tracker
 - DEFER: Niche-intelligence 401 auth fix — needs .env.launchd credential check before Tuesday 4/14 run
 
+## Late Evening Session (Post-Briefing)
+
+### Thesis Deepening
+- NOTED: Kay has "always wanted SaaS" — 16 months of gut pull confirmed
+- NOTED: Datacor (Tom Jackson, Clayton Sachs) = $1B SaaS search fund outcome, still haven't exited. Two of Kay's 12 investors. They ARE the proof of concept.
+- NOTED: Adam (BK Growth) background: Goldman quant → Google PM → MSD Capital (Dell family office, tech/healthcare investing) → West Road Capital (tech investing) → search → ECP acquisition. Deep software + investing pattern recognition Kay doesn't have.
+- NOTED: Kay's honest self-assessment: no software or software investing background. Needs technical advisor for SaaS diligence. Gap fillable with team (Datacor investors, fractional CTO, Jake Stoller).
+- NOTED: Adam's exit timing likely strategic — Level Equity/board pushed AI readiness, then sold before AI repricing hit lower middle market. Investors were active operators, not passive capital.
+- APPROVE: Now is a strong time to buy SaaS — entry multiples compressed (3-4x ARR at Kay's size), motivated sellers, massive dry powder for future exits. BUT only if you buy the right kind (defensible against AI).
+- NOTED: Insurance prototype built in 7 minutes by Women's Searcher Network friend (Stern grad, ed tech CEO) — Claude-generated family office insurance portal. Proves tech layer is trivially easy; carrier appointments are the real moat. Supports "buy the seed, build the platform."
+- NOTED: Carriers like Chubb do direct-to-consumer, but brokers add value through multi-carrier shopping, conflict-free advice, claims advocacy, and specialty market access.
+- NOTED: PeaceCare (Amanda Neilson), ECP (Adam), Datacor — none of these operators had passion for the vertical. Conviction came from structural fit, not domain passion. Liberating for Kay's SaaS sub-vertical selection.
+
+### DealsX Filter Criteria (CRITICAL — apply when Sam sends sub-vertical list)
+- APPROVE: Sam's list building must include defensibility filter: core system of record (not module), compliance/regulatory driven adoption, non-technical customers with long switching cycles, high cost of failure, module-based revenue (not just seats), founder-owned, US-based, $2-5M EBITDA / $3-5M ARR
+- APPROVE: Exclude: horizontal SaaS, data-leaking modules, pure seat-license models, customer concentration >30% top 3, sub-10% growth with flat margins, verticals where AI is already replacing the workflow
+- APPROVE: Strategy — use vertical SaaS as volume play across multiple DealsX rounds. Round 1: 1 sub-vertical. Round 2: 3 more. Each filtered by defensibility framework.
+
 ## Open Loops
 
 - DealsX contract: Sam reviewing Andy Lock's redline, engagement letter coming back for signature + payment
-- Sam sending vertical software sub-category list — Kay will filter using Jake's defensibility framework
-- Kay needs to send Sam: existing outreach messaging + insurance brokerage target list
-- Searcher from Women's Searcher Network mentorship program (Stern grad, runs ed tech) — name not captured, suggested building insurance from scratch
+- Sam sending vertical software sub-category list — Kay will filter using Jake's defensibility framework + apply approved filter criteria
+- Kay needs to send Sam: existing outreach messaging + insurance brokerage target list + filter criteria brief
+- Searcher from Women's Searcher Network mentorship program (Stern grad, runs ed tech) — name not captured, built insurance prototype, suggested building from scratch
 - Camilla's next meeting moved to April 15 at 2pm
 - Ashley Emerole coffee happened today — relationship-manager auto-resolves
-- BK Growth / DealsX time conflict resolved — Kay attended both (left BK Growth at 1:30 for DealsX)
-- Pest Management Compliance Software needs to move to TABLED on tracker (approved by Kay in Camilla call)
+- BK Growth / DealsX time conflict resolved — Kay attended both
+- Pest Management Compliance Software — already tabled on tracker
+- Granola MCP auth broken — fix at next session start
+- Kay needs technical advisor/fractional CTO identified before evaluating SaaS deals

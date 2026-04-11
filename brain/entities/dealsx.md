@@ -2,7 +2,7 @@
 schema_version: "1.1.0"
 date: 2026-04-01
 type: company
-status: prospect
+status: partner
 domain: dealsx.io
 attio_id: "87c32109-4755-4d31-aa8a-a9180d60bc51"
 tags:
@@ -23,9 +23,9 @@ tags:
 - Website: dealsx.io
 
 ## Communication Style
-- **Tone:** Unknown
-- **Format:** Calendly for scheduling
-- **Frequency:** TBD
+- **Tone:** Professional, practical
+- **Format:** Calendly for scheduling, platform dashboard for responses
+- **Frequency:** Active during onboarding, autonomous once campaigns launch
 
 ## Key Context
 - Scrapes 30+ databases, runs personalized email + LinkedIn outreach campaigns
@@ -37,3 +37,4 @@ tags:
 
 ## Relationship Notes
 - 2026-04-01: Evaluating as potential outsourced outreach provider to replace JJ (VA) + Linkt stack. CAPTARGET is backup option.
+- 2026-04-10: Onboarding call ([[calls/2026-04-10-dealsx-onboarding-sam-singh]]). Moving forward as partner. Infrastructure: 6 domains (e.g., meetgreenwichandbarrow.com), 3-week warmup, emails from "Kay Schneider". Process: DealsX builds lists, Kay spot-checks first batch, then autonomous batches. LinkedIn via HeyReach. Volume concern: 3 niches too small (need 2000+), adding vertical software as broader 4th niche. Engagement letter redline pending (Andy Lock / Goodwin).

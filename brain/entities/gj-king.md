@@ -9,6 +9,7 @@ tags: ["date/2026-03-27", "entity", "person", "person/gj-king"]
 # GJ King
 
 ## Quick Facts
+- Host of BK Growth Thursday Zoom (searcher community)
 - Participated in [[calls/2025-10-21-using-ai-to-improve-your-search|Using AI to Improve Your Search]] call (October 2025)
 - Fellow searcher exploring AI tools for acquisition search
 
@@ -19,3 +20,4 @@ tags: ["date/2026-03-27", "entity", "person", "person/gj-king"]
 
 ## Key Context
 - Referenced in: [[calls/2025-10-21-using-ai-to-improve-your-search]]
+- Referenced in: [[calls/2026-04-10-bk-growth-jake-stoller]]

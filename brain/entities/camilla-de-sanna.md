@@ -8,7 +8,7 @@ tags:
     - entity
     - person
     - person/camilla-de-sanna
-    - company/greenwich-barrow
+    - company/greenwich-and-barrow
 ---
 
 # Camilla de Sanna

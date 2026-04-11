@@ -14,7 +14,7 @@ tags:
 # Camilla de Sanna
 
 ## Quick Facts
-- Analyst at [[entities/greenwich-barrow|G&B]]
+- Analyst at [[entities/greenwich-and-barrow|G&B]]
 - Weekly Team TB meetings with [[entities/kay-schneider|Kay]]
 - Apartment renovation in progress (board approval Apr 16, move by May 14)
 

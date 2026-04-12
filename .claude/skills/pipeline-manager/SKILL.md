@@ -154,10 +154,21 @@ Targets for review ({niche}):
 On deck for JJ (tomorrow):
 - {Target name} — {action: follow-up / first outreach}
 
+Brief needed? (tomorrow's external meetings):
+1. {Meeting name} — {time} — {counterparty} — y/n?
+2. {Meeting name} — {time} — {counterparty} — y/n?
+
 Other items / today's agenda:
 1. {Today's meetings with times}
 2. {Quick flags or reminders}
 ```
+
+**Brief-needed prompt rules (replaces retired meeting-brief-manager nightly automation):**
+- List tomorrow's **external** meetings only (skip internal, skip investor calls already briefed).
+- For each, ask "y/n?" — Kay's y triggers the `meeting-brief` skill for that meeting; n skips.
+- **Friday rule:** On Fridays, the prompt must cover **Monday AND Tuesday**, not just Saturday. The weekend briefing is lighter and may not catch Monday meetings in time.
+- **Sunday rule:** Cover Monday (standard one-day-ahead).
+- If Kay has already approved a brief for the meeting in a prior session (check session-decisions files), do not re-ask — treat as auto-yes and skip the prompt.
 
 **Intermediary matches rule:** Daily broker listing matches from deal-aggregator are posted directly to #strategy-active-deals as individual Slack messages (one per deal, thumbs up/down reactions). Do NOT include individual match details in the morning briefing. The System Status line should only report: "deal-aggregator — {n} new lead matches posted to Slack".
 

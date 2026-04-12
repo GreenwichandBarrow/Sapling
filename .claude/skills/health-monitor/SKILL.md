@@ -41,8 +41,14 @@ For each:
 launchctl list | grep greenwich
 ```
 - GREEN: exit code 0, ran within expected schedule
-- YELLOW: exit code 0 but last run > 2x expected interval
-- RED: non-zero exit code (like 126 = permission error)
+- YELLOW: exit code 0 but last run > 2x expected interval; OR single non-zero exit in last 7 days
+- RED: non-zero exit code (like 126 = permission error); OR 2+ consecutive failed runs; OR missing plist for a skill listed in CLAUDE.md's scheduled skills table
+
+**Consecutive-failure escalation (critical):**
+Slack notifies on individual fails, but repeated failures get lost in the noise. For each scheduled skill, grep the last 7 days of logs for `exit: [1-9]` — if 2+ consecutive runs failed, surface as RED in the morning briefing with the skill name, fail count, and error excerpt. Do not wait for a third fail or for Kay to notice the Slack pattern.
+
+**Plist coverage audit:**
+Cross-reference `launchctl list | grep greenwich` against the scheduled-skills table in CLAUDE.md. Any skill listed in CLAUDE.md but missing from launchctl = RED (never deployed or silently unloaded).
 
 On RED: tail the last 50 lines of the log file for error context:
 ```bash

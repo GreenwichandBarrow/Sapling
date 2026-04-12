@@ -22,15 +22,27 @@ cd "$WORKDIR"
 echo "=== $SKILL_NAME ===" >> "$LOG_FILE"
 echo "Started: $(date)" >> "$LOG_FILE"
 
-# Run Claude in non-interactive mode
-echo "/$SKILL_NAME" | \
-  "$HOME/.local/bin/claude" \
-    -p \
-    --dangerously-skip-permissions \
-    >> "$LOG_FILE" 2>&1
-
-EXIT_CODE=$?
-echo "Finished: $(date), exit: $EXIT_CODE" >> "$LOG_FILE"
+# Run Claude in non-interactive mode with retry on transient failures
+MAX_ATTEMPTS=3
+ATTEMPT=1
+EXIT_CODE=1
+while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+  echo "--- attempt $ATTEMPT of $MAX_ATTEMPTS ---" >> "$LOG_FILE"
+  echo "/$SKILL_NAME" | \
+    "$HOME/.local/bin/claude" \
+      -p \
+      --dangerously-skip-permissions \
+      >> "$LOG_FILE" 2>&1
+  EXIT_CODE=$?
+  if [ $EXIT_CODE -eq 0 ]; then break; fi
+  # Only retry on transient CLI failures, not skill-level errors
+  if ! tail -5 "$LOG_FILE" | grep -q "Unexpected\|unknown error\|network\|timeout"; then
+    break
+  fi
+  ATTEMPT=$((ATTEMPT + 1))
+  [ $ATTEMPT -le $MAX_ATTEMPTS ] && sleep 30
+done
+echo "Finished: $(date), exit: $EXIT_CODE (attempts: $ATTEMPT)" >> "$LOG_FILE"
 
 # Notify Slack on failure
 if [ $EXIT_CODE -ne 0 ]; then

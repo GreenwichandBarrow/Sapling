@@ -158,6 +158,10 @@ Brief needed? (tomorrow's external meetings):
 1. {Meeting name} — {time} — {counterparty} — y/n?
 2. {Meeting name} — {time} — {counterparty} — y/n?
 
+Aging deferrals (≥5 days old):
+1. {Item} — {N days} — originally deferred because {reason}. **Kill / Do now / Re-defer with new trigger?**
+2. {Item} — {N days} — **RED if ≥10 days and no trigger**
+
 Other items / today's agenda:
 1. {Today's meetings with times}
 2. {Quick flags or reminders}
@@ -290,6 +294,13 @@ Before presenting the briefing, the manager (Claude orchestrator) MUST review al
    - **Verify** items that were APPROVE'd but have no action recorded — surface as: "You approved X yesterday — was it completed?"
    - **Honor deferrals** — DEFER'd with a date → suppress until that date. DEFER'd with a trigger condition → suppress until the trigger is detected in today's signals.
    - **Carry forward open loops** — items in the Open Loops section should appear in the briefing unless resolved by today's scans.
+   - **Deferral aging (NEW)** — Scan ALL session-decisions files from the last 14 days (not just yesterday) for DEFER entries. For each DEFER item still open (not marked SENT/CREATED/UPDATED in any later file):
+     - **Age calculation:** days since the DEFER was first logged.
+     - **< 5 days old:** suppress (respect the defer).
+     - **≥ 5 days old:** surface in a new briefing section titled **"Aging deferrals"** with: item name, age in days, original trigger/reason, and a forcing question: "Kill, do now, or re-defer with new trigger date?"
+     - **≥ 10 days old and no trigger condition specified:** flag as RED (bold) — Kay must decide, no third defer allowed without explicit new trigger date.
+     - **Exception:** Items with an absolute future date (e.g., "~Apr 20") stay suppressed until that date regardless of age.
+     - **Purpose:** Prevent the DEFER pile from accumulating indefinitely (observed Apr 2026: Mark Gardella reply 7 days stale, Philip Hoffman 9+ days, broker platform registrations chronic). Aging forces triage.
 
 The manager is the last line of defense. Sub-agents will make errors. The manager catches them so Kay doesn't have to.
 

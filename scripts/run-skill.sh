@@ -22,6 +22,23 @@ cd "$WORKDIR"
 echo "=== $SKILL_NAME ===" >> "$LOG_FILE"
 echo "Started: $(date)" >> "$LOG_FILE"
 
+# Preflight: unlock login keychain if a password is provided (prevents 401 on locked keychain)
+# Safe because KEYCHAIN_PASSWORD lives only in .env.launchd (not committed)
+if [ -n "$KEYCHAIN_PASSWORD" ]; then
+  security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$HOME/Library/Keychains/login.keychain-db" 2>/dev/null || \
+    echo "WARN: keychain unlock failed" >> "$LOG_FILE"
+fi
+
+# Preflight: verify Claude CLI auth before spending a run on a 401
+PREFLIGHT=$(echo "say OK" | "$HOME/.local/bin/claude" -p --dangerously-skip-permissions 2>&1 | head -3)
+if echo "$PREFLIGHT" | grep -qE "401|authentication_error|Invalid authentication"; then
+  echo "PREFLIGHT FAILED (auth): $PREFLIGHT" >> "$LOG_FILE"
+  curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
+    -H 'Content-type: application/json' \
+    -d "{\"text\":\"PREFLIGHT AUTH FAIL for $SKILL_NAME — Claude CLI 401. Kay must re-auth via \`claude\` command.\"}"
+  exit 2
+fi
+
 # Run Claude in non-interactive mode with retry on transient failures
 MAX_ATTEMPTS=3
 ATTEMPT=1
@@ -36,7 +53,7 @@ while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
   EXIT_CODE=$?
   if [ $EXIT_CODE -eq 0 ]; then break; fi
   # Only retry on transient CLI failures, not skill-level errors
-  if ! tail -5 "$LOG_FILE" | grep -q "Unexpected\|unknown error\|network\|timeout"; then
+  if ! tail -10 "$LOG_FILE" | grep -qE "Unexpected|unknown error|network|timeout|401|authentication_error|Invalid authentication"; then
     break
   fi
   ATTEMPT=$((ATTEMPT + 1))

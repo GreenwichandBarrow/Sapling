@@ -295,6 +295,8 @@ When Kay says good evening:
    - **Deferred** — items explicitly postponed with trigger date or condition
    - **Open Loops** — unresolved items carried forward
 3. Extract decision traces — scan the session-decisions file for APPROVE/REJECT decisions with non-obvious reasoning (human overrides, judgment calls between alternatives, surprising choices). For each, write a trace to `brain/traces/{date}-{slug}.md` using the trace schema. Skip routine approvals (briefing acknowledgments, standard pipeline moves). Litmus: "Would a future agent make a different choice without knowing this?"
+
+   **Enforcement:** Step 3 MUST produce a visible artifact. Either (a) one or more trace files in `brain/traces/` dated today, OR (b) an explicit confirmation in the evening summary of the form: "Decision traces scanned — N APPROVE/REJECT items reviewed, 0 met litmus bar because: [brief reason per category]." Silent skipping of step 3 is a calibration-pipeline failure and must not happen. If you're unsure whether an item qualifies, default to writing the trace — calibration-workflow will filter noise later; it cannot recover from missing data.
 4. Present the summary to Kay for review — she may correct or add items
 5. Commit to git
 

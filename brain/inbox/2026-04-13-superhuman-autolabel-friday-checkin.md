@@ -31,14 +31,16 @@ Check whether Superhuman's AI auto-labeled existing historical mail (16K+ across
 ### 3. Superhuman AI label re-creation watch
 Monitor whether Superhuman re-created any of the original `[Superhuman]/AI/*` labels after Kay renamed them. If yes: rename again, accept parallel labels, or add Gmail filter to relabel.
 
-### 4. Update email-intelligence skill
-**Confirmed today: skill does NOT currently read the Deal Flow Auto Label.** It runs its own BLAST/DIRECT/NEWSLETTER classifier on raw Gmail (line 36 + 77 of SKILL.md).
+### 4. Discuss email-intelligence skill update with Kay before changing
+**Confirmed: skill does NOT currently read the Deal Flow Auto Label.** Runs its own BLAST/DIRECT/NEWSLETTER classifier on raw Gmail (line 36 + 77 of SKILL.md).
 
-Update needed:
-- File: `.claude/skills/email-intelligence/SKILL.md`
-- Add: read messages tagged with the Superhuman `Deal Flow` Auto Label as high-confidence pre-classified deal source
-- Keep existing Gmail scan + own classifier as fallback for un-categorized mail
-- Confirm CIM auto-trigger, Active Deal Fast-Path, DIRECT/BLAST classification all still fire correctly
+Two G&B "Deal Flow" labels now exist:
+- Gmail `DEAL FLOW` (manual, codenames for active named deals)
+- Superhuman `Deal Flow` Auto Label (automatic, inbound classification)
+
+**Open question for Friday:** does it make sense to wire the skill to also read the Auto Label as additional signal, or keep skill independent of Superhuman's AI accuracy?
+
+Claude's lean: leave skill as-is (pre-labeling timing, robust to Superhuman misses). Kay to weigh in Friday before any change.
 
 ### 5. L picker verification on all 4 accounts
 Confirm all 9 Auto Labels appear in Superhuman L (label) picker on each account. Especially check kay.s@ G&B since that's where deal-flow triggering matters most.

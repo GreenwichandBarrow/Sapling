@@ -99,10 +99,12 @@ Row 3 is headers: Rank, Niche Hypothesis, Current Status, Outreach Channel. Filt
 ```bash
 curl -s -X POST "$SLACK_WEBHOOK_ACTIVE_DEALS" \
   -H "Content-Type: application/json" \
-  -d '{"text":"🔔 Deal match\nSource: {Platform or Broker}\nCompany: {Name or blind profile}\nIndustry: {Industry description}\nRevenue: {Revenue} | EBITDA: {EBITDA} | Margins: {margin%}\nGeography: {Geography or \"Not disclosed\"}\nMatch type: {Thesis match / Buy-box match, new niche}\nTeaser:\n{Link to listing or teaser document}\n\nNote: {1-2 sentence analyst note — why this matches or key risk}\n\n👍 = pursue  |  👎 = pass"}'
+  -d '{"text":"🔔 Deal match\nSource: {Platform or Broker}\nCompany: {Name or blind profile}\nIndustry: {Industry description}\nRevenue: {Revenue} | EBITDA: {EBITDA} | Margins: {margin%}\nGeography: {Geography or \"Not disclosed\"}\nMatch type: {Thesis match / Buy-box match, new niche}\nTeaser:\n{Link to listing or teaser document}\n\n👍 = pursue  |  👎 = pass"}'
 ```
 
 **CRITICAL: Each deal gets its own Slack message.** Kay and her analyst react individually.
+
+**NO COMMENTARY IN SLACK POSTS.** Team channels (#active-deals, #strategy-active-deals) get raw deal facts only — no analyst notes, no filter gating ("would need Jake/Adam SaaS filter"), no motivation reads ("seller is 'curious' not 'exploring'"), no thesis framing. Internal reasoning belongs in terminal dialogue with Kay, not in team-facing Slack. The `👍/👎` workflow IS the commentary channel — Kay and her analyst discuss via reactions, not via pre-written notes in the post.
 
 **Morning briefing:** Report count only: "deal-aggregator — {n} new deals posted to Slack". Kay reviews deals on Slack, not in the briefing.
 

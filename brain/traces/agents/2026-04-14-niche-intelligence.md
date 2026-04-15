@@ -1113,3 +1113,50 @@ Verdict: Proceed — strongest Allyant archetype match, hard regulatory deadline
 **Surface to Kay:** Customs Bond Specialty Brokers framing question (killed as generic? or as specialty bond brokers?)
 
 **Total new niches for one-pager stage:** 4 (candidates 2-5). Candidate 1 is a rename, not a new niche.
+
+---
+
+## [ONEPAGER: Healthcare Reg Compliance SaaS]
+
+**Status:** COMPLETE
+**Timestamp:** 2026-04-14
+**Agent:** one-pager-creation
+
+### Drive Location
+- **Folder:** Healthcare Regulatory Compliance SaaS
+- **Folder ID:** `1raw5ACiQ77Tr5J37n88Sluj5FSoAgHNZ`
+- **File ID:** `1LTqJY0DuoxTQeUrBTdWxQPx7qbybJFT7`
+- **Link:** https://docs.google.com/presentation/d/1LTqJY0DuoxTQeUrBTdWxQPx7qbybJFT7/edit
+
+### Key Research Findings
+- US market: $1.38B (2025), projected $4.9B by 2035, 13.5% CAGR
+- Moderately fragmented: enterprise vendors (HealthStream, RLDatix, Relias) dominate large health systems; 15-25 independent SMB platforms in the $1-10M ARR range are the acquisition layer
+- MedTrainer raised $43M from Vista Equity (2022), validating PE interest at mid-market
+- Healthcare IT was busiest PE deal category: 151 deals in 2025, Q1 2025 deal value up 22% YoY
+- CMS 2026 rule changes (prior auth 72-hr mandate, MA policy overhauls, home health payment updates) create fresh compliance demand
+- Gross margins 65-75% at scale; high switching costs; churn under 2.5%
+- Customer base spans all healthcare verticals: home health, behavioral health, PT, senior living, clinics — confirms horizontal platform thesis
+- "Shovel seller" thesis validated: every healthcare sub-niche G&B enters needs compliance tooling
+
+### Assessment
+Pending Scoring — one-pager created with all 9 sections populated from web research. Ready for scorecard.
+
+## [ONEPAGER: Digital Accessibility Compliance Services]
+
+**Status:** Complete
+**Drive Folder ID:** `1o79EQpl0oc6kfbDddqmIFd-At9zQ0EuT`
+**File ID:** `1ZU9D2kb4ICGRrVmz-wVuKcpXh7XnJEoq`
+**File:** Digital Accessibility Compliance Services April 2026.pptx
+
+**Key Research Findings:**
+- US market ~$510M+ (2025), global $3.2B by 2034 at 8.6% CAGR
+- ADA Title II hard deadline April 24, 2026 for municipalities with 50K+ population; 2027 for smaller
+- 8,800+ ADA website lawsuits in 2024, average settlement >$75K
+- Level Access surpassed $100M ARR (Dec 2024), backed by JMI Equity/KKR
+- Level Access acquired UserWay for $98.7M (2024), eSSENTIAL Accessibility merger (2022)
+- Automated tools catch only 30-40% of WCAG issues; 60-70% require human specialists
+- 20-35 independent boutique firms estimated in US market
+- Audit pricing: $1,500-$5,500 (SMB), $10K-$20K+ (enterprise)
+- Recurring monitoring: $200-$1,000/month per client
+- European Accessibility Act enforcement beginning June 2025
+- Assessment/Status: Pending Scoring (no score assigned per instructions)

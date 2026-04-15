@@ -91,3 +91,93 @@ Dental practice management is worth monitoring but DSO consolidation introduces 
 
 ---
 
+## [FRANCHISE SIGNAL] — 2026-04-15T03:22Z
+
+### Summary
+
+Scanned 10+ B2B franchise categories for repeatable business models with 100+ units. Identified independent competitor pools (acquisition targets) and flagged G&B thesis overlap.
+
+---
+
+### Tier 1: Large-Scale Proven Models (500+ units)
+
+**1. Commercial Cleaning / Janitorial** — 13,000+ franchise units
+- JAN-PRO (10,388 units), Corvus (2,250+), Jani-King (global), Mint Condition (409)
+- Market: $93B US janitorial (2024), 4% growth
+- Target pool: Hundreds of thousands of independent janitorial companies, most sub-$5M
+- Unit economics: Low entry ($5K-$50K), recurring monthly contracts, 15-25% margins
+- G&B overlap: **LOW.** Commodity service, no luxury/HNW angle.
+
+**2. Commercial Restoration (Fire/Water/Mold)** — 3,000+ franchise units
+- ServPro (2,200+), Paul Davis (589), BELFOR (global leader)
+- Market: $215B US property damage restoration
+- Target pool: Thousands of independent restoration contractors, many at $2-10M revenue. Commercial contracts (hotels, office buildings, insurance carriers) are B2B.
+- Unit economics: Paul Davis does mitigation + rebuild = higher revenue/job. Insurance carrier relationships are key.
+- G&B overlap: **MODERATE.** Luxury property restoration (estates, high-end hotels) is a premium sub-niche adjacent to Estate Management.
+
+**3. Insurance Agency / Brokerage** — 2,400+ franchise units
+- Goosehead (1,238), Freeway (600+), Brightway (350+), Estrella (200+), Fiesta (218)
+- Market: Franchise sector growing 7.3% over 5 years. Brightway manages $1.7B in premiums after GlobalGreen acquisition.
+- Target pool: ~40,000 independent insurance agencies in the US. Brightway actively acquiring independents and plugging them into tech platform.
+- Unit economics: Goosehead avg revenue $228K-$296K/unit, $40K-$118K initial investment. Brightway's M&A playbook = acquire independents, add tech + carrier access.
+- G&B overlap: **HIGH. DIRECT OVERLAP with Specialty Insurance Brokerage.** 2,400+ franchise units prove the model is repeatable. The 40K independents are exactly the acquisition target pool. Brightway's roll-up thesis validates G&B's approach.
+
+**4. Staffing / Recruitment (B2B)** — 1,000+ franchise units
+- Express Employment (800+), Spherion (200+), AtWork (100+)
+- Target pool: Tens of thousands of independent staffing firms, highly fragmented below top 20.
+- Unit economics: Spherion avg $7.4M revenue, $1.6M gross profit/unit. High volume, thin margin.
+- G&B overlap: **LOW.** Volume business, no luxury angle.
+
+**5. Commercial Pest Management** — 800+ franchise units
+- Mosquito Hunters (422), Mosquito Squad (237), Orkin franchise (130+), Mosquito Shield (54)
+- Market: $40B globally projected by 2032
+- Target pool: Thousands of independent pest companies. Commercial segment (hotels, restaurants, food processing, healthcare) is pure B2B.
+- G&B overlap: **HIGH. DIRECT OVERLAP with Premium Pest Management.** Franchise counts confirm repeatability. Independent commercial pest operators serving luxury hospitality and estates are G&B's exact target pool.
+
+---
+
+### Tier 2: Mid-Scale Proven Models (100-500 units)
+
+**6. Managed IT Services (B2B)** — 700+ franchise units
+- TeamLogic IT (300+), CMIT Solutions (290+), Computer Troubleshooters (110+)
+- Market: $330B globally (2025), 14.8% CAGR
+- Target pool: Estimated 40,000+ MSPs in the US, most sub-$5M revenue
+- Unit economics: CMIT ~$517K avg revenue/unit. Recurring monthly contracts.
+- G&B overlap: **LOW.** Commodity IT. No luxury angle unless HNW family office MSP (stretch).
+
+**7. Facility Management (B2B)** — 109 franchise units
+- City Wide Facility Solutions (109 units, $721M systemwide sales)
+- Market: $61B (2025), projected $138B by 2030 (17.8% CAGR)
+- Target pool: Thousands of regional facility management companies serving commercial RE, HOAs, corporate campuses.
+- Unit economics: **$8.07M average unit volume.** 70% recurring revenue. Management model subcontracts actual work.
+- G&B overlap: **MODERATE-HIGH.** Estate Management overlap. Luxury property/estate facility management is a premium sub-segment. City Wide's $8M AUV proves the management-layer model at scale.
+
+**8. Property Management** — 100+ franchise units
+- Real Property Management (Neighborly), PMI (multiple property types)
+- Market: $100B+ US, 312,000 businesses
+- Target pool: Enormous. Most PM is independent/local.
+- Unit economics: 6% avg profit margin (NARPM). Tech-enabled models do 30% better.
+- G&B overlap: **MODERATE.** Luxury property management overlaps with Estate Management.
+
+---
+
+### G&B Thesis Overlap Matrix
+
+| Franchise Category | Active G&B Niche | Units | Signal |
+|---|---|---|---|
+| Insurance Brokerage | Specialty Insurance Brokerage | 2,400+ | **STRONG** — 40K independents, Brightway roll-up validates thesis |
+| Commercial Pest | Premium Pest Management | 800+ | **STRONG** — Commercial segment B2B with luxury sub-niche |
+| Facility Management | Estate Management | 109 | **MODERATE** — City Wide's $8M AUV proves management-layer model |
+| Commercial Restoration | Estate Management (adjacent) | 3,000+ | **MODERATE** — Luxury property restoration is adjacent play |
+| Property Management | Estate Management (adjacent) | 100+ | **MODERATE** — Luxury PM overlaps |
+
+### New Signal: City Wide Facility Management Model
+
+City Wide's economics deserve attention. $8.07M average unit volume on a management model (they don't do the cleaning/maintenance, they manage subcontractors). This is essentially the Estate Management thesis at commercial scale. A luxury/HNW-focused version managing estate services (landscaping, cleaning, security, maintenance) through a single management layer could be compelling. Worth cross-referencing with the Estate Management niche research.
+
+### Key Takeaway
+
+Franchise signals **strongest validate two existing Active niches**: Specialty Insurance Brokerage (2,400+ units, Brightway actively rolling up independents) and Premium Pest Management (800+ units, commercial segment proven). No new niche candidates emerged that outperform what G&B is already pursuing. City Wide's facility management model is worth noting as validation of the Estate Management management-layer approach.
+
+---
+

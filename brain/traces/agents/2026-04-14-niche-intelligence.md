@@ -1160,3 +1160,27 @@ Pending Scoring — one-pager created with all 9 sections populated from web res
 - Recurring monitoring: $200-$1,000/month per client
 - European Accessibility Act enforcement beginning June 2025
 - Assessment/Status: Pending Scoring (no score assigned per instructions)
+
+## [ONEPAGER: Vet Practice Mgmt SW]
+
+### Status
+One-pager created and uploaded to Google Drive.
+
+### Drive Location
+- **Folder:** Veterinary Practice Management Software (ID: `151-uM3i5TB-qWBJyGq7LvzqedR7LPCgG`)
+- **File:** Veterinary Practice Management Software April 2026.pptx (ID: `1ueRxaexN7bxl3ZiL9a3nwP6F6GX2dm4B`)
+- **Parent:** WEEKLY REVIEW (`1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT`)
+
+### Key Research Findings
+- US VPMS market: $660-720M (2025-2026), growing 7.8-12.7% CAGR
+- IDEXX + Covetrus duopoly: 79% combined market share (IDEXX 43%, Covetrus 36%)
+- 32K US vet practices, 60%+ independent despite Mars/NVA consolidation
+- 15-20 independent software vendors in the long tail (21% of market)
+- Monthly SaaS: $150-500/practice, gross margins 70-85%
+- Extreme switching costs: data migration, staff retraining, workflow disruption
+- 532 practice consolidation deals/year driving demand for multi-location platforms
+- Pet sector M&A accelerating: 18 deals YTD 2026 vs 8 YTD 2025
+- Exit buyers: IDEXX, Covetrus/Patterson, Zoetis (strategic); Vista, Thoma Bravo, Insight Partners (PE)
+
+### Assessment
+Pending Scoring — one-pager created with all 9 sections populated from web research. Ready for scorecard.

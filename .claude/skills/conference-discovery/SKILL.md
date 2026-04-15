@@ -38,13 +38,13 @@ Reference: Colin Woolway and Will Gallagher attended 1-2 conferences/week and la
 
 ### Scheduling Constraints
 
-| Day | Available | Constraint |
+| Day | Available | End time |
 |-----|-----------|-----------|
-| Monday | Full day | Preferred. Can fly early, back by dinner. Most common conference day. |
-| Tuesday | NYC only | Must be done by 1:30pm |
-| Wednesday | NYC only | Must be done by 1:30pm |
-| Thursday | NYC + nearby | Must be done by 4:30pm |
-| Friday | No | Weekly review day |
+| Monday | Day + evening (only night Kay can do evenings) | Flex / late |
+| Tuesday | Daytime only | 2:00pm |
+| Wednesday | Daytime only | 2:00pm |
+| Thursday | Daytime only | 5:00pm |
+| Friday | Daytime only | 3:00pm |
 
 ### Geography
 
@@ -60,11 +60,12 @@ Kay's preferred event format is **grass-roots intermediary networking**, NOT big
 **Priority 1 — Intermediary networking (PRIMARY):**
 **Format constraint (HARD):**
 - **Mon:** full-day flex, including evening events (happy hours OK)
-- **Tues/Wed:** morning or lunch only, done by 1:30pm NYC (no evening)
-- **Thu:** morning, lunch, or afternoon, done by 4:30pm NYC (no evening)
-- **Fri:** no events (weekly review day)
+- **Tues:** daytime only, must end by 2:00pm
+- **Wed:** daytime only, must end by 2:00pm
+- **Thu:** daytime only, must end by 5:00pm
+- **Fri:** daytime only, must end by 3:00pm
 
-Breakfast, coffee, and early-AM networking are the default priority. Monday evening events are acceptable but not preferred (still a long day with kids). Tues-Thu evening events are suppressed by default — Kay is a solo parent, evening events Tues-Thu require advance babysitter planning and will not be surfaced without explicit Kay ask.
+Breakfast, coffee, morning, and lunch are the default priority. Monday is the ONLY day Kay can do evening events — she is a solo parent, Tues–Fri evenings require advance babysitter planning and will not be surfaced without explicit Kay ask. Full-day conferences are OK within the per-day end time.
 
 - Broker breakfasts (Long Island 7am diner rotation and similar)
 - Morning M&A meetings — check if firms have AM versions of their evening happy hours

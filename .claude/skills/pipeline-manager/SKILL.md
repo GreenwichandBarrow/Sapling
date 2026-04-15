@@ -258,6 +258,12 @@ Relationship management (nurture cadence monitoring, action-already-taken verifi
    - For each Attio entry at "Contacted": if "JJ: Call Status" = "Connected" + positive sentiment → MISMATCH. Flag for review (potential First Conversation).
    This reconciliation runs as a safety net — it catches drift that the real-time detection missed.
 
+11. **Outbound-email → Active Deals list-entry coverage (added 2026-04-15)** — for every outbound email to an external recipient in the past 14 days, verify an Attio Active Deals list entry exists for that recipient's company. Iterate:
+   - Get all outbound emails: `gog gmail search "from:kay.s@greenwichandbarrow.com newer_than:14d" --json --max 100`
+   - For each unique external recipient: find Person → find Company → verify list entry exists
+   - If missing: auto-create list entry at "Contacted" stage (per Outbound Email Scan Path B). Flag in morning briefing.
+   Root cause: Attio auto-creates People from email but NOT list entries. This hook closes the gap (Timothy Wong / MMPC 2026-04-09 incident).
+
 ### Email Scan Results Validation (post-ingestion)
 After Gmail ingestion completes and `brain/context/email-scan-results-{date}.md` is written, validate:
 
@@ -337,21 +343,33 @@ Results from this check feed directly into the **Draft Status** section of `brai
 
 This is how the system knows Kay sent the email and triggers the Attio stage advancement. Claude manages follow-up cadence via Superhuman drafts (Day 3/14 follow-ups drafted each morning). JJ's call list is managed independently by jj-operations.
 
-### Outbound Email Scan (catches manually-sent emails)
+### Outbound Email Scan (catches manually-sent emails + auto-creates missing Active Deals entries)
+
 The Superhuman Draft Status Check above only catches emails that originated as outreach-manager drafts. Kay also sends emails manually — typed directly in Superhuman, forwarded from another thread, or replied inline. These must also trigger pipeline stage changes.
 
-1. Query Gmail for all outbound emails:
-   ```bash
-   gog gmail search "from:kay.s@greenwichandbarrow.com newer_than:2d" --json --max 50
-   ```
-2. For each sent email, extract the recipient address(es) and cross-reference against Attio Active Deals entries at "Identified" stage (match by contact email, company domain, or contact name)
-3. **When a match is found:**
-   - Move Attio Active Deals entry from "Identified" → "Contacted" (source: Gmail sent folder scan + target sheet "Day 0 Sent" column)
-   - Log the signal: record sent date, recipient, and subject in the email-scan-results artifact under Draft Status → Sent
-4. **Deduplication:** Skip any recipient already captured by the Superhuman Draft Status Check above (avoid double-processing outreach-manager drafts that were sent). Use the recipient email as the dedup key.
-5. **Scope:** Only process emails sent to external recipients. Ignore internal emails (to @greenwichandbarrow.com addresses).
+**CRITICAL (added 2026-04-15 after Timothy Wong / MMPC gap):** Attio auto-creates **People records** from email interactions, but does NOT auto-create **Active Deals list entries**. If an outbound email's recipient has a Person record but no Active Deals list entry, this scan must CREATE the list entry — not just skip them. The scan is a reconciler-and-creator, not a read-only updater.
 
-This ensures manually-sent outreach emails (not just outreach-manager drafts) trigger the Attio stage change (Identified → Contacted). Claude manages follow-up cadence via Superhuman drafts for all targets.
+1. Query Gmail for all outbound emails (extended window for slow-reply JJ-route follow-ups):
+   ```bash
+   gog gmail search "from:kay.s@greenwichandbarrow.com newer_than:14d" --json --max 100
+   ```
+2. For each sent email, extract the recipient address(es) and cross-reference against Attio:
+   - First: find the Person record (Attio auto-creates these on first email interaction — always exists for any recipient Kay has emailed)
+   - Then: check if that Person's associated Company has an **Active Deals list entry**
+3. **Path A — List entry EXISTS and matches:**
+   - If entry is at "Identified" → move to "Contacted"
+   - If entry is at "Contacted" or later → no stage change; log sent date only
+4. **Path B — Person exists but NO list entry (the Timothy Wong gap):**
+   - Create new Active Deals list entry at "Contacted" stage
+   - Infer niche from target sheet match (`{Niche} - Target List` sheets in LINKT TARGET LISTS folder); tag accordingly
+   - Flag in morning briefing: "Auto-created Active Deals entry for {Company} at Contacted (outbound email detected, prior list entry missing)"
+5. **Path C — No Person record and no list entry:**
+   - This shouldn't happen (Attio auto-creates People from email) but if it does, create both
+6. **Deduplication:** Skip any recipient already captured by the Superhuman Draft Status Check above. Use the recipient email as the dedup key.
+7. **Scope:** Only process emails sent to external recipients. Ignore internal emails (to @greenwichandbarrow.com addresses).
+8. **Log cross-reference source:** Every created entry records `source: manual-outbound-email` with the message ID for audit trail.
+
+This ensures manually-sent outreach emails (not just outreach-manager drafts) trigger the Attio stage change AND create list entries when missing. Claude manages follow-up cadence via Superhuman drafts for all targets.
 
 
 ### Cadence Advancement (runs during morning scan)

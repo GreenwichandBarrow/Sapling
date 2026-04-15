@@ -921,3 +921,195 @@ This is the closest match to the Allyant archetype in the entire scan. Hard regu
 - Facility Management: 1 source, overlaps with Estate Management
 
 **META-PATTERN:** The strongest new signals share a common structure — "boring vertical SaaS for fragmented professional services with compliance drivers." Veterinary, funeral, healthcare regulatory, and digital accessibility all fit this template. Kay's portfolio is already tilting this direction (Home Health, Behavioral Health, PT, Childcare software). The Jake Stoller defensibility framework from Riverside is the right filter for all of them.
+
+---
+
+## [IDENTIFIER] — 2026-04-15T04:45Z
+
+### Candidate 1: HNW Personal Lines Insurance Brokerage (Broadened)
+
+```
+Niche: HNW Personal Lines Insurance Brokerage
+Thesis: Broaden the existing "Specialty Insurance Brokerage (Art & Collectibles)" to cover the full HNW personal lines spectrum — yachts, multi-property estates, equine, classic cars, concierge-level coverage. Art-only framing happened organically, not deliberately, and artificially narrows the target pool by ~10x. August Felker validated this broader thesis with 100% recurring revenue and identified a live acquisition target.
+Duplicate Check: OVERLAPS with "Specialty Insurance Brokerage (Art & Collectibles)" on tracker. This is NOT a separate niche — it is a RENAME/BROADENING of the existing niche. Art & collectibles becomes one sub-segment within HNW personal lines. Recommend renaming tracker entry to "HNW Personal Lines Insurance Brokerage" and keeping the art specialty as a sub-thesis.
+Source Signal: 5 sources — HISTORICAL (August Felker, Hunter Hartwell, Chris Wise, Sam Singh), FRANCHISE (2,400+ insurance franchise units, Brightway roll-up), PE TRENDS, REGULATION (FTC Safeguards, state licensing +13% YoY), SBA (40K+ independents)
+
+QUICK SCREEN:
+- Margins: Strong — Insurance brokerage EBITDA margins 20-35%, commission-based with low COGS
+- Recurring Revenue: High — 100% per August Felker (policy renewals), industry standard 85-95% retention
+- Industry Growth: Strong — 4.5% CAGR, HNW segment growing faster at ~7% driven by wealth creation and asset appreciation
+- Growth TAM: Pass — US HNW insurance market ~$40-45B (38-42% of $107B global), brokerage distribution = 82-88% of placements
+
+TARGET TAM:
+- Total firms: ~40,000 independent insurance agencies in US
+- Independently owned: ~15,000-20,000 with meaningful personal lines books (narrowing from total)
+- PE-backed: HIGH — 72.6% of all agency transactions PE-backed (Hilb Group 200+ acquisitions, King Risk, Risk Strategies)
+- PE consolidation risk: High — but concentrated on COMMERCIAL lines. HNW personal lines specialty brokers are niche enough that megaplatforms haven't consolidated them. August: "No one else goes after it."
+- Named examples: (1) August's target — 2 women, near retirement, anti-PE, HNW personal lines (name undisclosed), (2) PSA Financial (Hilb Group company, HNW focus, NJ), (3) Bullen Insurance Group (independent, HNW specialist, CT), (4) Howard Insurance (independent, private client, CT/NY), (5) Coastal Insurance Solutions (HNW specialist, FL)
+
+MARKET TAM:
+- Market size: ~$40-45B US HNW insurance premiums
+- Growth rate: 4.5-7% CAGR (HNW segment outpacing overall P&C)
+- Key drivers: Wealth transfer ($84T), rising asset values, wildfire/climate forcing specialty coverage, multi-property ownership (58-64% of HNW), cyber risk endorsements (30-35% adoption)
+
+Sprint Duration: N/A — recommend RENAME of existing tracker entry, not new sprint
+Verdict: Proceed as RENAME — broadens existing "Art & Collectibles" niche to unlock 10x target pool while preserving same HNW moat
+```
+
+---
+
+### Candidate 2: Veterinary Practice Management Software
+
+```
+Niche: Veterinary Practice Management Software
+Thesis: Cloud-based practice management software for the 32,000 US veterinary practices (60%+ still independent). Consolidation wave (Mars/VCA, NVA) is acquiring practices but the SOFTWARE layer remains fragmented with aging incumbents. Compliance drivers (DEA scheduling, state veterinary boards, controlled substance tracking) create switching costs. Jake Stoller's defensibility framework scores 7/7.
+Duplicate Check: Compared against Vertical Software for Luxury (no overlap — vet practices are not luxury), all healthcare SaaS niches on tracker (different end market — animal vs human health), Killed/Tabled lists (not present). Distinct niche.
+Source Signal: 3 independent sources — ASSOCIATIONS (VHMA 5,000+ members, 32K practices), PE TRENDS (practice consolidation but software untouched), SBA (healthcare-adjacent approval rates, massive independent base)
+
+QUICK SCREEN:
+- Margins: Strong — SaaS margins 70-80% gross, 20-30% EBITDA for scaled players. Smaller targets likely 15-25% EBITDA.
+- Recurring Revenue: High — SaaS subscription model, monthly/annual contracts. Industry moving from perpetual license to cloud.
+- Industry Growth: Strong — 7.8-12.7% CAGR depending on source (Meticulous Research: 7.8% to $899M by 2035; Business Research Insights: 12.7%)
+- Growth TAM: Pass — US vet software market ~$280-600M (40% of $700M-$1.5B global, sources vary). Narrower than some but growing fast.
+
+TARGET TAM:
+- Total firms: 54+ US-based vet software companies per Tracxn data; ~20-30 meaningful players
+- Independently owned: Est. 15-20 independent software companies (excluding IDEXX, Covetrus/Patterson which are public/PE)
+- PE-backed: Patient Square Capital acquired Patterson Companies ($4.1B, 2025). IDEXX is public. Covetrus merged with Patterson. Software-specific PE deals limited.
+- PE consolidation risk: Medium — practice consolidation is HIGH (532 deals in 12 months) but software consolidation is LOW. Gap = opportunity.
+- Named examples: (1) eVetPractice (independent, cloud-based, US), (2) Hippo Manager Software (independent, cloud-based, Scottsdale AZ), (3) Shepherd Veterinary Software (independent, modern SOAP-based), (4) DaySmart Vet / formerly 123Pet (independent, multi-vertical), (5) Digitail (independent, AI-powered, growing)
+
+MARKET TAM:
+- Market size: $700M-$1.5B global; US ~$280-600M (North America = 40% share)
+- Growth rate: 7.8-12.7% CAGR
+- Key drivers: 32K practices digitizing, cloud migration from legacy systems, pet ownership surge (67% US households), practice consolidation driving standardization needs, telehealth/telemedicine integration
+
+Sprint Duration: Focused sprint (est. 20-30 net acquirable targets in buy box)
+Verdict: Proceed — strong convergence, fragmented software layer despite practice consolidation, compliance-driven switching costs
+```
+
+---
+
+### Candidate 3: Healthcare Regulatory Compliance SaaS
+
+```
+Niche: Healthcare Regulatory Compliance SaaS
+Thesis: SaaS platforms that help healthcare providers (practices, hospitals, home health agencies) manage regulatory compliance — HIPAA, OSHA, CMS rule changes, state licensing. Annual regulatory changes force perpetual software update cycles, creating a compliance moat. Kay already pursued one deal in this space (E&K listing, NDA signed, CIM received) but never elevated the NICHE to the tracker. This is the Allyant archetype applied to healthcare.
+Duplicate Check: Compared against Home Health Agency Software (HHAS is end-market specific; this is cross-cutting compliance layer), Behavioral Health PM (different — PM is operations, this is compliance-specific), all healthcare SaaS on tracker. Distinct because it serves ALL healthcare verticals with compliance tooling, not one vertical with full-stack PM. Could be positioned as a horizontal play ACROSS Kay's healthcare software niches.
+Source Signal: 2.5 sources — REGULATION (CMS CY2026 PDGM, annual rule changes), HISTORICAL (E&K deal + NDA + CIM, Jake Stoller framework validation)
+
+QUICK SCREEN:
+- Margins: Strong — SaaS margins, Compliancy Group and Healthicity both operate high-margin subscription models. 20-30% EBITDA typical.
+- Recurring Revenue: High — subscription SaaS, 99% retention rate (Healthicity). Compliance is non-optional.
+- Industry Growth: Strong — 12.7-13.5% CAGR (US market $1.38B in 2025, projected $4.9B by 2035)
+- Growth TAM: Pass — US market $1.38B (2025), growing to $4.9B by 2035. Cloud-based = 64.6% of market.
+
+TARGET TAM:
+- Total firms: 28+ healthcare compliance solutions companies (Inven.ai listing); dozens more small/regional
+- Independently owned: Est. 15-25 independent companies in the SMB-focused tier (below enterprise players like Symplr, SAI Global)
+- PE-backed: Symplr (PE-backed, enterprise), HealthStream (public). SMB tier largely untouched by PE.
+- PE consolidation risk: Low-Medium at SMB tier — PE focused on enterprise compliance platforms, leaving the long tail of SMB-serving compliance SaaS fragmented
+- Named examples: (1) Compliancy Group (independent, Greenlawn NY, HIPAA/OSHA/SOC2, est. 2005), (2) Healthicity (independent, Salt Lake City UT, 99% retention, est. 2015), (3) MedTrainer (independent, Las Vegas NV, compliance + credentialing), (4) HCCS/HealthStream competitors (smaller players), (5) Abyde (independent, Tampa FL, HIPAA compliance for small practices)
+
+MARKET TAM:
+- Market size: $1.38B US (2025)
+- Growth rate: 12.7-13.5% CAGR
+- Key drivers: Annual CMS rule changes forcing updates, 20+ state privacy laws, HIPAA enforcement increasing, OSHA healthcare-specific standards, value-based care reporting requirements
+
+Sprint Duration: Focused sprint (est. 15-25 net acquirable targets)
+Verdict: Proceed — Kay already showed conviction (signed NDA on a deal in this space), strong growth, compliance moat, and this could serve as a HORIZONTAL platform play across all her healthcare vertical niches
+```
+
+---
+
+### Candidate 4: Funeral Home Management Software
+
+```
+Niche: Funeral Home Management Software
+Thesis: Case management, accounting, compliance (FTC Funeral Rule, state licensing), and preneed tracking software for the 10,000+ independent US funeral homes. Multi-generational family-owned businesses facing succession creates a natural acquisition pipeline for both the software vendors AND the funeral homes themselves. Recession-resistant demand, high switching costs (case data is mission-critical), classic "boring vertical SaaS."
+Duplicate Check: Compared against all tracker entries — no overlap with any active, under review, or tabled niche. Not in Killed list. Completely new territory for G&B.
+Source Signal: 3 independent sources — ASSOCIATIONS (NFDA 19,700 members, 10K+ homes), PE TRENDS (classic roll-up, corroborated), SBA (NAICS 812 with 62K total loans, family-owned dominant)
+
+QUICK SCREEN:
+- Margins: Strong — SaaS margins. US funeral home industry overall: $23B market, average funeral home revenue $1.5-3M with 15-20% EBITDA. Software vendors: typical SaaS margins 20-30% EBITDA.
+- Recurring Revenue: High — SaaS subscription model. Case management is daily-use, mission-critical.
+- Industry Growth: Moderate — Funeral home software 6.6-10.5% CAGR (sources vary). Death rate rising (3.1M deaths projected 2026, climbing for decades with boomer aging).
+- Growth TAM: Pass — US funeral home software market ~$285M (60% of ~$475M global in 2026), growing to $600M+ by 2031
+
+TARGET TAM:
+- Total firms: 54 US-based funeral home software companies (Tracxn); ~15-20 meaningful players
+- Independently owned: Est. 10-15 independent software companies
+- PE-backed: No PE-specific funeral home SOFTWARE acquisitions found. PE is acquiring funeral HOMES (Carriage Services, SCI/Dignity Memorial, Milestone/Rosewood) but not the software layer.
+- PE consolidation risk: Low for software — PE focused on acquiring the funeral homes themselves, not the software vendors. Software layer untouched.
+- Named examples: (1) Passare (independent, Abilene TX, cloud-based case management), (2) FuneralTech (independent, US, comprehensive platform), (3) FuneralOne (independent, US, websites + management), (4) CFS (Consolidated Funeral Services, independent, US), (5) Memorial Solutions (independent, US)
+
+MARKET TAM:
+- Market size: ~$285M US (2026), $475M global
+- Growth rate: 6.6-10.5% CAGR
+- Key drivers: 46% of funeral directors plan to retire within 5 years (NFDA 2025 survey), digital transformation of family-owned homes, FTC Funeral Rule compliance, preneed contract management, cremation rate changes requiring new workflows
+
+Sprint Duration: Fast sprint (est. 10-15 net acquirable targets — smaller pool of software companies)
+Verdict: Proceed — but flag "Thin-to-Fast Target Pool." Software vendor count is smaller than other niches. Strength is in zero PE competition for software layer and massive succession-driven demand from 10K+ independent funeral homes as customers.
+```
+
+---
+
+### Candidate 5: Digital Accessibility Compliance Services
+
+```
+Niche: Digital Accessibility Compliance Services
+Thesis: ADA Title II/III digital accessibility auditing, remediation, document conversion, and monitoring services. Hard regulatory deadline (April 24, 2026 for large municipalities, April 2027 for smaller entities) creates immediate demand surge. ADA lawsuits up 300%+ since 2020 establishes a litigation-driven demand floor. This is the closest match to the Allyant archetype (G&B's benchmark thesis) in the entire scan. Fragmented boutique provider market with many small firms.
+Duplicate Check: Compared against all tracker entries — no overlap. Not in Killed or Tabled lists. New territory. Adjacent to "Vertical Software for Luxury" only in that both are SaaS/services, but completely different end market.
+Source Signal: 1 source with exceptionally strong quantitative data (REGULATION agent). Single-source weakness acknowledged, but the regulatory catalyst is time-bound and verifiable.
+
+QUICK SCREEN:
+- Margins: Strong — Services + SaaS hybrid. Level Access estimated $60-80M revenue. Accessibility-as-a-service is high-margin consulting + recurring monitoring subscriptions.
+- Recurring Revenue: High — Websites change constantly, requiring ongoing monitoring and remediation. "Accessibility as a service" is explicitly recurring. Monitoring subscriptions are the growth engine.
+- Industry Growth: Strong — 6.3-8.6% CAGR (Straits Research: 8.6% to $3.2B by 2034; Grand View: 6.31% to $1.08B by 2030 for software alone)
+- Growth TAM: Pass — Global digital accessibility market $1.4B (2025), North America = 36% = ~$510M US. Software alone $800M. Services layer adds significantly.
+
+TARGET TAM:
+- Total firms: Fragmented — dozens of boutique accessibility consulting firms + software companies. accessibility.com vendor directory lists 50+ providers.
+- Independently owned: Est. 20-35 independent firms in the US (below the enterprise tier of Level Access, Deque, AudioEye)
+- PE-backed: Level Access acquired UserWay (consolidation beginning). AudioEye is public (AEYE). Deque privately held (~$80-100M revenue, no PE deal found). Early-stage consolidation.
+- PE consolidation risk: Low-Medium — consolidation just beginning (Level Access/UserWay is first major move). Most boutique firms untouched.
+- Named examples: (1) UsableNet (independent, est. 2000, NYC, auditing + monitoring + remediation), (2) Accessible360 (independent, Minneapolis MN, managed services), (3) Siteimprove (independent, $50-70M est. revenue, DCI platform), (4) TPGi (independent, accessibility testing + consulting), (5) Allyant (G&B's archetype — document conversion for Wells Fargo ADA compliance)
+
+MARKET TAM:
+- Market size: ~$510M US (accessibility software); total addressable with services = $800M-$1B+
+- Growth rate: 6.3-8.6% CAGR
+- Key drivers: ADA Title II deadline (Apr 2026 large, Apr 2027 small municipalities), European Accessibility Act (Jun 2025), 8,800 US lawsuits in 2024, $13T disability spending power, DOJ enforcement escalation
+
+Sprint Duration: Focused sprint (est. 20-35 net acquirable independent firms)
+Verdict: Proceed — strongest Allyant archetype match, hard regulatory deadline creating demand surge, low PE consolidation risk, fragmented boutique provider market. Single-source weakness is mitigated by verifiable, time-bound regulatory catalyst.
+```
+
+---
+
+### OMITTED CANDIDATES (with rationale)
+
+**Customs Bond Specialty Brokers** — On KILLED list. HISTORICAL agent flagged premature kill (different from generic customs brokerage). Only 30-50 specialty firms estimated = likely fails <10 target gate. Recommend surfacing to Kay as a FRAMING question ("Was this killed as generic customs brokerage or as specialty bond brokers?") rather than full sprint.
+
+**Yacht Management Companies (services)** — Scored #1 in luxury infrastructure analysis but single-source signal. Est. 100-200 US firms is promising. However, potential asset-intensity concern (does managing yachts require facilities/staff/equipment?). Needs clarification before sprint. Recommend parking for next cycle.
+
+**Aviation Accounting/Tax Structuring Firms** — Scored #5 in luxury infra analysis, "ultra-sticky, many aging sole practitioners." Services, not software (different from killed aviation software). But: people-dependent professional services with key-person risk. Consulting businesses are hard to scale without key-person risk per SBA HEATMAP assessment. Weak structural fit despite luxury angle.
+
+**SMB Privacy Compliance Services** — Single source (REGULATION), no named companies or contacts identified. 20+ state privacy laws is a real driver but the enterprise tier (OneTrust, BigID) may commoditize downward. Monitor.
+
+**Dental Practice Management Software** — DSO consolidation risk flagged by multiple agents. 200K practices is massive but DSO ownership reducing independent TAM. Monitor only.
+
+---
+
+### SUMMARY FOR ORCHESTRATOR
+
+| # | Candidate | Verdict | Action |
+|---|-----------|---------|--------|
+| 1 | HNW Personal Lines Insurance Brokerage | RENAME existing niche | Broaden "Art & Collectibles" label on tracker to "HNW Personal Lines Insurance Brokerage" |
+| 2 | Veterinary Practice Management Software | Proceed to one-pager | Focused sprint, 20-30 targets |
+| 3 | Healthcare Regulatory Compliance SaaS | Proceed to one-pager | Focused sprint, 15-25 targets. Kay already signed NDA on one deal in this space. |
+| 4 | Funeral Home Management Software | Proceed to one-pager (flag thin pool) | Fast sprint, 10-15 software targets. Zero PE competition for software layer. |
+| 5 | Digital Accessibility Compliance Services | Proceed to one-pager | Focused sprint, 20-35 targets. Strongest Allyant archetype match. |
+
+**Surface to Kay:** Customs Bond Specialty Brokers framing question (killed as generic? or as specialty bond brokers?)
+
+**Total new niches for one-pager stage:** 4 (candidates 2-5). Candidate 1 is a rename, not a new niche.

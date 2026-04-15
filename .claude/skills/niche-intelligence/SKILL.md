@@ -378,9 +378,28 @@ This section monitors the WEEKLY REVIEW tab for status changes and executes tran
 gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B3:D20" -a kay.s@greenwichandbarrow.com -j
 ```
 
-Column D (Current Status) has an **orange header** — this is an agent-trigger column. When Kay sets a niche's status, agents act.
+Orange headers on WEEKLY REVIEW mark agent-trigger columns:
+- **Col C** — Current Status (Active-Outreach, Active-Long Term, Under Review, etc.)
+- **Col D** — Outreach Channel (DealsX Email, Kay Email, JJ-Call-Only)
 
-### Detection Logic
+When Kay sets values in these columns, agents act. But a "done" niche should NOT re-trigger work every Tuesday — that defeats the purpose of consolidation.
+
+### SKIP LOGIC (runs BEFORE Detection Logic)
+
+For each WEEKLY REVIEW row, skip the niche entirely if ALL four conditions are true:
+
+1. **Status (Col C)** = `Active - Outreach` or `Active - Long Term`
+2. **Outreach Channel (Col D)** = `DealsX Email`
+3. **One-pager exists** — check Drive folder `ACTIVE SPRINTS / {Niche Name}` for a `.pptx` file
+4. **Scorecard exists** — check same folder for a `.xlsx` file
+
+If all four true → **SKIP**. Do not regenerate, re-score, or surface. Sam (DealsX) handles execution; Kay has no work here. The only trigger that brings this niche back into Kay's view is Sam surfacing specific targets post-May 6 — which routes through a different flow (target-review, not niche-intelligence).
+
+If one-pager or scorecard is missing → niche needs initial work. Run Steps 3 (one-pager) and 4 (scoring) for that niche only.
+
+If Status changes (e.g., Kay moves Active-Outreach → Tabled), the Status Change Handler below fires regardless of skip logic.
+
+### Detection Logic (for rows NOT skipped above)
 
 1. Read all WEEKLY REVIEW rows
 2. For each row where Status starts with "Active" (matches Active - Outreach, Active - Long Term):

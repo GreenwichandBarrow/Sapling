@@ -181,3 +181,69 @@ Franchise signals **strongest validate two existing Active niches**: Specialty I
 
 ---
 
+## [PE TRENDS] — 2026-04-15T03:25Z
+
+### Macro: PE Capital Flow in 2026
+
+Lower middle market services remain the consensus PE thesis. Add-ons represent the majority of PE deal activity as firms build scale in fragmented markets. Half of first-time funds closed in 2025 focused on LMM/SME. Healthcare services, tech-enabled B2B, and business services lead. AI-enabled roll-ups are emerging — targeting service industries where automation pushes margins toward SaaS levels.
+
+Search fund landscape: Healthcare services, specialty B2B, facility maintenance, govcon, niche manufacturing remain strong. 12M+ businesses changing hands this decade ($10T+ value) from boomer retirements.
+
+### Niche-by-Niche PE Signal Assessment
+
+**1. Premium Pest Management — SATURATION >50%**
+Thompson Street (PestCo), Citation Capital, EQT, GTCR, HCI Equity all active. 19,000+ firms, ~$6.5B revenue. PestCo acquired Bio-Tech Pest Control (Houston, Jan 2026). Modern Pest: 10 acquisitions. American Pest: 13 acquisitions. The Deal Sheet calls pest control "the single most attractive recurring-revenue model in home services" (70-85% recurring, 25-35% EBITDA). **WALK AWAY unless ultra-premium carve-out PE platforms ignore.**
+
+**2. Specialty Insurance Brokerage — SATURATION >50%**
+PE-backed buyers = 72.6% of all US insurance agency transactions (~649 deals in 2025). Hilb Group (Carlyle) hit 200th acquisition Feb 2026. King Risk Partners acquiring along East Coast. Fed rate cuts accelerating brokerage M&A. **CAUTION — only viable targeting HNW personal lines/collections specialty that megaplatforms haven't consolidated.**
+
+**3. Home Health Agency Software — MODERATE PE INTEREST**
+Livtech acquired Alora Healthcare Systems (home health software). PSG/GSV created LivTech as healthcare tech roll-up for senior living + home care. PE shifting from reimbursement-exposed services toward software platforms. **COMPETE at LMM level — target smaller compliance-focused niche players PE hasn't reached.**
+
+**4. Behavioral Health Practice Management — MODERATE-HIGH**
+Qualifacts (Warburg Pincus + Martis Capital) acquired MethodOne (opioid treatment software). Capstone Partners flagged behavioral healthcare as priority. Competition intensifying for quality assets. **NICHE DOWN required — substance use disorder workflow tools or group practice management that larger platforms underserve.**
+
+**5. Senior Living Software — ACTIVE ROLL-UP**
+Cressey & Company built Activated Insights through 5 acquisitions (WeCare Connect, others) creating HR stack for senior care. Aline formed via Rubicon merging Glennis + Enquire + Sherpa CRM, plus Grove Menus. PSG's LivTech covers senior living workflows. **TARGET unconsolidated point solutions (dietary, activities, family communication) before platform sweep.**
+
+**6. Childcare Center Software — LOW-MODERATE**
+Roper Technologies acquired Procare for $1.75B (Jan 2024) — the dominant deal. illumine (AI-powered) partnered with Guidepost Montessori (80+ preschools, Apr 2026). Not heavily PE-saturated at smaller end. **OPPORTUNITY in the long tail of 500K+ childcare centers. Compliance angle (state licensing, subsidy billing) strengthens moat.**
+
+**7. Private Art Advisory — NO PE ACTIVITY DETECTED**
+Zero PE acquisitions found. PE aggressively rolling up wealth management/RIA ($1.2T AUM in deals through Q3 2025), but art advisory untouched. **MOVE FASTER — white space. Wealth management roll-up wave could spill into adjacent HNW services.**
+
+**8. Estate Management — EARLY PE SIGNALS**
+Keystone Equity Partners acquired David Nicholas Building & Property Maintenance (luxury residential, 130+ high-end coastal homes, South Jersey) as inaugural Shoreline Platform investment. Audax PE acquired AKAM (property management). ProperXPM (PE-backed) scaling to 20K units/15 states. **MOVE FASTER — estate management as concierge/UHNW category remains unconsolidated. Keystone's Shoreline Platform is direct comp.**
+
+**9. PT Clinic Software — MINIMAL PE DATA**
+No specific PE acquisitions of PT software found in 2026. WebPT, SPRY, Raintree dominate. AI tools emerging but no consolidation wave. **MONITOR — quiet sector.**
+
+**10. Fertility/IVF Clinic Software — FAVORABLE**
+PE actively acquiring fertility clinics (29.3% of ART cycles PE-owned as of 2018, likely higher now). Market $7.9B growing 13.6% annually to $16.8B by 2028. But software layer (eIVF, nAbleIVF, Pabau) remains fragmented with no PE software deals. **FAVORABLE — PE owns clinics not software. Captive customer base + compliance + fragmented vendors = vertical SaaS opportunity.**
+
+### New Fragmented Industries in PE Deal Flow Matching G&B Buy Box
+
+1. **CPA/Accounting firm roll-ups** — ~50% of top 30 US CPA firms have PE investment. AI pushing margins. May be too competitive now.
+2. **Veterinary practice management software** — 32,000 practices, 60%+ independent, consolidation wave but software layer fragmented. (Corroborates ASSOCIATIONS agent finding.)
+3. **Funeral home management software** — Classic roll-up, mission-critical, compliance-driven, 10,000+ independent homes. (Corroborates ASSOCIATIONS agent finding.)
+4. **Digital health platforms** — Quiet consolidation. Telehealth + AI + care delivery software.
+
+### Summary Table
+
+| Niche | PE Saturation | Signal for G&B |
+|-------|--------------|----------------|
+| Premium Pest Management | >50% | WALK AWAY |
+| Specialty Insurance Brokerage | >50% (72.6%) | CAUTION |
+| Home Health Agency Software | Moderate | COMPETE at LMM |
+| Behavioral Health PM | Moderate-High | NICHE DOWN |
+| Senior Living Software | Active roll-up | TARGET point solutions fast |
+| Childcare Center Software | Low-Moderate | OPPORTUNITY |
+| Private Art Advisory | None | MOVE FASTER |
+| Estate Management | Early signals | MOVE FASTER |
+| PT Clinic Software | Minimal | MONITOR |
+| Fertility/IVF Clinic Software | None (software) | FAVORABLE |
+
+Sources: [CLA Connect LMM](https://www.claconnect.com/en/resources/blogs/private-equity/lower-middle-market-m-and-a-5-predictions-for-private-equity-buyers-in-2026), [Cherry Bekaert PE Report](https://www.cbh.com/insights/reports/private-equity-report-2025-trends-and-2026-outlook/), [PwC PE Outlook](https://www.pwc.com/us/en/industries/financial-services/library/private-equity-deals-outlook.html), [The Deal Sheet Pest Control](https://thedealsheet.co/industries/pest-control/), [PwC Insurance M&A](https://www.pwc.com/us/en/industries/financial-services/library/insurance-deals-outlook.html), [PrivSource Insurance 2026](https://www.privsource.com/acquisitions/insurance/2026), [PESP Healthcare Feb 2026](https://pestakeholder.org/news/private-equity-healthcare-acquisitions-february-2026/), [Capstone Behavioral Health](https://www.capstonepartners.com/insights/article-behavioral-healthcare-services-market-update/), [ScaleView Senior Living](https://scaleviewpartners.com/founders-hub/software-pe-pulse-senior-living-q3-2025/), [ROI-NJ Keystone](https://www.roi-nj.com/2026/01/23/finance/keystone-equity-partners-buys-south-jersey-luxury-property-manager/), [Fertility Bridge PE](https://www.fertilitybridge.com/venture-capital-and-private-equity), [Trep Advisors](https://trepadvisors.com/blog/private-equitys-2026-acquisition-targets/)
+
+---
+

@@ -463,3 +463,296 @@ Sources: [PeerSense Industry Data](https://peersense.com/industry-data), [LoanBo
 
 ---
 
+
+## [RECENT] — 2026-04-15T03:35Z
+
+### Source 1: Web/Social Research (Reddit, HN, Polymarket)
+
+Limited data. Reddit API returned errors across all three queries. Polymarket yielded no relevant signals for G&B niches (top results: Paramount/WB acquisition, Fed rate cuts, Coingecko acquisition — all irrelevant to SMB services M&A). HN returned 0 stories matching search fund or PE acquisition queries.
+
+**Signal: NONE actionable.**
+
+---
+
+### Source 2: Newsletters (Axios Pro Rata, Apr 8-14)
+
+5 Axios Pro Rata editions scanned. Key themes:
+
+- **Apr 14 — "Apple AI"**: AI investment themes. No SMB services M&A signals.
+- **Apr 13 — "Unprecedented growth"**: Jim VandeHei launched C-Suite newsletter for CEOs/investors. No deal signals.
+- **Apr 10 — "Ties that bind"**: PE + private credit tension. Private credit now competing with PE for deals. Relevant macro: credit availability shifting deal structures. Sazerac entering M&A conversations.
+- **Apr 9 — "Kalshi conversation"**: Prediction markets. No SMB M&A signals.
+- **Apr 8 — "Crisis averted"**: Trump/Iran ceasefire. Defense-tech companies saved. No SMB signals.
+
+**Signal: Macro only.** Private credit vs PE competition may affect LMM deal pricing. No niche-specific signals.
+
+---
+
+### Source 3: Granola Calls (Apr 1-14)
+
+8 meetings in period. 5 already in vault. 2 not yet ingested:
+
+**A. Guillermo Lavergne Bi-Weekly (Apr 9) — NOT IN VAULT**
+- TABLED: Fractional CFO — AI disruption risk, team-dependent, no searcher fit
+- CHALLENGED: Premium Pest Management — "what makes it premium?" Clarified: commercial/hospitality, HACCP compliance, IPM protocols, $2-15K/month contracts, national chains don't pursue this segment. Guillermo engaged after clarification.
+- CHALLENGED: Estate Management — questioned defensibility vs law firms/accountants/family offices. Kay responded: those are referral sources, not competition. Not fully resolved.
+- ACTION: Replace Fractional CFO as 3rd DealsX niche before Sam call
+
+**B. Kevin Hong / Caprae Capital (Apr 6) — NOT IN VAULT**
+- Cold calling service overview. 12,000 calls/week, 100 interns, 4-6 week ramp
+- KEY INSIGHT: Blue-collar B2B infrastructure has best call conversion. NY is poor cold-calling market — remote/distributed geographies recommended.
+- RELEVANT: Kay's "B2B infrastructure serving luxury" angle fits Kevin's best-converting categories
+- Pricing: $1,000-1,250/month + success fee ($10K-$300K)
+- Sellers forget cold calls in ~6 weeks; re-calling after ice period gets warm responses
+
+**C. Key vault calls with niche signals:**
+- **Margot Romano / BofA (Apr 4)**: Art advisory landscape deep dive. Banks (BofA, MS, UBS) doing advisory for FREE as client retention. Revenue pressure on independents. Advisory alone not acquirable — needs services layer (appraisal, collection mgmt). Schwartzman ~4 people, good buy box fit. Insurance: buy Midwest brokerage, open NY office (geographic arbitrage).
+- **Jake Stoller / Riverside (Apr 10)**: Vertical SaaS defensibility framework. Small TAM = POSITIVE in AI era. Key criteria: control point, compliance-driven, high cost of failure, domain expertise, long sales cycles, reference-driven. Adam's assisted living software exit at ~15x ARR validates niche SaaS thesis.
+- **Sam Singh / DealsX (Apr 10)**: Volume concern — Kay's 3 niches too small individually. Needs 2,000+ companies for campaign. Vertical Software broadened as volume niche. Kay filtering sub-verticals using Jake's framework.
+- **Camilla / Team TB (Apr 10)**: Pest Mgmt Compliance Software TABLED (customers are buildings, not pest companies). Premium Pest stable. Estate Management ambiguous. Art Advisory strongest conviction (two independent referrals, small pool, 1-to-1 conversations). Insurance "scars wearing off." Macro: NYC financial firms moving south.
+
+---
+
+### Source 4: Gmail Deal Flow (Apr 1-14)
+
+Scanned deal flow emails. No niche-specific matches found for active niches. Deal flow labels show:
+- Flippa: "$3.6M Annual Rev Luxury Fashion Brand" — B2C, not in thesis
+- Everingham & Kerr: Promotional products manufacturing — not in thesis
+- Quiet Light: AI SaaS portfolio — too small ($122K SDE)
+- SMB Deal Hunter: Special needs transport, exotic vet clinic — not in thesis
+
+No broker teasers, CIMs, or outreach responses matching active niches in the 14-day window.
+
+**Signal: NONE actionable for active niches.**
+
+---
+
+### Source 5: Vault Research (Apr 1-14)
+
+**Niche Intelligence Report (Apr 9) — Vertical Compliance SaaS run:**
+- 6 niches screened, 1 finalist: Pest Management Compliance Software (score 2.57/3.0)
+- Failed: Collection Management (ArtBinder acquired), Estate Planning Platforms (VC-dominated), License Renewal (overlap), Environmental Compliance (heavy PE consolidation), Insurance Compliance (overlap)
+- TABLED same day by Camilla (customer fragmentation concern)
+
+**Session Decision Timeline (niche-specific moves Apr 1-14):**
+1. Apr 3: Fractional CFO target list completed (28 targets)
+2. Apr 4: All 12 niche folders standardized with one-pager + scorecard templates
+3. Apr 7: G&B Target List Template finalized (23 columns, 5 tabs)
+4. Apr 8: Art Storage TABLED ("real estate game, not a business"). Vertical Compliance SaaS queued.
+5. Apr 9: Fractional CFO TABLED (Guillermo: AI risk, team-dependent). Vertical Software for Luxury added as DealsX niche #3. Pest Mgmt Compliance Software added to tracker.
+6. Apr 10: Pest Mgmt Compliance Software TABLED (Camilla: wrong customer base). Jake Stoller defensibility framework adopted.
+7. Apr 11: Specialty Healthcare PM/EHR selected as DealsX niche #4 (90/100 Riverside score). EH&S Safety Compliance Software on-deck as niche #5. Multiple niches rejected (GovTech, Accounting PM, Field Service, luxury travel).
+8. Apr 12: 5 new niches added to tracker — Behavioral Health PM (2.48), PT Clinic Software (2.44), Home Health Agency Software (2.51), Fertility/IVF (2.25, failed TAM gate), Senior Living Software (2.24). Childcare Center Software approved as lead niche for Children Services DealsX bucket.
+
+---
+
+### Source 6: Passive Signals (Inbox Items)
+
+| Inbox Item | Niche Signal | Status | Fit |
+|---|---|---|---|
+| Commercial Equipment Maintenance (Apr 2) | SBA FOIA: 132 loans $500K-$5M. Sub-niches: AED inspection, fire suppression, calibration. Asset-light only. | Backlog | MEDIUM — recurring, compliance-driven, fragmented. No luxury angle but strong structural fit. |
+| Art Advisory (Mar 24) | Two independent contacts (Kate Reibel, Dan Tanzilli) suggested same niche. | Pending | ALREADY ACTIVE — Art Advisory now Active-Outreach. Signal validated. |
+| Environmental Compliance (Mar 23) | 3+ broker listings on Rejigg ($2.8-8.1M rev). Regulation-driven, B2B. | Backlog | SCREENED & FAILED (Apr 9 report) — heavy PE consolidation (88 deals, Montrose 20+ acquisitions). |
+| Insurance Back-End / Horowitz (Mar 21) | Mike Horowitz list: fraud investigation, underwriting support, claims adjusting. | Pending | PARTIAL OVERLAP with Insurance Brokerage. SIU/fraud investigation worth separate screening. |
+| FDA Life Sciences Compliance (Mar 21) | JJ's prospect list: 3 companies in FDA compliance cluster. | Backlog | NOT SCREENED YET. Structural match strong (B2B, recurring, compliance-driven). No personal network = weak right-to-win. |
+| Export TCI (Mar 21) | Split from Domestic TCI. EXIM Bank, FCIA carriers. Kay's brother as river guide. | Pending | SEPARATE from Domestic TCI. Worth pipeline if Insurance Brokerage niche broadens. |
+
+---
+
+### Pattern Recognition: Multi-Source Convergence
+
+**STRONG CONVERGENCE (3+ sources):**
+
+1. **Art Advisory** — Vault calls (Margot Apr 4, Camilla Apr 10), inbox (Kate Reibel + Dan Tanzilli referrals), PE TRENDS agent (zero PE activity = white space), ASSOCIATIONS agent (APAA 185 members). Conviction highest across all niches.
+
+2. **Home Health Agency Software** — Session decisions (Apr 12, score 2.51 highest of 5 new niches), REGULATION agent (CMS CY2026 PDGM recalibration forces software updates), PE TRENDS agent (moderate PE, compete at LMM), ASSOCIATIONS agent (NAHC 35,000 agencies). Jake Stoller framework: 7/7 criteria met.
+
+3. **Vertical SaaS Defensibility Thesis** — Vault calls (Jake Stoller Apr 10, Adam's exit Apr 10), session decisions (Apr 11 niche selection using Riverside framework, Apr 12 SaaS Filter created), DealsX volume niche (Sam Apr 10). Multiple data points confirm small-TAM vertical SaaS as THE acquisition thesis for software.
+
+**MODERATE CONVERGENCE (2 sources):**
+
+4. **Childcare Center Software** — Session decisions (Apr 12, approved as Children Services lead), REGULATION agent (CCDBG modernization, state licensing overhauls), PE TRENDS agent (low PE saturation, Procare $1.75B exit validates market).
+
+5. **Insurance Brokerage Geographic Arbitrage** — Vault calls (Margot Apr 4: buy Midwest, open NY), FRANCHISE SIGNAL agent (Brightway roll-up validates model, 2,400+ units). But PE TRENDS warns 72.6% of transactions already PE-backed.
+
+6. **Estate Management = Management Layer Model** — Vault calls (Camilla Apr 10, Sam Apr 10 ambiguity), FRANCHISE SIGNAL agent (City Wide $8M AUV proves management-layer model). Needs sharper definition.
+
+7. **Veterinary Practice Management Software** — NEW signal from ASSOCIATIONS agent (5,000+ VHMA members, 32,000 practices, 60%+ independent) corroborated by PE TRENDS agent. Not on any tracker tab. Matches Jake Stoller framework.
+
+8. **Funeral Home Management Software** — NEW signal from ASSOCIATIONS agent (10,000+ NFDA members) corroborated by PE TRENDS agent. Not on any tracker tab. Multi-generational succession = acquisition pipeline.
+
+**DIVERGENCE / WARNING SIGNALS:**
+
+- **Premium Pest Management**: PE TRENDS agent flags >50% saturation, "WALK AWAY unless ultra-premium carve-out." But Guillermo engaged after commercial/hospitality clarification, and REGULATION agent shows HACCP digitalization as tailwind. Conflicting signals — the premium carve-out IS the thesis.
+- **Specialty Insurance Brokerage**: 72.6% PE-backed transactions is alarming. Only viable if HNW collections specialty stays unconsolidated. Margot's geographic arbitrage thesis may be the play.
+- **Fertility/IVF Clinic Software**: Failed TAM gate ($200-400M vs $500M floor) but PE TRENDS says favorable (PE owns clinics, not software). Kay kept it Under Review over agent recommendation to kill. Watch for Wednesday analyst decision.
+
+---
+
+### Summary Stats
+
+| Metric | Count |
+|---|---|
+| Active niches on tracker | 11 |
+| Niches tabled this period | 3 (Fractional CFO, Art Storage, Pest Mgmt Compliance SW) |
+| Niches added this period | 6 (Vertical Software, Behavioral Health PM, PT Clinic SW, Home Health SW, Fertility/IVF SW, Senior Living SW, Childcare SW) |
+| New niche signals (not on tracker) | 4 (Vet PM SW, Funeral Home SW, Digital Accessibility, SMB Privacy Compliance) |
+| Inbox items pending screening | 3 (Equipment Maintenance, Insurance Back-End, FDA Compliance) |
+| Calls with niche intel | 6 (Megan, Margot, Kevin, Guillermo, Jake/BK Growth, Sam/DealsX, Camilla/TB) |
+
+
+## [HISTORICAL] — 2026-04-15T04:12Z
+
+### Historical Intelligence Mining: Sep 2023 — Mar 2026
+
+**Sources mined:** 78 vault call files (brain/calls/), Gmail history (insurance/acquisition/teaser/CIM/niche queries), vault learnings.md, luxury infrastructure scoring output, session decisions, intermediary scans. OneNote unavailable (auth expired). ChatGPT export file not found on disk.
+
+---
+
+### NICHE 1: HNW Personal Lines Insurance Brokerage (NOT Art-Specific)
+**Sources:** August Felker calls (Oct/Nov 2025), Hunter Hartwell call (Jan 2026), Chris Wise call (Jan 2026), Margot Romano call (Apr 2026), Tobias/MarshBerry call (Mar 2026), Gmail (Linkt search completions)
+**Status:** Partially tracked as "Specialty Insurance Brokerage (Art & Collectibles)" but the BROADER HNW personal lines thesis was validated independently and never surfaced as its own niche.
+
+**Key intelligence:**
+- August Felker (Oct 2025): "I love niche insurance. No one else goes after it. Very women-centric brokerage focused on HNW personal lines (yachts, houses, high-value assets)... very sticky, very high recurring revenue, like 100%." Mentioned specialty niches BEYOND art: equine insurance, classic cars, concierge-level personal insurance for multi-property HNW individuals.
+- A specific target was identified: two women running a specialty HNW personal lines brokerage, near retirement, did NOT want PE acquisition. August: "I mean that's a great target."
+- Hunter Hartwell (Jan 2026) independently confirmed fine art + jewelry insurance are underserved, but flagged 12-14x EBITDA multiples as prohibitive.
+- Sam Singh (DealsX, Apr 2026) was briefed on the specific sub-segment: "A generalist P&C agency in Ohio is a completely different business than a HNW personal lines shop in Connecticut."
+
+**Why overlooked:** The tracker collapsed all insurance into "Specialty Insurance Brokerage (Art & Collectibles)." The broader HNW personal lines thesis (yachts, houses, multi-property, equine, classic cars) was validated by August but never spun out as a separate niche. Art-specific is a sub-niche of a larger, more acquirable market.
+
+**People:** [[entities/august-felker]], [[entities/hunter-hartwell]], [[entities/chris-wise]], Mark (Sertis, friend who built fine art practice at Markel — intro offered)
+
+**Kay's sentiment:** Positive on the broader personal lines thesis. The narrowing to art-only happened organically, not deliberately.
+
+---
+
+### NICHE 2: Customs Bonds & Cargo Insurance Specialty Brokerage
+**Sources:** Camilla/Kay call (Feb 17 2026), Jeremy Black call (Feb 2026), overnight niche deep dive (Mar 21 2026), Kay's brother (marine logistics)
+**Status:** On KILLED list as "Customs Bonds & Cargo Insurance" but the March deep dive flagged this may have been killed prematurely.
+
+**Key intelligence:**
+- Camilla researched this in February: cargo insurance flagged as "more profitable and steady" than bonds. Bonds need scale; cargo insurance has recurring premiums with 10-20% commissions.
+- Jeremy Black recommended specialty brokers specifically, not customs brokerage generically. Different animal.
+- March deep dive explicitly noted: "Was this killed prematurely? The vertical Jeremy described is NOT customs brokerage — it's customs bond specialty brokers."
+- Kay's brother works in marine logistics, providing firsthand perspective on the market.
+- Est. 30-50 specialty firms. Geopolitical volatility increasing demand.
+
+**Why overlooked:** Killed under broad "customs bonds" label when the specific recommendation was about specialty broker intermediaries. The rejection may not have considered the narrower framing.
+
+**REJECTION FLAG:** Killed on tracker. But the deep dive's own analysis questions the kill.
+
+**People:** [[entities/jeremy-black]], Kay's brother (marine logistics)
+
+---
+
+### NICHE 3: Collegiate Retail and Licensing
+**Sources:** Jeremy Black meeting (Feb 2026), overnight niche deep dive (Mar 2026)
+**Status:** Never appeared on tracker in any tab.
+
+**Key intelligence:**
+- Jeremy Black raised this during conversation about diversifying revenue streams.
+- Deep dive (Mar 21) categorized it under "E. Collegiate Retail and Licensing" but no further action taken.
+- Potential intersection with Kay's fashion/retail background for right-to-win.
+
+**Why overlooked:** Raised once by one contact, never researched or evaluated. No one-pager, no score.
+
+**Kay's sentiment:** Not expressed. Never discussed.
+
+---
+
+### NICHE 4: Luxury/Household Staffing Agencies (UHNW)
+**Sources:** Luxury infrastructure scoring (Mar 14 2026), estate management niche discussions (Apr 2026)
+**Status:** Scored ~20 in luxury infrastructure analysis but never entered tracker.
+
+**Key intelligence:**
+- Est. 100-200 US firms, $1M-$15M revenue range.
+- Placement fees + temp staffing revenue. Fragmented.
+- Examples: Starkey International, British American Household Staffing.
+- Strong luxury right-to-win for Kay.
+- Directly adjacent to "Estate Management Companies" which IS on the tracker.
+
+**Why overlooked:** The luxury infrastructure scoring identified it but it was in the "Additional Niches Not on the List" section and never promoted to the tracker.
+
+**Kay's sentiment:** Estate Management on Weekly Review but Kay "feels most uncertain about what this niche specifically encompasses." Staffing is a cleaner, more defined sub-segment.
+
+---
+
+### NICHE 5: Aviation Accounting / Tax Structuring Firms
+**Sources:** Luxury infrastructure scoring (Mar 14 2026)
+**Status:** Scored 21 (top 5 in entire analysis) but never entered tracker. Aviation software is on KILLED list ("too competitive per investor") but this is SERVICES, not software.
+
+**Key intelligence:**
+- Scored #5 overall: "Ultra-sticky, high margin, many aging sole practitioners."
+- Aviation tax structuring scored 20. Maritime tax structuring also 20.
+- These are B2B professional services firms, not software companies.
+- The aviation software kill explicitly cited investor concern about competitive software market — does not apply to accounting/tax practices.
+
+**Why overlooked:** Aviation as a category was mentally killed after the software rejection, but accounting/tax services in aviation is a fundamentally different business model (services vs. software).
+
+**REJECTION FLAG:** "No aviation software" per investor — but this is services, not software. Different objection.
+
+---
+
+### NICHE 6: Yacht Management Companies (Full-Service)
+**Sources:** Luxury infrastructure scoring (Mar 14 2026)
+**Status:** Scored #1 (22) in the entire luxury infrastructure analysis. "Yacht/Fleet Maintenance Software" is TABLED but full-service yacht management (services, not software) was never considered.
+
+**Key intelligence:**
+- Monthly management fees ($3K-$15K/yacht) for crew management, maintenance scheduling, budgeting, compliance.
+- Global market $11.2B growing at 7.8% CAGR. Highly fragmented.
+- "Strong luxury right-to-win: UHNW owners demand discretion and concierge-level service."
+- Est. 100-200 firms in US, $2M-$20M revenue range.
+
+**Why overlooked:** Yacht/Fleet SOFTWARE was tabled, and the entire marine vertical got deprioritized. But the SERVICES business (non-software, non-capital-intensive management fees) was the highest-scoring niche in the luxury analysis and was never evaluated.
+
+---
+
+### NICHE 7: Indoor Playgrounds / Children's Entertainment
+**Sources:** Camilla/Kay call (Sep 2 2025)
+**Status:** On KILLED list as "Children playrooms"
+
+**Key intelligence:**
+- Camilla/Kay September 2025: "Indoor playgrounds identified as a potential investment sector, with margins estimated at 30-40%, suggesting growth opportunities in children's entertainment."
+- Killed but no documented rejection reasoning found in calls or session decisions.
+
+**REJECTION FLAG:** On Killed list. Margins were attractive but may have been killed for real estate intensity or lack of recurring B2B revenue.
+
+---
+
+### NICHE 8: Healthcare Regulatory Compliance SaaS
+**Sources:** Gmail (E&K listing Mar 2026), Kay signed NDA (Mar 22 2026), deep dive regulatory analysis
+**Status:** Not on tracker. Kay actively pursued this deal (NDA signed, CIM received).
+
+**Key intelligence:**
+- E&K listing: "Cloud-Based SaaS Healthcare / Regulatory Compliance Software Company" — virtual/remote business.
+- Kay signed NDA and received CIM within 48 hours.
+- Aligns perfectly with "shovel seller" thesis and compliance-driven vertical SaaS criteria.
+- Jake Stoller (Riverside) defensibility framework: compliance-driven = high switching costs.
+
+**Why overlooked as a NICHE:** Kay pursued this as a single deal, not as a niche thesis. If the deal didn't work out, the underlying niche (healthcare regulatory compliance SaaS) was never added to the tracker for systematic search.
+
+---
+
+### CROSS-REFERENCE SUMMARY
+
+**STRONG signals (2+ independent sources):**
+1. **HNW Personal Lines Insurance (broad)** — August Felker + Hunter Hartwell + Chris Wise + Sam Singh briefing. 4 sources. Currently collapsed into art-only on tracker.
+2. **Customs Bond Specialty Brokers** — Jeremy Black + Camilla research + Kay's brother + deep dive flagged premature kill. 4 sources.
+3. **Healthcare Regulatory Compliance SaaS** — E&K deal flow + Kay NDA + regulatory deep dive + Jake Stoller framework. 4 sources.
+
+**Actionable (named contacts available):**
+- HNW Personal Lines: August Felker (operator), Hunter Hartwell (searcher intel), Mark at Sertis (Markel fine art practice builder — intro pending)
+- Customs Bonds: Jeremy Black (river guide), Kay's brother (market insider)
+- Aviation Accounting: No named contacts yet but aging sole practitioners = discoverable via association directories
+
+**Items correctly killed (do NOT revisit):**
+- Indoor playgrounds — likely B2C, real estate intensive
+- Art storage — confirmed balance sheet business, not operating business
+- Aviation software — investor explicitly rejected
+
+**Items worth revisiting with refined framing:**
+- Customs bond specialty brokers (vs. generic customs brokerage)
+- Aviation/yacht services (vs. software)
+- Household staffing agencies (vs. ambiguous "estate management")
+

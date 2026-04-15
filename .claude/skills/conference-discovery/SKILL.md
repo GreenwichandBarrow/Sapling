@@ -60,7 +60,7 @@ Read **BOTH tabs** on the Industry Research Tracker when generating conference s
 1. **WEEKLY REVIEW tab** — Kay's curated sub-niches (her active work queue). Priority order:
    - Active-Diligence and Active-Outreach niches first
    - Under Review niches only if active niches exhausted
-2. **Sam's DealsX Universe tab** — Sam's 6 high-level buckets + ~45 sub-niches (broader aperture). Use this tab to find vertical-specific conferences that Kay's curated rows don't surface. Examples: CMAA (Private Club mgmt), boat/yacht shows (Marina/Yacht SaaS + Yacht Household Mgmt), Menopause-health conferences (Menopause Clinic SaaS), ArtTable (Fine Art Insurance), family-office events (Family Office Operational Services).
+2. **DEALSX tab** — Sam's 6 high-level buckets + ~45 sub-niches (broader aperture). Use this tab to find vertical-specific conferences that Kay's curated rows don't surface. Examples: CMAA (Private Club mgmt), boat/yacht shows (Marina/Yacht SaaS + Yacht Household Mgmt), Menopause-health conferences (Menopause Clinic SaaS), ArtTable (Fine Art Insurance), family-office events (Family Office Operational Services).
 3. **General small business owner gatherings** — ETA events, SBA conferences, local business expos
 
 The two tracker tabs serve different purposes: WEEKLY REVIEW = Kay's work decisions; Sam's DealsX Universe = conference-search aperture (broader net so dedicated vertical events aren't missed). Run parallel searches against both, then dedupe results before presenting.

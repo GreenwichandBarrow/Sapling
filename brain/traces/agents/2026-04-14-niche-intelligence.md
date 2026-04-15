@@ -342,3 +342,124 @@ Sources: [BBSI 2026 Laws](https://www.bbsi.com/business-owner-resources/new-laws
 
 ---
 
+## [SBA HEATMAP] — 2026-04-15T03:45Z
+
+### Data Sources & Methodology
+
+SBA 7(a) FOIA dataset (data.sba.gov, 1.28M+ resolved loans), PeerSense industry analytics, LoanBox 2025-vs-2024 industry shifts, Crestmont Capital approval rate analysis, Census County Business Patterns. Focused on NAICS sectors 52/53/54/55/56/61/62/81 (B2B services). Loan density = proxy for independently-owned business concentration in G&B's buy box ($1-10M revenue, owner-operated, SBA-financeable).
+
+### Top B2B Service Industries by SBA 7(a) Loan Density
+
+| Rank | NAICS Sector | Industry | Total Loans (resolved) | Avg Loan | Default Rate | Signal for G&B |
+|------|-------------|----------|----------------------|----------|-------------|----------------|
+| 1 | 541 | Professional/Technical Services | 125,902 | $270K | 13.4% | Large fragmented pool |
+| 2 | 621 | Ambulatory Healthcare Services | 85,323 | $357K | 8.2% | Lowest default in services |
+| 3 | 811 | Repair & Maintenance | 63,153 | $329K | 14.4% | Independents outperform franchises (-5.6%) |
+| 4 | 812 | Personal & Laundry Services | 62,098 | $245K | 17.5% | High franchise advantage (+4.8%) |
+| 5 | 561 | Administrative & Support Services | 53,535 | $196K | 17.3% | Includes pest control (561710) |
+| 6 | 541330 | Engineering Services | 12,075 | $329K | 6.0% | Very low default |
+| 7 | 561730 | Landscaping Services | 25,494 | $180K | 8.9% | Massive independent base |
+
+**Key metric:** Franchise Advantage column shows whether franchises or independents default less. Negative = independents outperform (better acquisition targets). Repair & Maintenance (-5.6%) and Professional Services (-2.9%) show independents are stronger operators than franchised counterparts.
+
+### Validation of Current ACTIVE Niches
+
+**Premium Pest Management (NAICS 561710)**
+- Falls within NAICS 561 (53,535 total loans, 5th largest B2B services pool)
+- 18,490 active pest control companies in US (Census), majority independent
+- SBA size standard: $18M revenue cap = squarely in G&B buy box
+- Home services surging in 2025 per LoanBox data
+- **VALIDATED** — high loan density + growing sector + independent-dominant
+
+**Specialty Insurance Brokerage (NAICS 524210)**
+- ~5,000 SBA loans totaling ~$950M guaranteed over a decade for insurance agencies/brokers
+- ~40,000 independent agencies nationally (franchise signal corroborates)
+- Approval rates estimated 72-78% (professional services tier)
+- **VALIDATED** — massive fragmented pool, SBA-friendly, proven acquisition financing
+
+**Home Health Agency Software (NAICS 621610)**
+- Ambulatory Healthcare (85,323 loans) is 2nd-highest B2B services pool
+- Healthcare default rate below 1% for specialized outpatient; 8.2% sector-wide
+- 35,000+ home health agencies per NAHC, heavily fragmented
+- Healthcare approval rates 75-80%, highest of any sector
+- **STRONGLY VALIDATED** — best SBA lending profile of any G&B niche
+
+**Childcare Center Software (NAICS 624410)**
+- SBA microloans specifically include childcare centers (for-profit and nonprofit)
+- Childcare not in top loan density tiers, but sector growing
+- Size standard adjustments suggest SBA prioritizing access
+- **PARTIALLY VALIDATED** — lower loan density than healthcare/professional services, but policy tailwinds
+
+**Behavioral Health / PT Clinic Software (NAICS 621)**
+- Dental practices +23.5% loan growth in 2025 (LoanBox), healthcare broadly surging
+- Physicians/dentists/outpatient sub-1% default rates
+- **VALIDATED** — riding healthcare wave, best credit profile in SBA portfolio
+
+**Estate Management / Private Art Advisory**
+- Property management: 312,000 businesses nationally (franchise signal), 100+ franchise units prove model
+- Art advisory: too niche for SBA data visibility, but low capital intensity means less SBA reliance
+- **PARTIALLY VALIDATED** (estate mgmt) / **NO SBA SIGNAL** (art advisory — different financing profile)
+
+### NEW Industries Not Previously Considered
+
+**1. Veterinary Practice Management (NAICS 541940)**
+- 32,000+ vet practices, 60%+ independent despite Mars/NVA consolidation
+- Healthcare-adjacent approval rates and default profile
+- Already flagged by Associations agent — SBA data confirms massive independent base
+- **STRONG NEW SIGNAL**
+
+**2. Funeral Home Management (NAICS 812210)**
+- Falls in NAICS 812 (62,098 total loans), family-owned dominant
+- 10,000+ independent funeral homes (NFDA data)
+- Recession-resistant, high switching costs
+- **STRONG NEW SIGNAL** — corroborates Associations agent finding
+
+**3. Dental Practice Management (NAICS 621210)**
+- +23.5% loan growth H1 2025 — fastest growing healthcare sub-sector
+- 200,000 practices, 75% solo/small group
+- Sub-1% default rate
+- **MODERATE SIGNAL** — DSO consolidation risk noted by Associations agent
+
+**4. General Automotive Repair (NAICS 811111)**
+- NEW entrant to Top 25 in 2025 (LoanBox, rank #8)
+- Repair & Maintenance independents outperform franchises by 5.6%
+- Not luxury/B2B-adjacent — likely fails G&B searcher-fit filter
+- **LOW SIGNAL for G&B** — wrong customer profile
+
+**5. Fitness / Recreational Centers (NAICS 713940)**
+- +16.2% loan growth H1 2025, surging
+- B2C, not B2B — fails G&B filter
+- **NO SIGNAL for G&B**
+
+**6. Administrative Management Consulting (NAICS 541611)**
+- NEW entrant to Top 25 in 2025 (rank #20)
+- Size standard recently raised to $21.5M (proposed $27M)
+- Professional services approval rates 72-78%
+- **LOW-MODERATE SIGNAL** — consulting is people-dependent, hard to scale without key-person risk
+
+### Growth vs Decline (2024 to 2025 Shifts)
+
+**Growing (gaining SBA momentum):**
+- Healthcare (dental +23.5%, home services surging)
+- Fitness centers (+16.2%)
+- General automotive repair (new Top 25 entrant)
+- Administrative consulting (new Top 25 entrant)
+- Insurance brokerage (franchise expansion 7.3% CAGR)
+
+**Declining (cooling off):**
+- Trucking (dropped from #9, default rates 7-8%+)
+- Hotels/hospitality (dropped from Top 25)
+- Liquor retail (dropped from Top 25)
+- Traditional retail (brick-and-mortar continues declining)
+- Commercial real estate / office (high vacancy)
+
+### Key Takeaway for Niche Intelligence
+
+SBA loan density strongly validates G&B's existing niche portfolio. The three niches with the strongest SBA backing are: (1) Home Health Agency Software (best approval rates, lowest defaults, massive fragmented pool), (2) Specialty Insurance Brokerage (40K independents, proven SBA acquisition path), and (3) Premium Pest Management (home services surging, 18K+ independent operators). The two new signals that align with SBA data are Veterinary Practice Management and Funeral Home Management — both corroborate the Associations agent's independent findings through a completely different data lens.
+
+Overall SBA 7(a) volume grew 22.5% YoY to $37B in FY2025, with average loan size declining to $478K — indicating more small, independent businesses accessing SBA financing. This broadening favors G&B's sub-$10M buy box.
+
+Sources: [PeerSense Industry Data](https://peersense.com/industry-data), [LoanBox 2025 vs 2024](https://www.loanbox.com/insights/for-smart-business-loans-think-inside-the-loanbox-mzjb7-cr2pt-ljmsy-b4mrz-nbdk3-jk9wf-bnnx6-njpj4-ckgc7), [Crestmont Capital](https://www.crestmontcapital.com/blog/sba-loan-approval-rates-by-industry), [SBA FOIA Dataset](https://data.sba.gov/en/dataset/7-a-504-foia), [AmPac SBA Trends](https://ampac.com/sba-7a-lending-2025-trends/), [CapitalXO](https://capitalxo.com/data/sba-lending-statistics/)
+
+---
+

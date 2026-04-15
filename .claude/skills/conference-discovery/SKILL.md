@@ -48,10 +48,10 @@ Reference: Colin Woolway and Will Gallagher attended 1-2 conferences/week and la
 
 ### Geography
 
-**Priority 1:** NYC metro (walk, subway, car)
-**Priority 2:** Northeast corridor (Boston, Philly, DC, Hartford — train or short flight)
-**Priority 3:** Midwest (Chicago, Charlotte, Atlanta — early morning flight, back by dinner)
-**Excluded:** West Coast (California regulatory concerns, travel time prohibitive)
+**Priority 1:** NYC (walk, subway, car)
+**Priority 2:** Long Island, NJ, CT (car / short train)
+**Priority 3:** Pennsylvania (Philly metro, train)
+**Excluded:** Boston, DC, all Midwest, West Coast. Only exception: if a uniquely high-signal event occurs outside priority zones, surface with explicit flag for Kay's override decision.
 
 ### Event Format Priority (CRITICAL — set 2026-04-15)
 

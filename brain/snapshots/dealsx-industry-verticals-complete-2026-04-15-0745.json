@@ -1,0 +1,81 @@
+{
+  "range": "'Industry Detail'!A1:K20",
+  "values": [
+    [
+      "Date Added",
+      "Date Lists Due By",
+      "List Type",
+      "Niche",
+      "",
+      "What They Do ",
+      "Industries or Types of Services",
+      "Geography",
+      "Size (No of employees)",
+      "Keywords",
+      "Example Companies (Website URLs)"
+    ],
+    [
+      "Note: Keep the industries intentionally broad. Based on our testing over the past 12 months, proprietary outreach to highly specific verticals has not been effective for several reasons. As a result, we have shifted all of our search clients to this broader approach, with strong success."
+    ],
+    [
+      "Example",
+      "",
+      "",
+      "Asset-Light Manufacturing",
+      "",
+      "Asset-light manufacturing companies design, engineer, and commercialize physical products without owning or operating large-scale manufacturing facilities. These businesses focus on product development, intellectual property, supply chain coordination, quality control, branding, and go-to-market execution, while outsourcing production to third-party contract manufacturers.\n\nThey typically operate with lower capital intensity, flexible production capacity, and the ability to scale across geographies and end markets by leveraging global manufacturing partners.",
+      "Contract-Based Nutraceutical Manufacturing\n\nContract-Based Electronics Manufacturing\n\nContract-Based Sustainable Packaging Manufacturing\n\nContract-Based Apparel Manufacturing\n\nContract-Based Footwear Manufacturing\n\nContract-Based Cosmetics & Personal Care Manufacturing\n\nContract-Based Industrial Components Manufacturing\n\nContract-Based Medical Devices Manufacturing\n\nContract-Based Furniture Manufacturing\n\nContract-Based Home & Kitchen Goods Manufacturing",
+      "US",
+      "10 - 200 employees",
+      "set light manufacturing, contract based manufacturing, contract manufacturing, outsourced manufacturing, third party manufacturing, manufacturing outsourcing, nutraceutical contract manufacturing, dietary supplement manufacturing, electronics contract manufacturing, EMS provider, sustainable packaging manufacturing, packaging contract manufacturer, apparel contract manufacturing, garment manufacturing outsourcing, footwear contract manufacturing, cosmetics contract manufacturing, personal care manufacturing, industrial components manufacturing, precision components manufacturing, medical device contract manufacturing, furniture contract manufacturing, home goods manufacturing, kitchenware manufacturing, private label manufacturing, white label manufacturing, ODM manufacturing, OEM manufacturing, design and sourcing company, supply chain management, low capital manufacturing, scalable manufacturing model"
+    ],
+    [
+      "Example",
+      "",
+      "",
+      "Infrastructure & Industrial Services",
+      "",
+      "Infrastructure and industrial services companies support the construction, operation, maintenance, and optimization of physical assets and critical infrastructure. These businesses provide specialized services, inspections, monitoring, and project-based support without owning the underlying infrastructure assets.",
+      "Contract-Based Infrastructure Maintenance Services\n\nIndustrial Field Services\n\nEngineering, Procurement & Technical Services\n\nAsset Inspection & Testing Services\n\nEnvironmental & Compliance Services\n\nUtilities Support Services\n\nIndustrial Automation Services\n\nEnergy & Power Services\n\nConstruction Support Services\n\nFacilities & Asset Management Services",
+      "US",
+      "11 - 200 employees",
+      "Industrial maintenance services, field services provider, engineering services firm, EPC services provider, asset inspection services, testing and inspection services, non destructive testing services, environmental services provider, compliance and regulatory services, utilities services provider, power and energy services, construction services provider, facilities maintenance services, asset management services, asset light services business, recurring services model"
+    ],
+    [
+      "2026-04-14",
+      "",
+      "",
+      "Enterprise Software & Data Platforms B2B",
+      "",
+      "Mature vertical B2B SaaS companies with 5+ years of operating history, $3-10M ARR, profitable (open to smaller — adjustments often reveal more EBITDA), 20%+ annual growth, and mission-critical workflow software. Target profile: founder-owned or bootstrapped, NOT venture-backed or PE-backed, 85%+ gross revenue retention. Industry-specific platforms with high switching costs, deeply embedded in customer operations, subscription-based recurring revenue. B2B ONLY — no consumer-facing / B2C software. AI-enhanceable, not AI-disruptable.",
+      "Vertical Market Software\n\nPrivate Club / Country Club / Yacht Club Management Software\n\nJewelry Retail & Repair ERP Software\n\nLuxury Real Estate & Estate Management Software\n\nSpecialty Food & Beverage Distribution ERP\n\nMarina, Yacht & Boatyard Management Software\n\nEquestrian & Stable Management Software\n\nLuxury Hospitality & Property Operations Software\n\nCompliance & Risk Management Software\n\nAI-Enabled Enterprise Platforms\n\nArt Storage & Collections Management Software\n\nAuction House & Consignment Management Software",
+      "US",
+      "10 - 50 employees",
+      "vertical market software, vertical SaaS, industry specific software, private club management software, country club software, yacht club software, city club software, member management software, jewelry store software, jewelry ERP, jewelry POS software, jewelry repair tracking, jewelry retail software, luxury real estate software, estate management software, property management software HNW, family office software, specialty food distributor software, gourmet food ERP, specialty food distribution platform, fine wine distribution software, marina management software, boatyard management software, yacht management software, equestrian management software, stable management software, horse barn software, luxury hospitality software, boutique hotel software, property operations software HNW, compliance management software, risk management software, vertical compliance software, AI enterprise software, AI vertical SaaS, vertical SaaS platform, art storage software, art collection management software, fine art inventory software, condition reporting software, auction house software, auction management software, consignment management software, fine art cataloging software, founder-owned software, bootstrapped SaaS, subscription software business, mission-critical vertical software, high switching cost SaaS, B2B SaaS"
+    ],
+    [
+      "2026-04-14",
+      "",
+      "",
+      "Specialty Healthcare Software B2B",
+      "",
+      "Mature vertical B2B SaaS companies serving specialty healthcare practices and facilities with 5+ years of operating history, $3-10M ARR, profitable (open to smaller — adjustments often reveal more EBITDA), 20%+ annual growth, and mission-critical workflow software. Target profile: founder-owned or bootstrapped, NOT venture-backed or PE-backed, 85%+ gross revenue retention. Industry-specific platforms with high switching costs, deeply embedded in customer operations, subscription-based recurring revenue. B2B ONLY — no consumer-facing / B2C software. AI-enhanceable, not AI-disruptable.",
+      "Home Health Agency Software\n\nBehavioral Health Practice Management\n\nPT / Physical Therapy Clinic Software\n\nSenior Living & Home Care Operating Software\n\nHospice & Palliative Care Software\n\nFertility / IVF Clinic Software\n\nMidwifery & Doula Practice Management Software\n\nMenopause & Women's Midlife Health Clinic Software\n\nPelvic Floor Therapy Practice Management Software\n\nWomen's Mental Health / Perinatal Behavioral Health Software",
+      "US",
+      "10 - 50 employees",
+      "specialty healthcare software, vertical healthcare SaaS, healthcare practice management software, home health agency software, PDGM software, OASIS software, behavioral health practice management, behavioral health EHR, mental health EHR, physical therapy clinic software, PT clinic SaaS, senior living operating software, assisted living software, home care operating software, hospice software, palliative care software, fertility clinic software, IVF software, midwifery practice software, doula practice software, menopause clinic software, women's midlife health software, pelvic floor therapy software, perinatal behavioral health software, women's mental health software, specialty EHR, specialty healthcare SaaS, Medicare software, healthcare compliance software, HIPAA compliant software, vertical healthcare platform, founder-owned healthcare software, bootstrapped healthcare SaaS, B2B healthcare SaaS"
+    ],
+    [
+      "2026-04-14",
+      "",
+      "",
+      "Female-Led Vertical SaaS B2B",
+      "",
+      "Mature vertical B2B SaaS companies led by female founders, CEOs, or majority-female leadership teams with 5+ years of operating history, $3-10M ARR, profitable (open to smaller — adjustments often reveal more EBITDA), 20%+ annual growth, and mission-critical workflow software. Target profile: founder-owned or bootstrapped, NOT venture-backed or PE-backed, 85%+ gross revenue retention. Industry-specific platforms with high switching costs, deeply embedded in customer operations, subscription-based recurring revenue. B2B ONLY — no consumer-facing / B2C software. AI-enhanceable, not AI-disruptable.",
+      "Female-Led Childcare & Early Education Management Software\n\nFemale-Led Private / Independent School Administration Software\n\nFemale-Led Nonprofit & Foundation Compliance Software\n\nFemale-Led Legal Practice Management Software\n\nFemale-Led Event Venue & Hospitality Operations Software\n\nFemale-Led Membership & Association Management Software\n\nFemale-Led Salon & Spa Practice Management Software\n\nFemale-Led Industry-Specific Compliance Software\n\nFemale-Led Agency & Professional Services Operations Software\n\nFemale-Led Retail Operations Software",
+      "US",
+      "10 - 50 employees",
+      "female-led SaaS, female-founded software, women-led SaaS company, woman CEO software, female founder vertical SaaS, women-owned software business, female-led childcare software, female-led early education software, female-led private school software, female-led independent school software, female-led nonprofit CRM, female-led foundation software, female-led 990 compliance software, female-led legal practice management, female-led law firm software, female-led event venue software, female-led hospitality operations software, female-led membership management software, female-led association management software, female-led salon practice management, female-led spa management software, female-led industry compliance software, female-led agency operations software, female-led professional services software, female-led retail operations software, female-led boutique retail POS, women-owned vertical SaaS, bootstrapped female-founded SaaS, female founder bootstrapped SaaS, women CEO vertical software, female-led B2B SaaS, mission-critical female-led SaaS"
+    ]
+  ]
+}

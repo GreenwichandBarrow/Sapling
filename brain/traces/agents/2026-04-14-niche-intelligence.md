@@ -1184,3 +1184,23 @@ One-pager created and uploaded to Google Drive.
 
 ### Assessment
 Pending Scoring — one-pager created with all 9 sections populated from web research. Ready for scorecard.
+
+---
+
+## [ONEPAGER: Funeral Home Mgmt SW]
+
+**Status:** COMPLETE
+**Drive Folder:** `17wM1pqPdO3lgK9cjeUMGUGJEi_tC2U4Y` (WEEKLY REVIEW / Funeral Home Management Software)
+**File:** Funeral Home Management Software April 2026.pptx (`1xEXVo9Xnhn5CkcJ1OwYKUw7Vvs5FJaSc`)
+**Drive Link:** https://docs.google.com/presentation/d/1xEXVo9Xnhn5CkcJ1OwYKUw7Vvs5FJaSc/edit
+
+### Key Research Findings
+- US funeral home software market estimated $250-450M, growing 6.6-10.5% CAGR
+- 19,700 NFDA member establishments, 89% independently owned
+- 46% of funeral directors retiring within 5 years, <25% have succession plans
+- Batesville acquired Halcyon (Sep 2024) — first strategic move into funeral software
+- SaaS pricing: $99-899/month tiered, plus per-case models ($25-75/case)
+- 10-15 independent software targets, ZERO PE acquisitions of funeral home software
+- Exit buyers: Batesville (already active), SCI ($10.3B), Foundation Partners (PE-backed), vertical SaaS acquirers (Constellation, Roper)
+- Cloud adoption at 65%+ of new deployments, replacing aging on-premise systems
+- Assessment/Status: Pending Scoring (no score assigned per instructions)

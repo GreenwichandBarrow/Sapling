@@ -247,3 +247,98 @@ Sources: [CLA Connect LMM](https://www.claconnect.com/en/resources/blogs/private
 
 ---
 
+## [REGULATION] — 2026-04-15T03:15Z
+
+### Regulatory Scan: Compliance Infrastructure Opportunities
+
+Scanned 12 regulatory domains across federal and state levels. Regulations creating acquirable compliance-service demand, ranked by G&B thesis fit (compliance-driven, B2B, recurring, essential, regulatory tailwinds).
+
+---
+
+### TIER 1: HIGH-FIT COMPLIANCE INFRASTRUCTURE PLAYS
+
+**1. ADA Title II Digital Accessibility (WCAG 2.1 AA) — HARD DEADLINE APRIL 24, 2026**
+- **Who must comply:** All state/local government entities (50K+ population by Apr 2026; smaller by Apr 2027). Private sector litigation continues under Title III.
+- **Acquirable service:** Digital accessibility auditing, remediation, document conversion (PDFs, web apps, mobile). Allyant-model exactly.
+- **Market signal:** Deadline is 10 days away for large municipalities. Massive remediation wave in flight. Second wave (smaller entities) starts now.
+- **Penalty:** DOJ enforcement + private litigation (ADA lawsuits up 300%+ since 2020).
+- **Service providers:** Fragmented — Level Access, AudioEye, UsableNet, many boutiques. Prime acquisition territory.
+- **G&B fit:** STRONG. Matches Allyant thesis exactly. Compliance-driven, recurring (websites change), B2B/B2G, regulatory tailwind accelerating.
+
+**2. State Data Privacy Laws — Patchwork Explosion (8+ new states effective Jan 1, 2026)**
+- **Who must comply:** Any business processing consumer data in IN, KY, RI, NE, NH, NJ, TN, MN (joining CA, CO, CT, VA, etc.). CCPA risk assessments mandatory Jan 1, 2026.
+- **Acquirable service:** Privacy compliance platforms, data mapping, consent management, privacy program-as-a-service for SMBs.
+- **Market signal:** 20+ states now have comprehensive privacy laws. CCPA enforcement fines hit $1.35M in latest action.
+- **Penalty:** State AG enforcement, fines up to $7,500/violation (CCPA), private right of action in some states.
+- **Service providers:** Enterprise tools (OneTrust, BigID) exist but SMB-focused firms are small and fragmented.
+- **G&B fit:** STRONG. Recurring, B2B, regulatory-driven, expanding scope. SMB compliance gap is huge.
+
+**3. CMS CY2026 Home Health Rule — PDGM Recalibration + Quality Reporting**
+- **Who must comply:** All Medicare-certified home health agencies (~11,000 nationwide).
+- **Acquirable service:** HHA billing/coding software, PDGM case-mix optimization, quality reporting (OASIS).
+- **What changed:** 1.3% aggregate payment reduction, recalibrated PDGM case-mix weights, updated LUPA thresholds, new functional impairment levels, expanded face-to-face encounter rules. Effective Jan 1, 2026.
+- **Penalty:** Incorrect coding = payment clawbacks. Quality reporting failures = payment penalties.
+- **G&B fit:** DIRECT NICHE MATCH (Home Health Agency Software). Every PDGM rule change forces software updates. Compliance complexity is the moat.
+
+---
+
+### TIER 2: STRONG SIGNALS WITH NICHE ADJACENCY
+
+**4. FTC Safeguards Rule — Cybersecurity for Non-Bank Financial Institutions**
+- **Who must comply:** Insurance agencies, mortgage brokers, auto dealers, tax preparers. 5,000+ customer records = full security program required.
+- **Acquirable service:** Managed cybersecurity compliance, breach notification services.
+- **Insurance Brokerage relevance:** Insurance agencies explicitly covered. Compliance burden = recurring managed-service revenue.
+- **Penalty:** FTC enforcement, mandatory breach reporting within 30 days for 500+ customer breaches.
+
+**5. Insurance Regulatory Tightening — State Licensing + Cybersecurity + AML**
+- **Who must comply:** All insurance brokerages operating across state lines.
+- **What changed:** State regulatory activity up 13% YoY. New CE requirements in 5+ states. NAIC Cybersecurity Incident Response Framework in development.
+- **Acquirable service:** Multi-state licensing compliance, CE tracking, producer management platforms.
+- **G&B fit:** DIRECT NICHE MATCH (Insurance Brokerage). Multi-state compliance complexity is the exact pain point.
+
+**6. OSHA Heat Illness Prevention + Electronic Recordkeeping Expansion**
+- **Who must comply:** Employers with outdoor/high-heat workers. Electronic recordkeeping expanding to more high-hazard industries.
+- **Acquirable service:** Safety compliance software, OSHA recordkeeping platforms.
+- **Penalty:** Up to $16,131/serious; $161,323/willful. WHD recovered $260M in back wages in 2025.
+
+**7. HACCP/Food Safety Documentation Digitalization**
+- **Who must comply:** All food service, manufacturing, processing facilities.
+- **What changed:** 2025-2026 push for digitalized documentation, stronger prerequisite program enforcement including pest control records.
+- **G&B fit:** NICHE MATCH (Premium Pest Management). Digital compliance docs transform pest control from commodity to essential.
+
+---
+
+### TIER 3: EMERGING / MONITOR
+
+**8. DOL PBM Transparency** — Effective July 1, 2026. Health plan sponsors need PBM disclosure compliance help.
+**9. Corporate Transparency Act (CTA)** — Enforcement paused. If reinstated, massive compliance market for LLC/S-corp filing.
+**10. CCDBG Childcare Licensing Modernization** — States (MN, KY) overhauling licensing. CCDBG funding up $85M. **NICHE MATCH** to Childcare Software.
+**11. SEC Regulation S-P** — Smaller financial institutions must comply by June 3, 2026.
+
+---
+
+### CROSS-REFERENCE: G&B ACTIVE NICHES
+
+| Niche | Regulation Driver | Demand Signal |
+|-------|------------------|---------------|
+| Home Health Agency Software | CMS CY2026 PDGM recalibration, quality reporting | Rule changes = forced software update cycles. Moat deepens. |
+| Insurance Brokerage | FTC Safeguards, state licensing (+13% YoY), NAIC cyber framework | Multi-state compliance burden growing. |
+| Premium Pest Management | HACCP documentation digitalization | Digital compliance docs = commodity to essential. |
+| Childcare Software | CCDBG modernization, state licensing overhauls | New licensing systems = new software demand. |
+
+### NEW NICHE SIGNAL: Digital Accessibility Compliance Services
+
+ADA Title II deadline (April 24, 2026) is the single strongest near-term compliance catalyst. Fragmented service provider market, recurring revenue, B2B/B2G, litigation-driven demand floor. Directly mirrors Allyant model from G&B thesis.
+
+### NEW NICHE SIGNAL: SMB Privacy Compliance Services
+
+20+ state privacy laws creating impossible patchwork for multi-state SMBs. Enterprise tools priced out of reach. Gap for acquirable SMB-focused privacy compliance firms. Recurring, regulation-driven, expanding TAM.
+
+### KEY TAKEAWAY
+
+Strongest "shovel seller" opportunities: (1) digital accessibility — hard deadline in 10 days, (2) data privacy for SMBs — 20+ state patchwork, (3) healthcare compliance software — annual CMS rule changes, (4) insurance regulatory infrastructure — 13% YoY state activity increase. All match G&B thesis: compliance-driven, B2B, recurring, essential, regulatory tailwinds.
+
+Sources: [BBSI 2026 Laws](https://www.bbsi.com/business-owner-resources/new-laws-regulations-small-business-owners-2026), [Manay CPA Compliance Guide](https://www.manaycpa.com/us-business-compliance-guide/), [BDO Privacy 2026](https://www.bdo.com/insights/advisory/2026-is-a-pivotal-year-for-privacy), [CMS HH PPS Final Rule](https://www.cms.gov/newsroom/fact-sheets/calendar-year-cy-2026-home-health-prospective-payment-system-final-rule-cms-1828-f), [BBK Law Digital Accessibility](https://bbklaw.com/resources/new-digital-accessibility-requirements-in-2026), [OSHA 2026 Priorities](https://workcare.com/resources/blog/oshas-2026-priorities-key-changes-employers-must-know/), [Deloitte Insurance Regulatory](https://www.deloitte.com/us/en/services/consulting/articles/insurance-regulatory-outlook.html), [RegEd Regulatory Trends](https://www.reged.com/regulatory-activity-update-key-trends-shaping-2025-2026/), [FTC Safeguards Rule](https://www.ftc.gov/business-guidance/resources/ftc-safeguards-rule-what-your-business-needs-know), [CCPA 2026 Regs](https://cppa.ca.gov/regulations/pdf/ccpa_statute_eff_20260101.pdf)
+
+---
+

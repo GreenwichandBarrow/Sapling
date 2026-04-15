@@ -756,3 +756,168 @@ No broker teasers, CIMs, or outreach responses matching active niches in the 14-
 - Aviation/yacht services (vs. software)
 - Household staffing agencies (vs. ambiguous "estate management")
 
+---
+
+## [SYNTHESIZER] — 2026-04-15T03:11Z
+
+### OUTPUT 1: CROSS-SOURCE SIGNAL MATRIX
+
+| Niche / Industry | ASSOC | FRANCHISE | PE TRENDS | REGULATION | SBA | RECENT | HISTORICAL | Count | Strength |
+|---|---|---|---|---|---|---|---|---|---|
+| Premium Pest Management | X | X | X | X | X | X (Guillermo, Camilla) | — | 6 | VERY STRONG |
+| Specialty Insurance Brokerage | X | X | X | X | X | X (Margot, Sam) | X (August, Hunter, Chris) | 7 | VERY STRONG |
+| Home Health Agency Software | X | — | X | X | X | X (session decisions) | — | 5 | VERY STRONG |
+| Private Art Advisory | X | — | X | — | — | X (Margot, Camilla) | — | 3 | STRONG |
+| Estate Management | — | X | X | — | X | X (Camilla, Sam) | X (staffing adjacent) | 5 | VERY STRONG |
+| Behavioral Health PM | X | — | X | — | X | X (session decisions) | — | 4 | VERY STRONG |
+| Childcare Center Software | X | — | X | X | X | X (session decisions) | — | 5 | VERY STRONG |
+| Senior Living Software | — | — | X | — | — | X (session decisions) | — | 2 | STRONG |
+| PT Clinic Software | X | — | X | — | X | — | — | 3 | STRONG |
+| Fertility/IVF Clinic Software | — | — | X | — | — | X (session decisions) | — | 2 | STRONG |
+| Vertical Software for Luxury | — | — | — | — | — | X (Jake, Sam) | — | 1.5 | MODERATE |
+| **Veterinary Practice Mgmt SW** | X | — | X | — | X | — | — | 3 | **STRONG (NEW)** |
+| **Funeral Home Mgmt SW** | X | — | X | — | X | — | — | 3 | **STRONG (NEW)** |
+| **Digital Accessibility Services** | — | — | — | X | — | — | — | 1 (quant) | **MODERATE (NEW)** |
+| **SMB Privacy Compliance** | — | — | — | X | — | — | — | 1 (quant) | **MODERATE (NEW)** |
+| **HNW Personal Lines (broad)** | — | X | X | X | X | — | X (August, Hunter, Chris, Sam) | 5 | **VERY STRONG (NEW framing)** |
+| **Customs Bond Specialty Brokers** | — | — | — | — | — | — | X (Jeremy, Camilla, brother, deep dive) | 1.5 | **MODERATE (NEW framing)** |
+| **Healthcare Reg Compliance SaaS** | — | — | — | X | — | — | X (E&K deal, NDA, Jake framework) | 2.5 | **STRONG (NEW)** |
+| **Yacht Management (services)** | — | — | — | — | — | — | X (scored #1 luxury infra) | 1 (quant) | **MODERATE (NEW framing)** |
+| **Household Staffing Agencies** | — | — | — | — | — | — | X (luxury infra scoring) | 1 (quant) | **MODERATE (NEW framing)** |
+| Dental Practice Mgmt SW | X | — | — | — | X | — | — | 2 | STRONG |
+| Facility Management | — | X | — | — | — | — | — | 1 (quant) | MODERATE |
+
+### OUTPUT 2: NAMED COMPANY REGISTRY
+
+| Company | Niche | Source(s) | Independence | Location |
+|---|---|---|---|---|
+| PestCo (Thompson Street) | Premium Pest | PE TRENDS | **PE-OWNED** (Thompson Street) | — |
+| Bio-Tech Pest Control | Premium Pest | PE TRENDS | Acquired by PestCo Jan 2026 | Houston, TX |
+| Modern Pest | Premium Pest | PE TRENDS | PE-backed (10 acquisitions) | — |
+| American Pest | Premium Pest | PE TRENDS | PE-backed (13 acquisitions) | — |
+| Schwartzman | Art Advisory | RECENT (Margot) | Independent (~4 people) | NYC area |
+| Brightway Insurance | Insurance Brokerage | FRANCHISE | PE-backed (GlobalGreen acq) | Jacksonville, FL |
+| Goosehead Insurance | Insurance Brokerage | FRANCHISE | Public (GSHD) | Westlake, TX |
+| Hilb Group | Insurance Brokerage | PE TRENDS | **PE-OWNED** (Carlyle, 200+ acquisitions) | Richmond, VA |
+| King Risk Partners | Insurance Brokerage | PE TRENDS | PE-backed (East Coast roll-up) | — |
+| Risk Strategies | Insurance Brokerage | learnings.md | PE roll-up | — |
+| City Wide Facility Solutions | Facility Mgmt / Estate adjacent | FRANCHISE | Franchise (109 units) | — |
+| Alora Healthcare Systems | Home Health SW | PE TRENDS | Acquired by LivTech (PSG/GSV) | — |
+| LivTech | Senior Living / Home Health SW | PE TRENDS | **PE-OWNED** (PSG/GSV) | — |
+| Activated Insights | Senior Living SW | PE TRENDS | **PE-OWNED** (Cressey) | — |
+| Aline (Glennis+Enquire+Sherpa+Grove) | Senior Living SW | PE TRENDS | **PE-OWNED** (Rubicon) | — |
+| Qualifacts | Behavioral Health PM | PE TRENDS | **PE-OWNED** (Warburg Pincus + Martis) | — |
+| MethodOne | Behavioral Health PM | PE TRENDS | Acquired by Qualifacts | — |
+| Procare | Childcare SW | PE TRENDS | **PE-OWNED** (Roper Technologies, $1.75B) | — |
+| illumine | Childcare SW | PE TRENDS | Independent (AI-powered) | — |
+| David Nicholas Building & Property | Estate Mgmt | PE TRENDS | Acquired by Keystone (Shoreline Platform) | South Jersey |
+| AKAM | Property Mgmt | PE TRENDS | Acquired by Audax PE | — |
+| ProperXPM | Property Mgmt | PE TRENDS | PE-backed | 15 states |
+| Level Access | Digital Accessibility | REGULATION | Independent | — |
+| AudioEye | Digital Accessibility | REGULATION | Public (AEYE) | — |
+| UsableNet | Digital Accessibility | REGULATION | Independent | — |
+| Starkey International | Household Staffing | HISTORICAL | Independent | — |
+| British American Household Staffing | Household Staffing | HISTORICAL | Independent | — |
+| Covetrus | Vet Practice SW | ASSOCIATIONS | Independent/public | — |
+| eVetPractice | Vet Practice SW | ASSOCIATIONS | Independent | — |
+| E&K Healthcare SaaS listing | Healthcare Reg Compliance | HISTORICAL | Independent (listed for sale) | Virtual/remote |
+
+**PE-owned count: 12 companies flagged. Hard stop on outreach to any PE-owned target.**
+
+### OUTPUT 3: CONTACT-TO-NICHE MAP
+
+| Contact | Warmth | Niches They Can Help With | What to Ask | Last Contact |
+|---|---|---|---|---|
+| August Felker | HOT | HNW Personal Lines Insurance (broad), Specialty Insurance | Has a specific target (2 women, near retirement, anti-PE). Ask for intro. | Oct/Nov 2025 |
+| Margot Romano (BofA) | HOT | Art Advisory, Insurance Geographic Arbitrage | Midwest brokerage targets, Schwartzman intro, advisory landscape intel | Apr 4 2026 |
+| Jake Stoller (Riverside) | HOT | Vertical SaaS (all niches), Defensibility framework | Apply framework to new niche candidates, PE exit pathway intel | Apr 10 2026 |
+| Camilla (Team TB) | HOT | Art Advisory, Estate Mgmt, Insurance, Customs Bonds | Ongoing analyst — all niches | Apr 10 2026 |
+| Guillermo Lavergne | HOT | All niches (investor/advisor) | AI disruption filter on new candidates, estate mgmt defensibility | Apr 9 2026 |
+| Sam Singh (DealsX) | HOT | Insurance, Vertical Software, volume niches | DealsX campaign volume needs, niche #3 replacement | Apr 10 2026 |
+| Hunter Hartwell | WARM | Insurance (fine art/jewelry), multiples intel | Market multiples update, specialty broker landscape | Jan 2026 |
+| Chris Wise | WARM | Specialty Insurance | Insurance brokerage landscape | Jan 2026 |
+| Kevin Hong (Caprae) | WARM | Cold calling strategy (all niches) | Blue-collar B2B conversion data, geographic targeting | Apr 6 2026 |
+| Jeremy Black | WARM | Customs Bond Specialty Brokers, Collegiate Retail | Revisit customs bond specialty framing (vs generic kill) | Feb 2026 |
+| Kate Reibel | WARM | Art Advisory | Independent referral to niche | Mar 2026 |
+| Dan Tanzilli | WARM | Art Advisory | Independent referral to niche | Mar 2026 |
+| Mark (Sertis/Markel) | COOL | HNW Insurance (fine art practice) | Intro pending from August — follow up | Referred Oct 2025 |
+| Kay's brother | HOT | Customs Bonds, Marine Logistics, Export TCI | Market insider perspective on specialty brokers | Ongoing |
+| Tobias / MarshBerry | WARM | Insurance Brokerage M&A | Brokerage valuation/deal data | Mar 2026 |
+| Mike Horowitz | COOL | Insurance Back-End (fraud, underwriting, claims) | SIU/fraud investigation as separate niche screening | Mar 2026 |
+
+### OUTPUT 4: LEAD LIFECYCLE TRACKER
+
+| Niche/Strategy | Proposed By | When | Challenged By | When | Reason | Status |
+|---|---|---|---|---|---|---|
+| Fractional CFO | Kay/Camilla | Pre-Apr | Guillermo | Apr 9 | AI disruption risk, team-dependent, no searcher fit | TABLED |
+| Art Storage | Kay | Pre-Apr | 2 investors | Pre-Apr; Apr 8 session | Balance sheet business, real estate game, not operating business | TABLED |
+| Pest Mgmt Compliance SW | Niche Intelligence | Apr 9 | Camilla | Apr 10 | Customers are buildings, not pest companies (wrong customer base) | TABLED |
+| Premium Pest Management | Kay | Active | PE TRENDS agent | Apr 14 | >50% PE saturation, "WALK AWAY" | LIVE (contested) |
+| Premium Pest Management | Kay | Active | Guillermo | Apr 9 | "What makes it premium?" — resolved after clarification (commercial/hospitality/HACCP) | LIVE |
+| Estate Management | Kay | Active | Guillermo | Apr 9 | Questioned defensibility vs law firms/accountants | LIVE (unresolved) |
+| Estate Management | Kay | Active | Sam Singh | Apr 10 | Ambiguous definition, volume concern | LIVE (needs sharpening) |
+| Specialty Insurance Brokerage | Kay | Active | PE TRENDS agent | Apr 14 | 72.6% PE-backed transactions | LIVE (caution) |
+| Fertility/IVF Clinic SW | Niche Intelligence | Apr 12 | Niche Intelligence | Apr 12 | Failed TAM gate ($200-400M vs $500M floor) | LIVE (Kay overrode kill recommendation) |
+| Customs Bonds (generic) | Jeremy Black | Feb 2026 | Tracker | Pre-Mar | Killed on tracker | KILLED (but specialty broker framing never evaluated) |
+| Aviation Software | — | Pre-2026 | Investor | Pre-2026 | Too competitive | KILLED |
+| Indoor Playgrounds | Camilla/Kay | Sep 2025 | — | — | No documented reason (likely B2C, RE-intensive) | KILLED |
+| Environmental Compliance | Inbox | Mar 2026 | Apr 9 screening | Apr 9 | Heavy PE consolidation (88 deals, Montrose 20+ acquisitions) | DEAD |
+
+### OUTPUT 5: CONVERGENCE REPORT — Top 5 Strongest NEW Niche Signals
+
+**Rank 1: HNW Personal Lines Insurance Brokerage (broad framing)**
+- Sources: 5 (FRANCHISE, PE TRENDS, REGULATION, SBA, HISTORICAL with 4 named contacts)
+- Named companies: Target identified by August (2 women, near retirement, anti-PE)
+- Contacts: August Felker (HOT), Hunter Hartwell (WARM), Mark/Sertis (COOL, intro pending)
+- Buy box: B2B, recurring (100% per August), compliance-driven (FTC Safeguards, state licensing), 40K+ independents
+- Actionability: HIGH — August has a live target and offered intro
+
+This is not a new niche — it is the EXISTING insurance niche with the wrong label. "Specialty Insurance Brokerage (Art & Collectibles)" artificially narrows the thesis. August Felker validated HNW personal lines broadly (yachts, houses, equine, classic cars, multi-property concierge). The art-only framing happened organically, not deliberately. Broadening the label unlocks a 10x larger target pool while keeping the same HNW moat.
+
+**Rank 2: Veterinary Practice Management Software**
+- Sources: 3 independent (ASSOCIATIONS, PE TRENDS, SBA)
+- Named companies: Covetrus, eVetPractice (incumbents ripe for vertical SaaS play)
+- Contacts: None yet (gap)
+- Buy box: B2B, recurring SaaS, operationally critical, compliance (DEA scheduling, state veterinary boards), 32K practices 60%+ independent
+- Actionability: MODERATE — needs contact development, but VHMA directory (5,000+ members) is ready feed
+
+Three completely independent data sources converged on the same signal without coordination. The associations agent found 32K practices and 5K+ VHMA members. PE trends confirmed consolidation wave (Mars/VCA) but software layer untouched. SBA data validated healthcare-adjacent approval rates. Jake Stoller's defensibility framework applies cleanly: domain expertise required, high cost of failure, compliance-driven, long sales cycles.
+
+**Rank 3: Healthcare Regulatory Compliance SaaS**
+- Sources: 2.5 (REGULATION, HISTORICAL with E&K deal + NDA + Jake framework)
+- Named companies: E&K listing (Kay signed NDA, CIM received)
+- Contacts: Jake Stoller (framework validation), E&K broker relationship
+- Buy box: B2B, recurring SaaS, compliance-driven (annual CMS rule changes), essential
+- Actionability: HIGH — Kay already pursued one deal in this space
+
+Kay pursued a specific deal (healthcare regulatory compliance SaaS via E&K) but never elevated the NICHE to the tracker. If that deal fell through, the systematic search never began. The regulation agent confirms annual CMS rule changes force perpetual software update cycles. This is the Allyant archetype applied to healthcare — compliance-driven, recurring, B2B, regulatory tailwinds.
+
+**Rank 4: Funeral Home Management Software**
+- Sources: 3 independent (ASSOCIATIONS, PE TRENDS, SBA)
+- Named companies: None extracted (gap — needs list-builder run)
+- Contacts: None yet (gap)
+- Buy box: B2B, recurring SaaS, operationally critical, compliance (state licensing, FTC Funeral Rule), 10K+ independent homes, recession-resistant
+- Actionability: MODERATE — NFDA directory (10K+ members) is ready feed, but no contacts or companies identified
+
+Classic "boring vertical SaaS" play. Multi-generational family businesses facing succession creates a natural acquisition pipeline. Recession-resistant demand. High switching costs (case management data is mission-critical). Same convergence pattern as veterinary — three independent agents found the same signal. Weaker than vet because no existing contacts and no software incumbents identified as targets.
+
+**Rank 5: Digital Accessibility Compliance Services**
+- Sources: 1 with strong quantitative data (REGULATION)
+- Named companies: Level Access, AudioEye (public), UsableNet, "many boutiques"
+- Contacts: None
+- Buy box: B2B/B2G, recurring (websites change constantly), compliance-driven (ADA Title II hard deadline Apr 24 2026), fragmented providers
+- Actionability: HIGH near-term (10-day deadline driving demand surge), but single-source signal
+
+This is the closest match to the Allyant archetype in the entire scan. Hard regulatory deadline in 10 days for large municipalities, second wave for smaller entities in 2027. ADA lawsuits up 300%+ since 2020 creates a litigation-driven demand floor. The fragmented boutique provider market is prime acquisition territory. Single-source weakness, but the quantitative regulatory data is exceptionally strong.
+
+---
+
+**OMITTED from top 5 (reasons):**
+- Customs Bond Specialty Brokers: 1.5 sources, on KILLED list (needs Kay to revisit framing)
+- Yacht Management Services: 1 source only (luxury infra scoring), despite #1 score
+- Household Staffing: 1 source only, adjacent to existing Estate Management niche
+- Dental Practice Mgmt SW: DSO consolidation risk flagged, moderate signal
+- SMB Privacy Compliance: 1 source, no named companies or contacts
+- Facility Management: 1 source, overlaps with Estate Management
+
+**META-PATTERN:** The strongest new signals share a common structure — "boring vertical SaaS for fragmented professional services with compliance drivers." Veterinary, funeral, healthcare regulatory, and digital accessibility all fit this template. Kay's portfolio is already tilting this direction (Home Health, Behavioral Health, PT, Childcare software). The Jake Stoller defensibility framework from Riverside is the right filter for all of them.

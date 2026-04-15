@@ -53,15 +53,62 @@ Reference: Colin Woolway and Will Gallagher attended 1-2 conferences/week and la
 **Priority 3:** Midwest (Chicago, Charlotte, Atlanta — early morning flight, back by dinner)
 **Excluded:** West Coast (California regulatory concerns, travel time prohibitive)
 
-### Niche Targeting
+### Event Format Priority (CRITICAL — set 2026-04-15)
 
-Read **BOTH tabs** on the Industry Research Tracker when generating conference search queries:
+Kay's preferred event format is **grass-roots intermediary networking**, NOT big industry conferences. Her unlock came from the Greg Donus / Smart Tours story (Helen Guo podcast): he found his acquisition via a Long Island broker breakfast → insurance contact → BDO connector → accountant → $25M deal. Kay's strategy mirrors this.
 
-1. **WEEKLY REVIEW tab** — Kay's curated sub-niches (her active work queue). Priority order:
+**Priority 1 — Intermediary networking (PRIMARY):**
+- Broker breakfasts (Long Island 7am diner rotation and similar)
+- M&A happy hours (Todd Kenny BDO monthly, other firm-hosted)
+- ACG chapter events (NYC, NJ, East, Boston) + ACG M&A Source speed networking
+- XPX (Exit Planning Exchange) chapter meetings
+- AM&AA (Alliance of M&A Advisors) breakfasts
+- Lower Middle Market Club of NYC
+- Accounting firm networking events (BDO, Grant Thornton, Marcum, CohnReznick, EisnerAmper)
+- M&A law firm breakfasts (Goodwin, Proskauer, Kirkland, Morgan Lewis)
+- Wealth manager lunches serving HNW/SMB owners
+- NYIC (NY Institute of Credit)
+
+**Priority 2 — Vertical industry conferences:**
+- CMAA (Private Club mgmt), boat/yacht shows, Menopause-health SaaS events, ArtTable, family-office events
+- Use the DEALSX tab for aperture on which verticals to hunt
+- Keep these rare — 1-2/month max — because they're expensive, exhausting, and lower-density for intermediary meetings
+
+**Priority 3 — General SMB owner gatherings:**
+- ETA events, SBA conferences, local business expos
+
+**De-prioritized (do NOT surface without explicit Kay ask):**
+- Big industry conferences (SaaStr, HIMSS, major ETA flagships) — too expensive, too low-density for relationship building
+
+### Event Criteria Filter
+
+Before surfacing any event to Kay, check:
+- **Cost:** under $100 preferred; $100-500 OK for high-signal; flag anything over $500
+- **Duration:** 2-3 hours preferred; willing to do 4-6 hour if NYC
+- **Format:** breakfast / coffee / lunch / happy hour / speed networking (top priority); conference/panel (secondary)
+- **Geography:** NYC + Long Island + NJ + CT + Philly + Boston (per scheduling table above)
+- **Attendee profile:** must skew intermediary (brokers, M&A advisors, CPAs, M&A lawyers, wealth managers, bankers) OR SMB owner clusters (for vertical events)
+
+### Cadence
+
+Target **1 event/week minimum**. More if discovery yields more viable events (Kay's physical capacity is high for short local events; discovery rate is the constraint).
+
+### Shared pipeline with river-guide-builder
+
+Conference-discovery and river-guide-builder operate on the same data source: event attendee lists. Every broker-breakfast attendee is simultaneously a potential river guide AND a potential deal source. Run them as one pipeline, not two separate searches. Post-event protocol: within 48 hours, every attendee Kay met gets (a) vault entity, (b) Attio People record, (c) `relationship_type` tagged, (d) `nurture_cadence` assigned, (e) next_action if Kay committed to something.
+
+### Niche Targeting (for Priority 2 vertical conferences only)
+
+When searching for Priority 2 vertical industry conferences, read **BOTH tabs** on the Industry Research Tracker:
+
+1. **WEEKLY REVIEW tab** — Kay's curated sub-niches (active work queue). Priority order:
    - Active-Diligence and Active-Outreach niches first
    - Under Review niches only if active niches exhausted
 2. **DEALSX tab** — Sam's 6 high-level buckets + ~45 sub-niches (broader aperture). Use this tab to find vertical-specific conferences that Kay's curated rows don't surface. Examples: CMAA (Private Club mgmt), boat/yacht shows (Marina/Yacht SaaS + Yacht Household Mgmt), Menopause-health conferences (Menopause Clinic SaaS), ArtTable (Fine Art Insurance), family-office events (Family Office Operational Services).
-3. **General small business owner gatherings** — ETA events, SBA conferences, local business expos
+
+### Storage
+
+All events go into the existing **Conference Pipeline** Google Sheet (ID: 1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY). Do not create a new sheet. Add a column if needed for event format (breakfast / speed-networking / happy hour / conference).
 
 The two tracker tabs serve different purposes: WEEKLY REVIEW = Kay's work decisions; Sam's DealsX Universe = conference-search aperture (broader net so dedicated vertical events aren't missed). Run parallel searches against both, then dedupe results before presenting.
 

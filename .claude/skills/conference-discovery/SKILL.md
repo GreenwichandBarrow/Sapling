@@ -58,16 +58,24 @@ Reference: Colin Woolway and Will Gallagher attended 1-2 conferences/week and la
 Kay's preferred event format is **grass-roots intermediary networking**, NOT big industry conferences. Her unlock came from the Greg Donus / Smart Tours story (Helen Guo podcast): he found his acquisition via a Long Island broker breakfast → insurance contact → BDO connector → accountant → $25M deal. Kay's strategy mirrors this.
 
 **Priority 1 — Intermediary networking (PRIMARY):**
+**Format constraint (HARD):**
+- **Mon:** full-day flex, including evening events (happy hours OK)
+- **Tues/Wed:** morning or lunch only, done by 1:30pm NYC (no evening)
+- **Thu:** morning, lunch, or afternoon, done by 4:30pm NYC (no evening)
+- **Fri:** no events (weekly review day)
+
+Breakfast, coffee, and early-AM networking are the default priority. Monday evening events are acceptable but not preferred (still a long day with kids). Tues-Thu evening events are suppressed by default — Kay is a solo parent, evening events Tues-Thu require advance babysitter planning and will not be surfaced without explicit Kay ask.
+
 - Broker breakfasts (Long Island 7am diner rotation and similar)
-- M&A happy hours (Todd Kenny BDO monthly, other firm-hosted)
-- ACG chapter events (NYC, NJ, East, Boston) + ACG M&A Source speed networking
-- XPX (Exit Planning Exchange) chapter meetings
+- Morning M&A meetings — check if firms have AM versions of their evening happy hours
+- ACG chapter breakfasts (NYC, NJ, East, Boston) + ACG M&A Source morning speed networking
+- XPX (Exit Planning Exchange) chapter breakfasts
 - AM&AA (Alliance of M&A Advisors) breakfasts
-- Lower Middle Market Club of NYC
-- Accounting firm networking events (BDO, Grant Thornton, Marcum, CohnReznick, EisnerAmper)
-- M&A law firm breakfasts (Goodwin, Proskauer, Kirkland, Morgan Lewis)
-- Wealth manager lunches serving HNW/SMB owners
-- NYIC (NY Institute of Credit)
+- Accounting firm morning events (BDO, Grant Thornton, Marcum, CohnReznick, EisnerAmper — client breakfasts, CPE breakfasts)
+- M&A law firm breakfasts (Goodwin, Proskauer, Kirkland, Morgan Lewis — CLE breakfasts, client breakfasts)
+- Wealth manager breakfasts/lunches serving HNW/SMB owners (must end by 1:30pm)
+- Capital Roundtable breakfasts
+- NYIC morning events only
 
 **Priority 2 — Vertical industry conferences:**
 - CMAA (Private Club mgmt), boat/yacht shows, Menopause-health SaaS events, ArtTable, family-office events

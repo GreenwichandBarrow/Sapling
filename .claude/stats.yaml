@@ -1,14 +1,13 @@
 # Personal OS Statistics
-# Created during /onboard, updated by calibration-stats-updater hook
+# Updated automatically by calibration-stats-updater hook
 
-# Creature companion (set during onboarding)
-creature: null              # ember | drift | bloom
-creature_selected_at: null  # ISO date when creature was chosen
-
-# Calibration stats
 total_traces_processed: 0
-total_calibrations: 0
-last_calibration: null
+total_calibrations: 1
+last_calibration: 2026-04-16
 
-# Onboarding
-onboarded_at: null
+# Level thresholds (decision traces)
+# Level 1: 0-99 (Seed)
+# Level 2: 100-499 (Sprout)
+# Level 3: 500-999 (Sapling)
+# Level 4: 1000-2499 (Tree)
+# Level 5: 2500+ (Forest)

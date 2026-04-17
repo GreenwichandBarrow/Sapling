@@ -37,6 +37,7 @@ tags: ["date/2026-04-16", "call", "client/plexus-capital", "person/katie-walker"
 
 ### Market intel from Katie
 - Lacey Wismer has pivoted — no longer investing in traditional searchers. Now only committed capital vehicles or long-term holds. (Noted for awareness; no action per Kay's rule.)
+- **Searcher closure-rate view (bifurcated market):** The widely-cited ~40% non-closure rate is "bloat in the system" (weak/underqualified searchers). For strong searchers, Katie pegs close rates closer to **~70%**. **Explicitly placed Kay in the strong-searcher bucket.** Read: Katie's worldview is barbelled — half the market is noise, the top half closes. Kay is on the winning side of the barbell in her mental model. This reframes the "pipeline dried up during AI build" admission — Katie is already discounting it because she's pattern-matched Kay to the tier where temporary pauses don't kill outcomes.
 
 ### Why this meeting matters
 - Plexus = warm debt source for future acquisitions (Datacor precedent)

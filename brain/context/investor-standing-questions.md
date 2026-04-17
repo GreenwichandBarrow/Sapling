@@ -11,36 +11,43 @@ tags:
 
 # Standing Questions for Investor Calls
 
-These questions persist across investor call preps until answered. Whenever investor-update generates a call-prep doc (Jeff Stevens monthly, Guillermo Lavergne bi-weekly, or any other investor), include any open question below in the Agenda or Questions section of that prep.
+Durable log of questions that persist across investor call preps until resolved. Whenever `investor-update` generates a call-prep doc (Jeff Stevens monthly, Guillermo Lavergne bi-weekly, or any other investor), include any open question below in the Agenda section of that prep.
 
-Mark answered questions with the date + investor name + paraphrased answer. Keep a question open until Kay explicitly retires it.
+Mark answered questions with the date + investor + paraphrased answer. Keep a question open until Kay explicitly retires it.
 
 ---
 
 ## Open
 
-### Q1 — Investor-side deal sourcing (opened 2026-04-17)
+*(no standing questions currently open)*
 
-**Question:** *"Do you ever pass deals to searchers you've invested in? If so, would you pass any along to G&B? What kinds fit what you see cross your desk?"*
+Kay's investor asks today are **specific and deal-triggered**, not pattern-based, and are already part of her natural call rhythm — pattern-recognition inputs on specific deals she's evaluating, network asks for domain experts when she's in diligence, referrals for creditor contacts with specific asset appetites, etc. These don't belong as persistent standing questions because they're context-dependent.
 
-**Context:** Kay was struck by Greg Geronemus's comment on SMB Deal Hunter that his firm keeps their own sourcing open and routinely passes deals to their searchers. No G&B investor has done this proactively. Investor-side sourcing is a live channel Kay has never explicitly activated with her cap table.
-
-**Why it matters:** Kay's operating bottleneck is sourcing before filtering. Her investors (Jeff Stevens/Anacapa, Guillermo Lavergne/Ashford, and the full 12-person cap table) sit in networks that may see deal flow in G&B's band (vertical SaaS + specialty B2B, $5-20M revenue). Asking directly costs nothing and activates a dormant channel.
-
-**Audience rules:**
-- **Jeff Stevens:** Anacapa runs a portfolio of searchers. He likely has a view on whether this is standard practice at Anacapa; ask what pattern he's seen. Phrase it as peer-operator question, not as a request for favor.
-- **Guillermo Lavergne:** Ashford Ventures + his broader network. Ask the same question directly. Guillermo is transactional-direct; lead with the ask.
-- **All other investors:** Same question, lower priority. Roll into natural check-ins.
-
-**Response tracking:**
-- [ ] Jeff Stevens — pending
-- [ ] Guillermo Lavergne — pending (next meeting Apr 22, 1:30pm)
-- [ ] Other 10 cap table members — pending
-
-**Retire when:** Every cap-table member has been asked at least once AND Kay has decided whether to activate or drop the channel.
+Use this file going forward for genuinely persistent questions that (a) apply across multiple investors, (b) remain open over multiple call cycles, and (c) can't be resolved in a single sitting.
 
 ---
 
-## Answered / Retired
+## Retired / Superseded
 
-(none yet)
+### Q1 — Investor-side deal sourcing (opened 2026-04-17, RETIRED same day)
+
+**Original framing:** *"Do you ever pass deals to searchers you've invested in? If so, would you pass any along to G&B?"*
+
+**Context for opening:** After SMB Deal Hunter podcast with Greg Geronemus suggested his firm passes deals to portfolio searchers, Kay noticed none of her G&B cap-table investors had done this proactively. Claude framed investor-sourcing as "a recognized channel the better-networked funds use" and proposed asking all 11 cap-table investors.
+
+**Why retired:** Kay surfaced a Yale / 37 Ventures paper — Wolfe, Stevens (Anacapa), Wasserstein, March 2025 — "What Exactly Search Fund Investors Do — and Don't Do — for Entrepreneurs." The paper lists "Source deals" as the **#1 item** in Figure 4 of what investors DO NOT do. Three structural reasons:
+1. Conflict of interest — investors have portfolios of multiple searchers; helping one over others in sourcing is improper
+2. Sourcing is the mettle test for searchers — "tests the entrepreneur's tenacity, agility, creativity, and ability to sell"
+3. Sophisticated investors now source directly for their own account, not for searchers
+
+**Jeff Stevens is Kay's lead investor AND a co-author.** Asking him the original Q1 would have been asking him to violate principles he literally published.
+
+**What Kay does instead (already her practice):** specific, deal-triggered asks for the things investors DO provide per the same paper:
+- Pattern recognition on specific deals she's evaluating ("quick read on this target?")
+- Network access for domain experts, service providers, diligence specialists when actively in DD
+- Creditor/lender intros for deals with specific financing needs
+- ETA community access (conferences, invitation-only gatherings)
+
+These are context-dependent, not standing questions — they arise per-deal and get asked in the natural rhythm of calls.
+
+**Learning for future Claude framings:** When surfacing a "standard practice" claim to Kay, anchor it to authoritative sources (Stanford Search Fund Study, Yale/SGB case studies, Anacapa/Pacific Lake/Relay white papers). Don't assume podcast one-offs generalize. The ETA community has an established body of literature that Kay can and does consult.

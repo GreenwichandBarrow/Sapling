@@ -70,9 +70,13 @@ Short, warm, references Datacor parallel and her "recalibrate" comment. Needs dr
 - Superhuman MCP not authenticated — drafts status blind
 - Granola recording forgotten again on Conwell meeting (Katie Walker, 4/16) — pattern. System-level fix queued (not urgent, but should address in next idle window).
 
-## Investor prep — standing question added 4/17
+## Investor prep — standing question RETIRED same day 4/17
 
-New standing question in `brain/context/investor-standing-questions.md` (Q1, investor-side sourcing): ask Jeff, Guillermo, and the rest of the cap table whether they pass deals to their searchers, and whether they'd pass any to G&B. First application: Guillermo bi-weekly Apr 22, 1:30pm. Investor-update call-prep skill must pull this question into every investor prep until retired.
+Q1 (investor-side deal sourcing) was opened and retired within hours on 4/17 after Kay surfaced the Wolfe/Stevens/Wasserstein 2025 Yale paper. Paper explicitly states "Source deals" is #1 in Figure 4 of what investors DO NOT do. Jeff Stevens (Kay's lead investor) co-authored. Asking cap-table investors to pass deals would have been naive.
+
+Kay's actual investor-ask practice is already correct and natural — pattern-recognition input on specific deals, network access for domain experts, creditor/lender intros when in diligence, ETA community access. Deal-triggered, not standing.
+
+See `brain/context/investor-standing-questions.md` for full retirement note + learning for future framings.
 
 ## Friday review skills (per CLAUDE.md morning workflow)
 

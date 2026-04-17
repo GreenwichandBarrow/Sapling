@@ -48,6 +48,26 @@ Kay set Fri 4/17 aside to get to inbox zero, deal flow, and Fri review skills. Q
 2. Deal flow items (2 Synergy BB carried deals + whatever surfaces)
 3. Review Fri artifacts: weekly-tracker, health-monitor, calibration proposals
 
+## Pipeline-manager hardening — CRITICAL before May 7 DealsX launch
+
+The Project Restoration deal (EQA, 3/19-4/17) exposed that pipeline-manager's **CIM Auto-Trigger did NOT fire** on 3/20 when the CIM arrived. Specifically, all four of these failed silently:
+
+1. No ACTIVE DEALS Drive folder was created for Project Restoration (CIM/ subfolder, FINANCIALS/, LEGAL/, etc.)
+2. No inbox item was written to `brain/inbox/` with `urgency: critical` and `topic/cim-received` tag
+3. No `#active-deals` Slack notification fired (NDA Executed OR CIM Received)
+4. Stage-progression tracking jumped Identified → Closed / Not Proceeding on 3/26 without recording intermediate NDA Signed (3/20) and Financials Received (3/20) stages
+
+Attio entry exists but lacks the audit trail. Kay had to manually request this be recorded on 4/17. An audit note has been added to the Attio list entry (entry_id `15b11bdf-09f7-490f-b303-b59cb176e774`) documenting the real timeline.
+
+**Fix required before May 7:**
+- Verify email-intelligence CIM detection logic (CIM in email attachment + PDF > 5 pages + "Confidential Information Memorandum" keyword match)
+- Verify pipeline-manager Phase 1 CIM Auto-Trigger actually executes its 4 automated steps
+- Verify Slack webhook `$SLACK_WEBHOOK_ACTIVE_DEALS` is alive and firing
+- Verify stage progression recording captures NDA Signed → Financials Received intermediate stages, not just final state
+- Add regression test: manually replay Project Restoration scenario, confirm all 4 triggers fire correctly
+
+Trace written at `brain/traces/2026-04-17-pipeline-manager-cim-trigger-gap.md`.
+
 ## Health flags still open
 - gog calendar CLI 404s (persistent since 4/16)
 - Superhuman MCP not authenticated (2 days)

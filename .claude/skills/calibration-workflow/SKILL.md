@@ -221,6 +221,41 @@ The pattern-recognizer agent owns this dimension during calibration runs. It rea
 
 This follows the weekly tracker (9am Friday) — Kay reviews the numbers first, then reviews system improvement proposals at 10am.
 
+**Monthly overlay (first Friday of each month): Skill Usage + Sunset Audit.**
+
+On the first Friday of each month, calibration runs one additional pass before normal proposal generation:
+
+### Skill Usage Report
+For every skill in `.claude/skills/` AND every launchd job:
+- **Last-run date** (check `logs/scheduled/{skill}-*.log` for scheduled, grep chat history for interactive)
+- **Last Kay-action-taken** (did Kay approve/reject/act on the skill's output within 7 days of run)
+- **Output read signal** (did Kay open the output file / reply to the Slack ping)
+- **Runs per week, last 30 days**
+
+### Sunset Candidates
+Flag any skill matching BOTH:
+- Runs-per-week < 1 for last 30 days
+- No Kay-action-taken on outputs in last 30 days
+
+Propose sunset as a standard calibration item. Kay approves the sunset → skill is moved to `.claude/skills/_archive/{date}-{skill}` with a commit message explaining why. Launchd job is disabled via `launchctl unload`.
+
+### Golden-Example Rotation
+For every skill with an `examples/` folder (see `feedback_golden_examples_stable_deliverables`):
+- Query `brain/outputs/` for files with `skill_origin == {skill}` AND `kay_approved == true` in last 90 days
+- If 3 most recent Kay-approved outputs aren't already in `examples/`, propose rotation (add new, archive old to `examples/archive/`)
+- Per `feedback_skill_output_portfolio`
+
+### Scheduled-Skill Value Audit
+For every launchd job, ask: *is this still pulling weight?* Map each to one of:
+- **Core** (Kay reads output every run — keep)
+- **Background** (silent but valuable — keep)
+- **Vestigial** (no recent Kay interaction — sunset candidate)
+- **Broken** (errors in logs — repair or sunset)
+
+Surface the map to Kay. She confirms which stay, which sunset.
+
+**Why this exists:** Per Harry Liu's Anacapa webinar (Apr 17 2026), scheduled automation has a noise-to-value trade-off, and the Q1 maturity signal is "admins ask which skills to sunset." At single-operator G&B we proactively run this audit monthly so vestigial skills don't accumulate.
+
 ## Phase 2: Coordinated Analysis
 
 Create chatroom with proper frontmatter, then spawn ALL 4 agents in parallel.

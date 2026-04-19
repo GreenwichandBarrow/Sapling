@@ -2,8 +2,11 @@
 # Location: brain/outputs/YYYY-MM-DD-{slug}.md
 # Created by: /task command
 
-schema_version: 1.1.0
+schema_version: 1.2.0
 changelog:
+  - version: 1.2.0
+    date: 2026-04-19
+    changes: Added optional skill_origin (which skill produced output) and kay_approved (Kay explicit approval flag) to power the skill-output portfolio and self-maintaining golden examples loop
   - version: 1.1.0
     date: 2025-12-28
     changes: Added person/{slug} and company/{slug} to optional tag patterns
@@ -106,6 +109,25 @@ frontmatter:
       type: datetime
       description: When the output was published
 
+    skill_origin:
+      type: string
+      description: Slug of the skill that produced this output (e.g., "niche-intelligence", "meeting-brief", "deal-evaluation"). Enables the skill-output portfolio — query all outputs from a given skill to audit quality and nominate golden examples.
+      examples:
+        - niche-intelligence
+        - meeting-brief
+        - deal-evaluation
+        - outreach-manager
+        - investor-update
+
+    kay_approved:
+      type: boolean
+      description: "True if Kay explicitly approved this output (via session-decisions APPROVE tag or direct confirmation). False if rejected. Null if pending review. Kay-approved outputs are candidates for the skill's examples/ folder per feedback_golden_examples_stable_deliverables."
+
+    kay_approval_date:
+      type: date
+      format: YYYY-MM-DD
+      description: Date Kay approved or rejected. Used for golden-example rotation (keep 3 most recent approvals per skill).
+
 body_sections:
   - name: content
     heading: "# {Title}"
@@ -129,10 +151,13 @@ body_sections:
 
 example: |
   ---
-  schema_version: 1.1.0
+  schema_version: 1.2.0
   date: 2025-12-27
   type: linkedin-post
   status: draft
+  skill_origin: niche-intelligence
+  kay_approved: null
+  kay_approval_date: null
   people: ["[[entities/jane-smith]]"]
   companies: ["[[entities/acme-corp]]"]
   projects: []

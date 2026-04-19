@@ -123,9 +123,17 @@ Customer concentration risk: hotel chain and cafe chain accounts can grow large;
 - Year 5: $15-25M revenue, 17-18% margin = $2.5-4.5M EBITDA
 - Sells at 6-8x EBITDA = $15-36M EV (national specialty platform multiple)
 
-## 8. Where It Gets Harder
+## 8. Where It Gets Harder (Revised 4/19)
 
-- **Manufacturer disintermediation:** La Marzocco USA + Slayer Service expanding direct factory service in major metros (NYC, SF, Seattle, LA). Limits independent service-only play in those specific metros for those specific brands. Mitigation: target multi-brand independents serving the long tail of brands (Synesso, Modbar, Victoria Arduino, Faema, etc.) where factory service doesn't reach.
+- **Manufacturer disintermediation — materially lower risk than first assessed.** Unlike commercial laundry equipment (dominant OEM Alliance is US-based and going direct aggressively, wiping out dealer channels), most commercial specialty coffee OEMs are Italian or European: La Marzocco (Florence), Nuova Simonelli / Victoria Arduino (Belforte del Chienti), Gruppo Cimbali / Slayer (Milan), Sanremo, Astoria, Rancilio (all Italian), Kees van der Westen (Netherlands). Structural reasons they cannot efficiently run direct service in US metros:
+  - Response-time SLA: specialty cafes demand <24hr service; cross-Atlantic direct operations cannot deliver this
+  - Labor arbitrage runs the wrong way (US tech wages < Italian tech + travel + import overhead)
+  - Cultural / operational DNA: Italian industrial groups run on dealer ecosystems (70+ year pattern)
+  - Volume economics: US specialty coffee is meaningful but not massive for these OEMs — too small to justify direct infrastructure in multiple metros
+  - Water chemistry + regulatory + local barista-culture knowledge is non-replicable from Italy
+- Closest structural analogue: **authorized European luxury auto service** (Ferrari / Lamborghini / Maserati dealer-service networks — stable 50+ year pattern of European-HQ manufacturer + decentralized authorized US service partners). Materially different from commercial laundry equipment, which is mid-consolidation via US-origin OEM Alliance going direct and EVI Industries rolling up dealers.
+- Residual risks: (a) US-origin OEMs (Synesso Seattle, Modbar Indiana) may go direct more aggressively; (b) hybrid risk — OEM opens direct in NYC/LA while keeping dealers elsewhere; (c) OEM M&A consolidation changing dealer terms. None are category-killing in the way Alliance is for commercial laundry.
+- **Mitigation:** anchor acquisition should have multi-brand fleet and not over-index to a single OEM (especially not a US-origin OEM).
 
 - **Talent constraint:** Master-level espresso techs are scarce. Growth ceiling is hiring. Apprenticeship programs + factory-training partnerships needed.
 
@@ -135,18 +143,22 @@ Customer concentration risk: hotel chain and cafe chain accounts can grow large;
 
 - **Geographic constraint:** Service is regional — cannot be virtualized. Roll-up requires presence in each target metro. Tuck-in pace is paced by available targets in chosen metros.
 
-## 9. Right-to-Win Check (Kay's Network)
+## 9. Right-to-Win Factors (Acquirer Checklist)
 
-Pending validation conversations. Kay's hospitality network includes (TBC):
-- Aman, Soho House, Casa Cipriani, NeueHouse, 1 Hotels — F&B / espresso program contacts?
-- Specialty cafe operators in NYC — Joe Coffee, Sey, Devoción
-- Hotel F&B directors / corporate beverage program leads
+Generic factors any acquirer in this space should evaluate before committing:
+- OEM relationship access and parts-pricing leverage (multi-brand fleet exposure, direct-to-OEM channel for Italian-HQ manufacturers)
+- Route density in chosen metro (service margin is unit-economics driven by drive time per call)
+- Master-technician bench strength and apprenticeship pipeline (talent is the growth-ceiling constraint)
+- Water chemistry / local regulatory expertise (non-portable know-how)
+- Customer-concentration profile (hotel chain / cafe chain mix vs long-tail independents)
+- Reputation in barista / roaster community (referral network drives new-customer acquisition at near-zero CAC)
 
-Validation calls before anchor acquisition:
+**Validation protocol before anchor acquisition:**
 1. Identify 2-3 quality regional specialty espresso service operators in target metro
-2. Validation call with 5-10 high-end coffee shop owners + hotel F&B directors
+2. Validation calls with 5-10 high-end coffee shop owners + hotel F&B directors
 3. Confirm pain points (tech availability, response time, service quality, parts pricing)
-4. Confirm willingness to switch / give G&B-platform service a chance
+4. Confirm willingness to switch provider under new ownership
+5. OEM channel-strategy check — test direct-service expansion plans and parts/partnership terms with top 3-5 OEMs by installed base in target geography
 
 ## 10. Initial Industry Scorecard Estimate
 
@@ -162,20 +174,24 @@ Per `project_frameworks_scorecards` (9 metrics, 30 points max). To be re-scored 
 | Predictable Revenue (15%) | 9/10 | Strong contract base |
 | Operating Efficiency (10%) | 6/10 | Typical 8-12% blended margin |
 | Revenue Sustainability (10%) | 8/10 | Espresso machines need service forever; demand structurally permanent |
-| KS Fit (15%) | 7/10 | Luxury hospitality-adjacent, fits Kay's networks |
+| KS Fit (15%) | 7/10 | Luxury hospitality-adjacent, consistent with G&B thesis |
 
 **Estimated total: ~22-24/30.** Strong score. Compares favorably to historical top-tier niches (Medical billing 28/30, Telemedicine 26/30, IT services 26/30).
 
 ## 11. Recommendation
 
-**Niche passes 3-step filter cleanly. Add to Industry Research Tracker as Active-Outreach.** Run formal niche-intelligence cycle Tuesday 4/21 night for full one-pager (PPTX), formal scorecard, and initial target list.
+Niche passes the 3-step filter cleanly (great segment, operationally messy, AI-resistant + recurring). International-OEM structure provides a durable moat against the direct-disintermediation pattern that undermines adjacent equipment-service categories. Recommend advancing to Active-Outreach pending validation.
+
+**Geographic scope framing:**
+- **Tier-1 metro anchor strategy:** ~30–80 multi-brand specialty coffee service shops and authorized dealers estimated per tier-1 metro (NYC, SF, LA, Chicago, Seattle). Below 1,000-target Apollo-outreach threshold at the single-metro level, but ideal density for a 1–2 anchor + tuck-in roll-up strategy (route density, cafe concentration, hotel F&B director network all geographically contained).
+- **National outreach framing:** Apollo counts suggest 300–500 pure-play specialty espresso service shops US-wide, expanding to ~800–1,200 when multi-brand authorized dealers and independent technicians are included. 1,000+ target list achievable at Northeast-corridor or national scope.
 
 **Next steps before acquisition pursuit:**
-1. Tuesday 4/21: niche-intelligence skill formalizes scorecard + one-pager + adds to tracker
-2. Identify 5-10 named regional specialty espresso service companies in NYC tri-state + LA + SF + Boston + Chicago
-3. Validate with 5-10 high-end coffee shop owners + hotel F&B directors (right-to-win check)
-4. Manufacturer relationship deep-dive (La Marzocco USA strategy, Slayer service expansion plans, multi-brand independent share)
-5. Channel decision (Sam DealsX vs Kay Email vs JJ-Call) — DEFERRED per `feedback_niches_drive_channels_not_reverse`
+1. Formalize scorecard + one-pager (PPTX) + add to Industry Research Tracker
+2. Identify 5-10 named regional specialty espresso service companies in chosen tier-1 metro (anchor candidates) + broader list for national outreach
+3. Validate with 5-10 high-end coffee shop owners + hotel F&B directors (acquirer right-to-win check per §9)
+4. OEM channel-strategy deep-dive — top Italian-HQ manufacturers (La Marzocco, Nuova Simonelli / Victoria Arduino, Gruppo Cimbali / Slayer) to test direct-channel risk and partnership terms; US-origin OEMs (Synesso, Modbar) assessed separately for direct-channel trajectory
+5. Manufacturer / parts-pricing benchmark across multi-brand independent segment
 
 ## 12. Connected
 

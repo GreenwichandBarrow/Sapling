@@ -1,5 +1,5 @@
 ---
-description: Morning orchestration — email-intel, relationship-manager, pipeline-manager, target-discovery, 6-section briefing
+description: Morning orchestration — email-intel, relationship-manager, pipeline-manager, target-discovery, 4-bucket briefing
 ---
 
 # /goodmorning
@@ -49,16 +49,25 @@ JJ-operations runs independently via launchd (8am) and posts to Slack at 10am. D
 - **Wednesday:** + niche-intelligence sprint status
 - **Friday:** + weekly-tracker + health-monitor + calibration-workflow (parallel, results needed by 10am ET)
 
-### Step 7 — Judge + present briefing
+### Step 7 — Judge + present briefing (4-bucket, action-keyed)
 
-Read all outputs. Apply chief-of-staff judgment. Present the 6-section briefing with **ascending numbering across all sections** (never reset to 1):
+Read all outputs. Apply chief-of-staff judgment. Present the briefing in 4 action-keyed buckets per `feedback_briefing_three_buckets` and `feedback_decision_fatigue_minimization`. Numbering ascends across all buckets — never resets to 1.
 
-1. **Pipeline shifts to review/approve** — stage changes, new deals, Active-Outreach transitions
-2. **Pipeline summary** (numbered, open items only, never reports Kay's own completed work)
-3. **Action items to review/approve** — Motion task candidates, email drafts
-4. **Carried items** — needs Kay's direction
-5. **System Status** — 1 bullet per scheduled skill, no detail unless broken/blocked
-6. **Other items / today's agenda** — calendar, meeting prep
+1. **Today / ASAP** — must ship today: active-deal fast-path, payment due, JJ unblocks, time-sensitive sends
+2. **Decisions** — needs Kay's judgment. Each item uses Obama framing: **RECOMMEND: [option]** + one-sentence reason → **YES / NO / DISCUSS**. Aim ≤5 items.
+3. **This Week** — must do this week, not today
+4. **Dropped Balls** — slipped follow-ups, overdue cadences, warm-intro replies that need recovery (highest-leverage bucket)
+
+Cluster by entity (one entity heading per person/deal/niche, not scattered). Label every item with C-suite ownership (*CFO/CIO/CMO/CPO/GC*) per `feedback_c_suite_naming`.
+
+**System Status** is a compact tail under the buckets — 1 line per scheduled skill, expand only if broken/blocked.
+
+**Briefing hygiene:**
+- Only surface items that need action or decision. Omit anything done/resolved/loop-closed.
+- Never report back things Kay did herself.
+- Noise (true low-value items) gets archived silently, never surfaced as a "noise" section.
+
+The pipeline-manager skill enforces these rules via stop hooks before output. If anything fails the hooks, fix in-line — do not present a malformed briefing.
 
 ### Step 8 — Downstream skill invocations based on signals
 

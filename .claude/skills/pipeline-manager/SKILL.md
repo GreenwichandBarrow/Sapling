@@ -119,53 +119,69 @@ The morning briefing in conversation must be **brief** — a quick reminder of w
 
 **Rule of thumb:** If Kay needs to read more than a sentence of context to act on it, send it to Slack with a link. The briefing is a checklist, not a report.
 
-### Briefing Format
+### Briefing Format (4-bucket, action-keyed)
 
-After gathering all data from the 5 sections above, RE-ORGANIZE the output into these 5 consistent sections. This is what Kay sees every morning. Same sections, same order, every day. Keep each item to 1 line.
+After gathering all data from the 5 sections above, RE-ORGANIZE the output into 4 action-keyed buckets. This is what Kay sees every morning. Same buckets, same order, every day. Cluster by entity (if 2+ items reference the same person/deal/niche, they live under ONE entity heading inside the appropriate bucket — never scattered).
+
+**Numbering is ascending across all buckets** (never reset to 1 per bucket). Kay replies by number.
+
+**Every item is labeled with C-suite ownership** in italics: *CFO / CIO / CMO / CPO / GC* per `feedback_c_suite_naming`.
+
+**Decisions bucket uses Obama framing:** `RECOMMEND: [option]` + one-sentence reason → `YES / NO / DISCUSS` so most resolve in one keystroke. Aim ≤5 Decisions per briefing per `feedback_decision_fatigue_minimization`.
 
 ```
-Pipeline shifts to review/approve:
-1. {Company}: {current stage} → {recommended stage} ({signal evidence})
-2. {Contact}: nurture overdue, last contact {date}
+**Good morning. {Day} {date} — {one-line state of the world}.**
 
-Pipeline summary:
-Active Deals: {total} ({n} Identified, {n} Contacted, {n} Financials Received)
-Intermediary: {total} ({n} Actively Receiving, {n} Warmed, {n} Contacted)
-Niches (from tracker, not session decisions):
-- {Rank}. {Niche Name} — {Status}, {Channel}
-- ...
-Stale deals: {n} entries in same stage 2+ weeks
+## Today / ASAP
 
-Motion action steps to review/approve:
-1. {Action item} — due {date}
-2. {Follow up with person} — {context}
+**1. {Entity / action title}** — *{C-suite}*
+- {bullet of context if needed}
+- **{Single explicit ask}**
 
-Superhuman email drafts to review/approve:
-Reminder to send:
-- {Name} — {one-word context: thank-you / follow-up / reschedule}
-- {Name} — {one-word context}
-Reminder to delete:
-- {Draft description} — orphaned/stale
+**2. {Entity / action title}** — *{C-suite}*. {Inline context if short}. **{Approve / send / ship / etc.?}**
 
-Targets for review ({niche}):
-1. {Name}, {Company} — Warm intro via {contact}. Draft personal email or standard cadence?
-2. {Name}, {Company} — Borderline: {specific concern}. Approve or Pass?
+## Decisions
 
-On deck for JJ (tomorrow):
-- {Target name} — {action: follow-up / first outreach}
+**3. {Decision title}** — *{C-suite}*. {1-line situation}.
+RECOMMEND: **{recommended option}** — {one-sentence reason}.
+**YES / NO ({alt option}) / DISCUSS**
 
-Brief needed? (tomorrow's external meetings):
-1. {Meeting name} — {time} — {counterparty} — y/n?
-2. {Meeting name} — {time} — {counterparty} — y/n?
+**4. {Decision title}** — *{C-suite}*. {1-line situation}.
+RECOMMEND: **{recommended option}** — {one-sentence reason}.
+**YES / NO / DISCUSS**
 
-Aging deferrals (≥5 days old):
-1. {Item} — {N days} — originally deferred because {reason}. **Kill / Do now / Re-defer with new trigger?**
-2. {Item} — {N days} — **RED if ≥10 days and no trigger**
+## This Week
 
-Other items / today's agenda:
-1. {Today's meetings with times}
-2. {Quick flags or reminders}
+**5. {Entity / item}** — *{C-suite}*. {Why this week, deadline}. **{Question or action}?**
+
+**6. {Entity / item}** — *{C-suite}*. {Context}. **{Question or action}?**
+
+## Dropped Balls
+
+**7. {Entity / slipped follow-up}** — *{C-suite}*. {What slipped, when, owner}. **{Recovery action}?**
+
+(or: "None today." with optional 1-line tracking note for items in someone else's court.)
+
+---
+
+**System Status:** {1 line per scheduled skill, comma-separated when clean}. Expand only if broken/blocked. {1 line on what fires next.}
+
+Reply by number.
 ```
+
+**Bucket definitions:**
+- **Today / ASAP** — must ship today: active-deal fast-path, payment due, JJ unblocks, time-sensitive sends. Not "would be nice today."
+- **Decisions** — needs Kay's judgment between alternatives. Each item uses RECOMMEND + YES/NO/DISCUSS. Cap ≤5.
+- **This Week** — must do this week, not today. Calendar-bound but not same-day urgent.
+- **Dropped Balls** — slipped follow-ups, overdue cadences, warm-intro replies that need recovery. **This is the highest-leverage bucket — slipped follow-ups cost deals.** If empty, say so explicitly with a tracking-only note for items in another party's court.
+
+**Briefing hygiene (CRITICAL):**
+- Only surface items that need action or decision. If something is done, resolved, or loop-closed — omit it entirely per `feedback_briefing_no_done_items`.
+- Never report back things Kay did herself — she already knows.
+- Noise (true low-value items) gets archived silently, never surfaced as a "noise" section.
+- Every item has an explicit question or action per `feedback_morning_briefing_format`. No ambiguous items.
+
+**Default to recommending, not asking** per `feedback_decision_fatigue_minimization`. Pre-decide whatever is defensible from existing patterns. Bundle related questions into a single bundled approval. When Kay makes the same call twice, codify it as a memory or skill default so she never sees it again.
 
 **Brief-needed prompt rules (replaces retired meeting-brief-manager nightly automation):**
 - List tomorrow's **external** meetings only (skip internal, skip investor calls already briefed).
@@ -175,6 +191,17 @@ Other items / today's agenda:
 - If Kay has already approved a brief for the meeting in a prior session (check session-decisions files), do not re-ask — treat as auto-yes and skip the prompt.
 
 **Intermediary matches rule:** Daily broker listing matches from deal-aggregator are posted directly to #strategy-active-deals as individual Slack messages (one per deal, thumbs up/down reactions). Do NOT include individual match details in the morning briefing. The System Status line should only report: "deal-aggregator — {n} new lead matches posted to Slack".
+
+**Routing pre-existing report sections into the 4 buckets:**
+- *Pipeline shifts* (Attio stage changes, new active deals, NDA-signed detections) → **Today / ASAP** if action-needed today, else **This Week** if review-needed-soon, else collapse into Decisions if it's a kill/advance/keep call.
+- *Pipeline summary stats* (Active Deals N, Intermediary N, niche counts) → omit from buckets; surface only if delta from yesterday is non-trivial, then as a 1-line tail above System Status.
+- *Motion action steps* → **Today / ASAP** (same-day) or **This Week**.
+- *Superhuman drafts to send* → **Today / ASAP** as a single bundled approval ("Approve all N to send as-is?"), not one item per draft.
+- *Targets for review* → **Decisions** (warm intro vs cadence vs pass) — bundle by niche.
+- *Brief needed for tomorrow's meetings* → **This Week** (or **Today / ASAP** if meeting is tomorrow morning).
+- *Aging deferrals (≥5 days)* → **Dropped Balls** with kill/do-now/re-defer Obama framing.
+- *On deck for JJ tomorrow* → **Today / ASAP** the day before only (per JJ "On Deck" timing rule below).
+- *Today's calendar/agenda* → 1-line tail above System Status, not its own bucket.
 
 **Targets for Review rules:**
 - This section surfaces targets from target-discovery's auto-advance system that need Kay's decision. Two categories only:
@@ -309,6 +336,25 @@ Before presenting the briefing, the manager (Claude orchestrator) MUST review al
      - **Purpose:** Prevent the DEFER pile from accumulating indefinitely (observed Apr 2026: Mark Gardella reply 7 days stale, Philip Hoffman 9+ days, broker platform registrations chronic). Aging forces triage.
 
 The manager is the last line of defense. Sub-agents will make errors. The manager catches them so Kay doesn't have to.
+
+### Briefing Format Stop Hooks (CRITICAL — runs immediately before output)
+
+Before sending the briefing to Kay, validate against the 4-bucket spec:
+
+- [ ] **4 buckets present in correct order** — `## Today / ASAP`, `## Decisions`, `## This Week`, `## Dropped Balls`. Empty buckets must say "None today." not be omitted.
+- [ ] **Decisions cap ≤5 items.** If >5, defer the lowest-stakes ones to **This Week** and pre-decide what's defensible. Decision overflow is a calibration failure.
+- [ ] **Every Decisions item uses Obama framing** — `RECOMMEND: [option]` + one-sentence reason + `YES / NO / DISCUSS` line. No bare questions in Decisions bucket.
+- [ ] **Every item has C-suite ownership label** in italics (*CFO/CIO/CMO/CPO/GC*). No exceptions per `feedback_c_suite_naming`.
+- [ ] **Numbering ascends across all buckets** — never resets to 1. If items are 1,2,3 in Today, Decisions starts at 4. Per `feedback_ascending_numbering` and `feedback_additive_numbering`.
+- [ ] **Entity clustering** — if 2+ items reference the same person/deal/niche, they live under ONE entity heading inside the appropriate bucket. Scan for duplicates before output; merge.
+- [ ] **No completed-or-resolved items** — cross-check session-decisions for SENT/CREATED/UPDATED/PASS verbs and suppress per `feedback_briefing_no_done_items`. Never report back Kay's own work.
+- [ ] **No "noise" section** — true low-value items are archived silently, never surfaced.
+- [ ] **System Status is compact tail** — 1 line per scheduled skill, comma-separated when clean. Expand only if broken/blocked.
+- [ ] **Every item has explicit ask** — question or action verb. No informational items without an ask per `feedback_morning_briefing_format`.
+- [ ] **No counter-options stacked in same question** — per `feedback_no_counter_in_question`. Primary question alone; follow up if no.
+- [ ] **Bundled approvals where possible** — multiple email drafts to send → one "Approve all N as-is?" line, not N items. Reduces decisions-per-briefing.
+
+If any check fails, fix in-line before sending. Do not present a malformed briefing and ask Kay to forgive it.
 
 ## Data Ingestion (runs before signal detection)
 

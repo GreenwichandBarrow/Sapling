@@ -19,16 +19,40 @@ tags: ["date/2026-04-19", "context", "topic/continuation"]
 
 ## Decisions Made This Session
 
-- **Briefing format:** 4-bucket spec propagated to pipeline-manager + goodmorning skills + 12-check stop hooks added
-- **Niches dropped:** Specialty Appraisal, Provenance Verification (AI-substitution), Estate Liquidation (recurring fail), Family Office Bookkeeping + Yacht Crew (reconsidered down)
-- **Niches confirmed:** Art Storage reactivated (Saltoun greenlight + AI thesis), Specialty Insurance Brokerage (Art) kept, Pest Management added as Sam niche post-5/6
-- **Memory rules saved (8 new):** decision-fatigue, briefing 4-bucket, mac-first, no-counter-in-question, search-fund-action-mandate, messy-business-great-segment filter, Saltoun ride-or-die, NYC construction hard-exclude, strategy-mode-vs-execution-mode, niches-drive-channels-not-reverse, evaluate-niches-individually, investor-tam-and-fragmentation-floor (corrected to viable-targets), tuck-in-financing-debt-first, art storage reactivated with AI
+**IMPORTANT: This was a strategic discussion session. NO operational decisions were committed.** No tracker updates, no Sam list changes, no JJ transition, no Art Storage status change, no Acumen re-engagement, no Voxme outreach. All "decisions" below are framework / memory level only — they sharpen how G&B evaluates niches, not what G&B is currently doing.
+
+**Framework / memory rules saved (these are durable rules for future sessions):**
+- Briefing 4-bucket format propagated to pipeline-manager + goodmorning + format-enforcement stop hooks
+- Decision-fatigue minimization (Obama framing, ≤5 Decisions per brief)
+- Mac-first (no mobile push proposals)
+- No-counter-in-question (don't stack alternative inside primary question)
+- Search-fund-action-mandate (never frame "wait vs act" as binary)
+- Strategy-mode-vs-execution-mode (don't push to artifact when Kay is exploring)
+- Niches-drive-channels-not-reverse (don't reverse-engineer niches to fit JJ)
+- Evaluate-niches-individually-not-comparatively (don't bring HoldCo anchor question into single-niche discussion)
+- Messy-business-great-segment 3-step filter
+- Investor floors: viable-target-count + $500M TAM (corrected to viable-targets framing)
+- Tuck-in-financing-debt-first (Datacor precedent — bank debt + seller notes for tuck-ins)
+- Saltoun ride-or-die for software/VSaaS strategy
+- NYC construction hard-exclude
+- Art Storage reactivation thesis (Saltoun greenlight + AI integration angle)
+- Art Storage industry insight (demand abundant, cost-heavy is bottleneck)
+
+**Vault artifacts created (knowledge capture, not decisions):**
+- Acumen 9/17 + 10/30 calls restored from Kay's handwritten notes
+- Voxme entity (vertical SaaS prospect documented)
+- Specialty Coffee Equipment Service one-pager (research only, not added to tracker)
+- Mercury bank-switch Monday inbox item (operational task — Kay decided to switch banks)
 
 ## Next Steps
 
-- Resume Specialty Coffee Equipment Service evaluation on its own merits (no comparisons)
-- Tuesday 4/21 niche-intelligence cycle to formalize (PPTX one-pager, scorecard, tracker entry)
-- JJ post-5/6 niche decision still open
+**No operational decisions made — these are open threads to resume strategically:**
+- Specialty Coffee Equipment Service: continue evaluation on its own merits (no decisions made on whether to pursue)
+- Acumen / Art Storage anchor: no re-engagement decision; LOI history + warm relationship preserved
+- JJ post-5/6 niche: open, no commitment
+- Sam's DealsX list: NO changes committed (no add/drop)
+- Industry Research Tracker: NO changes committed
+- Mercury bank switch: actual operational decision — Kay to open Mercury application Monday 4/20
 
 ## Open Questions
 

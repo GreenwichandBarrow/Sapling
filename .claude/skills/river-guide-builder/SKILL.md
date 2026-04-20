@@ -60,7 +60,9 @@ Management consultants, valuation firms, industry advisors who work with owners 
 Owners of related businesses who know the competitive landscape and hear about deals through industry networks.
 
 ### 6. Validation Contacts *(lifted from niche-intelligence Step 5b — 2026-04-20)*
-Industry analysts, former operators, trade press editors, conference speakers who can assess thesis viability. Historically underperformed as cold-call targets (Kay: "no one was answering"), but high-value when discovered via warm paths. Schema merges into River Guides output with a `category = "Validation"` tag rather than a separate file.
+Industry analysts, former operators, trade press editors, conference speakers who can assess thesis viability. Historically underperformed as cold-call targets (Kay: "no one was answering"), but high-value when discovered via warm paths.
+
+**Note:** These 6 categories are Phase 1 RESEARCH buckets (guides the agent on what types of contacts to identify). They are NOT sheet columns. The canonical River Guides tab uses `Industry` (vertical — e.g., "Wealth Management", "Art Insurance") instead of Category. `Title` implicitly carries role-in-ecosystem info. The ecosystem category is used as a research prompt only, not persisted on the sheet.
 </ecosystem_categories>
 
 <unified_schema>
@@ -86,10 +88,11 @@ All niche target-list sheets live in **`OPERATIONS/TARGET LISTS/EMAIL OUTREACH/`
 **Exception:** `Premium Pest Management - Target List` lives one level up at `OPERATIONS/TARGET LISTS/` (folder ID `1WfbzezRkD7Kr0FOA76y99x5wV8lwRkVc`) because JJ is actively running cold calls from it — do not move it.
 
 When a new niche activates:
-1. Create the target-list sheet inside `14MLYC9W-jTH-NXxZh_LN-Q_d5wCUKzn_`
-2. Scaffold the 6 tabs above (Full Target List, Do Not Call, Niche Context, Associations, River Guides, Network Matches)
-3. Populate Associations + River Guides + Network Matches via Phases 1–3
-4. Wait for Sam's target list to populate the Full Target List tab
+1. **Copy from the G&B Target List Template** (file ID `1wIK4Jv56QIZejcmpq-gGrCWAPe07eJWUbKsWTRwh778` in G&B MASTER TEMPLATES folder) — it has all canonical tabs pre-scaffolded
+2. Place the new sheet inside `14MLYC9W-jTH-NXxZh_LN-Q_d5wCUKzn_` (EMAIL OUTREACH)
+3. **Ship Associations tab first** (Phase 1 associations-only research). Do NOT populate River Guides or Network Matches on first ship.
+4. Populate River Guides + Network Matches **only after** Apollo enrichment is complete AND Attio MCP is available. Running these phases degraded (missing sources) produces noisy output Kay then has to discard. See `feedback_step_by_step_interconnected_plans.md`.
+5. Wait for Sam's target list to populate the Full Target List tab.
 
 See `reference_target_list_canonical_folder.md` for the full folder-convention reference.
 
@@ -97,23 +100,30 @@ See `reference_target_list_canonical_folder.md` for the full folder-convention r
 
 `Association Name | Website | Events Page URL | Scope | Membership Cost | Member? | Notes`
 
-### River Guides tab schema (11 cols — expanded for Phase 2)
+### River Guides tab schema (7 cols — canonical, Kay-approved 2026-04-20)
 
-`Name | Title | Firm | Email (if public) | LinkedIn | Category | Score (1-9) | Known Contact | Source | Evidence | Notes`
+`Name | Title | Firm | Location | LinkedIn | Industry | Why`
 
-- **Category:** Association Leader / Industry CPA / M&A Lawyer / Consultant / Adjacent Operator / Validation Contact
-- **Score:** 1-9 via 3-dimension scoring (Deal Flow Proximity × Accessibility × Niche Alignment)
-- **Known Contact:** `WARM` / `INVESTOR INTRO` / `SHARED BACKGROUND` / `COLD` (populated by Phase 2)
-- **Source:** `LinkedIn / Attio / Vault / Gmail / Investor` (populated by Phase 2)
-- **Evidence:** short snippet (e.g., "LinkedIn 1st degree, connected 2019")
+- **Name** = primary key, always first column
+- **Title** = full title including division/group (e.g., "Vice President, Financial Advisor, Blue Rider Group")
+- **Firm** = employer name
+- **Location** = City, State
+- **LinkedIn** = profile URL
+- **Industry** = vertical tag (e.g., "Wealth Management", "Art Insurance", "Industry CPA") — used for sheet filtering/sorting. Replaces the old Category column.
+- **Why** = free-text value/intro context (1-3 sentences — what they know, who they can intro to, why they matter for this niche). Mirrors the "Why" field from Kay's validation-call intake format.
 
-### Network Matches tab schema (8 cols — new)
+**Population rule:** If a river guide is already a known contact (in Kay's Attio / direct network), **do not populate Location/LinkedIn** — Kay already has that data. Name + Title + Firm + Industry + Why are sufficient. Only fill full contact fields for new/cold river guides.
+
+**Phase 2 output columns (NOT in base schema):** When Phase 2 runs (post-Apollo + Attio MCP), append three tracking columns to the right: `Known Contact` (WARM / INVESTOR INTRO / SHARED BACKGROUND / COLD) / `Source` (which of 5 scan sources hit) / `Evidence` (snippet). These are append-only additions, not part of the canonical intake schema.
+
+### Network Matches tab schema (8 cols — Phase 3 output)
 
 `Name | Source | Current/Past Employer | Role/Position | Match Strength | Keywords Matched | Intro-Path Potential | Notes`
 
 - **Source:** `LinkedIn CSV / Attio / Vault / Gmail`
 - **Match Strength:** `H` (current C-suite or clean owner/founder past role), `M` (past role 3+ years), `L` (tangential keyword hit)
 - **Keywords Matched:** list of niche keywords that triggered the match
+- **Note:** Populated by Phase 3 only — requires Apollo `nddl_apollo_employment_history` to produce quality output.
 </unified_schema>
 
 <workflow>
@@ -123,12 +133,14 @@ See `reference_target_list_canonical_folder.md` for the full folder-convention r
 
 **Input:** niche name + target-list sheet ID
 
+**First-ship scope:** Associations tab only. River Guides + Network Matches do NOT populate on first ship — they wait for Apollo enrichment + Attio MCP. See `feedback_step_by_step_interconnected_plans.md`.
+
 1. Read niche keyword file at `.claude/skills/river-guide-builder/references/niche-keywords/{niche-slug}.yaml`
-2. Research 6 categories via web + Apollo + LinkedIn:
-   - Association Leaders, Industry CPAs, M&A Lawyers, Consultants, Adjacent Operators, Validation Contacts
-3. Cross-reference against Do Not Call tab to exclude DNC-flagged names (e.g., Acumen/Uovo/Hangman leadership for Art Storage)
-4. Score each contact 1-9 on 3 dimensions (Deal Flow Proximity × Accessibility × Niche Alignment)
-5. Write Associations tab (org-level) + River Guides tab Phase 1 columns (Name/Title/Firm/Email/LinkedIn/Category/Score/Notes)
+2. Research associations (trade orgs, conferences, events) via web — populate Associations tab
+3. Research river-guide candidates via the 6 ecosystem buckets (Association Leaders, Industry CPAs, M&A Lawyers, Consultants, Adjacent Operators, Validation Contacts) — **hold this output for Phase 2 run, do NOT write to River Guides tab yet**
+4. Cross-reference against Do Not Call tab to exclude DNC-flagged names (e.g., Acumen/Uovo/Hangman leadership for Art Storage)
+
+**River Guides tab population:** After Phase 2 (cross-check) runs with full source access, write Phase 1 candidates to the River Guides tab using the canonical 7-col schema (`Name | Title | Firm | Location | LinkedIn | Industry | Why`). Skip Location/LinkedIn for rows where the person is already a known contact in Kay's Attio/network.
 
 ### Phase 2 — Cross-Check Against Kay's Network
 
@@ -164,13 +176,11 @@ Scan Kay's network for people with industry-relevant work history.
 
 Write results to Network Matches tab. Deduplicate across sources (Attio record wins; LinkedIn CSV second).
 
-### Phase 4 — Optional Attio Writes (config-gated)
+### Phase 4 — Attio Writes (event-driven, not config)
 
-If `ATTIO_WRITE_RIVER_GUIDES=true`: auto-create Attio People records from River Guides tab with `relationship_type = "River Guide"`, `nurture_cadence = "Dormant"`, `how_introduced = "river-guide-builder 2026-04-20"`.
+**Threshold rule (replaces prior config flags):** river-guide-builder NEVER auto-creates Attio records. Attio records are created by `outreach-manager` at the moment Kay sends her first outbound to a River Guides entry. The retired `ATTIO_WRITE_RIVER_GUIDES` and `ATTIO_TAG_NETWORK_MATCHES` flags are gone. See `feedback_attio_threshold_rule.md` + `feedback_intermediary_dormancy_monitoring.md`.
 
-If `ATTIO_TAG_NETWORK_MATCHES=true`: tag existing Attio records (from Phase 3 hits) with a custom field or note — exact field name TBD by Kay.
-
-Default: both OFF. Skill ships sheet-only until Kay decides.
+Until Kay's first outbound: River Guides live only on the target-list sheet.
 </workflow>
 
 <apollo_enrichment_dependency>

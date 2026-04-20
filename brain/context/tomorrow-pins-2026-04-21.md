@@ -42,7 +42,10 @@ tags: ["date/2026-04-21", "context", "topic/pins", "topic/deal-aggregator", "top
 | # | Source | Link | Notes |
 |---|---|---|---|
 | 11 | **Axial** | https://www.axial.net/ | Register as Buyer. Daily deal-flow email — specialty buy-side flow. |
-| 12 | **Generational Equity DealForce** | https://www.genequityco.com/buyers/ | Registered-buyer alerts. |
+| 12 | **DealForce (Generational Equity)** | https://dashboard.dealforce.com (note: generationalequity.com is PARKED; real portal is dealforce.com) | Registered-buyer Deal Alerts — opt in by industry/geo/size. |
+| 12b | **Axial** | https://www.axial.net/forum/ | TWO newsletter options: "Middle Market Review" (weekly) + "Exit Ready". Static site also scraped by skill — newsletter for redundancy. |
+| 12c | **IBBA newsletter** | https://www.ibba.org (inline homepage form) | Broker ecosystem pulse. |
+| 12d | **Kumo Pro ($30/mo)** | https://withkumo.com (note: kumo.so is DEAD; correct is withkumo.com) | 815K+ listings, daily alerts. OPTIONAL paid — evaluate after Tier 1 free signups produce. Free tier is 30-day delayed (useless for aggregator). |
 | 13 | **PCO Bookkeepers newsletter** | https://pcobookkeepers.com/ | Pest M&A (Dan Gordon, $1B+ in pest transactions). |
 | 14 | **Insurance Journal Daily** | https://www.insurancejournal.com/subscribe/ | Insurance M&A coverage. |
 | 15 | **AM Best BestWire** | https://www.ambest.com/wireshome.asp | Insurance deal news. |

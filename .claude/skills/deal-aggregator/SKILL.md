@@ -68,6 +68,8 @@ Scan searchable broker platforms + general marketplaces for new listings matchin
 - VR Business Brokers — `/businesses-for-sale/`
 - Murphy Business Sales — `/business-brokerage/detail/{id}/{slug}`
 - First Choice Business Brokers (FCBB) — `/businesses-for-sale` with filters
+- **Axial** — `axial.net/forum/closed-deals/` + `/winning-loi-hub/` + `/trends-dashboard/` (weekly fresh, static HTML)
+- **Acquisitions Direct** — `acquisitionsdirect.com/buy-a-business/` (static HTML, monthly-verify freshness)
 
 **Online-business specialty (keep, filter digital niches):**
 - Flippa — filter `revenue_per_month > $400K AND industry matches thesis`. Otherwise skip — skews micro-SaaS.
@@ -84,6 +86,15 @@ These sites 403 WebFetch but have free "new listings today" email alerts. Kay su
 - DealStream (dealstream.com) — absorbed MergerNetwork
 - Sunbelt Network (sunbeltnetwork.com) — largest broker franchise
 - Transworld Business Advisors (tworld.com) — large franchise inventory
+- BizBen (bizben.com) — CA-heavy SMB listings, JS-rendered
+- FOCUS Bankers (focusbankers.com/deals/) — JS carousel
+- IBBA (ibba.org) — newsletter form on homepage; no public deal board
+
+**Tier 3 — registration/paywall (email-alert-only, if Kay registers):**
+- **Kumo** (withkumo.com — NOT kumo.so which is dead) — $30/mo Pro tier gives daily alerts on 815K+ listings
+- **BizScout / DealOS** (bizscout.com, dealos.bizscout.com/marketplace) — 40K+ listings gated
+- **DealForce** (dealforce.com — NOT generationalequity.com which is parked) — registered-buyer Deal Alerts by industry/geo/size
+- **DealSuite** (dealsuite.com) — validated-user-only, EU-first
 
 **Deal-sharing communities:**
 - Searchfunder (searchfunder.com) — Kay has membership. Email alerts → email-intelligence → this skill.

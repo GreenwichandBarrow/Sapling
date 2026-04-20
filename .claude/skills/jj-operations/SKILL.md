@@ -14,7 +14,7 @@ Manage JJ's calling operations end-to-end. JJ is a VA (Philippines) working Mon-
 2. Monday 10am Slack delivery: week's sheet link + call guide
 3. Daily harvest (Mon-Fri after 2pm): read each day's Call Log tab, update Full Target List
 
-JJ works from the daily Call Log tab on the master target sheet and Slack messages. Each niche has a static Call Guide doc he references for scripts, objections, and niche context.
+JJ works from the daily Call Log tab on the master target sheet and Slack messages. He uses a single generic **G&B Cold Call Guide** (Google Doc ID `12Hqfwxg4qJA3YdZh36ndd-flvYgWN`) that applies across niches — scripts, objections, and universal context. Do NOT search for per-niche call guides; the guide is intentionally generic.
 
 **Two run modes:**
 - `prep` — Monday 9am, creates 5 Call Log tabs (Mon-Fri) for the full week. Runs AFTER target-discovery's Sunday night pipeline (owner enrichment → PE re-screen → warm intro check) has cleaned the Full Target List.
@@ -161,7 +161,7 @@ Hey JJ, here are your calls for this week:
 
 This week's call logs are ready on the sheet: {link to master target sheet}
 Tabs: Call Log {M.DD.YY} through Call Log {M.DD.YY} (Mon-Fri)
-Call Guide: {link to niche call guide Google Doc}
+Call Guide: https://docs.google.com/document/d/12Hqfwxg4qJA3YdZh36ndd-flvYgWN/edit  (G&B Cold Call Guide — generic, not per-niche)
 
 40 calls per day, 200 total this week.
 {n} Tier 1 (owner name known), {n} Tier 2 (ask for the owner).

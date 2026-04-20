@@ -121,6 +121,59 @@ Major strategic day. Covered: niche evaluation (Specialty Coffee Equipment Servi
 - **JJ post-5/7 niche decision** — carry to Monday or Tuesday analyst call.
 - **Tracker-manager skill first acid test** — tomorrow. If any auto-execute step causes a problem, demote it back to surface-for-approval in the memory rule.
 
+## Post-first-goodnight additions (late Sunday 4/19)
+
+Kay kept working after the first /goodnight. Additional decisions captured:
+
+### Sam's DealsX book additions + reshape
+
+- **APPROVE: Add Premium Pest Management to Sam's DealsX sheet** — broader title `Specialty Pest & Environmental Management Services` (per Sam's "keep industries intentionally broad" rule). Date Added 4/19, Date Lists Due By 5/1, Launch 5/7 (corrected from 5/6). Written as Row 10 via tracker-manager guardrails (snapshot + post-write verify).
+- **APPROVE: Delete 3 retired SaaS rows cleanly** — gog CLI doesn't support row-delete, so used content-shift approach: moved kept rows 8-12 up to rows 5-9, cleared trailing rows 10-12, then wrote Pest as new Row 10. Final state: 6 active categories in contiguous rows 5-10, no visual clutter for Sam.
+
+### JJ operations
+
+- **APPROVE: JJ launchd prep timing 11pm → 6pm ET Sunday** — Kay wants to review prep before bed, not wake to it Monday. Plist edited + launchd reloaded. Next fire Sunday 4/26 6pm ET.
+- **APPROVE: Generic G&B Cold Call Guide (Doc `12Hqfwxg4qJA3YdZh36ndd-flvYgWN`)** is the reference, not per-niche guides. Skill reference updated to stop flagging missing per-niche variants.
+
+### Strategic sprint — 11-day LOI goal reality-checked
+
+- **REJECT: LOI in 11 days from 5 new niches** as structurally achievable. Kay set the aspirational goal; CIO reality-checked — cold-target-to-LOI is 3-6 months. Proposed realistic 11-day sprint goals: first CIM in hand, first Thumbs Up owner call scheduled, or 2 Thumbs Up calls + 1 NDA signed. Kay didn't select a specific goal but pivoted to building warm-intro activation across the 5 niches.
+
+### Warm-intro sprint (Kay's per-niche asks)
+
+- **APPROVE: Per-niche warm-intro activation**
+  - INSURANCE: circle back with Sarah de Blasio (send G&B-letterhead'd Goodwin finder's fee); reply to Mark (existing not startup, platform review); respond to Amanda (RSVP or coffee)
+  - COFFEE: walk into Frenchette + usuals, ask husband about restaurant equipment firms, ask Marriott luxury brand partnership director about hotel espresso equipment service
+  - STORAGE (Art Storage): email Levi, text Paul, ask Karaugh for intros
+  - PEST: Jason for Hamptons pest management contact
+  - SaaS: research existing SaaS for yachting + jewelry independents landscape
+- **APPROVE: Universal per-niche workstream** — warm LinkedIn searches, association listings, meetup attendance for every niche.
+
+### Infrastructure / channel additions
+
+- **APPROVE: Direct mail as 3rd outreach channel** — 3-channel stack (call + email + mail) beginning early May after Sam's target lists arrive. Handwrytten the CIO-recommended vendor (premium positioning, API-driven, robot-handwritten stationery aesthetic). Estimated cost $1,250/wave (250 pieces × $5) to $2,500/wave at scale. CFO budget check needed. **DEFER: planning to later this week** — Kay explicitly said not Monday.
+- **APPROVE: Association-placeholder tab per niche target-list sheet** — while Sam builds Full Target Lists, we populate Associations tab from river-guide-builder output.
+- **APPROVE: Industry Research Tracker → deal-aggregator sync** — deal-aggregator reads WEEKLY REVIEW at scan start so Coffee (Rank 16) + Art Storage reactivation (Rank 17) auto-roll into tomorrow's scan. Keyword expansion per niche flagged for `deal-aggregator-tuning-spec` — needs broker-friendly term translations.
+
+### Operational ownership
+
+- **APPROVE: Weekly tracker + dashboard as Friday agenda item.**
+- **APPROVE: Monthly meeting with Megan Lawlor — last week of each month.** Last meeting on file: 4/1/2026. Schedule next 4/28-4/30 and establish recurring cadence.
+- **APPROVE: Monthly reporting from Anthony (bookkeeper) — to be reviewed Friday 4/24.** No email from Anthony found in Gmail search; ping Anthony Monday to confirm delivery timing.
+
+### Dropped ball recovered
+
+- **REJECT: Previous Slack deep-link formatter for TheDealSheet** — my 4/13 Slack message sent `thedealsheet.co/pest-control` (category page) for the Palm Beach pest deal instead of a deal-specific URL. Kay couldn't open it. Deal details recovered from 4/13 scan (Palm Beach County, FL pest control — $5.8M rev / $1.6M EBITDA / $9.6M ask / 6.0x / Hot Deal flag). Queued for Monday: log into TheDealSheet, pull working deep-link, resend. Meta-fix: add to `deal-aggregator-tuning-spec` as hard issue.
+
+## Post-goodnight actions taken
+
+- CREATED: [[inbox/2026-04-20-monday-fire-plan]] — 7 priority workstreams + deferred items + Friday agenda + Megan cadence + Mercury reminder. /goodmorning will ingest automatically.
+- UPDATED: DealsX Industry Verticals sheet — content-shifted rows 5-9 contiguous, Row 10 new Pest category written
+- UPDATED: `~/Library/LaunchAgents/com.greenwich-barrow.jj-operations-sunday.plist` — Hour 23→18, launchd reloaded
+- UPDATED: `.claude/skills/jj-operations/SKILL.md` — generic Call Guide reference (no per-niche search)
+- UPDATED: `brain/context/continuation-2026-04-19-1.md` — 5/6→5/7 Pest transition (4 occurrences)
+- UPDATED: `memory/feedback_niches_drive_channels_not_reverse.md` — 5/7 correction
+
 ## Tags
 
 - niche/specialty-coffee-equipment-service
@@ -133,3 +186,6 @@ Major strategic day. Covered: niche evaluation (Specialty Coffee Equipment Servi
 - topic/pe-consolidation-risk
 - topic/artifacts-pure-analysis
 - topic/tracker-management
+- topic/warm-intro-sprint
+- topic/direct-mail-planning
+- topic/monday-sprint

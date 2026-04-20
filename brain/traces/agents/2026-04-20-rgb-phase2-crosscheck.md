@@ -3,7 +3,7 @@ schema_version: 1.0.0
 date: 2026-04-20
 task: River-guide-builder Phase 2 cross-check across 8 active niches (warm-intro-finder 5-source scan)
 agents: [rgb2-insurance, rgb2-pest, rgb2-estate-mgmt, rgb2-coffee, rgb2-art-storage, rgb2-commercial-cleaning, rgb2-vertical-saas, rgb2-private-art-advisory]
-status: active
+status: completed
 linked_trace: brain/traces/agents/2026-04-20-river-guide-sprint.md
 ---
 
@@ -143,6 +143,22 @@ Headers Known Contact / Source / Evidence written to O1:Q1; data rows O2:Q38 pop
 Target list is entirely net-new relationship-building territory: conference meetups (ISSA Show Nov, BSCAI EMC, AHE EXCHANGE, Data Center World, ISPE, IEST ESTECH, AIC annual) and LinkedIn InMail per Suggested Approach column are the only paths.
 → READY
 
+## [15:42] rgb2-private-art-advisory
+Located sheet: `1c6Db21D2qDpiT7LnEQ4l0AROlA-gucDQD1ZGOlrZ-K0`. Processed 47 rows. 2 WARM / 13 INVESTOR INTRO / 0 SHARED / 32 COLD. Sheet updated (J1:L48, 144 cells).
+
+5-source scan:
+- LinkedIn CSV (904 rows): 0 hits across all 47 names.
+- Vault entities: 0 direct entity files for these 47. Referenced hits: Christopher Wise (EXISTING via Margot Romano), Hanna Schouwink (Zwirner — existing rel via Britta Nelson), Philip Hoffman (2nd-degree LinkedIn, warm intro path deferred Apr 3 via Ana/Anton Bogdanov/Chris Wise), Allan Schwartzman (Margot offered intro Apr 4; Kay PASSED on Schwartzman as target but Allan remains reachable as ecosystem connector).
+- Gmail: Christopher Wise cwise@risk-strategies.com — 9-msg thread Mar 2026 ("Connecting you || Amanda <> Kay") + prior Jan 2026. Only Gmail WARM hit. Other name searches returned newsletter false positives only (Art Business Conference, Frieze VIP).
+- Attio: mcp__attio__* not exposed to this subagent — gap flagged, consistent with all 7 other niches in this sprint.
+- Investor network: **Margot Romano is the investor-adjacent node for this entire niche.** Her BofA Private Wealth background makes her a direct peer of the bank-side art advisors (UBS/Mary Rozell, Citi/Suzanne Gyorgy, Deloitte/Ali Rosenbaum, Bessemer/Andrea Crane, Rockefeller/Alicia Longwell, Wilmington/Rebecca Cooper, and especially Evan Beard — ex-BofA art services, direct peer). She has also curated art-insurance intros explicitly (sent broker list Oct 2025, intro'd Wise + de Blasio) — Risk Strategies Fine Art (Pontillo), Aon/Huntington T. Block (Rappa), Chubb-alum Straus, AXA XL Schipf, Berkley One Barack all sit inside her curated cohort.
+
+WARM (2): Christopher Wise (Gmail — existing rel via Margot), Hanna Schouwink (Vault — existing Zwirner rel via Britta Nelson).
+INVESTOR INTRO (13): Allan Schwartzman, Philip Hoffman, Mary Rozell, Ali Rosenbaum, Evan Beard, Suzanne Gyorgy, Andrea Crane, Alicia Longwell, Rebecca Cooper, Mary Pontillo, Anne Rappa, Dorit Straus, Jennifer Schipf, Sarah Barack — all reachable via Margot Romano's art-world network.
+
+Private Art Advisory is the highest-warm-intro-density niche in this sprint — Margot Romano is the single-node gateway to the entire ecosystem, validating the rgb2-insurance finding. Fine-art specialty corridor + bank-side art advisor cohort = Margot's home territory.
+→ READY
+
 ## [15:41] rgb2-art-storage
 Processed 46 rows (0 DNC skipped — no Do Not Call tab exists on this sheet; Acumen/Uovo/Hangman not present in river guides list). 3 WARM / 2 INVESTOR / 0 SHARED / 41 COLD. Sheet updated (Q1:S47).
 
@@ -152,3 +168,24 @@ COLD 41: all auction-house logistics, museum registrars, most fine-art insurance
 
 Attio MCP not available in this agent session — relied on vault entity scan as proxy (brain/entities/sarah-de-blasio.md and brain/entities/christopher-wise references confirmed). Recommend Phase 3 operator verify any Attio-only Industry Expert records we may have missed.
 → READY
+
+## [15:43] orchestrator
+All 8 agents READY. Final tally:
+
+| Niche | Rows | WARM | INVESTOR | COLD | Notes |
+|---|---|---|---|---|---|
+| Specialty Insurance | 35 | 4 | 0 | 31 | Margot fine-art corridor |
+| Premium Pest | 26 | 0 | 0 | 26 | fresh |
+| Specialty Coffee | 29 | 0 | 0 | 29 | fresh |
+| Estate Mgmt | 29 | 0 | 0 | 29 | fresh |
+| High-End Commercial Cleaning | 37 | 0 | 0 | 37 | fresh |
+| Vertical SaaS Luxury | 42 | 0 | 0 | 42 | fresh; SEG cold door |
+| Art Storage | 46 | 3 | 2 | 41 | Margot art-world |
+| Private Art Advisory | 47 | 2 | 13 | 32 | Margot single-node gateway; 32% density |
+| **TOTAL** | **291** | **9** | **15** | **267** | |
+
+Structural finding: Margot Romano is the investor-intro node across all 3 art-world niches (insurance, storage, advisory). Other 5 niches are net-new relationship territory requiring cold outreach.
+
+Gap to address on re-run: **Attio MCP was not available** in any of the 8 subagents. Phase 2 ran in 4-of-5 source mode (LinkedIn CSV + vault + Gmail + investor-network). Re-run with Attio access may surface additional Industry Expert connections.
+
+→ CLOSE

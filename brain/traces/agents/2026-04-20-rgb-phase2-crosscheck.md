@@ -115,6 +115,19 @@ Processed 29 rows. 0 WARM / 0 INVESTOR / 0 SHARED / 29 COLD. Sheet updated (O/P/
 Estate Management is a net-new industry for Kay — consistent with pest/coffee cousins reporting zero prior-network overlap. No Phase 1 edits made.
 → READY
 
+## [15:40] rgb2-vertical-saas
+Located sheet: `1x8DAZGOQX1GJfLV617HX1MV-Il-sIzopMBzOl3N7w1s`. Processed 42 rows. 0 WARM / 0 INVESTOR / 0 SHARED / 42 COLD. Sheet updated (J1:L43 headers + 129 cells).
+
+5-source scan:
+- LinkedIn CSV (904 rows): 0 hits. Exact first+last grep on all 42 names. No matches.
+- Vault entities (brain/entities/): 0 hits for any of the 42 names.
+- Gmail: 14 quoted-name batch searches covering all 42 names. 1 nominal hit on "Brad Svrluga" → Axios Pro Rata newsletter mention (Dan Primack @ axios.com), NOT personal correspondence. Discounted — does not qualify as WARM.
+- Attio: mcp__attio__* not exposed to this subagent. Not scanned; flagged as gap. If required, rerun after tool exposure.
+- Investor network: no investor persona mentions. River Guides list is M&A advisors (SEG, USA, GP Bullhound, Tyton, Cascadia, AGC, HL), growth PE/VCs outside Kay's LP roster (Volition, Stripes, Pamlico, JMI, Vista, Bregal Sagemount, Primary, 645, LionTree, Scale, Menlo), SaaS analysts (SaaS CFO, SaaStr, Theory, BenchSights, Vanta), and adjacent operators (Inn-Flow, Cloudbeds, Nexudus, Hostfully, Hotel News Resource, Barn Manager, ex-Jonas, SkyBrief, Luxe Maritime, SH Hotels, Knowles, PwC FO).
+
+Vertical SaaS is net-new relationship territory for Kay — consistent pattern with pest/coffee/estate-mgmt/commercial-cleaning (all zero-network niches). SEG emerges as the highest-leverage cold door (3 of 42 rows, covers all 10 sub-niches; Kris Beible has public email).
+→ READY
+
 ## [15:44] rgb2-commercial-cleaning
 Processed 37 rows. 0 WARM / 0 INVESTOR / 0 SHARED / 37 COLD. Sheet updated.
 

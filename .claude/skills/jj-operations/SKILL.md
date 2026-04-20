@@ -231,10 +231,15 @@ If Call Status = "Connected" and sentiment is positive → flag for pipeline-man
 - [ ] Daily Call Log tab created on master sheet with correct date naming (`Call Log {M.DD.YY}`)
 - [ ] Tab has all 23 columns (A-W) matching Full Target List
 - [ ] No targets from Do Not Call tab included in call list
+- [ ] **No targets with JJ Call Status = "PE-OWNED - SKIP"** (or any other skip-flag) pulled into this week's tabs. These are companies previously flagged as PE/rollup-owned and permanently excluded from outreach per `memory/feedback_no_pe_owned_targets.md`.
+- [ ] **Cross-reference every selected row against the Do Not Call tab by exact Company (Col B) match.** If a company appears on both Do Not Call AND the Full Target List pool, remove from pool. This catches the case where PE re-screen (target-discovery Phase 2 Step 3) moved a company to DNC but the Full Target List row wasn't marked SKIP.
 
 **Enrichment integrity (hard gate — blocks Slack send):**
-- [ ] Every Call Log row has Col K (Owner Name) populated. **If any row has blank Col K, do NOT draft the Slack message.** Run `.claude/hooks/enrichment_integrity_check.py <sheet_id> <pool_artifact>` and require PASS before proceeding. On FAIL, escalate as "ENRICHMENT INTEGRITY FAILURE" in Monday briefing and halt prep mode.
+- [ ] Locate pool artifact at `brain/context/jj-week-pool-{YYYY-MM-DD}.md` (written by target-discovery Phase 2 Step 1). If artifact missing → STOP. Pool selection never ran.
+- [ ] Every Call Log row has Col K (Owner Name) populated. **If any row has blank Col K, do NOT draft the Slack message.** Run `.claude/hooks/enrichment_integrity_check.py <sheet_id> <pool_artifact_path>` and require PASS before proceeding. On FAIL, escalate as "ENRICHMENT INTEGRITY FAILURE" in Monday briefing and halt prep mode.
 - [ ] Every pool row (from Phase 2 Step 1 artifact) appears on exactly one Mon–Fri Call Log tab — no drift between enriched rows and called rows.
+
+> **Enforcement reality:** until the Saturday 4/25 launchd-hardening fix ships (bead `ai-ops-1`), this checklist is LLM-level enforcement only. A skill-level POST_RUN_CHECK in `scripts/run-skill.sh` is the true runtime guardrail. Until then, the orchestrator MUST manually confirm each item before Slack send.
 
 **Slack send gate:**
 - [ ] All enrichment integrity checks PASSED (see above)

@@ -12,6 +12,7 @@ from router.handlers.vault import stats_protection, validate_vault_schema
 from router.handlers.skills import inject_skill_context
 from router.handlers.gmail import block_gmail_send
 from router.handlers.weekly_tracker_validation import validate_weekly_tracker_before_slack
+from router.handlers.onepager_guardrail import enforce_onepager_purity
 
 HANDLERS = [
     HandlerConfig(
@@ -23,6 +24,11 @@ HANDLERS = [
         fn=validate_vault_schema,
         matcher=r"^Write$",
         name="validate-vault-schema",
+    ),
+    HandlerConfig(
+        fn=enforce_onepager_purity,
+        matcher=r"Write|Edit|MultiEdit",
+        name="onepager-guardrail",
     ),
     HandlerConfig(
         fn=inject_skill_context,

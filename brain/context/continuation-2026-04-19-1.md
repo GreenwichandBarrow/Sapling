@@ -13,9 +13,9 @@ tags: ["date/2026-04-19", "context", "topic/continuation"]
 
 **Acumen / Art Storage** — paused. LOI history + warm relationship documented, calls saved to vault, Voxme entity researched. No re-engagement decision yet.
 
-**JJ post-5/6 niche** — open. Pest Management transitions to Sam's DealsX 5/6. JJ's next niche TBD.
+**JJ post-5/7 niche** — open. Pest Management transitions to Sam's DealsX 5/7. JJ's next niche TBD.
 
-**Pest Management** — confirmed: JJ until 5/6, Sam DealsX after.
+**Pest Management** — confirmed: JJ until 5/7, Sam DealsX after.
 
 ## Decisions Made This Session
 
@@ -49,7 +49,7 @@ tags: ["date/2026-04-19", "context", "topic/continuation"]
 **No operational decisions made — these are open threads to resume strategically:**
 - Specialty Coffee Equipment Service: continue evaluation on its own merits (no decisions made on whether to pursue)
 - Acumen / Art Storage anchor: no re-engagement decision; LOI history + warm relationship preserved
-- JJ post-5/6 niche: open, no commitment
+- JJ post-5/7 niche: open, no commitment
 - Sam's DealsX list: NO changes committed (no add/drop)
 - Industry Research Tracker: NO changes committed
 - Mercury bank switch: actual operational decision — Kay to open Mercury application Monday 4/20
@@ -57,5 +57,5 @@ tags: ["date/2026-04-19", "context", "topic/continuation"]
 ## Open Questions
 
 - Specialty Coffee Equipment Service: what dimension to dig into next?
-- JJ post-5/6 niche: still pending
+- JJ post-5/7 niche: still pending
 - Datacor reference correction: parked (was about debt-vs-equity for tuck-ins, now in memory)

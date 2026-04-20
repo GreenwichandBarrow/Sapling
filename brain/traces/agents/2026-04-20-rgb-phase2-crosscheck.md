@@ -73,3 +73,29 @@ Starting Phase 2 cross-check on High-End Commercial Cleaning sheet. 37 rows acro
 ## [15:38] rgb2-vertical-saas
 Located sheet via Drive search: `1x8DAZGOQX1GJfLV617HX1MV-Il-sIzopMBzOl3N7w1s` — "Vertical SaaS for Luxury & HV-Asset Services - Target List". Modified 2026-04-20 17:52 UTC. Opening River Guides tab.
 → WORKING
+
+## [15:38] rgb2-private-art-advisory
+Located sheet: `1c6Db21D2qDpiT7LnEQ4l0AROlA-gucDQD1ZGOlrZ-K0` — "Private Art Advisory Firms - Target List". Modified 2026-04-20 17:52 UTC. Tabs: Active, Passed, LISTS, Associations, River Guides. Opening River Guides tab.
+→ WORKING
+
+## [15:46] rgb2-coffee
+Source scan results across 29 River Guides:
+- LinkedIn CSV (904 rows): 0 hits. Checked all 29 names including Daday/Manley/Guglielmino/Bracesco/Grant/Baker/Tolley/Apostolopoulos/Allen (both)/Worden/Hetzel/Rinaldi/Michelman/Carlsen/Brown/Blumhardt/Davids/Allen/Olson/La/Cheon/Barnett/Musson/Blake/Rigie/Fleischut/Toia. Only false positives ("Connie Chen" at Meta, "Todd Baker" at Compass).
+- Vault entities (106 files): 0 hits for any coffee industry name or company.
+- Gmail: 0 meaningful hits (one Gusto promotional false positive).
+- Attio: mcp__attio__* not exposed to this subagent. Skipped; noting as a gap — Phase 2 for this niche proceeded without the Attio source. All 29 default to COLD barring Attio re-check.
+- Investor network: no investor persona mentions in evidence.
+
+Adding M/N/O columns and populating 29 rows as COLD. Writing now.
+
+## [15:48] rgb2-pest
+Processed 26 rows. 0 WARM, 0 INVESTOR, 0 SHARED, 26 COLD.
+5-source scan: LinkedIn CSV (no matches on any name), vault entities (no matches), Gmail (8 email-based + 3 name-based queries, all empty), investor network (5 pest-adjacent entities scanned — ninad-singh, sarah-rowell, ridgeway, marshberry, anacapa-partners — zero mentions of target individuals/firms). Attio MCP unavailable in this agent env — noted as not-checked; other 4 sources fully exhausted.
+Premium Pest is a net-new industry for Kay — no existing relationships in any scanned source. Headers + COLD values written to columns J:L.
+Sheet updated.
+→ READY
+
+## [15:49] rgb2-coffee
+Processed 29 rows. 0 WARM / 0 INVESTOR / 0 SHARED / 29 COLD. Sheet updated (M/N/O headers added, 87 cells written).
+Caveat: Attio source not scanned — mcp__attio__* tools unavailable to this subagent. LinkedIn CSV (904), vault (106 entities), Gmail all returned no hits. If Attio scan is required, rerun Phase 2 after exposing the tool.
+→ READY

@@ -200,20 +200,6 @@ Reports:
 **Degraded-mode behavior:** Before enrichment complete for a given Attio record, Phase 3 falls back to LinkedIn CSV + Attio standard fields + vault + Gmail. Re-running the skill on a niche after more records are enriched will produce richer Network Matches output automatically — no code change.
 </apollo_enrichment_dependency>
 
-<scoring>
-## Phase 1 Scoring (retained from prior version)
-
-| Dimension | 3 (High) | 2 (Medium) | 1 (Low) |
-|-----------|----------|------------|---------|
-| Deal Flow Proximity | Directly advises owners on exits/succession | Sees financials or industry data | Knows the industry generally |
-| Accessibility | Warm intro path exists | Cold but likely to respond | Cold, unclear response |
-| Niche Alignment | Works exclusively in this niche | Works in adjacent space | General practice |
-
-**Total 7-9:** Priority coffee chat target
-**Total 4-6:** Worth an intro email
-**Total 1-3:** Monitor only
-</scoring>
-
 <finder_fee_program>
 ## Finder's Fee Program
 
@@ -234,7 +220,6 @@ Open questions for Kay:
 | **niche-intelligence** | Provides niche context. Step 5b validation-contacts **sunset 2026-04-20** — concept lifted into Phase 1 Category 6 (Validation Contacts). |
 | **warm-intro-finder** | Phase 2 engine — reuse 5-source scan verbatim |
 | **meeting-brief-manager** | Generates prep for coffee chats with river guides |
-| **relationship-manager** | Tracks nurture cadence after Kay connects |
 | **deal-aggregator** | When a river guide surfaces a deal, enters intermediary pipeline |
 | **outreach-manager** | Initial outreach to new river guide targets (via Kay Email channel) |
 | **target-discovery** | Owns target-list sheet creation; river-guide-builder writes to its Associations/River Guides/Network Matches tabs |

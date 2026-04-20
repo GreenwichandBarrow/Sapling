@@ -1,0 +1,76 @@
+niche: High-End Commercial Cleaning
+slug: high-end-commercial-cleaning
+version: 1.0.0
+last_updated: 2026-04-20
+
+# Launch date: 2026-07-20. Pre-launch ecosystem mapping.
+
+keywords:
+  - commercial cleaning
+  - janitorial services
+  - environmental services
+  - EVS
+  - healthcare cleaning
+  - hospital cleaning
+  - cleanroom cleaning
+  - biotech cleaning
+  - pharmaceutical cleaning
+  - data center cleaning
+  - critical environment cleaning
+  - white-glove cleaning
+  - luxury hospitality cleaning
+  - ISSA
+  - BSCAI
+  - GBAC
+  - AHE
+  - CIMS certification
+
+negative_keywords:
+  - residential cleaning (consumer)
+  - maid service
+  - carpet cleaning (residential)
+  - office cleaning (generic/commoditized)
+  - franchise janitorial (Jan-Pro, etc.)
+
+customer_segment_keywords:
+  - hospital
+  - healthcare facility
+  - acute care
+  - surgery center
+  - biotech
+  - pharmaceutical
+  - cleanroom
+  - ISO 14644
+  - GMP facility
+  - data center
+  - hyperscale
+  - Equinix
+  - Digital Realty
+  - QTS
+  - luxury hotel
+  - five-star hotel
+  - luxury retail
+  - flagship store
+  - museum
+  - archive
+  - UHNW residential
+
+pe_platforms_to_exclude:
+  - 4M Building Services
+  - O2 Investment Partners
+  - Kleen-Tech Services
+  - Rainier Partners
+  - KBS
+  - Kellermeyer Bergensons
+  - Cerberus Capital
+  - Kept Companies
+  - DFW Capital
+  - ACON Investments
+  - Solid Surface Care
+  - Angeles Equity Partners
+
+notes: |
+  Generic commercial cleaning fails G&B 25% EBITDA floor (industry 12-18%).
+  High-end sub-niche (healthcare EVS / biotech cleanroom / data center / luxury hospitality / museum) commands 10-30% premium
+  and clears 20-28% EBITDA with strict operator-selection criteria.
+  Scorecard 2.50/3.0 marginal — viable only with >50% high-end revenue mix + <50% turnover + certification stack.

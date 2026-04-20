@@ -289,57 +289,13 @@ Target validation was moved into the identification step (Step 2) so no niche is
 |------------|------|-------------|
 | `niche-intel-tracker` | general-purpose | Update IDEATION + WEEKLY REVIEW tabs |
 
-### Step 5b: Validation Contacts
+### Step 5b: SUNSET 2026-04-20 — Validation Contacts moved to river-guide-builder
 
-| Agent Name | Type | Description |
-|------------|------|-------------|
-| `niche-intel-validation-contacts` | general-purpose | Identify validation contacts and key risk questions for Kay |
+Previously this step produced `brain/outputs/{date}-validation-contacts-{niche-slug}.md` identifying people who could validate a niche's risks. **Retired 2026-04-20** because (a) Kay's feedback: "no one was answering" the validation outreach, and (b) the output schema overlapped ~90% with river-guide-builder's River Guides output.
 
-**Purpose:** Surface people who could validate a niche's risks and the specific questions worth answering. Kay decides how to use these contacts (her own calls, informal conversations, email, etc.). This is an intelligence deliverable, not a call program.
+**New home:** `river-guide-builder` Phase 1 Category 6 ("Validation Contacts") — lifted concept, same discovery logic, merged into the unified Niche Network output on each target-list sheet. See `.claude/skills/river-guide-builder/SKILL.md`.
 
-**When this runs:** Only for niches that pass all 4 initial screen gates AND are candidates for sprint activation (scored 2.5+ on industry scorecard or Kay requests activation).
-
-**The agent:**
-1. Read the niche one-pager, specifically the **Risks** section and **Mission Criticality** section
-2. Extract 3-5 key risks/assumptions from the one-pager that need real-world validation
-3. For each risk, write 1-2 questions that would confirm or contradict it
-4. Identify 5-10 people who could answer those questions, **prioritizing Kay's existing network first:**
-   - **Kay's network (PRIMARY):** Search vault entities, Attio contacts, and call history for people connected to this niche. Kay's network spans luxury, art, insurance, finance, and real estate — most niches in the luxury ecosystem will have a warm contact. Tag each as "warm" with the relationship context.
-   - **Investor network (IF NO WARM CONTACTS FOUND):** If Kay's direct network has no warm contacts for this niche, recommend investor outreach. Suggest specific investors who may have relevant connections or industry knowledge. This serves dual purpose: niche validation + natural touchpoint to stay connected between quarterly updates. Tag as "investor intro."
-   - **External (LAST RESORT):** Only if Kay's network and investors don't cover the niche, identify external experts — industry association leaders, conference speakers, published authors in the space. Tag as "cold."
-   - For each contact: Name, Company, Title, why they're relevant, relationship warmth (warm / investor intro / cold)
-5. Write a vault file: `brain/outputs/{date}-validation-contacts-{niche-slug}.md`
-
-**Output format (one page max):**
-```
-VALIDATION CONTACTS: {Niche Name}
-Date: {date}
-
-RISKS TO VALIDATE:
-1. {Risk statement} — {Question to ask}
-2. {Risk statement} — {Question to ask}
-3. ...
-
-CONTACTS:
-1. {Name} — {Title}, {Company}
-   LinkedIn: {url}
-   Connection: {warm intro via X / cold}
-   Why: {one line on what they'd validate}
-
-2. ...
-```
-
-**Delivery:** Slack notification to Kay (not JJ) with the vault file link. Kay decides how to pursue validation.
-
-**Output posted to chatroom:**
-```
-VALIDATION CONTACTS: {Niche Name}
-Contacts: {n} identified ({n} warm, {n} cold)
-Risks: {n} to validate
-Vault: brain/outputs/{date}-validation-contacts-{niche-slug}.md
-```
-
-**Stop hook:** Vault file exists with at least 5 contacts and at least 3 risks to validate.
+**Existing validation-contact outputs in `brain/outputs/2026-03-30-*` and `2026-04-19-*`** remain in place with `supersedes` frontmatter notes (historical record).
 
 </sub_agents>
 

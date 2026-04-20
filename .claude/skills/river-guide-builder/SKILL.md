@@ -1,19 +1,23 @@
 ---
 name: river-guide-builder
-description: "Proactive ecosystem mapping per niche — find association leaders, industry CPAs, M&A lawyers, consultants, and adjacent operators who can introduce Kay to business owners. Output: ranked coffee chat targets."
+description: "Build complete Niche Network per active niche: external ecosystem (associations + named individuals) + cross-check against Kay's network + industry-experience scan across her network. Outputs land in target-list sheet tabs. Attio writes default OFF."
 user_invocable: true
 context_budget:
-  skill_md: 2000
-  max_references: 2
+  skill_md: 2500
+  max_references: 3
   sub_agent_limit: 2000
 ---
 
 <objective>
-Map the professional ecosystem around each active niche to identify people who know business owners and can make introductions. These are "river guides" — people who touch deal flow before it gets listed.
+Build the complete **Niche Network** per active niche. For each niche, produce a bidirectional map:
 
-**This is PROACTIVE relationship building** — distinct from deal-aggregator (passive deal scanning) and outreach-manager (direct owner outreach).
+- **External ecosystem** — associations + named individuals who touch deal flow (river guides)
+- **Network cross-check** — which of those external contacts already intersect Kay's existing network?
+- **Industry-experience scan** — who in Kay's existing network has industry-relevant work history, independent of the external ecosystem research?
 
-**Proof of concept: Margot Romano.** She introduced Kay to Alexandra Kelly (UOVO), Sarah De Blasio (Chartwell Insurance), and Christopher Wise (Risk Strategies). Every conversation produced at least one high-quality introduction. This skill systematizes finding more Margots.
+This replaces the prior single-direction "Coffee Chat Menu" framing AND the niche-intelligence Step 5b validation-contacts output. Unified into one skill because the schemas are 90% overlapping.
+
+**Proof of concept: Margot Romano.** She introduced Kay to Alexandra Kelly (UOVO), Sarah De Blasio (Chartwell Insurance), and Christopher Wise (Risk Strategies). Every conversation produced at least one high-quality introduction. This skill systematizes finding more Margots AND surfaces people like Margot already in Kay's network.
 
 **This skill does NOT:**
 - Scan broker platforms for posted deals (deal-aggregator)
@@ -22,149 +26,175 @@ Map the professional ecosystem around each active niche to identify people who k
 - Track nurture cadences (relationship-manager)
 
 **This skill DOES:**
-- Research ecosystem contacts per niche across 5 categories
-- Score and rank contacts by proximity to deal flow
-- Check warm intro paths via Attio and vault
-- Output ranked "coffee chat menu" for Kay
-- Feed new contacts into Attio intermediary pipeline
-- Trigger meeting-brief-manager for coffee chat prep
+- Research ecosystem contacts per niche across 6 categories (Phase 1)
+- Cross-check each external contact against Kay's network via warm-intro-finder (Phase 2)
+- Scan Kay's network for people with industry-relevant experience via Apollo employment history + LinkedIn CSV + Attio fields + vault + Gmail (Phase 3)
+- Write results to three tabs on each niche's target-list sheet: Associations | River Guides | Network Matches
 
-**Tracking:** Uses existing Attio intermediary pipeline. Does NOT create a separate tracking system. New contacts enter as "Identified" with relationship_type: "River Guide".
+**Attio write behavior (config flags, default OFF):**
+- `ATTIO_WRITE_RIVER_GUIDES: false` — if true, auto-create Attio People records for river guides with `relationship_type = "River Guide"`
+- `ATTIO_TAG_NETWORK_MATCHES: false` — if true, tag existing Attio records with industry metadata when they hit on Phase 3 scan
+- Both default OFF until Kay decides. Flipping to `true` is a one-line config change, no code rework.
 </objective>
 
 <ecosystem_categories>
-## 5 Ecosystem Categories
+## 6 Ecosystem Categories (Phase 1)
 
 For each active niche, research and identify contacts in these categories:
 
 ### 1. Association Leaders
-Officers, board members, committee chairs of industry associations. They know every member, see industry dynamics, and know who's growing or struggling.
-
-**Per niche:**
-- Pest Management: NPMA board, state PMA presidents, NPMA committees (M&A, business development)
-- Insurance: PIA chapter heads, Big I (IIABA) state leaders, NAIA officers
-- Fractional CFO: AICPA leadership, state CPA society officers, IMA chapter heads
-- Estate Management: IREM officers, CAI chapter presidents, BOMA local leaders
+Officers, board members, committee chairs of industry associations. They know every member and see industry dynamics.
 
 ### 2. Industry CPAs
-Accounting firms specializing in that industry. They see the financials, know who's profitable, and hear "I'm thinking about selling" before anyone else.
+Accounting firms specializing in the industry. They see the financials. Example: PCO Bookkeepers (Dan Gordon, $1B+ in pest M&A transactions).
 
-**Per niche:**
-- Pest Management: PCO Bookkeepers (Dan Gordon, $1B+ in pest M&A transactions), industry-specific accounting firms
-- Insurance: Reagan Consulting, MarshBerry (valuation side), insurance-specific CPA firms
-- Fractional CFO: Poe Group Advisors (accounting practice transitions), Accounting Practice Sales
-- Estate Management: Property management accounting specialists
-
-### 3. Industry M&A Lawyers
-Attorneys who handle transactions in that space. They know what's trading, at what multiples, and who's looking.
-
-**Per niche:**
-- Pest Management: Attorneys specializing in pest/environmental services M&A
-- Insurance: Insurance agency M&A attorneys (book-of-business transfers, carrier appointment law)
-- Fractional CFO: Accounting practice transition attorneys
-- Estate Management: Property management M&A attorneys
+### 3. Industry M&A Lawyers / Advisors
+Attorneys + boutique M&A advisors handling transactions in the niche. Know what's trading, at what multiples. Example: Sica Fletcher for specialty insurance ($19B+ since 2014).
 
 ### 4. Consultants & Advisors
-Management consultants, valuation firms, industry advisors who work with owners on operational health, growth, and succession planning.
-
-**Per niche:**
-- Pest Management: Keystone Business Advisors, PCT consultants, NPMA business management consultants
-- Insurance: Sica Fletcher (advisory, $19B+ since 2014), Agency Consulting Group, Optis Partners
-- Fractional CFO: Practice management consultants, succession planning specialists
-- Estate Management: Property management consulting firms, community association advisors
+Management consultants, valuation firms, industry advisors who work with owners on operational health, growth, succession. Example: Reagan Consulting (insurance), Potomac Pest Control Group.
 
 ### 5. Adjacent Operators
 Owners of related businesses who know the competitive landscape and hear about deals through industry networks.
 
-**Per niche:**
-- Pest Management: Lawn care operators, environmental services owners, janitorial franchise owners
-- Insurance: Benefits brokers, financial planners serving same HNWI clients, wealth managers
-- Fractional CFO: Bookkeeping firm owners, payroll service operators, tax prep chain owners
-- Estate Management: Concierge service operators, luxury property maintenance owners
+### 6. Validation Contacts *(lifted from niche-intelligence Step 5b — 2026-04-20)*
+Industry analysts, former operators, trade press editors, conference speakers who can assess thesis viability. Historically underperformed as cold-call targets (Kay: "no one was answering"), but high-value when discovered via warm paths. Schema merges into River Guides output with a `category = "Validation"` tag rather than a separate file.
 </ecosystem_categories>
+
+<unified_schema>
+## Unified Niche Network Schema
+
+Each niche's target-list sheet has four tabs (created by target-discovery or jj-operations on niche activation):
+
+| Tab | Owner | Purpose |
+|---|---|---|
+| Full Target List | Sam / DealsX / target-discovery | Acquisition targets |
+| Do Not Call | target-discovery | Warm-intro reserves + PE-owned exclusions |
+| Niche Context | niche-intelligence | Industry thesis summary |
+| **Associations** | **river-guide-builder Phase 1** | Trade orgs, conferences, events |
+| **River Guides** | **river-guide-builder Phase 1+2** | Named individuals who touch deal flow |
+| **Network Matches** | **river-guide-builder Phase 3** | People in Kay's network with industry experience |
+
+### Associations tab schema (7 cols)
+
+`Association Name | Website | Events Page URL | Scope | Membership Cost | Member? | Notes`
+
+### River Guides tab schema (11 cols — expanded for Phase 2)
+
+`Name | Title | Firm | Email (if public) | LinkedIn | Category | Score (1-9) | Known Contact | Source | Evidence | Notes`
+
+- **Category:** Association Leader / Industry CPA / M&A Lawyer / Consultant / Adjacent Operator / Validation Contact
+- **Score:** 1-9 via 3-dimension scoring (Deal Flow Proximity × Accessibility × Niche Alignment)
+- **Known Contact:** `WARM` / `INVESTOR INTRO` / `SHARED BACKGROUND` / `COLD` (populated by Phase 2)
+- **Source:** `LinkedIn / Attio / Vault / Gmail / Investor` (populated by Phase 2)
+- **Evidence:** short snippet (e.g., "LinkedIn 1st degree, connected 2019")
+
+### Network Matches tab schema (8 cols — new)
+
+`Name | Source | Current/Past Employer | Role/Position | Match Strength | Keywords Matched | Intro-Path Potential | Notes`
+
+- **Source:** `LinkedIn CSV / Attio / Vault / Gmail`
+- **Match Strength:** `H` (current C-suite or clean owner/founder past role), `M` (past role 3+ years), `L` (tangential keyword hit)
+- **Keywords Matched:** list of niche keywords that triggered the match
+</unified_schema>
 
 <workflow>
 ## Workflow
 
-### Step 1: Load Active Niches
-Read Industry Research Tracker WEEKLY REVIEW tab for niches with status "Active-Outreach" or "Active-Long Term":
-```bash
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "'WEEKLY REVIEW'!A3:D20" --json
-```
+### Phase 1 — Ecosystem Discovery
 
-### Step 2: Read Existing Data
-For each niche, check:
-- **Associations tab** on the target sheet (already has some contacts)
-- **Attio intermediary pipeline** — existing river guides and their status
-- **Vault entities** — any existing river guide relationships (search for relationship_type or tags)
+**Input:** niche name + target-list sheet ID
 
-### Step 3: Research New Contacts
-For each niche x category combination:
-1. Web search for association leadership rosters
-2. Apollo search for industry-specific CPAs and lawyers
-3. LinkedIn research for consultants and adjacent operators
-4. Cross-reference against Attio to avoid duplicates
+1. Read niche keyword file at `.claude/skills/river-guide-builder/references/niche-keywords/{niche-slug}.yaml`
+2. Research 6 categories via web + Apollo + LinkedIn:
+   - Association Leaders, Industry CPAs, M&A Lawyers, Consultants, Adjacent Operators, Validation Contacts
+3. Cross-reference against Do Not Call tab to exclude DNC-flagged names (e.g., Acumen/Uovo/Hangman leadership for Art Storage)
+4. Score each contact 1-9 on 3 dimensions (Deal Flow Proximity × Accessibility × Niche Alignment)
+5. Write Associations tab (org-level) + River Guides tab Phase 1 columns (Name/Title/Firm/Email/LinkedIn/Category/Score/Notes)
 
-### Step 4: Score Contacts
-Rate each contact on 3 dimensions (1-3 scale):
+### Phase 2 — Cross-Check Against Kay's Network
+
+**Input:** River Guides tab from Phase 1
+
+For each row, call warm-intro-finder's 5-source scan (reuse — don't rebuild):
+1. LinkedIn CSV at `archives/linkedin/connections.csv`
+2. Attio People search (`mcp__attio__search_records_by_content` by name, `search_records_by_relationship` by company)
+3. Vault entities at `brain/entities/*.md`
+4. Gmail history (`gog gmail search`)
+5. Investor network
+
+Populate 3 new columns per river guide: `Known Contact` (WARM/INVESTOR INTRO/SHARED BACKGROUND/COLD), `Source` (which of 5 sources hit), `Evidence` (short snippet).
+
+**Association member cross-check:** for each association, attempt to pull public member directory / board roster / conference speaker list. Run each name through the same 5-source scan. Hits append to River Guides tab with `Notes = "found via {association} member roster"`.
+
+### Phase 3 — Industry-Experience Network Scan
+
+**Input:** niche keyword file + access to Kay's network data
+
+Scan Kay's network for people with industry-relevant work history.
+
+**Data sources (priority order):**
+
+1. **Attio `nddl_apollo_employment_history`** (primary — post-enrichment of high-priority records, see Apollo Enrichment Dependency below)
+   - For each Attio person: iterate past-role objects, match `organization_name` against niche keywords + `customer_segment_keywords`
+   - Match strength: `H` if clean owner/founder/C-suite title + 3+ years tenure, `M` if 3+ years any role, `L` if < 3 years or tangential
+2. **LinkedIn CSV** (`archives/linkedin/connections.csv` — 901 rows)
+   - Grep `Company` + `Position` against niche keywords. Current-employer only; no past-role data.
+3. **Attio standard fields** (`job_title`, `company`, `description`)
+4. **Vault entities** (`brain/entities/*.md`) — grep for niche keywords
+5. **Gmail** — email domain match against known industry customer/employer domains
+
+Write results to Network Matches tab. Deduplicate across sources (Attio record wins; LinkedIn CSV second).
+
+### Phase 4 — Optional Attio Writes (config-gated)
+
+If `ATTIO_WRITE_RIVER_GUIDES=true`: auto-create Attio People records from River Guides tab with `relationship_type = "River Guide"`, `nurture_cadence = "Dormant"`, `how_introduced = "river-guide-builder 2026-04-20"`.
+
+If `ATTIO_TAG_NETWORK_MATCHES=true`: tag existing Attio records (from Phase 3 hits) with a custom field or note — exact field name TBD by Kay.
+
+Default: both OFF. Skill ships sheet-only until Kay decides.
+</workflow>
+
+<apollo_enrichment_dependency>
+## Apollo Enrichment Dependency
+
+Phase 3's primary source (`nddl_apollo_employment_history`) depends on Attio records being Apollo-enriched. Enrichment roadmap:
+
+- **2026-04-20** — 5-record verification test (5 credits) → GO
+- **2026-04-20 through 2026-05-02** — prioritized enrichment (~500 credit budget, highest-priority records: nurture_cadence populated → relationship_type populated → recent interactions → bulk)
+- **2026-05-03 onward** — full remaining-population enrichment (fresh 2,520 credit month)
+
+Reports:
+- `brain/outputs/2026-04-20-apollo-enrichment-test.md` (Step 0)
+- `brain/outputs/2026-04-21-apollo-prioritized-enrichment-report.md` (Step 1)
+- `brain/outputs/2026-05-03-apollo-full-enrichment-report.md` (Step 1b)
+
+**Degraded-mode behavior:** Before enrichment complete for a given Attio record, Phase 3 falls back to LinkedIn CSV + Attio standard fields + vault + Gmail. Re-running the skill on a niche after more records are enriched will produce richer Network Matches output automatically — no code change.
+</apollo_enrichment_dependency>
+
+<scoring>
+## Phase 1 Scoring (retained from prior version)
 
 | Dimension | 3 (High) | 2 (Medium) | 1 (Low) |
 |-----------|----------|------------|---------|
-| **Deal Flow Proximity** | Directly advises owners on exits/succession | Sees financials or industry data | Knows the industry generally |
-| **Accessibility** | Warm intro path exists | Cold but likely to respond (same networks) | Cold, unclear response likelihood |
-| **Niche Alignment** | Works exclusively in this niche | Works in adjacent space | General practice with some exposure |
+| Deal Flow Proximity | Directly advises owners on exits/succession | Sees financials or industry data | Knows the industry generally |
+| Accessibility | Warm intro path exists | Cold but likely to respond | Cold, unclear response |
+| Niche Alignment | Works exclusively in this niche | Works in adjacent space | General practice |
 
-**Total score 7-9:** Priority coffee chat target
-**Total score 4-6:** Worth an intro email
-**Total score 1-3:** Monitor only
-
-### Step 5: Check Warm Intro Paths
-For priority targets (7-9), run warm-intro-finder:
-- Check Attio for shared connections
-- Check vault calls for name mentions
-- Check LinkedIn for 2nd degree connections
-- Note the path in the output
-
-### Step 6: Output Coffee Chat Menu
-Produce a ranked list for Kay, organized by niche:
-
-```
-## Pest Management — River Guide Targets
-
-1. [Name] — [Role, Firm] — Score: 8/9
-   Why: [1 line — what they know, why they're valuable]
-   Warm path: [connection or "Cold"]
-   Suggested approach: [coffee invite / intro request / conference meetup]
-
-2. ...
-```
-
-### Step 7: Create Attio Records
-For approved targets, create People records in Attio with:
-- relationship_type: "River Guide"
-- nurture_cadence: as appropriate
-- how_introduced: source of discovery
-- next_action: Kay's chosen approach
-
-### Step 8: Trigger Meeting Brief
-When Kay schedules a coffee chat, meeting-brief-manager generates prep automatically.
-</workflow>
+**Total 7-9:** Priority coffee chat target
+**Total 4-6:** Worth an intro email
+**Total 1-3:** Monitor only
+</scoring>
 
 <finder_fee_program>
 ## Finder's Fee Program
 
-**Template:** MANAGER DOCUMENTS / LEGAL / CONTRACTS (existing template on Drive — needs Andy Lock review before use)
+**Template:** MANAGER DOCUMENTS / LEGAL / CONTRACTS (existing on Drive — needs Andy Lock review before use)
 
-**Structure (TBD — needs Kay's decision):**
-- Fee amount: $_____ per qualified introduction leading to signed LOI (or NDA?)
-- Simple 1-page agreement
-- Tracked in Attio on the river guide's People record
-- Formalize only with high-value, repeat river guides (not every coffee chat)
-
-**Open questions for Kay:**
-1. What fee amount? ($5K? $10K? Percentage?)
-2. Trigger event — signed LOI or signed NDA?
-3. Start offering immediately or wait until first organic referral proves the relationship?
+Open questions for Kay:
+1. Fee amount ($5K? $10K? Percentage?)
+2. Trigger — signed LOI or signed NDA?
+3. Start offering immediately or wait until first organic referral?
 4. Andy Lock review timeline?
 </finder_fee_program>
 
@@ -172,38 +202,37 @@ When Kay schedules a coffee chat, meeting-brief-manager generates prep automatic
 ## Integration Points
 
 | Skill | Integration |
-|-------|------------|
-| **niche-intelligence** | Provides niche context, association data, industry dynamics |
-| **warm-intro-finder** | Checks Kay's network for paths to identified targets |
+|---|---|
+| **niche-intelligence** | Provides niche context. Step 5b validation-contacts **sunset 2026-04-20** — concept lifted into Phase 1 Category 6 (Validation Contacts). |
+| **warm-intro-finder** | Phase 2 engine — reuse 5-source scan verbatim |
 | **meeting-brief-manager** | Generates prep for coffee chats with river guides |
-| **relationship-manager** | Tracks nurture cadence after first contact |
-| **deal-aggregator** | When a river guide surfaces a deal, it enters the intermediary pipeline |
+| **relationship-manager** | Tracks nurture cadence after Kay connects |
+| **deal-aggregator** | When a river guide surfaces a deal, enters intermediary pipeline |
 | **outreach-manager** | Initial outreach to new river guide targets (via Kay Email channel) |
-| **Attio** | Uses existing intermediary pipeline for tracking. relationship_type: "River Guide" |
+| **target-discovery** | Owns target-list sheet creation; river-guide-builder writes to its Associations/River Guides/Network Matches tabs |
+| **Apollo** | Phase 3 primary data via `nddl_apollo_employment_history` |
 </integrations>
 
 <schedule>
-## Run Schedule
+## Run Triggers
 
-**Trigger:** Manual invocation or when a new niche enters Active-Outreach on the tracker.
+- New niche enters Active-Outreach on WEEKLY REVIEW — full 3-phase run
+- Monthly refresh per active niche (for Phase 1 drift)
+- Post-Apollo-enrichment-batch — Phase 3 re-run on niches to pick up newly-enriched records
+- Ad-hoc on Kay's request
 
-**Cadence:** Run ecosystem research when:
-1. New niche activated — full 5-category research
-2. Monthly refresh — check for new association leadership, new firms, new contacts
-3. Post-conference — mine attendee lists for river guide candidates
-4. Post-coffee-chat — if a river guide introduces new contacts, add them
-
-**Output location:** `brain/context/river-guide-menu-{date}.md`
+**Output location:** target-list sheet tabs (Associations + River Guides + Network Matches). No standalone `brain/context/river-guide-menu-*.md` file anymore — outputs live where Sam / JJ / Kay actually work.
 </schedule>
 
 <success_criteria>
 ## Success Criteria
 
-- [ ] All active niches have contacts in at least 3 of 5 categories
-- [ ] Each contact scored on the 3-dimension framework
-- [ ] Warm intro paths checked for all priority targets (score 7+)
-- [ ] Coffee chat menu produced with ranked targets
-- [ ] New contacts entered in Attio intermediary pipeline as "Identified"
-- [ ] No duplicate contacts (verified against Attio before creating)
-- [ ] Finder's fee template referenced (not recreated)
+- [ ] Niche keyword YAML exists at `references/niche-keywords/{niche-slug}.yaml`
+- [ ] Phase 1: all 6 categories attempted, scored, populated on Associations + River Guides tabs
+- [ ] Phase 2: every River Guide row has Known Contact populated
+- [ ] Phase 3: Network Matches tab ≥ 5 rows (fewer is acceptable if niche is truly novel to Kay's network)
+- [ ] Do Not Call cross-reference applied (no DNC-flagged leadership surfaced)
+- [ ] False positives < 30% on Network Matches (spot-check 3 rows against actual signals)
+- [ ] Zero Attio `create_record` calls unless config flags ON
+- [ ] Only `update_record` calls against `nddl_apollo_*` fields permitted during enrichment runs
 </success_criteria>

@@ -61,6 +61,17 @@ Scan searchable broker platforms for new listings matching the buy box.
 - Rejigg (rejigg.com) — automated deal match emails + searchable
 - Flippa (flippa.com) — email alerts + searchable (mostly digital/online businesses)
 
+**AI-powered marketplaces (confirmed scrapable):**
+- DealFlow Agent (dealflowagent.com) — AI-powered M&A marketplace, industry-segmented, already in Channel 3 (Premium Pest Management)
+
+**AI-powered marketplaces (need Kay to register first — scrapability TBD):**
+- Acquire.com (acquire.com) — SaaS/digital-heavy. Likely login-gated. Register and re-test.
+- BizScout (bizscout.com) — Partial public marketplace via "DealOS." Verified buyer tier promises exclusive access — test both tiers after register.
+- Kumo (kumo.so) — Did not resolve on initial fetch; retest before adding.
+
+**Deal-sharing communities:**
+- Searchfunder (searchfunder.com) — member deal board + email digest. Kay has annual membership. Path: enable email alerts in notification settings → email-intelligence picks up digest → deal-aggregator classifies matches. Backend scraping not available on member tier.
+
 **General broker platforms (email-only, no searchable platform):**
 - Everingham & Kerr (everkerr.com) — most active broker, email listings
 - Benchmark International (embracebenchmark.com) — email deal flow, advisory only
@@ -120,7 +131,28 @@ Read `brain/context/email-scan-results-{date}.md` for deal-related emails classi
 **What to skip:**
 - Newsletter content (market commentary without specific deals)
 - Broker marketing (capability presentations, tombstones)
-- Deals already flagged from platform scanning (dedup by company name/description)
+- Deals already flagged from platform scanning (dedup by company name/description — see Cross-Day Deduplication below)
+
+### Cross-Day Deduplication (background, not surfaced to Kay)
+
+Maintain a persistent listing fingerprint store so the same deal re-listed across platforms or reposted over multiple days is only Slacked once.
+
+**Store:** `brain/context/deal-aggregator-fingerprints.jsonl` — append-only log.
+
+**Fingerprint fields per entry:**
+```json
+{"date_first_seen": "YYYY-MM-DD", "source": "Business Exits", "company_hash": "...", "industry": "...", "revenue_band": "3-5M", "ebitda_band": "1-2M", "geography": "Southeast", "listing_url": "..."}
+```
+
+**Fingerprint rule:** `company_hash` = SHA-1 of (normalized industry description + revenue band + geography). Two listings with the same hash = same deal, regardless of source.
+
+**Before sending any Slack notification:**
+1. Compute fingerprint for the candidate listing
+2. Check the store — if a matching fingerprint exists within last 30 days, suppress the notification
+3. If the listing has changed materially (new price, new broker) log as update but still suppress re-Slack
+4. If new fingerprint → Slack and append to store
+
+**Exposure:** This runs silently. Never surface dedup activity in the morning briefing or Slack. It's hygiene, not a feature.
 
 ### Channel 3: Industry-Specific Deal Sources
 

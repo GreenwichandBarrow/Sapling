@@ -3,7 +3,7 @@ schema_version: 1.0.0
 date: 2026-04-20
 task: Portfolio consolidation — 10 SaaS to IDEATION, add High-End Commercial Cleaning, build 2 scorecards+onepagers, update DealsX
 agents: [tracker-ops, niche-intel-vertical-saas, niche-intel-commercial-cleaning]
-status: active
+status: completed
 linked_trace: brain/traces/2026-04-20-portfolio-consolidation.md
 ---
 
@@ -61,6 +61,20 @@ Snapshot: `/tmp/portfolio-consolidation-snapshot-20260420-123612/`
 Verify: PASS on all 4 tabs.
 → READY.
 
+## [12:48] niche-intel-commercial-cleaning
+High-End Commercial Cleaning one-pager + scorecard complete.
+- Scorecard: **2.50 / 3.0 (83%)** — weighted across 8 dimensions. Honest score reflecting margin compression and labor-crisis risks.
+- Sub-niche definition: HIGH-END = healthcare (HAI/CDC EVS/Joint Commission), biotech/pharma cleanrooms (ISO 14644 Class 5-8), data center contamination control, luxury hospitality (five-star hotels, private clubs), luxury retail (flagship/jewelry), museums/archives (preservation-grade), UHNW residential (bonded, NDA). 10-30% price premium vs generic janitorial.
+- Margin verdict: Industry EBITDA 12-18% / top quartile 20%+ — the high-end sub-niche top operators reach 20-28% EBITDA with >50% healthcare/biotech/data-center mix. Still marginally below a 25% premium-services floor at the median. **Clearing the floor requires strict operator selection: >50% revenue from high-end verticals, 40%+ recurring, <50% turnover, CIMS/GBAC/CDC/ISO certs.**
+- Primary drag: Margin compression (industry 12-18% EBITDA below premium-services threshold) + structural labor crisis (75-200% turnover, 351K unfilled openings) + healthcare/biotech liability exposure ($5-15M umbrella).
+- Primary strength: Mission criticality at the high-end (HAI = life safety, biotech = batch loss, data center = uptime), durable switching costs (2-3 yr client trust curve, certification lock-in), fragmentation (top 50 = 30% of revenue).
+- One-pager: `High-End Commercial Cleaning 4.20.26.pptx` → Drive ID `126WPlCMWTiUyxFSU5D8iDpyxYUmH7Guc`
+- Scorecard: `High-End Commercial Cleaning Scorecard 4.20.26.xlsx` → Drive ID `1YZy-mDfNb1D4GvSLIrobjKj-Eb_nBKL0`
+- Folder: `15qlrWmZeb0rdNo6ATWD5C5EsnfKGgxDV` (new HIGH-END COMMERCIAL CLEANING folder, sibling to PREMIUM PEST MGMT)
+- Vault copies saved to `brain/library/internal/one-pagers/` and `brain/library/internal/scorecards/`
+- Guardrail audit: PASS (no Kay/JJ/analyst/Milanese/Wedgwood/Wertheimer/G&B-right-to-win references; swapped "below 25% services floor" → "below premium-services margin levels" for acquirer-neutral phrasing).
+→ READY
+
 ## [12:45] niche-intel-vertical-saas
 Umbrella thesis one-pager + scorecard complete.
 - Scorecard: **2.72 / 3.0 (91%)** — weighted across 8 dimensions with reduced weight on mission-criticality (umbrella) and Porter's (PE/VC headwind).
@@ -73,3 +87,14 @@ Umbrella thesis one-pager + scorecard complete.
 - Guardrail audit: PASS on both files (no Kay/JJ/Wedgwood/G&B/right-to-win references).
 - Verdict: umbrella thesis COHERES for defining an admission policy, but is NOT useful as an activation trigger. Score reflects category attractiveness; each sub-niche still needs its own scorecard before outreach.
 → READY
+
+## [13:50] orchestrator
+All 3 subagents READY.
+
+- tracker-ops: WEEKLY REVIEW 8 rows, IDEATION +10, DEALSX refreshed, Sam's sheet +1
+- niche-intel-vertical-saas: 2.72/3.0 umbrella thesis — coheres as admission policy NOT as activation trigger
+- niche-intel-commercial-cleaning: 2.50/3.0 — straddles 25% margin floor, viable only with strict operator-selection criteria
+
+Running Drive audit to confirm all WEEKLY REVIEW + DEALSX niches have one-pager + scorecard.
+
+→ CLOSE

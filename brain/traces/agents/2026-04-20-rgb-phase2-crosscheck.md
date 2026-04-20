@@ -142,3 +142,13 @@ Headers Known Contact / Source / Evidence written to O1:Q1; data rows O2:Q38 pop
 
 Target list is entirely net-new relationship-building territory: conference meetups (ISSA Show Nov, BSCAI EMC, AHE EXCHANGE, Data Center World, ISPE, IEST ESTECH, AIC annual) and LinkedIn InMail per Suggested Approach column are the only paths.
 → READY
+
+## [15:41] rgb2-art-storage
+Processed 46 rows (0 DNC skipped — no Do Not Call tab exists on this sheet; Acumen/Uovo/Hangman not present in river guides list). 3 WARM / 2 INVESTOR / 0 SHARED / 41 COLD. Sheet updated (Q1:S47).
+
+WARM: Sarah De Blasio (vault + Gmail + Margot intro), Christopher Wise (LinkedIn 1st-degree + vault + Margot relationship), Lauren Della Monica (Gmail: 1:1 call Jul 2025).
+INVESTOR INTRO: Mary Pontillo (via Christopher Wise), Laura Doyle (Margot's curated Oct 2025 insurance list, offered intro).
+COLD 41: all auction-house logistics, museum registrars, most fine-art insurance (Dorit Straus, Colin Quinn, Annelien Bruins, Katja Zigerlig, Adam Prideaux, Jennifer Schipf), remaining advisors (Megan Fox Kelly, Wendy Cromwell, Allan Schwartzman — pass per memory), firm-level entries (4x gallery ops TBD, CMC, CADA), transport/conservator/PACCIN/appraiser rows.
+
+Attio MCP not available in this agent session — relied on vault entity scan as proxy (brain/entities/sarah-de-blasio.md and brain/entities/christopher-wise references confirmed). Recommend Phase 3 operator verify any Attio-only Industry Expert records we may have missed.
+→ READY

@@ -31,10 +31,12 @@ This replaces the prior single-direction "Coffee Chat Menu" framing AND the nich
 - Scan Kay's network for people with industry-relevant experience via Apollo employment history + LinkedIn CSV + Attio fields + vault + Gmail (Phase 3)
 - Write results to three tabs on each niche's target-list sheet: Associations | River Guides | Network Matches
 
-**Attio write behavior (config flags, default OFF):**
-- `ATTIO_WRITE_RIVER_GUIDES: false` — if true, auto-create Attio People records for river guides with `relationship_type = "River Guide"`
-- `ATTIO_TAG_NETWORK_MATCHES: false` — if true, tag existing Attio records with industry metadata when they hit on Phase 3 scan
-- Both default OFF until Kay decides. Flipping to `true` is a one-line config change, no code rework.
+**Attio write behavior — Threshold Rule (event-driven, no config flags):**
+- `river-guide-builder` **NEVER** auto-creates Attio records. Outputs live only in the target-list Google Sheet tabs.
+- Attio records are created by `outreach-manager` at the moment Kay sends her **first outbound** (email / LinkedIn DM / intro ask) to a River Guides or Network Matches entry.
+- Created record gets `relationship_type` per category (River Guide / Industry Expert / Advisor). **No `nurture_cadence` is set** — intermediaries are passively monitored via `relationship-manager`'s dormancy logic (100-day silence flag), not cadence-prompted.
+- Rationale: match Attio's native inbound filter (no record until Kay engages). See `feedback_attio_threshold_rule.md` + `feedback_intermediary_dormancy_monitoring.md`.
+- The retired `ATTIO_WRITE_RIVER_GUIDES` and `ATTIO_TAG_NETWORK_MATCHES` config flags are gone — threshold rule replaces them.
 </objective>
 
 <ecosystem_categories>

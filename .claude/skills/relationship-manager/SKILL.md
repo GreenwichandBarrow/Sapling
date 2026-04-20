@@ -55,13 +55,45 @@ Before surfacing ANY contact, check their `next_action` field in Attio:
 ### Processing
 
 1. Query all Attio People records where `nurture_cadence` is set and not "Dormant"
-2. For each, check `next_action` for trigger language — skip trigger-based contacts
-3. For remaining contacts, determine last interaction date from data sources above
-4. Compare against cadence threshold
-5. Surface the top 5 overdue contacts (prioritized by: how far overdue, relationship value, recency of last interaction)
-6. For each overdue contact, suggest an action: email, coffee, event invite, or just a check-in
-7. Note in the artifact that Gmail/calendar are the only verified channels — text and phone interactions may not be captured
+2. **Skip intermediaries** — exclude contacts where `relationship_type` ∈ {River Guide, Industry Expert, Advisor}. These are passively monitored via `intermediary_dormancy` section below, not cadence-prompted. See `feedback_intermediary_dormancy_monitoring.md`.
+3. For each, check `next_action` for trigger language — skip trigger-based contacts
+4. For remaining contacts (Targets, LPs, peers with explicit cadence), determine last interaction date from data sources above
+5. Compare against cadence threshold
+6. Surface the top 5 overdue contacts (prioritized by: how far overdue, relationship value, recency of last interaction)
+7. For each overdue contact, suggest an action: email, coffee, event invite, or just a check-in
+8. Note in the artifact that Gmail/calendar are the only verified channels — text and phone interactions may not be captured
 </nurture_monitoring>
+
+<intermediary_dormancy>
+## Intermediary Dormancy Monitoring
+
+**Intermediaries are NOT cadence-managed.** Kay's real workflow: build the relationship once, then they send to her (monthly broker blasts, quarterly updates, ad-hoc intros). Never prompt Kay to "touch base" with an intermediary on a schedule — she'd ignore it and it erodes briefing trust.
+
+**Scope:** Attio People where `relationship_type` ∈ {River Guide, Industry Expert, Advisor}.
+
+### Dormancy Check
+
+For each intermediary:
+
+1. Query last INBOUND email from them: `gog gmail search "from:{email}" --max 1 --json`
+2. Also check prior inbound count (`gog gmail search "from:{email}" --max 10 --json`) to distinguish "never sent" from "stopped sending"
+3. Classify:
+   - **Build phase** — zero inbound ever. Kay just made outbound, relationship still being built. Do NOT flag. Leave alone.
+   - **Healthy** — most recent inbound within last 100 days.
+   - **Dormant** — had prior inbound pattern (≥2 messages), most recent is >100 days ago. **Surface for Kay's re-engage-or-drop decision.**
+
+**Threshold: 100 days** — 90-day quarterly cycle + ~10-day buffer so quarterly broker senders don't trip as false positives.
+
+### Surfacing
+
+Surface dormant intermediaries in the artifact's new `## Dormant Intermediaries` section with:
+- Name + company + relationship_type
+- Last inbound date + what it was about (subject line)
+- Prior inbound pattern (e.g., "sent monthly for 8 months, then silent 4 months")
+- **RECOMMEND: re-engage / drop / keep watching** (per decision-fatigue-minimization doctrine)
+
+Kay decides. On her YES to re-engage: queue as Target-style outreach via outreach-manager. On drop: set `nurture_cadence = "Dormant"` in Attio (won't resurface).
+</intermediary_dormancy>
 
 <action_verification>
 ## Action-Already-Taken Verification (CRITICAL)

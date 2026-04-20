@@ -17,7 +17,7 @@ Fix the silent-failure bug that caused JJ's blank call-list fire on Monday 4/20.
 
 ## Time block
 
-**Saturday 2026-04-25, 1:00 PM ET onward.** Estimated 6–9 hours, single uninterrupted session.
+**Saturday 2026-04-25, 9:00 AM ET onward.** Estimated 6–9 hours, single uninterrupted session.
 
 ## Why Friday 2pm
 

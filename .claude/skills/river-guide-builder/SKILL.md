@@ -66,16 +66,32 @@ Industry analysts, former operators, trade press editors, conference speakers wh
 <unified_schema>
 ## Unified Niche Network Schema
 
-Each niche's target-list sheet has four tabs (created by target-discovery or jj-operations on niche activation):
+Each niche's target-list sheet has four tabs:
 
 | Tab | Owner | Purpose |
 |---|---|---|
-| Full Target List | Sam / DealsX / target-discovery | Acquisition targets |
+| Full Target List | **Sam (DealsX pipeline) — NOT this skill** | Acquisition targets. Sam handles list building externally; when he delivers, rows are added to this tab. **Do not attempt to populate.** |
 | Do Not Call | target-discovery | Warm-intro reserves + PE-owned exclusions |
 | Niche Context | niche-intelligence | Industry thesis summary |
 | **Associations** | **river-guide-builder Phase 1** | Trade orgs, conferences, events |
 | **River Guides** | **river-guide-builder Phase 1+2** | Named individuals who touch deal flow |
 | **Network Matches** | **river-guide-builder Phase 3** | People in Kay's network with industry experience |
+
+**Scope of this skill:** Associations + River Guides + Network Matches only. The Full Target List tab is Sam's domain — this skill never writes to it and never triggers target-discovery to fill it.
+
+### Canonical sheet location (Google Drive)
+
+All niche target-list sheets live in **`OPERATIONS/TARGET LISTS/EMAIL OUTREACH/`** (folder ID `14MLYC9W-jTH-NXxZh_LN-Q_d5wCUKzn_`).
+
+**Exception:** `Premium Pest Management - Target List` lives one level up at `OPERATIONS/TARGET LISTS/` (folder ID `1WfbzezRkD7Kr0FOA76y99x5wV8lwRkVc`) because JJ is actively running cold calls from it — do not move it.
+
+When a new niche activates:
+1. Create the target-list sheet inside `14MLYC9W-jTH-NXxZh_LN-Q_d5wCUKzn_`
+2. Scaffold the 6 tabs above (Full Target List, Do Not Call, Niche Context, Associations, River Guides, Network Matches)
+3. Populate Associations + River Guides + Network Matches via Phases 1–3
+4. Wait for Sam's target list to populate the Full Target List tab
+
+See `reference_target_list_canonical_folder.md` for the full folder-convention reference.
 
 ### Associations tab schema (7 cols)
 

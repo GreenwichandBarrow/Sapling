@@ -3,7 +3,7 @@ schema_version: 1.0.0
 date: 2026-04-20
 task: TheDealSheet PE-POV cross-reference against G&B's 6-niche portfolio
 agents: [tds-homecare, tds-landscaping, tds-laundromat, tds-insurance, tds-restaurant]
-status: active
+status: completed
 linked_trace: brain/traces/2026-04-20-tds-pe-pov-xref.md
 ---
 
@@ -46,6 +46,23 @@ CONFIRMS REJECTION. TDS PE-POV validates G&B's pass on thesis grounds: consumer-
 → READY
 
 
+## [12:28] tds-insurance
+Variation HOLDS with sharpening opportunities. TDS page is generic P&C + benefits, doesn't segment the 9% specialty/MGA slice where G&B lives (Fine Art / Collectibles / Jewelry / Wine / Classic Auto / Aviation / Equine / Cyber UHNW / D&O family office / Museum / Auction). Named PE platforms are mostly NOT competitors for G&B — BroadStreet (57 deals YTD), Hilb/Carlyle (200+), King Risk roll up GENERIC regional P&C, not specialty/HNW shops. **HUB INTERNATIONAL is the one exception and is G&B's primary platform competitor** — 750 HNW advisors, 70K HNW clients, 500K mass affluent, explicit fine-art + jewelry + private-client focus. Transferable benchmarks: valuation $1.25M-$5M = 3.2x-3.8x SDE (G&B's buy box sits here), specialty 25%+ revenue commands 4.0x-6.0x premium, cyber 27% CAGR, specialty/MGA slice 5.92% CAGR, median $195K SDE / $650K sale price (sets floor for sub-$3M targets), 30K+ sub-$1.25M aging independents = succession tailwind. Blind spots G&B should absorb: (1) cyber UHNW deserves its own sub-line narrative at 27% CAGR; (2) 12-18 month valuation-ceiling drift risk from 90% of insurers expecting more M&A (fiscal urgency); (3) NY has no reciprocity + 40% higher compliance costs + PE saturation — acquire Midwest, OPEN NY (don't acquire NY); (4) 89% of new-agent 3yr quit rate + specialty underwriters rarer = operator-succession harder in specialty, sharpens "institutional client relationships not owner-is-the-book" filter; (5) embedded insurance $116.5B is a future bolt-on lens not on radar. Where G&B is SHARPER than TDS: compliance treated as moat not cost, single-line specialty focus is premium not discount, retention structurally >95% via trust/discretion not tech stack. No thesis-killers, no hard corrections needed — one-pager should absorb Hub callout + cyber UHNW callout + fiscal urgency. Snapshot: brain/library/external/2026-04-20-thedealsheet-insurance.md. Uploading to Drive as desk reference — active niche, Hub callout is the material new intel.
+→ READY
+
+
 ## [12:42] tds-homecare
 Rejection CONFIRMED at industry level. Industry EBITDA 10-15% (top quartile 18-25%) fails G&B's 25%+ services-primary floor; only hospice clears at 25-35% gross / 10-15x EBITDA but is a specialized clinical regulated segment, not a search-fund operations play. Labor crisis is structural (79% caregiver turnover, 765K unfilled openings/yr, 18% YoY wage growth) — inverse of G&B's sticky-technician thesis. PE aggregator field is crowded: Waud/Altocare, Kinderhook/Enhabit ($1.1B Feb 2026), Optum/Amedisys ($3.3B), Addus, Havencrest, Rallyday, Help At Home, Choice Health. One narrow revisit path: private-pay concierge home care for HNW seniors ($4-8K/month willingness, 5-8x EBITDA vs. 3-5x Medicaid-only) — but unquantified in TDS PE-POV data, absence suggests not yet a consolidation-stage vertical; would need separate primary research before reopening. Snapshot: brain/library/external/2026-04-20-thedealsheet-homecare.md. Uploading to Drive as desk reference — rejection-confirmation memo with named PE aggregators is useful for investor/advisor Q&A.
 → READY
+
+## [12:55] orchestrator
+All 5 subagents READY. Synthesizing comparative memo.
+
+Summary:
+- Laundromat: CONFIRMS REJECTION (consumer-retail, shrinking CAGR, PE scaling fails)
+- Landscaping: CONFIRMS REJECTION (margin floor fails, PE saturation, labor permanent)
+- Homecare: CONFIRMS REJECTION (margin floor fails, labor crisis, PE crowded; narrow concierge-HNW sub-niche flagged but NOT recommended as trigger)
+- Restaurant: INDIRECT SIGNAL — thesis holds (specialty coffee + fine dining stay 78.6% independent). ADJACENT OPPORTUNITY: commercial kitchen equipment servicing (Hobart/Vulcan/True/Hoshizaki/Rational) — same DNA as coffee, 10-20x installed base.
+- Insurance: VARIATION HOLDS with sharpening. Hub International is the ONLY real competitor in G&B's specialty layer (not BroadStreet/Hilb). Cyber UHNW 27% CAGR deserves standalone narrative. NY = avoid for domicile. 12-18mo valuation-drift risk = fiscal-year urgency.
+
+→ CLOSE

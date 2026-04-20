@@ -250,12 +250,31 @@ WebSearch: "M&A breakfast {city} {month}" OR "succession planning breakfast"
 WebSearch: "business brokers breakfast {northeast} {month}"
 ```
 
-**Informal broker breakfast caveat:** Truly grass-roots events (like the Long Island 7am diner rotation Greg Donus referenced) typically won't surface from any public aggregator or association calendar. They spread via:
-- Private LinkedIn groups (search: "business brokers Long Island" group invites)
-- Email mailing lists (often tied to a single broker or accounting firm)
-- Word-of-mouth / warm intro
+**LinkedIn public-post search (HIGH SIGNAL — run every discovery cycle):**
 
-For these, the discovery channel is NOT this skill. Flag to Kay: "To surface informal broker breakfasts, you'll need a warm intro into the circuit. Consider asking [contact] directly." Candidates for the ask live in `river-guide-builder` Phase 2 output (WARM contacts in Kay's network who are already in the intermediary circuit).
+LinkedIn is the primary social-discovery channel for informal broker-breakfast events. Brokers, M&A advisors, and intermediaries post event invites publicly on LinkedIn. Google indexes these, so they're searchable. This replaces Twitter/X scraping — Twitter is low-signal and mostly unindexable since 2023.
+
+```
+# LinkedIn public-post search via WebSearch (Google/Bing indexed)
+WebSearch: site:linkedin.com/posts "business broker breakfast" Long Island OR NYC OR "New York"
+WebSearch: site:linkedin.com/posts "M&A breakfast" OR "deal makers coffee" northeast
+WebSearch: site:linkedin.com/posts "business brokers association" event {month} {year}
+WebSearch: site:linkedin.com "succession planning breakfast" NY OR NJ OR CT
+WebSearch: site:linkedin.com/events intermediary OR "business broker" OR "M&A advisor" {region}
+
+# LinkedIn Events (public event pages, directly indexed)
+WebSearch: site:linkedin.com/events "business broker" {region}
+WebSearch: site:linkedin.com/events "M&A" OR "exit planning" {city}
+```
+
+**Target cadence:** Run LinkedIn searches for each broker-association keyword weekly. Feed hits into the same Conference Pipeline sheet.
+
+**Informal broker breakfast caveat:** Truly grass-roots events (like the Long Island 7am diner rotation Greg Donus referenced) still won't surface even from LinkedIn if the organizer doesn't post publicly. Three remaining channels for these:
+- **Newsletter subscriptions** — Kay manages these directly. Once subscribed (IBBA, state broker associations, XPX chapters, Capital Roundtable), event invites flow into her Gmail. Email-intelligence auto-surfaces. No skill action needed; Kay owns subscribe decisions.
+- **Private LinkedIn Groups** — Kay joins; she forwards event announcements manually when she sees them.
+- **Warm intros** — River Guides in Kay's network who are already in the intermediary circuit. See `river-guide-builder` Phase 2 output (WARM intermediary contacts) once Apollo enrichment enables Phase 2 quality.
+
+**Twitter/X is NOT a discovery channel.** Paid-only API, post-2023 indexing throttled, low signal-to-noise for SMB events. Skip.
 
 **Expanded search for conference-thin niches (when standard returns <2 results):**
 ```

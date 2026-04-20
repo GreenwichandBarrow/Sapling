@@ -338,39 +338,70 @@ Invoke list-builder in `calls-first` mode. Target: 500-1000 companies.
 
 ### Phase 2: Sunday Night Pipeline (Sunday 11pm ET)
 
-**This is a single sequential pipeline that runs every Sunday night. All steps must complete before jj-operations creates the week's Call Log tabs on Monday morning. The order is critical — enrichment first, then screening, then call log creation.**
+**This is a single sequential pipeline that runs every Sunday night. All steps must complete before jj-operations creates the week's Call Log tabs on Monday morning. The order is critical — SELECT this week's 200 first, THEN enrich those exact rows, THEN screen, THEN create tabs.**
 
-#### Step 1: Owner Enrichment (web research, 0 credits)
-Enrich the next 200 un-enriched targets (Col K = Owner Name is blank) with owner names via web research.
+**Design invariant:** the 200 rows enriched Sunday night MUST be the same 200 rows jj-operations prep writes to Mon–Fri Call Log tabs. Steps 1 and 4 read from the identical row set — no drift.
 
-1. Read sheet, find rows on "Full Target List" tab where Col K (Owner Name) is blank
-2. Sort by row number (oldest first)
-3. Take next 200
-4. For each: web research for owner name + title (company website, LinkedIn People tab, web search)
-5. Write owner name (Col K), title (Col L), and owner LinkedIn (Col Q) to sheet
-6. Log: "Phase 2 Step 1: {n}/200 owners identified"
+#### Step 1: Select This Week's Call Pool (row selection, 0 credits)
+Pick the exact 200 targets that will populate Mon–Fri Call Log tabs. This is the **master row set** that Steps 2–5 operate on.
 
-#### Step 2: PE Re-Screen (on newly enriched targets)
-Re-check all targets enriched in Step 1 for PE/VC ownership. Web research for owner names often surfaces acquisition info (e.g., "John Smith, former owner — company acquired by Rentokil 2022").
+1. Read "Full Target List" tab, all rows
+2. Filter to rows where Col T (JJ: Call Status) is empty (uncalled)
+3. Sort by row number (ascending — oldest on list first)
+4. Take top 200
+5. Persist row numbers to a scratch artifact: `brain/context/jj-week-pool-{YYYY-MM-DD}.md` (source of truth for Steps 2–5)
+6. Log: "Phase 2 Step 1: {n} rows selected (target 200)"
 
-1. For each newly enriched target, search: `"{company name}" "acquired by" OR "portfolio company" OR "backed by" OR "subsidiary"`
+**If fewer than 200 uncalled rows remain:** flag in Monday briefing — list is running low, trigger target-discovery Phase 1 monthly refill.
+
+#### Step 2: Owner Enrichment (Apollo primary → Linkt optional → web research fallback)
+Enrich owner name + title + LinkedIn on every row in Step 1's pool where Col K (Owner Name) is blank. This is the ONLY enrichment step — Phase 1 intentionally loads companies without owners.
+
+**Primary path: Apollo `/people/match` via list-builder skill:**
+1. For each pool row with Col K blank: call Apollo `/people/match` by company domain (one owner-title match per company)
+2. Write owner name (Col K), title (Col L), owner LinkedIn (Col Q), email (Col M) from Apollo response
+3. Credit cost: 1 credit per match × up to 200 rows = ~200 credits/week
+4. Log: "Phase 2 Step 2 (Apollo): {n}/{pool_size} matched, {credits} credits burned"
+
+**Optional supplement: Linkt (while subscription active — currently through 2026-05-30):**
+1. For Apollo un-matches, optionally run Linkt person-match as a second source
+2. Linkt sometimes catches LinkedIn profiles Apollo misses (different enrichment provider backbones)
+3. Skip entirely if Linkt credits are scarce or subscription is lapsed
+4. Log: "Phase 2 Step 2 (Linkt supplement): {n}/{remaining} additional matches"
+
+**Fallback path: free web research (for rows neither Apollo nor Linkt match):**
+1. For still-un-matched rows: web research (company website, LinkedIn People tab, Google)
+2. Write owner name (Col K), title (Col L), owner LinkedIn (Col Q) from research
+3. Log: "Phase 2 Step 2 (Web): {n}/{remaining} owners identified via research"
+
+**Subscription notes:** Apollo is the always-on canonical source (list-builder skill). Linkt is time-limited and optional. When Linkt subscription ends, remove the Linkt step without re-architecting — Apollo + web research is sufficient.
+
+#### Step 3: PE Re-Screen (on newly enriched rows only)
+Re-check pool rows enriched in Step 2 for PE/VC ownership. Owner research often surfaces acquisition info (e.g., "John Smith, former owner — company acquired by Rentokil 2022").
+
+1. For each newly enriched row: search `"{company name}" "acquired by" OR "portfolio company" OR "backed by" OR "subsidiary"`
 2. Also flag: franchise models, government entities, non-target business types
-3. PE-owned → move to "Do Not Call" tab with Col S: "PE-OWNED: {evidence}"
-4. Government/franchise → delete from Full Target List (not acquisition targets)
-5. Log: "Phase 2 Step 2: {n} PE-owned removed, {n} govt/franchise removed"
+3. PE-owned → move to "Do Not Call" tab with Col S: "PE-OWNED: {evidence}". Remove from pool artifact; backfill pool from next-in-queue rows (go back to Step 1 logic for one replacement round).
+4. Government/franchise → delete from Full Target List (not acquisition targets). Same backfill rule.
+5. Log: "Phase 2 Step 3: {n} PE-owned removed, {n} govt/franchise removed, {n} backfilled"
 
-#### Step 3: Warm Intro Check (on all targets going to next week's call logs)
-Run warm-intro-finder on the top 200 targets (by row order) that have Col T (JJ: Call Status) = empty. These are the pool jj-operations will draw from.
+#### Step 4: Warm Intro Check (on final pool)
+Run warm-intro-finder on every row in the post-Step-3 pool (all have owner names by now).
 
-1. For each target with owner name populated: check Attio, Gmail, vault entities for connections
-2. Warm intro found → move to "Do Not Call" tab with Col S: "WARM INTRO: {connection} — {path details}"
+1. For each row: check Attio, Gmail, vault entities for connections to owner or company
+2. Warm intro found → move to "Do Not Call" tab with Col S: "WARM INTRO: {connection} — {path details}". Backfill pool same as Step 3.
 3. Surface in Monday morning briefing: "{Name}, {Company} — warm intro via {connection}. Personal draft or cold outreach?"
-4. Log: "Phase 2 Step 3: {n} warm intros found, moved to Do Not Call"
+4. Log: "Phase 2 Step 4: {n} warm intros found, {n} backfilled"
 
-#### Step 4: Create Week's Call Log Tabs (hand off to jj-operations)
-After Steps 1-3 complete, the Full Target List is clean: enriched, PE-screened, warm-intro-cleared. jj-operations prep then runs to create 5 Call Log tabs (Mon-Fri) from the clean pool.
+#### Step 5: Create Week's Call Log Tabs (hand off to jj-operations)
+After Steps 1–4 complete, the pool is clean: exactly 200 rows, all enriched, PE-screened, warm-intro-cleared.
 
-**Cost:** 0 credits. All web research + Attio/Gmail/vault lookups.
+1. jj-operations prep reads the pool artifact from Step 1 (post-backfill final state)
+2. Distributes 40/day across Mon–Fri tabs
+3. Writes owner name, title, phone, LinkedIn into each tab's Col K–Q alongside the company data
+4. Target: 100% Tier-1 coverage (no blank Col K rows on call tabs)
+
+**Cost:** up to ~200 Linkt credits/week through 5/30; 0 credits after (web-research fallback).
 
 ### Phase 3: Post-Engagement Enrichment (triggered by jj-operations harvest)
 
@@ -388,14 +419,30 @@ When JJ connects with an owner and gets positive sentiment:
 
 | Day | Time | What Happens |
 |-----|------|-------------|
-| Sunday | 11pm | Phase 2 Step 1: Owner enrichment (200 targets, web research) |
-| Sunday | 11pm | Phase 2 Step 2: PE re-screen (sequential after Step 1) |
-| Sunday | 11pm | Phase 2 Step 3: Warm intro check (sequential after Step 2) |
-| Monday | 9am | jj-operations prep: Create 5 Call Log tabs (Mon-Fri, 40/day) from clean pool |
+| Sunday | 11pm | Phase 2 Step 1: Select this week's 200-row pool (Col T empty, oldest first) |
+| Sunday | 11pm | Phase 2 Step 2: Owner enrichment on the pool (Linkt primary → web research fallback) |
+| Sunday | 11pm | Phase 2 Step 3: PE re-screen on newly enriched pool rows (backfill pool as needed) |
+| Sunday | 11pm | Phase 2 Step 4: Warm intro check on final pool (backfill as needed) |
+| Sunday | 11pm | Phase 2 Step 5: jj-operations prep creates 5 Call Log tabs from the cleaned pool |
 | Monday | 10am | Slack to JJ: week's sheet link + call guide |
 | Mon-Fri | 10am-2pm | JJ calls 40 targets/day |
 | Mon-Fri | 4pm | jj-operations harvest: update Full Target List, trigger Phase 3 for positive calls |
 | Friday | | Weekly tracker reports: calls made, connection rate, enrichment pipeline depth |
+
+### Stop Hook: Call-Tab Enrichment Integrity
+
+**This pipeline's contract is:** the 200 rows enriched Sunday night are the exact same 200 rows JJ calls Mon–Fri. If that invariant breaks, JJ's tabs show blank Col K (Owner Name) and his shift is wasted.
+
+Before the Sunday pipeline emits "done", run this check:
+
+1. Read the pool artifact from Step 1 (200 row numbers)
+2. Read the post-Step-4 pool (should be 200 rows after backfills)
+3. Read the 5 Call Log tabs created in Step 5
+4. Assert: every row number in the final pool appears on exactly one Mon–Fri Call Log tab
+5. Assert: every Mon–Fri Call Log tab row has Col K (Owner Name) populated
+6. If ANY tab has a blank Col K row: block completion, log the row numbers, escalate to Monday morning briefing as **"ENRICHMENT INTEGRITY FAILURE"**
+
+Enforced by `.claude/hooks/enrichment_integrity_check.py` (see implementation at that path).
 </calls_first_flow>
 
 <dealsx_list_ingestion>

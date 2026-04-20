@@ -99,3 +99,7 @@ Sheet updated.
 Processed 29 rows. 0 WARM / 0 INVESTOR / 0 SHARED / 29 COLD. Sheet updated (M/N/O headers added, 87 cells written).
 Caveat: Attio source not scanned — mcp__attio__* tools unavailable to this subagent. LinkedIn CSV (904), vault (106 entities), Gmail all returned no hits. If Attio scan is required, rerun Phase 2 after exposing the tool.
 → READY
+
+## [15:39] rgb2-insurance
+Processed 35 rows. 4 WARM (Christopher Wise, Sarah de Blasio, Alexandra Kelly, Margot Romano — all LinkedIn 1st-degree; 3 of them also investor-touched by Margot per entity file), 0 INVESTOR INTRO-only, 0 SHARED BACKGROUND, 31 COLD. Sheet J1:L36 updated (108 cells). Notable: all four WARM contacts trace back to Margot Romano's art-world network (UOVO / Chartwell / Risk Strategies / Margot herself) — validates fine-art specialty sub-niche as the highest-warm-intro-density corridor in this niche. No Gmail hits on named individuals besides Sarah de Blasio (already LinkedIn-confirmed). No Attio MCP available in this session; relied on LinkedIn + vault + Gmail + investor-network sources. No anomalies.
+→ READY

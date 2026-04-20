@@ -32,6 +32,13 @@ Universe scanned: 51 People records with active `nurture_cadence` in Attio (0 We
 - **Austin Yoder** (Magrathea) — "Follow-up already sent." Last contact 2026-03-23. Resolved.
 - **Melissa Goldberg** (Frieze) — "Already connected with Kendall and made intro to Amanda." Resolved.
 - **Molly Epstein** (Goodman Taft) — reconnection draft sent 2026-03-30, last interaction 2026-03-31 (20 days). NOT overdue yet. Passive wait on reply — do not re-surface until ~2026-05-04 if still no response. (Note: Chase Lacson on Monthly cadence is Molly's admin, not the principal. Per assistant-vs-principal rule, Molly is the actionable contact.)
+- **Nikki Higgins** (Jet Aviation) — Kay sent substantive reply 2026-04-17, Nikki replied same day. Active thread, no action needed.
+- **Denning Rodriguez** (Bellizio + Igel) — Kim Milan intro is trigger-based (return from Milan project). 30-day unprompted-delivery window opened 4/17, expires ~5/17. Do not surface on elapsed time.
+- **Bettina Huang** — original Denning introducer; no outstanding owe (confirmed BCC'd 4/17 thread).
+- **Sam Singh** (DealsX) — operational vendor, engagement letter signed 4/18. Not a nurture contact.
+- **Katie Walker** (Plexus) — active exchange 4/17 (2 threads). Not overdue.
+- **Megan Lawlor** (ML Capital) — active thread 4/16 (Searcher Referral). Monthly cadence scheduled for 4/28-4/30 per fire plan. Not overdue; forward-scheduled.
+- **Guillermo Lavergne** (Ashford) — bi-weekly standing meeting, active 4/16. Not overdue.
 
 ## Pending Intros
 

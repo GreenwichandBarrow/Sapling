@@ -8,7 +8,7 @@ tags: [date/2026-04-20, context, topic/email-intelligence, topic/morning-workflo
 
 # Email Scan Results — 2026-04-20
 
-Scan window: 2026-04-18 → 2026-04-20 06:08 ET. Inbound: 14 threads. Outbound from `kay.s@`: 0. Granola meetings since last run: 0 (weekend). Superhuman MCP: unauthenticated — draft-status section suppressed per `feedback_superhuman_down_suppress_drafts`.
+Scan window: 2026-04-18 → 2026-04-20 08:30 ET (initial run 06:08 ET, incremental refresh 08:30 ET). Inbound: 17 threads (14 at initial + 3 XPX promos + Axios AM + 1 new Becreative form-spam message). Outbound from `kay.s@`: 0. Granola meetings since last run: 0 (weekend). Superhuman MCP: **DOWN** (connection refused on remote-debugging port 9333 at both 06:08 and 08:30 checks) — draft-status section suppressed per `feedback_superhuman_down_suppress_drafts`. No change to material signals between 06:08 and 08:30 — only newsletter/promo arrivals and SEO form-spam.
 
 ## 1. Actionable Items Created
 
@@ -18,7 +18,7 @@ None. No new inbox items written — all items already covered by `[[inbox/2026-
 
 - **DIRECT: 1** — Sam Singh (DealsX) re: client portal credentials + new payment link (weekend). Kay replied 4/17 22:03 from `admin@greenwichandbarrow.com`. Not a deal, vendor onboarding only.
 - **BLAST: 0** — No broker deal-flow blasts this window.
-- **NEWSLETTER: 8** — Axios AM, HBR, Karlton Dennis (tax), Athena Simpson / Acquimatch x2, Art Business Conference, XPX subscription confirmation, Wispr Flow expiring. All auto-filed under `[Superhuman]/AI/News` or `Subscriptions`.
+- **NEWSLETTER: 12** — Axios AM (x2, 4/19 + 4/20), HBR (x2), Karlton Dennis (tax), Athena Simpson / Acquimatch x2, Art Business Conference, XPX subscription confirmation + 3 XPX event promos (Long Island pre-transaction estate planning, NYC LMM deal flow, CT/Fairfield tax planning), Wispr Flow expiring. All auto-filed under `[Superhuman]/AI/News` or `Subscriptions`. XPX NYC LMM event worth flagging to conference-discovery as a potential intermediary/owner-adjacent event.
 - **SPAM / FORM-SUBMISSION: 2 threads (10 messages)** — Becreative Business SEO pitches (Lucy Johnson, Brianna Belton) hitting G&B Squarespace contact form. Website form is generating noise. Recommend filter-and-archive rule.
 - **OPERATIONAL: 3** — Payoneer declined then succeeded Saurabh Singh $1,535.20; Corpnet reminder for today 11am Teams call; Sam DealsX payment link.
 

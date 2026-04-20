@@ -69,6 +69,11 @@ Breakfast, coffee, morning, and lunch are the default priority. Monday is the ON
 
 - Broker breakfasts (Long Island 7am diner rotation and similar)
 - Morning M&A meetings — check if firms have AM versions of their evening happy hours
+- **Business broker associations (CRITICAL — often missed by aggregators):**
+  - **IBBA** (International Business Brokers Association) — national, has regional chapters
+  - **M&A Source** — national M&A advisor network, chapter events
+  - **State business broker associations** — NY Association of Business Brokers (NYABB), NJ Business Brokers Association (NJBBA), NEBBA (New England Business Brokers Association), Business Brokers of Pennsylvania, Long Island Business Brokers
+  - **TMA** (Turnaround Management Association) — intermediary-heavy breakfasts and chapter events
 - ACG chapter breakfasts (NYC, NJ, East, Boston) + ACG M&A Source morning speed networking
 - XPX (Exit Planning Exchange) chapter breakfasts
 - AM&AA (Alliance of M&A Advisors) breakfasts
@@ -217,6 +222,40 @@ WebSearch: "{niche} industry association events {region}"
 WebSearch: "{niche} chapter meeting {city} {month} {year}"
 WebSearch: "{niche} networking event {city}"
 ```
+
+**Business broker association search (HIGH PRIORITY — run every discovery cycle):**
+
+Separate from per-niche searches — this runs independently for intermediary-networking events. Informal broker breakfasts and state business broker association events are often invisible to aggregators like 10times / Eventbrite. Go direct:
+
+```
+# National business broker associations — events pages
+WebFetch: https://www.ibba.org/events/
+WebFetch: https://www.masource.org/events
+WebFetch: https://amaaonline.com/events/
+WebFetch: https://turnaround.org/events
+
+# State business broker associations — direct calendar scraping
+WebSearch: "New York Association of Business Brokers events" site:nyabb.com OR site:bizbrokers.org
+WebSearch: "New Jersey business brokers association events"
+WebSearch: "New England Business Brokers Association chapter meeting"
+WebSearch: "Long Island business brokers breakfast"
+WebSearch: "Pennsylvania business brokers association events"
+
+# Exit planning + succession chapters
+WebFetch: https://exit-planning-institute.org/events
+WebSearch: "XPX chapter events {month} {year} New York OR New Jersey OR Connecticut OR Massachusetts"
+
+# Accounting + law firm broker-breakfast search
+WebSearch: "M&A breakfast {city} {month}" OR "succession planning breakfast"
+WebSearch: "business brokers breakfast {northeast} {month}"
+```
+
+**Informal broker breakfast caveat:** Truly grass-roots events (like the Long Island 7am diner rotation Greg Donus referenced) typically won't surface from any public aggregator or association calendar. They spread via:
+- Private LinkedIn groups (search: "business brokers Long Island" group invites)
+- Email mailing lists (often tied to a single broker or accounting firm)
+- Word-of-mouth / warm intro
+
+For these, the discovery channel is NOT this skill. Flag to Kay: "To surface informal broker breakfasts, you'll need a warm intro into the circuit. Consider asking [contact] directly." Candidates for the ask live in `river-guide-builder` Phase 2 output (WARM contacts in Kay's network who are already in the intermediary circuit).
 
 **Expanded search for conference-thin niches (when standard returns <2 results):**
 ```

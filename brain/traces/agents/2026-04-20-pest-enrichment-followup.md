@@ -14,6 +14,22 @@ linked_trace: brain/traces/2026-04-20-pest-enrichment-rescue.md
 ## [11:05] web-research-backfill
 Starting. Reading target list, snapshotting affected tabs to /tmp, then enriching 36 companies via website/LinkedIn/Google searches. Will post → READY when done.
 
+## [11:10] launchd-root-cause
+Starting. Read log + plist + run-skill.sh. Preliminary: Sunday 4/19 log shows the launchd child reporting "PID 75009 already executing" and asking "YES/NO/DISCUSS" — i.e. the non-interactive Claude `-p` session hallucinated a prior run and exited 0 after 2m26s without invoking Phase 2 enrichment. Confirming PID 75009 claim + reading skill now.
+
+## [11:25] launchd-root-cause
+Root cause confirmed. Three layered defects:
+1. `claude -p`'s headless agent treated "/target-discovery" as interactive, hallucinated PID 75009 was already running Phase 2, and stood down with "YES/NO/DISCUSS" prose.
+2. `scripts/run-skill.sh` uses Claude's exit code as sole success signal — prose-and-exit-0 is indistinguishable from actual completion, so no retry and no Slack alert fired.
+3. `.claude/hooks/enrichment_integrity_check.py` was written in response to the failure but is not wired to any caller; SKILL.md's "enforced by hook" reference at line 445 is aspirational.
+
+No jj-week-pool-2026-04-20.md artifact was ever created. Same silent-0 pattern visible in 4/12 log (agent asked which niche, exited 0). Bug has been dormant every Sunday since plist was created 4/7.
+
+Write-up: brain/outputs/2026-04-20-target-discovery-phase2-root-cause.md
+Bead: ai-ops-1 (file-based, .beads/issues.jsonl — bd CLI not available in this sandbox so wrote directly. Kay can `bd sync` when back at terminal.)
+
+Fix is 6-9 hr, 4 layers, Layer 1 alone (2 hr) closes the silent-success hole. No code changed this pass. → READY
+
 ## [10:55] orchestrator
 Spawning 2 parallel background agents after Apollo rescue completed 148/184 enrichments. Tasks are independent:
 

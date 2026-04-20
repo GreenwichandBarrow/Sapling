@@ -60,3 +60,16 @@ Ambiguities encountered: task description said DEALSX schema was 6 cols (A-F) bu
 Snapshot: `/tmp/portfolio-consolidation-snapshot-20260420-123612/`
 Verify: PASS on all 4 tabs.
 → READY.
+
+## [12:45] niche-intel-vertical-saas
+Umbrella thesis one-pager + scorecard complete.
+- Scorecard: **2.72 / 3.0 (91%)** — weighted across 8 dimensions with reduced weight on mission-criticality (umbrella) and Porter's (PE/VC headwind).
+- Primary drag: Vista/Thoma Bravo/Insight $12B+ vertical-SaaS roll-up activity = competition for sub-$10M ARR targets.
+- Primary strength: SaaS-native economics (70-85% GM, 25-40% EBITDA) + aggregate fragmentation across 10 qualifying sub-niches.
+- One-pager: `Vertical SaaS Luxury HV-Asset Services 4.20.26.pptx` → Drive ID `1c2AcJbKcezKPGo7N-L9QSrYt61VpavZN`
+- Scorecard: `Vertical SaaS Luxury HV-Asset Services Scorecard 4.20.26.xlsx` → Drive ID `1XJNWsltAaEdm1LeZseeE1vY4tfQcl6nz`
+- Folder: `1RavIVgtU6ZBuM51c7zZYnBFm9aNl7M2x` (same as Premium Pest v2)
+- Vault copies saved to `brain/library/internal/one-pagers/` and `brain/library/internal/scorecards/`
+- Guardrail audit: PASS on both files (no Kay/JJ/Wedgwood/G&B/right-to-win references).
+- Verdict: umbrella thesis COHERES for defining an admission policy, but is NOT useful as an activation trigger. Score reflects category attractiveness; each sub-niche still needs its own scorecard before outreach.
+→ READY

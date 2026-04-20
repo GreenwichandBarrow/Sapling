@@ -53,40 +53,61 @@ Surface prepped deals — businesses that are actively selling — from every no
 ## Channels
 
 ### Channel 1: Platform Scanning (Daily)
-Scan searchable broker platforms for new listings matching the buy box.
 
-**General broker platforms (cross-industry):**
-- Business Exits (businessexits.com/listings/) — email + searchable, consistently accessible
-- DealForce (dealforce.com) — Generational Equity buyer platform, registration required, filter by SIC/EBITDA/revenue
-- Rejigg (rejigg.com) — automated deal match emails + searchable
-- Flippa (flippa.com) — email alerts + searchable (mostly digital/online businesses)
+Scan searchable broker platforms + general marketplaces for new listings matching the buy box. **All sources below were verified parseable via WebFetch on 2026-04-20.**
 
-**AI-powered marketplaces (confirmed scrapable):**
-- DealFlow Agent (dealflowagent.com) — AI-powered M&A marketplace, industry-segmented, already in Channel 3 (Premium Pest Management)
+**Source treatment rules (set 2026-04-20):**
+- **No priority tiering.** Every Active niche from the tracker (Step 0) gets equal scanning. A deal is a deal. No Active-Outreach vs Active-Long Term distinction.
+- **Fingerprint dedup** (see Cross-Day Deduplication below) prevents the same deal from re-surfacing across multiple sources.
 
-**AI-powered marketplaces (need Kay to register first — scrapability TBD):**
-- Acquire.com (acquire.com) — SaaS/digital-heavy. Likely login-gated. Register and re-test.
-- BizScout (bizscout.com) — Partial public marketplace via "DealOS." Verified buyer tier promises exclusive access — test both tiers after register.
-- Kumo (kumo.so) — Did not resolve on initial fetch; retest before adding.
+**General marketplaces — Tier 1 (parseable):**
+- BusinessBroker.net — `/state/{state}-businesses-for-sale.aspx`, aggregator of 30+ brokers
+- Raincatcher — `/business-listings/`
+- Synergy Business Brokers — `/listings/` (kept from prior skill)
+- Website Closers — `/businesses/{slug}/{id}/` (2,000+ listings — previously underused)
+- VR Business Brokers — `/businesses-for-sale/`
+- Murphy Business Sales — `/business-brokerage/detail/{id}/{slug}`
+- First Choice Business Brokers (FCBB) — `/businesses-for-sale` with filters
+
+**Online-business specialty (keep, filter digital niches):**
+- Flippa — filter `revenue_per_month > $400K AND industry matches thesis`. Otherwise skip — skews micro-SaaS.
+- Empire Flippers — Monday cadence matters (new listings drop Mondays)
+- Quiet Light Brokerage — `/listings/` (bot-blocks WebFetch; email alerts recommended instead)
+
+**Tier 2 — bot-blocked marketplaces (Kay subscribes to email alerts; flow through email-intelligence):**
+
+These sites 403 WebFetch but have free "new listings today" email alerts. Kay subscribes; email-intelligence parses the digests; deal-aggregator reads the email-scan-results artifact (Channel 2).
+
+- BizBuySell (bizbuysell.com) — largest US marketplace
+- BizQuest (bizquest.com)
+- BusinessesForSale.com
+- DealStream (dealstream.com) — absorbed MergerNetwork
+- Sunbelt Network (sunbeltnetwork.com) — largest broker franchise
+- Transworld Business Advisors (tworld.com) — large franchise inventory
 
 **Deal-sharing communities:**
-- Searchfunder (searchfunder.com) — member deal board + email digest. Kay has annual membership. Path: enable email alerts in notification settings → email-intelligence picks up digest → deal-aggregator classifies matches. Backend scraping not available on member tier.
+- Searchfunder (searchfunder.com) — Kay has membership. Email alerts → email-intelligence → this skill.
 
-**General broker platforms (email-only, no searchable platform):**
-- Everingham & Kerr (everkerr.com) — most active broker, email listings
-- Benchmark International (embracebenchmark.com) — email deal flow, advisory only
-- Viking Mergers (vikingmergers.com) — periodic deal blasts
-- Quiet Light (quietlight.com) — email + searchable but persistently Cloudflare-blocked
+**Relationship-only intermediaries (no scraping, monitor for warm intros via email-intelligence):**
+- Everingham & Kerr (everkerr.com)
+- Benchmark International (embracebenchmark.com)
+- Viking Mergers (vikingmergers.com)
+- Woodbridge International (woodbridgegrp.com)
+- IAG M&A Advisors (iagmerger.com)
+- ProNova Partners (pronovapartners.com)
+- Paine Pacific (painepacific.com)
 
-**Relationship-only intermediaries (no public listings):**
-- Woodbridge International (woodbridgegrp.com) — homepage accessible, no public listings
-- Paine Pacific (painepacific.com) — few public listings, mostly NDA-gated
-- IAG M&A Advisors (iagmerger.com) — Kay has account, advisory
-- ProNova Partners (pronovapartners.com) — 403 blocked, relationship-only
-
-**Gated platforms (need Kay's registration):**
-- FE International (app.feinternational.com) — requires buyer registration
-- Website Closers (websiteclosers.com) — no public listings page
+**Retired / dead (removed 2026-04-20):**
+- ~~DealFlow Agent~~ — NOT a listings board; sell-side landing page
+- ~~Agency Checklists as deal source~~ — editorial M&A news, not listings. Moved to niche-intelligence newsletter tier.
+- ~~Business Exits~~ — demoted to email-subscription tier (right band, wrong channel — broker-curated, not marketplace). 5+ consecutive zero-match days.
+- ~~Union Square Advisors~~ — domain parked (firm may have rebranded; rediscover later)
+- ~~Potomac PCG~~ — server down (ECONNREFUSED)
+- ~~MergerNetwork~~ — 301 redirect to DealStream (deduplicated)
+- ~~InsuranceJournal /news/mergers-acquisitions~~ — 404, topic URL also dead
+- ~~Blouinartinfo~~ — defunct (timeout)
+- ~~ARIS Title Insurance~~ — NXDOMAIN
+- ~~Acquire.com / BizScout / Kumo / FE International~~ — login-gated, skip
 
 **Scanning process:**
 
@@ -156,24 +177,50 @@ Maintain a persistent listing fingerprint store so the same deal re-listed acros
 
 ### Channel 3: Industry-Specific Deal Sources
 
-Scan niche-specific platforms and brokers that specialize in the active thesis industries.
+Scan niche-specialist M&A advisor transaction pages + trade-press M&A sections. **All Tier 1 sources below verified parseable on 2026-04-20.**
+
+**Specialty Insurance Brokerage (Art & Collectibles):**
+- Sica Fletcher — `sicafletcher.com/announcements` (current URL; old /deals page stale since 2021)
+- MarshBerry — `marshberry.com/financial-advisory/transactions/recent-transactions/`
+- OPTIS Partners — `optisins.com/wp/articles-and-thought-pieces/` (try `/wp/feed/` for RSS)
+- Dowling Hales — `dowlinghales.com/transactions`
+- Agency Brokerage Consultants — `agencybrokerage.com/about/transactions/` (redirected from old URL)
+- AgencyEquity — `agencyequity.com/category/articles`
 
 **Premium Pest Management:**
-- PCO Bookkeepers & M&A Specialists (pcobookkeepers.com) — Advisory only, Dan Gordon (CPA), $1B+ in sell-side transactions. Monitor newsletter/blog.
-- Keystone Business Advisors (keystonebusinessadvisors.com/business-listings/) — Registration required. Pest control up to $50M revenue.
-- Cetane (cetane.com/industries/pest-control/) — Lower middle market M&A advisory, no public listings.
-- DealFlow Agent (dealflowagent.com/home-services/pest-control) — AI-powered M&A marketplace, 200+ active pest control buyers.
-- Anticimex (us.anticimex.com/selling-your-business/) — Strategic acquirer, market intelligence only.
-
-**Specialty Insurance Brokerage:**
-- Sica Fletcher (sicafletcher.com/announcements) — #1 insurance M&A advisory, JS-rendered, relationship-only.
-- MarshBerry (marshberry.com) — Investment banking + consulting for insurance, relationship-gated.
-- Reagan Consulting (reaganconsulting.com) — Insurance M&A advisory, no public marketplace.
-- Agency Checklists (agencychecklists.com) — Tracks insurance M&A transactions quarterly, public, scrapable.
+- PCT Online (Pest Control Technology) — `pctonline.com/rss/` **(RSS feed — strongest pest signal)**
+- PMP (Pest Management Professional) — `mypmp.net/feed/` **(RSS feed)**
+- NPMA PestWorld — `npmapestworld.org/your-business/latest-news/`
+- PCO Bookkeepers — `pcobookkeepers.com/transactions/` (image tombstones; OCR or title-text)
+- ~~Potomac PCG~~ — REMOVED (server ECONNREFUSED)
+- Cetane (`cetane.com/industries/pest-control/`), Anticimex (`us.anticimex.com/selling-your-business/`) — intel only, no scrape
 
 **Estate Management Companies:**
-- Exit Strategies Group (exitstrategiesgroup.com/propertymanagement/) — Property management M&A advisory, sell-side focused.
-- Synergy Business Brokers (synergybb.com/businesses-for-sale/real-estate-businesses-for-sale/) — Real estate management listings, publicly browsable.
+- Wealth Management / Trusts & Estates — `wealthmanagement.com/trusts-estates/` + site-wide `/rss.xml` (no T&E-specific feed)
+- Synergy BB real-estate listings — `synergybb.com/businesses-for-sale/real-estate-businesses-for-sale/`
+- Exit Strategies Group — `exitstrategiesgroup.com/propertymanagement/` (advisory only)
+
+**Specialty Coffee Equipment Service:**
+- Daily Coffee News — `dailycoffeenews.com/feed/` **(RSS)**
+- Barista Magazine — `baristamagazine.com/feed/` **(RSS)**
+- Fresh Cup Magazine — `freshcup.com/feed/` **(RSS)**
+
+**Art Storage & Related Services:**
+- ARTnews Market — `artnews.com/c/art-news/market/` (+ `/feed/`)
+- The Art Newspaper — `theartnewspaper.com/rss.xml` **(RSS)**
+
+**Vertical SaaS (Luxury / HV-Asset Services):**
+- Software Equity Group (SEG) — `softwareequity.com/transactions/`
+- Shea & Co — `sheaco.com/transactions/`
+- Tyton Partners — `tytonpartners.com/transactions/` (EdTech/HealthTech focus)
+- GP Bullhound — `gpbullhound.com/deals/`
+- Berkery Noyes — `berkerynoyes.com/transactions`
+- ~~Union Square Advisors~~ — REMOVED (domain parked; rediscover later)
+
+**High-End Commercial Cleaning:** — no sources yet (niche not yet launched per Kay 2026-04-20)
+
+**Private Art Advisory:**
+- Uses the same Art Storage sources above (ARTnews Market, The Art Newspaper) — market coverage overlaps
 
 ### Channel 4: Association Deal Boards
 

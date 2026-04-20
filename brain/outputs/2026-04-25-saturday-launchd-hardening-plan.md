@@ -2,14 +2,14 @@
 schema_version: 1.0.0
 date: 2026-04-24
 type: output
-title: "Friday 4/24 Tech-Debt Block — Launchd Hardening Plan"
+title: "Saturday 4/25 Tech-Debt Block — Launchd Hardening Plan"
 output_type: plan
 status: draft
 tags: [date/2026-04-24, output, output/plan, topic/launchd-hardening, topic/tech-debt, status/draft]
 source: task
 ---
 
-# Friday 4/24 — Launchd Hardening Plan
+# Saturday 4/25 — Launchd Hardening Plan
 
 ## Scope
 
@@ -17,12 +17,12 @@ Fix the silent-failure bug that caused JJ's blank call-list fire on Monday 4/20.
 
 ## Time block
 
-**Friday 2026-04-24, 2:00 PM ET onward.** Estimated 6–9 hours, single uninterrupted session.
+**Saturday 2026-04-25, 1:00 PM ET onward.** Estimated 6–9 hours, single uninterrupted session.
 
 ## Why Friday 2pm
 
 - JJ's shift ends at 2pm ET — no concurrent sheet writes from his side
-- Before the 10pm nightly runs, so fixes land in time for Sunday's Phase 2
+- 1-day buffer before Sunday 10pm Phase 2 run — fix lands in time for first real production validation
 - Gives buffer to roll back if any layer breaks something
 
 ## Four layers, in order

@@ -222,14 +222,25 @@ If Call Status = "Connected" and sentiment is positive → flag for pipeline-man
 ## Stop Hooks
 
 ### Prep Mode Validation
+
+**MANDATORY pre-flight check (runs BEFORE anything else in prep mode):**
+- [ ] target-discovery Phase 2 completion log exists for the prior Sunday night (e.g. `logs/scheduled/target-discovery-{prev-sunday}-*.log` ends with exit 0 AND log body contains "Phase 2 Step 5: tabs created"). If missing or incomplete, **STOP** — do not build Call Log tabs on stale pool. Escalate to Monday briefing: "target-discovery Phase 2 did not complete Sunday night; pool is un-enriched. Do not call until rescued." This is the check that would have caught the 2026-04-20 fire.
+
+**Tab build validation:**
 - [ ] All selected targets passed reply check (no false positives)
 - [ ] Daily Call Log tab created on master sheet with correct date naming (`Call Log {M.DD.YY}`)
 - [ ] Tab has all 23 columns (A-W) matching Full Target List
-- [ ] Tier 1 targets listed before Tier 2 targets
-- [ ] Niche call guide link included in Slack message
+- [ ] No targets from Do Not Call tab included in call list
+
+**Enrichment integrity (hard gate — blocks Slack send):**
+- [ ] Every Call Log row has Col K (Owner Name) populated. **If any row has blank Col K, do NOT draft the Slack message.** Run `.claude/hooks/enrichment_integrity_check.py <sheet_id> <pool_artifact>` and require PASS before proceeding. On FAIL, escalate as "ENRICHMENT INTEGRITY FAILURE" in Monday briefing and halt prep mode.
+- [ ] Every pool row (from Phase 2 Step 1 artifact) appears on exactly one Mon–Fri Call Log tab — no drift between enriched rows and called rows.
+
+**Slack send gate:**
+- [ ] All enrichment integrity checks PASSED (see above)
 - [ ] Slack message draft matches expected format with sheet link
 - [ ] Kay approved the Slack message before sending
-- [ ] No targets from Do Not Call tab included in call list
+- [ ] Niche call guide link included
 
 ### Harvest Mode Validation
 - [ ] Daily Call Log tab read for all rows with Call Status filled

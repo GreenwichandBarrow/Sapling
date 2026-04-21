@@ -342,7 +342,7 @@ email_deals: {n}
 - **Never contact an owner directly** on a broker-sourced deal. Always go through the broker.
 - **Buy-box filter criteria come from the three Drive docs, not from this SKILL.md.** Never hardcode revenue floors, EBITDA bands, margin floors, or industry excludes in the skill or subagent prompt. If a criterion needs to change, Kay edits the Drive doc — the skill picks it up on the next run.
 - **Data Availability Rule is absolute.** A listing that doesn't disclose a field is never auto-rejected on that field. Flag for review, continue scoring against disclosed fields.
-- **PE-owned hard stop** applies per the matching buy-box doc's Industry Hard-Excludes section (not this file).
+- **Hard-excludes apply per the matching buy-box doc's Industry Hard-Excludes section, when disclosed on the listing.** No external lists, no blacklists maintained — scope is pass-through review of existing deals only.
 </validation>
 
 <success_criteria>

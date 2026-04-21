@@ -38,10 +38,15 @@ Surface prepped deals — businesses that are actively selling — from every no
 - Process new broker introductions (research, classify, add to rotation)
 
 **Inputs:**
+- **Buy-box docs** (Google Drive, `Deal Aggregator` folder) — single source of truth for all filter criteria. Read at the start of every run. Never use cached or hardcoded bands.
+  - **Services Buy Box** — doc ID `14hf5QaKtcP_Um0u_P0LZyUM_zvv7haWVVkgGmRL9iyc` — applies to Premium Pest, Estate Management, Specialty Coffee Equipment, Art Storage, Private Art Advisory, High-End Commercial Cleaning, and all new-niche non-SaaS non-Insurance listings
+  - **Insurance Buy Box** — doc ID `1lkxntRwn3FOPXig86qF36eNyUS0BfbMumfNuIyInD-M` — applies to Specialty Insurance Brokerage only
+  - **SaaS Buy Box** — doc ID `1I8r8w0FPJUepfBxM6HM7V_q4ibmitybIBF6w6sMQumU` — applies to Vertical SaaS for Luxury and all new-niche SaaS listings
 - **Industry Research Tracker** (Sheet: `1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins`, WEEKLY REVIEW tab) — active niche list read at scan start
 - **email-scan-results artifact** (`brain/context/email-scan-results-{date}.md`) — inbound deal emails classified by email-intelligence
-- **skill/niche-intelligence** — buy box, industry scorecards
 - **skill/pipeline-manager** — Attio Intermediary Pipeline (broker stages, relationship status)
+
+**Data Availability Rule (applies to every buy-box criterion):** Missing data on a listing is never grounds to auto-reject. Apply each criterion only when the corresponding field is disclosed. If a field is not disclosed, the deal is NOT rejected on that criterion — it is flagged for review. A deal with several "not disclosed" fields but no disclosed-and-failed fields still passes the buy-box gate.
 
 **Outputs:**
 - Deal matches → individual Slack notifications → Kay reacts thumbs up/down → pipeline-manager takes over on NDA
@@ -90,21 +95,36 @@ Scan searchable broker platforms for new listings matching the buy box.
 
 **Scanning process:**
 
-**Step 0 — Load active theses (REQUIRED before scanning):**
+**Step 0a — Load active theses (REQUIRED before scanning):**
 Read the Industry Research Tracker WEEKLY REVIEW tab to get the current active niches:
 ```bash
 gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "'WEEKLY REVIEW'!A3:D20" -a kay.s@greenwichandbarrow.com --json
 ```
 Row 3 is headers: Rank, Niche Hypothesis, Current Status, Outreach Channel. Filter for rows where Current Status starts with "Active" (Active-Outreach or Active-Long Term). Build a thesis list from the Niche Hypothesis column.
 
+**Step 0b — Load buy-box criteria (REQUIRED before scanning):**
+Read the three buy-box docs from the Deal Aggregator Drive folder. These are the single source of truth for all filter criteria. Never use cached or hardcoded bands; always re-read on every run so the skill reflects Kay's current criteria.
+```bash
+gog docs cat 14hf5QaKtcP_Um0u_P0LZyUM_zvv7haWVVkgGmRL9iyc > /tmp/buybox-services.txt
+gog docs cat 1lkxntRwn3FOPXig86qF36eNyUS0BfbMumfNuIyInD-M > /tmp/buybox-insurance.txt
+gog docs cat 1I8r8w0FPJUepfBxM6HM7V_q4ibmitybIBF6w6sMQumU > /tmp/buybox-saas.txt
+```
+Parse each doc's financial bands, structural requirements, industry hard-excludes, and geography filters. Each doc begins with the Data Availability Rule — absence of a disclosed field never auto-rejects; it flags for review.
+
+**Category routing — which buy-box applies to which listing:**
+- Specialty Insurance Brokerage listings → Insurance Buy Box
+- Vertical SaaS listings (any vertical) → SaaS Buy Box
+- All other listings (pest, estate mgmt, coffee, art storage, art advisory, cleaning, or new-niche non-SaaS non-Insurance) → Services Buy Box
+
 1. Sub-agent visits each platform's listing page
 2. Scrape new listings since last scan (track by listing ID or date)
-3. For each listing, extract: company description, industry, revenue, EBITDA, asking price, geography, employee count
-4. Screen against buy box criteria AND the active thesis list from Step 0
-5. **Revenue floor (auto-reject):** Any listing with stated revenue below $1.5M is auto-rejected. Do not flag, do not Slack, do not surface.
-6. Two types of matches (only after passing revenue floor):
-   - **Thesis match** — fits an active niche thesis. High priority.
-   - **Buy-box match, new niche** — fits the financial buy box ($1-5M EBITDA, $3-20M revenue, independently owned) but in a niche we haven't evaluated. Route to niche-intelligence as a discovery signal.
+3. For each listing, extract every field the listing discloses: company description, industry, revenue (or ARR for SaaS / commission revenue for insurance), EBITDA, asking price, geography, operating history, ownership structure, employee count
+4. Determine category (Services / Insurance / SaaS) per routing above; apply the matching buy-box
+5. Screen: for each buy-box criterion, either confirm pass (disclosed + passes), flag fail (disclosed + fails → auto-reject), or mark "not disclosed" (do not reject; flag for review)
+6. Deal passes the gate if: no disclosed criterion fails AND no industry hard-exclude matches AND thesis or new-niche match exists
+7. Two types of passing matches:
+   - **Thesis match** — fits an active niche thesis from Step 0a. High priority.
+   - **Buy-box match, new niche** — passes the buy-box gate but sits in an industry not on the active thesis list. Route to niche-intelligence as a discovery signal.
 
 **Slack notification — ONE per deal:**
 ```bash
@@ -286,12 +306,14 @@ email_deals: {n}
 ## Sub-Agent Stop Hooks
 
 ### Scan Stop Hook
+- [ ] Step 0b completed: all three buy-box docs were freshly read from Drive this run (Services, Insurance, SaaS). Cached or hardcoded bands = hard fail.
 - [ ] Every match includes: source, listing URL, company description, industry, revenue/EBITDA (or "not disclosed"), geography
 - [ ] Listing URL is a working link (not a search results page or homepage)
+- [ ] Each listing routed to the correct buy-box category (Services / Insurance / SaaS) per the routing rule
+- [ ] Data Availability Rule enforced: no listing auto-rejected on a missing field. Auto-reject only triggers on disclosed-and-below or disclosed-and-failed criteria.
+- [ ] Industry hard-excludes applied per the matching buy-box doc (Services / Insurance / SaaS)
 - [ ] Match classified as "Thesis match" or "Buy-box match, new niche"
 - [ ] No duplicate listings (dedup across platforms AND email inbound)
-- [ ] Revenue floor enforced: sub-$1.5M auto-rejected
-- [ ] Buy-box screen: $1-5M EBITDA, $3-20M revenue, independently owned
 - [ ] Zero matches = report "No matches" — never fabricate
 
 ### New Introduction Stop Hook
@@ -318,8 +340,9 @@ email_deals: {n}
 
 ### Guardrails
 - **Never contact an owner directly** on a broker-sourced deal. Always go through the broker.
-- **Auto-reject sub-$1.5M revenue deals.** Silently archived, no exceptions.
-- **No PE-owned companies.** Hard stop.
+- **Buy-box filter criteria come from the three Drive docs, not from this SKILL.md.** Never hardcode revenue floors, EBITDA bands, margin floors, or industry excludes in the skill or subagent prompt. If a criterion needs to change, Kay edits the Drive doc — the skill picks it up on the next run.
+- **Data Availability Rule is absolute.** A listing that doesn't disclose a field is never auto-rejected on that field. Flag for review, continue scoring against disclosed fields.
+- **PE-owned hard stop** applies per the matching buy-box doc's Industry Hard-Excludes section (not this file).
 </validation>
 
 <success_criteria>

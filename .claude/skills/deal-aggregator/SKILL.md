@@ -133,7 +133,28 @@ Parse each doc's financial bands, structural requirements, industry hard-exclude
 - Vertical SaaS listings (any vertical) → SaaS Buy Box
 - All other listings (pest, estate mgmt, coffee, art storage, art advisory, cleaning, or new-niche non-SaaS non-Insurance) → Services Buy Box
 
-1. Sub-agent visits each platform's listing page
+**Scraper routing — which fetch tool to use per source:**
+
+Default: WebFetch. If WebFetch returns 403 / 401 / JS shell / Cloudflare challenge, route through `agent-browser` (installed via `npm i -g agent-browser && agent-browser install`). Known JS-shell / Cloudflare-blocked / 403 sources that MUST use agent-browser:
+
+- BizBuySell (`bizbuysell.com`) — 403 on scraper user-agents
+- Flippa (`flippa.com`) — JS shell, no server-rendered listings
+- Quiet Light (`quietlight.com`) — Cloudflare-gated
+- businessesforsale.com — 403
+- Any gated marketplace requiring login (Acquire, FE International, Axial, BizScout, Kumo post-registration)
+
+Command pattern for agent-browser scrapes:
+```bash
+agent-browser open "https://www.bizbuysell.com/businesses-for-sale/?industry=insurance-agency&min-price=1000000&max-price=10000000" \
+  && agent-browser wait --load networkidle \
+  && agent-browser snapshot -i > /tmp/bbs-listings.txt
+```
+
+For login-required sources: use `--profile ~/.deal-aggregator` to persist session across runs. First login is manual; subsequent scrapes auto-authenticate. State file set in `AGENT_BROWSER_ENCRYPTION_KEY` env var.
+
+Stop hook: if agent-browser is not installed, log "BROWSER_AUTOMATION_UNAVAILABLE: {source} skipped, requires agent-browser install" in the scan artifact and continue. Do NOT silently drop the source — surface the gap.
+
+1. Sub-agent visits each platform's listing page (via WebFetch OR agent-browser per routing above)
 2. Scrape new listings since last scan (track by listing ID or date)
 3. For each listing, extract every field the listing discloses: company description, industry, revenue (or ARR for SaaS / commission revenue for insurance), EBITDA, asking price, geography, operating history, ownership structure, employee count
 4. Determine category (Services / Insurance / SaaS) per routing above; apply the matching buy-box
@@ -143,12 +164,27 @@ Parse each doc's financial bands, structural requirements, industry hard-exclude
    - **Thesis match** — fits an active niche thesis from Step 0a. High priority.
    - **Buy-box match, new niche** — passes the buy-box gate but sits in an industry not on the active thesis list. Route to niche-intelligence as a discovery signal.
 
-**Slack notification — ONE per deal:**
+**Slack notification — ONE per deal (FINGERPRINT CHECK REQUIRED FIRST):**
+
+Before every Slack send, compute the listing fingerprint and check the cross-day dedup store:
+
 ```bash
+FP=$("$WORKDIR/scripts/deal-aggregator-fingerprint.sh" hash "$INDUSTRY" "$REVENUE_BAND" "$GEOGRAPHY")
+STATUS=$("$WORKDIR/scripts/deal-aggregator-fingerprint.sh" check "$FP")
+if [ "$STATUS" = "DUP" ]; then
+  # Skip Slack; already posted within last 30 days
+  continue
+fi
+
+# NEW listing — post to Slack then append fingerprint
 curl -s -X POST "$SLACK_WEBHOOK_ACTIVE_DEALS" \
   -H "Content-Type: application/json" \
   -d '{"text":"🔔 Deal match\nSource: {Platform or Broker}\nCompany: {Name or blind profile}\nIndustry: {Industry description}\nRevenue: {Revenue} | EBITDA: {EBITDA} | Margins: {margin%}\nGeography: {Geography or \"Not disclosed\"}\nMatch type: {Thesis match / Buy-box match, new niche}\nTeaser:\n{Link to listing or teaser document}\n\n👍 = pursue  |  👎 = pass"}'
+
+"$WORKDIR/scripts/deal-aggregator-fingerprint.sh" add "$FP" "$SOURCE" "$LISTING_URL" "$INDUSTRY" "$REVENUE_BAND" "$EBITDA_BAND" "$GEOGRAPHY"
 ```
+
+Fingerprint helper: `scripts/deal-aggregator-fingerprint.sh` (hash | check | add). Store: `brain/context/deal-aggregator-fingerprints.jsonl`. TTL: 30 days.
 
 **CRITICAL: Each deal gets its own Slack message.** Kay and her analyst react individually.
 
@@ -172,24 +208,31 @@ Read `brain/context/email-scan-results-{date}.md` for deal-related emails classi
 
 ### Cross-Day Deduplication (background, not surfaced to Kay)
 
-Maintain a persistent listing fingerprint store so the same deal re-listed across platforms or reposted over multiple days is only Slacked once.
+Implemented via `scripts/deal-aggregator-fingerprint.sh` (hash | check | add). Store: `brain/context/deal-aggregator-fingerprints.jsonl` — append-only JSONL, 30-day TTL.
 
-**Store:** `brain/context/deal-aggregator-fingerprints.jsonl` — append-only log.
+**Fingerprint rule:** `company_hash` = SHA-1 of normalized (industry | revenue_band | geography). Two listings with the same hash = same deal, regardless of source.
 
-**Fingerprint fields per entry:**
-```json
-{"date_first_seen": "YYYY-MM-DD", "source": "Business Exits", "company_hash": "...", "industry": "...", "revenue_band": "3-5M", "ebitda_band": "1-2M", "geography": "Southeast", "listing_url": "..."}
-```
+**Every Slack notification call site MUST use the helper:** see the Slack notification block above. No direct `curl` to the webhook without a prior `check` call. Hard requirement — duplicated Slacks erode signal.
 
-**Fingerprint rule:** `company_hash` = SHA-1 of (normalized industry description + revenue band + geography). Two listings with the same hash = same deal, regardless of source.
+**Exposure:** Runs silently. Never surface dedup activity in the morning briefing or Slack. It's hygiene, not a feature.
 
-**Before sending any Slack notification:**
-1. Compute fingerprint for the candidate listing
-2. Check the store — if a matching fingerprint exists within last 30 days, suppress the notification
-3. If the listing has changed materially (new price, new broker) log as update but still suppress re-Slack
-4. If new fingerprint → Slack and append to store
+### Afternoon Run (`--afternoon` flag)
 
-**Exposure:** This runs silently. Never surface dedup activity in the morning briefing or Slack. It's hygiene, not a feature.
+The skill runs twice on weekdays: 6am ET (morning, full run) and 2pm ET (afternoon, top-up run). Wrapper passes `--afternoon` in the second plist.
+
+**Morning run (default, no flag):**
+- Full Channel 0a/0b/0c load
+- Full scan of all accessible platforms (Channels 1 + 3)
+- Read `email-scan-results-{date}.md` (email-intelligence 7am run has completed)
+- Write `brain/context/deal-aggregator-scan-{date}.md`
+
+**Afternoon run (`--afternoon`):**
+- Re-read buy-boxes + active niches (in case Kay edited during the day)
+- Rescan ONLY the email-driven channels (Channel 2) + time-sensitive platforms (Rejigg, Flippa, Everingham & Kerr afternoon blasts)
+- Check fingerprint store for any deals that landed after morning run
+- Write `brain/context/deal-aggregator-scan-{date}-afternoon.md` (separate artifact, do NOT overwrite morning)
+- Slack notify new (non-fingerprinted) matches
+- Lightweight — skip full Channel 1 + 3 scans; morning run already covered those
 
 ### Channel 3: Industry-Specific Deal Sources
 

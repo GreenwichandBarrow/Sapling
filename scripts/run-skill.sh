@@ -3,6 +3,8 @@
 # Usage: run-skill.sh <skill-name>
 
 SKILL_NAME="$1"
+shift
+SKILL_ARGS="$*"
 WORKDIR="$HOME/Documents/AI Operations"
 LOG_DIR="$WORKDIR/logs/scheduled"
 LOG_FILE="$LOG_DIR/${SKILL_NAME}-$(date +%Y-%m-%d-%H%M).log"
@@ -45,7 +47,9 @@ ATTEMPT=1
 EXIT_CODE=1
 while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
   echo "--- attempt $ATTEMPT of $MAX_ATTEMPTS ---" >> "$LOG_FILE"
-  echo "/$SKILL_NAME" | \
+  INVOKE="/$SKILL_NAME"
+  if [ -n "$SKILL_ARGS" ]; then INVOKE="$INVOKE $SKILL_ARGS"; fi
+  echo "$INVOKE" | \
     "$HOME/.local/bin/claude" \
       -p \
       --dangerously-skip-permissions \

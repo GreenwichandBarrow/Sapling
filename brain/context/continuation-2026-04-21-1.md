@@ -44,3 +44,4 @@ tags: ["date/2026-04-21", "context", "topic/continuation"]
 - **Scope: Do Private Art Advisory + Coffee Equipment stay in deal-aggregator?** Both have zero niche-specific sources; flow can only come from outreach-manager/warm intros. Keeping them in-scope means they'll always show "WR row enrichment fallback" in scans.
 - **Keystone Business Advisors** — 4th ask carried since 4/17. Now also flagged as California-based + multi-niche (not pest-specific). Register, drop, or move to General tab?
 - **Calibration: how to teach better** — Kay's real question, midday-degradation pattern confirmed, save-state format may need to be richer for midstream handoffs (current 200-300 word cap loses context).
+- **Pre-flight checklist review** — Draft at `brain/context/pre-flight-checklist-draft.md`. Kay to review + edit in next session. Decide if it pins into CLAUDE.md root.

@@ -101,23 +101,23 @@ Read the Industry Research Tracker WEEKLY REVIEW tab:
 gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "'WEEKLY REVIEW'!A3:I20" -a kay.s@greenwichandbarrow.com --json
 ```
 Row 3 is headers: Rank, Niche Hypothesis, Current Status, Outreach Channel, Score, QSBS, Target Pool, Quick notes, DealsX Niche. Filter for rows where Current Status starts with "Active" (Active-Outreach or Active-Long Term). For each active row, capture:
-- Column B: Niche Hypothesis (G&B's narrow thesis name — authoritative)
-- Column I: DealsX Niche (foreign-key reference to the DEALSX tab; may be blank)
+- "Niche Hypothesis" field (G&B's narrow thesis name — authoritative)
+- "DealsX Niche" field (foreign-key reference to the DEALSX tab; may be blank)
 
 **Step 0c — Load keywords from DEALSX tab (REQUIRED for listing matching):**
 Read the DEALSX tab for the keyword corpus per niche:
 ```bash
 gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "'DEALSX'!B5:I20" --json
 ```
-Columns: B = Niche (Sam's broad DealsX-submitted names), H = Quick Notes (Industries/Types sub-verticals), I = Keywords (pre-tokenized match corpus).
+Relevant DEALSX fields: "Niche" (Sam's broad DealsX-submitted names), "Quick notes" (Industries/Types sub-verticals), "Keywords" (pre-tokenized match corpus).
 
 For each active niche from Step 0a, resolve its keyword corpus:
-- IF Step 0a Column I (DealsX Niche) is populated → match that value against DEALSX Column B → pull DEALSX Column I Keywords for matching
-- IF Step 0a Column I is blank (e.g., Private art advisory firms — no DealsX equivalent) → build the matching corpus from the WEEKLY REVIEW row itself. Specifically:
-  1. Niche name (Column B) — full string + key noun phrases tokenized (e.g., "Private art advisory firms" → "art advisory", "art advisor", "private advisory", "art consulting", etc.)
-  2. Quick notes (Column H) — extract industry-descriptive terms, business-model phrases, customer-profile language, and any named sub-verticals
-  3. Any other populated columns on that WR row (Target Pool description, Outreach Channel notes) that contain industry language
-  Combine these into a match corpus for the niche. Log "DealsX reference blank for {niche}; corpus built from WR row (Col B + Col H)" in the scan artifact for visibility and calibration.
+- IF the row's "DealsX Niche" field on WEEKLY REVIEW is populated → match that value against the "Niche" field on DEALSX → pull the "Keywords" field from that DEALSX row for matching
+- IF the "DealsX Niche" field on WEEKLY REVIEW is blank (e.g., Private art advisory firms — no DealsX equivalent) → build the matching corpus from the WEEKLY REVIEW row itself. Specifically:
+  1. "Niche Hypothesis" field — full string + key noun phrases tokenized (e.g., "Private art advisory firms" → "art advisory", "art advisor", "private advisory", "art consulting", etc.)
+  2. "Quick notes" field — extract industry-descriptive terms, business-model phrases, customer-profile language, and any named sub-verticals
+  3. Any other populated fields on that WR row ("Target Pool", "Outreach Channel") that contain industry language
+  Combine these into a match corpus for the niche. Log "DealsX reference blank for {niche}; corpus built from WR row (Niche Hypothesis + Quick notes)" in the scan artifact for visibility and calibration.
 
 **Step 0b — Load buy-box criteria (REQUIRED before scanning):**
 Read the three buy-box docs from the Deal Aggregator Drive folder. These are the single source of truth for all filter criteria. Never use cached or hardcoded bands; always re-read on every run so the skill reflects Kay's current criteria.
@@ -324,7 +324,7 @@ email_deals: {n}
 
 ### Scan Stop Hook
 - [ ] Step 0b completed: all three buy-box docs were freshly read from Drive this run (Services, Insurance, SaaS). Cached or hardcoded bands = hard fail.
-- [ ] Step 0c completed: keyword corpus resolved for EVERY active niche. For any niche where WR Column I (DealsX Niche) is blank, the corpus was built from the WR row itself (Niche Hypothesis + Quick notes + other WR columns). Niche-name-alone matching is NOT acceptable when other WR row data is available. This is a hard requirement.
+- [ ] Step 0c completed: keyword corpus resolved for EVERY active niche. For any niche where the WEEKLY REVIEW "DealsX Niche" field is blank, the corpus was built from the WR row itself (Niche Hypothesis + Quick notes + other populated fields). Niche-name-alone matching is NOT acceptable when other WR row data is available. This is a hard requirement.
 - [ ] Every match includes: source, listing URL, company description, industry, revenue/EBITDA (or "not disclosed"), geography
 - [ ] Listing URL is a working link (not a search results page or homepage)
 - [ ] Each listing routed to the correct buy-box category (Services / Insurance / SaaS) per the routing rule
@@ -333,7 +333,7 @@ email_deals: {n}
 - [ ] Match classified as "Thesis match" or "Buy-box match, new niche"
 - [ ] No duplicate listings (dedup across platforms AND email inbound)
 - [ ] Zero matches = report "No matches" — never fabricate
-- [ ] Scan artifact logs, for each niche, which corpus path was used: "DealsX keywords" or "WR row enrichment (Col B + Col H)" — so underperforming niches can be calibrated next cycle
+- [ ] Scan artifact logs, for each niche, which corpus path was used: "DealsX keywords" or "WR row enrichment (Niche Hypothesis + Quick notes)" — so underperforming niches can be calibrated next cycle
 
 ### New Introduction Stop Hook
 - [ ] Entity created in vault with proper schema

@@ -1172,23 +1172,25 @@ Pipeline updates complete:
 
 ### Upcoming Meeting Prep Triggers
 
-Scan calendar for **tomorrow's investor meetings only** and trigger investor-specific call prep. Pipeline-manager only handles investor call prep (Jeff, Guillermo) because these use specialized templates.
+**As of 2026-04-12, meeting-brief-manager nightly automation is RETIRED.** Pipeline-manager now owns the "Brief needed?" surfacing for ALL external meetings — investor, advisor, target, and general external. The meeting-brief skill runs on-demand when Kay opts in, per `feedback_meeting_brief_on_demand.md`.
 
-**Meeting prep is handled by meeting-brief-manager (runs nightly at 10pm ET via launchd). Pipeline-manager no longer triggers meeting-brief directly.** All external meeting briefs, new contact research, and general meeting prep are owned by meeting-brief-manager. Do not duplicate that work here.
+**Mandatory scan each morning briefing:**
+1. `gog calendar list --from {TOMORROW} --to {TOMORROW} --json` — list tomorrow's events
+   - **Friday rule:** scan covers **Mon AND Tue** (weekend briefing is lighter and may miss Monday)
+   - **Sunday rule:** scan covers **Monday** (standard one-day-ahead)
+2. Filter to external meetings only (skip internal/team calls — Camilla, JJ, etc.).
+3. For each external meeting: check session-decisions files from the prior 3 days. If Kay has already approved or declined a brief for this meeting, SKIP — do not re-ask.
+4. For each remaining external meeting, surface as a Decisions-bucket item using Obama framing:
+   - **RECOMMEND: Generate brief for {name} ({time} {date})** — [one-sentence cadence/context reason] → **YES / NO / DISCUSS**
+5. Kay answers YES → invoke `meeting-brief` skill (investor-update call-prep variant for Jeff/Guillermo; standard meeting-brief for everyone else). Kay answers NO → skip, no artifact.
 
-| Contact | Cadence | Trigger |
-|---------|---------|---------|
-| Jeff Stevens (Anacapa) | Monthly | `/investor-update call-prep jeff` → saves to INVESTOR COMMUNICATION / MONTHLY |
-| Guillermo Lavergne | Bi-weekly | `/investor-update call-prep guillermo` → saves to INVESTOR COMMUNICATION / BI-WEEKLY |
+**Briefing-assembly invariant:** If any external meeting exists in the scan window and is neither already-decided nor surfaced in Decisions, the briefing is malformed — fix before delivering.
 
-```bash
-# Look at tomorrow's calendar for investor meetings only
-gog calendar list --from {TOMORROW} --to {TOMORROW} --json
-# On Fridays: also run for Monday
-# gog calendar list --from {NEXT_MONDAY} --to {NEXT_MONDAY} --json
-```
-
-Only investor call prep runs here. Everything else is meeting-brief-manager's responsibility via its nightly launchd schedule.
+| Contact | Cadence | Brief type |
+|---------|---------|-----------|
+| Jeff Stevens (Anacapa) | Monthly | `/investor-update call-prep jeff` → INVESTOR COMMUNICATION / MONTHLY |
+| Guillermo Lavergne (Ashford) | Bi-weekly | `/investor-update call-prep guillermo` → INVESTOR COMMUNICATION / BI-WEEKLY |
+| All other external meetings | On-demand | `meeting-brief` skill → Drive RESEARCH/BRIEFS + `brain/briefs/` |
 
 ### Email Verification Gate (CRITICAL — applies to ALL drafts from this skill)
 

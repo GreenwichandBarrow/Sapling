@@ -273,6 +273,12 @@ When Kay says good morning:
    - Never report back things Kay did herself — she already knows.
    - Noise (true low-value items) gets archived silently, never surfaced as a "noise" section.
 
+   **Brief-decisions pre-flight (mandatory invariant — added 2026-04-21 after Guillermo miss):**
+   Before delivering the briefing, enumerate tomorrow's external meetings (Fri scan covers Mon+Tue; Sun scan covers Mon). For each external meeting:
+   1. If already approved/declined in `brain/context/session-decisions-*.md` within the last 3 days → skip.
+   2. Else → the meeting MUST appear as a Decisions-bucket item: **RECOMMEND: Generate brief for {name} ({time} {date})** → YES / NO / DISCUSS.
+   If step 2 is not satisfied, the briefing is malformed — fix before delivering. This replaces the retired `meeting-brief-manager` nightly automation (Apr 12).
+
 **System Status section rules:**
 - Shows the system's work, not Kay's — scheduled skills, tool health, subscriptions
 - Every item is 1 line max: `Skill name — status phrase`

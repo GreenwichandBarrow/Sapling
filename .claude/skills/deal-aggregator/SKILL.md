@@ -95,12 +95,25 @@ Scan searchable broker platforms for new listings matching the buy box.
 
 **Scanning process:**
 
-**Step 0a — Load active theses (REQUIRED before scanning):**
-Read the Industry Research Tracker WEEKLY REVIEW tab to get the current active niches:
+**Step 0a — Load active niches + DealsX references (REQUIRED before scanning):**
+Read the Industry Research Tracker WEEKLY REVIEW tab:
 ```bash
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "'WEEKLY REVIEW'!A3:D20" -a kay.s@greenwichandbarrow.com --json
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "'WEEKLY REVIEW'!A3:I20" -a kay.s@greenwichandbarrow.com --json
 ```
-Row 3 is headers: Rank, Niche Hypothesis, Current Status, Outreach Channel. Filter for rows where Current Status starts with "Active" (Active-Outreach or Active-Long Term). Build a thesis list from the Niche Hypothesis column.
+Row 3 is headers: Rank, Niche Hypothesis, Current Status, Outreach Channel, Score, QSBS, Target Pool, Quick notes, DealsX Niche. Filter for rows where Current Status starts with "Active" (Active-Outreach or Active-Long Term). For each active row, capture:
+- Column B: Niche Hypothesis (G&B's narrow thesis name — authoritative)
+- Column I: DealsX Niche (foreign-key reference to the DEALSX tab; may be blank)
+
+**Step 0c — Load keywords from DEALSX tab (REQUIRED for listing matching):**
+Read the DEALSX tab for the keyword corpus per niche:
+```bash
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "'DEALSX'!B5:I20" --json
+```
+Columns: B = Niche (Sam's broad DealsX-submitted names), H = Quick Notes (Industries/Types sub-verticals), I = Keywords (pre-tokenized match corpus).
+
+For each active niche from Step 0a, resolve its keyword corpus:
+- IF Step 0a Column I (DealsX Niche) is populated → match that value against DEALSX Column B → pull DEALSX Column I Keywords for matching
+- IF Step 0a Column I is blank (e.g., Private art advisory firms — no DealsX equivalent) → fall back to matching on the WEEKLY REVIEW niche name alone; log "no DealsX keywords available for {niche}" in the scan artifact for visibility
 
 **Step 0b — Load buy-box criteria (REQUIRED before scanning):**
 Read the three buy-box docs from the Deal Aggregator Drive folder. These are the single source of truth for all filter criteria. Never use cached or hardcoded bands; always re-read on every run so the skill reflects Kay's current criteria.

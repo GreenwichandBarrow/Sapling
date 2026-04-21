@@ -133,7 +133,13 @@ Populate 3 new columns per river guide: `Known Contact` (WARM/INVESTOR INTRO/SHA
 
 Scan Kay's network for people with industry-relevant work history.
 
-**Data sources (priority order):**
+**⚠️ Investigation open (2026-04-20):** Phase 3 calibration on 8 niches returned only 5 H-strength matches across 388 Apollo-enriched records, 6 niches at zero. Kay flagged that her lived network knowledge contradicts this — she has contacts in specialty-insurance, vertical-saas-luxury, and other niches the scan missed. Root cause under investigation. Suspected vectors: (a) subagent only hit `nddl_apollo_employment_history` despite spec requiring 4 sources; (b) keyword tokenization hits substring collisions; (c) H-criterion too strict (senior title + 3yr) excludes valid soft matches; (d) 21% Attio enrichment coverage means 79% of network unscannable until Step 1b lands 2026-05-03. **Do not run Phase 3 to completion until root cause resolved.** See [[brain/traces/2026-04-20-network-yield-vs-lived-knowledge]] for context.
+
+**Mandatory: hit ALL 4 data sources.** Subagents running Phase 3 must scan every source, not just Apollo employment_history. Skipping any source silently is a defect — flag and halt if a source is unreachable.
+
+**Two-sided cap check (pre-write gate):** Before any writes, compare per-niche count against Kay's expected range. Pause on `count > 10` OR `count == 0 when Kay expects signal`. Both are calibration signals, not green lights.
+
+**Data sources (priority order — all MUST be scanned):**
 
 1. **Attio `nddl_apollo_employment_history`** (primary — post-enrichment of high-priority records, see Apollo Enrichment Dependency below)
    - For each Attio person: iterate past-role objects, match `organization_name` against niche keywords + `customer_segment_keywords`

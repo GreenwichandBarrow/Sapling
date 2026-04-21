@@ -112,7 +112,7 @@ gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "'DEALSX'!B5:I20" --
 Relevant DEALSX fields: "Niche" (Sam's broad DealsX-submitted names), "Quick notes" (Industries/Types sub-verticals), "Keywords" (pre-tokenized match corpus).
 
 For each active niche from Step 0a, resolve its keyword corpus:
-- IF the row's "DealsX Niche" field on WEEKLY REVIEW is populated → match that value against the "Niche" field on DEALSX → pull the "Keywords" field from that DEALSX row for matching
+- IF the row's "DealsX Niche" field on WEEKLY REVIEW is populated → match that value against the "Niche" field on DEALSX → pull BOTH the "Quick notes" field AND the "Keywords" field from that DEALSX row. Do NOT use the WEEKLY REVIEW "Quick notes" for these niches — the DEALSX row is the authoritative corpus source when a DealsX reference exists. Combine Quick notes (Industries/Types sub-verticals) + Keywords (tokenized match terms) into a single matching corpus.
 - IF the "DealsX Niche" field on WEEKLY REVIEW is blank (e.g., Private art advisory firms — no DealsX equivalent) → build the matching corpus from the WEEKLY REVIEW row itself. Specifically:
   1. "Niche Hypothesis" field — full string + key noun phrases tokenized (e.g., "Private art advisory firms" → "art advisory", "art advisor", "private advisory", "art consulting", etc.)
   2. "Quick notes" field — extract industry-descriptive terms, business-model phrases, customer-profile language, and any named sub-verticals

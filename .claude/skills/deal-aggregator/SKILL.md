@@ -67,7 +67,7 @@ Scan searchable broker platforms for new listings matching the buy box.
 - Flippa (flippa.com) — email alerts + searchable (mostly digital/online businesses)
 
 **AI-powered marketplaces (confirmed scrapable):**
-- DealFlow Agent (dealflowagent.com) — AI-powered M&A marketplace, industry-segmented, already in Channel 3 (Premium Pest Management)
+- DealFlow Agent (dealflowagent.com) — landing page only, no live listings (4/21: `/listings` 404, marketing-buyer-counts content only). Monitor for marketplace launch; not a live-flow source.
 
 **AI-powered marketplaces (need Kay to register first — scrapability TBD):**
 - Acquire.com (acquire.com) — SaaS/digital-heavy. Likely login-gated. Register and re-test.
@@ -199,7 +199,7 @@ Scan niche-specific platforms and brokers that specialize in the active thesis i
 - PCO Bookkeepers & M&A Specialists (pcobookkeepers.com) — Advisory only, Dan Gordon (CPA), $1B+ in sell-side transactions. Monitor newsletter/blog.
 - Keystone Business Advisors (keystonebusinessadvisors.com/business-listings/) — Registration required. Pest control up to $50M revenue.
 - Cetane (cetane.com/industries/pest-control/) — Lower middle market M&A advisory, no public listings.
-- DealFlow Agent (dealflowagent.com/home-services/pest-control) — AI-powered M&A marketplace, 200+ active pest control buyers.
+- DealFlow Agent (dealflowagent.com/home-services/pest-control) — landing page only (4/21: no live seller listings, marketing-buyer-counts only). Intel source, not live flow.
 - Anticimex (us.anticimex.com/selling-your-business/) — Strategic acquirer, market intelligence only.
 
 **Specialty Insurance Brokerage:**

@@ -41,12 +41,8 @@ For months I was stuck in volume mode — doing email, LinkedIn, and cold calls 
 LOW — The niche spin, and the clock
 The macro environment and the AI shift are creating so much change in every industry I'm evaluating that I've had to reset my thesis more than once. Meanwhile the clock keeps ticking, and I won't have my full "engine" up and running for another two weeks.
 
-LESSON — When the foundation is thin, rank on what an outsider would score
-Built internal data to rank niches. Results were directionally wrong because the inputs (warm contacts, industry intros) aren't dense enough yet. External traditional-searcher criteria produced a ranking I'll act on.
-Transferable point: don't trust your own system's outputs until the inputs are dense — use the public market's lens first.
-
-Alt lesson (if conversation leans operational):
-Acting on Megan's advice was the single highest-leverage move of the month — but her LOI came from a warm intro, not the volume system. Volume generates activity; warm paths generate deals.
+LESSON — Don't pause active pipeline to build systems
+The lesson of the last three weeks: don't let active pipeline go cold while you're building systems. I spent weeks building out infrastructure and felt my pipeline dry up in the process — I think that was a mistake. Both hands have to keep moving. Build the engine AND keep the warm conversations alive at the same time, even if it's slower on each.
 
 ================================================================
 

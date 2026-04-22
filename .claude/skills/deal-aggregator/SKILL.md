@@ -506,11 +506,25 @@ After Kay approves a proposed addition or retirement:
 - [ ] Zero matches = report "No matches" — never fabricate
 - [ ] Scan artifact logs, for each niche, which corpus path was used: "DealsX keywords" or "WR row enrichment (Niche Hypothesis + Quick notes)" — so underperforming niches can be calibrated next cycle
 
+### Source Scorecard Stop Hook (Phase 2)
+- [ ] Every source with `Status: Active` on the Sourcing Sheet has a row in the scan artifact's `## Source Scorecard`. Row count = Active row count on the sheet. Mismatch = scan agent skipped a source → hard fail.
+- [ ] No source marked `blocked` without a verification second-attempt. If only one fetch attempt was made, the status MUST be `blocked (single-attempt)`, NOT `blocked (verified)`. Precedent: Sica Fletcher mis-labeled 404 for days in April 2026 — `feedback_test_before_concluding_channel_dead` exists specifically to prevent this.
+- [ ] `Matches` and `Last Match Date` columns pulled from the fingerprint JSONL, not fabricated. If fingerprint store is empty for a source, `Matches` = 0 and `Last Match Date` = "—".
+
 ### New Introduction Stop Hook
 - [ ] Entity created in vault with proper schema
 - [ ] Attio Intermediary Pipeline entry at "Identified"
 - [ ] Website researched and scrapability assessed
 - [ ] Draft response in Superhuman — short, warm, offers NDA
+
+### Friday Digest Stop Hook (Phase 2)
+- [ ] Digest file exists at `brain/trackers/weekly/{YYYY-MM-DD}-deal-aggregator-digest.md`
+- [ ] All 5 required sections present: Source Productivity, Volume Check, Proposed Additions, Proposed Retirements, Recommended Actions
+- [ ] Each proposed addition includes rationale + recommended tab + access method
+- [ ] Each proposed retirement includes 3 live-check results (URL resolves, domain registered, email channel status)
+- [ ] Trend column populated via prior-week comparison (not fabricated)
+- [ ] Slack notification sent ONLY IF ≥1 proposed change OR volume status = 🔴. Silent digest on a healthy week = correct behavior.
+- [ ] No auto-writes to the Sourcing Sheet — all proposals await Kay's approval
 </stop_hooks>
 
 <validation>
@@ -545,10 +559,17 @@ After Kay approves a proposed addition or retirement:
 - [ ] Slack notifications working with thumbs up/down workflow
 - [ ] Results file written daily with volume tracking
 
-### Phase 2 (Steady state — 1-3 deals/day)
-- [ ] Rolling 7-day average: 1-3 deals/day surfaced
-- [ ] New introductions processed within 24 hours
-- [ ] Intermediary network growing (1-2 new sources/month)
-- [ ] Platform list maintained (broken sites removed, new ones added)
-- [ ] If below target: proactively identify and add new sources
+### Phase 2 (Source stewardship — landed 2026-04-22)
+- [ ] Daily scan artifact includes `## Source Scorecard` with per-source match counts + listings reviewed + last match date
+- [ ] Every "blocked" source was verified via a second fetch attempt before being marked `blocked (verified)`
+- [ ] Friday 6 AM ET digest file written to `brain/trackers/weekly/{date}-deal-aggregator-digest.md` with all 5 sections
+- [ ] Source Scout subagent surfaces proposed additions (from week's inbox/newsletter signals) and proposed retirements (30+ days no match + 3 live-checks passed)
+- [ ] No auto-writes to the Sourcing Sheet — every addition/retirement awaits Kay's explicit approval
+- [ ] Slack notification to `#operations` only when ≥1 proposed change OR volume = 🔴 (silent on healthy weeks)
+- [ ] Rolling 7-day average trending toward 1–3 deals/day target
+
+### Phase 3 (future — autonomous closed-loop)
+- [ ] Kay's approval on a proposal triggers an immediate sheet write (no separate invocation)
+- [ ] Source Scout proposals surface in Friday /goodmorning briefing directly, not a separate Slack ping
+- [ ] Trend detection surfaces category-level insights ("niche-specific sources are 3× more productive this month than general platforms") to inform buy-box re-weighting
 </success_criteria>

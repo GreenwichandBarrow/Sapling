@@ -48,14 +48,13 @@ The lesson of the last three weeks: don't let active pipeline go cold while you'
 
 2. YOUR QUESTION FOR THE GROUP — 10-MIN SLOT
 
-PRIMARY (RECOMMENDED):
-"Last time we all admitted to being 'more no than yes.' Since then, three of you have LOIs in motion — I don't. What actually moved you from analysis to action on the LOIs you've submitted? Was it a specific seller moment, an investor pushing you, or a deliberate rule you set for yourselves?"
+PRIMARY:
+"As many of you have LOIs in motion, I'd love to ask you to share what actually moved you from analysis to action on the LOIs you've submitted? Was it a specific seller moment, an investor pushing you, or a deliberate rule you set for yourselves?"
 
 Why this question:
-- Ties directly to the shared thread from meeting one (Sarah explicitly flagged we'd carry forward).
-- Taps Megan (just submitted), Adilene (4th LOI, QOE kicking off), Ali (6 months into sports facility, 2 months of energy left) — each has fresh, specific material.
+- Opens generously — leads with their progress, invites them to teach.
+- Taps Megan (just submitted), Adilene (4th LOI, QOE kicking off), Ali (6 months into sports facility) — each has fresh, specific material.
 - Personal enough to earn candor, concrete enough to leave with something actionable.
-- Pairs naturally with your High: "I've finally gotten out of volume mode and into the relationship layer where deals should come from — but I'm still not on the LOI board."
 
 ALTERNATIVES IF THE PRIMARY FEELS TOO POINTED:
 A. "I just reset my niche focus and portfolio shape at month 14 after my lead investor call. How do you know when you're refining vs. avoiding commitment?"

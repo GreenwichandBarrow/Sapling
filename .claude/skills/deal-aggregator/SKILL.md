@@ -338,7 +338,9 @@ Every listing scanned generates data. Track patterns:
 ---
 date: {YYYY-MM-DD}
 deals_found: {n}
-platforms_scanned: {n}
+sources_scanned: {n}
+sources_blocked_verified: {n}
+sources_blocked_single_attempt: {n}
 email_deals: {n}
 ---
 # Deal Aggregator Scan — {date}
@@ -352,8 +354,29 @@ email_deals: {n}
 ## Near Misses (not Slacked)
 - {listing} — {reason not flagged}
 
-## Platform Status
-- {Platform}: {accessible/blocked/login required}
+## Source Scorecard
+
+Every source scanned this run MUST appear as a row — no exceptions. Missing rows = scan agent skipped a source and the run fails its stop hook.
+
+| Source | Category | Status | HTTP | Listings Reviewed | Matches | Last Match Date |
+|--------|----------|--------|------|-------------------|---------|-----------------|
+| Business Exits | General | active | 200 | 12 | 0 | 2026-04-14 |
+| BizBuySell | General | active | 200 | 47 | 1 | 2026-04-22 |
+| Quiet Light | General | blocked (verified) | 403 | 0 | — | 2026-03-30 |
+| Sica Fletcher | Niche-Specific (Insurance) | active | 200 | 8 | 0 | 2026-04-18 |
+| (… one row per source in Sourcing Sheet "Active" status …) | | | | | | |
+
+**Status values:**
+- `active` — source fetched successfully, listings parsed
+- `blocked (verified)` — primary fetch failed AND fallback fetch failed (two attempts). Source is genuinely dark.
+- `blocked (single-attempt)` — primary fetch failed, fallback not attempted. Surface for manual retry on next run.
+- `login-gated` — registered but session expired; surface to Kay for re-auth
+- `dormant` — marked Dormant on Sourcing Sheet; not scanned this run
+
+**Data sources for the scorecard:**
+- `Matches` and `Last Match Date` — queried from `brain/context/deal-aggregator-fingerprints.jsonl` filtered by source + date
+- `Listings Reviewed` — counted by the scan agent per source (every listing parsed, whether matched or not)
+- `Status` and `HTTP` — logged by the scan agent at fetch time
 
 ## Volume Check
 - Deals surfaced today: {n}
@@ -361,6 +384,111 @@ email_deals: {n}
 - Target: 1-3/day — {ON TRACK / BELOW TARGET / ABOVE TARGET}
 ```
 </results_file>
+
+<weekly_digest>
+## Weekly Source-Productivity Digest (Phase 2)
+
+**Triggered:** Friday 6:00 AM ET via `com.greenwich-barrow.deal-aggregator-friday.plist` — `run-skill.sh deal-aggregator --digest-mode`. Also invocable manually with `/deal-aggregator --digest-mode`.
+
+**Purpose:** Give Kay a single weekly artifact to decide which sources are earning their slot, which new sources should be added, and which should be retired. No auto-writes — proposals are approval-gated.
+
+**Reads:**
+- Last 7 days of `brain/context/deal-aggregator-scan-{date}.md` (daily scorecards)
+- Last 30 days of `brain/context/deal-aggregator-fingerprints.jsonl` (source → match attribution)
+- Last 7 days of `brain/context/email-scan-results-{date}.md` (inbound broker/newsletter signals for scouting)
+- `G&B Deal Aggregator - Sourcing List` sheet (ID `1z8o2obq2mOG9drQ0umCmBk31K3OS2afMNGpVAlbLljw`) — General Sources + Niche-Specific Sources tabs
+
+**Writes:**
+- `brain/trackers/weekly/{YYYY-MM-DD}-deal-aggregator-digest.md` — single artifact, schema-validated
+- Slack ping to `SLACK_WEBHOOK_OPERATIONS` ONLY when ≥1 proposed change OR volume = 🔴 (silence = healthy, per health-monitor convention)
+
+### Digest File Format
+
+```markdown
+---
+date: {YYYY-MM-DD}
+type: tracker
+title: "Deal Aggregator Weekly Digest — {date}"
+window_start: {YYYY-MM-DD}
+window_end: {YYYY-MM-DD}
+volume_7d_avg: {float}
+volume_status: {✅ / ⚠️ / 🔴}
+proposed_additions: {n}
+proposed_retirements: {n}
+tags: [date/{YYYY-MM-DD}, tracker, topic/deal-aggregator, topic/weekly-digest]
+---
+
+# Deal Aggregator Weekly Digest — {date}
+
+## 1. Source Productivity (Last 7 Days)
+
+| Source | Category | 7d Matches | 7d Listings Reviewed | Last Match | Trend |
+|--------|----------|-----------:|---------------------:|-----------|:-----:|
+| … | … | … | … | … | ↑ / ↓ / → |
+
+Trend arrow: compare this week's match count to prior week's (prior digest file or prior 7-day window of fingerprints). `↑` = +50% or more, `↓` = -50% or more, `→` = within ±50%.
+
+## 2. Volume Check
+
+- 7-day rolling average: {n}/day
+- Target: 1–3/day
+- Status: {✅ On track / ⚠️ Below target / 🔴 Critical}
+
+## 3. Proposed Additions
+
+(From Source Scout subagent — see spec below.)
+
+1. **{Source name}** — {category} | {URL}
+   - Why: {signal that surfaced it — newsletter mention, inbound email, niche-broker reference}
+   - Recommended tab: {General Sources / Niche-Specific Sources → {niche}}
+   - Access: {Free / Register / Relationship-only}
+   - **RECOMMEND: Add to {tab}** → YES / NO / DISCUSS
+
+## 4. Proposed Retirements
+
+1. **{Source name}** — {category} | 0 matches since {date} | Last verified alive: {date}
+   - Why: {30+ days no match, still-alive verified, not earning its slot}
+   - **RECOMMEND: Move to Dormant on Sourcing Sheet** → YES / NO / DISCUSS
+
+## 5. Recommended Actions (Kay's Review Bucket)
+
+Summary list — 1 line per proposal with its YES/NO/DISCUSS for quick approval. On YES, Claude writes the change to the Sourcing Sheet; on NO/DISCUSS, no write.
+```
+
+### Source Scout Subagent
+
+Spec: runs inside the Friday digest only. Not invoked during daily scans (would add scan-time cost to a skill already taking ~44 min).
+
+**Scouting side (new-source discovery):**
+1. Read last 7 days of `brain/context/email-scan-results-{date}.md` — enumerate all sender domains in the inbox window.
+2. Cross-reference each sender domain against the Sourcing Sheet General + Niche tabs.
+3. For every sender domain NOT on the Sourcing Sheet:
+   - Filter out known non-source senders (personal domains, internal `@greenwichandbarrow.com`, calendar/reminder noise)
+   - Classify the remaining: broker platform, M&A advisory, newsletter, industry publication
+   - Web-verify the URL resolves (`gog webfetch` or agent-browser if blocked)
+   - Propose: `{source_name, url, category, recommended_tab, rationale, evidence_message_id}`
+4. Additionally, scan newsletter body text for AI-marketplace launches and niche-broker names mentioned by industry publications (Agency Checklists → insurance, IA Magazine → insurance, NPMA → pest, IREM → estate mgmt, CMM Online → cleaning).
+
+**Retirement side (stale detection):**
+1. For every source on the Sourcing Sheet with `Status: Active`:
+   - Query `brain/context/deal-aggregator-fingerprints.jsonl` — when was the last match attributed to this source?
+   - If no match in 30+ days → candidate for retirement
+2. Before flagging a candidate, verify the source is still alive:
+   - URL resolves (GET 200)
+   - Domain still registered (no NXDOMAIN)
+   - For email-only sources: Gmail query for recent emails from the domain — if silent in last 30 days, reinforce retirement signal; if active, re-classify as "active but no buy-box matches" (keep, don't retire)
+3. Per `feedback_test_before_concluding_channel_dead`: Sica Fletcher was mis-labeled 404 for days in April. Any retirement proposal must show the three live-checks passed or document which one failed.
+
+**Never auto-writes to the Sourcing Sheet.** All outputs go into the digest vault file. Kay approves in Friday briefing (or via direct reply to the Slack ping) → that approval triggers the sheet write in a separate invocation.
+
+### Sourcing Sheet Write (Post-Approval Only)
+
+After Kay approves a proposed addition or retirement:
+- **Addition:** Append a row to the appropriate tab (General Sources or Niche-Specific Sources) with columns: Status, Source, Type, Access, URL, Notes (+ Niche for Niche tab). Status = "Active" for additions.
+- **Retirement:** Update the existing row's Status column to "Dormant". Do NOT delete rows — preserves history.
+- Trace: write an entry to `brain/traces/{date}-deal-aggregator-source-change.md` using trace schema (schema_version 1.1.0, inline array tags per `feedback_trace_schema_format`).
+- Pre-write snapshot of the sheet stored per `feedback_subagent_sheet_write_safety` — enables rollback if a write clobbers an unintended row.
+</weekly_digest>
 
 <stop_hooks>
 ## Sub-Agent Stop Hooks

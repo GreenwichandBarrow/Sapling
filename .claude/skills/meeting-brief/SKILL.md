@@ -25,21 +25,30 @@ This skill should run:
 4. **What should Kay share about herself?** — Tailored talking points based on what they already know and what would resonate
 5. **What NOT to over-share** — What to keep high-level or avoid entirely
 
-## Contact Type Detection (Step 0)
+## Mode → Template Mapping (Step 0)
 
-Before researching, determine if this is a **new contact** or a **repeat contact**:
+Determine meeting type from the `--type` argument OR from context clues if no flag passed:
 
-1. Search Attio Active Deals pipeline for the person's name or company
-2. If found at "First Conversation" stage or later → **repeat contact** → use repeat contact template
-3. If not found, or only at "Identified"/"Contacted" → **new contact** → use standard template
+| `--type=` | Template | Examples folder | When to use |
+|-----------|----------|-----------------|-------------|
+| `new-contact` | `templates/new-contact.md` | `examples/new-contact/` | First meeting, warm intro arrival, initial introduction |
+| `owner-call` | `templates/owner-call.md` | `examples/owner-call/` | Active Deals pipeline "First Conversation" or later; deal-progression |
+| `intermediary` | `templates/intermediary.md` | `examples/intermediary/` | Broker, M&A advisor, law firm partner, wealth advisor |
+| `conference-prep` | `templates/conference-prep.md` | `examples/conference-prep/` | Conference, panel, industry event, networking room |
 
-This detection is automatic. The skill figures out which template to use.
+**Auto-detect when --type is absent:**
+- Attio match in Active Deals pipeline → `owner-call`
+- Attio match in Intermediary Pipeline → `intermediary`
+- Event/conference keyword in calendar title (XPX, ACG, NPMA, conference, panel, happy hour, summit) → `conference-prep`
+- No Attio match → `new-contact`
+
+**Invariant:** always load `templates/{type}.md` AND `examples/{type}/{most-recent}.md` BEFORE drafting. Fail the run if either is unreadable. Do not fall through to a generic template.
 
 ## Delivery
 
 Save to TWO locations, no email:
-- **Google Doc** in RESEARCH/BRIEFS folder (ID: `1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ`)
-- **Vault file** at `brain/briefs/{YYYY-MM-DD}-{person-slug}.md` (new contacts) or `brain/briefs/{YYYY-MM-DD}-{company-slug}-call-{n}.md` (repeat contacts, where n = call number)
+- **Google Doc** in RESEARCH/BRIEFS folder (ID: `1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ`) for all types unless a company-specific deal folder already exists (owner-call on active deal → route to that deal folder instead)
+- **Vault file** at `brain/briefs/{YYYY-MM-DD}-{person-slug}.md` (new-contact, intermediary, conference-prep) or `brain/briefs/{YYYY-MM-DD}-{company-slug}-call-{n}.md` (owner-call, where n = call number)
 </essential_principles>
 
 <quick_start>

@@ -1182,15 +1182,20 @@ Pipeline updates complete:
 3. For each external meeting: check session-decisions files from the prior 3 days. If Kay has already approved or declined a brief for this meeting, SKIP — do not re-ask.
 4. For each remaining external meeting, surface as a Decisions-bucket item using Obama framing:
    - **RECOMMEND: Generate brief for {name} ({time} {date})** — [one-sentence cadence/context reason] → **YES / NO / DISCUSS**
-5. Kay answers YES → invoke `meeting-brief` skill (investor-update call-prep variant for Jeff/Guillermo; standard meeting-brief for everyone else). Kay answers NO → skip, no artifact.
+5. Kay answers YES → invoke the appropriate brief command per the routing table below. Kay answers NO → skip, no artifact.
 
 **Briefing-assembly invariant:** If any external meeting exists in the scan window and is neither already-decided nor surfaced in Decisions, the briefing is malformed — fix before delivering.
 
-| Contact | Cadence | Brief type |
-|---------|---------|-----------|
-| Jeff Stevens (Anacapa) | Monthly | `/investor-update call-prep jeff` → INVESTOR COMMUNICATION / MONTHLY |
-| Guillermo Lavergne (Ashford) | Bi-weekly | `/investor-update call-prep guillermo` → INVESTOR COMMUNICATION / BI-WEEKLY |
-| All other external meetings | On-demand | `meeting-brief` skill → Drive RESEARCH/BRIEFS + `brain/briefs/` |
+Every brief invocation loads `templates/{type}.md` + most recent `examples/{type}/*.md` before drafting. No generic-template fallback.
+
+| Contact | Cadence | Brief command | Template used | Save location |
+|---------|---------|---------------|---------------|---------------|
+| Jeff Stevens (Anacapa) | Monthly | `/investor-update monthly jeff-stevens` (or `/investor-update call-prep jeff-stevens` with auto-detect) | `investor-update/templates/monthly-call-prep.md` | INVESTOR COMMUNICATION / MONTHLY |
+| Guillermo Lavergne (Ashford) | Bi-weekly | `/investor-update biweekly guillermo-lavergne` | `investor-update/templates/biweekly-call-prep.md` | INVESTOR COMMUNICATION / BI-WEEKLY |
+| Owner call (Active Deals pipeline) | On-demand | `/meeting-brief --type=owner-call {name}` | `meeting-brief/templates/owner-call.md` | Deal folder (if exists) or RESEARCH/BRIEFS + `brain/briefs/` |
+| Intermediary (broker, M&A advisor, wealth advisor, law firm) | On-demand | `/meeting-brief --type=intermediary {name}` | `meeting-brief/templates/intermediary.md` | RESEARCH/BRIEFS + `brain/briefs/` |
+| Conference / panel / industry event | On-demand | `/meeting-brief --type=conference-prep {event}` | `meeting-brief/templates/conference-prep.md` | RESEARCH/BRIEFS + `brain/briefs/` |
+| New contact / warm intro arrival | On-demand | `/meeting-brief --type=new-contact {name}` | `meeting-brief/templates/new-contact.md` | RESEARCH/BRIEFS + `brain/briefs/` |
 
 ### Email Verification Gate (CRITICAL — applies to ALL drafts from this skill)
 

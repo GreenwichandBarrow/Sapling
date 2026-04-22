@@ -1,20 +1,42 @@
 ---
 name: investor-update
-description: "Investor communication — quarterly deck to all 12 investors, post-LOI weekly meeting prep. Two modes: quarterly, weekly-dd. Call prep for investor meetings is handled by meeting-brief-manager."
+description: "Investor communication — quarterly deck to all 12 investors, monthly call prep (Jeff Stevens), biweekly call prep (Guillermo Lavergne), post-LOI weekly DD. Four modes: quarterly, monthly, biweekly, weekly-dd."
 user_invocable: true
 ---
 
 <objective>
-**Call prep for investor meetings is now handled by meeting-brief-manager (Subagent 2). This skill handles quarterly reporting and weekly DD updates only.**
+Keep investors informed and engaged across four cadences, using type-specific templates + Kay-approved golden examples as format references.
 
-Keep investors informed and engaged across two cadences.
+**Quarterly** — 3-slide deck summarizing the quarter, emailed to all 12 investors. Uses Start/Stop/Continue framework (investors love it). Triggers follow-up scheduling. Template: `templates/quarterly-deck.md`. Examples: `examples/quarterly/`.
 
-**Quarterly** — 3-slide deck summarizing the quarter, emailed to all 12 investors. Uses Start/Stop/Continue framework (investors love it). Triggers follow-up scheduling.
+**Monthly call prep** — Jeff Stevens (Anacapa Partners, lead investor). Terse bulleted call prep, forward-looking, max ~40 body lines. Template: `templates/monthly-call-prep.md`. Examples: `examples/monthly/`.
 
-**Weekly DD** (post-LOI only) — Deal-specific update materials for weekly investor group meetings during due diligence.
+**Biweekly call prep** — Guillermo Lavergne (Ashford). Same terse bulleted format as monthly, biweekly window. Template: `templates/biweekly-call-prep.md`. Examples: `examples/biweekly/`.
+
+**Weekly DD** (post-LOI only) — Deal-specific update materials for weekly investor group meetings during due diligence. Template: `templates/weekly-dd.md`. Examples: `examples/weekly-dd/` (populated once a deal reaches LOI).
 
 **Core principle:** Investors want to hear about deals and progress, not feelings. Even when deal flow is light, frame operational improvements as competitive advantage.
+
+**Template + example loading invariant:** Every call-prep subagent invocation MUST load `templates/{mode}.md` AND the most recent file in `examples/{mode}/` as the format reference BEFORE drafting. Do not fall through to a generic template. If the example folder is empty, stop and ask Kay for a golden.
 </objective>
+
+<mode_routing>
+## Mode → Template + Example Mapping
+
+| Invocation | Mode | Template | Examples folder | Save location |
+|------------|------|----------|-----------------|---------------|
+| `/investor-update monthly {name}` or `/investor-update call-prep {name}` (auto-detect monthly investor) | monthly | `templates/monthly-call-prep.md` | `examples/monthly/` | Drive `1FGxl4_q44sHK-Kv7t1hHfCMfYXA3H9YW` + `brain/briefs/` |
+| `/investor-update biweekly {name}` or `/investor-update call-prep {name}` (auto-detect biweekly investor) | biweekly | `templates/biweekly-call-prep.md` | `examples/biweekly/` | Drive `1SFkrxnkBpyng6dWIcW3eDXqab9sf8wui` + `brain/briefs/` |
+| `/investor-update quarterly` | quarterly | `templates/quarterly-deck.md` | `examples/quarterly/` | Drive DRAFTS `1mAOJgIy1_0QmfjtuHMDZQBg5_AIFsF5u`, then SENT `10xTxhVvuz8dmpwXvTV0j0NHF_ghW-GI5` |
+| `/investor-update weekly-dd {company}` | weekly-dd | `templates/weekly-dd.md` | `examples/weekly-dd/` | Deal folder `ACTIVE DEALS / {Company} / NOTES /` |
+
+**Cadence auto-detect from investor name:**
+- Jeff Stevens → monthly
+- Guillermo Lavergne → biweekly
+- BK Growth, Saltoun Capital, Tom Jackson, Clayton Sachs, 6 others → quarterly only
+
+**Invariant enforcement:** every subagent invocation MUST load `templates/{mode}.md` AND `examples/{mode}/{most-recent-file}.md` BEFORE drafting. Fail the run if either is unreadable. Do not fall through to a generic template.
+</mode_routing>
 
 <essential_principles>
 ## Investor Relationships

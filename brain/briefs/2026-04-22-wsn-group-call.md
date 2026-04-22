@@ -35,9 +35,8 @@ AGENDA (set by Sarah)
 
 1. HIGH / LOW / LESSON — YOUR 2 MINUTES
 
-HIGH — "Tools-for-walls" framework unlock
-Guillermo (lead investor) biweekly this afternoon reframed the diligence lens across every services niche: the right question is "who ELSE walks into these four walls?" Cross-sell and adjacency economics become the real unit of analysis, not the single service. Already changed how I read Specialty Insurance (Art/HNW) — my new primary niche after a ranking reset.
-Secondary: onboarded DealsX for email outreach + a cold-calling partner — took Megan's playbook from our first meeting. Outreach is off my plate.
+HIGH — The shift from volume to relationships, and the proof it's working
+For months I was stuck in volume mode — doing email, LinkedIn, and cold calls myself. Overwhelmed. In the last three weeks I got volume completely off my plate: a managed outreach partner on the email and LinkedIn side, and a cold-calling evaluation that gave me everything I needed to build a structured program for my VA. Megan — I wish I'd moved when you did in January. That regret is real. But the unlock isn't just the time savings. Shifting volume off let me focus on the three things that actually build pipeline in our model: intermediaries, conferences, and owner calls. And the tell that it's working: in a month where I've done almost no proactive pipeline-building, industry relationships I've been developing have been coming back to me unprompted. The volume system was the scaffolding I needed to stop drowning — but the real deals are coming from the warm layer underneath.
 
 LOW — Still no LOI at month 14, and the "more no than yes" is showing up in my system
 Reset my niche ranking twice today. First pass on internal warm-network data came back "full of holes." Second pass on traditional external searcher criteria — TAM, fragmentation, PE competition, M&A — landed a ranking I actually trust. Third reset this month. The same muscle that makes me rigorous on rankings is the one that keeps me off the LOI board. The group called the pattern in our first meeting. It's still here.
@@ -47,7 +46,7 @@ Built internal data to rank niches. Results were directionally wrong because the
 Transferable point: don't trust your own system's outputs until the inputs are dense — use the public market's lens first.
 
 Alt lesson (if conversation leans operational):
-Acting on Megan's DealsX advice was the single highest-leverage move of the month — but her LOI came from a Twitter intro, not the volume system. Volume generates activity; warm paths generate deals.
+Acting on Megan's advice was the single highest-leverage move of the month — but her LOI came from a warm intro, not the volume system. Volume generates activity; warm paths generate deals.
 
 ================================================================
 
@@ -58,13 +57,14 @@ PRIMARY (RECOMMENDED):
 
 Why this question:
 - Ties directly to the shared thread from meeting one (Sarah explicitly flagged we'd carry forward).
-- Taps Megan (just submitted on marble/granite), Adilene (4th LOI, QOE kicking off), Ali (6 months into sports facility, 2 months of energy left) — each has fresh, specific material.
+- Taps Megan (just submitted), Adilene (4th LOI, QOE kicking off), Ali (6 months into sports facility, 2 months of energy left) — each has fresh, specific material.
 - Personal enough to earn candor, concrete enough to leave with something actionable.
+- Pairs naturally with your High: "I've finally gotten out of volume mode and into the relationship layer where deals should come from — but I'm still not on the LOI board."
 
 ALTERNATIVES IF THE PRIMARY FEELS TOO POINTED:
 A. "I just reset my niche focus and portfolio shape at month 14 after my lead investor call. How do you know when you're refining vs. avoiding commitment?"
-B. "Megan's LOI came from Twitter, Adilene's from depth. I'm running volume outreach AND building warm industry paths. Where is the actual leverage — and can they run in parallel, or do they crowd each other out?"
-C. "I took Megan's DealsX model and onboarded it two weeks ago. What did each of you wish you'd outsourced earlier — and what surprised you about what you couldn't outsource?"
+B. "Megan's LOI came from a warm intro, Adilene's from depth. I'm running volume outreach AND building warm industry paths. Where is the actual leverage — and can they run in parallel, or do they crowd each other out?"
+C. "I just got volume outreach off my plate two weeks ago. What did each of you wish you'd outsourced earlier — and what surprised you about what you couldn't outsource?"
 
 ================================================================
 
@@ -89,13 +89,13 @@ She floated each member providing a "map of your tendencies" so the group can pu
 4. REFERENCE POINTS FOR YOUR HEAD GOING IN
 
 PEER STATUS (as of Mar 30 first meeting, watch for updates)
-- Megan — LOI on family-owned marble/granite fabrication; came from a warm Twitter intro to a Michigan plumber/broker; not from her outsourced system. Longer transition with owner planned.
+- Megan — LOI on family-owned marble/granite fabrication; came from a warm intro, not her outsourced system. Longer transition with owner planned.
 - Adilene — under 4th LOI, commercial diligence passed, QOE kicking off. Last shot before running out of capital. Worried about bias at end of runway. Wants the group to keep her honest.
 - Ali — still waiting on sports facility owner's number. 6 months in. Feels she has ~2 months of search energy left. Considering a bridging structure to compete with PE.
 - Sarah — fully in portfolio-life mode. Offered phone-a-friend anytime.
 
 OPEN OFFERS FROM LAST MEETING
-- Megan offered to share cold-calling + email outreach provider contacts. Confirm whether she sent.
+- Megan offered to share cold-calling + email outreach provider contacts.
 - Megan offered to connect the group to Gonzalo (AI engineer — LinkedIn bots, ARR models, sensitivity analysis). Open to take her up on this.
 - Sarah offered phone-a-friend standing.
 
@@ -104,8 +104,8 @@ Megan asked about it directly last time. If it comes up: "rebuilt the entire sta
 
 YOUR ACTION ITEMS FROM LAST MEETING
 - Kay to collect WhatsApp numbers (Sarah set up group) — status?
-- Evaluate DealsX for email outreach + infrastructure — DONE, onboarded.
-- Evaluate current cold caller vs outsourcing to Caprae — in motion via new cold-calling partner.
+- Evaluate outsourced email + LinkedIn outreach — DONE, onboarded.
+- Evaluate cold-calling outsourcing options — evaluation complete, building the program internally via the VA instead.
 
 ================================================================
 

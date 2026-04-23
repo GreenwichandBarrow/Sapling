@@ -3,9 +3,9 @@ schema_version: 1.1.0
 date: 2026-04-22
 type: context
 title: "Session Decisions — 2026-04-22"
-tags: ["date/2026-04-22", "context", "topic/session-decisions", "topic/deal-aggregator-phase-2", "topic/brief-skill-architecture", "topic/jeff-stevens-call", "topic/wsn-month-2", "topic/tracker-update", "person/jeff-stevens", "person/megan-lawlor", "person/sarah-de-blasio"]
-people: ["[[entities/jeff-stevens]]", "[[entities/megan-lawlor]]", "[[entities/sarah-de-blasio]]"]
-companies: []
+tags: ["date/2026-04-22", "context", "topic/session-decisions", "topic/deal-aggregator-phase-2", "topic/brief-skill-architecture", "topic/jeff-stevens-call", "topic/wsn-month-2", "topic/tracker-update", "topic/email-triage", "topic/matchmaker-method-analysis", "topic/operator-identity", "topic/superhuman-token-fallback", "person/jeff-stevens", "person/megan-lawlor", "person/sarah-de-blasio", "person/denning-lawyer", "person/mark-wilcox", "person/nikki-higgins", "person/amanda-lo-iacono", "person/filippe-chagas", "company/jet-aviation", "company/standard-pest-control"]
+people: ["[[entities/jeff-stevens]]", "[[entities/megan-lawlor]]", "[[entities/sarah-de-blasio]]", "[[entities/denning-lawyer]]", "[[entities/mark-wilcox]]", "[[entities/nikki-higgins]]", "[[entities/amanda-lo-iacono]]", "[[entities/filippe-chagas]]"]
+companies: ["[[entities/jet-aviation]]", "[[entities/standard-pest-control]]"]
 ---
 
 # Session Decisions — 2026-04-22
@@ -54,9 +54,35 @@ Full-day record covering three threads that shipped before mid-day save (deal-ag
 ### Calibration memory captured
 - **APPROVE:** `feedback_staleness_check_schedule_first.md` saved this morning — before calling any scheduled skill "stale," cross-reference the CLAUDE.md Scheduled Skills table. Last-log-date ≠ last-scheduled-fire. Prevents false alarms on Mon-Wed-Fri cadence skills.
 
-### Afternoon (post-15:30) — quiet
+### Afternoon (post-15:30) — quiet ops window
 - **PASS:** Deal-aggregator afternoon top-up run — 0 new deals, 9 inbound threads scanned, 0 deal-adjacent. 1 E&K press release (closed deal, chemicals, off-thesis). Rejigg / Flippa still login-walled (two-attempt rule satisfied, blocked state verified).
 - **PASS:** Personal French-email translations for Kay's kid's school (EFNY Francophone Kindergarten, Jean-Marc Grambert) — 4 short translations, no business content, no trace-worthy decisions.
+
+### Evening session — Matchmaker Method analysis + email triage
+Kay forwarded two Athena Valentine-style "Matchmaker Method" newsletter emails ("The deal is the variable" + Athena's personal property-management-deal-loss story) and asked for analysis, then pivoted to drafting five email replies.
+
+- **REJECT (by Kay, of Claude's framing):** Claude tried to map Athena's "buyer wasn't ready, lost a winnable deal" structure onto Kay's two walked LOIs (Hangman, Acumen) and proposed a structural "winning hand" gap (post-close operator credibility). Kay corrected: (a) Hangman walked on seller trust = system working, not failure; (b) Acumen seller wanted to keep building = not a closable deal for anyone. Neither is "had everything, still lost."
+- **APPROVE (final framing):** Athena's story is aimed at a tier below G&B. Kay's real constraint is **deal-flow density under a narrow filter**, not buyer readiness. The filter working correctly (two disciplined walks, two years of infrastructure build) is not a loss — it's the system doing its job until the deal that passes arrives. Matchmaker Method April 28 webinar: file as noise, not for Kay.
+- **APPROVE (trace-worthy):** Kay stated *"Plus in my case I am the operator. There is no other."* This collapses the buyer/operator distinction that structures Athena-style coaching content, and materially changes how future "buyer-readiness" coaching/marketing should be analyzed for Kay. Surfaces latent tension with [[memory/project_gb_charter|G&B Charter]]'s "allocator, not operator" post-HoldCo identity — flagged for future calibration, not resolved tonight. Trace: [[traces/2026-04-22-kay-is-operator-not-absent-buyer]].
+
+### Email triage — 5 replies drafted + 4 sent
+
+All drafts went through ≥2 Kay rewrites apiece. Voice rules held: warm nicety open, no em dashes, no fund/PE language, no revenue references, "Very best, Kay" sign-off, brevity over verbosity.
+
+- **APPROVE + SENT:** Reply to [[entities/denning-lawyer|Denning]] (lawyer, responding to Kay's update + offering Kim intro whenever timing works) — short thanks for keeping an eye out, Kim intro acknowledged for later timing. Kay rewrote from Claude's initial verbose draft down to 2 sentences + sign-off ("too verbose").
+- **APPROVE + SENT:** Reply to [[entities/mark-wilcox|Mark Wilcox]] — accepted Friday 11am for MGA platform walkthrough; softly held intros to JoAnne Artesani (Sproutr) + David Gritz (InsurTech NY / MGA Labs) using "fully focused on the acquisition path at the moment / thoughtful on the timing of these intros / show up with something substantive when we connect / revisit down the road" framing. Caught timing error (Mark said "late next week" in his 4/17 Friday email = this week; corrected to Friday 11am today).
+- **APPROVE + SENT:** Reply to [[entities/nikki-higgins|Nikki Higgins]] (Jet Aviation Aircraft Management Sales Director) — confirmed Frieze as a marketing target alongside Art Basel, with Kay's personal sailing / boat-show family color added. Frieze stat verified before use (positioned as "one of the major global art fair circuits alongside Art Basel" rather than definitive #2 — defensible framing, TEFAF peer-equivalent).
+- **APPROVE + SENT:** Reply to [[entities/amanda-lo-iacono|Amanda Lo Iacono]] — accepted the "Women Shaping the Art World" May 12 event, 5-7pm, at Rose Dergan + [[entities/will-cotton|Will Cotton]]'s home and studio, 14 Harrison Street, Tribeca. Evening-event rule softened because cross-sector audience (art/advisory/gallery/auction/finance/law/marketing women) is exact thesis convergence zone + potential river-guide relevance for reactivated Art Storage niche. Trace: [[traces/2026-04-22-evening-event-override-will-cotton-studio]].
+- **DRAFTED (wrong account — incident):** Reply to [[entities/filippe-chagas|Filippe Chagas]] at Standard Pest Control following JJ's Slack update (owner busy, requested Kay email to set up call availability). Draft content approved. Attempted Superhuman bash wrapper create — **G&B OAuth token expired, CLI silently fell back to personal Gmail account (kaycfofana@gmail.com)**. Draft ID `draft00ccd2831989eb1a` is on wrong account. [[memory/feedback_superhuman_token_fallback|feedback_superhuman_token_fallback]] applied correctly (flagged before Kay's eyes landed on wrong inbox). Requires manual cleanup + re-auth before clean recreate on G&B.
+
+### Timing + voice micro-rules
+
+- **APPROVE:** When a sender's email references "late next week," recompute against the **sender's email date**, not today's date. (Caught on Mark Wilcox reply — he emailed 4/17 Friday, so "late next week" = this week, not next.)
+- **APPROVE (worth tracking as pattern if recurs):** Intro-defer language codified via Mark Wilcox reply — *"thoughtful on the timing of these intros / show up with something substantive when we connect / happy to revisit down the road."* Respects contact's time, defers without burning the offer or revealing over-availability. Candidate for future `feedback_intro_defer_language.md` if Kay uses this phrasing ≥3 times.
+
+### Superhuman token fallback — operational flag
+
+- **PASS:** G&B Superhuman OAuth token is expired. CLI silently falls back to Kay's personal Gmail account. [[memory/feedback_superhuman_token_fallback|feedback_superhuman_token_fallback]] correctly caught today's incident before Kay acted on the wrong draft. Kay to run `superhuman auth` when she opens Superhuman next; delete stray draft `draft00ccd2831989eb1a` from personal account.
 
 ## Actions Taken
 
@@ -76,6 +102,11 @@ Full-day record covering three threads that shipped before mid-day save (deal-ag
 - **CREATED:** `memory/feedback_staleness_check_schedule_first.md` + MEMORY.md index entry
 - **CREATED:** `brain/context/continuation-2026-04-22-1.md` (15:30 mid-day save)
 - **CREATED:** `brain/context/deal-aggregator-scan-2026-04-22-afternoon.md` (0-deal re-run)
+- **SENT:** Email reply to Denning (lawyer)
+- **SENT:** Email reply to Mark Wilcox (MGA platform walkthrough accept + intros deferred)
+- **SENT:** Email reply to Nikki Higgins (Jet Aviation / Frieze)
+- **SENT:** Email reply to Amanda Lo Iacono ("Women Shaping the Art World" May 12 accept)
+- **DRAFTED (wrong account):** Standard Pest Control reply to Filippe Chagas — draft on personal Gmail, requires cleanup + re-auth
 
 ## Deferred
 
@@ -86,6 +117,9 @@ Full-day record covering three threads that shipped before mid-day save (deal-ag
 - **River-guide-builder upgrade:** carried from 4/21 — still not started. Flagged as highest-priority next-session agenda item.
 - **Phase 3 Network Matches thin-yield investigation:** carried from 4/20 — still open. Vectors unchanged (keyword tokenization, H-criterion strictness, Attio 21% coverage, Kay's knowledge held outside Attio).
 - **Guillermo WhatsApp follow-up:** draft prepared 4/21, Kay to copy-send. Still Kay-owned.
+- **Superhuman re-auth:** Kay to run `superhuman auth` and delete stray draft `draft00ccd2831989eb1a` from personal Gmail. Trigger: next time Kay opens Superhuman.
+- **Standard Pest Control draft recreation:** blocked on re-auth. Once re-auth'd, Claude recreates cleanly on G&B account.
+- **May 12 "Women Shaping the Art World" event prep:** Claude offered to pull dossiers on the 4 co-hosts (Rose Dergan, Elizabeth Goldberg, Amanda Lo Iacono, Annette Schwaer, Amy Wexler) closer to the date. Trigger: May 8-10 meeting-brief.
 
 ## Open Loops
 

@@ -23,6 +23,8 @@ Own everything from T-7 days before a conference through T+2 days after. This is
 - `deal-evaluation` is triggered if an intermediary pitched a specific deal (use `postconf_intermediary_deal` variant and route to active-deal fast-path)
 
 **Why this matters:** Per `feedback_in_person_conferences_highest_roi`, 1 in-person conference/week is G&B's highest-ROI deal-sourcing channel (validated XPX wk 2 = live aerospace deal pitched). Follow-up within 24 hours is what converts warm conference contact into durable pipeline. Per `feedback_engine_architecture`, Kay's time is for owners and intermediaries; every step of the pre/post process runs without her manual effort except the final Superhuman review and send.
+
+**Seller psychology to encode in messaging:** Per `feedback_seller_short_transition_matters`, founder-led sellers in the $2-5M EBITDA band are allergic to long post-close transition obligations. The buy-box paragraph handles this implicitly via "customized terms" — never mention transition length explicitly in outreach. In first owner calls and LOI defaults, bias toward short (3-6mo) transition unless seller asks for more.
 </objective>
 
 <essential_principles>
@@ -60,6 +62,8 @@ All email templates and the buy-box snippet live in ONE Google Sheet:
 - `README` — usage guide
 
 **Read from the sheet at every run.** Kay edits templates directly in the sheet; the skill must pick up her edits immediately. Never cache or hard-code template content.
+
+**Buy-box paragraph is Kay-authored.** The `buy_box_intermediary` snippet in the Snippets tab was written by Kay (2026-04-23) and uses first-person voice ("I am looking to acquire..."). Do NOT regenerate or "improve" this paragraph without Kay's explicit authorization. It encodes G&B's positioning deliberately, including the "customized terms" phrase that handles seller transition flexibility without quoting the anxiety back at them.
 
 ```bash
 gog sheets get {SHEET_ID} "Templates!A2:F10" --json
@@ -209,6 +213,21 @@ Kay: "Here are the 8 cards from XPX" [sends photo]
 
 Kay reviews each draft in Superhuman, customizes the `{{callback}}` where needed, hits send.
 </quick_start>
+
+<template_review_workflow>
+## Template Review Workflow (Before Bulk Drafting)
+
+Whenever a template changes (new variant added, buy-box paragraph edited, voice rule shifts) OR the skill is running for the first time in a new conference context, follow this workflow BEFORE pushing N drafts to Superhuman:
+
+1. **Create a review Google Doc** in the G&B Master Templates folder (ID `19TxdV5GHHbYq_O8YupQ-gkEH7V00iykx`) named `G&B Post-Conference Email Templates` (or similar purpose-specific name).
+2. **Render each template** with sample/illustrative variables filled in — NOT template string with `{{placeholders}}`. Kay needs to see how the email actually reads.
+3. **No rule preambles in the doc.** Per `feedback_rules_in_skill_not_template`, the review doc shows ONLY templates. Voice rules, validation, workflow — all of that lives in SKILL.md and `references/`. Do NOT put "voice rules baked in:" or "how to use this doc" sections in the review doc.
+4. **Kay reviews.** She can edit language directly in the doc or say APPROVE.
+5. **Sync her edits back** to the authoritative Templates/Snippets tabs of the Sheet.
+6. **Only then** push the N personalized drafts to Superhuman.
+
+This workflow exists because reviewing 1 template is a lower decision cost than rejecting N drafts. Per `feedback_decision_fatigue_minimization`, minimize Kay's decision surface — 1 template approval vs 8 draft rejections is an 8x improvement.
+</template_review_workflow>
 
 <references>
 ## Further Reading

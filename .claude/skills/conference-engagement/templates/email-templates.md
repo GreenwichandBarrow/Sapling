@@ -34,8 +34,10 @@ This markdown is the local reference for the skill. The Google Sheet is what Kay
 ## Snippet: Buy-Box Reference Paragraph (Intermediary)
 
 ```
-For context on what we are looking for: Greenwich & Barrow is a single-family private investment office acquiring founder-led or family-owned businesses in the US, typically $2-5M EBITDA, with a long-term hold orientation. We focus on operationally critical B2B services businesses where the current owner is thinking about succession, legacy, or stepping back. We move quickly, hold indefinitely, and care more about fit with the owner than maximizing multiples, so we are often a good home for sellers who want to pick their buyer.
+For context on what we are looking for: I am looking to acquire a founder-led or family-owned business in the US (NY Metro would be a plus), ~$2-5M EBITDA, with a long-term orientation. Currently looking at operationally critical B2B services where the current owner is thinking about succession. We move quickly, aim to retain existing employees, and are able to partner with a seller on terms in a customized way.
 ```
+
+**Kay-authored version (2026-04-23).** First-person voice. NY Metro preference surfaced. "Customized terms" encodes flexibility on transition length per `feedback_seller_short_transition_matters`.
 
 Used in: `postconf_intermediary`, `postconf_intermediary_deal`, `preconf_intermediary` (optional).
 Update in one place (Snippets tab), cascades to all intermediary templates.

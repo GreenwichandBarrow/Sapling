@@ -275,9 +275,10 @@ When Kay says good morning:
 
    **Brief-decisions pre-flight (mandatory invariant — added 2026-04-21 after Guillermo miss):**
    Before delivering the briefing, enumerate tomorrow's external meetings (Fri scan covers Mon+Tue; Sun scan covers Mon). For each external meeting:
-   1. If already approved/declined in `brain/context/session-decisions-*.md` within the last 3 days → skip.
-   2. Else → the meeting MUST appear as a Decisions-bucket item: **RECOMMEND: Generate brief for {name} ({time} {date})** → YES / NO / DISCUSS.
-   If step 2 is not satisfied, the briefing is malformed — fix before delivering. This replaces the retired `meeting-brief-manager` nightly automation (Apr 12).
+   1. **Confirmation gate (added 2026-04-23):** If the calendar event title starts with `HOLD ` (or contains `HOLD mtg`/`HOLD call`/etc.) AND has zero non-Kay attendees, treat as **unconfirmed** — Kay placed a hold but the counterparty hasn't accepted. **Skip** brief generation. Surface only if Kay needs a soft-nudge decision. The HOLD prefix is Kay's convention for self-placed holds awaiting external confirmation.
+   2. If already approved/declined in `brain/context/session-decisions-*.md` within the last 3 days → skip.
+   3. Else → the meeting MUST appear as a Decisions-bucket item: **RECOMMEND: Generate brief for {name} ({time} {date})** → YES / NO / DISCUSS.
+   If step 3 is not satisfied (and steps 1-2 didn't skip), the briefing is malformed — fix before delivering. This replaces the retired `meeting-brief-manager` nightly automation (Apr 12).
 
 **System Status section rules:**
 - Shows the system's work, not Kay's — scheduled skills, tool health, subscriptions

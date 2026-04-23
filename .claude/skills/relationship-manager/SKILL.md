@@ -52,12 +52,36 @@ Before surfacing ANY contact, check their `next_action` field in Attio:
 
 **Example:** `next_action: "Re-engage when we have an insurance deal for him to review"` → Do NOT surface this person as overdue. The trigger is having a deal, not elapsed time.
 
+### Cadence Field Is Sole Source of Truth (CRITICAL — added 2026-04-23 after Lauren miss)
+
+The `nurture_cadence` field is the **only** source of truth for the threshold to apply. Cadence thresholds:
+
+| Cadence | Threshold |
+|---------|-----------|
+| Weekly | 10 days |
+| Monthly | 5 weeks (35 days) |
+| Quarterly | 14 weeks (98 days) |
+| Occasionally | 7 months (213 days) |
+| Dormant | Never surface |
+
+**Do NOT infer the threshold from the `next_action` text.** If `nurture_cadence = Occasionally` but `next_action = "Maintain quarterly touchpoint"`, apply the **Occasionally** threshold (213 days), not the Quarterly threshold (98 days). The cadence field reflects Kay's most recent decision; next_action text may be stale and is informational only.
+
+If next_action text and cadence field conflict (e.g., text says "quarterly" but cadence is "Occasionally"), flag the contact in the artifact under "Metadata Drift" so Kay can decide which to update — but do NOT surface as overdue based on the text.
+
+**Lauren Della Monica precedent (2026-03-31):** Cadence changed Quarterly → Occasionally. Next_action text said "Maintain quarterly touchpoint." Skill mistakenly surfaced her as 97 days overdue against quarterly threshold for 3 weeks. She is NOT overdue under Occasionally (195/213 days). Bug: skill read text as override. Fix: text is informational, cadence rules.
+
+### Within-Cadence Commitment Drift (added 2026-04-23 after Stanley miss)
+
+Do **NOT** surface a contact who is within their cadence window just because `next_action` references an aged commitment. Stanley Rodos: Quarterly cadence, 37 days since last contact (well within 98-day quarterly threshold), next_action mentions "Follow up on Art Restoration Services opportunity (Mar 17)." The aged commitment text is captured in next_action; surfacing him as a "drifting commitment" is noise. Trust the cadence — Kay knows when she'll see him next.
+
+If Kay has explicit named commitments she wants tracked separately from cadence (e.g., "follow up on X opportunity"), those go in a separate Beads task or Motion task, not as relationship-manager surfacing.
+
 ### Processing
 
 1. Query all Attio People records where `nurture_cadence` is set and not "Dormant"
 2. For each, check `next_action` for trigger language — skip trigger-based contacts
 3. For remaining contacts, determine last interaction date from data sources above
-4. Compare against cadence threshold
+4. Compare against the threshold from the **cadence field only** (ignore next_action text for threshold)
 5. Surface the top 5 overdue contacts (prioritized by: how far overdue, relationship value, recency of last interaction)
 6. For each overdue contact, suggest an action: email, coffee, event invite, or just a check-in
 7. Note in the artifact that Gmail/calendar are the only verified channels — text and phone interactions may not be captured

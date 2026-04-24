@@ -64,5 +64,5 @@ tags:
 - River-guide-builder upgrade — 3rd consecutive deferral
 - Kristin Wihera implications discussion — 5-7 G&B strategy items deferred
 - Axial buyer registration form
-- JJ attendance / logging investigation (zero dials for the week)
+- JJ pace investigation — ~49 dials this week (17 Mon, 23 Tue, 0 Wed/Thu, 9 Fri-today) vs 36–37/day historical baseline. Wed/Thu gap aligns with 4/23 no-show. Not zero, but pace is down ~40% from baseline.
 - DealsX launch countdown (5/6 = 12 days out)

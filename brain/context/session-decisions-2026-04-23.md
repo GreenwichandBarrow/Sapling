@@ -12,6 +12,8 @@ companies: ["[[entities/axial]]", "[[entities/saunders-street-capital]]", "[[ent
 
 Heavy day. Morning brief delivered with several false-positives Kay corrected; root-cause analysis surfaced a systemic close-out-execution gap (logging without mutating). JJ pace analysis ran wrong twice (tab-grouping then Col-U-as-last-touch) before Kay's "re-dial overwrites Col U" insight unlocked the schema fix. Migrated Premium Pest sheet to 6-col Date+Status pairs (39a) for 1st and 2nd attempts. XPX panel + Kristin Wihera (WSN traditional-search post-mortem) ingested but vault writes blocked by schema validator (entities missing). 2 calibration memories created. JJ Slack sent.
 
+**Evening session addendum (5pm-overnight 4/23→4/24):** Built new `conference-engagement` skill end-to-end. Kay surfaced 8 XPX business cards (not 3 as deferred in the afternoon — scope expanded when cards were reviewed together). Skill architecture includes pre-conference and post-conference modes, a 3-audience taxonomy (Intermediary / Owner / Peer — never 4 buckets), and a Google Sheet template store synced to a human-review Google Doc. Kay authored a new buy-box paragraph replacing Claude's draft (first-person voice, NY Metro preference, $2-5M EBITDA, "customized terms" encoding short-transition flexibility per seller psychology insight from XPX). Pushed 8 personalized drafts to Superhuman via Bash wrapper (not MCP). 7 new `feedback_*` memories created. Matthew Luczyk (Peapack Private) confirmed as aerospace/defense deal pitcher — deal-variant template used.
+
 ## Decisions
 
 ### Morning briefing — false positives Kay corrected
@@ -51,7 +53,23 @@ Heavy day. Morning brief delivered with several false-positives Kay corrected; r
 - **DEFERRED:** Implications discussion for next session — Kristin's call has bigger G&B implications than XPX (email-decay pattern, solo-search risk, 35% IRR mismatch, "investors not therapists" doctrine). Did not get to discuss before /goodnight.
 
 ### XPX business-card follow-ups
-- **DEFERRED:** Kay collected 8 business cards, wants to follow up with 3. One is the Axial business development manager (panel speaker). Kay to paste card details in chat next session; I'll draft 3 emails in parallel with the Axial guy positioned as the warmer entry to register + ask the qualification questions naturally (vs. cold form).
+- **DEFERRED (superseded evening):** Originally planned for 3 cards. Evening session expanded scope to all 8. See "Evening: XPX 8-Card Post-Conference Follow-up" below.
+
+### Evening: conference-engagement skill build
+- **APPROVE:** Build new `conference-engagement` skill — pre-conference (T-7 to T-1) + post-conference (T+0 to T+2) modes. Companion to `conference-discovery` which handles discovery/registration/attendee-list ingestion.
+- **APPROVE:** 3-audience taxonomy only. Intermediary / Owner / Peer. "Advisor" collapses into Intermediary (advisors advise owners = intermediaries). Never 4 buckets. Saved as `feedback_audience_taxonomy_conferences`.
+- **APPROVE:** Four-role G&B engine architecture formalized. Kay = owners + intermediaries only (100% of working hours). DealsX = email+LinkedIn. JJ = cold calls. Claude = everything else. Saved as `feedback_engine_architecture`. Howie covers scheduling; deal-pipeline-status view deferred.
+- **APPROVE:** Business cards are gold — no Apollo enrichment, capture every printed field verbatim (name, title, company, address, all phones, fax, email, LinkedIn, website). Apollo stays for cold-list-building only. Saved as `feedback_business_cards_no_enrichment` (updated 4/23 to explicitly cover all-fields capture).
+- **APPROVE:** Skill rules live in `SKILL.md` and `references/`, NOT in template documents. Template docs show ONLY templates — no voice-rule preambles, no how-to-use sections, no validation gate enumerations. Kay flagged this when reviewing the first draft review doc (which had a "Voice rules baked in:" preamble); fixed by stripping and recreating. Saved as `feedback_rules_in_skill_not_template`.
+- **APPROVE:** For any skill drafting N>3 personalized outputs, show Kay the rendered template(s) in a Google Doc FIRST — only push drafts after approval. 1-template review is 8x lower decision cost than N-draft rejection (per `feedback_decision_fatigue_minimization`). Saved as `feedback_template_approval_before_bulk_drafts`. Encoded as `<template_review_workflow>` section in `conference-engagement/SKILL.md`.
+- **APPROVE:** 1 in-person conference/week cadence is G&B's highest-ROI sourcing channel. 2 conferences → 1 live deal pitched (Matthew Luczyk aerospace/defense). Saved as `feedback_in_person_conferences_highest_roi` — defend the cadence against calendar pressure.
+
+### Evening: XPX 8-Card Post-Conference Follow-up
+- **APPROVE:** All 8 XPX cards processed via new `conference-engagement` skill. Classification: 7 Intermediaries (Ian Stuart CFO Consulting Partners / Charles Gerber Triumph First LLC / Becky Creavin Peapack Private / Matthew Luczyk Peapack Private / James Emden Helmsley Spear / Pasang Jamling Jamling Law Firm / Jim Vigna Live Oak Bank), 1 Peer (Andrew Lowis, Axial — same Axial panel speaker from earlier deferral).
+- **APPROVE:** Matthew Luczyk = the "private wealth management corporate advisor" who pitched the NY Metro aerospace/defense deal. Title "SVP, Head of Corporate Advisory" at "Peapack Private" is an exact match. Deal-variant template used for his draft (explicit aerospace/defense reference + NDA-ready + move-quickly framing).
+- **APPROVE:** New Kay-authored buy-box paragraph replaces Claude's third-person version. First-person voice ("I am looking..."), surfaces NY Metro as "a plus" (soft signal, not hard filter), adds employee-retention line, encodes short-transition flexibility via "customized terms." Encoded across Sheet Snippets tab, review doc, and local skill markdown.
+  - Full text: "I am looking to acquire a founder-led or family-owned business in the US (NY Metro would be a plus), ~$2-5M EBITDA, with a long-term orientation. Currently looking at operationally critical B2B services where the current owner is thinking about succession. We move quickly, aim to retain existing employees, and are able to partner with a seller on terms in a customized way."
+- **APPROVE:** New seller-psychology insight: founder-led sellers in the $2-5M EBITDA band are allergic to long post-close transition obligations. Never quote their anxiety back at them; encode flexibility implicitly via "customized terms." LOI defaults to 3-6mo transition unless seller asks for more. Earn-outs tied to long tenure are red flags for G&B-fit sellers. Saved as `feedback_seller_short_transition_matters`.
 
 ## Actions Taken
 
@@ -66,10 +84,30 @@ Heavy day. Morning brief delivered with several false-positives Kay corrected; r
 - **SENT:** Slack to #operations-sva webhook (SLACK_WEBHOOK_SVA) — JJ schema-change notification, HTTP 200.
 - **CAPTURED:** XPX NYC panel Granola transcript (id `c1db24cb-d08e-42b6-984d-69ec6f626888`) and Kristin Wihera Granola transcript (id `6cf9a97d-4e00-49c4-9d2a-a8561f4495a4`). **Vault writes BLOCKED** by schema validator — likely missing entity files for Kristin Wihera, Axial, Wiggin and Dana, Saunders Street Capital. Deferred for next session.
 
+### Evening addendum (post-5pm)
+- **CREATED:** `.claude/skills/conference-engagement/SKILL.md` — main file, 2 modes, 3-audience taxonomy, template-review workflow
+- **CREATED:** `.claude/skills/conference-engagement/references/voice-rules.md`
+- **CREATED:** `.claude/skills/conference-engagement/references/audience-classification.md`
+- **CREATED:** `.claude/skills/conference-engagement/references/templates-sheet.md`
+- **CREATED:** `.claude/skills/conference-engagement/templates/email-templates.md`
+- **CREATED:** Google Sheet `G&B Conference Engagement Templates` (ID `1Y4XcQJDe28RB7k_Cw5NZNjKRyX4d1qEczadXdQrjpaQ`) in G&B Master Templates folder. Tabs: Templates (6 rows), Snippets (buy-box), README.
+- **CREATED:** Google Doc `G&B Post-Conference Email Templates` (ID `1zDR_mqqCYTzleslSpFS8CWpT_bXmxzX4pyOzvu5bTKk`) — clean 3-template review, no rule clutter.
+- **DELETED:** Earlier iteration of Doc (with rule preambles) moved to Drive trash (reversible).
+- **DRAFTED (Superhuman via Bash wrapper):** 8 XPX post-conference emails — Ian Stuart / Charles Gerber / Becky Creavin / Matthew Luczyk (deal variant, aerospace+defense) / James Emden / Pasang Jamling / Jim Vigna / Andrew Lowis. All use the Kay-authored buy-box (intermediaries + deal variant only). Callbacks left as `[Specific callback to something they said.]` for Kay to customize in Superhuman. Body references "XPX yesterday" (date rolled to 4/24 during draft push). All 8 returned OK from wrapper.
+- **CREATED (memories):**
+  - `feedback_in_person_conferences_highest_roi.md` — 1/wk cadence is top-ROI channel
+  - `feedback_engine_architecture.md` — 4-role engine model
+  - `feedback_audience_taxonomy_conferences.md` — 3 buckets, never 4
+  - `feedback_business_cards_no_enrichment.md` — cards = gold, no Apollo
+  - `feedback_rules_in_skill_not_template.md` — rules in SKILL.md only
+  - `feedback_seller_short_transition_matters.md` — short transitions matter
+  - `feedback_template_approval_before_bulk_drafts.md` — template > drafts
+  - All MEMORY.md index entries added.
+
 ## Deferred
 
 - **Granola call notes vault writes** (XPX + Kristin Wihera) — blocked on entity stubs. Trigger: create entity files for `kristin-wihera`, `axial`, `wiggin-and-dana`, `saunders-street-capital` then retry write.
-- **3 XPX business-card follow-up emails** — Kay to paste card details (name, company, title, email, conversation context); I'll draft in parallel. Send tomorrow morning (within 24-48h per `feedback_followup_timing`).
+- **~~3 XPX business-card follow-up emails~~ — SHIPPED in evening session. 8 drafts (not 3) now in Superhuman awaiting Kay's callback customization and send.**
 - **Axial buyer registration** — Kay to fill `https://www.axial.net/request-information?utm_campaign=navbar-join` form. Use family-HoldCo framing. When Axial rep replies with pricing, loop CFO before commit. Once registered, update deal-aggregator Source Scorecard `pending` → `active`.
 - **Kristin Wihera implications discussion** — biggest takeaways (email decay industry-wide, solo-search risk, 35% IRR mismatch, investor-as-capital-not-therapist) deferred to next session.
 - **River-guide-builder upgrade** — carried 3 sessions in a row. Highest-priority next-session agenda item.
@@ -81,11 +119,15 @@ Heavy day. Morning brief delivered with several false-positives Kay corrected; r
 ## Open Loops
 
 - 4 entity files to create before vault writes can land for today's calls
-- 3 XPX follow-up email drafts pending Kay's card data
+- ~~3 XPX follow-up email drafts pending Kay's card data~~ — CLOSED. 8 drafts pushed to Superhuman in evening session.
 - Axial registration form pending Kay's 5-min window
-- Superhuman re-auth still required (G&B token expired since 4/22)
-- River-guide-builder upgrade — third consecutive deferral, escalating concern
+- Superhuman re-auth (MCP) — Bash wrapper confirmed working for drafts; MCP path still expired per 4/22. Separate auth mechanisms.
+- River-guide-builder upgrade — third consecutive deferral, escalating concern. Kay explicitly committed to tomorrow (4/24).
 - Kristin Wihera's call has 5-7 G&B-strategy implications worth discussing — not yet processed
+- **NEW — James Emden mobile phone ambiguous:** Card prints `M 917.907.903.8873` (13 digits). Best guesses: `917.907.8873` or `917.903.8873`. Kay to confirm from physical card before Attio record finalizes.
+- **NEW — Kay customizes 8 Superhuman draft callbacks and sends.** Window: 24-48h from 4/23 conference = through end of 4/25.
+- **NEW — Matthew Luczyk aerospace/defense response watch.** If Matthew replies with deal details / CIM, `deal-evaluation` skill picks up (NDA → CIM → scorecard). Per earlier screen: founder-led, widow-owned, absentee-run, NY Metro, legacy-over-multiples — all positive signals. ITAR/CMMC + customer concentration remain diligence watch-items.
+- **NEW — Attio entries for 8 new contacts not yet created.** `relationship-manager` should create on next morning run (cadence setup, source=conference/xpx-2026-04-23).
 
 ## System Status
 
@@ -95,6 +137,6 @@ Heavy day. Morning brief delivered with several false-positives Kay corrected; r
 - **jj-operations:** ⚠ JJ no-show today; schema migration applied during day-window with no shift conflict. Sunday 4/19 prep run gap noted earlier remains uninvestigated.
 - **target-discovery:** No Active-Outreach niche needed refill.
 - **outreach-manager:** No new sends pending.
-- **Superhuman:** ⚠ G&B OAuth still expired; drafts suppressed per `feedback_superhuman_down_suppress_drafts`.
-- **CLAUDE.md + skills modified today:** CLAUDE.md, relationship-manager/SKILL.md, jj-operations/SKILL.md.
-- **Memories added today:** feedback_close_out_executes_mutation.md, feedback_high_multiples_avoid_context.md.
+- **Superhuman MCP:** ⚠ G&B OAuth expired per 4/22 (separate from Bash wrapper). Bash wrapper `~/.local/bin/superhuman-draft.sh` confirmed working — pushed 8 XPX drafts successfully in evening session. Use wrapper-only path for now per CLAUDE.md; MCP path still needs re-auth.
+- **CLAUDE.md + skills modified today:** CLAUDE.md, relationship-manager/SKILL.md, jj-operations/SKILL.md, **NEW: conference-engagement/SKILL.md + 4 reference files + 1 template file**.
+- **Memories added today:** feedback_close_out_executes_mutation.md, feedback_high_multiples_avoid_context.md, **plus 7 evening additions: feedback_in_person_conferences_highest_roi, feedback_engine_architecture, feedback_audience_taxonomy_conferences, feedback_business_cards_no_enrichment, feedback_rules_in_skill_not_template, feedback_seller_short_transition_matters, feedback_template_approval_before_bulk_drafts**.

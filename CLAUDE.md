@@ -259,9 +259,9 @@ When Kay says good morning:
    - calibration-workflow (decision traces → skill improvements)
 7b. **Friday afternoon — meta-calibration hour** (new 2026-04-24). Not a batch-fix slot (inline rule-fixes happen as they're caught per `feedback_fix_skills_inline_by_default`). This is the systemic review: (a) scan the week's traces for rules Kay corrected 2+ times → graduate to stop hook, (b) scan memory/ for stale or duplicated feedback files → consolidate/delete, (c) scan skill SKILL.md files for outdated column references or rules superseded by newer memories → refresh, (d) review the `brain/context/session-decisions-*` files for open loops that need promotion to memories. Output: 1 Slack summary to `#operations` listing what graduated to hooks, what got deleted, what skill docs were refreshed. Target: 30-60 min, not open-ended.
 8. Read the results and judge what needs to happen
-9. Present the briefing in 4 action-keyed buckets (ascending numbering across all buckets — never reset):
+9. Present the briefing in 4 action-keyed buckets (ascending numbering across all buckets — never reset). **NOTE 2026-04-24: planned migration to Decisions-only format is PENDING the Command Center dashboard going live; do not switch format until the dashboard holds the displaced context per `feedback_build_new_before_sunset_old`.**
    - **Today / ASAP** — must ship today: active-deal fast-path, payment due, JJ unblocks, time-sensitive sends
-   - **Decisions** — needs Kay's judgment. Each item uses Obama framing: **RECOMMEND: [option]** + one-sentence reason → **YES / NO / DISCUSS**. Aim ≤5.
+   - **Decisions** — needs Kay's judgment. Each item uses Obama framing: **RECOMMEND: [option]** + one-sentence reason → **YES / NO / LET'S DISCUSS**. Aim ≤5.
    - **This Week** — must do this week, not today
    - **Dropped Balls** — slipped follow-ups, overdue cadences, warm-intro replies that need recovery (this is the highest-leverage bucket — slipped follow-ups cost deals)
    
@@ -278,10 +278,10 @@ When Kay says good morning:
    Before delivering the briefing, enumerate tomorrow's external meetings (Fri scan covers Mon+Tue; Sun scan covers Mon). For each external meeting:
    1. **Confirmation gate (added 2026-04-23):** If the calendar event title starts with `HOLD ` (or contains `HOLD mtg`/`HOLD call`/etc.) AND has zero non-Kay attendees, treat as **unconfirmed** — Kay placed a hold but the counterparty hasn't accepted. **Skip** brief generation. Surface only if Kay needs a soft-nudge decision. The HOLD prefix is Kay's convention for self-placed holds awaiting external confirmation.
    2. If already approved/declined in `brain/context/session-decisions-*.md` within the last 3 days → skip.
-   3. Else → the meeting MUST appear as a Decisions-bucket item: **RECOMMEND: Generate brief for {name} ({time} {date})** → YES / NO / DISCUSS.
+   3. Else → the meeting MUST appear as a Decisions-bucket item: **RECOMMEND: Generate brief for {name} ({time} {date})** → YES / NO / LET'S DISCUSS.
    If step 3 is not satisfied (and steps 1-2 didn't skip), the briefing is malformed — fix before delivering. This replaces the retired `meeting-brief-manager` nightly automation (Apr 12).
 
-**System Status section rules:**
+**System Status section rules** (active until dashboard replaces it):
 - Shows the system's work, not Kay's — scheduled skills, tool health, subscriptions
 - Every item is 1 line max: `Skill name — status phrase`
 - Daily items (every morning): email-intelligence, deal-aggregator, jj-operations, relationship-manager, target-discovery, outreach-manager
@@ -290,6 +290,8 @@ When Kay says good morning:
   - **Wednesday:** + niche-intelligence (sprint status, new niches this week)
   - **Friday:** + weekly-tracker, health-monitor, calibration-workflow (ran or pending)
 - Only expand beyond 1 line if something is broken, blocked, or needs Kay's decision
+
+**Dashboard migration plan:** When the Command Center dashboard goes live, System Status content moves to the dashboard's System Map + Domain Health panes, and the briefing shrinks to Decisions-only. Until then, System Status stays in the briefing.
 10. Based on signals, invoke downstream skills:
    - Niche status changed to Active-Outreach → target-discovery (full 4-6 targets/day) + list-builder (Apollo search) + outreach-manager (email drafts)
    - Monday → conference pipeline review (conference-discovery owns decisions)

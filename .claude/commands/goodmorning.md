@@ -1,5 +1,5 @@
 ---
-description: Morning orchestration — email-intel, relationship-manager, pipeline-manager, target-discovery, 4-bucket briefing
+description: Morning orchestration — email-intel, relationship-manager, pipeline-manager, target-discovery, 4-bucket briefing (Decisions-only format planned post-dashboard-launch per `feedback_build_new_before_sunset_old`)
 ---
 
 # /goodmorning
@@ -51,10 +51,12 @@ JJ-operations runs independently via launchd (8am) and posts to Slack at 10am. D
 
 ### Step 7 — Judge + present briefing (4-bucket, action-keyed)
 
+**NOTE 2026-04-24:** Decisions-only format is planned but PENDING the Command Center dashboard going live. Until the dashboard holds the displaced Today/This Week/Dropped Balls/System Status content, continue using the 4-bucket format below per `feedback_build_new_before_sunset_old`.
+
 Read all outputs. Apply chief-of-staff judgment. Present the briefing in 4 action-keyed buckets per `feedback_briefing_three_buckets` and `feedback_decision_fatigue_minimization`. Numbering ascends across all buckets — never resets to 1.
 
 1. **Today / ASAP** — must ship today: active-deal fast-path, payment due, JJ unblocks, time-sensitive sends
-2. **Decisions** — needs Kay's judgment. Each item uses Obama framing: **RECOMMEND: [option]** + one-sentence reason → **YES / NO / DISCUSS**. Aim ≤5 items.
+2. **Decisions** — needs Kay's judgment. Each item uses Obama framing: **RECOMMEND: [option]** + one-sentence reason → **YES / NO / LET'S DISCUSS**. Aim ≤5 items.
 3. **This Week** — must do this week, not today
 4. **Dropped Balls** — slipped follow-ups, overdue cadences, warm-intro replies that need recovery (highest-leverage bucket)
 
@@ -82,7 +84,7 @@ The pipeline-manager skill enforces these rules via stop hooks before output. If
 - **Numbering is additive across the conversation**, never reset. Kay replies by number.
 - **Suppress completed items.** Only surface open/pending. Never report back Kay's own work.
 - **Don't announce that pipeline-manager or email-intelligence "hasn't run yet"** — just run them silently per `feedback_pipeline_manager_no_alarm`.
-- **If a scheduled skill failed overnight**, surface it in System Status with 1 line. Don't escalate unless blocking.
+- **If a scheduled skill failed overnight**, surface it in System Status with 1 line. Don't escalate unless blocking. (Post-dashboard-launch: this routes to the dashboard's System Map pane instead.)
 - **Active deals (CIM, NDA, LOI, financials) get same-day treatment**, not next-morning briefing delay per `feedback_active_deal_urgency`.
 - **Every briefing item has an explicit question or action.** No ambiguous items per `feedback_morning_briefing_format`.
 

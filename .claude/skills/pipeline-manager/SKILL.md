@@ -119,67 +119,52 @@ The morning briefing in conversation must be **brief** — a quick reminder of w
 
 **Rule of thumb:** If Kay needs to read more than a sentence of context to act on it, send it to Slack with a link. The briefing is a checklist, not a report.
 
-### Briefing Format (4-bucket, action-keyed)
+### Briefing Format (Decisions-ONLY, revised 2026-04-24)
 
-After gathering all data from the 5 sections above, RE-ORGANIZE the output into 4 action-keyed buckets. This is what Kay sees every morning. Same buckets, same order, every day. Cluster by entity (if 2+ items reference the same person/deal/niche, they live under ONE entity heading inside the appropriate bucket — never scattered).
+After gathering all data from the 5 sections above, RE-ORGANIZE the output into a **Decisions-only list**. Context and status live on the Command Center dashboard; the briefing is Kay's judgment queue. Same shape every morning.
 
-**Numbering is ascending across all buckets** (never reset to 1 per bucket). Kay replies by number.
+**Numbering is ascending** across the full conversation — never reset to 1. Kay replies by number.
 
-**Every item is labeled with C-suite ownership** in italics: *CFO / CIO / CMO / CPO / GC* per `feedback_c_suite_naming`.
+**Every item is labeled with C-suite ownership** in italics: *CFO / CIO / CMO / CPO / GC / COO* per `feedback_c_suite_naming`.
 
-**Decisions bucket uses Obama framing:** `RECOMMEND: [option]` + one-sentence reason → `YES / NO / DISCUSS` so most resolve in one keystroke. Aim ≤5 Decisions per briefing per `feedback_decision_fatigue_minimization`.
+**Every item uses Obama framing:** `RECOMMEND: [option]` + one-sentence reason → `YES / NO / LET'S DISCUSS` so most resolve in one keystroke. Aim ≤5 items. Never more than 7. Bundle aggressively.
 
 ```
-**Good morning. {Day} {date} — {one-line state of the world}.**
+**Good morning. {Day} {date}.** Dashboard: http://localhost:8501
 
-## Today / ASAP
+## Decisions ({n})
 
-**1. {Entity / action title}** — *{C-suite}*
-- {bullet of context if needed}
-- **{Single explicit ask}**
-
-**2. {Entity / action title}** — *{C-suite}*. {Inline context if short}. **{Approve / send / ship / etc.?}**
-
-## Decisions
-
-**3. {Decision title}** — *{C-suite}*. {1-line situation}.
+**1. {Entity / decision title}** — *{C-suite}*. {1-line situation}.
 RECOMMEND: **{recommended option}** — {one-sentence reason}.
-**YES / NO ({alt option}) / DISCUSS**
+**YES / NO ({alt option}) / LET'S DISCUSS**
 
-**4. {Decision title}** — *{C-suite}*. {1-line situation}.
+**2. {Decision title}** — *{C-suite}*. {1-line situation}.
 RECOMMEND: **{recommended option}** — {one-sentence reason}.
-**YES / NO / DISCUSS**
+**YES / NO / LET'S DISCUSS**
 
-## This Week
-
-**5. {Entity / item}** — *{C-suite}*. {Why this week, deadline}. **{Question or action}?**
-
-**6. {Entity / item}** — *{C-suite}*. {Context}. **{Question or action}?**
-
-## Dropped Balls
-
-**7. {Entity / slipped follow-up}** — *{C-suite}*. {What slipped, when, owner}. **{Recovery action}?**
-
-(or: "None today." with optional 1-line tracking note for items in someone else's court.)
+... (up to 5, occasionally 7 if unavoidable)
 
 ---
-
-**System Status:** {1 line per scheduled skill, comma-separated when clean}. Expand only if broken/blocked. {1 line on what fires next.}
 
 Reply by number.
 ```
 
-**Bucket definitions:**
-- **Today / ASAP** — must ship today: active-deal fast-path, payment due, JJ unblocks, time-sensitive sends. Not "would be nice today."
-- **Decisions** — needs Kay's judgment between alternatives. Each item uses RECOMMEND + YES/NO/DISCUSS. Cap ≤5.
-- **This Week** — must do this week, not today. Calendar-bound but not same-day urgent.
-- **Dropped Balls** — slipped follow-ups, overdue cadences, warm-intro replies that need recovery. **This is the highest-leverage bucket — slipped follow-ups cost deals.** If empty, say so explicitly with a tracking-only note for items in another party's court.
+**Shape rules:**
+- Decisions ONLY. No Today/ASAP, This Week, Dropped Balls, System Status, or active-deals trailer — those live on the Command Center dashboard.
+- Aim ≤5 items, cap 7. Fits on one screen without scrolling.
+- Each item is a single decision Kay needs to make, with a default path pre-decided by Claude.
+- Bundle aggressively: 4 metadata cleanups = 1 "Bundle-Dormant N contacts" item, not 4 separate ones.
+
+**What gets promoted into the briefing (vs left on the dashboard):**
+- Items that need Kay's judgment between alternatives → briefing (Obama-framed)
+- Items that need Kay's hands (she must do the action; no bot can do it) → briefing (RECOMMEND a specific action)
+- Everything else → dashboard (live activity, pipeline views, dropped-balls filter, system health)
 
 **Briefing hygiene (CRITICAL):**
-- Only surface items that need action or decision. If something is done, resolved, or loop-closed — omit it entirely per `feedback_briefing_no_done_items`.
+- Only surface items that need Kay's judgment or her hands. If a bot can do it, just do it — don't surface.
 - Never report back things Kay did herself — she already knows.
-- Noise (true low-value items) gets archived silently, never surfaced as a "noise" section.
-- Every item has an explicit question or action per `feedback_morning_briefing_format`. No ambiguous items.
+- Noise (true low-value items) gets archived silently, never surfaced.
+- Every item has RECOMMEND + YES / NO / LET'S DISCUSS. No ambiguous items per `feedback_morning_briefing_format`.
 
 **Default to recommending, not asking** per `feedback_decision_fatigue_minimization`. Pre-decide whatever is defensible from existing patterns. Bundle related questions into a single bundled approval. When Kay makes the same call twice, codify it as a memory or skill default so she never sees it again.
 
@@ -343,7 +328,7 @@ Before sending the briefing to Kay, validate against the 4-bucket spec:
 
 - [ ] **4 buckets present in correct order** — `## Today / ASAP`, `## Decisions`, `## This Week`, `## Dropped Balls`. Empty buckets must say "None today." not be omitted.
 - [ ] **Decisions cap ≤5 items.** If >5, defer the lowest-stakes ones to **This Week** and pre-decide what's defensible. Decision overflow is a calibration failure.
-- [ ] **Every Decisions item uses Obama framing** — `RECOMMEND: [option]` + one-sentence reason + `YES / NO / DISCUSS` line. No bare questions in Decisions bucket.
+- [ ] **Every Decisions item uses Obama framing** — `RECOMMEND: [option]` + one-sentence reason + `YES / NO / LET'S DISCUSS` line. No bare questions in Decisions bucket.
 - [ ] **Every item has C-suite ownership label** in italics (*CFO/CIO/CMO/CPO/GC*). No exceptions per `feedback_c_suite_naming`.
 - [ ] **Numbering ascends across all buckets** — never resets to 1. If items are 1,2,3 in Today, Decisions starts at 4. Per `feedback_ascending_numbering` and `feedback_additive_numbering`.
 - [ ] **Entity clustering** — if 2+ items reference the same person/deal/niche, they live under ONE entity heading inside the appropriate bucket. Scan for duplicates before output; merge.
@@ -1181,7 +1166,7 @@ Pipeline updates complete:
 2. Filter to external meetings only (skip internal/team calls — Camilla, JJ, etc.).
 3. For each external meeting: check session-decisions files from the prior 3 days. If Kay has already approved or declined a brief for this meeting, SKIP — do not re-ask.
 4. For each remaining external meeting, surface as a Decisions-bucket item using Obama framing:
-   - **RECOMMEND: Generate brief for {name} ({time} {date})** — [one-sentence cadence/context reason] → **YES / NO / DISCUSS**
+   - **RECOMMEND: Generate brief for {name} ({time} {date})** — [one-sentence cadence/context reason] → **YES / NO / LET'S DISCUSS**
 5. Kay answers YES → invoke the appropriate brief command per the routing table below. Kay answers NO → skip, no artifact.
 
 **Briefing-assembly invariant:** If any external meeting exists in the scan window and is neither already-decided nor surfaced in Decisions, the briefing is malformed — fix before delivering.

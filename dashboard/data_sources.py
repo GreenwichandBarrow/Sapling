@@ -10,6 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import date, timedelta
 from pathlib import Path
+import json
 import re
 from typing import Iterable
 
@@ -18,6 +19,8 @@ import yaml
 
 VAULT_ROOT = Path(__file__).resolve().parent.parent / "brain"
 DEAL_AGG_DIR = VAULT_ROOT / "context"
+PIPELINE_SNAPSHOT_PATH = VAULT_ROOT / "context" / "attio-pipeline-snapshot.json"
+PIPELINE_ATTIO_URL_BASE = "https://app.attio.com/greenwich-barrow/company"
 
 
 # -----------------------------------------------------------------------------
@@ -344,3 +347,73 @@ def flatten_rows(scans: Iterable[DealAggregatorScan]) -> list[DealRow]:
     for s in scans:
         rows.extend(s.rows)
     return rows
+
+
+# -----------------------------------------------------------------------------
+# Deal Pipeline (Attio snapshot)
+# -----------------------------------------------------------------------------
+# Streamlit can't call the `mcp__attio__*` tools directly — those live in the
+# Claude harness, not the Python process. The agent writes a snapshot file
+# via MCP; this module reads the snapshot. The snapshot file is the contract
+# between agent (writer) and page (reader).
+
+
+@dataclass
+class PipelineDeal:
+    record_id: str
+    company: str
+    stage: str
+    stage_since: str  # ISO8601
+    location: str | None = None
+    employee_range: str | None = None
+    arr_bucket: str | None = None
+    last_interaction: str | None = None
+    category: str | None = None
+
+    @property
+    def attio_url(self) -> str:
+        return f"{PIPELINE_ATTIO_URL_BASE}/{self.record_id}"
+
+
+@dataclass
+class ClosedDealStub:
+    record_id: str
+    company: str
+    stage_since: str
+    location: str | None = None
+
+    @property
+    def attio_url(self) -> str:
+        return f"{PIPELINE_ATTIO_URL_BASE}/{self.record_id}"
+
+
+@dataclass
+class PipelineSnapshot:
+    fetched_at: str
+    list_id: str
+    list_name: str
+    stages: list[str]
+    terminal_stage: str
+    deals: list[PipelineDeal]
+    closed_count: int
+    closed_recent: list[ClosedDealStub]
+
+
+def load_pipeline() -> PipelineSnapshot | None:
+    if not PIPELINE_SNAPSHOT_PATH.exists():
+        return None
+    data = json.loads(PIPELINE_SNAPSHOT_PATH.read_text())
+    stage_defs = data.get("stages", [])
+    active_stages = [s["title"] for s in stage_defs if not s.get("is_terminal")]
+    terminal_stages = [s["title"] for s in stage_defs if s.get("is_terminal")]
+    terminal = terminal_stages[0] if terminal_stages else "Closed / Not Proceeding"
+    return PipelineSnapshot(
+        fetched_at=data["fetched_at"],
+        list_id=data["list_id"],
+        list_name=data["list_name"],
+        stages=active_stages,
+        terminal_stage=terminal,
+        deals=[PipelineDeal(**d) for d in data.get("deals", [])],
+        closed_count=int(data.get("closed_count") or 0),
+        closed_recent=[ClosedDealStub(**c) for c in data.get("closed_recent", [])],
+    )

@@ -31,7 +31,7 @@ PALETTE = {
 NAV_ITEMS = [
     ("Dashboard", "dashboard", True),
     ("Deal Aggregator", "deal-aggregator", True),
-    ("Deal Pipeline", "deal-pipeline", False),
+    ("Deal Pipeline", "deal-pipeline", True),
     ("C-Suite & Skills", "c-suite-skills", False),
     ("Infrastructure", "infrastructure", False),
     ("M&A Analytics", "ma-analytics", False),
@@ -512,6 +512,147 @@ GLOBAL_CSS = f"""
     text-align: center;
     color: var(--text-dim);
     font-size: 13px;
+  }}
+
+  /* -------- KANBAN BOARD -------- */
+  /* `gb-kanban-wrap` scrolls horizontally on narrow viewports so 6 columns
+     never squash below a usable card width. */
+  .gb-kanban-wrap {{
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+  }}
+  .gb-kanban {{
+    display: grid;
+    grid-template-columns: repeat(6, minmax(200px, 1fr));
+    gap: 12px;
+    min-width: 1240px;
+  }}
+  .gb-kanban-col {{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+  }}
+  .gb-kanban-col-header {{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 4px 6px 10px;
+    border-bottom: 1px solid var(--border-soft);
+    margin-bottom: 10px;
+  }}
+  .gb-kanban-col-name {{
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+  }}
+  .gb-kanban-col-count {{
+    font-size: 12px;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+  }}
+  .gb-kanban-cards {{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }}
+  .gb-kanban-card {{
+    display: block;
+    background: var(--bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    padding: 12px;
+    text-decoration: none !important;
+    color: inherit !important;
+    transition: all 0.15s;
+  }}
+  .gb-kanban-card:hover {{
+    background: var(--panel-hover);
+    border-color: var(--border-bright);
+    transform: translateY(-1px);
+  }}
+  .gb-kanban-card .company {{
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }}
+  .gb-kanban-card .meta {{
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }}
+  .gb-kanban-card .meta .sep {{
+    color: var(--text-dim);
+    margin: 0 5px;
+  }}
+  .gb-kanban-card .footer {{
+    margin-top: 8px;
+    font-size: 10.5px;
+    color: var(--text-dim);
+    letter-spacing: 0.02em;
+  }}
+  .gb-kanban-col-empty {{
+    color: var(--text-dim);
+    font-size: 11.5px;
+    padding: 6px 4px;
+    font-style: italic;
+  }}
+
+  /* -------- CLOSED STRIP -------- */
+  .gb-closed-strip {{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 4px;
+  }}
+  .gb-closed-header {{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }}
+  .gb-closed-title {{
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+  }}
+  .gb-closed-total {{
+    font-size: 12px;
+    color: var(--text-dim);
+  }}
+  .gb-closed-total strong {{
+    color: var(--text-muted);
+    font-weight: 500;
+  }}
+  .gb-closed-list {{
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }}
+  .gb-closed-item {{
+    font-size: 11.5px;
+    color: var(--text-muted) !important;
+    text-decoration: none !important;
+    padding: 4px 10px;
+    background: var(--bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+    transition: all 0.15s;
+  }}
+  .gb-closed-item:hover {{
+    color: var(--text) !important;
+    border-color: var(--border-bright);
   }}
 </style>
 """

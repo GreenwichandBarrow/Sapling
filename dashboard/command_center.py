@@ -2,6 +2,7 @@
 
 Session 1: App shell + Dashboard landing (6 tiles).
 Session 2: Deal Aggregator page + st.navigation router.
+Session 3: Deal Pipeline page (Kanban, Attio snapshot).
 
 Scope: brain/context/continuation-2026-04-24-dashboard-scope-locked.md
 
@@ -24,7 +25,7 @@ if str(_DASHBOARD_DIR) not in sys.path:
     sys.path.insert(0, str(_DASHBOARD_DIR))
 
 from theme import GLOBAL_CSS, NAV_ITEMS, REFRESH_SECONDS  # noqa: E402
-from pages import dashboard_landing, deal_aggregator  # noqa: E402
+from pages import dashboard_landing, deal_aggregator, deal_pipeline  # noqa: E402
 
 
 st.set_page_config(
@@ -48,6 +49,7 @@ def _inject_css() -> None:
 _PAGE_RENDERERS = {
     "dashboard": (dashboard_landing.render, "Dashboard"),
     "deal-aggregator": (deal_aggregator.render, "Deal Aggregator"),
+    "deal-pipeline": (deal_pipeline.render, "Deal Pipeline"),
 }
 
 

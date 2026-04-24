@@ -71,6 +71,26 @@ Heavy day. Morning brief delivered with several false-positives Kay corrected; r
   - Full text: "I am looking to acquire a founder-led or family-owned business in the US (NY Metro would be a plus), ~$2-5M EBITDA, with a long-term orientation. Currently looking at operationally critical B2B services where the current owner is thinking about succession. We move quickly, aim to retain existing employees, and are able to partner with a seller on terms in a customized way."
 - **APPROVE:** New seller-psychology insight: founder-led sellers in the $2-5M EBITDA band are allergic to long post-close transition obligations. Never quote their anxiety back at them; encode flexibility implicitly via "customized terms." LOI defaults to 3-6mo transition unless seller asks for more. Earn-outs tied to long tenure are red flags for G&B-fit sellers. Saved as `feedback_seller_short_transition_matters`.
 
+### Evening: DealsX copy-callout resolution — channel delegation locked
+Separate thread: Kay's 4 callouts on DealsX's cold-email drafts came back with their data-backed defense — direct-acquirer > curiosity (their N=thousands), Managing Partner framing builds credibility, adversarial subjects are pattern-interrupts, agreed to drop financial references. Claude ran through four framings over the conversation (push-back-on-A/B → dual-channel → defer-to-data → final) before Kay landed on the clean end-state.
+
+- **REJECT (Kay):** A/B test curiosity vs direct-acquirer on DealsX channel. *"He has the data. Mine is hypothetical."* Claude's over-engineered A/B framing (guardrails on both arms, define success metric, force Hangman as reference email) was correctly collapsed.
+- **REJECT (Kay):** Dual-channel architecture (DealsX direct + Kay proprietary curiosity). *"I'm not wasting time on emails any more — they run my email campaigns. I'm doing in-person, owner calls and conferences."* Reinforces and sharpens [[memory/feedback_kay_off_list_scrubbing]].
+- **APPROVE:** DealsX owns all cold email outreach. Runs their direct-acquirer voice as default. Kay's hours go to in-person, owner calls, conferences only. Channel allocation = time allocation; email not worth Kay's drafting hours.
+- **APPROVE (brand floor, non-negotiable regardless of vendor data):** Three guardrails apply to every DealsX email going out under Kay's name:
+  1. Kay leads, G&B sits in background (never "Managing Partner of G&B" as first impression) — per [[memory/feedback_never_say_fund_or_lead]]
+  2. No adversarial subjects or fake pattern-interrupts — per [[memory/feedback_outreach_no_fake_lines]]
+  3. No headcount / revenue / financial figures in body — per [[memory/feedback_no_revenue_in_outreach]]
+  These are brand floor because DealsX emails precede every in-person meeting. Inbox voice cannot undercut the in-person relationship a founder builds with Kay at a conference.
+- **SENT (Slack, Kay-direct):** Kay messaged DealsX on Slack with the decision. Claude offered to draft the reply 3× during the conversation; each offer declined. No Claude draft used. Pattern candidate: stop re-offering drafts after first decline in a deliberation thread.
+- **APPROVE (self-correction patterns caught in-session, worth flagging):**
+  - Claude's first read of DealsX's response #1 claimed he hadn't addressed voice — wrong; direct-acquirer framing IS the voice answer. Kay corrected.
+  - Claude assumed "they are in their 70s" referred to the GM in the A&D thread — wrong; Kay meant the owner. When user language is ambiguous (bare pronoun "they"), default to one clarifying question rather than proceed on assumption.
+- **APPROVE:** Matt/Peapack A&D thread (detailed screen-phase discussion — GM age pivot, 3-question screen, A&D industry framework, river-guide posture) captured in full at [[memory/project_matt_peapack_aerospace_inbound]]. Summary reflected at "Response watch" line in Open Loops below.
+- Trace: [[traces/2026-04-23-dealsx-email-channel-delegation]].
+- Memory updated: [[memory/feedback_kay_off_list_scrubbing]] (expanded with 4/23 reinforcement + brand-floor guardrails + trace reference).
+- Memory created: [[memory/project_matt_peapack_aerospace_inbound]] (standalone project record for Matt + Peapack + A&D inbound).
+
 ## Actions Taken
 
 - **UPDATED:** Lauren Della Monica Attio next_action — cleared "quarterly touchpoint" reference; new value reflects Occasionally cadence + 2026-03-31 change date. Read-back confirmed.
@@ -103,6 +123,11 @@ Heavy day. Morning brief delivered with several false-positives Kay corrected; r
   - `feedback_seller_short_transition_matters.md` — short transitions matter
   - `feedback_template_approval_before_bulk_drafts.md` — template > drafts
   - All MEMORY.md index entries added.
+
+### Evening addendum (DealsX thread, late-evening /goodnight)
+- **CREATED:** `brain/traces/2026-04-23-dealsx-email-channel-delegation.md` — trace for channel-delegation decision (vendor-data vs user-anecdote; brand-floor vs voice-preference classification; stop-offering-drafts-after-decline pattern).
+- **UPDATED:** `memory/feedback_kay_off_list_scrubbing.md` — expanded with 4/23 reinforcement, brand-floor guardrails on DealsX emails, trace reference. MEMORY.md index entry refreshed.
+- **CREATED:** `memory/project_matt_peapack_aerospace_inbound.md` + MEMORY.md index entry — standalone record for Matt Luczyk relationship, deal profile, and 3-question screen.
 
 ## Deferred
 
@@ -139,4 +164,5 @@ Heavy day. Morning brief delivered with several false-positives Kay corrected; r
 - **outreach-manager:** No new sends pending.
 - **Superhuman MCP:** ⚠ G&B OAuth expired per 4/22 (separate from Bash wrapper). Bash wrapper `~/.local/bin/superhuman-draft.sh` confirmed working — pushed 8 XPX drafts successfully in evening session. Use wrapper-only path for now per CLAUDE.md; MCP path still needs re-auth.
 - **CLAUDE.md + skills modified today:** CLAUDE.md, relationship-manager/SKILL.md, jj-operations/SKILL.md, **NEW: conference-engagement/SKILL.md + 4 reference files + 1 template file**.
-- **Memories added today:** feedback_close_out_executes_mutation.md, feedback_high_multiples_avoid_context.md, **plus 7 evening additions: feedback_in_person_conferences_highest_roi, feedback_engine_architecture, feedback_audience_taxonomy_conferences, feedback_business_cards_no_enrichment, feedback_rules_in_skill_not_template, feedback_seller_short_transition_matters, feedback_template_approval_before_bulk_drafts**.
+- **Memories added today:** feedback_close_out_executes_mutation.md, feedback_high_multiples_avoid_context.md, **plus 7 evening additions: feedback_in_person_conferences_highest_roi, feedback_engine_architecture, feedback_audience_taxonomy_conferences, feedback_business_cards_no_enrichment, feedback_rules_in_skill_not_template, feedback_seller_short_transition_matters, feedback_template_approval_before_bulk_drafts**. **Late-evening /goodnight addition: project_matt_peapack_aerospace_inbound** (new) + **feedback_kay_off_list_scrubbing** (updated).
+- **Traces added today:** 2026-04-23-hold-calendar-prefix-no-brief, 2026-04-23-cadence-field-sole-source-of-truth, **2026-04-23-dealsx-email-channel-delegation** (late-evening /goodnight).

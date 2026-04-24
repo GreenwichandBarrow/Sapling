@@ -138,6 +138,8 @@ Cards handed to Kay in person are GOLD. Use them verbatim.
 
 Kay will send these together — card image + her notes per person — in the same message or thread. Treat the notes as **required input for a thoughtful follow-up**, not a nice-to-have. If Kay sends only a card with no notes, ask her once for a sentence or two on the conversation before drafting. A generic email from a card with no context is worse than no email.
 
+**Reply-flow variant (per Kay 2026-04-24):** Some contacts will write to Kay first within the 24-hour window. In that case, Kay shares their email body along with the card + her engagement notes. We draft a **reply** (not a fresh email) using the same template structure and audience taxonomy. The `{{callback}}` slot can pull from either Kay's in-person notes or something specific the contact said in their email — whichever is more concrete. The buy-box paragraph still applies for intermediaries. Reply text is shown in-conversation for Kay to copy-paste into Superhuman (no blockquote per `feedback_email_drafts_no_blockquote`); the bash wrapper does not handle threaded replies.
+
 **Other inputs (supplementary):**
 - Conference name + date (infer from context if not stated)
 - Granola transcript from the event, if run — use to augment Kay's notes, not replace them

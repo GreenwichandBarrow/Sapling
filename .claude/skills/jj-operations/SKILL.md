@@ -98,7 +98,9 @@ This filter runs BEFORE the reply check — no point checking replies for target
 **Two-attempt rule (added 2026-04-23 after Col U overwrite discovery):**
 JJ logs the first dial in T (date) + U (status). If the target doesn't answer, JJ calls back later — log the second dial in V (date) + W (status). After 2 unsuccessful attempts (No Answer / Voicemail twice), the target moves to Do Not Pursue rather than continuing to dial. Notes (X) and Sentiment (Y) reflect the most recent call.
 
-**Pace measurement rule (added 2026-04-23):** JJ's daily dial count is computed by counting populated date cells (T or V) where the date = today, ACROSS ALL Call Log tabs and the Full Target List. Tab name (e.g., "Call Log 4.20.26") is only the *estimated* call date when the row was assigned — JJ rolls through tabs as a working list, not a daily-strict bucket. **Never measure pace by tab name.** Always measure by Col T or Col V date values.
+**Pace measurement rule (added 2026-04-23, reinforced 2026-04-24 after weekly-tracker miscount):** JJ's daily dial count is computed by counting populated `JJ: 1st Call Date` and `JJ: 2nd Call Date` field values where the value = today's date, ACROSS ALL Call Log tabs AND the Full Target List. Tab name (e.g., "Call Log 4.20.26") is only the *estimated* call date when the row was assigned — JJ rolls through tabs as a working list, not a daily-strict bucket. **Never measure pace by tab name — always measure by the Call Date field values.** Confirmed precedent 4/24: JJ's 9 Friday dials were logged onto the 4.21.26 prep tab, not the 4.24.26 tab; tab-grouping reported zero. See `memory/feedback_jj_call_date_from_field_not_tab.md`.
+
+**Date-format normalizer (added 2026-04-24):** JJ uses inconsistent date formats in the Call Date fields: `4/20/26`, `4.24.26`, `4/13/2026`, `4/14/2026`, and occasionally malformed entries (`4/8//2026` with a double slash). Before counting or grouping, normalize: strip `//` to `/`, accept both `.` and `/` as separators, accept 2-digit and 4-digit years. Treat any field value containing at least one digit followed by `/` or `.` followed by more digits as a candidate date.
 
 **Migration history:**
 - 2026-04-23: Schema migrated from 4-col (T:Status, U:Date, V:Notes, W:Sentiment) to 6-col (T:1st Date, U:1st Status, V:2nd Date, W:2nd Status, X:Notes, Y:Sentiment). Full Target List + Call Log tabs from 4.21.26 forward. Historical Call Log tabs (4.20.26 and earlier) preserved as-is to maintain audit trail integrity.
@@ -217,7 +219,7 @@ For each row that has any new call data on a daily Call Log tab, update the Full
 
 ### 3. Pace Reporting
 
-Calculate JJ's daily dial count by counting populated date cells (T or V) across ALL Call Log tabs for the day, where the date value = today. Tab name is irrelevant. Report to Slack at end of harvest: "JJ today: {N} dials ({N1} 1st attempts, {N2} 2nd attempts)."
+Calculate JJ's daily dial count by counting populated `JJ: 1st Call Date` and `JJ: 2nd Call Date` field values across ALL Call Log tabs + the Full Target List, where the normalized date value = today. Tab name is irrelevant (see Pace measurement rule above). Report to Slack at end of harvest: "JJ today: {N} dials ({N1} 1st attempts, {N2} 2nd attempts)."
 
 ### 4. Owner Name Backfill
 

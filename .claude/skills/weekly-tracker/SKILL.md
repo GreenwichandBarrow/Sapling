@@ -613,7 +613,16 @@ Tracks credit consumption, list quality, and ICP efficiency week over week.
 - Credits used: Apollo API (`/api/v1/auth/health` endpoint for balance, count email reveals this week)
 - Entities returned: Apollo API (people/search results count) or from master sheet row count
 - Kay accept/reject: Master sheet Col N (Kay Decision)
-- JJ rates: Master sheet Col Q (Call Status) and Col T (Owner Sentiment)
+- JJ rates: Master sheet Call Status field and Owner Sentiment field.
+
+**CRITICAL — JJ dial counting rule (per `feedback_jj_call_date_from_field_not_tab`):**
+
+- Tab names like `Call Log 4.21.26` are **estimated** batch dates — the date the row was staged, not the date JJ called.
+- JJ's actual dial date is the value he types into the `JJ: 1st Call Date` or `JJ: 2nd Call Date` field (post-4/21 NEW schema), or the `JJ: Call Date` field on pre-4/21 OLD-schema tabs.
+- JJ routinely logs today's calls onto older prep tabs (confirmed 4/24: today's 9 dials landed on the 4.21.26 tab). Grouping by tab name **misses these entirely** and under-reports the true count.
+- **Always count by populated `Call Date` value across ALL tabs + Full Target List, grouped by the actual date value — never by tab name.**
+- Normalize date formats before counting: JJ mixes `4/20/26`, `4.24.26`, `4/13/2026`, and occasionally malformed entries like `4/8//2026`. Treat any value containing digits + `/` or `.` + digits as a candidate date; strip punctuation variants before grouping.
+- Pre-4/21 OLD-schema tabs have header-vs-data drift: dates may sit under the field header `JJ: Call Notes` instead of `JJ: Call Date` on rows written before the 4/23 migration. Sample-inspect before counting; when in doubt, scan all four JJ fields for date-shaped values.
 
 **What this tab tells you:**
 - Are we burning credits too fast? (Credits remaining vs days left in month)

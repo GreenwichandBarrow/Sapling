@@ -23,7 +23,7 @@ tags:
 |--------|-----------|--------------------|-------|
 | Outreach sends (SENT verb-tag bullets, session-decisions) | 6 | 0 (sheet-reported) | +6 |
 | Drafts created (DRAFTED bullets) | 3 (plus 8 XPX in Superhuman) | 4 | ≈+7 |
-| JJ dials logged (non-empty T/V cells across Call Logs 4.21–4.24) | 0 | 0 | 0 |
+| JJ dials logged (grouped by populated Call Date value, all tabs + Full Target List) | ~49 (Mon 17, Tue 23, Fri 9) | 0 | +49 |
 | Conferences / events attended | 2 (XPX NYC 4/23, AI Friday webinar 4/24) | 1 (ACG DealSource prep) | +1 |
 | Deal-aggregator scan files produced | 7 (4/17, 4/20, 4/21, 4/22, 4/22-pm, 4/23, 4/23-pm) | ~5 | +2 |
 | Niche pipeline moves | Premium Pest sheet schema migrated (T-Y two-attempt block); Art Storage reactivated on Saltoun greenlight (DealsX carve-out) | DealsX launch scheduled 5/6; Art Advisory → Active-Long Term | structural |
@@ -41,7 +41,7 @@ tags:
 ## Surprising Findings (3 bullets)
 
 1. **Outreach volume still near zero, but a live deal landed anyway via in-person.** 6 SENT / 3 DRAFTED verb-tags in session-decisions across the week (plus 8 XPX drafts pushed to Superhuman evening 4/23). Zero JJ dials. Yet Matt Luczyk pitched an aerospace/defense deal to Kay face-to-face at XPX. Validates `feedback_in_person_conferences_highest_roi` — in-person outperforms email/cold-call for G&B's fit.
-2. **JJ logged zero calls all week, and it went undetected for multiple days before being flagged.** 4.21–4.24 Call Log tabs are all empty (T and V columns). Session-decisions 4/23 noted "JJ no-show today; Sunday 4/19 prep run gap remains uninvestigated." Hours-paid-for-no-output is a system-health issue, not an output issue.
+2. **JJ dial count was miscounted as zero in this file's first pass; corrected 4/24.** Initial subagent run grouped dials by tab name (Call Log 4.21 / 4.22 / 4.23 / 4.24), which showed empty for 4.21-forward tabs because JJ does not file same-day. Re-counted by populated `JJ: Call Date` value across all tabs: Monday 4/20 = 17, Tuesday 4/21 = 23, Wed/Thu = 0, Friday 4/24 = 9 (today's 9 dials are logged onto the 4.21.26 prep tab, not 4.24.26 — exactly the tab-vs-call-date mismatch documented in `feedback_jj_call_date_from_field_not_tab`). Total ~49 dials week. Pace is down from 36-37/day historical baseline (4/8-4/10) but not zero. Wed-Thu gap aligns with JJ no-show 4/23 noted in session-decisions.
 3. **Major structural build week, not a throughput week.** New `conference-engagement` skill (SKILL.md + 4 references + templates sheet + review doc). JJ schema migrated to 6-col two-attempt block across 868 rows + 4 daily tabs. 10 new feedback memories. DealsX channel-delegation codified (Kay exits cold-email authoring entirely). System got materially better; weekly throughput did not. Payoff is 2-4 weeks out.
 
 ## Blocker
@@ -53,7 +53,7 @@ tags:
 - email-intelligence: running daily
 - relationship-manager: running daily; 4/23 artifact rewritten post-Kay-correction (Lauren / Stanley / Guillermo / Ashley surfacing errors → skill rules updated)
 - deal-aggregator: 7 scans produced this week, 0 evaluable deals reaching Kay
-- jj-operations: schema migration completed 4/23; 0 dials logged across the week — attendance / pipeline issue
+- jj-operations: schema migration completed 4/23; ~49 dials week (17 Mon, 23 Tue, 9 Fri-today; Wed-Thu no-show 4/23 confirmed). Pace down from 36-37/day historical baseline. Date-format drift in JJ's entries: mix of `4/20/26`, `4.24.26`, `4/13/2026`, some malformed (`4/8//2026`) — normalizer needed in future runs.
 - target-discovery: no Active-Outreach niche needed refill
 - outreach-manager: DealsX owns cold email going forward (channel delegation locked 4/23)
 - conference-engagement: NEW skill, deployed end-to-end on 8 XPX cards evening 4/23

@@ -155,40 +155,41 @@ Kay will send these together — card image + her notes per person — in the sa
    - No match → create new People record with `source=conference/{slug}-{date}`, populate firm/title from card, and seed the first interaction note with Kay's engagement notes.
    - If Kay's notes include anything actionable or thesis-relevant (deal mentions, referrals offered, strong personality read, warm intro paths), surface these in the final summary so they don't get lost in a note field.
 
-3. **Classify by audience** (Intermediary / Owner / Peer). Cues:
+4. **Classify by audience** (Intermediary / Owner / Peer). Kay's notes are the best input for classification beyond firm type. Cues:
    - Firm type: M&A, wealth, law, accounting, exit planning, banking, brokerage → Intermediary
    - Firm type: operator / business owner / CEO of private business → Owner
    - Firm type: searcher, service provider, family office, VC/PE → Peer
-   - If ambiguous, escalate to Kay for classification with card detail
+   - If Kay's notes indicate a different read from the card (e.g., card says "Advisor" but Kay notes "this guy is actually exploring selling his own firm"), trust Kay's notes.
+   - If ambiguous after notes + card, escalate to Kay for classification.
 
-4. **Detect deal-mentioned subset.** If Granola transcript or Kay's notes indicate a specific intermediary pitched a deal:
+5. **Detect deal-mentioned subset.** If Kay's notes or Granola transcript indicate a specific intermediary pitched a deal:
    - Use `postconf_intermediary_deal` variant instead of `postconf_intermediary`
    - Trigger active-deal fast-path (per `feedback_active_deal_urgency`)
    - Flag for `deal-evaluation` skill pickup
 
-5. **Read templates** from the Google Sheet. For intermediary templates, substitute `{{buy_box_intermediary}}` with the content of that row from the Snippets tab.
+6. **Read templates** from the Google Sheet. For intermediary templates, substitute `{{buy_box_intermediary}}` with the content of that row from the Snippets tab.
 
-6. **Draft each email** in Superhuman:
+7. **Draft each email** in Superhuman. Kay's engagement notes are the primary source for `{{callback}}` — the whole point of collecting them is that a thoughtful, specific reference is what makes the follow-up feel personal rather than templated:
    - `{{first_name}}` from card
    - `{{conference}}` = conference short name (e.g., "XPX")
    - `{{conference_day}}` = "today" if same-day, "yesterday" if next-day, otherwise day name
-   - `{{callback}}` = specific reference to something they said (from Granola transcript or Kay's notes). If no specific callback exists, escalate to Kay or leave a placeholder for her to fill in Superhuman.
-   - `{{reciprocal_hook}}` (intermediary only) = what Kay can offer them. Leave blank if nothing natural.
-   - `{{deal_sector}}` (deal variant only) = the business/sector the intermediary mentioned.
+   - `{{callback}}` = specific reference drawn from Kay's engagement notes (preferred) or Granola transcript. Quote or paraphrase something they said, a shared observation, or the hook Kay flagged. If notes are thin, escalate to Kay rather than shipping a generic line.
+   - `{{reciprocal_hook}}` (intermediary only) = what Kay can offer them, inferred from the notes (e.g., if Kay noted "he's building a practice in X" → offer a relevant connection or insight). Leave blank if nothing natural.
+   - `{{deal_sector}}` (deal variant only) = the business/sector the intermediary mentioned, from Kay's notes.
 
-7. **Use Superhuman CLI** (per `feedback_drafts_superhuman`):
+8. **Use Superhuman CLI** (per `feedback_drafts_superhuman`):
    ```bash
    ~/.local/bin/superhuman-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
    ```
    Never use the MCP `superhuman_draft` tool — that routes through Gmail API and creates invisible drafts.
 
-8. **Attio updates:**
-   - New contact: create People record, link to conference, set nurture cadence via `relationship-manager`
-   - Existing contact: add touch note, update `last_contacted_at`
+9. **Attio updates:**
+   - New contact: create People record with Kay's engagement notes as the seeded first interaction note, link to conference, set nurture cadence via `relationship-manager`
+   - Existing contact: append dated touch note with Kay's engagement notes verbatim, update `last_contacted_at`
 
-9. **River guide candidates:** any intermediary card gets flagged for `river-guide-builder` evaluation (next run).
+10. **River guide candidates:** any intermediary card gets flagged for `river-guide-builder` evaluation (next run).
 
-10. **Summary to Kay:**
+11. **Summary to Kay:**
     ```
     Post-Conference Follow-up — {Conference}
     {N} cards processed:
@@ -199,8 +200,10 @@ Kay will send these together — card image + her notes per person — in the sa
     ```
 
 ### Validation
+- Every card has Kay's engagement notes attached before drafting (ask once if missing)
 - Every card produces exactly one draft (or a documented skip reason)
-- Every `{{callback}}` is specific or escalated to Kay (no generic "enjoyed meeting you")
+- Every `{{callback}}` is drawn from Kay's notes or Granola — no generic "enjoyed meeting you"
+- Every Attio record (new or existing) has Kay's engagement notes captured verbatim as a dated interaction note
 - Every intermediary draft includes the buy-box paragraph
 - No owner or peer draft includes the buy-box paragraph
 - No em dashes in any draft body
@@ -211,17 +214,22 @@ Kay will send these together — card image + her notes per person — in the sa
 
 ```
 Kay: "Here are the 8 cards from XPX" [sends photo]
+     + "Notes:
+        - John Smith: talked about his exit planning practice in NJ, mentioned two aerospace clients exploring sale
+        - Jane Doe: runs a family office, asked about our buy-box, said she'd share a deal next week
+        - ..."
 ↓
 1. OCR photo → 8 card records
-2. Attio dedup → N new / M existing
-3. Classify by audience
-4. Read templates from sheet
-5. Draft 8 personalized emails in Superhuman
-6. Create/update 8 Attio records
-7. Report back: "8 drafts in Superhuman. Breakdown: X intermediaries, Y owners, Z peers."
+2. Pair each card to Kay's notes (ask if any missing)
+3. Attio dedup → N new / M existing, seed/append engagement notes as dated interaction
+4. Classify by audience (notes override card cues if they conflict)
+5. Detect deal-mentioned subset → route to fast-path
+6. Read templates from sheet
+7. Draft 8 personalized emails in Superhuman, pulling {{callback}} from Kay's notes
+8. Report back: "8 drafts in Superhuman. Breakdown: X intermediaries (Y deal-mentioned), A owners, B peers."
 ```
 
-Kay reviews each draft in Superhuman, customizes the `{{callback}}` where needed, hits send.
+Kay reviews each draft in Superhuman, tweaks as needed, hits send.
 </quick_start>
 
 <template_review_workflow>

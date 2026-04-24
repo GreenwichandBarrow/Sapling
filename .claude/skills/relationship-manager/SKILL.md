@@ -142,6 +142,69 @@ When surfacing a contact for outreach, check whether the person is an assistant 
 - **Example:** Chase Lacson (assistant) at Goodman Taft has next_action "Reschedule call" — but the email should go to Molly Epstein (principal). Surface as "Molly Epstein (Goodman Taft)" not "Chase Lacson."
 </people_records>
 
+<vault_to_attio_sync>
+## Vault → Attio Sync (Engagement Notes Backfill)
+
+**Purpose:** When skills like `conference-engagement` write a vault entity with engagement notes BEFORE the corresponding Attio person record exists (because Attio auto-creates the person only on email send/receive), this step closes the loop. It runs every morning as part of relationship-manager and ensures Kay's engagement context lands in Attio once the auto-created stub exists.
+
+**Why this exists:** Per `feedback_close_out_executes_mutation`, every signal must mutate source-of-truth in the same window. The conference-engagement skill writes the vault entity at card-collection time, but cannot write to Attio until the auto-created person record exists (which happens only when Kay sends the draft). This sync bridges the two events.
+
+### Detection — which entities to sync
+
+Scan `brain/entities/` for files matching ALL of:
+1. Modified in the last 7 days
+2. `type: person` in frontmatter
+3. EITHER `attio_id` field is empty OR `attio_synced_at` field is missing/older than the file's `modified` time
+4. Has a non-empty `## Relationship Notes` section in the body
+
+### Sync flow per entity
+
+For each entity matching detection criteria:
+
+1. **Look up Attio person by email** (preferred) or `name + company`:
+   - `gog` not used here — use Attio MCP `search_records` with email filter
+   - If Attio person not found → skip (will retry tomorrow; person record auto-creates on next email send/receive)
+   - If Attio person found → proceed
+
+2. **Check whether engagement note already attached** (idempotency):
+   - Use Attio `list_notes` filtered to that person record
+   - If a note titled `"{conference_or_source} {date} — engagement context"` already exists → skip (already synced)
+
+3. **Build the note content** from the vault entity:
+   - Pull `## Relationship Notes` section verbatim (date-prefixed bullets)
+   - Pull the `## Key Context` section if present (background)
+   - Append a footer linking back: `Vault: [[entities/{slug}]]`
+
+4. **Attach the note to the Attio person record** via `create_note`:
+   - Title: `{source} {date} — engagement context` (e.g., "XPX 2026-04-23 — engagement context")
+   - Format: markdown
+   - Content: the constructed body
+
+5. **Set Attio attributes from vault frontmatter** (only if Attio field is empty — never overwrite Kay's manual edits):
+   - `nurture_cadence` — derive from entity status (prospect → Quarterly default; partner → Monthly; etc.)
+   - `relationship_type` — derive from entity classification if explicit (Intermediary → "Industry Expert" or "River Guide" if connector signal present; Owner → "Fellow Searcher" if relevant; otherwise leave for Kay)
+   - `how_introduced` — pull from `## Quick Facts` or first relationship note (e.g., "Met at XPX 2026-04-23, came over after panel")
+   - `value_to_search` — pull from one-line summary in `## Key Context` if available
+
+6. **Update the vault entity frontmatter** to mark synced:
+   - Set `attio_id: {record_id}` (if not already set)
+   - Set `attio_synced_at: {ISO timestamp}`
+   - Re-write file with updated frontmatter
+
+7. **Log to artifact** under new section "Vault → Attio Syncs" (see Output Artifact below).
+
+### Failure modes to handle
+
+- **Attio note creation fails 403** → API token is missing `notes:read-write` scope. Surface this in the artifact as a System Status alert ("Attio token scope insufficient — engagement notes not syncing"). Do NOT retry repeatedly; one log per missing-scope event per day is enough. Kay must fix the scope at the Attio admin / Smithery connector level.
+- **Multiple Attio person matches** (e.g., two records with the same email due to dedup misses) → log to artifact under "Attio Dedup Needed", do not pick one arbitrarily.
+- **Vault entity has `attio_id` but the record doesn't exist** (deleted in Attio) → clear the `attio_id` field, retry detection on next run.
+
+### Idempotency requirement
+
+This step MUST be safe to run multiple times. Re-running on the same vault entity must NOT create duplicate notes. Idempotency hinges on the note-title check in step 2 — if that check fails (e.g., Kay renamed the note manually), the duplicate-detection breaks. Acceptable risk for now; tighten if Kay reports duplicates.
+
+</vault_to_attio_sync>
+
 <intro_tracking>
 ## Warm Intro Tracking
 
@@ -185,6 +248,17 @@ type: relationship-status
 ## Warm Intro Opportunities (from target-discovery)
 - {Target Company}: warm path via {contact} — {connection}
 - ...
+
+## Vault → Attio Syncs
+- {Name}: engagement note attached, attio_id captured in vault entity
+- ...
+- (Or "None — no vault entities pending sync")
+
+## Attio Dedup Needed (if any)
+- {Email}: N matching person records — Kay must merge
+
+## System Status Alerts (if any)
+- "Attio API token missing notes:read-write scope — engagement notes not syncing. Fix at Smithery / Attio admin."
 ```
 
 Pipeline-manager reads this artifact and presents it in Section 4 (Superhuman email drafts to review/approve) of the morning briefing.
@@ -196,8 +270,11 @@ Pipeline-manager reads this artifact and presents it in Section 4 (Superhuman em
 - [ ] All overdue contacts verified against Gmail before surfacing (no false positives)
 - [ ] Trigger-based contacts (next_action contains "when"/"once"/"after"/"if") excluded from overdue list
 - [ ] Auto-resolved contacts had their Attio records updated
+- [ ] Vault → Attio sync ran for any vault entity modified in last 7 days with unsynced engagement notes
+- [ ] Sync writes are idempotent (re-runs don't duplicate notes)
+- [ ] Vault entity frontmatter updated with `attio_id` + `attio_synced_at` for every successful sync
 - [ ] Artifact written to `brain/context/relationship-status-{date}.md`
-- [ ] Artifact has all 4 sections (even if empty, mark "None")
+- [ ] Artifact has all sections (even if empty, mark "None")
 - [ ] No contacts surfaced that Kay already emailed in the last 7 days
 - [ ] Artifact notes that Gmail/calendar are the only verified channels (text/phone not captured)
 </stop_hooks>

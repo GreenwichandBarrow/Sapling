@@ -10,8 +10,10 @@ PALETTE = {
     "bg": "#0B0D12",
     "panel": "#141821",
     "panel_hover": "#1A1F2A",
+    "row_hover": "#181C26",
     "border": "#242A36",
     "border_bright": "#2E3647",
+    "border_soft": "#1C212C",
     "divider": "#1C212C",
     "text": "#E8ECF3",
     "text_muted": "#8B93A7",
@@ -21,16 +23,19 @@ PALETTE = {
     "yellow": "#F5C451",
     "red": "#FF5A5A",
     "neutral": "#6B7280",
+    "purple": "#B084F0",
 }
 
+# (label, url_path, implemented) — st.navigation uses implemented==True pages;
+# unimplemented items render as disabled sidebar entries.
 NAV_ITEMS = [
-    ("Dashboard", True),
-    ("Deal Aggregator", False),
-    ("Deal Pipeline", False),
-    ("C-Suite & Skills", False),
-    ("Infrastructure", False),
-    ("M&A Analytics", False),
-    ("Tech Stack", False),
+    ("Dashboard", "dashboard", True),
+    ("Deal Aggregator", "deal-aggregator", True),
+    ("Deal Pipeline", "deal-pipeline", False),
+    ("C-Suite & Skills", "c-suite-skills", False),
+    ("Infrastructure", "infrastructure", False),
+    ("M&A Analytics", "ma-analytics", False),
+    ("Tech Stack", "tech-stack", False),
 ]
 
 
@@ -40,8 +45,10 @@ GLOBAL_CSS = f"""
     --bg: {PALETTE["bg"]};
     --panel: {PALETTE["panel"]};
     --panel-hover: {PALETTE["panel_hover"]};
+    --row-hover: {PALETTE["row_hover"]};
     --border: {PALETTE["border"]};
     --border-bright: {PALETTE["border_bright"]};
+    --border-soft: {PALETTE["border_soft"]};
     --divider: {PALETTE["divider"]};
     --text: {PALETTE["text"]};
     --text-muted: {PALETTE["text_muted"]};
@@ -51,6 +58,7 @@ GLOBAL_CSS = f"""
     --yellow: {PALETTE["yellow"]};
     --red: {PALETTE["red"]};
     --neutral: {PALETTE["neutral"]};
+    --purple: {PALETTE["purple"]};
   }}
 
   /* Hide Streamlit chrome that fights our design */
@@ -140,6 +148,57 @@ GLOBAL_CSS = f"""
     background: var(--text-dim);
   }}
   .gb-nav-item.active .dot {{ background: var(--accent); }}
+
+  /* Style Streamlit's st.page_link to match our custom nav items. */
+  [data-testid="stSidebar"] a[data-testid="stPageLink"],
+  [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"] {{
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 9px 12px !important;
+    border-radius: 6px !important;
+    color: var(--text-muted) !important;
+    font-size: 13px !important;
+    margin-bottom: 2px !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    transition: all 0.15s !important;
+  }}
+  [data-testid="stSidebar"] a[data-testid="stPageLink"]:hover,
+  [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"]:hover {{
+    background: var(--panel-hover) !important;
+    color: var(--text) !important;
+  }}
+  [data-testid="stSidebar"] a[data-testid="stPageLink"][aria-current="page"],
+  [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"][aria-current="page"] {{
+    background: rgba(74, 158, 255, 0.12) !important;
+    color: var(--accent) !important;
+    font-weight: 500 !important;
+  }}
+  /* Leading dot injected via ::before so labels match the HTML mockup. */
+  [data-testid="stSidebar"] a[data-testid="stPageLink"]::before,
+  [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"]::before {{
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-dim);
+    flex-shrink: 0;
+  }}
+  [data-testid="stSidebar"] a[data-testid="stPageLink"][aria-current="page"]::before,
+  [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"][aria-current="page"]::before {{
+    background: var(--accent);
+  }}
+  /* Streamlit sometimes wraps page_link labels in an extra span — strip its own padding. */
+  [data-testid="stSidebar"] a[data-testid="stPageLink"] > div,
+  [data-testid="stSidebar"] a[data-testid="stPageLink"] p,
+  [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"] > div,
+  [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"] p {{
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 13px !important;
+    line-height: 1 !important;
+  }}
 
   /* -------- TOPBAR -------- */
   .gb-topbar {{
@@ -281,6 +340,178 @@ GLOBAL_CSS = f"""
     color: var(--text-dim);
     text-align: center;
     letter-spacing: 0.04em;
+  }}
+
+  /* -------- PAGE SUBTITLE -------- */
+  .gb-subtitle {{
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: -16px;
+    margin-bottom: 24px;
+  }}
+  .gb-subtitle .highlight {{ color: var(--text); font-weight: 500; }}
+
+  /* -------- SUMMARY STRIP -------- */
+  .gb-summary {{
+    display: flex;
+    gap: 28px;
+    padding: 10px 0 20px;
+    font-size: 12px;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+  }}
+  .gb-summary .num {{
+    color: var(--text);
+    font-weight: 500;
+    margin-right: 5px;
+    font-variant-numeric: tabular-nums;
+  }}
+
+  /* -------- FILTER BAR -------- */
+  .gb-filter-bar {{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }}
+  .gb-filter-tabs {{ display: flex; gap: 4px; }}
+  .gb-filter-tab {{
+    padding: 6px 12px;
+    font-size: 12px;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: all 0.15s;
+  }}
+  .gb-filter-tab.active {{
+    background: rgba(74, 158, 255, 0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+  }}
+  .gb-filter-select {{
+    padding: 6px 10px;
+    font-size: 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-family: inherit;
+  }}
+  .gb-filter-search {{
+    flex: 1;
+    max-width: 260px;
+    padding: 6px 12px;
+    font-size: 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: inherit;
+  }}
+  .gb-filter-search::placeholder {{ color: var(--text-dim); }}
+
+  /* -------- DATA TABLE -------- */
+  .gb-table-wrap {{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }}
+  .gb-table {{ width: 100%; border-collapse: collapse; }}
+  .gb-table thead th {{
+    text-align: left;
+    padding: 12px 14px;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.01);
+  }}
+  .gb-table tbody td {{
+    padding: 14px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--text);
+    vertical-align: middle;
+  }}
+  .gb-table tbody tr {{ transition: background 0.15s; }}
+  .gb-table tbody tr:hover {{ background: var(--row-hover); }}
+  .gb-table tbody tr:last-child td {{ border-bottom: none; }}
+
+  .gb-company {{ font-weight: 500; }}
+  .gb-industry-tag {{
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    background: rgba(176, 132, 240, 0.12);
+    color: var(--purple);
+    border-radius: 4px;
+    margin-top: 3px;
+    letter-spacing: 0.02em;
+  }}
+  .gb-owner, .gb-location {{ color: var(--text-muted); }}
+  .gb-location {{ font-variant-numeric: tabular-nums; }}
+  .gb-num {{
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }}
+  .gb-num.dim {{ color: var(--text-dim); }}
+
+  .gb-source-tag {{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }}
+  .gb-source-tag .src-dot {{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }}
+  .gb-source-tag .src-dot.axial      {{ background: var(--green); }}
+  .gb-source-tag .src-dot.bizbuysell {{ background: var(--accent); }}
+  .gb-source-tag .src-dot.email      {{ background: var(--yellow); }}
+  .gb-source-tag .src-dot.assoc      {{ background: var(--purple); }}
+  .gb-source-tag .src-dot.dealsx     {{ background: var(--red); }}
+  .gb-source-tag .src-dot.other      {{ background: var(--neutral); }}
+
+  .gb-status-badge {{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+  }}
+  .gb-status-badge.new      {{ background: rgba(74, 158, 255, 0.12); color: var(--accent); }}
+  .gb-status-badge.reviewed {{ background: rgba(139, 147, 167, 0.14); color: var(--text-muted); }}
+  .gb-status-badge.pursuing {{ background: rgba(63, 209, 127, 0.12); color: var(--green); }}
+  .gb-status-badge.passed   {{ background: rgba(107, 114, 128, 0.14); color: var(--text-dim); }}
+
+  .gb-link-cell {{ text-align: center; width: 40px; }}
+  .gb-link-icon {{
+    display: inline-block;
+    color: var(--text-dim);
+    font-size: 14px;
+    transition: color 0.15s;
+    text-decoration: none;
+  }}
+  .gb-link-icon:hover {{ color: var(--accent); }}
+
+  .gb-empty {{
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 13px;
   }}
 </style>
 """

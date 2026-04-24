@@ -1,8 +1,9 @@
 """G&B Command Center — Streamlit entrypoint.
 
-Session 1: App shell + Dashboard landing page with 6 tiles.
+Session 1: App shell + Dashboard landing (6 tiles).
+Session 2: Deal Aggregator page + st.navigation router.
+
 Scope: brain/context/continuation-2026-04-24-dashboard-scope-locked.md
-Visual reference: dashboard/mockup-landing.html
 
 Launch:
     dashboard/.venv/bin/streamlit run dashboard/command_center.py
@@ -12,11 +13,18 @@ from __future__ import annotations
 
 from datetime import datetime
 from html import escape
-from textwrap import dedent
+from pathlib import Path
+import sys
 
 import streamlit as st
 
-from theme import GLOBAL_CSS, NAV_ITEMS, REFRESH_SECONDS
+# Make sibling modules importable when Streamlit runs this script.
+_DASHBOARD_DIR = Path(__file__).resolve().parent
+if str(_DASHBOARD_DIR) not in sys.path:
+    sys.path.insert(0, str(_DASHBOARD_DIR))
+
+from theme import GLOBAL_CSS, NAV_ITEMS, REFRESH_SECONDS  # noqa: E402
+from pages import dashboard_landing, deal_aggregator  # noqa: E402
 
 
 st.set_page_config(
@@ -27,29 +35,83 @@ st.set_page_config(
 )
 
 
-def inject_css() -> None:
+def _inject_css() -> None:
     st.markdown(GLOBAL_CSS, unsafe_allow_html=True)
 
 
-def render_sidebar() -> None:
-    items_html = "".join(
-        f'<div class="gb-nav-item {"active" if active else "disabled"}">'
-        f'<span class="dot"></span>{escape(name)}</div>'
-        for name, active in NAV_ITEMS
-    )
+# -----------------------------------------------------------------------------
+# Page registry
+# -----------------------------------------------------------------------------
+# Callable targets keep each page's render function in its own module and
+# avoid triggering Streamlit's auto-discovery of files under pages/.
+
+_PAGE_RENDERERS = {
+    "dashboard": (dashboard_landing.render, "Dashboard"),
+    "deal-aggregator": (deal_aggregator.render, "Deal Aggregator"),
+}
+
+
+def _build_pages() -> tuple[list[st.Page], dict[str, st.Page]]:
+    pages: list[st.Page] = []
+    by_url: dict[str, st.Page] = {}
+    for label, url_path, implemented in NAV_ITEMS:
+        if not implemented:
+            continue
+        fn, _ = _PAGE_RENDERERS[url_path]
+        page = st.Page(
+            fn,
+            title=label,
+            url_path=url_path,
+            default=(url_path == "dashboard"),
+        )
+        pages.append(page)
+        by_url[url_path] = page  # our own map — st.Page normalizes
+                                 # default pages to url_path="", so we can't
+                                 # round-trip via page.url_path.
+    return pages, by_url
+
+
+# -----------------------------------------------------------------------------
+# Sidebar
+# -----------------------------------------------------------------------------
+
+
+def _render_sidebar_brand() -> None:
     st.sidebar.markdown(
-        f"""
+        """
         <div class="gb-brand">
           <div class="logo">G&amp;B Command Center</div>
           <div class="sub">Greenwich &amp; Barrow</div>
         </div>
-        <div class="gb-nav">{items_html}</div>
         """,
         unsafe_allow_html=True,
     )
 
 
-def render_topbar(title: str) -> None:
+def _render_sidebar_nav(pages_by_url: dict[str, st.Page]) -> None:
+    # Wrap nav entries in a shared padded container so page_link + disabled
+    # HTML items sit inside the same gutter as the mockup's .nav-section.
+    with st.sidebar:
+        st.markdown('<div class="gb-nav">', unsafe_allow_html=True)
+        for label, url_path, implemented in NAV_ITEMS:
+            if implemented:
+                page = pages_by_url[url_path]
+                st.page_link(page, label=label)
+            else:
+                st.markdown(
+                    f'<div class="gb-nav-item disabled">'
+                    f'<span class="dot"></span>{escape(label)}</div>',
+                    unsafe_allow_html=True,
+                )
+        st.markdown("</div>", unsafe_allow_html=True)
+
+
+# -----------------------------------------------------------------------------
+# Topbar
+# -----------------------------------------------------------------------------
+
+
+def _render_topbar(title: str) -> None:
     now = datetime.now()
     date_str = now.strftime("%A, %B %-d, %Y")
     updated_str = now.strftime("%H:%M:%S")
@@ -59,9 +121,9 @@ def render_topbar(title: str) -> None:
           <h1>{escape(title)}</h1>
           <div class="meta">
             {escape(date_str)}
-            <span class="sep">•</span>
+            <span class="sep">&middot;</span>
             Refreshing every {REFRESH_SECONDS}s
-            <span class="sep">•</span>
+            <span class="sep">&middot;</span>
             Last updated {escape(updated_str)}
           </div>
         </div>
@@ -71,137 +133,24 @@ def render_topbar(title: str) -> None:
 
 
 # -----------------------------------------------------------------------------
-# Dashboard landing tiles
+# Main
 # -----------------------------------------------------------------------------
-# Session 1 uses placeholder values that match mockup-landing.html exactly.
-# Later sessions wire each tile to its source of truth (deal-aggregator artifact,
-# Attio MCP, launchd logs, health-monitor output, weekly-tracker, connectivity checks).
-
-
-def _tile(body: str) -> str:
-    return dedent(body).strip()
-
-
-def tile_deal_aggregator() -> str:
-    return _tile("""
-    <div class="gb-tile">
-    <div class="label">Deal Aggregator</div>
-    <div class="primary">3<span class="unit">new leads</span></div>
-    <div class="footer">
-    <span class="gb-trend up">&uarr; vs. 1 yesterday</span>
-    <span class="gb-horizon">TODAY</span>
-    </div>
-    </div>
-    """)
-
-
-def tile_deal_pipeline() -> str:
-    return _tile("""
-    <div class="gb-tile">
-    <div class="label">Deal Pipeline</div>
-    <div class="primary">14<span class="unit">active deals</span></div>
-    <div class="footer">
-    <span class="gb-trend flat">&rarr; no change</span>
-    <span class="gb-horizon">NOW</span>
-    </div>
-    </div>
-    """)
-
-
-def tile_c_suite_skills() -> str:
-    return _tile("""
-    <div class="gb-tile">
-    <div class="label">C-Suite &amp; Skills</div>
-    <div class="primary">12<span class="unit">/ 12 fired</span></div>
-    <div class="gb-status-row">
-    <span class="gb-status-dot green"></span>
-    <span class="gb-status-text">all on schedule</span>
-    </div>
-    <div class="footer">
-    <span class="gb-trend flat">&rarr; same as yesterday</span>
-    <span class="gb-horizon">TODAY</span>
-    </div>
-    </div>
-    """)
-
-
-def tile_infrastructure() -> str:
-    return _tile("""
-    <div class="gb-tile">
-    <div class="label">Infrastructure</div>
-    <div class="primary">7<span class="unit">/ 7 healthy</span></div>
-    <div class="gb-status-row">
-    <span class="gb-status-dot green"></span>
-    <span class="gb-status-text">all systems nominal</span>
-    </div>
-    <div class="footer">
-    <span class="gb-trend flat">&rarr; stable</span>
-    <span class="gb-horizon">NOW</span>
-    </div>
-    </div>
-    """)
-
-
-def tile_ma_activity() -> str:
-    return _tile("""
-    <div class="gb-tile">
-    <div class="label">M&amp;A Activity</div>
-    <div class="gb-ma-list">
-    <div class="gb-ma-label">Owner conversations</div><div class="gb-ma-value">3</div>
-    <div class="gb-ma-label">NDAs signed</div><div class="gb-ma-value">1</div>
-    <div class="gb-ma-label">Financials received</div><div class="gb-ma-value">2</div>
-    <div class="gb-ma-label">LOIs submitted</div><div class="gb-ma-value">0</div>
-    </div>
-    <div class="footer">
-    <span class="gb-trend up">&uarr; vs. 4 last week</span>
-    <span class="gb-horizon">THIS WEEK</span>
-    </div>
-    </div>
-    """)
-
-
-def tile_tech_stack() -> str:
-    return _tile("""
-    <div class="gb-tile">
-    <div class="label">Tech Stack</div>
-    <div class="primary">9<span class="unit">/ 9 in range</span></div>
-    <div class="gb-status-row">
-    <span class="gb-status-dot green"></span>
-    <span class="gb-status-text">connected, credits healthy</span>
-    </div>
-    <div class="footer">
-    <span class="gb-trend flat">&rarr; stable</span>
-    <span class="gb-horizon">NOW</span>
-    </div>
-    </div>
-    """)
-
-
-def render_landing() -> None:
-    tiles = [
-        tile_deal_aggregator(),
-        tile_deal_pipeline(),
-        tile_c_suite_skills(),
-        tile_infrastructure(),
-        tile_ma_activity(),
-        tile_tech_stack(),
-    ]
-    st.markdown(
-        f'<div class="gb-grid">{"".join(tiles)}</div>',
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        '<div class="gb-page-note">Session 1 build — tiles render placeholder values. '
-        "Live data wiring ships in Sessions 2-6.</div>",
-        unsafe_allow_html=True,
-    )
 
 
 def main() -> None:
-    inject_css()
-    render_sidebar()
-    render_topbar("Dashboard")
-    render_landing()
+    _inject_css()
+
+    pages, pages_by_url = _build_pages()
+
+    # `position="hidden"` keeps Streamlit's built-in nav widget out of the
+    # sidebar so our custom nav renders unobstructed.
+    nav = st.navigation(pages, position="hidden")
+
+    _render_sidebar_brand()
+    _render_sidebar_nav(pages_by_url)
+    _render_topbar(nav.title)
+
+    nav.run()
 
 
 if __name__ == "__main__":

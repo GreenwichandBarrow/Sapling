@@ -13,8 +13,14 @@ from router.handlers.skills import inject_skill_context
 from router.handlers.gmail import block_gmail_send
 from router.handlers.weekly_tracker_validation import validate_weekly_tracker_before_slack
 from router.handlers.onepager_guardrail import enforce_onepager_purity
+from router.handlers.no_revenue_in_outreach import no_revenue_in_outreach
 
 HANDLERS = [
+    HandlerConfig(
+        fn=no_revenue_in_outreach,
+        matcher=r"^Bash$",
+        name="no-revenue-in-outreach",
+    ),
     HandlerConfig(
         fn=stats_protection,
         matcher=r"Write|Edit",

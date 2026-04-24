@@ -12,8 +12,14 @@ from router.handlers.redact_secrets import redact_bash_secrets
 from router.handlers.schema_migration import schema_update_prompt
 from router.handlers.chatroom import chatroom_state_sync
 from router.handlers.calibration import calibration_stats_updater
+from router.handlers.no_kay_in_deliverables import no_kay_in_deliverables
 
 HANDLERS = [
+    HandlerConfig(
+        fn=no_kay_in_deliverables,
+        matcher=r"Write|Edit",
+        name="no-kay-in-deliverables",
+    ),
     HandlerConfig(
         fn=redact_bash_secrets,
         matcher=r"^Bash$",

@@ -254,9 +254,10 @@ When Kay says good morning:
 5. Check Active-Outreach niches for target needs. Run target-discovery only for niches that need targets (new activation with no target sheet, or weekly dashboard flagged refill needed). Auto-advance qualifying targets, surface warm intros and edge cases in briefing. Skip niches with adequate pipeline.
 6. jj-operations runs independently (8am launchd → 10am Slack to JJ)
 7. If Friday → run three review skills in parallel (Kay needs results by 10am ET):
-   - weekly-tracker (activity data → sheet + vault)
+   - weekly-tracker (activity data → sheet + vault) — **populate the Google Sheet every Friday as mandatory output, not opt-out** (per Kay's 4/24 commitment). Chunk writes to avoid timeouts.
    - health-monitor (system health → dashboard + alerts)
    - calibration-workflow (decision traces → skill improvements)
+7b. **Friday afternoon — meta-calibration hour** (new 2026-04-24). Not a batch-fix slot (inline rule-fixes happen as they're caught per `feedback_fix_skills_inline_by_default`). This is the systemic review: (a) scan the week's traces for rules Kay corrected 2+ times → graduate to stop hook, (b) scan memory/ for stale or duplicated feedback files → consolidate/delete, (c) scan skill SKILL.md files for outdated column references or rules superseded by newer memories → refresh, (d) review the `brain/context/session-decisions-*` files for open loops that need promotion to memories. Output: 1 Slack summary to `#operations` listing what graduated to hooks, what got deleted, what skill docs were refreshed. Target: 30-60 min, not open-ended.
 8. Read the results and judge what needs to happen
 9. Present the briefing in 4 action-keyed buckets (ascending numbering across all buckets — never reset):
    - **Today / ASAP** — must ship today: active-deal fast-path, payment due, JJ unblocks, time-sensitive sends

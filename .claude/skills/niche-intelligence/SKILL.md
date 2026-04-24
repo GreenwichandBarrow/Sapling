@@ -437,6 +437,7 @@ Niche Intelligence run is complete when:
 - [ ] Both gathering agents (RECENT + HISTORICAL) posted to chatroom
 - [ ] 1-5 new niches identified (or 0 with documented reasoning)
 - [ ] One-pager .pptx created and uploaded for each new niche
+- [ ] One-pager includes a Sources section citing every source used (external URLs, vault paths, chatroom traces, CRM pulls), each with a live hyperlink per `feedback_onepager_must_cite_sources`
 - [ ] Each niche scored against detailed G&B scorecard
 - [ ] Output report written to `brain/outputs/{date}-niche-intelligence-report.md`
 - [ ] IDEATION tab updated with new niches + scores

@@ -556,6 +556,7 @@ SECTIONS TO COMPLETE:
 7. **Customers | Barriers to Entry:** Split — buyer profile left, moats right
 8. **Key Success Factors:** What matters for operating successfully in this niche
 9. **Exit:** Who would buy this business (name specific PE firms, strategics if possible)
+10. **Sources (MANDATORY, added 2026-04-24):** Full citation list with live hyperlinks for every source referenced in the one-pager — web pages researched, newsletter articles, research reports, association/trade publications, vault call notes, prior one-pagers, chatroom traces from the RECENT/HISTORICAL gathering agents, Attio or Apollo data pulls, and any sheet lookups. Each entry: `{Short title} — {one-line description} — {live URL or vault/Drive path}`. Implement as python-pptx hyperlinks (`run.hyperlink.address = url`). If the main slide table has no room, add a second slide titled "Sources" inside the same .pptx — do NOT truncate the list. Group by: (1) Gathering-agent findings, (2) External research & industry reports, (3) Internal vault references, (4) CRM/data pulls. A one-pager without Section 10 fails review per `feedback_onepager_must_cite_sources`.
 
 PPTX CREATION:
 ALWAYS clone the template file — do NOT build a new presentation from scratch.

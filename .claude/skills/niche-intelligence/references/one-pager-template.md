@@ -20,6 +20,7 @@ Row 0 of the table is the niche title. When replacing text, preserve the templat
 7. **Customers | Barriers to Entry** — Split column: who buys on left, moats on right
 8. **Key Success Factors** — What matters for operating in this niche
 9. **Exit** — Who would buy this business (PE firms, strategics, roll-ups)
+10. **Sources** — Full citation list for every source referenced in the one-pager: web pages, newsletters, research papers, association reports, vault call notes, email threads, chatroom findings from the gathering sub-agents, Attio data pulls, and any other factual input. Each entry includes a live link (URL for external sources, Drive/vault path for internal). If the template's row layout is capped, render sources as a second slide titled "Sources" in the same .pptx file — do not truncate.
 
 ## One-Pager Rules (CRITICAL)
 - **Scoring format:** Always `X.XX / 3.0 (XX%)` — no letter grades (A, B+, etc.)
@@ -27,6 +28,27 @@ Row 0 of the table is the niche title. When replacing text, preserve the templat
 - **Thesis ≠ growth drivers:** The thesis explains why the industry STRUCTURE is attractive, not why the market is growing. Growth drivers go in section 5.
 - **No score in thesis:** The thesis section must not reference the scorecard score
 - **No G&B in thesis:** The thesis is about the industry, not about G&B's fit
+- **Sources are mandatory and linked (added 2026-04-24):** Every source file/page/document used to build the one-pager must appear in Section 10 with a live hyperlink. A one-pager without a Sources section fails review. Internal sources (vault calls, prior outputs, chatroom traces) get vault-relative or Drive-URL links; external sources (web, newsletters, research reports) get full URLs. Inline citation markers in the prose are welcome but not required — what IS required is completeness of the Sources section.
+
+## Sources Section Implementation
+
+Use python-pptx hyperlinks on each source entry. Pattern:
+
+```python
+from pptx.util import Pt
+from pptx.dml.color import RGBColor
+
+# For each source:
+run = paragraph.add_run()
+run.text = source_title
+run.hyperlink.address = source_url  # full URL or file path
+run.font.size = Pt(9)
+run.font.color.rgb = RGBColor(0x0B, 0x5C, 0xAB)  # hyperlink blue
+```
+
+Entry format per source: `{Short title} — {one-line description} — {link}`.
+
+Group sources by type in this order: (1) Gathering-sub-agent findings, (2) External research & industry reports, (3) Internal vault references (call notes, prior one-pagers, decisions), (4) CRM / data pulls (Attio, Apollo, Linkt, sheet queries). Dedupe across groups — a source cited twice gets one entry under its primary category.
 
 ## Output Specifications
 - Format: .pptx (PowerPoint)

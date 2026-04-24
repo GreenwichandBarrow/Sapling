@@ -12,8 +12,10 @@ from router.models import HandlerConfig
 from router.handlers.orchestrator import orchestrator_stop_gate
 from router.handlers.meeting_brief import meeting_brief_stop_check
 from router.handlers.git import git_auto_commit_stop
+from router.handlers.no_column_letters import no_column_letters
 
 HANDLERS = [
+    HandlerConfig(fn=no_column_letters, name="no-column-letters"),
     HandlerConfig(fn=orchestrator_stop_gate, name="orchestrator-stop-gate"),
     HandlerConfig(fn=meeting_brief_stop_check, name="meeting-brief-stop-check"),
     HandlerConfig(fn=git_auto_commit_stop, name="git-auto-commit-stop"),

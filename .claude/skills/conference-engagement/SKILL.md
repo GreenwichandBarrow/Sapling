@@ -131,19 +131,29 @@ Cards handed to Kay in person are GOLD. Use them verbatim.
 ## Post-Conference Mode (T+0 to T+2)
 
 ### Inputs
-- Photo (or multiple photos) of business cards Kay collected at the event
-- Conference name + date
-- Any Granola transcript from the event (if run)
-- Kay's notes on specific conversations (optional)
+
+**Default expected handoff from Kay (per Kay 2026-04-24):**
+- Photo of the business card
+- A few lines from Kay about the engagement/interaction with that person (what they talked about, what the person said, any specific hook worth referencing, deal mentions, personality read)
+
+Kay will send these together — card image + her notes per person — in the same message or thread. Treat the notes as **required input for a thoughtful follow-up**, not a nice-to-have. If Kay sends only a card with no notes, ask her once for a sentence or two on the conversation before drafting. A generic email from a card with no context is worse than no email.
+
+**Other inputs (supplementary):**
+- Conference name + date (infer from context if not stated)
+- Granola transcript from the event, if run — use to augment Kay's notes, not replace them
+- Multiple cards at once: Kay may send a photo of 6-8 cards plus a bulleted list of notes keyed to each name
 
 ### Flow
 
 1. **OCR each card.** Extract: name, title, company, email, phone, LinkedIn (if printed). Use card data verbatim.
 
-2. **Attio dedup.** For each person:
+2. **Pair Kay's notes to each card.** Before moving on, make sure every card has Kay's engagement notes attached. If a card has no notes, ask Kay once for 1-2 sentences on the conversation. The notes drive both the Attio record and the email hook — don't skip them.
+
+3. **Attio dedup + interaction capture.** For each person:
    - Search Attio People by email (primary) and name+company (fallback)
-   - Match found → log a new touch on existing record
-   - No match → create new People record with `source=conference/{slug}-{date}`
+   - Match found → log a new touch on existing record, and append Kay's engagement notes as a dated interaction note (`"{Conference} {date} — {Kay's notes verbatim, lightly cleaned}"`). Never overwrite prior notes.
+   - No match → create new People record with `source=conference/{slug}-{date}`, populate firm/title from card, and seed the first interaction note with Kay's engagement notes.
+   - If Kay's notes include anything actionable or thesis-relevant (deal mentions, referrals offered, strong personality read, warm intro paths), surface these in the final summary so they don't get lost in a note field.
 
 3. **Classify by audience** (Intermediary / Owner / Peer). Cues:
    - Firm type: M&A, wealth, law, accounting, exit planning, banking, brokerage → Intermediary

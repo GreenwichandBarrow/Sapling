@@ -1791,8 +1791,27 @@ def _build_trends(
 # -----------------------------------------------------------------------------
 
 
+_CIM_AFFIRMATIVE = re.compile(
+    r"\bCIM(?:s)?\b\s+(received|signed|attached)", re.IGNORECASE
+)
+# Reject phrases like "No CIM received", "None — no CIMs detected",
+# "not triggered", "no CIM auto-trigger". Audited 2026-04-25 against
+# every email-scan-results file in vault — every CIM mention to date
+# has been a NEGATIVE confirmation, so the negation guard must come
+# before the affirmative regex hits.
+_CIM_NEGATION = re.compile(
+    r"\b(no|none|not|never|zero)\b[^.\n]{0,40}\bCIM",
+    re.IGNORECASE,
+)
+
+
 def _count_cims_in_window(start: date, end: date) -> int:
-    """Scan email-scan-results in the window for CIM mentions."""
+    """Scan email-scan-results in the window for affirmative CIM events.
+
+    Counts a CIM when a line contains "CIM(s) received|signed|attached" AND
+    the line does not contain a negation token within ~40 chars before the
+    CIM mention. Without the negation guard, "No CIM received" triggers a
+    false positive (audited 2026-04-25)."""
     n = 0
     if not DEAL_AGG_DIR.exists():
         return 0
@@ -1805,14 +1824,15 @@ def _count_cims_in_window(start: date, end: date) -> int:
             text = path.read_text(errors="replace")
         except OSError:
             continue
-        # "CIM received" / "CIMs received" / "CIM:" — count occurrences but
-        # avoid double-counting summary headers ("§5 CIMs Received").
         for line in text.splitlines():
             stripped = line.strip()
             if not stripped or stripped.startswith("#"):
                 continue
-            if "CIM" in stripped and re.search(r"\bCIM(?:s)?\b\s+(received|signed|attached)", stripped, re.IGNORECASE):
-                n += 1
+            if not _CIM_AFFIRMATIVE.search(stripped):
+                continue
+            if _CIM_NEGATION.search(stripped):
+                continue  # negative phrasing like "No CIM received"
+            n += 1
     return n
 
 

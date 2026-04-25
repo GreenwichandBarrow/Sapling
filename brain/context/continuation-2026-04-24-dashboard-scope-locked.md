@@ -37,19 +37,18 @@ This file **supersedes** `continuation-2026-04-24-dashboard-build.md` (the AM se
 - `feedback_silent_failures_are_the_core_concern.md` — META: silent failures are Kay's top operational worry. Always scope "what fails silently?" first.
 - `feedback_dashboard_visual_language_locked.md` — Dark theme + Avenir + tile-grid + data-table patterns validated by Kay ("blown away").
 
-## Information Architecture (LOCKED)
+## Information Architecture (LOCKED, REVISED 2026-04-24 PM)
 
-Seven sections, left-sidebar nav, Dashboard as landing page.
+**Six sections** (revised from 7), left-sidebar nav, Dashboard as landing page. Tech Stack collapsed into Infrastructure on 2026-04-24 during Session 4 design review — boundary between "external connectivity canary" and "system health" was thin and creating split mental model. Now one place to ask "is the plumbing OK?"
 
 | # | Page | Primary purpose | Cadence |
 |---|------|-----------------|---------|
-| 1 | **Dashboard** (landing) | Top-line metrics — one tile per sub-page, 1:1 mapping | Daily glance |
+| 1 | **Dashboard** (landing) | Top-line metrics — one tile per sub-page, 1:1 mapping (5 tiles after Tech Stack merge) | Daily glance |
 | 2 | **Deal Aggregator** | Businesses actively selling — aggregated from broker platforms, email, association boards. Replaces #deal-aggregator Slack posts. | Daily glance |
 | 3 | **Deal Pipeline** | Live Attio pipeline replica — deals by stage, clickable through to Attio records. | Daily glance |
-| 4 | **C-Suite & Skills** | Scheduled-skill fire/no-fire canary organized by C-suite agent (CFO/CIO/CMO/CPO/GC/COO). Primary signal: did each scheduled skill fire when it should have? | Daily check |
-| 5 | **Infrastructure** | System-health + calibration-workflow output + digest lines for per-skill activity (conferences added, niches added, investor preps, etc.). | Daily glance, deep review Fridays |
+| 4 | **C-Suite & Skills** | Scheduled-skill fire/no-fire canary organized by C-suite agent (COO/CIO/CPO/CMO/CFO/GC, in that visual order). Primary signal: did each scheduled skill fire when it should have? | Daily check |
+| 5 | **Infrastructure** | System health + external connectivity & tooling + credits & spend + calibration & learning + full tech stack inventory. Five zones, one page. | Daily glance, deep review Fridays |
 | 6 | **M&A Analytics** | Activity rollups — daily / weekly / quarterly / LTD. **Replaces Weekly Activity Tracker Google Sheet** once weekly-view ships. | Weekly for core metrics |
-| 7 | **Tech Stack** | External-dependency connectivity canary (Superhuman OAuth, Attio MCP, Apollo, gog, Granola, Slack webhooks, Claude API, GitHub) + credit balances + subscription cost variance. | Daily check |
 
 **Dropped** (Kay's explicit calls during scoping):
 - Inbox & Replies page — don't need
@@ -138,15 +137,23 @@ Hierarchical: 6 C-suite agents (CFO / CIO / CMO / CPO / GC / COO) as top-level r
 
 Data source: `logs/scheduled/*.log` + `launchctl list` + cross-reference against CLAUDE.md Scheduled Skills table per `feedback_staleness_check_schedule_first.md`.
 
-### 5. Infrastructure — PURPOSE LOCKED, detail at build time
+### 5. Infrastructure — PURPOSE LOCKED + DETAILED 2026-04-24
 
-Four zones:
-1. System-health summary (health-monitor output)
-2. Calibration updates (calibration-workflow output — stop-hook graduations, memory consolidations)
-3. Digest feed — one-line entries per per-skill activity: "4 conferences added today" (conference-discovery) / "5 niches added" (niche-intelligence) / "4 investor preps drafted" (investor-update) / etc.
-4. **Tool inventory with operational status** (added 2026-04-24 during Session 4 design review). The 11 shared tools that previously lived under C-Suite & Skills (agent-chatroom, cass, create-agent-skills, generate-prd, generate-stories, github, gogcli, motion, obsidian-vault-ops, onboard, plan-refinery) render here as a row list with per-tool **status** — examples: "API key expires in 7 days · regenerate", "auth token stale", "rate-limit hit 3x today", "0 errors today". Status is the headline; usage count is secondary. This zone is operational health, not a directory listing. Overlaps with Tech Stack page on auth/connectivity for service-backed tools (gogcli=gog, github=gh CLI, motion=API); Tech Stack handles external-service connectivity canary, Infrastructure handles tool-level operational state. Where they overlap, Infrastructure is the action surface ("regenerate this key now") and Tech Stack is the dashboard indicator. Don't duplicate; cross-link.
+**Five zones** (Tech Stack merged in 2026-04-24 PM during Session 4 design review). Reference mockup: `dashboard/mockup-infrastructure.html`.
 
-Data source: health-monitor + calibration-workflow + per-skill run artifacts + per-tool credential/error/usage state (collected by health-monitor or a new tool-health probe at build time).
+1. **System Health** — local environment integrity. Tile grid (4×2): launchd jobs registered (count vs spec), spec-vs-registered diff, logs writing, hooks firing, disk space, vault schema validation, background commits, briefing pipeline timing. Each tile has status dot + headline value + detail line.
+
+2. **External Connectivity & Tooling** — auth, API keys, MCP servers, local tools — one unified row list. Status is the headline ("API key expires in 7 days", "Index 3 days stale", "Healthy · 87 credits remaining"); action chip is one click ("Regenerate", "Refresh", "Logs"). Each row has kind tag (`service` vs `local`). Covers: claude-api, superhuman, attio-mcp, apollo, gog, granola, slack-webhooks, github, motion, linkt + local tools obsidian-vault-ops, agent-chatroom, cass. Replaces the old Infrastructure-Zone-2-tools-only AND old Tech-Stack-Section-1-services-only — they were the same kind of canary with different scope.
+
+3. **Credits & Subscription Spend** — 6-tile grid for operational runway. Apollo credits + days-at-burn, Linkt credits + sunset date, Claude API monthly spend vs budget, total subscription cost + variance vs prior, individual high-stakes line items (Motion renewal, Superhuman). Frame is operational-runway ("when will this break ops"), NOT P&L (per `feedback_budget_not_kays_job.md` — Anthony handles P&L).
+
+4. **Calibration & Learning · This Week** — what calibration-workflow codified/retired/refreshed since last Friday. Entry format: icon + headline + detail-with-code-references + timestamp. Examples: "Rule graduated to stop hook", "Memory files consolidated 3→1", "Skill SKILL.md files refreshed", "Stale memory deleted".
+
+5. **Tech Stack · Full Inventory** — canonical reference list of every service in active use, organized by function (AI & Compute / CRM & Pipeline / Email / Calendar / Storage & Docs / Notes & Knowledge / Task Management / Discovery & Outreach / Communication / Development / Utilities). Chips with status dot + service name + note ("via gog", "sunset 2026-05-30", "retired"). This is the answer to "what tools do we actually use?" — distinct from Zone 2 which is "is each one healthy *now*?"
+
+Data source: health-monitor + calibration-workflow + per-service auth/billing probes + a manually-curated stack inventory file (likely `dashboard/data/tech_stack.yaml`).
+
+**Redundancy note (2026-04-24):** the original "Digest feed — one-line entries per per-skill activity" zone was dropped during Session 4 design review. Per-skill output already lives on (a) C-Suite & Skills page (click skill → expand last 5 runs + log snippets), (b) the destination page for the actual data (Deal Aggregator for surfaced deals, Pipeline for stage moves), and (c) Dashboard landing tiles for top-line counts. A "Today's runs" filter tab on the C-Suite page is the replacement if Kay wants chronological view across skills.
 
 ### 6. M&A Analytics — PURPOSE LOCKED, detail at build time
 
@@ -164,22 +171,9 @@ Trend lines on longer horizons. This page is the Weekly Activity Tracker replace
 
 Data source: same as weekly-tracker skill (Gmail, Calendar, Attio, vault).
 
-### 7. Tech Stack — PURPOSE LOCKED, detail at build time
+### 7. ~~Tech Stack~~ — RETIRED 2026-04-24
 
-Top-to-bottom: **connectivity → trends → reference**.
-
-Section 1 — Connectivity canary:
-- Superhuman / Attio MCP / Apollo / gog CLI / Granola / Slack webhooks / Claude API / GitHub
-- Per service: status dot (🟢 healthy / 🟡 stale / 🔴 broken), last successful operation, time since
-
-Section 2 — Credits & trends:
-- Claude token burn (daily + 7-day trend)
-- Apollo credits remaining
-- Linkt credits (through 2026-05-30)
-- Subscription cost variance vs prior month — flag if delta >5%
-
-Section 3 — Reference list:
-- Full tech stack inventory, tucked below
+Merged into Infrastructure (Section 5) on 2026-04-24 PM during Session 4 design review. All three former Tech Stack sections now live as Zones 2 / 3 / 5 of Infrastructure. Sidebar entry removed; landing tile removed (was 6 tiles, now 5).
 
 ## Global behaviors (LOCKED)
 

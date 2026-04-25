@@ -287,25 +287,45 @@ def _render_stat_pills(snapshot: PipelineSnapshot) -> str:
     ).strip()
 
 
-def _render_filter_bar() -> str:
+# Visual stubs only — filter pills are interactive via st.segmented_control
+# in render(); dropdowns + search render but don't mutate state.
+def _render_filter_bar_stubs() -> str:
     return dedent(
         """
-        <div class="gb-filter-bar">
-        <div class="gb-filter-tabs">
-        <button class="gb-filter-tab active">All</button>
-        <button class="gb-filter-tab">Recent &lt;14d</button>
-        <button class="gb-filter-tab">Stalled</button>
-        </div>
-        <select class="gb-filter-select">
-        <option>All categories</option>
-        </select>
-        <select class="gb-filter-select">
-        <option>All locations</option>
-        </select>
+        <div class="gb-filter-bar" style="border-bottom: none; padding-bottom: 0; margin-bottom: 16px;">
+        <select class="gb-filter-select"><option>All categories</option></select>
+        <select class="gb-filter-select"><option>All locations</option></select>
         <input class="gb-filter-search" type="text" placeholder="Search company, owner..." />
         </div>
         """
     ).strip()
+
+
+def _filter_deals_by_pill(snapshot: PipelineSnapshot, pill: str) -> PipelineSnapshot:
+    """Apply pill filter to snapshot deals. Returns a new snapshot with the
+    deals list filtered; counts and closed strip stay the same."""
+    if pill == "All" or pill is None:
+        return snapshot
+    today = date.today()
+    if pill == "Recent <14d":
+        kept = [
+            d for d in snapshot.deals
+            if d.stage_since and (
+                today - _parse_iso(d.stage_since).date()
+                if _parse_iso(d.stage_since) else timedelta(days=999)
+            ).days < 14
+        ]
+    elif pill == "Stalled":
+        threshold = today - timedelta(days=30)
+        kept = [
+            d for d in snapshot.deals
+            if d.stage_since and _parse_iso(d.stage_since) and _parse_iso(d.stage_since).date() < threshold
+        ]
+    else:
+        kept = list(snapshot.deals)
+    # Construct a shallow-copied snapshot with the filtered deals
+    from dataclasses import replace
+    return replace(snapshot, deals=kept)
 
 
 def _render_empty_state() -> str:
@@ -330,8 +350,18 @@ def render() -> None:
 
     st.markdown(_render_subtitle(snapshot), unsafe_allow_html=True)
     st.markdown(_render_stat_pills(snapshot), unsafe_allow_html=True)
-    st.markdown(_render_filter_bar(), unsafe_allow_html=True)
-    st.markdown(_render_kanban(snapshot), unsafe_allow_html=True)
+
+    pill = st.segmented_control(
+        "Pipeline filter",
+        options=["All", "Recent <14d", "Stalled"],
+        default="All",
+        key="deal_pipeline_filter",
+        label_visibility="collapsed",
+    ) or "All"
+    filtered_snapshot = _filter_deals_by_pill(snapshot, pill)
+
+    st.markdown(_render_filter_bar_stubs(), unsafe_allow_html=True)
+    st.markdown(_render_kanban(filtered_snapshot), unsafe_allow_html=True)
     st.markdown(_render_closed_strip(snapshot), unsafe_allow_html=True)
 
     st.markdown(

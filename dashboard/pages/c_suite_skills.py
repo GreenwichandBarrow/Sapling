@@ -212,26 +212,38 @@ def _render_summary(summary: dict[str, int]) -> str:
     return f'<div class="gb-summary">{"".join(parts)}</div>'
 
 
-def _render_filter_bar() -> str:
+# Visual stubs only — pill row is interactive via st.segmented_control
+# in render(); dropdowns + search render but don't mutate state.
+def _render_filter_bar_stubs() -> str:
     return dedent(
         """
-        <div class="gb-filter-bar">
-        <div class="gb-filter-tabs">
-        <button class="gb-filter-tab active">All</button>
-        <button class="gb-filter-tab">Scheduled</button>
-        <button class="gb-filter-tab">On-demand</button>
-        <button class="gb-filter-tab">Gaps only</button>
-        </div>
-        <select class="gb-filter-select">
-        <option>All C-suites</option>
-        </select>
-        <select class="gb-filter-select">
-        <option>All statuses</option>
-        </select>
+        <div class="gb-filter-bar" style="border-bottom: none; padding-bottom: 0; margin-bottom: 16px;">
+        <select class="gb-filter-select"><option>All C-suites</option></select>
+        <select class="gb-filter-select"><option>All statuses</option></select>
         <input class="gb-filter-search" type="text" placeholder="Search skill..." />
         </div>
         """
     ).strip()
+
+
+def _filter_groups_by_pill(groups: list[CSuiteGroup], pill: str) -> list[CSuiteGroup]:
+    """Filter each group's skills based on the selected pill. Returns new
+    CSuiteGroup objects (not mutating the input). Empty groups stay so the
+    C-suite header still renders even when filtered to zero skills."""
+    if pill in (None, "All"):
+        return groups
+    out: list[CSuiteGroup] = []
+    for g in groups:
+        if pill == "Scheduled":
+            kept = [s for s in g.skills if s.is_scheduled and not s.is_gap]
+        elif pill == "On-demand":
+            kept = [s for s in g.skills if not s.is_scheduled and not s.is_gap]
+        elif pill == "Gaps only":
+            kept = [s for s in g.skills if s.is_gap or s.today_status == "missed"]
+        else:
+            kept = list(g.skills)
+        out.append(CSuiteGroup(short=g.short, label=g.label, skills=kept))
+    return out
 
 
 def render() -> None:
@@ -242,9 +254,18 @@ def render() -> None:
 
     st.markdown(_render_subtitle(), unsafe_allow_html=True)
     st.markdown(_render_summary(summary), unsafe_allow_html=True)
-    st.markdown(_render_filter_bar(), unsafe_allow_html=True)
 
-    sections = "".join(_render_group(g) for g in groups)
+    pill = st.segmented_control(
+        "Skill filter",
+        options=["All", "Scheduled", "On-demand", "Gaps only"],
+        default="All",
+        key="csuite_filter",
+        label_visibility="collapsed",
+    ) or "All"
+    filtered = _filter_groups_by_pill(groups, pill)
+
+    st.markdown(_render_filter_bar_stubs(), unsafe_allow_html=True)
+    sections = "".join(_render_group(g) for g in filtered)
     st.markdown(sections, unsafe_allow_html=True)
 
     st.markdown(

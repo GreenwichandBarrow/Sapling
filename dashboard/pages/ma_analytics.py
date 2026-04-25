@@ -59,6 +59,9 @@ def _render_subtitle(ma: MAAnalytics) -> str:
 
 
 def _render_filter_bar(ma: MAAnalytics) -> str:
+    """Visual-only — interactivity deferred. M&A Analytics has 5 zones with
+    different time scopes (Zone 1=7d window vs prior; Zone 4=12 weekly buckets
+    always); window-driving needs load_ma_analytics() refactor first."""
     date_range = (
         f"{ma.week_start.strftime('%b %-d')} – {ma.week_end.strftime('%b %-d, %Y')}"
     )
@@ -71,12 +74,8 @@ def _render_filter_bar(ma: MAAnalytics) -> str:
         <button class="gb-filter-tab">This Quarter</button>
         <button class="gb-filter-tab">LTD</button>
         </div>
-        <select class="gb-filter-select">
-        <option>All channels</option>
-        </select>
-        <select class="gb-filter-select">
-        <option>All niches</option>
-        </select>
+        <select class="gb-filter-select"><option>All channels</option></select>
+        <select class="gb-filter-select"><option>All niches</option></select>
         <div style="margin-left: auto; padding: 6px 12px; font-size: 12px;
                     background: var(--panel); border: 1px solid var(--border);
                     border-radius: 6px; color: var(--text-muted);

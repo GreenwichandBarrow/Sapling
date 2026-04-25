@@ -150,8 +150,23 @@ def _render_summary(
     ).strip()
 
 
-# Filter bar is visual-only in Session 2. Controls render identically to the
-# mockup but do not mutate state — interactive filtering ships later.
+# Visual stub — dropdowns + search render but don't filter. Time tabs are
+# now interactive via st.segmented_control above this row (see render()).
+def _render_filter_bar_stubs() -> str:
+    return dedent(
+        """
+        <div class="gb-filter-bar" style="border-bottom: none; padding-bottom: 0; margin-bottom: 16px;">
+        <select class="gb-filter-select"><option>All sources</option></select>
+        <select class="gb-filter-select"><option>All industries</option></select>
+        <select class="gb-filter-select"><option>All statuses</option></select>
+        <input class="gb-filter-search" type="text" placeholder="Search company, owner, industry..." />
+        </div>
+        """
+    ).strip()
+
+
+# Original visual-only filter bar — kept for reference. Replaced by
+# segmented_control + _render_filter_bar_stubs.
 def _render_filter_bar() -> str:
     return dedent(
         """
@@ -262,6 +277,7 @@ def render() -> None:
     days = _TIME_FILTER_DAYS[selected]
     filtered_rows = [r for r in all_rows if (today - r.scan_date).days < days]
 
+    st.markdown(_render_filter_bar_stubs(), unsafe_allow_html=True)
     st.markdown(_render_table(filtered_rows), unsafe_allow_html=True)
 
     st.markdown(

@@ -180,7 +180,9 @@ GLOBAL_CSS = f"""
     padding: 0 !important;
   }}
 
-  /* Style Streamlit's st.page_link to match our custom nav items. */
+  /* Style Streamlit's st.page_link to match our custom nav items.
+     Match mockup-landing.html: 13px / weight 400, 9px+12px padding,
+     6px gap between items (not the prior 2px which felt squished). */
   [data-testid="stSidebar"] a[data-testid="stPageLink"],
   [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"] {{
     display: flex !important;
@@ -190,11 +192,12 @@ GLOBAL_CSS = f"""
     border-radius: 6px !important;
     color: var(--text-muted) !important;
     font-size: 13px !important;
-    margin-bottom: 2px !important;
+    font-weight: 400 !important;
+    margin-bottom: 6px !important;
     text-decoration: none !important;
     background: transparent !important;
     transition: all 0.15s !important;
-    line-height: 1 !important;
+    line-height: 1.2 !important;
   }}
   [data-testid="stSidebar"] a[data-testid="stPageLink"]:hover,
   [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"]:hover {{
@@ -221,15 +224,21 @@ GLOBAL_CSS = f"""
   [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"][aria-current="page"]::before {{
     background: var(--accent);
   }}
-  /* Streamlit sometimes wraps page_link labels in an extra span — strip its own padding. */
+  /* Streamlit sometimes wraps page_link labels in an extra span — strip its
+     own padding AND force the inner text to inherit the link's color +
+     weight, so .accent on the active <a> actually paints the text blue. */
   [data-testid="stSidebar"] a[data-testid="stPageLink"] > div,
   [data-testid="stSidebar"] a[data-testid="stPageLink"] p,
+  [data-testid="stSidebar"] a[data-testid="stPageLink"] span,
   [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"] > div,
-  [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"] p {{
+  [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"] p,
+  [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"] span {{
     margin: 0 !important;
     padding: 0 !important;
     font-size: 13px !important;
-    line-height: 1 !important;
+    line-height: 1.2 !important;
+    color: inherit !important;
+    font-weight: inherit !important;
   }}
 
   /* -------- TOPBAR -------- */

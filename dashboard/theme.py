@@ -210,6 +210,14 @@ GLOBAL_CSS = f"""
     color: var(--accent) !important;
     font-weight: 500 !important;
   }}
+  /* Force the accent color onto every nested element inside the active link.
+     Streamlit nests the label in <p>, <span>, <div>, sometimes a <small> —
+     enumeration is fragile, so paint everything via descendant *. */
+  [data-testid="stSidebar"] a[data-testid="stPageLink"][aria-current="page"] *,
+  [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"][aria-current="page"] * {{
+    color: var(--accent) !important;
+    font-weight: 500 !important;
+  }}
   /* Leading dot injected via ::before so labels match the HTML mockup. */
   [data-testid="stSidebar"] a[data-testid="stPageLink"]::before,
   [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"]::before {{

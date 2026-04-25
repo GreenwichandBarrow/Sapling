@@ -219,6 +219,7 @@ Skills run on a schedule via macOS launchd, independent of active sessions:
 | `target-discovery` (Phase 2) | Sunday 11pm ET | Weekly owner enrichment: web research for next 200 un-enriched targets on JJ-Call-Only sheets |
 | `health-monitor` | Friday 12:30 AM ET | System health probes (services, hooks, vault, briefing pipeline) — output ready for Friday morning briefing |
 | `calibration-workflow` | Thursday 11pm ET | Friday meta-calibration: rules → stop hooks, memory consolidation, stale-skill refresh |
+| `attio-snapshot-refresh` | Hourly Mon-Fri 8am-8pm ET | Refreshes `brain/context/attio-pipeline-snapshot.json` so the Command Center dashboard (landing hero, Active Deal Pipeline, M&A Analytics) stays current as deals advance. Wrapper: `scripts/refresh-attio-snapshot.sh`. |
 
 `weekly-tracker` runs on Fridays but is triggered by the orchestrator during the morning workflow (not launchd). Kay needs results by 10am ET.
 

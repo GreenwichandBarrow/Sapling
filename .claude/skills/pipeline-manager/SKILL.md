@@ -119,63 +119,50 @@ The morning briefing in conversation must be **brief** — a quick reminder of w
 
 **Rule of thumb:** If Kay needs to read more than a sentence of context to act on it, send it to Slack with a link. The briefing is a checklist, not a report.
 
-### Briefing Format (4-bucket, action-keyed)
+### Briefing Format (Decisions-only)
 
-**NOTE 2026-04-24:** Decisions-only migration is PENDING the Command Center dashboard going live. Until the dashboard holds displaced context (Today/This Week/Dropped Balls/System Status), continue using the 4-bucket format below per `feedback_build_new_before_sunset_old`. Post-dashboard-launch this section flips to Decisions-only.
+Migrated 2026-04-25 from 4-bucket once Command Center dashboard went live
+to hold displaced context (Infrastructure + C-Suite & Skills pages = system
+status; Active Deal Pipeline + M&A Analytics = pipeline state + activity).
+Per `feedback_briefing_three_buckets` and `feedback_decision_fatigue_minimization`.
 
-After gathering all data from the 5 sections above, RE-ORGANIZE the output into 4 action-keyed buckets. This is what Kay sees every morning. Same buckets, same order, every day. Cluster by entity (if 2+ items reference the same person/deal/niche, they live under ONE entity heading inside the appropriate bucket — never scattered).
+After gathering data from the 5 sections above, RE-ORGANIZE into a **single
+Decisions list**, ≤5 items, ordered by urgency. Cluster by entity (collapse
+2+ items on the same person/deal/niche to ONE item with the strongest action).
+Numbering ascends across the list — never resets. Every item labeled with
+C-suite ownership in italics per `feedback_c_suite_naming`.
 
-**Numbering is ascending across all buckets** (never reset to 1 per bucket). Kay replies by number.
+**Per-item Obama framing:**
+```
+N. {urgency-emoji} *{C-suite}* **RECOMMEND: {action}** — {one-sentence reason}
+   → **YES / NO / DISCUSS**
+```
 
-**Every item is labeled with C-suite ownership** in italics: *CFO / CIO / CMO / CPO / GC* per `feedback_c_suite_naming`.
+**Urgency emojis** (replace prior buckets — sort 🔴 → 🟡 → 🟢):
+- 🔴 **Today / ASAP** — active-deal fast-path, payment due, time-sensitive sends, soft-nudges on next-day externals, broken-system escalations
+- 🟡 **This week** — bounded but not urgent
+- 🟢 **Dropped balls / nurture** — slipped follow-ups, overdue cadences, warm-intro replies (still surface — they cost deals)
 
-**Decisions bucket uses Obama framing:** `RECOMMEND: [option]` + one-sentence reason → `YES / NO / LET'S DISCUSS` so most resolve in one keystroke. Aim ≤5 Decisions per briefing per `feedback_decision_fatigue_minimization`.
+**Header line above the list:** one sentence pointing to the dashboard.
 
 ```
-**Good morning. {Day} {date} — {one-line state of the world}.**
+**Good morning. {Day} {date}.** {N} decisions ordered by urgency. System
+status + pipeline + outreach metrics live at localhost:8501.
 
-## Today / ASAP
+1. 🔴 *CIO* **RECOMMEND: Generate brief for {name} ({time} {date})** — External meeting; brief not yet drafted.
+   → **YES / NO / DISCUSS**
 
-**1. {Entity / action title}** — *{C-suite}*
-- {bullet of context if needed}
-- **{Single explicit ask}**
+2. 🔴 *CMO* **RECOMMEND: Send {entity} the {action}** — {urgency reason}.
+   → **YES (schedule for Mon AM) / NO / DISCUSS**
 
-**2. {Entity / action title}** — *{C-suite}*. {Inline context if short}. **{Approve / send / ship / etc.?}**
+3. 🟡 *CIO* **RECOMMEND: Approve target-discovery refill on {niche}** — Pipeline at {n} of {target}; refill threshold hit.
+   → **YES / NO / DISCUSS**
 
-## Decisions
-
-**3. {Decision title}** — *{C-suite}*. {1-line situation}.
-RECOMMEND: **{recommended option}** — {one-sentence reason}.
-**YES / NO ({alt option}) / LET'S DISCUSS**
-
-**4. {Decision title}** — *{C-suite}*. {1-line situation}.
-RECOMMEND: **{recommended option}** — {one-sentence reason}.
-**YES / NO / LET'S DISCUSS**
-
-## This Week
-
-**5. {Entity / item}** — *{C-suite}*. {Why this week, deadline}. **{Question or action}?**
-
-**6. {Entity / item}** — *{C-suite}*. {Context}. **{Question or action}?**
-
-## Dropped Balls
-
-**7. {Entity / slipped follow-up}** — *{C-suite}*. {What slipped, when, owner}. **{Recovery action}?**
-
-(or: "None today." with optional 1-line tracking note for items in someone else's court.)
-
----
-
-**System Status:** {1 line per scheduled skill, comma-separated when clean}. Expand only if broken/blocked. {1 line on what fires next.}
+4. 🟢 *CPO* **RECOMMEND: Re-engage {entity} (last touch {n}d)** — {context}.
+   → **YES / NO / DISCUSS**
 
 Reply by number.
 ```
-
-**Bucket definitions:**
-- **Today / ASAP** — must ship today: active-deal fast-path, payment due, JJ unblocks, time-sensitive sends. Not "would be nice today."
-- **Decisions** — needs Kay's judgment between alternatives. Each item uses RECOMMEND + YES / NO / LET'S DISCUSS. Cap ≤5.
-- **This Week** — must do this week, not today. Calendar-bound but not same-day urgent.
-- **Dropped Balls** — slipped follow-ups, overdue cadences, warm-intro replies that need recovery. **This is the highest-leverage bucket — slipped follow-ups cost deals.** If empty, say so explicitly with a tracking-only note for items in another party's court.
 
 **Briefing hygiene (CRITICAL):**
 - Only surface items that need action or decision. If something is done, resolved, or loop-closed — omit it entirely per `feedback_briefing_no_done_items`.
@@ -194,14 +181,15 @@ Reply by number.
 
 **Intermediary matches rule:** Daily broker listing matches from deal-aggregator are posted directly to #strategy-active-deals as individual Slack messages (one per deal, thumbs up/down reactions). Do NOT include individual match details in the morning briefing. The System Status line should only report: "deal-aggregator — {n} new lead matches posted to Slack".
 
-**Routing pre-existing report sections into the 4 buckets:**
-- *Pipeline shifts* (Attio stage changes, new active deals, NDA-signed detections) → **Today / ASAP** if action-needed today, else **This Week** if review-needed-soon, else collapse into Decisions if it's a kill/advance/keep call.
-- *Pipeline summary stats* (Active Deals N, Intermediary N, niche counts) → omit from buckets; surface only if delta from yesterday is non-trivial, then as a 1-line tail above System Status.
-- *Motion action steps* → **Today / ASAP** (same-day) or **This Week**.
-- *Superhuman drafts to send* → **Today / ASAP** as a single bundled approval ("Approve all N to send as-is?"), not one item per draft.
-- *Targets for review* → **Decisions** (warm intro vs cadence vs pass) — bundle by niche.
-- *Brief needed for tomorrow's meetings* → **This Week** (or **Today / ASAP** if meeting is tomorrow morning).
-- *Aging deferrals (≥5 days)* → **Dropped Balls** with kill/do-now/re-defer Obama framing.
+**Routing pre-existing report sections into urgency-tagged Decisions:**
+- *Pipeline shifts* (Attio stage changes, new active deals, NDA-signed detections) → 🔴 if action-needed today, 🟡 if review-needed-soon. Always Obama framing.
+- *Pipeline summary stats* (Active Deals N, Intermediary N, niche counts) → omit from briefing; lives on Active Deal Pipeline + M&A Analytics dashboard pages.
+- *Motion action steps* → 🔴 (same-day) or 🟡 (this week).
+- *Superhuman drafts to send* → 🔴 as a single bundled Decision: **RECOMMEND: Approve all N drafts to send Mon AM** → YES/NO/DISCUSS. Not one item per draft.
+- *Targets for review* → 🟡 Decision (warm intro vs cadence vs pass) — bundle by niche.
+- *Brief needed for tomorrow's meetings* → 🔴 Decision: **RECOMMEND: Generate brief for {name}** → YES/NO/DISCUSS (mandatory invariant per CLAUDE.md brief-decisions pre-flight).
+- *Aging deferrals (≥5 days)* → 🟢 Decision: **RECOMMEND: {kill/do-now/re-defer}** → YES/NO/DISCUSS.
+- *Broken scheduled skill or stuck snapshot job* → 🔴 Decision: **RECOMMEND: Investigate {job} (last log {timestamp})** → YES/NO. Don't bury silent failures.
 - *On deck for JJ tomorrow* → **Today / ASAP** the day before only (per JJ "On Deck" timing rule below).
 - *Today's calendar/agenda* → 1-line tail above System Status, not its own bucket.
 

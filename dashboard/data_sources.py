@@ -24,6 +24,12 @@ VAULT_ROOT = Path(__file__).resolve().parent.parent / "brain"
 DEAL_AGG_DIR = VAULT_ROOT / "context"
 PIPELINE_SNAPSHOT_PATH = VAULT_ROOT / "context" / "attio-pipeline-snapshot.json"
 JJ_SNAPSHOT_PATH = VAULT_ROOT / "context" / "jj-activity-snapshot.json"
+WEEKLY_TRACKERS_DIR = VAULT_ROOT / "trackers" / "weekly"
+
+_WEEKLY_TRACKER_FILENAME_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-weekly-tracker\.md$")
+# First number on the row after the metric label cell. Tolerant to "~49",
+# "0/0/0", "$612", commas, "/" separators. Used for NDAs / JJ dials etc.
+_FIRST_NUM_RE = re.compile(r"\b(\d+(?:[.,]\d+)?)\b")
 PIPELINE_ATTIO_URL_BASE = "https://app.attio.com/greenwich-barrow/company"
 
 # Active deal pipeline scope: NDA forward only. Identified + Contacted moved
@@ -1688,6 +1694,7 @@ def _build_trends(
     calls: list[CallSummary],
     today: date,
     jj: JJActivity | None = None,
+    weekly_history: dict[date, WeeklyTrackerSnapshot] | None = None,
 ) -> list[TrendPanel]:
     buckets = _weekly_buckets(today, weeks=12)
     x_labels = (
@@ -1710,19 +1717,31 @@ def _build_trends(
     owner_prev = owner_buckets[-2] if len(owner_buckets) >= 2 else 0
     owner_sub, owner_class = _delta_phrase(owner_now, owner_prev)
 
-    # NDAs signed weekly — derived from snapshot stage_since for stage="NDA".
-    if snapshot is not None:
-        nda_buckets = []
-        for ws, we in buckets:
-            nda_buckets.append(_stage_advances_in_window(snapshot, "NDA", ws, we))
-        nda_now = nda_buckets[-1]
-        nda_prev = nda_buckets[-2] if len(nda_buckets) >= 2 else 0
-        nda_sub, nda_class = _delta_phrase(nda_now, nda_prev)
-        nda_pending = sum(nda_buckets) == 0  # all-zeros = nothing meaningful yet
-    else:
-        nda_buckets, nda_now, nda_sub, nda_class, nda_pending = (
-            [0] * 12, 0, "Pending data", "flat", True,
-        )
+    # NDAs signed weekly — prefer weekly-tracker history (captures historical
+    # NDAs that no longer show in the live snapshot) with snapshot fallback
+    # for the current week. Snapshot only sees deals in current state, so a
+    # historical NDA that was later moved to Financials/LOI would be invisible.
+    nda_buckets: list[int] = []
+    for ws, we in buckets:
+        # Prefer weekly-tracker history when any tracker week_end falls
+        # inside this bucket (handles Fri vs Sat alignment); snapshot
+        # fallback for buckets with no tracker file.
+        v = 0
+        tracker_match = None
+        if weekly_history:
+            for tracker_date, snap in weekly_history.items():
+                if ws <= tracker_date <= we:
+                    tracker_match = snap
+                    break
+        if tracker_match is not None:
+            v = tracker_match.ndas
+        elif snapshot is not None:
+            v = _stage_advances_in_window(snapshot, "NDA", ws, we)
+        nda_buckets.append(v)
+    nda_now = nda_buckets[-1]
+    nda_prev = nda_buckets[-2] if len(nda_buckets) >= 2 else 0
+    nda_sub, nda_class = _delta_phrase(nda_now, nda_prev)
+    nda_pending = sum(nda_buckets) == 0  # truly nothing across 12 weeks
 
     panels = [
         TrendPanel(
@@ -1918,12 +1937,13 @@ def load_ma_analytics(today: date | None = None) -> MAAnalytics:
     snapshot = load_pipeline(scope="full")
     calls = _scan_calls()
     jj = load_jj_activity()
+    weekly_history = load_weekly_tracker_history()
 
     deal_flow_tiles = _build_deal_flow_tiles(
         snapshot, calls, week_start, week_end, prior_start, prior_end
     )
     channels = _build_channels(calls, week_start, week_end, jj=jj)
-    trends, x_labels = _build_trends(snapshot, calls, today, jj=jj)
+    trends, x_labels = _build_trends(snapshot, calls, today, jj=jj, weekly_history=weekly_history)
     activity_rows = _build_activity_rows(calls, week_start, week_end)
 
     return MAAnalytics(
@@ -2084,6 +2104,74 @@ def load_jj_activity() -> JJActivity | None:
         weekly_buckets=buckets,
         per_niche_lifetime=dict(data.get("per_niche_lifetime", {})),
     )
+
+
+@dataclass
+class WeeklyTrackerSnapshot:
+    """One week's metrics parsed from brain/trackers/weekly/{date}-weekly-tracker.md."""
+    week_end: date
+    ndas: int = 0
+    financials: int = 0
+    lois: int = 0
+    jj_dials: int = 0
+    owner_conversations: int = 0
+    outreach_sends: int = 0
+    conferences: int = 0
+
+
+def load_weekly_tracker_history() -> dict[date, WeeklyTrackerSnapshot]:
+    """Parse every brain/trackers/weekly/*-weekly-tracker.md into a dict
+    keyed by week_end date. Tolerant to format drift across weeks — pulls
+    the first number from each known metric row, returns 0 when absent."""
+    out: dict[date, WeeklyTrackerSnapshot] = {}
+    if not WEEKLY_TRACKERS_DIR.exists():
+        return out
+    for entry in WEEKLY_TRACKERS_DIR.iterdir():
+        m = _WEEKLY_TRACKER_FILENAME_RE.match(entry.name)
+        if not m:
+            continue
+        try:
+            week_end = date.fromisoformat(m.group(1))
+        except ValueError:
+            continue
+        try:
+            text = entry.read_text(errors="replace")
+        except OSError:
+            continue
+        snap = WeeklyTrackerSnapshot(week_end=week_end)
+        for line in text.splitlines():
+            stripped = line.strip()
+            if not stripped.startswith("|"):
+                continue
+            cells = [c.strip() for c in stripped.strip("|").split("|")]
+            if len(cells) < 2:
+                continue
+            label = cells[0].lower()
+            value_cell = cells[1]
+            num_match = _FIRST_NUM_RE.search(value_cell)
+            value = int(num_match.group(1).split(".")[0].replace(",", "")) if num_match else 0
+            # Match common labels — tolerant to phrasing drift
+            if "ndas signed" in label or "ndas /" in label or label.startswith("ndas"):
+                snap.ndas = value
+                # If row is "NDAs / financials / LOIs | 0 / 0 / 0", parse all 3
+                fl_nums = _FIRST_NUM_RE.findall(value_cell)
+                if "/" in label and len(fl_nums) >= 3:
+                    snap.financials = int(fl_nums[1].split(".")[0])
+                    snap.lois = int(fl_nums[2].split(".")[0])
+            elif "financials received" in label:
+                snap.financials = value
+            elif "lois" in label or "loi submitted" in label:
+                snap.lois = value
+            elif "jj dials" in label or "jj: dials" in label or label.startswith("jj dials"):
+                snap.jj_dials = value
+            elif "owner conversation" in label or "owner calls 15" in label or "meaningful owner" in label:
+                snap.owner_conversations = value
+            elif "outreach" in label and ("send" in label or "email" in label):
+                snap.outreach_sends = value
+            elif "conferences" in label:
+                snap.conferences = value
+        out[week_end] = snap
+    return out
 
 
 def load_calibration_log() -> CalibrationLog:

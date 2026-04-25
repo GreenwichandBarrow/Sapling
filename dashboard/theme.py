@@ -94,10 +94,13 @@ GLOBAL_CSS = f"""
   }}
 
   /* Main content padding — match mockup's 24/32/40 */
+  /* Align main content top with sidebar brand top — mockup shows
+     "G&B Command Center" and the page H1 ("Dashboard") on the same baseline.
+     Sidebar wrapper uses 20px top padding; main content matches it. */
   [data-testid="stMain"] .stMainBlockContainer,
   section.main > div.block-container,
   [data-testid="stAppViewBlockContainer"] {{
-    padding: 24px 32px 40px !important;
+    padding: 20px 32px 40px !important;
     max-width: none !important;
   }}
 

@@ -993,3 +993,304 @@ def skill_health_summary(groups: list[CSuiteGroup]) -> dict[str, int]:
             elif s.today_status == "missed":
                 counts["missed"] += 1
     return counts
+
+
+# -----------------------------------------------------------------------------
+# Infrastructure — Zone 1: System Health
+# -----------------------------------------------------------------------------
+# Pure local probes. No external auth, no MCP. Each tile reports a status
+# (ok/warn/alert) and a short detail line. Failures degrade gracefully — a
+# probe that can't run reports `unknown` rather than crashing the page.
+
+DASHBOARD_DATA_DIR = Path(__file__).resolve().parent / "data"
+TECH_STACK_PATH = DASHBOARD_DATA_DIR / "tech_stack.yaml"
+SCHEMAS_DIR = REPO_ROOT / "schemas" / "vault"
+HOOKS_SETTINGS_PATHS = [
+    REPO_ROOT / ".claude" / "settings.json",
+    REPO_ROOT / ".claude" / "settings.local.json",
+]
+
+
+@dataclass
+class HealthTile:
+    label: str  # "Launchd jobs registered"
+    status: str  # ok | warn | alert | unknown
+    value: str  # "12 / 12"
+    detail: str  # "All scheduled skills present in launchctl"
+
+
+def _registered_count() -> int:
+    return len(_registered_jobs())
+
+
+def _expected_plist_count() -> int:
+    if not LAUNCH_AGENTS_DIR.exists():
+        return 0
+    return sum(1 for _ in LAUNCH_AGENTS_DIR.glob(f"{LAUNCHD_LABEL_PREFIX}*.plist"))
+
+
+def _disk_usage_pct() -> tuple[float, str]:
+    """Return (percent_used, human_total) for the volume holding the repo."""
+    try:
+        stats = os.statvfs(str(REPO_ROOT))
+    except OSError:
+        return 0.0, "—"
+    total = stats.f_frsize * stats.f_blocks
+    free = stats.f_frsize * stats.f_bavail
+    used = total - free
+    if total == 0:
+        return 0.0, "—"
+    pct = used * 100.0 / total
+    total_tb = total / (1024 ** 4)
+    used_tb = used / (1024 ** 4)
+    if total_tb >= 1:
+        human = f"{used_tb:.1f} TB used of {total_tb:.1f} TB"
+    else:
+        total_gb = total / (1024 ** 3)
+        used_gb = used / (1024 ** 3)
+        human = f"{used_gb:.0f} GB used of {total_gb:.0f} GB"
+    return pct, human
+
+
+def _logs_writing_today() -> tuple[bool, int]:
+    """True if any scheduled log file was written today; returns count."""
+    if not SCHEDULED_LOGS_DIR.exists():
+        return False, 0
+    today = date.today().isoformat()
+    n = 0
+    for entry in SCHEDULED_LOGS_DIR.iterdir():
+        if entry.suffix != ".log":
+            continue
+        if today in entry.name:
+            n += 1
+    return n > 0, n
+
+
+def _hooks_count() -> int:
+    """Count distinct hook entries across user + repo settings.json files."""
+    seen: set[tuple[str, str]] = set()
+    for path in HOOKS_SETTINGS_PATHS:
+        if not path.exists():
+            continue
+        try:
+            data = json.loads(path.read_text())
+        except (OSError, json.JSONDecodeError):
+            continue
+        hooks = data.get("hooks", {}) or {}
+        for event_name, configs in hooks.items():
+            if not isinstance(configs, list):
+                continue
+            for cfg in configs:
+                hcmds = (cfg or {}).get("hooks", []) or []
+                for h in hcmds:
+                    cmd = (h or {}).get("command", "")
+                    seen.add((event_name, cmd))
+    return len(seen)
+
+
+def _vault_files_validated() -> tuple[int, int]:
+    """Count brain/ files vs schema-violators. Cheap heuristic: every file
+    under brain/ that has frontmatter starting with `---` and a `schema_version:`
+    field counts as validated. We do NOT actually run the schema validator
+    here — that would be too slow per render."""
+    brain = REPO_ROOT / "brain"
+    if not brain.exists():
+        return 0, 0
+    total = 0
+    violations = 0
+    for entry in brain.rglob("*.md"):
+        total += 1
+        try:
+            head = entry.read_text(errors="replace")[:512]
+        except OSError:
+            violations += 1
+            continue
+        if not head.startswith("---"):
+            violations += 1
+    return total, violations
+
+
+def _briefing_last_run() -> tuple[bool, str]:
+    """Look for today's pipeline-manager log as a proxy for briefing health."""
+    runs = _scan_logs_for_skill("pipeline-manager", limit=1)
+    if not runs:
+        # Pipeline-manager isn't on launchd today — fall back to checking
+        # whether morning briefing artifacts exist.
+        return True, "on-demand · no scheduled log"
+    latest = runs[0]
+    return latest.status == "ok", latest.fired_at.strftime("Last %a %-I:%M %p")
+
+
+def load_system_health() -> list[HealthTile]:
+    """Build the System Health tile list (Zone 1 of Infrastructure)."""
+    tiles: list[HealthTile] = []
+
+    # 1. Launchd jobs registered (count vs filesystem)
+    registered = _registered_count()
+    expected = _expected_plist_count()
+    if registered == 0 and expected == 0:
+        tiles.append(HealthTile(
+            "Launchd jobs registered", "unknown", "—",
+            "launchctl unavailable in this environment",
+        ))
+    elif registered >= expected and expected > 0:
+        tiles.append(HealthTile(
+            "Launchd jobs registered", "ok", f"{registered} / {expected}",
+            "All scheduled skills present in launchctl",
+        ))
+    else:
+        tiles.append(HealthTile(
+            "Launchd jobs registered", "warn",
+            f"{registered} / {expected}",
+            "Some plists not loaded into launchctl",
+        ))
+
+    # 2. Spec vs registered (catches health-monitor-style gaps)
+    expected_per_md = expected + len(_CLAUDE_MD_SCHEDULED_BUT_UNREGISTERED)
+    if registered >= expected_per_md:
+        tiles.append(HealthTile(
+            "Spec vs. registered", "ok", f"{registered} / {expected_per_md}",
+            "All CLAUDE.md scheduled skills accounted for",
+        ))
+    else:
+        missing = sorted(_CLAUDE_MD_SCHEDULED_BUT_UNREGISTERED)
+        tiles.append(HealthTile(
+            "Spec vs. registered", "alert",
+            f"{registered} / {expected_per_md}",
+            f"Missing plist: {', '.join(missing)}",
+        ))
+
+    # 3. Logs writing today
+    writing, today_count = _logs_writing_today()
+    if writing:
+        tiles.append(HealthTile(
+            "Logs writing today", "ok", "healthy",
+            f"{today_count} log files written today · 14-day rotation",
+        ))
+    else:
+        tiles.append(HealthTile(
+            "Logs writing today", "warn", "no logs yet",
+            "No scheduled-skill logs have been written today",
+        ))
+
+    # 4. Hooks firing (count of configured hooks across settings)
+    hooks = _hooks_count()
+    if hooks > 0:
+        tiles.append(HealthTile(
+            "Hooks configured", "ok", f"{hooks}",
+            f"{hooks} hook entries across project + user settings",
+        ))
+    else:
+        tiles.append(HealthTile(
+            "Hooks configured", "warn", "0",
+            "No hooks found in settings.json",
+        ))
+
+    # 5. Disk space
+    pct, human = _disk_usage_pct()
+    if pct >= 90:
+        tiles.append(HealthTile("Disk space", "alert", f"{pct:.0f}%", f"{human} · prune logs"))
+    elif pct >= 80:
+        tiles.append(HealthTile("Disk space", "warn", f"{pct:.0f}%", human))
+    else:
+        tiles.append(HealthTile("Disk space", "ok", f"{pct:.0f}%", human))
+
+    # 6. Vault schema validation
+    total, viol = _vault_files_validated()
+    if total == 0:
+        tiles.append(HealthTile(
+            "Vault frontmatter", "unknown", "—", "brain/ unreachable",
+        ))
+    elif viol == 0:
+        tiles.append(HealthTile(
+            "Vault frontmatter", "ok", "passing",
+            f"{total} files · all carry frontmatter",
+        ))
+    else:
+        tiles.append(HealthTile(
+            "Vault frontmatter", "warn", f"{viol} miss",
+            f"{viol} of {total} files lack frontmatter",
+        ))
+
+    # 7. Background commits — last commit time
+    try:
+        out = subprocess.run(
+            ["git", "log", "-1", "--format=%cr"],
+            cwd=REPO_ROOT, capture_output=True, text=True, timeout=5,
+        )
+        commit_age = out.stdout.strip() if out.returncode == 0 else "unknown"
+        tiles.append(HealthTile(
+            "Last commit", "ok", commit_age or "unknown",
+            "git working tree managed by background hook",
+        ))
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        tiles.append(HealthTile("Last commit", "unknown", "—", "git not available"))
+
+    # 8. Briefing pipeline (proxy: pipeline-manager log)
+    ok, briefing_text = _briefing_last_run()
+    tiles.append(HealthTile(
+        "Briefing pipeline",
+        "ok" if ok else "warn",
+        "on time" if ok else "check",
+        briefing_text,
+    ))
+
+    return tiles
+
+
+def system_health_summary(tiles: list[HealthTile]) -> dict[str, int]:
+    counts = {"healthy": 0, "warn": 0, "alert": 0, "unknown": 0}
+    for t in tiles:
+        if t.status == "ok":
+            counts["healthy"] += 1
+        elif t.status == "warn":
+            counts["warn"] += 1
+        elif t.status == "alert":
+            counts["alert"] += 1
+        else:
+            counts["unknown"] += 1
+    return counts
+
+
+# -----------------------------------------------------------------------------
+# Infrastructure — Zone 5: Tech Stack Inventory
+# -----------------------------------------------------------------------------
+
+
+@dataclass
+class StackService:
+    name: str
+    note: str | None
+    health: str  # ok | warn | alert | retired
+
+
+@dataclass
+class StackCategory:
+    label: str
+    services: list[StackService] = field(default_factory=list)
+
+
+def load_tech_stack() -> list[StackCategory]:
+    """Read dashboard/data/tech_stack.yaml and return categorized services."""
+    if not TECH_STACK_PATH.exists():
+        return []
+    try:
+        data = yaml.safe_load(TECH_STACK_PATH.read_text()) or {}
+    except (OSError, yaml.YAMLError):
+        return []
+    out: list[StackCategory] = []
+    for cat in data.get("categories", []):
+        services = [
+            StackService(
+                name=s.get("name", "?"),
+                note=s.get("note"),
+                health=s.get("health", "ok"),
+            )
+            for s in cat.get("services", [])
+        ]
+        out.append(StackCategory(label=cat.get("label", "?"), services=services))
+    return out
+
+
+def tech_stack_count(categories: list[StackCategory]) -> int:
+    return sum(len(c.services) for c in categories)

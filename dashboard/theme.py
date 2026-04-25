@@ -36,7 +36,7 @@ NAV_ITEMS = [
     ("Active Deal Pipeline", "deal-pipeline", True),
     ("M&A Analytics", "ma-analytics", False),
     ("C-Suite & Skills", "c-suite-skills", True),
-    ("Infrastructure", "infrastructure", False),
+    ("Infrastructure", "infrastructure", True),
 ]
 
 
@@ -874,6 +874,151 @@ GLOBAL_CSS = f"""
     font-size: 11px;
     color: var(--text-muted);
     font-family: "SF Mono", "Menlo", monospace;
+  }}
+
+  /* -------- INFRASTRUCTURE PAGE -------- */
+  .gb-zone {{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }}
+  .gb-zone.gb-zone-pending {{ opacity: 0.65; }}
+  .gb-zone-head {{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.01);
+  }}
+  .gb-zone-label {{
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text);
+  }}
+  .gb-zone-sublabel {{
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    margin-top: 3px;
+  }}
+  .gb-zone-meta {{
+    font-size: 11px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }}
+  .gb-zone-meta .pill {{
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    background: rgba(63, 209, 127, 0.10);
+    color: var(--green);
+    border-radius: 4px;
+    font-size: 10.5px;
+    font-weight: 500;
+  }}
+  .gb-zone-meta .pill.red {{ background: rgba(255, 90, 90, 0.12); color: var(--red); }}
+  .gb-zone-meta .pill.yellow {{ background: rgba(245, 196, 81, 0.12); color: var(--yellow); }}
+  .gb-zone-meta .pill.neutral {{ background: rgba(139, 147, 167, 0.14); color: var(--text-muted); }}
+  .gb-zone-empty {{
+    padding: 18px;
+    font-size: 12px;
+    color: var(--text-dim);
+    font-style: italic;
+    text-align: center;
+  }}
+
+  /* Zone 1: System Health tile grid */
+  .gb-health-grid {{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }}
+  .gb-health-tile {{
+    background: var(--panel);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }}
+  .gb-health-tile.alert {{ background: rgba(255, 90, 90, 0.04); }}
+  .gb-health-tile.warn {{ background: rgba(245, 196, 81, 0.03); }}
+  .gb-health-tile-label {{
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }}
+  .gb-health-tile-value {{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }}
+  .gb-health-tile-value .gb-status-dot {{ width: 10px; height: 10px; }}
+  .gb-health-tile-detail {{
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.35;
+  }}
+
+  /* Zone 5: Tech Stack inventory */
+  .gb-stack-list {{}}
+  .gb-stack-row {{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border-soft);
+  }}
+  .gb-stack-row:last-child {{ border-bottom: none; }}
+  .gb-stack-cat {{
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding-top: 6px;
+  }}
+  .gb-stack-chips {{ display: flex; flex-wrap: wrap; gap: 6px; }}
+  .gb-stack-chip {{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    font-size: 11.5px;
+    font-family: "SF Mono", "Menlo", monospace;
+    color: var(--text);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    letter-spacing: -0.01em;
+  }}
+  .gb-stack-dot {{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+  }}
+  .gb-stack-dot.yellow {{ background: var(--yellow); }}
+  .gb-stack-dot.red {{ background: var(--red); }}
+  .gb-stack-dot.dim {{ background: var(--text-dim); }}
+  .gb-stack-chip .note {{
+    font-size: 10px;
+    color: var(--text-dim);
+    font-family: inherit;
+    margin-left: 4px;
   }}
 </style>
 """

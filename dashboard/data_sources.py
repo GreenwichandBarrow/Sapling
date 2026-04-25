@@ -23,6 +23,7 @@ import yaml
 VAULT_ROOT = Path(__file__).resolve().parent.parent / "brain"
 DEAL_AGG_DIR = VAULT_ROOT / "context"
 PIPELINE_SNAPSHOT_PATH = VAULT_ROOT / "context" / "attio-pipeline-snapshot.json"
+JJ_SNAPSHOT_PATH = VAULT_ROOT / "context" / "jj-activity-snapshot.json"
 PIPELINE_ATTIO_URL_BASE = "https://app.attio.com/greenwich-barrow/company"
 
 # Active deal pipeline scope: NDA forward only. Identified + Contacted moved
@@ -1581,6 +1582,7 @@ def _build_channels(
     calls: list[CallSummary],
     week_start: date,
     week_end: date,
+    jj: JJActivity | None = None,
 ) -> list[ChannelRow]:
     in_window = _calls_in_window(calls, week_start, week_end)
     intermediary = sum(
@@ -1590,6 +1592,21 @@ def _build_channels(
         and not _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)
     )
     conferences = sum(1 for c in in_window if _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS))
+
+    # JJ row: dials this week from snapshot. Falls back to "—" when snapshot
+    # is missing so the row stays in the table without claiming a count.
+    if jj is not None:
+        jj_sent = str(jj.dials_this_week)
+        jj_reply = "—"  # outcomes need Call Status reading; not yet wired
+        jj_positive = "—"
+        jj_to_nda = "0"  # JJ doesn't move stages directly
+        jj_desc = (
+            f"Cold dial campaign · 10am–2pm ET Mon–Fri · "
+            f"{jj.dials_lifetime} lifetime across {len(jj.per_niche_lifetime)} niches"
+        )
+    else:
+        jj_sent = jj_reply = jj_positive = jj_to_nda = "—"
+        jj_desc = "Cold dial campaign · JJ snapshot unavailable"
 
     return [
         ChannelRow(
@@ -1608,9 +1625,9 @@ def _build_channels(
         ),
         ChannelRow(
             name="JJ calls",
-            description="Cold dial campaign · 10am–2pm ET Mon–Fri · live data via JJ master sheet",
+            description=jj_desc,
             dot_class="jj",
-            sent="—", reply="—", positive="—", to_nda="—",
+            sent=jj_sent, reply=jj_reply, positive=jj_positive, to_nda=jj_to_nda,
             reply_rate="—", bar_pct=0, bar_color="green", deferred=False,
         ),
         ChannelRow(
@@ -1666,6 +1683,7 @@ def _build_trends(
     snapshot: PipelineSnapshot | None,
     calls: list[CallSummary],
     today: date,
+    jj: JJActivity | None = None,
 ) -> list[TrendPanel]:
     buckets = _weekly_buckets(today, weeks=12)
     x_labels = (
@@ -1702,7 +1720,7 @@ def _build_trends(
             [0] * 12, 0, "Pending data", "flat", True,
         )
 
-    return [
+    panels = [
         TrendPanel(
             label="NDAs signed · weekly",
             value=str(nda_now),
@@ -1730,16 +1748,42 @@ def _build_trends(
             bar_color="accent",
             pending=False,
         ),
-        TrendPanel(
+    ]
+
+    if jj is not None and jj.weekly_buckets:
+        # Align JJ snapshot weekly buckets to the same 12-week window we built.
+        # Snapshot already provides 12 buckets ending today.
+        jj_counts = [b.dials for b in jj.weekly_buckets[-12:]]
+        jj_now = jj_counts[-1] if jj_counts else 0
+        jj_prev = jj_counts[-2] if len(jj_counts) >= 2 else 0
+        jj_sub, jj_class = _delta_phrase(jj_now, jj_prev)
+        jj_pending = sum(jj_counts) == 0
+        if jj_pending:
+            jj_value = "0"
+            jj_sub = "No dials in last 12 weeks"
+        else:
+            jj_value = str(jj_now)
+        panels.append(TrendPanel(
+            label="JJ dials · weekly",
+            value=jj_value,
+            delta=jj_sub,
+            delta_class=jj_class,
+            bars=_scale_bars(jj_counts),
+            bar_color="yellow",
+            pending=jj_pending,
+        ))
+    else:
+        panels.append(TrendPanel(
             label="JJ dials · weekly",
             value="—",
-            delta="Pending JJ master-sheet wiring",
+            delta="JJ snapshot unavailable",
             delta_class="flat",
             bars=[0] * 12,
             bar_color="yellow",
             pending=True,
-        ),
-    ], x_labels
+        ))
+
+    return panels, x_labels
 
 
 # -----------------------------------------------------------------------------
@@ -1849,12 +1893,13 @@ def load_ma_analytics(today: date | None = None) -> MAAnalytics:
 
     snapshot = load_pipeline(scope="full")
     calls = _scan_calls()
+    jj = load_jj_activity()
 
     deal_flow_tiles = _build_deal_flow_tiles(
         snapshot, calls, week_start, week_end, prior_start, prior_end
     )
-    channels = _build_channels(calls, week_start, week_end)
-    trends, x_labels = _build_trends(snapshot, calls, today)
+    channels = _build_channels(calls, week_start, week_end, jj=jj)
+    trends, x_labels = _build_trends(snapshot, calls, today, jj=jj)
     activity_rows = _build_activity_rows(calls, week_start, week_end)
 
     return MAAnalytics(
@@ -1967,6 +2012,54 @@ def load_credit_tiles() -> list[CreditTile]:
         )
         for t in data.get("tiles", [])
     ]
+
+
+# JJ activity snapshot — written by scripts/refresh_jj_snapshot.py
+@dataclass
+class JJWeeklyBucket:
+    week_start: date
+    week_end: date
+    dials: int
+
+
+@dataclass
+class JJActivity:
+    fetched_at: str  # ISO8601
+    dials_today: int
+    dials_this_week: int
+    dials_lifetime: int
+    weekly_buckets: list[JJWeeklyBucket] = field(default_factory=list)
+    per_niche_lifetime: dict[str, int] = field(default_factory=dict)
+
+
+def load_jj_activity() -> JJActivity | None:
+    """Load JJ activity snapshot. Returns None if snapshot missing."""
+    if not JJ_SNAPSHOT_PATH.exists():
+        return None
+    try:
+        data = json.loads(JJ_SNAPSHOT_PATH.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+    buckets = []
+    for b in data.get("weekly_buckets", []):
+        try:
+            buckets.append(
+                JJWeeklyBucket(
+                    week_start=date.fromisoformat(b["week_start"]),
+                    week_end=date.fromisoformat(b["week_end"]),
+                    dials=int(b.get("dials", 0)),
+                )
+            )
+        except (KeyError, ValueError):
+            continue
+    return JJActivity(
+        fetched_at=data.get("fetched_at", "—"),
+        dials_today=int(data.get("dials_today", 0)),
+        dials_this_week=int(data.get("dials_this_week", 0)),
+        dials_lifetime=int(data.get("dials_lifetime", 0)),
+        weekly_buckets=buckets,
+        per_niche_lifetime=dict(data.get("per_niche_lifetime", {})),
+    )
 
 
 def load_calibration_log() -> CalibrationLog:

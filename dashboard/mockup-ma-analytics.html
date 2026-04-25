@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>G&B Command Center — Mockup (M&A Analytics)</title>
+<style>
+  :root {
+    --bg: #0B0D12;
+    --panel: #141821;
+    --panel-hover: #1A1F2A;
+    --row-hover: #181C26;
+    --border: #242A36;
+    --border-soft: #1C212C;
+    --text: #E8ECF3;
+    --text-muted: #8B93A7;
+    --text-dim: #5B6378;
+    --accent: #4A9EFF;
+    --green: #3FD17F;
+    --yellow: #F5C451;
+    --red: #FF5A5A;
+    --neutral: #6B7280;
+    --purple: #B084F0;
+    --orange: #F59E68;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    font-family: "Avenir Next", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg); color: var(--text);
+    font-size: 14px; line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .app { display: grid; grid-template-columns: 240px 1fr; height: 100vh; }
+
+  /* SIDEBAR */
+  .sidebar { background: var(--panel); border-right: 1px solid var(--border); padding: 20px 0; overflow-y: auto; }
+  .brand { padding: 0 20px 24px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+  .brand .logo { font-size: 15px; font-weight: 600; letter-spacing: 0.02em; color: var(--text); }
+  .brand .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .nav-section { padding: 0 12px; }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 12px; border-radius: 6px;
+    color: var(--text-muted); font-size: 13px; cursor: pointer;
+    transition: all 0.15s; margin-bottom: 2px; text-decoration: none;
+  }
+  .nav-item:hover { background: var(--panel-hover); color: var(--text); }
+  .nav-item.active { background: rgba(74, 158, 255, 0.12); color: var(--accent); font-weight: 500; }
+  .nav-item .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim); }
+  .nav-item.active .dot { background: var(--accent); }
+
+  /* MAIN */
+  .main { overflow-y: auto; padding: 24px 32px 40px; }
+  .topbar { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+  .topbar h1 { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; }
+  .topbar .meta { font-size: 12px; color: var(--text-dim); }
+  .topbar .meta .sep { margin: 0 8px; color: var(--border); }
+  .subtitle { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+  .subtitle .highlight { color: var(--text); font-weight: 500; }
+
+  /* PERIOD + FILTER BAR */
+  .filter-bar {
+    display: flex; gap: 10px; align-items: center;
+    margin-bottom: 20px; padding-bottom: 20px;
+    border-bottom: 1px solid var(--border); flex-wrap: wrap;
+  }
+  .filter-tabs { display: flex; gap: 4px; }
+  .filter-tab {
+    padding: 6px 12px; font-size: 12px;
+    color: var(--text-muted); background: transparent;
+    border: 1px solid var(--border); border-radius: 6px;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .filter-tab:hover { background: var(--panel); color: var(--text); }
+  .filter-tab.active { background: rgba(74, 158, 255, 0.1); border-color: var(--accent); color: var(--accent); }
+  .filter-select {
+    padding: 6px 10px; font-size: 12px;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text-muted); font-family: inherit; cursor: pointer;
+  }
+  .filter-select:hover { color: var(--text); border-color: #2E3647; }
+  .date-range {
+    margin-left: auto;
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text-muted); font-variant-numeric: tabular-nums;
+  }
+  .date-range .icon { font-size: 11px; color: var(--text-dim); }
+
+  /* ZONE PANELS */
+  .zone {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 10px; margin-bottom: 16px; overflow: hidden;
+  }
+  .zone-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 18px; border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.01);
+  }
+  .zone-label {
+    font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--text);
+  }
+  .zone-sublabel { font-size: 11px; color: var(--text-muted); letter-spacing: 0.02em; margin-top: 3px; }
+  .zone-meta { font-size: 11px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+  /* KPI TILE STRIP (DealsX-inspired) */
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+  .kpi-tile {
+    background: var(--panel);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    border-top: 3px solid var(--neutral);
+  }
+  .kpi-tile.blue { border-top-color: var(--accent); background: linear-gradient(180deg, rgba(74,158,255,0.04) 0%, var(--panel) 60%); }
+  .kpi-tile.purple { border-top-color: var(--purple); background: linear-gradient(180deg, rgba(176,132,240,0.04) 0%, var(--panel) 60%); }
+  .kpi-tile.yellow { border-top-color: var(--yellow); background: linear-gradient(180deg, rgba(245,196,81,0.04) 0%, var(--panel) 60%); }
+  .kpi-tile.green { border-top-color: var(--green); background: linear-gradient(180deg, rgba(63,209,127,0.04) 0%, var(--panel) 60%); }
+  .kpi-tile.red { border-top-color: var(--red); background: linear-gradient(180deg, rgba(255,90,90,0.04) 0%, var(--panel) 60%); }
+  .kpi-tile.orange { border-top-color: var(--orange); background: linear-gradient(180deg, rgba(245,158,104,0.04) 0%, var(--panel) 60%); }
+  .kpi-icon-row {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .kpi-icon {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    background: rgba(255,255,255,0.04);
+  }
+  .kpi-tile.blue .kpi-icon { color: var(--accent); }
+  .kpi-tile.purple .kpi-icon { color: var(--purple); }
+  .kpi-tile.yellow .kpi-icon { color: var(--yellow); }
+  .kpi-tile.green .kpi-icon { color: var(--green); }
+  .kpi-tile.red .kpi-icon { color: var(--red); }
+  .kpi-tile.orange .kpi-icon { color: var(--orange); }
+  .kpi-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.04em;
+  }
+  .kpi-value {
+    font-size: 30px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .kpi-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .kpi-sub .delta-up { color: var(--green); }
+  .kpi-sub .delta-down { color: var(--red); }
+  .kpi-sub .delta-flat { color: var(--text-dim); }
+
+  /* DEAL FLOW STRIP — variation: 5 tiles */
+  .deal-flow-strip { grid-template-columns: repeat(5, 1fr); }
+
+  /* OUTBOUND FUNNEL — 5 tiles (Sent / Opened / Replied / Positive / Bounced) — DealsX layout */
+  .funnel-strip { grid-template-columns: repeat(5, 1fr); }
+
+  /* CHANNEL TABLE */
+  .ch-table { width: 100%; border-collapse: collapse; }
+  .ch-table thead th {
+    text-align: left;
+    padding: 12px 18px;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.01);
+  }
+  .ch-table thead th.right { text-align: right; }
+  .ch-table tbody td {
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border-soft);
+    vertical-align: middle;
+  }
+  .ch-table tbody tr:last-child td { border-bottom: none; }
+  .ch-table tbody tr:hover { background: var(--row-hover); }
+  .ch-table td.right { text-align: right; font-variant-numeric: tabular-nums; }
+  .ch-table td.dim { color: var(--text-dim); }
+  .ch-table .ch-name {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 500;
+  }
+  .ch-table .ch-name .ch-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--neutral);
+  }
+  .ch-table .ch-name .ch-dot.kay { background: var(--accent); }
+  .ch-table .ch-name .ch-dot.jj { background: var(--green); }
+  .ch-table .ch-name .ch-dot.dealsx { background: var(--purple); }
+  .ch-table .ch-name .ch-dot.intermediary { background: var(--yellow); }
+  .ch-table .ch-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 3px;
+  }
+  .ch-table .pct-bar {
+    display: inline-block;
+    width: 60px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-left: 8px;
+    vertical-align: middle;
+    position: relative;
+  }
+  .ch-table .pct-bar-fill {
+    position: absolute; top: 0; left: 0;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  /* TREND CHART (faked with bars) */
+  .trend-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+  .trend-cell {
+    background: var(--panel);
+    padding: 18px 20px;
+  }
+  .trend-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .trend-value-row {
+    display: flex; align-items: baseline; gap: 12px;
+    margin-bottom: 14px;
+  }
+  .trend-value {
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .trend-delta {
+    font-size: 11.5px;
+  }
+  .trend-delta.up { color: var(--green); }
+  .trend-delta.down { color: var(--red); }
+  .trend-delta.flat { color: var(--text-dim); }
+  .trend-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 60px;
+  }
+  .trend-bar {
+    flex: 1;
+    background: var(--border);
+    border-radius: 1px;
+    min-height: 4px;
+    transition: background 0.15s;
+  }
+  .trend-bar.fill { background: var(--accent); }
+  .trend-bar.fill-green { background: var(--green); }
+  .trend-bar.fill-yellow { background: var(--yellow); }
+  .trend-bar.fill-purple { background: var(--purple); }
+  .trend-cell:hover .trend-bar { opacity: 0.85; }
+  .trend-x-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ACTIVITY DETAIL ROWS */
+  .act-list {}
+  .act-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 90px;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .act-row:last-child { border-bottom: none; }
+  .act-row:hover { background: var(--row-hover); }
+  .act-cat {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .act-content {
+    font-size: 12.5px;
+    color: var(--text);
+  }
+  .act-content .num { font-weight: 500; color: var(--text); }
+  .act-content .chip {
+    display: inline-block;
+    font-size: 10.5px;
+    padding: 2px 8px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 3px;
+    color: var(--text-muted);
+    margin: 0 4px 4px 0;
+  }
+  .act-num {
+    text-align: right;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .page-note {
+    margin-top: 32px; font-size: 11px; color: var(--text-dim);
+    text-align: center; letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">G&amp;B Command Center</div>
+      <div class="sub">Greenwich &amp; Barrow</div>
+    </div>
+    <div class="nav-section">
+      <a class="nav-item" href="mockup-landing.html"><span class="dot"></span>Dashboard</a>
+      <a class="nav-item" href="mockup-deal-aggregator.html"><span class="dot"></span>Deal Aggregator</a>
+      <a class="nav-item" href="mockup-deal-pipeline.html"><span class="dot"></span>Active Deal Pipeline</a>
+      <div class="nav-item active"><span class="dot"></span>M&amp;A Analytics</div>
+      <a class="nav-item" href="mockup-c-suite-skills.html"><span class="dot"></span>C-Suite &amp; Skills</a>
+      <a class="nav-item" href="mockup-infrastructure.html"><span class="dot"></span>Infrastructure</a>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <div class="topbar">
+      <h1>M&amp;A Analytics</h1>
+      <div class="meta">
+        Friday, April 24, 2026
+        <span class="sep">•</span>
+        Activity rollups across deal flow + outreach + operations
+      </div>
+    </div>
+
+    <div class="subtitle">
+      Replaces Weekly Activity Tracker Google Sheet. <span class="highlight">Deal-flow outcomes up top, outbound funnel + channel performance below.</span>
+    </div>
+
+    <div class="filter-bar">
+      <div class="filter-tabs">
+        <button class="filter-tab">Daily</button>
+        <button class="filter-tab active">This Week</button>
+        <button class="filter-tab">This Quarter</button>
+        <button class="filter-tab">LTD</button>
+      </div>
+      <select class="filter-select">
+        <option>All channels</option>
+        <option>Kay email</option>
+        <option>JJ calls</option>
+        <option>DealsX</option>
+        <option>Conferences</option>
+        <option>Intermediary</option>
+      </select>
+      <select class="filter-select">
+        <option>All niches</option>
+        <option>Insurance</option>
+        <option>Fine Art</option>
+        <option>Equipment Servicing</option>
+        <option>HVAC</option>
+        <option>MSP</option>
+      </select>
+      <div class="date-range">
+        <span class="icon">📅</span>
+        <span>Apr 18 – Apr 24, 2026</span>
+        <span class="icon">▾</span>
+      </div>
+    </div>
+
+    <!-- ============== ZONE 1: DEAL FLOW HEADLINE ============== -->
+    <section class="zone">
+      <div class="zone-head">
+        <div>
+          <div class="zone-label">Deal Flow · Headline</div>
+          <div class="zone-sublabel">Outcomes that move the business · this week vs. prior</div>
+        </div>
+        <div class="zone-meta">7-day window</div>
+      </div>
+
+      <div class="kpi-strip deal-flow-strip">
+        <div class="kpi-tile blue">
+          <div class="kpi-icon-row">
+            <span class="kpi-icon">💬</span>
+            <span class="kpi-label">Owner conversations</span>
+          </div>
+          <div class="kpi-value">3</div>
+          <div class="kpi-sub"><span class="delta-up">↑ 3</span> vs. 0 last week</div>
+        </div>
+
+        <div class="kpi-tile purple">
+          <div class="kpi-icon-row">
+            <span class="kpi-icon">📝</span>
+            <span class="kpi-label">NDAs signed</span>
+          </div>
+          <div class="kpi-value">2</div>
+          <div class="kpi-sub"><span class="delta-up">↑ 2</span> vs. 0 last week</div>
+        </div>
+
+        <div class="kpi-tile yellow">
+          <div class="kpi-icon-row">
+            <span class="kpi-icon">📊</span>
+            <span class="kpi-label">Financials received</span>
+          </div>
+          <div class="kpi-value">1</div>
+          <div class="kpi-sub"><span class="delta-up">↑ 1</span> vs. 0 last week</div>
+        </div>
+
+        <div class="kpi-tile green">
+          <div class="kpi-icon-row">
+            <span class="kpi-icon">📤</span>
+            <span class="kpi-label">LOIs submitted</span>
+          </div>
+          <div class="kpi-value">0</div>
+          <div class="kpi-sub"><span class="delta-flat">→ same</span> as last week</div>
+        </div>
+
+        <div class="kpi-tile red">
+          <div class="kpi-icon-row">
+            <span class="kpi-icon">⊘</span>
+            <span class="kpi-label">Closed / Not proceeding</span>
+          </div>
+          <div class="kpi-value">1</div>
+          <div class="kpi-sub">post-NDA decline · 1 new this week</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== ZONE 2: OUTBOUND FUNNEL (DealsX-inspired) ============== -->
+    <section class="zone">
+      <div class="zone-head">
+        <div>
+          <div class="zone-label">Outbound Funnel</div>
+          <div class="zone-sublabel">Email volume, opens, replies, positive replies, bounces · all channels combined</div>
+        </div>
+        <div class="zone-meta">Apr 18 – Apr 24</div>
+      </div>
+
+      <div class="kpi-strip funnel-strip">
+        <div class="kpi-tile blue">
+          <div class="kpi-icon-row">
+            <span class="kpi-icon">✉</span>
+            <span class="kpi-label">Touchpoints sent</span>
+          </div>
+          <div class="kpi-value">1,879</div>
+          <div class="kpi-sub">1,539 emails + 340 LinkedIn DMs</div>
+        </div>
+
+        <div class="kpi-tile purple">
+          <div class="kpi-icon-row">
+            <span class="kpi-icon">👁</span>
+            <span class="kpi-label">Opened</span>
+          </div>
+          <div class="kpi-value">854</div>
+          <div class="kpi-sub">55.5% open rate · <span class="delta-up">↑ 3pp</span></div>
+        </div>
+
+        <div class="kpi-tile yellow">
+          <div class="kpi-icon-row">
+            <span class="kpi-icon">↩</span>
+            <span class="kpi-label">Replied</span>
+          </div>
+          <div class="kpi-value">66</div>
+          <div class="kpi-sub">4.3% reply rate · <span class="delta-up">↑ 0.4pp</span></div>
+        </div>
+
+        <div class="kpi-tile green">
+          <div class="kpi-icon-row">
+            <span class="kpi-icon">✓</span>
+            <span class="kpi-label">Positive reply</span>
+          </div>
+          <div class="kpi-value">18</div>
+          <div class="kpi-sub">1.2% positive · 12 → NDA stage</div>
+        </div>
+
+        <div class="kpi-tile red">
+          <div class="kpi-icon-row">
+            <span class="kpi-icon">⚠</span>
+            <span class="kpi-label">Bounced</span>
+          </div>
+          <div class="kpi-value">8</div>
+          <div class="kpi-sub">0.5% bounce · sender rep healthy</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== ZONE 2.5: AI RESPONSE CATEGORIZATION (DealsX live May 7) ============== -->
+    <section class="zone">
+      <div class="zone-head">
+        <div>
+          <div class="zone-label">Response Categorization · AI-Classified</div>
+          <div class="zone-sublabel">DealsX AI tags every reply by intent · sentiment breakdown on the right</div>
+        </div>
+        <div class="zone-meta">209 responses analyzed</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 1px; background: var(--border);">
+        <!-- Left: response categories list -->
+        <div style="background: var(--panel); padding: 18px 20px;">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: grid; grid-template-columns: 1fr 60px 80px; align-items: center; gap: 12px;">
+              <div>
+                <div style="font-size: 12.5px; color: var(--text); font-weight: 500;">Interested</div>
+                <div style="height: 4px; background: var(--border); border-radius: 2px; margin-top: 6px; position: relative;">
+                  <div style="position: absolute; height: 100%; width: 65%; background: var(--green); border-radius: 2px;"></div>
+                </div>
+              </div>
+              <div style="font-size: 18px; font-weight: 300; color: var(--text); text-align: right; font-variant-numeric: tabular-nums;">24</div>
+              <div style="font-size: 11px; color: var(--text-muted); text-align: right;">12.97%</div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 60px 80px; align-items: center; gap: 12px;">
+              <div>
+                <div style="font-size: 12.5px; color: var(--text); font-weight: 500;">Meeting Request</div>
+                <div style="height: 4px; background: var(--border); border-radius: 2px; margin-top: 6px; position: relative;">
+                  <div style="position: absolute; height: 100%; width: 60%; background: var(--green); border-radius: 2px;"></div>
+                </div>
+              </div>
+              <div style="font-size: 18px; font-weight: 300; color: var(--text); text-align: right; font-variant-numeric: tabular-nums;">22</div>
+              <div style="font-size: 11px; color: var(--text-muted); text-align: right;">11.89%</div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 60px 80px; align-items: center; gap: 12px;">
+              <div>
+                <div style="font-size: 12.5px; color: var(--text); font-weight: 500;">Information Request</div>
+                <div style="height: 4px; background: var(--border); border-radius: 2px; margin-top: 6px; position: relative;">
+                  <div style="position: absolute; height: 100%; width: 57%; background: var(--accent); border-radius: 2px;"></div>
+                </div>
+              </div>
+              <div style="font-size: 18px; font-weight: 300; color: var(--text); text-align: right; font-variant-numeric: tabular-nums;">21</div>
+              <div style="font-size: 11px; color: var(--text-muted); text-align: right;">11.35%</div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 60px 80px; align-items: center; gap: 12px;">
+              <div>
+                <div style="font-size: 12.5px; color: var(--text); font-weight: 500;">Wrong Person</div>
+                <div style="height: 4px; background: var(--border); border-radius: 2px; margin-top: 6px; position: relative;">
+                  <div style="position: absolute; height: 100%; width: 57%; background: var(--yellow); border-radius: 2px;"></div>
+                </div>
+              </div>
+              <div style="font-size: 18px; font-weight: 300; color: var(--text); text-align: right; font-variant-numeric: tabular-nums;">21</div>
+              <div style="font-size: 11px; color: var(--text-muted); text-align: right;">11.35%</div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 60px 80px; align-items: center; gap: 12px;">
+              <div>
+                <div style="font-size: 12.5px; color: var(--text); font-weight: 500;">Not Interested</div>
+                <div style="height: 4px; background: var(--border); border-radius: 2px; margin-top: 6px; position: relative;">
+                  <div style="position: absolute; height: 100%; width: 60%; background: var(--red); border-radius: 2px;"></div>
+                </div>
+              </div>
+              <div style="font-size: 18px; font-weight: 300; color: var(--text); text-align: right; font-variant-numeric: tabular-nums;">22</div>
+              <div style="font-size: 11px; color: var(--text-muted); text-align: right;">11.89%</div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 60px 80px; align-items: center; gap: 12px;">
+              <div>
+                <div style="font-size: 12.5px; color: var(--text-muted);">Uncategorizable by AI</div>
+                <div style="height: 4px; background: var(--border); border-radius: 2px; margin-top: 6px; position: relative;">
+                  <div style="position: absolute; height: 100%; width: 22%; background: var(--text-dim); border-radius: 2px;"></div>
+                </div>
+              </div>
+              <div style="font-size: 18px; font-weight: 300; color: var(--text-muted); text-align: right; font-variant-numeric: tabular-nums;">8</div>
+              <div style="font-size: 11px; color: var(--text-dim); text-align: right;">4.32%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: sentiment donut (faked via stacked bar) -->
+        <div style="background: var(--panel); padding: 18px 20px;">
+          <div style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px;">
+            Sentiment · 209 total responses
+          </div>
+
+          <div style="display: flex; height: 24px; border-radius: 4px; overflow: hidden; margin-bottom: 16px;">
+            <div style="background: var(--green); width: 33.5%;"></div>
+            <div style="background: var(--yellow); width: 24.9%;"></div>
+            <div style="background: var(--red); width: 41.6%;"></div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 12.5px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--green);"></span>
+                <span style="color: var(--text);">Positive</span>
+              </div>
+              <span style="color: var(--text); font-variant-numeric: tabular-nums;"><strong>70</strong> <span style="color: var(--text-muted); font-weight: 400; margin-left: 6px;">33.5%</span></span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 12.5px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--yellow);"></span>
+                <span style="color: var(--text);">Neutral</span>
+              </div>
+              <span style="color: var(--text); font-variant-numeric: tabular-nums;"><strong>52</strong> <span style="color: var(--text-muted); font-weight: 400; margin-left: 6px;">24.9%</span></span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 12.5px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--red);"></span>
+                <span style="color: var(--text);">Negative</span>
+              </div>
+              <span style="color: var(--text); font-variant-numeric: tabular-nums;"><strong>87</strong> <span style="color: var(--text-muted); font-weight: 400; margin-left: 6px;">41.6%</span></span>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-soft); font-size: 11px; color: var(--text-muted); line-height: 1.5;">
+            <strong style="color: var(--text);">67</strong> positive-intent responses (Interested + Meeting Request + Info Request) → <strong style="color: var(--green);">12</strong> advanced to NDA · <strong style="color: var(--accent);">17.9%</strong> conversion
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== ZONE 3: CHANNEL PERFORMANCE TABLE ============== -->
+    <section class="zone">
+      <div class="zone-head">
+        <div>
+          <div class="zone-label">Channel Performance</div>
+          <div class="zone-sublabel">Outbound activity by channel · sorted by conversion to NDA</div>
+        </div>
+        <div class="zone-meta">6 channels · this week</div>
+      </div>
+
+      <table class="ch-table">
+        <thead>
+          <tr>
+            <th>Channel</th>
+            <th class="right">Sent / Dialed</th>
+            <th class="right">Reply / Conv</th>
+            <th class="right">Positive</th>
+            <th class="right">→ NDA</th>
+            <th class="right">Reply rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="ch-name"><span class="ch-dot kay"></span>Kay email</div>
+              <div class="ch-desc">Owner-facing warm outreach · highest-touch</div>
+            </td>
+            <td class="right">47</td>
+            <td class="right">6</td>
+            <td class="right">4</td>
+            <td class="right"><strong>2</strong></td>
+            <td class="right">12.8% <span class="pct-bar"><span class="pct-bar-fill" style="width:64%"></span></span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="ch-name"><span class="ch-dot intermediary"></span>Intermediary intro</div>
+              <div class="ch-desc">Warm intros via advisors, brokers, peers</div>
+            </td>
+            <td class="right">8</td>
+            <td class="right">5</td>
+            <td class="right">5</td>
+            <td class="right"><strong>0</strong></td>
+            <td class="right">62.5% <span class="pct-bar"><span class="pct-bar-fill" style="width:100%; background: var(--green)"></span></span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="ch-name"><span class="ch-dot jj"></span>JJ calls</div>
+              <div class="ch-desc">Cold dial campaign · 10am–2pm ET Mon–Fri</div>
+            </td>
+            <td class="right">312</td>
+            <td class="right">56 conv</td>
+            <td class="right">9</td>
+            <td class="right"><strong>0</strong></td>
+            <td class="right">17.9% <span class="pct-bar"><span class="pct-bar-fill" style="width:50%; background: var(--green)"></span></span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="ch-name"><span class="ch-dot dealsx"></span>DealsX · email</div>
+              <div class="ch-desc">High-volume outbound email · 1,180 sends this week</div>
+            </td>
+            <td class="right">1,180</td>
+            <td class="right">35</td>
+            <td class="right">6</td>
+            <td class="right"><strong>0</strong></td>
+            <td class="right">3.0% <span class="pct-bar"><span class="pct-bar-fill" style="width:15%; background: var(--purple)"></span></span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="ch-name"><span class="ch-dot dealsx"></span>DealsX · LinkedIn DM</div>
+              <div class="ch-desc">Direct messages on LinkedIn · same prospect list as email channel</div>
+            </td>
+            <td class="right">340</td>
+            <td class="right">42</td>
+            <td class="right">9</td>
+            <td class="right"><strong>0</strong></td>
+            <td class="right">12.4% <span class="pct-bar"><span class="pct-bar-fill" style="width:62%; background: var(--purple)"></span></span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="ch-name"><span class="ch-dot" style="background: var(--orange)"></span>Conference</div>
+              <div class="ch-desc">In-person event follow-ups · XPX, ACG, Pratt</div>
+            </td>
+            <td class="right">14</td>
+            <td class="right">11</td>
+            <td class="right">8</td>
+            <td class="right"><strong>0</strong></td>
+            <td class="right">78.6% <span class="pct-bar"><span class="pct-bar-fill" style="width:100%; background: var(--orange)"></span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============== ZONE 4: TRENDS ============== -->
+    <section class="zone">
+      <div class="zone-head">
+        <div>
+          <div class="zone-label">Trends · Last 12 Weeks</div>
+          <div class="zone-sublabel">Weekly buckets · NDAs, reply rate, owner conversations, JJ dials</div>
+        </div>
+        <div class="zone-meta">Feb 2 – Apr 24, 2026</div>
+      </div>
+
+      <div class="trend-grid">
+        <div class="trend-cell">
+          <div class="trend-label">NDAs signed · weekly</div>
+          <div class="trend-value-row">
+            <span class="trend-value">2</span>
+            <span class="trend-delta up">↑ vs. 0 last week</span>
+          </div>
+          <div class="trend-bars">
+            <div class="trend-bar" style="height: 8%"></div>
+            <div class="trend-bar" style="height: 8%"></div>
+            <div class="trend-bar fill-green" style="height: 25%"></div>
+            <div class="trend-bar fill-green" style="height: 25%"></div>
+            <div class="trend-bar" style="height: 8%"></div>
+            <div class="trend-bar fill-green" style="height: 25%"></div>
+            <div class="trend-bar" style="height: 8%"></div>
+            <div class="trend-bar fill-green" style="height: 25%"></div>
+            <div class="trend-bar fill-green" style="height: 50%"></div>
+            <div class="trend-bar" style="height: 8%"></div>
+            <div class="trend-bar" style="height: 8%"></div>
+            <div class="trend-bar fill-green" style="height: 80%"></div>
+          </div>
+          <div class="trend-x-labels"><span>Feb 2</span><span>Mar 8</span><span>Apr 24</span></div>
+        </div>
+
+        <div class="trend-cell">
+          <div class="trend-label">Reply rate · weekly avg</div>
+          <div class="trend-value-row">
+            <span class="trend-value">4.3%</span>
+            <span class="trend-delta up">↑ 0.4pp vs. last week</span>
+          </div>
+          <div class="trend-bars">
+            <div class="trend-bar fill-purple" style="height: 30%"></div>
+            <div class="trend-bar fill-purple" style="height: 28%"></div>
+            <div class="trend-bar fill-purple" style="height: 35%"></div>
+            <div class="trend-bar fill-purple" style="height: 32%"></div>
+            <div class="trend-bar fill-purple" style="height: 38%"></div>
+            <div class="trend-bar fill-purple" style="height: 45%"></div>
+            <div class="trend-bar fill-purple" style="height: 42%"></div>
+            <div class="trend-bar fill-purple" style="height: 50%"></div>
+            <div class="trend-bar fill-purple" style="height: 48%"></div>
+            <div class="trend-bar fill-purple" style="height: 55%"></div>
+            <div class="trend-bar fill-purple" style="height: 60%"></div>
+            <div class="trend-bar fill-purple" style="height: 75%"></div>
+          </div>
+          <div class="trend-x-labels"><span>Feb 2</span><span>Mar 8</span><span>Apr 24</span></div>
+        </div>
+
+        <div class="trend-cell">
+          <div class="trend-label">Owner conversations · weekly</div>
+          <div class="trend-value-row">
+            <span class="trend-value">3</span>
+            <span class="trend-delta up">↑ vs. 0 last week</span>
+          </div>
+          <div class="trend-bars">
+            <div class="trend-bar fill" style="height: 15%"></div>
+            <div class="trend-bar fill" style="height: 25%"></div>
+            <div class="trend-bar fill" style="height: 20%"></div>
+            <div class="trend-bar fill" style="height: 35%"></div>
+            <div class="trend-bar fill" style="height: 28%"></div>
+            <div class="trend-bar fill" style="height: 42%"></div>
+            <div class="trend-bar fill" style="height: 38%"></div>
+            <div class="trend-bar fill" style="height: 50%"></div>
+            <div class="trend-bar fill" style="height: 45%"></div>
+            <div class="trend-bar fill" style="height: 30%"></div>
+            <div class="trend-bar fill" style="height: 18%"></div>
+            <div class="trend-bar fill" style="height: 78%"></div>
+          </div>
+          <div class="trend-x-labels"><span>Feb 2</span><span>Mar 8</span><span>Apr 24</span></div>
+        </div>
+
+        <div class="trend-cell">
+          <div class="trend-label">JJ dials · weekly</div>
+          <div class="trend-value-row">
+            <span class="trend-value">312</span>
+            <span class="trend-delta flat">→ vs. 305 last week</span>
+          </div>
+          <div class="trend-bars">
+            <div class="trend-bar fill-yellow" style="height: 60%"></div>
+            <div class="trend-bar fill-yellow" style="height: 65%"></div>
+            <div class="trend-bar fill-yellow" style="height: 58%"></div>
+            <div class="trend-bar fill-yellow" style="height: 72%"></div>
+            <div class="trend-bar fill-yellow" style="height: 68%"></div>
+            <div class="trend-bar fill-yellow" style="height: 75%"></div>
+            <div class="trend-bar fill-yellow" style="height: 70%"></div>
+            <div class="trend-bar fill-yellow" style="height: 82%"></div>
+            <div class="trend-bar fill-yellow" style="height: 78%"></div>
+            <div class="trend-bar fill-yellow" style="height: 85%"></div>
+            <div class="trend-bar fill-yellow" style="height: 88%"></div>
+            <div class="trend-bar fill-yellow" style="height: 86%"></div>
+          </div>
+          <div class="trend-x-labels"><span>Feb 2</span><span>Mar 8</span><span>Apr 24</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== ZONE 5: ACTIVITY DETAIL ============== -->
+    <section class="zone">
+      <div class="zone-head">
+        <div>
+          <div class="zone-label">Activity Detail · This Week</div>
+          <div class="zone-sublabel">Niche pipeline state, conferences, intermediary touchpoints</div>
+        </div>
+        <div class="zone-meta">7-day window</div>
+      </div>
+
+      <div class="act-list">
+        <div class="act-row">
+          <div class="act-cat">Active Niches</div>
+          <div class="act-content">
+            <span class="chip">Insurance Brokerage</span>
+            <span class="chip">Fine Art Storage</span>
+            <span class="chip">Equipment Servicing</span>
+            <span class="chip">Managed IT Services</span>
+          </div>
+          <div class="act-num">4</div>
+        </div>
+        <div class="act-row">
+          <div class="act-cat">Conferences attended</div>
+          <div class="act-content">
+            <span class="chip">XPX NJ · Apr 23</span>
+            <span class="chip">ACG NY · Apr 21</span>
+          </div>
+          <div class="act-num">2</div>
+        </div>
+        <div class="act-row">
+          <div class="act-cat">Intermediary meetings</div>
+          <div class="act-content">
+            <span class="chip">Matt Luczyk (Peapack)</span>
+            <span class="chip">Sam Doss (DealsX)</span>
+            <span class="chip">Saltoun call</span>
+          </div>
+          <div class="act-num">3</div>
+        </div>
+        <div class="act-row">
+          <div class="act-cat">CIMs received</div>
+          <div class="act-content">
+            <span class="chip">Meridian Fine Art Storage</span>
+            <span class="chip">Brookline Insurance</span>
+          </div>
+          <div class="act-num">2</div>
+        </div>
+        <div class="act-row">
+          <div class="act-cat">Business cards added</div>
+          <div class="act-content">
+            <span class="chip">17 new contacts from XPX + ACG</span>
+            <span class="chip">all flagged for warm follow-up</span>
+          </div>
+          <div class="act-num">17</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="page-note">
+      MOCKUP — static HTML with fake-but-realistic data.
+      <br>Data sources: weekly-tracker (Gmail/Calendar/Attio/vault), JJ master sheet (dials/conversions), Attio MCP (deal-flow outcomes), Granola (meeting/conversation count).
+      <br><strong style="color: var(--text-muted);">DealsX integration available May 7, 2026</strong> — unlocks live AI-classified responses, sentiment, lead categories, follow-up tracking, AND LinkedIn DM metrics (sent/read/replied) alongside email.
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>

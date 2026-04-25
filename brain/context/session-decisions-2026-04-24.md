@@ -100,3 +100,45 @@ Started Session 3 same day after the Session 2 commit — Kay chose to keep buil
 - **Session 4 — C-Suite & Skills page** — not started this session per one-page-per-session pacing rule.
 - **Scheduled snapshot refresh** — waits until all 6 dashboard pages ship and we can batch the automation story.
 - **Interactive filter bar on Deal Pipeline** (stage-filter, search) — consistent with Deal Aggregator's visual-only filter, add interactivity after all pages ship.
+
+# Session 4 PM — Mockup-First Design Pass (all 6 dashboard views scoped end-to-end)
+
+Long PM session. No Streamlit code shipped — pure scope refinement using static HTML mockups as the design surface. Kay's instinct ("I see how useful the mockups are") drove this; the workflow turned out to be high-leverage because every redundancy and architectural drift surfaced visually before being committed to code.
+
+## Decisions
+
+- **APPROVE: Tech Stack page → merged into Infrastructure.** Original IA had 7 sections; collapsed to 6. Boundary between "external connectivity canary" (old Tech Stack §1) and "system health + tooling status" (Infrastructure) was thin and was creating a split mental model. Now one place to ask "is the plumbing OK?" Kay's exact reaction: "wow I love infrastructure now."
+- **APPROVE: Drop "Today's Skill Activity Digest" zone from Infrastructure.** Originally specced as Zone 3. Caught as redundant — same per-skill output already lives on (a) C-Suite & Skills page click-to-expand, (b) Deal Aggregator for surfaced deals, (c) Dashboard landing tiles for top-line counts. Replacement if Kay wants chronological view = "Today's runs" filter tab on C-Suite & Skills.
+- **APPROVE: Pipeline page rescoped to NDA-forward only.** Renamed "Deal Pipeline" → "Active Deal Pipeline." 6-column Kanban (Identified → Signed LOI) collapsed to 4 (NDA → Financials Received → Submitted LOI → Signed LOI). Reasoning: DealsX scaling will push Identified+Contacted into the thousands, making those columns visually useless and turning the page into an outbound funnel report. Pipeline now answers "what conversations am I actually in?"; outbound funnel data moves to M&A Analytics. Closed strip filters to post-NDA failures only (~12 lifetime, not 131 which mostly was outreach attrition).
+- **APPROVE: Active Deal Pipeline as hero tile on Dashboard landing.** Featured full-width tile with 56px headline number ("3 active conversations"), 4 stage breakdown cells, accent-blue gradient. Other 4 tiles (Deal Aggregator, M&A Analytics, C-Suite & Skills, Infrastructure) drop to 4-col row below. Frame: "what's happening with my deals?" gets prime real estate.
+- **APPROVE: Sidebar reorder — deal-flow grouped above system-internals.** New order: Dashboard / Deal Aggregator / Active Deal Pipeline / M&A Analytics / C-Suite & Skills / Infrastructure. Story top to bottom: where deals come from → where they go → how the system runs.
+- **APPROVE: M&A Analytics absorbs outbound funnel + DealsX AI categorization + LinkedIn DM channel.** 5 zones: Deal Flow Headline (5 KPI tiles in DealsX visual style) / Outbound Funnel (5 tiles email + LinkedIn) / Response Categorization · AI-Classified (Interested 24 / Meeting Request 22 / Info Request 21 / etc. + sentiment stacked bar) / Channel Performance (6 channels including DealsX-LinkedIn split) / Trends 12wk (4 sparkline panels) / Activity Detail (niches/conferences/intermediaries/CIMs/cards).
+- **APPROVE: C-Suite ordering on C-Suite & Skills page.** Top to bottom: COO / CIO / CPO / CMO / CFO / GC. Validated with Kay.
+- **APPROVE: 26-service tech stack inventory.** Validated against Kay's verbatim list (Granola, Attio, Google Workspace, Google Voice, Gmail, Superhuman, Squarespace, Howie, Motion, Microsoft Excel, Slack, Canva, ChatGPT, Linkt, Apollo, LinkedIn, Claude Code, Gusto, GitHub, Cursor, Node.js, Whispr). Granola flagged with yellow dot — Attio's future Meet Record may absorb it. Dropped from prior version: Claude.ai web, Gemini Nano-Banana, Beads, gh CLI, Streamlit, Pure Paste/Maccy, launchd, plistlib (either bundled, internal, or speculation).
+- **PASS: No DealsX integration tile on landing.** Kay confirmed funnel stats stay on M&A Analytics (one click away), not duplicated to a 6th landing tile.
+
+## Actions Taken
+
+- **CREATED:** `dashboard/mockup-deal-pipeline.html` (4-col Kanban with category chips, stage-age dots, proportion bars, post-NDA closed strip).
+- **CREATED:** `dashboard/mockup-c-suite-skills.html` (6 C-suites + descriptions per skill + GC empty-state + health-monitor red-flagged gap).
+- **CREATED:** `dashboard/mockup-infrastructure.html` (5 zones — System Health tile grid / External Connectivity & Tooling rows / Credits & Spend / Calibration & Learning / Tech Stack inventory).
+- **CREATED:** `dashboard/mockup-ma-analytics.html` (5 zones — Deal Flow Headline / Outbound Funnel / AI Response Categorization + Sentiment / Channel Performance with LinkedIn split / Trends 12wk / Activity Detail).
+- **UPDATED:** `dashboard/mockup-landing.html` — Active Deal Pipeline hero tile, Tech Stack tile removed, M&A tile re-stacked with outbound metrics, sidebar reordered.
+- **UPDATED:** All 5 mockup sidebars cross-linked, navigation order locked (deal-flow above system-internals).
+- **UPDATED:** `brain/context/continuation-2026-04-24-dashboard-scope-locked.md` — IA table from 7 to 6 sections, Section 5 (Infrastructure) detailed with all 5 zones, Section 7 (Tech Stack) marked retired, Section 3 (Active Deal Pipeline) rescoped to NDA-forward, "Post-May-7 follow-ups" section added with DealsX integration triggers.
+- **CREATED:** `memory/feedback_collapse_thin_boundaries.md` — design heuristic validated today: when two internal-tool pages share thin boundaries, recommend merge before coding.
+- **CREATED:** `memory/project_dashboard_externalizes_mental_load.md` — captured Kay's "I feel like this dashboard was all of the information I was juggling in my mind" moment as the load-bearing design test for future page scope decisions.
+- **UPDATED:** `memory/MEMORY.md` — index entries for both new memories.
+
+## Deferred (Post-May-7 triggers, captured in scope doc)
+
+- **Wire DealsX integration** — pull AI-classified responses, sentiment, lead categories, follow-up status, LinkedIn DM metrics into M&A Analytics zones 2 / 2.5 / 3.
+- **Align response taxonomy across DealsX + JJ call log.** DealsX uses Interested / Meeting Request / Information Request / Wrong Person / Not Interested / Uncategorizable. JJ's call log uses different outcome categories. Once both live, audit side-by-side and either align JJ's taxonomy to DealsX OR build an explicit mapping table. Don't pre-decide.
+- **Confirm DealsX LinkedIn DM metric semantics** — read receipts? connection-request acceptance? response time? Tune the Channel Performance table once DealsX exposes those fields.
+
+## Open Loops
+
+- **Phase 2 = data wiring.** All 6 mockups complete; build sequence locked: Session 4 (C-Suite & Skills, all local data) → Session 4.5 (Pipeline polish: filter to NDA, add category chips + age dots + proportion bars) → Session 5 (Infrastructure, mostly local + auth probes) → Session 6 (M&A Analytics non-DealsX zones) → Post-May-7 (DealsX zones).
+- **Pipeline polish hasn't been pushed to existing `pages/deal_pipeline.py` yet.** Mockup defines the spec; the live page still shows all 6 stages.
+- **C-Suite & Skills `implemented` flag in `theme.py::NAV_ITEMS` still False.** Flips True once the page renders.
+- **Streamlit server still running from earlier in the day** — `lsof -ti:8501` should be cleared at the start of any code session.

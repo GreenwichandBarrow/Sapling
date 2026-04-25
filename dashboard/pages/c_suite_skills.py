@@ -188,18 +188,25 @@ def _render_subtitle() -> str:
 
 
 def _render_summary(summary: dict[str, int]) -> str:
+    """Match mockup-c-suite-skills.html: always show the 5 pills (skills,
+    fired today, scheduled later, scheduling gap, on-demand) so the strip
+    layout is stable even on weekends. Color the number pills directly:
+    green for fired, red for gap/missed when >0, dim when 0."""
+    fired = summary["fired_today"]
+    gaps = summary["gaps"]
+    missed = summary["missed"]
+    fired_color = "var(--green)" if fired else "var(--text-dim)"
+    gap_color = "var(--red)" if gaps else "var(--text-dim)"
+
     parts = [
         f'<div><span class="num">{summary["total"]}</span>skills</div>',
-        f'<div><span class="num green">{summary["fired_today"]}</span>fired today</div>',
+        f'<div><span class="num" style="color:{fired_color};">{fired}</span>fired today</div>',
         f'<div><span class="num">{summary["on_deck"]}</span>scheduled later this week</div>',
+        f'<div><span class="num" style="color:{gap_color};">{gaps}</span>scheduling gap</div>',
     ]
-    if summary["missed"]:
+    if missed:
         parts.append(
-            f'<div><span class="num red">{summary["missed"]}</span>missed today\'s window</div>'
-        )
-    if summary["gaps"]:
-        parts.append(
-            f'<div><span class="num red">{summary["gaps"]}</span>scheduling gap</div>'
+            f'<div><span class="num" style="color:var(--red);">{missed}</span>missed today\'s window</div>'
         )
     parts.append(f'<div><span class="num">{summary["ondemand"]}</span>on-demand</div>')
     return f'<div class="gb-summary">{"".join(parts)}</div>'

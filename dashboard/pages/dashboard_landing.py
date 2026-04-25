@@ -126,7 +126,9 @@ def _hero_active_deal_pipeline() -> str:
     total = nda_n + fin_n + loi_n + sloi_n
     advanced = _advanced_this_week(deals, today)
     stalled = _stalled_count(deals, today)
-    closed_lifetime = snapshot.closed_count
+    # Hero is NDA-forward scoped, so show post-NDA closures only — pre-NDA
+    # outreach attrition lives on Deal Aggregator / M&A Analytics, not here.
+    closed_post_nda = getattr(snapshot, "closed_count_post_nda", 0)
 
     if total == 0:
         headline_unit = "NDA forward"
@@ -167,7 +169,7 @@ def _hero_active_deal_pipeline() -> str:
     &nbsp;&middot;&nbsp;
     {stalled_html}
     &nbsp;&middot;&nbsp;
-    <span>{closed_lifetime} closed lifetime</span>
+    <span>{closed_post_nda} closed post-NDA lifetime</span>
     </div>
     <div class="gb-hero-cta">View pipeline &rarr;</div>
     </div>

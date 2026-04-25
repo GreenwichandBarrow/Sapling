@@ -189,24 +189,40 @@ def _render_kanban(snapshot: PipelineSnapshot) -> str:
 
 
 def _render_closed_strip(snapshot: PipelineSnapshot) -> str:
+    """Show post-NDA failures (deals with engagement signal: notes or
+    meaningful_conversation). Pre-NDA outreach attrition counted separately
+    in the header so the strip stays focused on meaningful losses."""
     items = "".join(
         f'<a class="gb-closed-item" href="{escape(c.attio_url)}" '
         f'target="_blank" rel="noreferrer noopener">{escape(c.company)}</a>'
         for c in snapshot.closed_recent
     )
+    post_nda = snapshot.closed_count_post_nda
+    pre_nda = snapshot.closed_count_pre_nda
     recent_n = len(snapshot.closed_recent)
+
+    if post_nda == 0:
+        body = (
+            '<div class="gb-empty" style="padding: 12px 0;">'
+            "No post-NDA closures yet — every loss to date is pre-NDA "
+            "outreach attrition (cold email + LinkedIn DM nonresponse)."
+            "</div>"
+        )
+    else:
+        body = f'<div class="gb-closed-list">{items}</div>'
+
     return dedent(
         f"""
         <div class="gb-closed-strip">
         <div class="gb-closed-header">
-        <span class="gb-closed-title">{escape(snapshot.terminal_stage)}</span>
+        <span class="gb-closed-title">{escape(snapshot.terminal_stage)} &middot; Post-NDA</span>
         <span class="gb-closed-total">
-        <strong>{snapshot.closed_count}</strong> closed lifetime
-        &middot; {recent_n} most recent shown
-        &middot; <em style="color: var(--text-dim);">includes pre-NDA outreach attrition until snapshot enhancement splits post-NDA failures</em>
+        <strong>{post_nda}</strong> post-NDA failures
+        &middot; {pre_nda} pre-NDA outreach attrition (excluded)
+        &middot; {recent_n} of {post_nda} shown
         </span>
         </div>
-        <div class="gb-closed-list">{items}</div>
+        {body}
         </div>
         """
     ).strip()

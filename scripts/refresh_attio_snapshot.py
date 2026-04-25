@@ -195,6 +195,20 @@ def _arr_to_bucket(value) -> str:
     return "$50M+"
 
 
+def _entry_engagement_signal(entry: dict) -> bool:
+    """True if a closed entry has meaningful_conversation OR notes attached.
+
+    Used to split closed_count into post-NDA failures (had engagement) vs
+    pre-NDA outreach attrition (no engagement). Audit 2026-04-25: 2 of 132
+    closed entries have engagement signal — both via notes."""
+    ev = entry.get("entry_values", {}) or {}
+    mc = ev.get("meaningful_conversation") or []
+    if any((v.get("value") for v in mc)):
+        return True
+    notes = ev.get("notes") or []
+    return bool(notes)
+
+
 def _build_snapshot(api_key: str) -> dict:
     print(f"[refresh] fetching list entries (list_id={LIST_ID})", file=sys.stderr)
     entries = _fetch_list_entries(api_key)
@@ -202,7 +216,8 @@ def _build_snapshot(api_key: str) -> dict:
 
     # Group by stage; collect closed entries separately for closed_count + recent
     by_record: dict[str, dict] = {}  # record_id -> latest entry data (for dedup)
-    closed_entries: list[dict] = []
+    closed_entries: list[dict] = []  # all closed
+    closed_post_nda: list[dict] = []  # closed WITH engagement signal
 
     for entry in entries:
         record_id = _entry_record_id(entry)
@@ -212,6 +227,8 @@ def _build_snapshot(api_key: str) -> dict:
         item = {"record_id": record_id, "stage": stage, "stage_since": since}
         if stage == TERMINAL_STAGE:
             closed_entries.append(item)
+            if _entry_engagement_signal(entry):
+                closed_post_nda.append(item)
             continue
         # Dedupe active deals by record_id, keeping newest stage_since
         existing = by_record.get(record_id)
@@ -245,10 +262,12 @@ def _build_snapshot(api_key: str) -> dict:
         })
         time.sleep(0.05)  # Stay well under Attio's 150/min limit
 
-    # Closed: just count + keep the most recent N as stubs (no field fetch)
-    closed_entries.sort(key=lambda e: e.get("stage_since") or "", reverse=True)
+    # closed_recent shows the post-NDA failures (the meaningful set), not
+    # bulk pre-NDA outreach attrition. Deals with notes/meaningful_conversation
+    # signals are the candidate post-NDA closures worth surfacing.
+    closed_post_nda.sort(key=lambda e: e.get("stage_since") or "", reverse=True)
     closed_recent = []
-    for item in closed_entries[:RECENT_CLOSED_KEEP]:
+    for item in closed_post_nda[:RECENT_CLOSED_KEEP]:
         try:
             record = _fetch_record(api_key, item["record_id"])
         except requests.HTTPError:
@@ -268,8 +287,10 @@ def _build_snapshot(api_key: str) -> dict:
         "list_name": LIST_NAME,
         "stages": STAGES,
         "deals": deals,
-        "closed_count": len(closed_entries),
-        "closed_recent": closed_recent,
+        "closed_count": len(closed_entries),  # total lifetime (pre + post NDA)
+        "closed_count_post_nda": len(closed_post_nda),  # deals with engagement signal
+        "closed_count_pre_nda": len(closed_entries) - len(closed_post_nda),
+        "closed_recent": closed_recent,  # post-NDA failures only
     }
 
 

@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-04-25T16:19:24Z",
+  "fetched_at": "2026-04-25T16:59:59Z",
   "list_id": "0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b",
   "list_name": "Active Deals \u2013 Owners",
   "stages": [
@@ -233,65 +233,19 @@
     }
   ],
   "closed_count": 132,
+  "closed_count_post_nda": 2,
+  "closed_count_pre_nda": 130,
   "closed_recent": [
     {
-      "record_id": "33de1500-4f63-4d55-9e1e-3cb468bd0066",
-      "company": "Atelier 4, LLC",
-      "stage_since": "2026-04-03T10:39:21.451000000Z",
-      "location": null
+      "record_id": "788584f4-e99d-4704-887f-2173119cfb9a",
+      "company": "Aiston Fine Art Services",
+      "stage_since": "2026-03-30T23:31:40.648000000Z",
+      "location": "New York, New York"
     },
     {
-      "record_id": "08850a34-ac32-4756-8133-6a8c2faff307",
-      "company": "Propertyware, a RealPage Company",
-      "stage_since": "2026-03-30T23:43:00.520000000Z",
-      "location": null
-    },
-    {
-      "record_id": "4d00212e-15cb-4c07-900c-053ca869b62e",
-      "company": "Chromatic FAS",
-      "stage_since": "2026-03-30T23:42:59.664000000Z",
-      "location": null
-    },
-    {
-      "record_id": "581b2fda-c5ae-41a2-8f5c-32cccfff2513",
-      "company": "U.S. Art Company",
-      "stage_since": "2026-03-30T23:42:58.438000000Z",
-      "location": null
-    },
-    {
-      "record_id": "81f62272-4566-44ab-8327-a7cb6a64c0c8",
-      "company": "Gander & White Shipping (USA)",
-      "stage_since": "2026-03-30T23:42:57.347000000Z",
-      "location": null
-    },
-    {
-      "record_id": "b19adecc-ea0e-44ce-bdde-6aa8818c7642",
-      "company": "Zuma",
-      "stage_since": "2026-03-30T23:42:56.558000000Z",
-      "location": null
-    },
-    {
-      "record_id": "6b2be17b-80ee-439e-8a94-e53b6de4e4f8",
-      "company": "Yourefolio",
-      "stage_since": "2026-03-30T23:42:55.541000000Z",
-      "location": null
-    },
-    {
-      "record_id": "2780eefb-fd71-452a-84a8-7edef82d20e8",
-      "company": "Work of Art Services",
-      "stage_since": "2026-03-30T23:42:53.615000000Z",
-      "location": null
-    },
-    {
-      "record_id": "eaa1dc09-e2ae-44fa-a75c-1677a98f4cca",
-      "company": "WOOD-LEE International Art Handler",
-      "stage_since": "2026-03-30T23:42:52.747000000Z",
-      "location": null
-    },
-    {
-      "record_id": "e41d1174-4e16-453e-b6e7-5d4afc5d75c9",
-      "company": "Withey & Co., Inc.",
-      "stage_since": "2026-03-30T23:42:52.026000000Z",
+      "record_id": "4a026d42-aceb-4743-b83d-e508b62f0639",
+      "company": "Project Restoration",
+      "stage_since": "2026-03-26T16:15:19.724000000Z",
       "location": null
     }
   ]

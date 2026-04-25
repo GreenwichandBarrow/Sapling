@@ -413,8 +413,10 @@ class PipelineSnapshot:
     stages: list[str]
     terminal_stage: str
     deals: list[PipelineDeal]
-    closed_count: int
+    closed_count: int  # lifetime total (pre + post NDA)
     closed_recent: list[ClosedDealStub]
+    closed_count_post_nda: int = 0  # deals with engagement signal
+    closed_count_pre_nda: int = 0  # outreach attrition (no engagement)
 
 
 def load_pipeline(scope: str = "active") -> PipelineSnapshot | None:
@@ -453,6 +455,8 @@ def load_pipeline(scope: str = "active") -> PipelineSnapshot | None:
         deals=deals,
         closed_count=int(data.get("closed_count") or 0),
         closed_recent=[ClosedDealStub(**c) for c in data.get("closed_recent", [])],
+        closed_count_post_nda=int(data.get("closed_count_post_nda") or 0),
+        closed_count_pre_nda=int(data.get("closed_count_pre_nda") or 0),
     )
 
 

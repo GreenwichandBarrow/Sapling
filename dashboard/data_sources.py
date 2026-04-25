@@ -8,10 +8,13 @@ skill outputs (zero-deal days, sub-headers, missing fields).
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 import json
+import os
+import plistlib
 import re
+import subprocess
 from typing import Iterable
 
 import yaml
@@ -21,6 +24,20 @@ VAULT_ROOT = Path(__file__).resolve().parent.parent / "brain"
 DEAL_AGG_DIR = VAULT_ROOT / "context"
 PIPELINE_SNAPSHOT_PATH = VAULT_ROOT / "context" / "attio-pipeline-snapshot.json"
 PIPELINE_ATTIO_URL_BASE = "https://app.attio.com/greenwich-barrow/company"
+
+# Active deal pipeline scope: NDA forward only. Identified + Contacted moved
+# to M&A Analytics (outbound funnel) on 2026-04-24 — scope-doc Section 3.
+ACTIVE_PIPELINE_STAGES = (
+    "NDA",
+    "Financials Received",
+    "Submitted LOI",
+    "Signed LOI",
+)
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+LAUNCH_AGENTS_DIR = Path.home() / "Library" / "LaunchAgents"
+SCHEDULED_LOGS_DIR = REPO_ROOT / "logs" / "scheduled"
+LAUNCHD_LABEL_PREFIX = "com.greenwich-barrow."
 
 
 # -----------------------------------------------------------------------------

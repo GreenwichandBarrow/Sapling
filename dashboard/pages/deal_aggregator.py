@@ -219,21 +219,26 @@ def _render_table(rows: list[DealRow]) -> str:
     ).strip()
 
 
+# Interactive time filter — maps pill label → window-days lookback.
+# "All" uses the full WINDOW_DAYS; smaller windows narrow the row set.
+_TIME_FILTER_DAYS = {"Today": 1, "This week": 7, "All": WINDOW_DAYS}
+_DEFAULT_TIME_FILTER = "This week"
+
+
 def render() -> None:
     import streamlit as st
 
     today = datetime.now().date()
+    # Always load the full window so filter pills can narrow without re-fetch.
     scans = load_recent_scans(today, WINDOW_DAYS)
-    week_rows = flatten_rows(scans)
+    all_rows = flatten_rows(scans)
     today_scan = load_scan(today)
     today_rows = today_scan.rows if today_scan else []
+    week_rows = [r for r in all_rows if (today - r.scan_date).days < 7]
     latest_run = today_scan.last_run if today_scan else (
         scans[0].last_run if scans else None
     )
 
-    # Summary-strip rollups. "Pursuing" and "Awaiting CIM" aren't tracked in
-    # the scan artifact — those fields land once Deal Pipeline (Session 3)
-    # wires in Attio. Show 0 with an em-dash-style placeholder for now.
     st.markdown(_render_subtitle(latest_run), unsafe_allow_html=True)
     st.markdown(
         _render_summary(
@@ -244,15 +249,26 @@ def render() -> None:
         ),
         unsafe_allow_html=True,
     )
-    st.markdown(_render_filter_bar(), unsafe_allow_html=True)
-    st.markdown(_render_table(week_rows), unsafe_allow_html=True)
+
+    # Interactive time filter via segmented_control. Label hidden via
+    # label_visibility so the row reads as a clean pill bar matching mockup.
+    selected = st.segmented_control(
+        "Time window",
+        options=list(_TIME_FILTER_DAYS.keys()),
+        default=_DEFAULT_TIME_FILTER,
+        key="deal_agg_time_filter",
+        label_visibility="collapsed",
+    ) or _DEFAULT_TIME_FILTER
+    days = _TIME_FILTER_DAYS[selected]
+    filtered_rows = [r for r in all_rows if (today - r.scan_date).days < days]
+
+    st.markdown(_render_table(filtered_rows), unsafe_allow_html=True)
 
     st.markdown(
         '<div class="gb-page-note">Rows parsed from '
-        f"<code>brain/context/deal-aggregator-scan-*.md</code> across the last "
-        f"{WINDOW_DAYS} days (wider than the \"this week\" tab so real rows "
-        "render given the current 0.14/day volume). Filter controls are "
-        "visual-only in Session 2. Pursuing / Awaiting-CIM counts wire in "
-        "once Deal Pipeline (Session 3) reads Attio.</div>",
+        f"<code>brain/context/deal-aggregator-scan-*.md</code>. Time filter "
+        f"interactive (Today / This week / All); source/industry/status "
+        "dropdowns + search visual-only pending later session."
+        "</div>",
         unsafe_allow_html=True,
     )

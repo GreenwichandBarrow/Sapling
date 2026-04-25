@@ -271,6 +271,22 @@ GLOBAL_CSS = f"""
   }}
   .gb-topbar .meta .sep {{ margin: 0 8px; color: var(--border); }}
 
+  /* -------- STALENESS BANNER -------- */
+  .gb-stale-banner {{
+    background: rgba(245, 196, 81, 0.10);
+    border: 1px solid rgba(245, 196, 81, 0.35);
+    color: var(--text);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }}
+  .gb-stale-banner strong {{
+    color: var(--yellow);
+    font-weight: 600;
+  }}
+
   /* -------- TILE GRID -------- */
   /* 4-col grid per locked mockup. Hero tile spans full width via grid-column: 1/-1 */
   .gb-grid {{

@@ -2174,6 +2174,89 @@ def load_weekly_tracker_history() -> dict[date, WeeklyTrackerSnapshot]:
     return out
 
 
+# Snapshot staleness thresholds — beyond these, dashboard surfaces a banner.
+# Both refresh jobs are weekday-only (Mon-Fri); on weekends/overnights the
+# snapshot legitimately ages. Use larger thresholds during expected gaps so
+# the banner only fires when something has actually broken.
+_ATTIO_STALE_HOURS_WEEKDAY = 2  # hourly Mon-Fri 8am-8pm ET → 1h fires expected
+_ATTIO_STALE_HOURS_OFF_HOURS = 60  # weekend + after-hours: cover Fri 8pm → Mon 8am gap
+_JJ_STALE_HOURS_WEEKDAY = 30  # Mon-Fri 9am/2:30pm/6pm ET — 30h covers an overnight gap
+_JJ_STALE_HOURS_OFF_HOURS = 72  # weekend covers Fri 6pm → Mon 9am
+
+
+@dataclass
+class StalenessCheck:
+    label: str  # human-readable source name
+    fetched_at: str  # ISO8601 string from snapshot
+    age_hours: float
+    threshold_hours: int
+    is_stale: bool
+
+
+def _hours_since(iso_ts: str | None) -> float | None:
+    if not iso_ts:
+        return None
+    try:
+        ts = datetime.fromisoformat(iso_ts.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if ts.tzinfo is None:
+        ts = ts.replace(tzinfo=timezone.utc)
+    return (datetime.now(timezone.utc) - ts).total_seconds() / 3600.0
+
+
+def _is_business_hours_et() -> bool:
+    """True if local time is Mon-Fri 8am-8pm. Used to pick threshold."""
+    now = datetime.now()
+    if now.isoweekday() > 5:  # Sat/Sun
+        return False
+    return 8 <= now.hour < 20
+
+
+def _attio_threshold() -> int:
+    return _ATTIO_STALE_HOURS_WEEKDAY if _is_business_hours_et() else _ATTIO_STALE_HOURS_OFF_HOURS
+
+
+def _jj_threshold() -> int:
+    return _JJ_STALE_HOURS_WEEKDAY if _is_business_hours_et() else _JJ_STALE_HOURS_OFF_HOURS
+
+
+def _check_snapshot_staleness(path: Path, label: str, threshold: int) -> StalenessCheck | None:
+    """Read fetched_at from a snapshot JSON and check if it's older than threshold.
+    Returns None if file missing — staleness banners shouldn't fire on cold start."""
+    if not path.exists():
+        return None
+    try:
+        data = json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+    fetched_at = data.get("fetched_at")
+    age = _hours_since(fetched_at)
+    if age is None:
+        return None
+    return StalenessCheck(
+        label=label,
+        fetched_at=fetched_at,
+        age_hours=age,
+        threshold_hours=threshold,
+        is_stale=age > threshold,
+    )
+
+
+def check_dashboard_staleness() -> list[StalenessCheck]:
+    """Return only the stale snapshots — empty list = all fresh.
+
+    Threshold is weekend-aware: a 2-day-old snapshot on Saturday is fine
+    (refresh job is Mon-Fri); a 4-hour-old snapshot during business hours
+    means the job is stuck.
+    """
+    checks = [
+        _check_snapshot_staleness(PIPELINE_SNAPSHOT_PATH, "Attio pipeline", _attio_threshold()),
+        _check_snapshot_staleness(JJ_SNAPSHOT_PATH, "JJ activity", _jj_threshold()),
+    ]
+    return [c for c in checks if c is not None and c.is_stale]
+
+
 def load_calibration_log() -> CalibrationLog:
     if not CALIBRATION_PATH.exists():
         return CalibrationLog(last_run="—", entries=[])

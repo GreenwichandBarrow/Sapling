@@ -33,9 +33,21 @@ Tests every external API and integration. Each check: can we authenticate and ge
 Checks scheduled jobs, usage limits, and webhook health.
 
 **Launchd Jobs:**
-Expected jobs:
-- `com.greenwich-barrow.deal-aggregator` (Mon-Fri 6am)
-- `com.greenwich-barrow.niche-intelligence` (Tue 11pm)
+Expected jobs (this list is the source of truth — must match CLAUDE.md's
+Scheduled Skills table; missing-plist for any skill here = RED):
+- `com.greenwich-barrow.deal-aggregator` (Mon-Fri 6am ET)
+- `com.greenwich-barrow.deal-aggregator-afternoon` (Mon-Fri 2pm ET)
+- `com.greenwich-barrow.deal-aggregator-friday` (Fri evening)
+- `com.greenwich-barrow.email-intelligence` (Mon-Fri 7am ET)
+- `com.greenwich-barrow.jj-operations-sunday` (Sun 11pm ET)
+- `com.greenwich-barrow.target-discovery-sunday` (Sun 11pm ET)
+- `com.greenwich-barrow.niche-intelligence` (Tue 11pm ET)
+- `com.greenwich-barrow.nightly-tracker-audit` (Nightly)
+- `com.greenwich-barrow.conference-discovery` (Weekly)
+- `com.greenwich-barrow.health-monitor` (Fri 12:30 AM ET)
+- `com.greenwich-barrow.calibration-workflow` (Thu 11pm ET)
+- `com.greenwich-barrow.attio-snapshot-refresh` (Mon-Fri hourly 8am-8pm ET) — feeds dashboard's landing hero, Active Deal Pipeline, M&A Analytics deal-flow KPIs
+- `com.greenwich-barrow.jj-snapshot-refresh` (Mon-Fri 9am/2:30pm/6pm ET) — feeds dashboard's M&A Analytics JJ row + JJ trend panel
 
 For each:
 ```bash
@@ -132,6 +144,14 @@ done
 | Weekly tracker | Last column date in sheet | Not updated this Friday | Not updated in 2+ weeks |
 | Granola ingestion | Most recent `brain/calls/` file date | > 3 days since last meeting | > 7 days |
 | Vault entity sync | Compare Attio People count vs vault entity count | Drift > 20% | Drift > 50% |
+| Attio dashboard snapshot | `fetched_at` in `brain/context/attio-pipeline-snapshot.json` | > 4h during business hours OR > 60h overall | > 12h during business hours OR > 80h overall |
+| JJ dashboard snapshot | `fetched_at` in `brain/context/jj-activity-snapshot.json` | > 30h during business hours OR > 72h overall | > 48h during business hours OR > 96h overall |
+
+The dashboard's `data_sources.check_dashboard_staleness()` does the same
+check live against a 2h/30h threshold (during business hours) and surfaces
+a yellow banner above every page. Health-monitor's threshold is more
+permissive — it only flags genuinely-broken refresh jobs, not the
+expected hourly gap between runs.
 
 ## Execution Flow
 

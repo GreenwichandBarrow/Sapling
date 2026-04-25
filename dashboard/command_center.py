@@ -25,6 +25,7 @@ if str(_DASHBOARD_DIR) not in sys.path:
     sys.path.insert(0, str(_DASHBOARD_DIR))
 
 from theme import GLOBAL_CSS, NAV_ITEMS, REFRESH_SECONDS  # noqa: E402
+from data_sources import check_dashboard_staleness  # noqa: E402
 from pages import (  # noqa: E402
     c_suite_skills,
     dashboard_landing,
@@ -144,6 +145,23 @@ def _render_topbar(title: str) -> None:
     )
 
 
+def _render_staleness_banner() -> None:
+    """Show a yellow banner above every page if any data snapshot is stale."""
+    stale = check_dashboard_staleness()
+    if not stale:
+        return
+    items = " &middot; ".join(
+        f'<strong>{escape(c.label)}</strong> {c.age_hours:.1f}h old (threshold {c.threshold_hours}h)'
+        for c in stale
+    )
+    st.markdown(
+        f'<div class="gb-stale-banner">⚠ Stale data: {items}. '
+        "Live snapshot refresh job may be down — check launchctl + recent logs."
+        "</div>",
+        unsafe_allow_html=True,
+    )
+
+
 # -----------------------------------------------------------------------------
 # Main
 # -----------------------------------------------------------------------------
@@ -161,6 +179,7 @@ def main() -> None:
     _render_sidebar_brand()
     _render_sidebar_nav(pages_by_url)
     _render_topbar(nav.title)
+    _render_staleness_banner()
 
     nav.run()
 

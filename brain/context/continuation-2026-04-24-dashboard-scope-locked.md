@@ -249,12 +249,18 @@ When starting Session 1:
 ## Open decisions — scoped at build time per page
 
 None at the IA or visual-language level. Remaining scope decisions are page-internal details that are cheaper to resolve with a real rendering in front of Kay than to pre-scope abstractly:
-- Deal Pipeline: Kanban columns vs. table-with-stage-filter?
-- M&A Analytics: chart library choice (Streamlit native vs. Plotly)?
-- Tech Stack: trend chart granularity (daily, weekly, both)?
-- Infrastructure: digest-feed density (how many items per day shown)?
+- Active Deal Pipeline: stage-age severity thresholds — current heuristic is green <14d / yellow 14-30d / red >30d, but late-stage stalls (Submitted LOI >7d) probably warrant tighter bands.
+- M&A Analytics: chart library choice (Streamlit native vs. Plotly) for Zone 4 trend bars.
 
 These surface naturally during the respective page's build session. Do not pre-answer.
+
+## Post-May-7 follow-ups (DealsX integration goes live)
+
+Tracked here because they're triggered by an external event, not by a build session:
+
+1. **Wire DealsX integration** — pull AI-classified responses, sentiment, lead categories, follow-up status, and LinkedIn DM metrics (sent / read / replied) into M&A Analytics. Replace the mockup's fake numbers with live data. Reference mockup zones 2 / 2.5 / 3.
+2. **Align response taxonomy across DealsX + JJ call log.** Kay flagged 2026-04-24: DealsX AI categorizes responses as Interested / Meeting Request / Information Request / Wrong Person / Not Interested / Uncategorizable; JJ's call log uses its own outcome categories (likely Connected / VM / No-answer / Bad number / Decline / Interested-callback). Once DealsX is live, audit both schemas side-by-side and either (a) align JJ's categories to DealsX taxonomy so cross-channel rollups make sense, OR (b) build an explicit mapping table if the channels need different vocabularies. Don't pre-decide — review with real data on the page.
+3. **LinkedIn DM metric semantics** — DealsX dashboard didn't show LinkedIn-specific KPIs in the screenshots Kay pulled. Confirm what's exposed (read receipts? connection-request accepted? response time?) and tune the channel performance table accordingly.
 
 ## Parallel / non-build work this weekend
 

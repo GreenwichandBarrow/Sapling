@@ -142,3 +142,49 @@ Long PM session. No Streamlit code shipped — pure scope refinement using stati
 - **Pipeline polish hasn't been pushed to existing `pages/deal_pipeline.py` yet.** Mockup defines the spec; the live page still shows all 6 stages.
 - **C-Suite & Skills `implemented` flag in `theme.py::NAV_ITEMS` still False.** Flips True once the page renders.
 - **Streamlit server still running from earlier in the day** — `lsof -ti:8501` should be cleared at the start of any code session.
+
+# Session 5 PM/Evening — XPX Reply Recovery + Vault→Attio Sync
+
+Late-evening session, picked up from a frozen prior session ("this session froze"). Focus: process the XPX reply from [[entities/jim-vigna|Jim Vigna]] (Live Oak Bank), diagnose why yesterday's 8-card processing didn't fully land, and ship a sync mechanism so engagement context flows from vault → Attio without manual work.
+
+## Decisions
+
+- **APPROVE: Jim Vigna draft v5 final** — 5-iteration co-edit (Claude v1 → Kay v2 → Kay v3 cut buy-box → Claude counter-draft v4 restored buy-box → Kay v5 added off-ramp on the meeting ask). Kay sending herself.
+- **APPROVE: Don't push corrected drafts into Superhuman when Kay shares back her own edited version.** That paste is for feedback/learning, not execution. New memory `feedback_draft_sharing_for_learning` codifies it.
+- **APPROVE: Build Vault → Attio sync as Option B (morning sync inside relationship-manager), not Option A (Attio webhook).** Lower complexity, no new infra, 12-hour delay is fine because engagement notes don't time-decay.
+  - Why: piggy-backs on a daily run that already exists; webhooks would need new auth + endpoint + retry logic that doesn't exist yet.
+- **APPROVE: conference-engagement skill gets reply-flow variant.** Some XPX contacts will write to Kay first within the 24h window; in that case we draft a reply (not a fresh email) using the same template structure + audience taxonomy.
+- **REJECT (implicit): saving the banker-first-reply pattern as standalone memory tonight.** Kay moved on without confirming. Pattern (cut buy-box when capital-fit is mismatched + off-ramp on specific ask, not relationship) captured in traces only for now.
+
+## Actions Taken
+
+- **CREATED** `brain/entities/jim-vigna.md` — full vault entity (Quick Facts + Communication Style + Key Context + Relationship Notes + Email Reference). Joe McConnell archetype noted; Live Oak SBA self-funded vs G&B traditional-search distinction captured as the load-bearing context.
+- **CREATED** Attio person record for Jim Vigna (`679646d0-9df0-4ea6-828e-93a1a7465ea2`). Note attachment failed (token scope) — engagement context lives in vault entity until Kay re-auths.
+- **UPDATED** `.claude/skills/conference-engagement/SKILL.md` — added reply-flow variant (lines 141-142) covering inbound replies within the 24h window.
+- **UPDATED** `.claude/skills/relationship-manager/SKILL.md` — added `<vault_to_attio_sync>` section (detection criteria, 7-step sync flow, failure modes, idempotency contract), 3 new artifact sections (Vault→Attio Syncs / Attio Dedup Needed / System Status Alerts), 3 new stop-hook checks.
+- **CREATED** `memory/feedback_draft_sharing_for_learning.md` — when Kay pastes her own edited draft back in conversation, treat as calibration not execution.
+- **UPDATED** `memory/MEMORY.md` — index entry for the new feedback memory.
+
+## Bug Caught + Diagnosed
+
+- **Yesterday's 8-card XPX processing was incomplete.** Drafts shipped to Superhuman successfully (8/8) but vault entities + Attio enrichment never wrote. Root cause per the 4/23 session-decisions file: vault writes blocked by schema validator (missing prerequisite entity stubs), the deferral was logged but the next session didn't pick it back up. This is a `feedback_close_out_executes_mutation` violation.
+- **Cara Lovenson is NOT an XPX attendee** — she was introduced by [[entities/becky-creavin|Becky Creavin]] who invited Kay to a ladies' lunch Cara hosts. Originally suspected as a 9th XPX card; corrected mid-session.
+- **Attio API token missing `notes:read-write` scope.** Returned 403 when attempting to attach engagement note to Jim's record. Fix is at the Smithery / Attio admin level, not inside Claude Code.
+
+## Open Loops
+
+- **Attio token re-auth** — Kay must re-authorize at smithery.ai or Attio admin to add `notes:read-write` scope. Until fixed, the new Vault→Attio sync will surface a System Status alert each morning instead of attaching notes.
+- **7 remaining XPX contacts need vault entities + replies:** Ian Stuart (CFO Consulting Partners), Charles Gerber (Triumph First), Becky Creavin (Peapack Private — also acting as connector via Cara intro, river-guide signal), Matthew Luczyk (Peapack Private), James Emden (Helmsley Spear), Pasang Jamling (Jamling Law), Andrew Lowis (Axial — vault entity exists, Attio person record does not).
+- **Cara Lovenson** — Becky-introduced warm contact, ladies' lunch invitation. Reply depends on Becky's reply (thank Becky for both engagements first).
+- **Vault → Attio sync goes live tomorrow morning** as part of the relationship-manager run. First execution will fail-soft on the token scope issue and emit the alert.
+
+## Deferred
+
+- **Other 7 XPX contacts + Cara** → tomorrow morning (Kay's call: "lets do a good night and I will pick up the rest tomorrow").
+- **Banker-first-reply pattern as standalone memory** → revisit if pattern repeats with a 2nd banker/lender contact. Trace covers the reasoning for now.
+- **Conference-engagement skill close-out enforcement** → calibration candidate. The skill currently considers itself "done" after Superhuman drafts ship; should add stop hooks requiring vault entities + Attio person creation before return. Not fixed tonight to avoid rushing — surface for Kay's review tomorrow.
+
+## Calibration Candidates
+
+- **conference-engagement skill stop-hook gap** — should mirror what was added to relationship-manager: explicit checks that vault entities for every card-collected contact exist and have `## Relationship Notes` before the skill returns "done." Yesterday's 8-card miss happened precisely because no such gate existed.
+- **Attio MCP token scope policy** — every Attio MCP install should request `notes:read-write` by default. Could be codified as a setup checklist in CLAUDE.md or a startup-hook health check.

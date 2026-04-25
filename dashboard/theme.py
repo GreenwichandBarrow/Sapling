@@ -1151,6 +1151,185 @@ GLOBAL_CSS = f"""
     line-height: 1.35;
   }}
 
+  /* Zone 2: External Connectivity & Tooling — service rows */
+  .gb-svc-row {{
+    display: grid;
+    grid-template-columns: 28px 1fr 280px 130px 24px;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border-soft);
+    transition: background 0.15s;
+  }}
+  .gb-svc-row:last-child {{ border-bottom: none; }}
+  .gb-svc-row:hover {{ background: var(--row-hover); }}
+  .gb-svc-cell {{ min-width: 0; }}
+  .gb-svc-name {{
+    font-weight: 500;
+    font-family: "SF Mono", "Menlo", "Monaco", monospace !important;
+    font-size: 12.5px;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }}
+  .gb-svc-name .kind {{
+    display: inline-block;
+    padding: 1px 6px;
+    font-family: inherit !important;
+    font-size: 9.5px;
+    font-weight: 400;
+    color: var(--text-dim);
+    background: rgba(255,255,255,0.03);
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }}
+  .gb-svc-name .kind.local {{ color: var(--text-dim); }}
+  .gb-svc-name .kind.svc {{
+    color: var(--accent);
+    background: rgba(74, 158, 255, 0.08);
+  }}
+  .gb-svc-desc {{
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-top: 3px;
+    line-height: 1.4;
+  }}
+  .gb-svc-status {{ font-size: 11.5px; color: var(--text-muted); }}
+  .gb-svc-status.healthy {{ color: var(--green); }}
+  .gb-svc-status.warn {{ color: var(--yellow); font-weight: 500; }}
+  .gb-svc-status.alert {{ color: var(--red); font-weight: 500; }}
+  .gb-svc-action {{
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-align: center;
+    transition: all 0.15s;
+    border: 1px solid transparent;
+    text-decoration: none !important;
+    display: inline-block;
+  }}
+  .gb-svc-action.regen {{
+    background: rgba(255, 90, 90, 0.12);
+    color: var(--red) !important;
+    border-color: rgba(255, 90, 90, 0.3);
+  }}
+  .gb-svc-action.refresh {{
+    background: rgba(245, 196, 81, 0.12);
+    color: var(--yellow) !important;
+    border-color: rgba(245, 196, 81, 0.3);
+  }}
+  .gb-svc-action.view {{
+    background: rgba(74, 158, 255, 0.10);
+    color: var(--accent) !important;
+    border-color: rgba(74, 158, 255, 0.25);
+  }}
+  .gb-svc-action.muted {{
+    background: transparent;
+    color: var(--text-dim) !important;
+    border-color: var(--border);
+  }}
+  .gb-svc-action:hover {{ transform: translateY(-1px); }}
+  .gb-svc-chevron {{ color: var(--text-dim); text-align: center; font-size: 14px; }}
+  .gb-svc-row:hover .gb-svc-chevron {{ color: var(--accent); }}
+  .gb-svc-row .gb-status-dot {{ width: 10px; height: 10px; }}
+
+  /* Zone 3: Credits & Subscription Spend — tile grid */
+  .gb-credits-grid {{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }}
+  .gb-credit-tile {{
+    background: var(--panel);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }}
+  .gb-credit-label {{
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }}
+  .gb-credit-value {{
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+  }}
+  .gb-credit-value .unit {{
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-left: 6px;
+    font-weight: 400;
+  }}
+  .gb-credit-runway {{ font-size: 11.5px; color: var(--text-muted); }}
+  .gb-credit-runway .green {{ color: var(--green); }}
+  .gb-credit-runway .yellow {{ color: var(--yellow); }}
+  .gb-credit-runway .red {{ color: var(--red); }}
+  .gb-credit-trend {{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }}
+  .gb-credit-trend .arrow.up {{ color: var(--green); }}
+  .gb-credit-trend .arrow.down {{ color: var(--red); }}
+  .gb-credit-trend .arrow.flat {{ color: var(--text-dim); }}
+
+  /* Zone 4: Calibration & Learning — entry list */
+  .gb-calib-entry {{
+    display: grid;
+    grid-template-columns: 24px 1fr 110px;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-soft);
+  }}
+  .gb-calib-entry:last-child {{ border-bottom: none; }}
+  .gb-calib-icon {{ font-size: 14px; color: var(--accent); line-height: 1.4; }}
+  .gb-calib-icon.green {{ color: var(--green); }}
+  .gb-calib-icon.purple {{ color: var(--purple); }}
+  .gb-calib-icon.dim {{ color: var(--text-dim); }}
+  .gb-calib-headline {{
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }}
+  .gb-calib-detail {{
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }}
+  .gb-calib-detail code {{
+    font-family: "SF Mono", "Menlo", monospace !important;
+    font-size: 11px;
+    background: rgba(255,255,255,0.04);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: var(--text);
+  }}
+  .gb-calib-when {{
+    font-size: 11px;
+    color: var(--text-dim);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }}
+
   /* Zone 5: Tech Stack inventory */
   .gb-stack-list {{}}
   .gb-stack-row {{

@@ -34,9 +34,17 @@ if str(_DASHBOARD_DIR) not in sys.path:
     sys.path.insert(0, str(_DASHBOARD_DIR))
 
 from data_sources import (  # noqa: E402
+    CalibrationEntry,
+    CalibrationLog,
+    CreditTile,
+    ExternalService,
     HealthTile,
     StackCategory,
     StackService,
+    external_services_summary,
+    load_calibration_log,
+    load_credit_tiles,
+    load_external_services,
     load_system_health,
     load_tech_stack,
     system_health_summary,
@@ -151,21 +159,146 @@ def _render_zone_5(categories: list[StackCategory]) -> str:
     return f'<section class="gb-zone">{head}<div class="gb-stack-list">{rows}</div></section>'
 
 
-def _render_zone_placeholder(label: str, sublabel: str, note: str) -> str:
+_HEALTH_TO_DOT = {"ok": "green", "warn": "yellow", "alert": "red"}
+
+
+def _render_service_row(svc: ExternalService) -> str:
+    dot = _HEALTH_TO_DOT.get(svc.health, "grey")
+    status_class = "gb-svc-status"
+    if svc.health == "ok":
+        status_class += " healthy"
+    elif svc.health == "warn":
+        status_class += " warn"
+    elif svc.health == "alert":
+        status_class += " alert"
+    kind_class = "svc" if svc.kind == "service" else "local"
     return dedent(
         f"""
-        <section class="gb-zone gb-zone-pending">
-        <div class="gb-zone-head">
-        <div>
-        <div class="gb-zone-label">{escape(label)}</div>
-        <div class="gb-zone-sublabel">{escape(sublabel)}</div>
+        <div class="gb-svc-row">
+        <span class="gb-status-dot {dot}"></span>
+        <div class="gb-svc-cell">
+        <div class="gb-svc-name">{escape(svc.name)}<span class="kind {kind_class}">{escape(svc.kind)}</span></div>
+        <div class="gb-svc-desc">{escape(svc.description)}</div>
         </div>
-        <div class="gb-zone-meta"><span class="pill neutral">pending Session 5 pt 2</span></div>
+        <div class="{status_class}">{escape(svc.status_text)}</div>
+        <div class="gb-svc-action {escape(svc.action)}">{escape(svc.action_text)}</div>
+        <div class="gb-svc-chevron">›</div>
         </div>
-        <div class="gb-zone-empty">{escape(note)}</div>
-        </section>
         """
     ).strip()
+
+
+def _render_zone_2(services: list[ExternalService]) -> str:
+    summary = external_services_summary(services)
+    pills = []
+    if summary["healthy"]:
+        pills.append(f'<span class="pill">{summary["healthy"]} healthy</span>')
+    if summary["warn"]:
+        pills.append(f'<span class="pill yellow">{summary["warn"]} warn</span>')
+    if summary["alert"]:
+        pills.append(f'<span class="pill red">{summary["alert"]} needs key</span>')
+    head = dedent(
+        f"""
+        <div class="gb-zone-head">
+        <div>
+        <div class="gb-zone-label">External Connectivity &amp; Tooling</div>
+        <div class="gb-zone-sublabel">Auth, API keys, MCP servers, local tools · status is the headline, action is one click</div>
+        </div>
+        <div class="gb-zone-meta">{summary["total"]} services {''.join(pills)}</div>
+        </div>
+        """
+    ).strip()
+    # Sort: alerts first, then warns, then healthy — surfaces what needs action
+    order = {"alert": 0, "warn": 1, "ok": 2}
+    sorted_services = sorted(services, key=lambda s: order.get(s.health, 3))
+    body = "".join(_render_service_row(s) for s in sorted_services)
+    return f'<section class="gb-zone">{head}<div>{body}</div></section>'
+
+
+def _render_credit_tile(tile: CreditTile) -> str:
+    arrow_glyph = {"up": "↑", "down": "↓", "flat": "→"}.get(tile.trend_arrow, "→")
+    runway_color_class = (
+        f' class="{tile.runway_color}"'
+        if tile.runway_color in ("green", "yellow", "red")
+        else ""
+    )
+    if tile.runway_color in ("green", "yellow", "red"):
+        runway_html = (
+            f'<span{runway_color_class}>{escape(tile.runway_text.split(" · ")[0])}</span>'
+            f'{escape(" · " + " · ".join(tile.runway_text.split(" · ")[1:])) if " · " in tile.runway_text else ""}'
+        )
+    else:
+        runway_html = escape(tile.runway_text)
+    return dedent(
+        f"""
+        <div class="gb-credit-tile">
+        <div class="gb-credit-label">{escape(tile.label)}</div>
+        <div class="gb-credit-value">{escape(tile.value)} <span class="unit">{escape(tile.unit)}</span></div>
+        <div class="gb-credit-runway">{runway_html}</div>
+        <div class="gb-credit-trend"><span class="arrow {tile.trend_arrow}">{arrow_glyph}</span><span>{escape(tile.trend)}</span></div>
+        </div>
+        """
+    ).strip()
+
+
+def _render_zone_3(tiles: list[CreditTile]) -> str:
+    in_range = sum(1 for t in tiles if t.runway_color == "green")
+    monitor = sum(1 for t in tiles if t.runway_color == "yellow")
+    alert = sum(1 for t in tiles if t.runway_color == "red")
+    pills = []
+    if in_range:
+        pills.append(f'<span class="pill">{in_range} in range</span>')
+    if monitor:
+        pills.append(f'<span class="pill yellow">{monitor} monitor</span>')
+    if alert:
+        pills.append(f'<span class="pill red">{alert} renewal</span>')
+    head = dedent(
+        f"""
+        <div class="gb-zone-head">
+        <div>
+        <div class="gb-zone-label">Credits &amp; Subscription Spend</div>
+        <div class="gb-zone-sublabel">Operational runway · what depletes, when, at current burn</div>
+        </div>
+        <div class="gb-zone-meta">{''.join(pills)}</div>
+        </div>
+        """
+    ).strip()
+    body = "".join(_render_credit_tile(t) for t in tiles)
+    return f'<section class="gb-zone">{head}<div class="gb-credits-grid">{body}</div></section>'
+
+
+def _render_calibration_entry(e: CalibrationEntry) -> str:
+    return dedent(
+        f"""
+        <div class="gb-calib-entry">
+        <div class="gb-calib-icon {escape(e.icon_color)}">{escape(e.icon)}</div>
+        <div>
+        <div class="gb-calib-headline">{escape(e.headline)}</div>
+        <div class="gb-calib-detail">{e.detail}</div>
+        </div>
+        <div class="gb-calib-when">{escape(e.when)}</div>
+        </div>
+        """
+    ).strip()
+
+
+def _render_zone_4(log: CalibrationLog) -> str:
+    head = dedent(
+        f"""
+        <div class="gb-zone-head">
+        <div>
+        <div class="gb-zone-label">Calibration &amp; Learning · This Week</div>
+        <div class="gb-zone-sublabel">What the system codified, retired, or refreshed since last Friday</div>
+        </div>
+        <div class="gb-zone-meta">{len(log.entries)} updates · last run {escape(log.last_run)}</div>
+        </div>
+        """
+    ).strip()
+    if not log.entries:
+        body = '<div class="gb-zone-empty">No calibration entries this week.</div>'
+    else:
+        body = "".join(_render_calibration_entry(e) for e in log.entries)
+    return f'<section class="gb-zone">{head}<div>{body}</div></section>'
 
 
 def _render_subtitle(health_tiles: list[HealthTile], stack_n: int) -> str:

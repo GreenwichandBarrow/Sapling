@@ -1005,6 +1005,9 @@ def skill_health_summary(groups: list[CSuiteGroup]) -> dict[str, int]:
 
 DASHBOARD_DATA_DIR = Path(__file__).resolve().parent / "data"
 TECH_STACK_PATH = DASHBOARD_DATA_DIR / "tech_stack.yaml"
+EXTERNAL_SERVICES_PATH = DASHBOARD_DATA_DIR / "external_services.yaml"
+CREDITS_PATH = DASHBOARD_DATA_DIR / "credits.yaml"
+CALIBRATION_PATH = DASHBOARD_DATA_DIR / "calibration.yaml"
 SCHEMAS_DIR = REPO_ROOT / "schemas" / "vault"
 HOOKS_SETTINGS_PATHS = [
     REPO_ROOT / ".claude" / "settings.json",
@@ -1863,4 +1866,127 @@ def load_ma_analytics(today: date | None = None) -> MAAnalytics:
         trend_x_labels=x_labels,
         activity_rows=activity_rows,
         snapshot_fresh=snapshot is not None,
+    )
+
+
+# -----------------------------------------------------------------------------
+# Infrastructure Zones 2/3/4 — External services / credits / calibration
+# -----------------------------------------------------------------------------
+# YAML-driven catalogs (mirror tech_stack.yaml). Loaders return plain
+# dataclasses so the renderer stays decoupled from the YAML schema.
+# Live readers (auth probes, billing API, calibration-workflow output)
+# wire later by replacing the YAML reader with a live source.
+
+
+@dataclass
+class ExternalService:
+    name: str
+    kind: str  # "service" or "local"
+    description: str
+    health: str  # ok | warn | alert
+    status_text: str
+    action: str  # regen | refresh | view | muted
+    action_text: str
+
+
+@dataclass
+class CreditTile:
+    label: str
+    value: str
+    unit: str
+    runway_text: str
+    runway_color: str  # green | yellow | red | none
+    trend: str
+    trend_arrow: str  # up | down | flat
+
+
+@dataclass
+class CalibrationEntry:
+    icon: str
+    icon_color: str  # green | purple | accent | dim
+    headline: str
+    detail: str  # HTML allowed
+    when: str
+
+
+@dataclass
+class CalibrationLog:
+    last_run: str
+    entries: list[CalibrationEntry] = field(default_factory=list)
+
+
+def load_external_services() -> list[ExternalService]:
+    if not EXTERNAL_SERVICES_PATH.exists():
+        return []
+    try:
+        data = yaml.safe_load(EXTERNAL_SERVICES_PATH.read_text()) or {}
+    except (OSError, yaml.YAMLError):
+        return []
+    return [
+        ExternalService(
+            name=s.get("name", "?"),
+            kind=s.get("kind", "service"),
+            description=s.get("description", ""),
+            health=s.get("health", "ok"),
+            status_text=s.get("status_text", ""),
+            action=s.get("action", "muted"),
+            action_text=s.get("action_text", "Logs ↗"),
+        )
+        for s in data.get("services", [])
+    ]
+
+
+def external_services_summary(services: list[ExternalService]) -> dict[str, int]:
+    counts = {"total": len(services), "healthy": 0, "warn": 0, "alert": 0}
+    for s in services:
+        if s.health == "ok":
+            counts["healthy"] += 1
+        elif s.health == "warn":
+            counts["warn"] += 1
+        elif s.health == "alert":
+            counts["alert"] += 1
+    return counts
+
+
+def load_credit_tiles() -> list[CreditTile]:
+    if not CREDITS_PATH.exists():
+        return []
+    try:
+        data = yaml.safe_load(CREDITS_PATH.read_text()) or {}
+    except (OSError, yaml.YAMLError):
+        return []
+    return [
+        CreditTile(
+            label=t.get("label", "?"),
+            value=str(t.get("value", "—")),
+            unit=t.get("unit", ""),
+            runway_text=t.get("runway_text", ""),
+            runway_color=t.get("runway_color", "none"),
+            trend=t.get("trend", ""),
+            trend_arrow=t.get("trend_arrow", "flat"),
+        )
+        for t in data.get("tiles", [])
+    ]
+
+
+def load_calibration_log() -> CalibrationLog:
+    if not CALIBRATION_PATH.exists():
+        return CalibrationLog(last_run="—", entries=[])
+    try:
+        data = yaml.safe_load(CALIBRATION_PATH.read_text()) or {}
+    except (OSError, yaml.YAMLError):
+        return CalibrationLog(last_run="—", entries=[])
+    entries = [
+        CalibrationEntry(
+            icon=e.get("icon", "•"),
+            icon_color=e.get("icon_color", "accent"),
+            headline=e.get("headline", ""),
+            detail=e.get("detail", ""),
+            when=e.get("when", ""),
+        )
+        for e in data.get("entries", [])
+    ]
+    return CalibrationLog(
+        last_run=data.get("last_run", "—"),
+        entries=entries,
     )

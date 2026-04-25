@@ -129,13 +129,22 @@ def _render_subtitle(latest_run: str | None) -> str:
 def _render_summary(
     today_count: int, week_count: int, pursuing_count: int, awaiting_cim_count: int
 ) -> str:
+    """Match mockup-deal-aggregator.html number colors:
+    - new today: green when >0, dim when 0
+    - this week: default text
+    - pursuing: yellow when >0, dim when 0
+    - awaiting CIM: yellow when >0, dim when 0
+    """
+    today_color = "var(--green)" if today_count else "var(--text-dim)"
+    pursuing_color = "var(--yellow)" if pursuing_count else "var(--text-dim)"
+    cim_color = "var(--yellow)" if awaiting_cim_count else "var(--text-dim)"
     return dedent(
         f"""
         <div class="gb-summary">
-        <div><span class="num">{today_count}</span>new today</div>
+        <div><span class="num" style="color:{today_color};">{today_count}</span>new today</div>
         <div><span class="num">{week_count}</span>this week</div>
-        <div><span class="num">{pursuing_count}</span>pursuing</div>
-        <div><span class="num">{awaiting_cim_count}</span>awaiting CIM</div>
+        <div><span class="num" style="color:{pursuing_color};">{pursuing_count}</span>pursuing</div>
+        <div><span class="num" style="color:{cim_color};">{awaiting_cim_count}</span>awaiting CIM</div>
         </div>
         """
     ).strip()

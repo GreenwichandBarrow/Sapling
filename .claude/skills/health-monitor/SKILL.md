@@ -1,7 +1,8 @@
 ---
 name: health-monitor
 description: System-wide health monitoring with specialized sub-agents. Detects disconnected services, usage limits, missed triggers, pipeline hygiene issues, data integrity problems, and stale data.
-trigger: Friday morning (alongside weekly-tracker) or on-demand via /health-check
+trigger: Scheduled Friday 12:30 AM ET via launchd (com.greenwich-barrow.health-monitor). Output ready for Friday morning briefing alongside weekly-tracker. Also runs on-demand via /health-check.
+schedule: Friday 12:30 AM ET
 ---
 
 <objective>

@@ -217,6 +217,8 @@ Skills run on a schedule via macOS launchd, independent of active sessions:
 | `niche-intelligence` | Tuesday 11pm ET | Newsletter scrape, niche identification, one-pagers, scorecards |
 | `niche-intelligence` (daily) | Nightly | Sprint status tracking, Tabled/Killed processing |
 | `target-discovery` (Phase 2) | Sunday 11pm ET | Weekly owner enrichment: web research for next 200 un-enriched targets on JJ-Call-Only sheets |
+| `health-monitor` | Friday 12:30 AM ET | System health probes (services, hooks, vault, briefing pipeline) — output ready for Friday morning briefing |
+| `calibration-workflow` | Thursday 11pm ET | Friday meta-calibration: rules → stop hooks, memory consolidation, stale-skill refresh |
 
 `weekly-tracker` runs on Fridays but is triggered by the orchestrator during the morning workflow (not launchd). Kay needs results by 10am ET.
 

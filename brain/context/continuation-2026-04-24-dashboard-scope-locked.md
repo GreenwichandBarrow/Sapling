@@ -125,11 +125,31 @@ Filters: Today / This week / All time-tabs + Source / Industry / Status dropdown
 
 Data source: deal-aggregator skill daily output + broker platform scrapes + email inbound classification.
 
-### 3. Deal Pipeline — PURPOSE LOCKED, detail at build time
+### 3. Deal Pipeline — PURPOSE LOCKED + RESCOPED 2026-04-24
 
-Live Attio pipeline replica. Either Kanban-style columns (one per stage) or tabular with a stage-filter — scope this at build-time with Kay. Stages mirror Attio's deal pipeline. Each deal click → opens Attio record.
+**Active conversations only — NDA forward.** Reference mockup: `dashboard/mockup-deal-pipeline.html`.
 
-Data source: Attio MCP.
+**Scope shift (2026-04-24 PM):** Page was originally specced as full Attio pipeline replica (6 stages: Identified → Signed LOI). Rescoped during Session 4 design review because DealsX-driven cold outreach will push the Identified + Contacted counts into the thousands, making a Kanban view of those columns visually useless and turning the page into an outbound funnel report instead of an active-conversations tracker.
+
+**4-column Kanban** (NDA → Financials Received → Submitted LOI → Signed LOI) + closed strip below filtered to **post-NDA failures only**. Identified + Contacted counts no longer live on this page; they aggregate to M&A Analytics as outbound funnel stats (DealsX contacted / Kay contacted / JJ called / reply rate / advanced-to-NDA conversion). Closed-lifetime number on this page also drops from 131 (all Attio closures, includes cold-outreach attrition) to ~12 (post-NDA failures only) — far more meaningful read of "deals we lost after real engagement."
+
+**Card visual** (validated in mockup):
+- Company name (bold), color-coded category chip (insurance=blue, fine-art=purple, shipping=yellow, consulting=green)
+- Meta line: location · employees · ARR
+- Footer: stage-age dot (green <14d / yellow 14-30d / red >30d) + last-touch days
+- External-link arrow top-right; whole card clickable to Attio record
+
+**Column header visual:**
+- Pober-style 10.5px uppercase muted label
+- Status dot (green if has deals + healthy ages, grey if empty)
+- Count pill
+- Thin proportion bar showing % of pipeline at that stage
+
+**Data implications:**
+- Attio data unchanged — still has all 6 stages. UI filter handles NDA-forward scope. Reversible.
+- The existing `pages/deal_pipeline.py` ships in Session 3 needs an update to filter stages and add the visual upgrades (category chips, age dots, proportion bars). Tracked as a small Session 4 / Session 5 follow-on.
+
+Data source: Attio MCP via `brain/context/attio-pipeline-snapshot.json`, filtered to NDA-forward stages at render time.
 
 ### 4. C-Suite & Skills — PURPOSE LOCKED, detail at build time
 

@@ -28,14 +28,15 @@ PALETTE = {
 
 # (label, url_path, implemented) — st.navigation uses implemented==True pages;
 # unimplemented items render as disabled sidebar entries.
+# Order validated 2026-04-24: deal-flow surfaces grouped above system-internals.
+# Tech Stack retired (merged into Infrastructure).
 NAV_ITEMS = [
     ("Dashboard", "dashboard", True),
     ("Deal Aggregator", "deal-aggregator", True),
-    ("Deal Pipeline", "deal-pipeline", True),
-    ("C-Suite & Skills", "c-suite-skills", False),
-    ("Infrastructure", "infrastructure", False),
+    ("Active Deal Pipeline", "deal-pipeline", True),
     ("M&A Analytics", "ma-analytics", False),
-    ("Tech Stack", "tech-stack", False),
+    ("C-Suite & Skills", "c-suite-skills", True),
+    ("Infrastructure", "infrastructure", False),
 ]
 
 
@@ -653,6 +654,153 @@ GLOBAL_CSS = f"""
   .gb-closed-item:hover {{
     color: var(--text) !important;
     border-color: var(--border-bright);
+  }}
+
+  /* -------- C-SUITE & SKILLS PAGE -------- */
+  .gb-csuite {{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }}
+  .gb-csuite-head {{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.01);
+  }}
+  .gb-csuite-head-left {{
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }}
+  .gb-csuite-label {{
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text);
+  }}
+  .gb-csuite-sublabel {{
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }}
+  .gb-csuite-meta {{
+    font-size: 11px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }}
+  .gb-csuite-meta .pill {{
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    background: rgba(63, 209, 127, 0.10);
+    color: var(--green);
+    border-radius: 4px;
+    font-size: 10.5px;
+    font-weight: 500;
+  }}
+  .gb-csuite-meta .pill.red {{ background: rgba(255, 90, 90, 0.12); color: var(--red); }}
+  .gb-csuite-meta .pill.neutral {{ background: rgba(139, 147, 167, 0.14); color: var(--text-muted); }}
+
+  .gb-skill-row {{
+    display: grid;
+    grid-template-columns: 28px 1fr 200px 150px 96px;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border-soft);
+  }}
+  .gb-skill-row:last-child {{ border-bottom: none; }}
+  .gb-skill-row:hover {{ background: var(--row-hover); }}
+
+  .gb-skill-cell {{ min-width: 0; }}
+  .gb-skill-name {{
+    font-weight: 500;
+    font-family: "SF Mono", "Menlo", "Monaco", monospace;
+    font-size: 12.5px;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }}
+  .gb-skill-desc {{
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-top: 3px;
+    line-height: 1.4;
+  }}
+
+  .gb-skill-schedule {{
+    font-size: 11.5px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }}
+  .gb-skill-schedule.dim {{ color: var(--text-dim); }}
+
+  .gb-skill-last-run {{
+    font-size: 11.5px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }}
+  .gb-skill-last-run.green {{ color: var(--green); }}
+  .gb-skill-last-run.yellow {{ color: var(--yellow); }}
+  .gb-skill-last-run.red {{ color: var(--red); }}
+  .gb-skill-last-run.dim {{ color: var(--text-dim); }}
+
+  .gb-skill-badge {{
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }}
+  .gb-skill-badge.scheduled {{
+    background: rgba(176, 132, 240, 0.12);
+    color: var(--purple);
+  }}
+  .gb-skill-badge.ondemand {{
+    background: rgba(139, 147, 167, 0.10);
+    color: var(--text-muted);
+  }}
+  .gb-skill-badge.gap {{
+    background: rgba(255, 90, 90, 0.14);
+    color: var(--red);
+  }}
+
+  /* Status dot variants for the skill row (extends shared .gb-status-dot). */
+  .gb-status-dot.grey {{ background: var(--text-dim); }}
+  .gb-status-dot.ondemand {{
+    background: transparent;
+    border: 1px dashed var(--text-dim);
+    box-shadow: none;
+  }}
+
+  /* Make the bare 8px status dot scale up to 10px on this page so it sits
+     visually centered in the 28px gutter. */
+  .gb-skill-row .gb-status-dot {{ width: 10px; height: 10px; }}
+
+  .gb-csuite-empty {{
+    padding: 18px;
+    font-size: 12.5px;
+    color: var(--text-dim);
+    font-style: italic;
+    text-align: center;
+  }}
+  .gb-csuite-empty .candidates {{
+    display: block;
+    margin-top: 6px;
+    font-style: normal;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: "SF Mono", "Menlo", monospace;
   }}
 </style>
 """

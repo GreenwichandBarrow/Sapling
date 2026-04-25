@@ -416,21 +416,580 @@ class PipelineSnapshot:
     closed_recent: list[ClosedDealStub]
 
 
-def load_pipeline() -> PipelineSnapshot | None:
+def load_pipeline(scope: str = "active") -> PipelineSnapshot | None:
+    """Load the Attio pipeline snapshot.
+
+    `scope="active"` (default) filters to NDA-forward stages only —
+    Identified + Contacted live on M&A Analytics as outbound funnel data.
+    `scope="full"` returns every stage (used by tests / debugging only).
+    """
     if not PIPELINE_SNAPSHOT_PATH.exists():
         return None
     data = json.loads(PIPELINE_SNAPSHOT_PATH.read_text())
     stage_defs = data.get("stages", [])
-    active_stages = [s["title"] for s in stage_defs if not s.get("is_terminal")]
+    all_active = [s["title"] for s in stage_defs if not s.get("is_terminal")]
     terminal_stages = [s["title"] for s in stage_defs if s.get("is_terminal")]
     terminal = terminal_stages[0] if terminal_stages else "Closed / Not Proceeding"
+
+    if scope == "active":
+        # Honor the snapshot's stage order but filter to NDA-forward.
+        active_stages = [s for s in all_active if s in ACTIVE_PIPELINE_STAGES]
+        deals = [
+            PipelineDeal(**d)
+            for d in data.get("deals", [])
+            if d.get("stage") in ACTIVE_PIPELINE_STAGES
+        ]
+    else:
+        active_stages = all_active
+        deals = [PipelineDeal(**d) for d in data.get("deals", [])]
+
     return PipelineSnapshot(
         fetched_at=data["fetched_at"],
         list_id=data["list_id"],
         list_name=data["list_name"],
         stages=active_stages,
         terminal_stage=terminal,
-        deals=[PipelineDeal(**d) for d in data.get("deals", [])],
+        deals=deals,
         closed_count=int(data.get("closed_count") or 0),
         closed_recent=[ClosedDealStub(**c) for c in data.get("closed_recent", [])],
     )
+
+
+# -----------------------------------------------------------------------------
+# C-Suite & Skills (scheduled-skill canary)
+# -----------------------------------------------------------------------------
+# Reads launchctl + plist XML + log files. All local data, no auth.
+#
+# Hierarchy: 6 C-suite agents (COO/CIO/CPO/CMO/CFO/GC, in display order) own
+# subsets of the skill catalog. The mapping is hardcoded here because no
+# external source-of-truth exists — Kay validated this assignment 2026-04-24.
+
+# Skill catalog: name → (description, c_suite, optional trigger text for on-demand)
+# Order of the dict drives display order *within* each C-suite section.
+_SKILL_CATALOG: dict[str, tuple[str, str, str | None]] = {
+    # COO — orchestration, system health, process
+    "calibration-workflow": (
+        "Friday meta-calibration — graduates rules to hooks, refreshes stale memories and skills.",
+        "COO",
+        None,
+    ),
+    "weekly-tracker": (
+        "Friday activity roll-up across Gmail, Calendar, Attio, vault → Google Sheet + vault snapshot.",
+        "COO",
+        None,
+    ),
+    "health-monitor": (
+        "System-wide health monitoring — disconnected services, missed triggers, stale data, hygiene.",
+        "COO",
+        None,
+    ),
+    "pipeline-manager": (
+        "Morning briefing assembly — reads all artifacts, judges, presents 4-bucket briefing for review.",
+        "COO",
+        "Morning workflow",
+    ),
+    "decision-traces": (
+        "Extract meaningful decisions from completed tasks for the calibration pipeline.",
+        "COO",
+        "Evening workflow",
+    ),
+    "triage": (
+        "Process queue items needing human decision — medium/low confidence and unclassified.",
+        "COO",
+        "Queue overflow",
+    ),
+    "today": (
+        "Daily task aggregation from inbox, email, and yesterday's open loops.",
+        "COO",
+        "Morning kickoff",
+    ),
+    "migration-workflow": (
+        "Vault file migration to current schema versions — detect, preview, apply with validation.",
+        "COO",
+        "Schema bump",
+    ),
+    # CIO — investment, deal flow, niches, targets
+    "deal-aggregator": (
+        "Daily scan of broker platforms, email inbound, and association deal boards.",
+        "CIO",
+        None,
+    ),
+    "deal-aggregator-afternoon": (
+        "Afternoon broker re-scan to catch late-day listings.",
+        "CIO",
+        None,
+    ),
+    "deal-aggregator-friday": (
+        "Weekly broker roll-up and Friday digest of new active sellers.",
+        "CIO",
+        None,
+    ),
+    "email-intelligence": (
+        "Gmail/Superhuman/Granola scan, deal-flow classification, CIM auto-trigger, intro detection.",
+        "CIO",
+        None,
+    ),
+    "nightly-tracker-audit": (
+        "Tabled/Killed processing, WEEKLY REVIEW re-sort, Drive folder hygiene.",
+        "CIO",
+        None,
+    ),
+    "niche-intelligence": (
+        "Newsletter scrape, niche identification, one-pagers, scorecards, tracker update.",
+        "CIO",
+        None,
+    ),
+    "conference-discovery": (
+        "Weekly conference scan, registration, attendee list processing into targets.",
+        "CIO",
+        None,
+    ),
+    "target-discovery-sunday": (
+        "Weekly owner enrichment for the next 200 un-enriched targets on JJ-Call-Only sheets.",
+        "CIO",
+        None,
+    ),
+    "deal-evaluation": (
+        "Post-call follow-up through LOI — NDA, financials, scorecard, Thumbs Up/Down deck.",
+        "CIO",
+        "Triggered by CIM arrival",
+    ),
+    "post-loi": (
+        "Post-LOI due diligence through closing (~90 days) — workstreams, financing, PA, close.",
+        "CIO",
+        "Triggered by signed LOI",
+    ),
+    "target-discovery": (
+        "Find acquisition targets via Apollo + web research; auto-advance qualifying targets to outreach.",
+        "CIO",
+        "On niche activation / refill signal",
+    ),
+    "list-builder": (
+        "Apollo-based company discovery and contact enrichment. Called by target-discovery.",
+        "CIO",
+        "Called by target-discovery",
+    ),
+    "tracker-manager": (
+        "Operational sheet management — status moves, rank re-sorts, target list hygiene, DealsX edits.",
+        "CIO",
+        "Kay-authorized sheet updates",
+    ),
+    "river-guide-builder": (
+        "Per-niche ecosystem build — associations, named individuals, network cross-check, experience scan.",
+        "CIO",
+        "Per-niche ecosystem build",
+    ),
+    # CPO — relationships, people, JJ
+    "relationship-manager": (
+        "Nurture cadence monitoring, overdue-contact surfacing, Attio People hygiene.",
+        "CPO",
+        None,
+    ),
+    "jj-operations-sunday": (
+        "Sunday prep — creates Mon–Fri Call Log tabs for the week ahead.",
+        "CPO",
+        None,
+    ),
+    "jj-operations": (
+        "Daily call prep, 10am Slack delivery, post-shift outcome harvest into master sheet.",
+        "CPO",
+        "Manual harvest after 2pm shift",
+    ),
+    "warm-intro-finder": (
+        "Mine network for warm intro paths to acquisition targets — Attio, vault, Gmail, LinkedIn.",
+        "CPO",
+        "Per-target network scan",
+    ),
+    "meeting-brief": (
+        "External meeting prep — auto-detects new vs. repeat contact; saves to Drive + vault.",
+        "CPO",
+        "Pre-meeting trigger",
+    ),
+    # CMO — outreach, brand, content
+    "outreach-manager": (
+        "Owns all outreach — Kay email, DealsX, conference, intermediary. Channel routing by niche.",
+        "CMO",
+        "Approved targets / sheet trigger",
+    ),
+    "conference-engagement": (
+        "T-7 to T+2 outreach lifecycle — pre-event drafts and post-event business-card follow-ups.",
+        "CMO",
+        "Around each conference Kay attends",
+    ),
+    "generate-visuals": (
+        "Gemini Nano-Banana image generation — LinkedIn carousels, infographics, brand graphics.",
+        "CMO",
+        "Manual visual gen",
+    ),
+    # CFO — financial discipline
+    "budget-manager": (
+        "Fund budget tracking, runway forecasting, tech-stack audits, bookkeeper P&L reconciliation.",
+        "CFO",
+        "Monthly bookkeeper P&L intake",
+    ),
+    "investor-update": (
+        "Quarterly deck, Stevens monthly, Lavergne biweekly, post-LOI weekly DD — four modes.",
+        "CFO",
+        "Quarterly + call prep",
+    ),
+}
+
+# C-suite display order (top to bottom on the page) — validated 2026-04-24.
+_CSUITE_DISPLAY_ORDER = [
+    ("COO", "Chief of Staff"),
+    ("CIO", "Chief Investment Officer"),
+    ("CPO", "Chief People Officer"),
+    ("CMO", "Chief Marketing Officer"),
+    ("CFO", "Chief Financial Officer"),
+    ("GC", "General Counsel"),
+]
+
+# Skills declared scheduled in CLAUDE.md but with no plist registered = a "gap"
+# (the canary's job is to surface this). As of 2026-04-24, only health-monitor.
+_CLAUDE_MD_SCHEDULED_BUT_UNREGISTERED = {"health-monitor"}
+
+# launchd's StartCalendarInterval uses 0=Sun OR 7=Sun (both accepted by Apple).
+# Map both to "Sun" so plists from either convention render correctly.
+_WEEKDAY_NAMES = {0: "Sun", 1: "Mon", 2: "Tue", 3: "Wed", 4: "Thu", 5: "Fri", 6: "Sat", 7: "Sun"}
+
+
+@dataclass
+class SkillRun:
+    fired_at: datetime  # parsed from filename or mtime
+    status: str  # "ok" | "warn" | "err"
+    log_path: Path
+    snippet: str  # first non-blank content line, truncated
+
+
+@dataclass
+class SkillHealth:
+    name: str
+    description: str
+    c_suite: str  # CIO / CFO / CMO / CPO / COO / GC
+    is_scheduled: bool  # has a launchd plist
+    is_registered: bool  # appears in `launchctl list`
+    is_gap: bool  # CLAUDE.md says scheduled but no plist = surface as red gap
+    schedule_text: str  # human-readable cadence ("Daily · 6:00 AM ET")
+    next_fire_text: str | None  # for scheduled-but-not-today
+    trigger_text: str | None  # for on-demand
+    today_status: str  # see _STATUSES below
+    last_run: SkillRun | None
+    recent_runs: list[SkillRun] = field(default_factory=list)
+
+
+@dataclass
+class CSuiteGroup:
+    short: str  # CIO / CFO / etc
+    label: str  # full title
+    skills: list[SkillHealth] = field(default_factory=list)
+
+
+# Status taxonomy used by the renderer to pick dot color + badge.
+_STATUSES = {
+    "fired-ok": ("green", "Scheduled"),
+    "fired-warn": ("yellow", "Scheduled"),
+    "fired-err": ("red", "Scheduled"),
+    "scheduled-later": ("grey", "Scheduled"),  # scheduled but not today
+    "missed": ("red", "Scheduled"),  # should have fired today, no log
+    "ondemand": ("ondemand", "On-demand"),
+    "gap": ("red", "Gap"),
+}
+
+
+def _registered_jobs() -> set[str]:
+    """Return set of skill names registered with launchctl."""
+    try:
+        out = subprocess.run(
+            ["launchctl", "list"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        return set()
+    out_text = out.stdout if out.returncode == 0 else ""
+    names: set[str] = set()
+    for line in out_text.splitlines():
+        # Format: PID  STATUS  LABEL
+        parts = line.split()
+        if len(parts) < 3:
+            continue
+        label = parts[-1]
+        if label.startswith(LAUNCHD_LABEL_PREFIX):
+            names.add(label[len(LAUNCHD_LABEL_PREFIX):])
+    return names
+
+
+def _read_plist(skill: str) -> dict | None:
+    path = LAUNCH_AGENTS_DIR / f"{LAUNCHD_LABEL_PREFIX}{skill}.plist"
+    if not path.exists():
+        return None
+    try:
+        with path.open("rb") as f:
+            return plistlib.load(f)
+    except (OSError, plistlib.InvalidFileException):
+        return None
+
+
+def _format_schedule(intervals: list[dict]) -> str:
+    """Turn StartCalendarInterval entries into a human label.
+
+    Patterns we care about:
+      - 5 intervals Mon-Fri at same H:M → "Daily · H:MM AM/PM ET"
+      - 7 intervals (every weekday) at same H:M → "Nightly · H:MM AM/PM ET"
+      - 1 interval, fixed weekday → "Mon 9:00 AM ET"
+      - Otherwise → "Multi-cadence" (rare; readable fallback)
+    """
+    if not intervals:
+        return "—"
+    times = {(d.get("Hour"), d.get("Minute")) for d in intervals}
+    weekdays = {d.get("Weekday") for d in intervals if "Weekday" in d}
+    if len(times) != 1:
+        return "Multi-cadence"
+    hour, minute = next(iter(times))
+    if hour is None or minute is None:
+        return "Multi-cadence"
+    t_label = _format_time(hour, minute)
+    # Treat 0/7-Sunday duplicates as a single Sunday entry for label purposes.
+    weekdays_norm = {7 if w == 0 else w for w in weekdays}
+    if weekdays_norm == {1, 2, 3, 4, 5}:
+        return f"Daily · {t_label}"
+    if weekdays_norm == {1, 2, 3, 4, 5, 6, 7}:
+        return f"Nightly · {t_label}"
+    if len(weekdays_norm) == 1:
+        wd = next(iter(weekdays_norm))
+        if wd in _WEEKDAY_NAMES:
+            return f"{_WEEKDAY_NAMES[wd]} {t_label}"
+    if not weekdays_norm:
+        # No Weekday key → fires every day
+        return f"Daily · {t_label}"
+    days = " ".join(_WEEKDAY_NAMES.get(w, "?") for w in sorted(weekdays_norm))
+    return f"{days} {t_label}"
+
+
+def _format_time(hour: int, minute: int) -> str:
+    period = "AM" if hour < 12 else "PM"
+    h12 = hour % 12 or 12
+    return f"{h12}:{minute:02d} {period} ET"
+
+
+def _next_fire(intervals: list[dict], now: datetime | None = None) -> datetime | None:
+    """Return the next scheduled fire datetime in local time, or None."""
+    if not intervals:
+        return None
+    now = now or datetime.now()
+    candidates: list[datetime] = []
+    for ahead in range(0, 8):
+        day = now.date() + timedelta(days=ahead)
+        weekday = day.isoweekday()  # 1=Mon..7=Sun
+        for d in intervals:
+            wd = d.get("Weekday")
+            if wd is not None and wd != weekday:
+                continue
+            hour = d.get("Hour", 0)
+            minute = d.get("Minute", 0)
+            candidate = datetime(day.year, day.month, day.day, hour, minute)
+            if candidate > now:
+                candidates.append(candidate)
+    return min(candidates) if candidates else None
+
+
+def _should_fire_today(intervals: list[dict], today: date | None = None) -> bool:
+    if not intervals:
+        return False
+    today = today or date.today()
+    weekday = today.isoweekday()
+    for d in intervals:
+        wd = d.get("Weekday")
+        if wd is None or wd == weekday:
+            return True
+    return False
+
+
+_LOG_FILENAME_RE = re.compile(
+    r"^(?P<skill>[a-z0-9-]+?)-(?P<date>\d{4}-\d{2}-\d{2})-(?P<hhmm>\d{4})\.log$"
+)
+
+
+def _scan_logs_for_skill(skill: str, limit: int = 5) -> list[SkillRun]:
+    """Return up to `limit` most recent runs for this skill, newest first."""
+    if not SCHEDULED_LOGS_DIR.exists():
+        return []
+    runs: list[SkillRun] = []
+    for entry in SCHEDULED_LOGS_DIR.iterdir():
+        m = _LOG_FILENAME_RE.match(entry.name)
+        if not m or m.group("skill") != skill:
+            continue
+        try:
+            d = date.fromisoformat(m.group("date"))
+        except ValueError:
+            continue
+        hhmm = m.group("hhmm")
+        try:
+            fired = datetime(d.year, d.month, d.day, int(hhmm[:2]), int(hhmm[2:]))
+        except ValueError:
+            continue
+        snippet, status = _read_log_summary(entry)
+        runs.append(SkillRun(fired_at=fired, status=status, log_path=entry, snippet=snippet))
+    runs.sort(key=lambda r: r.fired_at, reverse=True)
+    return runs[:limit]
+
+
+def _read_log_summary(path: Path) -> tuple[str, str]:
+    """Return (first non-blank content line, status).
+
+    Reads first 4KB + last 2KB. Status is intentionally conservative:
+      err  = decisive failure (Traceback, FATAL, last line ends with Error/exception)
+      warn = transient/recoverable (API Error in body, rate-limit, warning)
+      ok   = otherwise
+
+    Mid-run "API Error: ..." that the run recovered from gets warn, not err —
+    a fired-err light should mean the run actually failed.
+    """
+    try:
+        full = path.read_text(errors="replace")
+    except OSError:
+        return "(log read error)", "err"
+    head = full[:4096]
+    tail = full[-2048:] if len(full) > 4096 else ""
+    lower_head = head.lower()
+    lower_tail = tail.lower()
+    # Decisive-failure markers — these mean the script crashed.
+    if (
+        "traceback (most recent call last)" in lower_head + lower_tail
+        or "fatal:" in lower_head + lower_tail
+        or "fatal error" in lower_head + lower_tail
+    ):
+        status = "err"
+    elif (
+        "api error" in lower_head
+        or "warning" in lower_head
+        or "rate limit" in lower_head
+        or "warn:" in lower_head
+        or "retrying" in lower_head
+    ):
+        status = "warn"
+    else:
+        status = "ok"
+    snippet = ""
+    for line in head.splitlines():
+        s = line.strip()
+        if s and not s.startswith("#"):
+            snippet = s[:160]
+            break
+    return snippet or "(empty log)", status
+
+
+def _today_status_for_scheduled(
+    intervals: list[dict], runs_today: list[SkillRun]
+) -> str:
+    """Decide today's color based on schedule + dated logs for today."""
+    if runs_today:
+        # Latest run today drives the color.
+        latest = runs_today[0]
+        return f"fired-{latest.status}"
+    if not _should_fire_today(intervals):
+        return "scheduled-later"
+    # Should fire today and hasn't yet — distinguish "later today" from "missed".
+    now = datetime.now()
+    expected_today = []
+    for d in intervals:
+        wd = d.get("Weekday")
+        if wd is not None and wd != now.isoweekday():
+            continue
+        h = d.get("Hour", 0)
+        m = d.get("Minute", 0)
+        expected_today.append(datetime(now.year, now.month, now.day, h, m))
+    if not expected_today:
+        return "scheduled-later"
+    if min(expected_today) > now:
+        return "scheduled-later"  # next fire is today but in the future
+    # We're past at least one expected fire time and have no log → missed.
+    return "missed"
+
+
+def _runs_today(runs: list[SkillRun]) -> list[SkillRun]:
+    today = date.today()
+    return [r for r in runs if r.fired_at.date() == today]
+
+
+def _build_skill_health(
+    skill: str,
+    description: str,
+    c_suite: str,
+    trigger_text: str | None,
+    registered: set[str],
+) -> SkillHealth:
+    is_registered = skill in registered
+    plist = _read_plist(skill)
+    is_scheduled = plist is not None
+    is_gap = (not is_scheduled) and skill in _CLAUDE_MD_SCHEDULED_BUT_UNREGISTERED
+    intervals = (plist or {}).get("StartCalendarInterval") or []
+    if isinstance(intervals, dict):
+        intervals = [intervals]
+    schedule_text = _format_schedule(intervals) if is_scheduled else "—"
+    next_fire = _next_fire(intervals) if is_scheduled else None
+    next_fire_text = next_fire.strftime("Next %a %b %-d") if next_fire else None
+    recent = _scan_logs_for_skill(skill, limit=5)
+    today = _runs_today(recent)
+    if is_gap:
+        today_status = "gap"
+    elif is_scheduled:
+        today_status = _today_status_for_scheduled(intervals, today)
+    else:
+        today_status = "ondemand"
+    return SkillHealth(
+        name=skill,
+        description=description,
+        c_suite=c_suite,
+        is_scheduled=is_scheduled,
+        is_registered=is_registered,
+        is_gap=is_gap,
+        schedule_text=schedule_text,
+        next_fire_text=next_fire_text,
+        trigger_text=trigger_text,
+        today_status=today_status,
+        last_run=recent[0] if recent else None,
+        recent_runs=recent,
+    )
+
+
+def load_skill_health() -> list[CSuiteGroup]:
+    """Build the C-Suite & Skills page data structure.
+
+    Returns groups in display order (COO, CIO, CPO, CMO, CFO, GC).
+    Each group's skills appear in catalog declaration order.
+    """
+    registered = _registered_jobs()
+    by_csuite: dict[str, list[SkillHealth]] = {short: [] for short, _ in _CSUITE_DISPLAY_ORDER}
+    for skill, (description, c_suite, trigger) in _SKILL_CATALOG.items():
+        if c_suite not in by_csuite:
+            # Catalog has an unmapped c_suite — drop silently rather than
+            # surface a misclassification on the page.
+            continue
+        by_csuite[c_suite].append(
+            _build_skill_health(skill, description, c_suite, trigger, registered)
+        )
+    return [
+        CSuiteGroup(short=short, label=label, skills=by_csuite.get(short, []))
+        for short, label in _CSUITE_DISPLAY_ORDER
+    ]
+
+
+def skill_health_summary(groups: list[CSuiteGroup]) -> dict[str, int]:
+    """Aggregate counts for the page summary strip."""
+    counts = {"total": 0, "fired_today": 0, "on_deck": 0, "gaps": 0, "ondemand": 0, "missed": 0}
+    for g in groups:
+        for s in g.skills:
+            counts["total"] += 1
+            if s.today_status.startswith("fired"):
+                counts["fired_today"] += 1
+            elif s.today_status == "scheduled-later":
+                counts["on_deck"] += 1
+            elif s.today_status == "gap":
+                counts["gaps"] += 1
+            elif s.today_status == "ondemand":
+                counts["ondemand"] += 1
+            elif s.today_status == "missed":
+                counts["missed"] += 1
+    return counts

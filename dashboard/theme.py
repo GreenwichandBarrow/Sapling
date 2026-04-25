@@ -515,9 +515,8 @@ GLOBAL_CSS = f"""
     font-size: 13px;
   }}
 
-  /* -------- KANBAN BOARD -------- */
-  /* `gb-kanban-wrap` scrolls horizontally on narrow viewports so 6 columns
-     never squash below a usable card width. */
+  /* -------- KANBAN BOARD (Active Deal Pipeline) -------- */
+  /* 4 columns (NDA forward) — fits typical desktop without horizontal scroll. */
   .gb-kanban-wrap {{
     overflow-x: auto;
     padding-bottom: 8px;
@@ -525,53 +524,89 @@ GLOBAL_CSS = f"""
   }}
   .gb-kanban {{
     display: grid;
-    grid-template-columns: repeat(6, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, minmax(240px, 1fr));
     gap: 12px;
-    min-width: 1240px;
   }}
   .gb-kanban-col {{
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 12px;
+    padding: 0;
     min-height: 220px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }}
   .gb-kanban-col-header {{
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    padding: 4px 6px 10px;
+    align-items: center;
+    padding: 12px 14px;
     border-bottom: 1px solid var(--border-soft);
-    margin-bottom: 10px;
   }}
   .gb-kanban-col-name {{
     font-size: 10.5px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--text-muted);
-    font-weight: 500;
+    color: var(--text);
+    font-weight: 600;
   }}
   .gb-kanban-col-count {{
-    font-size: 12px;
-    color: var(--text-dim);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-muted);
     font-variant-numeric: tabular-nums;
   }}
+  .gb-kanban-col-count .n {{
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+    background: rgba(255,255,255,0.05);
+    padding: 1px 7px;
+    border-radius: 8px;
+  }}
+  .gb-kanban-col-dot {{
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--neutral);
+  }}
+  .gb-kanban-col-dot.green {{
+    background: var(--green);
+    box-shadow: 0 0 6px rgba(63,209,127,0.4);
+  }}
+  .gb-kanban-col-dot.grey {{ background: var(--text-dim); }}
+  .gb-kanban-bar {{
+    height: 2px;
+    background: var(--border-soft);
+    width: 100%;
+  }}
+  .gb-kanban-bar-fill {{
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.25s;
+  }}
+  .gb-kanban-bar-fill.empty {{ background: var(--border-soft); }}
+
   .gb-kanban-cards {{
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    flex: 1;
   }}
   .gb-kanban-card {{
     display: block;
-    background: var(--bg);
-    border: 1px solid var(--border-soft);
+    background: var(--row-hover);
+    border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 12px;
+    padding: 11px 12px;
     text-decoration: none !important;
     color: inherit !important;
     transition: all 0.15s;
+    position: relative;
   }}
   .gb-kanban-card:hover {{
     background: var(--panel-hover);
@@ -579,32 +614,70 @@ GLOBAL_CSS = f"""
     transform: translateY(-1px);
   }}
   .gb-kanban-card .company {{
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 500;
     color: var(--text);
-    line-height: 1.3;
+    line-height: 1.35;
     margin-bottom: 6px;
+    padding-right: 10px;
   }}
   .gb-kanban-card .meta {{
     font-size: 11px;
     color: var(--text-muted);
-    line-height: 1.5;
+    margin-bottom: 6px;
+    line-height: 1.4;
   }}
   .gb-kanban-card .meta .sep {{
     color: var(--text-dim);
-    margin: 0 5px;
+    margin: 0 4px;
   }}
   .gb-kanban-card .footer {{
-    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-size: 10.5px;
     color: var(--text-dim);
-    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
   }}
+  .gb-kanban-card .footer .age {{
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }}
+  .gb-kanban-card .footer .age-dot {{
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--text-dim);
+  }}
+  .gb-kanban-card .footer .age-dot.green {{ background: var(--green); }}
+  .gb-kanban-card .footer .age-dot.yellow {{ background: var(--yellow); }}
+  .gb-kanban-card .footer .age-dot.red {{ background: var(--red); }}
+  .gb-kanban-card .footer .age-dot.grey {{ background: var(--text-dim); }}
+  .gb-kanban-card .footer .last-touch {{ font-size: 10px; }}
+
+  /* Category chip on cards — color-coded for at-a-glance scanning. */
+  .gb-cat {{
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+    background: rgba(139, 147, 167, 0.12);
+    color: var(--text-muted);
+  }}
+  .gb-cat.insurance {{ background: rgba(74, 158, 255, 0.12); color: var(--accent); }}
+  .gb-cat.fineart {{ background: rgba(176, 132, 240, 0.14); color: var(--purple); }}
+  .gb-cat.shipping {{ background: rgba(245, 196, 81, 0.12); color: var(--yellow); }}
+  .gb-cat.consulting {{ background: rgba(63, 209, 127, 0.12); color: var(--green); }}
+
   .gb-kanban-col-empty {{
     color: var(--text-dim);
     font-size: 11.5px;
-    padding: 6px 4px;
+    padding: 16px 8px;
     font-style: italic;
+    text-align: center;
   }}
 
   /* -------- CLOSED STRIP -------- */

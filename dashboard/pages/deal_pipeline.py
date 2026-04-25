@@ -1,15 +1,22 @@
-"""Deal Pipeline page — Attio replica, Kanban by stage.
+"""Active Deal Pipeline page — NDA-forward conversations only.
 
 Reads `brain/context/attio-pipeline-snapshot.json` — a point-in-time snapshot
-of Attio's "Active Deals - Owners" list, written by the harness via the
-Attio MCP tools. Streamlit can't call MCP tools directly, so the snapshot
-file is the contract between agent (writer) and page (reader).
+of Attio's "Active Deals - Owners" list — and filters to NDA-forward stages
+(NDA, Financials Received, Submitted LOI, Signed LOI). Identified + Contacted
+moved to M&A Analytics on 2026-04-24 because DealsX-driven cold outreach will
+push those columns into the thousands and turn the page into a funnel report.
 
-Six Kanban columns reflect the full pipeline schema (Identified → Signed LOI)
-even when a stage has no deals yet; Attio's list today only defines the first
-two statuses, and the trailing columns render empty until Kay adds them as
-Attio list statuses. Terminal "Closed / Not Proceeding" renders as a compact
-strip below the board — closed deals aren't pipeline.
+Cards now carry:
+- Category color chip (insurance/fine-art/shipping/consulting/other)
+- Stage-age severity dot (green <14d / yellow 14–30d / red >30d)
+- Last-touch days
+
+Each column header carries a thin proportion bar showing what share of the
+active pipeline lives at that stage — instant read on bottlenecks.
+
+Closed strip below renders the terminal Attio stage. Pre-NDA outreach
+attrition is intermixed in `closed_count` until the snapshot writer is
+enhanced to split post-NDA failures separately.
 """
 
 from __future__ import annotations
@@ -53,6 +60,50 @@ def _days_since(ts: str | None) -> int | None:
     return (datetime.now(timezone.utc) - dt).days
 
 
+# Category → CSS modifier on .gb-cat. Chips color-coded so the board scans
+# as "where are my insurance deals?" at a glance.
+_CATEGORY_BUCKETS = {
+    "insurance": "insurance",
+    "fine art": "fineart",
+    "shipping": "shipping",
+    "logistics": "shipping",
+    "consulting": "consulting",
+    "professional services": "consulting",
+}
+
+
+def _category_bucket(category: str | None) -> str:
+    if not category:
+        return "other"
+    low = category.lower()
+    for needle, bucket in _CATEGORY_BUCKETS.items():
+        if needle in low:
+            return bucket
+    return "other"
+
+
+def _age_severity(days: int | None) -> str:
+    """green <14d, yellow 14–30d, red >30d (matches mockup heuristic)."""
+    if days is None:
+        return "grey"
+    if days < 14:
+        return "green"
+    if days <= 30:
+        return "yellow"
+    return "red"
+
+
+def _last_touch_text(deal: PipelineDeal) -> str:
+    days = _days_since(deal.last_interaction)
+    if days is None:
+        return "no contact yet"
+    if days <= 0:
+        return "last touch today"
+    if days == 1:
+        return "last touch 1d"
+    return f"last touch {days}d"
+
+
 def _card_meta(deal: PipelineDeal) -> str:
     parts: list[str] = []
     if deal.location:
@@ -66,31 +117,57 @@ def _card_meta(deal: PipelineDeal) -> str:
 
 def _render_card(deal: PipelineDeal) -> str:
     days = _days_since(deal.stage_since)
-    footer = f"In stage {days}d" if days is not None else ""
+    age = _age_severity(days)
+    stage_text = f"In stage {days}d" if days is not None else ""
+    cat_bucket = _category_bucket(deal.category)
+    cat_chip = (
+        f'<span class="gb-cat {cat_bucket}">{escape(deal.category)}</span>'
+        if deal.category
+        else ""
+    )
     return dedent(
         f"""
         <a class="gb-kanban-card" href="{escape(deal.attio_url)}"
            target="_blank" rel="noreferrer noopener">
         <div class="company">{escape(deal.company)}</div>
+        {cat_chip}
         <div class="meta">{_card_meta(deal)}</div>
-        <div class="footer">{escape(footer)}</div>
+        <div class="footer">
+        <span class="age"><span class="age-dot {age}"></span>{escape(stage_text)}</span>
+        <span class="last-touch">{escape(_last_touch_text(deal))}</span>
+        </div>
         </a>
         """
     ).strip()
 
 
-def _render_column(stage: str, deals: list[PipelineDeal]) -> str:
+def _render_column(stage: str, deals: list[PipelineDeal], total: int) -> str:
+    """`total` = total deals across all active stages — used for proportion bar."""
     if deals:
         cards = "".join(_render_card(d) for d in deals)
     else:
         cards = '<div class="gb-kanban-col-empty">No deals at this stage.</div>'
+
+    if total > 0:
+        pct = round(100 * len(deals) / total)
+    else:
+        pct = 0
+    fill_class = "gb-kanban-bar-fill"
+    if pct == 0:
+        fill_class += " empty"
+    dot_class = "green" if deals else "grey"
+
     return dedent(
         f"""
         <div class="gb-kanban-col">
         <div class="gb-kanban-col-header">
         <span class="gb-kanban-col-name">{escape(stage)}</span>
-        <span class="gb-kanban-col-count">{len(deals)}</span>
+        <span class="gb-kanban-col-count">
+        <span class="gb-kanban-col-dot {dot_class}"></span>
+        <span class="n">{len(deals)}</span>
+        </span>
         </div>
+        <div class="gb-kanban-bar"><div class="{fill_class}" style="width: {pct}%"></div></div>
         <div class="gb-kanban-cards">{cards}</div>
         </div>
         """
@@ -106,7 +183,8 @@ def _render_kanban(snapshot: PipelineSnapshot) -> str:
     # top of their column instead of oldest-first.
     for stage in by_stage:
         by_stage[stage].sort(key=lambda d: d.stage_since, reverse=True)
-    cols = "".join(_render_column(s, by_stage[s]) for s in snapshot.stages)
+    total = sum(len(v) for v in by_stage.values())
+    cols = "".join(_render_column(s, by_stage[s], total) for s in snapshot.stages)
     return f'<div class="gb-kanban-wrap"><div class="gb-kanban">{cols}</div></div>'
 
 
@@ -125,6 +203,7 @@ def _render_closed_strip(snapshot: PipelineSnapshot) -> str:
         <span class="gb-closed-total">
         <strong>{snapshot.closed_count}</strong> closed lifetime
         &middot; {recent_n} most recent shown
+        &middot; <em style="color: var(--text-dim);">includes pre-NDA outreach attrition until snapshot enhancement splits post-NDA failures</em>
         </span>
         </div>
         <div class="gb-closed-list">{items}</div>
@@ -141,10 +220,10 @@ def _render_subtitle(snapshot: PipelineSnapshot) -> str:
     )
     return (
         '<div class="gb-subtitle">'
-        'Live Attio replica &mdash; '
-        f'<span class="highlight">{escape(snapshot.list_name)}</span>. '
+        'Active conversations &mdash; <span class="highlight">NDA signed forward</span>. '
         f"{active} active deals across {len(snapshot.stages)} stages "
-        f'&nbsp;&middot;&nbsp; snapshot fetched {escape(fetched_str)}'
+        f'&nbsp;&middot;&nbsp; snapshot fetched {escape(fetched_str)}. '
+        "Cold outreach &amp; identified targets aggregate on M&amp;A Analytics, not here."
         "</div>"
     )
 
@@ -174,11 +253,10 @@ def render() -> None:
     st.markdown(_render_closed_strip(snapshot), unsafe_allow_html=True)
 
     st.markdown(
-        '<div class="gb-page-note">Stage vocabulary reflects the 6-stage '
-        "pipeline schema. Stages that don’t yet exist as Attio statuses "
-        "(NDA, Financials Received, Submitted LOI, Signed LOI) render empty "
-        "until added to the Attio list. Snapshot file is rewritten by the "
-        "agent via Attio MCP; scheduled refresh lands in a later session."
+        '<div class="gb-page-note">Page filters to <strong>NDA-forward</strong> '
+        "stages (NDA, Financials Received, Submitted LOI, Signed LOI). Identified + "
+        "Contacted moved to M&amp;A Analytics on 2026-04-24. Snapshot file rewritten "
+        "by the agent via Attio MCP; scheduled refresh lands in a later session."
         "</div>",
         unsafe_allow_html=True,
     )

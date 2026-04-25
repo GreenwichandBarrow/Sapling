@@ -21,7 +21,7 @@ enhanced to split post-NDA failures separately.
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from html import escape
 from textwrap import dedent
 
@@ -212,20 +212,84 @@ def _render_closed_strip(snapshot: PipelineSnapshot) -> str:
     ).strip()
 
 
+def _advanced_this_week(snapshot: PipelineSnapshot, today: date) -> int:
+    """Count deals whose stage_since landed in the last 7 days."""
+    week_start = today - timedelta(days=6)
+    n = 0
+    for d in snapshot.deals:
+        ts = _parse_iso(d.stage_since)
+        if not ts:
+            continue
+        if week_start <= ts.date() <= today:
+            n += 1
+    return n
+
+
+def _stalled_count(snapshot: PipelineSnapshot, today: date) -> int:
+    """Deals that have sat in their current stage for >30 days."""
+    threshold = today - timedelta(days=30)
+    n = 0
+    for d in snapshot.deals:
+        ts = _parse_iso(d.stage_since)
+        if not ts:
+            continue
+        if ts.date() < threshold:
+            n += 1
+    return n
+
+
 def _render_subtitle(snapshot: PipelineSnapshot) -> str:
+    return (
+        '<div class="gb-subtitle">'
+        'Active conversations &mdash; <span class="highlight">NDA signed forward</span>. '
+        "Cold outreach &amp; identified targets aggregate on M&amp;A Analytics, not here."
+        "</div>"
+    )
+
+
+def _render_stat_pills(snapshot: PipelineSnapshot) -> str:
+    today = date.today()
     active = len(snapshot.deals)
+    advanced = _advanced_this_week(snapshot, today)
+    stalled = _stalled_count(snapshot, today)
     fetched = _parse_iso(snapshot.fetched_at)
     fetched_str = (
         fetched.strftime("%b %-d, %H:%M UTC") if fetched else snapshot.fetched_at
     )
-    return (
-        '<div class="gb-subtitle">'
-        'Active conversations &mdash; <span class="highlight">NDA signed forward</span>. '
-        f"{active} active deals across {len(snapshot.stages)} stages "
-        f'&nbsp;&middot;&nbsp; snapshot fetched {escape(fetched_str)}. '
-        "Cold outreach &amp; identified targets aggregate on M&amp;A Analytics, not here."
-        "</div>"
-    )
+    deal_word = "deal" if active == 1 else "deals"
+    return dedent(
+        f"""
+        <div class="gb-stat-pills">
+        <span class="gb-stat-pill"><strong>{active}</strong> active {deal_word}</span>
+        <span class="gb-stat-pill green"><strong>{advanced}</strong> advanced this week</span>
+        <span class="gb-stat-pill {'red' if stalled else ''}"><strong>{stalled}</strong> stalled &gt;30d</span>
+        <span class="gb-stat-pill"><strong>{snapshot.closed_count}</strong> closed lifetime</span>
+        <a class="gb-stat-link" href="/ma-analytics" target="_self">Outreach funnel stats &rarr; M&amp;A Analytics</a>
+        <span class="gb-stat-meta">snapshot {escape(fetched_str)}</span>
+        </div>
+        """
+    ).strip()
+
+
+def _render_filter_bar() -> str:
+    return dedent(
+        """
+        <div class="gb-filter-bar">
+        <div class="gb-filter-tabs">
+        <button class="gb-filter-tab active">All</button>
+        <button class="gb-filter-tab">Recent &lt;14d</button>
+        <button class="gb-filter-tab">Stalled</button>
+        </div>
+        <select class="gb-filter-select">
+        <option>All categories</option>
+        </select>
+        <select class="gb-filter-select">
+        <option>All locations</option>
+        </select>
+        <input class="gb-filter-search" type="text" placeholder="Search company, owner..." />
+        </div>
+        """
+    ).strip()
 
 
 def _render_empty_state() -> str:
@@ -249,6 +313,8 @@ def render() -> None:
         return
 
     st.markdown(_render_subtitle(snapshot), unsafe_allow_html=True)
+    st.markdown(_render_stat_pills(snapshot), unsafe_allow_html=True)
+    st.markdown(_render_filter_bar(), unsafe_allow_html=True)
     st.markdown(_render_kanban(snapshot), unsafe_allow_html=True)
     st.markdown(_render_closed_strip(snapshot), unsafe_allow_html=True)
 

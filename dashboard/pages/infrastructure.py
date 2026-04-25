@@ -172,11 +172,9 @@ def _render_subtitle(health_tiles: list[HealthTile], stack_n: int) -> str:
     summary = system_health_summary(health_tiles)
     return (
         '<div class="gb-subtitle">'
-        f'<span class="highlight">{summary["healthy"]} healthy · '
-        f'{summary["alert"]} alert · {summary["warn"]} warn</span> '
-        f"across {stack_n}-service stack. "
-        "System Health + Tech Stack live; External Connectivity, Credits, "
-        "and Calibration zones pending."
+        "System health, external connectivity, credits &amp; spend, and what "
+        'the system learned this week. <span class="highlight">One place to ask '
+        "&ldquo;is the plumbing OK?&rdquo;</span>"
         "</div>"
     )
 

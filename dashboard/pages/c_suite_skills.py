@@ -205,6 +205,28 @@ def _render_summary(summary: dict[str, int]) -> str:
     return f'<div class="gb-summary">{"".join(parts)}</div>'
 
 
+def _render_filter_bar() -> str:
+    return dedent(
+        """
+        <div class="gb-filter-bar">
+        <div class="gb-filter-tabs">
+        <button class="gb-filter-tab active">All</button>
+        <button class="gb-filter-tab">Scheduled</button>
+        <button class="gb-filter-tab">On-demand</button>
+        <button class="gb-filter-tab">Gaps only</button>
+        </div>
+        <select class="gb-filter-select">
+        <option>All C-suites</option>
+        </select>
+        <select class="gb-filter-select">
+        <option>All statuses</option>
+        </select>
+        <input class="gb-filter-search" type="text" placeholder="Search skill..." />
+        </div>
+        """
+    ).strip()
+
+
 def render() -> None:
     import streamlit as st
 
@@ -213,6 +235,7 @@ def render() -> None:
 
     st.markdown(_render_subtitle(), unsafe_allow_html=True)
     st.markdown(_render_summary(summary), unsafe_allow_html=True)
+    st.markdown(_render_filter_bar(), unsafe_allow_html=True)
 
     sections = "".join(_render_group(g) for g in groups)
     st.markdown(sections, unsafe_allow_html=True)

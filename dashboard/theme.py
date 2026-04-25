@@ -70,10 +70,24 @@ GLOBAL_CSS = f"""
   div[data-testid="stDecoration"] {{ display: none; }}
   div[data-testid="stStatusWidget"] {{ display: none; }}
 
+  /* Streamlit ships Source Sans Variable and forces it on every component
+     it owns (sidebar, page_link, buttons, selects). Override at every layer
+     with !important so Avenir Next propagates across the entire app, not
+     just our custom-HTML zones. */
+  html, body,
+  body *,
+  [data-testid="stAppViewContainer"],
+  [data-testid="stAppViewContainer"] *,
+  [data-testid="stMain"],
+  [data-testid="stMain"] *,
+  [data-testid="stSidebar"],
+  [data-testid="stSidebar"] *,
+  button, select, input, textarea {{
+    font-family: "Avenir Next", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  }}
   html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {{
     background: var(--bg) !important;
     color: var(--text);
-    font-family: "Avenir Next", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size: 14px;
     line-height: 1.45;
     -webkit-font-smoothing: antialiased;
@@ -150,6 +164,17 @@ GLOBAL_CSS = f"""
   }}
   .gb-nav-item.active .dot {{ background: var(--accent); }}
 
+  /* Strip Streamlit's vertical-block gap inside the sidebar nav so items
+     sit at the mockup's tight 2px-margin cadence, not 20px+ block spacing. */
+  [data-testid="stSidebar"] [data-testid="stVerticalBlock"],
+  [data-testid="stSidebar"] [data-testid="stVerticalBlockBorderWrapper"] {{
+    gap: 0 !important;
+  }}
+  [data-testid="stSidebar"] [data-testid="stElementContainer"] {{
+    margin: 0 !important;
+    padding: 0 !important;
+  }}
+
   /* Style Streamlit's st.page_link to match our custom nav items. */
   [data-testid="stSidebar"] a[data-testid="stPageLink"],
   [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"] {{
@@ -164,6 +189,7 @@ GLOBAL_CSS = f"""
     text-decoration: none !important;
     background: transparent !important;
     transition: all 0.15s !important;
+    line-height: 1 !important;
   }}
   [data-testid="stSidebar"] a[data-testid="stPageLink"]:hover,
   [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"]:hover {{
@@ -445,6 +471,43 @@ GLOBAL_CSS = f"""
     margin-bottom: 24px;
   }}
   .gb-subtitle .highlight {{ color: var(--text); font-weight: 500; }}
+
+  /* Stat-pills row — sits above filter bar on Active Deal Pipeline. */
+  .gb-stat-pills {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 18px;
+    align-items: center;
+    margin-top: -8px;
+    margin-bottom: 18px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }}
+  .gb-stat-pill {{
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }}
+  .gb-stat-pill strong {{
+    color: var(--text);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    margin-right: 4px;
+  }}
+  .gb-stat-pill.green strong {{ color: var(--green); }}
+  .gb-stat-pill.red strong {{ color: var(--red); }}
+  .gb-stat-link {{
+    color: var(--accent) !important;
+    text-decoration: none !important;
+    font-size: 12px;
+    margin-left: auto;
+  }}
+  .gb-stat-link:hover {{ text-decoration: underline !important; }}
+  .gb-stat-meta {{
+    color: var(--text-dim);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+  }}
 
   /* -------- SUMMARY STRIP -------- */
   .gb-summary {{

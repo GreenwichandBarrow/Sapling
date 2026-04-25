@@ -46,9 +46,11 @@ This file **supersedes** `continuation-2026-04-24-dashboard-build.md` (the AM se
 | 1 | **Dashboard** (landing) | Top-line metrics — one tile per sub-page, 1:1 mapping (5 tiles after Tech Stack merge) | Daily glance |
 | 2 | **Deal Aggregator** | Businesses actively selling — aggregated from broker platforms, email, association boards. Replaces #deal-aggregator Slack posts. | Daily glance |
 | 3 | **Deal Pipeline** | Live Attio pipeline replica — deals by stage, clickable through to Attio records. | Daily glance |
-| 4 | **C-Suite & Skills** | Scheduled-skill fire/no-fire canary organized by C-suite agent (COO/CIO/CPO/CMO/CFO/GC, in that visual order). Primary signal: did each scheduled skill fire when it should have? | Daily check |
-| 5 | **Infrastructure** | System health + external connectivity & tooling + credits & spend + calibration & learning + full tech stack inventory. Five zones, one page. | Daily glance, deep review Fridays |
-| 6 | **M&A Analytics** | Activity rollups — daily / weekly / quarterly / LTD. **Replaces Weekly Activity Tracker Google Sheet** once weekly-view ships. | Weekly for core metrics |
+| 4 | **M&A Analytics** | Activity rollups — daily / weekly / quarterly / LTD. **Replaces Weekly Activity Tracker Google Sheet** once weekly-view ships. Now hosts outbound funnel stats (Identified + Contacted counts, DealsX/Kay/JJ split, reply rates, conversion to NDA) since those moved off the Pipeline page on 2026-04-24. | Weekly for core metrics |
+| 5 | **C-Suite & Skills** | Scheduled-skill fire/no-fire canary organized by C-suite agent (COO/CIO/CPO/CMO/CFO/GC, in that visual order). Primary signal: did each scheduled skill fire when it should have? | Daily check |
+| 6 | **Infrastructure** | System health + external connectivity & tooling + credits & spend + calibration & learning + full tech stack inventory. Five zones, one page. | Daily glance, deep review Fridays |
+
+**Sidebar order rationale (2026-04-24 PM):** Deal-flow surfaces grouped (Aggregator → Pipeline → Analytics — inbound, in-flight, retrospective) then system-internals grouped (C-Suite → Infrastructure). Sidebar tells a story top to bottom: where deals come from, where they go, how the system that runs it is doing.
 
 **Dropped** (Kay's explicit calls during scoping):
 - Inbox & Replies page — don't need

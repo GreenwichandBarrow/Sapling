@@ -34,7 +34,7 @@ NAV_ITEMS = [
     ("Dashboard", "dashboard", True),
     ("Deal Aggregator", "deal-aggregator", True),
     ("Active Deal Pipeline", "deal-pipeline", True),
-    ("M&A Analytics", "ma-analytics", False),
+    ("M&A Analytics", "ma-analytics", True),
     ("C-Suite & Skills", "c-suite-skills", True),
     ("Infrastructure", "infrastructure", True),
 ]
@@ -1019,6 +1019,273 @@ GLOBAL_CSS = f"""
     color: var(--text-dim);
     font-family: inherit;
     margin-left: 4px;
+  }}
+
+  /* -------- M&A ANALYTICS PAGE -------- */
+  /* Reuse `.gb-zone` / `.gb-zone-head` / `.gb-zone-pending` from Infrastructure. */
+
+  /* Zone 1 + 2: KPI tile strip (DealsX-inspired colored borders). */
+  .gb-kpi-strip {{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }}
+  .gb-kpi-tile {{
+    background: var(--panel);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    border-top: 3px solid var(--neutral);
+  }}
+  .gb-kpi-tile.blue {{
+    border-top-color: var(--accent);
+    background: linear-gradient(180deg, rgba(74,158,255,0.04) 0%, var(--panel) 60%);
+  }}
+  .gb-kpi-tile.purple {{
+    border-top-color: var(--purple);
+    background: linear-gradient(180deg, rgba(176,132,240,0.04) 0%, var(--panel) 60%);
+  }}
+  .gb-kpi-tile.yellow {{
+    border-top-color: var(--yellow);
+    background: linear-gradient(180deg, rgba(245,196,81,0.04) 0%, var(--panel) 60%);
+  }}
+  .gb-kpi-tile.green {{
+    border-top-color: var(--green);
+    background: linear-gradient(180deg, rgba(63,209,127,0.04) 0%, var(--panel) 60%);
+  }}
+  .gb-kpi-tile.red {{
+    border-top-color: var(--red);
+    background: linear-gradient(180deg, rgba(255,90,90,0.04) 0%, var(--panel) 60%);
+  }}
+  .gb-kpi-icon-row {{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }}
+  .gb-kpi-icon {{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    background: rgba(255,255,255,0.04);
+  }}
+  .gb-kpi-tile.blue .gb-kpi-icon {{ color: var(--accent); }}
+  .gb-kpi-tile.purple .gb-kpi-icon {{ color: var(--purple); }}
+  .gb-kpi-tile.yellow .gb-kpi-icon {{ color: var(--yellow); }}
+  .gb-kpi-tile.green .gb-kpi-icon {{ color: var(--green); }}
+  .gb-kpi-tile.red .gb-kpi-icon {{ color: var(--red); }}
+  .gb-kpi-label {{
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.04em;
+  }}
+  .gb-kpi-value {{
+    font-size: 30px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }}
+  .gb-kpi-sub {{
+    font-size: 11px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }}
+  .gb-kpi-sub .delta-up {{ color: var(--green); }}
+  .gb-kpi-sub .delta-down {{ color: var(--red); }}
+  .gb-kpi-sub .delta-flat {{ color: var(--text-dim); }}
+
+  /* Zone 3: Channel Performance table — extends .gb-table with channel-row chrome. */
+  .gb-ch-table {{ width: 100%; border-collapse: collapse; }}
+  .gb-ch-table thead th {{
+    text-align: left;
+    padding: 12px 18px;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.01);
+  }}
+  .gb-ch-table thead th.right {{ text-align: right; }}
+  .gb-ch-table tbody td {{
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border-soft);
+    vertical-align: middle;
+  }}
+  .gb-ch-table tbody tr:last-child td {{ border-bottom: none; }}
+  .gb-ch-table tbody tr:hover {{ background: var(--row-hover); }}
+  .gb-ch-table tbody tr.deferred {{ opacity: 0.6; }}
+  .gb-ch-table td.right {{ text-align: right; font-variant-numeric: tabular-nums; }}
+  .gb-ch-name {{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+  }}
+  .gb-ch-dot {{
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--neutral);
+  }}
+  .gb-ch-dot.kay {{ background: var(--accent); }}
+  .gb-ch-dot.jj {{ background: var(--green); }}
+  .gb-ch-dot.dealsx {{ background: var(--purple); }}
+  .gb-ch-dot.intermediary {{ background: var(--yellow); }}
+  .gb-ch-dot.conference {{ background: {PALETTE["yellow"]}; }}
+  .gb-ch-desc {{
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 3px;
+  }}
+  .gb-ch-bar {{
+    display: inline-block;
+    width: 60px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-left: 8px;
+    vertical-align: middle;
+    position: relative;
+  }}
+  .gb-ch-bar-fill {{
+    position: absolute; top: 0; left: 0;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+  }}
+  .gb-ch-bar-fill.green {{ background: var(--green); }}
+  .gb-ch-bar-fill.purple {{ background: var(--purple); }}
+  .gb-ch-bar-fill.orange {{ background: var(--yellow); }}
+  .gb-ch-pill {{
+    display: inline-block;
+    font-size: 10.5px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+    background: rgba(245, 196, 81, 0.14);
+    color: var(--yellow);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }}
+
+  /* Zone 4: Trends — 2x2 grid of sparkline cells. */
+  .gb-trend-grid {{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }}
+  .gb-trend-cell {{
+    background: var(--panel);
+    padding: 18px 20px;
+  }}
+  .gb-trend-cell.pending {{ opacity: 0.55; }}
+  .gb-trend-label {{
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }}
+  .gb-trend-value-row {{
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 14px;
+  }}
+  .gb-trend-value {{
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }}
+  .gb-trend-delta {{
+    font-size: 11.5px;
+  }}
+  .gb-trend-delta.up {{ color: var(--green); }}
+  .gb-trend-delta.down {{ color: var(--red); }}
+  .gb-trend-delta.flat {{ color: var(--text-dim); }}
+  .gb-trend-bars {{
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 60px;
+  }}
+  .gb-trend-bar {{
+    flex: 1;
+    background: var(--border);
+    border-radius: 1px;
+    min-height: 4px;
+  }}
+  .gb-trend-bar.accent {{ background: var(--accent); }}
+  .gb-trend-bar.green {{ background: var(--green); }}
+  .gb-trend-bar.yellow {{ background: var(--yellow); }}
+  .gb-trend-bar.purple {{ background: var(--purple); }}
+  .gb-trend-x-labels {{
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+  }}
+
+  /* Zone 5: Activity Detail rows. */
+  .gb-act-row {{
+    display: grid;
+    grid-template-columns: 200px 1fr 90px;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border-soft);
+  }}
+  .gb-act-row:last-child {{ border-bottom: none; }}
+  .gb-act-row:hover {{ background: var(--row-hover); }}
+  .gb-act-cat {{
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }}
+  .gb-act-content {{
+    font-size: 12.5px;
+    color: var(--text);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+  }}
+  .gb-act-content.empty {{ color: var(--text-dim); font-style: italic; }}
+  .gb-act-chip {{
+    display: inline-block;
+    font-size: 10.5px;
+    padding: 2px 8px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 3px;
+    color: var(--text-muted);
+    margin: 0;
+  }}
+  .gb-act-num {{
+    text-align: right;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
   }}
 </style>
 """

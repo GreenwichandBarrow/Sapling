@@ -1295,3 +1295,572 @@ def load_tech_stack() -> list[StackCategory]:
 
 def tech_stack_count(categories: list[StackCategory]) -> int:
     return sum(len(c.services) for c in categories)
+
+
+# -----------------------------------------------------------------------------
+# M&A Analytics — multi-zone activity rollup
+# -----------------------------------------------------------------------------
+# Replaces the Weekly Activity Tracker Google Sheet. Five zones:
+#   1. Deal Flow Headline — 5 KPI tiles (owner conversations, NDAs, financials,
+#      LOIs, closures), 7-day window from Attio snapshot + brain/calls.
+#   2. Outbound Funnel — DEFERRED placeholder (DealsX integration May 7).
+#   2.5. Response Categorization — DEFERRED placeholder (DealsX AI tags).
+#   3. Channel Performance — 6 channels (4 live + 2 DealsX-deferred).
+#   4. Trends · 12 weeks — 4 sparkline panels (best-effort; pending where no
+#      historical weekly snapshot exists).
+#   5. Activity Detail · This Week — chips + counts per category.
+#
+# Data sources:
+#   - Attio snapshot (load_pipeline scope="full") for all stage-related counts.
+#   - brain/calls/* file dates + classification_type for owner conversations,
+#     intermediary meetings, conferences. File format `YYYY-MM-DD-slug.md`.
+#   - Email-scan-results in brain/context/ for CIM detection (regex over body).
+#   - Hardcoded active-niche list (Industry Research Tracker is a Google Sheet
+#     not yet wired into Streamlit; ship-and-iterate per the load-bearing test).
+
+VAULT_CALLS_DIR = VAULT_ROOT / "calls"
+
+# Active niches as of 2026-04-25 (validated against feedback memories +
+# session decisions). Update when a niche flips status in the tracker.
+_ACTIVE_NICHES = [
+    "Insurance Brokerage",
+    "Fine Art Storage",
+    "Equipment Servicing",
+    "Managed IT Services",
+]
+
+# Investor / advisor names — exclude these from "intermediary meetings" count
+# since they're recurring internal-cadence calls, not deal-facing intermediaries.
+_INVESTOR_SLUG_HINTS = (
+    "guillermo",
+    "jeff-stevens",
+    "jeff-kay",
+    "stevens-monthly",
+    "stevens-biweekly",
+    "saltoun",
+    "ashford",
+)
+_CONFERENCE_SLUG_HINTS = (
+    "xpx",
+    "acg",
+    "conference",
+    "panel",
+    "frieze",
+    "pratt",
+    "wsn",
+)
+_CIM_PATTERN = re.compile(r"\bCIM(?:s|s received)?\b", re.IGNORECASE)
+_CALL_FILENAME_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-(.+)\.md$")
+
+
+@dataclass
+class KPITile:
+    label: str
+    color: str  # blue | purple | yellow | green | red
+    icon: str
+    value: int
+    sub: str  # "↑ 3 vs. 0 last week" — caller pre-formats deltas
+
+
+@dataclass
+class ChannelRow:
+    name: str
+    description: str
+    dot_class: str  # kay | jj | dealsx | intermediary | conference (CSS hook)
+    sent: str  # display string (handles "—", "1,180", "47")
+    reply: str
+    positive: str
+    to_nda: str
+    reply_rate: str  # "12.8%" or "—"
+    bar_pct: int  # 0–100, scaled width
+    bar_color: str | None  # accent | green | purple | orange | None
+    deferred: bool  # True → render yellow "live May 7" pill, suppress numbers
+
+
+@dataclass
+class TrendPanel:
+    label: str
+    value: str  # current bucket value, e.g. "2" or "4.3%"
+    delta: str  # e.g. "↑ vs. 0 last week" or "→ same"
+    delta_class: str  # up | down | flat
+    bars: list[int]  # 12 heights 0–100
+    bar_color: str  # accent | green | yellow | purple
+    pending: bool  # True → render dim with "Pending data history" overlay
+
+
+@dataclass
+class ActivityRow:
+    category: str
+    chips: list[str]
+    count: int
+    empty_text: str | None  # render this when chips is empty
+
+
+@dataclass
+class CallSummary:
+    """Lightweight parse of one brain/calls/ file."""
+    date: date
+    slug: str
+    classification: str  # partner | client | internal | unknown
+    title: str | None  # first H1 in body, falls back to slug
+
+
+@dataclass
+class MAAnalytics:
+    week_start: date
+    week_end: date
+    deal_flow_tiles: list[KPITile]  # Zone 1 (5 tiles)
+    channels: list[ChannelRow]  # Zone 3 (6 rows, 4 live + 2 deferred)
+    trends: list[TrendPanel]  # Zone 4 (4 panels)
+    trend_x_labels: tuple[str, str, str]  # (start, mid, end) shared across trends
+    activity_rows: list[ActivityRow]  # Zone 5
+    response_count: int = 0  # for Zone 2/2.5 placeholder context
+    snapshot_fresh: bool = False  # True if Attio snapshot loaded
+
+
+# -----------------------------------------------------------------------------
+# Helpers — call-file parsing
+# -----------------------------------------------------------------------------
+
+
+def _scan_calls() -> list[CallSummary]:
+    """Read every brain/calls/*.md file once and return lightweight summaries.
+
+    Date comes from the filename (cheaper than parsing frontmatter and reliable
+    since the schema validator enforces the format). classification_type is
+    extracted via a single grep to avoid YAML-parsing every file."""
+    if not VAULT_CALLS_DIR.exists():
+        return []
+    summaries: list[CallSummary] = []
+    for entry in VAULT_CALLS_DIR.iterdir():
+        m = _CALL_FILENAME_RE.match(entry.name)
+        if not m:
+            continue
+        try:
+            d = date.fromisoformat(m.group(1))
+        except ValueError:
+            continue
+        slug = m.group(2)
+        classification = "unknown"
+        title = None
+        try:
+            head = entry.read_text(errors="replace")[:1500]
+        except OSError:
+            head = ""
+        for line in head.splitlines():
+            stripped = line.strip()
+            if stripped.startswith("classification_type:"):
+                classification = stripped.split(":", 1)[1].strip().strip('"').strip("'")
+            elif stripped.startswith("# ") and title is None:
+                title = stripped[2:].strip()
+            if classification != "unknown" and title is not None:
+                break
+        summaries.append(CallSummary(date=d, slug=slug, classification=classification, title=title))
+    return summaries
+
+
+def _slug_matches(slug: str, hints: tuple[str, ...]) -> bool:
+    low = slug.lower()
+    return any(h in low for h in hints)
+
+
+def _calls_in_window(calls: list[CallSummary], start: date, end: date) -> list[CallSummary]:
+    return [c for c in calls if start <= c.date <= end]
+
+
+# -----------------------------------------------------------------------------
+# Zone 1 — Deal Flow Headline
+# -----------------------------------------------------------------------------
+
+
+def _delta_phrase(this_week: int, last_week: int) -> tuple[str, str]:
+    """Return (sub_text, delta_class) honoring the mockup's phrasing."""
+    if this_week == last_week:
+        return f"→ same as last week ({last_week})", "flat"
+    if this_week > last_week:
+        return f"↑ {this_week - last_week} vs. {last_week} last week", "up"
+    return f"↓ {last_week - this_week} vs. {last_week} last week", "down"
+
+
+def _stage_advances_in_window(snapshot: PipelineSnapshot, stage: str, start: date, end: date) -> int:
+    """Count snapshot deals whose stage_since lands in [start, end] for `stage`."""
+    n = 0
+    for d in snapshot.deals:
+        if d.stage != stage:
+            continue
+        try:
+            ts = datetime.fromisoformat(d.stage_since.replace("Z", "+00:00"))
+        except (ValueError, AttributeError):
+            continue
+        if start <= ts.date() <= end:
+            n += 1
+    return n
+
+
+def _closures_in_window(snapshot: PipelineSnapshot, start: date, end: date) -> int:
+    n = 0
+    for c in snapshot.closed_recent:
+        try:
+            ts = datetime.fromisoformat(c.stage_since.replace("Z", "+00:00"))
+        except (ValueError, AttributeError):
+            continue
+        if start <= ts.date() <= end:
+            n += 1
+    return n
+
+
+def _build_deal_flow_tiles(
+    snapshot: PipelineSnapshot | None,
+    calls: list[CallSummary],
+    week_start: date,
+    week_end: date,
+    prior_start: date,
+    prior_end: date,
+) -> list[KPITile]:
+    # Owner conversations: partner-classified calls, exclude investor cadences.
+    def _owner_count(start: date, end: date) -> int:
+        in_window = _calls_in_window(calls, start, end)
+        return sum(
+            1
+            for c in in_window
+            if c.classification == "partner"
+            and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
+        )
+
+    owner_now = _owner_count(week_start, week_end)
+    owner_prior = _owner_count(prior_start, prior_end)
+    owner_sub, _ = _delta_phrase(owner_now, owner_prior)
+
+    if snapshot is None:
+        nda = fin = loi = closed = 0
+        snap_sub = "Attio snapshot unavailable"
+    else:
+        nda = _stage_advances_in_window(snapshot, "NDA", week_start, week_end)
+        fin = _stage_advances_in_window(snapshot, "Financials Received", week_start, week_end)
+        loi = _stage_advances_in_window(snapshot, "Submitted LOI", week_start, week_end) + \
+              _stage_advances_in_window(snapshot, "Signed LOI", week_start, week_end)
+        closed = _closures_in_window(snapshot, week_start, week_end)
+        snap_sub = "from Attio snapshot"
+
+    nda_prior = _stage_advances_in_window(snapshot, "NDA", prior_start, prior_end) if snapshot else 0
+    fin_prior = (_stage_advances_in_window(snapshot, "Financials Received", prior_start, prior_end)
+                 if snapshot else 0)
+    loi_prior = ((_stage_advances_in_window(snapshot, "Submitted LOI", prior_start, prior_end) +
+                  _stage_advances_in_window(snapshot, "Signed LOI", prior_start, prior_end))
+                 if snapshot else 0)
+    closed_prior = _closures_in_window(snapshot, prior_start, prior_end) if snapshot else 0
+
+    nda_sub, _ = _delta_phrase(nda, nda_prior)
+    fin_sub, _ = _delta_phrase(fin, fin_prior)
+    loi_sub, _ = _delta_phrase(loi, loi_prior)
+    closed_sub, _ = _delta_phrase(closed, closed_prior)
+
+    # Suffix the snapshot context onto the closed-tile sub since the others
+    # use delta phrasing only — keeps the tile strip uniform.
+    if snapshot is None:
+        closed_sub = snap_sub
+
+    return [
+        KPITile("Owner conversations", "blue", "💬", owner_now, owner_sub),
+        KPITile("NDAs signed", "purple", "📝", nda, nda_sub),
+        KPITile("Financials received", "yellow", "📊", fin, fin_sub),
+        KPITile("LOIs submitted", "green", "📤", loi, loi_sub),
+        KPITile("Closed / Not proceeding", "red", "⊘", closed, closed_sub),
+    ]
+
+
+# -----------------------------------------------------------------------------
+# Zone 3 — Channel Performance
+# -----------------------------------------------------------------------------
+
+
+def _build_channels(
+    calls: list[CallSummary],
+    week_start: date,
+    week_end: date,
+) -> list[ChannelRow]:
+    in_window = _calls_in_window(calls, week_start, week_end)
+    intermediary = sum(
+        1 for c in in_window
+        if c.classification == "partner"
+        and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
+        and not _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)
+    )
+    conferences = sum(1 for c in in_window if _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS))
+
+    return [
+        ChannelRow(
+            name="Kay email",
+            description="Owner-facing warm outreach · highest-touch · counts via vault snapshot pending",
+            dot_class="kay",
+            sent="—", reply="—", positive="—", to_nda="—",
+            reply_rate="—", bar_pct=0, bar_color=None, deferred=False,
+        ),
+        ChannelRow(
+            name="Intermediary intro",
+            description="Warm intros via advisors, brokers, peers · partner-classified calls in window",
+            dot_class="intermediary",
+            sent=str(intermediary), reply=str(intermediary), positive=str(intermediary),
+            to_nda="0", reply_rate="—", bar_pct=0, bar_color="green", deferred=False,
+        ),
+        ChannelRow(
+            name="JJ calls",
+            description="Cold dial campaign · 10am–2pm ET Mon–Fri · live data via JJ master sheet",
+            dot_class="jj",
+            sent="—", reply="—", positive="—", to_nda="—",
+            reply_rate="—", bar_pct=0, bar_color="green", deferred=False,
+        ),
+        ChannelRow(
+            name="DealsX · email",
+            description="High-volume outbound email · live May 7 (DealsX integration)",
+            dot_class="dealsx",
+            sent="—", reply="—", positive="—", to_nda="—",
+            reply_rate="—", bar_pct=0, bar_color="purple", deferred=True,
+        ),
+        ChannelRow(
+            name="DealsX · LinkedIn DM",
+            description="Direct messages on LinkedIn · live May 7 (DealsX integration)",
+            dot_class="dealsx",
+            sent="—", reply="—", positive="—", to_nda="—",
+            reply_rate="—", bar_pct=0, bar_color="purple", deferred=True,
+        ),
+        ChannelRow(
+            name="Conference",
+            description="In-person event follow-ups · counted via call vault tags",
+            dot_class="conference",
+            sent=str(conferences), reply=str(conferences), positive=str(conferences),
+            to_nda="0", reply_rate="—", bar_pct=0, bar_color="orange", deferred=False,
+        ),
+    ]
+
+
+# -----------------------------------------------------------------------------
+# Zone 4 — Trends (12 weekly buckets)
+# -----------------------------------------------------------------------------
+
+
+def _weekly_buckets(end: date, weeks: int = 12) -> list[tuple[date, date]]:
+    """Return [oldest .. newest] list of (week_start, week_end) ranges."""
+    out: list[tuple[date, date]] = []
+    for offset in range(weeks - 1, -1, -1):
+        week_end = end - timedelta(days=offset * 7)
+        week_start = week_end - timedelta(days=6)
+        out.append((week_start, week_end))
+    return out
+
+
+def _scale_bars(values: list[int]) -> list[int]:
+    """Scale absolute counts to 0–100 for CSS height. Empty input → all zeros."""
+    if not values:
+        return [0] * 12
+    peak = max(values)
+    if peak == 0:
+        return [4 for _ in values]  # min bar height to remain visible
+    return [max(4, round(v * 100 / peak)) for v in values]
+
+
+def _build_trends(
+    snapshot: PipelineSnapshot | None,
+    calls: list[CallSummary],
+    today: date,
+) -> list[TrendPanel]:
+    buckets = _weekly_buckets(today, weeks=12)
+    x_labels = (
+        buckets[0][0].strftime("%b %-d"),
+        buckets[6][0].strftime("%b %-d"),
+        buckets[-1][1].strftime("%b %-d"),
+    )
+
+    # Owner conversations weekly — derived from brain/calls/ filename dates.
+    owner_buckets: list[int] = []
+    for ws, we in buckets:
+        n = sum(
+            1 for c in calls
+            if ws <= c.date <= we
+            and c.classification == "partner"
+            and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
+        )
+        owner_buckets.append(n)
+    owner_now = owner_buckets[-1]
+    owner_prev = owner_buckets[-2] if len(owner_buckets) >= 2 else 0
+    owner_sub, owner_class = _delta_phrase(owner_now, owner_prev)
+
+    # NDAs signed weekly — derived from snapshot stage_since for stage="NDA".
+    if snapshot is not None:
+        nda_buckets = []
+        for ws, we in buckets:
+            nda_buckets.append(_stage_advances_in_window(snapshot, "NDA", ws, we))
+        nda_now = nda_buckets[-1]
+        nda_prev = nda_buckets[-2] if len(nda_buckets) >= 2 else 0
+        nda_sub, nda_class = _delta_phrase(nda_now, nda_prev)
+        nda_pending = sum(nda_buckets) == 0  # all-zeros = nothing meaningful yet
+    else:
+        nda_buckets, nda_now, nda_sub, nda_class, nda_pending = (
+            [0] * 12, 0, "Pending data", "flat", True,
+        )
+
+    return [
+        TrendPanel(
+            label="NDAs signed · weekly",
+            value=str(nda_now),
+            delta=nda_sub,
+            delta_class=nda_class,
+            bars=_scale_bars(nda_buckets),
+            bar_color="green",
+            pending=nda_pending,
+        ),
+        TrendPanel(
+            label="Reply rate · weekly avg",
+            value="—",
+            delta="Pending data history",
+            delta_class="flat",
+            bars=[0] * 12,
+            bar_color="purple",
+            pending=True,
+        ),
+        TrendPanel(
+            label="Owner conversations · weekly",
+            value=str(owner_now),
+            delta=owner_sub,
+            delta_class=owner_class,
+            bars=_scale_bars(owner_buckets),
+            bar_color="accent",
+            pending=False,
+        ),
+        TrendPanel(
+            label="JJ dials · weekly",
+            value="—",
+            delta="Pending JJ master-sheet wiring",
+            delta_class="flat",
+            bars=[0] * 12,
+            bar_color="yellow",
+            pending=True,
+        ),
+    ], x_labels
+
+
+# -----------------------------------------------------------------------------
+# Zone 5 — Activity Detail
+# -----------------------------------------------------------------------------
+
+
+def _count_cims_in_window(start: date, end: date) -> int:
+    """Scan email-scan-results in the window for CIM mentions."""
+    n = 0
+    if not DEAL_AGG_DIR.exists():
+        return 0
+    for d_offset in range((end - start).days + 1):
+        d = start + timedelta(days=d_offset)
+        path = DEAL_AGG_DIR / f"email-scan-results-{d.isoformat()}.md"
+        if not path.exists():
+            continue
+        try:
+            text = path.read_text(errors="replace")
+        except OSError:
+            continue
+        # "CIM received" / "CIMs received" / "CIM:" — count occurrences but
+        # avoid double-counting summary headers ("§5 CIMs Received").
+        for line in text.splitlines():
+            stripped = line.strip()
+            if not stripped or stripped.startswith("#"):
+                continue
+            if "CIM" in stripped and re.search(r"\bCIM(?:s)?\b\s+(received|signed|attached)", stripped, re.IGNORECASE):
+                n += 1
+    return n
+
+
+def _build_activity_rows(
+    calls: list[CallSummary],
+    week_start: date,
+    week_end: date,
+) -> list[ActivityRow]:
+    in_window = _calls_in_window(calls, week_start, week_end)
+
+    conf_calls = [c for c in in_window if _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)]
+    intermediary_calls = [
+        c for c in in_window
+        if c.classification == "partner"
+        and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
+        and not _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)
+    ]
+
+    def _slug_display(call: CallSummary) -> str:
+        # "2026-04-23-xpx-panel" → "XPX panel · Apr 23"
+        words = call.slug.replace("-", " ")
+        return f"{words.title()} · {call.date.strftime('%b %-d')}"
+
+    cim_count = _count_cims_in_window(week_start, week_end)
+
+    return [
+        ActivityRow(
+            category="Active Niches",
+            chips=list(_ACTIVE_NICHES),
+            count=len(_ACTIVE_NICHES),
+            empty_text=None,
+        ),
+        ActivityRow(
+            category="Conferences attended",
+            chips=[_slug_display(c) for c in conf_calls],
+            count=len(conf_calls),
+            empty_text="No conferences this week",
+        ),
+        ActivityRow(
+            category="Intermediary meetings",
+            chips=[_slug_display(c) for c in intermediary_calls],
+            count=len(intermediary_calls),
+            empty_text="No intermediary meetings this week",
+        ),
+        ActivityRow(
+            category="CIMs received",
+            chips=[],
+            count=cim_count,
+            empty_text=(f"{cim_count} CIMs flagged in email-scan-results"
+                        if cim_count else "No CIMs received this week"),
+        ),
+        ActivityRow(
+            category="Business cards added",
+            chips=[],
+            count=0,
+            empty_text="conference-engagement output not yet wired",
+        ),
+    ]
+
+
+# -----------------------------------------------------------------------------
+# Public loader
+# -----------------------------------------------------------------------------
+
+
+def load_ma_analytics(today: date | None = None) -> MAAnalytics:
+    """Build the M&A Analytics page data structure.
+
+    `today` defaults to date.today() — exposed for deterministic testing.
+    Window = 7 days back to today (inclusive). Prior-week window = the 7
+    days before that, used for delta phrasing on Zone 1 KPIs.
+    """
+    today = today or date.today()
+    week_start = today - timedelta(days=6)
+    week_end = today
+    prior_end = week_start - timedelta(days=1)
+    prior_start = prior_end - timedelta(days=6)
+
+    snapshot = load_pipeline(scope="full")
+    calls = _scan_calls()
+
+    deal_flow_tiles = _build_deal_flow_tiles(
+        snapshot, calls, week_start, week_end, prior_start, prior_end
+    )
+    channels = _build_channels(calls, week_start, week_end)
+    trends, x_labels = _build_trends(snapshot, calls, today)
+    activity_rows = _build_activity_rows(calls, week_start, week_end)
+
+    return MAAnalytics(
+        week_start=week_start,
+        week_end=week_end,
+        deal_flow_tiles=deal_flow_tiles,
+        channels=channels,
+        trends=trends,
+        trend_x_labels=x_labels,
+        activity_rows=activity_rows,
+        snapshot_fresh=snapshot is not None,
+    )

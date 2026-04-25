@@ -263,39 +263,35 @@ When Kay says good morning:
    - calibration-workflow (decision traces → skill improvements)
 7b. **Friday afternoon — meta-calibration hour** (new 2026-04-24). Not a batch-fix slot (inline rule-fixes happen as they're caught per `feedback_fix_skills_inline_by_default`). This is the systemic review: (a) scan the week's traces for rules Kay corrected 2+ times → graduate to stop hook, (b) scan memory/ for stale or duplicated feedback files → consolidate/delete, (c) scan skill SKILL.md files for outdated column references or rules superseded by newer memories → refresh, (d) review the `brain/context/session-decisions-*` files for open loops that need promotion to memories. Output: 1 Slack summary to `#operations` listing what graduated to hooks, what got deleted, what skill docs were refreshed. Target: 30-60 min, not open-ended.
 8. Read the results and judge what needs to happen
-9. Present the briefing in 4 action-keyed buckets (ascending numbering across all buckets — never reset). **NOTE 2026-04-24: planned migration to Decisions-only format is PENDING the Command Center dashboard going live; do not switch format until the dashboard holds the displaced context per `feedback_build_new_before_sunset_old`.**
-   - **Today / ASAP** — must ship today: active-deal fast-path, payment due, JJ unblocks, time-sensitive sends
-   - **Decisions** — needs Kay's judgment. Each item uses Obama framing: **RECOMMEND: [option]** + one-sentence reason → **YES / NO / LET'S DISCUSS**. Aim ≤5.
-   - **This Week** — must do this week, not today
-   - **Dropped Balls** — slipped follow-ups, overdue cadences, warm-intro replies that need recovery (this is the highest-leverage bucket — slipped follow-ups cost deals)
-   
-   Cluster by entity. If 2+ items reference the same person/deal/niche, they live under ONE entity heading inside the appropriate bucket — never scattered across buckets. Label each item with C-suite ownership (CFO/CIO/CMO/CPO/GC) per `feedback_c_suite_naming`.
-   
-   **System Status** is a compact tail under the buckets — 1 line per scheduled skill, expand only if broken/blocked.
-   
-   **Briefing hygiene:**
-   - Only surface items that need action or decision. If something is done, resolved, or loop-closed — omit it entirely.
+9. **Present the briefing as a Decisions-only list** (migrated 2026-04-25 — Command Center dashboard now holds the displaced context per `feedback_build_new_before_sunset_old`). Single ordered list of items requiring Kay's judgment, sorted by urgency. Aim ≤5 items per `feedback_decision_fatigue_minimization`. Numbering ascends across the list — never resets.
+
+   **Per-item format (Obama framing):**
+   ```
+   N. {urgency-emoji} [{C-suite}] **RECOMMEND: {action}** — {one-sentence reason}
+      → YES / NO / DISCUSS
+   ```
+
+   **Urgency tags** (replace the prior 4-bucket structure):
+   - 🔴 **Today / ASAP** — active-deal fast-path, payment due, time-sensitive sends, soft-nudges on next-day externals. Sort to top.
+   - 🟡 **This week** — non-urgent but bounded. Sort middle.
+   - 🟢 **Dropped balls / nurture** — slipped follow-ups, overdue cadences, warm-intro replies needing recovery. Sort bottom (still surfaced — slipped follow-ups cost deals).
+
+   **Clustering:** If 2+ items reference the same entity (person, deal, niche), collapse to ONE item with the strongest action — don't double-surface. C-suite labels (CFO/CIO/CMO/CPO/GC) per `feedback_c_suite_naming`.
+
+   **Header line above the list:** one sentence pointing to the dashboard for full context, e.g. *"5 decisions ordered by urgency. System status + pipeline + outreach metrics live at localhost:8501."* Replaces the prior multi-line System Status section — that content now lives on the Infrastructure + C-Suite & Skills + M&A Analytics + Active Deal Pipeline pages.
+
+   **Briefing hygiene (unchanged):**
+   - Only surface items that need action or decision. Omit anything done/resolved/loop-closed.
    - Never report back things Kay did herself — she already knows.
    - Noise (true low-value items) gets archived silently, never surfaced as a "noise" section.
 
    **Brief-decisions pre-flight (mandatory invariant — added 2026-04-21 after Guillermo miss):**
-   Before delivering the briefing, enumerate tomorrow's external meetings (Fri scan covers Mon+Tue; Sun scan covers Mon). For each external meeting:
-   1. **Confirmation gate (added 2026-04-23):** If the calendar event title starts with `HOLD ` (or contains `HOLD mtg`/`HOLD call`/etc.) AND has zero non-Kay attendees, treat as **unconfirmed** — Kay placed a hold but the counterparty hasn't accepted. **Skip** brief generation. Surface only if Kay needs a soft-nudge decision. The HOLD prefix is Kay's convention for self-placed holds awaiting external confirmation.
+   Before delivering, enumerate tomorrow's external meetings (Fri scan covers Mon+Tue; Sun scan covers Mon). For each:
+   1. **Confirmation gate:** If the calendar event title starts with `HOLD ` (or contains `HOLD mtg`/`HOLD call`/etc.) AND has zero non-Kay attendees, treat as **unconfirmed** — Kay placed a hold but the counterparty hasn't accepted. **Skip** brief generation. Surface only if Kay needs a soft-nudge decision (🔴 item).
    2. If already approved/declined in `brain/context/session-decisions-*.md` within the last 3 days → skip.
-   3. Else → the meeting MUST appear as a Decisions-bucket item: **RECOMMEND: Generate brief for {name} ({time} {date})** → YES / NO / LET'S DISCUSS.
-   If step 3 is not satisfied (and steps 1-2 didn't skip), the briefing is malformed — fix before delivering. This replaces the retired `meeting-brief-manager` nightly automation (Apr 12).
+   3. Else → the meeting MUST appear as a 🔴 item: **RECOMMEND: Generate brief for {name} ({time} {date})** → YES / NO / DISCUSS.
 
-**System Status section rules** (active until dashboard replaces it):
-- Shows the system's work, not Kay's — scheduled skills, tool health, subscriptions
-- Every item is 1 line max: `Skill name — status phrase`
-- Daily items (every morning): email-intelligence, deal-aggregator, jj-operations, relationship-manager, target-discovery, outreach-manager
-- Day-of-week overlays:
-  - **Monday:** + conference-discovery (last scan, flagged events)
-  - **Wednesday:** + niche-intelligence (sprint status, new niches this week)
-  - **Friday:** + weekly-tracker, health-monitor, calibration-workflow (ran or pending)
-- Only expand beyond 1 line if something is broken, blocked, or needs Kay's decision
-
-**Dashboard migration plan:** When the Command Center dashboard goes live, System Status content moves to the dashboard's System Map + Domain Health panes, and the briefing shrinks to Decisions-only. Until then, System Status stays in the briefing.
+   **Broken-system escalation:** If a scheduled skill failed overnight or a snapshot job is stuck, surface it as a 🔴 Decision item with **RECOMMEND: Investigate {job} (last log {timestamp})** → YES / NO. Don't bury silent failures in a footer; the dashboard's stale-snapshot banner does that already, but a broken job is decision-worthy.
 10. Based on signals, invoke downstream skills:
    - Niche status changed to Active-Outreach → target-discovery (full 4-6 targets/day) + list-builder (Apollo search) + outreach-manager (email drafts)
    - Monday → conference pipeline review (conference-discovery owns decisions)

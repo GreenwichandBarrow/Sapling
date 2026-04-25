@@ -645,8 +645,9 @@ _CSUITE_DISPLAY_ORDER = [
 ]
 
 # Skills declared scheduled in CLAUDE.md but with no plist registered = a "gap"
-# (the canary's job is to surface this). As of 2026-04-24, only health-monitor.
-_CLAUDE_MD_SCHEDULED_BUT_UNREGISTERED = {"health-monitor"}
+# (the canary's job is to surface this). Empty as of 2026-04-25 — health-monitor
+# was registered Friday morning after the Apr 24 dashboard build surfaced the gap.
+_CLAUDE_MD_SCHEDULED_BUT_UNREGISTERED: set[str] = set()
 
 # launchd's StartCalendarInterval uses 0=Sun OR 7=Sun (both accepted by Apple).
 # Map both to "Sun" so plists from either convention render correctly.

@@ -140,12 +140,13 @@ Data source: `logs/scheduled/*.log` + `launchctl list` + cross-reference against
 
 ### 5. Infrastructure — PURPOSE LOCKED, detail at build time
 
-Three zones:
+Four zones:
 1. System-health summary (health-monitor output)
 2. Calibration updates (calibration-workflow output — stop-hook graduations, memory consolidations)
 3. Digest feed — one-line entries per per-skill activity: "4 conferences added today" (conference-discovery) / "5 niches added" (niche-intelligence) / "4 investor preps drafted" (investor-update) / etc.
+4. **Tool inventory with operational status** (added 2026-04-24 during Session 4 design review). The 11 shared tools that previously lived under C-Suite & Skills (agent-chatroom, cass, create-agent-skills, generate-prd, generate-stories, github, gogcli, motion, obsidian-vault-ops, onboard, plan-refinery) render here as a row list with per-tool **status** — examples: "API key expires in 7 days · regenerate", "auth token stale", "rate-limit hit 3x today", "0 errors today". Status is the headline; usage count is secondary. This zone is operational health, not a directory listing. Overlaps with Tech Stack page on auth/connectivity for service-backed tools (gogcli=gog, github=gh CLI, motion=API); Tech Stack handles external-service connectivity canary, Infrastructure handles tool-level operational state. Where they overlap, Infrastructure is the action surface ("regenerate this key now") and Tech Stack is the dashboard indicator. Don't duplicate; cross-link.
 
-Data source: health-monitor + calibration-workflow + per-skill run artifacts.
+Data source: health-monitor + calibration-workflow + per-skill run artifacts + per-tool credential/error/usage state (collected by health-monitor or a new tool-health probe at build time).
 
 ### 6. M&A Analytics — PURPOSE LOCKED, detail at build time
 

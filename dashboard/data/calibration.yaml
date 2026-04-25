@@ -1,0 +1,37 @@
+# Calibration & Learning · This Week — Infrastructure Zone 4
+#
+# Each entry has:
+#   icon       — single character/emoji (✓ ⟶ ↻ ⊘ etc.)
+#   icon_color — green | purple | accent | dim
+#   headline   — short title (one line)
+#   detail     — body text (HTML allowed for <code> tags / formatting)
+#   when       — relative time string ("Today 8:01 AM" / "Thu Apr 24")
+#
+# Live calibration-workflow output reader wires later — until then this is
+# operator-maintained from the Friday meta-calibration sweep.
+
+last_run: "Pending Friday meta-calibration"
+entries:
+  - icon: "✓"
+    icon_color: green
+    headline: "Mockup-fidelity polish sweep shipped"
+    detail: "Six fixes in one bundle — font cascade, sidebar tightening, landing hero tile, stat-pills + filter pill rows, Infrastructure subtitle voice. Source: <code>session-decisions-2026-04-25.md</code>"
+    when: "Today 10:06 AM"
+
+  - icon: "⟶"
+    icon_color: purple
+    headline: "Air restored across all dashboard pages"
+    detail: "Aggressive <code>gap: 0</code> rule on <code>stVerticalBlock</code> was stripping breathing room between zones. Re-scoped to sidebar only, restored 12px main-content gap."
+    when: "Today 10:14 AM"
+
+  - icon: "↻"
+    icon_color: accent
+    headline: "Sidebar nav blue-active wired via theme config"
+    detail: "Streamlit's Emotion CSS-in-JS won against external CSS overrides. Solved by adding <code>.streamlit/config.toml</code> with <code>primaryColor=#4A9EFF</code> so the theme provider paints the active page_link directly."
+    when: "Today"
+
+  - icon: "⊘"
+    icon_color: dim
+    headline: "Calibration-workflow auto-write pending"
+    detail: "Friday meta-calibration runs at 11pm ET on Thursdays — Zone 4 will populate from <code>brain/context/calibration-results-*.md</code> once that artifact lands. Static YAML for now."
+    when: "Pending Thu Apr 30"

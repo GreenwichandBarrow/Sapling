@@ -337,46 +337,23 @@ def render() -> None:
     health_tiles = load_system_health()
     stack = load_tech_stack()
     stack_n = tech_stack_count(stack)
+    services = load_external_services()
+    credits = load_credit_tiles()
+    calib = load_calibration_log()
 
     st.markdown(_render_subtitle(health_tiles, stack_n), unsafe_allow_html=True)
     st.markdown(_render_summary(health_tiles, stack_n), unsafe_allow_html=True)
     st.markdown(_render_zone_1(health_tiles), unsafe_allow_html=True)
-
-    # Zones 2, 3, 4 — placeholder until supervised Session 5 part 2.
-    st.markdown(
-        _render_zone_placeholder(
-            "External Connectivity & Tooling",
-            "Auth, API keys, MCP servers, local tools",
-            "Per-service auth probes ship in supervised Session 5 part 2. "
-            "Mockup reference: dashboard/mockup-infrastructure.html Zone 2.",
-        ),
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        _render_zone_placeholder(
-            "Credits & Subscription Spend",
-            "Operational runway · what depletes, when, at current burn",
-            "Apollo + Linkt + Anthropic billing API integration ships in "
-            "Session 5 part 2. Mockup reference: Zone 3.",
-        ),
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        _render_zone_placeholder(
-            "Calibration & Learning · This Week",
-            "What the system codified, retired, or refreshed since last Friday",
-            "Reads calibration-workflow output. Wires up alongside the "
-            "Friday meta-calibration run. Mockup reference: Zone 4.",
-        ),
-        unsafe_allow_html=True,
-    )
-
+    st.markdown(_render_zone_2(services), unsafe_allow_html=True)
+    st.markdown(_render_zone_3(credits), unsafe_allow_html=True)
+    st.markdown(_render_zone_4(calib), unsafe_allow_html=True)
     st.markdown(_render_zone_5(stack), unsafe_allow_html=True)
 
     st.markdown(
-        '<div class="gb-page-note">v1 ships Zones 1 + 5 (pure local data). '
-        "Zones 2 (auth probes), 3 (credits/billing), and 4 (calibration) "
-        "ship next in supervised Session 5 part 2."
+        '<div class="gb-page-note">All 5 zones live. External services + '
+        "credits + calibration entries are operator-maintained YAML "
+        "(<code>dashboard/data/*.yaml</code>); live auth probes and "
+        "billing API readers swap in later."
         "</div>",
         unsafe_allow_html=True,
     )

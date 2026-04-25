@@ -21,15 +21,24 @@ Usage:
 from __future__ import annotations
 
 import json
+import os
 import re
 import subprocess
 import sys
+import tempfile
 from collections import Counter
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
+import requests
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SNAPSHOT_PATH = REPO_ROOT / "brain" / "context" / "jj-activity-snapshot.json"
+GOG_CREDS_PATH = Path.home() / "Library" / "Application Support" / "gogcli" / "credentials.json"
+GOG_ACCOUNT = os.environ.get("GOG_ACCOUNT", "kay.s@greenwichandbarrow.com")
+
+# Match Call Log tab names like "Call Log 4.21.26" or "Call Log 04.21.2026".
+_CALL_LOG_TAB_RE = re.compile(r"^Call Log\s+\d+[./]\d+[./]\d+$", re.IGNORECASE)
 
 # Known niche target sheets (from .claude/skills/jj-operations/SKILL.md).
 # Add more here as new niches activate. Sheet name → sheet ID.
@@ -71,6 +80,82 @@ def _normalize_date(raw: str) -> date | None:
         return None
 
 
+def _get_access_token() -> str | None:
+    """Refresh gog's OAuth token to get a fresh Sheets API access token.
+
+    Reads client_id + client_secret from gog's credentials.json, exports the
+    refresh_token via `gog auth tokens export`, then POSTs to Google's token
+    endpoint. The exported token file is deleted on the same call to avoid
+    leaving secrets at rest.
+    """
+    if not GOG_CREDS_PATH.exists():
+        print(f"[refresh-jj] WARN: gog credentials.json not found at {GOG_CREDS_PATH}", file=sys.stderr)
+        return None
+    try:
+        creds = json.loads(GOG_CREDS_PATH.read_text())
+    except (OSError, json.JSONDecodeError) as e:
+        print(f"[refresh-jj] WARN: failed to read gog creds: {e}", file=sys.stderr)
+        return None
+
+    with tempfile.NamedTemporaryFile("r", suffix=".json", delete=False) as tmp:
+        tmp_path = Path(tmp.name)
+    try:
+        export = subprocess.run(
+            ["gog", "auth", "tokens", "export", GOG_ACCOUNT, "--out", str(tmp_path), "--overwrite"],
+            capture_output=True, text=True, timeout=15,
+        )
+        if export.returncode != 0:
+            print(f"[refresh-jj] WARN: gog token export failed: {export.stderr[:200]}", file=sys.stderr)
+            return None
+        token_file = json.loads(tmp_path.read_text())
+        refresh_token = token_file.get("refresh_token")
+        if not refresh_token:
+            print("[refresh-jj] WARN: no refresh_token in exported file", file=sys.stderr)
+            return None
+
+        resp = requests.post(
+            "https://oauth2.googleapis.com/token",
+            data={
+                "client_id": creds["client_id"],
+                "client_secret": creds["client_secret"],
+                "refresh_token": refresh_token,
+                "grant_type": "refresh_token",
+            },
+            timeout=15,
+        )
+        if resp.status_code != 200:
+            print(f"[refresh-jj] WARN: token refresh failed: {resp.status_code} {resp.text[:200]}", file=sys.stderr)
+            return None
+        return resp.json().get("access_token")
+    finally:
+        try:
+            tmp_path.unlink(missing_ok=True)
+        except OSError:
+            pass
+
+
+def _list_sheet_tabs(sheet_id: str, access_token: str) -> list[str]:
+    """Return all tab (sub-sheet) names in the spreadsheet via Sheets API."""
+    resp = requests.get(
+        f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}",
+        headers={"Authorization": f"Bearer {access_token}"},
+        params={"fields": "sheets(properties(title))"},
+        timeout=15,
+    )
+    if resp.status_code != 200:
+        print(
+            f"[refresh-jj] WARN: tab listing failed for {sheet_id}: "
+            f"{resp.status_code} {resp.text[:150]}",
+            file=sys.stderr,
+        )
+        return []
+    return [
+        s["properties"]["title"]
+        for s in resp.json().get("sheets", [])
+        if s.get("properties", {}).get("title")
+    ]
+
+
 def _read_sheet_range(sheet_id: str, range_a1: str) -> list[list[str]] | None:
     """Read a range via gog. Returns rows-of-cells or None on failure."""
     try:
@@ -102,30 +187,59 @@ def _read_sheet_range(sheet_id: str, range_a1: str) -> list[list[str]] | None:
     return data if isinstance(data, list) else []
 
 
-def _scan_niche_dials(sheet_id: str, niche_name: str) -> list[date]:
-    """Pull col T + col V from the working tab. Return all dial dates.
-
-    Two schemas exist in the wild:
-      OLD (e.g. Art Storage "Active" tab): T=JJ: Call Date, V=JJ: Owner Sentiment
-      NEW (e.g. Premium Pest "Full Target List"): T=JJ: 1st Call Date, V=JJ: 2nd Call Date
-
-    Reading T:V handles both — sentiment text in V on the old schema fails the
-    date regex and is filtered out by `_normalize_date`. Omitting the tab name
-    defaults to the first tab, which is the working tab for every known niche.
-    """
-    rows = _read_sheet_range(sheet_id, "T2:V")
+def _scan_tab_dials(sheet_id: str, tab_name: str | None) -> list[date]:
+    """Read T2:V from one tab. tab_name=None defaults to the first tab."""
+    range_str = "T2:V" if tab_name is None else f"'{tab_name}'!T2:V"
+    rows = _read_sheet_range(sheet_id, range_str)
     if rows is None:
         return []
     dials: list[date] = []
     for row in rows:
-        # row may be shorter than 3 cells if trailing cells are empty
         first_call = row[0] if len(row) > 0 else ""
         second_call = row[2] if len(row) > 2 else ""
         for raw in (first_call, second_call):
             d = _normalize_date(raw)
             if d:
                 dials.append(d)
-    print(f"[refresh-jj] {niche_name}: {len(dials)} dials found", file=sys.stderr)
+    return dials
+
+
+def _scan_niche_dials(
+    sheet_id: str,
+    niche_name: str,
+    access_token: str | None = None,
+) -> list[date]:
+    """Aggregate dials across the working tab + every Call Log tab.
+
+    Per `feedback_jj_call_date_from_field_not_tab.md`, dial counts come from
+    Call Date field values, but JJ rolls deals through tabs as a working list
+    — so a dial logged on a 4.21.26 Call Log tab might have a 4.24.26 date.
+    We must scan every tab to find them all.
+
+    Two column schemas in the wild:
+      OLD (e.g. Art Storage "Active" tab): T=JJ: Call Date, V=JJ: Owner Sentiment
+      NEW (e.g. Premium Pest "Full Target List"): T=JJ: 1st Call Date, V=JJ: 2nd Call Date
+
+    Reading T:V handles both — sentiment text in V on the old schema fails
+    the date regex and is filtered out by `_normalize_date`.
+    """
+    # Always scan the working tab (first tab, no name needed)
+    dials = _scan_tab_dials(sheet_id, None)
+
+    # If we have an access token, also enumerate + scan Call Log tabs
+    call_log_count = 0
+    if access_token:
+        tabs = _list_sheet_tabs(sheet_id, access_token)
+        call_log_tabs = [t for t in tabs if _CALL_LOG_TAB_RE.match(t)]
+        for tab in call_log_tabs:
+            dials.extend(_scan_tab_dials(sheet_id, tab))
+            call_log_count += 1
+
+    print(
+        f"[refresh-jj] {niche_name}: {len(dials)} dials "
+        f"(working tab + {call_log_count} Call Log tabs)",
+        file=sys.stderr,
+    )
     return dials
 
 
@@ -144,8 +258,14 @@ def _build_snapshot() -> dict:
     all_dials: list[date] = []
     per_niche: dict[str, int] = {}
 
+    access_token = _get_access_token()
+    if access_token:
+        print("[refresh-jj] OAuth refresh ok — Call Log tab enumeration enabled", file=sys.stderr)
+    else:
+        print("[refresh-jj] OAuth refresh failed — falling back to working-tab-only scan", file=sys.stderr)
+
     for niche, sheet_id in NICHE_SHEETS.items():
-        dials = _scan_niche_dials(sheet_id, niche)
+        dials = _scan_niche_dials(sheet_id, niche, access_token=access_token)
         per_niche[niche] = len(dials)
         all_dials.extend(dials)
 

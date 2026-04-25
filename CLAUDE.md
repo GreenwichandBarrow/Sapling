@@ -220,7 +220,7 @@ Skills run on a schedule via macOS launchd, independent of active sessions:
 | `health-monitor` | Friday 12:30 AM ET | System health probes (services, hooks, vault, briefing pipeline) — output ready for Friday morning briefing |
 | `calibration-workflow` | Thursday 11pm ET | Friday meta-calibration: rules → stop hooks, memory consolidation, stale-skill refresh |
 | `attio-snapshot-refresh` | Hourly Mon-Fri 8am-8pm ET | Refreshes `brain/context/attio-pipeline-snapshot.json` so the Command Center dashboard (landing hero, Active Deal Pipeline, M&A Analytics) stays current as deals advance. Wrapper: `scripts/refresh-attio-snapshot.sh`. |
-| `jj-snapshot-refresh` | Mon-Fri 9am, 2:30pm, 6pm ET | Refreshes `brain/context/jj-activity-snapshot.json` from JJ's per-niche target sheets (col T + V dial dates, normalized) so the dashboard's M&A Analytics JJ row + JJ-dials trend panel reflect today's activity. Wrapper: `scripts/refresh-jj-snapshot.sh`. **Caveat**: scans the working tab only; per-day Call Log tabs not yet enumerated (Sheets API metadata wire-up is a follow-up). |
+| `jj-snapshot-refresh` | Mon-Fri 9am, 2:30pm, 6pm ET | Refreshes `brain/context/jj-activity-snapshot.json` from JJ's per-niche target sheets (col T + V dial dates, normalized) so the dashboard's M&A Analytics JJ row + JJ-dials trend panel reflect today's activity. Scans the working tab + every Call Log tab (enumerated via Sheets API metadata using gog's OAuth refresh token). Wrapper: `scripts/refresh-jj-snapshot.sh`. |
 
 `weekly-tracker` runs on Fridays but is triggered by the orchestrator during the morning workflow (not launchd). Kay needs results by 10am ET.
 

@@ -121,7 +121,7 @@
   /* ---------- TILES ---------- */
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
 
@@ -135,11 +135,100 @@
     flex-direction: column;
     cursor: pointer;
     transition: all 0.18s;
+    text-decoration: none;
+    color: inherit;
   }
   .tile:hover {
     background: var(--panel-hover);
     border-color: #2E3647;
     transform: translateY(-1px);
+  }
+
+  /* HERO tile — Active Deal Pipeline featured at top */
+  .tile.hero {
+    grid-column: 1 / -1;
+    min-height: 200px;
+    padding: 28px 32px;
+    background: linear-gradient(135deg, var(--panel) 0%, rgba(74, 158, 255, 0.04) 100%);
+    border-color: rgba(74, 158, 255, 0.25);
+  }
+  .tile.hero:hover {
+    border-color: rgba(74, 158, 255, 0.5);
+    background: linear-gradient(135deg, var(--panel-hover) 0%, rgba(74, 158, 255, 0.06) 100%);
+  }
+  .tile.hero .label {
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .tile.hero .hero-row {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 32px;
+    align-items: center;
+    flex: 1;
+  }
+  .tile.hero .hero-headline {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .tile.hero .hero-num {
+    font-size: 56px;
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    line-height: 1;
+  }
+  .tile.hero .hero-num .unit {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-left: 10px;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  .tile.hero .hero-trend {
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+  .tile.hero .hero-trend .green { color: var(--green); }
+  .tile.hero .hero-trend .red { color: var(--red); }
+  .tile.hero .stage-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .tile.hero .stage-cell {
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .tile.hero .stage-cell .stage-label {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .tile.hero .stage-cell .stage-num {
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+  .tile.hero .stage-cell .stage-num.zero { color: var(--text-dim); }
+  .tile.hero .stage-cell .stage-meta {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .tile.hero .hero-cta {
+    margin-top: 18px;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
   }
 
   .tile .label {
@@ -251,7 +340,7 @@
     <div class="nav-section">
       <div class="nav-item active"><span class="dot"></span>Dashboard</div>
       <a class="nav-item" href="mockup-deal-aggregator.html" style="text-decoration:none;"><span class="dot"></span>Deal Aggregator</a>
-      <a class="nav-item" href="mockup-deal-pipeline.html" style="text-decoration:none;"><span class="dot"></span>Deal Pipeline</a>
+      <a class="nav-item" href="mockup-deal-pipeline.html" style="text-decoration:none;"><span class="dot"></span>Active Deal Pipeline</a>
       <div class="nav-item"><span class="dot"></span>M&amp;A Analytics</div>
       <a class="nav-item" href="mockup-c-suite-skills.html" style="text-decoration:none;"><span class="dot"></span>C-Suite &amp; Skills</a>
       <a class="nav-item" href="mockup-infrastructure.html" style="text-decoration:none;"><span class="dot"></span>Infrastructure</a>
@@ -274,28 +363,73 @@
 
     <div class="grid">
 
+      <!-- HERO: Active Deal Pipeline -->
+      <a class="tile hero" href="mockup-deal-pipeline.html">
+        <div class="label">Active Deal Pipeline · NDA Forward</div>
+        <div class="hero-row">
+          <div class="hero-headline">
+            <div class="hero-num">3<span class="unit">active conversations</span></div>
+            <div class="hero-trend">
+              <span class="green">&uarr; 3 advanced this week</span>
+              &nbsp;·&nbsp;
+              <span>0 stalled &gt;30d</span>
+              &nbsp;·&nbsp;
+              <span>12 closed post-NDA lifetime</span>
+            </div>
+            <div class="hero-cta">View pipeline &rarr;</div>
+          </div>
+          <div class="stage-bar">
+            <div class="stage-cell">
+              <div class="stage-label">NDA</div>
+              <div class="stage-num">2</div>
+              <div class="stage-meta">avg 5d in stage</div>
+            </div>
+            <div class="stage-cell">
+              <div class="stage-label">Financials</div>
+              <div class="stage-num">1</div>
+              <div class="stage-meta">3d in stage</div>
+            </div>
+            <div class="stage-cell">
+              <div class="stage-label">Submitted LOI</div>
+              <div class="stage-num zero">0</div>
+              <div class="stage-meta">&mdash;</div>
+            </div>
+            <div class="stage-cell">
+              <div class="stage-label">Signed LOI</div>
+              <div class="stage-num zero">0</div>
+              <div class="stage-meta">&mdash;</div>
+            </div>
+          </div>
+        </div>
+      </a>
+
       <!-- Deal Aggregator -->
-      <div class="tile">
+      <a class="tile" href="mockup-deal-aggregator.html">
         <div class="label">Deal Aggregator</div>
         <div class="primary">3<span class="unit">new leads</span></div>
         <div class="footer">
           <span class="trend up">&uarr; vs. 1 yesterday</span>
           <span class="horizon">TODAY</span>
         </div>
-      </div>
+      </a>
 
-      <!-- Deal Pipeline -->
+      <!-- M&A Analytics (stacked) -->
       <div class="tile">
-        <div class="label">Deal Pipeline</div>
-        <div class="primary">14<span class="unit">active deals</span></div>
+        <div class="label">M&amp;A Analytics</div>
+        <div class="ma-list">
+          <div class="ma-label">Owner conversations</div><div class="ma-value">3</div>
+          <div class="ma-label">NDAs signed</div><div class="ma-value">1</div>
+          <div class="ma-label">Outbound contacted</div><div class="ma-value">1,539</div>
+          <div class="ma-label">Reply rate</div><div class="ma-value">4.3%</div>
+        </div>
         <div class="footer">
-          <span class="trend flat">&rarr; no change</span>
-          <span class="horizon">NOW</span>
+          <span class="trend up">&uarr; vs. 4 last week</span>
+          <span class="horizon">THIS WEEK</span>
         </div>
       </div>
 
       <!-- C-Suite & Skills -->
-      <div class="tile">
+      <a class="tile" href="mockup-c-suite-skills.html">
         <div class="label">C-Suite &amp; Skills</div>
         <div class="primary">12<span class="unit">/ 12 fired</span></div>
         <div class="status-row">
@@ -306,36 +440,21 @@
           <span class="trend flat">&rarr; same as yesterday</span>
           <span class="horizon">TODAY</span>
         </div>
-      </div>
+      </a>
 
       <!-- Infrastructure -->
-      <div class="tile">
+      <a class="tile" href="mockup-infrastructure.html">
         <div class="label">Infrastructure</div>
-        <div class="primary">7<span class="unit">/ 7 healthy</span></div>
+        <div class="primary">17<span class="unit">/ 19 healthy</span></div>
         <div class="status-row">
-          <span class="status-dot green"></span>
-          <span class="status-text">all systems nominal</span>
+          <span class="status-dot yellow"></span>
+          <span class="status-text">1 needs action · 2 warnings</span>
         </div>
         <div class="footer">
           <span class="trend flat">&rarr; stable</span>
           <span class="horizon">NOW</span>
         </div>
-      </div>
-
-      <!-- M&A (stacked) -->
-      <div class="tile">
-        <div class="label">M&amp;A Activity</div>
-        <div class="ma-list">
-          <div class="ma-label">Owner conversations</div><div class="ma-value">3</div>
-          <div class="ma-label">NDAs signed</div><div class="ma-value">1</div>
-          <div class="ma-label">Financials received</div><div class="ma-value">2</div>
-          <div class="ma-label">LOIs submitted</div><div class="ma-value">0</div>
-        </div>
-        <div class="footer">
-          <span class="trend up">&uarr; vs. 4 last week</span>
-          <span class="horizon">THIS WEEK</span>
-        </div>
-      </div>
+      </a>
 
     </div>
 

@@ -101,8 +101,10 @@ GLOBAL_CSS = f"""
     max-width: none !important;
   }}
 
-  /* Remove default vertical gap between Streamlit elements so our HTML carries the spacing */
-  [data-testid="stVerticalBlock"] {{ gap: 0 !important; }}
+  /* Restore breathing room between top-level Streamlit blocks in the main
+     content area — match the mockup's airy zone-to-zone spacing. Sidebar
+     overrides this back to 0 below for the tight nav cadence. */
+  [data-testid="stMain"] [data-testid="stVerticalBlock"] {{ gap: 12px !important; }}
 
   /* -------- SIDEBAR -------- */
   [data-testid="stSidebar"] {{
@@ -478,8 +480,8 @@ GLOBAL_CSS = f"""
     flex-wrap: wrap;
     gap: 14px 18px;
     align-items: center;
-    margin-top: -8px;
-    margin-bottom: 18px;
+    margin-top: 4px;
+    margin-bottom: 8px;
     font-size: 12px;
     color: var(--text-muted);
   }}
@@ -689,7 +691,7 @@ GLOBAL_CSS = f"""
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 0;
-    min-height: 220px;
+    min-height: 320px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -832,7 +834,7 @@ GLOBAL_CSS = f"""
   .gb-kanban-col-empty {{
     color: var(--text-dim);
     font-size: 11.5px;
-    padding: 16px 8px;
+    padding: 60px 8px;
     font-style: italic;
     text-align: center;
   }}

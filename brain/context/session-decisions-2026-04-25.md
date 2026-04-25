@@ -58,3 +58,113 @@ Page replaces the manual Weekly Activity Tracker Google Sheet.
 **Dashboard dev server:** `dashboard/.venv/bin/streamlit run dashboard/command_center.py` — port 8501. Kill with `lsof -ti:8501 | xargs kill` before next session.
 
 **Build sequence status:** Sessions 1, 2, 3, 4, 4.5, 5 (partial), 6 shipped. **All 6 nav items now serve content.** Post-May-7 scope = DealsX zone wiring; Session 5 part 2 (Infrastructure auth probes / Credits / Calibration) remains.
+
+---
+
+# Session 6 — Extended (Saturday afternoon → evening)
+
+Long extended session after the morning Session 6 ship. Kay drove it
+remotely from her phone via Remote Control mid-way through. ~6 hours,
+12 commits. Full mockup-fidelity sweep + production-readiness +
+strategic graduation (Decisions-only briefing migration).
+
+## Decisions
+
+- **APPROVE: Mockup-fidelity polish sweep** — Kay's "the mockups were amazing, we just needed them live" reframed scope. Six fixes in one bundle: font cascade override (Streamlit ships Source Sans Variable that beats Avenir Next), sidebar nav spacing tightening, landing hero tile (56px / weight-200 headline + accent gradient + 4 stage breakdown cells), Active Deal Pipeline stat-pills + filter pill rows, C-Suite & Skills filter pill row, Infrastructure subtitle voice. Plus: air restoration (rolled back the gap:0 rule that was squishing zones), kanban empty-state padding, Active Deal Pipeline column min-height bump, topbar alignment, summary-strip color coding across 3 pages, sidebar active-state blue via .streamlit/config.toml primaryColor (Emotion CSS-in-JS overrode external CSS).
+- **APPROVE: Infrastructure Zones 2/3/4 ship as YAML-driven catalogs** rather than wait for live API readers. External Connectivity (13 services), Credits & Spend (6 tiles), Calibration & Learning (4 entries this week). Mirrors the tech_stack.yaml pattern; live readers swap in later as a delta against this baseline.
+- **APPROVE: Attio snapshot scheduled refresh — hourly Mon-Fri 8am-8pm ET** (65 fires/week). Built `scripts/refresh_attio_snapshot.py` reading Active Deals - Owners list, deduping by record_id, fetching parent record fields. Wraps via `scripts/refresh-attio-snapshot.sh`, plist registered. Tested end-to-end: 18 active deals + 132 closed (was 131; one new closure since yesterday).
+- **APPROVE: JJ snapshot scheduled refresh — Mon-Fri 9am/2:30pm/6pm ET** (15 fires/week). Built `scripts/refresh_jj_snapshot.py` scanning each niche sheet's working tab + every "Call Log M.DD.YY" tab via Sheets API metadata. Used gog refresh_token export + OAuth refresh to access Sheets API directly (gog doesn't expose tab metadata). Result: 133 lifetime dials surfaced (vs 2 with working-tab-only scan); 80 dials this week. Premium Pest had 8 hidden Call Log tabs.
+- **APPROVE: Closed-strip post-NDA split via meaningful_conversation/notes engagement signal.** Without true Attio stage history, used the next-best signal: deals with `meaningful_conversation` OR notes attached count as post-NDA failures (had real engagement). Audit across all 132 closed entries: 2 post-NDA, 130 pre-NDA outreach attrition. Closed strip on Active Deal Pipeline + landing hero now show post-NDA only.
+- **APPROVE: Weekly-tracker history backfills NDAs trend panel.** 6 weekly tracker snapshots in vault (`brain/trackers/weekly/*-weekly-tracker.md`) parsed into `WeeklyTrackerSnapshot` dataclasses. NDAs panel went from "Pending data history" to live with 2 historical peaks visible (Mar 20 + Mar 27). Reply rate stays pending (no source pre-DealsX).
+- **APPROVE: Filter pills interactive on 3 of 4 pages via st.segmented_control.** Deal Aggregator (Today / This week / All), Active Deal Pipeline (All / Recent <14d / Stalled), C-Suite & Skills (All / Scheduled / On-demand / Gaps only). M&A Analytics intentionally NOT wired — its 5 zones use different time scopes; needs `load_ma_analytics(window_days=...)` refactor first (~30 min separate task).
+- **APPROVE: Production-readiness bundle (A1+A2+A3).** Stale-snapshot banner with weekend-aware thresholds (won't fire on legitimate weekend gaps); health-monitor coverage of both new refresh jobs + expanded launchd jobs list to match CLAUDE.md; dashboard README covering architecture / data flow / scheduled jobs / how to add a new page / gotchas / testing pattern / session history.
+- **APPROVE: Migrate morning briefing 4-bucket → Decisions-only.** Per the original migration plan in CLAUDE.md and `feedback_build_new_before_sunset_old`, this was held until the dashboard was operational. Gating condition met today. Single Decisions list ≤5 items, ordered by 🔴/🟡/🟢 urgency, RECOMMEND framing, header line points at dashboard for context. Tomorrow morning is first test.
+- **APPROVE: CIM count regex fix — reject negation contexts.** Audited `_count_cims_in_window` against every email-scan-results file in vault. Truth: 0 CIMs to date. Prior regex matched "CIM received" inside "No CIM received" giving false positive of 1. Added `_CIM_NEGATION` guard. Validated with 8 unit tests.
+
+## Actions Taken
+
+12 commits this session (in order):
+
+1. **8db81ca** Session 6: M&A Analytics page (non-DealsX zones) — full page render
+2. **(auto)** Background hook: dashboard_landing.py landing hero rewrite as `aec1db9 update dashboard`
+3. **7b36318** Mockup-fidelity polish sweep: font, sidebar, hero, filter pills
+4. **22df502** Match Infrastructure summary strip to mockup
+5. **3446ea5** C-Suite & Skills summary: always show scheduling gap pill, color numbers
+6. **e5f71f6** Restore inter-zone air, fix kanban empty-state squish
+7. **53b5203** Deal Aggregator summary: color number pills per mockup
+8. **fe0f4c2** Align main content top with sidebar brand top
+9. **4788885** Sidebar nav: blue active text, mockup spacing + weight
+10. **0173485** Force blue text on active sidebar nav via descendant *
+11. **a8ed23b** Infrastructure: ship Zones 2/3/4 + Streamlit theme config
+12. **0822b05** Attio pipeline snapshot: hourly auto-refresh via launchd
+13. **ce20ab1** JJ activity wired into M&A Analytics + scheduled refresh
+14. **ed6ffbd** JJ snapshot: enumerate Call Log tabs via Sheets API
+15. **(auto)** dashboard + scripts edits as `320427e update context, dashboard, scripts` (post-NDA split)
+16. **bc53104** M&A Analytics Zone 4 NDAs panel: backfill from weekly-tracker history
+17. **ec6eccf** Fix CIM count false positive: reject negation contexts
+18. **242cb29** Filter pills now interactive on 3 pages via st.segmented_control
+19. **d3976f5** Dashboard production-readiness: stale banner, health coverage, README
+20. **e5b16fe** Morning briefing: migrate 4-bucket → Decisions-only post-dashboard
+
+(Background auto-commit hook grabbed 2 of these as "update X" commits during the session — content is in HEAD.)
+
+**CREATED:**
+- `dashboard/.streamlit/config.toml` (theme provider config)
+- `dashboard/data/external_services.yaml` + `credits.yaml` + `calibration.yaml`
+- `dashboard/README.md` (architecture + gotchas + session history)
+- `scripts/refresh_attio_snapshot.py` + `refresh-attio-snapshot.sh`
+- `scripts/refresh_jj_snapshot.py` + `refresh-jj-snapshot.sh`
+- `~/Library/LaunchAgents/com.greenwich-barrow.attio-snapshot-refresh.plist`
+- `~/Library/LaunchAgents/com.greenwich-barrow.jj-snapshot-refresh.plist`
+- `brain/context/jj-activity-snapshot.json` (refreshes 3x/day Mon-Fri)
+- `brain/context/attio-pipeline-snapshot.json` (rewritten with post-NDA split + hourly refresh)
+
+**UPDATED:**
+- `dashboard/data_sources.py` (~700 lines added: MAAnalytics + JJActivity + WeeklyTrackerSnapshot + ExternalService + CreditTile + CalibrationLog dataclasses + 11 new loaders + staleness check helpers)
+- `dashboard/theme.py` (~600 lines added: KPI tiles, channel table, trend grid, activity rows, hero tile, sidebar overrides, font cascade override, stale banner, service rows, credit tiles, calibration entries)
+- `dashboard/command_center.py` (router + staleness banner)
+- `dashboard/pages/dashboard_landing.py` (hero tile rewrite)
+- `dashboard/pages/deal_aggregator.py` + `deal_pipeline.py` + `c_suite_skills.py` + `infrastructure.py` (filter interactivity + summary color coding + zone wire-ups)
+- `dashboard/pages/ma_analytics.py` (new, then evolved with JJ wire-up + history backfill)
+- `CLAUDE.md` (Scheduled Skills table + Morning Workflow Step 9 migration)
+- `.claude/commands/goodmorning.md` (Step 7 migration)
+- `.claude/skills/health-monitor/SKILL.md` (job coverage + data freshness rows)
+- `memory/feedback_briefing_three_buckets.md` (rewritten for Decisions-only)
+- `memory/MEMORY.md` (index entry update)
+
+## Verification
+
+- All 6 dashboard routes return HTTP 200: `/`, `/deal-aggregator`, `/deal-pipeline`, `/ma-analytics`, `/c-suite-skills`, `/infrastructure`
+- AppTest 0 exceptions on every page modified this session
+- Both refresh scripts tested end-to-end with logs written
+- launchd shows both jobs registered: `com.greenwich-barrow.{attio,jj}-snapshot-refresh`
+- Stale-snapshot banner correctly silent on Saturday (weekend-aware threshold)
+- Real data flowing: Attio snapshot 18 active deals + 132 closed; JJ snapshot 133 lifetime + 80 this week; weekly tracker NDAs 2 historical peaks; CIM count 0 (truth)
+
+## Open Loops
+
+- **First Decisions-only briefing tomorrow morning** — Sunday's briefing (or Monday's if no Sunday) is the first real test of the new format. Watch for: feels-too-sparse, missing-context, urgency-emoji-noise. Adjust based on Kay's reaction.
+- **M&A Analytics filter wire-up deferred** — needs `load_ma_analytics(window_days=...)` refactor (~30 min). Visual filter bar still renders but doesn't drive data.
+- **Dropdowns + search interactivity across pages** — visual stubs only. ~30-45 min/page.
+- **Active niches still hardcoded** in `_ACTIVE_NICHES` (Insurance Brokerage / Fine Art Storage / Equipment Servicing / Managed IT Services). Would auto-update Zone 5 + JJ-snapshot scope if pulled from Industry Research Tracker sheet (~45 min).
+- **Hardcoded API key in `scripts/attio_create_people.py:14`** — security tech debt. Should read from env. ~5 min next session.
+- **Premium Pest in JJ snapshot** — currently scanned (131 dials surfaced) but flagged "not active per session decisions". Decide: reactivate as active niche OR remove from JJ scan list. ~5 min decision + edit.
+
+## Deferred
+
+- **JJ Saturday refresh** — Mon-Fri only currently. Weekends could run too if Kay wants weekend dial visibility, but JJ doesn't work weekends so probably fine as-is.
+- **DealsX integration (May 7)** — wires Zones 2 + 2.5 in M&A Analytics + DealsX rows in Zone 3.
+- **Infrastructure live API readers** — auth probes, billing API for Apollo/Anthropic, calibration-workflow output reader. YAML stubs ship now; live wiring later.
+
+## Strategic Note
+
+The dashboard is now Kay's daily operational surface. Tomorrow morning's
+briefing tests whether the migration sticks. If the Decisions-only format
+feels right, the dashboard project's purpose is fulfilled — collapsed Kay's
+morning routine from "scroll through 4 buckets + system status" to "decide
+on ≤5 items, dashboard for context."
+
+If it feels too sparse, recovery is easy: revert `feedback_briefing_three_buckets.md`
++ CLAUDE.md Step 9 + goodmorning.md Step 7 to the 4-bucket format. The dashboard
+remains regardless — it's value-additive, not load-bearing on the briefing format.
+

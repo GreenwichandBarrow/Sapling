@@ -224,9 +224,10 @@ GLOBAL_CSS = f"""
   .gb-topbar .meta .sep {{ margin: 0 8px; color: var(--border); }}
 
   /* -------- TILE GRID -------- */
+  /* 4-col grid per locked mockup. Hero tile spans full width via grid-column: 1/-1 */
   .gb-grid {{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }}
   .gb-tile {{
@@ -245,6 +246,99 @@ GLOBAL_CSS = f"""
     border-color: var(--border-bright);
     transform: translateY(-1px);
   }}
+
+  /* HERO tile — Active Deal Pipeline featured at top, full grid width */
+  .gb-tile.hero {{
+    grid-column: 1 / -1;
+    min-height: 200px;
+    padding: 28px 32px;
+    background: linear-gradient(135deg, var(--panel) 0%, rgba(74, 158, 255, 0.04) 100%);
+    border-color: rgba(74, 158, 255, 0.25);
+    text-decoration: none;
+    color: inherit;
+  }}
+  .gb-tile.hero:hover {{
+    border-color: rgba(74, 158, 255, 0.5);
+    background: linear-gradient(135deg, var(--panel-hover) 0%, rgba(74, 158, 255, 0.06) 100%);
+  }}
+  .gb-tile.hero .label {{
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 18px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }}
+  .gb-hero-row {{
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 32px;
+    align-items: center;
+    flex: 1;
+  }}
+  .gb-hero-headline {{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }}
+  .gb-hero-num {{
+    font-size: 56px;
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }}
+  .gb-hero-num .unit {{
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-left: 10px;
+    font-weight: 400;
+    letter-spacing: 0;
+  }}
+  .gb-hero-trend {{
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }}
+  .gb-hero-trend .green {{ color: var(--green); }}
+  .gb-hero-trend .red {{ color: var(--red); }}
+  .gb-hero-cta {{
+    margin-top: 18px;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+  }}
+  .gb-stage-bar {{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }}
+  .gb-stage-cell {{
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }}
+  .gb-stage-label {{
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }}
+  .gb-stage-num {{
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }}
+  .gb-stage-num.zero {{ color: var(--text-dim); }}
+  .gb-stage-meta {{
+    font-size: 10.5px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }}
+
   .gb-tile .label {{
     font-size: 10.5px;
     letter-spacing: 0.12em;

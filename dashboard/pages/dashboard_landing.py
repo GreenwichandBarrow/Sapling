@@ -1,17 +1,18 @@
-"""Dashboard landing page — 5 metric tiles, one per implemented sub-page.
+"""Dashboard landing page — hero Active Deal Pipeline tile + 4 small tiles.
 
-Tech Stack tile retired 2026-04-24 (merged into Infrastructure). Deal Pipeline
-renamed to "Active Deal Pipeline" with NDA-forward scope.
+Layout matches `dashboard/mockup-landing.html` (locked Session 4 PM):
+  Row 1: HERO Active Deal Pipeline (full-width, 56px / weight-200 headline,
+         4 stage breakdown cells, accent-blue gradient)
+  Row 2: Deal Aggregator · M&A Analytics · C-Suite & Skills · Infrastructure
 
-Each tile that has a corresponding live page (Active Deal Pipeline,
-C-Suite & Skills, Infrastructure) reads its live loader inside a try/except
-so any data-source failure falls back to a placeholder rather than crashing
-the landing page. M&A Analytics and Deal Aggregator stay placeholder until
-their respective live wiring lands.
+Each tile that has a corresponding live page reads its loader inside a
+try/except so a data-source failure falls back to a placeholder rather than
+crashing the page.
 """
 
 from __future__ import annotations
 
+from datetime import date, datetime, timedelta, timezone
 from textwrap import dedent
 
 import sys
@@ -26,7 +27,168 @@ def _tile(body: str) -> str:
     return dedent(body).strip()
 
 
+# -----------------------------------------------------------------------------
+# Hero tile — Active Deal Pipeline (NDA-forward)
+# -----------------------------------------------------------------------------
+
+
+_NDA_FORWARD_STAGES = ("NDA", "Financials Received", "Submitted LOI", "Signed LOI")
+
+
+def _stage_age_days(deals: list, stage: str, today: date) -> tuple[int, str]:
+    """Return (count, avg-age-text) for deals currently in `stage`."""
+    in_stage = [d for d in deals if d.stage == stage]
+    if not in_stage:
+        return 0, "—"
+    ages = []
+    for d in in_stage:
+        try:
+            ts = datetime.fromisoformat(d.stage_since.replace("Z", "+00:00"))
+        except (ValueError, AttributeError):
+            continue
+        ages.append((today - ts.date()).days)
+    if not ages:
+        return len(in_stage), "—"
+    avg = round(sum(ages) / len(ages))
+    if len(in_stage) == 1:
+        return 1, f"{avg}d in stage"
+    return len(in_stage), f"avg {avg}d in stage"
+
+
+def _advanced_this_week(deals: list, today: date) -> int:
+    """Count NDA-forward deals whose stage_since landed in the last 7 days."""
+    week_start = today - timedelta(days=6)
+    n = 0
+    for d in deals:
+        if d.stage not in _NDA_FORWARD_STAGES:
+            continue
+        try:
+            ts = datetime.fromisoformat(d.stage_since.replace("Z", "+00:00"))
+        except (ValueError, AttributeError):
+            continue
+        if week_start <= ts.date() <= today:
+            n += 1
+    return n
+
+
+def _stalled_count(deals: list, today: date) -> int:
+    """Deals that have sat in their current NDA-forward stage >30 days."""
+    threshold = today - timedelta(days=30)
+    n = 0
+    for d in deals:
+        if d.stage not in _NDA_FORWARD_STAGES:
+            continue
+        try:
+            ts = datetime.fromisoformat(d.stage_since.replace("Z", "+00:00"))
+        except (ValueError, AttributeError):
+            continue
+        if ts.date() < threshold:
+            n += 1
+    return n
+
+
+def _hero_active_deal_pipeline() -> str:
+    """Live: Active Deal Pipeline hero — 4 stage cells + headline + trend."""
+    try:
+        from data_sources import load_pipeline
+        snapshot = load_pipeline(scope="active")
+    except Exception:
+        snapshot = None
+
+    if snapshot is None:
+        return _tile("""
+        <a class="gb-tile hero" href="/deal-pipeline" target="_self">
+        <div class="label">Active Deal Pipeline · NDA Forward</div>
+        <div class="gb-hero-row">
+        <div class="gb-hero-headline">
+        <div class="gb-hero-num">&mdash;<span class="unit">snapshot unreachable</span></div>
+        <div class="gb-hero-trend">Run the agent's snapshot refresh to populate.</div>
+        <div class="gb-hero-cta">View pipeline &rarr;</div>
+        </div>
+        <div class="gb-stage-bar">
+        <div class="gb-stage-cell"><div class="gb-stage-label">NDA</div><div class="gb-stage-num zero">&mdash;</div></div>
+        <div class="gb-stage-cell"><div class="gb-stage-label">Financials</div><div class="gb-stage-num zero">&mdash;</div></div>
+        <div class="gb-stage-cell"><div class="gb-stage-label">Submitted LOI</div><div class="gb-stage-num zero">&mdash;</div></div>
+        <div class="gb-stage-cell"><div class="gb-stage-label">Signed LOI</div><div class="gb-stage-num zero">&mdash;</div></div>
+        </div>
+        </div>
+        </a>
+        """)
+
+    today = date.today()
+    deals = snapshot.deals
+
+    nda_n, nda_meta = _stage_age_days(deals, "NDA", today)
+    fin_n, fin_meta = _stage_age_days(deals, "Financials Received", today)
+    loi_n, loi_meta = _stage_age_days(deals, "Submitted LOI", today)
+    sloi_n, sloi_meta = _stage_age_days(deals, "Signed LOI", today)
+
+    total = nda_n + fin_n + loi_n + sloi_n
+    advanced = _advanced_this_week(deals, today)
+    stalled = _stalled_count(deals, today)
+    closed_lifetime = snapshot.closed_count
+
+    if total == 0:
+        headline_unit = "NDA forward"
+    elif total == 1:
+        headline_unit = "active conversation"
+    else:
+        headline_unit = "active conversations"
+
+    advanced_html = (
+        f'<span class="green">&uarr; {advanced} advanced this week</span>'
+        if advanced
+        else '<span>0 advanced this week</span>'
+    )
+    stalled_html = (
+        f'<span class="red">{stalled} stalled &gt;30d</span>'
+        if stalled
+        else '<span>0 stalled &gt;30d</span>'
+    )
+
+    def _cell(label: str, n: int, meta: str) -> str:
+        zero = " zero" if n == 0 else ""
+        return (
+            f'<div class="gb-stage-cell">'
+            f'<div class="gb-stage-label">{label}</div>'
+            f'<div class="gb-stage-num{zero}">{n}</div>'
+            f'<div class="gb-stage-meta">{meta}</div>'
+            f"</div>"
+        )
+
+    return _tile(f"""
+    <a class="gb-tile hero" href="/deal-pipeline" target="_self">
+    <div class="label">Active Deal Pipeline &middot; NDA Forward</div>
+    <div class="gb-hero-row">
+    <div class="gb-hero-headline">
+    <div class="gb-hero-num">{total}<span class="unit">{headline_unit}</span></div>
+    <div class="gb-hero-trend">
+    {advanced_html}
+    &nbsp;&middot;&nbsp;
+    {stalled_html}
+    &nbsp;&middot;&nbsp;
+    <span>{closed_lifetime} closed lifetime</span>
+    </div>
+    <div class="gb-hero-cta">View pipeline &rarr;</div>
+    </div>
+    <div class="gb-stage-bar">
+    {_cell("NDA", nda_n, nda_meta)}
+    {_cell("Financials", fin_n, fin_meta)}
+    {_cell("Submitted LOI", loi_n, loi_meta)}
+    {_cell("Signed LOI", sloi_n, sloi_meta)}
+    </div>
+    </div>
+    </a>
+    """)
+
+
+# -----------------------------------------------------------------------------
+# Small tiles — row below the hero
+# -----------------------------------------------------------------------------
+
+
 def _tile_deal_aggregator() -> str:
+    """Static placeholder — live wiring lands in a follow-up session."""
     return _tile("""
     <div class="gb-tile">
     <div class="label">Deal Aggregator</div>
@@ -39,51 +201,29 @@ def _tile_deal_aggregator() -> str:
     """)
 
 
-def _tile_deal_pipeline() -> str:
-    """Live: count of NDA-forward deals from the Attio snapshot."""
+def _tile_ma_analytics() -> str:
+    """Stacked metric list per locked mockup — live wiring lands separately."""
     try:
-        from data_sources import load_pipeline
-        snapshot = load_pipeline(scope="active")
-        if snapshot is None:
-            count = 0
-            trend = "no snapshot"
-        else:
-            count = len(snapshot.deals)
-            if count == 0:
-                trend = "&rarr; nothing in NDA forward"
-                trend_class = "flat"
-            elif count > 0:
-                trend = f"&uarr; {count} active conversation" + ("s" if count != 1 else "")
-                trend_class = "up"
+        from data_sources import load_ma_analytics
+        ma = load_ma_analytics()
+        # Pull what we have live; fall back gracefully where data isn't wired.
+        owner_now = ma.deal_flow_tiles[0].value if ma.deal_flow_tiles else 0
+        ndas_now = ma.deal_flow_tiles[1].value if len(ma.deal_flow_tiles) > 1 else 0
     except Exception:
-        return _tile("""
-        <div class="gb-tile">
-        <div class="label">Active Deal Pipeline</div>
-        <div class="primary">&mdash;<span class="unit">snapshot unreachable</span></div>
-        <div class="footer">
-        <span class="gb-trend flat">&rarr; check page</span>
-        <span class="gb-horizon">NOW</span>
-        </div>
-        </div>
-        """)
-    if count == 0:
-        return _tile("""
-        <div class="gb-tile">
-        <div class="label">Active Deal Pipeline</div>
-        <div class="primary">0<span class="unit">NDA forward</span></div>
-        <div class="footer">
-        <span class="gb-trend flat">&rarr; nothing in NDA stage yet</span>
-        <span class="gb-horizon">NOW</span>
-        </div>
-        </div>
-        """)
+        owner_now = 0
+        ndas_now = 0
     return _tile(f"""
     <div class="gb-tile">
-    <div class="label">Active Deal Pipeline</div>
-    <div class="primary">{count}<span class="unit">active conversations</span></div>
+    <div class="label">M&amp;A Analytics</div>
+    <div class="gb-ma-list">
+    <div class="gb-ma-label">Owner conversations</div><div class="gb-ma-value">{owner_now}</div>
+    <div class="gb-ma-label">NDAs signed</div><div class="gb-ma-value">{ndas_now}</div>
+    <div class="gb-ma-label">Outbound contacted</div><div class="gb-ma-value">&mdash;</div>
+    <div class="gb-ma-label">Reply rate</div><div class="gb-ma-value">&mdash;</div>
+    </div>
     <div class="footer">
-    <span class="gb-trend up">&uarr; NDA forward</span>
-    <span class="gb-horizon">NOW</span>
+    <span class="gb-trend flat">&rarr; DealsX wires May 7</span>
+    <span class="gb-horizon">THIS WEEK</span>
     </div>
     </div>
     """)
@@ -110,7 +250,7 @@ def _tile_c_suite_skills() -> str:
     on_deck = summary["on_deck"]
     missed = summary["missed"]
     gaps = summary["gaps"]
-    scheduled_total = fired + on_deck + missed + gaps  # all that *should* fire today or are scheduled at all
+    scheduled_total = fired + on_deck + missed + gaps
     if gaps > 0 or missed > 0:
         dot = "red"
         bits = []
@@ -128,7 +268,7 @@ def _tile_c_suite_skills() -> str:
     return _tile(f"""
     <div class="gb-tile">
     <div class="label">C-Suite &amp; Skills</div>
-    <div class="primary">{fired}<span class="unit">/ {scheduled_total} fired today</span></div>
+    <div class="primary">{fired}<span class="unit">/ {scheduled_total} fired</span></div>
     <div class="gb-status-row">
     <span class="gb-status-dot {dot}"></span>
     <span class="gb-status-text">{status_text}</span>
@@ -162,7 +302,10 @@ def _tile_infrastructure() -> str:
     total = sum(summary.values())
     if summary["alert"] > 0:
         dot = "red"
-        status_text = f'{summary["alert"]} alert &middot; {summary["warn"]} warn' if summary["warn"] else f'{summary["alert"]} alert'
+        status_text = (
+            f'{summary["alert"]} alert &middot; {summary["warn"]} warn'
+            if summary["warn"] else f'{summary["alert"]} alert'
+        )
     elif summary["warn"] > 0:
         dot = "yellow"
         status_text = f'{summary["warn"]} warn'
@@ -185,42 +328,24 @@ def _tile_infrastructure() -> str:
     """)
 
 
-def _tile_ma_activity() -> str:
-    return _tile("""
-    <div class="gb-tile">
-    <div class="label">M&amp;A Analytics</div>
-    <div class="gb-ma-list">
-    <div class="gb-ma-label">Owner conversations</div><div class="gb-ma-value">3</div>
-    <div class="gb-ma-label">NDAs signed</div><div class="gb-ma-value">1</div>
-    <div class="gb-ma-label">Outbound contacted</div><div class="gb-ma-value">1,539</div>
-    <div class="gb-ma-label">Reply rate</div><div class="gb-ma-value">4.3%</div>
-    </div>
-    <div class="footer">
-    <span class="gb-trend up">&uarr; vs. 4 last week</span>
-    <span class="gb-horizon">THIS WEEK</span>
-    </div>
-    </div>
-    """)
-
-
 def render() -> None:
     import streamlit as st
 
-    tiles = [
+    hero = _hero_active_deal_pipeline()
+    small_tiles = [
         _tile_deal_aggregator(),
-        _tile_deal_pipeline(),
+        _tile_ma_analytics(),
         _tile_c_suite_skills(),
         _tile_infrastructure(),
-        _tile_ma_activity(),
     ]
     st.markdown(
-        f'<div class="gb-grid">{"".join(tiles)}</div>',
+        f'<div class="gb-grid">{hero}{"".join(small_tiles)}</div>',
         unsafe_allow_html=True,
     )
     st.markdown(
-        '<div class="gb-page-note">Active Deal Pipeline, C-Suite &amp; Skills, '
-        "and Infrastructure tiles read live data. Deal Aggregator and M&amp;A "
-        "Analytics tiles still show placeholders pending wire-up."
+        '<div class="gb-page-note">Active Deal Pipeline, M&amp;A Analytics, '
+        "C-Suite &amp; Skills, and Infrastructure read live data. Deal "
+        "Aggregator placeholder pending wire-up."
         "</div>",
         unsafe_allow_html=True,
     )

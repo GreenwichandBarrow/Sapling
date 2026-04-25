@@ -180,19 +180,20 @@ def _render_subtitle(health_tiles: list[HealthTile], stack_n: int) -> str:
 
 
 def _render_summary(health_tiles: list[HealthTile], stack_n: int) -> str:
+    """Match mockup-infrastructure.html: lead with healthy, then needs action,
+    warnings, shortest credit runway, calibrations this week. Credit + calibration
+    pills render with em-dash until those zones wire up (Session 5 pt 2)."""
     summary = system_health_summary(health_tiles)
+    healthy_color = "var(--green)" if summary["healthy"] else "var(--text-dim)"
+    alert_color = "var(--red)" if summary["alert"] else "var(--text-dim)"
+    warn_color = "var(--yellow)" if summary["warn"] else "var(--text-dim)"
     return (
         '<div class="gb-summary">'
-        f'<div><span class="num">{len(health_tiles)}</span>health checks</div>'
-        f'<div><span class="num">{summary["healthy"]}</span>healthy</div>'
-    ) + (
-        f'<div><span class="num" style="color:var(--red);">{summary["alert"]}</span>alert</div>'
-        if summary["alert"] else ""
-    ) + (
-        f'<div><span class="num" style="color:var(--yellow);">{summary["warn"]}</span>warn</div>'
-        if summary["warn"] else ""
-    ) + (
-        f'<div><span class="num">{stack_n}</span>services tracked</div>'
+        f'<div><span class="num" style="color:{healthy_color};">{summary["healthy"]}</span>healthy</div>'
+        f'<div><span class="num" style="color:{alert_color};">{summary["alert"]}</span>needs action</div>'
+        f'<div><span class="num" style="color:{warn_color};">{summary["warn"]}</span>warnings</div>'
+        '<div><span class="num" style="color:var(--text-dim);">&mdash;</span>shortest credit runway</div>'
+        '<div><span class="num" style="color:var(--text-dim);">&mdash;</span>calibrations this week</div>'
         "</div>"
     )
 

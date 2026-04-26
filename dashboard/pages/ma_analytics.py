@@ -267,7 +267,7 @@ def _render_zone_4(ma: MAAnalytics) -> str:
         <div class="gb-zone-head">
         <div>
         <div class="gb-zone-label">Trends · Last 12 Weeks</div>
-        <div class="gb-zone-sublabel">Weekly buckets · NDAs, reply rate, owner conversations, JJ dials{' · ' + str(pending) + ' panels pending data history' if pending else ''}</div>
+        <div class="gb-zone-sublabel">Weekly buckets · NDAs, reply rate, owner conversations, operations dials{' · ' + str(pending) + ' panels pending data history' if pending else ''}</div>
         </div>
         <div class="gb-zone-meta">{escape(ma.trend_x_labels[0])} – {escape(ma.trend_x_labels[2])}, 2026</div>
         </div>
@@ -350,7 +350,7 @@ def _render_zone_6(ma: MAAnalytics) -> str:
         <div class="gb-zone-head">
         <div>
         <div class="gb-zone-label">Per-niche Outreach Breakdown</div>
-        <div class="gb-zone-sublabel">JJ dial activity wired · per-niche email sends + LinkedIn pending DealsX (May 7)</div>
+        <div class="gb-zone-sublabel">Operations dial activity wired · per-niche email sends + LinkedIn pending DealsX (May 7)</div>
         </div>
         <div class="gb-zone-meta">{active_count} of {len(breakdown.rows)} niches active</div>
         </div>
@@ -363,8 +363,8 @@ def _render_zone_6(ma: MAAnalytics) -> str:
         <thead>
         <tr>
         <th>Niche</th>
-        <th class="right">JJ dials (lifetime)</th>
-        <th class="right">JJ activity</th>
+        <th class="right">Operations dials (lifetime)</th>
+        <th class="right">Ops activity</th>
         <th class="right">Email + DM volume</th>
         </tr>
         </thead>
@@ -415,7 +415,7 @@ def render() -> None:
     st.markdown(
         '<div class="gb-page-note">Data sources: Attio snapshot (deal-flow KPIs + new contacts), '
         "<code>brain/calls/</code> (owner conversations + intermediary + conferences), "
-        "<code>brain/context/session-decisions-*</code> (Kay sends/drafts via verb tags), "
+        "<code>brain/context/session-decisions-*</code> (CEO sends/drafts via verb tags), "
         "<code>brain/context/jj-activity-snapshot.json</code> (per-niche dials), "
         "<code>brain/context/email-scan-results-*</code> (CIM detection). "
         "<strong style=\"color:var(--text-muted);\">DealsX zones (incl. response rate + per-niche email volume) live May 7, 2026.</strong>"

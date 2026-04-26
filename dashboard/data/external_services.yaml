@@ -23,7 +23,7 @@ services:
 
   - name: superhuman
     kind: service
-    description: Email drafts via OAuth · Kay's primary inbox + draft surface.
+    description: Email drafts via OAuth · CEO primary inbox + draft surface.
     health: warn
     status_text: G&B OAuth token expired · personal Gmail fallback active
     action: regen
@@ -79,7 +79,7 @@ services:
 
   - name: motion
     kind: service
-    description: Task & project management API · used by /task, briefing automation, JJ ops.
+    description: Task & project management API · used by /task, briefing automation, operations workflows.
     health: ok
     status_text: Healthy · API key valid
     action: muted

@@ -149,7 +149,7 @@ def _render_zone_5(categories: list[StackCategory]) -> str:
         <div class="gb-zone-head">
         <div>
         <div class="gb-zone-label">Tech Stack · Full Inventory</div>
-        <div class="gb-zone-sublabel">Every service in active use · validated against Kay's stack 2026-04-24</div>
+        <div class="gb-zone-sublabel">Every service in active use · validated against operator stack 2026-04-24</div>
         </div>
         <div class="gb-zone-meta">{n} services · {len(categories)} categories</div>
         </div>

@@ -1614,53 +1614,53 @@ def _build_channels(
     )
     conferences = sum(1 for c in in_window if _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS))
 
-    # Kay email row — drafts/sends from session-decisions verb tags (Phase A.1).
+    # CEO emails row — drafts/sends from session-decisions verb tags (Phase A.1).
     # Reply / positive / response-rate pending DealsX (live May 7).
     if outreach is not None:
-        kay_email_sent = str(outreach.sends_this_week)
-        kay_email_desc = (
+        ceo_email_sent = str(outreach.sends_this_week)
+        ceo_email_desc = (
             f"Owner-facing warm outreach · highest-touch · "
             f"{outreach.drafts_this_week} drafted this week ({outreach.drafts_last_week} prior)"
         )
-        kay_li_sent = str(outreach.linkedin_dms_this_week)
-        kay_li_desc = (
-            f"Kay-direct LinkedIn DMs · best-effort grep on session-decisions · "
-            f"{outreach.linkedin_dms_last_week} last week · pending Superhuman OAuth restore for full count"
+        ceo_li_sent = str(outreach.linkedin_dms_this_week)
+        ceo_li_desc = (
+            f"CEO-direct LinkedIn DMs · best-effort grep on session-decisions · "
+            f"{outreach.linkedin_dms_last_week} last week · pending gog Gmail label scan for full count"
         )
     else:
-        kay_email_sent = "—"
-        kay_email_desc = "Owner-facing warm outreach · highest-touch · session-decisions parser pending"
-        kay_li_sent = "—"
-        kay_li_desc = "Kay-direct LinkedIn DMs · session-decisions parser pending"
+        ceo_email_sent = "—"
+        ceo_email_desc = "Owner-facing warm outreach · highest-touch · session-decisions parser pending"
+        ceo_li_sent = "—"
+        ceo_li_desc = "CEO-direct LinkedIn DMs · session-decisions parser pending"
 
-    # JJ row: dials this week from snapshot. Falls back to "—" when snapshot
-    # is missing so the row stays in the table without claiming a count.
+    # Operations calls row: dials this week from snapshot. Falls back to "—"
+    # when snapshot is missing so the row stays in the table without claiming a count.
     if jj is not None:
-        jj_sent = str(jj.dials_this_week)
-        jj_reply = "—"  # outcomes need Call Status reading; not yet wired
-        jj_positive = "—"
-        jj_to_nda = "0"  # JJ doesn't move stages directly
-        jj_desc = (
+        ops_sent = str(jj.dials_this_week)
+        ops_reply = "—"  # outcomes need Call Status reading; not yet wired
+        ops_positive = "—"
+        ops_to_nda = "0"  # operations doesn't move stages directly
+        ops_desc = (
             f"Cold dial campaign · 10am–2pm ET Mon–Fri · "
             f"{jj.dials_lifetime} lifetime across {len(jj.per_niche_lifetime)} niches"
         )
     else:
-        jj_sent = jj_reply = jj_positive = jj_to_nda = "—"
-        jj_desc = "Cold dial campaign · JJ snapshot unavailable"
+        ops_sent = ops_reply = ops_positive = ops_to_nda = "—"
+        ops_desc = "Cold dial campaign · operations snapshot unavailable"
 
     return [
         ChannelRow(
-            name="Kay email",
-            description=kay_email_desc,
+            name="CEO emails",
+            description=ceo_email_desc,
             dot_class="kay",
-            sent=kay_email_sent, reply="—", positive="—", to_nda="—",
+            sent=ceo_email_sent, reply="—", positive="—", to_nda="—",
             reply_rate="—", bar_pct=0, bar_color="accent", deferred=False,
         ),
         ChannelRow(
-            name="Kay LinkedIn DM",
-            description=kay_li_desc,
+            name="CEO LinkedIn DMs",
+            description=ceo_li_desc,
             dot_class="kay",
-            sent=kay_li_sent, reply="—", positive="—", to_nda="—",
+            sent=ceo_li_sent, reply="—", positive="—", to_nda="—",
             reply_rate="—", bar_pct=0, bar_color="accent", deferred=False,
         ),
         ChannelRow(
@@ -1671,10 +1671,10 @@ def _build_channels(
             to_nda="0", reply_rate="—", bar_pct=0, bar_color="green", deferred=False,
         ),
         ChannelRow(
-            name="JJ calls",
-            description=jj_desc,
+            name="Operations calls",
+            description=ops_desc,
             dot_class="jj",
-            sent=jj_sent, reply=jj_reply, positive=jj_positive, to_nda=jj_to_nda,
+            sent=ops_sent, reply=ops_reply, positive=ops_positive, to_nda=ops_to_nda,
             reply_rate="—", bar_pct=0, bar_color="green", deferred=False,
         ),
         ChannelRow(
@@ -1824,7 +1824,7 @@ def _build_trends(
         else:
             jj_value = str(jj_now)
         panels.append(TrendPanel(
-            label="JJ dials · weekly",
+            label="Operations dials · weekly",
             value=jj_value,
             delta=jj_sub,
             delta_class=jj_class,
@@ -1834,9 +1834,9 @@ def _build_trends(
         ))
     else:
         panels.append(TrendPanel(
-            label="JJ dials · weekly",
+            label="Operations dials · weekly",
             value="—",
-            delta="JJ snapshot unavailable",
+            delta="Operations snapshot unavailable",
             delta_class="flat",
             bars=[0] * 12,
             bar_color="yellow",

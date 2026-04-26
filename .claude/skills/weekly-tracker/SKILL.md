@@ -410,8 +410,23 @@ gog drive upload "/tmp/${SNAPSHOT_FILENAME}" --folder "$SNAPSHOT_FOLDER"
 ### Step 5: Save Vault Snapshot
 Write `brain/trackers/weekly/{YYYY-MM-DD}-weekly-tracker.md` with frontmatter and diagnostic narrative.
 
-### Step 6: Validation (Stop Hook)
-**Enforced by:** `.claude/hooks/router/handlers/weekly_tracker_validation.py` (PreToolUse hook on Bash — blocks Slack webhook if validation fails)
+### Step 6: Validation (Stop Hook) — MANDATORY
+
+**Two-layer enforcement:**
+
+1. **PreToolUse hook (skill-internal):** `.claude/hooks/router/handlers/weekly_tracker_validation.py` — blocks Slack webhook from firing if validation fails. First line of defense; runs inside the agent's tool-call loop.
+
+2. **POST_RUN_CHECK validator (wrapper-level):** `scripts/validate_weekly_tracker_integrity.py` — runs AFTER `claude -p` exits, regardless of internal hook state. Catches the silent-success failure mode where the agent exits 0 but artifacts are missing (e.g. 4/24 partial-write where vault snapshot landed but sheet column did not).
+
+**Wrapper validator copyable invocation (manual run):**
+```bash
+python3 "/Users/kaycschneider/Documents/AI Operations/scripts/validate_weekly_tracker_integrity.py"
+# Pass --week-ending YYYY-MM-DD to override auto-Friday computation
+```
+
+The validator returns exit 2 on failure. The launchd wrapper (`scripts/run-skill.sh`) overrides EXIT_CODE on POST_RUN_CHECK failure and emits a Slack alert prefixed `VALIDATOR FAILED`. Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead: `ai-ops-jrj.3`.
+
+Before notifying, validate all deliverables exist:
 
 Before notifying, validate all deliverables exist:
 

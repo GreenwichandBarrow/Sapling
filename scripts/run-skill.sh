@@ -51,6 +51,9 @@ case "$SKILL_NAME:$SKILL_ARGS" in
   "target-discovery:phase2-sunday")
     HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/target-discovery/headless-phase2-prompt.md"
     ;;
+  "weekly-tracker:friday")
+    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/weekly-tracker/headless-friday-prompt.md"
+    ;;
 esac
 
 # Run Claude in non-interactive mode with retry on transient failures

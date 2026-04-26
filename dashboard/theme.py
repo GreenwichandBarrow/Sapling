@@ -35,6 +35,7 @@ NAV_ITEMS = [
     ("Deal Aggregator", "deal-aggregator", True),
     ("Active Deal Pipeline", "deal-pipeline", True),
     ("M&A Analytics", "ma-analytics", True),
+    ("Week Archive", "week-archive", True),
     ("C-Suite & Skills", "c-suite-skills", True),
     ("Infrastructure", "infrastructure", True),
 ]

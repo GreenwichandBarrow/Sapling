@@ -429,20 +429,34 @@ When JJ connects with an owner and gets positive sentiment:
 | Mon-Fri | 4pm | jj-operations harvest: update Full Target List, trigger Phase 3 for positive calls |
 | Friday | | Weekly tracker reports: calls made, connection rate, enrichment pipeline depth |
 
-### Stop Hook: Call-Tab Enrichment Integrity
+### Stop Hook: Call-Tab Enrichment Integrity (MANDATORY)
 
 **This pipeline's contract is:** the 200 rows enriched Sunday night are the exact same 200 rows JJ calls Mon–Fri. If that invariant breaks, JJ's tabs show blank Col K (Owner Name) and his shift is wasted.
 
-Before the Sunday pipeline emits "done", run this check:
+**You MUST invoke the validator as the final action of Phase 2.** The `enrichment_integrity_check.py` hook is not enforced by anything other than your own discipline — silent skipping = the 2026-04-19 silent-failure bug.
 
-1. Read the pool artifact from Step 1 (200 row numbers)
-2. Read the post-Step-4 pool (should be 200 rows after backfills)
-3. Read the 5 Call Log tabs created in Step 5
-4. Assert: every row number in the final pool appears on exactly one Mon–Fri Call Log tab
-5. Assert: every Mon–Fri Call Log tab row has Col K (Owner Name) populated
-6. If ANY tab has a blank Col K row: block completion, log the row numbers, escalate to Monday morning briefing as **"ENRICHMENT INTEGRITY FAILURE"**
+**Required invocation (run this; do not paraphrase):**
 
-Enforced by `.claude/hooks/enrichment_integrity_check.py` (see implementation at that path).
+```bash
+JJ_CALL_NICHES="<comma-separated active JJ-Call-Only niche names>" \
+  python3 scripts/validate_phase2_integrity.py
+```
+
+The driver script in `scripts/validate_phase2_integrity.py` calls `.claude/hooks/enrichment_integrity_check.py` once per niche and aggregates results. It checks:
+
+1. Pool artifact for today exists at `brain/context/jj-week-pool-{YYYY-MM-DD}.md`
+2. Every row number in the artifact maps to a row on the niche's "Full Target List" tab
+3. Every Mon–Fri Call Log tab row has Col K (Owner Name) populated
+4. Every pool company appears on exactly one Mon–Fri Call Log tab (no drift)
+
+**If the validator returns non-zero:**
+- Do NOT declare Phase 2 done
+- Read the failure output from stderr
+- Attempt one corrective pass (re-enrich blank rows, re-write artifact, re-distribute tabs)
+- Re-run the validator
+- If it still fails, exit Phase 2 with the validator's exit code
+
+**Defense-in-depth:** `scripts/run-skill.sh` runs this same validator independently as `POST_RUN_CHECK` after the wrapper sees Claude exit 0. If you skip the in-loop check, the wrapper still catches the failure and fires the Slack alert — but the in-loop check is faster (you can correct mid-run) and cheaper (no Slack noise on transient gaps).
 </calls_first_flow>
 
 <dealsx_list_ingestion>

@@ -15,9 +15,9 @@ tiles:
   - label: Apollo credits
     value: "—"
     unit: remaining
-    runway_text: pending billing-API wire-up
+    runway_text: pending refresh_apollo_snapshot.py (Phase B follow-up)
     runway_color: none
-    trend: live read pending
+    trend: list-builder draws on Apollo · monitor before bulk runs
     trend_arrow: flat
 
   - label: Linkt credits

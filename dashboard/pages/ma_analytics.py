@@ -33,6 +33,8 @@ from data_sources import (  # noqa: E402
     ChannelRow,
     KPITile,
     MAAnalytics,
+    NicheBreakdown,
+    NicheBreakdownRow,
     TrendPanel,
     load_ma_analytics,
 )
@@ -306,7 +308,7 @@ def _render_zone_5(ma: MAAnalytics) -> str:
         <div class="gb-zone-head">
         <div>
         <div class="gb-zone-label">Activity Detail · This Week</div>
-        <div class="gb-zone-sublabel">Niche pipeline state, conferences, intermediary touchpoints</div>
+        <div class="gb-zone-sublabel">Niche pipeline state, conferences, intermediary touchpoints, new contacts</div>
         </div>
         <div class="gb-zone-meta">7-day window</div>
         </div>
@@ -314,6 +316,63 @@ def _render_zone_5(ma: MAAnalytics) -> str:
     ).strip()
     rows = "".join(_render_activity_row(r) for r in ma.activity_rows)
     return f'<section class="gb-zone">{head}<div>{rows}</div></section>'
+
+
+# -----------------------------------------------------------------------------
+# Zone 6: Per-niche outreach breakdown (Phase A.4)
+# -----------------------------------------------------------------------------
+
+
+def _render_niche_row(row: NicheBreakdownRow) -> str:
+    activity_cell = "✓ active" if row.jj_active else "—"
+    activity_class = "active" if row.jj_active else "dim"
+    return dedent(
+        f"""
+        <tr>
+        <td>
+        <div class="gb-ch-name">{escape(row.niche)}</div>
+        </td>
+        <td class="right">{row.jj_dials_lifetime}</td>
+        <td class="right"><span class="gb-niche-{activity_class}">{escape(activity_cell)}</span></td>
+        <td class="right"><span class="gb-ch-pill">live May 7</span></td>
+        </tr>
+        """
+    ).strip()
+
+
+def _render_zone_6(ma: MAAnalytics) -> str:
+    breakdown = ma.niche_breakdown
+    if breakdown is None:
+        return ""
+    active_count = sum(1 for r in breakdown.rows if r.jj_active)
+    head = dedent(
+        f"""
+        <div class="gb-zone-head">
+        <div>
+        <div class="gb-zone-label">Per-niche Outreach Breakdown</div>
+        <div class="gb-zone-sublabel">JJ dial activity wired · per-niche email sends + LinkedIn pending DealsX (May 7)</div>
+        </div>
+        <div class="gb-zone-meta">{active_count} of {len(breakdown.rows)} niches active</div>
+        </div>
+        """
+    ).strip()
+    rows = "".join(_render_niche_row(r) for r in breakdown.rows)
+    table = dedent(
+        f"""
+        <table class="gb-ch-table">
+        <thead>
+        <tr>
+        <th>Niche</th>
+        <th class="right">JJ dials (lifetime)</th>
+        <th class="right">JJ activity</th>
+        <th class="right">Email + DM volume</th>
+        </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+        </table>
+        """
+    ).strip()
+    return f'<section class="gb-zone">{head}{table}</section>'
 
 
 # -----------------------------------------------------------------------------
@@ -351,12 +410,15 @@ def render() -> None:
     st.markdown(_render_zone_3(ma), unsafe_allow_html=True)
     st.markdown(_render_zone_4(ma), unsafe_allow_html=True)
     st.markdown(_render_zone_5(ma), unsafe_allow_html=True)
+    st.markdown(_render_zone_6(ma), unsafe_allow_html=True)
 
     st.markdown(
-        '<div class="gb-page-note">Data sources: Attio snapshot (deal-flow KPIs), '
+        '<div class="gb-page-note">Data sources: Attio snapshot (deal-flow KPIs + new contacts), '
         "<code>brain/calls/</code> (owner conversations + intermediary + conferences), "
+        "<code>brain/context/session-decisions-*</code> (Kay sends/drafts via verb tags), "
+        "<code>brain/context/jj-activity-snapshot.json</code> (per-niche dials), "
         "<code>brain/context/email-scan-results-*</code> (CIM detection). "
-        "<strong style=\"color:var(--text-muted);\">DealsX zones live May 7, 2026.</strong>"
+        "<strong style=\"color:var(--text-muted);\">DealsX zones (incl. response rate + per-niche email volume) live May 7, 2026.</strong>"
         "</div>",
         unsafe_allow_html=True,
     )

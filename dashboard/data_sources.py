@@ -22,9 +22,16 @@ import yaml
 
 VAULT_ROOT = Path(__file__).resolve().parent.parent / "brain"
 DEAL_AGG_DIR = VAULT_ROOT / "context"
+VAULT_CONTEXT_DIR = VAULT_ROOT / "context"
+VAULT_ENTITIES_DIR = VAULT_ROOT / "entities"
 PIPELINE_SNAPSHOT_PATH = VAULT_ROOT / "context" / "attio-pipeline-snapshot.json"
 JJ_SNAPSHOT_PATH = VAULT_ROOT / "context" / "jj-activity-snapshot.json"
 WEEKLY_TRACKERS_DIR = VAULT_ROOT / "trackers" / "weekly"
+
+_SESSION_DECISIONS_RE = re.compile(r"^session-decisions-(\d{4}-\d{2}-\d{2})\.md$")
+_SENT_LINE_RE = re.compile(r"^- \*\*SENT", re.MULTILINE)
+_DRAFTED_LINE_RE = re.compile(r"^- \*\*DRAFTED", re.MULTILINE)
+_LINKEDIN_LINE_RE = re.compile(r"^- \*\*(SENT|DRAFTED).*linkedin", re.IGNORECASE | re.MULTILINE)
 
 _WEEKLY_TRACKER_FILENAME_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-weekly-tracker\.md$")
 # First number on the row after the metric label cell. Tolerant to "~49",
@@ -1424,10 +1431,13 @@ class MAAnalytics:
     week_start: date
     week_end: date
     deal_flow_tiles: list[KPITile]  # Zone 1 (5 tiles)
-    channels: list[ChannelRow]  # Zone 3 (6 rows, 4 live + 2 deferred)
+    channels: list[ChannelRow]  # Zone 3 (7 rows: Kay email, Kay LinkedIn, Intermediary, JJ, DealsX×2, Conference)
     trends: list[TrendPanel]  # Zone 4 (4 panels)
     trend_x_labels: tuple[str, str, str]  # (start, mid, end) shared across trends
     activity_rows: list[ActivityRow]  # Zone 5
+    niche_breakdown: NicheBreakdown | None = None  # Zone 6 (Phase A.4)
+    outreach_metrics: OutreachMetrics | None = None  # Phase A.1 backing data
+    new_contacts: NewContactsMetric | None = None  # Phase A.3 backing data
     response_count: int = 0  # for Zone 2/2.5 placeholder context
     snapshot_fresh: bool = False  # True if Attio snapshot loaded
 
@@ -1593,6 +1603,7 @@ def _build_channels(
     week_start: date,
     week_end: date,
     jj: JJActivity | None = None,
+    outreach: OutreachMetrics | None = None,
 ) -> list[ChannelRow]:
     in_window = _calls_in_window(calls, week_start, week_end)
     intermediary = sum(
@@ -1602,6 +1613,25 @@ def _build_channels(
         and not _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)
     )
     conferences = sum(1 for c in in_window if _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS))
+
+    # Kay email row — drafts/sends from session-decisions verb tags (Phase A.1).
+    # Reply / positive / response-rate pending DealsX (live May 7).
+    if outreach is not None:
+        kay_email_sent = str(outreach.sends_this_week)
+        kay_email_desc = (
+            f"Owner-facing warm outreach · highest-touch · "
+            f"{outreach.drafts_this_week} drafted this week ({outreach.drafts_last_week} prior)"
+        )
+        kay_li_sent = str(outreach.linkedin_dms_this_week)
+        kay_li_desc = (
+            f"Kay-direct LinkedIn DMs · best-effort grep on session-decisions · "
+            f"{outreach.linkedin_dms_last_week} last week · pending Superhuman OAuth restore for full count"
+        )
+    else:
+        kay_email_sent = "—"
+        kay_email_desc = "Owner-facing warm outreach · highest-touch · session-decisions parser pending"
+        kay_li_sent = "—"
+        kay_li_desc = "Kay-direct LinkedIn DMs · session-decisions parser pending"
 
     # JJ row: dials this week from snapshot. Falls back to "—" when snapshot
     # is missing so the row stays in the table without claiming a count.
@@ -1621,10 +1651,17 @@ def _build_channels(
     return [
         ChannelRow(
             name="Kay email",
-            description="Owner-facing warm outreach · highest-touch · counts via vault snapshot pending",
+            description=kay_email_desc,
             dot_class="kay",
-            sent="—", reply="—", positive="—", to_nda="—",
-            reply_rate="—", bar_pct=0, bar_color=None, deferred=False,
+            sent=kay_email_sent, reply="—", positive="—", to_nda="—",
+            reply_rate="—", bar_pct=0, bar_color="accent", deferred=False,
+        ),
+        ChannelRow(
+            name="Kay LinkedIn DM",
+            description=kay_li_desc,
+            dot_class="kay",
+            sent=kay_li_sent, reply="—", positive="—", to_nda="—",
+            reply_rate="—", bar_pct=0, bar_color="accent", deferred=False,
         ),
         ChannelRow(
             name="Intermediary intro",
@@ -1649,7 +1686,7 @@ def _build_channels(
         ),
         ChannelRow(
             name="DealsX · LinkedIn DM",
-            description="Direct messages on LinkedIn · live May 7 (DealsX integration)",
+            description="High-volume LinkedIn DMs · live May 7 (DealsX integration)",
             dot_class="dealsx",
             sent="—", reply="—", positive="—", to_nda="—",
             reply_rate="—", bar_pct=0, bar_color="purple", deferred=True,
@@ -1859,10 +1896,160 @@ def _count_cims_in_window(start: date, end: date) -> int:
     return n
 
 
+# -----------------------------------------------------------------------------
+# Phase A.1 — Outreach metrics (drafts/sends from session-decisions verb tags)
+# -----------------------------------------------------------------------------
+
+
+@dataclass
+class OutreachMetrics:
+    """Weekly outreach activity from session-decisions verb tags.
+
+    Counts `- **SENT` and `- **DRAFTED` bullets across daily session-decisions
+    files. LinkedIn breakdown is best-effort grep — separates DealsX/Superhuman
+    once channel tagging surfaces. Reply rate / positive responses pending
+    DealsX integration (live May 7).
+    """
+    week_start: date
+    week_end: date
+    sends_this_week: int
+    sends_last_week: int
+    drafts_this_week: int
+    drafts_last_week: int
+    linkedin_dms_this_week: int
+    linkedin_dms_last_week: int
+
+
+def _count_verb_tags_in_window(start: date, end: date) -> tuple[int, int, int]:
+    """Sum SENT, DRAFTED, and LinkedIn-tagged bullets across the window.
+
+    Returns (sends, drafts, linkedin_dms). Tolerates missing files —
+    weekend days routinely have no session-decisions.
+    """
+    sends = drafts = linkedin = 0
+    if not VAULT_CONTEXT_DIR.exists():
+        return 0, 0, 0
+    cur = start
+    while cur <= end:
+        path = VAULT_CONTEXT_DIR / f"session-decisions-{cur.isoformat()}.md"
+        if path.exists():
+            try:
+                text = path.read_text(errors="replace")
+            except OSError:
+                cur += timedelta(days=1)
+                continue
+            sends += len(_SENT_LINE_RE.findall(text))
+            drafts += len(_DRAFTED_LINE_RE.findall(text))
+            linkedin += len(_LINKEDIN_LINE_RE.findall(text))
+        cur += timedelta(days=1)
+    return sends, drafts, linkedin
+
+
+def load_outreach_metrics(today: date | None = None) -> OutreachMetrics:
+    """Aggregate Kay's outreach activity for the current + prior week."""
+    today = today or date.today()
+    week_end = today
+    week_start = today - timedelta(days=6)
+    prior_end = week_start - timedelta(days=1)
+    prior_start = prior_end - timedelta(days=6)
+    sends_now, drafts_now, li_now = _count_verb_tags_in_window(week_start, week_end)
+    sends_prior, drafts_prior, li_prior = _count_verb_tags_in_window(prior_start, prior_end)
+    return OutreachMetrics(
+        week_start=week_start,
+        week_end=week_end,
+        sends_this_week=sends_now,
+        sends_last_week=sends_prior,
+        drafts_this_week=drafts_now,
+        drafts_last_week=drafts_prior,
+        linkedin_dms_this_week=li_now,
+        linkedin_dms_last_week=li_prior,
+    )
+
+
+# -----------------------------------------------------------------------------
+# Phase A.3 — New contacts added (Attio snapshot count, WoW pending history)
+# -----------------------------------------------------------------------------
+
+
+@dataclass
+class NewContactsMetric:
+    """Top-of-funnel snapshot count. WoW delta pending historical snapshots
+    (Attio refresh script writes a single rolling file today)."""
+    snapshot_count: int
+    fetched_at: str
+    historical_pending: bool = True
+
+
+def load_new_contacts(snapshot: PipelineSnapshot | None = None) -> NewContactsMetric:
+    if snapshot is None:
+        snapshot = load_pipeline(scope="full")
+    if snapshot is None:
+        return NewContactsMetric(snapshot_count=0, fetched_at="—")
+    total = len(snapshot.deals) + snapshot.closed_count
+    return NewContactsMetric(snapshot_count=total, fetched_at=snapshot.fetched_at)
+
+
+# -----------------------------------------------------------------------------
+# Phase A.4 — Per-niche outreach breakdown (JJ dials per niche; email pending)
+# -----------------------------------------------------------------------------
+
+
+@dataclass
+class NicheBreakdownRow:
+    niche: str
+    jj_dials_lifetime: int
+    jj_active: bool  # True if any lifetime dials → JJ-Call-Only channel
+    email_pending: bool = True  # per-niche email classifier not yet wired
+
+
+@dataclass
+class NicheBreakdown:
+    rows: list[NicheBreakdownRow]
+    week_start: date
+    week_end: date
+
+
+# Order matches the dashboard's NICHE_SHEETS map in scripts/refresh_jj_snapshot.py.
+# Active niches as of 2026-04-26.
+_NICHE_BREAKDOWN_ORDER = (
+    "Premium Pest Management",
+    "IPLC",
+    "Art Insurance",
+    "Domestic TCI",
+    "Art Storage",
+    "Art Advisory",
+)
+
+
+def load_niche_breakdown(
+    today: date | None = None,
+    jj: JJActivity | None = None,
+) -> NicheBreakdown:
+    """Per-niche outreach activity. JJ dials wired via jj-activity-snapshot.json;
+    per-niche weekly + per-niche email sends pending Phase B classifier."""
+    today = today or date.today()
+    week_end = today
+    week_start = today - timedelta(days=6)
+    if jj is None:
+        jj = load_jj_activity()
+    rows: list[NicheBreakdownRow] = []
+    for niche in _NICHE_BREAKDOWN_ORDER:
+        lifetime = 0
+        if jj is not None:
+            lifetime = int(jj.per_niche_lifetime.get(niche, 0))
+        rows.append(NicheBreakdownRow(
+            niche=niche,
+            jj_dials_lifetime=lifetime,
+            jj_active=lifetime > 0,
+        ))
+    return NicheBreakdown(rows=rows, week_start=week_start, week_end=week_end)
+
+
 def _build_activity_rows(
     calls: list[CallSummary],
     week_start: date,
     week_end: date,
+    new_contacts: NewContactsMetric | None = None,
 ) -> list[ActivityRow]:
     in_window = _calls_in_window(calls, week_start, week_end)
 
@@ -1881,12 +2068,28 @@ def _build_activity_rows(
 
     cim_count = _count_cims_in_window(week_start, week_end)
 
+    if new_contacts is not None and new_contacts.snapshot_count:
+        new_contacts_text = (
+            f"{new_contacts.snapshot_count} companies in Attio snapshot · "
+            f"WoW delta pending historical snapshots"
+        )
+        new_contacts_count = new_contacts.snapshot_count
+    else:
+        new_contacts_text = "Attio snapshot unavailable"
+        new_contacts_count = 0
+
     return [
         ActivityRow(
             category="Active Niches",
             chips=list(_ACTIVE_NICHES),
             count=len(_ACTIVE_NICHES),
             empty_text=None,
+        ),
+        ActivityRow(
+            category="New contacts (Attio)",
+            chips=[],
+            count=new_contacts_count,
+            empty_text=new_contacts_text,
         ),
         ActivityRow(
             category="Conferences attended",
@@ -1938,13 +2141,18 @@ def load_ma_analytics(today: date | None = None) -> MAAnalytics:
     calls = _scan_calls()
     jj = load_jj_activity()
     weekly_history = load_weekly_tracker_history()
+    outreach = load_outreach_metrics(today=today)
+    new_contacts = load_new_contacts(snapshot=snapshot)
+    niche_breakdown = load_niche_breakdown(today=today, jj=jj)
 
     deal_flow_tiles = _build_deal_flow_tiles(
         snapshot, calls, week_start, week_end, prior_start, prior_end
     )
-    channels = _build_channels(calls, week_start, week_end, jj=jj)
+    channels = _build_channels(calls, week_start, week_end, jj=jj, outreach=outreach)
     trends, x_labels = _build_trends(snapshot, calls, today, jj=jj, weekly_history=weekly_history)
-    activity_rows = _build_activity_rows(calls, week_start, week_end)
+    activity_rows = _build_activity_rows(
+        calls, week_start, week_end, new_contacts=new_contacts
+    )
 
     return MAAnalytics(
         week_start=week_start,
@@ -1954,6 +2162,9 @@ def load_ma_analytics(today: date | None = None) -> MAAnalytics:
         trends=trends,
         trend_x_labels=x_labels,
         activity_rows=activity_rows,
+        niche_breakdown=niche_breakdown,
+        outreach_metrics=outreach,
+        new_contacts=new_contacts,
         snapshot_fresh=snapshot is not None,
     )
 

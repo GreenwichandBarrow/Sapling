@@ -35,6 +35,24 @@ _LINKEDIN_LINE_RE = re.compile(r"^- \*\*(SENT|DRAFTED).*linkedin", re.IGNORECASE
 _LINKEDIN_SENT_RE = re.compile(r"^- \*\*SENT.*linkedin", re.IGNORECASE | re.MULTILINE)
 _LINKEDIN_DRAFTED_RE = re.compile(r"^- \*\*DRAFTED.*linkedin", re.IGNORECASE | re.MULTILINE)
 
+# Phase A Gap 1: classify DRAFTED bullets by channel. Order matters — first match wins.
+# Anything that doesn't match a specific channel falls to "kay" (CEO email default).
+_DRAFTED_BULLET_RE = re.compile(r"^- \*\*DRAFTED[^\n]*(?:\n(?!- \*\*)[^\n]*)*", re.MULTILINE)
+_DRAFT_CHANNEL_DETECTORS: list[tuple[str, "re.Pattern[str]"]] = [
+    ("linkedin", re.compile(r"linkedin", re.IGNORECASE)),
+    ("dealsx", re.compile(r"\bdealsx\b|sam singh", re.IGNORECASE)),
+    ("intermediary", re.compile(r"intermediary|\bbroker\b|advisor|chartwell|goodwin finder", re.IGNORECASE)),
+    ("jj", re.compile(r"\bjj\b|jonathan|call log|owner call", re.IGNORECASE)),
+]
+
+
+def _classify_draft_channel(bullet: str) -> str:
+    """Return channel slug for a DRAFTED bullet. Defaults to 'kay' (CEO email)."""
+    for channel, det in _DRAFT_CHANNEL_DETECTORS:
+        if det.search(bullet):
+            return channel
+    return "kay"
+
 _WEEKLY_TRACKER_FILENAME_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-weekly-tracker\.md$")
 # First number on the row after the metric label cell. Tolerant to "~49",
 # "0/0/0", "$612", commas, "/" separators. Used for NDAs / JJ dials etc.
@@ -1620,20 +1638,29 @@ def _build_channels(
     # Reply / positive / response-rate pending DealsX (live May 7).
     if outreach is not None:
         ceo_email_sent = str(outreach.sends_this_week)
+        # Per-channel breakdown from Phase A Gap 1: 'kay' is the default bucket for
+        # any DRAFTED bullet without a more-specific channel match.
+        kay_drafts_now = outreach.drafts_by_channel_this_week.get("kay", 0)
+        kay_drafts_prior = outreach.drafts_by_channel_last_week.get("kay", 0)
         ceo_email_desc = (
             f"Owner-facing warm outreach · highest-touch · "
-            f"{outreach.drafts_this_week} drafted this week ({outreach.drafts_last_week} prior)"
+            f"{kay_drafts_now} CEO-attributed drafts this week ({kay_drafts_prior} prior) · "
+            f"{outreach.drafts_this_week} drafts total across all channels"
         )
         ceo_li_sent = str(outreach.linkedin_dms_sent_this_week)
         ceo_li_desc = (
             f"CEO-direct LinkedIn DMs · {outreach.linkedin_dms_drafts_this_week} drafted this week "
             f"({outreach.linkedin_dms_drafts_last_week} prior) · {outreach.linkedin_dms_sent_last_week} sent last week"
         )
+        intermediary_drafts_now = outreach.drafts_by_channel_this_week.get("intermediary", 0)
+        dealsx_drafts_now = outreach.drafts_by_channel_this_week.get("dealsx", 0)
+        jj_drafts_now = outreach.drafts_by_channel_this_week.get("jj", 0)
     else:
         ceo_email_sent = "—"
         ceo_email_desc = "Owner-facing warm outreach · highest-touch · session-decisions parser pending"
         ceo_li_sent = "—"
         ceo_li_desc = "CEO-direct LinkedIn DMs · session-decisions parser pending"
+        intermediary_drafts_now = dealsx_drafts_now = jj_drafts_now = 0
 
     # Operations calls row: dials this week from snapshot. Falls back to "—"
     # when snapshot is missing so the row stays in the table without claiming a count.
@@ -1667,21 +1694,29 @@ def _build_channels(
         ),
         ChannelRow(
             name="Intermediary intro",
-            description="Warm intros via advisors, brokers, peers · partner-classified calls in window",
+            description=(
+                f"Warm intros via advisors, brokers, peers · partner-classified calls in window · "
+                f"{intermediary_drafts_now} intermediary-attributed drafts this week"
+            ),
             dot_class="intermediary",
             sent=str(intermediary), reply=str(intermediary), positive=str(intermediary),
             to_nda="0", reply_rate="—", bar_pct=0, bar_color="green", deferred=False,
         ),
         ChannelRow(
             name="Operations calls",
-            description=ops_desc,
+            description=(
+                f"{ops_desc} · {jj_drafts_now} ops/JJ-attributed drafts this week"
+            ),
             dot_class="jj",
             sent=ops_sent, reply=ops_reply, positive=ops_positive, to_nda=ops_to_nda,
             reply_rate="—", bar_pct=0, bar_color="green", deferred=False,
         ),
         ChannelRow(
             name="DealsX · email",
-            description="High-volume outbound email · live May 7 (DealsX integration)",
+            description=(
+                f"High-volume outbound email · live May 7 (DealsX integration) · "
+                f"{dealsx_drafts_now} DealsX-attributed drafts this week"
+            ),
             dot_class="dealsx",
             sent="—", reply="—", positive="—", to_nda="—",
             reply_rate="—", bar_pct=0, bar_color="purple", deferred=True,
@@ -1924,18 +1959,23 @@ class OutreachMetrics:
     linkedin_dms_sent_last_week: int = 0
     linkedin_dms_drafts_this_week: int = 0
     linkedin_dms_drafts_last_week: int = 0
+    drafts_by_channel_this_week: dict[str, int] = field(default_factory=dict)
+    drafts_by_channel_last_week: dict[str, int] = field(default_factory=dict)
 
 
-def _count_verb_tags_in_window(start: date, end: date) -> tuple[int, int, int, int, int]:
-    """Sum SENT, DRAFTED, and LinkedIn-tagged bullets across the window.
+def _count_verb_tags_in_window(start: date, end: date) -> tuple[int, int, int, int, int, dict[str, int]]:
+    """Sum SENT, DRAFTED, LinkedIn-tagged bullets, and DRAFTED-by-channel across the window.
 
-    Returns (sends, drafts, linkedin_total, linkedin_sent, linkedin_drafted).
-    `linkedin_total` is kept for legacy callers (= sent + drafted). Tolerates
-    missing files — weekend days routinely have no session-decisions.
+    Returns (sends, drafts, linkedin_total, linkedin_sent, linkedin_drafted, drafts_by_channel).
+    `linkedin_total` is kept for legacy callers (= sent + drafted). `drafts_by_channel`
+    classifies every DRAFTED bullet into one of: linkedin, dealsx, intermediary, jj, kay
+    (kay is the default for anything that doesn't match a more-specific channel).
+    Tolerates missing files — weekend days routinely have no session-decisions.
     """
     sends = drafts = linkedin = li_sent = li_drafted = 0
+    drafts_by_channel: dict[str, int] = {"kay": 0, "linkedin": 0, "dealsx": 0, "intermediary": 0, "jj": 0}
     if not VAULT_CONTEXT_DIR.exists():
-        return 0, 0, 0, 0, 0
+        return 0, 0, 0, 0, 0, drafts_by_channel
     cur = start
     while cur <= end:
         path = VAULT_CONTEXT_DIR / f"session-decisions-{cur.isoformat()}.md"
@@ -1950,8 +1990,10 @@ def _count_verb_tags_in_window(start: date, end: date) -> tuple[int, int, int, i
             linkedin += len(_LINKEDIN_LINE_RE.findall(text))
             li_sent += len(_LINKEDIN_SENT_RE.findall(text))
             li_drafted += len(_LINKEDIN_DRAFTED_RE.findall(text))
+            for bullet in _DRAFTED_BULLET_RE.findall(text):
+                drafts_by_channel[_classify_draft_channel(bullet)] += 1
         cur += timedelta(days=1)
-    return sends, drafts, linkedin, li_sent, li_drafted
+    return sends, drafts, linkedin, li_sent, li_drafted, drafts_by_channel
 
 
 def load_outreach_metrics(today: date | None = None) -> OutreachMetrics:
@@ -1961,8 +2003,8 @@ def load_outreach_metrics(today: date | None = None) -> OutreachMetrics:
     week_start = today - timedelta(days=6)
     prior_end = week_start - timedelta(days=1)
     prior_start = prior_end - timedelta(days=6)
-    sends_now, drafts_now, li_now, li_sent_now, li_drafted_now = _count_verb_tags_in_window(week_start, week_end)
-    sends_prior, drafts_prior, li_prior, li_sent_prior, li_drafted_prior = _count_verb_tags_in_window(prior_start, prior_end)
+    sends_now, drafts_now, li_now, li_sent_now, li_drafted_now, drafts_ch_now = _count_verb_tags_in_window(week_start, week_end)
+    sends_prior, drafts_prior, li_prior, li_sent_prior, li_drafted_prior, drafts_ch_prior = _count_verb_tags_in_window(prior_start, prior_end)
     return OutreachMetrics(
         week_start=week_start,
         week_end=week_end,
@@ -1976,6 +2018,8 @@ def load_outreach_metrics(today: date | None = None) -> OutreachMetrics:
         linkedin_dms_sent_last_week=li_sent_prior,
         linkedin_dms_drafts_this_week=li_drafted_now,
         linkedin_dms_drafts_last_week=li_drafted_prior,
+        drafts_by_channel_this_week=drafts_ch_now,
+        drafts_by_channel_last_week=drafts_ch_prior,
     )
 
 
@@ -2012,7 +2056,8 @@ class NicheBreakdownRow:
     niche: str
     jj_dials_lifetime: int
     jj_active: bool  # True if any lifetime dials → JJ-Call-Only channel
-    email_pending: bool = True  # per-niche email classifier not yet wired
+    email_pending: bool = True  # DealsX/LinkedIn per-niche classifier not yet wired
+    kay_emails_this_week: int = 0  # Phase A Gap 5 partial — Kay-attributed sends matching niche keywords
 
 
 @dataclass
@@ -2033,18 +2078,65 @@ _NICHE_BREAKDOWN_ORDER = (
     "Art Advisory",
 )
 
+# Phase A Gap 5 — keyword sets for matching SENT bullets to niches. First match wins,
+# in _NICHE_BREAKDOWN_ORDER order (so "Premium Pest" anchors before generic "pest").
+_NICHE_KEYWORDS: dict[str, tuple[str, ...]] = {
+    "Premium Pest Management": ("premium pest", "pest management", "pest control"),
+    "IPLC": ("iplc", "international private", "private line"),
+    "Art Insurance": ("art insurance", "fine art insurance", "axa art"),
+    "Domestic TCI": ("domestic tci", "trade credit", "tci"),
+    "Art Storage": ("art storage", "fine art storage", "uovo", "crozier", "cadogan tate", "gander"),
+    "Art Advisory": ("art advisory", "art advisor", "art consultant", "lpdm", "saltoun"),
+}
+
+_SENT_BULLET_RE = re.compile(r"^- \*\*SENT[^\n]*(?:\n(?!- \*\*)[^\n]*)*", re.MULTILINE)
+
+
+def _classify_send_niche(bullet: str) -> str | None:
+    """Return the first niche whose keywords appear in the bullet. None if no match."""
+    text = bullet.lower()
+    for niche in _NICHE_BREAKDOWN_ORDER:
+        for kw in _NICHE_KEYWORDS.get(niche, ()):
+            if kw in text:
+                return niche
+    return None
+
+
+def _count_kay_sends_by_niche(start: date, end: date) -> dict[str, int]:
+    """Scan SENT bullets in window, attribute each to first-matching niche."""
+    counts = {n: 0 for n in _NICHE_BREAKDOWN_ORDER}
+    if not VAULT_CONTEXT_DIR.exists():
+        return counts
+    cur = start
+    while cur <= end:
+        path = VAULT_CONTEXT_DIR / f"session-decisions-{cur.isoformat()}.md"
+        if path.exists():
+            try:
+                text = path.read_text(errors="replace")
+            except OSError:
+                cur += timedelta(days=1)
+                continue
+            for bullet in _SENT_BULLET_RE.findall(text):
+                niche = _classify_send_niche(bullet)
+                if niche is not None:
+                    counts[niche] += 1
+        cur += timedelta(days=1)
+    return counts
+
 
 def load_niche_breakdown(
     today: date | None = None,
     jj: JJActivity | None = None,
 ) -> NicheBreakdown:
-    """Per-niche outreach activity. JJ dials wired via jj-activity-snapshot.json;
-    per-niche weekly + per-niche email sends pending Phase B classifier."""
+    """Per-niche outreach activity. JJ dials wired via jj-activity-snapshot.json.
+    Kay email sends classified by niche keyword match (Phase A Gap 5 partial).
+    DealsX/LinkedIn per-niche pending Phase B classifier."""
     today = today or date.today()
     week_end = today
     week_start = today - timedelta(days=6)
     if jj is None:
         jj = load_jj_activity()
+    kay_sends = _count_kay_sends_by_niche(week_start, week_end)
     rows: list[NicheBreakdownRow] = []
     for niche in _NICHE_BREAKDOWN_ORDER:
         lifetime = 0
@@ -2054,6 +2146,7 @@ def load_niche_breakdown(
             niche=niche,
             jj_dials_lifetime=lifetime,
             jj_active=lifetime > 0,
+            kay_emails_this_week=kay_sends.get(niche, 0),
         ))
     return NicheBreakdown(rows=rows, week_start=week_start, week_end=week_end)
 

@@ -326,6 +326,8 @@ def _render_zone_5(ma: MAAnalytics) -> str:
 def _render_niche_row(row: NicheBreakdownRow) -> str:
     activity_cell = "✓ active" if row.jj_active else "—"
     activity_class = "active" if row.jj_active else "dim"
+    kay_cell = str(row.kay_emails_this_week) if row.kay_emails_this_week else "—"
+    kay_class = "active" if row.kay_emails_this_week else "dim"
     return dedent(
         f"""
         <tr>
@@ -334,6 +336,7 @@ def _render_niche_row(row: NicheBreakdownRow) -> str:
         </td>
         <td class="right">{row.jj_dials_lifetime}</td>
         <td class="right"><span class="gb-niche-{activity_class}">{escape(activity_cell)}</span></td>
+        <td class="right"><span class="gb-niche-{kay_class}">{kay_cell}</span></td>
         <td class="right"><span class="gb-ch-pill">live May 7</span></td>
         </tr>
         """
@@ -365,7 +368,8 @@ def _render_zone_6(ma: MAAnalytics) -> str:
         <th>Niche</th>
         <th class="right">Operations dials (lifetime)</th>
         <th class="right">Ops activity</th>
-        <th class="right">Email + DM volume</th>
+        <th class="right">CEO emails (7d)</th>
+        <th class="right">DealsX + LinkedIn</th>
         </tr>
         </thead>
         <tbody>{rows}</tbody>

@@ -41,19 +41,44 @@ if echo "$PREFLIGHT" | grep -qE "401|authentication_error|Invalid authentication
   exit 2
 fi
 
+# Headless-prompt resolution. If SKILL_ARGS names a mode that has a
+# headless prompt file, pipe its contents to Claude as a self-contained
+# user prompt instead of bare /skill-name. Avoids the "interactive
+# clarifying question → exit 0" silent-failure pattern that hit
+# target-discovery Phase 2 on 2026-04-19.
+HEADLESS_PROMPT_FILE=""
+case "$SKILL_NAME:$SKILL_ARGS" in
+  "target-discovery:phase2-sunday")
+    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/target-discovery/headless-phase2-prompt.md"
+    ;;
+esac
+
 # Run Claude in non-interactive mode with retry on transient failures
 MAX_ATTEMPTS=3
 ATTEMPT=1
 EXIT_CODE=1
+VALIDATOR_FAILED=""
 while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
   echo "--- attempt $ATTEMPT of $MAX_ATTEMPTS ---" >> "$LOG_FILE"
-  INVOKE="/$SKILL_NAME"
-  if [ -n "$SKILL_ARGS" ]; then INVOKE="$INVOKE $SKILL_ARGS"; fi
-  echo "$INVOKE" | \
+  if [ -n "$HEADLESS_PROMPT_FILE" ] && [ -f "$HEADLESS_PROMPT_FILE" ]; then
+    echo "Using headless prompt: $HEADLESS_PROMPT_FILE" >> "$LOG_FILE"
     "$HOME/.local/bin/claude" \
       -p \
       --dangerously-skip-permissions \
+      < "$HEADLESS_PROMPT_FILE" \
       >> "$LOG_FILE" 2>&1
+  else
+    if [ -n "$HEADLESS_PROMPT_FILE" ]; then
+      echo "WARN: headless prompt expected but missing: $HEADLESS_PROMPT_FILE" >> "$LOG_FILE"
+    fi
+    INVOKE="/$SKILL_NAME"
+    if [ -n "$SKILL_ARGS" ]; then INVOKE="$INVOKE $SKILL_ARGS"; fi
+    echo "$INVOKE" | \
+      "$HOME/.local/bin/claude" \
+        -p \
+        --dangerously-skip-permissions \
+        >> "$LOG_FILE" 2>&1
+  fi
   EXIT_CODE=$?
   if [ $EXIT_CODE -eq 0 ]; then break; fi
   # Only retry on transient CLI failures, not skill-level errors
@@ -63,11 +88,35 @@ while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
   ATTEMPT=$((ATTEMPT + 1))
   [ $ATTEMPT -le $MAX_ATTEMPTS ] && sleep 30
 done
-echo "Finished: $(date), exit: $EXIT_CODE (attempts: $ATTEMPT)" >> "$LOG_FILE"
+echo "Finished claude run: $(date), exit: $EXIT_CODE (attempts: $ATTEMPT)" >> "$LOG_FILE"
 
-# Notify Slack on failure
+# Post-run validator. If the skill exited 0 AND the plist set
+# POST_RUN_CHECK, execute it. If the validator fails, override
+# EXIT_CODE so the Slack alert below fires. Catches the "skill exited 0
+# but did no work" silent-success failure mode (2026-04-19 incident).
+# $TODAY in POST_RUN_CHECK is substituted with today's YYYY-MM-DD.
+if [ $EXIT_CODE -eq 0 ] && [ -n "$POST_RUN_CHECK" ]; then
+  echo "--- post-run validator ---" >> "$LOG_FILE"
+  CHECK_CMD="${POST_RUN_CHECK//\$TODAY/$(date +%Y-%m-%d)}"
+  echo "Running: $CHECK_CMD" >> "$LOG_FILE"
+  eval "$CHECK_CMD" >> "$LOG_FILE" 2>&1
+  CHECK_CODE=$?
+  echo "Validator exit: $CHECK_CODE" >> "$LOG_FILE"
+  if [ $CHECK_CODE -ne 0 ]; then
+    EXIT_CODE=$CHECK_CODE
+    VALIDATOR_FAILED=1
+    echo "VALIDATOR FAILED — overriding skill exit code" >> "$LOG_FILE"
+  fi
+fi
+
+# Notify Slack on failure (skill failure OR validator failure)
 if [ $EXIT_CODE -ne 0 ]; then
+  if [ -n "$VALIDATOR_FAILED" ]; then
+    SLACK_TEXT="Scheduled skill VALIDATOR FAILED: $SKILL_NAME (validator exit $EXIT_CODE). Skill ran clean but post-run integrity check rejected output. Check logs/scheduled/"
+  else
+    SLACK_TEXT="Scheduled skill FAILED: $SKILL_NAME (exit $EXIT_CODE). Check logs/scheduled/"
+  fi
   curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
     -H 'Content-type: application/json' \
-    -d "{\"text\":\"Scheduled skill FAILED: $SKILL_NAME (exit $EXIT_CODE). Check logs/scheduled/\"}"
+    -d "{\"text\":\"$SLACK_TEXT\"}"
 fi

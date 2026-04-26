@@ -2285,10 +2285,15 @@ class JJActivity:
     dials_lifetime: int
     weekly_buckets: list[JJWeeklyBucket] = field(default_factory=list)
     per_niche_lifetime: dict[str, int] = field(default_factory=dict)
+    by_day: dict[date, int] = field(default_factory=dict)
+
+    def dials_in_window(self, start: date, end: date) -> int:
+        """Sum operations dials in [start, end] inclusive from by_day."""
+        return sum(n for d, n in self.by_day.items() if start <= d <= end)
 
 
 def load_jj_activity() -> JJActivity | None:
-    """Load JJ activity snapshot. Returns None if snapshot missing."""
+    """Load operations activity snapshot. Returns None if snapshot missing."""
     if not JJ_SNAPSHOT_PATH.exists():
         return None
     try:
@@ -2307,6 +2312,12 @@ def load_jj_activity() -> JJActivity | None:
             )
         except (KeyError, ValueError):
             continue
+    by_day: dict[date, int] = {}
+    for ds, n in (data.get("by_day") or {}).items():
+        try:
+            by_day[date.fromisoformat(ds)] = int(n)
+        except (TypeError, ValueError):
+            continue
     return JJActivity(
         fetched_at=data.get("fetched_at", "—"),
         dials_today=int(data.get("dials_today", 0)),
@@ -2314,6 +2325,7 @@ def load_jj_activity() -> JJActivity | None:
         dials_lifetime=int(data.get("dials_lifetime", 0)),
         weekly_buckets=buckets,
         per_niche_lifetime=dict(data.get("per_niche_lifetime", {})),
+        by_day=by_day,
     )
 
 

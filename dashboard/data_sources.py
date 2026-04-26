@@ -1044,7 +1044,10 @@ def skill_health_summary(groups: list[CSuiteGroup]) -> dict[str, int]:
 DASHBOARD_DATA_DIR = Path(__file__).resolve().parent / "data"
 TECH_STACK_PATH = DASHBOARD_DATA_DIR / "tech_stack.yaml"
 EXTERNAL_SERVICES_PATH = DASHBOARD_DATA_DIR / "external_services.yaml"
+EXTERNAL_SERVICES_SNAPSHOT_PATH = VAULT_ROOT / "context" / "external-services-snapshot.json"
+EXTERNAL_SERVICES_SNAPSHOT_MAX_AGE_SEC = 2 * 60 * 60  # 2h freshness window
 CREDITS_PATH = DASHBOARD_DATA_DIR / "credits.yaml"
+APOLLO_CREDITS_SNAPSHOT_PATH = VAULT_ROOT / "context" / "apollo-credits-snapshot.json"
 CALIBRATION_PATH = DASHBOARD_DATA_DIR / "calibration.yaml"
 SCHEMAS_DIR = REPO_ROOT / "schemas" / "vault"
 HOOKS_SETTINGS_PATHS = [
@@ -2293,6 +2296,10 @@ class ExternalService:
     status_text: str
     action: str  # regen | refresh | view | muted
     action_text: str
+    # Live-probe overlay (None when snapshot is stale/missing or service is OAuth-skip)
+    latency_ms: int | None = None
+    last_checked: str | None = None  # ISO8601 from snapshot.fetched_at
+    probe_source: str = "yaml"  # "yaml" | "live"
 
 
 @dataclass
@@ -2321,6 +2328,82 @@ class CalibrationLog:
     entries: list[CalibrationEntry] = field(default_factory=list)
 
 
+def _load_external_services_snapshot() -> dict[str, dict] | None:
+    """Read brain/context/external-services-snapshot.json if fresh enough.
+
+    Returns the per-service `services` map keyed by name, or None when the
+    snapshot is missing, malformed, or older than the freshness window.
+    The dashboard falls back to YAML untouched in that case.
+    """
+    path = EXTERNAL_SERVICES_SNAPSHOT_PATH
+    if not path.exists():
+        return None
+    try:
+        raw = json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+    fetched_at_str = raw.get("fetched_at")
+    if not fetched_at_str:
+        return None
+    try:
+        fetched_at = datetime.fromisoformat(fetched_at_str)
+    except (TypeError, ValueError):
+        return None
+    age = (datetime.now(fetched_at.tzinfo) - fetched_at).total_seconds()
+    if age > EXTERNAL_SERVICES_SNAPSHOT_MAX_AGE_SEC:
+        return None
+    services = raw.get("services")
+    if not isinstance(services, dict):
+        return None
+    # Re-attach fetched_at so the loader can stamp last_checked on each row
+    return {"_fetched_at": fetched_at_str, **services}
+
+
+_PROBE_STATUS_TO_HEALTH = {
+    "ok": "ok",
+    "warn": "warn",
+    "error": "alert",
+    # "skip" → preserve YAML-curated health (OAuth services Kay manages by hand)
+}
+
+
+def _merge_probe_into_service(svc_yaml: dict, probe: dict, fetched_at: str) -> dict:
+    """Overlay live-probe results onto a YAML row.
+
+    YAML stays source of truth for: name, kind, description, action, action_text.
+    Snapshot overrides: health (mapped from probe status) + status_text +
+    latency_ms + last_checked.
+
+    `skip` results pass through YAML untouched (OAuth services Kay re-auths
+    in a browser — the dashboard already shows whatever Kay wrote in the YAML).
+    """
+    status = probe.get("status")
+    if status == "skip":
+        # Preserve YAML, but stamp last_checked so the row shows the snapshot ran
+        return {
+            **svc_yaml,
+            "last_checked": fetched_at,
+            "probe_source": "yaml",
+        }
+    health = _PROBE_STATUS_TO_HEALTH.get(status)
+    if not health:
+        return svc_yaml  # unknown status → trust YAML
+    msg = probe.get("message") or svc_yaml.get("status_text", "")
+    latency = probe.get("latency_ms")
+    if isinstance(latency, int) and latency > 0:
+        status_text = f"{msg} · {latency}ms"
+    else:
+        status_text = msg
+    return {
+        **svc_yaml,
+        "health": health,
+        "status_text": status_text,
+        "latency_ms": latency,
+        "last_checked": fetched_at,
+        "probe_source": "live",
+    }
+
+
 def load_external_services() -> list[ExternalService]:
     if not EXTERNAL_SERVICES_PATH.exists():
         return []
@@ -2328,18 +2411,30 @@ def load_external_services() -> list[ExternalService]:
         data = yaml.safe_load(EXTERNAL_SERVICES_PATH.read_text()) or {}
     except (OSError, yaml.YAMLError):
         return []
-    return [
-        ExternalService(
-            name=s.get("name", "?"),
-            kind=s.get("kind", "service"),
-            description=s.get("description", ""),
-            health=s.get("health", "ok"),
-            status_text=s.get("status_text", ""),
-            action=s.get("action", "muted"),
-            action_text=s.get("action_text", "Logs ↗"),
+
+    snapshot = _load_external_services_snapshot()
+    fetched_at = snapshot.pop("_fetched_at", None) if snapshot else None
+
+    out: list[ExternalService] = []
+    for s in data.get("services", []):
+        merged = dict(s)
+        if snapshot and s.get("name") in snapshot:
+            merged = _merge_probe_into_service(merged, snapshot[s["name"]], fetched_at or "")
+        out.append(
+            ExternalService(
+                name=merged.get("name", "?"),
+                kind=merged.get("kind", "service"),
+                description=merged.get("description", ""),
+                health=merged.get("health", "ok"),
+                status_text=merged.get("status_text", ""),
+                action=merged.get("action", "muted"),
+                action_text=merged.get("action_text", "Logs ↗"),
+                latency_ms=merged.get("latency_ms"),
+                last_checked=merged.get("last_checked"),
+                probe_source=merged.get("probe_source", "yaml"),
+            )
         )
-        for s in data.get("services", [])
-    ]
+    return out
 
 
 def external_services_summary(services: list[ExternalService]) -> dict[str, int]:
@@ -2354,6 +2449,98 @@ def external_services_summary(services: list[ExternalService]) -> dict[str, int]
     return counts
 
 
+def _load_apollo_credits_snapshot() -> dict | None:
+    """Read the Apollo snapshot. Returns None if missing/unparseable."""
+    if not APOLLO_CREDITS_SNAPSHOT_PATH.exists():
+        return None
+    try:
+        return json.loads(APOLLO_CREDITS_SNAPSHOT_PATH.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+
+
+def _apollo_tile_overrides(snapshot: dict, now: datetime | None = None) -> dict | None:
+    """Compute tile-field overrides from an Apollo snapshot.
+
+    Returns a dict with keys subset of {value, unit, runway_text,
+    runway_color, trend, trend_arrow} — the loader merges these on top
+    of the YAML tile. Returns None when the snapshot is too stale (>6h)
+    so the loader can fall back to YAML; returns a "stale" override
+    (grey) when 6-24h. >24h → also grey, with the same stale label.
+    """
+    fetched_at_str = snapshot.get("fetched_at")
+    if not fetched_at_str:
+        return None
+    try:
+        fetched_at = datetime.fromisoformat(fetched_at_str)
+    except ValueError:
+        return None
+    now = now or datetime.now(fetched_at.tzinfo or timezone.utc)
+    if fetched_at.tzinfo is None:
+        fetched_at = fetched_at.replace(tzinfo=timezone.utc)
+    age_hours = (now - fetched_at).total_seconds() / 3600.0
+
+    minute_limit = snapshot.get("rate_limit_minute")
+    minute_used = snapshot.get("minute_used")
+    minute_remaining = snapshot.get("minute_remaining")
+
+    # 24h+ → mark stale, keep last-known values, grey color.
+    if age_hours > 24:
+        return {
+            "value": str(minute_remaining) if minute_remaining is not None else "—",
+            "unit": "remaining / min",
+            "runway_text": f"snapshot stale · last refresh {age_hours:.0f}h ago",
+            "runway_color": "grey",
+            "trend": "scheduled refresh delayed · check launchd",
+            "trend_arrow": "flat",
+        }
+    # 6h-24h → still serve snapshot but flag as stale grey. Past 6h on a
+    # weekday-only hourly job means at least one fire was missed.
+    if age_hours > 6:
+        return {
+            "value": str(minute_remaining) if minute_remaining is not None else "—",
+            "unit": "remaining / min",
+            "runway_text": (
+                f"{minute_used or 0} / {minute_limit or '?'} used this minute · "
+                f"snapshot stale ({age_hours:.0f}h)"
+            ),
+            "runway_color": "grey",
+            "trend": "scheduled refresh delayed",
+            "trend_arrow": "flat",
+        }
+
+    # Fresh snapshot — show live rate-limit headroom. Apollo's API-key
+    # path doesn't expose monthly/daily credit balances; the minute-window
+    # rate limit is what we actually get. Color based on % consumed.
+    if minute_limit and minute_used is not None:
+        pct_used = minute_used / minute_limit
+        if pct_used >= 0.9:
+            color, arrow = "red", "up"
+        elif pct_used >= 0.5:
+            color, arrow = "yellow", "up"
+        else:
+            color, arrow = "green", "flat"
+        return {
+            "value": str(minute_remaining if minute_remaining is not None else (minute_limit - minute_used)),
+            "unit": "remaining / min",
+            "runway_text": f"{minute_used} / {minute_limit} used in current minute window",
+            "runway_color": color,
+            "trend": f"live · refreshed {fetched_at.strftime('%H:%M')}",
+            "trend_arrow": arrow,
+        }
+
+    # Snapshot exists but rate-limit headers came back empty — still
+    # better than the YAML placeholder, but signal that something's off.
+    return {
+        "value": "—",
+        "unit": "remaining",
+        "runway_text": "API reachable · usage headers unavailable",
+        "runway_color": "yellow",
+        "trend": f"refreshed {fetched_at.strftime('%H:%M')} · headers blank",
+        "trend_arrow": "flat",
+    }
+
+
 def load_credit_tiles() -> list[CreditTile]:
     if not CREDITS_PATH.exists():
         return []
@@ -2361,18 +2548,30 @@ def load_credit_tiles() -> list[CreditTile]:
         data = yaml.safe_load(CREDITS_PATH.read_text()) or {}
     except (OSError, yaml.YAMLError):
         return []
-    return [
-        CreditTile(
-            label=t.get("label", "?"),
-            value=str(t.get("value", "—")),
-            unit=t.get("unit", ""),
-            runway_text=t.get("runway_text", ""),
-            runway_color=t.get("runway_color", "none"),
-            trend=t.get("trend", ""),
-            trend_arrow=t.get("trend_arrow", "flat"),
+
+    apollo_snapshot = _load_apollo_credits_snapshot()
+    apollo_overrides = (
+        _apollo_tile_overrides(apollo_snapshot) if apollo_snapshot else None
+    )
+
+    tiles: list[CreditTile] = []
+    for t in data.get("tiles", []):
+        label = t.get("label", "?")
+        merged = dict(t)
+        if apollo_overrides and "apollo" in label.lower():
+            merged.update(apollo_overrides)
+        tiles.append(
+            CreditTile(
+                label=label,
+                value=str(merged.get("value", "—")),
+                unit=merged.get("unit", ""),
+                runway_text=merged.get("runway_text", ""),
+                runway_color=merged.get("runway_color", "none"),
+                trend=merged.get("trend", ""),
+                trend_arrow=merged.get("trend_arrow", "flat"),
+            )
         )
-        for t in data.get("tiles", [])
-    ]
+    return tiles
 
 
 # JJ activity snapshot — written by scripts/refresh_jj_snapshot.py

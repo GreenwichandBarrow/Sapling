@@ -211,12 +211,12 @@ Skills run on a schedule via macOS launchd, independent of active sessions:
 |-------|----------|---------|
 | `deal-aggregator` | Mon-Fri 6am ET | Platform scanning + email screening |
 | `email-intelligence` | Mon-Fri 7am ET | Gmail/Superhuman/Granola scanning, email-scan-results artifact |
-| `jj-operations` (prep) | Sunday 11pm ET | Creates Mon-Fri Call Log tabs for the week. Runs after target-discovery's Sunday night pipeline. |
+| `jj-operations` (prep) | Sunday 6pm ET | Creates Mon-Fri Call Log tabs for the week (plist Hour=18). Reads pool artifact from prior Sunday's target-discovery Phase 2 run. |
 | `jj-operations` (harvest) | Manual (no launchd) | Read Call Logs, update master sheet. Triggered by orchestrator or manually after JJ's 2pm shift ends. |
 | `target-discovery` | On activation + weekly refill (morning workflow) | Target finding for Active-Outreach niches on initial activation or when weekly dashboard signals refill needed |
 | `niche-intelligence` | Tuesday 11pm ET | Newsletter scrape, niche identification, one-pagers, scorecards |
 | `niche-intelligence` (daily) | Nightly | Sprint status tracking, Tabled/Killed processing |
-| `target-discovery` (Phase 2) | Sunday 11pm ET | Weekly owner enrichment: web research for next 200 un-enriched targets on JJ-Call-Only sheets |
+| `target-discovery` (Phase 2) | Sunday 10pm ET | Weekly owner enrichment via Apollo + web research on JJ-Call-Only target sheets. **Hardened 2026-04-25:** wrapper passes `phase2-sunday` arg → headless prompt loads instead of bare `/target-discovery`; POST_RUN_CHECK runs `scripts/validate_phase2_integrity.py` per active JJ-Call-Only niche; validator failure overrides exit code → Slack alert. Bead `ai-ops-1`. |
 | `health-monitor` | Friday 12:30 AM ET | System health probes (services, hooks, vault, briefing pipeline) — output ready for Friday morning briefing |
 | `calibration-workflow` | Thursday 11pm ET | Friday meta-calibration: rules → stop hooks, memory consolidation, stale-skill refresh |
 | `attio-snapshot-refresh` | Hourly Mon-Fri 8am-8pm ET | Refreshes `brain/context/attio-pipeline-snapshot.json` so the Command Center dashboard (landing hero, Active Deal Pipeline, M&A Analytics) stays current as deals advance. Wrapper: `scripts/refresh-attio-snapshot.sh`. |
@@ -229,6 +229,11 @@ Skills run on a schedule via macOS launchd, independent of active sessions:
 - Env: `scripts/.env.launchd` (secrets for headless runs, not committed)
 - Logs: `logs/scheduled/{skill}-{date}.log` (14-day rotation)
 - Plists: `~/Library/LaunchAgents/com.greenwich-barrow.{skill}.plist`
+
+**Wrapper hardening pattern (2026-04-25, bead ai-ops-1):**
+- **POST_RUN_CHECK env var** in plist runs an artifact-integrity validator after Claude exits 0. Non-zero validator → wrapper overrides EXIT_CODE → Slack alert with "VALIDATOR FAILED" prefix. `$TODAY` placeholder in the env var is substituted with current YYYY-MM-DD.
+- **Headless prompts** for skills that misbehave under `claude -p` with bare `/skill-name`. Wrapper detects `skill:args` pair and pipes `.claude/skills/{skill}/headless-{mode}-prompt.md` content as Claude's user prompt instead of `/skill-name`. Prompt file forbids clarifying questions and mandates artifact-first ordering.
+- Apply both to any **mutating** scheduled skill (writes to sheets / Attio / vault). Read-only skills (deal-aggregator, email-intelligence) tolerate silent-0 because absence-of-output surfaces in pipeline-manager. Currently wired: `target-discovery` Phase 2. Layer 4 candidates (TODO): `jj-operations-sunday`, `nightly-tracker-audit`, `weekly-tracker`, `relationship-manager`.
 
 **Status check:** `launchctl list | grep greenwich`
 **Manual trigger:** `launchctl start com.greenwich-barrow.{skill}`

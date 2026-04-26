@@ -6,7 +6,7 @@ You are running the `jj-operations` skill in **prep mode** non-interactively und
 
 1. **Read SKILL.md fully** at `.claude/skills/jj-operations/SKILL.md`.
 2. **Pre-flight gate (per SKILL.md line 247-262):**
-   - Verify target-discovery Phase 2 completion log exists for **today** (was Sunday 15:00). Check `logs/scheduled/target-discovery-2026-MM-DD-1500.log` ends with exit 0 and contains "Phase 2 Step 5: tabs created" or equivalent.
+   - Verify target-discovery Phase 2 completion log exists for **today** (Sunday). Check `logs/scheduled/target-discovery-{TODAY}-*.log` (any time today — glob survives plist Hour key changes) ends with exit 0 and contains "Phase 2 Step 5: tabs created" or equivalent.
    - Verify pool artifact exists at `brain/context/jj-week-pool-{YYYY-MM-DD}.md` (today's date, since Phase 2 fires same-day at 3pm before this 6pm prep). If missing, **STOP** — do not build tabs on stale or absent pool.
 3. **For each JJ-Call-Only niche** (default Premium Pest Management; multi-niche TBD):
    - Identify master sheet ID per `.claude/skills/jj-operations/SKILL.md` line 87 mapping (Premium Pest = `1Y0ZjEkc2LHhBoO4QGO8Ny9MvG90NpojQn8bloKA291I`).

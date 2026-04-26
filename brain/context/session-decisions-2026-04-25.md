@@ -168,3 +168,77 @@ If it feels too sparse, recovery is easy: revert `feedback_briefing_three_bucket
 + CLAUDE.md Step 9 + goodmorning.md Step 7 to the 4-bucket format. The dashboard
 remains regardless — it's value-additive, not load-bearing on the briefing format.
 
+---
+
+# Saturday Evening — Launchd Hardening Tech-Debt Block (~1.5hr)
+
+3-hour budget, finished in ~1.5hr. Bead `ai-ops-1` partial-complete.
+Plan: [[outputs/2026-04-25-saturday-launchd-hardening-plan]]. Root cause:
+[[outputs/2026-04-20-target-discovery-phase2-root-cause]].
+
+This block was the originally-calendared 9am-4pm Saturday session that
+got displaced by the unplanned Dashboard Session 6 marathon. Surfaced
+mid-evening when Kay asked "did the multi-hour tech debt session
+happen today?" Took two follow-ups (look at earlier this week, then
+"what was scheduled for 11am") before I checked the calendar. The
+calendar event title was literally `Tech-debt block: launchd hardening`
+with `topic/tech-debt` tag on the plan file in `brain/outputs/`.
+
+## Decisions
+
+- **APPROVE: Cut 6-9hr plan to 3hr, ship critical-path L1+L2+L3, defer L4.** Trace: [[traces/2026-04-25-tech-debt-three-hour-scope-cut]]. Critical path = target-discovery Phase 2 because Sunday 10pm fire is the canonical re-test of the 4/19 silent-failure bug. Other 4 mutating skills don't have a fire pending tomorrow.
+- **APPROVE: Wrapper-side prompt swap, not SKILL.md mode handler, for headless Phase 2 instructions.** Trace: [[traces/2026-04-25-headless-prompt-as-wrapper-swap]]. SKILL.md stays conversational; `headless-phase2-prompt.md` is the imperative runbook. Wrapper detects `skill:args` pair and pipes file content as user prompt instead of bare `/skill-name`.
+- **APPROVE: Driver script (`validate_phase2_integrity.py`) over inline bash case-statement validators.** Per-niche fan-out is cleaner in Python; multi-niche support out of the box; same pattern future skills can copy.
+- **APPROVE: Pre-grant authorization for autonomous execution through commits + plist reload + launchctl reload.** Per `feedback_decision_fatigue_minimization`. Mitigated by per-layer commits (rollback unit = layer), plist backup before edit, smoke tests before launchctl reload.
+- **APPROVE: Calendar query order memory.** [[memory/feedback_what_was_planned_query_order]]. Calendar → beads → `brain/outputs/` → session-decisions, never trust session-decisions alone for "what was planned/scheduled" questions.
+- **APPROVE: Mutating-skill hardening pattern memory.** [[memory/feedback_mutating_skill_hardening_pattern]]. Every scheduled mutating skill needs headless prompt + POST_RUN_CHECK validator + SKILL.md MANDATORY section. Read-only skills exempt.
+
+## Actions Taken
+
+**CREATED:**
+- `scripts/validate_phase2_integrity.py` — driver fans out across active JJ-Call-Only niches (`JJ_CALL_NICHES` env), calls `enrichment_integrity_check.py` per sheet, aggregates exit codes
+- `.claude/skills/target-discovery/headless-phase2-prompt.md` — non-interactive runbook for Sunday Phase 2 fire (forbids YES/NO/DISCUSS, mandates pool-artifact-first ordering)
+- `brain/traces/2026-04-25-tech-debt-three-hour-scope-cut.md`
+- `brain/traces/2026-04-25-headless-prompt-as-wrapper-swap.md`
+- `~/.claude/projects/-Users-kaycschneider-Documents-AI-Operations/memory/feedback_what_was_planned_query_order.md`
+- `~/.claude/projects/-Users-kaycschneider-Documents-AI-Operations/memory/feedback_mutating_skill_hardening_pattern.md`
+
+**UPDATED:**
+- `scripts/run-skill.sh` — POST_RUN_CHECK env-var support, $TODAY substitution, EXIT_CODE override on validator failure, distinct "VALIDATOR FAILED" Slack message, headless-prompt detection via `skill:args` case statement
+- `.claude/skills/target-discovery/SKILL.md` — Stop Hook section flipped to "(MANDATORY)" with copyable bash invocation; defense-in-depth note about wrapper redundancy
+- `~/Library/LaunchAgents/com.greenwich-barrow.target-discovery-sunday.plist` — `phase2-sunday` arg in ProgramArguments, POST_RUN_CHECK + JJ_CALL_NICHES env vars (original backed up to `.bak-2026-04-25`), reloaded via `launchctl unload && load`
+- `CLAUDE.md` — Scheduled Skills table corrected (target-discovery Phase 2 is Sunday 10pm not 11pm; jj-operations is Sunday 6pm not 11pm — doc rot fixed); new "Wrapper hardening pattern" section under Infrastructure
+- `MEMORY.md` — index entries for both new feedback memories
+
+**Commits (3, on `imac-mid-day-save-2026-04-22`):**
+- `8d42724` Launchd hardening L1+L2: post-run validator + headless Phase 2 prompt
+- `9fb9369` Launchd hardening L3: SKILL.md mandates validator as Phase 2 last step
+- (CLAUDE.md commit) — schedule corrections + wrapper hardening pattern doc
+
+## Verification
+
+- Driver smoke test today (no Phase 2 ran today): exit 2, "pool artifact missing at brain/context/jj-week-pool-2026-04-25.md; Phase 2 Step 1 produced nothing" — exact failure mode that silently passed on 4/19
+- Wrapper override logic isolated test: `EXIT_CODE=0` → validator returns 2 → `EXIT_CODE` overridden to 2, `VALIDATOR_FAILED=1` set
+- `plutil -lint` plist OK
+- `launchctl list | grep target-discovery` shows job registered post-reload
+
+## Open Loops
+
+- **Sunday 10pm Phase 2 canonical first-fire test** — tomorrow night is the real validation. Watch tomorrow morning for: (a) pool artifact at `brain/context/jj-week-pool-2026-04-26.md`, (b) no `VALIDATOR FAILED` Slack alert in #operations between 10pm Sun and 6am Mon, (c) JJ's Monday 10am tab populated with Col K owner names. If validator fires, the alert message will name `target-discovery` + the missing/broken niche.
+- **Layer 4 — extend wrapper hardening to 4 other mutating skills.** `jj-operations-sunday`, `nightly-tracker-audit`, `weekly-tracker`, `relationship-manager`. Each is ~30-45min in a follow-up block. Pattern documented in CLAUDE.md + `feedback_mutating_skill_hardening_pattern.md`.
+- **`jj-operations-sunday` timing quirk:** plist fires Sunday 6pm but the SKILL.md stop hook expects today's pool artifact (which Phase 2 doesn't write until Sunday 10pm). Either (a) the design assumes prep reads LAST week's pool — needs SKILL.md clarification, or (b) the plist time is wrong — needs flip to Monday early-AM. Out of scope for this block; investigate before adding L4 validator.
+- **Calendar-block-displaced-by-dashboard pattern.** Captured in `feedback_what_was_planned_query_order.md` for the retrieval miss, but the deeper failure was Claude letting unplanned dashboard work consume a calendared block. Calibration candidate: stop hook on session start that reads today's calendar and refuses to deviate from a 3+ hour block without explicit Kay override.
+
+## Deferred
+
+- **Live end-to-end Phase 2 fire test before Sunday.** Would consume Apollo credits + write to real Pest Control sheet. Sunday 10pm launchd is the canonical first run; manual pre-test isn't worth the cost.
+- **Layer 4 SKILL.md updates** for the other 4 mutating skills.
+- **CLAUDE.md Scheduled Skills full audit** — only fixed the two times that touched today's work; other rows may also be doc-rotted vs plist Hour values.
+
+## Calibration Candidates
+
+- **Calendar-aware session start.** Add to `goodmorning` (or a separate session-start hook): read today's calendar, surface any 3+ hr blocks before any other agenda item. Forces a "are we honoring the block?" gate before unplanned work absorbs the day. Same hook on Saturday/Sunday since this happened on a Saturday.
+- **Beads CLI install.** `bd: command not found` when I tried to check `ai-ops-1` status. Beads is in CLAUDE.md as the canonical task system; install + sync should be a setup-checklist item.
+- **brain/outputs/ in default search scope.** Today's miss was searching `brain/context/` + `memory/` but not `brain/outputs/` — the plan file was tagged `topic/tech-debt` and would have surfaced. Add `brain/outputs/` to any "look up what was planned" workflow.
+
+

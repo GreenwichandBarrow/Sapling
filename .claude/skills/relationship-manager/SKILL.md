@@ -262,6 +262,28 @@ type: relationship-status
 ```
 
 Pipeline-manager reads this artifact and presents it in Section 4 (Superhuman email drafts to review/approve) of the morning briefing.
+
+## Validator (Stop Hook) — MANDATORY
+
+**Wrapper-level POST_RUN_CHECK validator** (authoritative): `scripts/validate_relationship_manager_integrity.py`
+
+Runs after `claude -p` exits, regardless of skill-internal logic. Catches the silent-success failure mode where Claude exits 0 but no artifact landed.
+
+**Copyable invocation (manual run):**
+```bash
+python3 "/Users/kaycschneider/Documents/AI Operations/scripts/validate_relationship_manager_integrity.py"
+# Pass --date YYYY-MM-DD to validate a different date
+```
+
+**What the validator checks:**
+- Artifact exists at `brain/context/relationship-status-{YYYY-MM-DD}.md` for run date
+- Artifact has YAML frontmatter with `date:` and `type: relationship-status`
+- At least one expected section header is present
+- Artifact is ≥200 bytes (rejects empty stubs)
+
+**What it does NOT check:** Attio write success. The skill is designed to graceful-degrade when Attio MCP is down — the artifact + "System Status Alerts" section is the deliverable, Attio sync is downstream-best-effort.
+
+The launchd wrapper (`scripts/run-skill.sh`) overrides EXIT_CODE on POST_RUN_CHECK failure and emits a Slack alert prefixed `VALIDATOR FAILED`. Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead: `ai-ops-jrj.4`.
 </artifact>
 
 <stop_hooks>

@@ -57,6 +57,9 @@ case "$SKILL_NAME:$SKILL_ARGS" in
   "nightly-tracker-audit:nightly")
     HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/nightly-tracker-audit/headless-nightly-prompt.md"
     ;;
+  "relationship-manager:daily")
+    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/relationship-manager/headless-daily-prompt.md"
+    ;;
 esac
 
 # Run Claude in non-interactive mode with retry on transient failures

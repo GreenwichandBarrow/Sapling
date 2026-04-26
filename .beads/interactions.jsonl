@@ -2,3 +2,7 @@
 {"id":"int-a3cd7fd7","kind":"field_change","created_at":"2026-04-26T15:21:23.637491Z","actor":"kaycschneider","issue_id":"ai-ops-jrj.3","extra":{"field":"status","new_value":"in_progress","old_value":"open"}}
 {"id":"int-2ad6f24a","kind":"field_change","created_at":"2026-04-26T15:39:20.381755Z","actor":"kaycschneider","issue_id":"ai-ops-jrj.3","extra":{"field":"status","new_value":"closed","old_value":"in_progress"}}
 {"id":"int-e521fc86","kind":"field_change","created_at":"2026-04-26T15:39:21.305587Z","actor":"kaycschneider","issue_id":"ai-ops-jrj.2","extra":{"field":"status","new_value":"in_progress","old_value":"open"}}
+{"id":"int-c14a4313","kind":"field_change","created_at":"2026-04-26T15:41:18.132802Z","actor":"kaycschneider","issue_id":"ai-ops-jrj.2","extra":{"field":"status","new_value":"closed","old_value":"in_progress"}}
+{"id":"int-269c62ff","kind":"field_change","created_at":"2026-04-26T15:41:18.896815Z","actor":"kaycschneider","issue_id":"ai-ops-jrj.4","extra":{"field":"status","new_value":"in_progress","old_value":"open"}}
+{"id":"int-f7f3101f","kind":"field_change","created_at":"2026-04-26T15:42:45.934001Z","actor":"kaycschneider","issue_id":"ai-ops-jrj.4","extra":{"field":"status","new_value":"closed","old_value":"in_progress"}}
+{"id":"int-87253ea5","kind":"field_change","created_at":"2026-04-26T15:42:47.17524Z","actor":"kaycschneider","issue_id":"ai-ops-jrj.1","extra":{"field":"status","new_value":"in_progress","old_value":"open"}}

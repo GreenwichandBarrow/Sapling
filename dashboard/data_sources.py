@@ -32,6 +32,8 @@ _SESSION_DECISIONS_RE = re.compile(r"^session-decisions-(\d{4}-\d{2}-\d{2})\.md$
 _SENT_LINE_RE = re.compile(r"^- \*\*SENT", re.MULTILINE)
 _DRAFTED_LINE_RE = re.compile(r"^- \*\*DRAFTED", re.MULTILINE)
 _LINKEDIN_LINE_RE = re.compile(r"^- \*\*(SENT|DRAFTED).*linkedin", re.IGNORECASE | re.MULTILINE)
+_LINKEDIN_SENT_RE = re.compile(r"^- \*\*SENT.*linkedin", re.IGNORECASE | re.MULTILINE)
+_LINKEDIN_DRAFTED_RE = re.compile(r"^- \*\*DRAFTED.*linkedin", re.IGNORECASE | re.MULTILINE)
 
 _WEEKLY_TRACKER_FILENAME_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-weekly-tracker\.md$")
 # First number on the row after the metric label cell. Tolerant to "~49",
@@ -1622,10 +1624,10 @@ def _build_channels(
             f"Owner-facing warm outreach · highest-touch · "
             f"{outreach.drafts_this_week} drafted this week ({outreach.drafts_last_week} prior)"
         )
-        ceo_li_sent = str(outreach.linkedin_dms_this_week)
+        ceo_li_sent = str(outreach.linkedin_dms_sent_this_week)
         ceo_li_desc = (
-            f"CEO-direct LinkedIn DMs · best-effort grep on session-decisions · "
-            f"{outreach.linkedin_dms_last_week} last week · pending gog Gmail label scan for full count"
+            f"CEO-direct LinkedIn DMs · {outreach.linkedin_dms_drafts_this_week} drafted this week "
+            f"({outreach.linkedin_dms_drafts_last_week} prior) · {outreach.linkedin_dms_sent_last_week} sent last week"
         )
     else:
         ceo_email_sent = "—"
@@ -1916,19 +1918,24 @@ class OutreachMetrics:
     sends_last_week: int
     drafts_this_week: int
     drafts_last_week: int
-    linkedin_dms_this_week: int
+    linkedin_dms_this_week: int  # SENT + DRAFTED summed (legacy field)
     linkedin_dms_last_week: int
+    linkedin_dms_sent_this_week: int = 0
+    linkedin_dms_sent_last_week: int = 0
+    linkedin_dms_drafts_this_week: int = 0
+    linkedin_dms_drafts_last_week: int = 0
 
 
-def _count_verb_tags_in_window(start: date, end: date) -> tuple[int, int, int]:
+def _count_verb_tags_in_window(start: date, end: date) -> tuple[int, int, int, int, int]:
     """Sum SENT, DRAFTED, and LinkedIn-tagged bullets across the window.
 
-    Returns (sends, drafts, linkedin_dms). Tolerates missing files —
-    weekend days routinely have no session-decisions.
+    Returns (sends, drafts, linkedin_total, linkedin_sent, linkedin_drafted).
+    `linkedin_total` is kept for legacy callers (= sent + drafted). Tolerates
+    missing files — weekend days routinely have no session-decisions.
     """
-    sends = drafts = linkedin = 0
+    sends = drafts = linkedin = li_sent = li_drafted = 0
     if not VAULT_CONTEXT_DIR.exists():
-        return 0, 0, 0
+        return 0, 0, 0, 0, 0
     cur = start
     while cur <= end:
         path = VAULT_CONTEXT_DIR / f"session-decisions-{cur.isoformat()}.md"
@@ -1941,8 +1948,10 @@ def _count_verb_tags_in_window(start: date, end: date) -> tuple[int, int, int]:
             sends += len(_SENT_LINE_RE.findall(text))
             drafts += len(_DRAFTED_LINE_RE.findall(text))
             linkedin += len(_LINKEDIN_LINE_RE.findall(text))
+            li_sent += len(_LINKEDIN_SENT_RE.findall(text))
+            li_drafted += len(_LINKEDIN_DRAFTED_RE.findall(text))
         cur += timedelta(days=1)
-    return sends, drafts, linkedin
+    return sends, drafts, linkedin, li_sent, li_drafted
 
 
 def load_outreach_metrics(today: date | None = None) -> OutreachMetrics:
@@ -1952,8 +1961,8 @@ def load_outreach_metrics(today: date | None = None) -> OutreachMetrics:
     week_start = today - timedelta(days=6)
     prior_end = week_start - timedelta(days=1)
     prior_start = prior_end - timedelta(days=6)
-    sends_now, drafts_now, li_now = _count_verb_tags_in_window(week_start, week_end)
-    sends_prior, drafts_prior, li_prior = _count_verb_tags_in_window(prior_start, prior_end)
+    sends_now, drafts_now, li_now, li_sent_now, li_drafted_now = _count_verb_tags_in_window(week_start, week_end)
+    sends_prior, drafts_prior, li_prior, li_sent_prior, li_drafted_prior = _count_verb_tags_in_window(prior_start, prior_end)
     return OutreachMetrics(
         week_start=week_start,
         week_end=week_end,
@@ -1963,6 +1972,10 @@ def load_outreach_metrics(today: date | None = None) -> OutreachMetrics:
         drafts_last_week=drafts_prior,
         linkedin_dms_this_week=li_now,
         linkedin_dms_last_week=li_prior,
+        linkedin_dms_sent_this_week=li_sent_now,
+        linkedin_dms_sent_last_week=li_sent_prior,
+        linkedin_dms_drafts_this_week=li_drafted_now,
+        linkedin_dms_drafts_last_week=li_drafted_prior,
     )
 
 

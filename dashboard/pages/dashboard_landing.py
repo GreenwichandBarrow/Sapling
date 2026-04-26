@@ -190,17 +190,69 @@ def _hero_active_deal_pipeline() -> str:
 
 
 def _tile_deal_aggregator() -> str:
-    """Static placeholder — live wiring lands in a follow-up session."""
-    return _tile("""
-    <div class="gb-tile">
-    <div class="label">Deal Aggregator</div>
-    <div class="primary">3<span class="unit">new leads</span></div>
-    <div class="footer">
-    <span class="gb-trend up">&uarr; vs. 1 yesterday</span>
-    <span class="gb-horizon">TODAY</span>
-    </div>
-    </div>
-    """)
+    """Today's count + delta vs prior scan day. Falls back to placeholder on read failure."""
+    try:
+        from data_sources import load_scan
+        today = date.today()
+        today_scan = load_scan(today)
+        today_count = today_scan.deals_found if today_scan else None
+
+        # Walk back up to 7 days to find the most recent prior scan (skips weekends).
+        prior_count = None
+        prior_date = None
+        for offset in range(1, 8):
+            d = today - timedelta(days=offset)
+            scan = load_scan(d)
+            if scan is not None:
+                prior_count = scan.deals_found
+                prior_date = d
+                break
+
+        if today_count is None and prior_count is None:
+            primary = '<span class="primary">&mdash;<span class="unit">no recent scan</span></span>'
+            footer = '<span class="gb-horizon">TODAY</span>'
+        else:
+            display_count = today_count if today_count is not None else prior_count
+            display_label = "new leads" if today_count is not None else f"on {prior_date.strftime('%-m/%-d')}"
+            primary = f'<div class="primary">{display_count}<span class="unit">{display_label}</span></div>'
+
+            if today_count is not None and prior_count is not None and prior_date is not None:
+                delta = today_count - prior_count
+                prior_label = prior_date.strftime("%-m/%-d")
+                if delta > 0:
+                    trend = f'<span class="gb-trend up">&uarr; vs. {prior_count} on {prior_label}</span>'
+                elif delta < 0:
+                    trend = f'<span class="gb-trend down">&darr; vs. {prior_count} on {prior_label}</span>'
+                else:
+                    trend = f'<span class="gb-trend">flat vs. {prior_label}</span>'
+                horizon = "TODAY"
+            else:
+                # Today's scan not yet run (weekend, or before 6am Mon-Fri fire). Show the
+                # prior-day count without a fake delta and label the horizon clearly.
+                trend = '<span class="gb-trend">awaiting next scan</span>'
+                horizon = "LAST SCAN"
+            footer = f'{trend}<span class="gb-horizon">{horizon}</span>'
+
+        return _tile(f"""
+        <div class="gb-tile">
+        <div class="label">Deal Aggregator</div>
+        {primary}
+        <div class="footer">
+        {footer}
+        </div>
+        </div>
+        """)
+    except Exception:
+        return _tile("""
+        <div class="gb-tile">
+        <div class="label">Deal Aggregator</div>
+        <div class="primary">&mdash;<span class="unit">read failed</span></div>
+        <div class="footer">
+        <span class="gb-trend">check logs</span>
+        <span class="gb-horizon">TODAY</span>
+        </div>
+        </div>
+        """)
 
 
 def _tile_ma_analytics() -> str:

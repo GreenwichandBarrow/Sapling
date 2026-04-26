@@ -60,6 +60,9 @@ case "$SKILL_NAME:$SKILL_ARGS" in
   "relationship-manager:daily")
     HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/relationship-manager/headless-daily-prompt.md"
     ;;
+  "jj-operations:sunday-prep")
+    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/jj-operations/headless-sunday-prep-prompt.md"
+    ;;
 esac
 
 # Run Claude in non-interactive mode with retry on transient failures

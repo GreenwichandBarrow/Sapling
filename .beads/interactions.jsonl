@@ -6,3 +6,5 @@
 {"id":"int-269c62ff","kind":"field_change","created_at":"2026-04-26T15:41:18.896815Z","actor":"kaycschneider","issue_id":"ai-ops-jrj.4","extra":{"field":"status","new_value":"in_progress","old_value":"open"}}
 {"id":"int-f7f3101f","kind":"field_change","created_at":"2026-04-26T15:42:45.934001Z","actor":"kaycschneider","issue_id":"ai-ops-jrj.4","extra":{"field":"status","new_value":"closed","old_value":"in_progress"}}
 {"id":"int-87253ea5","kind":"field_change","created_at":"2026-04-26T15:42:47.17524Z","actor":"kaycschneider","issue_id":"ai-ops-jrj.1","extra":{"field":"status","new_value":"in_progress","old_value":"open"}}
+{"id":"int-6a04c650","kind":"field_change","created_at":"2026-04-26T15:45:39.102752Z","actor":"kaycschneider","issue_id":"ai-ops-jrj.1","extra":{"field":"status","new_value":"closed","old_value":"in_progress"}}
+{"id":"int-96328ec4","kind":"field_change","created_at":"2026-04-26T15:45:40.416521Z","actor":"kaycschneider","issue_id":"ai-ops-jrj","extra":{"field":"status","new_value":"closed","old_value":"in_progress"}}

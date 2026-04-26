@@ -260,7 +260,13 @@ If Call Status = "Connected" and sentiment is positive → flag for pipeline-man
 - [ ] Every Call Log row has Col K (Owner Name) populated. **If any row has blank Col K, do NOT draft the Slack message.** Run `.claude/hooks/enrichment_integrity_check.py <sheet_id> <pool_artifact_path>` and require PASS before proceeding. On FAIL, escalate as "ENRICHMENT INTEGRITY FAILURE" in Monday briefing and halt prep mode.
 - [ ] Every pool row (from Phase 2 Step 1 artifact) appears on exactly one Mon–Fri Call Log tab — no drift between enriched rows and called rows.
 
-> **Enforcement reality:** until the Saturday 4/25 launchd-hardening fix ships (bead `ai-ops-1`), this checklist is LLM-level enforcement only. A skill-level POST_RUN_CHECK in `scripts/run-skill.sh` is the true runtime guardrail. Until then, the orchestrator MUST manually confirm each item before Slack send.
+> **Enforcement reality (UPDATED 2026-04-26 — bead `ai-ops-jrj.1` shipped):** Wrapper-level POST_RUN_CHECK validator now in place at `scripts/validate_jj_operations_integrity.py`. Runs after Sunday 18:00 prep mode exits, verifies all 5 Mon-Fri Call Log tabs exist with Col K populated. Failure overrides EXIT_CODE → Slack alert prefixed `VALIDATOR FAILED`. Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Two-layer defense: (1) the LLM-level checklist above runs inside the agent, (2) the wrapper validator catches silent-success failures regardless of what the agent did.
+
+**Wrapper validator copyable invocation (manual run):**
+```bash
+JJ_CALL_NICHES="Premium Pest Management" python3 "/Users/kaycschneider/Documents/AI Operations/scripts/validate_jj_operations_integrity.py"
+# Pass --week-start YYYY-MM-DD to validate a specific week
+```
 
 **Slack send gate:**
 - [ ] All enrichment integrity checks PASSED (see above)

@@ -2493,7 +2493,103 @@ def check_dashboard_staleness() -> list[StalenessCheck]:
     return [c for c in checks if c is not None and c.is_stale]
 
 
+CALIBRATION_OUTPUTS_DIR = Path(__file__).resolve().parent.parent / "brain" / "outputs" / "calibrations"
+_CALIBRATION_FILE_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-calibration\.md$")
+_CALIBRATION_ENTRY_RE = re.compile(
+    r"^### \[([CHML])(\d+)\]\s+(.+?)$\n(.+?)(?=\n### \[|\n## |\Z)",
+    re.MULTILINE | re.DOTALL,
+)
+_SEVERITY_ICON_COLOR = {
+    "C": ("⚠", "accent"),
+    "H": ("↻", "accent"),
+    "M": ("⟶", "purple"),
+    "L": ("•", "dim"),
+}
+
+
+def _latest_calibration_md() -> tuple[date, Path] | None:
+    if not CALIBRATION_OUTPUTS_DIR.exists():
+        return None
+    candidates: list[tuple[date, Path]] = []
+    for p in CALIBRATION_OUTPUTS_DIR.iterdir():
+        m = _CALIBRATION_FILE_RE.match(p.name)
+        if not m:
+            continue
+        try:
+            d = date.fromisoformat(m.group(1))
+        except ValueError:
+            continue
+        candidates.append((d, p))
+    if not candidates:
+        return None
+    candidates.sort(reverse=True)
+    return candidates[0]
+
+
+def _parse_calibration_md(file_date: date, path: Path, max_entries: int = 8) -> CalibrationLog:
+    try:
+        text = path.read_text(errors="replace")
+    except OSError:
+        return CalibrationLog(last_run="—", entries=[])
+
+    age_days = (date.today() - file_date).days
+    when_label = file_date.strftime("%a %b %-d")
+    if age_days >= 7:
+        last_run = f"{when_label} ({age_days}d ago — stale)"
+    else:
+        last_run = when_label
+
+    entries: list[CalibrationEntry] = []
+    for m in _CALIBRATION_ENTRY_RE.finditer(text):
+        sev = m.group(1)
+        num = m.group(2)
+        headline = m.group(3).strip()
+        body = m.group(4).strip()
+
+        is_applied = "ALREADY APPLIED" in body.upper()
+        if is_applied:
+            icon, color = "✓", "green"
+        else:
+            icon, color = _SEVERITY_ICON_COLOR.get(sev, ("•", "dim"))
+
+        # Prefer the **Problem:** line as the detail; fall back to first body line.
+        detail = ""
+        for raw in body.split("\n"):
+            line = raw.strip()
+            if line.startswith("**Problem:**"):
+                detail = line.replace("**Problem:**", "").strip()
+                break
+        if not detail:
+            for raw in body.split("\n"):
+                line = raw.strip()
+                if line and not line.startswith("**") and not line.startswith("```"):
+                    detail = line[:240]
+                    break
+        if not detail:
+            detail = "(no detail extracted)"
+
+        entries.append(CalibrationEntry(
+            icon=icon,
+            icon_color=color,
+            headline=f"[{sev}{num}] {headline}",
+            detail=detail,
+            when="applied" if is_applied else f"sev {sev}",
+        ))
+        if len(entries) >= max_entries:
+            break
+
+    return CalibrationLog(last_run=last_run, entries=entries)
+
+
 def load_calibration_log() -> CalibrationLog:
+    """Parse the latest brain/outputs/calibrations/*.md if present, fall back to YAML."""
+    latest = _latest_calibration_md()
+    if latest is not None:
+        file_date, path = latest
+        log = _parse_calibration_md(file_date, path)
+        if log.entries:
+            return log
+
     if not CALIBRATION_PATH.exists():
         return CalibrationLog(last_run="—", entries=[])
     try:

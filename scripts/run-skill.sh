@@ -5,6 +5,18 @@
 SKILL_NAME="$1"
 shift
 SKILL_ARGS="$*"
+
+# Some plists pass skill+mode as a single colon-joined arg (e.g.
+# "jj-operations:sunday-prep") instead of two separate strings. Split it so the
+# headless-prompt case statement below matches. Without this, $SKILL_NAME ends
+# up as the full "name:mode" string and the case pattern never matches —
+# wrapper falls through to bare `claude -p '/name:mode'` which Claude rejects
+# as "Unknown command" and exits 0 silently. Confirmed root cause for every
+# Sunday jj-operations failure since the plist was created (fix 2026-04-27).
+if [[ -z "$SKILL_ARGS" && "$SKILL_NAME" == *:* ]]; then
+  SKILL_ARGS="${SKILL_NAME#*:}"
+  SKILL_NAME="${SKILL_NAME%%:*}"
+fi
 WORKDIR="$HOME/Documents/AI Operations"
 LOG_DIR="$WORKDIR/logs/scheduled"
 LOG_FILE="$LOG_DIR/${SKILL_NAME}-$(date +%Y-%m-%d-%H%M).log"

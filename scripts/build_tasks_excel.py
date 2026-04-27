@@ -198,13 +198,13 @@ for sc, tc in DAY_PAIRS:
     week.merge_cells(f"{sc}22:{tc}22")
     pct = week[f"{sc}22"]
     pct.value = (
-        f'=IF(COUNTA({tc}23:{tc}27)=0,"—",'
-        f'TEXT(COUNTIF({sc}23:{sc}27,"✅")/COUNTA({tc}23:{tc}27),"0%"))'
+        f'=IF(COUNTA({tc}23:{tc}37)=0,"—",'
+        f'TEXT(COUNTIF({sc}23:{sc}37,"✅")/COUNTA({tc}23:{tc}37),"0%"))'
     )
     style_cell(pct, PCT_FONT, ROW_FILL, CENTER)
 
-# Rows 23-27: 5 priorities, status cell + task cell side by side per day
-PRIORITY_ROWS = list(range(23, 28))
+# Rows 23-37: 15 priorities, status cell + task cell side by side per day
+PRIORITY_ROWS = list(range(23, 38))
 for r in PRIORITY_ROWS:
     week.row_dimensions[r].height = 28
     week[f"A{r}"].fill = ROW_FILL
@@ -217,11 +217,11 @@ for r in PRIORITY_ROWS:
         style_cell(tcell, BODY_FONT, ROW_FILL, LEFT)
 
 # Status dropdown on priority status cells
-add_status_dropdown(week, [f"{sc}23:{sc}27" for sc, tc in DAY_PAIRS])
+add_status_dropdown(week, [f"{sc}23:{sc}37" for sc, tc in DAY_PAIRS])
 
 # Conditional format priorities: when status = ✅, strike+dim status+task pair
 for sc, tc in DAY_PAIRS:
-    rng = f"{sc}23:{tc}27"
+    rng = f"{sc}23:{tc}37"
     rule = FormulaRule(
         formula=[f'=${sc}23="✅"'],
         font=Font(name="Avenir Next", size=10, color=MUTED, strike=True),
@@ -229,20 +229,20 @@ for sc, tc in DAY_PAIRS:
     )
     week.conditional_formatting.add(rng, rule)
 
-# Spacer row 28
-week.row_dimensions[28].height = 12
+# Spacer row 38
+week.row_dimensions[38].height = 12
 
-# Notes label row 29 (merged per day)
+# Notes label row 39 (merged per day)
 for sc, tc in DAY_PAIRS:
-    week.merge_cells(f"{sc}29:{tc}29")
-    cell = week[f"{sc}29"]
-    cell.value = "notes · ideas · journal"
+    week.merge_cells(f"{sc}39:{tc}39")
+    cell = week[f"{sc}39"]
+    cell.value = "notes"
     style_cell(cell, MUTED_FONT, SUBHEAD_FILL, CENTER)
-week["A29"].fill = ROW_FILL
-week.row_dimensions[29].height = 18
+week["A39"].fill = ROW_FILL
+week.row_dimensions[39].height = 18
 
-# Notes area rows 30-53 (merged per day)
-for r in range(30, 54):
+# Notes area rows 40-47 (merged per day) — slimmed from 24 rows to 8
+for r in range(40, 48):
     week.row_dimensions[r].height = 16
     week[f"A{r}"].fill = ROW_FILL
     for sc, tc in DAY_PAIRS:
@@ -262,10 +262,10 @@ for i, (sc, tc) in enumerate(DAY_PAIRS):
     r = 100 + i
     week[f"Q{r}"] = DAYS[i]
     week[f"Q{r}"].font = MUTED_FONT
-    week[f"R{r}"] = f'=COUNTIF({sc}23:{sc}27,"✅")'
+    week[f"R{r}"] = f'=COUNTIF({sc}23:{sc}37,"✅")'
     week[f"S{r}"] = (
-        f'=IF(COUNTA({tc}23:{tc}27)=0,1,'
-        f'COUNTA({tc}23:{tc}27)-COUNTIF({sc}23:{sc}27,"✅"))'
+        f'=IF(COUNTA({tc}23:{tc}37)=0,1,'
+        f'COUNTA({tc}23:{tc}37)-COUNTIF({sc}23:{sc}37,"✅"))'
     )
 
 for r in range(99, 108):

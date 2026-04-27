@@ -22,7 +22,7 @@ HANDLERS = [
     ),
     HandlerConfig(
         fn=redact_bash_secrets,
-        matcher=r"^Bash$",
+        matcher=r"^(Bash|mcp__)",
         name="redact-secrets",
     ),
     HandlerConfig(

@@ -58,8 +58,10 @@ Memory recall weakens as the session fills. These fire on action triggers, not t
 
 ### Before handling secrets / config
 - Never use Read tool on .claude.json, .env, credentials, OAuth files — Bash + grep only.
+- **For Bash inspection of secret files, use ONLY value-suppressing patterns**: `grep -c PATTERN file` (count), `grep -l PATTERN file` (filename), `awk -F= '/^export/ {print $1}'` (variable names only). NEVER `grep PATTERN file` / `grep -nE` / `cat` / `head` / `tail` — these print values. The PreToolUse `secret-file-guard` hook (`.claude/hooks/router/handlers/secret_file_guard.py`) blocks the unsafe patterns at the harness layer, but the rule belongs here too because hooks can fail.
 - Use `/tmp` file method (`cat > /tmp/file`), not env vars, for secret transfer.
 - Never echo secrets, links, or sensitive data into conversation output.
+- **After rotating a credential, verify auth via `curl` with output suppression BEFORE calling any MCP tool that uses it.** MCP server error formatters (e.g. `attio-mcp` axios errors) leak the full `Authorization: Bearer <token>` header into transcript on 401 — this is a known leak vector that the `redact_secrets` PostToolUse hook can only warn about, not scrub. The pattern: `curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $(cat /tmp/key)" https://api.example.com/v2/resource`. 200 = good, then `/mcp` reconnect, then call MCP tools. 401 = bad scopes/key, but no leak because response body is discarded. **Three rotations in one session on 2026-04-27 from violating this — never call MCP tools on a freshly-rotated token without curl-verifying first.**
 
 ### Before answering "what was planned/scheduled for X"
 - Query order: calendar → beads → brain/outputs/ → session-decisions.

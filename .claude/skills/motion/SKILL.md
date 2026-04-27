@@ -20,6 +20,8 @@ Execute Motion project management operations via the REST API — create project
 4. **Rate limit awareness:** 12 requests/minute for individual workspace. Batch operations need pacing.
 5. **Confirm destructive ops:** Task deletion and status changes should be confirmed with the user before execution.
 6. **No credential exposure:** Never echo or commit the API key in logs or output.
+7. **Parse responses with Python `json.loads(text, strict=False)`, NOT jq.** Motion API embeds raw control characters (newlines, tabs) in description fields. Strict parsers like jq error with "Invalid string: control characters from U+0000 through U+001F must be escaped". Bash loops piping curl to jq fail silently. See `memory/feedback_motion_api_python_not_jq.md`.
+8. **403 throttle is sticky.** A burst of failed requests can extend the throttle window beyond the standard 60-second per-minute limit (observed 30+ min cooldown 2026-04-26). Pace 7s between calls minimum, 60-180s wait on first 403, escalate to 30 min if multiple retries fail.
 </essential_principles>
 
 <quick_start>

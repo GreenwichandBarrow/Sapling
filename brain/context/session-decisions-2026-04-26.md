@@ -116,3 +116,90 @@ Heavy execution Sunday. Items 10-14 from the morning briefing substantively ship
 - **Superhuman MCP:** 🟡 still expired (Bash wrapper works for drafts; this isn't blocking tonight)
 - **launchd Apollo credits + external services probes:** ✅ wired up, run Mon-Fri (per scheduled-vs-todo rule, won't re-surface unless they fail)
 - **Cadence-debt:** zeroed out (6 records → Dormant)
+
+---
+
+## Evening Session — Gmail Filter Migration + SaaS Lock-in Audit Initiation
+
+Late afternoon / evening session. Migrated Kay's email auto-labeling system from Superhuman's LLM autolabels (locked into the app, lost on cancellation) to portable Gmail filters under `auto/*` namespace. Surfaced annual-SaaS lock-in pattern (Superhuman, Grammarly chatbot refusing pro-rated refund, Motion likely same) → hardened SaaS rule from "monthly first, annual after 30-60 days" to "NEVER annual unless monthly isn't offered." Skill audit identified 2 read-path migrations needed.
+
+### Decisions
+
+#### Gmail filter migration to auto/* namespace
+- **APPROVE** — Replaced Superhuman's locked-in LLM autolabels with 13 `auto/*` Gmail filters. New labels: `auto/deal flow`, `auto/family & friends`, `auto/finance & legal`, `auto/home`, `auto/meetings`, `auto/personal & network`, `auto/search fund`, `auto/subscriptions & education`, `auto/travel & expenses`, `auto/tech stack`, `auto/investors`, `auto/team`, `auto/industry research`. Backfilled ~3,100 historical threads. Filters apply label only, do NOT skip inbox (per Kay's "I want to see it labeled, hit E when done" workflow).
+
+#### 12 VIP IMPORTANT filters deleted
+- **APPROVE** — Kay: "Gmail's native Important learning does the work of VIP labeling." All 12 filters routing senders (Anacapa, ML Capital, DealsX, Fireflies, etc.) to `IMPORTANT,CATEGORY_PERSONAL` deleted. Native Priority Inbox classifier replaces hardcoded rules.
+
+#### 97 old organizational filters deleted
+- **APPROVE** — Net of expanded `auto/*` coverage, 97 filters routing to legacy labels (RESOURCES/EDUCATION 29, TECH STACK 19, BANKING/ACCOUNTING 12, etc.) deleted. Old labels themselves kept (historical mail retains tags). Total filters dropped from 129 → 31.
+
+#### Old organizational labels — KEEP (no delete)
+- **PASS** — Kay's rule: don't delete labels themselves yet. Historical mail with old tags stays findable. Revisit after 2-week observation of `auto/*` performance.
+
+#### auto/family & friends — DROPPED
+- **PASS** — Kay: "drop the request for family and friends emails." Label stays dormant in Gmail, no filter built. Personal-account use case can re-activate later when she authenticates a personal Gmail into gog.
+
+#### Megan @ ml-cap.com reclassified
+- **APPROVE** — Originally proposed as `auto/investors` member based on VIP filter routing. Kay corrected: "she is not an investor, she is a fellow searcher." Reclassified to `auto/personal & network` (3 historical threads relabeled).
+
+#### SaaS purchase rule — HARD shift
+- **APPROVE/RULE** — Kay: "no annual subscriptions unless its the only option." Original soft rule (monthly first, switch to annual after 30-60 days proven use) replaced with hard rule. Memory `feedback_saas_monthly_first.md` rewritten. Receipts: Superhuman annual lock-in (no refund per Grammarly chatbot), Motion likely same, Grammarly itself.
+
+#### Superhuman cancellation pursued
+- **APPROVE** — Kay paid annual; productivity value unclear vs. Mimestream / Apple Mail + Gmail filters. Email drafted to `help@superhuman.com` (cancel + pro-rated refund). Schedule Monday 9 AM ET. Don't self-cancel until response received.
+
+#### Motion cancellation pursued
+- **APPROVE** — Likely same annual lock-in pattern. Email drafted to `support@usemotion.com` (cancel + refund OR switch to monthly). Schedule Monday 9 AM ET. Email also requests CSV export of all 210 tasks (active + completed) before cancellation processes.
+
+#### Skill audit — 2 migrations identified
+- **APPROVE** — Audit found `email-intelligence` and `pipeline-manager` use `superhuman_search` MCP for inbox/draft scanning. Drafting via `superhuman-draft.sh` wrapper KEEP-AS-IS (intentional per security model). READ paths should migrate to gog Gmail. Bead `ai-ops-eg3` created (P1, ~2-3 hr).
+
+#### Email drafts — direct ask only (no busywork questions)
+- **APPROVE/RULE** — Kay flagged that asking vendors to "please confirm: 1/2/3..." dilutes the ask and gives them an easy out. Memory `feedback_email_direct_ask_only.md` shipped. Pattern: lead with the ask, trust vendor to surface relevant data in their response.
+
+#### Refund attempt — escalation path before self-cancel
+- **APPROVE** — Order: send email FIRST (preserves leverage), wait 1-2 business days for response, only self-cancel via vendor app if refund denied. Self-cancelling first nukes leverage and often forfeits refund eligibility.
+
+### Actions Taken
+
+- **CREATED:** 13 `auto/*` Gmail labels on `kay.s@greenwichandbarrow.com` (Label_27 through Label_39)
+- **CREATED:** 14 Gmail filters (1 `auto/family & friends` filter pending email list, dropped per Kay; the rest live)
+- **CREATED:** Bead `ai-ops-sre` (P2) — tech-stack audit, monthly vs annual SaaS sweep
+- **CREATED:** Bead `ai-ops-eg3` (P1) — migrate email-intelligence + pipeline-manager READ paths from Superhuman MCP to gog Gmail
+- **CREATED:** Memory `feedback_gmail_filters_backfill_default.md` — always backfill matches when creating filters
+- **CREATED:** Memory `feedback_refresh_state_before_bulk_destructive.md` — re-fetch live state before bulk deletes (post-mortem from self-inflicted bulk-delete-with-stale-snapshot bug)
+- **CREATED:** Memory `feedback_email_direct_ask_only.md` — no "please confirm 1/2/3" busywork in email drafts
+- **CREATED:** Memory `feedback_motion_api_python_not_jq.md` — Motion API has unescaped control chars; parse with Python `json.loads(strict=False)`
+- **UPDATED:** Memory `feedback_saas_monthly_first.md` — hard rule (never annual unless monthly isn't offered); supersedes earlier soft 30-60-day version
+- **UPDATED:** `~/.claude/projects/.../memory/MEMORY.md` index with 5 new/updated entries
+- **UPDATED:** `.claude/skills/motion/SKILL.md` — added Python-not-jq parsing rule + 403 throttle behavior to essential principles
+- **DELETED:** 12 VIP `IMPORTANT,CATEGORY_PERSONAL` filters
+- **DELETED:** 97 old organizational filters (TECH STACK 19, BANKING 12, RECEIPTS 7, OUTREACH 7, INVESTORS 6, DEAL FLOW 4, RESOURCES/EDUCATION 29, INDUSTRY RESEARCH 4, TEAM 5, MISC 4)
+- **BACKFILLED:** ~3,100+ historical threads relabeled across 9 categories (deal flow 86, finance & legal 100+500cap, meetings 411, personal & network 32+10+3, subscriptions 298+500cap, travel 129, tech stack 769, investors 241+48, team 162, industry research 38)
+- **DRAFTED:** Email to `help@superhuman.com` (cancel + pro-rated refund) — Kay to schedule Monday 9 AM ET
+- **DRAFTED:** Email to `support@usemotion.com` (cancel + refund + CSV export request) — Kay to schedule Monday 9 AM ET
+- **VERIFIED:** Cancellation channel for Superhuman post-Grammarly acquisition routes through Grammarly billing chat; chatbot refused pro-rated refund (no escalation in that channel), so direct Superhuman support email is the parallel attempt
+
+### Deferred (Evening Session)
+
+- **Send Superhuman email** — Monday 2026-04-27 9 AM ET (Sunday-no-send rule)
+- **Send Motion email** — Monday 2026-04-27 9 AM ET (Sunday-no-send rule)
+- **Mass-delete remaining ~27 niche-specific filters** — after 2-week observation period of `auto/*` performance (target: 2026-05-10). Includes some specific bank/vendor senders auto/finance & legal misses (~10), industry research mailchimp lists (~3), team-specific routing (~3), one-off niche senders (~10).
+- **ai-ops-eg3 (Superhuman READ path migration)** — schedule for next week as discrete task, ~2-3 hr work
+- **Verify Gmail filter behavior in production** — watch for over-eager matches or missed senders over the next week
+- **auto/family & friends filter** — dropped per Kay (label stays dormant); reactivate when she authenticates personal Gmail into gog (no fixed date)
+
+### Open Loops (Evening Session)
+
+- **Motion API task export retry** — running in background as task `bpvjuq7i5` (8-retry exponential backoff, fetching active + completed). Verify tomorrow whether `/tmp/motion-backup.json` populated. If success → upload to `STRATEGIC PLANNING` Drive folder as `MOTION TASKS ARCHIVE 4.26.26` Sheet. If still throttled → rely on Monday Motion support email to send CSV.
+- **Grammarly cancellation flow** — Kay was mid-flow in chatbot when session ended. Bot confirmed: no pro-rated refund, no human escalation through that channel. She still needs to finalize cancellation through chatbot (turn off auto-renew) regardless of refund outcome. Should happen Monday alongside the email send.
+- **Refund verdicts pending** — Superhuman direct support, Motion support. Both via Monday 9 AM emails. Decision tree: refund granted → cancellation processes naturally. Refund denied → use through term-end, switch to monthly (Motion) or migrate to Mimestream/Apple Mail (Superhuman) at next renewal.
+- **Pulled-forward tech-stack audit** — bead `ai-ops-sre` was P2; based on today's discoveries (2+ confirmed annual lock-ins), should escalate to P1 and run alongside next budget-manager. Recommend morning surface in tomorrow's briefing as 🟡 decision item.
+
+### Calibration Candidates (Evening Session)
+
+- **Stop hook caught 2 Sunday-send recommendations** — hook is working, no escalation needed. Confirms `feedback_no_sunday_emails` rule is enforced via stop-hook layer not memory only.
+- **Self-inflicted bulk-delete bug from stale snapshot** — caught + recovered + memorialized as `feedback_refresh_state_before_bulk_destructive.md`. No additional skill/hook change recommended; the rule is now durable.
+- **Motion API jq parsing failure** — caught + recovered + memorialized as `feedback_motion_api_python_not_jq.md` and inlined into `.claude/skills/motion/SKILL.md` as essential principle #7. Future agents will hit this rule before reaching for jq.
+- **Pattern: SaaS lock-in pain across 3 vendors today (Superhuman, Grammarly, Motion)** — recommend `budget-manager` skill auto-flag annual subscriptions in next monthly run + draft cancellation/switch emails proactively for Kay's review. NOT proposing autonomous send — preserve `draft-before-send` rule.

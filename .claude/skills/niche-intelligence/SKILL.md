@@ -162,9 +162,9 @@ tags:
 
 #### RECENT agent (single agent, 6 sources):
 1. **Web/social** — last30days skill (Reddit, HN, Polymarket) + WebSearch
-2. **Newsletters** — Axios + Axios Pro Rata from Gmail (last 7 days)
+2. **Newsletters** — `label:"auto/subscriptions & education"` (last 7 days) + `label:"auto/industry research"` (last 14 days). Covers all newsletters Kay subscribes to (Axios, HBR, Girdley, Sweaty Startup, Acquiring Minds, Buy Then Build, etc.) — pull the whole bucket, not per-publisher subject queries.
 3. **Granola calls** — meeting transcripts from last 2 weeks
-4. **Gmail deal flow** — broker teasers, CIMs, investor emails (last 14 days)
+4. **Gmail deal flow** — `label:"auto/deal flow"` (last 14 days) + `label:"auto/investors"` (last 14 days). Broker teasers, CIMs, intermediary inbound, investor portfolio news, searcher cohort signal.
 5. **Vault research** — brain/outputs/ and brain/calls/ from last 2 weeks
 6. **Passive signals** — brain/inbox/ items tagged `topic/niche-signal` since last Tuesday
 

@@ -80,13 +80,22 @@ Spawn 6 specialized sub-agents in parallel to collect data. Each returns a struc
 ```
 **Queries:**
 ```bash
-# Outreach sent — use specific OUTREACH sublabels (parent label doesn't work in Gmail search)
-gog gmail search "(label:OUTREACH/INTERMEDIARIES OR label:OUTREACH/NETWORK) from:me after:{WEEK_START} before:{WEEK_END}" --json
-# Manually filter out non-outreach (invoices, receipts, consultant payments that happen to have outreach labels)
-# Only count threads where Kay initiated or continued acquisition-related correspondence
+# Outreach sent — labels migrated 2026-04-27 from legacy OUTREACH/* to auto/* per
+# Sunday 4/26 Gmail filter migration. Gmail threads carry their auto/* label across
+# every message, so `from:me label:"auto/deal flow"` captures Kay's REPLIES to
+# intermediary threads (the dominant outreach signal).
+gog gmail search '(label:"auto/deal flow" OR label:"auto/personal & network" OR label:"auto/investors") from:me after:{WEEK_START} before:{WEEK_END}' --json
+# Manually filter out non-outreach (invoices, receipts, consultant payments that happen to have these labels).
+# Only count threads where Kay initiated or continued acquisition-related correspondence.
 
-# Responses — same label query, filter to threads with messageCount > 1
-gog gmail search "(label:OUTREACH/INTERMEDIARIES OR label:OUTREACH/NETWORK) after:{WEEK_START} before:{WEEK_END}" --json
+# KNOWN LIMITATION: Kay-INITIATED cold outbound (where she sends first to a target
+# who hasn't emailed her) won't have an auto/* label because the filter triggers on
+# inbound mail. That cold-outbound signal lives in outreach-manager's draft log;
+# weekly-tracker should pull it from there separately if precise volume is needed.
+
+# Responses — same label set, count threads with messageCount > 1 where the
+# other party replied (i.e., not just Kay's own re-sends).
+gog gmail search '(label:"auto/deal flow" OR label:"auto/personal & network" OR label:"auto/investors") after:{WEEK_START} before:{WEEK_END}' --json
 # Thread with messageCount > 1 where the other party replied = 1 response
 
 # Introductions received — someone introducing Kay to a new person

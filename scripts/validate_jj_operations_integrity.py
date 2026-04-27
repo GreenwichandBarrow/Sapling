@@ -50,14 +50,27 @@ def tab_name(d: date) -> str:
     return f"Call Log {d.month}.{d.day:02d}.{d.strftime('%y')}"
 
 
+def _run_with_retry(args: list[str], timeout: int = 90) -> subprocess.CompletedProcess:
+    """Run a subprocess once, retry once on TimeoutExpired with same budget.
+
+    gog's sheets metadata API occasionally exceeds 30s on cold cache (real
+    failure mode observed Sunday 4/26 surfaced as "could not list tabs").
+    90s budget + retry-once handles transient slowness without swallowing
+    a genuinely stuck call — second timeout raises normally.
+    """
+    try:
+        return subprocess.run(args, capture_output=True, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        print(
+            f"[validate_jj_operations] subprocess timed out after {timeout}s, retrying once: {' '.join(args)}",
+            file=sys.stderr,
+        )
+        return subprocess.run(args, capture_output=True, text=True, timeout=timeout)
+
+
 def list_sheet_tabs(sheet_id: str) -> list[str]:
     """Return list of tab titles via `gog sheets metadata`."""
-    result = subprocess.run(
-        ["gog", "sheets", "metadata", sheet_id],
-        capture_output=True,
-        text=True,
-        timeout=30,
-    )
+    result = _run_with_retry(["gog", "sheets", "metadata", sheet_id], timeout=90)
     if result.returncode != 0:
         raise RuntimeError(f"gog sheets metadata failed: {result.stderr.strip()}")
     titles = []
@@ -82,11 +95,8 @@ def list_sheet_tabs(sheet_id: str) -> list[str]:
 
 def get_col_values(sheet_id: str, tab: str, col_letter: str, max_row: int = 200) -> list[str]:
     rng = f"'{tab}'!{col_letter}2:{col_letter}{max_row}"
-    result = subprocess.run(
-        ["gog", "sheets", "get", sheet_id, rng, "--json"],
-        capture_output=True,
-        text=True,
-        timeout=30,
+    result = _run_with_retry(
+        ["gog", "sheets", "get", sheet_id, rng, "--json"], timeout=90
     )
     if result.returncode != 0:
         return []

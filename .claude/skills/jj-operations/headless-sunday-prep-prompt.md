@@ -5,9 +5,12 @@ You are running the `jj-operations` skill in **prep mode** non-interactively und
 ## Mandatory ordering — execute in this exact sequence
 
 1. **Read SKILL.md fully** at `.claude/skills/jj-operations/SKILL.md`.
-2. **Pre-flight gate (per SKILL.md line 247-262):**
-   - Verify target-discovery Phase 2 completion log exists for **today** (Sunday). Check `logs/scheduled/target-discovery-{TODAY}-*.log` (any time today — glob survives plist Hour key changes) ends with exit 0 and contains "Phase 2 Step 5: tabs created" or equivalent.
-   - Verify pool artifact exists at `brain/context/jj-week-pool-{YYYY-MM-DD}.md` (today's date, since Phase 2 fires same-day at 3pm before this 6pm prep). If missing, **STOP** — do not build tabs on stale or absent pool.
+2. **Pre-flight gate — pool artifact is the canonical signal:**
+   The pool artifact file is Phase 2's deliverable. If it exists and looks reasonable, Phase 2 succeeded enough to proceed. (Phase 2's validator exit code is unreliable until its date-anchor bug is fixed — separate work item — and the log-string check ("Phase 2 Step 5: tabs created") was fragile against wording drift. Don't gate on either.)
+   - Verify pool artifact exists at `brain/context/jj-week-pool-{TODAY}.md` (today's date, since Phase 2 fires same-day at 3pm before this 6pm prep).
+   - Verify the file is non-empty: size `> 100` bytes as a sanity check.
+   - Verify the file has at least **50 lines** starting with `- row:` (each pool row is one such line; 50 is a safety floor; real pools are 150–200).
+   - If the artifact is missing, undersized, or has fewer than 50 `- row:` lines, **STOP** per the Failure handling section — do not build tabs on stale or absent pool.
 3. **For each JJ-Call-Only niche** (default Premium Pest Management; multi-niche TBD):
    - Identify master sheet ID per `.claude/skills/jj-operations/SKILL.md` line 87 mapping (Premium Pest = `1Y0ZjEkc2LHhBoO4QGO8Ny9MvG90NpojQn8bloKA291I`).
    - Archive previous week's Call Log tabs (hide, don't delete) per Step 1 of call_prep section.
@@ -29,7 +32,7 @@ You are running the `jj-operations` skill in **prep mode** non-interactively und
 
 - Asking the user anything.
 - Building tabs on a missing pool artifact.
-- Skipping the pre-flight Phase 2 completion-log gate.
+- Skipping the pre-flight pool-artifact gate (existence + size + `- row:` line count).
 - Drafting the Monday 10am Slack message (out of scope for prep).
 - Presenting RECOMMEND / YES / NO / DISCUSS framings.
 

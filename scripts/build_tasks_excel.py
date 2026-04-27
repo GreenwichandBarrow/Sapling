@@ -20,7 +20,11 @@ from openpyxl.chart import DoughnutChart, Reference
 from openpyxl.chart.series import DataPoint
 from openpyxl.chart.shapes import GraphicalProperties
 
-OUT = "/Users/kaycschneider/My Drive/STRATEGIC PLANNING/TO DO 4.26.26.xlsx"
+import os
+OUT = os.environ.get(
+    "TASKS_XLSX_OUT",
+    "/Users/kaycschneider/My Drive/STRATEGIC PLANNING/TO DO 4.26.26.xlsx",
+)
 
 SAGE_DARK = "6B8E5A"
 SAGE_MID = "A8C49A"

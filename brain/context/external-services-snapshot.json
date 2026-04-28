@@ -1,11 +1,17 @@
 {
-  "fetched_at": "2026-04-28T18:30:05-04:00",
+  "fetched_at": "2026-04-28T19:30:05-04:00",
   "services": {
     "linkt": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
       "skip_reason": "Browser session required (no API)"
+    },
+    "claude-api": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "ANTHROPIC_API_KEY not in env"
     },
     "attio-mcp": {
       "status": "skip",
@@ -19,12 +25,6 @@
       "message": "4 webhooks configured",
       "skip_reason": null
     },
-    "claude-api": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "ANTHROPIC_API_KEY not in env"
-    },
     "superhuman": {
       "status": "skip",
       "latency_ms": null,
@@ -33,7 +33,7 @@
     },
     "launchd": {
       "status": "ok",
-      "latency_ms": 12,
+      "latency_ms": 10,
       "message": "18 jobs registered",
       "skip_reason": null
     },
@@ -45,32 +45,32 @@
     },
     "mcp-processes": {
       "status": "ok",
-      "latency_ms": 66,
+      "latency_ms": 42,
       "message": "attio-mcp=8 superhuman=4",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 144,
+      "latency_ms": 83,
       "message": "authenticated",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 166,
+      "latency_ms": 151,
       "message": "HTTP 405",
-      "skip_reason": null
-    },
-    "apollo": {
-      "status": "ok",
-      "latency_ms": 199,
-      "message": "200 OK",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 404,
+      "latency_ms": 212,
       "message": "gh authenticated",
+      "skip_reason": null
+    },
+    "apollo": {
+      "status": "ok",
+      "latency_ms": 205,
+      "message": "200 OK",
       "skip_reason": null
     }
   }

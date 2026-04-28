@@ -35,7 +35,8 @@ Pipeline-manager assembles the raw briefing payload.
 ### Step 4 — Active-Outreach niche check
 
 For each niche with status `Active-Outreach` on the Industry Research Tracker:
-- Check target sheet fill rate
+- **Filter by Outreach Channel FIRST.** target-discovery only fills target sheets for `Kay Email` and `JJ-Call-Only` channels. **`DealsX Email` niches are SKIPPED unconditionally** — Sam's team at DealsX manages the contact universe externally; the local target sheet for a DealsX niche is *expected* to remain empty and an empty sheet is NOT a refill signal. Never surface a DealsX niche as "needs target-discovery."
+- For Kay Email + JJ-Call-Only niches only: check target sheet fill rate
 - If new activation with no target sheet OR weekly dashboard flagged refill needed → run target-discovery
 - Skip niches with adequate pipeline
 

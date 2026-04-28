@@ -243,25 +243,40 @@ def _expand_intervals(intervals: list[dict]) -> dict[int, list[tuple[int, int]]]
 
 
 def _build_weekly_flow(groups: list[CSuiteGroup]) -> dict[int, list[dict]]:
-    """Return {iso_weekday: [{name, time_label, today_status, sort_minutes}, ...]}.
+    """Return {iso_weekday: [{name, time_label, today_status, sort_minutes, day_count}, ...]}.
 
-    Tiles within each day are sorted by first-fire time, then name.
+    Tiles within each day are sorted by frequency band first (everyday → most-
+    days → day-unique), then by first-fire time, then by name. Frequency is the
+    raw day_count across the 7-day week, sorted descending — a 7-day skill
+    floats to the top of every column, a 5-day Mon-Fri skill sits in the middle,
+    a 1-day skill drops to the bottom.
     """
-    flow: dict[int, list[dict]] = {d: [] for d in range(1, 8)}
+    # First pass: count how many days each skill fires across the week.
+    day_count: dict[str, int] = {}
+    skill_intervals: dict[str, dict[int, list[tuple[int, int]]]] = {}
+    skill_status: dict[str, str] = {}
     for group in groups:
         for skill in group.skills:
             if not skill.is_scheduled or not skill.intervals:
                 continue
             by_day = _expand_intervals(skill.intervals)
-            for day, times in by_day.items():
-                flow[day].append({
-                    "name": skill.name,
-                    "time_label": _compact_time_label(times),
-                    "today_status": skill.today_status,
-                    "sort_minutes": times[0][0] * 60 + times[0][1],
-                })
+            day_count[skill.name] = len(by_day)
+            skill_intervals[skill.name] = by_day
+            skill_status[skill.name] = skill.today_status
+
+    flow: dict[int, list[dict]] = {d: [] for d in range(1, 8)}
+    for name, by_day in skill_intervals.items():
+        for day, times in by_day.items():
+            flow[day].append({
+                "name": name,
+                "time_label": _compact_time_label(times),
+                "today_status": skill_status[name],
+                "sort_minutes": times[0][0] * 60 + times[0][1],
+                "day_count": day_count[name],
+            })
+    # Sort: descending day_count (everyday first), then ascending time, then name.
     for day in flow:
-        flow[day].sort(key=lambda t: (t["sort_minutes"], t["name"]))
+        flow[day].sort(key=lambda t: (-t["day_count"], t["sort_minutes"], t["name"]))
     return flow
 
 

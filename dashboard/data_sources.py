@@ -785,6 +785,7 @@ class SkillHealth:
     today_status: str  # see _STATUSES below
     last_run: SkillRun | None
     recent_runs: list[SkillRun] = field(default_factory=list)
+    intervals: list[dict] = field(default_factory=list)  # raw StartCalendarInterval entries for weekly-flow grid
 
 
 @dataclass
@@ -1061,6 +1062,7 @@ def _build_skill_health(
         today_status=today_status,
         last_run=recent[0] if recent else None,
         recent_runs=recent,
+        intervals=intervals,
     )
 
 

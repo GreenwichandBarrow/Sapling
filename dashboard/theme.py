@@ -1072,6 +1072,110 @@ GLOBAL_CSS = f"""
     font-family: "SF Mono", "Menlo", monospace;
   }}
 
+  /* -------- WEEKLY FLOW (top of c-suite-skills page) -------- */
+  .gb-weekly-flow {{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }}
+  .gb-weekly-flow-head {{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.01);
+  }}
+  .gb-weekly-flow-label {{
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text);
+  }}
+  .gb-weekly-flow-sub {{
+    font-size: 10.5px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }}
+  .gb-weekly-flow-grid {{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+  }}
+  .gb-flow-day {{
+    border-right: 1px solid var(--border-soft);
+    padding: 12px 12px 14px;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }}
+  .gb-flow-day:last-child {{ border-right: none; }}
+  .gb-flow-day.today {{
+    background: rgba(176, 132, 240, 0.04);
+  }}
+  .gb-flow-day.past {{
+    opacity: 0.55;
+  }}
+  .gb-flow-day-head {{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2px;
+  }}
+  .gb-flow-day-name {{
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }}
+  .gb-flow-day.today .gb-flow-day-name {{ color: var(--purple); }}
+  .gb-flow-day-count {{
+    font-size: 10px;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+  }}
+  .gb-flow-tile {{
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border-soft);
+    border-radius: 6px;
+    padding: 6px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }}
+  .gb-flow-tile.fired-ok {{ border-color: var(--green); background: rgba(63, 209, 127, 0.06); }}
+  .gb-flow-tile.fired-warn {{ border-color: var(--yellow); background: rgba(240, 200, 90, 0.06); }}
+  .gb-flow-tile.fired-err {{ border-color: var(--red); background: rgba(255, 90, 90, 0.06); }}
+  .gb-flow-tile.missed {{ border-color: var(--red); background: rgba(255, 90, 90, 0.04); border-style: dashed; }}
+  .gb-flow-tile-name {{
+    font-family: "SF Mono", "Menlo", "Monaco", monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }}
+  .gb-flow-tile-time {{
+    font-size: 9.5px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }}
+  .gb-flow-day-empty {{
+    font-size: 10.5px;
+    color: var(--text-dim);
+    font-style: italic;
+    text-align: center;
+    margin-top: 14px;
+  }}
+
   /* -------- INFRASTRUCTURE PAGE -------- */
   .gb-zone {{
     background: var(--panel);

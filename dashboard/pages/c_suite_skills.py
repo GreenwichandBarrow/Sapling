@@ -176,6 +176,153 @@ def _render_group(group: CSuiteGroup) -> str:
     return f'<section class="gb-csuite">{head}{body}</section>'
 
 
+# ---------------- Weekly Flow (top-of-page tile grid) ----------------
+
+# ISO weekday: Mon=1..Sun=7. Sun-first calendar order:
+_SUN_TO_SAT: list[tuple[int, str]] = [
+    (7, "Sun"), (1, "Mon"), (2, "Tue"), (3, "Wed"),
+    (4, "Thu"), (5, "Fri"), (6, "Sat"),
+]
+
+
+def _fmt_time_short(h: int, m: int) -> str:
+    period = "AM" if h < 12 else "PM"
+    h12 = h % 12 or 12
+    if m == 0:
+        return f"{h12} {period}"
+    return f"{h12}:{m:02d} {period}"
+
+
+def _fmt_hour(h: int) -> str:
+    period = "AM" if h < 12 else "PM"
+    h12 = h % 12 or 12
+    return f"{h12}{period}"
+
+
+def _compact_time_label(times: list[tuple[int, int]]) -> str:
+    """Compress (hour, minute) fires for ONE skill on ONE day into a label.
+
+    Rules:
+      - 1 fire → "6 AM"
+      - 2-3 fires → "6 AM, 2 PM"
+      - 4+ fires, all on the hour, contiguous → "Hourly 8AM-8PM"
+      - otherwise → "{n}× daily"
+    """
+    if not times:
+        return ""
+    times = sorted(times)
+    if len(times) == 1:
+        return _fmt_time_short(*times[0])
+    hours = [h for h, _ in times]
+    minutes = {m for _, m in times}
+    if (
+        minutes == {0}
+        and hours == list(range(min(hours), max(hours) + 1))
+        and len(hours) >= 4
+    ):
+        return f"Hourly {_fmt_hour(min(hours))}-{_fmt_hour(max(hours))}"
+    if len(times) <= 3:
+        return ", ".join(_fmt_time_short(h, m) for h, m in times)
+    return f"{len(times)}× daily"
+
+
+def _expand_intervals(intervals: list[dict]) -> dict[int, list[tuple[int, int]]]:
+    """Return {iso_weekday: [(hour, minute), ...]} for one skill's plist."""
+    by_day: dict[int, list[tuple[int, int]]] = {}
+    for d in intervals:
+        h = d.get("Hour", 0)
+        m = d.get("Minute", 0)
+        wd = d.get("Weekday")
+        if wd is None:
+            for day in range(1, 8):
+                by_day.setdefault(day, []).append((h, m))
+        else:
+            wd_norm = 7 if wd == 0 else wd
+            by_day.setdefault(wd_norm, []).append((h, m))
+    return {d: sorted(t) for d, t in by_day.items() if t}
+
+
+def _build_weekly_flow(groups: list[CSuiteGroup]) -> dict[int, list[dict]]:
+    """Return {iso_weekday: [{name, time_label, today_status, sort_minutes}, ...]}.
+
+    Tiles within each day are sorted by first-fire time, then name.
+    """
+    flow: dict[int, list[dict]] = {d: [] for d in range(1, 8)}
+    for group in groups:
+        for skill in group.skills:
+            if not skill.is_scheduled or not skill.intervals:
+                continue
+            by_day = _expand_intervals(skill.intervals)
+            for day, times in by_day.items():
+                flow[day].append({
+                    "name": skill.name,
+                    "time_label": _compact_time_label(times),
+                    "today_status": skill.today_status,
+                    "sort_minutes": times[0][0] * 60 + times[0][1],
+                })
+    for day in flow:
+        flow[day].sort(key=lambda t: (t["sort_minutes"], t["name"]))
+    return flow
+
+
+def _render_weekly_flow(groups: list[CSuiteGroup]) -> str:
+    flow = _build_weekly_flow(groups)
+    today_iso = datetime.now().isoweekday()
+
+    # Skip Saturday only if zero scheduled skills fire on Sat.
+    week = list(_SUN_TO_SAT)
+    if not flow.get(6):
+        week = [(d, n) for d, n in week if d != 6]
+
+    today_idx = next((i for i, (d, _) in enumerate(week) if d == today_iso), None)
+
+    cols: list[str] = []
+    for i, (day_iso, day_name) in enumerate(week):
+        tiles = flow.get(day_iso, [])
+        if today_idx is None:
+            day_class = "future"
+        elif i < today_idx:
+            day_class = "past"
+        elif i == today_idx:
+            day_class = "today"
+        else:
+            day_class = "future"
+
+        tile_html: list[str] = []
+        for tile in tiles:
+            cls_extra = ""
+            if day_class == "today":
+                s = tile["today_status"]
+                if s in ("fired-ok", "fired-warn", "fired-err", "missed"):
+                    cls_extra = f" {s}"
+            tile_html.append(
+                f'<div class="gb-flow-tile{cls_extra}">'
+                f'<div class="gb-flow-tile-name">{escape(tile["name"])}</div>'
+                f'<div class="gb-flow-tile-time">{escape(tile["time_label"])}</div>'
+                f'</div>'
+            )
+        body = "".join(tile_html) if tile_html else '<div class="gb-flow-day-empty">—</div>'
+        cols.append(
+            f'<div class="gb-flow-day {day_class}">'
+            f'<div class="gb-flow-day-head">'
+            f'<span class="gb-flow-day-name">{day_name}</span>'
+            f'<span class="gb-flow-day-count">{len(tiles)}</span>'
+            f'</div>'
+            f'{body}'
+            f'</div>'
+        )
+
+    return (
+        '<section class="gb-weekly-flow">'
+        '<div class="gb-weekly-flow-head">'
+        '<span class="gb-weekly-flow-label">WEEKLY FLOW</span>'
+        '<span class="gb-weekly-flow-sub">scheduled skills by day · today highlighted</span>'
+        '</div>'
+        f'<div class="gb-weekly-flow-grid">{"".join(cols)}</div>'
+        '</section>'
+    )
+
+
 def _render_subtitle() -> str:
     return dedent(
         """
@@ -254,6 +401,7 @@ def render() -> None:
 
     st.markdown(_render_subtitle(), unsafe_allow_html=True)
     st.markdown(_render_summary(summary), unsafe_allow_html=True)
+    st.markdown(_render_weekly_flow(groups), unsafe_allow_html=True)
 
     pill = st.segmented_control(
         "Skill filter",

@@ -78,13 +78,25 @@ case "$SKILL_NAME:$SKILL_ARGS" in
   "deal-aggregator:")
     # Bare `run-skill.sh deal-aggregator` (Mon-Fri 6am morning fire — empty
     # args). Route to the morning headless prompt to forbid operator-question
-    # framings and enforce idempotency-gate against double-write. Afternoon
-    # (--afternoon) and Friday digest (--digest-mode) intentionally NOT routed
-    # here — those plists pass distinct args and continue using bare
-    # `/deal-aggregator <flag>` until separately hardened. Fix added 2026-04-28
-    # after morning run produced `RECOMMEND: ... → YES/NO/DISCUSS` meta-output
-    # instead of executing.
+    # framings and enforce idempotency-gate against double-write. Fix added
+    # 2026-04-28 after morning run produced `RECOMMEND: ... → YES/NO/DISCUSS`
+    # meta-output instead of executing.
     HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/deal-aggregator/headless-morning-prompt.md"
+    ;;
+  "deal-aggregator:--afternoon")
+    # Mon-Fri 2pm afternoon top-up. Lighter scan (Channel 2 + time-sensitive
+    # platforms only). Writes separate artifact at
+    # brain/context/deal-aggregator-scan-{TODAY}-afternoon.md — never
+    # overwrites morning. Hardened 2026-04-28 same incident as morning.
+    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/deal-aggregator/headless-afternoon-prompt.md"
+    ;;
+  "deal-aggregator:--digest-mode")
+    # Friday 6am weekly source-productivity digest (Phase 2). Reads 7 days of
+    # daily scorecards + 30 days of fingerprints + 7 days of email-scan-results
+    # + Sourcing Sheet. Writes brain/trackers/weekly/{TODAY}-deal-aggregator-
+    # digest.md. Slack only on ≥1 proposed change OR volume=🔴. Never
+    # auto-writes to Sourcing Sheet. Hardened 2026-04-28 same incident.
+    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/deal-aggregator/headless-friday-prompt.md"
     ;;
 esac
 

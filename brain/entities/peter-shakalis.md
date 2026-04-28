@@ -8,8 +8,7 @@ role: Associate, Helmsley Spear
 email: pshakalis@helmsleyspear.com
 attio_id: 21387b91-d287-4822-a818-98e629befc68
 attio_company_id: 22e1a7f3-248e-4d15-a948-841d7e066747
-attio_synced_at: null
-attio_sync_pending: "engagement-stub-from-james-emden-2026-04-25 (blocked: notes:read-write scope missing on Attio token)"
+attio_synced_at: "2026-04-28T12:05:18Z"
 tags: ["date/2026-04-25", "entity", "person", "person/peter-shakalis", "company/helmsley-spear", "topic/commercial-real-estate", "status/network"]
 ---
 

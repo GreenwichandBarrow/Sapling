@@ -12,8 +12,7 @@ location: New York, NY
 linkedin: https://www.linkedin.com/in/jamesemden
 attio_id: 7d317b39-ed19-49ca-8bb4-f6eb98a9c85b
 attio_company_id: 22e1a7f3-248e-4d15-a948-841d7e066747
-attio_synced_at: null
-attio_sync_pending: "engagement-note-from-XPX-2026-04-23 (blocked: notes:read-write scope missing on Attio token)"
+attio_synced_at: "2026-04-28T12:05:31Z"
 tags: ["date/2026-04-25", "entity", "person", "person/james-emden", "company/helmsley-spear", "topic/nyc-network", "topic/commercial-real-estate", "topic/river-guide-candidate", "status/network"]
 ---
 

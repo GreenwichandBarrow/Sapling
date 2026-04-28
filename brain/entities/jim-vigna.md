@@ -6,6 +6,7 @@ status: prospect
 company: "[[entities/live-oak-bank]]"
 role: East Coast Coverage, Live Oak Bank
 attio_id: 679646d0-9df0-4ea6-828e-93a1a7465ea2
+attio_synced_at: "2026-04-28T12:04:54Z"
 tags: ["date/2026-04-23", "entity", "person", "person/jim-vigna", "company/live-oak-bank"]
 ---
 

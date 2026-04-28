@@ -10,8 +10,7 @@ phone: (917) 451-2443
 location: 443 Park Avenue S, 8th Floor, New York, NY 10016
 attio_id: 76b2e7b7-cd9b-4e0d-ac7c-31c25f8ddd5d
 attio_company_id: fcbddff0-3610-4556-8f31-0ae47e145970
-attio_synced_at: null
-attio_sync_pending: "engagement-note-from-XPX-2026-04-23 (blocked: notes:read-write scope missing on Attio token)"
+attio_synced_at: "2026-04-28T12:05:48Z"
 tags: ["date/2026-04-23", "entity", "person", "person/andrew-lowis", "company/axial"]
 ---
 

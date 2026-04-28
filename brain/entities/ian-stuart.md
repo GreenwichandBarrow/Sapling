@@ -11,8 +11,7 @@ phone_mobile: 917-612-7046
 location: New York, NY
 attio_id: 8158b249-ef2d-46e7-86bb-15855fccc9db
 attio_company_id: 17c7ec31-6492-42bf-b2c9-3d7df96cbab4
-attio_synced_at: null
-attio_sync_pending: "engagement-note-from-XPX-2026-04-23 (blocked: notes:read-write scope missing on Attio token)"
+attio_synced_at: "2026-04-28T12:05:08Z"
 tags: ["date/2026-04-25", "entity", "person", "person/ian-stuart", "company/cfo-consulting-partners", "topic/fractional-cfo", "status/vendor-declined"]
 ---
 

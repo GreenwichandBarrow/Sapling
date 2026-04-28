@@ -20,7 +20,7 @@ LOG_FILE="$LOG_DIR/jj-snapshot-refresh-$STAMP.log"
   set +a
   # gog reads OAuth from the user's keychain; PATH must include the install dir.
   export PATH="$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin"
-  python3 "$REPO_ROOT/scripts/refresh_jj_snapshot.py"
+  "$REPO_ROOT/dashboard/.venv/bin/python3" "$REPO_ROOT/scripts/refresh_jj_snapshot.py"
 } >> "$LOG_FILE" 2>&1
 
 # 14-day rotation (matches run-skill.sh convention).

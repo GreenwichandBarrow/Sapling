@@ -29,7 +29,9 @@ if str(_DASHBOARD_DIR) not in sys.path:
 
 from data_sources import (  # noqa: E402
     DealRow,
+    ScanCoverage,
     _source_bucket,
+    coverage_summary,
     flatten_rows,
     load_recent_scans,
     load_scan,
@@ -104,12 +106,52 @@ def _render_row(row: DealRow) -> str:
     ).strip()
 
 
-def _render_empty() -> str:
+def _render_empty(coverage: ScanCoverage | None = None) -> str:
+    """Empty state that explains *why* it's empty.
+
+    Three cases:
+      1. No coverage object → fall back to the legacy single-line message.
+      2. Some scans read, no missing slots → genuinely-zero-deals (honest scan).
+      3. Scans read but slots missing → coverage gap, surface which slots.
+    """
+    if coverage is None:
+        body = (
+            "No deals surfaced in the last 7 days. Deal-aggregator scan is "
+            "running on schedule; zero matches is the honest answer."
+        )
+    else:
+        lines: list[str] = []
+        # Lead line — match-count framing.
+        lines.append(
+            f"<strong>0 deals</strong> across "
+            f"<strong>{coverage.scans_read} scan{'s' if coverage.scans_read != 1 else ''}</strong> "
+            f"in the last 7 days."
+        )
+        if coverage.last_successful:
+            lines.append(
+                f"Last successful scan: <span class='highlight'>{escape(coverage.last_successful)}</span>."
+            )
+        # Coverage gaps — only surface if any.
+        if coverage.missing_slots:
+            missed = ", ".join(escape(s) for s in coverage.missing_slots)
+            lines.append(
+                f"Missing slots: <span style='color: var(--yellow);'>{missed}</span>."
+            )
+            lines.append(
+                "Weekend mornings don't run by design (Mon-Fri 6am + 2pm only). "
+                "Weekday gaps are scheduled-skill misfires — separate fix from the dashboard."
+            )
+        else:
+            lines.append(
+                "All weekday slots covered. Zero matches is the honest answer — "
+                "luxury-service niches flow through specialty channels and proprietary "
+                "outbound, not general broker platforms."
+            )
+        body = "<br/>".join(lines)
     return (
         '<tr><td colspan="9">'
-        '<div class="gb-empty">No deals surfaced in the last 7 days. '
-        "Deal-aggregator scan is running on schedule; zero matches is the honest answer."
-        "</div></td></tr>"
+        f'<div class="gb-empty">{body}</div>'
+        "</td></tr>"
     )
 
 
@@ -206,9 +248,9 @@ def _render_filter_bar() -> str:
     ).strip()
 
 
-def _render_table(rows: list[DealRow]) -> str:
+def _render_table(rows: list[DealRow], coverage: ScanCoverage | None = None) -> str:
     body = (
-        "".join(_render_row(r) for r in rows) if rows else _render_empty()
+        "".join(_render_row(r) for r in rows) if rows else _render_empty(coverage)
     )
     return dedent(
         f"""
@@ -253,6 +295,8 @@ def render() -> None:
     latest_run = today_scan.last_run if today_scan else (
         scans[0].last_run if scans else None
     )
+    # 7-day coverage summary — used to explain empty states honestly.
+    coverage = coverage_summary(today, days=7)
 
     st.markdown(_render_subtitle(latest_run), unsafe_allow_html=True)
     st.markdown(
@@ -278,13 +322,14 @@ def render() -> None:
     filtered_rows = [r for r in all_rows if (today - r.scan_date).days < days]
 
     st.markdown(_render_filter_bar_stubs(), unsafe_allow_html=True)
-    st.markdown(_render_table(filtered_rows), unsafe_allow_html=True)
+    st.markdown(_render_table(filtered_rows, coverage), unsafe_allow_html=True)
 
     st.markdown(
-        '<div class="gb-page-note">Rows parsed from '
-        f"<code>brain/context/deal-aggregator-scan-*.md</code>. Time filter "
-        f"interactive (Today / This week / All); source/industry/status "
-        "dropdowns + search visual-only pending later session."
+        '<div class="gb-page-note">Scan source: morning + afternoon '
+        "broker-platform sweeps (Mon-Fri 6am + 2pm), email inbound, and "
+        "association deal boards. Time filter interactive (Today / This week / "
+        "All); source / industry / status dropdowns + search are visual stubs "
+        "pending interactive build."
         "</div>",
         unsafe_allow_html=True,
     )

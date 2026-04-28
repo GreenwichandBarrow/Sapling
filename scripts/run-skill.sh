@@ -75,6 +75,17 @@ case "$SKILL_NAME:$SKILL_ARGS" in
   "jj-operations:sunday-prep")
     HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/jj-operations/headless-sunday-prep-prompt.md"
     ;;
+  "deal-aggregator:")
+    # Bare `run-skill.sh deal-aggregator` (Mon-Fri 6am morning fire — empty
+    # args). Route to the morning headless prompt to forbid operator-question
+    # framings and enforce idempotency-gate against double-write. Afternoon
+    # (--afternoon) and Friday digest (--digest-mode) intentionally NOT routed
+    # here — those plists pass distinct args and continue using bare
+    # `/deal-aggregator <flag>` until separately hardened. Fix added 2026-04-28
+    # after morning run produced `RECOMMEND: ... → YES/NO/DISCUSS` meta-output
+    # instead of executing.
+    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/deal-aggregator/headless-morning-prompt.md"
+    ;;
 esac
 
 # Run Claude in non-interactive mode with retry on transient failures

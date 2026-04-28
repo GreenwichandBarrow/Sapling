@@ -400,6 +400,77 @@ def flatten_rows(scans: Iterable[DealAggregatorScan]) -> list[DealRow]:
     return rows
 
 
+@dataclass
+class ScanCoverage:
+    """Coverage summary across the last N weekdays.
+
+    Deal-aggregator runs Mon–Fri morning (6am) + afternoon (~2pm). Weekends
+    don't run. This struct reports how many of the expected slots have artifacts
+    on disk, and which weekday slots are missing — so the page can explain
+    "0 deals" honestly instead of leaving Kay to guess whether the scanner
+    silently broke or genuinely surfaced nothing.
+    """
+    scans_read: int            # populated artifacts found in window
+    expected_slots: int        # weekday morning + afternoon slots in window
+    missing_slots: list[str]   # ["Fri 4/24 morning", "Mon 4/27 morning", ...]
+    last_successful: str | None  # human label e.g. "Mon 4/27 afternoon"
+
+
+def coverage_summary(end: date, days: int) -> ScanCoverage:
+    """Compute coverage over the last `days` calendar days ending at `end`.
+
+    A "slot" is a weekday morning OR afternoon scan. Saturday/Sunday excluded
+    (skill doesn't run on weekends — see scheduled-skills table). Today's
+    morning/afternoon slots are excluded if the scheduled fire time hasn't
+    elapsed yet — morning runs ~6am, afternoon runs ~2pm. We add a 30-min
+    buffer past the scheduled fire to allow run + artifact write before
+    flagging a slot as missing."""
+    from datetime import datetime as _dt
+    now = _dt.now()
+    today = end
+    expected = 0
+    missing: list[str] = []
+    have: list[tuple[date, str]] = []  # (date, "morning" | "afternoon") for found artifacts
+    for offset in range(days):
+        d = end - timedelta(days=offset)
+        if d.weekday() >= 5:  # 5=Sat, 6=Sun
+            continue
+        morning_path = DEAL_AGG_DIR / f"deal-aggregator-scan-{d.isoformat()}.md"
+        afternoon_path = DEAL_AGG_DIR / f"deal-aggregator-scan-{d.isoformat()}-afternoon.md"
+        # Morning slot: scheduled 6am. Skip if today and before 6:30am local.
+        morning_due = not (d == today and (now.hour, now.minute) < (6, 30))
+        if morning_due:
+            expected += 1
+            if morning_path.exists():
+                have.append((d, "morning"))
+            else:
+                missing.append(f"{d.strftime('%a %-m/%-d')} morning")
+        # Afternoon slot: scheduled 2pm. Skip if today and before 2:30pm local.
+        afternoon_due = not (d == today and (now.hour, now.minute) < (14, 30))
+        if afternoon_due:
+            expected += 1
+            if afternoon_path.exists():
+                have.append((d, "afternoon"))
+            else:
+                missing.append(f"{d.strftime('%a %-m/%-d')} afternoon")
+
+    last_successful: str | None = None
+    if have:
+        # `have` was appended oldest-last (we walk offset=0..days-1 = today→past).
+        # Sort by (date, slot-rank) and pick newest.
+        slot_rank = {"morning": 0, "afternoon": 1}
+        have.sort(key=lambda x: (x[0], slot_rank[x[1]]))
+        latest_date, latest_slot = have[-1]
+        last_successful = f"{latest_date.strftime('%a %-m/%-d')} {latest_slot}"
+
+    return ScanCoverage(
+        scans_read=len(have),
+        expected_slots=expected,
+        missing_slots=missing,
+        last_successful=last_successful,
+    )
+
+
 # -----------------------------------------------------------------------------
 # Deal Pipeline (Attio snapshot)
 # -----------------------------------------------------------------------------

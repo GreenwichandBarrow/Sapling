@@ -1,4 +1,4 @@
-"""Week Archive page — historical weekly view, frozen in time.
+"""M&A Activity page — historical weekly view, frozen in time.
 
 Renders the same metric language as M&A Analytics for any prior week-ending
 date, sourced from `dashboard.snapshot.snapshot_weekly()`. The dashboard is
@@ -101,7 +101,7 @@ def _render_subtitle(count: int, selected: date) -> str:
     sel = selected.strftime("%b %-d, %Y")
     return (
         '<div class="gb-subtitle">'
-        f"Frozen weekly view · {count} historical snapshot{'s' if count != 1 else ''} · "
+        f"Weekly M&amp;A activity view · {count} historical snapshot{'s' if count != 1 else ''} · "
         f'<span class="highlight">currently viewing week ending {escape(sel)}</span>. '
         "Activity metrics are window-correct; pipeline-state metrics reflect current Attio."
         "</div>"
@@ -286,7 +286,7 @@ def render() -> None:
         st.markdown(
             '<div style="font-size: 11px; letter-spacing: 0.08em; '
             "text-transform: uppercase; color: var(--text-muted); "
-            'margin: 12px 0 6px;">Week archive</div>',
+            'margin: 12px 0 6px;">M&amp;A activity</div>',
             unsafe_allow_html=True,
         )
         selected = st.selectbox(

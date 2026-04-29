@@ -81,7 +81,16 @@ case "$SKILL_NAME:$SKILL_ARGS" in
     # framings and enforce idempotency-gate against double-write. Fix added
     # 2026-04-28 after morning run produced `RECOMMEND: ... → YES/NO/DISCUSS`
     # meta-output instead of executing.
-    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/deal-aggregator/headless-morning-prompt.md"
+    #
+    # 2026-04-30 EXPERIMENTAL: route to fingerprint-comparison variant for
+    # one day only. Tests whether the buyer fingerprint produces different
+    # signal than the standard buy-box. Auto-reverts after 2026-04-30 since
+    # the date check fails on subsequent runs.
+    if [ "$(date +%Y-%m-%d)" = "2026-04-30" ]; then
+      HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/deal-aggregator/headless-morning-prompt-experimental.md"
+    else
+      HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/deal-aggregator/headless-morning-prompt.md"
+    fi
     ;;
   "deal-aggregator:--afternoon")
     # Mon-Fri 2pm afternoon top-up. Lighter scan (Channel 2 + time-sensitive

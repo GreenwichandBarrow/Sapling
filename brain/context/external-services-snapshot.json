@@ -1,6 +1,18 @@
 {
-  "fetched_at": "2026-04-28T19:30:05-04:00",
+  "fetched_at": "2026-04-28T20:00:02-04:00",
   "services": {
+    "slack-webhooks": {
+      "status": "ok",
+      "latency_ms": null,
+      "message": "4 webhooks configured",
+      "skip_reason": null
+    },
+    "superhuman": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "OAuth refresh required (manual)"
+    },
     "linkt": {
       "status": "skip",
       "latency_ms": null,
@@ -19,18 +31,6 @@
       "message": "",
       "skip_reason": "OAuth re-flow required (Smithery UI)"
     },
-    "slack-webhooks": {
-      "status": "ok",
-      "latency_ms": null,
-      "message": "4 webhooks configured",
-      "skip_reason": null
-    },
-    "superhuman": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "OAuth refresh required (manual)"
-    },
     "launchd": {
       "status": "ok",
       "latency_ms": 10,
@@ -39,38 +39,38 @@
     },
     "vault": {
       "status": "ok",
-      "latency_ms": 15,
+      "latency_ms": 14,
       "message": "573 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "ok",
-      "latency_ms": 42,
+      "latency_ms": 46,
       "message": "attio-mcp=8 superhuman=4",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 83,
+      "latency_ms": 105,
       "message": "authenticated",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 151,
+      "latency_ms": 171,
       "message": "HTTP 405",
-      "skip_reason": null
-    },
-    "github": {
-      "status": "ok",
-      "latency_ms": 212,
-      "message": "gh authenticated",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 205,
+      "latency_ms": 214,
       "message": "200 OK",
+      "skip_reason": null
+    },
+    "github": {
+      "status": "ok",
+      "latency_ms": 257,
+      "message": "gh authenticated",
       "skip_reason": null
     }
   }

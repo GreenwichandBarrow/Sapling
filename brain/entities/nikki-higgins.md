@@ -7,6 +7,8 @@ company: "[[entities/jet-aviation]]"
 role: Aircraft Management Sales Director
 email: nikki.higgins@jetaviation.com
 phone: 949-939-7359
+attio_id: 7c145dbb-b4d5-45b3-96c9-72841378fba6
+attio_synced_at: "2026-04-29T11:03:48Z"
 tags: [date/2026-04-22, entity, person, person/nikki-higgins, company/jet-aviation, topic/private-aviation, topic/luxury-services]
 ---
 

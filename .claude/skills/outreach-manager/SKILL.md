@@ -624,44 +624,33 @@ Draft all in Superhuman. Present during morning briefing. Kay approves and sends
 
 Handles outreach to force multipliers — people who know every owner in the niche and can open doors. These are NOT acquisition targets. They are relationship-building contacts who go into the Attio Intermediary Pipeline, not Active Deals.
 
-### Who Are Intermediaries?
-- **Association heads and executive directors** — run the industry organization, know every member
-- **Conference organizers** — can introduce Kay to exhibitors and speakers
-- **Industry brokers and M&A advisors** — actively seeing deal flow in the niche
-- **CPAs and lawyers** — serve business owners in the niche, know who's thinking about succession
-- **Industry consultants** — "river guides" who can walk Kay through the landscape
-- **Fellow searchers** who've explored adjacent niches — can share intel and introductions
+### AUTHORITATIVE ARTIFACTS (Apr 29 2026 — read these first)
 
-### Different Framing (Not a Pitch)
+**Master template:** `G&B Intermediary Outreach Templates` — Google Doc ID `1_cNsAPCopDAfReoDXbB4d3hZW8TcYUqJ3XKYY_er7i4`, in `OPERATIONS / G&B MASTER TEMPLATES/`. Contains 8 audience-specific variations + shared core blocks + warm-intro language bank. Update this Doc as voice evolves; do NOT recreate from scratch.
 
-Intermediary outreach positions Kay as a **student of the industry**, not a buyer.
+**Master target sheet:** `Intermediary Target List` — Google Sheet ID `18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`, in `OPERATIONS / TARGET LISTS / INTERMEDIARY/`. 8 tabs: Brokers / Investment Bankers / Association Heads / Industry Lawyers / CPAs / Corporate Advisors / Family Offices / Lenders. 17-column schema. Reference list (NOT maintained) — Attio owns ongoing status.
 
-**Email structure:**
-```
-Subject: {Something specific to their role in the industry}
+**Voice rules (must read before drafting):**
+- `feedback_no_search_fund_language_intermediaries.md` — drop "search fund" / "search vehicle"; use "holding company in formation"
+- `feedback_kay_handles_all_replies.md` — replies always Kay (Kay-sent or Sam-DealsX-sent)
+- `feedback_gmail_only_no_superhuman.md` — drafts in Gmail directly (Superhuman sunset Apr 28)
 
-Hi {first name},
+### Who Are Intermediaries? (8 categories per the sheet)
 
-{1 sentence showing you know their role — association they run, event they organize, practice area}.
-{1 sentence about Kay researching the {niche} space and wanting to learn from someone who sees the full landscape}.
-{1 sentence proposing a conversation — positioned as learning, not deal-sourcing}.
+- **Brokers** — business brokers / lower-mid-market M&A advisors. Voice: short, NDA-offer-ready, deal-flow ask.
+- **Investment Bankers** — boutique IBs with active mandates. Voice: formal, mandate-distribution ask.
+- **Corporate Advisors** — business-side advisors at private banks/wealth firms (Matt Luczyk archetype). Voice: relationship-build, succession angle.
+- **Family Offices** — SFOs/MFOs (Bessemer, BBH, Cresset, Pathstone, Iconiq). Voice: peer-investor framing — co-investment + deal-flow ask.
+- **Industry Lawyers** — M&A counsel, transaction attorneys, tax-PE attorneys. Voice: short, professional, referral relationship. **NOT employment lawyers** — those are reference-only, not outreach contacts.
+- **CPAs** — M&A advisory CPAs, succession-planning accountants. Voice: continuity-focused, referral relationship.
+- **Association Heads** — trade-association leaders. Voice: "student of the industry" — NOT a buyer pitch.
+- **Lenders** — search-fund-friendly debt providers (commercial banks + SBA + mezz + BDCs + private credit). Voice: I'm a buyer with a buy-box, would value a lending relationship as we approach LOI.
 
-Would love to find 20 minutes to hear your perspective.
+### Cadence: ONE-AND-DONE
 
-Kay Schneider
-Greenwich & Barrow
-```
+**Per Kay 2026-04-29: intermediary outreach is one-and-done.** No follow-up sequences. If they don't respond, move on. Different from owner outreach which has Day 0/3/14 cadence.
 
-### General Intermediary Cadence (non-conference)
-
-| Day | Channel | Action |
-|-----|---------|--------|
-| Day 0 | Email (Superhuman) | Personalized "learning about the industry" email |
-| Day 3 | Email (Superhuman) | Follow-up if no response |
-| Day 6 | LinkedIn DM (Kay) | High-value only |
-| Day 14 | Email (Superhuman) | Final touch if no response |
-
-No JJ call. Intermediaries should only hear from Kay directly.
+No JJ call. Intermediaries hear from Kay directly only.
 
 ### Conference River Guide Play
 

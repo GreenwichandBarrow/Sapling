@@ -138,6 +138,32 @@ Before flagging any draft as "stale" or "unsent," check `brain/context/session-d
 **Validation:** File in Drive + no duplicates + Attio updated + attachment size > 0
 </active_deal_fast_path>
 
+<bookkeeper_pl_auto_trigger>
+## Bookkeeper P&L Auto-Trigger (CRITICAL — Executes Immediately)
+
+**Pattern mirrors CIM auto-trigger.** Anthony's monthly Management Report is a deterministic recurring input. Auto-fire `budget-manager monthly` mode on detection — do NOT surface as a Decision item in the morning briefing. See `memory/feedback_bookkeeper_pl_auto_trigger_budget_manager.md` for the precedent.
+
+**Detection triggers (any one):**
+- Sender domain is `startvirtual.com` (currently `anthony.b@startvirtual.com`)
+- Subject contains "Management Report" + a month/year reference (e.g., "March 2026")
+- Attachment filename contains "Profit and Loss", "Balance Sheet", "P&L", or "Management Report"
+
+**4-step automatic execution:**
+1. File the PDFs from email to `BOOKKEEPING / MONTHLY REPORTING / {MONTH YEAR}` Drive subfolder (folder ID `1Z__A8AXWBCwQN7x1nK2fqaqhVKlJBJOb`). Create the month subfolder if it doesn't exist.
+2. Create inbox item at `brain/inbox/{date}-{month}-management-report-budget-trigger.md` with `urgency: trigger` and tags `topic/bookkeeper-pl-received`, `trigger/budget-manager-monthly`.
+3. Auto-invoke `budget-manager monthly` (sequential 3-subagent pipeline per its SKILL.md). Pass `period: {YYYY-MM}` so the skill knows which month to process.
+4. The briefing surfaces budget-manager OUTPUT (variance flags, runway change, action items) — NOT the trigger event.
+
+**Validation (must pass before next-step Slack):**
+- PDFs in Drive with size > 0
+- Inbox item written
+- budget-manager invoked successfully (Phase 1 Document Ingester returned non-empty JSON)
+
+**No Attio write.** Bookkeeper reports do not flow into Active Deals or any Attio list.
+
+**No Decisions bucket surface.** The morning briefing should show this trigger only as a `🟢 Wired` line item under System Status, never as a 🔴/🟡 Decision asking for Kay's approval.
+</bookkeeper_pl_auto_trigger>
+
 <intro_detection>
 ## Introduction Detection
 

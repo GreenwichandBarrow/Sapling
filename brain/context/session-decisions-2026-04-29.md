@@ -143,3 +143,45 @@ Major build day. Built the entire Intermediary Target List from scratch (8 tabs,
 - **gog (Google Workspace):** ✅ live; created Sheet, Doc, Slides; moved + renamed across folders
 - **Granola MCP:** ✅ live; pulled Megan call + NJPMA workshop transcripts
 - **Gmail (Superhuman sunset):** drafts now Gmail-direct; no Superhuman MCP usage today
+
+---
+
+## Evening Session — Scheduled Skill Failures + Plist Stagger
+
+Investigated overnight Slack failure alert. Identified parallel-fire collision between two scheduled plists, applied 60-min stagger fix, queued downstream hardening work.
+
+### Decisions
+
+- **APPROVE:** Stagger `niche-intelligence` plist Tue 23:00 → Tue **22:30** ET, and `nightly-tracker-audit` plist daily 23:00 → daily **23:30** ET. Both `~/Library/LaunchAgents/com.greenwich-barrow.{name}.plist` files edited; both `launchctl unload/load` cycled clean (registered, status 0).
+- **APPROVE:** Heavier-skill-earlier convention (niche-intelligence first, audit second). Tuesday-only skill earlier; daily skill later in a consistent Mon-Sun slot.
+- **APPROVE:** Reject `MAX_ATTEMPTS` 3 → 5 retry bump as a fix. Wrapper retry can't diagnose parallel-fire collisions; stagger is the right-layer fix.
+- **APPROVE:** Don't manually re-fire `nightly-tracker-audit` tonight. New 23:30 staggered fire backfills automatically (~40 min after evening shutdown).
+- **APPROVE:** Build `niche-intelligence` mutating-skill hardening Thursday 4/30 → Friday 5/1 dry-run → first hardened launchd fire Tuesday 5/5 22:30 ET. Per `feedback_friday_test_write_skills`.
+- **APPROVE:** Buyer-fingerprint vault artifact does not exist yet (only `deal-aggregator-fingerprints.jsonl` dedup cache, different concept). Tonight's niche-intelligence run cannot "consider buyer fingerprint" until that artifact gets built (still flagged in `project_athena_simpson_sourcing_review.md` as priority-1).
+- **REJECT:** Backfill missing `session-decisions-2026-04-28.md` retroactively. Out of scope tonight; flagged for Kay's awareness.
+
+### Actions Taken
+
+- **UPDATED:** `~/Library/LaunchAgents/com.greenwich-barrow.niche-intelligence.plist` — Hour 23 → 22, Minute 0 → 30.
+- **UPDATED:** `~/Library/LaunchAgents/com.greenwich-barrow.nightly-tracker-audit.plist` — Minute 0 → 30.
+- **RELOADED:** Both plists via `launchctl unload/load`. Verified registered (status 0).
+- **CREATED:** Bead `ai-ops-5wx` — "Harden niche-intelligence to mutating-skill standard" (P1, agent-assigned).
+- **UPDATED:** `CLAUDE.md` Scheduled Skills table — niche-intelligence row + new nightly-tracker-audit row with stagger context.
+- **CREATED:** `memory/feedback_launchd_parallel_fire_collisions.md` — diagnose simultaneous "Unexpected" failures as parallel-fire, not API issues.
+- **UPDATED:** `MEMORY.md` index with new memory entry.
+- **CREATED:** `brain/traces/2026-04-29-stagger-launchd-plists-collision.md` — three sub-decisions traced (stagger amount, which-skill-earlier, don't-bump-retries).
+
+### Deferred
+
+- **Bead `ai-ops-5wx`** — niche-intelligence hardening (headless-tuesday-prompt.md + `scripts/validate_niche_intelligence_integrity.py` + wrapper case-statement entry + plist `:tuesday` mode arg + POST_RUN_CHECK env var). Build Thu 4/30, Fri 5/1 dry-run, live Tue 5/5 22:30 ET.
+- **Buyer-fingerprint artifact build** — referenced in `project_athena_simpson_sourcing_review.md` as priority-1, not yet a vault file. Niche-intelligence consumption blocked until built.
+
+### Open Loops
+
+- **Tonight's 23:30 nightly-tracker-audit fire** — first under new stagger schedule. If it fails, indicates the issue wasn't just the parallel-fire collision; revisit. (Will surface in Slack tomorrow if so.)
+- **Next Tuesday 5/5 22:30 niche-intelligence fire** — depends on `ai-ops-5wx` shipping Fri 5/1 dry-run. If hardening slips, expect another "Unexpected" failure (no headless prompt to dispatch to).
+
+### Findings (for future reference)
+
+- Today's deal-aggregator 06:00 run hit 2 stream-idle timeouts before succeeding on attempt 3. Wrapper retry-on-`timeout` worked correctly; no Slack alert (correct suppression). 2.5-hour wall-clock vs 5-min steady-state — flagged as a watch-item if it becomes a pattern (3+ days), but no action tonight.
+- Yesterday's evening shutdown (`session-decisions-2026-04-28.md`) didn't fire — last context for 4/28 PM is the mid-day continuation file at 13:31. Not backfilled.

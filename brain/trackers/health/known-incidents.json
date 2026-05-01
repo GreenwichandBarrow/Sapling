@@ -1,0 +1,33 @@
+{
+  "_schema": {
+    "purpose": "Suppress launchd-debugger Slack noise for failures with an open bead in flight. Prevents one-known-bug = N-Slack-pings/day.",
+    "fields": {
+      "id": "bead id or short slug for the underlying issue",
+      "job": "scheduled skill name (matches scan_launchd_failures.py 'job' field)",
+      "cause": "one of AUTH, TRANSIENT_API, MCP_DISCONNECT, VALIDATOR_REJECT, MISSING_ARTIFACT, SCHEMA_VIOLATION, CODE_BUG, EXTERNAL_OUTAGE, UNKNOWN",
+      "root_cause_substring": "case-sensitive substring matched against error_signature OR last_50_lines",
+      "bead_status": "open|closed|deferred — informational; suppress_until governs behavior",
+      "added": "YYYY-MM-DD when registered",
+      "suppress_until": "ISO date OR 'bead-closed' (manual review) OR 'permanent'",
+      "downgrade_to": "weekly-digest | artifact-only — Slack always skipped while suppressed; this hints at follow-up venue"
+    },
+    "match_logic": "A failure is suppressed if (job == incident.job) AND (incident.root_cause_substring appears in error_signature OR last_50_lines). Cause is informational only; substring is the actual matcher.",
+    "consumed_by": [
+      ".claude/skills/launchd-debugger/headless-daily-prompt.md",
+      ".claude/skills/launchd-debugger/headless-on-failure-prompt.md"
+    ]
+  },
+  "incidents": [
+    {
+      "id": "ai-ops-5wx",
+      "job": "niche-intelligence",
+      "cause": "CODE_BUG",
+      "root_cause_substring": "An unknown error occurred (Unexpected)",
+      "bead_status": "open",
+      "added": "2026-05-01",
+      "suppress_until": "bead-closed",
+      "downgrade_to": "weekly-digest",
+      "notes": "Niche-intelligence Tuesday 22:30 fires fail with bare-claude-CLI error because the plist still routes to `/niche-intelligence` instead of a headless prompt. Agent B (parallel track) is wiring headless-tuesday-prompt.md + validator + plist update. Suppress launchd-debugger Slack until ai-ops-5wx is closed; the failure still lands in the daily artifact for audit."
+    }
+  ]
+}

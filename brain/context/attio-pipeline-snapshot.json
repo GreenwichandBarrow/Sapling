@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-01T13:00:20Z",
+  "fetched_at": "2026-05-01T14:00:18Z",
   "list_id": "0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b",
   "list_name": "Active Deals \u2013 Owners",
   "stages": [
@@ -36,8 +36,8 @@
     {
       "record_id": "1f0049fe-4b04-440c-b5f9-a6fa5ba5e922",
       "company": "ARTMOVEMENT",
-      "stage": "Contacted",
-      "stage_since": "2026-03-14T22:04:52.125000000Z",
+      "stage": "Identified",
+      "stage_since": "2026-05-01T13:53:06.619000000Z",
       "location": "Los Angeles, California",
       "employee_range": "11-50",
       "arr_bucket": "$1M-$10M",
@@ -78,59 +78,15 @@
       "category": "Insurance"
     },
     {
-      "record_id": "fa43befa-4eb5-44b1-ad5c-ab13687bd223",
-      "company": "VF Global Insurance Brokerage, LLC",
-      "stage": "Identified",
-      "stage_since": "2026-03-14T22:04:36.744000000Z",
-      "location": "Greenwich, Connecticut",
-      "employee_range": null,
-      "arr_bucket": null,
-      "last_interaction": null,
-      "category": "Finance"
-    },
-    {
-      "record_id": "ca82a2bf-e073-4a0a-949b-95837b7db0d4",
-      "company": "Genser Insurance",
-      "stage": "Contacted",
-      "stage_since": "2026-03-14T22:04:53.200000000Z",
-      "location": "Needham, Massachusetts",
-      "employee_range": "11-50",
-      "arr_bucket": "$1M-$10M",
-      "last_interaction": "2026-01-12T13:00:00.000000000Z",
-      "category": "Insurance"
-    },
-    {
-      "record_id": "c756aed0-0b79-4037-aaa8-c486a9fdf286",
-      "company": "Clark Fine Art",
-      "stage": "Identified",
-      "stage_since": "2026-03-14T22:03:48.658000000Z",
-      "location": "San Francisco, California",
-      "employee_range": "11-50",
-      "arr_bucket": "$1M-$10M",
-      "last_interaction": null,
-      "category": "B2C"
-    },
-    {
       "record_id": "aaa67973-28df-4250-bde3-3c9ce44d7a0b",
       "company": "Allan Block Insurance",
-      "stage": "Contacted",
-      "stage_since": "2026-03-14T22:04:59.536000000Z",
+      "stage": "Identified",
+      "stage_since": "2026-05-01T13:53:08.615000000Z",
       "location": "Tarrytown, New York",
       "employee_range": "11-50",
       "arr_bucket": "$1M-$10M",
       "last_interaction": null,
       "category": "Financial Services"
-    },
-    {
-      "record_id": "2d9cd242-d7a2-4663-a8df-03c4ddac67ae",
-      "company": "Fine Art Shippers",
-      "stage": "Identified",
-      "stage_since": "2026-03-14T22:04:08.056000000Z",
-      "location": "New York, New York",
-      "employee_range": "1-10",
-      "arr_bucket": "$1M-$10M",
-      "last_interaction": null,
-      "category": "Shipping & Logistics"
     },
     {
       "record_id": "7e0f6bc9-b2de-4cc0-8efa-6f93e2ea904d",
@@ -153,28 +109,6 @@
       "arr_bucket": "$1M-$10M",
       "last_interaction": "2026-03-31T17:46:11.000000000Z",
       "category": "Marketplace"
-    },
-    {
-      "record_id": "0d6c2ab8-67a1-4794-aad8-0fe2a899f32d",
-      "company": "Freedman Risk Management, LLC",
-      "stage": "Contacted",
-      "stage_since": "2026-03-30T13:30:53.647000000Z",
-      "location": "Bethesda, Maryland",
-      "employee_range": "1-10",
-      "arr_bucket": "$0-$1M",
-      "last_interaction": "2026-03-30T12:00:00.000000000Z",
-      "category": "Enterprise"
-    },
-    {
-      "record_id": "528504c0-0fc1-41db-8b57-7ae60496ce5c",
-      "company": "ARCIS Fine Art + Collection Care",
-      "stage": "Identified",
-      "stage_since": "2026-03-14T22:03:55.730000000Z",
-      "location": "New York, New York",
-      "employee_range": "1-10",
-      "arr_bucket": "$0-$1M",
-      "last_interaction": null,
-      "category": "Arts"
     },
     {
       "record_id": "d2d0caa0-f465-43fe-a3c0-a0bea21dce34",
@@ -201,8 +135,8 @@
     {
       "record_id": "a133305c-d8f4-456e-9139-1874b823df73",
       "company": "Grober Imbey Insurance Agency",
-      "stage": "Contacted",
-      "stage_since": "2026-03-14T22:04:56.856000000Z",
+      "stage": "Identified",
+      "stage_since": "2026-05-01T13:53:10.046000000Z",
       "location": "Valley Stream, New York",
       "employee_range": "11-50",
       "arr_bucket": "$1M-$10M",
@@ -212,8 +146,8 @@
     {
       "record_id": "1254349b-3e8e-4266-beca-98d2c8301df5",
       "company": "LG Planning Group",
-      "stage": "Contacted",
-      "stage_since": "2026-03-14T22:04:54.412000000Z",
+      "stage": "Identified",
+      "stage_since": "2026-05-01T13:53:11.957000000Z",
       "location": "Melville, New York",
       "employee_range": "11-50",
       "arr_bucket": "$1M-$10M",
@@ -223,8 +157,8 @@
     {
       "record_id": "cc951997-0b21-4374-ac4b-756eb7991bd2",
       "company": "Lang Insurance",
-      "stage": "Contacted",
-      "stage_since": "2026-03-14T22:04:55.661000000Z",
+      "stage": "Identified",
+      "stage_since": "2026-05-01T13:53:13.923000000Z",
       "location": "Coram, New York",
       "employee_range": "1-10",
       "arr_bucket": "$1M-$10M",
@@ -232,9 +166,9 @@
       "category": "Insurance"
     }
   ],
-  "closed_count": 132,
+  "closed_count": 138,
   "closed_count_post_nda": 2,
-  "closed_count_pre_nda": 130,
+  "closed_count_pre_nda": 136,
   "closed_recent": [
     {
       "record_id": "788584f4-e99d-4704-887f-2173119cfb9a",

@@ -78,6 +78,23 @@ case "$SKILL_NAME:$SKILL_ARGS" in
   "launchd-debugger:daily")
     HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/launchd-debugger/headless-daily-prompt.md"
     ;;
+  "launchd-debugger:on-failure")
+    # On-failure mode triggered by the failure-trigger block at the bottom of
+    # this wrapper. The triggering wrapper sets LOG_FILE env var pointing at
+    # the just-failed log; the on-failure prompt reads it and runs scan with
+    # --log-file instead of --lookback-hours. Single-failure-focused (<5min).
+    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/launchd-debugger/headless-on-failure-prompt.md"
+    ;;
+  "niche-intelligence:tuesday")
+    # Tuesday 22:30 ET fire. Agent B is building the niche-intelligence
+    # hardening files in parallel (headless-tuesday-prompt.md + validator).
+    # This case routes the wrapper correctly so when their plist update
+    # lands, the headless prompt loads instead of the bare /niche-intelligence
+    # invocation that has failed every Tuesday with "An unknown error
+    # occurred (Unexpected)" (bead ai-ops-5wx).
+    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/niche-intelligence/headless-tuesday-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_niche_intelligence_integrity.py\"}"
+    ;;
   "deal-aggregator:")
     # Bare `run-skill.sh deal-aggregator` (Mon-Fri 6am morning fire — empty
     # args). Route to the morning headless prompt to forbid operator-question

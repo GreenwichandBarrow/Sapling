@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-01T09:30:05-04:00",
+  "fetched_at": "2026-05-01T10:00:04-04:00",
   "services": {
     "linkt": {
       "status": "skip",
@@ -13,17 +13,17 @@
       "message": "4 webhooks configured",
       "skip_reason": null
     },
-    "superhuman": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "OAuth refresh required (manual)"
-    },
     "attio-mcp": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
       "skip_reason": "OAuth re-flow required (Smithery UI)"
+    },
+    "superhuman": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "OAuth refresh required (manual)"
     },
     "claude-api": {
       "status": "skip",
@@ -33,43 +33,43 @@
     },
     "launchd": {
       "status": "ok",
-      "latency_ms": 10,
+      "latency_ms": 7,
       "message": "18 jobs registered",
       "skip_reason": null
     },
     "vault": {
       "status": "ok",
-      "latency_ms": 18,
+      "latency_ms": 9,
       "message": "635 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "ok",
-      "latency_ms": 58,
+      "latency_ms": 75,
       "message": "attio-mcp=18 superhuman=9",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 111,
+      "latency_ms": 126,
       "message": "authenticated",
-      "skip_reason": null
-    },
-    "apollo": {
-      "status": "ok",
-      "latency_ms": 149,
-      "message": "200 OK",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 149,
+      "latency_ms": 151,
       "message": "HTTP 405",
+      "skip_reason": null
+    },
+    "apollo": {
+      "status": "ok",
+      "latency_ms": 163,
+      "message": "200 OK",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 343,
+      "latency_ms": 364,
       "message": "gh authenticated",
       "skip_reason": null
     }

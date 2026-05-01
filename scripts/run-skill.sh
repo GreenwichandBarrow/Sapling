@@ -75,6 +75,9 @@ case "$SKILL_NAME:$SKILL_ARGS" in
   "jj-operations:sunday-prep")
     HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/jj-operations/headless-sunday-prep-prompt.md"
     ;;
+  "launchd-debugger:daily")
+    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/launchd-debugger/headless-daily-prompt.md"
+    ;;
   "deal-aggregator:")
     # Bare `run-skill.sh deal-aggregator` (Mon-Fri 6am morning fire — empty
     # args). Route to the morning headless prompt to forbid operator-question

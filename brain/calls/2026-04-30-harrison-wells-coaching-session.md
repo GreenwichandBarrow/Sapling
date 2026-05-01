@@ -55,3 +55,32 @@ Follow-up coaching session with Harrison after Kay's first month of self-directe
 
 - Afternoon follow-up session at 2pm same day to work through scheduled-job reliability.
 - Engagement renews monthly on the 1st; first cycle invoiced.
+
+## Missed Action Items (Recovered 2026-05-01 from full transcript re-read)
+
+Granola auto-summary captured 4 of 9 action items. Full-transcript re-read surfaced 5 additional Kay commitments + 4 emails Harrison promised. Logging here so nothing slips. See calibration note at bottom.
+
+### A. Committed actions Kay agreed to
+
+1. **Hetzner server migration** — $12/mo tier, single source of truth, replaces local-dual-machine setup. Kay said *"I'm definitely going to do that."* Umbrella project; will get its own beads. No inbox item.
+2. **launchd-debugger skill** — daily cron spawns an agent per failed launchd job; agent reads logs, diagnoses, fixes, re-runs. Kay said *"Oh I like that."* Parallel agent is building it now.
+3. **learnings.md per skill** — Claude writes back as it learns; checked before/after each run; negative directives outperform positive. Captured as inbox item for build-out.
+4. **1Password CLI for API keys** — `op git token` injects at call time, Claude never sees secrets. Kay flagged API rotations as her #1 frustration. Holding pending decision; no inbox item.
+5. **/discuss or /think skill** — strategic conversation BEFORE plan mode. Kay's framing: *"plan mode is the final step, not thinking it through with you."* Kay said *"I'm definitely going to do that."* Captured as inbox item.
+
+### B. Emails Harrison committed to send
+
+1. **Server Setup + Tailscale walkthrough** — Hetzner repo + how-to. Watch inbox.
+2. **Engagement scope + invoice** — RECEIVED + PAID 5/1.
+3. **Ask Harrison MCP install email** — install when arrives.
+4. **Name of secure-API-key server tool he was blanking on** — watch inbox.
+
+### C. Next call
+
+- **Friday 2026-05-15, 12:00-1:00pm ET.**
+- Format: Kay sends prep challenges list in advance.
+- Inbox item created for prep assembly (due 5/14).
+
+### D. Calibration note
+
+Granola auto-summary captured 4 of 9 action items (44%). Substantive coaching/strategy calls (vs. logistics/status calls) need full-transcript re-read before the call note is trusted. Pattern: Granola weighted toward formal scope/engagement language and missed mid-conversation "I'm definitely going to do that" commitments embedded in Kay's verbal acknowledgments. Future coaching-call notes should default to transcript re-read pass.

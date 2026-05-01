@@ -168,3 +168,129 @@ No confident sunset recommendations from the sampled traces alone. The above are
    - Source: trace `2026-04-22-brief-skill-template-architecture`.
 
 -> READY
+
+---
+
+## pattern-recognizer findings
+
+Sampled ~22 traces across voice/communications, process/skills, technical/launchd, and audience-taxonomy buckets. Cross-referenced against existing memory feedback files and existing hooks (`.claude/hooks/router/handlers/`). Three traces from 2026-04-30 not yet present in the trace folder — the 2026-04-30 sweep itself will produce them later today.
+
+### Repeated patterns (rule graduation candidates)
+
+1. **"Lead with what THEY cared about, not what we noticed."** Appears in:
+   - 2026-04-29-lead-with-what-they-care-about (Hoffman community-fit)
+   - 2026-04-29-no-search-fund-language-intermediaries (Heritage-Holding voice match)
+   - 2026-04-23-buy-box-paragraph-kay-authored ("able to retain employees" — what owners care about)
+   - 2026-04-23-seller-short-transition-matters (encode flexibility implicitly)
+   - 2026-04-22-evening-event-override-will-cotton-studio (Kay rejecting "kind of room I love being in" as cheesy = explicit room-labeling = self-centered)
+   - Count = 5
+   - Current handling: `feedback_outreach_about_them.md`, `feedback_outreach_no_strategy_leaks.md`, `feedback_continue_dont_reintroduce.md` — three separate memories, all directionally correct but none catch the **specific failure mode** (data-rich opener vs values-rich opener).
+   - Suggested graduation: **New consolidated memory** `feedback_voice_lead_with_their_emphasis.md` that codifies the litmus from the Hoffman trace ("if recipient reads opener and thinks 'this person actually listened,' it works; if they think 'this person caught the headline numbers,' it doesn't"). Cross-link from existing 3 memories. Not yet hook-worthy because detection is semantic.
+
+2. **Premature/false codification of session-only constraints as durable facts.** Appears in:
+   - 2026-04-21-stress-test-constraint-methodology (6-month deadline)
+   - 2026-04-22-kay-is-operator-not-absent-buyer (premature frame mapping; charter tension)
+   - 2026-04-21-traditional-search-peer-disclosure (charter content leaking to wrong audience)
+   - 2026-04-21-niche-ranking-methodology-pivot ("fluff" = papered over thin data with confidence)
+   - Count = 4
+   - Current handling: `feedback_stress_test_constraints_not_facts.md` exists. Memory covers timelines/budgets/scope. Doesn't yet cover: framework-mapping (Athena Matchmaker), audience-leak (Charter to traditional searchers), confidence-language-on-thin-data ("fluff").
+   - Suggested graduation: **Expand existing memory** `feedback_stress_test_constraints_not_facts.md` to include: (a) external-framework mapping requires premise-verification before applying; (b) durable codification requires explicit commitment language; (c) "fluff" pattern — analyses leaning on internal data known to be thin should be flagged as low-confidence in the output, not papered over.
+
+3. **Schema/structural fix beats behavioral fix.** Appears in:
+   - 2026-04-23-jj-col-u-overwrite-and-schema-migration (3 confident wrong recommendations before Kay's domain insight)
+   - 2026-04-23-cadence-field-sole-source-of-truth (Lauren overdue 3 weeks because skill read text not field)
+   - 2026-04-29-stagger-launchd-plists-collision (don't bump retries; fix the schedule)
+   - 2026-04-19-onepager-guardrail-tool-level-not-memory (3+ corrections → tool-level hook)
+   - Count = 4
+   - Current handling: No single memory captures this meta-rule. `feedback_mutating_skill_hardening_pattern.md` and `feedback_launchd_parallel_fire_collisions.md` are domain-specific.
+   - Suggested graduation: **New memory** `feedback_check_schema_before_recommending.md` — before recommending behavioral fixes (talk to JJ about pace, change cadence on contact, retry harder), verify the underlying data model can represent the metric being measured. Pattern tag from JJ trace explicit: `#pattern/check-schema-can-represent-question-before-analyzing-data`.
+
+4. **Off-ramp / softening placement on outreach.** Appears in:
+   - 2026-04-24-banker-first-reply-cut-buybox (cut buy-box when capital-fit mismatched)
+   - 2026-04-24-offramp-attach-to-ask (off-ramp at smallest commitment, not whole relationship)
+   - 2026-04-23-buy-box-paragraph-kay-authored (encoding implicit flexibility, not explicit naming)
+   - Count = 3
+   - Current handling: No memory exists. Pattern is encoded only in traces.
+   - Suggested graduation: **New memory** `feedback_offramp_at_smallest_commitment.md`. Litmus: "Conditional language ('if it still makes sense for you', 'if useful') attaches to the smallest concrete ask in the email — meeting/intro/follow-up — never to the relationship overall." Pair with `pattern/disqualifier-skip-pitch` from the banker trace.
+
+5. **Silence ≠ approval; calibration before bulk writes.** Appears in:
+   - 2026-04-27-silent-approval-assumption (Motion triage — wrote 35 Work items without explicit yes)
+   - 2026-04-20-calibrate-before-writes (river-guide cap check)
+   - 2026-04-26-stale-snapshot-bulk-delete-bug (refresh state)
+   - 2026-04-26-vip-filters-replaced-by-native-learning (don't push my model of importance over Kay's stated preference)
+   - Count = 4
+   - Current handling: `feedback_silent_approval_assumption.md`, `feedback_calibrate_before_bulk_writes.md`, `feedback_refresh_state_before_bulk_destructive.md`, `feedback_never_batch_changes_without_review.md` — all exist. Coverage is good, but the four memories overlap and the rules are not centralized.
+   - Suggested graduation: **No new memory; consider stop hook** for Write/Edit on file paths matching `brain/context/session-decisions-*` or new tracker tabs — should require an explicit "approved" marker in the immediate prior turn. Or at minimum: add a **PreToolUse warning hook** that fires on multi-item batch writes (>3 entities in a single Edit/Write) and prompts agent to verify per-batch approval.
+
+6. **Briefing structure migration with signal preservation.** Appears in:
+   - 2026-04-25-decisions-only-briefing-emoji-tags (4-bucket → emoji tags)
+   - 2026-04-19-briefing-architecture-shift-to-action-keyed-buckets (5-section → 4-bucket)
+   - 2026-04-26-relationship-cadence-friday-only (Mon-Thu noise suppression)
+   - Count = 3
+   - Current handling: All memorized in `feedback_briefing_three_buckets`, `feedback_relationship_cadence_friday_only`, `feedback_decision_fatigue_minimization`, CLAUDE.md morning workflow.
+   - Suggested graduation: **No graduation needed**, but `pipeline-manager` SKILL.md should be cross-checked to ensure the Friday-only cadence rule is enforced at skill-output-validation level (not just memory). Worth a stop-hook that blocks pipeline-manager output containing `🟢 *CRO*` items on Mon-Thu.
+
+### Voice / communication patterns
+
+- **Plain-text drafts only** — multiple traces (Hoffman, Vigna, Will Cotton acceptance) all show Kay rewriting drafts to strip explicit value-labeling, room-naming, and salesy closers. The "cheesy" callout is a recurring tell. Existing `feedback_drafts_no_blockquote`, `feedback_email_no_em_dashes`, `feedback_outreach_no_fake_lines` cover symptoms; the underlying principle is **understated warmth, no explicit self-evaluation of the situation**.
+- **Audience-aware disclosure is load-bearing** — the WSN/Charter trace shows that even philosophically-correct content can leak strategic positioning. Voice rules need an audience-tier check, not just a topic check. Already partially codified in `feedback_no_search_fund_language_intermediaries.md` for intermediaries; the WSN traditional-searcher case needs a parallel memory.
+- **First-person ("I am looking to acquire") beats institutional ("Greenwich & Barrow is acquiring")** for owner outreach — codified in buy-box trace, should propagate to all owner-facing copy. Conference-engagement skill snippets tab is locked correct; verify outreach-manager and DealsX templates match.
+- **Conditional softening attaches to smallest ask, not to relationship.** New pattern not yet in memory.
+
+### Decision-trace gaps
+
+Categories underrepresented in the 69-trace corpus:
+- **Email/draft iteration micro-edits** — most voice corrections happen inline ("change this line") and never become traces. The Hoffman/Vigna/Will Cotton traces are the exception. The `decision-traces` skill needs a litmus for catching voice-iteration-only sessions even when no explicit APPROVE/REJECT verb fires.
+- **Silent skips** — when an agent decides NOT to surface something (e.g., suppressing a relationship-cadence Mon-Thu), the decision rarely produces a trace because nothing visible happened. Kay's "we had said you only remind on Fridays" surfaced this gap on 2026-04-26.
+- **Repeated process violations** before they reach 3x correction threshold. The onepager hook trace establishes 3x as graduation criterion, but the count itself is implicit. **Recommend: add a small log file** `brain/traces/correction-counts/{pattern-slug}.md` that increments on each violation, so the 3x threshold is observable rather than memory-recalled.
+- **Approval-gate verification** — how the system detects whether an artifact write was actually approved per-batch. The 2026-04-27 Motion triage error suggests this category needs more traces to find a structural fix (currently behavioral only).
+
+### Agent-Kay alignment
+
+Skipped this run. Validating 5 target list sheets against agent advances vs Kay overrides would have required >5 min and the patterns above are already strong from the trace corpus alone.
+
+### Proposed changes (importance: critical|high|medium|low)
+
+1. **[high]** Target: `memory/feedback_voice_lead_with_their_emphasis.md` (NEW)
+   - Current: 3 separate voice memories cover symptoms (about-them, no-strategy-leaks, continue-dont-reintroduce). None capture the data-rich vs values-rich opener distinction.
+   - Change: Create new memory with the Hoffman litmus + Heritage-Holding voice-match heuristic + buy-box first-person-voice rule. Cross-link from the 3 existing memories.
+   - Why: Same correction across 5 traces in 1 week, recurring failure mode.
+   - Source: 2026-04-29-lead-with-what-they-care-about, 2026-04-29-no-search-fund-language-intermediaries, 2026-04-23-buy-box-paragraph-kay-authored, 2026-04-23-seller-short-transition-matters, 2026-04-22-evening-event-override-will-cotton-studio.
+
+2. **[high]** Target: `memory/feedback_check_schema_before_recommending.md` (NEW)
+   - Current: No memory captures the meta-rule. Domain-specific memories exist for JJ schema and cadence-field-vs-text but the principle isn't generalized.
+   - Change: Create memory codifying: before recommending a behavioral intervention based on data-pattern observation, verify the data model can represent the metric. Pattern tags from JJ + Lauren traces.
+   - Why: 4 traces show confident-wrong recommendations from data-model blind spots. JJ trace explicitly cost 3 wrong analyses before unlock.
+   - Source: 2026-04-23-jj-col-u-overwrite, 2026-04-23-cadence-field-sole-source-of-truth, 2026-04-29-stagger-launchd-plists-collision, 2026-04-19-onepager-guardrail-tool-level-not-memory.
+
+3. **[medium]** Target: `memory/feedback_offramp_at_smallest_commitment.md` (NEW)
+   - Current: No memory. Pattern only in 2 traces.
+   - Change: New memory with off-ramp placement litmus. "Conditionals attach to the smallest concrete ask in the email, never to the relationship overall." Pair with `pattern/disqualifier-skip-pitch` for banker/lender contacts.
+   - Why: Same correction across 3 outreach drafts in close succession. Will recur on every banker/lender first-reply.
+   - Source: 2026-04-24-banker-first-reply-cut-buybox, 2026-04-24-offramp-attach-to-ask, 2026-04-23-buy-box-paragraph-kay-authored.
+
+4. **[medium]** Target: `memory/feedback_stress_test_constraints_not_facts.md` (EXPAND)
+   - Current: Covers session-only timelines/budgets/scope.
+   - Change: Add subsections for (a) external-framework premise verification (Athena/Matchmaker case), (b) audience-aware-disclosure check before applying philosophical reframes to peer-group content (WSN/Charter case), (c) "fluff" tell — analyses on thin internal data must surface low confidence in output.
+   - Why: 4 traces in 9 days show the same meta-pattern in different domains (timeline / framework / peer-content / data-confidence).
+   - Source: 2026-04-21-stress-test-constraint-methodology, 2026-04-22-kay-is-operator-not-absent-buyer, 2026-04-21-traditional-search-peer-disclosure, 2026-04-21-niche-ranking-methodology-pivot.
+
+5. **[medium]** Target: `pipeline-manager` SKILL.md + new stop hook in `.claude/hooks/router/handlers/relationship_cadence_friday_only.py` (NEW)
+   - Current: Memory-only enforcement (`feedback_relationship_cadence_friday_only`). Documented violation from 4/17, 4/21, 4/24, 4/26.
+   - Change: Stop hook that scans pipeline-manager / morning-briefing output. If date is Mon-Thu AND output contains relationship-cadence patterns (overdue contact, slipped follow-up on cadence, "🟢 *CRO*" items) → block with reason citing memory.
+   - Why: Per `feedback_artifacts_pure_industry_analysis` precedent — 4 violations in 9 days = past the 3x graduation threshold. Memory alone hasn't held.
+   - Source: 2026-04-26-relationship-cadence-friday-only (lists the 4 prior briefings that violated).
+
+6. **[low]** Target: `decision-traces` skill SKILL.md
+   - Current: Litmus is "would future agent make different choice without knowing this." Catches APPROVE/REJECT verbs but misses silent-skip decisions and voice-iteration micro-edits.
+   - Change: Add second-pass scan for (a) sessions with 3+ draft iterations on the same artifact (voice calibration trace candidate), (b) suppression decisions where agent decided NOT to surface something Kay had previously asked to suppress.
+   - Why: The 2026-04-26 Friday-only rule violation went undetected for 3 weeks because suppression-decisions don't trip the existing litmus.
+   - Source: 2026-04-26-relationship-cadence-friday-only, the absent traces between 4/17–4/26 that should have caught this earlier.
+
+7. **[low]** Target: New tracking file `brain/traces/correction-counts/{pattern-slug}.md` (NEW lightweight ledger)
+   - Current: 3x-correction-graduation rule from `feedback_artifacts_pure_industry_analysis` is implicit. No explicit count.
+   - Change: When a correction is repeated, append to a per-pattern ledger file. Calibration-workflow scans these weekly; ≥3 entries = graduate to hook.
+   - Why: Without explicit counting, the 3x threshold relies on memory-recall by Claude — exactly the failure mode the rule is meant to fix.
+   - Source: meta-pattern across `feedback_relationship_cadence_friday_only` (4 violations before catch), `feedback_artifacts_pure_industry_analysis` (3 before hook), `feedback_no_search_fund_language_intermediaries` (caught at 1 because the violation was prominent).
+
+-> READY

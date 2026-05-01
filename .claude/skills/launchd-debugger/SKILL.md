@@ -1,11 +1,12 @@
 ---
 name: launchd-debugger
-description: "Daily 5am ET scan of overnight launchd job logs. Spawns a debug subagent per failed job to diagnose, attempt safe fixes (re-run, restart, retry transient), or surface to Slack #operations. Catches silent failures before the morning briefing."
+description: "Daily 5am ET scan of overnight launchd job logs PLUS auto-fire on every non-zero scheduled-skill exit. Spawns a debug subagent per failed job to diagnose, attempt safe fixes (re-run, restart, retry transient), or surface to Slack #operations. Suppresses Slack noise via known-incident registry + cross-day dedup. Catches silent failures before the morning briefing."
 user_invocable: true
-trigger: "Scheduled daily 5:00am ET via launchd (com.greenwich-barrow.launchd-debugger). Runs after overnight jobs complete and before goodmorning workflow at 7am."
-schedule: "Daily 5:00am ET"
+version: v1.1.0
+trigger: "Scheduled daily 5:00am ET via launchd (com.greenwich-barrow.launchd-debugger) + auto-fire by scripts/run-skill.sh on any non-zero scheduled-skill exit (FAILED_LOG_FILE env passes the failed log path)."
+schedule: "Daily 5:00am ET + on-failure trigger"
 context_budget:
-  skill_md: 1200
+  skill_md: 1500
   max_references: 0
   sub_agent_limit: 2000
 ---
@@ -155,8 +156,24 @@ If the scan returned zero failures, no Slack at all.
 - [ ] `scan_launchd_failures.py` ran without script-level error.
 - [ ] Every detected failure spawned a debug subagent that returned a verdict.
 - [ ] Every FIX action either succeeded (re-run exit 0) or was downgraded to SURFACE on retry failure.
-- [ ] Every SURFACE has a Slack message posted to #operations.
+- [ ] Every un-suppressed SURFACE has a Slack message posted to #operations. Suppressed surfaces (known-incident OR cross-day-dedup) are recorded in the artifact with `slack_posted: false` and a `suppression_reason`.
 - [ ] Artifact written to `brain/trackers/health/launchd-debugger-{date}.json` with all required fields.
 - [ ] No write to Attio / Drive / Sheets / vault content.
 - [ ] Validator (`validate_launchd_debugger_integrity.py`) exits 0.
 </success_criteria>
+
+<changelog>
+## v1.1.0 — 2026-05-01
+
+**Failure-trigger architecture.** `scripts/run-skill.sh` now auto-fires `launchd-debugger:on-failure` on any non-zero scheduled-skill exit (recursion-guarded — launchd-debugger does not trigger itself). Failures get diagnosed within ~3 minutes of occurring instead of waiting for the 5am daily run. Background-detached so the failed parent skill's exit is not held up.
+
+**On-failure mode.** New headless prompt at `.claude/skills/launchd-debugger/headless-on-failure-prompt.md`. Reads `FAILED_LOG_FILE` env var (set by triggering wrapper) → calls `scan_launchd_failures.py --log-file "$FAILED_LOG_FILE"` for single-failure diagnosis. Same FIX/SURFACE allowlist, same suppression filters, faster path (<5min vs daily's <10min). Appends to today's daily artifact if it exists, otherwise creates fresh.
+
+**Known-incident registry** at `brain/trackers/health/known-incidents.json`. Suppresses Slack posts for failures matching an open-bead-in-flight: matched by `(job + root_cause_substring in error_signature/last_50_lines)`. Suppressed entries still land in the daily artifact for audit trail. Pre-populated with `ai-ops-5wx` (niche-intelligence Tuesday "An unknown error occurred (Unexpected)") so launchd-debugger does not spam Slack while Agent B fixes the underlying bead.
+
+**Cross-day dedup.** Before posting Slack, the debug subagent reads the prior 7 days of `brain/trackers/health/launchd-debugger-*.json` artifacts. If a `(job + cause + error_signature[:50])` tuple already surfaced (with `slack_posted == true`), the current SURFACE is downgraded to artifact-only entry (no Slack) with `suppression_reason: "cross-day-dedup:7d"`. Prevents a repeating bug from generating N Slack pings/day across its open lifetime.
+
+**Wrapper case for `niche-intelligence:tuesday`.** Routes to Agent B's headless prompt + validator (parallel track). When Agent B's plist update fires Tuesday, the wrapper now correctly routes the headless prompt instead of falling through to bare `/niche-intelligence` (the documented exit-1 path).
+
+**Schema additions to result entries:** `slack_posted` (bool), `suppression_reason` (string|null), `triggered_by` ("daily"|"on-failure"). The validator's accounting check passes when `fixes_succeeded + surfaces_to_slack + suppressed_count == failures_detected`.
+</changelog>

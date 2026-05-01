@@ -196,3 +196,22 @@ if [ $EXIT_CODE -ne 0 ]; then
     -H 'Content-type: application/json' \
     -d "{\"text\":\"$SLACK_TEXT\"}"
 fi
+
+# v1.1 Failure-trigger: auto-fire launchd-debugger on any non-zero exit so the
+# debug subagent diagnoses immediately instead of waiting for the 5am daily
+# scan. Recursion guard: skip if THIS run is already launchd-debugger (any
+# mode) — if launchd-debugger fails it must NOT trigger itself.
+#
+# Background-detached (nohup + &) so the parent skill exit isn't held up by
+# the on-failure run (~3min). The wrapper exits immediately; the on-failure
+# child wrapper has its own LOG_FILE/POST_RUN_CHECK lifecycle and writes its
+# own log at logs/scheduled/launchd-debugger-{date}-{HHMM}.log.
+#
+# FAILED_LOG_FILE (not LOG_FILE) is exported so it survives the child
+# wrapper's reassignment of LOG_FILE on its line ~22. The on-failure prompt
+# reads $FAILED_LOG_FILE and feeds it to scan_launchd_failures.py --log-file.
+if [ "$EXIT_CODE" != "0" ] && [ "$SKILL_NAME" != "launchd-debugger" ]; then
+  WRAPPER_PATH="$WORKDIR/scripts/run-skill.sh"
+  echo "Auto-firing launchd-debugger on-failure (LOG_FILE=$LOG_FILE)" >> "$LOG_FILE"
+  FAILED_LOG_FILE="$LOG_FILE" nohup "$WRAPPER_PATH" launchd-debugger on-failure </dev/null >/dev/null 2>&1 &
+fi

@@ -1,0 +1,28 @@
+{
+  "spreadsheet_id": "18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk",
+  "tab_title": "Association Heads",
+  "sheet_id": 1213452268,
+  "range": "'Association Heads'!A1:Z200",
+  "captured_at_utc": "2026-05-01T14:07:53Z",
+  "values": [
+    [
+      "Source",
+      "Firm / Org Name",
+      "Website",
+      "Headquarters",
+      "Focus / Specialty",
+      "Lead Contact",
+      "Title",
+      "Email",
+      "Office Phone",
+      "Direct / Mobile",
+      "LinkedIn (Person)",
+      "LinkedIn (Firm)",
+      "Credentials",
+      "Signup URL",
+      "Deal Email Pattern",
+      "1st Outreach Date",
+      "Notes"
+    ]
+  ]
+}

@@ -2,12 +2,12 @@
 schema_version: 1.2.0
 date: 2026-05-01
 title: Bob Williamson (Cetane Associates) — Pest & Lawn director offering free Value Range Analysis
-status: backlog
+status: skipped
 source: email
 urgency: medium
 source_ref: "thread:19ddf3a131324161"
 confidence: high
-tags: [date/2026-05-01, inbox, source/email, person/bob-williamson, company/cetane-associates, topic/pest-management, topic/intermediary-outreach, topic/njpma-warm-intro, urgency/medium]
+tags: [date/2026-05-01, inbox, source/email, person/bob-williamson, company/cetane-associates, topic/pest-management, topic/intermediary-outreach, topic/njpma-warm-intro, urgency/medium, status/skipped]
 ---
 
 # Bob Williamson (Cetane Associates) — Pest & Lawn director offering free Value Range Analysis
@@ -20,9 +20,7 @@ Office: 860.592.0089 | sample PDF attached (69.6KB).
 
 ## Action
 
-- **DECISION required:** Reply this week. Bob is a warm pest-management M&A advisor (intermediary-source layer), met in person, contextual relevance high (Premium Pest Management is currently JJ's active cold-call sprint).
-- **RECOMMEND:** Brief warm reply thanking him for the workshop + the VRA sample, asking if he'd be open to a 20-min intro call to understand his deal flow / current Pest & Lawn pipeline.
-- **Audience layer:** Intermediary (pest-specialist M&A advisor at established firm). Aligns with Kay's intermediary-outreach push this week.
+- **RESOLVED 2026-05-01:** Kay decided NO reply. Cetane is sell-side advisory; the free VRA is a sell-side prep tool Bob offers to OWNERS (he's prospecting for sell-side mandates, not bringing buyers deals). Wrong layer for our buy-side intent. No further action.
 
 ## Context
 

@@ -1,106 +1,123 @@
 ---
-title: "Email Scan Results — 2026-05-01 (Friday)"
-date: 2026-05-01
-tags: [date/2026-05-01, context, topic/email-scan, source/email-intelligence]
 schema_version: 1.1.0
+date: 2026-05-01
+type: context
+title: "Email Scan Results — 2026-05-01 (Friday)"
+tags: [date/2026-05-01, context, topic/email-scan, topic/morning-workflow, topic/granola-ingestion, source/email-intelligence]
 ---
 
-# Email Scan Results — 2026-05-01
+# Email Scan Results — 2026-05-01 (Friday)
 
-Window: emails since 2026-04-30 00:00 ET. ~20 inbound threads, 5 outbound. 4 Granola meetings on 4/30 (3 already in vault per 4/30 session-decisions; QofE webinar attendance passive — no relationship call, no vault write). No CIM, no NDA, no LOI, no Active Deal Fast-Path triggers. Bookkeeper P&L already auto-fired 4/29 — not re-firing. Friday weekly-review skills (weekly-tracker, health-monitor, calibration-workflow) due to fire per CLAUDE.md morning workflow.
+Scan window: 2026-04-29 12:00 ET → 2026-05-01 06:00 ET (last 2 days, inbound + outbound). Cross-checked against `[[notes/daily/2026-04-30|session-decisions-2026-04-30]]` to suppress already-handled items. No CIMs, NDAs, LOIs, or financials detected. No bookkeeper P&L this scan (April Management Report not yet sent — last was March, processed 4/29). Three new follow-ups to handle, three Granola meetings ingested as call notes, one warm intro to action this morning.
 
-**System note:** `gog calendar events list` returning 404 NotFound across explicit-cal / today / tomorrow / from-to invocations this scan. Calendar-derived sections fall back to session-decisions cross-reference. Suggest pipeline-manager surface as 🔴 broken-system Decision.
+---
 
 ## 1. Actionable Items Created
 
-| Type | Person / Subject | Notes |
-|------|------------------|-------|
-| Inbox item written (vendor invoice, due today) | [[entities/harrison-wells]] / Dodo Digital — `[Action Required] Engagement Scope + Invoice` (4/30 17:26 CDT) + Stripe invoice `#X5VG06ZS-0002` $1,000 due 5/1 (4/30 17:21) | Month-to-month AI-coaching retainer for May 1-31. First session already on calendar Fri May 15 12-1pm EDT (gmail thread `19ddfd5fd43ccd40`). Time-sensitive. **Source:** gmail threads `19de049e0d5ca20f` (scope) + `19de0447792bb509` (invoice). **Inbox file:** `brain/inbox/2026-05-01-dodo-digital-may-invoice-due-today.md`. |
-| Reply needed (post-conference reactive) | [[entities/bob-williamson]] — Cetane "NJPMA Business Management workshop" (4/30 12:30) + sample Value Range Analysis PDF | Post-NJPMA-workshop networking. Bob is Cetane's Pest & Lawn Director (Warrington PA). Sent unsolicited sample VRA "to enable you to see the end product." Reactive per `feedback_post_conference_replies_reactive_only` — Kay's call whether to engage. **Source:** gmail `19ddf3a131324161`. |
-| Open loop carried | [[entities/andrew-lowis]] — Axial colleague intro (4/30 thread) | Andrew sent Axial info-request form on 4/30 17:00 ET; Kay confirmed "Great will do" 17:30 but hasn't yet filled out the form. Pending Kay action — not surfacing as new inbox item; carried in 4/30 deferred list. **Source:** gmail thread `19dc0f11d1a3bf68`. |
+Three inbox items written from this scan:
 
-Only 1 new `brain/inbox/` item written today (Harrison invoice, due-today). Bob Williamson stays at artifact level — Kay's reactive-yes/no choice, no auto-queue. Andrew Lowis form-fill is already a known open loop.
+1. **[[inbox/2026-05-01-bob-williamson-cetane-vra-followup]]** — Pest & Lawn director at Cetane Associates. Met at NJPMA workshop 4/29. Sent VRA sample + free Value Range Analysis offer. **Urgency: medium.** RECOMMEND: warm reply this week proposing 20-min intro call. Context: pest-specialist M&A advisor + Premium Pest Management is JJ's active cold-call sprint.
+   - Source: `thread:19ddf3a131324161`
+2. **[[inbox/2026-05-01-rebekah-stender-inzo-it-diligence-intro]]** — IT/cybersecurity due-diligence vendor pitching boss Nick Akers via 15-min call. **Urgency: low.** RECOMMEND: defer to post-LOI bucket; no active deal at LOI stage.
+   - Source: `thread:19dd9e8a35c97212`
+3. **[[inbox/2026-05-01-natalie-evans-methodnode-outbound-vendor]]** — Done-for-you outbound deal-flow vendor, second touch with sample-list offer. **Urgency: low.** RECOMMEND: polite decline; same lane as DealsX (already running, per `feedback_dealsx_is_cold_email_infra`).
+   - Source: `thread:19dc0adaaa6f6bd6`
+
+**Granola action items** (from call notes — surfaced for awareness, not added to inbox):
+- Review Harrison Wells engagement-scope email + decide on May renewal at $1,200/mo (ref: [[calls/2026-04-30-harrison-wells-coaching-session]])
+- Follow up on aerospace/defense woman-owned business referral from Camilla's XPX corporate-advisor contact (ref: [[calls/2026-04-30-team-tb-camilla-kay]])
+- Save Hollywell as Q of E vendor option for first LOI'd deal; bake working-capital gotchas into post-LOI checklist (ref: [[calls/2026-04-30-anacapa-qofe-webinar]])
+
+---
 
 ## 2. Deal Flow Classified
 
 | Class | Count | Notes |
 |-------|-------|-------|
-| DIRECT | 3 | Harrison Wells (vendor invoice — internal coach), Bob Williamson (post-conference reactive), Andrew Lowis (in-flight thread, last action Kay 4/30 17:30). |
-| BLAST | 0 | None this window. |
-| NEWSLETTER | 11 | Axios AM (5/1), Axios PM + Finish Line (4/30), Beacon Anacapa QofE recap (4/30), Mitchell Baldridge tax newsletter, Frank Sondors Salesforge, Wealth Management webinar promo, Frieze VIP, Helen Guo SMB Deal Hunter, Quiet Light hospitality listing, Tory Flippa, NJPMA group thank-you (Andrea Bower 4/30 12:09 — mass workshop send). |
-| Receipts / Auto / Service | 8 | Stripe (Dodo direct-debit confirm), The Art Newspaper receipt, Attio permissions update, BizBuySell email-prefs + Welcome-to-Edge, Axial Welcome + registration confirmation, Transworld website-inquiry confirmation. |
-| Internal / Team | 3 | Abigail Quibilan accepted Team TB JJ biweekly invite (4/30 15:58), Ria Bautista StartVirtual Quality Audit Form (4/30 13:25), Barrie Green response-requested echo (4/29 15:50). |
-| Calendar update | 1 | Ninad Singh moved Fri 5/1 12:30 ET → **Mon 5/4 10:30-11am ET** (gmail `19de02a2ffde018c`). Reschedule visible in calendar. |
+| **DIRECT** | 5 | Andrew Lowis follow-up thread (already replied 4/27-4/28, meeting set for 5/6 10am EDT, suppressed); Ali Doswell reply (already SENT 4/30 per session decisions, suppressed); Bob Williamson NJPMA workshop (NEW, see Section 1); Rebekah Stender Inzo intro (NEW, see Section 1); Harrison Wells engagement scope + Server setup guide + Tailscale (Dodo Digital vendor — NEW, surfaced in Granola call notes) |
+| **BLAST** | 0 | No broker-blast CIMs or generic Dear-Investor emails this scan window. |
+| **NEWSLETTER** | ~6 | Mike Allen Axios AM, Mitchell Baldridge tax newsletter, Frank Sondors salesforge, Beacon QofE recap (educational webinar follow-up), NPMA Events three-day promo, Frieze VIP, Wealth Management webinar promo. All auto-labeled `auto/subscriptions & education`. No new niche signals worth surfacing. |
+| **VENDOR PITCH** | 1 | Natalie Evans Methodnode outbound — second touch, see Section 1. |
+| **TRANSACTIONAL** | 4 | Stripe receipts (Art Newspaper, Dodo Digital), Stripe direct-debit confirmation, Attio permissions update. No action. |
 
-No CIM, NDA, LOI, financials package, or owner-direct outreach detected.
+**No CIMs / NDAs / LOIs / financials detected.** Active Deal Fast-Path: not triggered. Bookkeeper P&L Auto-Trigger: not triggered (April Management Report not yet sent; March processed 4/29).
+
+---
 
 ## 3. Draft Status
 
-| Status | Count | Notes |
-|--------|-------|-------|
-| Active draft | 0 | Per 4/30 session-decisions, only the Hoffman LinkedIn DM was open and that was sent. No drafts carried into 5/1. |
-| Sent (Kay outbound, last 48h) | 5 | (1) Andrew Lowis 4/30 16:33 + 17:30 (Axial colleague intro request + form-confirm reply). (2) Ali Doswell 4/30 12:06 (warm thank-you reply). (3) Ninad Singh 4/30 16:54 (final message in 11-msg thread). (4) Calendar invite update for Team TB JJ biweekly (4/30 15:51 + 15:54 — two updates, second supersedes first). (5) "Running 5 min late" 4/29 14:52 (vehicle-arrival ping). |
-| Stale unsent (>48h) | 0 | None. |
+**Per `feedback_gmail_only_no_superhuman` (Apr 29 sunset), Superhuman MCP no longer used. Drafts checked via Gmail SENT label.**
 
-Cross-checked against `session-decisions-2026-04-30.md` — all 4 external sends in yesterday's APPROVE/SENT list (Hoffman LinkedIn, Ali Doswell reply, Andrew Lowis email, Transworld NY inquiry form) are accounted for; no re-surface needed.
+**Outbound sent in scan window (suppressed from briefing — already in [[notes/daily/2026-04-30|session-decisions-2026-04-30]]):**
+- 4/30: William Hoffman LinkedIn DM (SENT)
+- 4/30: Ali Doswell reply (SENT)
+- 4/30: Andrew Lowis Axial colleague intro request (SENT)
+- 4/30: Transworld NY buyer-inquiry form (SENT)
+- 4/30: Updated Team TB JJ video conference (administrative)
+- 4/30: Ninad Singh thread continuation (Kay confirmed Fri 5/1 12:30 ET window)
+- 4/29: "Running 5 min late" SMS-style note (administrative, NJPMA workshop)
+
+**Pending drafts:** None detected. No stale drafts >48h old.
+
+**Open reply loops (awaiting inbound, no action needed yet):**
+- William Hoffman — LinkedIn DM sent 4/30, awaiting response
+- Andrew Lowis — Axial colleague intro request sent 4/30, awaiting his colleague reach-out (separate from his own meeting confirmed for 5/6 10am EDT)
+- Axial `help@axial.net` — Membership Agreement / Success Fee disclosure request (Axial activation paused per session-decisions)
+- BizBuySell / Transworld broker / Calder Capital — initial registrations 4/30, all awaiting first inbound
+
+---
 
 ## 4. Introductions Detected
 
-| Person | Source | Status |
-|--------|--------|--------|
-| None | — | No genuine warm intros this window. Rebekah Stender's `Intro: Nick Akers / Acquiring Minds` (4/29) was a vendor BDR pitch using "Intro:" as subject hook — already classified as vendor pitch in 4/30 artifact. |
+**One genuinely new warm intro requiring action:**
+
+1. **Bob Williamson (Cetane Associates) — Pest & Lawn M&A director.** In-person intro at NJPMA workshop 4/29; first written follow-up arrived 4/30 12:30 ET. Layer: Intermediary (pest-specialist advisor at established firm). Tier-1 for current niche focus. Inbox item written. Recommend warm 20-min intro-call ask this week.
+
+**Cold pitches misclassified as intros (NOT real introductions):**
+- Rebekah Stender (Inzo) — uses "intro" language but is BDR cold-pitching boss Nick Akers; no warm referrer. Treat as vendor inbound.
+
+**Existing warm-intro threads continuing (not new this scan):**
+- Andrew Lowis Axial colleague intro — sent 4/30, awaiting downstream
+
+---
 
 ## 5. Niche Signals
 
-| Niche | Signal | Source |
-|-------|--------|--------|
-| Pest-management (active research) | Cetane (Bob Williamson) reaching out post-NJPMA confirms Cetane is the active M&A advisor in pest-services niche. Sample VRA filename `Value Range Analysis - Bugo Pest Remover_v2.pdf` — implies Cetane has live mandate volume. | gmail `19ddf3a131324161` |
-| Pest-management (active research) | NJPMA mass thank-you (Andrea Bower 4/30) confirms 4/29 workshop attendance; no individual outreach in this email but reinforces NJPMA as live association tap. | gmail `19ddf26ea1ebdb0f` |
-| Search-fund deal flow / DD | Beacon Anacapa published QofE / Financial DD recap content (4/30 18:09) following Kay's webinar attendance 4/30 11am. Educational artifact, not a deal signal. | gmail `19de070f07f554bd` |
-| Hospitality amenities | Quiet Light listing — 10-yr brand, ~28% rev growth, repeat B2B. Misses size/margin gates without numbers in subject; not pursued. | gmail `19ddf8cb2b5365ab` |
-| Methodnode pay-per-call sourcing (vendor) | Natalie Evans (Methodnode) follow-up 4/29 — claims 18 positive replies / 2,000 contacts / 1 mo on a CPG manufacturing search-fund client. Reference data point on outbound benchmarks; not a deal. | gmail `19dc0adaaa6f6bd6` |
+**Pest Management (active sprint):**
+- NJPMA workshop intro pipeline producing — Bob Williamson confirms there's a working M&A advisor pipeline in pest specifically. Cetane is a real advisory shop (Warrington PA) that targets the niche.
+- NPMA promotional email this morning (3-day national conference promo) — confirms the broader Pest Mgmt conference circuit is active. Pest Mgmt Conference in Charlotte mid-May already on Kay's calendar per Camilla call.
+
+**Aerospace & Defense (NEW signal from Camilla call):**
+- XPX corporate-advisor contact has a woman-owned aerospace/defense target — owner inherited 10 yrs ago, would like to sell. Kay already replied "yes interested." Worth tracking — woman-owned aerospace/defense is an unusual combination and the staff-transition fit (woman-led to woman-led) is genuinely differentiating.
+
+**Industry trend signals (Camilla call + Megan reference):**
+- ~60% of Megan's search-fund cohort acquired via brokers last year (vs prior wisdom that brokers are dead). Confirms intermediary push is correctly timed.
+- Independent-sponsor friend leaving his PE firm to solo — broader pattern of mid-PE exodus to solo deal-makers, more deal-flow competition incoming.
+- "Cody Sanchez effect" — owners flooded with cold outreach, more inclined to go to brokers because everyone's interested.
+
+**Q of E vendor signal (Anacapa webinar):**
+- Hollywell strong endorsement — $20K search-fund Q of E with broken-deal-fee covered if Phase 1 kills it. Materially below big-bank pricing. Add to deal-evaluation skill's vendor list.
+
+---
 
 ## 6. In-Person Meetings Today
 
-**Calendar lookup failed (gog calendar events list returned 404 NotFound).**
+**No external in-person or video meetings scheduled.** Calendar shows no events for Friday 2026-05-01.
 
-Cross-referenced against `session-decisions-2026-04-30.md`:
+**Note:** Yesterday's session-decisions referenced Ninad Singh at 12:30 ET Fri 5/1. That meeting time was tentatively offered by Kay (per thread 19b23764206d92d9 message 4/28) but the calendar shows no confirmed event. Briefing pre-flight should treat as **unconfirmed** — Ninad has not responded to the windows. No brief was generated 4/30 (PASS per session-decisions). If Kay hears back today, may need to add.
 
-- **Ninad Singh — moved.** Original 5/1 12:30 ET hold rescheduled to **Mon 5/4 10:30-11am ET** per gmail update `19de02a2ffde018c`. Brief generation skipped per 4/30 PASS decision; would now apply to Mon 5/4 if Kay wants one.
-- **Andrew Lowis — Wed 5/6 10-11am ET** (separately scheduled, not today).
-- **Harrison Wells AI coaching — Fri May 15 12-1pm EDT** (not today).
-- **No other external meetings on 5/1 confirmed via session-decisions.**
+**Granola reminder:** Not applicable — no in-person meetings today.
 
-Recommend pipeline-manager: surface calendar-API failure as 🔴 broken-system Decision so today's external-meeting count is verified by Kay independently.
-
-## Granola Action Items
-
-4 meetings on 4/30 captured by Granola:
-
-| Meeting | Vault status | Notes |
-|---------|--------------|-------|
-| Harrison & Kay Schneider Session (2pm) | ✅ `brain/calls/2026-04-30-harrison-wells-coaching-session.md` | Filed 4/30. |
-| Team TB Camilla I Kay (12:15pm) | ✅ `brain/calls/2026-04-30-team-tb-camilla-kay.md` | Filed 4/30. |
-| Team TB JJ I Kay (11am) | ✅ `brain/calls/2026-04-30-team-tb-jj-kay.md` | Filed 4/30 (3-retry validator dance per 4/30 session-decisions). |
-| QofE and Financial Due Diligence Explained for Searchers (11am Beacon webinar) | ⏸ skipped vault write | Passive content consumption (one-way webinar). Not a relationship call. Litmus: zero downstream action items, no future-briefing changes. |
-
-No new action items beyond what 4/30 session-decisions already captured.
-
-## Side Effects Executed
-
-- **Inbox item created:** `brain/inbox/2026-05-01-dodo-digital-may-invoice-due-today.md` (urgency: high, due_date: 2026-05-01, source: email).
-- **No CIM auto-trigger fired** (none detected).
-- **No Active Deal Fast-Path fired** (no active-deal-document emails).
-- **No Bookkeeper P&L auto-trigger fired** (April Management Report already processed 4/29).
-- **No new entities created** (Bob Williamson + Cetane / Harrison Wells + Dodo Digital all already in vault per references).
-- **No Slack notifications fired** (no CIM / no fast-path event).
+---
 
 ## Validation
 
-- [x] All inbound emails classified (DIRECT/BLAST/NEWSLETTER/Receipts/Internal).
-- [x] CIM/NDA/LOI scan complete — no detections.
-- [x] Active deal emails: zero filed (no active deal documents).
-- [x] Introductions: scanned, none genuine.
-- [x] Granola transcripts: 4 meetings ingested, 3 already in vault, 1 webinar intentionally skipped.
-- [x] All 6 required sections present.
-- [ ] Calendar verification: **failed (404)** — flagged for pipeline-manager.
+- [x] Artifact written to `brain/context/email-scan-results-2026-05-01.md`
+- [x] All 6 required sections present
+- [x] Each section populated (none marked "None" — all have content)
+- [x] 3 inbox items written and validated
+- [x] 3 Granola call notes written: [[calls/2026-04-30-harrison-wells-coaching-session]], [[calls/2026-04-30-team-tb-camilla-kay]], [[calls/2026-04-30-anacapa-qofe-webinar]]
+- [x] 2 entity stubs created: [[entities/hollywell]], [[entities/mike-hollywell]]
+- [x] Yesterday's SENT items suppressed per session-decisions cross-check
+- [x] No CIMs / NDAs / LOIs / financials detected → no auto-triggers fired
+- [x] No bookkeeper P&L this scan → budget-manager not auto-fired

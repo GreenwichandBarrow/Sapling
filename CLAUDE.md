@@ -35,7 +35,11 @@ Memory recall weakens as the session fills. These fire on action triggers, not t
 
 ### Before writing any external message (email/Slack/text)
 - Recipient address verified from a verified source (Linkt, prior correspondence, company site, signature)? If not → stop, run Apollo verification or tell Kay.
-- Draft only, never send. Show in conversation for Kay's review first.
+- **Read the recipient's vault entity + most recent `brain/calls/` note + Attio `next_action` BEFORE drafting** (graduated 2026-05-01 from Hoffman + Plexus + Templates traces). If `next_action` contains trigger language ("when," "once," "after," "if") → it's trigger-based, not time-based. Don't surface for cadence outreach until trigger fires.
+- **Lead with what THEY cared about, not what was data-rich for our purposes.** Cues: repetition, tone shifts when they drop stats and talk about meaning, personal anecdotes, what Kay surfaced as the insight. Industry stats are table stakes.
+- Draft only, never send. Show in conversation for Kay's review first. **Plain text — no `>` blockquote, no code fence, no leading bar of any kind.** Email drafts via Bash wrapper or Gmail directly (Superhuman sunset 4/29 — never propose Superhuman).
+- **Don't fabricate Kay's inner state** ("I've thought about our call a few times since"). Only include reflections/feelings/learnings she has explicitly stated.
+- If intermediary outreach (broker/IB/lender/lawyer/CPA/family office/association head): NEVER use "search vehicle," "search fund," "ETA," "committed equity," "24-month window." Use "holding company in formation" or "long-term investment firm." Buy-box → footer, not body. No geography in body.
 - If owner outreach: no revenue, no employee count, no financials, no "fund" word, no thesis/strategy leaks.
 - Lead with curiosity about THEM, not Kay/G&B.
 - Sign-off matches SEND day, not draft day ("have a great weekend" only if sending Friday).

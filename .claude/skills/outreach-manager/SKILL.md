@@ -8,6 +8,8 @@ context_budget:
   sub_agent_limit: 2000
 ---
 
+> **2026-05-01 calibration:** Superhuman fully sunset 4/29/26. All draft references in this file mean **Gmail directly** via the bash wrapper. See .
+
 <objective>
 Own all outreach. Every email, call, DM, and follow-up flows through this skill.
 
@@ -23,7 +25,7 @@ This skill receives targets from two upstream skills and runs personalized outre
 - Weekly outreach metrics → skill/weekly-tracker
 
 Four subagents:
-1. **Kay Email Cold Outreach** — multi-channel cadence for Kay Email niches, Claude-drafted in Superhuman
+1. **Kay Email Cold Outreach** — multi-channel cadence for Kay Email niches, Claude-drafted in Gmail
 1b. **DealsX Coordination** — coordination with Sam Singh / DealsX for mass email + LinkedIn outreach on DealsX niches
 2. **Conference Outreach** — pre-conference emails and post-conference follow-ups (Kay always, regardless of niche channel)
 3. **Intermediary Outreach** — relationship-building with association heads, brokers, river guides (Kay always)
@@ -43,7 +45,7 @@ Each niche is assigned a channel on the WEEKLY REVIEW tab (Col D). This determin
 
 **Channel routing rule:** Before running any subagent, read the WEEKLY REVIEW tab Col D for the niche. Route to the correct subagent. Never cross channels.
 
-**Delivery model (Kay Email channel):** Claude drafts in Superhuman via CLI. Kay reviews and sends. No third-party tool ever touches Kay's SMTP credentials.
+**Delivery model (Kay Email channel):** Claude drafts in Gmail directly. Kay reviews and sends. No third-party tool ever touches Kay's SMTP credentials.
 **Delivery model (DealsX Email channel):** Sam/DealsX handles all outreach. We provide templates, exclusion lists, and warm intro intercepts. We draft replies to inbound responses.
 **Delivery model (JJ-Call-Only channel):** Handled entirely by jj-operations skill, not outreach-manager.
 </objective>
@@ -70,13 +72,13 @@ Handles outreach for Kay Email targets sourced from skill/target-discovery (Apol
 
 ### Cold Outreach Delivery
 
-All cold outreach emails are drafted in **Superhuman** via the CLI wrapper. Kay reviews Day 0 emails, then hits send on all emails (Day 0 reviewed, Day 3/6/14 follow-ups sent without editing).
+All cold outreach emails are drafted in **Superhuman** via the CLI wrapper. Kay reviews Day 0 emails, then hits send on all emails from Gmail (Day 0 reviewed, Day 3/6/14 follow-ups sent without editing).
 
 ```bash
-~/.local/bin/superhuman-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
+~/.local/bin/gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29) --to "{email}" --subject "{subject}" --body "{body}"
 ```
 
-**No third-party email tool ever gets SMTP credentials.** Kay sends every email herself from Superhuman. Claude drafts, Kay sends.
+**No third-party email tool ever gets SMTP credentials.** Kay sends every email herself from Gmail. Claude drafts, Kay sends.
 
 ### Cadence Tracking (Claude-Managed)
 
@@ -123,10 +125,10 @@ Claude manages the outreach cadence by tracking per-touchpoint date columns on t
 
 | Day | Channel | Action | Kay's Role |
 |-----|---------|--------|------------|
-| Day 0 | Email (Superhuman) | Personalized cold email, A/B variant | Review + send |
-| Day 3 | Email (Superhuman) | Follow-up email #1 (same thread) | Just send |
+| Day 0 | Email (Gmail) | Personalized cold email, A/B variant | Review + send |
+| Day 3 | Email (Gmail) | Follow-up email #1 (same thread) | Just send |
 | Day 6 | LinkedIn DM | Standalone LinkedIn DM | Copy-paste + send |
-| Day 14 | Email (Superhuman) | Follow-up email #2, final (same thread) | Just send |
+| Day 14 | Email (Gmail) | Follow-up email #2, final (same thread) | Just send |
 
 After Day 14 with no response, move to nurture cadence (pipeline-manager handles from here).
 
@@ -324,7 +326,7 @@ Before writing any Day 0 outreach email, build a research brief for the target. 
 All outreach drafts use the Superhuman CLI wrapper (NOT the MCP tool — it uses Gmail API which creates invisible drafts):
 
 ```bash
-~/.local/bin/superhuman-draft.sh --to "{email}" --subject "Intro {first name} & Kay" --body "{body}"
+~/.local/bin/gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29) --to "{email}" --subject "Intro {first name} & Kay" --body "{body}"
 ```
 
 **CRITICAL:** Always verify the Superhuman CLI is using the G&B account (`kay.s@greenwichandbarrow.com`), not the personal email. If the G&B token is expired, the CLI silently falls back to the personal account. Check the output for the account confirmation line.
@@ -491,11 +493,11 @@ When targets reply to Sam's emails, replies arrive in Kay's Gmail inbox (kay.s@g
 
 **Flow:**
 1. email-intelligence detects reply from a DealsX niche target
-2. Claude drafts response in Superhuman via CLI wrapper
+2. Claude drafts response in Gmail directly wrapper
 3. Kay reviews and sends
 
 ```bash
-~/.local/bin/superhuman-draft.sh --to "{email}" --subject "Re: {original subject}" --body "{body}"
+~/.local/bin/gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29) --to "{email}" --subject "Re: {original subject}" --body "{body}"
 ```
 
 Same voice rules, same SMTP rules as Kay Email channel. Kay sends every reply herself.
@@ -571,9 +573,9 @@ Greenwich & Barrow
 
 Draft in Superhuman via the CLI wrapper:
 ```bash
-~/.local/bin/superhuman-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
+~/.local/bin/gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29) --to "{email}" --subject "{subject}" --body "{body}"
 ```
-Kay reviews and sends from Superhuman.
+Kay reviews and sends from Gmail.
 
 ### Pre-Conference Follow-Up (T-minus 7 days)
 
@@ -680,7 +682,7 @@ Intermediaries go into the **Intermediary Pipeline** in Attio, not Active Deals:
 - **Existing network** — vault entities tagged with `relationship_type: River Guide` or `relationship_type: Intermediary`
 - **Referrals** — one intermediary often knows others
 
-Draft all intermediary emails in Superhuman via CLI.
+Draft all intermediary emails in Gmail directly.
 </intermediary_outreach>
 
 <essential_principles>
@@ -765,7 +767,7 @@ HARD STOP: never outreach to PE-owned companies. Applies to ALL channels includi
 ## Success Criteria
 
 ### Daily (Kay Email Niches)
-- [ ] 5 new Day 0 drafts in Superhuman (personalized, research brief completed)
+- [ ] 5 new Day 0 drafts in Gmail (personalized, research brief completed)
 - [ ] All due follow-ups (Day 3/14) drafted in Superhuman
 - [ ] All due LinkedIn DMs (Day 6) surfaced in briefing
 - [ ] Target sheet updated in real-time as Kay confirms sends

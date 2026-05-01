@@ -4,6 +4,8 @@ description: "Daily morning briefing — pipeline stage changes, outreach recomm
 user_invocable: true
 ---
 
+> **2026-05-01 calibration:** Superhuman fully sunset 4/29/26. All draft references in this file mean **Gmail directly** via the bash wrapper. See .
+
 <objective>
 Keep Attio pipelines current without Kay having to remember to update them. Scan activity signals (calendar, email, call notes, vault), match them to pipeline entries, recommend stage changes, and execute approved updates via Attio API.
 
@@ -185,7 +187,7 @@ Reply by number.
 - *Pipeline shifts* (Attio stage changes, new active deals, NDA-signed detections) → 🔴 if action-needed today, 🟡 if review-needed-soon. Always Obama framing.
 - *Pipeline summary stats* (Active Deals N, Intermediary N, niche counts) → omit from briefing; lives on Active Deal Pipeline + M&A Analytics dashboard pages.
 - *Motion action steps* → 🔴 (same-day) or 🟡 (this week).
-- *Superhuman drafts to send* → 🔴 as a single bundled Decision: **RECOMMEND: Approve all N drafts to send Mon AM** → YES/NO/DISCUSS. Not one item per draft.
+- *Gmail drafts to send* → 🔴 as a single bundled Decision: **RECOMMEND: Approve all N drafts to send Mon AM** → YES/NO/DISCUSS. Not one item per draft.
 - *Targets for review* → 🟡 Decision (warm intro vs cadence vs pass) — bundle by niche.
 - *Brief needed for tomorrow's meetings* → 🔴 Decision: **RECOMMEND: Generate brief for {name}** → YES/NO/DISCUSS (mandatory invariant per CLAUDE.md brief-decisions pre-flight).
 - *Aging deferrals (≥5 days)* → 🟢 Decision: **RECOMMEND: {kill/do-now/re-defer}** → YES/NO/DISCUSS.
@@ -195,15 +197,15 @@ Reply by number.
 
 **Targets for Review rules:**
 - This section surfaces targets from target-discovery's auto-advance system that need Kay's decision. Two categories only:
-  1. **Warm intro targets** — warm-intro-finder found a connection path (via Attio, vault, Gmail, Kay's network). Kay decides: "draft" (create a Superhuman draft for her personal outreach) or "cadence" (enroll in Claude-managed email cadence via Superhuman drafts).
-  2. **Edge case targets** — borderline on buy box/ICP criteria (borderline size, geography, unclear ownership, possible PE backing). Kay decides: "approve" (send to Superhuman drafts + JJ based on channel) or "pass" (move to Passed tab on tracker).
-- **Auto-approved targets do NOT appear here.** Targets that passed all buy box + ICP criteria with no warm intro flow automatically to Superhuman drafts + JJ. Only exceptions surface.
+  1. **Warm intro targets** — warm-intro-finder found a connection path (via Attio, vault, Gmail, Kay's network). Kay decides: "draft" (create a Gmail draft for her personal outreach) or "cadence" (enroll in Claude-managed email cadence via Gmail drafts).
+  2. **Edge case targets** — borderline on buy box/ICP criteria (borderline size, geography, unclear ownership, possible PE backing). Kay decides: "approve" (send to Gmail drafts + JJ based on channel) or "pass" (move to Passed tab on tracker).
+- **Auto-approved targets do NOT appear here.** Targets that passed all buy box + ICP criteria with no warm intro flow automatically to Gmail drafts + JJ. Only exceptions surface.
 - Group by niche when multiple niches are active. One header per niche.
 - Kay responds with decisions per item: "1 draft, 2 approve" or "1 cadence, 2 pass"
 - On Kay's decision:
-  - "draft" → create Superhuman draft via `superhuman-draft.sh` for Kay's review before sending
-  - "cadence" → enroll in Claude-managed email cadence via Superhuman drafts
-  - "approve" → route to Superhuman drafts + JJ call list based on channel
+  - "draft" → create Gmail draft via `gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29)` for Kay's review before sending
+  - "cadence" → enroll in Claude-managed email cadence via Gmail drafts
+  - "approve" → route to Gmail drafts + JJ call list based on channel
   - "pass" → move target to Passed tab on the tracker sheet
 
 Each item numbered. Each has a clear action or question. No informational items without an ask. No items requiring deep review — those go to Slack.
@@ -215,7 +217,7 @@ After Kay reviews all three categories, confirm summary:
 Pipeline manager complete:
 - {n} pipeline stages updated
 - {n} tasks created in Motion
-- {n} email drafts in Superhuman
+- {n} email drafts in Gmail
 - {n} stale deals flagged
 ```
 
@@ -294,7 +296,7 @@ After Gmail ingestion completes and `brain/context/email-scan-results-{date}.md`
   - `## In-Person Meetings`
 - [ ] **Sections populated or explicitly empty** — each section must have either item entries or an explicit "None" / "No items" marker. A missing section header means the ingestion skipped that scan entirely, which is a bug.
 
-If any section is missing, re-run the corresponding ingestion step (e.g., missing Draft Status → re-run Superhuman draft check). If the file doesn't exist at all, the entire Gmail ingestion failed — log error and retry once before alerting Kay.
+If any section is missing, re-run the corresponding ingestion step (e.g., missing Draft Status → re-run Gmail draft check). If the file doesn't exist at all, the entire Gmail ingestion failed — log error and retry once before alerting Kay.
 
 ### Manager Red Flags
 The manager raises these to Kay before executing:
@@ -377,7 +379,7 @@ Results from this check feed directly into the **Draft Status** section of `brai
    - Flag as high-priority pipeline signal
    - Recommend stage change based on reply content
 
-This is how the system knows Kay sent the email and triggers the Attio stage advancement. Claude manages follow-up cadence via Superhuman drafts (Day 3/14 follow-ups drafted each morning). JJ's call list is managed independently by jj-operations.
+This is how the system knows Kay sent the email and triggers the Attio stage advancement. Claude manages follow-up cadence via Gmail drafts (Day 3/14 follow-ups drafted each morning). JJ's call list is managed independently by jj-operations.
 
 ### Outbound Email Scan (catches manually-sent emails + auto-creates missing Active Deals entries)
 
@@ -405,7 +407,7 @@ The Superhuman Draft Status Check above only catches emails that originated as o
 7. **Scope:** Only process emails sent to external recipients. Ignore internal emails (to @greenwichandbarrow.com addresses).
 8. **Log cross-reference source:** Every created entry records `source: manual-outbound-email` with the message ID for audit trail.
 
-This ensures manually-sent outreach emails (not just outreach-manager drafts) trigger the Attio stage change AND create list entries when missing. Claude manages follow-up cadence via Superhuman drafts for all targets.
+This ensures manually-sent outreach emails (not just outreach-manager drafts) trigger the Attio stage change AND create list entries when missing. Claude manages follow-up cadence via Gmail drafts for all targets.
 
 
 ### Cadence Advancement (runs during morning scan)
@@ -459,7 +461,7 @@ Niche sprints have 4 active states tracked on the Industry Research Tracker:
 | Status | Meaning | Target Discovery Volume | Outreach |
 |--------|---------|------------------------|----------|
 | Under Review | Niche identified, one-pager and scorecard in progress. | None | None |
-| Active-Outreach | Full owner outreach active. | 4-6 targets/day | Full cadence via Superhuman drafts (Claude-managed) |
+| Active-Outreach | Full owner outreach active. | 4-6 targets/day | Full cadence via Gmail drafts (Claude-managed) |
 | Active-Long Term | Niche winding down, finishing existing pipeline. | No new targets | Complete existing cadences only |
 | Tabled/Killed | Sprint stopped. | None | None |
 
@@ -520,7 +522,7 @@ During Gmail ingestion, every email labeled "DEAL FLOW" must be classified as on
 
 ### Email Scan Results Artifact
 
-After Gmail ingestion completes (including deal flow classification and Superhuman draft status check), write a structured results file so downstream skills (e.g., /start, deal-aggregator) can read email findings without re-scanning Gmail.
+After Gmail ingestion completes (including deal flow classification and Gmail draft status check), write a structured results file so downstream skills (e.g., /start, deal-aggregator) can read email findings without re-scanning Gmail.
 
 **Location:** `brain/context/email-scan-results-{YYYY-MM-DD}.md`
 
@@ -554,7 +556,7 @@ emails_scanned: N
 - {signal} -> brain/inbox/YYYY-MM-DD-niche-signal-{slug}.md
 
 ## Draft Calibration (draft vs sent diffs)
-{For each email where both a Superhuman draft AND a matching sent email exist:}
+{For each email where both a Gmail draft AND a matching sent email exist:}
 - **{recipient} — {subject}**
   - Draft: {first 2 lines of original draft}
   - Sent: {first 2 lines of what Kay actually sent}
@@ -640,9 +642,9 @@ During Gmail ingestion, detect introduction emails — someone introducing Kay t
 **Cadence for warm intros:**
 | Day | Channel | Action |
 |-----|---------|--------|
-| Day 1 | Email (Superhuman) | Warm intro email referencing introducer |
-| Day 1 | Email (Superhuman) | Thank-you to introducer |
-| Day 5-6 | Email (Superhuman) | Follow-up if no response |
+| Day 1 | Email (Gmail) | Warm intro email referencing introducer |
+| Day 1 | Email (Gmail) | Thank-you to introducer |
+| Day 5-6 | Email (Gmail) | Follow-up if no response |
 | Day 8-10 | LinkedIn DM (Kay) | High-value only |
 
 No Day 3 JJ call. The introducer already warmed the connection.
@@ -1200,7 +1202,7 @@ Bounced emails damage Kay's sender domain reputation. Her email is her entire bu
 
 After pipeline updates, surface any follow-up tasks:
 
-- **"Need to Send Thank You"** → FIRST verify Kay hasn't already sent the thank you (search `from:kay.s@greenwichandbarrow.com to:{contact_email} newer_than:7d`). If already sent, auto-move to Nurture and skip. If not sent, draft a personalized thank you email using Kay's voice (see memory: user_outreach_voice.md). Reference specifics from the meeting (Granola transcript, call notes, or calendar context). Create as Superhuman draft via `~/.local/bin/superhuman-draft.sh`.
+- **"Need to Send Thank You"** → FIRST verify Kay hasn't already sent the thank you (search `from:kay.s@greenwichandbarrow.com to:{contact_email} newer_than:7d`). If already sent, auto-move to Nurture and skip. If not sent, draft a personalized thank you email using Kay's voice (see memory: user_outreach_voice.md). Reference specifics from the meeting (Granola transcript, call notes, or calendar context). Create as Gmail draft via `~/.local/bin/gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29)`.
 - **Introduction promised** → ask Kay for the person's name/company. Create `brain/entities/{slug}.md` in the vault with proper schema. Add them to the appropriate Attio pipeline at "Identified" stage. When the intro email arrives later, they're already tracked.
 - **Introduction received** → match the intro email to the tracked entity, move to "Contacted" stage
 - **NDA Executed** → remind to request financials if not already received

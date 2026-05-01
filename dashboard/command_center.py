@@ -33,7 +33,6 @@ from pages import (  # noqa: E402
     deal_pipeline,
     infrastructure,
     ma_analytics,
-    week_archive,
 )
 
 
@@ -60,7 +59,6 @@ _PAGE_RENDERERS = {
     "deal-aggregator": (deal_aggregator.render, "Deal Aggregator"),
     "deal-pipeline": (deal_pipeline.render, "Active Deal Pipeline"),
     "ma-analytics": (ma_analytics.render, "M&A Analytics"),
-    "week-archive": (week_archive.render, "M&A Activity"),
     "c-suite-skills": (c_suite_skills.render, "C-Suite & Skills"),
     "infrastructure": (infrastructure.render, "Infrastructure"),
 }

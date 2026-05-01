@@ -35,7 +35,6 @@ NAV_ITEMS = [
     ("Deal Aggregator", "deal-aggregator", True),
     ("Active Deal Pipeline", "deal-pipeline", True),
     ("M&A Analytics", "ma-analytics", True),
-    ("M&A Activity", "week-archive", True),
     ("C-Suite & Skills", "c-suite-skills", True),
     ("Infrastructure", "infrastructure", True),
 ]
@@ -500,6 +499,35 @@ GLOBAL_CSS = f"""
     color: var(--text-dim);
     text-align: center;
     letter-spacing: 0.04em;
+  }}
+
+  /* -------- ARCHIVE NESTED SECTION (bottom of M&A Analytics) -------- */
+  .gb-archive-divider {{
+    margin: 48px 0 24px;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--border) 20%,
+      var(--border) 80%,
+      transparent
+    );
+  }}
+  .gb-archive-section-head {{
+    margin-bottom: 16px;
+  }}
+  .gb-archive-section-head .gb-archive-eyebrow {{
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }}
+  .gb-archive-section-head .gb-archive-title {{
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
   }}
 
   /* -------- PAGE SUBTITLE -------- */

@@ -282,13 +282,16 @@ def render() -> None:
         )
         return
 
-    with st.sidebar:
-        st.markdown(
-            '<div style="font-size: 11px; letter-spacing: 0.08em; '
-            "text-transform: uppercase; color: var(--text-muted); "
-            'margin: 12px 0 6px;">M&amp;A activity</div>',
-            unsafe_allow_html=True,
-        )
+    st.markdown(
+        '<div class="gb-archive-section-head">'
+        '<div class="gb-archive-eyebrow">Weekly Archive</div>'
+        '<div class="gb-archive-title">Historical snapshots · frozen weekly views</div>'
+        "</div>",
+        unsafe_allow_html=True,
+    )
+
+    selector_col, _ = st.columns([1, 3])
+    with selector_col:
         selected = st.selectbox(
             "Select week",
             options=week_endings,

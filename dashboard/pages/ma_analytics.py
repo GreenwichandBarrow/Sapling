@@ -426,3 +426,7 @@ def render() -> None:
         "</div>",
         unsafe_allow_html=True,
     )
+
+    st.markdown('<div class="gb-archive-divider"></div>', unsafe_allow_html=True)
+    from pages import week_archive  # local import keeps module load order intact
+    week_archive.render()

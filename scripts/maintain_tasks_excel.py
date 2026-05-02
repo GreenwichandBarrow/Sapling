@@ -28,7 +28,7 @@ import os
 from openpyxl import load_workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.formatting.rule import FormulaRule
-from openpyxl.formatting import ConditionalFormattingList
+from openpyxl.formatting.formatting import ConditionalFormattingList
 
 LIVE = os.environ.get(
     "TASKS_XLSX_LIVE",

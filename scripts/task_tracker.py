@@ -25,7 +25,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from openpyxl import load_workbook
-from openpyxl.formatting import ConditionalFormattingList
+from openpyxl.formatting.formatting import ConditionalFormattingList
 from openpyxl.formatting.rule import FormulaRule
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter

@@ -6,7 +6,7 @@ schedule: Friday 12:30 AM ET
 ---
 
 <objective>
-Detect silent failures before they become lost deals or broken workflows. Every issue found in production this month (deal-aggregator failing silently, Project Restoration skipping stages, E&K deal untracked, Superhuman drafts routing to Gmail) would have been caught by this skill.
+Detect silent failures before they become lost deals or broken workflows. Every issue found in production this month (deal-aggregator failing silently, Project Restoration skipping stages, E&K deal untracked, Gmail draft routing failures) would have been caught by this skill. (Superhuman row removed 2026-05-01 — Superhuman sunset 4/29 per `feedback_gmail_only_no_superhuman`; all drafts now go through Gmail directly via `gog gmail draft create`.)
 </objective>
 
 <essential_principles>
@@ -27,7 +27,6 @@ Tests every external API and integration. Each check: can we authenticate and ge
 | Drive (gog) | OAuth valid | `gog drive ls --parent root --json --max 1` | Returns data | — | Auth error |
 | Sheets (gog) | Can read tracker | `gog sheets get {TRACKER_ID} "'Weekly Topline'!A1" -j` | Returns data | — | Auth error |
 | Granola | MCP responding | `mcp__granola__list_meetings` | Returns data | — | Error or timeout |
-| Superhuman | Token fresh, draft path works | Check `~/.local/bin/superhuman-draft.sh` exists + LaunchAgent running | Both present | Script exists, agent not running | Script missing |
 
 ### Sub-Agent 2: Infrastructure Agent
 Checks scheduled jobs, usage limits, and webhook health.
@@ -247,7 +246,6 @@ If ALL GREEN, no Slack notification. Silence = healthy.
 | deal-aggregator exit 126 | Infrastructure → launchd | Non-zero exit code flagged RED |
 | Project Restoration skipped stages | Pipeline Hygiene → stage skipping | Identified → Closed without NDA/Financials |
 | E&K deal not in Attio | Pipeline Hygiene → untracked deals | Gmail NDA/CIM signals with no Attio entry |
-| Superhuman draft → Gmail | Service Connectivity → Superhuman | LaunchAgent not running or script missing |
 | Weekly tracker missed deal activity | Data Integrity → freshness | Attio stage changes not reflected in tracker |
 </essential_principles>
 

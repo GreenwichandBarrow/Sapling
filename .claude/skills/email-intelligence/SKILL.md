@@ -1,6 +1,6 @@
 ---
 name: email-intelligence
-description: "Gmail/Superhuman/Granola scanning, deal flow classification, CIM auto-trigger, Active Deal Fast-Path, intro detection, and email-scan-results artifact. Runs before pipeline-manager."
+description: "Gmail/Granola scanning, deal flow classification, CIM auto-trigger, Active Deal Fast-Path, intro detection, and email-scan-results artifact. Runs before pipeline-manager. (Superhuman sunset 4/29 — Gmail-only.)"
 user_invocable: true
 context_budget:
   skill_md: 3500
@@ -9,7 +9,7 @@ context_budget:
 ---
 
 <objective>
-Scan all inbound and outbound email, Superhuman drafts, and Granola transcripts. Classify, detect deal signals, and write the email-scan-results artifact that pipeline-manager and other skills consume.
+Scan all inbound and outbound email, Gmail drafts, and Granola transcripts. Classify, detect deal signals, and write the email-scan-results artifact that pipeline-manager and other skills consume. (Superhuman sunset 4/29 per `feedback_gmail_only_no_superhuman` — Gmail draft scanning replaces Superhuman MCP.)
 
 **This is the first skill to run in the morning workflow.** Everything downstream depends on its output.
 
@@ -60,8 +60,8 @@ When describing actions Kay took via email, use the **exact language from the co
 
 **When the reply from the vendor is available, quote the key phrase** (e.g., "downgraded back to Starter tier" per Reid at Linkt). When no reply exists, say "requested" not "confirmed."
 
-### Superhuman Draft Status
-Check Superhuman MCP for draft status:
+### Gmail Draft Status (replaces Superhuman MCP — sunset 4/29)
+Check Gmail drafts via `gog gmail draft list --json`:
 - Which drafts were sent vs still pending
 - Age of unsent drafts (flag if > 48 hours)
 - Cadence triggers from sent drafts
@@ -70,7 +70,7 @@ Check Superhuman MCP for draft status:
 Before flagging any draft as "stale" or "unsent," check `brain/context/session-decisions-{previous-workday}.md`:
 - If the decision log shows SENT/DRAFTED for a draft, do not flag it as stale
 - If the decision log shows DELETED for a draft, do not surface it at all
-- This prevents re-surfacing items Kay already handled via Superhuman when the MCP is unavailable
+- This prevents re-surfacing items Kay already handled via Gmail when draft tooling is unavailable
 </gmail_scanning>
 
 <deal_flow_classification>

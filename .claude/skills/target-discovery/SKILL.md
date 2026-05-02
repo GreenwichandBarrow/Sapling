@@ -16,7 +16,7 @@ This skill discovers acquisition targets via skill/list-builder (Apollo, primary
 **Trigger:** Niche status changes to Active-Outreach on the Industry Research Tracker. Target-discovery does a one-time initial load when a niche first enters Active-Outreach (fill the sheet with a solid batch). After that, the weekly tracker dashboard determines if more targets are needed based on pipeline throughput data. Do not run daily — run on initial activation and when the weekly review signals the pipeline needs refilling.
 
 **Channel-aware enrichment (CRITICAL):** Read Col D (Outreach Channel) from WEEKLY REVIEW BEFORE invoking list-builder. The channel determines enrichment depth:
-- `Kay Email` → invoke list-builder in `email-first` mode (full inline enrichment, all 9 stop hooks). Claude drafts in Superhuman, Kay reviews and sends.
+- `Kay Email` → invoke list-builder in `email-first` mode (full inline enrichment, all 9 stop hooks). Claude drafts in Gmail (`gog gmail draft create`), Kay reviews and sends.
 - `DealsX Email` → Sam's team handles list building + enrichment + mass email/LinkedIn outreach. target-discovery runs warm intro check + Attio dedup on Sam's list only (see DealsX List Ingestion section).
 - `JJ-Call-Only` → invoke list-builder in `calls-first` mode (volume load, 5 stop hooks, 0 credits)
 
@@ -27,7 +27,7 @@ This skill discovers acquisition targets via skill/list-builder (Apollo, primary
 - **skill/pipeline-manager** — existing Attio contacts in this niche, intermediary referrals, deals already in pipeline (to avoid duplicates)
 
 **Outputs to other skills (routed by Outreach Channel — Col D on WEEKLY REVIEW):**
-- `Kay Email` → Approved targets go to skill/outreach-manager Kay Email subagent for Claude-drafted Superhuman emails + Attio entry at "Identified"
+- `Kay Email` → Approved targets go to skill/outreach-manager Kay Email subagent for Claude-drafted Gmail emails + Attio entry at "Identified"
 - `DealsX Email` → Approved targets (from Sam's list, after warm intro + Attio dedup) go to skill/outreach-manager DealsX Coordination subagent. Provide templates + exclusion list to Sam. Sam handles sending.
 - `JJ-Call-Only` → Approved targets go to skill/jj-operations call queue. No email sequences. JJ cold calls only.
 - `Other` → STOP. Ask Kay how to route.
@@ -411,7 +411,7 @@ When JJ connects with an owner and gets positive sentiment:
    - Run Apollo `/people/match` for email reveal (1 credit)
    - Run warm-intro-finder (check if Kay has a connection for warmer follow-up)
    - Flag for pipeline-manager: "JJ connected with {owner} at {company}. Ready for follow-up."
-3. If owner said "send me more info" → draft follow-up email in Superhuman
+3. If owner said "send me more info" → draft follow-up email in Gmail (`gog gmail draft create`)
 
 **Cost:** ~1 credit per positive engagement. At 5-10% connect rate, ~5-10 credits/week.
 
@@ -526,7 +526,7 @@ gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B4:K2
 
 | Col D Value | Route To | Action |
 |-------------|----------|--------|
-| `Kay Email` | skill/outreach-manager Kay Email subagent | Claude drafts in Superhuman, Kay reviews and sends. Full inline enrichment pipeline (Phases A-F). |
+| `Kay Email` | skill/outreach-manager Kay Email subagent | Claude drafts in Gmail (`gog gmail draft create`), Kay reviews and sends. Full inline enrichment pipeline (Phases A-F). |
 | `DealsX Email` | skill/outreach-manager DealsX Coordination subagent | Sam's team handles list building + mass email/LinkedIn. target-discovery runs warm intro check + Attio dedup on Sam's list only (see DealsX List Ingestion). Provide templates + exclusion list to Sam. |
 | `JJ-Call-Only` | skill/jj-operations call queue | JJ cold calls only. No email sequences. |
 | `Other` | **STOP. Ask Kay.** | Notify Kay: "Outreach Channel is 'Other' for {niche}. How should targets be routed?" |

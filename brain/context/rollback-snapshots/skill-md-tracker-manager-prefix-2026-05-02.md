@@ -67,9 +67,9 @@ Standing owner of mechanical sheet maintenance across the G&B operational stack.
 - Google Doc bodies (engagement letter, meeting briefs, call preps, deliverables)
 - Financial-model cells (CFO territory — any xlsx with numbers for investors)
 - Weekly Detail tab Column B / description (per `feedback_weekly_detail_description_col_b`)
-- External message sends (Slack, email, Attio notes) — always draft-for-review per the relevant skill
+- External message sends (Slack, email, Superhuman, Attio notes) — always draft-for-review per the relevant skill
 - Kay-named people-records in Attio entities
-- Any operation during GOG/Attio outage (suppress writes per the relevant skill)
+- Any operation during Superhuman/GOG/Attio outage (suppress writes, per `feedback_superhuman_down_suppress_drafts` and similar)
 
 ## Standard workflow — status move example
 

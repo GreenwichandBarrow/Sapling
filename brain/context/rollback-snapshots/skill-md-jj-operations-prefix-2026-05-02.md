@@ -231,7 +231,7 @@ If Call Status = "Connected" AND Owner Sentiment = "Interested" or "Neutral":
 1. Run Apollo `/people/match` for email reveal (1 credit) — need email for follow-up
 2. Run warm-intro-finder — check if Kay has a connection for a warmer follow-up
 3. Flag for pipeline-manager: "JJ connected with {owner} at {company}. Sentiment: {sentiment}. Ready for follow-up."
-4. If owner said "send me more info" → draft follow-up email in Gmail (`gog gmail draft create`) immediately
+4. If owner said "send me more info" → draft follow-up email in Superhuman immediately
 5. Trigger deal-evaluation Phase 1
 
 ### 5. Flag Interested Targets

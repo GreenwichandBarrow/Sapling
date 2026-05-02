@@ -511,6 +511,19 @@ After Kay reviews the Conference Pipeline sheet Monday morning and marks decisio
 
 Before reporting success, validate all outputs. If any check fails, do NOT send Slack. Report the failure and fix it.
 
+### Pre-flight: Conference Pipeline dedup
+
+Before appending any new row to the Conference Pipeline sheet, run a 3-tuple dedup check:
+1. Date match (exact YYYY-MM-DD)
+2. Venue match (substring or normalized comparison)
+3. Host org match (substring or normalized comparison)
+
+If any 2 of 3 match an existing row → SKIP the append, surface the existing row's number to chat. Name-string match is unreliable (suffixes like "+ DealSource", abbreviation drift, host-name variants all defeat it).
+
+**Calibration source (2026-05-01):** subagent's name-string search missed "ACG NY Women of Leadership Summit + DealSource" (existing row 21) when searching for "ACG NY Women of Leadership Summit" → added duplicate row 80. The 3-tuple check would have caught this (same date + same venue + same host = SKIP).
+
+Apply this pre-flight in BOTH paths: the discovery subagent that proposes new rows AND the write step that pushes to the sheet. Don't rely on the subagent alone — re-run the check immediately before `gog sheets append`.
+
 ### Sheet Write & Review Flow
 
 **Write directly to the sheet. Kay reviews there, not in the conversation.**
@@ -520,7 +533,8 @@ The Conference Pipeline sheet IS the review surface. Don't dump raw search resul
 **Procedure:**
 1. Run discovery searches (parallel subagents for each niche)
 2. Apply audience filter and owner verification gate — only conferences that pass go on the sheet
-3. Write new rows to the Pipeline tab using `gog sheets update` or `gog sheets append` with `--values-json` flag (NOT `--values`)
+3. **Run 3-tuple dedup pre-flight** (date + venue + host) on each proposed row against existing Pipeline rows — see "Pre-flight: Conference Pipeline dedup" above. Drop any row where 2 of 3 match.
+4. Write new rows to the Pipeline tab using `gog sheets update` or `gog sheets append` with `--values-json` flag (NOT `--values`)
 4. Re-sort all data rows chronologically by Column A
 5. Send Slack notification with link to the sheet
 6. Kay reviews on the sheet and marks Decision column
@@ -586,7 +600,7 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 source scripts/.env.launchd
 curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
-  -d '{"text":"Post-conference processing complete for {conference name}.\n{n} contacts added to Attio. Follow-up drafts in Superhuman.\n\nDebrief: {Google Doc link}\n\nReview the debrief for anything you might have missed.\n\nConference Pipeline:\nhttps://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit"}'
+  -d '{"text":"Post-conference processing complete for {conference name}.\n{n} contacts added to Attio. Follow-up drafts in Gmail.\n\nDebrief: {Google Doc link}\n\nReview the debrief for anything you might have missed.\n\nConference Pipeline:\nhttps://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit"}'
 ```
 
 **Slack message content:**

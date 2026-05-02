@@ -281,7 +281,7 @@ When Kay receives a broker introduction (detected via email-scan-results).
    - Add to Attio Intermediary Pipeline at "Identified"
    - If scrapable → add to scanning rotation
    - If email-only → classify as email-only intermediary
-4. **Draft response** — Gmail draft (`gog gmail draft create`): short, warm, offer NDA, don't over-explain
+4. **Draft response** — Superhuman draft: short, warm, offer NDA, don't over-explain
 5. **Update this skill** — Add new platform to scanning list if applicable
 
 **Classify new intermediaries:**
@@ -515,7 +515,7 @@ After Kay approves a proposed addition or retirement:
 - [ ] Entity created in vault with proper schema
 - [ ] Attio Intermediary Pipeline entry at "Identified"
 - [ ] Website researched and scrapability assessed
-- [ ] Draft response in Gmail (`gog gmail draft create`) — short, warm, offers NDA
+- [ ] Draft response in Superhuman — short, warm, offers NDA
 
 ### Friday Digest Stop Hook (Phase 2)
 - [ ] Digest file exists at `brain/trackers/weekly/{YYYY-MM-DD}-deal-aggregator-digest.md`

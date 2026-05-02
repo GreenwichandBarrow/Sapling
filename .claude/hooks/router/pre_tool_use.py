@@ -15,12 +15,18 @@ from router.handlers.weekly_tracker_validation import validate_weekly_tracker_be
 from router.handlers.onepager_guardrail import enforce_onepager_purity
 from router.handlers.no_revenue_in_outreach import no_revenue_in_outreach
 from router.handlers.secret_file_guard import block_secret_file_reads
+from router.handlers.gog_sheets_delimiter_guard import block_gog_sheets_delimiter_writes
 
 HANDLERS = [
     HandlerConfig(
         fn=block_secret_file_reads,
         matcher=r"^Bash$",
         name="secret-file-guard",
+    ),
+    HandlerConfig(
+        fn=block_gog_sheets_delimiter_writes,
+        matcher=r"^Bash$",
+        name="gog-sheets-delimiter-guard",
     ),
     HandlerConfig(
         fn=no_revenue_in_outreach,

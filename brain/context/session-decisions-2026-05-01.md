@@ -3,7 +3,7 @@ schema_version: 1.1.0
 date: 2026-05-01
 type: context
 title: "Session Decisions — 2026-05-01 (Friday)"
-tags: ["date/2026-05-01", "context", "topic/session-decisions", "topic/personal-task-tracker", "topic/skill-graduation", "topic/excel-tooling", "topic/dashboard-merge", "topic/intermediary-cleanup", "topic/launchd-debugger", "topic/morning-workflow"]
+tags: ["date/2026-05-01", "context", "topic/session-decisions", "topic/personal-task-tracker", "topic/skill-graduation", "topic/excel-tooling", "topic/dashboard-merge", "topic/intermediary-cleanup", "topic/launchd-debugger", "topic/morning-workflow", "topic/active-deals-cleanup", "topic/templates-doc", "topic/intermediary-target-list", "topic/conference-pipeline", "topic/acg-women-summit", "topic/npma-wipm", "topic/women-network", "topic/pest-industry", "topic/art-lawyers", "topic/association-heads", "topic/harrison-coaching", "topic/cetane-rejection", "topic/franchise-dedup", "person/harrison-wells", "person/bob-williamson", "person/denning-rodriguez", "person/dan-tanzilli", "person/hunter-hartwell", "company/wiggin-and-dana"]
 ---
 
 # Session Decisions — 2026-05-01 (Friday)

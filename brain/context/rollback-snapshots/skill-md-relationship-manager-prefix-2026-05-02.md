@@ -261,7 +261,7 @@ type: relationship-status
 - "Attio API token missing notes:read-write scope — engagement notes not syncing. Fix at Smithery / Attio admin."
 ```
 
-Pipeline-manager reads this artifact and presents it in Section 4 (Gmail email drafts to review/approve) of the morning briefing.
+Pipeline-manager reads this artifact and presents it in Section 4 (Superhuman email drafts to review/approve) of the morning briefing.
 
 ## Validator (Stop Hook) — MANDATORY
 

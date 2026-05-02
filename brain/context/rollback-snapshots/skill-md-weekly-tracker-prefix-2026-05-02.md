@@ -275,7 +275,7 @@ gog sheets get "{MASTER_SHEET_ID}" "'Active'!O:U" --json  # Kay Decision, Pass R
 
 Outreach tracking varies by niche channel type:
 - **DealsX Email niches:** Metrics come from Sam's shared Google Sheet (company, owner, email, date contacted, response status, meetings booked). Read the shared sheet for emails sent, responses, and meetings.
-- **Kay Email niches:** Metrics come from Gmail (existing tracking via Agent 1). Superhuman sunset 4/29 — no longer a source.
+- **Kay Email niches:** Metrics come from Gmail/Superhuman (existing tracking via Agent 1).
 - **JJ-Call-Only niches:** Metrics come from target sheet call columns (existing tracking via Agent 3).
 
 **Queries:**

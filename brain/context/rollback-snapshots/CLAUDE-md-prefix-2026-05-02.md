@@ -52,9 +52,6 @@ Memory recall weakens as the session fills. These fire on action triggers, not t
 - Validate inputs non-empty (especially tab_name, range, IDs).
 - Snapshot pre-write state for rollback.
 - Bash, not zsh, for index loops in subagents.
-- **For ANY Notes-column write longer than ~10 words OR containing user prose (which often has commas), use `--values-json` flag or direct Sheets API.** NEVER pass positionally — `gog sheets update` parses `|` as cell-delim and `,` as row-delim. The `gog-sheets-delimiter-guard` PreToolUse hook (`.claude/hooks/router/handlers/gog_sheets_delimiter_guard.py`) blocks the unsafe pattern at the harness layer, but the rule belongs here too because hooks can fail. (Source: `feedback_gog_sheets_value_delimiters`)
-- **Franchise/multi-location firms (Transworld, Sunbelt, Murphy, etc. — "[Firm] of [City]" pattern): keep ONE row per firm — the local branch Kay engages with.** Never multiple location rows. (Source: `feedback_franchise_firm_one_entry_only`)
-- **Conference Pipeline appends: dedup using (date + venue + host org) tuple, NOT name string match.** Suffixes like "+ DealSource" defeat substring search. (Source: 2026-05-01 row-80 duplicate incident)
 
 ### Before writing a brain/ vault file
 - Read the schema's `example:` block first.
@@ -69,10 +66,6 @@ Memory recall weakens as the session fills. These fire on action triggers, not t
 - Use `/tmp` file method (`cat > /tmp/file`), not env vars, for secret transfer.
 - Never echo secrets, links, or sensitive data into conversation output.
 - **After rotating a credential, verify auth via `curl` with output suppression BEFORE calling any MCP tool that uses it.** MCP server error formatters (e.g. `attio-mcp` axios errors) leak the full `Authorization: Bearer <token>` header into transcript on 401 — this is a known leak vector that the `redact_secrets` PostToolUse hook can only warn about, not scrub. The pattern: `curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $(cat /tmp/key)" https://api.example.com/v2/resource`. 200 = good, then `/mcp` reconnect, then call MCP tools. 401 = bad scopes/key, but no leak because response body is discarded. **Three rotations in one session on 2026-04-27 from violating this — never call MCP tools on a freshly-rotated token without curl-verifying first.**
-
-### Before research / network discovery
-- **Prioritize women across all intermediary, network, and conference research, especially in male-dominated verticals (pest mgmt, equipment servicing, insurance, cleaning, HVAC).** Surface women-led contacts first; over-weight in top-5 callouts and warm-intro recommendations. Bias silently — don't announce the lens. (Source: `feedback_women_network_priority`)
-- **For DealsX-channel niches (specifically insurance brokerage; check Industry Research Tracker for current list), cold-but-live re-engagement is DealsX's job. Never surface as a Kay-Email nudge candidate.** (Source: `feedback_cold_relive_insurance_dealsx_channel`)
 
 ### Before answering "what was planned/scheduled for X"
 - Query order: calendar → beads → brain/outputs/ → session-decisions.
@@ -315,7 +308,6 @@ Skills run on a schedule via macOS launchd, independent of active sessions:
 - Always draft external messages (Slack, email) and present for Kay's review before sending.
 - **NEVER guess or construct email addresses.** Before any email draft, verify the address is from a verified source (Linkt, prior correspondence, company website, email signature). If unverified, run Apollo API verification. If no verified email exists, tell Kay and stop. Bounced emails damage Kay's sender domain, which is her entire business.
 - Pipeline-manager is a data-gathering step. You are the brain that decides what to do with the results.
-- **Build days run parallel tracks. Never sacrifice pipeline work for infra builds.** When approving a build, explicitly name what Track B (pipeline) work runs in parallel. Surface BOTH tracks in briefings. "We have to do both" is doctrine, not a stretch goal. (Source: `feedback_parallel_tracks_pipeline_during_build`)
 
 ## Morning Workflow
 

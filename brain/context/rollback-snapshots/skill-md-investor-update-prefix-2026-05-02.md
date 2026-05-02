@@ -228,7 +228,7 @@ gog sheets get "1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins" "'WEEKLY REVIEW'!A
    - **Jeff Stevens**: Reference recent monthly call topic
    - **Guillermo**: Reference recent bi-weekly call topic
    - **Others**: General but warm
-4. Create drafts via Gmail using `gog gmail draft create` (do NOT send) — per `feedback_gmail_only_no_superhuman` (Superhuman sunset 4/29)
+4. Create drafts via Superhuman (do NOT send)
 
 **Returns:** List of 12 draft emails with investor name, personalization note
 

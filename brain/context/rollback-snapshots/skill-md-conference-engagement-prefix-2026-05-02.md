@@ -16,7 +16,7 @@ Own everything from T-7 days before a conference through T+2 days after. This is
 - Kay directly sends business cards (photo) after the event
 
 **Outputs to other skills:**
-- `outreach-manager` (conference-outreach subagent) receives drafted emails for Gmail delivery
+- `outreach-manager` (conference-outreach subagent) receives drafted emails for Superhuman delivery
 - `relationship-manager` receives new contacts for cadence setup
 - `tracker-manager` writes Attio entries for new contacts (tag source=conference/{slug}-{date})
 - `river-guide-builder` receives intermediary cards as river-guide candidates

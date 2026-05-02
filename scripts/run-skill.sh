@@ -102,15 +102,16 @@ case "$SKILL_NAME:$SKILL_ARGS" in
     # 2026-04-28 after morning run produced `RECOMMEND: ... → YES/NO/DISCUSS`
     # meta-output instead of executing.
     #
-    # 2026-04-30 EXPERIMENTAL: route to fingerprint-comparison variant for
-    # one day only. Tests whether the buyer fingerprint produces different
-    # signal than the standard buy-box. Auto-reverts after 2026-04-30 since
-    # the date check fails on subsequent runs.
-    if [ "$(date +%Y-%m-%d)" = "2026-04-30" ]; then
-      HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/deal-aggregator/headless-morning-prompt-experimental.md"
-    else
-      HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/deal-aggregator/headless-morning-prompt.md"
-    fi
+    # 2026-04-30 experimental fingerprint-comparison variant retired — date
+    # gate already past, file remains on disk (dead code, harmless).
+    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/deal-aggregator/headless-morning-prompt.md"
+    # POST_RUN_CHECK added 2026-05-02 (launchd-debugger investigation).
+    # Catches the silent-success failure mode: 4/27 + 4/30 morning runs
+    # exited 0 but no artifact landed because Claude emitted operator-
+    # question framings instead of executing. Validator non-zero → wrapper
+    # overrides exit code → Slack alert fires. Pattern: `feedback_mutating
+    # _skill_hardening_pattern.md`.
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_deal_aggregator_integrity.py\" --mode morning --date \$TODAY}"
     ;;
   "deal-aggregator:--afternoon")
     # Mon-Fri 2pm afternoon top-up. Lighter scan (Channel 2 + time-sensitive
@@ -118,6 +119,7 @@ case "$SKILL_NAME:$SKILL_ARGS" in
     # brain/context/deal-aggregator-scan-{TODAY}-afternoon.md — never
     # overwrites morning. Hardened 2026-04-28 same incident as morning.
     HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/deal-aggregator/headless-afternoon-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_deal_aggregator_integrity.py\" --mode afternoon --date \$TODAY}"
     ;;
   "deal-aggregator:--digest-mode")
     # Friday 6am weekly source-productivity digest (Phase 2). Reads 7 days of
@@ -126,6 +128,7 @@ case "$SKILL_NAME:$SKILL_ARGS" in
     # digest.md. Slack only on ≥1 proposed change OR volume=🔴. Never
     # auto-writes to Sourcing Sheet. Hardened 2026-04-28 same incident.
     HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/deal-aggregator/headless-friday-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_deal_aggregator_integrity.py\" --mode digest --date \$TODAY}"
     ;;
 esac
 

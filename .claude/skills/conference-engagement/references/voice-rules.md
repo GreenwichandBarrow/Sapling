@@ -6,7 +6,7 @@ All voice rules below apply to every template in this skill.
 
 - **No em dashes.** Use periods, commas, or line breaks instead. (`feedback_email_no_em_dashes`)
 - **Warm opener on first line.** "Hope this finds you well" / "Really enjoyed meeting you at {{conference}}" / "Hi {{first_name}}". (`feedback_email_niceties`)
-- **Sign-off:** `Very best,\nKay` only. Superhuman's built-in signature handles the rest. Never add title, firm name, contact info, or signature block in the body. (`feedback_sign_off_style`)
+- **Sign-off:** `Very best,\nKay` only. Kay's Gmail send-as signature handles the rest. Never add title, firm name, contact info, or signature block in the body. (`feedback_sign_off_style`)
 - **Paragraph breaks between ideas.** Don't wall-of-text. Short paragraphs (1-3 sentences).
 
 ## Language to Avoid
@@ -32,17 +32,23 @@ All voice rules below apply to every template in this skill.
 - Post-conference: `Great meeting you at {{conference}}` (default) or `Following up from {{conference}}`
 - **Do NOT** use the cold-outreach default `Introduction, Greenwich & Barrow`. The conference is the warm hook; use it.
 
-## Superhuman Delivery
+## Gmail Delivery
 
-Drafts go into Superhuman via the CLI wrapper:
+Drafts go directly into Kay's Gmail Drafts via the gog CLI (per `feedback_gmail_only_no_superhuman`):
 
 ```bash
-~/.local/bin/superhuman-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
+gog gmail draft create \
+  --to "{email}" \
+  --subject "{subject}" \
+  --body "{body}" \
+  -a kay.s@greenwichandbarrow.com
 ```
 
-**Never use the MCP `superhuman_draft` tool.** That routes through Gmail API and creates invisible drafts Kay never sees. (`feedback_drafts_superhuman`)
+For long bodies (most conference drafts), prefer `--body-file /tmp/{slug}.txt` over inline `--body` to avoid quoting and escape issues. Plain text only — no HTML body, no `>` blockquote, no code fence (per `feedback_drafts_no_blockquote`).
 
-Kay reviews in Superhuman, customizes the `{{callback}}` and any other per-recipient touches, and hits send. Claude drafts; Kay sends. No third-party tool ever touches Kay's SMTP.
+For threaded replies (when Kay forwards an inbound email along with the card + notes), pass `--reply-to-message-id <id>` so the draft attaches to the existing thread. The original message ID can be pulled from `gog gmail messages list` or `gog gmail messages get`.
+
+Kay reviews each draft in Gmail Drafts, customizes the `{{callback}}` and any other per-recipient touches, and hits send. Claude drafts; Kay sends. Sending stays a Kay action — never auto-send from this skill.
 
 ## What Goes Where
 
@@ -59,7 +65,7 @@ Kay reviews in Superhuman, customizes the `{{callback}}` and any other per-recip
 
 ## Quality Bar
 
-Before any draft leaves for Superhuman:
+Before any draft is created in Gmail:
 
 1. [ ] No em dashes
 2. [ ] Warm opener on line 1

@@ -535,9 +535,9 @@ The Conference Pipeline sheet IS the review surface. Don't dump raw search resul
 2. Apply audience filter and owner verification gate — only conferences that pass go on the sheet
 3. **Run 3-tuple dedup pre-flight** (date + venue + host) on each proposed row against existing Pipeline rows — see "Pre-flight: Conference Pipeline dedup" above. Drop any row where 2 of 3 match.
 4. Write new rows to the Pipeline tab using `gog sheets update` or `gog sheets append` with `--values-json` flag (NOT `--values`)
-4. Re-sort all data rows chronologically by Column A
-5. Send Slack notification with link to the sheet
-6. Kay reviews on the sheet and marks Decision column
+5. Re-sort all data rows chronologically by the leftmost date column
+6. Send Slack notification with link to the sheet
+7. Kay reviews on the sheet and marks Decision column
 
 **gog sheets syntax:**
 ```bash

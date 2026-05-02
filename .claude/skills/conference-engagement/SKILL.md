@@ -183,7 +183,12 @@ Kay will send these together — card image + her notes per person — in the sa
    ```bash
    gog gmail draft create --to "{email}" --subject "{subject}" --body "{body}" -a kay.s@greenwichandbarrow.com
    ```
-   Drafts land in Kay's Gmail Drafts folder for review and send. Superhuman is sunset (4/29) — never use `~/.local/bin/superhuman-draft.sh` or the MCP `superhuman_draft` tool.
+   For long bodies (which is most conference drafts), pass the body as a file to avoid quoting/escape issues:
+   ```bash
+   gog gmail draft create --to "{email}" --subject "{subject}" --body-file /tmp/conf-draft-{slug}.txt -a kay.s@greenwichandbarrow.com
+   ```
+   For threaded replies, add `--reply-to-message-id <id>` so the draft attaches to the existing thread.
+   Drafts land in Kay's Gmail Drafts folder for review and send.
 
 9. **Attio updates:**
    - New contact: create People record with Kay's engagement notes as the seeded first interaction note, link to conference, set nurture cadence via `relationship-manager`

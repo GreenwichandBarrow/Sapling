@@ -490,6 +490,28 @@ After Kay approves a proposed addition or retirement:
 - Pre-write snapshot of the sheet stored per `feedback_subagent_sheet_write_safety` — enables rollback if a write clobbers an unintended row.
 </weekly_digest>
 
+<wrapper_hardening>
+## Wrapper Hardening (POST_RUN_CHECK)
+
+Per `feedback_mutating_skill_hardening_pattern.md`, every scheduled mutating skill ships with a wrapper-level integrity validator. Deal-aggregator's three modes each have a validator wired into `scripts/run-skill.sh`:
+
+| Mode | Headless prompt | Validator command (POST_RUN_CHECK) |
+|------|-----------------|-------------------------------------|
+| Morning (`deal-aggregator:`) | `headless-morning-prompt.md` | `python3 scripts/validate_deal_aggregator_integrity.py --mode morning --date $TODAY` |
+| Afternoon (`deal-aggregator:--afternoon`) | `headless-afternoon-prompt.md` | `python3 scripts/validate_deal_aggregator_integrity.py --mode afternoon --date $TODAY` |
+| Friday digest (`deal-aggregator:--digest-mode`) | `headless-friday-prompt.md` | `python3 scripts/validate_deal_aggregator_integrity.py --mode digest --date $TODAY` |
+
+**What the validator checks:**
+- Today's artifact exists at the expected path (morning / afternoon / digest)
+- File size ≥ 200 bytes (catches empty stubs)
+- YAML frontmatter is present and well-formed, with `date:` matching the run date
+- All required section headers are present (5 daily sections / 5 digest sections)
+
+**Failure path:** Validator non-zero → wrapper overrides skill exit code → Slack alert posts to `SLACK_WEBHOOK_OPERATIONS` with "VALIDATOR FAILED" prefix. This catches the silent-success failure mode where Claude exits 0 without writing the artifact (4/27 + 4/30 morning incidents — the run emitted operator-question framings instead of executing, exited cleanly, and the absence was only noticed when the afternoon top-up flagged "morning artifact missing").
+
+Wired 2026-05-02 (launchd-debugger investigation). Pattern source: `memory/feedback_mutating_skill_hardening_pattern.md`.
+</wrapper_hardening>
+
 <stop_hooks>
 ## Sub-Agent Stop Hooks
 

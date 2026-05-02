@@ -39,6 +39,7 @@ This gate prevents the 4/27 race-condition failure mode (two parallel scans clob
 - Presenting RECOMMEND / YES / NO / DISCUSS framings or any operator-decision gate.
 - Meta-commentary about the run state, retries, parallel children, or wrapper attempts. The wrapper is responsible for retry logic; the skill body just executes.
 - Re-firing or "monitoring" — you are the run, you don't observe one. If the idempotency gate fires, you abort cleanly; do not announce that you'll watch for completion.
+- **Detecting another run in-flight and surfacing it as a decision.** If you see a `claude` process, a wrapper PID, or a parallel attempt while doing your idempotency-gate check, you do NOT pause and ask the operator what to do. The idempotency gate (artifact path check, ≥200 bytes) is the ONLY arbiter. If the artifact exists with content → you abort silently. If it doesn't → you execute. There is no third "let me ask Kay if I should proceed" branch. (Roots: 4/27 + 4/28 incidents where the run emitted `RECOMMEND: Let attempt 2 run, monitor for artifact` instead of executing.)
 - Halting on a single source failure — degrade gracefully, mark the source `blocked (verified)` or `blocked (single-attempt)` in the scorecard, continue.
 - Skipping the artifact write because "nothing material today" — always write the artifact, even if all sections are empty.
 - Overwriting an existing same-day artifact (idempotency gate above prevents this).

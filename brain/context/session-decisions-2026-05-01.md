@@ -131,6 +131,148 @@ Friday — full Friday workflow ran (email-intel, relationship-manager, weekly-t
 13. **Ninad Singh Friday 12:30 ET (today)** — Kay confirmed window 4/30. Outcome unknown without explicit confirmation in this session.
 14. **Untracked at goodnight** — `mm-environmental.md` entity, ~11 rollback-snapshot JSONs from today's intermediary cleanup, scripts (`maintain_tasks_excel.py`, `task_tracker.py`, `scan_launchd_failures.py`, `validate_launchd_debugger_integrity.py`, `validate_niche_intelligence_integrity.py`). Goodnight commit captures all.
 
+## Additional Decisions (later-session arc)
+
+### Morning briefing items (5 total — Friday triumvirate ran clean)
+
+- **REJECT:** Bob Williamson Cetane reply (PASS upgraded to formal REJECT). Cetane = sell-side; free VRA = sell-side prep tool. Inbox item closed as SKIPPED. Same call as the email-triage above; surfaced again in Decisions per briefing flow.
+- **DONE:** Harrison Wells coaching $1,000 May invoice already paid before briefing surfaced. Inbox item closed as DONE. May coaching engagement active through 5/31. First May session 5/15 12-1pm ET.
+- **APPROVE:** Active Deals cleanup bundle. 18 vault entity stubs created (entities count 127 → 145). 6 archived to Closed/Not Proceeding (Genser 109d, ARCIS sub-floor, Freedman sub-floor, Clark Fine Art CA, Fine Art Shippers, VF Global). 6 audited (all 0 Gmail hits → 5 stage-rolled-back to Identified, 1 left as Identified with note). Active Deals: 18 → 12 in pipeline + 6 archived.
+- **REJECT:** Cold-but-live insurance nudge batch. Channel-routing rationale: DealsX owns insurance re-engagement, not Kay direct. Saved as `feedback_cold_relive_insurance_dealsx_channel.md`.
+- **PASS:** Friday nurture cluster ([[entities/kristina-marcigliano|Kristina Marcigliano]] + [[entities/hunter-hartwell|Hunter Hartwell]] + [[entities/dan-tanzilli|Dan Tanzilli]]). Kay said no, all do not need to be addressed.
+
+### Active Deals 4-cluster framework (durable triage method)
+
+- **APPROVE:** Stale-pipeline triage uses 4 clusters: Dead / Cold-but-live / Process-broken / Genuinely-active.
+- **APPROVE:** Decision rule per cluster:
+  - **Dead** (zero activity 90+ days, no path forward) → archive to Closed/Not Proceeding (6 deals)
+  - **Cold-but-live** (last touch >30d, no Gmail hits but still open) → audit + stage-rollback to Identified, leave note (5 deals)
+  - **Process-broken** (stuck stage with no clear next action) → 1 left as Identified with note for next sprint
+  - **Genuinely-active** (recent touch + Gmail evidence) → leave alone (12 deals)
+- **APPROVE:** Audit method: 0 Gmail hits in 30 days = stage-rollback default; only override with explicit reason.
+
+### Templates V2-V8 LIVE EDIT (G&B Intermediary Outreach Templates Drive doc)
+
+- **APPROVE:** First pass: V2-V8 rebuilt per V1 BROKERS pattern. SHARED CORE Footer Reference + WARM-INTRO LANGUAGE BANK additions.
+- **REJECT:** SBA references in V8 Lender. Kay flagged G&B equity structure won't qualify for SBA — stripped from V8 entirely.
+- **REJECT:** Enumerate Guillermo's 9-firm lender list in V8. Single-name-drop pattern for warm intros, not full enumeration. Cleaner footer, doesn't burn the relationship list.
+- **APPROVE:** "12 investors" capital-credibility line moved into BODY of all V2-V8 (not just footer). Body-level signal of capital backing matters for intermediary trust.
+
+### Intermediary Target List major cleanup
+
+- **APPROVE:** Bulk row removals: 172 → 162 rows (10 removed: 4 brokers + 1 IB + 4 CPAs + 1 lender). 33 rows flagged for review.
+- **APPROVE:** Two structural problems surfaced + queued for fix:
+  1. Industry Lawyers tab had ZERO named partners (only firm names) → fixed via Art Lawyers add
+  2. Association Heads tab was empty → fixed via 27-row pest association populate
+- **APPROVE:** Brokers schema-drift fix: 45 rows realigned to canonical 16-col schema. [[entities/jeremy-black|Jeremy Black]] cluster verified as 10 distinct firms (NOT franchise dups). Final row count: 73 (1 header + 72 data).
+- **APPROVE:** Brokers col J #ERROR fix: schema drift had phone numbers in LinkedIn col; 9 cells cleared.
+- **APPROVE:** Franchise dedup pass — Transworld 6→1 (kept Sam Curcio NYC `scurcio@tworld.com`), First Choice Brokers 3→1, Murphy Business 2→1. 8 franchise dups removed total.
+- Saved as `feedback_franchise_firm_one_entry_only.md`.
+
+### Industry Lawyers — 20 Art Lawyer additions + warm-intro path
+
+- **APPROVE:** 20 Art Lawyers added. Top 5: Wierbicki/Loeb, Noh/Pryor Cashman, Olsoff/Olsoff Cahill Cossu, Lever/Kurzman Eisenberg, Schindler/SCH.
+- **APPROVE:** Gender-audit completed: 7 of 20 are women. Aligns with `feedback_women_network_priority`.
+- **APPROVE:** [[entities/denning-rodriguez|Denning Rodriguez]] (Bellizio + Igel) added at row 26 as warm-intro path. Old firm-only Bellizio row 6 deleted (replaced by Denning).
+- **APPROVE:** Attio Denning Rodriguez duplicates merged.
+
+### Association Heads — 27 pest associations populated
+
+- **APPROVE:** 27 pest associations populated from Premium Pest Management target sheet (NJPMA, NPMA, NYPMA, PPMA, NEPMA, CTPCA, PWIPM, TPCA, FPMA, PCOC, SCPCA, GPCA, NCPMA + 6 certs + 4 confs + 3 trade press).
+- **APPROVE:** 12 of 13 pest assocs subsequently updated with named women leaders. NCPMA flagged as gap — all-male officers, no woman leader surfaced yet.
+- Top contact identified: Allie Allen at NPMA = central PWIPM (Professional Women in Pest Management) entry point.
+
+### Pest industry women network research (cross-tab additions)
+
+- **APPROVE:** 6 new Brokers rows: 3 Cetane + 3 Lion Business Advisors.
+- **APPROVE:** 1 new Investment Bankers row: Lauren Morera @ Heritage Holding.
+- **APPROVE:** 1 new Industry Lawyers row: Heather Rahilly @ [[entities/wiggin-and-dana|Wiggin & Dana]] — 100+ pest deals for EQT/Anticimex.
+- Saved as `feedback_women_network_priority.md` (with pest-industry refinement appended).
+
+### Conference Pipeline 10-month forward extension (May 2026 → Feb 2027)
+
+- **APPROVE:** 21 new conferences mapped + 15 new host orgs added to Association Heads + 7 women-led conference hosts identified.
+- **APPROVE:** Calibration: dedup must use date+venue+host triple, NOT name-string match. Agent C adding to conference-discovery SKILL.md.
+
+### ACG NY Women of Leadership Summit (5/14) — registration + IB-heavy meeting strategy
+
+- **APPROVE:** Kay confirmed registered + attending. Conference Pipeline row 21 status updated `Discovered` → `Registered`.
+- **APPROVE:** Duplicate row 80 (mistakenly added) deleted.
+- **APPROVE:** ACG profile form filled out: Buyouts / Business Services + Financial Services / Mid Atlantic + New England / $1M-$24M deal size.
+- **REJECT:** Initial proposal of 25 outreach drafts. Reframed: 6 in-person 1:1 meetings with IB-heavy focus.
+- **APPROVE:** Top 6 IB picks surfaced by subagent: TM Capital (Gillespie + Kohli), Netrex Capital (Sadocha — insurance specialist), Candlewood (Hallie Berk), Capstone (Conway + Tolliver).
+- **SENT:** First meeting request drafted + sent (Hallie Berk @ Candlewood, 10:20 slot).
+- **DEFER:** Calendar gap flagged — event not on Google Cal yet.
+
+### NPMA Women in Pest Management Forum (5/19-21 Charlotte NC)
+
+- **APPROVE:** Kay registered + on calendar. Conference Pipeline row 28 updated to Registered.
+
+### launchd-debugger v1.1 enhancements + ai-ops-5wx CLOSED
+
+- **APPROVE:** v1.1 added on top of v1: known-incident registry, cross-day dedup, on-failure trigger architecture (auto-fire on every non-zero scheduled-skill exit), wrapper case for niche-intelligence:tuesday.
+- **APPROVE:** ACTIVATED via `launchctl load`. First fire 5/2 5am ET. Failure-trigger live.
+- **APPROVE:** ai-ops-5wx pre-suppressed in known-incident registry to avoid Slack spam during Agent B fix.
+- **APPROVE:** ai-ops-5wx CLOSED — headless-tuesday-prompt + validate_niche_intelligence_integrity.py + plist mode arg + reload all wired. Tuesday 5/5 22:30 ET = production verification.
+
+## Additional Actions Taken
+
+### External sends (additional)
+
+- **SENT:** Hallie Berk (Candlewood) ACG meeting request — 10:20 slot, 5/14 ACG NY Women of Leadership Summit.
+
+### Drive doc edits (additional)
+
+- **UPDATED:** G&B Intermediary Outreach Templates (V2-V8 LIVE EDIT). SHARED CORE Footer Reference + WARM-INTRO LANGUAGE BANK additions. SBA stripped from V8. Single-name-drop pattern for warm intros. "12 investors" line in body of V2-V8.
+
+### Sheet operations (additional)
+
+- **UPDATED:** Intermediary Target List — 172 → 162 rows (10 deletions + 33 flagged for review).
+- **UPDATED:** Brokers tab — schema-drift fix on 45 rows, col J #ERROR fix (9 cells cleared), franchise dedup (Transworld 6→1, First Choice 3→1, Murphy Business 2→1, 8 dups removed total). Final: 73 rows (1 header + 72 data).
+- **CREATED:** 20 Art Lawyer rows on Industry Lawyers tab. Plus Denning Rodriguez at row 26.
+- **DELETED:** Old firm-only Bellizio row 6 (replaced by Denning).
+- **CREATED:** 27 pest association rows on Association Heads tab. 12 of 13 pest assocs updated with named women leaders.
+- **CREATED:** 6 new Brokers rows (3 Cetane + 3 Lion Business Advisors).
+- **CREATED:** 1 new Investment Bankers row (Lauren Morera @ Heritage Holding).
+- **CREATED:** 1 new Industry Lawyers row (Heather Rahilly @ Wiggin & Dana).
+- **UPDATED:** Conference Pipeline — 21 new conferences mapped (May 2026 → Feb 2027). Row 21 (ACG NY Women of Leadership Summit 5/14) `Discovered` → `Registered`. Row 80 duplicate deleted. Row 28 (NPMA WIPM 5/19-21) Registered.
+- **CREATED:** 15 new host orgs on Association Heads tab from conference extension.
+
+### Vault writes (additional)
+
+- **CREATED:** 18 vault entity stubs from Active Deals cleanup. Entities count 127 → 145.
+
+### Active Deals archival
+
+- **UPDATED:** 6 deals archived to Closed/Not Proceeding (Genser 109d, ARCIS sub-floor, Freedman sub-floor, Clark Fine Art CA, Fine Art Shippers, VF Global).
+- **UPDATED:** 6 deals audited (0 Gmail hits) → 5 stage-rolled-back to Identified, 1 left as Identified with note.
+
+### Memory writes (5 new + 1 updated)
+
+- **CREATED:** `feedback_parallel_tracks_pipeline_during_build.md`
+- **CREATED:** `feedback_cold_relive_insurance_dealsx_channel.md`
+- **CREATED:** `feedback_franchise_firm_one_entry_only.md`
+- **CREATED:** `feedback_women_network_priority.md` (with pest-industry refinement appended)
+- **CREATED:** `feedback_gog_sheets_value_delimiters.md`
+- **UPDATED:** `MEMORY.md` — indexed all 5 new memories
+
+## Additional Deferred / Open Loops
+
+15. **#25 conference-engagement T-7 fires** for ACG (5/7) + NPMA WIPM (5/12) — needs scheduling, but skill needs Gmail refactor first. (Manual invocation required for each conference; no auto-fire on Registered status.)
+16. **#26 stale agent note on Conference Pipeline row 28** — flagged for cleanup pass.
+17. **#27 conference-engagement Superhuman → Gmail refactor** — Agent B is doing this in parallel goodnight work.
+18. **#29 conference-engagement bundled scheduling** — will run after refactor lands.
+19. **Morgan Stanley row swap** (R5 vs R11 metadata richness question) — deferred; default = keep richer row, drop sparser.
+20. **V2-V8 em-dash sweep on meta blocks** — passes pending after Templates LIVE EDIT.
+21. **Conference Pipeline calibration codification:** dedup must use date+venue+host triple. Agent C adding to conference-discovery SKILL.md.
+22. **Founder & CEO title recommendation** for Kay-Schneider title pending Kay's explicit confirmation.
+23. **Apollo enrichment of pest associations** — deferred to "leave on file with firms".
+24. **NCPMA gap research** — no woman leader surfaced; needs follow-up sweep.
+25. **Cetane re-look** — Pam Giordano is Cetane woman director, but Kay declined Cetane after Bob Williamson sell-side rejection. Open question whether woman-director presence changes the call.
+26. **Calendar add for ACG NY Women of Leadership Summit (5/14)** — event not on Google Cal yet.
+27. **ACG outreach drafts pending** — 5 of 6 IB outreach drafts pending (Hallie Berk sent). TM Capital (Gillespie + Kohli), Netrex Capital (Sadocha), Capstone (Conway + Tolliver) still need drafts.
+28. **NPMA WIPM Forum 5/19-21** — registration confirmed, no pre-conference outreach drafted yet (T-7 = 5/12).
+
 ## Calibration candidates
 
 - **Pattern:** "one-off file" → "lift growing" → "skill graduation." Worth a feedback memory if it recurs (e.g., when the next one-off — possibly the budget tracker, dashboard scripts, or another ad-hoc — hits the same threshold). Single instance today, not yet 3x. Watch for next instance.

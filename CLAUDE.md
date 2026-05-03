@@ -254,8 +254,11 @@ Rules: create beads for multi-step/multi-session work. `--assignee=agent` for ag
 | `/task` | Task + decision tracing |
 | `/today` | Daily note workflow |
 | `/weekly` | Weekly review |
+| `/socrates` | Strategic Socratic conversation BEFORE plan mode (per Harrison Wells 4/30) — frames problem, surfaces assumptions, hands off to `/plan` at convergence |
 | `/commit` | Git commit |
 | `/migrate` | Schema migrations |
+
+Three-phase pipeline: `/socrates` → `/plan` → execute. Skills also run a `learnings.md` feedback loop on the execute side (pilot on `pipeline-manager`).
 
 ## Evolution
 

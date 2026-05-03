@@ -121,6 +121,8 @@ For each active niche from Step 0a, resolve its keyword corpus:
 
 **Step 0b — Load buy-box criteria (REQUIRED before scanning):**
 Read the three buy-box docs from the Deal Aggregator Drive folder. These are the single source of truth for all filter criteria. Never use cached or hardcoded bands; always re-read on every run so the skill reflects Kay's current criteria.
+
+**Threshold discipline:** Per `feedback_strategic_thresholds_need_grounding` and `feedback_deal_screen_300k_salary_15pct_margin` — financial floors are constraint-driven (Kay's $300K salary + debt service produces the $2M EBITDA practical floor). Never relax them by source, channel, niche, or any other axis. Relax INDUSTRY filters or NICHE-strict requirements when the channel justifies it (per `feedback_broker_channel_opportunistic_floor` — separate Broker-Channel Buy Box, geography window pending Kay's lock). Never touch the financial gate without a constraint argument.
 ```bash
 gog docs cat 14hf5QaKtcP_Um0u_P0LZyUM_zvv7haWVVkgGmRL9iyc > /tmp/buybox-services.txt
 gog docs cat 1lkxntRwn3FOPXig86qF36eNyUS0BfbMumfNuIyInD-M > /tmp/buybox-insurance.txt

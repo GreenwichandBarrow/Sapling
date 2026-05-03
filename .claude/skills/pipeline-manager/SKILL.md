@@ -6,6 +6,25 @@ user_invocable: true
 
 > **2026-05-01 calibration:** Superhuman fully sunset 4/29/26. All draft references in this file mean **Gmail directly** via the bash wrapper. See .
 
+<learnings>
+**Read `learnings.md` BEFORE running this skill, append BEFORE returning.**
+
+Path: `.claude/skills/pipeline-manager/learnings.md`
+
+This is the skill-local feedback loop (Harrison Wells coaching pattern, 4/30/26). Pipeline-manager-specific anti-patterns accumulate here. Cross-skill rules live in `memory/feedback_*.md`.
+
+**Read step (before any other work):**
+1. Open `learnings.md`. Internalize the active "do NOT" entries — they take precedence over any positive instruction in this SKILL.md if there's conflict.
+2. Note the "Watching for" section — these are anti-pattern suspects worth flagging if you observe them.
+
+**Append step (before returning the briefing):**
+1. If you caught yourself about to violate a learning (and corrected) — note it briefly so the entry compounds confidence (5+ honored runs = pruning candidate).
+2. If you observed a NEW anti-pattern (Kay corrected you mid-run, or you noticed a pattern that produced bad output) — add it under "Active learnings" with `[YYYY-MM-DD]` + source citation. If it's likely cross-skill, ALSO graduate to `memory/feedback_*.md`.
+3. Do NOT append entries that just rephrase existing rules. Only NEW anti-patterns.
+
+This file is read on every run and is the durable correction layer that complements (not replaces) global memory.
+</learnings>
+
 <objective>
 Keep Attio pipelines current without Kay having to remember to update them. Scan activity signals (calendar, email, call notes, vault), match them to pipeline entries, recommend stage changes, and execute approved updates via Attio API.
 

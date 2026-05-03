@@ -602,6 +602,16 @@ _SKILL_CATALOG: dict[str, tuple[str, str, str | None]] = {
         "COO",
         "Evening workflow",
     ),
+    "socrates": (
+        "Strategic conversation BEFORE plan mode — Socratic questioning, frames problem, surfaces assumptions, names alternatives, hands off to /plan at convergence. Per Harrison Wells 4/30.",
+        "COO",
+        "Kay-invoked (/socrates, /think, /discuss)",
+    ),
+    "learnings-loop": (
+        "Per-skill local feedback loop — every skill ships a learnings.md it reads at start and appends at end. Negative directives outperform positive. Pilot on pipeline-manager; rollout pending. Per Harrison Wells 4/30.",
+        "COO",
+        "Per-skill (pipeline-manager pilot)",
+    ),
     "triage": (
         "Process queue items needing human decision — medium/low confidence and unclassified.",
         "COO",

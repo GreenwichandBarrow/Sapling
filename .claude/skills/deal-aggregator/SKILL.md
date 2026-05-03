@@ -132,20 +132,19 @@ Parse each doc's financial bands, structural requirements, industry hard-exclude
 - Specialty Insurance Brokerage listings → Insurance Buy Box
 - Vertical SaaS listings (any vertical) → SaaS Buy Box
 - All other listings (pest, estate mgmt, coffee, art storage, art advisory, cleaning, or new-niche non-SaaS non-Insurance) → Services Buy Box
+- **Broker-channel listings (per source `Type` in OPPORTUNISTIC table below)** → **Broker-Channel Buy Box** (PENDING BUILD per Kay 5/3 — geography window not yet locked; until built, broker-channel listings still route to the matching Services/Insurance/SaaS buy-box above and are screened against it).
 
-**Channel routing — strict floor vs opportunistic floor (per Megan Lawlor 4/1 + Kay 5/2 directive):**
+**Channel-type routing (per Kay 5/3 — pending broker buy-box build):**
 
-The Sourcing Sheet's `Type` field determines floor strictness:
+The Sourcing Sheet's `Type` field is recorded for each match for future routing. Once the Broker-Channel Buy Box doc is built (geography window + short criteria list per Kay's 5/3 spec), `OPPORTUNISTIC` channels will route there instead of the niche buy-box.
 
-| Source Type | Floor mode | Rationale |
-|---|---|---|
-| `Marketplace`, `AI Marketplace`, `Private Deal Network` | **STRICT** — full buy-box including practical $2M EBITDA floor + 15% margin | Algorithmic / open marketplace — must filter aggressively |
-| `Email-only broker`, `Newsletter blast`, `Advisory + Deal Platform`, `Marketplace + Email`, `Email-only broker + Buyer Portal` | **OPPORTUNISTIC** — relaxed financial floor ($1M EBITDA, 12% margin), broader industry tolerance, geographic flexibility | Human-curated broker / intermediary blasts. Per Megan: "Broker deals reviewed opportunistically. Filters for 2-3 industries but scans broadly." |
-| `Strategic Acquirer`, `Industry Publication`, `News + Community`, `Advisory` (intel-only) | **INTEL** — scan for niche signals only, no Slack ping | Not a deal source, ecosystem mapping |
+| Source Type | Status |
+|---|---|
+| `Marketplace`, `AI Marketplace`, `Private Deal Network` | STRICT — niche buy-box (current behavior) |
+| `Email-only broker`, `Newsletter blast`, `Advisory + Deal Platform`, `Marketplace + Email`, `Email-only broker + Buyer Portal` | OPPORTUNISTIC — niche buy-box for now; will route to Broker-Channel Buy Box once built |
+| `Strategic Acquirer`, `Industry Publication`, `News + Community`, `Advisory` (intel-only) | INTEL only — niche signals, no Slack ping |
 
-Geography: per Megan, do NOT reject deals based on geography on broker/intermediary channel. Note geography in the Slack post; let Kay decide. (Geography hard-exclude only applies on cold marketplace scans where regional-mismatch wastes review time.)
-
-The CALIFORNIA soft-exclude (per `feedback_no_california`) still applies on both modes — flag, don't auto-kill.
+CALIFORNIA soft-exclude per `feedback_no_california` applies on all modes — flag, don't auto-kill.
 
 **Scraper routing — which fetch tool to use per source:**
 
@@ -174,10 +173,9 @@ Stop hook: if agent-browser is not installed, log "BROWSER_AUTOMATION_UNAVAILABL
 4. Determine category (Services / Insurance / SaaS) per routing above; apply the matching buy-box
 5. Screen: for each buy-box criterion, either confirm pass (disclosed + passes), flag fail (disclosed + fails → auto-reject), or mark "not disclosed" (do not reject; flag for review)
 6. Deal passes the gate if: no disclosed criterion fails AND no industry hard-exclude matches AND thesis or new-niche match exists
-7. Three types of passing matches:
-   - **Thesis match** — fits an active niche thesis from Step 0a. High priority. Slack to `#active-deals`.
-   - **Buy-box match, new niche** — passes the strict buy-box gate but sits in an industry not on the active thesis list. Route to niche-intelligence as a discovery signal. Slack to `#active-deals`.
-   - **Broker-channel opportunistic match** — sub-strict-floor but exceeds OPPORTUNISTIC floor ($1M EBITDA, 12% margin) AND source is human-curated (Channel routing table above) AND industry is in the broad services/SaaS/insurance pool (no hard-exclude). Surface in the **weekly Friday digest** only — do NOT post per-deal Slack pings (avoids #active-deals noise). Route in the digest under a new "Broker-channel opportunistic" section so Kay can scan during weekly review.
+7. Two types of passing matches:
+   - **Thesis match** — fits an active niche thesis from Step 0a. High priority.
+   - **Buy-box match, new niche** — passes the buy-box gate but sits in an industry not on the active thesis list. Route to niche-intelligence as a discovery signal.
 
 **Slack notification — ONE per deal (FINGERPRINT CHECK REQUIRED FIRST):**
 
@@ -448,21 +446,8 @@ Trend arrow: compare this week's match count to prior week's (prior digest file 
 - 7-day rolling average: {n}/day
 - Target: 1–3/day
 - Status: {✅ On track / ⚠️ Below target / 🔴 Critical}
-- **Strict-floor matches:** {n} (Slack-pinged in #active-deals)
-- **Opportunistic matches:** {n} (surfaced in Section 3 below — broker-channel curation, sub-strict-floor)
 
-## 3. Broker-channel opportunistic deals (this week)
-
-Listings from human-curated broker / intermediary / newsletter sources (Type in the OPPORTUNISTIC table — Email-only broker, Newsletter blast, Advisory + Deal Platform, Marketplace + Email, Email-only broker + Buyer Portal) that fell below the strict $2M EBITDA / 15% margin floor but exceed the **opportunistic floor** ($1M EBITDA, 12% margin) AND fit the broad services / SaaS / insurance pool. Per Megan Lawlor 4/1 + Kay 5/2 directive (`feedback_broker_channel_opportunistic_floor`).
-
-Surface format (per listing — keep tight, no commentary):
-1. **{Source}** — {Industry} | Rev {revenue} · EBITDA {ebitda} · Margin {margin%} · Geography {geo} | Asking {price}
-   - Teaser: {link or blind profile excerpt}
-   - Flag: {soft-flag if California, near-floor, or below-strict-buy-box criterion}
-
-If zero opportunistic matches this week, header with "None this week — channel-mix may need adjustment, see Section 5".
-
-## 4. Proposed Additions
+## 3. Proposed Additions
 
 (From Source Scout subagent — see spec below.)
 
@@ -472,13 +457,13 @@ If zero opportunistic matches this week, header with "None this week — channel
    - Access: {Free / Register / Relationship-only}
    - **RECOMMEND: Add to {tab}** → YES / NO / DISCUSS
 
-## 5. Proposed Retirements
+## 4. Proposed Retirements
 
 1. **{Source name}** — {category} | 0 matches since {date} | Last verified alive: {date}
    - Why: {30+ days no match, still-alive verified, not earning its slot}
    - **RECOMMEND: Move to Dormant on Sourcing Sheet** → YES / NO / DISCUSS
 
-## 6. Recommended Actions (Kay's Review Bucket)
+## 5. Recommended Actions (Kay's Review Bucket)
 
 Summary list — 1 line per proposal with its YES/NO/DISCUSS for quick approval. On YES, Claude writes the change to the Sourcing Sheet; on NO/DISCUSS, no write.
 ```
@@ -569,7 +554,7 @@ Wired 2026-05-02 (launchd-debugger investigation). Pattern source: `memory/feedb
 
 ### Friday Digest Stop Hook (Phase 2)
 - [ ] Digest file exists at `brain/trackers/weekly/{YYYY-MM-DD}-deal-aggregator-digest.md`
-- [ ] All 6 required sections present: Source Productivity, Volume Check, Broker-channel opportunistic deals, Proposed Additions, Proposed Retirements, Recommended Actions
+- [ ] All 5 required sections present: Source Productivity, Volume Check, Proposed Additions, Proposed Retirements, Recommended Actions
 - [ ] Each proposed addition includes rationale + recommended tab + access method
 - [ ] Each proposed retirement includes 3 live-check results (URL resolves, domain registered, email channel status)
 - [ ] Trend column populated via prior-week comparison (not fabricated)

@@ -63,32 +63,18 @@ STRUCTURAL
 
 Business type: B2B or B2B2C preferred
 Ownership: Independent. No VC-backed, PE-backed, public, or carved-out subsidiary
-Structure available: Majority or full acquisition
-Owner-transition: 30 to 90 day handover, no irreplaceable founder dependency
 
 HARD EXCLUDES (auto-reject)
 
 California-based businesses. Regulatory and operating environment.
 Lending, credit-extension, premium finance, trade finance lenders. Too much liability.
-Carve-outs and book-of-business transactions. Investor feedback: too tricky for the structure.
 Fashion, apparel, DTC consumer brands. Per prior investor guidance.
 Franchises and franchise-of-franchise structures.
 Restaurants, hospitality, nightlife.
 Capital-intensive manufacturing.
 Physician practices and provider-owned healthcare.
 Construction and labor-heavy field services.
-Seasonal businesses.
 PE-backed roll-up plays.
-
-SOFT PREFERENCES
-
-Owner near retirement (55 plus, succession-relevant).
-Recurring or recurring-convertible revenue.
-Real estate optional. Real estate component is fine but not required.
-B2B preferred over B2C.
-No single customer above 15 percent of revenue.
-Mission-critical or workflow-embedded service.
-Existing management layer or clean promote-from-within path.
 
 WHAT WE SAY YES TO (Broker-Facing Decision Rule)
 
@@ -98,25 +84,10 @@ When a broker pings us, we say YES to a deal that meets ALL of:
 2. EBITDA at $2M or above (or undisclosed and the rest of the package fits).
 3. Margin at 15 percent or above (or undisclosed and the rest of the package fits).
 4. Revenue between $5M and $50M.
-5. Independent ownership, full or majority sale.
+5. Independent ownership.
 6. Not on the hard-exclude list.
 
 If all six clear, we sign the NDA and request the CIM. We do not pre-filter on industry.
-
-WHAT WE SAY NO TO
-
-To save broker time, we are clear about no-fits up front:
-
-Anything in California.
-Lending, credit, or finance-extension businesses.
-Carve-outs or book-of-business transactions.
-Fashion, apparel, or consumer DTC.
-Franchises.
-Restaurants, hospitality, nightlife.
-Capital-intensive manufacturing or physician practices.
-Sub-$2M EBITDA deals.
-Sub-15 percent margin deals (when disclosed).
-PE-backed roll-up plays.
 
 CHANNEL APPLICATION
 
@@ -132,7 +103,7 @@ All other source types route to their thesis-strict niche buy box.
 
 FOOTER
 
-Greenwich & Barrow is a holding company in formation, backed by twelve investors. We acquire one privately held lower middle market business at a time, with the operator stepping in as full-time CEO. The financial floor at $2M EBITDA is set to support a $300K operating CEO salary plus senior debt service plus a 35 percent investor return hurdle. Below that floor the math does not pencil regardless of fit.
+Kay Schneider, the founder and CEO of Greenwich & Barrow, has over a decade in business strategy and development and backed by twelve investors, she is looking to acquire and operate one privately held lower middle market business. The financial floor at $2M EBITDA is set to support a $300K operating CEO salary plus senior debt service plus a 35 percent investor return hurdle. Below that floor the math does not pencil regardless of fit.
 
 STRICTLY CONFIDENTIAL
 

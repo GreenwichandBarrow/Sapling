@@ -876,8 +876,8 @@ From: {Intermediary Name} ({Firm Name})
 ### On Kay's Approval
 - **"Proceed"** (CIM auto-screened) → continue deal-evaluation at Phase 3 (financial analysis on the CIM already in Drive). The buy-box screen is done — this advances to deep analysis.
 - **"Yes"** (no CIM) → trigger deal-evaluation skill with `source: intermediary-inbound` and `intermediary: {name}`. The deal-evaluation skill runs its fast buy-box screen (see deal-evaluation Intermediary Inbound Pathway).
-- **"Pass"** → draft a short, polite decline email to the intermediary. Log the deal in vault with reason. Tag the intermediary's Attio record with the deal type they sent (e.g., `sends: manufacturing`, `sends: healthcare`) for future filtering.
-- **"Need more info"** → draft reply requesting: revenue, EBITDA, years in business, owner age/succession situation, customer concentration. Keep the ask short — intermediaries are busy.
+- **"Pass"** → MANDATORY template-driven per `feedback_no_intermediary_drafts_outside_template`. Look up `DECLINE POST-REVIEW` snippet from canonical doc `1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4` via `gog docs export`. Fill `{first_name}`, `{their_subject}`, `{reason}` (one-line specific reason from the buy-box screen output). Create as Gmail draft via `gog gmail draft`. If template not found, skip with warning to morning briefing — do NOT draft ad-hoc copy. Also: log the deal in vault with reason. Tag the intermediary's Attio People record with the deal type they sent (e.g., `sends: manufacturing`, `sends: healthcare`) for future filtering.
+- **"Move to owner call"** → request a management call directly via the intermediary. Skips the ad-hoc "need more info" info-gathering pattern (deprecated 2026-05-04 — too rare for broker engagement; we move to owner conversation instead). Trigger deal-evaluation Phase 4 (call prep) with `pending_owner_call: true`.
 - **"Save for later" / "Table"** → no action, stays in inbox queue.
 
 ### Intermediary Relationship Tracking

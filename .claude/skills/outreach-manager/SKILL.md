@@ -628,7 +628,7 @@ Handles outreach to force multipliers — people who know every owner in the nic
 
 ### AUTHORITATIVE ARTIFACTS (Apr 29 2026 — read these first)
 
-**Master template:** `G&B Intermediary Outreach Templates` — Google Doc ID `1_cNsAPCopDAfReoDXbB4d3hZW8TcYUqJ3XKYY_er7i4`, in `OPERATIONS / G&B MASTER TEMPLATES/`. Contains 8 audience-specific variations + shared core blocks + warm-intro language bank. Update this Doc as voice evolves; do NOT recreate from scratch.
+**Master template:** `G&B Intermediary Email Templates` — Google Doc ID `1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4` (canonical as of 2026-05-04, supersedes prior `1_cNsAPCopDAfReoDXbB4d3hZW8TcYUqJ3XKYY_er7i4`). Contains: Brokers+IBs Day 0 intro, Day 5 follow-up, LEAD-YES, LEAD-NO, Lawyers+CPAs intro, CIM RECEIVED, THANK YOU, DECLINE POST-REVIEW, NDA SIGNED. Per `feedback_no_intermediary_drafts_outside_template`: ALL intermediary drafts originate here. New scenarios → propose template in suggestion mode for Kay's review/approval before any send.
 
 **Master target sheet:** `Intermediary Target List` — Google Sheet ID `18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`, in `OPERATIONS / TARGET LISTS / INTERMEDIARY/`. 8 tabs: Brokers / Investment Bankers / Association Heads / Industry Lawyers / CPAs / Corporate Advisors / Family Offices / Lenders. 17-column schema. **Single source of truth for intermediary status.** Attio is reserved for active deal flow only.
 
@@ -648,9 +648,14 @@ Handles outreach to force multipliers — people who know every owner in the nic
 - **Association Heads** — trade-association leaders. Voice: "student of the industry" — NOT a buyer pitch.
 - **Lenders** — search-fund-friendly debt providers (commercial banks + SBA + mezz + BDCs + private credit). Voice: I'm a buyer with a buy-box, would value a lending relationship as we approach LOI.
 
-### Cadence: ONE-AND-DONE
+### Cadence: 2-TOUCH for Brokers + IBs, ONE-AND-DONE for everyone else
 
-**Per Kay 2026-04-29: intermediary outreach is one-and-done.** No follow-up sequences. If they don't respond, move on. Different from owner outreach which has Day 0/3/14 cadence.
+**Updated 2026-05-04:**
+- **Brokers + IBs:** 2-touch — Day 0 INTRODUCTION + Day 5 FOLLOW-UP (same Gmail thread, "Re: Introduction"). Day 12 soft-close DROPPED. If recipient replies before Day 5, cadence stops and the reply thread takes over.
+- **Lawyers + CPAs:** ONE-AND-DONE single education-tone intro. No follow-up cadence.
+- **Other categories** (Investment Bankers, Family Offices, Lenders, Corporate Advisors, Association Heads): default ONE-AND-DONE pending category-specific cadence locks.
+
+If they don't respond, move on. Different from owner outreach which has Day 0/3/14 cadence.
 
 No JJ call. Intermediaries hear from Kay directly only.
 

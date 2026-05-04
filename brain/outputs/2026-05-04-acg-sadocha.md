@@ -6,14 +6,14 @@ status: draft
 skill_origin: conference-engagement
 kay_approved: null
 kay_approval_date: null
-people: ["[[entities/kristy-sadocha]]"]
+people: ["[[entities/kristy-sadocha]]", "[[entities/kay-schneider]]"]
 companies: ["[[entities/netrex-capital]]"]
 projects: []
 hypothesis: null
 trace: "[[traces/2026-05-01-acg-conference-meeting-strategy-pivot]]"
 task_ref: null
 published_url: null
-tags: ["date/2026-05-04", "output", "output/email", "status/draft", "person/kristy-sadocha", "company/netrex-capital", "topic/acg-women-summit", "topic/conference-engagement", "topic/ib-outreach", "topic/insurance-brokerage", "conference/acg-ny-women-2026-05-14"]
+tags: ["date/2026-05-04", "output", "output/email", "status/draft", "person/kristy-sadocha", "company/netrex-capital", "person/kay-schneider", "topic/acg-women-summit", "topic/conference-engagement", "topic/ib-outreach", "topic/insurance-brokerage", "conference/acg-ny-women-2026-05-14"]
 ---
 
 # ACG NY Women's Leadership Summit — Pre-Conference Outreach: Kristy Sadocha (Netrex Capital)
@@ -39,7 +39,7 @@ Thursday 5/14 at 10:30 AM ET (morning networking break)
 Thursday 5/14 at 1:30 PM ET (post-lunch break)
 
 Very best,
-Kay
+[[entities/kay-schneider|Kay]]
 
 ---
 

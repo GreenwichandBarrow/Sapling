@@ -6,14 +6,14 @@ status: draft
 skill_origin: conference-engagement
 kay_approved: null
 kay_approval_date: null
-people: ["[[entities/lisa-tolliver]]"]
+people: ["[[entities/lisa-tolliver]]", "[[entities/kay-schneider]]"]
 companies: ["[[entities/capstone-partners]]"]
 projects: []
 hypothesis: null
 trace: "[[traces/2026-05-01-acg-conference-meeting-strategy-pivot]]"
 task_ref: null
 published_url: null
-tags: ["date/2026-05-04", "output", "output/email", "status/draft", "person/lisa-tolliver", "company/capstone-partners", "topic/acg-women-summit", "topic/conference-engagement", "topic/ib-outreach", "conference/acg-ny-women-2026-05-14"]
+tags: ["date/2026-05-04", "output", "output/email", "status/draft", "person/lisa-tolliver", "company/capstone-partners", "person/kay-schneider", "topic/acg-women-summit", "topic/conference-engagement", "topic/ib-outreach", "conference/acg-ny-women-2026-05-14"]
 ---
 
 # ACG NY Women's Leadership Summit — Pre-Conference Outreach: Lisa Tolliver (Capstone Partners)
@@ -23,7 +23,7 @@ tags: ["date/2026-05-04", "output", "output/email", "status/draft", "person/lisa
 
 **Send date:** Monday 2026-05-12 AM (per `feedback_no_sunday_emails`; conference is Thursday 2026-05-14)
 
-**Coordination note:** Second of two Capstone outreaches alongside Conway (Dobrovic deprioritized at staging). Different time windows offered so the slots don't conflict if both confirm. If Kay finds the dual-touch awkward at the firm level, recommend keeping the more-senior reply and gracefully sliding the other to a "say hi at the venue" instead of a sit-down.
+**Coordination note:** Second of two Capstone outreaches alongside Conway (Dobrovic deprioritized at staging). Different time windows offered so the slots don't conflict if both confirm. If the dual-touch at the firm level feels awkward, recommend keeping the more-senior reply and gracefully sliding the other to a "say hi at the venue" instead of a sit-down.
 
 ---
 
@@ -39,7 +39,7 @@ Thursday 5/14 at 10:00 AM ET (morning networking break)
 Thursday 5/14 at 3:30 PM ET (late-afternoon break)
 
 Very best,
-Kay
+[[entities/kay-schneider|Kay]]
 
 ---
 

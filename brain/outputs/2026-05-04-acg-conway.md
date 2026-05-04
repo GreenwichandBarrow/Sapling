@@ -6,14 +6,14 @@ status: draft
 skill_origin: conference-engagement
 kay_approved: null
 kay_approval_date: null
-people: ["[[entities/brianna-conway]]"]
+people: ["[[entities/brianna-conway]]", "[[entities/kay-schneider]]"]
 companies: ["[[entities/capstone-partners]]"]
 projects: []
 hypothesis: null
 trace: "[[traces/2026-05-01-acg-conference-meeting-strategy-pivot]]"
 task_ref: null
 published_url: null
-tags: ["date/2026-05-04", "output", "output/email", "status/draft", "person/brianna-conway", "company/capstone-partners", "topic/acg-women-summit", "topic/conference-engagement", "topic/ib-outreach", "conference/acg-ny-women-2026-05-14"]
+tags: ["date/2026-05-04", "output", "output/email", "status/draft", "person/brianna-conway", "company/capstone-partners", "person/kay-schneider", "topic/acg-women-summit", "topic/conference-engagement", "topic/ib-outreach", "conference/acg-ny-women-2026-05-14"]
 ---
 
 # ACG NY Women's Leadership Summit — Pre-Conference Outreach: Brianna Conway (Capstone Partners)
@@ -23,7 +23,7 @@ tags: ["date/2026-05-04", "output", "output/email", "status/draft", "person/bria
 
 **Send date:** Monday 2026-05-12 AM (per `feedback_no_sunday_emails`; conference is Thursday 2026-05-14)
 
-**Coordination note:** Capstone has 3 attendees at the summit (Conway, Tolliver, Dobrovic). This draft + Tolliver draft are both going out per Kay's IB-heavy plan. Different time windows offered so the slots don't conflict if both confirm. If both Conway and Tolliver reply, Kay can consolidate gracefully.
+**Coordination note:** Capstone has 3 attendees at the summit (Conway, Tolliver, Dobrovic). This draft + Tolliver draft are both going out per the IB-heavy plan. Different time windows offered so the slots don't conflict if both confirm. If both Conway and Tolliver reply, the firm-level dual-touch can be consolidated gracefully at reply time.
 
 ---
 
@@ -39,7 +39,7 @@ Thursday 5/14 at 11:30 AM ET (between sessions)
 Thursday 5/14 at 2:00 PM ET (afternoon break)
 
 Very best,
-Kay
+[[entities/kay-schneider|Kay]]
 
 ---
 

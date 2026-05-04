@@ -6,14 +6,14 @@ status: draft
 skill_origin: conference-engagement
 kay_approved: null
 kay_approval_date: null
-people: ["[[entities/ashton-gillespie]]"]
+people: ["[[entities/ashton-gillespie]]", "[[entities/kay-schneider]]"]
 companies: ["[[entities/tm-capital]]"]
 projects: []
 hypothesis: null
 trace: "[[traces/2026-05-01-acg-conference-meeting-strategy-pivot]]"
 task_ref: null
 published_url: null
-tags: ["date/2026-05-04", "output", "output/email", "status/draft", "person/ashton-gillespie", "company/tm-capital", "topic/acg-women-summit", "topic/conference-engagement", "topic/ib-outreach", "conference/acg-ny-women-2026-05-14"]
+tags: ["date/2026-05-04", "output", "output/email", "status/draft", "person/ashton-gillespie", "company/tm-capital", "person/kay-schneider", "topic/acg-women-summit", "topic/conference-engagement", "topic/ib-outreach", "conference/acg-ny-women-2026-05-14"]
 ---
 
 # ACG NY Women's Leadership Summit — Pre-Conference Outreach: Ashton Gillespie (TM Capital)
@@ -37,7 +37,7 @@ Thursday 5/14 at 10:00 AM ET (morning networking break)
 Thursday 5/14 at 2:30 PM ET (afternoon break)
 
 Very best,
-Kay
+[[entities/kay-schneider|Kay]]
 
 ---
 

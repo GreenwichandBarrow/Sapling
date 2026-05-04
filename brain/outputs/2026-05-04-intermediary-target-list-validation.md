@@ -154,3 +154,83 @@ Source FLAG column already surfaces 14 of the 16 wrong-tab issues above. The Att
 3. **Decide cross-tab dup strategy** for Generational/DealForce, Benchmark, Business Exits, Paine Pacific, Graphic Arts Advisors — same firms appear on both Brokers and IB. Recommend canonical = IB tab; delete Brokers-tab duplicates.
 4. **Tag 40+ Attio-match rows** with `attio_match: yes` so the next Apollo enrichment skips them.
 5. **Coverage gaps:** Family Offices and Lenders tabs only got partial Attio sweep within time budget. Recommend a follow-up pass focused on those two tabs before Apollo.
+
+## Execution Log
+
+**Approved by CEO:** 2026-05-04
+**Executed:** 2026-05-04 (immediately following approval)
+**Snapshot:** `brain/context/rollback-snapshots/intermediary-target-list-batches-A-B-C-2026-05-04.json`
+**Sheet:** Intermediary Target List (`18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`)
+
+### Row-numbering reconciliation (important)
+
+The validation document's row numbers above were based on a snapshot taken before some other intra-week sheet edits. Live execution used **firm-name lookup** (per the prompt's "if mismatch, find by name" rule) as the source of truth. Reconciled rows below; the validation tables remain useful as the rationale-of-record but should be read with the live row numbers.
+
+### Batch A — Hard deletes (6 rows cleared)
+
+| # | Tab | Validation row | Live row | Firm | Result |
+|---|---|---|---|---|---|
+| 1 | Brokers | 13 | 12 | BusinessSellerCenter.com | CLEARED |
+| 2 | Brokers | 33 | 30 | The Leaders Lab | CLEARED |
+| 3 | Investment Bankers | 6 | 7 | UBS (1) | CLEARED |
+| 4 | Investment Bankers | 11 | 12 | CIBC | CLEARED |
+| 5 | Industry Lawyers | 6 | 2 | Barlow & Williams | CLEARED |
+| 6 | Lenders | 22 | 28 | TruWest Holdings | CLEARED |
+
+### Batch B — Brokers↔IB cross-tab dups (8 firms, 5 cleared + 3 moved)
+
+| # | Firm | Brokers row (cleared) | IB canonical row (kept) | Action |
+|---|---|---|---|---|
+| 1 | Generational Group (DealForce) | 2 | 4 (DealForce) | Brokers row CLEARED |
+| 2 | Benchmark International | 3 | 9 | Brokers row CLEARED |
+| 3 | Business Exits | 4 | 3 | Brokers row CLEARED |
+| 4 | Paine Pacific | 7 | 8 | Brokers row CLEARED |
+| 5 | Gottesman Company | 8 | 14 (NEW) | MOVED Brokers → IB row 14, source CLEARED |
+| 6 | Woodbridge International | 9 | 15 (NEW) | MOVED Brokers → IB row 15, source CLEARED |
+| 7 | Graphic Arts Advisors | 11 | 10 | Brokers row CLEARED |
+| 8 | Basso Associates, LLC | 15 | 16 (NEW) | MOVED Brokers → IB row 16, source CLEARED |
+
+### Batch C — Cross-tab moves (3 firms)
+
+| # | Firm | Source | Destination | Action |
+|---|---|---|---|---|
+| 1 | CFO Consulting Partners | CPAs row 2 | Corp Advisors row 17 | MOVED, CPAs row CLEARED |
+| 2 | Wiggin and Dana LLP | (already on Industry Lawyers row 27) | (already at destination) | NO-OP (move was completed in a prior session before this approval — Wiggin currently sits on Industry Lawyers row 27, not Corp Advisors as the validation table indicated) |
+| 3 | Bridgeford Advisors | Corp Advisors row 17 | DELETE | CLEARED (validation table said Industry Lawyers row 26; Bridgeford had been moved to Corp Advisors row 17 in a prior session, then deleted here per "trust + wealth, not M&A" reason) |
+
+### Anomalies detected
+
+- **Row-numbering drift:** Most validation-doc row numbers were stale by 1-6 rows. Resolved by firm-name lookup. No action skipped.
+- **Wiggin and Dana already moved:** The validation doc said it sat on Corp Advisors row 16; live state had it on Industry Lawyers row 27 already. Likely moved during the 2026-05-01 cleanup (`intermediary-lawyers-prewrite-2026-05-01-cleanup` snapshot exists). Logged as no-op.
+- **Bridgeford Advisors location flip:** Validation doc said Industry Lawyers row 26; live state had it on Corp Advisors row 17 (recategorized 2026-04-29 per cell-A note). Cleared from Corp Advisors instead — same end state.
+
+### Cross-tab dup re-verification (Batch B firms)
+
+After execution, all 8 Batch-B firms appear ONCE on the IB tab and ZERO times on the Brokers tab:
+
+- Generational/DealForce → IB row 4 only
+- Business Exits → IB row 3 only
+- Benchmark International → IB row 9 only
+- Paine Pacific → IB row 8 only
+- Graphic Arts Advisors → IB row 10 only
+- Gottesman Company → IB row 14 only
+- Woodbridge International → IB row 15 only
+- Basso Associates → IB row 16 only
+
+Zero residual cross-tab duplicates.
+
+### Tab row counts (after execution, populated rows excl. header)
+
+| Tab | Before | After | Delta |
+|---|---|---|---|
+| Brokers | 71 | 62 | -9 (8 Batch B clears + 1 Batch A clear; net -9 because BusinessSellerCenter cleared at row 12, Leaders Lab at row 30) |
+| Investment Bankers | 12 | 13 | +1 net (cleared UBS + CIBC = -2; appended Gottesman + Woodbridge + Basso = +3) |
+| Industry Lawyers | 26 | 25 | -1 (Barlow & Williams cleared) |
+| Lenders | 29 | 28 | -1 (TruWest cleared) |
+| CPAs | 5 | 4 | -1 (CFO Consulting moved out) |
+| Corporate Advisors | 16 | 16 | 0 net (Bridgeford cleared = -1; CFO Consulting moved in to row 17 = +1) |
+
+### Not executed (per prompt instruction)
+
+- **Batch D (40 Attio matches)** — read-only acknowledgment only; CEO decides separately.
+- All Family Offices, Association Heads, Lenders (other than TruWest) untouched.

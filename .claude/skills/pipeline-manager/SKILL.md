@@ -780,6 +780,30 @@ Deal-eval reads the CIM from Drive, runs the buy-box screen, and stages results 
 - Create vault entity for the target company if it doesn't exist
 - (Intermediary Pipeline list deprecated — no separate intermediary-stage update happens here)
 
+**Step 5: Auto-ack reply to broker (BOTH-FIRE chain — added 2026-05-04)**
+After Step 4 completes successfully, draft a reply email to the broker acknowledging CIM receipt and setting a review-window expectation. **MANDATORY — copy MUST come from a template in the canonical Intermediary Email Templates Google Doc** (`1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4`) per `feedback_no_intermediary_drafts_outside_template`. No ad-hoc body copy.
+
+```bash
+# Lookup CIM-RECEIVED template from canonical doc
+TEMPLATE_BODY=$(gog docs export 1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4 --format=md | \
+  awk '/CIM RECEIVED/,/^---$/' | sed '$d')
+
+# If template not found, skip and log a warning. Do NOT draft ad-hoc copy.
+if [ -z "$TEMPLATE_BODY" ]; then
+  echo "WARN: CIM-RECEIVED template not found in canonical doc. Auto-ack skipped — surface to Kay in morning briefing."
+  exit 0
+fi
+
+# Fill placeholders, create Gmail draft via gog (USE-GOG-FALLBACK decision 2026-05-04)
+gog gmail draft \
+  --to "{intermediary_email}" \
+  --subject "Re: {original_subject}" \
+  --body "$FILLED_BODY" \
+  --thread "{gmail_thread_id}"
+```
+
+The auto-ack creates a Gmail DRAFT only — Kay reviews and sends per `feedback_kay_handles_all_replies`. The auto-trigger (Steps 1-4) handles internal Drive/Attio/deal-eval work. The auto-ack handles the broker-facing reply. Two parallel surfaces, no conflict.
+
 **Slack notification (after filing + Attio update verified):**
 ```bash
 curl -s -X POST "$SLACK_WEBHOOK_ACTIVE_DEALS" \

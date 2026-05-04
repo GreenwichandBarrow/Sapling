@@ -108,18 +108,25 @@ Very best,
 
 ## Reply snippet — LEAD-NO (Brokers + IBs + Lawyers + CPAs, used inbound)
 
-When a deal isn't a fit. Geography intentionally NOT mentioned (per `feedback_geography_not_in_external_broker_copy`). Industry list mirrors locked footer.
+When a deal isn't a fit. Footer attached as passive reminder rather than inline criteria in body.
 
 Subject: Re: {{their_subject}}
 
 Hi {{first_name}},
 
-Thanks for thinking of me. This one isn't a fit on our side ({{reason}}).
+Thanks for thinking of me. Unfortunately this one isn't a fit on our side ({{reason}}).
 
-Keep me on your list. Happy to look at anything that meets our criteria: $5M-$50M revenue, $2M+ EBITDA, 15%+ margins. Industries: Transportation, Business Services, Industrial services (Capital light), Technology, Healthcare services.
+Thanks again and look forward to keeping in touch.
 
-Best,
+Very best,
 {{signer_first_name}}
+
+
+What We Look For:
+
+Independent ownership, US-based
+$5M-$50M Revenue, $2M+ EBITDA, 15%+ Margins
+Industries: Transportation, Business Services, Industrial services (Capital light), Technology, Healthcare services
 
 ---
 

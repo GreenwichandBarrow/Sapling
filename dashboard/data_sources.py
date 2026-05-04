@@ -919,16 +919,23 @@ def _next_fire(intervals: list[dict], now: datetime | None = None) -> datetime |
     return min(candidates) if candidates else None
 
 
-def _should_fire_today(intervals: list[dict], today: date | None = None) -> bool:
+def _should_fire_on_day(intervals: list[dict], day: date) -> bool:
+    """True if any interval matches `day`'s weekday (or has no Weekday key)."""
     if not intervals:
         return False
-    today = today or date.today()
-    weekday = today.isoweekday()
+    weekday = day.isoweekday()
     for d in intervals:
         wd = d.get("Weekday")
-        if wd is None or wd == weekday:
+        if wd is None:
+            return True
+        wd_norm = 7 if wd == 0 else wd
+        if wd_norm == weekday:
             return True
     return False
+
+
+def _should_fire_today(intervals: list[dict], today: date | None = None) -> bool:
+    return _should_fire_on_day(intervals, today or date.today())
 
 
 _LOG_FILENAME_RE = re.compile(
@@ -958,6 +965,80 @@ def _scan_logs_for_skill(skill: str, limit: int = 5) -> list[SkillRun]:
         runs.append(SkillRun(fired_at=fired, status=status, log_path=entry, snippet=snippet))
     runs.sort(key=lambda r: r.fired_at, reverse=True)
     return runs[:limit]
+
+
+def _scan_logs_for_skill_in_range(
+    skill: str, start: date, end: date
+) -> list[SkillRun]:
+    """All runs for `skill` with fired-date in [start, end] (inclusive)."""
+    if not SCHEDULED_LOGS_DIR.exists():
+        return []
+    runs: list[SkillRun] = []
+    for entry in SCHEDULED_LOGS_DIR.iterdir():
+        m = _LOG_FILENAME_RE.match(entry.name)
+        if not m or m.group("skill") != skill:
+            continue
+        try:
+            d = date.fromisoformat(m.group("date"))
+        except ValueError:
+            continue
+        if d < start or d > end:
+            continue
+        hhmm = m.group("hhmm")
+        try:
+            fired = datetime(d.year, d.month, d.day, int(hhmm[:2]), int(hhmm[2:]))
+        except ValueError:
+            continue
+        snippet, status = _read_log_summary(entry)
+        runs.append(SkillRun(fired_at=fired, status=status, log_path=entry, snippet=snippet))
+    runs.sort(key=lambda r: r.fired_at, reverse=True)
+    return runs
+
+
+def _week_sunday(today: date) -> date:
+    """Sunday-of-this-week for a Sun-first calendar (matches the grid)."""
+    iso = today.isoweekday()  # Mon=1..Sun=7
+    return today if iso == 7 else today - timedelta(days=iso)
+
+
+def _build_week_status(
+    intervals: list[dict], runs_in_week: list[SkillRun], today: date
+) -> dict[int, str]:
+    """Per-iso-weekday status (1=Mon..7=Sun) for past days in this week.
+
+    For each day from this week's Sunday through yesterday, where the skill is
+    scheduled to fire on that weekday:
+      - Day with logs → fired-{ok|warn|err}, worst-status-wins (err > warn > ok).
+      - Day with no logs → "missed".
+    Days the skill isn't scheduled to fire on are omitted.
+    Today is excluded — the caller already tracks today_status separately.
+    """
+    if not intervals:
+        return {}
+    sunday = _week_sunday(today)
+    if sunday >= today:
+        return {}
+    by_date: dict[date, list[SkillRun]] = {}
+    for r in runs_in_week:
+        by_date.setdefault(r.fired_at.date(), []).append(r)
+    out: dict[int, str] = {}
+    day = sunday
+    while day < today:
+        if _should_fire_on_day(intervals, day):
+            iso = day.isoweekday()
+            day_runs = by_date.get(day, [])
+            if not day_runs:
+                out[iso] = "missed"
+            else:
+                statuses = {r.status for r in day_runs}
+                if "err" in statuses:
+                    out[iso] = "fired-err"
+                elif "warn" in statuses:
+                    out[iso] = "fired-warn"
+                else:
+                    out[iso] = "fired-ok"
+        day += timedelta(days=1)
+    return out
 
 
 def _read_log_summary(path: Path) -> tuple[str, str]:
@@ -1056,6 +1137,7 @@ def _build_skill_health(
     next_fire = _next_fire(intervals) if is_scheduled else None
     next_fire_text = next_fire.strftime("Next %a %b %-d") if next_fire else None
     recent = _scan_logs_for_skill(skill, limit=5)
+    today_dt = date.today()
     today = _runs_today(recent)
     if is_gap:
         today_status = "gap"
@@ -1063,6 +1145,14 @@ def _build_skill_health(
         today_status = _today_status_for_scheduled(intervals, today)
     else:
         today_status = "ondemand"
+    # Build the per-day status map for the current Sun→yesterday window so the
+    # weekly-flow grid can keep "fired" / "missed" indicators visible all week.
+    week_status: dict[int, str] = {}
+    if is_scheduled and intervals:
+        sunday = _week_sunday(today_dt)
+        if sunday < today_dt:
+            week_runs = _scan_logs_for_skill_in_range(skill, sunday, today_dt - timedelta(days=1))
+            week_status = _build_week_status(intervals, week_runs, today_dt)
     return SkillHealth(
         name=skill,
         description=description,
@@ -1077,6 +1167,7 @@ def _build_skill_health(
         last_run=recent[0] if recent else None,
         recent_runs=recent,
         intervals=intervals,
+        week_status_by_day=week_status,
     )
 
 

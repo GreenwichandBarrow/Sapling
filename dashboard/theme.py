@@ -1145,7 +1145,9 @@ GLOBAL_CSS = f"""
   .gb-flow-day.today {{
     background: rgba(176, 132, 240, 0.04);
   }}
-  .gb-flow-day.past {{
+  .gb-flow-day.past .gb-flow-day-head,
+  .gb-flow-day.past .gb-flow-day-empty,
+  .gb-flow-day.past .gb-flow-tile:not(.fired-ok):not(.fired-warn):not(.fired-err):not(.missed) {{
     opacity: 0.55;
   }}
   .gb-flow-day-head {{

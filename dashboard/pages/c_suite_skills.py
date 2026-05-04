@@ -255,6 +255,7 @@ def _build_weekly_flow(groups: list[CSuiteGroup]) -> dict[int, list[dict]]:
     day_count: dict[str, int] = {}
     skill_intervals: dict[str, dict[int, list[tuple[int, int]]]] = {}
     skill_status: dict[str, str] = {}
+    skill_week_status: dict[str, dict[int, str]] = {}
     for group in groups:
         for skill in group.skills:
             if not skill.is_scheduled or not skill.intervals:
@@ -263,6 +264,7 @@ def _build_weekly_flow(groups: list[CSuiteGroup]) -> dict[int, list[dict]]:
             day_count[skill.name] = len(by_day)
             skill_intervals[skill.name] = by_day
             skill_status[skill.name] = skill.today_status
+            skill_week_status[skill.name] = skill.week_status_by_day
 
     flow: dict[int, list[dict]] = {d: [] for d in range(1, 8)}
     for name, by_day in skill_intervals.items():
@@ -271,6 +273,7 @@ def _build_weekly_flow(groups: list[CSuiteGroup]) -> dict[int, list[dict]]:
                 "name": name,
                 "time_label": _compact_time_label(times),
                 "today_status": skill_status[name],
+                "day_status": skill_week_status[name].get(day, ""),
                 "sort_minutes": times[0][0] * 60 + times[0][1],
                 "day_count": day_count[name],
             })
@@ -310,6 +313,10 @@ def _render_weekly_flow(groups: list[CSuiteGroup]) -> str:
                 s = tile["today_status"]
                 if s in ("fired-ok", "fired-warn", "fired-err", "missed"):
                     cls_extra = f" {s}"
+            elif day_class == "past":
+                s = tile.get("day_status", "")
+                if s in ("fired-ok", "fired-warn", "fired-err", "missed"):
+                    cls_extra = f" {s}"
             tile_html.append(
                 f'<div class="gb-flow-tile{cls_extra}">'
                 f'<div class="gb-flow-tile-name">{escape(tile["name"])}</div>'
@@ -343,7 +350,7 @@ def _render_subtitle() -> str:
         """
         <div class="gb-subtitle">
         Scheduled-skill canary organized by C-suite agent.
-        <span class="highlight">Green = fired today · red = should have fired but didn't · grey = scheduled later · dashed = on-demand.</span>
+        <span class="highlight">Green = fired this week · red = missed or failed this week · grey = scheduled later · dashed = on-demand.</span>
         </div>
         """
     ).strip()

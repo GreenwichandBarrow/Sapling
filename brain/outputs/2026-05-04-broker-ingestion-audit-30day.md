@@ -31,7 +31,7 @@ Sources read:
 Bucket logic per artifact:
 - INGESTED + SURFACED: broker email or platform listing arrived and was Slack-posted or surfaced as a Decisions item.
 - INGESTED + KILLED-BY-FILTER: broker email arrived, classification killed surfacing (BLAST auto-archive, hard-exclude on industry/geo/floor, or buy-box reject).
-- INGESTED + IGNORED-BY-SURFACING: broker mention reached the artifact but never produced a Kay-facing decision prompt (passed through to deal-aggregator or filed as intel only).
+- INGESTED + IGNORED-BY-SURFACING: broker mention reached the artifact but never produced an operator-facing decision prompt (passed through to deal-aggregator or filed as intel only).
 - NOT-INGESTED-FROM-SOURCE: source marked blocked / login-gated / 403 on the day, scan never reached the listing.
 - NO-BROKER-ACTIVITY: no broker signal that day.
 

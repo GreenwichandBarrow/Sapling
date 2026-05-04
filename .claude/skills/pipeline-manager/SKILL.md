@@ -529,7 +529,7 @@ During Gmail ingestion, every email labeled "DEAL FLOW" must be classified as on
 - BCC header present → BLAST
 - Kay's name in greeting ("Hi Kay", "Dear Kay") + personalized context → DIRECT
 - Unsubscribe link + no personalization → NEWSLETTER or BLAST
-- Sender in Attio Intermediary Pipeline at "Warmed" or higher + personalized → DIRECT
+- Sender has prior reply in Gmail thread history + personalized → DIRECT
 - Sender not in Attio + mass-email patterns → BLAST
 
 **Guardrail:** When uncertain, default to DIRECT. It's better to surface an email Kay doesn't need than to archive one that needed a response.
@@ -676,9 +676,9 @@ Scan incoming emails for:
 - Sender domain matches known intermediary patterns (advisory firms, brokerage firms, law firms)
 
 ### Sender Classification
-1. **Check Attio Intermediary Pipeline** — is the sender (or their firm) already tracked?
-   - If yes: tag as `source/intermediary-inbound`, associate with existing intermediary record
-   - If no: create a new entity at `brain/entities/{slug}.md`, add to Attio Intermediary Pipeline at "Identified" stage with `how_introduced: "Inbound deal email, {date}"`
+1. **Check vault + Gmail history** — does the sender (or their firm) have a prior entity record or prior email correspondence with us?
+   - If yes: tag as `source/intermediary-inbound`, associate with existing entity
+   - If no: create a new entity at `brain/entities/{slug}.md` (an inbound deal email IS a reply, so an entity is warranted). Per `feedback_brokers_stay_in_sheet_until_reply`: cold intermediaries live in the broker target Sheet pre-reply; an inbound email crosses that threshold, so Attio People auto-creation via Gmail interaction is acceptable. Do NOT add the sender to any deleted Intermediary Pipeline list.
 2. Cross-reference sender against vault entities and Gmail history for prior correspondence
 
 ### Inbox File Creation
@@ -700,7 +700,7 @@ When the inbound deal detection finds a CIM attachment or CIM-level content (not
 
 **Also detect adjacent deal documents** with the same logic:
 - Keywords: `teaser`, `investment opportunity`, `deal summary`, `offering memorandum`, `executive summary`, `company overview`
-- These are lower-confidence but still trigger the fast-track if from a known intermediary (already in Attio Intermediary Pipeline at "Warmed" or later)
+- These are lower-confidence but still trigger the fast-track if from a known intermediary (Attio Person record exists OR prior outbound logged in Gmail/broker target Sheet history)
 
 **When CIM is detected, execute all 4 steps automatically:**
 
@@ -776,9 +776,9 @@ Trigger deal-evaluation with:
 Deal-eval reads the CIM from Drive, runs the buy-box screen, and stages results for Kay's morning review. Kay sees the completed screen (not just a "should we screen?" prompt).
 
 **Attio updates (parallel with deal-eval):**
-- Create Attio Active Deals entry at "Financials Received" stage (CIM = financials) with `source: intermediary`
-- If intermediary is at "Identified" or "Contacted" in Intermediary Pipeline: recommend stage change to "Actively Receiving Deal Flow"
+- Create Attio Active Deals entry at "Financials Received" stage (CIM = financials) with `source: intermediary` — Active Deals list remains the canonical deal pipeline
 - Create vault entity for the target company if it doesn't exist
+- (Intermediary Pipeline list deprecated — no separate intermediary-stage update happens here)
 
 **Slack notification (after filing + Attio update verified):**
 ```bash
@@ -804,7 +804,7 @@ If any check fails → fix the issue, re-validate, then send Slack.
 - **Blind profile (no company name):** Cannot create ACTIVE DEALS folder or Attio entry. Fall through to standard morning review presentation. Inbox item still created with `urgency: high` and tag `topic/blind-profile`.
 - **CIM for existing active deal:** Route to the Active Deal Fast-Path (line 292 above) instead. Do NOT create a duplicate folder or Attio entry.
 - **Multiple CIMs in one email batch:** Process each independently. Each gets its own folder, inbox item, and deal-eval invocation.
-- **CIM from unknown sender (not in Attio Intermediary Pipeline):** Still fast-track the CIM filing. Create the intermediary entity and Attio entry at "Identified" stage. Flag in morning briefing: "New intermediary detected: {name} at {firm}. Sent CIM for {company}."
+- **CIM from unknown sender (no prior vault entity or Gmail correspondence):** Still fast-track the CIM filing. Create the intermediary vault entity (their CIM-send IS a reply, so an entity is warranted; no Intermediary Pipeline entry — that list is deprecated). Flag in morning briefing: "New intermediary detected: {name} at {firm}. Sent CIM for {company}."
 
 ### Morning Review Presentation
 
@@ -834,7 +834,7 @@ From: {Intermediary Name} ({Firm Name})
 INBOUND DEAL FLOW
 ─────────────────
 From: {Intermediary Name} ({Firm Name})
-  Intermediary status: {Attio stage or "New — just added to Intermediary Pipeline"}
+  Intermediary: {Attio Person record exists / New — first contact (vault entity created, Attio People auto-created via Gmail interaction)}
   Deal: {Company name or "Blind profile"}
   Industry: {if stated}
   Revenue: {if stated, else "Not disclosed"}
@@ -857,10 +857,10 @@ From: {Intermediary Name} ({Firm Name})
 - **"Save for later" / "Table"** → no action, stays in inbox queue.
 
 ### Intermediary Relationship Tracking
-After processing inbound deals, update the intermediary's Attio record:
+After processing inbound deals, update the intermediary's Attio People record (if attributes exist on the People object):
 - `last_deal_sent: {date}`
 - `deal_types_sent: [{industry/type}]` (append, don't overwrite)
-- If intermediary is at "Identified" and sent a real deal: recommend stage change to "Actively Receiving Deal Flow"
+- (Intermediary Pipeline list deprecated — no separate stage advancement; the broker target Sheet + Attio People interaction history are the source of truth for intermediary relationship state)
 
 ## Niche Signal Detection (runs during data ingestion)
 
@@ -1209,7 +1209,7 @@ Bounced emails damage Kay's sender domain reputation. Her email is her entire bu
 After pipeline updates, surface any follow-up tasks:
 
 - **"Need to Send Thank You"** → FIRST verify Kay hasn't already sent the thank you (search `from:kay.s@greenwichandbarrow.com to:{contact_email} newer_than:7d`). If already sent, auto-move to Nurture and skip. If not sent, draft a personalized thank you email using Kay's voice (see memory: user_outreach_voice.md). Reference specifics from the meeting (Granola transcript, call notes, or calendar context). Create as Gmail draft via `~/.local/bin/gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29)`.
-- **Introduction promised** → ask Kay for the person's name/company. Create `brain/entities/{slug}.md` in the vault with proper schema. Add them to the appropriate Attio pipeline at "Identified" stage. When the intro email arrives later, they're already tracked.
+- **Introduction promised** → ask Kay for the person's name/company. Create `brain/entities/{slug}.md` in the vault with proper schema. If the intro is to a target company owner, add them to Attio Active Deals at "Identified" stage. If the intro is to an intermediary (broker/IB/lawyer/CPA), do NOT create a pipeline entry — log to the broker target Sheet per `feedback_brokers_stay_in_sheet_until_reply`. When the intro email arrives later, they're already tracked.
 - **Introduction received** → match the intro email to the tracked entity, move to "Contacted" stage
 - **NDA Executed** → remind to request financials if not already received
 - **Financials Received** → flag for financial modeling

@@ -122,7 +122,7 @@ Classify each event:
 Cross-reference with `brain/calls/` for logged call notes. Use Granola MCP to verify meeting counts if available.
 
 ### Agent 3: Attio Pipeline Collector
-**Task:** Pull pipeline movements and deal stage data from all 4 Lists.
+**Task:** Pull pipeline movements and deal stage data from Attio Lists.
 **Tools:** Attio API (curl)
 **API:** Bearer token from `.env` (`ATTIO_API_KEY`), base URL `https://api.attio.com/v2`
 
@@ -131,7 +131,6 @@ Cross-reference with `brain/calls/` for logged call notes. Use Granola MCP to ve
 **Lists to query:**
 - Active Deals – Owners: `0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b`
 - Outreach: Network Pipeline: `94ccb017-2b86-4e12-b674-e27de8e146c9`
-- Outreach: Intermediary Pipeline: `7faac55b-a183-4afe-b7ea-fc8a4ccace10`
 
 **Active Deals stage mapping (report ALL stages, even if 0 deals):**
 

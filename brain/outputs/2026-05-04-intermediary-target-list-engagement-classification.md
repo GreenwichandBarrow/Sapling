@@ -2,19 +2,21 @@
 schema_version: 1.2.0
 date: 2026-05-04
 type: validation
-status: review
+status: executed
 skill_origin: tracker-manager
-kay_approved: null
-kay_approval_date: null
+kay_approved: true
+kay_approval_date: 2026-05-04
 people: []
 companies: []
 projects: []
-tags: ["date/2026-05-04", "output", "output/validation", "status/review", "topic/intermediary-pipeline", "topic/broker-channel-build", "topic/cold-list-engagement-rule"]
+tags: ["date/2026-05-04", "output", "output/validation", "status/executed", "topic/intermediary-pipeline", "topic/broker-channel-build", "topic/cold-list-engagement-rule"]
 ---
 
 # Intermediary Target List — Engagement Classification — 2026-05-04
 
-Read-only engagement-overlay pass on the 40 Attio-match rows surfaced by the 2026-05-04 validation artifact (Batch D), applying the `feedback_cold_list_attio_engagement_rule.md` refinement: Attio company record + ≥1 prior interaction → REMOVE from cold list (Attio handles relationship management). Attio company record + zero interactions → KEEP (still cold; Apollo can enrich). No Attio record → KEEP (obviously still cold).
+Engagement-rule source: [feedback_cold_list_attio_engagement_rule.md](../../memory/feedback_cold_list_attio_engagement_rule.md).
+
+Read-only engagement-overlay pass on the 40 Attio-match rows surfaced by the 2026-05-04 validation artifact (Batch D), applying the cold-list engagement-rule refinement: Attio company record + ≥1 prior interaction → REMOVE from cold list (Attio handles relationship management). Attio company record + zero interactions → KEEP (still cold; Apollo can enrich). No Attio record → KEEP (obviously still cold).
 
 Sheet ID: `18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk` (`Intermediary Target List`).
 Validation source: `brain/outputs/2026-05-04-intermediary-target-list-validation.md`.
@@ -143,3 +145,63 @@ The validation artifact's two flagged gaps are now resolved:
 - Lenders community-bank Attio sweep: 16 firms searched directly, 0 matches
 
 No further Attio coverage gaps on this sheet.
+
+## Execution Log
+
+**Executed:** 2026-05-04 ~17:15 ET
+**Snapshot:** `brain/context/rollback-snapshots/intermediary-target-list-engagement-removals-2026-05-04.json`
+**Sheet:** `18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk` (Intermediary Target List)
+
+**CEO exception decisions on the 3 ambiguous edge cases:**
+- **Choate Hall & Stewart** — REMOVE (strict rule applied despite 14-month staleness). Cleared.
+- **NYBB Group** (Brokers row 20) — KEEP on cold list (Attio record exists but zero engagement; treated as cold). Left intact.
+- **BDG-CPAs** (CPAs row 5) — KEEP on cold list (single 2025-11 outreach, no reply, NJ-local re-engageable firm). Left intact.
+
+**Net:** Artifact's 17 REMOVE line-items minus BDG-CPAs (CEO KEEP exception) = **16 firm-level removals**. Choate is already inside the 17 (Industry Lawyers row 5). Peapack Corporate Advisors spans rows 2-11 → 10 row-level clears for that one firm-level item.
+
+**Total row clears: 24** (16 firm-level removals; Peapack Corporate Advisors expanded to 10 individual rows).
+
+| Tab | Row | Firm | Verified by name match | Cleared |
+|---|---|---|---|---|
+| Brokers | 6 | Viking Mergers & Acquisitions | YES | YES |
+| Investment Bankers | 2 | Eight Quarter Advisors | YES | YES |
+| Investment Bankers | 3 | Business Exits | YES | YES |
+| Investment Bankers | 5 | Morgan Stanley | YES | YES |
+| Investment Bankers | 6 | Peapack Private | YES | YES |
+| Investment Bankers | 9 | Benchmark International | YES | YES |
+| Investment Bankers | 13 | Heritage Holding — Lauren Morera | YES | YES |
+| Industry Lawyers | 3 | Goodwin | YES | YES |
+| Industry Lawyers | 5 | Choate Hall & Stewart | YES | YES |
+| Industry Lawyers | 26 | Bellizio + Igel PLLC | YES | YES |
+| CPAs | 3 | Richards Vissicchio Douglass CPAs | YES | YES |
+| Corporate Advisors | 2 | Peapack Private Investment Banking | YES | YES |
+| Corporate Advisors | 3 | Peapack Private Investment Banking | YES | YES |
+| Corporate Advisors | 4 | Peapack Private Investment Banking | YES | YES |
+| Corporate Advisors | 5 | Peapack Private Investment Banking | YES | YES |
+| Corporate Advisors | 6 | Peapack Private Investment Banking | YES | YES |
+| Corporate Advisors | 7 | Peapack Private Investment Banking | YES | YES |
+| Corporate Advisors | 8 | Peapack Private Investment Banking | YES | YES |
+| Corporate Advisors | 9 | Peapack Private Bank & Trust | YES | YES |
+| Corporate Advisors | 10 | Peapack Private Bank & Trust | YES | YES |
+| Corporate Advisors | 11 | Peapack Private Bank & Trust | YES | YES |
+| Corporate Advisors | 17 | CFO Consulting Partners | YES | YES |
+| Lenders | 29 | Plexus Capital | YES | YES |
+| Lenders | 30 | Live Oak Bank | YES | YES |
+
+**Post-execution populated row counts (column B non-blank):**
+
+| Tab | Populated rows |
+|---|---|
+| Brokers | 61 |
+| Investment Bankers | 7 |
+| Association Heads | 42 (untouched) |
+| Industry Lawyers | 22 |
+| CPAs | 3 |
+| Corporate Advisors | 4 |
+| Family Offices | 22 (untouched) |
+| Lenders | 26 |
+| **Total** | **187** |
+
+**KEEPs verified intact post-write:** NYBB Group (Brokers 20), Transworld Business Advisors of NY (Brokers 54), DealForce (IB 4), Paine Pacific (IB 8), Graphic Arts Advisors (IB 10), Proskauer Rose LLP (Industry Lawyers 4), BDG-CPAs (CPAs 5), J.P. Morgan Private Bank (Corp Advisors 14).
+
+**Anomaly note on enumeration:** The execution-prompt sidebar enumerated 17 firms ("17 standard removals + Choate = 18"); the artifact's actual canonical REMOVE table contains 17 line-items including Choate (Industry Lawyers row 5). CEO KEEP exception on BDG-CPAs reduced canonical removals to 16 firm-level items. Final count of cleared rows = 24 (Peapack on Corporate Advisors expanded to 10 rows).

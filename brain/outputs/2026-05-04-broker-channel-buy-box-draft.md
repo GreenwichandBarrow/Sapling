@@ -2,30 +2,25 @@
 schema_version: 1.2.0
 date: 2026-05-04
 type: buy-box-doc
-status: draft
+status: published
 skill_origin: deal-aggregator
-kay_approved: null
-kay_approval_date: null
-people: ["[[entities/kay-schneider]]"]
+kay_approved: true
+kay_approval_date: 2026-05-04
+people: []
 companies: []
 projects: []
-tags: ["date/2026-05-04", "output", "output/buy-box-doc", "status/draft", "topic/buy-box", "topic/broker-channel", "topic/deal-aggregator"]
+tags: ["date/2026-05-04", "output", "output/buy-box-doc", "status/published", "topic/buy-box", "topic/broker-channel", "topic/deal-aggregator"]
 ---
 
-# G&B Broker-Channel Opportunistic Buy Box. Draft for Drive
+# G&B Broker-Channel Opportunistic Buy Box. Locked version
 
-This is the paste-into-Drive content for Block 4. Format mirrors the existing G&B Services Buy Box (Drive doc `14hf5QaKtcP_Um0u_P0LZyUM_zvv7haWVVkgGmRL9iyc`) with adaptations for the opportunistic, industry-agnostic broker channel.
-
-Adaptations from Services Buy Box format are noted in the vault snapshot at `brain/context/buy-box-broker-channel.md`.
+LOCKED 2026-05-04 by G&B operator. Drive doc id `1feNR94YgksrJAEtRYGZOmHQxYe3vaG72Pl0M-bR61M0`. This vault snapshot mirrors the Drive content. Deal-aggregator reads this for OPPORTUNISTIC channel routing.
 
 ---
 
 GREENWICH & BARROW BROKER-CHANNEL OPPORTUNISTIC BUY BOX
 
 Updated: May 4, 2026
-Version: 1.0
-
-PURPOSE
 
 This is the YES or NO rule for any deal that arrives through a broker, intermediary, deal platform, marketplace blast, or newsletter. It is industry-agnostic by design. Geography and financials are the gates.
 
@@ -35,39 +30,25 @@ DATA AVAILABILITY RULE
 
 Missing data is not a filter. Apply each criterion only when the deal listing discloses the corresponding field. If a field is not disclosed, the deal is NOT rejected on that criterion. Flag for further review.
 
-GEOGRAPHY (HARD GATE)
-
-New York
-New Jersey
-Pennsylvania
-Connecticut
-
-Rationale: G&B's operator is the post-close CEO of Deal 1. The geographic window matches the operator's commute and on-site presence radius. Matches the existing Axial buyside project geography for consistency.
-
-INDUSTRY (AGNOSTIC, INTENTIONAL)
-
-No industry filter. Any industry that clears the financial gate, geography gate, and hard-exclude list is in scope.
-
-Rationale: Brokers do not sort by thesis. A recent peer-searcher LOI on a Marble and Granite Fabrication business was sourced through a broker introduction, fully outside thesis. It cleared geography and financials. That was the gate. Forcing broker channel into thesis-strict niches creates noise and misses opportunistic fits. Industry strictness applies only to proprietary channels (G&B direct cold outreach, JJ Call-Only).
-
-FINANCIAL GATE
+FINANCIALS
 
 Revenue: $5M to $50M
 EBITDA: $2M practical floor
 EBITDA Margin: 15 percent minimum (auto-flag below; auto-reject if disclosed and below)
 Operating History: 5 plus years preferred
 
-The financial floor is constraint-driven, not source-driven. It does not relax by channel.
-
 STRUCTURAL
 
 Business type: B2B or B2B2C preferred
-Ownership: Independent. No VC-backed, PE-backed, public, or carved-out subsidiary
+Ownership: Independent (not VC-backed, PE-backed, public, or subsidiary)
+Operating history: 5+ years
+Employees: 10–200
 
 HARD EXCLUDES (auto-reject)
 
 California-based businesses. Regulatory and operating environment.
 Lending, credit-extension, premium finance, trade finance lenders. Too much liability.
+Carve-outs. Investor feedback: too tricky for the structure.
 Fashion, apparel, DTC consumer brands. Per prior investor guidance.
 Franchises and franchise-of-franchise structures.
 Restaurants, hospitality, nightlife.
@@ -76,18 +57,16 @@ Physician practices and provider-owned healthcare.
 Construction and labor-heavy field services.
 PE-backed roll-up plays.
 
-WHAT WE SAY YES TO (Broker-Facing Decision Rule)
+GEOGRAPHY (HARD GATE)
 
-When a broker pings us, we say YES to a deal that meets ALL of:
+New York
+New Jersey
+Pennsylvania
+Connecticut
 
-1. Located in NY, NJ, PA, or CT.
-2. EBITDA at $2M or above (or undisclosed and the rest of the package fits).
-3. Margin at 15 percent or above (or undisclosed and the rest of the package fits).
-4. Revenue between $5M and $50M.
-5. Independent ownership.
-6. Not on the hard-exclude list.
+INDUSTRY (AGNOSTIC, INTENTIONAL)
 
-If all six clear, we sign the NDA and request the CIM. We do not pre-filter on industry.
+No industry filter. Any industry that clears the financial gate, geography gate, and hard-exclude list is in scope.
 
 CHANNEL APPLICATION
 
@@ -95,26 +74,10 @@ This buy box is the screen for these source types in the deal-aggregator Sourcin
 
 Email-only broker
 Newsletter blast
-Advisory plus Deal Platform
+Adsory plus Deal Platform
 Marketplace plus Email
 Email-only broker plus Buyer Portal
 
 All other source types route to their thesis-strict niche buy box.
 
-FOOTER
-
-Kay Schneider, the founder and CEO of Greenwich & Barrow, has over a decade in business strategy and development and backed by twelve investors, she is looking to acquire and operate one privately held lower middle market business. The financial floor at $2M EBITDA is set to support a $300K operating CEO salary plus senior debt service plus a 35 percent investor return hurdle. Below that floor the math does not pencil regardless of fit.
-
 STRICTLY CONFIDENTIAL
-
----
-
-## Hypothesis
-
-N/A. Operational reference doc, not hypothesis-bound.
-
-## Outcome
-
-- **Published:** null (Drive doc creation deferred to Block 4)
-- **Drive doc ID:** TBD (filled after Block 4 Drive creation)
-- **Used by:** deal-aggregator (channel routing for OPPORTUNISTIC source types)

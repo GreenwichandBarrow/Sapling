@@ -44,14 +44,14 @@ Surface prepped deals — businesses that are actively selling — from every no
   - **SaaS Buy Box** — doc ID `1I8r8w0FPJUepfBxM6HM7V_q4ibmitybIBF6w6sMQumU` — applies to Vertical SaaS for Luxury and all new-niche SaaS listings
 - **Industry Research Tracker** (Sheet: `1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins`, WEEKLY REVIEW tab) — active niche list read at scan start
 - **email-scan-results artifact** (`brain/context/email-scan-results-{date}.md`) — inbound deal emails classified by email-intelligence
-- **skill/pipeline-manager** — Attio Intermediary Pipeline (broker stages, relationship status)
+- **skill/pipeline-manager** — Intermediary Target List Sheet (broker stages, relationship status)
 
 **Data Availability Rule (applies to every buy-box criterion):** Missing data on a listing is never grounds to auto-reject. Apply each criterion only when the corresponding field is disclosed. If a field is not disclosed, the deal is NOT rejected on that criterion — it is flagged for review. A deal with several "not disclosed" fields but no disclosed-and-failed fields still passes the buy-box gate.
 
 **Outputs:**
 - Deal matches → individual Slack notifications → Kay reacts thumbs up/down → pipeline-manager takes over on NDA
 - Niche signals → niche-intelligence (new thesis ideas, market patterns)
-- New intermediary entities → Attio Intermediary Pipeline
+- New intermediary entities → Intermediary Target List Sheet (`18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`)
 </objective>
 
 <channels>
@@ -293,7 +293,7 @@ When Kay receives a broker introduction (detected via email-scan-results).
 2. **Research** — Visit broker's website. Assess: searchable platform? Industries? Deal sizes? Relevant to active theses?
 3. **Add to system:**
    - Create entity in `brain/entities/{slug}.md`
-   - Add to Attio Intermediary Pipeline at "Identified"
+   - Add to Intermediary Target List Sheet (`18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`)
    - If scrapable → add to scanning rotation
    - If email-only → classify as email-only intermediary
 4. **Draft response** — Gmail draft (`gog gmail draft create`): short, warm, offer NDA, don't over-explain
@@ -568,7 +568,7 @@ Wired 2026-05-02 (launchd-debugger investigation). Pattern source: `memory/feedb
 
 ### New Introduction Stop Hook
 - [ ] Entity created in vault with proper schema
-- [ ] Attio Intermediary Pipeline entry at "Identified"
+- [ ] Intermediary Target List Sheet entry
 - [ ] Website researched and scrapability assessed
 - [ ] Draft response in Gmail (`gog gmail draft create`) — short, warm, offers NDA
 
@@ -593,7 +593,6 @@ Wired 2026-05-02 (launchd-debugger investigation). Pattern source: `memory/feedb
 
 ### Weekly
 - [ ] Niche signals compiled and sent to niche-intelligence
-- [ ] Intermediary pipeline stages reviewed (any gone cold?)
 - [ ] Platform scanning status (any sites changed/blocked?)
 - [ ] Volume trend: are we hitting 1-3/day? If not, identify gaps and expand sources.
 

@@ -624,13 +624,13 @@ Draft all in Superhuman. Present during morning briefing. Kay approves and sends
 <intermediary_outreach>
 ## Subagent 3: Intermediary Outreach
 
-Handles outreach to force multipliers — people who know every owner in the niche and can open doors. These are NOT acquisition targets. They are relationship-building contacts who go into the Attio Intermediary Pipeline, not Active Deals.
+Handles outreach to force multipliers — people who know every owner in the niche and can open doors. These are NOT acquisition targets. They are relationship-building contacts who live in the Intermediary Target List Sheet. Attio is reserved for active deal flow only.
 
 ### AUTHORITATIVE ARTIFACTS (Apr 29 2026 — read these first)
 
 **Master template:** `G&B Intermediary Outreach Templates` — Google Doc ID `1_cNsAPCopDAfReoDXbB4d3hZW8TcYUqJ3XKYY_er7i4`, in `OPERATIONS / G&B MASTER TEMPLATES/`. Contains 8 audience-specific variations + shared core blocks + warm-intro language bank. Update this Doc as voice evolves; do NOT recreate from scratch.
 
-**Master target sheet:** `Intermediary Target List` — Google Sheet ID `18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`, in `OPERATIONS / TARGET LISTS / INTERMEDIARY/`. 8 tabs: Brokers / Investment Bankers / Association Heads / Industry Lawyers / CPAs / Corporate Advisors / Family Offices / Lenders. 17-column schema. Reference list (NOT maintained) — Attio owns ongoing status.
+**Master target sheet:** `Intermediary Target List` — Google Sheet ID `18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`, in `OPERATIONS / TARGET LISTS / INTERMEDIARY/`. 8 tabs: Brokers / Investment Bankers / Association Heads / Industry Lawyers / CPAs / Corporate Advisors / Family Offices / Lenders. 17-column schema. **Single source of truth for intermediary status.** Attio is reserved for active deal flow only.
 
 **Voice rules (must read before drafting):**
 - `feedback_no_search_fund_language_intermediaries.md` — drop "search fund" / "search vehicle"; use "holding company in formation"
@@ -666,13 +666,9 @@ When an upcoming conference is registered, identify the association head or orga
 | Conference day | Meet in person. They introduce Kay to key people. |
 | T+1 day | Thank-you email + follow-up on any introductions they made |
 
-### Attio Pipeline
+### Status Tracking
 
-Intermediaries go into the **Intermediary Pipeline** in Attio, not Active Deals:
-- New contact → "Identified"
-- First email sent → "Contacted"
-- Positive response → "Warmed"
-- Actively sending introductions → "Actively Receiving Deal Flow"
+Intermediary status lives in the Intermediary Target List Sheet (`18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`) — that sheet is the single source of truth. Attio is reserved for active deal flow only. When an intermediary surfaces a real deal, the DEAL goes to Attio Active Deals; the intermediary themselves stays in the Sheet.
 
 ### Sources for Intermediary Discovery
 

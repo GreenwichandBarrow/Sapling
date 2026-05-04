@@ -23,13 +23,15 @@ The afternoon artifact is **separate from the morning artifact**. Never overwrit
 6. **Apply buy-box filters** per the Data Availability Rule (missing data ≠ rejection).
 7. **Fingerprint dedup** every match via `scripts/deal-aggregator-fingerprint.sh` against `brain/context/deal-aggregator-fingerprints.jsonl` (30-day TTL). Skip Slack post for any match whose fingerprint already exists — this catches morning-run dupes.
 8. **Slack-post each new match** to `#active-deals` per SKILL.md format (one message per deal).
-9. **Write the artifact** at `brain/context/deal-aggregator-scan-{TODAY}-afternoon.md` matching the SKILL.md "Results File" template — frontmatter (`date`, `deals_found`, `sources_scanned`, `sources_blocked_verified`, `sources_blocked_single_attempt`, `email_deals`), all section headers (Deals Surfaced / Email Inbound Deals / Near Misses / Source Scorecard / Volume Check). Empty sections keep their header with "None today" body. Source Scorecard rows = the time-sensitive platforms you actually scanned this run (Rejigg / Flippa / Everingham & Kerr / email channel), not all sources.
-10. **Exit normally** (exit 0).
+9. **Populate the Listings Reviewed (full log) section** as you process listings. Every listing scraped or parsed during this run, regardless of verdict, gets one row with: source, headline, geo (state if known else "undisclosed"), revenue, ebitda, margin, industry, verdict (PASS / NEAR-MISS / HARD-REJECT / FLAG), reject_reason. Do not summarize listings into aggregate counts only. Every listing that was scraped or parsed gets one row in the Listings Reviewed log. Sort PASS first, then NEAR-MISS, then FLAG, then HARD-REJECT.
+10. **Write the artifact** at `brain/context/deal-aggregator-scan-{TODAY}-afternoon.md` matching the SKILL.md "Results File" template — frontmatter (`date`, `deals_found`, `sources_scanned`, `sources_blocked_verified`, `sources_blocked_single_attempt`, `email_deals`), all section headers (Deals Surfaced / Email Inbound Deals / Near Misses / Listings Reviewed (full log) / Source Scorecard / Volume Check). Empty sections keep their header with "None today" body. Source Scorecard rows = the time-sensitive platforms you actually scanned this run (Rejigg / Flippa / Everingham & Kerr / email channel), not all sources. The Listings Reviewed table emits the header row even when zero listings were reviewed (no data rows, header only).
+11. **Exit normally** (exit 0).
 
 ## What success looks like
 
-- Afternoon artifact exists at `brain/context/deal-aggregator-scan-{TODAY}-afternoon.md`, ≥ 200 bytes, has frontmatter + all 5 required section headers.
+- Afternoon artifact exists at `brain/context/deal-aggregator-scan-{TODAY}-afternoon.md`, ≥ 200 bytes, has frontmatter + all 6 required section headers (Deals Surfaced / Email Inbound Deals / Near Misses / Listings Reviewed (full log) / Source Scorecard / Volume Check).
 - Source Scorecard has one row per time-sensitive source actually scanned this run.
+- Listings Reviewed log has one row per listing scraped or parsed this run, regardless of verdict (table header only if zero listings reviewed).
 - New matches Slack-posted to `#active-deals` (idempotent — fingerprint store catches morning-run dupes).
 - Morning artifact (`brain/context/deal-aggregator-scan-{TODAY}.md`) is untouched.
 - No double-write if a prior child already produced today's afternoon artifact.
@@ -44,6 +46,7 @@ The afternoon artifact is **separate from the morning artifact**. Never overwrit
 - Skipping the artifact write because "nothing material today" — always write the artifact, even if all sections are empty.
 - Overwriting the morning artifact (`-{TODAY}.md` without the `-afternoon` suffix). Morning and afternoon are separate deliverables.
 - Running a full Channel 1 + 3 sweep — that was the morning run's job. Afternoon is a top-up, not a re-run.
+- **Do not summarize listings into aggregate counts only. Every listing that was scraped or parsed gets one row in the Listings Reviewed log.** Source Scorecard reports COUNTS per source; Listings Reviewed reports the LISTINGS themselves. Both required.
 
 ## Failure handling
 

@@ -23,13 +23,15 @@ This gate prevents the 4/27 race-condition failure mode (two parallel scans clob
 6. **Apply buy-box filters** per the Data Availability Rule (missing data ≠ rejection).
 7. **Fingerprint dedup** every match via `scripts/deal-aggregator-fingerprint.sh` against `brain/context/deal-aggregator-fingerprints.jsonl` (30-day TTL). Skip Slack post for any match whose fingerprint already exists.
 8. **Slack-post each new match** to `#active-deals` per SKILL.md format (one message per deal).
-9. **Write the artifact** at `brain/context/deal-aggregator-scan-{TODAY}.md` matching the SKILL.md "Results File" template — frontmatter (`date`, `deals_found`, `sources_scanned`, `sources_blocked_verified`, `sources_blocked_single_attempt`, `email_deals`), all section headers (Deals Surfaced / Email Inbound Deals / Near Misses / Source Scorecard / Volume Check). Empty sections keep their header with "None today" body.
-10. **Exit normally** (exit 0).
+9. **Populate the Listings Reviewed (full log) section** as you process listings. Every listing scraped or parsed during this run, regardless of verdict, gets one row with: source, headline, geo (state if known else "undisclosed"), revenue, ebitda, margin, industry, verdict (PASS / NEAR-MISS / HARD-REJECT / FLAG), reject_reason. Do not summarize listings into aggregate counts only. Every listing that was scraped or parsed gets one row in the Listings Reviewed log. Sort PASS first, then NEAR-MISS, then FLAG, then HARD-REJECT.
+10. **Write the artifact** at `brain/context/deal-aggregator-scan-{TODAY}.md` matching the SKILL.md "Results File" template — frontmatter (`date`, `deals_found`, `sources_scanned`, `sources_blocked_verified`, `sources_blocked_single_attempt`, `email_deals`), all section headers (Deals Surfaced / Email Inbound Deals / Near Misses / Listings Reviewed (full log) / Source Scorecard / Volume Check). Empty sections keep their header with "None today" body. The Listings Reviewed table emits the header row even when zero listings were reviewed (no data rows, header only).
+11. **Exit normally** (exit 0).
 
 ## What success looks like
 
-- Artifact exists at today's date, ≥ 200 bytes, has frontmatter + all 5 required section headers.
+- Artifact exists at today's date, ≥ 200 bytes, has frontmatter + all 6 required section headers (Deals Surfaced / Email Inbound Deals / Near Misses / Listings Reviewed (full log) / Source Scorecard / Volume Check).
 - Source Scorecard has one row per `active` source in the Sourcing Sheet.
+- Listings Reviewed log has one row per listing scraped or parsed this run, regardless of verdict (table header only if zero listings reviewed).
 - New matches Slack-posted to `#active-deals` (idempotent — fingerprint store catches re-runs).
 - No double-write if a prior child already produced today's artifact.
 
@@ -43,6 +45,7 @@ This gate prevents the 4/27 race-condition failure mode (two parallel scans clob
 - Halting on a single source failure — degrade gracefully, mark the source `blocked (verified)` or `blocked (single-attempt)` in the scorecard, continue.
 - Skipping the artifact write because "nothing material today" — always write the artifact, even if all sections are empty.
 - Overwriting an existing same-day artifact (idempotency gate above prevents this).
+- **Do not summarize listings into aggregate counts only. Every listing that was scraped or parsed gets one row in the Listings Reviewed log.** Source Scorecard reports COUNTS per source; Listings Reviewed reports the LISTINGS themselves. Both required.
 
 ## Failure handling
 

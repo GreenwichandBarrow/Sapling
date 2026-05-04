@@ -38,10 +38,14 @@ VAULT_DIR = "/Users/kaycschneider/Documents/AI Operations/brain/context"
 WEEKLY_DIR = "/Users/kaycschneider/Documents/AI Operations/brain/trackers/weekly"
 
 # Required section headers per SKILL.md "Results File" template (morning + afternoon).
+# `## Listings Reviewed (full log)` was added 2026-05-04 to make per-listing rejection
+# auditable instead of buried in aggregate counts. Date-gate below makes it required
+# only for runs from the cutover forward; older artifacts pass without it.
 DAILY_SECTIONS = [
     "## Deals Surfaced",
     "## Email Inbound Deals",
     "## Near Misses",
+    "## Listings Reviewed (full log)",
     "## Source Scorecard",
     "## Volume Check",
 ]
@@ -55,7 +59,40 @@ DIGEST_SECTIONS = [
     "## 5. Recommended Actions",
 ]
 
+# Date-gate for the `## Listings Reviewed (full log)` section.
+# Required from 2026-05-04 afternoon fire onward (today's first afternoon run picks it up).
+# Required for every morning run dated 2026-05-05 or later.
+# The 2026-05-04 morning artifact predates the cutover and remains valid without it.
+LISTINGS_REVIEWED_SECTION = "## Listings Reviewed (full log)"
+LISTINGS_REVIEWED_REQUIRED_FROM = date(2026, 5, 4)  # afternoon mode and later
+
 MIN_BYTES = 200
+
+
+def resolve_required_sections(mode: str, run_date: date) -> list:
+    """Return the section-header list this artifact must contain, given mode + date.
+
+    Date-gate logic for `## Listings Reviewed (full log)`:
+      - digest mode: never required (digest has its own 5-section list).
+      - afternoon mode: required from 2026-05-04 onward (today's afternoon fire is cutover).
+      - morning mode: required from 2026-05-05 onward; the 2026-05-04 morning artifact
+        already landed before the section was specified, so it stays valid without it.
+    """
+    if mode == "digest":
+        return DIGEST_SECTIONS
+
+    base = [s for s in DAILY_SECTIONS if s != LISTINGS_REVIEWED_SECTION]
+
+    require_listings = False
+    if mode == "afternoon" and run_date >= LISTINGS_REVIEWED_REQUIRED_FROM:
+        require_listings = True
+    if mode == "morning" and run_date > LISTINGS_REVIEWED_REQUIRED_FROM:
+        # > (not >=) because the 2026-05-04 morning artifact predates the cutover.
+        require_listings = True
+
+    if require_listings:
+        return DAILY_SECTIONS  # full 6-section list, with Listings Reviewed in canonical position
+    return base  # 5 sections, pre-cutover ordering
 
 
 def validate_artifact(artifact_path: str, required_sections: list, run_date: date) -> list:

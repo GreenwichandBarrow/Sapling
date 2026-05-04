@@ -369,6 +369,24 @@ email_deals: {n}
 ## Near Misses (not Slacked)
 - {listing} — {reason not flagged}
 
+## Listings Reviewed (full log)
+
+Every listing scraped or parsed during this run lands here as one row, regardless of verdict. This is the per-listing forensic log that makes future re-screens (e.g. broker-buy-box reruns, dual-filter retroactive replays) a 5-minute query instead of a 90-minute artifact-mining exercise. Aggregate counts in Source Scorecard tell you HOW MANY listings each source produced; this section tells you WHICH listings and WHY each was tagged the way it was.
+
+Required when ≥ 1 listing was reviewed. If zero listings were reviewed (every source blocked), emit the table header only, with no data rows. Sort: PASS first, then NEAR-MISS, then FLAG, then HARD-REJECT.
+
+| Source | Headline | Geo | Revenue | EBITDA | Margin | Industry | Verdict | Reject Reason |
+|--------|----------|-----|---------|--------|--------|----------|---------|---------------|
+| {Source} | {Listing headline or blind-profile descriptor} | {state, or "undisclosed"} | {Revenue or "undisclosed"} | {EBITDA or "undisclosed"} | {Margin% or "undisclosed"} | {Industry per listing} | {PASS / NEAR-MISS / HARD-REJECT / FLAG} | {one-line reason if not PASS, else blank} |
+
+Verdict definitions:
+- `PASS` — clears buy-box gate AND matches an active niche corpus. Slack-posted (subject to fingerprint dedup).
+- `NEAR-MISS` — clears buy-box financial gate but no active-niche corpus match. Worth tracking for thesis-drift / corpus-tuning calibration.
+- `HARD-REJECT` — fails buy-box on a disclosed-and-failed criterion, hits an industry hard-exclude, or geography hard-excluded.
+- `FLAG` — undisclosed-field heavy or ambiguous; logged for human review without auto-rejection.
+
+Forbidden: do not summarize listings into aggregate counts only. Every listing that was scraped or parsed gets one row in the Listings Reviewed log.
+
 ## Source Scorecard
 
 Every source scanned this run MUST appear as a row — no exceptions. Missing rows = scan agent skipped a source and the run fails its stop hook.

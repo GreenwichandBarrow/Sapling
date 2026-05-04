@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-04T18:30:05-04:00",
+  "fetched_at": "2026-05-04T19:00:00-04:00",
   "services": {
     "linkt": {
       "status": "skip",
@@ -13,17 +13,17 @@
       "message": "4 webhooks configured",
       "skip_reason": null
     },
-    "attio-mcp": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "OAuth re-flow required (Smithery UI)"
-    },
     "claude-api": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
       "skip_reason": "ANTHROPIC_API_KEY not in env"
+    },
+    "attio-mcp": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "OAuth re-flow required (Smithery UI)"
     },
     "superhuman": {
       "status": "skip",
@@ -31,46 +31,46 @@
       "message": "",
       "skip_reason": "OAuth refresh required (manual)"
     },
-    "vault": {
-      "status": "ok",
-      "latency_ms": 14,
-      "message": "711 markdown files",
-      "skip_reason": null
-    },
     "launchd": {
       "status": "ok",
-      "latency_ms": 13,
+      "latency_ms": 15,
       "message": "19 jobs registered",
+      "skip_reason": null
+    },
+    "vault": {
+      "status": "ok",
+      "latency_ms": 18,
+      "message": "711 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "ok",
-      "latency_ms": 60,
+      "latency_ms": 67,
       "message": "attio-mcp=10 superhuman=5",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 104,
+      "latency_ms": 117,
       "message": "authenticated",
+      "skip_reason": null
+    },
+    "apollo": {
+      "status": "ok",
+      "latency_ms": 194,
+      "message": "200 OK",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 166,
+      "latency_ms": 203,
       "message": "HTTP 405",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 209,
+      "latency_ms": 252,
       "message": "gh authenticated",
-      "skip_reason": null
-    },
-    "apollo": {
-      "status": "ok",
-      "latency_ms": 221,
-      "message": "200 OK",
       "skip_reason": null
     }
   }

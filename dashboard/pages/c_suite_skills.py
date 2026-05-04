@@ -1,7 +1,7 @@
 """C-Suite & Skills page — scheduled-skill canary organized by C-suite agent.
 
 Reads `launchctl list`, plist XML, and `logs/scheduled/*.log` to answer
-the page's load-bearing question: did each scheduled skill fire today?
+the page's load-bearing question: did each scheduled skill fire this week?
 
 All data is local — no external auth, no MCP — so this page is the lowest-
 risk page in the dashboard build. The C-suite → skill mapping is hardcoded
@@ -11,6 +11,14 @@ appear with a dashed status dot and "On-demand" badge.
 Health-monitor renders as a red Gap row because CLAUDE.md says it should
 be Friday-scheduled but no plist is registered — surfacing that exact gap
 visually is exactly the kind of silent-failure canary the page exists for.
+
+Weekly Flow grid (added 2026-05-04): each day's tile carries a fired/missed
+health indicator that PERSISTS through the rest of the week. Today's column
+shows live status; past-day columns show that day's outcome (green ring =
+fired ok, red dashed = missed, red ring = failed). The grid resets on
+Sunday. The week's per-day status comes from `SkillHealth.week_status_by_day`
+in `data_sources` — it scans logs from this week's Sunday through yesterday
+and aggregates per scheduled fire-day.
 """
 
 from __future__ import annotations

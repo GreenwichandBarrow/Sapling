@@ -19,7 +19,13 @@ if [[ -z "$SKILL_ARGS" && "$SKILL_NAME" == *:* ]]; then
 fi
 WORKDIR="$HOME/Documents/AI Operations"
 LOG_DIR="$WORKDIR/logs/scheduled"
-LOG_FILE="$LOG_DIR/${SKILL_NAME}-$(date +%Y-%m-%d-%H%M).log"
+# LOG_PREFIX env var lets a plist write logs under a name that matches its
+# launchd Label when SKILL_NAME alone is ambiguous. Required for skills whose
+# plists pass colon-joined args (e.g. jj-operations:sunday-prep) — without
+# this, the wrapper writes "jj-operations-{date}.log" and the dashboard
+# canary on the launchd-label "jj-operations-sunday" reads as "missed"
+# even though the run succeeded. Default = SKILL_NAME (post-colon-split).
+LOG_FILE="$LOG_DIR/${LOG_PREFIX:-$SKILL_NAME}-$(date +%Y-%m-%d-%H%M).log"
 
 # Source env (launchd doesn't read .zshrc)
 source "$WORKDIR/scripts/.env.launchd"

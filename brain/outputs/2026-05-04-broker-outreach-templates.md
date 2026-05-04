@@ -71,7 +71,7 @@ Dear {{first_name}},
 
 Hope this finds you well.
 
-I came across {{firm_name}} while looking in the {{niche}} industry. I'm {{signer_full_name}}, founder of Greenwich & Barrow. With nearly two decades of experience in business strategy and development I am searching full time to acquire and step into the CEO seat post close. If any of your clients are thinking about succession planning or considering a sale, I'm a well capitalized buyer backed by investors with operating experience. I'd welcome being a name you'd consider and to that end would love to connect. I'm happy to send over some windows/options to hop on a quick call. Let me know what works best for you.
+I came across {{firm_name}} while looking in the {{niche}} industry. I'm {{signer_full_name}}, founder of Greenwich & Barrow. With nearly two decades of experience in business strategy and development I am searching full time to acquire and step into the CEO seat post close. If any of your business owner clients are thinking about succession planning or considering a sale, I'm a well capitalized buyer backed by investors with operating experience. I'd welcome being a name you'd consider and to that end would love to connect. I'm happy to send over some windows/options to hop on a quick call. Let me know what works best for you.
 
 Looking forward to hearing from you.
 

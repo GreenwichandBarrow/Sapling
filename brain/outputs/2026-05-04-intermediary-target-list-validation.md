@@ -58,11 +58,11 @@ Notes: Population counts are unique principal+firm rows; "Attio matches" = compa
 | Industry Lawyers | 26 | Bridgeford Advisors (Newport Beach CA) | DELETE or move to Family Offices | Trust + wealth-planning advisory. Not M&A law. Source already flagged "wrong-focus-trust-wealth-not-ma". |
 | CPAs | 1 | CFO Consulting Partners | Corporate Advisors | Fractional-CFO firm, not CPA. Source already flagged cross-tab. |
 | Corporate Advisors | 16 (last row) | Wiggin and Dana LLP | Industry Lawyers | M&A law firm (EQT/Anticimex pest counsel). Currently sitting on Corporate Advisors tab — wrong taxonomy. |
-| Lenders | 25 | Plexus Capital | Investment Bankers (or keep Lenders — Kay-call) | Mezzanine + private credit — debatable. Plexus self-describes as "private equity and mezzanine capital provider." Reasonable to keep on Lenders given mezz product, but flag for review. |
+| Lenders | 25 | Plexus Capital | Investment Bankers (or keep Lenders — CEO-call) | Mezzanine + private credit — debatable. Plexus self-describes as "private equity and mezzanine capital provider." Reasonable to keep on Lenders given mezz product, but flag for review. |
 
 ## Attio matches (firm- or person-level — already tracked elsewhere)
 
-These rows are duplicative of Attio records. For Apollo enrichment, skip — Attio already has these. Kay decides whether to keep on Sheet as outreach-reference or remove.
+These rows are duplicative of Attio records. For Apollo enrichment, skip — Attio already has these. CEO decides whether to keep on Sheet as outreach-reference or remove.
 
 ### Brokers tab Attio matches
 
@@ -75,7 +75,7 @@ These rows are duplicative of Attio records. For Apollo enrichment, skip — Att
 | 8 | Paine Pacific | `416ded43-84f2-43ab-96cd-dc0f25e7608c` | — | none |
 | 12 | Graphic Arts Advisors | `80e940db-86e7-420f-a73a-447776a1749a` | — | none |
 | 21 | The NYBB Group (Kyle Griffith) | `df2a566c-fd6f-4dd3-9509-44c3781b7c37` | — | none |
-| 56 | Transworld Business Advisors of NY (Sam Curcio) | searched — match likely; row notes 4/30 engagement (Kay emailed nyc@gdt.tworld.com) | 2026-04-30 | tracked via correspondence |
+| 56 | Transworld Business Advisors of NY (Sam Curcio) | searched — match likely; row notes 4/30 engagement (G&B emailed nyc@gdt.tworld.com) | 2026-04-30 | tracked via correspondence |
 
 Touchstone Advisors — searched, no Attio match. Calder Associates — searched, no Attio match.
 
@@ -91,7 +91,7 @@ Touchstone Advisors — searched, no Attio match. Calder Associates — searched
 | 7 | Paine Pacific | `416ded43-84f2-43ab-96cd-dc0f25e7608c` | Cross-tab dup |
 | 8 | Benchmark International | `34c1ed84-6b82-44d8-a2c1-78fcedfa1b2c` | Cross-tab dup |
 | 9 | Graphic Arts Advisors | `80e940db-86e7-420f-a73a-447776a1749a` | Cross-tab dup |
-| 12 | Heritage Holding (Lauren Morera) | `a96a434c-672b-422b-9fd7-403140464195` | Met 2025-02-27, last email 2026-04-28. Strong existing relationship — also pest-platform investor, likely better-fit on a separate "PE peers" tab if Kay wants to track PE platforms. |
+| 12 | Heritage Holding (Lauren Morera) | `a96a434c-672b-422b-9fd7-403140464195` | Met 2025-02-27, last email 2026-04-28. Strong existing relationship — also pest-platform investor, likely better-fit on a separate "PE peers" tab if G&B wants to track PE platforms. |
 
 ### Industry Lawyers tab Attio matches
 
@@ -145,9 +145,9 @@ All 5 populated rows match Attio:
 
 ## Things flagged in source FLAG_2026_05_01 column already
 
-Source FLAG column already surfaces 14 of the 16 wrong-tab issues above. The Attio-match dedup is net-new from this validation pass — Kay should treat the Attio-match list as the priority hygiene for Apollo enrichment.
+Source FLAG column already surfaces 14 of the 16 wrong-tab issues above. The Attio-match dedup is net-new from this validation pass — treat the Attio-match list as the priority hygiene before Apollo enrichment.
 
-## Recommended next actions for Kay
+## Recommended next actions for CEO review
 
 1. **Delete 6 high-confidence rows** (BusinessSellerCenter.com, Leaders Lab, UBS, CIBC, Barlow & Williams, TruWest Holdings).
 2. **Move 12 cross-tab rows** per the table above (CFO Consulting → Corporate Advisors, Wiggin and Dana → Industry Lawyers, 8 Brokers → IB).

@@ -47,7 +47,7 @@ Kay is the bottleneck on pipeline management. This skill removes that bottleneck
 The pipeline-manager handles two connected but distinct tracking systems:
 
 ### Pipeline Stages (3 Lists)
-For **Intermediary, Active Deals, and Investor** pipelines. Company-based. Linear progression through stages.
+For **Active Deals and Investor** pipelines. Company-based. Linear progression through stages.
 - Signal: deal milestone (NDA signed, financials received, LOI, etc.)
 - Action: move entry to new stage
 
@@ -74,17 +74,12 @@ After each owner call or meeting, ask: "Was this a meaningful owner conversation
 - Kay rejects → no change
 - Flag stale deals (same stage 2+ weeks): "Kill, advance, or keep watching?"
 
-### Section 2: Intermediary Pipeline
-Stage changes, new entries, and stale entries for the Intermediary list.
-- New intermediaries to add, existing ones to advance
-- Flag intermediaries going cold (no deal flow in 8+ weeks)
-
-### Section 3: Investor Pipeline
+### Section 2: Investor Pipeline
 Stage changes for the Investor Engagement list.
 - Quarterly update status, meeting prep triggers
 - Conference decisions detected (Attend/Register Only) with registration details
 
-### Section 4: Relationship Building
+### Section 3: Relationship Building
 Everything related to People records (not in a pipeline list). Nurture cadence, next_actions, thank-yous, intros.
 
 Check ALL People with nurture_cadence set against their `last_interaction` date in Attio. Surface anyone overdue.
@@ -110,7 +105,7 @@ Also surface:
 
 Present max 5 nurture reminders per session. Prioritize by: relationship value, days overdue, relationship_type.
 
-### Section 5: Action Items (from Granola transcripts)
+### Section 4: Action Items (from Granola transcripts)
 Present action items extracted from recent meeting transcripts.
 
 Format: "From your meeting with {name} on {date}: '{action item}'"
@@ -147,7 +142,7 @@ to hold displaced context (Infrastructure + C-Suite & Skills pages = system
 status; Active Deal Pipeline + M&A Analytics = pipeline state + activity).
 Per `feedback_briefing_three_buckets` and `feedback_decision_fatigue_minimization`.
 
-After gathering data from the 5 sections above, RE-ORGANIZE into a **single
+After gathering data from the 4 sections above, RE-ORGANIZE into a **single
 Decisions list**, ≤5 items, ordered by urgency. Cluster by entity (collapse
 2+ items on the same person/deal/niche to ONE item with the strongest action).
 Numbering ascends across the list — never resets. Every item labeled with
@@ -204,7 +199,7 @@ Reply by number.
 
 **Routing pre-existing report sections into urgency-tagged Decisions:**
 - *Pipeline shifts* (Attio stage changes, new active deals, NDA-signed detections) → 🔴 if action-needed today, 🟡 if review-needed-soon. Always Obama framing.
-- *Pipeline summary stats* (Active Deals N, Intermediary N, niche counts) → omit from briefing; lives on Active Deal Pipeline + M&A Analytics dashboard pages.
+- *Pipeline summary stats* (Active Deals N, niche counts) → omit from briefing; lives on Active Deal Pipeline + M&A Analytics dashboard pages.
 - *Motion action steps* → 🔴 (same-day) or 🟡 (this week).
 - *Gmail drafts to send* → 🔴 as a single bundled Decision: **RECOMMEND: Approve all N drafts to send Mon AM** → YES/NO/DISCUSS. Not one item per draft.
 - *Targets for review* → 🟡 Decision (warm intro vs cadence vs pass) — bundle by niche.
@@ -252,7 +247,7 @@ Claude acts as the **manager** overseeing 2 specialized sub-agents that run in p
 - Runs stop hooks to validate execution
 
 ### Sub-Agent 1: Pipeline Agent
-**Scope:** Intermediary, Active Deals, and Investor Lists
+**Scope:** Active Deals and Investor Lists
 **Scans:** Email (NDAs, financials, LOIs, broker correspondence, CIM attachments), calendar (deal meetings), vault (call notes), Drive ACTIVE DEALS folder (new subfolders)
 **Returns:** Stage change recommendations with signal evidence. Also executes CIM auto-trigger (folder creation, filing, inbox item, deal-eval invocation) before returning recommendations — CIM deals arrive pre-screened.
 
@@ -272,7 +267,7 @@ Scan the ACTIVE DEALS Drive folder for any subfolder that does not have a matchi
 4. Present in morning briefing: "New deal folder detected: {Company}. Created Attio entry at NDA Signed."
 
 ### Sub-Agent 2: Relationships (now relationship-manager skill)
-Relationship management (nurture cadence monitoring, action-already-taken verification, overdue contacts, People record updates) is now handled by the relationship-manager skill. It writes an artifact to `brain/context/relationship-status-{date}.md` that pipeline-manager reads for Section 4 of the morning briefing.
+Relationship management (nurture cadence monitoring, action-already-taken verification, overdue contacts, People record updates) is now handled by the relationship-manager skill. It writes an artifact to `brain/context/relationship-status-{date}.md` that pipeline-manager reads for Section 3 of the morning briefing.
 
 **Fallback:** If the relationship-status artifact doesn't exist (relationship-manager didn't run), pipeline-manager does a lightweight Attio People query to surface any contacts with overdue nurture cadences for the briefing. This fallback will be removed once relationship-manager is proven stable.
 
@@ -1032,14 +1027,6 @@ For each person where nurture_cadence is set:
   - Dormant: skip
 ```
 Use Attio's auto-enriched email/calendar interaction data for "last contact" timestamps.
-
-**Intermediary Pipeline signals:**
-| Signal | Current Stage | Recommended Stage |
-|--------|--------------|-------------------|
-| First contact/meeting | Identified | Contacted |
-| Positive response, building rapport | Contacted | Warmed |
-| Started sending deal flow | Warmed | Actively Receiving Deal Flow |
-| Regular deal flow coming in | Actively Receiving Deal Flow | Daily Check in on Matches |
 
 **Active Deals Pipeline signals:**
 | Signal | Current Stage | Recommended Stage |

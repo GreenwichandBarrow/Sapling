@@ -82,7 +82,7 @@ Before flagging any draft as "stale" or "unsent," check `brain/context/session-d
 - Multiple recipients visible
 - Sent from known broker platform domains
 - Action: Log count, auto-archive unless matches active niche
-- **If BLAST sender is a known broker (Attio Intermediary Pipeline list `7faac55b-a183-4afe-b7ea-fc8a4ccace10`) OR body matches broker-signal keywords ("for sale", "exclusive listing", "asking price", "we represent", "new listing", "now available"), trigger per-listing body parsing. See `<broker_blast_listing_extraction>` below.**
+- **If body matches broker-signal keywords ("for sale", "exclusive listing", "asking price", "we represent", "new listing", "now available"), trigger per-listing body parsing. See `<broker_blast_listing_extraction>` below. NOTE: known-broker sender recognition (previously Attio-list-driven) is currently body-keyword-only — TODO: future enhancement to look up sender domain against `Intermediary Target List` Sheet (`18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`).**
 
 ### DIRECT Detection
 - Addressed specifically to Kay
@@ -102,7 +102,6 @@ Before flagging any draft as "stale" or "unsent," check `brain/context/session-d
 **Why this exists:** Broker BLAST emails (Lisa @ Generational Equity, Viking, Helen Guo SMB Deal Hunter, Sunbelt, Transworld, etc.) typically contain MULTIPLE distinct listings inside a single email body. Counting one BLAST as one entry undercounts true broker deal-flow volume. The 2026-05-04 broker ingestion 30-day audit (`brain/outputs/2026-05-04-broker-ingestion-audit-30day.md`) flagged this gap. Future audits read the per-listing rows below directly.
 
 **When to trigger:**
-- Sender is on the Attio Intermediary Pipeline list (`7faac55b-a183-4afe-b7ea-fc8a4ccace10`), OR
 - Body contains any broker-signal keyword: "for sale", "exclusive listing", "asking price", "we represent", "new listing", "now available", "teaser", "project [codename]"
 
 **Forbidden pattern: do not collapse multi-listing blasts into single rows. Each listing in the body gets its own row.**
@@ -115,7 +114,7 @@ Before flagging any draft as "stale" or "unsent," check `brain/context/session-d
 - `ebitda` — if disclosed
 - `margin` — if disclosed
 - `industry` — if disclosed (NAICS or plain-English category)
-- `flag_reason` — one of: `multi-listing` (BLAST contained 2+ listings), `single-listing-blast` (BLAST contained exactly 1 listing), `unknown-broker-signal` (body matched signal keywords but sender is not on Attio Intermediary Pipeline)
+- `flag_reason` — one of: `multi-listing` (BLAST contained 2+ listings), `single-listing-blast` (BLAST contained exactly 1 listing), `unknown-broker-signal` (body matched signal keywords; known-broker sheet-lookup not yet wired)
 
 **Idempotency:** Use Gmail message ID + listing ordinal (1-indexed within body) as the dedup key. Re-runs on the same message must not duplicate rows.
 
@@ -194,14 +193,11 @@ Before flagging any draft as "stale" or "unsent," check `brain/context/session-d
 <auto_ack_drafts>
 ## Auto-Acknowledgment Drafts (Known Broker + Attachment)
 
-**Purpose:** When a known broker emails Kay with an NDA or CIM attached, auto-CREATE a Gmail draft reply so Kay sends it in <5 min after review. Drafts are NEVER auto-sent. Reference `feedback_kay_handles_all_replies` and `feedback_day_aware_signoffs`.
+**Purpose:** When a broker emails Kay with an NDA or CIM attached, auto-CREATE a Gmail draft reply so Kay sends it in <5 min after review. Drafts are NEVER auto-sent. Reference `feedback_kay_handles_all_replies` and `feedback_day_aware_signoffs`.
 
-**Out of scope for this rule:** Unknown-broker detection + propose-to-add-to-Attio is a separate flow (Wed work per locked broker-channel build plan). This rule only fires when the sender is already on the Attio Intermediary Pipeline list at one of the qualifying stages below.
+### Trigger conditions
 
-### Trigger conditions (BOTH must hold)
-
-1. **Known-broker check (sender):** Sender email or sender domain matches an entry on the Attio Intermediary Pipeline list (`7faac55b-a183-4afe-b7ea-fc8a4ccace10`) where `stage` is one of: `Identified`, `Contacted`, `Warmed`, `Actively Receiving Deal Flow`. Stages outside this set do NOT trigger.
-2. **Attachment classification (one of):**
+1. **Attachment classification (one of):**
    - **NDA-like:** PDF attachment whose filename contains any of `NDA`, `non-disclosure`, `confidentiality agreement`, `CA`. Or body subject contains those tokens with a single PDF attached.
    - **CIM-like:** PDF attachment whose filename contains any of `CIM`, `Confidential Information Memorandum`, `offering-memorandum`, `teaser`. OR PDF >= 5 pages with structured financials in body (CIM heuristic, same signal as `<cim_auto_trigger>`).
    - If both classifications match (rare), prefer CIM template.
@@ -247,7 +243,6 @@ Pass:
 ### Forbidden patterns
 
 - **Auto-send broker NDA/CIM acknowledgment without Kay review.** This NEVER fires. Drafts are CREATED only. Per `feedback_kay_handles_all_replies` Kay sends every reply herself.
-- Trigger on unknown-broker senders (not on the Attio Intermediary Pipeline list). Surface those to the unknown-broker flow when that ships, do not auto-draft.
 - Use Superhuman MCP `superhuman_draft` or `superhuman_ask_ai` to compose. Sunset 4/29.
 
 ### Logging
@@ -306,8 +301,8 @@ Write to `brain/context/email-scan-results-{date}.md`:
 - File exists and is non-empty
 - All 8 section headers present
 - Each section populated or explicitly marked "None"
-- Section 7 rows: every BLAST classified in section 2 whose sender is on the Attio Intermediary Pipeline list, or whose body matched a broker-signal keyword, has at least one row in section 7
-- Section 8 rows: every inbound email that triggered `<auto_ack_drafts>` (known broker on qualifying stage + NDA/CIM attachment) has exactly one row, and the corresponding Gmail draft exists (link resolves)
+- Section 7 rows: every BLAST classified in section 2 whose body matched a broker-signal keyword has at least one row in section 7
+- Section 8 rows: every inbound email that triggered `<auto_ack_drafts>` (NDA/CIM attachment) has exactly one row, and the corresponding Gmail draft exists (link resolves)
 </artifact>
 
 <stop_hooks>
@@ -320,8 +315,8 @@ Write to `brain/context/email-scan-results-{date}.md`:
 5. **Email-scan-results artifact** — file exists, non-empty, all 8 sections present (section 7 covers Broker BLAST per-listing extraction; section 8 covers Auto-Drafts Created)
 6. **Slack notifications** — webhook returned 200 OK for all pings
 7. **ACTIVE DEALS folder sync** — every Drive subfolder has matching Attio entry
-8. **Broker BLAST per-listing extraction** — every BLAST in section 2 whose sender is on the Attio Intermediary Pipeline list, or whose body contains a broker-signal keyword, has a corresponding row (or rows, for multi-listing) in section 7. Forbidden pattern: collapsing multi-listing blasts into single rows.
-9. **Auto-Acknowledgment Drafts** — every inbound email matching `<auto_ack_drafts>` triggers (known broker on qualifying stage + NDA/CIM attachment) produced exactly one Gmail draft AND one row in section 8. Forbidden pattern: auto-sending the draft. Drafts are CREATED only.
+8. **Broker BLAST per-listing extraction** — every BLAST in section 2 whose body contains a broker-signal keyword has a corresponding row (or rows, for multi-listing) in section 7. Forbidden pattern: collapsing multi-listing blasts into single rows.
+9. **Auto-Acknowledgment Drafts** — every inbound email matching `<auto_ack_drafts>` triggers (NDA/CIM attachment) produced exactly one Gmail draft AND one row in section 8. Forbidden pattern: auto-sending the draft. Drafts are CREATED only.
 </stop_hooks>
 
 <success_criteria>
@@ -334,6 +329,6 @@ Write to `brain/context/email-scan-results-{date}.md`:
 - [ ] Granola transcripts ingested
 - [ ] email-scan-results artifact written with all 8 sections
 - [ ] Broker BLAST per-listing extraction emitted for every triggering BLAST (multi-listing blasts decomposed into one row per listing)
-- [ ] Auto-acknowledgment Gmail drafts CREATED (never sent) for every known-broker NDA/CIM inbound, with one row in section 8 per draft
+- [ ] Auto-acknowledgment Gmail drafts CREATED (never sent) for every NDA/CIM inbound, with one row in section 8 per draft
 - [ ] No missed deal signals
 </success_criteria>

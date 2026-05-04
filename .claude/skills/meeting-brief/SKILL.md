@@ -38,7 +38,7 @@ Determine meeting type from the `--type` argument OR from context clues if no fl
 
 **Auto-detect when --type is absent:**
 - Attio match in Active Deals pipeline → `owner-call`
-- Attio match in Intermediary Pipeline → `intermediary`
+- Vault entity tagged as `Intermediary` / `River Guide` OR sender domain matches `Intermediary Target List` Sheet → `intermediary`
 - Event/conference keyword in calendar title (XPX, ACG, NPMA, conference, panel, happy hour, summit) → `conference-prep`
 - No Attio match → `new-contact`
 

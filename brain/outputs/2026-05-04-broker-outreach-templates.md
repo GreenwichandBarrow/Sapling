@@ -89,6 +89,40 @@ Note for Lawyers + CPAs: dropped the "assisted by lawyers and accountants for du
 
 ---
 
+## Reply snippet — LEAD-YES (Brokers + IBs + Lawyers + CPAs, used inbound)
+
+When a broker / IB / lawyer / CPA sends a deal that looks worth pursuing.
+
+Subject: Re: {{their_subject}}
+
+Hi {{first_name}},
+
+Thanks for sending. Looks really interesting and I'd be happy to sign the NDA today if you can send it over.
+
+Thanks so much and look forward to hearing from you.
+
+Very best,
+{{signer_first_name}}
+
+---
+
+## Reply snippet — LEAD-NO (Brokers + IBs + Lawyers + CPAs, used inbound)
+
+When a deal isn't a fit. Geography intentionally NOT mentioned (per `feedback_geography_not_in_external_broker_copy`). Industry list mirrors locked footer.
+
+Subject: Re: {{their_subject}}
+
+Hi {{first_name}},
+
+Thanks for thinking of me. This one isn't a fit on our side ({{reason}}).
+
+Keep me on your list. Happy to look at anything that meets our criteria: $5M-$50M revenue, $2M+ EBITDA, 15%+ margins. Industries: Transportation, Business Services, Industrial services (Capital light), Technology, Healthcare services.
+
+Best,
+{{signer_first_name}}
+
+---
+
 ## Template A. Day 5 follow-up (Brokers + IBs only)
 
 Subject: Re: Introduction

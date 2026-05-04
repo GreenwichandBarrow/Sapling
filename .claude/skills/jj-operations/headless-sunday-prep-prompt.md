@@ -15,7 +15,7 @@ You are running the `jj-operations` skill in **prep mode** non-interactively und
    - Identify master sheet ID per `.claude/skills/jj-operations/SKILL.md` line 87 mapping (Premium Pest = `1Y0ZjEkc2LHhBoO4QGO8Ny9MvG90NpojQn8bloKA291I`).
    - Archive previous week's Call Log tabs (hide, don't delete) per Step 1 of call_prep section.
    - Create 5 new Call Log tabs for the upcoming Mon-Fri using format `Call Log M.DD.YY` (month no leading zero, day with leading zero, e.g. `Call Log 5.01.26`).
-   - Copy 23 columns (A-W) from Full Target List rows that match pool artifact selection. Every row written must have Col K (Owner Name) populated.
+   - Copy 23 columns (A-W) from Full Target List rows that match pool artifact selection. **Drop rows where Col K (Owner Name) is blank** from this week's pool (Apollo enrichment failures). If remaining pool drops below 100 rows after dropping blanks, STOP per Failure handling. Tier 1 only for Sunday-prep — do not mix in Tier 2 generic-gatekeeper rows even though SKILL.md lines 50-62 allow them for pure cold calls.
 4. **Cross-reference Do Not Call** per SKILL.md Step 2 — drop any company on DNC.
 5. **Cross-reference skip flags** — drop rows where Col U (1st Call Status) = "PE-OWNED - SKIP" or any other skip flag.
 6. **Verify pool→tabs coverage** — every pool row appears on exactly one Mon-Fri tab; no drift between enriched-pool and called-rows.
@@ -40,7 +40,8 @@ You are running the `jj-operations` skill in **prep mode** non-interactively und
 
 - **Pool artifact missing** → write `JJ-OPERATIONS STOP: pool artifact missing at brain/context/jj-week-pool-{date}.md` to stdout and exit normally. The wrapper-side validator (`scripts/validate_jj_operations_integrity.py`) will detect missing tabs and emit `VALIDATOR FAILED` to Slack.
 - **Sheet write fails** → retry once, then STOP and exit normally. Validator catches missing tabs.
-- **Col K blank for any pool row** → STOP — pool was selected but enrichment incomplete; do NOT create tabs with blank-owner rows. Validator catches this case (rows with Company set but Owner blank).
+- **Col K blank for some pool rows** → drop the blank-owner rows (Apollo no-match) and proceed with the remaining Tier 1 pool. STOP only if remaining pool drops below 100 rows after blanks dropped. Validator accepts blank-owner-dropped pools as long as final tab count meets the floor.
+- **Col K blank for ALL pool rows** → STOP — pool was selected but enrichment fully failed; do NOT create tabs. Validator catches this case (rows with Company set but Owner blank).
 
 ## Why this prompt exists
 

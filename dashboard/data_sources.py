@@ -796,6 +796,10 @@ class SkillHealth:
     last_run: SkillRun | None
     recent_runs: list[SkillRun] = field(default_factory=list)
     intervals: list[dict] = field(default_factory=list)  # raw StartCalendarInterval entries for weekly-flow grid
+    # Per-iso-weekday status (1=Mon..7=Sun) for past days + today in the current
+    # Sun-Sat week. Lets the weekly-flow grid keep "fired" / "missed" indicators
+    # visible all week instead of only highlighting today's column.
+    week_status_by_day: dict[int, str] = field(default_factory=dict)
 
 
 @dataclass

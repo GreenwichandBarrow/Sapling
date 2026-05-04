@@ -52,14 +52,80 @@ def _fetch_range(sheet_id: str, range_: str) -> list[list[str]]:
 
 
 def _mon_fri_tab_names(anchor: date | None = None) -> list[str]:
-    """Return the 5 Call Log tab names for the Mon–Fri of `anchor`'s week."""
+    """Return the 5 Call Log tab names for the relevant Mon–Fri week.
+
+    Anchoring rule:
+      - Mon–Fri: this week's Mon-Fri (the week the anchor falls in).
+      - Saturday: the just-completed Mon-Fri (anchor.weekday() == 5).
+      - Sunday: the UPCOMING Mon-Fri (anchor.weekday() == 6). Phase 2's
+        Sunday-night prep run targets the week that starts tomorrow,
+        not the prior week. Prior to the 2026-05-04 fix this branch
+        was projecting backward, producing 27 date-anchor drift
+        failures in the 2026-05-03 launchd run.
+    """
     anchor = anchor or date.today()
-    monday = anchor - timedelta(days=anchor.weekday())
+    if anchor.weekday() == 6:  # Sunday — project forward to tomorrow's Monday
+        monday = anchor + timedelta(days=1)
+    else:  # Mon-Sat — anchor on this week's Monday
+        monday = anchor - timedelta(days=anchor.weekday())
     tabs: list[str] = []
     for i in range(5):
         d = monday + timedelta(days=i)
         tabs.append(f"Call Log {d.month}.{d.day:02d}.{str(d.year)[-2:]}")
     return tabs
+
+
+def _self_test() -> None:
+    """Exercise _mon_fri_tab_names across all weekdays. Asserts on regression.
+
+    Covers the 2026-05-03 Sunday drift bug: Sunday 5/3 must project to
+    the UPCOMING Mon-Fri (5/4-5/8), not the PRIOR week (4/27-5/1).
+    """
+    # Sunday 2026-05-03 → upcoming Mon-Fri 5/4 to 5/8 (the bug case)
+    sun = date(2026, 5, 3)
+    expected_sun = [
+        "Call Log 5.04.26",
+        "Call Log 5.05.26",
+        "Call Log 5.06.26",
+        "Call Log 5.07.26",
+        "Call Log 5.08.26",
+    ]
+    assert _mon_fri_tab_names(sun) == expected_sun, (
+        f"Sunday anchor regression: got {_mon_fri_tab_names(sun)}"
+    )
+
+    # Monday 2026-05-04 → this week's Mon-Fri 5/4 to 5/8
+    mon = date(2026, 5, 4)
+    assert _mon_fri_tab_names(mon) == expected_sun, (
+        f"Monday anchor regression: got {_mon_fri_tab_names(mon)}"
+    )
+
+    # Wednesday 2026-05-06 → still this week's Mon-Fri 5/4 to 5/8
+    wed = date(2026, 5, 6)
+    assert _mon_fri_tab_names(wed) == expected_sun, (
+        f"Wednesday anchor regression: got {_mon_fri_tab_names(wed)}"
+    )
+
+    # Saturday 2026-05-09 → the just-completed Mon-Fri 5/4 to 5/8
+    sat = date(2026, 5, 9)
+    assert _mon_fri_tab_names(sat) == expected_sun, (
+        f"Saturday anchor regression: got {_mon_fri_tab_names(sat)}"
+    )
+
+    # Year-rollover: Sunday 2026-12-27 → Mon 12/28 to Fri 1/1/2027
+    sun_dec = date(2026, 12, 27)
+    expected_dec = [
+        "Call Log 12.28.26",
+        "Call Log 12.29.26",
+        "Call Log 12.30.26",
+        "Call Log 12.31.26",
+        "Call Log 1.01.27",
+    ]
+    assert _mon_fri_tab_names(sun_dec) == expected_dec, (
+        f"Year-rollover regression: got {_mon_fri_tab_names(sun_dec)}"
+    )
+
+    print("PASS: _mon_fri_tab_names self-test (5 cases)")
 
 
 def _load_pool_artifact(path: Path) -> set[int]:
@@ -147,6 +213,12 @@ def _run_check(sheet_id: str, pool_path: Path) -> tuple[bool, list[str]]:
 
 
 def main() -> int:
+    # Self-test mode: exercises _mon_fri_tab_names anchoring without needing
+    # sheet/pool args. Used to verify the 2026-05-03 Sunday drift fix.
+    if len(sys.argv) == 2 and sys.argv[1] == "--self-test":
+        _self_test()
+        return 0
+
     if len(sys.argv) != 3:
         print(
             "usage: enrichment_integrity_check.py <sheet_id> <pool_artifact_path>",

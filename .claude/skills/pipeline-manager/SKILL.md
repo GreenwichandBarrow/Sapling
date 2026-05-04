@@ -869,7 +869,7 @@ From: {Intermediary Name} ({Firm Name})
   Screen against buy box?
   - Yes → fast-track to deal-evaluation (intermediary buy-box screen)
   - Pass → draft polite decline to intermediary
-  - Need more info → draft reply requesting key financials
+  - Move to owner call → request management call (skips ad-hoc info-gathering)
   - Save for later → keep in inbox, revisit Friday
 ```
 

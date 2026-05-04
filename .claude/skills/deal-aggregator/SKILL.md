@@ -538,7 +538,7 @@ Per `feedback_mutating_skill_hardening_pattern.md`, every scheduled mutating ski
 - Today's artifact exists at the expected path (morning / afternoon / digest)
 - File size ≥ 200 bytes (catches empty stubs)
 - YAML frontmatter is present and well-formed, with `date:` matching the run date
-- All required section headers are present (5 daily sections / 5 digest sections)
+- All required section headers are present (6 daily sections from 2026-05-04 afternoon onward — date-gated; previously 5 / 5 digest sections)
 
 **Failure path:** Validator non-zero → wrapper overrides skill exit code → Slack alert posts to `SLACK_WEBHOOK_OPERATIONS` with "VALIDATOR FAILED" prefix. This catches the silent-success failure mode where Claude exits 0 without writing the artifact (4/27 + 4/30 morning incidents — the run emitted operator-question framings instead of executing, exited cleanly, and the absence was only noticed when the afternoon top-up flagged "morning artifact missing").
 

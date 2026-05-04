@@ -155,17 +155,16 @@ def main() -> int:
 
     if args.mode == "morning":
         artifact = os.path.join(VAULT_DIR, f"deal-aggregator-scan-{run_date.isoformat()}.md")
-        sections = DAILY_SECTIONS
     elif args.mode == "afternoon":
         artifact = os.path.join(
             VAULT_DIR, f"deal-aggregator-scan-{run_date.isoformat()}-afternoon.md"
         )
-        sections = DAILY_SECTIONS
     else:  # digest
         artifact = os.path.join(
             WEEKLY_DIR, f"{run_date.isoformat()}-deal-aggregator-digest.md"
         )
-        sections = DIGEST_SECTIONS
+
+    sections = resolve_required_sections(args.mode, run_date)
 
     failures = validate_artifact(artifact, sections, run_date)
 

@@ -1,12 +1,6 @@
 {
-  "fetched_at": "2026-05-01T20:30:03-04:00",
+  "fetched_at": "2026-05-04T08:31:51-04:00",
   "services": {
-    "slack-webhooks": {
-      "status": "ok",
-      "latency_ms": null,
-      "message": "4 webhooks configured",
-      "skip_reason": null
-    },
     "attio-mcp": {
       "status": "skip",
       "latency_ms": null,
@@ -25,6 +19,12 @@
       "message": "",
       "skip_reason": "Browser session required (no API)"
     },
+    "slack-webhooks": {
+      "status": "ok",
+      "latency_ms": null,
+      "message": "4 webhooks configured",
+      "skip_reason": null
+    },
     "superhuman": {
       "status": "skip",
       "latency_ms": null,
@@ -33,44 +33,44 @@
     },
     "launchd": {
       "status": "ok",
-      "latency_ms": 28,
+      "latency_ms": 18,
       "message": "19 jobs registered",
       "skip_reason": null
     },
     "vault": {
       "status": "ok",
-      "latency_ms": 33,
-      "message": "637 markdown files",
+      "latency_ms": 30,
+      "message": "679 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "ok",
-      "latency_ms": 101,
-      "message": "attio-mcp=22 superhuman=11",
+      "latency_ms": 75,
+      "message": "attio-mcp=8 superhuman=4",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 156,
+      "latency_ms": 172,
       "message": "authenticated",
+      "skip_reason": null
+    },
+    "granola": {
+      "status": "ok",
+      "latency_ms": 356,
+      "message": "HTTP 405",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 221,
+      "latency_ms": 399,
       "message": "200 OK",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 412,
+      "latency_ms": 489,
       "message": "gh authenticated",
-      "skip_reason": null
-    },
-    "granola": {
-      "status": "ok",
-      "latency_ms": 378,
-      "message": "HTTP 405",
       "skip_reason": null
     }
   }

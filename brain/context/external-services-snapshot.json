@@ -1,12 +1,6 @@
 {
-  "fetched_at": "2026-05-04T20:30:02-04:00",
+  "fetched_at": "2026-05-05T09:00:02-04:00",
   "services": {
-    "linkt": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "Browser session required (no API)"
-    },
     "claude-api": {
       "status": "skip",
       "latency_ms": null,
@@ -31,45 +25,51 @@
       "message": "",
       "skip_reason": "OAuth refresh required (manual)"
     },
+    "linkt": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "Browser session required (no API)"
+    },
     "launchd": {
       "status": "ok",
-      "latency_ms": 13,
+      "latency_ms": 9,
       "message": "19 jobs registered",
       "skip_reason": null
     },
     "vault": {
       "status": "ok",
-      "latency_ms": 18,
-      "message": "711 markdown files",
+      "latency_ms": 26,
+      "message": "722 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "ok",
-      "latency_ms": 67,
-      "message": "attio-mcp=10 superhuman=5",
-      "skip_reason": null
-    },
-    "gog": {
-      "status": "ok",
-      "latency_ms": 157,
-      "message": "authenticated",
+      "latency_ms": 109,
+      "message": "attio-mcp=18 superhuman=9",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 165,
+      "latency_ms": 158,
       "message": "HTTP 405",
+      "skip_reason": null
+    },
+    "gog": {
+      "status": "ok",
+      "latency_ms": 176,
+      "message": "authenticated",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 194,
+      "latency_ms": 230,
       "message": "200 OK",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 423,
+      "latency_ms": 614,
       "message": "gh authenticated",
       "skip_reason": null
     }

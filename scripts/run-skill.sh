@@ -127,6 +127,17 @@ case "$SKILL_NAME:$SKILL_ARGS" in
     HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/deal-aggregator/headless-afternoon-prompt.md"
     POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_deal_aggregator_integrity.py\" --mode afternoon --date \$TODAY}"
     ;;
+  "conference-discovery:sunday")
+    # Sunday 21:00 ET weekly conference discovery + auto-archival cycle.
+    # Hardened 2026-05-04 after the 2026-05-03 incident where the archival
+    # subagent wiped ~70 rows from the Pipeline tab and exited 0 silently.
+    # Headless prompt mandates pre-run snapshot to brain/context/rollback-
+    # snapshots/conference-pipeline-pre-run-{TODAY}.json BEFORE any Pipeline
+    # mutation. Validator compares post-run live row count against snapshot
+    # row_count; rejects if delta exceeds MAX_ARCHIVAL_DELTA (15).
+    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/conference-discovery/headless-sunday-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_conference_discovery_integrity.py\" --date \$TODAY}"
+    ;;
   "deal-aggregator:--digest-mode")
     # Friday 6am weekly source-productivity digest (Phase 2). Reads 7 days of
     # daily scorecards + 30 days of fingerprints + 7 days of email-scan-results

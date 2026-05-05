@@ -16,6 +16,9 @@ tags:
 ## Quick Facts
 - Contact from Fireflies calls
 
+## Pending Discussion Topics (surface in next meeting brief)
+- **Capacity letter request** (added 2026-05-04) — Kay needs a capacity letter from Jeff to support broker-channel positioning. Surface in next meeting prep brief. No need to email about it beforehand. Once committed/declined, remove from this list.
+
 
 ## Communication Style
 - **Tone:** TBD

@@ -63,6 +63,8 @@ All email templates and the buy-box snippet live in ONE Google Sheet:
 
 **Read from the sheet at every run.** Kay edits templates directly in the sheet; the skill must pick up her edits immediately. Never cache or hard-code template content.
 
+**Doctrine enforcement (per `feedback_no_intermediary_drafts_outside_template`):** This sheet is the SOLE source of body copy for any intermediary-bound conference email. If a needed scenario isn't covered by the 6 existing templates, propose a new template row in the Sheet (suggestion mode if available, otherwise as a clearly-marked PROPOSED row) for Kay's review/approval. NEVER draft ad-hoc body copy in conversation, never improvise body content, never bypass the sheet. If sheet read fails or template is missing, surface a warning to Kay and skip the draft — do not fall back to ad-hoc generation.
+
 **Buy-box paragraph is Kay-authored.** The `buy_box_intermediary` snippet in the Snippets tab was written by Kay (2026-04-23) and uses first-person voice ("I am looking to acquire..."). Do NOT regenerate or "improve" this paragraph without Kay's explicit authorization. It encodes G&B's positioning deliberately, including the "customized terms" phrase that handles seller transition flexibility without quoting the anxiety back at them.
 
 ```bash

@@ -27,6 +27,9 @@ tags:
 - Attended HG site visit (Oct 10, 2025)
 - Advised against carve-outs/book-of-business acquisitions
 
+## Pending Discussion Topics (surface in next meeting brief)
+- **Capacity letter request** (added 2026-05-04) — Kay needs a capacity letter from Guillermo to support broker-channel positioning. Surface in next bi-weekly call prep brief. No need to email about it beforehand. Once committed/declined, remove from this list.
+
 ## Communication Style
 - **Tone:** Strategic, direct, supportive
 - **Format:** Open discussion, Kay shares strategic thinking freely

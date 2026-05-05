@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-05T12:00:05-04:00",
+  "fetched_at": "2026-05-05T12:30:05-04:00",
   "services": {
     "linkt": {
       "status": "skip",
@@ -33,43 +33,43 @@
     },
     "launchd": {
       "status": "ok",
-      "latency_ms": 10,
+      "latency_ms": 9,
       "message": "19 jobs registered",
       "skip_reason": null
     },
     "vault": {
       "status": "ok",
-      "latency_ms": 17,
+      "latency_ms": 15,
       "message": "725 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "ok",
-      "latency_ms": 56,
+      "latency_ms": 72,
       "message": "attio-mcp=12 superhuman=6",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 162,
+      "latency_ms": 139,
       "message": "authenticated",
-      "skip_reason": null
-    },
-    "granola": {
-      "status": "ok",
-      "latency_ms": 164,
-      "message": "HTTP 405",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 164,
+      "latency_ms": 170,
       "message": "200 OK",
+      "skip_reason": null
+    },
+    "granola": {
+      "status": "ok",
+      "latency_ms": 223,
+      "message": "HTTP 405",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 479,
+      "latency_ms": 677,
       "message": "gh authenticated",
       "skip_reason": null
     }

@@ -12,13 +12,15 @@ projects: []
 tags: ["date/2026-05-04", "output", "output/research", "status/published", "topic/intermediary-outreach", "topic/broker-channel", "topic/template-locked"]
 ---
 
-# G&B Broker-Channel Outreach Templates. Locked 2026-05-04 (FINAL)
+# G&B Broker-Channel Outreach Templates. Locked 2026-05-04 (FINAL — superseded 2026-05-04 evening)
 
-LOCKED versions reflecting all rounds of G&B operator iteration. Two audience templates plus 3-touch follow-up cadence for the deal-flow audience.
+> **2026-05-04 evening update:** Drive doc evolved beyond this snapshot. Current canonical state has 9 templates (this snapshot reflects the 4 LOCKED at template-lock midday). Cadence reduced from 3-touch to 2-touch (Day 12 dropped). See `feedback_no_intermediary_drafts_outside_template` and `session-decisions-2026-05-04.md`. Per CLAUDE.md source-of-truth rules: Drive doc `1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4` is canonical; this file is a creation-time snapshot only. **Current Drive state (as of 2026-05-04 evening):** Day 0 INTRODUCTION (Brokers+IBs), LEAD-YES, LEAD-NO, INTRODUCTION (Lawyers+CPAs), CIM RECEIVED, THANK YOU, DAY 5 FOLLOW-UP, DECLINE POST-REVIEW, NDA SIGNED. Cadence: Brokers+IBs = 2-touch (Day 0 + Day 5), Lawyers+CPAs = ONE-AND-DONE.
 
-Audience map:
-- Deal-flow source layer (Brokers + IBs): 3-touch cadence (Day 0 + Day 5 + Day 12)
-- Referral-relationship layer (Lawyers + CPAs): single education-tone intro, no follow-up cadence
+LOCKED versions reflecting all rounds of G&B operator iteration. Two audience templates plus follow-up cadence for the deal-flow audience.
+
+Audience map (as updated 2026-05-04 evening):
+- Deal-flow source layer (Brokers + IBs): 2-touch cadence (Day 0 + Day 5). Day 12 soft-close DROPPED.
+- Referral-relationship layer (Lawyers + CPAs): single education-tone intro, no follow-up cadence.
 
 Drive doc home: G&B Broker Email Templates `1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4`. Original canonical Templates doc `1_cNsAPCopDAfReoDXbB4d3hZW8TcYUqJ3XKYY_er7i4` superseded for V1 / V2 / V5 / V6.
 

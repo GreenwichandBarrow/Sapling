@@ -2,10 +2,10 @@
 schema_version: 1.2.0
 date: 2026-05-04
 type: validation
-status: review
+status: executed
 skill_origin: tracker-manager
-kay_approved: null
-kay_approval_date: null
+kay_approved: true
+kay_approval_date: 2026-05-04
 people: []
 companies: []
 projects: []
@@ -240,3 +240,43 @@ Verified via web search + IBBA cross-reference (sheet has no URLs but firms are 
 **Pillai Capital and Touchstone Advisors are both classified as Brokers but explicitly self-ID as M&A advisory firms / investment banks on their hero text.** Pillai Capital is an actual FINRA/SIPC member (via GT Securities) — it is a registered investment bank, not a Main Street broker. Touchstone Advisors says "leading lower middle market M&A advisory firm in the Northeast" with broker-dealer through Ceiba Financial. These are likely originally added because they are IBBA members (broker certification path), but their hero copy positions them as M&A advisors targeting larger deals. The classification rule (homepage self-ID) says move to IB; the operator preference (broker-channel reliability) says keep. **CEO call.**
 
 Adjacent finding: there is a real pattern across Brokers tab of firms that hold IBBA designations (CBI, MCBI) AND self-ID as "M&A advisor" on their website (Touchstone, Pillai, GillAgency, IBG Business, Inbar Group, NorthBridge, Evergreen). This is the common shape of a serious lower-middle-market M&A practitioner — they belong to IBBA for credentialing and network but market themselves at the upper end. **A future calibration: G&B may want a dedicated buy-box decision on whether IBBA-credentialed M&A-advisory firms belong on Brokers tab or Investment Bankers tab. Currently the rule is "homepage self-ID wins" but in practice these firms straddle both.**
+
+---
+
+## Execution Log — Final Moves
+
+**Executed:** 2026-05-04 21:45 ET via [[outputs/2026-05-04-intermediary-list-self-id-verification|this verification artifact]]
+**Snapshot:** `brain/context/rollback-snapshots/intermediary-target-list-final-moves-2026-05-04.json`
+**Method:** Per-firm `gog sheets update --values-json` append to next-empty destination row, then `gog sheets clear` on source range. All writes verified via re-read.
+
+| # | Firm | From (cleared) | To (appended) | Schema Notes |
+|---|---|---|---|---|
+| 1 | Woodbridge International (covers "Mariner / Woodbridge International" — single row, LinkedIn URL `marineribnk` confirms Mariner-IBnk parent) | Investment Bankers row 15 | Brokers row 74 | 16-col → 16-col, direct copy |
+| 2 | MergersCorp M&A International | Brokers row 35 | Investment Bankers row 16 | 16-col → 16-col, direct copy |
+| 3 | MarshBerry | Association Heads row 36 | Investment Bankers row 17 | 17-col → 16-col; LeadContact "John Wepler" merged with Title "Chairman & CEO" into IB col F; Notes2 appended to Notes |
+| 4 | Valuation Resource Group, LLC | Brokers row 47 | Corporate Advisors row 17 | 16-col → 18-col, padded |
+| 5 | Baldridge Financial | CPAs row 4 | Corporate Advisors row 18 | 18-col → 18-col, direct copy (DealEmailPattern "None" preserved) |
+
+### Tab populated-row counts (before / after)
+
+| Tab | Before | After | Net |
+|---|---|---|---|
+| Brokers | 63 data rows (rows 2-73 minus gaps) | 62 data rows (rows 2-74 minus gaps) | net 0 firms in (Woodbridge added) and 2 out (MergersCorp + Valuation) — net **-1** populated row, +1 row in last_any |
+| Investment Bankers | 5 data rows | 6 data rows (Woodbridge cleared row 15; MergersCorp at 16; MarshBerry at 17) | **+1** |
+| Association Heads | 42 data rows | 41 data rows (MarshBerry cleared row 36) | **-1** |
+| Corporate Advisors | 5 data rows (incl. orphan-note rows 15-16) | 7 data rows (Valuation at 17, Baldridge at 18) | **+2** |
+| CPAs | 3 data rows | 2 data rows (Baldridge cleared row 4) | **-1** |
+
+### Anomalies
+
+- **Mariner = Woodbridge.** Task description listed "Mariner / Woodbridge International" as one entity. Only one row matched in IB tab (row 15: Woodbridge International, with LinkedIn URL `linkedin.com/company/marineribnk` confirming Mariner is the parent). Treated as single move. No separate Mariner row exists.
+- **MergersCorp source row had Lead Contact in Title col F.** Brokers/IB schema header says col F = "Title" but data convention across the tab puts "{Person Name}, {Title}" there (e.g. Touchstone "Lauren Altschuler, Principal"). Preserved as-is in destination — same convention on IB tab.
+- **Corp Advisors had orphan-note rows 15 & 16** (notes-only, no firm name) before this run. Did not touch — appended at row 17 to be safe. These orphans remain for future cleanup.
+- **MarshBerry source had `info@marshberry.com` in col O** (Assn Heads schema = "Notes") — preserved by prefixing destination IB Notes with the email plus the actual notes content.
+
+### Constraints honored
+
+- IBBA-credentialed firms flagged in Pass 2 (Touchstone, Pillai, GillAgency, IBG Business, Inbar Group, NorthBridge, Evergreen) STAYED on Brokers per M&A=broker rule. ✓
+- NYBB, WorldCity, Midas, Connect the Dents, Opportunify, Biz Brokerage Hub STAYED on Brokers per Pass 2 + M&A=broker rule. ✓
+- Attio: read-only (no Attio writes). ✓
+- All writes used `--values-json`. ✓

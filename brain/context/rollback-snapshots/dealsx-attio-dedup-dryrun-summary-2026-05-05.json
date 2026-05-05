@@ -1,0 +1,231 @@
+{
+  "attio_companies": 743,
+  "attio_unique_domains": 665,
+  "attio_unique_names": 617,
+  "total_scanned": 20606,
+  "total_matched": 65,
+  "overall_pct": 0.32,
+  "per_tab": {
+    "Estate Management Companies (Good Fit)": {
+      "scanned": 367,
+      "matched": 0,
+      "via_domain": 0,
+      "via_name": 0,
+      "pct": 0.0
+    },
+    "Estate Management Companies (Probable Fit)": {
+      "scanned": 5887,
+      "matched": 3,
+      "via_domain": 1,
+      "via_name": 2,
+      "pct": 0.05
+    },
+    "Vertical SaaS - Luxury (Good Fit)": {
+      "scanned": 442,
+      "matched": 5,
+      "via_domain": 2,
+      "via_name": 3,
+      "pct": 1.13
+    },
+    "Vertical SaaS - Luxury (Probable Fit)": {
+      "scanned": 2573,
+      "matched": 14,
+      "via_domain": 0,
+      "via_name": 14,
+      "pct": 0.54
+    },
+    "Specialty Insurance Brokerage (Good Fit)": {
+      "scanned": 252,
+      "matched": 4,
+      "via_domain": 4,
+      "via_name": 0,
+      "pct": 1.59
+    },
+    "Specialty Insurance Brokerage (Probable Fit)": {
+      "scanned": 2921,
+      "matched": 3,
+      "via_domain": 2,
+      "via_name": 1,
+      "pct": 0.1
+    },
+    "Specialty Commercial Equipment (Good Fit)": {
+      "scanned": 2119,
+      "matched": 0,
+      "via_domain": 0,
+      "via_name": 0,
+      "pct": 0.0
+    },
+    "Specialty Commercial Equipment (Probable Fit)": {
+      "scanned": 1393,
+      "matched": 0,
+      "via_domain": 0,
+      "via_name": 0,
+      "pct": 0.0
+    },
+    "Specialty Storage & Handling (Good Fit)": {
+      "scanned": 959,
+      "matched": 34,
+      "via_domain": 18,
+      "via_name": 16,
+      "pct": 3.55
+    },
+    "Specialty Storage & Handling (Probable Fit)": {
+      "scanned": 1107,
+      "matched": 2,
+      "via_domain": 2,
+      "via_name": 0,
+      "pct": 0.18
+    },
+    "Specialty Pest & Environmental Service (Good Fit)": {
+      "scanned": 236,
+      "matched": 0,
+      "via_domain": 0,
+      "via_name": 0,
+      "pct": 0.0
+    },
+    "Specialty Pest&Environmental Service(Probable Fit)": {
+      "scanned": 2350,
+      "matched": 0,
+      "via_domain": 0,
+      "via_name": 0,
+      "pct": 0.0
+    }
+  },
+  "top_examples": [
+    {
+      "tab": "Estate Management Companies (Probable Fit)",
+      "row": 906,
+      "company": "Triumph Property Management",
+      "website": "triumphpropertymanagement.com",
+      "matched_via": "name",
+      "attio_record_id": "2f4ed461-60ff-4732-80b2-dc0a981683fa",
+      "attio_name": "Triumph Property Management"
+    },
+    {
+      "tab": "Estate Management Companies (Probable Fit)",
+      "row": 3257,
+      "company": "Axxerion",
+      "website": "spacewell.us",
+      "matched_via": "name",
+      "attio_record_id": "2053eb0f-0954-4352-ba80-a4c6e4112ecd",
+      "attio_name": "Axxerion Inc."
+    },
+    {
+      "tab": "Estate Management Companies (Probable Fit)",
+      "row": 4770,
+      "company": "Howard Insurance",
+      "website": "howard-insurance.com",
+      "matched_via": "domain",
+      "attio_record_id": "d455b61b-cdde-4ca2-a422-68bd7a4b4857",
+      "attio_name": "Howard Insurance"
+    },
+    {
+      "tab": "Vertical SaaS - Luxury (Good Fit)",
+      "row": 141,
+      "company": "Domus Analytics",
+      "website": "https://anecom.com",
+      "matched_via": "domain",
+      "attio_record_id": "2d4d09c9-3faa-4f14-ad1e-81afad2d1e0a",
+      "attio_name": "ANECOM Inc"
+    },
+    {
+      "tab": "Vertical SaaS - Luxury (Good Fit)",
+      "row": 145,
+      "company": "Anecom",
+      "website": "https://diamondtrackonline.com",
+      "matched_via": "name",
+      "attio_record_id": "2d4d09c9-3faa-4f14-ad1e-81afad2d1e0a",
+      "attio_name": "ANECOM Inc"
+    },
+    {
+      "tab": "Vertical SaaS - Luxury (Good Fit)",
+      "row": 158,
+      "company": "Estateably",
+      "website": "www.orderport.net",
+      "matched_via": "name",
+      "attio_record_id": "afc7f01c-5430-4e6d-b9ef-89486d7e18ef",
+      "attio_name": "Estateably"
+    },
+    {
+      "tab": "Vertical SaaS - Luxury (Good Fit)",
+      "row": 198,
+      "company": "Reliance",
+      "website": "artcloud.com",
+      "matched_via": "domain",
+      "attio_record_id": "ad85f153-e783-4b24-9234-5baa5eb20161",
+      "attio_name": "ArtCloud"
+    },
+    {
+      "tab": "Vertical SaaS - Luxury (Good Fit)",
+      "row": 427,
+      "company": "ArtCloud",
+      "website": "",
+      "matched_via": "name",
+      "attio_record_id": "ad85f153-e783-4b24-9234-5baa5eb20161",
+      "attio_name": "ArtCloud"
+    },
+    {
+      "tab": "Vertical SaaS - Luxury (Probable Fit)",
+      "row": 349,
+      "company": "Estateexec",
+      "website": "https://estateexec.com",
+      "matched_via": "name",
+      "attio_record_id": "1383f48a-7632-462c-aa11-973852b2461e",
+      "attio_name": "EstateExec, LLC"
+    },
+    {
+      "tab": "Vertical SaaS - Luxury (Probable Fit)",
+      "row": 561,
+      "company": "Encorestate Plans",
+      "website": "https://encorestateplans.com",
+      "matched_via": "name",
+      "attio_record_id": "26ea2076-a874-4bc2-9b52-f9dec7dfac4c",
+      "attio_name": "EncorEstate Plans"
+    },
+    {
+      "tab": "Vertical SaaS - Luxury (Probable Fit)",
+      "row": 681,
+      "company": "Interactive Legal",
+      "website": "https://interactivelegal.com",
+      "matched_via": "name",
+      "attio_record_id": "8a24b673-cc3a-4441-9640-d4bc5dcb342d",
+      "attio_name": "InterActive Legal"
+    },
+    {
+      "tab": "Vertical SaaS - Luxury (Probable Fit)",
+      "row": 753,
+      "company": "Interactive Legal",
+      "website": "https://interactivelegal.com",
+      "matched_via": "name",
+      "attio_record_id": "8a24b673-cc3a-4441-9640-d4bc5dcb342d",
+      "attio_name": "InterActive Legal"
+    },
+    {
+      "tab": "Vertical SaaS - Luxury (Probable Fit)",
+      "row": 1298,
+      "company": "Estateably",
+      "website": "www.estateably.com",
+      "matched_via": "name",
+      "attio_record_id": "afc7f01c-5430-4e6d-b9ef-89486d7e18ef",
+      "attio_name": "Estateably"
+    },
+    {
+      "tab": "Vertical SaaS - Luxury (Probable Fit)",
+      "row": 1310,
+      "company": "Estateably",
+      "website": "www.estateably.com",
+      "matched_via": "name",
+      "attio_record_id": "afc7f01c-5430-4e6d-b9ef-89486d7e18ef",
+      "attio_name": "Estateably"
+    },
+    {
+      "tab": "Vertical SaaS - Luxury (Probable Fit)",
+      "row": 1313,
+      "company": "Estateably",
+      "website": "www.estateably.com",
+      "matched_via": "name",
+      "attio_record_id": "afc7f01c-5430-4e6d-b9ef-89486d7e18ef",
+      "attio_name": "Estateably"
+    }
+  ]
+}

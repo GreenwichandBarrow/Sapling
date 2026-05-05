@@ -114,3 +114,108 @@ tags: ["date/2026-05-04", "context", "topic/session-decisions", "topic/broker-ch
 - Broker one-pager reviewed-and-approved status: Kay reviews tomorrow AM before pairing with first 10 broker emails.
 - Apollo enrichment overnight job result + Sheet state delta — surfaces in tomorrow's morning briefing.
 - Website + one-pager strategic alignment (Version A/B/C) — Kay's call pending.
+
+---
+
+# Website Revamp Session (PM-Evening) — Day 1 of 5-Day Squarespace Rebuild
+
+Kay engaged Claude to rebuild greenwichandbarrow.com after a 5-month contractor failed to deliver. Site needs to be live by Fri May 8 to support the broker outreach push starting today. Three-phase pipeline executed: `/socrates` framing → `/plan` 5-day execution plan → Day 1 mockup with 3 iteration corrections.
+
+## Decisions
+
+### /socrates framing convergence
+- **APPROVE** Audience: intermediary + owner-seller, credibility-after-outreach (NOT LP, NOT sourcing).
+- **APPROVE** Structural anchor: full Shoreham Partners model. Founder NOT on the site at all (no name, no photo, no LinkedIn link, no About-Kay section).
+- **APPROVE** Vehicle structure: CCV (Committed Capital Vehicle). Permanent-capital language defensible. Supersedes the existing memory `feedback_kay_ceo_deal_1_not_allocator` framing of Deal 1 as "search-fund traditional."
+- **APPROVE** Thesis (Hoffman-register, niche-agnostic): "Critical service businesses that engage their community, deliver exceptional customer service, and earn their customers' trust."
+- **APPROVE** Build path: HTML/CSS mockup off-platform, iterate via screenshot review, translate to Squarespace at end of week.
+- **APPROVE** Squarespace stays as the platform — no migration to Webflow / custom.
+- **APPROVE** Iteration cadence: coded prototype + screenshot-feedback cycle, 1-2 hr/day Kay review window in parallel with broker outreach.
+- **APPROVE** Save discussion brief to `brain/outputs/2026-05-04-discussion-website-revamp.md` for clean `/plan` handoff.
+- **REJECT** Kay-led / hybrid anchor variants. Kay clarified: "I want to not be on it." Pure Shoreham model locked.
+- **REJECT** Salvage of contractor's WIP. Kay confirmed contractor delivered nothing visible; engagement terminated, no payment.
+- **REJECT** Single-page modular scroll structure (initial framing error). Shoreham is multipage. Restructured to 5 pages.
+
+### Day 1 mockup iterations (post-/plan)
+- **REJECT** Bagel-shop and pest-mgmt-prom anecdotes appearing as public site copy. Kay: *"I gave you those examples for your own context, not to be quotes on the website."* Private examples shared with Claude as conviction-builders are NOT public content. Same principle applied to the Hoffman pull quote — internal content fuel only, not public attribution.
+- **REJECT** "We"-centric copy ("we hold for the long run / we don't run auctions / built for owners not for exits"). Kay: *"It sounds like private equity."* Rewrite voice as observational about owners and businesses, not promises about the firm.
+- **APPROVE** Grayscale + subtle background-color imagery direction. Reference: Shoreham's "What we value" page with circular b&w pillar images on a dark teal band.
+- **APPROVE** Shoreham-style 3-circle pillar layout for What We Value (Community / Service / Trust on dark band).
+- **APPROVE** Distinct images per page, no repeats. Carpenter image stays on About per Kay's preference.
+- **APPROVE** Visual aesthetic direction: minimalist, Cormorant Garamond serif headlines, Inter sans body, cream palette.
+- **APPROVE** Legibility upgrade: body weight 400+, full-ink contrast, larger body sizes (Cormorant reserved for hero/headlines only).
+
+## Actions Taken
+
+- **CREATED** `brain/outputs/2026-05-04-discussion-website-revamp.md` — `/socrates` convergence brief, schema 1.2.0, captures audience/structure/anchor/thesis/build-path decisions for `/plan` handoff.
+- **CREATED** `~/.claude/plans/please-share-the-plan-iridescent-bee.md` — 5-day execution plan (Mon→Fri), daily milestones, risk mitigations, verification checklist.
+- **CREATED** `scratch/website-mockup-2026-05/` ephemeral project: `index.html`, `about.html`, `what-we-value.html`, `perspective.html`, `contact.html`, `assets/site.css`, `README.md`, plus `insights/`, `assets/images/`, `screenshots/day-1/` subdirs.
+- **CREATED** `/tmp/g-b-screenshot/shoot.js` — puppeteer-core screenshot wrapper for full-page + viewport captures, reusable for Tue-Thu iterations.
+- **DOWNLOADED** 14 Unsplash images into `scratch/website-mockup-2026-05/assets/images/` (8 craftsman/workshop set + 6 main-street/storefront set).
+- **UPDATED** all 5 HTML pages through ~5 iteration passes: skeleton → multipage restructure → content rewrite (anecdotes stripped, Hoffman quote dropped, we-centric claims removed) → grayscale image filter + distinct per-page imagery + Shoreham-style 3-circle pillar layout.
+- **UPDATED** `assets/site.css` — bolder body weights, higher contrast, grayscale image filter, dark-section variant, image-circle helper for Shoreham-style layout.
+
+## Deferred
+
+- **DEFER** Day 2 (Tue 2026-05-05) scope: pillar body copy refinement, section-order final lock, photography upgrade decision, wordmark integration from G&B BRAND KIT Drive folder (`1XFwML_hJViZi9uqhRGn1i2311uC6My3-`).
+- **DEFER** Hoffman transcript essay extraction to Wed 2026-05-06. Source: `brain/library/internal/pest-management/2026-04-29-hoffman-exterminating-presentation.md`. Material is internal content fuel; essays paraphrase observations, NOT quote Hoffman directly.
+- **DEFER** Squarespace credentials handoff to Thu 2026-05-07 EOD via `/tmp` file method. Required for Friday translation.
+- **DEFER** Memory update for `feedback_kay_ceo_deal_1_not_allocator.md` (currently labels Deal 1 "search-fund traditional"; CCV correction logged for /calibrate pass).
+
+## Open Loops
+
+- Kay went to bed before reacting to latest iteration. **First-thing-Tuesday checks:** Does the PE-vibe finally drop? Do the Shoreham-style circles match the reference she sent? Should the succession image (older + younger ceramicist) come back somewhere?
+- Day 2 build cannot start until Kay confirms Day 1 direction holds. If she still rejects on tone or vibe, scope shifts from "fill pillar bodies" to "rewrite again."
+- Local `python -m http.server` on port 8765 left running; should be terminated and restarted Tuesday morning for clean state.
+- Mockup files at `scratch/website-mockup-2026-05/` survive the night; project is ephemeral but durable until Friday Squarespace cutover.
+- Website + one-pager strategic alignment (the Version A/B/C question from earlier broker-channel session) intersects this work — both copy threads need to stay coherent. Pair on Tuesday.
+
+---
+
+# iMac Evening Session — Conference Pipeline Recovery + Universal Launchd Hardening
+
+Triggered by Kay catching that the Conference Pipeline looked empty. Root cause: May 3 launchd run wiped the sheet (~70 rows). Recovery → conference-discovery hardening → broader doctrine update → 3 snapshot refreshers hardened.
+
+## Decisions
+
+- **APPROVE** Restore Conference Pipeline from May 2, 11:54 AM version-history snapshot. Kay handled the UI restore; ~70 rows recovered.
+- **APPROVE** Re-run conference-discovery in recovery mode immediately (vs. waiting until next Sunday's scheduled fire). Cost: one fresh discovery run; benefit: not a week behind on registrations.
+- **APPROVE** Append all 13 net-new conference candidates to Pipeline tab (rows 80-92). Intentionally NOT auto-sorted into week-of sections — pure date-sort would scramble the hierarchical week-of headers in col A. Kay marks Decision (col C) on the sheet itself.
+- **APPROVE** Add conference-discovery to hardened skill list (POST_RUN_CHECK validator + headless-sunday-prompt.md mandating pre-run snapshot).
+- **APPROVE** **Doctrine update — universal POST_RUN_CHECK:** every launchd-scheduled skill needs a validator, not just mutating ones. Read-only skills get lighter validators (artifact-landed checks); no exemptions. Driven by the May 3 dashboard-green-lying-about-the-wipe finding.
+- **APPROVE** Harden 3 snapshot refreshers next (attio-snapshot-refresh, jj-snapshot-refresh, apollo-credits-refresh). They feed dashboard tiles directly — silent failure = stale dashboard = bad decisions.
+
+## Actions Taken
+
+- **RESTORED** Conference Pipeline tab from May 2, 11:54 AM version-history snapshot.
+- **CREATED** `scripts/validate_conference_discovery_integrity.py` — fails on missing pre-run snapshot or row delta > 15.
+- **CREATED** `.claude/skills/conference-discovery/headless-sunday-prompt.md` — mandates pre-run snapshot at `brain/context/rollback-snapshots/conference-pipeline-pre-run-{TODAY}.json`; bans clear-then-rewrite; caps single-run archival at 15 rows.
+- **UPDATED** `scripts/run-skill.sh` — added `conference-discovery:sunday` route in case-statement.
+- **UPDATED** `~/Library/LaunchAgents/com.greenwich-barrow.conference-discovery.plist` — added POST_RUN_CHECK env var; reloaded; last-exit-status 0.
+- **UPDATED** `CLAUDE.md` — universal POST_RUN_CHECK doctrine entry (2026-05-04). Added conference-discovery to hardened-skill list.
+- **APPENDED** 13 net-new conference candidates to Pipeline (rows A80:O92, 195 cells).
+- **SLACKED** AI-Operations channel: "Conference Pipeline recovered + 13 net-new conferences added" with link.
+- **CREATED** `scripts/validate_attio_snapshot_integrity.py`, `scripts/validate_jj_snapshot_integrity.py`, `scripts/validate_apollo_credits_integrity.py` — each chmod +x, each verified exit 0 against current snapshot files.
+- **UPDATED** `scripts/refresh-attio-snapshot.sh`, `scripts/refresh-jj-snapshot.sh`, `scripts/refresh-apollo-credits.sh` — added inline POST_RUN_CHECK call + exit-code propagation (`set -uo pipefail`, validator exit takes precedence over refresh exit if non-zero).
+- **VERIFIED** all 3 snapshot-refresher plists `launchctl unload`+`load` clean; `launchctl list` shows last-exit-status 0 for all 3.
+- **CREATED** `memory/feedback_no_clear_rewrite_populated_sheets.md` (or verified existing) — never `gog sheets clear` + rewrite on populated sheets.
+- **CREATED** `memory/feedback_dashboard_green_can_lie.md` — exit 0 ≠ success; skill can self-detect destructive failure and stop gracefully while dashboard tile goes green.
+- **UPDATED** `MEMORY.md` index with both new memory entries.
+- **UPDATED** `.claude/skills/conference-discovery/SKILL.md` — added "Mandatory validator" section; corrected stale 15-column layout description to match live sheet header (`Week Of | Date | Decision | Event Name | Location | Travel | Niche | Registration Cost | Registration Paid | Reg Deadline | Est. Attendees | Attendee List | Website | Status | Agent Rec`); incident reference for May 3 wipe.
+- **UPDATED** `.claude/settings.local.json` — added `Bash(gog sheets clear:*)` to permissions.deny so any future subagent attempting the wipe pattern gets blocked at the harness layer (belt-and-suspenders to the validator).
+
+## Deferred
+
+- **DEFER** hardening of 5-6 remaining unhardened launchd skills under the new universal doctrine: email-intelligence, calibration-workflow, external-services-probe, weekly-archive-export, weekly-snapshot, health-monitor. Recommended priority order documented in subagent audit (`logs/scheduled/` cross-reference). Batch into one follow-up session — trigger: next 30-60 min of available infra time. **Not urgent**; the 3 snapshot refreshers were the highest-leverage gap because they feed the dashboard.
+
+## Open Loops
+
+- 13 conference candidates appended at bottom of Pipeline (rows 80-92), unsorted into week-of sections. Kay marks Decision (col C). After her decisions, optional follow-up: re-insert into the correct week-of sections via individual row inserts (NOT pure date-sort).
+- Sunday May 10 conference-discovery launchd fire — first run with the new POST_RUN_CHECK validator + headless-sunday-prompt + pre-run snapshot pattern. Watch `logs/scheduled/conference-discovery-2026-05-10-2100.log` for the validator-output line to confirm the new infrastructure is firing as designed.
+- Dashboard C-Suite & Skills weekly-flow tile for the Sunday May 3 conference-discovery cell — currently still showing green. Will be replaced organically when the Sunday May 10 fire completes (per the persistence rule, past-day fired tiles persist all week, reset Sunday). No action needed.
+
+## Key Decision Traces (non-obvious calls worth preserving)
+
+1. **Don't auto-sort the 13 new rows by date.** Pure col-B date sort would scramble the hierarchical week-of headers in col A (single-cell rows like `["5/4"]` interspersed with data rows that have empty col A). Skill SKILL.md sort-validation expects flat structure; reality is hierarchical. Logged as an open-loop manual reconciliation rather than auto-resolved. *Reason future agents might be tempted to "just sort it" and break the structure.*
+
+2. **Broaden POST_RUN_CHECK from mutating-only to all-launchd-skills (Kay's call, 2026-05-04).** Trigger reasoning: read-only skills can ALSO have silent failure modes that mislead the dashboard. Conference-discovery exited 0 because it gracefully self-detected a wipe and stopped — wrapper saw success, dashboard went green, the wipe sat undetected until Kay caught it visually. Read-only skills aren't immune to this class of bug; their silent-zero is just less visible. Universal-validator doctrine closes the gap.

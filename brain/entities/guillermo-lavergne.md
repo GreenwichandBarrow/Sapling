@@ -7,6 +7,8 @@ company: "[[entities/ashford-ventures]]"
 role: Managing Partner
 email: glavergne@ashfordventures.com
 phone: 787-342-3947
+attio_id: 2b613b57-537c-4cef-8fc5-e053b51d7a98
+attio_synced_at: 2026-05-06T10:34:30Z
 tags:
   - date/2026-01-15
   - entity

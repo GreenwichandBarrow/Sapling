@@ -1,17 +1,11 @@
 {
-  "fetched_at": "2026-05-05T20:30:03-04:00",
+  "fetched_at": "2026-05-06T08:00:54-04:00",
   "services": {
     "linkt": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
       "skip_reason": "Browser session required (no API)"
-    },
-    "attio-mcp": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "OAuth re-flow required (Smithery UI)"
     },
     "claude-api": {
       "status": "skip",
@@ -25,6 +19,12 @@
       "message": "",
       "skip_reason": "OAuth refresh required (manual)"
     },
+    "attio-mcp": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "OAuth re-flow required (Smithery UI)"
+    },
     "slack-webhooks": {
       "status": "ok",
       "latency_ms": null,
@@ -33,43 +33,43 @@
     },
     "launchd": {
       "status": "ok",
-      "latency_ms": 14,
+      "latency_ms": 12,
       "message": "19 jobs registered",
       "skip_reason": null
     },
     "vault": {
       "status": "ok",
       "latency_ms": 22,
-      "message": "726 markdown files",
+      "message": "734 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "ok",
-      "latency_ms": 61,
-      "message": "attio-mcp=12 superhuman=6",
+      "latency_ms": 95,
+      "message": "attio-mcp=16 superhuman=8",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 108,
+      "latency_ms": 165,
       "message": "authenticated",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 173,
+      "latency_ms": 161,
       "message": "HTTP 405",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 191,
+      "latency_ms": 238,
       "message": "200 OK",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 400,
+      "latency_ms": 499,
       "message": "gh authenticated",
       "skip_reason": null
     }

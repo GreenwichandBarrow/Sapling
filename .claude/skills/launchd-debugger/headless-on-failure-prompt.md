@@ -121,3 +121,67 @@ The wrapper's POST_RUN_CHECK runs `scripts/validate_launchd_debugger_integrity.p
 ## Why this prompt exists
 
 The daily 5am scan catches everything that failed overnight, but a job that fails at 23:30 ET has 5.5 hours of staleness before the daily run picks it up — long enough that Kay's morning briefing reads stale state. v1.1 added auto-fire-on-failure so failures get diagnosed immediately, and this prompt is the single-failure-focused variant that runs in <5min instead of the daily's <10min budget.
+
+## When triggered from health-monitor RED bridge
+
+v1.2 adds a second trigger path: `scripts/health-monitor-red-bridge.sh` reads health-monitor's weekly markdown artifact (`brain/trackers/health/{TODAY}-health.md`) and fires this prompt **once per RED row** in the standard health tables. RED-only — yellow rows stay informational. The Trend table is filtered out (it cites historical RED states for resolved items).
+
+When the triggering path is the bridge instead of a direct on-failure spawn, `FAILED_LOG_FILE` is **not** set. Instead, these env vars are populated:
+
+- `FROM_HEALTH_BRIDGE=1` — sentinel that this prompt was bridge-triggered
+- `RED_ITEM_ID` — slugified label (e.g. `launchd-niche-intelligence-tue`, `stale-entries`, `missing-vault-entities`, `orphaned-entity-links`)
+- `RED_ITEM_LABEL` — the raw label string from column 2 of the markdown table
+- `RED_ITEM_DETAIL` — the full detail string from column 4 (may contain a recommended-action sentence, may not)
+- `HEALTH_ARTIFACT_PATH` — abs path to the health-monitor `.md` artifact this RED came from
+
+### Decision flow when bridge-triggered
+
+1. **Check `FROM_HEALTH_BRIDGE` first.** If set to `1`, skip the `FAILED_LOG_FILE` validation in step 3. Replace the scanner step (5) with: build a synthetic single-element failure list directly from the env vars:
+   ```json
+   [{
+     "job": "health-monitor-red:{RED_ITEM_ID}",
+     "last_log_path": "{HEALTH_ARTIFACT_PATH}",
+     "last_log_mtime": "(mtime of HEALTH_ARTIFACT_PATH)",
+     "exit_code": null,
+     "validator_failed": false,
+     "preflight_failed": false,
+     "last_50_lines": "(RED_ITEM_DETAIL verbatim)",
+     "error_signature": "RED: {RED_ITEM_LABEL} — {first 80 chars of RED_ITEM_DETAIL}"
+   }]
+   ```
+   Do NOT call `scan_launchd_failures.py` — there's no log-file to scan. The RED detail string IS the diagnostic context.
+
+2. **Spawn the same single subagent** (step 6) but with this brief instead:
+   > You are diagnosing a health-monitor RED finding (not a launchd job failure). The RED item is:
+   >
+   > Label: `{RED_ITEM_LABEL}`
+   > ID: `{RED_ITEM_ID}`
+   > Detail: `{RED_ITEM_DETAIL}`
+   > Source artifact: `{HEALTH_ARTIFACT_PATH}`
+   >
+   > **Step A:** Read the source artifact section that contains this label so you have surrounding context (the RED row sits in one of: Service Connectivity / Infrastructure / Pipeline Hygiene / Data Integrity).
+   >
+   > **Step B:** Classify the cause using the same enum (AUTH, TRANSIENT_API, MCP_DISCONNECT, VALIDATOR_REJECT, MISSING_ARTIFACT, SCHEMA_VIOLATION, CODE_BUG, EXTERNAL_OUTAGE, UNKNOWN). For pipeline/data-integrity REDs that are not infrastructure failures (e.g. "stale entries", "missing vault entities", "orphaned entity links"), classify as `UNKNOWN` — these need Kay's judgment, not an operational fix.
+   >
+   > **Step C:** Decision tree. The fix allowlist remains narrow:
+   >   - `launchctl start com.greenwich-barrow.{job}` for infrastructure REDs that name a launchd job in the label (`launchd: {name}`).
+   >   - Cached-snapshot regen (`scripts/refresh-attio-snapshot.sh` etc.) when label is "{name} snapshot stale".
+   >   - **Anything else (pipeline staleness, missing entities, orphan links, drift) → SURFACE.** These are not operational fixes — they are work items for Kay.
+   >
+   > **HARD PROHIBITIONS** are unchanged from the on-failure brief — no destructive shell, no Attio/Drive/Sheets/vault content writes, no plist edits, no `launchctl unload/load`.
+   >
+   > **Step D:** If FIX, apply + re-run + verify exit 0 (same protocol). If SURFACE, populate `slack_text` as: `health-monitor RED: {RED_ITEM_LABEL} — {cause}. Detail: {RED_ITEM_DETAIL[:200]}. Recommended: {one-sentence action from the RED detail if present, else "Walk with Kay during Friday meta-calibration."}. Source: {HEALTH_ARTIFACT_PATH}`.
+   >
+   > **Step E:** Return JSON in the same shape as the on-failure brief, with `job` set to `health-monitor-red:{RED_ITEM_ID}`.
+
+3. **Suppression filters apply unchanged.** Cross-day-dedup keys on `(job, cause, error_signature[:50])` — for bridge-triggered runs, `job` is `health-monitor-red:{RED_ITEM_ID}` so a RED that persists week-over-week (e.g. orphan-entity-links growing 22 → 46 → 89) dedups itself across firings without spamming Slack. Known-incident registry can suppress specific REDs by adding an entry with `job: "health-monitor-red:{slug}"`.
+
+4. **Artifact append.** Same target path (`brain/trackers/health/launchd-debugger-{YYYY-MM-DD}.json`), same append behavior. Each result entry must additionally carry `triggered_by: "health-monitor-red-bridge"` (replaces `"on-failure"` for bridge-triggered runs) so the validator and audit can distinguish three trigger sources: daily-scan / on-failure / health-monitor-red-bridge.
+
+### What the bridge does NOT do
+
+- It does **not** fire for YELLOW rows (informational only).
+- It does **not** fire for the Trend table (historical states, not current).
+- It does **not** fire when health-monitor itself failed (the v1.1 on-failure auto-fire handles that).
+- It does **not** fire when health-monitor's POST_RUN_CHECK validator rejected the artifact (same v1.1 path).
+- It does **not** retry on its own. Recursion guard: if `FROM_HEALTH_BRIDGE=1` is set when run-skill.sh evaluates the bridge call, the bridge script exits 0 without firing. If the diagnosing subagent itself fails, the wrapper's existing on-failure auto-fire handles the diagnosis loop — which then sees `SKILL_NAME == "launchd-debugger"` and short-circuits, preventing infinite recursion.

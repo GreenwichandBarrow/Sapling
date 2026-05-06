@@ -235,3 +235,22 @@ if [ "$EXIT_CODE" != "0" ] && [ "$SKILL_NAME" != "launchd-debugger" ]; then
   echo "Auto-firing launchd-debugger on-failure (LOG_FILE=$LOG_FILE)" >> "$LOG_FILE"
   FAILED_LOG_FILE="$LOG_FILE" nohup "$WRAPPER_PATH" launchd-debugger on-failure </dev/null >/dev/null 2>&1 &
 fi
+
+# v1.2 health-monitor RED bridge: when health-monitor exits clean AND its
+# artifact landed at the expected path, fan out one launchd-debugger:on-failure
+# spawn per RED row in the markdown artifact. Yellow stays informational.
+# Skipped on validator failure (the v1.1 on-failure auto-fire above already
+# fires for that case). Background-detached so the wrapper exits immediately.
+# Recursion-guarded inside the bridge script too (FROM_HEALTH_BRIDGE env +
+# arg-form check on $1).
+if [ "$EXIT_CODE" = "0" ] \
+   && [ -z "$VALIDATOR_FAILED" ] \
+   && [ "$SKILL_NAME" = "health-monitor" ]; then
+  HEALTH_ARTIFACT="$WORKDIR/brain/trackers/health/$(date +%Y-%m-%d)-health.md"
+  if [ -f "$HEALTH_ARTIFACT" ]; then
+    echo "Firing health-monitor RED bridge against $HEALTH_ARTIFACT" >> "$LOG_FILE"
+    nohup bash "$WORKDIR/scripts/health-monitor-red-bridge.sh" "$HEALTH_ARTIFACT" </dev/null >/dev/null 2>&1 &
+  else
+    echo "health-monitor RED bridge skipped — artifact not found at $HEALTH_ARTIFACT" >> "$LOG_FILE"
+  fi
+fi

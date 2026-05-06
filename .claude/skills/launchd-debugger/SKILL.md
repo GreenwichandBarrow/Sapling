@@ -2,7 +2,7 @@
 name: launchd-debugger
 description: "Daily 5am ET scan of overnight launchd job logs PLUS auto-fire on every non-zero scheduled-skill exit. Spawns a debug subagent per failed job to diagnose, attempt safe fixes (re-run, restart, retry transient), or surface to Slack #operations. Suppresses Slack noise via known-incident registry + cross-day dedup. Catches silent failures before the morning briefing."
 user_invocable: true
-version: v1.1.0
+version: v1.2.0
 trigger: "Scheduled daily 5:00am ET via launchd (com.greenwich-barrow.launchd-debugger) + auto-fire by scripts/run-skill.sh on any non-zero scheduled-skill exit (FAILED_LOG_FILE env passes the failed log path)."
 schedule: "Daily 5:00am ET + on-failure trigger"
 context_budget:
@@ -163,6 +163,26 @@ If the scan returned zero failures, no Slack at all.
 </success_criteria>
 
 <changelog>
+## v1.2.0 — 2026-05-06
+
+**Health-monitor RED bridge.** New trigger path: `scripts/health-monitor-red-bridge.sh` reads the weekly health-monitor markdown artifact at `brain/trackers/health/{TODAY}-health.md` and fans out one `launchd-debugger:on-failure` spawn per RED row in the standard health tables. Yellow rows stay informational. The Trend table is filtered (parser keys on `NF==5` standard rows + `$3 == "RED"` status column; Trend rows have `NF==6` with RED in historical columns). Closes the gap where pipeline/data-integrity REDs (stale deals, missing vault entities, orphan links) sat unaddressed between health-monitor's Friday 12:30 AM fire and Kay seeing them in Friday morning's briefing.
+
+**Wrapper integration.** `scripts/run-skill.sh` (v1.2 block at the bottom, after the v1.1 on-failure auto-fire): when `SKILL_NAME == "health-monitor"` AND `EXIT_CODE == 0` AND `VALIDATOR_FAILED` empty AND artifact exists at the expected path, the wrapper background-detaches `bash scripts/health-monitor-red-bridge.sh "$HEALTH_ARTIFACT"`. Skipped on validator failure (the v1.1 on-failure auto-fire already covers that path). Mirrors the v1.1 nohup-detach pattern so the parent wrapper exits immediately.
+
+**FROM_HEALTH_BRIDGE env contract.** Bridge-triggered on-failure runs are distinguished from log-failure on-failure runs by the `FROM_HEALTH_BRIDGE=1` sentinel. When set, the on-failure prompt skips the `FAILED_LOG_FILE` validation and `scan_launchd_failures.py` call — it instead synthesizes a single-element failure list directly from `RED_ITEM_LABEL` + `RED_ITEM_DETAIL` + `HEALTH_ARTIFACT_PATH`. The diagnosing subagent's brief is replaced with a RED-finding-specific brief that classifies pipeline/data-integrity REDs as `UNKNOWN` → SURFACE (they need Kay's judgment, not an operational fix).
+
+**Result-entry schema additions.** Bridge-triggered entries carry `triggered_by: "health-monitor-red-bridge"` (alongside the existing `"daily"` and `"on-failure"` values) and `job: "health-monitor-red:{RED_ITEM_ID}"`. The validator's accounting check (`fixes_succeeded + surfaces_to_slack + suppressed_count == failures_detected`) is unchanged — bridge entries count toward `failures_detected`.
+
+**Recursion guard, two layers.** Bridge script exits 0 immediately if `FROM_HEALTH_BRIDGE=1` env is set OR if `$1 == "health-monitor"` (arg-form, belt-and-suspenders against future refactors). Wrapper's existing v1.1 guard (`SKILL_NAME != "launchd-debugger"`) prevents the on-failure subagent from triggering itself if it errors. No infinite loop possible.
+
+**RED-only scope.** Yellow rows are silenced by design — they're "watch / pre-emptive" per health-monitor's Action Items convention. Surfacing yellows would noise-flood Kay's Slack on every Friday fire (typical 7+ yellow rows). If a yellow degrades to RED on next week's run, the bridge catches it then.
+
+**DRY_RUN flag.** `DRY_RUN=1` env disables spawning — the bridge logs `WOULD FIRE: launchd-debugger:on-failure for RED={slug} detail={detail}` lines to stderr + the bridge log instead. Used for end-to-end verification without burning subagent token spend.
+
+**Cadence.** Fires Friday 12:30 AM ET (right after `health-monitor` plist completes). One bridge fire per Friday, N subagents spawned in parallel where N = RED-row count. Cross-day dedup (7-day window, keyed on `health-monitor-red:{RED_ITEM_ID}`) means a RED that persists week-over-week (e.g. orphan-entity-links 22 → 46 → 89) surfaces to Slack on first detection only — subsequent weeks land in the artifact silently.
+
+**Verified DRY_RUN against 2026-05-01 health artifact:** 4 RED rows detected, 4 WOULD-FIRE log lines emitted, slugs `launchd-niche-intelligence-tue` / `stale-entries` / `missing-vault-entities` / `orphaned-entity-links`. Trend table's 3 RED-containing rows correctly filtered out by the `NF==5 && $3=="RED"` parser.
+
 ## v1.1.0 — 2026-05-01
 
 **Failure-trigger architecture.** `scripts/run-skill.sh` now auto-fires `launchd-debugger:on-failure` on any non-zero scheduled-skill exit (recursion-guarded — launchd-debugger does not trigger itself). Failures get diagnosed within ~3 minutes of occurring instead of waiting for the 5am daily run. Background-detached so the failed parent skill's exit is not held up.

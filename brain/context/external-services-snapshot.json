@@ -1,18 +1,6 @@
 {
-  "fetched_at": "2026-05-06T11:30:05-04:00",
+  "fetched_at": "2026-05-06T12:30:05-04:00",
   "services": {
-    "linkt": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "Browser session required (no API)"
-    },
-    "claude-api": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "ANTHROPIC_API_KEY not in env"
-    },
     "attio-mcp": {
       "status": "skip",
       "latency_ms": null,
@@ -31,45 +19,57 @@
       "message": "4 webhooks configured",
       "skip_reason": null
     },
+    "claude-api": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "ANTHROPIC_API_KEY not in env"
+    },
+    "linkt": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "Browser session required (no API)"
+    },
     "launchd": {
       "status": "ok",
-      "latency_ms": 21,
+      "latency_ms": 17,
       "message": "19 jobs registered",
       "skip_reason": null
     },
     "vault": {
       "status": "ok",
-      "latency_ms": 29,
-      "message": "736 markdown files",
+      "latency_ms": 31,
+      "message": "737 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "ok",
-      "latency_ms": 83,
+      "latency_ms": 103,
       "message": "attio-mcp=14 superhuman=7",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 116,
+      "latency_ms": 153,
       "message": "authenticated",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 232,
+      "latency_ms": 179,
       "message": "HTTP 405",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 289,
+      "latency_ms": 211,
       "message": "200 OK",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 333,
+      "latency_ms": 424,
       "message": "gh authenticated",
       "skip_reason": null
     }

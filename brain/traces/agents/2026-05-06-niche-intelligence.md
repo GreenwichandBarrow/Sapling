@@ -590,3 +590,15 @@ The synthesizer's "Compliance-as-a-Service family" convergence (Rank 3 — 7 sou
 - Output report written: `brain/outputs/2026-05-06-niche-intelligence-report.md` (passes vault schema validation, no-kay-in-deliverables hook clean after rewrite)
 - Recommended channel for tracker-manager Step 5: **JJ-Call-Only** (Jeremy practitioner-conviction + relationship-driven carrier underwriting + "byzantine" license barrier suggests phone-first works). Long sprint 50+ targets, ~150-250 tristate independents.
 - Tracker-manager handoff: 4 actions queued (add Property Tax Appeal row 2.58, add Trade-Risk Brokerage row 2.75, decide TABLED+KILLED folder fate, decide Compliance-as-a-Service collapse vs graduate vs keep separate)
+
+
+## [niche-intel-tracker] — 2026-05-06T12:02Z
+**Status:** complete
+- Property Tax Appeal Services appended to WEEKLY REVIEW at rank 9 (Status: New - Pending Review, Score: 2.58)
+- Trade Credit Customs Bonds Cargo Insurance Brokerage appended at rank 10 (Status: New - Pending Review, Score: 2.75)
+- Verified via re-read of A:K range (rows 12 and 13 confirmed)
+- Tracker-manager follow-ups flagged for Kay's analyst call:
+  - TABLED folder "TRADE CREDIT INSURANCE" — fold into new unified WEEKLY REVIEW folder OR retain as historical reference (Kay's call)
+  - KILLED folder "CUSTOMS BONDS & CARGO INSURANCE" — same call
+  - IDEATION 4-row Compliance-as-a-Service collapse review (Surplus Lines Compliance + Workplace H&S + Premium Audit + Outsourced Compliance Officers — synthesizer flagged collapse to single platform thesis)
+  - Property Tax Appeal Services Drive-vs-Sheet reconciliation note: scorecard + one-pager + folder existed from 3/31 run but row was never added to WEEKLY REVIEW until today; preserve original 4/4/2026 start date

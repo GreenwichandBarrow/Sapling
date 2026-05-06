@@ -1,7 +1,8 @@
 ---
 schema_version: 1.2.0
 date: 2026-05-06
-type: niche-intelligence-report
+type: output
+output_type: niche-intelligence-report
 status: published
 skill_origin: niche-intelligence
 kay_approved: null

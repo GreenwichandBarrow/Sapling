@@ -302,9 +302,9 @@ RED FLAGS / WATCH ITEMS
 ## Phase 3: Save & Deliver
 
 ### Google Doc
-Start from the G&B letterhead template (ID: `1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF`) — copy it, rename, then add brief content. Logo must be centered. Use Avenir font, black text only.
+Start from the G&B letterhead template (ID: `1hXnexnOTDQwAo4lII2kbsPY3IsbcfKyaJthrAPjGb78`) — copy it, rename, then add brief content. Logo must be centered. Use Avenir font, black text only.
 ```
-gog drive copy "1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF" "{title}" --parent "1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ"
+gog drive copy "1hXnexnOTDQwAo4lII2kbsPY3IsbcfKyaJthrAPjGb78" "{title}" --parent "1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ"
 # Then populate content via gog docs edit or batch update
 ```
 

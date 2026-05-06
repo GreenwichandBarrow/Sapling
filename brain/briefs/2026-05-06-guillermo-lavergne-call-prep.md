@@ -24,7 +24,7 @@ Note: Today's slot is being rescheduled to Tue 5/12 1:30 PM ET or Wed 5/13 10 AM
 
 ## 1. QUICK UPDATE
 
-The biggest shift since 4/21 is that the channel architecture is now real, not theoretical. Intermediary outreach has graduated to its own channel with a daily 5 emails + 5 LinkedIn DMs cadence (corrected from a brief 7+5 framing this morning). DealsX is live as the cold-email infra layer, with yesterday's full dedup against Attio finishing at 23 pre-approved + 6 DNC + 36 stub-only releases to Sam. Axial is moving from observation to active member, success-fee Lehman-scale accepted. JJ continues 40 dials/day on premium pest, with the women-in-pest-management association membership question still open. No active deals at Financials Received or NDA stage.
+The biggest shift since 4/21 is that the channel architecture is now real, not theoretical. Intermediary outreach has graduated to its own channel with a daily 7-touches-total cadence (email default, LinkedIn DM filling Apollo no-match slots; bumped from 5/day this morning to hit 50 emails by 5/15). DealsX is live as the cold-email infra layer, with yesterday's full dedup against Attio finishing at 23 pre-approved + 6 DNC + 36 stub-only releases to Sam. Axial is moving from observation to active member, success-fee Lehman-scale accepted. JJ continues 40 dials/day on premium pest, with the women-in-pest-management association membership question still open. No active deals at Financials Received or NDA stage.
 
 **Budget:** Steady. No material change since the 4/9 figure ($256K, 46% of $550K). Burn tracking near plan.
 
@@ -32,7 +32,7 @@ The biggest shift since 4/21 is that the channel architecture is now real, not t
 
 ## 2. LATEST THINKING / APPROACH
 
-**Channel architecture is the meta-shift since 4/21.** Three discrete channels now run in parallel with explicit doctrine for each: (1) G&B Founder/CEO direct cold email (~5/day, owner-targeted), (2) DealsX cold-email infra (Sam Singh's team, high-volume, owns its own list), (3) Intermediary outreach 5+5/day to brokers, IBs, lawyers, CPAs, family offices, and association heads. JJ-Call-Only sits alongside as the phone channel. Each channel has its own buy-box, its own dedup rule, and its own escalation path. Megan Lawlor's pattern (one-pager attached to broker emails, plain-text body) is now the canonical broker-channel template.
+**Channel architecture is the meta-shift since 4/21.** Three discrete channels now run in parallel with explicit doctrine for each: (1) G&B Founder/CEO direct cold email (~5/day, owner-targeted), (2) DealsX cold-email infra (Sam Singh's team, high-volume, owns its own list), (3) Intermediary outreach 7/day total across email + LinkedIn DM to brokers, IBs, lawyers, CPAs, family offices, and association heads. JJ-Call-Only sits alongside as the phone channel. Each channel has its own buy-box, its own dedup rule, and its own escalation path. Megan Lawlor's pattern (one-pager attached to broker emails, plain-text body) is now the canonical broker-channel template.
 
 **Niche thinking has narrowed, not broadened.** Specialty Coffee Equipment Service got a full DD pass after 4/21. OEM exclusivity map, traditional searcher overlap, PE pov xref. The four-walls / OEM-in-house risks Guillermo flagged held up under research; the niche is on the watch list, not in the active sprint. Premium Pest Management remains the only active-outreach niche running at full cylinder. Insurance Brokerage is now broker-channel-routed (DealsX-channel for cold re-engagement per memory `feedback_cold_relive_insurance_dealsx_channel`).
 
@@ -119,7 +119,7 @@ The biggest shift since 4/21 is that the channel architecture is now real, not t
 
 **For Guillermo's input:**
 - Reaction to Andrew Lowis / Axial as a deal-flow channel. Anything Ashford has seen on success-fee-only intermediary platforms that should change the calculus.
-- View on the 7-per-day intermediary outreach pace. (Note: the 7 figure surfaced briefly this morning before being corrected to 5 emails + 5 LinkedIn DMs. Worth Guillermo's read on whether the corrected pace is sufficient or under-indexed.)
+- View on the 7-per-day-total intermediary outreach pace (bumped this morning from 5/day to hit a 50-emails-by-5/15 catch-up target; email default, LinkedIn fills Apollo no-match slots). Sufficient or under-indexed?
 - Lender list follow-up. His 9 recommendations from 4/29 (Avidbank, Newburyport, East West, Fidus, Oak North, Parkside, Saratoga, TruWest, Plexus). Has G&B engaged any. Honest answer: not yet, queued behind intermediary channel build.
 - Niche pivots. Pest premium-angle still unvalidated. Coffee niche parked. Broker channel newly its own thing. Anything in his portfolio diligence pattern that argues for a different niche bet.
 - Any flag from his end on G&B trajectory or runway.

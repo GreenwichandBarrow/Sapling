@@ -138,6 +138,14 @@ case "$SKILL_NAME:$SKILL_ARGS" in
     HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/conference-discovery/headless-sunday-prompt.md"
     POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_conference_discovery_integrity.py\" --date \$TODAY}"
     ;;
+  "post-call-analyzer:on-trigger")
+    # Triggered by scripts/post_call_analyzer_poll.py when new Granola docs
+    # land in brain/trackers/post-call-analyzer/queue/. Headless prompt drains
+    # the queue, writes vault call notes, routes action items to task-tracker
+    # + Gmail drafts, posts ONE Slack message per call. NEVER sends email.
+    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/post-call-analyzer/headless-on-trigger-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_post_call_analyzer_integrity.py\"}"
+    ;;
   "deal-aggregator:--digest-mode")
     # Friday 6am weekly source-productivity digest (Phase 2). Reads 7 days of
     # daily scorecards + 30 days of fingerprints + 7 days of email-scan-results

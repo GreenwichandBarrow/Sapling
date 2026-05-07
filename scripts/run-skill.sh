@@ -17,7 +17,7 @@ if [[ -z "$SKILL_ARGS" && "$SKILL_NAME" == *:* ]]; then
   SKILL_ARGS="${SKILL_NAME#*:}"
   SKILL_NAME="${SKILL_NAME%%:*}"
 fi
-WORKDIR="$HOME/Documents/AI Operations"
+WORKDIR="$(cd "$(dirname "$0")/.." && pwd)"
 LOG_DIR="$WORKDIR/logs/scheduled"
 # LOG_PREFIX env var lets a plist write logs under a name that matches its
 # launchd Label when SKILL_NAME alone is ambiguous. Required for skills whose
@@ -44,7 +44,8 @@ echo "Started: $(date)" >> "$LOG_FILE"
 
 # Preflight: unlock login keychain if a password is provided (prevents 401 on locked keychain)
 # Safe because KEYCHAIN_PASSWORD lives only in .env.launchd (not committed)
-if [ -n "$KEYCHAIN_PASSWORD" ]; then
+# Gated on `security` existing — macOS only; silently skipped on Linux.
+if [ -n "$KEYCHAIN_PASSWORD" ] && command -v security >/dev/null 2>&1; then
   security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$HOME/Library/Keychains/login.keychain-db" 2>/dev/null || \
     echo "WARN: keychain unlock failed" >> "$LOG_FILE"
 fi

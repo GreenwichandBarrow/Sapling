@@ -9,7 +9,7 @@
 
 set -uo pipefail
 
-REPO_ROOT="/Users/kaycschneider/Documents/AI Operations"
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 LOG_DIR="$REPO_ROOT/logs/scheduled"
 mkdir -p "$LOG_DIR"
 
@@ -26,7 +26,7 @@ VALIDATOR_EXIT=0
   source "$REPO_ROOT/scripts/.env.launchd"
   set +a
   # gog reads OAuth from the user's keychain; PATH must include the install dir.
-  export PATH="$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin"
+  export PATH="$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:/usr/bin:/bin"
   "$REPO_ROOT/dashboard/.venv/bin/python3" "$REPO_ROOT/scripts/refresh_jj_snapshot.py"
   REFRESH_EXIT=$?
   echo "--- refresh exit: $REFRESH_EXIT ---"

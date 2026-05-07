@@ -9,7 +9,7 @@
 
 set -uo pipefail
 
-REPO_ROOT="/Users/kaycschneider/Documents/AI Operations"
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 LOG_DIR="$REPO_ROOT/logs/scheduled"
 mkdir -p "$LOG_DIR"
 

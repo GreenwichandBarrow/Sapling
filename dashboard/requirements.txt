@@ -1,0 +1,8 @@
+# G&B Command Center Dashboard — Python deps
+# Audit source: brain/outputs/2026-05-07-server-migration-report.md §6
+# Phase 1 of Linux migration — pin minimums, not exact versions.
+
+streamlit>=1.28
+pandas>=2.0
+PyYAML>=6.0
+requests>=2.31

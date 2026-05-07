@@ -82,3 +82,8 @@ categories:
       - { name: "Cursor", note: "IDE" }
       - { name: "GitHub" }
       - { name: "Node.js", note: "runtime" }
+
+  - label: "Infrastructure & Networking"
+    services:
+      - { name: "Hetzner", note: "server hosting · signed up 2026-05-07" }
+      - { name: "Tailscale", note: "VPN / mesh networking · signed up 2026-05-07" }

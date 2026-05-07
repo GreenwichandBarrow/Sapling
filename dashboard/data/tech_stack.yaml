@@ -85,5 +85,6 @@ categories:
 
   - label: "Infrastructure & Networking"
     services:
-      - { name: "Hetzner", note: "server hosting · signed up 2026-05-07" }
-      - { name: "Tailscale", note: "VPN / mesh networking · signed up 2026-05-07" }
+      - { name: "Hetzner", note: "server hosting · ~$11/mo" }
+      - { name: "Tailscale", note: "VPN / mesh networking · free tier" }
+      - { name: "1Password", note: "password manager · $3/mo" }

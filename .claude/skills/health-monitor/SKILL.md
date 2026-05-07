@@ -1,11 +1,12 @@
 ---
 name: health-monitor
 description: System-wide health monitoring with specialized sub-agents. Detects disconnected services, usage limits, missed triggers, pipeline hygiene issues, data integrity problems, and stale data.
-trigger: Friday morning (alongside weekly-tracker) or on-demand via /health-check
+trigger: Scheduled Friday 12:30 AM ET via launchd (com.greenwich-barrow.health-monitor). Output ready for Friday morning briefing alongside weekly-tracker. Also runs on-demand via /health-check.
+schedule: Friday 12:30 AM ET
 ---
 
 <objective>
-Detect silent failures before they become lost deals or broken workflows. Every issue found in production this month (deal-aggregator failing silently, Project Restoration skipping stages, E&K deal untracked, Superhuman drafts routing to Gmail) would have been caught by this skill.
+Detect silent failures before they become lost deals or broken workflows. Every issue found in production this month (deal-aggregator failing silently, Project Restoration skipping stages, E&K deal untracked, Gmail draft routing failures) would have been caught by this skill. (Superhuman row removed 2026-05-01 — Superhuman sunset 4/29 per `feedback_gmail_only_no_superhuman`; all drafts now go through Gmail directly via `gog gmail draft create`.)
 </objective>
 
 <essential_principles>
@@ -26,15 +27,26 @@ Tests every external API and integration. Each check: can we authenticate and ge
 | Drive (gog) | OAuth valid | `gog drive ls --parent root --json --max 1` | Returns data | — | Auth error |
 | Sheets (gog) | Can read tracker | `gog sheets get {TRACKER_ID} "'Weekly Topline'!A1" -j` | Returns data | — | Auth error |
 | Granola | MCP responding | `mcp__granola__list_meetings` | Returns data | — | Error or timeout |
-| Superhuman | Token fresh, draft path works | Check `~/.local/bin/superhuman-draft.sh` exists + LaunchAgent running | Both present | Script exists, agent not running | Script missing |
 
 ### Sub-Agent 2: Infrastructure Agent
 Checks scheduled jobs, usage limits, and webhook health.
 
 **Launchd Jobs:**
-Expected jobs:
-- `com.greenwich-barrow.deal-aggregator` (Mon-Fri 6am)
-- `com.greenwich-barrow.niche-intelligence` (Tue 11pm)
+Expected jobs (this list is the source of truth — must match CLAUDE.md's
+Scheduled Skills table; missing-plist for any skill here = RED):
+- `com.greenwich-barrow.deal-aggregator` (Mon-Fri 6am ET)
+- `com.greenwich-barrow.deal-aggregator-afternoon` (Mon-Fri 2pm ET)
+- `com.greenwich-barrow.deal-aggregator-friday` (Fri evening)
+- `com.greenwich-barrow.email-intelligence` (Mon-Fri 7am ET)
+- `com.greenwich-barrow.jj-operations-sunday` (Sun 11pm ET)
+- `com.greenwich-barrow.target-discovery-sunday` (Sun 11pm ET)
+- `com.greenwich-barrow.niche-intelligence` (Tue 11pm ET)
+- `com.greenwich-barrow.nightly-tracker-audit` (Nightly)
+- `com.greenwich-barrow.conference-discovery` (Weekly)
+- `com.greenwich-barrow.health-monitor` (Fri 12:30 AM ET)
+- `com.greenwich-barrow.calibration-workflow` (Thu 11pm ET)
+- `com.greenwich-barrow.attio-snapshot-refresh` (Mon-Fri hourly 8am-8pm ET) — feeds dashboard's landing hero, Active Deal Pipeline, M&A Analytics deal-flow KPIs
+- `com.greenwich-barrow.jj-snapshot-refresh` (Mon-Fri 9am/2:30pm/6pm ET) — feeds dashboard's M&A Analytics JJ row + JJ trend panel
 
 For each:
 ```bash
@@ -131,6 +143,14 @@ done
 | Weekly tracker | Last column date in sheet | Not updated this Friday | Not updated in 2+ weeks |
 | Granola ingestion | Most recent `brain/calls/` file date | > 3 days since last meeting | > 7 days |
 | Vault entity sync | Compare Attio People count vs vault entity count | Drift > 20% | Drift > 50% |
+| Attio dashboard snapshot | `fetched_at` in `brain/context/attio-pipeline-snapshot.json` | > 4h during business hours OR > 60h overall | > 12h during business hours OR > 80h overall |
+| JJ dashboard snapshot | `fetched_at` in `brain/context/jj-activity-snapshot.json` | > 30h during business hours OR > 72h overall | > 48h during business hours OR > 96h overall |
+
+The dashboard's `data_sources.check_dashboard_staleness()` does the same
+check live against a 2h/30h threshold (during business hours) and surfaces
+a yellow banner above every page. Health-monitor's threshold is more
+permissive — it only flags genuinely-broken refresh jobs, not the
+expected hourly gap between runs.
 
 ## Execution Flow
 
@@ -226,7 +246,6 @@ If ALL GREEN, no Slack notification. Silence = healthy.
 | deal-aggregator exit 126 | Infrastructure → launchd | Non-zero exit code flagged RED |
 | Project Restoration skipped stages | Pipeline Hygiene → stage skipping | Identified → Closed without NDA/Financials |
 | E&K deal not in Attio | Pipeline Hygiene → untracked deals | Gmail NDA/CIM signals with no Attio entry |
-| Superhuman draft → Gmail | Service Connectivity → Superhuman | LaunchAgent not running or script missing |
 | Weekly tracker missed deal activity | Data Integrity → freshness | Attio stage changes not reflected in tracker |
 </essential_principles>
 

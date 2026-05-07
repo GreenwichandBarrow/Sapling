@@ -1,0 +1,99 @@
+{
+  "fetched_at": "2026-05-07T13:00:24Z",
+  "niches_scanned": [
+    "Art Insurance",
+    "Domestic TCI",
+    "IPLC",
+    "Art Storage",
+    "Art Advisory",
+    "Premium Pest Management"
+  ],
+  "per_niche_lifetime": {
+    "Art Insurance": 0,
+    "Domestic TCI": 2,
+    "IPLC": 0,
+    "Art Storage": 0,
+    "Art Advisory": 0,
+    "Premium Pest Management": 336
+  },
+  "dials_today": 0,
+  "dials_this_week": 97,
+  "dials_lifetime": 338,
+  "by_day": {
+    "2026-03-30": 2,
+    "2026-04-07": 22,
+    "2026-04-08": 58,
+    "2026-04-09": 8,
+    "2026-04-20": 17,
+    "2026-04-21": 23,
+    "2026-04-24": 40,
+    "2026-04-27": 32,
+    "2026-04-29": 39,
+    "2026-05-05": 31,
+    "2026-05-01": 18,
+    "2026-05-04": 21,
+    "2026-05-06": 27
+  },
+  "weekly_buckets": [
+    {
+      "week_start": "2026-02-13",
+      "week_end": "2026-02-19",
+      "dials": 0
+    },
+    {
+      "week_start": "2026-02-20",
+      "week_end": "2026-02-26",
+      "dials": 0
+    },
+    {
+      "week_start": "2026-02-27",
+      "week_end": "2026-03-05",
+      "dials": 0
+    },
+    {
+      "week_start": "2026-03-06",
+      "week_end": "2026-03-12",
+      "dials": 0
+    },
+    {
+      "week_start": "2026-03-13",
+      "week_end": "2026-03-19",
+      "dials": 0
+    },
+    {
+      "week_start": "2026-03-20",
+      "week_end": "2026-03-26",
+      "dials": 0
+    },
+    {
+      "week_start": "2026-03-27",
+      "week_end": "2026-04-02",
+      "dials": 2
+    },
+    {
+      "week_start": "2026-04-03",
+      "week_end": "2026-04-09",
+      "dials": 88
+    },
+    {
+      "week_start": "2026-04-10",
+      "week_end": "2026-04-16",
+      "dials": 0
+    },
+    {
+      "week_start": "2026-04-17",
+      "week_end": "2026-04-23",
+      "dials": 40
+    },
+    {
+      "week_start": "2026-04-24",
+      "week_end": "2026-04-30",
+      "dials": 111
+    },
+    {
+      "week_start": "2026-05-01",
+      "week_end": "2026-05-07",
+      "dials": 97
+    }
+  ]
+}

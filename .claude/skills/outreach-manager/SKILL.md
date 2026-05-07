@@ -8,6 +8,8 @@ context_budget:
   sub_agent_limit: 2000
 ---
 
+> **2026-05-01 calibration:** Superhuman fully sunset 4/29/26. All draft references in this file mean **Gmail directly** via the bash wrapper. See .
+
 <objective>
 Own all outreach. Every email, call, DM, and follow-up flows through this skill.
 
@@ -23,7 +25,7 @@ This skill receives targets from two upstream skills and runs personalized outre
 - Weekly outreach metrics → skill/weekly-tracker
 
 Four subagents:
-1. **Kay Email Cold Outreach** — multi-channel cadence for Kay Email niches, Claude-drafted in Superhuman
+1. **Kay Email Cold Outreach** — multi-channel cadence for Kay Email niches, Claude-drafted in Gmail
 1b. **DealsX Coordination** — coordination with Sam Singh / DealsX for mass email + LinkedIn outreach on DealsX niches
 2. **Conference Outreach** — pre-conference emails and post-conference follow-ups (Kay always, regardless of niche channel)
 3. **Intermediary Outreach** — relationship-building with association heads, brokers, river guides (Kay always)
@@ -43,7 +45,7 @@ Each niche is assigned a channel on the WEEKLY REVIEW tab (Col D). This determin
 
 **Channel routing rule:** Before running any subagent, read the WEEKLY REVIEW tab Col D for the niche. Route to the correct subagent. Never cross channels.
 
-**Delivery model (Kay Email channel):** Claude drafts in Superhuman via CLI. Kay reviews and sends. No third-party tool ever touches Kay's SMTP credentials.
+**Delivery model (Kay Email channel):** Claude drafts in Gmail directly. Kay reviews and sends. No third-party tool ever touches Kay's SMTP credentials.
 **Delivery model (DealsX Email channel):** Sam/DealsX handles all outreach. We provide templates, exclusion lists, and warm intro intercepts. We draft replies to inbound responses.
 **Delivery model (JJ-Call-Only channel):** Handled entirely by jj-operations skill, not outreach-manager.
 </objective>
@@ -70,13 +72,13 @@ Handles outreach for Kay Email targets sourced from skill/target-discovery (Apol
 
 ### Cold Outreach Delivery
 
-All cold outreach emails are drafted in **Superhuman** via the CLI wrapper. Kay reviews Day 0 emails, then hits send on all emails (Day 0 reviewed, Day 3/6/14 follow-ups sent without editing).
+All cold outreach emails are drafted in **Superhuman** via the CLI wrapper. Kay reviews Day 0 emails, then hits send on all emails from Gmail (Day 0 reviewed, Day 3/6/14 follow-ups sent without editing).
 
 ```bash
-~/.local/bin/superhuman-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
+~/.local/bin/gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29) --to "{email}" --subject "{subject}" --body "{body}"
 ```
 
-**No third-party email tool ever gets SMTP credentials.** Kay sends every email herself from Superhuman. Claude drafts, Kay sends.
+**No third-party email tool ever gets SMTP credentials.** Kay sends every email herself from Gmail. Claude drafts, Kay sends.
 
 ### Cadence Tracking (Claude-Managed)
 
@@ -123,10 +125,10 @@ Claude manages the outreach cadence by tracking per-touchpoint date columns on t
 
 | Day | Channel | Action | Kay's Role |
 |-----|---------|--------|------------|
-| Day 0 | Email (Superhuman) | Personalized cold email, A/B variant | Review + send |
-| Day 3 | Email (Superhuman) | Follow-up email #1 (same thread) | Just send |
+| Day 0 | Email (Gmail) | Personalized cold email, A/B variant | Review + send |
+| Day 3 | Email (Gmail) | Follow-up email #1 (same thread) | Just send |
 | Day 6 | LinkedIn DM | Standalone LinkedIn DM | Copy-paste + send |
-| Day 14 | Email (Superhuman) | Follow-up email #2, final (same thread) | Just send |
+| Day 14 | Email (Gmail) | Follow-up email #2, final (same thread) | Just send |
 
 After Day 14 with no response, move to nurture cadence (pipeline-manager handles from here).
 
@@ -324,7 +326,7 @@ Before writing any Day 0 outreach email, build a research brief for the target. 
 All outreach drafts use the Superhuman CLI wrapper (NOT the MCP tool — it uses Gmail API which creates invisible drafts):
 
 ```bash
-~/.local/bin/superhuman-draft.sh --to "{email}" --subject "Intro {first name} & Kay" --body "{body}"
+~/.local/bin/gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29) --to "{email}" --subject "Intro {first name} & Kay" --body "{body}"
 ```
 
 **CRITICAL:** Always verify the Superhuman CLI is using the G&B account (`kay.s@greenwichandbarrow.com`), not the personal email. If the G&B token is expired, the CLI silently falls back to the personal account. Check the output for the account confirmation line.
@@ -491,11 +493,11 @@ When targets reply to Sam's emails, replies arrive in Kay's Gmail inbox (kay.s@g
 
 **Flow:**
 1. email-intelligence detects reply from a DealsX niche target
-2. Claude drafts response in Superhuman via CLI wrapper
+2. Claude drafts response in Gmail directly wrapper
 3. Kay reviews and sends
 
 ```bash
-~/.local/bin/superhuman-draft.sh --to "{email}" --subject "Re: {original subject}" --body "{body}"
+~/.local/bin/gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29) --to "{email}" --subject "Re: {original subject}" --body "{body}"
 ```
 
 Same voice rules, same SMTP rules as Kay Email channel. Kay sends every reply herself.
@@ -571,9 +573,9 @@ Greenwich & Barrow
 
 Draft in Superhuman via the CLI wrapper:
 ```bash
-~/.local/bin/superhuman-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
+~/.local/bin/gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29) --to "{email}" --subject "{subject}" --body "{body}"
 ```
-Kay reviews and sends from Superhuman.
+Kay reviews and sends from Gmail.
 
 ### Pre-Conference Follow-Up (T-minus 7 days)
 
@@ -622,46 +624,40 @@ Draft all in Superhuman. Present during morning briefing. Kay approves and sends
 <intermediary_outreach>
 ## Subagent 3: Intermediary Outreach
 
-Handles outreach to force multipliers — people who know every owner in the niche and can open doors. These are NOT acquisition targets. They are relationship-building contacts who go into the Attio Intermediary Pipeline, not Active Deals.
+Handles outreach to force multipliers — people who know every owner in the niche and can open doors. These are NOT acquisition targets. They are relationship-building contacts who live in the Intermediary Target List Sheet. Attio is reserved for active deal flow only.
 
-### Who Are Intermediaries?
-- **Association heads and executive directors** — run the industry organization, know every member
-- **Conference organizers** — can introduce Kay to exhibitors and speakers
-- **Industry brokers and M&A advisors** — actively seeing deal flow in the niche
-- **CPAs and lawyers** — serve business owners in the niche, know who's thinking about succession
-- **Industry consultants** — "river guides" who can walk Kay through the landscape
-- **Fellow searchers** who've explored adjacent niches — can share intel and introductions
+### AUTHORITATIVE ARTIFACTS (Apr 29 2026 — read these first)
 
-### Different Framing (Not a Pitch)
+**Master template:** `G&B Intermediary Email Templates` — Google Doc ID `1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4` (canonical as of 2026-05-04, supersedes prior `1_cNsAPCopDAfReoDXbB4d3hZW8TcYUqJ3XKYY_er7i4`). Contains: Brokers+IBs Day 0 intro, Day 5 follow-up, LEAD-YES, LEAD-NO, Lawyers+CPAs intro, CIM RECEIVED, THANK YOU, DECLINE POST-REVIEW, NDA SIGNED. Per `feedback_no_intermediary_drafts_outside_template`: ALL intermediary drafts originate here. New scenarios → propose template in suggestion mode for Kay's review/approval before any send.
 
-Intermediary outreach positions Kay as a **student of the industry**, not a buyer.
+**Master target sheet:** `Intermediary Target List` — Google Sheet ID `18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`, in `OPERATIONS / TARGET LISTS / INTERMEDIARY/`. 8 tabs: Brokers / Investment Bankers / Association Heads / Industry Lawyers / CPAs / Corporate Advisors / Family Offices / Lenders. 17-column schema. **Single source of truth for intermediary status.** Attio is reserved for active deal flow only.
 
-**Email structure:**
-```
-Subject: {Something specific to their role in the industry}
+**Voice rules (must read before drafting):**
+- `feedback_no_search_fund_language_intermediaries.md` — drop "search fund" / "search vehicle"; use "holding company in formation"
+- `feedback_kay_handles_all_replies.md` — replies always Kay (Kay-sent or Sam-DealsX-sent)
+- `feedback_gmail_only_no_superhuman.md` — drafts in Gmail directly (Superhuman sunset Apr 28)
 
-Hi {first name},
+### Who Are Intermediaries? (8 categories per the sheet)
 
-{1 sentence showing you know their role — association they run, event they organize, practice area}.
-{1 sentence about Kay researching the {niche} space and wanting to learn from someone who sees the full landscape}.
-{1 sentence proposing a conversation — positioned as learning, not deal-sourcing}.
+- **Brokers** — business brokers / lower-mid-market M&A advisors. Voice: short, NDA-offer-ready, deal-flow ask.
+- **Investment Bankers** — boutique IBs with active mandates. Voice: formal, mandate-distribution ask.
+- **Corporate Advisors** — business-side advisors at private banks/wealth firms (Matt Luczyk archetype). Voice: relationship-build, succession angle.
+- **Family Offices** — SFOs/MFOs (Bessemer, BBH, Cresset, Pathstone, Iconiq). Voice: peer-investor framing — co-investment + deal-flow ask.
+- **Industry Lawyers** — M&A counsel, transaction attorneys, tax-PE attorneys. Voice: short, professional, referral relationship. **NOT employment lawyers** — those are reference-only, not outreach contacts.
+- **CPAs** — M&A advisory CPAs, succession-planning accountants. Voice: continuity-focused, referral relationship.
+- **Association Heads** — trade-association leaders. Voice: "student of the industry" — NOT a buyer pitch.
+- **Lenders** — search-fund-friendly debt providers (commercial banks + SBA + mezz + BDCs + private credit). Voice: I'm a buyer with a buy-box, would value a lending relationship as we approach LOI.
 
-Would love to find 20 minutes to hear your perspective.
+### Cadence: 2-TOUCH for Brokers + IBs, ONE-AND-DONE for everyone else
 
-Kay Schneider
-Greenwich & Barrow
-```
+**Updated 2026-05-04:**
+- **Brokers + IBs:** 2-touch — Day 0 INTRODUCTION + Day 5 FOLLOW-UP (same Gmail thread, "Re: Introduction"). Day 12 soft-close DROPPED. If recipient replies before Day 5, cadence stops and the reply thread takes over.
+- **Lawyers + CPAs:** ONE-AND-DONE single education-tone intro. No follow-up cadence.
+- **Other categories** (Investment Bankers, Family Offices, Lenders, Corporate Advisors, Association Heads): default ONE-AND-DONE pending category-specific cadence locks.
 
-### General Intermediary Cadence (non-conference)
+If they don't respond, move on. Different from owner outreach which has Day 0/3/14 cadence.
 
-| Day | Channel | Action |
-|-----|---------|--------|
-| Day 0 | Email (Superhuman) | Personalized "learning about the industry" email |
-| Day 3 | Email (Superhuman) | Follow-up if no response |
-| Day 6 | LinkedIn DM (Kay) | High-value only |
-| Day 14 | Email (Superhuman) | Final touch if no response |
-
-No JJ call. Intermediaries should only hear from Kay directly.
+No JJ call. Intermediaries hear from Kay directly only.
 
 ### Conference River Guide Play
 
@@ -675,13 +671,9 @@ When an upcoming conference is registered, identify the association head or orga
 | Conference day | Meet in person. They introduce Kay to key people. |
 | T+1 day | Thank-you email + follow-up on any introductions they made |
 
-### Attio Pipeline
+### Status Tracking
 
-Intermediaries go into the **Intermediary Pipeline** in Attio, not Active Deals:
-- New contact → "Identified"
-- First email sent → "Contacted"
-- Positive response → "Warmed"
-- Actively sending introductions → "Actively Receiving Deal Flow"
+Intermediary status lives in the Intermediary Target List Sheet (`18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`) — that sheet is the single source of truth. Attio is reserved for active deal flow only. When an intermediary surfaces a real deal, the DEAL goes to Attio Active Deals; the intermediary themselves stays in the Sheet.
 
 ### Sources for Intermediary Discovery
 
@@ -691,7 +683,7 @@ Intermediaries go into the **Intermediary Pipeline** in Attio, not Active Deals:
 - **Existing network** — vault entities tagged with `relationship_type: River Guide` or `relationship_type: Intermediary`
 - **Referrals** — one intermediary often knows others
 
-Draft all intermediary emails in Superhuman via CLI.
+Draft all intermediary emails in Gmail directly.
 </intermediary_outreach>
 
 <essential_principles>
@@ -776,7 +768,7 @@ HARD STOP: never outreach to PE-owned companies. Applies to ALL channels includi
 ## Success Criteria
 
 ### Daily (Kay Email Niches)
-- [ ] 5 new Day 0 drafts in Superhuman (personalized, research brief completed)
+- [ ] 5 new Day 0 drafts in Gmail (personalized, research brief completed)
 - [ ] All due follow-ups (Day 3/14) drafted in Superhuman
 - [ ] All due LinkedIn DMs (Day 6) surfaced in briefing
 - [ ] Target sheet updated in real-time as Kay confirms sends

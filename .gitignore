@@ -52,3 +52,11 @@ brain/context/preferences.md
 .mcp.json
 .granola-key
 .motion-key
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+
+# Backup files from credential rotations — contain stale/revoked keys, never commit
+scripts/.env*.bak*

@@ -1,0 +1,42 @@
+{
+  "date": "2026-05-04",
+  "scan_started_at": "2026-05-04T11:27:17Z",
+  "scan_finished_at": "2026-05-04T11:29:31Z",
+  "failures_detected": 2,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 2,
+  "suppressed_count": 0,
+  "runtime_seconds": 134,
+  "triggered_by": "daily",
+  "results": [
+    {
+      "job": "target-discovery",
+      "cause": "VALIDATOR_REJECT",
+      "action": "SURFACE",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_posted": true,
+      "suppression_reason": null,
+      "triggered_by": "daily",
+      "last_log_path": "/Users/kaycschneider/Documents/AI Operations/logs/scheduled/target-discovery-2026-05-03-1503.log",
+      "last_log_mtime": "2026-05-03T16:31:41-04:00",
+      "error_signature": "VALIDATOR FAILED — overriding skill exit code",
+      "slack_text": "launchd-debugger: target-discovery FAILED — VALIDATOR_REJECT. Phase 2 validator flagged 27 enrichment-integrity drift issues — date-anchor logic in _mon_fri_tab_names() compares Sunday-run pool (next week) against last week's already-populated Call Log tabs. Recommended: patch enrichment_integrity_check.py:_mon_fri_tab_names() to anchor on next Monday when called on a Sunday, then re-run launchctl start com.greenwich-barrow.target-discovery. Log: /Users/kaycschneider/Documents/AI Operations/logs/scheduled/target-discovery-2026-05-03-1503.log"
+    },
+    {
+      "job": "jj-operations",
+      "cause": "VALIDATOR_REJECT",
+      "action": "SURFACE",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_posted": true,
+      "suppression_reason": null,
+      "triggered_by": "daily",
+      "last_log_path": "/Users/kaycschneider/Documents/AI Operations/logs/scheduled/jj-operations-2026-05-03-1800.log",
+      "last_log_mtime": "2026-05-03T18:08:49-04:00",
+      "error_signature": "VALIDATOR FAILED — overriding skill exit code",
+      "slack_text": "launchd-debugger: jj-operations FAILED — VALIDATOR_REJECT. Sunday-prep halted at pool-quality gate (9 Premium Pest pool rows have blank Owner Name from Apollo no-match) so Mon-Fri Call Log tabs for week of 2026-05-04 were not created; validator flagged missing tabs. Recommended: surface as 🔴 in Monday briefing for Kay to choose (a) re-run Phase 2 excluding Apollo no-match, (b) trigger Phase 1 monthly refill, or (c) relax headless Owner-Name invariant to allow Tier 2 rows per SKILL.md. Log: /Users/kaycschneider/Documents/AI Operations/logs/scheduled/jj-operations-2026-05-03-1800.log"
+    }
+  ]
+}

@@ -41,7 +41,7 @@ At runtime, also query Attio for the full investor list to catch any investor no
 
 ## Formatting Rules (All Briefs)
 
-- G&B letterhead template (ID: `1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF`). Logo centered.
+- G&B letterhead template (ID: `1hXnexnOTDQwAo4lII2kbsPY3IsbcfKyaJthrAPjGb78`). Logo centered.
 - Avenir font, black text only
 - No em dashes (U+2014). Use periods, commas, line breaks.
 - File naming: `{Subject} {M.DD.YY}` for Google Docs
@@ -281,7 +281,7 @@ RED FLAGS / WATCH ITEMS
 #### Google Doc
 Copy G&B letterhead template, rename, populate with brief content:
 ```bash
-gog drive copy "1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF" "{Person Name} Brief {M.DD.YY}" --parent "1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ"
+gog drive copy "1hXnexnOTDQwAo4lII2kbsPY3IsbcfKyaJthrAPjGb78" "{Person Name} Brief {M.DD.YY}" --parent "1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ"
 # Then populate content via gog docs edit or batch update
 ```
 Save to RESEARCH/BRIEFS folder (ID: `1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ`).
@@ -402,7 +402,7 @@ Last call: {date of last call}
 #### Google Doc
 Copy G&B letterhead template, rename, populate:
 ```bash
-gog drive copy "1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF" "{Investor Name} Call Prep {M.DD.YY}" --parent "{FOLDER_ID}"
+gog drive copy "1hXnexnOTDQwAo4lII2kbsPY3IsbcfKyaJthrAPjGb78" "{Investor Name} Call Prep {M.DD.YY}" --parent "{FOLDER_ID}"
 ```
 
 Route to the correct folder by investor:
@@ -474,7 +474,7 @@ Every brief produced by either subagent must pass all applicable checks before t
 - Also check for U+2013 (en dash) and replace
 
 ### Check 6: Doc Uses G&B Letterhead Template
-- Verify the doc was created by copying template ID `1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF`
+- Verify the doc was created by copying template ID `1hXnexnOTDQwAo4lII2kbsPY3IsbcfKyaJthrAPjGb78`
 - Logo must be centered
 - Font must be Avenir
 - Text must be black only

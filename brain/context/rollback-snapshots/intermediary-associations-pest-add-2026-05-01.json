@@ -1,0 +1,24 @@
+{
+  "range": "'Association Heads'!A1:R10",
+  "values": [
+    [
+      "Source",
+      "Firm / Org Name",
+      "Website",
+      "Headquarters",
+      "Focus / Specialty",
+      "Lead Contact",
+      "Title",
+      "Email",
+      "Office Phone",
+      "Direct / Mobile",
+      "LinkedIn (Person)",
+      "LinkedIn (Firm)",
+      "Credentials",
+      "Signup URL",
+      "Deal Email Pattern",
+      "1st Outreach Date",
+      "Notes"
+    ]
+  ]
+}

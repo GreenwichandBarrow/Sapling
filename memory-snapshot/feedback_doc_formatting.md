@@ -6,7 +6,7 @@ type: feedback
 
 All Google Docs created for Kay must follow these formatting rules:
 
-- **Letterhead:** Use the G&B letterhead from Master Templates (`G&B Letterhead 1.1.25.docx`, ID: `1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF`)
+- **Letterhead:** Use the G&B letterhead from Master Templates (`G&B Letterhead Template`, native Google Doc, ID: `1hXnexnOTDQwAo4lII2kbsPY3IsbcfKyaJthrAPjGb78`). The original `.docx` (ID `1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF`, renamed to archive) is preserved for Word/Pages workflows but is NOT copyable via `gog drive copy` for native-Doc edits.
 - **Logo placement:** Always centered on the page
 - **Font:** Avenir (all text, all sizes, headings and body)
 - **Font color:** Black only. NEVER blue. NEVER any other color.

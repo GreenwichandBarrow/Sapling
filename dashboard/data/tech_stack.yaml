@@ -1,0 +1,90 @@
+# Tech Stack Inventory — Greenwich & Barrow
+#
+# Validated by Kay 2026-04-24 against her actual stack.
+# Read by dashboard/data_sources.py::load_tech_stack().
+# Read by Infrastructure page Zone 5 (full inventory reference list).
+#
+# Each category is rendered as a row of chips. Order here = display order.
+# `note` is optional, shows as small muted text after the service name.
+# `health` is optional and reflects current operational state:
+#   ok      — green dot
+#   warn    — yellow dot (e.g., key expiring, schema drift)
+#   alert   — red dot (e.g., expired key, broken auth)
+#   retired — grey dot (kept for historical reference)
+#
+# When health probes go live in Zone 2, those override these static values
+# for matching services. This file is the canonical "what we run on" list.
+
+categories:
+  - label: "AI & LLMs"
+    services:
+      - { name: "Claude Code", note: "Anthropic" }
+      - { name: "ChatGPT", note: "OpenAI" }
+      - { name: "Whispr", note: "voice-to-text" }
+
+  - label: "CRM & Pipeline"
+    services:
+      - { name: "Attio", note: "CRM + future Meet Record" }
+      - { name: "Linkt", note: "list builder · sunset 2026-05-30" }
+      - { name: "Apollo", note: "enrichment only" }
+      - { name: "DealsX", note: "email + LinkedIn DMs · live May 7" }
+
+  - label: "Email"
+    services:
+      - { name: "Gmail", note: "Google Workspace" }
+      - { name: "Superhuman", note: "primary client" }
+
+  - label: "Calendar & Scheduling"
+    services:
+      - { name: "Google Calendar" }
+      - { name: "Howie", note: "AI scheduling" }
+
+  - label: "Phone & Voice"
+    services:
+      - { name: "Google Voice" }
+
+  - label: "Notes & Knowledge"
+    services:
+      - { name: "Granola", note: "may be absorbed by Attio Meet Record", health: warn }
+      - { name: "Obsidian", note: "vault" }
+
+  - label: "Storage & Docs"
+    services:
+      - { name: "Google Drive" }
+      - { name: "Google Docs" }
+      - { name: "Google Sheets" }
+      - { name: "Google Slides" }
+      - { name: "Microsoft Excel", note: "365" }
+
+  - label: "Task Management"
+    services:
+      - { name: "Motion", note: "key expires 7d", health: warn }
+
+  - label: "Communication"
+    services:
+      - { name: "Slack" }
+      - { name: "LinkedIn" }
+
+  - label: "Design"
+    services:
+      - { name: "Canva" }
+
+  - label: "Web Presence"
+    services:
+      - { name: "Squarespace", note: "website" }
+
+  - label: "Operations & Finance"
+    services:
+      - { name: "Gusto", note: "payroll" }
+
+  - label: "Development"
+    services:
+      - { name: "Cursor", note: "IDE" }
+      - { name: "GitHub" }
+      - { name: "Node.js", note: "runtime" }
+
+  - label: "Infrastructure & Networking"
+    services:
+      - { name: "Hetzner", note: "server hosting · ~$11/mo" }
+      - { name: "Tailscale", note: "VPN / mesh networking · free tier" }
+      - { name: "1Password", note: "password manager · $3/mo" }

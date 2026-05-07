@@ -1,5 +1,5 @@
 ---
-description: Morning orchestration — email-intel, relationship-manager, pipeline-manager, target-discovery, 4-bucket briefing
+description: Morning orchestration — email-intel, relationship-manager, pipeline-manager, target-discovery, Decisions-only briefing (migrated from 4-bucket 2026-04-25 once Command Center dashboard went live)
 ---
 
 # /goodmorning
@@ -35,7 +35,8 @@ Pipeline-manager assembles the raw briefing payload.
 ### Step 4 — Active-Outreach niche check
 
 For each niche with status `Active-Outreach` on the Industry Research Tracker:
-- Check target sheet fill rate
+- **Filter by Outreach Channel FIRST.** target-discovery only fills target sheets for `Kay Email` and `JJ-Call-Only` channels. **`DealsX Email` niches are SKIPPED unconditionally** — Sam's team at DealsX manages the contact universe externally; the local target sheet for a DealsX niche is *expected* to remain empty and an empty sheet is NOT a refill signal. Never surface a DealsX niche as "needs target-discovery."
+- For Kay Email + JJ-Call-Only niches only: check target sheet fill rate
 - If new activation with no target sheet OR weekly dashboard flagged refill needed → run target-discovery
 - Skip niches with adequate pipeline
 
@@ -49,25 +50,51 @@ JJ-operations runs independently via launchd (8am) and posts to Slack at 10am. D
 - **Wednesday:** + niche-intelligence sprint status
 - **Friday:** + weekly-tracker + health-monitor + calibration-workflow (parallel, results needed by 10am ET)
 
-### Step 7 — Judge + present briefing (4-bucket, action-keyed)
+### Step 7 — Judge + present briefing (Decisions-only)
 
-Read all outputs. Apply chief-of-staff judgment. Present the briefing in 4 action-keyed buckets per `feedback_briefing_three_buckets` and `feedback_decision_fatigue_minimization`. Numbering ascends across all buckets — never resets to 1.
+Migrated 2026-04-25 from the prior 4-bucket format. The Command Center
+dashboard now holds the displaced context (Infrastructure + C-Suite & Skills
+pages = system status; Active Deal Pipeline + M&A Analytics pages = pipeline
+state + activity rollups). Briefing shrinks to a single ordered list of
+decisions. See CLAUDE.md "Morning Workflow" Step 9 for the full format spec.
 
-1. **Today / ASAP** — must ship today: active-deal fast-path, payment due, JJ unblocks, time-sensitive sends
-2. **Decisions** — needs Kay's judgment. Each item uses Obama framing: **RECOMMEND: [option]** + one-sentence reason → **YES / NO / DISCUSS**. Aim ≤5 items.
-3. **This Week** — must do this week, not today
-4. **Dropped Balls** — slipped follow-ups, overdue cadences, warm-intro replies that need recovery (highest-leverage bucket)
+Read all outputs. Apply chief-of-staff judgment. Present a **single Decisions
+list** per `feedback_decision_fatigue_minimization`. ≤5 items. Numbering
+ascends across the list — never resets.
 
-Cluster by entity (one entity heading per person/deal/niche, not scattered). Label every item with C-suite ownership (*CFO/CIO/CMO/CPO/GC*) per `feedback_c_suite_naming`.
+**Per-item format (Obama framing):**
+```
+N. {urgency-emoji} [{C-suite}] **RECOMMEND: {action}** — {one-sentence reason}
+   → YES / NO / DISCUSS
+```
 
-**System Status** is a compact tail under the buckets — 1 line per scheduled skill, expand only if broken/blocked.
+**Urgency tags** (replace prior buckets):
+- 🔴 Today / ASAP — active-deal fast-path, time-sensitive sends, soft-nudges
+- 🟡 This week — bounded but not urgent
+- 🟢 Dropped balls / nurture — recovery items (still surface — they cost deals)
 
-**Briefing hygiene:**
-- Only surface items that need action or decision. Omit anything done/resolved/loop-closed.
+Sort 🔴 → 🟡 → 🟢. Cluster by entity (collapse to one item per person/deal/niche).
+C-suite labels per `feedback_c_suite_naming`.
+
+**Header line above the list:** one sentence pointing at the dashboard, e.g.
+*"5 decisions ordered by urgency. System status + pipeline + outreach metrics
+live at localhost:8501."*
+
+**Briefing hygiene (unchanged):**
+- Only surface items that need action or decision. Omit anything done/resolved.
 - Never report back things Kay did herself.
-- Noise (true low-value items) gets archived silently, never surfaced as a "noise" section.
+- Noise gets archived silently — never a "noise" section.
 
-The pipeline-manager skill enforces these rules via stop hooks before output. If anything fails the hooks, fix in-line — do not present a malformed briefing.
+**Brief-decisions pre-flight (mandatory invariant — added 2026-04-21 after
+Guillermo miss):** Before delivering, enumerate tomorrow's external meetings.
+Each unconfirmed/non-skipped meeting MUST appear as a 🔴 item:
+**RECOMMEND: Generate brief for {name} ({time} {date})** → YES/NO/DISCUSS.
+HOLD-prefixed events with 0 non-Kay attendees = unconfirmed; surface only
+if Kay needs a soft-nudge decision.
+
+**Broken-system escalation:** If a scheduled skill failed or a snapshot job
+is stuck, surface as a 🔴 Decision: **RECOMMEND: Investigate {job}** →
+YES/NO. Don't bury silent failures.
 
 ### Step 8 — Downstream skill invocations based on signals
 
@@ -82,7 +109,7 @@ The pipeline-manager skill enforces these rules via stop hooks before output. If
 - **Numbering is additive across the conversation**, never reset. Kay replies by number.
 - **Suppress completed items.** Only surface open/pending. Never report back Kay's own work.
 - **Don't announce that pipeline-manager or email-intelligence "hasn't run yet"** — just run them silently per `feedback_pipeline_manager_no_alarm`.
-- **If a scheduled skill failed overnight**, surface it in System Status with 1 line. Don't escalate unless blocking.
+- **If a scheduled skill failed overnight**, surface it in System Status with 1 line. Don't escalate unless blocking. (Post-dashboard-launch: this routes to the dashboard's System Map pane instead.)
 - **Active deals (CIM, NDA, LOI, financials) get same-day treatment**, not next-morning briefing delay per `feedback_active_deal_urgency`.
 - **Every briefing item has an explicit question or action.** No ambiguous items per `feedback_morning_briefing_format`.
 

@@ -7,6 +7,8 @@ company: "[[entities/ashford-ventures]]"
 role: Managing Partner
 email: glavergne@ashfordventures.com
 phone: 787-342-3947
+attio_id: 2b613b57-537c-4cef-8fc5-e053b51d7a98
+attio_synced_at: 2026-05-06T10:34:30Z
 tags:
   - date/2026-01-15
   - entity
@@ -26,6 +28,9 @@ tags:
 - Introduced [[entities/austin-yoder|Austin Yoder]] (Magrathea Partners, fellow searcher)
 - Attended HG site visit (Oct 10, 2025)
 - Advised against carve-outs/book-of-business acquisitions
+
+## Pending Discussion Topics (surface in next meeting brief)
+- **Capacity letter request** (added 2026-05-04) — Kay needs a capacity letter from Guillermo to support broker-channel positioning. Surface in next bi-weekly call prep brief. No need to email about it beforehand. Once committed/declined, remove from this list.
 
 ## Communication Style
 - **Tone:** Strategic, direct, supportive

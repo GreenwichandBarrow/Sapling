@@ -1,0 +1,61 @@
+# Credits & Subscription Spend — Infrastructure Zone 3
+#
+# Each tile has:
+#   label       — short identifier (uppercase tracked)
+#   value       — main number (string for unit flexibility)
+#   unit        — one-word unit ("remaining", "/ month", "/ yr")
+#   runway_text — runway phrase (e.g. "22 days at current burn (4/day)")
+#   runway_color — green | yellow | red | none (colors the runway phrase)
+#   trend       — small trend line (e.g. "used 18 this week (+12% vs prior)")
+#   trend_arrow — up | down | flat (colors and renders the arrow)
+#
+# Live billing-API readers wire later — until then operator-maintained.
+
+tiles:
+  - label: Apollo credits
+    value: "—"
+    unit: remaining
+    runway_text: pending refresh_apollo_snapshot.py (Phase B follow-up)
+    runway_color: none
+    trend: list-builder draws on Apollo · monitor before bulk runs
+    trend_arrow: flat
+
+  - label: Linkt credits
+    value: "—"
+    unit: records
+    runway_text: through 2026-05-30 · sunset planned
+    runway_color: green
+    trend: steady use · winding down
+    trend_arrow: flat
+
+  - label: Claude API · this month
+    value: "—"
+    unit: spent
+    runway_text: pending billing-API wire-up
+    runway_color: none
+    trend: live read pending
+    trend_arrow: flat
+
+  - label: Subscription cost
+    value: "—"
+    unit: / month
+    runway_text: bookkeeper P&L pending intake
+    runway_color: none
+    trend: budget-manager output
+    trend_arrow: flat
+
+  - label: Motion · annual
+    value: $228
+    unit: / yr
+    runway_text: in range · auto-renew on
+    runway_color: green
+    trend: flat · same plan as 2025
+    trend_arrow: flat
+
+  - label: Superhuman
+    value: $30
+    unit: / month
+    runway_text: in range · core dependency
+    runway_color: green
+    trend: flat · no action
+    trend_arrow: flat

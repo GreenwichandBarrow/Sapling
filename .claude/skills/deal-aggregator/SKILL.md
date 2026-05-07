@@ -44,14 +44,14 @@ Surface prepped deals — businesses that are actively selling — from every no
   - **SaaS Buy Box** — doc ID `1I8r8w0FPJUepfBxM6HM7V_q4ibmitybIBF6w6sMQumU` — applies to Vertical SaaS for Luxury and all new-niche SaaS listings
 - **Industry Research Tracker** (Sheet: `1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins`, WEEKLY REVIEW tab) — active niche list read at scan start
 - **email-scan-results artifact** (`brain/context/email-scan-results-{date}.md`) — inbound deal emails classified by email-intelligence
-- **skill/pipeline-manager** — Attio Intermediary Pipeline (broker stages, relationship status)
+- **skill/pipeline-manager** — Intermediary Target List Sheet (broker stages, relationship status)
 
 **Data Availability Rule (applies to every buy-box criterion):** Missing data on a listing is never grounds to auto-reject. Apply each criterion only when the corresponding field is disclosed. If a field is not disclosed, the deal is NOT rejected on that criterion — it is flagged for review. A deal with several "not disclosed" fields but no disclosed-and-failed fields still passes the buy-box gate.
 
 **Outputs:**
 - Deal matches → individual Slack notifications → Kay reacts thumbs up/down → pipeline-manager takes over on NDA
 - Niche signals → niche-intelligence (new thesis ideas, market patterns)
-- New intermediary entities → Attio Intermediary Pipeline
+- New intermediary entities → Intermediary Target List Sheet (`18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`)
 </objective>
 
 <channels>
@@ -121,6 +121,8 @@ For each active niche from Step 0a, resolve its keyword corpus:
 
 **Step 0b — Load buy-box criteria (REQUIRED before scanning):**
 Read the three buy-box docs from the Deal Aggregator Drive folder. These are the single source of truth for all filter criteria. Never use cached or hardcoded bands; always re-read on every run so the skill reflects Kay's current criteria.
+
+**Threshold discipline:** Per `feedback_strategic_thresholds_need_grounding` and `feedback_deal_screen_300k_salary_15pct_margin` — financial floors are constraint-driven (Kay's $300K salary + debt service produces the $2M EBITDA practical floor). Never relax them by source, channel, niche, or any other axis. Relax INDUSTRY filters or NICHE-strict requirements when the channel justifies it (per `feedback_broker_channel_opportunistic_floor` — separate Broker-Channel Buy Box, geography window pending Kay's lock). Never touch the financial gate without a constraint argument.
 ```bash
 gog docs cat 14hf5QaKtcP_Um0u_P0LZyUM_zvv7haWVVkgGmRL9iyc > /tmp/buybox-services.txt
 gog docs cat 1lkxntRwn3FOPXig86qF36eNyUS0BfbMumfNuIyInD-M > /tmp/buybox-insurance.txt
@@ -132,6 +134,19 @@ Parse each doc's financial bands, structural requirements, industry hard-exclude
 - Specialty Insurance Brokerage listings → Insurance Buy Box
 - Vertical SaaS listings (any vertical) → SaaS Buy Box
 - All other listings (pest, estate mgmt, coffee, art storage, art advisory, cleaning, or new-niche non-SaaS non-Insurance) → Services Buy Box
+- **Broker-channel listings (per source `Type` in OPPORTUNISTIC table below)** → **Broker-Channel Buy Box** (PENDING BUILD per Kay 5/3 — geography window not yet locked; until built, broker-channel listings still route to the matching Services/Insurance/SaaS buy-box above and are screened against it).
+
+**Channel-type routing (per Kay 5/3 — pending broker buy-box build):**
+
+The Sourcing Sheet's `Type` field is recorded for each match for future routing. Once the Broker-Channel Buy Box doc is built (geography window + short criteria list per Kay's 5/3 spec), `OPPORTUNISTIC` channels will route there instead of the niche buy-box.
+
+| Source Type | Status |
+|---|---|
+| `Marketplace`, `AI Marketplace`, `Private Deal Network` | STRICT — niche buy-box (current behavior) |
+| `Email-only broker`, `Newsletter blast`, `Advisory + Deal Platform`, `Marketplace + Email`, `Email-only broker + Buyer Portal` | OPPORTUNISTIC — niche buy-box for now; will route to Broker-Channel Buy Box once built |
+| `Strategic Acquirer`, `Industry Publication`, `News + Community`, `Advisory` (intel-only) | INTEL only — niche signals, no Slack ping |
+
+CALIFORNIA soft-exclude per `feedback_no_california` applies on all modes — flag, don't auto-kill.
 
 **Scraper routing — which fetch tool to use per source:**
 
@@ -278,10 +293,10 @@ When Kay receives a broker introduction (detected via email-scan-results).
 2. **Research** — Visit broker's website. Assess: searchable platform? Industries? Deal sizes? Relevant to active theses?
 3. **Add to system:**
    - Create entity in `brain/entities/{slug}.md`
-   - Add to Attio Intermediary Pipeline at "Identified"
+   - Add to Intermediary Target List Sheet (`18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`)
    - If scrapable → add to scanning rotation
    - If email-only → classify as email-only intermediary
-4. **Draft response** — Superhuman draft: short, warm, offer NDA, don't over-explain
+4. **Draft response** — Gmail draft (`gog gmail draft create`): short, warm, offer NDA, don't over-explain
 5. **Update this skill** — Add new platform to scanning list if applicable
 
 **Classify new intermediaries:**
@@ -353,6 +368,24 @@ email_deals: {n}
 
 ## Near Misses (not Slacked)
 - {listing} — {reason not flagged}
+
+## Listings Reviewed (full log)
+
+Every listing scraped or parsed during this run lands here as one row, regardless of verdict. This is the per-listing forensic log that makes future re-screens (e.g. broker-buy-box reruns, dual-filter retroactive replays) a 5-minute query instead of a 90-minute artifact-mining exercise. Aggregate counts in Source Scorecard tell you HOW MANY listings each source produced; this section tells you WHICH listings and WHY each was tagged the way it was.
+
+Required when ≥ 1 listing was reviewed. If zero listings were reviewed (every source blocked), emit the table header only, with no data rows. Sort: PASS first, then NEAR-MISS, then FLAG, then HARD-REJECT.
+
+| Source | Headline | Geo | Revenue | EBITDA | Margin | Industry | Verdict | Reject Reason |
+|--------|----------|-----|---------|--------|--------|----------|---------|---------------|
+| {Source} | {Listing headline or blind-profile descriptor} | {state, or "undisclosed"} | {Revenue or "undisclosed"} | {EBITDA or "undisclosed"} | {Margin% or "undisclosed"} | {Industry per listing} | {PASS / NEAR-MISS / HARD-REJECT / FLAG} | {one-line reason if not PASS, else blank} |
+
+Verdict definitions:
+- `PASS` — clears buy-box gate AND matches an active niche corpus. Slack-posted (subject to fingerprint dedup).
+- `NEAR-MISS` — clears buy-box financial gate but no active-niche corpus match. Worth tracking for thesis-drift / corpus-tuning calibration.
+- `HARD-REJECT` — fails buy-box on a disclosed-and-failed criterion, hits an industry hard-exclude, or geography hard-excluded.
+- `FLAG` — undisclosed-field heavy or ambiguous; logged for human review without auto-rejection.
+
+Forbidden: do not summarize listings into aggregate counts only. Every listing that was scraped or parsed gets one row in the Listings Reviewed log.
 
 ## Source Scorecard
 
@@ -490,6 +523,28 @@ After Kay approves a proposed addition or retirement:
 - Pre-write snapshot of the sheet stored per `feedback_subagent_sheet_write_safety` — enables rollback if a write clobbers an unintended row.
 </weekly_digest>
 
+<wrapper_hardening>
+## Wrapper Hardening (POST_RUN_CHECK)
+
+Per `feedback_mutating_skill_hardening_pattern.md`, every scheduled mutating skill ships with a wrapper-level integrity validator. Deal-aggregator's three modes each have a validator wired into `scripts/run-skill.sh`:
+
+| Mode | Headless prompt | Validator command (POST_RUN_CHECK) |
+|------|-----------------|-------------------------------------|
+| Morning (`deal-aggregator:`) | `headless-morning-prompt.md` | `python3 scripts/validate_deal_aggregator_integrity.py --mode morning --date $TODAY` |
+| Afternoon (`deal-aggregator:--afternoon`) | `headless-afternoon-prompt.md` | `python3 scripts/validate_deal_aggregator_integrity.py --mode afternoon --date $TODAY` |
+| Friday digest (`deal-aggregator:--digest-mode`) | `headless-friday-prompt.md` | `python3 scripts/validate_deal_aggregator_integrity.py --mode digest --date $TODAY` |
+
+**What the validator checks:**
+- Today's artifact exists at the expected path (morning / afternoon / digest)
+- File size ≥ 200 bytes (catches empty stubs)
+- YAML frontmatter is present and well-formed, with `date:` matching the run date
+- All required section headers are present (6 daily sections from 2026-05-04 afternoon onward — date-gated; previously 5 / 5 digest sections)
+
+**Failure path:** Validator non-zero → wrapper overrides skill exit code → Slack alert posts to `SLACK_WEBHOOK_OPERATIONS` with "VALIDATOR FAILED" prefix. This catches the silent-success failure mode where Claude exits 0 without writing the artifact (4/27 + 4/30 morning incidents — the run emitted operator-question framings instead of executing, exited cleanly, and the absence was only noticed when the afternoon top-up flagged "morning artifact missing").
+
+Wired 2026-05-02 (launchd-debugger investigation). Pattern source: `memory/feedback_mutating_skill_hardening_pattern.md`.
+</wrapper_hardening>
+
 <stop_hooks>
 ## Sub-Agent Stop Hooks
 
@@ -513,9 +568,9 @@ After Kay approves a proposed addition or retirement:
 
 ### New Introduction Stop Hook
 - [ ] Entity created in vault with proper schema
-- [ ] Attio Intermediary Pipeline entry at "Identified"
+- [ ] Intermediary Target List Sheet entry
 - [ ] Website researched and scrapability assessed
-- [ ] Draft response in Superhuman — short, warm, offers NDA
+- [ ] Draft response in Gmail (`gog gmail draft create`) — short, warm, offers NDA
 
 ### Friday Digest Stop Hook (Phase 2)
 - [ ] Digest file exists at `brain/trackers/weekly/{YYYY-MM-DD}-deal-aggregator-digest.md`
@@ -538,7 +593,6 @@ After Kay approves a proposed addition or retirement:
 
 ### Weekly
 - [ ] Niche signals compiled and sent to niche-intelligence
-- [ ] Intermediary pipeline stages reviewed (any gone cold?)
 - [ ] Platform scanning status (any sites changed/blocked?)
 - [ ] Volume trend: are we hitting 1-3/day? If not, identify gaps and expand sources.
 

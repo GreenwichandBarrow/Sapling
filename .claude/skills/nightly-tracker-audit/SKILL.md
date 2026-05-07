@@ -82,12 +82,24 @@ For each row where Col C = "Killed":
 4. Re-number Rank column (1, 2, 3...)
 5. Clear all data rows, write sorted data back with no blank rows
 
-## Step 5: Validate
+## Step 5: Validate — MANDATORY
 
+**Wrapper-level POST_RUN_CHECK validator** (authoritative): `scripts/validate_nightly_tracker_audit_integrity.py`
+
+Runs after `claude -p` exits, regardless of skill-internal logic. Catches the silent-success failure mode where Claude exits 0 but WEEKLY REVIEW still has Tabled/Killed rows lingering, blank gaps, or non-sequential rank.
+
+**Copyable invocation (manual run):**
+```bash
+python3 "/Users/kaycschneider/Documents/AI Operations/scripts/validate_nightly_tracker_audit_integrity.py"
+```
+
+The launchd wrapper (`scripts/run-skill.sh`) overrides EXIT_CODE on POST_RUN_CHECK failure and emits a Slack alert prefixed `VALIDATOR FAILED`. Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead: `ai-ops-jrj.2`.
+
+**In-line invariants (informational; validator is authoritative):**
 - Row count after = row count before minus moved rows
 - No blank rows between niches
-- Rank is sequential
-- Moved niches appear in correct tab
+- Rank is sequential 1..N
+- Moved niches appear in TABLED or KILLED tab
 </workflow>
 
 <drive_folders>

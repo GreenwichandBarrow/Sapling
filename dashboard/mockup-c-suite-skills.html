@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>G&B Command Center — Mockup (C-Suite &amp; Skills)</title>
+<style>
+  :root {
+    --bg: #0B0D12;
+    --panel: #141821;
+    --panel-hover: #1A1F2A;
+    --row-hover: #181C26;
+    --border: #242A36;
+    --border-soft: #1C212C;
+    --text: #E8ECF3;
+    --text-muted: #8B93A7;
+    --text-dim: #5B6378;
+    --accent: #4A9EFF;
+    --green: #3FD17F;
+    --yellow: #F5C451;
+    --red: #FF5A5A;
+    --neutral: #6B7280;
+    --purple: #B084F0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    font-family: "Avenir Next", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .app {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    height: 100vh;
+  }
+
+  /* ---------- SIDEBAR ---------- */
+  .sidebar {
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    padding: 20px 0;
+    overflow-y: auto;
+  }
+  .brand {
+    padding: 0 20px 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+  .brand .logo { font-size: 15px; font-weight: 600; letter-spacing: 0.02em; color: var(--text); }
+  .brand .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .nav-section { padding: 0 12px; }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 12px; border-radius: 6px;
+    color: var(--text-muted); font-size: 13px; cursor: pointer;
+    transition: all 0.15s; margin-bottom: 2px;
+    text-decoration: none;
+  }
+  .nav-item:hover { background: var(--panel-hover); color: var(--text); }
+  .nav-item.active { background: rgba(74, 158, 255, 0.12); color: var(--accent); font-weight: 500; }
+  .nav-item .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim); }
+  .nav-item.active .dot { background: var(--accent); }
+
+  /* ---------- MAIN ---------- */
+  .main {
+    overflow-y: auto;
+    padding: 24px 32px 40px;
+  }
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .topbar h1 { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; }
+  .topbar .meta { font-size: 12px; color: var(--text-dim); }
+  .topbar .meta .sep { margin: 0 8px; color: var(--border); }
+
+  .subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+  .subtitle .highlight { color: var(--text); font-weight: 500; }
+
+  /* ---------- SUMMARY ---------- */
+  .summary {
+    display: flex;
+    gap: 28px;
+    padding: 10px 0 20px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .summary .num { color: var(--text); font-weight: 500; margin-right: 5px; font-variant-numeric: tabular-nums; }
+  .summary .num.red { color: var(--red); }
+  .summary .num.green { color: var(--green); }
+
+  /* ---------- FILTER BAR ---------- */
+  .filter-bar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .filter-tabs { display: flex; gap: 4px; }
+  .filter-tab {
+    padding: 6px 12px; font-size: 12px;
+    color: var(--text-muted); background: transparent;
+    border: 1px solid var(--border); border-radius: 6px;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .filter-tab:hover { background: var(--panel); color: var(--text); }
+  .filter-tab.active { background: rgba(74, 158, 255, 0.1); border-color: var(--accent); color: var(--accent); }
+  .filter-select {
+    padding: 6px 10px; font-size: 12px;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text-muted); font-family: inherit; cursor: pointer;
+  }
+  .filter-select:hover { color: var(--text); border-color: #2E3647; }
+  .filter-search {
+    flex: 1; max-width: 260px; padding: 6px 12px; font-size: 12px;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text); font-family: inherit;
+  }
+  .filter-search::placeholder { color: var(--text-dim); }
+
+  /* ---------- SECTIONS ---------- */
+  .csuite {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .csuite-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.01);
+    cursor: pointer;
+  }
+  .csuite-head:hover { background: rgba(255,255,255,0.02); }
+  .csuite-head-left { display: flex; align-items: baseline; gap: 12px; }
+  .csuite-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+  .csuite-sublabel {
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .csuite-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+  .csuite-meta .pill {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    background: rgba(63, 209, 127, 0.10);
+    color: var(--green);
+    border-radius: 4px;
+    font-size: 10.5px;
+    font-weight: 500;
+  }
+  .csuite-meta .pill.red { background: rgba(255, 90, 90, 0.12); color: var(--red); }
+  .csuite-meta .pill.neutral { background: rgba(139, 147, 167, 0.14); color: var(--text-muted); }
+
+  /* ---------- SKILL ROWS ---------- */
+  .skill-row {
+    display: grid;
+    grid-template-columns: 28px 1fr 200px 150px 96px 24px;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border-soft);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .skill-row:last-child { border-bottom: none; }
+  .skill-row:hover { background: var(--row-hover); }
+
+  .status-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--neutral);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.02);
+  }
+  .status-dot.green { background: var(--green); box-shadow: 0 0 8px rgba(63, 209, 127, 0.35); }
+  .status-dot.yellow { background: var(--yellow); box-shadow: 0 0 8px rgba(245, 196, 81, 0.35); }
+  .status-dot.red { background: var(--red); box-shadow: 0 0 8px rgba(255, 90, 90, 0.35); }
+  .status-dot.grey { background: var(--text-dim); }
+  .status-dot.ondemand { background: transparent; border: 1px dashed var(--text-dim); }
+
+  /* skill cell = name + description stacked */
+  .skill-cell { min-width: 0; }
+  .skill-name {
+    font-weight: 500;
+    font-family: "SF Mono", "Menlo", "Monaco", monospace;
+    font-size: 12.5px;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .skill-desc {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  .skill-schedule {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .skill-schedule .sched-icon { color: var(--text-dim); margin-right: 6px; font-size: 11px; }
+  .skill-schedule.dim { color: var(--text-dim); }
+
+  .skill-last-run {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .skill-last-run.green { color: var(--green); }
+  .skill-last-run.red { color: var(--red); }
+  .skill-last-run.dim { color: var(--text-dim); }
+
+  .skill-badge {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .skill-badge.scheduled { background: rgba(176, 132, 240, 0.12); color: var(--purple); }
+  .skill-badge.ondemand { background: rgba(139, 147, 167, 0.10); color: var(--text-muted); }
+  .skill-badge.gap { background: rgba(255, 90, 90, 0.14); color: var(--red); }
+
+  .skill-chevron { color: var(--text-dim); text-align: center; font-size: 14px; }
+  .skill-row:hover .skill-chevron { color: var(--accent); }
+
+  /* expanded state */
+  .skill-row.expanded { background: var(--row-hover); }
+  .skill-row.expanded .skill-chevron { color: var(--accent); transform: rotate(90deg); }
+  .skill-detail {
+    padding: 0 18px 16px 60px;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-soft);
+    background: var(--row-hover);
+  }
+  .skill-detail .run-line {
+    display: grid;
+    grid-template-columns: 80px 80px 1fr;
+    gap: 16px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+    font-variant-numeric: tabular-nums;
+  }
+  .skill-detail .run-line:last-child { border-bottom: none; }
+  .skill-detail .run-line .ok { color: var(--green); }
+  .skill-detail .run-line .err { color: var(--red); }
+  .skill-detail .run-line .warn { color: var(--yellow); }
+  .skill-detail .run-line .log-snippet {
+    font-family: "SF Mono", "Menlo", monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .skill-detail .log-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+  }
+  .skill-detail .log-action { color: var(--accent); text-decoration: none; cursor: pointer; }
+  .skill-detail .log-action:hover { text-decoration: underline; }
+
+  /* empty section (GC) */
+  .csuite-empty {
+    padding: 18px;
+    font-size: 12.5px;
+    color: var(--text-dim);
+    font-style: italic;
+    text-align: center;
+  }
+  .csuite-empty .candidates {
+    display: block;
+    margin-top: 6px;
+    font-style: normal;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: "SF Mono", "Menlo", monospace;
+  }
+
+  .page-note {
+    margin-top: 32px;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">G&amp;B Command Center</div>
+      <div class="sub">Greenwich &amp; Barrow</div>
+    </div>
+    <div class="nav-section">
+      <a class="nav-item" href="mockup-landing.html"><span class="dot"></span>Dashboard</a>
+      <a class="nav-item" href="mockup-deal-aggregator.html"><span class="dot"></span>Deal Aggregator</a>
+      <a class="nav-item" href="mockup-deal-pipeline.html"><span class="dot"></span>Active Deal Pipeline</a>
+      <div class="nav-item"><span class="dot"></span>M&amp;A Analytics</div>
+      <div class="nav-item active"><span class="dot"></span>C-Suite &amp; Skills</div>
+      <a class="nav-item" href="mockup-infrastructure.html"><span class="dot"></span>Infrastructure</a>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <div class="topbar">
+      <h1>C-Suite &amp; Skills</h1>
+      <div class="meta">
+        Friday, April 24, 2026
+        <span class="sep">•</span>
+        Last launchd scan 5s ago
+        <span class="sep">•</span>
+        Refreshing every 60s
+      </div>
+    </div>
+
+    <div class="subtitle">
+      Scheduled-skill canary organized by C-suite agent. <span class="highlight">Green = fired today, red = should have fired but didn't, dashed = on-demand.</span>
+    </div>
+
+    <div class="summary">
+      <div><span class="num">32</span>skills</div>
+      <div><span class="num green">8</span>fired today</div>
+      <div><span class="num">4</span>scheduled later this week</div>
+      <div><span class="num red">1</span>scheduling gap</div>
+      <div><span class="num">19</span>on-demand</div>
+    </div>
+
+    <div class="filter-bar">
+      <div class="filter-tabs">
+        <button class="filter-tab active">All</button>
+        <button class="filter-tab">Scheduled</button>
+        <button class="filter-tab">On-demand</button>
+        <button class="filter-tab">Gaps only</button>
+      </div>
+      <select class="filter-select">
+        <option>All C-suites</option>
+        <option>CIO</option>
+        <option>CFO</option>
+        <option>CMO</option>
+        <option>CPO</option>
+        <option>GC</option>
+        <option>COO</option>
+      </select>
+      <select class="filter-select">
+        <option>All statuses</option>
+        <option>Fired</option>
+        <option>Missed</option>
+        <option>On-deck</option>
+      </select>
+      <input class="filter-search" type="text" placeholder="Search skill..." />
+    </div>
+
+    <!-- ========================= COO ========================= -->
+    <section class="csuite">
+      <div class="csuite-head">
+        <div class="csuite-head-left">
+          <div class="csuite-label">Chief of Staff</div>
+          <div class="csuite-sublabel">COO</div>
+        </div>
+        <div class="csuite-meta">
+          8 skills
+          <span class="pill">2 fired</span>
+          <span class="pill red">1 gap</span>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot green"></span>
+        <div class="skill-cell">
+          <div class="skill-name">calibration-workflow</div>
+          <div class="skill-desc">Friday meta-calibration — graduates rules to hooks, refreshes stale memories and skills.</div>
+        </div>
+        <div class="skill-schedule"><span class="sched-icon">⏱</span>Fri 8:00 AM ET</div>
+        <div class="skill-last-run green">Fired 8:01 AM</div>
+        <div class="skill-badge scheduled">Scheduled</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot green"></span>
+        <div class="skill-cell">
+          <div class="skill-name">weekly-tracker</div>
+          <div class="skill-desc">Friday activity roll-up across Gmail, Calendar, Attio, vault → Google Sheet + vault snapshot.</div>
+        </div>
+        <div class="skill-schedule"><span class="sched-icon">⏱</span>Fri 9:00 AM ET</div>
+        <div class="skill-last-run green">Fired 9:04 AM</div>
+        <div class="skill-badge scheduled">Scheduled</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot red"></span>
+        <div class="skill-cell">
+          <div class="skill-name">health-monitor</div>
+          <div class="skill-desc">System-wide health monitoring — disconnected services, missed triggers, stale data, hygiene.</div>
+        </div>
+        <div class="skill-schedule dim">CLAUDE.md says Fri — no plist registered</div>
+        <div class="skill-last-run red">Scheduling gap</div>
+        <div class="skill-badge gap">Gap</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">pipeline-manager</div>
+          <div class="skill-desc">Morning briefing assembly — reads all artifacts, judges, presents 4-bucket briefing for review.</div>
+        </div>
+        <div class="skill-schedule dim">Morning workflow</div>
+        <div class="skill-last-run green">Last run today</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">decision-traces</div>
+          <div class="skill-desc">Extract meaningful decisions from completed tasks for the calibration pipeline.</div>
+        </div>
+        <div class="skill-schedule dim">Evening workflow</div>
+        <div class="skill-last-run">Last run yesterday</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">triage</div>
+          <div class="skill-desc">Process queue items needing human decision — medium/low confidence and unclassified.</div>
+        </div>
+        <div class="skill-schedule dim">Queue overflow</div>
+        <div class="skill-last-run">Last run today</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">today</div>
+          <div class="skill-desc">Daily task aggregation from inbox, email, and yesterday's open loops.</div>
+        </div>
+        <div class="skill-schedule dim">Morning kickoff</div>
+        <div class="skill-last-run">Last run today</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">migration-workflow</div>
+          <div class="skill-desc">Vault file migration to current schema versions — detect, preview, apply with validation.</div>
+        </div>
+        <div class="skill-schedule dim">Schema bump</div>
+        <div class="skill-last-run dim">Last run 21d ago</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+    </section>
+
+    <!-- ========================= CIO ========================= -->
+    <section class="csuite">
+      <div class="csuite-head">
+        <div class="csuite-head-left">
+          <div class="csuite-label">Chief Investment Officer</div>
+          <div class="csuite-sublabel">CIO</div>
+        </div>
+        <div class="csuite-meta">
+          14 skills
+          <span class="pill">5 fired</span>
+          <span class="pill neutral">3 on-deck</span>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot green"></span>
+        <div class="skill-cell">
+          <div class="skill-name">deal-aggregator</div>
+          <div class="skill-desc">Daily scan of broker platforms, email inbound, and association deal boards.</div>
+        </div>
+        <div class="skill-schedule"><span class="sched-icon">⏱</span>Daily · 6:00 AM ET</div>
+        <div class="skill-last-run green">Fired 6:02 AM</div>
+        <div class="skill-badge scheduled">Scheduled</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot green"></span>
+        <div class="skill-cell">
+          <div class="skill-name">deal-aggregator-afternoon</div>
+          <div class="skill-desc">Afternoon broker re-scan to catch late-day listings.</div>
+        </div>
+        <div class="skill-schedule"><span class="sched-icon">⏱</span>Daily · 1:00 PM ET</div>
+        <div class="skill-last-run green">Fired 1:00 PM</div>
+        <div class="skill-badge scheduled">Scheduled</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row expanded">
+        <span class="status-dot green"></span>
+        <div class="skill-cell">
+          <div class="skill-name">deal-aggregator-friday</div>
+          <div class="skill-desc">Weekly broker roll-up and Friday digest of new active sellers.</div>
+        </div>
+        <div class="skill-schedule"><span class="sched-icon">⏱</span>Fridays · 9:00 AM ET</div>
+        <div class="skill-last-run green">Fired 9:01 AM</div>
+        <div class="skill-badge scheduled">Scheduled</div>
+        <div class="skill-chevron">›</div>
+      </div>
+      <div class="skill-detail">
+        <div class="run-line"><span>Apr 24 09:01</span><span class="ok">OK</span><span class="log-snippet">Scanned 7 platforms · 4 new listings · 2 flagged active</span></div>
+        <div class="run-line"><span>Apr 17 09:02</span><span class="ok">OK</span><span class="log-snippet">Scanned 7 platforms · 6 new · Brookline flagged via Axial</span></div>
+        <div class="run-line"><span>Apr 10 09:03</span><span class="warn">WARN</span><span class="log-snippet">BizBuySell rate-limit · fallback cache · 3 new</span></div>
+        <div class="run-line"><span>Apr 03 09:01</span><span class="ok">OK</span><span class="log-snippet">Scanned 7 platforms · 0 new · empty-week expected</span></div>
+        <div class="run-line"><span>Mar 27 09:01</span><span class="ok">OK</span><span class="log-snippet">Scanned 7 platforms · 2 new · Garden State OEM surfaced</span></div>
+        <div class="log-actions">
+          <a class="log-action">Open full log ↗</a>
+          <a class="log-action">Tail live ↗</a>
+          <a class="log-action">Edit plist ↗</a>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot green"></span>
+        <div class="skill-cell">
+          <div class="skill-name">email-intelligence</div>
+          <div class="skill-desc">Gmail/Superhuman/Granola scan, deal-flow classification, CIM auto-trigger, intro detection.</div>
+        </div>
+        <div class="skill-schedule"><span class="sched-icon">⏱</span>Daily · 7:00 AM ET</div>
+        <div class="skill-last-run green">Fired 7:00 AM</div>
+        <div class="skill-badge scheduled">Scheduled</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot green"></span>
+        <div class="skill-cell">
+          <div class="skill-name">nightly-tracker-audit</div>
+          <div class="skill-desc">Tabled/Killed processing, WEEKLY REVIEW re-sort, Drive folder hygiene.</div>
+        </div>
+        <div class="skill-schedule"><span class="sched-icon">⏱</span>Nightly · 12:15 AM ET</div>
+        <div class="skill-last-run green">Fired 12:16 AM</div>
+        <div class="skill-badge scheduled">Scheduled</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot grey"></span>
+        <div class="skill-cell">
+          <div class="skill-name">niche-intelligence</div>
+          <div class="skill-desc">Newsletter scrape, niche identification, one-pagers, scorecards, tracker update.</div>
+        </div>
+        <div class="skill-schedule"><span class="sched-icon">⏱</span>Tue 11:00 PM ET</div>
+        <div class="skill-last-run dim">Next run Tue Apr 28</div>
+        <div class="skill-badge scheduled">Scheduled</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot grey"></span>
+        <div class="skill-cell">
+          <div class="skill-name">conference-discovery</div>
+          <div class="skill-desc">Weekly conference scan, registration, attendee list processing into targets.</div>
+        </div>
+        <div class="skill-schedule"><span class="sched-icon">⏱</span>Mon 9:00 AM ET</div>
+        <div class="skill-last-run dim">Next run Mon Apr 27</div>
+        <div class="skill-badge scheduled">Scheduled</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot grey"></span>
+        <div class="skill-cell">
+          <div class="skill-name">target-discovery-sunday</div>
+          <div class="skill-desc">Weekly owner enrichment for the next 200 un-enriched targets on JJ-Call-Only sheets.</div>
+        </div>
+        <div class="skill-schedule"><span class="sched-icon">⏱</span>Sun 11:00 PM ET</div>
+        <div class="skill-last-run dim">Next run Sun Apr 26</div>
+        <div class="skill-badge scheduled">Scheduled</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">deal-evaluation</div>
+          <div class="skill-desc">Post-call follow-up through LOI — NDA, financials, scorecard, Thumbs Up/Down deck.</div>
+        </div>
+        <div class="skill-schedule dim">Triggered by CIM arrival</div>
+        <div class="skill-last-run">Last run 3h ago</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">post-loi</div>
+          <div class="skill-desc">Post-LOI due diligence through closing (~90 days) — workstreams, financing, PA, close.</div>
+        </div>
+        <div class="skill-schedule dim">Triggered by signed LOI</div>
+        <div class="skill-last-run dim">Last run 12d ago</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">target-discovery</div>
+          <div class="skill-desc">Find acquisition targets via Apollo + web research; auto-advance qualifying targets to outreach.</div>
+        </div>
+        <div class="skill-schedule dim">On niche activation / refill signal</div>
+        <div class="skill-last-run">Last run today</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">list-builder</div>
+          <div class="skill-desc">Apollo-based company discovery and contact enrichment. Called by target-discovery.</div>
+        </div>
+        <div class="skill-schedule dim">Called by target-discovery</div>
+        <div class="skill-last-run">Last run today</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">tracker-manager</div>
+          <div class="skill-desc">Operational sheet management — status moves, rank re-sorts, target list hygiene, DealsX edits.</div>
+        </div>
+        <div class="skill-schedule dim">Kay-authorized sheet updates</div>
+        <div class="skill-last-run">Last run 2h ago</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">river-guide-builder</div>
+          <div class="skill-desc">Per-niche ecosystem build — associations, named individuals, network cross-check, experience scan.</div>
+        </div>
+        <div class="skill-schedule dim">Per-niche ecosystem build</div>
+        <div class="skill-last-run dim">Never run</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+    </section>
+
+    <!-- ========================= CPO ========================= -->
+    <section class="csuite">
+      <div class="csuite-head">
+        <div class="csuite-head-left">
+          <div class="csuite-label">Chief People Officer</div>
+          <div class="csuite-sublabel">CPO</div>
+        </div>
+        <div class="csuite-meta">
+          5 skills
+          <span class="pill">1 fired</span>
+          <span class="pill neutral">1 on-deck</span>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot green"></span>
+        <div class="skill-cell">
+          <div class="skill-name">relationship-manager</div>
+          <div class="skill-desc">Nurture cadence monitoring, overdue-contact surfacing, Attio People hygiene.</div>
+        </div>
+        <div class="skill-schedule"><span class="sched-icon">⏱</span>Daily · 7:00 AM ET</div>
+        <div class="skill-last-run green">Fired 7:02 AM</div>
+        <div class="skill-badge scheduled">Scheduled</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot grey"></span>
+        <div class="skill-cell">
+          <div class="skill-name">jj-operations-sunday</div>
+          <div class="skill-desc">Sunday prep — creates Mon–Fri Call Log tabs for the week ahead.</div>
+        </div>
+        <div class="skill-schedule"><span class="sched-icon">⏱</span>Sun 11:00 PM ET</div>
+        <div class="skill-last-run dim">Next run Sun Apr 26</div>
+        <div class="skill-badge scheduled">Scheduled</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">jj-operations</div>
+          <div class="skill-desc">Daily call prep, 10am Slack delivery, post-shift outcome harvest into master sheet.</div>
+        </div>
+        <div class="skill-schedule dim">Manual harvest after 2pm shift</div>
+        <div class="skill-last-run">Last run yesterday</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">warm-intro-finder</div>
+          <div class="skill-desc">Mine network for warm intro paths to acquisition targets — Attio, vault, Gmail, LinkedIn.</div>
+        </div>
+        <div class="skill-schedule dim">Per-target network scan</div>
+        <div class="skill-last-run">Last run 2d ago</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">meeting-brief</div>
+          <div class="skill-desc">External meeting prep — auto-detects new vs. repeat contact; saves to Drive + vault.</div>
+        </div>
+        <div class="skill-schedule dim">Pre-meeting trigger</div>
+        <div class="skill-last-run">Last run 1d ago</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+    </section>
+
+    <!-- ========================= CMO ========================= -->
+    <section class="csuite">
+      <div class="csuite-head">
+        <div class="csuite-head-left">
+          <div class="csuite-label">Chief Marketing Officer</div>
+          <div class="csuite-sublabel">CMO</div>
+        </div>
+        <div class="csuite-meta">
+          3 skills
+          <span class="pill neutral">0 scheduled</span>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">outreach-manager</div>
+          <div class="skill-desc">Owns all outreach — Kay email, DealsX, conference, intermediary. Channel routing by niche.</div>
+        </div>
+        <div class="skill-schedule dim">Approved targets / sheet trigger</div>
+        <div class="skill-last-run">Last run 1h ago</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">conference-engagement</div>
+          <div class="skill-desc">T-7 to T+2 outreach lifecycle — pre-event drafts and post-event business-card follow-ups.</div>
+        </div>
+        <div class="skill-schedule dim">Around each conference Kay attends</div>
+        <div class="skill-last-run dim">Last run 6d ago</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">generate-visuals</div>
+          <div class="skill-desc">Gemini Nano-Banana image generation — LinkedIn carousels, infographics, brand graphics.</div>
+        </div>
+        <div class="skill-schedule dim">Manual visual gen</div>
+        <div class="skill-last-run dim">Last run 4d ago</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+    </section>
+
+    <!-- ========================= CFO ========================= -->
+    <section class="csuite">
+      <div class="csuite-head">
+        <div class="csuite-head-left">
+          <div class="csuite-label">Chief Financial Officer</div>
+          <div class="csuite-sublabel">CFO</div>
+        </div>
+        <div class="csuite-meta">
+          2 skills
+          <span class="pill neutral">0 scheduled</span>
+        </div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">budget-manager</div>
+          <div class="skill-desc">Fund budget tracking, runway forecasting, tech-stack audits, bookkeeper P&amp;L reconciliation.</div>
+        </div>
+        <div class="skill-schedule dim">Monthly bookkeeper P&amp;L intake</div>
+        <div class="skill-last-run dim">Last run 8d ago</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+
+      <div class="skill-row">
+        <span class="status-dot ondemand"></span>
+        <div class="skill-cell">
+          <div class="skill-name">investor-update</div>
+          <div class="skill-desc">Quarterly deck, Stevens monthly, Lavergne biweekly, post-LOI weekly DD — four modes.</div>
+        </div>
+        <div class="skill-schedule dim">Quarterly + call prep</div>
+        <div class="skill-last-run dim">Last run 14d ago</div>
+        <div class="skill-badge ondemand">On-demand</div>
+        <div class="skill-chevron">›</div>
+      </div>
+    </section>
+
+    <!-- ========================= GC ========================= -->
+    <section class="csuite">
+      <div class="csuite-head">
+        <div class="csuite-head-left">
+          <div class="csuite-label">General Counsel</div>
+          <div class="csuite-sublabel">GC</div>
+        </div>
+        <div class="csuite-meta">
+          0 skills
+          <span class="pill neutral">empty</span>
+        </div>
+      </div>
+
+      <div class="csuite-empty">
+        No skills assigned yet.
+        <span class="candidates">candidates: nda-review · loi-redline · compliance-hard-stop-check</span>
+      </div>
+    </section>
+
+    <div class="page-note">
+      MOCKUP — static HTML with fake data. Real page reads launchctl, logs/scheduled/, and plist XML. Infrastructure tooling lives on its own page.
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>

@@ -51,14 +51,21 @@ Queries:
 Supplement with WebSearch tool for broader web coverage per active niche.
 Valid flags: --emit=compact|json|md|context|path, --search=reddit,hn,polymarket, --quick, --deep, --save-dir=DIR
 
---- SOURCE 2: NEWSLETTERS (Axios + Axios Pro Rata) ---
+--- SOURCE 2: NEWSLETTERS (auto/subscriptions & education) ---
 
-gog gmail search -a kay.s@greenwichandbarrow.com --query "subject:axios pro rata newer_than:7d" -j --max 10
-gog gmail search -a kay.s@greenwichandbarrow.com --query "subject:axios newer_than:7d" -j --max 20
+# All newsletters Kay subscribes to are auto-tagged via Gmail filter (axios.com,
+# hbr.org, girdley.com, sweatystartup.com, acquiringminds.co, buythenbuild.com,
+# 12weekyear.com, baldridgecpa.com, plug-newsletter.com, e.pehub.com,
+# wealthmanagement.com, taxalchemy.com, and more). Pull the whole bucket, not
+# per-publisher subject queries.
+gog gmail search -a kay.s@greenwichandbarrow.com --query 'label:"auto/subscriptions & education" newer_than:7d' -j --max 50
 gog gmail read {message_id} -a kay.s@greenwichandbarrow.com -j
 
-Extract: M&A deals, PE activity, regulatory changes, fragmented industry mentions.
-Filter out: Big tech M&A, pure VC/startup, macro commentary without implications.
+Extract: M&A deals, PE activity, regulatory changes, fragmented industry mentions, niche signals from operator/searcher newsletters.
+Filter out: Big tech M&A, pure VC/startup, macro commentary without implications, leadership-development pieces with no industry signal.
+
+# Also pull the industry-research bucket (mailing lists, association reports, trade publications)
+gog gmail search -a kay.s@greenwichandbarrow.com --query 'label:"auto/industry research" newer_than:14d' -j --max 30
 
 --- SOURCE 3: GRANOLA CALLS (last 14 days) ---
 
@@ -67,10 +74,15 @@ mcp__granola__get_meeting_transcript({meeting_id})
 
 Extract: new industries mentioned, market intelligence, investor thesis feedback, river guide connections, competitive intel from other searchers.
 
---- SOURCE 4: GMAIL DEAL FLOW (last 14 days) ---
+--- SOURCE 4: GMAIL DEAL FLOW (auto/deal flow, last 14 days) ---
 
-gog gmail search -a kay.s@greenwichandbarrow.com --query "newer_than:14d -subject:axios" -j --max 50
+# Broker blasts, CIMs, intermediary inbound, deal teasers, etc. all route to
+# auto/deal flow via Gmail filter. Use the label, not a subject-exclusion query.
+gog gmail search -a kay.s@greenwichandbarrow.com --query 'label:"auto/deal flow" newer_than:14d' -j --max 50
 gog gmail read {message_id} -a kay.s@greenwichandbarrow.com -j
+
+# Also scan investors bucket for portfolio news + searcher cohort signal
+gog gmail search -a kay.s@greenwichandbarrow.com --query 'label:"auto/investors" newer_than:14d' -j --max 30
 
 Look for: broker teasers, CIMs, investor portfolio news, industry association newsletters, outreach responses, conference announcements.
 Filter out: marketing, internal logistics, personal emails.
@@ -556,6 +568,7 @@ SECTIONS TO COMPLETE:
 7. **Customers | Barriers to Entry:** Split — buyer profile left, moats right
 8. **Key Success Factors:** What matters for operating successfully in this niche
 9. **Exit:** Who would buy this business (name specific PE firms, strategics if possible)
+10. **Sources (MANDATORY, added 2026-04-24):** Full citation list with live hyperlinks for every source referenced in the one-pager — web pages researched, newsletter articles, research reports, association/trade publications, vault call notes, prior one-pagers, chatroom traces from the RECENT/HISTORICAL gathering agents, Attio or Apollo data pulls, and any sheet lookups. Each entry: `{Short title} — {one-line description} — {live URL or vault/Drive path}`. Implement as python-pptx hyperlinks (`run.hyperlink.address = url`). If the main slide table has no room, add a second slide titled "Sources" inside the same .pptx — do NOT truncate the list. Group by: (1) Gathering-agent findings, (2) External research & industry reports, (3) Internal vault references, (4) CRM/data pulls. A one-pager without Section 10 fails review per `feedback_onepager_must_cite_sources`.
 
 PPTX CREATION:
 ALWAYS clone the template file — do NOT build a new presentation from scratch.

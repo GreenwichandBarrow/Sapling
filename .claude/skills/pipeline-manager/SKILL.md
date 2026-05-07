@@ -4,6 +4,27 @@ description: "Daily morning briefing — pipeline stage changes, outreach recomm
 user_invocable: true
 ---
 
+> **2026-05-01 calibration:** Superhuman fully sunset 4/29/26. All draft references in this file mean **Gmail directly** via the bash wrapper. See .
+
+<learnings>
+**Read `learnings.md` BEFORE running this skill, append BEFORE returning.**
+
+Path: `.claude/skills/pipeline-manager/learnings.md`
+
+This is the skill-local feedback loop (Harrison Wells coaching pattern, 4/30/26). Pipeline-manager-specific anti-patterns accumulate here. Cross-skill rules live in `memory/feedback_*.md`.
+
+**Read step (before any other work):**
+1. Open `learnings.md`. Internalize the active "do NOT" entries — they take precedence over any positive instruction in this SKILL.md if there's conflict.
+2. Note the "Watching for" section — these are anti-pattern suspects worth flagging if you observe them.
+
+**Append step (before returning the briefing):**
+1. If you caught yourself about to violate a learning (and corrected) — note it briefly so the entry compounds confidence (5+ honored runs = pruning candidate).
+2. If you observed a NEW anti-pattern (Kay corrected you mid-run, or you noticed a pattern that produced bad output) — add it under "Active learnings" with `[YYYY-MM-DD]` + source citation. If it's likely cross-skill, ALSO graduate to `memory/feedback_*.md`.
+3. Do NOT append entries that just rephrase existing rules. Only NEW anti-patterns.
+
+This file is read on every run and is the durable correction layer that complements (not replaces) global memory.
+</learnings>
+
 <objective>
 Keep Attio pipelines current without Kay having to remember to update them. Scan activity signals (calendar, email, call notes, vault), match them to pipeline entries, recommend stage changes, and execute approved updates via Attio API.
 
@@ -26,7 +47,7 @@ Kay is the bottleneck on pipeline management. This skill removes that bottleneck
 The pipeline-manager handles two connected but distinct tracking systems:
 
 ### Pipeline Stages (3 Lists)
-For **Intermediary, Active Deals, and Investor** pipelines. Company-based. Linear progression through stages.
+For **Active Deals and Investor** pipelines. Company-based. Linear progression through stages.
 - Signal: deal milestone (NDA signed, financials received, LOI, etc.)
 - Action: move entry to new stage
 
@@ -53,17 +74,12 @@ After each owner call or meeting, ask: "Was this a meaningful owner conversation
 - Kay rejects → no change
 - Flag stale deals (same stage 2+ weeks): "Kill, advance, or keep watching?"
 
-### Section 2: Intermediary Pipeline
-Stage changes, new entries, and stale entries for the Intermediary list.
-- New intermediaries to add, existing ones to advance
-- Flag intermediaries going cold (no deal flow in 8+ weeks)
-
-### Section 3: Investor Pipeline
+### Section 2: Investor Pipeline
 Stage changes for the Investor Engagement list.
 - Quarterly update status, meeting prep triggers
 - Conference decisions detected (Attend/Register Only) with registration details
 
-### Section 4: Relationship Building
+### Section 3: Relationship Building
 Everything related to People records (not in a pipeline list). Nurture cadence, next_actions, thank-yous, intros.
 
 Check ALL People with nurture_cadence set against their `last_interaction` date in Attio. Surface anyone overdue.
@@ -89,7 +105,7 @@ Also surface:
 
 Present max 5 nurture reminders per session. Prioritize by: relationship value, days overdue, relationship_type.
 
-### Section 5: Action Items (from Granola transcripts)
+### Section 4: Action Items (from Granola transcripts)
 Present action items extracted from recent meeting transcripts.
 
 Format: "From your meeting with {name} on {date}: '{action item}'"
@@ -119,61 +135,50 @@ The morning briefing in conversation must be **brief** — a quick reminder of w
 
 **Rule of thumb:** If Kay needs to read more than a sentence of context to act on it, send it to Slack with a link. The briefing is a checklist, not a report.
 
-### Briefing Format (4-bucket, action-keyed)
+### Briefing Format (Decisions-only)
 
-After gathering all data from the 5 sections above, RE-ORGANIZE the output into 4 action-keyed buckets. This is what Kay sees every morning. Same buckets, same order, every day. Cluster by entity (if 2+ items reference the same person/deal/niche, they live under ONE entity heading inside the appropriate bucket — never scattered).
+Migrated 2026-04-25 from 4-bucket once Command Center dashboard went live
+to hold displaced context (Infrastructure + C-Suite & Skills pages = system
+status; Active Deal Pipeline + M&A Analytics = pipeline state + activity).
+Per `feedback_briefing_three_buckets` and `feedback_decision_fatigue_minimization`.
 
-**Numbering is ascending across all buckets** (never reset to 1 per bucket). Kay replies by number.
+After gathering data from the 4 sections above, RE-ORGANIZE into a **single
+Decisions list**, ≤5 items, ordered by urgency. Cluster by entity (collapse
+2+ items on the same person/deal/niche to ONE item with the strongest action).
+Numbering ascends across the list — never resets. Every item labeled with
+C-suite ownership in italics per `feedback_c_suite_naming`.
 
-**Every item is labeled with C-suite ownership** in italics: *CFO / CIO / CMO / CPO / GC* per `feedback_c_suite_naming`.
+**Per-item Obama framing:**
+```
+N. {urgency-emoji} *{C-suite}* **RECOMMEND: {action}** — {one-sentence reason}
+   → **YES / NO / DISCUSS**
+```
 
-**Decisions bucket uses Obama framing:** `RECOMMEND: [option]` + one-sentence reason → `YES / NO / DISCUSS` so most resolve in one keystroke. Aim ≤5 Decisions per briefing per `feedback_decision_fatigue_minimization`.
+**Urgency emojis** (replace prior buckets — sort 🔴 → 🟡 → 🟢):
+- 🔴 **Today / ASAP** — active-deal fast-path, payment due, time-sensitive sends, soft-nudges on next-day externals, broken-system escalations
+- 🟡 **This week** — bounded but not urgent
+- 🟢 **Dropped balls / nurture** — slipped follow-ups, overdue cadences, warm-intro replies (still surface — they cost deals)
+
+**Header line above the list:** one sentence pointing to the dashboard.
 
 ```
-**Good morning. {Day} {date} — {one-line state of the world}.**
+**Good morning. {Day} {date}.** {N} decisions ordered by urgency. System
+status + pipeline + outreach metrics live at localhost:8501.
 
-## Today / ASAP
+1. 🔴 *CIO* **RECOMMEND: Generate brief for {name} ({time} {date})** — External meeting; brief not yet drafted.
+   → **YES / NO / DISCUSS**
 
-**1. {Entity / action title}** — *{C-suite}*
-- {bullet of context if needed}
-- **{Single explicit ask}**
+2. 🔴 *CMO* **RECOMMEND: Send {entity} the {action}** — {urgency reason}.
+   → **YES (schedule for Mon AM) / NO / DISCUSS**
 
-**2. {Entity / action title}** — *{C-suite}*. {Inline context if short}. **{Approve / send / ship / etc.?}**
+3. 🟡 *CIO* **RECOMMEND: Approve target-discovery refill on {niche}** — Pipeline at {n} of {target}; refill threshold hit.
+   → **YES / NO / DISCUSS**
 
-## Decisions
-
-**3. {Decision title}** — *{C-suite}*. {1-line situation}.
-RECOMMEND: **{recommended option}** — {one-sentence reason}.
-**YES / NO ({alt option}) / DISCUSS**
-
-**4. {Decision title}** — *{C-suite}*. {1-line situation}.
-RECOMMEND: **{recommended option}** — {one-sentence reason}.
-**YES / NO / DISCUSS**
-
-## This Week
-
-**5. {Entity / item}** — *{C-suite}*. {Why this week, deadline}. **{Question or action}?**
-
-**6. {Entity / item}** — *{C-suite}*. {Context}. **{Question or action}?**
-
-## Dropped Balls
-
-**7. {Entity / slipped follow-up}** — *{C-suite}*. {What slipped, when, owner}. **{Recovery action}?**
-
-(or: "None today." with optional 1-line tracking note for items in someone else's court.)
-
----
-
-**System Status:** {1 line per scheduled skill, comma-separated when clean}. Expand only if broken/blocked. {1 line on what fires next.}
+4. 🟢 *CPO* **RECOMMEND: Re-engage {entity} (last touch {n}d)** — {context}.
+   → **YES / NO / DISCUSS**
 
 Reply by number.
 ```
-
-**Bucket definitions:**
-- **Today / ASAP** — must ship today: active-deal fast-path, payment due, JJ unblocks, time-sensitive sends. Not "would be nice today."
-- **Decisions** — needs Kay's judgment between alternatives. Each item uses RECOMMEND + YES/NO/DISCUSS. Cap ≤5.
-- **This Week** — must do this week, not today. Calendar-bound but not same-day urgent.
-- **Dropped Balls** — slipped follow-ups, overdue cadences, warm-intro replies that need recovery. **This is the highest-leverage bucket — slipped follow-ups cost deals.** If empty, say so explicitly with a tracking-only note for items in another party's court.
 
 **Briefing hygiene (CRITICAL):**
 - Only surface items that need action or decision. If something is done, resolved, or loop-closed — omit it entirely per `feedback_briefing_no_done_items`.
@@ -192,28 +197,29 @@ Reply by number.
 
 **Intermediary matches rule:** Daily broker listing matches from deal-aggregator are posted directly to #strategy-active-deals as individual Slack messages (one per deal, thumbs up/down reactions). Do NOT include individual match details in the morning briefing. The System Status line should only report: "deal-aggregator — {n} new lead matches posted to Slack".
 
-**Routing pre-existing report sections into the 4 buckets:**
-- *Pipeline shifts* (Attio stage changes, new active deals, NDA-signed detections) → **Today / ASAP** if action-needed today, else **This Week** if review-needed-soon, else collapse into Decisions if it's a kill/advance/keep call.
-- *Pipeline summary stats* (Active Deals N, Intermediary N, niche counts) → omit from buckets; surface only if delta from yesterday is non-trivial, then as a 1-line tail above System Status.
-- *Motion action steps* → **Today / ASAP** (same-day) or **This Week**.
-- *Superhuman drafts to send* → **Today / ASAP** as a single bundled approval ("Approve all N to send as-is?"), not one item per draft.
-- *Targets for review* → **Decisions** (warm intro vs cadence vs pass) — bundle by niche.
-- *Brief needed for tomorrow's meetings* → **This Week** (or **Today / ASAP** if meeting is tomorrow morning).
-- *Aging deferrals (≥5 days)* → **Dropped Balls** with kill/do-now/re-defer Obama framing.
+**Routing pre-existing report sections into urgency-tagged Decisions:**
+- *Pipeline shifts* (Attio stage changes, new active deals, NDA-signed detections) → 🔴 if action-needed today, 🟡 if review-needed-soon. Always Obama framing.
+- *Pipeline summary stats* (Active Deals N, niche counts) → omit from briefing; lives on Active Deal Pipeline + M&A Analytics dashboard pages.
+- *Motion action steps* → 🔴 (same-day) or 🟡 (this week).
+- *Gmail drafts to send* → 🔴 as a single bundled Decision: **RECOMMEND: Approve all N drafts to send Mon AM** → YES/NO/DISCUSS. Not one item per draft.
+- *Targets for review* → 🟡 Decision (warm intro vs cadence vs pass) — bundle by niche.
+- *Brief needed for tomorrow's meetings* → 🔴 Decision: **RECOMMEND: Generate brief for {name}** → YES/NO/DISCUSS (mandatory invariant per CLAUDE.md brief-decisions pre-flight).
+- *Aging deferrals (≥5 days)* → 🟢 Decision: **RECOMMEND: {kill/do-now/re-defer}** → YES/NO/DISCUSS.
+- *Broken scheduled skill or stuck snapshot job* → 🔴 Decision: **RECOMMEND: Investigate {job} (last log {timestamp})** → YES/NO. Don't bury silent failures.
 - *On deck for JJ tomorrow* → **Today / ASAP** the day before only (per JJ "On Deck" timing rule below).
 - *Today's calendar/agenda* → 1-line tail above System Status, not its own bucket.
 
 **Targets for Review rules:**
 - This section surfaces targets from target-discovery's auto-advance system that need Kay's decision. Two categories only:
-  1. **Warm intro targets** — warm-intro-finder found a connection path (via Attio, vault, Gmail, Kay's network). Kay decides: "draft" (create a Superhuman draft for her personal outreach) or "cadence" (enroll in Claude-managed email cadence via Superhuman drafts).
-  2. **Edge case targets** — borderline on buy box/ICP criteria (borderline size, geography, unclear ownership, possible PE backing). Kay decides: "approve" (send to Superhuman drafts + JJ based on channel) or "pass" (move to Passed tab on tracker).
-- **Auto-approved targets do NOT appear here.** Targets that passed all buy box + ICP criteria with no warm intro flow automatically to Superhuman drafts + JJ. Only exceptions surface.
+  1. **Warm intro targets** — warm-intro-finder found a connection path (via Attio, vault, Gmail, Kay's network). Kay decides: "draft" (create a Gmail draft for her personal outreach) or "cadence" (enroll in Claude-managed email cadence via Gmail drafts).
+  2. **Edge case targets** — borderline on buy box/ICP criteria (borderline size, geography, unclear ownership, possible PE backing). Kay decides: "approve" (send to Gmail drafts + JJ based on channel) or "pass" (move to Passed tab on tracker).
+- **Auto-approved targets do NOT appear here.** Targets that passed all buy box + ICP criteria with no warm intro flow automatically to Gmail drafts + JJ. Only exceptions surface.
 - Group by niche when multiple niches are active. One header per niche.
 - Kay responds with decisions per item: "1 draft, 2 approve" or "1 cadence, 2 pass"
 - On Kay's decision:
-  - "draft" → create Superhuman draft via `superhuman-draft.sh` for Kay's review before sending
-  - "cadence" → enroll in Claude-managed email cadence via Superhuman drafts
-  - "approve" → route to Superhuman drafts + JJ call list based on channel
+  - "draft" → create Gmail draft via `gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29)` for Kay's review before sending
+  - "cadence" → enroll in Claude-managed email cadence via Gmail drafts
+  - "approve" → route to Gmail drafts + JJ call list based on channel
   - "pass" → move target to Passed tab on the tracker sheet
 
 Each item numbered. Each has a clear action or question. No informational items without an ask. No items requiring deep review — those go to Slack.
@@ -225,7 +231,7 @@ After Kay reviews all three categories, confirm summary:
 Pipeline manager complete:
 - {n} pipeline stages updated
 - {n} tasks created in Motion
-- {n} email drafts in Superhuman
+- {n} email drafts in Gmail
 - {n} stale deals flagged
 ```
 
@@ -241,7 +247,7 @@ Claude acts as the **manager** overseeing 2 specialized sub-agents that run in p
 - Runs stop hooks to validate execution
 
 ### Sub-Agent 1: Pipeline Agent
-**Scope:** Intermediary, Active Deals, and Investor Lists
+**Scope:** Active Deals and Investor Lists
 **Scans:** Email (NDAs, financials, LOIs, broker correspondence, CIM attachments), calendar (deal meetings), vault (call notes), Drive ACTIVE DEALS folder (new subfolders)
 **Returns:** Stage change recommendations with signal evidence. Also executes CIM auto-trigger (folder creation, filing, inbox item, deal-eval invocation) before returning recommendations — CIM deals arrive pre-screened.
 
@@ -261,7 +267,7 @@ Scan the ACTIVE DEALS Drive folder for any subfolder that does not have a matchi
 4. Present in morning briefing: "New deal folder detected: {Company}. Created Attio entry at NDA Signed."
 
 ### Sub-Agent 2: Relationships (now relationship-manager skill)
-Relationship management (nurture cadence monitoring, action-already-taken verification, overdue contacts, People record updates) is now handled by the relationship-manager skill. It writes an artifact to `brain/context/relationship-status-{date}.md` that pipeline-manager reads for Section 4 of the morning briefing.
+Relationship management (nurture cadence monitoring, action-already-taken verification, overdue contacts, People record updates) is now handled by the relationship-manager skill. It writes an artifact to `brain/context/relationship-status-{date}.md` that pipeline-manager reads for Section 3 of the morning briefing.
 
 **Fallback:** If the relationship-status artifact doesn't exist (relationship-manager didn't run), pipeline-manager does a lightweight Attio People query to surface any contacts with overdue nurture cadences for the briefing. This fallback will be removed once relationship-manager is proven stable.
 
@@ -304,7 +310,7 @@ After Gmail ingestion completes and `brain/context/email-scan-results-{date}.md`
   - `## In-Person Meetings`
 - [ ] **Sections populated or explicitly empty** — each section must have either item entries or an explicit "None" / "No items" marker. A missing section header means the ingestion skipped that scan entirely, which is a bug.
 
-If any section is missing, re-run the corresponding ingestion step (e.g., missing Draft Status → re-run Superhuman draft check). If the file doesn't exist at all, the entire Gmail ingestion failed — log error and retry once before alerting Kay.
+If any section is missing, re-run the corresponding ingestion step (e.g., missing Draft Status → re-run Gmail draft check). If the file doesn't exist at all, the entire Gmail ingestion failed — log error and retry once before alerting Kay.
 
 ### Manager Red Flags
 The manager raises these to Kay before executing:
@@ -343,7 +349,7 @@ Before sending the briefing to Kay, validate against the 4-bucket spec:
 
 - [ ] **4 buckets present in correct order** — `## Today / ASAP`, `## Decisions`, `## This Week`, `## Dropped Balls`. Empty buckets must say "None today." not be omitted.
 - [ ] **Decisions cap ≤5 items.** If >5, defer the lowest-stakes ones to **This Week** and pre-decide what's defensible. Decision overflow is a calibration failure.
-- [ ] **Every Decisions item uses Obama framing** — `RECOMMEND: [option]` + one-sentence reason + `YES / NO / DISCUSS` line. No bare questions in Decisions bucket.
+- [ ] **Every Decisions item uses Obama framing** — `RECOMMEND: [option]` + one-sentence reason + `YES / NO / LET'S DISCUSS` line. No bare questions in Decisions bucket.
 - [ ] **Every item has C-suite ownership label** in italics (*CFO/CIO/CMO/CPO/GC*). No exceptions per `feedback_c_suite_naming`.
 - [ ] **Numbering ascends across all buckets** — never resets to 1. If items are 1,2,3 in Today, Decisions starts at 4. Per `feedback_ascending_numbering` and `feedback_additive_numbering`.
 - [ ] **Entity clustering** — if 2+ items reference the same person/deal/niche, they live under ONE entity heading inside the appropriate bucket. Scan for duplicates before output; merge.
@@ -387,7 +393,7 @@ Results from this check feed directly into the **Draft Status** section of `brai
    - Flag as high-priority pipeline signal
    - Recommend stage change based on reply content
 
-This is how the system knows Kay sent the email and triggers the Attio stage advancement. Claude manages follow-up cadence via Superhuman drafts (Day 3/14 follow-ups drafted each morning). JJ's call list is managed independently by jj-operations.
+This is how the system knows Kay sent the email and triggers the Attio stage advancement. Claude manages follow-up cadence via Gmail drafts (Day 3/14 follow-ups drafted each morning). JJ's call list is managed independently by jj-operations.
 
 ### Outbound Email Scan (catches manually-sent emails + auto-creates missing Active Deals entries)
 
@@ -415,7 +421,7 @@ The Superhuman Draft Status Check above only catches emails that originated as o
 7. **Scope:** Only process emails sent to external recipients. Ignore internal emails (to @greenwichandbarrow.com addresses).
 8. **Log cross-reference source:** Every created entry records `source: manual-outbound-email` with the message ID for audit trail.
 
-This ensures manually-sent outreach emails (not just outreach-manager drafts) trigger the Attio stage change AND create list entries when missing. Claude manages follow-up cadence via Superhuman drafts for all targets.
+This ensures manually-sent outreach emails (not just outreach-manager drafts) trigger the Attio stage change AND create list entries when missing. Claude manages follow-up cadence via Gmail drafts for all targets.
 
 
 ### Cadence Advancement (runs during morning scan)
@@ -469,7 +475,7 @@ Niche sprints have 4 active states tracked on the Industry Research Tracker:
 | Status | Meaning | Target Discovery Volume | Outreach |
 |--------|---------|------------------------|----------|
 | Under Review | Niche identified, one-pager and scorecard in progress. | None | None |
-| Active-Outreach | Full owner outreach active. | 4-6 targets/day | Full cadence via Superhuman drafts (Claude-managed) |
+| Active-Outreach | Full owner outreach active. | 4-6 targets/day | Full cadence via Gmail drafts (Claude-managed) |
 | Active-Long Term | Niche winding down, finishing existing pipeline. | No new targets | Complete existing cadences only |
 | Tabled/Killed | Sprint stopped. | None | None |
 
@@ -523,14 +529,14 @@ During Gmail ingestion, every email labeled "DEAL FLOW" must be classified as on
 - BCC header present → BLAST
 - Kay's name in greeting ("Hi Kay", "Dear Kay") + personalized context → DIRECT
 - Unsubscribe link + no personalization → NEWSLETTER or BLAST
-- Sender in Attio Intermediary Pipeline at "Warmed" or higher + personalized → DIRECT
+- Sender has prior reply in Gmail thread history + personalized → DIRECT
 - Sender not in Attio + mass-email patterns → BLAST
 
 **Guardrail:** When uncertain, default to DIRECT. It's better to surface an email Kay doesn't need than to archive one that needed a response.
 
 ### Email Scan Results Artifact
 
-After Gmail ingestion completes (including deal flow classification and Superhuman draft status check), write a structured results file so downstream skills (e.g., /start, deal-aggregator) can read email findings without re-scanning Gmail.
+After Gmail ingestion completes (including deal flow classification and Gmail draft status check), write a structured results file so downstream skills (e.g., /start, deal-aggregator) can read email findings without re-scanning Gmail.
 
 **Location:** `brain/context/email-scan-results-{YYYY-MM-DD}.md`
 
@@ -564,7 +570,7 @@ emails_scanned: N
 - {signal} -> brain/inbox/YYYY-MM-DD-niche-signal-{slug}.md
 
 ## Draft Calibration (draft vs sent diffs)
-{For each email where both a Superhuman draft AND a matching sent email exist:}
+{For each email where both a Gmail draft AND a matching sent email exist:}
 - **{recipient} — {subject}**
   - Draft: {first 2 lines of original draft}
   - Sent: {first 2 lines of what Kay actually sent}
@@ -650,9 +656,9 @@ During Gmail ingestion, detect introduction emails — someone introducing Kay t
 **Cadence for warm intros:**
 | Day | Channel | Action |
 |-----|---------|--------|
-| Day 1 | Email (Superhuman) | Warm intro email referencing introducer |
-| Day 1 | Email (Superhuman) | Thank-you to introducer |
-| Day 5-6 | Email (Superhuman) | Follow-up if no response |
+| Day 1 | Email (Gmail) | Warm intro email referencing introducer |
+| Day 1 | Email (Gmail) | Thank-you to introducer |
+| Day 5-6 | Email (Gmail) | Follow-up if no response |
 | Day 8-10 | LinkedIn DM (Kay) | High-value only |
 
 No Day 3 JJ call. The introducer already warmed the connection.
@@ -670,9 +676,9 @@ Scan incoming emails for:
 - Sender domain matches known intermediary patterns (advisory firms, brokerage firms, law firms)
 
 ### Sender Classification
-1. **Check Attio Intermediary Pipeline** — is the sender (or their firm) already tracked?
-   - If yes: tag as `source/intermediary-inbound`, associate with existing intermediary record
-   - If no: create a new entity at `brain/entities/{slug}.md`, add to Attio Intermediary Pipeline at "Identified" stage with `how_introduced: "Inbound deal email, {date}"`
+1. **Check vault + Gmail history** — does the sender (or their firm) have a prior entity record or prior email correspondence with us?
+   - If yes: tag as `source/intermediary-inbound`, associate with existing entity
+   - If no: create a new entity at `brain/entities/{slug}.md` (an inbound deal email IS a reply, so an entity is warranted). Per `feedback_brokers_stay_in_sheet_until_reply`: cold intermediaries live in the broker target Sheet pre-reply; an inbound email crosses that threshold, so Attio People auto-creation via Gmail interaction is acceptable. Do NOT add the sender to any deleted Intermediary Pipeline list.
 2. Cross-reference sender against vault entities and Gmail history for prior correspondence
 
 ### Inbox File Creation
@@ -694,7 +700,7 @@ When the inbound deal detection finds a CIM attachment or CIM-level content (not
 
 **Also detect adjacent deal documents** with the same logic:
 - Keywords: `teaser`, `investment opportunity`, `deal summary`, `offering memorandum`, `executive summary`, `company overview`
-- These are lower-confidence but still trigger the fast-track if from a known intermediary (already in Attio Intermediary Pipeline at "Warmed" or later)
+- These are lower-confidence but still trigger the fast-track if from a known intermediary (Attio Person record exists OR prior outbound logged in Gmail/broker target Sheet history)
 
 **When CIM is detected, execute all 4 steps automatically:**
 
@@ -770,9 +776,33 @@ Trigger deal-evaluation with:
 Deal-eval reads the CIM from Drive, runs the buy-box screen, and stages results for Kay's morning review. Kay sees the completed screen (not just a "should we screen?" prompt).
 
 **Attio updates (parallel with deal-eval):**
-- Create Attio Active Deals entry at "Financials Received" stage (CIM = financials) with `source: intermediary`
-- If intermediary is at "Identified" or "Contacted" in Intermediary Pipeline: recommend stage change to "Actively Receiving Deal Flow"
+- Create Attio Active Deals entry at "Financials Received" stage (CIM = financials) with `source: intermediary` — Active Deals list remains the canonical deal pipeline
 - Create vault entity for the target company if it doesn't exist
+- (Intermediary Pipeline list deprecated — no separate intermediary-stage update happens here)
+
+**Step 5: Auto-ack reply to broker (BOTH-FIRE chain — added 2026-05-04)**
+After Step 4 completes successfully, draft a reply email to the broker acknowledging CIM receipt and setting a review-window expectation. **MANDATORY — copy MUST come from a template in the canonical Intermediary Email Templates Google Doc** (`1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4`) per `feedback_no_intermediary_drafts_outside_template`. No ad-hoc body copy.
+
+```bash
+# Lookup CIM-RECEIVED template from canonical doc
+TEMPLATE_BODY=$(gog docs export 1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4 --format=md | \
+  awk '/CIM RECEIVED/,/^---$/' | sed '$d')
+
+# If template not found, skip and log a warning. Do NOT draft ad-hoc copy.
+if [ -z "$TEMPLATE_BODY" ]; then
+  echo "WARN: CIM-RECEIVED template not found in canonical doc. Auto-ack skipped — surface to Kay in morning briefing."
+  exit 0
+fi
+
+# Fill placeholders, create Gmail draft via gog (USE-GOG-FALLBACK decision 2026-05-04)
+gog gmail draft \
+  --to "{intermediary_email}" \
+  --subject "Re: {original_subject}" \
+  --body "$FILLED_BODY" \
+  --thread "{gmail_thread_id}"
+```
+
+The auto-ack creates a Gmail DRAFT only — Kay reviews and sends per `feedback_kay_handles_all_replies`. The auto-trigger (Steps 1-4) handles internal Drive/Attio/deal-eval work. The auto-ack handles the broker-facing reply. Two parallel surfaces, no conflict.
 
 **Slack notification (after filing + Attio update verified):**
 ```bash
@@ -798,7 +828,7 @@ If any check fails → fix the issue, re-validate, then send Slack.
 - **Blind profile (no company name):** Cannot create ACTIVE DEALS folder or Attio entry. Fall through to standard morning review presentation. Inbox item still created with `urgency: high` and tag `topic/blind-profile`.
 - **CIM for existing active deal:** Route to the Active Deal Fast-Path (line 292 above) instead. Do NOT create a duplicate folder or Attio entry.
 - **Multiple CIMs in one email batch:** Process each independently. Each gets its own folder, inbox item, and deal-eval invocation.
-- **CIM from unknown sender (not in Attio Intermediary Pipeline):** Still fast-track the CIM filing. Create the intermediary entity and Attio entry at "Identified" stage. Flag in morning briefing: "New intermediary detected: {name} at {firm}. Sent CIM for {company}."
+- **CIM from unknown sender (no prior vault entity or Gmail correspondence):** Still fast-track the CIM filing. Create the intermediary vault entity (their CIM-send IS a reply, so an entity is warranted; no Intermediary Pipeline entry — that list is deprecated). Flag in morning briefing: "New intermediary detected: {name} at {firm}. Sent CIM for {company}."
 
 ### Morning Review Presentation
 
@@ -828,7 +858,7 @@ From: {Intermediary Name} ({Firm Name})
 INBOUND DEAL FLOW
 ─────────────────
 From: {Intermediary Name} ({Firm Name})
-  Intermediary status: {Attio stage or "New — just added to Intermediary Pipeline"}
+  Intermediary: {Attio Person record exists / New — first contact (vault entity created, Attio People auto-created via Gmail interaction)}
   Deal: {Company name or "Blind profile"}
   Industry: {if stated}
   Revenue: {if stated, else "Not disclosed"}
@@ -839,22 +869,22 @@ From: {Intermediary Name} ({Firm Name})
   Screen against buy box?
   - Yes → fast-track to deal-evaluation (intermediary buy-box screen)
   - Pass → draft polite decline to intermediary
-  - Need more info → draft reply requesting key financials
+  - Move to owner call → request management call (skips ad-hoc info-gathering)
   - Save for later → keep in inbox, revisit Friday
 ```
 
 ### On Kay's Approval
 - **"Proceed"** (CIM auto-screened) → continue deal-evaluation at Phase 3 (financial analysis on the CIM already in Drive). The buy-box screen is done — this advances to deep analysis.
 - **"Yes"** (no CIM) → trigger deal-evaluation skill with `source: intermediary-inbound` and `intermediary: {name}`. The deal-evaluation skill runs its fast buy-box screen (see deal-evaluation Intermediary Inbound Pathway).
-- **"Pass"** → draft a short, polite decline email to the intermediary. Log the deal in vault with reason. Tag the intermediary's Attio record with the deal type they sent (e.g., `sends: manufacturing`, `sends: healthcare`) for future filtering.
-- **"Need more info"** → draft reply requesting: revenue, EBITDA, years in business, owner age/succession situation, customer concentration. Keep the ask short — intermediaries are busy.
+- **"Pass"** → MANDATORY template-driven per `feedback_no_intermediary_drafts_outside_template`. Look up `DECLINE POST-REVIEW` snippet from canonical doc `1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4` via `gog docs export`. Fill `{first_name}`, `{their_subject}`, `{reason}` (one-line specific reason from the buy-box screen output). Create as Gmail draft via `gog gmail draft`. If template not found, skip with warning to morning briefing — do NOT draft ad-hoc copy. Also: log the deal in vault with reason. Tag the intermediary's Attio People record with the deal type they sent (e.g., `sends: manufacturing`, `sends: healthcare`) for future filtering.
+- **"Move to owner call"** → request a management call directly via the intermediary. Skips the ad-hoc "need more info" info-gathering pattern (deprecated 2026-05-04 — too rare for broker engagement; we move to owner conversation instead). Trigger deal-evaluation Phase 4 (call prep) with `pending_owner_call: true`.
 - **"Save for later" / "Table"** → no action, stays in inbox queue.
 
 ### Intermediary Relationship Tracking
-After processing inbound deals, update the intermediary's Attio record:
+After processing inbound deals, update the intermediary's Attio People record (if attributes exist on the People object):
 - `last_deal_sent: {date}`
 - `deal_types_sent: [{industry/type}]` (append, don't overwrite)
-- If intermediary is at "Identified" and sent a real deal: recommend stage change to "Actively Receiving Deal Flow"
+- (Intermediary Pipeline list deprecated — no separate stage advancement; the broker target Sheet + Attio People interaction history are the source of truth for intermediary relationship state)
 
 ## Niche Signal Detection (runs during data ingestion)
 
@@ -1022,14 +1052,6 @@ For each person where nurture_cadence is set:
 ```
 Use Attio's auto-enriched email/calendar interaction data for "last contact" timestamps.
 
-**Intermediary Pipeline signals:**
-| Signal | Current Stage | Recommended Stage |
-|--------|--------------|-------------------|
-| First contact/meeting | Identified | Contacted |
-| Positive response, building rapport | Contacted | Warmed |
-| Started sending deal flow | Warmed | Actively Receiving Deal Flow |
-| Regular deal flow coming in | Actively Receiving Deal Flow | Daily Check in on Matches |
-
 **Active Deals Pipeline signals:**
 | Signal | Current Stage | Recommended Stage |
 |--------|--------------|-------------------|
@@ -1181,7 +1203,7 @@ Pipeline updates complete:
 2. Filter to external meetings only (skip internal/team calls — Camilla, JJ, etc.).
 3. For each external meeting: check session-decisions files from the prior 3 days. If Kay has already approved or declined a brief for this meeting, SKIP — do not re-ask.
 4. For each remaining external meeting, surface as a Decisions-bucket item using Obama framing:
-   - **RECOMMEND: Generate brief for {name} ({time} {date})** — [one-sentence cadence/context reason] → **YES / NO / DISCUSS**
+   - **RECOMMEND: Generate brief for {name} ({time} {date})** — [one-sentence cadence/context reason] → **YES / NO / LET'S DISCUSS**
 5. Kay answers YES → invoke the appropriate brief command per the routing table below. Kay answers NO → skip, no artifact.
 
 **Briefing-assembly invariant:** If any external meeting exists in the scan window and is neither already-decided nor surfaced in Decisions, the briefing is malformed — fix before delivering.
@@ -1210,8 +1232,11 @@ Bounced emails damage Kay's sender domain reputation. Her email is her entire bu
 
 After pipeline updates, surface any follow-up tasks:
 
-- **"Need to Send Thank You"** → FIRST verify Kay hasn't already sent the thank you (search `from:kay.s@greenwichandbarrow.com to:{contact_email} newer_than:7d`). If already sent, auto-move to Nurture and skip. If not sent, draft a personalized thank you email using Kay's voice (see memory: user_outreach_voice.md). Reference specifics from the meeting (Granola transcript, call notes, or calendar context). Create as Superhuman draft via `~/.local/bin/superhuman-draft.sh`.
-- **Introduction promised** → ask Kay for the person's name/company. Create `brain/entities/{slug}.md` in the vault with proper schema. Add them to the appropriate Attio pipeline at "Identified" stage. When the intro email arrives later, they're already tracked.
+- **"Need to Send Thank You"** → FIRST verify Kay hasn't already sent the thank you (search `from:kay.s@greenwichandbarrow.com to:{contact_email} newer_than:7d`). If already sent, auto-move to Nurture and skip. If not sent: classify recipient as intermediary (broker/IB/lawyer/CPA) vs other.
+  - **Intermediary thank-you** → MANDATORY template-driven per `feedback_no_intermediary_drafts_outside_template`. Look up THANK YOU snippet from canonical doc `1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4` via `gog docs export`. Fill `{first_name}`, `{call_callback}` (1-2 sentences from Granola transcript referencing specific topics they raised), `{next_step}` (1 sentence committing to the action item from the call). If template not found in doc, skip with warning surfaced to morning briefing. Do NOT draft ad-hoc body copy.
+  - **Non-intermediary thank-you** (owner, peer, investor, internal) → draft personalized using Kay's voice (memory: `user_outreach_voice.md`), referencing Granola/call/calendar specifics. No template doctrine for these audiences yet.
+  - In both cases, create as Gmail draft via `gog gmail draft` (USE-GOG-FALLBACK decision 2026-05-04, supersedes the prior `gmail-draft.sh` wrapper plan).
+- **Introduction promised** → ask Kay for the person's name/company. Create `brain/entities/{slug}.md` in the vault with proper schema. If the intro is to a target company owner, add them to Attio Active Deals at "Identified" stage. If the intro is to an intermediary (broker/IB/lawyer/CPA), do NOT create a pipeline entry — log to the broker target Sheet per `feedback_brokers_stay_in_sheet_until_reply`. When the intro email arrives later, they're already tracked.
 - **Introduction received** → match the intro email to the tracked entity, move to "Contacted" stage
 - **NDA Executed** → remind to request financials if not already received
 - **Financials Received** → flag for financial modeling

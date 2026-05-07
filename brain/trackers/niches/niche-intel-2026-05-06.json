@@ -1,0 +1,54 @@
+{
+  "run_date": "2026-05-06",
+  "run_mode": "tuesday",
+  "niches_evaluated": 2,
+  "niches_identified": 2,
+  "one_pagers_written": 1,
+  "scorecards_written": 1,
+  "tracker_updated": true,
+  "runtime_seconds": 5506,
+  "niches": [
+    {
+      "name": "Property Tax Appeal Services (Commercial-Property)",
+      "score": 2.58,
+      "drive_folder": "1NyONygvGO2LsZfSvQ6HX1LIvyNf-FGlg",
+      "weekly_review_rank": 9,
+      "status": "duplicate-reconciled",
+      "notes": "Pre-existing artifact from 2026-03-31 run; folder + scorecard + one-pager already in WEEKLY REVIEW Drive. Sheet row was missing — added at rank 9 this run."
+    },
+    {
+      "name": "Trade Credit, Customs Bonds & Cargo Insurance Brokerage",
+      "score": 2.75,
+      "drive_folder": "1sFXFM_wDwb3BewO9u8ly1nK_NgGTqhRO",
+      "weekly_review_rank": 10,
+      "status": "new-unified-thesis",
+      "notes": "TABLED-resurface (Trade Credit) + KILLED-resurface (Customs/Cargo) — bundled cross-sell thesis fixes original unit-econ tabling. Verdict: Promising (2.75/3.00). One-pager + scorecard shipped to folder."
+    }
+  ],
+  "tracker_manager_followups": [
+    "TABLED folder TRADE CREDIT INSURANCE — fold into unified WEEKLY REVIEW folder OR retain as historical reference",
+    "KILLED folder CUSTOMS BONDS & CARGO INSURANCE — same fold-vs-retain call",
+    "IDEATION 4-row Compliance-as-a-Service collapse review (Surplus Lines 2.65 + Workplace H&S 2.51 + Premium Audit 2.32 + Outsourced Compliance Officers 2.25)",
+    "Property Tax Drive-vs-Sheet reconciliation note logged"
+  ],
+  "lifecycle_flags": [
+    "Premium Pest 'premium framing' challenged by Guillermo 4/21 — tracker score may overstate",
+    "Pure Art Advisory rejected by Margot 4/4 — refinement needed (services bolt-on)",
+    "Vertical SaaS Luxury 'no-man's-land' walked off by Jeff 4/22",
+    "Govtech / mission-critical SaaS dead per Jeff 4/22",
+    "'Start your own brokerage' recurring rejection — Kay-CEO-Deal-1 doctrine"
+  ],
+  "data_gaps": [
+    "OneNote MCP token expired — JWT not well formed; needs browser re-auth",
+    "ChatGPT export folder not found at ~/Downloads/031aafe3*"
+  ],
+  "convergence_data_points_for_tracked_niches": [
+    "Premium Pest Management — 6-source convergence (Rollins/Romex 4/2, NJPMA Workshop 4/29, JJ unusually-high answer rate, Cetane Associates buy-side advisor, Jeff Stevens conviction)",
+    "High-End Commercial Cleaning — Boyne Capital launched tristate platform 5/5 (H&B Facility Services, Lake Hiawatha NJ); 5-source convergence",
+    "Specialty Coffee Equipment Service — Helen Guo 4/30 surfaced commercial-kitchen-equipment-repair deal at $665K EBITDA confirming archetype",
+    "Specialty Insurance Brokerage Art — 5 historical sources; carve-out path only (12-14x prohibitive at independent scale)",
+    "Storage High-Value Assets — Mitchell Baldridge $18M self-storage estate-tax case study confirms storage exit liquidity"
+  ],
+  "report_path": "/Users/kaycschneider/Documents/AI Operations/brain/outputs/2026-05-06-niche-intelligence-report.md",
+  "chatroom_path": "/Users/kaycschneider/Documents/AI Operations/brain/traces/agents/2026-05-06-niche-intelligence.md"
+}

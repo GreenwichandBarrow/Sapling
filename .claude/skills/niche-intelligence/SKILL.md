@@ -162,9 +162,9 @@ tags:
 
 #### RECENT agent (single agent, 6 sources):
 1. **Web/social** — last30days skill (Reddit, HN, Polymarket) + WebSearch
-2. **Newsletters** — Axios + Axios Pro Rata from Gmail (last 7 days)
+2. **Newsletters** — `label:"auto/subscriptions & education"` (last 7 days) + `label:"auto/industry research"` (last 14 days). Covers all newsletters Kay subscribes to (Axios, HBR, Girdley, Sweaty Startup, Acquiring Minds, Buy Then Build, etc.) — pull the whole bucket, not per-publisher subject queries.
 3. **Granola calls** — meeting transcripts from last 2 weeks
-4. **Gmail deal flow** — broker teasers, CIMs, investor emails (last 14 days)
+4. **Gmail deal flow** — `label:"auto/deal flow"` (last 14 days) + `label:"auto/investors"` (last 14 days). Broker teasers, CIMs, intermediary inbound, investor portfolio news, searcher cohort signal.
 5. **Vault research** — brain/outputs/ and brain/calls/ from last 2 weeks
 6. **Passive signals** — brain/inbox/ items tagged `topic/niche-signal` since last Tuesday
 
@@ -437,6 +437,7 @@ Niche Intelligence run is complete when:
 - [ ] Both gathering agents (RECENT + HISTORICAL) posted to chatroom
 - [ ] 1-5 new niches identified (or 0 with documented reasoning)
 - [ ] One-pager .pptx created and uploaded for each new niche
+- [ ] One-pager includes a Sources section citing every source used (external URLs, vault paths, chatroom traces, CRM pulls), each with a live hyperlink per `feedback_onepager_must_cite_sources`
 - [ ] Each niche scored against detailed G&B scorecard
 - [ ] Output report written to `brain/outputs/{date}-niche-intelligence-report.md`
 - [ ] IDEATION tab updated with new niches + scores

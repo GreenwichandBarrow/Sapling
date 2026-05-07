@@ -38,7 +38,7 @@ Determine meeting type from the `--type` argument OR from context clues if no fl
 
 **Auto-detect when --type is absent:**
 - Attio match in Active Deals pipeline → `owner-call`
-- Attio match in Intermediary Pipeline → `intermediary`
+- Vault entity tagged as `Intermediary` / `River Guide` OR sender domain matches `Intermediary Target List` Sheet → `intermediary`
 - Event/conference keyword in calendar title (XPX, ACG, NPMA, conference, panel, happy hour, summit) → `conference-prep`
 - No Attio match → `new-contact`
 
@@ -302,9 +302,9 @@ RED FLAGS / WATCH ITEMS
 ## Phase 3: Save & Deliver
 
 ### Google Doc
-Start from the G&B letterhead template (ID: `1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF`) — copy it, rename, then add brief content. Logo must be centered. Use Avenir font, black text only.
+Start from the G&B letterhead template (ID: `1hXnexnOTDQwAo4lII2kbsPY3IsbcfKyaJthrAPjGb78`) — copy it, rename, then add brief content. Logo must be centered. Use Avenir font, black text only.
 ```
-gog drive copy "1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF" "{title}" --parent "1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ"
+gog drive copy "1hXnexnOTDQwAo4lII2kbsPY3IsbcfKyaJthrAPjGb78" "{title}" --parent "1qDTfP3YImnOK8n_wHXy2jTxzZi_UtzDQ"
 # Then populate content via gog docs edit or batch update
 ```
 

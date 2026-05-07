@@ -34,7 +34,8 @@ type: reference
 | G&B Post Offer Deal Cabinet.xlsx | `1Rq4ctB_yRTAgrFkCo2I5f3r3Zn0HLrEL` |
 | G&B Post LOI Deal Tracker.xlsx | `1KhemJDKjLnMYzUFFZWgIqGhg5mzqcew2` |
 | G&B Proprietary Outreach Tracker.xlsx | `1kpsM0SG_snuiRfkf-ehab6bIWdXlp8zu` |
-| G&B Letterhead 1.1.25.docx | `1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF` |
+| G&B Letterhead Template (native Google Doc) | `1hXnexnOTDQwAo4lII2kbsPY3IsbcfKyaJthrAPjGb78` |
+| G&B Letterhead Template (.docx archive) | `1PLYz2WH4Zqy4h2gYVqC8SVGyDrvy_ILF` |
 | GB LBO Model Rebuilt.xlsx | `14LwPNbZgdGkjnuGP-bKJWwytzq3sq_8O` |
 
 ## Sibling Folders in MANAGER DOCUMENTS

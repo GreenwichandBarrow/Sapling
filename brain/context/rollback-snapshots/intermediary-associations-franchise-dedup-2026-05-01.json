@@ -1,0 +1,47 @@
+{
+  "tab": "Association Heads",
+  "sheet_id": 1213452268,
+  "captured_at": "2026-05-01",
+  "rendered_values": [
+    [
+      "Source",
+      "Firm / Org Name",
+      "Website",
+      "Headquarters",
+      "Focus / Specialty",
+      "Lead Contact",
+      "Title",
+      "Email",
+      "Office Phone",
+      "Direct / Mobile",
+      "LinkedIn (Person)",
+      "LinkedIn (Firm)",
+      "Credentials",
+      "Signup URL",
+      "Deal Email Pattern",
+      "1st Outreach Date",
+      "Notes"
+    ]
+  ],
+  "formulas": [
+    [
+      "Source",
+      "Firm / Org Name",
+      "Website",
+      "Headquarters",
+      "Focus / Specialty",
+      "Lead Contact",
+      "Title",
+      "Email",
+      "Office Phone",
+      "Direct / Mobile",
+      "LinkedIn (Person)",
+      "LinkedIn (Firm)",
+      "Credentials",
+      "Signup URL",
+      "Deal Email Pattern",
+      "1st Outreach Date",
+      "Notes"
+    ]
+  ]
+}

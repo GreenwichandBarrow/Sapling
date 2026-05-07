@@ -1,0 +1,58 @@
+{
+  "date": "2026-05-06",
+  "scan_started_at": "2026-05-06T10:32:14Z",
+  "scan_finished_at": "2026-05-06T12:52:30Z",
+  "failures_detected": 0,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 0,
+  "runtime_seconds": 17,
+  "results": [],
+  "ad_hoc_verifications": [
+    {
+      "triggered_by": "ad-hoc",
+      "invoker": "Chief of Staff (Kay-directed)",
+      "ran_at": "2026-05-06T12:52:00-04:00",
+      "context": "pipeline-manager morning scan reported 2 stuck jobs with orphan PIDs alive ~8h+. Manual launchd-debugger invocation to verify + clean up.",
+      "targets_inspected": [
+        {
+          "job": "niche-intelligence",
+          "log_path": "logs/scheduled/niche-intelligence-2026-05-05-2239.log",
+          "pipeline_manager_claim": "3 failed attempts with 'Unexpected' error, orphan wrapper PID 49894 alive ~8h+",
+          "actual_state": "Job SUCCEEDED on attempt 3 at 2026-05-06T08:05:11. Validator PASSED. Full artifacts present (report 20KB + sidecar JSON 3.1KB). Attempts 1+2 hit 'An unknown error occurred (Unexpected)' — known-incident ai-ops-5wx pattern — but the wrapper retry policy salvaged it on attempt 3.",
+          "cause": "TRANSIENT (matches ai-ops-5wx) — retried successfully",
+          "action": "NO-OP",
+          "pid_check": {
+            "49894": "not alive — already terminated by the time of inspection",
+            "pgrep_run-skill.sh_niche-intelligence": "no matches"
+          },
+          "slack_posted": false,
+          "suppression_reason": "no-failure-detected (job exit 0, validator passed). Known-incident ai-ops-5wx still applies to attempts 1+2 if those had been terminal failures."
+        },
+        {
+          "job": "deal-aggregator",
+          "log_path": "logs/scheduled/deal-aggregator-2026-05-06-0600.log",
+          "pipeline_manager_claim": "211-byte log with only start banner, wrapper PID 55943 + claude PID 56191 still alive — likely hung mid-execution",
+          "actual_state": "Job COMPLETED on attempt 1 at 2026-05-06T06:43:33 with exit 0. Log file is now 1029 bytes (not 211). Validator PASSED. Artifact at brain/context/deal-aggregator-scan-2026-05-06.md is 32114 bytes — full scan output (0 PASSes, 6 NEAR-MISSes, 25 sources, 132 listings).",
+          "cause": "FALSE_POSITIVE — pipeline-manager read a stale mid-run snapshot of the log",
+          "action": "NO-OP",
+          "pid_check": {
+            "55943": "not alive — completed and exited",
+            "56191": "not alive — completed and exited",
+            "pgrep_run-skill.sh_deal-aggregator": "no matches"
+          },
+          "slack_posted": false,
+          "suppression_reason": "no-failure-detected (job exit 0, validator passed)"
+        }
+      ],
+      "kills_executed": [],
+      "scan_command": "python3 scripts/scan_launchd_failures.py + targeted --log-file scans on both files",
+      "scan_results": "[] (zero failures) on both default 24h scan and explicit --log-file targeting",
+      "verdict": "Both flagged jobs are healthy. No orphan processes to kill. No Slack posts needed.",
+      "follow_ups_for_kay": [
+        "Pipeline-manager's stale-snapshot pattern is worth a memory: when it reports orphan PIDs, cross-check ps before triggering remediation. Pipeline scan must have read both logs while they were mid-run, then surfaced them as stuck. Both completed successfully within an hour of the false-alarm read.",
+        "ai-ops-5wx is still open. Niche-intelligence Tuesday wrapper retry policy IS saving it for now (attempt 3 succeeded), but root-cause fix is still pending."
+      ]
+    }
+  ]
+}

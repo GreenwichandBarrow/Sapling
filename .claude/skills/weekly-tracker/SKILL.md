@@ -122,7 +122,7 @@ Classify each event:
 Cross-reference with `brain/calls/` for logged call notes. Use Granola MCP to verify meeting counts if available.
 
 ### Agent 3: Attio Pipeline Collector
-**Task:** Pull pipeline movements and deal stage data from all 4 Lists.
+**Task:** Pull pipeline movements and deal stage data from Attio Lists.
 **Tools:** Attio API (curl)
 **API:** Bearer token from `.env` (`ATTIO_API_KEY`), base URL `https://api.attio.com/v2`
 
@@ -131,7 +131,6 @@ Cross-reference with `brain/calls/` for logged call notes. Use Granola MCP to ve
 **Lists to query:**
 - Active Deals – Owners: `0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b`
 - Outreach: Network Pipeline: `94ccb017-2b86-4e12-b674-e27de8e146c9`
-- Outreach: Intermediary Pipeline: `7faac55b-a183-4afe-b7ea-fc8a4ccace10`
 
 **Active Deals stage mapping (report ALL stages, even if 0 deals):**
 
@@ -275,7 +274,7 @@ gog sheets get "{MASTER_SHEET_ID}" "'Active'!O:U" --json  # Kay Decision, Pass R
 
 Outreach tracking varies by niche channel type:
 - **DealsX Email niches:** Metrics come from Sam's shared Google Sheet (company, owner, email, date contacted, response status, meetings booked). Read the shared sheet for emails sent, responses, and meetings.
-- **Kay Email niches:** Metrics come from Gmail/Superhuman (existing tracking via Agent 1).
+- **Kay Email niches:** Metrics come from Gmail (existing tracking via Agent 1). Superhuman sunset 4/29 — no longer a source.
 - **JJ-Call-Only niches:** Metrics come from target sheet call columns (existing tracking via Agent 3).
 
 **Queries:**
@@ -410,8 +409,23 @@ gog drive upload "/tmp/${SNAPSHOT_FILENAME}" --folder "$SNAPSHOT_FOLDER"
 ### Step 5: Save Vault Snapshot
 Write `brain/trackers/weekly/{YYYY-MM-DD}-weekly-tracker.md` with frontmatter and diagnostic narrative.
 
-### Step 6: Validation (Stop Hook)
-**Enforced by:** `.claude/hooks/router/handlers/weekly_tracker_validation.py` (PreToolUse hook on Bash — blocks Slack webhook if validation fails)
+### Step 6: Validation (Stop Hook) — MANDATORY
+
+**Two-layer enforcement:**
+
+1. **PreToolUse hook (skill-internal):** `.claude/hooks/router/handlers/weekly_tracker_validation.py` — blocks Slack webhook from firing if validation fails. First line of defense; runs inside the agent's tool-call loop.
+
+2. **POST_RUN_CHECK validator (wrapper-level):** `scripts/validate_weekly_tracker_integrity.py` — runs AFTER `claude -p` exits, regardless of internal hook state. Catches the silent-success failure mode where the agent exits 0 but artifacts are missing (e.g. 4/24 partial-write where vault snapshot landed but sheet column did not).
+
+**Wrapper validator copyable invocation (manual run):**
+```bash
+python3 "/Users/kaycschneider/Documents/AI Operations/scripts/validate_weekly_tracker_integrity.py"
+# Pass --week-ending YYYY-MM-DD to override auto-Friday computation
+```
+
+The validator returns exit 2 on failure. The launchd wrapper (`scripts/run-skill.sh`) overrides EXIT_CODE on POST_RUN_CHECK failure and emits a Slack alert prefixed `VALIDATOR FAILED`. Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead: `ai-ops-jrj.3`.
+
+Before notifying, validate all deliverables exist:
 
 Before notifying, validate all deliverables exist:
 
@@ -613,7 +627,16 @@ Tracks credit consumption, list quality, and ICP efficiency week over week.
 - Credits used: Apollo API (`/api/v1/auth/health` endpoint for balance, count email reveals this week)
 - Entities returned: Apollo API (people/search results count) or from master sheet row count
 - Kay accept/reject: Master sheet Col N (Kay Decision)
-- JJ rates: Master sheet Col Q (Call Status) and Col T (Owner Sentiment)
+- JJ rates: Master sheet Call Status field and Owner Sentiment field.
+
+**CRITICAL — JJ dial counting rule (per `feedback_jj_call_date_from_field_not_tab`):**
+
+- Tab names like `Call Log 4.21.26` are **estimated** batch dates — the date the row was staged, not the date JJ called.
+- JJ's actual dial date is the value he types into the `JJ: 1st Call Date` or `JJ: 2nd Call Date` field (post-4/21 NEW schema), or the `JJ: Call Date` field on pre-4/21 OLD-schema tabs.
+- JJ routinely logs today's calls onto older prep tabs (confirmed 4/24: today's 9 dials landed on the 4.21.26 tab). Grouping by tab name **misses these entirely** and under-reports the true count.
+- **Always count by populated `Call Date` value across ALL tabs + Full Target List, grouped by the actual date value — never by tab name.**
+- Normalize date formats before counting: JJ mixes `4/20/26`, `4.24.26`, `4/13/2026`, and occasionally malformed entries like `4/8//2026`. Treat any value containing digits + `/` or `.` + digits as a candidate date; strip punctuation variants before grouping.
+- Pre-4/21 OLD-schema tabs have header-vs-data drift: dates may sit under the field header `JJ: Call Notes` instead of `JJ: Call Date` on rows written before the 4/23 migration. Sample-inspect before counting; when in doubt, scan all four JJ fields for date-shaped values.
 
 **What this tab tells you:**
 - Are we burning credits too fast? (Credits remaining vs days left in month)

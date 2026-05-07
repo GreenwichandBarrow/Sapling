@@ -1,0 +1,26 @@
+{
+  "fetched_at": "2026-05-07T13:00:03-0400",
+  "current_month_used": null,
+  "monthly_limit": null,
+  "daily_limit": null,
+  "credits_used_today": null,
+  "email_credits_used": null,
+  "rate_limit_minute": 1000,
+  "minute_used": 1,
+  "minute_remaining": 999,
+  "rate_limit_hourly": null,
+  "raw_response": {
+    "auth_health": {
+      "healthy": true,
+      "is_logged_in": true
+    },
+    "enrich_status": 200,
+    "rate_limit_headers": {
+      "x-rate-limit-minute": "1000",
+      "x-minute-usage": "1",
+      "x-minute-requests-left": "999",
+      "x-rate-limit-hourly": "",
+      "x-rate-limit-24-hour": ""
+    }
+  }
+}

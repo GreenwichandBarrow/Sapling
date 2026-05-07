@@ -1,0 +1,186 @@
+{
+  "fetched_at": "2026-05-07T17:00:25Z",
+  "list_id": "0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b",
+  "list_name": "Active Deals \u2013 Owners",
+  "stages": [
+    {
+      "title": "Identified",
+      "is_terminal": false
+    },
+    {
+      "title": "Contacted",
+      "is_terminal": false
+    },
+    {
+      "title": "NDA",
+      "is_terminal": false
+    },
+    {
+      "title": "Financials Received",
+      "is_terminal": false
+    },
+    {
+      "title": "Submitted LOI",
+      "is_terminal": false
+    },
+    {
+      "title": "Signed LOI",
+      "is_terminal": false
+    },
+    {
+      "title": "Closed / Not Proceeding",
+      "is_terminal": true
+    }
+  ],
+  "deals": [
+    {
+      "record_id": "1f0049fe-4b04-440c-b5f9-a6fa5ba5e922",
+      "company": "ARTMOVEMENT",
+      "stage": "Identified",
+      "stage_since": "2026-05-01T13:53:06.619000000Z",
+      "location": "Los Angeles, California",
+      "employee_range": "11-50",
+      "arr_bucket": "$1M-$10M",
+      "last_interaction": null,
+      "category": "Warehousing"
+    },
+    {
+      "record_id": "bbae0465-63e0-4cde-926a-7bca95661b42",
+      "company": "Art Ship Co",
+      "stage": "Identified",
+      "stage_since": "2026-03-14T22:03:58.309000000Z",
+      "location": "New York, New York",
+      "employee_range": null,
+      "arr_bucket": null,
+      "last_interaction": null,
+      "category": "Arts"
+    },
+    {
+      "record_id": "96a7a578-31dc-49d0-b8da-a6f7440cc4e2",
+      "company": "Securitas Global Risk Solutions",
+      "stage": "Contacted",
+      "stage_since": "2026-03-30T14:26:07.645000000Z",
+      "location": "Wayne, Pennsylvania",
+      "employee_range": "1-10",
+      "arr_bucket": "$1M-$10M",
+      "last_interaction": "2026-03-26T12:00:00.000000000Z",
+      "category": "Technology"
+    },
+    {
+      "record_id": "4509e585-9610-44f2-a2a4-42e661c1a5a6",
+      "company": "JWI Group",
+      "stage": "Contacted",
+      "stage_since": "2026-03-30T14:11:09.310000000Z",
+      "location": "Yonkers, New York",
+      "employee_range": null,
+      "arr_bucket": null,
+      "last_interaction": "2026-03-31T14:52:36.000000000Z",
+      "category": "Insurance"
+    },
+    {
+      "record_id": "aaa67973-28df-4250-bde3-3c9ce44d7a0b",
+      "company": "Allan Block Insurance",
+      "stage": "Identified",
+      "stage_since": "2026-05-01T13:53:08.615000000Z",
+      "location": "Tarrytown, New York",
+      "employee_range": "11-50",
+      "arr_bucket": "$1M-$10M",
+      "last_interaction": null,
+      "category": "Financial Services"
+    },
+    {
+      "record_id": "7e0f6bc9-b2de-4cc0-8efa-6f93e2ea904d",
+      "company": "J.W. Allen Co., Inc. - Insurance Brokers",
+      "stage": "Identified",
+      "stage_since": "2026-03-14T22:04:28.967000000Z",
+      "location": "New York, New York",
+      "employee_range": "11-50",
+      "arr_bucket": "$1M-$10M",
+      "last_interaction": "2026-03-31T14:49:31.000000000Z",
+      "category": "Marketplace"
+    },
+    {
+      "record_id": "1c698aae-f9f9-44b3-89e8-21fc65ab5afb",
+      "company": "Dayton, Ritz + Osborne",
+      "stage": "Contacted",
+      "stage_since": "2026-03-30T14:11:07.351000000Z",
+      "location": "East Hampton, New York",
+      "employee_range": "11-50",
+      "arr_bucket": "$1M-$10M",
+      "last_interaction": "2026-03-31T17:46:11.000000000Z",
+      "category": "Marketplace"
+    },
+    {
+      "record_id": "d2d0caa0-f465-43fe-a3c0-a0bea21dce34",
+      "company": "Personal Risk Management Solutions",
+      "stage": "Identified",
+      "stage_since": "2026-03-14T22:04:30.812000000Z",
+      "location": "New York, New York",
+      "employee_range": "11-50",
+      "arr_bucket": "$1M-$10M",
+      "last_interaction": null,
+      "category": "Enterprise"
+    },
+    {
+      "record_id": "942a4249-cd1c-4d25-ad8f-af89bbf3eaec",
+      "company": "M&M Environmental",
+      "stage": "Contacted",
+      "stage_since": "2026-04-15T17:53:51.578000000Z",
+      "location": "New York, New York",
+      "employee_range": "11-50",
+      "arr_bucket": "$1M-$10M",
+      "last_interaction": "2026-04-09T22:47:23.000000000Z",
+      "category": "Consulting & Professional Services"
+    },
+    {
+      "record_id": "a133305c-d8f4-456e-9139-1874b823df73",
+      "company": "Grober Imbey Insurance Agency",
+      "stage": "Identified",
+      "stage_since": "2026-05-01T13:53:10.046000000Z",
+      "location": "Valley Stream, New York",
+      "employee_range": "11-50",
+      "arr_bucket": "$1M-$10M",
+      "last_interaction": null,
+      "category": "Insurance"
+    },
+    {
+      "record_id": "1254349b-3e8e-4266-beca-98d2c8301df5",
+      "company": "LG Planning Group",
+      "stage": "Identified",
+      "stage_since": "2026-05-01T13:53:11.957000000Z",
+      "location": "Melville, New York",
+      "employee_range": "11-50",
+      "arr_bucket": "$1M-$10M",
+      "last_interaction": null,
+      "category": "B2B"
+    },
+    {
+      "record_id": "cc951997-0b21-4374-ac4b-756eb7991bd2",
+      "company": "Lang Insurance",
+      "stage": "Identified",
+      "stage_since": "2026-05-01T13:53:13.923000000Z",
+      "location": "Coram, New York",
+      "employee_range": "1-10",
+      "arr_bucket": "$1M-$10M",
+      "last_interaction": null,
+      "category": "Insurance"
+    }
+  ],
+  "closed_count": 138,
+  "closed_count_post_nda": 2,
+  "closed_count_pre_nda": 136,
+  "closed_recent": [
+    {
+      "record_id": "788584f4-e99d-4704-887f-2173119cfb9a",
+      "company": "Aiston Fine Art Services",
+      "stage_since": "2026-03-30T23:31:40.648000000Z",
+      "location": "New York, New York"
+    },
+    {
+      "record_id": "4a026d42-aceb-4743-b83d-e508b62f0639",
+      "company": "Project Restoration",
+      "stage_since": "2026-03-26T16:15:19.724000000Z",
+      "location": null
+    }
+  ]
+}

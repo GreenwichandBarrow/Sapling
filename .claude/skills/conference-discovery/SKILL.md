@@ -21,6 +21,18 @@ Reference: Colin Woolway and Will Gallagher attended 1-2 conferences/week and la
 - New contacts → Attio Active Deals at appropriate stage → skill/pipeline-manager takes over
 </objective>
 
+<mandatory_validator>
+## Mandatory Validator (post-2026-05-03 hardening)
+
+This skill mutates the Conference Pipeline Google Sheet. It must run with the hardening pattern from `feedback_mutating_skill_hardening_pattern`:
+
+- **POST_RUN_CHECK validator:** `scripts/validate_conference_discovery_integrity.py` runs after every scheduled fire. The launchd wrapper sets POST_RUN_CHECK in the plist; non-zero exit overrides Claude's exit code and routes to Slack #operations with "VALIDATOR FAILED" prefix. The validator confirms (a) Pipeline tab still has expected row count floor, (b) header row intact, (c) no all-blank stretches indicating a partial wipe.
+- **Headless prompt:** `.claude/skills/conference-discovery/headless-sunday-prompt.md` is what `scripts/run-skill.sh` pipes to Claude when the wrapper is invoked with `conference-discovery:sunday`. The prompt mandates **a pre-run snapshot** of the Pipeline tab to `/tmp/conference-pipeline-snapshot-{date}.json` BEFORE any mutating operation, plus the per-row delete pattern below.
+- **Memory rule:** `feedback_no_clear_rewrite_populated_sheets.md` — never `gog sheets clear` + rewrite on a populated tab. Per-row deletes only; snapshot first. Belt-and-suspenders: `Bash(gog sheets clear:*)` is on the project-local deny list as of 2026-05-04.
+
+**Incident reference:** 2026-05-03, the archival subagent cleared the Pipeline tab (~70 rows) as step 1 of a clear+rewrite pattern, then hit a stream-idle timeout before the rewrite. Required Kay to do a manual Version History restore from the May 2 11:54am snapshot. The validator + headless prompt + deny rule + memory rule together prevent recurrence at four layers.
+</mandatory_validator>
+
 <essential_principles>
 ## How It Works
 
@@ -307,22 +319,19 @@ For each conference found, capture:
 
 Prepare rows for the Conference Pipeline Google Sheet (do NOT write yet — the Stop Hook in the Validation section requires Kay's approval first). All columns have dropdown data validation where applicable.
 
-**One conference = one row.** Multi-day conferences get a single row with the date range in column A (e.g., "2026-05-03 - 05-06"). Never create separate rows for different days of the same conference. Kay makes one attend/skip decision per conference, not per day. Which specific day she attends is her choice, not a pipeline decision.
+**One conference = one row.** Multi-day conferences get a single row with the date range in column B — Date of Conference (e.g., "2026-05-03 - 05-06"). Never create separate rows for different days of the same conference. Kay makes one attend/skip decision per conference, not per day. Which specific day she attends is her choice, not a pipeline decision.
 
-**Column layout:**
-A: Date of Conference | B: Event Name | C: Location | D: Travel | E: Niche | F: Registration Cost | G: Reg Deadline | H: Est. Attendees | I: Attendee List | J: Website | K: Status | L: Agent Rec | M: Decision | N: Notes | O: Agent Notes
+**Column layout (live header verified 2026-05-04):**
+A: Week Of | B: Date of Conference | C: Decision | D: Event Name | E: Location | F: Travel | G: Niche | H: Registration Cost | I: Registration Paid | J: Reg Deadline | K: Est. Attendees | L: Attendee List | M: Website | N: Status | O: Agent Rec
 
 **Dropdown columns:**
-- **Status (col K):** Discovered, Evaluating, Registered, Prep Complete, Attended, Skipped
-- **Agent Rec (col L):** Attend, Register Only, Skip, Investigate — Claude's recommendation
-- **Decision (col M):** Attend, Register Only, Skip — Kay's final call
+- **Decision (col C):** Attend, Register Only, Skip — Kay's final call (sits up front so it's the first thing Kay sees scrolling)
+- **Status (col N):** Discovered, Evaluating, Registered, Prep Complete, Attended, Skipped
+- **Agent Rec (col O):** Attend, Register Only, Skip, Investigate — Claude's recommendation
+- **Registration Paid (col I):** Yes / No — set to Yes once payment confirmed
 
-**Agent Notes (col O):** Far right column. Claude's rationale for the recommendation. Separate from the rec itself so it doesn't clutter.
-
-**Notes (col N):** Kay's own notes column.
-
-Claude fills in: all columns A-L, O (everything except Decision and Notes).
-Kay fills in: Decision (M) and Notes (N).
+Claude fills in: all columns except C (Decision).
+Kay fills in: Decision (C). She may also edit any other cell.
 
 When Kay marks Decision = Skip, Claude moves the row to the Skipped tab.
 
@@ -490,17 +499,17 @@ The debrief is designed to be easily digestible on a phone screen — short bull
 <conference_decision_scan>
 ## Conference Decision Scan (Moved from pipeline-manager)
 
-After Kay reviews the Conference Pipeline sheet Monday morning and marks decisions in Col M ("Attend" or "Register Only"), this scan picks them up and executes.
+After Kay reviews the Conference Pipeline sheet Monday morning and marks decisions in Col C ("Attend" or "Register Only"), this scan picks them up and executes.
 
 **When to run:** Monday morning scan, or any time Kay marks a new decision on the sheet.
 
 **Process:**
-1. Check Conference Pipeline Google Sheet for any row where Decision (Col M) = "Attend" or "Register Only" AND Status (Col K) is NOT yet "Registered"
+1. Check Conference Pipeline Google Sheet for any row where Decision (Col C) = "Attend" or "Register Only" AND Status (Col N) is NOT yet "Registered"
 2. For each new decision:
-   - Create Motion task: "Register for {conference name}" with deadline 2 days before registration closes (Col G)
-   - Include registration link from conference website (Col J)
-   - If attendee list is publicly available (Col I), begin attendee list acquisition
-   - Update Status (Col K) to "Registered" after Motion task created
+   - Create Motion task: "Register for {conference name}" with deadline 2 days before registration closes (Col J — Reg Deadline)
+   - Include registration link from conference website (Col M — Website)
+   - If attendee list is publicly available (Col L — Attendee List), begin attendee list acquisition
+   - Update Status (Col N) to "Registered" after Motion task created
 3. Present changes to Kay before writing (per Stop Hook above)
 
 **Note:** Kay picks conferences Monday morning. This scan runs after her review. Gives Kay a grace period to change her mind before registration is kicked off.
@@ -511,19 +520,33 @@ After Kay reviews the Conference Pipeline sheet Monday morning and marks decisio
 
 Before reporting success, validate all outputs. If any check fails, do NOT send Slack. Report the failure and fix it.
 
+### Pre-flight: Conference Pipeline dedup
+
+Before appending any new row to the Conference Pipeline sheet, run a 3-tuple dedup check:
+1. Date match (exact YYYY-MM-DD)
+2. Venue match (substring or normalized comparison)
+3. Host org match (substring or normalized comparison)
+
+If any 2 of 3 match an existing row → SKIP the append, surface the existing row's number to chat. Name-string match is unreliable (suffixes like "+ DealSource", abbreviation drift, host-name variants all defeat it).
+
+**Calibration source (2026-05-01):** subagent's name-string search missed "ACG NY Women of Leadership Summit + DealSource" (existing row 21) when searching for "ACG NY Women of Leadership Summit" → added duplicate row 80. The 3-tuple check would have caught this (same date + same venue + same host = SKIP).
+
+Apply this pre-flight in BOTH paths: the discovery subagent that proposes new rows AND the write step that pushes to the sheet. Don't rely on the subagent alone — re-run the check immediately before `gog sheets append`.
+
 ### Sheet Write & Review Flow
 
 **Write directly to the sheet. Kay reviews there, not in the conversation.**
 
-The Conference Pipeline sheet IS the review surface. Don't dump raw search results or proposed rows into the conversation — that's noise. Write the filtered, quality-checked rows to the sheet, send Kay the link, and she marks Decision (col N) on the sheet itself.
+The Conference Pipeline sheet IS the review surface. Don't dump raw search results or proposed rows into the conversation — that's noise. Write the filtered, quality-checked rows to the sheet, send Kay the link, and she marks Decision (col C) on the sheet itself.
 
 **Procedure:**
 1. Run discovery searches (parallel subagents for each niche)
 2. Apply audience filter and owner verification gate — only conferences that pass go on the sheet
-3. Write new rows to the Pipeline tab using `gog sheets update` or `gog sheets append` with `--values-json` flag (NOT `--values`)
-4. Re-sort all data rows chronologically by Column A
-5. Send Slack notification with link to the sheet
-6. Kay reviews on the sheet and marks Decision column
+3. **Run 3-tuple dedup pre-flight** (date + venue + host) on each proposed row against existing Pipeline rows — see "Pre-flight: Conference Pipeline dedup" above. Drop any row where 2 of 3 match.
+4. Write new rows to the Pipeline tab using `gog sheets update` or `gog sheets append` with `--values-json` flag (NOT `--values`)
+5. Re-sort all data rows chronologically by the leftmost date column
+6. Send Slack notification with link to the sheet
+7. Kay reviews on the sheet and marks Decision column
 
 **gog sheets syntax:**
 ```bash
@@ -537,14 +560,14 @@ gog sheets update {SHEET_ID} "Pipeline!A{row}:O{row}" --values-json '[["col1","c
 **Do NOT present conference results in the conversation.** The sheet is the single source of truth. Keep the conversation clean — just confirm what was added and send the link.
 
 ### 1. Sheet Validation (after discovery, post-approval)
-Verify the Conference Pipeline Google Sheet has new rows with data in all required columns:
-- Columns A-L (Date, Event Name, Location, Travel, Niche, Reg Cost, Reg Deadline, Est. Attendees, Attendee List, Website, Status, Agent Rec)
-- Column O (Agent Notes)
+Verify the Conference Pipeline Google Sheet has new rows with data in all required columns (live header verified 2026-05-04):
+- Columns A-O (Week Of, Date of Conference, Decision, Event Name, Location, Travel, Niche, Registration Cost, Registration Paid, Reg Deadline, Est. Attendees, Attendee List, Website, Status, Agent Rec)
+- Decision (col C) left blank — Kay fills this
 - No blank cells in required columns for newly added rows
 
 ### 1b. Chronological Sort Validation (REQUIRED after every write)
-After adding, removing, or modifying any rows in the Pipeline tab, re-sort ALL data rows (A2 onwards) by Column A (Date of Conference) in chronological order. Then verify:
-- Read back Pipeline!A2:A{last_row} and confirm dates are in ascending order
+After adding, removing, or modifying any rows in the Pipeline tab, re-sort ALL data rows (row 2 onwards) by Column B (Date of Conference) in chronological order. Then verify:
+- Read back Pipeline!B2:B{last_row} and confirm dates are in ascending order
 - No header row was displaced
 - No data was lost during sort (row count before = row count after)
 - All columns preserved their association (no misaligned rows)
@@ -586,7 +609,7 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 source scripts/.env.launchd
 curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
-  -d '{"text":"Post-conference processing complete for {conference name}.\n{n} contacts added to Attio. Follow-up drafts in Superhuman.\n\nDebrief: {Google Doc link}\n\nReview the debrief for anything you might have missed.\n\nConference Pipeline:\nhttps://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit"}'
+  -d '{"text":"Post-conference processing complete for {conference name}.\n{n} contacts added to Attio. Follow-up drafts in Gmail.\n\nDebrief: {Google Doc link}\n\nReview the debrief for anything you might have missed.\n\nConference Pipeline:\nhttps://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit"}'
 ```
 
 **Slack message content:**

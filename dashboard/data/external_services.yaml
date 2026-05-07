@@ -1,0 +1,118 @@
+# External Connectivity & Tooling — Infrastructure Zone 2
+#
+# Each service has:
+#   name        — short identifier (rendered in mono font)
+#   kind        — "service" (external API/MCP) or "local" (filesystem/CLI)
+#   description — one-line purpose statement
+#   health      — ok | warn | alert
+#   status_text — one-line health/state phrase shown in the right column
+#   action      — regen | refresh | view | muted (drives action button color)
+#   action_text — button label (e.g. "Regenerate", "Refresh", "Logs ↗")
+#
+# Live auth-probes wire later — until then this is operator-maintained
+# (mirror pattern of tech_stack.yaml).
+
+services:
+  - name: claude-api
+    kind: service
+    description: Anthropic API · primary LLM for all Claude Code work and subagents.
+    health: ok
+    status_text: Healthy · primary LLM
+    action: muted
+    action_text: View burn ↗
+
+  - name: superhuman
+    kind: service
+    description: Email drafts via OAuth · CEO primary inbox + draft surface.
+    health: warn
+    status_text: G&B OAuth token expired · personal Gmail fallback active
+    action: regen
+    action_text: Re-auth
+
+  - name: attio-mcp
+    kind: service
+    description: CRM read/write via MCP · People + Companies + Lists + Notes.
+    health: warn
+    status_text: Token missing notes:read-write scope
+    action: regen
+    action_text: Re-auth
+
+  - name: apollo
+    kind: service
+    description: Company discovery + contact enrichment · primary list-builder backend.
+    health: ok
+    status_text: Healthy · credits depleting (see Zone 3)
+    action: muted
+    action_text: Logs ↗
+
+  - name: linkt
+    kind: service
+    description: Legacy list builder · sunsetting in favor of Apollo by 2026-05-30.
+    health: warn
+    status_text: Sunset planned · do not refill
+    action: muted
+    action_text: Logs ↗
+
+  - name: gog
+    kind: service
+    description: Google Workspace CLI · Gmail, Calendar, Drive, Sheets, Docs, Tasks.
+    health: ok
+    status_text: OAuth healthy
+    action: muted
+    action_text: Logs ↗
+
+  - name: granola
+    kind: service
+    description: Meeting transcripts via MCP · feeds vault calls + decision traces.
+    health: ok
+    status_text: Healthy · meetings landing in vault
+    action: muted
+    action_text: Logs ↗
+
+  - name: slack-webhooks
+    kind: service
+    description: 3 channels · ai-operations / sva / operations.
+    health: ok
+    status_text: Healthy
+    action: muted
+    action_text: Logs ↗
+
+  - name: motion
+    kind: service
+    description: Task & project management API · used by /task, briefing automation, operations workflows.
+    health: ok
+    status_text: Healthy · API key valid
+    action: muted
+    action_text: Logs ↗
+
+  - name: github
+    kind: service
+    description: Repo hosting · used by /commit, /push, ultrareview.
+    health: ok
+    status_text: gh CLI authenticated
+    action: muted
+    action_text: Logs ↗
+
+  - name: launchd
+    kind: local
+    description: macOS scheduler · runs all 14 scheduled skills.
+    health: ok
+    status_text: All registered jobs accounted for
+    action: muted
+    action_text: View page
+
+  - name: cass
+    kind: local
+    description: Coding agent session search · index across past Claude Code transcripts.
+    health: warn
+    status_text: Index 3 days stale
+    action: refresh
+    action_text: Refresh
+
+  - name: vault
+    kind: local
+    description: brain/ Obsidian vault · single source of truth for knowledge.
+    health: ok
+    status_text: Schema validator passing
+    action: muted
+    action_text: View

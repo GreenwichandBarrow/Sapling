@@ -16,7 +16,7 @@ This skill discovers acquisition targets via skill/list-builder (Apollo, primary
 **Trigger:** Niche status changes to Active-Outreach on the Industry Research Tracker. Target-discovery does a one-time initial load when a niche first enters Active-Outreach (fill the sheet with a solid batch). After that, the weekly tracker dashboard determines if more targets are needed based on pipeline throughput data. Do not run daily — run on initial activation and when the weekly review signals the pipeline needs refilling.
 
 **Channel-aware enrichment (CRITICAL):** Read Col D (Outreach Channel) from WEEKLY REVIEW BEFORE invoking list-builder. The channel determines enrichment depth:
-- `Kay Email` → invoke list-builder in `email-first` mode (full inline enrichment, all 9 stop hooks). Claude drafts in Superhuman, Kay reviews and sends.
+- `Kay Email` → invoke list-builder in `email-first` mode (full inline enrichment, all 9 stop hooks). Claude drafts in Gmail (`gog gmail draft create`), Kay reviews and sends.
 - `DealsX Email` → Sam's team handles list building + enrichment + mass email/LinkedIn outreach. target-discovery runs warm intro check + Attio dedup on Sam's list only (see DealsX List Ingestion section).
 - `JJ-Call-Only` → invoke list-builder in `calls-first` mode (volume load, 5 stop hooks, 0 credits)
 
@@ -27,7 +27,7 @@ This skill discovers acquisition targets via skill/list-builder (Apollo, primary
 - **skill/pipeline-manager** — existing Attio contacts in this niche, intermediary referrals, deals already in pipeline (to avoid duplicates)
 
 **Outputs to other skills (routed by Outreach Channel — Col D on WEEKLY REVIEW):**
-- `Kay Email` → Approved targets go to skill/outreach-manager Kay Email subagent for Claude-drafted Superhuman emails + Attio entry at "Identified"
+- `Kay Email` → Approved targets go to skill/outreach-manager Kay Email subagent for Claude-drafted Gmail emails + Attio entry at "Identified"
 - `DealsX Email` → Approved targets (from Sam's list, after warm intro + Attio dedup) go to skill/outreach-manager DealsX Coordination subagent. Provide templates + exclusion list to Sam. Sam handles sending.
 - `JJ-Call-Only` → Approved targets go to skill/jj-operations call queue. No email sequences. JJ cold calls only.
 - `Other` → STOP. Ask Kay how to route.
@@ -411,7 +411,7 @@ When JJ connects with an owner and gets positive sentiment:
    - Run Apollo `/people/match` for email reveal (1 credit)
    - Run warm-intro-finder (check if Kay has a connection for warmer follow-up)
    - Flag for pipeline-manager: "JJ connected with {owner} at {company}. Ready for follow-up."
-3. If owner said "send me more info" → draft follow-up email in Superhuman
+3. If owner said "send me more info" → draft follow-up email in Gmail (`gog gmail draft create`)
 
 **Cost:** ~1 credit per positive engagement. At 5-10% connect rate, ~5-10 credits/week.
 
@@ -429,20 +429,34 @@ When JJ connects with an owner and gets positive sentiment:
 | Mon-Fri | 4pm | jj-operations harvest: update Full Target List, trigger Phase 3 for positive calls |
 | Friday | | Weekly tracker reports: calls made, connection rate, enrichment pipeline depth |
 
-### Stop Hook: Call-Tab Enrichment Integrity
+### Stop Hook: Call-Tab Enrichment Integrity (MANDATORY)
 
 **This pipeline's contract is:** the 200 rows enriched Sunday night are the exact same 200 rows JJ calls Mon–Fri. If that invariant breaks, JJ's tabs show blank Col K (Owner Name) and his shift is wasted.
 
-Before the Sunday pipeline emits "done", run this check:
+**You MUST invoke the validator as the final action of Phase 2.** The `enrichment_integrity_check.py` hook is not enforced by anything other than your own discipline — silent skipping = the 2026-04-19 silent-failure bug.
 
-1. Read the pool artifact from Step 1 (200 row numbers)
-2. Read the post-Step-4 pool (should be 200 rows after backfills)
-3. Read the 5 Call Log tabs created in Step 5
-4. Assert: every row number in the final pool appears on exactly one Mon–Fri Call Log tab
-5. Assert: every Mon–Fri Call Log tab row has Col K (Owner Name) populated
-6. If ANY tab has a blank Col K row: block completion, log the row numbers, escalate to Monday morning briefing as **"ENRICHMENT INTEGRITY FAILURE"**
+**Required invocation (run this; do not paraphrase):**
 
-Enforced by `.claude/hooks/enrichment_integrity_check.py` (see implementation at that path).
+```bash
+JJ_CALL_NICHES="<comma-separated active JJ-Call-Only niche names>" \
+  python3 scripts/validate_phase2_integrity.py
+```
+
+The driver script in `scripts/validate_phase2_integrity.py` calls `.claude/hooks/enrichment_integrity_check.py` once per niche and aggregates results. It checks:
+
+1. Pool artifact for today exists at `brain/context/jj-week-pool-{YYYY-MM-DD}.md`
+2. Every row number in the artifact maps to a row on the niche's "Full Target List" tab
+3. Every Mon–Fri Call Log tab row has Col K (Owner Name) populated
+4. Every pool company appears on exactly one Mon–Fri Call Log tab (no drift)
+
+**If the validator returns non-zero:**
+- Do NOT declare Phase 2 done
+- Read the failure output from stderr
+- Attempt one corrective pass (re-enrich blank rows, re-write artifact, re-distribute tabs)
+- Re-run the validator
+- If it still fails, exit Phase 2 with the validator's exit code
+
+**Defense-in-depth:** `scripts/run-skill.sh` runs this same validator independently as `POST_RUN_CHECK` after the wrapper sees Claude exit 0. If you skip the in-loop check, the wrapper still catches the failure and fires the Slack alert — but the in-loop check is faster (you can correct mid-run) and cheaper (no Slack noise on transient gaps).
 </calls_first_flow>
 
 <dealsx_list_ingestion>
@@ -512,7 +526,7 @@ gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B4:K2
 
 | Col D Value | Route To | Action |
 |-------------|----------|--------|
-| `Kay Email` | skill/outreach-manager Kay Email subagent | Claude drafts in Superhuman, Kay reviews and sends. Full inline enrichment pipeline (Phases A-F). |
+| `Kay Email` | skill/outreach-manager Kay Email subagent | Claude drafts in Gmail (`gog gmail draft create`), Kay reviews and sends. Full inline enrichment pipeline (Phases A-F). |
 | `DealsX Email` | skill/outreach-manager DealsX Coordination subagent | Sam's team handles list building + mass email/LinkedIn. target-discovery runs warm intro check + Attio dedup on Sam's list only (see DealsX List Ingestion). Provide templates + exclusion list to Sam. |
 | `JJ-Call-Only` | skill/jj-operations call queue | JJ cold calls only. No email sequences. |
 | `Other` | **STOP. Ask Kay.** | Notify Kay: "Outreach Channel is 'Other' for {niche}. How should targets be routed?" |

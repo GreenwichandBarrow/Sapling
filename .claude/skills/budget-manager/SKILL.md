@@ -18,30 +18,25 @@ The fund has $551,825 invested with a February 2027 deadline. Every dollar and e
 
 Invoke: `/budget monthly`, `/budget runway`, `/budget tech-audit`, `/budget transition`
 
-## Trigger Flow (Monthly Mode)
+## Trigger Flow (Monthly Mode) — AUTO-FIRE on bookkeeper P&L detection
 
-The monthly mode is trigger-based, NOT scheduled. The pipeline-manager detects Anthony's monthly reports during its morning email scan and triggers the flow:
+The monthly mode is **trigger-based and auto-firing** — not approval-gated. Email-intelligence is the upstream trigger; this skill runs without a Decision-bucket gate.
 
 ```
-Anthony emails P&L + BS PDFs
-  → Pipeline-manager morning scan detects bookkeeper reports
-  → Pipeline-manager saves PDFs to MONTHLY REPORTING/{MONTH YEAR} folder on Drive
-  → Pipeline-manager creates brain/inbox item: "Monthly financials received"
-  → Morning briefing surfaces under "Other items":
-    "Monthly P&L received from Anthony. Run /budget monthly?"
-  → Kay approves → budget-manager monthly mode runs
-  → After processing, create a Slack reminder for the FIRST FRIDAY at 9am ET following the run:
-    "Budget update ready for your Friday review.
-    Dashboard: https://docs.google.com/spreadsheets/d/1vTeGviuQk9zLqacJrdBZS2Bopk8kQZtmEHWheqpCdq0/edit
-    Key highlights: {runway months} months runway, {burn vs budget}, {flags if any}."
-  → Budget review is ALWAYS a Friday activity regardless of when the data arrives.
+Anthony emails P&L + BS PDFs (subject "Management Report" or attachment "Profit and Loss"/"Balance Sheet")
+  → email-intelligence detects → tags inbox item with `topic/bookkeeper-pl-received` + `trigger/budget-manager-monthly`
+  → email-intelligence files PDFs to MONTHLY REPORTING/{MONTH YEAR} subfolder on Drive
+  → email-intelligence auto-invokes budget-manager monthly mode (no Kay approval gate)
+  → Morning briefing surfaces the OUTPUT — variance flags, runway change, action items —
+    NOT the trigger event. The trigger is deterministic; the output may be decision-worthy.
+  → Slack ping at end of run: "{Month} budget report ready. Runway {N} mo. Flags: {count}. {dashboard link}"
 ```
 
-**Detection signal:** Email from StartVirtual or Anthony containing PDF attachments with "Profit and Loss" or "Balance Sheet" in the filename or subject.
+**Detection signal:** Email from `*@startvirtual.com` or `anthony.b@startvirtual.com` with subject/body/attachment containing "Management Report", "Profit and Loss", or "Balance Sheet".
 
-**Why trigger-based:** Anthony's delivery schedule varies. A fixed schedule (e.g., first Friday) would run with no data if he's late. This ensures we only run when real data exists.
+**Why auto-fire:** Bookkeeper P&L delivery is a deterministic recurring trigger, not a judgment call. Surfacing "RECOMMEND: Run budget-manager?" wastes Kay's decision budget. The judgment call is what to do *with* the runway/variance numbers, not whether to recompute when fresh data arrives. See `memory/feedback_bookkeeper_pl_auto_trigger_budget_manager.md` and `memory/feedback_decision_fatigue_minimization.md`.
 
-**Future state:** When confident, remove the approval step and auto-run on detection.
+**Calibration precedent (2026-04-29):** Kay corrected me when I surfaced "RECOMMEND: Run budget-manager on March P&L" as Decision item #3 of the morning briefing — "you saw the email so this should be the trigger." That session also revealed two execution bugs (subagent timeout + missing per-month Net Burn row in Tab 2) which the Mode 1 stop hooks below now catch.
 </objective>
 
 <essential_principles>
@@ -214,6 +209,21 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 - Fund balance is non-zero
 - Runway calculation is non-negative
 - If any validation fails: report what is missing, do NOT send Slack
+
+**Stop hooks (Mode 1 — Monthly) — MANDATORY**
+
+Run all of these before declaring success. Any failure → no Slack post, surface gap to Kay.
+
+- [ ] **Tab 1 month column populated.** `'Monthly Actuals vs Budget'!{month_col}3:{month_col}39` has actual values, not blank. The header row contains "{Month} {Year}" exactly.
+- [ ] **Tab 1 bottom block updated.** Three rows at bottom of Tab 1 (Net Burn, Cumulative Spend, Fund Balance) all reflect the new month.
+- [ ] **Tab 2 BURN RATE block has the new month row.** Specifically: a row labeled `"{Month} {Year} Net Burn"` exists in column A between the prior month and the "Steady-State Monthly Burn" row, with the dollar value in column B. **This is the bug from 2026-04-29 — the subagent updated aggregates but skipped adding the per-month line. Insert the row, shift everything below down by 1, and re-write atomically.**
+- [ ] **Tab 2 RUNWAY block updated.** "Months at Steady-State (from {next_month} 1)", "Projected Zero", "Shortfall", and "Monthly Savings Needed" all reflect the new month's data.
+- [ ] **Tab 2 INVESTOR REPORTING block updated.** `budget_remaining`, `budget_pct`, `burn_rate`, `runway_months` all match Tab 2 main figures.
+- [ ] **Vault output written.** `brain/outputs/{run-date}-budget-report-{month-year}.md` exists, ≥1KB, has valid frontmatter per `schemas/vault/output.yaml`, includes all 5 sections (fund position, P&L summary, variance flags, runway analysis, action items).
+- [ ] **Slack post fired.** HTTP 200 from `$SLACK_WEBHOOK_OPERATIONS`. If env var unset → log warning, no post, surface to Kay.
+- [ ] **Subagent strategy.** Three-phase pipeline must run as **3 separate subagent spawns** — Document Ingester, Budget Reconciler, Report Writer — not one monolithic agent. Single-spawn runs hit stream-idle timeout (~50 min, 55 tool calls observed 2026-04-29) before Phase 3 lands the vault file and Slack. Phase 1 returns JSON to orchestrator; orchestrator passes JSON to Phase 2; Phase 2 returns reconciled metrics; orchestrator passes those to Phase 3.
+
+**Future hardening (deferred):** `scripts/validate_budget_manager_integrity.py` — POST_RUN_CHECK validator per `memory/feedback_mutating_skill_hardening_pattern.md`. Should re-check Tab 1 column, Tab 2 month-row presence, vault file existence + frontmatter. Wire into wrapper case-statement when launchd-scheduled (currently inline-triggered, so wrapper hardening is lower priority).
 
 ---
 

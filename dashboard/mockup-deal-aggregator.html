@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>G&B Command Center — Mockup (Deal Aggregator)</title>
+<style>
+  :root {
+    --bg: #0B0D12;
+    --panel: #141821;
+    --panel-hover: #1A1F2A;
+    --row-hover: #181C26;
+    --border: #242A36;
+    --border-soft: #1C212C;
+    --text: #E8ECF3;
+    --text-muted: #8B93A7;
+    --text-dim: #5B6378;
+    --accent: #4A9EFF;
+    --green: #3FD17F;
+    --yellow: #F5C451;
+    --red: #FF5A5A;
+    --neutral: #6B7280;
+    --purple: #B084F0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    font-family: "Avenir Next", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .app {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    height: 100vh;
+  }
+
+  /* ---------- SIDEBAR (same as landing) ---------- */
+  .sidebar {
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    padding: 20px 0;
+    overflow-y: auto;
+  }
+  .brand {
+    padding: 0 20px 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+  .brand .logo { font-size: 15px; font-weight: 600; letter-spacing: 0.02em; color: var(--text); }
+  .brand .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .nav-section { padding: 0 12px; }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 12px; border-radius: 6px;
+    color: var(--text-muted); font-size: 13px; cursor: pointer;
+    transition: all 0.15s; margin-bottom: 2px;
+    text-decoration: none;
+  }
+  .nav-item:hover { background: var(--panel-hover); color: var(--text); }
+  .nav-item.active { background: rgba(74, 158, 255, 0.12); color: var(--accent); font-weight: 500; }
+  .nav-item .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim); }
+  .nav-item.active .dot { background: var(--accent); }
+
+  /* ---------- MAIN ---------- */
+  .main {
+    overflow-y: auto;
+    padding: 24px 32px 40px;
+  }
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .topbar h1 {
+    font-size: 20px; font-weight: 500; letter-spacing: -0.01em;
+  }
+  .topbar .meta { font-size: 12px; color: var(--text-dim); }
+  .topbar .meta .sep { margin: 0 8px; color: var(--border); }
+
+  .subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+  .subtitle .highlight { color: var(--text); font-weight: 500; }
+
+  /* ---------- FILTER BAR ---------- */
+  .filter-bar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .filter-tabs { display: flex; gap: 4px; }
+  .filter-tab {
+    padding: 6px 12px;
+    font-size: 12px;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .filter-tab:hover { background: var(--panel); color: var(--text); }
+  .filter-tab.active { background: rgba(74, 158, 255, 0.1); border-color: var(--accent); color: var(--accent); }
+
+  .filter-select {
+    padding: 6px 10px;
+    font-size: 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .filter-select:hover { color: var(--text); border-color: #2E3647; }
+
+  .filter-search {
+    flex: 1;
+    max-width: 260px;
+    padding: 6px 12px;
+    font-size: 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: inherit;
+  }
+  .filter-search::placeholder { color: var(--text-dim); }
+
+  /* ---------- TABLE ---------- */
+  .table-wrap {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  thead th {
+    text-align: left;
+    padding: 12px 14px;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.01);
+  }
+
+  tbody td {
+    padding: 14px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--text);
+    vertical-align: middle;
+  }
+  tbody tr { transition: background 0.15s; cursor: pointer; }
+  tbody tr:hover { background: var(--row-hover); }
+  tbody tr:last-child td { border-bottom: none; }
+
+  /* column-specific */
+  .company-cell { font-weight: 500; }
+  .industry-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    background: rgba(176, 132, 240, 0.12);
+    color: var(--purple);
+    border-radius: 4px;
+    margin-top: 3px;
+    letter-spacing: 0.02em;
+  }
+  .owner-cell { color: var(--text-muted); }
+  .location-cell { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+  .num-cell { font-variant-numeric: tabular-nums; text-align: right; }
+  .num-cell.dim { color: var(--text-dim); }
+
+  .source-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .source-tag .src-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .source-tag .src-dot.axial { background: var(--green); }
+  .source-tag .src-dot.email { background: var(--yellow); }
+  .source-tag .src-dot.assoc { background: var(--purple); }
+  .source-tag .src-dot.dealsx { background: var(--red); }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  .status-badge.new { background: rgba(74, 158, 255, 0.12); color: var(--accent); }
+  .status-badge.reviewed { background: rgba(139, 147, 167, 0.14); color: var(--text-muted); }
+  .status-badge.pursuing { background: rgba(63, 209, 127, 0.12); color: var(--green); }
+  .status-badge.passed { background: rgba(107, 114, 128, 0.14); color: var(--text-dim); }
+
+  .link-cell { text-align: center; width: 40px; }
+  .link-icon {
+    display: inline-block;
+    color: var(--text-dim);
+    font-size: 14px;
+    transition: color 0.15s;
+  }
+  tbody tr:hover .link-icon { color: var(--accent); }
+
+  /* summary strip */
+  .summary {
+    display: flex;
+    gap: 28px;
+    padding: 10px 0 20px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .summary .num { color: var(--text); font-weight: 500; margin-right: 5px; font-variant-numeric: tabular-nums; }
+
+  .page-note {
+    margin-top: 32px;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="logo">G&amp;B Command Center</div>
+      <div class="sub">Greenwich &amp; Barrow</div>
+    </div>
+    <div class="nav-section">
+      <a class="nav-item" href="mockup-landing.html"><span class="dot"></span>Dashboard</a>
+      <div class="nav-item active"><span class="dot"></span>Deal Aggregator</div>
+      <a class="nav-item" href="mockup-deal-pipeline.html"><span class="dot"></span>Active Deal Pipeline</a>
+      <div class="nav-item"><span class="dot"></span>M&amp;A Analytics</div>
+      <a class="nav-item" href="mockup-c-suite-skills.html"><span class="dot"></span>C-Suite &amp; Skills</a>
+      <a class="nav-item" href="mockup-infrastructure.html"><span class="dot"></span>Infrastructure</a>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <div class="topbar">
+      <h1>Deal Aggregator</h1>
+      <div class="meta">
+        Friday, April 24, 2026
+        <span class="sep">•</span>
+        Last run 6:02 AM
+        <span class="sep">•</span>
+        Refreshing every 60s
+      </div>
+    </div>
+
+    <div class="subtitle">
+      Businesses actively selling — aggregated from broker platforms, email inbound, and association boards.
+    </div>
+
+    <div class="summary">
+      <div><span class="num">3</span>new today</div>
+      <div><span class="num">12</span>this week</div>
+      <div><span class="num">2</span>pursuing</div>
+      <div><span class="num">0</span>awaiting CIM</div>
+    </div>
+
+    <div class="filter-bar">
+      <div class="filter-tabs">
+        <button class="filter-tab active">Today</button>
+        <button class="filter-tab">This week</button>
+        <button class="filter-tab">All</button>
+      </div>
+      <select class="filter-select">
+        <option>All sources</option>
+        <option>BizBuySell</option>
+        <option>Axial</option>
+        <option>Email</option>
+        <option>Association</option>
+        <option>DealsX</option>
+      </select>
+      <select class="filter-select">
+        <option>All industries</option>
+        <option>Insurance</option>
+        <option>HVAC</option>
+        <option>Art Storage</option>
+        <option>MSP</option>
+        <option>Equipment</option>
+      </select>
+      <select class="filter-select">
+        <option>All statuses</option>
+        <option>New</option>
+        <option>Reviewed</option>
+        <option>Pursuing</option>
+        <option>Passed</option>
+      </select>
+      <input class="filter-search" type="text" placeholder="Search company, owner, industry..." />
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Company</th>
+            <th>Owner</th>
+            <th>Location</th>
+            <th class="num-cell">Revenue</th>
+            <th class="num-cell">EBITDA</th>
+            <th class="num-cell">Asking</th>
+            <th>Status</th>
+            <th class="link-cell"></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td><span class="source-tag"><span class="src-dot axial"></span>Axial</span></td>
+            <td>
+              <div class="company-cell">Brookline Insurance Partners</div>
+              <div class="industry-tag">Insurance Brokerage</div>
+            </td>
+            <td class="owner-cell">Mark Sullivan</td>
+            <td class="location-cell">Austin, TX</td>
+            <td class="num-cell">$12.4M</td>
+            <td class="num-cell">$3.1M</td>
+            <td class="num-cell">$22M</td>
+            <td><span class="status-badge new">New</span></td>
+            <td class="link-cell"><span class="link-icon">&#x2197;</span></td>
+          </tr>
+
+          <tr>
+            <td><span class="source-tag"><span class="src-dot"></span>BizBuySell</span></td>
+            <td>
+              <div class="company-cell">Valley Comfort HVAC</div>
+              <div class="industry-tag">HVAC</div>
+            </td>
+            <td class="owner-cell">Robert Chen</td>
+            <td class="location-cell">Fairfax, VA</td>
+            <td class="num-cell">$8.2M</td>
+            <td class="num-cell">$1.6M</td>
+            <td class="num-cell">$9.5M</td>
+            <td><span class="status-badge new">New</span></td>
+            <td class="link-cell"><span class="link-icon">&#x2197;</span></td>
+          </tr>
+
+          <tr>
+            <td><span class="source-tag"><span class="src-dot email"></span>Email</span></td>
+            <td>
+              <div class="company-cell">Meridian Fine Art Storage</div>
+              <div class="industry-tag">Art Storage</div>
+            </td>
+            <td class="owner-cell">Linda Petrov</td>
+            <td class="location-cell">Jersey City, NJ</td>
+            <td class="num-cell">$3.5M</td>
+            <td class="num-cell dim">&mdash;</td>
+            <td class="num-cell dim">&mdash;</td>
+            <td><span class="status-badge new">New</span></td>
+            <td class="link-cell"><span class="link-icon">&#x2197;</span></td>
+          </tr>
+
+          <tr>
+            <td><span class="source-tag"><span class="src-dot assoc"></span>ASA Board</span></td>
+            <td>
+              <div class="company-cell">Coastal Systems &amp; Support</div>
+              <div class="industry-tag">Managed IT</div>
+            </td>
+            <td class="owner-cell">David Okonkwo</td>
+            <td class="location-cell">Tampa, FL</td>
+            <td class="num-cell">$6.8M</td>
+            <td class="num-cell">$1.4M</td>
+            <td class="num-cell dim">&mdash;</td>
+            <td><span class="status-badge pursuing">Pursuing</span></td>
+            <td class="link-cell"><span class="link-icon">&#x2197;</span></td>
+          </tr>
+
+          <tr>
+            <td><span class="source-tag"><span class="src-dot dealsx"></span>DealsX</span></td>
+            <td>
+              <div class="company-cell">Appalachian Equipment Rental</div>
+              <div class="industry-tag">Equipment Rental</div>
+            </td>
+            <td class="owner-cell">Patricia Ward</td>
+            <td class="location-cell">Pittsburgh, PA</td>
+            <td class="num-cell">$4.2M</td>
+            <td class="num-cell">$0.9M</td>
+            <td class="num-cell">$5.8M</td>
+            <td><span class="status-badge pursuing">Pursuing</span></td>
+            <td class="link-cell"><span class="link-icon">&#x2197;</span></td>
+          </tr>
+
+          <tr>
+            <td><span class="source-tag"><span class="src-dot axial"></span>Axial</span></td>
+            <td>
+              <div class="company-cell">Garden State OEM Service Co.</div>
+              <div class="industry-tag">Equipment Servicing</div>
+            </td>
+            <td class="owner-cell">James Rinaldi</td>
+            <td class="location-cell">Cherry Hill, NJ</td>
+            <td class="num-cell">$11.1M</td>
+            <td class="num-cell">$2.8M</td>
+            <td class="num-cell">$18M</td>
+            <td><span class="status-badge reviewed">Reviewed</span></td>
+            <td class="link-cell"><span class="link-icon">&#x2197;</span></td>
+          </tr>
+
+          <tr>
+            <td><span class="source-tag"><span class="src-dot"></span>BizBuySell</span></td>
+            <td>
+              <div class="company-cell">Summit Commercial Roofing</div>
+              <div class="industry-tag">Commercial Roofing</div>
+            </td>
+            <td class="owner-cell">Gregory Tanner</td>
+            <td class="location-cell">Denver, CO</td>
+            <td class="num-cell">$5.6M</td>
+            <td class="num-cell">$1.1M</td>
+            <td class="num-cell">$6.2M</td>
+            <td><span class="status-badge passed">Passed</span></td>
+            <td class="link-cell"><span class="link-icon">&#x2197;</span></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="page-note">
+      MOCKUP — static HTML with fake data. Real page will read live deal-aggregator output + broker platform scans.
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>

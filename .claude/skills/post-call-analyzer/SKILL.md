@@ -20,23 +20,33 @@ Standing-on owner of the post-meeting loop. Closes the gap between "Granola tran
 
 ## Two-stage execution
 
-The analyzer is split into a cheap poller + an expensive Claude run. The poller fires every 10 min; the Claude run only fires when there's actual new content.
+The analyzer is split into a cheap detector + an expensive Claude run. The detector fires only when Granola writes to its cache file (event-driven via launchd `WatchPaths`); the Claude run fires only when the detector finds new content.
 
-### Stage 1 — Poller (`scripts/post_call_analyzer_poll.py`)
+### Stage 1 — Detector (`scripts/post_call_analyzer_poll.py`)
 
-Cheap Python script. Runs every 10 min during business hours via launchd.
+Cheap Python script. **Triggered by macOS launchd `WatchPaths`** when `~/Library/Application Support/Granola/cache-v6.json` changes — NOT on a fixed interval. No polling.
 
-1. Business-hours gate: Mon-Fri 8am-7pm ET; outside → exit 0 silently
+This means:
+- Granola flushes its cache → detector fires within seconds
+- Granola idle → detector never fires (zero cost on no-call days)
+- The detector inherits Granola's flush cadence as its trigger cadence
+
+1. Business-hours gate: Mon-Fri 8am-7pm ET; outside → exit 0 silently (defense-in-depth against accidental off-hours flushes)
 2. Load `~/Library/Application Support/Granola/cache-v6.json`
 3. Load `brain/trackers/post-call-analyzer/processed.json`
 4. Find docs where:
+   - `meeting_end_count > 0` (Granola's "meeting ended" signal)
    - `updated_at` within last 60 min
    - `id` not in processed
-   - `notes_plain` length > 100 chars (filter empty / in-progress meetings)
+   - Has extractable content via multi-source check: `notes_plain` ≥100 chars OR `notes_markdown` ≥100 chars OR transcripts entry with ≥5 turns
    - `deleted_at` is null
 5. For each new doc → write `brain/trackers/post-call-analyzer/queue/{doc_id}.json` with extracted metadata
 6. If queue is non-empty → invoke `run-skill.sh post-call-analyzer on-trigger`
 7. Else → exit 0 silently (no Slack, no log noise)
+
+**Why no calendar-event gate:** Granola flushes its JSON cache lazily — sometimes hours after a call ends. A calendar-event-end gate (with 60-min lookback) would falsely reject Granola flushes that arrive late. Idempotency via `processed.json` + `meeting_end_count > 0` filter handles deduplication correctly without needing a calendar cross-check.
+
+**Known limitation (accepted 2026-05-07):** Granola encrypts its real-time cache (`cache-v6.json.enc`); the unencrypted JSON we read flushes lazily (typically every few hours, on app activity). So the "lag from call end → Slack" is bounded by Granola's flush schedule, not by our trigger. Kay's spec is "same-day, ideally fast, lag OK." See `feedback_post_call_analyzer_realtime_on_granola.md`.
 
 **Idempotency:** writing to the queue dir is overwrite-safe. If the same doc is detected on consecutive polls (e.g., still being edited), the queue entry just refreshes; processed.json gates duplicate processing downstream.
 
@@ -126,16 +136,20 @@ Validator failure → wrapper overrides exit code → Slack alert with "VALIDATO
 
 `~/Library/LaunchAgents/com.greenwich-barrow.post-call-analyzer.plist`
 
-- StartInterval: 600 (every 10 min)
-- Business-hours gating happens inside `post_call_analyzer_poll.py` (not in plist — keeps plist simple)
-- Logs: `logs/scheduled/post-call-analyzer-{date}.log`
+- **Trigger:** `WatchPaths` on `~/Library/Application Support/Granola/cache-v6.json` (no `StartInterval`, no polling)
+- Business-hours gating happens inside `post_call_analyzer_poll.py` (defense-in-depth)
+- Logs: `logs/scheduled/post-call-analyzer-poll-{date}.log` (detector) + `logs/scheduled/post-call-analyzer-{date}-{HHMM}.log` (Claude run)
 - Wrapper: `scripts/run-skill.sh post-call-analyzer on-trigger`
 - POST_RUN_CHECK: `python3 scripts/validate_post_call_analyzer_integrity.py`
 
-But note: the **plist actually runs the poller**, not the wrapper. The poller invokes the wrapper internally only when the queue has work. This avoids 144 Claude runs per day for empty polls.
+The plist runs the detector. The detector invokes the wrapper internally only when the queue has work. The wrapper invokes the headless Claude prompt with POST_RUN_CHECK validator. This means:
+- launchd fires detector only on Granola cache writes (event-driven)
+- Detector exits silently if no new docs (zero token cost)
+- Claude only fires when there's actual work (one run per call)
 
-Plist program: `python3 scripts/post_call_analyzer_poll.py`
-The poller calls `run-skill.sh post-call-analyzer on-trigger` only on cache-hit.
+Activation: `launchctl load ~/Library/LaunchAgents/com.greenwich-barrow.post-call-analyzer.plist`
+
+If the trigger doesn't fire reliably (e.g., Granola batches flushes across multiple calls or skips flushes entirely), pivot to: (a) decrypt `cache-v6.json.enc` via Keychain `safeStorage`, OR (b) add a fallback `StartInterval` of 4 hours alongside `WatchPaths` to catch missed events.
 
 ## Files owned
 

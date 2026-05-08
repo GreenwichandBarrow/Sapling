@@ -10,7 +10,7 @@ Wants=network-online.target
 Type=oneshot
 WorkingDirectory=%h/projects/Sapling
 Environment=PATH=%h/.npm-global/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
-Environment=POST_RUN_CHECK=python3 "%h/projects/Sapling/scripts/validate_niche_intelligence_integrity.py" $TODAY
+Environment="POST_RUN_CHECK=python3 \"%h/projects/Sapling/scripts/validate_niche_intelligence_integrity.py\" $TODAY"
 ExecStart=/bin/bash %h/projects/Sapling/scripts/run-skill.sh niche-intelligence:tuesday
 
 [Install]

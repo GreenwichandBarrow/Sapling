@@ -162,6 +162,20 @@ description: Helps with documents
 
 ## Creating a New Skill or Command
 
+### Step 0: Integration Priority Check (MANDATORY before any design)
+
+If the skill needs to read from or write to ANY external tool/service/data source (Gmail, Granola, Attio, Apollo, Slack, GitHub, anything outside the local vault + filesystem), check integration paths in this order **before** picking a file format or writing any architecture:
+
+1. **Check for an MCP server first.** Search `mcp__<service>__*` in the tool inventory. Check `~/.claude.json` `mcpServers` config. If an MCP exists and is healthy → use it.
+2. **If no MCP, check for a public API.** Vendor developer docs, REST endpoint, webhook spec. If a usable API exists → use it.
+3. **If neither MCP nor API is available (or both are down), STOP and ask Kay.** Surface the gap explicitly: "No MCP or API for {service} exists. Want to (a) request/build an MCP, (b) request the vendor add API, (c) plan a local-only workaround, or (d) skip this integration?"
+
+Do NOT design around a local file-watching or local cache approach without first verifying the MCP doesn't exist. Local-fallback architectures are typically the most fragile (single-device, lazy-flush, encryption gotchas) and almost always have an MCP equivalent that's been overlooked.
+
+**Source:** `memory/feedback_integration_priority_mcp_api_local.md`. Precipitating incident: Phase 4 (Granola sidecar) was originally designed around watching iMac local cache, missing the existing Granola MCP server entirely. Pivoting to MCP-based design collapsed a multi-day build into a server-side puller.
+
+When MCP server appears in the session-start "still connecting" list → connecting ≠ broken. Wait for connection or run `ToolSearch` with the service name before assuming unavailable.
+
 ### Step 1: Choose Type
 
 Ask: Is this a manual workflow (deploy, commit, triage) or background knowledge (conventions, patterns)?

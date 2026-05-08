@@ -85,6 +85,14 @@ Memory recall weakens as the session fills. These fire on action triggers, not t
 - Query order: calendar → beads → brain/outputs/ → session-decisions.
 - Never trust session-decisions alone.
 
+### Before building any new skill or skill integration
+- **Check MCP first.** Search `mcp__<service>__*` tool inventory + `~/.claude.json` `mcpServers` config. If MCP exists and is healthy → use it.
+- **Then check public API.** Vendor developer docs, REST endpoints, webhooks. If usable API exists → use it.
+- **If neither, STOP and ask Kay.** Surface explicitly: "No MCP or API for {service} exists. Want to (a) request/build an MCP, (b) request the vendor add API, (c) plan a local-only workaround, or (d) skip this integration?"
+- Never design around local file-watching or local cache approaches without first verifying the MCP doesn't exist. Local fallbacks are the most fragile path (single-device, lazy-flush, encryption gotchas) and almost always have an MCP equivalent that's been overlooked.
+- "Still connecting" MCP in session-start ≠ broken — wait for connection or run `ToolSearch` before assuming unavailable.
+- Source: `memory/feedback_integration_priority_mcp_api_local.md` (2026-05-08, Phase 4 Granola sidecar precipitating incident).
+
 ### Before re-asking Kay anything
 - Check session-decisions-{date}.md for prior answer.
 - If found → present prior answer for validation, don't re-ask.

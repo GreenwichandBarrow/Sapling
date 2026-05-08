@@ -3,9 +3,9 @@ schema_version: 1.0.0
 date: 2026-05-08
 type: output
 output_type: calibration
-status: draft
+status: applied
 title: "Calibration — 2026-05-08 (35 traces, 2026-05-01 → 2026-05-07)"
-tags: ["date/2026-05-08", "output", "output/calibration", "status/draft", "topic/calibration"]
+tags: ["date/2026-05-08", "output", "output/calibration", "status/applied", "topic/calibration"]
 ---
 
 # Calibration Report — 2026-05-08
@@ -192,4 +192,31 @@ None unresolved. The agents converged on every overlap (cadence, conference, sel
 
 ## Result
 
-_Filled in after Kay approves changes._
+**Applied 2026-05-08** — CEO approved the 5 critical proposals during `/goodmorning`. The 17 high/medium/low proposals are HELD and not touched in this pass.
+
+### Landed (5 critical)
+
+1. **Pipeline-manager preflight covers D+0 + D+1** — `.claude/skills/pipeline-manager/SKILL.md` updated in three places: (a) "Brief-needed prompt rules" block now enumerates today + tomorrow externals, (b) "Brief needed for…" routing line in the Decisions taxonomy now reads D+0 OR D+1, (c) Phase-5 mandatory scan now uses `--from {TODAY} --to {TOMORROW}`. All cite `memory/feedback_preflight_covers_today_and_tomorrow.md`.
+
+2. **Strip trace emission from task-tracker `append`** — `.claude/skills/task-tracker-manager/SKILL.md` Hard Guardrail #4 + Output Expectations updated. `append` rollback line now routes to `logs/scheduled/task-tracker-{date}.log`. Trace emission preserved for `archive`, `rollback`, `reformat` (decision-content verbs). Note: SKILL.md text is updated; the actual code change in `scripts/task_tracker.py` is a separate ship-it task.
+
+3. **New CLAUDE.md preflight — "Before adding any new template, cadence step, decision branch, or threshold"** — Added new block immediately after `### Before research / network discovery`. Single rule: cite the G&B-specific firing case OR admit inherited convention. Index line for `feedback_strategic_thresholds_need_grounding.md` in `MEMORY.md` updated to broaden coverage from "numbers" to "branches/cadences/templates/numbers."
+
+4. **Voice doctrine — close pre-flight gap from day-5 trace + new memory** — Three new bullets added to CLAUDE.md `### Before writing any external message` (no soft-signal stacking, no exit-door-only CTAs, observations beat claims for owner/website copy). Created `memory/feedback_no_soft_signal_stacking.md` with rule + Why + How to apply. MEMORY.md index entry added under the voice cluster (between `feedback_pe_vibe_from_we_centric_copy` and `feedback_verify_reference_site_multipage`). The "Before writing any external message" preflight was NOT collapsed — that's Proposal #13 (HIGH) and is held.
+
+5. **Refresh outdated POST_RUN_CHECK memory** — MEMORY.md index line for `feedback_mutating_skill_hardening_pattern.md` rewritten to remove "Read-only skills exempt" language and reflect the universal doctrine. Memory body itself fully rewritten: title broadened, Required-Components section now spans mutating + read-only, Validator-Depth section distinguishes integrity-grade (mutating) vs artifact-landed (read-only), Hardened-Skills list includes the 6 mutating + a Pending list for read-only, both precipitating incidents (2026-04-19 target-discovery silent-0 + 2026-05-03 conference-discovery 70-row wipe) cited.
+
+### Held (17 — not touched per CEO's scope)
+
+High (10): #6 conference-engagement classification gate · #7 post-call-analyzer call-type classification · #8 deal-evaluation 4-cluster audit · #9 investor-update auto-fire schedule · #10 cadence cap doctrine merge · #11 sell-side advisor classifier · #12 delete duplicate dashboard memory · #13 collapse external-message preflight to 5 bullets · #14 delete `feedback_no_search_fund_language_intermediaries` · #15 remove pipeline-manager log-size hung-job detection.
+
+Medium (6): #16 Runtime Architecture section · #17 intermediary-vocabulary lookup · #18 IB-only-if-explicit rewrite · #19 delete dormant-contact memory · #20 consolidate "check the source" rules · #21 delete `feedback_no_clear_rewrite_populated_sheets`.
+
+Low (1): #22 strip per-row hardening provenance from CLAUDE.md scheduled-skills table.
+
+### Sequencing notes
+
+- Proposal #4 landed cleanly without #13's collapse; the three new voice rules are explicit additions, not rewrites of existing rules. If/when #13 ships, the collapse pass must preserve the three new bullets.
+- Proposal #2 SKILL.md text is updated, but the actual emission behavior in `scripts/task_tracker.py` is a code-level change — separate execution required to flip `append` from trace-emit to log-emit. Documented in SKILL.md so the next code-edit pass has the contract.
+- No conflicts surfaced during application. No files outside scope (Attio, Drive, Sheets) were touched.
+- Changes are NOT auto-committed — staged for CEO review per instructions.

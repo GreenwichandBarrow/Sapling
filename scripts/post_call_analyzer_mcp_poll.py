@@ -11,8 +11,12 @@ Architecture:
     MCP client subprocess (Granola MCP is OAuth-gated; Claude Code already
     knows how to handle the auth handshake when a server is registered with
     `claude mcp add granola https://mcp.granola.ai/mcp`).
-  - For meetings ended in the last 24h that aren't in processed.json, drops a
-    queue file at brain/trackers/post-call-analyzer/queue/{meeting_id}.json.
+  - Granola's MCP exposes start time only (its `date` field) — there is no
+    `ended_at` field. We anchor on `started_at` and require the call to have
+    started >=90min ago so a 1h call that ran 30min over still gets caught
+    after it actually ends. Window: cutoff_old <= started_at <= now - 90min.
+  - For qualifying meetings not already in processed.json, drops a queue file
+    at brain/trackers/post-call-analyzer/queue/{meeting_id}.json.
   - If the queue is non-empty, fires the run-skill.sh wrapper which runs the
     headless Claude prompt to drain the queue.
 
@@ -48,22 +52,21 @@ LOG_FILE = LOG_DIR / f"post-call-analyzer-mcp-poll-{datetime.now().strftime('%Y-
 WRAPPER = REPO_ROOT / "scripts" / "run-skill.sh"
 
 LOOKBACK_HOURS = 24
+MIN_AGE_MINUTES = 90  # meeting must have started >=1.5h ago to be considered ended (covers 30min + 1h calls + 30min runover)
 CLAUDE_TIMEOUT_SEC = 180
 
 # Use the same Claude binary path the wrapper uses, so behavior matches.
 CLAUDE_BIN = Path(os.environ.get("CLAUDE_BIN", str(Path.home() / ".local" / "bin" / "claude")))
 
-DETECT_PROMPT = """Use the mcp__granola__list_meetings tool to list every meeting that ended in the last 24 hours.
+DETECT_PROMPT = """Use the mcp__granola__list_meetings tool to list meetings from the last 24 hours.
 
 Output ONLY a JSON array. No markdown fences, no preamble, no commentary, no explanation. Each element must be an object with these fields exactly:
 
 {
   "id": "<granola meeting id (string)>",
   "title": "<meeting title (string)>",
-  "ended_at": "<ISO 8601 UTC timestamp; pass through the field Granola returns>",
-  "started_at": "<ISO 8601 UTC timestamp or null>",
-  "attendees": [<array of strings — emails preferred, names if email unavailable>],
-  "duration_minutes": <integer or null>
+  "started_at": "<ISO 8601 UTC timestamp; pass through Granola's date field>",
+  "attendees": [<array of strings — emails preferred, names if email unavailable>]
 }
 
 If the MCP call fails or returns no meetings, output exactly: []
@@ -138,20 +141,22 @@ def call_mcp_via_claude() -> list[dict] | None:
     return meetings
 
 
-def is_recent(ts_str: str | None, cutoff: datetime) -> bool:
+def parse_iso(ts_str: str | None) -> datetime | None:
     if not ts_str or not isinstance(ts_str, str):
-        return False
+        return None
     try:
         t = datetime.fromisoformat(ts_str.replace("Z", "+00:00"))
     except ValueError:
-        return False
+        return None
     if t.tzinfo is None:
         t = t.replace(tzinfo=timezone.utc)
-    return t >= cutoff
+    return t
 
 
 def filter_new_meetings(meetings: list[dict], processed: dict) -> list[dict]:
-    cutoff = datetime.now(timezone.utc) - timedelta(hours=LOOKBACK_HOURS)
+    now = datetime.now(timezone.utc)
+    cutoff_old = now - timedelta(hours=LOOKBACK_HOURS)
+    cutoff_recent = now - timedelta(minutes=MIN_AGE_MINUTES)
     new_ones: list[dict] = []
     for m in meetings:
         if not isinstance(m, dict):
@@ -165,7 +170,11 @@ def filter_new_meetings(meetings: list[dict], processed: dict) -> list[dict]:
         # will pick it up.
         if (QUEUE_DIR / f"{mid}.json").exists():
             continue
-        if not is_recent(m.get("ended_at"), cutoff):
+        started = parse_iso(m.get("started_at"))
+        if started is None:
+            continue
+        # Window: started in last 24h AND >=90min ago (call has likely ended)
+        if started < cutoff_old or started > cutoff_recent:
             continue
         new_ones.append(m)
     return new_ones

@@ -79,6 +79,18 @@ def path_translate(value: str) -> str:
     )
 
 
+def format_env_line(key: str, value: str) -> str:
+    # systemd.exec(5): Environment= splits on whitespace; values with whitespace
+    # require the entire KEY=VALUE assignment wrapped in double quotes. Inside
+    # those quotes, literal " and \ must be escaped so the env-var value
+    # received by the process matches the launchd equivalent verbatim.
+    s = str(value)
+    if any(c.isspace() for c in s):
+        escaped = s.replace("\\", "\\\\").replace('"', '\\"')
+        return f'Environment="{key}={escaped}"'
+    return f"Environment={key}={s}"
+
+
 def translate_plist(plist_path: Path) -> tuple[str, str, str] | None:
     with plist_path.open("rb") as f:
         data = plistlib.load(f)
@@ -123,14 +135,14 @@ def translate_plist(plist_path: Path) -> tuple[str, str, str] | None:
         "Environment=PATH=%h/.npm-global/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin",
     ]
     if "LOG_PREFIX" in env:
-        service_lines.append(f"Environment=LOG_PREFIX={env['LOG_PREFIX']}")
+        service_lines.append(format_env_line("LOG_PREFIX", env["LOG_PREFIX"]))
     if "POST_RUN_CHECK" in env:
         translated_prc = path_translate(env["POST_RUN_CHECK"])
-        service_lines.append(f"Environment=POST_RUN_CHECK={translated_prc}")
+        service_lines.append(format_env_line("POST_RUN_CHECK", translated_prc))
     for k, v in env.items():
         if k in {"HOME", "PATH", "LOG_PREFIX", "POST_RUN_CHECK"}:
             continue
-        service_lines.append(f"Environment={k}={v}")
+        service_lines.append(format_env_line(k, v))
 
     service_lines.append(f"ExecStart={exec_start}")
     service_lines.append("")

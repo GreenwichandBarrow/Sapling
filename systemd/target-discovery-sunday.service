@@ -10,8 +10,8 @@ Wants=network-online.target
 Type=oneshot
 WorkingDirectory=%h/projects/Sapling
 Environment=PATH=%h/.npm-global/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
-Environment=POST_RUN_CHECK=python3 "%h/projects/Sapling/scripts/validate_phase2_integrity.py"
-Environment=JJ_CALL_NICHES=Premium Pest Management
+Environment="POST_RUN_CHECK=python3 \"%h/projects/Sapling/scripts/validate_phase2_integrity.py\""
+Environment="JJ_CALL_NICHES=Premium Pest Management"
 ExecStart=/bin/bash %h/projects/Sapling/scripts/run-skill.sh target-discovery phase2-sunday
 
 [Install]

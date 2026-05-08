@@ -189,10 +189,10 @@ Reply by number.
 **Default to recommending, not asking** per `feedback_decision_fatigue_minimization`. Pre-decide whatever is defensible from existing patterns. Bundle related questions into a single bundled approval. When Kay makes the same call twice, codify it as a memory or skill default so she never sees it again.
 
 **Brief-needed prompt rules (replaces retired meeting-brief-manager nightly automation):**
-- List tomorrow's **external** meetings only (skip internal, skip investor calls already briefed).
+- List **TODAY (D+0) AND TOMORROW (D+1) external** meetings (skip internal, skip investor calls already briefed). Same-day externals must surface — D+1-only scans drop them. Source: `memory/feedback_preflight_covers_today_and_tomorrow.md` (added 2026-05-06 after Guillermo same-day miss, second instance in 3 weeks).
 - For each, ask "y/n?" — Kay's y triggers the `meeting-brief` skill for that meeting; n skips.
-- **Friday rule:** On Fridays, the prompt must cover **Monday AND Tuesday**, not just Saturday. The weekend briefing is lighter and may not catch Monday meetings in time.
-- **Sunday rule:** Cover Monday (standard one-day-ahead).
+- **Friday rule:** On Fridays, the prompt must cover **today + Monday AND Tuesday**, not just Saturday. The weekend briefing is lighter and may not catch Monday meetings in time.
+- **Sunday rule:** Cover today + Monday (standard).
 - If Kay has already approved a brief for the meeting in a prior session (check session-decisions files), do not re-ask — treat as auto-yes and skip the prompt.
 
 **Intermediary matches rule:** Daily broker listing matches from deal-aggregator are posted directly to #strategy-active-deals as individual Slack messages (one per deal, thumbs up/down reactions). Do NOT include individual match details in the morning briefing. The System Status line should only report: "deal-aggregator — {n} new lead matches posted to Slack".
@@ -203,7 +203,7 @@ Reply by number.
 - *Motion action steps* → 🔴 (same-day) or 🟡 (this week).
 - *Gmail drafts to send* → 🔴 as a single bundled Decision: **RECOMMEND: Approve all N drafts to send Mon AM** → YES/NO/DISCUSS. Not one item per draft.
 - *Targets for review* → 🟡 Decision (warm intro vs cadence vs pass) — bundle by niche.
-- *Brief needed for tomorrow's meetings* → 🔴 Decision: **RECOMMEND: Generate brief for {name}** → YES/NO/DISCUSS (mandatory invariant per CLAUDE.md brief-decisions pre-flight).
+- *Brief needed for TODAY (D+0) or TOMORROW (D+1) external meetings* → 🔴 Decision: **RECOMMEND: Generate brief for {name}** → YES/NO/DISCUSS (mandatory invariant per CLAUDE.md brief-decisions pre-flight + `feedback_preflight_covers_today_and_tomorrow.md`).
 - *Aging deferrals (≥5 days)* → 🟢 Decision: **RECOMMEND: {kill/do-now/re-defer}** → YES/NO/DISCUSS.
 - *Broken scheduled skill or stuck snapshot job* → 🔴 Decision: **RECOMMEND: Investigate {job} (last log {timestamp})** → YES/NO. Don't bury silent failures.
 - *On deck for JJ tomorrow* → **Today / ASAP** the day before only (per JJ "On Deck" timing rule below).
@@ -1197,16 +1197,16 @@ Pipeline updates complete:
 **As of 2026-04-12, meeting-brief-manager nightly automation is RETIRED.** Pipeline-manager now owns the "Brief needed?" surfacing for ALL external meetings — investor, advisor, target, and general external. The meeting-brief skill runs on-demand when Kay opts in, per `feedback_meeting_brief_on_demand.md`.
 
 **Mandatory scan each morning briefing:**
-1. `gog calendar list --from {TOMORROW} --to {TOMORROW} --json` — list tomorrow's events
-   - **Friday rule:** scan covers **Mon AND Tue** (weekend briefing is lighter and may miss Monday)
-   - **Sunday rule:** scan covers **Monday** (standard one-day-ahead)
+1. `gog calendar list --from {TODAY} --to {TOMORROW} --json` — list TODAY (D+0) and TOMORROW (D+1) events. Per `memory/feedback_preflight_covers_today_and_tomorrow.md` (2026-05-06): D+1-only scans drop same-day externals. Always scan D+0 + D+1, no exceptions.
+   - **Friday rule:** scan covers **today + Mon AND Tue** (weekend briefing is lighter and may miss Monday)
+   - **Sunday rule:** scan covers **today + Monday** (standard)
 2. Filter to external meetings only (skip internal/team calls — Camilla, JJ, etc.).
 3. For each external meeting: check session-decisions files from the prior 3 days. If Kay has already approved or declined a brief for this meeting, SKIP — do not re-ask.
 4. For each remaining external meeting, surface as a Decisions-bucket item using Obama framing:
    - **RECOMMEND: Generate brief for {name} ({time} {date})** — [one-sentence cadence/context reason] → **YES / NO / LET'S DISCUSS**
 5. Kay answers YES → invoke the appropriate brief command per the routing table below. Kay answers NO → skip, no artifact.
 
-**Briefing-assembly invariant:** If any external meeting exists in the scan window and is neither already-decided nor surfaced in Decisions, the briefing is malformed — fix before delivering.
+**Briefing-assembly invariant:** If any external meeting exists in the D+0 + D+1 scan window and is neither already-decided nor surfaced in Decisions, the briefing is malformed — fix before delivering.
 
 Every brief invocation loads `templates/{type}.md` + most recent `examples/{type}/*.md` before drafting. No generic-template fallback.
 

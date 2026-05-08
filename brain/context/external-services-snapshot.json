@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-05-08T09:32:50-04:00",
+  "fetched_at": "2026-05-08T10:00:02-04:00",
   "services": {
-    "attio-mcp": {
+    "linkt": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
-      "skip_reason": "OAuth re-flow required (Smithery UI)"
+      "skip_reason": "Browser session required (no API)"
     },
     "claude-api": {
       "status": "skip",
@@ -13,11 +13,11 @@
       "message": "",
       "skip_reason": "ANTHROPIC_API_KEY not in env"
     },
-    "linkt": {
+    "superhuman": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
-      "skip_reason": "Browser session required (no API)"
+      "skip_reason": "OAuth refresh required (manual)"
     },
     "slack-webhooks": {
       "status": "ok",
@@ -25,51 +25,51 @@
       "message": "4 webhooks configured",
       "skip_reason": null
     },
-    "superhuman": {
+    "attio-mcp": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
-      "skip_reason": "OAuth refresh required (manual)"
+      "skip_reason": "OAuth re-flow required (Smithery UI)"
     },
     "launchd": {
       "status": "ok",
-      "latency_ms": 20,
+      "latency_ms": 12,
       "message": "20 jobs registered",
       "skip_reason": null
     },
     "vault": {
       "status": "ok",
-      "latency_ms": 32,
-      "message": "773 markdown files",
+      "latency_ms": 21,
+      "message": "774 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "ok",
-      "latency_ms": 115,
+      "latency_ms": 96,
       "message": "attio-mcp=18 superhuman=9",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 244,
+      "latency_ms": 145,
       "message": "authenticated",
-      "skip_reason": null
-    },
-    "apollo": {
-      "status": "ok",
-      "latency_ms": 373,
-      "message": "200 OK",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 379,
+      "latency_ms": 143,
       "message": "HTTP 405",
+      "skip_reason": null
+    },
+    "apollo": {
+      "status": "ok",
+      "latency_ms": 157,
+      "message": "200 OK",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 575,
+      "latency_ms": 440,
       "message": "gh authenticated",
       "skip_reason": null
     }

@@ -134,7 +134,7 @@ Sets the cell to `✅` so the conditional-format fills it with the entity color,
 1. **Backup before any write.** Copy the live xlsx to `~/My Drive/STRATEGIC PLANNING/TO DO M.DD.YY.bak.{timestamp}.xlsx` before opening for write. Keep last 5 backups, prune older.
 2. **File-lock check.** Before opening for write, `lsof` the file. If Excel has a handle on it, error out with "Excel has the file open — close it first" and surface to Kay. Never blind-overwrite a file Excel is editing (Excel's autosave will clobber our write or vice versa).
 3. **Never rerun build_tasks_excel.py on a populated file.** That script wipes data. Only the rebuild path uses it — and only after a backup.
-4. **Trace every write** to `brain/traces/{date}-task-tracker-{verb}-{slug}.md` with what changed + rollback path (`cp` from the backup).
+4. **Trace decision-content writes** to `brain/traces/{date}-task-tracker-{verb}-{slug}.md` with what changed + rollback path (`cp` from the backup). Trace emission applies ONLY to `archive`, `rollback`, and `reformat` verbs — those carry decision content. The `append` verb does NOT emit a trace; its rollback line is routed to `logs/scheduled/task-tracker-{date}.log` instead. Rationale: `append` traces are rollback receipts (task + row + .bak path), not decisions, and they pollute calibration input. Source: 2026-05-08 calibration — 6 of 35 traces (17%) in the prior batch were `append` receipts (`brain/traces/2026-05-02-task-tracker-append-*`).
 5. **Tab-name validation.** Excel forbids `:\/?*[]` in tab names and caps at 31 chars. Any rename calls `validate_tab_name(name)` before applying.
 6. **No openpyxl chart objects on the week tab.** They render blank on Excel-Mac. Use cell-based % display instead (path C decision, 2026-05-01).
 
@@ -142,7 +142,7 @@ Sets the cell to `✅` so the conditional-format fills it with the entity color,
 
 - Every successful write ends with a single-line confirmation echoed to the Chief of Staff: `task-tracker-manager: appended row 12 ("Draft brochure for LF" / Work / Kai Grey / 2026-05-08)`.
 - Every refused write ends with a single-line reason: `task-tracker-manager: refused promote — Wed slot 3 already contains "Vivienne board prep"`.
-- Trace files are mandatory for `append`, `promote`, `archive`. Optional for `reformat`, `gantt-tick`, `report`.
+- Trace files are mandatory for `archive`, `rollback`, and `reformat` (decision-content verbs). The `append` verb writes its rollback line to `logs/scheduled/task-tracker-{date}.log`, NOT to `brain/traces/` — append receipts are not decisions and pollute calibration input (2026-05-08 calibration). `promote`, `gantt-tick`, and `report` traces remain optional.
 
 ## Standard workflow — append example
 

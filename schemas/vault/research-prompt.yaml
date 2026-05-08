@@ -1,0 +1,163 @@
+# Research Prompt Schema — factual unknowns extracted from calls
+# Location: brain/inbox/YYYY-MM-DD-{slug}-research-prompt.md
+# Created by: post-call-analyzer (Thought Analysis routing bucket)
+#
+# Heuristic for routing into this schema vs socrates-question:
+#   - factual unknown ("what's the TAM," "I should look up X") → research-prompt
+#   - strategic frame ("should we be in this niche") → socrates-question
+
+schema_version: 1.0.0
+changelog:
+  - version: 1.0.0
+    date: 2026-05-08
+    changes: Initial schema. Created for post-call-analyzer Thought Analysis bucket (Phase 4).
+
+name: research-prompt
+description: A factual research question surfaced during a call that needs a defined answer
+location: brain/inbox/
+filename_pattern: "YYYY-MM-DD-{slug}-research-prompt.md"
+created_by: post-call-analyzer
+
+purpose: |
+  When Kay (or a counterparty) flags a factual unknown during a call —
+  "what's the TAM for cleaning franchises," "I should look up the Murphy
+  Business deal volume," "do we know the multiples in this space" — the
+  post-call-analyzer drops a research-prompt artifact into brain/inbox/.
+
+  These artifacts are answer-shaped: they expect a defined deliverable
+  (a number, a list, a verified fact). The target_skill field routes to
+  whichever skill should run the research — niche-intelligence for
+  industry data, list-builder for company discovery, manual triage if
+  unclear.
+
+frontmatter:
+  required:
+    schema_version:
+      type: string
+      format: semver
+      current: 1.0.0
+
+    date:
+      type: date
+      format: YYYY-MM-DD
+      description: Date the question was surfaced (call date)
+
+    type:
+      type: literal
+      value: inbox
+      description: Always "inbox" — these files live in brain/inbox/ and are picked up by /triage
+
+    source_call:
+      type: wikilink
+      target: calls/
+      description: Wiki-link to the call note this question was extracted from
+
+    source_meeting_id:
+      type: string
+      description: Granola cloud meeting ID — for idempotency / de-dup against the post-call-analyzer ledger
+
+    question:
+      type: string
+      description: |
+        The factual question, as a complete sentence. Lead with the unknown:
+        "What is the TAM for residential pest control in the Southeast?"
+        not "TAM research."
+
+    urgency:
+      type: enum
+      values: [critical, high, normal, low]
+      default: normal
+
+    tags:
+      type: array
+      required_patterns:
+        - "date/YYYY-MM-DD"
+        - "inbox"
+        - "source/call"
+        - "type/research-prompt"
+      optional_patterns:
+        - "topic/{slug}"
+        - "person/{slug}"
+        - "company/{slug}"
+        - "urgency/{level}"
+
+  optional:
+    target_skill:
+      type: string
+      default: unassigned
+      description: |
+        Skill that should answer this question. Common values:
+        - niche-intelligence (industry/market data, multiples, TAM)
+        - list-builder (company discovery, contact enrichment)
+        - target-discovery (acquisition targets in a vertical)
+        - warm-intro-finder (network paths)
+        - unassigned (triage decides)
+
+    status:
+      type: enum
+      values: [open, in_progress, answered, deferred, cancelled]
+      default: open
+
+    answered_by:
+      type: wikilink
+      description: File that contains the answer (output, trace, brief)
+
+    notes:
+      type: string
+      description: Free-form context — why this matters, who asked, constraints
+
+body_sections:
+  - name: question
+    heading: "## Question"
+    required: true
+    description: Restate the question with full context — who asked, what triggered it
+
+  - name: why_it_matters
+    heading: "## Why it matters"
+    required: false
+    description: Decision the answer would unblock; deal/relationship at stake
+
+  - name: how_to_answer
+    heading: "## How to answer"
+    required: false
+    description: Suggested approach, sources, skills to invoke
+
+  - name: answer
+    heading: "## Answer"
+    required: false
+    description: Filled in when status flips to answered
+
+example: |
+  ---
+  schema_version: 1.0.0
+  date: 2026-05-08
+  type: inbox
+  source_call: "[[calls/2026-05-08-jeff-stevens-monthly]]"
+  source_meeting_id: "abc123-meeting-uuid"
+  question: "What is the recurring-revenue mix for Murphy Business broker-of-record deals over the last 24 months?"
+  urgency: high
+  target_skill: niche-intelligence
+  status: open
+  tags: [date/2026-05-08, inbox, source/call, type/research-prompt, topic/m-and-a-broker, urgency/high]
+  ---
+
+  ## Question
+
+  Jeff asked on the monthly call whether Murphy Business deals tend to be one-off
+  or anchored by recurring contracts. We don't have this data; he wants it before
+  the next biweekly review.
+
+  ## Why it matters
+
+  Affects whether we treat Murphy-sourced deals as buyable cash flows or one-time
+  transitions. Drives the niche-fit scoring for broker-channel deal flow.
+
+  ## How to answer
+
+  Likely route via niche-intelligence — pull from Murphy's published deal
+  archive + cross-check against the Industry Research Tracker entries Kay has
+  already scored.
+
+  ## Answer
+
+  *Pending*

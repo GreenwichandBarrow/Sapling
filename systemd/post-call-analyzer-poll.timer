@@ -1,0 +1,21 @@
+# Hand-authored 2026-05-08 (Phase 4). Pairs with:
+# post-call-analyzer-poll.service
+#
+# Cadence: every 5 min (interval-driven, not WatchPaths-driven). Server runs
+# 24/7, no business-hours gate inside the script — the 5-min cadence at 0.07%
+# of Anthropic rate-limit is the relevant guardrail.
+#
+# Persistent=true so a missed tick after VPS reboot fires once on next
+# wake-up (matches the iMac plist's StartInterval-with-recovery behavior).
+
+[Unit]
+Description=G&B post-call-analyzer MCP poll timer
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+Persistent=true
+Unit=post-call-analyzer-poll.service
+
+[Install]
+WantedBy=timers.target

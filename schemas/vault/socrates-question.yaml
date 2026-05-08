@@ -1,0 +1,175 @@
+# Socrates Question Schema — strategic frame surfaced during a call
+# Location: brain/inbox/YYYY-MM-DD-{slug}-socrates-question.md
+# Created by: post-call-analyzer (Thought Analysis routing bucket)
+#
+# Heuristic for routing into this schema vs research-prompt:
+#   - factual unknown ("what's the TAM," "I should look up X") → research-prompt
+#   - strategic frame ("should we be in this niche," "is this the right
+#     approach") → socrates-question
+
+schema_version: 1.0.0
+changelog:
+  - version: 1.0.0
+    date: 2026-05-08
+    changes: Initial schema. Created for post-call-analyzer Thought Analysis bucket (Phase 4).
+
+name: socrates-question
+description: A strategic / framing question that should be worked through with /socrates before any plan
+location: brain/inbox/
+filename_pattern: "YYYY-MM-DD-{slug}-socrates-question.md"
+created_by: post-call-analyzer
+
+purpose: |
+  When a call surfaces a *frame-level* question — "should we be in this niche
+  at all," "is the holding-company structure right," "are we optimizing for
+  the wrong thing" — the post-call-analyzer drops a socrates-question artifact
+  into brain/inbox/.
+
+  These are NOT research questions (no factual answer would resolve them).
+  They are direction-setting questions that need Socratic stress-testing
+  before any plan or to-do list is generated.
+
+  When Kay opens one of these via /triage, the recommended next step is
+  /socrates {file} — work through the question, surface assumptions, name
+  alternatives, only then commit to direction.
+
+frontmatter:
+  required:
+    schema_version:
+      type: string
+      format: semver
+      current: 1.0.0
+
+    date:
+      type: date
+      format: YYYY-MM-DD
+
+    type:
+      type: literal
+      value: inbox
+
+    source_call:
+      type: wikilink
+      target: calls/
+      description: Wiki-link to the call note this question was extracted from
+
+    source_meeting_id:
+      type: string
+      description: Granola cloud meeting ID — for idempotency / de-dup
+
+    question:
+      type: string
+      description: |
+        The strategic question, framed as a question. Lead with the frame:
+        "Should we be sourcing in residential pest control given the
+        operator-density advantage erodes after the third location?"
+        not "rethink pest control sourcing."
+
+    frame:
+      type: enum
+      values: [strategic, identity, scope, timing]
+      description: |
+        Which dimension this question stress-tests:
+        - strategic: market / niche / direction questions
+        - identity: who Kay/G&B is or wants to be (positioning, voice, culture)
+        - scope: what's in vs out (deal size, geography, vertical, structure)
+        - timing: when to act, sequence, urgency vs patience
+
+    urgency:
+      type: enum
+      values: [critical, high, normal, low]
+      default: normal
+
+    tags:
+      type: array
+      required_patterns:
+        - "date/YYYY-MM-DD"
+        - "inbox"
+        - "source/call"
+        - "type/socrates-question"
+        - "frame/{frame}"
+      optional_patterns:
+        - "topic/{slug}"
+        - "person/{slug}"
+        - "company/{slug}"
+        - "urgency/{level}"
+
+  optional:
+    status:
+      type: enum
+      values: [open, in_progress, resolved, deferred, cancelled]
+      default: open
+
+    surfaced_by:
+      type: wikilink
+      description: |
+        Person who raised the question on the call (often Kay herself, but
+        could be an investor, advisor, or counterparty). Wiki-link to entity.
+
+    resolved_by:
+      type: wikilink
+      description: Trace, output, or decision file that resolved this question
+
+    notes:
+      type: string
+      description: Context — what triggered this, what assumption it stress-tests
+
+body_sections:
+  - name: question
+    heading: "## Question"
+    required: true
+    description: Restate the question with full context — who raised it, what triggered it
+
+  - name: assumptions_surfaced
+    heading: "## Assumptions to surface"
+    required: false
+    description: Hidden assumptions that need to be named before answering
+
+  - name: alternatives_in_scope
+    heading: "## Alternatives in scope"
+    required: false
+    description: What other directions / framings should be considered
+
+  - name: resolution
+    heading: "## Resolution"
+    required: false
+    description: Filled in when status flips to resolved — link to trace + one-line outcome
+
+example: |
+  ---
+  schema_version: 1.0.0
+  date: 2026-05-08
+  type: inbox
+  source_call: "[[calls/2026-05-08-jeff-stevens-monthly]]"
+  source_meeting_id: "abc123-meeting-uuid"
+  question: "Should G&B keep treating broker-channel deal flow as a primary source, given the recurring-revenue mismatch and the per-deal effort cost?"
+  frame: strategic
+  urgency: high
+  surfaced_by: "[[entities/jeff-stevens]]"
+  status: open
+  tags: [date/2026-05-08, inbox, source/call, type/socrates-question, frame/strategic, topic/m-and-a-broker, urgency/high]
+  ---
+
+  ## Question
+
+  Jeff pushed back on broker-channel as a primary source on the monthly call.
+  His framing: "you're paying full retail for deals that any searcher could
+  find — what's your edge?" Kay didn't have a sharp answer.
+
+  ## Assumptions to surface
+
+  - That broker channel produces deals matching the buy-box (vs. matching the
+    broker's listing inventory)
+  - That sourcing edge in this channel comes from velocity, not deal quality
+  - That JJ-call-only routing materially differentiates G&B from other
+    searchers using the same brokers
+
+  ## Alternatives in scope
+
+  - Drop broker channel as primary; relegate to opportunistic
+  - Keep broker channel but tighten buy-box gating before JJ call
+  - Stay the course (status quo)
+
+  ## Resolution
+
+  *Pending — needs /socrates session before any plan*

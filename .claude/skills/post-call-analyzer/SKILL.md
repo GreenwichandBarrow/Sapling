@@ -1,87 +1,85 @@
 ---
 name: post-call-analyzer
-description: Real-time post-call processing. Polls Granola's local cache every 10 min during business hours; when a new transcript lands, writes a vault call note, routes action items to task-tracker-manager (one-off → Excel), routes projects to project tabs, drafts (not sends) Gmail follow-ups for "send X to Y" items, and posts ONE Slack message per call. Trigger-driven, not batched.
+description: Real-time post-call processing. Polls Granola cloud via MCP every 5 min on the server (24/7); when a new meeting lands, writes a vault call note, queues tasks, drafts Gmail follow-ups for "send X to Y" items, flags projects, appends decisions, surfaces thought-analysis prompts, and posts ONE Slack message per call. Trigger-driven downstream, server-polled upstream.
 user_invocable: false
 ---
 
 # Post-Call Analyzer
 
-Standing-on owner of the post-meeting loop. Closes the gap between "Granola transcript landed" and "vault + tracker + drafts updated."
+Standing-on owner of the post-meeting loop. Closes the gap between "Granola transcript landed" and "vault + tracker + drafts + thought-analysis prompts updated."
 
-## Architecture (locked 2026-05-06 + 2026-05-07)
+## Architecture (locked 2026-05-06 → 2026-05-08)
 
 | Decision | Locked value | Source |
 |---|---|---|
-| ONE skill or two | ONE — routes through existing infra (task-tracker-manager + pipeline-manager) | session-decisions 2026-05-06 |
-| Polling cadence | 10 min via launchd | session-decisions 2026-05-06 |
+| ONE skill or two | ONE — routes through existing infra (task-tracker-manager + pipeline-manager + /triage) | session-decisions 2026-05-06 |
+| Detector | Server-side MCP poll via `mcp__granola__list_meetings` (replaces iMac local-cache reader) | Phase 4 spec 2026-05-08 |
+| Polling cadence | 5 min via systemd `OnUnitActiveSec=5min` (was 10 min via launchd; rate-limit GREEN at 0.07% capacity) | Phase 4 spec 2026-05-08 |
+| Business-hours gate | NONE — server runs 24/7; Kay's call cadence determines load | Phase 4 spec 2026-05-08 |
+| MCP lookback | 24h (processed.json does dedup) | Phase 4 spec 2026-05-08 |
+| Idempotency key | Granola **cloud** meeting ID (not local doc_id) | Phase 4 spec 2026-05-08 |
+| Routing buckets | 5: Tasks, Projects, Email, Decisions, **Thought Analysis** (new) | Phase 4 spec 2026-05-08 |
 | Slack timing | Real-time per-call when transcript populates (NOT EOD digest) | `feedback_post_call_analyzer_realtime_on_granola.md` 2026-05-07 |
-| Email follow-up scope | Skill DRAFTS (never sends) Gmail follow-ups for action items where next-step is "send X to Y" | `feedback_post_call_analyzer_realtime_on_granola.md` 2026-05-07 |
-| Task vs project | Task = one-off; Project = multi-week coordinated initiative w/ multiple work streams | `feedback_task_vs_project_heuristic.md` |
+| Email follow-up scope | Skill DRAFTS (never sends) Gmail follow-ups for "send X to Y" items | `feedback_post_call_analyzer_realtime_on_granola.md` 2026-05-07 |
+| Task vs project | Task = one-off; Project = multi-week coordinated initiative | `feedback_task_vs_project_heuristic.md` |
+| Deferred-content gate | DROPPED in Phase 4 — MCP returns server-summarized transcripts, no lazy-flush issue | Phase 4 spec 2026-05-08 |
 
 ## Two-stage execution
 
-The analyzer is split into a cheap detector + an expensive Claude run. The detector fires only when Granola writes to its cache file (event-driven via launchd `WatchPaths`); the Claude run fires only when the detector finds new content.
+### Stage 1 — Detector (`scripts/post_call_analyzer_mcp_poll.py`)
 
-### Stage 1 — Detector (`scripts/post_call_analyzer_poll.py`)
+Cheap Python script. **Server-side, fires every 5 min via systemd timer.** Replaces the iMac WatchPaths-driven `post_call_analyzer_poll.py` (that script stays alive during shadow mode but is retired in Phase 4.5).
 
-Cheap Python script. **Triggered by macOS launchd `WatchPaths`** when `~/Library/Application Support/Granola/cache-v6.json` changes — NOT on a fixed interval. No polling.
+1. Calls `mcp__granola__list_meetings` via `claude -p` as a thin MCP client subprocess. Granola MCP is OAuth-gated; Claude Code handles the auth handshake when `claude mcp add granola https://mcp.granola.ai/mcp` has been run once on the server.
+2. Filters to meetings with `ended_at` within last 24h.
+3. Skips any meeting whose ID is already in `brain/trackers/post-call-analyzer/processed.json`.
+4. Skips any meeting whose ID is already a queue file (race with iMac sidecar during shadow mode).
+5. For each remaining meeting → writes `brain/trackers/post-call-analyzer/queue/{meeting_id}.json` with `detector: "mcp"` flag.
+6. If queue is non-empty → invokes `run-skill.sh post-call-analyzer on-trigger` (background, non-blocking).
+7. Defensive against MCP downtime / auth failure / timeout / malformed JSON: log + exit 0. The validator on the next successful run will catch stale queue entries (>30 min old).
 
-This means:
-- Granola flushes its cache → detector fires within seconds
-- Granola idle → detector never fires (zero cost on no-call days)
-- The detector inherits Granola's flush cadence as its trigger cadence
+**No business-hours gate.** Server runs 24/7; the cadence + Anthropic rate-limit headroom handle the cost question.
 
-1. Business-hours gate: Mon-Fri 8am-7pm ET; outside → exit 0 silently (defense-in-depth against accidental off-hours flushes)
-2. Load `~/Library/Application Support/Granola/cache-v6.json`
-3. Load `brain/trackers/post-call-analyzer/processed.json`
-4. Find docs where:
-   - `meeting_end_count > 0` (Granola's "meeting ended" signal)
-   - `updated_at` within last 60 min
-   - `id` not in processed
-   - Has extractable content via multi-source check: `notes_plain` ≥100 chars OR `notes_markdown` ≥100 chars OR transcripts entry with ≥5 turns
-   - `deleted_at` is null
-5. For each new doc → write `brain/trackers/post-call-analyzer/queue/{doc_id}.json` with extracted metadata
-6. If queue is non-empty → invoke `run-skill.sh post-call-analyzer on-trigger`
-7. Else → exit 0 silently (no Slack, no log noise)
-
-**Why no calendar-event gate:** Granola flushes its JSON cache lazily — sometimes hours after a call ends. A calendar-event-end gate (with 60-min lookback) would falsely reject Granola flushes that arrive late. Idempotency via `processed.json` + `meeting_end_count > 0` filter handles deduplication correctly without needing a calendar cross-check.
-
-**Known limitation (accepted 2026-05-07):** Granola encrypts its real-time cache (`cache-v6.json.enc`); the unencrypted JSON we read flushes lazily (typically every few hours, on app activity). So the "lag from call end → Slack" is bounded by Granola's flush schedule, not by our trigger. Kay's spec is "same-day, ideally fast, lag OK." See `feedback_post_call_analyzer_realtime_on_granola.md`.
-
-**Idempotency:** writing to the queue dir is overwrite-safe. If the same doc is detected on consecutive polls (e.g., still being edited), the queue entry just refreshes; processed.json gates duplicate processing downstream.
+**Why the iMac script stays during shadow mode:** Both detectors write to the same `queue/` dir + `processed.json` ledger. Whichever detects a meeting first writes the queue file; the other no-ops on its next tick (existing-queue-file guard). Neither double-processes (processed.json dedup). Phase 4.5 retires the iMac plist after Kay validates output parity.
 
 ### Stage 2 — Claude run (headless prompt)
 
-Triggered by the poller via `run-skill.sh post-call-analyzer on-trigger`. Headless prompt at `headless-on-trigger-prompt.md`.
+Triggered by either detector via `run-skill.sh post-call-analyzer on-trigger`. Headless prompt at `headless-on-trigger-prompt.md`.
 
-For each queued doc:
+For each queued meeting:
 
-1. Read full doc from Granola cache (notes_plain, transcribe, title, people, google_calendar_event)
-2. Resolve attendees → vault entity slugs (create stubs for new people)
-3. Write vault call note `brain/calls/{date}-{slug}.md` per `schemas/vault/call.yaml`
-4. Extract action items into three buckets:
-   - **Tasks** (one-off) → `python3 scripts/task_tracker.py append` (Excel To Do tab)
-   - **Projects** (multi-week, multi-stream) → flag in Slack message with project name; do NOT auto-create project tab (Kay decides scope)
-   - **Email follow-ups** (next step is "send X to Y") → create Gmail draft via `gog gmail draft` (NEVER send)
-5. Extract decisions → append to today's `brain/context/session-decisions-{date}.md` under `## Auto-extracted from {call}` (if file doesn't exist, create stub)
-6. Post ONE Slack message to `#operations` with:
-   - Call title + duration + attendees
-   - Action items (tasks created, drafts created, projects flagged)
-   - Decisions captured
-   - Vault note link
-7. Move queue file → `brain/trackers/post-call-analyzer/processed/{doc_id}.json`
-8. Append doc_id to `processed.json`
+1. Read queue file → get `meeting_id` + metadata.
+2. Read full transcript via `mcp__granola__get_meeting_transcript({meeting_id})` (Phase 4 path) — falls back to local cache read for queue entries with `detector: "watchpaths"` from the iMac sidecar during shadow mode.
+3. Resolve attendees → vault entity slugs (create stubs for new people).
+4. Write vault call note `brain/calls/{date}-{slug}.md` per `schemas/vault/call.yaml`.
+5. Extract and route into FIVE buckets (see Routing rules below).
+6. Post ONE Slack message to `#operations` with action items + decisions + thought-analysis section.
+7. Move queue file → `brain/trackers/post-call-analyzer/processed/{meeting_id}.json` archive.
+8. Append to `processed.json` ledger.
 
 ## Routing rules
 
-| Item type | Pattern in transcript | Route |
+| Bucket | Pattern in transcript | Route |
 |---|---|---|
-| **Task** | "I'll do X" / "next step: I do X" / "Kay to follow up on X" — one-off, single action | task-tracker-manager → Excel To Do |
-| **Project** | Multi-step initiative spanning weeks ("we should build a server", "stand up the X program") | Slack-flag only; Kay decides scope + creates project tab manually |
-| **Email follow-up** | "I'll send Y to Z" / "follow up with Z about Y" / "intro Z to W" | Gmail draft (NEVER send) |
-| **Decision** | "we decided", "we're going to", "the call is" — bilateral conclusion | Append to today's session-decisions |
+| **Task** | "I'll do X" / "next step: I do X" / "Kay to follow up on X" — one-off, single action | Write `brain/trackers/post-call-analyzer/task_queue/{meeting_id}.json` (Phase 4.5 will drain to Excel; for now just queue) |
+| **Project** | Multi-step initiative spanning weeks ("we should build X", "stand up the Y program") | Slack-flag only; Kay decides scope + creates project tab manually |
+| **Email follow-up** | "I'll send Y to Z" / "follow up with Z about Y" / "intro Z to W" | Gmail draft via `gog gmail drafts create` (NEVER send) |
+| **Decision** | "we decided" / "we're going to" / "the call is" — bilateral conclusion | Append to today's `brain/context/session-decisions-{date}.md` under `## Auto-extracted from {call}` |
+| **Thought Analysis** (new in Phase 4) | Factual unknown OR strategic frame surfaced during call | Factual ("what's the TAM," "I should look up X") → `brain/inbox/{date}-{slug}-research-prompt.md` per `schemas/vault/research-prompt.yaml`. Strategic ("should we be in this niche," "is this the right approach") → `brain/inbox/{date}-{slug}-socrates-question.md` per `schemas/vault/socrates-question.yaml` |
 
-When the same item could route two ways (e.g., "I'll send the spec to Sam" = both task AND email), prefer email-draft route (richer artifact), and the draft itself counts as the task.
+When the same item could route two ways (e.g., "I'll send the spec to Sam" = both task AND email), prefer email-draft (richer artifact); the draft itself counts as the task.
+
+When the same item is both a research-prompt AND a socrates-question, prefer socrates-question — strategic frames are higher-leverage for Kay's review.
+
+### Heuristic: research vs socrates
+
+| Cue | Routes to |
+|---|---|
+| Numerical answer would resolve it ("what's the TAM," "how many," "what multiple") | research-prompt |
+| Lookupable fact ("I should check," "do we know," "let me look that up") | research-prompt |
+| Direction-setting ("should we," "is this the right," "are we optimizing for") | socrates-question |
+| Identity / scope frame ("are we still a holding company or a search fund," "do we even do this size") | socrates-question |
+| Stress-test of an assumption ("but what if," "the assumption there is") | socrates-question |
 
 ## Slack message format
 
@@ -92,7 +90,7 @@ ONE message per call. Posts to webhook in `$SLACK_WEBHOOK_OPERATIONS`.
 {vault link}
 
 Action items:
-- TASK: {task summary} → Excel To Do
+- TASK: {task summary} → task_queue
 - DRAFT: {to recipient}: {subject} → Gmail drafts
 - PROJECT (needs Kay scope): {project name}
 
@@ -100,69 +98,82 @@ Decisions:
 - {decision 1}
 - {decision 2}
 
-(no decisions captured) ← if empty
+Thought analysis:
+- RESEARCH: {question} → brain/inbox/{file}
+- SOCRATES: {question} → brain/inbox/{file}
+
+(no decisions captured) ← if section empty
+(no thought analysis) ← if section empty
 ```
 
-If the call had zero extractable items (all small talk / no actions / no decisions), still post a one-line "[Granola] {title} — no action items extracted" so Kay knows the analyzer ran. Suppresses only on processing failure.
+If the call had zero extractable items, still post `[Granola] {title} — no action items extracted` so Kay knows the analyzer ran. Suppresses only on processing failure.
 
 ## What this skill does NOT do
 
-- **Does not send any email.** Only drafts.
-- **Does not create Motion/Beads tasks.** Excel To Do via task-tracker-manager is the task system.
+- **Does not send any email.** Drafts only.
+- **Does not auto-drain `task_queue/`.** That's Phase 4.5 — the queue files accumulate; iMac task-tracker-manager (or its successor) drains them.
 - **Does not modify Attio.** Pipeline-manager owns Attio writes.
 - **Does not create project tabs.** Project flag in Slack → Kay creates tab manually if she agrees scope is project-sized.
-- **Does not run during weekends or off-hours.** Business-hours gate in poller.
+- **Does not auto-answer research-prompts or run socrates sessions.** It surfaces; Kay or the named target_skill picks them up via `/triage`.
 - **Does not aggregate across calls.** One Slack message per call. No EOD digest.
 
 ## Failure modes + invariants
 
-- If `cache-v6.json` is locked (Granola actively writing) → poller catches IOError, logs warning, exits 0. Next poll picks up.
-- If queue contains stale entries (>24h old, not processed) → validator flags as RED.
-- If Slack webhook fails → log error, mark queue entry as `slack_failed: true` but still mark processed (vault + drafts + tasks already landed; Slack is the notification, not the artifact).
+- If MCP call fails (auth, network, timeout) → detector logs + exits 0. Timer keeps firing.
+- If queue contains stale entries (>30 min old, not processed) → validator flags as RED.
+- If Slack webhook fails → log error, mark queue entry `slack_failed: true` but still mark processed (vault + drafts + tasks already landed).
 - If Gmail draft creation fails → log error, demote to TASK with note "draft failed, manual send needed".
+- If a thought-analysis artifact write fails → log error, surface in Slack with `THOUGHT-WRITE-FAIL:` prefix; downgrade-route the bullet to plain decision-list.
 
 ## Validator (mandatory)
 
-`scripts/validate_post_call_analyzer_integrity.py` runs after every Claude exit-0. Checks:
+`scripts/validate_post_call_analyzer_integrity.py` runs after every Claude exit-0. Self-locating REPO_ROOT works on both iMac (`~/Documents/AI Operations`) and Linux server (`~/projects/Sapling`).
 
-1. Queue dir is empty (all triggers processed) OR all queue entries are <30 min old (still mid-flight)
-2. processed.json grew by N entries where N = queue size at start
-3. Each processed entry has corresponding vault call note OR explicit failure marker
-4. No file in `processed/` is older than 30 days (rotate)
+1. Queue dir is empty (all triggers processed) OR all queue entries are <30 min old (still mid-flight from a fresh detector tick)
+2. Each processed entry has corresponding vault call note OR explicit failure marker
+3. **Thought-analysis artifacts named in `processed/{id}.json`'s `research_prompts_created` / `socrates_questions_created` arrays exist on disk in `brain/inbox/`** (Phase 4 check)
+4. No file in `processed/` is older than 30 days (rotate — warn, not fail)
 
 Validator failure → wrapper overrides exit code → Slack alert with "VALIDATOR FAILED" prefix per `feedback_mutating_skill_hardening_pattern.md`.
 
-## Plist
+## Systemd unit pair (server-side, Phase 4)
 
-`~/Library/LaunchAgents/com.greenwich-barrow.post-call-analyzer.plist`
+- `systemd/post-call-analyzer-poll.service` — Type=oneshot, runs `python3 scripts/post_call_analyzer_mcp_poll.py`, EnvironmentFile=`scripts/.env.launchd`
+- `systemd/post-call-analyzer-poll.timer` — `OnBootSec=2min`, `OnUnitActiveSec=5min`, `Persistent=true`
 
-- **Trigger:** `WatchPaths` on `~/Library/Application Support/Granola/cache-v6.json` (no `StartInterval`, no polling)
-- Business-hours gating happens inside `post_call_analyzer_poll.py` (defense-in-depth)
-- Logs: `logs/scheduled/post-call-analyzer-poll-{date}.log` (detector) + `logs/scheduled/post-call-analyzer-{date}-{HHMM}.log` (Claude run)
-- Wrapper: `scripts/run-skill.sh post-call-analyzer on-trigger`
-- POST_RUN_CHECK: `python3 scripts/validate_post_call_analyzer_integrity.py`
+Install via `bash scripts/install_systemd_units.sh` then `systemctl --user enable --now post-call-analyzer-poll.timer`.
 
-The plist runs the detector. The detector invokes the wrapper internally only when the queue has work. The wrapper invokes the headless Claude prompt with POST_RUN_CHECK validator. This means:
-- launchd fires detector only on Granola cache writes (event-driven)
-- Detector exits silently if no new docs (zero token cost)
-- Claude only fires when there's actual work (one run per call)
+Logs:
+- Detector: `logs/scheduled/post-call-analyzer-mcp-poll-{date}.log`
+- Claude run: `logs/scheduled/post-call-analyzer-{date}-{HHMM}.log` (via wrapper)
+- Wrapper case in `scripts/run-skill.sh` already routes `post-call-analyzer:on-trigger` → headless prompt + POST_RUN_CHECK validator.
 
-Activation: `launchctl load ~/Library/LaunchAgents/com.greenwich-barrow.post-call-analyzer.plist`
+## iMac sidecar (legacy, retired Phase 4.5)
 
-If the trigger doesn't fire reliably (e.g., Granola batches flushes across multiple calls or skips flushes entirely), pivot to: (a) decrypt `cache-v6.json.enc` via Keychain `safeStorage`, OR (b) add a fallback `StartInterval` of 4 hours alongside `WatchPaths` to catch missed events.
+`~/Library/LaunchAgents/com.greenwich-barrow.post-call-analyzer.plist` keeps running unchanged on the iMac during shadow mode. It uses `WatchPaths` on the local Granola cache and writes to the same `queue/` + `processed.json` as the server detector. Both can coexist; whichever detects first wins via the existing-queue-file guard in the MCP detector.
+
+Phase 4.5 (after shadow-mode validation): unload the plist, delete `scripts/post_call_analyzer_poll.py`, drain the leftover task_queue/, retire this row from the architecture table.
 
 ## Files owned
 
 | Path | Owned? |
 |---|---|
-| `scripts/post_call_analyzer_poll.py` | YES (poller) |
+| `scripts/post_call_analyzer_mcp_poll.py` | YES (Phase 4 server detector) |
+| `scripts/post_call_analyzer_poll.py` | LEGACY (iMac sidecar, retire Phase 4.5) |
 | `scripts/validate_post_call_analyzer_integrity.py` | YES (validator) |
+| `systemd/post-call-analyzer-poll.service` | YES |
+| `systemd/post-call-analyzer-poll.timer` | YES |
 | `.claude/skills/post-call-analyzer/SKILL.md` | YES (this file) |
 | `.claude/skills/post-call-analyzer/headless-on-trigger-prompt.md` | YES (Claude prompt) |
+| `schemas/vault/research-prompt.yaml` | YES (Phase 4 thought-analysis schema) |
+| `schemas/vault/socrates-question.yaml` | YES (Phase 4 thought-analysis schema) |
 | `brain/trackers/post-call-analyzer/processed.json` | YES (idempotency ledger) |
 | `brain/trackers/post-call-analyzer/queue/*.json` | YES (transient — drained per run) |
 | `brain/trackers/post-call-analyzer/processed/*.json` | YES (archive — 30-day rotation) |
+| `brain/trackers/post-call-analyzer/task_queue/*.json` | YES (Phase 4 task bucket — Phase 4.5 drains) |
 | `brain/calls/*.md` | SHARED (writes new files; existing call-note convention) |
-| Excel To Do (task-tracker) | DELEGATES to task-tracker-manager |
-| Gmail drafts | DELEGATES to `gog gmail draft` |
+| `brain/inbox/*-research-prompt.md` | YES (Phase 4 thought-analysis output) |
+| `brain/inbox/*-socrates-question.md` | YES (Phase 4 thought-analysis output) |
+| Excel To Do (task-tracker) | DELEGATES to task-tracker-manager (Phase 4.5) |
+| Gmail drafts | DELEGATES to `gog gmail drafts create` |
 | Slack `#operations` | OWNED for `[Granola]` prefixed messages |

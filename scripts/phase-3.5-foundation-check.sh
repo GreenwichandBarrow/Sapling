@@ -47,31 +47,31 @@ else
   mark_red "gog NOT installed"
   if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
     echo "    Attempting linuxbrew install..."
-    /home/linuxbrew/.linuxbrew/bin/brew install gog 2>&1 | tail -8
+    /home/linuxbrew/.linuxbrew/bin/brew install gogcli 2>&1 | tail -8
     if command -v gog >/dev/null 2>&1 || [ -x /home/linuxbrew/.linuxbrew/bin/gog ]; then
       mark_green "gog installed via linuxbrew (re-source ~/.bashrc or restart shell to use)"
     else
       mark_red "linuxbrew install attempt failed — install manually"
     fi
   else
-    mark_red "linuxbrew not found — install gog manually (see https://github.com/maxbrunsfeld/gog or apt)"
+    mark_red "linuxbrew not found — build from source (https://github.com/steipete/gogcli) or apt-install golang-go and 'go build ./cmd/gog'"
   fi
 fi
 
-# Credential check — directory existence only, never read contents
-if [ -d "${HOME}/.config/gog" ]; then
-  CRED_FILE_COUNT=$(ls -1 "${HOME}/.config/gog" 2>/dev/null | wc -l | tr -d ' ')
+# Credential check — directory existence only, never read contents.
+# v0.15+ uses ~/.config/gogcli/ (not ~/.config/gog/).
+if [ -d "${HOME}/.config/gogcli" ]; then
+  CRED_FILE_COUNT=$(ls -1 "${HOME}/.config/gogcli" 2>/dev/null | wc -l | tr -d ' ')
   mark_green "gog config dir exists (${CRED_FILE_COUNT} files)"
 else
-  mark_red "gog config dir MISSING at ~/.config/gog"
-  echo "    ACTION on iMac: scp -r ~/.config/gog kay@\$(tailscale ip -4 | head -1 | sed 's/<server>/g'):~/.config/"
-  echo "    (or use the standard tailscale scp pattern from 5/7 .env.launchd transfer)"
+  mark_red "gog config dir MISSING at ~/.config/gogcli"
+  echo "    ACTION on iMac: scp -r ~/.config/gogcli ubuntu@agent-vps-7731c88b:~/.config/"
 fi
 
-# Test gog auth without burning API quota — list configured accounts
+# Test gog auth without burning API quota — list configured accounts (v0.15+ syntax: 'gog auth list', not 'gog accounts list').
 if command -v gog >/dev/null 2>&1; then
-  echo "    gog accounts list:"
-  gog accounts list 2>&1 | head -5 | sed 's/^/      /'
+  echo "    gog auth list:"
+  gog auth list 2>&1 | head -5 | sed 's/^/      /'
 fi
 
 echo

@@ -7,11 +7,16 @@ the queue and produced corresponding artifacts. Non-zero exit → wrapper
 overrides skill exit code and fires Slack alert per
 `feedback_mutating_skill_hardening_pattern.md`.
 
+Self-locating REPO_ROOT — works on both iMac (~/Documents/AI Operations) and
+Linux server (~/projects/Sapling). Phase 4 update 2026-05-08.
+
 Checks:
 1. Queue dir empty OR all entries <30 min old (still mid-flight from a fresh poll)
 2. Each newly-processed doc_id has either a vault call note or an explicit
    failure marker in its processed/{id}.json
-3. processed/{id}.json files older than 30 days are flagged for rotation (warn, not fail)
+3. Thought-analysis artifacts (research-prompts + socrates-questions) named
+   in archive entries actually exist on disk in brain/inbox/
+4. processed/{id}.json files older than 30 days are flagged for rotation (warn, not fail)
 """
 
 from __future__ import annotations
@@ -21,12 +26,13 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-WORKDIR = Path.home() / "Documents" / "AI Operations"
-TRACKER_DIR = WORKDIR / "brain" / "trackers" / "post-call-analyzer"
+REPO_ROOT = Path(__file__).resolve().parent.parent
+TRACKER_DIR = REPO_ROOT / "brain" / "trackers" / "post-call-analyzer"
 QUEUE_DIR = TRACKER_DIR / "queue"
 PROCESSED_DIR = TRACKER_DIR / "processed"
+TASK_QUEUE_DIR = TRACKER_DIR / "task_queue"
 LEDGER = TRACKER_DIR / "processed.json"
-CALLS_DIR = WORKDIR / "brain" / "calls"
+INBOX_DIR = REPO_ROOT / "brain" / "inbox"
 
 STALE_QUEUE_MIN = 30
 ROTATION_DAYS = 30
@@ -75,7 +81,9 @@ def main() -> int:
         if isinstance(meta, dict) and meta.get("processed_at", "").startswith(today)
     ]
 
-    missing_artifacts = []
+    missing_artifacts: list[str] = []
+    missing_thought_artifacts: list[str] = []
+
     for doc_id, meta in today_processed:
         archive = PROCESSED_DIR / f"{doc_id}.json"
         if not archive.exists():
@@ -88,14 +96,30 @@ def main() -> int:
             continue
         if data.get("processing_failed"):
             continue
+
+        # Check 2 — vault call note exists
         vault_path = data.get("vault_call_note")
-        if vault_path and not (WORKDIR / vault_path).exists():
+        if vault_path and not (REPO_ROOT / vault_path).exists():
             missing_artifacts.append(f"{doc_id} (vault note {vault_path} missing)")
+
+        # Check 3 (Phase 4) — thought-analysis artifacts named in archive exist
+        for prompt_path in data.get("research_prompts_created", []) or []:
+            if not (REPO_ROOT / prompt_path).exists():
+                missing_thought_artifacts.append(f"{doc_id}: {prompt_path}")
+        for sq_path in data.get("socrates_questions_created", []) or []:
+            if not (REPO_ROOT / sq_path).exists():
+                missing_thought_artifacts.append(f"{doc_id}: {sq_path}")
 
     if missing_artifacts:
         return fail(
-            f"{len(missing_artifacts)} processed entries missing artifacts: "
+            f"{len(missing_artifacts)} processed entries missing vault notes: "
             f"{', '.join(missing_artifacts[:5])}"
+        )
+
+    if missing_thought_artifacts:
+        return fail(
+            f"{len(missing_thought_artifacts)} thought-analysis artifacts named in archives "
+            f"but missing on disk: {', '.join(missing_thought_artifacts[:5])}"
         )
 
     rotation_cutoff = now - timedelta(days=ROTATION_DAYS)
@@ -108,9 +132,15 @@ def main() -> int:
     if rotation_candidates:
         warn(f"{len(rotation_candidates)} processed entries past {ROTATION_DAYS}d rotation")
 
+    # Surface task-queue depth for visibility (not a fail condition during
+    # shadow mode — drain is Phase 4.5).
+    task_queue_count = 0
+    if TASK_QUEUE_DIR.exists():
+        task_queue_count = len([p for p in TASK_QUEUE_DIR.glob("*.json") if p.name != ".gitkeep"])
+
     print(
         f"OK: queue={len(queue_files)} fresh, processed_today={len(today_processed)}, "
-        f"ledger_total={len(ledger)}"
+        f"ledger_total={len(ledger)}, task_queue_pending={task_queue_count}"
     )
     return 0
 

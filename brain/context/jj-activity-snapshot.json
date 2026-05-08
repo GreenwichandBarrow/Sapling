@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-08T13:00:21Z",
+  "fetched_at": "2026-05-08T18:30:23Z",
   "niches_scanned": [
     "Art Insurance",
     "Domestic TCI",
@@ -14,11 +14,11 @@
     "IPLC": 0,
     "Art Storage": 0,
     "Art Advisory": 0,
-    "Premium Pest Management": 358
+    "Premium Pest Management": 375
   },
-  "dials_today": 0,
-  "dials_this_week": 79,
-  "dials_lifetime": 360,
+  "dials_today": 17,
+  "dials_this_week": 118,
+  "dials_lifetime": 377,
   "by_day": {
     "2026-03-30": 2,
     "2026-04-07": 22,
@@ -32,7 +32,9 @@
     "2026-05-05": 31,
     "2026-05-01": 18,
     "2026-05-04": 21,
-    "2026-05-06": 27
+    "2026-05-06": 27,
+    "2026-05-07": 22,
+    "2026-05-08": 17
   },
   "weekly_buckets": [
     {
@@ -93,7 +95,7 @@
     {
       "week_start": "2026-05-02",
       "week_end": "2026-05-08",
-      "dials": 79
+      "dials": 118
     }
   ]
 }

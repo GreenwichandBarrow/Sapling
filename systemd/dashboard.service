@@ -1,0 +1,20 @@
+# Manually authored — not generated from launchd plist.
+# Persistent Streamlit dashboard service for the G&B Command Center.
+# Runs continuously; restarts on failure or crash. Bind 0.0.0.0 so the
+# dashboard is reachable via Tailscale IP from any tailnet device.
+
+[Unit]
+Description=G&B Command Center Dashboard (Streamlit, persistent)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/projects/Sapling/dashboard
+Environment=PATH=%h/.npm-global/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=%h/projects/Sapling/dashboard/.venv/bin/streamlit run command_center.py --server.headless=true --server.port=8501 --server.address=0.0.0.0
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

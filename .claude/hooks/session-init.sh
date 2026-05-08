@@ -28,7 +28,7 @@ case "$(uname)" in
     ;;
   Linux)
     case "$DEVICE_HOSTNAME" in
-      *dodo-vps*|*greenwich*|*sapling*) DEVICE_LOCATION="server" ;;
+      *agent-vps*|*dodo-vps*|*greenwich*|*sapling*|*-vps-*) DEVICE_LOCATION="server" ;;
       *) DEVICE_LOCATION="linux" ;;
     esac
     ;;

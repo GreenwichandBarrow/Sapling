@@ -822,38 +822,27 @@ _STATUSES = {
 
 
 def _registered_jobs() -> set[str]:
-    """Return set of skill names registered with launchctl."""
-    try:
-        out = subprocess.run(
-            ["launchctl", "list"],
-            capture_output=True,
-            text=True,
-            timeout=5,
-        )
-    except (FileNotFoundError, subprocess.TimeoutExpired):
-        return set()
-    out_text = out.stdout if out.returncode == 0 else ""
-    names: set[str] = set()
-    for line in out_text.splitlines():
-        # Format: PID  STATUS  LABEL
-        parts = line.split()
-        if len(parts) < 3:
-            continue
-        label = parts[-1]
-        if label.startswith(LAUNCHD_LABEL_PREFIX):
-            names.add(label[len(LAUNCHD_LABEL_PREFIX):])
-    return names
+    """Return set of skill names with a registered scheduler job.
+
+    Delegates to `_scheduler_adapter` so we get launchd reads on macOS and
+    systemd user-timer reads on Linux without forking display logic.
+    """
+    import _scheduler_adapter  # noqa: PLC0415  — local import keeps module-load cheap on Linux when scheduler is absent
+
+    return _scheduler_adapter.registered_jobs()
 
 
 def _read_plist(skill: str) -> dict | None:
-    path = LAUNCH_AGENTS_DIR / f"{LAUNCHD_LABEL_PREFIX}{skill}.plist"
-    if not path.exists():
-        return None
-    try:
-        with path.open("rb") as f:
-            return plistlib.load(f)
-    except (OSError, plistlib.InvalidFileException):
-        return None
+    """Return plist-shaped config dict for the named skill.
+
+    macOS: real plist from `~/Library/LaunchAgents/`.
+    Linux: synthesized from `~/.config/systemd/user/<skill>.timer` —
+    StartCalendarInterval list back-derived from OnCalendar lines.
+    Either way, downstream code in data_sources.py walks the same shape.
+    """
+    import _scheduler_adapter  # noqa: PLC0415
+
+    return _scheduler_adapter.read_job_config(skill)
 
 
 def _format_schedule(intervals: list[dict]) -> str:

@@ -10,6 +10,33 @@ TODAY=$(date +%Y-%m-%d)
 YESTERDAY=$(date -v-1d +%Y-%m-%d 2>/dev/null || date -d "yesterday" +%Y-%m-%d)
 CURRENT_WEEK=$(date +%Y-W%V)
 
+# Device-location detection (Phase 3 server migration). Skills can branch on
+# this to behave context-appropriately:
+#   imac    — Kay's primary dev Mac (Granola sidecar lives here)
+#   macbook — Kay's secondary Mac
+#   server  — Hetzner VPS (Linux, runs scheduled jobs as systemd timers)
+#   mac     — fallback for unrecognized macOS hosts
+#   linux   — fallback for unrecognized Linux hosts
+DEVICE_HOSTNAME=$(hostname -s 2>/dev/null || echo "unknown")
+case "$(uname)" in
+  Darwin)
+    case "$DEVICE_HOSTNAME" in
+      *[Ii][Mm]ac*) DEVICE_LOCATION="imac" ;;
+      *[Mm][Aa][Cc][Bb]ook*) DEVICE_LOCATION="macbook" ;;
+      *) DEVICE_LOCATION="mac" ;;
+    esac
+    ;;
+  Linux)
+    case "$DEVICE_HOSTNAME" in
+      *dodo-vps*|*greenwich*|*sapling*) DEVICE_LOCATION="server" ;;
+      *) DEVICE_LOCATION="linux" ;;
+    esac
+    ;;
+  *)
+    DEVICE_LOCATION="unknown"
+    ;;
+esac
+
 # Daily note path
 DAILY_NOTE="$VAULT_PATH/brain/notes/daily/$TODAY.md"
 
@@ -21,6 +48,8 @@ export TODAY="$TODAY"
 export YESTERDAY="$YESTERDAY"
 export CURRENT_WEEK="$CURRENT_WEEK"
 export DAILY_NOTE="$DAILY_NOTE"
+export DEVICE_LOCATION="$DEVICE_LOCATION"
+export DEVICE_HOSTNAME="$DEVICE_HOSTNAME"
 EOF
 fi
 
@@ -33,6 +62,7 @@ fi
 echo ""
 echo "Launching your Personal OS"
 echo "  Today: $TODAY"
+echo "  Device: $DEVICE_LOCATION ($DEVICE_HOSTNAME)"
 
 # Ensure daily note exists (creates from schema if missing)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

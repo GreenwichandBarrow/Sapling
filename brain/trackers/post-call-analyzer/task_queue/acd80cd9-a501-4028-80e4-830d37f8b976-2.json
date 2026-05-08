@@ -1,0 +1,10 @@
+{
+  "summary": "Watch for the structured-AI-coding-practices classifier paper to clear peer review (~2 weeks from 2026-05-08); when published, score the Sapling repo's L1-L4 maturity",
+  "type": "Work",
+  "project": "G&B AI tooling research",
+  "due_date": "2026-05-29",
+  "notes": "From AI Friday: Measuring the Real ROI of AI in Software Engineering, 2026-05-08. Presenter said classifier paper is in peer review with feedback expected ~2 weeks out. Methodology uses cosine-similarity embeddings on repo artifacts (CLAUDE.md, cursor rules, agents/, commands/, skills/) to score L1-L4 maturity. L2+ repos show 3x less code-quality degradation under AI usage.",
+  "source_call": "brain/calls/2026-05-08-ai-friday-real-roi-of-ai.md",
+  "source_meeting_id": "acd80cd9-a501-4028-80e4-830d37f8b976",
+  "queued_at": "2026-05-08T21:04:51+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "meeting_id": "acd80cd9-a501-4028-80e4-830d37f8b976",
+  "title": "AI Friday: Measuring the Real ROI of AI in Software Engineering",
+  "processed_at": "2026-05-08T21:04:51+00:00",
+  "vault_call_note": "brain/calls/2026-05-08-ai-friday-real-roi-of-ai.md",
+  "tasks_queued": [
+    "brain/trackers/post-call-analyzer/task_queue/acd80cd9-a501-4028-80e4-830d37f8b976-1.json",
+    "brain/trackers/post-call-analyzer/task_queue/acd80cd9-a501-4028-80e4-830d37f8b976-2.json"
+  ],
+  "drafts_created": [],
+  "projects_flagged": [],
+  "decisions_extracted": [],
+  "research_prompts_created": [],
+  "socrates_questions_created": [],
+  "slack_posted": true,
+  "processing_failed": false,
+  "detector": "mcp"
+}

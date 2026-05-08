@@ -1,0 +1,10 @@
+{
+  "summary": "Pull up softwareengineeringproductivity.stanford.edu + Stanford AI Spend Index; review free papers and benchmark Sapling/G&B's stack against per-developer spend distribution",
+  "type": "Work",
+  "project": "G&B AI tooling research",
+  "due_date": null,
+  "notes": "From AI Friday: Measuring the Real ROI of AI in Software Engineering, 2026-05-08. Presenter flagged median AI spend per developer ~$400/mo, max $30K/mo, with high-lift companies clustering $500-$1K+. Free resources include the AI Spend Index and pre-publication papers.",
+  "source_call": "brain/calls/2026-05-08-ai-friday-real-roi-of-ai.md",
+  "source_meeting_id": "acd80cd9-a501-4028-80e4-830d37f8b976",
+  "queued_at": "2026-05-08T21:04:51+00:00"
+}

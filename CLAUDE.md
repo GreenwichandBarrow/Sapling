@@ -46,6 +46,9 @@ Memory recall weakens as the session fills. These fire on action triggers, not t
 - Sign-off matches SEND day, not draft day ("have a great weekend" only if sending Friday).
 - If today is Sunday: schedule for Monday AM, don't send.
 - No em dashes.
+- **No soft-signal stacking.** Don't pile multiple soft signals in one message ("let me know," "no rush," "happy to chat," "whenever works") — they read as low-conviction. One soft signal max; replace the rest with a concrete forward-motion line. Source: `memory/feedback_no_soft_signal_stacking.md` (2026-05-08, day-5 voice trace).
+- **No exit-door-only CTAs.** Every email needs a forward-motion ask, not just "let me know if you want to chat." Propose a concrete next step (specific time window, specific question, specific deliverable) — passive opt-in CTAs read as "I don't expect a reply."
+- **Observations beat claims for owner/website/external copy.** Replace "we look for X / we hold Y / we don't do Z" with "owners we work with tend to Y" or "the operators in this space share Z" — observations about the world G&B serves, not claims about G&B. Removes PE-vibe and reads more native to owner audience. Source: `feedback_pe_vibe_from_we_centric_copy.md`.
 - Stranger outreach? STOP — warm intro path required, or don't propose.
 
 ### Before writing to a Google Sheet
@@ -74,6 +77,9 @@ Memory recall weakens as the session fills. These fire on action triggers, not t
 ### Before research / network discovery
 - **Prioritize women across all intermediary, network, and conference research, especially in male-dominated verticals (pest mgmt, equipment servicing, insurance, cleaning, HVAC).** Surface women-led contacts first; over-weight in top-5 callouts and warm-intro recommendations. Bias silently — don't announce the lens. (Source: `feedback_women_network_priority`)
 - **For DealsX-channel niches (specifically insurance brokerage; check Industry Research Tracker for current list), cold-but-live re-engagement is DealsX's job. Never surface as a Kay-Email nudge candidate.** (Source: `feedback_cold_relive_insurance_dealsx_channel`)
+
+### Before adding any new template, cadence step, decision branch, or threshold
+- **Cite the G&B-specific firing case OR admit it's inherited convention and ask Kay before adding.** Inherited-from-generic-playbook scaffolding (numbers, branches, cadences, templates) gets pruned every time Kay's lens hits it. AI proposes a value from convention; Kay kills it for not firing in G&B's actual context. Source: `feedback_strategic_thresholds_need_grounding.md` (broadened 2026-05-08 from numbers to branches/cadences/templates/numbers) — precipitating traces: `2026-05-03-strategic-thresholds-need-grounding`, `2026-05-04-broker-cadence-and-paths-pruned`, `2026-05-04-day-5-voice-no-soft-signal-stacking`, `2026-05-01-acg-conference-meeting-strategy-pivot` (4 instances in 4 days).
 
 ### Before answering "what was planned/scheduled for X"
 - Query order: calendar → beads → brain/outputs/ → session-decisions.

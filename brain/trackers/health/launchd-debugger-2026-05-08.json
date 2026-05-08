@@ -1,0 +1,33 @@
+{
+  "date": "2026-05-08",
+  "scan_started_at": "2026-05-08T09:01:10Z",
+  "scan_finished_at": "2026-05-08T11:21:37Z",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 1,
+  "suppressed_count": 0,
+  "runtime_seconds": 8427,
+  "triggered_by": "daily",
+  "results": [
+    {
+      "job": "launchd-debugger",
+      "cause": "CODE_BUG",
+      "action": "SURFACE",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_posted": true,
+      "suppression_reason": null,
+      "triggered_by": "daily",
+      "last_log_path": "/Users/kaycschneider/Documents/AI Operations/logs/scheduled/launchd-debugger-2026-05-07-0509.log",
+      "last_log_mtime": "2026-05-07T05:10:16-04:00",
+      "exit_code": 0,
+      "validator_failed_per_scanner": true,
+      "preflight_failed_per_scanner": true,
+      "actual_run_state": "exit 0, validator PASSED, 0 failures detected",
+      "error_signature": "PREFLIGHT AUTH FAIL — Claude CLI 401, re-auth required (false positive)",
+      "diagnosis": "Scanner false positive. scan_launchd_failures.py uses regexes VALIDATOR_FAIL_RE = r'VALIDATOR FAILED' and PREFLIGHT_FAIL_RE = r'PREFLIGHT FAILED' that match anywhere in the log file. Yesterday's launchd-debugger run wrote a clean-scan summary that literally enumerates these strings while describing the failure-detection criteria, triggering both regex matches.",
+      "slack_text": "launchd-debugger: launchd-debugger FAILED — CODE_BUG. Scanner false positive: scan_launchd_failures.py regexes VALIDATOR_FAIL_RE/PREFLIGHT_FAIL_RE match the strings 'VALIDATOR FAILED'/'PREFLIGHT FAILED' inside the run's narrative summary describing detection criteria; actual run was clean (exit 0, validator PASSED, 0 failures). Recommended: tighten scanner regexes to anchor on wrapper-emitted lines (e.g. ^VALIDATOR FAILED or 'post-run validator' context) rather than matching anywhere in the file. Log: /Users/kaycschneider/Documents/AI Operations/logs/scheduled/launchd-debugger-2026-05-07-0509.log"
+    }
+  ]
+}

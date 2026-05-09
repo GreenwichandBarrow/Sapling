@@ -1,0 +1,35 @@
+{
+  "date": "2026-05-09",
+  "scan_started_at": "2026-05-09T13:51:00Z",
+  "scan_finished_at": "2026-05-09T13:52:41Z",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 1,
+  "suppressed_count": 0,
+  "runtime_seconds": 101,
+  "triggered_by": "daily",
+  "results": [
+    {
+      "job": "nightly-tracker-audit",
+      "cause": "CODE_BUG",
+      "action": "SURFACE",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_posted": true,
+      "suppression_reason": null,
+      "triggered_by": "daily",
+      "last_log_path": "/Users/kaycschneider/Documents/AI Operations/logs/scheduled/nightly-tracker-audit-2026-05-08-2330.log",
+      "last_log_mtime": "2026-05-09T07:00:36-04:00",
+      "exit_code": 1,
+      "validator_failed_per_scanner": false,
+      "preflight_failed_per_scanner": false,
+      "error_signature": "exit 1: error: An unknown error occurred (Unexpected) | Finished claude run: Sat May  9 07:00:36 EDT 2026, exit: 1 (attempts: 4)",
+      "diagnosis": "Three consecutive attempts returned 'error: An unknown error occurred (Unexpected)' from the local claude CLI invoking headless-nightly-prompt.md, with no skill code ever executing (no validator output, no summary). Wrapper retried across 7+ hours (23:30 to 07:00) so transient envelope is exhausted. Prior 2 nights (5/6, 5/7) ran clean with validator PASSED, so this is a new failure pattern matching the ai-ops-5wx Claude-CLI 'Unexpected' family — likely a CLI/headless-prompt routing bug rather than a skill defect.",
+      "prior_log_pattern": "first failure",
+      "known_incident_match": false,
+      "cross_day_dedup_match": false,
+      "slack_text": "launchd-debugger: nightly-tracker-audit FAILED — CODE_BUG. claude -p returned 'An unknown error occurred (Unexpected)' on all 3 retries across 7hr window (23:30 to 07:00); same signature family as ai-ops-5wx but on a new job (prior 2 nights ran clean exit 0). Recommended: investigate whether ai-ops-5wx hardening needs to be generalized to all headless-prompt skills, then manually rerun via launchctl start com.greenwich-barrow.nightly-tracker-audit. Log: /Users/kaycschneider/Documents/AI Operations/logs/scheduled/nightly-tracker-audit-2026-05-08-2330.log"
+    }
+  ]
+}

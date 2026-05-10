@@ -34,6 +34,13 @@ LOG_FILE="$LOG_DIR/${LOG_PREFIX:-$SKILL_NAME}-$(date +%Y-%m-%d-%H%M).log"
 source "$WORKDIR/scripts/load-env.sh"
 load_env "$WORKDIR/scripts/.env.launchd"
 
+# Export GOG_ACCOUNT for subprocesses that call `gog` without --account
+# (notably the POST_RUN_CHECK validators in scripts/validate_*_integrity.py).
+# Under launchd's empty env, those calls fail with "missing --account". Not
+# kept in .env.launchd because the email is not a secret. Override-friendly:
+# if a plist or a future .env.launchd export defines GOG_ACCOUNT, that wins.
+export GOG_ACCOUNT="${GOG_ACCOUNT:-kay.s@greenwichandbarrow.com}"
+
 # Raise file descriptor limit (launchd defaults to 256, Claude needs more)
 ulimit -n 2147483646 2>/dev/null || ulimit -n 65536 2>/dev/null || true
 

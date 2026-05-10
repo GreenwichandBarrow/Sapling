@@ -19,7 +19,8 @@ LOG_FILE="$LOG_DIR/external-services-$STAMP.log"
   echo "=== probe-external-services.sh @ $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
   set -a
   # shellcheck disable=SC1091
-  source "$REPO_ROOT/scripts/.env.launchd"
+  source "$REPO_ROOT/scripts/load-env.sh"
+  load_env "$REPO_ROOT/scripts/.env.launchd"
   set +a
   "$REPO_ROOT/dashboard/.venv/bin/python" "$REPO_ROOT/scripts/probe_external_services.py"
 } >> "$LOG_FILE" 2>&1

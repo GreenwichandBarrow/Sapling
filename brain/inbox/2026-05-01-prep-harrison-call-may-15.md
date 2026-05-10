@@ -24,7 +24,6 @@ Next Harrison Wells coaching session is **Friday 2026-05-15, 12:00-1:00pm ET**. 
   - Open infrastructure decisions (Hetzner migration status, 1Password CLI, secure-API-key tool, learnings.md rollout).
   - Skill-build questions (/discuss or /think pattern, launchd-debugger output review, anything else).
   - Anything from the 4/30 followups Harrison committed to that hasn't landed yet.
-  - **Family Office personal project setup** — Kay wants to create a "Family Office" project for running her home, separate from G&B work. Topics to discuss with Harrison: (1) best way to architect it as a separate project (new repo? new vault? sub-vault under existing setup?); (2) how to operate the two cleanly without crossing wires (auth, secrets, scheduled jobs, credentials); (3) any patterns from his other clients running personal/professional split setups. Added 2026-05-10.
 - Send as email to Harrison Thursday evening or Friday morning before the call.
 - Add the call to Kay's morning briefing for Friday 5/15.
 

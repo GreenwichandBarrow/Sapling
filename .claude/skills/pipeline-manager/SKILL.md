@@ -163,7 +163,7 @@ N. {urgency-emoji} *{C-suite}* **RECOMMEND: {action}** — {one-sentence reason}
 
 ```
 **Good morning. {Day} {date}.** {N} decisions ordered by urgency. System
-status + pipeline + outreach metrics live at agent-vps-7731c88b:8501.
+status + pipeline + outreach metrics live at agent-vps-7731c88b.tail868ef9.ts.net.
 
 1. 🔴 *CIO* **RECOMMEND: Generate brief for {name} ({time} {date})** — External meeting; brief not yet drafted.
    → **YES / NO / DISCUSS**

@@ -78,7 +78,7 @@ C-suite labels per `feedback_c_suite_naming`.
 
 **Header line above the list:** one sentence pointing at the dashboard, e.g.
 *"5 decisions ordered by urgency. System status + pipeline + outreach metrics
-live at agent-vps-7731c88b:8501."*
+live at agent-vps-7731c88b.tail868ef9.ts.net."*
 
 **Briefing hygiene (unchanged):**
 - Only surface items that need action or decision. Omit anything done/resolved.

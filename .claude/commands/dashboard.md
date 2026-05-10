@@ -1,5 +1,5 @@
 ---
-description: Open the G&B Command Center dashboard (Streamlit, server-hosted via systemd at http://agent-vps-7731c88b:8501)
+description: Open the G&B Command Center dashboard (Streamlit, server-hosted via systemd at https://agent-vps-7731c88b.tail868ef9.ts.net)
 ---
 
 Open the Command Center dashboard.
@@ -11,7 +11,7 @@ Open the Command Center dashboard.
    ```bash
    ssh ubuntu@agent-vps-7731c88b "systemctl --user is-active dashboard.service"
    ```
-2. If output is `active`, tell Kay it's live at **[http://agent-vps-7731c88b:8501](http://agent-vps-7731c88b:8501)** and stop. Note that refresh polling is every 60s. Magic DNS resolves the hostname over Tailscale — bookmarkable, works from any tailnet device (iMac, MacBook, iPhone with Tailscale connected).
+2. If output is `active`, tell Kay it's live at **[https://agent-vps-7731c88b.tail868ef9.ts.net](https://agent-vps-7731c88b.tail868ef9.ts.net)** and stop. Note that refresh polling is every 60s. Magic DNS resolves the hostname over Tailscale — bookmarkable, works from any tailnet device (iMac, MacBook, iPhone with Tailscale connected).
 3. If output is `inactive` or `failed`, attempt one restart:
    ```bash
    ssh ubuntu@agent-vps-7731c88b "systemctl --user restart dashboard.service"

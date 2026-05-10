@@ -24,7 +24,8 @@ VALIDATOR_EXIT=0
   echo "=== refresh-attio-snapshot.sh @ $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
   set -a
   # shellcheck disable=SC1091
-  source "$REPO_ROOT/scripts/.env.launchd"
+  source "$REPO_ROOT/scripts/load-env.sh"
+  load_env "$REPO_ROOT/scripts/.env.launchd"
   set +a
   "$REPO_ROOT/dashboard/.venv/bin/python" "$REPO_ROOT/scripts/refresh_attio_snapshot.py"
   REFRESH_EXIT=$?

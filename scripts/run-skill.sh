@@ -27,8 +27,12 @@ LOG_DIR="$WORKDIR/logs/scheduled"
 # even though the run succeeded. Default = SKILL_NAME (post-colon-split).
 LOG_FILE="$LOG_DIR/${LOG_PREFIX:-$SKILL_NAME}-$(date +%Y-%m-%d-%H%M).log"
 
-# Source env (launchd doesn't read .zshrc)
-source "$WORKDIR/scripts/.env.launchd"
+# Source env (launchd doesn't read .zshrc). load_env helper resolves any
+# op:// references via 1Password if op CLI is available; otherwise sources
+# the file as-is.
+# shellcheck disable=SC1091
+source "$WORKDIR/scripts/load-env.sh"
+load_env "$WORKDIR/scripts/.env.launchd"
 
 # Raise file descriptor limit (launchd defaults to 256, Claude needs more)
 ulimit -n 2147483646 2>/dev/null || ulimit -n 65536 2>/dev/null || true

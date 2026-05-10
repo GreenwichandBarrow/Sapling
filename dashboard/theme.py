@@ -1972,6 +1972,15 @@ GLOBAL_CSS = f"""
     .gb-ch-table {{ min-width: 480px; }}
     .gb-zone {{ overflow-x: auto; }}
 
+    /* --- Deal Aggregator (any .gb-table-wrap): override desktop's
+       overflow:hidden so wide tables become horizontally swipeable
+       on mobile instead of clipping the right columns. --- */
+    .gb-table-wrap {{
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
+    }}
+    .gb-table {{ min-width: 720px; }}
+
     /* --- Zone heads & C-suite heads: stack label/meta --- */
     .gb-csuite-head, .gb-zone-head {{
       flex-direction: column;

@@ -234,24 +234,24 @@ def _tile_deal_aggregator() -> str:
             footer = f'{trend}<span class="gb-horizon">{horizon}</span>'
 
         return _tile(f"""
-        <div class="gb-tile">
+        <a class="gb-tile" href="/deal-aggregator" target="_self">
         <div class="label">Deal Aggregator</div>
         {primary}
         <div class="footer">
         {footer}
         </div>
-        </div>
+        </a>
         """)
     except Exception:
         return _tile("""
-        <div class="gb-tile">
+        <a class="gb-tile" href="/deal-aggregator" target="_self">
         <div class="label">Deal Aggregator</div>
         <div class="primary">&mdash;<span class="unit">read failed</span></div>
         <div class="footer">
         <span class="gb-trend">check logs</span>
         <span class="gb-horizon">TODAY</span>
         </div>
-        </div>
+        </a>
         """)
 
 
@@ -267,7 +267,7 @@ def _tile_ma_analytics() -> str:
         owner_now = 0
         ndas_now = 0
     return _tile(f"""
-    <div class="gb-tile">
+    <a class="gb-tile" href="/ma-analytics" target="_self">
     <div class="label">M&amp;A Analytics</div>
     <div class="gb-ma-list">
     <div class="gb-ma-label">Owner conversations</div><div class="gb-ma-value">{owner_now}</div>
@@ -279,7 +279,7 @@ def _tile_ma_analytics() -> str:
     <span class="gb-trend flat">&rarr; DealsX wires May 7</span>
     <span class="gb-horizon">THIS WEEK</span>
     </div>
-    </div>
+    </a>
     """)
 
 
@@ -291,14 +291,14 @@ def _tile_c_suite_skills() -> str:
         summary = skill_health_summary(groups)
     except Exception:
         return _tile("""
-        <div class="gb-tile">
+        <a class="gb-tile" href="/c-suite-skills" target="_self">
         <div class="label">C-Suite &amp; Skills</div>
         <div class="primary">&mdash;<span class="unit">loader unreachable</span></div>
         <div class="footer">
         <span class="gb-trend flat">&rarr; check page</span>
         <span class="gb-horizon">TODAY</span>
         </div>
-        </div>
+        </a>
         """)
     fired = summary["fired_today"]
     on_deck = summary["on_deck"]
@@ -320,7 +320,7 @@ def _tile_c_suite_skills() -> str:
         dot = "green"
         status_text = "all on schedule"
     return _tile(f"""
-    <div class="gb-tile">
+    <a class="gb-tile" href="/c-suite-skills" target="_self">
     <div class="label">C-Suite &amp; Skills</div>
     <div class="primary">{fired}<span class="unit">/ {scheduled_total} fired</span></div>
     <div class="gb-status-row">
@@ -331,7 +331,7 @@ def _tile_c_suite_skills() -> str:
     <span class="gb-trend flat">&rarr; {summary["ondemand"]} on-demand</span>
     <span class="gb-horizon">TODAY</span>
     </div>
-    </div>
+    </a>
     """)
 
 
@@ -343,14 +343,14 @@ def _tile_infrastructure() -> str:
         summary = system_health_summary(tiles)
     except Exception:
         return _tile("""
-        <div class="gb-tile">
+        <a class="gb-tile" href="/infrastructure" target="_self">
         <div class="label">Infrastructure</div>
         <div class="primary">&mdash;<span class="unit">probes unreachable</span></div>
         <div class="footer">
         <span class="gb-trend flat">&rarr; check page</span>
         <span class="gb-horizon">NOW</span>
         </div>
-        </div>
+        </a>
         """)
     healthy = summary["healthy"]
     total = sum(summary.values())
@@ -367,7 +367,7 @@ def _tile_infrastructure() -> str:
         dot = "green"
         status_text = "all systems nominal"
     return _tile(f"""
-    <div class="gb-tile">
+    <a class="gb-tile" href="/infrastructure" target="_self">
     <div class="label">Infrastructure</div>
     <div class="primary">{healthy}<span class="unit">/ {total} healthy</span></div>
     <div class="gb-status-row">
@@ -378,7 +378,7 @@ def _tile_infrastructure() -> str:
     <span class="gb-trend flat">&rarr; live probes</span>
     <span class="gb-horizon">NOW</span>
     </div>
-    </div>
+    </a>
     """)
 
 

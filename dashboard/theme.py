@@ -31,7 +31,7 @@ PALETTE = {
 # Order validated 2026-04-24: deal-flow surfaces grouped above system-internals.
 # Tech Stack retired (merged into Infrastructure).
 NAV_ITEMS = [
-    ("Dashboard", "dashboard", True),
+    ("Greenwich & Barrow Dashboard", "dashboard", True),
     ("Deal Aggregator", "deal-aggregator", True),
     ("Active Deal Pipeline", "deal-pipeline", True),
     ("M&A Analytics", "ma-analytics", True),
@@ -69,6 +69,12 @@ GLOBAL_CSS = f"""
   footer {{ visibility: hidden; }}
   div[data-testid="stDecoration"] {{ display: none; }}
   div[data-testid="stStatusWidget"] {{ display: none; }}
+
+  /* Sidebar removed app-wide — Dashboard tiles are the navigation surface,
+     and sub-pages render a "← Greenwich & Barrow Dashboard" back-link in the
+     topbar. Keep the markup-level container hidden rather than commenting
+     out render calls so any residual sidebar markup never shows. */
+  [data-testid="stSidebar"] {{ display: none !important; }}
 
   /* Streamlit ships Source Sans Variable and forces it on every component
      it owns (sidebar, page_link, buttons, selects). Override at every layer
@@ -249,6 +255,24 @@ GLOBAL_CSS = f"""
     font-weight: inherit !important;
   }}
 
+  /* -------- BACK-HOME LINK (sub-pages only) -------- */
+  /* Renders above the topbar on every page except the Dashboard landing.
+     Replaces the removed sidebar's home-nav affordance. Whole element is
+     the click target; styled to be visually quiet but unmistakably tappable. */
+  .gb-back-home {{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none !important;
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+    transition: color 0.15s;
+  }}
+  .gb-back-home:hover {{ color: var(--accent); }}
+  .gb-back-home .arrow {{ font-size: 13px; line-height: 1; }}
+
   /* -------- TOPBAR -------- */
   .gb-topbar {{
     display: flex;
@@ -304,6 +328,11 @@ GLOBAL_CSS = f"""
     flex-direction: column;
     cursor: pointer;
     transition: all 0.18s;
+    /* Tiles render as <a> elements (whole-tile click-through). Strip
+       default link decoration/color so the visual is identical to the
+       prior <div>-based markup. */
+    text-decoration: none !important;
+    color: inherit !important;
   }}
   .gb-tile:hover {{
     background: var(--panel-hover);

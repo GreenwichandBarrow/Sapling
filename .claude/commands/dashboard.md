@@ -1,26 +1,38 @@
 ---
-description: Launch the G&B Command Center dashboard (Streamlit, localhost:8501)
+description: Open the G&B Command Center dashboard (Streamlit, server-hosted via systemd at http://agent-vps-7731c88b:8501)
 ---
 
-Launch the Command Center dashboard.
+Open the Command Center dashboard.
+
+**The dashboard runs persistently on the Sapling server** as a user-level systemd service (`dashboard.service`, `Restart=always`). It does not need to be "started" each session — it stays up across reboots. This skill verifies health and surfaces the URL Kay should open in her browser.
 
 **Steps:**
-1. Check whether the dashboard is already running: `lsof -i :8501 2>/dev/null | grep LISTEN`
-2. If already running, tell Kay the URL (http://localhost:8501) and stop — don't start a second instance.
-3. If not running, start it in the background using the venv:
+1. Verify the service is active:
    ```bash
-   cd "/Users/kaycschneider/Documents/AI Operations" && \
-     dashboard/.venv/bin/streamlit run dashboard/command_center.py \
-     --server.headless true --server.port 8501 \
-     > logs/dashboard-streamlit.log 2>&1 &
+   ssh ubuntu@agent-vps-7731c88b "systemctl --user is-active dashboard.service"
    ```
-   Make sure `logs/` exists first (`mkdir -p logs`).
-4. Wait ~3 seconds, then confirm it's serving with `curl -s -o /dev/null -w "%{http_code}" http://localhost:8501`.
-5. Tell Kay it's live at http://localhost:8501 and note that refresh polling is every 60s.
+2. If output is `active`, tell Kay it's live at **[http://agent-vps-7731c88b:8501](http://agent-vps-7731c88b:8501)** and stop. Note that refresh polling is every 60s. Magic DNS resolves the hostname over Tailscale — bookmarkable, works from any tailnet device (iMac, MacBook, iPhone with Tailscale connected).
+3. If output is `inactive` or `failed`, attempt one restart:
+   ```bash
+   ssh ubuntu@agent-vps-7731c88b "systemctl --user restart dashboard.service"
+   sleep 5
+   ssh ubuntu@agent-vps-7731c88b "systemctl --user is-active dashboard.service"
+   ```
+4. If still not active after restart, surface recent logs without attempting further fixes:
+   ```bash
+   ssh ubuntu@agent-vps-7731c88b "journalctl --user -u dashboard.service -n 50 --no-pager"
+   ```
+   Tell Kay the service is down and show the log tail. Don't reinstall dependencies or recreate the venv (`/home/ubuntu/projects/Sapling/dashboard/.venv`) without asking — the venv was set up in Session 1 and should not be recreated casually.
+
+**HTTP smoke-test (optional, after step 2 or 3):**
+```bash
+ssh ubuntu@agent-vps-7731c88b 'curl -s -o /dev/null -w "%{http_code}" http://localhost:8501'
+```
+Expect `200`. Use `localhost:8501` here because the curl runs ON the server; from Kay's browser the URL is the Magic DNS one.
 
 **Scope & visual reference:**
 - Scope doc: `brain/context/continuation-2026-04-24-dashboard-scope-locked.md`
 - Visual language memory: `memory/feedback_dashboard_visual_language_locked.md`
 - Mockups: `dashboard/mockup-landing.html`, `dashboard/mockup-deal-aggregator.html`
 
-**If launch fails:** read `logs/dashboard-streamlit.log` and surface the error. Don't attempt to reinstall dependencies without asking — the venv at `dashboard/.venv` was set up in Session 1 and should not be recreated casually.
+**Background:** Migrated from Mac-local Streamlit (former `localhost:8501` on Kay's iMac) to server-hosted Streamlit (systemd-managed, bound to `0.0.0.0:8501`, reachable via Tailscale Magic DNS) in early May 2026. See `~/.config/systemd/user/dashboard.service` for the unit definition.

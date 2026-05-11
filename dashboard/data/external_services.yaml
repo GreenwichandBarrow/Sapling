@@ -93,6 +93,14 @@ services:
     action: muted
     action_text: Logs ↗
 
+  - name: keyreach
+    kind: service
+    description: DealsX outreach platform · email + LinkedIn DM sequences for the Sam Singh workflow.
+    health: ok
+    status_text: Healthy · signed in 2026-05-10
+    action: muted
+    action_text: Logs ↗
+
   - name: launchd
     kind: local
     description: macOS scheduler · runs all 14 scheduled skills.

@@ -24,7 +24,12 @@ import sys
 from datetime import date, datetime
 
 
-VAULT_DIR = "/Users/kaycschneider/Documents/AI Operations/brain/context"
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.dirname(_SCRIPT_DIR)
+VAULT_DIR = os.environ.get(
+    "RELATIONSHIP_MANAGER_VAULT_DIR",
+    os.path.join(_REPO_ROOT, "brain", "context"),
+)
 
 # Sections defined by SKILL.md "Output Artifact" template.
 # At least one of these must appear (skill may legitimately omit empty sections).

@@ -270,6 +270,51 @@ def event_starts_in_week(
     return ws <= es <= we
 
 
+def _is_past_date(snap_date: str, today: date | None = None) -> bool:
+    """True if the START date of a col-B value is strictly before today.
+
+    Date ranges like '5/13/26 - 5/17/26' parse using the START date — an event
+    that started yesterday but spills into next week is still "past-started"
+    for archival-progression purposes. Unparseable / 'TBD' / empty → False
+    (caller treats indeterminate as not-past, which is the conservative
+    direction for archival legitimacy checks).
+    """
+    if today is None:
+        today = date.today()
+    er = parse_event_date_range(snap_date or "", today.year)
+    if er is None:
+        return False
+    start, _end = er
+    return start < today
+
+
+def _is_legitimate_archival(
+    snap_status: str, snap_date: str, today: date | None = None
+) -> bool:
+    """True if a snapshot row's absence from live is explainable by the
+    skill's auto-archival rules (per SKILL.md):
+
+      - ``Skip`` / ``Skipped`` → routes to Skipped tab regardless of event
+        date. A future-dated Skip is still legitimately archived because the
+        skill doesn't gate Skip-routing on date.
+      - ``Attended``           → already-completed events; always legitimate.
+      - ``Attending`` + past   → event happened; assume it progressed through
+        Attended-tab archival even if the snapshot caught it pre-transition.
+
+    Everything else (Evaluating, Need to Book, Need to Register, Registered,
+    Future / Map-Only with future date, empty status, etc.) is NOT a
+    legitimate archival — those rows should still be on the Pipeline tab.
+    """
+    s = (snap_status or "").strip()
+    if s in ("Skip", "Skipped"):
+        return True
+    if s == "Attended":
+        return True
+    if s == "Attending" and _is_past_date(snap_date, today):
+        return True
+    return False
+
+
 # ---------------------------------------------------------------------------
 # Check A — Header position invariant
 # ---------------------------------------------------------------------------
@@ -521,27 +566,45 @@ def check_cell_mutations(
     for snap_i in unmatched:
         snap_row = snapshot_rows[snap_i]
         snap_status = cell(snap_row, COL_C_STATUS).strip()
-        er = parse_event_date_range(cell(snap_row, COL_B_DATE), today.year)
-        past = er is not None and er[1] < today
+        snap_date = cell(snap_row, COL_B_DATE)
 
-        # Legitimate archival: archival status + past date.
-        if snap_status in ARCHIVAL_STATUSES and past:
+        # Legitimate archival per SKILL.md auto-archival rules:
+        #   Skip / Skipped → Skipped tab, regardless of date
+        #   Attended       → Attended tab, regardless of date
+        #   Attending + past date → assume Attended-tab archival
+        if _is_legitimate_archival(snap_status, snap_date, today):
             if verbose:
+                if snap_status in ("Skip", "Skipped"):
+                    reason = (
+                        f"status={snap_status!r}, skill auto-archives "
+                        f"regardless of date"
+                    )
+                elif snap_status == "Attended":
+                    reason = f"status={snap_status!r}, already-completed event"
+                else:  # Attending + past
+                    reason = (
+                        f"status={snap_status!r}, past date, assumed "
+                        f"Attended-tab archival"
+                    )
                 print(
                     f"[check_b] {event_key_label(snap_row)} archived "
-                    f"legitimately (status={snap_status!r}, date past)",
+                    f"legitimately ({reason})",
                     file=sys.stderr,
                 )
             continue
+
         # Legitimate passive archival: past date + no status.
-        if past and not snap_status:
+        # (Empty-status rows are pre-triage; if their date has slid past,
+        # the skill drops them in the next sweep.)
+        if not snap_status and _is_past_date(snap_date, today):
             if verbose:
                 print(
                     f"[check_b] {event_key_label(snap_row)} archived as "
-                    f"past-date passive",
+                    f"past-date passive (no status)",
                     file=sys.stderr,
                 )
             continue
+
         # Couldn't match by URL or name → could be a key-resolution issue,
         # not a confirmed deletion. Soft-warn unless the event clearly was
         # archived. Per task spec: "don't fail the validator on key-resolution
@@ -551,8 +614,8 @@ def check_cell_mutations(
             print(
                 f"[check_b] SOFT: {event_key_label(snap_row)} not matched in "
                 f"live (snap_status={snap_status!r}, date="
-                f"{cell(snap_row, COL_B_DATE)!r}). Either deleted without "
-                f"archival reason or key drifted.",
+                f"{snap_date!r}). Either deleted without archival reason or "
+                f"key drifted.",
                 file=sys.stderr,
             )
 

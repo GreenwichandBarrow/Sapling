@@ -504,3 +504,4 @@
 - [reference_pbcopy_through_ssh_for_remote_secrets.md](reference_pbcopy_through_ssh_for_remote_secrets.md) — default pattern for extracting server secrets into Kay's iMac clipboard without leaking through any Claude transcript
 - [project_keyreach_dealsx_relationship.md](project_keyreach_dealsx_relationship.md) — KeyReach free on Kay's own account · covered by $1.5K/mo DealsX fee · don't count separately in burn or propose cutting
 - [project_vps_primary_workflow.md](project_vps_primary_workflow.md) — 2026-05-10 evening: Kay trialing VPS as primary Claude environment · Mac Claude becomes secondary · default to executing on server
+- [feedback_verify_infra_state_dont_trust_stale_docs.md](feedback_verify_infra_state_dont_trust_stale_docs.md) — Before stating infra facts (scheduler, cost, path, tool existence), run live verification (systemctl, ls, gh api). Docs drift; live commands win.

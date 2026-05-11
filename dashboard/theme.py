@@ -31,7 +31,7 @@ PALETTE = {
 # Order validated 2026-04-24: deal-flow surfaces grouped above system-internals.
 # Tech Stack retired (merged into Infrastructure).
 NAV_ITEMS = [
-    ("Dashboard", "dashboard", True),
+    ("Greenwich & Barrow Dashboard", "dashboard", True),
     ("Deal Aggregator", "deal-aggregator", True),
     ("Active Deal Pipeline", "deal-pipeline", True),
     ("M&A Analytics", "ma-analytics", True),
@@ -69,6 +69,12 @@ GLOBAL_CSS = f"""
   footer {{ visibility: hidden; }}
   div[data-testid="stDecoration"] {{ display: none; }}
   div[data-testid="stStatusWidget"] {{ display: none; }}
+
+  /* Sidebar removed app-wide — Dashboard tiles are the navigation surface,
+     and sub-pages render a "← Greenwich & Barrow Dashboard" back-link in the
+     topbar. Keep the markup-level container hidden rather than commenting
+     out render calls so any residual sidebar markup never shows. */
+  [data-testid="stSidebar"] {{ display: none !important; }}
 
   /* Streamlit ships Source Sans Variable and forces it on every component
      it owns (sidebar, page_link, buttons, selects). Override at every layer
@@ -249,6 +255,24 @@ GLOBAL_CSS = f"""
     font-weight: inherit !important;
   }}
 
+  /* -------- BACK-HOME LINK (sub-pages only) -------- */
+  /* Renders above the topbar on every page except the Dashboard landing.
+     Replaces the removed sidebar's home-nav affordance. Whole element is
+     the click target; styled to be visually quiet but unmistakably tappable. */
+  .gb-back-home {{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none !important;
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+    transition: color 0.15s;
+  }}
+  .gb-back-home:hover {{ color: var(--accent); }}
+  .gb-back-home .arrow {{ font-size: 13px; line-height: 1; }}
+
   /* -------- TOPBAR -------- */
   .gb-topbar {{
     display: flex;
@@ -304,6 +328,11 @@ GLOBAL_CSS = f"""
     flex-direction: column;
     cursor: pointer;
     transition: all 0.18s;
+    /* Tiles render as <a> elements (whole-tile click-through). Strip
+       default link decoration/color so the visual is identical to the
+       prior <div>-based markup. */
+    text-decoration: none !important;
+    color: inherit !important;
   }}
   .gb-tile:hover {{
     background: var(--panel-hover);
@@ -1795,6 +1824,188 @@ GLOBAL_CSS = f"""
     font-weight: 300;
     color: var(--text);
     font-variant-numeric: tabular-nums;
+  }}
+
+  /* ============================================================
+     MOBILE RESPONSIVENESS — added 2026-05-10
+     Desktop layout (viewports >768px) is unchanged. Every rule below
+     lives inside @media (max-width: 768px) and only applies on phones
+     and narrow tablets. Strategy: force single/2-col stacking for all
+     multi-column grids, collapse multi-cell rows to single column,
+     reduce padding, enable horizontal scroll on artifacts that can't
+     practically stack (kanban, weekly flow), bump tap targets.
+     ============================================================ */
+  @media (max-width: 768px) {{
+
+    /* --- Sidebar: undo forced 240px width so Streamlit's built-in
+       collapse mechanism can reduce it to a hamburger on mobile. Show
+       the collapse button (hidden on desktop). --- */
+    [data-testid="stSidebar"] {{
+      width: auto !important;
+      min-width: 0 !important;
+    }}
+    [data-testid="stSidebarCollapseButton"] {{ display: flex !important; }}
+    [data-testid="stSidebarHeader"] {{
+      display: flex !important;
+      padding: 8px 8px 0 !important;
+    }}
+
+    /* --- Main content: tighter padding, larger base font for legibility --- */
+    [data-testid="stMain"] .stMainBlockContainer,
+    section.main > div.block-container,
+    [data-testid="stAppViewBlockContainer"] {{
+      padding: 16px 14px 32px !important;
+    }}
+    html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {{
+      font-size: 15px;
+    }}
+
+    /* --- Topbar: stack title above meta --- */
+    .gb-topbar {{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+    }}
+    .gb-topbar h1 {{ font-size: 18px; }}
+    .gb-topbar .meta {{ font-size: 11px; }}
+
+    /* --- Landing tile grid: 4 cols → 1 col --- */
+    .gb-grid {{
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }}
+
+    /* --- Hero tile: stop 280px+1fr split, stack vertically --- */
+    .gb-tile.hero {{
+      padding: 20px 16px;
+      min-height: 0;
+    }}
+    .gb-hero-row {{
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }}
+    .gb-hero-num {{ font-size: 42px; }}
+    .gb-stage-bar {{
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }}
+
+    /* --- Standard tiles --- */
+    .gb-tile {{ padding: 16px; min-height: 0; }}
+    .gb-tile .primary {{ font-size: 28px; }}
+
+    /* --- Active Deal Pipeline kanban: horizontal scroll, narrower cols --- */
+    .gb-kanban {{
+      grid-template-columns: repeat(4, 240px);
+    }}
+
+    /* --- C-Suite & Skills: collapse 5-col row to stacked card --- */
+    .gb-skill-row {{
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 12px 14px;
+    }}
+
+    /* --- Weekly flow strip: horizontal scroll for the 7 days --- */
+    .gb-weekly-flow-grid {{
+      overflow-x: auto;
+      grid-auto-columns: minmax(140px, 140px) !important;
+    }}
+
+    /* --- Infrastructure: service row collapses --- */
+    .gb-svc-row {{
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 12px 14px;
+    }}
+
+    /* --- Infrastructure: health grid 4 → 2 cols --- */
+    .gb-health-grid {{
+      grid-template-columns: repeat(2, 1fr);
+    }}
+
+    /* --- Infrastructure: credits grid 3 → 1 col --- */
+    .gb-credits-grid {{
+      grid-template-columns: 1fr;
+    }}
+
+    /* --- Infrastructure: stack row collapse --- */
+    .gb-stack-row {{
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }}
+
+    /* --- Calibration entry: collapse to 2 cols, push timestamp below --- */
+    .gb-calib-entry {{
+      grid-template-columns: 24px 1fr;
+      gap: 10px;
+      padding: 12px 14px;
+    }}
+    .gb-calib-when {{
+      grid-column: 2;
+      text-align: left;
+      margin-top: 4px;
+    }}
+
+    /* --- M&A Analytics: KPI strip 5 → 2 cols, smaller value font --- */
+    .gb-kpi-strip {{
+      grid-template-columns: repeat(2, 1fr);
+    }}
+    .gb-kpi-value {{ font-size: 24px; }}
+
+    /* --- M&A Analytics: trends grid 2 → 1 col --- */
+    .gb-trend-grid {{
+      grid-template-columns: 1fr;
+    }}
+
+    /* --- M&A Analytics: activity row collapses --- */
+    .gb-act-row {{
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 10px 14px;
+    }}
+    .gb-act-num {{ text-align: left; font-size: 16px; }}
+
+    /* --- Channel performance table: horizontal scroll if needed --- */
+    .gb-ch-table {{ min-width: 480px; }}
+    .gb-zone {{ overflow-x: auto; }}
+
+    /* --- Deal Aggregator (any .gb-table-wrap): override desktop's
+       overflow:hidden so wide tables become horizontally swipeable
+       on mobile instead of clipping the right columns. --- */
+    .gb-table-wrap {{
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
+    }}
+    .gb-table {{ min-width: 720px; }}
+
+    /* --- Zone heads & C-suite heads: stack label/meta --- */
+    .gb-csuite-head, .gb-zone-head {{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }}
+
+    /* --- Filter bar: full-width search, tighter spacing --- */
+    .gb-filter-bar {{
+      gap: 8px;
+      padding-bottom: 14px;
+      margin-bottom: 14px;
+    }}
+    .gb-filter-search {{
+      max-width: 100%;
+      width: 100%;
+    }}
+
+    /* --- Bigger tap targets on sidebar nav links --- */
+    [data-testid="stSidebar"] a[data-testid="stPageLink"],
+    [data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"] {{
+      padding: 11px 14px !important;
+      font-size: 14px !important;
+    }}
+
   }}
 </style>
 """

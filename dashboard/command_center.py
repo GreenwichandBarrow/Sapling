@@ -85,43 +85,17 @@ def _build_pages() -> tuple[list[st.Page], dict[str, st.Page]]:
 
 
 # -----------------------------------------------------------------------------
-# Sidebar
+# Topbar  (sidebar removed 2026-05-10 — Dashboard tiles are the nav surface;
+#          sub-pages render a "← Greenwich & Barrow Dashboard" back-link below.)
 # -----------------------------------------------------------------------------
 
 
-def _render_sidebar_brand() -> None:
-    st.sidebar.markdown(
-        """
-        <div class="gb-brand">
-          <div class="logo">G&amp;B Command Center</div>
-          <div class="sub">Greenwich &amp; Barrow</div>
-        </div>
-        """,
+def _render_back_home() -> None:
+    st.markdown(
+        '<a class="gb-back-home" href="/" target="_self">'
+        '<span class="arrow">&larr;</span> Greenwich &amp; Barrow Dashboard</a>',
         unsafe_allow_html=True,
     )
-
-
-def _render_sidebar_nav(pages_by_url: dict[str, st.Page]) -> None:
-    # Wrap nav entries in a shared padded container so page_link + disabled
-    # HTML items sit inside the same gutter as the mockup's .nav-section.
-    with st.sidebar:
-        st.markdown('<div class="gb-nav">', unsafe_allow_html=True)
-        for label, url_path, implemented in NAV_ITEMS:
-            if implemented:
-                page = pages_by_url[url_path]
-                st.page_link(page, label=label)
-            else:
-                st.markdown(
-                    f'<div class="gb-nav-item disabled">'
-                    f'<span class="dot"></span>{escape(label)}</div>',
-                    unsafe_allow_html=True,
-                )
-        st.markdown("</div>", unsafe_allow_html=True)
-
-
-# -----------------------------------------------------------------------------
-# Topbar
-# -----------------------------------------------------------------------------
 
 
 def _render_topbar(title: str) -> None:
@@ -173,11 +147,13 @@ def main() -> None:
     pages, pages_by_url = _build_pages()
 
     # `position="hidden"` keeps Streamlit's built-in nav widget out of the
-    # sidebar so our custom nav renders unobstructed.
+    # (removed) sidebar; the multipage router still works for path-based
+    # navigation triggered by tile click-throughs and the back-home link.
     nav = st.navigation(pages, position="hidden")
 
-    _render_sidebar_brand()
-    _render_sidebar_nav(pages_by_url)
+    is_dashboard = nav is pages_by_url["dashboard"]
+    if not is_dashboard:
+        _render_back_home()
     _render_topbar(nav.title)
     _render_staleness_banner()
 

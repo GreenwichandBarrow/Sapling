@@ -366,7 +366,7 @@ When Kay says good morning:
 
    **Clustering:** If 2+ items reference the same entity (person, deal, niche), collapse to ONE item with the strongest action — don't double-surface. C-suite labels (CFO/CIO/CMO/CPO/GC) per `feedback_c_suite_naming`.
 
-   **Header line above the list:** one sentence pointing to the dashboard for full context, with the URL **always rendered as a clickable link** (markdown `[http://localhost:8501](http://localhost:8501)`), e.g. *"5 decisions ordered by urgency. System status + pipeline + outreach metrics live at [http://localhost:8501](http://localhost:8501)."* Never write the URL as bare text — Kay wants one-click open from the briefing every morning. Replaces the prior multi-line System Status section — that content now lives on the Infrastructure + C-Suite & Skills + M&A Analytics + Active Deal Pipeline pages.
+   **Header line above the list:** one sentence pointing to the dashboard for full context, with the URL **always rendered as a clickable link** (markdown `[https://agent-vps-7731c88b.tail868ef9.ts.net](https://agent-vps-7731c88b.tail868ef9.ts.net)`), e.g. *"5 decisions ordered by urgency. System status + pipeline + outreach metrics live at [https://agent-vps-7731c88b.tail868ef9.ts.net](https://agent-vps-7731c88b.tail868ef9.ts.net)."* Never write the URL as bare text — Kay wants one-click open from the briefing every morning. Replaces the prior multi-line System Status section — that content now lives on the Infrastructure + C-Suite & Skills + M&A Analytics + Active Deal Pipeline pages.
 
    **Briefing hygiene (unchanged):**
    - Only surface items that need action or decision. Omit anything done/resolved/loop-closed.

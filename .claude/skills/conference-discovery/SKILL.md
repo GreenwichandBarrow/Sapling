@@ -22,16 +22,72 @@ Reference: Colin Woolway and Will Gallagher attended 1-2 conferences/week and la
 </objective>
 
 <mandatory_validator>
-## Mandatory Validator (post-2026-05-03 hardening)
+## Mandatory Validator (post-2026-05-03 + 2026-05-10 hardening)
 
 This skill mutates the Conference Pipeline Google Sheet. It must run with the hardening pattern from `feedback_mutating_skill_hardening_pattern`:
 
-- **POST_RUN_CHECK validator:** `scripts/validate_conference_discovery_integrity.py` runs after every scheduled fire. The launchd wrapper sets POST_RUN_CHECK in the plist; non-zero exit overrides Claude's exit code and routes to Slack #operations with "VALIDATOR FAILED" prefix. The validator confirms (a) Pipeline tab still has expected row count floor, (b) header row intact, (c) no all-blank stretches indicating a partial wipe.
-- **Headless prompt:** `.claude/skills/conference-discovery/headless-sunday-prompt.md` is what `scripts/run-skill.sh` pipes to Claude when the wrapper is invoked with `conference-discovery:sunday`. The prompt mandates **a pre-run snapshot** of the Pipeline tab to `/tmp/conference-pipeline-snapshot-{date}.json` BEFORE any mutating operation, plus the per-row delete pattern below.
+- **POST_RUN_CHECK validator:** `scripts/validate_conference_discovery_integrity.py` runs after every scheduled fire. The launchd wrapper sets POST_RUN_CHECK in the plist; non-zero exit overrides Claude's exit code and routes to Slack #operations with "VALIDATOR FAILED" prefix. The validator now enforces THREE invariants:
+  1. **Row-count delta** within `MAX_ARCHIVAL_DELTA` (15) — catches wipe/clear-rewrite (2026-05-03 pattern).
+  2. **Header-position invariant** — for every dated week-of header in the snapshot, the live header must appear ABOVE the first event whose start date falls within its week. Catches header displacement (2026-05-10 pattern where headers got pushed to the bottom while events stayed in place).
+  3. **Cell-mutation invariant** — for every event row in the snapshot (matched by URL+name composite, then URL pool, then name fallback), the live counterpart must show only allowed cell changes. Hard mutations (any one fails the run): status (col C) overwritten with a different non-empty value not on the allow-list, event name (D) changed, date (B) changed, niche (G) changed. Soft mutations (allow up to 5): URL change, other cell wiggle. Catches "agent stomped Kay's selection" (2026-05-10 `Art Business Conference NYC` pattern).
+- **Headless prompt:** `.claude/skills/conference-discovery/headless-sunday-prompt.md` is what `scripts/run-skill.sh` pipes to Claude when the wrapper is invoked with `conference-discovery:sunday`. The prompt mandates **a pre-run snapshot** of the Pipeline tab to `brain/context/rollback-snapshots/conference-pipeline-pre-run-{date}.json` BEFORE any mutating operation, plus the per-row delete pattern + forbidden-patterns + append-zone discipline below.
 - **Memory rule:** `feedback_no_clear_rewrite_populated_sheets.md` — never `gog sheets clear` + rewrite on a populated tab. Per-row deletes only; snapshot first. Belt-and-suspenders: `Bash(gog sheets clear:*)` is on the project-local deny list as of 2026-05-04.
 
-**Incident reference:** 2026-05-03, the archival subagent cleared the Pipeline tab (~70 rows) as step 1 of a clear+rewrite pattern, then hit a stream-idle timeout before the rewrite. Required Kay to do a manual Version History restore from the May 2 11:54am snapshot. The validator + headless prompt + deny rule + memory rule together prevent recurrence at four layers.
+**Incident references:**
+- **2026-05-03:** archival subagent cleared the Pipeline tab (~70 rows) as step 1 of a clear+rewrite pattern, then hit a stream-idle timeout before the rewrite. Required Kay to do a manual Version History restore.
+- **2026-05-10:** Sunday-night run silently moved every week-of header to the bottom of the sheet AND overwrote three of Kay's manual status dropdown selections (most visibly `Art Business Conference NYC`: `Need to Book` → `Evaluating`). Row count delta was within tolerance (~11 legitimate archives), so the existing row-count-only validator passed and exited 0. Header positions and cell mutations are now invariants.
+
+The validator + headless prompt + deny rule + memory rule together prevent recurrence at four layers.
 </mandatory_validator>
+
+<forbidden_patterns>
+## Forbidden Patterns (HARD — violations break the Sunday run)
+
+These are absolute rules. The validator catches them post-hoc; the headless prompt forbids them at run time; this section is the canonical statement.
+
+1. **Never move week-of header rows.** Headers (col A single-cell rows like `5/11`, `TBD`) may only be INSERTED (new week) or DELETED (auto-prune of past, empty headers). Headers must never be relocated within the sheet. If you find yourself wanting to "re-sort" the sheet by moving headers around, STOP — the sheet is already in chronological order; sort events WITHIN their week section, not headers across sections.
+
+2. **Never overwrite an existing non-empty status (col C) with a different non-empty value.** Status dropdown values represent Kay's manual selections (or prior agent decisions she ratified). They are only legal to set on an empty cell, or to advance along the natural progression:
+   - `""` → `Evaluating` / `Need to Book` / `Need to Register`
+   - `Evaluating` → `Attending` / `Need to Book` / `Need to Register` / `Skip`
+   - `Need to Register` → `Registered` → `Attending` → `Attended`
+   - `Need to Book` → `Registered` / `Attending` → `Attended`
+   - `Skip` → `Skipped`
+   - `Future / Map-Only` → `Evaluating` / `Need to Book` / `Need to Register`
+
+   Any transition NOT on this list is a status stomp. **Specifically forbidden:** overwriting `Need to Book`, `Attending`, `Registered`, or any other Kay-set value back to `""`, `Evaluating`, or `Skip` without explicit user instruction. The validator's `MAX_HARD_CELL_MUTATIONS = 0` means even one stomp fails the run.
+
+3. **Never write to a cell outside the append zone** without explicit user instruction.
+
+   **Append zone (where new events go):** For each week-of section, the append zone is the row immediately ABOVE the next week's header (or the end of the data range, for the `TBD` section). New events are inserted into the append zone of their target week. Existing rows in other positions stay put — you do not get to "consolidate" or "re-order" them.
+
+   **Exceptions** (still inside the append zone discipline):
+   - Auto-archival moves an entire row off the Pipeline tab to Attended/Skipped. The source row is deleted whole; surrounding rows shift up.
+   - Cell-level updates to an existing event (e.g., filling in a previously-empty reg deadline) are OK if the snapshot's value was empty.
+
+   If you find yourself wanting to "fix" an event's position within the sheet, ask first. The validator does not enforce position invariance for events (only for headers), but cross-week event moves are a smell.
+
+4. **Never use a clear-then-rewrite pattern on a populated tab.** Delete by row index. Snapshot first. (See `feedback_no_clear_rewrite_populated_sheets.md` and the deny list.)
+</forbidden_patterns>
+
+<auto_prune>
+## Auto-Prune Past-Empty Headers
+
+After the weekly auto-archival pass completes (Step 1 of the Sunday-night run, after archiving Skip/Attended/past-passive events to their destination tabs), run an auto-prune pass on the week-of headers:
+
+1. **Enumerate live headers** — iterate the Pipeline tab, identify each row where col A is populated and cols B-O are empty (the `is_header_row` definition).
+2. **Count anchored events per header** — for each header, count the event rows between this header and the next header (or the end of the data range).
+3. **Parse the header's label to a date.** Labels are `m/d` format (e.g., `4/27`, `5/4`). The TBD label is special — see exception below. If the date parse fails for any reason, SKIP that header (logged) — never delete an unparseable header on guesswork.
+4. **Prune condition:** delete the header row only if BOTH:
+   - Event count anchored under it == 0
+   - Parsed date is in the past (the entire Mon-Sun week is before `date.today()`)
+5. **Never prune TBD.** The TBD section is the stable catch-all for events with no confirmed date. Even if it's empty, leave it.
+6. **Never prune future weeks.** Empty future-week headers are placeholders Kay may populate manually; leaving them is safe.
+7. **Use row-level delete** (not range clear) to preserve adjacent formatting + data validation rules.
+8. **Log each pruned header** to the skill output for visibility — the Slack notification at end-of-run should mention "{n} past-empty headers pruned: {labels}".
+
+Auto-prune is conservative by design — it only collects headers that are demonstrably stale (past + empty). It does NOT consolidate, re-order, or relocate. It just removes dead rows.
+</auto_prune>
 
 <essential_principles>
 ## How It Works

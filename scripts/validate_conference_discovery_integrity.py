@@ -154,13 +154,27 @@ def is_header_row(row: list[str]) -> bool:
     return all((not c) or (not c.strip()) for c in row[1:])
 
 
-def event_key(row: list[str]) -> str | None:
-    """Stable identity for an event row. Prefer URL (col M), fall back to name (col D)."""
+def event_url_key(row: list[str]) -> str | None:
+    """Normalized URL for indexing (col M). None if missing."""
     if len(row) > COL_M_URL and row[COL_M_URL] and row[COL_M_URL].strip():
-        return ("url", row[COL_M_URL].strip().rstrip("/").lower())
-    if len(row) > COL_D_NAME and row[COL_D_NAME] and row[COL_D_NAME].strip():
-        return ("name", row[COL_D_NAME].strip().lower())
+        return row[COL_M_URL].strip().rstrip("/").lower()
     return None
+
+
+def event_name_key(row: list[str]) -> str | None:
+    """Normalized name for indexing (col D). None if missing."""
+    if len(row) > COL_D_NAME and row[COL_D_NAME] and row[COL_D_NAME].strip():
+        return row[COL_D_NAME].strip().lower()
+    return None
+
+
+def event_key_label(row: list[str]) -> str:
+    """Human-readable key for log/failure output."""
+    name = event_name_key(row)
+    url = event_url_key(row)
+    if name and url:
+        return f"{name[:50]} <{url[:60]}>"
+    return name or url or "<unkeyable>"
 
 
 def cell(row: list[str], idx: int) -> str:
@@ -235,9 +249,25 @@ def parse_event_date_range(s: str, anchor_year: int) -> tuple[date, date] | None
 
 
 def event_overlaps_week(event_range: tuple[date, date], week: tuple[date, date]) -> bool:
+    """True if the event's date range intersects the week (Mon..Sun)."""
     es, ee = event_range
     ws, we = week
     return not (ee < ws or es > we)
+
+
+def event_starts_in_week(
+    event_range: tuple[date, date], week: tuple[date, date]
+) -> bool:
+    """True if the event's START date falls within the week.
+
+    Anchoring by start date (not overlap) matches how Kay places events on
+    the sheet: a 5/16-5/19 event lives under the 5/11 header (start = Sat
+    5/16, which is in the 5/11-5/17 week), not the 5/18 header — even though
+    it spills into the 5/18 week.
+    """
+    es, _ = event_range
+    ws, we = week
+    return ws <= es <= we
 
 
 # ---------------------------------------------------------------------------
@@ -291,14 +321,16 @@ def check_header_positions(
 
         live_idx = live_header_index.get(label_stripped)
 
-        # Find first live event whose date overlaps this week.
+        # Find first live event whose START date falls in this week. We anchor
+        # by start date (not range overlap) because Kay places multi-day events
+        # under the header for the week they START in, even if they spill.
         first_event_idx = None
         first_event_summary = None
         for i, r in enumerate(live_rows):
             if is_header_row(r):
                 continue
             er = parse_event_date_range(cell(r, COL_B_DATE), anchor_year)
-            if er and event_overlaps_week(er, week):
+            if er and event_starts_in_week(er, week):
                 first_event_idx = i
                 first_event_summary = (
                     cell(r, COL_B_DATE),
@@ -395,6 +427,82 @@ def classify_generic_mutation(
     return "soft"
 
 
+def _match_snapshot_to_live(
+    snapshot_rows: list[list[str]], live_rows: list[list[str]]
+) -> tuple[dict, list[int]]:
+    """Build snap_idx → (live_idx, live_row) mapping using two-pass matching.
+
+    Pass 1: composite (url, name) match. Unique key, robust to duplicate
+    URLs (e.g., ACG chapter directory pages reused across events).
+
+    Pass 2: URL-only match using a per-URL pool. Snapshot rows that share
+    a URL with multiple live rows get matched in document order (Nth
+    snapshot row → Nth live row). Handles the case where a name was edited
+    but URL stayed stable.
+
+    Pass 3: Name-only match. Catches the case where URL was added or
+    changed but name remained recognizable.
+
+    Returns (match_map, unmatched_snap_indices).
+    """
+    snap_events = [
+        (i, r) for i, r in enumerate(snapshot_rows) if not is_header_row(r)
+    ]
+    live_events = [
+        (i, r) for i, r in enumerate(live_rows) if not is_header_row(r)
+    ]
+
+    consumed_live: set[int] = set()
+    match_map: dict[int, tuple[int, list[str]]] = {}
+
+    # Pass 1: composite (url, name)
+    for snap_i, snap_row in snap_events:
+        sk = (event_url_key(snap_row), event_name_key(snap_row))
+        if sk == (None, None):
+            continue
+        for live_i, live_row in live_events:
+            if live_i in consumed_live:
+                continue
+            lk = (event_url_key(live_row), event_name_key(live_row))
+            if sk == lk:
+                match_map[snap_i] = (live_i, live_row)
+                consumed_live.add(live_i)
+                break
+
+    # Pass 2: URL-only, document-order pool draw
+    for snap_i, snap_row in snap_events:
+        if snap_i in match_map:
+            continue
+        su = event_url_key(snap_row)
+        if su is None:
+            continue
+        for live_i, live_row in live_events:
+            if live_i in consumed_live:
+                continue
+            if event_url_key(live_row) == su:
+                match_map[snap_i] = (live_i, live_row)
+                consumed_live.add(live_i)
+                break
+
+    # Pass 3: Name-only
+    for snap_i, snap_row in snap_events:
+        if snap_i in match_map:
+            continue
+        sn = event_name_key(snap_row)
+        if sn is None:
+            continue
+        for live_i, live_row in live_events:
+            if live_i in consumed_live:
+                continue
+            if event_name_key(live_row) == sn:
+                match_map[snap_i] = (live_i, live_row)
+                consumed_live.add(live_i)
+                break
+
+    unmatched = [snap_i for snap_i, _ in snap_events if snap_i not in match_map]
+    return match_map, unmatched
+
+
 def check_cell_mutations(
     snapshot_rows: list[list[str]],
     live_rows: list[list[str]],
@@ -403,104 +511,84 @@ def check_cell_mutations(
     """For every event row in the snapshot, verify its live counterpart has
     no forbidden cell changes."""
     failures: list[str] = []
-    hard_count = 0
     soft_count = 0
 
-    # Build live index keyed by URL, then by name as fallback.
-    live_by_key: dict = {}
-    for i, r in enumerate(live_rows):
-        if is_header_row(r):
-            continue
-        k = event_key(r)
-        if k is not None and k not in live_by_key:
-            live_by_key[k] = (i, r)
+    match_map, unmatched = _match_snapshot_to_live(snapshot_rows, live_rows)
 
     today = date.today()
 
-    for snap_i, snap_row in enumerate(snapshot_rows):
-        if is_header_row(snap_row):
-            continue
-        k = event_key(snap_row)
-        if k is None:
+    # Handle unmatched (missing) events first — must justify each absence.
+    for snap_i in unmatched:
+        snap_row = snapshot_rows[snap_i]
+        snap_status = cell(snap_row, COL_C_STATUS).strip()
+        er = parse_event_date_range(cell(snap_row, COL_B_DATE), today.year)
+        past = er is not None and er[1] < today
+
+        # Legitimate archival: archival status + past date.
+        if snap_status in ARCHIVAL_STATUSES and past:
             if verbose:
                 print(
-                    f"[check_b] snapshot row {snap_i} has no URL or name — "
-                    f"cannot match, skipping",
+                    f"[check_b] {event_key_label(snap_row)} archived "
+                    f"legitimately (status={snap_status!r}, date past)",
                     file=sys.stderr,
                 )
             continue
-
-        if k not in live_by_key:
-            # Missing event. Legitimate ONLY if snapshot status is archival
-            # AND date is past.
-            snap_status = cell(snap_row, COL_C_STATUS).strip()
-            er = parse_event_date_range(
-                cell(snap_row, COL_B_DATE), today.year
-            )
-            past = er is not None and er[1] < today
-            if snap_status in ARCHIVAL_STATUSES and past:
-                if verbose:
-                    print(
-                        f"[check_b] event {k} archived legitimately "
-                        f"(status={snap_status!r}, date past)",
-                        file=sys.stderr,
-                    )
-                continue
-            # If status is empty/TBD AND date is past, also legitimate
-            # auto-archival per SKILL.md ("Date is past AND no Decision/Status
-            # indicating attendance → Skipped tab").
-            if past and not snap_status:
-                if verbose:
-                    print(
-                        f"[check_b] event {k} archived as past-date passive",
-                        file=sys.stderr,
-                    )
-                continue
-            failures.append(
-                f"event {k} present in snapshot ({cell(snap_row, COL_D_NAME)[:60]!r}, "
-                f"status={snap_status!r}, date={cell(snap_row, COL_B_DATE)!r}) "
-                f"missing from live sheet without a legitimate archival reason"
-            )
+        # Legitimate passive archival: past date + no status.
+        if past and not snap_status:
+            if verbose:
+                print(
+                    f"[check_b] {event_key_label(snap_row)} archived as "
+                    f"past-date passive",
+                    file=sys.stderr,
+                )
             continue
+        # Couldn't match by URL or name → could be a key-resolution issue,
+        # not a confirmed deletion. Soft-warn unless the event clearly was
+        # archived. Per task spec: "don't fail the validator on key-resolution
+        # issues, only on confirmed mutations."
+        soft_count += 1
+        if verbose:
+            print(
+                f"[check_b] SOFT: {event_key_label(snap_row)} not matched in "
+                f"live (snap_status={snap_status!r}, date="
+                f"{cell(snap_row, COL_B_DATE)!r}). Either deleted without "
+                f"archival reason or key drifted.",
+                file=sys.stderr,
+            )
 
-        live_i, live_row = live_by_key[k]
-
-        # Walk all 15 columns, classify each mutation.
+    # Walk every matched pair.
+    for snap_i, (live_i, live_row) in match_map.items():
+        snap_row = snapshot_rows[snap_i]
         col_count = max(len(snap_row), len(live_row))
         for c_idx in range(col_count):
+            if c_idx == COL_A_WEEK_HEADER:
+                # Event rows always have empty col A; skip.
+                continue
             snap_val = cell(snap_row, c_idx)
             live_val = cell(live_row, c_idx)
             if c_idx == COL_C_STATUS:
                 cls = classify_status_mutation(snap_val, live_val)
-            elif c_idx == COL_A_WEEK_HEADER:
-                # Col A on an event row is always empty; ignore.
-                continue
             else:
                 cls = classify_generic_mutation(c_idx, snap_val, live_val)
 
-            if cls == "noop" or cls == "allowed":
+            if cls in ("noop", "allowed"):
                 continue
             if cls == "hard":
-                hard_count += 1
                 failures.append(
-                    f"HARD mutation on event {k} col {c_idx} "
-                    f"({_col_letter(c_idx)}): snapshot={snap_val!r} → "
-                    f"live={live_val!r}. This is the 2026-05-10 stomp pattern. "
-                    f"Event: {cell(snap_row, COL_D_NAME)[:60]!r}"
+                    f"HARD mutation on event {event_key_label(snap_row)!r} "
+                    f"col {_col_letter(c_idx)}: snapshot={snap_val!r} → "
+                    f"live={live_val!r}. This is the 2026-05-10 stomp pattern."
                 )
             else:  # soft
                 soft_count += 1
                 if verbose:
                     print(
-                        f"[check_b] SOFT mutation on event {k} col "
+                        f"[check_b] SOFT mutation on event "
+                        f"{event_key_label(snap_row)!r} col "
                         f"{_col_letter(c_idx)}: snapshot={snap_val!r} → "
                         f"live={live_val!r}",
                         file=sys.stderr,
                     )
-
-    if hard_count > MAX_HARD_CELL_MUTATIONS:
-        # Failures already appended above; nothing more to add here.
-        pass
 
     if soft_count > MAX_SOFT_CELL_MUTATIONS:
         failures.append(

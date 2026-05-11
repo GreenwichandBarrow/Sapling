@@ -47,6 +47,41 @@ must be defensible by output, not by clarifying question.
    defense-in-depth, but in-loop validation lets you SEE the failure
    and react instead of silently exiting 0.
 
+6. **NEVER move week-of header rows.** (2026-05-10 regression guard.)
+   Headers are the single-cell rows in col A that label each week (`4/27`,
+   `5/4`, ..., `TBD`). They may only be INSERTED (new week) or DELETED
+   (auto-prune of past + empty headers, Step 6 below). They may NEVER be
+   relocated within the sheet. If your "re-sort" logic would move a header,
+   STOP — the sort target is the events WITHIN each week section, not
+   the headers across sections. The validator's `check_header_positions`
+   will detect any displacement (header appearing below an event whose
+   start date falls in its week) and fail the run.
+
+7. **NEVER overwrite an existing non-empty status (col C) with a different
+   non-empty value.** (2026-05-10 regression guard.) Status values are
+   Kay's manual selections from the dropdown. Legal transitions:
+   - `""` → any value (auto-fill of empty cell)
+   - `Evaluating` → `Attending` / `Need to Book` / `Need to Register` / `Skip`
+   - `Need to Register` → `Registered` → `Attending` → `Attended`
+   - `Need to Book` → `Registered` / `Attending` → `Attended`
+   - `Skip` → `Skipped`
+   - `Future / Map-Only` → `Evaluating` / `Need to Book` / `Need to Register`
+
+   Any other transition is a stomp. **Specifically forbidden:** writing
+   `Evaluating` or `""` over `Need to Book`, `Attending`, `Registered`, or
+   any other Kay-set status. The validator's `MAX_HARD_CELL_MUTATIONS = 0`
+   means even one stomp fails the run. If you genuinely think a status is
+   wrong, leave a soft-warn in stderr and let Kay correct it manually.
+
+8. **Append-zone discipline.** New events go in the row immediately ABOVE
+   the next week's header (or the end of the data range for TBD). Do NOT
+   write to cells in existing rows except to FILL previously-empty cells
+   or to ADVANCE status along the allow-list in rule 7. Do NOT re-order,
+   consolidate, or relocate existing events across week sections without
+   explicit user instruction. The validator does not enforce per-event
+   row positions (only headers), but cross-week event moves are a smell
+   and will surface in soft-warn output.
+
 ## Your job
 
 Execute the conference-discovery skill's weekly Sunday-night cycle. Use
@@ -126,35 +161,81 @@ For each new conference that passes the criteria filter, append a single
 row to the Pipeline tab. Use `gog sheets append`, not clear-then-write.
 One conference = one row, multi-day = single row with date range in col A.
 
-### Step 4: Re-sort Pipeline tab chronologically
+### Step 4: Re-sort EVENTS WITHIN each week section chronologically
 
-Per SKILL.md: earliest at top, farthest at bottom. Sort in place — read
-all rows, sort in memory, write back via row-by-row update (NOT clear+
-rewrite). If you must use a batch update, ensure the destination range
-matches the source range exactly so no row gets dropped.
+Per SKILL.md: earliest at top, farthest at bottom — but the sort target
+is the EVENTS WITHIN each week-of section, not the headers across
+sections. Headers stay where they are (see rule 6 above). Process:
 
-### Step 5: Run the integrity validator yourself
+1. Walk the live Pipeline rows top-to-bottom.
+2. For each week-of section (header row → next header row), collect the
+   event rows inside it.
+3. Sort those event rows by col B (start date), ascending. TBD entries
+   sort to the bottom of their section (treat as `+infinity`).
+4. Write the re-sorted block back in place using row-by-row updates.
+   Do NOT clear+rewrite. Do NOT cross section boundaries.
+
+If you would move an event from one week's section to another (e.g.,
+because its date now falls in a different week), STOP — that's a
+position change, not a sort. Surface it in stderr for Kay to handle
+manually.
+
+### Step 5: Auto-prune past-empty week headers
+
+After Step 1's auto-archival pass, some week-of headers may have zero
+remaining anchored events. If those headers are past-dated, prune them.
+
+For each live header (col A single-cell row):
+1. Count event rows between this header and the next header (or end of
+   data range).
+2. Parse the header's label (`m/d` format like `4/27`) to a date in the
+   current run year. The Mon-Sun week is `(Mon, Sun)` where Mon is the
+   Monday of the week containing the parsed date.
+3. **Prune ONLY if** event count == 0 AND `Sun < today`. Use row-level
+   delete; never range-clear.
+4. **Never prune** the `TBD` header — it's the stable catch-all.
+5. **Never prune** a future week — empty future weeks are valid
+   placeholders Kay may populate.
+6. **Skip pruning** if the label fails to parse (log to stderr).
+7. Log each pruned header to the Slack notification at end-of-run:
+   `"{n} past-empty headers pruned: {labels}"`.
+
+### Step 6: Run the integrity validator yourself
 
 ```bash
 python3 "$PROJECT_ROOT/scripts/validate_conference_discovery_integrity.py" --date "$TODAY"
 ```
 
 If it returns non-zero, do NOT exit 0. Read the failure output, attempt
-one corrective pass (e.g., re-sync if a row got dropped), then re-run
-the validator. If it still fails, exit with the validator's exit code
-so the wrapper's Slack alert fires before Kay's Monday morning.
+one corrective pass (e.g., re-sync if a row got dropped, restore a
+stomped status from the snapshot, restore a displaced header), then
+re-run the validator. If it still fails, exit with the validator's exit
+code so the wrapper's Slack alert fires before Kay's Monday morning.
 
-### Step 6: Slack notification (only if everything passed)
+Common failure modes and recovery:
+- `header 'X/Y' is BELOW its first matching event` → header was
+  displaced. Use the snapshot to find the correct header position; use
+  row-insert + row-delete to relocate WITHOUT clear+rewrite.
+- `HARD mutation on event ... col C` → status was stomped. Restore the
+  snapshot's col C value via `gog sheets update` on that single cell.
+- `HARD mutation on event ... col B` / `col D` / `col G` → date/name/niche
+  was corrupted. Restore from snapshot.
+
+### Step 7: Slack notification (only if everything passed)
 
 Per SKILL.md "Slack Notification (end of Phase 1)" — send the AI-Operations
 channel summary using `SLACK_WEBHOOK_OPERATIONS`.
 
 ## Exit criteria summary
 
-- Snapshot written + new conferences appended + sort valid + validator passes
-  → exit 0
+- Snapshot written + archival + new conferences appended + per-section sort
+  valid + past-empty headers pruned + validator passes → exit 0
 - Snapshot write failure → exit 1
 - Archival cap exceeded → exit 2 (Slack alert: "VALIDATOR FAILED" prefix)
+- Header displacement detected (Check A failure) → exit with validator's
+  code (Slack alert fires)
+- Cell stomp detected (Check B failure) → exit with validator's code
+  (Slack alert fires)
 - Validator non-zero after one corrective pass → exit with validator's code
   (Slack alert fires)
 

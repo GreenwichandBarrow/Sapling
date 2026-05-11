@@ -60,3 +60,7 @@ brain/context/preferences.md
 
 # Backup files from credential rotations — contain stale/revoked keys, never commit
 scripts/.env*.bak*
+
+# Task tracker xlsx (source of truth is Google Drive; outputs/ is a working copy)
+outputs/TO DO *.xlsx
+outputs/TO DO *.bak.*.xlsx

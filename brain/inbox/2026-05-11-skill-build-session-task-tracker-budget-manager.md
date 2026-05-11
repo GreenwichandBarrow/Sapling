@@ -1,11 +1,11 @@
 ---
 schema_version: 1.2.0
 date: 2026-05-11
-title: Skill-build session — task-tracker-manager (5 gaps) + budget-manager (1 gap)
-status: backlog
+title: Skill-build session — task-tracker-manager (5 gaps, DONE) + budget-manager (1 gap, deferred to Friday)
+status: partial-complete
 source: manual
 urgency: medium
-due_date: 2026-05-25
+due_date: 2026-05-15
 automated: false
 tags:
   - date/2026-05-11
@@ -19,28 +19,31 @@ tags:
 
 Surfaced during 2026-05-11 Monday session while applying triage decisions to the personal task tracker. Multiple verb gaps required workarounds; one budget-manager projection bug surfaced via the Q1 health-anomaly correction.
 
-## task-tracker-manager — 5 gaps
+**2026-05-11 update:** All 5 task-tracker gaps shipped in the same Monday session (Kay reopened the file later that day). The budget-manager gap (#6) was deferred to Friday per Kay's redirect: the budget script already ran today (Tue slot 2 marked ✅), and the Friday work is the *human assessment* of cuts, not a re-run with annotation. The skill-code fix lives on as a Friday task entry.
 
-1. **`archive` verb HIDES tabs — must move-to-far-right instead.** Kay corrected explicitly 2026-05-11: "I dont want any hidden archive. I pulled it back out and put it all the way to the right." Update `scripts/task_tracker.py` archive verb to use openpyxl tab-reorder, not state=hidden.
+## task-tracker-manager — 5 gaps ✅ DONE
 
-2. **`archive` verb breaks on Monday-of-current-week edge case.** When run on a Monday, computes next-Monday=current+7 instead of current. 2026-05-11 apply-all subagent had to manually rename "May 18-24" → "May 11-17" after archive verb fired wrong. Add edge-case handler: if today is Monday, new live-tab name uses today, not today+7.
+1. ✅ **`archive` verb HIDES tabs — must move-to-far-right instead.** Fixed in `scripts/task_tracker.py:cmd_archive`: `dst.sheet_state = "visible"` + `wb.move_sheet(..., offset=len(wb.sheetnames) - 1 - current_idx)` parks the archive tab at the far right.
 
-3. **New `archive-todo` verb + "Completed To Do" tab schema.** Sweep ✅ rows from To Do tab → new "Completed To Do" tab (mirror of To Do structure, with `completed_date` column). Running list of completions. Trigger: Sunday /goodmorning weekly ceremony, also on-demand.
+2. ✅ **`archive` verb breaks on Monday-of-current-week edge case.** Fixed: when `today.weekday() == 0`, `new_monday = today` (not `today + timedelta(days=7)`).
 
-4. **New `schedule-to-day-slot` verb (direct, not 2-step).** Currently requires append-then-promote. Add a single verb that takes (item, day, type) and lands it directly in the priority slot for that day.
+3. ✅ **New `archive-todo` verb + "Completed To Do" tab schema.** Implemented. Creates the tab idempotently on first run; sweeps ✅ rows from To Do → Completed To Do with a `Completed` date column in H. Wired into `goodnight` AUTO-EXECUTE per updated SKILL.md.
 
-5. **New `projects-add` verb.** Currently must use openpyxl directly (apply-all subagent did this for "Deal Aggregator Expansion" project row). Add a verb: takes (name, type, status, target-date) and appends row to Projects tab.
+4. ✅ **New `schedule-to-day-slot` verb (direct, not 2-step).** Implemented with optional `--slot` (auto-picks first empty when omitted) + `--force` to overwrite occupied slots.
 
-## budget-manager — 1 gap
+5. ✅ **New `projects-create-gantt` verb.** Implemented. Clones the Myself Renewed Healthcare structure (title/subtitle/header row 5 with N weekly Monday-anchored columns), updates Projects index with HYPERLINK formula, supports both append-new-row and update-existing-row paths. Entity-color conditional formatting drives the Gantt bar.
 
-6. **Distinguish recurring vs one-time line items when projecting runway.** Today the script projected Q1 actuals into a 7.5mo runway / Nov 2026 cash-zero / $7,393/mo savings target. Reality: $8,250 Q1 health was one-time, true runway is 9.46mo. Naive run-rate projection amplified the Q1 anomaly into a burn-cliff. Fix: add `--annotate-one-time` flag or a one-time line-items registry, strip those from forward projection.
+## budget-manager — 1 gap (DEFERRED TO FRIDAY)
+
+6. **Distinguish recurring vs one-time line items when projecting runway.** Deferred to Friday 2026-05-15. Friday's slot already has the human-assessment work scheduled ("Assess budget reduction areas — post-Q1 expense review; explore summer desk takeover"); the skill-code fix is a separate Friday task that can pair with Kay's review session. **Re-evaluate Friday whether to:** (a) bundle the fix into Friday's assessment session, (b) defer further if Friday-review already produces actionable cuts without script rerun, or (c) split into a quick `--annotate-one-time` patch + leave the broader recurring-vs-one-time registry to a later sprint.
 
 ## Acceptance
 
-- All 5 task-tracker verbs ship + tested against the live xlsx (with VPS download/upload cycle)
-- archive-todo verb tested on the new Completed To Do tab pattern
-- budget-manager rerun on March P&L with one-time correction → produces 9.46mo runway natively (no manual reframe)
-- All changes commit + push to main
+- ✅ All 5 task-tracker verbs shipped + tested against the live xlsx (VPS download/upload cycle worked clean)
+- ✅ archive-todo verb tested on the new Completed To Do tab pattern (no ✅ rows present yet — tab created idempotently)
+- ✅ `projects-create-gantt` tested by creating "Deal Aggregator Expansion" Gantt tab live
+- ⏭️ budget-manager `--annotate-one-time` deferred to Friday 2026-05-15
+- ✅ All task-tracker changes committed + pushed to main
 
 ## Related memory
 

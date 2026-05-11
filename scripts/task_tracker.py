@@ -287,6 +287,360 @@ def cmd_archive(args) -> int:
     return 0
 
 
+# ---------------------------------------------------------------- archive-todo
+
+COMPLETED_TODO_TAB = "Completed To Do"
+
+
+def _ensure_completed_todo_tab(wb):
+    """Create the 'Completed To Do' tab if missing. Returns the worksheet."""
+    if COMPLETED_TODO_TAB in wb.sheetnames:
+        return wb[COMPLETED_TODO_TAB]
+
+    ws = wb.create_sheet(title=COMPLETED_TODO_TAB)
+
+    # Column widths — mirror To Do (B narrow status, C wide task, D-H standard)
+    widths = {"A": 2, "B": 4, "C": 60, "D": 10, "E": 18, "F": 12, "G": 32, "H": 14}
+    for col, w in widths.items():
+        ws.column_dimensions[col].width = w
+
+    title_font = Font(name="Avenir Next", size=18, bold=True, color=SAGE_DARK)
+    sub_font = Font(name="Avenir Next", size=10, italic=True, color=MUTED)
+    header_font = Font(name="Avenir Next", size=10, bold=True, color=INK)
+    header_fill = PatternFill("solid", fgColor=SAGE_LIGHT)
+    center = Alignment(horizontal="center", vertical="center")
+    left = Alignment(horizontal="left", vertical="center")
+
+    ws["B2"] = "COMPLETED TO DO  ·  running list of done items"
+    ws["B2"].font = title_font
+    ws["B2"].alignment = left
+    ws.merge_cells("B2:H2")
+
+    ws["B3"] = "Auto-populated when ✅ rows sweep out of the To Do tab. Most recent at top."
+    ws["B3"].font = sub_font
+    ws["B3"].alignment = left
+    ws.merge_cells("B3:H3")
+
+    headers = [("B5", ""), ("C5", "Task"), ("D5", "Type"), ("E5", "Project"),
+               ("F5", "Due"), ("G5", "Notes"), ("H5", "Completed")]
+    for ref, val in headers:
+        ws[ref] = val
+        ws[ref].font = header_font
+        ws[ref].fill = header_fill
+        ws[ref].alignment = center if ref in ("B5", "H5") else left
+
+    ws.row_dimensions[2].height = 28
+    ws.row_dimensions[3].height = 18
+    ws.row_dimensions[5].height = 20
+
+    # Conditional formatting: dim completed rows (they all are, but consistent with To Do)
+    ws.conditional_formatting = ConditionalFormattingList()
+    ws.conditional_formatting.add("B6:H200", FormulaRule(
+        formula=['=$B6="✅"'],
+        font=Font(name="Avenir Next", size=10, color=MUTED, strike=True),
+        fill=DONE_FILL,
+    ))
+    ws.conditional_formatting.add("D6:D200", FormulaRule(
+        formula=['=$D6="Home"'], fill=PatternFill("solid", fgColor="F4E8D8")))
+    ws.conditional_formatting.add("D6:D200", FormulaRule(
+        formula=['=$D6="Work"'], fill=PatternFill("solid", fgColor=SAGE_LIGHT)))
+
+    return ws
+
+
+def cmd_archive_todo(args) -> int:
+    """Sweep ✅ rows from To Do tab → Completed To Do tab (created on first run).
+    Most-recent at top: new completions land at row 6, existing rows shift down."""
+    assert_writable(LIVE)
+    bk = backup(LIVE)
+    wb = load_workbook(LIVE)
+
+    if "To Do" not in wb.sheetnames:
+        sys.exit("task-tracker-manager: 'To Do' tab missing")
+    src = wb["To Do"]
+
+    dst = _ensure_completed_todo_tab(wb)
+    completed_today = date.today().isoformat()
+
+    # Collect ✅ rows from To Do
+    swept = []
+    for r in range(6, src.max_row + 1):
+        if src[f"B{r}"].value == "✅" and src[f"C{r}"].value:
+            swept.append({
+                "row": r,
+                "task": src[f"C{r}"].value,
+                "type": src[f"D{r}"].value or "",
+                "project": src[f"E{r}"].value or "",
+                "due": src[f"F{r}"].value or "",
+                "notes": src[f"G{r}"].value or "",
+            })
+
+    if not swept:
+        # Still save: the _ensure_completed_todo_tab call above may have just created the tab.
+        wb.save(LIVE)
+        msg = "tab created" if dst.max_row <= 5 else "tab present"
+        print(f"task-tracker-manager: archive-todo — no ✅ rows in To Do to sweep ({msg})")
+        return 0
+
+    # Find first empty row in Completed To Do (data starts at row 6)
+    insert_at = 6
+    for r in range(6, dst.max_row + 2):
+        if not dst[f"C{r}"].value:
+            insert_at = r
+            break
+
+    # Append swept rows
+    for i, item in enumerate(swept):
+        r = insert_at + i
+        dst[f"B{r}"] = "✅"
+        dst[f"C{r}"] = item["task"]
+        dst[f"D{r}"] = item["type"]
+        dst[f"E{r}"] = item["project"]
+        dst[f"F{r}"] = str(item["due"])[:10] if item["due"] else ""
+        dst[f"G{r}"] = item["notes"]
+        dst[f"H{r}"] = completed_today
+
+    # Clear swept rows from To Do (status, task, type, project, due, notes)
+    for item in swept:
+        r = item["row"]
+        for col in ("B", "C", "D", "E", "F", "G"):
+            src[f"{col}{r}"] = ""
+
+    wb.save(LIVE)
+    slug = f"sweep-{len(swept)}"
+    trace("archive-todo", slug, [
+        f"- swept: {len(swept)} ✅ rows from To Do",
+        f"- destination: '{COMPLETED_TODO_TAB}' rows {insert_at}..{insert_at + len(swept) - 1}",
+        f"- completed_date: {completed_today}",
+        f"- backup: {bk}",
+        f"- rollback: cp {bk!r} {LIVE!r}",
+    ])
+    print(f"task-tracker-manager: archive-todo swept {len(swept)} ✅ row(s) → '{COMPLETED_TODO_TAB}' rows {insert_at}..{insert_at + len(swept) - 1}")
+    return 0
+
+
+# ---------------------------------------------------------- schedule-to-day-slot
+
+def cmd_schedule_to_day_slot(args) -> int:
+    """Write a task directly into a day-slot on the live week tab (no To Do source)."""
+    day_idx = DAY_BY_NAME.get(args.day.lower())
+    if day_idx is None:
+        sys.exit(f"task-tracker-manager: unknown day {args.day!r}. Use Mon..Sun.")
+
+    assert_writable(LIVE)
+    bk = backup(LIVE)
+    wb = load_workbook(LIVE)
+
+    week = find_week_tab(wb)
+    if week is None:
+        sys.exit("task-tracker-manager: live week tab not found")
+
+    sc, tc = DAY_PAIRS[day_idx]
+
+    # Resolve slot — explicit, or auto-pick first empty
+    if args.slot is not None:
+        if not (1 <= args.slot <= 15):
+            sys.exit("task-tracker-manager: --slot must be 1..15")
+        slot = args.slot
+    else:
+        slot = None
+        for s in range(1, 16):
+            if not week[f"{tc}{22 + s}"].value:
+                slot = s
+                break
+        if slot is None:
+            sys.exit(f"task-tracker-manager: refused schedule-to-day-slot — {args.day} has no empty slots")
+
+    priority_row = 22 + slot
+    existing = week[f"{tc}{priority_row}"].value
+    if existing and not args.force:
+        sys.exit(
+            f'task-tracker-manager: refused schedule-to-day-slot — {args.day} slot {slot} '
+            f'already contains "{existing}" (use --force to overwrite)'
+        )
+
+    week[f"{tc}{priority_row}"] = args.task
+    week[f"{sc}{priority_row}"] = "☐"
+
+    wb.save(LIVE)
+    trace("schedule-to-day-slot", f"{args.day.lower()}-{slot}", [
+        f"- task: {args.task}",
+        f"- placement: {week.title} {sc}/{tc} row {priority_row} ({args.day} slot {slot})",
+        f"- overwrote: {existing!r}" if existing else "- overwrote: (slot was empty)",
+        f"- backup: {bk}",
+        f"- rollback: cp {bk!r} {LIVE!r}",
+    ])
+    print(f'task-tracker-manager: scheduled "{args.task}" → {week.title} {args.day} slot {slot}')
+    return 0
+
+
+# ---------------------------------------------------------- projects-create-gantt
+
+ENTITY_COLORS = {
+    "Home": "F4E8D8",
+    "G&B": "E8F0E2",
+    "Myself Renewed": "F5E1E1",
+    "Kai Grey": "E1ECF5",
+    "Panthera Grey": "ECE1F5",
+}
+
+
+def _weekly_labels(start_iso: str, n_weeks: int) -> list[str]:
+    """Return n_weeks weekly Monday labels in M/D format starting from the Monday of start_iso."""
+    y, m, d = (int(x) for x in start_iso.split("-"))
+    start = date(y, m, d)
+    monday = start - timedelta(days=start.weekday())
+    out = []
+    for i in range(n_weeks):
+        wk = monday + timedelta(days=7 * i)
+        out.append(f"{wk.month}/{wk.day}")
+    return out
+
+
+def cmd_projects_create_gantt(args) -> int:
+    """Create a new Gantt project tab (clones Myself Renewed Healthcare structure).
+    Adds/updates a row in the Projects index with a HYPERLINK to the new tab."""
+    if len(args.project) > 31 or any(ch in args.project for ch in ":\\/?*[]"):
+        sys.exit(f"task-tracker-manager: invalid tab name {args.project!r} (Excel rules: ≤31 chars, no :\\/?*[])")
+
+    assert_writable(LIVE)
+    bk = backup(LIVE)
+    wb = load_workbook(LIVE)
+
+    if args.project in wb.sheetnames:
+        sys.exit(f"task-tracker-manager: tab {args.project!r} already exists — pick a different name or delete the existing tab first")
+
+    if "Projects" not in wb.sheetnames:
+        sys.exit("task-tracker-manager: 'Projects' index tab missing — cannot wire up new Gantt tab")
+
+    n_weeks = args.weeks
+    if n_weeks < 4 or n_weeks > 30:
+        sys.exit("task-tracker-manager: --weeks must be 4..30")
+
+    week_labels = _weekly_labels(args.start, n_weeks)
+    entity_color = ENTITY_COLORS.get(args.entity, "E8F0E2")  # default to G&B sage
+
+    # ----- 1) Create the Gantt tab
+    gantt = wb.create_sheet(title=args.project)
+
+    title_font = Font(name="Avenir Next", size=18, bold=True, color=SAGE_DARK)
+    sub_font = Font(name="Avenir Next", size=10, italic=True, color=MUTED)
+    header_font = Font(name="Avenir Next", size=10, bold=True, color=INK)
+    header_fill = PatternFill("solid", fgColor=SAGE_LIGHT)
+    center = Alignment(horizontal="center", vertical="center")
+    left = Alignment(horizontal="left", vertical="center")
+
+    last_col_idx = 6 + n_weeks  # F=6, then n_weeks of week columns
+    last_col_letter = get_column_letter(last_col_idx)
+
+    gantt["B2"] = args.project.upper()
+    gantt["B2"].font = title_font
+    gantt["B2"].alignment = left
+    gantt.merge_cells(f"B2:{last_col_letter}2")
+
+    gantt["B3"] = (
+        f"Entity: {args.entity}  ·  Tick the week boxes you're actively working on "
+        f"each milestone — the row builds into a Gantt bar"
+    )
+    gantt["B3"].font = sub_font
+    gantt["B3"].alignment = left
+    gantt.merge_cells(f"B3:{last_col_letter}3")
+
+    # Header row 5: C=Milestone, D=Start, E=Target, F=Notes, G..=week labels
+    headers = [("C5", "Milestone"), ("D5", "Start"), ("E5", "Target"), ("F5", "Notes")]
+    for ref, val in headers:
+        gantt[ref] = val
+        gantt[ref].font = header_font
+        gantt[ref].fill = header_fill
+        gantt[ref].alignment = left
+    for i, label in enumerate(week_labels):
+        col = get_column_letter(7 + i)
+        gantt[f"{col}5"] = label
+        gantt[f"{col}5"].font = header_font
+        gantt[f"{col}5"].fill = header_fill
+        gantt[f"{col}5"].alignment = center
+
+    # Blank milestone scaffold: 10 empty rows (6..15), status checkbox in B, week boxes ☐
+    for r in range(6, 16):
+        gantt[f"B{r}"] = "☐"
+        gantt[f"B{r}"].alignment = center
+        for i in range(n_weeks):
+            col = get_column_letter(7 + i)
+            gantt[f"{col}{r}"] = "☐"
+            gantt[f"{col}{r}"].alignment = center
+
+    # Column widths
+    gantt.column_dimensions["A"].width = 2
+    gantt.column_dimensions["B"].width = 4
+    gantt.column_dimensions["C"].width = 50
+    gantt.column_dimensions["D"].width = 12
+    gantt.column_dimensions["E"].width = 12
+    gantt.column_dimensions["F"].width = 30
+    for i in range(n_weeks):
+        gantt.column_dimensions[get_column_letter(7 + i)].width = 6
+    gantt.row_dimensions[2].height = 28
+    gantt.row_dimensions[3].height = 18
+    gantt.row_dimensions[5].height = 20
+
+    # Conditional formatting — week box ✅ → entity-color fill (the Gantt bar)
+    gantt.conditional_formatting = ConditionalFormattingList()
+    gantt.conditional_formatting.add(f"G6:{last_col_letter}15", FormulaRule(
+        formula=['=G6="✅"'],
+        fill=PatternFill("solid", fgColor=entity_color),
+    ))
+    gantt.conditional_formatting.add(f"B6:F15", FormulaRule(
+        formula=['=$B6="✅"'],
+        font=Font(name="Avenir Next", size=10, color=MUTED, strike=True),
+        fill=DONE_FILL,
+    ))
+
+    # ----- 2) Update Projects index
+    pj = wb["Projects"]
+    existing_row = None
+    for r in range(6, pj.max_row + 2):
+        if pj[f"B{r}"].value == args.project:
+            existing_row = r
+            break
+
+    hyperlink_formula = f'=HYPERLINK("#\'{args.project}\'!A1","Open")'
+
+    if existing_row is None:
+        # Append a new row
+        target_row = 6
+        for r in range(6, pj.max_row + 2):
+            if not pj[f"B{r}"].value:
+                target_row = r
+                break
+        pj[f"B{target_row}"] = args.project
+        pj[f"C{target_row}"] = args.entity
+        pj[f"D{target_row}"] = args.status
+        pj[f"E{target_row}"] = args.start
+        pj[f"F{target_row}"] = args.target
+        pj[f"G{target_row}"] = hyperlink_formula
+        if args.notes:
+            pj[f"H{target_row}"] = args.notes
+        project_row_msg = f"appended at row {target_row}"
+    else:
+        # Update the existing row's Tab hyperlink (and status if requested)
+        pj[f"G{existing_row}"] = hyperlink_formula
+        if args.status:
+            pj[f"D{existing_row}"] = args.status
+        project_row_msg = f"updated row {existing_row} (existing entry)"
+
+    wb.save(LIVE)
+    slug = args.project.lower().replace(" ", "-")
+    trace("projects-create-gantt", slug, [
+        f"- project: {args.project}",
+        f"- entity: {args.entity} (color #{entity_color})",
+        f"- gantt tab: created with {n_weeks} weekly columns from {args.start}",
+        f"- projects index: {project_row_msg}",
+        f"- backup: {bk}",
+        f"- rollback: cp {bk!r} {LIVE!r}",
+    ])
+    print(f'task-tracker-manager: created Gantt tab "{args.project}" ({n_weeks} weeks from {args.start}); Projects index {project_row_msg}')
+    return 0
+
+
 def cmd_reformat(args) -> int:
     """Re-apply conditional formatting + fix donut layout. Idempotent."""
     assert_writable(LIVE)
@@ -498,6 +852,31 @@ def main():
 
     ar = sub.add_parser("archive")
     ar.set_defaults(func=cmd_archive)
+
+    at = sub.add_parser("archive-todo")
+    at.set_defaults(func=cmd_archive_todo)
+
+    sds = sub.add_parser("schedule-to-day-slot")
+    sds.add_argument("--task", required=True)
+    sds.add_argument("--day", required=True)
+    sds.add_argument("--slot", type=int, default=None,
+                     help="1..15; if omitted, auto-pick first empty slot for the day")
+    sds.add_argument("--force", action="store_true",
+                     help="overwrite the slot even if occupied")
+    sds.set_defaults(func=cmd_schedule_to_day_slot)
+
+    pcg = sub.add_parser("projects-create-gantt")
+    pcg.add_argument("--project", required=True, help="Tab name (≤31 chars, no :\\/?*[])")
+    pcg.add_argument("--entity", required=True,
+                     help="Home | G&B | Myself Renewed | Kai Grey | Panthera Grey")
+    pcg.add_argument("--status", default="Active",
+                     help="Status column on Projects index (default: Active)")
+    pcg.add_argument("--start", required=True, help="ISO date YYYY-MM-DD")
+    pcg.add_argument("--target", required=True, help="ISO date YYYY-MM-DD")
+    pcg.add_argument("--weeks", type=int, default=16,
+                     help="number of weekly columns (4..30; default 16)")
+    pcg.add_argument("--notes", default="")
+    pcg.set_defaults(func=cmd_projects_create_gantt)
 
     rf = sub.add_parser("reformat")
     rf.set_defaults(func=cmd_reformat)

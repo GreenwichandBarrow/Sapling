@@ -12,8 +12,11 @@ Architecture lives in `memory/project_personal_task_tracker.md`. Update that mem
 ## When to invoke
 
 - Kay says "add to To Do" / "put X on the list" / "save this for later" → **append**
-- Kay says "move X to {day} slot {N}" / "schedule X for Wed" / "X goes on Friday" → **promote**
+- Kay says "move {todo-row} to {day} slot {N}" (To Do → week tab) → **promote**
+- Kay says "schedule X for Wed" / "X goes on Friday" / direct day-slot drop with no To Do source row → **schedule-to-day-slot**
 - Sunday evening as part of `goodnight` → **archive** (rollover ceremony)
+- Sunday evening as part of `goodnight` → **archive-todo** (sweep ✅ rows out of To Do tab into the Completed To Do running list; safe to run any day)
+- Kay says "start a project for X" / "create a Gantt for {project}" → **projects-create-gantt**
 - Kay reports a chart broke / strikethrough not firing / formatting drifted → **reformat**
 - Friday morning weekly review → **report** (carry-forward from prior week + slot capacity)
 - `goodmorning` capture pass → batch **append** for items surfaced in email-intelligence + open loops from yesterday's session-decisions
@@ -72,11 +75,53 @@ python3 scripts/task_tracker.py promote \
 Run from `goodnight` on Sunday evening.
 
 1. Reads the live week tab name (e.g., `Apr 27-May 3`).
-2. Creates a hidden archive sheet `archive_{week-label}` with a deep-copy of all current cell values, styles, and merged ranges. (openpyxl can't `Move/Copy` like Excel UI — we serialize cell-by-cell.)
-3. Hides the archive sheet.
-4. Renames the live tab to next week's label (`May 4-10`).
+2. Clones the live tab to an archive sheet `archive_{week-label}` (deep-copy of all values, styles, and merged ranges).
+3. **Leaves the archive sheet VISIBLE and parks it at the far right** of the tab strip so the live tab + reference tabs stay easy to find. (Hidden archives were rejected by Kay 2026-05-11 — she wants to scroll right to see past weeks.)
+4. Renames the live tab to the upcoming week's label. **Monday edge case handled**: if `archive` runs on a Monday, the new live tab uses today (the current Monday), not today+7 (next Monday) — fix landed 2026-05-11 after the apply-all subagent had to manually rename a misfired tab.
 5. Clears: habit checkmarks (rows 7-13 → ☐), priority status cells (rows 23-37 col `sc` → ☐), priority task text (cols `tc` → empty), notes block (rows 40-47).
 6. Posts a one-liner to Slack `#operations` confirming the rollover with the new week label.
+
+### 3b. archive-todo (sweep ✅ rows out of To Do)
+
+```bash
+python3 scripts/task_tracker.py archive-todo
+```
+
+Idempotent. Creates the **Completed To Do** tab on first run (mirror of To Do schema + a `Completed` date column in H), then sweeps every ✅ row out of the To Do tab and appends it at the first empty row in Completed To Do, stamping today's date. Cleared rows on the To Do side keep their numbered position (status/task/type/project/due/notes all wiped). Safe to run on any day, but the canonical trigger is **Sunday evening as part of `goodnight`**, alongside the `archive` ceremony.
+
+### 4. schedule-to-day-slot (direct write, no To Do source)
+
+```bash
+python3 scripts/task_tracker.py schedule-to-day-slot \
+  --task "Assess budget reduction areas (post-Q1 expense review)" \
+  --day Fri \
+  --slot 5
+```
+
+- `--day` accepts Mon..Sun
+- `--slot` is 1..15 — **optional**; if omitted, the verb auto-picks the first empty slot for that day. (This is the single-step alternative to `append` → `promote`.)
+- Refuses to overwrite an occupied slot unless `--force` is passed.
+- Status cell auto-fills with ☐.
+
+### 5. projects-create-gantt
+
+```bash
+python3 scripts/task_tracker.py projects-create-gantt \
+  --project "Deal Aggregator Expansion" \
+  --entity "G&B" \
+  --status "Plan Needed" \
+  --start "2026-05-11" \
+  --target "2026-06-15" \
+  --weeks 12 \
+  --notes "Re-plan dedicated session Tue 5/12"
+```
+
+- Creates a new Gantt project tab cloning the **Myself Renewed Healthcare** structure: title (B2), subtitle (B3), header row 5 with Status/Milestone/Start/Target/Notes + N weekly Monday-anchored columns starting from the Monday of `--start`.
+- 10 blank milestone rows (6..15) scaffolded with ☐ checkboxes ready for fill-in.
+- Conditional formatting: week-cell ✅ → entity-color fill (builds the Gantt bar); milestone-row ✅ → muted/strikethrough.
+- Entity colors: Home / G&B / Myself Renewed / Kai Grey / Panthera Grey (defaults to G&B sage if unknown).
+- Updates the Projects index: appends a new row if the project isn't there, or updates the existing row's `Tab` HYPERLINK if it already exists (preserves notes from the prior row).
+- Excel rules enforced: tab name ≤31 chars, no `:\/?*[]`.
 
 ### 4. reformat
 
@@ -121,11 +166,14 @@ Sets the cell to `✅` so the conditional-format fills it with the entity color,
 - `gantt-tick` on a milestone Kay just told me she completed
 - `reformat` when broken formatting is detected during another verb's execution
 - `archive` on Sunday evening as part of `goodnight`
+- `archive-todo` on Sunday evening as part of `goodnight`
 - `append` when Kay explicitly says "add to To Do" with the task content already specified
 
 **SURFACE FOR APPROVAL** (RECOMMEND + YES/NO/DISCUSS, write only on YES):
 - Bulk `append` (>=3 items at once from email-intelligence scan or open loops)
 - `promote` — always confirm the day + slot before writing, since this affects Kay's day plan
+- `schedule-to-day-slot` — always confirm the day + (auto-picked or explicit) slot before writing; same reason as `promote`
+- `projects-create-gantt` — always confirm project name + entity + start/target before writing; this creates a new visible tab that's hard to undo without leaving stub rows in Projects
 - Any operation when the tracker file size has changed unexpectedly (>5KB delta from last known good state — possible corruption or external edit)
 - Renaming the live tab to a non-current-week label
 

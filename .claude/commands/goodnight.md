@@ -10,8 +10,8 @@ Close the day. Bookend `/start`. Every night Kay invokes `/goodnight`, the syste
 2. Extracts decision traces to `brain/traces/{date}-{slug}.md` for any APPROVE/REJECT with non-obvious reasoning (human override, judgment call, surprising choice).
 3. Updates memory (`/Users/kaycschneider/.claude/projects/-Users-kaycschneider-Documents-AI-Operations/memory/`) with new feedback/project/reference/user entries whenever the day produced a durable insight.
 4. Scans for stop-hook or skill update candidates (patterns repeated 3+ times this session → propose formalization).
-5. Commits the vault changes to git with a concise message.
-6. Returns a 4-6 line summary to Kay (decisions, traces written, memory delta, commit SHA).
+5. Commits the vault changes to git AND pushes to origin.
+6. Returns a 4-6 line summary to Kay (decisions, traces written, memory delta, commit SHA, push status).
 
 ## Execute Now
 
@@ -65,11 +65,14 @@ Scan the session for patterns repeated ≥3 times that suggest formalization:
 
 Surface proposals in the evening summary under "Calibration candidates." Do NOT create skills/hooks autonomously — Kay must approve.
 
-### Step 6 — Git commit
+### Step 6 — Git commit AND push
+
+Path is environment-dependent — use whichever is the active repo root:
+- Mac: `/Users/kaycschneider/Documents/AI Operations`
+- VPS: `/home/ubuntu/projects/Sapling`
 
 ```bash
-cd "/Users/kaycschneider/Documents/AI Operations"
-git add brain/context/session-decisions-*.md brain/traces/ .claude/skills/ .claude/commands/ .claude/hooks/ 2>/dev/null
+git add brain/context/session-decisions-*.md brain/traces/ brain/trackers/ memory/ .claude/skills/ .claude/commands/ .claude/hooks/ scratch/ dashboard/data/ 2>/dev/null
 git status --short
 ```
 
@@ -81,7 +84,9 @@ evening {YYYY-MM-DD}: {top-line summary} (N traces, M memory updates)
 {one-line per major decision or artifact created}
 ```
 
-Do NOT push to remote automatically — Kay approves pushes separately via `/push` or by explicit request. Exception: if the `/goodnight` invocation included `--push` argument, push after commit.
+**Then push to origin/main.** Default behavior — do NOT skip the push step. The whole point of the bookend is that the day's artifacts are durable across machines (VPS ↔ Mac) and visible to the next pickup, which only works if the commit lands on the remote.
+
+Exception: skip the push ONLY if (a) the commit failed, (b) the working tree is dirty and you can't get a clean commit, or (c) Kay explicitly said "commit but don't push." In any skip case, surface the reason in the summary's commit line.
 
 ### Step 7 — Summary to Kay
 
@@ -105,8 +110,9 @@ No extra commentary. No "have a good night" unless Kay says it first.
 - **Do NOT write trace files for routine briefing acknowledgments or standard pipeline moves.** The litmus is "future agent would choose differently without this." A trace for "Kay approved today's pipeline summary" is noise.
 - **If Kay explicitly says "don't save X" or "that's not a trace-worthy decision," honor it.** But default to writing the trace — calibration-workflow filters noise later; it can't recover missing data.
 - **If Superhuman MCP is down (token expired), suppress all draft-status claims in the summary** per `feedback_superhuman_down_suppress_drafts`.
-- **If the day has no decisions worth tracing, no memory updates, and no calibration candidates,** still write the session-decisions file (even if short) and still commit. The discipline of the bookend is the point, not the volume.
-- **Never push to remote without explicit approval** except when `--push` flag passed.
+- **If the day has no decisions worth tracing, no memory updates, and no calibration candidates,** still write the session-decisions file (even if short) and still commit-and-push. The discipline of the bookend is the point, not the volume.
+- **Push is default, not opt-in.** The Mac ↔ VPS sync depends on every evening commit reaching origin; an unpushed commit defeats the next morning's pickup. If the push fails for a non-trivial reason (rejected, conflict, no network), surface in the summary and let Kay decide whether to force-push, pull-rebase, or defer.
+- **Skill / hook updates within /goodnight scope.** Step 5's calibration scan is not just *propose* — if a pattern that needs a stop hook or skill edit has been surfaced and confirmed by Kay within the session, apply it before commit. Skill updates and new feedback memories ride in the same evening commit as decisions/traces.
 
 ## Variables
 

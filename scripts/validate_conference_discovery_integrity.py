@@ -47,7 +47,18 @@ from datetime import date, datetime
 SHEET_ID = "1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY"
 TAB = "Pipeline"
 DATA_RANGE = "A2:O500"  # Row 1 is header, data starts row 2
-SNAPSHOT_DIR = "/Users/kaycschneider/Documents/AI Operations/brain/context/rollback-snapshots"
+# Script-relative so this works on both Mac (Documents/AI Operations) and the
+# Linux VPS (~/projects/Sapling) without code changes. Walks up one dir from
+# scripts/ to the project root, then into brain/context/rollback-snapshots.
+SNAPSHOT_DIR = os.path.normpath(
+    os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "..",
+        "brain",
+        "context",
+        "rollback-snapshots",
+    )
+)
 
 # Auto-archival per SKILL.md routes Skip → Skipped tab, Attended → Attended tab,
 # past-date passive → Skipped tab. A typical run archives 0–8 rows. We allow up

@@ -58,10 +58,17 @@ implementation guide. Today's date for artifact naming: run
 
 ### Step 0: Write pre-run snapshot (BEFORE any mutation)
 
+Snapshot dir is project-relative — resolves to `~/projects/Sapling/brain/context/rollback-snapshots`
+on the VPS (or `Documents/AI Operations/brain/...` on the legacy Mac box, both work).
+
 ```bash
-mkdir -p "/Users/kaycschneider/Documents/AI Operations/brain/context/rollback-snapshots"
+# Resolve the project root from the wrapper's WORKDIR if set, else fall back
+# to walking up from this skill's location. Both Mac and Linux VPS resolve.
+PROJECT_ROOT="${WORKDIR:-$(cd "$(dirname "$0")/../../.." 2>/dev/null && pwd)}"
+PROJECT_ROOT="${PROJECT_ROOT:-$HOME/projects/Sapling}"  # belt-and-suspenders
+mkdir -p "$PROJECT_ROOT/brain/context/rollback-snapshots"
 TODAY=$(date +%Y-%m-%d)
-SNAP="/Users/kaycschneider/Documents/AI Operations/brain/context/rollback-snapshots/conference-pipeline-pre-run-${TODAY}.json"
+SNAP="$PROJECT_ROOT/brain/context/rollback-snapshots/conference-pipeline-pre-run-${TODAY}.json"
 
 # Pull current Pipeline state (full data range)
 gog sheets get 1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY "Pipeline!A2:O500" --json \
@@ -129,7 +136,7 @@ matches the source range exactly so no row gets dropped.
 ### Step 5: Run the integrity validator yourself
 
 ```bash
-python3 "/Users/kaycschneider/Documents/AI Operations/scripts/validate_conference_discovery_integrity.py"
+python3 "$PROJECT_ROOT/scripts/validate_conference_discovery_integrity.py" --date "$TODAY"
 ```
 
 If it returns non-zero, do NOT exit 0. Read the failure output, attempt

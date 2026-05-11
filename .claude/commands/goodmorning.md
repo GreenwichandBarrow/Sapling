@@ -46,6 +46,7 @@ JJ-operations runs independently via launchd (8am) and posts to Slack at 10am. D
 
 ### Step 6 — Day-of-week overlays
 
+- **Sunday:** + `task-tracker-manager report` (full health: overdue, carryover from prior week's incomplete priority slots, empty slot count for new week, stale Long Term items, stale Gantt-project ticks). Surface as a **Weekly Planning Review** section in the briefing — Kay walks through each carryover item: keep / promote to a day this week / move to Long Term / drop. Approved promotions fire `task-tracker-manager promote` inline. This is the canonical Sunday-morning weekly-planning ceremony (no separate systemd timer — `/goodmorning` itself is the trigger).
 - **Monday:** + conference-discovery status check
 - **Wednesday:** + niche-intelligence sprint status
 - **Friday:** + weekly-tracker + health-monitor + calibration-workflow (parallel, results needed by 10am ET)

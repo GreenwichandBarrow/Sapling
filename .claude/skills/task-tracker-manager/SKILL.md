@@ -158,9 +158,10 @@ When Kay says "add 'draft Calder follow-up' to To Do":
 
 | Trigger | Verb | Where |
 |---|---|---|
-| `goodmorning` | `report` (overdue + today's empty slots) + batch `append` if open loops | Capture pass at end of morning workflow |
+| `goodmorning` (weekday) | `report` (overdue + today's empty slots) + batch `append` if open loops | Capture pass at end of morning workflow |
+| `goodmorning` **Sunday** | `report` (full week-planning health: carryover, empty slots, stale items, stale Gantt) → walk-through with Kay → `promote`/`append` for each decision | **Canonical Sunday weekly-planning ceremony.** Drives the new-week tab setup. See `goodmorning.md` Step 6 Sunday overlay. |
 | Mid-day conversation | `append` / `promote` / `gantt-tick` | On Kay's request |
-| `goodnight` Sunday | `archive` | Step before git commit |
+| `goodnight` Sunday | `archive` | Step before git commit. Rolls the live tab into next-week's name + clears slots. Pairs with Sunday-morning `report` to bracket the week. |
 | Friday briefing | `report` (full health, including carryover) | Part of weekly-tracker context |
 
 ## Failure modes to watch

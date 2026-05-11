@@ -306,6 +306,40 @@ gog sheets update {SHEET_ID} "Active!A{start}:Z{end}" \
 Write in batches of 50 rows. Pause 0.3s between batches.
 </calls_first_mode>
 
+<prospect_cache>
+## Prospect Cache (Lookup Before Re-Enriching)
+
+Every target-discovery, outreach-manager, and JJ prep run today re-calls Apollo for companies we've already enriched. That burns credits we don't need to burn. The prospect cache makes Apollo the second stop, not the first. (Pattern from [[calls/2026-05-06-clay-gtm]].)
+
+**Lookup order on every enrichment call:** check the cache → on miss or stale, call Apollo → write the response back to cache. Cache failure (missing key, corrupted file, lock contention) is NEVER a hard failure. Fall through to a live Apollo call, log the miss, continue.
+
+**What it caches:**
+- **Organization records**, keyed by canonical company identifier (best: domain stripped of protocol and www; fallback: normalized name + state). Values: company name, website, LinkedIn URL, employee count, HQ, revenue, business phone, year founded, ownership signal.
+- **People-match records**, keyed by `(company_id, role_query)` tuple (e.g., `acme-corp.com + "owner"`). Values: name, title, LinkedIn URL, Apollo-verified email.
+
+**What it does NOT cache:** email verification at send time. Apollo's email-verified state can decay independently of the org record (people leave, addresses bounce). The live verification step stays on the send-time path even when the cache hit is fresh. The cache stores the last-known email; outreach-manager still re-verifies before any send.
+
+**TTL policy:**
+- Org records: 90 days (companies change domains rarely)
+- People records: 90 days, with shorter stale-after for high-churn roles if signal warrants
+- Past TTL → re-enrich and overwrite. Don't decay-in-place.
+
+**Storage:** JSON-on-disk at `brain/context/apollo-cache/`, one file per cache type (`orgs.json`, `people.json`). Single-writer (list-builder owns it). Local file is sufficient for v1; no Supabase, no Postgres dependency. Bake in a migration path to SQLite-on-disk if entries cross ~10,000, because JSON read-overhead bites at scale.
+
+**Invalidation triggers (in addition to TTL):**
+- Outreach-manager reports a bounced email for a company → invalidate that company's people record
+- Kay manually edits the primary contact on a company in Attio → invalidate the cached people record
+
+**Dashboard surface:** add a sibling snapshot `brain/context/apollo-cache-stats-snapshot.json`, refreshed hourly Mon-Fri matching the existing Apollo timer. Reports: total cached orgs, total cached people, % cache hits in last 7 days, % entries stale-by-TTL. So we can see whether the cache is actually saving credits.
+
+**What this does NOT do:**
+- Doesn't pre-fetch or warm the cache. Fills naturally on real lookups.
+- Doesn't share state across niches in a special way. A cached `Acme Pest Control` entry is reused regardless of which niche queried it (companies are domain-unique).
+- Doesn't replace send-time email verification.
+
+**Implementation status:** documented pattern only. The actual cache layer is a downstream build on Kay's tracker.
+</prospect_cache>
+
 <credit_management>
 ## Credit Management Rules
 

@@ -125,6 +125,8 @@ Spawn a Claude-Code browser-scraping sub-agent against a specific directory URL 
 
 For EVERY discovered company, run these enrichment phases in order. This applies to ALL sources — Apollo, web research, associations, referrals. No exceptions.
 
+**Apollo lookups in Phases A and D route through list-builder's prospect cache first** (see `list-builder/SKILL.md` `<prospect_cache>`). Cache hit avoids the Apollo call. Cache miss or stale entry falls through to live Apollo and writes the response back. Send-time email verification still runs live regardless of cache state.
+
 #### Phase A: Company Data (free)
 ```
 Apollo /organizations/search → {

@@ -1,0 +1,36 @@
+{
+  "date": "2026-05-11",
+  "scan_started_at": "2026-05-11T05:00:59-04:00",
+  "scan_finished_at": "2026-05-11T05:01:49-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 0,
+  "suppressed_count": 1,
+  "runtime_seconds": 50,
+  "triggered_by": "daily",
+  "results": [
+    {
+      "job": "target-discovery",
+      "cause": "VALIDATOR_REJECT",
+      "action": "SURFACE",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_posted": false,
+      "suppression_reason": "cross-day-dedup:7d",
+      "triggered_by": "daily",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/target-discovery-2026-05-10-1500.log",
+      "last_log_mtime": "2026-05-10T15:13:37-04:00",
+      "exit_code": 0,
+      "validator_failed_per_scanner": true,
+      "preflight_failed_per_scanner": false,
+      "error_signature": "VALIDATOR FAILED — overriding skill exit code",
+      "diagnosis": "validate_phase2_integrity.py reported 204 issues for Premium Pest Management: 5 Mon-Fri Call Log tabs (5.11-5.15.26) returned Google API 400 'Unable to parse range', cascading into 199 'pool company not on any Call Log tab' findings. Likely cause: Phase 2 ran 3pm but jj-operations-sunday (6pm) hadn't created the Call Log tabs yet — known sequencing gap per CLAUDE.md (Phase 2 moved from 10pm to 3pm 2026-04-26 specifically to give jj-operations-sunday a populated pool to read at 6pm, but the validator runs at 3pm before the 6pm tabs exist).",
+      "pattern_observed": "Repeat of 2026-05-04 target-discovery VALIDATOR_REJECT (identical (job, cause, signature) tuple, slack_posted=true on that date). Sunday-3pm-vs-6pm sequencing gap is the structural pattern — same shape week-over-week.",
+      "known_incident_match": false,
+      "cross_day_dedup_match": true,
+      "cross_day_dedup_source": "brain/trackers/health/launchd-debugger-2026-05-04.json",
+      "slack_text": "launchd-debugger: target-discovery FAILED — VALIDATOR_REJECT. validate_phase2_integrity.py reported 204 issues for Premium Pest Management: 5 Mon-Fri Call Log tabs (5.11-5.15.26) returned Google API 400 'Unable to parse range', cascading into 199 'pool company not on any Call Log tab' findings. Likely cause: Phase 2 ran 3pm but jj-operations-sunday (6pm) hadn't created the Call Log tabs yet — known sequencing gap per CLAUDE.md. Recommended: confirm Sunday 6pm jj-operations-sunday created the tabs and re-check Monday AM; if tabs exist but issues persist, Kay reviews sheet drift. Log: /home/ubuntu/projects/Sapling/logs/scheduled/target-discovery-2026-05-10-1500.log"
+    }
+  ]
+}

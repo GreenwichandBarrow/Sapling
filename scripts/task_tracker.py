@@ -1,13 +1,18 @@
 """task-tracker-manager skill helper — verbs for Kay's personal task tracker.
 
 Subcommands:
-    append       Add a row to the To Do tab.
-    promote      Move a To Do row into a specific day-slot on the live week tab.
-    archive      Sunday rollover ceremony — copy live week to hidden archive,
-                 rename live tab to next week, clear data on live tab.
-    reformat     Re-apply conditional formatting + fix donuts.
-    report       Markdown health summary (overdue, empty slots, carryover).
-    gantt-tick   Fill a week-cell on a Gantt project tab.
+    append                  Add a row to the To Do tab.
+    promote                 Move a To Do row into a specific day-slot on the live week tab.
+    schedule-to-day-slot    Direct write to a day-slot (no To Do source row required).
+    archive                 Sunday rollover ceremony — move live week to a far-right
+                            archive tab, rename live to next week, clear data on live.
+    archive-todo            Sweep ✅ rows from To Do tab into a running
+                            "Completed To Do" tab (created on first run).
+    projects-create-gantt   Create a new Gantt project tab cloning the
+                            Myself Renewed Healthcare structure; updates Projects index.
+    reformat                Re-apply conditional formatting + fix donuts.
+    report                  Markdown health summary (overdue, empty slots, carryover).
+    gantt-tick              Fill a week-cell on a Gantt project tab.
 
 Always backs up the live file before writing. Refuses to write while Excel
 has the file open (would clobber Excel's autosave or vice versa).
@@ -224,7 +229,8 @@ def cmd_promote(args) -> int:
 
 
 def cmd_archive(args) -> int:
-    """Sunday rollover: copy live week tab to hidden archive, rename live to next week, clear data."""
+    """Sunday rollover: clone live week tab to a visible archive tab parked far-right,
+    rename live to the upcoming week, clear data on live."""
     assert_writable(LIVE)
     bk = backup(LIVE)
     wb = load_workbook(LIVE)
@@ -243,10 +249,19 @@ def cmd_archive(args) -> int:
     src = week
     dst = wb.copy_worksheet(src)
     dst.title = archive_name
-    dst.sheet_state = "hidden"
+    dst.sheet_state = "visible"
+    # Park the archive tab at the far right so the live tab + reference tabs stay easy to find.
+    current_idx = wb.sheetnames.index(dst.title)
+    wb.move_sheet(dst.title, offset=len(wb.sheetnames) - 1 - current_idx)
 
-    next_monday = date.today() + timedelta(days=(7 - date.today().weekday()))
-    new_label = current_week_label(next_monday)
+    today = date.today()
+    # Monday edge case: when run on Monday, the new live tab is THIS week, not next.
+    # Sunday weekday=6 → +1 = next Monday. Mon weekday=0 → +0 = today. Tue..Sat → next Mon.
+    if today.weekday() == 0:
+        new_monday = today
+    else:
+        new_monday = today + timedelta(days=(7 - today.weekday()))
+    new_label = current_week_label(new_monday)
     src.title = new_label
 
     for r in range(7, 14):
@@ -262,13 +277,13 @@ def cmd_archive(args) -> int:
 
     wb.save(LIVE)
     trace("archive", old_label.lower().replace(" ", "-"), [
-        f"- archived: {old_label} → hidden tab {archive_name}",
+        f"- archived: {old_label} → visible tab {archive_name} (parked far-right)",
         f"- live tab renamed: {old_label} → {new_label}",
         f"- cleared: habits (rows 7-13), priorities (rows 23-37), notes (rows 40-47)",
         f"- backup: {bk}",
         f"- rollback: cp {bk!r} {LIVE!r}",
     ])
-    print(f'task-tracker-manager: archived "{old_label}" (hidden as {archive_name}); live tab now "{new_label}"')
+    print(f'task-tracker-manager: archived "{old_label}" → visible far-right tab {archive_name}; live tab now "{new_label}"')
     return 0
 
 

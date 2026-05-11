@@ -84,6 +84,7 @@
 - [feedback_launchd_parallel_fire_collisions.md](feedback_launchd_parallel_fire_collisions.md) — Two skills failing at the same minute with "Unexpected" → parallel-fire collision, not API. Stagger ≥30 min. Don't bump retries.
 - [feedback_what_was_planned_query_order.md](feedback_what_was_planned_query_order.md) — "What was planned/scheduled for X" → query calendar → beads → brain/outputs/ → session-decisions in that order. Never trust session-decisions alone.
 - [feedback_briefing_no_done_items.md](feedback_briefing_no_done_items.md) — Briefing = open items only, omit anything completed/resolved
+- [feedback_no_resurface_yesterday_approved_today_trigger.md](feedback_no_resurface_yesterday_approved_today_trigger.md) — May 11 2026: Don't re-surface yesterday-APPROVE'd items with a today execution trigger (scheduled send, AM draft) unless positive evidence the action failed. Partial visibility = blind spot, not evidence.
 - [feedback_slack_brevity.md](feedback_slack_brevity.md) — Slack to analyst: 2-3 sentences max, decision + one reason, no supporting data
 - [feedback_slack_deal_posts_no_commentary.md](feedback_slack_deal_posts_no_commentary.md) — Team Slack channels get raw deal facts only; filter notes and Claude-Kay dialogue stay in terminal
 - [feedback_save_pending_items.md](feedback_save_pending_items.md) — Always persist pending actions/open loops before conversation ends

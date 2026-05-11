@@ -1,0 +1,52 @@
+{
+  "date": "2026-05-10",
+  "scan_started_at": "2026-05-10T09:00:22Z",
+  "scan_finished_at": "2026-05-10T09:03:04Z",
+  "failures_detected": 2,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 2,
+  "suppressed_count": 0,
+  "runtime_seconds": 162,
+  "triggered_by": "daily",
+  "results": [
+    {
+      "job": "attio-snapshot-refresh",
+      "cause": "AUTH",
+      "action": "SURFACE",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_posted": true,
+      "suppression_reason": null,
+      "triggered_by": "daily",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/attio-snapshot-refresh-2026-05-09-2010.log",
+      "last_log_mtime": "2026-05-09T20:10:09-04:00",
+      "exit_code": -1,
+      "validator_failed_per_scanner": true,
+      "preflight_failed_per_scanner": false,
+      "error_signature": "VALIDATOR FAILED: snapshot stale: 86956s > 3900s (file: /home/ubuntu/projects/Sapling/brain/context/attio-pipeline-snapshot.json)",
+      "diagnosis": "Attio REST API returned 401 Unauthorized with body indicating the API key was wrong length (keys must be 64 chars). The 20:10 run failed and triggered the staleness validator on the cached snapshot. The very next scheduled run at 20:12 succeeded cleanly and refreshed the snapshot — prior 20:00 / 19:00 / 18:00 runs were also healthy. Most likely transient env-var read race or partial key load on the 20:10 invocation. Self-recovered without intervention.",
+      "pattern_observed": "First failure — 20:10 run failed 401, next run at 20:12 succeeded; prior 20:00/19:00/18:00 runs all healthy. Self-resolved transient.",
+      "slack_text": "launchd-debugger: attio-snapshot-refresh hit transient AUTH failure at 2026-05-09 20:10 ET — 401 Unauthorized from Attio API (key reported wrong length, must be 64 chars). SELF-RECOVERED: next run 2 min later (20:12) succeeded cleanly, snapshot now fresh (12 active deals, 138 closed). Prior 2000/1900 runs healthy. Likely transient env-var read race or partial key load. No action required, but flag for awareness — if it recurs, refresh ATTIO_API_KEY in scripts/.env.launchd from Attio admin panel. Log: /home/ubuntu/projects/Sapling/logs/scheduled/attio-snapshot-refresh-2026-05-09-2010.log"
+    },
+    {
+      "job": "nightly-tracker-audit",
+      "cause": "CODE_BUG",
+      "action": "SURFACE",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_posted": true,
+      "suppression_reason": null,
+      "triggered_by": "daily",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/nightly-tracker-audit-2026-05-09-2330.log",
+      "last_log_mtime": "2026-05-09T23:32:31-04:00",
+      "exit_code": 0,
+      "validator_failed_per_scanner": true,
+      "preflight_failed_per_scanner": false,
+      "error_signature": "VALIDATOR FAILED — overriding skill exit code",
+      "diagnosis": "Skill audit passed cleanly (WEEKLY REVIEW: 10 rows, no Tabled/Killed lingering, rank sequential). The POST_RUN_CHECK validator (scripts/validate_nightly_tracker_audit_integrity.py) failed with: 'gog sheets get failed: missing --account (or set GOG_ACCOUNT, set default via gog auth manage, or store exactly one token)'. Confirmed: GOG_ACCOUNT is NOT defined in scripts/.env.launchd, scripts/run-skill.sh does not export it before the POST_RUN_CHECK, and the validator's gog subprocess call (line 33) does not pass --account. The validator works under interactive shells where a default token is configured but fails under launchd. Either the validator needs --account baked into its subprocess args, or GOG_ACCOUNT needs to be added to scripts/.env.launchd.",
+      "pattern_observed": "First observed failure — only one nightly-tracker-audit log exists in logs/scheduled/. Validator was added recently under the universal POST_RUN_CHECK doctrine (2026-05-04) and likely never exercised in the launchd env path before tonight.",
+      "slack_text": "launchd-debugger: nightly-tracker-audit FAILED — CODE_BUG. Skill audit passed (WEEKLY REVIEW: 10 rows, no Tabled/Killed, rank sequential), but POST_RUN_CHECK validator exited 2: 'gog sheets get failed: missing --account'. Confirmed: GOG_ACCOUNT is NOT defined in scripts/.env.launchd, run-skill.sh does not export it, and validate_nightly_tracker_audit_integrity.py does not pass --account to its gog subprocess call. Recommended: patch scripts/validate_nightly_tracker_audit_integrity.py to add '--account', 'kay.s@greenwichandbarrow.com' to the subprocess args, OR add GOG_ACCOUNT=kay.s@greenwichandbarrow.com to scripts/.env.launchd. Log: /home/ubuntu/projects/Sapling/logs/scheduled/nightly-tracker-audit-2026-05-09-2330.log"
+    }
+  ]
+}

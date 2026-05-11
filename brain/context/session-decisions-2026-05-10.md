@@ -177,3 +177,80 @@ Sunday. First /goodmorning ran on server claude. Resolved 5 briefing decisions, 
 - **Briefing decisions 4 + 5 verification** — sent to server claude this turn, pending response. If not received before /goodnight, carries to Monday morning briefing.
 - **Overnight scheduled-job tests** — 14:00 target-discovery-sunday (Apollo + Slack #strategy-active-deals), 18:00 jj-operations-sunday (Slack), 23:30 nightly-tracker-audit, 05:00 Mon launchd-debugger scan. Silence overnight = clean credential migration. If anything breaks, the 5am scan posts to #operations.
 - **Light security flag from morning subagent** — `GOG_KEYRING_PASSWORD` value was visible in a subagent's tool output during this morning's Mon pre-flight (per server claude's note). Now moot since the keyring password is migrated to op:// and the in-bashrc plaintext is removed; but the leak event itself is recorded.
+
+---
+
+# Evening session — appended 2026-05-10 22:xx ET
+
+Quiet operational evening on VPS capped by three durable shifts: (1) the memory-into-repo migration completed end-to-end on the server (Mac side already did it; server side did the symlink swap + copied 3 server-only memories that hadn't propagated), (2) commitment to VPS as primary Claude working surface with Mac moving to secondary/sync, (3) Phase 4.5 effectively complete with `com.greenwich-barrow.post-call-analyzer.plist` unloaded and retired on Mac; server `post-call-analyzer-poll.timer` is sole processor. Plus a new `/gmail-filter-add` skill, KeyReach added to tech inventory (corrected to FREE — covered by DealsX), one Gmail filter update for [[entities/jemden-helmsley-spear]], and a P2 bead captured for per-service systemd `EnvironmentFile` audit.
+
+## Decisions (evening)
+
+### Gmail filter — [[entities/jemden-helmsley-spear]] routing
+
+- **APPROVE** Add `jemden@helmsleyspear.com` to the bundled-contacts OR filter for label `auto/personal & network` (Label_32). Gmail's API has no filter-patch endpoint, so executed as create-new-then-delete-old (new ID `ANe1BmhXjvfOOifhr_MS5VU9l_j1LjWXMKaUig`, old ID `ANe1Bmj4yK8XXJ95F_dQXiUiD0jCciFReNCYrQ` deleted).
+
+### Skill creation — `/gmail-filter-add`
+
+- **APPROVE** Build skill `/gmail-filter-add` so the create-then-delete dance is reusable. Auto-triggers on phrases like "add X to filter Y" or "add X to auto/Y". Idempotent (skips if email already in bundle), handles ambiguous label fragments by asking, creates fresh bundle if none exists, never deletes old until new is verified. Part of the Superhuman → Gmail transition. Kay's estimate: a couple times a week, declining as bundles grow.
+
+### Tech stack — [[entities/keyreach]]
+
+- **APPROVE** Add KeyReach to the tech inventory in 3 places: Budget Dashboard Tab 3 (Tech Stack Inventory), `dashboard/data/tech_stack.yaml` (under CRM & Pipeline next to [[entities/dealsx]]), and `dashboard/data/external_services.yaml` (health-tracked, `ok`, "signed in 2026-05-10").
+- **REJECT** Initial $1,500/mo cost estimate I pulled from the budget-manager skill's documented "DealsX KeyReach $1,500/mo" line. **Kay corrected:** KeyReach is FREE on her own account for the foreseeable future, **covered by the existing $1,500/mo DealsX vendor fee** ([[entities/sam-singh]]'s service). Reverted Tab 3 cost from $1,500 → $0; Total Costs back to $792.24/mo. Budget-manager skill's `$1,500/mo DealsX` line is itself correct (that's the DealsX cost; KeyReach is bundled into it).
+
+### Memory migration — server-side completion
+
+- **APPROVE** Migrate auto-memory location to symlink pointing at `~/projects/Sapling/memory/` so memory writes flow into git and sync between Mac + VPS. Mac side did this earlier today (Mac's `feedback_vps_primary_work_surface.md` not yet pushed at session end). Server side executed copy-first then symlink-second to avoid losing 3 server-only memories that hadn't propagated through git (`feedback_use_magic_dns_for_references.md`, `reference_pbcopy_through_ssh_for_remote_secrets.md`, `project_keyreach_dealsx_relationship.md`).
+- **APPROVE** Resolve `scripts/load-env.sh` pull conflict by removing identical local untracked copy. Pulled `aaee47d..d4a8c03` from origin/main cleanly.
+
+### VPS-primary working surface
+
+- **APPROVE** Commit to VPS (Sapling Linux server) as Kay's primary Claude Code environment going forward (trial). Mac becomes secondary / sync-only via `git pull`. Foundation: 1Password credential migration complete, Tailscale Serve dashboard live, memory now syncable through git, auto-commit hook landing dashboard/memory edits in-session.
+
+### Phase 4.5 post-call-analyzer cutover — complete
+
+- **APPROVE** Retire Mac sidecar tonight, ahead of Mon 5/11 target. Kay unloaded `com.greenwich-barrow.post-call-analyzer.plist` and moved to `LaunchAgents-retired/` at ~22:25 ET. `launchctl list | grep greenwich-barrow` empty. Server `post-call-analyzer-poll.timer` is sole processor — verified healthy via journal scan (3 days clean, ~5 min cadence, every fire exits clean, latest vault write `2026-05-08-ai-friday-real-roi-of-ai.md` at 22:12 ET).
+
+### Systemd `EnvironmentFile` journal noise
+
+- **DEFER** Per-service audit of `EnvironmentFile=scripts/.env.launchd` usage to Monday infra batch. Discovered during post-call-analyzer-poll diagnostic: every fire emits ~7 `Ignoring invalid environment assignment 'export VAR=op://...'` warnings because systemd's `EnvironmentFile=` doesn't support `export` syntax or resolve `op://` URIs.
+- **REJECT** Blanket-strip of `EnvironmentFile=` from all services. Per Kay's call: some services may legitimately need `ATTIO_API_KEY` / `SLACK_WEBHOOK_*` / `GOG_KEYRING_PASSWORD` at process start and would silently break. Right move is enumerate every `*.service`, check what env each binary actually consumes, then per-service decision (remove EnvironmentFile, op-inject drop-in, or shell-wrapper).
+- Kay beaded as P2 (human assignee) from Mac. Intent also captured server-side in `scratch/2026-05-10-pending-beads.md` because `bd` CLI not yet installed on VPS.
+
+### Memory updates (evening)
+
+- **CREATED** `memory/project_keyreach_dealsx_relationship.md` — captures KeyReach/DealsX bundling so future tech-audits don't propose cutting it or double-count in burn.
+- **CREATED** `memory/project_vps_primary_workflow.md` — VPS-primary trial state, Phase 4.5 complete, bd-CLI install gap, scheduling-already-on-systemd correction (initial draft incorrectly said launchd → systemd was pending; corrected after Kay surfaced "I thought we already did that work").
+- **UPDATED** `memory/MEMORY.md` index — appended 4 entries (3 server-only carry-forwards + new VPS-primary). Auto-commit hook (G&B Server author) landed `update memory` and `update dashboard` commits during session — newly noticed pattern.
+
+## Actions Taken (evening)
+
+- **UPDATED** Gmail filter for `auto/personal & network` extended from 8 → 9 addresses to include `jemden@helmsleyspear.com`.
+- **CREATED** `.claude/skills/gmail-filter-add/SKILL.md` (single-file skill, no separate command, auto-triggers via phrase patterns).
+- **UPDATED** Budget Dashboard Tab 3 — row 21 = KeyReach, Outreach (DealsX), Free, $0/mo, Active, "DealsX-paired". Total Costs unchanged at $792.24/mo (after the initial $1,500/mo error correction).
+- **UPDATED** `dashboard/data/tech_stack.yaml` — added KeyReach under "CRM & Pipeline" with note "DealsX outreach platform · Kay's account free · covered by DealsX $1.5K/mo fee".
+- **UPDATED** `dashboard/data/external_services.yaml` — added `keyreach` service block (health: ok, "Healthy · signed in 2026-05-10").
+- **CREATED** 3 memory files (see Decisions above).
+- **UPDATED** `memory/MEMORY.md` index — 4 new line entries (auto-committed mid-session).
+- **MIGRATED** Auto-memory directory `~/.claude/projects/-home-ubuntu-projects-Sapling/memory/` → symlink to `~/projects/Sapling/memory/`. Copy-first (3 server-only files + MEMORY.md index reconcile) then `rm -rf` then `ln -s`. Verified `head -3 MEMORY.md` returns `# Memory Index`.
+- **CREATED** `scratch/2026-05-10-pending-beads.md` — holding pen for per-service systemd `EnvironmentFile` audit bead intent (P2, target Mon 5/11 infra batch).
+- **PULLED** `aaee47d..d4a8c03` from origin/main (Mac's memory-into-repo migration + memory-snapshot → memory rename + new memory files).
+- **RESOLVED** Pull conflict on `scripts/load-env.sh` by removing identical local untracked copy.
+- **VERIFIED** `post-call-analyzer-poll.timer` healthy (3 days clean, ~5 min cadence, vault write at 22:12 ET).
+- **OBSERVED** Auto-commit hook (G&B Server author) landed `aaee47d`, `e56fdaa`, `8d20e64` mid-session for dashboard/data/ and memory/ paths. Pre-existing infra, newly noticed.
+
+## Deferred (evening additions)
+
+- **Per-service systemd `EnvironmentFile` audit** — P2 bead (Mac-beaded), Monday 2026-05-11 infra batch.
+- **`bd` CLI install on VPS** — friction point for VPS-primary trial. Workaround: capture bead intents in `scratch/{date}-pending-beads.md`. Monday infra item.
+- **`gmail-filter-add` slash command file** — currently phrase-trigger only; add explicit slash command if Kay finds herself typing it literally.
+- **Granola Mac app / OneDrive Excel tracker / unmigrated MCPs** — documented exceptions to VPS-primary (per Kay's Mac-side `feedback_vps_primary_work_surface.md` once she pushes it).
+
+## Open Loops (evening additions)
+
+- **Mac-side `memory/feedback_vps_primary_work_surface.md`** — not yet pushed at session end. Likely overlaps with my server-side `memory/project_vps_primary_workflow.md`. Reconcile or merge on next Mac → VPS pull cycle. Surface in tomorrow's morning briefing.
+- **Mon 2026-05-11 morning auto-fires now sole-processor** — email-intelligence (7am), relationship-manager (6:50am), deal-aggregator (6am), launchd-debugger (Sat 5am pass-through). First server-side fires with Mac sidecar fully retired. Watch morning briefing for clean artifact landing.
+- **VPS-primary trial friction-capture** — log new friction points as they surface during the week (SSH latency, missing MCPs, local-only tools). Decide build-or-fall-back as patterns accumulate.
+- **Phase 4.5 validation watch** — server post-call-analyzer-poll.timer as sole processor for 48-72h post-cutover. Monitor for missed calls or stale queue >30 min.
+- **🔴 Conference Pipeline corruption (REGRESSION) — fix Mon AM 2026-05-11** — Kay reported during /goodnight: tonight's `conference-discovery` run moved the "week of" row section dividers (no longer grouped) AND changed some of her dropdown selections for "attending events". This is the SAME class of regression that prompted the 2026-05-04 hardening (`validate_conference_discovery_integrity.py` + pre-run rollback snapshot). The validator should have caught row-count delta OR section-divider movement OR cell-value changes outside the append zone. Two work items for Monday morning Decision list: (a) **diagnose** — pull rollback snapshot from `brain/context/rollback-snapshots/conference-pipeline-pre-run-2026-05-10.json`, diff against current live state to identify exactly which rows moved/changed, decide if revert-from-snapshot is the right move OR manual repair; (b) **harden** — update `conference-discovery` SKILL.md + validator with stop hook(s) that explicitly forbid (1) moving non-append-zone rows, (2) editing user dropdown selections, (3) any cell write outside the strict append range. If the existing validator was running, why didn't it catch this — was it disabled, missing this check, or did the agent route around it? Surface as 🔴 Decision item #1 in Monday's briefing.

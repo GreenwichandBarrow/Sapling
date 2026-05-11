@@ -28,7 +28,7 @@ categories:
       - { name: "Linkt", note: "list builder · sunset 2026-05-30" }
       - { name: "Apollo", note: "enrichment only" }
       - { name: "DealsX", note: "email + LinkedIn DMs · live May 7" }
-      - { name: "KeyReach", note: "DealsX outreach platform · signed in 2026-05-10 · $1.5K/mo" }
+      - { name: "KeyReach", note: "DealsX outreach platform · signed in 2026-05-10 · free" }
 
   - label: "Email"
     services:

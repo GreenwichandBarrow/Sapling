@@ -50,6 +50,7 @@
 - [feedback_blocked_sources_tab_rule.md](feedback_blocked_sources_tab_rule.md) — May 4 2026: Deal-aggregator Blocked Sources tab = ONLY fully-unreachable sources (no web AND no email AND no API). Web-blocked-but-email-active stays on General. Avoids creating false manual-check work.
 
 ## Feedback
+- [feedback_vps_primary_work_surface.md](feedback_vps_primary_work_surface.md) — May 10 2026: All interactive Claude work originates on server via cmux `vps` alias. Local Mac = fallback only. Memory now in repo + symlinked.
 - [feedback_default_to_now_not_later.md](feedback_default_to_now_not_later.md) — May 9 2026: Kay's default is DO IT NOW. Don't queue/defer unless real hard blocker. "Half-day lift" alone isn't a defer reason — split into now-doable phases.
 - [feedback_credential_extraction_clean_terminal.md](feedback_credential_extraction_clean_terminal.md) — May 10 2026: Secret-printing terminal steps go in macOS Terminal.app/iTerm2 only — never Cursor/Claude Code/any AI-instrumented integrated terminal.
 - [feedback_silent_mode_when_executing.md](feedback_silent_mode_when_executing.md) — May 9 2026: After plan approval, drop narration. One-line status between major steps. Distinguish from planning/scoping mode.

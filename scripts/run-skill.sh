@@ -113,6 +113,18 @@ case "$SKILL_NAME:$SKILL_ARGS" in
     HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/niche-intelligence/headless-tuesday-prompt.md"
     POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_niche_intelligence_integrity.py\"}"
     ;;
+  "email-intelligence:")
+    # Bare `run-skill.sh email-intelligence` (Mon-Fri 7am morning fire — empty
+    # args). Route to the weekday headless prompt to enforce the bookkeeper
+    # P&L auto-trigger chain (steps 4a-4d). Fix added 2026-05-11 after the
+    # March 2026 P&L landed 2026-04-28, inbox trigger written 2026-04-29, but
+    # budget-manager monthly never fired — bare /email-intelligence invocation
+    # walked the SKILL.md but skipped step 3 of <bookkeeper_pl_auto_trigger>
+    # silently. Headless prompt makes step 3 imperative + emits
+    # BOOKKEEPER-PL-CHAIN log line for validator gating.
+    HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/email-intelligence/headless-weekday-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_email_intelligence_integrity.py\" --date \$TODAY --log-file \"\$LOG_FILE\"}"
+    ;;
   "deal-aggregator:")
     # Bare `run-skill.sh deal-aggregator` (Mon-Fri 6am morning fire — empty
     # args). Route to the morning headless prompt to forbid operator-question

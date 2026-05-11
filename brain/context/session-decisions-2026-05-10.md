@@ -13,9 +13,23 @@ tags:
   - topic/dashboard-mobile
   - topic/harrison-wells-call
   - topic/inbox-hygiene
+  - topic/vps-primary-trial
+  - topic/memory-migration
+  - topic/tech-stack
+  - topic/keyreach
+  - topic/dealsx
+  - topic/gmail-filters
+  - topic/post-call-analyzer
+  - topic/phase-4-5
+  - topic/systemd-environment-file
   - person/harrison-wells
   - person/will-bressman
   - person/lauren-young
+  - person/jemden-helmsley-spear
+  - person/sam-singh
+  - company/helmsleyspear
+  - company/dealsx
+  - company/keyreach
 schema_version: 1.1.0
 ---
 

@@ -174,16 +174,18 @@ Before flagging any draft as "stale" or "unsent," check `brain/context/session-d
 - Subject contains "Management Report" + a month/year reference (e.g., "March 2026")
 - Attachment filename contains "Profit and Loss", "Balance Sheet", "P&L", or "Management Report"
 
-**4-step automatic execution:**
+**4-step automatic execution (CRITICAL: all four steps execute in-session, not deferred):**
 1. File the PDFs from email to `BOOKKEEPING / MONTHLY REPORTING / {MONTH YEAR}` Drive subfolder (folder ID `1Z__A8AXWBCwQN7x1nK2fqaqhVKlJBJOb`). Create the month subfolder if it doesn't exist.
-2. Create inbox item at `brain/inbox/{date}-{month}-management-report-budget-trigger.md` with `urgency: trigger` and tags `topic/bookkeeper-pl-received`, `trigger/budget-manager-monthly`.
-3. Auto-invoke `budget-manager monthly` (sequential 3-subagent pipeline per its SKILL.md). Pass `period: {YYYY-MM}` so the skill knows which month to process.
-4. The briefing surfaces budget-manager OUTPUT (variance flags, runway change, action items) — NOT the trigger event.
+2. Create inbox item at `brain/inbox/{date}-{month}-management-report-budget-trigger.md` with `urgency: trigger` and tags `topic/bookkeeper-pl-received`, `trigger/budget-manager-monthly`. Filename pattern is load-bearing: the wrapper-level validator matches on it.
+3. **Invoke `budget-manager monthly` IN THIS SESSION.** Pass `period: {YYYY-MM}` for the detected month. Wait for budget-manager's 3-subagent pipeline to complete. Forbidden pattern: creating the inbox item and stopping. That is the March 2026 silent-skip failure (inbox landed 2026-04-29, no budget-manager output 13 days later).
+4. Emit the literal string `BOOKKEEPER-PL-CHAIN: invoked budget-manager monthly for period {YYYY-MM}` to stdout so the wrapper validator can confirm the chain fired. If budget-manager failed, emit `BOOKKEEPER-PL-CHAIN: FAILED for period {YYYY-MM} reason: {brief}` instead, surface the failure in the artifact's Actionable Items section, and continue.
+5. The briefing surfaces budget-manager OUTPUT (variance flags, runway change, action items), NOT the trigger event.
 
 **Validation (must pass before next-step Slack):**
 - PDFs in Drive with size > 0
 - Inbox item written
 - budget-manager invoked successfully (Phase 1 Document Ingester returned non-empty JSON)
+- Stdout log contains `BOOKKEEPER-PL-CHAIN:` marker for this period
 
 **No Attio write.** Bookkeeper reports do not flow into Active Deals or any Attio list.
 
@@ -317,6 +319,7 @@ Write to `brain/context/email-scan-results-{date}.md`:
 7. **ACTIVE DEALS folder sync** — every Drive subfolder has matching Attio entry
 8. **Broker BLAST per-listing extraction** — every BLAST in section 2 whose body contains a broker-signal keyword has a corresponding row (or rows, for multi-listing) in section 7. Forbidden pattern: collapsing multi-listing blasts into single rows.
 9. **Auto-Acknowledgment Drafts** — every inbound email matching `<auto_ack_drafts>` triggers (NDA/CIM attachment) produced exactly one Gmail draft AND one row in section 8. Forbidden pattern: auto-sending the draft. Drafts are CREATED only.
+10. **Bookkeeper P&L chain** — for every bookkeeper P&L detection this run: PDFs filed to Drive, inbox item written matching the canonical filename pattern, `budget-manager monthly` invoked in-session, `BOOKKEEPER-PL-CHAIN:` marker emitted to stdout. Forbidden pattern: creating the inbox item and exiting without invoking budget-manager (the March 2026 silent-skip failure mode). The wrapper validator (`scripts/validate_email_intelligence_integrity.py`) gates exit code on the marker.
 </stop_hooks>
 
 <success_criteria>

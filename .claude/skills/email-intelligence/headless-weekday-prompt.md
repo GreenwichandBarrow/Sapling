@@ -1,8 +1,8 @@
-# email-intelligence — Headless Weekday Run
+# email-intelligence - Headless Weekday Run
 
 You are running the `email-intelligence` skill non-interactively under systemd at 7am ET (Mon-Fri). There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals, do not wait for permission.
 
-## Mandatory ordering — execute in this exact sequence
+## Mandatory ordering - execute in this exact sequence
 
 1. **Read SKILL.md fully** at `.claude/skills/email-intelligence/SKILL.md`. Internalize every `<*_auto_trigger>` block and the `<artifact>` schema.
 2. **Pull source data:**
@@ -19,13 +19,13 @@ You are running the `email-intelligence` skill non-interactively under systemd a
    - If NDA/CIM attachment from broker → create auto-acknowledgment Gmail draft per `<auto_ack_drafts>`.
    - If broker BLAST with broker-signal keywords → run per-listing extraction per `<broker_blast_listing_extraction>`.
    - If intro detected → create entity stub if missing + inbox item per `<intro_detection>`.
-4. **Bookkeeper P&L chain — mandatory imperative ordering.** If ANY inbound email this run matched the bookkeeper P&L detection signal above, you MUST execute these three steps before writing the email-scan-results artifact:
+4. **Bookkeeper P&L chain - mandatory imperative ordering.** If ANY inbound email this run matched the bookkeeper P&L detection signal above, you MUST execute these three steps before writing the email-scan-results artifact:
    - **4a. File PDFs** to `BOOKKEEPING / MONTHLY REPORTING / {MONTH YEAR}` Drive subfolder (parent folder ID `1Z__A8AXWBCwQN7x1nK2fqaqhVKlJBJOb`). Create the month subfolder if it doesn't exist.
    - **4b. Write the trigger inbox item** to `brain/inbox/{YYYY-MM-DD}-{month}-management-report-budget-trigger.md` with `urgency: trigger` and tags `topic/bookkeeper-pl-received`, `trigger/budget-manager-monthly`. Use the inbox schema (`schemas/vault/inbox.yaml`).
-   - **4c. Invoke `budget-manager monthly` IN THIS SESSION.** Pass `period: {YYYY-MM}` for the detected month (the month named in Anthony's email subject / attachment). Wait for budget-manager to complete its 3-subagent pipeline. Do NOT defer to a later run, do NOT just create the inbox item and stop, do NOT surface this as a Decision for Kay's approval — per `memory/feedback_bookkeeper_pl_auto_trigger_budget_manager.md` the trigger is deterministic and auto-firing. Forbidden pattern: writing only the inbox item and skipping the budget-manager invocation. That is the exact gap the March 2026 run hit (file landed 2026-04-29 but budget-manager never ran).
-   - **4d. Log the chain.** Emit the literal string `BOOKKEEPER-PL-CHAIN: invoked budget-manager monthly for period {YYYY-MM}` to stdout (the wrapper log) so the post-run validator can confirm the chain fired. If budget-manager returned non-zero or did not produce `brain/outputs/{YYYY-MM-DD}-budget-report-{month-year}.md`, emit `BOOKKEEPER-PL-CHAIN: FAILED for period {YYYY-MM} reason: {brief}` and continue with artifact write — surface the failure in the artifact's Actionable Items section so pipeline-manager flags it.
+   - **4c. Invoke `budget-manager monthly` IN THIS SESSION.** Pass `period: {YYYY-MM}` for the detected month (the month named in Anthony's email subject / attachment). Wait for budget-manager to complete its 3-subagent pipeline. Do NOT defer to a later run, do NOT just create the inbox item and stop, do NOT surface this as a Decision for Kay's approval - per `memory/feedback_bookkeeper_pl_auto_trigger_budget_manager.md` the trigger is deterministic and auto-firing. Forbidden pattern: writing only the inbox item and skipping the budget-manager invocation. That is the exact gap the March 2026 run hit (file landed 2026-04-29 but budget-manager never ran).
+   - **4d. Log the chain.** Emit the literal string `BOOKKEEPER-PL-CHAIN: invoked budget-manager monthly for period {YYYY-MM}` to stdout (the wrapper log) so the post-run validator can confirm the chain fired. If budget-manager returned non-zero or did not produce `brain/outputs/{YYYY-MM-DD}-budget-report-{month-year}.md`, emit `BOOKKEEPER-PL-CHAIN: FAILED for period {YYYY-MM} reason: {brief}` and continue with artifact write - surface the failure in the artifact's Actionable Items section so pipeline-manager flags it.
 5. **Smoke-test path (no-op when env unset).** If env var `EMAIL_INTEL_DRY_RUN_BUDGET_CHAIN` is set to `1`, skip the actual budget-manager invocation in step 4c but still emit `BOOKKEEPER-PL-CHAIN: dry-run for period {YYYY-MM}` to stdout. Used by smoke tests to verify wiring without actually re-running budget-manager.
-6. **Write the artifact** at `brain/context/email-scan-results-{YYYY-MM-DD}.md` matching the SKILL.md `<artifact>` schema — all 8 sections present (sections 7 broker-BLAST listings and 8 auto-drafts get explicit "None" body when empty, never omitted).
+6. **Write the artifact** at `brain/context/email-scan-results-{YYYY-MM-DD}.md` matching the SKILL.md `<artifact>` schema - all 8 sections present (sections 7 broker-BLAST listings and 8 auto-drafts get explicit "None" body when empty, never omitted).
 7. **Exit normally** (exit 0).
 
 ## What success looks like
@@ -39,12 +39,12 @@ You are running the `email-intelligence` skill non-interactively under systemd a
 ## Forbidden in headless mode
 
 - Asking the user anything ("would you like me to...", "should I run budget-manager...", "do you want me to proceed...").
-- Presenting RECOMMEND / YES / NO / DISCUSS framings for any auto-trigger pathway. The auto-triggers (CIM, Active Deal Fast-Path, bookkeeper P&L) are deterministic — they fire without approval per their SKILL.md sections.
+- Presenting RECOMMEND / YES / NO / DISCUSS framings for any auto-trigger pathway. The auto-triggers (CIM, Active Deal Fast-Path, bookkeeper P&L) are deterministic - they fire without approval per their SKILL.md sections.
 - **Creating the bookkeeper trigger inbox item and stopping there.** Step 4c (invoke budget-manager) is mandatory, not optional. Skipping it is the root failure this prompt exists to prevent.
 - Surfacing the bookkeeper P&L trigger as a Decision item in any artifact section. The trigger is wired; only the OUTPUT (variance flags, runway change) is decision-worthy and that lives in budget-manager's own artifact.
-- Halting on a single MCP failure (Granola 401, Attio timeout) — graceful-degrade, log the failure mode in the artifact's Actionable Items section, continue.
-- Skipping the artifact write because "nothing material today" — always write the artifact, even if every section is "None".
-- Overwriting an existing same-day artifact silently — if `brain/context/email-scan-results-{TODAY}.md` already exists with ≥200 bytes, abort cleanly and emit `EMAIL-INTEL ABORT: artifact already exists for {TODAY}` (idempotency for retry safety).
+- Halting on a single MCP failure (Granola 401, Attio timeout) - graceful-degrade, log the failure mode in the artifact's Actionable Items section, continue.
+- Skipping the artifact write because "nothing material today" - always write the artifact, even if every section is "None".
+- Overwriting an existing same-day artifact silently - if `brain/context/email-scan-results-{TODAY}.md` already exists with ≥200 bytes, abort cleanly and emit `EMAIL-INTEL ABORT: artifact already exists for {TODAY}` (idempotency for retry safety).
 
 ## Failure handling
 

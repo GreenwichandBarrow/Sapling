@@ -500,3 +500,6 @@
 - [feedback_collapse_thin_boundaries.md](feedback_collapse_thin_boundaries.md) — When two internal-tool pages share thin boundaries, recommend merge before coding. Validated on Command Center dashboard.
 - [project_dashboard_externalizes_mental_load.md](project_dashboard_externalizes_mental_load.md) — The Command Center's purpose: externalize what Kay was juggling mentally. Validated 2026-04-24.
 - [feedback_dont_want_to_go_through_means_pivot.md](feedback_dont_want_to_go_through_means_pivot.md) — "I don't want to go through these" = pivot to a different approach, NOT bulk-delete shortcut.
+- [feedback_use_magic_dns_for_references.md](feedback_use_magic_dns_for_references.md) — prefer Tailscale Magic DNS over raw IPs/public DNS when referencing hosts, for security
+- [reference_pbcopy_through_ssh_for_remote_secrets.md](reference_pbcopy_through_ssh_for_remote_secrets.md) — default pattern for extracting server secrets into Kay's iMac clipboard without leaking through any Claude transcript
+- [project_keyreach_dealsx_relationship.md](project_keyreach_dealsx_relationship.md) — KeyReach free on Kay's own account · covered by $1.5K/mo DealsX fee · don't count separately in burn or propose cutting

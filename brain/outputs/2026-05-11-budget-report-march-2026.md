@@ -24,6 +24,24 @@ tags:
 
 Monthly budget report for March 2026. Data sourced from [[entities/anthony-bacagan|Anthony Bacagan]] (StartVirtual) P&L and Balance Sheet PDFs delivered 2026-04-28 (QBO accrual basis). Trigger-chain auto-invoke was broken when the report arrived; this run closes the gap manually. Trigger chain has since been repaired.
 
+## 2026-05-11 REFRAME CORRECTION — health is one-time, not recurring
+
+G&B confirmed 2026-05-11: the **$8,250 health charge** that hit Q1 (Jan/Feb/March) was a **one-time front-load**, not a recurring monthly bill. This invalidates the runway projection below, which assumed March burn rate = forward run-rate.
+
+**Corrected forward-projection:**
+- True Apr+ run-rate: $31,903 - $8,250 = **$23,653/mo**
+- Runway on existing $223,820 cash: **9.46 months** (NOT 7.5)
+- Time to cash zero: **mid-Feb 2027** — aligns with paper deadline, no shortfall
+- Monthly savings needed to make Feb 2027: **$0/mo** (was $7,393/mo before reframe)
+
+**Net implication:** Feb 2027 paper deadline achievable on existing cash without forced expense cuts. Wed/Fri financial work (desk sublet, Mercury bank yield, Gusto renegotiation, software stack cancellations) is **buffer/optionality**, not survival math.
+
+**Skill gap surfaced:** `budget-manager` should distinguish recurring vs one-time line items when projecting runway. Q1 anomalies amplified into "burn-cliff" framing because the script treats every line item as run-rate. Queued as a To Do enhancement task.
+
+---
+
+
+
 ## Fund Position (as of March 31, 2026)
 
 | Metric | Value |

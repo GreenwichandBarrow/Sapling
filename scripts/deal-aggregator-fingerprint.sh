@@ -7,11 +7,14 @@
 #   add   FINGERPRINT SOURCE URL → appends fingerprint record with today's date
 #   hash  INDUSTRY REVBAND GEO   → prints SHA-1 fingerprint (normalized)
 #
-# Store: /Users/kaycschneider/Documents/AI Operations/brain/context/deal-aggregator-fingerprints.jsonl
+# Store: $REPO_ROOT/brain/context/deal-aggregator-fingerprints.jsonl (override
+# with DEAL_AGGREGATOR_FINGERPRINT_STORE env var).
 
 set -euo pipefail
 
-STORE="/Users/kaycschneider/Documents/AI Operations/brain/context/deal-aggregator-fingerprints.jsonl"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+STORE="${DEAL_AGGREGATOR_FINGERPRINT_STORE:-$REPO_ROOT/brain/context/deal-aggregator-fingerprints.jsonl}"
 TTL_DAYS=30
 
 normalize() {

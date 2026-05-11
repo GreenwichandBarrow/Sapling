@@ -5,7 +5,8 @@
 
 set -euo pipefail
 
-REPO_ROOT="/Users/kaycschneider/Documents/AI Operations"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="${SNAPSHOT_WEEKLY_REPO_ROOT:-$(cd "$SCRIPT_DIR/.." && pwd)}"
 LOG_DIR="$REPO_ROOT/logs/scheduled"
 mkdir -p "$LOG_DIR"
 

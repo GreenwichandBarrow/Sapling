@@ -21,9 +21,11 @@ from openpyxl.chart.series import DataPoint
 from openpyxl.chart.shapes import GraphicalProperties
 
 import os
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.dirname(_SCRIPT_DIR)
 OUT = os.environ.get(
     "TASKS_XLSX_OUT",
-    "/Users/kaycschneider/My Drive/STRATEGIC PLANNING/TO DO 4.26.26.xlsx",
+    os.path.join(_REPO_ROOT, "outputs", "TO DO 4.26.26.xlsx"),
 )
 
 SAGE_DARK = "6B8E5A"

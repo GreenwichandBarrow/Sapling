@@ -30,9 +30,11 @@ from openpyxl.formatting.rule import FormulaRule
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
 
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.dirname(_SCRIPT_DIR)
 LIVE = os.environ.get(
     "TASKS_XLSX_LIVE",
-    "/Users/kaycschneider/My Drive/STRATEGIC PLANNING/TO DO 4.26.26.xlsx",
+    os.path.join(_REPO_ROOT, "outputs", "TO DO 4.26.26.xlsx"),
 )
 BACKUP_DIR = Path(LIVE).parent
 BACKUP_PREFIX = Path(LIVE).stem + ".bak."

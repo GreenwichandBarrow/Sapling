@@ -4,9 +4,15 @@ only the approved items. Preserves charts, formulas, conditional formatting,
 and styles built by build_tasks_excel.py.
 """
 
+import os
 from openpyxl import load_workbook
 
-PATH = "/Users/kaycschneider/My Drive/STRATEGIC PLANNING/TO DO 4.26.26.xlsx"
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.dirname(_SCRIPT_DIR)
+PATH = os.environ.get(
+    "TASKS_XLSX_LIVE",
+    os.path.join(_REPO_ROOT, "outputs", "TO DO 4.26.26.xlsx"),
+)
 
 # To Do tab — (task, type, project) — project tag links to To Do Long Term or Projects entry
 TO_DO = [

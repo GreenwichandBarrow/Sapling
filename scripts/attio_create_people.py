@@ -2,12 +2,20 @@
 """Create people records in Attio from SalesFlare contacts."""
 
 import json
+import os
 import re
 import asyncio
 import aiohttp
 from pathlib import Path
 
-BASE_DIR = Path("/Users/kaycschneider/Documents/AI Operations/brain/library/internal/salesflare")
+_SCRIPT_DIR = Path(__file__).resolve().parent
+_REPO_ROOT = _SCRIPT_DIR.parent
+BASE_DIR = Path(
+    os.environ.get(
+        "ATTIO_CREATE_PEOPLE_BASE_DIR",
+        str(_REPO_ROOT / "brain" / "library" / "internal" / "salesflare"),
+    )
+)
 API_KEY = "5e22aa80b4507b4b38d9b4211cf0c24978657f99c8bc345923f0a34959531ad0"
 API_URL = "https://api.attio.com/v2/objects/people/records"
 BATCH_SIZE = 10

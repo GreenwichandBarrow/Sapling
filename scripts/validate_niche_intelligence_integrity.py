@@ -35,7 +35,12 @@ import sys
 from datetime import date, datetime
 
 
-VAULT_ROOT = "/Users/kaycschneider/Documents/AI Operations/brain"
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.dirname(_SCRIPT_DIR)
+VAULT_ROOT = os.environ.get(
+    "NICHE_INTELLIGENCE_VAULT_ROOT",
+    os.path.join(_REPO_ROOT, "brain"),
+)
 REPORT_DIR = os.path.join(VAULT_ROOT, "outputs")
 SIDECAR_DIR = os.path.join(VAULT_ROOT, "trackers", "niches")
 

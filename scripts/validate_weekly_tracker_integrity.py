@@ -24,7 +24,12 @@ from datetime import date, datetime, timedelta
 
 
 SHEET_ID = "1NGGZY_iq9h8cNzLAXSJ1vTcsfXWNU9oin2RiOMtl9NE"
-VAULT_DIR = "/Users/kaycschneider/Documents/AI Operations/brain/trackers/weekly"
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.dirname(_SCRIPT_DIR)
+VAULT_DIR = os.environ.get(
+    "WEEKLY_TRACKER_VAULT_DIR",
+    os.path.join(_REPO_ROOT, "brain", "trackers", "weekly"),
+)
 
 
 def most_recent_friday(today: date) -> date:

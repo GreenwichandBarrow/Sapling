@@ -8,11 +8,13 @@ timeout). This script does what that fire was supposed to do.
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
 
-ROOT = Path("/Users/kaycschneider/Documents/AI Operations")
+_SCRIPT_DIR = Path(__file__).resolve().parent
+ROOT = Path(os.environ.get("JJ_BUILD_WEEK_TABS_ROOT", str(_SCRIPT_DIR.parent)))
 SHEET_ID = "1Y0ZjEkc2LHhBoO4QGO8Ny9MvG90NpojQn8bloKA291I"
 POOL_PATH = ROOT / "brain/context/jj-week-pool-2026-04-26.md"
 WEEK_TABS = [

@@ -19,7 +19,12 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
-LOG_PATH = "/Users/kaycschneider/Documents/AI Operations/brain/trackers/network-migration-log.md"
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.dirname(_SCRIPT_DIR)
+LOG_PATH = os.environ.get(
+    "NETWORK_MIGRATION_LOG_PATH",
+    os.path.join(_REPO_ROOT, "brain", "trackers", "network-migration-log.md"),
+)
 
 # Rate limiting
 DELAY = 5  # seconds between API calls

@@ -34,8 +34,16 @@ import sys
 from datetime import date, datetime
 
 
-VAULT_DIR = "/Users/kaycschneider/Documents/AI Operations/brain/context"
-WEEKLY_DIR = "/Users/kaycschneider/Documents/AI Operations/brain/trackers/weekly"
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.dirname(_SCRIPT_DIR)
+VAULT_DIR = os.environ.get(
+    "DEAL_AGGREGATOR_VAULT_DIR",
+    os.path.join(_REPO_ROOT, "brain", "context"),
+)
+WEEKLY_DIR = os.environ.get(
+    "DEAL_AGGREGATOR_WEEKLY_DIR",
+    os.path.join(_REPO_ROOT, "brain", "trackers", "weekly"),
+)
 
 # Required section headers per SKILL.md "Results File" template (morning + afternoon).
 # `## Listings Reviewed (full log)` was added 2026-05-04 to make per-listing rejection

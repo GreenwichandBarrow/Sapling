@@ -2,26 +2,25 @@
 """
 Wrapper-level integrity validator for conference-discovery scheduled runs.
 
-Runs as POST_RUN_CHECK after launchd wrapper completes. Catches the silent-success
-failure mode where Claude exits 0 but the Conference Pipeline tab has been wiped
-or catastrophically thinned. Precipitating incident: 2026-05-03 Sunday-night run
-exited 0 after the archival subagent cleared all ~70 rows on the Pipeline tab.
+Runs as POST_RUN_CHECK after launchd wrapper completes. Catches three classes
+of silent-success failures where Claude exits 0 but the Conference Pipeline
+tab has been corrupted:
 
-Pattern mirrors validate_phase2_integrity.py: a pre-run snapshot written by the
-skill before any sheet writes is the source of truth for "what was here before."
-The validator reads that snapshot, then reads the live sheet, and rejects if
-post-run row count is shorter than (pre-run - allowed_archival_delta).
-
-Allowed archival delta: legitimate auto-archival moves (Skip → Skipped tab,
-Attended → Attended tab, past-date passive → Skipped tab) reduce Pipeline row
-count. We tolerate up to MAX_ARCHIVAL_DELTA rows of net reduction. Any larger
-drop is presumptive wipe/data-loss and fails the check.
+  1. **Row-count delta wipe** — original 2026-05-03 incident. ~70 rows
+     cleared in a clear+rewrite that timed out before rewrite.
+  2. **Header displacement** — 2026-05-10 incident. Week-of section headers
+     (col A single-cell rows) got moved to the bottom while events stayed in
+     place. Row count was within tolerance, so the row-count check passed.
+  3. **Cell mutation on user selections** — 2026-05-10 incident. Status
+     dropdown values in col C that Kay had set ("Need to Book", etc.) got
+     overwritten with different non-empty values during agent re-sort. Row
+     count unchanged, so the row-count check passed.
 
 Snapshot contract (skill writes BEFORE any Pipeline mutation):
   brain/context/rollback-snapshots/conference-pipeline-pre-run-YYYY-MM-DD.json
   {
     "tab": "Pipeline",
-    "row_count": 71,        # data rows, excluding header
+    "row_count": 89,         # data rows, excluding header
     "captured_at": "...",
     "rows": [...]            # full row payload for restore-from-snapshot if needed
   }
@@ -30,18 +29,24 @@ If the snapshot is missing entirely, the validator FAILS — the skill is requir
 to write it, missing snapshot means the skill skipped its safety step.
 
 Exit codes:
-  0  Pass — snapshot exists; live row count within allowed delta of snapshot
-  2  Fail — snapshot missing, sheet read failed, or row count dropped too far
+  0  Pass — snapshot exists; row-count delta, header positions, and cell
+     mutations all within tolerance.
+  2  Fail — snapshot missing, sheet read failed, row count dropped too far,
+     a header was displaced below its events, or a hard cell mutation
+     occurred (e.g., status dropdown overwrite).
 
 Usage:
-  python3 validate_conference_discovery_integrity.py [--date YYYY-MM-DD]
+  python3 validate_conference_discovery_integrity.py [--date YYYY-MM-DD] [--verbose]
 """
+
+from __future__ import annotations
 
 import json
 import os
+import re
 import subprocess
 import sys
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 
 SHEET_ID = "1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY"
@@ -60,11 +65,56 @@ SNAPSHOT_DIR = os.path.normpath(
     )
 )
 
+# Column indices (0-based) in a row of 15 cells.
+COL_A_WEEK_HEADER = 0
+COL_B_DATE = 1
+COL_C_STATUS = 2
+COL_D_NAME = 3
+COL_G_NICHE = 6
+COL_M_URL = 12
+
 # Auto-archival per SKILL.md routes Skip → Skipped tab, Attended → Attended tab,
 # past-date passive → Skipped tab. A typical run archives 0–8 rows. We allow up
 # to 15 to give headroom for catch-up runs (e.g. multi-week skipped backlog),
 # while still catching wipe-class incidents (May 3 wiped ~70 rows in one swoop).
 MAX_ARCHIVAL_DELTA = 15
+
+# Hard cell mutations = stomped user selections. Any one of these = fail.
+# Soft cell mutations = unexpected cell changes outside the legitimate
+# auto-fill paths. We tolerate a handful (e.g., niche label refinement) but
+# fail beyond MAX_SOFT_CELL_MUTATIONS as a wipe-class signal.
+MAX_HARD_CELL_MUTATIONS = 0
+MAX_SOFT_CELL_MUTATIONS = 5
+
+# Status values that mark an event as legitimately archived (and therefore
+# permitted to be missing from the live sheet if the event date is past).
+ARCHIVAL_STATUSES = {"Skip", "Skipped", "Attended"}
+
+# Recognized status progressions. Any (snapshot, live) pair NOT listed
+# either is no-op (same value), an empty→value transition (allowed), or
+# a stomp (hard fail).
+ALLOWED_STATUS_PROGRESSIONS = {
+    ("Evaluating", "Attending"),
+    ("Evaluating", "Need to Book"),
+    ("Evaluating", "Need to Register"),
+    ("Evaluating", "Skip"),
+    ("Need to Register", "Registered"),
+    ("Need to Register", "Attending"),
+    ("Need to Book", "Attending"),
+    ("Need to Book", "Registered"),
+    ("Attending", "Attended"),
+    ("Registered", "Attending"),
+    ("Registered", "Attended"),
+    ("Skip", "Skipped"),
+    ("Future / Map-Only", "Evaluating"),
+    ("Future / Map-Only", "Need to Book"),
+    ("Future / Map-Only", "Need to Register"),
+}
+
+
+# ---------------------------------------------------------------------------
+# Snapshot / live-sheet I/O
+# ---------------------------------------------------------------------------
 
 
 def snapshot_path(run_date: date) -> str:
@@ -90,8 +140,393 @@ def get_pipeline_data_rows(sheet_id: str, tab: str, rng: str) -> list[list[str]]
     return [r for r in rows if any(c and c.strip() for c in r)]
 
 
+# ---------------------------------------------------------------------------
+# Row classification + key extraction
+# ---------------------------------------------------------------------------
+
+
+def is_header_row(row: list[str]) -> bool:
+    """A week-of header is a single-cell row (col A populated, all others empty)."""
+    if not row:
+        return False
+    if not (row[0] and row[0].strip()):
+        return False
+    return all((not c) or (not c.strip()) for c in row[1:])
+
+
+def event_key(row: list[str]) -> str | None:
+    """Stable identity for an event row. Prefer URL (col M), fall back to name (col D)."""
+    if len(row) > COL_M_URL and row[COL_M_URL] and row[COL_M_URL].strip():
+        return ("url", row[COL_M_URL].strip().rstrip("/").lower())
+    if len(row) > COL_D_NAME and row[COL_D_NAME] and row[COL_D_NAME].strip():
+        return ("name", row[COL_D_NAME].strip().lower())
+    return None
+
+
+def cell(row: list[str], idx: int) -> str:
+    """Safe cell accessor — returns empty string if out of range."""
+    if idx < len(row) and row[idx] is not None:
+        return row[idx]
+    return ""
+
+
+# ---------------------------------------------------------------------------
+# Date parsing for Check A
+# ---------------------------------------------------------------------------
+
+
+_HEADER_LABEL_RE = re.compile(r"^\s*(\d{1,2})/(\d{1,2})\s*$")
+_EVENT_DATE_RE = re.compile(r"(\d{1,2})/(\d{1,2})/(\d{2,4})")
+
+
+def parse_header_week(label: str, anchor_year: int) -> tuple[date, date] | None:
+    """Parse a week-of header label like '4/27' into a (Mon, Sun) tuple.
+
+    The label has no year. Use `anchor_year` (the validator's run year) as the
+    starting guess. If the resulting Monday is more than 6 months before the
+    anchor date, roll forward a year (handles Dec→Jan rollover).
+
+    Returns None for TBD or unparseable labels — caller should skip such headers
+    from the position-invariant check.
+    """
+    if label.strip().upper() == "TBD":
+        return None
+    m = _HEADER_LABEL_RE.match(label)
+    if not m:
+        return None
+    month, day = int(m.group(1)), int(m.group(2))
+    try:
+        candidate = date(anchor_year, month, day)
+    except ValueError:
+        return None
+    # Snap to Monday of that week (Python: Monday=0)
+    monday = candidate - timedelta(days=candidate.weekday())
+    sunday = monday + timedelta(days=6)
+    return (monday, sunday)
+
+
+def parse_event_date_range(s: str, anchor_year: int) -> tuple[date, date] | None:
+    """Extract (start, end) dates from a col B value like '5/15/26' or
+    '5/27/26 - 5/29/26'. Returns None for 'TBD' or unparseable strings."""
+    if not s or not s.strip():
+        return None
+    if s.strip().upper() == "TBD":
+        return None
+    matches = list(_EVENT_DATE_RE.finditer(s))
+    if not matches:
+        return None
+
+    def _coerce(m):
+        month, day, year = int(m.group(1)), int(m.group(2)), int(m.group(3))
+        if year < 100:
+            year += 2000
+        try:
+            return date(year, month, day)
+        except ValueError:
+            return None
+
+    start = _coerce(matches[0])
+    end = _coerce(matches[-1]) if len(matches) > 1 else start
+    if start is None or end is None:
+        return None
+    if end < start:
+        start, end = end, start
+    return (start, end)
+
+
+def event_overlaps_week(event_range: tuple[date, date], week: tuple[date, date]) -> bool:
+    es, ee = event_range
+    ws, we = week
+    return not (ee < ws or es > we)
+
+
+# ---------------------------------------------------------------------------
+# Check A — Header position invariant
+# ---------------------------------------------------------------------------
+
+
+def check_header_positions(
+    snapshot_rows: list[list[str]],
+    live_rows: list[list[str]],
+    anchor_year: int,
+    verbose: bool = False,
+) -> list[str]:
+    """Verify every dated week-of header in the snapshot still appears above
+    the first event whose date falls within that week in the live sheet.
+
+    TBD headers are exempt (catch-all bucket, position-agnostic by design).
+    Headers with zero matching events in the live sheet are also exempt
+    (auto-prune logic in SKILL.md will retire them; the validator doesn't
+    flag empty headers as displacement).
+
+    Missing headers (in snapshot but not in live) are flagged unless the
+    header is past-dated AND has zero matching events in the live sheet —
+    in which case auto-prune is the legitimate explanation.
+    """
+    failures: list[str] = []
+
+    snapshot_headers = [
+        (i, r[COL_A_WEEK_HEADER]) for i, r in enumerate(snapshot_rows) if is_header_row(r)
+    ]
+
+    live_header_index = {}  # label -> live row idx
+    for i, r in enumerate(live_rows):
+        if is_header_row(r):
+            live_header_index[r[COL_A_WEEK_HEADER].strip()] = i
+
+    today = date.today()
+
+    for _snap_idx, label in snapshot_headers:
+        label_stripped = label.strip()
+        week = parse_header_week(label_stripped, anchor_year)
+        if week is None:
+            # TBD or unparseable — skip the position check entirely.
+            if verbose:
+                print(
+                    f"[check_a] skip header {label_stripped!r} "
+                    f"(non-dated or unparseable)",
+                    file=sys.stderr,
+                )
+            continue
+
+        live_idx = live_header_index.get(label_stripped)
+
+        # Find first live event whose date overlaps this week.
+        first_event_idx = None
+        first_event_summary = None
+        for i, r in enumerate(live_rows):
+            if is_header_row(r):
+                continue
+            er = parse_event_date_range(cell(r, COL_B_DATE), anchor_year)
+            if er and event_overlaps_week(er, week):
+                first_event_idx = i
+                first_event_summary = (
+                    cell(r, COL_B_DATE),
+                    cell(r, COL_D_NAME)[:60],
+                )
+                break
+
+        if live_idx is None:
+            # Header missing from live. Legitimate ONLY if past-dated AND no
+            # matching event lives in the sheet anymore (auto-prune exit).
+            if first_event_idx is None and week[1] < today:
+                if verbose:
+                    print(
+                        f"[check_a] header {label_stripped!r} missing from live, "
+                        f"but it's past-dated with zero matching events — "
+                        f"legitimate auto-prune",
+                        file=sys.stderr,
+                    )
+                continue
+            failures.append(
+                f"header {label_stripped!r} present in snapshot but missing "
+                f"from live sheet (week {week[0]}..{week[1]}, "
+                f"first matching live event: {first_event_summary})"
+            )
+            continue
+
+        if first_event_idx is None:
+            # No events under this week — orphan header, position-agnostic
+            # for now. Auto-prune will collect it on the next cycle.
+            if verbose:
+                print(
+                    f"[check_a] header {label_stripped!r} at live idx "
+                    f"{live_idx} has zero matching events (orphan, OK)",
+                    file=sys.stderr,
+                )
+            continue
+
+        if live_idx > first_event_idx:
+            failures.append(
+                f"header {label_stripped!r} at live row {live_idx + 2} is BELOW "
+                f"its first matching event {first_event_summary} at live row "
+                f"{first_event_idx + 2}. Header has been displaced — events "
+                f"should be anchored UNDER their week header, not above it. "
+                f"This is the 2026-05-10 regression pattern."
+            )
+
+    return failures
+
+
+# ---------------------------------------------------------------------------
+# Check B — Cell mutation invariant
+# ---------------------------------------------------------------------------
+
+
+def classify_status_mutation(snap_val: str, live_val: str) -> str:
+    """Return 'noop', 'allowed', 'hard', or 'soft' for a status (col C) delta."""
+    sv = (snap_val or "").strip()
+    lv = (live_val or "").strip()
+    if sv == lv:
+        return "noop"
+    if not sv:
+        # Snapshot was empty — any live value is an allowed auto-fill.
+        return "allowed"
+    if not lv:
+        # Snapshot had a value, live is now empty — agent erased Kay's pick.
+        return "hard"
+    if (sv, lv) in ALLOWED_STATUS_PROGRESSIONS:
+        return "allowed"
+    # Non-empty → different non-empty value that isn't on the allow-list.
+    # This is the 2026-05-10 "Art Business Conference NYC" pattern.
+    return "hard"
+
+
+def classify_generic_mutation(
+    col_idx: int, snap_val: str, live_val: str
+) -> str:
+    """Return 'noop', 'allowed', 'hard', or 'soft' for non-status columns."""
+    sv = (snap_val or "").strip()
+    lv = (live_val or "").strip()
+    if sv == lv:
+        return "noop"
+    if not sv:
+        # Auto-fill of a previously-empty cell is allowed regardless of column.
+        return "allowed"
+    # Hard columns: changing a non-empty event identity field is a regression.
+    if col_idx == COL_D_NAME:
+        return "hard"
+    if col_idx == COL_B_DATE:
+        return "hard"
+    if col_idx == COL_G_NICHE:
+        return "hard"
+    # URL column: filling in a previously-empty URL is OK (caught above);
+    # mutating an existing URL is suspicious but soft-warn.
+    return "soft"
+
+
+def check_cell_mutations(
+    snapshot_rows: list[list[str]],
+    live_rows: list[list[str]],
+    verbose: bool = False,
+) -> list[str]:
+    """For every event row in the snapshot, verify its live counterpart has
+    no forbidden cell changes."""
+    failures: list[str] = []
+    hard_count = 0
+    soft_count = 0
+
+    # Build live index keyed by URL, then by name as fallback.
+    live_by_key: dict = {}
+    for i, r in enumerate(live_rows):
+        if is_header_row(r):
+            continue
+        k = event_key(r)
+        if k is not None and k not in live_by_key:
+            live_by_key[k] = (i, r)
+
+    today = date.today()
+
+    for snap_i, snap_row in enumerate(snapshot_rows):
+        if is_header_row(snap_row):
+            continue
+        k = event_key(snap_row)
+        if k is None:
+            if verbose:
+                print(
+                    f"[check_b] snapshot row {snap_i} has no URL or name — "
+                    f"cannot match, skipping",
+                    file=sys.stderr,
+                )
+            continue
+
+        if k not in live_by_key:
+            # Missing event. Legitimate ONLY if snapshot status is archival
+            # AND date is past.
+            snap_status = cell(snap_row, COL_C_STATUS).strip()
+            er = parse_event_date_range(
+                cell(snap_row, COL_B_DATE), today.year
+            )
+            past = er is not None and er[1] < today
+            if snap_status in ARCHIVAL_STATUSES and past:
+                if verbose:
+                    print(
+                        f"[check_b] event {k} archived legitimately "
+                        f"(status={snap_status!r}, date past)",
+                        file=sys.stderr,
+                    )
+                continue
+            # If status is empty/TBD AND date is past, also legitimate
+            # auto-archival per SKILL.md ("Date is past AND no Decision/Status
+            # indicating attendance → Skipped tab").
+            if past and not snap_status:
+                if verbose:
+                    print(
+                        f"[check_b] event {k} archived as past-date passive",
+                        file=sys.stderr,
+                    )
+                continue
+            failures.append(
+                f"event {k} present in snapshot ({cell(snap_row, COL_D_NAME)[:60]!r}, "
+                f"status={snap_status!r}, date={cell(snap_row, COL_B_DATE)!r}) "
+                f"missing from live sheet without a legitimate archival reason"
+            )
+            continue
+
+        live_i, live_row = live_by_key[k]
+
+        # Walk all 15 columns, classify each mutation.
+        col_count = max(len(snap_row), len(live_row))
+        for c_idx in range(col_count):
+            snap_val = cell(snap_row, c_idx)
+            live_val = cell(live_row, c_idx)
+            if c_idx == COL_C_STATUS:
+                cls = classify_status_mutation(snap_val, live_val)
+            elif c_idx == COL_A_WEEK_HEADER:
+                # Col A on an event row is always empty; ignore.
+                continue
+            else:
+                cls = classify_generic_mutation(c_idx, snap_val, live_val)
+
+            if cls == "noop" or cls == "allowed":
+                continue
+            if cls == "hard":
+                hard_count += 1
+                failures.append(
+                    f"HARD mutation on event {k} col {c_idx} "
+                    f"({_col_letter(c_idx)}): snapshot={snap_val!r} → "
+                    f"live={live_val!r}. This is the 2026-05-10 stomp pattern. "
+                    f"Event: {cell(snap_row, COL_D_NAME)[:60]!r}"
+                )
+            else:  # soft
+                soft_count += 1
+                if verbose:
+                    print(
+                        f"[check_b] SOFT mutation on event {k} col "
+                        f"{_col_letter(c_idx)}: snapshot={snap_val!r} → "
+                        f"live={live_val!r}",
+                        file=sys.stderr,
+                    )
+
+    if hard_count > MAX_HARD_CELL_MUTATIONS:
+        # Failures already appended above; nothing more to add here.
+        pass
+
+    if soft_count > MAX_SOFT_CELL_MUTATIONS:
+        failures.append(
+            f"too many soft cell mutations: {soft_count} > "
+            f"MAX_SOFT_CELL_MUTATIONS ({MAX_SOFT_CELL_MUTATIONS}). Likely "
+            f"wide-area cell rewrite. Re-run with --verbose to enumerate."
+        )
+
+    return failures
+
+
+def _col_letter(idx: int) -> str:
+    """0-indexed column number → letter (A, B, ..., O)."""
+    if 0 <= idx < 26:
+        return chr(ord("A") + idx)
+    return f"col{idx}"
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+
 def main() -> int:
     args = sys.argv[1:]
+    verbose = "--verbose" in args
     if "--date" in args:
         idx = args.index("--date")
         run_date = datetime.fromisoformat(args[idx + 1]).date()
@@ -100,8 +535,9 @@ def main() -> int:
 
     failures: list[str] = []
 
-    # Check 1: Pre-run snapshot exists
+    # Load snapshot
     snap_path = snapshot_path(run_date)
+    snapshot: dict | None = None
     snapshot_count: int | None = None
     if not os.path.exists(snap_path):
         failures.append(
@@ -111,17 +547,19 @@ def main() -> int:
     else:
         try:
             with open(snap_path) as f:
-                snap = json.load(f)
-            snapshot_count = int(snap.get("row_count", -1))
+                snapshot = json.load(f)
+            snapshot_count = int(snapshot.get("row_count", -1))
             if snapshot_count < 0:
                 failures.append(
-                    f"snapshot at {snap_path} has invalid row_count: {snap.get('row_count')!r}"
+                    f"snapshot at {snap_path} has invalid row_count: "
+                    f"{snapshot.get('row_count')!r}"
                 )
                 snapshot_count = None
         except (OSError, json.JSONDecodeError, ValueError) as exc:
             failures.append(f"could not parse snapshot at {snap_path}: {exc}")
 
-    # Check 2: Live sheet readable
+    # Load live sheet
+    live_rows: list[list[str]] | None = None
     live_count: int | None = None
     try:
         live_rows = get_pipeline_data_rows(SHEET_ID, TAB, DATA_RANGE)
@@ -129,7 +567,7 @@ def main() -> int:
     except Exception as exc:
         failures.append(f"could not read live Pipeline tab: {exc}")
 
-    # Check 3: Row-count delta within tolerance
+    # Check 1: Row-count delta within tolerance (legacy guard, preserved)
     if snapshot_count is not None and live_count is not None:
         delta = snapshot_count - live_count  # positive = rows lost
         if delta > MAX_ARCHIVAL_DELTA:
@@ -149,6 +587,23 @@ def main() -> int:
                 f"{snapshot_count}. Total wipe. Restore immediately."
             )
 
+    # Check A: Header positions (2026-05-10 displacement guard)
+    if snapshot is not None and live_rows is not None:
+        anchor_year = run_date.year
+        failures.extend(
+            check_header_positions(
+                snapshot.get("rows", []), live_rows, anchor_year, verbose=verbose
+            )
+        )
+
+    # Check B: Cell mutations (2026-05-10 status-stomp guard)
+    if snapshot is not None and live_rows is not None:
+        failures.extend(
+            check_cell_mutations(
+                snapshot.get("rows", []), live_rows, verbose=verbose
+            )
+        )
+
     if failures:
         print(
             f"CONFERENCE-DISCOVERY VALIDATOR FAILED for {run_date}:",
@@ -162,7 +617,13 @@ def main() -> int:
     print(f"  snapshot: {snap_path}")
     print(f"  pre-run rows: {snapshot_count}")
     print(f"  live rows: {live_count}")
-    print(f"  delta: {snapshot_count - live_count} (tolerance: {MAX_ARCHIVAL_DELTA})")
+    if snapshot_count is not None and live_count is not None:
+        print(
+            f"  delta: {snapshot_count - live_count} (tolerance: "
+            f"{MAX_ARCHIVAL_DELTA})"
+        )
+    print("  header positions: OK")
+    print("  cell mutations: OK")
     return 0
 
 

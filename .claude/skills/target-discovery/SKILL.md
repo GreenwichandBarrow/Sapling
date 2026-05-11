@@ -73,7 +73,7 @@ Invoke skill/list-builder with ICP parameters. Apollo finds companies matching i
 
 **Supplemental: Free Sources**
 Apollo won't find everything. Also search:
-- **Association directories** — member lists, state licensing board registries
+- **Association directories** — member lists, state licensing board registries (see Niche Directory Scraper below for the deeper-tier pattern)
 - **Conference exhibitor lists** — from conference-discovery skill outputs
 - **Web search** — search ALL niche aliases for companies Apollo missed
 - **Existing intelligence** — Attio pipeline, vault entities, niche one-pagers
@@ -90,7 +90,36 @@ Apollo won't find everything. Also search:
 - Supplemental sources: association directories, web search for "{niche} companies", LinkedIn company search, conference exhibitor lists, state licensing board registries
 - Target: discover enough candidates to fill the sheet with a solid initial batch (or refill batch when weekly review triggers a run)
 - Log in the briefing: "Apollo returned {n} candidates across {n} keyword searches. Supplemental sources added {n} more."
-- If total candidates (Apollo + supplemental) is still < 10 after exhausting all sources, log it as a niche intelligence signal — the niche may be smaller than estimated
+- If total candidates (Apollo + supplemental) is still < 10 after exhausting all sources, escalate to the Niche Directory Scraper below before logging the niche as undersized
+
+#### Niche Directory Scraper (deepest tier — invoke when supplemental web research still falls short)
+
+Some niches live in directories that Apollo and Google can't index well: association member rosters behind member-only auth, state license registries with search-box-only access, certification board lookups, Cloudflare-protected lists. This pattern (imported from the 2026-05-06 Clay + Claude Code GTM session, see [[calls/2026-05-06-clay-gtm]]) fills that gap.
+
+**When to invoke:**
+- Apollo returned < 10 candidates after exhausting keyword variations, AND
+- Supplemental web research (association directories via Google, conference lists, LinkedIn company search) also failed to push the count to a solid batch, OR
+- Apollo returned 500+ broad results most of which aren't actually in-niche (signal: the niche is keyword-noisy and a curated directory will outperform keyword search)
+
+**What it does:**
+Spawn a Claude-Code browser-scraping sub-agent against a specific directory URL (NJPMA member roster, state pest-control license registry, association directory, certification board, etc.). The sub-agent:
+1. Handles the directory's access pattern (public, paginated, member-tier login, search-box-only, Cloudflare-fronted)
+2. Extracts company names + websites + (where listed) contact name and title
+3. Parses name-format variations within that directory's own conventions
+4. De-dupes scraped rows against the existing target sheet before any handoff
+5. Hands the clean company list back to skill/list-builder, which runs Apollo organization-search + people-match for email enrichment
+
+**Pattern requirements:**
+- The scraper writes nothing to the target sheet directly. Every scraped company flows through list-builder's Apollo enrichment first. Half-enriched rows never hit the sheet.
+- Treat the directory's name conventions as authoritative for company-name match — fuzzy-match into Apollo, don't force the directory to match Apollo.
+- If a row can't be enriched to the write gate after the scrape + Apollo pass, log it as "could not enrich (scraped from {directory})" and skip. Don't add stubs.
+- Respect the directory's terms of access. Member-tier directories require Kay's membership; don't bypass auth she doesn't have.
+
+**Initial pilot niche:** Premium Pest Management (JJ-Call-Only). Apollo coverage has been weakest here. Start with the NJPMA member directory plus state pest-control license registries for NY, NJ, PA, CT.
+
+**Token-budget note:** Browser scraping inside Claude Code burns meaningful context. Do NOT auto-fire the scraper on every active niche. The gate is the existing "Apollo returned < 10 candidates after exhausting keyword variations" trigger plus a failed supplemental-web pass — only then does the scraper run.
+
+**Implementation:** This SKILL.md documents the pattern only. The actual scraper sub-agent is a separate downstream build on Kay's tracker.
 
 ### Step 2: Enrich Each Target (Inline — Before Writing to Sheet)
 

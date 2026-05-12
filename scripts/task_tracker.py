@@ -6,10 +6,12 @@ Subcommands:
     append                  Add a row to the To Do tab.
     promote                 Move a To Do row into a specific day-slot on the live week tab.
     schedule-to-day-slot    Direct write to a day-slot (no To Do source row required).
+    sync-done-status        Reconcile checked weekly slots → matching To Do rows (text-match).
     archive                 Sunday rollover ceremony — duplicate live week tab to a
                             far-right archive tab, rename live to next week, clear data.
     archive-todo            Sweep checked rows from To Do tab into a running
-                            "Completed To Do" tab (created on first run).
+                            "Completed To Do" tab (created on first run). Auto-runs
+                            sync-done-status first (skip with --skip-sync).
     projects-create-gantt   Create a new Gantt project tab cloning the
                             Myself Renewed Healthcare structure; updates Projects index.
     reformat                Re-apply conditional formatting + dropdowns + checkboxes.
@@ -673,10 +675,200 @@ def cmd_archive(args) -> int:
     return 0
 
 
+def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
+                         _meta: dict | None = None) -> int:
+    """Reconcile checked weekly slots → matching To Do rows by exact task-text match.
+
+    For each non-empty priority slot across the live week tab whose status checkbox is
+    TRUE, find the matching To Do row (case-sensitive, leading/trailing whitespace
+    stripped) and flip its status to TRUE. The existing CF rule paints strikethrough +
+    sage-light fill. Ambiguous matches (>1 To Do row with same task text) are flagged
+    and skipped — Kay resolves manually.
+
+    Note on the "→" case from the spec: the To Do Status column is a native Sheets
+    checkbox (boolean only). The `promote` verb writes its "→ promoted to {day} slot N"
+    marker into the Notes column, not Status. So a previously-promoted row's Status
+    is FALSE — the standard FALSE → TRUE flip handles it. No string "→" state exists.
+    """
+    client = _client or SheetsClient()
+    meta = _meta or client.get_metadata()
+    week_props = find_live_week_tab(meta)
+    if week_props is None:
+        sys.exit("task-tracker-manager: live week tab not found")
+    week_title = week_props["title"]
+
+    # 1. Walk weekly slots — read status + task pair per day in two batched ranges per day.
+    weekly_checked: list[dict] = []  # one entry per (day, slot) where checkbox=TRUE and task non-empty
+    weekly_slots_scanned = 0
+    for day_idx in range(7):
+        sc = col_letter(LIVE_DAY_STAT[day_idx])
+        tc = col_letter(LIVE_DAY_TASK[day_idx])
+        status_vals = client.get_values(
+            f"'{week_title}'!{sc}{LIVE_SLOT_FIRST_ROW}:{sc}{LIVE_SLOT_LAST_ROW}"
+        )
+        task_vals = client.get_values(
+            f"'{week_title}'!{tc}{LIVE_SLOT_FIRST_ROW}:{tc}{LIVE_SLOT_LAST_ROW}"
+        )
+        for slot_i in range(15):
+            status = status_vals[slot_i][0] if slot_i < len(status_vals) and status_vals[slot_i] else ""
+            task = task_vals[slot_i][0] if slot_i < len(task_vals) and task_vals[slot_i] else ""
+            task_text = (task or "").strip() if isinstance(task, str) else ""
+            if not task_text:
+                continue
+            weekly_slots_scanned += 1
+            if _is_truthy(status):
+                weekly_checked.append({
+                    "day": DAY_LABELS[day_idx],
+                    "slot": slot_i + 1,
+                    "task_text": task_text,
+                })
+
+    # 2. Walk To Do tab — build {task_text(stripped): [row_indices]} dict.
+    todo_rows = client.get_values(f"'{TAB_TODO}'!A2:F{TODO_MAX_ROWS}")
+    todo_by_task: dict[str, list[dict]] = {}
+    for i, row in enumerate(todo_rows):
+        task = row[1] if len(row) > 1 else ""
+        if not isinstance(task, str):
+            continue
+        key = task.strip()
+        if not key:
+            continue
+        status = row[0] if len(row) > 0 else ""
+        todo_by_task.setdefault(key, []).append({
+            "row": 2 + i,  # 1-based
+            "status": status,
+            "is_truthy": _is_truthy(status),
+        })
+
+    # 3. Match + classify.
+    to_sync: list[dict] = []  # rows to flip TRUE
+    ambiguities: list[dict] = []
+    schedule_only_skipped = 0
+    already_true = 0
+    for w in weekly_checked:
+        matches = todo_by_task.get(w["task_text"])
+        if not matches:
+            schedule_only_skipped += 1
+            continue
+        if len(matches) > 1:
+            ambiguities.append({
+                "task_text": w["task_text"],
+                "rows": [m["row"] for m in matches],
+                "day": w["day"],
+                "slot": w["slot"],
+            })
+            continue
+        m = matches[0]
+        if m["is_truthy"]:
+            already_true += 1
+            continue
+        to_sync.append({
+            "row": m["row"],
+            "task_text": w["task_text"],
+            "day": w["day"],
+            "slot": w["slot"],
+        })
+
+    # Dedup to_sync — if two weekly slots checked same task (rare), one write is enough.
+    seen_rows: set[int] = set()
+    deduped: list[dict] = []
+    for s in to_sync:
+        if s["row"] in seen_rows:
+            continue
+        seen_rows.add(s["row"])
+        deduped.append(s)
+    to_sync = deduped
+
+    # 4. Snapshot To Do Status column BEFORE any write — always, even no-op (audit trail).
+    # If snapshot write fails the helper raises and the verb aborts.
+    snap = snapshot_ranges(client, "sync-done-status", [
+        f"'{TAB_TODO}'!A2:A{TODO_MAX_ROWS}",
+    ])
+
+    # 5. Apply writes (or skip in dry-run).
+    rows_synced = 0
+    if to_sync and not args.dry_run:
+        # Use batch_update with updateCells for boolValue TRUE — values_update treats
+        # "TRUE" as a string in USER_ENTERED mode unless we send raw bool which causes
+        # the checkbox to flip correctly via the existing data-validation rule.
+        todo_tab = find_tab(meta, TAB_TODO)
+        if todo_tab is None:
+            sys.exit(f"task-tracker-manager: '{TAB_TODO}' tab not found")
+        todo_sid = todo_tab["sheetId"]
+        batch: list[dict] = []
+        for s in to_sync:
+            batch.append({
+                "updateCells": {
+                    "rows": [{"values": [{"userEnteredValue": {"boolValue": True}}]}],
+                    "fields": "userEnteredValue",
+                    "start": {"sheetId": todo_sid, "rowIndex": s["row"] - 1, "columnIndex": TODO_COL_STATUS},
+                }
+            })
+        client.batch_update(batch)
+        rows_synced = len(to_sync)
+
+    # 6. Print summary.
+    prefix = "task-tracker-manager: sync-done-status"
+    if args.dry_run:
+        prefix += " (DRY RUN)"
+    print(f"{prefix} complete")
+    print(f"  Weekly slots scanned: {weekly_slots_scanned}")
+    print(f"  Slots checked TRUE: {len(weekly_checked)}")
+    if args.dry_run:
+        would = len(to_sync)
+        print(f"  To Do rows WOULD sync: {would}")
+    else:
+        print(f"  To Do rows synced: {rows_synced}")
+    print(f"  Already-TRUE no-ops: {already_true}")
+    print(f"  Ambiguities flagged: {len(ambiguities)}")
+    print(f"  Schedule-only items skipped: {schedule_only_skipped}")
+    print(f"  Snapshot: {snap}")
+    for amb in ambiguities:
+        print(f'  AMBIGUITY: "{amb["task_text"]}" matches To Do rows {amb["rows"]} '
+              f'(checked from {amb["day"]} slot {amb["slot"]})')
+
+    # 7. Trace only if real change occurred (>0 rows synced) AND not dry-run.
+    if rows_synced > 0 and not args.dry_run:
+        lines = [
+            f"- rows synced: {rows_synced}",
+            f"- weekly slots scanned: {weekly_slots_scanned}",
+            f"- weekly slots TRUE: {len(weekly_checked)}",
+            f"- schedule-only skipped: {schedule_only_skipped}",
+            f"- already-TRUE no-ops: {already_true}",
+            f"- ambiguities: {len(ambiguities)}",
+            "",
+            "**Synced:**",
+        ]
+        for s in to_sync:
+            lines.append(f"- row {s['row']}: \"{s['task_text']}\" (from {s['day']} slot {s['slot']})")
+        if ambiguities:
+            lines.append("")
+            lines.append("**Ambiguities (NOT written, resolve manually):**")
+            for amb in ambiguities:
+                lines.append(f"- \"{amb['task_text']}\" → rows {amb['rows']}")
+        lines.append("")
+        lines.append(f"- snapshot: {snap}")
+        lines.append(f"- rollback: replay snapshot ranges from {snap}")
+        trace("sync-done-status", f"synced-{rows_synced}", lines)
+
+    return 0
+
+
 def cmd_archive_todo(args) -> int:
-    """Sweep checked rows from To Do tab → 'Completed To Do' tab (created on first run)."""
+    """Sweep checked rows from To Do tab → 'Completed To Do' tab (created on first run).
+
+    Pre-step: runs sync-done-status first (so checked weekly slots flip matching To Do
+    rows to TRUE before the sweep picks them up). Pass --skip-sync to bypass.
+    """
     client = SheetsClient()
     meta = client.get_metadata()
+
+    # Pre-step: sync-done-status (unless --skip-sync).
+    if not getattr(args, "skip_sync", False):
+        sync_args = argparse.Namespace(dry_run=False)
+        cmd_sync_done_status(sync_args, _client=client, _meta=meta)
+        # Re-fetch metadata after sync (no schema changes, but cheap insurance).
+        meta = client.get_metadata()
 
     # Read all To Do rows
     todo_rows = client.get_values(f"'{TAB_TODO}'!A2:F{TODO_MAX_ROWS}")
@@ -1215,7 +1407,17 @@ def main():
     ar.set_defaults(func=cmd_archive)
 
     at = sub.add_parser("archive-todo")
+    at.add_argument("--skip-sync", action="store_true",
+                    help="skip the auto sync-done-status pre-step (rare)")
     at.set_defaults(func=cmd_archive_todo)
+
+    sds_sync = sub.add_parser(
+        "sync-done-status",
+        help="Reconcile checked weekly slots → matching To Do rows by exact task-text match.",
+    )
+    sds_sync.add_argument("--dry-run", action="store_true",
+                          help="report what would change without writing")
+    sds_sync.set_defaults(func=cmd_sync_done_status)
 
     sds = sub.add_parser("schedule-to-day-slot")
     sds.add_argument("--task", required=True)

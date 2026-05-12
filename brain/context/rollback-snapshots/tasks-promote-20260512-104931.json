@@ -1,0 +1,19 @@
+{
+  "verb": "promote",
+  "timestamp": "20260512-104931",
+  "sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
+  "ranges": {
+    "'To Do'!A62:F62": [
+      [
+        false,
+        "ZZZ_AMBIG_TEST_1778597363",
+        "Work"
+      ]
+    ],
+    "'May 11-17'!B31:C31": [
+      [
+        false
+      ]
+    ]
+  }
+}

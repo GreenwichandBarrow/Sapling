@@ -1,0 +1,22 @@
+{
+  "verb": "promote",
+  "timestamp": "20260512-104856",
+  "sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
+  "ranges": {
+    "'To Do'!A61:F61": [
+      [
+        false,
+        "ZZZ_SMOKE_TEST_sync_done_1778597320",
+        "Work",
+        "G&B",
+        "",
+        "smoke test - delete after"
+      ]
+    ],
+    "'May 11-17'!B30:C30": [
+      [
+        false
+      ]
+    ]
+  }
+}

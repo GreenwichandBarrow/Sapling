@@ -1,13 +1,15 @@
 ---
 name: task-tracker-manager
-description: Owns Kay's personal Excel task tracker (TO DO M.DD.YY.xlsx) — single capture point + per-day priority slots + Gantt project tabs. Append items, promote items into specific day-of-week slots, run the Sunday archive/rollover ceremony, re-apply conditional formatting after manual edits, and surface a To Do health report (overdue / empty slots / weekly carryover). Reports to Chief of Staff. NOT operational sheets — that's tracker-manager.
+description: Owns Kay's personal task tracker — Google Sheet (TO DO 5.12.26) — single capture point + per-day priority slots + Gantt project tabs. Append items, promote items into specific day-of-week slots, run the Sunday archive/rollover ceremony, re-apply conditional formatting after manual edits, and surface a To Do health report (overdue / empty slots / weekly carryover). Reports to Chief of Staff. NOT operational sheets — that's tracker-manager.
 ---
 
 # Task Tracker Manager
 
-Standing owner of Kay's personal task system. The file lives in Drive (`/Users/kaycschneider/My Drive/STRATEGIC PLANNING/TO DO M.DD.YY.xlsx`). Built 2026-04-26 to replace Motion. This skill is the operational layer — Chief of Staff calls into it, this skill executes.
+Standing owner of Kay's personal task system. The tracker lives in Google Sheets — title `TO DO 5.12.26`, id `1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk`, in the `STRATEGIC PLANNING` Drive folder. Built 2026-04-26 on Excel, **migrated to Google Sheets 2026-05-12** for browser-native access from any device. This skill is the operational layer — Chief of Staff calls into it, this skill executes.
 
 Architecture lives in `memory/project_personal_task_tracker.md`. Update that memory whenever the architecture changes.
+
+**Sheet ID env override:** Scripts read `TRACKER_SHEET_ID` from env if set, otherwise default to the constant above. Future rebuilds: update the constant + set `TRACKER_SHEET_ID` to the new id.
 
 ## When to invoke
 
@@ -22,12 +24,12 @@ Architecture lives in `memory/project_personal_task_tracker.md`. Update that mem
 - `goodmorning` capture pass → batch **append** for items surfaced in email-intelligence + open loops from yesterday's session-decisions
 - Kay says "Healthcare milestone N done" / "tick week K on {project}" → **gantt-tick**
 
-## File scope — owns ONE file
+## File scope — owns ONE sheet
 
-| File | Path | Owned? |
+| File | Location | Owned? |
 |---|---|---|
-| Personal task tracker | `~/My Drive/STRATEGIC PLANNING/TO DO M.DD.YY.xlsx` | YES |
-| Backup template | `~/My Drive/MANAGER DOCUMENTS/G&B MASTER TEMPLATES/TO DO TEMPLATE.xlsx` | Read-only reference |
+| Personal task tracker | Google Sheet `TO DO 5.12.26` (id `1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk`) in `STRATEGIC PLANNING` Drive folder | YES |
+| Legacy Excel (read-only) | `~/My Drive/STRATEGIC PLANNING/TO DO 4.26.26.xlsx` — preserved as historical artifact; do not write | Read-only reference |
 
 Out of scope: Industry Research Tracker, DealsX, target lists, vault, briefs. Those belong to other skills.
 
@@ -75,10 +77,10 @@ python3 scripts/task_tracker.py promote \
 Run from `goodnight` on Sunday evening.
 
 1. Reads the live week tab name (e.g., `Apr 27-May 3`).
-2. Clones the live tab to an archive sheet `archive_{week-label}` (deep-copy of all values, styles, and merged ranges).
+2. Duplicates the live tab to an archive sheet `archive_{week-label}` via the Sheets API `duplicateSheet` request — all values, formats, conditional formatting, and merges carry over.
 3. **Leaves the archive sheet VISIBLE and parks it at the far right** of the tab strip so the live tab + reference tabs stay easy to find. (Hidden archives were rejected by Kay 2026-05-11 — she wants to scroll right to see past weeks.)
-4. Renames the live tab to the upcoming week's label. **Monday edge case handled**: if `archive` runs on a Monday, the new live tab uses today (the current Monday), not today+7 (next Monday) — fix landed 2026-05-11 after the apply-all subagent had to manually rename a misfired tab.
-5. Clears: habit checkmarks (rows 7-13 → ☐), priority status cells (rows 23-37 col `sc` → ☐), priority task text (cols `tc` → empty), notes block (rows 40-47).
+4. Renames the live tab to the upcoming week's label. **Monday edge case handled**: if `archive` runs on a Monday, the new live tab uses today (the current Monday), not today+7 (next Monday).
+5. Clears: habit checkboxes, priority status checkboxes, priority task text, notes block (all back to empty / unchecked).
 6. Posts a one-liner to Slack `#operations` confirming the rollover with the new week label.
 
 ### 3b. archive-todo (sweep ✅ rows out of To Do)
@@ -87,7 +89,7 @@ Run from `goodnight` on Sunday evening.
 python3 scripts/task_tracker.py archive-todo
 ```
 
-Idempotent. Creates the **Completed To Do** tab on first run (mirror of To Do schema + a `Completed` date column in H), then sweeps every ✅ row out of the To Do tab and appends it at the first empty row in Completed To Do, stamping today's date. Cleared rows on the To Do side keep their numbered position (status/task/type/project/due/notes all wiped). Safe to run on any day, but the canonical trigger is **Sunday evening as part of `goodnight`**, alongside the `archive` ceremony.
+Idempotent. Creates the **Completed To Do** tab on first run (mirror of To Do schema + a trailing `Completed` date column), then sweeps every checked row out of the To Do tab and appends it to Completed To Do, stamping today's date. Cleared rows on the To Do side keep their numbered position (Status/Task/Type/Project/Due/Notes all wiped). Safe to run on any day, but the canonical trigger is **Sunday evening as part of `goodnight`**, alongside the `archive` ceremony.
 
 ### 4. schedule-to-day-slot (direct write, no To Do source)
 
@@ -101,7 +103,7 @@ python3 scripts/task_tracker.py schedule-to-day-slot \
 - `--day` accepts Mon..Sun
 - `--slot` is 1..15 — **optional**; if omitted, the verb auto-picks the first empty slot for that day. (This is the single-step alternative to `append` → `promote`.)
 - Refuses to overwrite an occupied slot unless `--force` is passed.
-- Status cell auto-fills with ☐.
+- Status cell auto-fills as an unchecked native Sheets checkbox.
 
 ### 5. projects-create-gantt
 
@@ -116,22 +118,22 @@ python3 scripts/task_tracker.py projects-create-gantt \
   --notes "Re-plan dedicated session Tue 5/12"
 ```
 
-- Creates a new Gantt project tab cloning the **Myself Renewed Healthcare** structure: title (B2), subtitle (B3), header row 5 with Status/Milestone/Start/Target/Notes + N weekly Monday-anchored columns starting from the Monday of `--start`.
-- 10 blank milestone rows (6..15) scaffolded with ☐ checkboxes ready for fill-in.
-- Conditional formatting: week-cell ✅ → entity-color fill (builds the Gantt bar); milestone-row ✅ → muted/strikethrough.
+- Creates a new Gantt project tab cloning the **Myself Renewed Healthcare** structure: title (row 2), subtitle (row 3), header row 5 with Status/Milestone/Start/Target/Notes + N weekly Monday-anchored columns starting from the Monday of `--start`.
+- 10 blank milestone rows scaffolded with native Sheets checkboxes in the Status column ready for fill-in.
+- Conditional formatting: week-cell checked → entity-color fill (builds the Gantt bar); milestone-row checked → muted/strikethrough.
 - Entity colors: Home / G&B / Myself Renewed / Kai Grey / Panthera Grey (defaults to G&B sage if unknown).
 - Updates the Projects index: appends a new row if the project isn't there, or updates the existing row's `Tab` HYPERLINK if it already exists (preserves notes from the prior row).
-- Excel rules enforced: tab name ≤31 chars, no `:\/?*[]`.
+- Tab name validation: no `:\/?*[]` characters.
 
 ### 4. reformat
 
-Re-apply conditional formatting + fix donuts when manual Excel edits broke them. Also runs on the first invocation after the legacy donut-chart layout (replaces donuts with big % display in the merged anchor cells rows 17-21).
+Re-apply conditional formatting (strikethrough/sage-light done-row fill across Live Week priorities, habits, To Do, To Do Long Term) after a manual edit broke a rule.
 
 ```bash
 python3 scripts/task_tracker.py reformat
 ```
 
-Idempotent — safe to run more than once. Calls into `scripts/maintain_tasks_excel.py` core logic.
+Idempotent — safe to run more than once. Adds the canonical rules; does not delete pre-existing ones.
 
 ### 5. report
 
@@ -140,16 +142,17 @@ Surface a To Do health summary. Returns markdown. Used by Friday briefing + on-d
 Output shape:
 ```
 ## Tracker health (as of {date})
-- {N} overdue (Due before today, Status not ✅)
+- {N} overdue (Due before today, Status unchecked)
 - {N} unscheduled (To Do tab, no Due, sitting > 7 days)
 - {N} priority slots empty for tomorrow
-- Carryover from last week: {list of items not done in last 5 priority slots, by day}
+- Carryover from last week: {list of items not done in last week, by day}
 - Stale projects (no tick on Gantt in 14+ days): {project list}
+- Sheet: <url>
 ```
 
 ### 6. gantt-tick
 
-Fill a week-cell on a Gantt project tab.
+Tick a week-cell on a Gantt project tab.
 
 ```bash
 python3 scripts/task_tracker.py gantt-tick \
@@ -158,7 +161,7 @@ python3 scripts/task_tracker.py gantt-tick \
   --week-col K
 ```
 
-Sets the cell to `✅` so the conditional-format fills it with the entity color, building the Gantt bar.
+Sets the cell to a checked native Sheets checkbox; conditional-format fills it with the entity color, building the Gantt bar.
 
 ## Decision matrix — auto-execute vs surface-for-approval
 
@@ -179,18 +182,18 @@ Sets the cell to `✅` so the conditional-format fills it with the entity color,
 
 ## Hard guardrails — always
 
-1. **Backup before any write.** Copy the live xlsx to `~/My Drive/STRATEGIC PLANNING/TO DO M.DD.YY.bak.{timestamp}.xlsx` before opening for write. Keep last 5 backups, prune older.
-2. **File-lock check.** Before opening for write, `lsof` the file. If Excel has a handle on it, error out with "Excel has the file open — close it first" and surface to Kay. Never blind-overwrite a file Excel is editing (Excel's autosave will clobber our write or vice versa).
-3. **Never rerun build_tasks_excel.py on a populated file.** That script wipes data. Only the rebuild path uses it — and only after a backup.
-4. **Trace decision-content writes** to `brain/traces/{date}-task-tracker-{verb}-{slug}.md` with what changed + rollback path (`cp` from the backup). Trace emission applies ONLY to `archive`, `rollback`, and `reformat` verbs — those carry decision content. The `append` verb does NOT emit a trace; its rollback line is routed to `logs/scheduled/task-tracker-{date}.log` instead. Rationale: `append` traces are rollback receipts (task + row + .bak path), not decisions, and they pollute calibration input. Source: 2026-05-08 calibration — 6 of 35 traces (17%) in the prior batch were `append` receipts (`brain/traces/2026-05-02-task-tracker-append-*`).
-5. **Tab-name validation.** Excel forbids `:\/?*[]` in tab names and caps at 31 chars. Any rename calls `validate_tab_name(name)` before applying.
-6. **No openpyxl chart objects on the week tab.** They render blank on Excel-Mac. Use cell-based % display instead (path C decision, 2026-05-01).
+1. **Snapshot affected ranges before any write.** Each mutating verb saves the pre-write state of the ranges it touches to `brain/context/rollback-snapshots/tasks-{verb}-{timestamp}.json`. Keep last 5 snapshots per verb, prune older. Rollback path is: read snapshot JSON, replay each range via `values.update`.
+2. **API quota backoff.** Every Sheets API call is wrapped with exponential backoff (5 attempts, 1s..16s) on 429 / 5xx responses. Drop the failure cleanly with a `task-tracker-manager: API error <code>` message if it still fails.
+3. **Never wipe data on a populated tab.** No bulk-delete or bulk-clear without a snapshot. The `archive` verb is the only verb that clears the live week's data, and it duplicates the tab first.
+4. **Trace decision-content writes** to `brain/traces/{date}-task-tracker-{verb}-{slug}.md` with what changed + snapshot path. Trace emission applies ONLY to `archive`, `archive-todo`, `promote`, `schedule-to-day-slot`, `projects-create-gantt`, and `reformat` verbs — those carry decision content. The `append` verb does NOT emit a trace; its rollback line is routed to `logs/scheduled/task-tracker-{date}.log` instead. Rationale: `append` traces are rollback receipts (task + row + snapshot path), not decisions, and they pollute calibration input. Source: 2026-05-08 calibration — 6 of 35 traces (17%) in the prior batch were `append` receipts.
+5. **Tab-name validation.** No `:\/?*[]` characters in tab names. (Google Sheets is more permissive than Excel — no 31-char cap — but keep the character ban for readability.)
+6. **Use native Sheets primitives, never Unicode glyphs.** Checkboxes are native (Data Validation → Checkbox). Dropdowns are native (Data Validation → Dropdown). Conditional formatting is native rules, not formulas-as-text. Done items render via CF rules tied to the checkbox state, not via inserted ✅ characters.
 
 ## Output expectations
 
 - Every successful write ends with a single-line confirmation echoed to the Chief of Staff: `task-tracker-manager: appended row 12 ("Draft brochure for LF" / Work / Kai Grey / 2026-05-08)`.
 - Every refused write ends with a single-line reason: `task-tracker-manager: refused promote — Wed slot 3 already contains "Vivienne board prep"`.
-- Trace files are mandatory for `archive`, `rollback`, and `reformat` (decision-content verbs). The `append` verb writes its rollback line to `logs/scheduled/task-tracker-{date}.log`, NOT to `brain/traces/` — append receipts are not decisions and pollute calibration input (2026-05-08 calibration). `promote`, `gantt-tick`, and `report` traces remain optional.
+- Trace files are mandatory for `archive`, `archive-todo`, `promote`, `schedule-to-day-slot`, `projects-create-gantt`, and `reformat` (decision-content verbs). The `append` verb writes its rollback line to `logs/scheduled/task-tracker-{date}.log`, NOT to `brain/traces/` — append receipts are not decisions and pollute calibration input (2026-05-08 calibration). `gantt-tick` and `report` traces remain optional.
 
 ## Standard workflow — append example
 
@@ -200,7 +203,7 @@ When Kay says "add 'draft Calder follow-up' to To Do":
 2. Chief of Staff RECOMMENDs: `Add to To Do — "Draft Calder follow-up" / Work / G&B / no due → YES / NO`.
 3. Kay says YES.
 4. Skill runs `python3 scripts/task_tracker.py append --task "Draft Calder follow-up" --type Work --project "G&B"`.
-5. Skill backs up file, validates Excel is closed, writes the row, verifies via read-back, writes a trace, echoes confirmation.
+5. Skill snapshots the target row range, writes the new row via `values.update`, writes the rollback receipt to `logs/scheduled/task-tracker-{date}.log`, echoes confirmation with row number.
 
 ## Schedule integration
 
@@ -214,6 +217,7 @@ When Kay says "add 'draft Calder follow-up' to To Do":
 
 ## Failure modes to watch
 
-- Drive sync conflict: if Drive shows `(1)` or `(conflict)` suffix on the file, stop and surface — never write to a conflict copy.
-- Tab name collision on archive: if `archive_{week-label}` already exists from a prior failed rollover, append `_v2`, `_v3`, etc.
-- Conditional formatting drift: if `reformat` reports >2 sheets had missing rules, that's a sign manual editing broke things — note in the trace and consider scheduling a `reformat` on the next briefing.
+- Sheets API quota exhaustion: retried 5x with exponential backoff. If still failing, surface to Kay as `task-tracker-manager: API error <code>` — don't half-finish a verb.
+- Auth failure (gog refresh token revoked): script exits with `task-tracker-manager: gog token export failed`. Fix via `gog auth login` for the kay.s account.
+- Tab name collision on archive: if `archive_{week-label}` already exists from a prior failed rollover, append `_v2`, `_v3`, etc. (already handled in code).
+- Conditional formatting drift: if a manual edit removed a CF rule, run `reformat` — it re-adds the canonical rules. Note that `reformat` is additive only — duplicate rules may stack. Manually delete duplicates in the Sheet UI if they accumulate.

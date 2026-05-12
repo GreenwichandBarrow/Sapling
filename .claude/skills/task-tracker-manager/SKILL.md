@@ -69,7 +69,7 @@ python3 scripts/task_tracker.py promote \
 
 - `--day` accepts Mon/Tue/Wed/Thu/Fri/Sat/Sun
 - `--slot` is 1-15 (rows 23-37 on the week tab)
-- Copies the task text from To Do col C into the day's priority task cell, leaves the To Do row in place but flips its status to `→` (moved indicator) so it's visually de-prioritized but still readable.
+- Copies the Task field from the To Do row into the day's priority task cell, leaves the To Do row in place but prepends a `→ promoted to {day} slot {N} on {date}` marker to its Notes field so it's visually de-prioritized but still readable.
 - Refuses to overwrite a non-empty priority slot (shows current contents, errors out).
 
 ### 3. archive (Sunday rollover ceremony)

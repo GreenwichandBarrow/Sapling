@@ -1,4 +1,12 @@
-"""Build Kay's personal task tracker Excel file.
+"""DEPRECATED 2026-05-12 — Excel build path retired.
+
+The personal task tracker migrated from Excel to Google Sheets on 2026-05-12.
+Use scripts/build_tasks_sheet.py for any future rebuild. This file is preserved
+for reference only; do not run.
+
+----
+
+Build Kay's personal task tracker Excel file.
 
 Three tabs:
   - This Week:

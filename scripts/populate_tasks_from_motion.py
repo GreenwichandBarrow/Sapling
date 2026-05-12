@@ -1,4 +1,9 @@
-"""Populate To Do + To Do Long Term + Projects index in TO DO 4.26.26.xlsx
+"""DEPRECATED 2026-05-12 — Excel populate path retired. Migration moved tracker
+to Google Sheets. Future rebuilds use scripts/build_tasks_sheet.py.
+
+----
+
+Populate To Do + To Do Long Term + Projects index in TO DO 4.26.26.xlsx
 with Kay's triaged Motion import. Clears the data rows first, then writes
 only the approved items. Preserves charts, formulas, conditional formatting,
 and styles built by build_tasks_excel.py.

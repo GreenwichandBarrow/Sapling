@@ -1,4 +1,10 @@
-"""One-shot maintenance pass on Kay's live TO DO xlsx.
+"""DEPRECATED 2026-05-12 — Excel maintenance path retired. Migration moved
+tracker to Google Sheets. The skill's `reformat` verb (Sheets-API based) is
+the long-term equivalent.
+
+----
+
+One-shot maintenance pass on Kay's live TO DO xlsx.
 
 Does NOT rebuild the file (would wipe data). Only:
   1. Removes donut chart objects from the This Week tab.

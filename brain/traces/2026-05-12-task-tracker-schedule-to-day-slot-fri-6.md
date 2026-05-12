@@ -10,7 +10,7 @@ tags:
 ---
 # task-tracker schedule-to-day-slot — fri-6
 
-- task: Expense review: identify reduction opportunities
+- task: Granola transcript trigger: discuss architectural path with Harrison
 - placement: May 11-17 Fri slot 6 (row 28)
 - overwrote: (slot was empty)
-- snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260512-102625.json
+- snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260512-110834.json

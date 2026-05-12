@@ -1,6 +1,12 @@
 {
-  "fetched_at": "2026-05-12T15:30:04-04:00",
+  "fetched_at": "2026-05-12T16:00:04-04:00",
   "services": {
+    "launchd": {
+      "status": "error",
+      "latency_ms": null,
+      "message": "FileNotFoundError",
+      "skip_reason": null
+    },
     "attio-mcp": {
       "status": "skip",
       "latency_ms": null,
@@ -19,11 +25,11 @@
       "message": "4 webhooks configured",
       "skip_reason": null
     },
-    "launchd": {
-      "status": "error",
+    "claude-api": {
+      "status": "skip",
       "latency_ms": null,
-      "message": "FileNotFoundError",
-      "skip_reason": null
+      "message": "",
+      "skip_reason": "ANTHROPIC_API_KEY not in env"
     },
     "linkt": {
       "status": "skip",
@@ -31,46 +37,40 @@
       "message": "",
       "skip_reason": "Browser session required (no API)"
     },
-    "claude-api": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "ANTHROPIC_API_KEY not in env"
-    },
     "vault": {
       "status": "ok",
-      "latency_ms": 16,
+      "latency_ms": 13,
       "message": "842 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "error",
-      "latency_ms": 22,
+      "latency_ms": 40,
       "message": "attio-mcp=0 superhuman=0",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 94,
+      "latency_ms": 154,
       "message": "authenticated",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 157,
+      "latency_ms": 167,
       "message": "200 OK",
-      "skip_reason": null
-    },
-    "github": {
-      "status": "ok",
-      "latency_ms": 195,
-      "message": "gh authenticated",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 213,
+      "latency_ms": 190,
       "message": "HTTP 405",
+      "skip_reason": null
+    },
+    "github": {
+      "status": "ok",
+      "latency_ms": 293,
+      "message": "gh authenticated",
       "skip_reason": null
     }
   }

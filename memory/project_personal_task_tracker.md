@@ -36,7 +36,7 @@ When Kay wants a new tracker (yearly cycle, after a major schema rework, etc.), 
 
 ## Architecture — 5 tabs
 
-1. **Live week tab** — habit tracker (7 habits, Mon-Sun grid) + day grid (Mon-Sun, **big % display per day** at rows 17-21, **15 priority slots** per day, slim 8-row notes area). Each day spans 2 sub-columns: small status + wide task. Priority checkbox sits LEFT of task text in same row.
+1. **Live week tab** — habit tracker (7 habits, Mon-Sun grid) + day grid (Mon-Sun, **native donut chart per day** at rows 17-21 (pie + pieHole=0.5, driven by hidden helper tab `_donut_data`), **15 priority slots** per day, slim 8-row notes area). Each day spans 2 sub-columns: small status + wide task. Priority checkbox sits LEFT of task text in same row.
    - **Tab name = current Mon-Sun range** (e.g. `May 11-17`). Renamed each Sunday by `task_tracker.py archive`.
 2. **To Do** — single capture point for all tasks. Columns: Status (checkbox) / Task / Type (dropdown: Work or Home) / Project (dropdown: G&B, Kai Grey, Panthera Grey, Myself Renewed, Home — free text allowed) / Due (date) / Notes. Header row frozen.
 3. **To Do Long Term** — intents/someday items without hard timelines. Status dropdown options: Idea / Active / On hold / Promoted / Done. When ready to plan, promote to a Projects tab.

@@ -11,6 +11,8 @@ Architecture lives in `memory/project_personal_task_tracker.md`. Update that mem
 
 **Sheet ID env override:** Scripts read `TRACKER_SHEET_ID` from env if set, otherwise default to the constant above. Future rebuilds: update the constant + set `TRACKER_SHEET_ID` to the new id.
 
+**Live Week %-done display:** Per-day completion is rendered as 7 native Google Sheets donut charts (pie + `pieHole=0.5`) anchored in rows 17–21 of each day-pair on the Live Week tab. The math lives on the hidden helper tab `_donut_data` (header `Day | Done | Left`, one row per day, formulas `=COUNTIF(...)` and `=COUNTA(...) - COUNTIF(...)` pointing back at the Live Week status + task ranges). Charts re-render live as checkboxes toggle. Build/rebuild script: `scripts/build_donut_charts.py`. Replaced the interim "big %" merged-formula display 2026-05-12 per Kay's preference for real chart objects with a true donut hole. The Sunday `archive` ceremony must preserve the helper tab + per-day chart anchors when rolling the live tab forward — see Sunday rollover notes in `memory/project_personal_task_tracker.md`.
+
 ## When to invoke
 
 - Kay says "add to To Do" / "put X on the list" / "save this for later" → **append**

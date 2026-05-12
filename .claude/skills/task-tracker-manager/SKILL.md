@@ -18,8 +18,9 @@ Architecture lives in `memory/project_personal_task_tracker.md`. Update that mem
 - Kay says "add to To Do" / "put X on the list" / "save this for later" → **append**
 - Kay says "move {todo-row} to {day} slot {N}" (To Do → week tab) → **promote**
 - Kay says "schedule X for Wed" / "X goes on Friday" / direct day-slot drop with no To Do source row → **schedule-to-day-slot**
+- Kay says "sync done items" / "reconcile weekly to To Do" / "the weekly slots aren't matching To Do" → **sync-done-status**
 - Sunday evening as part of `goodnight` → **archive** (rollover ceremony)
-- Sunday evening as part of `goodnight` → **archive-todo** (sweep ✅ rows out of To Do tab into the Completed To Do running list; safe to run any day)
+- Sunday evening as part of `goodnight` → **archive-todo** (auto-runs `sync-done-status` first, then sweeps ✅ rows out of To Do into the Completed To Do running list; safe to run any day; skip the auto-sync with `--skip-sync`)
 - Kay says "start a project for X" / "create a Gantt for {project}" → **projects-create-gantt**
 - Kay reports a chart broke / strikethrough not firing / formatting drifted → **reformat**
 - Friday morning weekly review → **report** (carry-forward from prior week + slot capacity)

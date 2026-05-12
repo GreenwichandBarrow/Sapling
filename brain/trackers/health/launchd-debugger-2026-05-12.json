@@ -1,0 +1,43 @@
+{
+  "date": "2026-05-12",
+  "scan_started_at": "2026-05-12T05:00:27-04:00",
+  "scan_finished_at": "2026-05-12T05:02:16-04:00",
+  "failures_detected": 2,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 2,
+  "suppressed_count": 0,
+  "runtime_seconds": 109,
+  "triggered_by": "daily",
+  "results": [
+    {
+      "job": "deal-aggregator",
+      "cause": "CODE_BUG",
+      "action": "SURFACE",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_posted": true,
+      "suppression_reason": null,
+      "triggered_by": "daily",
+      "error_signature": "VALIDATOR FAILED — overriding skill exit code",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/deal-aggregator-2026-05-11-0600.log",
+      "last_log_mtime": "2026-05-11T06:07:14-04:00",
+      "slack_text": "launchd-debugger: deal-aggregator FAILED — CODE_BUG. VALIDATOR FAILED — overriding skill exit code. Recommended: patch scripts/validate_deal_aggregator_integrity.py morning-mode artifact path from /Users/kaycschneider/Documents/AI Operations/brain/context/ to /home/ubuntu/projects/Sapling/brain/context/ (afternoon mode already correct; artifact landed at server path 18,575 bytes). Log: /home/ubuntu/projects/Sapling/logs/scheduled/deal-aggregator-2026-05-11-0600.log"
+    },
+    {
+      "job": "relationship-manager",
+      "cause": "UNKNOWN",
+      "action": "SURFACE",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_posted": true,
+      "suppression_reason": null,
+      "triggered_by": "daily",
+      "error_signature": "RELATIONSHIP-MANAGER VALIDATOR PASSED for 2026-05-11",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/relationship-manager-2026-05-11-0650.log",
+      "last_log_mtime": "2026-05-11T06:55:23-04:00",
+      "scanner_false_positive": true,
+      "slack_text": "launchd-debugger: relationship-manager scanner FALSE POSITIVE — run actually succeeded (skill exit 0, validator exit 0, VALIDATOR PASSED). Scanner matched VALIDATOR FAILED inside skill narrative summary describing the historical bug it just fixed. Recommended: tighten scanner to only match wrapper-emitted \"VALIDATOR FAILED — overriding skill exit code\" line, not quoted text in skill output. Log: /home/ubuntu/projects/Sapling/logs/scheduled/relationship-manager-2026-05-11-0650.log"
+    }
+  ]
+}

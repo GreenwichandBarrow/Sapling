@@ -1,0 +1,138 @@
+{
+  "timestamp_utc": "2026-05-12T145517Z",
+  "tracker_sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
+  "helper_tab_title": "_donut_data",
+  "pre_donut_data_formulas": [
+    [
+      "Day",
+      "Done",
+      "Left"
+    ],
+    [
+      "Mon",
+      "=COUNTIF('May 11-17'!B23:B37, TRUE)",
+      "=COUNTA('May 11-17'!C23:C37) - COUNTIF('May 11-17'!B23:B37, TRUE)"
+    ],
+    [
+      "Tue",
+      "=COUNTIF('May 11-17'!D23:D37, TRUE)",
+      "=COUNTA('May 11-17'!E23:E37) - COUNTIF('May 11-17'!D23:D37, TRUE)"
+    ],
+    [
+      "Wed",
+      "=COUNTIF('May 11-17'!F23:F37, TRUE)",
+      "=COUNTA('May 11-17'!G23:G37) - COUNTIF('May 11-17'!F23:F37, TRUE)"
+    ],
+    [
+      "Thu",
+      "=COUNTIF('May 11-17'!H23:H37, TRUE)",
+      "=COUNTA('May 11-17'!I23:I37) - COUNTIF('May 11-17'!H23:H37, TRUE)"
+    ],
+    [
+      "Fri",
+      "=COUNTIF('May 11-17'!J23:J37, TRUE)",
+      "=COUNTA('May 11-17'!K23:K37) - COUNTIF('May 11-17'!J23:J37, TRUE)"
+    ],
+    [
+      "Sat",
+      "=COUNTIF('May 11-17'!L23:L37, TRUE)",
+      "=COUNTA('May 11-17'!M23:M37) - COUNTIF('May 11-17'!L23:L37, TRUE)"
+    ],
+    [
+      "Sun",
+      "=COUNTIF('May 11-17'!N23:N37, TRUE)",
+      "=COUNTA('May 11-17'!O23:O37) - COUNTIF('May 11-17'!N23:N37, TRUE)"
+    ]
+  ],
+  "pre_spreadsheet_theme": {
+    "primaryFontFamily": "Arial",
+    "themeColors": [
+      {
+        "colorType": "TEXT",
+        "color": {
+          "rgbColor": {}
+        }
+      },
+      {
+        "colorType": "BACKGROUND",
+        "color": {
+          "rgbColor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1
+          }
+        }
+      },
+      {
+        "colorType": "ACCENT1",
+        "color": {
+          "rgbColor": {
+            "red": 0.25882354,
+            "green": 0.52156866,
+            "blue": 0.95686275
+          }
+        }
+      },
+      {
+        "colorType": "ACCENT2",
+        "color": {
+          "rgbColor": {
+            "red": 0.91764706,
+            "green": 0.2627451,
+            "blue": 0.20784314
+          }
+        }
+      },
+      {
+        "colorType": "ACCENT3",
+        "color": {
+          "rgbColor": {
+            "red": 0.9843137,
+            "green": 0.7372549,
+            "blue": 0.015686275
+          }
+        }
+      },
+      {
+        "colorType": "ACCENT4",
+        "color": {
+          "rgbColor": {
+            "red": 0.20392157,
+            "green": 0.65882355,
+            "blue": 0.3254902
+          }
+        }
+      },
+      {
+        "colorType": "ACCENT5",
+        "color": {
+          "rgbColor": {
+            "red": 1,
+            "green": 0.42745098,
+            "blue": 0.003921569
+          }
+        }
+      },
+      {
+        "colorType": "ACCENT6",
+        "color": {
+          "rgbColor": {
+            "red": 0.27450982,
+            "green": 0.7411765,
+            "blue": 0.7764706
+          }
+        }
+      },
+      {
+        "colorType": "LINK",
+        "color": {
+          "rgbColor": {
+            "red": 0.06666667,
+            "green": 0.33333334,
+            "blue": 0.8
+          }
+        }
+      }
+    ]
+  }
+}

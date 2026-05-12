@@ -60,6 +60,7 @@
 
 ## Feedback
 - [feedback_always_polite_and_warm.md](feedback_always_polite_and_warm.md) — May 12 2026: Every external message MUST include opener + closer niceties. Politeness is core voice, not optional. Niceties don't count toward soft-signal cap.
+- [feedback_check_status_before_surfacing_carryover.md](feedback_check_status_before_surfacing_carryover.md) — May 12 2026: Before surfacing a task-tracker slot as "open/carryover," read the status checkbox. Checked TRUE = done, don't re-raise. Promote-refused doesn't mean pending.
 - [feedback_off_system_resolution_closes_loop.md](feedback_off_system_resolution_closes_loop.md) — May 12 2026: When Kay says "I handled X via personal email/text/call," loop is CLOSED. Stop surfacing. Verbal close sufficient; don't condition on forwarded trace.
 - [feedback_kay_outbound_includes_admin_alias.md](feedback_kay_outbound_includes_admin_alias.md) — May 12 2026: Gmail outbound scans must search BOTH `kay.s@` AND `admin@greenwichandbarrow.com`. Single-address scans miss replies and produce false "needs reply" surfaces.
 - [feedback_inbox_schema_enums.md](feedback_inbox_schema_enums.md) — May 12 2026: Inbox frontmatter STRICT enums — source ∈ {call,email,recurring,manual}, urgency ∈ {critical,high,normal,low}. "medium"/"conversation"/"user-stated" fail silently.

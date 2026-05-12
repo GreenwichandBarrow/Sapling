@@ -3,6 +3,7 @@
 ## User
 - [user_kay_profile.md](user_kay_profile.md) — Kay's role, strengths, working style, and how to best support them
 - [user_outreach_voice.md](user_outreach_voice.md) — Kay's cold outreach writing style calibrated from the Hangman email
+- [user_outreach_voice_kay_canonical_phrases.md](user_outreach_voice_kay_canonical_phrases.md) — May 12 2026: canonical Kay phrases — "Hope this finds you well" / "Looking forward to hearing from you" / "All the best,". Deference layer mandatory for higher-tenure asks.
 - [user_task_management.md](user_task_management.md) — Kay uses Motion (migrated from Todoist), prefers Claude for task creation via API
 - [user_jj_va.md](user_jj_va.md) — JJ (VA, Philippines) — cold calling, 10am-2pm ET Mon-Fri, team member not assistant
 - [user_kay_family_network.md](user_kay_family_network.md) — Kay's family connections: mom (jewelry), husband (restaurants), brother (marine logistics)
@@ -58,6 +59,10 @@
 - [feedback_blocked_sources_tab_rule.md](feedback_blocked_sources_tab_rule.md) — May 4 2026: Deal-aggregator Blocked Sources tab = ONLY fully-unreachable sources (no web AND no email AND no API). Web-blocked-but-email-active stays on General. Avoids creating false manual-check work.
 
 ## Feedback
+- [feedback_always_polite_and_warm.md](feedback_always_polite_and_warm.md) — May 12 2026: Every external message MUST include opener + closer niceties. Politeness is core voice, not optional. Niceties don't count toward soft-signal cap.
+- [feedback_off_system_resolution_closes_loop.md](feedback_off_system_resolution_closes_loop.md) — May 12 2026: When Kay says "I handled X via personal email/text/call," loop is CLOSED. Stop surfacing. Verbal close sufficient; don't condition on forwarded trace.
+- [feedback_kay_outbound_includes_admin_alias.md](feedback_kay_outbound_includes_admin_alias.md) — May 12 2026: Gmail outbound scans must search BOTH `kay.s@` AND `admin@greenwichandbarrow.com`. Single-address scans miss replies and produce false "needs reply" surfaces.
+- [feedback_inbox_schema_enums.md](feedback_inbox_schema_enums.md) — May 12 2026: Inbox frontmatter STRICT enums — source ∈ {call,email,recurring,manual}, urgency ∈ {critical,high,normal,low}. "medium"/"conversation"/"user-stated" fail silently.
 - [feedback_vps_primary_work_surface.md](feedback_vps_primary_work_surface.md) — May 10 2026: All interactive Claude work originates on server via cmux `vps` alias. Local Mac = fallback only. Memory now in repo + symlinked.
 - [feedback_default_to_now_not_later.md](feedback_default_to_now_not_later.md) — May 9 2026: Kay's default is DO IT NOW. Don't queue/defer unless real hard blocker. "Half-day lift" alone isn't a defer reason — split into now-doable phases.
 - [feedback_credential_extraction_clean_terminal.md](feedback_credential_extraction_clean_terminal.md) — May 10 2026: Secret-printing terminal steps go in macOS Terminal.app/iTerm2 only — never Cursor/Claude Code/any AI-instrumented integrated terminal.

@@ -3,11 +3,11 @@ schema_version: "1.2.0"
 date: 2026-05-12
 title: Bday cards & baby cards
 status: backlog
-source: conversation
-urgency: medium
+source: manual
+urgency: normal
 automated: false
 confidence: high
-tags: ["date/2026-05-12", "inbox", "source/conversation", "urgency/medium", "topic/personal-admin", "topic/cards"]
+tags: ["date/2026-05-12", "inbox", "source/manual", "urgency/normal", "topic/personal-admin", "topic/cards"]
 ---
 
 # Bday cards & baby cards

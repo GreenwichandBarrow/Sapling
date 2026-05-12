@@ -1,0 +1,933 @@
+{
+  "verb": "deal-aggregator-restructure",
+  "timestamp": "20260512T171229Z",
+  "sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
+  "tab_name": "Deal Aggregator Expansion",
+  "sheet_gid": 1565904846,
+  "sheet_properties": {
+    "sheetId": 1565904846,
+    "title": "Deal Aggregator Expansion",
+    "index": 4,
+    "sheetType": "GRID",
+    "gridProperties": {
+      "rowCount": 20,
+      "columnCount": 20,
+      "frozenRowCount": 5
+    },
+    "tabColor": {
+      "red": 0.8509804,
+      "green": 0.91764706,
+      "blue": 0.827451
+    },
+    "tabColorStyle": {
+      "rgbColor": {
+        "red": 0.8509804,
+        "green": 0.91764706,
+        "blue": 0.827451
+      }
+    }
+  },
+  "range_a1z30_values": [
+    [],
+    [
+      "DEAL AGGREGATOR EXPANSION"
+    ],
+    [
+      "Entity: G&B  \u00b7  Tick the week boxes you're actively working on each milestone \u2014 the row builds into a Gantt bar"
+    ],
+    [],
+    [
+      "Status",
+      "Milestone",
+      "Start",
+      "Target",
+      "Notes",
+      "5/11",
+      "5/18",
+      "5/25",
+      "6/1",
+      "6/8",
+      "6/15",
+      "6/22",
+      "6/29",
+      "7/6",
+      "7/13",
+      "7/20",
+      "7/27"
+    ],
+    [
+      false,
+      "Marketplace inventory audit + sign-up confirm",
+      "2026-05-11",
+      "2026-05-17",
+      "Distinct from Intermediary Target List per feedback_marketplace_vs_broker_distinction. Marketplaces (platforms): Axial (filter state in project_axial_buyside_filter_state), Flippa, BizBuySell, Quiet Light, Rejigg, Viking, Everingham & Kerr, DealForce, IAG M&A Advisors, SMB Deal Hunter. Live in deal-aggregator skill's Source Scorecard today. OPEN: graduate list into own tracker tab?",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Intermediary Target List hygiene",
+      "2026-05-11",
+      "2026-05-17",
+      "Sheet 18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk. Dedup, classify by firm-type per feedback_classify_intermediary_by_self_id (broker / IB / lawyer / CPA / FO / association). Mark engagement-fee policy per feedback_buyside_advisor_success_fee_only. Franchise rule: one row per firm per feedback_franchise_firm_one_entry_only.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "50 broker/IB cold email batch",
+      "2026-05-18",
+      "2026-05-17",
+      "Pull 50 from Intermediary Target List. Megan Lawlor pattern (one-pager attached, plain-text body per project_broker_email_one_pager_only). Route through outreach-manager Subagent 3 (intermediary outreach). Templates from G&B Intermediary Email Templates Doc 1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4 per feedback_no_intermediary_drafts_outside_template. NO geography in body per feedback_geography_not_in_external_broker_copy.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "50 broker/IB LinkedIn batch",
+      "2026-05-25",
+      "2026-05-17",
+      "Same 50 names as email batch. Connect-request notes (300 char) per LinkedIn 3rd-degree mechanics. Lead with searcher peer-signal per user_outreach_voice_kay_canonical_phrases.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Verify direct-intermediary email monitoring",
+      "2026-05-11",
+      "2026-05-17",
+      "Confirm email-intelligence Active Deal Fast-Path catches deal-specific broker emails. Trigger: known broker sender + attachment or deal terms in body. Side effects: folder creation, Drive filing, Attio stage update at 'Financials Received', Slack ping. Test with a known broker BLAST this period.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Verify broker BLAST per-listing extraction",
+      "2026-05-11",
+      "2026-05-17",
+      "Confirm email-intelligence artifact Section 7 fires on multi-listing broker BLASTs. Lisa @ Generational Equity, Helen Guo SMB Deal Hunter, Viking, Sunbelt, Transworld are known multi-listing senders. Test: pull last 4 weeks' broker BLASTs, count listings written to artifact, verify decomposition (no collapsed multi-listing rows).",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Conference-broker pipeline",
+      "2026-05-11",
+      "2026-05-17",
+      "Broker meetings from conferences (ACG NY WOL Summit Thu 5/14, Mid Search Summit week of 5/18, others) feed into Pipeline via conference-engagement skill (already exists). Verify post-conference T+2 followup flow routes broker contacts into Intermediary Target List or directly Attio.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Build broker-channel dashboard metrics",
+      "2026-06-01",
+      "2026-05-17",
+      "New dashboard tile: # broker emails sent (cumulative + this period), # broker replies, # broker meetings booked, # CIMs received from broker channel, # active deals at LOI from broker channel. Sourcing data from email-intelligence artifact, Attio, deal-evaluation outputs.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Verify JJ dashboard sync",
+      "2026-05-12",
+      "2026-05-17",
+      "NOT pipeline-manager \u2014 jj-snapshot-refresh scheduled job (Mon-Fri 9am, 2:30pm, 6pm via systemd timer) reads JJ's per-niche target sheets, writes brain/context/jj-activity-snapshot.json, dashboard reads. Status check: systemctl --user list-timers | grep jj-snapshot-refresh. Verify: dashboard JJ tile reflects today's calls; if stale, fix snapshot job.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Build DealsX dashboard sync",
+      "2026-05-12",
+      "2026-05-17",
+      "KeyReach bundled into DealsX per project_keyreach_dealsx_relationship. Sam Singh's platform has separate send/reply tracking. OPEN QUESTION: ask Sam if DealsX/KeyReach exposes a REST API (preferred) per feedback_integration_priority_mcp_api_local. If yes -> build dealsx-snapshot-refresh mirroring jj-snapshot pattern. If no -> weekly manual CSV export until they ship API. Sam touchpoint: next DealsX coordination call.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Buy-side advisor channel evaluation",
+      "2026-06-01",
+      "2026-05-17",
+      "Calder Capital fee structure verification \u2014 confirm SUCCESS-FEE ONLY per feedback_buyside_advisor_success_fee_only. First call agenda: confirm fee model, sourcing access, deal-flow capacity. Walk away if any retainer/engagement fee. If clean -> engage as fourth source channel alongside proprietary + brokered + marketplace.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Quarterly broker review cadence",
+      "2026-06-22",
+      "2026-05-17",
+      "Conversion analysis: top broker sources by # deals to LOI per quarter. Re-engage high-yield brokers with quarterly check-in. Retire dead (no response after N attempts). Formalize the cadence as recurring quarterly task.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Decide marketplace list location",
+      "2026-05-12",
+      "2026-05-17",
+      "Currently lives in `deal-aggregator` skill's Source Scorecard. Decision: graduate to own tracker tab (visibility + Kay can edit directly) OR leave embedded in skill scorecard. Per feedback_marketplace_vs_broker_distinction. Prerequisite to milestone 1 (Marketplace inventory audit).",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Lock broker buy-box geography window",
+      "2026-05-12",
+      "2026-05-17",
+      "Pending per feedback_broker_channel_opportunistic_floor (Kay 5/3 rejected relaxed-floor approach; geo window still open). Geography itself stays internal per feedback_geography_not_in_external_broker_copy (never in broker email body), but must be locked for buy-box routing logic. Prerequisite to milestone 3 (50 broker email batch).",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Sam Singh touchpoint \u2014 DealsX API + KeyReach integration discovery",
+      "2026-05-12",
+      "2026-05-17",
+      "Ask Sam: does DealsX/KeyReach expose a REST API with API-key auth (preferred path per feedback_integration_priority_mcp_api_local)? Determines milestone 10 path: API \u2192 build `dealsx-snapshot-refresh` mirroring `jj-snapshot-refresh`; no API \u2192 manual weekly CSV import cadence. Schedule via next DealsX coordination call or async LinkedIn DM.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  ],
+  "range_a1z30_formulas": [
+    [],
+    [
+      "DEAL AGGREGATOR EXPANSION"
+    ],
+    [
+      "Entity: G&B  \u00b7  Tick the week boxes you're actively working on each milestone \u2014 the row builds into a Gantt bar"
+    ],
+    [],
+    [
+      "Status",
+      "Milestone",
+      "Start",
+      "Target",
+      "Notes",
+      "5/11",
+      "5/18",
+      "5/25",
+      "6/1",
+      "6/8",
+      "6/15",
+      "6/22",
+      "6/29",
+      "7/6",
+      "7/13",
+      "7/20",
+      "7/27"
+    ],
+    [
+      false,
+      "Marketplace inventory audit + sign-up confirm",
+      "2026-05-11",
+      "2026-05-17",
+      "Distinct from Intermediary Target List per feedback_marketplace_vs_broker_distinction. Marketplaces (platforms): Axial (filter state in project_axial_buyside_filter_state), Flippa, BizBuySell, Quiet Light, Rejigg, Viking, Everingham & Kerr, DealForce, IAG M&A Advisors, SMB Deal Hunter. Live in deal-aggregator skill's Source Scorecard today. OPEN: graduate list into own tracker tab?",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Intermediary Target List hygiene",
+      "2026-05-11",
+      "2026-05-17",
+      "Sheet 18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk. Dedup, classify by firm-type per feedback_classify_intermediary_by_self_id (broker / IB / lawyer / CPA / FO / association). Mark engagement-fee policy per feedback_buyside_advisor_success_fee_only. Franchise rule: one row per firm per feedback_franchise_firm_one_entry_only.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "50 broker/IB cold email batch",
+      "2026-05-18",
+      "2026-05-17",
+      "Pull 50 from Intermediary Target List. Megan Lawlor pattern (one-pager attached, plain-text body per project_broker_email_one_pager_only). Route through outreach-manager Subagent 3 (intermediary outreach). Templates from G&B Intermediary Email Templates Doc 1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4 per feedback_no_intermediary_drafts_outside_template. NO geography in body per feedback_geography_not_in_external_broker_copy.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "50 broker/IB LinkedIn batch",
+      "2026-05-25",
+      "2026-05-17",
+      "Same 50 names as email batch. Connect-request notes (300 char) per LinkedIn 3rd-degree mechanics. Lead with searcher peer-signal per user_outreach_voice_kay_canonical_phrases.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Verify direct-intermediary email monitoring",
+      "2026-05-11",
+      "2026-05-17",
+      "Confirm email-intelligence Active Deal Fast-Path catches deal-specific broker emails. Trigger: known broker sender + attachment or deal terms in body. Side effects: folder creation, Drive filing, Attio stage update at 'Financials Received', Slack ping. Test with a known broker BLAST this period.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Verify broker BLAST per-listing extraction",
+      "2026-05-11",
+      "2026-05-17",
+      "Confirm email-intelligence artifact Section 7 fires on multi-listing broker BLASTs. Lisa @ Generational Equity, Helen Guo SMB Deal Hunter, Viking, Sunbelt, Transworld are known multi-listing senders. Test: pull last 4 weeks' broker BLASTs, count listings written to artifact, verify decomposition (no collapsed multi-listing rows).",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Conference-broker pipeline",
+      "2026-05-11",
+      "2026-05-17",
+      "Broker meetings from conferences (ACG NY WOL Summit Thu 5/14, Mid Search Summit week of 5/18, others) feed into Pipeline via conference-engagement skill (already exists). Verify post-conference T+2 followup flow routes broker contacts into Intermediary Target List or directly Attio.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Build broker-channel dashboard metrics",
+      "2026-06-01",
+      "2026-05-17",
+      "New dashboard tile: # broker emails sent (cumulative + this period), # broker replies, # broker meetings booked, # CIMs received from broker channel, # active deals at LOI from broker channel. Sourcing data from email-intelligence artifact, Attio, deal-evaluation outputs.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Verify JJ dashboard sync",
+      "2026-05-12",
+      "2026-05-17",
+      "NOT pipeline-manager \u2014 jj-snapshot-refresh scheduled job (Mon-Fri 9am, 2:30pm, 6pm via systemd timer) reads JJ's per-niche target sheets, writes brain/context/jj-activity-snapshot.json, dashboard reads. Status check: systemctl --user list-timers | grep jj-snapshot-refresh. Verify: dashboard JJ tile reflects today's calls; if stale, fix snapshot job.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Build DealsX dashboard sync",
+      "2026-05-12",
+      "2026-05-17",
+      "KeyReach bundled into DealsX per project_keyreach_dealsx_relationship. Sam Singh's platform has separate send/reply tracking. OPEN QUESTION: ask Sam if DealsX/KeyReach exposes a REST API (preferred) per feedback_integration_priority_mcp_api_local. If yes -> build dealsx-snapshot-refresh mirroring jj-snapshot pattern. If no -> weekly manual CSV export until they ship API. Sam touchpoint: next DealsX coordination call.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Buy-side advisor channel evaluation",
+      "2026-06-01",
+      "2026-05-17",
+      "Calder Capital fee structure verification \u2014 confirm SUCCESS-FEE ONLY per feedback_buyside_advisor_success_fee_only. First call agenda: confirm fee model, sourcing access, deal-flow capacity. Walk away if any retainer/engagement fee. If clean -> engage as fourth source channel alongside proprietary + brokered + marketplace.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Quarterly broker review cadence",
+      "2026-06-22",
+      "2026-05-17",
+      "Conversion analysis: top broker sources by # deals to LOI per quarter. Re-engage high-yield brokers with quarterly check-in. Retire dead (no response after N attempts). Formalize the cadence as recurring quarterly task.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Decide marketplace list location",
+      "2026-05-12",
+      "2026-05-17",
+      "Currently lives in `deal-aggregator` skill's Source Scorecard. Decision: graduate to own tracker tab (visibility + Kay can edit directly) OR leave embedded in skill scorecard. Per feedback_marketplace_vs_broker_distinction. Prerequisite to milestone 1 (Marketplace inventory audit).",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Lock broker buy-box geography window",
+      "2026-05-12",
+      "2026-05-17",
+      "Pending per feedback_broker_channel_opportunistic_floor (Kay 5/3 rejected relaxed-floor approach; geo window still open). Geography itself stays internal per feedback_geography_not_in_external_broker_copy (never in broker email body), but must be locked for buy-box routing logic. Prerequisite to milestone 3 (50 broker email batch).",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      "Sam Singh touchpoint \u2014 DealsX API + KeyReach integration discovery",
+      "2026-05-12",
+      "2026-05-17",
+      "Ask Sam: does DealsX/KeyReach expose a REST API with API-key auth (preferred path per feedback_integration_priority_mcp_api_local)? Determines milestone 10 path: API \u2192 build `dealsx-snapshot-refresh` mirroring `jj-snapshot-refresh`; no API \u2192 manual weekly CSV import cadence. Schedule via next DealsX coordination call or async LinkedIn DM.",
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  ],
+  "conditional_formats": [
+    {
+      "ranges": [
+        {
+          "sheetId": 1565904846,
+          "startRowIndex": 17,
+          "endRowIndex": 20,
+          "startColumnIndex": 5,
+          "endColumnIndex": 18
+        }
+      ],
+      "booleanRule": {
+        "condition": {
+          "type": "CUSTOM_FORMULA",
+          "values": [
+            {
+              "userEnteredValue": "=F18=TRUE"
+            }
+          ]
+        },
+        "format": {
+          "backgroundColor": {
+            "red": 0.47843137,
+            "green": 0.54901963,
+            "blue": 0.3019608
+          },
+          "backgroundColorStyle": {
+            "rgbColor": {
+              "red": 0.47843137,
+              "green": 0.54901963,
+              "blue": 0.3019608
+            }
+          }
+        }
+      }
+    },
+    {
+      "ranges": [
+        {
+          "sheetId": 1565904846,
+          "startRowIndex": 17,
+          "endRowIndex": 20,
+          "startColumnIndex": 0,
+          "endColumnIndex": 5
+        }
+      ],
+      "booleanRule": {
+        "condition": {
+          "type": "CUSTOM_FORMULA",
+          "values": [
+            {
+              "userEnteredValue": "=$A18=TRUE"
+            }
+          ]
+        },
+        "format": {
+          "backgroundColor": {
+            "red": 0.9529412,
+            "green": 0.96862745,
+            "blue": 0.9098039
+          },
+          "textFormat": {
+            "foregroundColor": {
+              "red": 0.6039216,
+              "green": 0.6039216,
+              "blue": 0.5411765
+            },
+            "strikethrough": true,
+            "foregroundColorStyle": {
+              "rgbColor": {
+                "red": 0.6039216,
+                "green": 0.6039216,
+                "blue": 0.5411765
+              }
+            }
+          },
+          "backgroundColorStyle": {
+            "rgbColor": {
+              "red": 0.9529412,
+              "green": 0.96862745,
+              "blue": 0.9098039
+            }
+          }
+        }
+      }
+    },
+    {
+      "ranges": [
+        {
+          "sheetId": 1565904846,
+          "startRowIndex": 15,
+          "endRowIndex": 17,
+          "startColumnIndex": 0,
+          "endColumnIndex": 5
+        }
+      ],
+      "booleanRule": {
+        "condition": {
+          "type": "CUSTOM_FORMULA",
+          "values": [
+            {
+              "userEnteredValue": "=$A16=TRUE"
+            }
+          ]
+        },
+        "format": {
+          "backgroundColor": {
+            "red": 0.9529412,
+            "green": 0.96862745,
+            "blue": 0.9098039
+          },
+          "textFormat": {
+            "foregroundColor": {
+              "red": 0.6039216,
+              "green": 0.6039216,
+              "blue": 0.5411765
+            },
+            "strikethrough": true,
+            "foregroundColorStyle": {
+              "rgbColor": {
+                "red": 0.6039216,
+                "green": 0.6039216,
+                "blue": 0.5411765
+              }
+            }
+          },
+          "backgroundColorStyle": {
+            "rgbColor": {
+              "red": 0.9529412,
+              "green": 0.96862745,
+              "blue": 0.9098039
+            }
+          }
+        }
+      }
+    },
+    {
+      "ranges": [
+        {
+          "sheetId": 1565904846,
+          "startRowIndex": 15,
+          "endRowIndex": 17,
+          "startColumnIndex": 5,
+          "endColumnIndex": 18
+        }
+      ],
+      "booleanRule": {
+        "condition": {
+          "type": "CUSTOM_FORMULA",
+          "values": [
+            {
+              "userEnteredValue": "=F16=TRUE"
+            }
+          ]
+        },
+        "format": {
+          "backgroundColor": {
+            "red": 0.47843137,
+            "green": 0.54901963,
+            "blue": 0.3019608
+          },
+          "backgroundColorStyle": {
+            "rgbColor": {
+              "red": 0.47843137,
+              "green": 0.54901963,
+              "blue": 0.3019608
+            }
+          }
+        }
+      }
+    },
+    {
+      "ranges": [
+        {
+          "sheetId": 1565904846,
+          "startRowIndex": 5,
+          "endRowIndex": 15,
+          "startColumnIndex": 0,
+          "endColumnIndex": 5
+        }
+      ],
+      "booleanRule": {
+        "condition": {
+          "type": "CUSTOM_FORMULA",
+          "values": [
+            {
+              "userEnteredValue": "=$A6=TRUE"
+            }
+          ]
+        },
+        "format": {
+          "backgroundColor": {
+            "red": 0.9529412,
+            "green": 0.96862745,
+            "blue": 0.9098039
+          },
+          "textFormat": {
+            "foregroundColor": {
+              "red": 0.6039216,
+              "green": 0.6039216,
+              "blue": 0.5411765
+            },
+            "strikethrough": true,
+            "foregroundColorStyle": {
+              "rgbColor": {
+                "red": 0.6039216,
+                "green": 0.6039216,
+                "blue": 0.5411765
+              }
+            }
+          },
+          "backgroundColorStyle": {
+            "rgbColor": {
+              "red": 0.9529412,
+              "green": 0.96862745,
+              "blue": 0.9098039
+            }
+          }
+        }
+      }
+    },
+    {
+      "ranges": [
+        {
+          "sheetId": 1565904846,
+          "startRowIndex": 5,
+          "endRowIndex": 15,
+          "startColumnIndex": 5,
+          "endColumnIndex": 17
+        }
+      ],
+      "booleanRule": {
+        "condition": {
+          "type": "CUSTOM_FORMULA",
+          "values": [
+            {
+              "userEnteredValue": "=F6=TRUE"
+            }
+          ]
+        },
+        "format": {
+          "backgroundColor": {
+            "red": 0.47843137,
+            "green": 0.54901963,
+            "blue": 0.3019608
+          },
+          "backgroundColorStyle": {
+            "rgbColor": {
+              "red": 0.47843137,
+              "green": 0.54901963,
+              "blue": 0.3019608
+            }
+          }
+        }
+      }
+    }
+  ],
+  "conditional_format_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ]
+}

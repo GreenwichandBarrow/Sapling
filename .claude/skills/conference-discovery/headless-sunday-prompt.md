@@ -57,21 +57,33 @@ must be defensible by output, not by clarifying question.
    will detect any displacement (header appearing below an event whose
    start date falls in its week) and fail the run.
 
-7. **NEVER overwrite an existing non-empty status (col C) with a different
-   non-empty value.** (2026-05-10 regression guard.) Status values are
+7. **NEVER overwrite an existing non-empty Decision value with a different
+   non-empty value.** (2026-05-10 regression guard.) Decision values are
    Kay's manual selections from the dropdown. Legal transitions:
-   - `""` → any value (auto-fill of empty cell)
+   - `""` → `NEW` (newly-discovered conference) or any decided status
+   - `NEW` → `Evaluating` / `Need to Book` / `Need to Register` / `Registered Only` / `Attending` / `Skip` (Kay's first review)
    - `Evaluating` → `Attending` / `Need to Book` / `Need to Register` / `Skip`
-   - `Need to Register` → `Registered` → `Attending` → `Attended`
-   - `Need to Book` → `Registered` / `Attending` → `Attended`
+   - `Need to Register` → `Registered Only` → `Attending` → `Attended`
+   - `Need to Book` → `Registered Only` / `Attending` → `Attended`
    - `Skip` → `Skipped`
-   - `Future / Map-Only` → `Evaluating` / `Need to Book` / `Need to Register`
+
+   **Forbidden:** writing `NEW` over any non-empty status (once decided, no
+   downgrade), and writing any agent-invented status not in Kay's dropdown
+   (e.g. the historical `Future / Map-Only` regression — that value is NOT
+   in the dropdown and the validator's `check_c` rejects it). Authorized
+   values are ONLY: `NEW`, `Evaluating`, `Need to Book`, `Need to Register`,
+   `Registered Only`, `Attending`, `Skip` (plus auto-archival terminals
+   `Skipped`, `Attended`, `Registered`).
 
    Any other transition is a stomp. **Specifically forbidden:** writing
-   `Evaluating` or `""` over `Need to Book`, `Attending`, `Registered`, or
-   any other Kay-set status. The validator's `MAX_HARD_CELL_MUTATIONS = 0`
+   `Evaluating` or `""` over `Need to Book`, `Attending`, `Registered Only`,
+   or any other Kay-set status. The validator's `MAX_HARD_CELL_MUTATIONS = 0`
    means even one stomp fails the run. If you genuinely think a status is
    wrong, leave a soft-warn in stderr and let Kay correct it manually.
+
+   **When discovering a new conference:** write `NEW` in the Decision field.
+   Do NOT leave blank, do NOT invent a status. Kay will see `NEW` rows on
+   her next review and move each one to a decided status.
 
 8. **Append-zone discipline.** New events go in the row immediately ABOVE
    the next week's header (or the end of the data range for TBD). Do NOT

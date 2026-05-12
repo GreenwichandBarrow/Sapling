@@ -47,15 +47,17 @@ These are absolute rules. The validator catches them post-hoc; the headless prom
 
 1. **Never move week-of header rows.** Headers (col A single-cell rows like `5/11`, `TBD`) may only be INSERTED (new week) or DELETED (auto-prune of past, empty headers). Headers must never be relocated within the sheet. If you find yourself wanting to "re-sort" the sheet by moving headers around, STOP — the sheet is already in chronological order; sort events WITHIN their week section, not headers across sections.
 
-2. **Never overwrite an existing non-empty status (col C) with a different non-empty value.** Status dropdown values represent Kay's manual selections (or prior agent decisions she ratified). They are only legal to set on an empty cell, or to advance along the natural progression:
-   - `""` → `Evaluating` / `Need to Book` / `Need to Register`
+2. **Never overwrite an existing non-empty Decision value with a different non-empty value.** Decision dropdown values represent Kay's manual selections (or prior agent decisions she ratified). They are only legal to set on an empty cell, or to advance along the natural progression:
+   - `""` → `NEW` (agent-discovery only) or any of: `Evaluating` / `Need to Book` / `Need to Register`
+   - `NEW` → `Evaluating` / `Need to Book` / `Need to Register` / `Registered Only` / `Attending` / `Skip` (Kay's first review on a newly-discovered conference)
    - `Evaluating` → `Attending` / `Need to Book` / `Need to Register` / `Skip`
-   - `Need to Register` → `Registered` → `Attending` → `Attended`
-   - `Need to Book` → `Registered` / `Attending` → `Attended`
+   - `Need to Register` → `Registered Only` → `Attending` → `Attended`
+   - `Need to Book` → `Registered Only` / `Attending` → `Attended`
    - `Skip` → `Skipped`
-   - `Future / Map-Only` → `Evaluating` / `Need to Book` / `Need to Register`
 
-   Any transition NOT on this list is a status stomp. **Specifically forbidden:** overwriting `Need to Book`, `Attending`, `Registered`, or any other Kay-set value back to `""`, `Evaluating`, or `Skip` without explicit user instruction. The validator's `MAX_HARD_CELL_MUTATIONS = 0` means even one stomp fails the run.
+   **Forbidden:** writing back to `NEW` from any other status (once Kay has decided, the row can't be downgraded to "fresh"). Any transition NOT on this list is a status stomp. **Specifically forbidden:** overwriting `Need to Book`, `Attending`, `Registered Only`, or any other Kay-set value back to `""`, `Evaluating`, or `Skip` without explicit user instruction. The validator's `MAX_HARD_CELL_MUTATIONS = 0` means even one stomp fails the run.
+
+   **Agent-invented statuses are forbidden.** Only values in Kay's dropdown (`NEW`, `Evaluating`, `Need to Book`, `Need to Register`, `Registered Only`, `Attending`, `Skip`) plus auto-archival terminal states (`Skipped`, `Attended`, `Registered`) may appear in the Decision field. The validator's `check_c` rejects any other value (e.g. the historical `Future / Map-Only` regression). If you think a new status is needed, propose it to Kay and have her add it to the dropdown first.
 
 3. **Never write to a cell outside the append zone** without explicit user instruction.
 

@@ -90,25 +90,53 @@ MAX_SOFT_CELL_MUTATIONS = 5
 # permitted to be missing from the live sheet if the event date is past).
 ARCHIVAL_STATUSES = {"Skip", "Skipped", "Attended"}
 
+# AUTHORIZED status values. These are the ONLY values permitted in the
+# Decision field on the live Pipeline tab. The first 7 are Kay's
+# dropdown options (selectable in the UI). Skipped/Attended/Registered are
+# terminal states set by the auto-archival flow only (not Kay-selectable).
+# Any cell value outside this set is an agent-invented status (e.g. the
+# 2026-05 "Future / Map-Only" incident) and fails the validator immediately.
+AUTHORIZED_STATUSES = {
+    "",                  # empty cell allowed
+    "NEW",               # agent-discovery marker; Kay reviews + moves to a decided status
+    "Evaluating",
+    "Need to Book",
+    "Need to Register",
+    "Registered Only",
+    "Attending",
+    "Skip",
+    # Auto-archival terminal states (not in dropdown, set by skill only):
+    "Skipped",
+    "Attended",
+    "Registered",
+}
+
 # Recognized status progressions. Any (snapshot, live) pair NOT listed
 # either is no-op (same value), an empty→value transition (allowed), or
 # a stomp (hard fail).
 ALLOWED_STATUS_PROGRESSIONS = {
+    ("NEW", "Evaluating"),
+    ("NEW", "Need to Book"),
+    ("NEW", "Need to Register"),
+    ("NEW", "Registered Only"),
+    ("NEW", "Attending"),
+    ("NEW", "Skip"),
     ("Evaluating", "Attending"),
     ("Evaluating", "Need to Book"),
     ("Evaluating", "Need to Register"),
     ("Evaluating", "Skip"),
     ("Need to Register", "Registered"),
+    ("Need to Register", "Registered Only"),
     ("Need to Register", "Attending"),
     ("Need to Book", "Attending"),
     ("Need to Book", "Registered"),
+    ("Need to Book", "Registered Only"),
     ("Attending", "Attended"),
     ("Registered", "Attending"),
     ("Registered", "Attended"),
+    ("Registered Only", "Attending"),
+    ("Registered Only", "Attended"),
     ("Skip", "Skipped"),
-    ("Future / Map-Only", "Evaluating"),
-    ("Future / Map-Only", "Need to Book"),
-    ("Future / Map-Only", "Need to Register"),
 }
 
 
@@ -755,6 +783,25 @@ def main() -> int:
             )
         )
 
+    # Check C: Authorized statuses (2026-05-12 Future-Map-Only-class guard).
+    # Any value in the Decision column outside the AUTHORIZED_STATUSES set is
+    # an agent-invented status and fails the run. Catches the failure mode
+    # where an agent writes a status not in Kay's dropdown.
+    if live_rows is not None:
+        for idx, row in enumerate(live_rows):
+            if is_header_row(row):
+                continue
+            val = cell(row, COL_C_STATUS).strip()
+            if val not in AUTHORIZED_STATUSES:
+                failures.append(
+                    f"[check_c] unauthorized status {val!r} on row "
+                    f"{event_key_label(row)}. Allowed values: "
+                    f"{sorted(s for s in AUTHORIZED_STATUSES if s)}. "
+                    f"Either add {val!r} to Kay's dropdown on the Pipeline "
+                    f"tab + update AUTHORIZED_STATUSES, or change the cell "
+                    f"to an authorized value."
+                )
+
     if failures:
         print(
             f"CONFERENCE-DISCOVERY VALIDATOR FAILED for {run_date}:",
@@ -775,6 +822,7 @@ def main() -> int:
         )
     print("  header positions: OK")
     print("  cell mutations: OK")
+    print("  authorized statuses: OK")
     return 0
 
 

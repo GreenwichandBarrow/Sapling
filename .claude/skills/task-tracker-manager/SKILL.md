@@ -92,7 +92,26 @@ Run from `goodnight` on Sunday evening.
 python3 scripts/task_tracker.py archive-todo
 ```
 
-Idempotent. Creates the **Completed To Do** tab on first run (mirror of To Do schema + a trailing `Completed` date column), then sweeps every checked row out of the To Do tab and appends it to Completed To Do, stamping today's date. Cleared rows on the To Do side keep their numbered position (Status/Task/Type/Project/Due/Notes all wiped). Safe to run on any day, but the canonical trigger is **Sunday evening as part of `goodnight`**, alongside the `archive` ceremony.
+Idempotent. **Auto-runs `sync-done-status` as a pre-step** so any priority-slot checkbox Kay flipped during the week propagates to its matching To Do row before the sweep. Pass `--skip-sync` to bypass the pre-step (rare — sweep-only behavior).
+
+Then creates the **Completed To Do** tab on first run (mirror of To Do schema + a trailing `Completed` date column), sweeps every checked row out of the To Do tab and appends it to Completed To Do, stamping today's date. Cleared rows on the To Do side keep their numbered position (Status/Task/Type/Project/Due/Notes all wiped). Safe to run on any day, but the canonical trigger is **Sunday evening as part of `goodnight`**, alongside the `archive` ceremony.
+
+### 3c. sync-done-status (reconcile weekly slots → To Do)
+
+```bash
+python3 scripts/task_tracker.py sync-done-status [--dry-run]
+```
+
+When Kay checks a priority-slot status box during the week, this verb walks all 7 days × 15 priority slots and finds every checked slot, then matches each slot's Task field against the To Do tab's Task field (exact case, leading/trailing whitespace stripped). For each unambiguous match where the To Do Status is FALSE, the verb flips Status to TRUE so the existing conditional formatting paints strikethrough + sage-light fill — and the next `archive-todo` sweep picks the row up cleanly.
+
+- **Match found, To Do Status FALSE** → flip to TRUE.
+- **Match found, To Do Status already TRUE** → no-op.
+- **Match NOT found** → skipped silently (likely a `schedule-to-day-slot` item that never lived on To Do).
+- **Match found, but multiple To Do rows share the same task text** → ambiguous. Verb prints `AMBIGUITY: "<task>" matches To Do rows [N, M]` and skips the write. Resolve manually.
+- Snapshots the To Do Status column before any write; trace emitted ONLY if rows changed.
+- `--dry-run` reports what would change without writing.
+
+Auto-fires as the pre-step inside `archive-todo` so Sunday cleanup sees the synced state. Direct invocation is rare — useful when Kay wants to refresh strikethrough/fill on To Do mid-week without sweeping.
 
 ### 4. schedule-to-day-slot (direct write, no To Do source)
 
@@ -172,7 +191,8 @@ Sets the cell to a checked native Sheets checkbox; conditional-format fills it w
 - `gantt-tick` on a milestone Kay just told me she completed
 - `reformat` when broken formatting is detected during another verb's execution
 - `archive` on Sunday evening as part of `goodnight`
-- `archive-todo` on Sunday evening as part of `goodnight`
+- `archive-todo` on Sunday evening as part of `goodnight` (auto-calls `sync-done-status` first)
+- `sync-done-status` on demand and as the auto pre-step inside `archive-todo`
 - `append` when Kay explicitly says "add to To Do" with the task content already specified
 
 **SURFACE FOR APPROVAL** (RECOMMEND + YES/NO/DISCUSS, write only on YES):
@@ -188,7 +208,7 @@ Sets the cell to a checked native Sheets checkbox; conditional-format fills it w
 1. **Snapshot affected ranges before any write.** Each mutating verb saves the pre-write state of the ranges it touches to `brain/context/rollback-snapshots/tasks-{verb}-{timestamp}.json`. Keep last 5 snapshots per verb, prune older. Rollback path is: read snapshot JSON, replay each range via `values.update`.
 2. **API quota backoff.** Every Sheets API call is wrapped with exponential backoff (5 attempts, 1s..16s) on 429 / 5xx responses. Drop the failure cleanly with a `task-tracker-manager: API error <code>` message if it still fails.
 3. **Never wipe data on a populated tab.** No bulk-delete or bulk-clear without a snapshot. The `archive` verb is the only verb that clears the live week's data, and it duplicates the tab first.
-4. **Trace decision-content writes** to `brain/traces/{date}-task-tracker-{verb}-{slug}.md` with what changed + snapshot path. Trace emission applies ONLY to `archive`, `archive-todo`, `promote`, `schedule-to-day-slot`, `projects-create-gantt`, and `reformat` verbs — those carry decision content. The `append` verb does NOT emit a trace; its rollback line is routed to `logs/scheduled/task-tracker-{date}.log` instead. Rationale: `append` traces are rollback receipts (task + row + snapshot path), not decisions, and they pollute calibration input. Source: 2026-05-08 calibration — 6 of 35 traces (17%) in the prior batch were `append` receipts.
+4. **Trace decision-content writes** to `brain/traces/{date}-task-tracker-{verb}-{slug}.md` with what changed + snapshot path. Trace emission applies ONLY to `archive`, `archive-todo`, `promote`, `schedule-to-day-slot`, `projects-create-gantt`, `reformat`, and `sync-done-status` verbs — those carry decision content. The `append` verb does NOT emit a trace; its rollback line is routed to `logs/scheduled/task-tracker-{date}.log` instead. Rationale: `append` traces are rollback receipts (task + row + snapshot path), not decisions, and they pollute calibration input. Source: 2026-05-08 calibration — 6 of 35 traces (17%) in the prior batch were `append` receipts. **`sync-done-status` is no-op-aware:** it writes a trace ONLY when ≥1 To Do row actually flipped — no-op runs leave no trace (same calibration-pollution rationale).
 5. **Tab-name validation.** No `:\/?*[]` characters in tab names. (Google Sheets is more permissive than Excel — no 31-char cap — but keep the character ban for readability.)
 6. **Use native Sheets primitives, never Unicode glyphs.** Checkboxes are native (Data Validation → Checkbox). Dropdowns are native (Data Validation → Dropdown). Conditional formatting is native rules, not formulas-as-text. Done items render via CF rules tied to the checkbox state, not via inserted ✅ characters.
 
@@ -196,7 +216,7 @@ Sets the cell to a checked native Sheets checkbox; conditional-format fills it w
 
 - Every successful write ends with a single-line confirmation echoed to the Chief of Staff: `task-tracker-manager: appended row 12 ("Draft brochure for LF" / Work / Kai Grey / 2026-05-08)`.
 - Every refused write ends with a single-line reason: `task-tracker-manager: refused promote — Wed slot 3 already contains "Vivienne board prep"`.
-- Trace files are mandatory for `archive`, `archive-todo`, `promote`, `schedule-to-day-slot`, `projects-create-gantt`, and `reformat` (decision-content verbs). The `append` verb writes its rollback line to `logs/scheduled/task-tracker-{date}.log`, NOT to `brain/traces/` — append receipts are not decisions and pollute calibration input (2026-05-08 calibration). `gantt-tick` and `report` traces remain optional.
+- Trace files are mandatory for `archive`, `archive-todo`, `promote`, `schedule-to-day-slot`, `projects-create-gantt`, and `reformat` (decision-content verbs). `sync-done-status` writes a trace conditionally (only when ≥1 row was actually flipped). The `append` verb writes its rollback line to `logs/scheduled/task-tracker-{date}.log`, NOT to `brain/traces/` — append receipts are not decisions and pollute calibration input (2026-05-08 calibration). `gantt-tick` and `report` traces remain optional.
 
 ## Standard workflow — append example
 
@@ -214,8 +234,8 @@ When Kay says "add 'draft Calder follow-up' to To Do":
 |---|---|---|
 | `goodmorning` (weekday) | `report` (overdue + today's empty slots) + batch `append` if open loops | Capture pass at end of morning workflow |
 | `goodmorning` **Sunday** | `report` (full week-planning health: carryover, empty slots, stale items, stale Gantt) → walk-through with Kay → `promote`/`append` for each decision | **Canonical Sunday weekly-planning ceremony.** Drives the new-week tab setup. See `goodmorning.md` Step 6 Sunday overlay. |
-| Mid-day conversation | `append` / `promote` / `gantt-tick` | On Kay's request |
-| `goodnight` Sunday | `archive` | Step before git commit. Rolls the live tab into next-week's name + clears slots. Pairs with Sunday-morning `report` to bracket the week. |
+| Mid-day conversation | `append` / `promote` / `gantt-tick` / `sync-done-status` | On Kay's request |
+| `goodnight` Sunday | `archive-todo` (auto-runs `sync-done-status` first) → `archive` | Sweeps done items into Completed To Do, then rolls the live tab into next-week's name + clears slots. Pairs with Sunday-morning `report` to bracket the week. Order matters: archive-todo must run before archive so the slot→To Do reconciliation sees the still-live week tab. |
 | Friday briefing | `report` (full health, including carryover) | Part of weekly-tracker context |
 
 ## Failure modes to watch

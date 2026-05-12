@@ -47,7 +47,7 @@ Plus: **Deal Aggregator Expansion** (Gantt, 12 weeks from 2026-05-11, G&B sage).
 
 ## Build scripts (in this repo)
 
-- `scripts/task_tracker.py` — skill helper. Eight subcommands: `append`, `promote`, `archive`, `archive-todo`, `schedule-to-day-slot`, `projects-create-gantt`, `reformat`, `report`, `gantt-tick`.
+- `scripts/task_tracker.py` — skill helper. Subcommands: `append`, `promote`, `archive`, `archive-todo`, `sync-done-status`, `schedule-to-day-slot`, `projects-create-gantt`, `reformat`, `report`, `gantt-tick`.
 - **DEPRECATED:** `scripts/build_tasks_excel.py`, `scripts/populate_tasks_from_motion.py`, `scripts/maintain_tasks_excel.py` — Excel-era build path. Replaced by the one-shot `/tmp/tracker-migration/build_sheet.py` for any future rebuild. Kept in repo for reference; do not run.
 
 ## Skill verbs (`task-tracker-manager`)
@@ -58,7 +58,8 @@ Plus: **Deal Aggregator Expansion** (Gantt, 12 weeks from 2026-05-11, G&B sage).
 | `promote` | "Move X to {day} slot {N}" | Always surface (affects day plan) |
 | `schedule-to-day-slot` | "Schedule X for {day}" | Always surface |
 | `archive` | `goodnight` Sunday | Auto |
-| `archive-todo` | `goodnight` Sunday (also safe on any day) | Auto |
+| `archive-todo` | `goodnight` Sunday (also safe on any day) | Auto. Auto-calls `sync-done-status` as pre-step (skip with `--skip-sync`). |
+| `sync-done-status` | "sync done items" / "reconcile weekly to To Do" / auto pre-step inside `archive-todo` | Auto |
 | `projects-create-gantt` | "Start a project for X" | Always surface |
 | `reformat` | Detected broken CF | Auto |
 | `report` | Friday briefing / on-demand | Auto |
@@ -78,7 +79,10 @@ Plus: **Deal Aggregator Expansion** (Gantt, 12 weeks from 2026-05-11, G&B sage).
 
 ## Sunday rollover ceremony
 
-Triggered by `goodnight` on Sunday evening. Calls `task_tracker.py archive`, which:
+End-to-end weekly flow:
+`report` (Sunday morning) → walk-through with Kay → `promote` decisions → ... week's work ... → `archive-todo` (Sunday evening, auto-calls `sync-done-status` first to flip matching To Do rows for any checked priority slots) → Completed To Do tab populated → `archive` (renames live tab to next week, clears slots) → git commit.
+
+Triggered by `goodnight` on Sunday evening. The `archive-todo` call MUST precede `archive` — the sync pre-step inside `archive-todo` needs the still-live week tab to reconcile slots against. The `archive` verb then:
 1. Finds the live week tab via metadata.
 2. Duplicates it via `duplicateSheet` API to `archive_{old-label}` and parks at far-right of tab strip.
 3. Renames the original to next week's label (Monday edge case handled).

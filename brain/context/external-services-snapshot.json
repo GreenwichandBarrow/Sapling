@@ -1,17 +1,11 @@
 {
-  "fetched_at": "2026-05-12T13:00:04-04:00",
+  "fetched_at": "2026-05-12T13:30:04-04:00",
   "services": {
     "slack-webhooks": {
       "status": "ok",
       "latency_ms": null,
       "message": "4 webhooks configured",
       "skip_reason": null
-    },
-    "claude-api": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "ANTHROPIC_API_KEY not in env"
     },
     "superhuman": {
       "status": "skip",
@@ -31,6 +25,12 @@
       "message": "",
       "skip_reason": "OAuth re-flow required (Smithery UI)"
     },
+    "claude-api": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "ANTHROPIC_API_KEY not in env"
+    },
     "linkt": {
       "status": "skip",
       "latency_ms": null,
@@ -39,37 +39,37 @@
     },
     "vault": {
       "status": "ok",
-      "latency_ms": 13,
+      "latency_ms": 16,
       "message": "837 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "error",
-      "latency_ms": 19,
+      "latency_ms": 31,
       "message": "attio-mcp=0 superhuman=0",
-      "skip_reason": null
-    },
-    "apollo": {
-      "status": "ok",
-      "latency_ms": 159,
-      "message": "200 OK",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 221,
+      "latency_ms": 179,
       "message": "authenticated",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 250,
+      "latency_ms": 185,
       "message": "HTTP 405",
+      "skip_reason": null
+    },
+    "apollo": {
+      "status": "ok",
+      "latency_ms": 197,
+      "message": "200 OK",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 330,
+      "latency_ms": 275,
       "message": "gh authenticated",
       "skip_reason": null
     }

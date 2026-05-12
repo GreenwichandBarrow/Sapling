@@ -1,0 +1,71 @@
+{
+  "timestamp_utc": "2026-05-12T144207Z",
+  "tracker_sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
+  "live_tab_title": "May 11-17",
+  "live_tab_sheet_id": 0,
+  "helper_tab_existed_before": false,
+  "helper_tab_sheet_id": null,
+  "rows_17_21_formulas": [
+    [
+      "",
+      "=IF(COUNTA(C23:C37)=0,\"\u2014\",COUNTIF(B23:B37,TRUE)/COUNTA(C23:C37))",
+      "",
+      "=IF(COUNTA(E23:E37)=0,\"\u2014\",COUNTIF(D23:D37,TRUE)/COUNTA(E23:E37))",
+      "",
+      "=IF(COUNTA(G23:G37)=0,\"\u2014\",COUNTIF(F23:F37,TRUE)/COUNTA(G23:G37))",
+      "",
+      "=IF(COUNTA(I23:I37)=0,\"\u2014\",COUNTIF(H23:H37,TRUE)/COUNTA(I23:I37))",
+      "",
+      "=IF(COUNTA(K23:K37)=0,\"\u2014\",COUNTIF(J23:J37,TRUE)/COUNTA(K23:K37))",
+      "",
+      "=IF(COUNTA(M23:M37)=0,\"\u2014\",COUNTIF(L23:L37,TRUE)/COUNTA(M23:M37))",
+      "",
+      "=IF(COUNTA(O23:O37)=0,\"\u2014\",COUNTIF(N23:N37,TRUE)/COUNTA(O23:O37))"
+    ]
+  ],
+  "rows_17_21_merges": [
+    {
+      "startRowIndex": 16,
+      "endRowIndex": 21,
+      "startColumnIndex": 3,
+      "endColumnIndex": 5
+    },
+    {
+      "startRowIndex": 16,
+      "endRowIndex": 21,
+      "startColumnIndex": 5,
+      "endColumnIndex": 7
+    },
+    {
+      "startRowIndex": 16,
+      "endRowIndex": 21,
+      "startColumnIndex": 7,
+      "endColumnIndex": 9
+    },
+    {
+      "startRowIndex": 16,
+      "endRowIndex": 21,
+      "startColumnIndex": 9,
+      "endColumnIndex": 11
+    },
+    {
+      "startRowIndex": 16,
+      "endRowIndex": 21,
+      "startColumnIndex": 11,
+      "endColumnIndex": 13
+    },
+    {
+      "startRowIndex": 16,
+      "endRowIndex": 21,
+      "startColumnIndex": 13,
+      "endColumnIndex": 15
+    },
+    {
+      "startRowIndex": 16,
+      "endRowIndex": 21,
+      "startColumnIndex": 1,
+      "endColumnIndex": 3
+    }
+  ],
+  "existing_charts_on_live_tab": []
+}

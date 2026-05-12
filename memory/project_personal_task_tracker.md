@@ -19,7 +19,9 @@ Built 2026-04-26 to replace Motion (which generated too much noise). **Graduated
 
 When Kay wants a new tracker (yearly cycle, after a major schema rework, etc.), follow her naming convention `TO DO M.DD.YY` in the STRATEGIC PLANNING folder. To create one: re-run `/tmp/tracker-migration/build_sheet.py` with `NEW_SHEET_TITLE` updated.
 
-## Migration (2026-05-12)
+## Migration (2026-05-12) — Excel → Sheets
+
+**Donut-chart restoration (same day, evening pass).** Excel→Sheets migration originally inherited the no-chart constraint (openpyxl renders xlsx-only chart objects that broke on Sheets import) and kept big-% text only in rows 17–21. Kay flagged the text-only display as visually inferior to her original aesthetic intent (real donut shape with hole). Donut charts rebuilt via Sheets API native `pieChart` objects with `pieHole=0.5` — 7 charts, one per day, anchored at row 17 of each day-pair's left column. Math moved to hidden helper tab `_donut_data`. Build script: `scripts/build_donut_charts.py`.
 
 **Excel → Google Sheets cutover.** Triggered because Kay wanted browser-native access from any device (the iMac-only Excel path blocked the Hetzner VPS server from writing). Full migration in one pass:
 - Created new Sheet (`TO DO 5.12.26`) with the 5-tab architecture mirrored
@@ -65,8 +67,8 @@ Plus: **Deal Aggregator Expansion** (Gantt, 12 weeks from 2026-05-11, G&B sage).
 ## Key design decisions
 
 - **European calendar week** (Mon-Sun, not Sun-Sat).
-- **Big % display per day** instead of donut charts (2026-05-01).
-- **Sage-green palette** from Instagram template Kay liked. Sage-light `#e8efd8`, sage-dark `#7a8c4d`, sage-extra-light `#f3f7e8`. Entity tints: G&B sage, Kai Grey warm-grey, Panthera Grey cool-grey, Myself Renewed blush, Home warm-tan.
+- **Native Google Sheets donut charts per day** in rows 17–21 (one chart per day, pie + pieHole=0.5). Reverted 2026-05-12 from the interim big-% text display. Math is driven by the hidden helper tab `_donut_data` (7 rows × 3 cols: Day / Done / Left) which holds `COUNTIF` + `COUNTA` formulas pointing back at the Live Week status + task ranges. Charts re-render live as checkboxes toggle. **Never re-add openpyxl chart objects** (Excel-only constraint that broke `.xlsx` file rendering). Google Sheets native pieChart objects are fine and are now the canonical visual for the Live Week %-done display per Kay's 2026-05-12 preference.
+- **Sage-green palette** from Instagram template Kay liked. Sage-light `#e8efd8`, sage-dark `#7a8c4d`, sage-extra-light `#f3f7e8`. Entity tints: G&B sage, Kai Grey warm-grey, Panthera Grey cool-grey, Myself Renewed blush, Home warm-tan. *Donut slice colors are theme-driven in the Sheets API — `pieChart` has no per-slice color field. Default palette applied at build; manual recolor available via Chart Editor in the Sheet UI if Kay wants sage on the slices.*
 - **Manual-tick Gantt** (not auto-driven by Start/Target dates) — Kay wanted the tick-as-you-go feel.
 - **Type tags Work/Home only**, not subdivided into entities. Entities expressed via Project column.
 - **Strikethrough + sage-light fill** on done items everywhere via native conditional formatting rules tied to checkbox state.

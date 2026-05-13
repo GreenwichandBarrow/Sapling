@@ -1,0 +1,38 @@
+{
+  "date": "2026-05-13",
+  "scan_started_at": "2026-05-13T09:00:23Z",
+  "scan_finished_at": "2026-05-13T09:01:54Z",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 1,
+  "suppressed_count": 0,
+  "runtime_seconds": 91,
+  "triggered_by": "daily",
+  "results": [
+    {
+      "job": "launchd-debugger",
+      "cause": "CODE_BUG",
+      "action": "SURFACE",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_posted": true,
+      "suppression_reason": null,
+      "triggered_by": "daily",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/launchd-debugger-2026-05-12-0500.log",
+      "last_log_mtime": "2026-05-12T05:02:38-04:00",
+      "exit_code": 0,
+      "validator_failed_per_scanner": true,
+      "preflight_failed_per_scanner": false,
+      "actual_run_state": "exit 0, validator PASSED, 2 SURFACES posted to Slack (deal-aggregator + relationship-manager)",
+      "error_signature": "LAUNCHD-DEBUGGER VALIDATOR PASSED",
+      "scanner_false_positive": true,
+      "diagnosis": "Scanner false positive recursing. scripts/scan_launchd_failures.py VALIDATOR_FAIL_RE substring-matches the literal string 'VALIDATOR FAILED' inside launchd-debugger's own narrative summary text (the Slack-text fields written into the prior day's log, which themselves reference the historical 'VALIDATOR FAILED' wrapper line they were describing). 2026-05-12 launchd-debugger run completed cleanly: wrapper exit 0, POST_RUN_CHECK validator emitted 'LAUNCHD-DEBUGGER VALIDATOR PASSED', validator exit 0, artifact written. Same family as 2026-05-08 self-flag (then triggered by PREFLIGHT_FAIL_RE matching 'PREFLIGHT FAILED' in narrative) and yesterday's relationship-manager false positive surfaced in the 2026-05-12 artifact. Bug is now recursing because each day's launchd-debugger narrative summary mentions the prior day's diagnosis verbatim, perpetuating the substring match.",
+      "pattern_observed": "Third instance of scanner-narrative-substring-match family: 2026-05-08 (launchd-debugger self-flag on PREFLIGHT_FAIL_RE), 2026-05-12 (relationship-manager flag on VALIDATOR_FAIL_RE), 2026-05-13 (launchd-debugger self-flag on VALIDATOR_FAIL_RE). Recursive — each surfacing perpetuates the next match.",
+      "known_incident_match": false,
+      "cross_day_dedup_match": false,
+      "cross_day_dedup_note": "Strict (job, cause, error_signature[:50]) tuple does not match prior 2026-05-08 entry (signature there was 'PREFLIGHT AUTH FAIL — Claude CLI 401, re-auth req' — different first 50 chars). Same root-cause family but different signature, so dedup rule does not fire.",
+      "slack_text": "launchd-debugger: launchd-debugger FAILED — CODE_BUG. Scanner false positive: scan_launchd_failures.py VALIDATOR_FAIL_RE substring-matched the literal \"VALIDATOR FAILED\" inside the 2026-05-12 runs own narrative summary (which described yesterdays relationship-manager false positive). Wrapper exit 0, validator PASSED, artifact landed. Recommended: tighten VALIDATOR_FAIL_RE in scripts/scan_launchd_failures.py to anchor on the wrapper-emitted line (\"VALIDATOR FAILED — overriding skill exit code\") instead of bare substring — same fix the 5/12 run already recommended; bug is now recursing. Log: /home/ubuntu/projects/Sapling/logs/scheduled/launchd-debugger-2026-05-12-0500.log"
+    }
+  ]
+}

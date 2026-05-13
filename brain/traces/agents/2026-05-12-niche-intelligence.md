@@ -639,3 +639,69 @@ All 5 candidates PASS the 4-criterion screen and proceed to one-pager. No INITIA
 - Open question for scoring: whether safety-specific carve is 30-50 firms at $5-50M revenue (G&B sweet spot) or long-tail is mostly <$5M with acquirable pool actually 10-20 — needs Apollo + ASSP/NSC vendor directory pass.
 - Resurface gate: addresses 8-week-old "kill-list distinction" stuck-item with new independent-sizing evidence (OSHA safety carve has its own market report, separate from general compliance training).
 **Sources cited:** 19 (4 gathering-agent / 11 external research + hyperlinked / 3 internal vault / 1 CRM-network).
+
+---
+
+## Post 18 — One-Pager (Surplus Lines Compliance & Tax Filing) [niche-intel-onepager]
+**Time:** 2026-05-12 22:50 ET
+**Agent:** niche-intel-onepager
+**Niche:** Surplus Lines Compliance & Tax Filing Services
+**Drive folder:** WEEKLY REVIEW / Surplus Lines Compliance & Tax Filing Services (id `1emiR0tpLBDoTBFg32S2F_11QPmHQJeTm`)
+**File:** `Surplus Lines Compliance & Tax Filing May 2026.pptx` (id `18AaiiTUqjsJTJ7iEdMFVdyVqFKte_Ccn`)
+**Template:** customs-bonds-template.pptx (6 shapes preserved on slide 1; sources added as slide 2)
+
+**Content snapshot:**
+- Title + Assessment "Pending Scoring" / Status "Early research"
+- Industry Overview: $129.8B E&S DPW 2024; 3.6%→12.3% P&C share decade; 3.7M filings +12.4% mid-2025; 10-20 independents post Vertafore/InsCipher + ReSource Pro/ILSA + Saratoga/3HCG; SLIP+ KS/MT Apr 2026
+- Thesis: B2B compliance-services niche, sibling to active Property Tax Appeal (compliance-filing-services cluster). Asset-light, recurring per-filing + retainer, 20-30% EBITDA services / 70%+ gross software
+- Macro: climate-driven E&S growth, DOI digitization, cyber+emerging-risk, multi-state complexity; Risks: consolidation window mid-stride, software self-service, regulatory dependency
+- Economics: $50-150/filing or 0.5-1.5% premium; Comp: Vertafore/InsCipher, ReSource Pro/ILSA, Insightsoftware, 3HCG, NIC, Saratoga; named indies KnK, ACCEL, Veracity
+- Customers: surplus brokers + MGAs + MGUs + Amwins/RT Specialty/CRC; Barriers: 50+ jurisdictions, SLIP+ integrations, AMS workflow integrations, E&O
+- KSF: multi-state automation, software-services hybrid, broker-of-record stickiness, Vertafore/Applied/Sagitta integrations
+- Exit: Vertafore (Roper), ReSource Pro, Marsh McLennan, Insightsoftware strategics; Genstar/Stone Point/Aquiline PE; 10-14x software / 6-9x services comps
+- Sources slide: 4 groups (Gathering / External hyperlinked / Vault / CRM n/a — Camilla warm validator)
+
+### [niche-intel-onepager] — 2026-05-12 22:48 EDT — HNW Personal Lines Concierge Insurance
+**Niche:** HNW Personal Lines Concierge Insurance Brokerage (RESURFACE / UNMERGE candidate from Art Insurance)
+**File:** `HNW Personal Lines Concierge Insurance May 2026.pptx`
+**Drive:** UNDER REVIEW / HNW PERSONAL LINES CONCIERGE INSURANCE BROKERAGE — replaced existing 4.4.26.pptx in place (fileId `1rGAhqfT_sNnYYwgVYDV6F037hgbne0zC` — preserved). Folder `1ZryW7c3b7s6mB7SLF1MEMWdOpW-91lJL`.
+**View:** https://docs.google.com/presentation/d/1rGAhqfT_sNnYYwgVYDV6F037hgbne0zC/edit
+**Local:** /tmp/hnw-personal-lines-concierge-insurance-onepager.pptx
+**Template:** customs-bonds-template.pptx — 6 shapes preserved (2 lines, 16r2c table, picture, Strictly Confidential text box, question box). Sources slide appended as slide 2 with python-pptx hyperlinks grouped (Gathering / External / Vault / CRM).
+
+**10-section summary on the one-pager:**
+1. Title — HNW Personal Lines Concierge Insurance May 2026
+2. Assessment / Status — Pending Scoring
+3. Industry Overview — $106.6B global HNW market, ~100% renewals (August Felker), 11.9% CAGR, 20-40 US independents post AHT/RS/HUB roll-up, Chubb Masterpiece / PURE / Cincinnati / AIG Private Client / Berkley One as carriers. Distinct from collectibles-only Art Insurance.
+4. Thesis — Strongest single G&B right-to-win signal in entire pipeline (HISTORICAL agent). Asset-light brokerage, ~100% recurring commission, mission-critical UHNW product, fragmented post-consolidation tail, succession-window founder-led firms, luxury network pattern-match (Chanel/Hangman).
+5. Macro / Risks — $84T wealth transfer, climate-driven HNW migration NY/FL/TX, art/cyber exposure growth, big-firm service degradation, aging principals | Risks: carrier consolidation, AI underwriting commoditization, Aon/Marsh downmarket, PE window closing 12-18mo, thin pool.
+6. Economics — 12-15% commission, 90-100% retention, 25-40% EBITDA at scale, 16.7x EV/EBITDA peer average, $5M+ EBITDA brokers 12.5-14.5x | Competitive: HUB, Risk Strategies, AssuredPartners, ALKEME, NFP, World; carriers Chubb/PURE/Cincinnati/AIG/Berkley One; independents differentiate on service + relationships.
+7. Customers — UHNW families $5M+ (practical $10M+), SFOs/MFOs, RIA/wealth-manager referrals, estate attorneys, trust officers, art/yacht/aircraft owners | Barriers: carrier appointments ($1M+ premium book commitments), trust networks, referral chains, E&O cost, scarce HNW-specialist talent.
+8. KSFs — ≥3 HNW carrier appointments, multi-decade specialist team, RIA/MFO/attorney referral depth, BOR retention, service benchmarks, bundled-multi-line attachment, quiet operating culture | Geographic concentration in HNW corridors, underwriter-direct relationships, cross-sell discipline, principal-succession planning.
+9. Exit — Active PE-backed personal-lines consolidators: HUB, Risk Strategies, AssuredPartners, ALKEME, NFP, World, Acrisure. Top-of-range multiples 12.5-14.5x at $5M+ EBITDA, occasional 16x+ for best-appointed retained books. Secondary: sale to larger independent HNW specialist.
+10. Sources (Slide 2) — Gathering (synthesizer rank 2, chatroom trace, Felker 10/15 + 11/19) | External (Chubb / PURE / Cincinnati / AIG PCG / Capstone / MarshBerry / HUB-PC / RS-PC / NAIC) | Vault (3/24 niche-intel report, Felker / Hartwell / Oberle Risk entities, Art Insurance distinction folder) | CRM (Attio Felker + Hartwell records — verify).
+
+**Right-to-win flag for scorer:** This is the standout niche in today's batch — HISTORICAL agent called it "highest mission-criticality of any niche scored to date" and "strongest Kay right-to-win in any niche." Score 3/24 was 2.49; the data points to a higher re-score this cycle given (a) updated 11.9% CAGR, (b) capability-stack reuse from active Art Insurance, (c) August Felker contact still recoverable but lapsing fast.
+
+→ @niche-intel-scorer one-pager ready; weight RESURFACE-grade signal at parity with NEW per identifier framing. → @niche-intel-tracker propose unmerge from Art Insurance Brokerage entry on Industry Research Tracker.
+
+
+
+### [niche-intel-onepager / Aviation Insurance Brokerage] — 2026-05-12 23:55 EDT
+**Status:** complete
+**Folder ID:** 1_06yc6CiN5YyXhQsloS09jd-VGO6DEkA
+**File ID:** 1g2zLjI3Ael-8pvORjP_5YGm1RGfwMxwf
+**Web link:** https://docs.google.com/presentation/d/1g2zLjI3Ael-8pvORjP_5YGm1RGfwMxwf/edit
+**Pre-flight result:** No existing Aviation/Aircraft/General Aviation Insurance folder found under WEEKLY REVIEW (1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT). Confirmed NEW one-pager — created folder "Aviation Insurance Brokerage". Adjacent active niche "Specialty Insurance Brokerage" lives under ACTIVE - LONG TERM (sibling capability stack, not duplicate).
+**Key research findings:**
+- US aviation insurance market $1.80B (2025) → $3.32B (2030) at 6.31% CAGR; brokers control 75.68% of distribution.
+- Carrier landscape concentrated: USAIG, Global Aerospace, Old Republic Aerospace, Berkshire (AAU), Starr, AIG.
+- Independent broker pool ~50-100 firms; founder-led, 20-30yr aging principals = roll-up window.
+- Named acquirable: BWI Aviation (NSM-acquired), Falcon Insurance, Sutton James, AssuredPartners Aerospace (PE-backed), Holmes Murphy, Wings Insurance, L.L. Johns, Aero Insurance LLC, Travers (Hub-acquired comp).
+- Economics: 10-15% commission, 25-30% EBITDA (top-quartile 30-50%), 85-90%+ renewals, 8-14x EBITDA at sale.
+- Strategic fit: extends active Specialty Insurance (Art & Collectibles) capability stack into HNW aviation vertical; UHNW end-client overlap with art/yacht; opens adjacent cross-sell into Aviation Tax Structuring (3/14 scored 20-21).
+- PE consolidation risk medium-high (12-24 month window) — Hub, Acrisure, Risk Strategies actively buying specialty brokers.
+- Exit comps: AssuredPartners Aerospace, HUB International, Risk Strategies, ALKEME, NFP, Acrisure, Aon/Marsh.
+- Initial screen: PASS all 4 (margins / recurring / growth / TAM); 3/14 historical scoring 21/24.
+- Open question for scoring: of 50-100 firms, what % serve owner-flown / fractional / charter (G&B sweet spot) vs commercial airline (too large) — needs NBAA broker directory + Apollo pass to enumerate true $5-50M revenue pool.
+**Sources cited:** 16+ (3 gathering — synthesizer Output 5 rank 5, Identifier Niche 5, 3/14 historical scoring; 7 external hyperlinked — IBISWorld, MarketsandMarkets, NBAA, AOPA, USAIG, AssuredPartners, Global Aerospace; 3 vault — 2026-03-14* if present, Specialty Insurance Art one-pager, today's identifier post; 1 CRM — Attio check + Apollo enrichment queue covering 10 named firms).

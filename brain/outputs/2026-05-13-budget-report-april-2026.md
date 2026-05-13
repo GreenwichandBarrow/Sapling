@@ -135,7 +135,7 @@ YTD prorated budget = Annual budget / 12 × 4 months elapsed.
 - Databases & Research: $2,457 YTD vs $5,000 prorated (49% under).
 - Regular Wages + Payroll Taxes: $58,832 YTD vs $58,333 prorated (essentially on-budget, +0.9%).
 - Analyst contractor: $1,193 YTD vs $1,200 prorated (on-budget).
-- Bookkeeper line: $0 booked YTD vs $988 prorated. CEO confirmed 2026-05-13: Anthony has not sent any invoices yet, so $0 is correct (not an unposted-invoice issue). Forward burn assumption may need to include accrued bookkeeper liability if Anthony bills retroactively.
+- Bookkeeper line: $0 booked YTD vs $988 prorated. CEO clarified 2026-05-13: bookkeeping IS billed and paid every month, so $0 is a **QBO categorization error** — Anthony's invoices are being booked to another line (likely Professional Fees - Accounting at $3,200 YTD, or Consulting at $911 YTD). Need bucket reclassification or confirmation for accurate budget-vs-actual.
 
 ## Runway Analysis
 

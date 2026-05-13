@@ -1,18 +1,6 @@
 {
-  "fetched_at": "2026-05-13T10:30:45-04:00",
+  "fetched_at": "2026-05-13T11:00:45-04:00",
   "services": {
-    "launchd": {
-      "status": "error",
-      "latency_ms": null,
-      "message": "FileNotFoundError",
-      "skip_reason": null
-    },
-    "claude-api": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "ANTHROPIC_API_KEY not in env"
-    },
     "superhuman": {
       "status": "skip",
       "latency_ms": null,
@@ -24,6 +12,18 @@
       "latency_ms": null,
       "message": "",
       "skip_reason": "OAuth re-flow required (Smithery UI)"
+    },
+    "claude-api": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "ANTHROPIC_API_KEY not in env"
+    },
+    "launchd": {
+      "status": "error",
+      "latency_ms": null,
+      "message": "FileNotFoundError",
+      "skip_reason": null
     },
     "slack-webhooks": {
       "status": "ok",
@@ -39,38 +39,38 @@
     },
     "vault": {
       "status": "ok",
-      "latency_ms": 8,
+      "latency_ms": 7,
       "message": "849 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "error",
-      "latency_ms": 14,
+      "latency_ms": 26,
       "message": "attio-mcp=0 superhuman=0",
-      "skip_reason": null
-    },
-    "gog": {
-      "status": "ok",
-      "latency_ms": 100,
-      "message": "authenticated",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 132,
+      "latency_ms": 145,
       "message": "HTTP 405",
       "skip_reason": null
     },
-    "github": {
+    "gog": {
       "status": "ok",
-      "latency_ms": 181,
-      "message": "gh authenticated",
+      "latency_ms": 167,
+      "message": "authenticated",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 185,
+      "latency_ms": 170,
       "message": "200 OK",
+      "skip_reason": null
+    },
+    "github": {
+      "status": "ok",
+      "latency_ms": 264,
+      "message": "gh authenticated",
       "skip_reason": null
     }
   }

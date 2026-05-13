@@ -705,3 +705,36 @@ All 5 candidates PASS the 4-criterion screen and proceed to one-pager. No INITIA
 - Initial screen: PASS all 4 (margins / recurring / growth / TAM); 3/14 historical scoring 21/24.
 - Open question for scoring: of 50-100 firms, what % serve owner-flown / fractional / charter (G&B sweet spot) vs commercial airline (too large) — needs NBAA broker directory + Apollo pass to enumerate true $5-50M revenue pool.
 **Sources cited:** 16+ (3 gathering — synthesizer Output 5 rank 5, Identifier Niche 5, 3/14 historical scoring; 7 external hyperlinked — IBISWorld, MarketsandMarkets, NBAA, AOPA, USAIG, AssuredPartners, Global Aerospace; 3 vault — 2026-03-14* if present, Specialty Insurance Art one-pager, today's identifier post; 1 CRM — Attio check + Apollo enrichment queue covering 10 named firms).
+
+
+### [niche-intel-onepager / Funeral Home Management Software] — 2026-05-12 23:58 EDT
+**Status:** complete (RESURFACE — replaced 4/15 .pptx in place)
+**Folder ID:** 17wM1pqPdO3lgK9cjeUMGUGJEi_tC2U4Y (UNDER REVIEW / Funeral Home Management Software)
+**File ID:** 1kVIoapeTf5kI4_PO3mj01ZVkRUY89vRm (renamed to "Funeral Home Management Software May 2026.pptx" — replaced old `funeral-onepager.pptx`)
+**Web link:** https://docs.google.com/presentation/d/1kVIoapeTf5kI4_PO3mj01ZVkRUY89vRm/edit
+**Local:** /tmp/funeral-home-management-software-onepager.pptx
+**Template:** customs-bonds-template.pptx — 6 shapes preserved (2 lines, 16r2c table, picture, Strictly Confidential text box, side question box repurposed to funeral-specific PE/TAM questions). Sources appended as a 7th text box bottom of slide with python-pptx hyperlinks grouped (Gathering / External / Vault / CRM).
+
+**10-section summary on the one-pager:**
+1. Title — Funeral Home Management Software May 2026
+2. Assessment / Status — Pending Scoring | Resurfaced May 2026
+3. Industry Overview — TAM $475M–$1.86B (2026), 10.3–10.5% CAGR; 10K+ independent US funeral homes; 46% directors retiring <5yr with <25% succession plans; players SRS Computing, Halcyon (Batesville), FrontRunner Pro, Passare, Osiris, Aldor, Tukios. ZERO PE in SW layer.
+4. Thesis — Vertical SaaS for fragmented, retirement-heavy, regulatory-compliance-driven death care. Mission-critical (state board, FTC Funeral Rule, EDI w/ casket/cremation vendors). Recurring SaaS + AI-resistant verticality + greenfield PE = G&B-fit shovel-seller framework.
+5. Macro — Boomer mortality wave 2030–2045, cremation 58%→70% by 2030, FTC Funeral Rule 2024, e-signature/digital obit/livestream standard, SCI/Park Lawn multi-location consolidation, 46% operator retirement | Risks — Vista/Roper LMS-style entry, Batesville/Matthews strategic SW buying, slow legacy switching, sensitive-workflow migration, payment-processor margin pressure.
+6. Economics — $300–$1,200/funeral home/mo, multi-year contracts, 70–85% GM, 25–35% EBITDA, 95%+ retention | Competitive — 10–15 vendors, Halcyon/SRS/FrontRunner lead, founder-led long tail Passare/Osiris/Aldor/Tukios/Continental/FuneralHome.com/TomBean; ZERO PE roll-up.
+7. Customers — 19K US funeral homes mostly family-owned 1–3 locations, NFDA primary trade body, decision cycle 60–120d, owner = champion | Barriers — 50-state compliance content, EDI Wilbert/Matthews/Aurora, crematory integrations, sensitive-workflow trust, NFDA preferred-vendor status.
+8. KSFs — State-by-state compliance depth, crematory/casket/monument integrations, legacy on-prem migration tooling, white-glove transition CS, AI obit up-sell, payment-processing revenue share.
+9. Exit — Strategic Batesville/Matthews (Halcyon Sep 2024 comp), SCI, Park Lawn; vertical SaaS roll-up Roper/Constellation-Volaris/Banyan; PE Vista/Frontline/K1/GI Partners; 6–10x ARR / 15–25x EBITDA range.
+10. Sources (bottom of slide, hyperlinked) — Gathering: synthesizer Output 5 rank 3 + identifier RESURFACE entry + HISTORICAL post lines 53/300 + 2026-04-14 niche-intel report. External: NFDA, IBISWorld Funeral Homes US, Mordor Intelligence Death Care, Cognitive Market Research Funeral Home Software, Batesville–Halcyon Sep 2024 announcement, Funeral Service Insider. Vault: brain/outputs/2026-04-14-niche-intelligence-report.md, brain/traces/agents/2026-05-12-niche-intelligence.md. CRM: n/a (no Attio records on death-care SW vendors).
+
+**Key research findings:**
+- RESURFACE not NEW — scored 2.68 on 4/14 (2nd highest of that cycle) then silently dropped without documented kill reason. Identifier agent flagged for resurface.
+- ZERO active PE in software layer below Batesville/Halcyon strategic comp (Sep 2024) — open whitespace.
+- 10K+ independent funeral homes; 46% operator retirement window <5yr with <25% succession plans = forced tech adoption.
+- 10–15 SW vendors total, mostly founder-led private (Passare/Osiris/SRS/FrontRunner/Aldor/Tukios). Apollo+web revenue/EBITDA enrichment pass still needed for target list.
+- Margins (70–85% GM, 25–35% EBITDA), retention (95%+), growth (10.3–10.5% CAGR) all clear initial 4-gate screen.
+- Channel routing: cold-outreach niche (no warm path identified) — JJ-Call-Only or DealsX candidate per identifier agent.
+- Strategic-acquirer overhang (Batesville/Matthews/Wilbert) is the principal exit-window risk to flag for scorer.
+**Sources cited:** 13 (4 gathering — synthesizer Output 5 rank 3, identifier RESURFACE entry, HISTORICAL post lines 53/300, 4/14 niche-intel report; 6 external hyperlinked — NFDA, IBISWorld, Mordor, Cognitive Market Research, Batesville, Funeral Service Insider; 2 vault — 4/14 report + today's identifier post; 1 CRM — n/a flag).
+
+→ @niche-intel-scorer one-pager ready for funeral-home-management-software. Channel-routing recommendation (JJ-Call-Only vs DealsX) outstanding from identifier. → @niche-intel-tracker propose adding "Funeral Home Management Software" as standalone WEEKLY REVIEW row (currently absent from tracker despite 4/14 2.68 score).

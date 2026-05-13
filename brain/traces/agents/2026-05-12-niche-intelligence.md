@@ -203,3 +203,423 @@ EV Software/Charging, Other Computer Related Services, Escrow & Custodial softwa
 - `last30days.py` script path `~/.claude/skills/last30days/scripts/last30days.py` not present on VPS — substituted with 2× WebSearch queries. Recommend project-skill audit.
 - Conference platform comms (per `project_conference_platform_comms_via_intermediary_list`) — none surfaced in 14-day window via Gmail; would need Intermediary Target List sheet read which is out of scope for RECENT agent.
 
+
+---
+
+### [niche-intel-synthesizer] — 2026-05-12 22:55 EDT
+**Source:** Synthesis of RECENT + HISTORICAL gathering posts
+**Status:** complete
+
+#### OUTPUT 1: Cross-Source Signal Matrix
+
+| Niche/Industry | RECENT Sources | HISTORICAL Sources | Total | Strength |
+|---|---|---|---|---|
+| Premium Pest Mgmt (anchor) | newsletters (NPMA x4, PestWorld), web (FISART +0.5x, HVAC roll-up adj.), vault (holdco doctrine 5/8, NJPMA 4/29, Cetane sell-side 5/1), passive | (already active) | 5 RECENT | VERY STRONG (active) |
+| Funeral Home Mgmt Software | — | B (4/14 scored 2.68 — 2nd highest, ZERO PE in SW layer, Batesville/Halcyon comp) | 1 | MODERATE (quant) — RESURFACE candidate |
+| Healthcare Reg. Compliance SaaS (HIPAA/OSHA/CMS) | — | A (E&K listings + Jake Stoller 4/10), B (4/14 scored 2.70 — highest of cycle, Vista $43M MedTrainer, 99% retention) | 2 | STRONG — RESURFACE candidate |
+| Workplace H&S Compliance Training | — | A (Sarah Rowell WSN mentorship — strongest mentor-niche fit in network), B (3/17 + 3/21 scored 2.51-2.59) | 2 | STRONG (mentor-leveraged) — STUCK on Kay ruling |
+| HNW Personal Lines Concierge Ins. | — | A (August Felker 10/15 + 11/19, Hunter Hartwell 1/12), B (3/24 scored 2.49 — "highest mission-criticality") | 2 | STRONG — RESURFACE / unmerge from Art Ins. |
+| Surplus Lines Compliance & Tax Filing | — | A (Camilla 3/12 + AI-search group), B (3/21 scored 2.65 — highest of cycle) | 2 | STRONG — natural pair w/ active Property Tax Appeal |
+| Customs Bond Specialty Brokers | — | A (Jeremy Black 2/2 + Kay brother marine logistics), B (4/14 flagged "premature kill") | 2 | MODERATE — needs Kay framing ruling vs. killed generic |
+| Fire Protection & MEP Engineering (tristate) | newsletters (Helen Guo 5/12 — $718K EBITDA NY) | — | 1 | MODERATE (quant data point only, single deal) |
+| Aircraft / Yacht / Aviation cluster (Luxury Infra) | — | B (3/14 luxury infra scoring — 5 niches Tier-1 scores 20-22/24) | 1 source but 5 sub-niches | STRONG (combined) — never advanced past initial scoring |
+| Premium Audit & Loss Control (Outsourced) | — | A (Jeremy Black back-office), B (3/21 scored 2.32) | 1 | WEAK — no Kay right-to-win |
+| Insurance Back-Office BPO (SIU sub) | — | A (Jeremy Black 2/2), B (3/21+3/24 scored 2.17) | 1 | WEAK — basic-claims dead, SIU sub LIVE |
+| IMO/FMO Aggregator | — | A (Jeremy Black 2/2 + 2/4), B (3/24 scored 2.37) | 1 | WEAK — Kay-bandwidth constrained, 90d stale |
+| Tree Care / Arboriculture | newsletters (Helen Guo 5/8, Brian Hartman archetype $2.6M→$8.5M) | — | 1 | WEAK — adjacent to TABLED Landscape Services HNW |
+| Solid Waste Collection | newsletters (Helen Guo 5/12, $407K EBITDA MI) | — | 1 | WEAK — out of identity zone |
+| B2B Events Roll-Up | web (Apollo/Emerald/Questex $1.5B 5/11) | — | 1 | WEAK (macro only, exploited relationally already) |
+| Digital Accessibility Compliance | — | B (4/14 scored 2.58, ADA deadline 4/24 already past) | 1 | DEAD (catalyst lapsed) |
+| Veterinary PMS | — | B (4/14 scored 2.60 — duopoly 79%) | 1 | DEAD (structural duopoly) |
+| Environmental Compliance Consulting | — | B (3/31 scored 2.61 — Montrose/Tetra Tech saturated) | 1 | DEAD (PE saturation) |
+
+#### OUTPUT 2: Named Company Registry
+
+Attio cross-check: `op://Personal/Attio API Key/credential` not resolvable in headless launchd context — all flagged NEW_TARGET with deferred Attio check.
+
+| Company | Niche | Source(s) | Rev/EBITDA | Indep? | Location | Outreach Flag | Notes |
+|---|---|---|---|---|---|---|---|
+| Cetane Associates (Bob Williamson) | Pest & Lawn sell-side broker | RECENT vault inbox 5/1 | n/a (broker) | family-led | Warrington PA | VAULT_HISTORY | Free VRA offer 4/29 NJPMA — broker channel for Premium Pest. Per `feedback_free_valuation_equals_sell_side` = sell-side prospect, wrong layer for buy-side, but firm = active NJ tristate pest broker. |
+| Champions Group | HVAC roll-up comp | RECENT web (ctacquisitions) | ~$2.5B EV / ~18.5x EBITDA | acquired Feb 2026 | n/a | NEW_TARGET | Blackstone bought from Odyssey — Premium Pest exit comp. |
+| Boyne (tristate cleaning platform) | High-End Comm. Cleaning | RECENT vault (5/5 prior cycle) | n/a | platform-launch | tristate | VAULT_HISTORY | Competitive pressure on active niche. |
+| Apollo/Emerald Holding/Questex | B2B events roll-up | RECENT web 5/11 | $1.5B EV (Emerald) | acquired | NA | NEW_TARGET | Macro signal only — not target. |
+| Trade Risk Group / Trade Risk Guaranty | Customs Bond Specialty | HISTORICAL B (3/21 overnight) | n/a | indep. | US | NEW_TARGET | Per Jeremy Black framing — needs Kay re-open ruling. |
+| LOGISTIQ | Customs Bond Specialty | HISTORICAL B (3/21 overnight) | n/a | indep. | US | NEW_TARGET | Same niche cluster as above. |
+| International Bond & Marine Brokerage | Customs Bond Specialty | HISTORICAL B (3/21 overnight) | n/a | indep. | US | NEW_TARGET | Brother (marine logistics) right-to-win path. |
+| NEIS Inc. (1945) | Premium Audit & Loss Control | HISTORICAL B (3/21) | n/a | 80yr family | Davenport IA | NEW_TARGET | Family-owned premium audit specialist. |
+| Covenir | Insurance BPO (US-onshore SIU) | HISTORICAL B (3/21 overnight) | n/a | indep. | US | NEW_TARGET | 100% onshore — SIU sub-niche carve. |
+| Insuserve | Insurance BPO (VA model) | HISTORICAL B (3/21 overnight) | n/a | indep. | VA | NEW_TARGET | SIU sub-niche carve. |
+| TPA Engine | Insurance BPO | HISTORICAL B (3/21 overnight) | n/a | indep. | US | NEW_TARGET | Adjacent to claims-admin (dead) — SIU framing required. |
+| Davies / Afirm | Premium Audit exit comp | HISTORICAL B (3/21) | n/a | acquired 2023 | n/a | NEW_TARGET | Validates exit pathway. |
+| EXL / Overland | Insurance BPO consolidator | HISTORICAL B (3/21) | n/a | acquirer | n/a | NEW_TARGET | Floor for consolidator behavior. |
+| Integrity Marketing | IMO/FMO exit comp | HISTORICAL B (3/24) | 154 acquisitions | acquirer | n/a | NEW_TARGET | Roll-up archetype. |
+| Vertafore / InsCipher | Surplus Lines tech | HISTORICAL B (3/21) | n/a | acquired | n/a | NEW_TARGET | Surplus lines comp (acquired into Vertafore). |
+| ReSource Pro / ILSA | Surplus Lines services | HISTORICAL B (3/21) | n/a | rollup | n/a | NEW_TARGET | Surplus lines services roll-up comp. |
+| Saratoga / 3H | Surplus Lines services | HISTORICAL B (3/21) | n/a | rollup | n/a | NEW_TARGET | Surplus lines services roll-up comp. |
+| KnK + ACCEL | Surplus Lines + IPLC | HISTORICAL B (3/21) | n/a | indep. | US | NEW_TARGET | Straddles surplus lines and IPLC. |
+| MedTrainer | Healthcare Reg. Compliance SaaS | HISTORICAL B (4/14) | Vista $43M | acquired | n/a | NEW_TARGET | Vista Equity exit comp. |
+| Healthicity | Healthcare Reg. Compliance SaaS | HISTORICAL B (4/14) | n/a (99% retention, <2.5% churn) | indep. | US | NEW_TARGET | Best-in-class metrics. |
+| Allyant | Digital Accessibility | HISTORICAL B (4/14) + learnings.md ("aspirational benchmark") | n/a | indep. | US | VAULT_HISTORY | G&B reference archetype. |
+| Level Access / UserWay | Digital Accessibility | HISTORICAL B (4/14) | $98.7M consolidation | acquired/acquirer | n/a | NEW_TARGET | Catalyst window has lapsed. |
+| Batesville / Halcyon | Funeral Home SW comp | HISTORICAL B (4/14) | Sep 2024 strategic | acquired | n/a | NEW_TARGET | ZERO-PE layer below this comp. |
+| Kantola / Traliant / PSG | Workplace H&S Training | HISTORICAL B (3/17), Sarah Rowell call | 2018+2024 exits | acquired (PSG) | n/a | VAULT_HISTORY | Sarah Rowell ran exact playbook → mentor relationship. |
+| Vanta / Drata / Secureframe | Cybersec Compliance (DEAD) | HISTORICAL B (3/17) | CaaS platforms | indep. | n/a | NEW_TARGET | Disrupting agents — DEAD path. |
+| Brian Hartman (5-brand tree-care) | Tree Care / Arboriculture | RECENT newsletter Helen Guo 5/8 | $2.6M→$8.5M profit | platform | ATL/DAL/JAX | NEW_TARGET | Operator archetype — could be referent if Landscape HNW resurfaces. |
+| Fire Protection + MEP Engineering NY | Fire/MEP | RECENT newsletter Helen Guo 5/12 | $718K EBITDA | unknown | NY metro | NEW_TARGET | Single deal — needs pool sizing. |
+| Anticimex / Rentokil-Terminix / Rollins | Pest exit comp | RECENT web FISART + HISTORICAL holdco doctrine | n/a | strategic | global | NEW_TARGET | Active niche exit-path validation. |
+| Constellation Software / Volaris | Vertical SaaS comp | RECENT vault 5/8 + learnings.md | $80B+ | acquirer | CA | NEW_TARGET | Quietly consolidated ArtBinder/Gallery Systems — Vertical SaaS for Luxury validation. |
+| Voxme | Vertical SaaS for Luxury | HISTORICAL (10/30 Levi Acumen call) | n/a | indep. | n/a | VAULT_HISTORY | Already captured in active niche. |
+| E&K (Everingham & Kerr) | Insurance broker (Joe Vanore) | RECENT gmail 5/8/9 + HISTORICAL | n/a (broker) | indep. | US | IN_CRM | Monthly insurance-agency deal feed — none in active verticals in window. |
+
+#### OUTPUT 3: Contact-to-Niche Map
+
+| Contact | Warmth | Niches They Can Help With | What to Ask | Last Contact |
+|---|---|---|---|---|
+| Sarah Rowell (WSN mentor, Kantola/Traliant exit) | HOT | Workplace H&S Compliance Training | Whether playbook re-runnable in safety-specific carve (vs. killed harassment); intros to NSC / ASSP-track firms | (mentorship cadence ongoing — date not in window) |
+| Jeremy Black (Tucson searcher) | WARM | IMO/FMO via mother; Santa Fe Art Transport; Insurance back-office; Customs Bond Specialty | 3 distinct unfollowed leads from 2/2 — IMO firm owner intro, back-office friend, art transport listing | 2026-02-02 (90+ days stale) |
+| August Felker (Oberle Risk) | WARM | HNW Personal Lines Concierge Insurance | Name of "two women near retirement actively declined PE" — never collected | 2025-11-19 (4+ months) |
+| Hunter Hartwell | WARM | HNW Personal Lines (carve-out strategy from PE-backed firms shedding non-core) | Jonathan Crystal fine-jewelry intro never made | 2026-01-12 |
+| Andrew Lowis (Axial BD) | HOT | Estate Mgmt (Axial deal flow) + meta-platform | Arturo (search-funder POC) intro pending | 2026-05-06 |
+| Camilla (multi-state retail ops) | WARM | Surplus Lines Compliance; 3rd-party biz license; Aerospace/Defense woman-owned referral (husband-inheritance succession) | Validate surplus lines pool sizing; pursue A&D referral | 2026-04-30 |
+| Kim Vernon + Dave Wi (via Denning Rodriguez) | COOL | Last-mile / Farfetch / Spanx-veteran | Never contacted — Q4 2025 intros pending | 2026-02-11 (intros only) |
+| Kate Reibel + Dan Tanzilli + Margot Romano | WARM (Margot) / COOL | Private Art Advisory (active) | Margot called 4/4; others stale | 2026-04-04 (Margot) |
+| Joe Vanore (Everingham & Kerr) | WARM | Insurance-agency deal flow | Monthly broker listings — recent deals not in active verticals | 2026-05-09 |
+| Mark Gardella + Tobias Marshberry | COOL | Insurtech landscape | Under-leveraged for niche-intel — broader landscape conversation | 2026-03-31 |
+| Bob Williamson (Cetane Pest & Lawn) | COOL | Pest & Lawn sell-side broker pipeline | NJ tristate book visibility; don't accept free VRA (sell-side prospect) | 2026-05-01 |
+| Mike Horowitz | COOL | IMO/FMO ecosystem | Cross-validate Jeremy Black IMO lead | 2026-03-21 (passive inbox) |
+| Jake Stoller | WARM | Healthcare Reg. Compliance SaaS framework validator | Re-engage if Healthcare RegC SaaS resurfaces | 2026-04-10 |
+| Kay's brother (marine logistics) | HOT (family) | Customs Bond Specialty Brokers | Use as right-to-win wedge if Kay re-opens Customs Bond kill ruling | ongoing |
+
+#### OUTPUT 4: Lead Lifecycle Tracker
+
+| Niche/Strategy | Proposed By | When | Challenged By | When | Reason | Status |
+|---|---|---|---|---|---|---|
+| Workplace H&S Training | niche-intel 3/17 + 3/21 (Sarah Rowell angle) | 2026-03-17 | (carved-from-kill-list distinction not ruled) | 2026-03-21+ | Kay never ruled vs killed "Compliance E-Learning (General)" | LIVE-STUCK — needs Kay distinction ruling |
+| HNW Personal Lines Concierge Ins. | niche-intel 3/24 | 2026-03-24 | tracker merge w/ Art Insurance | post-3/24 | Lost standalone identity in tracker | LIVE-STUCK — needs unmerge |
+| Surplus Lines Compliance | niche-intel 3/21 (2.65 highest cycle) | 2026-03-21 | tracker drift — buried under IPLC | post-3/21 | Framed as IPLC extension not standalone | LIVE — natural pair w/ active Property Tax Appeal |
+| Funeral Home Mgmt SW | niche-intel 4/14 (2.68) | 2026-04-14 | (no challenge — silently dropped) | post-4/14 | Three weeks later not on tracker | LIVE — RESURFACE |
+| Healthcare Reg. Compliance SaaS | niche-intel 4/14 (2.70 highest) | 2026-04-14 | implicit kill (no dominant healthcare vertical) | post-4/14 | Horizontal w/o anchor demand | LIVE — RESURFACE if Kay re-enters healthcare |
+| Customs Bond Specialty Brokers | Jeremy Black 2/2 + brother right-to-win | 2026-02-02 | KILLED list (generic customs brokerage) | undated | Kill-framing question posed 3/21, 3/24, 4/14 — never answered | KILLED — but framing question outstanding |
+| Aircraft Mgmt / Yacht Ins. / Aviation Ins. / Yacht Mgmt / Yacht Crew | luxury infra scoring 3/14 (Tier-1 20-22/24) | 2026-03-14 | (no challenge — never advanced) | post-3/14 | Estate Mgmt displaced as luxury rep niche | LIVE-DORMANT — Aviation Ins. is direct sibling to active Art Ins. |
+| IMO/FMO Aggregator | Jeremy Black 2/2 + niche-intel 3/24 (2.37) | 2026-02-02 | implicit (Kay bandwidth) | post-3/24 | Lower score than insurance peers; analyst attention shifted | LIVE-STALE (90+d) |
+| Premium Audit & Loss Control | Jeremy Black 2/2 + niche-intel 3/21 (2.32) | 2026-02-02 | (no Kay right-to-win) | post-3/21 | Weakest growth + zero right-to-win | LIVE — largest-pool JJ Call-Only option |
+| Insurance BPO (SIU sub) | Jeremy Black 2/2 + niche-intel 3/24 (2.17) | 2026-02-02 | basic claims/admin → AI disruption | 2026-03-24 | Basic claims dead; SIU sub survives | LIVE (SIU only) / DEAD (basic claims) |
+| Veterinary PMS | niche-intel 4/14 (2.60) | 2026-04-14 | IDEXX/Covetrus 79% duopoly | post-4/14 | Structural duopoly | DEAD — TABLED de facto |
+| Environmental Compliance Consulting | niche-intel 3/31 (2.61) | 2026-03-31 | Montrose/Tetra Tech PE saturation | 2026-03-31 | 27+ PE add-on platforms — solo searcher uncompetitive | DEAD |
+| Digital Accessibility Compliance | niche-intel 4/14 (2.58) | 2026-04-14 | catalyst window (4/24 deadline) passed before promotion | post-4/24 | Time-sensitive promotion missed | DEAD (catalyst lapsed) |
+| Managed Cybersec Compliance | niche-intel 3/17 (2.52) | 2026-03-17 | PE 72% saturation + Vanta/Drata/Secureframe disruption | 2026-03-17 | Same-cycle rejection | DEAD |
+| Heat Transfer Manufacturing | Jeremy Black 2/2 referral | 2026-02-02 | Kay same call | 2026-02-02 | <$3.5M, no recurring | DEAD |
+| Tree Care / Arboriculture | RECENT 5/8 Helen Guo archetype | 2026-05-08 | Landscape Services HNW TABLED | (inherited) | Adjacent to TABLED niche | TABLED-ADJACENT |
+| B2B Events Roll-Up | RECENT 5/11 Apollo/Emerald | 2026-05-11 | already exploited relationally via conference-pipeline | n/a | Macro only | NOT-PURSUE |
+| Solid Waste Collection | RECENT 5/12 Helen Guo | 2026-05-12 | out of G&B identity zone | n/a | Identity filter | NOT-PURSUE |
+| Fire Protection + MEP Engineering (NY) | RECENT 5/12 Helen Guo | 2026-05-12 | (not yet challenged) | n/a | Single deal — pool sizing pending | NEW — needs sizing |
+
+#### OUTPUT 5: Convergence Report (Top NEW niche signals)
+
+Quality threshold honest call: only **two** truly NEW niches converge from the 14-day window (Fire/MEP, Tree Care), and both are WEAK signals. The strongest synthesis-worthy moves are RESURFACE candidates from HISTORICAL — niches Kay's system has already scored 2.5+ but silently dropped. Ranking accordingly:
+
+**1. Workplace H&S Compliance Training (eLearning) — RESURFACE / unblock**
+- Sources: HISTORICAL A (Sarah Rowell WSN mentorship — strongest single mentor-to-niche alignment in entire G&B network) + B (3/17 scored 2.59, 3/21 scored 2.51).
+- Companies: Kantola (Sarah's firm, 2018 exit) / Traliant / PSG comp validated.
+- Contacts: Sarah Rowell (HOT). She literally ran the exact playbook; G&B has best-in-network mentor leverage here.
+- Buy-box fit: B2B services, 75-85% gross margins, 50%+ recurring, 30-50 indie firms in safety-specific (harassment consolidated already), 7-13% CAGR, OSHA + state mandate moat. Hits every major filter.
+- Actionability: Sarah can warm-intro within days. Kay can be on owner phones within 2 weeks IF the distinction ruling between this and killed "Compliance E-Learning (General)" is finally answered.
+- Synthesis: This is the **highest-leverage stuck item in the entire pipeline**. The Sarah Rowell advantage is unmatched anywhere in Kay's network — same playbook, same exit, mentor-grade access. The only blocker is a kill-list framing ruling Kay has deferred for ~8 weeks. Surface this back to Kay as a single binary decision: carve this out from kill-list or formally re-kill with reason. (See `feedback_strategic_thresholds_need_grounding` — inherited convention of treating it as killed needs grounding.)
+
+**2. HNW Personal Lines Concierge Insurance — RESURFACE / unmerge**
+- Sources: HISTORICAL A (August Felker 10/15 + 11/19, Hunter Hartwell 1/12) + B (3/24 scored 2.49, "highest mission-criticality of any niche").
+- Companies: August's two-women-near-retirement target names exist but never collected.
+- Contacts: August Felker (WARM, Oberle Risk) — strongest Kay right-to-win signal in any niche per HISTORICAL agent. Hunter Hartwell (WARM, carve-out path).
+- Buy-box fit: ~100% renewal rates, $106.6B global HNW market, 20-40 indie firms, asset-light. Hits all filters except slightly thin pool.
+- Actionability: August call → target names within one call. Kay on owner phones within 2 weeks straightforward.
+- Synthesis: The niche was administratively erased — merged into "Art Insurance Brokerage (Wind-Down)" and lost identity. A single tracker hygiene move (unmerge) plus a single email to August re-opens it. Sibling to active Specialty Insurance (Art & Collectibles), so capability stack already exists.
+
+**3. Funeral Home Management Software — RESURFACE**
+- Sources: HISTORICAL B (4/14 scored 2.68 — second-highest of cycle).
+- Companies: Batesville/Halcyon Sep 2024 strategic comp; thin pool 10-15 vendors below; ZERO PE in software layer.
+- Contacts: NFDA directory available; no warm intro identified.
+- Buy-box fit: Vertical SaaS, $250-450M → $600M+ TAM by 2031, 46% of directors retiring within 5yr with <25% succession plans, 10K+ indie funeral homes. Excellent G&B vertical-SaaS thesis match.
+- Actionability: Cold-outreach niche (no warm path) — JJ-Call-Only or DealsX channel candidates. 2-week phone window plausible but cold.
+- Synthesis: Classic shovel-seller framework hit (per learnings.md). Mortality-driven recurring demand. Zero searcher footprint in SW layer (Kantola pattern in reverse — open whitespace). Worth a one-pager re-run with explicit channel routing decision.
+
+**4. Surplus Lines Compliance & Tax Filing Services — RESURFACE (paired with active Property Tax Appeal)**
+- Sources: HISTORICAL A (Camilla 3/12 + AI-search group) + B (3/21 scored 2.65 — highest of cycle).
+- Companies: KnK + ACCEL (straddle); roll-up comps Vertafore/InsCipher, ReSource Pro/ILSA, Saratoga/3H.
+- Contacts: Camilla (warm, already validated adjacency).
+- Buy-box fit: Compliance recurring, $129.8B DPW 2024, 3.7M filings up 12.4% mid-2025, 10-20 indie firms post-consolidation. Asset-light, B2B services.
+- Actionability: Pool is thin (10-20 indies) — JJ-Call-Only feasible. Camilla can warm.
+- Synthesis: Natural sibling to active Property Tax Appeal — same compliance-tax-filing thesis. Pairing them on the tracker creates a "Compliance Filing Services" cluster of 2+ active niches, which improves channel economics on JJ/DealsX vs running each solo. Per `feedback_strategic_thresholds_need_grounding`, this isn't an inherited convention but a 2.65 G&B-scored, Kay-known signal that simply lost momentum.
+
+**5. Aviation Insurance Brokerage — RESURFACE as natural extension of active Art Insurance**
+- Sources: HISTORICAL B (3/14 luxury infra scored 21/24 — "highest-margin most-recurring niche in entire analysis").
+- Companies: 50-100 specialized firms, founder-led 20-30yr aging principals.
+- Contacts: none warm yet, but Specialty Insurance (Art & Collectibles) ecosystem is already active.
+- Buy-box fit: 85-90% recurring renewals, 25-30% EBITDA, 8-14x EBITDA multiples, founder-retirement consolidation window. Strong match.
+- Actionability: Cold-niche but tightly adjacent to active specialty-insurance work; broker capability stack already built.
+- Synthesis: This is the lowest-friction add because it inherits Specialty Insurance's channel, voice, and broker comp set. Aircraft Mgmt + Yacht Ins. + Yacht Mgmt + Yacht Crew are sibling Tier-1 luxury infrastructure niches that all scored 20-22/24 on 3/14 and were never advanced. A single decision — "extend Specialty Insurance scope to aviation" — opens all of them.
+
+**Stale, not RESURFACE-worthy (per ruthless-detection rule):**
+- IMO/FMO Aggregator (2.37, 90+d stale, Kay bandwidth-constrained)
+- Premium Audit & Loss Control (2.32, weakest growth, no right-to-win)
+- Insurance BPO basic claims (DEAD — AI disruption)
+- Veterinary PMS (DEAD — structural duopoly)
+- Environmental Compliance (DEAD — PE saturation)
+- Digital Accessibility (DEAD — catalyst lapsed)
+- Customs Bond Specialty (KILLED — but framing question deserves direct Kay yes/no, not re-ranking)
+
+**Genuinely new from the window (not strong enough to rank top-5 alone):**
+- Fire Protection + MEP Engineering NY (1 deal listing, single quant data point — needs pool sizing before scoring)
+- Tree Care / Arboriculture (adjacent to TABLED Landscape Services HNW — don't resurface unless that parent ruling changes)
+
+**Honest call:** The pattern of the week is not new-niche-discovery — it's **administrative recovery of high-scoring niches that fell through tracker cracks** (Workplace H&S Training, HNW Personal Lines, Funeral Home SW, Surplus Lines, Aviation Insurance cluster). The Identifier agent should weight RESURFACE-grade signals at parity with NEW-grade.
+
+
+### [niche-intel-identifier] — 2026-05-12 23:35 EDT
+**Status:** complete
+**Candidates surfaced:** 5
+
+The 14-day RECENT window produced only weak/single-source NEW signals (Fire/MEP NY, Tree Care) — neither passes the niche-vs-deal-listing bar without pool sizing. Quality candidates this cycle are RESURFACE: previously-scored niches (2.49–2.70 range) that slipped through tracker hygiene. Per SKILL.md and `feedback_strategic_thresholds_need_grounding`, resurfaces are admitted only with new evidence addressing the original tabling reason — each below documents that evidence.
+
+---
+
+### Niche 1: Workplace Health & Safety Compliance Training (eLearning) — RESURFACE
+
+**Thesis (2-3 sentences):** Vertical-SaaS-style eLearning serving the safety carve-out of the workplace-compliance training market, distinct from the now-consolidated harassment carve (Kantola → Traliant/PSG). OSHA enforcement + state safety mandates drive recurring renewals at SaaS-grade margins. Sarah Rowell — Kay's WSN mentor — literally ran this exact playbook to a PSG exit in Jan 2024, giving G&B the strongest mentor-to-niche alignment anywhere in the network.
+
+**Source Signal:** Synthesizer Convergence Output 5 rank 1 + HISTORICAL post lines 63 (Workplace H&S Compliance Training) + 83 (Sarah Rowell river-guide). No RECENT signal — pure HISTORICAL stuck-item.
+
+**Duplicate Check:** Checked against active niches (Pest, Art Advisory, Estate Mgmt, Coffee Equip, Commercial Cleaning, Vertical SaaS Luxury, Art Insurance, HVA Storage, Customs Bonds, Property Tax Appeal) — not a duplicate; Vertical SaaS Luxury is the closest neighbor but is asset/luxury-service-vertical, not horizontal compliance-training. Checked against killed (Compliance E-Learning General) — distinct because safety-specific carve has separate competitive set (NSC/ASSP track), separate regulatory driver (OSHA), and separate buyer (EHS director, not HR/legal). Checked against tabled — n/a.
+
+**Resurfacing:**
+- Original status: STUCK — scored 2.59 (3/17) + 2.51 (3/21), never promoted to WEEKLY REVIEW; blocked on Kay's unmade distinction ruling vs. killed "Compliance E-Learning (General)" since 2026-03-21 (~8 weeks).
+- Original reason: Open kill-list framing question — was safety-specific carve absorbed under general compliance-eLearning kill, or distinct?
+- Why revisit now: (a) New macro data — `marketgrowthreports.com` puts eLearning Corporate Compliance Training at $7.65B in 2026 → $23.2B by 2035 (13% CAGR), confirming the cycle estimates were directionally right but TAM is significantly larger than the 3/21 framing assumed. (b) `verifiedmarketreports.com` puts OSHA Safety Training Market specifically at $2.5B (2024) → $5.1B (2033) at 8.5% CAGR — meaning the safety carve is independently sized and growing faster than the general training market, NOT a subset that collapses into it. (c) `feedback_strategic_thresholds_need_grounding` and `feedback_check_status_before_surfacing_carryover` both push toward forcing the dormant ruling. Kay has not seen this exact data; the prior framing was vibes-based.
+
+**INITIAL SCREEN (all 4 must pass to proceed — flag if any fail):**
+1. Margins: **Strong** — SaaS gross margins 70-85% (founderpath.com), mature compliance-eLearning EBITDA 25-35%; Kantola exit was PSG-grade economics. Source: `founderpath.com/blog/ebitda-margin`, `softwareequity.com/blog/gross-margin-saas`.
+2. Recurring Revenue: **High** — subscription / annual-renewal training contracts; 50%+ recurring trivially cleared. Cycle-internal data point: 75-85% gross margin compliance-eLearning peers run subscription. Source: `marketresearchfuture.com/reports/workplace-safety-and-compliance-training-market-68169`.
+3. Industry Growth: **Strong** — OSHA Safety Training specifically at 8.5% CAGR (verifiedmarketreports.com); broader Workplace Safety & Compliance Training at 4.37% CAGR (MRFR). Even the conservative 4.37% clears the ~3% GDP threshold; the OSHA-specific carve clears it 2.8x.
+4. Growth TAM: **≥$500M cleared** — $2.5B (2024) → $5.1B (2033) for OSHA Safety Training alone (verifiedmarketreports.com); $7.65B (2026) for broader compliance training. Multiple independent sources confirm $500M floor cleared by 5-15x.
+
+**TARGET TAM (informational only — not gating):**
+- Total firms in market: 30-50 independents in the safety-specific carve (HISTORICAL line 63 cycle data).
+- Independently owned: 30-50 (harassment-specific has been consolidated by PSG/Traliant; safety-specific is the remaining open whitespace).
+- Already PE-backed/acquired: PSG-Traliant (harassment), various LMS roll-ups (KKR-J2 Global etc.) — but safety-specific layer is the long tail, mostly untouched.
+- PE consolidation risk: **Medium** — PSG playbook proves a buyer exists at exit, but no signs of PE rolling up safety-specific peers yet. Window open but not infinite.
+- Named examples: Kantola (acquired 2018, exited PSG 2024 — Sarah Rowell's firm, COMP only), HSI / Health & Safety Institute (private, ~$100M rev range estimated), J. J. Keller (private, family-owned IA-based, multi-decade), NSC online training (non-profit-adjacent but commercial arm exists), VelocityEHS (PE-backed — out of scope but signal). **Note:** Specific independent SAFETY-carve targets need a list-builder pass; the 30-50 estimate is from HISTORICAL framing and needs Apollo confirmation.
+
+**MARKET TAM:**
+- Market size: $2.5B (2024) for OSHA Safety Training; $7.65B (2026) for broader compliance-eLearning corporate training.
+- Growth rate: 8.5% CAGR (OSHA safety specific, 2026-2033); 4.37% CAGR (broader workplace safety & compliance training).
+- Key demand drivers:
+  - OSHA enforcement budget growing under all administrations (apolitical workplace-safety mandate)
+  - State-by-state mandate proliferation (CA SB-1343 model spreading to other states with safety carve additions)
+  - Insurance-driven adoption (workers' comp carriers requiring documented training as premium-discount trigger)
+  - Remote-work + hybrid-work expansion of OSHA scope to home-office ergonomics + remote-incident reporting
+  - AI training authoring/translation tools reducing course-production cost while WTP holds — margin expansion tailwind
+
+**Sprint duration estimate (from TARGET TAM):** 30-50 targets = focused-to-long sprint.
+
+**Fit for Kay (beyond buy box):** Sarah Rowell mentor relationship is the unmatched right-to-win — same playbook, same exit, mentor-grade phone access. Kay's network-effects strength + service-orientation from Chanel transfers cleanly to selling into EHS/HR buyer (parallel to her Sales Director persona). Pattern-matches the Allyant aspirational archetype (per learnings.md L115) — compliance-driven, B2B, recurring, essential, regulatory tailwinds.
+
+**Key Question (most important thing to validate in one-pager research):** Is the **safety-specific** carve actually 30-50 independents in the $5-50M revenue range (the G&B sweet spot), or is the long tail mostly <$5M and the addressable acquirable pool actually 10-20? Apollo + ASSP/NSC vendor directory pass needed.
+
+---
+
+### Niche 2: HNW Personal Lines Concierge Insurance Brokerage — RESURFACE / UNMERGE
+
+**Thesis (2-3 sentences):** Specialty insurance brokerage for high-net-worth households — homeowners, auto, umbrella, valuable articles, watercraft — distinct from collectibles/fine-art insurance which sits inside the active Art Insurance niche. Renewal rates approach 100% on multi-policy bundled HNW books, and 20-40 independents remain after the AHT/Risk-Strategies/Hub roll-up cycle. August Felker (Oberle Risk) has named two-women-near-retirement targets that have never been collected; this is one warm-call away from a target list.
+
+**Source Signal:** Synthesizer Convergence Output 5 rank 2 + HISTORICAL post lines 45 + 81 (August Felker contact). No RECENT signal — administrative tracker-erasure (merged with Art Insurance and lost identity).
+
+**Duplicate Check:** Checked against active niches — Specialty Insurance Brokerage (Art & Collectibles) is the closest neighbor but services a different ASSET CLASS (movable hard assets, not real-property + multi-line household). Different policy forms (inland marine vs HO-3/HO-5), different carriers (AXA-XL/Chubb fine-art vs Chubb Masterpiece/PURE/Cincinnati Private), different broker capability stack. Not a duplicate. Checked against killed (Family Office Enablement) — distinct because this is regulated insurance brokerage, not unregulated family-office service-coordination. Checked against tabled — n/a.
+
+**Resurfacing:**
+- Original status: SCORED 2.49 (3/24), never advanced — administratively merged with Art Insurance Brokerage (Wind-Down) and lost standalone identity on tracker.
+- Original reason: Tracker hygiene failure, NOT a substantive kill. The HISTORICAL agent flagged it as "highest mission-criticality of any niche scored to date" with strongest Kay right-to-win signal across the entire pipeline.
+- Why revisit now: (a) `apiary.io` projection puts HNW insurance market at 11.9% CAGR 2026-2033 — higher growth than the 3/24 framing assumed. (b) August Felker contact is 4+ months stale; if not pursued this cycle the lead lapses entirely. (c) Active Art Insurance niche means the broker/carrier ecosystem is partially mapped — capability stack is reusable, not greenfield.
+
+**INITIAL SCREEN:**
+1. Margins: **Strong** — Insurance Distribution segment averaged 16.7x EV/EBITDA 2022-YTD 2025 (per capstonepartners.com), implying premium economics; specialty HNW brokerages run 25-35% EBITDA per cycle data + MarshBerry. Source: `capstonepartners.com/insights/article-insurance-services-market-update`.
+2. Recurring Revenue: **High** — ~100% renewal rates on bundled HNW books per HISTORICAL line 45 (August Felker data); commission on renewal premium = pure recurring.
+3. Industry Growth: **Strong** — 11.9% CAGR HNWIs insurance market 2026-2033 (apiary.io); 4.06-7.00% CAGR depending on methodology (zionmarketresearch, verifiedmarketresearch). All sources clear ~3% GDP threshold; conservative case 2x.
+4. Growth TAM: **≥$500M cleared** — global HNW insurance $106.6B (2024) → $140-166B by 2031. US-specific portion of that easily clears $500M floor by orders of magnitude.
+
+**TARGET TAM:**
+- Total firms in market: 20-40 independent HNW personal-lines specialists per HISTORICAL framing.
+- Independently owned: 20-40 — the post-consolidation tail (AHT, Hub, Risk Strategies, NFP have rolled up most of the visible peers).
+- Already PE-backed/acquired: PURE Insurance (carrier), HUB-acquired tail, NFP-acquired tail. Independents left = founder-led 20-30yr firms.
+- PE consolidation risk: **High** — window is closing. Acrisure / Hub / NFP / Risk Strategies all actively buying. Solo-searcher needs to move within 12-18 months.
+- Named examples: **August Felker has two specific women-near-retirement targets that have never been collected.** Other example archetypes: Frenkel Benefits (NYC tail), Cook Maran (LI, acquired by Marsh McLennan), Borden Perlman (NJ, founder-led 60+yr). Single warm call closes the gap to a real target list.
+
+**MARKET TAM:**
+- Market size: $106.6B globally (2024); US specialty HNW personal lines = subset, ~$15-25B estimated.
+- Growth rate: 4.06% (verifiedmarketresearch) to 11.9% (apiary.io) depending on methodology.
+- Key demand drivers:
+  - $84T generational wealth transfer creating new HNW households / new asset accumulations
+  - Climate-driven insurance flight from CA/FL pushing affluent customers toward specialty carriers (Chubb/PURE/Berkley) requiring specialty brokers
+  - Multi-jurisdictional HNW lifestyles (multiple homes, art, cars, boats, employees) demand expert coordination
+  - Big-firm service degradation per HISTORICAL line 23 ("big firms terrible, only update appraisals by category, hire kids 2 years out")
+  - Aging principal demographics — 20-30yr-old founder-led firms entering succession window
+
+**Sprint duration estimate (from TARGET TAM):** 20-40 targets = focused sprint.
+
+**Fit for Kay (beyond buy box):** Strongest single Kay right-to-win in the entire pipeline per HISTORICAL agent. Chanel/Hangman luxury-service background pattern-matches the HNW client-service expectation. August Felker is warm; the niche has been administratively forgotten, not substantively killed.
+
+**Key Question:** Of the 20-40 independents, how many are bundle-priced (multi-line household) vs. monoline auto/HO specialists? Bundled books = sticky and roll-up-eligible; monoline = thinner moat.
+
+---
+
+### Niche 3: Funeral Home Management Software — RESURFACE
+
+**Thesis (2-3 sentences):** Vertical SaaS for the 10K+ independent US funeral homes — case management, ASD answering, e-arrangement, payment processing, compliance reporting. Mortality-driven recurring demand, 46% of directors retiring within 5 years with <25% succession plans pushing tech adoption, and ZERO PE in the software layer below the Batesville-Halcyon strategic comp. Classic shovel-seller fit.
+
+**Source Signal:** Synthesizer Convergence Output 5 rank 3 + HISTORICAL post line 53. No RECENT signal — silent drop after 4/14 scoring.
+
+**Duplicate Check:** Checked against active niches — Vertical SaaS for Luxury & HVA Service Industries is the closest neighbor, but funeral homes are NOT luxury / NOT HVA — they're regulated death-care SMBs. Distinct customer, distinct competitive set (e.g., Passare, Osiris, FrontRunner, SRS Computing vs. Voxme/etc. in luxury). Checked against killed — no overlap. Checked against tabled — n/a.
+
+**Resurfacing:**
+- Original status: SCORED 2.68 (4/14) — second-highest of that cycle. Never promoted to WEEKLY REVIEW; silently dropped.
+- Original reason: Implicit deprioritization, no documented kill reason. HISTORICAL agent line 53 notes "appears to have evaporated."
+- Why revisit now: (a) `marketresearchfuture.com` puts funeral home software at $13.98B (2025) → $26.58B (2035) at 6.64% CAGR (this is a much larger TAM than the cycle's $250-450M framing — possibly including hardware/services). (b) `apiary.io` confirms 10.5% CAGR specifically for the software layer through 2033. (c) `cognitivemarketresearch` confirms 10.3% CAGR — three independent sources cluster around 6.6-10.5% CAGR. (d) ZERO PE in the SW layer per 4/14 cycle remains true (Volaris/Constellation hasn't entered this vertical yet — checked Constellation portfolio).
+
+**INITIAL SCREEN:**
+1. Margins: **Strong** — vertical SaaS gross margins 70-85% (softwareequity.com); funeral-home-SW peer Passare, Osiris run subscription with multi-year terms. EBITDA range 25-35% at scale.
+2. Recurring Revenue: **High** — SaaS subscription model, multi-year contracts standard, switching cost is patient/record migration which is sticky.
+3. Industry Growth: **Strong** — 10.3-10.5% CAGR (cognitivemarketresearch, apiary.io) for software layer specifically; 6.64% CAGR broader (MRFR). All clear ~3% GDP by 2-3x.
+4. Growth TAM: **≥$500M cleared** — $475M-$1.86B 2026 estimates across sources; $1B+ by 2033 confirmed across multiple analyst houses.
+
+**TARGET TAM:**
+- Total firms in market: 10-15 vendors per HISTORICAL line 53 framing. (Note: count is vendors, not funeral homes — funeral homes are CUSTOMERS, ~10K+ independent end-customers.)
+- Independently owned: 10-15 vendors (most are founder-led private SW shops).
+- Already PE-backed/acquired: Batesville/Halcyon strategic acquisition Sep 2024 (comp only, not consolidator); no PE roll-up yet in SW layer.
+- PE consolidation risk: **Low** — open whitespace. Window wide open.
+- Named examples: Passare (private, Abilene TX, founder-led), Osiris Software (private, Memphis TN), FrontRunner Professional (private, multi-decade), SRS Computing (private, FL), Continental Computers (private, niche player), ASD (answering service adjacency, private), Aldor / FuneralHome.com / TomBean. **Note:** Specific revenue/EBITDA data not public; needs Apollo+ web research pass for one-pager.
+
+**MARKET TAM:**
+- Market size: $475M-$1.86B (2026) for funeral home software specifically (multiple estimates cluster); $13.98B (2025) for broader funeral home tech including hardware/services.
+- Growth rate: 10.3-10.5% CAGR (software-specific, 2026-2033).
+- Key demand drivers:
+  - Owner-operator demographic cliff — 46% retiring within 5 years, <25% have succession plans (forced tech adoption to make businesses sellable / make remaining staff productive)
+  - Cremation rate rising 58% → 70%+ by 2030 forcing operational shifts (different workflow, different revenue mix)
+  - Compliance reporting (state death certificate filing, FTC funeral rule) digitizing
+  - Payment processing + e-arrangement consumer expectation post-COVID
+  - Multi-location consolidation (Service Corp, Park Lawn growing roll-ups) drives demand for cross-location SW
+
+**Sprint duration estimate (from TARGET TAM):** 10-15 targets = fast sprint.
+
+**Fit for Kay (beyond buy box):** No warm path identified — pure cold-outreach niche. Compensating strengths: vertical-SaaS thesis match, ZERO PE = no inflated owner expectations, shovel-seller framework. Channel routing decision required: JJ-Call-Only (likely best — owner-operators of SMB SW shops, hard to email-only).
+
+**Key Question:** Are the 10-15 named vendors at $5M+ revenue (G&B floor), or is the long tail mostly <$2M ARR? Need to pull recent web research / capterra reviews count / SimilarTech to triangulate.
+
+---
+
+### Niche 4: Surplus Lines Compliance & Tax Filing Services — RESURFACE (paired with Property Tax Appeal cluster)
+
+**Thesis (2-3 sentences):** Outsourced compliance and tax-filing services for the E&S (Excess & Surplus / non-admitted) insurance market — surplus lines tax filings, zero-reports, state-by-state filing obligations. E&S premium grew from 3.6% to 12.3% of total P&C premium with $129.8B DPW in 2024, and the consolidation cycle (Vertafore/InsCipher, ReSource Pro/ILSA, Saratoga/3H) has left 10-20 independents. Natural sibling to active Property Tax Appeal — same compliance-filing-services thesis, can be channel-grouped on JJ/DealsX.
+
+**Source Signal:** Synthesizer Convergence Output 5 rank 4 + HISTORICAL post line 47. RECENT confirmation via web search — `insurancejournal`/industry sources flag premiums reaching ~$126B by 2027, confirming the cycle's growth thesis is still live.
+
+**Duplicate Check:** Checked against active niches — Property Tax Appeal Services (Commercial-Property) is the closest neighbor. NOT a duplicate because (a) different filer (surplus-lines broker vs. commercial-property owner), (b) different regulator (state insurance dept vs. county tax assessor), (c) different revenue model (per-filing fee + retainer vs. contingent-fee on tax savings). They are SIBLINGS not duplicates and SHOULD be grouped as a cluster on the tracker per `feedback_same_surface_nested_view`. Checked against killed — no overlap. Checked against tabled — n/a.
+
+**Resurfacing:**
+- Original status: SCORED 2.65 (3/21) — HIGHEST of that cycle. Proposed for WEEKLY REVIEW promotion but not advanced.
+- Original reason: Framed as "IPLC extension" not standalone — buried under broader insurance-infrastructure discussion.
+- Why revisit now: (a) `industryjournal` data confirms surplus lines premium is on track for $126B by 2027 — the consolidation thesis is still live. (b) Vertafore/InsCipher partnership Apr 2026 (per insurity.com) signals continued integration activity, validating the underlying tailwind. (c) Property Tax Appeal is now ACTIVE on the tracker — pairing creates the compliance-filing-services cluster, improving outreach unit economics.
+
+**INITIAL SCREEN:**
+1. Margins: **Moderate-Strong** — services + tech-enabled = 20-30% EBITDA per insurance services peer set (capstonepartners.com); software-heavy peers (InsCipher) skew higher. Clears 15%+ floor.
+2. Recurring Revenue: **High** — per-filing transactional but renewing annually + monthly retainer structures common per `ilsainc.com` and `3hcg.com` service descriptions. ≥50% recurring cleared.
+3. Industry Growth: **Strong** — E&S DPW $129.8B (2024) → $126B+ by 2027 implies premium-volume tailwind translates to filing-volume tailwind. 3.7M filings up 12.4% mid-2025 per HISTORICAL line 47.
+4. Growth TAM: **≥$500M cleared** — outsourced filing-services TAM is a fraction of the $129B premium pool. Even at 0.5% of premium (conservative service-fee assumption), $640M+ addressable services TAM. Cleared.
+
+**TARGET TAM:**
+- Total firms in market: 10-20 independents post-consolidation per HISTORICAL line 47.
+- Independently owned: 10-20.
+- Already PE-backed/acquired: Vertafore/InsCipher (acquired into Vertafore), ReSource Pro/ILSA (rollup), Saratoga/3H (rollup).
+- PE consolidation risk: **High** — most visible peers already consolidated; remaining 10-20 are the trailing edge.
+- Named examples: KnK Insurance Network (independent, straddles surplus + IPLC), ACCEL Compliance (independent), Veracity Insurance Solutions (independent, UT), Accel Compliance / 3HCG / others in 10-20 range. Camilla can warm-validate sizing.
+
+**MARKET TAM:**
+- Market size: $129.8B E&S premium DPW (2024) → ~$126B (2027 — different source, premium-base). Services layer is a derivative; conservatively $640M-$1.3B addressable services TAM.
+- Growth rate: 12.4% premium growth mid-2025 (HISTORICAL); E&S share of P&C grew from 3.6% → 12.3% (multi-year trend).
+- Key demand drivers:
+  - Climate-driven home insurance crisis pushing more risk to E&S market (CA/FL/TX wildfire/hurricane non-renewals)
+  - State filing-system modernization (SLIP+ Kansas/Montana go-lives Apr 2026 per HISTORICAL — creates short-term transition complexity = service demand)
+  - Cyber + emerging-risk policies routed through E&S
+  - Multi-state filing complexity scales non-linearly with state count
+
+**Sprint duration estimate (from TARGET TAM):** 10-20 targets = fast-to-focused sprint.
+
+**Fit for Kay (beyond buy box):** Pairs with active Property Tax Appeal as a "Compliance Filing Services" cluster — improves channel economics. Camilla is warm validator. Compliance-recurring-asset-light fits every G&B filter.
+
+**Key Question:** Is the 10-20-firm pool concentrated in one geography (FL/TX have largest E&S premium share) such that a regional sprint works, or geographically distributed requiring national outreach?
+
+---
+
+### Niche 5: Aviation Insurance Brokerage — RESURFACE / EXTEND ACTIVE ART INSURANCE
+
+**Thesis (2-3 sentences):** Specialty insurance brokerage for private aviation — owner-flown piston/turboprop, jet, helicopter, aircraft management companies, fractional. 50-100 specialized US firms, 85-90% renewal rates, 25-30% EBITDA, brokers commanding 75.68% market share of distribution. Lowest-friction RESURFACE because the broker capability stack, voice, and comp set are already built for active Art Insurance niche — extending scope is a single tracker decision.
+
+**Source Signal:** Synthesizer Convergence Output 5 rank 5 + HISTORICAL post lines 71-72 (3/14 luxury infra scored 21/24). No RECENT signal.
+
+**Duplicate Check:** Checked against active niches — Specialty Insurance Brokerage (Art & Collectibles) is the closest. NOT a duplicate because (a) different policy form (aviation hull + liability vs. fine art inland marine), (b) different regulator (FAA Part 91/135 alignment vs. none), (c) different distribution (small specialist brokers vs. art-world referral chains), (d) different sub-asset complexity (pilot certifications, hours, A&P maintenance vs. provenance, appraisal). SIBLINGS not duplicates. Checked against killed — no overlap. Checked against tabled — Yacht Insurance / Yacht Mgmt / Aviation Tax adjacencies are also tabled-dormant; this candidate is the highest-scoring of the 3/14 cluster (21/24) and warrants standalone promotion.
+
+**Resurfacing:**
+- Original status: SCORED 21/24 (3/14 luxury infrastructure scoring) — "highest-margin most-recurring niche in entire analysis." Never advanced beyond initial luxury-infra scoring exercise.
+- Original reason: Estate Mgmt displaced as the luxury-representative active niche; aviation cluster never converted from scoring → tracking.
+- Why revisit now: (a) `precedenceresearch.com` puts US aviation insurance market at $1.80B (2025) → $3.32B (2035) at 6.31% CAGR — confirms cycle 3/14 framing. (b) `marketgrowthreports.com` confirms brokers hold 75.68% of distribution share — broker layer is the value capture point, not carrier or wholesale. (c) Active Art Insurance niche means broker/E&O/Lloyd's syndicate access ecosystem is already partially mapped — reuse capability stack. (d) `feedback_strategic_thresholds_need_grounding`: this isn't inherited convention, it's a G&B-scored Tier-1 signal that lost momentum.
+
+**INITIAL SCREEN:**
+1. Margins: **Strong** — Insurance Distribution avg 16.7x EV/EBITDA 2022-YTD 2025 implying premium operating margins; specialty aviation brokers 25-30% EBITDA per cycle data + MarshBerry. Multiples for sub-$2M EBITDA brokers 8-10x; $5M+ EBITDA 12.5-14.5x. Source: `capstonepartners.com`, `marshberry.com`.
+2. Recurring Revenue: **High** — 85-90% renewal rates per cycle data; aviation insurance is non-discretionary (FAA Part 91 not strictly required but lender + lessor + Part 135 strictly required) so renewal economics are sticky.
+3. Industry Growth: **Strong** — US aviation insurance 6.31% CAGR 2026-2035 (precedenceresearch); 8-14x EBITDA multiples in M&A (HISTORICAL line 71). 2x GDP threshold.
+4. Growth TAM: **≥$500M cleared** — US aviation insurance $1.80B (2025) → $3.32B (2035). Cleared by 3-6x.
+
+**TARGET TAM:**
+- Total firms in market: 50-100 specialized firms per HISTORICAL line 71.
+- Independently owned: 50-100 (most are founder-led 20-30yr aging principals).
+- Already PE-backed/acquired: Aerospace Insurance Managers (BWI Aviation acquired NSM Insurance Group portfolio), Hub International aviation practice (acquired several specialty firms). Roll-up partial but not complete.
+- PE consolidation risk: **Medium-High** — Hub / Acrisure / Risk Strategies actively acquiring specialty brokers; window 12-24 months.
+- Named examples: BWI Aviation (acquired into NSM), Aero Insurance LLC (independent, Houston TX), Travers Aviation (now Hub-acquired), Berkley Aviation (carrier, not target — comp only), Old Republic Aerospace (carrier), L.L. Johns Aviation Insurance (founder-led, multi-decade), JetInsurance.com, Avemco (carrier-direct, not target). Founder-retirement targets need a dedicated NBAA-directory + Apollo pass to enumerate.
+
+**MARKET TAM:**
+- Market size: US aviation insurance $1.80B (2025).
+- Growth rate: 6.31% CAGR 2026-2035.
+- Key demand drivers:
+  - Private aviation post-COVID demand surge sustained (NetJets, FlexJet, Wheels Up active fleet growth)
+  - eVTOL/UAM emerging insurance class (Joby, Archer entering revenue service late 2020s)
+  - Aircraft values appreciating (used jet prices +30% from 2020 baseline) drives hull premium
+  - Pilot shortage = higher claim severity = premium hardening
+  - Cyber + emerging-risk endorsements expanding policy scope
+
+**Sprint duration estimate (from TARGET TAM):** 50-100 targets = long sprint.
+
+**Fit for Kay (beyond buy box):** Capability stack reuse from active Art Insurance is the unlock. UHNW end-client overlap (aircraft owners often art collectors / yacht owners). Aviation Tax Structuring (3/14 score 20-21) is the natural cross-sell adjacency once aviation insurance is anchor. Sibling Tier-1 niches (Aircraft Mgmt 22/24, Yacht Ins 21/24, Yacht Mgmt 22/24, Yacht Crew 20/24) all become reachable from this anchor.
+
+**Key Question:** Of the 50-100 specialized firms, how many serve **owner-flown / fractional / charter** (G&B sweet spot) vs. commercial airline (too large / capital intensive)? Sub-segment by end-customer to find the $5-50M revenue range true target pool.
+
+---
+
+#### Summary
+- **Candidate 1:** Workplace H&S Compliance Training (eLearning) — INITIAL SCREEN: **PASS all 4** (Strong margins / High recurring / Strong growth 8.5% CAGR OSHA carve / TAM $2.5B-$7.65B). Flag: blocked on Kay's 8-week-old kill-list distinction ruling — surface as binary decision.
+- **Candidate 2:** HNW Personal Lines Concierge Insurance — INITIAL SCREEN: **PASS all 4** (Strong margins ~16.7x EV/EBITDA peers / High recurring ~100% renewals / Strong growth 11.9% CAGR / TAM $106.6B global). Flag: thin pool (20-40) + PE consolidation window closing fast.
+- **Candidate 3:** Funeral Home Management Software — INITIAL SCREEN: **PASS all 4** (Strong SaaS margins 70-85% gross / High recurring SaaS / Strong growth 10.3-10.5% CAGR / TAM $475M-$1.86B). Flag: thin vendor pool (10-15), no warm path — JJ-Call-Only routing required.
+- **Candidate 4:** Surplus Lines Compliance & Tax Filing — INITIAL SCREEN: **PASS all 4** (Moderate-Strong margins 20-30% / High recurring / Strong premium-base growth 12.4% / TAM $640M-$1.3B services-layer). Flag: thin pool (10-20) + pairs with active Property Tax Appeal — propose cluster framing.
+- **Candidate 5:** Aviation Insurance Brokerage — INITIAL SCREEN: **PASS all 4** (Strong margins 25-30% EBITDA / High recurring 85-90% renewals / Strong growth 6.31% CAGR / TAM $1.80B US). Flag: largest pool (50-100) but capability-stack reuse from active Art Insurance is the unlock.
+
+All 5 candidates PASS the 4-criterion screen and proceed to one-pager. No INITIAL SCREEN failures to flag.
+
+#### Documented Rejections (synthesizer-surfaced but NOT advancing)
+- **IMO/FMO Aggregator** — Reason: 2.37 score + 90+ day stale Jeremy Black lead + Kay-bandwidth-constrained per synthesizer Lead Lifecycle. Below 2.5 grounding threshold for fresh sprint.
+- **Premium Audit & Loss Control (Outsourced)** — Reason: 2.32 score + zero Kay right-to-win + weakest growth per synthesizer Output 5 "Stale, not RESURFACE-worthy."
+- **Insurance BPO (SIU sub)** — Reason: 2.17 score + AI-disruption risk on adjacent basic-claims sub-niche bleeding into SIU framing; warrants separate framing-question to Kay before re-investment, not auto-advance.
+- **Customs Bond Specialty Brokers** — Reason: Currently on KILLED list. Per synthesizer, this is a framing question for Kay (re-open ruling vs. killed generic Customs), not a niche-intel candidate. Surface to Kay as binary outside this report.
+- **Veterinary PMS** — Reason: Structural duopoly (IDEXX/Covetrus 79%) — DEAD per synthesizer.
+- **Environmental Compliance Consulting** — Reason: PE saturation (Montrose 20+ acquisitions, Tetra Tech 27 acquisitions) — DEAD per synthesizer.
+- **Digital Accessibility Compliance** — Reason: Catalyst window (4/24/2026 ADA deadline) already lapsed before promotion — DEAD per synthesizer.
+- **Tree Care / Arboriculture** — Reason: Adjacent to TABLED Landscape Services HNW; don't resurface unless parent ruling changes. Single-source signal (Helen Guo 5/8 archetype only).
+- **Fire Protection & MEP Engineering NY** — Reason: Single deal listing (Helen Guo 5/12 $718K EBITDA), insufficient signal for niche-grade promotion without pool sizing. Document as NEW-needs-sizing for future cycle.
+- **Solid Waste Collection** — Reason: Out of G&B identity zone per synthesizer.
+- **B2B Events Roll-Up** — Reason: Already exploited relationally via conference-pipeline channel; macro signal only.
+

@@ -623,3 +623,19 @@ All 5 candidates PASS the 4-criterion screen and proceed to one-pager. No INITIA
 - **Solid Waste Collection** — Reason: Out of G&B identity zone per synthesizer.
 - **B2B Events Roll-Up** — Reason: Already exploited relationally via conference-pipeline channel; macro signal only.
 
+
+### [niche-intel-onepager / Workplace H&S Compliance Training] — 2026-05-12 22:47 EDT
+**Status:** complete
+**Folder ID:** 1Iz1ddUVg0hq3KeQ1NOmvOYFQwZ5zwjsO
+**File ID:** 1f4Tyx0JTeyZz66HquwTRpgFyycysk4wa
+**Pre-flight result:** No existing folder found under UNDER REVIEW parent (1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT) — newly created folder "Workplace Health & Safety Compliance Training".
+**Key research findings:**
+- OSHA Safety Training carve $2.5B (2024) → $5.1B (2033) at 8.5% CAGR (Verified Market Reports) — safety carve sized independently of broader compliance training (NOT a subset that collapses into the killed "Compliance E-Learning General").
+- Broader Workplace Safety & Compliance Training $7.65B (2026), 4.37-13% CAGR depending on source.
+- SaaS economics: 70-85% gross margin, 25-40% EBITDA at scale, 90%+ logo retention.
+- 30-50 independent firms in safety-specific carve below PE-backed enterprise (Vector, Traliant/PSG, VelocityEHS, Litmos).
+- Sarah Rowell (WSN mentor, former CEO Kantola, PSG exit Jan 2024) = strongest mentor-niche alignment in entire G&B network; direct playbook access.
+- Initial screen: PASS all 4 (Margins / Recurring / Growth / TAM ≥$500M cleared by 5-15x).
+- Open question for scoring: whether safety-specific carve is 30-50 firms at $5-50M revenue (G&B sweet spot) or long-tail is mostly <$5M with acquirable pool actually 10-20 — needs Apollo + ASSP/NSC vendor directory pass.
+- Resurface gate: addresses 8-week-old "kill-list distinction" stuck-item with new independent-sizing evidence (OSHA safety carve has its own market report, separate from general compliance training).
+**Sources cited:** 19 (4 gathering-agent / 11 external research + hyperlinked / 3 internal vault / 1 CRM-network).

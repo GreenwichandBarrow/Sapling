@@ -162,7 +162,7 @@ Net: ~2 months better than March's original projection, ~3 months worse than the
 2. **Confirm April Advertising bucket placement with Anthony.** Hypothesis: DealsX + AI consultant landed in Advertising. Want to lock the bucket-tracking convention going forward.
 3. ~~Confirm Business Taxes & Licenses ($1,322).~~ RESOLVED 2026-05-13 — annual state filing (Delaware / NY). One-time.
 4. ~~Confirm Memberships & Subscriptions ($260).~~ RESOLVED 2026-05-13 — tech-stack subscription. Folds into tech audit.
-5. ~~Follow up with Anthony on bookkeeper line posting.~~ RESOLVED 2026-05-13 — Anthony has not sent any invoices yet, so $0 YTD is correct. No QBO reconciliation needed.
+5. **Follow up with Anthony on bookkeeper line posting.** CEO clarified 2026-05-13: bookkeeping IS billed and paid every month. So the $0 YTD on the bookkeeper line in QBO is a **categorization error**, not an absence of activity. Need Anthony to identify which line his invoices are being booked under (likely Professional Fees - Accounting or Consulting) and either reclassify or confirm the bucket. Affects budget-vs-actual accuracy.
 6. **Run `/budget tech-audit`** — Apps & Software Office Use still trending over. Tech audit may identify the $4,325/mo savings target.
 7. **Watch Travel - Meals & Entertainment.** $5K annual budget on track to bust by Q2-end. Either accept reality and revise budget, or impose discipline.
 

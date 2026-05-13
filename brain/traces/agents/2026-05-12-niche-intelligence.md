@@ -738,3 +738,56 @@ All 5 candidates PASS the 4-criterion screen and proceed to one-pager. No INITIA
 **Sources cited:** 13 (4 gathering — synthesizer Output 5 rank 3, identifier RESURFACE entry, HISTORICAL post lines 53/300, 4/14 niche-intel report; 6 external hyperlinked — NFDA, IBISWorld, Mordor, Cognitive Market Research, Batesville, Funeral Service Insider; 2 vault — 4/14 report + today's identifier post; 1 CRM — n/a flag).
 
 → @niche-intel-scorer one-pager ready for funeral-home-management-software. Channel-routing recommendation (JJ-Call-Only vs DealsX) outstanding from identifier. → @niche-intel-tracker propose adding "Funeral Home Management Software" as standalone WEEKLY REVIEW row (currently absent from tracker despite 4/14 2.68 score).
+
+### [niche-intel-scorer] — 2026-05-12 22:55 EDT
+**Status:** complete
+**Niches scored:** 5
+
+#### Scores
+| Niche | Overall /3 | Verdict | Top categories | Weakest categories | Margins | Recurring | AI Def | RTW G&B | Network | Target Pool | QSBS |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Workplace H&S Compliance Training | 2.56 | Promising | Value Creation (3.0), Impact (3.0), Growth/Catalyst (2.75) | Size & Fragmentation (2.0), Porter (2.0) | High | High | Medium | Strong | Strong | 30-50 | Likely Eligible |
+| HNW Personal Lines Concierge Insurance | 2.53 | Promising | Growth/Catalyst (3.0), Mission Criticality (3.0), Industry Economics (2.67) | Size & Fragmentation (1.5), Porter (2.0) | High | High | Medium | Strong | Strong | 20-40 | Unclear |
+| Aviation Insurance Brokerage | 2.54 | Promising | Industry Economics (3.0), Mission Criticality (3.0), Growth/Catalyst (2.75) | Size & Fragmentation (2.0), Impact (2.0), Porter (2.2) | High | High | High | Moderate | Some | 50-100 | Unclear |
+| Funeral Home Management Software | 2.41 | Moderate | Growth/Catalyst (3.0), Industry Economics (2.67), Value Creation (2.5) | Size & Fragmentation (1.5), Porter (2.0), Impact (2.0) | Very High | High | High | Moderate | None | 10-15 | Likely Eligible |
+| Surplus Lines Compliance & Tax Filing | 2.20 | Moderate | Growth/Catalyst (3.0), Mission Criticality (2.67) | Size & Fragmentation (1.0), Porter (1.8), Exogenous (1.8) | Medium | High | Medium | Moderate | Some | 10-20 | Unclear |
+
+#### Per-niche rationale
+
+**Workplace H&S Compliance Training (2.56 — Promising):** Highest-leverage RESURFACE in the batch. SaaS economics (70-85% gross / 25-40% EBITDA), OSHA-specific 8.5% CAGR with apolitical regulatory tailwind, PSG/Traliant 2024 exit comp directly validates exit path. Sarah Rowell mentorship is the strongest mentor-to-niche alignment in Kay's entire network — she literally ran this playbook to a PSG exit. Porter weakness (in-house training + free OSHA materials = real substitute for SMB tier) is real but offset by EHS-director / mid-market buyer specialization. **Recommend sprint** — Sarah Rowell can warm-intro within days; the only thing standing in the way is Kay's 8-week-old kill-list distinction ruling.
+
+**HNW Personal Lines Concierge Insurance (2.53 — Promising):** Mission-criticality is a clean 3.0 — HISTORICAL agent flagged it as "highest mission-criticality of any niche scored to date" and the renewal economics (~100% on bundled HNW books) are textbook recurring. Strongest single Kay right-to-win in the pipeline via Chanel/Hangman luxury-service pattern-match + August Felker warm contact with named targets never collected. Score capped at 2.53 by thin pool (20-40 indies — Size 1.5) and PE-window closing 12-18mo (Acrisure/HUB/NFP active). **Recommend sprint** — single email to August unblocks target list; capability stack reuses active Art Insurance niche.
+
+**Aviation Insurance Brokerage (2.54 — Promising):** Best industry economics of the batch (3.0 — top-quartile aviation broker EBITDA 30-50%, commission books ~70-90% gross). Mission criticality 3.0 from FAA + lender + lessor mandates. Largest target pool (50-100 firms), founder-retirement cohort, capability-stack reuse from active Art Insurance is the unlock — extends specialty insurance broker work into aviation/yacht/aircraft mgmt cluster. Score capped by lighter growth (6.31% CAGR = 2x GDP, not 3x) and aviation emissions externality. **Recommend sprint as Specialty Insurance extension** — lowest-friction add because broker/voice/comp ecosystem is already built.
+
+**Funeral Home Management Software (2.41 — Moderate):** Crisp growth thesis (10.3-10.5% CAGR + 46% directors retiring <5yr + ZERO PE in SW layer = open whitespace) and shovel-seller framework fit. Score capped by thin vendor pool (10-15, Size 1.5), no warm path (cold-only outreach), and Vista/Constellation greenfield entry risk (Porter 2.0). **Recommend cautious sprint as JJ-Call-Only channel** — economics are real but channel is cold; better fit for callers than email/relationship play.
+
+**Surplus Lines Compliance & Tax Filing (2.20 — Moderate):** Strong premium-volume tailwind (E&S 3.6%→12.3% of P&C, 12.4% mid-2025 growth) and pairs naturally with active Property Tax Appeal as a "Compliance Filing Services" cluster for channel economics. Score capped by (a) thin pool 10-20 (Size 1.0) — Vertafore/InsCipher + ILSA + 3HCG already rolled up most peers, (b) Amwins/RT/CRC wholesale-broker customer power (Porter 1.8), (c) 50-state regulatory volatility (Exogenous 1.8 — operational risk + opportunity). **Recommend lower-priority sprint as Compliance Filing cluster sibling** — works as paired niche to amortize JJ/DealsX channel investment, weak on standalone basis.
+
+#### Scorecards uploaded
+- Workplace H&S Compliance Training → file ID `1zqL1FjrKFCeCSSLceZ7VFbDcKUd_wIGL` in folder `1Iz1ddUVg0hq3KeQ1NOmvOYFQwZ5zwjsO`
+- HNW Personal Lines Concierge Insurance → file ID `1NC_KUVXrTy-5g_4PKA3cgDLjbpjHSzUs` in folder `1ZryW7c3b7s6mB7SLF1MEMWdOpW-91lJL` (old 4.4.26 trashed)
+- Funeral Home Management Software → file ID `1-B2aDYUbKH5DICeacbLFpNndFPPsPivM` in folder `17wM1pqPdO3lgK9cjeUMGUGJEi_tC2U4Y` (old April trashed)
+- Surplus Lines Compliance & Tax Filing → file ID `1QHiTL78-fWqMyvNp62sw7cq6GhuELjPw` in folder `1emiR0tpLBDoTBFg32S2F_11QPmHQJeTm`
+- Aviation Insurance Brokerage → file ID `10ZtLLSgoaas7dfo-RaPNpOO5jAAVi-0O` in folder `1_06yc6CiN5YyXhQsloS09jd-VGO6DEkA`
+
+#### One-pagers updated with scores
+- Workplace Health & Safety Compliance Training → file ID `1qeOSjMBUU4xlRomteshVQdvq8lbU3J5M` (replaced original)
+- HNW Personal Lines Concierge Insurance → file ID `13e_iuEHaV-kcadrFYeAyy11PfCJMo5yY` (replaced original)
+- Funeral Home Management Software → file ID `1w5HSy2TpFQwT9V-vGBhLQMori388jX6U` (replaced original)
+- Surplus Lines Compliance & Tax Filing → file ID `111gSHrQ77Fw8vjJTS1GbxWStb0O9_XeN` (replaced original)
+- Aviation Insurance Brokerage → file ID `1ZL_SHSRT9EQPRq-dcmS12L59sOR_g9Da` (replaced original)
+
+→ @niche-intel-tracker JSON written to `/tmp/scorer-results.json`; three Promising (2.5+) + two Moderate (2.0-2.49); HNW + Aviation as extensions of active Art Insurance; Workplace H&S as Sarah Rowell unlock; Funeral SW as JJ-Call-Only candidate; Surplus Lines as paired sibling to active Property Tax Appeal.
+
+### [niche-intel-tracker] — 2026-05-12 22:50 EDT
+**Status:** complete
+**Niches added to WEEKLY REVIEW:** 5
+**Rows added:**
+- Rank 11: Workplace Health & Safety Compliance Training (eLearning) (Score 2.56)
+- Rank 12: HNW Personal Lines Concierge Insurance Brokerage (Score 2.53)
+- Rank 13: Aviation Insurance Brokerage (Score 2.54)
+- Rank 14: Funeral Home Management Software (Score 2.41)
+- Rank 15: Surplus Lines Compliance & Tax Filing Services (Score 2.20)
+**Sheet verified:** 2026-05-12 22:50 EDT — all 5 rows present at A14:K18 with Status "New - Pending Review", Start Date 5/12/2026, Days in Review 0.
+**Failures:** none

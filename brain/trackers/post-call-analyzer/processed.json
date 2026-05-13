@@ -1,17 +1,44 @@
 {
-  "acd80cd9-a501-4028-80e4-830d37f8b976": {
-    "title": "AI Friday: Measuring the Real ROI of AI in Software Engineering",
-    "processed_at": "2026-05-08T21:04:51+00:00",
-    "vault_call_note": "brain/calls/2026-05-08-ai-friday-real-roi-of-ai.md",
-    "detector": "mcp"
-  },
-  "not_4rmlqyNoUbrPey": {
-    "id": "not_4rmlqyNoUbrPey",
-    "title": "CN: Meeting w/ Kay Schneider (Greenwich & Barrow)",
-    "processed_at": "2026-05-13T16:00:00+00:00",
-    "doc_url": "https://docs.google.com/document/d/1jTzxubPJMAkr94MBEDVowKRbcer6orS96dByVjwvJEA/edit",
-    "vault_call_note": null,
-    "detector": "manual-demo-2026-05-13",
-    "note": "Processed manually during 2026-05-13 demo build; queue file was rewritten by detector but already had artifacts."
-  }
+  "processed": [
+    {
+      "id": "acd80cd9-a501-4028-80e4-830d37f8b976",
+      "title": "AI Friday: Measuring the Real ROI of AI in Software Engineering",
+      "processed_at": "2026-05-08T21:04:51+00:00",
+      "vault_call_note": "brain/calls/2026-05-08-ai-friday-real-roi-of-ai.md",
+      "detector": "mcp"
+    },
+    {
+      "id": "not_4rmlqyNoUbrPey",
+      "title": "CN: Meeting w/ Kay Schneider (Greenwich & Barrow)",
+      "counterparty": "Carlos Nieto (Digital Capital Advisors)",
+      "processed_at": "2026-05-13T16:25:40+00:00",
+      "vault_call_note": "brain/calls/2026-05-13-carlos-nieto-dca.md",
+      "doc_url": "https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
+      "doc_id": "1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg",
+      "attio_notes": {
+        "person_carlos": "f3e76095-6797-4904-ab05-f8884bcd216d",
+        "company_dca": "2ee4ed75-f21e-4d95-b9df-b7a3b0850a28"
+      },
+      "tasks_appended": 5,
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_JWvbXhhZGo12aO",
+      "title": "Jackson Niketas <> Kay Schneider | AI Coaching Discussion",
+      "counterparty": "Jackson Niketas (Terra Mar Search)",
+      "processed_at": "2026-05-13T16:25:40+00:00",
+      "vault_call_note": "brain/calls/2026-05-12-jackson-niketas-ai-coaching.md",
+      "doc_url": "https://docs.google.com/document/d/1LSe0qszhKt0qg0wbHn5M0cpAhUHIMXDWvyAdFs7nobI/edit",
+      "doc_id": "1LSe0qszhKt0qg0wbHn5M0cpAhUHIMXDWvyAdFs7nobI",
+      "attio_notes": {
+        "person_jackson": "9071bb39-41b8-4a65-b247-3d23a7b74697",
+        "company_terramar": "084e55d7-680e-4b9a-b711-85deea8a6e98"
+      },
+      "tasks_appended": 2,
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    }
+  ],
+  "last_updated": "2026-05-13T16:25:40+00:00"
 }

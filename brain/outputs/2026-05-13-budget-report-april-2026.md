@@ -95,8 +95,8 @@ Monthly budget report for April 2026. Data sourced from [[entities/anthony-bacag
 
 YTD prorated budget = Annual budget / 12 × 4 months elapsed.
 
-1. **Advertising & Marketing: $2,798 YTD vs $333 prorated (+740%)**
-   April $2,422 single-month spike drove this — investigate what hit. Three months were near-zero, then April loaded. Likely an annual ad-platform charge or conference booth fee. **Watch May to see if recurs.** $1,000 annual budget may be undersized if pattern holds.
+1. **Advertising & Marketing: $2,798 YTD vs $333 prorated (+740%)** — HYPOTHESIS LOGGED 2026-05-13
+   April $2,422 single-month spike. Hypothesis (CEO): DealsX (cold-email lead-gen) + AI consultant fees were re-categorized into this bucket. Math is plausible: prior Feb/Mar ran ~$245/mo (steady-state ad subscription); April adds ~$2,180 above run-rate, consistent with DealsX subscription + a consultant invoice. **Quick bucket-tracking confirm needed from Anthony** — want to know going forward whether DealsX + AI consultant continue to land here vs Professional Fees (Consulting). Note: Professional Fees (Consulting) shows $911 in March only, $0 in April — supports the re-categorization theory.
 
 2. **Travel - Meals & Entertainment: $4,991 YTD vs $1,668 prorated (+199%)**
    Still over but slowing. April $891 was the lowest month YTD. Trend is decelerating — may settle within tolerance by year-end. $5K annual budget already nearly exhausted at 4 mo; budget revision likely needed.
@@ -122,11 +122,11 @@ YTD prorated budget = Annual budget / 12 × 4 months elapsed.
 9. **Travel - Airfare: $2,376 YTD vs $1,000 prorated (+138%)**
    Jan front-load ($2,028) + April $348. Below $250/mo budget for Feb/Mar/Apr — should normalize.
 
-10. **Business Taxes & Licenses: $1,322 YTD (NEW LINE — not in approved budget)**
-    First-time line item in April. Need to confirm with Anthony what this covers (state filing fee? Delaware franchise tax?). Likely annual.
+10. **Business Taxes & Licenses: $1,322 YTD (NEW LINE — not in approved budget)** — RESOLVED 2026-05-13
+    First-time line item in April. CEO confirmed: annual state filing (Delaware franchise / NY state filing). One-time hit; should not recur until next year's filing cycle. No Anthony question needed.
 
-11. **Memberships & Subscriptions: $260 YTD (NEW LINE — not in approved budget)**
-    First-time line in April. Verify what subscription. Could be conference-related or association membership.
+11. **Memberships & Subscriptions: $260 YTD (NEW LINE — not in approved budget)** — RESOLVED 2026-05-13
+    First-time line in April. CEO confirmed: tech-stack subscription (vendor TBD but bucket is correct). Folds into ongoing tech-audit work to identify the $4,325/mo savings target. No Anthony question needed.
 
 12. **Consulting Fees (Professional Fees subcat): $911 YTD vs $0 budgeted (NEW)**
     Carryover from March. Still need to confirm what this covers — flagged in March report, still open.
@@ -159,9 +159,9 @@ Net: ~2 months better than March's original projection, ~3 months worse than the
 ## Action Items
 
 1. ~~Confirm April $2,000 rent with Anthony.~~ RESOLVED 2026-05-13 — early May rent prepay. May actual will be $0; YTD normalizes by month-end.
-2. **Investigate April Advertising spike ($2,422).** What hit? Annual platform fee? Conference booth? Recurring or one-time?
-3. **Confirm Business Taxes & Licenses ($1,322).** Likely Delaware franchise tax or NY state filing. Annual?
-4. **Confirm Memberships & Subscriptions ($260).** What service? Association or software?
+2. **Confirm April Advertising bucket placement with Anthony.** Hypothesis: DealsX + AI consultant landed in Advertising. Want to lock the bucket-tracking convention going forward.
+3. ~~Confirm Business Taxes & Licenses ($1,322).~~ RESOLVED 2026-05-13 — annual state filing (Delaware / NY). One-time.
+4. ~~Confirm Memberships & Subscriptions ($260).~~ RESOLVED 2026-05-13 — tech-stack subscription. Folds into tech audit.
 5. **Follow up with Anthony on bookkeeper line posting.** Still $0 booked YTD — invoices haven't hit QBO since March surfacing. Reconcile billing.
 6. **Run `/budget tech-audit`** — Apps & Software Office Use still trending over. Tech audit may identify the $4,325/mo savings target.
 7. **Watch Travel - Meals & Entertainment.** $5K annual budget on track to bust by Q2-end. Either accept reality and revise budget, or impose discipline.

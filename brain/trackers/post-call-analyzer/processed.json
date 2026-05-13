@@ -4,5 +4,14 @@
     "processed_at": "2026-05-08T21:04:51+00:00",
     "vault_call_note": "brain/calls/2026-05-08-ai-friday-real-roi-of-ai.md",
     "detector": "mcp"
+  },
+  "not_4rmlqyNoUbrPey": {
+    "id": "not_4rmlqyNoUbrPey",
+    "title": "CN: Meeting w/ Kay Schneider (Greenwich & Barrow)",
+    "processed_at": "2026-05-13T16:00:00+00:00",
+    "doc_url": "https://docs.google.com/document/d/1jTzxubPJMAkr94MBEDVowKRbcer6orS96dByVjwvJEA/edit",
+    "vault_call_note": null,
+    "detector": "manual-demo-2026-05-13",
+    "note": "Processed manually during 2026-05-13 demo build; queue file was rewritten by detector but already had artifacts."
   }
 }

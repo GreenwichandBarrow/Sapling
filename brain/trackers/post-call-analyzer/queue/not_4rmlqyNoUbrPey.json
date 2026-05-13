@@ -1,0 +1,12 @@
+{
+  "id": "not_4rmlqyNoUbrPey",
+  "title": "CN: Meeting w/ Kay Schneider (Greenwich & Barrow)",
+  "created_at": "2026-05-13T13:35:37.323Z",
+  "updated_at": "2026-05-13T15:27:32.313Z",
+  "owner": {
+    "name": "Kay Schneider",
+    "email": "kay.s@greenwichandbarrow.com"
+  },
+  "queued_at": "2026-05-13T12:16:00-04:00",
+  "detector": "granola-api-rest"
+}

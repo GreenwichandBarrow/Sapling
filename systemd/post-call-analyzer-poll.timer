@@ -1,19 +1,19 @@
-# Hand-authored 2026-05-08 (Phase 4). Pairs with:
-# post-call-analyzer-poll.service
+# Server-side timer for post-call-analyzer detector. Rewritten 2026-05-13.
 #
-# Cadence: every 5 min (interval-driven, not WatchPaths-driven). Server runs
-# 24/7, no business-hours gate inside the script — the 5-min cadence at 0.07%
-# of Anthropic rate-limit is the relevant guardrail.
+# Cadence: 2 fires/day at 1pm + 6pm America/New_York (handles DST automatically).
+# Persistent=true so a missed fire after VPS reboot triggers once on wake.
 #
-# Persistent=true so a missed tick after VPS reboot fires once on next
-# wake-up (matches the iMac plist's StartInterval-with-recovery behavior).
+# Per session-decisions 2026-05-13: Kay decided 5min was too aggressive given
+# 1-3 calls/day. Midday + EOD is the right cadence — first fire catches morning
+# calls in time to surface in afternoon, EOD fire catches afternoon calls + any
+# late-arriving transcript updates.
 
 [Unit]
-Description=G&B post-call-analyzer MCP poll timer
+Description=G&B post-call-analyzer poll timer (1pm + 6pm ET)
 
 [Timer]
-OnBootSec=2min
-OnUnitActiveSec=5min
+OnCalendar=*-*-* 13:00:00 America/New_York
+OnCalendar=*-*-* 18:00:00 America/New_York
 Persistent=true
 Unit=post-call-analyzer-poll.service
 

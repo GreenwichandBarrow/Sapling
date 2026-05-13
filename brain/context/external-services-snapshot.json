@@ -1,18 +1,6 @@
 {
-  "fetched_at": "2026-05-13T11:00:45-04:00",
+  "fetched_at": "2026-05-13T11:30:45-04:00",
   "services": {
-    "superhuman": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "OAuth refresh required (manual)"
-    },
-    "attio-mcp": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "OAuth re-flow required (Smithery UI)"
-    },
     "claude-api": {
       "status": "skip",
       "latency_ms": null,
@@ -24,6 +12,18 @@
       "latency_ms": null,
       "message": "FileNotFoundError",
       "skip_reason": null
+    },
+    "superhuman": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "OAuth refresh required (manual)"
+    },
+    "attio-mcp": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "OAuth re-flow required (Smithery UI)"
     },
     "slack-webhooks": {
       "status": "ok",
@@ -39,37 +39,37 @@
     },
     "vault": {
       "status": "ok",
-      "latency_ms": 7,
+      "latency_ms": 9,
       "message": "849 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "error",
-      "latency_ms": 26,
+      "latency_ms": 10,
       "message": "attio-mcp=0 superhuman=0",
-      "skip_reason": null
-    },
-    "granola": {
-      "status": "ok",
-      "latency_ms": 145,
-      "message": "HTTP 405",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 167,
+      "latency_ms": 102,
       "message": "authenticated",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 170,
+      "latency_ms": 96,
       "message": "200 OK",
+      "skip_reason": null
+    },
+    "granola": {
+      "status": "ok",
+      "latency_ms": 130,
+      "message": "HTTP 405",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 264,
+      "latency_ms": 191,
       "message": "gh authenticated",
       "skip_reason": null
     }

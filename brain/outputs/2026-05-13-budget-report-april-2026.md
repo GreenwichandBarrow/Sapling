@@ -104,8 +104,8 @@ YTD prorated budget = Annual budget / 12 × 4 months elapsed.
 3. **Travel - Car/Shared Rides: $1,937 YTD vs $668 prorated (+190%)**
    April $511 — second-highest month. Conference travel continues. Annual budget $2,000 will exhaust in May at this pace.
 
-4. **Office Rent: $5,000 YTD vs $4,000 prorated (+25%)**
-   April hit $2,000 (double the $1,000/mo run-rate). Investigate whether this was a one-time prepay (May rent paid early) or rate change. **Action item: confirm with Anthony.**
+4. **Office Rent: $5,000 YTD vs $4,000 prorated (+25%)** — RESOLVED 2026-05-13
+   April hit $2,000 (double the $1,000/mo run-rate). Confirmed: early May rent prepay; rate is still $1,000/mo. May actual should be $0; YTD normalizes back to budget by end of May. No Anthony question needed.
 
 5. **Postage & Shipping: $708 YTD vs $17 prorated (+4136%)**
    April $681 spike. $50 annual budget is meaningless against actuals. Likely conference materials shipping or one-time send. Watch May.
@@ -146,7 +146,7 @@ YTD prorated budget = Annual budget / 12 × 4 months elapsed.
 
 The April actual confirms the REFRAME thesis directionally — health installments stopped, forward burn drops — but the runway lands between the original and reframe estimates. Why:
 
-1. **Forward steady-state burn is higher than the optimistic REFRAME** ($21,050 vs March's reframe of an implied $19,000). New recurring/lumpy items not in original budget added to the run-rate: business taxes ($110/mo amortized), memberships ($22/mo), advertising spike (TBD if recurs), April postage spike, April $2,000 rent.
+1. **Forward steady-state burn is higher than the optimistic REFRAME** ($21,050 vs March's reframe of an implied $19,000). New recurring/lumpy items not in original budget added to the run-rate: business taxes ($110/mo amortized), memberships ($22/mo), advertising spike (TBD if recurs), April postage spike. (April $2,000 rent confirmed as May prepay — not a structural addition.)
 2. **Cash on hand is lower than projected** ($190,524 vs $223,820 March end) because April burn ($33,296) was elevated by the final $8,250 health installment plus the $2,422 ad spend, $1,322 business taxes, and $681 postage — all material one-offs concentrated in a single month.
 
 Net: ~2 months better than March's original projection, ~3 months worse than the March REFRAME's most-optimistic scenario. Realistic baseline.
@@ -158,7 +158,7 @@ Net: ~2 months better than March's original projection, ~3 months worse than the
 
 ## Action Items
 
-1. **Confirm April $2,000 rent with Anthony.** Was this a prepay (May covered) or rate change? If prepay, May rent should be $0 — material to forward burn rate.
+1. ~~Confirm April $2,000 rent with Anthony.~~ RESOLVED 2026-05-13 — early May rent prepay. May actual will be $0; YTD normalizes by month-end.
 2. **Investigate April Advertising spike ($2,422).** What hit? Annual platform fee? Conference booth? Recurring or one-time?
 3. **Confirm Business Taxes & Licenses ($1,322).** Likely Delaware franchise tax or NY state filing. Annual?
 4. **Confirm Memberships & Subscriptions ($260).** What service? Association or software?

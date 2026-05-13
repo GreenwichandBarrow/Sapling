@@ -135,7 +135,7 @@ YTD prorated budget = Annual budget / 12 × 4 months elapsed.
 - Databases & Research: $2,457 YTD vs $5,000 prorated (49% under).
 - Regular Wages + Payroll Taxes: $58,832 YTD vs $58,333 prorated (essentially on-budget, +0.9%).
 - Analyst contractor: $1,193 YTD vs $1,200 prorated (on-budget).
-- Bookkeeper line: $0 booked YTD vs $988 prorated. Anthony's invoices still haven't hit QBO (carried from March). **Surface to Anthony.**
+- Bookkeeper line: $0 booked YTD vs $988 prorated. CEO confirmed 2026-05-13: Anthony has not sent any invoices yet, so $0 is correct (not an unposted-invoice issue). Forward burn assumption may need to include accrued bookkeeper liability if Anthony bills retroactively.
 
 ## Runway Analysis
 
@@ -162,7 +162,7 @@ Net: ~2 months better than March's original projection, ~3 months worse than the
 2. **Confirm April Advertising bucket placement with Anthony.** Hypothesis: DealsX + AI consultant landed in Advertising. Want to lock the bucket-tracking convention going forward.
 3. ~~Confirm Business Taxes & Licenses ($1,322).~~ RESOLVED 2026-05-13 — annual state filing (Delaware / NY). One-time.
 4. ~~Confirm Memberships & Subscriptions ($260).~~ RESOLVED 2026-05-13 — tech-stack subscription. Folds into tech audit.
-5. **Follow up with Anthony on bookkeeper line posting.** Still $0 booked YTD — invoices haven't hit QBO since March surfacing. Reconcile billing.
+5. ~~Follow up with Anthony on bookkeeper line posting.~~ RESOLVED 2026-05-13 — Anthony has not sent any invoices yet, so $0 YTD is correct. No QBO reconciliation needed.
 6. **Run `/budget tech-audit`** — Apps & Software Office Use still trending over. Tech audit may identify the $4,325/mo savings target.
 7. **Watch Travel - Meals & Entertainment.** $5K annual budget on track to bust by Q2-end. Either accept reality and revise budget, or impose discipline.
 

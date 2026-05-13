@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-13T16:00:45-04:00",
+  "fetched_at": "2026-05-13T16:30:45-04:00",
   "services": {
     "launchd": {
       "status": "error",
@@ -7,11 +7,11 @@
       "message": "FileNotFoundError",
       "skip_reason": null
     },
-    "claude-api": {
+    "superhuman": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
-      "skip_reason": "ANTHROPIC_API_KEY not in env"
+      "skip_reason": "OAuth refresh required (manual)"
     },
     "slack-webhooks": {
       "status": "ok",
@@ -25,21 +25,21 @@
       "message": "",
       "skip_reason": "OAuth re-flow required (Smithery UI)"
     },
+    "claude-api": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "ANTHROPIC_API_KEY not in env"
+    },
     "linkt": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
       "skip_reason": "Browser session required (no API)"
     },
-    "superhuman": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "OAuth refresh required (manual)"
-    },
     "vault": {
       "status": "ok",
-      "latency_ms": 16,
+      "latency_ms": 14,
       "message": "854 markdown files",
       "skip_reason": null
     },
@@ -49,27 +49,27 @@
       "message": "attio-mcp=0 superhuman=0",
       "skip_reason": null
     },
-    "granola": {
-      "status": "ok",
-      "latency_ms": 106,
-      "message": "HTTP 405",
-      "skip_reason": null
-    },
     "gog": {
       "status": "ok",
-      "latency_ms": 133,
+      "latency_ms": 107,
       "message": "authenticated",
+      "skip_reason": null
+    },
+    "granola": {
+      "status": "ok",
+      "latency_ms": 122,
+      "message": "HTTP 405",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 115,
+      "latency_ms": 170,
       "message": "200 OK",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 231,
+      "latency_ms": 211,
       "message": "gh authenticated",
       "skip_reason": null
     }

@@ -1,0 +1,30 @@
+{
+  "date": "2026-05-14",
+  "scan_started_at": "2026-05-14T05:01:15-04:00",
+  "scan_finished_at": "2026-05-14T05:02:55-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 0,
+  "runtime_seconds": 100,
+  "results": [
+    {
+      "job": "launchd-debugger",
+      "cause": "CODE_BUG",
+      "action": "SURFACE",
+      "triggered_by": "daily",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/launchd-debugger-2026-05-13-0500.log",
+      "last_log_mtime": "2026-05-13T05:02:18-04:00",
+      "wrapper_exit_code": 0,
+      "validator_failed": true,
+      "preflight_failed": true,
+      "error_signature": "PREFLIGHT AUTH FAIL — Claude CLI 401, re-auth required",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_posted": false,
+      "suppression_reason": "cross-day-dedup:7d",
+      "slack_text": "launchd-debugger: launchd-debugger FAILED — CODE_BUG (4th recurrence of scanner-narrative-substring-match). PREFLIGHT AUTH FAIL signature is a false positive — the 2026-05-13 run actually exited 0 with validator PASSED, but its narrative summary embeds the literal strings 'VALIDATOR FAILED' / 'PREFLIGHT FAILED' which scan_launchd_failures.py's bare-substring regexes (VALIDATOR_FAIL_RE, PREFLIGHT_FAIL_RE) match the next morning. Recommended: anchor both regexes on the wrapper-emitted line (e.g. r'^VALIDATOR FAILED — overriding skill exit code' and r'^PREFLIGHT FAILED \\(auth\\):') instead of bare substrings — scanner code change requires your approval. Log: /home/ubuntu/projects/Sapling/logs/scheduled/launchd-debugger-2026-05-13-0500.log",
+      "dedup_matched_prior_date": "2026-05-08"
+    }
+  ]
+}

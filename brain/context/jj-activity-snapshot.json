@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-13T22:00:45Z",
+  "fetched_at": "2026-05-14T13:00:45Z",
   "niches_scanned": [
     "Art Insurance",
     "Domestic TCI",
@@ -22,63 +22,63 @@
   "by_day": {},
   "weekly_buckets": [
     {
-      "week_start": "2026-02-19",
-      "week_end": "2026-02-25",
+      "week_start": "2026-02-20",
+      "week_end": "2026-02-26",
       "dials": 0
     },
     {
-      "week_start": "2026-02-26",
-      "week_end": "2026-03-04",
+      "week_start": "2026-02-27",
+      "week_end": "2026-03-05",
       "dials": 0
     },
     {
-      "week_start": "2026-03-05",
-      "week_end": "2026-03-11",
+      "week_start": "2026-03-06",
+      "week_end": "2026-03-12",
       "dials": 0
     },
     {
-      "week_start": "2026-03-12",
-      "week_end": "2026-03-18",
+      "week_start": "2026-03-13",
+      "week_end": "2026-03-19",
       "dials": 0
     },
     {
-      "week_start": "2026-03-19",
-      "week_end": "2026-03-25",
+      "week_start": "2026-03-20",
+      "week_end": "2026-03-26",
       "dials": 0
     },
     {
-      "week_start": "2026-03-26",
-      "week_end": "2026-04-01",
+      "week_start": "2026-03-27",
+      "week_end": "2026-04-02",
       "dials": 0
     },
     {
-      "week_start": "2026-04-02",
-      "week_end": "2026-04-08",
+      "week_start": "2026-04-03",
+      "week_end": "2026-04-09",
       "dials": 0
     },
     {
-      "week_start": "2026-04-09",
-      "week_end": "2026-04-15",
+      "week_start": "2026-04-10",
+      "week_end": "2026-04-16",
       "dials": 0
     },
     {
-      "week_start": "2026-04-16",
-      "week_end": "2026-04-22",
+      "week_start": "2026-04-17",
+      "week_end": "2026-04-23",
       "dials": 0
     },
     {
-      "week_start": "2026-04-23",
-      "week_end": "2026-04-29",
+      "week_start": "2026-04-24",
+      "week_end": "2026-04-30",
       "dials": 0
     },
     {
-      "week_start": "2026-04-30",
-      "week_end": "2026-05-06",
+      "week_start": "2026-05-01",
+      "week_end": "2026-05-07",
       "dials": 0
     },
     {
-      "week_start": "2026-05-07",
-      "week_end": "2026-05-13",
+      "week_start": "2026-05-08",
+      "week_end": "2026-05-14",
       "dials": 0
     }
   ]

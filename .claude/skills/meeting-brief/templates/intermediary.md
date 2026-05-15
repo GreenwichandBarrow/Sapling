@@ -10,7 +10,7 @@
 
 ---
 
-## Structure
+## Structure (4 sections + Relationship Arc appendix)
 
 ```
 INTERMEDIARY PREP: {Person Name} — {Firm}
@@ -19,87 +19,64 @@ INTERMEDIARY PREP: {Person Name} — {Firm}
 
 —
 
-WHO THEY ARE
+PURPOSE OF MEETING
 
-• {Role and firm}
-• {What the firm does — advisory type, typical deal size, sectors}
-• {Their territory — geographic, sector, deal-size sweet spot}
-• {Background / how they built their book}
-• {Reputation / style — proprietary vs brokered, reputation in market}
+{Who they are, what their firm does, deal flow pattern, state of relationship.
+Attio stage: {Identified / Contacted / Warmed / Actively Receiving / Daily Check-in}}
+
+Buy box quick reference (for live use during the call):
+
+• Revenue ${X}M – ${Y}M | EBITDA ${X}M – ${Y}M
+• Industries: {active niches}
+• Never: PE-owned, California, sub-$500K, franchises, restaurants, cap-intensive mfg, physician practices, lending, carve-outs
 
 —
 
-RELATIONSHIP HISTORY
+AGENDA ITEMS
 
-Attio Intermediary Pipeline stage: {Identified / Contacted / Warmed / Actively Receiving Deal Flow / Daily Check-in}
+1. {Specific deal-flow ask — anchored in an active niche, not generic}
+2. {Intro ask — specific person or firm, not "anyone in X"}
+3. {Market intel — multiples, financing posture, PE activity in their sector}
+
+—
+
+OPTIONAL ITEMS
+
+• Reciprocal value: {what G&B can offer them — deal observations, market signals, credibility anchors}
+• Red flags to watch: {blast-only behavior, conflicts with a competitor, overworked / unresponsive}
+
+—
+
+ACTION STEPS
+
+• Update Attio Intermediary stage if warranted ({current} → {next})
+• Update `last_deal_sent` + `deal_types_sent` fields
+• Send thank-you within 24h (per `feedback_followup_timing`)
+• Add any mentioned contacts to vault as entities
+
+—
+
+RELATIONSHIP ARC (appendix)
+
 How introduced: {origin}
+
 Touchpoints:
+
 • {Date} — {meeting / email / event}
 • {Date} — {meeting / email / event}
+
 Prior deals shared: {none / list with dates}
-
-—
-
-THEIR DEAL FLOW PATTERN
-
-{What types of deals have they shared? Size, sector, geography.}
-{Are they sending G&B-fit deals? What's their hit rate?}
-{What's their deal-sharing cadence — weekly blast, occasional DIRECT email, only when they have something fitting?}
-
-—
-
-G&B BUY BOX REMINDER FOR THEM
-
-{Tight summary of what to send — use this as the reference during the call:}
-• Revenue: ${X}M – ${Y}M
-• EBITDA: ${X}M – ${Y}M
-• Industries: {top-priority niches + open to adjacent}
-• Geography: {tri-state, with flexibility}
-• Never: {PE-owned, California, sub-$500K rev, franchises, restaurants, cap-intensive manufacturing, physician practices, lending, carve-outs}
-
-—
-
-WHAT TO ASK FOR
-
-1. {Specific deal-flow request — "Anything in specialty insurance or premium pest?"}
-2. {Intro request — specific other intermediary or owner}
-3. {Market intelligence — "What are you seeing in multiples / financing / PE activity?"}
-4. {Reciprocal value — what G&B can offer them}
-
-—
-
-WHAT TO SHARE (RECIPROCAL VALUE)
-
-• {Deal observations G&B has that they'd find useful}
-• {G&B's credibility signals — Anacapa LP, Chanel background, etc.}
-• {Recent wins or signals that show G&B is active (without revealing specifics)}
-
-—
-
-RED FLAGS / WATCH ITEMS
-
-• {Anything that suggests they won't be productive — blast-only, conflicted with a competitor, overworked}
-• {Compliance concerns — do they have a clean reputation?}
-• {Any prior friction}
-
-—
-
-POST-CALL ACTIONS
-
-- Update Attio Intermediary stage if warranted (Identified → Contacted / Contacted → Warmed / etc.)
-- Update `last_deal_sent` + `deal_types_sent` fields
-- Send thank-you in 24h (per `feedback_followup_timing`)
-- Add any mentioned contacts to vault as entities
 ```
 
 ## Voice + Content Rules
 
-- Intermediaries are gatekeepers, not relationship targets per se — keep the brief short, focused on deal flow
-- Reciprocal value is critical — what can G&B offer them, not just ask
-- Buy box reminder in the brief is for Kay's live reference during the call
-- No em dashes
-- Per `feedback_broker_competition`: recognize broker deals go to 3000+ buyers; calibrate expectations
-- Per `feedback_broker_emails`: short and direct, don't over-explain G&B thesis
+- 4 working sections, period. Relationship Arc is appendix, not a working section.
+- Intermediaries are gatekeepers — keep the brief short, focused on deal flow.
+- Reciprocal value is critical — what G&B can offer them, not just ask for.
+- Buy box reminder is for Kay's live reference during the call — keep it scannable.
+- No em dashes.
+- Per `feedback_broker_competition`: recognize broker deals go to 3000+ buyers; calibrate expectations.
+- Per `feedback_broker_emails`: short and direct, don't over-explain G&B thesis.
 
 ## Data Sources
 
@@ -111,9 +88,9 @@ POST-CALL ACTIONS
 
 ## Validation Gates
 
-- [ ] All sections populated
+- [ ] 4 working sections populated (Purpose, Agenda, Optional, Action Steps)
+- [ ] Relationship Arc at bottom with touchpoints chronologically
 - [ ] Buy box reminder matches current active niches
-- [ ] Specific deal-flow ask (not generic)
-- [ ] Reciprocal-value section non-empty
-- [ ] Post-call actions list populated
+- [ ] Specific deal-flow ask (not generic "anything in X?")
+- [ ] Action Steps include Attio stage update + thank-you timing
 - [ ] No em dashes

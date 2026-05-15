@@ -35,14 +35,22 @@ Determine meeting type from the `--type` argument OR from context clues if no fl
 | `owner-call` | `templates/owner-call.md` | `examples/owner-call/` | Active Deals pipeline "First Conversation" or later; deal-progression |
 | `intermediary` | `templates/intermediary.md` | `examples/intermediary/` | Broker, M&A advisor, law firm partner, wealth advisor |
 | `conference-prep` | `templates/conference-prep.md` | `examples/conference-prep/` | Conference, panel, industry event, networking room |
+| `follow-up` | `templates/follow-up.md` | `examples/follow-up/` | Repeat call outside Active Deals (coaching, advisor, vendor sync, recurring non-pipeline) |
+| `investor-call-biweekly` | `templates/investor-call-biweekly.md` | `examples/investor-biweekly/` | Biweekly investor 1:1 (Guillermo Lavergne / Ashford) |
+| `investor-call-monthly` | `templates/investor-call-monthly.md` | `examples/investor-monthly/` | Monthly investor 1:1 (Jeff Stevens / Anacapa) |
 
-**Auto-detect when --type is absent:**
-- Attio match in Active Deals pipeline → `owner-call`
-- Vault entity tagged as `Intermediary` / `River Guide` OR sender domain matches `Intermediary Target List` Sheet → `intermediary`
-- Event/conference keyword in calendar title (XPX, ACG, NPMA, conference, panel, happy hour, summit) → `conference-prep`
-- No Attio match → `new-contact`
+**Auto-detect when --type is absent (evaluate in order):**
+1. Person tagged as `investor` in vault AND calendar event recurrence = biweekly → `investor-call-biweekly`
+2. Person tagged as `investor` in vault AND calendar event recurrence = monthly → `investor-call-monthly`
+3. Event/conference keyword in calendar title (XPX, ACG, NPMA, conference, panel, happy hour, summit) → `conference-prep`
+4. Attio match in Active Deals pipeline → `owner-call`
+5. Vault entity tagged as `Intermediary` / `River Guide` OR sender domain matches `Intermediary Target List` Sheet → `intermediary`
+6. Prior calls exist in `brain/calls/` for this person but person is NOT in Active Deals and NOT an intermediary → `follow-up`
+7. No prior calls and no Attio match → `new-contact`
 
 **Invariant:** always load `templates/{type}.md` AND `examples/{type}/{most-recent}.md` BEFORE drafting. Fail the run if either is unreadable. Do not fall through to a generic template.
+
+**General framework:** the `follow-up` template is the canonical 4-section meeting framework (Purpose / Agenda / Optional / Action Steps + Relationship Arc as bottom appendix). The other templates extend this with type-specific sections. When in doubt for a repeat call type that doesn't fit owner / intermediary / investor / conference, use `follow-up`.
 
 ## Delivery
 

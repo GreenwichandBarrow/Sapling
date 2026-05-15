@@ -19,18 +19,6 @@ CALL PREP: {Owner Name} — Call #{n}
 
 —
 
-RELATIONSHIP ARC
-
-{Chronological timeline of touchpoints:}
-• {Date} — {How introduced, by whom}
-• {Date} — {First email / outreach}
-• {Date} — {Call #1: key topics, outcome}
-• {Date} — {Follow-up email / NDA sent}
-• {Date} — {Call #2: key topics, outcome}
-{Continue through present...}
-
-—
-
 CURRENT PIPELINE STAGE
 
 Stage: {current Attio stage}
@@ -98,6 +86,18 @@ RED FLAGS / WATCH ITEMS
 • {Initial screening concerns}
 • {Inconsistencies noticed}
 • {Items to verify this call}
+
+—
+
+RELATIONSHIP ARC (appendix)
+
+{Chronological timeline of touchpoints:}
+• {Date} — {How introduced, by whom}
+• {Date} — {First email / outreach}
+• {Date} — {Call #1: key topics, outcome}
+• {Date} — {Follow-up email / NDA sent}
+• {Date} — {Call #2: key topics, outcome}
+{Continue through present...}
 ```
 
 ## Voice + Content Rules

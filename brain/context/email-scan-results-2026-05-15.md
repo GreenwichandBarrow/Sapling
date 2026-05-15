@@ -28,7 +28,7 @@ schema_version: 1.1.0
 
 # Email Scan Results — 2026-05-15
 
-Headless 7am ET run (Friday). Scanned `newer_than:2d label:INBOX` (50-msg cap) + outbound from `kay.s@greenwichandbarrow.com` AND `admin@greenwichandbarrow.com` per [[memory/feedback_kay_outbound_includes_admin_alias]] + Gmail drafts + calendar for today's in-person meetings.
+Headless 7am ET run (Friday) + interactive top-up at ~11am ET (David Freeman direct reply + duplicate Barrie 8:35 cal-conflict ping landed post-7am scan). Scanned `newer_than:2d label:INBOX` (50-msg cap) + outbound from `kay.s@greenwichandbarrow.com` AND `admin@greenwichandbarrow.com` per [[memory/feedback_kay_outbound_includes_admin_alias]] + Gmail drafts + calendar for today's in-person meetings.
 
 **No bookkeeper P&L detected in window.** No sender from `startvirtual.com`, no "Management Report" subject, no Profit-and-Loss/Balance-Sheet attachment. Chain NOT fired (correct — would have re-fired April 2026 trigger; chain already executed 2026-05-13 per `brain/outputs/2026-05-13-budget-report-april-2026.md`). No `BOOKKEEPER-PL-CHAIN:` marker required this run.
 
@@ -45,7 +45,8 @@ Headless 7am ET run (Friday). Scanned `newer_than:2d label:INBOX` (50-msg cap) +
 | # | Item | Source | Why surfaced |
 |---|------|--------|--------------|
 | 1 | Hannah Barrett (Pacific Lake) — Mid-Search Summit logistics 5/18–5/19 | Gmail thread `19e075d37b49da50` (6-message thread, unchanged since 2026-05-14 artifact) | Carryover from 2026-05-14 — no new replies in 24h. Travel + agenda confirm needed before Sunday flight. Pipeline-manager to verify Kay's reply status before re-surfacing. |
-| 2 | Barrie Green — calendar conflict heads-up | Gmail thread `19e26825d89f7c07` (5/14 11:42 ET) | Team-internal, informational. Surface in briefing as 🟢 only if conflict requires Kay's decision; pipeline-manager opens the thread to check what conflict was flagged. |
+| 2 | Barrie Green — calendar conflict heads-up (2 pings) | Gmail threads `19e26825d89f7c07` (5/14 08:42 ET) + `19e2ba245ab660c3` (5/15 08:35 ET — same automated cal-agent, no new info) | Team-internal automated calendar agent. Surface in briefing as 🟢 only if conflict requires Kay's decision; pipeline-manager opens threads to check what conflict was flagged. |
+| 3 | David Freeman (Breakpoint Growth) — wrapped his search-fund raise, launching next week, thanked Kay for help along the way | Gmail thread `1965edc0c4186125` (5/14 15:21 ET — David's reply on long-running nurture thread, 23 messages) | Nurture/network close-loop. Kay previously helped him during raise; positive launch update warrants a short reply. Net-new direct inbound NOT captured by 7am scan. Pipeline-manager surfaces as 🟢 nurture for Friday afternoon. |
 
 DealsX inbound (3 leads from `dealsx.notifaction@gmail.com` to `admin@`) lives in DealsX channel funnel per `feedback_dealsx_is_cold_email_infra` — not surfaced here, no vault entity created. Leads: Matthew Feldman (`yulacorp.com`, 5/14 12:03), 2 unnamed leads (5/13 23:22 and 5/13 10:25).
 
@@ -55,12 +56,12 @@ No new entity stubs needed — `julie-diorio.md`, `hannah-barrett.md`, `everingh
 
 | Class | Count | Notes |
 |-------|-------|-------|
-| DIRECT | 4 | Hannah Barrett (Pacific Lake), Harrison Wells (AI security thread — Kay already engaged 5/13), Barrie Green (internal), Kay S forwarded "Greenwich & Barrow / Aspect" (self-forward from `kaycschneider@gmail.com`) |
+| DIRECT | 6 | Hannah Barrett (Pacific Lake), Harrison Wells (AI security thread — Kay already engaged 5/13), Barrie Green (internal, 2 cal-conflict pings), David Freeman (Breakpoint Growth — wrapped raise, NEW reply 5/14 15:21), Kay S forwarded "Greenwich & Barrow / Aspect" (self-forward from `kaycschneider@gmail.com`) |
 | BLAST | 6 | E&K, Helen Guo SMB Deal Hunter, Tory @ Flippa, Chuck Mullins quietlight, Jon Hainstock quietlight, Business Exits |
 | DealsX inbound | 3 | Prospect Geni notification emails, structured-lead format (not BLAST, not DIRECT) |
 | NEWSLETTER | 24 | Axios (4 issues), DMARC report, Tailscale (3), Anacapa (2 — reminder + Q2 mid-quarter update), 1Password (2), Cornell, Howie, Le Pain Quotidien receipt, XPX, Live Oak, Michael Girdley, Frank Sondors, Nick Huber, Slack, Royal Sonesta confirm, CorpNet Delaware franchise tax, Granola receipt, Uber receipts (2), Peter Lang |
 
-Total inbound threads scanned: 40.
+Total inbound threads scanned: 41 (40 at 7am + 1 net-new David Freeman reply + 1 duplicate Barrie 8:35 ping; David count adds to DIRECT, Barrie counted once already).
 
 ## 3. Draft Status
 

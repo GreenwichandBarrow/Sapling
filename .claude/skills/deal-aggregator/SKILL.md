@@ -23,9 +23,11 @@ Surface prepped deals — businesses that are actively selling — from every no
 2. Email inbound (CIMs, broker blasts, intro forwards — read from email-scan-results artifact)
 3. Industry-specific deal sources (niche brokers and M&A advisors)
 4. Association deal boards (classified sections, member transition programs)
+5. DealsX Proprietary Outreach Replies (owners who replied with interest to DealsX cold outreach — see Channel 6)
 
 **This skill does NOT:**
-- Handle DealsX deal flow (DealsX has its own dashboard)
+- Run or manage DealsX cold outreach itself (Sam's team owns the contact universe; DealsX is cold-email infra per `feedback_dealsx_is_cold_email_infra`). It DOES surface the inbound REPLIES that outreach produces (Channel 6).
+- Trigger target-discovery from DealsX activity. DealsX-channel niches skip target-discovery entirely (`feedback_dealsx_skip_target_discovery`). A reply is inbound deal flow, never a refill signal.
 - Draft outreach to owners (broker is the gatekeeper for broker-sourced deals)
 - Enter deals into Attio (pipeline-manager handles that when NDA is signed)
 - File documents into ACTIVE DEALS folders (pipeline-manager handles that)
@@ -289,6 +291,34 @@ Monitor for off-market opportunities through industry associations.
 - IREM (irem.org) — Institute of Real Estate Management, member networking.
 - NARPM (narpm.org) — National Association of Residential Property Managers, occasional member transitions.
 
+### Channel 6: DealsX Proprietary Outreach Replies
+
+DealsX runs cold outreach on G&B's behalf (Sam's team owns the contact universe). When an owner replies with interest, DealsX forwards a lead notification. These are **inbound deal flow** — surface them; they count toward the daily 1-3 evaluable-deals target and show the DealsX funnel is producing.
+
+**Detection — a DealsX reply notification is any email matching ALL of:**
+- Sender is `Prospect Geni <dealsx.notifaction@gmail.com>` (the DealsX lead-notification sender; "Prospect Geni" is DealsX's notification alias, NOT a person or separate tool), OR a forwarded reply from `@dealsx.io` referencing a DealsX-sent thread
+- Subject contains `Lead Interested` (current notification template) OR is a forwarded owner reply to DealsX outreach
+- Read these from `brain/context/email-scan-results-{date}.md` (email-intelligence classifies them; this skill does not scan Gmail directly per the existing scanning rule)
+
+**Notification structure (calibration reference, current template):** plain-text, ONE lead per notification, fields = Lead Name, Lead Email, Lead Website, Lead LinkedIn. No deal financials, no teaser, no CIM — it is a contact handoff, not a packaged deal. Treat each lead as a deal-flow signal to surface, not a screened buy-box match.
+
+**Routing (per `feedback_dealsx_is_cold_email_infra` + `feedback_dealsx_skip_target_discovery`):**
+- Surface as inbound deal flow only. Do NOT screen against the buy-box gate (no financials disclosed — Data Availability Rule means it would flag-not-reject anyway, so screening adds no value here).
+- Do NOT trigger target-discovery, list-builder, or any refill action. DealsX owns the contact universe; a reply is not a pipeline-empty signal.
+- Do NOT enter into Attio (pipeline-manager owns Attio on NDA, same as every other channel).
+- One Slack message per lead to `#active-deals` (same fingerprint-dedup discipline as Channel 1, fingerprint on `dealsx | {company-domain}`):
+```
+🔔 DealsX reply — owner responded to outreach
+Lead: {Lead Name}
+Company: {Lead Website}
+Contact: {Lead Email} | {LinkedIn or "—"}
+Source: DealsX Proprietary Outreach
+Note: inbound contact handoff — no financials yet. Voice-sensitive reply design is Kay's call.
+
+👍 = pursue  |  👎 = pass
+```
+- These count toward the daily evaluable-deals volume and appear in the results file under a dedicated section (see Results File).
+
 ### Channel 5: New Introductions
 When Kay receives a broker introduction (detected via email-scan-results).
 
@@ -360,6 +390,7 @@ sources_scanned: {n}
 sources_blocked_verified: {n}
 sources_blocked_single_attempt: {n}
 email_deals: {n}
+dealsx_replies: {n}
 ---
 # Deal Aggregator Scan — {date}
 
@@ -368,6 +399,10 @@ email_deals: {n}
 
 ## Email Inbound Deals
 1. **{Company/Profile}** — {Broker} | {Type: CIM/Teaser/Blast} | {Details}
+
+## DealsX Proprietary Outreach Replies
+Inbound owner replies to DealsX cold outreach (Channel 6). Contact handoffs — no financials. Surfaced to Slack, count toward daily volume, do NOT trigger target-discovery.
+1. **{Lead Name}** — {Lead Website} | {Lead Email} | {LinkedIn or "—"}
 
 ## Near Misses (not Slacked)
 - {listing} — {reason not flagged}

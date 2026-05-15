@@ -1,6 +1,6 @@
 ---
 name: pipeline-manager
-description: "Daily morning briefing — pipeline stage changes, outreach recommendations (nurture cadence), and action items (Granola). Kay reviews, approved items become Motion tasks automatically. Runs when Kay says good morning."
+description: "Daily morning briefing — pipeline stage changes, outreach recommendations (nurture cadence), and action items (Granola). Kay reviews, approved items are appended to the To Do tab via task-tracker-manager. Runs when Kay says good morning."
 # WARNING: 6.4x over archetype cap; refactor pending per item 2.
 archetype: router
 context_budget:
@@ -46,7 +46,7 @@ Kay is the bottleneck on pipeline management. This skill removes that bottleneck
 3. **Recommend** — Present stage change recommendations AND relationship updates to Kay
 4. **Execute** — On approval, update pipeline stages AND People record attributes via Attio API
 5. **Flag** — Surface stale deals (same stage 2+ weeks) AND overdue nurture contacts
-6. **Follow up** — Draft thank yous, create entities for intros, create Motion tasks
+6. **Follow up** — Draft thank yous, create entities for intros, append To Do rows via task-tracker-manager
 7. **Nudge** — Send Slack ping so Kay knows updates are waiting
 
 ## Two Systems, One Daily Review
@@ -66,7 +66,7 @@ For **all network contacts**. Person-based. Non-linear relationship management.
 
 ### Daily Review Flow
 
-On morning sign-on, Claude presents the review with the header **"Pipeline Review"** at the top. All sections are presented sequentially. Kay reviews each item and approves or skips. Approved outreach and action items become Motion tasks automatically. **All items presented for review must be numbered.**
+On morning sign-on, Claude presents the review with the header **"Pipeline Review"** at the top. All sections are presented sequentially. Kay reviews each item and approves or skips. Approved outreach and action items are appended to the To Do tab via task-tracker-manager. **All items presented for review must be numbered.**
 
 **Inbound Deal Flow (before sections):**
 If any inbound intermediary deals were detected during Gmail ingestion, present them first. These are time-sensitive — intermediaries shop deals to multiple buyers. See "Inbound Intermediary Deal Detection" section below for format and actions.
@@ -92,7 +92,7 @@ Everything related to People records (not in a pipeline list). Nurture cadence, 
 Check ALL People with nurture_cadence set against their `last_interaction` date in Attio. Surface anyone overdue.
 
 Format: "Consider following up with {name} ({relationship_type}, {nurture_cadence}). Last contact: {date}."
-- **Approve** → Motion task created: "Follow up with {name}" with due date based on urgency
+- **Approve** → To Do row appended via task-tracker-manager: "Follow up with {name}" with due date based on urgency
 - **Skip** → no action
 
 Cadence thresholds:
@@ -116,7 +116,7 @@ Present max 5 nurture reminders per session. Prioritize by: relationship value, 
 Present action items extracted from recent meeting transcripts.
 
 Format: "From your meeting with {name} on {date}: '{action item}'"
-- **Approve** → Motion task created with title, description, and due date
+- **Approve** → To Do row appended via task-tracker-manager with task text, type, project, and due date
 - **Skip** → no action
 
 ## Output Format
@@ -207,7 +207,7 @@ Reply by number.
 **Routing pre-existing report sections into urgency-tagged Decisions:**
 - *Pipeline shifts* (Attio stage changes, new active deals, NDA-signed detections) → 🔴 if action-needed today, 🟡 if review-needed-soon. Always Obama framing.
 - *Pipeline summary stats* (Active Deals N, niche counts) → omit from briefing; lives on Active Deal Pipeline + M&A Analytics dashboard pages.
-- *Motion action steps* → 🔴 (same-day) or 🟡 (this week).
+- *To Do action steps* → 🔴 (same-day) or 🟡 (this week).
 - *Gmail drafts to send* → 🔴 as a single bundled Decision: **RECOMMEND: Approve all N drafts to send Mon AM** → YES/NO/DISCUSS. Not one item per draft.
 - *Targets for review* → 🟡 Decision (warm intro vs cadence vs pass) — bundle by niche.
 - *Brief needed for TODAY (D+0) or TOMORROW (D+1) external meetings* → 🔴 Decision: **RECOMMEND: Generate brief for {name}** → YES/NO/DISCUSS (mandatory invariant per CLAUDE.md brief-decisions pre-flight + `feedback_preflight_covers_today_and_tomorrow.md`).
@@ -237,7 +237,7 @@ After Kay reviews all three categories, confirm summary:
 ```
 Pipeline manager complete:
 - {n} pipeline stages updated
-- {n} tasks created in Motion
+- {n} rows appended to To Do
 - {n} email drafts in Gmail
 - {n} stale deals flagged
 ```
@@ -281,14 +281,14 @@ Relationship management (nurture cadence monitoring, action-already-taken verifi
 ### Sub-Agent 3: Granola Agent
 **Scope:** All meeting transcripts since last run
 **Scans:** Granola MCP for transcripts, extracts action items, next steps, commitments, intro promises
-**Returns:** Proposed Motion tasks with titles, descriptions, due dates
+**Returns:** Proposed To Do rows with task text, type, project, due dates
 
 ### Stop Hooks (post-execution validation)
 1. **Pipeline validation** — confirms all approved stage changes were executed in Attio Lists
 2. **Relationships validation** — confirms all approved People attribute updates were executed, no blank next_actions left behind
 3. **Granola ingestion validation** — count meetings returned by `mcp__granola__list_meetings` vs files actually written to `brain/calls/`. Every meeting must have a corresponding file (or an idempotency skip logged). Mismatch = data loss.
 4. **Gmail ingestion validation** — count actionable emails identified during ingestion vs inbox files written to `brain/inbox/`. Every actionable email must have a corresponding file (or an idempotency skip logged). Mismatch = dropped action items.
-5. **Motion task validation** — for every approved action item (outreach tasks, follow-up tasks, Granola action items), verify a corresponding Motion task was created via the Motion API (`GET /tasks`). Compare approved count vs created count. Mismatch = tasks Kay thinks exist but don't.
+5. **Task-tracker validation** — for every approved action item (outreach tasks, follow-up tasks, Granola action items), verify it was appended to the To Do tab. Read the `TO DO 5.12.26` Sheet (id `1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk`) To Do tab and compare approved count vs appended-row count. Mismatch = tasks Kay thinks exist but don't.
 6. **Niche signal validation** — if any niche signals were detected during data ingestion, confirm each was written to `brain/inbox/` with the `topic/niche-signal` tag. Glob `brain/inbox/*niche-signal*` and verify count matches signals detected. Missing signals = lost intelligence for Friday's niche run.
 7. **Slack notification validation** — confirm the Slack webhook POST returned HTTP 200 OK. If non-200, retry once. If still failing, warn Kay directly in the session summary that Slack notification failed.
 8. **ACTIVE DEALS folder sync** — compare ACTIVE DEALS Drive subfolders against Attio Active Deals entries. Every folder must have a matching Attio entry. Any orphaned folder = missed deal entry. Create Attio entry and flag in morning briefing.
@@ -1192,7 +1192,7 @@ Pipeline updates complete:
 - {n} new entries/contacts added
 - {n} stale deals flagged
 - {n} overdue nurture contacts surfaced
-- {n} Motion tasks created
+- {n} To Do rows appended
 ```
 </execute>
 
@@ -1248,23 +1248,23 @@ After pipeline updates, surface any follow-up tasks:
 - **NDA Executed** → remind to request financials if not already received
 - **Financials Received** → flag for financial modeling
 - **Stale deals** → suggest kill/advance/table decision
-- **Meeting action items → Motion tasks** — Parse Granola transcript for action items, next steps, and commitments. For each, create a Motion task via `/motion` skill with:
-  - Title: the action item
-  - Description: context from the meeting
+- **Meeting action items → To Do rows** — Parse Granola transcript for action items, next steps, and commitments. For each, append a row to the To Do tab via the `task-tracker-manager` skill's `append` verb (`python3 scripts/task_tracker.py append --task "..." --type Work --project "G&B" [--due YYYY-MM-DD] [--notes "..."]`) with:
+  - Task: the action item
+  - Notes: context from the meeting
   - Due date: based on urgency/commitment made
-  - Project: mapped to the relevant pipeline (e.g., Active Deals project for deal-related actions)
+  - Project: "G&B" (or the relevant pipeline label for deal-related actions)
 
   Present all proposed tasks to Kay for approval before creating. She may want to adjust priority, due date, or skip some.
 
 **Post-meeting flow (complete sequence):**
 1. Detect meeting from calendar + Granola transcript
 2. Recommend pipeline stage change → Kay approves
-3. Draft thank you email → Kay reviews → create Motion task with due date
+3. Draft thank you email → Kay reviews → append To Do row with due date
 4. Create entities for promised introductions → Kay confirms names
-5. Extract action items from Granola → create Motion tasks → Kay approves
-6. Any outreach needed (e.g., new broker intro) → draft email → create Motion task
+5. Extract action items from Granola → append To Do rows → Kay approves
+6. Any outreach needed (e.g., new broker intro) → draft email → append To Do row
 
-**Motion task creation:** Every follow-up action that Kay approves should also become a Motion task via `/motion` skill. Examples:
+**To Do row append:** Every follow-up action that Kay approves should also be appended to the To Do tab via the `task-tracker-manager` skill's `append` verb. Examples:
 - "Send thank you to Dan Tanzilli" (due: tomorrow)
 - "Outreach to Eric Dreyer / Eight Quarter Advisors re: art restoration" (due: this week)
 - "Follow up on Dan Tanzilli art attorney intro" (due: 1 week)
@@ -1285,6 +1285,6 @@ Pipeline manager run is complete when:
 - [ ] Overdue nurture contacts surfaced
 - [ ] Stale deals flagged (2+ weeks in same stage)
 - [ ] Thank you emails drafted for approved contacts
-- [ ] Motion tasks created for all approved follow-up actions
+- [ ] To Do rows appended for all approved follow-up actions
 - [ ] Summary confirmed to user
 </success_criteria>

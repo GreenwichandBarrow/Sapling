@@ -247,14 +247,14 @@ gog sheets get "1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins" "'WEEKLY REVIEW'!A
 
 ### Phase: Post-Send Follow-Up
 After Kay sends the quarterly update:
-1. Create Motion tasks: "Follow-up call with {investor}" for each investor, due 2 weeks out
+1. Append To Do rows via task-tracker-manager: "Follow-up call with {investor}" for each investor, due 2 weeks out
 2. Track responses in Attio
 3. Surface in pipeline-manager morning briefing: "3 investors responded to Q{X} update — {names}. 9 haven't replied."
 
 ### Quarterly Deliverables
 1. Draft deck in DRAFTS folder → Kay reviews → moves to QUARTERLIES SENT
 2. 12 personalized email drafts
-3. Motion follow-up tasks created
+3. Follow-up To Do rows appended
 4. Slack notification to #operations: "Q{X} investor update ready for review. Deck: {url}"
 
 ---
@@ -361,7 +361,7 @@ Pipeline-manager should:
 - [ ] Investor Ask is specific
 - [ ] Deck saved to DRAFTS → Kay reviews → moves to QUARTERLIES SENT
 - [ ] 12 personalized email drafts created
-- [ ] Motion follow-up tasks created for all 12 investors
+- [ ] Follow-up To Do rows appended for all 12 investors
 - [ ] Slack notification sent to #operations
 
 ### Weekly DD Mode

@@ -496,7 +496,7 @@ After Kay approves a conference:
 
 ### Registration
 1. Provide direct registration link
-2. Create Motion task: "Register for {conference name}" with deadline 2 days before registration closes
+2. Append To Do row via task-tracker-manager: "Register for {conference name}" with due date 2 days before registration closes
 3. Create Drive subfolder in RESEARCH/CONFERENCES: `gog drive mkdir "{CONFERENCE NAME}" --parent "18H0L-5UgHObt_0Reb6YlRshbWakEozk5"` — all conference materials live here (attendee lists, target list, debrief note, slides, reports)
 4. If association membership required, present cost and ask Kay for approval first
 5. Update conference calendar status to "Registered"
@@ -625,10 +625,10 @@ After Kay reviews the Conference Pipeline sheet Monday morning and marks decisio
 **Process:**
 1. Check Conference Pipeline Google Sheet for any row where Decision (Col C) = "Attend" or "Register Only" AND Status (Col N) is NOT yet "Registered"
 2. For each new decision:
-   - Create Motion task: "Register for {conference name}" with deadline 2 days before registration closes (Col J — Reg Deadline)
+   - Append To Do row via task-tracker-manager: "Register for {conference name}" with due date 2 days before registration closes (Col J — Reg Deadline)
    - Include registration link from conference website (Col M — Website)
    - If attendee list is publicly available (Col L — Attendee List), begin attendee list acquisition
-   - Update Status (Col N) to "Registered" after Motion task created
+   - Update Status (Col N) to "Registered" after To Do row appended
 3. Present changes to Kay before writing (per Stop Hook above)
 
 **Note:** Kay picks conferences Monday morning. This scan runs after her review. Gives Kay a grace period to change her mind before registration is kicked off.
@@ -753,7 +753,7 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 - [ ] All contacts added to Attio (People + Active Deals)
 - [ ] Vault entities created for each new contact
 - [ ] Conference debrief note saved to brain/calls/
-- [ ] Motion tasks created for any outstanding follow-ups
+- [ ] To Do rows appended for any outstanding follow-ups
 
 ### Weekly Rhythm
 - [ ] At least 1 conference attended per week (Monday preferred)

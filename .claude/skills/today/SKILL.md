@@ -29,7 +29,7 @@ Email findings come from pipeline-manager's scan results at `brain/context/email
 Orchestrator reads chatroom, deduplicates findings, writes directly to daily note without confirmation.
 
 **Phase 3 - Handoff:**
-Present async items as a **numbered list** for Kay to confirm which become Motion tasks. Then invoke /triage for medium/low confidence items.
+Present async items as a **numbered list** for Kay to confirm which become To Do rows. Then invoke /triage for medium/low confidence items.
 
 ### Key Behaviors
 
@@ -177,10 +177,10 @@ If daily note frontmatter is invalid, read the schema example block and fix in o
 
 ### Async Item Review (always numbered)
 
-After writing the daily note, present all async (external action) items as a **numbered list** with the title **"Proposed Action Items for Motion"**:
+After writing the daily note, present all async (external action) items as a **numbered list** with the title **"Proposed To Do Rows"**:
 
 ```
-**Proposed Action Items for Motion**
+**Proposed To Do Rows**
 
 1. {title} — {one-line context}
 2. {title} — {one-line context}
@@ -190,7 +190,7 @@ After writing the daily note, present all async (external action) items as a **n
 **Always use numbered lists when presenting items for Kay's review.** This lets Kay respond with just numbers (e.g., "1, 3 yes, 2 no").
 
 After confirmation:
-- Create Motion tasks for approved items (status: "Todo", workspace: ws_fnSjxkfnWpcCPke4cknr9r)
+- Append To Do rows for approved items via the `task-tracker-manager` skill's `append` verb (`python3 scripts/task_tracker.py append --task "..." --type Work --project "G&B" [--due YYYY-MM-DD]`)
 - Mark declined inbox items as done if already complete
 
 ### Triage Handoff

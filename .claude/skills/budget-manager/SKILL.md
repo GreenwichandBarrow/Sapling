@@ -285,7 +285,7 @@ Run all of these before declaring success. Any failure → no Slack post, surfac
 
 ### Agent B: Stack Mapper
 **Task:** Map what tools the system actually uses.
-1. Read `.claude/skills/*/SKILL.md` and extract tool dependencies (Attio, Gmail, Drive, Slack, Motion, Linkt, etc.)
+1. Read `.claude/skills/*/SKILL.md` and extract tool dependencies (Attio, Gmail, Drive, Slack, Apollo, Granola, etc.)
 2. Read `brain/context/budget.md` tech stack section
 3. Read Budget Dashboard Tab 3 for current inventory
 4. Flag tools that appear in receipts but NOT in any skill or workflow

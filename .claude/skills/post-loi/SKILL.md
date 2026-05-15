@@ -89,8 +89,8 @@ This skill does NOT run on a schedule. Each phase triggers the next:
 **Trigger:** Countersigned LOI detected (Kay confirms LOI is fully executed)
 
 ### Sub-Agent 1: Deal Cabinet Expansion
-**Task:** Expand existing deal folder with DD-specific subfolders and create Motion project.
-**Tools:** gog drive, Motion API
+**Task:** Expand existing deal folder with DD-specific subfolders and create a Gantt project tab via task-tracker-manager.
+**Tools:** gog drive, task-tracker-manager (`scripts/task_tracker.py`)
 
 **Steps:**
 1. Verify existing deal folder in ACTIVE DEALS / {COMPANY} / DEAL {YEAR}
@@ -98,10 +98,10 @@ This skill does NOT run on a schedule. Each phase triggers the next:
    - QOE/, LEGAL/, INSURANCE/, OPERATIONS/, ENVIRONMENTAL/
 3. Create DD-MEETINGS/ folder (for weekly meeting prep docs)
 4. Create CLOSING/ folder (for purchase agreement, funds flow, entity docs)
-5. Create Motion project: "{Company} — Due Diligence"
+5. Create Gantt project tab via task-tracker-manager: `python3 scripts/task_tracker.py projects-create-gantt --project "{Company} — Due Diligence" --start {LOI date}`
    - Set target close date (Kay provides or default to LOI date + 90 days)
-   - Create task groups for each DD workstream
-   - Tasks with dependencies and due dates relative to close date:
+   - One milestone row per DD workstream checkpoint
+   - Milestones with due dates relative to close date:
      - **Week 1:** Engage QoE firm, engage legal counsel, notify insurance broker
      - **Week 2:** Kick off QoE, request legal document list from seller
      - **Week 2-4:** Customer interview scheduling, key employee meetings
@@ -127,7 +127,7 @@ This skill does NOT run on a schedule. Each phase triggers the next:
 **Stop Hook:**
 - [ ] All DD subfolders created under DILIGENCE/
 - [ ] DD-MEETINGS/ and CLOSING/ folders exist
-- [ ] Motion project created with task groups and dependencies
+- [ ] Gantt project tab created with milestone rows via task-tracker-manager
 - [ ] Attio stage updated to "LOI Signed"
 
 ### Sub-Agent 2: Investor & Stakeholder Notification
@@ -156,7 +156,7 @@ This skill does NOT run on a schedule. Each phase triggers the next:
 ### Phase 1 Deliverable
 Present to Kay:
 - Confirmation of deal cabinet expansion (links to new folders)
-- Motion project link with task overview
+- Gantt project tab link with milestone overview
 - Investor email draft for review
 - Reminder to engage QoE firm and legal counsel
 
@@ -270,9 +270,9 @@ Present to Kay:
      - **New Findings This Week:** From all workstream trackers
      - **Open Items:** Unresolved questions, pending document requests
      - **Decisions Needed:** Items requiring Kay or seller input
-     - **Next Week Focus:** Upcoming milestones from Motion project
+     - **Next Week Focus:** Upcoming milestones from the Gantt project tab
 2. After meeting, Kay or agent logs decisions and action items
-3. Update Motion tasks based on meeting outcomes
+3. Update the Gantt project tab (gantt-tick completed milestones) via task-tracker-manager based on meeting outcomes
 
 **Stop Hook:**
 - [ ] Prep doc generated before each meeting
@@ -411,7 +411,7 @@ The skill detects current state and picks up at the right phase:
 
 | Agent | Phase | Task | Parallel? |
 |-------|-------|------|-----------|
-| 1: Cabinet Expansion | 1 | Expand folders, create Motion project, update Attio | Yes (with Agent 2) |
+| 1: Cabinet Expansion | 1 | Expand folders, create Gantt project tab, update Attio | Yes (with Agent 2) |
 | 2: Stakeholder Notify | 1 | Slack + investor email draft | Yes (with Agent 1) |
 | DD workstream agents | 2 | Track findings per workstream | All parallel |
 | Meeting prep agent | 4 | Generate weekly DD meeting prep docs | Recurring |
@@ -421,7 +421,7 @@ The skill detects current state and picks up at the right phase:
 
 - **deal-evaluation:** This skill starts where Phase 5A ends. Deal folder, financial model, scorecard, and Thumbs Up/Down deck already exist.
 - **investor-update:** Use for milestone investor communications (LOI signed, DD complete, closing).
-- **motion:** All DD tasks tracked as a Motion project with dependencies.
+- **task-tracker-manager:** All DD milestones tracked as a Gantt project tab in `TO DO 5.12.26`.
 - **Attio:** Stage progression: "LOI Signed" -> closing stages -> "Closed / Won" or "Closed / Not Proceeding".
 - **Vault:** Traces for red flag decisions and closing summary.
 </execution_flow>
@@ -432,7 +432,7 @@ The skill detects current state and picks up at the right phase:
 ### Phase 1 Complete (LOI Signed)
 - [ ] DD subfolders created under DILIGENCE/
 - [ ] DD-MEETINGS/ and CLOSING/ folders exist
-- [ ] Motion project created with workstream task groups
+- [ ] Gantt project tab created with workstream milestone rows
 - [ ] Attio updated to "LOI Signed"
 - [ ] Slack notification sent
 - [ ] Investor email draft presented to Kay

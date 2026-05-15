@@ -76,7 +76,7 @@ If next_action text and cadence field conflict (e.g., text says "quarterly" but 
 
 Do **NOT** surface a contact who is within their cadence window just because `next_action` references an aged commitment. Stanley Rodos: Quarterly cadence, 37 days since last contact (well within 98-day quarterly threshold), next_action mentions "Follow up on Art Restoration Services opportunity (Mar 17)." The aged commitment text is captured in next_action; surfacing him as a "drifting commitment" is noise. Trust the cadence — Kay knows when she'll see him next.
 
-If Kay has explicit named commitments she wants tracked separately from cadence (e.g., "follow up on X opportunity"), those go in a separate Beads task or Motion task, not as relationship-manager surfacing.
+If Kay has explicit named commitments she wants tracked separately from cadence (e.g., "follow up on X opportunity"), those go in a separate Beads task or a To Do row (via task-tracker-manager), not as relationship-manager surfacing.
 
 ### Processing
 

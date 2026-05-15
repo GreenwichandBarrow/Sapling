@@ -38,7 +38,38 @@
       "tasks_appended": 2,
       "slack_posted": true,
       "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_f6APj5PQS9UqEk",
+      "title": "Harrison <> Kay: AI Coaching Session",
+      "counterparty": "Harrison Wells (Dodo Digital)",
+      "processed_at": "2026-05-15T23:37:16.702043+00:00",
+      "vault_call_note": "brain/calls/2026-05-15-harrison-wells-coaching-session.md",
+      "doc_url": "https://docs.google.com/document/d/1pyApBUsJr5EZMGNHW7spXunLJkK_BXdBL58yg-k9JsM/edit",
+      "doc_id": "1pyApBUsJr5EZMGNHW7spXunLJkK_BXdBL58yg-k9JsM",
+      "attio_notes": {
+        "person_harrison_wells": "c0449798-307c-4585-83e3-3dcfe56b52dc",
+        "company_dodo_digital": "d164d63c-548d-45da-8ea4-1c220b858631"
+      },
+      "tasks_appended": 3,
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_U1ou7lmFRtIFtH",
+      "title": "AI Friday: Automating Everyday Business Operations with Claude",
+      "counterparty": "AI Friday (internal training, no counterparty)",
+      "processed_at": "2026-05-15T23:37:16.702043+00:00",
+      "vault_call_note": "brain/calls/2026-05-15-ai-friday-automating-business-ops.md",
+      "doc_url": "https://docs.google.com/document/d/1Yb21_2U2wPHw1iEAQoxCLVhhKZh3rJAP47KmBY8yDcQ/edit",
+      "doc_id": "1Yb21_2U2wPHw1iEAQoxCLVhhKZh3rJAP47KmBY8yDcQ",
+      "attio_notes": {},
+      "attio_failed": true,
+      "attio_skip_reason": "no external attendee \u2014 solo webinar, no Attio match (expected)",
+      "tasks_appended": 1,
+      "slack_posted": true,
+      "detector": "granola-api-rest"
     }
   ],
-  "last_updated": "2026-05-13T16:25:40+00:00"
+  "last_updated": "2026-05-15T23:37:16.702043+00:00"
 }

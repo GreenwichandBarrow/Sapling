@@ -16,6 +16,7 @@ from router.handlers.onepager_guardrail import enforce_onepager_purity
 from router.handlers.no_revenue_in_outreach import no_revenue_in_outreach
 from router.handlers.secret_file_guard import block_secret_file_reads
 from router.handlers.gog_sheets_delimiter_guard import block_gog_sheets_delimiter_writes
+from router.handlers.skill_frontmatter_guard import check_skill_frontmatter
 
 HANDLERS = [
     HandlerConfig(
@@ -47,6 +48,11 @@ HANDLERS = [
         fn=enforce_onepager_purity,
         matcher=r"Write|Edit|MultiEdit",
         name="onepager-guardrail",
+    ),
+    HandlerConfig(
+        fn=check_skill_frontmatter,
+        matcher=r"Write|Edit|MultiEdit",
+        name="skill-frontmatter-guard",
     ),
     HandlerConfig(
         fn=inject_skill_context,

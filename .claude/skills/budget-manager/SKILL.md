@@ -1,6 +1,12 @@
 ---
 name: budget-manager
 description: "Fund budget tracking, runway forecasting, tech stack audits, and bookkeeper transition. Ingests monthly P&L from bookkeeper, reconciles actuals vs approved budget, calculates runway, flags variances. Feeds investor-update with budget data."
+archetype: router
+context_budget:
+  skill_md: 200
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 user_invocable: true
 ---
 

@@ -1,6 +1,12 @@
 ---
 name: today
 description: "/start Command"
+archetype: orchestrator
+context_budget:
+  skill_md: 200
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 ---
 
 <objective>

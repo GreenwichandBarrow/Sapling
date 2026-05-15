@@ -1,6 +1,12 @@
 ---
 name: triage
 description: Process items needing human decision one at a time. Serves inbox items with medium/low confidence, unclassified calls, and stale items. Use after /today_2 or standalone for inbox review.
+archetype: router
+context_budget:
+  skill_md: 200
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 ---
 
 <objective>

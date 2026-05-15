@@ -1,6 +1,13 @@
 ---
 name: agent-chatroom
 description: Multi-agent coordination hub for swarm tasks. Creates task-scoped chatrooms where agents communicate, share discoveries, and adapt to each other's findings. Enables both live coordination and retrospective review of agent behavior.
+# WARNING: 3.1x over archetype cap; refactor pending per item 2.
+archetype: orchestrator
+context_budget:
+  skill_md: 650
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 ---
 
 <objective>

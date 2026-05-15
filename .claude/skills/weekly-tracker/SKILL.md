@@ -1,6 +1,13 @@
 ---
 name: weekly-tracker
 description: "Weekly activity tracker — sub-agents pull data from Gmail, Calendar, Attio, and vault in parallel, populate Google Sheet + vault snapshot, Slack notify on completion. Run every Friday."
+# WARNING: 3.7x over archetype cap; refactor pending per item 2.
+archetype: orchestrator
+context_budget:
+  skill_md: 750
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 user_invocable: true
 ---
 

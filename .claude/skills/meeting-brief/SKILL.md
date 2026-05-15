@@ -1,6 +1,13 @@
 ---
 name: meeting-brief
 description: "Generate meeting prep briefs for external meetings. Auto-detects new vs. repeat contacts and uses the appropriate template. Saves to Google Drive (RESEARCH/BRIEFS) and brain/briefs/."
+# WARNING: 2.1x over archetype cap; refactor pending per item 2.
+archetype: router
+context_budget:
+  skill_md: 450
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 user_invocable: true
 ---
 

@@ -1,11 +1,13 @@
 ---
 name: jj-operations
 description: "JJ daily call prep, daily call tab creation, 10am Slack delivery, and post-shift outcome harvesting. Owns all JJ-facing operations."
-user_invocable: true
+archetype: router
 context_budget:
-  skill_md: 2000
-  max_references: 2
-  sub_agent_limit: 2000
+  skill_md: 200
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
+user_invocable: true
 ---
 
 <objective>

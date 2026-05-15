@@ -1,11 +1,13 @@
 ---
 name: warm-intro-finder
 description: "Mine Kay's network for warm intro paths to acquisition targets. Checks Attio, vault, Gmail, and LinkedIn for connections. Tags targets with intro availability and surfaces pathways."
-user_invocable: true
+archetype: simple
 context_budget:
-  skill_md: 1500
-  max_references: 2
-  sub_agent_limit: 2000
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
+user_invocable: true
 ---
 
 <objective>

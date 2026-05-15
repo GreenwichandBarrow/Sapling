@@ -1,6 +1,12 @@
 ---
 name: tracker-manager
 description: Claude-owned operational-sheet management. Auto-executes routine tracker updates (status moves, rank re-sorts, target-list hygiene, DealsX category edits driven by stated strategic decisions) and surfaces material changes for Kay's approval before writing. Governs Industry Research Tracker, DealsX Industry Verticals, target lists, and related sheets. Use when Kay authorizes a tracker update in conversation, when niche-intelligence or scorecard output requires a sheet sync, or when nightly-tracker-audit-style cleanup is needed ad hoc.
+archetype: router
+context_budget:
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 ---
 
 # Tracker Manager

@@ -1,10 +1,13 @@
 ---
 name: github
 description: GitHub repository management via gh CLI. Use for creating repos, cloning, changing visibility, or scaffolding new projects from boilerplates.
-invocation: user
+archetype: simple
 context_budget:
-  skill_md: 150
-  max_references: 1
+  skill_md: 100
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
+invocation: user
 ---
 
 <objective>

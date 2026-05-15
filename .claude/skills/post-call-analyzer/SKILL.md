@@ -1,6 +1,12 @@
 ---
 name: post-call-analyzer
 description: Server-side per-call analysis. Two fires/day (1pm + 6pm ET) poll the Granola REST API via the granola-api wrapper. For each new call, pulls transcript, writes a 1-2 page Google Doc analysis to RESEARCH/MEETINGS, posts Attio notes to matched person + company records, appends review-ready tasks to the TO DO 5.12.26 sheet, and posts ONE Slack message to #ai-operations.
+archetype: router
+context_budget:
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 user_invocable: false
 ---
 

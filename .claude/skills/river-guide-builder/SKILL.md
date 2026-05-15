@@ -1,11 +1,13 @@
 ---
 name: river-guide-builder
 description: "Build complete Niche Network per active niche: external ecosystem (associations + named individuals) + cross-check against Kay's network + industry-experience scan across her network. Outputs land in target-list sheet tabs. Attio writes default OFF."
-user_invocable: true
+archetype: router
 context_budget:
-  skill_md: 2500
-  max_references: 3
-  sub_agent_limit: 2000
+  skill_md: 200
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
+user_invocable: true
 ---
 
 <objective>

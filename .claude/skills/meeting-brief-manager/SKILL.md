@@ -1,6 +1,13 @@
 ---
 name: meeting-brief-manager
 description: "Unified meeting prep orchestrator. Scans calendar 2 nights ahead, classifies meetings (external vs investor vs internal), routes to specialized subagents. Runs nightly via launchd."
+# WARNING: 2.9x over archetype cap; refactor pending per item 2.
+archetype: orchestrator
+context_budget:
+  skill_md: 600
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 user_invocable: true
 ---
 

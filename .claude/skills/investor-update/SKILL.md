@@ -1,6 +1,12 @@
 ---
 name: investor-update
 description: "Investor communication — quarterly deck to all 12 investors, monthly call prep (Jeff Stevens), biweekly call prep (Guillermo Lavergne), post-LOI weekly DD. Four modes: quarterly, monthly, biweekly, weekly-dd."
+archetype: orchestrator
+context_budget:
+  skill_md: 200
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 user_invocable: true
 ---
 

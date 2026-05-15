@@ -1,6 +1,12 @@
 ---
 name: create-agent-skills
 description: Expert guidance for creating Claude Code skills and slash commands. Use when working with SKILL.md files, authoring new skills, improving existing skills, creating slash commands, or understanding skill structure and best practices.
+archetype: router
+context_budget:
+  skill_md: 200
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 ---
 
 # Creating Skills & Commands

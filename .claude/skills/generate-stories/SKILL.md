@@ -1,9 +1,12 @@
 ---
 name: generate-stories
 description: Generate stories from a PRD for autonomous or assisted execution. Use when user says "generate tasks", "break this down", "create stories", or has a PRD they want to execute.
+archetype: simple
 context_budget:
-  skill_md: 200
-  max_references: 1
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 ---
 
 ## MANDATORY TOOL USAGE

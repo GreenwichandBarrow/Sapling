@@ -1,6 +1,12 @@
 ---
 name: task-tracker-manager
 description: Owns Kay's personal task tracker — Google Sheet (TO DO 5.12.26) — single capture point + per-day priority slots + Gantt project tabs. Append items, promote items into specific day-of-week slots, run the Sunday archive/rollover ceremony, re-apply conditional formatting after manual edits, and surface a To Do health report (overdue / empty slots / weekly carryover). Reports to Chief of Staff. NOT operational sheets — that's tracker-manager.
+archetype: router
+context_budget:
+  skill_md: 200
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 ---
 
 # Task Tracker Manager

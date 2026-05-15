@@ -1,10 +1,13 @@
 ---
 name: gmail-filter-add
 description: Append one or more email addresses to an existing Gmail label's bundled-contacts filter. Use when Kay says "add X to filter Y" or "add X to auto/Y". Part of the Superhuman → Gmail transition — replaces the manual filter-edit workflow Gmail's API doesn't natively support.
-invocation: user
+archetype: simple
 context_budget:
-  skill_md: 400
-  max_references: 0
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
+invocation: user
 ---
 
 <objective>

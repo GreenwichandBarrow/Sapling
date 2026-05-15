@@ -1,6 +1,12 @@
 ---
 name: decision-traces
 description: Extract meaningful decisions from completed tasks. Decisions must be actionable for future agents - not logs, research, or speculation.
+archetype: simple
+context_budget:
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 schema: schemas/vault/trace.yaml
 ---
 

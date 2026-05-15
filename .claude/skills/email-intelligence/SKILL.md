@@ -1,11 +1,13 @@
 ---
 name: email-intelligence
 description: "Gmail/Granola scanning, deal flow classification, CIM auto-trigger, Active Deal Fast-Path, intro detection, and email-scan-results artifact. Runs before pipeline-manager. (Superhuman sunset 4/29 — Gmail-only.)"
-user_invocable: true
+archetype: router
 context_budget:
-  skill_md: 3500
-  max_references: 3
-  sub_agent_limit: 2000
+  skill_md: 200
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
+user_invocable: true
 ---
 
 <objective>

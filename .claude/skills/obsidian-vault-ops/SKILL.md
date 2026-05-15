@@ -1,6 +1,12 @@
 ---
 name: obsidian-vault-ops
 description: Read and write Obsidian vault files, manage wiki-links, process markdown with YAML frontmatter. Use when working with vault file operations, creating notes, or managing links.
+archetype: simple
+context_budget:
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 allowed-tools: Read, Write, Edit, Glob, Grep
 ---
 

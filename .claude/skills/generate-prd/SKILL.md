@@ -1,10 +1,12 @@
 ---
 name: prd
 description: Generate PRDs through adaptive questioning. Use when user says "PRD", "spec", "plan a feature", "what should we build", or describes a project/feature they want to build. Works for both full project PRDs and feature-level specs.
+archetype: simple
 context_budget:
-  skill_md: 200
-  max_references: 2
-  sub_agent_limit: 300
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 ---
 
 ## MANDATORY TOOL USAGE

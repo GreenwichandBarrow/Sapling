@@ -1,9 +1,12 @@
 ---
 name: plan-refinery
 description: Iterative planning refinement using specialized Opus subagents. "Check your beads N times, implement once." Refine beads, synthesize competing plans, and improve markdown plans before burning implementation tokens.
+archetype: router
 context_budget:
-  skill_md: 250
-  max_references: 2
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 ---
 
 <objective>

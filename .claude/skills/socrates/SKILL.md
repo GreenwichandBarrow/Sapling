@@ -1,13 +1,15 @@
 ---
 name: socrates
 description: "Strategic conversation skill — Socratic questioning that runs BEFORE plan mode. Frames the problem, surfaces assumptions, names alternatives, and stress-tests direction before any plan or task list is generated. Use when Kay says /socrates, /think, or /discuss, or when she signals she's not ready for plan mode yet ('let me think through this with you', 'help me work through', 'what am I missing'). Detects convergence and hands off to plan mode at the end."
+archetype: simple
+context_budget:
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 user_invocable: true
 version: v1.0.0
 trigger: "Kay invokes /socrates [topic] OR signals strategic-thinking mode in conversation."
-context_budget:
-  skill_md: 1500
-  max_references: 0
-  sub_agent_limit: 0
 ---
 
 <objective>

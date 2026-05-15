@@ -1,6 +1,12 @@
 ---
 name: generate-visuals
 description: Generate professional images using Google's Gemini image models via nano-banana CLI. Use when creating LinkedIn carousel covers, infographics, or professional graphics.
+archetype: simple
+context_budget:
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 ---
 
 # Visual Generation

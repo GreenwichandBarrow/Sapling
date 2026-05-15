@@ -1,11 +1,14 @@
 ---
 name: list-builder
 description: "Apollo API-based company discovery, contact enrichment, and target sheet population. Called by target-discovery when a niche needs new targets. Replaces Linkt as primary list builder."
-user_invocable: false
+# WARNING: 2.2x over archetype cap; refactor pending per item 2.
+archetype: router
 context_budget:
-  skill_md: 2500
-  max_references: 2
-  sub_agent_limit: 2000
+  skill_md: 450
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
+user_invocable: false
 ---
 
 <objective>

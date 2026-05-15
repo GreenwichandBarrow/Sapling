@@ -1,11 +1,14 @@
 ---
 name: target-discovery
 description: "Find acquisition targets via list-builder (Apollo) + web research. Runs on initial niche activation and when weekly review signals pipeline needs refilling. Auto-advances qualifying targets to outreach-manager."
-user_invocable: true
+# WARNING: 3.2x over archetype cap; refactor pending per item 2.
+archetype: orchestrator
 context_budget:
-  skill_md: 2000
-  max_references: 2
-  sub_agent_limit: 2000
+  skill_md: 650
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
+user_invocable: true
 ---
 
 <objective>

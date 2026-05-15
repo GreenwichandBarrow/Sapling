@@ -1,11 +1,13 @@
 ---
 name: conference-engagement
 description: "Pre-conference outreach and post-conference follow-up lifecycle. Runs T-7 to T+2 around any conference Kay attends. Drafts personalized emails from attendee lists (pre) and business cards (post). Uses the 3-audience taxonomy (Intermediary / Owner / Peer) and pulls templates from the G&B Conference Engagement Templates sheet."
-user_invocable: true
+archetype: router
 context_budget:
-  skill_md: 3000
-  max_references: 2
-  sub_agent_limit: 2000
+  skill_md: 200
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
+user_invocable: true
 ---
 
 <objective>

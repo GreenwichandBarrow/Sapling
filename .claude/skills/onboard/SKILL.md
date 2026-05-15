@@ -1,9 +1,12 @@
 ---
 name: onboard
 description: Onboard new users to Personal OS. Collects context through interview, lets user choose a creature companion, and populates context files.
+archetype: simple
 context_budget:
-  skill_md: 200
-  max_references: 4
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 ---
 
 <objective>

@@ -1,6 +1,13 @@
 ---
 name: pipeline-manager
 description: "Daily morning briefing — pipeline stage changes, outreach recommendations (nurture cadence), and action items (Granola). Kay reviews, approved items become Motion tasks automatically. Runs when Kay says good morning."
+# WARNING: 6.4x over archetype cap; refactor pending per item 2.
+archetype: router
+context_budget:
+  skill_md: 1300
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 user_invocable: true
 ---
 

@@ -5,10 +5,13 @@ description: >-
   send email, check calendar, manage Drive files, read/write Sheets,
   create Docs, manage contacts, tasks, forms, slides, chat, or any
   Google Workspace operation from the terminal.
-invocation: user
+archetype: simple
 context_budget:
-  skill_md: 200
-  max_references: 3
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
+invocation: user
 ---
 
 <objective>

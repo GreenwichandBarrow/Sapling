@@ -1,11 +1,14 @@
 ---
 name: conference-discovery
 description: "Weekly conference discovery, registration, and attendee list processing. Finds conferences, registers Kay, processes attendee/exhibitor lists into targets. Hands targets to outreach-manager."
-user_invocable: true
+# WARNING: 3.8x over archetype cap; refactor pending per item 2.
+archetype: router
 context_budget:
-  skill_md: 3000
-  max_references: 2
-  sub_agent_limit: 2000
+  skill_md: 800
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
+user_invocable: true
 ---
 
 <objective>

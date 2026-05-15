@@ -1,9 +1,12 @@
 ---
 name: migration-workflow
 description: Migrate vault files to current schema versions. Use when files have outdated frontmatter, missing schema_version, or need bulk updates to match current schema definitions. Detects, previews, and applies migrations with validation.
+archetype: router
 context_budget:
-  skill_md: 180
-  max_references: 3
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 ---
 
 <objective>

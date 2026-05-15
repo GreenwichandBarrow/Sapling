@@ -1,9 +1,15 @@
-# CASS - Coding Agent Session Search
-
 ---
 name: cass
 description: Search and explore coding agent session histories using CASS (Coding Agent Session Search). Use when searching past sessions, finding similar work, retrieving context from previous conversations, or checking index health.
+archetype: simple
+context_budget:
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 ---
+
+# CASS - Coding Agent Session Search
 
 <auto_trigger>
 Human phrases:

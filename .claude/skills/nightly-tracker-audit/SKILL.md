@@ -1,11 +1,13 @@
 ---
 name: nightly-tracker-audit
 description: "Nightly audit of Industry Research Tracker: process Tabled/Killed moves, re-sort WEEKLY REVIEW, move Drive folders."
-user_invocable: true
+archetype: router
 context_budget:
-  skill_md: 1000
-  max_references: 1
-  sub_agent_limit: 1000
+  skill_md: 150
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
+user_invocable: true
 ---
 
 <objective>

@@ -1,14 +1,16 @@
 ---
 name: launchd-debugger
 description: "Daily 5am ET scan of overnight launchd job logs PLUS auto-fire on every non-zero scheduled-skill exit. Spawns a debug subagent per failed job to diagnose, attempt safe fixes (re-run, restart, retry transient), or surface to Slack #operations. Suppresses Slack noise via known-incident registry + cross-day dedup. Catches silent failures before the morning briefing."
+archetype: router
+context_budget:
+  skill_md: 200
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 user_invocable: true
 version: v1.2.0
 trigger: "Scheduled daily 5:00am ET via launchd (com.greenwich-barrow.launchd-debugger) + auto-fire by scripts/run-skill.sh on any non-zero scheduled-skill exit (FAILED_LOG_FILE env passes the failed log path)."
 schedule: "Daily 5:00am ET + on-failure trigger"
-context_budget:
-  skill_md: 1500
-  max_references: 0
-  sub_agent_limit: 2000
 ---
 
 <objective>

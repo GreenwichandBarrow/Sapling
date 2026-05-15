@@ -1,11 +1,14 @@
 ---
 name: outreach-manager
 description: "Owns all outreach across all channels and funnels. Four subagents: Kay Email cold outreach, DealsX coordination, conference outreach, intermediary outreach. Channel routing by niche (Kay Email / DealsX Email / JJ-Call-Only). Attio dedup catches crossover."
-user_invocable: true
+# WARNING: 4x over archetype cap; refactor pending per item 2.
+archetype: orchestrator
 context_budget:
-  skill_md: 3000
-  max_references: 2
-  sub_agent_limit: 2000
+  skill_md: 800
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
+user_invocable: true
 ---
 
 > **2026-05-01 calibration:** Superhuman fully sunset 4/29/26. All draft references in this file mean **Gmail directly** via the bash wrapper. See .

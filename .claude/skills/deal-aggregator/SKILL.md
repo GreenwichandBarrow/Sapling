@@ -1,11 +1,14 @@
 ---
 name: deal-aggregator
 description: "Daily aggregation of prepped deals — businesses actively selling. Scans broker platforms, email inbound (CIMs, broker blasts), and association deal boards. Target: 1-3 evaluable deals/day surfaced to Kay via Slack."
-user_invocable: true
+# WARNING: 3.1x over archetype cap; refactor pending per item 2.
+archetype: router
 context_budget:
-  skill_md: 2500
-  max_references: 2
-  sub_agent_limit: 2000
+  skill_md: 650
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
+user_invocable: true
 ---
 
 <objective>

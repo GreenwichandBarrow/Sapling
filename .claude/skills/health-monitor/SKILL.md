@@ -1,6 +1,12 @@
 ---
 name: health-monitor
 description: System-wide health monitoring with specialized sub-agents. Detects disconnected services, usage limits, missed triggers, pipeline hygiene issues, data integrity problems, and stale data.
+archetype: orchestrator
+context_budget:
+  skill_md: 200
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 trigger: Scheduled Friday 12:30 AM ET via launchd (com.greenwich-barrow.health-monitor). Output ready for Friday morning briefing alongside weekly-tracker. Also runs on-demand via /health-check.
 schedule: Friday 12:30 AM ET
 ---

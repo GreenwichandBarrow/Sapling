@@ -1,6 +1,13 @@
 ---
 name: niche-intelligence
 description: "Niche Intelligence workflow. Gathers data from newsletters, web, calls, email, and research — identifies new niches — runs initial screen (margins, recurring revenue, growth, Growth TAM) — creates one-pagers — scores against G&B industry scorecard — updates Industry Research Tracker. Run every Tuesday night (ready Wednesday AM for analyst meeting) by 1pm EST."
+# WARNING: 2.2x over archetype cap; refactor pending per item 2.
+archetype: orchestrator
+context_budget:
+  skill_md: 450
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 user-invocable: true
 ---
 

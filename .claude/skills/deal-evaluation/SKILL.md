@@ -1,6 +1,13 @@
 ---
 name: deal-evaluation
 description: "Deal evaluation pipeline — post-call follow-up, NDA generation, financials intake, financial modeling, company scorecard, Thumbs Up/Down deck, LOI generation, decline handling. Triggered after first owner call or when financials arrive."
+# WARNING: 4x over archetype cap; refactor pending per item 2.
+archetype: orchestrator
+context_budget:
+  skill_md: 850
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 user_invocable: true
 ---
 

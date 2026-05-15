@@ -1,9 +1,13 @@
 ---
 name: calibration-workflow
 description: Analyze decision traces and calibrate the system to your preferences. Proposes targeted improvements to skills, CLAUDE.md, and workflows based on patterns in your decisions. Use periodically or after accumulating decision traces.
+# WARNING: 2.8x over archetype cap; refactor pending per item 2.
+archetype: router
 context_budget:
-  skill_md: 200
-  max_references: 4
+  skill_md: 600
+  max_references: 12
+  learnings_md: 40
+  sub_agent_limit: 500
 ---
 
 <objective>
@@ -40,6 +44,56 @@ Analyze unreviewed decision traces, identify patterns and gaps, and propose prio
 7. Run /commit → single atomic commit with everything
 8. Show evolution banner with level progress
 </quick_start>
+
+<thursday_buckets>
+Thursday meta-calibration covers 6 buckets. Time-box: **30-60 min total** — if a bucket overruns, drop to "best-N this week" rather than blow the budget.
+
+| # | Bucket | What | Where output lands |
+|---|--------|------|--------------------|
+| 1 | Rule graduation | Rules Kay corrected 2+ times → stop hooks | `.claude/hooks/` + memory file |
+| 2 | Memory consolidation | Stale/duplicated `memory/*.md` → merge or delete | `memory/` |
+| 3 | Skill doc refresh | SKILL.md files with outdated column refs / superseded rules | `.claude/skills/*/SKILL.md` |
+| 4 | Open-loop promotion | `brain/context/session-decisions-*.md` open loops → memories | `memory/` |
+| 5 | **Skill learnings promotion** | Scan `.claude/skills/*/learnings.md`, invoke `evolve` per non-empty file | parent skill's SKILL.md / workflows / references |
+| 6 | **Skill freshness audit** | Pick 2 stalest skills from `brain/context/skill-freshness-queue.md`, run `create-skill/workflows/verify-skill.md` | freshness-queue date bump + weekly report |
+
+Each bucket appends a section to the weekly calibration report (`brain/outputs/{date}-calibration-weekly.md`).
+</thursday_buckets>
+
+<bucket_5_learnings_promotion>
+**Trigger:** Thursday meta-calibration.
+
+**Process:**
+1. `find .claude/skills -maxdepth 2 -name learnings.md -type f` — enumerate every skill's learnings inbox.
+2. For each file: if non-empty (has dated entries beyond the template stub), add the parent skill name to the evolve queue.
+3. Prioritize by recency (most recent entry first) if the queue is large.
+4. Invoke `evolve` once with the full batch of skill names. Evolve promotes useful entries into the parent skill's SKILL.md / workflows / references and clears `learnings.md` back to template after promotion. Evolve handles classification + smallest-functional-change selection per its own SKILL.md.
+5. Capture the resulting list of changed files for the weekly report's bucket-5 section.
+
+**Time-box:** 10-15 min total. If the queue is too large, process the top-N most-recent skills this week; the remainder rolls to next Thursday (their `learnings.md` stays intact).
+
+**Target:** Process ALL skills with non-empty `learnings.md` each Thursday when the queue is small. Do NOT touch `evolve` or `create-skill` themselves — they're plugin-installed reference templates.
+</bucket_5_learnings_promotion>
+
+<bucket_6_freshness_audit>
+**Trigger:** Thursday meta-calibration.
+
+**Queue file:** `brain/context/skill-freshness-queue.md` (create if missing using the seed schema documented in that file's header). Each row: skill, dependency type (API/CLI/Framework/Pure-process), last-verified date.
+
+**Cadence by type:** API=60d · Framework=90-180d (use 180d) · CLI=180d · Pure-process=365d.
+
+**Process:**
+1. Read queue. Compute `staleness_ratio = days_since_verified / cadence_days` per row.
+2. Sort descending. Pick **top 2** stalest skills.
+3. For each pick, run `create-skill/workflows/verify-skill.md` (Verify-Skill workflow). It categorizes, extracts verifiable claims, checks them via Context7 / CLI version probes / direct API calls, and produces a Fresh / Needs Updates / Stale verdict.
+4. If verdict is `Needs Updates` or `Stale`, apply low-risk fixes inline and surface high-risk ones for Kay's approval. Update the skill's SKILL.md with the fixes (small edits) or propose a separate calibration item.
+5. Bump the row's `Last Verified` to today and add a one-line status note in the queue file's Notes column (`fresh` / `needs updates` / `stale — fixed inline`).
+6. Log results in the weekly report's bucket-6 section: skills audited, verdicts, fixes applied.
+
+**Time-box:** 10-15 min total (2 skills × ~5-7 min each). If both audits return `fresh`, that's healthy — date bump is sufficient.
+
+**Skip self-audit on calibration-workflow** unless no other API/Framework skill has a higher staleness ratio.
+</bucket_6_freshness_audit>
 
 <workflow>
 ## Phase 1: Context Collection
@@ -376,12 +430,13 @@ If validation fails: fix the issue and re-validate. Do NOT send Slack until all 
 
 ## Notification
 
-After validation passes, notify Kay:
+After validation passes, notify Kay. **Slack summary is 6 lines** (one per Thursday bucket — `rules-graduated / memories-cleaned / skill-docs-refreshed / open-loops-promoted / learnings-evolved / skill-audits-completed`) plus the standard header + footer:
+
 ```bash
 curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
   -d '{
-    "text": "Weekly Calibration Ready (Friday 10am)\nTraces analyzed: {n}\nProposals: {n} ({critical} critical, {high} high)\nTop proposal: {title}\nReview in Claude Code to approve/reject changes."
+    "text": "Weekly Calibration Ready (Friday 10am)\nTraces analyzed: {n} | Proposals: {n} ({critical} critical, {high} high)\n• Rules graduated: {n}\n• Memories cleaned: {n}\n• Skill docs refreshed: {n}\n• Open loops promoted: {n}\n• Learnings evolved: {n} (skills: {names})\n• Skill audits completed: {n} ({skill-a}: {verdict}, {skill-b}: {verdict})\nReview in Claude Code to approve/reject changes."
   }'
 ```
 

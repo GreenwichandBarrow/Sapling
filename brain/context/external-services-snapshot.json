@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-14T15:30:45-04:00",
+  "fetched_at": "2026-05-14T20:30:45-04:00",
   "services": {
     "attio-mcp": {
       "status": "skip",
@@ -7,16 +7,16 @@
       "message": "",
       "skip_reason": "OAuth re-flow required (Smithery UI)"
     },
-    "superhuman": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "OAuth refresh required (manual)"
-    },
     "slack-webhooks": {
       "status": "ok",
       "latency_ms": null,
       "message": "4 webhooks configured",
+      "skip_reason": null
+    },
+    "vault": {
+      "status": "ok",
+      "latency_ms": 9,
+      "message": "866 markdown files",
       "skip_reason": null
     },
     "launchd": {
@@ -31,6 +31,12 @@
       "message": "",
       "skip_reason": "ANTHROPIC_API_KEY not in env"
     },
+    "superhuman": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "OAuth refresh required (manual)"
+    },
     "linkt": {
       "status": "skip",
       "latency_ms": null,
@@ -39,37 +45,31 @@
     },
     "mcp-processes": {
       "status": "error",
-      "latency_ms": 12,
+      "latency_ms": 9,
       "message": "attio-mcp=0 superhuman=0",
-      "skip_reason": null
-    },
-    "vault": {
-      "status": "ok",
-      "latency_ms": 15,
-      "message": "865 markdown files",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 94,
+      "latency_ms": 97,
       "message": "authenticated",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 91,
+      "latency_ms": 115,
       "message": "200 OK",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 116,
+      "latency_ms": 157,
       "message": "HTTP 405",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 194,
+      "latency_ms": 213,
       "message": "gh authenticated",
       "skip_reason": null
     }

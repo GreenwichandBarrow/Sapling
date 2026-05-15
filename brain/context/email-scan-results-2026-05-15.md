@@ -17,10 +17,12 @@ tags:
   - company/pacific-lake-partners
   - company/dealsx
   - company/anacapa-partners
+  - company/breakpoint-growth
   - person/hannah-barrett
   - person/julie-diorio
   - person/harrison-wells
   - person/barrie-green
+  - person/david-freeman
 schema_version: 1.1.0
 ---
 

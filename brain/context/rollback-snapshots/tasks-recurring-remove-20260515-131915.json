@@ -1,0 +1,17 @@
+{
+  "verb": "recurring-remove",
+  "timestamp": "20260515-131915",
+  "sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
+  "ranges": {
+    "'Recurring Template'!A6:F6": [
+      [
+        "Tue",
+        5,
+        "TEST ROW \u2014 delete me",
+        "Work",
+        "G&B",
+        "test scaffold for verb validation"
+      ]
+    ]
+  }
+}

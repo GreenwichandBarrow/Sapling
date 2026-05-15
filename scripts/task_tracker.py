@@ -8,10 +8,15 @@ Subcommands:
     schedule-to-day-slot    Direct write to a day-slot (no To Do source row required).
     sync-done-status        Reconcile checked weekly slots → matching To Do rows (text-match).
     archive                 Sunday rollover ceremony — duplicate live week tab to a
-                            far-right archive tab, rename live to next week, clear data.
+                            far-right archive tab, rename live to next week, clear data,
+                            then stamp the Recurring Template tab onto the new week's
+                            slots (--skip-recurring to bypass; --dry-run to preview).
     archive-todo            Sweep checked rows from To Do tab into a running
                             "Completed To Do" tab (created on first run). Auto-runs
                             sync-done-status first (skip with --skip-sync).
+    recurring-add           Append a row to the Recurring Template tab — stamped onto
+                            every future Sunday rollover.
+    recurring-remove        Clear a row from the Recurring Template tab.
     projects-create-gantt   Create a new Gantt project tab cloning the
                             Myself Renewed Healthcare structure; updates Projects index.
     reformat                Re-apply conditional formatting + dropdowns + checkboxes.
@@ -79,6 +84,17 @@ TAB_TODO = "To Do"
 TAB_TODO_LONG_TERM = "To Do Long Term"
 TAB_PROJECTS = "Projects"
 TAB_COMPLETED_TODO = "Completed To Do"
+TAB_RECURRING_TEMPLATE = "Recurring Template"
+
+# Recurring Template column layout (0-based)
+RT_COL_DAY = 0
+RT_COL_SLOT = 1
+RT_COL_TASK = 2
+RT_COL_TYPE = 3
+RT_COL_PROJECT = 4
+RT_COL_NOTES = 5
+RT_HEADERS = ["Day", "Slot", "Task", "Type", "Project", "Notes"]
+RT_MAX_ROWS = 60
 
 # To Do columns (0-based) — header NAMES live in TODO_HEADERS. These constants are
 # for code only, never appear in Kay-facing output.
@@ -547,9 +563,164 @@ def cmd_schedule_to_day_slot(args) -> int:
     return 0
 
 
+def _read_recurring_template(client: SheetsClient) -> list[dict]:
+    """Read all rows from the Recurring Template tab. Returns list of dicts with keys
+    day, slot (int or None), task, type, project, notes, row (1-based). Skips blank
+    rows + rows with empty task/day. Validates Day + Type values softly (skips invalid
+    with a warning to stderr) so a malformed row doesn't abort the rollover."""
+    rows = client.get_values(f"'{TAB_RECURRING_TEMPLATE}'!A2:F{RT_MAX_ROWS}")
+    out: list[dict] = []
+    for i, row in enumerate(rows):
+        day = (row[RT_COL_DAY] if len(row) > RT_COL_DAY else "").strip() if row else ""
+        task = (row[RT_COL_TASK] if len(row) > RT_COL_TASK else "").strip() if row else ""
+        if not day or not task:
+            continue
+        if day.lower() not in DAY_BY_NAME:
+            print(f"task-tracker-manager: WARNING Recurring Template row {2+i} has invalid Day {day!r} — skipped",
+                  file=sys.stderr)
+            continue
+        type_ = (row[RT_COL_TYPE] if len(row) > RT_COL_TYPE else "").strip() if row else ""
+        if type_ and type_ not in TYPE_OPTIONS:
+            print(f"task-tracker-manager: WARNING Recurring Template row {2+i} has invalid Type {type_!r} — skipped",
+                  file=sys.stderr)
+            continue
+        slot_raw = row[RT_COL_SLOT] if len(row) > RT_COL_SLOT else ""
+        slot: int | None = None
+        if slot_raw != "" and slot_raw is not None:
+            try:
+                slot = int(slot_raw)
+                if not (1 <= slot <= 15):
+                    print(f"task-tracker-manager: WARNING Recurring Template row {2+i} slot {slot} out of 1..15 — treating as blank",
+                          file=sys.stderr)
+                    slot = None
+            except (ValueError, TypeError):
+                print(f"task-tracker-manager: WARNING Recurring Template row {2+i} slot {slot_raw!r} not numeric — treating as blank",
+                      file=sys.stderr)
+                slot = None
+        project = (row[RT_COL_PROJECT] if len(row) > RT_COL_PROJECT else "").strip() if row else ""
+        notes = (row[RT_COL_NOTES] if len(row) > RT_COL_NOTES else "").strip() if row else ""
+        out.append({
+            "row": 2 + i,
+            "day": day,
+            "slot": slot,
+            "task": task,
+            "type": type_ or "Work",
+            "project": project,
+            "notes": notes,
+        })
+    return out
+
+
+def _stamp_recurring_template(client: SheetsClient, meta: dict, week_title: str,
+                              dry_run: bool = False) -> dict:
+    """Stamp every row of the Recurring Template tab onto `week_title`'s day-slots.
+
+    Mirrors `schedule-to-day-slot` semantics with --force=False (refuse to overwrite).
+    Returns a summary dict {stamped: [...], refused: [...], rows_read: int}.
+
+    If --dry-run, no writes; just reports what would happen.
+    """
+    template_tab = find_tab(meta, TAB_RECURRING_TEMPLATE)
+    summary = {"stamped": [], "refused": [], "rows_read": 0, "tab_present": template_tab is not None}
+    if template_tab is None:
+        print(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' tab not present — skipping recurring stamp")
+        return summary
+
+    rows = _read_recurring_template(client)
+    summary["rows_read"] = len(rows)
+    if not rows:
+        print(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' has no usable rows — nothing to stamp")
+        return summary
+
+    # Fetch existing slot grid for the new week once, then walk the rows. Auto-pick logic
+    # needs an in-memory view of empty slots that accounts for prior stamps in this run.
+    slot_grid: dict[int, list[str]] = {}  # day_idx → list of 15 task strings (empty=blank)
+    for day_idx in range(7):
+        tc = col_letter(LIVE_DAY_TASK[day_idx])
+        vals = client.get_values(
+            f"'{week_title}'!{tc}{LIVE_SLOT_FIRST_ROW}:{tc}{LIVE_SLOT_LAST_ROW}"
+        )
+        flat = [(v[0] if v else "") if isinstance(v, list) else "" for v in vals]
+        while len(flat) < 15:
+            flat.append("")
+        slot_grid[day_idx] = flat
+
+    writes: list[tuple[str, list[list]]] = []  # (range_a1, [[bool, task]])
+    for r in rows:
+        day_idx = DAY_BY_NAME[r["day"].lower()]
+        sc = col_letter(LIVE_DAY_STAT[day_idx])
+        tc = col_letter(LIVE_DAY_TASK[day_idx])
+
+        target_slot = r["slot"]
+        if target_slot is not None:
+            existing = slot_grid[day_idx][target_slot - 1]
+            if existing and str(existing).strip():
+                summary["refused"].append({
+                    "row": r["row"],
+                    "day": r["day"],
+                    "slot": target_slot,
+                    "task": r["task"],
+                    "reason": f'slot occupied by "{existing}"',
+                })
+                print(f'task-tracker-manager: WARNING recurring stamp REFUSED '
+                      f'(template row {r["row"]}, {r["day"]} slot {target_slot}): '
+                      f'slot occupied by "{existing}" — skipping, Kay can resolve manually')
+                continue
+            chosen_slot = target_slot
+        else:
+            chosen_slot = None
+            for idx, v in enumerate(slot_grid[day_idx]):
+                if not v or not str(v).strip():
+                    chosen_slot = idx + 1
+                    break
+            if chosen_slot is None:
+                summary["refused"].append({
+                    "row": r["row"],
+                    "day": r["day"],
+                    "slot": None,
+                    "task": r["task"],
+                    "reason": f"{r['day']} has no empty slots",
+                })
+                print(f'task-tracker-manager: WARNING recurring stamp REFUSED '
+                      f'(template row {r["row"]}): {r["day"]} has no empty slots — skipping')
+                continue
+
+        slot_row = LIVE_SLOT_FIRST_ROW + chosen_slot - 1
+        rng = f"'{week_title}'!{sc}{slot_row}:{tc}{slot_row}"
+        writes.append((rng, [[False, r["task"]]]))
+        # Update in-memory grid so subsequent auto-picks don't collide
+        slot_grid[day_idx][chosen_slot - 1] = r["task"]
+        summary["stamped"].append({
+            "template_row": r["row"],
+            "day": r["day"],
+            "slot": chosen_slot,
+            "task": r["task"],
+            "auto_picked": r["slot"] is None,
+        })
+        prefix = "task-tracker-manager: recurring stamp"
+        if dry_run:
+            prefix += " (DRY RUN)"
+        ap = " (auto-picked)" if r["slot"] is None else ""
+        print(f'{prefix}: template row {r["row"]} → {week_title} {r["day"]} slot {chosen_slot}{ap}: "{r["task"]}"')
+
+    if not dry_run and writes:
+        for rng, vals in writes:
+            client.values_update(rng, vals)
+
+    return summary
+
+
 def cmd_archive(args) -> int:
     """Sunday rollover: duplicate live week tab to a visible archive tab parked far-right,
-    rename live to the upcoming week, clear data on live."""
+    rename live to the upcoming week, clear data on live.
+
+    After the live tab is renamed + cleared, the Recurring Template tab is read and
+    its rows are stamped onto the new week's day-slots (mirrors schedule-to-day-slot
+    with --force=False — occupied slots warn + skip). Pass --skip-recurring to bypass.
+    Pass --dry-run to preview the entire ceremony (no writes, no rename, no clear,
+    just reports what would happen including which Recurring Template rows would stamp
+    onto which slots of the NEXT week's tab as if it were already created).
+    """
     client = SheetsClient()
     meta = client.get_metadata()
     week_props = find_live_week_tab(meta)
@@ -557,6 +728,59 @@ def cmd_archive(args) -> int:
         sys.exit("task-tracker-manager: live week tab not found")
     old_label = week_props["title"]
     live_sid = week_props["sheetId"]
+
+    # ---------- dry-run path: report only, no mutations ----------
+    if getattr(args, "dry_run", False):
+        today = date.today()
+        if today.weekday() == 0:
+            new_monday = today
+        else:
+            new_monday = today + timedelta(days=(7 - today.weekday()))
+        new_label = current_week_label(new_monday)
+        print(f"task-tracker-manager: archive (DRY RUN)")
+        print(f"  Live tab found: {old_label!r} (sheetId={live_sid})")
+        print(f"  Would archive → visible far-right tab archive_{old_label!r}")
+        print(f"  Would rename live tab: {old_label!r} → {new_label!r}")
+        print(f"  Would clear: habits, priorities, notes")
+        if getattr(args, "skip_recurring", False):
+            print(f"  --skip-recurring set → would NOT stamp Recurring Template")
+        else:
+            # Simulate the stamp against the CURRENT live tab's slot grid as proxy for
+            # "what an empty new week would look like" — but for a realistic preview
+            # we want an empty grid, so we substitute a synthetic empty grid. The
+            # cheap version: read template rows, report what slots they'd take if all
+            # 15 slots per day were empty (which is the post-clear state).
+            template_tab = find_tab(meta, TAB_RECURRING_TEMPLATE)
+            if template_tab is None:
+                print(f"  Recurring Template tab NOT present — nothing to stamp")
+            else:
+                rows = _read_recurring_template(client)
+                print(f"  Recurring Template tab present — {len(rows)} usable row(s)")
+                # Synthetic empty grid
+                synthetic_used: dict[int, set[int]] = {i: set() for i in range(7)}
+                for r in rows:
+                    day_idx = DAY_BY_NAME[r["day"].lower()]
+                    if r["slot"] is not None:
+                        if r["slot"] in synthetic_used[day_idx]:
+                            print(f'    REFUSED template row {r["row"]} ({r["day"]} slot {r["slot"]}): another template row already pinned to that slot')
+                            continue
+                        synthetic_used[day_idx].add(r["slot"])
+                        slot = r["slot"]
+                        ap = ""
+                    else:
+                        slot = None
+                        for s in range(1, 16):
+                            if s not in synthetic_used[day_idx]:
+                                slot = s
+                                break
+                        if slot is None:
+                            print(f'    REFUSED template row {r["row"]}: {r["day"]} has no empty slots')
+                            continue
+                        synthetic_used[day_idx].add(slot)
+                        ap = " (auto-picked)"
+                    print(f'    WOULD STAMP: template row {r["row"]} → {new_label} {r["day"]} slot {slot}{ap}: "{r["task"]}"')
+        print(f"task-tracker-manager: archive DRY RUN complete — no writes")
+        return 0
 
     # Compute new label
     today = date.today()
@@ -665,13 +889,34 @@ def cmd_archive(args) -> int:
 
     client.batch_update(clear_requests)
 
-    trace("archive", old_label.lower().replace(" ", "-"), [
+    # ---------- Recurring Template stamp ----------
+    recurring_summary: dict = {"stamped": [], "refused": [], "rows_read": 0, "tab_present": False}
+    if getattr(args, "skip_recurring", False):
+        print("task-tracker-manager: --skip-recurring set — Recurring Template NOT stamped")
+    else:
+        # Re-fetch metadata so the renamed tab title is current.
+        meta_after = client.get_metadata()
+        recurring_summary = _stamp_recurring_template(client, meta_after, new_label, dry_run=False)
+
+    trace_lines = [
         f"- archived: {old_label} → visible tab {archive_name} (parked far-right)",
         f"- live tab renamed: {old_label} → {new_label}",
         f"- cleared: habits, priorities, notes",
         f"- snapshot: {snap}",
-    ])
+    ]
+    if recurring_summary["tab_present"]:
+        trace_lines.append(f"- recurring template stamped: {len(recurring_summary['stamped'])} row(s) onto new week")
+        if recurring_summary["refused"]:
+            trace_lines.append(f"- recurring stamps REFUSED (slot conflicts): {len(recurring_summary['refused'])}")
+            for ref in recurring_summary["refused"]:
+                trace_lines.append(f"  - template row {ref['row']} {ref['day']} slot {ref['slot']}: {ref['reason']}")
+    elif not getattr(args, "skip_recurring", False):
+        trace_lines.append(f"- recurring template: tab not present, skipped")
+    trace("archive", old_label.lower().replace(" ", "-"), trace_lines)
     print(f'task-tracker-manager: archived "{old_label}" → visible far-right tab {archive_name}; live tab now "{new_label}"')
+    if recurring_summary["tab_present"]:
+        print(f'task-tracker-manager: stamped {len(recurring_summary["stamped"])} recurring row(s) onto {new_label}'
+              + (f"; {len(recurring_summary['refused'])} refused" if recurring_summary["refused"] else ""))
     return 0
 
 
@@ -980,6 +1225,109 @@ def _is_truthy(v) -> bool:
     if isinstance(v, str):
         return v.strip().upper() in ("TRUE", "✅", "YES", "DONE")
     return bool(v)
+
+
+def cmd_recurring_add(args) -> int:
+    """Append a row to the Recurring Template tab. Decision-content (changes future
+    weeks), so traces."""
+    day_idx = DAY_BY_NAME.get(args.day.lower())
+    if day_idx is None:
+        sys.exit(f"task-tracker-manager: unknown day {args.day!r}. Use Mon..Sun.")
+    day_canonical = DAY_LABELS[day_idx]
+    if args.type not in TYPE_OPTIONS:
+        sys.exit(f"task-tracker-manager: --type must be one of {TYPE_OPTIONS}")
+    if args.slot is not None and not (1 <= args.slot <= 15):
+        sys.exit("task-tracker-manager: --slot must be 1..15 (or omit for auto-pick)")
+    if not args.task.strip():
+        sys.exit("task-tracker-manager: --task must be non-empty")
+
+    client = SheetsClient()
+    meta = client.get_metadata()
+    if find_tab(meta, TAB_RECURRING_TEMPLATE) is None:
+        sys.exit(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' tab not found — create it first")
+
+    # Find first empty row >= 2.
+    existing = client.get_values(f"'{TAB_RECURRING_TEMPLATE}'!C2:C{RT_MAX_ROWS}")
+    target_row = 2
+    found = False
+    for i, row in enumerate(existing):
+        if not row or not (row[0] if row else "").strip():
+            target_row = 2 + i
+            found = True
+            break
+    if not found:
+        target_row = 2 + len(existing)
+    if target_row > RT_MAX_ROWS:
+        sys.exit(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' is full (>{RT_MAX_ROWS}).")
+
+    snap = snapshot_ranges(client, "recurring-add",
+        [f"'{TAB_RECURRING_TEMPLATE}'!A{target_row}:F{target_row}"])
+
+    row_values = [
+        day_canonical,
+        args.slot if args.slot is not None else "",
+        args.task,
+        args.type,
+        args.project or "",
+        args.notes or "",
+    ]
+    client.values_update(
+        f"'{TAB_RECURRING_TEMPLATE}'!A{target_row}:F{target_row}",
+        [row_values],
+    )
+
+    trace("recurring-add", f"{day_canonical.lower()}-row{target_row}", [
+        f"- day: {day_canonical}",
+        f"- slot: {args.slot if args.slot is not None else '(auto-pick)'}",
+        f"- task: {args.task}",
+        f"- type: {args.type}",
+        f"- project: {args.project or '—'}",
+        f"- row: {target_row}",
+        f"- snapshot: {snap}",
+        f"- effect: applied to every future Sunday `archive` ceremony",
+    ])
+    print(f'task-tracker-manager: appended Recurring Template row {target_row} '
+          f'({day_canonical}{" slot " + str(args.slot) if args.slot is not None else ""}, '
+          f'"{args.task}", {args.type}, {args.project or "—"})')
+    return 0
+
+
+def cmd_recurring_remove(args) -> int:
+    """Delete a row from Recurring Template by clearing its values (preserves row
+    numbering for snapshot rollback). Traces."""
+    client = SheetsClient()
+    meta = client.get_metadata()
+    if find_tab(meta, TAB_RECURRING_TEMPLATE) is None:
+        sys.exit(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' tab not found")
+    if not (2 <= args.row <= RT_MAX_ROWS):
+        sys.exit(f"task-tracker-manager: --row must be 2..{RT_MAX_ROWS} (1 is the header row)")
+
+    # Read the row before delete so the trace captures what was removed.
+    pre = client.get_values(f"'{TAB_RECURRING_TEMPLATE}'!A{args.row}:F{args.row}")
+    pre_row = pre[0] if pre and pre[0] else []
+    if not pre_row or not any((c or "").strip() if isinstance(c, str) else c for c in pre_row):
+        sys.exit(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' row {args.row} is already empty — nothing to remove")
+
+    snap = snapshot_ranges(client, "recurring-remove",
+        [f"'{TAB_RECURRING_TEMPLATE}'!A{args.row}:F{args.row}"])
+
+    # Clear via values_clear so the row preserves its numbering.
+    client.values_clear(f"'{TAB_RECURRING_TEMPLATE}'!A{args.row}:F{args.row}")
+
+    pad = pre_row + [""] * (6 - len(pre_row))
+    trace("recurring-remove", f"row{args.row}", [
+        f"- removed row: {args.row}",
+        f"- day: {pad[RT_COL_DAY]}",
+        f"- slot: {pad[RT_COL_SLOT] if pad[RT_COL_SLOT] != '' else '(auto-pick)'}",
+        f"- task: {pad[RT_COL_TASK]}",
+        f"- type: {pad[RT_COL_TYPE]}",
+        f"- project: {pad[RT_COL_PROJECT] or '—'}",
+        f"- snapshot: {snap}",
+        f"- effect: no longer stamped on future Sunday `archive` ceremonies",
+    ])
+    print(f'task-tracker-manager: removed Recurring Template row {args.row} '
+          f'("{pad[RT_COL_TASK]}", {pad[RT_COL_DAY]})')
+    return 0
 
 
 def cmd_projects_create_gantt(args) -> int:
@@ -1404,7 +1752,28 @@ def main():
     pr.set_defaults(func=cmd_promote)
 
     ar = sub.add_parser("archive")
+    ar.add_argument("--skip-recurring", action="store_true",
+                    help="bypass the Recurring Template stamp step (rare)")
+    ar.add_argument("--dry-run", action="store_true",
+                    help="report what would happen without writing — no rename, no clear, no stamp")
     ar.set_defaults(func=cmd_archive)
+
+    ra = sub.add_parser("recurring-add",
+                        help="Append a row to the Recurring Template tab (stamped onto every new week by `archive`).")
+    ra.add_argument("--day", required=True, help="Mon..Sun")
+    ra.add_argument("--task", required=True)
+    ra.add_argument("--type", required=True, choices=TYPE_OPTIONS)
+    ra.add_argument("--project", default="")
+    ra.add_argument("--slot", type=int, default=None,
+                    help="1..15; omit for auto-pick first empty slot on that day")
+    ra.add_argument("--notes", default="")
+    ra.set_defaults(func=cmd_recurring_add)
+
+    rr = sub.add_parser("recurring-remove",
+                        help="Clear a row from the Recurring Template tab (snapshot rollback retained).")
+    rr.add_argument("--row", type=int, required=True,
+                    help="row number to remove (2 is the first data row)")
+    rr.set_defaults(func=cmd_recurring_remove)
 
     at = sub.add_parser("archive-todo")
     at.add_argument("--skip-sync", action="store_true",

@@ -43,11 +43,11 @@ When Kay wants a new tracker (yearly cycle, after a major schema rework, etc.), 
 4. **Projects** — index of *active* time-bound projects with Project / Entity (dropdown) / Status (dropdown: Plan Needed / Active / On hold / Done) / Start / Target / Tab hyperlink / Notes. Currently holds: Myself Renewed Healthcare, Deal Aggregator Expansion.
 5. **Myself Renewed Healthcare** — first Gantt-project tab. 10 milestones × 16 weekly columns. Each timeline cell is a native checkbox; ticking fills the cell blush-pink (entity color). Building a contiguous run of ticks visually creates a Gantt bar.
 
-Plus: **Deal Aggregator Expansion** (Gantt, 12 weeks from 2026-05-11, G&B sage). **Completed To Do** (created by `archive-todo` on first run, sweeps completed To Do rows). Archive tabs `archive_{Mmm D-D}` accumulate from each Sunday rollover, parked far-right.
+Plus: **Deal Aggregator Expansion** (Gantt, 12 weeks from 2026-05-11, G&B sage). **Completed To Do** (created by `archive-todo` on first run, sweeps completed To Do rows). **Recurring Template** (added 2026-05-15, sheetId `1997242109` — see dedicated section below). Archive tabs `archive_{Mmm D-D}` accumulate from each Sunday rollover, parked far-right.
 
 ## Build scripts (in this repo)
 
-- `scripts/task_tracker.py` — skill helper. Subcommands: `append`, `promote`, `archive`, `archive-todo`, `sync-done-status`, `schedule-to-day-slot`, `projects-create-gantt`, `reformat`, `report`, `gantt-tick`.
+- `scripts/task_tracker.py` — skill helper. Subcommands: `append`, `promote`, `archive` (`--skip-recurring` / `--dry-run`), `archive-todo`, `sync-done-status`, `schedule-to-day-slot`, `recurring-add`, `recurring-remove`, `projects-create-gantt`, `reformat`, `report`, `gantt-tick`.
 - **DEPRECATED:** `scripts/build_tasks_excel.py`, `scripts/populate_tasks_from_motion.py`, `scripts/maintain_tasks_excel.py` — Excel-era build path. Replaced by the one-shot `/tmp/tracker-migration/build_sheet.py` for any future rebuild. Kept in repo for reference; do not run.
 
 ## Skill verbs (`task-tracker-manager`)
@@ -64,6 +64,8 @@ Plus: **Deal Aggregator Expansion** (Gantt, 12 weeks from 2026-05-11, G&B sage).
 | `reformat` | Detected broken CF | Auto |
 | `report` | Friday briefing / on-demand | Auto |
 | `gantt-tick` | "Healthcare milestone N done" / "tick week K" | Auto |
+| `recurring-add` | "Make X a weekly recurring task on Monday" | Auto when intent unambiguous; surface when exploring |
+| `recurring-remove` | "Drop the recurring X" / "remove row N from the recurring template" | Auto when row content was just confirmed in conversation |
 
 ## Key design decisions
 
@@ -87,34 +89,58 @@ Triggered by `goodnight` on Sunday evening. The `archive-todo` call MUST precede
 2. Duplicates it via `duplicateSheet` API to `archive_{old-label}` and parks at far-right of tab strip.
 3. Renames the original to next week's label (Monday edge case handled).
 4. Clears habit checkboxes, priority statuses, priority task text, notes.
-5. Writes a trace; (optionally) posts a one-liner to Slack `#operations`.
+5. **Stamps the Recurring Template tab onto the new week's day-slots** (added 2026-05-15). Reads every row of `Recurring Template`, calls `_stamp_recurring_template(client, meta, new_label)` which mirrors `schedule-to-day-slot` semantics with `force=False`. Explicit-slot rows pin; blank-slot rows auto-pick. Slot conflicts log + skip (Kay resolves manually). Bypass with `--skip-recurring`. Preview the whole ceremony (no writes) with `--dry-run`.
+6. Writes a trace (including recurring-stamp summary); (optionally) posts a one-liner to Slack `#operations`.
 
-## Weekly Recurring Template (added 2026-05-15)
+## Recurring Template tab (built 2026-05-15 — option (b))
 
-The tracker has NO native recurrence primitive. Until one is built, recurring weekly items live here and the Sunday rollover ceremony (`archive` verb) is responsible for stamping them onto the new week's tab.
+The tracker has no native recurrence primitive in Google Sheets, so recurrence is layered in via a dedicated tab + an extension to the Sunday `archive` ceremony. Option (b) chosen over (a) hardcoding and (c) per-row flagging — keeps recurrence config out of code and lets Kay edit through the Sheet UI like any other tab.
 
-| Day | Task | Type | Project | Notes |
-|---|---|---|---|---|
-| Monday | Process payroll | Work | G&B | Recurring weekly |
-| Monday | Process conference registrations | Work | G&B | Recurring weekly |
-| Wednesday | Niche intel review | Work | G&B | Walk through niche-intelligence sprint status + new one-pagers |
-| Friday | Weekly review — system health, M&A activities, budget | Work | G&B | Walk through health-monitor + M&A analytics dashboard + budget-manager output |
+**Tab:** `Recurring Template` (sheetId `1997242109`), positioned at index 3 (after `To Do Long Term`, before `Projects` and archives).
 
-**Sunday rollover instruction (manual until codified):** After `archive` renames the live tab to the new week's label and clears slots, the ceremony agent MUST `schedule-to-day-slot` each row above onto the new tab's correct day (auto-pick first empty slot). Do this BEFORE any of Kay's Sunday-morning `report`-driven `promote` decisions land, so her promotions stack on top of the recurring scaffold.
+**Schema:**
 
-**Open structural decision (surface to Kay 2026-05-15):** the tracker doesn't have a recurring primitive. Three paths:
-- (a) **Hardcode into `archive` verb** — add a `RECURRING_TEMPLATE` constant inside `scripts/task_tracker.py` that the Sunday rollover stamps onto the new week's tab automatically. Simple, code-coupled. Edits require code change.
-- (b) **Dedicated "Recurring Template" tab on the Sheet** — `archive` reads this tab's rows and stamps them onto the new week's slots. Kay can edit recurring items in the Sheet UI without touching code. Slight extra complexity in `archive`.
-- (c) Other (e.g., a frontmatter column on the To Do tab marking certain rows as "recurring weekly Mon").
+| Col | Header | Type | Notes |
+|---|---|---|---|
+| A | Day | Native dropdown Mon..Sun | Required |
+| B | Slot | Numeric 1..15 OR blank | Blank = auto-pick first empty slot at stamp time |
+| C | Task | Free text | Required |
+| D | Type | Native dropdown Work/Home | Required |
+| E | Project | Free text | Optional (G&B, Kai Grey, Panthera Grey, Myself Renewed, Home, or anything) |
+| F | Notes | Free text | Optional |
 
-**Recommended:** (b) — keeps recurrence config out of code, lets Kay add/remove recurring items the same way she edits anything else on the Sheet, and the `archive` verb already touches the Sheets API so reading one more tab is a small extension. Awaiting Kay's call.
+Header row formatted sage-dark + white bold. Day, Slot, Type columns have data validation rules; column widths tuned for readability.
+
+**Seed rows (locked 2026-05-15 from Kay's 4 known weekly recurring items):**
+
+| Day | Task | Type | Project |
+|---|---|---|---|
+| Mon | Process payroll | Work | G&B |
+| Mon | Process conference registrations | Work | G&B |
+| Wed | Niche intel review | Work | G&B |
+| Fri | Weekly review — system health, M&A activities, budget | Work | G&B |
+
+**Editing the template:**
+- **Kay direct:** edit cells in the Sheet UI — add rows, change day, edit task text.
+- **Claude via skill:**
+  - `python3 scripts/task_tracker.py recurring-add --day Mon --task "..." --type Work --project "G&B" [--slot N] [--notes "..."]`
+  - `python3 scripts/task_tracker.py recurring-remove --row N`
+  - Both verbs snapshot + trace (decision-content — each edit compounds on every future Sunday rollover).
+
+**Sunday rollover integration:** `cmd_archive` in `scripts/task_tracker.py` was extended to read this tab after clearing the new week's slots. For each row, the helper `_stamp_recurring_template` calls the same `schedule-to-day-slot` semantics (`force=False`) — explicit-slot rows pin to that slot, blank-slot rows auto-pick the first empty slot for their day. Slot conflicts (already-populated slot) log a warning to stderr and skip; Kay resolves manually. In-memory grid is tracked so back-to-back template rows for the same day auto-pick distinct slots.
+
+**Escape hatches:**
+- `python3 scripts/task_tracker.py archive --skip-recurring` — bypass the stamp step entirely (rare).
+- `python3 scripts/task_tracker.py archive --dry-run` — preview the full ceremony (rename + clear + stamp) without any writes. Reports each row that would land on which day/slot. Useful pre-Sunday sanity check.
+
+**Recurring rows for the CURRENT week (May 11-17, before this build):** still placed as one-off To Do rows 75/76/77 + a Fri slot scheduled today. Those handle this cycle; the recurring tab takes over starting May 18-24.
 
 ## Open items
 
 - **Stale-projects detection in `report` not yet wired** — placeholder in code, requires per-Gantt-tab week-cell scan with date heuristic. Defer to next iteration.
 - **`reformat` is additive only** — duplicate CF rules can stack if run repeatedly. Manual cleanup in UI if they accumulate. Future enhancement: read existing rules + delete them first.
 - **Legacy Excel `TO DO 4.26.26.xlsx`** still in Drive folder — Kay decides when to archive/rename. Don't touch.
-- **Weekly recurring items not codified** — see "Weekly Recurring Template" section above. Pending Kay's pick (a/b/c) on how to wire into `archive`.
+- ~~**Weekly recurring items not codified**~~ — RESOLVED 2026-05-15 by Recurring Template tab + `archive` extension (option b). See "Recurring Template tab" section above.
 
 ## How to add a new Gantt project later
 

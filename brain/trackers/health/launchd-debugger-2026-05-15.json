@@ -1,0 +1,37 @@
+{
+  "date": "2026-05-15",
+  "scan_started_at": "2026-05-15T05:01:01-04:00",
+  "scan_finished_at": "2026-05-15T05:02:04-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 0,
+  "suppressed_count": 1,
+  "runtime_seconds": 63,
+  "triggered_by": "daily",
+  "results": [
+    {
+      "job": "launchd-debugger",
+      "cause": "CODE_BUG",
+      "action": "SURFACE",
+      "triggered_by": "daily",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/launchd-debugger-2026-05-14-0500.log",
+      "last_log_mtime": "2026-05-14T05:03:03-04:00",
+      "wrapper_exit_code": 0,
+      "validator_failed": true,
+      "preflight_failed": true,
+      "error_signature": "PREFLIGHT AUTH FAIL — Claude CLI 401, re-auth required",
+      "actual_run_state": "exit 0, LAUNCHD-DEBUGGER VALIDATOR PASSED, artifact landed, 1 suppressed entry",
+      "scanner_false_positive": true,
+      "diagnosis": "5th recurrence of scanner-narrative-substring-match family (5/08 → 5/12 → 5/13 → 5/14 → today). The 5/14 launchd-debugger run actually exited 0 with `LAUNCHD-DEBUGGER VALIDATOR PASSED`. Its narrative summary embeds the literal strings 'VALIDATOR FAILED' / 'PREFLIGHT FAILED' while describing prior-day false positives; bare-substring regexes (VALIDATOR_FAIL_RE, PREFLIGHT_FAIL_RE) in scripts/scan_launchd_failures.py match those narrative tokens.",
+      "pattern_observed": "Family is recursive — each surfacing perpetuates the next match because the prior-day diagnosis text gets quoted verbatim into the current-day narrative. Dedup keeps Slack quiet but the root-cause regex fix (anchor on wrapper-emitted line starts) requires Kay's approval and remains the only durable resolution.",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_posted": false,
+      "suppression_reason": "cross-day-dedup:7d",
+      "dedup_matched_prior_date": "2026-05-08",
+      "known_incident_match": false,
+      "slack_text": "launchd-debugger: launchd-debugger FAILED — CODE_BUG (5th recurrence of scanner-narrative-substring-match). PREFLIGHT AUTH FAIL signature is a false positive — the 2026-05-14 run actually exited 0 with VALIDATOR PASSED. Recommended: anchor VALIDATOR_FAIL_RE / PREFLIGHT_FAIL_RE in scripts/scan_launchd_failures.py on wrapper-emitted line starts (e.g. r'^VALIDATOR FAILED — overriding skill exit code' and r'^PREFLIGHT FAILED \\(auth\\):') instead of bare substrings — scanner code change requires your approval. Log: /home/ubuntu/projects/Sapling/logs/scheduled/launchd-debugger-2026-05-14-0500.log"
+    }
+  ]
+}

@@ -1,28 +1,22 @@
 {
-  "fetched_at": "2026-05-14T20:30:45-04:00",
+  "fetched_at": "2026-05-15T08:30:45-04:00",
   "services": {
-    "attio-mcp": {
+    "linkt": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
-      "skip_reason": "OAuth re-flow required (Smithery UI)"
-    },
-    "slack-webhooks": {
-      "status": "ok",
-      "latency_ms": null,
-      "message": "4 webhooks configured",
-      "skip_reason": null
-    },
-    "vault": {
-      "status": "ok",
-      "latency_ms": 9,
-      "message": "866 markdown files",
-      "skip_reason": null
+      "skip_reason": "Browser session required (no API)"
     },
     "launchd": {
       "status": "error",
       "latency_ms": null,
       "message": "FileNotFoundError",
+      "skip_reason": null
+    },
+    "slack-webhooks": {
+      "status": "ok",
+      "latency_ms": null,
+      "message": "4 webhooks configured",
       "skip_reason": null
     },
     "claude-api": {
@@ -37,33 +31,39 @@
       "message": "",
       "skip_reason": "OAuth refresh required (manual)"
     },
-    "linkt": {
+    "attio-mcp": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
-      "skip_reason": "Browser session required (no API)"
+      "skip_reason": "OAuth re-flow required (Smithery UI)"
+    },
+    "vault": {
+      "status": "ok",
+      "latency_ms": 15,
+      "message": "872 markdown files",
+      "skip_reason": null
     },
     "mcp-processes": {
       "status": "error",
-      "latency_ms": 9,
+      "latency_ms": 16,
       "message": "attio-mcp=0 superhuman=0",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 97,
+      "latency_ms": 100,
       "message": "authenticated",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 115,
+      "latency_ms": 105,
       "message": "200 OK",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 157,
+      "latency_ms": 132,
       "message": "HTTP 405",
       "skip_reason": null
     },

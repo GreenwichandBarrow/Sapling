@@ -304,7 +304,10 @@ def _tile_c_suite_skills() -> str:
     on_deck = summary["on_deck"]
     missed = summary["missed"]
     gaps = summary["gaps"]
-    scheduled_total = fired + on_deck + missed + gaps
+    today_scheduled = summary["today_scheduled"]
+    today_failed = summary["today_failed"]
+    wtd_fired = summary["wtd_fired"]
+    wtd_expected = summary["wtd_expected"]
     if gaps > 0 or missed > 0:
         dot = "red"
         bits = []
@@ -319,14 +322,16 @@ def _tile_c_suite_skills() -> str:
     else:
         dot = "green"
         status_text = "all on schedule"
+    failed_clause = f", {today_failed} failed" if today_failed > 0 else ""
     return _tile(f"""
     <a class="gb-tile" href="/c-suite-skills" target="_self">
     <div class="label">C-Suite &amp; Skills</div>
-    <div class="primary">{fired}<span class="unit">/ {scheduled_total} fired</span></div>
+    <div class="primary">{fired}<span class="unit">/ {today_scheduled} fired{failed_clause}</span></div>
     <div class="gb-status-row">
     <span class="gb-status-dot {dot}"></span>
     <span class="gb-status-text">{status_text}</span>
     </div>
+    <div style="font-size: 0.78em; color: #888; margin-top: 4px;">Week-to-date: {wtd_fired}/{wtd_expected} fired</div>
     <div class="footer">
     <span class="gb-trend flat">&rarr; {summary["ondemand"]} on-demand</span>
     <span class="gb-horizon">TODAY</span>

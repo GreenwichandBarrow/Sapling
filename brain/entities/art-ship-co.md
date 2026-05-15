@@ -2,9 +2,9 @@
 schema_version: 1.1.0
 date: 2026-05-01
 type: company
-status: prospect
+status: closed-lost
 attio_id: bbae0465-63e0-4cde-926a-7bca95661b42
-tags: ["date/2026-05-01", "entity", "company", "company/art-ship-co", "stage/identified", "category/arts"]
+tags: ["date/2026-05-01", "entity", "company", "company/art-ship-co", "stage/closed-not-proceeding", "category/arts"]
 ---
 
 # Art Ship Co
@@ -26,3 +26,4 @@ tags: ["date/2026-05-01", "entity", "company", "company/art-ship-co", "stage/ide
 
 ## Relationship Notes
 - 2026-05-01: Entity stub created (vault coverage backfill).
+- 2026-05-15: **Closed / Not Proceeding.** Held Identified 62d, zero engagement, no warm path. Triaged out per health-monitor RED carryover. Reversible if new signal surfaces.

@@ -2,9 +2,9 @@
 schema_version: 1.1.0
 date: 2026-05-01
 type: company
-status: prospect
+status: closed-lost
 attio_id: 7e0f6bc9-b2de-4cc0-8efa-6f93e2ea904d
-tags: ["date/2026-05-01", "entity", "company", "company/jw-allen-co-insurance-brokers", "stage/identified", "category/insurance"]
+tags: ["date/2026-05-01", "entity", "company", "company/jw-allen-co-insurance-brokers", "stage/closed-not-proceeding", "category/insurance"]
 ---
 
 # J.W. Allen Co., Inc. - Insurance Brokers
@@ -28,3 +28,4 @@ tags: ["date/2026-05-01", "entity", "company", "company/jw-allen-co-insurance-br
 ## Relationship Notes
 - 2026-03-31: Email interaction logged.
 - 2026-05-01: Entity stub created (vault coverage backfill).
+- 2026-05-15: **Closed / Not Proceeding.** Insurance niche = DealsX channel per `feedback_cold_relive_insurance_dealsx_channel`. Held Identified 62d, zero notes / zero conversation in Attio. 3/31 ghost-touch never advanced stage. Triaged out per health-monitor RED carryover. Reversible.

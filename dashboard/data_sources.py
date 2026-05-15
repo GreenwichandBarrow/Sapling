@@ -1183,8 +1183,29 @@ def load_skill_health() -> list[CSuiteGroup]:
 
 
 def skill_health_summary(groups: list[CSuiteGroup]) -> dict[str, int]:
-    """Aggregate counts for the page summary strip."""
-    counts = {"total": 0, "fired_today": 0, "on_deck": 0, "gaps": 0, "ondemand": 0, "missed": 0}
+    """Aggregate counts for the page summary strip.
+
+    Adds day-of-week-aware fields for the landing tile:
+      today_scheduled: skills scheduled to fire today (fired + missed + on_deck)
+      today_failed:    missed + fired-err (per Kay 2026-05-15 — missed counts as failure)
+      wtd_fired:       (day, skill) pairs that fired successfully week-to-date
+                       (excludes fired-err per Kay — "fired successfully")
+      wtd_expected:    (day, skill) pairs scheduled week-to-date (Sun..today inclusive)
+    """
+    counts = {
+        "total": 0,
+        "fired_today": 0,
+        "on_deck": 0,
+        "gaps": 0,
+        "ondemand": 0,
+        "missed": 0,
+        "today_scheduled": 0,
+        "today_failed": 0,
+        "wtd_fired": 0,
+        "wtd_expected": 0,
+    }
+    today = date.today()
+    sunday = _week_sunday(today)
     for g in groups:
         for s in g.skills:
             counts["total"] += 1
@@ -1198,6 +1219,32 @@ def skill_health_summary(groups: list[CSuiteGroup]) -> dict[str, int]:
                 counts["ondemand"] += 1
             elif s.today_status == "missed":
                 counts["missed"] += 1
+
+            # Today's scheduled denominator: fire-eligible today (any flavor).
+            if s.today_status.startswith("fired") or s.today_status in ("missed", "scheduled-later"):
+                counts["today_scheduled"] += 1
+            # Today's failures: missed + fired-err (Kay 2026-05-15 Q1).
+            if s.today_status == "missed" or s.today_status == "fired-err":
+                counts["today_failed"] += 1
+
+            # Week-to-date: walk Sun..today, count expected vs successful per
+            # (day, skill). Today's own status comes from today_status; prior
+            # days come from week_status_by_day. "fired successfully" excludes
+            # fired-err per Kay 2026-05-15 Q2.
+            if s.is_scheduled and s.intervals:
+                day = sunday
+                while day <= today:
+                    if _should_fire_on_day(s.intervals, day):
+                        counts["wtd_expected"] += 1
+                        if day == today:
+                            if s.today_status in ("fired-ok", "fired-warn"):
+                                counts["wtd_fired"] += 1
+                        else:
+                            iso = day.isoweekday()
+                            day_status = s.week_status_by_day.get(iso)
+                            if day_status in ("fired-ok", "fired-warn"):
+                                counts["wtd_fired"] += 1
+                    day += timedelta(days=1)
     return counts
 
 

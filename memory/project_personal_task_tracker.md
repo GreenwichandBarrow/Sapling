@@ -89,11 +89,32 @@ Triggered by `goodnight` on Sunday evening. The `archive-todo` call MUST precede
 4. Clears habit checkboxes, priority statuses, priority task text, notes.
 5. Writes a trace; (optionally) posts a one-liner to Slack `#operations`.
 
+## Weekly Recurring Template (added 2026-05-15)
+
+The tracker has NO native recurrence primitive. Until one is built, recurring weekly items live here and the Sunday rollover ceremony (`archive` verb) is responsible for stamping them onto the new week's tab.
+
+| Day | Task | Type | Project | Notes |
+|---|---|---|---|---|
+| Monday | Process payroll | Work | G&B | Recurring weekly |
+| Monday | Process conference registrations | Work | G&B | Recurring weekly |
+| Wednesday | Niche intel review | Work | G&B | Walk through niche-intelligence sprint status + new one-pagers |
+| Friday | Weekly review — system health, M&A activities, budget | Work | G&B | Walk through health-monitor + M&A analytics dashboard + budget-manager output |
+
+**Sunday rollover instruction (manual until codified):** After `archive` renames the live tab to the new week's label and clears slots, the ceremony agent MUST `schedule-to-day-slot` each row above onto the new tab's correct day (auto-pick first empty slot). Do this BEFORE any of Kay's Sunday-morning `report`-driven `promote` decisions land, so her promotions stack on top of the recurring scaffold.
+
+**Open structural decision (surface to Kay 2026-05-15):** the tracker doesn't have a recurring primitive. Three paths:
+- (a) **Hardcode into `archive` verb** — add a `RECURRING_TEMPLATE` constant inside `scripts/task_tracker.py` that the Sunday rollover stamps onto the new week's tab automatically. Simple, code-coupled. Edits require code change.
+- (b) **Dedicated "Recurring Template" tab on the Sheet** — `archive` reads this tab's rows and stamps them onto the new week's slots. Kay can edit recurring items in the Sheet UI without touching code. Slight extra complexity in `archive`.
+- (c) Other (e.g., a frontmatter column on the To Do tab marking certain rows as "recurring weekly Mon").
+
+**Recommended:** (b) — keeps recurrence config out of code, lets Kay add/remove recurring items the same way she edits anything else on the Sheet, and the `archive` verb already touches the Sheets API so reading one more tab is a small extension. Awaiting Kay's call.
+
 ## Open items
 
 - **Stale-projects detection in `report` not yet wired** — placeholder in code, requires per-Gantt-tab week-cell scan with date heuristic. Defer to next iteration.
 - **`reformat` is additive only** — duplicate CF rules can stack if run repeatedly. Manual cleanup in UI if they accumulate. Future enhancement: read existing rules + delete them first.
 - **Legacy Excel `TO DO 4.26.26.xlsx`** still in Drive folder — Kay decides when to archive/rename. Don't touch.
+- **Weekly recurring items not codified** — see "Weekly Recurring Template" section above. Pending Kay's pick (a/b/c) on how to wire into `archive`.
 
 ## How to add a new Gantt project later
 

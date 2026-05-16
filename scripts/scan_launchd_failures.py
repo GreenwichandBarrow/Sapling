@@ -80,7 +80,10 @@ LOG_FILENAME_RE = re.compile(
 )
 
 EXIT_LINE_RE = re.compile(r"Finished claude run:.*exit:\s*(?P<code>-?\d+)")
-VALIDATOR_FAIL_RE = re.compile(r"VALIDATOR FAILED")
+# Anchor on the wrapper's real override marker (em-dash, U+2014) — NOT the bare
+# substring. The bare form false-matches skills' own SUCCESS-summary negation
+# prose, e.g. nightly-tracker-audit's "No STOP marker, no `VALIDATOR FAILED`."
+VALIDATOR_FAIL_RE = re.compile(r"VALIDATOR FAILED — overriding skill exit code")
 PREFLIGHT_FAIL_RE = re.compile(r"PREFLIGHT FAILED")
 STOP_MARKER_RE = re.compile(r"^[A-Z][A-Z0-9-]+\s+STOP:\s*(.+)$", re.MULTILINE)
 

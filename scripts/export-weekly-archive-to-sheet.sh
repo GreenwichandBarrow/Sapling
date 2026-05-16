@@ -18,6 +18,12 @@ LOG_FILE="$LOG_DIR/weekly-archive-export-$STAMP.log"
   echo "=== export-weekly-archive-to-sheet.sh @ $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
   # Ensure gog is on PATH for stripped scheduler environments.
   export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.local/bin:$PATH"
+  # Resolve op:// secret references (GOG_KEYRING_PASSWORD etc.) the same way
+  # run-skill.sh does. The systemd unit supplies OP_SERVICE_ACCOUNT_TOKEN via
+  # EnvironmentFile; this turns it into the real values gog needs.
+  # shellcheck source=scripts/load-env.sh
+  source "$REPO_ROOT/scripts/load-env.sh"
+  set -a; load_env "$REPO_ROOT/scripts/.env.launchd"; set +a
   "$REPO_ROOT/dashboard/.venv/bin/python" \
     "$REPO_ROOT/scripts/export_weekly_archive_to_sheet.py" --commit
 } >> "$LOG_FILE" 2>&1

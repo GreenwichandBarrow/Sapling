@@ -22,8 +22,12 @@ VALIDATOR_EXIT=0
 {
   echo "=== refresh-jj-snapshot.sh @ $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
   set -a
-  # shellcheck disable=SC1091
-  source "$REPO_ROOT/scripts/.env.launchd"
+  # Resolve op:// secret references (GOG_KEYRING_PASSWORD etc.) via op inject,
+  # same as run-skill.sh. The systemd unit supplies OP_SERVICE_ACCOUNT_TOKEN
+  # via EnvironmentFile; sourcing the raw file would leave op:// unresolved.
+  # shellcheck source=scripts/load-env.sh
+  source "$REPO_ROOT/scripts/load-env.sh"
+  load_env "$REPO_ROOT/scripts/.env.launchd"
   set +a
   # gog reads OAuth from the user's keychain; PATH must include the install dir.
   export PATH="$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:/usr/bin:/bin"

@@ -1,0 +1,31 @@
+{
+  "date": "2026-05-16",
+  "scan_started_at": "2026-05-16T05:01:05-04:00",
+  "scan_finished_at": "2026-05-16T05:03:53-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 1,
+  "suppressed_count": 0,
+  "runtime_seconds": 168,
+  "results": [
+    {
+      "job": "nightly-tracker-audit",
+      "triggered_by": "daily",
+      "cause": "CODE_BUG",
+      "action": "SURFACE",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_posted": true,
+      "suppression_reason": null,
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/nightly-tracker-audit-2026-05-15-2330.log",
+      "last_log_mtime": "2026-05-15T23:31:49-04:00",
+      "exit_code": 0,
+      "validator_failed": true,
+      "preflight_failed": false,
+      "error_signature": "NIGHTLY-TRACKER-AUDIT VALIDATOR PASSED",
+      "diagnosis": "Scanner false-positive. Underlying nightly-tracker-audit job genuinely succeeded (exit 0, validator PASSED, clean state 3 consecutive nights 5/13-5/15). scan_launchd_failures.py VALIDATOR_FAIL_RE=r'VALIDATOR FAILED' (lines 83/98) substring-matches the skill's own success-summary negation prose 'No STOP marker, no `VALIDATOR FAILED`.' Recommended fix: anchor regex to the real wrapper marker 'VALIDATOR FAILED — overriding skill exit code' (full line/marker) instead of bare substring. No re-run performed (job already succeeded; re-run prohibited and pointless).",
+      "slack_text": "launchd-debugger: nightly-tracker-audit FALSE-POSITIVE - underlying job SUCCEEDED (exit 0, validator PASSED, clean state for 3 consecutive nights). Scanner mis-flagged it: the VALIDATOR-FAILED detection regex in scan_launchd_failures.py (lines 83/98) substring-matches the skill's own success-summary negation phrase (No STOP marker, no VALIDATOR FAILED). Recommended: anchor the regex to the real wrapper marker 'VALIDATOR FAILED - overriding skill exit code' instead of the bare substring. No re-run needed. Log: logs/scheduled/nightly-tracker-audit-2026-05-15-2330.log"
+    }
+  ]
+}

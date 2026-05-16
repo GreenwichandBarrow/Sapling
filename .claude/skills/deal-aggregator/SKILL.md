@@ -238,7 +238,7 @@ Implemented via `scripts/deal-aggregator-fingerprint.sh` (hash | check | add). S
 
 ### Afternoon Run (`--afternoon` flag)
 
-The skill runs twice on weekdays: 6am ET (morning, full run) and 2pm ET (afternoon, top-up run). Wrapper passes `--afternoon` in the second plist.
+The skill runs twice on weekdays: 7:30am ET (morning, full run — after email-intelligence's 7am artifact lands) and 2pm ET (afternoon, top-up run). Wrapper passes `--afternoon` in the second plist.
 
 **Morning run (default, no flag):**
 - Full Channel 0a/0b/0c load

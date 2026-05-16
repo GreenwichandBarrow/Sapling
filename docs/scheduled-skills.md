@@ -8,7 +8,7 @@ Schedule changes happen via systemd unit edits + validator wrapper updates; this
 
 | Skill | Schedule | Purpose |
 |-------|----------|---------|
-| `deal-aggregator` | Mon-Fri 6am ET | Platform scanning + email screening |
+| `deal-aggregator` | Mon-Fri 7:30am ET | Platform scanning + email screening (7:30 so email-intelligence 7am artifact has landed; afternoon 2pm top-up is the email backstop) |
 | `email-intelligence` | Mon-Fri 7am ET | Gmail/Superhuman/Granola scanning, email-scan-results artifact |
 | `jj-operations` (prep) | Sunday 6pm ET | Creates Mon-Fri Call Log tabs for the week (plist Hour=18). Reads pool artifact from **today's** target-discovery Phase 2 run (3pm fire). Kay reviews tabs Sunday evening before bed. |
 | `jj-operations` (harvest) | Manual (no launchd) | Read Call Logs, update master sheet. Triggered by orchestrator or manually after JJ's 2pm shift ends. |

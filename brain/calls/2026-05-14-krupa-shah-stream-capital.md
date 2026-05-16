@@ -44,6 +44,9 @@ granola_link: https://notes.granola.ai/d/not_TkppcODRRcTIly
 - No payment until close (aligns with Krupa's preferred fee structure)
 - Pricing often 20%+ above appraisals, sometimes 3x (recent example: $7-8M expected became $8M+ offers)
 
+### Relationship / Kay Engagement Note
+- 2026-05-14 (verbatim, Kay's post-ACG engagement note): "Krupa specializes in sale lease back. She is a great contact if I have any real estate in the deal. She is happy to review anything and they dont get paid till the deal closes." → Specialization: sale-leaseback; success-fee-only / no-pay-till-close; standing open offer to review any deal with a real-estate component.
+
 ---
 
 ## AI Analysis

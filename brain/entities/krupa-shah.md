@@ -45,5 +45,11 @@ Advises PE sponsors, family offices, institutional investors, and owner-occupier
 - **First meeting:** ACG NY Women's Leadership Summit, NY Athletic Club, 180 Central Park South. Thursday 2026-05-14, 10:00–10:15am ET.
 - **Tone for first touch:** new-contact, observations-about-the-firm anchored (not personal LinkedIn observations per `feedback_no_personal_linkedin_observations_first_touch`).
 
+## Relationship Notes
+- 2026-05-14 (ACG NY Women of Leadership Summit, verbatim Kay engagement note): "Krupa specializes in sale lease back. She is a great contact if I have any real estate in the deal. She is happy to review anything and they dont get paid till the deal closes."
+  - Specialization confirmed: sale-leaseback.
+  - Fee structure: success-fee only — no payment until the deal closes (aligns with G&B buy-side success-fee-only preference).
+  - Engagement bar: low — happy to review anything; high-value contact whenever a deal carries a real-estate component.
+
 ## Open Commitments
-- 2026-05-14 first touch — no commitments yet.
+- 2026-05-14 first touch — no commitments yet. Standing offer: Krupa will review any deal with a real-estate component; quarterly check-in cadence proposed (see call note action items).

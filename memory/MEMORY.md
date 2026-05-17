@@ -65,6 +65,7 @@ Retrieval pointers only — doctrine lives in topic files. To find a memory: gre
 - [feedback_weekly_plan_layers_on_carryover.md](feedback_weekly_plan_layers_on_carryover.md) — Sunday: Kay's focused weekly plan ADDS to all unchecked prior-week items, never replaces; never drop/park a carryover item on Claude's judgment
 - [feedback_recurring_row_canonical_shape.md](feedback_recurring_row_canonical_shape.md) — Recurring To Do = Status On-going + Horizon "Weekly Recurring {Day}" ONLY; never duplicate recurrence/day in Notes
 - [feedback_email_todos_one_per_recipient.md](feedback_email_todos_one_per_recipient.md) — Email to-dos = one row per recipient, never bundled multi-name rows (binary checkbox must map 1:1 to one send)
+- [feedback_no_overstructured_project_schedules.md](feedback_no_overstructured_project_schedules.md) — Project plans: capture core workstream + daily cadence only; inherited verification milestones = unscheduled backlog, no forced week-by-week grid
 
 ## Infrastructure & Tooling
 - [reference_gog_interactive_unlock_recipe.md](reference_gog_interactive_unlock_recipe.md) — Prefix to unlock gog interactively (op-sa-token + `set -a`); empty gog output = suspect auth, not absent data

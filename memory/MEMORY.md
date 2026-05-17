@@ -70,6 +70,7 @@ Retrieval pointers only — doctrine lives in topic files. To find a memory: gre
 ## Infrastructure & Tooling
 - [reference_gog_interactive_unlock_recipe.md](reference_gog_interactive_unlock_recipe.md) — Prefix to unlock gog interactively (op-sa-token + `set -a`); empty gog output = suspect auth, not absent data
 - [feedback_test_op_resolution_before_declaring_auth_down.md](feedback_test_op_resolution_before_declaring_auth_down.md) — Reproduce gog/op failures via scheduled path before escalating; bare-shell `op whoami` failing is expected, not an outage
+- [reference_gog_no_hide_tab_jj_archive.md](reference_gog_no_hide_tab_jj_archive.md) — gog has no hide-tab; JJ prep "archive prev week" not gog-doable; proven prod skips it, validator doesn't gate on it
 - [reference_vps_broken_pipe_use_agent_tmux.md](reference_vps_broken_pipe_use_agent_tmux.md) — Kay's "VPS disconnects/broken pipe" = SSH idle timeout, not server failure; launch via `agent`/tmux to survive it
 - [feedback_reconstruction_not_scheduled_only_on_broken_pipe.md](feedback_reconstruction_not_scheduled_only_on_broken_pipe.md) — All-automated commits ≠ idle day; broken-pipe sessions leave no commit but do real work. Reconstruct cautiously, correct from transcript
 

@@ -20,8 +20,8 @@ tags: ["date/2026-05-17", "context", "topic/continuation"]
 - Daily-tab tracker: Socrates → plan → built → migrated → tested.
 
 ## Next Steps
-1. **TOP PRIORITY — fix design miss: restore the WEEK tab.** The rebuild wrongly DELETED the weekly planning tab. Corrected model is BOTH: a **Week tab = Sunday planning canvas (all 7 days visible)** → Kay lays out the full week there → a NEW **distribute step/verb pushes the completed week plan into the 7 day tabs** → Kay then works the daily tabs Mon–Sat. `build-week` must be reworked: instead of stamping recurring straight into day tabs, it (re)builds the Week planning tab + stamps recurring there; a new `distribute-week` verb fans the finalized week plan out to the 7 day tabs. Old week data is SAFE in `archive_May 11-17` (verbatim copy) — rebuild the Week tab structure from it. Do this FIRST in the fresh session, before /goodmorning.
-2. Kay runs `/goodmorning` (after #1) → full briefing + week planning in Week tab → distribute → live in **Sun** day tab.
+1. ✅ DONE — Week tab restored (leftmost, "WEEK OF May 17-23", Sun→Sat, populated with this week's 13-item plan). `build-week` reworked to target Week tab; new `distribute-week` verb fans Week→day tabs. SKILL.md + memory + goodmorning.md corrected to BOTH-surfaces model. Code uncommitted (rides goodnight).
+2. Kay runs `/goodmorning` in a fresh session → full briefing + finalize week in Week tab → `distribute-week` → live in day tabs.
 3. Optional: delete empty first-run `archive_May 17` artifact.
 4. Kay runs the Ask Harrison MCP installer (browser step is hers).
 5. Tonight `/goodnight` commits all uncommitted code/doc/memory changes.

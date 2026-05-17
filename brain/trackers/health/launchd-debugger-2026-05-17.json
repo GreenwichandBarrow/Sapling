@@ -1,0 +1,30 @@
+{
+  "date": "2026-05-17",
+  "scan_started_at": "2026-05-17T05:00:57-04:00",
+  "scan_finished_at": "2026-05-17T05:02:19-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 0,
+  "runtime_seconds": 82,
+  "results": [
+    {
+      "job": "launchd-debugger",
+      "cause": "CODE_BUG",
+      "action": "SURFACE",
+      "triggered_by": "daily",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/launchd-debugger-2026-05-16-0500.log",
+      "last_log_mtime": "2026-05-16T05:04:20-04:00",
+      "exit_code": 0,
+      "validator_failed": true,
+      "preflight_failed": false,
+      "error_signature": "LAUNCHD-DEBUGGER VALIDATOR PASSED",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_posted": false,
+      "suppression_reason": "cross-day-dedup:7d",
+      "slack_text": "launchd-debugger: launchd-debugger FAILED — CODE_BUG. LAUNCHD-DEBUGGER VALIDATOR PASSED. Recommended: scanner false-positive — the job succeeded (exit 0, validator PASSED); scan_launchd_failures.py STOP/validator heuristics substring-match launchd-debugger's own diagnostic success logs, so exclude launchd-debugger self-logs from those checks (code change, outside fix allowlist). Log: /home/ubuntu/projects/Sapling/logs/scheduled/launchd-debugger-2026-05-16-0500.log",
+      "diagnosis": "Recursive scanner false-positive. The 2026-05-16 launchd-debugger run genuinely succeeded (wrapper exit 0, LAUNCHD-DEBUGGER VALIDATOR PASSED, artifact written, POST_RUN_CHECK exit 0). scan_launchd_failures.py STOP/validator substring heuristics match the diagnostic prose launchd-debugger writes into its own success log when narrating a prior CODE_BUG/SURFACE. Durable fix requires excluding launchd-debugger self-logs from those scanner checks — a code change, outside this skill's operational fix allowlist."
+    }
+  ]
+}

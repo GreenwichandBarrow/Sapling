@@ -1,0 +1,1180 @@
+{
+  "verb": "week-tab-creation-pre",
+  "timestamp": "20260517-121359",
+  "sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
+  "ranges": {
+    "'Sun'!A1:L40": [
+      [
+        "SUNDAY \u00b7 May 17"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation & stretches"
+      ],
+      [
+        false,
+        "ACV drink & probiotic protein shake"
+      ],
+      [
+        false,
+        "Exercise class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Mon'!A1:L40": [
+      [
+        "MONDAY \u00b7 May 18"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation & stretches"
+      ],
+      [
+        false,
+        "ACV drink & probiotic protein shake"
+      ],
+      [
+        false,
+        "Exercise class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Process payroll",
+        "Work",
+        "G&B",
+        "Recurring weekly"
+      ],
+      [
+        false,
+        "Process conference registrations",
+        "Work",
+        "G&B",
+        "Recurring weekly"
+      ],
+      [
+        false,
+        "Deal Aggregator Expansion: re-plan dedicated session (kick off tomorrow)",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Deal aggregator email kickoff",
+        "Work",
+        "G&B"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Tue'!A1:L40": [
+      [
+        "TUESDAY \u00b7 May 19"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation & stretches"
+      ],
+      [
+        false,
+        "ACV drink & probiotic protein shake"
+      ],
+      [
+        false,
+        "Exercise class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Quarterly update (Q1 FY26 wrap-up)",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Email Filipe @ Pest Mgmt company",
+        "Work",
+        "G&B"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Wed'!A1:L40": [
+      [
+        "WEDNESDAY \u00b7 May 20"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation & stretches"
+      ],
+      [
+        false,
+        "ACV drink & probiotic protein shake"
+      ],
+      [
+        false,
+        "Exercise class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Niche intel review",
+        "Work",
+        "G&B",
+        "Walk through niche-intelligence sprint status + new one-pagers"
+      ],
+      [
+        false,
+        "Thesis deck build",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Review finders fee doc",
+        "Work",
+        "G&B"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Thu'!A1:L40": [
+      [
+        "THURSDAY \u00b7 May 21"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation & stretches"
+      ],
+      [
+        false,
+        "ACV drink & probiotic protein shake"
+      ],
+      [
+        false,
+        "Exercise class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Call Jay & Jason about pest management",
+        "Work",
+        "G&B"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Fri'!A1:L40": [
+      [
+        "FRIDAY \u00b7 May 22"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation & stretches"
+      ],
+      [
+        false,
+        "ACV drink & probiotic protein shake"
+      ],
+      [
+        false,
+        "Exercise class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget",
+        "Work",
+        "G&B",
+        "Walk through health-monitor + M&A analytics dashboard + budget-manager output"
+      ],
+      [
+        false,
+        "Assess budget reduction areas (post-Q1 expense review; explore summer desk takeover)",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Website rebuild",
+        "Work",
+        "G&B"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Sat'!A1:L40": [
+      [
+        "SATURDAY \u00b7 May 23"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation & stretches"
+      ],
+      [
+        false,
+        "ACV drink & probiotic protein shake"
+      ],
+      [
+        false,
+        "Exercise class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'_donut_data'!A1:C10": [
+      [
+        "Day",
+        "Done",
+        "Left"
+      ],
+      [
+        "Sun",
+        0,
+        15
+      ],
+      [
+        "Mon",
+        0,
+        15
+      ],
+      [
+        "Tue",
+        0,
+        15
+      ],
+      [
+        "Wed",
+        0,
+        15
+      ],
+      [
+        "Thu",
+        0,
+        15
+      ],
+      [
+        "Fri",
+        0,
+        15
+      ],
+      [
+        "Sat",
+        0,
+        15
+      ],
+      [],
+      [
+        "Sun",
+        0,
+        15
+      ]
+    ],
+    "'archive_May 11-17'!A1:O80": [
+      [
+        "KAY \u2014 WEEK OF May 11-17"
+      ],
+      [],
+      [],
+      [],
+      [
+        "HABIT TRACKER"
+      ],
+      [
+        "",
+        "Mon",
+        "",
+        "Tue",
+        "",
+        "Wed",
+        "",
+        "Thu",
+        "",
+        "Fri",
+        "",
+        "Sat",
+        "",
+        "Sun"
+      ],
+      [
+        "Water & hygiene",
+        true,
+        "",
+        true,
+        "",
+        false,
+        "",
+        false,
+        "",
+        true,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "Meditation & stretches",
+        false,
+        "",
+        true,
+        "",
+        false,
+        "",
+        false,
+        "",
+        true,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "ACV drink & probiotic protein shake",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "Exercise class",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "Bike to work",
+        true,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "10K steps",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "Omega 3 & magnesium",
+        true,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [],
+      [
+        "",
+        "MONDAY",
+        "",
+        "TUESDAY",
+        "",
+        "WEDNESDAY",
+        "",
+        "THURSDAY",
+        "",
+        "FRIDAY",
+        "",
+        "SATURDAY",
+        "",
+        "SUNDAY"
+      ],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        "",
+        true,
+        "Run budget-manager monthly mode for March P&L",
+        true,
+        "Reply to Janet Crockett \u2014 confirm year-end 12/31/2025 G&B investment figures (Saltoun annual review)",
+        false,
+        "Deal aggregator email kickoff",
+        false,
+        "Call Jay & Jason about pest management",
+        false,
+        "Assess budget reduction areas (post-Q1 expense review; explore summer desk takeover)",
+        false,
+        "Submit to modeling agencies",
+        false,
+        "Watch video & complete SLD buy back"
+      ],
+      [
+        "",
+        true,
+        "Test day of full server run",
+        true,
+        "Send Kevin O'Connell LinkedIn outreach (Hampton Pest Mgmt / pest mgmt searcher-to-operator path)",
+        false,
+        "Thesis deck build",
+        false,
+        "",
+        false,
+        "Granola transcript trigger: discuss architectural path with Harrison",
+        false,
+        "",
+        false,
+        "Submit new PSLF form"
+      ],
+      [
+        "",
+        true,
+        "Send 1:1 meeting requests for Thursday ACG NY WOL Summit",
+        false,
+        "Deal Aggregator Expansion: re-plan dedicated session (kick off tomorrow)",
+        false,
+        "Website rebuild",
+        false,
+        "",
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget",
+        false,
+        "",
+        false,
+        "Look into GLP1"
+      ],
+      [
+        "",
+        true,
+        "Confirm travel: Mid Search Summit + Women in Pest Mgmt (May 18 week)",
+        false,
+        "Quarterly update (Q1 FY26 wrap-up)",
+        false,
+        "Review finders fee doc",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Order gift for Lois (Jack Hugh Mackay)"
+      ],
+      [
+        "",
+        true,
+        "Email Allison Allen re: PWIPM Northeast Council network meeting at conference",
+        false,
+        "Email Filipe @ Pest Mgmt company",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        true,
+        "Follow up with Sarah De Blasio",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Bday cards & baby cards",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [],
+      [
+        "",
+        "notes \u00b7 ideas \u00b7 journal",
+        "",
+        "notes \u00b7 ideas \u00b7 journal",
+        "",
+        "notes \u00b7 ideas \u00b7 journal",
+        "",
+        "notes \u00b7 ideas \u00b7 journal",
+        "",
+        "notes \u00b7 ideas \u00b7 journal",
+        "",
+        "notes \u00b7 ideas \u00b7 journal",
+        "",
+        "notes \u00b7 ideas \u00b7 journal"
+      ]
+    ]
+  }
+}

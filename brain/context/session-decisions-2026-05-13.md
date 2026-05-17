@@ -1,20 +1,23 @@
 ---
 date: 2026-05-13
 type: context
-title: "Session Decisions — 2026-05-13 (RECONSTRUCTED)"
+title: "Session Decisions — 2026-05-13 (CORRECTED from recovered transcript)"
 tags:
   - date/2026-05-13
   - context
   - topic/session-decisions
-  - topic/reconstructed-session
   - topic/budget-manager
+  - topic/post-call-analyzer-rewrite
+  - topic/granola-api-wrapper
+  - topic/supply-chain-hardening
+  - topic/office-rent-runway
   - topic/carlos-nieto-meeting
   - topic/email-intelligence
-  - topic/granola-mcp-lapse
   - topic/launchd-debugger-recursion
   - person/carlos-nieto-dca
   - person/jackson-niketas
   - person/anthony-bacagan
+  - person/harrison-wells
   - person/janet-crockett
   - person/andrew-lowis
   - person/hannah-barrett
@@ -26,65 +29,94 @@ tags:
 schema_version: 1.1.0
 ---
 
-# Session Decisions — 2026-05-13 (RECONSTRUCTED)
+# Session Decisions — 2026-05-13 (CORRECTED from recovered transcript)
 
-> **RECONSTRUCTED 2026-05-16 from artifacts — no live `/goodnight` ran this day; decisions inferred from durable evidence, may be incomplete.** Wednesday 5/13 appears to have been a **scheduled-skills-only day** — no interactive `/goodmorning` or human-driven work session is evidenced. All git commits this day are automated artifact updates (`update context`). No Decisions in the PASS/APPROVE/REJECT sense were made by Kay or Claude in a live session; the items below are scheduled-system outcomes and auto-trigger firings reconstructed from logs, the email-scan artifact, the Carlos Nieto call note, the budget output, and the task-tracker append log. Treat all entries as **lower confidence** than a live-session file.
+> **CORRECTED 2026-05-17.** The prior version of this file was reconstructed on 2026-05-16 from durable artifacts and wrongly concluded 5/13 was a "scheduled-skills-only day with no human decisions" — because all git commits that day were automated `update context` artifacts (the interactive session ended in a broken pipe and was never bookended). Kay supplied the recovered transcript on 2026-05-17 and asked `/goodnight` be run on it. 5/13 was in fact a **major interactive build day**: a full post-call-analyzer architecture rewrite, the granola-api wrapper build, an office-rent runway analysis, the Heels to Deals Conference Pipeline write, and the Harrison supply-chain hardening (npm/bun + pnpm extension). The scheduled-skill outcomes from the reconstruction remain valid and are preserved below; the live human decisions are now recorded. See calibration note + [[feedback_reconstruction_not_scheduled_only_on_broken_pipe]].
 
-Wednesday. Carlos Nieto / Digital Capital Advisors in-person meeting at the Empire State Building 9:30–10:30am ET (first substantive conversation — peer-level deal-flow + AI-implementation exchange). Bookkeeper P&L auto-trigger fired: April 2026 Management Report → budget-manager monthly pipeline completed. post-call-analyzer drained its queue (Carlos + Jackson Niketas notes). Granola MCP remained unauthenticated (open loop from 5/12, Friday Harrison agenda #1). launchd-debugger logged a 3rd recurrence of the scanner-narrative-substring-match false-positive family.
+Wednesday. [[entities/carlos-nieto-dca|Carlos Nieto]] / [[entities/digital-capital-advisors|DCA]] in-person at the Empire State Building 9:30–10:30am ET. April 2026 bookkeeper P&L auto-trigger fired (budget-manager monthly). Live interactive session (multiple broken-pipe reconnects) covered: April budget variance closeout, Granola→Attio investigation, the post-call-analyzer rewrite + granola-api wrapper build, office-rent runway math, Heels to Deals pipeline rows, and Harrison's supply-chain hardening request.
 
 ## Decisions
 
-> No live-session Decisions evidenced. The following are **auto-trigger / scheduled-system outcomes** reconstructed from logs — recorded here as APPROVE-equivalent system actions, not human decisions.
+### April budget variance closeout (CFO)
+- **PASS (resolved from CEO context)** 4 of 5 April variance flags closed without an Anthony question: Rent $2K = early-May prepay; Business Taxes $1,322 = annual DE/NY state filing (one-time); Memberships $260 = tech-stack subscription (folds into tech audit); Advertising $2,422 = working hypothesis DealsX + AI consultant re-bucketed.
+- **APPROVE** Bookkeeper line $0 YTD is a **QBO categorization error**, not absence-of-activity. Kay confirmed bookkeeping IS billed/paid monthly → Anthony's invoices are booked to another line (likely Professional Fees - Accounting $3,200 YTD or Consulting $911 YTD). Needs reclassification for accurate budget-vs-actual.
+- **PASS (Kay handled off-system)** Kay wrote Anthony directly (2-question bundle: advertising bucket-tracking convention + bookkeeper-line posting). Loop closed per `feedback_off_system_resolution_closes_loop`.
 
-- **APPROVE (auto-trigger, deterministic)** Bookkeeper P&L chain fired for [[entities/anthony-bacagan|Anthony Bacagan]] / [[entities/start-virtual|StartVirtual]] April 2026 Management Report. Per `feedback_bookkeeper_pl_auto_trigger_budget_manager`, this is a deterministic auto-fire — email-intelligence filed 3 PDFs to Drive (`APRIL 2026` folder `1BchMB2hy_-lyAlBiBdqUzbOIIJIzPZ4f`), wrote the inbox trigger, and invoked `budget-manager monthly` for period 2026-04 in-session. Output: `brain/outputs/2026-05-13-budget-report-april-2026.md`. Runway 7.1mo from May 1; shortfall improved to -2mo vs Feb 2027 (1.5mo better); 12 variance flags; Slack ping HTTP 200.
-- **PASS (no action — loop closed)** Janet Crockett / Saltoun Annual Financial Review — email-intelligence confirmed Kay replied 2026-05-12 (thread `19e191898ebc8ddc`, messageCount 2). Loop closed; no further action.
-- **PASS (no action — loop closed)** Hannah Barrett / Pacific Lake Mid-Search Summit logistics (5/18–5/19) — thread messageCount 3, Kay's outbound shows same thread; loop appeared closed at time of 5/13 scan (note: re-opened 5/14, see that day's file).
-- **PASS (nurture only)** Jackson Niketas / Terra Mar "thank-you" reply — post-call thank-you after 5/12 conversation; no action required from Kay. Vault entity stub creation handled by post-call-analyzer (see Actions Taken).
-- **PASS (no live decision — surfaced only)** Carlos Nieto / DCA meeting outcomes — 4 reciprocity-owed action items + 1 niche-surface item generated by post-call-analyzer and appended to the task tracker (rows 61–65). These are Kay-owned `@kay` tasks pending her review, not session decisions. Decline-default noted on drone + restaurant teasers (off-geography/thesis; software AI-risk).
+### Office rent cut — runway analysis (CFO)
+- **DEFER** Cutting the ~$1K/mo office rent buys ~2 weeks of runway (each ~$2K/mo cut ≈ ~1 month runway; zero-date moves from Dec 2026 toward Feb 2027 only with the full $4,325/mo stack). Not standalone heroics — routed into **Friday's expense-cut review** as one piece of the stack. Open question for Friday: month-to-month vs lease term / breakage fee (determines whether the cut lands May–June or pays through a notice window).
+
+### Granola → Attio / Slack investigation
+- **REJECT** Granola's native Attio + Slack integrations (notes-only, no transcripts) — low marginal value for Kay's workflow (she records→talks→references transcript; does not use Granola notes). Do not set up Granola folder→Attio or folder→Slack auto-shares.
+- **APPROVE (Path A)** Disconnect Granola from Slack; post-call-analyzer posts ONE message per call to `#ai-operations` (title + 2-3 line summary + Doc link + Granola transcript link + task count). No duplication, single source per call.
+- **APPROVE** Credential architecture: bypass the OAuth-gated Granola MCP entirely. Use a 1Password-resolved API key (`op://GB Server/Granola API Key/password`) → `~/.local/bin/granola-api` wrapper → `public-api.granola.ai`. No MCP, no OAuth, no reconnect, works in headless/scheduled jobs. (Username/password 1Password item is login-storage only — MCP is PKCE-OAuth and rejects it; static API key is the durable path.)
+
+### post-call-analyzer rewrite (locked from Kay's answers)
+- **APPROVE** Polling cadence: **2 fires/day, 1pm + 6pm ET** (replaces 5-min MCP poll). Rationale: 1–3 calls/day reality; 5-min was over-provisioned.
+- **APPROVE** Trigger location: **server-only** systemd timer on Hetzner. No local launchd, no Mac-asleep failure mode (prior launchd failures were a stated motivator).
+- **APPROVE** Call scope: **all calls with transcripts** (no external-only filter — reverses Claude's initial lean).
+- **APPROVE** Analysis output: 1-2 page Google Doc per call in **RESEARCH/MEETINGS** (folder id `1CHnc3jtLj7245TZpEP59ZkLPr64RpaCz`). May include "further analysis to do" pointers for Kay's approval — no autonomous deep-dive in the per-call run.
+- **APPROVE** Task destination: **TO DO 5.12.26 sheet, TO DO tab** via task-tracker-manager (unscheduled; Kay assigns day-slot in morning brief).
+- **APPROVE** Attio writes: direct REST `/v2/notes` (write scope verified live), one note per matched person + company record.
+- **REJECT (deprecated)** Gmail follow-up drafting — removed from post-call-analyzer scope (was previously in scope). "Send X to Y" items become TO DO tasks instead.
+- **APPROVE (Phase C→A)** Demo'd the full pipeline manually on the Carlos Nieto call (Doc + Attio person/company notes + 6 tasks + Slack, ~12 min), then authorized autonomous Phase 2-3 build (SKILL.md + headless prompt rewrite + systemd timer + validator).
+
+### Heels to Deals — Conference Pipeline (CIO / tracker-manager)
+- **APPROVE** Add monthly recurring Heels to Deals (Ladies Lunch Club, networking, 2nd Wed/month) to Conference Pipeline. Decision value `Attending` for today (5/13), `Need to Register` for future months. NYC, no website, $40/person, RSVP+pay each time. **Skip July + August.** Rows written May/Jun/Sep/Oct/Nov/Dec.
+
+### Harrison supply-chain hardening (infra)
+- **APPROVE** Apply Harrison's npm/bun supply-chain block verbatim (`~/.npmrc` minimum-release-age=2880 + ignore-scripts=true; `~/.bunfig.toml` minimumReleaseAge). Per Harrison's follow-up, **extend to pnpm** (same posture; pnpm v10+ already blocks dep lifecycle scripts by default, explicit ignoreScripts is belt-and-suspenders).
+
+### Carlos Nieto / DCA (post-call-analyzer auto-output, surfaced only)
+- **PASS (surfaced only)** 4 reciprocity-owed items + 1 niche-surface (specialty coffee equipment servicing). Decline-default on drone + restaurant teasers (off-geography/thesis; software AI-risk); take Miami-PE contacts + Osvaldo intro forward. Reciprocity ledger open until G&B reciprocates flow.
+
+### Scheduled-system outcomes (auto-trigger, deterministic — preserved from reconstruction)
+- **APPROVE (auto-trigger)** Bookkeeper P&L chain → budget-manager monthly for [[entities/anthony-bacagan|Anthony]] / [[entities/start-virtual|StartVirtual]] April 2026 report. Output `brain/outputs/2026-05-13-budget-report-april-2026.md`; runway 7.1mo from May 1.
+- **PASS (loops closed)** Janet Crockett / Saltoun review (Kay replied 5/12); Jackson Niketas / Terra Mar thank-you (nurture only); Hannah Barrett / Pacific Lake logistics (closed at scan time, re-opened 5/14).
 
 ## Actions Taken
 
-> All actions this day were executed by scheduled skills, not a live session.
+### Build artifacts (live session)
+- **CREATED** `~/.local/bin/granola-api` wrapper (executable, mtime May 13 11:58) — subcommands `latest`, `since <iso>`, `get-note <id>`; auth via 1Password. Proof-of-life: pulled `not_4rmlqyNoUbrPey` (Carlos Nieto call) transcript live.
+- **UPDATED** `.claude/skills/post-call-analyzer/SKILL.md` — full rewrite (MCP/5-min path → granola-api/2-fires/Drive-Doc/Attio-direct/TO-DO-tasks/Path-A-Slack; Gmail drafting deprecated).
+- **UPDATED** `.claude/skills/post-call-analyzer/headless-on-trigger-prompt.md` — rewritten to match.
+- **CREATED** `systemd/post-call-analyzer-poll.timer` (May 13 12:15) — OnCalendar 13:00 + 18:00 America/New_York; service + validator wired.
+- **CREATED** Drive folder `RESEARCH/MEETINGS` (id `1CHnc3jtLj7245TZpEP59ZkLPr64RpaCz`); initially created under wrong parent (ANALYST - RESEARCH & DUE DILIGENCE), Kay moved it to canonical top-level RESEARCH; memory written.
+- **VERIFIED** Attio Notes write scope (POST `/v2/notes` 200; test note created + deleted on Jim Vigna record).
+- **WROTE 3 memories** in-session: [[project_drive_research_folder_canonical]], [[feedback_check_credential_source_before_auth]], [[feedback_all_skills_use_1password]] (1Password-always rule + PreToolUse hook nudge, in response to Kay: "how can you stop forgetting to use 1password. can you build a rule").
 
-### Budget / bookkeeper
-- **CREATED** `brain/inbox/2026-05-13-april-management-report-budget-trigger.md` (April 2026 Management Report received → budget-manager trigger).
-- **CREATED** `brain/outputs/2026-05-13-budget-report-april-2026.md` (budget-manager 3-phase monthly run, period 2026-04; runway 7.1mo, 12 variance flags).
-- **UPLOADED** 3 P&L PDFs to Drive `BOOKKEEPING / MONTHLY REPORTING / APRIL 2026` (folder `1BchMB2hy_-lyAlBiBdqUzbOIIJIzPZ4f`).
+### Carlos Nieto / DCA demo run (manual, via new wrapper)
+- **CREATED** `brain/calls/2026-05-13-carlos-nieto-dca.md`; Google Doc `1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg`; Attio notes person `259c0607…` + company `0e6e67d9…`; 6 task-tracker rows; Slack #ai-operations post.
+- **CREATED** (5/12 Jackson Niketas call processed 5/13) `brain/calls/2026-05-12-jackson-niketas-ai-coaching.md` + entity stubs; Doc `1LSe0qsz…nobI`; 2 task rows; ledger migrated to canonical shape.
 
-### Carlos Nieto / DCA meeting (post-call-analyzer)
-- **CREATED** `brain/calls/2026-05-13-carlos-nieto-dca.md` (call note; reciprocity ledger flagged — G&B owes meaningful flow back).
-- **CREATED** Google Doc full analysis `1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg` in RESEARCH/MEETINGS.
-- **CREATED** Attio notes on person `259c0607…` + company `0e6e67d9…` for [[entities/carlos-nieto-dca]] / [[entities/digital-capital-advisors]].
-- **CREATED** 5 task-tracker rows (61–65): drone teaser review, restaurant inventory deal review, Miami-PE rollup contacts, Osvaldo intro, specialty coffee equipment servicing niche → niche-intelligence queue.
+### Budget
+- **UPDATED** `brain/outputs/2026-05-13-budget-report-april-2026.md` — 4 variances resolved, bookkeeper line re-flagged as QBO categorization error.
 
-### Jackson Niketas / Terra Mar (post-call-analyzer, 5/12 call processed 5/13)
-- **CREATED** `brain/calls/2026-05-12-jackson-niketas-ai-coaching.md` + entity stubs `brain/entities/jackson-niketas.md` + `brain/entities/terra-mar-search.md`.
-- **CREATED** Google Doc `1LSe0qszhKt0qg0wbHn5M0cpAhUHIMXDWvyAdFs7nobI`; Attio notes person `8fa6e92b…` + company `5a210b23…`.
-- **CREATED** 2 task-tracker rows (66–67): re-evaluate pipeline overlap in July; optional follow-up with stack pieces if asked.
-- **MIGRATED** post-call-analyzer ledger to canonical `{processed: [...], last_updated: ...}` shape. Integrity validator 0 failures.
+### Conference Pipeline
+- **UPDATED** Conference Pipeline `Pipeline!A80:N85` — 6 Heels to Deals rows (May/Jun/Sep/Oct/Nov/Dec), $40/person set on H80:H85.
 
-### Scheduled-skill artifacts
-- **CREATED** `brain/context/email-scan-results-2026-05-13.md` (29 inbound / 9 outbound / 10 drafts; 5 DIRECT, 2 BLAST, 14 NEWSLETTER, 8 OPERATIONAL; 1 broker BLAST row — Ian Drogin / Quiet Light FBA Kitchen Brand, single-listing, sub-niche skip).
-- **CREATED** `brain/context/relationship-status-2026-05-13.md` (1 overdue: Sarah de Blasio 110d BLOCKED on Goodwin letter; Lauren Young removed — off-system closure per `feedback_off_system_resolution_closes_loop`; 15 vault→Attio sync candidates, 0 executed — Attio MCP down).
-- **CREATED** `brain/context/deal-aggregator-scan-2026-05-13.md` (morning; 87 listings, 0 PASS, 11 NEAR-MISS, 3 FLAG, 73 HARD-REJECT) + `-afternoon.md` (4 sources, 0 deals).
-- **SURFACED** launchd-debugger: 3rd recurrence of scanner-narrative-substring-match false-positive (5/08 → 5/12 → 5/13). Slack #operations post; artifact `brain/trackers/health/launchd-debugger-2026-05-13.json`. Recommended fix (anchor `VALIDATOR_FAIL_RE` on wrapper-emitted line) unchanged — needs Kay's code-change approval.
-- nightly-tracker-audit: WEEKLY REVIEW clean (15 niches, no Tabled/Killed, validator PASSED) — no mutations.
+### Supply-chain hardening
+- **UPDATED** `~/.npmrc` (appended block, preserved existing prefix line); **CREATED** `~/.bunfig.toml`.
+- **CREATED** `~/projects/gogcli/internal/tracking/worker/pnpm-workspace.yaml` + `~/.config/pnpm/config.yaml` (minimumReleaseAge 2880 min + ignoreScripts true). Committed gogcli `b5ea249`.
+
+### Scheduled-skill artifacts (preserved from reconstruction)
+- **CREATED** `brain/context/email-scan-results-2026-05-13.md`, `relationship-status-2026-05-13.md`, `deal-aggregator-scan-2026-05-13(-afternoon).md`.
+- **SURFACED** launchd-debugger 3rd recurrence of scanner-narrative-substring-match false-positive; nightly-tracker-audit clean (no mutations).
 
 ## Deferred
 
-- **Carlos Nieto reciprocity flow** — G&B owes meaningful deal flow back on next interaction (4 concessions offered in one call). Trigger: when Carlos sends drone teaser / restaurant details / Miami-PE intros / Osvaldo intro. Decline-default on the two teasers; take the Miami-PE contacts + Osvaldo intro forward (higher-value).
-- **Specialty coffee equipment servicing niche** — surface to niche-intelligence Tuesday queue (next Tuesday cycle).
-- **Jackson Niketas pipeline overlap** — re-evaluate in July when he names verticals (task row 66).
-- **Granola MCP re-auth** — still unauthenticated; carries from 5/12. Friday 5/15 Harrison call agenda #1.
-- **Andrew Lowis / Axial XPX thread** — 14 messages, last activity 5/06; possible stalled-thread nudge. Surface FRIDAY only per `feedback_relationship_cadence_friday_only`.
-- **ACG NY Women of Leadership Summit meeting requests** (meetmax.com) — accept/decline; resolved in 5/14 calendar (1:1s with Laura Smith + Krupa Shah scheduled).
+- **Office rent cut** — Friday 5/15+ expense-cut review (one piece of the $4,325/mo savings stack). Resolve month-to-month vs lease-term/breakage first.
+- **post-call-analyzer Phase 4.5 validation watch** — server timer as sole processor; window closes ~72h post iMac-sidecar retirement. (Per 5/16 file, subsequently closed — confirm no carry.)
+- **gogcli pnpm hardening upstream** — commit `b5ea249` is local-only; push to `steipete/gogcli` failed (Kay has READ-only). Options: fork to GreenwichandBarrow + PR upstream / leave local-only / reset. **Kay never answered — session cut off here.** Carries to Open Loops.
+- **Carlos Nieto reciprocity flow** — open until G&B reciprocates; decline-default drone+restaurant teasers, take Miami-PE + Osvaldo forward.
+- **Specialty coffee equipment servicing niche** — niche-intelligence Tuesday queue.
+- **Granola MCP re-auth** — MCP-era open loop now MOOT for post-call-analyzer (wrapper supersedes MCP); only relevant if other consumers still use the MCP. Harrison Friday agenda.
 - **launchd-debugger substring-match fix** — code change pending Kay approval (recurring 3+ days).
 
 ## Open Loops
 
-- **No live `/goodnight` ran 2026-05-13** — this file is a 2026-05-16 reconstruction. Some human-side decisions (if any interactive work occurred and is unlogged) may be missing.
-- **Granola MCP auth lapse** — now multi-day silent; no call ingestion via headless. Friday Harrison agenda #1.
-- **Attio MCP carry-forward gap** — `mcp__attio__*` empty; 15 vault→Attio sync candidates blocked. Direct API auth healthy.
-- **launchd-debugger scanner recursion** — narrative-substring false-positive self-perpetuating; fix recommended but unapplied (Kay code-change approval needed).
-- **5/11 + 5/12 + 5/13 session-decisions** — 5/11 was never reconstructed (continuation file only); 5/12 exists; 5/13 is this reconstruction. Calibration pipeline should treat 5/13 as lower confidence.
-- **Carlos Nieto reciprocity ledger** — open until G&B reciprocates flow.
+- **gogcli pnpm-hardening upstream decision** — fork+PR vs local-only vs reset; unanswered, session terminated mid-question. Low stakes (local machine already protected). Surface in next briefing if Kay wants upstream.
+- **Carlos Nieto reciprocity ledger** — open until reciprocation.
+- **Advertising bucket-tracking convention** — Kay's note to Anthony asked him to confirm DealsX + AI-consultant → Advertising convention; awaiting his reply (May numbers will validate).
+- **Bookkeeper accrual watchlist** — if Anthony bills retroactively for Jan–May, ~$5K lands in one month; forward-burn model doesn't yet accrue this.
+- **launchd-debugger scanner recursion** — unapplied fix; Kay code-change approval needed.
+- **5/13 file lineage** — this is the CORRECTED version (was a 5/16 reconstruction). Calibration pipeline may now treat it as live-confidence for the human decisions above.

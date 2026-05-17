@@ -1,0 +1,21 @@
+{
+ "ts": "2026-05-17T17:29:38.863264",
+ "verb": "deal-agg-gantt-edit",
+ "A18:E18": [
+  [
+   false,
+   "SOURCING LIST STRUCTURE",
+   "Wire deal-aggregator skill to update Sourcing List metrics per scan",
+   "2026-05-17"
+  ]
+ ],
+ "A21:E21": [
+  [
+   false,
+   "50 BROKER/IB OUTREACH",
+   "Send 50 broker/IB cold email batch",
+   "2026-05-27",
+   "5/day starting 5/13; surface in morning brief"
+  ]
+ ]
+}

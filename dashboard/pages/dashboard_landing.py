@@ -284,13 +284,18 @@ def _tile_ma_analytics() -> str:
         dealsx = load_dealsx_manual(ws, we)
         manual = load_quality_conversations(ws, we)
 
-        # Strict owner conversations from the deal-flow tile + any manual
-        # entries explicitly flagged as a target owner.
-        strict_owner = int(ma.deal_flow_tiles[0].value) if ma.deal_flow_tiles else 0
-        owner_now = strict_owner + sum(1 for m in manual if m.type == "owner")
-        # Quality = every meaningful conversation: strict owners + all curated
-        # conference/meeting conversations (owners superset).
-        quality_now = strict_owner + len(manual)
+        # The deal-flow tile counts partner-classified calls — that is the
+        # broad "meaningful conversation" set (intermediaries, capital
+        # partners, peers), NOT actual target business owners. Call
+        # frontmatter has no owner sub-type, so owner-ness can only come from
+        # explicit curation. Owner conversations = ONLY entries explicitly
+        # flagged type=owner in the manual feed (a recorded owner call must
+        # get a manual owner entry to count). Today that is correctly 0.
+        partner_calls = int(ma.deal_flow_tiles[0].value) if ma.deal_flow_tiles else 0
+        owner_now = sum(1 for m in manual if m.type == "owner")
+        # Quality = every meaningful conversation: partner-classified calls +
+        # all curated conference/meeting conversations.
+        quality_now = partner_calls + len(manual)
 
         # Outbound EMAILS only (Kay email sends + DealsX), excluding LinkedIn.
         kay_email_sends = max(

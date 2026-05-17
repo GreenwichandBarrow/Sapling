@@ -589,17 +589,21 @@ def cmd_append(args) -> int:
 
     # Snapshot the target row before writing
     snap = snapshot_ranges(client, "append",
-        [f"'{TAB_TODO}'!A{target_row}:F{target_row}"])
+        [f"'{TAB_TODO}'!A{target_row}:G{target_row}"])
 
+    horizon = getattr(args, "horizon", None) or "Short Term"
+    if horizon not in HORIZON_OPTIONS:
+        sys.exit(f"task-tracker-manager: --horizon must be one of {HORIZON_OPTIONS}")
     row_values = [
-        False,             # Status
+        "Not Completed",   # Status (3-state dropdown; was checkbox False)
         args.task,         # Task
         args.type,         # Type
         args.project or "",
         args.due or "",
         args.notes or "",
+        horizon,           # Horizon
     ]
-    client.values_update(f"'{TAB_TODO}'!A{target_row}:F{target_row}", [row_values])
+    client.values_update(f"'{TAB_TODO}'!A{target_row}:G{target_row}", [row_values])
 
     log_append_receipt("append", [
         f"task: {args.task}",
@@ -1678,11 +1682,38 @@ def cmd_archive_todo(args) -> int:
 
 
 def _is_truthy(v) -> bool:
+    """Native-checkbox truthiness. Used for DAY-TAB and WEEK-TAB slots/habits
+    (those remain native checkboxes — Kay's working surfaces, unchanged)."""
     if isinstance(v, bool):
         return v
     if isinstance(v, str):
         return v.strip().upper() in ("TRUE", "✅", "YES", "DONE")
     return bool(v)
+
+
+def _todo_is_done(v) -> bool:
+    """To Do tab 'done' test. Post-2026-05-17 the To Do Status column is a
+    3-state dropdown string, not a checkbox. Done == 'Completed'. Old boolean
+    TRUE is still treated as done so this is safe to run pre/post migration."""
+    if isinstance(v, bool):
+        return v
+    return str(v or "").strip().lower() == "completed"
+
+
+def _todo_is_recurring(horizon: str) -> bool:
+    """A To Do row is a recurring template if its Horizon starts with a
+    recurring prefix (currently only 'Weekly Recurring {Day}')."""
+    return str(horizon or "").strip().startswith(RECURRING_HORIZON_PREFIX)
+
+
+def _recurring_day3(horizon: str) -> str | None:
+    """Extract the 3-letter target day from a 'Weekly Recurring {Day}' horizon."""
+    h = str(horizon or "").strip()
+    if not h.startswith(RECURRING_HORIZON_PREFIX):
+        return None
+    suffix = h[len(RECURRING_HORIZON_PREFIX):].strip()
+    idx = DAY_BY_NAME.get(suffix.lower())
+    return DAY_LABELS[idx] if idx is not None else None
 
 
 def cmd_recurring_add(args) -> int:

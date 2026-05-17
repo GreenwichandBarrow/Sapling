@@ -20,7 +20,6 @@ categories:
     services:
       - { name: "Claude Code", note: "Anthropic" }
       - { name: "ChatGPT", note: "OpenAI" }
-      - { name: "Whispr", note: "voice-to-text" }
 
   - label: "CRM & Pipeline"
     services:

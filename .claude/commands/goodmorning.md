@@ -46,7 +46,13 @@ JJ-operations runs independently via launchd (8am) and posts to Slack at 10am. D
 
 ### Step 6 — Day-of-week overlays
 
-- **Sunday:** + `task-tracker-manager report` (full health: overdue, carryover from prior week's incomplete priority slots, empty slot count for new week, stale Long Term items, stale Gantt-project ticks). Surface as a **Weekly Planning Review** section in the briefing — Kay walks through each carryover item: keep / promote to a day this week / move to Long Term / drop. Approved promotions fire `task-tracker-manager promote` inline. This is the canonical Sunday-morning weekly-planning ceremony (no separate systemd timer — `/goodmorning` itself is the trigger).
+- **Sunday — weekly build ceremony (7 day-tab model, owns the rollover; `/goodmorning` is the trigger, no systemd timer, NOT goodnight):** run in order:
+  1. `task-tracker-manager report` — reads across the 7 prior-week day tabs (Sun..Sat); surfaces per-day incomplete slots + overdue/unscheduled To Do + stale Long Term/Gantt as a **Weekly Planning Review** section.
+  2. Kay walks each carryover item: keep / move to a day this week / move to Long Term / drop. (Carryover is manual — no auto-carry.)
+  3. `task-tracker-manager archive-todo` — auto-runs `sync-done-status` across the 7 day tabs first, then sweeps ✅ To Do rows → Completed To Do. Must run before build-week clears the tabs.
+  4. `task-tracker-manager build-week` — snapshots the 7 day tabs + `_donut_data` + To Do, writes ONE combined far-right `archive_{Sun-date}` tab, clears slots/habits/notes on all 7 tabs, re-titles each with the new week's day+date (Sun..Sat boundary), stamps the Recurring Template into the correct day tabs.
+  5. Approved carryover/new items fire `task-tracker-manager promote` / `schedule-to-day-slot` / `move-day-item` inline into the now-clean day tabs.
+  6. `task-tracker-manager reformat` if conditional formatting needs reapplying.
 - **Monday:** + conference-discovery status check
 - **Wednesday:** + niche-intelligence sprint status
 - **Friday:** + weekly-tracker + health-monitor + calibration-workflow (parallel, results needed by 10am ET)

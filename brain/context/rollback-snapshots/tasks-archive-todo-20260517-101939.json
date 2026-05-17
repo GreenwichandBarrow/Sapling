@@ -1,0 +1,904 @@
+{
+  "verb": "archive-todo",
+  "timestamp": "20260517-101939",
+  "sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
+  "ranges": {
+    "'To Do'!A2:F200": [
+      [
+        false,
+        "Order gift for Lois (Jack Hugh Mackay)",
+        "Home"
+      ],
+      [
+        false,
+        "Sign up kids for Kano Martial Arts judo class",
+        "Home"
+      ],
+      [
+        false,
+        "Look into music lessons",
+        "Home"
+      ],
+      [
+        false,
+        "Find new therapist",
+        "Home"
+      ],
+      [
+        false,
+        "Sign up for more Italki lessons",
+        "Home"
+      ],
+      [
+        false,
+        "Fix Kaiden's iPad screen",
+        "Home"
+      ],
+      [
+        false,
+        "Set up Mohela autopay",
+        "Home"
+      ],
+      [
+        false,
+        "Fill out buy back form",
+        "Home"
+      ],
+      [
+        false,
+        "Create travel plans to Paris",
+        "Home"
+      ],
+      [
+        false,
+        "Download & sign into LeapFrog",
+        "Home"
+      ],
+      [
+        false,
+        "Renew CitiBike",
+        "Home"
+      ],
+      [
+        false,
+        "Stool test for microbiome",
+        "Home"
+      ],
+      [
+        false,
+        "Get assessment vitamin full make up",
+        "Home"
+      ],
+      [
+        false,
+        "Visit nutritionist",
+        "Home"
+      ],
+      [
+        false,
+        "Look into GLP1",
+        "Home"
+      ],
+      [
+        false,
+        "Set up email alerts on FE International",
+        "Work"
+      ],
+      [
+        false,
+        "Set up email alerts on Benchmark International",
+        "Work"
+      ],
+      [
+        false,
+        "Switch to higher-yield business savings account",
+        "Work"
+      ],
+      [
+        false,
+        "Update bank accounts with new G&B address",
+        "Work"
+      ],
+      [
+        false,
+        "Cancel Linkt by date",
+        "Work"
+      ],
+      [
+        false,
+        "Cancel Motion & Superhuman annual plans (or downgrade to monthly)",
+        "Work"
+      ],
+      [
+        false,
+        "File G&B annual report by June",
+        "Work"
+      ],
+      [
+        false,
+        "Consider signing up for better bookkeeping",
+        "Work"
+      ],
+      [
+        false,
+        "Verify recipient 501(c)(3) status; board vote + grant approval",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Hold a board meeting + adopt written resolution",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Add Myself Renewed to QuickBooks (nonprofit category)",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Confirm registration with NY Charities Bureau",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Make first personal donation of $1,000",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Confirm nonprofit bank account exists + PayPal Giving Fund integration",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Draft personal giving statement aligned with legacy vision",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Add donation page language + set up donation processor",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Review Kai Grey Ventures renewal",
+        "Work"
+      ],
+      [
+        false,
+        "Create brochure for LF",
+        "Work"
+      ],
+      [
+        false,
+        "Set up meetings with the list of Lenders to build relationships",
+        "Work"
+      ],
+      [
+        false,
+        "Call Gusto about invoice amount",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Submit the boys to NY Models",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Submit the boys to State Models",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Submit the boys to Zuri Model and Talent",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Submit the boys to Teri B",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Submit the boys to Stellar",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Email Filipe @ Pest Mgmt company",
+        "Work",
+        "G&B"
+      ],
+      [
+        true,
+        "Follow up with Sarah De Blasio",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Re-plan deal aggregator expansion (dedicated session)",
+        "Work",
+        "G&B"
+      ],
+      [
+        true,
+        "Run budget-manager monthly mode for March P&L",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Connect Roberta & Elspeth",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Connect Lily & Suzanne",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Try Claude on website rebuild",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Post-March-budget expense review (find cuts; explore summer desk takeover)",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Deal aggregator email kickoff",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Quarterly update (Q1 FY26 wrap-up)",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Review finders fee doc",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Watch video & complete SLD buy back",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Submit new PSLF form",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Fix email-intelligence -> budget-manager auto-invoke trigger gap",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Find Art lawyer contacts",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Reach out to organizer of Art Oct conference",
+        "Work",
+        "G&B"
+      ],
+      [
+        true,
+        "Reply to Janet Crockett \u2014 confirm year-end 12/31/2025 G&B investment figures (Saltoun annual review)",
+        "Work",
+        "G&B",
+        "2026-05-12",
+        "Citrin Cooperman accountants doing annual portfolio review. Inbox: brain/inbox/2026-05-12-saltoun-annual-financial-review.md"
+      ],
+      [
+        false,
+        "Bday cards & baby cards",
+        "Home",
+        "",
+        "",
+        "Inbox: brain/inbox/2026-05-12-bday-and-baby-cards.md"
+      ],
+      [
+        false,
+        "Convert items from kaystrash@yahoo.com to kaystrash23@gmail.com",
+        "Home",
+        "",
+        "",
+        "Inbox: brain/inbox/2026-05-12-yahoo-to-gmail-migration.md. Export old emails, set up forwarding, recreate filters, update third-party accounts."
+      ],
+      [
+        false,
+        "Review AgTech drone teaser when Carlos sends (decline default \u2014 off geography/thesis)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit"
+      ],
+      [
+        false,
+        "Review restaurant inventory mgmt deal when Carlos sends (decline default \u2014 software AI-risk)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit"
+      ],
+      [
+        false,
+        "Take Miami-PE rollup contacts forward from Carlos \u2014 these are the higher-value asset",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit"
+      ],
+      [
+        false,
+        "Take Osvaldo intro warm when Carlos forwards (peer searcher, same stage)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit"
+      ],
+      [
+        false,
+        "Surface specialty coffee equipment servicing niche to niche-intelligence Tuesday queue",
+        "Work",
+        "G&B",
+        "",
+        "Carlos flagged authorized-servicer recurring revenue pattern. From 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit"
+      ],
+      [
+        false,
+        "Re-evaluate Jackson Niketas pipeline overlap in July when he names verticals",
+        "Work",
+        "G&B",
+        "",
+        "From Jackson Niketas (Terra Mar) 2026-05-12 mtg. Analysis: https://docs.google.com/document/d/1LSe0qszhKt0qg0wbHn5M0cpAhUHIMXDWvyAdFs7nobI/edit"
+      ],
+      [
+        false,
+        "Optional follow-up to Jackson with 2-3 stack pieces if he asks (no need to push proactively)",
+        "Work",
+        "G&B",
+        "",
+        "From Jackson Niketas (Terra Mar) 2026-05-12 mtg. Analysis: https://docs.google.com/document/d/1LSe0qszhKt0qg0wbHn5M0cpAhUHIMXDWvyAdFs7nobI/edit"
+      ],
+      [
+        false,
+        "Email Jay & Jason about pest management",
+        "Work",
+        "Pest",
+        "",
+        "Owner/operator pest outreach"
+      ],
+      [
+        false,
+        "Email women from ACG WOL luncheon - upload cards & notes",
+        "Work",
+        "G&B",
+        "",
+        "Post-conference card processing + outreach"
+      ],
+      [
+        false,
+        "Email Carlos Nieto (DCA)",
+        "Work",
+        "G&B",
+        "",
+        "Follow-up post 5/13 ESB meeting"
+      ],
+      [
+        false,
+        "Pest thesis deck - model how many acquisitions make the play work",
+        "Work",
+        "Pest",
+        "",
+        "Thesis deck math; pairs with deck build (Wed slot 4)"
+      ],
+      [
+        false,
+        "Scan WPMA directory for NY-based members",
+        "Work",
+        "Pest",
+        "",
+        "Pre-Women in Pest Mgmt week of 5/18; network mining"
+      ],
+      [
+        false,
+        "Follow up email to Matt",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Complete change of address",
+        "Home",
+        "Myself Renewed",
+        "2026-05-21",
+        "Personal admin"
+      ],
+      [
+        false,
+        "Niche intel review",
+        "Work",
+        "G&B",
+        "2026-05-20",
+        "Recurring weekly (Wed) \u2014 walk through niche-intelligence sprint status + new one-pagers"
+      ],
+      [
+        false,
+        "Process payroll",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "Recurring weekly (Mon)"
+      ],
+      [
+        false,
+        "Process conference registrations",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "Recurring weekly (Mon)"
+      ],
+      [
+        false,
+        "Follow-up email to Carlos (Nieto / Digital Capital Advisors)",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "Monday send"
+      ],
+      [
+        false,
+        "Follow-up email to lunch attendees",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "Monday send"
+      ],
+      [
+        false,
+        "Follow-up emails to conference 1:1s",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "Monday send"
+      ],
+      [
+        false,
+        "Follow up: Carlos Nieto (Digital Capital Advisors)",
+        "Work",
+        "G&B",
+        "",
+        "Post-5/13 Empire State meeting; intermediary. Next-step + verified email in brain/calls/2026-05-13-carlos-nieto-dca.md"
+      ],
+      [
+        false,
+        "Circle back: Becky Wuest Creavin (Peapack Private) re Matt/XPX",
+        "Work",
+        "G&B",
+        "",
+        "Becky offered to nudge Matt; verified email bcreavin@peapackprivate.com; draft queued Mon AM"
+      ],
+      [
+        false,
+        "Matt (XPX good-fit lead) - via Becky",
+        "Work",
+        "G&B",
+        "",
+        "No verified email/surname; dependent on Becky circle-back"
+      ],
+      [
+        false,
+        "Laura Smith (BankUnited) - 2 warm intros",
+        "Work",
+        "G&B",
+        "",
+        "BLOCKED: no verified email. Intros offered: Stephanie (lawyer/super-connector) + a BankUnited colleague. Need verified address first"
+      ],
+      [
+        false,
+        "Krupa Shah: send AI-consultant contact (owed from ACG 5/14)",
+        "Work",
+        "G&B",
+        "",
+        "Commitment from ACG 1:1 per brain/calls/2026-05-14-krupa-shah-stream-capital.md; needs Kay to name the contact"
+      ],
+      [
+        false,
+        "Krupa Shah: set quarterly RE-deal-flow check-in cadence",
+        "Work",
+        "G&B",
+        "",
+        "Reciprocal real-estate-component deal flow; success-fee-only sale-leaseback specialist"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Completed To Do'!A1:G500": [
+      [
+        "Status",
+        "Task",
+        "Type",
+        "Project",
+        "Due",
+        "Notes"
+      ],
+      [
+        false
+      ]
+    ]
+  }
+}

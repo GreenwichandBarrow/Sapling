@@ -1,0 +1,54 @@
+{
+  "timestamp_utc": "2026-05-17T141945Z",
+  "tracker_sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
+  "present_day_tabs": {},
+  "helper_existed": true,
+  "helper": [
+    [
+      "Day",
+      "Done",
+      "Left"
+    ],
+    [
+      "Mon",
+      "=COUNTIF('May 11-17'!B23:B37, TRUE)",
+      "=IF(COUNTA('May 11-17'!C23:C37)=0, 1, COUNTA('May 11-17'!C23:C37) - COUNTIF('May 11-17'!B23:B37, TRUE))"
+    ],
+    [
+      "Tue",
+      "=COUNTIF('May 11-17'!D23:D37, TRUE)",
+      "=IF(COUNTA('May 11-17'!E23:E37)=0, 1, COUNTA('May 11-17'!E23:E37) - COUNTIF('May 11-17'!D23:D37, TRUE))"
+    ],
+    [
+      "Wed",
+      "=COUNTIF('May 11-17'!F23:F37, TRUE)",
+      "=IF(COUNTA('May 11-17'!G23:G37)=0, 1, COUNTA('May 11-17'!G23:G37) - COUNTIF('May 11-17'!F23:F37, TRUE))"
+    ],
+    [
+      "Thu",
+      "=COUNTIF('May 11-17'!H23:H37, TRUE)",
+      "=IF(COUNTA('May 11-17'!I23:I37)=0, 1, COUNTA('May 11-17'!I23:I37) - COUNTIF('May 11-17'!H23:H37, TRUE))"
+    ],
+    [
+      "Fri",
+      "=COUNTIF('May 11-17'!J23:J37, TRUE)",
+      "=IF(COUNTA('May 11-17'!K23:K37)=0, 1, COUNTA('May 11-17'!K23:K37) - COUNTIF('May 11-17'!J23:J37, TRUE))"
+    ],
+    [
+      "Sat",
+      "=COUNTIF('May 11-17'!L23:L37, TRUE)",
+      "=IF(COUNTA('May 11-17'!M23:M37)=0, 1, COUNTA('May 11-17'!M23:M37) - COUNTIF('May 11-17'!L23:L37, TRUE))"
+    ],
+    [
+      "Sun",
+      "=COUNTIF('May 11-17'!N23:N37, TRUE)",
+      "=IF(COUNTA('May 11-17'!O23:O37)=0, 1, COUNTA('May 11-17'!O23:O37) - COUNTIF('May 11-17'!N23:N37, TRUE))"
+    ],
+    [],
+    [
+      "=TEXT(TODAY(),\"ddd\")",
+      "=VLOOKUP(TEXT(TODAY(),\"ddd\"),$A$2:$C$8,2,FALSE)",
+      "=VLOOKUP(TEXT(TODAY(),\"ddd\"),$A$2:$C$8,3,FALSE)"
+    ]
+  ]
+}

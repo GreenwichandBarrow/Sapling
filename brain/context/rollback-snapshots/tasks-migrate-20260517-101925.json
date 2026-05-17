@@ -1,0 +1,2055 @@
+{
+  "verb": "migrate",
+  "timestamp": "20260517-101925",
+  "sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
+  "ranges": {
+    "'May 11-17'!A1:O50": [
+      [
+        "KAY \u2014 WEEK OF May 11-17"
+      ],
+      [],
+      [],
+      [],
+      [
+        "HABIT TRACKER"
+      ],
+      [
+        "",
+        "Mon",
+        "",
+        "Tue",
+        "",
+        "Wed",
+        "",
+        "Thu",
+        "",
+        "Fri",
+        "",
+        "Sat",
+        "",
+        "Sun"
+      ],
+      [
+        "Water & hygiene",
+        true,
+        "",
+        true,
+        "",
+        false,
+        "",
+        false,
+        "",
+        true,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "Meditation & stretches",
+        false,
+        "",
+        true,
+        "",
+        false,
+        "",
+        false,
+        "",
+        true,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "ACV drink & probiotic protein shake",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "Exercise class",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "Bike to work",
+        true,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "10K steps",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "Omega 3 & magnesium",
+        true,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [],
+      [
+        "",
+        "MONDAY",
+        "",
+        "TUESDAY",
+        "",
+        "WEDNESDAY",
+        "",
+        "THURSDAY",
+        "",
+        "FRIDAY",
+        "",
+        "SATURDAY",
+        "",
+        "SUNDAY"
+      ],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        "",
+        true,
+        "Run budget-manager monthly mode for March P&L",
+        true,
+        "Reply to Janet Crockett \u2014 confirm year-end 12/31/2025 G&B investment figures (Saltoun annual review)",
+        false,
+        "Deal aggregator email kickoff",
+        false,
+        "Call Jay & Jason about pest management",
+        false,
+        "Assess budget reduction areas (post-Q1 expense review; explore summer desk takeover)",
+        false,
+        "Submit to modeling agencies",
+        false,
+        "Watch video & complete SLD buy back"
+      ],
+      [
+        "",
+        true,
+        "Test day of full server run",
+        true,
+        "Send Kevin O'Connell LinkedIn outreach (Hampton Pest Mgmt / pest mgmt searcher-to-operator path)",
+        false,
+        "Thesis deck build",
+        false,
+        "",
+        false,
+        "Granola transcript trigger: discuss architectural path with Harrison",
+        false,
+        "",
+        false,
+        "Submit new PSLF form"
+      ],
+      [
+        "",
+        true,
+        "Send 1:1 meeting requests for Thursday ACG NY WOL Summit",
+        false,
+        "Deal Aggregator Expansion: re-plan dedicated session (kick off tomorrow)",
+        false,
+        "Website rebuild",
+        false,
+        "",
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget",
+        false,
+        "",
+        false,
+        "Look into GLP1"
+      ],
+      [
+        "",
+        true,
+        "Confirm travel: Mid Search Summit + Women in Pest Mgmt (May 18 week)",
+        false,
+        "Quarterly update (Q1 FY26 wrap-up)",
+        false,
+        "Review finders fee doc",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Order gift for Lois (Jack Hugh Mackay)"
+      ],
+      [
+        "",
+        true,
+        "Email Allison Allen re: PWIPM Northeast Council network meeting at conference",
+        false,
+        "Email Filipe @ Pest Mgmt company",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        true,
+        "Follow up with Sarah De Blasio",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Bday cards & baby cards",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [],
+      [
+        "",
+        "notes \u00b7 ideas \u00b7 journal",
+        "",
+        "notes \u00b7 ideas \u00b7 journal",
+        "",
+        "notes \u00b7 ideas \u00b7 journal",
+        "",
+        "notes \u00b7 ideas \u00b7 journal",
+        "",
+        "notes \u00b7 ideas \u00b7 journal",
+        "",
+        "notes \u00b7 ideas \u00b7 journal",
+        "",
+        "notes \u00b7 ideas \u00b7 journal"
+      ]
+    ],
+    "'Today'!A1:H48": [
+      [
+        "TODAY",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "Sun"
+      ],
+      [
+        "Mirrors Live Week  \u00b7  Sunday, May 17",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        14
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        15
+      ],
+      [
+        "HABIT TRACKER"
+      ],
+      [
+        "Water & hygiene",
+        false
+      ],
+      [
+        "Meditation & stretches",
+        false
+      ],
+      [
+        "ACV drink & probiotic protein shake",
+        false
+      ],
+      [
+        "Exercise class",
+        false
+      ],
+      [
+        "Bike to work",
+        false
+      ],
+      [
+        "10K steps",
+        false
+      ],
+      [
+        "Omega 3 & magnesium",
+        false
+      ],
+      [],
+      [
+        "TODAY'S PRIORITIES"
+      ],
+      [
+        "Done",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Watch video & complete SLD buy back"
+      ],
+      [
+        false,
+        "Submit new PSLF form"
+      ],
+      [
+        false,
+        "Look into GLP1"
+      ],
+      [
+        false,
+        "Order gift for Lois (Jack Hugh Mackay)"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "COMPLETION  \u00b7  Sun"
+      ]
+    ],
+    "'_donut_data'!A1:C10": [
+      [
+        "Day",
+        "Done",
+        "Left"
+      ],
+      [
+        "Mon",
+        5,
+        2
+      ],
+      [
+        "Tue",
+        3,
+        4
+      ],
+      [
+        "Wed",
+        0,
+        4
+      ],
+      [
+        "Thu",
+        0,
+        1
+      ],
+      [
+        "Fri",
+        0,
+        3
+      ],
+      [
+        "Sat",
+        0,
+        1
+      ],
+      [
+        "Sun",
+        0,
+        4
+      ],
+      [],
+      [
+        "Sun",
+        0,
+        4
+      ]
+    ],
+    "'To Do'!A1:H200": [
+      [
+        "Status",
+        "Task",
+        "Type",
+        "Project",
+        "Due",
+        "Notes"
+      ],
+      [
+        false,
+        "Order gift for Lois (Jack Hugh Mackay)",
+        "Home"
+      ],
+      [
+        false,
+        "Sign up kids for Kano Martial Arts judo class",
+        "Home"
+      ],
+      [
+        false,
+        "Look into music lessons",
+        "Home"
+      ],
+      [
+        false,
+        "Find new therapist",
+        "Home"
+      ],
+      [
+        false,
+        "Sign up for more Italki lessons",
+        "Home"
+      ],
+      [
+        false,
+        "Fix Kaiden's iPad screen",
+        "Home"
+      ],
+      [
+        false,
+        "Set up Mohela autopay",
+        "Home"
+      ],
+      [
+        false,
+        "Fill out buy back form",
+        "Home"
+      ],
+      [
+        false,
+        "Create travel plans to Paris",
+        "Home"
+      ],
+      [
+        false,
+        "Download & sign into LeapFrog",
+        "Home"
+      ],
+      [
+        false,
+        "Renew CitiBike",
+        "Home"
+      ],
+      [
+        false,
+        "Stool test for microbiome",
+        "Home"
+      ],
+      [
+        false,
+        "Get assessment vitamin full make up",
+        "Home"
+      ],
+      [
+        false,
+        "Visit nutritionist",
+        "Home"
+      ],
+      [
+        false,
+        "Look into GLP1",
+        "Home"
+      ],
+      [
+        false,
+        "Set up email alerts on FE International",
+        "Work"
+      ],
+      [
+        false,
+        "Set up email alerts on Benchmark International",
+        "Work"
+      ],
+      [
+        false,
+        "Switch to higher-yield business savings account",
+        "Work"
+      ],
+      [
+        false,
+        "Update bank accounts with new G&B address",
+        "Work"
+      ],
+      [
+        false,
+        "Cancel Linkt by date",
+        "Work"
+      ],
+      [
+        false,
+        "Cancel Motion & Superhuman annual plans (or downgrade to monthly)",
+        "Work"
+      ],
+      [
+        false,
+        "File G&B annual report by June",
+        "Work"
+      ],
+      [
+        false,
+        "Consider signing up for better bookkeeping",
+        "Work"
+      ],
+      [
+        false,
+        "Verify recipient 501(c)(3) status; board vote + grant approval",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Hold a board meeting + adopt written resolution",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Add Myself Renewed to QuickBooks (nonprofit category)",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Confirm registration with NY Charities Bureau",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Make first personal donation of $1,000",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Confirm nonprofit bank account exists + PayPal Giving Fund integration",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Draft personal giving statement aligned with legacy vision",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Add donation page language + set up donation processor",
+        "Work",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Review Kai Grey Ventures renewal",
+        "Work"
+      ],
+      [
+        false,
+        "Create brochure for LF",
+        "Work"
+      ],
+      [
+        false,
+        "Set up meetings with the list of Lenders to build relationships",
+        "Work"
+      ],
+      [
+        false,
+        "Call Gusto about invoice amount",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Submit the boys to NY Models",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Submit the boys to State Models",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Submit the boys to Zuri Model and Talent",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Submit the boys to Teri B",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Submit the boys to Stellar",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Email Filipe @ Pest Mgmt company",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Follow up with Sarah De Blasio",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Re-plan deal aggregator expansion (dedicated session)",
+        "Work",
+        "G&B"
+      ],
+      [
+        true,
+        "Run budget-manager monthly mode for March P&L",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Connect Roberta & Elspeth",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Connect Lily & Suzanne",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Try Claude on website rebuild",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Post-March-budget expense review (find cuts; explore summer desk takeover)",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Deal aggregator email kickoff",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Quarterly update (Q1 FY26 wrap-up)",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Review finders fee doc",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Watch video & complete SLD buy back",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Submit new PSLF form",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Fix email-intelligence -> budget-manager auto-invoke trigger gap",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Find Art lawyer contacts",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Reach out to organizer of Art Oct conference",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Reply to Janet Crockett \u2014 confirm year-end 12/31/2025 G&B investment figures (Saltoun annual review)",
+        "Work",
+        "G&B",
+        "2026-05-12",
+        "Citrin Cooperman accountants doing annual portfolio review. Inbox: brain/inbox/2026-05-12-saltoun-annual-financial-review.md"
+      ],
+      [
+        false,
+        "Bday cards & baby cards",
+        "Home",
+        "",
+        "",
+        "Inbox: brain/inbox/2026-05-12-bday-and-baby-cards.md"
+      ],
+      [
+        false,
+        "Convert items from kaystrash@yahoo.com to kaystrash23@gmail.com",
+        "Home",
+        "",
+        "",
+        "Inbox: brain/inbox/2026-05-12-yahoo-to-gmail-migration.md. Export old emails, set up forwarding, recreate filters, update third-party accounts."
+      ],
+      [
+        false,
+        "Review AgTech drone teaser when Carlos sends (decline default \u2014 off geography/thesis)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit"
+      ],
+      [
+        false,
+        "Review restaurant inventory mgmt deal when Carlos sends (decline default \u2014 software AI-risk)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit"
+      ],
+      [
+        false,
+        "Take Miami-PE rollup contacts forward from Carlos \u2014 these are the higher-value asset",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit"
+      ],
+      [
+        false,
+        "Take Osvaldo intro warm when Carlos forwards (peer searcher, same stage)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit"
+      ],
+      [
+        false,
+        "Surface specialty coffee equipment servicing niche to niche-intelligence Tuesday queue",
+        "Work",
+        "G&B",
+        "",
+        "Carlos flagged authorized-servicer recurring revenue pattern. From 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit"
+      ],
+      [
+        false,
+        "Re-evaluate Jackson Niketas pipeline overlap in July when he names verticals",
+        "Work",
+        "G&B",
+        "",
+        "From Jackson Niketas (Terra Mar) 2026-05-12 mtg. Analysis: https://docs.google.com/document/d/1LSe0qszhKt0qg0wbHn5M0cpAhUHIMXDWvyAdFs7nobI/edit"
+      ],
+      [
+        false,
+        "Optional follow-up to Jackson with 2-3 stack pieces if he asks (no need to push proactively)",
+        "Work",
+        "G&B",
+        "",
+        "From Jackson Niketas (Terra Mar) 2026-05-12 mtg. Analysis: https://docs.google.com/document/d/1LSe0qszhKt0qg0wbHn5M0cpAhUHIMXDWvyAdFs7nobI/edit"
+      ],
+      [
+        false,
+        "Email Jay & Jason about pest management",
+        "Work",
+        "Pest",
+        "",
+        "Owner/operator pest outreach"
+      ],
+      [
+        false,
+        "Email women from ACG WOL luncheon - upload cards & notes",
+        "Work",
+        "G&B",
+        "",
+        "Post-conference card processing + outreach"
+      ],
+      [
+        false,
+        "Email Carlos Nieto (DCA)",
+        "Work",
+        "G&B",
+        "",
+        "Follow-up post 5/13 ESB meeting"
+      ],
+      [
+        false,
+        "Pest thesis deck - model how many acquisitions make the play work",
+        "Work",
+        "Pest",
+        "",
+        "Thesis deck math; pairs with deck build (Wed slot 4)"
+      ],
+      [
+        false,
+        "Scan WPMA directory for NY-based members",
+        "Work",
+        "Pest",
+        "",
+        "Pre-Women in Pest Mgmt week of 5/18; network mining"
+      ],
+      [
+        false,
+        "Follow up email to Matt",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Complete change of address",
+        "Home",
+        "Myself Renewed",
+        "2026-05-21",
+        "Personal admin"
+      ],
+      [
+        false,
+        "Niche intel review",
+        "Work",
+        "G&B",
+        "2026-05-20",
+        "Recurring weekly (Wed) \u2014 walk through niche-intelligence sprint status + new one-pagers"
+      ],
+      [
+        false,
+        "Process payroll",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "Recurring weekly (Mon)"
+      ],
+      [
+        false,
+        "Process conference registrations",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "Recurring weekly (Mon)"
+      ],
+      [
+        false,
+        "Follow-up email to Carlos (Nieto / Digital Capital Advisors)",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "Monday send"
+      ],
+      [
+        false,
+        "Follow-up email to lunch attendees",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "Monday send"
+      ],
+      [
+        false,
+        "Follow-up emails to conference 1:1s",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "Monday send"
+      ],
+      [
+        false,
+        "Follow up: Carlos Nieto (Digital Capital Advisors)",
+        "Work",
+        "G&B",
+        "",
+        "Post-5/13 Empire State meeting; intermediary. Next-step + verified email in brain/calls/2026-05-13-carlos-nieto-dca.md"
+      ],
+      [
+        false,
+        "Circle back: Becky Wuest Creavin (Peapack Private) re Matt/XPX",
+        "Work",
+        "G&B",
+        "",
+        "Becky offered to nudge Matt; verified email bcreavin@peapackprivate.com; draft queued Mon AM"
+      ],
+      [
+        false,
+        "Matt (XPX good-fit lead) - via Becky",
+        "Work",
+        "G&B",
+        "",
+        "No verified email/surname; dependent on Becky circle-back"
+      ],
+      [
+        false,
+        "Laura Smith (BankUnited) - 2 warm intros",
+        "Work",
+        "G&B",
+        "",
+        "BLOCKED: no verified email. Intros offered: Stephanie (lawyer/super-connector) + a BankUnited colleague. Need verified address first"
+      ],
+      [
+        false,
+        "Krupa Shah: send AI-consultant contact (owed from ACG 5/14)",
+        "Work",
+        "G&B",
+        "",
+        "Commitment from ACG 1:1 per brain/calls/2026-05-14-krupa-shah-stream-capital.md; needs Kay to name the contact"
+      ],
+      [
+        false,
+        "Krupa Shah: set quarterly RE-deal-flow check-in cadence",
+        "Work",
+        "G&B",
+        "",
+        "Reciprocal real-estate-component deal flow; success-fee-only sale-leaseback specialist"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Recurring Template'!A1:H200": [
+      [
+        "Day",
+        "Slot",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        "Mon",
+        "",
+        "Process payroll",
+        "Work",
+        "G&B",
+        "Recurring weekly"
+      ],
+      [
+        "Mon",
+        "",
+        "Process conference registrations",
+        "Work",
+        "G&B",
+        "Recurring weekly"
+      ],
+      [
+        "Wed",
+        "",
+        "Niche intel review",
+        "Work",
+        "G&B",
+        "Walk through niche-intelligence sprint status + new one-pagers"
+      ],
+      [
+        "Fri",
+        "",
+        "Weekly review \u2014 system health, M&A activities, budget",
+        "Work",
+        "G&B",
+        "Walk through health-monitor + M&A analytics dashboard + budget-manager output"
+      ]
+    ],
+    "'Projects'!A1:H200": [
+      [
+        "Project",
+        "Entity",
+        "Status",
+        "Start",
+        "Target",
+        "Tab",
+        "Notes"
+      ],
+      [
+        "Myself Renewed Healthcare",
+        "Myself Renewed",
+        "Active",
+        "2026-04-27",
+        "2026-08-14",
+        "Open",
+        "Nonprofit launch + healthcare plan delivery"
+      ],
+      [
+        "Deal Aggregator Expansion",
+        "G&B",
+        "Active",
+        "2026-05-11",
+        "2026-05-17",
+        "Deal Aggregator Expansion",
+        "17 items across 11 sections. 7 fully reviewed; 3 sections (Sourcing List Structure, Intermediary Target List, 50 Broker/IB Outreach) added without final section-by-section review \u2014 Kay to confirm wording on return."
+      ]
+    ],
+    "'To Do Long Term'!A1:H200": [
+      [
+        "Status",
+        "Item",
+        "Type",
+        "Project",
+        "Due",
+        "Notes"
+      ],
+      [
+        "Idea",
+        "Create project for French passports",
+        "Home"
+      ],
+      [
+        "Idea",
+        "Plan away with whole Schneider gang",
+        "Home"
+      ],
+      [
+        "Idea",
+        "Marriage Contract \u2014 add Aramaic",
+        "Home"
+      ],
+      [
+        "Idea",
+        "Create Wedding Album",
+        "Home"
+      ],
+      [
+        "Idea",
+        "Get engagement ring fixed",
+        "Home"
+      ]
+    ],
+    "'Completed To Do'!A1:H200": [
+      [
+        "Status",
+        "Task",
+        "Type",
+        "Project",
+        "Due",
+        "Notes"
+      ],
+      [
+        false
+      ]
+    ],
+    "'Deal Aggregator Expansion'!A1:Z40": [
+      [],
+      [
+        "DEAL AGGREGATOR EXPANSION"
+      ],
+      [
+        "Entity: G&B  \u00b7  Tick the week boxes you're actively working on each milestone \u2014 the row builds into a Gantt bar"
+      ],
+      [],
+      [
+        "Status",
+        "Section",
+        "Task",
+        "Due",
+        "Notes"
+      ],
+      [
+        true,
+        "MARKETPLACE",
+        "Update Sourcing List structure as newly aligned",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "MARKETPLACE",
+        "Update latest status of marketplaces in Sourcing List",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "MARKETPLACE",
+        "Sign up for any new marketplaces",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "MARKETPLACE",
+        "Determine ongoing marketplace review pattern (new skill OR fold into channel review)",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "MARKETPLACE",
+        "Split Axial Buyside Project into per-industry projects",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "EMAIL & BLAST MONITORING VERIFICATION",
+        "Verify Active Deal Fast-Path end-to-end",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "EMAIL & BLAST MONITORING VERIFICATION",
+        "Verify broker BLAST multi-listing decomposition",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "CONFERENCE BROKER PIPELINE",
+        "Confirm broker contacts from ACG land in Intermediary Target List by EOD 5/16",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "COLD CALLING DASHBOARD SYNC",
+        "Verify cold-calling activity stays updated daily on dashboard via skill",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "DEALSX DASHBOARD SYNC",
+        "Verify DealsX email outreach activity stays updated daily on dashboard via skill",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "QUARTERLY BROKER REVIEW",
+        "Run Q1 broker conversion review",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "OPEN DECISIONS",
+        "Lock broker buy-box geography window",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "SOURCING LIST STRUCTURE",
+        "Wire deal-aggregator skill to update Sourcing List metrics per scan",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "SOURCING LIST STRUCTURE",
+        "Build dashboard tile ranking sources by Entry Rate %",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "INTERMEDIARY TARGET LIST",
+        "Full hygiene pass on Intermediary Target List",
+        "2026-05-17"
+      ],
+      [
+        false,
+        "50 BROKER/IB OUTREACH",
+        "Send 50 broker/IB cold email batch",
+        "2026-05-27",
+        "5/day starting 5/13; surface in morning brief"
+      ],
+      [
+        false,
+        "50 BROKER/IB OUTREACH",
+        "Send 50 broker/IB LinkedIn Connect requests",
+        "2026-05-27",
+        "Same 50 names; 5/day starting 5/13"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Myself Renewed Healthcare'!A1:Z40": [
+      [],
+      [
+        "MYSELF RENEWED HEALTHCARE"
+      ],
+      [
+        "Entity: Myself Renewed  \u00b7  Tick the week boxes you're actively working on each milestone \u2014 the row builds into a Gantt bar"
+      ],
+      [],
+      [
+        "Status",
+        "Milestone",
+        "Start",
+        "Target",
+        "Notes",
+        "4/27",
+        "5/4",
+        "5/11",
+        "5/18",
+        "5/25",
+        "6/1",
+        "6/8",
+        "6/15",
+        "6/22",
+        "6/29",
+        "7/6",
+        "7/13",
+        "7/20",
+        "7/27",
+        "8/3",
+        "8/10"
+      ],
+      [
+        false,
+        "Verify 501(c)(3) status active with NY Dept of State",
+        "2026-04-27",
+        "2026-05-08",
+        "",
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        "Confirm registration with NY Charities Bureau",
+        "2026-04-27",
+        "2026-05-08",
+        "",
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        "Hold board meeting + adopt written resolution",
+        "2026-05-11",
+        "2026-05-22",
+        "",
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        "Confirm nonprofit bank account + PayPal Giving Fund integration",
+        "2026-05-18",
+        "2026-06-05",
+        "",
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        "Add Myself Renewed to QuickBooks (nonprofit category)",
+        "2026-05-25",
+        "2026-06-05",
+        "",
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        "Set up donation processor + add donation page language",
+        "2026-06-01",
+        "2026-06-19",
+        "",
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        "Verify recipient 501(c)(3); board vote + grant approval",
+        "2026-06-22",
+        "2026-07-10",
+        "",
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        "Make first personal donation of $1,000",
+        "2026-06-29",
+        "2026-07-03",
+        "",
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        "Draft + publish personal giving statement aligned with legacy vision",
+        "2026-06-01",
+        "2026-07-17",
+        "",
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        "Healthcare program design \u2014 define plan tiers + delivery model",
+        "2026-07-06",
+        "2026-08-14",
+        "Kay to detail",
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    ]
+  }
+}

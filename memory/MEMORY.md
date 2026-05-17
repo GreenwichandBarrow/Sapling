@@ -64,6 +64,8 @@ Retrieval pointers only — doctrine lives in topic files. To find a memory: gre
 
 ## Infrastructure & Tooling
 - [reference_gog_interactive_unlock_recipe.md](reference_gog_interactive_unlock_recipe.md) — Prefix to unlock gog interactively (op-sa-token + `set -a`); empty gog output = suspect auth, not absent data
+- [feedback_test_op_resolution_before_declaring_auth_down.md](feedback_test_op_resolution_before_declaring_auth_down.md) — Reproduce gog/op failures via scheduled path before escalating; bare-shell `op whoami` failing is expected, not an outage
+- [reference_vps_broken_pipe_use_agent_tmux.md](reference_vps_broken_pipe_use_agent_tmux.md) — Kay's "VPS disconnects/broken pipe" = SSH idle timeout, not server failure; launch via `agent`/tmux to survive it
 
 ## Briefing & Decisions
 - [feedback_decision_fatigue_minimization.md](feedback_decision_fatigue_minimization.md) — **Permanent goal:** reduce decisions. Obama framing. ≤5 Decisions per briefing

@@ -1,0 +1,14 @@
+{
+  "_comment": "Manually-maintained DealsX weekly outbound feed. DealsX is external cold-email infra with no API into this dashboard, so Kay (or whoever runs the DealsX sprint review) appends one entry per operational week. The dashboard's 'DealsX · email' channel row reads the entry whose [week_start, week_end] overlaps the rolling 7-day analytics window. Dates are ISO (YYYY-MM-DD), inclusive. 'positive' = replies flagged interested/meeting-worthy (subset of 'replied'). 'bounced' = hard+soft bounces (deliverability signal — watch sender reputation).",
+  "_schema": "weeks[]: {week_start, week_end, sent, replied, positive, bounced}",
+  "weeks": [
+    {
+      "week_start": "2026-05-11",
+      "week_end": "2026-05-15",
+      "sent": 436,
+      "replied": 11,
+      "positive": 5,
+      "bounced": 12
+    }
+  ]
+}

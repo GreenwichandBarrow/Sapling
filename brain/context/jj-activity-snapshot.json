@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-15T22:00:45Z",
+  "fetched_at": "2026-05-17T22:35:16Z",
   "niches_scanned": [
     "Art Insurance",
     "Domestic TCI",
@@ -10,76 +10,96 @@
   ],
   "per_niche_lifetime": {
     "Art Insurance": 0,
-    "Domestic TCI": 0,
+    "Domestic TCI": 2,
     "IPLC": 0,
     "Art Storage": 0,
     "Art Advisory": 0,
-    "Premium Pest Management": 0
+    "Premium Pest Management": 594
   },
   "dials_today": 0,
-  "dials_this_week": 0,
-  "dials_lifetime": 0,
-  "by_day": {},
+  "dials_this_week": 102,
+  "dials_lifetime": 596,
+  "by_day": {
+    "2026-03-30": 2,
+    "2026-04-07": 22,
+    "2026-04-08": 58,
+    "2026-04-09": 8,
+    "2026-04-20": 17,
+    "2026-04-21": 23,
+    "2026-04-24": 40,
+    "2026-04-27": 32,
+    "2026-04-29": 39,
+    "2026-05-05": 31,
+    "2026-05-01": 18,
+    "2026-05-04": 21,
+    "2026-05-06": 66,
+    "2026-05-07": 61,
+    "2026-05-08": 56,
+    "2026-05-11": 35,
+    "2026-05-12": 26,
+    "2026-05-14": 22,
+    "2026-05-15": 19
+  },
   "weekly_buckets": [
     {
-      "week_start": "2026-02-21",
-      "week_end": "2026-02-27",
+      "week_start": "2026-02-23",
+      "week_end": "2026-03-01",
       "dials": 0
     },
     {
-      "week_start": "2026-02-28",
-      "week_end": "2026-03-06",
+      "week_start": "2026-03-02",
+      "week_end": "2026-03-08",
       "dials": 0
     },
     {
-      "week_start": "2026-03-07",
-      "week_end": "2026-03-13",
+      "week_start": "2026-03-09",
+      "week_end": "2026-03-15",
       "dials": 0
     },
     {
-      "week_start": "2026-03-14",
-      "week_end": "2026-03-20",
+      "week_start": "2026-03-16",
+      "week_end": "2026-03-22",
       "dials": 0
     },
     {
-      "week_start": "2026-03-21",
-      "week_end": "2026-03-27",
+      "week_start": "2026-03-23",
+      "week_end": "2026-03-29",
       "dials": 0
     },
     {
-      "week_start": "2026-03-28",
-      "week_end": "2026-04-03",
+      "week_start": "2026-03-30",
+      "week_end": "2026-04-05",
+      "dials": 2
+    },
+    {
+      "week_start": "2026-04-06",
+      "week_end": "2026-04-12",
+      "dials": 88
+    },
+    {
+      "week_start": "2026-04-13",
+      "week_end": "2026-04-19",
       "dials": 0
     },
     {
-      "week_start": "2026-04-04",
-      "week_end": "2026-04-10",
-      "dials": 0
+      "week_start": "2026-04-20",
+      "week_end": "2026-04-26",
+      "dials": 80
     },
     {
-      "week_start": "2026-04-11",
-      "week_end": "2026-04-17",
-      "dials": 0
+      "week_start": "2026-04-27",
+      "week_end": "2026-05-03",
+      "dials": 89
     },
     {
-      "week_start": "2026-04-18",
-      "week_end": "2026-04-24",
-      "dials": 0
+      "week_start": "2026-05-04",
+      "week_end": "2026-05-10",
+      "dials": 235
     },
     {
-      "week_start": "2026-04-25",
-      "week_end": "2026-05-01",
-      "dials": 0
-    },
-    {
-      "week_start": "2026-05-02",
-      "week_end": "2026-05-08",
-      "dials": 0
-    },
-    {
-      "week_start": "2026-05-09",
-      "week_end": "2026-05-15",
-      "dials": 0
+      "week_start": "2026-05-11",
+      "week_end": "2026-05-17",
+      "dials": 102
     }
   ]
 }

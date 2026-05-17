@@ -24,9 +24,26 @@ from googleapiclient.discovery import build
 
 # --- Config ---
 GOG_ACCOUNT = "kay.s@greenwichandbarrow.com"
-GOG_CREDS_PATH = os.path.expanduser(
-    "~/Library/Application Support/gogcli/credentials.json"
-)
+
+
+def _resolve_gog_creds_path() -> str:
+    """gogcli stores credentials at different paths per platform:
+    Linux/XDG -> ~/.config/gogcli/credentials.json
+    macOS     -> ~/Library/Application Support/gogcli/credentials.json
+    Return the first that exists; fall back to the Linux path.
+    """
+    candidates = [
+        "~/.config/gogcli/credentials.json",
+        "~/Library/Application Support/gogcli/credentials.json",
+    ]
+    for c in candidates:
+        p = os.path.expanduser(c)
+        if os.path.exists(p):
+            return p
+    return os.path.expanduser(candidates[0])
+
+
+GOG_CREDS_PATH = _resolve_gog_creds_path()
 LOGO_DRIVE_ID = "1YNyoG3uWRhDX2z7-wlhm941rb9VO_jc6"  # G&B FULL LOGO ON WHT.png (monogram + GREENWICH & BARROW)
 # Try Avenir first — may render if user has it installed. Nunito Sans is the Google Fonts fallback.
 BRAND_FONT = "Avenir"

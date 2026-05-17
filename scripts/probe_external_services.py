@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import json
 import os
+import platform
 import shutil
 import subprocess
 import sys
@@ -222,6 +223,36 @@ def probe_granola_mcp() -> dict:
 
 
 def probe_launchd() -> dict:
+    """Probe the host's scheduler. macOS = launchd (launchctl list);
+    Linux = systemd user timers (the scheduler the jobs actually run on
+    post-migration). Same return contract / thresholds on both so the
+    dashboard renders identically."""
+    if platform.system() == "Linux":
+        try:
+            rc, out, _err, ms = _run(
+                ["systemctl", "--user", "list-timers", "--all",
+                 "--no-legend", "--no-pager"]
+            )
+        except subprocess.TimeoutExpired:
+            return _result("error", PROBE_TIMEOUT_SEC * 1000, "timed out")
+        if rc != 0:
+            return _result("error", ms, f"systemctl list-timers exit {rc}")
+        # Each non-empty line is one scheduled timer; exclude systemd's own
+        # housekeeping timers so the count reflects G&B jobs.
+        count = sum(
+            1
+            for line in out.splitlines()
+            if line.strip()
+            and "systemd-tmpfiles" not in line
+            and "launchpadlib-cache" not in line
+        )
+        msg = f"{count} timers registered"
+        if count >= 10:
+            return _result("ok", ms, msg)
+        if count >= 5:
+            return _result("warn", ms, msg)
+        return _result("error", ms, msg)
+
     try:
         rc, out, _err, ms = _run(["launchctl", "list"])
     except subprocess.TimeoutExpired:

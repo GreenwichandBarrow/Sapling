@@ -8,7 +8,10 @@
 set -euo pipefail
 
 # --- Config ---
-WORKDIR="$HOME/Documents/AI Operations"
+# Resolve repo root relative to this script so it works on both the macOS
+# source host (~/Documents/AI Operations) and the Linux server
+# (~/projects/Sapling) without a hardcoded path.
+WORKDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 GOG_ACCOUNT="kay.s@greenwichandbarrow.com"
 SENT_FILE="/tmp/granola-reminders-$(date +%Y-%m-%d).txt"
 LOG_DIR="$WORKDIR/logs/scheduled"
@@ -18,6 +21,17 @@ LOG_FILE="$LOG_DIR/granola-reminder-$(date +%Y-%m-%d).log"
 if [ -f "$WORKDIR/scripts/.env.launchd" ]; then
   source "$WORKDIR/scripts/.env.launchd"
 fi
+
+# Resolve gog binary: PATH first, then known install dirs on either platform
+# (/opt/homebrew = macOS arm Homebrew, /usr/local/bin = Linux server).
+GOG_BIN="$(command -v gog || true)"
+for cand in /usr/local/bin/gog /opt/homebrew/bin/gog "$HOME/.local/bin/gog"; do
+  [ -n "$GOG_BIN" ] && break
+  [ -x "$cand" ] && GOG_BIN="$cand"
+done
+GOG_BIN="${GOG_BIN:-gog}"
+# Resolve jq the same way (BSD/macOS vs Linux differ on absolute path).
+JQ_BIN="$(command -v jq || echo /usr/bin/jq)"
 
 # Ensure log dir + sent file exist
 mkdir -p "$LOG_DIR"
@@ -46,9 +60,11 @@ log "Checking calendar for upcoming in-person meetings..."
 NOW_EPOCH=$(date +%s)
 WINDOW_START_RFC3339=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 WINDOW_END_EPOCH=$((NOW_EPOCH + 900))  # 15 minutes
-WINDOW_END_RFC3339=$(date -u -r "$WINDOW_END_EPOCH" +%Y-%m-%dT%H:%M:%SZ)
+# Epoch -> RFC3339. GNU date uses `-d @EPOCH`; BSD/macOS date uses `-r EPOCH`.
+WINDOW_END_RFC3339=$(date -u -d "@$WINDOW_END_EPOCH" +%Y-%m-%dT%H:%M:%SZ 2>/dev/null \
+  || date -u -r "$WINDOW_END_EPOCH" +%Y-%m-%dT%H:%M:%SZ)
 
-EVENTS_JSON=$(/opt/homebrew/bin/gog calendar list \
+EVENTS_JSON=$("$GOG_BIN" calendar list \
   --account="$GOG_ACCOUNT" \
   --from="$WINDOW_START_RFC3339" \
   --to="$WINDOW_END_RFC3339" \
@@ -64,7 +80,7 @@ EVENTS_JSON=$(/opt/homebrew/bin/gog calendar list \
 #   2. Has NO conferenceData
 #   3. Has NO hangoutLink
 #   4. Description/location doesn't contain zoom/meet/teams/webex URLs
-MEETINGS=$(echo "$EVENTS_JSON" | /usr/bin/jq -r '
+MEETINGS=$(echo "$EVENTS_JSON" | "$JQ_BIN" -r '
   .events // [] | map(
     select(
       # Must have a specific time (not all-day)
@@ -94,10 +110,10 @@ if [ -z "$MEETINGS" ]; then
 fi
 
 # Process each meeting
-echo "$MEETINGS" | /usr/bin/jq -c '.' | while read -r meeting; do
-  EVENT_ID=$(echo "$meeting" | /usr/bin/jq -r '.id')
-  SUMMARY=$(echo "$meeting" | /usr/bin/jq -r '.summary')
-  START_TIME=$(echo "$meeting" | /usr/bin/jq -r '.startTime')
+echo "$MEETINGS" | "$JQ_BIN" -c '.' | while read -r meeting; do
+  EVENT_ID=$(echo "$meeting" | "$JQ_BIN" -r '.id')
+  SUMMARY=$(echo "$meeting" | "$JQ_BIN" -r '.summary')
+  START_TIME=$(echo "$meeting" | "$JQ_BIN" -r '.startTime')
 
   # Check if already reminded
   if grep -qF "$EVENT_ID" "$SENT_FILE" 2>/dev/null; then
@@ -105,15 +121,19 @@ echo "$MEETINGS" | /usr/bin/jq -c '.' | while read -r meeting; do
     continue
   fi
 
-  # Format time for display (e.g., "9:30 AM")
-  DISPLAY_TIME=$(date -j -f "%Y-%m-%dT%H:%M:%S%z" "$(echo "$START_TIME" | sed 's/:\([0-9][0-9]\)$/\1/')" "+%-I:%M %p" 2>/dev/null || echo "$START_TIME")
+  # Format time for display (e.g., "9:30 AM"). GNU date parses ISO8601 with
+  # `-d`; BSD/macOS date needs the explicit `-j -f` input format. Strip the
+  # ':' from the timezone offset only for the BSD path (GNU accepts +HH:MM).
+  DISPLAY_TIME=$(date -d "$START_TIME" "+%-I:%M %p" 2>/dev/null \
+    || date -j -f "%Y-%m-%dT%H:%M:%S%z" "$(echo "$START_TIME" | sed 's/:\([0-9][0-9]\)$/\1/')" "+%-I:%M %p" 2>/dev/null \
+    || echo "$START_TIME")
 
   # Send Slack notification
   SLACK_MSG="🎙️ Granola reminder: Turn on Granola before your ${SUMMARY} at ${DISPLAY_TIME}"
 
   RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$SLACK_WEBHOOK_OPERATIONS" \
     -H 'Content-Type: application/json' \
-    -d "{\"text\":$(echo "$SLACK_MSG" | /usr/bin/jq -Rs '.')}" 2>/dev/null)
+    -d "{\"text\":$(echo "$SLACK_MSG" | "$JQ_BIN" -Rs '.')}" 2>/dev/null)
 
   if [ "$RESPONSE" = "200" ]; then
     # Mark as sent

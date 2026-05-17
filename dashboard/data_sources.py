@@ -26,6 +26,7 @@ VAULT_CONTEXT_DIR = VAULT_ROOT / "context"
 VAULT_ENTITIES_DIR = VAULT_ROOT / "entities"
 PIPELINE_SNAPSHOT_PATH = VAULT_ROOT / "context" / "attio-pipeline-snapshot.json"
 JJ_SNAPSHOT_PATH = VAULT_ROOT / "context" / "jj-activity-snapshot.json"
+DEALSX_SNAPSHOT_PATH = VAULT_ROOT / "context" / "dealsx-weekly-snapshot.json"
 WEEKLY_TRACKERS_DIR = VAULT_ROOT / "trackers" / "weekly"
 
 _SESSION_DECISIONS_RE = re.compile(r"^session-decisions-(\d{4}-\d{2}-\d{2})\.md$")
@@ -1607,6 +1608,19 @@ _CONFERENCE_SLUG_HINTS = (
     "pratt",
     "wsn",
 )
+# Coaching / build-partner sessions — Kay being coached or building infra, NOT
+# deal-owner conversations. These calls carry classification_type: partner
+# (correctly — they involve external partners) but must NOT inflate the
+# "Owner conversations" deal-flow KPI. Grounded in observed misclassification
+# 2026-05-12/15: Harrison Wells (Dodo Digital, AI-ops build partner) and
+# Jackson Niketas (Terra Mar, search peer) are never G&B acquisition-target
+# owners. Match both the generic "coaching" token and the specific names so
+# a future session whose slug omits "coaching" is still excluded.
+_COACHING_SLUG_HINTS = (
+    "coaching",
+    "harrison-wells",
+    "jackson-niketas",
+)
 _CIM_PATTERN = re.compile(r"\bCIM(?:s|s received)?\b", re.IGNORECASE)
 _CALL_FILENAME_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-(.+)\.md$")
 
@@ -1778,7 +1792,8 @@ def _build_deal_flow_tiles(
     prior_start: date,
     prior_end: date,
 ) -> list[KPITile]:
-    # Owner conversations: partner-classified calls, exclude investor cadences.
+    # Owner conversations: partner-classified calls, exclude investor cadences
+    # and coaching / build-partner sessions (Kay being coached ≠ deal owner).
     def _owner_count(start: date, end: date) -> int:
         in_window = _calls_in_window(calls, start, end)
         return sum(
@@ -1786,6 +1801,7 @@ def _build_deal_flow_tiles(
             for c in in_window
             if c.classification == "partner"
             and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
+            and not _slug_matches(c.slug, _COACHING_SLUG_HINTS)
         )
 
     owner_now = _owner_count(week_start, week_end)
@@ -1841,6 +1857,7 @@ def _build_channels(
     week_end: date,
     jj: JJActivity | None = None,
     outreach: OutreachMetrics | None = None,
+    dealsx: DealsXManual | None = None,
 ) -> list[ChannelRow]:
     in_window = _calls_in_window(calls, week_start, week_end)
     intermediary = sum(
@@ -1848,6 +1865,7 @@ def _build_channels(
         if c.classification == "partner"
         and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
         and not _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)
+        and not _slug_matches(c.slug, _COACHING_SLUG_HINTS)
     )
     conferences = sum(1 for c in in_window if _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS))
 
@@ -1894,6 +1912,35 @@ def _build_channels(
         ops_sent = ops_reply = ops_positive = ops_to_nda = "—"
         ops_desc = "Cold dial campaign · operations snapshot unavailable"
 
+    # DealsX · email — manual weekly feed (external cold-email infra, no API).
+    # Falls back to the deferred 'pending' placeholder when no week overlaps.
+    if dealsx is not None:
+        rate = (dealsx.replied / dealsx.sent * 100) if dealsx.sent else 0.0
+        dealsx_email_row = ChannelRow(
+            name="DealsX · email",
+            description=(
+                f"High-volume outbound email · manual weekly feed · "
+                f"week of {dealsx.week_start:%b %-d} · {dealsx.bounced} bounced "
+                f"(deliverability) · {dealsx_drafts_now} DealsX-attributed drafts this week"
+            ),
+            dot_class="dealsx",
+            sent=str(dealsx.sent), reply=str(dealsx.replied),
+            positive=str(dealsx.positive), to_nda="—",
+            reply_rate=f"{rate:.1f}%", bar_pct=0, bar_color="purple",
+            deferred=False,
+        )
+    else:
+        dealsx_email_row = ChannelRow(
+            name="DealsX · email",
+            description=(
+                f"High-volume outbound email · live May 7 (DealsX integration) · "
+                f"{dealsx_drafts_now} DealsX-attributed drafts this week"
+            ),
+            dot_class="dealsx",
+            sent="—", reply="—", positive="—", to_nda="—",
+            reply_rate="—", bar_pct=0, bar_color="purple", deferred=True,
+        )
+
     return [
         ChannelRow(
             name="CEO emails",
@@ -1928,16 +1975,7 @@ def _build_channels(
             sent=ops_sent, reply=ops_reply, positive=ops_positive, to_nda=ops_to_nda,
             reply_rate="—", bar_pct=0, bar_color="green", deferred=False,
         ),
-        ChannelRow(
-            name="DealsX · email",
-            description=(
-                f"High-volume outbound email · live May 7 (DealsX integration) · "
-                f"{dealsx_drafts_now} DealsX-attributed drafts this week"
-            ),
-            dot_class="dealsx",
-            sent="—", reply="—", positive="—", to_nda="—",
-            reply_rate="—", bar_pct=0, bar_color="purple", deferred=True,
-        ),
+        dealsx_email_row,
         ChannelRow(
             name="DealsX · LinkedIn DM",
             description="High-volume LinkedIn DMs · live May 7 (DealsX integration)",
@@ -2002,6 +2040,7 @@ def _build_trends(
             if ws <= c.date <= we
             and c.classification == "partner"
             and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
+            and not _slug_matches(c.slug, _COACHING_SLUG_HINTS)
         )
         owner_buckets.append(n)
     owner_now = owner_buckets[-1]
@@ -2382,6 +2421,7 @@ def _build_activity_rows(
         if c.classification == "partner"
         and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
         and not _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)
+        and not _slug_matches(c.slug, _COACHING_SLUG_HINTS)
     ]
 
     def _slug_display(call: CallSummary) -> str:
@@ -2467,11 +2507,12 @@ def load_ma_analytics(today: date | None = None) -> MAAnalytics:
     outreach = load_outreach_metrics(today=today)
     new_contacts = load_new_contacts(snapshot=snapshot)
     niche_breakdown = load_niche_breakdown(today=today, jj=jj)
+    dealsx = load_dealsx_manual(week_start, week_end)
 
     deal_flow_tiles = _build_deal_flow_tiles(
         snapshot, calls, week_start, week_end, prior_start, prior_end
     )
-    channels = _build_channels(calls, week_start, week_end, jj=jj, outreach=outreach)
+    channels = _build_channels(calls, week_start, week_end, jj=jj, outreach=outreach, dealsx=dealsx)
     trends, x_labels = _build_trends(snapshot, calls, today, jj=jj, weekly_history=weekly_history)
     activity_rows = _build_activity_rows(
         calls, week_start, week_end, new_contacts=new_contacts
@@ -2846,6 +2887,59 @@ def load_jj_activity() -> JJActivity | None:
         per_niche_lifetime=dict(data.get("per_niche_lifetime", {})),
         by_day=by_day,
     )
+
+
+@dataclass
+class DealsXManual:
+    """One operational week of DealsX cold-email outbound, manually fed.
+
+    DealsX is external cold-email infra with no API into this dashboard
+    (per channel doctrine — it's cold-email infra, not a queryable system),
+    so the numbers are appended weekly by hand to
+    brain/context/dealsx-weekly-snapshot.json."""
+    week_start: date
+    week_end: date
+    sent: int
+    replied: int
+    positive: int
+    bounced: int
+
+
+def load_dealsx_manual(window_start: date, window_end: date) -> DealsXManual | None:
+    """Return the manually-fed DealsX week overlapping the analytics window.
+
+    The dashboard window is a rolling 7 days (today-6 .. today), not a
+    calendar week, so match any snapshot week whose [week_start, week_end]
+    intersects [window_start, window_end] and return the most recent such
+    entry. Returns None when the file is missing/malformed or no week
+    overlaps (row falls back to the deferred 'pending' placeholder)."""
+    if not DEALSX_SNAPSHOT_PATH.exists():
+        return None
+    try:
+        data = json.loads(DEALSX_SNAPSHOT_PATH.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+    candidates: list[DealsXManual] = []
+    for w in data.get("weeks", []):
+        try:
+            ws = date.fromisoformat(w["week_start"])
+            we = date.fromisoformat(w["week_end"])
+            entry = DealsXManual(
+                week_start=ws,
+                week_end=we,
+                sent=int(w.get("sent", 0)),
+                replied=int(w.get("replied", 0)),
+                positive=int(w.get("positive", 0)),
+                bounced=int(w.get("bounced", 0)),
+            )
+        except (KeyError, ValueError, TypeError):
+            continue
+        # Intersection test: entry overlaps the dashboard window.
+        if ws <= window_end and we >= window_start:
+            candidates.append(entry)
+    if not candidates:
+        return None
+    return max(candidates, key=lambda e: e.week_end)
 
 
 @dataclass

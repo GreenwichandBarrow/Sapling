@@ -22,6 +22,16 @@ Checks:
      returned).
   6. `weekly_buckets` is a non-empty list (the trend panel breaks if
      this is empty).
+  7. `dials_lifetime` is a positive int. THE false-zero catch: when the
+     gog OAuth refresh fails, refresh_jj_snapshot.py falls back to a
+     working-tab-only scan that returns 0 for every niche, exits 0, and
+     writes a structurally-perfect snapshot of all zeros. Lifetime dials
+     are monotonic and only ever accumulate for an established calling
+     operation, so `dials_lifetime == 0` is impossible in a healthy
+     state and is the reliable signature of that silent OAuth failure
+     (observed on every scheduled run 2026-05-13 → 2026-05-15). NOTE:
+     `dials_today == 0` is NOT failed — it is legitimate on weekends,
+     before JJ's 10am ET shift, and on off-days.
 
 Exit codes:
   0 — pass
@@ -92,6 +102,23 @@ def main() -> int:
         return fail(
             "`weekly_buckets` empty or not a list — dashboard JJ-dials "
             "trend panel needs this populated"
+        )
+
+    lifetime = data.get("dials_lifetime")
+    if not isinstance(lifetime, int) or isinstance(lifetime, bool):
+        return fail(
+            f"`dials_lifetime` is {lifetime!r} ({type(lifetime).__name__}), "
+            "expected a positive int"
+        )
+    if lifetime <= 0:
+        return fail(
+            f"`dials_lifetime` is {lifetime} — FALSE ZERO. Lifetime dials "
+            "are monotonic for an established calling operation, so 0 means "
+            "the gog OAuth refresh failed and refresh_jj_snapshot.py fell "
+            "back to a working-tab-only scan (all niches 0). The dashboard "
+            "JJ row is feeding off bad data. Check the refresh log for "
+            "'OAuth refresh failed' and re-run via "
+            "`systemctl --user start jj-snapshot-refresh.service`."
         )
 
     print(

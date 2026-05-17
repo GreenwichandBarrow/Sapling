@@ -9,7 +9,7 @@ Close the day. Bookend `/start`. Every night Kay invokes `/goodnight`, the syste
 1. Writes `brain/context/session-decisions-{date}.md` covering the full day (merging continuation files, email threads, and in-session decisions).
 2. Extracts decision traces to `brain/traces/{date}-{slug}.md` for any APPROVE/REJECT with non-obvious reasoning (human override, judgment call, surprising choice).
 3. Updates memory (`/Users/kaycschneider/.claude/projects/-Users-kaycschneider-Documents-AI-Operations/memory/`) with new feedback/project/reference/user entries whenever the day produced a durable insight.
-4. Scans for stop-hook or skill update candidates (patterns repeated 3+ times this session → propose formalization).
+4. Scans for stop-hook / new-skill / feedback-memory candidates (patterns repeated 3+ times this session → propose formalization). Existing-skill *improvements* are NOT edited here — they route to the `evolve` skill.
 5. Commits the vault changes to git AND pushes to origin.
 6. Returns a 4-6 line summary to Kay (decisions, traces written, memory delta, commit SHA, push status).
 
@@ -59,9 +59,11 @@ For each candidate, check `MEMORY.md` index first. Update an existing memory if 
 ### Step 5 — Skill / hook calibration scan
 
 Scan the session for patterns repeated ≥3 times that suggest formalization:
-- Same ad-hoc task requested multiple ways → propose new skill
+- Same ad-hoc task requested multiple ways → propose **new** skill
 - Same correction given multiple times → propose stop hook or `feedback_*.md` memory
 - Same lookup repeated → propose reference memory or skill helper
+
+This step proposes only NEW formalizations. An **existing skill repeatedly underperforming is NOT a /goodnight concern** — that is the `evolve` skill's job (`dodo-digital/evolving-skills` plugin: it promotes a skill's `learnings.md` into durable SKILL.md / workflow / reference changes). /goodnight does not read `learnings.md` and does not edit skill files. If the session surfaced a skill that should improve, flag it as an `evolve` candidate in the summary; do not edit it here.
 
 Surface proposals in the evening summary under "Calibration candidates." Do NOT create skills/hooks autonomously — Kay must approve.
 
@@ -112,7 +114,7 @@ No extra commentary. No "have a good night" unless Kay says it first.
 - **If Superhuman MCP is down (token expired), suppress all draft-status claims in the summary** per `feedback_superhuman_down_suppress_drafts`.
 - **If the day has no decisions worth tracing, no memory updates, and no calibration candidates,** still write the session-decisions file (even if short) and still commit-and-push. The discipline of the bookend is the point, not the volume.
 - **Push is default, not opt-in.** The Mac ↔ VPS sync depends on every evening commit reaching origin; an unpushed commit defeats the next morning's pickup. If the push fails for a non-trivial reason (rejected, conflict, no network), surface in the summary and let Kay decide whether to force-push, pull-rebase, or defer.
-- **Skill / hook updates within /goodnight scope.** Step 5's calibration scan is not just *propose* — if a pattern that needs a stop hook or skill edit has been surfaced and confirmed by Kay within the session, apply it before commit. Skill updates and new feedback memories ride in the same evening commit as decisions/traces.
+- **Hook / feedback-memory updates within /goodnight scope — but NOT skill edits.** Step 5's calibration scan is not just *propose* for the items `evolve` does not cover: if a **stop hook** or **`feedback_*.md` memory** has been surfaced and confirmed by Kay within the session, apply it before commit and let it ride the evening commit. **Skill-file edits do NOT happen in /goodnight** — skill improvement is owned by the `evolve` skill (learnings.md → durable changes), which runs on its own cadence/on-demand. Surface a confirmed skill-improvement as an `evolve` candidate in the summary instead of editing the skill here. (Trimmed 2026-05-17: nightly ad-hoc skill editing was redundant with `evolve` per Harrison's Evolving Skills framework.)
 
 ## Variables
 

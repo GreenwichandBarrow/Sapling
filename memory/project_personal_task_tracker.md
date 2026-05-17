@@ -23,7 +23,7 @@ When Kay wants a new tracker (yearly cycle, after a major schema rework, etc.), 
 
 The tracker has **BOTH surfaces**:
 
-1. **`Week` planning tab** — the Sunday canvas, ALL 7 days visible Sun→Sat, one block per day side by side. **Leftmost in the strip (index 0, before `Sun`).** This is where `build-week` rebuilds/clears + stamps the Recurring Template, and where Kay lays out / finalizes the whole week.
+1. **`Week` planning tab** — the Sunday canvas, ALL 7 days visible Sun→Sat, one block per day side by side. **Leftmost in the strip (index 0, before `Sun`).** This is where `build-week` rebuilds/clears + stamps the Recurring Weekly To Dos, and where Kay lays out / finalizes the whole week.
 2. **7 permanent day tabs** (`Sun Mon Tue Wed Thu Fri Sat`, immediately after `Week`) — the calm, large-font daily *execution* surface. Kay works these Mon–Sat. They are **NOT auto-populated** until `distribute-week` fans the finalized Week plan out into them.
 
 Rationale: the original single "Live Week" 7-day-pair grid (small text, 7 days competing) drove Kay's overwhelm. The first rebuild over-corrected by deleting the weekly surface entirely (day-tabs-only), which removed her planning canvas. The corrected binding model keeps both: plan on the Week tab, execute on the day tabs. Converged via `/socrates` (`brain/outputs/2026-05-17-discussion-daily-tab-tracker-rebuild.md`); plan `synthetic-bubbling-snowglobe` (see its ⚠️ DESIGN CORRECTION block).
@@ -34,7 +34,7 @@ Rationale: the original single "Live Week" 7-day-pair grid (small text, 7 days c
 
 **Week boundary = Sunday** (`today - timedelta(days=(today.weekday()+1)%7)` → Sun..Sat).
 
-**Sunday ceremony** (in `/goodmorning`, NOT `goodnight`): `report` (per-day carryover across 7 day tabs) → Kay walks each carryover → `archive-todo` (auto `sync-done-status` across 7 tabs) → **`build-week`** (snapshot Week tab + `_donut_data` + To Do → combined far-right `archive_{Sun-date}` tab values-only of the prior Week tab → clear all 7 day-blocks on the **Week tab** → re-title Week row 1 + per-day header dates → stamp Recurring Template **onto the Week tab**; day tabs untouched) → Kay finalizes the full week on the Week tab (approved items via `promote`/`schedule-to-day-slot`/`move-day-item` or direct entry) → **`distribute-week`** (fan finalized Week plan → 7 day tabs; collision-aware, snapshot+trace) → `reformat` if needed. Carryover is **manual only** — no auto-carry.
+**Sunday ceremony** (in `/goodmorning`, NOT `goodnight`): `report` (per-day carryover across 7 day tabs) → Kay walks each carryover → `archive-todo` (auto `sync-done-status` across 7 tabs) → **`build-week`** (snapshot Week tab + `_donut_data` + To Do → combined far-right `archive_{Sun-date}` tab values-only of the prior Week tab → clear all 7 day-blocks on the **Week tab** → re-title Week row 1 + per-day header dates → stamp Recurring Weekly To Dos **onto the Week tab**; day tabs untouched) → Kay finalizes the full week on the Week tab (approved items via `promote`/`schedule-to-day-slot`/`move-day-item` or direct entry) → **`distribute-week`** (fan finalized Week plan → 7 day tabs; collision-aware, snapshot+trace) → `reformat` if needed. Carryover is **manual only** — no auto-carry.
 
 **Scripts:** Week-tab builder `scripts/build_week_tab.py` (one-shot; `--dry-run`, `--no-populate`; creates the leftmost Week tab + reverse-populates from the day tabs). Day-tab builder `scripts/build_day_tabs.py` (idempotent; `--dry-run`, `--donuts-only`; only (re)writes structure/formatting, never clears content). One-shot cutover verb `task_tracker.py migrate` (dry-run default; never runs destructive teardown — human-supervised). `build_donut_charts.py` (single-grid) superseded. `_donut_data`: 7 rows, `=COUNTIF('Sun'!A13:A27,TRUE)` / `=COUNTA('Sun'!B13:B27)-COUNTIF(...)`.
 
@@ -68,7 +68,7 @@ Rationale: the original single "Live Week" 7-day-pair grid (small text, 7 days c
 4. **Projects** — index of *active* time-bound projects with Project / Entity (dropdown) / Status (dropdown: Plan Needed / Active / On hold / Done) / Start / Target / Tab hyperlink / Notes. Currently holds: Myself Renewed Healthcare, Deal Aggregator Expansion.
 5. **Myself Renewed Healthcare** — first Gantt-project tab. 10 milestones × 16 weekly columns. Each timeline cell is a native checkbox; ticking fills the cell blush-pink (entity color). Building a contiguous run of ticks visually creates a Gantt bar.
 
-Plus: **Deal Aggregator Expansion** (Gantt, 12 weeks from 2026-05-11, G&B sage). **Completed To Do** (created by `archive-todo` on first run, sweeps completed To Do rows). **Recurring Template** (added 2026-05-15, sheetId `1997242109` — see dedicated section below). Archive tabs `archive_{Mmm D-D}` accumulate from each Sunday rollover, parked far-right.
+Plus: **Deal Aggregator Expansion** (Gantt, 12 weeks from 2026-05-11, G&B sage). **Completed To Do** (created by `archive-todo` on first run, sweeps completed To Do rows). **Recurring Weekly To Dos** (added 2026-05-15, sheetId `1997242109` — see dedicated section below). Archive tabs `archive_{Mmm D-D}` accumulate from each Sunday rollover, parked far-right.
 
 ## Build scripts (in this repo)
 
@@ -114,14 +114,14 @@ Triggered by `goodnight` on Sunday evening. The `archive-todo` call MUST precede
 2. Duplicates it via `duplicateSheet` API to `archive_{old-label}` and parks at far-right of tab strip.
 3. Renames the original to next week's label (Monday edge case handled).
 4. Clears habit checkboxes, priority statuses, priority task text, notes.
-5. **Stamps the Recurring Template tab onto the new week's day-slots** (added 2026-05-15). Reads every row of `Recurring Template`, calls `_stamp_recurring_template(client, meta, new_label)` which mirrors `schedule-to-day-slot` semantics with `force=False`. Explicit-slot rows pin; blank-slot rows auto-pick. Slot conflicts log + skip (Kay resolves manually). Bypass with `--skip-recurring`. Preview the whole ceremony (no writes) with `--dry-run`.
+5. **Stamps the Recurring Weekly To Dos tab onto the new week's day-slots** (added 2026-05-15). Reads every row of `Recurring Weekly To Dos`, calls `_stamp_recurring_template(client, meta, new_label)` which mirrors `schedule-to-day-slot` semantics with `force=False`. Explicit-slot rows pin; blank-slot rows auto-pick. Slot conflicts log + skip (Kay resolves manually). Bypass with `--skip-recurring`. Preview the whole ceremony (no writes) with `--dry-run`.
 6. Writes a trace (including recurring-stamp summary); (optionally) posts a one-liner to Slack `#operations`.
 
-## Recurring Template tab (built 2026-05-15 — option (b))
+## Recurring Weekly To Dos tab (built 2026-05-15 — option (b))
 
 The tracker has no native recurrence primitive in Google Sheets, so recurrence is layered in via a dedicated tab + an extension to the Sunday `archive` ceremony. Option (b) chosen over (a) hardcoding and (c) per-row flagging — keeps recurrence config out of code and lets Kay edit through the Sheet UI like any other tab.
 
-**Tab:** `Recurring Template` (sheetId `1997242109`), positioned at index 3 (after `To Do Long Term`, before `Projects` and archives).
+**Tab:** `Recurring Weekly To Dos` (sheetId `1997242109`), positioned at index 3 (after `To Do Long Term`, before `Projects` and archives).
 
 **Schema:**
 
@@ -165,7 +165,7 @@ Header row formatted sage-dark + white bold. Day, Slot, Type columns have data v
 - **Stale-projects detection in `report` not yet wired** — placeholder in code, requires per-Gantt-tab week-cell scan with date heuristic. Defer to next iteration.
 - **`reformat` is additive only** — duplicate CF rules can stack if run repeatedly. Manual cleanup in UI if they accumulate. Future enhancement: read existing rules + delete them first.
 - **Legacy Excel `TO DO 4.26.26.xlsx`** still in Drive folder — Kay decides when to archive/rename. Don't touch.
-- ~~**Weekly recurring items not codified**~~ — RESOLVED 2026-05-15 by Recurring Template tab + `archive` extension (option b). See "Recurring Template tab" section above.
+- ~~**Weekly recurring items not codified**~~ — RESOLVED 2026-05-15 by Recurring Weekly To Dos tab + `archive` extension (option b). See "Recurring Weekly To Dos tab" section above.
 
 ## How to add a new Gantt project later
 

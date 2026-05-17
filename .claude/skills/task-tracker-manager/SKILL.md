@@ -18,20 +18,20 @@ Architecture lives in `memory/project_personal_task_tracker.md`. Update that mem
 **Sheet ID env override:** Scripts read `TRACKER_SHEET_ID` from env if set, otherwise default to the constant above. Future rebuilds: update the constant + set `TRACKER_SHEET_ID` to the new id.
 
 **Architecture (2026-05-17 BOTH-surfaces model — design-corrected):** The tracker has **BOTH** a `Week` planning tab AND 7 day tabs.
-- **`Week` tab** — the Sunday planning canvas, ALL 7 days visible Sun→Sat, one block per day side by side, **leftmost in the strip (index 0, before `Sun`)**. `build-week` rebuilds/clears it + stamps the Recurring Template onto it; Kay lays out / finalizes the whole week here. Layout: col 0 = habit/notes label; for day i (0=Sun..6=Sat) status checkbox col `1+2*i`, task col `2+2*i`. Row 1 merged title `WEEK OF May 17-23`, row 5 `HABIT TRACKER`, row 6 Sun..Sat sub-headers, rows 7–14 eight habit rows, row 15 SUNDAY..SATURDAY day headers (carry dates), rows 23–37 fifteen priority slots/day, rows 40–47 notes block. No per-day donut (planning canvas, kept simple). Builder: `scripts/build_week_tab.py` (one-shot; `--dry-run`, `--no-populate`).
+- **`Week` tab** — the Sunday planning canvas, ALL 7 days visible Sun→Sat, one block per day side by side, **leftmost in the strip (index 0, before `Sun`)**. `build-week` rebuilds/clears it + stamps the Recurring Weekly To Dos onto it; Kay lays out / finalizes the whole week here. Layout: col 0 = habit/notes label; for day i (0=Sun..6=Sat) status checkbox col `1+2*i`, task col `2+2*i`. Row 1 merged title `WEEK OF May 17-23`, row 5 `HABIT TRACKER`, row 6 Sun..Sat sub-headers, rows 7–14 eight habit rows, row 15 SUNDAY..SATURDAY day headers (carry dates), rows 23–37 fifteen priority slots/day, rows 40–47 notes block. No per-day donut (planning canvas, kept simple). Builder: `scripts/build_week_tab.py` (one-shot; `--dry-run`, `--no-populate`).
 - **7 day tabs** (`Sun Mon Tue Wed Thu Fri Sat`, immediately after `Week`) — the calm, large-font daily *execution* surface. Kay works these Mon–Sat. **NOT auto-populated until `distribute-week` fans the finalized Week plan out into them.** Per-day layout: row 1 merged title `SUNDAY · May 17` (20pt), rows 4–11 habit tracker (8 habits, A=checkbox), row 12 column headers, rows 13–27 fifteen priority slots (A=native checkbox · B=Task 17pt · C=Type dropdown · D=Project dropdown · E=Notes), rows 30–37 free-notes block, one per-day donut chart anchored col G row 1. Builder: `scripts/build_day_tabs.py` (idempotent; `--dry-run`, `--donuts-only`).
 
 Sunday flow: `build-week` (Week tab) → Kay finalizes the week on the Week tab → `distribute-week` (fan to day tabs) → Kay works the day tabs. (The first day-tab rebuild WRONGLY deleted the weekly surface; corrected same day to BOTH surfaces.)
 
 **Per-day %-done display:** One native donut chart (pie + `pieHole=0.5`, ~160px, anchored col G row 1) per day tab. Math lives on the hidden helper tab `_donut_data` (header `Day | Done | Left`, 7 rows, `=COUNTIF('Sun'!A13:A27,TRUE)` / `=COUNTA('Sun'!B13:B27)-COUNTIF(...)`). Formulas/charts reference fixed ranges on the permanent day tabs, so `build-week`'s value-clear does not break them. Legacy `scripts/build_donut_charts.py` (single-grid) is superseded by `build_day_tabs.py`.
 
-**Recurring Template tab (added 2026-05-15):** A dedicated tab `Recurring Template` (sheetId `1997242109`, positioned after `To Do Long Term`, before `Projects` and archives) holds rows the Sunday `build-week` ceremony stamps onto every new week. Schema:
+**Recurring Weekly To Dos tab (added 2026-05-15; renamed from "Recurring Template" + set HIDDEN 2026-05-17):** A dedicated **hidden, Claude-managed back-end** tab `Recurring Weekly To Dos` (sheetId `1997242109`) holds rows the Sunday `build-week` ceremony stamps onto every new week. Hidden visibility does NOT block Sheets API reads/writes — `find_tab` + `get_values` work normally. Code finds it by the `TAB_RECURRING_TEMPLATE` constant (name-based, not sheetId) — keep the constant in sync if renamed again. Schema:
 
 | Day | Slot | Task | Type | Project | Notes |
 |---|---|---|---|---|---|
 | Mon..Sun (dropdown) | 1..15 OR blank (blank = auto-pick first empty slot) | free text | Work / Home (dropdown) | free text (G&B, Kai Grey, etc.) | free text |
 
-Edit the tab from the Sheet UI directly (Kay) or via `recurring-add` / `recurring-remove` verbs (Claude). The `build-week` verb reads this tab and stamps each row onto the 7 clean day tabs after the slots are cleared. Occupied-slot conflicts log + skip (Kay resolves manually). Seeded 2026-05-15 with 4 weekly recurring G&B items: Mon — Process payroll, Mon — Process conference registrations, Wed — Niche intel review, Fri — Weekly review (system health + M&A + budget).
+It is hidden — Kay treats it as Claude-owned infrastructure; primary edit path is the `recurring-add` / `recurring-remove` verbs (Claude). Kay can still unhide + edit in the Sheet UI if she wants. The `build-week` verb reads this tab and stamps each row onto the 7 clean day tabs after the slots are cleared. Occupied-slot conflicts log + skip (Kay resolves manually). Seeded 2026-05-15 with 4 weekly recurring G&B items: Mon — Process payroll, Mon — Process conference registrations, Wed — Niche intel review, Fri — Weekly review (system health + M&A + budget).
 
 ## When to invoke
 
@@ -39,7 +39,7 @@ Edit the tab from the Sheet UI directly (Kay) or via `recurring-add` / `recurrin
 - Kay says "move {todo-row} to {day} slot {N}" (To Do → week tab) → **promote**
 - Kay says "schedule X for Wed" / "X goes on Friday" / direct day-slot drop with no To Do source row → **schedule-to-day-slot**
 - Kay says "sync done items" / "reconcile weekly to To Do" / "the weekly slots aren't matching To Do" → **sync-done-status**
-- Sunday morning as part of `goodmorning` → **build-week** (weekly rebuild ceremony — targets the **Week planning tab**: writes a combined far-right `archive_{Sun-date}` tab of the prior Week tab, clears all 7 day-blocks on the Week tab + re-titles it, stamps the Recurring Template **onto the Week tab**; day tabs untouched; `--skip-recurring` to bypass; `--dry-run` to preview). `archive` is a DEPRECATED alias that delegates here.
+- Sunday morning as part of `goodmorning` → **build-week** (weekly rebuild ceremony — targets the **Week planning tab**: writes a combined far-right `archive_{Sun-date}` tab of the prior Week tab, clears all 7 day-blocks on the Week tab + re-titles it, stamps the Recurring Weekly To Dos **onto the Week tab**; day tabs untouched; `--skip-recurring` to bypass; `--dry-run` to preview). `archive` is a DEPRECATED alias that delegates here.
 - After Kay finalizes the week on the Week tab (Sunday) → **distribute-week** (fans the finalized Week plan OUT into the 7 day tabs; collision-aware, `--dry-run` / `--force` / `--day {X}`)
 - Kay says "move {day} slot N to {day}" / approves a carryover during the Sunday walkthrough → **move-day-item** (`--state completed|incomplete|added|deleted`)
 - Sunday morning as part of `goodmorning` → **archive-todo** (auto-runs `sync-done-status` across the 7 day tabs first, then sweeps ✅ rows out of To Do into the Completed To Do running list; safe to run any day; skip the auto-sync with `--skip-sync`). Runs BEFORE `build-week` so the slot→To Do reconciliation sees the still-populated day tabs.
@@ -112,7 +112,7 @@ python3 scripts/task_tracker.py build-week [--skip-recurring] [--dry-run]
 3. Writes ONE combined far-right `archive_{Sun-date}` tab capturing the prior week's **Week tab** verbatim (values-only flat archive). The Week tab is NOT destroyed — it is cleared + re-titled in place; title/headers/labels/dropdowns/CF/checkbox-validation formatting is preserved.
 4. Clears all 7 day-blocks on the Week tab: habit checkboxes, 15 priority slots/day, notes block.
 5. Re-titles the Week tab's row-1 title to `WEEK OF {Sun-Sat}` + re-stamps the per-day header-row dates.
-6. **Stamps the Recurring Template onto the Week tab** (same collision-refuse logic — explicit slot pins, blank slots auto-pick first empty, conflicts warn+skip). `--skip-recurring` bypasses. `--dry-run` previews end-to-end with no writes.
+6. **Stamps the Recurring Weekly To Dos onto the Week tab** (same collision-refuse logic — explicit slot pins, blank slots auto-pick first empty, conflicts warn+skip). `--skip-recurring` bypasses. `--dry-run` previews end-to-end with no writes.
 7. **The 7 day tabs are NOT touched.** Kay finalizes the week on the Week tab; `distribute-week` fans it out afterward. Carryover is **NOT auto-copied** — `report` surfaces incompletes; Kay approves each move via `move-day-item`/`promote`.
 
 `archive` is a DEPRECATED alias → `build-week` (prints a deprecation notice on stderr, then delegates).
@@ -126,7 +126,7 @@ python3 scripts/task_tracker.py distribute-week [--dry-run] [--force] [--day Wed
 Run AFTER Kay finalizes the week on the Week tab. Reads each Week-grid day-block's 15 priority slots (status + task) + habit checkboxes and writes them into the corresponding day tab's slots (rows 13–27) + habits (rows 4–11).
 
 - **Collision-aware:** refuses to overwrite a non-empty day-tab slot the Week plan changes (or that the Week plan leaves empty) unless `--force` — so re-running after a manual day-tab edit is safe by default. `--dry-run` reports planned writes + collisions; `--day {Sun..Sat}` limits to one day.
-- Task text only is carried onto/off the Week canvas (compact); day-tab Type/Project/Notes are reset to blank on distribute (Kay enriches on the day tab, or recurring metadata was set on the Recurring Template). Snapshots every target day tab + the Week tab; always traces.
+- Task text only is carried onto/off the Week canvas (compact); day-tab Type/Project/Notes are reset to blank on distribute (Kay enriches on the day tab, or recurring metadata was set on the Recurring Weekly To Dos). Snapshots every target day tab + the Week tab; always traces.
 
 ### 3a. move-day-item (manual carryover between day tabs)
 
@@ -206,7 +206,7 @@ python3 scripts/task_tracker.py projects-create-gantt \
 
 ### 7. recurring-add
 
-Append a row to the `Recurring Template` tab. The row is stamped onto every future Sunday `build-week` ceremony. Decision-content (changes future weeks) — emits a trace.
+Append a row to the `Recurring Weekly To Dos` tab. The row is stamped onto every future Sunday `build-week` ceremony. Decision-content (changes future weeks) — emits a trace.
 
 ```bash
 python3 scripts/task_tracker.py recurring-add \
@@ -226,13 +226,13 @@ python3 scripts/task_tracker.py recurring-add \
 
 ### 8. recurring-remove
 
-Clear a row on the `Recurring Template` tab (preserves row numbering for snapshot rollback).
+Clear a row on the `Recurring Weekly To Dos` tab (preserves row numbering for snapshot rollback).
 
 ```bash
 python3 scripts/task_tracker.py recurring-remove --row 5
 ```
 
-- `--row` is the 1-based row number on the Recurring Template tab (row 1 is the header — refuse).
+- `--row` is the 1-based row number on the Recurring Weekly To Dos tab (row 1 is the header — refuse).
 - Refuses if the row is already empty.
 - Snapshots the row first, traces the removal.
 
@@ -329,7 +329,7 @@ When Kay says "add 'draft Calder follow-up' to To Do":
 | `goodmorning` (weekday) | `report` (overdue + today's empty slots) + batch `append` if open loops | Capture pass at end of morning workflow |
 | `goodmorning` **Sunday** | `report` (full week-planning health: carryover, empty slots, stale items, stale Gantt) → walk-through with Kay → `promote`/`append` for each decision | **Canonical Sunday weekly-planning ceremony.** Drives the new-week tab setup. See `goodmorning.md` Step 6 Sunday overlay. |
 | Mid-day conversation | `append` / `promote` / `gantt-tick` / `sync-done-status` | On Kay's request |
-| `goodmorning` **Sunday** ceremony | `report` (carryover) → Kay walks each carryover (`move-day-item`) → `archive-todo` (auto `sync-done-status` across 7 day tabs) → `build-week` (Week tab: archive + clear + re-title + stamp recurring) → Kay finalizes the week on the Week tab (approved promotions / direct entry) → `distribute-week` (fan Week → 7 day tabs) → `reformat` if needed | The single Sunday-evening `goodnight` `archive` trigger is RETIRED. Order matters: `archive-todo` (and its `sync-done-status` pre-step) must run BEFORE `build-week` so the slot→To Do reconciliation sees the still-populated day tabs; `distribute-week` runs AFTER Kay finalizes the Week tab. **Recurring items come from the `Recurring Template` tab** — Kay edits it in the Sheet UI or via `recurring-add` / `recurring-remove`, NOT hardcoded in code. |
+| `goodmorning` **Sunday** ceremony | `report` (carryover) → Kay walks each carryover (`move-day-item`) → `archive-todo` (auto `sync-done-status` across 7 day tabs) → `build-week` (Week tab: archive + clear + re-title + stamp recurring) → Kay finalizes the week on the Week tab (approved promotions / direct entry) → `distribute-week` (fan Week → 7 day tabs) → `reformat` if needed | The single Sunday-evening `goodnight` `archive` trigger is RETIRED. Order matters: `archive-todo` (and its `sync-done-status` pre-step) must run BEFORE `build-week` so the slot→To Do reconciliation sees the still-populated day tabs; `distribute-week` runs AFTER Kay finalizes the Week tab. **Recurring items come from the `Recurring Weekly To Dos` tab** — Kay edits it in the Sheet UI or via `recurring-add` / `recurring-remove`, NOT hardcoded in code. |
 | Friday briefing | `report` (full health, including carryover) | Part of weekly-tracker context |
 
 ## Failure modes to watch

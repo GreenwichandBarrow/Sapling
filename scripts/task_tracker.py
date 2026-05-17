@@ -88,7 +88,7 @@ TAB_TODO = "To Do"
 TAB_TODO_LONG_TERM = "To Do Long Term"
 TAB_PROJECTS = "Projects"
 TAB_COMPLETED_TODO = "Completed To Do"
-TAB_RECURRING_TEMPLATE = "Recurring Template"
+TAB_RECURRING_TEMPLATE = "Recurring Weekly To Dos"
 
 # Recurring Template column layout (0-based)
 RT_COL_DAY = 0

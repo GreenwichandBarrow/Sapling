@@ -19,6 +19,22 @@ Built 2026-04-26 to replace Motion (which generated too much noise). **Graduated
 
 When Kay wants a new tracker (yearly cycle, after a major schema rework, etc.), follow her naming convention `TO DO M.DD.YY` in the STRATEGIC PLANNING folder. To create one: re-run `/tmp/tracker-migration/build_sheet.py` with `NEW_SHEET_TITLE` updated.
 
+## 2026-05-17 — Day-tab rebuild (CURRENT ARCHITECTURE)
+
+The single "Live Week" 7-day-pair grid is RETIRED. Replaced by **7 permanent, writable, large-font day tabs** (`Sun Mon Tue Wed Thu Fri Sat`, leftmost in the strip, structurally identical, only the title row differs). Rationale: the week-at-a-glance grid (small text, 7 days competing) drove Kay's overwhelm; she now plans the week Sunday and lives only in the current day's tab. Converged via `/socrates` (`brain/outputs/2026-05-17-discussion-daily-tab-tracker-rebuild.md`); plan `synthetic-bubbling-snowglobe`.
+
+**Per-day-tab layout:** row 1 merged title `SUNDAY · May 17` (20pt bold, sage-dark) · row 3 `HABITS` · rows 4–10 seven habit rows (A=checkbox, B:E merged label 14pt) · row 12 column headers (✓|Task|Type|Project|Notes, 12pt) · rows 13–27 fifteen priority slots (A=native checkbox · B=Task **17pt** · C=Type dropdown · D=Project dropdown · E=Notes; ~34px) · row 29 `NOTES` · rows 30–37 free-notes block (A:E merged/row) · one per-day donut (pieHole=0.5, ~160px) anchored col G row 1.
+
+**Week boundary = Sunday** (`today - timedelta(days=(today.weekday()+1)%7)` → Sun..Sat).
+
+**Sunday ceremony** (in `/goodmorning`, NOT `goodnight`): `report` (per-day carryover) → Kay walks each carryover (`move-day-item`) → `archive-todo` (auto `sync-done-status` across 7 tabs) → `build-week` (combined far-right `archive_{Sun-date}` tab values-only + clear + re-title 7 tabs + stamp Recurring Template) → approved promotions → `reformat` if needed. Carryover is **manual only** — no auto-carry.
+
+**Scripts:** builder `scripts/build_day_tabs.py` (idempotent; `--dry-run`, `--donuts-only`; only (re)writes structure/formatting, never clears content). One-shot cutover verb `task_tracker.py migrate` (dry-run default; never runs the destructive teardown itself — human-supervised). `build_donut_charts.py` (single-grid) superseded. `_donut_data` restructured: 7 rows, `=COUNTIF('Sun'!A13:A27,TRUE)` / `=COUNTA('Sun'!B13:B27)-COUNTIF(...)`.
+
+**Verb changes:** `archive` → DEPRECATED alias of `build-week` (delegates + stderr notice). New verbs `build-week`, `move-day-item` (`--state completed|incomplete|added|deleted`), `migrate`. `promote`/`schedule-to-day-slot`/`sync-done-status`/`report`/`reformat` refactored to the 7 single-column day tabs (slots rows 13–27, habits rows 4–10, status col A, task col B).
+
+**Migration cutover (Sun 2026-05-17, human-supervised):** snapshot all tabs → legacy `sync-done-status` against OLD `May 11-17` grid → `archive-todo` → `build_day_tabs.py` → duplicate `May 11-17` → `archive_May 11-17` far-right → delete/hide retired `Today` (sheetId 433823170) + old grid AFTER archive exists → `report` → Kay walks carryover. The old single-grid `LIVE_*` constants + `find_live_week_tab()`/`current_week_label()` are retained ONLY for the migration's pre-teardown read; remove post-cutover.
+
 ## Migration (2026-05-12) — Excel → Sheets
 
 **Donut-chart restoration (same day, evening pass).** Excel→Sheets migration originally inherited the no-chart constraint (openpyxl renders xlsx-only chart objects that broke on Sheets import) and kept big-% text only in rows 17–21. Kay flagged the text-only display as visually inferior to her original aesthetic intent (real donut shape with hole). Donut charts rebuilt via Sheets API native `pieChart` objects with `pieHole=0.5` — 7 charts, one per day, anchored at row 17 of each day-pair's left column. Math moved to hidden helper tab `_donut_data`. Build script: `scripts/build_donut_charts.py`.
@@ -34,9 +50,9 @@ When Kay wants a new tracker (yearly cycle, after a major schema rework, etc.), 
 
 **Old Excel left in place.** Kay decides when to archive/rename it; do not auto-delete.
 
-## Architecture — 5 tabs
+## Architecture — 5 tabs  (⚠️ SUPERSEDED 2026-05-17 — see "Day-tab rebuild" above; the single Live Week tab no longer exists. Section kept for historical context only.)
 
-1. **Live week tab** — habit tracker (7 habits, Mon-Sun grid) + day grid (Mon-Sun, **native donut chart per day** at rows 17-21 (pie + pieHole=0.5, driven by hidden helper tab `_donut_data`), **15 priority slots** per day, slim 8-row notes area). Each day spans 2 sub-columns: small status + wide task. Priority checkbox sits LEFT of task text in same row.
+1. **Live week tab** [RETIRED 2026-05-17] — habit tracker (7 habits, Mon-Sun grid) + day grid (Mon-Sun, **native donut chart per day** at rows 17-21 (pie + pieHole=0.5, driven by hidden helper tab `_donut_data`), **15 priority slots** per day, slim 8-row notes area). Each day spans 2 sub-columns: small status + wide task. Priority checkbox sits LEFT of task text in same row.
    - **Tab name = current Mon-Sun range** (e.g. `May 11-17`). Renamed each Sunday by `task_tracker.py archive`.
 2. **To Do** — single capture point for all tasks. Columns: Status (checkbox) / Task / Type (dropdown: Work or Home) / Project (dropdown: G&B, Kai Grey, Panthera Grey, Myself Renewed, Home — free text allowed) / Due (date) / Notes. Header row frozen.
 3. **To Do Long Term** — intents/someday items without hard timelines. Status dropdown options: Idea / Active / On hold / Promoted / Done. When ready to plan, promote to a Projects tab.

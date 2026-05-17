@@ -4,13 +4,17 @@ Migrated 2026-05-12 from openpyxl/xlsx to Google Sheets API. Same CLI surface.
 
 Subcommands:
     append                  Add a row to the To Do tab.
-    promote                 Move a To Do row into a specific day-slot on the live week tab.
-    schedule-to-day-slot    Direct write to a day-slot (no To Do source row required).
-    sync-done-status        Reconcile checked weekly slots → matching To Do rows (text-match).
-    archive                 Sunday rollover ceremony — duplicate live week tab to a
-                            far-right archive tab, rename live to next week, clear data,
-                            then stamp the Recurring Template tab onto the new week's
-                            slots (--skip-recurring to bypass; --dry-run to preview).
+    promote                 Move a To Do row into a specific day TAB's priority slot.
+    schedule-to-day-slot    Direct write to a day TAB slot (no To Do source row required).
+    sync-done-status        Reconcile checked day-tab slots → matching To Do rows (text-match).
+    build-week              Sunday rebuild ceremony (day-tab model) — combined archive
+                            tab + clear/re-title 7 day tabs + stamp Recurring Template
+                            (--skip-recurring to bypass; --dry-run to preview).
+    archive                 DEPRECATED 2026-05-17 — alias of build-week.
+    move-day-item           Move/copy a slot item between day tabs (manual carryover:
+                            completed | incomplete | added | deleted).
+    migrate                 2026-05-17 one-shot cutover (dry-run by default; never runs
+                            the destructive teardown itself).
     archive-todo            Sweep checked rows from To Do tab into a running
                             "Completed To Do" tab (created on first run). Auto-runs
                             sync-done-status first (skip with --skip-sync).
@@ -134,9 +138,22 @@ PJ_MAX_ROWS = 50
 TYPE_OPTIONS = ["Work", "Home"]
 PROJECT_OPTIONS = ["G&B", "Kai Grey", "Panthera Grey", "Myself Renewed", "Home"]
 
-# Live Week — 7 day-pairs, each (status_col_idx, task_col_idx), 0-based
-LIVE_DAY_STAT = {i: 1 + i * 2 for i in range(7)}
-LIVE_DAY_TASK = {i: 2 + i * 2 for i in range(7)}
+# --- DEPRECATED 2026-05-17: single "Live Week" 7-day-pair grid ---------------
+# The single Live Week tab (7 day-blocks in one tab) is retired in favor of 7
+# permanent single-column day tabs (Sun..Sat). These constants + the
+# `find_live_week_tab()` / `current_week_label()` helpers below are kept ONLY for
+# the one-shot migration's pre-teardown `sync-done-status` read against the OLD
+# `May 11-17` grid (migrate path). No verb in the new model uses them. Remove
+# after the 2026-05-17 cutover is confirmed.
+LIVE_DAY_STAT = {i: 1 + i * 2 for i in range(7)}  # DEPRECATED
+LIVE_DAY_TASK = {i: 2 + i * 2 for i in range(7)}  # DEPRECATED
+LIVE_HABIT_FIRST_ROW = 7   # DEPRECATED rows 7..13 = 7 habits (old grid)
+LIVE_HABIT_LAST_ROW = 13   # DEPRECATED
+LIVE_SLOT_FIRST_ROW = 23   # DEPRECATED rows 23..37 = 15 priority slots (old grid)
+LIVE_SLOT_LAST_ROW = 37    # DEPRECATED
+LIVE_NOTES_FIRST_ROW = 40  # DEPRECATED
+LIVE_NOTES_LAST_ROW = 47   # DEPRECATED
+LIVE_BIG_PCT_ROW = 17      # DEPRECATED merged 17..21 anchored at row 17
 
 DAY_BY_NAME = {
     "mon": 0, "monday": 0,
@@ -150,14 +167,42 @@ DAY_BY_NAME = {
 DAY_LABELS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 WEEKDAY_NAMES_FULL = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
-# Live Week rows (1-based for A1 references)
-LIVE_HABIT_FIRST_ROW = 7   # rows 7..13 = 7 habits
-LIVE_HABIT_LAST_ROW = 13
-LIVE_SLOT_FIRST_ROW = 23   # rows 23..37 = 15 priority slots
-LIVE_SLOT_LAST_ROW = 37
-LIVE_NOTES_FIRST_ROW = 40
-LIVE_NOTES_LAST_ROW = 47
-LIVE_BIG_PCT_ROW = 17      # merged 17..21 anchored at row 17
+# --- Day-tab model (2026-05-17 rebuild) --------------------------------------
+# Seven permanent, writable, large-font day tabs, leftmost in the strip,
+# ordered Sun → Sat. Each tab is structurally identical (only the title row
+# differs). Kay plans the week Sunday, then lives only in the current day's tab.
+DAY_TAB_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+# Map a python weekday-anchored day index (Mon=0..Sun=6, as in DAY_BY_NAME) to
+# the day-tab name. DAY_BY_NAME maps "sun"→6 etc; DAY_LABELS[idx] gives 3-letter.
+DAY_IDX_TO_TAB = {DAY_BY_NAME[k.lower()]: DAY_LABELS[DAY_BY_NAME[k.lower()]]
+                  for k in ("mon", "tue", "wed", "thu", "fri", "sat", "sun")}
+
+# Per-day-tab layout (1-based rows for A1 references)
+DAY_TITLE_ROW = 1            # merged A1:E1 "SUNDAY · May 17"
+DAY_HABITS_HEADER_ROW = 3    # "HABITS"
+DAY_HABIT_FIRST_ROW = 4      # rows 4..10 = 7 habit rows
+DAY_HABIT_LAST_ROW = 10
+DAY_COL_HEADER_ROW = 12      # ✓ | Task | Type | Project | Notes
+DAY_SLOT_FIRST_ROW = 13      # rows 13..27 = 15 priority slots
+DAY_SLOT_LAST_ROW = 27
+DAY_NOTES_HEADER_ROW = 29    # "NOTES"
+DAY_NOTES_FIRST_ROW = 30     # rows 30..37 = free-notes block
+DAY_NOTES_LAST_ROW = 37
+DAY_GRID_ROWS = 40           # generous; chart anchors col G row 1
+DAY_GRID_COLS = 12           # A..E content + G chart anchor headroom
+
+# Per-day-tab columns (0-based)
+DAY_COL_STATUS = 0   # A — native checkbox
+DAY_COL_TASK = 1     # B — Task, 17pt
+DAY_COL_TYPE = 2     # C — Type dropdown
+DAY_COL_PROJECT = 3  # D — Project dropdown
+DAY_COL_NOTES = 4    # E — Notes free text
+DAY_COL_LAST = DAY_COL_NOTES
+DAY_HEADERS = ["✓", "Task", "Type", "Project", "Notes"]
+DAY_SLOT_COUNT = DAY_SLOT_LAST_ROW - DAY_SLOT_FIRST_ROW + 1  # 15
+DAY_HABIT_COUNT = DAY_HABIT_LAST_ROW - DAY_HABIT_FIRST_ROW + 1  # 7
+
+TAB_DONUT_DATA = "_donut_data"
 
 HABITS_DEFAULT = [
     "Water & hygiene",
@@ -310,6 +355,9 @@ def hex_to_rgb(hexstr: str) -> dict:
 
 
 def current_week_label(today: date | None = None) -> str:
+    """DEPRECATED 2026-05-17. Monday-anchored single-week label. Retained only
+    for migration teardown bookkeeping / archive-tab naming. New model uses
+    `week_dates()` (Sunday boundary) + per-day title rows."""
     if today is None:
         today = date.today()
     monday = today - timedelta(days=today.weekday())
@@ -320,7 +368,9 @@ def current_week_label(today: date | None = None) -> str:
 
 
 def find_live_week_tab(metadata: dict) -> dict | None:
-    """Find the live week tab (Mon-Sun label) — skips archive_* tabs."""
+    """DEPRECATED 2026-05-17. Finds the OLD single Live Week tab (month-prefixed
+    title). Retained ONLY for the migration's pre-teardown sync against the
+    `May 11-17` grid. No new-model verb calls this."""
     months = ("Jan ", "Feb ", "Mar ", "Apr ", "May ", "Jun ", "Jul ", "Aug ",
               "Sep ", "Oct ", "Nov ", "Dec ")
     for s in metadata.get("sheets", []):
@@ -330,6 +380,67 @@ def find_live_week_tab(metadata: dict) -> dict | None:
         if any(title.startswith(m) for m in months):
             return s["properties"]
     return None
+
+
+# --------------------------------------------------------------- day-tab helpers
+
+def week_dates(today: date | None = None) -> list[date]:
+    """Return the 7 dates of the Sunday-boundary week containing `today`,
+    ordered Sun..Sat (index 0 = Sunday). Sunday boundary:
+    sunday = today - timedelta(days=(today.weekday()+1) % 7)
+    (Python weekday(): Mon=0..Sun=6; (wd+1)%7 gives days since Sunday)."""
+    if today is None:
+        today = date.today()
+    sunday = today - timedelta(days=(today.weekday() + 1) % 7)
+    return [sunday + timedelta(days=i) for i in range(7)]
+
+
+def day_title_text(day_name: str, d: date) -> str:
+    """Title-row string for a day tab, e.g. 'SUNDAY · May 17'."""
+    full = {
+        "Sun": "SUNDAY", "Mon": "MONDAY", "Tue": "TUESDAY", "Wed": "WEDNESDAY",
+        "Thu": "THURSDAY", "Fri": "FRIDAY", "Sat": "SATURDAY",
+    }[day_name]
+    return f"{full} · {d.strftime('%b')} {d.day}"
+
+
+def find_day_tab(metadata: dict, day_name: str) -> dict | None:
+    """Return the sheet `properties` dict for the permanent day tab `day_name`
+    (one of DAY_TAB_NAMES). None if absent (pre-migration)."""
+    return find_tab(metadata, day_name)
+
+
+def day_tab_range(day_name: str, col0: int, r1: int, r2: int | None = None) -> str:
+    """Build an A1 range on a day tab. `col0` 0-based column, `r1`/`r2` 1-based
+    rows. If r2 is None, a single-row span. Single column only (the day-tab
+    model is single-column-per-field)."""
+    cl = col_letter(col0)
+    if r2 is None:
+        return f"'{day_name}'!{cl}{r1}"
+    return f"'{day_name}'!{cl}{r1}:{cl}{r2}"
+
+
+def day_tab_block(day_name: str, c0: int, c1: int, r1: int, r2: int) -> str:
+    """Multi-column A1 range on a day tab (c0..c1 0-based inclusive)."""
+    return f"'{day_name}'!{col_letter(c0)}{r1}:{col_letter(c1)}{r2}"
+
+
+def _iter_day_tabs(metadata: dict):
+    """Yield (day_name, props_dict) for every permanent day tab present, in
+    Sun..Sat order. Skips any day tab not yet created (pre-migration tolerance)."""
+    for day_name in DAY_TAB_NAMES:
+        props = find_day_tab(metadata, day_name)
+        if props is not None:
+            yield day_name, props
+
+
+def _resolve_day_tab_name(arg_day: str) -> str:
+    """Map a --day arg (Mon..Sun, full or 3-letter, any case) to a day-tab name
+    in DAY_TAB_NAMES. Exits on unknown."""
+    idx = DAY_BY_NAME.get(arg_day.lower())
+    if idx is None:
+        sys.exit(f"task-tracker-manager: unknown day {arg_day!r}. Use Sun..Sat / Mon..Sun.")
+    return DAY_LABELS[idx]  # DAY_LABELS uses 3-letter Mon..Sun; all are in DAY_TAB_NAMES
 
 
 def find_tab(metadata: dict, name: str) -> dict | None:
@@ -445,121 +556,123 @@ def cmd_append(args) -> int:
 
 
 def cmd_promote(args) -> int:
-    day_idx = DAY_BY_NAME.get(args.day.lower())
-    if day_idx is None:
-        sys.exit(f"task-tracker-manager: unknown day {args.day!r}. Use Mon..Sun.")
-    if not (1 <= args.slot <= 15):
-        sys.exit("task-tracker-manager: --slot must be 1..15")
+    """Move a To Do row into a specific day TAB's priority slot (new day-tab model).
+
+    Writes [[False, task]] into A/B of the target day tab's slot row. Refuses to
+    overwrite an occupied slot. Leaves the To Do row in place, prepends a
+    `→ promoted to {day} slot {N} on {date}` marker to its Notes so it stays
+    visible but de-prioritized.
+    """
+    day_name = _resolve_day_tab_name(args.day)
+    if not (1 <= args.slot <= DAY_SLOT_COUNT):
+        sys.exit(f"task-tracker-manager: --slot must be 1..{DAY_SLOT_COUNT}")
 
     client = SheetsClient()
     meta = client.get_metadata()
-    week_props = find_live_week_tab(meta)
-    if week_props is None:
-        sys.exit("task-tracker-manager: live week tab not found")
-    week_title = week_props["title"]
+    if find_day_tab(meta, day_name) is None:
+        sys.exit(f"task-tracker-manager: day tab '{day_name}' not found — run build-week first")
 
     todo_row = args.todo_row
-    todo_range = f"'{TAB_TODO}'!B{todo_row}"  # Task cell
-    todo_vals = client.get_values(todo_range)
+    todo_vals = client.get_values(f"'{TAB_TODO}'!B{todo_row}")
     task_text = todo_vals[0][0] if todo_vals and todo_vals[0] else None
     if not task_text:
         sys.exit(f"task-tracker-manager: To Do row {todo_row} is empty")
 
-    sc_letter = col_letter(LIVE_DAY_STAT[day_idx])
-    tc_letter = col_letter(LIVE_DAY_TASK[day_idx])
-    slot_row = LIVE_SLOT_FIRST_ROW + args.slot - 1
-
-    existing_vals = client.get_values(f"'{week_title}'!{tc_letter}{slot_row}")
+    slot_row = DAY_SLOT_FIRST_ROW + args.slot - 1
+    task_cell = day_tab_range(day_name, DAY_COL_TASK, slot_row)
+    existing_vals = client.get_values(task_cell)
     existing = (existing_vals[0][0] if existing_vals and existing_vals[0] else "")
     if existing:
-        sys.exit(f'task-tracker-manager: refused promote — {args.day} slot {args.slot} '
+        sys.exit(f'task-tracker-manager: refused promote — {day_name} slot {args.slot} '
                  f'already contains "{existing}"')
 
-    # Snapshot both the source todo status cell and the destination slot pair
+    # Snapshot the source To Do row + destination slot A:E
+    dst_block = day_tab_block(day_name, DAY_COL_STATUS, DAY_COL_LAST, slot_row, slot_row)
     snap = snapshot_ranges(client, "promote", [
         f"'{TAB_TODO}'!A{todo_row}:F{todo_row}",
-        f"'{week_title}'!{sc_letter}{slot_row}:{tc_letter}{slot_row}",
+        dst_block,
     ])
 
-    # Write: destination task cell, destination status FALSE, source status → "→" marker
-    # Sheets has no native "→" status; we'll set the source status checkbox to FALSE
-    # and put "→" in the source notes column (Notes) as a moved indicator, leaving
-    # the row visible. Simpler: just leave source row alone except mark Notes.
-    # Better: use the existing "→" pattern by writing into the status cell as a STRING,
-    # but the status cell is a checkbox. We'll instead append a marker in Notes
-    # AND uncheck the box. The "→" indicator from the xlsx era is preserved as
-    # NOTES prefix.
-    # Update destination slot first
-    client.values_update(f"'{week_title}'!{sc_letter}{slot_row}:{tc_letter}{slot_row}",
-                         [[False, task_text]])
-    # Mark source row with a moved indicator in Notes (col F = TODO_COL_NOTES)
-    source_notes = client.get_values(f"'{TAB_TODO}'!F{todo_row}")
-    existing_notes = (source_notes[0][0] if source_notes and source_notes[0] else "")
-    marker = f"→ promoted to {args.day} slot {args.slot} on {date.today().isoformat()}"
-    new_notes = f"{marker}; {existing_notes}" if existing_notes and marker not in existing_notes else (existing_notes or marker)
+    # Carry Type/Project from the To Do row into the day-tab slot.
+    todo_full = client.get_values(f"'{TAB_TODO}'!A{todo_row}:F{todo_row}")
+    tr = todo_full[0] if todo_full and todo_full[0] else []
+    src_type = (tr[TODO_COL_TYPE] if len(tr) > TODO_COL_TYPE else "") or ""
+    src_proj = (tr[TODO_COL_PROJECT] if len(tr) > TODO_COL_PROJECT else "") or ""
+
+    # Write destination slot A:E = [unchecked, task, type, project, notes]
+    client.values_update(
+        dst_block,
+        [[False, task_text, src_type, src_proj, ""]],
+    )
+    # Mark source To Do row Notes (col F) with a moved indicator.
+    existing_notes = (tr[TODO_COL_NOTES] if len(tr) > TODO_COL_NOTES else "") or ""
+    marker = f"→ promoted to {day_name} slot {args.slot} on {date.today().isoformat()}"
+    new_notes = (f"{marker}; {existing_notes}"
+                 if existing_notes and marker not in existing_notes
+                 else (existing_notes or marker))
     client.values_update(f"'{TAB_TODO}'!F{todo_row}", [[new_notes]])
 
-    trace("promote", f"{args.day.lower()}-{args.slot}", [
+    trace("promote", f"{day_name.lower()}-{args.slot}", [
         f"- todo_row: {todo_row}",
         f"- task: {task_text}",
-        f"- promoted_to: {week_title} {args.day} slot {args.slot} (row {slot_row})",
+        f"- promoted_to: {day_name} tab slot {args.slot} (row {slot_row})",
         f"- snapshot: {snap}",
     ])
-    print(f'task-tracker-manager: promoted To Do row {todo_row} → {week_title} {args.day} slot {args.slot} ("{task_text}")')
+    print(f'task-tracker-manager: promoted To Do row {todo_row} → {day_name} slot {args.slot} ("{task_text}")')
     return 0
 
 
 def cmd_schedule_to_day_slot(args) -> int:
-    day_idx = DAY_BY_NAME.get(args.day.lower())
-    if day_idx is None:
-        sys.exit(f"task-tracker-manager: unknown day {args.day!r}. Use Mon..Sun.")
+    """Direct write to a day TAB's priority slot (no To Do source). New day-tab
+    model. --slot optional (auto-pick first empty). Refuses occupied slots
+    unless --force. Writes [False, task, type, project, notes] into A:E."""
+    day_name = _resolve_day_tab_name(args.day)
 
     client = SheetsClient()
     meta = client.get_metadata()
-    week_props = find_live_week_tab(meta)
-    if week_props is None:
-        sys.exit("task-tracker-manager: live week tab not found")
-    week_title = week_props["title"]
-
-    tc_letter = col_letter(LIVE_DAY_TASK[day_idx])
-    sc_letter = col_letter(LIVE_DAY_STAT[day_idx])
+    if find_day_tab(meta, day_name) is None:
+        sys.exit(f"task-tracker-manager: day tab '{day_name}' not found — run build-week first")
 
     if args.slot is not None:
-        if not (1 <= args.slot <= 15):
-            sys.exit("task-tracker-manager: --slot must be 1..15")
+        if not (1 <= args.slot <= DAY_SLOT_COUNT):
+            sys.exit(f"task-tracker-manager: --slot must be 1..{DAY_SLOT_COUNT}")
         slot = args.slot
     else:
-        # Auto-pick first empty slot
-        col_vals = client.get_values(f"'{week_title}'!{tc_letter}{LIVE_SLOT_FIRST_ROW}:{tc_letter}{LIVE_SLOT_LAST_ROW}")
+        col_vals = client.get_values(
+            day_tab_range(day_name, DAY_COL_TASK, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW))
         slot = None
-        for i in range(15):
+        for i in range(DAY_SLOT_COUNT):
             v = col_vals[i][0] if i < len(col_vals) and col_vals[i] else ""
             if not v:
                 slot = i + 1
                 break
         if slot is None:
-            sys.exit(f"task-tracker-manager: refused schedule-to-day-slot — {args.day} has no empty slots")
+            sys.exit(f"task-tracker-manager: refused schedule-to-day-slot — {day_name} has no empty slots")
 
-    slot_row = LIVE_SLOT_FIRST_ROW + slot - 1
-    existing_vals = client.get_values(f"'{week_title}'!{tc_letter}{slot_row}")
+    slot_row = DAY_SLOT_FIRST_ROW + slot - 1
+    task_cell = day_tab_range(day_name, DAY_COL_TASK, slot_row)
+    existing_vals = client.get_values(task_cell)
     existing = (existing_vals[0][0] if existing_vals and existing_vals[0] else "")
     if existing and not args.force:
-        sys.exit(f'task-tracker-manager: refused schedule-to-day-slot — {args.day} slot {slot} '
+        sys.exit(f'task-tracker-manager: refused schedule-to-day-slot — {day_name} slot {slot} '
                  f'already contains "{existing}" (use --force to overwrite)')
 
-    snap = snapshot_ranges(client, "schedule-to-day-slot",
-                           [f"'{week_title}'!{sc_letter}{slot_row}:{tc_letter}{slot_row}"])
+    dst_block = day_tab_block(day_name, DAY_COL_STATUS, DAY_COL_LAST, slot_row, slot_row)
+    snap = snapshot_ranges(client, "schedule-to-day-slot", [dst_block])
 
-    client.values_update(f"'{week_title}'!{sc_letter}{slot_row}:{tc_letter}{slot_row}",
-                         [[False, args.task]])
+    client.values_update(
+        dst_block,
+        [[False, args.task, getattr(args, "type", "") or "",
+          getattr(args, "project", "") or "", getattr(args, "notes", "") or ""]],
+    )
 
-    trace("schedule-to-day-slot", f"{args.day.lower()}-{slot}", [
+    trace("schedule-to-day-slot", f"{day_name.lower()}-{slot}", [
         f"- task: {args.task}",
-        f"- placement: {week_title} {args.day} slot {slot} (row {slot_row})",
+        f"- placement: {day_name} tab slot {slot} (row {slot_row})",
         f"- overwrote: {existing!r}" if existing else "- overwrote: (slot was empty)",
         f"- snapshot: {snap}",
     ])
-    print(f'task-tracker-manager: scheduled "{args.task}" → {week_title} {args.day} slot {slot}')
+    print(f'task-tracker-manager: scheduled "{args.task}" → {day_name} slot {slot}')
     return 0
 
 
@@ -611,14 +724,16 @@ def _read_recurring_template(client: SheetsClient) -> list[dict]:
     return out
 
 
-def _stamp_recurring_template(client: SheetsClient, meta: dict, week_title: str,
+def _stamp_recurring_template(client: SheetsClient, meta: dict,
                               dry_run: bool = False) -> dict:
-    """Stamp every row of the Recurring Template tab onto `week_title`'s day-slots.
+    """Stamp every row of the Recurring Template tab onto the 7 permanent day
+    tabs' priority slots (new day-tab model).
 
-    Mirrors `schedule-to-day-slot` semantics with --force=False (refuse to overwrite).
-    Returns a summary dict {stamped: [...], refused: [...], rows_read: int}.
-
-    If --dry-run, no writes; just reports what would happen.
+    Mirrors `schedule-to-day-slot` semantics with --force=False (refuse to
+    overwrite). Returns a summary dict {stamped, refused, rows_read,
+    tab_present}. If `dry_run`, no writes; reports what would happen against an
+    in-memory view of the (post-clear) slot grid. The collision-refuse logic is
+    preserved unchanged.
     """
     template_tab = find_tab(meta, TAB_RECURRING_TEMPLATE)
     summary = {"stamped": [], "refused": [], "rows_read": 0, "tab_present": template_tab is not None}
@@ -632,292 +747,290 @@ def _stamp_recurring_template(client: SheetsClient, meta: dict, week_title: str,
         print(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' has no usable rows — nothing to stamp")
         return summary
 
-    # Fetch existing slot grid for the new week once, then walk the rows. Auto-pick logic
-    # needs an in-memory view of empty slots that accounts for prior stamps in this run.
-    slot_grid: dict[int, list[str]] = {}  # day_idx → list of 15 task strings (empty=blank)
-    for day_idx in range(7):
-        tc = col_letter(LIVE_DAY_TASK[day_idx])
+    # Resolve which day tabs exist + an in-memory slot grid keyed by tab name.
+    present_tabs = {name for name, _ in _iter_day_tabs(meta)}
+    slot_grid: dict[str, list[str]] = {}  # tab_name → 15 task strings (empty=blank)
+    for tab_name in present_tabs:
         vals = client.get_values(
-            f"'{week_title}'!{tc}{LIVE_SLOT_FIRST_ROW}:{tc}{LIVE_SLOT_LAST_ROW}"
-        )
+            day_tab_range(tab_name, DAY_COL_TASK, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW))
         flat = [(v[0] if v else "") if isinstance(v, list) else "" for v in vals]
-        while len(flat) < 15:
+        while len(flat) < DAY_SLOT_COUNT:
             flat.append("")
-        slot_grid[day_idx] = flat
+        slot_grid[tab_name] = flat
 
-    writes: list[tuple[str, list[list]]] = []  # (range_a1, [[bool, task]])
+    writes: list[tuple[str, list[list], dict]] = []  # (range_a1, values, recurring_row)
     for r in rows:
         day_idx = DAY_BY_NAME[r["day"].lower()]
-        sc = col_letter(LIVE_DAY_STAT[day_idx])
-        tc = col_letter(LIVE_DAY_TASK[day_idx])
+        tab_name = DAY_LABELS[day_idx]  # 3-letter, == day-tab name
+
+        if tab_name not in present_tabs:
+            summary["refused"].append({
+                "row": r["row"], "day": r["day"], "slot": r["slot"],
+                "task": r["task"], "reason": f"day tab '{tab_name}' not present",
+            })
+            print(f'task-tracker-manager: WARNING recurring stamp REFUSED '
+                  f'(template row {r["row"]}): day tab {tab_name!r} not present — skipping')
+            continue
 
         target_slot = r["slot"]
         if target_slot is not None:
-            existing = slot_grid[day_idx][target_slot - 1]
+            existing = slot_grid[tab_name][target_slot - 1]
             if existing and str(existing).strip():
                 summary["refused"].append({
-                    "row": r["row"],
-                    "day": r["day"],
-                    "slot": target_slot,
-                    "task": r["task"],
-                    "reason": f'slot occupied by "{existing}"',
+                    "row": r["row"], "day": r["day"], "slot": target_slot,
+                    "task": r["task"], "reason": f'slot occupied by "{existing}"',
                 })
                 print(f'task-tracker-manager: WARNING recurring stamp REFUSED '
-                      f'(template row {r["row"]}, {r["day"]} slot {target_slot}): '
+                      f'(template row {r["row"]}, {tab_name} slot {target_slot}): '
                       f'slot occupied by "{existing}" — skipping, Kay can resolve manually')
                 continue
             chosen_slot = target_slot
         else:
             chosen_slot = None
-            for idx, v in enumerate(slot_grid[day_idx]):
+            for idx, v in enumerate(slot_grid[tab_name]):
                 if not v or not str(v).strip():
                     chosen_slot = idx + 1
                     break
             if chosen_slot is None:
                 summary["refused"].append({
-                    "row": r["row"],
-                    "day": r["day"],
-                    "slot": None,
-                    "task": r["task"],
-                    "reason": f"{r['day']} has no empty slots",
+                    "row": r["row"], "day": r["day"], "slot": None,
+                    "task": r["task"], "reason": f"{tab_name} has no empty slots",
                 })
                 print(f'task-tracker-manager: WARNING recurring stamp REFUSED '
-                      f'(template row {r["row"]}): {r["day"]} has no empty slots — skipping')
+                      f'(template row {r["row"]}): {tab_name} has no empty slots — skipping')
                 continue
 
-        slot_row = LIVE_SLOT_FIRST_ROW + chosen_slot - 1
-        rng = f"'{week_title}'!{sc}{slot_row}:{tc}{slot_row}"
-        writes.append((rng, [[False, r["task"]]]))
-        # Update in-memory grid so subsequent auto-picks don't collide
-        slot_grid[day_idx][chosen_slot - 1] = r["task"]
+        slot_row = DAY_SLOT_FIRST_ROW + chosen_slot - 1
+        rng = day_tab_block(tab_name, DAY_COL_STATUS, DAY_COL_LAST, slot_row, slot_row)
+        writes.append((rng, [[False, r["task"], r["type"] or "", r["project"] or "",
+                              r["notes"] or ""]], r))
+        slot_grid[tab_name][chosen_slot - 1] = r["task"]
         summary["stamped"].append({
-            "template_row": r["row"],
-            "day": r["day"],
-            "slot": chosen_slot,
-            "task": r["task"],
-            "auto_picked": r["slot"] is None,
+            "template_row": r["row"], "day": r["day"], "slot": chosen_slot,
+            "task": r["task"], "auto_picked": r["slot"] is None,
         })
         prefix = "task-tracker-manager: recurring stamp"
         if dry_run:
             prefix += " (DRY RUN)"
         ap = " (auto-picked)" if r["slot"] is None else ""
-        print(f'{prefix}: template row {r["row"]} → {week_title} {r["day"]} slot {chosen_slot}{ap}: "{r["task"]}"')
+        print(f'{prefix}: template row {r["row"]} → {tab_name} slot {chosen_slot}{ap}: "{r["task"]}"')
 
     if not dry_run and writes:
-        for rng, vals in writes:
+        for rng, vals, _r in writes:
             client.values_update(rng, vals)
 
     return summary
 
 
-def cmd_archive(args) -> int:
-    """Sunday rollover: duplicate live week tab to a visible archive tab parked far-right,
-    rename live to the upcoming week, clear data on live.
+def _day_clear_requests(sid: int) -> list[dict]:
+    """Build repeatCell requests that reset ONE day tab to a clean week:
+    habit checkboxes FALSE, slot status checkboxes FALSE, slot Task/Type/Project/
+    Notes empty, free-notes block empty. Title row + headers + dropdowns + CF +
+    checkbox data-validation are PRESERVED (only userEnteredValue is touched)."""
+    reqs: list[dict] = []
+    # Habit status checkboxes (col A, rows 4..10) → FALSE
+    reqs.append({"repeatCell": {
+        "range": {"sheetId": sid,
+                  "startRowIndex": DAY_HABIT_FIRST_ROW - 1, "endRowIndex": DAY_HABIT_LAST_ROW,
+                  "startColumnIndex": DAY_COL_STATUS, "endColumnIndex": DAY_COL_STATUS + 1},
+        "cell": {"userEnteredValue": {"boolValue": False}},
+        "fields": "userEnteredValue"}})
+    # Slot status checkboxes (col A, rows 13..27) → FALSE
+    reqs.append({"repeatCell": {
+        "range": {"sheetId": sid,
+                  "startRowIndex": DAY_SLOT_FIRST_ROW - 1, "endRowIndex": DAY_SLOT_LAST_ROW,
+                  "startColumnIndex": DAY_COL_STATUS, "endColumnIndex": DAY_COL_STATUS + 1},
+        "cell": {"userEnteredValue": {"boolValue": False}},
+        "fields": "userEnteredValue"}})
+    # Slot Task/Type/Project/Notes (cols B..E, rows 13..27) → empty
+    reqs.append({"repeatCell": {
+        "range": {"sheetId": sid,
+                  "startRowIndex": DAY_SLOT_FIRST_ROW - 1, "endRowIndex": DAY_SLOT_LAST_ROW,
+                  "startColumnIndex": DAY_COL_TASK, "endColumnIndex": DAY_COL_LAST + 1},
+        "cell": {"userEnteredValue": {"stringValue": ""}},
+        "fields": "userEnteredValue"}})
+    # Free-notes block (cols A..E, rows 30..37) → empty
+    reqs.append({"repeatCell": {
+        "range": {"sheetId": sid,
+                  "startRowIndex": DAY_NOTES_FIRST_ROW - 1, "endRowIndex": DAY_NOTES_LAST_ROW,
+                  "startColumnIndex": DAY_COL_STATUS, "endColumnIndex": DAY_COL_LAST + 1},
+        "cell": {"userEnteredValue": {"stringValue": ""}},
+        "fields": "userEnteredValue"}})
+    return reqs
 
-    After the live tab is renamed + cleared, the Recurring Template tab is read and
-    its rows are stamped onto the new week's day-slots (mirrors schedule-to-day-slot
-    with --force=False — occupied slots warn + skip). Pass --skip-recurring to bypass.
-    Pass --dry-run to preview the entire ceremony (no writes, no rename, no clear,
-    just reports what would happen including which Recurring Template rows would stamp
-    onto which slots of the NEXT week's tab as if it were already created).
+
+def cmd_build_week(args) -> int:
+    """Sunday weekly rebuild ceremony (day-tab model, replaces `archive`).
+
+    1. Snapshot the 7 day tabs + `_donut_data` + `To Do` to one rollback JSON.
+    2. Write ONE combined `archive_{Sun-date}` tab capturing the prior week's
+       7 day tabs verbatim (values only — a flat textual archive; the live day
+       tabs are NOT duplicated/destroyed, they are re-titled + cleared in place).
+    3. Clear slots/habits/notes/checkboxes on all 7 day tabs via repeatCell
+       (preserves title/header/dropdown/CF/checkbox-validation formatting).
+    4. Re-title the 7 day-tab title rows to this week's Sun..Sat dates.
+    5. Stamp the Recurring Template onto the 7 clean day tabs (unless
+       --skip-recurring).
+    6. Trace.
+
+    Flags: --dry-run (report only, NO writes), --skip-recurring.
+
+    NOTE: carryover is NOT auto-copied — `report` surfaces incompletes and Kay
+    approves each move (manual, per the converged design).
     """
     client = SheetsClient()
     meta = client.get_metadata()
-    week_props = find_live_week_tab(meta)
-    if week_props is None:
-        sys.exit("task-tracker-manager: live week tab not found")
-    old_label = week_props["title"]
-    live_sid = week_props["sheetId"]
 
-    # ---------- dry-run path: report only, no mutations ----------
+    present = list(_iter_day_tabs(meta))
+    present_names = [n for n, _ in present]
+    missing = [n for n in DAY_TAB_NAMES if n not in present_names]
+
+    wd = week_dates(date.today())  # Sun..Sat dates for THIS week
+    sun_date = wd[0]
+    new_titles = {DAY_TAB_NAMES[i]: day_title_text(DAY_TAB_NAMES[i], wd[i]) for i in range(7)}
+    archive_name = f"archive_{sun_date.strftime('%b')} {sun_date.day}"
+
+    # ---------- dry-run: report only ----------
     if getattr(args, "dry_run", False):
-        today = date.today()
-        if today.weekday() == 0:
-            new_monday = today
-        else:
-            new_monday = today + timedelta(days=(7 - today.weekday()))
-        new_label = current_week_label(new_monday)
-        print(f"task-tracker-manager: archive (DRY RUN)")
-        print(f"  Live tab found: {old_label!r} (sheetId={live_sid})")
-        print(f"  Would archive → visible far-right tab archive_{old_label!r}")
-        print(f"  Would rename live tab: {old_label!r} → {new_label!r}")
-        print(f"  Would clear: habits, priorities, notes")
+        print("task-tracker-manager: build-week (DRY RUN)")
+        print(f"  Week (Sunday boundary): {wd[0].isoformat()} .. {wd[6].isoformat()}")
+        print(f"  Day tabs present: {present_names or '(none — pre-migration)'}")
+        if missing:
+            print(f"  Day tabs MISSING (would be skipped — run scripts/build_day_tabs.py first): {missing}")
+        print(f"  Would write combined archive tab: {archive_name!r} (far-right)")
+        print("  Would clear (per present day tab): habit checkboxes, 15 slots (A:E), notes block")
+        print("  Would re-title rows:")
+        for n in present_names:
+            print(f"    {n} → {new_titles[n]!r}")
         if getattr(args, "skip_recurring", False):
-            print(f"  --skip-recurring set → would NOT stamp Recurring Template")
+            print("  --skip-recurring set → would NOT stamp Recurring Template")
         else:
-            # Simulate the stamp against the CURRENT live tab's slot grid as proxy for
-            # "what an empty new week would look like" — but for a realistic preview
-            # we want an empty grid, so we substitute a synthetic empty grid. The
-            # cheap version: read template rows, report what slots they'd take if all
-            # 15 slots per day were empty (which is the post-clear state).
             template_tab = find_tab(meta, TAB_RECURRING_TEMPLATE)
             if template_tab is None:
-                print(f"  Recurring Template tab NOT present — nothing to stamp")
+                print("  Recurring Template tab NOT present — nothing to stamp")
             else:
                 rows = _read_recurring_template(client)
-                print(f"  Recurring Template tab present — {len(rows)} usable row(s)")
-                # Synthetic empty grid
-                synthetic_used: dict[int, set[int]] = {i: set() for i in range(7)}
+                print(f"  Recurring Template present — {len(rows)} usable row(s); "
+                      f"would stamp onto CLEARED slots:")
+                # Synthetic empty grid keyed by tab name (post-clear state).
+                synth: dict[str, set[int]] = {n: set() for n in present_names}
                 for r in rows:
-                    day_idx = DAY_BY_NAME[r["day"].lower()]
+                    tab_name = DAY_LABELS[DAY_BY_NAME[r["day"].lower()]]
+                    if tab_name not in synth:
+                        print(f'    REFUSED template row {r["row"]}: day tab {tab_name!r} not present')
+                        continue
                     if r["slot"] is not None:
-                        if r["slot"] in synthetic_used[day_idx]:
-                            print(f'    REFUSED template row {r["row"]} ({r["day"]} slot {r["slot"]}): another template row already pinned to that slot')
+                        if r["slot"] in synth[tab_name]:
+                            print(f'    REFUSED template row {r["row"]} ({tab_name} slot {r["slot"]}): '
+                                  f'another template row already pinned there')
                             continue
-                        synthetic_used[day_idx].add(r["slot"])
-                        slot = r["slot"]
-                        ap = ""
+                        synth[tab_name].add(r["slot"]); slot = r["slot"]; ap = ""
                     else:
-                        slot = None
-                        for s in range(1, 16):
-                            if s not in synthetic_used[day_idx]:
-                                slot = s
-                                break
+                        slot = next((s for s in range(1, DAY_SLOT_COUNT + 1)
+                                     if s not in synth[tab_name]), None)
                         if slot is None:
-                            print(f'    REFUSED template row {r["row"]}: {r["day"]} has no empty slots')
+                            print(f'    REFUSED template row {r["row"]}: {tab_name} has no empty slots')
                             continue
-                        synthetic_used[day_idx].add(slot)
-                        ap = " (auto-picked)"
-                    print(f'    WOULD STAMP: template row {r["row"]} → {new_label} {r["day"]} slot {slot}{ap}: "{r["task"]}"')
-        print(f"task-tracker-manager: archive DRY RUN complete — no writes")
+                        synth[tab_name].add(slot); ap = " (auto-picked)"
+                    print(f'    WOULD STAMP: template row {r["row"]} → {tab_name} slot {slot}{ap}: "{r["task"]}"')
+        print("task-tracker-manager: build-week DRY RUN complete — no writes")
         return 0
 
-    # Compute new label
-    today = date.today()
-    if today.weekday() == 0:
-        new_monday = today
-    else:
-        new_monday = today + timedelta(days=(7 - today.weekday()))
-    new_label = current_week_label(new_monday)
+    if not present:
+        sys.exit("task-tracker-manager: no day tabs present — run scripts/build_day_tabs.py "
+                 "(migration) before build-week")
 
-    # Snapshot the entire live tab before mutation
-    snap = snapshot_ranges(client, "archive",
-                           [f"'{old_label}'!A1:O50"])
+    # ---------- 1. Snapshot ----------
+    snap_ranges = [day_tab_block(n, DAY_COL_STATUS, DAY_COL_LAST, 1, DAY_GRID_ROWS)
+                   for n in present_names]
+    snap_ranges.append(f"'{TAB_DONUT_DATA}'!A1:C8")
+    snap_ranges.append(f"'{TAB_TODO}'!A1:F{TODO_MAX_ROWS}")
+    snap = snapshot_ranges(client, "build-week", snap_ranges)
 
-    archive_name = f"archive_{old_label}"
+    # ---------- 2. Combined archive tab (prior week verbatim, values-only) ----------
     existing_titles = {s["properties"]["title"] for s in meta.get("sheets", [])}
+    final_archive = archive_name
     suffix = 1
-    while archive_name in existing_titles:
+    while final_archive in existing_titles:
         suffix += 1
-        archive_name = f"archive_{old_label}_v{suffix}"
-
-    # Duplicate the live tab
-    dup_resp = client.batch_update([{
-        "duplicateSheet": {
-            "sourceSheetId": live_sid,
-            "insertSheetIndex": len(meta.get("sheets", [])),  # park at far right
-            "newSheetName": archive_name,
-        }
+        final_archive = f"{archive_name}_v{suffix}"
+    add_resp = client.batch_update([{
+        "addSheet": {"properties": {
+            "title": final_archive,
+            "index": len(meta.get("sheets", [])),  # far right
+            "gridProperties": {"rowCount": 7 * (DAY_GRID_ROWS + 3) + 4,
+                               "columnCount": DAY_COL_LAST + 2},
+        }}
     }])
+    archive_sid = add_resp["replies"][0]["addSheet"]["properties"]["sheetId"]
+    archive_block: list[list] = [
+        [f"ARCHIVE — week of {sun_date.strftime('%b')} {sun_date.day} "
+         f"(captured {date.today().isoformat()})"]
+    ]
+    for n in present_names:
+        block = client.get_values(
+            day_tab_block(n, DAY_COL_STATUS, DAY_COL_LAST, 1, DAY_GRID_ROWS))
+        archive_block.append([])
+        archive_block.append([f"=== {n} — {new_titles.get(n, n)} ==="])
+        for row in (block or []):
+            archive_block.append(list(row) if row else [])
+    client.values_update(
+        f"'{final_archive}'!A1:{col_letter(DAY_COL_LAST)}{len(archive_block)}",
+        archive_block)
 
-    # Rename the live tab + clear data
-    clear_requests: list[dict] = []
-    # Clear habit ticks: cols B,D,F,H,J,L,N (status cols) rows 7-13
-    for i in range(7):
-        sc = LIVE_DAY_STAT[i]
-        clear_requests.append({
-            "repeatCell": {
-                "range": {
-                    "sheetId": live_sid,
-                    "startRowIndex": LIVE_HABIT_FIRST_ROW - 1,
-                    "endRowIndex": LIVE_HABIT_LAST_ROW,
-                    "startColumnIndex": sc,
-                    "endColumnIndex": sc + 1,
-                },
-                "cell": {"userEnteredValue": {"boolValue": False}},
-                "fields": "userEnteredValue",
-            }
-        })
-        # Clear priority status + task
-        clear_requests.append({
-            "repeatCell": {
-                "range": {
-                    "sheetId": live_sid,
-                    "startRowIndex": LIVE_SLOT_FIRST_ROW - 1,
-                    "endRowIndex": LIVE_SLOT_LAST_ROW,
-                    "startColumnIndex": sc,
-                    "endColumnIndex": sc + 1,
-                },
-                "cell": {"userEnteredValue": {"boolValue": False}},
-                "fields": "userEnteredValue",
-            }
-        })
-        tc = LIVE_DAY_TASK[i]
-        clear_requests.append({
-            "repeatCell": {
-                "range": {
-                    "sheetId": live_sid,
-                    "startRowIndex": LIVE_SLOT_FIRST_ROW - 1,
-                    "endRowIndex": LIVE_SLOT_LAST_ROW,
-                    "startColumnIndex": tc,
-                    "endColumnIndex": tc + 1,
-                },
-                "cell": {"userEnteredValue": {"stringValue": ""}},
-                "fields": "userEnteredValue",
-            }
-        })
-        # Clear notes block
-        clear_requests.append({
-            "repeatCell": {
-                "range": {
-                    "sheetId": live_sid,
-                    "startRowIndex": LIVE_NOTES_FIRST_ROW - 1,
-                    "endRowIndex": LIVE_NOTES_LAST_ROW,
-                    "startColumnIndex": sc,
-                    "endColumnIndex": tc + 1,
-                },
-                "cell": {"userEnteredValue": {"stringValue": ""}},
-                "fields": "userEnteredValue",
-            }
-        })
-
-    # Rename the live tab
-    clear_requests.insert(0, {
-        "updateSheetProperties": {
-            "properties": {"sheetId": live_sid, "title": new_label},
-            "fields": "title",
-        }
-    })
-    # Update title-row text
-    clear_requests.append({
-        "updateCells": {
-            "rows": [{"values": [{"userEnteredValue": {"stringValue": f"KAY — WEEK OF {new_label}"}}]}],
+    # ---------- 3. Clear + 4. Re-title (one batch) ----------
+    mutate: list[dict] = []
+    for n in present_names:
+        sid = find_day_tab(meta, n)["sheetId"]
+        mutate.extend(_day_clear_requests(sid))
+        mutate.append({"updateCells": {
+            "rows": [{"values": [{"userEnteredValue": {"stringValue": new_titles[n]}}]}],
             "fields": "userEnteredValue",
-            "start": {"sheetId": live_sid, "rowIndex": 0, "columnIndex": 0},
-        }
-    })
+            "start": {"sheetId": sid, "rowIndex": DAY_TITLE_ROW - 1, "columnIndex": 0},
+        }})
+    client.batch_update(mutate)
 
-    client.batch_update(clear_requests)
-
-    # ---------- Recurring Template stamp ----------
+    # ---------- 5. Recurring stamp ----------
     recurring_summary: dict = {"stamped": [], "refused": [], "rows_read": 0, "tab_present": False}
     if getattr(args, "skip_recurring", False):
         print("task-tracker-manager: --skip-recurring set — Recurring Template NOT stamped")
     else:
-        # Re-fetch metadata so the renamed tab title is current.
         meta_after = client.get_metadata()
-        recurring_summary = _stamp_recurring_template(client, meta_after, new_label, dry_run=False)
+        recurring_summary = _stamp_recurring_template(client, meta_after, dry_run=False)
 
+    # ---------- 6. Trace ----------
     trace_lines = [
-        f"- archived: {old_label} → visible tab {archive_name} (parked far-right)",
-        f"- live tab renamed: {old_label} → {new_label}",
-        f"- cleared: habits, priorities, notes",
+        f"- week (Sunday boundary): {wd[0].isoformat()} .. {wd[6].isoformat()}",
+        f"- combined archive tab written: {final_archive} (far-right, values-only)",
+        f"- day tabs cleared + re-titled: {present_names}",
         f"- snapshot: {snap}",
     ]
+    if missing:
+        trace_lines.append(f"- day tabs MISSING (skipped): {missing}")
     if recurring_summary["tab_present"]:
-        trace_lines.append(f"- recurring template stamped: {len(recurring_summary['stamped'])} row(s) onto new week")
+        trace_lines.append(f"- recurring stamped: {len(recurring_summary['stamped'])} row(s)")
         if recurring_summary["refused"]:
-            trace_lines.append(f"- recurring stamps REFUSED (slot conflicts): {len(recurring_summary['refused'])}")
+            trace_lines.append(f"- recurring REFUSED: {len(recurring_summary['refused'])}")
             for ref in recurring_summary["refused"]:
                 trace_lines.append(f"  - template row {ref['row']} {ref['day']} slot {ref['slot']}: {ref['reason']}")
-    elif not getattr(args, "skip_recurring", False):
-        trace_lines.append(f"- recurring template: tab not present, skipped")
-    trace("archive", old_label.lower().replace(" ", "-"), trace_lines)
-    print(f'task-tracker-manager: archived "{old_label}" → visible far-right tab {archive_name}; live tab now "{new_label}"')
+    trace("build-week", sun_date.isoformat(), trace_lines)
+    print(f'task-tracker-manager: build-week complete — archived prior week → "{final_archive}", '
+          f'cleared + re-titled {len(present_names)} day tab(s) to week of '
+          f'{sun_date.strftime("%b")} {sun_date.day}')
     if recurring_summary["tab_present"]:
-        print(f'task-tracker-manager: stamped {len(recurring_summary["stamped"])} recurring row(s) onto {new_label}'
+        print(f'task-tracker-manager: stamped {len(recurring_summary["stamped"])} recurring row(s)'
               + (f"; {len(recurring_summary['refused'])} refused" if recurring_summary["refused"] else ""))
     return 0
+
+
+def cmd_archive(args) -> int:
+    """DEPRECATED ALIAS 2026-05-17 → build-week. The single Live Week grid is
+    retired; the Sunday ceremony is now `build-week` over 7 permanent day tabs.
+    This alias delegates and prints a deprecation notice."""
+    print("task-tracker-manager: NOTICE `archive` is deprecated — delegating to "
+          "`build-week` (day-tab model, 2026-05-17 rebuild). Update callers to "
+          "use `build-week` directly.", file=sys.stderr)
+    return cmd_build_week(args)
 
 
 def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
@@ -937,24 +1050,21 @@ def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
     """
     client = _client or SheetsClient()
     meta = _meta or client.get_metadata()
-    week_props = find_live_week_tab(meta)
-    if week_props is None:
-        sys.exit("task-tracker-manager: live week tab not found")
-    week_title = week_props["title"]
+    day_tabs = list(_iter_day_tabs(meta))
+    if not day_tabs:
+        sys.exit("task-tracker-manager: no day tabs present — run scripts/build_day_tabs.py first")
 
-    # 1. Walk weekly slots — read status + task pair per day in two batched ranges per day.
+    # 1. Walk the 7 day tabs' 15 slots each — read A (status) + B (task) columns.
+    #    MUST run BEFORE the Sunday clear (build-week) so completed items flow to
+    #    To Do before slots are wiped.
     weekly_checked: list[dict] = []  # one entry per (day, slot) where checkbox=TRUE and task non-empty
     weekly_slots_scanned = 0
-    for day_idx in range(7):
-        sc = col_letter(LIVE_DAY_STAT[day_idx])
-        tc = col_letter(LIVE_DAY_TASK[day_idx])
+    for day_name, _props in day_tabs:
         status_vals = client.get_values(
-            f"'{week_title}'!{sc}{LIVE_SLOT_FIRST_ROW}:{sc}{LIVE_SLOT_LAST_ROW}"
-        )
+            day_tab_range(day_name, DAY_COL_STATUS, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW))
         task_vals = client.get_values(
-            f"'{week_title}'!{tc}{LIVE_SLOT_FIRST_ROW}:{tc}{LIVE_SLOT_LAST_ROW}"
-        )
-        for slot_i in range(15):
+            day_tab_range(day_name, DAY_COL_TASK, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW))
+        for slot_i in range(DAY_SLOT_COUNT):
             status = status_vals[slot_i][0] if slot_i < len(status_vals) and status_vals[slot_i] else ""
             task = task_vals[slot_i][0] if slot_i < len(task_vals) and task_vals[slot_i] else ""
             task_text = (task or "").strip() if isinstance(task, str) else ""
@@ -963,7 +1073,7 @@ def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
             weekly_slots_scanned += 1
             if _is_truthy(status):
                 weekly_checked.append({
-                    "day": DAY_LABELS[day_idx],
+                    "day": day_name,
                     "slot": slot_i + 1,
                     "task_text": task_text,
                 })
@@ -1537,40 +1647,39 @@ def cmd_reformat(args) -> int:
     """
     client = SheetsClient()
     meta = client.get_metadata()
-    week_props = find_live_week_tab(meta)
-    if week_props is None:
-        sys.exit("task-tracker-manager: live week tab not found")
-    live_sid = week_props["sheetId"]
+    day_tabs = list(_iter_day_tabs(meta))
+    if not day_tabs:
+        sys.exit("task-tracker-manager: no day tabs present — run scripts/build_day_tabs.py first")
     todo_sid = find_tab(meta, TAB_TODO)["sheetId"] if find_tab(meta, TAB_TODO) else None
     lt_sid = find_tab(meta, TAB_TODO_LONG_TERM)["sheetId"] if find_tab(meta, TAB_TODO_LONG_TERM) else None
     pj_sid = find_tab(meta, TAB_PROJECTS)["sheetId"] if find_tab(meta, TAB_PROJECTS) else None
 
     snap = snapshot_ranges(client, "reformat", [
-        f"'{week_props['title']}'!A1:O50",
+        day_tab_block(n, DAY_COL_STATUS, DAY_COL_LAST, 1, DAY_GRID_ROWS)
+        for n, _ in day_tabs
     ])
 
     R: list[dict] = []
 
-    # Strip existing conditional format rules — we can't enumerate them from metadata
-    # without listing them, so we use deleteConditionalFormatRule by index. Easier: just
-    # add new rules and tolerate duplicates. (Idempotency: if duplicate, the user can run
-    # reformat again — the rules will re-apply.) For a clean rebuild, we'd need a
-    # GetSpreadsheet-with-conditionalFormats roundtrip — keep this minimal here.
+    # NOTE: addConditionalFormatRule is additive — duplicate rules may stack.
+    # Idempotency is "safe to re-run", not "dedupes". Manual cleanup in UI if
+    # rules accumulate (documented in SKILL.md).
 
-    # Live Week: priority status TRUE → strikethrough on day-pair
-    for i in range(7):
-        sc = LIVE_DAY_STAT[i]
-        tc = LIVE_DAY_TASK[i]
-        sc_letter = col_letter(sc)
+    # Per day tab: slot rule =$A13=TRUE over A13:E27, habit rule =$A4=TRUE over A4:E10.
+    for day_name, props in day_tabs:
+        sid = props["sheetId"]
+        # Slot rule: status TRUE → strikethrough + sage-extra-light across A:E.
         R.append({"addConditionalFormatRule": {
             "rule": {
-                "ranges": [{"sheetId": live_sid,
-                            "startRowIndex": LIVE_SLOT_FIRST_ROW - 1,
-                            "endRowIndex": LIVE_SLOT_LAST_ROW,
-                            "startColumnIndex": sc, "endColumnIndex": tc + 1}],
+                "ranges": [{"sheetId": sid,
+                            "startRowIndex": DAY_SLOT_FIRST_ROW - 1,
+                            "endRowIndex": DAY_SLOT_LAST_ROW,
+                            "startColumnIndex": DAY_COL_STATUS,
+                            "endColumnIndex": DAY_COL_LAST + 1}],
                 "booleanRule": {
                     "condition": {"type": "CUSTOM_FORMULA",
-                                  "values": [{"userEnteredValue": f"=${sc_letter}{LIVE_SLOT_FIRST_ROW}=TRUE"}]},
+                                  "values": [{"userEnteredValue":
+                                              f"=$A{DAY_SLOT_FIRST_ROW}=TRUE"}]},
                     "format": {
                         "backgroundColor": hex_to_rgb(SAGE_EXTRA_LIGHT_HEX),
                         "textFormat": {"strikethrough": True,
@@ -1580,19 +1689,19 @@ def cmd_reformat(args) -> int:
             },
             "index": 0,
         }})
-        # Habit row TRUE → fill
+        # Habit rule: status TRUE → sage-extra-light fill across A:E.
         R.append({"addConditionalFormatRule": {
             "rule": {
-                "ranges": [{"sheetId": live_sid,
-                            "startRowIndex": LIVE_HABIT_FIRST_ROW - 1,
-                            "endRowIndex": LIVE_HABIT_LAST_ROW,
-                            "startColumnIndex": sc, "endColumnIndex": tc + 1}],
+                "ranges": [{"sheetId": sid,
+                            "startRowIndex": DAY_HABIT_FIRST_ROW - 1,
+                            "endRowIndex": DAY_HABIT_LAST_ROW,
+                            "startColumnIndex": DAY_COL_STATUS,
+                            "endColumnIndex": DAY_COL_LAST + 1}],
                 "booleanRule": {
                     "condition": {"type": "CUSTOM_FORMULA",
-                                  "values": [{"userEnteredValue": f"=${sc_letter}{LIVE_HABIT_FIRST_ROW}=TRUE"}]},
-                    "format": {
-                        "backgroundColor": hex_to_rgb(SAGE_EXTRA_LIGHT_HEX),
-                    },
+                                  "values": [{"userEnteredValue":
+                                              f"=$A{DAY_HABIT_FIRST_ROW}=TRUE"}]},
+                    "format": {"backgroundColor": hex_to_rgb(SAGE_EXTRA_LIGHT_HEX)},
                 },
             },
             "index": 0,
@@ -1673,20 +1782,37 @@ def cmd_report(args) -> int:
         else:
             unscheduled.append(f"  - row {r}: {task}")
 
-    # Tomorrow's empty priority slots
-    week_props = find_live_week_tab(meta)
-    empty_slots_lines = []
-    if week_props is not None:
-        week_title = week_props["title"]
-        tomorrow_idx = (today.weekday() + 1) % 7
-        tc_letter = col_letter(LIVE_DAY_TASK[tomorrow_idx])
-        slot_vals = client.get_values(
-            f"'{week_title}'!{tc_letter}{LIVE_SLOT_FIRST_ROW}:{tc_letter}{LIVE_SLOT_LAST_ROW}"
-        )
-        empty_count = sum(1 for s in slot_vals if not s or not (s[0] if s else "").strip())
-        # Slot vals might be shorter than 15 if trailing rows are blank
-        empty_count += 15 - len(slot_vals)
-        empty_slots_lines.append(f"  - tomorrow ({DAY_LABELS[tomorrow_idx]}): {empty_count}/15 empty")
+    # Per-day carryover + capacity across the 7 permanent day tabs.
+    # Carryover = slots where Task non-empty AND status FALSE, grouped by day.
+    day_tabs = list(_iter_day_tabs(meta))
+    carryover_lines: list[str] = []
+    empty_slots_lines: list[str] = []
+    carryover_total = 0
+    tomorrow_tab = DAY_LABELS[(today.weekday() + 1) % 7]
+    for day_name, _props in day_tabs:
+        status_vals = client.get_values(
+            day_tab_range(day_name, DAY_COL_STATUS, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW))
+        task_vals = client.get_values(
+            day_tab_range(day_name, DAY_COL_TASK, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW))
+        empty = 0
+        day_incomplete: list[str] = []
+        for si in range(DAY_SLOT_COUNT):
+            st = status_vals[si][0] if si < len(status_vals) and status_vals[si] else ""
+            tk = task_vals[si][0] if si < len(task_vals) and task_vals[si] else ""
+            tk_text = (tk or "").strip() if isinstance(tk, str) else ""
+            if not tk_text:
+                empty += 1
+                continue
+            if not _is_truthy(st):
+                day_incomplete.append(f"slot {si + 1}: {tk_text}")
+        if day_incomplete:
+            carryover_lines.append(f"  - {day_name} ({len(day_incomplete)} incomplete):")
+            for it in day_incomplete:
+                carryover_lines.append(f"    - {it}")
+            carryover_total += len(day_incomplete)
+        marker = "  ← tomorrow" if day_name == tomorrow_tab else ""
+        empty_slots_lines.append(
+            f"  - {day_name}: {empty}/{DAY_SLOT_COUNT} empty{marker}")
 
     # Stale projects: read Projects + check Gantt tab for any ticks in last 14 days — heuristic
     # is week-cell TRUE in any column whose header date is within 14 days of today.
@@ -1710,12 +1836,147 @@ def cmd_report(args) -> int:
     if len(unscheduled) > 10:
         lines.append(f"  - … and {len(unscheduled) - 10} more")
     lines.append("")
-    lines.append("**Priority slot capacity:**")
-    lines.extend(empty_slots_lines if empty_slots_lines else ["  - (no live week tab found)"])
+    lines.append(f"**Carryover — incomplete day-tab slots ({carryover_total}):**")
+    lines.extend(carryover_lines if carryover_lines else ["  - none"])
+    lines.append("  _(manual carryover — Kay approves each move; no auto-carry)_")
+    lines.append("")
+    lines.append("**Priority slot capacity (per day tab):**")
+    lines.extend(empty_slots_lines if empty_slots_lines
+                 else ["  - (no day tabs found — run scripts/build_day_tabs.py)"])
     lines.append("")
     lines.append(f"**Sheet:** {TRACKER_SHEET_URL}")
 
     print("\n".join(lines))
+    return 0
+
+
+def cmd_move_day_item(args) -> int:
+    """Move/copy a priority-slot item between day tabs (manual carryover).
+
+    --from {day} --slot N --to {day} [--slot M] --state {completed|incomplete|added|deleted}
+
+    - completed  : copy src→dst, dst status TRUE
+    - incomplete : copy src→dst, dst status FALSE
+    - added      : write dst only (src ignored — new item, --task required)
+    - deleted    : clear src only (no dst write)
+    Copies Task/Type/Project/Notes. Collision-refuse on dst (occupied slot,
+    unless --force). Always snapshots src+dst, always traces.
+    """
+    state = args.state
+    if state not in ("completed", "incomplete", "added", "deleted"):
+        sys.exit("task-tracker-manager: --state must be completed|incomplete|added|deleted")
+
+    client = SheetsClient()
+    meta = client.get_metadata()
+
+    src_name = _resolve_day_tab_name(args.from_day) if args.from_day else None
+    dst_name = _resolve_day_tab_name(args.to_day) if args.to_day else None
+
+    snap_targets: list[str] = []
+    src_block = dst_block = None
+    src_row = dst_row = None
+
+    if state != "added":
+        if not src_name or args.slot is None:
+            sys.exit("task-tracker-manager: --from + --slot required for "
+                     "completed/incomplete/deleted")
+        if find_day_tab(meta, src_name) is None:
+            sys.exit(f"task-tracker-manager: source day tab '{src_name}' not found")
+        if not (1 <= args.slot <= DAY_SLOT_COUNT):
+            sys.exit(f"task-tracker-manager: --slot must be 1..{DAY_SLOT_COUNT}")
+        src_row = DAY_SLOT_FIRST_ROW + args.slot - 1
+        src_block = day_tab_block(src_name, DAY_COL_STATUS, DAY_COL_LAST, src_row, src_row)
+        snap_targets.append(src_block)
+
+    if state != "deleted":
+        if not dst_name:
+            sys.exit("task-tracker-manager: --to required for "
+                     "completed/incomplete/added")
+        if find_day_tab(meta, dst_name) is None:
+            sys.exit(f"task-tracker-manager: dest day tab '{dst_name}' not found")
+        dst_slot = args.to_slot if args.to_slot is not None else (
+            args.slot if state != "added" else None)
+        if dst_slot is None:
+            # auto-pick first empty slot on dst
+            col_vals = client.get_values(
+                day_tab_range(dst_name, DAY_COL_TASK, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW))
+            dst_slot = next((i + 1 for i in range(DAY_SLOT_COUNT)
+                             if not (col_vals[i][0] if i < len(col_vals) and col_vals[i] else "")),
+                            None)
+            if dst_slot is None:
+                sys.exit(f"task-tracker-manager: refused move-day-item — {dst_name} has no empty slots")
+        if not (1 <= dst_slot <= DAY_SLOT_COUNT):
+            sys.exit(f"task-tracker-manager: dest --slot must be 1..{DAY_SLOT_COUNT}")
+        dst_row = DAY_SLOT_FIRST_ROW + dst_slot - 1
+        dst_block = day_tab_block(dst_name, DAY_COL_STATUS, DAY_COL_LAST, dst_row, dst_row)
+        snap_targets.append(dst_block)
+
+    # Resolve payload (Task/Type/Project/Notes)
+    if state == "added":
+        if not args.task:
+            sys.exit("task-tracker-manager: --task required for --state added")
+        payload = [args.task, getattr(args, "type", "") or "",
+                   getattr(args, "project", "") or "", getattr(args, "notes", "") or ""]
+    else:
+        src_vals = client.get_values(src_block)
+        sr = src_vals[0] if src_vals and src_vals[0] else []
+        task = (sr[DAY_COL_TASK] if len(sr) > DAY_COL_TASK else "") or ""
+        if not str(task).strip():
+            sys.exit(f"task-tracker-manager: source {src_name} slot {args.slot} is empty")
+        payload = [task,
+                   (sr[DAY_COL_TYPE] if len(sr) > DAY_COL_TYPE else "") or "",
+                   (sr[DAY_COL_PROJECT] if len(sr) > DAY_COL_PROJECT else "") or "",
+                   (sr[DAY_COL_NOTES] if len(sr) > DAY_COL_NOTES else "") or ""]
+
+    # Collision-refuse on dst
+    if dst_block is not None:
+        dst_existing = client.get_values(
+            day_tab_range(dst_name, DAY_COL_TASK, dst_row))
+        de = (dst_existing[0][0] if dst_existing and dst_existing[0] else "")
+        if de and not args.force:
+            sys.exit(f'task-tracker-manager: refused move-day-item — {dst_name} slot '
+                     f'{dst_row - DAY_SLOT_FIRST_ROW + 1} already contains "{de}" '
+                     f'(use --force to overwrite)')
+
+    snap = snapshot_ranges(client, "move-day-item", snap_targets)
+
+    # Apply writes
+    if dst_block is not None:
+        status_bool = (state == "completed")
+        client.values_update(dst_block, [[status_bool] + payload])
+    if state == "deleted" or (state in ("completed", "incomplete") and src_block is not None):
+        # For completed/incomplete this is a MOVE — clear source after copy.
+        client.batch_update([{
+            "repeatCell": {
+                "range": {"sheetId": find_day_tab(meta, src_name)["sheetId"],
+                          "startRowIndex": src_row - 1, "endRowIndex": src_row,
+                          "startColumnIndex": DAY_COL_STATUS,
+                          "endColumnIndex": DAY_COL_LAST + 1},
+                "cell": {"userEnteredValue": {"stringValue": ""}},
+                "fields": "userEnteredValue",
+            }
+        }, {
+            "updateCells": {
+                "rows": [{"values": [{"userEnteredValue": {"boolValue": False}}]}],
+                "fields": "userEnteredValue",
+                "start": {"sheetId": find_day_tab(meta, src_name)["sheetId"],
+                          "rowIndex": src_row - 1, "columnIndex": DAY_COL_STATUS},
+            }
+        }])
+
+    desc = {
+        "completed": f"moved {src_name} slot {args.slot} → {dst_name} (done)",
+        "incomplete": f"moved {src_name} slot {args.slot} → {dst_name} (carry)",
+        "added": f"added new item → {dst_name}",
+        "deleted": f"deleted {src_name} slot {args.slot}",
+    }[state]
+    trace("move-day-item", f"{state}-{(src_name or dst_name).lower()}", [
+        f"- state: {state}",
+        f"- {desc}",
+        f"- task: {payload[0]}",
+        f"- snapshot: {snap}",
+    ])
+    print(f'task-tracker-manager: move-day-item ({state}) — {desc}: "{payload[0]}"')
     return 0
 
 
@@ -1728,6 +1989,131 @@ def cmd_gantt_tick(args) -> int:
     snap = snapshot_ranges(client, "gantt-tick", [f"'{args.project}'!{cell_ref}"])
     client.values_update(f"'{args.project}'!{cell_ref}", [[True]])
     print(f'task-tracker-manager: ticked {args.project} {cell_ref}')
+    return 0
+
+
+def cmd_migrate(args) -> int:
+    """One-shot 2026-05-17 cutover from the single Live Week grid to 7 day tabs.
+
+    SAFETY: this verb NEVER performs the destructive teardown (delete/hide of the
+    old `Today` / `May 11-17` tabs) by itself. The destructive steps are run by a
+    human supervisor following the printed ordered command list. Without
+    --execute-nondestructive this is pure dry-run reporting.
+
+    Non-destructive steps it WILL run with --execute-nondestructive:
+      (a) snapshot the full pre-migration state to one rollback JSON
+      (b) run sync-done-status against the OLD `May 11-17` grid (pre-teardown)
+          via the deprecated single-grid code path, then archive-todo
+    It will then PRINT the remaining ordered steps for the human to run.
+    """
+    client = SheetsClient()
+    meta = client.get_metadata()
+    old_grid = find_live_week_tab(meta)
+    today_tab = find_tab(meta, "Today")
+    donut = find_tab(meta, TAB_DONUT_DATA)
+    day_tabs_present = [n for n, _ in _iter_day_tabs(meta)]
+
+    print("task-tracker-manager: migrate (cutover 2026-05-17)")
+    print(f"  Old Live Week grid: "
+          f"{old_grid['title']!r} (sheetId={old_grid['sheetId']})" if old_grid
+          else "  Old Live Week grid: NOT FOUND")
+    print(f"  Retired 'Today' tab present: {today_tab is not None} "
+          f"(sheetId={today_tab['sheetId'] if today_tab else 'n/a'})")
+    print(f"  _donut_data present: {donut is not None}")
+    print(f"  Day tabs already present: {day_tabs_present or '(none)'}")
+
+    if not getattr(args, "execute_nondestructive", False):
+        print("  [DRY RUN] no writes. Pass --execute-nondestructive to run "
+              "snapshot + pre-teardown sync (still NO destructive teardown).")
+    else:
+        # (a) full pre-migration snapshot
+        snap_ranges = []
+        if old_grid:
+            snap_ranges.append(f"'{old_grid['title']}'!A1:O50")
+        if today_tab:
+            snap_ranges.append("'Today'!A1:H48")
+        if donut:
+            snap_ranges.append(f"'{TAB_DONUT_DATA}'!A1:C10")
+        for t in (TAB_TODO, TAB_RECURRING_TEMPLATE, TAB_PROJECTS,
+                  TAB_TODO_LONG_TERM, TAB_COMPLETED_TODO):
+            if find_tab(meta, t):
+                snap_ranges.append(f"'{t}'!A1:H{TODO_MAX_ROWS}")
+        for s in meta.get("sheets", []):
+            title = s["properties"]["title"]
+            if title in ("Deal Aggregator Expansion", "Myself Renewed Healthcare"):
+                snap_ranges.append(f"'{title}'!A1:Z40")
+        snap = snapshot_ranges(client, "migrate", snap_ranges)
+        print(f"  [DONE] pre-migration snapshot: {snap}")
+        # (b) pre-teardown sync against OLD grid + archive-todo
+        if old_grid:
+            print("  [RUN] sync-done-status against OLD grid (deprecated path)…")
+            rc = _legacy_sync_old_grid(client, meta, old_grid["title"])
+            print(f"  [DONE] legacy sync rc={rc}; now run archive-todo manually "
+                  "(see ordered list).")
+        else:
+            print("  [SKIP] no old grid — sync not applicable.")
+
+    print()
+    print("  ORDERED MANUAL STEPS (human supervisor, destructive — NOT run here):")
+    print("   1. (done above if --execute-nondestructive) snapshot + legacy sync")
+    print("   2. python3 scripts/task_tracker.py archive-todo   # sweep ✅ → Completed To Do")
+    print("   3. python3 scripts/build_day_tabs.py               # create 7 day tabs (idempotent)")
+    print("   4. python3 scripts/build_day_tabs.py --donuts-only # _donut_data rebuild + 7 charts")
+    print("   5. (in Sheet UI / Sheets API) duplicate `May 11-17` → `archive_May 11-17` far-right")
+    print("   6. (in Sheet UI / Sheets API) delete or hide retired `Today` (sheetId 433823170)")
+    print("      and the old `May 11-17` Live Week tab AFTER the archive exists")
+    print("   7. python3 scripts/task_tracker.py report          # confirm 7 day tabs, carryover surfaced")
+    print("   8. Kay walks carryover in /goodmorning; approved moves via move-day-item / promote")
+    print("  task-tracker-manager: migrate report complete")
+    return 0
+
+
+def _legacy_sync_old_grid(client, meta, week_title) -> int:
+    """Run the OLD single-grid sync-done-status against `week_title` (pre-teardown
+    only). Uses the deprecated LIVE_* day-pair constants intentionally — this is
+    the one place the old grid is still read, exactly as the plan's migration
+    step 2 requires."""
+    weekly_checked = []
+    for day_idx in range(7):
+        sc = col_letter(LIVE_DAY_STAT[day_idx])
+        tc = col_letter(LIVE_DAY_TASK[day_idx])
+        status_vals = client.get_values(
+            f"'{week_title}'!{sc}{LIVE_SLOT_FIRST_ROW}:{sc}{LIVE_SLOT_LAST_ROW}")
+        task_vals = client.get_values(
+            f"'{week_title}'!{tc}{LIVE_SLOT_FIRST_ROW}:{tc}{LIVE_SLOT_LAST_ROW}")
+        for si in range(15):
+            st = status_vals[si][0] if si < len(status_vals) and status_vals[si] else ""
+            tk = task_vals[si][0] if si < len(task_vals) and task_vals[si] else ""
+            txt = (tk or "").strip() if isinstance(tk, str) else ""
+            if txt and _is_truthy(st):
+                weekly_checked.append(txt)
+    todo_rows = client.get_values(f"'{TAB_TODO}'!A2:F{TODO_MAX_ROWS}")
+    by_task: dict[str, list[int]] = {}
+    truthy: dict[int, bool] = {}
+    for i, row in enumerate(todo_rows):
+        t = row[1] if len(row) > 1 else ""
+        if not isinstance(t, str) or not t.strip():
+            continue
+        by_task.setdefault(t.strip(), []).append(2 + i)
+        truthy[2 + i] = _is_truthy(row[0] if row else "")
+    flips = []
+    for txt in set(weekly_checked):
+        m = by_task.get(txt)
+        if m and len(m) == 1 and not truthy[m[0]]:
+            flips.append(m[0])
+    if not flips:
+        print("  [legacy-sync] 0 To Do rows to flip")
+        return 0
+    snap = snapshot_ranges(client, "migrate-legacy-sync",
+                           [f"'{TAB_TODO}'!A2:A{TODO_MAX_ROWS}"])
+    todo_sid = find_tab(meta, TAB_TODO)["sheetId"]
+    client.batch_update([{
+        "updateCells": {
+            "rows": [{"values": [{"userEnteredValue": {"boolValue": True}}]}],
+            "fields": "userEnteredValue",
+            "start": {"sheetId": todo_sid, "rowIndex": r - 1, "columnIndex": TODO_COL_STATUS},
+        }} for r in flips])
+    print(f"  [legacy-sync] flipped {len(flips)} To Do row(s); snapshot {snap}")
     return 0
 
 
@@ -1745,21 +2131,58 @@ def main():
     a.add_argument("--notes", default="")
     a.set_defaults(func=cmd_append)
 
-    pr = sub.add_parser("promote")
+    pr = sub.add_parser("promote",
+                        help="Move a To Do row into a day TAB's priority slot (day-tab model).")
     pr.add_argument("--todo-row", type=int, required=True)
-    pr.add_argument("--day", required=True)
-    pr.add_argument("--slot", type=int, required=True)
+    pr.add_argument("--day", required=True, help="Sun..Sat / Mon..Sun")
+    pr.add_argument("--slot", type=int, required=True, help="1..15")
     pr.set_defaults(func=cmd_promote)
 
-    ar = sub.add_parser("archive")
-    ar.add_argument("--skip-recurring", action="store_true",
+    bw = sub.add_parser("build-week",
+                        help="Sunday rebuild ceremony — combined archive + clear "
+                             "+ re-title 7 day tabs + stamp Recurring Template.")
+    bw.add_argument("--skip-recurring", action="store_true",
                     help="bypass the Recurring Template stamp step (rare)")
-    ar.add_argument("--dry-run", action="store_true",
-                    help="report what would happen without writing — no rename, no clear, no stamp")
+    bw.add_argument("--dry-run", action="store_true",
+                    help="report what would happen without writing — no archive, no clear, no stamp")
+    bw.set_defaults(func=cmd_build_week)
+
+    # DEPRECATED alias: archive → build-week (prints deprecation notice).
+    ar = sub.add_parser("archive",
+                        help="DEPRECATED 2026-05-17 — alias of build-week.")
+    ar.add_argument("--skip-recurring", action="store_true")
+    ar.add_argument("--dry-run", action="store_true")
     ar.set_defaults(func=cmd_archive)
 
+    mdi = sub.add_parser("move-day-item",
+                         help="Move/copy a slot item between day tabs (manual carryover).")
+    mdi.add_argument("--from", dest="from_day", default=None,
+                     help="source day tab (Sun..Sat); required unless --state added")
+    mdi.add_argument("--slot", type=int, default=None,
+                     help="source slot 1..15 (also dest slot if --to-slot omitted)")
+    mdi.add_argument("--to", dest="to_day", default=None,
+                     help="dest day tab (Sun..Sat); required unless --state deleted")
+    mdi.add_argument("--to-slot", type=int, default=None,
+                     help="dest slot 1..15; omit to auto-pick first empty")
+    mdi.add_argument("--state", required=True,
+                     choices=["completed", "incomplete", "added", "deleted"])
+    mdi.add_argument("--task", default=None, help="required for --state added")
+    mdi.add_argument("--type", default="")
+    mdi.add_argument("--project", default="")
+    mdi.add_argument("--notes", default="")
+    mdi.add_argument("--force", action="store_true",
+                     help="overwrite an occupied dest slot")
+    mdi.set_defaults(func=cmd_move_day_item)
+
+    mg = sub.add_parser("migrate",
+                        help="2026-05-17 one-shot cutover (dry-run by default; "
+                             "never runs destructive teardown).")
+    mg.add_argument("--execute-nondestructive", action="store_true",
+                    help="run snapshot + pre-teardown legacy sync (still NO teardown)")
+    mg.set_defaults(func=cmd_migrate)
+
     ra = sub.add_parser("recurring-add",
-                        help="Append a row to the Recurring Template tab (stamped onto every new week by `archive`).")
+                        help="Append a row to the Recurring Template tab (stamped onto every new week by `build-week`).")
     ra.add_argument("--day", required=True, help="Mon..Sun")
     ra.add_argument("--task", required=True)
     ra.add_argument("--type", required=True, choices=TYPE_OPTIONS)
@@ -1788,11 +2211,15 @@ def main():
                           help="report what would change without writing")
     sds_sync.set_defaults(func=cmd_sync_done_status)
 
-    sds = sub.add_parser("schedule-to-day-slot")
+    sds = sub.add_parser("schedule-to-day-slot",
+                          help="Direct write to a day TAB's priority slot (day-tab model).")
     sds.add_argument("--task", required=True)
-    sds.add_argument("--day", required=True)
+    sds.add_argument("--day", required=True, help="Sun..Sat / Mon..Sun")
     sds.add_argument("--slot", type=int, default=None,
                      help="1..15; if omitted, auto-pick first empty slot")
+    sds.add_argument("--type", default="", help="Work / Home (optional)")
+    sds.add_argument("--project", default="", help="optional")
+    sds.add_argument("--notes", default="", help="optional")
     sds.add_argument("--force", action="store_true",
                      help="overwrite even if occupied")
     sds.set_defaults(func=cmd_schedule_to_day_slot)

@@ -108,8 +108,21 @@ TODO_COL_TYPE = 2
 TODO_COL_PROJECT = 3
 TODO_COL_DUE = 4
 TODO_COL_NOTES = 5
-TODO_HEADERS = ["Status", "Task", "Type", "Project", "Due", "Notes"]
-TODO_MAX_ROWS = 200
+TODO_COL_HORIZON = 6
+TODO_HEADERS = ["Status", "Task", "Type", "Project", "Due", "Notes", "Horizon"]
+TODO_MAX_ROWS = 400
+
+# 2026-05-17 consolidation: Status is a 3-state dropdown (was native checkbox);
+# Horizon classifies the item + (for recurring) carries the target day.
+# To Do Long Term + Recurring Weekly To Dos + Completed To Do tabs are retired —
+# everything lives in the single `To Do` tab, filtered by Horizon.
+STATUS_OPTIONS = ["Not Completed", "On-going", "Completed"]
+HORIZON_OPTIONS = [
+    "Short Term", "Long Term",
+    "Weekly Recurring Mon", "Weekly Recurring Tue", "Weekly Recurring Wed",
+    "Weekly Recurring Thu", "Weekly Recurring Fri", "Weekly Recurring Sat",
+]
+RECURRING_HORIZON_PREFIX = "Weekly Recurring"  # extensible: Quarterly/Yearly later
 
 # To Do Long Term columns (0-based)
 LT_COL_STATUS = 0

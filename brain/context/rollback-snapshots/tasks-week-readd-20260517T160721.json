@@ -1,0 +1,30 @@
+{
+ "ts": "2026-05-17T16:07:20.844679",
+ "ranges": {
+  "'Week'!E23:E37": [
+   [
+    "Process payroll"
+   ],
+   [
+    "Process conference registrations"
+   ],
+   [
+    "Deal aggregator: complete project list"
+   ],
+   [
+    "Start thesis deck"
+   ]
+  ],
+  "'Week'!I23:I37": [
+   [
+    "Niche intel review"
+   ],
+   [
+    "Website rebuild (in-flight)"
+   ],
+   [
+    "Continue thesis deck (in-flight)"
+   ]
+  ]
+ }
+}

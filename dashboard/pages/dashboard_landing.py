@@ -258,13 +258,15 @@ def _tile_deal_aggregator() -> str:
 def _tile_ma_analytics() -> str:
     """Stacked metric list. Owner = strict deal-owner conversations; Quality
     expands beyond recorded calls to include conference/luncheon conversations
-    (manual feed). Outbound emails = Kay + DealsX cumulative (no JJ/LinkedIn);
-    calls & LinkedIn DM tracked on their own row. NDAs dropped — already on
-    the Active Deal Pipeline tile."""
+    (manual feed). Cold channels only: cold emails (DealsX), cold LinkedIn DM,
+    cold calls (JJ) — Kay's own emails/DMs are WARM relationship outreach and
+    are deliberately excluded. NDAs dropped — already on the Active Deal
+    Pipeline tile."""
     owner_now: object = 0
     quality_now: object = 0
-    outbound_emails: object = "&mdash;"
-    calls_dm: object = "&mdash;"
+    cold_emails: object = "&mdash;"
+    cold_li: object = "&mdash;"
+    cold_calls: object = "&mdash;"
     reply_rate = "&mdash;"
     try:
         from datetime import date, timedelta
@@ -297,25 +299,27 @@ def _tile_ma_analytics() -> str:
         # all curated conference/meeting conversations.
         quality_now = partner_calls + len(manual)
 
-        # Outbound EMAILS only (Kay email sends + DealsX), excluding LinkedIn.
-        kay_email_sends = max(
-            (om.sends_this_week - om.linkedin_dms_sent_this_week) if om else 0, 0
-        )
+        # COLD emails only = DealsX. Kay's own sends are warm relationship
+        # outreach and are excluded from the cold funnel entirely.
         dealsx_sent = dealsx.sent if dealsx else 0
         dealsx_replied = dealsx.replied if dealsx else 0
-        total_emails = kay_email_sends + dealsx_sent
-        outbound_emails = total_emails if total_emails else "&mdash;"
+        if dealsx_sent:
+            cold_emails = dealsx_sent
 
-        # Calls + LinkedIn DM on their own row (replaces NDAs signed).
+        # Cold LinkedIn DM = DealsX LinkedIn volume when fed (linkedin_sent
+        # >= 0). Kay's CEO LinkedIn DMs are warm — not counted here.
+        dealsx_li = dealsx.linkedin_sent if dealsx else -1
+        if dealsx_li >= 0:
+            cold_li = dealsx_li
+
+        # Cold calls = JJ dial campaign.
         jj_calls = jj.dials_in_window(ws, we) if jj else 0
-        li_dms = om.linkedin_dms_sent_this_week if om else 0
-        calls_dm_total = jj_calls + li_dms
-        calls_dm = calls_dm_total if calls_dm_total else "&mdash;"
+        if jj_calls:
+            cold_calls = jj_calls
 
-        # Reply rate over measured email replies (DealsX; Kay-email reply
-        # tracking not wired — conservative floor).
-        if total_emails:
-            reply_rate = f"{dealsx_replied / total_emails * 100:.1f}%"
+        # Reply rate over the cold-email channel (DealsX).
+        if dealsx_sent:
+            reply_rate = f"{dealsx_replied / dealsx_sent * 100:.1f}%"
     except Exception:
         pass
     return _tile(f"""
@@ -324,12 +328,13 @@ def _tile_ma_analytics() -> str:
     <div class="gb-ma-list">
     <div class="gb-ma-label">Owner conversations</div><div class="gb-ma-value">{owner_now}</div>
     <div class="gb-ma-label">Quality conversations</div><div class="gb-ma-value">{quality_now}</div>
-    <div class="gb-ma-label">Outbound emails</div><div class="gb-ma-value">{outbound_emails}</div>
-    <div class="gb-ma-label">Outbound calls &amp; LinkedIn DM</div><div class="gb-ma-value">{calls_dm}</div>
+    <div class="gb-ma-label">Cold emails</div><div class="gb-ma-value">{cold_emails}</div>
+    <div class="gb-ma-label">Cold LinkedIn DM</div><div class="gb-ma-value">{cold_li}</div>
+    <div class="gb-ma-label">Cold calls</div><div class="gb-ma-value">{cold_calls}</div>
     <div class="gb-ma-label">Reply rate</div><div class="gb-ma-value">{reply_rate}</div>
     </div>
     <div class="footer">
-    <span class="gb-trend flat">&rarr; Email + DealsX cumulative</span>
+    <span class="gb-trend flat">&rarr; Cold outreach &middot; warm excluded</span>
     <span class="gb-horizon">THIS WEEK</span>
     </div>
     </a>

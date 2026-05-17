@@ -2904,6 +2904,10 @@ class DealsXManual:
     replied: int
     positive: int
     bounced: int
+    # Optional cold-LinkedIn-DM volume for the same week. -1 = not fed yet
+    # (render "—"); DealsX runs LinkedIn alongside email but the number is
+    # supplied separately when available.
+    linkedin_sent: int = -1
 
 
 def load_dealsx_manual(window_start: date, window_end: date) -> DealsXManual | None:
@@ -2929,6 +2933,7 @@ def load_dealsx_manual(window_start: date, window_end: date) -> DealsXManual | N
                 week_start=ws,
                 week_end=we,
                 sent=int(w.get("sent", 0)),
+                linkedin_sent=int(w["linkedin_sent"]) if "linkedin_sent" in w else -1,
                 replied=int(w.get("replied", 0)),
                 positive=int(w.get("positive", 0)),
                 bounced=int(w.get("bounced", 0)),

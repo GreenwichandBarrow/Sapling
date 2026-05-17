@@ -739,45 +739,35 @@ def cmd_schedule_to_day_slot(args) -> int:
 
 
 def _read_recurring_template(client: SheetsClient) -> list[dict]:
-    """Read all rows from the Recurring Template tab. Returns list of dicts with keys
-    day, slot (int or None), task, type, project, notes, row (1-based). Skips blank
-    rows + rows with empty task/day. Validates Day + Type values softly (skips invalid
-    with a warning to stderr) so a malformed row doesn't abort the rollover."""
-    rows = client.get_values(f"'{TAB_RECURRING_TEMPLATE}'!A2:F{RT_MAX_ROWS}")
+    """Recurring source (2026-05-17 consolidation): the separate Recurring tab is
+    retired — recurring items now live in the single `To Do` tab, identified by a
+    `Weekly Recurring {Day}` Horizon (col G). Returns the same dict shape the
+    stamp helpers expect: day (3-letter), slot (always None → auto-pick, matching
+    the old all-blank-slot convention), task, type, project, notes, row (1-based).
+    Malformed Horizon days are warned + skipped so one bad row can't abort the
+    Sunday rollover."""
+    rows = client.get_values(
+        f"'{TAB_TODO}'!A2:{col_letter(TODO_COL_HORIZON)}{TODO_MAX_ROWS}")
     out: list[dict] = []
     for i, row in enumerate(rows):
-        day = (row[RT_COL_DAY] if len(row) > RT_COL_DAY else "").strip() if row else ""
-        task = (row[RT_COL_TASK] if len(row) > RT_COL_TASK else "").strip() if row else ""
-        if not day or not task:
+        task = (row[TODO_COL_TASK] if len(row) > TODO_COL_TASK else "").strip() if row else ""
+        horizon = (row[TODO_COL_HORIZON] if len(row) > TODO_COL_HORIZON else "").strip() if row else ""
+        if not task or not _todo_is_recurring(horizon):
             continue
-        if day.lower() not in DAY_BY_NAME:
-            print(f"task-tracker-manager: WARNING Recurring Template row {2+i} has invalid Day {day!r} — skipped",
-                  file=sys.stderr)
+        day3 = _recurring_day3(horizon)
+        if day3 is None:
+            print(f"task-tracker-manager: WARNING To Do row {2+i} has unparseable "
+                  f"recurring Horizon {horizon!r} — skipped", file=sys.stderr)
             continue
-        type_ = (row[RT_COL_TYPE] if len(row) > RT_COL_TYPE else "").strip() if row else ""
+        type_ = (row[TODO_COL_TYPE] if len(row) > TODO_COL_TYPE else "").strip() if row else ""
         if type_ and type_ not in TYPE_OPTIONS:
-            print(f"task-tracker-manager: WARNING Recurring Template row {2+i} has invalid Type {type_!r} — skipped",
-                  file=sys.stderr)
-            continue
-        slot_raw = row[RT_COL_SLOT] if len(row) > RT_COL_SLOT else ""
-        slot: int | None = None
-        if slot_raw != "" and slot_raw is not None:
-            try:
-                slot = int(slot_raw)
-                if not (1 <= slot <= 15):
-                    print(f"task-tracker-manager: WARNING Recurring Template row {2+i} slot {slot} out of 1..15 — treating as blank",
-                          file=sys.stderr)
-                    slot = None
-            except (ValueError, TypeError):
-                print(f"task-tracker-manager: WARNING Recurring Template row {2+i} slot {slot_raw!r} not numeric — treating as blank",
-                      file=sys.stderr)
-                slot = None
-        project = (row[RT_COL_PROJECT] if len(row) > RT_COL_PROJECT else "").strip() if row else ""
-        notes = (row[RT_COL_NOTES] if len(row) > RT_COL_NOTES else "").strip() if row else ""
+            type_ = ""
+        project = (row[TODO_COL_PROJECT] if len(row) > TODO_COL_PROJECT else "").strip() if row else ""
+        notes = (row[TODO_COL_NOTES] if len(row) > TODO_COL_NOTES else "").strip() if row else ""
         out.append({
             "row": 2 + i,
-            "day": day,
-            "slot": slot,
+            "day": day3,
+            "slot": None,  # auto-pick first empty (old recurring slot was always blank)
             "task": task,
             "type": type_ or "Work",
             "project": project,
@@ -1562,123 +1552,15 @@ def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
 
 
 def cmd_archive_todo(args) -> int:
-    """Sweep checked rows from To Do tab → 'Completed To Do' tab (created on first run).
-
-    Pre-step: runs sync-done-status first (so checked weekly slots flip matching To Do
-    rows to TRUE before the sweep picks them up). Pass --skip-sync to bypass.
-    """
-    client = SheetsClient()
-    meta = client.get_metadata()
-
-    # Pre-step: sync-done-status (unless --skip-sync).
-    if not getattr(args, "skip_sync", False):
-        sync_args = argparse.Namespace(dry_run=False)
-        cmd_sync_done_status(sync_args, _client=client, _meta=meta)
-        # Re-fetch metadata after sync (no schema changes, but cheap insurance).
-        meta = client.get_metadata()
-
-    # Read all To Do rows
-    todo_rows = client.get_values(f"'{TAB_TODO}'!A2:F{TODO_MAX_ROWS}")
-    swept = []
-    for i, row in enumerate(todo_rows):
-        # Status checkbox renders as boolean TRUE or string "TRUE"
-        status = row[0] if len(row) > 0 else ""
-        task = row[1] if len(row) > 1 else ""
-        if not task:
-            continue
-        if not _is_truthy(status):
-            continue
-        swept.append({
-            "row": 2 + i,  # 1-based
-            "task": task,
-            "type": row[2] if len(row) > 2 else "",
-            "project": row[3] if len(row) > 3 else "",
-            "due": row[4] if len(row) > 4 else "",
-            "notes": row[5] if len(row) > 5 else "",
-        })
-
-    # Ensure Completed To Do tab exists
-    completed_tab = find_tab(meta, TAB_COMPLETED_TODO)
-    completed_created = False
-    if completed_tab is None:
-        resp = client.batch_update([{
-            "addSheet": {
-                "properties": {
-                    "title": TAB_COMPLETED_TODO,
-                    "gridProperties": {"rowCount": 500, "columnCount": 8, "frozenRowCount": 1},
-                }
-            }
-        }])
-        completed_sid = resp["replies"][0]["addSheet"]["properties"]["sheetId"]
-        completed_created = True
-        # Write headers + "Completed" column
-        headers = TODO_HEADERS + ["Completed"]
-        client.values_update(f"'{TAB_COMPLETED_TODO}'!A1:G1", [headers])
-    else:
-        completed_sid = completed_tab["sheetId"]
-
-    if not swept:
-        msg = "tab created" if completed_created else "tab present"
-        print(f"task-tracker-manager: archive-todo — no checked rows in To Do to sweep ({msg})")
-        return 0
-
-    today_iso = date.today().isoformat()
-    snap = snapshot_ranges(client, "archive-todo", [
-        f"'{TAB_TODO}'!A2:F{TODO_MAX_ROWS}",
-        f"'{TAB_COMPLETED_TODO}'!A1:G500",
-    ])
-
-    # Append to Completed To Do
-    append_rows = []
-    for s in swept:
-        append_rows.append([
-            True,
-            s["task"],
-            s["type"],
-            s["project"],
-            str(s["due"])[:10] if s["due"] else "",
-            s["notes"],
-            today_iso,
-        ])
-    client.values_append(f"'{TAB_COMPLETED_TODO}'!A1:G1", append_rows)
-
-    # Clear the swept rows on the To Do side
-    clear_requests = []
-    for s in swept:
-        r0 = s["row"] - 1
-        clear_requests.append({
-            "repeatCell": {
-                "range": {
-                    "sheetId": find_tab(meta, TAB_TODO)["sheetId"],
-                    "startRowIndex": r0,
-                    "endRowIndex": r0 + 1,
-                    "startColumnIndex": 0,
-                    "endColumnIndex": len(TODO_HEADERS),
-                },
-                "cell": {"userEnteredValue": {"stringValue": ""}},
-                "fields": "userEnteredValue",
-            }
-        })
-        # Reset status checkbox to FALSE explicitly
-        clear_requests.append({
-            "updateCells": {
-                "rows": [{"values": [{"userEnteredValue": {"boolValue": False}}]}],
-                "fields": "userEnteredValue",
-                "start": {"sheetId": find_tab(meta, TAB_TODO)["sheetId"],
-                          "rowIndex": r0, "columnIndex": 0},
-            }
-        })
-    if clear_requests:
-        client.batch_update(clear_requests)
-
-    trace("archive-todo", f"sweep-{len(swept)}", [
-        f"- swept: {len(swept)} checked rows from To Do",
-        f"- destination: '{TAB_COMPLETED_TODO}' (appended)",
-        f"- completed_date: {today_iso}",
-        f"- snapshot: {snap}",
-    ])
-    print(f"task-tracker-manager: archive-todo swept {len(swept)} checked row(s) → '{TAB_COMPLETED_TODO}'")
+    """RETIRED 2026-05-17 (schema consolidation). The sweep-to-Completed-tab
+    model is gone: Status is now a 3-state dropdown in the single `To Do` tab and
+    completed rows stay in place (strikethrough via CF, hidden via filter views).
+    Kept as a no-op so any lingering caller / scheduled invocation does not error."""
+    print("task-tracker-manager: archive-todo is RETIRED (2026-05-17 consolidation) "
+          "— no sweep. Completed items stay in To Do; use Status='Completed' + a "
+          "filter view. No action taken.", file=sys.stderr)
     return 0
+
 
 
 def _is_truthy(v) -> bool:
@@ -2508,6 +2390,8 @@ def main():
     a.add_argument("--project", default="")
     a.add_argument("--due", default="")
     a.add_argument("--notes", default="")
+    a.add_argument("--horizon", default="Short Term", choices=HORIZON_OPTIONS,
+                   help="item classification (default Short Term)")
     a.set_defaults(func=cmd_append)
 
     pr = sub.add_parser("promote",

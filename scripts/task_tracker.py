@@ -181,7 +181,7 @@ DAY_IDX_TO_TAB = {DAY_BY_NAME[k.lower()]: DAY_LABELS[DAY_BY_NAME[k.lower()]]
 DAY_TITLE_ROW = 1            # merged A1:E1 "SUNDAY · May 17"
 DAY_HABITS_HEADER_ROW = 3    # "HABITS"
 DAY_HABIT_FIRST_ROW = 4      # rows 4..10 = 7 habit rows
-DAY_HABIT_LAST_ROW = 10
+DAY_HABIT_LAST_ROW = 11
 DAY_COL_HEADER_ROW = 12      # ✓ | Task | Type | Project | Notes
 DAY_SLOT_FIRST_ROW = 13      # rows 13..27 = 15 priority slots
 DAY_SLOT_LAST_ROW = 27
@@ -220,7 +220,7 @@ WK_TITLE_ROW = 1               # merged A1:O1 "WEEK OF May 17-23"
 WK_HABITS_HEADER_ROW = 5       # "HABIT TRACKER"
 WK_HABIT_DAYHDR_ROW = 6        # Sun..Sat 2-col-merged sub-headers
 WK_HABIT_FIRST_ROW = 7         # rows 7..13 = 7 habit rows (label col 0)
-WK_HABIT_LAST_ROW = 13
+WK_HABIT_LAST_ROW = 14
 WK_DAYHDR_ROW = 15             # SUNDAY..SATURDAY 2-col-merged headers
 WK_SLOT_FIRST_ROW = 23         # rows 23..37 = 15 priority slots
 WK_SLOT_LAST_ROW = 37
@@ -251,7 +251,8 @@ def wk_content_col(day_idx: int) -> int:
 HABITS_DEFAULT = [
     "Water & hygiene",
     "Meditation & stretches",
-    "ACV drink & probiotic protein shake",
+    "ACV drink",
+    "Probiotic protein shake",
     "Exercise class",
     "Bike to work",
     "10K steps",

@@ -1,0 +1,69 @@
+{
+ "ts": "2026-05-17T17:19:18.991514",
+ "verb": "recurring-dedupe",
+ "ranges": {
+  "'To Do'!A68:G68": [
+   "On-going",
+   "Niche intel review",
+   "Work",
+   "G&B",
+   "2026-05-20",
+   "Recurring weekly (Wed) \u2014 walk through niche-intelligence sprint status + new one-pagers",
+   "Weekly Recurring Wed"
+  ],
+  "'To Do'!A69:G69": [
+   "On-going",
+   "Process payroll",
+   "Work",
+   "G&B",
+   "2026-05-18",
+   "Recurring weekly (Mon)",
+   "Weekly Recurring Mon"
+  ],
+  "'To Do'!A70:G70": [
+   "On-going",
+   "Process conference registrations",
+   "Work",
+   "G&B",
+   "2026-05-18",
+   "Recurring weekly (Mon)",
+   "Weekly Recurring Mon"
+  ],
+  "'To Do'!A207:G207": [
+   "On-going",
+   "Process payroll",
+   "Work",
+   "G&B",
+   "",
+   "Recurring weekly",
+   "Weekly Recurring Mon"
+  ],
+  "'To Do'!A208:G208": [
+   "On-going",
+   "Process conference registrations",
+   "Work",
+   "G&B",
+   "",
+   "Recurring weekly",
+   "Weekly Recurring Mon"
+  ],
+  "'To Do'!A209:G209": [
+   "On-going",
+   "Niche intel review",
+   "Work",
+   "G&B",
+   "",
+   "Walk through niche-intelligence sprint status + new one-pagers",
+   "Weekly Recurring Wed"
+  ],
+  "'To Do'!A210:G210": [
+   "On-going",
+   "Weekly review \u2014 system health, M&A activities, budget",
+   "Work",
+   "G&B",
+   "",
+   "Walk through health-monitor + M&A analytics dashboard + budget-manager output",
+   "Weekly Recurring Fri"
+  ]
+ }
+}

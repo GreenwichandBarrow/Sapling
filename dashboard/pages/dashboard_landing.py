@@ -256,27 +256,75 @@ def _tile_deal_aggregator() -> str:
 
 
 def _tile_ma_analytics() -> str:
-    """Stacked metric list per locked mockup — live wiring lands separately."""
+    """Stacked metric list. Owner = strict deal-owner conversations; Quality
+    expands beyond recorded calls to include conference/luncheon conversations
+    (manual feed). Outbound emails = Kay + DealsX cumulative (no JJ/LinkedIn);
+    calls & LinkedIn DM tracked on their own row. NDAs dropped — already on
+    the Active Deal Pipeline tile."""
+    owner_now: object = 0
+    quality_now: object = 0
+    outbound_emails: object = "&mdash;"
+    calls_dm: object = "&mdash;"
+    reply_rate = "&mdash;"
     try:
-        from data_sources import load_ma_analytics
-        ma = load_ma_analytics()
-        # Pull what we have live; fall back gracefully where data isn't wired.
-        owner_now = ma.deal_flow_tiles[0].value if ma.deal_flow_tiles else 0
-        ndas_now = ma.deal_flow_tiles[1].value if len(ma.deal_flow_tiles) > 1 else 0
+        from datetime import date, timedelta
+        from data_sources import (
+            load_ma_analytics,
+            load_jj_activity,
+            load_dealsx_manual,
+            load_quality_conversations,
+        )
+
+        today = date.today()
+        ws, we = today - timedelta(days=6), today
+
+        ma = load_ma_analytics(today=today)
+        om = ma.outreach_metrics
+        jj = load_jj_activity()
+        dealsx = load_dealsx_manual(ws, we)
+        manual = load_quality_conversations(ws, we)
+
+        # Strict owner conversations from the deal-flow tile + any manual
+        # entries explicitly flagged as a target owner.
+        strict_owner = int(ma.deal_flow_tiles[0].value) if ma.deal_flow_tiles else 0
+        owner_now = strict_owner + sum(1 for m in manual if m.type == "owner")
+        # Quality = every meaningful conversation: strict owners + all curated
+        # conference/meeting conversations (owners superset).
+        quality_now = strict_owner + len(manual)
+
+        # Outbound EMAILS only (Kay email sends + DealsX), excluding LinkedIn.
+        kay_email_sends = max(
+            (om.sends_this_week - om.linkedin_dms_sent_this_week) if om else 0, 0
+        )
+        dealsx_sent = dealsx.sent if dealsx else 0
+        dealsx_replied = dealsx.replied if dealsx else 0
+        total_emails = kay_email_sends + dealsx_sent
+        outbound_emails = total_emails if total_emails else "&mdash;"
+
+        # Calls + LinkedIn DM on their own row (replaces NDAs signed).
+        jj_calls = jj.dials_in_window(ws, we) if jj else 0
+        li_dms = om.linkedin_dms_sent_this_week if om else 0
+        calls_dm_total = jj_calls + li_dms
+        calls_dm = calls_dm_total if calls_dm_total else "&mdash;"
+
+        # Reply rate over measured email replies (DealsX; Kay-email reply
+        # tracking not wired — conservative floor).
+        if total_emails:
+            reply_rate = f"{dealsx_replied / total_emails * 100:.1f}%"
     except Exception:
-        owner_now = 0
-        ndas_now = 0
+        pass
     return _tile(f"""
     <a class="gb-tile" href="/ma-analytics" target="_self">
     <div class="label">M&amp;A Analytics</div>
     <div class="gb-ma-list">
     <div class="gb-ma-label">Owner conversations</div><div class="gb-ma-value">{owner_now}</div>
-    <div class="gb-ma-label">NDAs signed</div><div class="gb-ma-value">{ndas_now}</div>
-    <div class="gb-ma-label">Outbound contacted</div><div class="gb-ma-value">&mdash;</div>
-    <div class="gb-ma-label">Reply rate</div><div class="gb-ma-value">&mdash;</div>
+    <div class="gb-ma-label">Quality conversations</div><div class="gb-ma-value">{quality_now}</div>
+    <div class="gb-ma-label">Outbound emails</div><div class="gb-ma-value">{outbound_emails}</div>
+    <div class="gb-ma-label">Outbound calls &amp; LinkedIn DM</div><div class="gb-ma-value">{calls_dm}</div>
+    <div class="gb-ma-label">Reply rate</div><div class="gb-ma-value">{reply_rate}</div>
     </div>
     <div class="footer">
-    <span class="gb-trend flat">&rarr; DealsX wires May 7</span>
+    <span class="gb-trend flat">&rarr; Email + DealsX cumulative</span>
     <span class="gb-horizon">THIS WEEK</span>
     </div>
     </a>

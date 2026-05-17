@@ -27,6 +27,7 @@ VAULT_ENTITIES_DIR = VAULT_ROOT / "entities"
 PIPELINE_SNAPSHOT_PATH = VAULT_ROOT / "context" / "attio-pipeline-snapshot.json"
 JJ_SNAPSHOT_PATH = VAULT_ROOT / "context" / "jj-activity-snapshot.json"
 DEALSX_SNAPSHOT_PATH = VAULT_ROOT / "context" / "dealsx-weekly-snapshot.json"
+QUALITY_CONV_PATH = VAULT_ROOT / "context" / "quality-conversations-manual.json"
 WEEKLY_TRACKERS_DIR = VAULT_ROOT / "trackers" / "weekly"
 
 _SESSION_DECISIONS_RE = re.compile(r"^session-decisions-(\d{4}-\d{2}-\d{2})\.md$")
@@ -2940,6 +2941,59 @@ def load_dealsx_manual(window_start: date, window_end: date) -> DealsXManual | N
     if not candidates:
         return None
     return max(candidates, key=lambda e: e.week_end)
+
+
+@dataclass
+class QualityConversation:
+    """One manually-curated conversation that produced no brain/calls/ note.
+
+    Conference / luncheon conversations have no Granola transcript — they're
+    captured as entity engagement notes / Attio, invisible to _scan_calls().
+    Fed via brain/context/quality-conversations-manual.json so the dashboard
+    conversation metric reflects that Kay is now meeting owners and quality
+    people at conferences, not only on recorded calls."""
+    date: date
+    name: str
+    type: str  # "owner" | "quality"
+    venue: str
+    note: str
+
+
+def load_quality_conversations(
+    window_start: date, window_end: date
+) -> list[QualityConversation]:
+    """Return manually-curated conversations whose date is in the window.
+
+    Returns [] when the file is missing/malformed. Entries with an
+    unrecognized `type` are coerced to "quality" (counts toward the broad
+    metric, never inflates the strict owner count)."""
+    if not QUALITY_CONV_PATH.exists():
+        return []
+    try:
+        data = json.loads(QUALITY_CONV_PATH.read_text())
+    except (OSError, json.JSONDecodeError):
+        return []
+    out: list[QualityConversation] = []
+    for c in data.get("conversations", []):
+        try:
+            d = date.fromisoformat(c["date"])
+        except (KeyError, ValueError, TypeError):
+            continue
+        if not (window_start <= d <= window_end):
+            continue
+        ctype = str(c.get("type", "quality")).strip().lower()
+        if ctype not in ("owner", "quality"):
+            ctype = "quality"
+        out.append(
+            QualityConversation(
+                date=d,
+                name=str(c.get("name", "")).strip(),
+                type=ctype,
+                venue=str(c.get("venue", "")).strip(),
+                note=str(c.get("note", "")).strip(),
+            )
+        )
+    return out
 
 
 @dataclass

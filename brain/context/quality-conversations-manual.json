@@ -1,0 +1,22 @@
+{
+  "_comment": "Manually-curated quality / owner conversations that DON'T produce a brain/calls/ note. The dashboard conversation metric scans brain/calls/*.md only, so in-person conference and luncheon conversations (no Granola transcript — captured as entity engagement notes / Attio) are invisible to it. Kay (or the conference-engagement / relationship pipeline) appends an entry per meaningful conversation here. 'type': 'owner' = an actual target business owner/seller; 'quality' = a meaningful deal-relevant connector/intermediary/peer (counts toward Quality conversations but NOT Owner conversations). Dates ISO (YYYY-MM-DD), the date the conversation happened. Dedup against brain/calls/ is by date+name — if a call note later appears for the same person/date, remove that manual entry.",
+  "_schema": "conversations[]: {date, name, type: owner|quality, venue, note, entity}",
+  "conversations": [
+    {
+      "date": "2026-05-13",
+      "name": "Becky Wuest Creavin",
+      "type": "quality",
+      "venue": "Heels to Deals luncheon",
+      "note": "Peapack Private connector — relayed Matt (XPX) good-fit intro, introduced Kay into the Heels to Deals women's networking group.",
+      "entity": "becky-wuest-creavin"
+    },
+    {
+      "date": "2026-05-14",
+      "name": "Laura Smith",
+      "type": "quality",
+      "venue": "ACG NY Women of Leadership Summit",
+      "note": "BankUnited (lender/intermediary) — offered 2 warm intros (Stephanie super-connector + a BankUnited colleague); bank open to smaller deals.",
+      "entity": "laura-smith-bankunited"
+    }
+  ]
+}

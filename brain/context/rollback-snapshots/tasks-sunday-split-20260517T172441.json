@@ -1,0 +1,112 @@
+{
+ "ts": "2026-05-17T17:24:41.085907",
+ "verb": "sunday-split",
+ "range": "'Sun'!A13:E27",
+ "values": [
+  [
+   true,
+   "Laundry",
+   "",
+   "",
+   ""
+  ],
+  [
+   false,
+   "Flight prep",
+   "",
+   "",
+   ""
+  ],
+  [
+   false,
+   "Email follow-ups: Carlos, Hamptons Pest, Jay & Jason, Matt, Becky, Laura, Krupa, Deborah",
+   "",
+   "",
+   ""
+  ],
+  [
+   true,
+   "Axial sign-up",
+   "",
+   "",
+   ""
+  ],
+  [
+   false,
+   "Schools research & open-house signup",
+   "",
+   "",
+   ""
+  ],
+  [
+   false,
+   "Email Lourdes",
+   "",
+   "",
+   ""
+  ],
+  [
+   false,
+   "Claude: specialized agents + 1-tab-to-do-per-day review",
+   "",
+   "",
+   ""
+  ],
+  [
+   false,
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   false,
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   false,
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   false,
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   false,
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   false,
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   false,
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   false,
+   "",
+   "",
+   "",
+   ""
+  ]
+ ]
+}

@@ -34,7 +34,16 @@ import requests
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SNAPSHOT_PATH = REPO_ROOT / "brain" / "context" / "jj-activity-snapshot.json"
-GOG_CREDS_PATH = Path.home() / "Library" / "Application Support" / "gogcli" / "credentials.json"
+# Cross-platform creds resolver: Linux VPS (~/.config) first, macOS fallback.
+# (Was a hardcoded macOS-only path — broke OAuth on the Linux VPS, silently
+#  zeroing every Operations-calls channel. 2026-05-17.)
+_GOG_CRED_CANDIDATES = [
+    Path.home() / ".config" / "gogcli" / "credentials.json",
+    Path.home() / "Library" / "Application Support" / "gogcli" / "credentials.json",
+]
+GOG_CREDS_PATH = next(
+    (p for p in _GOG_CRED_CANDIDATES if p.exists()), _GOG_CRED_CANDIDATES[0]
+)
 GOG_ACCOUNT = os.environ.get("GOG_ACCOUNT", "kay.s@greenwichandbarrow.com")
 
 # Match Call Log tab names like "Call Log 4.21.26" or "Call Log 04.21.2026".

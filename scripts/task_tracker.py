@@ -776,146 +776,6 @@ def _read_recurring_template(client: SheetsClient) -> list[dict]:
     return out
 
 
-def _stamp_recurring_template(client: SheetsClient, meta: dict,
-                              dry_run: bool = False) -> dict:
-    """Stamp every row of the Recurring Template tab onto the 7 permanent day
-    tabs' priority slots (new day-tab model).
-
-    Mirrors `schedule-to-day-slot` semantics with --force=False (refuse to
-    overwrite). Returns a summary dict {stamped, refused, rows_read,
-    tab_present}. If `dry_run`, no writes; reports what would happen against an
-    in-memory view of the (post-clear) slot grid. The collision-refuse logic is
-    preserved unchanged.
-    """
-    template_tab = find_tab(meta, TAB_RECURRING_TEMPLATE)
-    summary = {"stamped": [], "refused": [], "rows_read": 0, "tab_present": template_tab is not None}
-    if template_tab is None:
-        print(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' tab not present — skipping recurring stamp")
-        return summary
-
-    rows = _read_recurring_template(client)
-    summary["rows_read"] = len(rows)
-    if not rows:
-        print(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' has no usable rows — nothing to stamp")
-        return summary
-
-    # Resolve which day tabs exist + an in-memory slot grid keyed by tab name.
-    present_tabs = {name for name, _ in _iter_day_tabs(meta)}
-    slot_grid: dict[str, list[str]] = {}  # tab_name → 15 task strings (empty=blank)
-    for tab_name in present_tabs:
-        vals = client.get_values(
-            day_tab_range(tab_name, DAY_COL_TASK, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW))
-        flat = [(v[0] if v else "") if isinstance(v, list) else "" for v in vals]
-        while len(flat) < DAY_SLOT_COUNT:
-            flat.append("")
-        slot_grid[tab_name] = flat
-
-    writes: list[tuple[str, list[list], dict]] = []  # (range_a1, values, recurring_row)
-    for r in rows:
-        day_idx = DAY_BY_NAME[r["day"].lower()]
-        tab_name = DAY_LABELS[day_idx]  # 3-letter, == day-tab name
-
-        if tab_name not in present_tabs:
-            summary["refused"].append({
-                "row": r["row"], "day": r["day"], "slot": r["slot"],
-                "task": r["task"], "reason": f"day tab '{tab_name}' not present",
-            })
-            print(f'task-tracker-manager: WARNING recurring stamp REFUSED '
-                  f'(template row {r["row"]}): day tab {tab_name!r} not present — skipping')
-            continue
-
-        target_slot = r["slot"]
-        if target_slot is not None:
-            existing = slot_grid[tab_name][target_slot - 1]
-            if existing and str(existing).strip():
-                summary["refused"].append({
-                    "row": r["row"], "day": r["day"], "slot": target_slot,
-                    "task": r["task"], "reason": f'slot occupied by "{existing}"',
-                })
-                print(f'task-tracker-manager: WARNING recurring stamp REFUSED '
-                      f'(template row {r["row"]}, {tab_name} slot {target_slot}): '
-                      f'slot occupied by "{existing}" — skipping, Kay can resolve manually')
-                continue
-            chosen_slot = target_slot
-        else:
-            chosen_slot = None
-            for idx, v in enumerate(slot_grid[tab_name]):
-                if not v or not str(v).strip():
-                    chosen_slot = idx + 1
-                    break
-            if chosen_slot is None:
-                summary["refused"].append({
-                    "row": r["row"], "day": r["day"], "slot": None,
-                    "task": r["task"], "reason": f"{tab_name} has no empty slots",
-                })
-                print(f'task-tracker-manager: WARNING recurring stamp REFUSED '
-                      f'(template row {r["row"]}): {tab_name} has no empty slots — skipping')
-                continue
-
-        slot_row = DAY_SLOT_FIRST_ROW + chosen_slot - 1
-        rng = day_tab_block(tab_name, DAY_COL_STATUS, DAY_COL_LAST, slot_row, slot_row)
-        writes.append((rng, [[False, r["task"], r["type"] or "", r["project"] or "",
-                              r["notes"] or ""]], r))
-        slot_grid[tab_name][chosen_slot - 1] = r["task"]
-        summary["stamped"].append({
-            "template_row": r["row"], "day": r["day"], "slot": chosen_slot,
-            "task": r["task"], "auto_picked": r["slot"] is None,
-        })
-        prefix = "task-tracker-manager: recurring stamp"
-        if dry_run:
-            prefix += " (DRY RUN)"
-        ap = " (auto-picked)" if r["slot"] is None else ""
-        print(f'{prefix}: template row {r["row"]} → {tab_name} slot {chosen_slot}{ap}: "{r["task"]}"')
-
-    if not dry_run and writes:
-        for rng, vals, _r in writes:
-            client.values_update(rng, vals)
-
-    return summary
-
-
-# --------------------------------------------------------------- Week-tab ops
-
-def _week_clear_requests(sid: int) -> list[dict]:
-    """repeatCell requests that reset the Week planning grid to a clean week:
-    every day's habit checkboxes FALSE, slot status checkboxes FALSE, slot
-    content cells empty, notes block empty. Title/headers/labels/dropdowns/CF/
-    checkbox-validation are PRESERVED (only userEnteredValue is touched)."""
-    reqs: list[dict] = []
-    for i in range(7):
-        sc = wk_status_col(i)
-        tc = wk_content_col(i)
-        # Habit status checkboxes (rows 7..13) → FALSE
-        reqs.append({"repeatCell": {
-            "range": {"sheetId": sid,
-                      "startRowIndex": WK_HABIT_FIRST_ROW - 1, "endRowIndex": WK_HABIT_LAST_ROW,
-                      "startColumnIndex": sc, "endColumnIndex": sc + 1},
-            "cell": {"userEnteredValue": {"boolValue": False}},
-            "fields": "userEnteredValue"}})
-        # Slot status checkboxes (rows 23..37) → FALSE
-        reqs.append({"repeatCell": {
-            "range": {"sheetId": sid,
-                      "startRowIndex": WK_SLOT_FIRST_ROW - 1, "endRowIndex": WK_SLOT_LAST_ROW,
-                      "startColumnIndex": sc, "endColumnIndex": sc + 1},
-            "cell": {"userEnteredValue": {"boolValue": False}},
-            "fields": "userEnteredValue"}})
-        # Slot content cells (rows 23..37) → empty
-        reqs.append({"repeatCell": {
-            "range": {"sheetId": sid,
-                      "startRowIndex": WK_SLOT_FIRST_ROW - 1, "endRowIndex": WK_SLOT_LAST_ROW,
-                      "startColumnIndex": tc, "endColumnIndex": tc + 1},
-            "cell": {"userEnteredValue": {"stringValue": ""}},
-            "fields": "userEnteredValue"}})
-        # Notes block (rows 40..47, status col is the merge anchor) → empty
-        reqs.append({"repeatCell": {
-            "range": {"sheetId": sid,
-                      "startRowIndex": WK_NOTES_FIRST_ROW - 1, "endRowIndex": WK_NOTES_LAST_ROW,
-                      "startColumnIndex": sc, "endColumnIndex": tc + 1},
-            "cell": {"userEnteredValue": {"stringValue": ""}},
-            "fields": "userEnteredValue"}})
-    return reqs
-
-
 def _stamp_recurring_week(client: SheetsClient, meta: dict,
                           dry_run: bool = False) -> dict:
     """Stamp every row of the Recurring Template onto the WEEK planning grid's
@@ -924,21 +784,18 @@ def _stamp_recurring_week(client: SheetsClient, meta: dict,
     into the day tabs). Mirrors the day-tab collision-refuse semantics.
 
     Returns {stamped, refused, rows_read, tab_present}."""
-    template_tab = find_tab(meta, TAB_RECURRING_TEMPLATE)
+    # Recurring source is the To Do tab (Horizon = 'Weekly Recurring {Day}'),
+    # not a separate tab — see _read_recurring_template (2026-05-17 consolidation).
     week_tab = find_tab(meta, TAB_WEEK)
-    summary = {"stamped": [], "refused": [], "rows_read": 0,
-               "tab_present": template_tab is not None}
+    summary = {"stamped": [], "refused": [], "rows_read": 0, "tab_present": True}
     if week_tab is None:
         print(f"task-tracker-manager: '{TAB_WEEK}' tab not present — cannot stamp recurring")
-        return summary
-    if template_tab is None:
-        print(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' tab not present — skipping recurring stamp")
         return summary
 
     rows = _read_recurring_template(client)
     summary["rows_read"] = len(rows)
     if not rows:
-        print(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' has no usable rows — nothing to stamp")
+        print("task-tracker-manager: no 'Weekly Recurring' To Do rows — nothing to stamp")
         return summary
 
     # In-memory view of each day-block's content column (post-clear state).
@@ -1103,14 +960,13 @@ def cmd_build_week(args) -> int:
         for i in range(7):
             print(f"    {WK_DAY_ORDER[i]} → {day_title_text(WK_DAY_ORDER[i], wd[i])!r}")
         if getattr(args, "skip_recurring", False):
-            print("  --skip-recurring set → would NOT stamp Recurring Template")
+            print("  --skip-recurring set → would NOT stamp recurring rows")
         else:
-            template_tab = find_tab(meta, TAB_RECURRING_TEMPLATE)
-            if template_tab is None:
-                print("  Recurring Template tab NOT present — nothing to stamp")
+            rows = _read_recurring_template(client)
+            if not rows:
+                print("  No 'Weekly Recurring' To Do rows — nothing to stamp")
             else:
-                rows = _read_recurring_template(client)
-                print(f"  Recurring Template present — {len(rows)} usable row(s); "
+                print(f"  {len(rows)} 'Weekly Recurring' To Do row(s); "
                       f"would stamp onto the CLEARED Week grid:")
                 synth: dict[str, set[int]] = {n: set() for n in WK_DAY_ORDER}
                 for r in rows:

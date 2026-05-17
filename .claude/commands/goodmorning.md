@@ -46,11 +46,11 @@ JJ-operations runs independently via launchd (8am) and posts to Slack at 10am. D
 
 ### Step 6 — Day-of-week overlays
 
-- **Sunday — weekly build ceremony (BOTH-surfaces model: Week planning tab + 7 day tabs; `/goodmorning` is the trigger, no systemd timer, NOT goodnight):** run in order:
-  1. `task-tracker-manager report` — reads across the 7 prior-week day tabs (Sun..Sat); surfaces per-day incomplete slots + overdue/unscheduled To Do + stale Long Term/Gantt as a **Weekly Planning Review** section.
-  2. Kay walks each carryover item: keep / move to a day this week / move to Long Term / drop. (Carryover is manual — no auto-carry.)
-  3. `task-tracker-manager archive-todo` — auto-runs `sync-done-status` across the 7 day tabs first, then sweeps ✅ To Do rows → Completed To Do. Must run before build-week clears the Week tab.
-  4. `task-tracker-manager build-week` — targets the **Week planning tab** (the Sunday canvas, all 7 days Sun→Sat). Snapshots the Week tab + `_donut_data` + To Do, writes ONE combined far-right `archive_{Sun-date}` tab (prior Week tab verbatim), clears all 7 day-blocks on the Week tab, re-titles it with the new week label (Sun..Sat boundary), and stamps the Recurring Template ONTO THE WEEK TAB. **The 7 day tabs are NOT touched here.**
+- **Sunday — weekly build ceremony (single-To Do-backend + BOTH-surfaces model: Week planning tab + 7 day tabs; `/goodmorning` is the trigger, no systemd timer, NOT goodnight):** run in order:
+  1. `task-tracker-manager report` — reads across the 7 prior-week day tabs (Sun..Sat); surfaces per-day incomplete slots + overdue/unscheduled To Do (Status != Completed) + stale Long Term (Horizon=Long Term) / Gantt as a **Weekly Planning Review** section.
+  2. Kay walks each carryover item: keep / move to a day this week / set Horizon=Long Term / drop. (Carryover is manual — no auto-carry.)
+  3. `task-tracker-manager sync-done-status` across the 7 day tabs — reflect last week's checked priority slots onto matching `To Do` rows by setting `Status = Completed` in place. **No sweep, no `Completed To Do` tab — `archive-todo` is RETIRED.** Completed rows stay in `To Do`; cleanliness = saved filter/sort views in the Sheet UI.
+  4. `task-tracker-manager build-week` — targets the **Week planning tab** (the Sunday canvas, all 7 days Sun→Sat). Snapshots the Week tab + To Do, writes ONE combined far-right `archive_{Sun-date}` tab (prior Week tab verbatim), clears all 7 day-blocks on the Week tab, re-titles it with the new week label (Sun..Sat boundary), and stamps the recurring `To Do` rows (Horizon = `Weekly Recurring {day}`, Status `On-going`) ONTO THE WEEK TAB. **The 7 day tabs are NOT touched here.**
   5. Kay lays out / finalizes the full week on the **Week tab** — approved carryover/new items fire `task-tracker-manager promote` / `schedule-to-day-slot` / `move-day-item` (these still write day-tab slots) or are entered directly on the Week tab.
   6. `task-tracker-manager distribute-week` — once the Week tab is finalized, fans each day-block's slots + habits OUT into the corresponding day tab (collision-aware; snapshot+trace). Kay then works the day tabs Mon–Sat. (`--force` to overwrite a day-tab slot the Week plan changed; `--day {X}` to limit to one day.)
   7. `task-tracker-manager reformat` if conditional formatting needs reapplying.

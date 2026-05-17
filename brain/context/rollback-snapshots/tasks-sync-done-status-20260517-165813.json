@@ -1,71 +1,437 @@
 {
   "verb": "sync-done-status",
-  "timestamp": "20260512-104908",
+  "timestamp": "20260517-165813",
   "sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
   "ranges": {
-    "'To Do'!A2:A200": [
+    "'To Do'!A2:A400": [
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
       ],
       [
-        false
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [],
+      [
+        "Not Completed"
+      ],
+      [],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "On-going"
+      ],
+      [
+        "On-going"
+      ],
+      [
+        "On-going"
+      ],
+      [
+        "On-going"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
       ],
       [
         false

@@ -1,0 +1,36 @@
+{
+ "ts": "2026-05-17T17:26:32.273299",
+ "verb": "deal-agg-daytabs",
+ "cells": {
+  "Mon!A19:E19": [
+   [
+    false
+   ]
+  ],
+  "Tue!A15:E15": [
+   [
+    false
+   ]
+  ],
+  "Wed!A17:E17": [
+   [
+    false
+   ]
+  ],
+  "Thu!A14:E14": [
+   [
+    false
+   ]
+  ],
+  "Fri!A15:E15": [
+   [
+    false
+   ]
+  ],
+  "Sat!A13:E13": [
+   [
+    false
+   ]
+  ]
+ }
+}

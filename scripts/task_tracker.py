@@ -1062,7 +1062,7 @@ def cmd_build_week(args) -> int:
     touch the 7 day tabs. After Kay finalizes the week on the Week tab,
     `distribute-week` fans it out into the day tabs.
 
-    1. Snapshot the Week tab + `_donut_data` + `To Do` to one rollback JSON.
+    1. Snapshot the Week tab + `To Do` to one rollback JSON.
     2. Write ONE combined `archive_{Sun-date}` tab capturing the prior week's
        Week tab verbatim (values only — the Week tab is NOT destroyed; it is
        cleared + re-titled in place, formatting preserved).
@@ -1141,9 +1141,9 @@ def cmd_build_week(args) -> int:
     wk_sid = week_tab["sheetId"]
 
     # ---------- 1. Snapshot ----------
+    # (_donut_data removed 2026-05-17 — donut layer retired.)
     snap_ranges = [f"'{TAB_WEEK}'!A1:{col_letter(WK_GRID_COLS - 1)}{WK_GRID_ROWS}",
-                   f"'{TAB_DONUT_DATA}'!A1:C8",
-                   f"'{TAB_TODO}'!A1:F{TODO_MAX_ROWS}"]
+                   f"'{TAB_TODO}'!A1:{col_letter(TODO_COL_HORIZON)}{TODO_MAX_ROWS}"]
     snap = snapshot_ranges(client, "build-week", snap_ranges)
 
     # ---------- 2. Combined archive tab (prior Week tab verbatim, values-only) -
@@ -1379,16 +1379,16 @@ def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
                          _meta: dict | None = None) -> int:
     """Reconcile checked weekly slots → matching To Do rows by exact task-text match.
 
-    For each non-empty priority slot across the live week tab whose status checkbox is
-    TRUE, find the matching To Do row (case-sensitive, leading/trailing whitespace
-    stripped) and flip its status to TRUE. The existing CF rule paints strikethrough +
-    sage-light fill. Ambiguous matches (>1 To Do row with same task text) are flagged
-    and skipped — Kay resolves manually.
+    For each non-empty DAY-TAB priority slot whose native checkbox is TRUE, find the
+    matching To Do row (case-sensitive, whitespace-stripped) and set its Status to
+    "Completed" (3-state dropdown, post-2026-05-17). The CF rule (=$A2="Completed")
+    paints strikethrough + sage-light fill. Ambiguous matches (>1 To Do row, same
+    task) are flagged + skipped — Kay resolves manually.
 
-    Note on the "→" case from the spec: the To Do Status column is a native Sheets
-    checkbox (boolean only). The `promote` verb writes its "→ promoted to {day} slot N"
-    marker into the Notes column, not Status. So a previously-promoted row's Status
-    is FALSE — the standard FALSE → TRUE flip handles it. No string "→" state exists.
+    Recurring-Horizon To Do rows are excluded from matching: checking a stamped
+    recurring instance on a day tab must NOT complete the permanent template row.
+    Day tabs / Week tab keep native checkboxes (Kay's surfaces, unchanged) — only
+    the To Do backend uses the Status enum.
     """
     client = _client or SheetsClient()
     meta = _meta or client.get_metadata()
@@ -1421,20 +1421,26 @@ def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
                 })
 
     # 2. Walk To Do tab — build {task_text(stripped): [row_indices]} dict.
-    todo_rows = client.get_values(f"'{TAB_TODO}'!A2:F{TODO_MAX_ROWS}")
+    #    Recurring-Horizon rows are EXCLUDED: a daily check of a stamped recurring
+    #    instance must never mark the permanent recurring template row 'Completed'.
+    todo_rows = client.get_values(
+        f"'{TAB_TODO}'!A2:{col_letter(TODO_COL_HORIZON)}{TODO_MAX_ROWS}")
     todo_by_task: dict[str, list[dict]] = {}
     for i, row in enumerate(todo_rows):
-        task = row[1] if len(row) > 1 else ""
+        task = row[TODO_COL_TASK] if len(row) > TODO_COL_TASK else ""
         if not isinstance(task, str):
             continue
         key = task.strip()
         if not key:
             continue
-        status = row[0] if len(row) > 0 else ""
+        horizon = row[TODO_COL_HORIZON] if len(row) > TODO_COL_HORIZON else ""
+        if _todo_is_recurring(horizon):
+            continue
+        status = row[TODO_COL_STATUS] if len(row) > TODO_COL_STATUS else ""
         todo_by_task.setdefault(key, []).append({
             "row": 2 + i,  # 1-based
             "status": status,
-            "is_truthy": _is_truthy(status),
+            "is_truthy": _todo_is_done(status),
         })
 
     # 3. Match + classify.
@@ -1485,9 +1491,9 @@ def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
     # 5. Apply writes (or skip in dry-run).
     rows_synced = 0
     if to_sync and not args.dry_run:
-        # Use batch_update with updateCells for boolValue TRUE — values_update treats
-        # "TRUE" as a string in USER_ENTERED mode unless we send raw bool which causes
-        # the checkbox to flip correctly via the existing data-validation rule.
+        # Status is a 3-state dropdown string post-2026-05-17. Write the literal
+        # "Completed"; the ONE_OF_LIST validation accepts it and the CF rule
+        # (=$A2="Completed") paints strikethrough + sage-light fill.
         todo_tab = find_tab(meta, TAB_TODO)
         if todo_tab is None:
             sys.exit(f"task-tracker-manager: '{TAB_TODO}' tab not found")
@@ -1496,7 +1502,7 @@ def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
         for s in to_sync:
             batch.append({
                 "updateCells": {
-                    "rows": [{"values": [{"userEnteredValue": {"boolValue": True}}]}],
+                    "rows": [{"values": [{"userEnteredValue": {"stringValue": "Completed"}}]}],
                     "fields": "userEnteredValue",
                     "start": {"sheetId": todo_sid, "rowIndex": s["row"] - 1, "columnIndex": TODO_COL_STATUS},
                 }
@@ -1599,105 +1605,92 @@ def _recurring_day3(horizon: str) -> str | None:
 
 
 def cmd_recurring_add(args) -> int:
-    """Append a row to the Recurring Template tab. Decision-content (changes future
-    weeks), so traces."""
+    """Add a weekly-recurring item. Post-2026-05-17 the separate Recurring tab is
+    retired — this appends a row to the single `To Do` tab with
+    Horizon="Weekly Recurring {Day}" + Status="On-going". `build-week` reads these
+    every Sunday. Decision-content (changes future weeks), so traces.
+    `--slot` is accepted but ignored (recurring always auto-picks, as before)."""
     day_idx = DAY_BY_NAME.get(args.day.lower())
     if day_idx is None:
-        sys.exit(f"task-tracker-manager: unknown day {args.day!r}. Use Mon..Sun.")
-    day_canonical = DAY_LABELS[day_idx]
+        sys.exit(f"task-tracker-manager: unknown day {args.day!r}. Use Mon..Sat.")
+    day3 = DAY_LABELS[day_idx]
+    horizon = f"{RECURRING_HORIZON_PREFIX} {day3}"
+    if horizon not in HORIZON_OPTIONS:
+        sys.exit(f"task-tracker-manager: weekly recurring supports Mon..Sat only "
+                 f"(got {day3}). {horizon!r} not in {HORIZON_OPTIONS}")
     if args.type not in TYPE_OPTIONS:
         sys.exit(f"task-tracker-manager: --type must be one of {TYPE_OPTIONS}")
-    if args.slot is not None and not (1 <= args.slot <= 15):
-        sys.exit("task-tracker-manager: --slot must be 1..15 (or omit for auto-pick)")
     if not args.task.strip():
         sys.exit("task-tracker-manager: --task must be non-empty")
 
     client = SheetsClient()
-    meta = client.get_metadata()
-    if find_tab(meta, TAB_RECURRING_TEMPLATE) is None:
-        sys.exit(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' tab not found — create it first")
 
-    # Find first empty row >= 2.
-    existing = client.get_values(f"'{TAB_RECURRING_TEMPLATE}'!C2:C{RT_MAX_ROWS}")
+    existing = client.get_values(
+        f"'{TAB_TODO}'!{col_letter(TODO_COL_TASK)}2:{col_letter(TODO_COL_TASK)}{TODO_MAX_ROWS}")
     target_row = 2
-    found = False
     for i, row in enumerate(existing):
         if not row or not (row[0] if row else "").strip():
             target_row = 2 + i
-            found = True
             break
-    if not found:
+    else:
         target_row = 2 + len(existing)
-    if target_row > RT_MAX_ROWS:
-        sys.exit(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' is full (>{RT_MAX_ROWS}).")
+    if target_row > TODO_MAX_ROWS:
+        sys.exit(f"task-tracker-manager: To Do tab is full (>{TODO_MAX_ROWS}).")
 
     snap = snapshot_ranges(client, "recurring-add",
-        [f"'{TAB_RECURRING_TEMPLATE}'!A{target_row}:F{target_row}"])
+        [f"'{TAB_TODO}'!A{target_row}:G{target_row}"])
+    client.values_update(f"'{TAB_TODO}'!A{target_row}:G{target_row}", [[
+        "On-going", args.task, args.type, args.project or "", "",
+        args.notes or "", horizon,
+    ]])
 
-    row_values = [
-        day_canonical,
-        args.slot if args.slot is not None else "",
-        args.task,
-        args.type,
-        args.project or "",
-        args.notes or "",
-    ]
-    client.values_update(
-        f"'{TAB_RECURRING_TEMPLATE}'!A{target_row}:F{target_row}",
-        [row_values],
-    )
-
-    trace("recurring-add", f"{day_canonical.lower()}-row{target_row}", [
-        f"- day: {day_canonical}",
-        f"- slot: {args.slot if args.slot is not None else '(auto-pick)'}",
+    trace("recurring-add", f"{day3.lower()}-row{target_row}", [
+        f"- horizon: {horizon}",
         f"- task: {args.task}",
         f"- type: {args.type}",
         f"- project: {args.project or '—'}",
-        f"- row: {target_row}",
+        f"- To Do row: {target_row}",
         f"- snapshot: {snap}",
-        f"- effect: applied to every future Sunday `archive` ceremony",
+        f"- effect: stamped onto {day3} every future Sunday build-week",
     ])
-    print(f'task-tracker-manager: appended Recurring Template row {target_row} '
-          f'({day_canonical}{" slot " + str(args.slot) if args.slot is not None else ""}, '
-          f'"{args.task}", {args.type}, {args.project or "—"})')
+    print(f'task-tracker-manager: added recurring To Do row {target_row} '
+          f'("{args.task}", {horizon}, {args.type})')
     return 0
 
 
 def cmd_recurring_remove(args) -> int:
-    """Delete a row from Recurring Template by clearing its values (preserves row
-    numbering for snapshot rollback). Traces."""
+    """Remove a weekly-recurring item by clearing its `To Do` row (preserves row
+    numbering for snapshot rollback). Refuses non-recurring rows as a guard.
+    Traces (compounds across every future week)."""
     client = SheetsClient()
-    meta = client.get_metadata()
-    if find_tab(meta, TAB_RECURRING_TEMPLATE) is None:
-        sys.exit(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' tab not found")
-    if not (2 <= args.row <= RT_MAX_ROWS):
-        sys.exit(f"task-tracker-manager: --row must be 2..{RT_MAX_ROWS} (1 is the header row)")
+    if not (2 <= args.row <= TODO_MAX_ROWS):
+        sys.exit(f"task-tracker-manager: --row must be 2..{TODO_MAX_ROWS} (1 is the header)")
 
-    # Read the row before delete so the trace captures what was removed.
-    pre = client.get_values(f"'{TAB_RECURRING_TEMPLATE}'!A{args.row}:F{args.row}")
+    pre = client.get_values(f"'{TAB_TODO}'!A{args.row}:G{args.row}")
     pre_row = pre[0] if pre and pre[0] else []
     if not pre_row or not any((c or "").strip() if isinstance(c, str) else c for c in pre_row):
-        sys.exit(f"task-tracker-manager: '{TAB_RECURRING_TEMPLATE}' row {args.row} is already empty — nothing to remove")
+        sys.exit(f"task-tracker-manager: To Do row {args.row} is already empty")
+    pad = list(pre_row) + [""] * (7 - len(pre_row))
+    horizon = str(pad[TODO_COL_HORIZON] or "")
+    if not _todo_is_recurring(horizon):
+        sys.exit(f"task-tracker-manager: refused — To Do row {args.row} Horizon "
+                 f"{horizon!r} is not recurring. Use a normal edit, not recurring-remove.")
 
     snap = snapshot_ranges(client, "recurring-remove",
-        [f"'{TAB_RECURRING_TEMPLATE}'!A{args.row}:F{args.row}"])
+        [f"'{TAB_TODO}'!A{args.row}:G{args.row}"])
+    client.values_clear(f"'{TAB_TODO}'!A{args.row}:G{args.row}")
 
-    # Clear via values_clear so the row preserves its numbering.
-    client.values_clear(f"'{TAB_RECURRING_TEMPLATE}'!A{args.row}:F{args.row}")
-
-    pad = pre_row + [""] * (6 - len(pre_row))
     trace("recurring-remove", f"row{args.row}", [
-        f"- removed row: {args.row}",
-        f"- day: {pad[RT_COL_DAY]}",
-        f"- slot: {pad[RT_COL_SLOT] if pad[RT_COL_SLOT] != '' else '(auto-pick)'}",
-        f"- task: {pad[RT_COL_TASK]}",
-        f"- type: {pad[RT_COL_TYPE]}",
-        f"- project: {pad[RT_COL_PROJECT] or '—'}",
+        f"- removed To Do row: {args.row}",
+        f"- horizon: {horizon}",
+        f"- task: {pad[TODO_COL_TASK]}",
+        f"- type: {pad[TODO_COL_TYPE]}",
+        f"- project: {pad[TODO_COL_PROJECT] or '—'}",
         f"- snapshot: {snap}",
-        f"- effect: no longer stamped on future Sunday `archive` ceremonies",
+        f"- effect: no longer stamped on future Sunday build-week ceremonies",
     ])
-    print(f'task-tracker-manager: removed Recurring Template row {args.row} '
-          f'("{pad[RT_COL_TASK]}", {pad[RT_COL_DAY]})')
+    print(f'task-tracker-manager: removed recurring To Do row {args.row} '
+          f'("{pad[TODO_COL_TASK]}", {horizon})')
     return 0
 
 
@@ -1912,7 +1905,6 @@ def cmd_reformat(args) -> int:
     if not day_tabs:
         sys.exit("task-tracker-manager: no day tabs present — run scripts/build_day_tabs.py first")
     todo_sid = find_tab(meta, TAB_TODO)["sheetId"] if find_tab(meta, TAB_TODO) else None
-    lt_sid = find_tab(meta, TAB_TODO_LONG_TERM)["sheetId"] if find_tab(meta, TAB_TODO_LONG_TERM) else None
     pj_sid = find_tab(meta, TAB_PROJECTS)["sheetId"] if find_tab(meta, TAB_PROJECTS) else None
 
     snap = snapshot_ranges(client, "reformat", [
@@ -1968,7 +1960,9 @@ def cmd_reformat(args) -> int:
             "index": 0,
         }})
 
-    # To Do tab CF
+    # To Do tab CF — Status is now a 3-state dropdown string (2026-05-17).
+    # Completed → strikethrough + sage-light. On-going → subtle sage fill (no
+    # strikethrough) so in-progress items read differently from done + not-started.
     if todo_sid is not None:
         R.append({"addConditionalFormatRule": {
             "rule": {
@@ -1977,7 +1971,7 @@ def cmd_reformat(args) -> int:
                             "startColumnIndex": 0, "endColumnIndex": len(TODO_HEADERS)}],
                 "booleanRule": {
                     "condition": {"type": "CUSTOM_FORMULA",
-                                  "values": [{"userEnteredValue": "=$A2=TRUE"}]},
+                                  "values": [{"userEnteredValue": '=$A2="Completed"'}]},
                     "format": {
                         "backgroundColor": hex_to_rgb(SAGE_EXTRA_LIGHT_HEX),
                         "textFormat": {"strikethrough": True,
@@ -1987,22 +1981,15 @@ def cmd_reformat(args) -> int:
             },
             "index": 0,
         }})
-
-    # To Do Long Term CF
-    if lt_sid is not None:
         R.append({"addConditionalFormatRule": {
             "rule": {
-                "ranges": [{"sheetId": lt_sid,
-                            "startRowIndex": 1, "endRowIndex": LT_MAX_ROWS,
-                            "startColumnIndex": 0, "endColumnIndex": len(LT_HEADERS)}],
+                "ranges": [{"sheetId": todo_sid,
+                            "startRowIndex": 1, "endRowIndex": TODO_MAX_ROWS,
+                            "startColumnIndex": 0, "endColumnIndex": len(TODO_HEADERS)}],
                 "booleanRule": {
                     "condition": {"type": "CUSTOM_FORMULA",
-                                  "values": [{"userEnteredValue": '=$A2="Done"'}]},
-                    "format": {
-                        "backgroundColor": hex_to_rgb(SAGE_EXTRA_LIGHT_HEX),
-                        "textFormat": {"strikethrough": True,
-                                       "foregroundColor": hex_to_rgb(MUTED_HEX)},
-                    },
+                                  "values": [{"userEnteredValue": '=$A2="On-going"'}]},
+                    "format": {"backgroundColor": hex_to_rgb(SAGE_EXTRA_LIGHT_HEX)},
                 },
             },
             "index": 0,
@@ -2026,16 +2013,25 @@ def cmd_report(args) -> int:
 
     overdue = []
     unscheduled = []
-    todo_rows = client.get_values(f"'{TAB_TODO}'!A2:F{TODO_MAX_ROWS}")
+    long_term = []
+    todo_rows = client.get_values(
+        f"'{TAB_TODO}'!A2:{col_letter(TODO_COL_HORIZON)}{TODO_MAX_ROWS}")
     for i, row in enumerate(todo_rows):
         r = 2 + i  # 1-based
-        status = row[0] if len(row) > 0 else ""
-        task = row[1] if len(row) > 1 else ""
+        status = row[TODO_COL_STATUS] if len(row) > TODO_COL_STATUS else ""
+        task = row[TODO_COL_TASK] if len(row) > TODO_COL_TASK else ""
+        horizon = (row[TODO_COL_HORIZON] if len(row) > TODO_COL_HORIZON else "").strip()
         if not task:
             continue
-        if _is_truthy(status):
+        # Recurring templates are not tasks — never overdue/unscheduled.
+        if _todo_is_recurring(horizon):
             continue
-        due = row[4] if len(row) > 4 else ""
+        if _todo_is_done(status):
+            continue
+        if horizon == "Long Term":
+            long_term.append(f"  - row {r}: {task}")
+            continue
+        due = row[TODO_COL_DUE] if len(row) > TODO_COL_DUE else ""
         if due:
             due_str = str(due)[:10]
             if due_str < today_iso:
@@ -2096,6 +2092,11 @@ def cmd_report(args) -> int:
     lines.extend(unscheduled[:10] if unscheduled else ["  - none"])
     if len(unscheduled) > 10:
         lines.append(f"  - … and {len(unscheduled) - 10} more")
+    lines.append("")
+    lines.append(f"**Long Term ({len(long_term)}):**")
+    lines.extend(long_term[:10] if long_term else ["  - none"])
+    if len(long_term) > 10:
+        lines.append(f"  - … and {len(long_term) - 10} more")
     lines.append("")
     lines.append(f"**Carryover — incomplete day-tab slots ({carryover_total}):**")
     lines.extend(carryover_lines if carryover_lines else ["  - none"])

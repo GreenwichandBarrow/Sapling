@@ -157,10 +157,22 @@ STOP. Print the candidate list to stderr and exit 2. This is presumptively
 a bug (state-machine confusion, off-by-one, or stale snapshot logic).
 Kay's review is required before that volume of moves.
 
-**Move method:** copy each row to its destination tab via `gog sheets append`,
-then delete the source row by index via `gog sheets clear` on a single-row
-range OR row-deletion. NEVER clear the entire Pipeline range. NEVER
+**Move method:** for each archival row, FIRST project the Pipeline row onto
+the destination tab's 14-column schema per the **Column Mapping (MANDATORY)**
+table in SKILL.md ("Auto-Archival" section). Pipeline is 16 cols with leading
+`Week Of` (A) + `Decision` (C); Skipped/Attended are 14 cols with no `Week Of`
+and `Decision` in M. **Never `append` a raw `Pipeline!A:P` row** — that shifts
+every field ~2 columns right (the 2026-05-18 misalignment bug). Build the
+projected `A:N` row, append it via `gog sheets append ... --values-json`
+(row data has commas/pipes; positional args split it), then delete the source
+row by index via row-deletion. NEVER clear the entire Pipeline range. NEVER
 "clear and rewrite."
+
+**Post-move assertion:** after appending, re-read the destination row. Column
+A must parse as a date/date-range and column M must be a Decision value
+(`Skip`/`Attend`/`Register Only`/terminal). If column B holds a date or column
+C holds `Skip`/`Attend`, the projection was skipped — restore from the snapshot
+and exit 1.
 
 ### Step 2: Discovery + scoring (per SKILL.md Phase 1)
 

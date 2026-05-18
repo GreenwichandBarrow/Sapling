@@ -464,12 +464,42 @@ Before adding new conferences, scan the Pipeline tab and auto-move rows off Pipe
 **Process:**
 1. Read all Pipeline rows
 2. Identify rows matching any archival criteria above
-3. Route each row to the correct tab (Attended or Skipped)
-4. Delete matching rows from the Pipeline tab
-5. Re-sort all three tabs chronologically after changes
-6. Report in Slack notification: "{n} moved to Attended, {n} moved to Skipped"
+3. **Project each Pipeline row onto the destination tab's schema (see Column Mapping below) — NEVER append the raw Pipeline row.**
+4. Append the projected row to the correct tab (Attended or Skipped)
+5. Delete matching rows from the Pipeline tab (per-row delete; snapshot first)
+6. Re-sort all three tabs chronologically after changes
+7. Report in Slack notification: "{n} moved to Attended, {n} moved to Skipped"
 
 This keeps the Pipeline tab clean — only future conferences that still need decisions or action.
+
+#### Column Mapping (MANDATORY — Pipeline ≠ Skipped/Attended schema)
+
+The **Pipeline** tab and the **Skipped/Attended** tabs have DIFFERENT, non-aligned schemas. Pipeline has 16 columns and a leading `Week Of` (A) plus `Decision` (C); Skipped/Attended have 14 columns, no `Week Of`, and `Decision` lives in **M**. Appending a raw Pipeline row into Skipped/Attended shifts every field ~2 columns right (the 2026-05-18 bug: "Skip" landed under *Location*, the date under *Event Name*).
+
+| Pipeline (source)            | → | Skipped / Attended (destination) |
+|------------------------------|---|----------------------------------|
+| A `Week Of`                  | → | *(dropped — not in destination)* |
+| B `Date of Conference`       | → | A `Date of Conference` (Attended: `Date of Attendance`) |
+| D `Event Name`               | → | B `Event Name`                   |
+| E `Location`                 | → | C `Location`                     |
+| F `Travel`                   | → | D `Travel`                       |
+| G `Niche`                    | → | E `Niche`                        |
+| H `Registration Cost`        | → | F `Registration Cost`            |
+| J `Reg Deadline`             | → | G `Reg Deadline`                 |
+| K `Est. Attendees`           | → | H `Est. Attendees`               |
+| L `Attendee List`            | → | I `Attendee List`                |
+| M `Website`                  | → | J `Website`                      |
+| N `Status`                   | → | K `Status`                       |
+| O `Agent Rec`                | → | L `Agent Recommendation`         |
+| C `Decision`                 | → | M `Decision`                     |
+| P `Notes`                    | → | N `Notes`                        |
+| I `Registration Paid`        | → | *(dropped — not in destination)* |
+
+Destination write range is `{tab}!A:N` (14 columns). Never write to O/P on Skipped/Attended — if a prior bad paste left data there, clear `{tab}!O{r}:P{r}` for the affected rows.
+
+**Forbidden pattern:** appending `Pipeline!A:P` verbatim to Skipped/Attended. Always build the projected 14-column row per the table above and write via `--values-json` (row data contains commas/pipes — positional `gog sheets update` will split it).
+
+**Post-move validation (add to Stop Hook):** for every row appended to Skipped/Attended this run, assert column A parses as a date (or date range) and column M ∈ {`Skip`, `Attend`, `Register Only`, terminal states}. If column C contains `Skip`/`Attend` or column B contains a date, the projection was skipped — abort and snapshot-restore.
 
 ### Conference Calendar
 

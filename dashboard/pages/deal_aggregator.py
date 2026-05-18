@@ -207,45 +207,6 @@ def _render_filter_bar_stubs() -> str:
     ).strip()
 
 
-# Original visual-only filter bar — kept for reference. Replaced by
-# segmented_control + _render_filter_bar_stubs.
-def _render_filter_bar() -> str:
-    return dedent(
-        """
-        <div class="gb-filter-bar">
-        <div class="gb-filter-tabs">
-        <button class="gb-filter-tab">Today</button>
-        <button class="gb-filter-tab active">This week</button>
-        <button class="gb-filter-tab">All</button>
-        </div>
-        <select class="gb-filter-select">
-        <option>All sources</option>
-        <option>BizBuySell</option>
-        <option>Axial</option>
-        <option>Email</option>
-        <option>Association</option>
-        <option>DealsX</option>
-        </select>
-        <select class="gb-filter-select">
-        <option>All industries</option>
-        <option>Insurance</option>
-        <option>HVAC</option>
-        <option>Art Storage</option>
-        <option>MSP</option>
-        <option>Equipment</option>
-        </select>
-        <select class="gb-filter-select">
-        <option>All statuses</option>
-        <option>New</option>
-        <option>Reviewed</option>
-        <option>Pursuing</option>
-        <option>Passed</option>
-        </select>
-        <input class="gb-filter-search" type="text"
-               placeholder="Search company, owner, industry..." />
-        </div>
-        """
-    ).strip()
 
 
 def _render_table(rows: list[DealRow], coverage: ScanCoverage | None = None) -> str:
@@ -322,6 +283,17 @@ def render() -> None:
     filtered_rows = [r for r in all_rows if (today - r.scan_date).days < days]
 
     st.markdown(_render_filter_bar_stubs(), unsafe_allow_html=True)
+    # Explicit window label so the table can't be misread against the
+    # "this week" summary strip (which is always the 7d count).
+    n = len(filtered_rows)
+    deal_word = "deal" if n == 1 else "deals"
+    st.markdown(
+        f'<div class="gb-subtitle" style="margin: 4px 0 12px;">'
+        f"Showing <strong>{selected}</strong> &middot; last {days} days "
+        f"&middot; {n} {deal_word}"
+        "</div>",
+        unsafe_allow_html=True,
+    )
     st.markdown(_render_table(filtered_rows, coverage), unsafe_allow_html=True)
 
     st.markdown(

@@ -33,7 +33,6 @@ if str(_DASHBOARD_DIR) not in sys.path:
     sys.path.insert(0, str(_DASHBOARD_DIR))
 
 from data_sources import (  # noqa: E402
-    ClosedDealStub,
     PipelineDeal,
     PipelineSnapshot,
     load_pipeline,
@@ -308,19 +307,22 @@ def _filter_deals_by_pill(snapshot: PipelineSnapshot, pill: str) -> PipelineSnap
         return snapshot
     today = date.today()
     if pill == "Recent <14d":
-        kept = [
-            d for d in snapshot.deals
-            if d.stage_since and (
-                today - _parse_iso(d.stage_since).date()
-                if _parse_iso(d.stage_since) else timedelta(days=999)
-            ).days < 14
-        ]
+        kept = []
+        for d in snapshot.deals:
+            dt = _parse_iso(d.stage_since)
+            if dt is None:
+                continue
+            if (today - dt.date()).days < 14:
+                kept.append(d)
     elif pill == "Stalled":
         threshold = today - timedelta(days=30)
-        kept = [
-            d for d in snapshot.deals
-            if d.stage_since and _parse_iso(d.stage_since) and _parse_iso(d.stage_since).date() < threshold
-        ]
+        kept = []
+        for d in snapshot.deals:
+            dt = _parse_iso(d.stage_since)
+            if dt is None:
+                continue
+            if dt.date() < threshold:
+                kept.append(d)
     else:
         kept = list(snapshot.deals)
     # Construct a shallow-copied snapshot with the filtered deals
@@ -367,8 +369,11 @@ def render() -> None:
     st.markdown(
         '<div class="gb-page-note">Page filters to <strong>NDA-forward</strong> '
         "stages (NDA, Financials Received, Submitted LOI, Signed LOI). Identified + "
-        "Contacted moved to M&amp;A Analytics on 2026-04-24. Snapshot file rewritten "
-        "by the agent via Attio MCP; scheduled refresh lands in a later session."
+        "Contacted moved to M&amp;A Analytics on 2026-04-24. Filter pills "
+        "(All / Recent / Stalled) are interactive; category / location "
+        "dropdowns + search are visual stubs pending interactive build. "
+        "Snapshot file rewritten by the agent via Attio MCP; scheduled "
+        "refresh lands in a later session."
         "</div>",
         unsafe_allow_html=True,
     )

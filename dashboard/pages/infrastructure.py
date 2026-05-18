@@ -301,8 +301,7 @@ def _render_zone_4(log: CalibrationLog) -> str:
     return f'<section class="gb-zone">{head}<div>{body}</div></section>'
 
 
-def _render_subtitle(health_tiles: list[HealthTile], stack_n: int) -> str:
-    summary = system_health_summary(health_tiles)
+def _render_subtitle() -> str:
     return (
         '<div class="gb-subtitle">'
         "System health, external connectivity, credits &amp; spend, and what "
@@ -341,7 +340,7 @@ def render() -> None:
     credits = load_credit_tiles()
     calib = load_calibration_log()
 
-    st.markdown(_render_subtitle(health_tiles, stack_n), unsafe_allow_html=True)
+    st.markdown(_render_subtitle(), unsafe_allow_html=True)
     st.markdown(_render_summary(health_tiles, stack_n), unsafe_allow_html=True)
     st.markdown(_render_zone_1(health_tiles), unsafe_allow_html=True)
     st.markdown(_render_zone_2(services), unsafe_allow_html=True)

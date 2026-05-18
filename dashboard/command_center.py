@@ -15,6 +15,7 @@ from __future__ import annotations
 from datetime import datetime
 from html import escape
 from pathlib import Path
+from zoneinfo import ZoneInfo
 import sys
 
 import streamlit as st
@@ -99,9 +100,11 @@ def _render_back_home() -> None:
 
 
 def _render_topbar(title: str) -> None:
-    now = datetime.now()
+    # Kay reads "Last updated" to judge snapshot freshness — it must be ET,
+    # not the VPS host timezone (UTC), or a fresh dashboard looks stale.
+    now = datetime.now(ZoneInfo("America/New_York"))
     date_str = now.strftime("%A, %B %-d, %Y")
-    updated_str = now.strftime("%H:%M:%S")
+    updated_str = now.strftime("%H:%M:%S ET")
     st.markdown(
         f"""
         <div class="gb-topbar">

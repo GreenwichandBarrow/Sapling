@@ -460,9 +460,9 @@ def render() -> None:
         unsafe_allow_html=True,
     )
     st.markdown(
-        '<div class="gb-page-note">Active Deal Pipeline, M&amp;A Analytics, '
-        "C-Suite &amp; Skills, and Infrastructure read live data. Deal "
-        "Aggregator placeholder pending wire-up."
+        '<div class="gb-page-note">All tiles read live data &mdash; Active '
+        "Deal Pipeline, Deal Aggregator, M&amp;A Analytics, C-Suite &amp; "
+        "Skills, and Infrastructure."
         "</div>",
         unsafe_allow_html=True,
     )

@@ -1317,12 +1317,19 @@ def _logs_writing_today() -> tuple[bool, int]:
     """True if any scheduled log file was written today; returns count."""
     if not SCHEDULED_LOGS_DIR.exists():
         return False, 0
-    today = date.today().isoformat()
+    # Honest scheduler-liveness probe: compare file mtime to today, not a
+    # date substring in the filename (a backfilled/renamed file dated today
+    # would falsely read as "scheduler healthy" when it is actually down).
+    today = date.today()
     n = 0
     for entry in SCHEDULED_LOGS_DIR.iterdir():
         if entry.suffix != ".log":
             continue
-        if today in entry.name:
+        try:
+            mtime = datetime.fromtimestamp(entry.stat().st_mtime)
+        except OSError:
+            continue
+        if mtime.date() == today:
             n += 1
     return n > 0, n
 
@@ -2015,7 +2022,9 @@ def _scale_bars(values: list[int]) -> list[int]:
         return [0] * 12
     peak = max(values)
     if peak == 0:
-        return [4 for _ in values]  # min bar height to remain visible
+        # All-zero series = no data. Render flat (height 0) so the pending
+        # overlay reads as "no data", not faint real activity.
+        return [0 for _ in values]
     return [max(4, round(v * 100 / peak)) for v in values]
 
 
@@ -2450,7 +2459,9 @@ def _build_activity_rows(
             empty_text=None,
         ),
         ActivityRow(
-            category="New contacts (Attio)",
+            # Cumulative pipeline-universe count, NOT new-this-week — relabeled
+            # honest until historical snapshots enable a true WoW delta.
+            category="Companies in Attio (cumulative)",
             chips=[],
             count=new_contacts_count,
             empty_text=new_contacts_text,

@@ -1,6 +1,7 @@
 """C-Suite & Skills page — scheduled-skill canary organized by C-suite agent.
 
-Reads `launchctl list`, plist XML, and `logs/scheduled/*.log` to answer
+Reads scheduled-job state (`systemd --user` timers on Linux/VPS;
+`launchctl` + plist XML on macOS) and `logs/scheduled/*.log` to answer
 the page's load-bearing question: did each scheduled skill fire this week?
 
 All data is local — no external auth, no MCP — so this page is the lowest-
@@ -447,10 +448,12 @@ def render() -> None:
     st.markdown(sections, unsafe_allow_html=True)
 
     st.markdown(
-        '<div class="gb-page-note">Reads <code>launchctl list</code>, '
-        "<code>~/Library/LaunchAgents/com.greenwich-barrow.*.plist</code>, "
-        "and <code>logs/scheduled/*.log</code>. C-suite → skill mapping "
-        "validated 2026-04-24."
+        '<div class="gb-page-note">Reads scheduled-job state '
+        "(<code>systemd --user</code> timers on this host; "
+        "<code>launchctl</code> + plist on macOS) and "
+        "<code>logs/scheduled/*.log</code>. Source / status dropdowns + "
+        "search are visual stubs pending interactive build. C-suite → "
+        "skill mapping validated 2026-04-24."
         "</div>",
         unsafe_allow_html=True,
     )

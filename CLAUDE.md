@@ -58,6 +58,7 @@ Memory recall weakens as the session fills. These fire on action triggers, not t
 - **Wiki-links and tags are MANDATORY** — see Vault Writing Rules below.
 
 ### Before handling secrets / config
+- **1Password is the FIRST rung of the credential ladder — never skip it.** Before any `gog` / `attio` / `apollo` / op://-backed CLI in an interactive session, run `source scripts/op-env.sh && <command>`. This loads the op SA token + `op inject`-resolves every ref. **NEVER `source scripts/.env.launchd` raw** — that loads op:// reference strings, not values, and produces the gog `aes.KeyUnwrap(): integrity check failed` trap (looks like a corrupt keyring; it is not — it's a skipped 1Password resolve). Hook `op_first_guard.py` blocks the raw-source antipattern; rule belongs here too. (`feedback_op_env_before_op_backed_cli`)
 - Never use Read tool on `.claude.json`, `.env`, credentials, OAuth files — Bash + grep only.
 - **Bash inspection of secret files: value-suppressing patterns ONLY.** `grep -c PATTERN file` (count), `grep -l PATTERN file` (filename), `awk -F= '/^export/ {print $1}'` (variable names). NEVER `grep PATTERN file` / `cat` / `head` / `tail` — these print values. Hook `secret_file_guard.py` blocks unsafe patterns; rule belongs here too.
 - Use `/tmp` file method, not env vars, for secret transfer. Never echo secrets to conversation.

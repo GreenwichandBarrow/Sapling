@@ -15,6 +15,7 @@ from router.handlers.weekly_tracker_validation import validate_weekly_tracker_be
 from router.handlers.onepager_guardrail import enforce_onepager_purity
 from router.handlers.no_revenue_in_outreach import no_revenue_in_outreach
 from router.handlers.secret_file_guard import block_secret_file_reads
+from router.handlers.op_first_guard import enforce_op_first
 from router.handlers.gog_sheets_delimiter_guard import block_gog_sheets_delimiter_writes
 from router.handlers.skill_frontmatter_guard import check_skill_frontmatter
 
@@ -23,6 +24,11 @@ HANDLERS = [
         fn=block_secret_file_reads,
         matcher=r"^Bash$",
         name="secret-file-guard",
+    ),
+    HandlerConfig(
+        fn=enforce_op_first,
+        matcher=r"^Bash$",
+        name="op-first-guard",
     ),
     HandlerConfig(
         fn=block_gog_sheets_delimiter_writes,

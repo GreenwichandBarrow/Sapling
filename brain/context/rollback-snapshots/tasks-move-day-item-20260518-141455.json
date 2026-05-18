@@ -1,0 +1,18 @@
+{
+  "verb": "move-day-item",
+  "timestamp": "20260518-141455",
+  "sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
+  "ranges": {
+    "'Sun'!A24:E24": [
+      [
+        false,
+        "Schools research & open-house signup"
+      ]
+    ],
+    "'Mon'!A24:E24": [
+      [
+        false
+      ]
+    ]
+  }
+}

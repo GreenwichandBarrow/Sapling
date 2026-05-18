@@ -97,6 +97,7 @@ Retrieval pointers only — doctrine lives in topic files. To find a memory: gre
 - [feedback_launchd_hang_diagnosis_protocol.md](feedback_launchd_hang_diagnosis_protocol.md) — Hang? 4-check: launchctl, mtime, processes, log line
 - [feedback_launchd_parallel_fire_collisions.md](feedback_launchd_parallel_fire_collisions.md) — Same-minute "Unexpected" = parallel fire. Stagger ≥30min
 - [feedback_dashboard_green_can_lie.md](feedback_dashboard_green_can_lie.md) — Exit 0 ≠ success. Validate with POST_RUN_CHECK
+- [feedback_launchd_debugger_blind_to_exit0.md](feedback_launchd_debugger_blind_to_exit0.md) — Empty launchd scan ≠ healthy. Exit-0 silent logic failures invisible to scanner; spawn root-cause subagent
 - [feedback_mutating_skill_hardening_pattern.md](feedback_mutating_skill_hardening_pattern.md) — UNIVERSAL: every launchd skill needs POST_RUN_CHECK + headless prompt + SKILL.md validator
 - [feedback_validators_reference_authoritative_source.md](feedback_validators_reference_authoritative_source.md) — Validators source from schemas, NEVER SELECT DISTINCT
 - [feedback_no_fabricated_status.md](feedback_no_fabricated_status.md) — Never fabricate status. Verify or declare

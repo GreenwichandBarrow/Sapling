@@ -22,8 +22,8 @@ Architecture lives in `memory/project_personal_task_tracker.md`. Update that mem
   - **`Status`** = 3-state native dropdown: `Not Completed` / `On-going` / `Completed`. Replaces the old native checkbox + the archive-todo sweep. **"Done" = `Status == "Completed"`.** Done-row conditional formatting fires on `Status == "Completed"`.
   - **`Horizon`** = native dropdown: `Short Term`, `Long Term`, `Weekly Recurring Mon`..`Weekly Recurring Sat` (extensible later to Quarterly/Yearly). A **recurring item** = `Horizon` starts with "Weekly Recurring" + `Status == "On-going"`; `build-week` reads these rows directly from `To Do` (NOT a separate tab) and stamps each onto its day. `Long Term`/someday items now live here with `Horizon=Long Term` (no separate tab).
   - Day tabs and the Week tab **KEEP native checkboxes** (Kay's working surfaces, unchanged) — only the `To Do` backend changed to the Status dropdown.
-- **`Week` tab** — the Sunday planning canvas, ALL 7 days visible Sun→Sat, one block per day side by side, **leftmost in the strip (index 0, before `Sun`)**. `build-week` rebuilds/clears it + stamps the recurring `To Do` rows onto it; Kay lays out / finalizes the whole week here. Layout: col 0 = habit/notes label; for day i (0=Sun..6=Sat) status checkbox col `1+2*i`, task col `2+2*i`. Row 1 merged title `WEEK OF May 17-23`, row 5 `HABIT TRACKER`, row 6 Sun..Sat sub-headers, rows 7–14 eight habit rows, row 15 SUNDAY..SATURDAY day headers (carry dates), rows 23–37 fifteen priority slots/day, rows 40–47 notes block. Builder: `scripts/build_week_tab.py` (one-shot; `--dry-run`, `--no-populate`).
-- **7 day tabs** (`Sun Mon Tue Wed Thu Fri Sat`, immediately after `Week`) — the calm, large-font daily *execution* surface. Kay works these Mon–Sat. **NOT auto-populated until `distribute-week` fans the finalized Week plan out into them.** Per-day layout: row 1 merged title `SUNDAY · May 17` (20pt), rows 4–11 habit tracker (8 habits, A=checkbox), row 12 column headers, rows 13–27 fifteen priority slots (A=native checkbox · B=Task 17pt · C=Type dropdown · D=Project dropdown · E=Notes), rows 30–37 free-notes block. Builder: `scripts/build_day_tabs.py` (idempotent; `--dry-run`).
+- **`Week` tab** — the Sunday planning canvas, ALL 7 days visible Sun→Sat, one block per day side by side, **leftmost in the strip (index 0, before `Sun`)**. `build-week` rebuilds/clears it + stamps the recurring `To Do` rows onto it; Kay lays out / finalizes the whole week here. Layout: col 0 = habit/notes label; for day i (0=Sun..6=Sat) status checkbox col `1+2*i`, task col `2+2*i`. Row 1 merged title `WEEK OF May 17-23`, row 5 `HABIT TRACKER`, row 6 Sun..Sat sub-headers, rows 7–15 nine habit rows, row 16 SUNDAY..SATURDAY day headers (carry dates), rows 24–38 fifteen priority slots/day, rows 41–48 notes block. Builder: `scripts/build_week_tab.py` (one-shot; `--dry-run`, `--no-populate`).
+- **7 day tabs** (`Sun Mon Tue Wed Thu Fri Sat`, immediately after `Week`) — the calm, large-font daily *execution* surface. Kay works these Mon–Sat. **NOT auto-populated until `distribute-week` fans the finalized Week plan out into them.** Per-day layout: row 1 merged title `SUNDAY · May 17` (20pt), rows 4–12 habit tracker (9 habits, A=checkbox), row 13 column headers, rows 14–28 fifteen priority slots (A=native checkbox · B=Task 17pt · C=Type dropdown · D=Project dropdown · E=Notes), rows 31–38 free-notes block. Builder: `scripts/build_day_tabs.py` (idempotent; `--dry-run`).
 
 Sunday flow: `build-week` (Week tab) → Kay finalizes the week on the Week tab → `distribute-week` (fan to day tabs) → Kay works the day tabs.
 
@@ -94,7 +94,7 @@ python3 scripts/task_tracker.py promote \
 ```
 
 - `--day` accepts Sun..Sat / Mon..Sun (resolves to the matching day TAB)
-- `--slot` is 1-15 (rows 13-27 on the target day tab)
+- `--slot` is 1-15 (rows 14-28 on the target day tab)
 - Copies Task (+ Type/Project) from the To Do row into the day tab's slot (A:E), leaves the To Do row in place but prepends a `→ promoted to {day} slot {N} on {date}` marker to its Notes field so it's visually de-prioritized but still readable.
 - Refuses to overwrite a non-empty priority slot (shows current contents, errors out).
 
@@ -122,7 +122,7 @@ python3 scripts/task_tracker.py build-week [--skip-recurring] [--dry-run]
 python3 scripts/task_tracker.py distribute-week [--dry-run] [--force] [--day Wed]
 ```
 
-Run AFTER Kay finalizes the week on the Week tab. Reads each Week-grid day-block's 15 priority slots (status + task) + habit checkboxes and writes them into the corresponding day tab's slots (rows 13–27) + habits (rows 4–11).
+Run AFTER Kay finalizes the week on the Week tab. Reads each Week-grid day-block's 15 priority slots (status + task) + habit checkboxes and writes them into the corresponding day tab's slots (rows 14–28) + habits (rows 4–12).
 
 - **Collision-aware:** refuses to overwrite a non-empty day-tab slot the Week plan changes (or that the Week plan leaves empty) unless `--force` — so re-running after a manual day-tab edit is safe by default. `--dry-run` reports planned writes + collisions; `--day {Sun..Sat}` limits to one day.
 - Task text only is carried onto/off the Week canvas (compact); day-tab Type/Project/Notes are reset to blank on distribute (Kay enriches on the day tab, or the metadata was set on the recurring `To Do` row). Snapshots every target day tab + the Week tab; always traces.
@@ -151,7 +151,7 @@ python3 scripts/task_tracker.py move-day-item \
 python3 scripts/task_tracker.py sync-done-status [--dry-run]
 ```
 
-When Kay checks a priority-slot status box during the week, this verb walks all 7 day TABS × 15 priority slots (cols A=status checkbox, B=task; rows 13-27) and finds every checked slot, then matches each slot's Task field against the To Do tab's Task field (exact case, leading/trailing whitespace stripped). For each unambiguous match where the To Do `Status` is not yet `Completed`, the verb sets `Status` to `Completed` so the existing conditional formatting paints strikethrough + sage-light fill.
+When Kay checks a priority-slot status box during the week, this verb walks all 7 day TABS × 15 priority slots (cols A=status checkbox, B=task; rows 14-28) and finds every checked slot, then matches each slot's Task field against the To Do tab's Task field (exact case, leading/trailing whitespace stripped). For each unambiguous match where the To Do `Status` is not yet `Completed`, the verb sets `Status` to `Completed` so the existing conditional formatting paints strikethrough + sage-light fill.
 
 - **Match found, To Do Status != Completed** → set to `Completed`.
 - **Match found, To Do Status already `Completed`** → no-op.
@@ -172,7 +172,7 @@ python3 scripts/task_tracker.py schedule-to-day-slot \
 ```
 
 - `--day` accepts Sun..Sat / Mon..Sun (resolves to the matching day TAB)
-- `--slot` is 1..15 (rows 13-27) — **optional**; if omitted, auto-picks the first empty slot for that day tab. (Single-step alternative to `append` → `promote`.)
+- `--slot` is 1..15 (rows 14-28) — **optional**; if omitted, auto-picks the first empty slot for that day tab. (Single-step alternative to `append` → `promote`.)
 - Optional `--type` / `--project` / `--notes` write into C/D/E of the slot.
 - Refuses to overwrite an occupied slot unless `--force` is passed.
 - Status cell auto-fills as an unchecked native Sheets checkbox.

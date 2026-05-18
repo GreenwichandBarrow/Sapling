@@ -54,22 +54,23 @@ DAY_FULL = {"Sun": "SUNDAY", "Mon": "MONDAY", "Tue": "TUESDAY", "Wed": "WEDNESDA
 DAY_TITLE_ROW = 1
 DAY_HABITS_HEADER_ROW = 3
 DAY_HABIT_FIRST_ROW = 4
-DAY_HABIT_LAST_ROW = 11
-DAY_COL_HEADER_ROW = 12
-DAY_SLOT_FIRST_ROW = 13
-DAY_SLOT_LAST_ROW = 27
-DAY_NOTES_HEADER_ROW = 29
-DAY_NOTES_FIRST_ROW = 30
-DAY_NOTES_LAST_ROW = 37
-DAY_GRID_ROWS = 40
+DAY_HABIT_LAST_ROW = 12
+DAY_COL_HEADER_ROW = 13
+DAY_SLOT_FIRST_ROW = 14
+DAY_SLOT_LAST_ROW = 28
+DAY_NOTES_HEADER_ROW = 30
+DAY_NOTES_FIRST_ROW = 31
+DAY_NOTES_LAST_ROW = 38
+DAY_GRID_ROWS = 41
 DAY_GRID_COLS = 12
 
 HABITS_DEFAULT = [
     "Water & hygiene",
-    "Meditation & stretches",
+    "Meditation",
+    "Exercises",
     "ACV drink",
     "Probiotic protein shake",
-    "Exercise class",
+    "Class",
     "Bike to work",
     "10K steps",
     "Omega 3 & magnesium",

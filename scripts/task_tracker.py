@@ -194,14 +194,14 @@ DAY_IDX_TO_TAB = {DAY_BY_NAME[k.lower()]: DAY_LABELS[DAY_BY_NAME[k.lower()]]
 DAY_TITLE_ROW = 1            # merged A1:E1 "SUNDAY · May 17"
 DAY_HABITS_HEADER_ROW = 3    # "HABITS"
 DAY_HABIT_FIRST_ROW = 4      # rows 4..10 = 7 habit rows
-DAY_HABIT_LAST_ROW = 11
-DAY_COL_HEADER_ROW = 12      # ✓ | Task | Type | Project | Notes
-DAY_SLOT_FIRST_ROW = 13      # rows 13..27 = 15 priority slots
-DAY_SLOT_LAST_ROW = 27
-DAY_NOTES_HEADER_ROW = 29    # "NOTES"
-DAY_NOTES_FIRST_ROW = 30     # rows 30..37 = free-notes block
-DAY_NOTES_LAST_ROW = 37
-DAY_GRID_ROWS = 40           # generous; chart anchors col G row 1
+DAY_HABIT_LAST_ROW = 12
+DAY_COL_HEADER_ROW = 13      # ✓ | Task | Type | Project | Notes
+DAY_SLOT_FIRST_ROW = 14      # rows 13..27 = 15 priority slots
+DAY_SLOT_LAST_ROW = 28
+DAY_NOTES_HEADER_ROW = 30    # "NOTES"
+DAY_NOTES_FIRST_ROW = 31     # rows 30..37 = free-notes block
+DAY_NOTES_LAST_ROW = 38
+DAY_GRID_ROWS = 41           # generous; chart anchors col G row 1
 DAY_GRID_COLS = 12           # A..E content + G chart anchor headroom
 
 # Per-day-tab columns (0-based)
@@ -233,14 +233,14 @@ WK_TITLE_ROW = 1               # merged A1:O1 "WEEK OF May 17-23"
 WK_HABITS_HEADER_ROW = 5       # "HABIT TRACKER"
 WK_HABIT_DAYHDR_ROW = 6        # Sun..Sat 2-col-merged sub-headers
 WK_HABIT_FIRST_ROW = 7         # rows 7..13 = 7 habit rows (label col 0)
-WK_HABIT_LAST_ROW = 14
-WK_DAYHDR_ROW = 15             # SUNDAY..SATURDAY 2-col-merged headers
-WK_SLOT_FIRST_ROW = 23         # rows 23..37 = 15 priority slots
-WK_SLOT_LAST_ROW = 37
-WK_NOTES_HDR_ROW = 39          # notes label row
-WK_NOTES_FIRST_ROW = 40        # rows 40..47 = merged notes block per day
-WK_NOTES_LAST_ROW = 47
-WK_GRID_ROWS = 50
+WK_HABIT_LAST_ROW = 15
+WK_DAYHDR_ROW = 16             # SUNDAY..SATURDAY 2-col-merged headers
+WK_SLOT_FIRST_ROW = 24         # rows 23..37 = 15 priority slots
+WK_SLOT_LAST_ROW = 38
+WK_NOTES_HDR_ROW = 40          # notes label row
+WK_NOTES_FIRST_ROW = 41        # rows 40..47 = merged notes block per day
+WK_NOTES_LAST_ROW = 48
+WK_GRID_ROWS = 51
 WK_GRID_COLS = 15              # col0 label + 7 day-pairs (status + content)
 WK_SLOT_COUNT = WK_SLOT_LAST_ROW - WK_SLOT_FIRST_ROW + 1   # 15
 WK_HABIT_COUNT = WK_HABIT_LAST_ROW - WK_HABIT_FIRST_ROW + 1  # 7
@@ -263,10 +263,11 @@ def wk_content_col(day_idx: int) -> int:
 
 HABITS_DEFAULT = [
     "Water & hygiene",
-    "Meditation & stretches",
+    "Meditation",
+    "Exercises",
     "ACV drink",
     "Probiotic protein shake",
-    "Exercise class",
+    "Class",
     "Bike to work",
     "10K steps",
     "Omega 3 & magnesium",

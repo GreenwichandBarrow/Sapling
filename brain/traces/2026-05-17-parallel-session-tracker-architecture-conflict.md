@@ -2,29 +2,27 @@
 schema_version: 1.1.0
 date: 2026-05-17
 type: trace
-title: "Two parallel sessions built opposite task-tracker architectures on the same live sheet same day"
+title: "False-alarm: over-escalated a parallel-session 'conflict' that was actually complementary work — timestamps resolved it"
 trace_type: process-conflict
-tags: ["date/2026-05-17", "trace", "topic/task-tracker-rebuild", "topic/parallel-session-conflict", "status/escalated"]
+tags: ["date/2026-05-17", "trace", "topic/task-tracker-rebuild", "topic/over-escalation", "status/resolved"]
 ---
 
-# Two parallel sessions built opposite task-tracker architectures on the same live sheet same day
+# False-alarm: over-escalated a parallel-session "conflict" that was actually complementary work
 
 ## Trigger
-`/goodnight` on continuation-1 found `session-decisions-2026-05-17.md` already written by continuation-2, recording contradictory decisions on the same Google Sheet (`1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk`).
+`/goodnight` on continuation-1 found continuation-2's `session-decisions-2026-05-17.md` recording "To Do consolidation, day tabs retired as `_retired_*`." Read superficially, it looked like the opposite of continuation-1's Week+7-day-tab build. Escalated to Kay as a BLOCKING CONFLICT requiring her to pick a model.
 
 ## Decision
-Did NOT overwrite the existing file, did NOT auto-pick a winner, did NOT commit conflicting code. Preserved this session's record in a separate `-continuation1` file and escalated to Kay as a blocking decision.
+Kay asked "can't you see the date/time of the sessions?" Checked git commit times + continuation `saved_at`: continuation-1 = 11:42 EDT; continuation-2 = 18:25–22:28 EDT (~7h later). Read continuation-2 fully: it **used** the day tabs ("week distributed to day tabs; Sunday day tab split into email rows"). The "consolidation" was only the auxiliary backlog layer (To Do Long Term + Recurring + Completed + donut → one To Do tab). Reversed the escalation: NO conflict; complementary; no Kay decision needed.
 
 ## Alternatives Considered
-- Merge both into one file — rejected: would blend contradictory architectures and bury the conflict.
-- Commit continuation-1's model over continuation-2's pushed work — rejected: silently reverses already-pushed, Kay-approved (per its own record) decisions.
-- Pick the Socrates model because Kay drove it live — rejected: continuation-2 also claims Kay approval; not mine to adjudicate.
+- Hold the conflict open and make Kay choose — rejected once timestamps + continuation-2 body proved the sessions were sequential and complementary.
 
 ## Reasoning
-Both sessions claim explicit Kay direction. continuation-1: `/socrates` convergence → Week tab + 7 day tabs. continuation-2: consolidate to one `To Do` tab, retire day tabs. The live sheet ended up with BOTH tab sets (no corruption, but incoherent). Git already clean (continuation-2 + two 5/18 bookends committed everything). Only Kay can choose the intended model; the loser needs tab cleanup + code/doc/memory revert.
+The `_retired_*` tabs were the OLD aux tabs, not the Week/day tabs (which are live and were actively used by the later session). Live sheet state is coherent by design. The escalation came from reading one session-decisions summary line ("retired tabs") without checking ordering or the later session's actual actions.
 
 ## Why This Trace Matters
-Parallel sessions mutating the same live system-of-truth the same day with no coordination produced a hybrid state and a near-miss of one session silently reverting another's pushed work. The agent-chatroom / single-writer discipline exists for exactly this; it was not used across these two independent sessions.
+A wrong "BLOCKING — you must decide" escalation costs Kay more than the thing it warns about: it manufactures a decision where none exists, the exact opposite of the decision-fatigue mandate.
 
 ## Key Insight
-Before a session makes structural changes to a shared live artifact, check for a concurrent session's continuation/session-decisions file for that date. If a parallel session touched the same artifact, STOP and reconcile with Kay before writing — do not let one session's bookend silently overwrite or contradict another's.
+Before escalating a suspected parallel-session conflict: (1) order the sessions by timestamp, (2) read the LATER session's actual actions in full — not a one-line summary, (3) distinguish complementary layering from contradiction. A later session that *uses* an earlier session's artifact is building on it, not conflicting. Default to "reconcile and explain," not "make the user choose."

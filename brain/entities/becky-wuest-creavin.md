@@ -34,3 +34,4 @@ tags:
 
 ## Relationship Notes
 - 2026-05-13: Relayed that [[entities/matt-becky-colleague|Matt]] had a great conversation with Kay at the [[entities/xpx|XPX]] event and felt he had someone who might be a good fit; Matt swamped, hasn't gotten back; Becky to also nudge. (Attio note logged.)
+- 2026-05-18: Introduced Kay to [[entities/sam-transworld|Sam]], a broker at [[entities/transworld|Transworld]]. Kay sent the warm-intro reply same day. (Becky also backing out of a Wed meeting with Matt Luczyk; told Sam to still connect with Matt.)

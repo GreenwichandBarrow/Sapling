@@ -12,6 +12,11 @@ projects: []
 tags: ["date/2026-05-04", "output", "output/research", "status/published", "topic/intermediary-outreach", "topic/broker-channel", "topic/template-locked"]
 ---
 
+> # ⛔ DO NOT DRAFT FROM THIS FILE
+> This is a **creation-time snapshot**, not canonical. It is **stale** (reproduces 4 of 10+ live templates). Drafting from it instead of the live Drive doc is a logged recurring failure (2026-05-18).
+> **Pull the live canonical doc instead:** `bash scripts/fetch-template-doc.sh`
+> Canonical = Google Doc `1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4`. CLAUDE.md source-of-truth: Drive owns living documents. This file is history only.
+
 # G&B Broker-Channel Outreach Templates. Locked 2026-05-04 (FINAL — superseded 2026-05-04 evening)
 
 > **2026-05-04 evening update:** Drive doc evolved beyond this snapshot. Current canonical state has 9 templates (this snapshot reflects the 4 LOCKED at template-lock midday). Cadence reduced from 3-touch to 2-touch (Day 12 dropped). See `feedback_no_intermediary_drafts_outside_template` and `session-decisions-2026-05-04.md`. Per CLAUDE.md source-of-truth rules: Drive doc `1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4` is canonical; this file is a creation-time snapshot only. **Current Drive state (as of 2026-05-04 evening):** Day 0 INTRODUCTION (Brokers+IBs), LEAD-YES, LEAD-NO, INTRODUCTION (Lawyers+CPAs), CIM RECEIVED, THANK YOU, DAY 5 FOLLOW-UP, DECLINE POST-REVIEW, NDA SIGNED. Cadence: Brokers+IBs = 2-touch (Day 0 + Day 5), Lawyers+CPAs = ONE-AND-DONE.

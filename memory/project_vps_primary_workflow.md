@@ -1,14 +1,30 @@
 ---
-name: VPS-primary workflow trial (Kay shifting off Mac Claude)
-description: As of 2026-05-10 evening, Kay is trialing VPS (Sapling Linux server) as her primary Claude Code environment instead of Mac Claude. Mac Claude transitions to secondary / sync-only via git pull.
-type: project
+name: vps-primary-workflow-trial-kay-shifting-off-mac-claude
+description: "CONFIRMED 2026-05-18 — VPS is the single workspace. Mac AND MacBook are thin Tailscale-SSH clients into the one VPS; NO local repos, NO Cursor, NO local terminal, NO Mac↔VPS git sync. Switching machines = reconnect + /pickingback."
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: 172fa28b-454e-4291-8d0b-38f29f0456aa
 ---
+
+> **RESOLVED / CONFIRMED 2026-05-18.** No longer a trial. Kay: *"the macbook
+> and mac both access through vps now. nothing on cursor or direct terminal."*
+> No local clones on Mac or MacBook — both are pure SSH windows into the
+> single VPS, which holds the only repo, the live session, the systemd jobs,
+> and continuation files. **Do NOT advise `git pull` / commit-before-stop /
+> Mac↔VPS sync / double-launchd caution** — there is no local surface to
+> sync. Machine switch (incl. travel) = reconnect to the VPS from the other
+> machine + `/pickingback`, nothing else. This dissolves (does not "solve")
+> [[project_branch_divergence_imac_vs_main]] — no local repo means nothing
+> can diverge. Trace:
+> [[traces/2026-05-18-mac-macbook-thin-clients-single-vps]]. The 2026-05-10
+> trial framing below is kept for history; the resolution above governs.
 
 Kay said on 2026-05-10 evening: "I'm going to try to just work from this VPS
 going forward."
 
-This is a **trial**, not a confirmed permanent shift — but the direction is
-real and follows naturally from the infra work that landed this weekend:
+This was a **trial** then (now confirmed — see resolution block above) and
+followed naturally from the infra work that landed that weekend:
 
 1. **Credential migration complete (2026-05-10 AM):** All 7 production
    secrets on op://, server has full credential parity with Mac.

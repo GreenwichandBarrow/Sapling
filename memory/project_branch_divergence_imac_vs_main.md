@@ -1,9 +1,19 @@
 ---
 name: Branch divergence — iMac branch is 419 commits ahead of main
-description: As of 2026-05-06, the working iMac branch `imac-mid-day-save-2026-04-22` is 419 commits ahead of main. MacBook tracks main and was blind to all iMac work since 2026-04-22. Resolution path pending.
+description: RESOLVED 2026-05-18 — DISSOLVED, not merged. No local repos exist; Mac+MacBook are thin SSH clients into one VPS, so nothing can diverge. Historical record only; do not action a/b/c.
 type: project
 originSessionId: 326c69dd-5175-4205-89f6-eb4a9ec64ab8
 ---
+
+> **RESOLVED 2026-05-18 — problem dissolved, not solved.** Kay confirmed
+> *"the macbook and mac both access through vps now. nothing on cursor or
+> direct terminal."* There are no local clones on any machine — both Mac and
+> MacBook are SSH windows into the single VPS repo. With no local repo there
+> is nothing to diverge: the a/b/c resolution choice below is **moot — do not
+> action it**. This entry is retained for history only. See
+> [[project_vps_primary_workflow]] resolution block + trace
+> [[traces/2026-05-18-mac-macbook-thin-clients-single-vps]].
+
 **State (as of 2026-05-06):** The iMac branch `imac-mid-day-save-2026-04-22` has accreted 419 commits since Kay last synced to main. Branch was originally created as a "save" branch on 2026-04-22 but became the de facto trunk because main was never touched.
 
 Kay's MacBook tracks main (or a branch close to main). Until 2026-05-06, the MacBook had not seen ANY of the iMac's work since 2026-04-22 — including the socrates skill (created 2026-05-03), recent morning-briefing format changes, memory updates, today's bridge build, the post-call-analyzer spec, all entity edits, all calls/, briefs/, traces/, outputs/.

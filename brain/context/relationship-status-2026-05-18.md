@@ -9,7 +9,9 @@ type: relationship-status
 
 Per `feedback_relationship_cadence_friday_only`, Friday is the surfacing day for the briefing's nurture cluster; Sun–Thu artifacts are written but suppressed at the briefing layer. Written today for continuity and queue-state tracking only.
 
-Gmail outbound probes ran across BOTH aliases (`from:kay.s@greenwichandbarrow.com OR from:admin@greenwichandbarrow.com`) per `feedback_kay_outbound_includes_admin_alias` at `newer_than:14d`, plus inbound `newer_than:7d`. gog auth verified healthy this run (calendar + Gmail both returned live data; op vault `GB Server` resolves). Empty cadence results are genuine absence, not auth failure.
+Gmail outbound probes ran across BOTH aliases (`from:kay.s@greenwichandbarrow.com OR from:admin@greenwichandbarrow.com`) per `feedback_kay_outbound_includes_admin_alias` at `newer_than:14d`, plus inbound `newer_than:7d`. gog auth verified healthy this run (calendar + Gmail both returned live data; op SA-token + keyring resolve via the scheduled-env path). Empty cadence results are genuine absence, not auth failure.
+
+**Re-verified at the morning-workflow run (post-06:53 scheduled write).** Fresh outbound probe (`newer_than:4d`, both aliases) and inbound probe (`newer_than:2d`) confirm NO new substantive Kay → cadence-tracked-counterparty email since 2026-05-16. Heels to Deals drafts (Deborah/Monica/Marsha) still DRAFT status (Gmail re-confirms NOT sent). Inbound signal items (Ninad Singh reply 5/17, Guillermo "Accepted" 5/16, Everingham & Kerr deal blasts, Kay self-notes from kaycschneider@gmail.com) are email-intelligence / pipeline-manager territory, not relationship-manager cadence triggers. Attio REST curl-verified HEALTHY (HTTP 200, `/v2/self`); Attio MCP still disconnected (`mcp__attio__*` inventory empty, re-confirmed via ToolSearch). Queue state from the 06:53 write holds unchanged.
 
 **No cadence-tracked contact crossed its threshold this cycle.** Carry-forward state from 2026-05-17 holds unchanged:
 
@@ -81,7 +83,7 @@ In-window vault entities (`type: person`, modified ≤7 days, populated `## Rela
 
 Already have `attio_id` (REST-created via the conference-engagement / triage-approved path 2026-05-16, NOT this skill's MCP flow): `krupa-shah`, `becky-wuest-creavin`, `matt-becky-colleague`. `jackson-niketas` has `attio_id` — existing-record note attachment (5/12 first-call + thank-you context) remains queued for the MCP path.
 
-`sarah-de-blasio` (Dormant) and `janet-crockett` (no `## Relationship Notes` section) correctly excluded from sync detection.
+`sarah-de-blasio` (Dormant) and `janet-crockett` (no `## Relationship Notes` section) correctly excluded from sync detection. Two entities modified 2026-05-18 also correctly excluded: `tristate-stl` (`type: company` — sync is `type: person` only) and `greg-bruyere` (`type: person` but no `## Relationship Notes` section). No net-new sync candidates entered the 7-day window this run.
 
 Idempotency guard (note-title check) will hold when the MCP sync path resumes. Re-running this skill does not duplicate notes.
 

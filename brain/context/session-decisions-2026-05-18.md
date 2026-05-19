@@ -48,3 +48,47 @@ Source: [[brain/context/continuation-2026-05-18-1|continuation #1]] (dashboard/i
 4. **~~Mac↔VPS transition~~ CLOSED 2026-05-18** — Kay clarified there is NO local repo / NO Cursor / NO local terminal: Mac AND MacBook are thin SSH clients into the single VPS. No `git pull`, no sync. Machine switch = reconnect to VPS + `/pickingback`, nothing else. Memory updated ([[project_vps_primary_workflow]], [[project_branch_divergence_imac_vs_main]] dissolved); trace [[traces/2026-05-18-mac-macbook-thin-clients-single-vps]].
 5. **Optional schema change (offered, NOT built)** — `is_owner: true` on `schemas/vault/call.yaml` + scanner so recorded owner calls auto-count; needs Kay go-ahead.
 6. **MEMORY.md size** — 57.8KB vs 24.4KB limit; index entries over length. Consolidation candidate for Friday meta-calibration.
+
+---
+
+# Session 2 — Conference Pipeline / Task Tracker / Filters (closed 2026-05-19 via /goodnight)
+
+Second 2026-05-18 working session (interrupted morning-brief run). Conference Pipeline integrity fix + auto-archival, habit-tracker restructure, donut repoint, Gmail filters, DealsX framing correction. Same workday; appended here to keep the 5/18 record unified.
+
+## Decisions
+
+### Conference Pipeline
+- **APPROVE** Fix [[Conference Pipeline]] Skipped-tab rows 39–48 (10 rows pasted with Pipeline's 16-col layout) → remapped to the Skipped 14-col schema; stale O:P cleared. Snapshot saved.
+- **PASS** No duplication: zero Skip/Attended rows left in Pipeline, Attended clean. Lone XPX name-match = recurring monthly series (different dates), correctly separate — NOT a dup.
+- **APPROVE (Kay)** Passed 5/11 week (5/11–5/15, 11 Evaluating rows, no final Decision) → archive to Skipped, **assume Skip** since "evaluating but never decided" per Kay's explicit rule. 5/11 header + block deleted from Pipeline via row-deletion (no clear-rewrite). Trace: [[traces/2026-05-18-conference-archival-assume-skip-and-schema-projection]].
+- **APPROVE** Patch conference-discovery `SKILL.md` + `headless-sunday-prompt.md`: mandatory Pipeline→Skipped/Attended Column-Mapping table + forbidden-pattern + post-move assertion (prevents the scheduled Sunday run recreating the shift).
+
+### Task tracker — habit block restructure (Kay-directed)
+- **APPROVE (Kay)** Relabel "Meditation & stretches"→**Meditation**, "Exercise class"→**Class** across Week + 7 day tabs (zero-risk cell writes).
+- **APPROVE (Kay)** Insert new **Exercises** habit row directly under Meditation on all 8 tabs — accepted structural change to the live working sheet (habit block 8→9, slots/notes shift +1) despite blast radius, mitigated by full 8-tab snapshot + verified verb dry-run. Constants synced in `task_tracker.py` + `build_day_tabs.py` (+1 for rows ≥ insert; `build_week_tab.py` cascades via `tt.`). Trace: [[traces/2026-05-18-habit-block-structural-insert-live-sheet]].
+- **APPROVE (Kay)** Donut chart (7 day-tab pieCharts via hidden `_retired__donut_data_2026-05-17`) repointed from to-do priority slots → **habit completion** (`COUNTIF({Day}!A4:A12,TRUE)`). Memory `project_personal_task_tracker.md` corrected (the "donuts removed 5/17" claim was never executed).
+- **APPROVE** "Respond to Becky" → To Do tab, Due 2026-05-18 (Mon day tab full 15/15; did not force-displace a slot).
+
+### Gmail filters / framing
+- **PASS** `dmarcreport@microsoft.com` already in auto/tech stack bundled filter — idempotent no-op.
+- **APPROVE** Add `info@email.1password.com` to auto/tech stack — create-new(19 addrs)→verify→delete-old; one clean bundled filter.
+- **REJECT (Kay correction)** Characterizing the DealsX/Prospect Geni "Lead Interested" (Greg Bruyere) as *inbound*. It is a **reply to OUR DealsX cold outbound**. New memory: [[feedback_dealsx_lead_interested_is_outbound_reply]].
+
+## Actions Taken
+- **UPDATED** Conference Pipeline: Skipped rows 39–48 realigned + 11 rows (5/11 wk) appended A50:N60; Pipeline rows 2–13 deleted. Snapshots in `brain/outputs/_snapshots/` + `brain/context/rollback-snapshots/`.
+- **UPDATED** `.claude/skills/conference-discovery/{SKILL.md,headless-sunday-prompt.md}` (Column-Mapping doctrine). Auto-committed (HEAD).
+- **UPDATED** Habit block on Week + Sun–Sat (9 habits); `scripts/task_tracker.py` + `scripts/build_day_tabs.py` constants + HABITS_DEFAULT; `task-tracker-manager/SKILL.md` + `project_personal_task_tracker.md` row refs. Auto-committed (d5cd384).
+- **UPDATED** Donut helper formulas → habit-based; 8-tab + donut-formula snapshots saved.
+- **UPDATED** Gmail: auto/tech stack bundled filter → 19 addresses (new `ANe1BmiG1K8...`, old deleted).
+- **CREATED** `memory/feedback_dealsx_lead_interested_is_outbound_reply.md` + MEMORY.md index.
+- **CREATED** To Do row 78 "Respond to Becky" (Due 2026-05-18).
+- **DELIVERED** Decisions-only morning brief (4 items — still open).
+
+## Deferred
+- **DealsX Greg Bruyere routing** — to deal-evaluation + Attio as engaged outbound-reply. Trigger: Kay YES on brief item #1.
+- **Duplicate donut charts** — 2 identical pieCharts per day tab (pre-existing). Offered dedupe; trigger: Kay says go.
+
+## Open Loops (carried to next briefing)
+1. **Morning brief 4 decisions UNANSWERED** — (1) DealsX Greg Bruyere route, (2) Tue 5/19 Mid-Search Summit vs NPMA Womens Forum conflict, (3) Attio API key rotation (blocks PRM + Sarah de Blasio closes), (4) carryover bundle (Task 12 / Matt-XPX / Laura Smith).
+2. **Task 12, Matt/XPX, Laura Smith** — still open from Session 1 (now folded into brief item 4).
+3. **Attio API key rotation** — still blocks 2 closes (carry from 5/15).

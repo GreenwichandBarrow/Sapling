@@ -36,10 +36,12 @@ check_fingerprint() {
         return 0
     fi
     local cutoff
-    cutoff="$(date -u -v-${TTL_DAYS}d +%Y-%m-%d)"
+    # GNU date (Linux/VPS) first, BSD date (macOS) fallback — portable across both schedulers
+    cutoff="$(date -u -d "-${TTL_DAYS} days" +%Y-%m-%d 2>/dev/null || date -u -v-${TTL_DAYS}d +%Y-%m-%d)"
     # grep for the fingerprint; if found, check if date is within TTL
+    # tolerate optional whitespace after the colon (python json.dumps emits "key": "val")
     local found
-    found=$(grep -F "\"company_hash\":\"$fp\"" "$STORE" | tail -1 || true)
+    found=$(grep -E "\"company_hash\":[[:space:]]*\"$fp\"" "$STORE" | tail -1 || true)
     if [[ -z "$found" ]]; then
         echo "NEW"
         return 0

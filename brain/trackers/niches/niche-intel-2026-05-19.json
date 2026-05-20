@@ -1,0 +1,85 @@
+{
+  "run_date": "2026-05-19",
+  "run_mode": "tuesday",
+  "niches_evaluated": 17,
+  "niches_identified": 0,
+  "one_pagers_written": 2,
+  "scorecards_written": 1,
+  "tracker_updated": true,
+  "runtime_seconds": 3600,
+  "zero_finding_reason": "7 pending candidates from prior week unprocessed; convergent signal is depth not breadth — five insurance-brokerage rows sit inside one PE-consolidation wave demanding advance-or-table decisions; no net-new niche cleared KILLED/TABLED filter with 2+ source confirmation.",
+  "niches": [],
+  "depth_actions": [
+    {
+      "type": "re-score",
+      "name": "HNW Personal Lines Concierge Insurance Brokerage",
+      "slug": "hnw-personal-lines-concierge",
+      "weekly_review_row": 13,
+      "sheet_row": 16,
+      "prior_score": 2.53,
+      "new_score": 2.65,
+      "delta": 0.12,
+      "drive_folder": "1ZryW7c3b7s6mB7SLF1MEMWdOpW-91lJL",
+      "scorecard_file_id": "136sFfqfxEpfZaLvuPHYPDNbqCTMXrqJ5",
+      "one_pager_file_id": "1xRKrVV8t4RlJCjTwOUBHfPoeDcoIxdip",
+      "trashed_files": ["1NC_KUVXrTy-5g_4PKA3cgDLjbpjHSzUs", "13e_iuEHaV-kcadrFYeAyy11PfCJMo5yY"],
+      "rationale": "Aug Felker 11/19 platonic-target endorsement + Hunter Hartwell 1/12 carve-out workaround. Three sub-criterion bumps: EBITDA margins, Porter's level of competition, Value Creation business complexity.",
+      "recommended_wednesday_action": "Advance to Active - Outreach; single-question Aug Felker rekindle for named-target reveal."
+    },
+    {
+      "type": "one-pager-refresh",
+      "name": "Specialty Coffee Equipment Service",
+      "slug": "specialty-coffee-equipment-service",
+      "weekly_review_row": 4,
+      "sheet_row": 7,
+      "score": 2.55,
+      "score_changed": false,
+      "drive_folder": "13_ZNe6kY-1EUYWPYzWmiGK6i5Jdxfdts",
+      "one_pager_file_id": "1leHHK9dBu0CIu8gkoZN1m_7v9HIDz4sr",
+      "trashed_files": ["1VggLA7HHhXxNzOD4I8YPz1V_t5NbZ2_S"],
+      "rationale": "Added Jeff Stevens 4/22 unanswered diagnostic on mid-sized chain in/outsource servicing question; Carlos Nieto 5/13 peer-searcher convergence note; source citations.",
+      "recommended_wednesday_action": "Sequence Jeff Stevens diagnostic resolution before pipeline expansion past pure-play artisan cafés.",
+      "downstream_flag": "In-pptx Assessment cell still reads '2.50 / 3.0' but WEEKLY REVIEW shows 2.55 — reconcile in next pass."
+    }
+  ],
+  "tracker_writes": [
+    {
+      "tab": "WEEKLY REVIEW",
+      "range": "E16:H16",
+      "row_meaning": "Row 13 — HNW Personal Lines Concierge Insurance Brokerage",
+      "fields_changed": ["Score (E)", "Quick notes (H)"],
+      "fields_unchanged_within_range": ["QSBS (F)", "Target Pool (G)"],
+      "value_method": "--values-json (delimiter-safe)",
+      "verified_by_reread": true
+    }
+  ],
+  "documented_rejections": [
+    "Commercial Plumbing federal/tribal credentialed (4-gate fail: project-based, sub-$500M acquirable TAM, credentials non-transferable, sub-buy-box single data point)",
+    "HVAC Service & Repair consolidation play (searcher-overlap saturated)",
+    "Commercial Roofing (project-based, no G&B RTW)",
+    "B2B Trade-Magazine Publishing (AI-disruption + declining ads)",
+    "MGA Build Path (DEAD — Mark Gardella + Tobias Marshberry convergent 'build don't buy')",
+    "Insurance Back-Office Shared Services (Camilla 2/4 + Jeremy 2/2 — overlaps already-killed BPO basic-claims sub-segment)"
+  ],
+  "telemetry": {
+    "recent_agent_sources_scanned": 7,
+    "recent_agent_signal_count": 9,
+    "historical_agent_sub_agents_run": 4,
+    "historical_agent_sub_agent_coverage": {
+      "hist-calls": "complete — 22 call notes Aug 2025-Apr 2026",
+      "hist-email": "complete — 5 query buckets, ~120 thread metadata, 1 deep-read (Jeremy Black 2/3)",
+      "hist-onenote": "unavailable — OneNote MCP not registered in env",
+      "hist-chatgpt": "pre-processed — used downstream memory files instead of raw JSON"
+    },
+    "granola_mcp_available": false,
+    "onenote_mcp_available": false,
+    "last30days_script_available": false,
+    "attio_crm_cross_reference_completed": false,
+    "synthesizer_signals_evaluated": 17,
+    "synthesizer_companies_registered": 15,
+    "synthesizer_contacts_mapped": 16,
+    "synthesizer_lifecycle_entries": 15,
+    "chatroom_path": "brain/traces/agents/2026-05-19-niche-intelligence.md",
+    "report_path": "brain/outputs/2026-05-19-niche-intelligence-report.md"
+  }
+}

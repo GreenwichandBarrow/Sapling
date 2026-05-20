@@ -1,15 +1,15 @@
 {
   "verb": "move-day-item",
-  "timestamp": "20260518-141458",
+  "timestamp": "20260519-220509",
   "sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
   "ranges": {
-    "'Sun'!A26:E26": [
+    "'Mon'!A27:E27": [
       [
         false,
         "Claude: specialized agents"
       ]
     ],
-    "'Mon'!A26:E26": [
+    "'Tue'!A26:E26": [
       [
         false
       ]

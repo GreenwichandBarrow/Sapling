@@ -1,15 +1,15 @@
 {
   "verb": "move-day-item",
-  "timestamp": "20260518-141542",
+  "timestamp": "20260519-220501",
   "sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
   "ranges": {
-    "'Sun'!A17:E17": [
+    "'Mon'!A23:E23": [
       [
         false,
-        "Email Jay & Jason"
+        "Email Deborah"
       ]
     ],
-    "'Mon'!A25:E25": [
+    "'Tue'!A22:E22": [
       [
         false
       ]

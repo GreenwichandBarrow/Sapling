@@ -100,7 +100,7 @@ def _render_zone_1(tiles: list[HealthTile]) -> str:
         <div class="gb-zone-head">
         <div>
         <div class="gb-zone-label">System Health</div>
-        <div class="gb-zone-sublabel">Local environment · launchd, hooks, disk, vault, briefing pipeline</div>
+        <div class="gb-zone-sublabel">VPS environment · systemd timers, hooks, disk, vault, briefing pipeline</div>
         </div>
         <div class="gb-zone-meta">{''.join(pills)}</div>
         </div>

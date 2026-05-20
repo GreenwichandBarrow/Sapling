@@ -1285,6 +1285,15 @@ def _registered_count() -> int:
 
 
 def _expected_plist_count() -> int:
+    # Platform-aware: macOS counts launchd plists; Linux counts systemd .timer
+    # units. Without this split, the VPS reads "0 expected" (wrong dir) and the
+    # health tile shows "Some jobs not loaded" against a registered count > 0.
+    import _scheduler_adapter  # noqa: PLC0415
+    if _scheduler_adapter.IS_LINUX:
+        timer_dir = _scheduler_adapter.SYSTEMD_USER_DIR
+        if not timer_dir.exists():
+            return 0
+        return sum(1 for _ in timer_dir.glob("*.timer"))
     if not LAUNCH_AGENTS_DIR.exists():
         return 0
     return sum(1 for _ in LAUNCH_AGENTS_DIR.glob(f"{LAUNCHD_LABEL_PREFIX}*.plist"))
@@ -1396,21 +1405,23 @@ def load_system_health() -> list[HealthTile]:
     # 1. Launchd jobs registered (count vs filesystem)
     registered = _registered_count()
     expected = _expected_plist_count()
+    import _scheduler_adapter  # noqa: PLC0415
+    scheduler_word = "systemd timers" if _scheduler_adapter.IS_LINUX else "launchctl"
     if registered == 0 and expected == 0:
         tiles.append(HealthTile(
-            "Launchd jobs registered", "unknown", "—",
-            "launchctl unavailable in this environment",
+            "Scheduled jobs registered", "unknown", "—",
+            f"{scheduler_word} unavailable in this environment",
         ))
     elif registered >= expected and expected > 0:
         tiles.append(HealthTile(
-            "Launchd jobs registered", "ok", f"{registered} / {expected}",
-            "All scheduled skills present in launchctl",
+            "Scheduled jobs registered", "ok", f"{registered} / {expected}",
+            f"All scheduled skills present in {scheduler_word}",
         ))
     else:
         tiles.append(HealthTile(
-            "Launchd jobs registered", "warn",
+            "Scheduled jobs registered", "warn",
             f"{registered} / {expected}",
-            "Some plists not loaded into launchctl",
+            f"Some jobs not loaded into {scheduler_word}",
         ))
 
     # 2. Spec vs registered (catches health-monitor-style gaps)
@@ -1425,7 +1436,7 @@ def load_system_health() -> list[HealthTile]:
         tiles.append(HealthTile(
             "Spec vs. registered", "alert",
             f"{registered} / {expected_per_md}",
-            f"Missing plist: {', '.join(missing)}",
+            f"Missing job: {', '.join(missing)}",
         ))
 
     # 3. Logs writing today
@@ -2758,7 +2769,7 @@ def _apollo_tile_overrides(snapshot: dict, now: datetime | None = None) -> dict 
             "unit": "remaining / min",
             "runway_text": f"snapshot stale · last refresh {age_hours:.0f}h ago",
             "runway_color": "grey",
-            "trend": "scheduled refresh delayed · check launchd",
+            "trend": "scheduled refresh delayed · check systemd timers",
             "trend_arrow": "flat",
         }
     # 6h-24h → still serve snapshot but flag as stale grey. Past 6h on a

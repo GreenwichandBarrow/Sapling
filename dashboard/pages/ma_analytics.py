@@ -1,12 +1,13 @@
 """M&A Analytics page — activity rollups across deal flow + outreach + ops.
 
 Replaces the Weekly Activity Tracker Google Sheet (the spreadsheet Kay used to
-maintain manually). Five zones — three live, two DealsX-deferred until May 7:
+maintain manually). Five zones — three live, two DealsX-deferred until that
+integration ships:
 
-    Zone 1: Deal Flow Headline      LIVE  — Attio snapshot + brain/calls/
-    Zone 2: Outbound Funnel         DEFERRED — DealsX live May 7
-    Zone 2.5: AI Response Categories DEFERRED — DealsX live May 7
-    Zone 3: Channel Performance     PARTIAL — 4 of 6 rows (DealsX deferred)
+    Zone 1: Deal Flow Headline       LIVE  — Attio snapshot + brain/calls/
+    Zone 2: Outbound Funnel          DEFERRED — pending DealsX integration
+    Zone 2.5: AI Response Categories DEFERRED — pending DealsX integration
+    Zone 3: Channel Performance      PARTIAL — live rows + DealsX-deferred row
     Zone 4: Trends · 12 weeks        LIVE  — best-effort, pending where no
                                               historical weekly data
     Zone 5: Activity Detail          LIVE  — chip lists per category
@@ -148,7 +149,7 @@ def _render_zone_placeholder(label: str, sublabel: str, body: str) -> str:
         <div class="gb-zone-label">{escape(label)}</div>
         <div class="gb-zone-sublabel">{escape(sublabel)}</div>
         </div>
-        <div class="gb-zone-meta"><span class="pill yellow">Live May 7</span></div>
+        <div class="gb-zone-meta"><span class="pill yellow">DealsX pending</span></div>
         </div>
         <div class="gb-zone-empty">{escape(body)}</div>
         </section>
@@ -164,7 +165,7 @@ def _render_zone_placeholder(label: str, sublabel: str, body: str) -> str:
 def _render_channel_row(ch: ChannelRow) -> str:
     tr_class = ' class="deferred"' if ch.deferred else ""
     if ch.deferred:
-        rate_cell = '<span class="gb-ch-pill">live May 7</span>'
+        rate_cell = '<span class="gb-ch-pill">DealsX pending</span>'
         sent = reply = positive = to_nda = "—"
     else:
         sent = ch.sent
@@ -203,7 +204,7 @@ def _render_zone_3(ma: MAAnalytics) -> str:
         <div class="gb-zone-head">
         <div>
         <div class="gb-zone-label">Channel Performance</div>
-        <div class="gb-zone-sublabel">Outbound activity by channel · {live} live · {deferred} pending DealsX (May 7)</div>
+        <div class="gb-zone-sublabel">Outbound activity by channel · {live} live · {deferred} pending DealsX integration</div>
         </div>
         <div class="gb-zone-meta">{len(ma.channels)} channels · this week</div>
         </div>
@@ -337,7 +338,7 @@ def _render_niche_row(row: NicheBreakdownRow) -> str:
         <td class="right">{row.jj_dials_lifetime}</td>
         <td class="right"><span class="gb-niche-{activity_class}">{escape(activity_cell)}</span></td>
         <td class="right"><span class="gb-niche-{kay_class}">{kay_cell}</span></td>
-        <td class="right"><span class="gb-ch-pill">live May 7</span></td>
+        <td class="right"><span class="gb-ch-pill">DealsX pending</span></td>
         </tr>
         """
     ).strip()
@@ -353,7 +354,7 @@ def _render_zone_6(ma: MAAnalytics) -> str:
         <div class="gb-zone-head">
         <div>
         <div class="gb-zone-label">Per-niche Outreach Breakdown</div>
-        <div class="gb-zone-sublabel">Operations dial activity wired · per-niche email sends + LinkedIn pending DealsX (May 7)</div>
+        <div class="gb-zone-sublabel">Operations dial activity wired · per-niche email sends + LinkedIn pending DealsX integration</div>
         </div>
         <div class="gb-zone-meta">{active_count} of {len(breakdown.rows)} niches active</div>
         </div>
@@ -396,8 +397,8 @@ def render() -> None:
         _render_zone_placeholder(
             "Outbound Funnel",
             "Email volume, opens, replies, positive replies, bounces · all channels combined",
-            "Live May 7 · DealsX integration unlocks email + LinkedIn DM volume, "
-            "opens, replies, positive replies, and bounce rate.",
+            "Goes live once DealsX integration ships · unlocks email + LinkedIn "
+            "DM volume, opens, replies, positive replies, and bounce rate.",
         ),
         unsafe_allow_html=True,
     )
@@ -405,9 +406,10 @@ def render() -> None:
         _render_zone_placeholder(
             "Response Categorization · AI-Classified",
             "DealsX AI tags every reply by intent · sentiment breakdown",
-            "Live May 7 · DealsX AI categorizes replies as Interested / "
-            "Meeting Request / Information Request / Wrong Person / Not Interested "
-            "/ Uncategorizable, plus sentiment (positive / neutral / negative).",
+            "Goes live once DealsX integration ships · DealsX AI categorizes "
+            "replies as Interested / Meeting Request / Information Request / "
+            "Wrong Person / Not Interested / Uncategorizable, plus sentiment "
+            "(positive / neutral / negative).",
         ),
         unsafe_allow_html=True,
     )
@@ -422,7 +424,7 @@ def render() -> None:
         "<code>brain/context/session-decisions-*</code> (CEO sends/drafts via verb tags), "
         "<code>brain/context/jj-activity-snapshot.json</code> (per-niche dials), "
         "<code>brain/context/email-scan-results-*</code> (CIM detection). "
-        "<strong style=\"color:var(--text-muted);\">DealsX zones (incl. response rate + per-niche email volume) live May 7, 2026.</strong>"
+        "<strong style=\"color:var(--text-muted);\">DealsX zones (incl. response rate + per-niche email volume) go live once that integration ships.</strong>"
         "</div>",
         unsafe_allow_html=True,
     )

@@ -133,7 +133,7 @@ def _render_staleness_banner() -> None:
     )
     st.markdown(
         f'<div class="gb-stale-banner">⚠ Stale data: {items}. '
-        "Live snapshot refresh job may be down — check launchctl + recent logs."
+        "Live snapshot refresh job may be down — check systemd timers + recent logs."
         "</div>",
         unsafe_allow_html=True,
     )

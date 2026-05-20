@@ -75,7 +75,7 @@ def _last_run_text(skill: SkillHealth) -> tuple[str, str]:
     if s == "scheduled-later":
         return (skill.next_fire_text or "Next run pending"), "dim"
     if s == "gap":
-        return "No plist registered", "red"
+        return "No scheduled job registered", "red"
     # On-demand
     if skill.last_run is None:
         return "Never run", "dim"
@@ -94,7 +94,7 @@ def _schedule_or_trigger(skill: SkillHealth) -> tuple[str, bool]:
     if skill.is_scheduled:
         return f"⏱ {skill.schedule_text}", False
     if skill.is_gap:
-        return "CLAUDE.md says scheduled · no plist", True
+        return "CLAUDE.md says scheduled · no job registered", True
     if skill.trigger_text:
         return skill.trigger_text, True
     return "On-demand", True

@@ -1,9 +1,16 @@
 ---
 name: Pre-LOI deal screen — $300K Kay salary + 15%+ margins + 35% IRR
-description: Hard pre-LOI screen criteria. Target deal must clear all four gates simultaneously. Apply at intake, before any deeper diligence. Practical EBITDA floor is $2M; below that the math doesn't hold together.
+description: Hard pre-LOI screen criteria. Target deal must clear all four gates simultaneously. Apply at intake, before any deeper diligence. EBITDA floor relaxed 2026-05-19 per investor guidance — sub-$2M deals now in play because PE has compressed into the $2M+ band. Underwrite on the four gates, not on a size threshold.
 type: feedback
 originSessionId: d322cf09-a7ad-4a87-93d8-130a9c57bf7f
 ---
+
+## 2026-05-19 UPDATE — $2M EBITDA floor relaxed
+
+Kay's investors told her not to be afraid to go under $2M EBITDA because PE has consolidated into the $2M+ space, leaving sub-$2M as the less-competed band where search-fund-style buyers have an edge. **The $2M floor is no longer a hard gate.** The four-gate screen still applies — if the deal pencils on (1) $300K salary supportable, (2) 15%+ margins, (3) 35% IRR clearable, (4) debt-service + WC affordable, then accept it regardless of whether EBITDA is $1.4M, $1.7M, or $2.3M. The pre-update math table below (which auto-rejected at $1M EBITDA on IRR grounds) is no longer doctrine — re-run the IRR with actual deal terms (entry multiple, debt mix, industry growth) before any reject.
+
+This does NOT abolish the screen — it removes one shortcut. Sub-$2M deals that fail the four gates still get declined. The change is: no auto-reject by size, full underwriting required.
+
 ## The four-gate screen (apply pre-LOI on every deal)
 
 A target deal must clear ALL four gates simultaneously to proceed past initial screen:

@@ -142,6 +142,23 @@ def validate_sidecar(run_date: date, failures: list[str]) -> None:
         if not isinstance(v, int) or v < 0:
             failures.append(f"JSON sidecar {int_field}={v!r} — must be int ≥0")
 
+    # Content-floor: if zero niches were identified, the run MUST document why.
+    # Catches the "silent vacuous success" failure mode where the skill exits 0
+    # and the markdown report says "no genuinely-new niches converged" but no
+    # diagnostic trail explains the signal-pipeline gap. Added 2026-05-19 after
+    # 4+ weeks of niche-intel runs surfacing only RESURFACE candidates while
+    # the last30days dependency was silently missing from the VPS.
+    niches_identified = data.get("niches_identified")
+    if isinstance(niches_identified, int) and niches_identified == 0:
+        reason = data.get("zero_finding_reason")
+        if not isinstance(reason, str) or len(reason.strip()) < 20:
+            failures.append(
+                "JSON sidecar niches_identified=0 — must include "
+                "zero_finding_reason (string, ≥20 chars) explaining why the "
+                "signal pipeline produced no candidates this cycle. Without a "
+                "diagnostic trail, repeated zero-finding runs go undetected."
+            )
+
     if not isinstance(data.get("tracker_updated"), bool):
         failures.append(
             f"JSON sidecar tracker_updated={data.get('tracker_updated')!r} — must be bool"

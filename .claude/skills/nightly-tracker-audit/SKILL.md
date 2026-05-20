@@ -92,7 +92,7 @@ Runs after `claude -p` exits, regardless of skill-internal logic. Catches the si
 
 **Copyable invocation (manual run):**
 ```bash
-python3 "/Users/kaycschneider/Documents/AI Operations/scripts/validate_nightly_tracker_audit_integrity.py"
+python3 "$HOME/projects/Sapling/scripts/validate_nightly_tracker_audit_integrity.py"
 ```
 
 The launchd wrapper (`scripts/run-skill.sh`) overrides EXIT_CODE on POST_RUN_CHECK failure and emits a Slack alert prefixed `VALIDATOR FAILED`. Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead: `ai-ops-jrj.2`.

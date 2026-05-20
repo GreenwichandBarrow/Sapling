@@ -32,6 +32,7 @@ The wrapper-side validator (`scripts/validate_niche_intelligence_integrity.py`) 
   "scorecards_written": <int, ≥0>,
   "tracker_updated": <bool>,
   "runtime_seconds": <int, >0>,
+  "zero_finding_reason": "<string, ≥20 chars — REQUIRED when niches_identified=0>",
   "niches": [
     {"name": "...", "score": <float|null>, "drive_folder": "..."}
   ]
@@ -39,6 +40,8 @@ The wrapper-side validator (`scripts/validate_niche_intelligence_integrity.py`) 
 ```
 
 `niches_evaluated` is the floor: if the synthesizer's convergence report processed 0 niches, the run is treated as a silent failure even when Claude exits 0. Write the sidecar LAST, after all sheet/Drive writes complete.
+
+**Content-floor rule (added 2026-05-19):** If `niches_identified` is 0, the sidecar MUST include a `zero_finding_reason` field (string, ≥20 chars) explaining which signal source(s) produced no candidates and why. Examples: "RECENT agent: last30days returned only HN/PE-IT signal, no ag-adjacent convergence across newsletters/calls/inbox" or "HISTORICAL agent: 4 sub-agents posted but no cross-source pattern hit 2+ source threshold". Without this field the wrapper validator rejects the run and Slack escalates. Validates against `feedback_silent_vacuous_success` — see `scripts/validate_niche_intelligence_integrity.py`.
 
 ## What success looks like
 

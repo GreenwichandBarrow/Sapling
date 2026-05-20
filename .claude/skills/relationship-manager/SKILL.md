@@ -273,7 +273,7 @@ Runs after `claude -p` exits, regardless of skill-internal logic. Catches the si
 
 **Copyable invocation (manual run):**
 ```bash
-python3 "/Users/kaycschneider/Documents/AI Operations/scripts/validate_relationship_manager_integrity.py"
+python3 "$HOME/projects/Sapling/scripts/validate_relationship_manager_integrity.py"
 # Pass --date YYYY-MM-DD to validate a different date
 ```
 

@@ -8,7 +8,7 @@ Close the day. Bookend `/start`. Every night Kay invokes `/goodnight`, the syste
 
 1. Writes `brain/context/session-decisions-{date}.md` covering the full day (merging continuation files, email threads, and in-session decisions).
 2. Extracts decision traces to `brain/traces/{date}-{slug}.md` for any APPROVE/REJECT with non-obvious reasoning (human override, judgment call, surprising choice).
-3. Updates memory (`/Users/kaycschneider/.claude/projects/-Users-kaycschneider-Documents-AI-Operations/memory/`) with new feedback/project/reference/user entries whenever the day produced a durable insight.
+3. Updates memory (`$HOME/.claude/projects/-home-ubuntu-projects-Sapling/memory/`) with new feedback/project/reference/user entries whenever the day produced a durable insight.
 4. Scans for stop-hook / new-skill / feedback-memory candidates (patterns repeated 3+ times this session → propose formalization). Existing-skill *improvements* are NOT edited here — they route to the `evolve` skill.
 5. Commits the vault changes to git AND pushes to origin.
 6. Returns a 4-6 line summary to Kay (decisions, traces written, memory delta, commit SHA, push status).

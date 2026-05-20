@@ -112,6 +112,7 @@ case "$SKILL_NAME:$SKILL_ARGS" in
     # occurred (Unexpected)" (bead ai-ops-5wx).
     HEADLESS_PROMPT_FILE="$WORKDIR/.claude/skills/niche-intelligence/headless-tuesday-prompt.md"
     POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_niche_intelligence_integrity.py\"}"
+    REQUIRED_DEPS="bin:gog bin:python3 file:~/.claude/skills/last30days/skills/last30days/scripts/last30days.py"
     ;;
   "email-intelligence:")
     # Bare `run-skill.sh email-intelligence` (Mon-Fri 7am morning fire, empty
@@ -180,6 +181,45 @@ case "$SKILL_NAME:$SKILL_ARGS" in
     POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_deal_aggregator_integrity.py\" --mode digest --date \$TODAY}"
     ;;
 esac
+
+# Pre-flight: verify skill dependencies declared by the case block above.
+# REQUIRED_DEPS is a space-separated list of "kind:value" tokens:
+#   bin:NAME   - verify command exists in PATH
+#   env:NAME   - verify environment variable resolves to non-empty value
+#   file:PATH  - verify file/dir exists (supports ~ expansion)
+# Catches the silent failure mode where a scheduled skill runs every cycle
+# calling a missing script and exits 0 with vacuous output (last30days
+# missing on VPS 2026-05-19 - 4+ weeks before detection).
+if [ -n "$REQUIRED_DEPS" ]; then
+  MISSING_DEPS=""
+  for dep in $REQUIRED_DEPS; do
+    kind="${dep%%:*}"
+    value="${dep#*:}"
+    case "$kind" in
+      bin)
+        command -v "$value" >/dev/null 2>&1 || MISSING_DEPS="$MISSING_DEPS $dep"
+        ;;
+      env)
+        [ -z "${!value}" ] && MISSING_DEPS="$MISSING_DEPS $dep"
+        ;;
+      file)
+        expanded="${value/#\~/$HOME}"
+        [ -e "$expanded" ] || MISSING_DEPS="$MISSING_DEPS $dep"
+        ;;
+      *)
+        MISSING_DEPS="$MISSING_DEPS unknown-kind:$dep"
+        ;;
+    esac
+  done
+  if [ -n "$MISSING_DEPS" ]; then
+    echo "DEPS PREFLIGHT FAILED: missing dependencies:$MISSING_DEPS" >> "$LOG_FILE"
+    curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
+      -H 'Content-type: application/json' \
+      -d "{\"text\":\"DEPS PREFLIGHT FAIL for $SKILL_NAME - missing:$MISSING_DEPS. Skill aborted before running.\"}"
+    exit 3
+  fi
+  echo "Deps preflight OK ($REQUIRED_DEPS)" >> "$LOG_FILE"
+fi
 
 # Run Claude in non-interactive mode with retry on transient failures
 MAX_ATTEMPTS=3

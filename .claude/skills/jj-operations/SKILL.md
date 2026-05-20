@@ -266,7 +266,7 @@ If Call Status = "Connected" and sentiment is positive → flag for pipeline-man
 
 **Wrapper validator copyable invocation (manual run):**
 ```bash
-JJ_CALL_NICHES="Premium Pest Management" python3 "/Users/kaycschneider/Documents/AI Operations/scripts/validate_jj_operations_integrity.py"
+JJ_CALL_NICHES="Premium Pest Management" python3 "$HOME/projects/Sapling/scripts/validate_jj_operations_integrity.py"
 # Pass --week-start YYYY-MM-DD to validate a specific week
 ```
 

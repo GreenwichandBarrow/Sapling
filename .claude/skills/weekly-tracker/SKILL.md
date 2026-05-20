@@ -426,7 +426,7 @@ Write `brain/trackers/weekly/{YYYY-MM-DD}-weekly-tracker.md` with frontmatter an
 
 **Wrapper validator copyable invocation (manual run):**
 ```bash
-python3 "/Users/kaycschneider/Documents/AI Operations/scripts/validate_weekly_tracker_integrity.py"
+python3 "$HOME/projects/Sapling/scripts/validate_weekly_tracker_integrity.py"
 # Pass --week-ending YYYY-MM-DD to override auto-Friday computation
 ```
 

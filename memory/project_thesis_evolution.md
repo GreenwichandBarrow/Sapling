@@ -1,7 +1,10 @@
 ---
-name: Search Fund Thesis Evolution (Sep 2023 — Mar 2026)
-description: Complete history of how Kay's acquisition thesis evolved — every pivot, why it happened, and what was learned at each stage
-type: project
+name: search-fund-thesis-evolution-sep-2023-mar-2026
+description: "Complete history of how Kay's acquisition thesis evolved — every pivot, why it happened, and what was learned at each stage"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: ba468c68-0c26-4a32-841c-34222ab75dff
 ---
 
 ## Phase 1: Education & Formation (Sep 2023 — Dec 2023)
@@ -89,6 +92,47 @@ type: project
 - AI-enhanceable, not AI-disruptable
 - Within 1 hour of home if on-site; anywhere US if remote
 
-**Why:** This history shows Kay's pattern: she starts broad, scores rigorously, pivots when data contradicts thesis, and converges toward compliance/infrastructure businesses serving luxury/UHNW clients.
+## Phase 8: Women-Led Throughline Convergence (May 2026)
 
-**How to apply:** When evaluating new niches, reference the scoring history and kill reasons. Don't re-explore killed niches without new information. Kay's strongest conviction is at the intersection of luxury credibility + compliance/recurring revenue + technology enablement.
+**Trigger:** `/socrates` session 2026-05-20. Surface ask was "how do I close in 6 months." Underlying thread Kay self-surfaced mid-conversation: she chose Chanel post-MBA specifically for women-owned DNA + global empowerment; she pivoted Myself Renewed (her nonprofit) FROM women-in-labor TO women-owned women's health businesses; she has held an explicit post-exit goal of becoming a female investor in the search community; she became interested in pest only after discovering the women's pest management association; her interest in art storage collapsed when industry turned out male-dominated; software (the negative control) came and went with no female-led-network lock-in.
+
+**The convergence:** female-led networks are the **load-bearing input** to industry selection, not a soft surfacing-order preference. The thesis becomes purpose-first: women-owned, recurring-revenue staples in NY, sourced via female-led networks. Pest primary (women's pest management association is the lock-in). Adjacent staple-female-skew industries (home healthcare, commercial cleaning, senior care, certain professional services) as warm-intro optionality. NOT classic women-owned consumer (fashion, retail, beauty, personal care). See [[user-kay-women-led-purpose-throughline]] and [[feedback-industry-is-output-of-network]].
+
+**Methodology rediscovered:** Kay's post-MBA job search (which landed Chanel) used 3 buckets of 10 named companies + network mapping + coffee. She INTENDED to use it for the search and drifted into the conventional national-volume playbook. Sam at the mid-search summit independently validated this week: "5 companies, do everything to get the call." Adapted: 3 buckets of 10 women-owned NY firms each + female-led-network triangulation + custom send + warm intro + coffee. Solo + analyst running the engine post-summer wind-down of DealsX and JJ (see [[project-dealsx-jj-windown-by-summer]]).
+
+**Constraint reframes:**
+- "Constraints" → "thesis shape" / "thesis criteria" (see [[feedback-thesis-shape-not-constraints]]).
+- Regional restriction → "sourcing concentration in NY" (frame for investors).
+- Not travel-heavy (new criterion added 2026-05-20 after travel-fatiguing two days).
+
+**Operating-model shifts:**
+- DealsX and JJ wound down by summer 2026 (30-day notice this week, end ~late June). Post-wind-down: Kay + analyst.
+- AI drafting skill = daily inbox layer (analyst is weekly-cadence). Skill must classify inbound by type (personal intro vs deal pitch vs check-in vs advisor counsel) before drafting. 24-hour SLA, voice-trained, thesis-anchored, relationship-aware.
+- Solo-searcher staffing question parked 30 days from AI skill go-live; reopen only if conversion does not move.
+
+**Investor-relations shifts:**
+- Quarterly investor update committed for this week (frame as status report to partners, NOT verdict on self; Q1 = infrastructure capex with Q2 deployment starting; thesis evolution including the throughline; surface regional as sourcing concentration; test rather than hide).
+- Two skipped quarters acknowledged. Silence is worse than honest "no LOI yet" — silence creates worse stories than the ones investors would actually tell.
+
+**Identity layer:**
+- ENTJ-A / PRINT wires identity to performance → court-case psychology where every event becomes evidence. See [[feedback-court-case-psychology-identity-layer]]. Solution is behavior-first, not feeling-first.
+- Source of the women-led purpose: Kay's own lived experience — *"My whole life I was talented and smart and I had to fight to be treated like the boys, or not to be overlooked."* Genesis, not unrelated personal hardship.
+
+**Decision-rule clarifications:**
+- Bias-toward-YES on personal introductions; default-evaluate on specific deal pitches. See [[feedback-bias-yes-on-introductions-evaluate-deal-pitches]].
+- Cell-side advisor (Carlos Nieto / DCA) reclassified from pipeline source to strategic counsel + intro source.
+
+**Convergence brief:** [[outputs/2026-05-20-discussion-women-led-thesis-convergence]] — input to `/plan` mode.
+
+**What this Phase changes about prior phases:**
+- Phase 2 women's-health exploration was correct attractor (woman-owned health) but wrong domain (chose to support clinical providers rather than acquire woman-owned businesses themselves). The thread was there.
+- Phase 5 art world pivot dropped when art storage was discovered to be male-dominated. The throughline was operating.
+- Phase 6 insurance pivot was driven by a woman (Kay wanted what she had). The thread was operating.
+- Phase 7 compliance infrastructure thesis was an attempt to fit conventional thesis structure; it did not match the access pattern. The compliance lens is not wrong per se but it was not load-bearing.
+- All "industry-first then warm-intro" sequencing in prior phases is replaced with "network-first, industry-as-output" for go-forward work.
+
+---
+
+**Why:** This history shows Kay's pattern: she starts broad, scores rigorously, pivots when data contradicts thesis, and converges toward compliance/infrastructure businesses serving luxury/UHNW clients — **and at Phase 8 finally claims an organizing principle that has been operating across her entire post-MBA career**.
+
+**How to apply:** When evaluating new niches, reference the scoring history and kill reasons. Don't re-explore killed niches without new information. **As of Phase 8, the primary screen is "is there a female-led association or network in this industry that Kay can plug into in NY?" If no, expect the interest will not lock in regardless of financial fit.** Kay's strongest conviction is at the intersection of women-led-network + recurring-revenue staples + NY + female-owner-preferred + not-tech + not-travel-heavy.

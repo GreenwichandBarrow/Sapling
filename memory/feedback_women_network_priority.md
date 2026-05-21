@@ -4,6 +4,11 @@ description: Prioritize women across all intermediary, network, and conference r
 type: feedback
 originSessionId: a7305dfd-d3d9-44c7-840b-f8de8eb9bfd8
 ---
+
+**Update 2026-05-20:** This memory captures the SURFACING-ORDER priority within research/discovery. It is now SUPERSEDED IN SCOPE by [[user-kay-women-led-purpose-throughline]], which establishes that female-led-network is the **load-bearing input to industry selection itself**, not a soft priority across all industries. Use this memory for "in any research surface, lead with women" mechanics. Use the throughline memory for "industry only locks in for Kay when there is a female-led network" — that is the deeper organizing principle. Both rules are active; the throughline operates upstream.
+
+---
+
 When building or expanding any intermediary list, network map, conference attendee target set, or warm-intro candidate pool, **prioritize women**. Kay's standing directive is to maximize women in her professional network — across M&A advisors, brokers, IBs, lawyers, CPAs, family offices, lenders, association heads, and peer searchers.
 
 **The rule:** In any research/discovery pass that surfaces named individuals — surface women first, flag them explicitly, and over-weight them in priority recommendations. Don't artificially exclude men, but bias the surfacing order, the "top 5" highlights, and the warm-intro recommendations toward women.

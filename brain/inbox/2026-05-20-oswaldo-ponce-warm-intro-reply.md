@@ -2,7 +2,8 @@
 schema_version: 1.2.0
 date: 2026-05-20
 title: Reply to Oswaldo Ponce — schedule next-week intro call
-status: backlog
+status: done
+completed_date: 2026-05-19
 source: email
 urgency: high
 entity: "[[entities/oswaldo-ponce]]"
@@ -18,7 +19,7 @@ tags:
   - person/oswaldo-ponce
   - person/carlos-nieto-dca
   - topic/warm-intro
-  - status/backlog
+  - status/done
 ---
 
 # Reply to Oswaldo Ponce — schedule next-week intro call
@@ -31,8 +32,8 @@ Oswaldo replied 2026-05-19 21:48 ET: "Carlos, thank you for the introduction. Ka
 Kay reply pending. Use canonical INTRODUCTION template (DIRECTORY-SOURCED VARIANT, referral opener — same mechanism applied for Sam @ Transworld 5/18 per `session-decisions-2026-05-19`). Pull live from `bash scripts/fetch-template-doc.sh` per `feedback_pull_canonical_doc_live_not_snapshot`. Propose two Google Meet windows next week.
 
 ## Notes
-- *Not started.* Awaiting Kay action (per `feedback_kay_handles_all_replies` — Kay sends; this skill stages context only).
-- Pozacp/op@pozacp.com domain not yet identified — no company entity created. Worth a quick web/LinkedIn check before scheduling so Kay walks in informed.
+- *Resolved off-system 2026-05-19 (per `feedback_off_system_resolution_closes_loop`).* Kay replied 5/19 18:38 ET with three windows; Oswaldo confirmed Tuesday 5/26 noon at 21:42 ET; Kay sent calendar invite at 21:46 ET.
+- Pozacp/op@pozacp.com domain not yet identified — no company entity created. Worth a quick web/LinkedIn check before the 5/26 call so Kay walks in informed (deferred to meeting-brief-manager T-2 nights).
 
 ## Outcome
-*Pending*
+Call scheduled Tuesday 2026-05-26 at 12:00 ET. Calendar invite sent.

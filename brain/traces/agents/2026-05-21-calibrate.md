@@ -3,7 +3,7 @@ schema_version: 1.0.0
 date: 2026-05-21
 task: Thursday meta-calibration — 38 traces from 2026-05-15 through 2026-05-20 + 6 Thursday buckets
 agents: [coordinator, architecture-strategist, simplicity-advocate, pattern-recognizer]
-status: active
+status: completed
 tags: [date/2026-05-21, agents, calibration, trace]
 ---
 
@@ -296,3 +296,144 @@ Anything where only one lens fires is lower-confidence. Coordinator weights acco
 | P5 | (watchlist) | low | `test-real-path-before-escalating` graduation watch | none |
 
 -> READY
+
+### coordinator -> CLOSE [2026-05-21]
+All three agents READY. Closing intake. Synthesizing dedup'd, importance-ranked proposal list below.
+
+## Synthesized Proposals
+
+### 1. [CRITICAL] `.claude/skills/niche-intelligence/SKILL.md`, `.claude/skills/target-discovery/SKILL.md`, `.claude/skills/list-builder/SKILL.md`: wire women-led-network + network-first gate into execution skills
+**Source agents:** architecture-strategist (P1); pattern-recognizer (meta-finding #2 SHIP); simplicity-advocate (P5 partial — sources side)
+**Trace evidence:** `2026-05-20-women-led-throughline-organizing-principle.md`, `2026-05-20-industry-is-output-of-network.md`
+**Proposed change:**
+- niche-intelligence Step 4 (SCORE) — add PRIMARY gate BEFORE financial scorecard: "Female-led-network availability: name the women-led association/network in NY Kay can plug into. If none → LOW lock-in regardless of financial fit."
+- target-discovery — before invoking list-builder, REQUIRE confirmed female-led network for the niche; absent → surface 🟡 to Kay instead of generating list.
+- list-builder — hard warning if asked to generate >50 targets for a niche without an associated female-led network ("1000-target screen drift — pull back to 3 buckets of 10").
+**Why:** Highest-signal structural shift of the week. Memory exists; ZERO skill text enforces. Without skill-level gates, niche-intel keeps producing financially-scored sector recs and target-discovery keeps generating buy-box-screen lists — exact drift Kay called out 5/20. Reverts within 2 weeks otherwise.
+
+### 2. [CRITICAL] `.claude/skills/email-intelligence/SKILL.md`, `.claude/skills/outreach-manager/SKILL.md`: mandatory inbound classification BEFORE drafting any reply
+**Source agents:** architecture-strategist (P2)
+**Trace evidence:** `2026-05-20-bias-yes-introductions-evaluate-deal-pitches.md` (HUMAN OVERRIDE — Kay lost a contact)
+**Proposed change:** Insert classification step before reply drafting; four routes per `feedback_bias_yes_on_introductions`:
+(a) Personal introduction → default-accept template; offer alt time if timing bad; NEVER recommend decline.
+(b) Specific deal pitch → fit-gate-evaluate; decline cleanly with calibration.
+(c) Warm-network check-in → cadence template.
+(d) Advisor counsel → strategic-response template.
+Hard rule: "If recommending decline on (a), STOP — the intro is not the pipeline."
+**Why:** Verified cost-of-relationship miss in trace. Current email-intel surfaces intros as one of N items, not default-accept. Without skill-level classification BEFORE drafting, recurrence is guaranteed.
+
+### 3. [CRITICAL] NEW HOOK `.claude/hooks/trace_litmus_guard.py`: block verb-log writes to `brain/traces/`
+**Source agents:** pattern-recognizer (P1); reinforces simplicity-advocate (P1+P8) and architecture-strategist (cross-cutting)
+**Trace evidence:** cross-cutting — 14 of 16 task-tracker traces this week (`2026-05-17-task-tracker-schedule-to-day-slot-*.md` ×10, `archive-todo-sweep-3.md`, `reformat-rules-reapplied.md`, `build-week-2026-05-17.md`, `distribute-week-2026-05-17.md`, `recurring-add-tue-row6.md`, `recurring-remove-row6.md`, `move-day-item-incomplete-*.md`)
+**Proposed change:** New PreToolUse hook on Write/Edit to `brain/traces/*.md`. Block writes meeting ALL of: ≤15 lines AND `verb/` tag in frontmatter AND no `## Decision`/`## Decisions`/`Alternatives Considered` heading. Redirect: "Verb-log artifacts go to `brain/context/verb-logs/` or stay as rollback snapshots. `brain/traces/` is for decisions per decision-traces SKILL.md litmus."
+**Why:** Litmus failed 14× this week — past Friday-meta-cal 2× graduation by an order of magnitude. Precedent: `op_first_guard.py` + `secret_file_guard.py` hooked when recall failed twice. Producer-fix alone is recall-dependent (next skill author repeats). Hook is the durable enforcement.
+
+### 4. [HIGH] DELETE 13 task-tracker operational "traces" + STOP emitting them (`.claude/skills/task-tracker-manager/SKILL.md`)
+**Source agents:** simplicity-advocate (P1, P8); pattern-recognizer reinforces (Finding 1, Finding 4)
+**Trace evidence:** see list under Proposal 3 above (same 13-14 files)
+**Proposed change:**
+- Bulk-delete the 14 verb-log files in `brain/traces/2026-05-15..19-task-tracker-*.md`.
+- Edit `task-tracker-manager/SKILL.md`: add explicit instruction "do not write `brain/traces/` files for mechanical verb runs (schedule-to-day-slot, archive-todo-sweep, reformat, build-week, distribute-week, recurring-add/remove, move-day-item). Snapshot artifacts in `brain/context/rollback-snapshots/` are sufficient for rollback."
+**Why:** Receipts not decisions. Drowned high-signal traces in the calibration queue (over half the May-15→20 trace input was structurally junk). Producer fix + hook (Proposal 3) together close the loop.
+
+### 5. [HIGH] `.claude/skills/decision-traces/SKILL.md`: codify anti-pattern #6 "auto-emitted verb logs" + `#pattern/subtract-not-add` named convention
+**Source agents:** pattern-recognizer (P2, P4); simplicity-advocate (cross-cutting observation); architecture-strategist (cross-cutting agreement)
+**Trace evidence:** cross-cutting — `pest-list-keep-7-not-pad-to-20`, `no-dashboard-maintenance-agent`, `no-maintenance-agent-fix-plumbing`, `no-weekly-tracker-sheet-repoint`, `todo-consolidation-weekly-cadence`, `mac-macbook-thin-clients-single-vps` (6 traces in 6 days)
+**Proposed change:**
+- Add anti-pattern #6 to decision-traces SKILL.md: "AUTO-EMITTED VERB LOGS — body is (a) what verb ran, (b) what row was touched, (c) snapshot path. Belong in `brain/context/verb-logs/{date}-{skill}.md`. Test: if regenerable mechanically from a rollback snapshot, it's a verb log."
+- Add `#pattern/subtract-not-add` to good-trace examples + tag taxonomy. Surface in meta-cal brief when 3+ accumulate in window: "system biasing additive — recommend a Friday subtract-only session."
+- One-time sweep next cycle: subagent bulk-relocates prior verb-log traces.
+**Why:** Locks the rule globally. Producer fix (Proposal 4) is per-skill; named anti-pattern in decision-traces is the global enforcement. The subtract-not-add convention turns 6 isolated corrections/week into one recognized system bias.
+
+### 6. [HIGH] `.claude/skills/plan-refinery/SKILL.md`, `.claude/skills/health-monitor/SKILL.md`: "check existing implementation before rebuilding / adding agent" pre-flight
+**Source agents:** architecture-strategist (P6); pattern-recognizer reinforces (Finding 2)
+**Trace evidence:** `2026-05-17-no-dashboard-maintenance-agent.md`, `2026-05-17-no-weekly-tracker-sheet-repoint.md`, `2026-05-17-no-maintenance-agent-fix-plumbing.md`
+**Proposed change:** Pre-flight: "Before recommending a new data source, watchdog agent, or sheet repoint to fix unreliable data, grep across `dashboard/`, `scripts/`, and skill outputs for an existing implementation. Default failure mode is 'never wired / never ran / different layer already covers it,' NOT 'needs new layer.' Reserve agents for judgment, never for plumbing reliability." Plan-refinery additional: before approving any plan that ADDS an agent/tab/automation/sync surface, require explicit answer to "what root-cause does this not solve?"
+**Why:** Three traces, one day, same anti-pattern. plan-refinery is where alternatives get weighed. health-monitor should refuse to propose watchdog agents over silent-absence failures.
+
+### 7. [HIGH] DELETE stale weekly-tracker memories AND retire/delete the skill
+**Source agents:** simplicity-advocate (P3); reinforced by architecture-strategist P6 (don't rebuild around dead infra)
+**Trace evidence:** `2026-05-17-no-weekly-tracker-sheet-repoint.md`
+**Proposed change:** Delete `memory/project_weekly_tracker_audit.md`, `memory/project_weekly_tracker_status.md`, `memory/reference_weekly_tracker.md`. Move `.claude/skills/weekly-tracker/` to retired or delete outright. The M&A Analytics dashboard page already implements a 9-snapshot weekly archive; the Sheet was never populated because weekly-tracker never ran.
+**Why:** Skill is 752 lines (3.7× archetype cap per its own warning). Three memory files describe a March-22 audit of a skill that never produced data. Dashboard already owns the capability. Don't "fix the skill" — trace already rejected that path.
+
+### 8. [HIGH] NEW MEMORY `memory/feedback_principal_only_routing_and_counting.md` + JJ-routing + post-call-analyzer gates
+**Source agents:** architecture-strategist (P3, P4); pattern-recognizer (P3)
+**Trace evidence:** `2026-05-16-bayonne-non-principal-no-jj-route.md`, `2026-05-18-carlos-pe-rollup-intro-not-dealflow.md`, `2026-05-18-owner-conversations-strict-type-owner.md`
+**Proposed change:**
+- Create memory file codifying: "Channel routing AND headline-metric counting require principal/decision-maker contact. Non-principal titles (CSR, sales, admin, customer-service, capital-side, intermediary, advisor) do NOT auto-route to JJ even when firm is niche-fit + blue-collar; do NOT auto-count as owner conversations even when call recorded. Promotion to principal-grade must be curated/explicit. Heuristics may exclude (e.g., coaching), never promote."
+- Add 1-line MEMORY.md index entry under "Channels & Pipeline Routing."
+- jj-operations SKILL.md: pre-routing gate "Named contact must be a principal/decision-maker. CSR/sales/admin/customer-service titles do NOT auto-route to JJ even when firm is niche-fit + blue-collar."
+- post-call-analyzer SKILL.md: when call/pipeline item tags intro to "active PE roll-up / strategic acquirer in our buy-band," label `relationship_value: exit-and-intel`, NOT `deal-flow`. outreach-manager: do NOT generate "request the intro" as a same-cycle ask to the intermediary; park as separate long-game thread.
+**Why:** Cross-cluster pattern — same principal-only principle showing up in JJ-routing + owner-conv metric + post-call analyzer in one week. Three surfaces, one principle = system-level memory + per-skill gates. Carlos PE-rollup trace shows the analyzer itself produced the BAD label that flowed into the email draft — without lifecycle-stage logic in the analyzer, this exact failure repeats whenever an intermediary offers an active-acquirer intro.
+
+### 9. [HIGH] `/home/ubuntu/projects/Sapling/CLAUDE.md`: retire Mac↔VPS sync line + add thin-client architecture anchor
+**Source agents:** architecture-strategist (P5); simplicity-advocate (P4) — different surfaces, both ship
+**Trace evidence:** `2026-05-18-mac-macbook-thin-clients-single-vps.md`
+**Proposed change:**
+- Replace current Evening Workflow line `Commit AND push to origin — Mac↔VPS sync depends on every evening commit reaching remote` with: `Commit AND push to origin — single VPS is source of truth; push for backup/redundancy. (No Mac↔VPS sync surface exists — both Macs are thin SSH clients.)`
+- Add new "Workflow Architecture" anchor in CLAUDE.md: "Mac + MacBook are pure Tailscale-SSH thin clients into VPS. NO local repos. Machine switching = reconnect + `/pickingback`. NEVER generate `git pull origin main` advice for Kay's machines."
+- Companion edit: `memory/feedback_mac_first_not_mobile.md` — drop "Cursor terminal" + "Mac" specificity → "Kay's morning entry is the VPS terminal via SSH from whichever machine she's on."
+**Why:** Project CLAUDE.md is loaded every session and currently contradicts the architecture trace. Architecture-class memory must update when architecture changes; "retire the problem's memory" applies to CLAUDE.md too.
+
+### 10. [MEDIUM] DO-NOT-DRAFT banner on snapshot templates + NEW HOOK `.claude/hooks/canonical_template_guard.py`
+**Source agents:** architecture-strategist (P8); pattern-recognizer agreement ("ship it")
+**Trace evidence:** `2026-05-19-stale-vault-snapshot-not-canonical-template.md`
+**Proposed change:**
+- Prepend loud banner to `brain/outputs/2026-05-04-broker-outreach-templates.md` (and any future "LOCKED FINAL" snapshots):
+  ```
+  > WARNING: DO NOT DRAFT FROM THIS FILE.
+  > This is a creation-time snapshot, NOT the canonical template.
+  > Pull live: `bash scripts/fetch-template-doc.sh`
+  > Canonical Drive doc: 1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4
+  ```
+- New PreToolUse hook blocking `Read` on `brain/outputs/*-templates.md`, redirecting to fetch script.
+**Why:** "LOCKED FINAL" header was actively misleading — even same-evening supersession note didn't stop drafting from it. Hook enforcement (per op-env precedent) is the durable fix. Same meta-failure class as the 1Password skip — canonical-source-first is a pattern, hook it once.
+
+### 11. [MEDIUM] `.claude/commands/goodnight.md`: parallel-session order-and-read-fully gate
+**Source agents:** architecture-strategist (P7)
+**Trace evidence:** `2026-05-17-parallel-session-tracker-architecture-conflict.md`
+**Proposed change:** Pre-escalation step: "If two `session-decisions-{date}.md` files exist for the same date, ORDER by timestamp before evaluating contradictions. Read the LATER session's actual Actions Taken in full (not the summary headline). A later session that USES an earlier session's artifact is complementary, not conflicting. Default to 'reconcile and explain,' not 'make Kay choose.'"
+**Why:** Direct decision-fatigue-mandate violation (manufactured a blocking decision). Parallel sessions keep happening; without explicit gate, false escalation repeats.
+
+### 12. [MEDIUM] DELETE dated session memories (March/early-April 2026) — 13 files
+**Source agents:** simplicity-advocate (P2)
+**Trace evidence:** cross-cutting — MEMORY.md "over 200-line budget" system warning
+**Proposed change:** Delete `memory/project_session_march_19.md` through `project_session_april_4.md`, plus `project_monday_march_23.md`, `project_tuesday_march_24.md`, `project_testing_day_march20.md`, `project_testing_weekend_march21.md`, `project_pending_march_27.md`, `project_morning_report_march21.md`, `project_niche_discovery_march20.md`, `project_architecture_optimization_march24.md`, `project_thursday_morning_items.md`, `project_april_focus.md`, `project_april_goal.md`. Bulk-delete by date pattern.
+**Why:** 567 memory files; MEMORY.md over its 200-line budget. Dated session snapshots are point-in-time scratchpads — nothing durable that isn't already in a `feedback_*` or charter file. Contributes to recall-degradation CLAUDE.md flags.
+
+### 13. [MEDIUM] DELETE obsolete project/feedback files for retired channels and resolved problems
+**Source agents:** simplicity-advocate (P6)
+**Trace evidence:** cross-cutting
+**Proposed change:** Delete `memory/project_branch_divergence_imac_vs_main.md`, `memory/feedback_linkt_cancelled.md`, `memory/feedback_linkt_is_list_builder.md`, `memory/feedback_linkt_api_requirements.md`, `memory/project_outreach_model_pivot.md`, `memory/feedback_outreach_model_april.md`, `memory/feedback_motion_api_python_not_jq.md`, `memory/project_pending_march_27.md`, `memory/project_thursday_morning_items.md`.
+**Why:** Dated snapshots of resolved/abandoned states. Each is a landmine — a future agent grepping for "Linkt" or "Motion" or "iMac branch" gets retired guidance. "Retire the problem's memory, don't keep answering it" applies.
+
+### 14. [MEDIUM] Women-led memories — cross-link, do NOT collapse (pattern-recognizer disagrees with simplicity-advocate P5)
+**Source agents:** pattern-recognizer (disagreement note); resolves simplicity-advocate (P5) downward to "cross-link instead of collapse"
+**Trace evidence:** `2026-05-20-women-led-throughline-organizing-principle.md`, `2026-05-20-industry-is-output-of-network.md`, `2026-05-20-bias-yes-introductions-evaluate-deal-pitches.md`
+**Proposed change:** KEEP all three memory files (`user_kay_women_led_purpose_throughline.md`, `feedback_industry_is_output_of_network.md`, `feedback_bias_yes_on_introductions.md`). Make `user_kay_women_led_purpose_throughline` the canonical anchor with explicit cross-links DOWN to each operational rule. Trim each operational file's "why" section to point UP to throughline. Do not merge — operational distinct (identity vs sequencing rule vs inbound classification).
+**Why:** Operationally distinct rules; collapse risks losing them under purpose-identity umbrella. Architecture-strategist Proposal 1 (skill-side enforcement) is the better fix than memory-side collapse. Pattern-recognizer caught this; downgrades simplicity P5 from "collapse" to "cross-link."
+
+### 15. [LOW-MEDIUM] `/home/ubuntu/projects/Sapling/CLAUDE.md`: shrink Pre-Flight Checklists by externalizing repeating rules
+**Source agents:** simplicity-advocate (P7)
+**Trace evidence:** cross-cutting — CLAUDE.md loaded every session
+**Proposed change:** Trim each Pre-Flight bullet to trigger + action verb + cite. Drop explanatory clauses already in the cited `feedback_*` file. Example: "Recipient verified from verified source. Never guess/construct. See `feedback_never_guess_emails`." instead of 4 sentences explaining bouncing.
+**Why:** Every byte trades against working context. Bullets repeat what they cite. Equivalent of `feedback_strategic_thresholds_need_grounding` applied to CLAUDE.md itself.
+
+### 16. [LOW] WATCHLIST — `#pattern/test-real-path-before-escalating` graduation
+**Source agents:** pattern-recognizer (Finding 5)
+**Trace evidence:** `2026-05-16-gog-false-alarm-test-resolution-path.md` (single instance)
+**Proposed change:** No action this cycle. Watchlist for next cycle. If a 4th instance fires in this family ("verify through production path before escalating"), group `test-real-path-before-escalating` + `canonical-source-first` + `op-resolve-first` into a single hook + named convention "VERIFY THROUGH THE PRODUCTION PATH."
+**Why:** Not yet at graduation threshold (1 instance). Three siblings already exist; cluster forms if one more fires.
+
+## Meta-finding (all three lenses converged)
+
+**Where all three agents agreed, ship without debate:**
+1. Stop task-tracker verb-log noise (Proposals 3, 4, 5).
+2. Wire network-first / women-led / intro-classification into execution skills (Proposals 1, 2).
+3. Stop adding agents for plumbing (Proposals 6, 7).
+4. Principal-only routing-and-counting principle (Proposal 8).
+
+**System bias diagnosis (cross-lens):** the system over-adds memory files and under-wires execution. Simplicity (subtract), Architecture (enforce-at-skill), Pattern (graduate-to-hook) are three sides of the same problem. Net-neutral on size when deletions ship alongside skill-gate additions; net-positive on enforcement.
+
+**Total proposals: 16 (4 critical, 7 high, 4 medium, 1 low-medium, 1 low/watchlist).**

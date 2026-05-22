@@ -83,3 +83,119 @@ Lens: cut, don't add. Generic-playbook scaffolding gets pruned. The week's signa
 Five of the highest-signal traces this week (`pest-list-keep-7`, `no-dashboard-maintenance-agent`, `no-maintenance-agent-fix-plumbing`, `no-weekly-tracker-sheet-repoint`, `todo-consolidation-weekly-cadence`, `mac-macbook-thin-clients-single-vps`) are all the SAME pattern: **reject the elaborate fix, fix the plumbing or accept the simpler real shape**. That is the meta-finding. The current system's bias is toward adding (agents, tabs, automation, sync). Kay's repeated correction is subtractive. Calibration should reward subtraction explicitly — perhaps a `#pattern/subtract-not-add` decision-trace tag that the briefing surfaces when 3+ accumulate in a week.
 
 -> READY
+
+## architecture-strategist findings
+
+**Lens:** structural gaps — where doctrine exists in `memory/` but execution skills don't enforce it; where one part of the system contradicts another; missing routing between skills. The recurring failure across this week's traces is that **memory hopes recall fires; execution-side skill text and hooks force it.** Kay keeps re-correcting the same drift because the drafting / scoring / routing skills never gate on the new rule.
+
+Trace clusters reviewed: (A) women-led-throughline + industry-as-network-output [2026-05-20 x2], (B) intro-vs-deal classification [2026-05-20], (C) canonical-source-first credentials + templates [2026-05-19 x2], (D) thin-client VPS architecture [2026-05-18], (E) dashboard plumbing-not-agent [2026-05-17 x2 + parallel-session false alarm], (F) niche/JJ routing gates [2026-05-15, 2026-05-16, 2026-05-18 carlos], (G) conference auto-archival schema projection [2026-05-18], (H) gog false alarm [2026-05-16].
+
+### Proposal 1 — CRITICAL — Wire women-led network gate into niche-intelligence + target-discovery + list-builder
+
+**target_files:** `.claude/skills/niche-intelligence/SKILL.md`, `.claude/skills/target-discovery/SKILL.md`, `.claude/skills/list-builder/SKILL.md`
+
+**Change:** Add a primary-gate referencing `[[feedback_industry_is_output_of_network]]` and `[[user_kay_women_led_purpose_throughline]]`:
+- niche-intelligence Step 4 (SCORE) — add as a PRIMARY lock-in criterion BEFORE financial scorecard: "Female-led-network availability: name the women-led association/network in NY that Kay can plug into. If none exists → mark LOW lock-in regardless of financial fit. Software-grade negative control."
+- target-discovery — before invoking list-builder, REQUIRE confirmed female-led network for the niche; if absent, surface as 🟡 to Kay rather than generating a list.
+- list-builder — hard warning if asked to generate >50 targets for a niche without an associated female-led network ("1000-target screen drift — pull back to 3 buckets of 10").
+
+**Trace evidence:** `2026-05-20-women-led-throughline-organizing-principle.md`, `2026-05-20-industry-is-output-of-network.md`.
+
+**Rationale:** Highest-signal structural shift in the entire trace set. Grepping the skill tree finds ZERO references to women-led / network-driven / throughline. Memory exists; no skill enforces. Without skill-level gates, niche-intelligence keeps producing financially-scored sector recs and target-discovery keeps generating buy-box-screen lists — the exact drift Kay called out. Reverts within 2 weeks otherwise.
+
+### Proposal 2 — CRITICAL — Add inbound-classification step to email-intelligence + outreach-manager BEFORE drafting
+
+**target_files:** `.claude/skills/email-intelligence/SKILL.md`, `.claude/skills/outreach-manager/SKILL.md`
+
+**Change:** Add a mandatory classification step that runs BEFORE any reply drafting. Four routes per `feedback_bias_yes_on_introductions`:
+(a) Personal introduction → default-accept template; offer later time if timing bad; NEVER recommend decline.
+(b) Specific deal pitch → fit-gate-evaluate; decline cleanly with calibration ("what to send next time").
+(c) Warm-network check-in → cadence template.
+(d) Advisor counsel → strategic-response template.
+
+Hard rule: "If you find yourself recommending decline on category (a), STOP — the intro is not the pipeline."
+
+**Trace evidence:** `2026-05-20-bias-yes-introductions-evaluate-deal-pitches.md` (HUMAN OVERRIDE — Kay lost a contact from prior agent advice).
+
+**Rationale:** Verified cost-of-relationship miss. Current email-intelligence "Introductions Detected" surface treats intros as just one of N items, not as default-accept. Without skill-level classification before drafting, recurrence is guaranteed.
+
+### Proposal 3 — HIGH — Acquirer-relationship-lifecycle gate in post-call-analyzer + outreach-manager
+
+**target_files:** `.claude/skills/outreach-manager/SKILL.md`, `.claude/skills/post-call-analyzer/SKILL.md`
+
+**Change:** When a call note or pipeline item tags an intro to "active PE roll-up / strategic acquirer in our buy-band" as high-value:
+- post-call-analyzer must label `relationship_value: exit-and-intel`, NOT `deal-flow`, if the counterparty is a same-band consolidator.
+- outreach-manager: do NOT generate "request the intro" as a same-cycle ask to the intermediary. Park as separate long-game thread.
+
+**Trace evidence:** `2026-05-18-carlos-pe-rollup-intro-not-dealflow.md`.
+
+**Rationale:** The post-call-analyzer's AI Analysis produced the BAD label ("highest-value asset, take forward") that flowed into the email draft. The skill itself produced the misroute; without lifecycle-stage logic in the analyzer, this exact failure repeats whenever an intermediary offers an active-acquirer intro.
+
+### Proposal 4 — HIGH — Principal-only gate in JJ-routing
+
+**target_file:** `.claude/skills/jj-operations/SKILL.md` (and outreach-manager JJ-Call-Only section)
+
+**Change:** Pre-routing gate: "Named contact must be a principal/decision-maker. CSR / sales / admin / customer-service titles do NOT auto-route to JJ even when firm is niche-fit + blue-collar. Either enrich for owner contact first or park the card."
+
+**Trace evidence:** `2026-05-16-bayonne-non-principal-no-jj-route.md`.
+
+**Rationale:** AI proposed YES on Bayonne; Kay overrode. The heuristic "niche-fit + blue-collar = JJ" is durable enough it WILL fire again. Memory `feedback_jj_blue_collar_only` doesn't include the principal-level gate.
+
+### Proposal 5 — HIGH — Retire Mac↔VPS sync guidance in project CLAUDE.md
+
+**target_file:** `/home/ubuntu/projects/Sapling/CLAUDE.md` (Evening Workflow section)
+
+**Change:** The current line `Commit AND push to origin — Mac↔VPS sync depends on every evening commit reaching remote` is now wrong. Replace with: `Commit AND push to origin — single VPS is source of truth; push for backup/redundancy. (No Mac↔VPS sync surface exists — both Macs are thin SSH clients.)` Also add to a new "Workflow Architecture" anchor: "Mac + MacBook are pure Tailscale-SSH thin clients into VPS. NO local repos. Machine switching = reconnect + `/pickingback`. NEVER generate `git pull origin main` advice for Kay's machines."
+
+**Trace evidence:** `2026-05-18-mac-macbook-thin-clients-single-vps.md`.
+
+**Rationale:** Project CLAUDE.md DIRECTLY contradicts the trace's correction. Loaded every session, so wrong guidance fires consistently. Architecture-class memory must update when architecture changes; doctrine "retire the problem's memory" applies to CLAUDE.md too.
+
+### Proposal 6 — HIGH — Bake "check existing implementation before rebuilding" into plan-refinery + health-monitor
+
+**target_files:** `.claude/skills/plan-refinery/SKILL.md`, `.claude/skills/health-monitor/SKILL.md`
+
+**Change:** Pre-flight: "Before recommending a new data source, watchdog agent, or sheet repoint to fix unreliable data, grep across `dashboard/`, `scripts/`, and skill outputs for an existing implementation of the same capability. The default failure mode is 'never wired / never ran / different layer already covers it,' NOT 'needs new layer.' Reserve agents for judgment, never for plumbing reliability."
+
+**Trace evidence:** `2026-05-17-no-dashboard-maintenance-agent.md`, `2026-05-17-no-weekly-tracker-sheet-repoint.md`, `2026-05-17-no-maintenance-agent-fix-plumbing.md`.
+
+**Rationale:** Three traces in one day, same anti-pattern. plan-refinery is where alternatives get weighed; this is the natural gate. health-monitor should refuse to propose watchdog agents over silent-absence failures. Pairs with simplicity-advocate Proposal 3 (retire weekly-tracker skill).
+
+### Proposal 7 — MEDIUM — Parallel-session order-and-read-fully gate in goodnight/pickingback
+
+**target_file:** `.claude/commands/goodnight.md`
+
+**Change:** Pre-escalation step: "If two `session-decisions-{date}.md` files exist for the same date, ORDER by timestamp before evaluating contradictions. Read the LATER session's actual Actions Taken in full (not the summary headline). A later session that USES an earlier session's artifact is complementary, not conflicting. Default to 'reconcile and explain,' not 'make Kay choose.'"
+
+**Trace evidence:** `2026-05-17-parallel-session-tracker-architecture-conflict.md`.
+
+**Rationale:** Direct decision-fatigue-mandate violation (manufactured a blocking decision). Parallel sessions keep happening; without an explicit gate, false escalation repeats.
+
+### Proposal 8 — MEDIUM — DO-NOT-DRAFT banner on snapshot template files + canonical_template_guard hook
+
+**target_files:** `brain/outputs/2026-05-04-broker-outreach-templates.md` (and any future "LOCKED FINAL" snapshots), new `.claude/hooks/canonical_template_guard.py`
+
+**Change:** Prepend a loud banner to the snapshot file:
+```
+> WARNING: DO NOT DRAFT FROM THIS FILE.
+> This is a creation-time snapshot, NOT the canonical template.
+> Pull live: `bash scripts/fetch-template-doc.sh`
+> Canonical Drive doc: 1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4
+```
+Add hook that blocks `Read` on `brain/outputs/*-templates.md` and redirects to the fetch script.
+
+**Trace evidence:** `2026-05-19-stale-vault-snapshot-not-canonical-template.md`.
+
+**Rationale:** "LOCKED FINAL" header is actively misleading — even the same-evening supersession note didn't stop drafting from it. Hook enforcement (per the op-env precedent) is the durable fix. Same meta-failure class as the 1Password skip — canonical-source-first is a pattern, hook it once.
+
+## architecture-strategist coordination notes
+
+Read simplicity-advocate findings. Overlaps and complements:
+
+- **Complement (not duplicate):** simplicity Prop 3 (retire weekly-tracker skill) pairs with my Prop 6 (plan-refinery checks for existing impl before rebuilding). Hers removes the dead skill; mine prevents the next agent from rebuilding around it. Both should ship.
+- **Complement:** simplicity Prop 5 (collapse 3 women-led memories to 1 canonical) pairs with my Prop 1 (wire the gate into skills). Hers consolidates the source; mine forces execution-side enforcement. Both should ship.
+- **Complement:** simplicity Prop 4 (rewrite mac-first memory) pairs with my Prop 5 (fix project CLAUDE.md Mac↔VPS line). Hers fixes the memory; mine fixes the CLAUDE.md doctrine that's loaded every session. Both should ship — they're different surfaces.
+- **No conflict** on simplicity Props 1, 2, 6, 7, 8 (deletions and CLAUDE.md shrinkage). My proposals are additive (wire gates into skills); hers are subtractive (delete cruft). Together they're net-neutral on system size while net-positive on enforcement.
+- **Cross-cutting alignment:** simplicity's meta-finding ("subtract not add") and mine ("memory exists but skills don't enforce") are two sides of the same coin: the system over-adds memory files and under-wires execution. Both halves of the fix are needed.
+
+-> READY

@@ -18,6 +18,8 @@ from router.handlers.secret_file_guard import block_secret_file_reads
 from router.handlers.op_first_guard import enforce_op_first
 from router.handlers.gog_sheets_delimiter_guard import block_gog_sheets_delimiter_writes
 from router.handlers.skill_frontmatter_guard import check_skill_frontmatter
+from router.handlers.trace_litmus_guard import block_verb_log_traces
+from router.handlers.canonical_template_guard import warn_template_snapshot_read
 
 HANDLERS = [
     HandlerConfig(
@@ -74,6 +76,16 @@ HANDLERS = [
         fn=validate_weekly_tracker_before_slack,
         matcher=r"^Bash$",
         name="weekly-tracker-validation",
+    ),
+    HandlerConfig(
+        fn=block_verb_log_traces,
+        matcher=r"^(Write|Edit)$",
+        name="trace-litmus-guard",
+    ),
+    HandlerConfig(
+        fn=warn_template_snapshot_read,
+        matcher=r"^Read$",
+        name="canonical-template-guard",
     ),
 ]
 

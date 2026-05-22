@@ -50,6 +50,11 @@ Ask THREE questions. All must be "yes" to trace:
 
 5. **Placeholder decisions** - "Include X in document", "Add section for Y"
    - Test: Does this help beyond this task? Document structure choices rarely generalize.
+
+6. **Auto-emitted verb logs from scheduled/CRUD skills** - "Filled fri-2 slot", "Swept 3 rows", "Distributed week", "Added recurring row 6", "Moved item X from Sun to Mon"
+   - Test: Is there a choice between alternatives, or is this a mechanical receipt of an instruction Kay already gave? If receipt → not a trace.
+   - **The 2026-05-21 calibration found 13-14 such traces from task-tracker-manager in a single week.** They drowned out real signal in trace analysis. Receipts belong in `brain/context/verb-logs/` if anywhere, never in `brain/traces/`.
+   - **Pattern name:** `#pattern/subtract-not-add` — when Kay's correction is "remove the problem class" (not "fix the implementation"), the trace lens is subtract-first.
 </anti_patterns>
 
 <examples>

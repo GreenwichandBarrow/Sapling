@@ -236,4 +236,4 @@ Detailed Step 1-N sequencing lives in `.claude/commands/goodnight.md`. Invariant
 - **Extract decision traces (mandatory artifact).** Step MUST produce visible output — either trace files in `brain/traces/{date}-{slug}.md`, OR an explicit zero-trace confirmation: "Decision traces scanned — N items reviewed, 0 met litmus because: [reason]." **Silent skipping is a calibration-pipeline failure.** When unsure → default to writing the trace; calibration-workflow filters noise later, it cannot recover missing data.
 - **Litmus:** "Would a future agent make a different choice without knowing this?" / "Would tomorrow's briefing present this differently if it knew?" Skip routine approvals (briefing acks, standard pipeline moves).
 - **Verb tags** (machine-parseable for morning engine): PASS, APPROVE, REJECT, SENT, CREATED, UPDATED, DELETED, DRAFTED, DEFER.
-- Commit AND push to origin — Mac↔VPS sync depends on every evening commit reaching remote.
+- Commit AND push to origin — single VPS source of truth; Mac and MacBook are thin SSH clients with no local repos, so push protects against VPS disk loss only. Per 2026-05-18 thin-client architecture decision.

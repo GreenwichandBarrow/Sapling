@@ -17,13 +17,7 @@ Skill-local feedback loop per Harrison Wells coaching session 4/30. Pilot skill 
 
 ## Active learnings
 
-- [2026-05-03] Do NOT surface relationship/nurture/cadence-debt items on Mon-Thu briefings. Reason: surfacing them daily creates decision fatigue. Friday-only per `feedback_relationship_cadence_friday_only`. Source: graduated to global memory; kept here as reminder until 5 clean runs.
-- [2026-05-03] Do NOT report items Kay completed herself in the briefing. Reason: she already knows; reporting them back is noise. Source: `feedback_briefing_no_done_items`.
-- [2026-05-03] Do NOT use ambiguous briefing items. Reason: every item must have an explicit question or action; ambiguity wastes Kay's review time. Source: `feedback_morning_briefing_format`.
-- [2026-05-03] Do NOT forget the brief-decisions pre-flight before delivery. Reason: tomorrow's external meetings must be enumerated and surfaced as 🔴 items unless already approved/declined in session-decisions. Source: 4/21 Guillermo miss incident, captured in CLAUDE.md.
-- [2026-05-03] Do NOT exceed 5 items in any Decisions bucket. Reason: per `feedback_decision_fatigue_minimization` — recommend, don't ask. Cluster by entity. Sort 🔴 → 🟡 → 🟢.
-- [2026-05-03] Do NOT reset numbering in the Decisions list within a single briefing. Reason: Kay replies by number across the whole list; resetting breaks her reply flow. Source: CLAUDE.md morning-workflow doctrine.
-- [2026-05-03] Do NOT trust session-decisions alone for "what was planned." Reason: query order is calendar → beads → brain/outputs/ → session-decisions. Session-decisions records what changed, not current state. Source: `feedback_what_was_planned_query_order`.
+(All 2026-05-03 entries pruned 2026-05-21 — graduated to global memory + CLAUDE.md, observed 18+ clean runs without violation per lifecycle rule. Originals preserved in git history. Re-add only if violated in next 30 days.)
 
 ## Watching for
 

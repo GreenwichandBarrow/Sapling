@@ -54,8 +54,8 @@ Owned by `calibration-workflow` bucket 6 (Skill freshness audit). Each Thursday 
 | nightly-tracker-audit | API | 2026-05-15 | Google Sheets + Drive moves |
 | obsidian-vault-ops | Pure-process | 2026-05-15 | Local vault file ops |
 | onboard | Pure-process | 2026-05-15 | Interview + context-file population |
-| outreach-manager | API | 2026-05-15 | Gmail + Sheets + Attio |
-| pipeline-manager | API | 2026-05-15 | Gmail + Calendar + Attio + vault |
+| outreach-manager | API | 2026-05-21 | Gmail + Sheets + Attio — **needs updates** (22 stale Superhuman refs; sunset 4/29; queued in calibration inbox 2026-05-21) |
+| pipeline-manager | API | 2026-05-21 | Gmail + Calendar + Attio + vault — **needs updates** (14 stale Superhuman refs; sunset 4/29; queued in calibration inbox 2026-05-21) |
 | plan-refinery | Framework | 2026-05-15 | Opus sub-agent coordination patterns |
 | post-call-analyzer | API | 2026-05-15 | Granola REST + Docs + Sheets + Attio + Slack |
 | post-loi | API | 2026-05-15 | Mixed deal-room services |

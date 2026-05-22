@@ -18,6 +18,18 @@ The fund has $551,825 invested with a February 2027 deadline. Every dollar and e
 - Forecasts how many months of runway remain
 - Flags when categories are over budget
 - Inventories the tech stack and finds savings
+
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI (this skill uses `gog sheets` + `$SLACK_WEBHOOK_OPERATIONS`):
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_OPERATIONS`. **NEVER `source scripts/.env.launchd` raw** — it holds op:// reference strings, not values. Hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+**Health-check:** If `$SLACK_WEBHOOK_OPERATIONS` is empty after sourcing, surface to Kay — 1Password resolve is broken. Do NOT log "Slack unavailable" without confirming the var is empty (`echo ${#SLACK_WEBHOOK_OPERATIONS}` = 0).
+</credentials>
 - Manages the transition from bookkeeper to Kick + Claude
 
 **4 modes:** `monthly`, `runway`, `tech-audit`, `transition`

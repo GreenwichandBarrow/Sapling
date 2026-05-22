@@ -13,6 +13,26 @@ user_invocable: true
 
 > **2026-05-01 calibration:** Superhuman fully sunset 4/29/26. All draft references in this file mean **Gmail directly** via the bash wrapper. See .
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI or REST call (this skill calls `gog gmail draft create`, Apollo `/people/match`, and Attio):
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source .env` raw, NEVER `source scripts/.env.launchd` raw** — both export op:// reference strings, not values. Hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+**REST is the default for Apollo and Attio, MCP is a convenience.** No Apollo MCP exists. Attio MCP is frequently unregistered; use REST.
+
+**Health-check pattern (before claiming a service is down or pausing outreach):**
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -H "X-Api-Key: $APOLLO_API_KEY" https://api.apollo.io/api/v1/auth/health
+curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KEY" https://api.attio.com/v2/self
+```
+
+**Forbidden:** writing "Apollo unavailable" or "Attio MCP disconnected" as a reason to pause outreach without first running the op-env resolve + REST health-check above. Phantom outages stall the pipeline.
+</credentials>
+
 <objective>
 Own all outreach. Every email, call, DM, and follow-up flows through this skill.
 
@@ -293,7 +313,7 @@ Very best, Kay
 All targets are enriched via Apollo before reaching outreach-manager. Before drafting, verify the email address status:
 
 ```bash
-source .env && curl -s "https://api.apollo.io/v1/people/match" \
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh && curl -s "https://api.apollo.io/v1/people/match" \
   -H "Content-Type: application/json" \
   -H "X-Api-Key: $APOLLO_API_KEY" \
   -d '{"first_name":"{first}","last_name":"{last}","organization_name":"{company}","domain":"{domain}"}'

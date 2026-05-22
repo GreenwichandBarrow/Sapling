@@ -21,6 +21,31 @@ This replaces the prior single-direction "Coffee Chat Menu" framing AND the nich
 
 **Proof of concept: Margot Romano.** She introduced Kay to Alexandra Kelly (UOVO), Sarah De Blasio (Chartwell Insurance), and Christopher Wise (Risk Strategies). Every conversation produced at least one high-quality introduction. This skill systematizes finding more Margots AND surfaces people like Margot already in Kay's network.
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI or REST call (this skill calls `gog sheets`, Attio REST/MCP, Apollo employment-history enrichment):
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+**REST is the default for Attio and Apollo, MCP is a convenience.** Attio MCP (`mcp__attio__search_records_by_content`, `_by_relationship`) is frequently unregistered. Use REST:
+```bash
+curl -s -X POST -H "Authorization: Bearer $ATTIO_API_KEY" -H "Content-Type: application/json" \
+  https://api.attio.com/v2/objects/people/records/query \
+  -d '{"filter":{"name":{"$contains":"{name}"}},"limit":25}'
+```
+
+**Health-check pattern (before claiming a niche scan returned zero matches because a service is down):**
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KEY" https://api.attio.com/v2/self
+curl -s -o /dev/null -w "%{http_code}\n" -H "X-Api-Key: $APOLLO_API_KEY" https://api.apollo.io/api/v1/auth/health
+```
+
+**Forbidden in network artifacts:** writing "Attio unauthenticated / disconnected" or "Apollo enrichment unavailable" without first running the op-env resolve + REST health-check above. A zero-yield Phase 3 scan caused by phantom-outage will be misread as a real network gap.
+</credentials>
+
 **This skill does NOT:**
 - Scan broker platforms for posted deals (deal-aggregator)
 - Draft outreach emails to business owners (outreach-manager)
@@ -150,7 +175,7 @@ See `reference_target_list_canonical_folder.md` for the full folder-convention r
 
 For each row, call warm-intro-finder's 5-source scan (reuse — don't rebuild):
 1. LinkedIn CSV at `archives/linkedin/connections.csv`
-2. Attio People search (`mcp__attio__search_records_by_content` by name, `search_records_by_relationship` by company)
+2. Attio People search (`mcp__attio__search_records_by_content` by name, `search_records_by_relationship` by company; **REST fallback when MCP unloaded:** `curl POST /v2/objects/people/records/query` with `Authorization: Bearer $ATTIO_API_KEY` — see top-of-skill credentials block)
 3. Vault entities at `brain/entities/*.md`
 4. Gmail history (`gog gmail search`)
 5. Investor network

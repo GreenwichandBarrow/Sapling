@@ -18,6 +18,26 @@ This is **Stage 7: Model Updating** of the G&B acquisition methodology. It answe
 - **Signal Quality** — Are we reaching the right people? Are conversations converting?
 - **System Throughput** — Is the machine producing enough volume to hit the goal?
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI or REST call (this skill calls `gog gmail`, `gog calendar`, `gog sheets`, Attio REST, Apollo REST):
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source .env` raw, NEVER `source scripts/.env.launchd` raw** — both hold op:// reference strings, not values. Hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+**REST is the default for Attio and Apollo** (already used below). No MCP dependency. The references to "Bearer token from `.env`" below mean `$ATTIO_API_KEY` resolved via op://, NOT a plaintext value in any local `.env` file.
+
+**Health-check pattern (before claiming a service is down in the tracker artifact):**
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KEY" https://api.attio.com/v2/self
+curl -s -o /dev/null -w "%{http_code}\n" -H "X-Api-Key: $APOLLO_API_KEY" https://api.apollo.io/api/v1/auth/health
+```
+
+**Forbidden in the Friday tracker artifact:** writing "Attio API unavailable" or "Apollo credit balance unavailable" without first running the op-env resolve + REST health-check above.
+</credentials>
+
 Goal: 1 interesting deal reviewed per week, fed by 2–5 owner conversations per week.
 
 The Google Sheet already exists (one-time creation done). Each run adds a new weekly column to the existing sheet.
@@ -131,7 +151,7 @@ Cross-reference with `brain/calls/` for logged call notes. Use Granola MCP to ve
 ### Agent 3: Attio Pipeline Collector
 **Task:** Pull pipeline movements and deal stage data from Attio Lists.
 **Tools:** Attio API (curl)
-**API:** Bearer token from `.env` (`ATTIO_API_KEY`), base URL `https://api.attio.com/v2`
+**API:** Bearer token from `$ATTIO_API_KEY` (resolved via `source scripts/op-env.sh` — NOT plaintext in any `.env` file), base URL `https://api.attio.com/v2`
 
 **CRITICAL:** All pipelines are Attio **Lists**. Query the Lists API, not the Deals object.
 

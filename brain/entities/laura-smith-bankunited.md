@@ -4,6 +4,8 @@ date: 2026-05-14
 type: person
 status: prospect
 company: "[[entities/bankunited]]"
+attio_id: 4c0cfff0-139c-48a5-bfbf-5110e7a37e27
+attio_synced_at: 2026-05-22T15:16:30Z
 tags:
     - date/2026-05-14
     - entity

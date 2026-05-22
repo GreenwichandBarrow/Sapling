@@ -7,6 +7,8 @@ company: "[[entities/libre-equity-partners]]"
 role: Co-Founder
 email: sam@libreequity.com
 phone: 425-346-1127
+attio_id: cede54b2-419b-43aa-8580-1931ec7cf5d6
+attio_synced_at: 2026-05-22T15:17:00Z
 tags:
   - date/2026-05-21
   - entity

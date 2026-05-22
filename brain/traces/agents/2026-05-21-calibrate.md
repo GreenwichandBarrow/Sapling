@@ -199,3 +199,100 @@ Read simplicity-advocate findings. Overlaps and complements:
 - **Cross-cutting alignment:** simplicity's meta-finding ("subtract not add") and mine ("memory exists but skills don't enforce") are two sides of the same coin: the system over-adds memory files and under-wires execution. Both halves of the fix are needed.
 
 -> READY
+
+## pattern-recognizer findings
+
+Lens: cross-trace pattern frequency + graduation thresholds for hook promotion. Read all 38 traces + both prior agent posts. Distinct from simplicity-advocate (subtractive lens) and architecture-strategist (skill-enforcement lens): mine is **frequency analysis + cross-cluster pattern naming** — what graduates to hook, what becomes a named pattern across the system.
+
+### Finding 1 — CRITICAL — Decision-trace producer noise meets HOOK GRADUATION threshold
+
+**Cross-trace evidence:** 14 of 16 task-tracker traces this week are mechanical verb-log emissions (schedule-to-day-slot ×9, build-week, distribute-week, reformat, archive-todo-sweep, recurring-add/remove, move-day-item ×2). All fail decision-traces/SKILL.md anti-pattern #1 ("execution logs"). Per CLAUDE.md Friday meta-calibration doctrine, **"rules corrected 2+ times → graduate to stop hooks."** This violates the litmus 14× IN ONE WEEK — past graduation by an order of magnitude.
+
+**Architecture-strategist + simplicity-advocate** both fix this at the producer (stop emitting). I agree. My ADD: **the enforcement hook itself**, because the producer fix is recall-dependent (next skill author repeats the mistake).
+
+**Proposal P1 (distinct from both prior agents):**
+- **target_file:** new hook `.claude/hooks/trace_litmus_guard.py` (PreToolUse on Write/Edit to `brain/traces/*.md`)
+- **change:** Block trace writes meeting ALL of: ≤15 lines AND `verb/` tag in frontmatter AND no `## Decision`/`## Decisions`/`Alternatives Considered` heading. Redirect message: "Verb-log artifacts go to `brain/context/verb-logs/` or stay as rollback snapshots. `brain/traces/` is for decisions per `.claude/skills/decision-traces/SKILL.md` litmus."
+- **importance:** critical
+- **rationale:** Precedent: `op_first_guard.py` and `secret_file_guard.py` were created exactly when memory-doctrine recall failed twice. This week's violation is 14×, not 2×. The 2026-05-19 doctrine ("the fix for a recurring agent failure is enforcement (hook) + frictionless correct path, not just doctrine") applies — graduation here is overdue.
+
+### Finding 2 — HIGH — META-PATTERN graduation: codify "subtract / fix-plumbing / don't-add-agent" as named convention
+
+**Cross-trace evidence:** Six high-signal traces this week share the same shape — Kay rejected an additive AI proposal in favor of subtraction or root-cause-classify:
+- `pest-list-keep-7-not-pad-to-20` (don't pad to quota)
+- `no-dashboard-maintenance-agent` (don't add watchdog)
+- `no-maintenance-agent-fix-plumbing` (fix feeds, not add agent)
+- `no-weekly-tracker-sheet-repoint` (don't rebuild around dead infra)
+- `todo-consolidation-weekly-cadence` (collapse multi-tab to single)
+- `mac-macbook-thin-clients-single-vps` (no sync surface needed)
+
+META-pattern operating across multiple skill domains in 6 days. Simplicity-advocate named it ("subtract not add"); architecture-strategist named the dual ("memory exists, skills don't enforce"). Neither codified it as a system-level convention.
+
+**Proposal P2 (extends simplicity cross-cutting + complements architecture P6):**
+- **target_files:** `.claude/skills/decision-traces/SKILL.md` (add `#pattern/subtract-not-add` to good-trace examples + tag taxonomy), `.claude/skills/plan-refinery/SKILL.md` (pre-flight "subtract-first check": before approving any plan that ADDS an agent / tab / automation / sync surface, require an explicit answer to "what root-cause does this not solve?")
+- **change:** New named convention `#pattern/subtract-not-add`. When 3+ subtract-not-add traces accumulate in a single calibration window, surface "the system is biasing additive — recommend a Friday subtract-only session" in the meta-cal brief.
+- **importance:** high (process)
+- **rationale:** 6 traces in 6 days share this shape. Without a named convention, calibration sees them as 6 isolated corrections; with one, it sees a system bias. Cross-cluster pattern recognition is the pattern-recognizer's specific job.
+
+### Finding 3 — HIGH — "Principal-only routing" graduation candidate
+
+**Cross-trace evidence:** `bayonne-non-principal-no-jj-route` (2026-05-16) is the explicit override. Architecture-strategist P4 wires it into `jj-operations`. My ADD: this is NOT a one-off — the principle ("named contact must be principal/decision-maker before counting") also shows up in `owner-conversations-strict-type-owner` (2026-05-18): the dashboard refuses to count non-owner calls (Carlos = intermediary, Krupa = capital-side) as owner conversations. Same principle, two surfaces, one week. Meets 2+ graduation threshold.
+
+**Proposal P3 (extends architecture P4 to system-wide principle):**
+- **target_file:** new memory `memory/feedback_principal_only_routing_and_counting.md` + 1-line MEMORY.md index under "Channels & Pipeline Routing"
+- **change:** Codify: "Channel routing AND headline-metric counting require a principal/decision-maker contact. Non-principal titles (CSR, sales, admin, customer-service, capital-side, intermediary, advisor) do NOT auto-route to JJ even when firm is niche-fit + blue-collar; do NOT auto-count as owner conversations even when call was recorded. Promotion to principal-grade must be curated/explicit. Heuristics may exclude (e.g., coaching), never promote."
+- **importance:** high
+- **rationale:** Cross-cluster pattern — same principle, two surfaces (JJ routing + owner-conv metric), one week. Architecture P4 fixes the JJ surface. The memory captures the underlying principle so the next surface (cold-list, conf-pipeline, attio scoring) doesn't re-derive it.
+
+### Finding 4 — MEDIUM — Permanent anti-pattern lock-in for auto-emitted verb logs
+
+**Inference:** task-tracker is the loudest offender but probably not the only future offender. Without a permanent convention, the next CRUD-style skill repeats the noise.
+
+**Proposal P4:**
+- **target_file:** `.claude/skills/decision-traces/SKILL.md` (anti-patterns section)
+- **change:** Add anti-pattern #6: "AUTO-EMITTED VERB LOGS — any trace whose body is (a) what verb ran, (b) what row was touched, (c) snapshot path. These are receipts, not decisions. They belong in `brain/context/verb-logs/{date}-{skill}.md` (one append-only file per skill per day). Test: if your trace can be regenerated mechanically from a rollback snapshot's JSON, it's a verb log."
+- One-time sweep (next calibration cycle): subagent to bulk-relocate prior verb-log traces using these criteria.
+- **importance:** medium
+- **rationale:** Simplicity P1+P8 fix the symptom for task-tracker; this anti-pattern locks in the rule for ALL future skills. Producer-fix is per-skill recall-dependent; a named anti-pattern in decision-traces SKILL.md is global.
+
+### Finding 5 — LOW — `#pattern/test-real-path-before-escalating` graduation watch
+
+Single-trace evidence: `2026-05-16-gog-false-alarm-test-resolution-path.md`. Not yet at graduation. **Watchlist** for next calibration cycle. The principle ("reproduce through the scheduled/production path, not interactive shell, before declaring an outage") is structurally identical to canonical-source-first and op-resolve-first. Three siblings: `test-real-path-before-escalating`, `canonical-source-first`, `op-resolve-first`. If a 4th instance fires, group all three into a single hook + named convention "VERIFY THROUGH THE PRODUCTION PATH."
+
+### Disagreement note for coordinator synthesis
+
+**With simplicity-advocate P5 (collapse 3 women-led memories to 1):** push back. The three rules are operationally distinct:
+- `user_kay_women_led_purpose_throughline` = identity/purpose anchor
+- `feedback_industry_is_output_of_network` = sequencing rule (network → industry)
+- `feedback_bias_yes_on_introductions` = inbound-classification rule
+
+Conflating them risks losing the operational rules under the purpose-identity umbrella. Better: keep three files, make `user_kay_women_led_purpose_throughline` the canonical anchor with cross-links DOWN to operational rules, and trim operational files' "why" sections to point UP. **Architecture-strategist's P1 (wire all into skills) is the better operational fix than collapse.**
+
+**With architecture-strategist P8 (canonical-source guard hook):** Full agreement. This is the hook I would have proposed independently. Ship it.
+
+### Key meta-finding
+
+Three lenses converged this week:
+- **Simplicity (subtract):** the system over-adds.
+- **Architecture (enforce):** memory exists, skills don't gate.
+- **Pattern (graduate):** the same rule fires across multiple surfaces — codify once, enforce many.
+
+Strongest signals are where all three lenses agree:
+1. **Stop the task-tracker verb-log noise** (simpl P1+P8, arch implicit, my P1) — three independent paths to the same fix = SHIP.
+2. **Wire network-first / women-led / intro-classification into execution skills** (arch P1+P2, simpl P5 partial) — SHIP.
+3. **Stop adding agents for plumbing** (simpl P3, arch P6, my P2 meta-pattern) — SHIP.
+4. **Principal-only routing-and-counting principle** (arch P4 + my P3) — SHIP.
+
+Anything where only one lens fires is lower-confidence. Coordinator weights accordingly.
+
+### Summary table
+
+| # | target | importance | one-line | overlap |
+|---|---|---|---|---|
+| P1 | new hook `trace_litmus_guard.py` | critical | Block sub-15-line verb-tagged traces missing Decisions section | DISTINCT (enforcement layer for simpl P1+P8) |
+| P2 | decision-traces + plan-refinery SKILL.md | high | Codify `#pattern/subtract-not-add` + plan-mode subtract-first check | EXTENDS simpl cross-cutting + complements arch P6 |
+| P3 | new memory `feedback_principal_only_routing_and_counting.md` | high | Cross-surface principal-only-counts principle | EXTENDS arch P4 to system principle |
+| P4 | decision-traces SKILL.md anti-patterns | medium | Add anti-pattern #6 "auto-emitted verb logs" + one-time sweep | LOCKS IN simpl P8 as permanent convention |
+| P5 | (watchlist) | low | `test-real-path-before-escalating` graduation watch | none |
+
+-> READY

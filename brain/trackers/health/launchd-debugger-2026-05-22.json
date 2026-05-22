@@ -1,11 +1,13 @@
 {
   "date": "2026-05-22",
-  "scan_started_at": "2026-05-22T05:01:07-04:00",
-  "scan_finished_at": "2026-05-22T05:01:18-04:00",
+  "scan_started_at": "2026-05-22T10:06:59.720459-04:00",
+  "scan_finished_at": "2026-05-22T10:06:59.720459-04:00",
   "failures_detected": 0,
   "fixes_attempted": 0,
   "fixes_succeeded": 0,
   "surfaces_to_slack": 0,
-  "runtime_seconds": 11,
-  "results": []
+  "suppressed_count": 0,
+  "runtime_seconds": 1,
+  "results": [],
+  "out_of_scope_note": "Scanner returned 0 launchd failures. Two known-broken surfaces (Attio MCP code-gap, post-call-analyzer silent-detach-failure) are NOT detected by this skill: they exit 0 from launchd POV. Both require code/config changes (SURFACE-only per skill prohibitions) \u2014 see chat transcript for findings."
 }

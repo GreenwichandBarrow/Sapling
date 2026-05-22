@@ -21,14 +21,6 @@ services:
     action: muted
     action_text: View burn ↗
 
-  - name: superhuman
-    kind: service
-    description: Email drafts via OAuth · CEO primary inbox + draft surface.
-    health: warn
-    status_text: G&B OAuth token expired · personal Gmail fallback active
-    action: regen
-    action_text: Re-auth
-
   - name: attio-mcp
     kind: service
     description: CRM read/write via MCP · People + Companies + Lists + Notes.

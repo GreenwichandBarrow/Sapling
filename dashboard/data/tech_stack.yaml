@@ -32,7 +32,6 @@ categories:
   - label: "Email"
     services:
       - { name: "Gmail", note: "Google Workspace" }
-      - { name: "Superhuman", note: "primary client" }
 
   - label: "Calendar & Scheduling"
     services:

@@ -15,6 +15,7 @@ tags:
   - company/transworld
   - topic/intermediary-outreach
   - topic/broker-channel
+  - topic/warmed-broker
 ---
 
 # Sam (Transworld)
@@ -33,3 +34,7 @@ tags:
 
 ## Relationship Notes
 - 2026-05-18: Warm intro via Becky. Kay sent intro reply same day (REFERRAL-SOURCED VARIANT of canonical broker INTRODUCTION template). Awaiting Sam's response — Kay handles replies.
+- 2026-05-22: First call (Zoom, 30 min). Sam set up buyer-match alerts for NY/NJ/CT at $750K+ EBITDA and committed to Thursday/Friday newsletter delivery. Intermediary relationship advanced Contacted → Warmed (vault-only — Attio Intermediary Pipeline does not currently exist as a list/field; see Open Loop below).
+
+## Open Loops
+- Attio Intermediary Pipeline does not exist in the workspace (no list named Intermediary/Brokers, no stage/pipeline attribute on `people` or `companies`, no intermediary object). Stage advancement is captured here in the vault and in `brain/calls/2026-05-22-sam-curcio.md` (`signal/intermediary-warmed` tag) but is NOT mirrored in Attio. Needs Kay's decision on whether to (a) create a `pipeline_stage` select attribute on `people` with Contacted/Warmed/Active/Dormant options, or (b) stand up an "Intermediary Pipeline" list, or (c) keep this vault-only.

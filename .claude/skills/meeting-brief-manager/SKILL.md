@@ -19,6 +19,26 @@ Replaces the standalone meeting-brief skill and absorbs call-prep mode from inve
 **Core principle:** Every external or investor meeting Kay walks into should have a brief ready the morning before. Tuesday meeting = brief ready Monday morning. The skill runs the night before that, giving a full day of lead time.
 </objective>
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI or REST call:
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+**REST is the default for Granola/Attio, MCP is a convenience.** If `mcp__granola__*` or `mcp__attio__*` calls appear below, use the REST fallback (`~/.local/bin/granola-api` for Granola; `curl https://api.attio.com/v2/...` with `Authorization: Bearer $ATTIO_API_KEY` for Attio). An unloaded MCP tool is NOT an outage.
+
+**Health-check pattern (before claiming a service is down in the brief manifest):**
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KEY" https://api.attio.com/v2/self
+~/.local/bin/granola-api latest >/dev/null && echo granola-200
+```
+
+**Forbidden in nightly artifacts:** writing "MCP unauthenticated / disconnected / unavailable" as a system-status alert without first running the op-env resolve + REST health-check above. Phantom outages mean meetings walk in unbriefed.
+</credentials>
+
 <essential_principles>
 ## When to Trigger
 
@@ -120,6 +140,13 @@ Look for:
 
 #### Granola Transcripts
 Query `mcp__granola__query_granola_meetings` filtered by the person's name. Get transcripts for meetings not yet captured in `brain/calls/`.
+
+**REST fallback (preferred):**
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+granola-api since "$(date -u -d '90 days ago' +%Y-%m-%dT00:00:00Z)" | jq '.[] | select(.title | test("{name}"; "i"))'
+granola-api get-note <id>
+```
 
 #### Web Search
 ```
@@ -328,7 +355,7 @@ Handles all meetings classified as investor. Produces a 7-section talking points
 Run all of these in parallel:
 
 #### Last Call with This Investor
-- Query Granola: `mcp__granola__query_granola_meetings` filtered by investor name for last call transcript
+- Query Granola: `mcp__granola__query_granola_meetings` filtered by investor name for last call transcript. **REST fallback:** `granola-api since <iso> | jq` (see top-of-skill credentials block).
 - Search vault: `brain/calls/` for notes from prior investor calls
 - Search Gmail: `gog gmail search "from:{investor_email} OR to:{investor_email}" --max 20`
 

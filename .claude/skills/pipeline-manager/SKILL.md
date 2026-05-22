@@ -13,6 +13,26 @@ user_invocable: true
 
 > **2026-05-01 calibration:** Superhuman fully sunset 4/29/26. All draft references in this file mean **Gmail directly** via the bash wrapper. See .
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI or REST call:
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — it exports literal op:// reference strings, not values (hook-blocked; see `feedback_op_env_before_op_backed_cli`).
+
+**REST is the default, MCP is a convenience.** If an MCP call appears below (`mcp__attio__*`, `mcp__granola__*`), it has a REST fallback in this same file. An unloaded MCP tool is NOT an outage — fall through to REST. For Granola, the canonical wrapper is `~/.local/bin/granola-api`.
+
+**Health-check pattern (mandatory before claiming a service is down in an artifact):**
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KEY" https://api.attio.com/v2/self
+# 200 = up. Non-200 = real outage. Unloaded MCP tool = not an outage.
+```
+
+**Forbidden in the briefing artifact:** writing "MCP unauthenticated / disconnected / unavailable" as a system-status alert without first running the op-env resolve + REST health-check above. Phantom outages corrupt downstream decisions.
+</credentials>
+
 <learnings>
 **Read `learnings.md` BEFORE running this skill, append BEFORE returning.**
 
@@ -260,7 +280,7 @@ Claude acts as the **manager** overseeing 2 specialized sub-agents that run in p
 
 **Pipeline Agent Quality Gates (CRITICAL):**
 
-1. **Name resolution required.** Every pipeline entry presented to Kay MUST include the company/person name, not just a record ID. If the Attio API does not return a name for a record, try: (a) `mcp__attio__get_record_details` with the record ID, (b) `mcp__attio__search_records` by record ID, (c) cross-reference against the outreach tracker Google Sheet. If name STILL cannot be resolved, do NOT present the entry as a recommendation — log it as "unresolvable" and flag for investigation. Kay cannot act on nameless entries.
+1. **Name resolution required.** Every pipeline entry presented to Kay MUST include the company/person name, not just a record ID. If the Attio API does not return a name for a record, try: (a) `mcp__attio__get_record_details` with the record ID **— or REST `curl -s -H "Authorization: Bearer $ATTIO_API_KEY" https://api.attio.com/v2/objects/{object}/records/{record_id}`**, (b) `mcp__attio__search_records` by record ID **— REST: `POST /v2/objects/{object}/records/query` with `{"filter":{"id":"{record_id}"}}`**, (c) cross-reference against the outreach tracker Google Sheet. If name STILL cannot be resolved, do NOT present the entry as a recommendation — log it as "unresolvable" and flag for investigation. Kay cannot act on nameless entries.
 
 2. **Calendar day verification.** When presenting "today's agenda" items, verify the day of week matches. Cross-check: `date +%A` returns today's day name. Only include events from TODAY's calendar query in the "today's agenda" section. Events from yesterday's scan go in "pipeline signals" only. Events from tomorrow go in "upcoming" only. Never mix days.
 
@@ -374,8 +394,8 @@ If any check fails, fix in-line before sending. Do not present a malformed brief
 Before scanning for signals, ingest new data from external tools into the vault. The vault is the single source of truth.
 
 ### Granola → brain/calls/
-1. Query `mcp__granola__list_meetings` for meetings since last run
-2. For each new meeting, get full transcript via `mcp__granola__get_meeting_transcript`
+1. Query `mcp__granola__list_meetings` for meetings since last run. **REST fallback (preferred):** `source /home/ubuntu/projects/Sapling/scripts/op-env.sh && granola-api since <iso-checkpoint>`
+2. For each new meeting, get full transcript via `mcp__granola__get_meeting_transcript`. **REST fallback:** `granola-api get-note <id>`
 3. Check idempotency: if `call_id` already exists in brain/calls/, skip
 4. Write to `brain/calls/YYYY-MM-DD-{slug}.md` using call schema (schemas/vault/call.yaml)
 5. Set `source: granola`, populate people/companies as wiki-links, generate tags
@@ -1012,6 +1032,14 @@ Check for meeting transcripts via Granola MCP. Transcripts capture:
 Use mcp__granola__list_meetings to find meetings in the date range
 Use mcp__granola__get_meeting_transcript for each meeting's full transcript
 ```
+
+**REST fallback (preferred — no MCP needed):**
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+granola-api since "$(date -u -d 'yesterday' +%Y-%m-%dT00:00:00Z)"   # list updated notes
+granola-api get-note <note_id>                                       # full transcript + summary
+```
+
 Parse transcripts for pipeline-relevant signals: stage changes, new contacts to create, follow-up tasks.
 
 ### Conversation Context

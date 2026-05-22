@@ -31,13 +31,34 @@ This skill is the list-building engine called by target-discovery. It takes ICP 
 - Does not manage Linkt searches (legacy)
 </objective>
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI or REST call:
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw OR `grep APOLLO_API_KEY scripts/.env.launchd`** — that file holds op:// reference strings (not resolved values); reading it raw produces the literal `op://...` ref, which fails curl with 401 and looks like a vendor outage. Hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+**REST is the only Apollo transport** — there is no `mcp__apollo__*` available. After `source scripts/op-env.sh`, `$APOLLO_API_KEY` is the resolved Bearer string.
+
+**Health-check pattern (before claiming Apollo is down in run logs):**
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -H "X-Api-Key: $APOLLO_API_KEY" https://api.apollo.io/api/v1/auth/health
+# 200 = up. Non-200 = real outage. Empty `$APOLLO_API_KEY` = you forgot the op-env source.
+```
+
+**Forbidden:** writing "Apollo API key unavailable" / "Apollo credentials missing" without first running `source scripts/op-env.sh && echo "${#APOLLO_API_KEY}"` and confirming the var is empty (length 0). Phantom credential outages have triggered spurious key rotations in the past.
+</credentials>
+
 <apollo_api>
 ## Apollo API Reference
 
-API key stored in `scripts/.env.launchd` as `APOLLO_API_KEY`. Read silently via Bash. Never echo.
+API key resolved via 1Password (`op://GB Server/Apollo API Key/password`) by `scripts/op-env.sh`. After `source /home/ubuntu/projects/Sapling/scripts/op-env.sh`, `$APOLLO_API_KEY` is set. **Do NOT `grep` `scripts/.env.launchd` directly — it holds op:// refs, not values.** Never echo the key.
 
 ```bash
-APOLLO_KEY="${APOLLO_API_KEY:-$(grep APOLLO_API_KEY scripts/.env.launchd | cut -d'"' -f2)}"
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+# $APOLLO_API_KEY is now the resolved value
 ```
 
 ### Endpoints
@@ -70,7 +91,8 @@ Takes ICP parameters from target-discovery: industry keywords, employee range, l
 **Run multiple keyword searches to maximize coverage.** Niches have aliases (e.g., "Trade Credit Insurance" = "Accounts Receivable Insurance" = "Credit Insurance"). Every alias gets its own search. Missing an alias = missing targets.
 
 ```bash
-APOLLO_KEY="${APOLLO_API_KEY:-$(grep APOLLO_API_KEY scripts/.env.launchd | cut -d'"' -f2)}"
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+APOLLO_KEY="$APOLLO_API_KEY"  # resolved via 1Password — DO NOT grep .env.launchd (op:// refs only)
 
 curl -s -X POST "https://api.apollo.io/api/v1/organizations/search" \
   -H "Content-Type: application/json" \

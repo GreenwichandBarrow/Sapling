@@ -10,6 +10,35 @@ context_budget:
 user_invocable: true
 ---
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI or REST call:
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+**REST is the default for Attio, MCP is a convenience.** Attio MCP (`mcp__attio__*`) is frequently unregistered. An unloaded MCP tool is NOT an outage. Use REST:
+```bash
+# Search people by content/name
+curl -s -X POST -H "Authorization: Bearer $ATTIO_API_KEY" -H "Content-Type: application/json" \
+  https://api.attio.com/v2/objects/people/records/query \
+  -d '{"filter":{"$or":[{"name":{"$contains":"{name}"}},{"email_addresses":{"$contains":"{email}"}}]},"limit":25}'
+# Search companies by name
+curl -s -X POST -H "Authorization: Bearer $ATTIO_API_KEY" -H "Content-Type: application/json" \
+  https://api.attio.com/v2/objects/companies/records/query \
+  -d '{"filter":{"name":{"$contains":"{company}"}},"limit":25}'
+```
+
+**Health-check pattern (before claiming Attio is down):**
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KEY" https://api.attio.com/v2/self
+```
+
+**Forbidden:** writing "Attio MCP unauthenticated" as the reason a target has no intro path without first running the REST query above. The skill must exhaust REST before declaring "no warm path found via Attio."
+</credentials>
+
 <objective>
 Find warm paths to cold targets. That's it.
 
@@ -59,6 +88,19 @@ mcp__attio__search_records_by_content --query "{owner_name}"
 
 # Search for connections in the target's industry/geography
 mcp__attio__search_records --object people --query "{industry keyword}"
+```
+
+**REST fallback (preferred — works even when Attio MCP is unregistered):**
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+# Connections at the target company
+curl -s -X POST -H "Authorization: Bearer $ATTIO_API_KEY" -H "Content-Type: application/json" \
+  https://api.attio.com/v2/objects/companies/records/query \
+  -d '{"filter":{"name":{"$contains":"{target_company}"}},"limit":10}'
+# Owner-name search across People
+curl -s -X POST -H "Authorization: Bearer $ATTIO_API_KEY" -H "Content-Type: application/json" \
+  https://api.attio.com/v2/objects/people/records/query \
+  -d '{"filter":{"name":{"$contains":"{owner_name}"}},"limit":25}'
 ```
 
 What to look for:

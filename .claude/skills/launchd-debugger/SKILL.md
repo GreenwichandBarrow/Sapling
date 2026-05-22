@@ -19,6 +19,24 @@ Health-monitor catches silent overnight failures *post hoc* — it observes, it 
 The skill never touches business data. Fixes are operational only — re-run, regenerate cached artifact, restart MCP server, retry transient API. Anything else is escalated as a SURFACE, not a FIX.
 </objective>
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI or REST call in a fix attempt:
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+**MCP_DISCONNECT diagnosis: REST-verify before classifying.** A scheduled skill log line that says "Attio MCP not connected" or "Granola MCP unavailable" is NOT automatically an MCP_DISCONNECT cause. Before flagging the cause, run the REST health-check for the underlying service:
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KEY" https://api.attio.com/v2/self
+curl -s -o /dev/null -w "%{http_code}\n" -H "X-Api-Key: $APOLLO_API_KEY" https://api.apollo.io/api/v1/auth/health
+~/.local/bin/granola-api latest >/dev/null && echo granola-200
+```
+If REST returns 200, the underlying service is fine — the upstream skill failed because it depended on an MCP tool that wasn't loaded in this session. Correct cause = SKILL_CODE_NEEDS_REST_FALLBACK, not MCP_DISCONNECT. Surface to Kay as a code-fix recommendation, not a one-shot reconnect.
+</credentials>
+
 <scope>
 ## What this skill OWNS
 
@@ -80,7 +98,7 @@ Run subagents in parallel — they share no state.
 |-------|--------|-------------|
 | AUTH (Claude CLI 401, OAuth token expired) | SURFACE | none — Kay must re-auth |
 | TRANSIENT_API (5xx, network timeout, rate-limited 429) | FIX | re-run via `launchctl start` |
-| MCP_DISCONNECT (mcp__attio, mcp__granola, mcp__superhuman returns "not connected") | FIX | reconnect via `claude mcp restart` (if available) OR mark for manual `/mcp` reconnect, then re-run |
+| MCP_DISCONNECT (mcp__attio, mcp__granola, mcp__superhuman returns "not connected") | FIX **only after REST health-check confirms underlying service is up** — if REST = 200, reclassify as SKILL_CODE_NEEDS_REST_FALLBACK and SURFACE (skill should use REST, not MCP). Otherwise reconnect via `claude mcp restart` (if available) OR mark for manual `/mcp` reconnect, then re-run | reconnect, then re-run |
 | VALIDATOR_REJECT (POST_RUN_CHECK said skill output was wrong) | SURFACE | never auto-fix sheet/Attio drift — Kay reviews |
 | MISSING_ARTIFACT (cached snapshot didn't refresh) | FIX | regenerate via `scripts/refresh-{name}.sh`, then re-run |
 | SCHEMA_VIOLATION (vault write rejected by validate-edits.py) | SURFACE | code change required |

@@ -10,6 +10,36 @@ context_budget:
 user_invocable: true
 ---
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI or REST call:
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+**REST is the default for Attio, MCP is a convenience.** Attio MCP (`mcp__attio__*`) is frequently unregistered in this session. An unloaded MCP tool is NOT an outage — use REST instead:
+```bash
+# Read a person/company record
+curl -s -H "Authorization: Bearer $ATTIO_API_KEY" "https://api.attio.com/v2/objects/people/records/{record_id}"
+# Query records
+curl -s -X POST -H "Authorization: Bearer $ATTIO_API_KEY" -H "Content-Type: application/json" \
+  https://api.attio.com/v2/objects/people/records/query -d '{"filter":{"...":"..."}}'
+# Update next_action
+curl -s -X PATCH -H "Authorization: Bearer $ATTIO_API_KEY" -H "Content-Type: application/json" \
+  https://api.attio.com/v2/objects/people/records/{record_id} -d '{"data":{"values":{"next_action":"..."}}}'
+```
+
+**Health-check pattern (mandatory before claiming Attio is down in the relationship-status artifact):**
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KEY" https://api.attio.com/v2/self
+# 200 = up. Non-200 = real outage. Unloaded MCP tool = not an outage.
+```
+
+**Forbidden in the relationship-status artifact:** writing "Attio MCP unauthenticated / disconnected" as a system-status alert without first running the op-env resolve + REST health-check above. Phantom outages corrupt the morning briefing.
+</credentials>
+
 <objective>
 Manage long-term relationship health across Kay's entire network. This skill monitors nurture cadences, verifies whether Kay already took pending actions, surfaces overdue contacts, and maintains People record attributes in Attio.
 

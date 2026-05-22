@@ -10,6 +10,26 @@ context_budget:
 user_invocable: true
 ---
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI or REST call:
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — it exports literal op:// reference strings, not values (hook-blocked; see `feedback_op_env_before_op_backed_cli`).
+
+**REST is the default, MCP is a convenience.** If an MCP call appears below (`mcp__granola__*`, `mcp__attio__*`), it has a REST fallback. An unloaded MCP tool is NOT an outage — fall through to REST. For Granola, the canonical wrapper is `~/.local/bin/granola-api`.
+
+**Health-check pattern (mandatory before claiming a service is down in an artifact):**
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KEY" https://api.attio.com/v2/self
+# 200 = up. Non-200 = real outage. Unloaded MCP tool = not an outage.
+```
+
+**Forbidden in the scan artifact:** writing "MCP unauthenticated / disconnected / unavailable" as a system-status alert without first running the op-env resolve + REST health-check above. Phantom outages corrupt downstream decisions.
+</credentials>
+
 <objective>
 Scan all inbound and outbound email, Gmail drafts, and Granola transcripts. Classify, detect deal signals, and write the email-scan-results artifact that pipeline-manager and other skills consume. (Superhuman sunset 4/29 per `feedback_gmail_only_no_superhuman` — Gmail draft scanning replaces Superhuman MCP.)
 
@@ -275,6 +295,13 @@ Query Granola MCP for meetings since last run:
 ```
 mcp__granola__list_meetings
 mcp__granola__get_meeting_transcript
+```
+
+**REST fallback (preferred — no MCP, no OAuth, no reconnect):**
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+granola-api since "$(date -u -d 'yesterday' +%Y-%m-%dT00:00:00Z)"   # list updated notes
+granola-api get-note <note_id>                                       # full transcript + summary
 ```
 
 For each new meeting:

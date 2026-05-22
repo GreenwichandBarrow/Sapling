@@ -23,6 +23,25 @@ Keep investors informed and engaged across four cadences, using type-specific te
 
 **Core principle:** Investors want to hear about deals and progress, not feelings. Even when deal flow is light, frame operational improvements as competitive advantage.
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI or REST call (this skill calls `gog sheets` and `curl https://api.attio.com`):
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+**REST is the default for Attio data ingest** (already used below). Attio MCP is a convenience. An unloaded MCP tool is NOT an outage.
+
+**Health-check pattern (before claiming a data source is down in the deck/prep):**
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KEY" https://api.attio.com/v2/self
+```
+
+**Forbidden in investor deliverables:** writing "Attio MCP unauthenticated / disconnected" as a data-availability caveat without first running the op-env resolve + REST health-check above. Investor decks must not contain phantom-outage caveats.
+</credentials>
+
 **Template + example loading invariant:** Every call-prep subagent invocation MUST load `templates/{mode}.md` AND the most recent file in `examples/{mode}/` as the format reference BEFORE drafting. Do not fall through to a generic template. If the example folder is empty, stop and ask Kay for a golden.
 </objective>
 

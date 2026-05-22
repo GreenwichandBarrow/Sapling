@@ -15,6 +15,28 @@ schedule: Friday 12:30 AM ET
 Detect silent failures before they become lost deals or broken workflows. Every issue found in production this month (deal-aggregator failing silently, Project Restoration skipping stages, E&K deal untracked, Gmail draft routing failures) would have been caught by this skill. (Superhuman row removed 2026-05-01 — Superhuman sunset 4/29 per `feedback_gmail_only_no_superhuman`; all drafts now go through Gmail directly via `gog gmail draft create`.)
 </objective>
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI or REST call:
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+**REST is the default health-check transport, MCP is a convenience.** A health-monitor check that calls `mcp__granola__list_meetings` or any `mcp__attio__*` tool MUST treat "MCP not loaded" as a session-state issue, NOT a service outage. Use REST to verify the underlying service before flagging RED:
+```bash
+# Attio
+curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KEY" https://api.attio.com/v2/self
+# Apollo
+curl -s -o /dev/null -w "%{http_code}\n" -H "X-Api-Key: $APOLLO_API_KEY" https://api.apollo.io/api/v1/auth/health
+# Granola (use the wrapper — resolves op:// on every call)
+~/.local/bin/granola-api latest >/dev/null && echo 200 || echo down
+```
+
+**Forbidden in the health dashboard:** marking a service RED because `mcp__*` returned "not connected" without first running the REST health-check above. Phantom outages corrupt the Friday morning briefing.
+</credentials>
+
 <essential_principles>
 ## Architecture
 
@@ -32,7 +54,7 @@ Tests every external API and integration. Each check: can we authenticate and ge
 | Calendar (gog) | OAuth valid | `gog calendar list --from today --to today --json` | Returns data | — | Auth error |
 | Drive (gog) | OAuth valid | `gog drive ls --parent root --json --max 1` | Returns data | — | Auth error |
 | Sheets (gog) | Can read tracker | `gog sheets get {TRACKER_ID} "'Weekly Topline'!A1" -j` | Returns data | — | Auth error |
-| Granola | MCP responding | `mcp__granola__list_meetings` | Returns data | — | Error or timeout |
+| Granola | REST responding (NOT MCP) | `~/.local/bin/granola-api latest` after `source scripts/op-env.sh` | Returns data | — | Non-200 from public-api.granola.ai (NOT "MCP not loaded") |
 
 ### Sub-Agent 2: Infrastructure Agent
 Checks scheduled jobs, usage limits, and webhook health.

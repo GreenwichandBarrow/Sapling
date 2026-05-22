@@ -15,6 +15,26 @@ user_invocable: true
 Generate a concise meeting brief for any upcoming external meeting. Auto-detects whether the contact is new or already in the Active Deals pipeline and uses the appropriate template. New contacts get an intro-focused brief. Repeat contacts get a deal-progression brief with full history, open questions, and what to push for. Saves to Google Drive and the vault automatically.
 </objective>
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI or REST call:
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+**REST is the default, MCP is a convenience.** Granola transcripts via `mcp__granola__*` have a canonical REST wrapper at `~/.local/bin/granola-api`. Attio MCP frequently isn't registered — use REST directly with `$ATTIO_API_KEY`. An unloaded MCP tool is NOT an outage.
+
+**Health-check pattern (before claiming a service is down in the brief):**
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KEY" https://api.attio.com/v2/self
+~/.local/bin/granola-api latest >/dev/null && echo granola-200
+```
+
+**Forbidden in the brief artifact:** writing "MCP unauthenticated / disconnected / unavailable" as a system-status alert without first running the op-env resolve + REST health-check above.
+</credentials>
+
 <essential_principles>
 ## When to Trigger
 
@@ -203,6 +223,13 @@ Read each call file chronologically. Extract key points, commitments made, quest
 
 #### Granola Transcripts
 Query `mcp__granola__list_meetings` filtered by the person's name. Get full transcripts for any meetings not yet in brain/calls/.
+
+**REST fallback (preferred):**
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+granola-api since "$(date -u -d '90 days ago' +%Y-%m-%dT00:00:00Z)" | jq '.[] | select(.title | test("{name}"; "i"))'
+granola-api get-note <id>
+```
 
 #### Email History
 ```

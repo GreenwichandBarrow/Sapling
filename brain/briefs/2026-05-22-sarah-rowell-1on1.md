@@ -71,7 +71,7 @@ RELATIONSHIP ARC (appendix)
 - **2026-04-22** — WSN Month 2 call (same group). Round-robin high/low/lesson format. Sarah delivered two material doctrines unprompted: (1) "When you stop searching and start operating, the only thing that matters is your board. Your investors are irrelevant." (2) Long earnout-restructuring case study (mug's-insurance framing, deferred payout past senior debt window, 6% interest, separating headline price from cash-up-front need). Sarah also reframed the G&B "built the system but let pipeline dry up" lesson as a recurring trap that re-applies at the LOI stage. ([[brain/calls/2026-04-22-wsn-group|call note]])
 - **Between sessions** — Sarah initiated WhatsApp side-channel. Per relationship-status 4/22: "Sarah Rowell as river guide: high value, worth deepening."
 - **2026-05-20** — WSN Month 3 group call originally planned for this date. Conference 5/18–5/20 was flagged on the 4/22 call; rescheduling was handled via WhatsApp. (No call note in vault for May; group cadence held informally.)
-- **2026-05-21 17:54 ET** — Sarah accepted "Sarah I Kay (Audio call)" invite for today 4:00 PM ET. First 1:1 outside the group.
+- **2026-05-21 17:54 ET** — Sarah accepted the audio-call invite for today 4:00 PM ET. First 1:1 outside the group.
 
 ---
 

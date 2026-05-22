@@ -51,11 +51,3 @@ tiles:
     runway_color: green
     trend: flat · same plan as 2025
     trend_arrow: flat
-
-  - label: Superhuman
-    value: $30
-    unit: / month
-    runway_text: in range · core dependency
-    runway_color: green
-    trend: flat · no action
-    trend_arrow: flat

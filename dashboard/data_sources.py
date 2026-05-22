@@ -646,7 +646,7 @@ _SKILL_CATALOG: dict[str, tuple[str, str, str | None]] = {
         None,
     ),
     "email-intelligence": (
-        "Gmail/Superhuman/Granola scan, deal-flow classification, CIM auto-trigger, intro detection.",
+        "Gmail/Granola scan, deal-flow classification, CIM auto-trigger, intro detection.",
         "CIO",
         None,
     ),

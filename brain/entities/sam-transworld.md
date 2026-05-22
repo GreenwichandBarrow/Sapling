@@ -5,6 +5,8 @@ type: person
 status: prospect
 company: "[[entities/transworld]]"
 role: Business broker (Transworld)
+attio_id: cd3f4d27-2c1c-4936-837b-41102ab3e9fc
+attio_synced_at: 2026-05-22T15:15:34Z
 tags:
   - date/2026-05-18
   - entity

@@ -7,6 +7,8 @@ company: "[[entities/poza-capital-partners]]"
 role: Partner, POZA Capital Partners
 email: op@pozacp.com
 phone: 929-709-1200
+attio_id: 7a2d5e74-d175-47d3-96ab-e71098c924bb
+attio_synced_at: 2026-05-22T15:14:50Z
 tags:
   - date/2026-05-20
   - entity

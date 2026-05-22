@@ -18,6 +18,18 @@ Manage JJ's calling operations end-to-end. JJ is a VA (Philippines) working Mon-
 
 JJ works from the daily Call Log tab on the master target sheet and Slack messages. He uses a single generic **G&B Cold Call Guide** (Google Doc ID `12Hqfwxg4qJA3YdZh36ndd-flvYgWN`) that applies across niches — scripts, objections, and universal context. Do NOT search for per-niche call guides; the guide is intentionally generic.
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI (this skill uses `gog sheets`/`gog drive` + `$SLACK_WEBHOOK_SVA`):
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_SVA`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+If `${#SLACK_WEBHOOK_SVA}` = 0 after sourcing, surface to Kay — 1Password resolve broken. Do NOT skip the 10am SVA delivery on a phantom "Slack unavailable" — confirm the var is actually empty first.
+</credentials>
+
 **Two run modes:**
 - `prep` — Monday 9am, creates 5 Call Log tabs (Mon-Fri) for the full week. Runs AFTER target-discovery's Sunday night pipeline (owner enrichment → PE re-screen → warm intro check) has cleaned the Full Target List.
 - `harvest` — Mon-Fri after 2pm, reads that day's Call Log tab and updates the Full Target List

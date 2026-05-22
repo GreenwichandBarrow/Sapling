@@ -13,6 +13,18 @@ context_budget:
 
 Standing owner of mechanical sheet maintenance across the G&B operational stack. Codifies the Claude-Kay contract defined in `memory/feedback_tracker_manager_scope.md`.
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI (this skill is gog-heavy: `gog sheets`/`gog drive`):
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `GOG_KEYRING_PASSWORD`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+If a `gog` call fails with `aes.KeyUnwrap(): integrity check failed`, the cause is almost always that `op-env.sh` was not sourced — the keyring is fine. Re-source and retry, NEVER rotate credentials.
+</credentials>
+
 ## When to invoke
 
 - Kay states a strategic decision that implies tracker changes ("hand this niche to Sam," "table that one," "move to Active - Long Term")

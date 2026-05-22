@@ -21,6 +21,18 @@ This skill picks up where deal-evaluation Phase 5A (LOI generation) ends. Once K
 **Core question:** Does reality match what the seller represented, and can we close this deal on terms that work?
 </objective>
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI (this skill uses `gog drive`/`gog docs`/`gog sheets`):
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `GOG_KEYRING_PASSWORD`, `ATTIO_API_KEY`, `SLACK_WEBHOOK_ACTIVE_DEALS`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+If a `gog` call fails with `aes.KeyUnwrap(): integrity check failed`, the cause is almost always that `op-env.sh` was not sourced — the keyring is fine. Re-source and retry, NEVER rotate credentials.
+</credentials>
+
 <essential_principles>
 ## Drive Architecture
 

@@ -29,6 +29,18 @@ Own everything from T-7 days before a conference through T+2 days after. This is
 **Seller psychology to encode in messaging:** Per `feedback_seller_short_transition_matters`, founder-led sellers in the $2-5M EBITDA band are allergic to long post-close transition obligations. The buy-box paragraph handles this implicitly via "customized terms" — never mention transition length explicitly in outreach. In first owner calls and LOI defaults, bias toward short (3-6mo) transition unless seller asks for more.
 </objective>
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI (this skill uses `gog sheets` to read the G&B Conference Engagement Templates sheet + `gog gmail` to draft):
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `GOG_KEYRING_PASSWORD`, `ATTIO_API_KEY`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+If a `gog sheets get` call fails with `aes.KeyUnwrap(): integrity check failed`, the cause is almost always that `op-env.sh` was not sourced — the keyring is fine. Re-source and retry, NEVER rotate credentials. Forbidden: drafting a conference email without pulling the live template (templates ARE in 1Password-resolved gog reach).
+</credentials>
+
 <essential_principles>
 ## When to Trigger
 

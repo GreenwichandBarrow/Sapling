@@ -10,6 +10,18 @@ context_budget:
 user_invocable: true
 ---
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI (this skill uses `gog sheets`/`gog drive`):
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `GOG_KEYRING_PASSWORD`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+If a `gog` call fails with `aes.KeyUnwrap(): integrity check failed`, the cause is almost always that `op-env.sh` was not sourced — the keyring is fine. Re-source and retry, NEVER rotate credentials.
+</credentials>
+
 <objective>
 Lightweight nightly job that keeps the Industry Research Tracker clean. Runs every night at 11pm ET via launchd.
 

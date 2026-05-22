@@ -4,6 +4,7 @@ date: 2026-05-16
 type: person
 status: prospect
 attio_id: c6030292-53c1-4c3c-80f8-9873300e323d
+attio_synced_at: 2026-05-22T15:12:41Z
 tags:
   - date/2026-05-16
   - entity

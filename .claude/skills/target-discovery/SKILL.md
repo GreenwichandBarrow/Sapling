@@ -23,6 +23,24 @@ This skill discovers acquisition targets via skill/list-builder (Apollo, primary
 - `DealsX Email` → Sam's team handles list building + enrichment + mass email/LinkedIn outreach. target-discovery runs warm intro check + Attio dedup on Sam's list only (see DealsX List Ingestion section).
 - `JJ-Call-Only` → invoke list-builder in `calls-first` mode (volume load, 5 stop hooks, 0 credits)
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI (this skill uses `gog sheets` + invokes list-builder which calls Apollo + posts to `$SLACK_WEBHOOK_OPERATIONS`):
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_OPERATIONS`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+**Health-check (before claiming Apollo/Attio is down):**
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" -H "X-Api-Key: $APOLLO_API_KEY" https://api.apollo.io/api/v1/auth/health
+curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KEY" https://api.attio.com/v2/self
+```
+
+Forbidden: pausing target discovery on a phantom "Apollo credit balance unavailable" without confirming the var is actually empty.
+</credentials>
+
 **Pipeline stages:** Under Review → Active-Outreach → Long Term → Tabled/Killed
 
 **Inputs from other skills:**

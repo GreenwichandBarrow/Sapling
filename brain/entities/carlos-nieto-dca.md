@@ -6,6 +6,8 @@ status: prospect
 company: "[[entities/digital-capital-advisors]]"
 role: TBD (not listed on public DCA roster)
 email: carlos@digitalcapitaladvisors.com
+attio_id: 259c0607-70e8-4a82-994c-e6d024a46086
+attio_synced_at: 2026-05-22T15:14:30Z
 tags:
   - date/2026-05-12
   - entity

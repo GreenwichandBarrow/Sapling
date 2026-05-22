@@ -33,6 +33,18 @@ Surface prepped deals — businesses that are actively selling — from every no
 - File documents into ACTIVE DEALS folders (pipeline-manager handles that)
 - Scan Gmail directly (email-intelligence handles scanning, writes artifacts this skill reads)
 
+<credentials>
+## Credentials (read first)
+
+**1Password is the first rung — always.** Before any op://-backed CLI (this skill uses `gog sheets`/`gog drive` + `$SLACK_WEBHOOK_ACTIVE_DEALS` + `$SLACK_WEBHOOK_OPERATIONS`):
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+Exports `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_ACTIVE_DEALS`, `SLACK_WEBHOOK_OPERATIONS`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+If `${#SLACK_WEBHOOK_ACTIVE_DEALS}` = 0 after sourcing, surface to Kay — 1Password resolve broken. Do NOT log "Slack unavailable" or skip deal-surfacing without confirming the var is actually empty.
+</credentials>
+
 **This skill DOES:**
 - Scan all broker platforms daily for buy-box matches
 - Read email-scan-results for inbound deals (CIMs, broker blasts, direct broker emails)

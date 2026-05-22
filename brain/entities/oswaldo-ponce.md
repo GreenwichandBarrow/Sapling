@@ -3,21 +3,30 @@ schema_version: 1.1.0
 date: 2026-05-20
 type: person
 status: prospect
-role: Unknown — collaborator on M&A / search-fund spaces
+company: "[[entities/poza-capital-partners]]"
+role: Partner, POZA Capital Partners
 email: op@pozacp.com
+phone: 929-709-1200
 tags:
   - date/2026-05-20
   - entity
   - person
   - person/oswaldo-ponce
+  - company/poza-capital-partners
   - source/warm-intro
   - person/carlos-nieto-dca
+  - topic/independent-sponsor
+  - topic/home-services
 ---
 
 # Oswaldo Ponce
 
 ## Quick Facts
-- Email: op@pozacp.com (domain `pozacp.com`)
+- Partner at [[entities/poza-capital-partners|POZA Capital Partners]] (independent sponsor, NY) — facilities / home services, recurring revenue, $1.5-5M EBITDA
+- Email: op@pozacp.com | Phone: (929) 709-1200
+- Pursuing Fordham Gabelli MBA 2024-2026 (per LinkedIn surface)
+- Prior experience: Mizzen Capital, Promecap, Snack Company (Entrepreneurship Through Acquisition 2019-2021), BanRegio
+- Spanish-language full name suggests Latin American background (POZA team described as having PE / private credit / distressed / RE / operations experience)
 - Warm intro from [[entities/carlos-nieto-dca|Carlos Nieto]] (in3o, 2026-05-19) — Carlos has been collaborating with Oswaldo "in the same manner as with [Kay] for more than a year"
 - Carlos's framing: "Kay has a search fund and has been looking at the same spaces as you have"
 

@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-22T22:01:06Z",
+  "fetched_at": "2026-05-25T13:01:07Z",
   "niches_scanned": [
     "Art Insurance",
     "Domestic TCI",
@@ -17,7 +17,7 @@
     "Premium Pest Management": 705
   },
   "dials_today": 0,
-  "dials_this_week": 40,
+  "dials_this_week": 70,
   "dials_lifetime": 707,
   "by_day": {
     "2026-03-30": 2,
@@ -45,64 +45,64 @@
   },
   "weekly_buckets": [
     {
-      "week_start": "2026-02-28",
-      "week_end": "2026-03-06",
+      "week_start": "2026-03-03",
+      "week_end": "2026-03-09",
       "dials": 0
     },
     {
-      "week_start": "2026-03-07",
-      "week_end": "2026-03-13",
+      "week_start": "2026-03-10",
+      "week_end": "2026-03-16",
       "dials": 0
     },
     {
-      "week_start": "2026-03-14",
-      "week_end": "2026-03-20",
+      "week_start": "2026-03-17",
+      "week_end": "2026-03-23",
       "dials": 0
     },
     {
-      "week_start": "2026-03-21",
-      "week_end": "2026-03-27",
-      "dials": 0
-    },
-    {
-      "week_start": "2026-03-28",
-      "week_end": "2026-04-03",
+      "week_start": "2026-03-24",
+      "week_end": "2026-03-30",
       "dials": 2
     },
     {
-      "week_start": "2026-04-04",
-      "week_end": "2026-04-10",
-      "dials": 88
-    },
-    {
-      "week_start": "2026-04-11",
-      "week_end": "2026-04-17",
+      "week_start": "2026-03-31",
+      "week_end": "2026-04-06",
       "dials": 0
     },
     {
-      "week_start": "2026-04-18",
-      "week_end": "2026-04-24",
-      "dials": 80
+      "week_start": "2026-04-07",
+      "week_end": "2026-04-13",
+      "dials": 88
     },
     {
-      "week_start": "2026-04-25",
-      "week_end": "2026-05-01",
-      "dials": 89
+      "week_start": "2026-04-14",
+      "week_end": "2026-04-20",
+      "dials": 17
     },
     {
-      "week_start": "2026-05-02",
-      "week_end": "2026-05-08",
-      "dials": 235
+      "week_start": "2026-04-21",
+      "week_end": "2026-04-27",
+      "dials": 95
     },
     {
-      "week_start": "2026-05-09",
-      "week_end": "2026-05-15",
-      "dials": 133
+      "week_start": "2026-04-28",
+      "week_end": "2026-05-04",
+      "dials": 78
     },
     {
-      "week_start": "2026-05-16",
-      "week_end": "2026-05-22",
-      "dials": 40
+      "week_start": "2026-05-05",
+      "week_end": "2026-05-11",
+      "dials": 249
+    },
+    {
+      "week_start": "2026-05-12",
+      "week_end": "2026-05-18",
+      "dials": 108
+    },
+    {
+      "week_start": "2026-05-19",
+      "week_end": "2026-05-25",
+      "dials": 70
     }
   ]
 }

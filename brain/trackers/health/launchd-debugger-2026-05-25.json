@@ -1,0 +1,31 @@
+{
+  "date": "2026-05-25",
+  "scan_started_at": "2026-05-25T05:01:02-04:00",
+  "scan_finished_at": "2026-05-25T05:02:19-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 0,
+  "suppressed_count": 1,
+  "runtime_seconds": 77,
+  "results": [
+    {
+      "job": "target-discovery",
+      "cause": "VALIDATOR_REJECT",
+      "action": "SURFACE",
+      "triggered_by": "daily",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/target-discovery-2026-05-24-1500.log",
+      "last_log_mtime": "2026-05-24T15:10:27-04:00",
+      "exit_code": 0,
+      "validator_failed": true,
+      "preflight_failed": false,
+      "error_signature": "VALIDATOR FAILED — overriding skill exit code",
+      "slack_posted": false,
+      "suppression_reason": "cross-day-dedup:7d",
+      "slack_text": "launchd-debugger: target-discovery FAILED — VALIDATOR_REJECT. 204 issues (5 missing Mon–Fri 'Call Log 5.25.26'–'5.29.26' tabs + 199 pool companies not on any tab); recurring weekly pattern (same failure 2026-05-17) — jj-operations creates tabs at Sun 18:00 but target-discovery validator runs at 15:00. Recommended: confirm jj-operations Sunday-prep ran at 18:00 and pool artifact brain/context/jj-week-pool-2026-05-24.md was consumed; if so, this is the known 15:00–18:00 race and can be acked. If jj-operations didn't run, investigate that job. Log: /home/ubuntu/projects/Sapling/logs/scheduled/target-discovery-2026-05-24-1500.log",
+      "diagnosis_note": "Same VALIDATOR_REJECT pattern as 2026-05-18 artifact (target-discovery 15:00 Sunday run vs jj-operations 18:00 Sunday tab creation — known weekly architectural race). Dedup against 2026-05-18 entry where slack_posted=true; suppressed per cross-day-dedup:7d. Subagent flagged it as recurring; root fix (gate Phase 2 validator to post-jj-operations boundary) is Kay's call — same as 5/18 recommendation."
+    }
+  ]
+}

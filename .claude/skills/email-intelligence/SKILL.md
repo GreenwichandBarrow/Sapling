@@ -116,31 +116,71 @@ Before flagging any draft as "stale" or "unsent," check `brain/context/session-d
 - Subscription/mailing list headers
 - Known newsletter senders
 - Action: Scan for niche signals only, then archive
+- **BUT FIRST — check for deal-listing content (see DEAL_NEWSLETTER below).** Many newsletters carry deal listings inside an otherwise-newsletter format; missing those is the failure mode codified 2026-05-26 (Helen Guo SMB Deal Hunter 5/26 Market Watch issue had 5 explicit listings; the parser saw the mid-email Member Spotlight case study and labeled the whole email "content marketing — no listings". Wrong.)
+
+### DEAL_NEWSLETTER Detection (subtype — added 2026-05-26)
+
+A newsletter that contains structured deal listings inside the body. These get per-listing extraction (Section 7) regardless of their NEWSLETTER classification. Two-signal detection (either alone is sufficient):
+
+**Signal 1 — known deal-newsletter senders:**
+- `helenguo.com` / `smbdealhunter.com` / sender "Helen Guo" / subject contains "SMB Deal Hunter" or "Market Watch" — ALWAYS treat as deal-newsletter, extract every numbered listing.
+- `acquiringminds.co` / sender "Will Smith" / Acquiring Minds — deal-newsletter when the body has numbered listings + $ amounts (their pure-content episodes have neither).
+- `flippa.com` marketplace digests / subject contains "Flippa" + "this week" / "newly listed" / "featured" — marketplace deal-newsletter, extract.
+- `bizbuysell.com` email alerts — marketplace deal-newsletter, extract.
+- Walker Deibel newsletter — deal-newsletter only when body has numbered listings + $ amounts (most of his sends are educational).
+- Empire Flippers / Quiet Light / Synergy / Viking Mergers email digests — broker deal-newsletter, extract.
+- This list extends over time. When a new deal-newsletter sender is identified, add it here.
+
+**Signal 2 — body structure pattern (catches unknown deal-newsletter senders):**
+- Body contains a section header like `In Today's Issue` / `New Deals` / `This Week's Listings` / `Newly Listed` / `Featured Businesses` AND
+- ≥2 numbered listing items (`#1:`, `#2:`, ... OR `1/`, `2/`, ... OR similar enumeration) AND
+- ≥1 of the numbered items has structured deal-data (asking price, EBITDA, revenue, or location)
+
+If EITHER signal fires → treat as DEAL_NEWSLETTER → fire `<broker_blast_listing_extraction>` for the listings section.
+
+**Forbidden — the 2026-05-26 case-study coexistence bug:**
+Do NOT classify the email as "content marketing" / "newsletter — no listings" when:
+- The body contains a numbered listings section at the top AND a Member Spotlight / Community Wins / Case Study / Podcast Episode section elsewhere in the same email.
+- Helen Guo SMB Deal Hunter editions consistently mix `In Today's Issue` (listings) + Member Spotlight (case study) + Recent Podcast Episode in a single email. The case-study section is commentary, not a re-classification signal. **Extract from the listings section regardless of what other sections exist.**
+
+Same rule for any deal-newsletter: presence of an unrelated case-study/spotlight/podcast section does NOT override deal-listing classification when the listings section is also present.
+
+**Idempotency:** same Gmail message ID + listing ordinal dedup as `<broker_blast_listing_extraction>`. A re-run on the same DEAL_NEWSLETTER email does not duplicate rows.
+
 </deal_flow_classification>
 
 <broker_blast_listing_extraction>
 ## Broker BLAST Listing Extraction (per-deal body parsing)
 
-**Why this exists:** Broker BLAST emails (Lisa @ Generational Equity, Viking, Helen Guo SMB Deal Hunter, Sunbelt, Transworld, etc.) typically contain MULTIPLE distinct listings inside a single email body. Counting one BLAST as one entry undercounts true broker deal-flow volume. The 2026-05-04 broker ingestion 30-day audit (`brain/outputs/2026-05-04-broker-ingestion-audit-30day.md`) flagged this gap. Future audits read the per-listing rows below directly.
+**Why this exists:** Broker BLAST emails (Lisa @ Generational Equity, Viking, Helen Guo SMB Deal Hunter, Sunbelt, Transworld, etc.) typically contain MULTIPLE distinct listings inside a single email body. Counting one BLAST as one entry undercounts true broker deal-flow volume. The 2026-05-04 broker ingestion 30-day audit (`brain/outputs/2026-05-04-broker-ingestion-audit-30day.md`) flagged this gap; the 2026-05-26 Helen Guo Market Watch miss expanded the trigger set to deal-newsletters too. Future audits read the per-listing rows below directly.
 
-**When to trigger:**
-- Body contains any broker-signal keyword: "for sale", "exclusive listing", "asking price", "we represent", "new listing", "now available", "teaser", "project [codename]"
+**When to trigger (ANY one is sufficient):**
+- (a) Email classified BLAST AND body contains any broker-signal keyword: "for sale", "exclusive listing", "asking price", "we represent", "new listing", "now available", "teaser", "project [codename]"
+- (b) Email classified DEAL_NEWSLETTER per `<deal_flow_classification>` Signal 1 (known sender — Helen Guo / Acquiring Minds / Flippa / BizBuySell / Walker Deibel with listings / Empire Flippers / Quiet Light / Synergy / Viking Mergers digests) OR Signal 2 (body structure: section header + ≥2 numbered listings + structured deal-data)
+- (c) Email classified NEWSLETTER but body contains a numbered listings section matching DEAL_NEWSLETTER Signal 2 — fire extraction; the NEWSLETTER label was over-broad
 
-**Forbidden pattern: do not collapse multi-listing blasts into single rows. Each listing in the body gets its own row.**
+The trigger fires INDEPENDENTLY of overall email classification. A NEWSLETTER with listings still produces Section-7 rows. A BLAST with no listings produces zero rows. Classification and extraction are decoupled.
+
+**Forbidden patterns:**
+1. Do not collapse multi-listing blasts/newsletters into single rows. Each listing in the body gets its own row.
+2. Do not skip extraction because a Member Spotlight / Community Wins / Case Study / Podcast Episode section exists elsewhere in the same email. The listings section is the signal; other sections are noise. Codified 2026-05-26 after Helen Guo SMB Deal Hunter 5/26 Market Watch issue (5 listings) was mis-classified "content marketing" because the parser focused on the mid-email Chelsea case study.
+3. Do not treat the Flippa/BizBuySell `feedback_marketplace_vs_broker_distinction` doctrine as a parser-suppression rule. That doctrine says: do not classify Flippa as a sell-side intermediary. It does NOT say: do not extract listings from Flippa's email digests. Marketplace digests contain real for-sale listings; extract them.
 
 **Per-listing extraction fields:**
-- `source` — sender name + firm (e.g., "Lisa McKnight, Generational Equity")
+- `source` — sender name + firm (e.g., "Helen Guo, SMB Deal Hunter" / "Lisa McKnight, Generational Equity" / "Flippa Marketplace")
 - `headline` — deal name, project codename, or one-line description from the body
 - `geo` — state if disclosed, else "undisclosed"
-- `revenue` — if disclosed (raw string with units, e.g., "$8.2M")
+- `revenue` — if disclosed (raw string with units, e.g., "$8.2M" / "$4.36M")
 - `ebitda` — if disclosed
 - `margin` — if disclosed
 - `industry` — if disclosed (NAICS or plain-English category)
-- `flag_reason` — one of: `multi-listing` (BLAST contained 2+ listings), `single-listing-blast` (BLAST contained exactly 1 listing), `unknown-broker-signal` (body matched signal keywords; known-broker sheet-lookup not yet wired)
+- `flag_reason` — one of: `multi-listing` (body contained 2+ listings), `single-listing-blast` (body contained exactly 1 listing), `unknown-broker-signal` (body matched signal keywords; known-sender list extension candidate), `deal-newsletter-known-sender` (Signal-1 trigger), `deal-newsletter-pattern` (Signal-2 trigger — header + numbered + $ amounts)
 
 **Idempotency:** Use Gmail message ID + listing ordinal (1-indexed within body) as the dedup key. Re-runs on the same message must not duplicate rows.
 
 **Output destination:** Section 7 of the email-scan-results artifact. See `<artifact>` schema below.
+
+**Section-2 reconciliation:** when extraction fires on a NEWSLETTER-classified or DEAL_NEWSLETTER-classified email, Section 2 counts the email under NEWSLETTER (no double-count); Section 7 carries the per-listing rows. Section 7 row count is the deal-flow KPI, not Section 2 BLAST count.
 </broker_blast_listing_extraction>
 
 <cim_auto_trigger>
@@ -332,7 +372,7 @@ Write to `brain/context/email-scan-results-{date}.md`:
 - File exists and is non-empty
 - All 8 section headers present
 - Each section populated or explicitly marked "None"
-- Section 7 rows: every BLAST classified in section 2 whose body matched a broker-signal keyword has at least one row in section 7
+- Section 7 rows: every email whose body matches a `<broker_blast_listing_extraction>` trigger (BLAST + broker-signal keyword, OR DEAL_NEWSLETTER known-sender, OR DEAL_NEWSLETTER body-pattern, OR NEWSLETTER-with-listings) has at least one row in section 7. A NEWSLETTER-classified email producing zero section-7 rows is valid ONLY when the body has no numbered listings + no $ amounts in deal-data structure; if either is present, extraction must have fired.
 - Section 8 rows: every inbound email that triggered `<auto_ack_drafts>` (NDA/CIM attachment) has exactly one row, and the corresponding Gmail draft exists (link resolves)
 </artifact>
 
@@ -346,7 +386,7 @@ Write to `brain/context/email-scan-results-{date}.md`:
 5. **Email-scan-results artifact** — file exists, non-empty, all 8 sections present (section 7 covers Broker BLAST per-listing extraction; section 8 covers Auto-Drafts Created)
 6. **Slack notifications** — webhook returned 200 OK for all pings
 7. **ACTIVE DEALS folder sync** — every Drive subfolder has matching Attio entry
-8. **Broker BLAST per-listing extraction** — every BLAST in section 2 whose body contains a broker-signal keyword has a corresponding row (or rows, for multi-listing) in section 7. Forbidden pattern: collapsing multi-listing blasts into single rows.
+8. **Broker BLAST + Deal-Newsletter per-listing extraction** — every email matching ANY `<broker_blast_listing_extraction>` trigger (BLAST + broker-signal keyword, OR DEAL_NEWSLETTER known-sender, OR DEAL_NEWSLETTER body-pattern, OR NEWSLETTER carrying numbered listings) has a corresponding row (or rows, for multi-listing) in section 7. Forbidden patterns: (a) collapsing multi-listing blasts into single rows; (b) skipping extraction because a Member Spotlight / Case Study / Podcast section coexists with the listings section (2026-05-26 Helen Guo precedent); (c) using `feedback_marketplace_vs_broker_distinction` as a parser-suppression rule (it governs intermediary classification, not listing extraction).
 9. **Auto-Acknowledgment Drafts** — every inbound email matching `<auto_ack_drafts>` triggers (NDA/CIM attachment) produced exactly one Gmail draft AND one row in section 8. Forbidden pattern: auto-sending the draft. Drafts are CREATED only.
 10. **Bookkeeper P&L chain** — for every bookkeeper P&L detection this run: PDFs filed to Drive, inbox item written matching the canonical filename pattern, `budget-manager monthly` invoked in-session, `BOOKKEEPER-PL-CHAIN:` marker emitted to stdout. Forbidden pattern: creating the inbox item and exiting without invoking budget-manager (the March 2026 silent-skip failure mode). The wrapper validator (`scripts/validate_email_intelligence_integrity.py`) gates exit code on the marker.
 </stop_hooks>

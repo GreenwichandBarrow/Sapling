@@ -1,12 +1,8 @@
 {
   "verb": "append",
-  "timestamp": "20260516-125319",
+  "timestamp": "20260526-131341",
   "sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
   "ranges": {
-    "'To Do'!A84:F84": [
-      [
-        false
-      ]
-    ]
+    "'To Do'!A80:G80": []
   }
 }

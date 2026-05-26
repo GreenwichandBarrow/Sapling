@@ -912,6 +912,46 @@ def _day_clear_requests(sid: int) -> list[dict]:
     return reqs
 
 
+def _week_clear_requests(sid: int) -> list[dict]:
+    """Build repeatCell requests that reset the Week planning tab to a clean week:
+    for each of the 7 day-columns — habit checkboxes FALSE, slot status checkboxes FALSE,
+    slot task text empty, per-day notes block empty. Title row + headers + labels +
+    dropdowns + CF + checkbox data-validation are PRESERVED (only userEnteredValue is touched)."""
+    reqs: list[dict] = []
+    for i in range(7):
+        sc = wk_status_col(i)
+        cc = wk_content_col(i)
+        # Habit status checkboxes (rows 7..15, day's status col) → FALSE
+        reqs.append({"repeatCell": {
+            "range": {"sheetId": sid,
+                      "startRowIndex": WK_HABIT_FIRST_ROW - 1, "endRowIndex": WK_HABIT_LAST_ROW,
+                      "startColumnIndex": sc, "endColumnIndex": sc + 1},
+            "cell": {"userEnteredValue": {"boolValue": False}},
+            "fields": "userEnteredValue"}})
+        # Priority slot status checkboxes (rows 24..38, day's status col) → FALSE
+        reqs.append({"repeatCell": {
+            "range": {"sheetId": sid,
+                      "startRowIndex": WK_SLOT_FIRST_ROW - 1, "endRowIndex": WK_SLOT_LAST_ROW,
+                      "startColumnIndex": sc, "endColumnIndex": sc + 1},
+            "cell": {"userEnteredValue": {"boolValue": False}},
+            "fields": "userEnteredValue"}})
+        # Priority slot task content (rows 24..38, day's content col) → empty
+        reqs.append({"repeatCell": {
+            "range": {"sheetId": sid,
+                      "startRowIndex": WK_SLOT_FIRST_ROW - 1, "endRowIndex": WK_SLOT_LAST_ROW,
+                      "startColumnIndex": cc, "endColumnIndex": cc + 1},
+            "cell": {"userEnteredValue": {"stringValue": ""}},
+            "fields": "userEnteredValue"}})
+        # Per-day notes block (rows 41..48, day's status + content cols) → empty
+        reqs.append({"repeatCell": {
+            "range": {"sheetId": sid,
+                      "startRowIndex": WK_NOTES_FIRST_ROW - 1, "endRowIndex": WK_NOTES_LAST_ROW,
+                      "startColumnIndex": sc, "endColumnIndex": cc + 1},
+            "cell": {"userEnteredValue": {"stringValue": ""}},
+            "fields": "userEnteredValue"}})
+    return reqs
+
+
 def cmd_build_week(args) -> int:
     """Sunday weekly rebuild ceremony — targets the WEEK PLANNING TAB.
 

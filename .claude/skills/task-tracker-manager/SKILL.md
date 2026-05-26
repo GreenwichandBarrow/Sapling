@@ -25,7 +25,17 @@ Architecture lives in `memory/project_personal_task_tracker.md`. Update that mem
 - **`Week` tab** — the Sunday planning canvas, ALL 7 days visible Sun→Sat, one block per day side by side, **leftmost in the strip (index 0, before `Sun`)**. `build-week` rebuilds/clears it + stamps the recurring `To Do` rows onto it; Kay lays out / finalizes the whole week here. Layout: col 0 = habit/notes label; for day i (0=Sun..6=Sat) status checkbox col `1+2*i`, task col `2+2*i`. Row 1 merged title `WEEK OF May 17-23`, row 5 `HABIT TRACKER`, row 6 Sun..Sat sub-headers, rows 7–15 nine habit rows, row 16 SUNDAY..SATURDAY day headers (carry dates), rows 24–38 fifteen priority slots/day, rows 41–48 notes block. Builder: `scripts/build_week_tab.py` (one-shot; `--dry-run`, `--no-populate`).
 - **7 day tabs** (`Sun Mon Tue Wed Thu Fri Sat`, immediately after `Week`) — the calm, large-font daily *execution* surface. Kay works these Mon–Sat. **NOT auto-populated until `distribute-week` fans the finalized Week plan out into them.** Per-day layout: row 1 merged title `SUNDAY · May 17` (20pt), rows 4–12 habit tracker (9 habits, A=checkbox), row 13 column headers, rows 14–28 fifteen priority slots (A=native checkbox · B=Task 17pt · C=Type dropdown · D=Project dropdown · E=Notes), rows 31–38 free-notes block. Builder: `scripts/build_day_tabs.py` (idempotent; `--dry-run`).
 
-Sunday flow: `build-week` (Week tab) → Kay finalizes the week on the Week tab → `distribute-week` (fan to day tabs) → Kay works the day tabs.
+**Sunday flow (corrected 2026-05-26 per Kay):**
+1. **`build-week`** — Week tab: archive prior week + clear + re-title + stamp recurring + **AUTO-PULL incomplete carryover from prior week's day tabs onto the new Week tab** (NEW step — see `build-week` verb spec below).
+2. **Together (Kay + Claude) review the items on the Week tab** — Kay decides keep / move to a different day / set Horizon=Long Term / drop for each carryover item. Mutations happen ON THE WEEK TAB (or via `move-day-item` if shifting between days).
+3. **`distribute-week`** — fan the finalized Week tab → all 7 day tabs (aligned start, --force overrides last week's stale day-tab content).
+4. **During the week:** day tabs are the working surfaces. Kay edits day tabs directly (adds, checks off, re-orders). **Drift between Week tab and day tabs during the week is EXPECTED and OK** — the Week tab is the start-of-week snapshot; day tabs are the live execution layer.
+5. **`sync-done-status`** mid-week reflects day-tab checked slots back to To Do.
+6. **Next Sunday's `build-week`** auto-pulls the incomplete day-tab items into the new Week tab — closing the loop.
+
+**Alignment doctrine:** at the moment `distribute-week` finishes Sunday, Week tab content == day tabs content. After that, day tabs become the source of truth for execution; the Week tab is read-mostly until next Sunday.
+
+**Carryover doctrine (changed 2026-05-26):** carryover is now AUTO-PULLED from prior week's day tabs into the new Week tab during `build-week`. Kay reviews on the Week tab and decides per item. The old manual `report` → walk-each-item → `move-day-item` pattern is **RETIRED** for routine carryover. `report` remains useful for ad-hoc health checks but is no longer the Sunday gating step.
 
 **Cleanliness model:** No row relocation, no checkbox-sweep, no donut/%-display. `To Do` cleanliness is achieved via **saved filter/sort views in the Sheet UI** (e.g. filter `Status != Completed`, sort by `Due`), NOT by moving completed rows to another tab. Completed rows stay in place with `Status=Completed` and render via done-row CF.
 
@@ -103,18 +113,29 @@ python3 scripts/task_tracker.py promote \
 Run from `goodmorning` on Sunday (the Sunday-evening `archive` trigger is RETIRED).
 
 ```bash
-python3 scripts/task_tracker.py build-week [--skip-recurring] [--dry-run]
+python3 scripts/task_tracker.py build-week [--skip-recurring] [--skip-carryover] [--dry-run]
 ```
 
 1. Computes the Sunday-boundary week (`today - (weekday+1)%7` → Sun..Sat).
-2. Snapshots the **Week tab** + `To Do` to one rollback JSON.
+2. Snapshots the **Week tab** + `To Do` + all 7 day tabs to one rollback JSON.
 3. Writes ONE combined far-right `archive_{Sun-date}` tab capturing the prior week's **Week tab** verbatim (values-only flat archive). The Week tab is NOT destroyed — it is cleared + re-titled in place; title/headers/labels/dropdowns/CF/checkbox-validation formatting is preserved.
 4. Clears all 7 day-blocks on the Week tab: habit checkboxes, 15 priority slots/day, notes block.
 5. Re-titles the Week tab's row-1 title to `WEEK OF {Sun-Sat}` + re-stamps the per-day header-row dates.
-6. **Reads the recurring `To Do` rows** (Horizon starts with "Weekly Recurring" + Status `On-going`) and **stamps each onto the Week tab** for its day (same collision-refuse logic — explicit slot pins, blank slots auto-pick first empty, conflicts warn+skip). `--skip-recurring` bypasses. `--dry-run` previews end-to-end with no writes.
-7. **The 7 day tabs are NOT touched.** Kay finalizes the week on the Week tab; `distribute-week` fans it out afterward. Carryover is **NOT auto-copied** — `report` surfaces incompletes; Kay approves each move via `move-day-item`/`promote`.
+6. **Reads the recurring `To Do` rows** (Horizon starts with "Weekly Recurring" + Status `On-going`) and **stamps each onto the Week tab** for its day (collision-refuse logic — explicit slot pins, blank slots auto-pick first empty, conflicts warn+skip). `--skip-recurring` bypasses.
+6a. **AUTO-PULL incomplete carryover from prior week's day tabs onto the new Week tab (NEW — 2026-05-26 per Kay):**
+    - For each of the 7 day tabs, read every priority slot (rows 14–28, status col A + task col B).
+    - An item is "incomplete" if `Task` is non-empty AND `Status` checkbox is FALSE.
+    - For each incomplete item: write the Task text into the same day's day-block on the new Week tab (collision-refuse vs recurring stamps; auto-pick next empty slot if its prior slot is occupied by a recurring item).
+    - Items whose source slot has Status TRUE are SKIPPED (they were completed last week; no need to carry).
+    - Items whose source slot is empty are SKIPPED.
+    - Trace each pulled item: `- carryover-pull: {Day} slot N "{Task}"`.
+    - `--skip-carryover` flag bypasses this step (useful for first-ever build or recovery scenarios).
+    - **Why:** closes the loop. Kay reviews carryover items ON THE WEEK TAB during the Sunday walkthrough; no separate `report` → `move-day-item` per-item dance. Carryover doctrine corrected 2026-05-26.
+7. **The 7 day tabs are NOT touched by build-week itself** (only READ for carryover-pull). Day tabs get OVERWRITTEN downstream by `distribute-week`. Kay finalizes the week on the Week tab between `build-week` and `distribute-week`.
 
 `archive` is a DEPRECATED alias → `build-week` (prints a deprecation notice on stderr, then delegates).
+
+**Implementation status (2026-05-26):** Step 6a auto-pull is SPEC'd here but NOT YET IMPLEMENTED in `scripts/task_tracker.py::cmd_build_week`. Until shipped, the Sunday workflow temporarily continues with the old manual `report` → `move-day-item` pattern. Follow-up bead required to land the implementation. Once shipped, the `report` verb's "Carryover" section becomes ad-hoc/diagnostic only.
 
 ### 3a-bis. distribute-week (fan the finalized Week plan into the 7 day tabs)
 

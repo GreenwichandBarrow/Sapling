@@ -952,6 +952,101 @@ def _week_clear_requests(sid: int) -> list[dict]:
     return reqs
 
 
+def _pull_carryover_to_week(client: "SheetsClient", dry_run: bool = False) -> dict:
+    """Pull incomplete items from each day tab onto the new Week tab (step 6a — added 2026-05-26).
+
+    An item on a day tab is "incomplete" if `Task` (col B) is non-empty AND `Status` (col A)
+    checkbox is NOT TRUE. For each incomplete item, write the Task text into the next empty
+    slot on the Week tab's day-block for that same day. Skips completed slots (Status TRUE)
+    and empty slots. Collision-refuses against already-stamped recurring items (auto-picks
+    the next empty slot below).
+
+    Doctrine source: `memory/feedback_no_time_blocking_item_list_scheduling` + the 2026-05-26
+    Kay directive: "when it plans the next week - it should pull incomplete tasks from the
+    daily tabs and flow them into the week tab of the new week for my review."
+
+    Returns: {"pulled": [{day, src_slot, dst_slot, task}], "refused": [...], "rows_read": int}
+    """
+    summary = {"pulled": [], "refused": [], "rows_read": 0}
+    day_order = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
+    for i, day_tab in enumerate(day_order):
+        # Read day tab's priority slots (cols A=status, B=task, rows 14..28)
+        rng = f"'{day_tab}'!A{DAY_SLOT_FIRST_ROW}:B{DAY_SLOT_LAST_ROW}"
+        try:
+            vals = client.get_values(rng) or []
+        except Exception:
+            vals = []
+        summary["rows_read"] += len(vals)
+
+        incompletes: list[tuple[int, str]] = []  # (src_slot_num, task)
+        for slot_idx, row in enumerate(vals):
+            slot_num = slot_idx + 1  # 1-indexed
+            status = row[0] if len(row) > 0 else ""
+            task = row[1] if len(row) > 1 else ""
+            # Status TRUE → completed → skip
+            status_is_true = (status is True) or (str(status).strip().upper() == "TRUE")
+            task_str = str(task).strip() if task is not None else ""
+            if task_str and not status_is_true:
+                incompletes.append((slot_num, task_str))
+
+        if not incompletes:
+            continue
+
+        # Read Week tab's day-block content col to identify already-occupied slots
+        # AND collect the set of already-placed task texts (for dedup vs recurring stamps).
+        wk_cc = wk_content_col(i)
+        wk_col = col_letter(wk_cc)
+        wk_rng = f"'{TAB_WEEK}'!{wk_col}{WK_SLOT_FIRST_ROW}:{wk_col}{WK_SLOT_LAST_ROW}"
+        try:
+            wk_vals = client.get_values(wk_rng) or []
+        except Exception:
+            wk_vals = []
+        empty_slots: list[tuple[int, int]] = []
+        placed_normalized: set[str] = set()
+        for s in range(WK_SLOT_COUNT):
+            wk_cell = ""
+            if s < len(wk_vals) and len(wk_vals[s]) > 0:
+                wk_cell = str(wk_vals[s][0]).strip()
+            if not wk_cell:
+                empty_slots.append((s + 1, WK_SLOT_FIRST_ROW + s))
+            else:
+                placed_normalized.add(wk_cell.lower())
+
+        # Place each incomplete in the next empty Week-tab slot for this day.
+        # Dedup: skip carryover items whose normalized text already exists on the Week tab
+        # for this day (e.g., recurring items already stamped — avoid duplicates per
+        # 2026-05-26 calibration).
+        writes: list[tuple[str, str]] = []
+        for src_slot, task in incompletes:
+            if task.lower() in placed_normalized:
+                summary["refused"].append({
+                    "day": day_tab, "src_slot": src_slot, "task": task,
+                    "reason": "already present on Week tab for this day (recurring stamp or duplicate)"
+                })
+                continue
+            if not empty_slots:
+                summary["refused"].append({
+                    "day": day_tab, "src_slot": src_slot, "task": task,
+                    "reason": "no empty slot on Week tab for this day (15 slots full)"
+                })
+                continue
+            dst_slot, wk_row = empty_slots.pop(0)
+            cell = f"'{TAB_WEEK}'!{wk_col}{wk_row}"
+            writes.append((cell, task))
+            placed_normalized.add(task.lower())
+            summary["pulled"].append({
+                "day": day_tab, "src_slot": src_slot,
+                "dst_slot": dst_slot, "task": task
+            })
+
+        if not dry_run:
+            for cell, task in writes:
+                client.values_update(cell, [[task]])
+
+    return summary
+
+
 def cmd_build_week(args) -> int:
     """Sunday weekly rebuild ceremony — targets the WEEK PLANNING TAB.
 
@@ -1029,6 +1124,21 @@ def cmd_build_week(args) -> int:
                             continue
                         synth[tab_name].add(slot); ap = " (auto-picked)"
                     print(f'    WOULD STAMP: template row {r["row"]} → Week {tab_name} slot {slot}{ap}: "{r["task"]}"')
+        # Carryover preview
+        if getattr(args, "skip_carryover", False):
+            print("  --skip-carryover set → would NOT pull incomplete items from day tabs")
+        else:
+            print("  Carryover preview — incomplete day-tab items that WOULD be pulled onto the new Week tab:")
+            preview = _pull_carryover_to_week(client, dry_run=True)
+            if preview["pulled"]:
+                for p in preview["pulled"]:
+                    print(f"    WOULD PULL: {p['day']} src slot {p['src_slot']} → Week dst slot {p['dst_slot']}: \"{p['task']}\"")
+                if preview["refused"]:
+                    print(f"  {len(preview['refused'])} REFUSED (no empty slot on Week tab):")
+                    for ref in preview["refused"]:
+                        print(f"    REFUSED: {ref['day']} src slot {ref['src_slot']} \"{ref['task']}\": {ref['reason']}")
+            else:
+                print("    (no incomplete items — all prior-week day-tab slots are either completed or empty)")
         print("task-tracker-manager: build-week DRY RUN complete — no writes")
         return 0
 
@@ -1096,10 +1206,28 @@ def cmd_build_week(args) -> int:
         meta_after = client.get_metadata()
         recurring_summary = _stamp_recurring_week(client, meta_after, dry_run=False)
 
+    # ---------- 6a. Carryover pull from prior week's day tabs (added 2026-05-26 per Kay) ----------
+    carryover_summary: dict = {"pulled": [], "refused": [], "rows_read": 0}
+    if getattr(args, "skip_carryover", False):
+        print("task-tracker-manager: --skip-carryover set — incomplete day-tab items NOT pulled to Week tab")
+    else:
+        carryover_summary = _pull_carryover_to_week(client, dry_run=False)
+        if carryover_summary["pulled"]:
+            print(f"task-tracker-manager: pulled {len(carryover_summary['pulled'])} incomplete item(s) "
+                  f"from prior week's day tabs onto Week tab"
+                  + (f"; {len(carryover_summary['refused'])} refused (no empty slot)"
+                     if carryover_summary["refused"] else ""))
+            for p in carryover_summary["pulled"][:10]:  # cap chatter
+                print(f"  carryover: {p['day']} src slot {p['src_slot']} → Week dst slot {p['dst_slot']}: \"{p['task']}\"")
+            if len(carryover_summary["pulled"]) > 10:
+                print(f"  … and {len(carryover_summary['pulled']) - 10} more (see trace)")
+        else:
+            print("task-tracker-manager: no incomplete items to carry over (all prior-week day-tab slots were either completed or empty)")
+
     # ---------- 6. Trace ----------
     trace_lines = [
         f"- week (Sunday boundary): {wd[0].isoformat()} .. {wd[6].isoformat()}",
-        f"- target: Week planning tab (day tabs untouched — distribute-week fans out later)",
+        f"- target: Week planning tab (day tabs read for carryover, not written — distribute-week fans out later)",
         f"- combined archive tab written: {final_archive} (far-right, values-only)",
         f"- Week tab cleared + re-titled: {week_label!r}",
         f"- snapshot: {snap}",
@@ -1110,10 +1238,18 @@ def cmd_build_week(args) -> int:
             trace_lines.append(f"- recurring REFUSED: {len(recurring_summary['refused'])}")
             for ref in recurring_summary["refused"]:
                 trace_lines.append(f"  - template row {ref['row']} {ref['day']} slot {ref['slot']}: {ref['reason']}")
+    if carryover_summary["pulled"] or carryover_summary["refused"]:
+        trace_lines.append(f"- carryover pulled from day tabs → Week: {len(carryover_summary['pulled'])} item(s)")
+        for p in carryover_summary["pulled"]:
+            trace_lines.append(f"  - carryover-pull: {p['day']} src slot {p['src_slot']} → Week dst slot {p['dst_slot']}: \"{p['task']}\"")
+        if carryover_summary["refused"]:
+            trace_lines.append(f"- carryover REFUSED: {len(carryover_summary['refused'])}")
+            for ref in carryover_summary["refused"]:
+                trace_lines.append(f"  - {ref['day']} src slot {ref['src_slot']} \"{ref['task']}\": {ref['reason']}")
     trace("build-week", sun_date.isoformat(), trace_lines)
     print(f'task-tracker-manager: build-week complete — archived prior Week → "{final_archive}", '
           f'cleared + re-titled the Week tab to {week_label!r}. '
-          f'Day tabs untouched — run distribute-week after Kay finalizes the plan.')
+          f'Day tabs untouched — review the Week tab, then run distribute-week to fan it out.')
     if recurring_summary["tab_present"]:
         print(f'task-tracker-manager: stamped {len(recurring_summary["stamped"])} recurring row(s) onto Week'
               + (f"; {len(recurring_summary['refused'])} refused" if recurring_summary["refused"] else ""))
@@ -2305,8 +2441,10 @@ def main():
                              "Day tabs untouched (use distribute-week after).")
     bw.add_argument("--skip-recurring", action="store_true",
                     help="bypass the Recurring Template stamp step (rare)")
+    bw.add_argument("--skip-carryover", action="store_true",
+                    help="bypass the incomplete-day-tab carryover pull onto the new Week tab (added 2026-05-26)")
     bw.add_argument("--dry-run", action="store_true",
-                    help="report what would happen without writing — no archive, no clear, no stamp")
+                    help="report what would happen without writing — no archive, no clear, no stamp, no carryover")
     bw.set_defaults(func=cmd_build_week)
 
     dw = sub.add_parser("distribute-week",

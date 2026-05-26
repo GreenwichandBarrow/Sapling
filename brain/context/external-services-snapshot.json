@@ -1,6 +1,12 @@
 {
-  "fetched_at": "2026-05-26T16:00:45-04:00",
+  "fetched_at": "2026-05-26T18:30:45-04:00",
   "services": {
+    "slack-webhooks": {
+      "status": "ok",
+      "latency_ms": null,
+      "message": "4 webhooks configured",
+      "skip_reason": null
+    },
     "linkt": {
       "status": "skip",
       "latency_ms": null,
@@ -13,63 +19,57 @@
       "message": "",
       "skip_reason": "OAuth re-flow required (Smithery UI)"
     },
-    "superhuman": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "OAuth refresh required (manual)"
-    },
-    "slack-webhooks": {
-      "status": "ok",
-      "latency_ms": null,
-      "message": "4 webhooks configured",
-      "skip_reason": null
-    },
     "claude-api": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
       "skip_reason": "ANTHROPIC_API_KEY not in env"
     },
+    "superhuman": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "OAuth refresh required (manual)"
+    },
     "vault": {
       "status": "ok",
-      "latency_ms": 20,
-      "message": "1029 markdown files",
-      "skip_reason": null
-    },
-    "launchd": {
-      "status": "ok",
-      "latency_ms": 22,
-      "message": "20 timers registered",
+      "latency_ms": 18,
+      "message": "1030 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "error",
-      "latency_ms": 32,
+      "latency_ms": 10,
       "message": "attio-mcp=0 superhuman=0",
+      "skip_reason": null
+    },
+    "launchd": {
+      "status": "ok",
+      "latency_ms": 37,
+      "message": "20 timers registered",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 152,
+      "latency_ms": 114,
       "message": "authenticated",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 206,
+      "latency_ms": 128,
       "message": "200 OK",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 257,
+      "latency_ms": 170,
       "message": "HTTP 405",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 291,
+      "latency_ms": 196,
       "message": "gh authenticated",
       "skip_reason": null
     }

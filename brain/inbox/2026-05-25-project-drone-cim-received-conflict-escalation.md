@@ -2,7 +2,7 @@
 schema_version: 1.2.0
 date: 2026-05-25
 title: Project Drone CIM landed 2026-05-25 — REJECT-conflict escalates to CIM stage, Kay's direction call still required
-status: backlog
+status: resolved
 source: email
 urgency: high
 entity: "[[entities/carlos-nieto-dca]]"
@@ -65,4 +65,4 @@ The CIM PDF and countersigned NDA both live only in Gmail (thread `19e41c8761d4c
 
 ## Outcome
 
-*Pending Kay's direction call (carry from [[brain/inbox/2026-05-25-project-drone-nda-signed-reject-conflict]]).*
+REJECT reversed 2026-05-26 per Kay's direction; deal moved into active pipeline. CIM auto-trigger pipeline executed: Drive subfolders created under `ACTIVE DEALS / PROJECT DRONE`, CIM + signed NDA filed to `CIM/` and `LEGAL/`, Attio Company `Project Drone` (`08d198dc-f9eb-4c7e-b127-63fbea65dc60`) added to `active_deals_owners` list at stage `Financials Received` (entry `571b7bb8-8dce-4671-b894-de660ce0bd72`), Slack notification posted to `#active-deals`. See [[brain/inbox/2026-05-26-project-drone-cim-intake-deal-evaluation-trigger]] for the intake record handing off to deal-evaluation.

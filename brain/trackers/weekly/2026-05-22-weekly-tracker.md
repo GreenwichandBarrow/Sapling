@@ -46,7 +46,7 @@ tags:
 | CEO LinkedIn DMs | 0 | — | — | — | — |
 | Intermediary intro | 0 | 0 | 0 | 0 | — |
 | Operations calls | 40 | — | — | 0 | — |
-| DealsX · email (deferred) | — | — | — | — | — |
+| DealsX · email | 200 | 7 | 1 | — | 3.50% |
 | DealsX · LinkedIn DM (deferred) | — | — | — | — | — |
 | Conference | 0 | 0 | 0 | 0 | — |
 
@@ -68,6 +68,7 @@ tags:
 - Operations snapshot fetched: 2026-05-22T13:01:04Z
 - Pipeline total deal count: 150
 - Prior week tracker present: True
+- DealsX · email row: manually fed from DealsX UI screenshot (week 2026-05-18 → 2026-05-22, All Campaigns filter). Source-of-truth file: `brain/context/dealsx-weekly-snapshot.json`. Open rate / open count not surfaced by DealsX at this layer (recorded as 0 / 0.00%). Positive Reply Rate of replied = 14.29% (1/7). Bounce rate 0.00%.
 
 ## Narrative (optional manual additions)
 

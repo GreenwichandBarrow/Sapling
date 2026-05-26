@@ -2,7 +2,7 @@
 schema_version: 1.2.0
 date: 2026-05-25
 title: Clarify Project Drone direction — NDA signed 2026-05-23 contradicts 2026-05-20 REJECT decision
-status: backlog
+status: resolved
 source: email
 urgency: high
 entity: "[[entities/carlos-nieto-dca]]"
@@ -55,4 +55,4 @@ Three plausible interpretations:
 
 ## Outcome
 
-*Pending Kay's direction call.*
+REJECT reversed 2026-05-26 per Kay's direction; deal moved into active pipeline. CIM auto-trigger pipeline executed downstream (see [[brain/inbox/2026-05-25-project-drone-cim-received-conflict-escalation]] outcome for the operational artifacts). See [[brain/inbox/2026-05-26-project-drone-cim-intake-deal-evaluation-trigger]] for the intake record handing off to deal-evaluation.

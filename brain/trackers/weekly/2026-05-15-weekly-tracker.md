@@ -24,7 +24,7 @@ tags:
 | Outreach sends (SENT verb-tag bullets) | 1 | 1 | 0 |
 | Drafts created (DRAFTED bullets) | 4 | 1 | +3 |
 | CEO LinkedIn DMs | 1 | 0 | +1 |
-| Operations dials (window-corrected) | 0 | 0 | 0 |
+| Operations dials (window-corrected) | 133 | 235 | -102 |
 | Owner conversations | 2 | — | — |
 | NDAs signed | 0 | — | — |
 | Financials received | 0 | — | — |
@@ -36,7 +36,7 @@ tags:
 
 **Active niches** (4): Insurance Brokerage, Fine Art Storage, Equipment Servicing, Managed IT Services
 **New contacts (Attio total):** 150 (WoW delta pending historical snapshots)
-**Operations dials lifetime:** 0
+**Operations dials lifetime:** 707
 
 ## Channel Performance
 
@@ -45,8 +45,8 @@ tags:
 | CEO emails | 1 | — | — | — | — |
 | CEO LinkedIn DMs | 1 | — | — | — | — |
 | Intermediary intro | 2 | 2 | 2 | 0 | — |
-| Operations calls | 0 | — | — | 0 | — |
-| DealsX · email (deferred) | — | — | — | — | — |
+| Operations calls | 40 | — | — | 0 | — |
+| DealsX · email | 436 | 11 | 5 | — | 2.5% |
 | DealsX · LinkedIn DM (deferred) | — | — | — | — | — |
 | Conference | 0 | 0 | 0 | 0 | — |
 
@@ -54,18 +54,18 @@ tags:
 
 | Niche | Operations dials lifetime | Active |
 |-------|---------------------------|--------|
-| Premium Pest Management | 0 | — |
+| Premium Pest Management | 705 | ✓ |
 | IPLC | 0 | — |
 | Art Insurance | 0 | — |
-| Domestic TCI | 0 | — |
+| Domestic TCI | 2 | ✓ |
 | Art Storage | 0 | — |
 | Art Advisory | 0 | — |
 
 ## Data Sources
 
 - Attio snapshot fresh: True
-- Attio snapshot fetched: 2026-05-15T12:00:56Z
-- Operations snapshot fetched: 2026-05-14T22:00:45Z
+- Attio snapshot fetched: 2026-05-26T16:00:58Z
+- Operations snapshot fetched: 2026-05-26T13:01:09Z
 - Pipeline total deal count: 150
 - Prior week tracker present: True
 

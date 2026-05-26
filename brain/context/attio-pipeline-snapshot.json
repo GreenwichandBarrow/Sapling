@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-26T16:00:58Z",
+  "fetched_at": "2026-05-26T17:00:51Z",
   "list_id": "0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b",
   "list_name": "Active Deals \u2013 Owners",
   "stages": [
@@ -65,6 +65,17 @@
       "arr_bucket": null,
       "last_interaction": "2026-03-31T14:52:36.000000000Z",
       "category": "Insurance"
+    },
+    {
+      "record_id": "08d198dc-f9eb-4c7e-b127-63fbea65dc60",
+      "company": "Project Drone",
+      "stage": "Financials Received",
+      "stage_since": "2026-05-26T16:50:05.122000000Z",
+      "location": null,
+      "employee_range": null,
+      "arr_bucket": null,
+      "last_interaction": null,
+      "category": null
     },
     {
       "record_id": "aaa67973-28df-4250-bde3-3c9ce44d7a0b",

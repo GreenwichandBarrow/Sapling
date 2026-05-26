@@ -92,6 +92,28 @@ Build a map of **niche name (Col B) → outreach channel (Col D)**. Then for eac
 
 This filter runs BEFORE the reply check — no point checking replies for targets JJ won't call.
 
+### DealsX Universe Cross-Reference (CRITICAL — HARD doctrine 2026-05-26)
+
+Even within a JJ-Call-Only niche, individual companies on the Full Target List can be touched by DealsX cold email (Sam's team manages the DealsX universe externally — overlap happens). Per `memory/feedback_outreach_channel_universes_separate.md`: **outreach target universes must remain separate across all channels.** No company may appear on both a JJ Call Log tab and the DealsX target universe.
+
+**Cross-reference at every tab build:**
+
+```bash
+# DealsX universe source — Drive Verticals sheet
+DEALSX_SHEET="1VaviHqaJT9Wtm6X1h9B6Q8aOrA8adTiBvt851pkEUFg"
+# Pest-relevant tabs (extend as new niches activate DealsX):
+# - 'Specialty Pest & ENV Service (Good Fit) Valid'  (~55 contacts, Col I = Company Name)
+# - 'Specialty Pest& ENV Service(Probable Fit) Valid' (~575 contacts)
+# Combined unique normalized companies ~950 (lowercase + suffix-stripped)
+```
+
+- **Match logic:** lowercase, strip Inc/LLC/Corp/Co/Ltd/Services, collapse punctuation. Strict-on-match — `Pest Management Services Inc` ≠ `Pest Management Inc`. If uncertain, KEEP and log.
+- **Removal pattern:** when a match is found, DELETE the row from the Call Log tab. Do NOT annotate-and-keep — that was the OLD pattern, retired 2026-05-26.
+- **Ordering:** the cross-reference fires BEFORE Apollo enrichment is spent on the row. Apollo credits cost money; eliminate first, then enrich the survivors. Per Kay 2026-05-26: *"enRich through Apollo, not before you eliminate those ones."*
+- **Snapshot before delete:** `brain/context/rollback-snapshots/jj-dealsx-dedup-{ISO timestamp}.json`.
+- **Tab-floor flag:** if dedup drops a daily Call Log tab below 20 rows, surface to Kay; do NOT auto-backfill from other lanes (could reintroduce overlap).
+- **Audit precedent:** 2026-05-26 retro-cleanup removed 43 rows total across Tue/Wed/Thu/Fri 5/24-30 tabs. Going forward this fires at build time, not as a cleanup pass. See `headless-sunday-prep-prompt.md` Step 6 for the prep-mode mechanic.
+
 **Sheet IDs (all target lists):**
 - Art Insurance: `15M76-gpcklwc47HDXIwyFC9Tj8K4wDOor4i0uxCYyHQ`
 - Domestic TCI: `1lEAx-3pEshsSc0Rix4KunJ38mzHahjAmV6nQA_cuwLw`
@@ -268,6 +290,7 @@ If Call Status = "Connected" and sentiment is positive → flag for pipeline-man
 - [ ] No targets from Do Not Call tab included in call list
 - [ ] **No targets with JJ 1st Call Status (Col U) = "PE-OWNED - SKIP"** (or any other skip-flag) pulled into this week's tabs. Post-2026-04-23 schema: skip-flag lives in Col U (1st Call Status), not Col T. These are companies previously flagged as PE/rollup-owned and permanently excluded from outreach per `memory/feedback_no_pe_owned_targets.md`.
 - [ ] **Cross-reference every selected row against the Do Not Call tab by exact Company (Col B) match.** If a company appears on both Do Not Call AND the Full Target List pool, remove from pool. This catches the case where PE re-screen (target-discovery Phase 2 Step 3) moved a company to DNC but the Full Target List row wasn't marked SKIP.
+- [ ] **Cross-reference every selected row against the DealsX target universe** (sheet `1VaviHqaJT9Wtm6X1h9B6Q8aOrA8adTiBvt851pkEUFg`, Pest tabs `Specialty Pest & ENV Service (Good Fit) Valid` + `Specialty Pest& ENV Service(Probable Fit) Valid`). Normalized company-name match (lowercase + strip Inc/LLC/Corp/Co/Ltd + collapse punctuation; strict-on-match). Drop every matching row from the Call Log tab — do NOT annotate-and-keep. Snapshot pre-deletion to `brain/context/rollback-snapshots/jj-dealsx-dedup-{ISO timestamp}.json`. Per `memory/feedback_outreach_channel_universes_separate.md` (HARD doctrine, 2026-05-26). Tab-floor flag (<20 rows after dedup) emits `JJ-OPERATIONS WARN` to stdout — does NOT auto-backfill.
 
 **Enrichment integrity (hard gate — blocks Slack send):**
 - [ ] Locate pool artifact at `brain/context/jj-week-pool-{YYYY-MM-DD}.md` (written by target-discovery Phase 2 Step 1). If artifact missing → STOP. Pool selection never ran.

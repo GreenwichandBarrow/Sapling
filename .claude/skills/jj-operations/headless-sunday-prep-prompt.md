@@ -18,14 +18,24 @@ You are running the `jj-operations` skill in **prep mode** non-interactively und
    - Copy 23 columns (A-W) from Full Target List rows that match pool artifact selection. **Drop rows where Col K (Owner Name) is blank** from this week's pool (Apollo enrichment failures). If remaining pool drops below 100 rows after dropping blanks, STOP per Failure handling. Tier 1 only for Sunday-prep — do not mix in Tier 2 generic-gatekeeper rows even though SKILL.md lines 50-62 allow them for pure cold calls.
 4. **Cross-reference Do Not Call** per SKILL.md Step 2 — drop any company on DNC.
 5. **Cross-reference skip flags** — drop rows where Col U (1st Call Status) = "PE-OWNED - SKIP" or any other skip flag.
-6. **Verify pool→tabs coverage** — every pool row appears on exactly one Mon-Fri tab; no drift between enriched-pool and called-rows.
-7. **Do NOT draft Slack** — Monday 10am Slack delivery is a separate trigger; prep mode stops at tab creation.
+6. **Cross-reference DealsX universe** per `memory/feedback_outreach_channel_universes_separate.md` (HARD rule, codified 2026-05-26) — drop any company that appears in the DealsX target sheet `1VaviHqaJT9Wtm6X1h9B6Q8aOrA8adTiBvt851pkEUFg` ("Greenwich & Barrow - New Verticals (May)"), Pest-relevant tabs:
+   - `Specialty Pest & ENV Service (Good Fit) Valid` (Col I = Company Name, ~55 contacts)
+   - `Specialty Pest& ENV Service(Probable Fit) Valid` (~575 contacts)
+   - Combined universe ~950 unique normalized companies.
+   Match logic: lowercase company name, strip suffixes (Inc/LLC/Corp/Co/Ltd/Services), collapse punctuation. Strict-on-match (avoid false positives like `Pest Management Services Inc` vs `Pest Management Inc` — different firms; if uncertain KEEP and log to stdout).
+   **Remove rows entirely (not annotate-and-keep)** per the 2026-05-26 calibration. Annotation-and-skip is the OLD pattern, retired.
+   Snapshot pre-deletion state to `brain/context/rollback-snapshots/jj-dealsx-dedup-{ISO timestamp}.json` (full row dumps + match metadata).
+   **Tab-floor flag:** if dedup drops any daily tab below 20 rows (JJ's call floor), emit `JJ-OPERATIONS WARN: {tab} below floor after DealsX dedup (N rows, floor 20)` to stdout. Do NOT auto-backfill — Kay decides whether to relax the filter or accept the short tab.
+   **Ideal upstream:** this filter should ideally fire in Phase 2 (3pm Apollo enrichment) so Apollo credits aren't spent on rows about to be deleted. This Sunday-prep step is the safety net at 6pm tab-build until Phase 2 is hardened. Track the Phase 2 lift as a separate skill-edit.
+7. **Verify pool→tabs coverage** — every pool row appears on exactly one Mon-Fri tab; no drift between enriched-pool and called-rows.
+8. **Do NOT draft Slack** — Monday 10am Slack delivery is a separate trigger; prep mode stops at tab creation.
 
 ## What success looks like
 
 - 5 new Call Log tabs `Call Log {Mon}` through `Call Log {Fri}` exist on master sheet.
 - Each tab has rows with Col K (Owner Name) populated.
-- Total rows across 5 tabs ≈ pool size (modulo Do Not Call + skip-flag drops).
+- Total rows across 5 tabs ≈ pool size (modulo Do Not Call + skip-flag + DealsX-dedup drops).
+- **Zero overlap with the DealsX target universe** — verified by Step 6 dedup with snapshot.
 - Previous week's tabs hidden (archived).
 
 ## Forbidden in headless mode
@@ -33,6 +43,9 @@ You are running the `jj-operations` skill in **prep mode** non-interactively und
 - Asking the user anything.
 - Building tabs on a missing pool artifact.
 - Skipping the pre-flight pool-artifact gate (existence + size + `- row:` line count).
+- **Skipping the Step 6 DealsX cross-reference** — this enforces a HARD doctrine rule per `feedback_outreach_channel_universes_separate.md`. Tabs cannot land with DealsX overlap.
+- **Adding rows that overlap the DealsX target universe.** No exceptions.
+- **Annotating-and-keeping DealsX-touched rows.** Retired pattern — rows are removed, not flagged.
 - Drafting the Monday 10am Slack message (out of scope for prep).
 - Presenting RECOMMEND / YES / NO / DISCUSS framings.
 

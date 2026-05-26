@@ -386,6 +386,8 @@ Read current sheet to find next empty column, then write data to all 3 tabs:
 
 **Weekly Detail tab** — write new column with all metrics. **CRITICAL: distinguish delta vs snapshot.**
 
+**Channel breakouts on Weekly Detail:** EMAIL (Kay Email), PHONE / JJ, LINKEDIN DM, CONFERENCE, WARM INTRO, and **DEALSX** (added 2026-05-26, rows 55-61). DealsX rows mirror the Sent / Replied / Positive / Bounced / Reply Rate / Positive-of-Replied structure. Source data: `brain/context/dealsx-weekly-snapshot.json` (manually maintained, no API). Mirrors the channel breakouts shown on the Streamlit dashboard.
+
 **WEEKLY DELTAS (what happened this week):**
 - Outreach Emails Sent, Cold Calls Made, Responses Received, New Contacts Added, Networking Meetings, Introductions Received
 - Stage 1 Calls, Qualified Opportunities (newly qualified this week), Stage 2 Calls

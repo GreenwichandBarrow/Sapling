@@ -33,9 +33,19 @@ Architecture lives in `memory/project_personal_task_tracker.md`. Update that mem
 5. **`sync-done-status`** mid-week reflects day-tab checked slots back to To Do.
 6. **Next Sunday's `build-week`** auto-pulls the incomplete day-tab items into the new Week tab — closing the loop.
 
-**Alignment doctrine:** at the moment `distribute-week` finishes Sunday, Week tab content == day tabs content. After that, day tabs become the source of truth for execution; the Week tab is read-mostly until next Sunday.
+**Alignment doctrine:** at the moment `distribute-week` finishes Sunday, Week tab content == day tabs content. After that, day tabs become the source of truth for execution; **the Week tab is FROZEN as the Sunday plan-of-record until next Sunday's `build-week` runs.**
 
-**Carryover doctrine (changed 2026-05-26):** carryover is now AUTO-PULLED from prior week's day tabs into the new Week tab during `build-week`. Kay reviews on the Week tab and decides per item. The old manual `report` → walk-each-item → `move-day-item` pattern is **RETIRED** for routine carryover. `report` remains useful for ad-hoc health checks but is no longer the Sunday gating step.
+**Forbidden pattern (clarified 2026-05-26 after Kay's correction):** do NOT mirror mid-week day-tab edits back to the Week tab. The Week tab is the Sunday-agreed PLAN; the day tabs are EXECUTION. Drift between the two during the week is information, not a bug. Treating the Week tab as a live mirror of day tabs makes it redundant. The "rebuild Week tab from current day tabs" anti-pattern (executed once today, 2026-05-26, and then corrected) is forbidden going forward.
+
+**Carryover doctrine (changed 2026-05-26):** carryover is AUTO-PULLED from prior week's day tabs into the new Week tab during `build-week` step 6a — read BEFORE `distribute-week` overwrites them. Kay reviews on the Week tab and decides per item. The old manual `report` → walk-each-item → `move-day-item` pattern is **RETIRED** for routine carryover. `report` remains useful for ad-hoc health checks but is no longer the Sunday gating step.
+
+**Order-of-operations (critical, per Kay 2026-05-26):**
+```
+1. build-week           [READ day tabs (= prior week) → WRITE Week tab: clear + recurring + carryover]
+2. Review on Week tab   [Kay + Claude together — keep/move/Long Term/drop per item]
+3. distribute-week --force  [WRITE day tabs from Week tab — overwrites prior week]
+```
+**`distribute-week` must NEVER run before `build-week` completes its carryover-pull.** Otherwise the prior week's day-tab state is destroyed before the carryover can be captured. The two verbs are intentionally separate so the human review gate (step 2) sits between them.
 
 **Cleanliness model:** No row relocation, no checkbox-sweep, no donut/%-display. `To Do` cleanliness is achieved via **saved filter/sort views in the Sheet UI** (e.g. filter `Status != Completed`, sort by `Due`), NOT by moving completed rows to another tab. Completed rows stay in place with `Status=Completed` and render via done-row CF.
 

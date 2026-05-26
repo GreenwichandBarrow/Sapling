@@ -43,9 +43,20 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 SNAPSHOT_DIR = REPO_ROOT / "brain" / "context" / "rollback-snapshots"
 GOG_CREDS_PATH = Path.home() / ".config" / "gogcli" / "credentials.json"
 GOG_ACCOUNT = os.environ.get("GOG_ACCOUNT", "kay.s@greenwichandbarrow.com")
-TRACKER_SHEET_ID = os.environ.get(
-    "TRACKER_SHEET_ID", "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk"
-)
+def _resolve_tracker_sheet_id() -> str:
+    """Env override > resolver > migration fallback. Mirrors task_tracker.py pattern."""
+    env_id = os.environ.get("TRACKER_SHEET_ID")
+    if env_id:
+        return env_id
+    try:
+        sys.path.insert(0, str(Path(__file__).parent))
+        from tracker_sheet_resolver import resolve_current_sheet_id
+        return resolve_current_sheet_id()
+    except Exception as e:
+        print(f"build_day_tabs: resolver fallback failed ({e}); using migration default", file=sys.stderr)
+        return "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk"
+
+TRACKER_SHEET_ID = _resolve_tracker_sheet_id()
 
 # ---- layout (mirrors task_tracker.py DAY_* constants — kept in sync) --------
 DAY_TAB_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
@@ -350,10 +361,16 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
 # --------------------------------------------------------------- main
 
 def main():
+    global TRACKER_SHEET_ID
     ap = argparse.ArgumentParser(prog="build_day_tabs")
     ap.add_argument("--dry-run", action="store_true",
                     help="report what would be created/changed; NO writes")
+    ap.add_argument("--sheet-id", default=None,
+                    help="target spreadsheet ID (default: resolver → current week's TO DO file)")
     args = ap.parse_args()
+
+    if args.sheet_id:
+        TRACKER_SHEET_ID = args.sheet_id
 
     SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H%M%SZ")

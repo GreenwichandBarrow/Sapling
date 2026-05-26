@@ -56,11 +56,22 @@ SNAPSHOT_KEEP = 5
 GOG_CREDS_PATH = Path.home() / ".config" / "gogcli" / "credentials.json"
 GOG_ACCOUNT = os.environ.get("GOG_ACCOUNT", "kay.s@greenwichandbarrow.com")
 
-# Sheet ID — read from env override, fallback to migration default.
-TRACKER_SHEET_ID = os.environ.get(
-    "TRACKER_SHEET_ID",
-    "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
-)
+# Sheet ID resolution — env override > resolver pointer > Drive search > migration fallback.
+# Resolver lives in scripts/tracker_sheet_resolver.py (2026-05-26 refactor: weekly-files architecture).
+def _resolve_tracker_sheet_id() -> str:
+    env_id = os.environ.get("TRACKER_SHEET_ID")
+    if env_id:
+        return env_id
+    try:
+        sys.path.insert(0, str(Path(__file__).parent))
+        from tracker_sheet_resolver import resolve_current_sheet_id
+        return resolve_current_sheet_id()
+    except Exception as e:
+        print(f"task-tracker-manager: resolver fallback failed ({e}); "
+              f"using migration default", file=sys.stderr)
+        return "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk"
+
+TRACKER_SHEET_ID = _resolve_tracker_sheet_id()
 TRACKER_SHEET_URL = f"https://docs.google.com/spreadsheets/d/{TRACKER_SHEET_ID}/edit"
 
 # --------------------------------------------------------------- palette (hex)
@@ -277,10 +288,27 @@ HABITS_DEFAULT = [
 # --------------------------------------------------------------- auth + API
 
 class SheetsClient:
-    def __init__(self):
+    """Per-sheet API client. Constructor accepts `sheet_id` so Phase 3 cmd_build_week
+    can hold two clients simultaneously (prior file + new file) for cross-file carryover.
+
+    Defaults to module-level TRACKER_SHEET_ID (resolver-driven). For long-running
+    processes that need a fresh resolve, use `SheetsClient.current()`.
+    """
+    def __init__(self, sheet_id: str | None = None):
+        self.sheet_id = sheet_id or TRACKER_SHEET_ID
         self.token = _get_access_token()
         self.session = requests.Session()
         self.session.headers.update({"Authorization": f"Bearer {self.token}"})
+
+    @classmethod
+    def current(cls) -> "SheetsClient":
+        """Fresh-resolve the current sheet ID via the resolver (bypasses module-load cache)."""
+        try:
+            sys.path.insert(0, str(Path(__file__).parent))
+            from tracker_sheet_resolver import resolve_current_sheet_id
+            return cls(resolve_current_sheet_id())
+        except Exception:
+            return cls(TRACKER_SHEET_ID)
 
     def _retry(self, fn):
         last = None
@@ -308,14 +336,14 @@ class SheetsClient:
 
     def get_metadata(self) -> dict:
         return self._retry(lambda: self.session.get(
-            f"https://sheets.googleapis.com/v4/spreadsheets/{TRACKER_SHEET_ID}",
+            f"https://sheets.googleapis.com/v4/spreadsheets/{self.sheet_id}",
             params={"fields": "sheets(properties(sheetId,title,gridProperties,index)),namedRanges"},
             timeout=30,
         ))
 
     def get_values(self, range_a1: str) -> list[list]:
         data = self._retry(lambda: self.session.get(
-            f"https://sheets.googleapis.com/v4/spreadsheets/{TRACKER_SHEET_ID}/values/{range_a1}",
+            f"https://sheets.googleapis.com/v4/spreadsheets/{self.sheet_id}/values/{range_a1}",
             params={"valueRenderOption": "UNFORMATTED_VALUE", "dateTimeRenderOption": "FORMATTED_STRING"},
             timeout=30,
         ))
@@ -323,7 +351,7 @@ class SheetsClient:
 
     def values_update(self, range_a1: str, values: list[list]) -> dict:
         return self._retry(lambda: self.session.put(
-            f"https://sheets.googleapis.com/v4/spreadsheets/{TRACKER_SHEET_ID}/values/{range_a1}",
+            f"https://sheets.googleapis.com/v4/spreadsheets/{self.sheet_id}/values/{range_a1}",
             params={"valueInputOption": "USER_ENTERED"},
             json={"values": values},
             timeout=30,
@@ -331,7 +359,7 @@ class SheetsClient:
 
     def values_append(self, range_a1: str, values: list[list]) -> dict:
         return self._retry(lambda: self.session.post(
-            f"https://sheets.googleapis.com/v4/spreadsheets/{TRACKER_SHEET_ID}/values/{range_a1}:append",
+            f"https://sheets.googleapis.com/v4/spreadsheets/{self.sheet_id}/values/{range_a1}:append",
             params={"valueInputOption": "USER_ENTERED", "insertDataOption": "INSERT_ROWS"},
             json={"values": values},
             timeout=30,
@@ -339,7 +367,7 @@ class SheetsClient:
 
     def values_clear(self, range_a1: str) -> dict:
         return self._retry(lambda: self.session.post(
-            f"https://sheets.googleapis.com/v4/spreadsheets/{TRACKER_SHEET_ID}/values/{range_a1}:clear",
+            f"https://sheets.googleapis.com/v4/spreadsheets/{self.sheet_id}/values/{range_a1}:clear",
             timeout=30,
         ))
 
@@ -347,7 +375,7 @@ class SheetsClient:
         if not requests_list:
             return {}
         return self._retry(lambda: self.session.post(
-            f"https://sheets.googleapis.com/v4/spreadsheets/{TRACKER_SHEET_ID}:batchUpdate",
+            f"https://sheets.googleapis.com/v4/spreadsheets/{self.sheet_id}:batchUpdate",
             json={"requests": requests_list},
             timeout=60,
         ))
@@ -514,7 +542,7 @@ def snapshot_ranges(client: SheetsClient, verb: str, ranges: list[str]) -> str:
     SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
     ts = datetime.now().strftime("%Y%m%d-%H%M%S")
     path = SNAPSHOT_DIR / f"tasks-{verb}-{ts}.json"
-    snapshot = {"verb": verb, "timestamp": ts, "sheet_id": TRACKER_SHEET_ID, "ranges": {}}
+    snapshot = {"verb": verb, "timestamp": ts, "sheet_id": client.sheet_id, "ranges": {}}
     for r in ranges:
         try:
             snapshot["ranges"][r] = client.get_values(r)

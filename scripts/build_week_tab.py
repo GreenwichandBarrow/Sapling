@@ -258,9 +258,11 @@ def main():
     ap = argparse.ArgumentParser(prog="build_week_tab")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--no-populate", action="store_true")
+    ap.add_argument("--sheet-id", default=None,
+                    help="target spreadsheet ID (default: resolver via task_tracker)")
     args = ap.parse_args()
 
-    client = tt.SheetsClient()
+    client = tt.SheetsClient(args.sheet_id) if args.sheet_id else tt.SheetsClient()
     meta = client.get_metadata()
     wd = tt.week_dates(date.today())
     existing = tt.find_tab(meta, tt.TAB_WEEK)

@@ -38,6 +38,16 @@ Starting. Vault has 5 candidate files (10-co June experiment plan, holdco archit
 Starting. Fetching Capstone Partners pest sector article first (primary source), then Potomac Company site for pest/services transaction list + team.
 → READY
 
+## [23:25] web-fetcher
+DONE. Both sources extracted.
+
+**Capstone (Jan 30 2025, Izzy Jack):** Global pest $24.4B 2024 → $49.7B 2034 @ 6.5% CAGR (Future Market Insights). 2024 M&A: 97 deals, +27.6% YoY, 50.5% strategic / 49.5% financial, add-ons +29.4% YoY. Rollins 32 deals/$106M Q1-Q3, Rentokil 23 deals/$255.1M Q1-Q3. Rentokil/Terminix Dec 2021: 3.7x EV/Rev, 19.9x EV/EBITDA ($7.6B). 16 named transactions extracted. PE platforms: Certus (Imperial), Rockit (Halle), PestCo (TSCP), Barefoot (Incline), Action (Shore), Senske (GCTR). Aptive→Citation Capital Aug 2024 — Aptive $450.5M rev 2023 (+9% YoY), #5 N.Am residential. 5 pull-quotes ready — Kenneth Wasik anchor: "one of the strongest sectors in the Consumer industry and one of the most prolific M&A sectors due to annuity revenues, leverage, and ease of integration." NO sub-segment quantitative breakdown, NO EBITDA margin data — gaps for other sources to fill.
+
+**Potomac:** Sell-side pest specialist boutique. Claim: "Since 2003, advised on hundreds of transactions in pest control — totaling more than $10 billion." 21 of 24 deals 2022-2025 are pest (87.5%). Notable 2024-2025 closes: Saela→Rollins, ProActive→Greenix, Spidexx→Greenix, Hargrove→Rollins, Beaver UK→Orkin, Eitan Amichai (Israel)→Rentokil, multiple Barefoot/PestCo/Anticimex platform adds, Bug House→Rollins. Sole named pest advisor: **Paul Giannamore, Managing Director** — author of all 14 pest-specific commentary posts dating to 2018 (notably "I'm Calling a Top" Nov 2018, "Beginning of the End? Multiples Contract" Jan 2020 post-ServiceMaster). No team page on site. Useful Potomac-as-Cap-IQ-proxy for full deal list + Giannamore as a name to drop in deck.
+
+Full digest returned to orchestrator.
+→ DONE
+
 ## [23:21] conference-call-loader
 Starting. NJPMA/Hoffman note FOUND: `brain/library/internal/pest-management/2026-04-29-hoffman-exterminating-presentation.md` (NJPMA Business Management Workshop, Topgolf Edison NJ, 2026-04-29 Hour 1; Granola id `1909eae1-cb25-4f37-a2e0-15bf780df706`). Oswaldo Ponce call from today: post-call-analyzer queue STUCK (queue file `not_Gn4BVFoV13pDKF.json` queued 13:00 ET, no vault note). Pulling transcript directly from Granola API.
 → READY

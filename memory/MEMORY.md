@@ -161,7 +161,7 @@ Retrieval pointers only — doctrine lives in topic files. To find a memory: gre
 ## Investors / LPs / Budget
 - [feedback_investors_industry_agnostic.md](feedback_investors_industry_agnostic.md) — 12 LPs industry-agnostic
 - [feedback_investor_fiscal_calendar.md](feedback_investor_fiscal_calendar.md) — Fiscal Feb 7-Feb 7, Q1 due May 7
-- [feedback_investor_prep_format.md](feedback_investor_prep_format.md) — Investor preps: short, bottom-line, no team mentions
+- [feedback_investor_prep_format.md](feedback_investor_prep_format.md) — Monthly prep = 7 tight sections ≤1pg. Active Niches = top-2 + "3-N. Rest of stack per tracker". No standalone Thesis/Methodology sections. Jeff 4/22/26 = template
 - [feedback_investor_budget_format.md](feedback_investor_budget_format.md) — Budget = one inline bullet $XXK (XX% of $550K) [context]
 - [feedback_investor_call_closing.md](feedback_investor_call_closing.md) — End calls asking deals/trends
 - [project_guillermo_lender_list.md](project_guillermo_lender_list.md) — 9 lenders: Avidbank, Newburyport, East West, Fidus, Oak North, Parkside, Saratoga, TruWest, Plexus

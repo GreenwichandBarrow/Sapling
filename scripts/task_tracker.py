@@ -2491,11 +2491,77 @@ def cmd_reformat(args) -> int:
 
     if R:
         client.batch_update(R)
+
+    # ---- Pack-to-top auto-compact (added 2026-05-26 per feedback_task_tracker_pack_to_top) ----
+    # Read each day tab + each Week-tab day-block, filter to non-empty (status, task) pairs,
+    # write back packed (items at top, empties below). Closes gaps from manual deletes.
+    compact_summary = {"day_tab_packed": 0, "week_block_packed": 0}
+
+    def _flat(vals, n=15, default=""):
+        out = []
+        for v in (vals or []):
+            cell = v[0] if (isinstance(v, list) and len(v) > 0) else default
+            out.append(cell)
+        while len(out) < n: out.append(default)
+        return out[:n]
+
+    # Day tabs
+    for day_tab in DAY_TAB_NAMES:
+        try:
+            statuses = _flat(client.get_values(f"'{day_tab}'!A{DAY_SLOT_FIRST_ROW}:A{DAY_SLOT_LAST_ROW}"), default=False)
+            tasks    = _flat(client.get_values(f"'{day_tab}'!B{DAY_SLOT_FIRST_ROW}:B{DAY_SLOT_LAST_ROW}"), default="")
+        except Exception:
+            continue
+        packed = [(s, t) for s, t in zip(statuses, tasks) if str(t or "").strip()]
+        original_non_empty = sum(1 for t in tasks if str(t or "").strip())
+        # Detect if compact is needed: are non-empty items already at top with no gaps?
+        needs_compact = False
+        for i, t in enumerate(tasks):
+            if not str(t or "").strip() and any(str(tt or "").strip() for tt in tasks[i+1:]):
+                needs_compact = True; break
+        if needs_compact:
+            n = len(packed)
+            new_status = [[s] for s, _ in packed] + [[False]] * (15 - n)
+            new_task   = [[t] for _, t in packed] + [[""]] * (15 - n)
+            client.values_update(f"'{day_tab}'!A{DAY_SLOT_FIRST_ROW}:A{DAY_SLOT_LAST_ROW}", new_status)
+            client.values_update(f"'{day_tab}'!B{DAY_SLOT_FIRST_ROW}:B{DAY_SLOT_LAST_ROW}", new_task)
+            compact_summary["day_tab_packed"] += 1
+            print(f"task-tracker-manager: packed {day_tab} day tab ({n} items at top)")
+
+    # Week-tab day-blocks
+    week_tab = find_tab(meta, TAB_WEEK)
+    if week_tab is not None:
+        for i, day_name in enumerate(WK_DAY_ORDER):
+            sc = col_letter(wk_status_col(i))
+            cc = col_letter(wk_content_col(i))
+            try:
+                statuses = _flat(client.get_values(f"'{TAB_WEEK}'!{sc}{WK_SLOT_FIRST_ROW}:{sc}{WK_SLOT_LAST_ROW}"), default=False)
+                tasks    = _flat(client.get_values(f"'{TAB_WEEK}'!{cc}{WK_SLOT_FIRST_ROW}:{cc}{WK_SLOT_LAST_ROW}"), default="")
+            except Exception:
+                continue
+            packed = [(s, t) for s, t in zip(statuses, tasks) if str(t or "").strip()]
+            needs_compact = False
+            for j, t in enumerate(tasks):
+                if not str(t or "").strip() and any(str(tt or "").strip() for tt in tasks[j+1:]):
+                    needs_compact = True; break
+            if needs_compact:
+                n = len(packed)
+                new_status = [[s] for s, _ in packed] + [[False]] * (15 - n)
+                new_task   = [[t] for _, t in packed] + [[""]] * (15 - n)
+                client.values_update(f"'{TAB_WEEK}'!{sc}{WK_SLOT_FIRST_ROW}:{sc}{WK_SLOT_LAST_ROW}", new_status)
+                client.values_update(f"'{TAB_WEEK}'!{cc}{WK_SLOT_FIRST_ROW}:{cc}{WK_SLOT_LAST_ROW}", new_task)
+                compact_summary["week_block_packed"] += 1
+                print(f"task-tracker-manager: packed Week tab {day_name} day-block ({n} items at top)")
+
     trace("reformat", "rules-reapplied", [
         f"- applied {len(R)} conditional-format rules",
         f"- snapshot: {snap}",
+        f"- pack-to-top: {compact_summary['day_tab_packed']} day tab(s) compacted",
+        f"- pack-to-top: {compact_summary['week_block_packed']} Week-tab day-block(s) compacted",
     ])
-    print(f"task-tracker-manager: reformatted ({len(R)} conditional-format rule(s) applied)")
+    print(f"task-tracker-manager: reformatted ({len(R)} CF rules + "
+          f"{compact_summary['day_tab_packed']} day tabs + "
+          f"{compact_summary['week_block_packed']} Week blocks compacted)")
     return 0
 
 

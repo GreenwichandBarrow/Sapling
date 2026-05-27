@@ -65,6 +65,8 @@ Steps are atomic within a single `build-week` invocation. No separate human gate
 
 **Cleanliness model:** No row relocation, no checkbox-sweep, no donut/%-display. `To Do` cleanliness is achieved via **saved filter/sort views in the Sheet UI** (e.g. filter `Status != Completed`, sort by `Due`), NOT by moving completed rows to another tab. Completed rows stay in place with `Status=Completed` and render via done-row CF.
 
+**Pack-to-top doctrine (codified 2026-05-26):** every verb that writes to day-tab or Week-tab priority slots MUST keep items packed at the TOP of the 15-slot range. No leading empty rows, no gaps between items. The 15 slots are a CAPACITY CEILING, not a fixed seating chart. `promote`, `schedule-to-day-slot`, `move-day-item`, `distribute-week`, `sync-done-status`, recurring-stamp, carryover-pull — all use next-empty-slot logic. `--slot N` override allowed but warns if it leaves earlier slots empty. See `memory/feedback_task_tracker_pack_to_top.md`.
+
 **Recurring items (live in `To Do`, no separate tab):** A recurring item is a normal `To Do` row with `Horizon` = `Weekly Recurring {day}` (e.g. `Weekly Recurring Mon`) and `Status = On-going`. The Sunday `build-week` ceremony reads these rows directly from `To Do` and stamps each onto its day's slots after the day-blocks are cleared. Occupied-slot conflicts log + skip (Kay resolves manually). Primary edit path is the `recurring-add` / `recurring-remove` verbs (which write/clear `To Do` rows with the right Horizon); Kay can also set the `Horizon` dropdown directly on any `To Do` row. Known weekly recurring G&B items: Mon — Process payroll, Mon — Process conference registrations, Wed — Niche intel review, Fri — Weekly review (system health + M&A + budget).
 
 ## When to invoke

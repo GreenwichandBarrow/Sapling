@@ -11,4 +11,6 @@ tags:
 # task-tracker reformat — rules-reapplied
 
 - applied 16 conditional-format rules
-- snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-reformat-20260526-203704.json
+- snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-reformat-20260526-210536.json
+- pack-to-top: 0 day tab(s) compacted
+- pack-to-top: 0 Week-tab day-block(s) compacted

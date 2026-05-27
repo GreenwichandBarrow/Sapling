@@ -1,0 +1,63 @@
+{
+  "run_date": "2026-05-26",
+  "run_mode": "tuesday",
+  "niches_evaluated": 3,
+  "niches_identified": 1,
+  "one_pagers_written": 1,
+  "scorecards_written": 1,
+  "tracker_updated": true,
+  "runtime_seconds": 1930,
+  "niches": [
+    {
+      "name": "Truck Licensing & Compliance Platform (IFTA/IRP/DOT)",
+      "score": 2.33,
+      "drive_folder": "https://drive.google.com/drive/folders/1XnUD0ylZ-N_NRwBnNNWzrzjDpD-sbPBe",
+      "weekly_review_row": 16,
+      "verdict": "THIN POOL CAVEAT — advanced through pipeline per headless doctrine (flag thin pools, do not gate). Target count 50-200 is healthy; caveats are single-source signal and zero documented G&B network anchor. Wednesday analyst call decides."
+    }
+  ],
+  "rejected_niches": [
+    {
+      "name": "Fine Jewelry Insurance Brokerage (carve-out)",
+      "reason": "Net acquirable as standalone jewelry-only brokerage <5; over-collapses with active row 7 (Specialty Insurance — Art & Collectibles); carrier-led consolidation (Jewelers Mutual) foreclosing standalone-broker path. Disposition: Sotheby's/Jonathan Crystal lane = network asset for row 7, not separate row."
+    },
+    {
+      "name": "Art Escrow Services (broker, not software)",
+      "reason": "Same market-thinness wall that killed software framing applies to services framing; net acquirable <5 after California exclusions; Growth TAM fails $500M gate at art-specific sub-vertical (~$15-30M). Disposition: Amanda Lo Iacono = river-guide for rows 2 + 7."
+    }
+  ],
+  "sources_covered": {
+    "recent_track": "partial — Granola MCP unauthenticated (PKCE OAuth headless-incompatible, 3rd consecutive Tuesday); brain/calls/ used as 14-day proxy. last30days (HN), 7 WebSearches, Newsletters (auto/subscriptions & education + auto/industry research), Gmail (auto/deal flow + auto/investors), Vault outputs + calls, Passive inbox — all complete.",
+    "historical_track": "partial — OneNote MCP unavailable, ChatGPT export not present at expected path. Fireflies vault calls (94 pre-cutoff files) + Gmail full-history (5 queries, 104 unique subjects) — complete."
+  },
+  "synthesizer_verdict": "No net-new niches; existing WEEKLY REVIEW pipeline reinforced. Three latent single-source candidates flagged for identifier discretion.",
+  "tracker_writes": [
+    {
+      "tab": "WEEKLY REVIEW",
+      "range": "A19:K19",
+      "niche": "Truck Licensing & Compliance Platform (IFTA/IRP/DOT)",
+      "status": "New - Pending Review",
+      "score": 2.33,
+      "target_pool": "50-200"
+    }
+  ],
+  "drive_artifacts": {
+    "folder_id": "1XnUD0ylZ-N_NRwBnNNWzrzjDpD-sbPBe",
+    "one_pager_file_id": "1qG2dGwq4JIhZ6THPiluPizC9UHI6bD95",
+    "scorecard_file_id": "11nYns3xaLEzQQqps0-YnmbjW7kWNho95"
+  },
+  "chatroom_path": "brain/traces/agents/2026-05-26-niche-intelligence.md",
+  "lifecycle_items_flagged_not_niches": [
+    "MGA build-vs-buy decision — 3 unanswered recommendations across 90 days (Hunter Hartwell 1/12, Camilla Castro 2/4, Jeremy Black 2/15)",
+    "OneNote MCP install decision — historical research surface unavailable to headless runs",
+    "Granola MCP headless-compat decision — PKCE OAuth interactive-only; 3 consecutive Tuesdays used brain/calls/ fallback"
+  ],
+  "reinforced_existing_rows": [
+    "Row 1 Premium Pest Management — PE consolidation deepening, multiples 10-15x/7-10x",
+    "Row 5 High-End Commercial Cleaning — ABM/WGNSTAR $275M pivot to technical segment",
+    "Row 7 Specialty Insurance Brokerage (Art & Collectibles) — jewelry carve-out folds in as network asset",
+    "Rows 9/10/13/15 Insurance brokerage cluster — Gallagher/AssuredPartners $13.45B Aug 2025 exit channel intact",
+    "Row 14 Funeral Home Management Software — 9.2% CAGR confirmed"
+  ],
+  "tabled_resurface_review": "No tabled niches warrant resurface this week — no new data addresses original table reasons."
+}

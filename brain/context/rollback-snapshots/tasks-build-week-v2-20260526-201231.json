@@ -1,0 +1,2804 @@
+{
+  "verb": "build-week-v2",
+  "timestamp": "20260526-201231",
+  "sheet_id": "1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk",
+  "ranges": {
+    "'Week'!A1:O51": [
+      [
+        "WEEK OF May 24-30"
+      ],
+      [],
+      [],
+      [],
+      [
+        "HABIT TRACKER"
+      ],
+      [
+        "",
+        "Sun",
+        "",
+        "Mon",
+        "",
+        "Tue",
+        "",
+        "Wed",
+        "",
+        "Thu",
+        "",
+        "Fri",
+        "",
+        "Sat"
+      ],
+      [
+        "Water & hygiene",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "Meditation",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "Exercises",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "ACV drink",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "Probiotic protein shake",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "Class",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "Bike to work",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "10K steps",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "Omega 3 & magnesium",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        "SUNDAY \u00b7 May 24",
+        "",
+        "MONDAY \u00b7 May 25",
+        "",
+        "TUESDAY \u00b7 May 26",
+        "",
+        "WEDNESDAY \u00b7 May 27",
+        "",
+        "THURSDAY \u00b7 May 28",
+        "",
+        "FRIDAY \u00b7 May 29",
+        "",
+        "SATURDAY \u00b7 May 30"
+      ],
+      [
+        "",
+        false,
+        "Laundry",
+        false,
+        "Process payroll",
+        false,
+        "Deal aggregator: sign up on broker websites (in-flight)",
+        false,
+        "Niche intel review",
+        false,
+        "Quarterly update (Q1 FY26 wrap-up; post-summit, incorporate learnings)",
+        false,
+        "Weekly review - system health, M&A activities, budget",
+        false
+      ],
+      [
+        "",
+        false,
+        "Flight prep",
+        false,
+        "Process conference registrations",
+        false,
+        "Continue thesis deck (in-flight)",
+        false,
+        "Website rebuild (in-flight)",
+        false,
+        "",
+        false,
+        "Assess budget reduction areas (post-Q1 expense review)",
+        false
+      ],
+      [
+        "",
+        false,
+        "Email follow-ups: Carlos, Hamptons Pest, Jay & Jason, Matt, Becky, Laura, Krupa, Deborah",
+        false,
+        "Deal aggregator: complete project list",
+        false,
+        "",
+        false,
+        "Continue thesis deck (in-flight)",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "Axial sign-up",
+        false,
+        "Start thesis deck",
+        false,
+        "",
+        false,
+        "Review finders fee doc (verify still live - Sarah de Blasio retired/Kay-managed)",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "Schools research & open-house signup",
+        false,
+        "Bday cards & baby cards",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "Email Lourdes",
+        false,
+        "Deal aggregator email kickoff",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "Claude: specialized agents + 1-tab-to-do-per-day review",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        true,
+        "Process payroll",
+        false,
+        "Draft Q1 investor update \u2014 purpose-first framing",
+        false,
+        "Niche intel review",
+        false,
+        "Draft Q1 investor update \u2014 finalize",
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget",
+        false,
+        "Thank-you email to Sam Curcio"
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Process conference registrations",
+        false,
+        "",
+        false,
+        "Draft Q1 investor update \u2014 purpose-first framing",
+        false,
+        "Pest 10-co research \u2014 outreach plan draft",
+        false,
+        "Change of address (overdue 5/21)",
+        false,
+        "Deal aggregator: email kickoff"
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        true,
+        "",
+        false,
+        "Pest 10-co research \u2014 initial firm list build",
+        false,
+        "Follow-up emails to lunch attendees",
+        false,
+        "Follow-up emails to conference 1:1s",
+        false,
+        "Deal aggregator: finalize project"
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        true,
+        "",
+        false,
+        "Continue thesis deck",
+        false,
+        "Deal aggregator: broker website signups (continue)",
+        false,
+        "Deal aggregator: complete project list",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Website rebuild \u2014 continue",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Email Krupa",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Email Deborah",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Email Hamptons Pest",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Email Jay",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ]
+    ],
+    "'Sun'!A1:E40": [
+      [
+        "SUNDAY \u00b7 May 17"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation"
+      ],
+      [
+        false,
+        "Exercises"
+      ],
+      [
+        false,
+        "ACV drink"
+      ],
+      [
+        false,
+        "Probiotic protein shake"
+      ],
+      [
+        false,
+        "Class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Mon'!A1:E40": [
+      [
+        "MONDAY \u00b7 May 18"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        true,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation"
+      ],
+      [
+        false,
+        "Exercises"
+      ],
+      [
+        false,
+        "ACV drink"
+      ],
+      [
+        false,
+        "Probiotic protein shake"
+      ],
+      [
+        false,
+        "Class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        true,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        true,
+        "Process payroll"
+      ],
+      [
+        false,
+        "Process conference registrations"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Tue'!A1:E40": [
+      [
+        "TUESDAY \u00b7 May 19"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        true,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation"
+      ],
+      [
+        false,
+        "Exercises"
+      ],
+      [
+        false,
+        "ACV drink"
+      ],
+      [
+        false,
+        "Probiotic protein shake"
+      ],
+      [
+        false,
+        "Class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        true,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Draft Q1 investor update \u2014 purpose-first framing"
+      ],
+      [
+        true,
+        "Bday cards & baby cards"
+      ],
+      [
+        true,
+        "Do Monthly personal finance updates"
+      ],
+      [
+        true,
+        "Create schedule / plan for the week"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Wed'!A1:E40": [
+      [
+        "WEDNESDAY \u00b7 May 20"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation"
+      ],
+      [
+        false,
+        "Exercises"
+      ],
+      [
+        false,
+        "ACV drink"
+      ],
+      [
+        false,
+        "Probiotic protein shake"
+      ],
+      [
+        false,
+        "Class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Niche intel review"
+      ],
+      [
+        false,
+        "Draft Q1 investor update \u2014 purpose-first framing"
+      ],
+      [
+        false,
+        "Pest 10-co research \u2014 initial firm list build"
+      ],
+      [
+        false,
+        "Continue thesis deck"
+      ],
+      [
+        false,
+        "Website rebuild \u2014 continue"
+      ],
+      [
+        false,
+        "Email Krupa"
+      ],
+      [
+        false,
+        "Email Deborah"
+      ],
+      [
+        false,
+        "Email Hamptons Pest"
+      ],
+      [
+        false,
+        "Email Jay"
+      ],
+      [
+        false,
+        "Email Jason"
+      ],
+      [
+        false,
+        "Refactor task-tracker-manager (weekly files architecture)"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Thu'!A1:E40": [
+      [
+        "THURSDAY \u00b7 May 21"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation"
+      ],
+      [
+        false,
+        "Exercises"
+      ],
+      [
+        false,
+        "ACV drink"
+      ],
+      [
+        false,
+        "Probiotic protein shake"
+      ],
+      [
+        false,
+        "Class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Draft Q1 investor update \u2014 finalize"
+      ],
+      [
+        false,
+        "Pest 10-co research \u2014 outreach plan draft"
+      ],
+      [
+        false,
+        "Follow-up emails to lunch attendees"
+      ],
+      [
+        false,
+        "Deal aggregator: broker website signups (continue)"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Fri'!A1:E40": [
+      [
+        "FRIDAY \u00b7 May 22"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation"
+      ],
+      [
+        false,
+        "Exercises"
+      ],
+      [
+        false,
+        "ACV drink"
+      ],
+      [
+        false,
+        "Probiotic protein shake"
+      ],
+      [
+        false,
+        "Class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget"
+      ],
+      [
+        false,
+        "Change of address (overdue 5/21)"
+      ],
+      [
+        false,
+        "Follow-up emails to conference 1:1s"
+      ],
+      [
+        false,
+        "Deal aggregator: complete project list"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Sat'!A1:E40": [
+      [
+        "SATURDAY \u00b7 May 23"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation"
+      ],
+      [
+        false,
+        "Exercises"
+      ],
+      [
+        false,
+        "ACV drink"
+      ],
+      [
+        false,
+        "Probiotic protein shake"
+      ],
+      [
+        false,
+        "Class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Thank-you email to Sam Curcio"
+      ],
+      [
+        false,
+        "Deal aggregator: email kickoff"
+      ],
+      [
+        false,
+        "Deal aggregator: finalize project"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'To Do'!A1:G400": [
+      [
+        "Status",
+        "Task",
+        "Type",
+        "Project",
+        "Due",
+        "Notes",
+        "Horizon"
+      ],
+      [
+        "Not Completed",
+        "Order gift for Lois (Jack Hugh Mackay)",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Sign up kids for Kano Martial Arts judo class",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Look into music lessons",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Find new therapist",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Sign up for more Italki lessons",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Fix Kaiden's iPad screen",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Set up Mohela autopay",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Create travel plans to Paris",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Download & sign into LeapFrog",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Renew CitiBike",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Stool test for microbiome",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Get assessment vitamin full make up",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Visit nutritionist",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Look into GLP1",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Set up email alerts on FE International",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Set up email alerts on Benchmark International",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Switch to higher-yield business savings account",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Update bank accounts with new G&B address",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Cancel Linkt by date",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Cancel Motion & Superhuman annual plans (or downgrade to monthly)",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "File G&B annual report by June",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Consider signing up for better bookkeeping",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Verify recipient 501(c)(3) status; board vote + grant approval",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Hold a board meeting + adopt written resolution",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Add Myself Renewed to QuickBooks (nonprofit category)",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Confirm registration with NY Charities Bureau",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Make first personal donation of $1,000",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Confirm nonprofit bank account exists + PayPal Giving Fund integration",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Draft personal giving statement aligned with legacy vision",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Add donation page language + set up donation processor",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review Kai Grey Ventures renewal",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Create brochure for LF",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Set up meetings with the list of Lenders to build relationships",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Call Gusto about invoice amount",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Submit the boys to NY Models",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Submit the boys to State Models",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Submit the boys to Zuri Model and Talent",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Submit the boys to Teri B",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Submit the boys to Stellar",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Email Filipe @ Pest Mgmt company",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Re-plan deal aggregator expansion (dedicated session)",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Connect Roberta & Elspeth",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Connect Lily & Suzanne",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Try Claude on website rebuild",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Post-March-budget expense review (find cuts; explore summer desk takeover)",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Deal aggregator email kickoff",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Quarterly update (Q1 FY26 wrap-up)",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review finders fee doc",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Watch video & complete SLD buy back",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Submit new PSLF form",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Fix email-intelligence -> budget-manager auto-invoke trigger gap",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Find Art lawyer contacts",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Reach out to organizer of Art Oct conference",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Bday cards & baby cards",
+        "Home",
+        "",
+        "",
+        "Inbox: brain/inbox/2026-05-12-bday-and-baby-cards.md",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Convert items from kaystrash@yahoo.com to kaystrash23@gmail.com",
+        "Home",
+        "",
+        "",
+        "Inbox: brain/inbox/2026-05-12-yahoo-to-gmail-migration.md. Export old emails, set up forwarding, recreate filters, update third-party accounts.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review AgTech drone teaser when Carlos sends (decline default \u2014 off geography/thesis)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review restaurant inventory mgmt deal when Carlos sends (decline default \u2014 software AI-risk)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Take Miami-PE rollup contacts forward from Carlos \u2014 these are the higher-value asset",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Take Osvaldo intro warm when Carlos forwards (peer searcher, same stage)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Email Jay & Jason about pest management",
+        "Work",
+        "Pest",
+        "",
+        "Owner/operator pest outreach",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Email women from ACG WOL luncheon - upload cards & notes",
+        "Work",
+        "G&B",
+        "",
+        "Post-conference card processing + outreach",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email Carlos Nieto (DCA)",
+        "Work",
+        "G&B",
+        "",
+        "Follow-up post 5/13 ESB meeting",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Pest thesis deck - model how many acquisitions make the play work",
+        "Work",
+        "Pest",
+        "",
+        "Thesis deck math; pairs with deck build (Wed slot 4)",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Scan WPMA directory for NY-based members",
+        "Work",
+        "Pest",
+        "",
+        "Pre-Women in Pest Mgmt week of 5/18; network mining",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Follow up email to Matt",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Complete change of address",
+        "Home",
+        "Myself Renewed",
+        "2026-05-21",
+        "Personal admin",
+        "Short Term"
+      ],
+      [
+        "On-going",
+        "Niche intel review",
+        "Work",
+        "G&B",
+        "",
+        "Walk through niche-intelligence sprint status + new one-pagers",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "On-going",
+        "Process payroll",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "On-going",
+        "Process conference registrations",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "Not Completed",
+        "Follow-up email to lunch attendees",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "Monday send",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Follow-up emails to conference 1:1s",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "Monday send",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow up: Carlos Nieto (Digital Capital Advisors)",
+        "Work",
+        "G&B",
+        "",
+        "Post-5/13 Empire State meeting; intermediary. Next-step + verified email in brain/calls/2026-05-13-carlos-nieto-dca.md",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Circle back: Becky Wuest Creavin (Peapack Private) re Matt/XPX",
+        "Work",
+        "G&B",
+        "",
+        "Becky offered to nudge Matt; verified email bcreavin@peapackprivate.com; draft queued Mon AM",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email Matt @ peapack private",
+        "Work",
+        "G&B",
+        "",
+        "No verified email/surname; dependent on Becky circle-back",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Laura Smith (BankUnited) - 2 warm intros",
+        "Work",
+        "G&B",
+        "",
+        "BLOCKED: no verified email. Intros offered: Stephanie (lawyer/super-connector) + a BankUnited colleague. Need verified address first",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Krupa Shah:send follow up email",
+        "Work",
+        "G&B",
+        "",
+        "Reciprocal real-estate-component deal flow; success-fee-only sale-leaseback specialist",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Respond to Becky",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Draft Q1 investor update \u2014 purpose-first framing per 5/20 convergence",
+        "Work",
+        "G&B",
+        "2026-05-27",
+        "Top priority for tomorrow per Kay 5/26. Open Loop #1 from 5-20. Court-case psychology trap pattern \u2014 behavior precedes identity change.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Pest 10-company research \u2014 June head-to-head vs DealsX + JJ",
+        "Work",
+        "G&B",
+        "2026-06-30",
+        "Kay 5/26 directive: 10 women-owned NY pest firms, Kay+Claude execute through June. Wind-down DealsX+JJ contingent on outperformance. Seed: 2026-05-15-pest-20-women-owned-west-village.md (7 verified).",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Thank-you email to Sam Curcio (Transworld) \u2014 5/22 call",
+        "Work",
+        "G&B",
+        "",
+        "Reframed from 'Respond to Sam' per Kay 5/26.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Refactor task-tracker-manager \u2192 weekly sheet files architecture (Phases 1-6)",
+        "Work",
+        "G&B",
+        "2026-05-31",
+        "Plan approved 5/26 \u2014 peppy-leaping-honey.md. Phase 1 (resolver + SheetsClient refactor) ships tonight; Phase 5 first real rollover targets Sun 5/31.",
+        "Short Term"
+      ],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        "Not Completed",
+        "Decide whether to screen AgTech drone opportunity (Carlos to send teaser)",
+        "Search",
+        "Deal Flow",
+        "",
+        "From Carlos Nieto 5/13 mtg. Analysis: https://docs.google.com/document/d/1jTzxubPJMAkr94MBEDVowKRbcer6orS96dByVjwvJEA/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Accept Osvaldo intro from Carlos (peer searcher at similar stage)",
+        "Search",
+        "Network",
+        "",
+        "From Carlos Nieto 5/13 mtg. https://docs.google.com/document/d/1jTzxubPJMAkr94MBEDVowKRbcer6orS96dByVjwvJEA/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Stress-test Active-Outreach niches for PE-moving-down + premium-bid risk (pest mgmt anchor)",
+        "Search",
+        "Niche Scorecard",
+        "",
+        "Carlos cited 30-40% premiums in pest mgmt. https://docs.google.com/document/d/1jTzxubPJMAkr94MBEDVowKRbcer6orS96dByVjwvJEA/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Add specialty coffee equipment servicing niche to Industry Research Tracker",
+        "Search",
+        "Niche Pipeline",
+        "",
+        "Carlos flagged authorized-servicer model. https://docs.google.com/document/d/1jTzxubPJMAkr94MBEDVowKRbcer6orS96dByVjwvJEA/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "APAA 5/14 prep \u2014 add art-insurance provenance / tax-treatment flag",
+        "Search",
+        "Conferences",
+        "2026-05-14",
+        "Carlos flagged provenance + cross-gen tax issues. https://docs.google.com/document/d/1jTzxubPJMAkr94MBEDVowKRbcer6orS96dByVjwvJEA/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Schedule process-exchange call w/ Carlos on Claude-native deal sourcing",
+        "Operations",
+        "Network",
+        "",
+        "He built end-to-end Claude CRM. https://docs.google.com/document/d/1jTzxubPJMAkr94MBEDVowKRbcer6orS96dByVjwvJEA/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Debug deal aggregator \u2014 CASS log review + manual skill run + email-source-filter audit (inbox vs updates). Zero broker-email matches for weeks.",
+        "Work",
+        "AI Infra",
+        "",
+        "From Harrison Wells (Dodo Digital) 2026-05-15 mtg. Analysis: https://docs.google.com/document/d/1pyApBUsJr5EZMGNHW7spXunLJkK_BXdBL58yg-k9JsM/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Test web-scraping fixes Harrison emails (Browserbase / Sweet Cookie / GitHub scrapers) against recurring 403 errors.",
+        "Work",
+        "AI Infra",
+        "",
+        "From Harrison Wells (Dodo Digital) 2026-05-15 mtg. Analysis: https://docs.google.com/document/d/1pyApBUsJr5EZMGNHW7spXunLJkK_BXdBL58yg-k9JsM/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Schedule June Harrison coaching session at 10 AM (avoid lunch-hour conflict).",
+        "Work",
+        "Admin",
+        "",
+        "From Harrison Wells (Dodo Digital) 2026-05-15 mtg. Analysis: https://docs.google.com/document/d/1pyApBUsJr5EZMGNHW7spXunLJkK_BXdBL58yg-k9JsM/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Evaluate weekly invoice-processing automation pattern for budget-manager / bookkeeper transition.",
+        "Work",
+        "AI Infra",
+        "",
+        "From AI Friday 2026-05-15 session. Analysis: https://docs.google.com/document/d/1Yb21_2U2wPHw1iEAQoxCLVhhKZh3rJAP47KmBY8yDcQ/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Create project for French passports",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term"
+      ],
+      [
+        "Not Completed",
+        "Plan away with whole Schneider gang",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term"
+      ],
+      [
+        "Not Completed",
+        "Marriage Contract \u2014 add Aramaic",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term"
+      ],
+      [
+        "Not Completed",
+        "Create Wedding Album",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term"
+      ],
+      [
+        "Not Completed",
+        "Get engagement ring fixed",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term"
+      ],
+      [],
+      [],
+      [],
+      [
+        "On-going",
+        "Weekly review \u2014 system health, M&A activities, budget",
+        "Work",
+        "G&B",
+        "",
+        "Walk through health-monitor + M&A analytics dashboard + budget-manager output",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Completed",
+        "Follow up with Sarah De Blasio",
+        "Work",
+        "G&B",
+        "",
+        "(completed 2026-05-17)",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Run budget-manager monthly mode for March P&L",
+        "Work",
+        "G&B",
+        "",
+        "(completed 2026-05-17)",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Reply to Janet Crockett \u2014 confirm year-end 12/31/2025 G&B investment figures (Saltoun annual review)",
+        "Work",
+        "G&B",
+        "2026-05-12",
+        "(completed 2026-05-17) Citrin Cooperman accountants doing annual portfolio review. Inbox: brain/inbox/2026-05-12-saltoun-annual-financial-review.md",
+        "Short Term"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ]
+  }
+}

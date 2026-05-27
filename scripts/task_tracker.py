@@ -1334,7 +1334,8 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
 
     wd = week_dates(_date.today())
     sun_date = wd[0]
-    new_title = f"TO DO {sun_date.month}.{sun_date.day}.{sun_date.year % 100}"
+    title_prefix = getattr(args, "title_prefix", "") or ""
+    new_title = f"{title_prefix}TO DO {sun_date.month}.{sun_date.day}.{sun_date.year % 100}"
     if sun_date.month == wd[6].month:
         week_label = f"WEEK OF {sun_date.strftime('%b')} {sun_date.day}-{wd[6].day}"
     else:
@@ -1380,12 +1381,16 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
     print(f"task-tracker-manager: new file created — id={new_sheet_id}")
 
     # ---- 3. Move to To Do Archive folder ----
-    folder_id = _find_to_do_archive_folder_id()
-    if folder_id:
-        _drive_move_file(new_sheet_id, folder_id)
-        print(f"task-tracker-manager: moved → To Do Archive folder ({folder_id})")
+    folder_id = None
+    if getattr(args, "no_folder_move", False):
+        print(f"task-tracker-manager: --no-folder-move set — new file stays in source folder")
     else:
-        print(f"task-tracker-manager: WARN 'To Do Archive' folder not found; new file remains in default location", file=sys.stderr)
+        folder_id = _find_to_do_archive_folder_id()
+        if folder_id:
+            _drive_move_file(new_sheet_id, folder_id)
+            print(f"task-tracker-manager: moved → To Do Archive folder ({folder_id})")
+        else:
+            print(f"task-tracker-manager: WARN 'To Do Archive' folder not found; new file remains in default location", file=sys.stderr)
 
     # ---- 4. Open new file + clear all 7 day tabs ----
     new_client = SheetsClient(new_sheet_id)
@@ -1446,11 +1451,14 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
         print(f"task-tracker-manager: re-titled Week tab → {week_label!r}")
 
     # ---- 9. Update pointer atomically (LAST step before trace) ----
-    try:
-        write_pointer(new_sheet_id, new_title, sun_date)
-        print(f"task-tracker-manager: pointer updated → {new_title} ({new_sheet_id})")
-    except Exception as e:
-        print(f"task-tracker-manager: WARN pointer write failed ({e}); resolver fallback to Drive search will recover", file=sys.stderr)
+    if getattr(args, "no_pointer_update", False):
+        print(f"task-tracker-manager: --no-pointer-update set — pointer unchanged (resolver still points at prior file)")
+    else:
+        try:
+            write_pointer(new_sheet_id, new_title, sun_date)
+            print(f"task-tracker-manager: pointer updated → {new_title} ({new_sheet_id})")
+        except Exception as e:
+            print(f"task-tracker-manager: WARN pointer write failed ({e}); resolver fallback to Drive search will recover", file=sys.stderr)
 
     # ---- 10. Trace ----
     trace_lines = [
@@ -2891,6 +2899,12 @@ def main():
                     help="report what would happen without writing — no copy, no archive, no clear, no stamp, no carryover")
     bw.add_argument("--legacy", action="store_true",
                     help="use pre-2026-05-26 in-place rebuild (archive tab inside same sheet, no new file). Recovery only.")
+    bw.add_argument("--title-prefix", default="",
+                    help="prefix the new file's title (sandbox testing — e.g., '[SANDBOX] ')")
+    bw.add_argument("--no-pointer-update", action="store_true",
+                    help="skip pointer update — leaves resolver pointing at prior file (sandbox testing)")
+    bw.add_argument("--no-folder-move", action="store_true",
+                    help="skip move-to-To-Do-Archive — new file stays in source folder (sandbox testing)")
     bw.set_defaults(func=cmd_build_week)
 
     dw = sub.add_parser("distribute-week",

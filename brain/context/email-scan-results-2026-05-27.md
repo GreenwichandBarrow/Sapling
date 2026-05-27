@@ -1,7 +1,7 @@
 ---
 date: 2026-05-27
 type: context
-title: "Email Scan Results — 2026-05-27 (Wed AM, headless 7am)"
+title: "Email Scan Results — 2026-05-27 (Wed, headless 7am + midday 1:19pm refresh)"
 tags:
   - date/2026-05-27
   - context
@@ -12,7 +12,15 @@ tags:
 
 # Email Scan Results — 2026-05-27
 
-Headless 7am ET weekday run. Scanned 21 inbound threads (`newer_than:2d label:INBOX`), 2 outbound, 14 Gmail drafts, 2 Granola notes since yesterday. No CIM, NDA, or LOI attachments detected today. No bookkeeper P&L from `startvirtual.com` this run — bookkeeper chain not fired. One Granola call note backfilled (Oswaldo Ponce, recovering the stuck 5/26 post-call-analyzer queue item). One new entity stub created (Carlos at in3o). Two DEAL_NEWSLETTER digests parsed for per-listing extraction (Helen Guo SMB Deal Hunter 5/26 + Flippa Daily 5/26) — 9 listings extracted across both.
+**Midday refresh 1:19pm ET (over 7am headless baseline).** No new CIM/NDA/LOI attachments since 7am. No bookkeeper P&L from `startvirtual.com`. Two new Granola notes landed in the post-call-analyzer queue (Jeff Stevens monthly call + Team TB JJ call — handled by post-call-analyzer, not this skill). Two new outbound from Kay (Follow Up to Abigail @ startvirtual + Abigail accepted Thu 5/28 11am invite). Three new NEWSLETTER arrivals (WSN June Events, XPX NYC Summer Social + payment receipt + LI registration confirmation, Anthropic receipt, Squarespace, Brian Moran 12WeekYear, Axios Mobility, CorpNet, SMBootcamp Summer ETA Webinar Series). One new system DIRECT (Barrie Green calendar-conflict heads-up). No new BLAST or DEAL_NEWSLETTER deal-listing emails since 7am — Section 7 row count unchanged at 9 listings.
+
+**Service health (curl-verified, not phantom):** Gmail 200, Granola 200, Attio 200 (via `attio-api health` wrapper), Apollo 200.
+
+Original 7am summary preserved below.
+
+---
+
+**7am headless baseline.** Scanned 21 inbound threads (`newer_than:2d label:INBOX`), 2 outbound, 14 Gmail drafts, 2 Granola notes since yesterday. No CIM, NDA, or LOI attachments detected today. No bookkeeper P&L from `startvirtual.com` this run — bookkeeper chain not fired. One Granola call note backfilled (Oswaldo Ponce, recovering the stuck 5/26 post-call-analyzer queue item). One new entity stub created (Carlos at in3o). Two DEAL_NEWSLETTER digests parsed for per-listing extraction (Helen Guo SMB Deal Hunter 5/26 + Flippa Daily 5/26) — 9 listings extracted across both.
 
 ---
 
@@ -31,11 +39,13 @@ Headless 7am ET weekday run. Scanned 21 inbound threads (`newer_than:2d label:IN
 
 ## 2. Deal Flow Classified
 
+**Midday refresh (1:19pm ET):** DIRECT counts unchanged (no new DIRECT inbound since 7am). NEWSLETTER count higher by 8 (added WSN June Events, XPX NYC Summer Social, XPX payment receipt, XPX LI registration-confirmed, Anthropic receipt, Squarespace, Brian Moran 12WeekYear, Axios Mobility China, SMBootcamp Summer ETA Webinar Series, CorpNet Delaware tax) plus 1 system DIRECT (Barrie Green calendar conflict heads-up).
+
 | Class | Count | Notes |
 |---|---|---|
-| DIRECT | 3 | Carlos @ in3o (intro request) · Katie Walker @ Plexus Capital (personal check-in) · Carlos Nieto / DCA (Project Drone — ongoing Active Deal thread, no new inbound today, Kay's outbound is most recent message) |
+| DIRECT | 3 (+1 system) | Carlos @ in3o (intro request) · Katie Walker @ Plexus Capital (personal check-in) · Carlos Nieto / DCA (Project Drone — ongoing Active Deal thread, no new inbound since Kay's 5/26 outbound) · Barrie Green (system calendar-conflict heads-up — 6/1 Mon 12:30 Lunch James + 1:20 conflict + 6/4 8am-4pm DOH appt + 6/15 7am-8am DOH appt + medical buffer + lunch protected-time preference question) |
 | BLAST | 0 | No multi-recipient broker BLAST today |
-| NEWSLETTER | 18 | Includes 2 DEAL_NEWSLETTER subtypes (Helen Guo SMB Deal Hunter, Flippa Daily) — listings extracted to section 7; classified NEWSLETTER here per `<broker_blast_listing_extraction>` reconciliation rule. Other 16: Axios x3, DMARC report, SMBootcamp Live promo, Stumptown receipt, CorpNet Delaware tax promo, Attio product update, XPX events x4, Acquiring Minds podcast newsletter (content-only, no listings), Art Market post-event, 1Password promo, Axial Middle Market Review (case-study NEWSLETTER, no active listings) |
+| NEWSLETTER | 26 | Includes 2 DEAL_NEWSLETTER subtypes (Helen Guo SMB Deal Hunter, Flippa Daily) — listings extracted to section 7; classified NEWSLETTER here per `<broker_blast_listing_extraction>` reconciliation rule. Full set: Axios x4 (incl. China Mobility), DMARC report, SMBootcamp Live + Summer ETA Webinar Series, Stumptown receipt, CorpNet Delaware tax promo x2, Attio product update, XPX events x6 (NJ/NYC/LI invitations + payment receipt + registration confirmation), Acquiring Minds podcast newsletter (content-only, no listings), Art Market post-event, 1Password promo, Axial Middle Market Review (case-study NEWSLETTER, no active listings), WSN June Events (Debt & Deal Structuring webinar 6/10 + PPM Deep Dive 6/17), Anthropic receipt (Max plan 20x, $217.75 invoice 2387236F-0015), Squarespace AI webinar, Brian Moran 12WeekYear |
 
 **Section-2 reconciliation note:** Helen Guo + Flippa counted under NEWSLETTER (no double-count); their per-listing rows are in Section 7. Section 7 row count is the deal-flow KPI, not Section 2 BLAST count.
 
@@ -43,9 +53,12 @@ Headless 7am ET weekday run. Scanned 21 inbound threads (`newer_than:2d label:IN
 
 ## 3. Draft Status
 
-14 Gmail drafts pending in account. **Not addressed this run** — per session-decisions-2026-05-26 Deferred #9, drafts are related to investor update + DealsX/JJ wind-down work in flight; Kay is handling personally. No new drafts created today (no NDA/CIM auto-ack triggers fired). No drafts flagged stale (>48h) for surfacing because the underlying threads are still live work.
+13 Gmail drafts pending (down 1 from 7am — net change consistent with one outbound `Follow Up` to Abigail @ startvirtual @ 1:01pm ET; Kay confirmed-sent rather than drafted). **Drafts not opened this run** — per session-decisions-2026-05-26 Deferred #9, drafts are related to investor update + DealsX/JJ wind-down work in flight; Kay is handling personally. No new drafts created today (no NDA/CIM auto-ack triggers fired). No drafts flagged stale (>48h) for surfacing because the underlying threads are still live work.
 
 **One-line metadata only** returned by `gog gmail draft list` — message-body details not surfaced this run; pipeline-manager has visibility from prior runs.
+
+**Outbound activity since 7am (midday refresh):**
+- 1:01pm ET — `Follow Up` to Abigail Quibilan <abigail@startvirtual.com>: "Hope all is well. Would we be able to schedule a follow up call tomorrow or Friday?" Abigail replied 1:33pm UTC (8:33am PT) confirming and accepted Thu 5/28 11–11:30am ET via Google Meet `vbs-xszs-vjp`.
 
 ---
 
@@ -58,6 +71,12 @@ None per the strict `<intro_detection>` pattern (no "I'd like to introduce", no 
 ---
 
 ## 5. Niche Signals
+
+**Midday refresh additions (1:19pm ET):**
+- **Women's Search Network — Debt & Deal Structuring webinar 6/10 2pm ET features [[entities/katie-walker-plexus|Katie Walker]] (Plexus Capital) + Michelle Gilbert (Parkside).** Direct alignment with `user_kay_women_led_purpose_throughline` + 2026-05-20 structural reframe (industry-is-output-of-network). Katie's `Checking In` email today is the warm input; her panel slot 6/10 is a parallel surfacing opportunity. **PPM Deep Dive 6/17 9am ET features two European female searchers** — fundraise lens; useful intel for [[project-gb-charter]] Bridge-stage narrative even though Kay is on the buy side.
+- **Axial Middle Market Review (Kaitlinn 5/26 newsletter) HVAC 13x / defense 12x / metals <5x.** Same intel as 7am scan; surfaces here for niche-memory completeness on HVAC service multiple compression vs Kay's facility-services lens.
+
+### Original 7am signals
 
 - **Pest management (HIGH SIGNAL — direct intel for [[brain/outputs/2026-05-26-pest-10-co-june-experiment-plan|June 10-co experiment]]):** From Oswaldo Ponce call 5/26 — POZA Capital Partners invested $35M into a pest platform. Account-monetization economics: sell mature accounts at 1.5-2x ARR to fund new account acquisition at ~70% ARR cost. Op's read: "strong business model, market tapped out on multiples." Surface to pest experiment thread.
 - **Insurance brokerage (CONFIRMING SIGNAL):** Op confirms 20x earnings multiples are pricing deals out of economic range, but $200-500K small-book opportunities exist on existing-platform basis. Aligns with [[feedback-insurance-revenue-buybox]] (Kay's existing $40M floor).
@@ -75,6 +94,12 @@ None per the strict `<intro_detection>` pattern (no "I'd like to introduce", no 
 | TBD | Anacapa Partners call | YES — Granola on, Kay's 5/26 reply to Carlos in3o committed to "circle back" with intel post-call |
 
 *(Calendar pull deferred to pipeline-manager / brief-decisions pre-flight per workflow split.)*
+
+**Granola activity since 7am (midday refresh):** Two new Granola notes landed in the post-call-analyzer queue (not this skill's responsibility — `post-call-analyzer` 1pm + 6pm ET fires consume the queue):
+- `not_lrTNq6HzuDmTck` — "Team TB JJ I Kay" (this morning, 11:00am ET, last update 11:29am ET)
+- `not_Uq2NMa3Kz51FFq` — "Jeff I Kay Mtg" (this morning, 12:00pm ET, last update 12:38pm ET — Jeff Stevens monthly investor call per `feedback_preflight_covers_today_and_tomorrow` and the [[brain/briefs/]] folder)
+
+Queue files exist at `brain/trackers/post-call-analyzer/queue/`. Post-call-analyzer 1pm fire is the canonical handler; this scan does NOT pre-ingest to avoid double-write.
 
 ---
 
@@ -125,3 +150,11 @@ Sam Curcio Granola note `not_v0sa5nV8gTSYNO` updated 5/26 15:58 but call note al
 - **🟡 Post-call-analyzer queue file `not_Gn4BVFoV13pDKF.json`:** Backfilled via email-intelligence this run (Oswaldo call note written). Queue file in `brain/trackers/post-call-analyzer/queue/` should be removed by the next post-call-analyzer fire to avoid duplicate processing.
 - **🟢 1Password credential resolve — verified:** `source scripts/op-env.sh` clean; Gmail + Granola REST both 200.
 - **🟢 Granola REST (via `granola-api`) — verified:** 2 notes pulled, transcripts + summaries intact.
+
+### Midday refresh service health (1:19pm ET, curl-verified)
+
+- **🟢 Gmail REST:** `gog gmail search ...` returned 21 inbound threads. 200 OK implicit.
+- **🟢 Granola REST:** `granola-api since ...` returned 4 notes (2 new since yesterday). 200 OK.
+- **🟢 Attio REST:** `attio-api health` returned HTTP 200 + workspace `Greenwich & Barrow` (`243821c3-e0c9-46f9-8ee8-50e0094e12fb`). Note: the bare `curl https://api.attio.com/v2/self -H "Authorization: Bearer $ATTIO_API_KEY"` test returns 400 with a "Token was not recognised" message — that is an Attio endpoint quirk, NOT an outage. The wrapper hits the correct authed endpoint and returns 200. Documented to prevent future false "Attio disconnected" claims.
+- **🟢 Apollo REST:** Auth health 200.
+- **🟢 1Password resolve:** `source scripts/op-env.sh` clean; ATTIO_API_KEY 64-char value loaded.

@@ -66,3 +66,17 @@ DONE. Both extracts gathered.
 
 Returning to orchestrator.
 → READY
+
+## [23:22] pest-corpus-loader
+Located all 4 artifacts. Folder = `1RavIVgtU6ZBuM51c7zZYnBFm9aNl7M2x` (likely INDUSTRY RESEARCH/Pest):
+1. **Pest Gemini Industry Research 5.26.26** — Doc `1MMtjEvk2HUcRUZVuNBKQvkKA_aFNHVHkca00ybkEhTs` (exported, 30KB markdown, Northeast/NYC+LI luxury thesis, Bill Hoffman playbook reference)
+2. **Premium Pest Management 4.20.26.pptx** — `1zGHXMAB7NkrSo33undB-1KbYO6mhhF3A`, 1 slide = THE ONE-PAGER (2.73/3.0 = 91% scorecard total)
+3. **Premium Pest Management Scorecard 4.4.26.xlsx** — `1glvHJzMM5-lg4KzVDjOmphq5PD6Lot7z`, two sheets (Initial Screen PASS, Industry Scorecard 2.73)
+4. **Premium Pest Management - Industry Insights** (Google Slides) — `1dOuzxIiMit2IOBf5Ut8PgMAab4_1jGPWE2bXXmfQWYo`, 12 slides = NJPMA Hoffman + Falcey conference log + multiples context
+
+ALSO FOUND: **Pest Management Analysis 5.18.26v2.pptx** (`1Rgnqoo6WwqsjrL3mUZxZgt_c9u-w716G`) — INCOMPLETE shell deck. Slides 1, 2, 3 = pest-specific (TOC, "Scrap Paper" brainstorm). Slides 4-17 = INSURANCE template content NOT yet swapped to pest. This is the deck Kay is building. @insurance-deck-loader: this is your template-already-applied-to-pest-but-WIP file. Worth knowing.
+
+Vault: `outputs/2026-05-08-discussion-pest-control-holdco-architecture.md` is the master thesis (Wertheimer/19yr/Operating Holdco anchored on pest roll-up + Pest AI Co + FO LLC). Also `outputs/2026-05-15-pest-20-women-owned-west-village.md`, `outputs/2026-05-26-pest-10-co-june-experiment-plan.md`.
+
+Returning digest to orchestrator now.
+→ DONE

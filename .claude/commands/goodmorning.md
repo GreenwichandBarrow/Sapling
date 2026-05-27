@@ -46,14 +46,32 @@ JJ-operations runs independently via launchd (8am) and posts to Slack at 10am. D
 
 ### Step 6 — Day-of-week overlays
 
-- **Sunday — weekly build ceremony (single-To Do-backend + BOTH-surfaces model: Week planning tab + 7 day tabs; `/goodmorning` is the trigger, no systemd timer, NOT goodnight):** run in order:
-  1. `task-tracker-manager report` — reads across the 7 prior-week day tabs (Sun..Sat); surfaces per-day incomplete slots + overdue/unscheduled To Do (Status != Completed) + stale Long Term (Horizon=Long Term) / Gantt as a **Weekly Planning Review** section.
-  2. Kay walks each carryover item: keep / move to a day this week / set Horizon=Long Term / drop. (Carryover is manual — no auto-carry.)
-  3. `task-tracker-manager sync-done-status` across the 7 day tabs — reflect last week's checked priority slots onto matching `To Do` rows by setting `Status = Completed` in place. **No sweep, no `Completed To Do` tab — `archive-todo` is RETIRED.** Completed rows stay in `To Do`; cleanliness = saved filter/sort views in the Sheet UI.
-  4. `task-tracker-manager build-week` — targets the **Week planning tab** (the Sunday canvas, all 7 days Sun→Sat). Snapshots the Week tab + To Do, writes ONE combined far-right `archive_{Sun-date}` tab (prior Week tab verbatim), clears all 7 day-blocks on the Week tab, re-titles it with the new week label (Sun..Sat boundary), and stamps the recurring `To Do` rows (Horizon = `Weekly Recurring {day}`, Status `On-going`) ONTO THE WEEK TAB. **The 7 day tabs are NOT touched here.**
-  5. Kay lays out / finalizes the full week on the **Week tab** — approved carryover/new items fire `task-tracker-manager promote` / `schedule-to-day-slot` / `move-day-item` (these still write day-tab slots) or are entered directly on the Week tab.
-  6. `task-tracker-manager distribute-week` — once the Week tab is finalized, fans each day-block's slots + habits OUT into the corresponding day tab (collision-aware; snapshot+trace). Kay then works the day tabs Mon–Sat. (`--force` to overwrite a day-tab slot the Week plan changed; `--day {X}` to limit to one day.)
-  7. `task-tracker-manager reformat` if conditional formatting needs reapplying.
+- **Sunday — weekly build ceremony (weekly-files architecture, shipped 2026-05-26):** `/goodmorning` is the trigger, no systemd timer, NOT goodnight. The OLD 7-step manual ceremony (report → walk-carryover → sync-done → build-week → finalize-week-tab → distribute-week → reformat) is RETIRED for routine rollovers. Replaced by a single autonomous command:
+
+  ```bash
+  python3 /home/ubuntu/projects/Sapling/scripts/task_tracker.py build-week
+  ```
+
+  That single call dispatches to `cmd_build_week_v2` and executes the full cross-file rollover end-to-end:
+  1. Resolves prior file via `scripts/tracker_sheet_resolver.py` (pointer at `~/.claude/config/current-tracker-sheet.json`, Drive-search fallback)
+  2. Snapshots prior file (Week + 7 day tabs + To Do) to rollback JSON
+  3. `gog drive copy` → new file `TO DO {next-Sun-date}.YY` (e.g., `TO DO 5.31.26`)
+  4. Moves new file into `To Do Archive` Drive folder
+  5. Clears all 7 day tabs on new file (preserves structure / CF / dropdowns / checkbox validation)
+  6. Stamps recurring `To Do` rows (Horizon = `Weekly Recurring {day}`) onto the new file's day tabs
+  7. Cross-file carryover: reads PRIOR file's day-tab incompletes, writes them to NEW file's same day tabs (dedup vs recurring stamps, next-empty-slot logic)
+  8. Wires Week tab cells as in-file formulas (`=Tue!B14` etc.) — live read-only mirror of new file's day tabs, no IMPORTRANGE auth needed
+  9. Re-titles Week tab + per-day header dates + each day tab's `A1` (per 2026-05-26 bug fix — Drive-copy carries source's stale day-tab titles)
+  10. Updates pointer atomically (LAST step — if anything earlier fails, prior file remains canonical via resolver Drive-search fallback)
+  11. Traces the rollover
+
+  **After build-week completes:** Kay reviews the new file's Week tab (formula mirror of day tabs) and adjusts items DIRECTLY on day tabs (Week tab auto-updates via formulas). No separate distribute-week needed. No manual carryover walk needed.
+
+  **Optional flags:** `--dry-run` (JSON preview, no writes), `--skip-recurring`, `--skip-carryover`, `--legacy` (pre-2026-05-26 in-place rebuild for recovery), `--title-prefix STR` / `--no-pointer-update` / `--no-folder-move` (sandbox testing).
+
+  **Prior file** stays in Drive as immutable history (in `To Do Archive` folder). Never edit a frozen prior file — drift won't propagate to the live week.
+
+  **Retired verbs (per `feedback_explicit_review_before_retiring_verbs` — stay callable until Kay reviews retirement):** `report` (carryover surfacing) no longer the Sunday gating step but useful ad-hoc; `distribute-week` no longer fires Sunday — Week tab is live formula mirror of day tabs, no separate fan-out write target. `reformat` still useful for CF repair if drift detected.
 - **Monday:** + conference-discovery status check
 - **Wednesday:** + niche-intelligence sprint status
 - **Friday:** + weekly-tracker + health-monitor + calibration-workflow (parallel, results needed by 10am ET)

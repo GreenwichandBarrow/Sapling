@@ -25,27 +25,43 @@ Architecture lives in `memory/project_personal_task_tracker.md`. Update that mem
 - **`Week` tab** — the Sunday planning canvas, ALL 7 days visible Sun→Sat, one block per day side by side, **leftmost in the strip (index 0, before `Sun`)**. `build-week` rebuilds/clears it + stamps the recurring `To Do` rows onto it; Kay lays out / finalizes the whole week here. Layout: col 0 = habit/notes label; for day i (0=Sun..6=Sat) status checkbox col `1+2*i`, task col `2+2*i`. Row 1 merged title `WEEK OF May 17-23`, row 5 `HABIT TRACKER`, row 6 Sun..Sat sub-headers, rows 7–15 nine habit rows, row 16 SUNDAY..SATURDAY day headers (carry dates), rows 24–38 fifteen priority slots/day, rows 41–48 notes block. Builder: `scripts/build_week_tab.py` (one-shot; `--dry-run`, `--no-populate`).
 - **7 day tabs** (`Sun Mon Tue Wed Thu Fri Sat`, immediately after `Week`) — the calm, large-font daily *execution* surface. Kay works these Mon–Sat. **NOT auto-populated until `distribute-week` fans the finalized Week plan out into them.** Per-day layout: row 1 merged title `SUNDAY · May 17` (20pt), rows 4–12 habit tracker (9 habits, A=checkbox), row 13 column headers, rows 14–28 fifteen priority slots (A=native checkbox · B=Task 17pt · C=Type dropdown · D=Project dropdown · E=Notes), rows 31–38 free-notes block. Builder: `scripts/build_day_tabs.py` (idempotent; `--dry-run`).
 
-**Sunday flow (corrected 2026-05-26 per Kay):**
-1. **`build-week`** — Week tab: archive prior week + clear + re-title + stamp recurring + **AUTO-PULL incomplete carryover from prior week's day tabs onto the new Week tab** (NEW step — see `build-week` verb spec below).
-2. **Together (Kay + Claude) review the items on the Week tab** — Kay decides keep / move to a different day / set Horizon=Long Term / drop for each carryover item. Mutations happen ON THE WEEK TAB (or via `move-day-item` if shifting between days).
-3. **`distribute-week`** — fan the finalized Week tab → all 7 day tabs (aligned start, --force overrides last week's stale day-tab content).
-4. **During the week:** day tabs are the working surfaces. Kay edits day tabs directly (adds, checks off, re-orders). **Drift between Week tab and day tabs during the week is EXPECTED and OK** — the Week tab is the start-of-week snapshot; day tabs are the live execution layer.
-5. **`sync-done-status`** mid-week reflects day-tab checked slots back to To Do.
-6. **Next Sunday's `build-week`** auto-pulls the incomplete day-tab items into the new Week tab — closing the loop.
+**Sunday flow (weekly-files architecture, shipped 2026-05-26):**
 
-**Alignment doctrine:** at the moment `distribute-week` finishes Sunday, Week tab content == day tabs content. After that, day tabs become the source of truth for execution; **the Week tab is FROZEN as the Sunday plan-of-record until next Sunday's `build-week` runs.**
-
-**Forbidden pattern (clarified 2026-05-26 after Kay's correction):** do NOT mirror mid-week day-tab edits back to the Week tab. The Week tab is the Sunday-agreed PLAN; the day tabs are EXECUTION. Drift between the two during the week is information, not a bug. Treating the Week tab as a live mirror of day tabs makes it redundant. The "rebuild Week tab from current day tabs" anti-pattern (executed once today, 2026-05-26, and then corrected) is forbidden going forward.
-
-**Carryover doctrine (changed 2026-05-26):** carryover is AUTO-PULLED from prior week's day tabs into the new Week tab during `build-week` step 6a — read BEFORE `distribute-week` overwrites them. Kay reviews on the Week tab and decides per item. The old manual `report` → walk-each-item → `move-day-item` pattern is **RETIRED** for routine carryover. `report` remains useful for ad-hoc health checks but is no longer the Sunday gating step.
-
-**Order-of-operations (critical, per Kay 2026-05-26):**
+Single autonomous command via `/goodmorning` Sunday step:
+```bash
+python3 /home/ubuntu/projects/Sapling/scripts/task_tracker.py build-week
 ```
-1. build-week           [READ day tabs (= prior week) → WRITE Week tab: clear + recurring + carryover]
-2. Review on Week tab   [Kay + Claude together — keep/move/Long Term/drop per item]
-3. distribute-week --force  [WRITE day tabs from Week tab — overwrites prior week]
+
+`cmd_build_week` dispatches to `cmd_build_week_v2` which executes end-to-end:
+1. Resolve PRIOR file via `tracker_sheet_resolver.py` (pointer fast-path, Drive-search fallback)
+2. Snapshot prior file (Week + 7 day tabs + To Do) to rollback JSON
+3. `gog drive copy` prior → NEW file `TO DO {next-Sun-date}.YY`, move to `To Do Archive` folder
+4. Clear all 7 day tabs on new file (structure/CF/dropdowns/checkbox-validation preserved)
+5. Stamp recurring `To Do` rows (Horizon `Weekly Recurring {day}`) onto new file's day tabs
+6. Cross-file carryover: read PRIOR day-tab incompletes → write to NEW day-tab next-empty-slot (dedup vs recurring)
+7. Wire Week tab cells as in-file formulas (`=Tue!B14` etc.) — live read-only mirror of day tabs
+8. Re-title Week tab + per-day header dates + each day tab's `A1`
+9. Update pointer atomically (LAST step — mid-rollover failures leave prior file canonical)
+10. Trace
+
+**After build-week completes:** Kay reviews the new file's Week tab (auto-mirror of day tabs via formulas), adjusts items DIRECTLY on day tabs. Week tab auto-updates. No `distribute-week` step needed.
+
+**Alignment doctrine:** Week tab cells are FORMULAS pointing at same-file day tabs. Day tabs = the SINGLE edit surface. Week tab = live read-only view. No drift possible — they're the same data through formula refs.
+
+**Carryover doctrine (weekly-files):** carryover is AUTO-PULLED CROSS-FILE from prior file's day tabs into the new file's day tabs during `build-week` step 6. Read happens BEFORE the new file's day tabs are touched in any other way (only recurring stamps land first, and dedup catches collisions). Prior file is immutable history once rollover completes.
+
+**Order-of-operations (critical):**
 ```
-**`distribute-week` must NEVER run before `build-week` completes its carryover-pull.** Otherwise the prior week's day-tab state is destroyed before the carryover can be captured. The two verbs are intentionally separate so the human review gate (step 2) sits between them.
+cmd_build_week_v2:
+  1. resolve prior → snapshot → drive copy → move to folder
+  2. clear new file day tabs → stamp recurring → cross-file carryover from prior
+  3. wire formulas → retitle → update pointer atomically (LAST)
+```
+Steps are atomic within a single `build-week` invocation. No separate human gate between sub-steps. The new file is the live working surface; the prior file is frozen history.
+
+**Legacy mode:** `--legacy` flag invokes the pre-2026-05-26 in-place rebuild (archive tab inside same sheet, no new file, requires separate `distribute-week` for day-tab fan-out). Kept callable per `feedback_explicit_review_before_retiring_verbs` — recovery only.
+
+**Forbidden pattern (clarified 2026-05-26 after Kay's correction):** do NOT mirror mid-week day-tab edits back to the Week tab via writes. Under the formula architecture this isn't possible (cells are formulas) but the rule remains for legacy mode + any future arch changes. The "rebuild Week tab from current day tabs" anti-pattern is forbidden.
 
 **Cleanliness model:** No row relocation, no checkbox-sweep, no donut/%-display. `To Do` cleanliness is achieved via **saved filter/sort views in the Sheet UI** (e.g. filter `Status != Completed`, sort by `Due`), NOT by moving completed rows to another tab. Completed rows stay in place with `Status=Completed` and render via done-row CF.
 

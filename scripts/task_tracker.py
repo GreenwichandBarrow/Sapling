@@ -1426,7 +1426,10 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
         new_client.values_update(rng, vals)
     print(f"task-tracker-manager: wired {len(formula_writes)} formula ranges (~{sum(len(v) for _, v in formula_writes)} cells) on new file Week tab")
 
-    # ---- 8. Re-title Week tab + per-day header dates ----
+    # ---- 8. Re-title Week tab + per-day header dates + each day-tab A1 title ----
+    # Bug fix 2026-05-26: Drive-copy carries source file's day-tab titles forward (e.g.,
+    # "SUNDAY · May 17" stays on Sun day tab after copy). We MUST re-stamp each day tab's
+    # row 1 to the current week's date, otherwise day tabs show last week's dates.
     week_tab_props = find_tab(new_meta, TAB_WEEK)
     if week_tab_props:
         wk_sid = week_tab_props["sheetId"]
@@ -1449,6 +1452,12 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
             })
         new_client.batch_update(title_reqs)
         print(f"task-tracker-manager: re-titled Week tab → {week_label!r}")
+
+    # Per-day-tab A1 title retitle (each day tab is its own sheet; can't batch with Week tab reqs)
+    for i, day_tab in enumerate(DAY_TAB_NAMES):
+        title = day_title_text(day_tab, wd[i])
+        new_client.values_update(f"'{day_tab}'!A1", [[title]])
+    print(f"task-tracker-manager: re-titled all 7 day tabs (A1) for week {wd[0].isoformat()}..{wd[6].isoformat()}")
 
     # ---- 9. Update pointer atomically (LAST step before trace) ----
     if getattr(args, "no_pointer_update", False):

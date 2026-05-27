@@ -44,6 +44,7 @@ Retrieval pointers only — doctrine lives in topic files. To find a memory: gre
 - [feedback_pull_canonical_doc_live_not_snapshot.md](feedback_pull_canonical_doc_live_not_snapshot.md) — Pull live Drive doc (`bash scripts/fetch-template-doc.sh`) before drafting; never draft from stale brain/outputs snapshot
 - [feedback_pe_vibe_from_we_centric_copy.md](feedback_pe_vibe_from_we_centric_copy.md) — Replace "we look for/we hold" claims with observations about the world G&B serves
 - [feedback_intermediary_buyer_interest_not_sentiment.md](feedback_intermediary_buyer_interest_not_sentiment.md) — Sell-side intermediary emails: buyer-interest framing, not sentiment ("stayed with me")
+- [feedback_intermediary_callback_no_parrot.md](feedback_intermediary_callback_no_parrot.md) — THANK YOU `{call_callback}` slot: don't echo broker's central thesis; peer-level market observation OR drop callback
 - [feedback_no_personal_linkedin_observations_first_touch.md](feedback_no_personal_linkedin_observations_first_touch.md) — First-touch anchors on FIRM, not individual
 - [feedback_no_soft_signal_stacking.md](feedback_no_soft_signal_stacking.md) — One soft signal max. Every email needs forward-motion CTA
 - [feedback_strip_user_context_from_public_copy.md](feedback_strip_user_context_from_public_copy.md) — Conviction-builders are LENS, not CONTENT for public artifacts

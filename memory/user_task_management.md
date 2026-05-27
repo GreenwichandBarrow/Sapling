@@ -8,7 +8,7 @@ metadata:
 ---
 
 Kay's productivity tool stack (as of May 2026):
-- **Google Sheets `TO DO 5.12.26`** — primary personal task tracker. Owned by the `task-tracker-manager` skill. See `project_personal_task_tracker.md` for sheet ID, architecture, verbs, and Sunday rollover ceremony.
+- **Weekly Google Sheets `TO DO M.D.YY`** (e.g., `TO DO 5.31.26`) in `To Do Archive` Drive folder — primary personal task tracker. Owned by the `task-tracker-manager` skill. Current week's sheet ID resolved dynamically via `scripts/tracker_sheet_resolver.py` (pointer + Drive-search fallback). See `project_personal_task_tracker.md` for full architecture and Sunday rollover ceremony.
 - **Google Calendar** — recurring/scheduled items, external meetings.
 - **OneNote** — repository-style lists and reference material.
 - **Obsidian (brain/)** — knowledge graph, entities, call notes, decision traces.
@@ -25,7 +25,7 @@ Kay migrated off Motion 2026-05-12 (Excel-tracker era) → Google Sheets. Motion
 
 ## How to apply
 
-- "Add a task" / "remind me to" / "put X on my list" → invoke `task-tracker-manager` `append` verb against `TO DO 5.12.26`. Never propose Motion.
+- "Add a task" / "remind me to" / "put X on my list" → invoke `task-tracker-manager` `append` verb (auto-resolves current week's file via resolver). Never propose Motion.
 - "Move X to {day}" / "schedule X for {day}" → `task-tracker-manager` `promote` or `schedule-to-day-slot` verb.
 - Friday briefing task-tracker section → `task-tracker-manager` `report` verb.
 - Sunday `goodnight` triggers the rollover (`archive-todo` → `archive`).

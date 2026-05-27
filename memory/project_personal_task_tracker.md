@@ -8,16 +8,19 @@ originSessionId: 29fe887a-b391-45f3-9e99-2be7e94b5ed5
 
 Built 2026-04-26 to replace Motion (which generated too much noise). **Graduated 2026-05-01** from one-off to skill-owned. Skill: `task-tracker-manager` at `.claude/skills/task-tracker-manager/SKILL.md`. Helper: `scripts/task_tracker.py`. **Migrated 2026-05-12** from Excel (`.xlsx` on iMac Drive) to Google Sheets so Kay can access from any browser.
 
-## File location
+## File location (weekly-files architecture, shipped 2026-05-26)
 
-- **Live working sheet:** `TO DO 5.12.26` — Google Sheet
-  - **ID:** `1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk`
-  - **URL:** https://docs.google.com/spreadsheets/d/1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk/edit
-  - **Drive folder:** `STRATEGIC PLANNING` (`12IpnsQ5V_M1fiTm0NZM9wKhlerauILMd`)
-- **Legacy Excel:** `~/My Drive/STRATEGIC PLANNING/TO DO 4.26.26.xlsx` — preserved as historical artifact, READ-ONLY, not actively maintained
-- **Snapshots:** `brain/context/rollback-snapshots/tasks-{verb}-{timestamp}.json` — last 5 per verb retained
+- **Live working sheets:** Weekly `TO DO M.D.YY` files (e.g. `TO DO 5.31.26`) in the `To Do Archive` Drive folder
+- **Current week's sheet ID:** resolved dynamically via `scripts/tracker_sheet_resolver.py`
+  - CLI: `python3 /home/ubuntu/projects/Sapling/scripts/tracker_sheet_resolver.py --print-id`
+  - Pointer file: `~/.claude/config/current-tracker-sheet.json` (atomic write at each Sunday rollover)
+  - Resolution chain: env `TRACKER_SHEET_ID` override → process cache → pointer (if fresh, i.e. `week_of ≥ most-recent-Sunday`) → Drive search fallback in `To Do Archive` folder (auto-rebuilds pointer)
+  - Pre-migration current sheet (until first rollover Sun 5/31): `TO DO 5.12.26` (ID `1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk`) in legacy `STRATEGIC PLANNING` folder
+- **Each Sunday's `build-week`:** Drive-copies prior week's file → new `TO DO M.D.YY` file → cross-file carryover-pulls incompletes from prior file's day tabs → wires new file's Week tab cells as in-file formulas (`=Tue!B14` etc.) → updates pointer atomically as last step
+- **Legacy Excel:** `~/My Drive/STRATEGIC PLANNING/TO DO 4.26.26.xlsx` — preserved as historical artifact, READ-ONLY
+- **Snapshots:** `brain/context/rollback-snapshots/tasks-{verb}-{timestamp}.json` — last 5 per verb retained; embed `client.sheet_id` so prior-file refs remain valid post-rollover
 
-When Kay wants a new tracker (yearly cycle, after a major schema rework, etc.), follow her naming convention `TO DO M.DD.YY` in the STRATEGIC PLANNING folder. To create one: re-run `/tmp/tracker-migration/build_sheet.py` with `NEW_SHEET_TITLE` updated.
+Prior-week (frozen) files are immutable history. Never edit them — drift won't propagate.
 
 ## 2026-05-17 — single-To Do-backend consolidation + BOTH-surfaces model (CURRENT ARCHITECTURE)
 

@@ -1,6 +1,6 @@
 ---
 name: task-tracker-manager
-description: Owns Kay's personal task tracker — Google Sheet (TO DO 5.12.26) — single capture point + a Week planning tab + 7 permanent day tabs (Sun..Sat) + Gantt project tabs. Append items, promote items into a day tab's priority slots, run the Sunday build-week rebuild ceremony (Week tab), distribute-week to fan the finalized plan into the day tabs, move/carry items between day tabs, re-apply conditional formatting after manual edits, and surface a To Do health report (overdue / empty slots / per-day carryover). Reports to Chief of Staff. NOT operational sheets — that's tracker-manager.
+description: Owns Kay's personal task tracker — weekly Google Sheets files in the `To Do Archive` Drive folder (current week resolved via `scripts/tracker_sheet_resolver.py`; e.g., `TO DO 5.31.26`). Single capture point + Week planning tab + 7 permanent day tabs (Sun..Sat) + Gantt project tabs. Append items, promote items into a day tab's priority slots, run the Sunday build-week rebuild ceremony (creates next week's file, pulls carryover cross-file), move/carry items between day tabs, re-apply conditional formatting, surface a To Do health report. Reports to Chief of Staff. NOT operational sheets — that's tracker-manager.
 archetype: router
 context_budget:
   skill_md: 200
@@ -11,7 +11,7 @@ context_budget:
 
 # Task Tracker Manager
 
-Standing owner of Kay's personal task system. The tracker lives in Google Sheets — title `TO DO 5.12.26`, id `1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk`, in the `STRATEGIC PLANNING` Drive folder. Built 2026-04-26 on Excel, **migrated to Google Sheets 2026-05-12** for browser-native access from any device. This skill is the operational layer — Chief of Staff calls into it, this skill executes.
+Standing owner of Kay's personal task system. The tracker lives as weekly Google Sheets files in the `To Do Archive` Drive folder. Each Sunday's `build-week` Drive-copies the prior week's file into a new `TO DO M.D.YY` file (e.g., `TO DO 5.31.26`); the prior file becomes immutable history. The **current week's sheet ID is resolved dynamically** via `scripts/tracker_sheet_resolver.py` (hybrid pointer + Drive-search fallback; pointer at `~/.claude/config/current-tracker-sheet.json`). Use `python3 scripts/tracker_sheet_resolver.py --print-id` to print the current ID for shell consumers; the resolver auto-rebuilds the pointer if missing/stale. Built 2026-04-26 on Excel; migrated to Google Sheets 2026-05-12; weekly-files architecture shipped 2026-05-26. This skill is the operational layer — Chief of Staff calls into it, this skill executes.
 
 Architecture lives in `memory/project_personal_task_tracker.md`. Update that memory whenever the architecture changes.
 
@@ -72,7 +72,7 @@ Architecture lives in `memory/project_personal_task_tracker.md`. Update that mem
 
 | File | Location | Owned? |
 |---|---|---|
-| Personal task tracker | Google Sheet `TO DO 5.12.26` (id `1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk`) in `STRATEGIC PLANNING` Drive folder | YES |
+| Personal task tracker | Weekly Google Sheets files (e.g., `TO DO 5.31.26`) in `To Do Archive` Drive folder. Current sheet ID resolved via `scripts/tracker_sheet_resolver.py --print-id` (env var `TRACKER_SHEET_ID` overrides) | YES |
 | Legacy Excel (read-only) | `~/My Drive/STRATEGIC PLANNING/TO DO 4.26.26.xlsx` — preserved as historical artifact; do not write | Read-only reference |
 
 Out of scope: Industry Research Tracker, DealsX, target lists, vault, briefs. Those belong to other skills.

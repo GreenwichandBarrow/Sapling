@@ -94,7 +94,7 @@ curl -s -X POST -H "Authorization: Bearer $ATTIO_KEY" -H "Content-Type: applicat
 
 ### Step 6 — Append tasks to TO DO sheet
 
-Sheet ID `1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk`. Tab `TO DO`. Schema: `[Status, Task, Type, Project, Due, Notes]`. Status always FALSE (unchecked). Due blank (Kay assigns the day-slot in morning brief).
+Sheet: current week's `TO DO M.D.YY` file — resolve via `python3 /home/ubuntu/projects/Sapling/scripts/tracker_sheet_resolver.py --print-id` (or invoke `scripts/task_tracker.py append` which auto-resolves). Tab `TO DO`. Schema: `[Status, Task, Type, Project, Due, Notes]`. Status always FALSE (unchecked). Due blank (Kay assigns the day-slot in morning brief).
 
 Use `gog sheets append --values-json` (per `feedback_gog_sheets_value_delimiters` — never positional for prose values).
 

@@ -49,7 +49,7 @@ Tests every external API and integration. Each check: can we authenticate and ge
 |---------|-------|--------|-------|--------|-----|
 | Attio | API key valid, can query | `POST /v2/objects/companies/records/query` with `{"limit":1}` | 200 OK | — | Non-200 or timeout |
 | Apollo | API key valid | `POST /organizations/search` | 200 OK | — | Non-200 or timeout |
-| Task tracker | To Do tab readable | `gog sheets get 1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk "'To Do'!A1" -j` | Returns data | — | Auth error or timeout |
+| Task tracker | To Do tab readable on current week's sheet | `SHEET_ID=$(python3 /home/ubuntu/projects/Sapling/scripts/tracker_sheet_resolver.py --print-id) && gog sheets get "$SHEET_ID" "'To Do'!A1" -j` | Returns data | — | Auth error, timeout, or resolver failure |
 | Gmail (gog) | OAuth valid | `gog gmail search "newer_than:1d" --max 1 --json` | Returns results | — | Auth error or empty |
 | Calendar (gog) | OAuth valid | `gog calendar list --from today --to today --json` | Returns data | — | Auth error |
 | Drive (gog) | OAuth valid | `gog drive ls --parent root --json --max 1` | Returns data | — | Auth error |

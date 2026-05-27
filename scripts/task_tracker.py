@@ -1075,30 +1075,446 @@ def _pull_carryover_to_week(client: "SheetsClient", dry_run: bool = False) -> di
     return summary
 
 
-def cmd_build_week(args) -> int:
-    """Sunday weekly rebuild ceremony — targets the WEEK PLANNING TAB.
+# =================================================================================
+# Phase 3 (2026-05-26) — Weekly-files architecture: cross-file rollover helpers
+# =================================================================================
 
-    Design-corrected model (2026-05-17): the tracker has BOTH surfaces. This
-    verb rebuilds the **Week planning tab** (the Sunday canvas) — it does NOT
-    touch the 7 day tabs. After Kay finalizes the week on the Week tab,
-    `distribute-week` fans it out into the day tabs.
+def _drive_copy_file(src_file_id: str, new_title: str) -> str:
+    """Drive-copy a sheet to a new file. Returns new file ID. Raises on failure."""
+    result = subprocess.run(
+        ["gog", "drive", "copy", src_file_id, new_title, "--json"],
+        capture_output=True, text=True, timeout=60
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"gog drive copy failed: {result.stderr.strip() or result.stdout.strip()}")
+    try:
+        data = json.loads(result.stdout) if result.stdout.strip() else {}
+    except json.JSONDecodeError:
+        raise RuntimeError(f"gog drive copy returned non-JSON: {result.stdout[:300]}")
+    new_id = data.get("id") or (data.get("file") or {}).get("id")
+    if not new_id:
+        raise RuntimeError(f"gog drive copy returned no file ID: {json.dumps(data)[:300]}")
+    return new_id
 
-    1. Snapshot the Week tab + `To Do` to one rollback JSON.
-    2. Write ONE combined `archive_{Sun-date}` tab capturing the prior week's
-       Week tab verbatim (values only — the Week tab is NOT destroyed; it is
-       cleared + re-titled in place, formatting preserved).
-    3. Clear all 7 day-blocks' slots/habits/notes/checkboxes on the Week tab
-       via repeatCell (preserves title/headers/labels/dropdowns/CF/validation).
-    4. Re-title the Week tab title row to this week's Sun..Sat label + re-stamp
-       the per-day header row dates.
-    5. Stamp the Recurring Template ONTO THE WEEK TAB (unless --skip-recurring).
-    6. Trace.
 
-    Flags: --dry-run (report only, NO writes), --skip-recurring.
+def _drive_move_file(file_id: str, parent_folder_id: str) -> None:
+    """Move a file under a parent folder. Idempotent."""
+    result = subprocess.run(
+        ["gog", "drive", "move", file_id, "--parent", parent_folder_id],
+        capture_output=True, text=True, timeout=30
+    )
+    if result.returncode != 0:
+        # Non-fatal — log warning
+        print(f"task-tracker-manager: WARN drive move failed ({result.stderr.strip()})", file=sys.stderr)
 
-    NOTE: carryover is NOT auto-copied — `report` surfaces incompletes and Kay
-    approves each move during the Sunday walkthrough, on the Week tab.
+
+def _find_to_do_archive_folder_id() -> str | None:
+    """Find the 'To Do Archive' folder by name. Returns ID or None (caller falls back to legacy parent)."""
+    result = subprocess.run(
+        ["gog", "drive", "search",
+         "name = 'To Do Archive' and mimeType = 'application/vnd.google-apps.folder' and trashed = false",
+         "--raw-query", "--json"],
+        capture_output=True, text=True, timeout=30
+    )
+    if result.returncode != 0:
+        return None
+    try:
+        data = json.loads(result.stdout) if result.stdout.strip() else []
+    except json.JSONDecodeError:
+        return None
+    files = data if isinstance(data, list) else data.get("files", []) or data.get("results", []) or []
+    if not files:
+        return None
+    return files[0].get("id")
+
+
+def _stamp_recurring_day_tabs(client: SheetsClient, meta: dict, dry_run: bool = False) -> dict:
+    """Stamp every 'Weekly Recurring' To Do row onto the day tab matching its Horizon.
+
+    Phase 3 replacement for _stamp_recurring_week. Target = day tabs (not Week tab),
+    because in the weekly-files architecture the Week tab is formula-driven (live mirror
+    of day tabs); recurring items are written to day tabs and the Week tab auto-reflects.
+
+    Returns {stamped, refused, rows_read}.
     """
+    summary = {"stamped": [], "refused": [], "rows_read": 0}
+    rows = _read_recurring_template(client)
+    summary["rows_read"] = len(rows)
+    if not rows:
+        return summary
+
+    # In-memory view of each day tab's task column to detect occupied slots.
+    day_grid: dict[str, list[str]] = {}
+    for day_tab in DAY_TAB_NAMES:
+        try:
+            vals = client.get_values(f"'{day_tab}'!B{DAY_SLOT_FIRST_ROW}:B{DAY_SLOT_LAST_ROW}")
+        except Exception:
+            vals = []
+        flat = [(v[0] if v else "") if isinstance(v, list) else "" for v in vals]
+        while len(flat) < DAY_SLOT_LAST_ROW - DAY_SLOT_FIRST_ROW + 1:
+            flat.append("")
+        day_grid[day_tab] = flat
+
+    writes: list[tuple[str, list[list]]] = []
+    for r in rows:
+        day_idx = DAY_BY_NAME[r["day"].lower()]
+        tab_name = DAY_LABELS[day_idx]
+        if tab_name not in day_grid:
+            summary["refused"].append({"row": r["row"], "day": r["day"], "slot": r["slot"],
+                                       "task": r["task"], "reason": f"unknown day tab {tab_name!r}"})
+            continue
+
+        target_slot = r["slot"]
+        if target_slot is not None:
+            existing = day_grid[tab_name][target_slot - 1]
+            if existing and str(existing).strip():
+                summary["refused"].append({
+                    "row": r["row"], "day": r["day"], "slot": target_slot,
+                    "task": r["task"], "reason": f'slot occupied by "{existing}"'})
+                continue
+            chosen_slot = target_slot
+        else:
+            chosen_slot = None
+            for idx, v in enumerate(day_grid[tab_name]):
+                if not v or not str(v).strip():
+                    chosen_slot = idx + 1
+                    break
+            if chosen_slot is None:
+                summary["refused"].append({"row": r["row"], "day": r["day"], "slot": None,
+                                           "task": r["task"], "reason": f"{tab_name} day tab has no empty slots"})
+                continue
+
+        slot_row = DAY_SLOT_FIRST_ROW + chosen_slot - 1
+        cell = f"'{tab_name}'!B{slot_row}"
+        writes.append((cell, [[r["task"]]]))
+        day_grid[tab_name][chosen_slot - 1] = r["task"]  # update in-memory so later carryover sees it
+        summary["stamped"].append({"row": r["row"], "day": tab_name, "slot": chosen_slot, "task": r["task"]})
+
+    if not dry_run:
+        for cell, vals in writes:
+            client.values_update(cell, vals)
+
+    return summary
+
+
+def _carryover_cross_file(prior_client: SheetsClient, new_client: SheetsClient, dry_run: bool = False) -> dict:
+    """Read incomplete items from PRIOR file's day tabs, write to NEW file's same day tabs.
+
+    Phase 3 replacement for _pull_carryover_to_week. Cross-file read + write.
+    Dedup vs recurring stamps already placed on the new file's day tabs.
+
+    Returns {pulled, refused, rows_read}.
+    """
+    summary = {"pulled": [], "refused": [], "rows_read": 0}
+
+    for day_tab in DAY_TAB_NAMES:
+        # Read PRIOR file's day tab slots
+        rng = f"'{day_tab}'!A{DAY_SLOT_FIRST_ROW}:B{DAY_SLOT_LAST_ROW}"
+        try:
+            prior_vals = prior_client.get_values(rng) or []
+        except Exception:
+            prior_vals = []
+        summary["rows_read"] += len(prior_vals)
+
+        incompletes: list[tuple[int, str]] = []
+        for slot_idx, row in enumerate(prior_vals):
+            slot_num = slot_idx + 1
+            status = row[0] if len(row) > 0 else ""
+            task = row[1] if len(row) > 1 else ""
+            status_true = (status is True) or (str(status).strip().upper() == "TRUE")
+            task_str = str(task).strip() if task is not None else ""
+            if task_str and not status_true:
+                incompletes.append((slot_num, task_str))
+
+        if not incompletes:
+            continue
+
+        # Read NEW file's day tab to find empty slots + already-placed recurring tasks for dedup
+        try:
+            new_vals = new_client.get_values(rng) or []
+        except Exception:
+            new_vals = []
+        empty_slots: list[tuple[int, int]] = []
+        placed_normalized: set[str] = set()
+        slot_count = DAY_SLOT_LAST_ROW - DAY_SLOT_FIRST_ROW + 1
+        for s in range(slot_count):
+            wk_cell = ""
+            if s < len(new_vals) and len(new_vals[s]) > 1:
+                wk_cell = str(new_vals[s][1]).strip()
+            if not wk_cell:
+                empty_slots.append((s + 1, DAY_SLOT_FIRST_ROW + s))
+            else:
+                placed_normalized.add(wk_cell.lower())
+
+        writes: list[tuple[str, list[list]]] = []
+        for src_slot, task in incompletes:
+            if task.lower() in placed_normalized:
+                summary["refused"].append({
+                    "day": day_tab, "src_slot": src_slot, "task": task,
+                    "reason": "already present on new file's day tab (recurring stamp or duplicate)"
+                })
+                continue
+            if not empty_slots:
+                summary["refused"].append({
+                    "day": day_tab, "src_slot": src_slot, "task": task,
+                    "reason": "no empty slot on new file's day tab"
+                })
+                continue
+            dst_slot, dst_row = empty_slots.pop(0)
+            cell = f"'{day_tab}'!B{dst_row}"
+            writes.append((cell, [[task]]))
+            placed_normalized.add(task.lower())
+            summary["pulled"].append({
+                "day": day_tab, "src_slot": src_slot,
+                "dst_slot": dst_slot, "task": task
+            })
+
+        if not dry_run:
+            for cell, vals in writes:
+                new_client.values_update(cell, vals)
+
+    return summary
+
+
+def _build_week_formulas(meta: dict) -> list[tuple[str, list[list]]]:
+    """Generate the formula writes that wire the Week tab to be a live mirror of day tabs.
+
+    For each day i in 0..6, for each slot s in 1..15:
+      Week!<status_col><WK_SLOT_FIRST_ROW + s - 1> = "='<DayTab>'!A<DAY_SLOT_FIRST_ROW + s - 1>"
+      Week!<content_col><WK_SLOT_FIRST_ROW + s - 1> = "='<DayTab>'!B<DAY_SLOT_FIRST_ROW + s - 1>"
+    Plus 7 habit checkbox formulas per day.
+
+    Returns list of (a1_range, values) tuples — caller batches the writes.
+    """
+    writes: list[tuple[str, list[list]]] = []
+    week_tab = find_tab(meta, TAB_WEEK)
+    if week_tab is None:
+        return writes  # Week tab missing — skip silently; build_week_tab.py needs to run first
+
+    slot_count = WK_SLOT_LAST_ROW - WK_SLOT_FIRST_ROW + 1  # 15
+    habit_count = WK_HABIT_LAST_ROW - WK_HABIT_FIRST_ROW + 1  # 9 per WK constants
+
+    for i in range(7):
+        day_tab = WK_DAY_ORDER[i]
+        sc = col_letter(wk_status_col(i))
+        cc = col_letter(wk_content_col(i))
+
+        # Priority slot status formulas (=DayTab!A14, =DayTab!A15, …)
+        status_formulas = [[f"='{day_tab}'!A{DAY_SLOT_FIRST_ROW + s}"] for s in range(slot_count)]
+        writes.append((f"'{TAB_WEEK}'!{sc}{WK_SLOT_FIRST_ROW}:{sc}{WK_SLOT_LAST_ROW}", status_formulas))
+
+        # Priority slot task formulas (=DayTab!B14, =DayTab!B15, …)
+        task_formulas = [[f"='{day_tab}'!B{DAY_SLOT_FIRST_ROW + s}"] for s in range(slot_count)]
+        writes.append((f"'{TAB_WEEK}'!{cc}{WK_SLOT_FIRST_ROW}:{cc}{WK_SLOT_LAST_ROW}", task_formulas))
+
+        # Habit checkbox formulas (=DayTab!A4, =DayTab!A5, …)
+        habit_formulas = [[f"='{day_tab}'!A{DAY_HABIT_FIRST_ROW + h}"] for h in range(habit_count)]
+        writes.append((f"'{TAB_WEEK}'!{sc}{WK_HABIT_FIRST_ROW}:{sc}{WK_HABIT_LAST_ROW}", habit_formulas))
+
+    return writes
+
+
+def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int:
+    """Phase 3 (2026-05-26) — cross-file weekly rollover.
+
+    1. Snapshot prior file
+    2. gog drive copy prior → new file `TO DO {next-Sun-date}.YY`
+    3. Move new file into 'To Do Archive' folder
+    4. Open new file, clear all 7 day tabs (preserve structure/formatting)
+    5. Stamp recurring onto new file's day tabs
+    6. Cross-file carryover (read prior day tabs → write new day tabs)
+    7. Wire Week tab formulas (in-file refs to day tabs)
+    8. Re-title Week tab + per-day header dates
+    9. Update pointer atomically (LAST step — prior-file refs remain valid on mid-rollover failure)
+    10. Trace
+    """
+    from datetime import date as _date
+    sys.path.insert(0, str(Path(__file__).parent))
+    from tracker_sheet_resolver import write_pointer
+
+    wd = week_dates(_date.today())
+    sun_date = wd[0]
+    new_title = f"TO DO {sun_date.month}.{sun_date.day}.{sun_date.year % 100}"
+    if sun_date.month == wd[6].month:
+        week_label = f"WEEK OF {sun_date.strftime('%b')} {sun_date.day}-{wd[6].day}"
+    else:
+        week_label = f"WEEK OF {sun_date.strftime('%b')} {sun_date.day}-{wd[6].strftime('%b')} {wd[6].day}"
+
+    # ---- dry-run preview ----
+    if getattr(args, "dry_run", False):
+        preview = {
+            "prior_sheet": prior_info,
+            "would_create": new_title,
+            "week_label": week_label,
+            "destination_folder": "To Do Archive (resolved at write time)",
+            "recurring_preview": _stamp_recurring_day_tabs.__doc__ and "see helper",
+            "formula_count_estimate": 7 * 3,  # 3 ranges per day (status slots, task slots, habit checkboxes)
+        }
+        # Carryover dry-run preview against current state (best-effort — won't reflect post-stamp)
+        try:
+            preview["carryover_preview_count"] = sum(
+                1 for day_tab in DAY_TAB_NAMES
+                for row in (prior_client.get_values(f"'{day_tab}'!A{DAY_SLOT_FIRST_ROW}:B{DAY_SLOT_LAST_ROW}") or [])
+                if (len(row) > 1 and str(row[1]).strip()
+                    and not ((row[0] is True) or str(row[0]).strip().upper() == "TRUE"))
+            )
+        except Exception:
+            preview["carryover_preview_count"] = "unknown"
+        print(json.dumps(preview, indent=2, default=str))
+        return 0
+
+    # ---- 1. Snapshot prior file (Week + all 7 day tabs + To Do) ----
+    snap_ranges = [f"'{TAB_WEEK}'!A1:O51"] + \
+                  [f"'{d}'!A1:E40" for d in DAY_TAB_NAMES] + \
+                  [f"'{TAB_TODO}'!A1:G400"]
+    snap = snapshot_ranges(prior_client, "build-week-v2", snap_ranges)
+    print(f"task-tracker-manager: snapshot prior file → {snap}")
+
+    # ---- 2. Drive copy prior → new file ----
+    print(f"task-tracker-manager: gog drive copy → {new_title}")
+    try:
+        new_sheet_id = _drive_copy_file(prior_info["sheet_id"], new_title)
+    except RuntimeError as e:
+        print(f"task-tracker-manager: drive copy FAILED — {e}", file=sys.stderr)
+        return 1
+    print(f"task-tracker-manager: new file created — id={new_sheet_id}")
+
+    # ---- 3. Move to To Do Archive folder ----
+    folder_id = _find_to_do_archive_folder_id()
+    if folder_id:
+        _drive_move_file(new_sheet_id, folder_id)
+        print(f"task-tracker-manager: moved → To Do Archive folder ({folder_id})")
+    else:
+        print(f"task-tracker-manager: WARN 'To Do Archive' folder not found; new file remains in default location", file=sys.stderr)
+
+    # ---- 4. Open new file + clear all 7 day tabs ----
+    new_client = SheetsClient(new_sheet_id)
+    new_meta = new_client.get_metadata()
+    clear_reqs = []
+    for d in DAY_TAB_NAMES:
+        tab_props = find_tab(new_meta, d)
+        if tab_props is None:
+            print(f"task-tracker-manager: WARN day tab {d!r} missing on new file — skipping clear", file=sys.stderr)
+            continue
+        clear_reqs += _day_clear_requests(tab_props["sheetId"])
+    if clear_reqs:
+        new_client.batch_update(clear_reqs)
+        print(f"task-tracker-manager: cleared {len(DAY_TAB_NAMES)} day tabs on new file")
+
+    # ---- 5. Stamp recurring onto new file's day tabs ----
+    recurring_summary = {"stamped": [], "refused": [], "rows_read": 0}
+    if not getattr(args, "skip_recurring", False):
+        recurring_summary = _stamp_recurring_day_tabs(new_client, new_meta, dry_run=False)
+        print(f"task-tracker-manager: stamped {len(recurring_summary['stamped'])} recurring row(s) onto new file day tabs"
+              + (f"; {len(recurring_summary['refused'])} refused" if recurring_summary["refused"] else ""))
+
+    # ---- 6. Cross-file carryover ----
+    carryover_summary = {"pulled": [], "refused": [], "rows_read": 0}
+    if not getattr(args, "skip_carryover", False):
+        carryover_summary = _carryover_cross_file(prior_client, new_client, dry_run=False)
+        print(f"task-tracker-manager: carryover pulled {len(carryover_summary['pulled'])} item(s) from prior → new"
+              + (f"; {len(carryover_summary['refused'])} refused" if carryover_summary["refused"] else ""))
+
+    # ---- 7. Wire Week tab formulas ----
+    formula_writes = _build_week_formulas(new_meta)
+    for rng, vals in formula_writes:
+        new_client.values_update(rng, vals)
+    print(f"task-tracker-manager: wired {len(formula_writes)} formula ranges (~{sum(len(v) for _, v in formula_writes)} cells) on new file Week tab")
+
+    # ---- 8. Re-title Week tab + per-day header dates ----
+    week_tab_props = find_tab(new_meta, TAB_WEEK)
+    if week_tab_props:
+        wk_sid = week_tab_props["sheetId"]
+        title_reqs = [{
+            "updateCells": {
+                "rows": [{"values": [{"userEnteredValue": {"stringValue": week_label}}]}],
+                "fields": "userEnteredValue",
+                "start": {"sheetId": wk_sid, "rowIndex": WK_TITLE_ROW - 1, "columnIndex": 0}
+            }
+        }]
+        for i in range(7):
+            sc = wk_status_col(i)
+            title_reqs.append({
+                "updateCells": {
+                    "rows": [{"values": [{"userEnteredValue": {
+                        "stringValue": day_title_text(WK_DAY_ORDER[i], wd[i])}}]}],
+                    "fields": "userEnteredValue",
+                    "start": {"sheetId": wk_sid, "rowIndex": WK_DAYHDR_ROW - 1, "columnIndex": sc}
+                }
+            })
+        new_client.batch_update(title_reqs)
+        print(f"task-tracker-manager: re-titled Week tab → {week_label!r}")
+
+    # ---- 9. Update pointer atomically (LAST step before trace) ----
+    try:
+        write_pointer(new_sheet_id, new_title, sun_date)
+        print(f"task-tracker-manager: pointer updated → {new_title} ({new_sheet_id})")
+    except Exception as e:
+        print(f"task-tracker-manager: WARN pointer write failed ({e}); resolver fallback to Drive search will recover", file=sys.stderr)
+
+    # ---- 10. Trace ----
+    trace_lines = [
+        f"- prior file: {prior_info.get('title')} ({prior_info.get('sheet_id')})",
+        f"- new file:   {new_title} ({new_sheet_id})",
+        f"- destination folder: {'To Do Archive (' + folder_id + ')' if folder_id else 'default location'}",
+        f"- week label: {week_label}",
+        f"- recurring stamped onto new file day tabs: {len(recurring_summary['stamped'])}",
+        f"- carryover pulled from prior → new: {len(carryover_summary['pulled'])}",
+        f"- carryover refused (already present / no slot): {len(carryover_summary['refused'])}",
+        f"- Week tab formulas wired: {len(formula_writes)} ranges",
+        f"- snapshot: {snap}",
+    ]
+    if recurring_summary["refused"]:
+        for ref in recurring_summary["refused"]:
+            trace_lines.append(f"  - recurring REFUSED: {ref.get('day')} slot {ref.get('slot')}: {ref.get('reason')}")
+    if carryover_summary["refused"]:
+        for ref in carryover_summary["refused"][:5]:
+            trace_lines.append(f"  - carryover REFUSED: {ref.get('day')} src slot {ref.get('src_slot')} {ref.get('task','')[:60]}: {ref.get('reason')}")
+    trace("build-week-v2", sun_date.isoformat(), trace_lines)
+    print(f"task-tracker-manager: build-week (v2) complete — new file {new_title} live; pointer updated")
+    return 0
+
+
+def cmd_build_week(args) -> int:
+    """Sunday weekly rebuild ceremony.
+
+    PHASE 3 (2026-05-26) — weekly-files architecture: default behavior is now
+    cross-file rollover (cmd_build_week_v2). The legacy in-place rebuild stays
+    callable via --legacy for emergency recovery; per the no-auto-retire doctrine
+    (`memory/feedback_explicit_review_before_retiring_verbs.md`) it is not removed.
+
+    NEW DEFAULT (--legacy NOT set):
+      1. Resolve prior file (current week's sheet) via tracker_sheet_resolver
+      2. gog drive copy prior → new file `TO DO {next-Sun-date}.YY`
+      3. Move new file into 'To Do Archive' folder
+      4. Clear all 7 day tabs on new file
+      5. Stamp recurring onto new file's day tabs
+      6. Cross-file carryover (read prior day tabs → write new day tabs)
+      7. Wire Week tab cells as in-file formulas (=Tue!B14 etc.)
+      8. Re-title Week tab + per-day header dates
+      9. Update pointer atomically (LAST step)
+      10. Trace
+      See cmd_build_week_v2 for full implementation.
+
+    LEGACY (--legacy): in-place rebuild on the resolved current sheet. Archive
+    prior Week tab as `archive_{Sun-date}` far-right tab, clear all 7 day-blocks
+    on Week tab, re-title, stamp recurring onto Week tab, pull carryover from
+    same-file day tabs onto Week tab. Day tabs untouched. distribute-week then
+    fans out. This is the pre-2026-05-26 behavior preserved for recovery.
+    """
+    # --- New default: cross-file rollover ---
+    if not getattr(args, "legacy", False):
+        sys.path.insert(0, str(Path(__file__).parent))
+        try:
+            from tracker_sheet_resolver import resolve_current_sheet
+        except ImportError as e:
+            print(f"task-tracker-manager: resolver import failed ({e}); falling back to --legacy mode", file=sys.stderr)
+        else:
+            prior_info = resolve_current_sheet(force_refresh=True)
+            prior_client = SheetsClient(prior_info["sheet_id"])
+            return cmd_build_week_v2(args, prior_client, prior_info)
+
+    # --- Legacy fallthrough: in-place rebuild ---
     client = SheetsClient()
     meta = client.get_metadata()
 
@@ -2470,9 +2886,11 @@ def main():
     bw.add_argument("--skip-recurring", action="store_true",
                     help="bypass the Recurring Template stamp step (rare)")
     bw.add_argument("--skip-carryover", action="store_true",
-                    help="bypass the incomplete-day-tab carryover pull onto the new Week tab (added 2026-05-26)")
+                    help="bypass the incomplete-day-tab carryover pull (added 2026-05-26)")
     bw.add_argument("--dry-run", action="store_true",
-                    help="report what would happen without writing — no archive, no clear, no stamp, no carryover")
+                    help="report what would happen without writing — no copy, no archive, no clear, no stamp, no carryover")
+    bw.add_argument("--legacy", action="store_true",
+                    help="use pre-2026-05-26 in-place rebuild (archive tab inside same sheet, no new file). Recovery only.")
     bw.set_defaults(func=cmd_build_week)
 
     dw = sub.add_parser("distribute-week",

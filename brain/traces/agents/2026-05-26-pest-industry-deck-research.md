@@ -80,3 +80,12 @@ Vault: `outputs/2026-05-08-discussion-pest-control-holdco-architecture.md` is th
 
 Returning digest to orchestrator now.
 → DONE
+
+## [now] orchestrator
+All 4 agents complete. Material findings collected:
+- Insurance deck template: 16 slides, industry-thesis half of CIM
+- WIP pest CIM exists: `Pest Management Analysis 5.18.26v2.pptx` (1Rgnqoo6WwqsjrL3mUZxZgt_c9u-w716G), slides 1-3 pest, slides 4-17 still insurance — swap-target identified
+- Pest one-pager + scorecard (2.73/3.0) + Gemini Research (today) + Hoffman NJPMA + Ponce ARR-arb mechanic + Capstone 97-deal data + Potomac/Giannamore sell-side benchmark + named PE platforms
+
+Synthesizing to slide outline for Kay's approval.
+→ CLOSE

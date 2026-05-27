@@ -117,3 +117,61 @@ Long Tuesday after Memorial Day. Two major doctrine shifts (three-lane intermedi
 5. **Sun 5/31 first weekly-files rollover** — auto-fires via `/goodmorning` Sunday AM.
 6. **Investor update draft** — Wed 5/27 top priority.
 7. **DealsX Google Sheet section** — Kay decision on time-axis refresh + backfill.
+
+## Appendix — Earlier-this-session (5/22 AM workflow + Attio doctrine sweep, not in main body)
+
+This long-running session opened with 2026-05-22 `/goodmorning`. The work between that morning and tonight's `/goodnight` produced durable artifacts NOT captured in either the existing [[brain/context/session-decisions-2026-05-22|5/22 post-call file]] or this file's main body. Recording here so future agents see the full chain.
+
+### 5/22 morning briefing — 5 Decisions surfaced
+
+- **APPROVE:** Generate briefs for 5 of 6 external meetings (today + Mon + Tue) — Sam Curcio (5/22 12:30), Sarah Rowell (5/22 16:00), Oswaldo Ponce (Mon), Jeff Stevens (Tue monthly), Guillermo Lavergne (Tue biweekly).
+- **REJECT:** Brief for Coffee w/ Robe (Mon 09:30) per `feedback_robe_no_briefs`.
+- **DEFER (mid-session pivot):** Decision 2 "broken-systems trifecta" → reframed mid-session when Kay called out Attio is in 1Password. Pivoted to skill-doctrine sweep, executed (see below).
+
+### Attio + skill credential-ladder doctrine sweep (executed in-session)
+
+- **APPROVE:** Cross-cutting 1Password credential-ladder enforcement across all SKILL.md. Sweep agent: 46 SKILL.md → 27 in-scope → 16 already-compliant in HEAD → **11 patched this session** (138 LOC inserted). Files: calibration-workflow, conference-discovery, conference-engagement, deal-aggregator, deal-evaluation, jj-operations, niche-intelligence, nightly-tracker-audit, post-loi, target-discovery, tracker-manager. Zero remaining "MCP disconnected as blocker" without REST verification. Landmine confirmed-fixed in list-builder (prior `grep APOLLO_API_KEY scripts/.env.launchd | cut -d'"' -f2` would have returned the literal op:// reference; HEAD uses `source scripts/op-env.sh`).
+- **APPROVE (BUILT):** `~/.local/bin/attio-api` bash wrapper mirroring `granola-api` pattern. 191 LOC. Op ref `op://GB Server/Attio API Key/password`. Subcommands: `health`, `query-people`, `query-companies`, `get-person`, `list-notes`, `create-note`, `update-person`. Smoke test → HTTP 200, scope includes `note:read-write` + `record_permission:read-write`. See trace [[brain/traces/2026-05-26-attio-api-wrapper-vs-skill-refactor]].
+- **APPROVE:** Clear the 5/22-morning Attio sync queue via new wrapper. 6 entities synced: matt-becky-colleague (identity backfill — name/job/company PATCH + engagement note), carlos-nieto-dca (relationship_type=Advisor; "Strategic Counsel" doesn't exist in Attio dropdown — Kay confirmed Advisor mapping; full phrase in `next_action`), oswaldo-ponce, sam-transworld (note attached; record auto-created), laura-smith-bankunited, sam-lamson (note attached; record auto-created). All `attio_id` + `attio_synced_at` backfilled to vault frontmatter.
+- **APPROVE:** Matt Luczyk Attio merge via API DELETE + PATCH. Stub `b8515263…` (nameless, email-only, zero notes) DELETE'd; email PATCH'd onto primary `c6030292…`. Snapshots in `brain/context/rollback-snapshots/`. Discovered: Attio's `email_addresses` field is API-append-mostly (PATCH with `[]` is no-op); DELETE was the workaround. See trace [[brain/traces/2026-05-26-attio-merge-via-api-delete]].
+
+### Phantom-outage findings (live verification)
+
+- `claude mcp list` confirms Granola = **✓ Connected**. Stale "Granola MCP unauthenticated" in relationship-status artifacts is wrong — MCP works.
+- `claude mcp get attio` → "No MCP server found." Attio MCP is NOT configured anywhere. The 14-day "Attio MCP disconnected" framing was a phantom.
+- `claude mcp restart` does NOT exist as a CLI subcommand. `launchd-debugger` SKILL.md FIX whitelist referenced an unavailable operation.
+
+### Superhuman cancellation (Kay cancelled vendor-side in-session)
+
+- **APPROVE:** Budget tracker Tab 3 row 7 zeroed: cols D-G → `0 / 0 / 0 / Cancelled`. Row preserved per Kay's instruction.
+- **UPDATED:** Dashboard YAMLs (3 files) — Superhuman block removed from `tech_stack.yaml` Email category, `external_services.yaml` services list, `credits.yaml` monthly subscriptions.
+- **UPDATED:** `dashboard/data_sources.py` line 649 — "Gmail/Superhuman/Granola scan" → "Gmail/Granola scan."
+- **ACTION:** `dashboard.service` (systemd user unit) restarted — confirmed active.
+
+### 5/22 To Do (Fri tab, slots 4-8 + slot 2 notes-append)
+
+- 5 items scheduled via `task-tracker-manager schedule-to-day-slot` — Q1 investor update | Sam reply | Carlos reply | Kilian schools | Pack for Long Island.
+- Fri slot 2 Notes (E15) updated — "extend runway / free up cash" appended to existing "Assess budget reduction areas" row (Kay preferred notes-append over duplicate row).
+
+### Email drafts (4 threads, chat-only per new rule)
+
+- **SENT (Kay):** Sam Lamson reply (Emily/Jim Dine warm-intro acceptance + follow-up-call ask + recent volume-pivot self-disclosure).
+- Carlos drone-thread follow-up + LMC/Oswaldo bundle + August Felker reply — all drafted in chat. Subsequent context (Project Drone REJECT-reversal main-body decision, three-lane doctrine) supersedes the original decline framings. Drafts now stale in chat history; Kay-direct handling.
+
+### Memory adds (2 new, NOT in main body's list of 5 doctrine memories)
+
+- **CREATED:** [[feedback-chat-drafts-dont-land-in-gmail]] — When Kay says "draft" in chat, iterate text in chat only; never create Gmail draft until she explicitly asks. Distinct from `feedback_kay_handles_all_replies` (no-auto-SEND) — this is no-auto-CREATE.
+- **CREATED:** [[feedback-quasi-decline-via-investor-hesitation]] — Decline tech-exposed/AI-disruptable/travel-heavy deals via investor-funding-hesitation framing not personal judgment. Demonstrated in Carlos restaurant-software decline.
+- **UPDATED:** MEMORY.md index twice (Reactive Mode / Outreach Voice clusters) — added both new memories.
+
+### Friday weekly-tracker (overlay)
+
+- **CREATED:** Week-ending 2026-05-22 — 0/0/0/0 metrics (NDAs/Financials/LOIs Sub/LOIs Signed). Sheet + vault + Drive + Slack + validator PASS. Flagged: Apollo `/auth/health` no longer exposes credit-balance fields.
+
+### Briefs created 5/22 (Drive + brain/briefs/)
+
+- [[brain/briefs/2026-05-22-sam-curcio-intermediary|Sam Curcio]] (used by 12:30 call per main body cluster)
+- [[brain/briefs/2026-05-22-sarah-rowell-1on1|Sarah Rowell]]
+- [[brain/briefs/2026-05-22-oswaldo-ponce-new-contact|Oswaldo Ponce]] — material finding: POZA Capital Partners targets "facilities/home services with recurring revenue, $1.5-5M EBITDA" — direct hit on bucket-1 + adjacent-staple thesis. Active peer in Kay's exact lane.
+- [[brain/briefs/2026-05-22-jeff-stevens-call-prep|Jeff Stevens]]
+- [[brain/briefs/2026-05-22-guillermo-lavergne-call-prep|Guillermo Lavergne]] — open ask seeded: women LPs / female-led family offices in Ashford's network.

@@ -29,6 +29,7 @@ granola_link: https://notes.granola.ai/d/2a7cf390-bb16-44a4-b62d-e7c190c274da
 **Date:** 2026-05-26 (Mon 12:00 ET, ~30 min)
 **Attendees:** Kay Schneider, [[entities/oswaldo-ponce|Oswaldo "Op" Ponce]] (POZA Capital Partners)
 **Granola:** https://notes.granola.ai/d/2a7cf390-bb16-44a4-b62d-e7c190c274da
+**Full analysis (Google Doc):** https://docs.google.com/document/d/1lBz_aMvKV92eGxglwm5AUd7ujfhlN0Zi_hZkuvrzIfc/edit
 
 ---
 

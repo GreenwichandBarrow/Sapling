@@ -190,7 +190,54 @@
       "tasks_appended": 1,
       "slack_posted": true,
       "detector": "manual-backfill-by-claude"
+    },
+    {
+      "id": "not_Gn4BVFoV13pDKF",
+      "title": "Oswaldo I Kay",
+      "counterparty": "Oswaldo \"Op\" Ponce (Poza Capital)",
+      "processed_at": "2026-05-28T14:08:07.279958+00:00",
+      "vault_call_note": "brain/calls/2026-05-26-oswaldo-ponce.md",
+      "doc_url": "https://docs.google.com/document/d/1lBz_aMvKV92eGxglwm5AUd7ujfhlN0Zi_hZkuvrzIfc/edit",
+      "doc_id": "1lBz_aMvKV92eGxglwm5AUd7ujfhlN0Zi_hZkuvrzIfc",
+      "attio_notes": {
+        "person_oswaldo_ponce": "0e4f99b8-644a-41a0-a615-0002e1e706c1",
+        "company_poza_capital": "18c190ea-8a1a-4abb-acc4-aa1609c45954"
+      },
+      "tasks_appended": 4,
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_lrTNq6HzuDmTck",
+      "title": "Team TB JJ I Kay",
+      "counterparty": "Internal \u2014 JJ (Jerome Madrona) + Abigail Quibilan (StartVirtual)",
+      "processed_at": "2026-05-28T14:08:07.279974+00:00",
+      "vault_call_note": "brain/calls/2026-05-27-team-tb-jj-kay.md",
+      "doc_url": "https://docs.google.com/document/d/1nR247tmyZqYL-jwbYUUsE0FVJK-F1E-xFXHOkwDKIXs/edit",
+      "doc_id": "1nR247tmyZqYL-jwbYUUsE0FVJK-F1E-xFXHOkwDKIXs",
+      "attio_notes": {},
+      "attio_failed": true,
+      "attio_skip_reason": "internal team meeting \u2014 JJ + Abigail are team members, not external counterparties",
+      "tasks_appended": 4,
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_Uq2NMa3Kz51FFq",
+      "title": "Jeff I Kay Mtg",
+      "counterparty": "Jeff Stevens (Anacapa Partners)",
+      "processed_at": "2026-05-28T14:08:07.279977+00:00",
+      "vault_call_note": "brain/calls/2026-05-27-jeff-kay-mtg.md",
+      "doc_url": "https://docs.google.com/document/d/1XY5TklpDwlAbHYz6x2F060wUHPPFnIwMDorSfQfM5FQ/edit",
+      "doc_id": "1XY5TklpDwlAbHYz6x2F060wUHPPFnIwMDorSfQfM5FQ",
+      "attio_notes": {
+        "person_jeff_stevens": "c3415077-f114-4c64-a0b1-a5f3b3e720a8",
+        "company_anacapa": "08edd196-9cf5-4ac8-b906-b9852d87f215"
+      },
+      "tasks_appended": 6,
+      "slack_posted": true,
+      "detector": "granola-api-rest"
     }
   ],
-  "last_updated": "2026-05-22T17:49:16.759483+00:00"
+  "last_updated": "2026-05-28T14:08:07.279980+00:00"
 }

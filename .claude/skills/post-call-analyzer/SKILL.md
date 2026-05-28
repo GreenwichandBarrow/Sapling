@@ -1,6 +1,6 @@
 ---
 name: post-call-analyzer
-description: Server-side per-call analysis. Two fires/day (1pm + 6pm ET) poll the Granola REST API via the granola-api wrapper. For each new call, pulls transcript, writes a 1-2 page Google Doc analysis to RESEARCH/MEETINGS, posts Attio notes to matched person + company records, appends review-ready tasks to the TO DO 5.12.26 sheet, and posts ONE Slack message to #ai-operations.
+description: Server-side per-call analysis. Two fires/day (1pm + 6pm ET) poll the Granola REST API via the granola-api wrapper. For each new call, pulls transcript, writes a 1-2 page Google Doc analysis to RESEARCH/MEETINGS, posts Attio notes to matched person + company records, **stages review-ready tasks for Kay's morning-briefing approval (NEVER writes to the TO DO sheet directly)**, and posts ONE Slack message to #ai-operations.
 archetype: router
 context_budget:
   skill_md: 150
@@ -25,7 +25,7 @@ Closes the gap between "Granola transcript landed" and "Kay has the analysis, th
 | Analysis output | **Google Doc (1-2 pages) in RESEARCH/MEETINGS folder** (id `1CHnc3jtLj7245TZpEP59ZkLPr64RpaCz`). One Doc per call. | 2026-05-13 — Kay: "analysis should sit in a folder in the google drive... add each analysis/items as a google doc there" |
 | Analysis depth | 1-2 Word-equivalent pages. Can include "further analysis to do" pointers for Kay's approval — no autonomous deep-dive. | 2026-05-13 — Kay: "1-2 pages of a word doc, no more. it can also be a takeway that mentions the analysis that we should do to discover more, but perhaps not done in that moment ahead of my review" |
 | Attio integration | **Direct REST API to `/v2/notes`** with API key from 1Password. Writes one note per matched person record + one per matched company record. | 2026-05-13 — Attio Notes write scope verified |
-| Task destination | **TO DO 5.12.26 sheet, `TO DO` tab via `task-tracker-manager` skill.** Kay assigns day-slot in morning brief. | 2026-05-13 — Kay: "they should live on the to do tab and then I determine what day you will put each. We can review these in the morning brief" |
+| Task destination | **Staged to `brain/trackers/post-call-analyzer/pending-tasks/{note_id}.json` for Kay's review in the next morning briefing.** Pipeline-manager surfaces each staged task with a RECOMMENDed day + YES/NO/DISCUSS. ONLY after Kay's approval does task-tracker-manager append to the TO DO sheet. **Post-call-analyzer NEVER writes to the TO DO sheet directly.** | 2026-05-28 — Kay: "Instead of just adding them there, can you include them in the morning brief and then I can decide what days they should be done and if they are approved before adding to the file" (see [[feedback-no-direct-task-writes-from-skills]]) |
 | Slack format | **ONE message per call** to `#ai-operations` with: call title + 2-3 line summary + Google Doc link + Granola transcript link + task count. Granola → Slack integration disconnected. | 2026-05-13 — Kay confirmed Path A |
 | Idempotency key | Granola note ID (e.g. `not_4rmlqyNoUbrPey`). Ledger at `brain/trackers/post-call-analyzer/processed.json`. | 2026-05-13 |
 
@@ -53,7 +53,7 @@ Triggered by the detector via `run-skill.sh post-call-analyzer:on-trigger`. For 
 3. **Compose the 1-2 page analysis** — sections: Meeting Overview, Action Items, Search Implications, Operational Implications, Open Loops / Further Analysis Needed (with await-Kay-approval flag), Tasks Created. Anchor on Granola's `summary_markdown`; extend with thinking-layer analysis. Stay inside ~600 words.
 4. **Create Google Doc** at `RESEARCH/MEETINGS/{YYYY-MM-DD} — {counterparty-shortname} — Meeting Analysis` via `gog docs create --parent=1CHnc3jtLj7245TZpEP59ZkLPr64RpaCz --file=/tmp/{note_id}.md`.
 5. **Write Attio notes** — one note per matched person record + one per matched company record. Title format `{date} — Meeting w/ Kay (G&B)`. Content: short summary + action items + Doc link + Granola transcript link.
-6. **Append tasks to TO DO sheet** — for each review-ready item, append `[FALSE, task-text, type, project, due (blank), notes-with-Doc-link]` to `TO DO 5.12.26` sheet, `TO DO` tab. Status=FALSE (unchecked), Due blank (Kay assigns).
+6. **Stage tasks for morning-briefing approval** — for each review-ready item, write to `brain/trackers/post-call-analyzer/pending-tasks/{note_id}.json` (one file per source call, JSON array of task objects). Each task object: `{task_text, type, project, suggested_day, suggested_due_date, notes_with_doc_link, source_call_id, source_doc_url, staged_at}`. **DO NOT call `task-tracker-manager append` from this skill.** Pipeline-manager picks up the staged tasks in the next morning briefing and surfaces each with a RECOMMENDed day + YES/NO/DISCUSS for Kay. Only on Kay's approval does task-tracker-manager append to the TO DO sheet, after which pipeline-manager moves the staged file to `brain/trackers/post-call-analyzer/pending-tasks/processed/{note_id}.json`.
 7. **Write vault call note** at `brain/calls/{date}-{slug}.md` per `schemas/vault/call.yaml` — for knowledge graph + Obsidian Dataview queries. Wiki-links all attendees + company + Doc.
 8. **Post Slack message** to `#ai-operations` webhook with the format below.
 9. **Move queue file** → `brain/trackers/post-call-analyzer/processed/{note_id}.json` archive + append to `processed.json` ledger.
@@ -70,15 +70,16 @@ _{location or "remote"}_
 
 📝 <{doc_url}|Full analysis (Google Doc)>
 🎙️ <{granola_url}|Granola transcript>
-✅ {N} tasks appended to TO DO tab for your review
+✅ {N} tasks staged for morning briefing — you'll assign days + approve before any land on the TO DO sheet
 ```
 
 If the call had zero extractable items: post `*Post-call analysis — {Counterparty} ({date}): no action items / decisions / implications extracted.*` so Kay knows the analyzer ran. Suppress only on processing failure.
 
 ## What this skill does NOT do
 
-- **Does not send any email.** Gmail follow-up drafting is OUT OF SCOPE in this rewrite (was previously in scope; deprecated 2026-05-13). If a "send X to Y" item is identified, it becomes a task in the TO DO sheet.
-- **Does not auto-assign tasks to day-slots.** Tasks land on the TO DO tab unscheduled. Kay assigns day in morning brief.
+- **Does not send any email.** Gmail follow-up drafting is OUT OF SCOPE in this rewrite (was previously in scope; deprecated 2026-05-13). If a "send X to Y" item is identified, it becomes a staged task surfaced in the morning briefing.
+- **Does not write to the TO DO sheet directly.** Tasks are STAGED for Kay's approval in the next morning briefing. Pipeline-manager presents each with a RECOMMENDed day + YES/NO/DISCUSS; only on Kay's approval does task-tracker-manager append (2026-05-28 doctrine — [[feedback-no-direct-task-writes-from-skills]]).
+- **Does not assign suggested days as commitments.** The `suggested_day` field in the staged task JSON is a hint for pipeline-manager's RECOMMEND framing, not a write target. Kay's response is the only signal that schedules a task.
 - **Does not auto-execute "further analysis" deep-dives.** Pointers are surfaced in the Doc + TO DO sheet; Kay approves before execution.
 - **Does not modify Attio person/company FIELDS.** Only writes notes via `/v2/notes`. Field updates remain pipeline-manager territory.
 - **Does not aggregate across calls.** One Doc + one Slack message per call. No EOD digest.
@@ -87,10 +88,10 @@ If the call had zero extractable items: post `*Post-call analysis — {Counterpa
 
 - If `granola-api` fails (auth, network, 5xx) → detector logs + exits 0; checkpoint NOT advanced; next fire retries.
 - If queue contains stale entries (>3 hours old, not processed) → validator flags as RED.
-- If Slack webhook fails → log error, mark queue entry `slack_failed: true` but still mark processed (Doc + Attio notes + tasks already landed).
+- If Slack webhook fails → log error, mark queue entry `slack_failed: true` but still mark processed (Doc + Attio notes + staged-tasks file already landed).
 - If Google Doc create fails → log error, fall back to vault-only call note + Slack message with Granola link, no Doc link. Re-queue for next run.
 - If Attio note write fails → log error per record, continue with remaining records, surface in Slack with `ATTIO-FAIL: {record}:` prefix.
-- If task-tracker append fails → log error, surface in Slack with `TASKS-FAIL:` prefix; vault call note is the fallback record.
+- If staged-tasks file write fails → log error, surface in Slack with `STAGE-FAIL:` prefix; vault call note is the fallback record. Pipeline-manager will not see the tasks until the next run picks up the retry.
 
 ## Validator (mandatory per universal POST_RUN_CHECK doctrine)
 
@@ -129,11 +130,13 @@ Logs:
 | `brain/trackers/post-call-analyzer/processed.json` | YES (idempotency ledger) |
 | `brain/trackers/post-call-analyzer/queue/*.json` | YES (transient — drained per run) |
 | `brain/trackers/post-call-analyzer/processed/*.json` | YES (archive — 30-day rotation) |
+| `brain/trackers/post-call-analyzer/pending-tasks/*.json` | YES (staged tasks awaiting Kay's morning-briefing approval — pipeline-manager reads, moves to `pending-tasks/processed/` after Kay's call) |
+| `brain/trackers/post-call-analyzer/pending-tasks/processed/*.json` | YES (archive of approved-and-appended task batches; pipeline-manager moves files here after task-tracker-manager append succeeds) |
 | `~/.cache/post-call-analyzer/last-checkpoint.txt` | YES (poll checkpoint) |
 | `brain/calls/*.md` | SHARED (writes new files; existing call-note schema) |
 | Google Drive `RESEARCH/MEETINGS/` | OWNED for skill outputs |
 | Attio Notes (people + companies) | OWNED for `{date} — Meeting w/ Kay (G&B)` titled notes |
-| `TO DO 5.12.26` sheet, `TO DO` tab | DELEGATES to `task-tracker-manager` (appends only) |
+| `TO DO` sheet (current week) | **NEVER writes directly.** Tasks staged in `pending-tasks/` for Kay's morning-briefing approval. Pipeline-manager invokes `task-tracker-manager append` ONLY after Kay's YES/day-assignment. |
 | Slack `#ai-operations` | OWNED for `*Post-call analysis*` prefixed messages |
 
 ## Linked memories
@@ -145,3 +148,4 @@ Logs:
 - [[feedback_mutating_skill_hardening_pattern]] — POST_RUN_CHECK doctrine
 - [[project_personal_task_tracker]] — TO DO sheet schema
 - [[feedback_inbox_schema_enums]] — vault inbox enum constraints (call notes still use this)
+- [[feedback_no_direct_task_writes_from_skills]] — 2026-05-28 doctrine: derived skills stage tasks for Kay's briefing approval, never write directly to the TO DO sheet

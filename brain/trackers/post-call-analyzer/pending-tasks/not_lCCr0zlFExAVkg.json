@@ -1,0 +1,50 @@
+{
+  "source_call_id": "not_lCCr0zlFExAVkg",
+  "source_call_title": "Camilla / Kay",
+  "counterparty": "Camilla de Sanna (G&B analyst — internal)",
+  "source_doc_url": "https://docs.google.com/document/d/1z9YzfBHs_ArzXfP3T_uYVESEjL6YyUh9qB_eTHc9LeE/edit",
+  "source_granola_url": "https://notes.granola.ai/d/be1aa916-c360-4cb3-bd2f-77e24fd29bca",
+  "staged_at": "2026-05-28T17:05:00+00:00",
+  "tasks": [
+    {
+      "task_text": "Draft Project Drone CIM questions list and send to Camilla",
+      "type": "Review",
+      "project": "Project Drone",
+      "suggested_day": "Friday",
+      "suggested_due_date": "2026-05-29",
+      "notes_with_doc_link": "From Camilla sync 2026-05-27. CIM red flags: EBITDA > revenue, 1-2 flights/yr, unclear ICP. Quasi-decline candidate. Analysis: https://docs.google.com/document/d/1z9YzfBHs_ArzXfP3T_uYVESEjL6YyUh9qB_eTHc9LeE/edit"
+    },
+    {
+      "task_text": "Design high-touch top-10 women-owned pest target list (cakes + handwritten + multi-touchpoint)",
+      "type": "Build",
+      "project": "Pest Management Thesis",
+      "suggested_day": "Wednesday",
+      "suggested_due_date": "2026-06-03",
+      "notes_with_doc_link": "From Camilla sync 2026-05-27. List-builder + river-guide-builder can produce. Long Island/NYC route-density bias. Analysis: https://docs.google.com/document/d/1z9YzfBHs_ArzXfP3T_uYVESEjL6YyUh9qB_eTHc9LeE/edit"
+    },
+    {
+      "task_text": "Schedule broker discovery sprints (target 3-5 strong relationships)",
+      "type": "Outreach",
+      "project": "Broker Pipeline",
+      "suggested_day": "Friday",
+      "suggested_due_date": "2026-06-05",
+      "notes_with_doc_link": "From Camilla sync 2026-05-27. Pull from current Attio + conference-sourced intermediary universe. Analysis: https://docs.google.com/document/d/1z9YzfBHs_ArzXfP3T_uYVESEjL6YyUh9qB_eTHc9LeE/edit"
+    },
+    {
+      "task_text": "Follow up with past-two-weeks conference contacts (full sweep)",
+      "type": "Outreach",
+      "project": "Conference Follow-up",
+      "suggested_day": "Monday",
+      "suggested_due_date": "2026-06-01",
+      "notes_with_doc_link": "From Camilla sync 2026-05-27. Time-decay: oldest cards now 14d old. Analysis: https://docs.google.com/document/d/1z9YzfBHs_ArzXfP3T_uYVESEjL6YyUh9qB_eTHc9LeE/edit"
+    },
+    {
+      "task_text": "Brief Camilla on pest roll-up modeling scope (inputs + output spec)",
+      "type": "Brief",
+      "project": "Pest Management Thesis",
+      "suggested_day": "Tuesday",
+      "suggested_due_date": "2026-06-02",
+      "notes_with_doc_link": "From Camilla sync 2026-05-27. Inputs: target multiple, debt structure (tuck-ins debt-first), geo cluster size. Analysis: https://docs.google.com/document/d/1z9YzfBHs_ArzXfP3T_uYVESEjL6YyUh9qB_eTHc9LeE/edit"
+    }
+  ]
+}

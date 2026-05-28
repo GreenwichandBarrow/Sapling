@@ -1,0 +1,42 @@
+{
+  "source_call_id": "not_OcIlALJ6zRGx5s",
+  "source_call_title": "Abigail I Kay",
+  "counterparty": "Abigail Quibilan (StartVirtual)",
+  "source_doc_url": "https://docs.google.com/document/d/1-Olvuc3JYHGwmBTfrJBfycQ9s3Hbrxc5HDt7hOd1hjA/edit",
+  "source_granola_url": "https://notes.granola.ai/d/e9a46083-ef9d-47ca-8ec1-69b656ac4dd4",
+  "staged_at": "2026-05-28T17:05:00+00:00",
+  "tasks": [
+    {
+      "task_text": "Confirm Justin (StartVirtual) cancellation-call window: today before 2pm ET OR tomorrow 2-3pm ET",
+      "type": "Decision",
+      "project": "JJ Wind-down",
+      "suggested_day": "Thursday",
+      "suggested_due_date": "2026-05-28",
+      "notes_with_doc_link": "From Abigail call 2026-05-28. URGENT — same-day decision. Calendar block + Abigail confirmation needed. Analysis: https://docs.google.com/document/d/1-Olvuc3JYHGwmBTfrJBfycQ9s3Hbrxc5HDt7hOd1hjA/edit"
+    },
+    {
+      "task_text": "Plan JJ-touched target disposition (retire vs Kay-Email vs conference re-route)",
+      "type": "Plan",
+      "project": "JJ Wind-down",
+      "suggested_day": "Friday",
+      "suggested_due_date": "2026-06-15",
+      "notes_with_doc_link": "From Abigail call 2026-05-28. Channel-universe-separation doctrine: decide before JJ's last day. Analysis: https://docs.google.com/document/d/1-Olvuc3JYHGwmBTfrJBfycQ9s3Hbrxc5HDt7hOd1hjA/edit"
+    },
+    {
+      "task_text": "Draft JJ last-day comms sequence (offboarding script + motivation-preserving holding pattern)",
+      "type": "Build",
+      "project": "JJ Wind-down",
+      "suggested_day": "Wednesday",
+      "suggested_due_date": "2026-06-17",
+      "notes_with_doc_link": "From Abigail call 2026-05-28. JJ told only on last day per agreement. Analysis: https://docs.google.com/document/d/1-Olvuc3JYHGwmBTfrJBfycQ9s3Hbrxc5HDt7hOd1hjA/edit"
+    },
+    {
+      "task_text": "Scope post-wind-down analyst-led 30-bucket Chanel-era methodology (owner + start date)",
+      "type": "Plan",
+      "project": "G&B Strategy",
+      "suggested_day": "Monday",
+      "suggested_due_date": "2026-06-30",
+      "notes_with_doc_link": "From Abigail call 2026-05-28. Memory: project_dealsx_jj_windown_by_summer. Reassessment trigger 2026-06-19. Analysis: https://docs.google.com/document/d/1-Olvuc3JYHGwmBTfrJBfycQ9s3Hbrxc5HDt7hOd1hjA/edit"
+    }
+  ]
+}

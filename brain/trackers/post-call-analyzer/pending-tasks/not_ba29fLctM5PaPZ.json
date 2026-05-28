@@ -1,0 +1,50 @@
+{
+  "source_call_id": "not_ba29fLctM5PaPZ",
+  "source_call_title": "WP Career Coach: Erika Teresko - Appointment",
+  "counterparty": "Erika Teresko (career coach)",
+  "source_doc_url": "https://docs.google.com/document/d/143rBt7spHrDqBv6WFx3b-Zx6VM01wJSXjKvi0oyY2ws/edit",
+  "source_granola_url": "https://notes.granola.ai/d/f158cf85-31b2-4ffd-95dc-657b45863283",
+  "staged_at": "2026-05-28T17:05:00+00:00",
+  "tasks": [
+    {
+      "task_text": "Build pest-management thesis deck (investor-ready)",
+      "type": "Build",
+      "project": "Pest Management Thesis",
+      "suggested_day": "Friday",
+      "suggested_due_date": "2026-05-29",
+      "notes_with_doc_link": "From Erika Teresko coaching 2026-05-28. Pair with quarterly investor report. Analysis: https://docs.google.com/document/d/143rBt7spHrDqBv6WFx3b-Zx6VM01wJSXjKvi0oyY2ws/edit"
+    },
+    {
+      "task_text": "Complete Q1 close quarterly investor report",
+      "type": "Build",
+      "project": "Investor Update",
+      "suggested_day": "Friday",
+      "suggested_due_date": "2026-05-29",
+      "notes_with_doc_link": "From Erika Teresko coaching 2026-05-28. Overdue per Jeff Stevens 2026-05-27. Investor-update skill can draft. Analysis: https://docs.google.com/document/d/143rBt7spHrDqBv6WFx3b-Zx6VM01wJSXjKvi0oyY2ws/edit"
+    },
+    {
+      "task_text": "Update G&B website to speak to pest-management owner community",
+      "type": "Build",
+      "project": "Marketing / Voice",
+      "suggested_day": "Monday",
+      "suggested_due_date": "2026-06-02",
+      "notes_with_doc_link": "From Erika Teresko coaching 2026-05-28. Voice audit + 2-3 line repositioning draft. Analysis: https://docs.google.com/document/d/143rBt7spHrDqBv6WFx3b-Zx6VM01wJSXjKvi0oyY2ws/edit"
+    },
+    {
+      "task_text": "Follow up bank-lender connection on lawyer + super-connector intros",
+      "type": "Outreach",
+      "project": "Conference Follow-up",
+      "suggested_day": "Monday",
+      "suggested_due_date": "2026-06-02",
+      "notes_with_doc_link": "From Erika Teresko coaching 2026-05-28. Women's conference connection from speed-networking. Analysis: https://docs.google.com/document/d/143rBt7spHrDqBv6WFx3b-Zx6VM01wJSXjKvi0oyY2ws/edit"
+    },
+    {
+      "task_text": "Confirm wealth-management corporate-advisor lunch (specific client-match)",
+      "type": "Outreach",
+      "project": "Conference Follow-up",
+      "suggested_day": "Monday",
+      "suggested_due_date": "2026-06-02",
+      "notes_with_doc_link": "From Erika Teresko coaching 2026-05-28. Corporate advisor has named client-match opportunity. Analysis: https://docs.google.com/document/d/143rBt7spHrDqBv6WFx3b-Zx6VM01wJSXjKvi0oyY2ws/edit"
+    }
+  ]
+}

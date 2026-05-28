@@ -237,7 +237,55 @@
       "tasks_appended": 6,
       "slack_posted": true,
       "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_ba29fLctM5PaPZ",
+      "title": "WP Career Coach: Erika Teresko - Appointment",
+      "counterparty": "Erika Teresko (career coach)",
+      "processed_at": "2026-05-28T17:10:55.223361+00:00",
+      "vault_call_note": "brain/calls/2026-05-28-erika-teresko-coaching.md",
+      "doc_url": "https://docs.google.com/document/d/143rBt7spHrDqBv6WFx3b-Zx6VM01wJSXjKvi0oyY2ws/edit",
+      "doc_id": "143rBt7spHrDqBv6WFx3b-Zx6VM01wJSXjKvi0oyY2ws",
+      "attio_notes": {},
+      "attio_failed": true,
+      "attio_skip_reason": "no external attendee email captured \u2014 career coach, advisor not pursued via Attio per prior internal/advisor convention",
+      "tasks_staged": 5,
+      "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_ba29fLctM5PaPZ.json",
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_lCCr0zlFExAVkg",
+      "title": "Camilla / Kay",
+      "counterparty": "Camilla de Sanna (G&B analyst \u2014 internal)",
+      "processed_at": "2026-05-28T17:10:55.223361+00:00",
+      "vault_call_note": "brain/calls/2026-05-27-camilla-pest-drone-review.md",
+      "doc_url": "https://docs.google.com/document/d/1z9YzfBHs_ArzXfP3T_uYVESEjL6YyUh9qB_eTHc9LeE/edit",
+      "doc_id": "1z9YzfBHs_ArzXfP3T_uYVESEjL6YyUh9qB_eTHc9LeE",
+      "attio_notes": {},
+      "attio_failed": true,
+      "attio_skip_reason": "internal team meeting \u2014 Camilla is G&B analyst (camilla.d@greenwichandbarrow.com), not external counterparty",
+      "tasks_staged": 5,
+      "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_lCCr0zlFExAVkg.json",
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_OcIlALJ6zRGx5s",
+      "title": "Abigail I Kay",
+      "counterparty": "Abigail Quibilan (StartVirtual)",
+      "processed_at": "2026-05-28T17:10:55.223361+00:00",
+      "vault_call_note": "brain/calls/2026-05-28-abigail-startvirtual-jj-windown.md",
+      "doc_url": "https://docs.google.com/document/d/1-Olvuc3JYHGwmBTfrJBfycQ9s3Hbrxc5HDt7hOd1hjA/edit",
+      "doc_id": "1-Olvuc3JYHGwmBTfrJBfycQ9s3Hbrxc5HDt7hOd1hjA",
+      "attio_notes": {},
+      "attio_failed": true,
+      "attio_skip_reason": "vendor-internal-team convention \u2014 StartVirtual treated as internal team per prior call (not_lrTNq6HzuDmTck)",
+      "tasks_staged": 4,
+      "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_OcIlALJ6zRGx5s.json",
+      "slack_posted": true,
+      "detector": "granola-api-rest"
     }
   ],
-  "last_updated": "2026-05-28T14:08:07.279980+00:00"
+  "last_updated": "2026-05-28T17:10:55.223361+00:00"
 }

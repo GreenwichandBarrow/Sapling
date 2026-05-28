@@ -285,7 +285,36 @@
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_OcIlALJ6zRGx5s.json",
       "slack_posted": true,
       "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_bE9HS6Eck0mGcK",
+      "title": "Guillermo I Kay",
+      "counterparty": "Guillermo Lavergne (Ashford Venture Partners)",
+      "processed_at": "2026-05-28T22:12:00+00:00",
+      "vault_call_note": "brain/calls/2026-05-28-guillermo-lavergne.md",
+      "doc_url": "https://docs.google.com/document/d/1aRDY4M422nwKXMhDblfBXFA7ZQJ0VSBt_rLPRFfhWGo/edit",
+      "doc_id": "1aRDY4M422nwKXMhDblfBXFA7ZQJ0VSBt_rLPRFfhWGo",
+      "attio_notes": {
+        "person_guillermo_lavergne": "948e83e1-a25e-4ccc-910a-9e78d11d0b4b",
+        "company_ashford_ventures": "36f03c85-e1e9-4952-a64a-19422ee78e3f"
+      },
+      "tasks_staged": 5,
+      "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_bE9HS6Eck0mGcK.json",
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_iJBpnl17jLmXhu",
+      "title": "Guillermo I Kay Bi-Weekly Mtg",
+      "counterparty": "Guillermo Lavergne (Ashford Venture Partners)",
+      "processed_at": "2026-05-28T22:12:00+00:00",
+      "empty_recording": true,
+      "doc_failed": true,
+      "attio_failed": true,
+      "skip_reason": "Calendar-linked capture recorded empty audio (no transcript). Substantive content captured in companion note not_bE9HS6Eck0mGcK; no duplicate Doc/Attio/vault/tasks created. Noted in companion Slack message rather than posting a separate dud alert.",
+      "slack_posted": false,
+      "detector": "granola-api-rest"
     }
   ],
-  "last_updated": "2026-05-28T17:10:55.223361+00:00"
+  "last_updated": "2026-05-28T22:12:00+00:00"
 }

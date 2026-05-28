@@ -1,0 +1,50 @@
+{
+  "source_call_id": "not_bE9HS6Eck0mGcK",
+  "source_call_title": "Guillermo I Kay",
+  "counterparty": "Guillermo Lavergne (Ashford Venture Partners)",
+  "source_doc_url": "https://docs.google.com/document/d/1aRDY4M422nwKXMhDblfBXFA7ZQJ0VSBt_rLPRFfhWGo/edit",
+  "source_granola_url": "https://notes.granola.ai/d/6afcc90f-3321-467d-9597-3f0245949e12",
+  "staged_at": "2026-05-28T22:10:00+00:00",
+  "tasks": [
+    {
+      "task_text": "Send overdue investor report to Guillermo (Ashford Venture Partners)",
+      "type": "Admin",
+      "project": "Investor Relations",
+      "suggested_day": "Friday",
+      "suggested_due_date": "2026-05-29",
+      "notes_with_doc_link": "From Guillermo biweekly 2026-05-28. He flagged it explicitly as overdue. Behavior-first per court-case-psychology avoidance pattern. Analysis: https://docs.google.com/document/d/1aRDY4M422nwKXMhDblfBXFA7ZQJ0VSBt_rLPRFfhWGo/edit"
+    },
+    {
+      "task_text": "Evaluate drone-agriculture company (10-yr co, profitable last 5, tech founders exiting; US regulatory overhang)",
+      "type": "Analysis",
+      "project": "Deal Evaluation",
+      "suggested_day": "Friday",
+      "suggested_due_date": "2026-05-30",
+      "notes_with_doc_link": "From Guillermo biweekly 2026-05-28. Committed to eval 'this week.' AI/regulatory disruption lens applies. Analysis: https://docs.google.com/document/d/1aRDY4M422nwKXMhDblfBXFA7ZQJ0VSBt_rLPRFfhWGo/edit"
+    },
+    {
+      "task_text": "Complete pest-management thesis deck (incl. women-owned cohort: WHY women own these businesses + the edge that confers)",
+      "type": "Build",
+      "project": "Pest Management Thesis",
+      "suggested_day": "Monday",
+      "suggested_due_date": "2026-06-01",
+      "notes_with_doc_link": "From Guillermo biweekly 2026-05-28. He treats the 'why women' mechanism as near-necessary condition of the thesis, then go beyond it. Analysis: https://docs.google.com/document/d/1aRDY4M422nwKXMhDblfBXFA7ZQJ0VSBt_rLPRFfhWGo/edit"
+    },
+    {
+      "task_text": "Scan for larger women-owned pest players / any prior roll-up attempt in the segment",
+      "type": "Research",
+      "project": "Pest Management Thesis",
+      "suggested_day": "Tuesday",
+      "suggested_due_date": "2026-06-02",
+      "notes_with_doc_link": "From Guillermo biweekly 2026-05-28. Guillermo asked whether anyone has executed a roll-up here. Analysis: https://docs.google.com/document/d/1aRDY4M422nwKXMhDblfBXFA7ZQJ0VSBt_rLPRFfhWGo/edit"
+    },
+    {
+      "task_text": "Surface a second vertical to parallel-track (beyond equipment maintenance, now deprioritized) — Guillermo's 10-calendar-day target",
+      "type": "Plan",
+      "project": "G&B Strategy",
+      "suggested_day": "Friday",
+      "suggested_due_date": "2026-06-07",
+      "notes_with_doc_link": "From Guillermo biweekly 2026-05-28. Soft commitment to Guillermo: surface something to keep 'on deck' to double-down or discard within 10 days. Parallel-tracks doctrine. Analysis: https://docs.google.com/document/d/1aRDY4M422nwKXMhDblfBXFA7ZQJ0VSBt_rLPRFfhWGo/edit"
+    }
+  ]
+}

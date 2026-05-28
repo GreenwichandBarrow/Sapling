@@ -2,7 +2,7 @@
 schema_version: "1.0.0"
 date: 2026-05-28
 type: brief
-title: "Investor Call Prep: Guillermo Lavergne, Biweekly (Fri 5/29)"
+title: "Investor Call Prep: Guillermo Lavergne, Biweekly (Thu 5/28)"
 people: ["[[entities/guillermo-lavergne]]", "[[entities/kay-schneider]]"]
 companies: ["[[entities/ashford-ventures]]", "[[entities/greenwich-and-barrow]]"]
 tags:
@@ -20,8 +20,8 @@ tags:
   - source/claude
 ---
 
-Guillermo Lavergne Call Prep — May 29, 2026
-Insight: 38 days since the last live call; thesis, buy-box, and pipeline all moved, and the next two weeks decide whether DealsX and JJ survive.
+Guillermo Lavergne Call Prep — May 28, 2026
+Insight: 37 days since the last live call; thesis, buy-box, and pipeline all moved, and the next two weeks decide whether DealsX and JJ survive.
 
 **1. Project Drone reversed into pipeline.**
 Carlos / DCA. NDA signed 5/23, CIM landed 5/25, filed at Financials Received. Reverses the 5/20 REJECT under a new three-lane intake doctrine: intermediary-presented leads default YES, evaluate to fail-out post-CIM rather than at intake. Decline-with-calibration remains the exit path if the four gates miss.

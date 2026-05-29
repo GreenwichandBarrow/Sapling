@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-29T13:01:09Z",
+  "fetched_at": "2026-05-29T18:31:11Z",
   "niches_scanned": [
     "Art Insurance",
     "Domestic TCI",
@@ -16,7 +16,7 @@
     "Art Advisory": 0,
     "Premium Pest Management": 822
   },
-  "dials_today": 0,
+  "dials_today": 15,
   "dials_this_week": 157,
   "dials_lifetime": 824,
   "by_day": {
@@ -44,7 +44,8 @@
     "2026-05-23": 40,
     "2026-05-26": 37,
     "2026-05-27": 40,
-    "2026-05-28": 40
+    "2026-05-28": 25,
+    "2026-05-29": 15
   },
   "weekly_buckets": [
     {

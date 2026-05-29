@@ -1,0 +1,12 @@
+{
+  "id": "not_RBVjFhMF2BBE7l",
+  "title": "Megan <> Kay",
+  "created_at": "2026-05-29T17:29:49.783Z",
+  "updated_at": "2026-05-29T18:30:50.241Z",
+  "owner": {
+    "name": "Kay Schneider",
+    "email": "kay.s@greenwichandbarrow.com"
+  },
+  "queued_at": "2026-05-29T18:00:45-04:00",
+  "detector": "granola-api-rest"
+}

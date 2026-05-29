@@ -1,0 +1,26 @@
+{
+  "source_call_id": "not_RBVjFhMF2BBE7l",
+  "source_call_title": "Megan <> Kay",
+  "counterparty": "Megan Lawlor (ML Capital)",
+  "source_doc_url": "https://docs.google.com/document/d/1ePw7PLePKtJhTGluBc1OfKnYM5fBA141K0pFl9kkbc0/edit",
+  "source_granola_url": "https://notes.granola.ai/d/1589740a-e5c0-4aaa-b214-3d7905992503",
+  "staged_at": "2026-05-29T18:10:00+00:00",
+  "tasks": [
+    {
+      "task_text": "Reorient Sam's cold-calling/email targeting to pest-management focus with NAICS-code specificity",
+      "type": "Ops",
+      "project": "Outreach",
+      "suggested_day": "Monday",
+      "suggested_due_date": "2026-06-01",
+      "notes_with_doc_link": "From Megan Lawlor (ML Capital) 2026-05-29 peer call. Kay stated on the call that Sam's targeting is too broad and is switching to pest management; both noted NAICS specificity materially improves outbound list quality. Confirm it propagates to JJ/Sam targeting + list-builder filters. Analysis: https://docs.google.com/document/d/1ePw7PLePKtJhTGluBc1OfKnYM5fBA141K0pFl9kkbc0/edit"
+    },
+    {
+      "task_text": "Log Megan's diligence-cost + syndicate benchmarks for G&B post-LOI DD budget planning",
+      "type": "Research",
+      "project": "Deal Evaluation",
+      "suggested_day": "Wednesday",
+      "suggested_due_date": "2026-06-03",
+      "notes_with_doc_link": "From Megan Lawlor (ML Capital) 2026-05-29 peer call. Peer benchmark: ~$500K all-in diligence spend (~half original search fund), 2 QOE providers, lender convos initiated. Anchor for G&B's own post-LOI DD cost model + runway math. Flagged as open loop for deeper benchmark, await Kay approval before deep-dive. Analysis: https://docs.google.com/document/d/1ePw7PLePKtJhTGluBc1OfKnYM5fBA141K0pFl9kkbc0/edit"
+    }
+  ]
+}

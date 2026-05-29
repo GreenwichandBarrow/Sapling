@@ -314,7 +314,24 @@
       "skip_reason": "Calendar-linked capture recorded empty audio (no transcript). Substantive content captured in companion note not_bE9HS6Eck0mGcK; no duplicate Doc/Attio/vault/tasks created. Noted in companion Slack message rather than posting a separate dud alert.",
       "slack_posted": false,
       "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_RBVjFhMF2BBE7l",
+      "title": "Megan <> Kay",
+      "counterparty": "Megan Lawlor (ML Capital)",
+      "processed_at": "2026-05-29T18:15:00+00:00",
+      "vault_call_note": "brain/calls/2026-05-29-megan-lawlor.md",
+      "doc_url": "https://docs.google.com/document/d/1ePw7PLePKtJhTGluBc1OfKnYM5fBA141K0pFl9kkbc0/edit",
+      "doc_id": "1ePw7PLePKtJhTGluBc1OfKnYM5fBA141K0pFl9kkbc0",
+      "attio_notes": {
+        "person_megan_lawlor": "55748a47-eecf-4a01-94d0-f4a99e1e007b",
+        "company_ml_capital": "fdcc8630-c0fd-44ce-8fbd-cf18269b244c"
+      },
+      "tasks_staged": 2,
+      "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_RBVjFhMF2BBE7l.json",
+      "slack_posted": true,
+      "detector": "granola-api-rest"
     }
   ],
-  "last_updated": "2026-05-28T22:12:00+00:00"
+  "last_updated": "2026-05-29T18:15:00+00:00"
 }

@@ -52,3 +52,24 @@ Scanned all 169 traces (index + targeted reads) + 30 hooks across `.claude/hooks
 **AGENT-KAY ALIGNMENT: not assessed this run** (requires live target-list sheet read; out of scope for trace-only analysis).
 
 -> READY
+
+### architecture-strategist findings
+
+Read trace index (169) + sampled the structural clusters + dedup'd every candidate against `/tmp/calib-memory-inventory.txt` (579 files) and MEMORY.md. Backlog is ~96% already-codified-or-noise. Confirming pattern-recognizer's meta-diagnosis (review_status never stamped → accounting artifact) and noise count — not re-litigating those. My unique angle below.
+
+**ARCHITECTURAL CONFIRMATION — the pipeline-manager cluster (6 traces) is FULLY CLOSED.** Every gap these traces raised is both codified AND implemented. Do NOT re-propose any:
+- ps-verify-before-orphan-claim → `feedback_pipeline_manager_ps_verify_before_orphan_claim.md` ✓
+- recurring investor briefs owned by skill → `feedback_recurring_investor_briefs_owned_by_skill.md` ✓
+- D+0 same-day preflight → `feedback_preflight_covers_today_and_tomorrow.md` ✓ + pipeline-manager SKILL.md L219/233/1235
+- Attio Person-exists-but-no-list-entry → IMPLEMENTED pipeline-manager SKILL.md L321-444 (Path B reconciler-creator) ✓
+- weekend-aware staleness → `feedback_staleness_check_schedule_first.md` ✓ + scripts
+- three-lane intake / Project Drone reversal → `feedback_intermediary_lead_default_yes_broker_selective.md` ✓
+- pest 10-co June wind-down criterion → `project_dealsx_jj_windown_by_summer.md` ✓
+
+**GENUINE GAP (mine, no overlap) — Slack inbound is structurally invisible.** From 2026-04-15 Timothy Wong trace (`pipeline-manager-outbound-scan-gap.md`, importance: high): "Timothy responded via team Slack, not email — invisible to any Gmail-based scan." Flagged then as future work. NEVER built, and NO memory codifies it. Verified: all 9 `slack` memories are OUTBOUND (posting TO Slack — brief delivery, deal posts, JJ 10am, hyperlink rules); ZERO cover INBOUND reply scanning. email-intelligence + pipeline-manager have no slack-inbound path. Rising risk: as DealsX/JJ wind down by summer and Kay's channel shifts to intermediary + DealsX-platform-Slack + team-Slack, more replies will land off-Gmail and silently rot. Importance: MEDIUM. **Recommend codify the interim manual protocol, NOT build Slack MCP read-scan now** (defer build — channel mix still settling). TARGET: new `memory/feedback_slack_replies_invisible_surface_manually.md` (Kay surfaces non-Gmail replies; pipeline-manager states it cannot see Slack inbound) + one CLAUDE.md line under Querying/Source-of-Truth noting Gmail-only inbound coverage. Verified not in existing memory.
+
+**ON GAP A (task-tracker over-tracing):** pattern-recognizer owns this with the sharper framing (`trace_litmus_guard` built 2026-05-21 already blocks the shape forward-going; 05-22/05-28 leakage = subagent Write likely bypassing PreToolUse). I confirm the architectural root: task-tracker-manager SKILL.md L346/354 STILL lists `schedule-to-day-slot`/`promote`/`move-day-item` as mandatory-trace verbs — the 2026-05-08 fix only demoted `append`+no-op-`sync`. The clean structural fix (independent of the hook) is to demote those three placement verbs to log-line emission (like `append`), keeping only compounding verbs (`build-week`/`projects-create-gantt`/`recurring-add`/`recurring-remove`) as tracers. That stops the noise at SOURCE so the guard never has to fire on them. Defer to pattern-recognizer on lead; flagging the SKILL.md edit location as the concrete owner.
+
+**Weekly tracker signal (not an arch gap):** 3-week funnel = entire post-positive-reply stage zero (NDA/Financials/LOI/CIM all 0) while DealsX yields positives (5→1). Top-of-funnel decline (DealsX 436→200, dials 235→133→40) is EXPECTED per wind-down memory. Bottleneck = positive-reply→NDA conversion, but that's business-state, not skill defect. No proposal.
+
+-> READY

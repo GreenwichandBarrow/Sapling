@@ -7,6 +7,8 @@ company: "[[entities/the-corporate-coach]]"
 role: The Corporate Coach (founder)
 email: mweiner@thecorpcoach.com
 phone: "917-526-1326"
+attio_id: d4b79eb0-acfe-4c8f-9a30-3cbda770a74c
+attio_synced_at: 2026-05-29T10:54:16Z
 tags:
   - date/2026-05-28
   - entity

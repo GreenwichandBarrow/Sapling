@@ -6,6 +6,8 @@ status: prospect
 company: "[[entities/grip-communications]]"
 role: Founder / Franchise PR & Advisory
 email: greg@gripcommpr.com
+attio_id: a019e717-6b31-44cd-8d97-9ac3af65a39e
+attio_synced_at: 2026-05-29T10:54:16Z
 tags:
   - date/2026-05-28
   - entity

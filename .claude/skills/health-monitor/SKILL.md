@@ -53,7 +53,7 @@ Tests every external API and integration. Each check: can we authenticate and ge
 | Gmail (gog) | OAuth valid | `gog gmail search "newer_than:1d" --max 1 --json` | Returns results | — | Auth error or empty |
 | Calendar (gog) | OAuth valid | `gog calendar list --from today --to today --json` | Returns data | — | Auth error |
 | Drive (gog) | OAuth valid | `gog drive ls --parent root --json --max 1` | Returns data | — | Auth error |
-| Sheets (gog) | Can read tracker | `gog sheets get {TRACKER_ID} "'Weekly Topline'!A1" -j` | Returns data | — | Auth error |
+| Sheets (gog) | Can read tracker | `gog sheets get {TRACKER_ID} "'WEEKLY REVIEW'!A1" -j` | Returns data | — | Auth error |
 | Granola | REST responding (NOT MCP) | `~/.local/bin/granola-api latest` after `source scripts/op-env.sh` | Returns data | — | Non-200 from public-api.granola.ai (NOT "MCP not loaded") |
 
 ### Sub-Agent 2: Infrastructure Agent

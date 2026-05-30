@@ -23,7 +23,7 @@ Skill-local feedback loop per Harrison Wells coaching session 4/30. Pilot skill 
 
 (Anti-patterns suspected but not yet documented as anti-patterns. Promote to "Active learnings" once observed twice.)
 
-- (none yet)
+- [2026-05-30] `gog gmail search --json` returns THREAD-level objects (keys: id/date/from/subject/labels/messageCount) with NO `to`/recipient field. The outbound-email→list-entry coverage net (hook 11) parses recipients from `to` — that field is absent at thread granularity, so a naive parse silently yields 0 recipients and the safety net no-ops without flagging. To actually run coverage, fetch per-message detail (e.g. `gog gmail get <id>`) or a message-level query. Observed once; promote if it recurs. (This run: confirmed coverage manually via subject inspection — all 14d outbound mapped to existing relationship/intermediary/deal contacts, no new deal company missing an entry.)
 
 ---
 

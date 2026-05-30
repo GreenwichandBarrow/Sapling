@@ -34,6 +34,19 @@ Schedule changes happen via systemd unit edits + validator wrapper updates; this
 - Logs: `logs/scheduled/{skill}-{date}.log` (14-day rotation)
 - Plists: `~/Library/LaunchAgents/com.greenwich-barrow.{skill}.plist` (Mac), systemd units in `systemd/` (VPS)
 
+## Model Routing (2026-05-30)
+
+Effective **2026-06-15**, Anthropic moves programmatic Claude usage (`claude -p` non-interactive, Agent SDK, GitHub Actions) off the standard subscription onto a separate metered credit pool ($200/mo on Max 20x), billed at full API rates. Interactive terminal use is unaffected. A 30-day transcript analysis (2026-04-29 → 05-29) measured the scheduled fleet at **~$5,000/mo API-equivalent**, ~99% on Opus, because the wrapper passed no `--model` and every fire (plus every subagent it spawns) inherited the Opus default.
+
+**Policy:** scheduled jobs default to **Sonnet**. Only genuinely reasoning-heavy jobs run on **Opus**. Subagents inherit the parent model, so `run-skill.sh` is the single chokepoint — it routes the whole fan-out. The per-fire auth preflight runs on **Haiku** (auth is account-level; model is irrelevant to what the check validates, so use the cheapest).
+
+- **Opus list** (`OPUS_SKILLS` in `run-skill.sh`): `calibration-workflow`, `niche-intelligence`. These make non-obvious judgment calls (rules → stop-hook graduation; niche scoring against the G&B scorecard). Add a skill here only with a cited reason.
+- **Everything else → Sonnet**: data-gathering, scanning, classification, sheet-population, tab creation, discovery, debugging. Kay is the judgment layer on these outputs; Sonnet is sufficient.
+- **Per-unit override:** export `SKILL_MODEL` in a systemd unit (e.g. `Environment=SKILL_MODEL=opus`) to pin one job regardless of the default. Empty/unset → routing logic decides.
+- **Watch-and-promote:** if a Sonnet-routed job's output quality visibly drops (e.g. `launchd-debugger` fix quality, `deal-aggregator` screening precision), promote it back to Opus via `SKILL_MODEL` or by adding it to `OPUS_SKILLS` — don't suffer silent degradation to save tokens.
+
+Expected effect: ~5x reduction on the programmatic bucket (~$5k → ~$1k/mo), before any frequency/consolidation work. Re-measure against the same 30-day transcript method before 2026-06-15 to confirm the landing spot.
+
 ## Wrapper Hardening Pattern (2026-04-25, bead ai-ops-1; doctrine broadened 2026-05-04)
 
 - **POST_RUN_CHECK env var** in plist runs an artifact-integrity validator after Claude exits 0. Non-zero validator → wrapper overrides EXIT_CODE → Slack alert with "VALIDATOR FAILED" prefix. `$TODAY` placeholder in the env var is substituted with current YYYY-MM-DD.

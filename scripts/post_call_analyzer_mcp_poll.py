@@ -103,7 +103,12 @@ def call_mcp_via_claude() -> list[dict] | None:
         return None
     try:
         proc = subprocess.run(
-            [str(CLAUDE_BIN), "-p", "--dangerously-skip-permissions"],
+            # Haiku: pure MCP-client call (list meetings -> JSON), no reasoning.
+            # Keeps the helper near-free under the 2026-06-15 programmatic-
+            # billing change. NOTE: this module is currently unwired (polling
+            # migrated to the granola-api REST wrapper 2026-05-13); flag
+            # retained so a future re-wire can't regress to the Opus default.
+            [str(CLAUDE_BIN), "-p", "--model", "haiku", "--dangerously-skip-permissions"],
             input=DETECT_PROMPT,
             capture_output=True,
             text=True,

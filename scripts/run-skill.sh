@@ -17,6 +17,24 @@ if [[ -z "$SKILL_ARGS" && "$SKILL_NAME" == *:* ]]; then
   SKILL_ARGS="${SKILL_NAME#*:}"
   SKILL_NAME="${SKILL_NAME%%:*}"
 fi
+# --- Model routing (2026-05-30) — programmatic-cost mitigation for the
+# 2026-06-15 Anthropic billing change (programmatic/claude -p usage moves to a
+# separate metered pool). Scheduled jobs default to Sonnet (data-gathering /
+# scanning / sheet-population — the majority, where Kay is the judgment layer).
+# Only genuinely reasoning-heavy jobs run on Opus. Subagents spawned by a skill
+# inherit the parent model, so this single chokepoint routes the whole fan-out.
+# Override per-unit by exporting SKILL_MODEL in the systemd unit (e.g.
+# Environment=SKILL_MODEL=opus). Rationale + cost analysis:
+# docs/scheduled-skills.md "Model Routing".
+OPUS_SKILLS=" calibration-workflow niche-intelligence "
+if [ -z "$SKILL_MODEL" ]; then
+  if [[ "$OPUS_SKILLS" == *" $SKILL_NAME "* ]]; then
+    SKILL_MODEL="opus"
+  else
+    SKILL_MODEL="sonnet"
+  fi
+fi
+
 WORKDIR="$(cd "$(dirname "$0")/.." && pwd)"
 LOG_DIR="$WORKDIR/logs/scheduled"
 # LOG_PREFIX env var lets a plist write logs under a name that matches its
@@ -52,6 +70,7 @@ cd "$WORKDIR"
 
 echo "=== $SKILL_NAME ===" >> "$LOG_FILE"
 echo "Started: $(date)" >> "$LOG_FILE"
+echo "Model: $SKILL_MODEL" >> "$LOG_FILE"
 
 # Preflight: unlock login keychain if a password is provided (prevents 401 on locked keychain)
 # Safe because KEYCHAIN_PASSWORD lives only in .env.launchd (not committed)
@@ -62,7 +81,10 @@ if [ -n "$KEYCHAIN_PASSWORD" ] && command -v security >/dev/null 2>&1; then
 fi
 
 # Preflight: verify Claude CLI auth before spending a run on a 401
-PREFLIGHT=$(echo "say OK" | "$HOME/.local/bin/claude" -p --dangerously-skip-permissions 2>&1 | head -3)
+# Preflight on Haiku: this auth check fires on every scheduled run and loads
+# project context; Haiku makes the per-fire check near-free. Auth is
+# account-level, so model choice does not affect what the check validates.
+PREFLIGHT=$(echo "say OK" | "$HOME/.local/bin/claude" -p --model haiku --dangerously-skip-permissions 2>&1 | head -3)
 if echo "$PREFLIGHT" | grep -qE "401|authentication_error|Invalid authentication"; then
   echo "PREFLIGHT FAILED (auth): $PREFLIGHT" >> "$LOG_FILE"
   curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
@@ -232,6 +254,7 @@ while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
     echo "Using headless prompt: $HEADLESS_PROMPT_FILE" >> "$LOG_FILE"
     "$HOME/.local/bin/claude" \
       -p \
+      --model "$SKILL_MODEL" \
       --dangerously-skip-permissions \
       < "$HEADLESS_PROMPT_FILE" \
       >> "$LOG_FILE" 2>&1
@@ -244,6 +267,7 @@ while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
     echo "$INVOKE" | \
       "$HOME/.local/bin/claude" \
         -p \
+        --model "$SKILL_MODEL" \
         --dangerously-skip-permissions \
         >> "$LOG_FILE" 2>&1
   fi

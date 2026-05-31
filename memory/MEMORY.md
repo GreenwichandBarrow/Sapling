@@ -4,6 +4,7 @@ Retrieval pointers only — doctrine lives in topic files. To find a memory: gre
 
 ## User & Profile
 - [user_kay_profile.md](user_kay_profile.md) — Kay's role, strengths, working style
+- [project_kay_skill_value_assessment.md](project_kay_skill_value_assessment.md) — Kay's VALUE ranking of scheduled skills (≠ reliability): conference-discovery HIGH-value/protect; deal-aggregator not-best + most-expensive → downgrade candidate
 - [user_jj_va.md](user_jj_va.md) — JJ (VA, Philippines) — cold calling, 10am-2pm ET, team member not assistant
 - [user_kay_family_network.md](user_kay_family_network.md) / [user_kay_family_constraints.md](user_kay_family_constraints.md) — Family network + daytime-only events, no personal-logistics speculation
 - [user_kay_life_goals.md](user_kay_life_goals.md) — $10M exit, $300K min salary, WFH, deal filters

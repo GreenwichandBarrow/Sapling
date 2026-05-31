@@ -2,6 +2,10 @@
 
 ## Premium Pest Management
 
+<!-- Pool: 189 rows (target 200) -->
+<!-- Removed: 8 PE-owned, 3 no-owner -->
+<!-- Backfill attempted: 0 enriched rows available beyond row 303 -->
+
 - row: 2
 - row: 3
 - row: 4
@@ -117,14 +121,12 @@
 - row: 216
 - row: 217
 - row: 218
-- row: 219
 - row: 220
 - row: 221
 - row: 222
 - row: 223
 - row: 224
 - row: 225
-- row: 226
 - row: 227
 - row: 228
 - row: 229
@@ -139,10 +141,7 @@
 - row: 238
 - row: 239
 - row: 240
-- row: 241
-- row: 242
 - row: 243
-- row: 244
 - row: 245
 - row: 246
 - row: 247
@@ -174,7 +173,6 @@
 - row: 273
 - row: 274
 - row: 275
-- row: 276
 - row: 277
 - row: 278
 - row: 279
@@ -188,16 +186,11 @@
 - row: 287
 - row: 288
 - row: 289
-- row: 290
-- row: 291
 - row: 292
-- row: 293
 - row: 294
 - row: 295
 - row: 296
-- row: 297
 - row: 298
-- row: 299
 - row: 300
 - row: 301
 - row: 302

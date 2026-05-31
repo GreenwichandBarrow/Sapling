@@ -35,3 +35,14 @@ tags: ["date/2026-03-30", "entity", "person", "person/sarah-rowell", "company/ri
 
 ## Relationship Notes
 - 2026-03-30: WSN Group Intro call ([[calls/2026-03-30-wsn-group-intro]]). Sarah facilitated. Set standing monthly cadence (next Apr 22). Offered "phone a friend" to all members.
+- 2026-05-22: First 1:1 deep-dive (prep: [[briefs/2026-05-22-sarah-rowell-1on1]]). Sarah's coaching takeaways Kay captured afterward:
+  - Keep it local.
+  - Lean into being a woman in a man's world — that's the edge.
+  - Build relationships with really good brokers.
+  - Lean into meetings and associations.
+  - Say yes to all owner meetings from any river guides.
+  - Say yes to all introductions.
+  - For brokers, can say no based on what you're looking for.
+  - Be opportunistic with female introductions — if a deal comes from one, it can make sense to the story looking back.
+  - Follow your gut.
+  - Use your edge and forge relationships.

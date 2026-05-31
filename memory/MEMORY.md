@@ -27,6 +27,7 @@ Retrieval pointers only — doctrine lives in topic files. To find a memory: gre
 - [feedback_investor_tam_and_fragmentation_floor.md](feedback_investor_tam_and_fragmentation_floor.md) — HARD: $500M+ TAM AND thousands of operators
 - [feedback_messy_business_great_segment_filter.md](feedback_messy_business_great_segment_filter.md) — Segment quality FIRST, then operational mess. Messy-in-great
 - [feedback_buyside_advisor_success_fee_only.md](feedback_buyside_advisor_success_fee_only.md) — SUCCESS-FEE ONLY for buy-side advisors
+- [feedback_probe_advisor_track_record_before_declining.md](feedback_probe_advisor_track_record_before_declining.md) — Before declining a doctrine-breaking advisor, probe their niche track record + multiples first (free comp intel + claim test). E&K/Vanore 5/29
 - [feedback_high_multiples_avoid_context.md](feedback_high_multiples_avoid_context.md) — High multiples = context, not scorecard adjustment
 - [feedback_ebitda_flexible.md](feedback_ebitda_flexible.md) — No hard EBITDA floor on niche filters
 - [feedback_pe_rollup_relationship_is_exit_channel_not_dealflow.md](feedback_pe_rollup_relationship_is_exit_channel_not_dealflow.md) — PE roll-up intro = exit/intel, NOT deal flow (same-band price competitor)

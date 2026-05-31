@@ -63,7 +63,9 @@ Steps are atomic within a single `build-week` invocation. No separate human gate
 
 **Forbidden pattern (clarified 2026-05-26 after Kay's correction):** do NOT mirror mid-week day-tab edits back to the Week tab via writes. Under the formula architecture this isn't possible (cells are formulas) but the rule remains for legacy mode + any future arch changes. The "rebuild Week tab from current day tabs" anti-pattern is forbidden.
 
-**Cleanliness model:** No row relocation, no checkbox-sweep, no donut/%-display. `To Do` cleanliness is achieved via **saved filter/sort views in the Sheet UI** (e.g. filter `Status != Completed`, sort by `Due`), NOT by moving completed rows to another tab. Completed rows stay in place with `Status=Completed` and render via done-row CF.
+**Cleanliness model:** No row relocation, no checkbox-sweep, no donut/%-display. `To Do` cleanliness is achieved via **saved filter/sort views in the Sheet UI** (e.g. filter `Status != Completed`, sort by `Due`), NOT by moving completed rows to another tab. Completed rows stay in place with `Status=Completed` and render via done-row CF. **Distinction:** *completed* rows are never relocated (filter views handle them); *empty/gap* rows ARE physically removed — see compaction doctrine below.
+
+**Empty-row compaction doctrine (codified 2026-05-31 per Kay):** the `To Do` backend tab accumulates GAP rows — leftover `FALSE` checkbox cells from the pre-2026-05-17 checkbox architecture, blank rows, stray empty-checkbox rows. Two mechanisms feed the pile: `append` only ever fills the first empty row (it never removes), and `build-week`'s Drive-copy carries the whole cluttered tab forward every Sunday. Left alone it bloats to hundreds of rows (observed 2026-05-31: 412 rows, only 125 real, 286 gaps). The **`compact-todo`** verb strips every gap row, packs the real rows contiguously from row 2, physically deletes the surplus rows (retaining a ~40-row validated append buffer), and re-applies Status/Type/Project/Horizon dropdown validation (the relative done-row CF survives untouched). It runs automatically inside `build-week` (step 4b, on the freshly-copied new file, before the recurring stamp) so every week starts clean, and is callable on demand. This is NOT completed-row relocation — gap rows hold no data and are pure clutter.
 
 **Pack-to-top doctrine (codified 2026-05-26):** every verb that writes to day-tab or Week-tab priority slots MUST keep items packed at the TOP of the 15-slot range. No leading empty rows, no gaps between items. The 15 slots are a CAPACITY CEILING, not a fixed seating chart. `promote`, `schedule-to-day-slot`, `move-day-item`, `distribute-week`, `sync-done-status`, recurring-stamp, carryover-pull — all use next-empty-slot logic. `--slot N` override allowed but warns if it leaves earlier slots empty. See `memory/feedback_task_tracker_pack_to_top.md`.
 
@@ -82,6 +84,7 @@ Steps are atomic within a single `build-week` invocation. No separate human gate
 - Kay says "stop the recurring task in row N" / "drop the recurring X" → **recurring-remove**
 - Kay says "start a project for X" / "create a Gantt for {project}" → **projects-create-gantt**
 - Kay reports a chart broke / strikethrough not firing / formatting drifted → **reformat**
+- Kay says "clean up the To Do tab" / "look at all the empty rows" / "eliminate the gap rows" → **compact-todo** (also runs automatically inside `build-week`)
 - Friday morning weekly review → **report** (carry-forward from prior week + slot capacity)
 - `goodmorning` capture pass → batch **append** for items surfaced in email-intelligence + open loops from yesterday's session-decisions
 - Kay says "Healthcare milestone N done" / "tick week K on {project}" → **gantt-tick**
@@ -288,6 +291,20 @@ python3 scripts/task_tracker.py reformat
 
 Idempotent — safe to run more than once. Adds the canonical rules; does not delete pre-existing ones.
 
+### 4b. compact-todo
+
+Strip empty/leftover gap rows from the `To Do` tab and pack real rows to the top. See "Empty-row compaction doctrine" above for the why.
+
+```bash
+python3 scripts/task_tracker.py compact-todo [--dry-run] [--buffer N]
+```
+
+- A *real* row = Task (col B) non-empty. Everything else (leftover `FALSE` checkbox cells, blank rows) is a gap and gets removed.
+- Rewrites header + real rows contiguously from row 2, physically **deletes** the surplus rows so the sheet shrinks (not just clears them), and re-applies Status/Type/Project/Horizon dropdown validation across the retained range.
+- `--buffer N` (default 40) = blank validated rows kept below the content for future `append` writes. `--dry-run` reports real/gap counts without writing.
+- Snapshots the full tab first; traces only when ≥1 gap row is removed (no-op runs leave no trace).
+- **Runs automatically inside `build-week`** (step 4b, on the freshly-copied new file) so every week starts clean. Decision-content (changes sheet structure) → emits a trace.
+
 ### 5. report
 
 Surface a To Do health summary. Returns markdown. Used by Friday briefing + on-demand.
@@ -321,6 +338,7 @@ Sets the cell to a checked native Sheets checkbox; conditional-format fills it w
 **AUTO-EXECUTE** (proceed without YES/NO):
 - `gantt-tick` on a milestone Kay just told me she completed
 - `reformat` when broken formatting is detected during another verb's execution
+- `compact-todo` when Kay asks to clean up gap rows, or any time the To Do tab has accumulated gaps (snapshot-protected, run `--dry-run` first if unsure of the count)
 - `build-week` on Sunday morning as part of `goodmorning` (`archive` alias delegates here) — targets the Week tab; day tabs untouched
 - `distribute-week` on Sunday once Kay confirms the Week tab is finalized (run `--dry-run` first; surface collisions before a `--force`)
 - `move-day-item` when Kay approves a specific carryover during the Sunday walkthrough
@@ -343,7 +361,7 @@ Sets the cell to a checked native Sheets checkbox; conditional-format fills it w
 1. **Snapshot affected ranges before any write.** Each mutating verb saves the pre-write state of the ranges it touches to `brain/context/rollback-snapshots/tasks-{verb}-{timestamp}.json`. Keep last 5 snapshots per verb, prune older. Rollback path is: read snapshot JSON, replay each range via `values.update`.
 2. **API quota backoff.** Every Sheets API call is wrapped with exponential backoff (5 attempts, 1s..16s) on 429 / 5xx responses. Drop the failure cleanly with a `task-tracker-manager: API error <code>` message if it still fails.
 3. **Never wipe data on a populated tab.** No bulk-delete or bulk-clear without a snapshot. `build-week` is the only verb that clears the **Week tab's** data, and it writes the combined far-right `archive_{Sun-date}` tab (verbatim values capture of the prior Week tab) before clearing. `distribute-week` overwrites day-tab slots but is collision-refuse by default (`--force` required to clobber) and snapshots every target day tab + the Week tab first. `build_week_tab.py` / `build_day_tabs.py` only (re)write structure/formatting — they do NOT clear existing slot/habit/notes content (build_week_tab.py reverse-populates from the day tabs on first creation).
-4. **Trace decision-content writes** to `brain/traces/{date}-task-tracker-{verb}-{slug}.md` with what changed + snapshot path. Trace emission applies ONLY to `build-week` (and its `archive` alias), `move-day-item`, `promote`, `schedule-to-day-slot`, `projects-create-gantt`, `reformat`, `sync-done-status`, `recurring-add`, and `recurring-remove` verbs — those carry decision content. The `append` verb does NOT emit a trace; its rollback line is routed to `logs/scheduled/task-tracker-{date}.log` instead. Rationale: `append` traces are rollback receipts (task + row + snapshot path), not decisions, and they pollute calibration input. Source: 2026-05-08 calibration — 6 of 35 traces (17%) in the prior batch were `append` receipts. **`sync-done-status` is no-op-aware:** it writes a trace ONLY when ≥1 To Do row actually flipped — no-op runs leave no trace (same calibration-pollution rationale). **`recurring-add` / `recurring-remove` always trace** because each edit compounds across every future Sunday rollover.
+4. **Trace decision-content writes** to `brain/traces/{date}-task-tracker-{verb}-{slug}.md` with what changed + snapshot path. Trace emission applies ONLY to `build-week` (and its `archive` alias), `move-day-item`, `promote`, `schedule-to-day-slot`, `projects-create-gantt`, `reformat`, `sync-done-status`, `recurring-add`, and `recurring-remove` verbs — those carry decision content. The `append` verb does NOT emit a trace; its rollback line is routed to `logs/scheduled/task-tracker-{date}.log` instead. Rationale: `append` traces are rollback receipts (task + row + snapshot path), not decisions, and they pollute calibration input. Source: 2026-05-08 calibration — 6 of 35 traces (17%) in the prior batch were `append` receipts. **`sync-done-status` is no-op-aware:** it writes a trace ONLY when ≥1 To Do row actually flipped — no-op runs leave no trace (same calibration-pollution rationale). **`compact-todo` is likewise no-op-aware:** traces ONLY when ≥1 gap row is removed. **`recurring-add` / `recurring-remove` always trace** because each edit compounds across every future Sunday rollover.
 5. **Tab-name validation.** No `:\/?*[]` characters in tab names. (Google Sheets is more permissive than Excel — no 31-char cap — but keep the character ban for readability.)
 6. **Use native Sheets primitives, never Unicode glyphs.** Checkboxes are native (Data Validation → Checkbox). Dropdowns are native (Data Validation → Dropdown). Conditional formatting is native rules, not formulas-as-text. Done items render via CF rules tied to the checkbox state, not via inserted ✅ characters.
 

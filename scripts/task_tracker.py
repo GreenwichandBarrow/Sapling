@@ -646,6 +646,130 @@ def cmd_append(args) -> int:
     return 0
 
 
+def _compact_todo(client: "SheetsClient", *, buffer: int = 40, dry_run: bool = False) -> dict:
+    """Strip gap rows from the To Do tab and pack real rows to the top.
+
+    A *real* row = Task (col B) non-empty. Everything else is a gap: leftover
+    `FALSE` checkbox cells from the pre-2026-05-17 checkbox architecture, blank
+    rows, stray empty-checkbox rows. These accumulate because `append` only fills
+    the first empty row (never removes), and `build-week`'s Drive-copy carries the
+    whole cluttered tab forward every Sunday.
+
+    Rewrites header + real rows contiguously from row 2, physically deletes the
+    surplus rows (keeping a small validated `buffer` for future appends), and
+    re-applies Status/Type/Project/Horizon dropdown validation across the
+    retained range so an old checkbox-validation row can't reintroduce a raw
+    `FALSE`. The done-row CF (relative `$A2="Completed"`) is range-based and
+    survives compaction untouched.
+
+    Returns {"real", "removed", "kept_through", "deleted_rows"}.
+    Caller owns snapshot + trace. Touches ONLY the To Do tab.
+    """
+    meta = client.get_metadata()
+    todo = find_tab(meta, TAB_TODO)
+    if todo is None:
+        raise RuntimeError(f"'{TAB_TODO}' tab not found")
+    todo_sid = todo["sheetId"]
+    total_rows = todo.get("gridProperties", {}).get("rowCount", TODO_MAX_ROWS)
+    ncol = len(TODO_HEADERS)
+    last_col = col_letter(ncol - 1)
+
+    all_vals = client.get_values(f"'{TAB_TODO}'!A1:{last_col}{total_rows}")
+    header = all_vals[0] if all_vals else list(TODO_HEADERS)
+    body = all_vals[1:] if len(all_vals) > 1 else []
+
+    def _norm(r):
+        r = list(r) + [""] * (ncol - len(r))
+        return ["" if c is None else c for c in r[:ncol]]
+
+    def _task(r):
+        return (r[TODO_COL_TASK].strip() if len(r) > TODO_COL_TASK and r[TODO_COL_TASK] else "")
+
+    real = [_norm(r) for r in body if _task(r)]
+    n_real = len(real)
+    n_removed = len(body) - n_real
+    kept_through = 1 + n_real + max(0, buffer)  # 1-based last row to retain
+
+    summary = {"real": n_real, "removed": n_removed,
+               "kept_through": kept_through, "deleted_rows": 0, "dry_run": dry_run}
+    if dry_run or n_removed == 0:
+        return summary
+
+    # 1) Write header + compacted real rows.
+    client.values_update(f"'{TAB_TODO}'!A1:{last_col}{1 + n_real}", [_norm(header)] + real)
+
+    # 2) Clear residual values below the compacted block (defensive, pre-delete).
+    if (2 + n_real) <= total_rows:
+        client.values_clear(f"'{TAB_TODO}'!A{2 + n_real}:{last_col}{total_rows}")
+
+    reqs: list[dict] = []
+    # 3) Physically delete surplus rows beyond the retained buffer (0-based, end-exclusive).
+    if kept_through < total_rows:
+        reqs.append({"deleteDimension": {
+            "range": {"sheetId": todo_sid, "dimension": "ROWS",
+                      "startIndex": kept_through, "endIndex": total_rows}}})
+        summary["deleted_rows"] = total_rows - kept_through
+
+    # 4) Re-apply dropdown validation across rows 2..kept_through so an old
+    #    checkbox-validation gap row can't leak a raw FALSE back in.
+    def _dv(col0, options):
+        return {"setDataValidation": {
+            "range": {"sheetId": todo_sid, "startRowIndex": 1, "endRowIndex": kept_through,
+                      "startColumnIndex": col0, "endColumnIndex": col0 + 1},
+            "rule": {"condition": {"type": "ONE_OF_LIST",
+                                   "values": [{"userEnteredValue": o} for o in options]},
+                     "showCustomUi": True, "strict": False}}}
+    reqs += [
+        _dv(TODO_COL_STATUS, STATUS_OPTIONS),
+        _dv(TODO_COL_TYPE, TYPE_OPTIONS),
+        _dv(TODO_COL_PROJECT, PROJECT_OPTIONS),
+        _dv(TODO_COL_HORIZON, HORIZON_OPTIONS),
+    ]
+    client.batch_update(reqs)
+    return summary
+
+
+def cmd_compact_todo(args) -> int:
+    """Remove empty/leftover gap rows from the To Do tab; pack real rows to top."""
+    client = SheetsClient()
+    buffer = getattr(args, "buffer", 40)
+    dry_run = getattr(args, "dry_run", False)
+
+    snap = None
+    if not dry_run:
+        meta = client.get_metadata()
+        todo = find_tab(meta, TAB_TODO)
+        total_rows = (todo.get("gridProperties", {}).get("rowCount", TODO_MAX_ROWS)
+                      if todo else TODO_MAX_ROWS)
+        snap = snapshot_ranges(client, "compact-todo",
+            [f"'{TAB_TODO}'!A1:{col_letter(len(TODO_HEADERS) - 1)}{total_rows}"])
+
+    try:
+        s = _compact_todo(client, buffer=buffer, dry_run=dry_run)
+    except RuntimeError as e:
+        sys.exit(f"task-tracker-manager: {e}")
+
+    if dry_run:
+        print(f"task-tracker-manager: [dry-run] To Do has {s['real']} real rows; "
+              f"{s['removed']} gap rows would be removed (keep through row {s['kept_through']}, "
+              f"incl ~{buffer}-row append buffer)")
+        return 0
+    if s["removed"] == 0:
+        print(f"task-tracker-manager: To Do already compact — {s['real']} rows, 0 gaps")
+        return 0
+
+    trace("compact-todo", "todo-gap-removal", [
+        f"real rows kept: {s['real']}",
+        f"gap rows removed: {s['removed']}",
+        f"rows physically deleted: {s['deleted_rows']}",
+        f"retained through row {s['kept_through']} (incl ~{buffer}-row append buffer)",
+        f"snapshot: {snap}",
+    ])
+    print(f"task-tracker-manager: compacted To Do — kept {s['real']} real rows, "
+          f"removed {s['removed']} gap rows ({s['deleted_rows']} rows deleted). snapshot: {snap}")
+    return 0
+
+
 def cmd_promote(args) -> int:
     """Move a To Do row into a specific day TAB's priority slot (new day-tab model).
 
@@ -1405,6 +1529,17 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
     if clear_reqs:
         new_client.batch_update(clear_reqs)
         print(f"task-tracker-manager: cleared {len(DAY_TAB_NAMES)} day tabs on new file")
+
+    # ---- 4b. Compact new file's To Do tab (strip gap rows the Drive-copy carried over) ----
+    # The copy inherits the prior file's accumulated FALSE/blank gap rows. Compact
+    # before the recurring stamp reads To Do (real rows, incl recurring, are preserved).
+    try:
+        ct = _compact_todo(new_client, buffer=40, dry_run=False)
+        if ct["removed"]:
+            print(f"task-tracker-manager: compacted To Do on new file — kept {ct['real']} rows, "
+                  f"removed {ct['removed']} gap rows ({ct['deleted_rows']} deleted)")
+    except Exception as e:
+        print(f"task-tracker-manager: WARN To Do compaction skipped on new file — {e}", file=sys.stderr)
 
     # ---- 5. Stamp recurring onto new file's day tabs ----
     recurring_summary = {"stamped": [], "refused": [], "rows_read": 0}
@@ -3085,6 +3220,15 @@ def main():
 
     rf = sub.add_parser("reformat")
     rf.set_defaults(func=cmd_reformat)
+
+    ct = sub.add_parser("compact-todo",
+                        help="Remove empty/leftover gap rows from the To Do tab and "
+                             "pack real rows to the top (snapshot+trace; runs inside build-week).")
+    ct.add_argument("--dry-run", action="store_true",
+                    help="report real/gap counts without writing")
+    ct.add_argument("--buffer", type=int, default=40,
+                    help="blank validated rows to retain below content for future appends (default 40)")
+    ct.set_defaults(func=cmd_compact_todo)
 
     rp = sub.add_parser("report")
     rp.set_defaults(func=cmd_report)

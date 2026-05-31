@@ -14,4 +14,4 @@ real rows kept: 125
 gap rows removed: 286
 rows physically deleted: 246
 retained through row 166 (incl ~40-row append buffer)
-snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-compact-todo-20260531-085820.json
+snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-compact-todo-20260531-090738.json

@@ -1,0 +1,176 @@
+{
+  "timestamp": "2026-05-31T22-05-33Z",
+  "run_date": "2026-05-31",
+  "dealsx_matches_removed": [
+    {
+      "sheet_row": 4,
+      "company": "Pest Control Consultants",
+      "normalized": "pest control",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 33,
+      "company": "American Pest Control, Inc.",
+      "normalized": "american pest control",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 60,
+      "company": "Pest Control Consultants",
+      "normalized": "pest control",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 101,
+      "company": "Presto Pest Control",
+      "normalized": "presto pest control",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 157,
+      "company": "American Pest Control",
+      "normalized": "american pest control",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 190,
+      "company": "Pest Management Systems, Inc.",
+      "normalized": "pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 204,
+      "company": "American Pest Management, Inc.",
+      "normalized": "american pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 206,
+      "company": "Green Pest Management, Delaware",
+      "normalized": "green pest delaware",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 207,
+      "company": "PAYNE PEST MANAGEMENT, INC.",
+      "normalized": "payne pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 210,
+      "company": "Witt Pest Management",
+      "normalized": "witt pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 220,
+      "company": "1st Response Pest Management",
+      "normalized": "1st response pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 223,
+      "company": "Animal & Insect Pest Management Inc. (AIPM)",
+      "normalized": "animal insect pest aipm",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 229,
+      "company": "Green Pest Management",
+      "normalized": "green pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 231,
+      "company": "Reynolds Pest Management, Inc.",
+      "normalized": "reynolds pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 232,
+      "company": "Pestcom Pest Management",
+      "normalized": "pestcom pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 233,
+      "company": "Fortified Pest Management",
+      "normalized": "fortified pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 239,
+      "company": "GGA Pest Management Svc",
+      "normalized": "gga pest svc",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 248,
+      "company": "HonorGuard Pest Management",
+      "normalized": "honorguard pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 256,
+      "company": "EARTHWISE PEST MANAGEMENT",
+      "normalized": "earthwise pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 257,
+      "company": "Patriot Pest Management - Pace, FL",
+      "normalized": "patriot pest pace fl",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 262,
+      "company": "Regal Pest Management, Inc.",
+      "normalized": "regal pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 266,
+      "company": "Premier Pest Management",
+      "normalized": "premier pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 269,
+      "company": "Pest Management Systems, Inc.",
+      "normalized": "pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 271,
+      "company": "Bio Bug Pest Management",
+      "normalized": "bio bug pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 283,
+      "company": "Shepherd Pest Management",
+      "normalized": "shepherd pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 284,
+      "company": "Daly Termite & Pest Management LLC",
+      "normalized": "daly termite pest",
+      "match_type": "exact_normalized"
+    },
+    {
+      "sheet_row": 294,
+      "company": "Bama Exterminating",
+      "normalized": "bama exterminating",
+      "match_type": "exact_normalized"
+    }
+  ],
+  "stats": {
+    "starting": 189,
+    "blank_k_dropped": 0,
+    "dnc_dropped": 2,
+    "skip_dropped": 0,
+    "dealsx_dropped": 27,
+    "final": 160
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "channel": "DealsX",
+  "account": "Greenwich & Barrow",
+  "week_of": "2026-05-25 to 2026-05-29",
+  "logged_date": "2026-05-31",
+  "source": "DealsX dashboard — Performance Metrics, range 2026-05-25..2026-05-29 (Kay screenshot)",
+  "metrics": {
+    "emails_sent": 188,
+    "leads_active_plus_inactive": 188,
+    "opened": 0,
+    "open_rate_pct": 0.0,
+    "open_tracking_status": "OFF — 0 opens alongside 3 replies means open tracking is not enabled; ignore open rate",
+    "replied": 3,
+    "reply_rate_pct": 1.6,
+    "positive_replies": 0,
+    "positive_reply_rate_pct": 0.0,
+    "bounced": 1,
+    "bounce_rate_pct": 0.53
+  },
+  "send_pattern": "Front-loaded: 100 sent Mon 5/25 + 86 Tue 5/26, then none Wed 5/27 - Fri 5/29. Effectively a 2-day campaign.",
+  "read": "0 positive replies on 188 sends = weak week. Bounce rate healthy (0.53%).",
+  "feeds_decision": "DealsX summer wind-down (reassessment 2026-06-19); pest 10-co women-owned head-to-head is the alternative being tested."
+}

@@ -22,6 +22,9 @@ Per [[feedback-industry-is-output-of-network]], industry comes from network acce
 - **JJ-specific:** JJ is a longstanding team-member relationship (per [[feedback-jj-team-member]]); the wind-down message should reflect that. Coordinate with [[reference-jj-relationship]] (existing JJ-related memories) on tone.
 - **Reassessment trigger:** 2026-06-19 (30 days from today) — Kay reviews whether AI drafting skill is moving middle-of-funnel conversion. If yes, lock the solo + analyst model. If no, reopen staffing question.
 
+**Performance data points (for 6/19 reassessment):**
+- **DealsX week of 2026-05-25→05-29:** 188 sent, 3 replied (1.6%), **0 positive replies**, 1 bounce (0.53%), open-tracking off. Front-loaded (100 Mon + 86 Tue, none Wed–Fri). 0 positive on 188 sends reinforces the wind-down thesis. Full record: `brain/trackers/dealsx/weekly-2026-05-25.json`.
+
 **Operational consequences:**
 - After wind-down, the engine running is the 30-bucket Chanel-era methodology (3 buckets of 10 women-owned NY firms; pest + 2 adjacent staple-female-skew industries).
 - AI drafting skill becomes the daily inbox layer; analyst is weekly-cadence (target list maintenance, deeper diligence, QC).

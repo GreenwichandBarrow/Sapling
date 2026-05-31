@@ -65,8 +65,14 @@ def _run_check(niche: str, sheet_id: str, pool_path: Path) -> tuple[int, str]:
             "Phase 2 Step 1 produced nothing",
         )
     try:
+        # --pool-only: this validator gates target-discovery's 3pm fire,
+        # which enriches the pool but does NOT create the Mon-Fri Call Log
+        # tabs (jj-operations does that at 6pm). Walking the tabs here
+        # produced ~192 false "missing tab" failures every Sunday
+        # (2026-05-31). Tab existence + tab Col K are covered by
+        # validate_jj_operations_integrity.py at 6pm.
         result = subprocess.run(
-            ["python3", str(HOOK_PATH), sheet_id, str(pool_path)],
+            ["python3", str(HOOK_PATH), "--pool-only", sheet_id, str(pool_path)],
             capture_output=True,
             text=True,
             timeout=300,

@@ -15,7 +15,13 @@ were NOT the same rows jj-operations prep wrote to the tabs. This hook
 blocks that failure mode.
 
 Usage:
-  python3 enrichment_integrity_check.py <sheet_id> <pool_artifact_path>
+  python3 enrichment_integrity_check.py [--pool-only] <sheet_id> <pool_artifact_path>
+
+  --pool-only: validate only that every pool row has Col K (Owner Name)
+  populated in the Full Target List. Skips the Call Log tab walk. Use for
+  target-discovery's 3pm fire, BEFORE jj-operations creates the tabs at
+  6pm. Full mode (default) additionally walks the Mon-Fri tabs and is for
+  invokers that run after the tabs exist.
 
 Exit codes:
   0 — PASS (all invariants hold)
@@ -23,9 +29,9 @@ Exit codes:
   2 — ERROR (could not fetch data; sheet read failed, etc.)
 
 Invokers:
-  - target-discovery Phase 2 Step 5 end (Sunday night)
-  - jj-operations prep mode, as the final check before declaring done
-  - Morning briefing (warn-only) on Monday when log indicates failure
+  - target-discovery Phase 2 Step 5 end / 3pm POST_RUN_CHECK (Sunday) — --pool-only
+  - jj-operations prep mode, as the final check before declaring done — full
+  - Morning briefing (warn-only) on Monday when log indicates failure — full
 """
 
 from __future__ import annotations
@@ -212,6 +218,61 @@ def _run_check(sheet_id: str, pool_path: Path) -> tuple[bool, list[str]]:
     return (len(failures) == 0, failures)
 
 
+def _run_pool_only_check(sheet_id: str, pool_path: Path) -> tuple[bool, list[str]]:
+    """Validate pool enrichment WITHOUT walking the Call Log tabs.
+
+    Scope: this is what target-discovery Phase 2 actually produces at its
+    Sunday 3pm fire — owner names written to the Full Target List Col K for
+    every row in the Step 1 pool. It does NOT create the Mon–Fri Call Log
+    tabs; jj-operations does that at 6pm, and its own validator
+    (validate_jj_operations_integrity.py) checks tab existence + tab Col K.
+
+    Running the full tab-walk check at 3pm produced ~192 false failures
+    every Sunday because the tabs don't exist yet (2026-05-31 incident).
+    Pool-only mode is the correct contract for the 3pm validator.
+
+    Invariant: every pool row maps to a Full Target List row whose Col K
+    (Owner Name) is populated.
+    """
+    failures: list[str] = []
+
+    pool_rows = _load_pool_artifact(pool_path)
+    if not pool_rows:
+        failures.append(
+            f"pool artifact at {pool_path} contains zero row numbers; "
+            "Step 1 produced no selection"
+        )
+        return (False, failures)
+
+    # Read company (B) + owner (K) from Full Target List in one fetch.
+    full_list = _fetch_range(sheet_id, "Full Target List!B2:K2000")
+    # idx 0 == sheet row 2
+    for r in sorted(pool_rows):
+        data_idx = r - 2
+        if data_idx < 0 or data_idx >= len(full_list):
+            failures.append(
+                f"pool row {r} is outside Full Target List data range "
+                "(B2:K2000) — stale or bad row number in pool artifact"
+            )
+            continue
+        row = full_list[data_idx]
+        company = row[0].strip() if len(row) > 0 else ""
+        owner = row[9].strip() if len(row) > 9 else ""
+        label = company or f"row {r}"
+        if not company:
+            failures.append(
+                f"pool row {r}: blank company in Full Target List Col B — "
+                "row number does not point at a real target"
+            )
+        if not owner:
+            failures.append(
+                f"pool row {r} ({label}): blank Col K (Owner Name) in Full "
+                "Target List — enrichment never landed"
+            )
+
+    return (len(failures) == 0, failures)
+
+
 def main() -> int:
     # Self-test mode: exercises _mon_fri_tab_names anchoring without needing
     # sheet/pool args. Used to verify the 2026-05-03 Sunday drift fix.
@@ -219,24 +280,41 @@ def main() -> int:
         _self_test()
         return 0
 
-    if len(sys.argv) != 3:
+    # --pool-only: validate pool enrichment without walking Call Log tabs.
+    # Used by target-discovery's 3pm POST_RUN_CHECK, before jj-operations
+    # creates the tabs at 6pm. Flag may appear in any position.
+    args = sys.argv[1:]
+    pool_only = "--pool-only" in args
+    positional = [a for a in args if a != "--pool-only"]
+
+    if len(positional) != 2:
         print(
-            "usage: enrichment_integrity_check.py <sheet_id> <pool_artifact_path>",
+            "usage: enrichment_integrity_check.py [--pool-only] "
+            "<sheet_id> <pool_artifact_path>",
             file=sys.stderr,
         )
         return 2
 
-    sheet_id = sys.argv[1]
-    pool_path = Path(sys.argv[2]).expanduser()
+    sheet_id = positional[0]
+    pool_path = Path(positional[1]).expanduser()
 
     try:
-        passed, failures = _run_check(sheet_id, pool_path)
+        if pool_only:
+            passed, failures = _run_pool_only_check(sheet_id, pool_path)
+        else:
+            passed, failures = _run_check(sheet_id, pool_path)
     except (FileNotFoundError, RuntimeError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
 
     if passed:
-        print("PASS: enrichment integrity OK — pool ↔ tabs aligned, all Col K populated")
+        if pool_only:
+            print(
+                "PASS: pool enrichment OK — every pool row has Col K (Owner "
+                "Name) populated in Full Target List"
+            )
+        else:
+            print("PASS: enrichment integrity OK — pool ↔ tabs aligned, all Col K populated")
         return 0
 
     print("FAIL: enrichment integrity check detected drift", file=sys.stderr)

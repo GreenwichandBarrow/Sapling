@@ -1,7 +1,7 @@
 ---
 date: 2026-05-29
 type: context
-title: "Session Decisions — 2026-05-29 (Fri, E&K buy-side declined-as-structured + intel-probe deferred, weekly-tracker, morning briefing dropped on SSH reset)"
+title: "Session Decisions — 2026-05-29 (Fri, E&K buy-side declined + intel-probe deferred, weekly-tracker, morning briefing dropped; + Attio relationship logging / Superhuman cleanup / PA owner pitch)"
 tags:
   - date/2026-05-29
   - context
@@ -10,8 +10,17 @@ tags:
   - topic/intermediary
   - topic/morning-briefing
   - topic/pipeline
+  - topic/attio
+  - topic/owner-outreach
+  - topic/superhuman
+  - topic/conference
   - person/joe-vanore
+  - person/leigh-fryxell
+  - person/amanda-forrestall
+  - person/paul-giannamore
   - company/ever-kerr
+  - company/pest-end
+  - company/the-potomac-company
   - status/active
 ---
 
@@ -46,3 +55,40 @@ tags:
 - **7 calibration proposals** from earlier this week still parked awaiting Kay's go.
 - **Data quality:** Attio `meaningful_conversation` checkbox unpopulated across all 152 entries — owner-conversation metric fell back to call-notes. Non-urgent cleanup.
 - **Owner conversations = 0** for 2nd consecutive week (all external meetings intermediary/investor). Expected during JJ wind-down + pest-cohort pivot, but the metric to watch before the 6/30 pest verdict.
+
+---
+
+# Session 2 — Attio relationship logging + Superhuman cleanup + PA owner pitch
+
+> Captured 2026-05-31 — a second 2026-05-29 session segment (the Attio CRM-logging work) was never bookended; its SSH connection also reset. Reconstructed from the session transcript. Distinct from the E&K session above.
+
+## Decisions
+
+### Owner-outreach financing line — accuracy correction
+- **REJECT "committed capital" framing → APPROVE "investors behind me / bespoke structure":** On the direct-to-owner PA pest pitch (Rejigg marketplace), Kay corrected the financing line. "Committed capital in place" overclaims — the accurate reality is investors hold a first right of refusal, not pre-committed capital. Final line leads with flexibility: "investors behind me who give me the flexibility to build a bespoke structure around what matters most to you, whether that's price, timing, your team, or how involved you stay after a sale." See [[traces/2026-05-29-owner-outreach-bespoke-structure-financing]] and [[../../memory/feedback_owner_outreach_bespoke_structure_financing]].
+
+### Paul Giannamore DM framing — advisor, not seller
+- **APPROVE search-fund/lead-investor framing:** Kay's LinkedIn DM to [[entities/paul-giannamore|Paul Giannamore]] ([[entities/the-potomac-company|The Potomac Company]]) used explicit "search fund / lead investor based in PR" language. Appropriate because Paul is an industry **M&A advisor, not a seller** — distinct from owner-outreach forbiddens. Kay authored the DM; Claude logged it.
+
+### Superhuman teardown
+- **APPROVE delete 21 [Superhuman]/* Gmail labels:** Subscription cancelled. Deleted all 21 Superhuman-applied labels (0 failures); the deliberately-built `auto/*` Gmail filters + labels were left untouched. Confirmed via AskUserQuestion (scope = Superhuman labels only).
+
+## Actions Taken
+- **CREATED (Attio):** Person [[entities/leigh-fryxell|Leigh Fryxell]] — LinkedIn DM note (5/29), LinkedIn URL, linked to [[entities/pest-end|Pest-End]]. No verified email yet.
+- **CREATED (Attio):** Person [[entities/amanda-forrestall|Amanda Forrestall]] — NY-firm-intro note (tied to Leigh thread), LinkedIn URL, linked to [[entities/pest-end|Pest-End]]. No verified email yet.
+- **CREATED (Attio):** Company [[entities/pest-end|Pest-End]] (Leigh + Amanda's firm).
+- **CREATED (Attio):** Person [[entities/paul-giannamore|Paul Giannamore]] + Company [[entities/the-potomac-company|The Potomac Company]] (potomaccompany.com) — LinkedIn DM note (5/29, referral from Jason Palamatary), LinkedIn URL. Kept separate from the pre-existing "Potomac View Partner(s)" record. No verified email yet.
+- **CREATED (Attio):** Company "Pest Management Business — Rejigg #38863 (PA)" + note logging the **buyer NDA signed on Rejigg (2026-05-29)**, PA pest context, the drafted owner pitch, and source channel (Rejigg direct-to-owner, no intermediary). Named by Rejigg conversation ID since the owner/company is still redacted on-platform.
+- **DELETED:** 21 [Superhuman]/* Gmail labels (0 failures, 0 remaining); `auto/*` filters/labels untouched.
+- **DRAFTED:** Direct-to-owner PA pest-control pitch (Rejigg) — owner-outreach-safe (no "fund," no financials, "I"-centric, community-connectivity hook, bespoke-structure financing line). Kay refined; send-ready. Chat-only.
+- **CREATED (vault):** Entity stubs for the 5 new records above; trace [[traces/2026-05-29-owner-outreach-bespoke-structure-financing]]; memory [[../../memory/feedback_owner_outreach_bespoke_structure_financing]].
+
+## Deferred
+- **Axial project optimization** → Arturo Alvarado's 5/18 email (3 best-practice video links + Success Fee Primer attachment) to be mined from Gmail msg `19e3cfec8ee9f6b5` and applied to Kay's Axial project profile for better lead targeting. Kay interrupted before completion. Trigger: next time Axial profile work surfaces.
+- **Apollo email enrichment** for Leigh Fryxell, Amanda Forrestall, Paul Giannamore (all lack verified emails) → trigger: when any replies via email or before a scheduled call.
+- **Jason Palamatary (referrer)** not in Attio → create + link as Paul's intro source once firm/email known.
+
+## Open Loops
+- **Superhuman Google access not yet revoked** — cancelling the subscription does NOT stop server-side labeling; only revoking access at https://myaccount.google.com/permissions does. **Kay action required** (browser click, cannot be done via API). Until revoked, labels could technically re-apply.
+- **Axial project optimization** unfinished (see Deferred).
+- **3 contacts unenriched** (Leigh / Amanda / Paul) — no verified emails.

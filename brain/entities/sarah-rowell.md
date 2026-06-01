@@ -6,6 +6,8 @@ status: partner
 company: "[[entities/ridgeway]]"
 role: Facilitator / Post-Search Operator
 email: sarah@ridgewaymh.com
+attio_id: 9a53caa3-bd5c-4fb3-ad9c-f626a79ba3ba
+attio_synced_at: 2026-06-01T10:58:13Z
 tags: ["date/2026-03-30", "entity", "person", "person/sarah-rowell", "company/ridgeway", "topic/wsn", "topic/search-fund"]
 ---
 

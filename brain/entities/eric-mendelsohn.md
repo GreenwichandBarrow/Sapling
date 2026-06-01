@@ -6,6 +6,8 @@ status: prospect
 company: "[[entities/archveo-advisors]]"
 role: Founder & Principal
 email: eric@archveoadvisors.com
+attio_id: 3221d8ae-3e99-406c-9838-72ab53c13516
+attio_synced_at: 2026-06-01T10:58:13Z
 tags:
   - date/2026-05-31
   - entity

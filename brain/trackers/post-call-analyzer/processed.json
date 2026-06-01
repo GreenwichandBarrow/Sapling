@@ -331,7 +331,40 @@
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_RBVjFhMF2BBE7l.json",
       "slack_posted": true,
       "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_cs3dxW0xAkyjsq",
+      "title": "Kay Schneider and Eric Mendelsohn | Archveo Advisors",
+      "counterparty": "Eric Mendelsohn (Archveo Advisors)",
+      "processed_at": "2026-06-01T17:00:00+00:00",
+      "vault_call_note": "brain/calls/2026-06-01-eric-mendelsohn-archveo.md",
+      "doc_url": "https://docs.google.com/document/d/12JrfzquX-1dJ-dXXuPCXFyo_2vHqrzssrlbQ5kLfhIY/edit",
+      "doc_id": "12JrfzquX-1dJ-dXXuPCXFyo_2vHqrzssrlbQ5kLfhIY",
+      "attio_notes": {
+        "person_eric_mendelsohn": "43a98db8-e5fc-4ce8-9bc9-f2fdca76c6ce",
+        "company_archveo_advisors": "93e2ba52-30c2-4e3a-a507-55562036de96"
+      },
+      "tasks_staged": 3,
+      "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_cs3dxW0xAkyjsq.json",
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_GreaWNeyHKAQNu",
+      "title": "Camilla I Kay TB",
+      "counterparty": "Camilla de Sanna (G&B Analyst — internal)",
+      "processed_at": "2026-06-01T17:00:00+00:00",
+      "vault_call_note": "brain/calls/2026-06-01-camilla-strategy-tb.md",
+      "doc_url": "https://docs.google.com/document/d/1KuWzPL5Edf6okVDXyTsoT_SCKH9LSkvRkbGNuw56YHk/edit",
+      "doc_id": "1KuWzPL5Edf6okVDXyTsoT_SCKH9LSkvRkbGNuw56YHk",
+      "attio_notes": {},
+      "attio_failed": true,
+      "attio_skip_reason": "internal team meeting — Camilla is G&B analyst (camilla.d@greenwichandbarrow.com), not external counterparty",
+      "tasks_staged": 4,
+      "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_GreaWNeyHKAQNu.json",
+      "slack_posted": true,
+      "detector": "granola-api-rest"
     }
   ],
-  "last_updated": "2026-05-29T18:15:00+00:00"
+  "last_updated": "2026-06-01T17:00:00+00:00"
 }

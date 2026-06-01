@@ -1,0 +1,31 @@
+{
+  "date": "2026-06-01",
+  "scan_started_at": "2026-06-01T09:00:59Z",
+  "scan_finished_at": "2026-06-01T09:02:48Z",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 1,
+  "suppressed_count": 0,
+  "runtime_seconds": 109,
+  "results": [
+    {
+      "job": "target-discovery",
+      "cause": "VALIDATOR_REJECT",
+      "action": "SURFACE",
+      "triggered_by": "daily",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/target-discovery-2026-05-31-1500.log",
+      "last_log_mtime": "2026-05-31T15:29:31-04:00",
+      "exit_code": 0,
+      "validator_failed": true,
+      "preflight_failed": false,
+      "error_signature": "VALIDATOR FAILED — overriding skill exit code",
+      "slack_posted": true,
+      "suppression_reason": null,
+      "slack_text": "launchd-debugger: target-discovery FAILED — VALIDATOR_REJECT (3rd consecutive Sunday). Root cause: known timing race — skill runs at 15:00, jj-operations creates Call Log 6.01.26–6.05.26 tabs at 18:00; validator fires between the two and sees 5 missing tabs + 192 cascade 'pool company not on any Mon–Fri Call Log tab' errors. Skill work complete: pool artifact brain/context/jj-week-pool-2026-05-31.md written (192 companies), enrichment done. Recommended: add post-18:00 revalidation step or suppress tab-presence check on Sunday runs. Log: /home/ubuntu/projects/Sapling/logs/scheduled/target-discovery-2026-05-31-1500.log",
+      "diagnosis_note": "3rd consecutive Sunday failure (2026-05-18 slack_posted=true outside 7d window, 2026-05-25 slack_posted=false suppressed by cross-day-dedup). No match in 7-day dedup window (2026-05-25 entry had slack_posted=false, does not populate dedup set). No known-incident match (only incident is ai-ops-5wx for niche-intelligence). SURFACE posted to Slack."
+    }
+  ]
+}

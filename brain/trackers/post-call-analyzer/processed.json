@@ -364,7 +364,22 @@
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_GreaWNeyHKAQNu.json",
       "slack_posted": true,
       "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_ZB5wBLTttNp99C",
+      "title": "Solo reflection thoughts",
+      "counterparty": "Kay Schneider (solo — internal)",
+      "processed_at": "2026-06-01T20:20:00+00:00",
+      "vault_call_note": "brain/calls/2026-06-01-solo-reflection.md",
+      "doc_failed": true,
+      "doc_skip_reason": "near-empty recording — transcript contains only 'It's. It. It's.', no substantive content to analyze",
+      "attio_failed": true,
+      "attio_skip_reason": "solo recording — no external attendees, no counterparty",
+      "tasks_staged": 0,
+      "tasks_skip_reason": "no action items extractable from near-empty transcript",
+      "slack_posted": true,
+      "detector": "granola-api-rest"
     }
   ],
-  "last_updated": "2026-06-01T17:00:00+00:00"
+  "last_updated": "2026-06-01T20:20:00+00:00"
 }

@@ -16,6 +16,8 @@ Retrieval pointers only — doctrine lives in topic files. To find a memory: gre
 - [user_task_management.md](user_task_management.md) — `TO DO 5.12.26` Sheet (task-tracker-manager). Motion lapsing
 - **Voice:** [user_outreach_voice.md](user_outreach_voice.md), [user_outreach_voice_kay_canonical_phrases.md](user_outreach_voice_kay_canonical_phrases.md) — Hangman calibration + canonical phrases ("Hope this finds you well" / "Looking forward to" / "All the best,")
 
+- [feedback_snapshot_col_range_validator_mismatch.md](feedback_snapshot_col_range_validator_mismatch.md) — conference-discovery snapshot must use A:O range not A:P; A:P causes 18+ false-positive soft mutations in validator (col P always "" in live read)
+
 ## G&B Strategy & Charter
 - [project_gb_charter.md](project_gb_charter.md) — **CHARTER** Apr 14: Wertheimer archetype + 4-stage (Bridge/Engine/Community/Jewel)
 - [project_gb_fiscal_quarters.md](project_gb_fiscal_quarters.md) — Fiscal NOT calendar. Q1 ended May 7

@@ -1,0 +1,12 @@
+{
+  "id": "not_XcqNWs33vyFKLj",
+  "title": "Harrison <> Kay: AI Coaching",
+  "created_at": "2026-06-01T14:02:06.677Z",
+  "updated_at": "2026-06-02T14:04:23.254Z",
+  "owner": {
+    "name": "Kay Schneider",
+    "email": "kay.s@greenwichandbarrow.com"
+  },
+  "queued_at": "2026-06-02T13:00:45-04:00",
+  "detector": "granola-api-rest"
+}

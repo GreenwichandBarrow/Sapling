@@ -17,6 +17,12 @@ tags:
   - topic/eta-database
   - topic/runway-income
   - company/acquiring-minds
+  - person/harrison-wells
+  - person/samuel-curcio
+  - company/dodo-digital
+  - topic/gmail-filter-add
+  - topic/harrison-coaching
+  - topic/scheduled-skill-cost
   - status/done
 ---
 
@@ -68,3 +74,24 @@ Long Sunday session, almost entirely Kay's personal task-tracker. First real Pha
 3. **🔴 Monday 6/1 external-meeting briefs not generated:** Eric Mendelsohn (Archveo, 11am) + James Emden (Helmsley Spear, 12:30pm lunch). Live for tomorrow.
 4. **DealsX logging decision** (above).
 5. **Day-tab Type/Project dropdowns** on the new rows (below old row 29) may need `reformat` to confirm dropdowns/row-height carried.
+
+---
+
+## Recovered Session — 5/31 evening (Gmail filters + Harrison Call #6 brief)
+
+> A separate, later 5/31 session (brief written 17:13) was killed by an SSH broken pipe before its own `/goodnight` could run. Kay re-pasted the transcript on 2026-06-02 and asked to run `/goodnight` so nothing was lost. The Harrison brief was already committed; the three Gmail filter changes were live Gmail-API mutations. Captured here under the day they actually happened.
+
+### Gmail filters (gmail-filter-add)
+- **UPDATED:** Added `austin@howie.ai` → **auto/tech stack** (`Label_36`). Appended to the existing **bundled** contacts filter (20 → 21 addresses). New filter `ANe1Bmj57vo8L1JsanoTr5Zkhhhq3CPqHzvoig`, replaced `ANe1BmiDXHIJPfGOkX_4nJhuMW5zPgdiyq0mtg`. Two queryless 1-off `Label_36` filters + the separate `TECH STACK` label left untouched.
+- **UPDATED:** Added `andrea@womenssearchnetwork.com` → **auto/subscriptions & education** (`Label_34`). Kay chose **Filter B (named senders)** over Filter A (ESP domains) when asked (19 → 20 addresses). New filter `ANe1BmhQG-QN7GXsi7KkwXqBioQt8IBvNtfPdg`, replaced `ANe1BmgyHg-qWhA0p0AxCYgazvPqhxrxy7JkdQ`.
+- **UPDATED (override):** Added `samuelcurcio@sydney.tworld.com` → **auto/deal flow** (`Label_27`) as a **standalone, non-bundled** filter — `ANe1BmhJkpqCdToizgtoZ6iUQILpRhacf1ppxQ`. Kay explicitly overrode the default bundle behavior: *"please dont bundle, just this one email should have that one filter."* Both existing bundled deal-flow filters left untouched. ([[entities/samuel-curcio]] = Transworld Sydney broker; note the Australia/`sydney.tworld.com` domain.)
+
+### Harrison Call #6 brief (cost-driven)
+- **CREATED:** `brain/briefs/2026-06-01-harrison-wells-call-6.md` for the Mon 6/1 10am coaching call with [[entities/harrison-wells]] ([[entities/dodo-digital]]). Spec from Kay: *a list of which scheduled skills are working vs. failing, framed so the discussion is about adjusting the setup to absorb impending cost increases.*
+  - Reframe (Claude judgment): the dominant 6/15 cost event is **Anthropic's programmatic-billing change** (scheduled `claude -p` fleet moves off subscription → metered API; 30-day analysis ≈ **$5k/mo, ~99% Opus**; drafted Sonnet-routing policy targets ~$1k/mo), with the **Hetzner price bump secondary** — not the other way around as the verbal request implied.
+  - Reliability spine: infra is currently healthy (5/29 health report 21/21 systemd timers green, 0 non-zero exits in 7d). "Keeps failing" resolves to (a) historical recurring offenders mostly patched, and (b) un-actioned work/hygiene REDs. **deal-aggregator** flagged as prime downgrade target (single most expensive ~$630/mo, not top-value per [[project_kay_skill_value_assessment]]); **conference-discovery** flagged PROTECT.
+  - `validate-edits.py` hook fired once on the brand-voice rule (`Kay's` in prose); fixed to `G&B's` and resubmitted clean.
+
+### Open Loops (recovered session)
+6. **Standalone-vs-bundle default for deal-flow filters — UNANSWERED.** Claude asked whether standalone-per-email should become the default for deal-flow going forward (vs. bundling); Kay did not answer. Treat the Sam Curcio standalone as a one-off until Kay generalizes. → candidate `evolve` input for **gmail-filter-add**.
+7. **meeting-brief-manager skipped the Harrison coaching call — UNANSWERED.** It classified the 6/1 10am coaching call as internal/vendor and generated no brief (only the 11am Eric Mendelsohn external brief landed). Claude offered to fix the classifier so future Harrison/coaching calls auto-generate; Kay did not answer. → `evolve` candidate for **meeting-brief-manager**. (Partially resolves Open Loop #3 above: the Harrison 10am brief now exists, hand-built; James Emden 12:30pm status still unconfirmed.)

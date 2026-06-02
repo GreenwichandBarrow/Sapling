@@ -9,6 +9,8 @@ metadata:
 
 **DealsX and JJ wind-down by summer 2026.** 30-day notice goes out this week or early next (week of 2026-05-20). End date: ~late June 2026.
 
+**STATUS UPDATE 2026-06-02:** JJ cancellation has been **communicated** (Kay confirmed). JJ wraps **end of June 2026**; June may be a **partial charge** (Kay unsure whether full June is owed). For runway math, treat JJ (~$1,100/mo) as fully off from **July 2026 onward**; June is partial/uncertain. Do NOT count JJ in forward steady-state burn past June. Do NOT surface JJ nurture/ops nudges for new work.
+
 **Why:** Surfaced 2026-05-20 in `/socrates` session. Both channels are misaligned with Kay's edge (1:1 relational, in-person, female-led warm-intro). The thousands-strong target lists outsourced to volume channels were not converting because Kay could not QC list quality at scale, and even if conversions came in, they would not match the women-led-network thesis structure she has now claimed. Volume work was expensive permission to feel busy. Runway freed by wind-down redirects to the actual engine.
 
 Per [[feedback-industry-is-output-of-network]], industry comes from network access, not from volume cold outreach. Per [[user-kay-women-led-purpose-throughline]], the women-led network is the input layer. Neither DealsX (cold email) nor JJ (cold call) operates on that engine.

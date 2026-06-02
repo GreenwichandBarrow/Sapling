@@ -18,7 +18,7 @@
 categories:
   - label: "AI & LLMs"
     services:
-      - { name: "Claude Code", note: "Anthropic" }
+      - { name: "Claude Code", note: "Anthropic · $217.75/mo" }
       - { name: "ChatGPT", note: "OpenAI" }
 
   - label: "CRM & Pipeline"
@@ -27,6 +27,7 @@ categories:
       - { name: "Linkt", note: "list builder · sunset 2026-05-30" }
       - { name: "Apollo", note: "enrichment only" }
       - { name: "DealsX", note: "email + LinkedIn DMs · live May 7" }
+      - { name: "BizBuySell", note: "deal marketplace · $24.95/mo" }
       - { name: "KeyReach", note: "DealsX outreach platform · Kay's account free · covered by DealsX $1.5K/mo fee" }
 
   - label: "Email"
@@ -86,5 +87,5 @@ categories:
   - label: "Infrastructure & Networking"
     services:
       - { name: "Hetzner", note: "server hosting · ~$11/mo" }
-      - { name: "Tailscale", note: "VPN / mesh networking · free tier" }
+      - { name: "Tailscale", note: "VPN / mesh networking · $8.71/mo" }
       - { name: "1Password", note: "password manager · $52/mo" }

@@ -54,6 +54,7 @@ categories:
       - { name: "Google Sheets" }
       - { name: "Google Slides" }
       - { name: "Microsoft Excel", note: "365" }
+      - { name: "DocSend", note: "doc sharing + tracking · $70/mo" }
 
   - label: "Task Management"
     services:

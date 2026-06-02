@@ -1,0 +1,212 @@
+{
+  "range": "'Runway Forecast'!A34:J64",
+  "values": [
+    [
+      "PATH TO FEB 2027 - SCENARIO MODEL",
+      "Built 2026-06-02 · anchor Apr 30 close; May P&L pending"
+    ],
+    [],
+    [
+      "ASSUMPTIONS"
+    ],
+    [
+      "Anchor balance (Apr 30 2026)",
+      "190524"
+    ],
+    [
+      "Net steady-state burn /mo",
+      "21052",
+      "travel held to local-conference baseline"
+    ],
+    [
+      "JJ wind-down (off Jul 1)",
+      "-1100"
+    ],
+    [
+      "DealsX wind-down (off Jul 1, Payoneer)",
+      "-1500",
+      "modeled; actual ~$1,581 incl FX"
+    ],
+    [
+      "Bookkeeper (SV True, unchanged)",
+      "247",
+      "immaterial - not a lever"
+    ],
+    [
+      "DD Reserve held",
+      "40000"
+    ],
+    [
+      "Scenario A",
+      "Wind-downs only"
+    ],
+    [
+      "Scenario B",
+      "A + 3-mo 50% salary cut (Jul-Sep, -6850/mo)"
+    ],
+    [
+      "Scenario C",
+      "A + 3-mo full salary pause (Jul-Sep, -13700/mo)"
+    ],
+    [],
+    [
+      "Month",
+      "Burn A",
+      "End Bal A",
+      "Ops Cash A",
+      "Burn B",
+      "End Bal B",
+      "Ops Cash B",
+      "Burn C",
+      "End Bal C",
+      "Ops Cash C"
+    ],
+    [
+      "May 2026",
+      "21052",
+      "169472",
+      "129472",
+      "21052",
+      "169472",
+      "129472",
+      "21052",
+      "169472",
+      "129472"
+    ],
+    [
+      "Jun 2026",
+      "21052",
+      "148420",
+      "108420",
+      "21052",
+      "148420",
+      "108420",
+      "21052",
+      "148420",
+      "108420"
+    ],
+    [
+      "Jul 2026",
+      "18452",
+      "129968",
+      "89968",
+      "11602",
+      "136818",
+      "96818",
+      "4752",
+      "143668",
+      "103668"
+    ],
+    [
+      "Aug 2026",
+      "18452",
+      "111516",
+      "71516",
+      "11602",
+      "125216",
+      "85216",
+      "4752",
+      "138916",
+      "98916"
+    ],
+    [
+      "Sep 2026",
+      "18452",
+      "93064",
+      "53064",
+      "11602",
+      "113614",
+      "73614",
+      "4752",
+      "134164",
+      "94164"
+    ],
+    [
+      "Oct 2026",
+      "18452",
+      "74612",
+      "34612",
+      "18452",
+      "95162",
+      "55162",
+      "18452",
+      "115712",
+      "75712"
+    ],
+    [
+      "Nov 2026",
+      "18452",
+      "56160",
+      "16160",
+      "18452",
+      "76710",
+      "36710",
+      "18452",
+      "97260",
+      "57260"
+    ],
+    [
+      "Dec 2026",
+      "18452",
+      "37708",
+      "-2292",
+      "18452",
+      "58258",
+      "18258",
+      "18452",
+      "78808",
+      "38808"
+    ],
+    [
+      "Jan 2027",
+      "18452",
+      "19256",
+      "-20744",
+      "18452",
+      "39806",
+      "-194",
+      "18452",
+      "60356",
+      "20356"
+    ],
+    [
+      "Feb 2027",
+      "18452",
+      "804",
+      "-39196",
+      "18452",
+      "21354",
+      "-18646",
+      "18452",
+      "41904",
+      "1904"
+    ],
+    [],
+    [
+      "RESULT",
+      "",
+      "A: ops dry ~late Dec 2026 - falls ~2 months short"
+    ],
+    [
+      "",
+      "",
+      "B: ops to ~end Jan 2027 - right at the line"
+    ],
+    [
+      "",
+      "",
+      "C: ops positive through Feb 2027, $40K reserve intact"
+    ],
+    [],
+    [
+      "REALITY CHECK (60-day cash data)",
+      "",
+      "Recent actual cash burn ~$22K/mo vs $21,052 model. Gap = memberships + travel (controllable). Model assumes that discipline holds; if not, Scenario C tightens."
+    ],
+    [
+      "DealsX actual /mo",
+      "1581",
+      "PAYPAL*PAYONEERINC, billed ~21st"
+    ]
+  ]
+}

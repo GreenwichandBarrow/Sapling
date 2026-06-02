@@ -32,11 +32,11 @@ tags: [date/2026-06-02, context, topic/email-scan]
 
 | type | count | notes |
 |---|---|---|
-| DIRECT | 10 | Harrison Wells ×3 (invoice+Codex, Grill Me Prompt, Claude check-in); James Emden ×2 (declined Mon Jun 8, confirmed Thu Jun 4 lunch); Laura Smith BankUnited (LUNCH); Kay personal email "New approach" (from kaycschneider@gmail.com); Eric Mendelsohn "Following Up XPX — New Email"; Yash Birhade LinkedIn InMail (Chanel/Guidepoint); Bob Williamson Cetane (NJPMA workshop, thread) |
+| DIRECT | 11 | Harrison Wells ×3 (invoice+Codex, Grill Me Prompt, Claude check-in); James Emden ×2 (declined Mon Jun 8; Kay declined the rescheduled Thu Jun 4 slot and proposed Jun 15/18 — NOT confirmed); Laura Smith BankUnited ("LUNCH" — network, no body content); Kay personal email "New approach" (from kaycschneider@gmail.com); Eric Mendelsohn "Following Up XPX — New Email"; Yash Birhade LinkedIn InMail (Chanel/Guidepoint expert-network consult); Bob Williamson Cetane (NJPMA workshop, thread); Rebekah Stender, Inzo Technologies ("One partner for IT/Cyber/Voice?" — cold MSP vendor pitch, not a deal/intro) |
 | BLAST | 9 | BizBuySell alert (1 listing match, NYC Metro); BizBuySell re-engagement; Flippa ×2 (Tory digest + Sebastien webinar); Quiet Light (CBD brand, single listing); Benchmark International (DTC Health, single listing); Transworld NY (newsletter, no listing data in body); Everingham & Kerr Monthly Client Report (PDF linked, no listings embedded); NPMA Events (pest management academy) |
 | NEWSLETTER | 13 | Axios AM ×3 (Mike Allen); Axios Finish Line; Axios Pro Rata (Dan Primack); HBR ×2; Helen Guo SMB Deal Hunter (case study — Hillary's children's book acquisition; no listings section); Nick Huber Sweaty Startup; Michael Girdley (SBA Financing Thu event); Boulay Wealth webinar invite; Rejigg re-engagement |
 | ADMIN/FINANCE | 12 | DMARC report (Microsoft); StartVirtual Stripe receipt #2298-9887 (NOT a P&L — payment receipt only); Google Workspace invoice; Hetzner invoice #086000900984; Apollo receipt #2959-3155; Dodo Digital Stripe invoice; Gusto off-cycle payroll confirmation (paid Jun 4, 2026); Gusto passkey (TRASH); Gusto May invoice paid; Blank Street Coffee receipt; Anthropic receipt #2519-6357-3264 (in outbound) |
-| **Total** | **44** | |
+| **Total** | **45** | |
 
 **No CIM, NDA, LOI, or bookkeeper P&L emails detected.** No auto-triggers fired.  
 **Note on StartVirtual receipt:** `invoice+statements+acct_1JuKP4IoVeovnndh@stripe.com` is a Stripe payment receipt for True Tracking by StartVirtual — not a Management Report with P&L data. The May P&L from Anthony (startvirtual.com) remains an open loop per session-decisions-2026-06-02.
@@ -82,10 +82,12 @@ None new. Eric Mendelsohn's "Following Up from XPX — New Email Address" is a c
 
 | event | when | format | contact |
 |---|---|---|---|
-| (none confirmed for Jun 2) | — | — | — |
+| Matt I Kay | 11:00–12:00 EDT | In-person — Starbucks, 444 Madison Ave, NYC | Matt Luczyk (mluczyk@peapackprivate.com), [[entities/peapack-private]] — both accepted |
 
-**Upcoming confirmed:**  
-- Thu Jun 4 — Lunch with James Emden (Helmsley Spear) — 12pm–1pm EDT. Confirmed via calendar: James accepted the rescheduled invite (thread 19e7e23e77fbc2d4, Jun 2 02:20 AM). James had declined the original Mon Jun 8 slot.
+**Granola reminder:** Matt I Kay is an in-person external meeting today — Granola will not auto-capture an in-person coffee meeting; Kay should take manual notes or record. Peapack Private = private banking/wealth firm surfaced via the Heels to Deals / XPX network ([[entities/becky-wuest-creavin]]'s firm). No prep brief exists for this meeting.
+
+**Upcoming — NOT yet confirmed:**  
+- Thu Jun 4 — Lunch with James Emden (Helmsley Spear), 12pm–1pm EDT — **declined by Kay.** Kay replied Jun 2 02:20 AM citing a prior lunch conflict and proposed **Mon Jun 15 or Thu Jun 18** instead. Awaiting James's reply. James had also declined the original Mon Jun 8 slot. No James lunch is currently locked.
 
 **Granola note status — all 3 recent notes already in brain/calls/:**
 
@@ -132,7 +134,7 @@ None. No inbound emails contained NDA or CIM attachments. Jack Hlavin (Benchmark
 
 ## System Status
 
-- Gmail API: ✅ Healthy (44 threads retrieved, 2-day window)
+- Gmail API: ✅ Healthy (45 threads retrieved, 2-day window)
 - Granola REST API: ✅ Healthy (3 notes retrieved, all idempotent — already in brain/calls/)
 - Attio: Not queried this run (no CIM/NDA triggers requiring write)
 - Bookkeeper P&L chain: **Not triggered** — StartVirtual Stripe receipt ≠ Management Report. May P&L from Anthony still open loop.

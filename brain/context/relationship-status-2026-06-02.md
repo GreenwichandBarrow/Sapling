@@ -5,73 +5,70 @@ type: relationship-status
 
 ## Overdue Contacts (Top 5)
 
-1. **Kristina Marcigliano** (Willis Towers Watson) — Quarterly, last contact 2025-12-23, **161 days overdue** (threshold: 98d)
-   Email: kristina.marcigliano@wtwco.com
-   Suggested action: quarterly check-in email (insurance professional; women-priority per standing doctrine)
-   Note: No Attio nurture_cadence set on her record — she appears in the overdue list because her last_interaction pre-dates the quarterly threshold. Recommend setting nurture_cadence = Quarterly in Attio.
+1. **[[entities/kristina-marcigliano|Kristina Marcigliano]]** (Willis Towers Watson) — Quarterly, last contact 2025-12-23, **161d (+63 over** 98d threshold). Women-priority. Carried unanswered from 2026-05-31 deferred list. No outbound in 21d. `nurture_cadence = Quarterly` is set in Attio (id `1afabadc`).
+   Suggested action: short warm quarterly check-in (insurance SME).
 
-2. **Molly Epstein / Goodman Taft** (via Chase Lacson record) — Monthly, last Attio interaction 2025-10-28, **217 days** since logged interaction. Attio next_action: "Reconnection email sent to Molly 3/30. Awaiting reply." — March 30 email has gone 63 days unanswered.
-   Email: mee_admin@goodmantaft.com (Chase admin); Molly Epstein is the principal.
-   Suggested action: gentle follow-up on the March 30 email — one brief nudge, then close loop if no reply.
+2. **[[entities/hunter-hartwell|Hunter Hartwell]]** (Ellirock) — Quarterly, last contact 2026-01-14, **139d (+41 over)**. No next_action logged, no outbound in 21d.
+   Suggested action: quarterly check-in email.
 
-3. **Hunter Hartwell** (Ellirock) — Quarterly, last contact 2026-01-14, **139 days overdue** (threshold: 98d)
-   Email: hunter@ellirock.com
-   Suggested action: quarterly email check-in; no specific next_action logged.
+3. **[[entities/dan-tanzilli|Dan Tanzilli]]** — Monthly, last contact 2026-03-26, **68d (+33 over** 35d threshold). No next_action.
+   Suggested action: catch-up note. NOTE: Monthly cadence is aggressive for this relationship — recommend confirming Monthly vs downgrade to Quarterly.
 
-4. **Kyle McGrath** (Markel) — Quarterly, last contact 2026-02-10, **112 days overdue** (threshold: 98d)
-   Email: kyle.mcgrath@markel.com
-   Attio next_action: "No immediate action. Maintain quarterly touchpoint."
-   Suggested action: quarterly touchpoint — coffee or short call.
+4. **[[entities/sarah-de-blasio|Sarah de Blasio]]** (Chartwell) — Quarterly, last contact 2026-01-23, **130d (+32 over)**. Women-priority; art-insurance brokerage SME. Carried from 2026-05-31 deferred. next_action carries a deal-trigger ("contact immediately when a deal surfaces" — GATED) PLUS standing "maintain quarterly touchpoint" — the quarterly maintenance touch is genuinely due.
+   Suggested action: light quarterly check-in (no deal pretext needed).
 
-5. **Christopher Wise** (Risk Strategies) — Quarterly, last contact 2026-02-18, **104 days overdue** (threshold: 98d)
-   Email: cwise@risk-strategies.com
-   Attio next_action: "Quarterly nurture. No immediate action."
-   Suggested action: quarterly email check-in.
+5. **[[entities/kyle-mcgrath|Kyle McGrath]]** (Markel) — Quarterly, last contact 2026-02-10, **112d (+14 over)**. next_action "maintain quarterly touchpoint, no immediate action."
+   Suggested action: low-priority quarterly touchpoint. Marginal (only 14d over).
 
-**Contacts reviewed and NOT surfaced (reasons logged):**
-- Britta Nelson: Attio next_action confirms text contact "late March 2026" (~63d ago) → within quarterly threshold. Not overdue.
-- Austin Yoder (hello@cal.com): Duplicate record; real record (austin@magratheapartners.com) last contact 2026-03-23 = 71d, within quarterly threshold.
-- Squarespace (customercare@squarespace.com): Vendor auto-email address, not a real relationship.
-- bluerideradmin@morganstanley.com: Role/system email, not a real contact relationship.
-- Donald Moore (Marsh, 217d Occasionally): Attio next_action says "Nurture bi-annually. No immediate action." — borderline at 217d vs 213d threshold but next_action signals no urgency. Noted in Metadata Drift below.
-- Alexandra Kelly (UOVO Art): Trigger — "On maternity leave. Do not contact until she returns."
-- August Felker: Trigger — "Re-engage when we have an insurance deal for him to review."
-- Jim Vigna: Trigger — "Quarterly nurture; escalate when active deal financing comes into play."
-- Ian Stuart: Trigger — "Re-engage only if portfolio fractional CFO need arises."
+**Also just over threshold (low priority):** Christopher Wise (Risk Strategies, Quarterly +6d), Austin Yoder/hello@cal.com (Quarterly +5d — duplicate/tool address, see Dedup).
 
-*Note: Gmail and calendar are the only verified interaction channels. Kay also communicates via text and phone. Contacts with Attio next_action evidence of recent non-email contact (e.g., Britta Nelson) are trusted and not surfaced.*
+*Verified-channel caveat: Gmail + calendar are the ONLY channels this skill verifies. Kay also reaches contacts by text, phone, and in person. Where Attio next_action records a recent non-email touch (e.g., Britta Nelson), that is trusted over Gmail silence.*
+
+## Assistant vs Principal Routing
+- **[[entities/molly-epstein|Molly Epstein]]** (Goodman Taft) via [[entities/chase-lacson|Chase Lacson]] assistant record (Monthly, 217d): next_action "Reconnection email sent to Molly 3/30, awaiting reply"; Molly's own record logs "3 follow-ups (Nov 2025), no response." This is a cold/dead thread, NOT a fresh nurture nudge. Not surfaced as actionable. Recommend Chase → Dormant.
+
+## Excluded — Trigger-Gated (do NOT surface on elapsed time)
+- [[entities/richard-augustyn|Richard Augustyn]] — "Reach out when insurance deal enters Active Deals pipeline."
+- [[entities/michael-topol|Michael Topol]] — "Re-engage when we have an insurance deal for him to review."
+- [[entities/rachele-adelman|Rachele Adelman]] — "When insurance DD needed, reach out to August Felker."
+- [[entities/jim-vigna|Jim Vigna]] — "escalate when active deal financing comes into play."
+- [[entities/scott-casper|Scott Casper]] / [[entities/eric-dreyer|Eric Dreyer]] — "Re-engage ~July 2026 if no new deals cross."
+- [[entities/alexandra-kelly|Alexandra Kelly]] — "On maternity leave. Do not contact until she returns."
+- [[entities/lauren-young|Lauren Young]] — "Re-engage when a specific introduction need arises."
+- [[entities/anna-raginskaya|Anna Raginskaya]] — "Hold until late April 2026" (treat as gated; Dormant-class).
+
+## Excluded — Recent Interaction via Non-Email Channel
+- [[entities/britta-nelson|Britta Nelson]] — Quarterly, last email 189d ago BUT next_action records "Texted recently (late March 2026). No follow-up needed." Trusted per skill rule. NOT overdue.
 
 ## Auto-Resolved (No Action Needed)
-
-None — no outbound emails found in the 14-day Gmail verification window for any overdue contact.
+- None this run. No outbound emails found in the 14-21d Gmail window for any surfaced candidate; nothing auto-resolved off the list.
 
 ## Pending Intros / Open Actions
-
-- **Sam Curcio (Transworld of NY):** Post-call thank-you (canonical Intermediary Email Templates) + proof-of-funds letter still outstanding. Call was 2026-05-22 (11 days ago). Open action items from `brain/calls/2026-05-22-sam-curcio.md`. Not in nurture cadence queue — surface here as an open loop.
-  Email: samuelcurcio@sydney.tworld.com (or scurcio@tworld.com)
+- **[[entities/sam-transworld|Sam Curcio]]** (Transworld of NY): post-call thank-you + proof-of-funds letter still outstanding from the 2026-05-22 call (open items in `brain/calls/2026-05-22-sam-curcio.md`). Not a cadence item — surfaced here as an open loop. Email `samuelcurcio@sydney.tworld.com`. (Reactive: Kay handles intermediary replies; flag for her awareness.)
+- No other promised intros outstanding — Kendall Warson → Amanda, Rachel Tepper → Zoe, Melissa Goldberg → Amanda all logged complete.
 
 ## Warm Intro Opportunities (from target-discovery)
-
-None — no target-discovery handoff processed today.
+- None — no target-discovery handoff processed today.
 
 ## Vault → Attio Syncs
-
-- **Paul Giannamore** (The Potomac Company): Attio record already existed (id: `be8fbfdd-f122-46fc-9925-1b142490fd38`). Engagement note "LinkedIn DM sent - 2026-05-29" already attached (idempotency check passed — no duplicate created). Vault entity updated: `attio_id` + `attio_synced_at: 2026-06-02T07:00:00Z` written back.
-- **Leigh Fryxell** (Pest-End): Vault entity marked "Logged to Attio" (2026-05-29) but no Attio record found across 1,500 records searched. No confirmed email in vault entity → cannot locate or create record. Will retry on next run when email is confirmed.
-- **Bob Williamson** (business broker, entity created 2026-06-01): No email confirmed, no Attio record found. Skip — retry when email arrives.
-- **carlos-in3o, erika-teresko, joe-vanore, amanda-forrestall**: No `## Relationship Notes` section → excluded from sync per detection criteria.
+- **[[entities/sam-transworld|Sam (Transworld) / Samuel Curcio]]** — file modified 2026-06-02 (Quick Facts full-name + email added per 5/31 recovered session); Relationship Notes content UNCHANGED since last sync (2026-05-27). No new engagement note to attach → no Attio note write performed. Already carries attio_id `cd3f4d27-2c1c-4936-837b-41102ab3e9fc`.
+- **[[entities/leigh-fryxell|Leigh Fryxell]]** (Pest-End) — Attio Person + note already created 2026-05-29 (LinkedIn DM). No verified email in vault; nothing pending.
+- **[[entities/bob-williamson|Bob Williamson]]** — no verified email, no attio_id; cannot match in Attio. Skip per spec, retry when email enriched.
+- **[[entities/paul-giannamore|Paul Giannamore]]**, [[entities/eric-mendelsohn|Eric Mendelsohn]], [[entities/sarah-rowell|Sarah Rowell]], [[entities/marsha-weiner|Marsha Weiner]], [[entities/greg-pitkoff|Greg Pitkoff]] — already synced (synced_at >= modified). No action.
 
 ## Attio Dedup Needed
+- **Austin Yoder**: 2 records — `hello@cal.com` (id `24aef54c`) and `austin@magratheapartners.com` (id `2928b44c`). Keep Magrathea, retire cal.com.
+- **[[entities/carlos-in3o|Carlos Nieto]]**: `carlos@in3o.com` (id `12f84371`) vs `carlosnietov@gmail.com` (id `97e90c25`). Both Dormant — merge or archive one.
 
-- **Austin Yoder**: 2 active records — `hello@cal.com` (id: `24aef54c`) and `austin@magratheapartners.com` (id: `2928b44c`). Real contact is Magratheapartners. Kay must merge: keep Magratheapartners record, retire Cal.com record.
-- **Carlos Nieto**: 2 records — `carlosnietov@gmail.com` (id: `97e90c25`) and `carlos@in3o.com` (id: `12f84371`). Both Dormant per next_action notes. May be same person — Kay to confirm and merge or archive one.
-
-## Metadata Drift
-
-- **Donald Moore** (Marsh, id: `cb5ef7fb`): Attio next_action says "Nurture bi-annually." but `nurture_cadence` = Occasionally (213d threshold). He is at 217d — technically overdue by 4d. Next_action text implies intended cadence is bi-annual (~180d), which would make him MORE overdue. Recommend Kay confirm: update `nurture_cadence` to Monthly or accept Occasionally-but-past-due and take action.
-- **Kristina Marcigliano** (WTW, id: `1afabadc`): No `nurture_cadence` set, but clearly on a Quarterly cadence based on relationship context. Recommend setting `nurture_cadence = Quarterly` in Attio.
-- **thyme@everystall.com** (id: `53241063`): Attio record has no name, no job title, no next_action, Occasionally cadence, last interaction 2025-06-03 (364d ago). Unactionable without identity. Recommend Kay identify and either name the record or archive it.
+## Metadata Drift / Cleanup Candidates
+- **Donald Moore** (Marsh): next_action "Nurture bi-annually" but nurture_cadence = Occasionally (213d); at 217d, marginally over. Confirm intended cadence.
+- Role/system addresses carrying cadences (recommend → Dormant): bluerideradmin@morganstanley.com, hello@cal.com, chris.goyette@privateriskmanagement.org, Squarespace customercare@, Heritage do-not-reply@.
+- **Chase Lacson** (assistant, dead Molly thread) → recommend Dormant.
 
 ## System Status Alerts
+- None. Attio REST health-check returned HTTP 200 on `/v2/self` after op-env credential resolve. No outage. ~1,860 person records queried successfully.
 
-None — Attio REST API healthy (HTTP 200 on `/v2/self`). All 1,500 Attio person records queried successfully via op-resolved credentials.
+## Suppressions Honored (already decided/deferred — not re-surfaced)
+- DealsX cancellation (deferred ~Jun 11), JJ off Jul 1, DealsX off ~Aug 1 — per session-decisions-2026-06-02.
+- Camilla approach codification → late June.
+- All trigger-language next_action contacts (when/once/after/if) excluded per CLAUDE.md.

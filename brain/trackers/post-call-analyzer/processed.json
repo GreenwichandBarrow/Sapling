@@ -379,7 +379,24 @@
       "tasks_skip_reason": "no action items extractable from near-empty transcript",
       "slack_posted": true,
       "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_XcqNWs33vyFKLj",
+      "title": "Harrison <> Kay: AI Coaching",
+      "counterparty": "Harrison Wells (Dodo Digital)",
+      "processed_at": "2026-06-02T17:05:00+00:00",
+      "vault_call_note": "brain/calls/2026-06-01-harrison-wells-ai-coaching.md",
+      "doc_url": "https://docs.google.com/document/d/1p46ABAK-hzx9hW1ZQx5824oumP2GdRh_i55fP0or9S8/edit",
+      "doc_id": "1p46ABAK-hzx9hW1ZQx5824oumP2GdRh_i55fP0or9S8",
+      "attio_notes": {
+        "person_harrison_wells": "4a9611c2-ff8a-4918-8b19-3bb2cd899c74",
+        "company_dodo_digital": "1345df1c-393f-4d15-a214-d49696393033"
+      },
+      "tasks_staged": 5,
+      "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_XcqNWs33vyFKLj.json",
+      "slack_posted": true,
+      "detector": "granola-api-rest"
     }
   ],
-  "last_updated": "2026-06-01T20:20:00+00:00"
+  "last_updated": "2026-06-02T17:05:00+00:00"
 }

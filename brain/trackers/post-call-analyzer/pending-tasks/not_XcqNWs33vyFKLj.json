@@ -1,0 +1,57 @@
+[
+  {
+    "task_text": "Investigate deal aggregator failure — 2+ weeks of missed email-sourced deals. Pull systemd logs, verify credential validity and email-watch scope, surface root cause + fix recommendation",
+    "type": "Operations",
+    "project": "Sapling OS",
+    "suggested_day": "Today",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Harrison Wells (Dodo Digital) 2026-06-01 mtg. Analysis: https://docs.google.com/document/d/1p46ABAK-hzx9hW1ZQx5824oumP2GdRh_i55fP0or9S8/edit",
+    "source_call_id": "not_XcqNWs33vyFKLj",
+    "source_doc_url": "https://docs.google.com/document/d/1p46ABAK-hzx9hW1ZQx5824oumP2GdRh_i55fP0or9S8/edit",
+    "staged_at": "2026-06-02T17:05:00+00:00"
+  },
+  {
+    "task_text": "Set up Codex app — download, add VPS via SSH (Environments tab), onboard Sapling repo, run skills/hooks transition prompt, spot-check each hook",
+    "type": "Operations",
+    "project": "Sapling OS",
+    "suggested_day": "This week",
+    "suggested_due_date": "2026-06-14",
+    "notes_with_doc_link": "Claude price increase June 15 — decision window tight. Harrison's walkthrough in call. From 2026-06-01 mtg. Analysis: https://docs.google.com/document/d/1p46ABAK-hzx9hW1ZQx5824oumP2GdRh_i55fP0or9S8/edit",
+    "source_call_id": "not_XcqNWs33vyFKLj",
+    "source_doc_url": "https://docs.google.com/document/d/1p46ABAK-hzx9hW1ZQx5824oumP2GdRh_i55fP0or9S8/edit",
+    "staged_at": "2026-06-02T17:05:00+00:00"
+  },
+  {
+    "task_text": "Pest MLM verification — research EcoShield + 2-3 major pest cos to determine if MLM commission structure is industry-wide or concentrated at large-cap. Determine if owner-operated targets are insulated",
+    "type": "Research",
+    "project": "Niche Research",
+    "suggested_day": "This week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "Harrison flagged MLM concern in pest niche (2026-06-01). AWAIT KAY APPROVAL before executing. Analysis: https://docs.google.com/document/d/1p46ABAK-hzx9hW1ZQx5824oumP2GdRh_i55fP0or9S8/edit",
+    "source_call_id": "not_XcqNWs33vyFKLj",
+    "source_doc_url": "https://docs.google.com/document/d/1p46ABAK-hzx9hW1ZQx5824oumP2GdRh_i55fP0or9S8/edit",
+    "staged_at": "2026-06-02T17:05:00+00:00"
+  },
+  {
+    "task_text": "Discuss with Camilla: add natural-demand-driver filter to niche scoring (regulation/referral/recurring necessity vs outreach-dependent CAC) — codify Kay's instinct from Harrison call into buy-box",
+    "type": "Strategy",
+    "project": "Deal Sourcing",
+    "suggested_day": "This week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Harrison Wells (Dodo Digital) 2026-06-01 mtg. Analysis: https://docs.google.com/document/d/1p46ABAK-hzx9hW1ZQx5824oumP2GdRh_i55fP0or9S8/edit",
+    "source_call_id": "not_XcqNWs33vyFKLj",
+    "source_doc_url": "https://docs.google.com/document/d/1p46ABAK-hzx9hW1ZQx5824oumP2GdRh_i55fP0or9S8/edit",
+    "staged_at": "2026-06-02T17:05:00+00:00"
+  },
+  {
+    "task_text": "After Codex migration: re-evaluate Good Night automation scheduling and test email tone differences (Codex more logical/structured vs Claude warmer register)",
+    "type": "Operations",
+    "project": "Sapling OS",
+    "suggested_day": "Next week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "Depends on Codex setup completion. From 2026-06-01 Harrison call. Analysis: https://docs.google.com/document/d/1p46ABAK-hzx9hW1ZQx5824oumP2GdRh_i55fP0or9S8/edit",
+    "source_call_id": "not_XcqNWs33vyFKLj",
+    "source_doc_url": "https://docs.google.com/document/d/1p46ABAK-hzx9hW1ZQx5824oumP2GdRh_i55fP0or9S8/edit",
+    "staged_at": "2026-06-02T17:05:00+00:00"
+  }
+]

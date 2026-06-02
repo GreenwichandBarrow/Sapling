@@ -6,6 +6,8 @@ status: prospect
 company: "[[entities/the-potomac-company]]"
 role: "Pest-industry M&A advisor"
 linkedin: https://www.linkedin.com/in/paulgiannamore
+attio_id: be8fbfdd-f122-46fc-9925-1b142490fd38
+attio_synced_at: 2026-06-02T07:00:00Z
 tags: ["date/2026-05-29", "entity", "person", "person/paul-giannamore", "company/the-potomac-company", "topic/pest-management", "topic/intermediary"]
 ---
 

@@ -22,7 +22,7 @@ tags:
 
 ## Quick Facts
 - Business broker at [[entities/transworld|Transworld]].
-- Full name + email pending (intro paste from Becky did not include them; reply sent in-thread so address is verified-by-Becky).
+- Full name: **Samuel Curcio.** Email: `samuelcurcio@sydney.tworld.com` (`sydney.tworld.com` = Transworld office subdomain). Surfaced 2026-05-31 when the address was routed to the auto/deal flow Gmail label (dedicated standalone filter, per Kay's no-bundle instruction).
 - Introduced by [[entities/becky-wuest-creavin|Becky Wuest Creavin]] of [[entities/peapack-private|Peapack Private]].
 
 ## Communication Style

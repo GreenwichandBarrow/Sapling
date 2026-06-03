@@ -1,0 +1,71 @@
+{
+  "run_date": "2026-06-02",
+  "run_mode": "tuesday",
+  "niches_evaluated": 6,
+  "niches_identified": 2,
+  "one_pagers_written": 2,
+  "scorecards_written": 2,
+  "tracker_updated": true,
+  "runtime_seconds": 1456,
+  "niches": [
+    {
+      "name": "Fine-Art Logistics Services",
+      "score": 2.39,
+      "initial_screen": "4/4 PASS",
+      "target_pool": "150-300",
+      "weekly_review_rank": 17,
+      "weekly_review_row": 20,
+      "drive_folder": "https://drive.google.com/drive/folders/1cwIJl72r8nak7hReixXVOYtdj4gHsjPb",
+      "one_pager_file_id": "1KpO70vnxYlS_cwNsDgqGzmteDRY11ZIa",
+      "scorecard_file_id": "1fZxFGvKxtrcG4JyC7yltWnE2ZN7iV6Hs",
+      "verdict": "PROMISING — strongest net-new of the cycle. Asset-light services layer only (crating/fine-art trucking/installation/customs brokerage); strips capital-intensive storage. Services-only re-scope of tracked #8 Storage for HVA — analyst call decides re-scope vs net-new, do not double-count. Warm access via Warren Chan/Anacapa ~June 9."
+    },
+    {
+      "name": "Insurance FMO/IMO Distribution-Aggregator",
+      "score": 2.20,
+      "initial_screen": "4/4 PASS",
+      "target_pool": "Hundreds (thin NAMED pool)",
+      "weekly_review_rank": 18,
+      "weekly_review_row": 21,
+      "drive_folder": "https://drive.google.com/drive/folders/1se2WtUaF11jY3iDvgsgjQGmVuDDFJV8i",
+      "one_pager_file_id": "1QfEL9glJSz87X9E8famSHiDOW9nWFqr-",
+      "scorecard_file_id": "1cdBW9emWbutPqtW6FWxiYA78RSyqap25",
+      "verdict": "MODERATE — probe-gated. Wholesale distribution/override layer, distinct from retail brokerage #7/#10/#13. Very-high capital-light margins, high recurring, ~5-7% CAGR (annuity wave). 4/4 screen pass but thin NAMED pool (single historical source, no live target) + Big-Three consolidation (Integrity/AmeriLife/Simplicity). Advance one-pager + target-discovery probe before channel commitment."
+    }
+  ],
+  "niches_surfaced_not_advanced": [
+    {"name": "Heat-transfer / on-demand label & decoration manufacturing", "reason": "Capital-intensive printing/converting, only moderately fragmented (top-5 ~55%). The 30%-margin firm diligenced Feb 2026 is a one-off target, not a niche thesis. Flagged not killed."},
+    {"name": "Carpet/flooring installation (NJ)", "reason": "Construction-adjacent soft-exclude. Directed signal from Matt Luczyk (Peapack)."},
+    {"name": "Insurance-fed warranty-pipe installation", "reason": "Construction-trades + residential B2B2C; fails core excludes."},
+    {"name": "VA-benefits consultancy", "reason": "Near-DEAD: likely B2C + regulatory headwind (CA fee-ban end-2026, LA fee caps) + claims-sharks reputational stigma. No PE-acquisition activity."}
+  ],
+  "lead_lifecycle_dead_not_resurfaced": [
+    "Whole-firm insurance brokerage acquisition at G&B size — DEAD (12-14x prohibitive, build-don't-buy counter-thesis from 4+ sources). Viable residue = carve-out / specific anti-PE personal-lines target / Midwest-to-NY arbitrage.",
+    "Pure art advisory standalone — DEAD (Margot Romano); survives only as advisory+services.",
+    "Art-tech / transaction platforms — KILLED (low TAM, low willingness-to-pay)."
+  ],
+  "reinforced_existing_rows": [
+    "#1 Premium Pest Management — 9.7B US market, 34K+ firms, multiples +0.5x YoY; Matt Luczyk corroborated 'still very high'. Favor sub-platform targets vs PE-owned premium-bid risk.",
+    "#5 High-End Commercial Cleaning — live Axial teaser 6/2.",
+    "#7/#9/#10/#13 Insurance cluster — ~11.4x avg, PE momentum regaining; Warren Chan/Anacapa active art-world-services interest (validates Fine-Art Logistics + cluster).",
+    "#12 Truck Licensing & Compliance — second independent sighting (Helen Guo listing, but CA geography hard-exclude).",
+    "Macro: SBA walked back one-strike rule for minority investors eff. June 1 — eases acquisition financing."
+  ],
+  "sources_covered": {
+    "recent_track": "complete — all 6 sources reached. last30days noise on niche queries (substituted WebSearch); Granola MCP unauthenticated headless (brain/calls/ 14-day proxy). Newsletters, Gmail deal-flow+investors, vault, passive inbox all complete.",
+    "historical_track": "partial — 2 of 4 clusters. Historical calls (~50 notes) + Gmail full-history complete. OneNote MCP UNAVAILABLE (not installed). ChatGPT export UNAVAILABLE (~/Downloads absent). Same gaps as 2026-05-26."
+  },
+  "open_loops_infra": [
+    "OneNote MCP not installed for headless runs (recurring gap).",
+    "ChatGPT export path absent (~/Downloads/...selected_business_conversations.json).",
+    "Granola MCP headless-incompatible (PKCE OAuth) — brain/calls/ proxy 3rd+ Tuesday."
+  ],
+  "new_river_guide_assets": [
+    "Warren Chan (Anacapa) — warm, art-world-services interest, meeting ~June 9.",
+    "Matt Luczyk (Peapack IB) — multiples-benchmark resource; June 16 Summit NJ owner event; insurance contact intro.",
+    "G&B family network contact (marine logistics) — warm path to trade-credit/cargo-insurance brokers (#9)."
+  ],
+  "tabled_resurface_review": "No tabled niche received data justifying resurfacing this cycle.",
+  "chatroom_path": "brain/traces/agents/2026-06-02-niche-intelligence.md",
+  "report_path": "brain/outputs/2026-06-02-niche-intelligence-report.md"
+}

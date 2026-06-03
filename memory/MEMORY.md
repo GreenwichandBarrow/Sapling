@@ -10,6 +10,7 @@ Retrieval pointers only — doctrine lives in topic files. To find a memory: gre
 - [user_kay_life_goals.md](user_kay_life_goals.md) — $10M exit, $300K min salary, WFH, deal filters
 - [user_kay_plan_b_options.md](user_kay_plan_b_options.md) — Alt paths: productize OS, luxury roll-up, indep sponsor
 - [user_kay_personality_assessments.md](user_kay_personality_assessments.md) — ENTJ-A + PRINT: dynamic, prestigious, autonomous, risk-taking
+- [feedback_speak_in_kays_plain_voice.md](feedback_speak_in_kays_plain_voice.md) — In conversation/synthesis talk plain & human, NOT emoji YES/NO codes or jargon (cross-walk/load-bearing/etc.). Emoji Decisions format is for operational briefings only. Said 2026-06-03
 - [user_kay_women_led_purpose_throughline.md](user_kay_women_led_purpose_throughline.md) — **LOAD-BEARING ORGANIZING PRINCIPLE** Kay's career-spanning women-empowerment thread (fashion→Chanel→Myself Renewed→women-led search→female investor post-exit). Industry only locks for Kay when female-led network exists. Surfaced 2026-05-20 /socrates
 - [feedback_court_case_psychology_identity_layer.md](feedback_court_case_psychology_identity_layer.md) — ENTJ-A/PRINT wires identity to performance → every event = courtroom evidence → avoidance. Solution = behavior-first not feeling-first. Drives investor-update avoidance, advisor-response delays, feedback defensiveness
 - [user_kay_wedgwood_archetype.md](user_kay_wedgwood_archetype.md) — Wedgwood aspirational, NOT a niche-scoring lens

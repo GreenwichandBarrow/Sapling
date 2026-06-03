@@ -45,6 +45,7 @@ Retrieval pointers only — doctrine lives in topic files. To find a memory: gre
 - [feedback_thesis_shape_not_constraints.md](feedback_thesis_shape_not_constraints.md) — Language: "thesis shape" / "thesis criteria" NOT "constraints." Same content, opposite identity-frame
 
 ## Outreach Voice & Email Rules
+- [feedback_deliver_clean_copy_paste_drafts.md](feedback_deliver_clean_copy_paste_drafts.md) — When Kay asks for a copy-paste draft in-session, lead with the clean ready-to-paste draft; flag real risks briefly alongside it, never gate the draft behind clarifying questions ("no bar")
 - [feedback_no_search_fund_language_intermediaries.md](feedback_no_search_fund_language_intermediaries.md) — Drop ALL structural labels from intermediary body. Buy-box → footer. No geography. ONE-AND-DONE
 - [feedback_no_intermediary_drafts_outside_template.md](feedback_no_intermediary_drafts_outside_template.md) — ALL intermediary drafts from canonical templates. New scenarios → propose template
 - [feedback_pull_canonical_doc_live_not_snapshot.md](feedback_pull_canonical_doc_live_not_snapshot.md) — Pull live Drive doc (`bash scripts/fetch-template-doc.sh`) before drafting; never draft from stale brain/outputs snapshot

@@ -178,6 +178,7 @@ Retrieval pointers only — doctrine lives in topic files. To find a memory: gre
 - [feedback_investor_prep_format.md](feedback_investor_prep_format.md) — Monthly prep = 7 tight sections ≤1pg. Active Niches = top-2 + "3-N. Rest of stack per tracker". No standalone Thesis/Methodology sections. Jeff 4/22/26 = template
 - [feedback_investor_budget_format.md](feedback_investor_budget_format.md) — Budget = one inline bullet $XXK (XX% of $550K) [context]
 - [feedback_investor_call_closing.md](feedback_investor_call_closing.md) — End calls asking deals/trends
+- [feedback_investor_update_lead_with_engine_not_deal.md](feedback_investor_update_lead_with_engine_not_deal.md) — Quarterly updates lead with structural conviction ("engine built, edge identified"), deals = by-product not headline; don't apologize for gaps (court-case psychology). Q1-2026 /socrates 6/3
 - [project_guillermo_lender_list.md](project_guillermo_lender_list.md) — 9 lenders: Avidbank, Newburyport, East West, Fidus, Oak North, Parkside, Saratoga, TruWest, Plexus
 - [feedback_saltoun_ride_or_die.md](feedback_saltoun_ride_or_die.md) — Saltoun primary on SaaS/VSaaS. Material moves need sign-off
 - [feedback_budget_not_kays_job.md](feedback_budget_not_kays_job.md) / [feedback_no_unverified_metrics.md](feedback_no_unverified_metrics.md) — Budget NOT Kay's job. Bookkeeper-only metrics

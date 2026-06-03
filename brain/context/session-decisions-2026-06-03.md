@@ -97,3 +97,50 @@ Single-thread `/socrates` working session on Kay's overdue **Q1 2026 quarterly i
 - Q1 2026 investor update — Kay drafting deck; ~5 dark-investor delivery mechanics open.
 - Aerospace-defense widow deal — coffee ~wk of Jun 8; conditional investor intro pending economics.
 - Aerospace on-deck-niche vs one-off question (left mid-answer).
+
+---
+
+# Session 3 — Email-drafting day + BankUnited×Morrison Cohen lunch brief + afternoon /goodmorning
+
+Remote-control working session: a run of external email drafts (all Kay-sent, none auto-landed in Gmail), a same-day lunch brief with entity-graph reconciliation, and an afternoon `/goodmorning` Decisions briefing.
+
+## Decisions (Session 3)
+
+### Email drafting (all DRAFTED for Kay to send; reactive-mode honored)
+- **DRAFTED** — Forward note to [[entities/jeff-stevens|Jeff Stevens]] re [[entities/carlos-in3o|Carlos]]'s Anacapa intro request for Renue Environmental ("how would you like me to handle"). Confirmed Carlos in3o/DCA = same person, different emails. Kay sent ("done").
+- **DRAFTED** — Thank-you to [[entities/matt-luczyk|Matt Luczyk]] (6/2 coffee): vague "interesting opportunities / where things align," aerospace keep-me-in-mind (gratitude, not re-ask), insurance-contact intro kept per [[feedback-bias-yes-on-introductions]], June-16 Summit NJ owner event ("put a hold on my calendar"). Dropped carpet + VA-benefits businesses (Kay not interested; both brush buy-box soft-excludes). **Kay scheduled send 8am Thu 6/4.**
+- **DRAFTED** — Thank-you/partnership note to [[entities/oswaldo-ponce|Oswaldo Ponce]]: warm peer tone, genuine openness to his role+partnership offer, logistics deal-flow to send his way.
+- **DRAFTED** — Reply to [[entities/warren-chan|Warren Chan]] (Anacapa) re art-world services + search-fund fit: two windows Tue 6/9 12pm PT / Wed 6/10 10am PT, Google Meet. Ties to Fine-Art Logistics niche.
+- **DRAFTED** — Decline to [[entities/carlos-in3o|Carlos]] on Project Drone ("moving on"): investor-hesitation framing per [[feedback-quasi-decline-via-investor-hesitation]] — non-US geography + AI/tech exposure; thanked for the Oswaldo intro; US-based steer for future flow. Anacapa/Renue intro held for a SEPARATE email pending Jeff's reply.
+
+### Becky — HOLD email, handle in person (judgment call)
+- **DECISION** — Drafted a Becky ([[entities/becky-wuest-creavin|Peapack]]) note (NYBB-contact ask + Matt-coffee + XPX Friday) then **DECIDED NOT TO SEND**. Becky is confirmed on the **XPX Long Island (Fri 6/5)** attendee list, so the NYBB intro ask + catch-up are held for **in person** (intro asks land better face-to-face; don't spend the ask over email). See trace [[traces/2026-06-03-hold-warm-intro-ask-for-in-person]].
+
+### Oswaldo partnership timing — keep optionality open (judgment call)
+- **DECISION** — Cut the explicit "early-2027 / current search runs first" timing from the Oswaldo draft. Kay could always wind down the current search early if the right deal materialized, so foreclosing timing in writing needlessly caps optionality. "When the right deal comes along" carries the no-over-commit without over-sharing investor/commitment detail.
+
+### Afternoon /goodmorning briefing (Kay's calls)
+- **REJECT** — James Emden lunch brief: meeting **pushed out**, no brief needed.
+- **REJECT** — ACG NY DealMaker (June 11) as a briefing item: conference decisions do NOT belong in the morning briefing → Conference Pipeline tracker, reviewed Mondays. Captured as [[feedback-no-conferences-in-morning-briefing]].
+- **REJECT** — Peekwire PR inclusion ("luxury acquisition firms" article): reads as spam.
+- **PASS/NO-ACTION** — E&K Metal Manufacturing blast ($4.2M EBITDA, "Mid Atlantic Region", no state pre-NDA): already forwarded to [[entities/camilla-de-sanna|Camilla]] 6/3 for triage; geography unknowable until NDA.
+- **Relationship hygiene:** [[entities/sam-transworld|Sam Curcio]] proof-of-funds/thank-you → **done** (close open item). [[entities/kristina-marcigliano|Kristina Marcigliano]] → **trigger-gate** (surface only when a deal surfaces). [[entities/sarah-de-blasio|Sarah de Blasio]] → **texted today** (recent non-email touch; stop surfacing).
+
+## Actions Taken (Session 3)
+- **CREATED** — Lunch brief [[brain/briefs/2026-06-03-bankunited-morrison-cohen-lunch]] → Google Doc (`1Lz2KlSPGa33jDJC1G3v1MxJXo8YM85MO_UYhGK0cz2U`) in RESEARCH/BRIEFS + vault + Slack #operations.
+- **CREATED** — Entities [[entities/randi-mason-morrison-cohen]], [[entities/morrison-cohen]], [[entities/stephanie-tetreault-bankunited]], [[entities/warren-chan]].
+- **UPDATED** — [[entities/stephanie-unknown-surname]] marked RESOLVED: the "Stephanie = lawyer" mix-up split into Randi Mason (lawyer/connector, Morrison Cohen) + Stephanie Tetreault (BankUnited colleague).
+- **CREATED** memory — [[feedback-deliver-clean-copy-paste-drafts]], [[feedback-no-conferences-in-morning-briefing]]; MEMORY.md index updated.
+
+## Deferred (Session 3)
+- **Carlos Anacapa/Renue intro reply** → separate email, **pending Jeff Stevens' response** to the forward.
+- **Warren Chan call** → Tue 6/9 or Wed 6/10 (awaiting his pick).
+- **Becky NYBB ask + catch-up** → in person at **XPX Long Island, Fri 6/5**.
+- **Matt Luczyk thank-you** → scheduled send **8am Thu 6/4**.
+- **June 16 Summit NJ owner event (Matt)** → Kay holding calendar; attend TBD.
+
+## Open Loops (Session 3 → carry to tomorrow)
+- Jeff's reply on the Carlos/Renue intro (gates the separate Carlos email).
+- Warren Chan call day confirmation (6/9 vs 6/10).
+- 8 stale Gmail drafts (>48h, legacy 19c8x IDs) pending audit.
+- Carried from earlier sessions: Q1 investor update (~5 dark-investor delivery), aerospace coffee wk of Jun 8, DealsX wind-down (mid-June), office ask, bookkeeper path, May P&L ingestion.

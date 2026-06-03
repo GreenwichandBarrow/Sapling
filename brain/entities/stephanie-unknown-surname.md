@@ -28,3 +28,4 @@ tags:
 
 ## Relationship Notes
 - 2026-05-16: Stub created from Kay's ACG engagement note. Awaiting Laura's introduction; name + surname + firm to be confirmed at that point.
+- 2026-06-03: **RESOLVED — name mix-up.** Kay's "I believe her name was Stephanie" attached the wrong name to the lawyer. At the 6/3 lunch Laura delivered both intros: the lawyer / super-connector is **[[entities/randi-mason-morrison-cohen|Randi Mason]]** (Morrison Cohen), and the separate BankUnited colleague is **[[entities/stephanie-tetreault-bankunited|Stephanie Tetreault]]**. This stub is superseded by those two entities; retained only to preserve the link trail.

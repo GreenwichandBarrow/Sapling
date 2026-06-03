@@ -144,3 +144,37 @@ Remote-control working session: a run of external email drafts (all Kay-sent, no
 - Warren Chan call day confirmation (6/9 vs 6/10).
 - 8 stale Gmail drafts (>48h, legacy 19c8x IDs) pending audit.
 - Carried from earlier sessions: Q1 investor update (~5 dark-investor delivery), aerospace coffee wk of Jun 8, DealsX wind-down (mid-June), office ask, bookkeeper path, May P&L ingestion.
+
+---
+
+# Session 4 — School of Hard Knocks → real-estate-services niche exploration
+
+Long strategy/exploration session: mined the "School of Hard Knocks" interview show for business models that fit a search fund, walked it down to real-estate **services**, ran 8 niches through the screen onto the Industry Research Tracker, and surfaced a load-bearing strategic reframe about *why* good niches keep failing.
+
+## Decisions (Session 4)
+
+### Strategic reframe — margins + multiples are the binding gates
+- **APPROVE (Kay's own realization):** the "multiples wall" is universal — anywhere a business is genuinely good (healthy margins + recurring + good industry), PE has already bid the multiple past a search-fund-winnable price. **Margins and multiples are the binding screen gates, NOT fragmentation or recurring revenue** (necessary, not sufficient). This is *why* insurance and pest "aren't proving out" — same wall, different address. See [[feedback-margins-multiples-binding-gates]].
+- **Two-discounts framework:** a business is cheap enough to win only if (a) too small for PE, or (b) too ugly for PE. Thin margins ruled out as the acceptable "ugly." Rare third discount = a legacy-minded owner who takes less for the right buyer (needle in haystack → leans toward broker/opportunistic channel).
+- **Margin bar CLARIFIED:** normal margins **10-15%+** (floor ~10%), NOT a hard 15%+. "Thin" = sub-10% grind.
+- **Operating model CLARIFIED:** **thesis-driven for conferences** (physical presence scarce → thesis picks the rooms; women-led edge is in-person), **opportunistic for broker/intermediary** (thesis = filter on inbound, not a search target), parallel, **less thesis than the past year**. See [[camilla-approach-jun2026]] update.
+- Classic real estate (owning/developing) = no fit; real-estate **services** = where buyable businesses live, but most hit the wall.
+
+### Niche dispositions — NOT decided (Kay + analyst own it)
+- **REVERSED overstep:** Claude tabled HOA/Property-Mgmt/Facilities off a casual "these don't sound like good ways in" remark; Kay corrected ("you and I don't decide where it goes — my analyst and I review"). Reverted all three to **New - Pending Review**, deleted a premature "rejected" memory. See [[feedback-dont-execute-decisions-from-chat]].
+- All 8 niches + luxury-retail-FM lead remain **pending Kay + analyst review** — no table/advance/kill made.
+
+## Actions Taken (Session 4)
+- **UPDATED** Industry Research Tracker WEEKLY REVIEW — appended 8 niches, all "New - Pending Review": HOA Mgmt (2.45), Property Mgmt (2.35), Facilities Mgmt (2.40), Building Energy & Emissions Compliance (2.55), Reserve Study/Building Engineering (2.35), Submetering & Utility Billing (2.15), Permit Expediting & Zoning (1.95), Lease Admin & RE Back-Office (1.90). Rollback snapshots saved to `brain/context/rollback-snapshots/`.
+- **CREATED** Drive deliverables (one-pager .pptx + scorecard .xlsx) in WEEKLY REVIEW folders for the 5 RE-service niches (energy compliance, reserve studies, submetering, permit expediting, lease admin).
+- **CREATED** reports `brain/outputs/2026-06-03-niche-intelligence-report.md` (HOA) + `2026-06-03-niche-intelligence-report-re-services-5niche.md`; chatroom `brain/traces/agents/2026-06-03-niche-intelligence.md`.
+- **CREATED** memory `feedback_speak_in_kays_plain_voice`, `feedback_dont_execute_decisions_from_chat`, `project_hoa_management_candidate`, `feedback_margins_multiples_binding_gates`. **DELETED** premature `feedback_real_estate_services_mgmt_rejected.md`.
+- **RESEARCHED** luxury-retail facilities maintenance: recurring YES for the maintenance-contract model (not buildout/millwork); passes the PE filter as a genuine carve-out (generic retail FM rolled up — Lessen/Divisions — luxury slice still fragmented/independent); caveats = thin/possibly sub-$500M TAM + lifestyle-business scalability + unverified premium margins. Targets: 1 Stop Maintenance, Summit Facility Solutions, Distinct Group.
+
+## Deferred (Session 4)
+- **Luxury-retail-FM → tracker?** Awaiting Kay's "earn a row" decision + deeper NYC firm / women-led mapping. Trigger: Kay says add it.
+- **Building Energy Compliance deeper dive** (NYC firm landscape + women-led angle — IntelliGreen / Valerie Corbett) — offered, pending Kay's go.
+
+## Open Loops (Session 4 → carry to tomorrow)
+- Disposition of all 8 tracker niches (rows 19-26) + luxury-retail-FM — pending Kay + analyst review.
+- HOA open: confirm Guillermo Lavergne's exact HOA angle (management-company vs developer side).

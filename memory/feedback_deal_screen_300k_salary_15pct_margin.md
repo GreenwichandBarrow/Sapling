@@ -11,6 +11,10 @@ Kay's investors told her not to be afraid to go under $2M EBITDA because PE has 
 
 This does NOT abolish the screen — it removes one shortcut. Sub-$2M deals that fail the four gates still get declined. The change is: no auto-reject by size, full underwriting required.
 
+## 2026-06-03 UPDATE — margin floor clarified to ~10% (normal), and MULTIPLES are a co-equal hard gate
+
+Kay clarified the margin bar is **normal margins, 10-15%+** — floor ~10%, comfortable at 15+, NOT a hard 15% requirement. "Thin margins" (the no-go) means sub-~10% grind-to-scale businesses. AND she elevated the **entry multiple to a co-equal hard gate**: a structurally-good business that PE has bid to high multiples (8-14x) is a reject regardless of margins, because it breaks the 35% IRR — the "multiples wall" that stalled insurance and pest. So screen **PE-saturation + entry multiple alongside** the four gates, and lead with it. Full doctrine: [[margins-multiples-binding-gates]].
+
 ## The four-gate screen (apply pre-LOI on every deal)
 
 A target deal must clear ALL four gates simultaneously to proceed past initial screen:

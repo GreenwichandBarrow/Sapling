@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-06-03T14:00:45-04:00",
+  "fetched_at": "2026-06-03T16:30:45-04:00",
   "services": {
-    "linkt": {
+    "claude-api": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
-      "skip_reason": "Browser session required (no API)"
+      "skip_reason": "ANTHROPIC_API_KEY not in env"
     },
     "attio-mcp": {
       "status": "skip",
@@ -25,52 +25,52 @@
       "message": "4 webhooks configured",
       "skip_reason": null
     },
-    "claude-api": {
+    "linkt": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
-      "skip_reason": "ANTHROPIC_API_KEY not in env"
+      "skip_reason": "Browser session required (no API)"
     },
     "vault": {
       "status": "ok",
-      "latency_ms": 36,
-      "message": "1151 markdown files",
+      "latency_ms": 15,
+      "message": "1152 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "error",
-      "latency_ms": 28,
+      "latency_ms": 13,
       "message": "attio-mcp=0 superhuman=0",
       "skip_reason": null
     },
     "launchd": {
       "status": "ok",
-      "latency_ms": 39,
+      "latency_ms": 62,
       "message": "20 timers registered",
-      "skip_reason": null
-    },
-    "apollo": {
-      "status": "ok",
-      "latency_ms": 149,
-      "message": "200 OK",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 188,
+      "latency_ms": 111,
       "message": "authenticated",
       "skip_reason": null
     },
-    "granola": {
+    "apollo": {
       "status": "ok",
-      "latency_ms": 242,
-      "message": "HTTP 405",
+      "latency_ms": 126,
+      "message": "200 OK",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 301,
+      "latency_ms": 226,
       "message": "gh authenticated",
+      "skip_reason": null
+    },
+    "granola": {
+      "status": "ok",
+      "latency_ms": 191,
+      "message": "HTTP 405",
       "skip_reason": null
     }
   }

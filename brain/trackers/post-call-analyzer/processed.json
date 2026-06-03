@@ -396,7 +396,24 @@
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_XcqNWs33vyFKLj.json",
       "slack_posted": true,
       "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_bUaxcsrMLNl2wX",
+      "title": "Abi I Kay",
+      "counterparty": "Abigail Quibilan (StartVirtual)",
+      "processed_at": "2026-06-03T21:15:00+00:00",
+      "vault_call_note": "brain/calls/2026-06-03-abigail-startvirtual-jj-transition.md",
+      "doc_url": "https://docs.google.com/document/d/1G0dATg3-nN4ysSMdxiUYB-YkxY8KhJEEMv-39jDUzK4/edit",
+      "doc_id": "1G0dATg3-nN4ysSMdxiUYB-YkxY8KhJEEMv-39jDUzK4",
+      "attio_notes": {
+        "person_abigail_quibilan": "ea770bad-75e7-4d24-a24e-8d81d9b4ad38",
+        "company_startvirtual": "03ea5ab8-7f46-4a9a-a413-d081b653cee0"
+      },
+      "tasks_staged": 3,
+      "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_bUaxcsrMLNl2wX.json",
+      "slack_posted": true,
+      "detector": "granola-api-rest"
     }
   ],
-  "last_updated": "2026-06-02T17:05:00+00:00"
+  "last_updated": "2026-06-03T21:15:00+00:00"
 }

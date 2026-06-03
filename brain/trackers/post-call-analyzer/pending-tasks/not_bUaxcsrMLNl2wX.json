@@ -1,0 +1,35 @@
+[
+  {
+    "task_text": "Send JJ (Jerome Madrona) 10 AM meeting invite for 2026-06-04",
+    "type": "Action",
+    "project": "JJ Ops",
+    "suggested_day": "Wednesday",
+    "suggested_due_date": "2026-06-04",
+    "notes_with_doc_link": "Time-sensitive — needed before 10am. From Abi/Kay mtg 2026-06-03. Analysis: https://docs.google.com/document/d/1G0dATg3-nN4ysSMdxiUYB-YkxY8KhJEEMv-39jDUzK4/edit",
+    "source_call_id": "not_bUaxcsrMLNl2wX",
+    "source_doc_url": "https://docs.google.com/document/d/1G0dATg3-nN4ysSMdxiUYB-YkxY8KhJEEMv-39jDUzK4/edit",
+    "staged_at": "2026-06-03T21:15:00Z"
+  },
+  {
+    "task_text": "Prepare 3-5 alternative project ideas for JJ before the 10 AM meeting (research, list-building, data tasks he can do asynchronously)",
+    "type": "Prep",
+    "project": "JJ Ops",
+    "suggested_day": "Wednesday",
+    "suggested_due_date": "2026-06-04",
+    "notes_with_doc_link": "Time-sensitive — needed before 10am 2026-06-04. From Abi/Kay mtg 2026-06-03. Analysis: https://docs.google.com/document/d/1G0dATg3-nN4ysSMdxiUYB-YkxY8KhJEEMv-39jDUzK4/edit",
+    "source_call_id": "not_bUaxcsrMLNl2wX",
+    "source_doc_url": "https://docs.google.com/document/d/1G0dATg3-nN4ysSMdxiUYB-YkxY8KhJEEMv-39jDUzK4/edit",
+    "staged_at": "2026-06-03T21:15:00Z"
+  },
+  {
+    "task_text": "After JJ 10am call: confirm whether 30-day notice engagement continues with new scope or is formally terminated",
+    "type": "Decision",
+    "project": "JJ Ops",
+    "suggested_day": "Wednesday",
+    "suggested_due_date": "2026-06-04",
+    "notes_with_doc_link": "Follow-up to JJ meeting on 2026-06-04. From Abi/Kay mtg 2026-06-03. Analysis: https://docs.google.com/document/d/1G0dATg3-nN4ysSMdxiUYB-YkxY8KhJEEMv-39jDUzK4/edit",
+    "source_call_id": "not_bUaxcsrMLNl2wX",
+    "source_doc_url": "https://docs.google.com/document/d/1G0dATg3-nN4ysSMdxiUYB-YkxY8KhJEEMv-39jDUzK4/edit",
+    "staged_at": "2026-06-03T21:15:00Z"
+  }
+]

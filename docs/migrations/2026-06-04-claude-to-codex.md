@@ -46,6 +46,7 @@ Project: `~/projects/Sapling`
 10. Optimize per-job Codex model routing/cost after migration.
 11. Revise migrated skills after cutover to take advantage of Codex-native capabilities.
 12. Post-migration cleanup phase for obsolete Claude-era artifacts.
+13. Neutralize legacy migration-specific naming in future migrations where practical.
 
 ## Migration Matrix
 
@@ -72,6 +73,9 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | target-discovery | Sunday timer + prompt | `run-agent-skill.sh target-discovery phase2-sunday` | 1 | pending | Validator exists; JJ dependency. |
 | Direct script refresh jobs | refresh/probe/export/snapshot scripts | unchanged initially | 1 | pending | Apollo, Attio, JJ snapshot, external probe, weekly export, and weekly snapshot appear agent-free. |
 | post-call-analyzer poll | `scripts/post_call_analyzer_poll.sh` -> `scripts/run-skill.sh post-call-analyzer:on-trigger` | Codex poll trigger or updated script to call `run-agent-skill.sh` | 1 | pending | This direct script still triggers Claude runner internally; cut over with post-call analyzer cluster. |
+| Readiness checker | n/a | `scripts/check-codex-migration-readiness.sh` | 1 | ported | Non-live gate for syntax, hooks, Codex CLI, 1Password key resolution, and synthetic safety checks. |
+| Systemd cutover templates | live user units | `docs/migrations/systemd-codex-templates/README.md` | 1 | ported | Non-live service mapping and controlled cutover procedure; no timers modified yet. |
+| post-call analyzer Codex poller | `scripts/post_call_analyzer_poll.sh` | `scripts/post_call_analyzer_poll.codex.sh` | 1 | ported | Parallel variant launches `run-agent-skill.sh`; live service unchanged until validation. |
 
 ## Safety Requirements
 
@@ -90,6 +94,9 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - `.codex/hooks.json` created with a wrapper script at `.codex/hooks/run-hook.sh`.
 - `scripts/.env.codex` created with a placeholder 1Password reference for `CODEX_API_KEY`.
 - `scripts/run-agent-skill.sh` created as a neutral runner with `AGENT_RUNTIME=codex`.
+- `scripts/check-codex-migration-readiness.sh` created as a non-secret readiness gate.
+- `docs/migrations/systemd-codex-templates/README.md` created with non-live cutover mapping.
+- `scripts/post_call_analyzer_poll.codex.sh` created as a non-live Codex trigger variant.
 - Runner smoke test blocks safely before `codex exec` when `CODEX_API_KEY` is unresolved.
 - Runner uses the supported `codex exec --dangerously-bypass-approvals-and-sandbox` flag for Phase 1 broad permissions on this VPS Codex build.
 - Runner email-send scan is scoped to the active skill and known email-adjacent trigger scripts to avoid false positives from unrelated legacy scripts.
@@ -102,6 +109,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
    - Field: `credential`
    - Expected env reference: `op://GB Server/OpenAI API Key/credential`
 2. Real Codex validation and systemd cutover cannot proceed until `CODEX_API_KEY` resolves.
+3. `post-call-analyzer-poll.service` must not be cut over until the Codex poller variant and analyzer workflow are tested as one cluster.
 
 ## Safety Validation
 
@@ -109,6 +117,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Secret-file hook synthetic test: `cat scripts/.env.launchd` is denied.
 - Runner email safety scan blocks potential send paths before `codex exec`.
 - Runner kill switch path: `~/.config/sapling/disable-codex-scheduled`.
+- `scripts/check-codex-migration-readiness.sh` currently reports `CODEX_API_KEY` unresolved; this is expected until the 1Password item exists.
 
 ## Rollback Policy
 

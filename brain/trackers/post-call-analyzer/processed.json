@@ -430,7 +430,23 @@
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_uJ8NVTccYPOK3o.json",
       "slack_posted": true,
       "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_S1QjnzM5EFfWMP",
+      "title": "Franchising for the ETA Buyer: Resales, Roll-Ups, and Real Deals",
+      "counterparty": "Acquiring Minds webinar (Alex Smersnack / Franzi — no direct counterparty)",
+      "processed_at": "2026-06-04T18:05:00+00:00",
+      "vault_call_note": "brain/calls/2026-06-04-acquiring-minds-franchising-webinar.md",
+      "doc_url": "https://docs.google.com/document/d/1L-7Nm5in9O5IQuh_sCX5B5NzL6EFf1h46AfBlfvyh1I/edit",
+      "doc_id": "1L-7Nm5in9O5IQuh_sCX5B5NzL6EFf1h46AfBlfvyh1I",
+      "attio_notes": {},
+      "attio_failed": true,
+      "attio_skip_reason": "webinar/educational session — Kay is sole attendee, no external counterparty to match in Attio",
+      "tasks_staged": 3,
+      "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_S1QjnzM5EFfWMP.json",
+      "slack_posted": true,
+      "detector": "granola-api-rest"
     }
   ],
-  "last_updated": "2026-06-04T17:08:00+00:00"
+  "last_updated": "2026-06-04T18:05:00+00:00"
 }

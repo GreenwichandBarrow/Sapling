@@ -114,8 +114,8 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 1. Replace the current value in the 1Password item referenced by `scripts/.env.codex` with a valid OpenAI API key:
    - Vault: `GB Server`
    - Item: `OpenAI API Key`
-   - Field: `current-password`
-   - Expected env reference: `op://GB Server/OpenAI API Key/current-password`
+   - Field: `password`
+   - Expected env reference: `op://GB Server/OpenAI API Key/password`
 2. Real Codex validation and systemd cutover cannot proceed until the OpenAI API smoke test succeeds. The current value resolves but returned `401 Unauthorized`.
 3. `post-call-analyzer-poll.service` must not be cut over until the Codex poller variant and analyzer workflow are tested as one cluster.
 

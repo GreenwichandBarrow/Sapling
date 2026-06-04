@@ -14,6 +14,10 @@ tags:
   - topic/camilla-approach
   - company/dealsx
   - company/startvirtual
+  - person/matt-luczyk
+  - company/peapack-private
+  - topic/niche-intelligence
+  - topic/morning-briefing
   - status/done
 ---
 

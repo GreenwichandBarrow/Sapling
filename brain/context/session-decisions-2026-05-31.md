@@ -1,7 +1,7 @@
 ---
 date: 2026-05-31
 type: context
-title: "Session Decisions — 2026-05-31 (Sun, weekly task-tracker rebuild: daily-focus themes, 15→20 slot template grow, Week→day-tab flow; build-week first rollover + canonical-file divergence; PLUS ETA-database niche review → 3 niches queued for Tue + runway/income exploration)"
+title: "Session Decisions — 2026-05-31 (Sun, weekly task-tracker rebuild: daily-focus themes, 15→20 slot template grow, Week→day-tab flow; build-week first rollover + canonical-file divergence; PLUS ETA-database niche review → 3 niches queued for Tue + runway/income exploration; PLUS recovered /socrates: AI-CAC → cohort/5-tier framework → insurance build-vs-buy → expert→owner-introducer sourcing fix)"
 tags:
   - date/2026-05-31
   - context
@@ -23,6 +23,11 @@ tags:
   - topic/gmail-filter-add
   - topic/harrison-coaching
   - topic/scheduled-skill-cost
+  - topic/socrates
+  - topic/revenue-quality-cohort
+  - topic/insurance
+  - topic/sourcing-method
+  - topic/ai-cac
   - status/done
 ---
 
@@ -95,3 +100,31 @@ Long Sunday session, almost entirely Kay's personal task-tracker. First real Pha
 ### Open Loops (recovered session)
 6. **Standalone-vs-bundle default for deal-flow filters — UNANSWERED.** Claude asked whether standalone-per-email should become the default for deal-flow going forward (vs. bundling); Kay did not answer. Treat the Sam Curcio standalone as a one-off until Kay generalizes. → candidate `evolve` input for **gmail-filter-add**.
 7. **meeting-brief-manager skipped the Harrison coaching call — UNANSWERED.** It classified the 6/1 10am coaching call as internal/vendor and generated no brief (only the 11am Eric Mendelsohn external brief landed). Claude offered to fix the classifier so future Harrison/coaching calls auto-generate; Kay did not answer. → `evolve` candidate for **meeting-brief-manager**. (Partially resolves Open Loop #3 above: the Harrison 10am brief now exists, hand-built; James Emden 12:30pm status still unconfirmed.)
+
+---
+
+## Recovered Session 2 — 5/31 evening `/socrates` (ETA database → AI-CAC → cohort/5-tier framework → insurance build-vs-buy)
+
+> The `/socrates` continuation that ran AFTER the 5/31 goodnight (resumed via `/remote-control`) and was lost across repeated SSH broken-pipe disconnects before its own goodnight could run. Kay re-pasted the transcript on 2026-06-03 and asked to run `/goodnight` so nothing was lost. The earlier income-question + ETA-database analysis are already captured above (Niche ideas + Runway/income sections); this block covers only the strategic socrates thread. Confirmed 5/31-state: aerospace treated as no-live-lead (the 6/3 Matt Luczyk widow deal had not yet surfaced), references the 5/31 DealsX numbers and the just-queued 3 niches.
+
+### Decisions / convergence (mostly DISCUSS — exploratory, ended unconverged on a disconnect)
+- **DISCUSS (no decision):** Kay's posture on AI-inflated client-acquisition cost (~10x in sales-driven services like commercial cleaning, pest) is **defensive, not offensive** — she is NOT betting she can "fix" the sales engine with AI ("I am not so bold as to think that I can"; she hasn't even cracked it for her own sourcing yet). So the working screen is **channeled/feeder demand** (regulatory mandate, insurance-directed, government) over CAC-exposed sales-driven demand.
+- **Convergence (rederived existing doctrine):** the niche question is backwards — **niches are the OUTPUT of warm owner-layer network access**, not an input. Kay reached [[feedback_industry_is_output_of_network]] from a new road (AI/CAC). Sourcing feeders named: female network, Stern + Cornell alumni, fashion/luxury, art, insurance. Caveat logged: **fashion/art/luxury are feeders, not niches** (no pure-B2C buy; use the network to reach B2B picks-and-shovels serving that world) AND they collide with Kay's **no-dress-up / no-high-travel** filter ([[project_kay_lifestyle_dress_filter]]).
+- **DECISION (sourcing fix, actionable):** the real blocker is that Kay's network produces **expert/advisor intros, not owner intros**. Convert owner-level contacts (e.g., the specialty-insurance owner who called unprompted) from **lead-reviewers into owner-introducers** — ask for ONE named owner, not a lead review. Kay agreed she can make that ask ("It won't be luxury"). → trace [[traces/2026-05-31-convert-expert-contacts-to-owner-introducers]]; memory [[project_insurance_pivot_strategy]] updated.
+- **DISCUSS (no decision):** **Insurance build-vs-buy.** Kay floated starting a brokerage from scratch (tolerable travel/dress "for a few years," but "not my long-term goal"). Verdict surfaced: **math favors buying** (acquire the seed, 4-6yr hold) over building from zero (no cash flow for years, the CAC battle she won't bet on, ~decade runway). Pull toward build = conviction + ready partner, not the math. No firm decision. → [[project_insurance_pivot_strategy]].
+- **Surfaced (durable framework, NOT yet adopted):** the **Pacific Lake Mid-Search Summit (5/19 Boston, Will)** revenue-quality **5-tier spectrum** (contractual recurring → non-contractual recurring → repeat → actuarial → transactional), contract-penalty caveat ("3yr w/ 30-day out = 30-day contract"), retention floor (94-96% gross / 100%+ net), **cohort analysis = DD default**, and Market-Update close-rate cooling (54% 2022 cohort → 30s 2023). Resolves the CAC question: screen by **contract structure/tier, not industry label**; first-call proxy = "% revenue under contract + cancellation term." → new memory [[project_revenue_quality_cohort_framework]]. **Open: adopt as a formal buy-box layer?** (Kay to decide.)
+
+### Calibration (Kay's strong feedback — `evolve` candidates, not edited here)
+- **`/socrates` regurgitated Kay's lived experience.** Kay: "you are regurgitating everything I lived through this past year." Root cause: socrates questioned without preloading relevant memory ([[project_network_contacts]], active-thesis files). The system HAD all of it ([[project_art_storage_industry_insight]], [[project_insurance_pivot_strategy]], [[project_kay_lifestyle_dress_filter]], [[feedback_instrument_vs_lived_knowledge]]) and failed to surface it. → `evolve` **socrates**: preload thesis/network memory BEFORE questioning. ([[feedback_instrument_vs_lived_knowledge]] already exists for this failure mode.)
+- **`/socrates` must not draft emails / execute.** Claude offered a drafted ask-email mid-session; Kay: "I don't want you to draft an email. You think I need Socrates to write an email?" Reinforces existing socrates framing-only rule (violated). → `evolve` **socrates**.
+
+### Actions Taken (recovered session 2)
+- **CREATED** memory [[project_revenue_quality_cohort_framework]] (Pacific Lake 5-tier / cohort / CAC convergence) + MEMORY.md index line.
+- **UPDATED** memory [[project_insurance_pivot_strategy]] — build-vs-buy deliberation + experts-not-owners blocker + introducer-conversion.
+- **CREATED** trace [[traces/2026-05-31-convert-expert-contacts-to-owner-introducers]].
+
+### Open Loops (recovered session 2 → still live)
+8. **Adopt the 5-tier revenue-quality / cohort / retention-floor framework as a formal buy-box layer?** — Kay to decide; would change `deal-evaluation` demands + give a one-line first-call screen.
+9. **Insurance build-vs-buy** — unresolved; lean = acquire the seed, not build cold.
+10. **Make the owner-introducer ask** to the specialty-insurance owner contact (convert reviewer → introducer). Kay's to send.
+11. **`evolve` socrates** — preload thesis/network memory before questioning; reaffirm framing-only (no drafting).

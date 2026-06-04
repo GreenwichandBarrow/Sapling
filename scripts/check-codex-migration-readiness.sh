@@ -29,6 +29,36 @@ check_file ".codex/hooks/run-hook.sh"
 check_file "scripts/run-agent-skill.sh"
 check_file "scripts/.env.codex"
 
+scheduled_coverage=(
+  "target-discovery:phase2-sunday|.agents/skills/target-discovery/headless-phase2-prompt.md|scripts/validate_phase2_integrity.py"
+  "weekly-tracker:friday|.agents/skills/weekly-tracker/headless-friday-prompt.md|scripts/validate_weekly_tracker_integrity.py"
+  "nightly-tracker-audit:nightly|.agents/skills/nightly-tracker-audit/headless-nightly-prompt.md|scripts/validate_nightly_tracker_audit_integrity.py"
+  "relationship-manager:daily|.agents/skills/relationship-manager/headless-daily-prompt.md|scripts/validate_relationship_manager_integrity.py"
+  "jj-operations:sunday-prep|.agents/skills/jj-operations/headless-sunday-prep-prompt.md|scripts/validate_jj_operations_integrity.py"
+  "launchd-debugger:daily|.agents/skills/launchd-debugger/headless-daily-prompt.md|scripts/validate_launchd_debugger_integrity.py"
+  "niche-intelligence:tuesday|.agents/skills/niche-intelligence/headless-tuesday-prompt.md|scripts/validate_niche_intelligence_integrity.py"
+  "email-intelligence:|.agents/skills/email-intelligence/headless-weekday-prompt.md|scripts/validate_email_intelligence_integrity.py"
+  "deal-aggregator:|.agents/skills/deal-aggregator/headless-morning-prompt.md|scripts/validate_deal_aggregator_integrity.py"
+  "deal-aggregator:--afternoon|.agents/skills/deal-aggregator/headless-afternoon-prompt.md|scripts/validate_deal_aggregator_integrity.py"
+  "deal-aggregator:--digest-mode|.agents/skills/deal-aggregator/headless-friday-prompt.md|scripts/validate_deal_aggregator_integrity.py"
+  "conference-discovery:sunday|.agents/skills/conference-discovery/headless-sunday-prompt.md|scripts/validate_conference_discovery_integrity.py"
+  "post-call-analyzer:on-trigger|.agents/skills/post-call-analyzer/headless-on-trigger-prompt.md|scripts/validate_post_call_analyzer_integrity.py"
+)
+
+for row in "${scheduled_coverage[@]}"; do
+  IFS='|' read -r workflow prompt validator <<< "$row"
+  if [ -f "$prompt" ]; then
+    pass "$workflow headless prompt exists"
+  else
+    fail "$workflow headless prompt is missing: $prompt"
+  fi
+  if [ -f "$validator" ]; then
+    pass "$workflow validator exists"
+  else
+    fail "$workflow validator is missing: $validator"
+  fi
+done
+
 if bash -n scripts/run-agent-skill.sh; then
   pass "scripts/run-agent-skill.sh syntax"
 else

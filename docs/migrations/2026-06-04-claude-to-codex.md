@@ -77,6 +77,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | Systemd cutover templates | live user units | `docs/migrations/systemd-codex-templates/README.md` | 1 | ported | Non-live service mapping and controlled cutover procedure; no timers modified yet. |
 | post-call analyzer Codex poller | `scripts/post_call_analyzer_poll.sh` | `scripts/post_call_analyzer_poll.codex.sh` | 1 | ported | Parallel variant launches `run-agent-skill.sh`; live service unchanged until validation. |
 | Systemd cutover tool | live user units | `scripts/prepare-codex-systemd-cutover.sh` | 1 | ported | Supports dry-run generation and guarded `--apply` by workflow group; refuses apply if readiness fails. |
+| Scheduled prompt/validator coverage | old runner + systemd `POST_RUN_CHECK` | runner defaults + readiness checks | 1 | ported | Known scheduled headless prompts and validators are checked before cutover; runner has defaults for manual validation safety. |
 
 ## Safety Requirements
 
@@ -102,6 +103,8 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Runner smoke test blocks safely before `codex exec` when `CODEX_API_KEY` is unresolved.
 - Runner uses the supported `codex exec --dangerously-bypass-approvals-and-sandbox` flag for Phase 1 broad permissions on this VPS Codex build.
 - Runner email-send scan is scoped to the active skill and known email-adjacent trigger scripts to avoid false positives from unrelated legacy scripts.
+- Runner now defaults known scheduled workflow validators for manual Codex runs even when systemd has not injected `POST_RUN_CHECK`.
+- Readiness checker verifies known scheduled headless prompt files and validator files exist.
 
 ## Current Blockers
 

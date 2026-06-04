@@ -98,17 +98,23 @@ fi
 HEADLESS_PROMPT_FILE=""
 case "$SKILL_NAME:$SKILL_ARGS" in
   "target-discovery:phase2-sunday")
-    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/target-discovery/headless-phase2-prompt.md" ;;
+    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/target-discovery/headless-phase2-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_phase2_integrity.py\"}" ;;
   "weekly-tracker:friday")
-    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/weekly-tracker/headless-friday-prompt.md" ;;
+    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/weekly-tracker/headless-friday-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_weekly_tracker_integrity.py\"}" ;;
   "nightly-tracker-audit:nightly")
-    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/nightly-tracker-audit/headless-nightly-prompt.md" ;;
+    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/nightly-tracker-audit/headless-nightly-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_nightly_tracker_audit_integrity.py\"}" ;;
   "relationship-manager:daily")
-    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/relationship-manager/headless-daily-prompt.md" ;;
+    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/relationship-manager/headless-daily-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_relationship_manager_integrity.py\"}" ;;
   "jj-operations:sunday-prep")
-    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/jj-operations/headless-sunday-prep-prompt.md" ;;
+    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/jj-operations/headless-sunday-prep-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_jj_operations_integrity.py\"}" ;;
   "launchd-debugger:daily")
-    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/launchd-debugger/headless-daily-prompt.md" ;;
+    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/launchd-debugger/headless-daily-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_launchd_debugger_integrity.py\"}" ;;
   "launchd-debugger:on-failure")
     HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/launchd-debugger/headless-on-failure-prompt.md" ;;
   "niche-intelligence:tuesday")

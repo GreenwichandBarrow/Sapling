@@ -72,9 +72,49 @@ Long single-thread working session: budget/runway reconciliation, DealsX contrac
 - **Codify Camilla approach as defaults** → revisit ~late June after run-in.
 - **May P&L from [[entities/anthony-bacagan|Anthony]] (StartVirtual)** imminent → will refine runway anchor (currently Apr-30 close).
 
+---
+
+# Session 2 — Chief-of-Staff workflow (morning briefing → Matt meeting → niche queueing; ran into early 6/3)
+
+Separate later session same calendar day: `/goodmorning` workflow, the [[entities/matt-luczyk|Matt Luczyk]] coffee, three Kay-directed niches queued for the Tuesday niche-intel run, and a self-storage solicitation triage. Logged under 6/2 (the day the work belongs to) per the 5/31 recovered-session precedent.
+
+## Decisions (session 2)
+
+### Matt Luczyk coffee (6/2 11am, Starbucks 444 Madison) — captured
+- **CREATED** call note [[calls/2026-06-02-matt-luczyk]] + Attio notes on Matt (person) + [[entities/peapack-private|Peapack]] (company). Brief [[briefs/2026-06-02-matt-luczyk]] generated pre-meeting.
+- Verified Matt's "Minding Your Business" TV claim is REAL (NJBIA, host Bob Considine) — not fabricated; link shared with Kay.
+- Matt's offers logged: benchmark/market-multiples resource, **June 16 Peapack owner event (Summit NJ)**, **insurance-industry intro**, **warranty-company list** (feeds warranty-pipe niche), Joe Vanore relationship (sends small deals to Joe), bad experience w/ Axial. His aerospace client sold low to email buyers → deal may break + come back to Kay.
+
+### Three Kay-directed niches → niche-intel Tuesday run
+- **DIRECTED (Kay)** — Queued 3 niches for tonight's run: carpet installation (commercial RE + multifamily, NJ); veteran-benefits consulting; warranty plumbing/pipe (insurance-fed, no lead-gen). Written to inbox as Kay-directed/high-confidence with her exact framing.
+- niche-intel 22:30 run processed all 3 but **surfaced-not-advanced** them under standard excludes (carpet + warranty = construction/trades soft-exclude; VA-benefits = CA/federal fee-ban + B2C). It advanced its own 2 instead → **ranks 17-18: Fine-Art Logistics Services (2.39, PROMISING) + Insurance FMO/IMO Distribution (2.20, probe-gated)**. Report [[outputs/2026-06-02-niche-intelligence-report]], validator passed.
+- **OPEN — RECOMMENDED (unresolved)** force all 3 onto WEEKLY REVIEW as New-Pending-Review with verdicts attached (VA-benefits with the regulatory kill-reason documented). Kay invoked /goodnight before answering → carries to analyst call.
+
+### Self-storage / Bolt Storage accredited-investor solicitation
+- **PASS** (filed as market intel) — Real distress-driven *acquisition* window in self-storage (maturity wall, $5-8B PE dry powder) but soft operating fundamentals (street rates flat/-, occ recovering) and **wrong vehicle**: passive LP into a sponsor fund contradicts Kay = operator-CEO not allocator ([[user-kay-ceo-deal-1-not-allocator|CEO-not-allocator]]); commodity self-storage RE ≠ operating-business buy-box. Declined the invite, kept the trend as intel.
+
+## Actions Taken (session 2)
+- **CREATED** — [[calls/2026-06-02-matt-luczyk]], [[briefs/2026-06-02-matt-luczyk]], entity [[entities/matt-luczyk]]; Attio notes on Matt + Peapack records.
+- **CREATED** — 3 niche-signal inbox items (carpet / VA-benefits / warranty-pipe), then **UPDATED** each to Kay-directed / high-confidence / high-urgency with exact framing.
+- **CREATED** — email-scan-results + relationship-status artifacts for 2026-06-02 (morning signal-gathering).
+- niche-intelligence Tuesday run completed (2 niches advanced, ranks 17-18; one-pagers + scorecards in Drive).
+
+## Deferred (session 2)
+- **Force-advance decision on the 3 directed niches** → Kay decides at the 6/3 analyst call (carpet + warranty as live discussion, VA-benefits with kill-reason).
+- **Codify "Kay-directed niche overrides niche-intel auto-exclude"** (exclude → row-flag, not silent drop) → calibration candidate, pending Kay confirm. See trace [[traces/2026-06-02-kay-directed-niche-overrides-auto-exclude]].
+- **Matt's warranty-company list** → awaiting from Matt; feeds warranty-pipe niche provider review.
+- **June 16 Peapack owner event** (Summit NJ) → attend? (recommend yes — warm owners, in-geo).
+- **Matt's insurance-industry intro** → accept? (recommend yes — specialty-insurance interest, default-yes on intros).
+- **Aerospace deal** via Matt → passive watch (may come back if buyers' deal breaks).
+
 ## Open Loops (carry to tomorrow)
 - DealsX cancellation prep (mid-June) + engaged-target list + draft notice.
 - Office summer-pause ask (draft ready).
 - Cheaper bookkeeper path.
 - DealsX May-billing verification.
 - May P&L ingestion → runway refresh.
+- **3 Kay-directed niches** — force-advance/keep/kill decision at 6/3 analyst call (currently NOT on tracker).
+- **Calibration:** confirm whether to harden niche-intel so explicit Kay-directed niches override auto-exclude.
+- **Aerospace Defense draft to Jeff Stevens** (created 5/29, 4d unsent) — send / revise / kill.
+- **Morning-briefing items unresolved** — Eric/Archveo intermediary nurture (+ June 24 happy hour); orphaned Drive-folder cleanup + Securitas dedup + never-contacted insurance batch; women-priority nurtures (Kristina Marcigliano 161d, Sarah de Blasio 130d).
+- Matt follow-ups: June 16 event RSVP, insurance intro acceptance, warranty list intake.

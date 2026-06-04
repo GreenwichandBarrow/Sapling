@@ -135,6 +135,12 @@ else
   fail "CODEX_API_KEY is missing or unresolved through 1Password"
 fi
 
+if [ -n "${CODEX_API_KEY:-}" ] && [[ "${CODEX_API_KEY:-}" == sk-* ]]; then
+  pass "CODEX_API_KEY has expected OpenAI key prefix"
+else
+  fail "CODEX_API_KEY resolves but does not have expected OpenAI key prefix"
+fi
+
 if [ -e "${CODEX_SCHEDULED_KILL_SWITCH:-$HOME/.config/sapling/disable-codex-scheduled}" ]; then
   warn "Codex scheduled kill switch is currently enabled"
 else

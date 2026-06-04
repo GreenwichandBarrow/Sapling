@@ -76,6 +76,12 @@ if [ -z "${CODEX_API_KEY:-}" ] || [[ "${CODEX_API_KEY:-}" == op://* ]]; then
   exit 2
 fi
 
+if [[ "${CODEX_API_KEY:-}" != sk-* ]]; then
+  log "BLOCKED: CODEX_API_KEY resolves, but does not look like an OpenAI API key."
+  post_failure "BLOCKED: Codex scheduled job $SKILL_NAME cannot run because CODEX_API_KEY does not look like an OpenAI API key."
+  exit 2
+fi
+
 export GOG_ACCOUNT="${GOG_ACCOUNT:-kay.s@greenwichandbarrow.com}"
 TODAY="${TODAY:-$(date +%Y-%m-%d)}"
 export TODAY

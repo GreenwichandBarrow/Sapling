@@ -57,7 +57,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | Doctrine | `CLAUDE.md` | `AGENTS.md` | 1 | ported | Direct port with runtime terminology adapted. |
 | Skills | `.claude/skills` | `.agents/skills` | 1/2/3 | ported | Full copy; tiering still evidence-based. |
 | Hooks | `.claude/hooks` + `.claude/settings.json` | `.codex/hooks` + `.codex/hooks.json` | 1 | ported | Must-have safety hooks copied; requires Codex hook validation/trust. |
-| Codex env | `scripts/.env.launchd` | `scripts/.env.codex` | 1 | blocked | Placeholder `CODEX_API_KEY` op reference needs confirmed 1Password item/field. |
+| Codex env | `scripts/.env.launchd` | `scripts/.env.codex` | 1 | blocked | 1Password reference resolves, but stored value failed Codex/OpenAI auth smoke test. |
 | Runner | `scripts/run-skill.sh` | `scripts/run-agent-skill.sh` | 1 | ported | New runner created; old runner preserved. |
 | calibration-workflow | systemd + `run-skill.sh calibration-workflow` | `run-agent-skill.sh calibration-workflow` | 1 | pending | Active timer Thu 23:00. |
 | conference-discovery | systemd + headless Sunday prompt | `run-agent-skill.sh conference-discovery sunday` | 1 | pending | Active timer Sun 21:00; validator exists. |
@@ -111,12 +111,12 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 
 ## Current Blockers
 
-1. Confirm/create the 1Password item referenced by `scripts/.env.codex`:
+1. Replace the current value in the 1Password item referenced by `scripts/.env.codex` with a valid OpenAI API key:
    - Vault: `GB Server`
    - Item: `OpenAI API Key`
    - Field: `current-password`
    - Expected env reference: `op://GB Server/OpenAI API Key/current-password`
-2. Real Codex validation and systemd cutover cannot proceed until `CODEX_API_KEY` resolves.
+2. Real Codex validation and systemd cutover cannot proceed until the OpenAI API smoke test succeeds. The current value resolves but returned `401 Unauthorized`.
 3. `post-call-analyzer-poll.service` must not be cut over until the Codex poller variant and analyzer workflow are tested as one cluster.
 
 ## Safety Validation

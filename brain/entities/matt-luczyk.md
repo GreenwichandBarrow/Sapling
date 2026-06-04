@@ -7,6 +7,7 @@ company: "[[entities/peapack-private]]"
 role: SVP / Head of Corporate Advisory, Peapack Private Investment Banking
 email: mluczyk@peapackprivate.com
 attio_id: c6030292-53c1-4c3c-80f8-9873300e323d
+attio_synced_at: 2026-06-04T07:00:00Z
 tags:
   - date/2026-06-02
   - entity

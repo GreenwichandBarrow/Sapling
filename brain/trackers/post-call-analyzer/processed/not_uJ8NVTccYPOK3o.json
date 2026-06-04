@@ -1,0 +1,12 @@
+{
+  "id": "not_uJ8NVTccYPOK3o",
+  "title": "Sam I Kay",
+  "created_at": "2026-06-04T15:14:10.002Z",
+  "updated_at": "2026-06-04T16:00:08.291Z",
+  "owner": {
+    "name": "Kay Schneider",
+    "email": "kay.s@greenwichandbarrow.com"
+  },
+  "queued_at": "2026-06-04T13:00:45-04:00",
+  "detector": "granola-api-rest"
+}

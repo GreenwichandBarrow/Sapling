@@ -1,0 +1,33 @@
+{
+  "source_call_id": "not_uJ8NVTccYPOK3o",
+  "source_doc_url": "https://docs.google.com/document/d/1SpAculIvtQrwktgKSqukJ5zJy34LT3k4MEb_hNEmER4/edit",
+  "counterparty": "Sam Singh (DealsX)",
+  "call_date": "2026-06-04",
+  "staged_at": "2026-06-04T16:05:00Z",
+  "tasks": [
+    {
+      "task_text": "Create personalization doc for DealsX — educational background, geographic connections, alma mater, personal details for outreach personalization; send to Sam before campaign relaunch",
+      "type": "Action",
+      "project": "DealsX Outreach",
+      "suggested_day": "Tomorrow",
+      "suggested_due_date": "2026-06-05",
+      "notes_with_doc_link": "From Sam Singh/DealsX 6/4 mtg — DealsX is waiting on this before building personalized campaigns. Analysis: https://docs.google.com/document/d/1SpAculIvtQrwktgKSqukJ5zJy34LT3k4MEb_hNEmER4/edit"
+    },
+    {
+      "task_text": "Review DealsX sample outreach drafts when Sam sends — check against voice rules and brand standards, approve before campaigns launch",
+      "type": "Review",
+      "project": "DealsX Outreach",
+      "suggested_day": "This week",
+      "suggested_due_date": null,
+      "notes_with_doc_link": "From Sam Singh/DealsX 6/4 mtg — Sam will send samples before launching new low-volume personalized campaigns. Analysis: https://docs.google.com/document/d/1SpAculIvtQrwktgKSqukJ5zJy34LT3k4MEb_hNEmER4/edit"
+    },
+    {
+      "task_text": "Review DealsX targeted lists when received — spot-check top 10 + bottom 10 per sub-niche (pest, specialty insurance, art storage); approve before outreach launches",
+      "type": "Review",
+      "project": "DealsX Outreach",
+      "suggested_day": "This week",
+      "suggested_due_date": null,
+      "notes_with_doc_link": "From Sam Singh/DealsX 6/4 mtg — Sam building 50-70 company sub-niche lists; Kay spot-checks before campaigns start. Analysis: https://docs.google.com/document/d/1SpAculIvtQrwktgKSqukJ5zJy34LT3k4MEb_hNEmER4/edit"
+    }
+  ]
+}

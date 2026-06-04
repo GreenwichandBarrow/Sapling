@@ -61,7 +61,9 @@ fi
 
 # Load 1Password service account token and resolve Codex env refs.
 # shellcheck disable=SC1091
+set -a
 source "$HOME/.config/op-sa-token.env" >/dev/null 2>&1 || true
+set +a
 # shellcheck disable=SC1091
 source "$WORKDIR/scripts/load-env.sh"
 set -a

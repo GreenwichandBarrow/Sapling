@@ -75,6 +75,21 @@ else
   warn "scripts/post_call_analyzer_poll.codex.sh not present; post-call analyzer cutover is not prepared"
 fi
 
+if [ -e scripts/audit-email-no-send.sh ]; then
+  if bash -n scripts/audit-email-no-send.sh; then
+    pass "scripts/audit-email-no-send.sh syntax"
+  else
+    fail "scripts/audit-email-no-send.sh syntax"
+  fi
+  if scripts/audit-email-no-send.sh >/dev/null 2>&1; then
+    pass "email no-send audit"
+  else
+    fail "email no-send audit"
+  fi
+else
+  warn "scripts/audit-email-no-send.sh not present"
+fi
+
 if python3 -m json.tool .codex/hooks.json >/dev/null 2>&1; then
   pass ".codex/hooks.json parses"
 else
@@ -106,7 +121,9 @@ fi
 
 # Resolve only existence/non-placeholder status. Never print the secret value.
 set +u
+set -a
 source "$HOME/.config/op-sa-token.env" >/dev/null 2>&1 || true
+set +a
 source "$ROOT/scripts/load-env.sh" >/dev/null 2>&1 || true
 set -a
 load_env "$ROOT/scripts/.env.codex" >/dev/null 2>&1 || true

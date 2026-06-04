@@ -48,18 +48,13 @@ gog gmail get <messageId>
 gog gmail url <threadId>
 gog gmail thread modify <threadId> --add STARRED --remove INBOX
 
-# Send
-gog gmail send --to a@b.com --subject "Hi" --body "Hello"
-gog gmail send --to a@b.com --subject "Hi" --body-file ./msg.txt
-gog gmail send --to a@b.com --subject "Hi" --body-html "<p>Hello</p>"
-gog gmail send --reply-to-message-id <msgId> --quote --to a@b.com --subject "Re: Hi" --body "Reply"
-gog gmail send --to a@b.com --subject "Hi" --body-html "<p>Hello</p>" --track
+# Sending is disabled for Sapling agents.
+# Create drafts only; Kay reviews and sends manually.
 
 # Drafts
 gog gmail drafts list
 gog gmail drafts create --to a@b.com --subject "Draft" --body "Body"
 gog gmail drafts update <draftId> --subject "Updated" --body "New body"
-gog gmail drafts send <draftId>
 
 # Labels
 gog gmail labels list

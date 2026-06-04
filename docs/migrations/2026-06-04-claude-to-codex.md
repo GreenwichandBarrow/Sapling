@@ -78,6 +78,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | post-call analyzer Codex poller | `scripts/post_call_analyzer_poll.sh` | `scripts/post_call_analyzer_poll.codex.sh` | 1 | ported | Parallel variant launches `run-agent-skill.sh`; live service unchanged until validation. |
 | Systemd cutover tool | live user units | `scripts/prepare-codex-systemd-cutover.sh` | 1 | ported | Supports dry-run generation and guarded `--apply` by workflow group; refuses apply if readiness fails. |
 | Scheduled prompt/validator coverage | old runner + systemd `POST_RUN_CHECK` | runner defaults + readiness checks | 1 | ported | Known scheduled headless prompts and validators are checked before cutover; runner has defaults for manual validation safety. |
+| Email no-send audit | migrated skill docs/scripts | `scripts/audit-email-no-send.sh` | 1 | ported | Blocks executable-looking Gmail send commands while allowing draft-only policy text. |
 
 ## Safety Requirements
 
@@ -105,14 +106,16 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Runner email-send scan is scoped to the active skill and known email-adjacent trigger scripts to avoid false positives from unrelated legacy scripts.
 - Runner now defaults known scheduled workflow validators for manual Codex runs even when systemd has not injected `POST_RUN_CHECK`.
 - Readiness checker verifies known scheduled headless prompt files and validator files exist.
+- `gogcli` migrated reference docs no longer include email-send examples; draft-only examples remain.
+- `scripts/audit-email-no-send.sh` added as a durable no-send scan for migrated skills/scripts.
 
 ## Current Blockers
 
 1. Confirm/create the 1Password item referenced by `scripts/.env.codex`:
    - Vault: `GB Server`
    - Item: `OpenAI API Key`
-   - Field: `credential`
-   - Expected env reference: `op://GB Server/OpenAI API Key/credential`
+   - Field: `current-password`
+   - Expected env reference: `op://GB Server/OpenAI API Key/current-password`
 2. Real Codex validation and systemd cutover cannot proceed until `CODEX_API_KEY` resolves.
 3. `post-call-analyzer-poll.service` must not be cut over until the Codex poller variant and analyzer workflow are tested as one cluster.
 
@@ -126,6 +129,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - `scripts/prepare-codex-systemd-cutover.sh --apply` refuses live service edits while readiness fails.
 - Systemd dry-run generated Codex service variants under `docs/migrations/systemd-codex-templates/generated/` without modifying live units.
 - `prepare-codex-systemd-cutover.sh --apply --group health-monitor` was tested while readiness failed and correctly refused to edit `~/.config/systemd/user/health-monitor.service`.
+- Email no-send audit passes after removing executable send examples from migrated `gogcli` references.
 
 ## Rollback Policy
 

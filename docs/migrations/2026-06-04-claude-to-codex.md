@@ -76,6 +76,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | Readiness checker | n/a | `scripts/check-codex-migration-readiness.sh` | 1 | ported | Non-live gate for syntax, hooks, Codex CLI, 1Password key resolution, and synthetic safety checks. |
 | Systemd cutover templates | live user units | `docs/migrations/systemd-codex-templates/README.md` | 1 | ported | Non-live service mapping and controlled cutover procedure; no timers modified yet. |
 | post-call analyzer Codex poller | `scripts/post_call_analyzer_poll.sh` | `scripts/post_call_analyzer_poll.codex.sh` | 1 | ported | Parallel variant launches `run-agent-skill.sh`; live service unchanged until validation. |
+| Systemd cutover tool | live user units | `scripts/prepare-codex-systemd-cutover.sh` | 1 | ported | Supports dry-run generation and guarded `--apply` by workflow group; refuses apply if readiness fails. |
 
 ## Safety Requirements
 
@@ -97,6 +98,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - `scripts/check-codex-migration-readiness.sh` created as a non-secret readiness gate.
 - `docs/migrations/systemd-codex-templates/README.md` created with non-live cutover mapping.
 - `scripts/post_call_analyzer_poll.codex.sh` created as a non-live Codex trigger variant.
+- `scripts/prepare-codex-systemd-cutover.sh` created to generate dry-run service variants and later apply validated workflow groups only.
 - Runner smoke test blocks safely before `codex exec` when `CODEX_API_KEY` is unresolved.
 - Runner uses the supported `codex exec --dangerously-bypass-approvals-and-sandbox` flag for Phase 1 broad permissions on this VPS Codex build.
 - Runner email-send scan is scoped to the active skill and known email-adjacent trigger scripts to avoid false positives from unrelated legacy scripts.
@@ -118,6 +120,9 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Runner email safety scan blocks potential send paths before `codex exec`.
 - Runner kill switch path: `~/.config/sapling/disable-codex-scheduled`.
 - `scripts/check-codex-migration-readiness.sh` currently reports `CODEX_API_KEY` unresolved; this is expected until the 1Password item exists.
+- `scripts/prepare-codex-systemd-cutover.sh --apply` refuses live service edits while readiness fails.
+- Systemd dry-run generated Codex service variants under `docs/migrations/systemd-codex-templates/generated/` without modifying live units.
+- `prepare-codex-systemd-cutover.sh --apply --group health-monitor` was tested while readiness failed and correctly refused to edit `~/.config/systemd/user/health-monitor.service`.
 
 ## Rollback Policy
 

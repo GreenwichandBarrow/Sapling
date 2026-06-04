@@ -178,3 +178,20 @@ Long strategy/exploration session: mined the "School of Hard Knocks" interview s
 ## Open Loops (Session 4 → carry to tomorrow)
 - Disposition of all 8 tracker niches (rows 19-26) + luxury-retail-FM — pending Kay + analyst review.
 - HOA open: confirm Guillermo Lavergne's exact HOA angle (management-company vs developer side).
+
+---
+
+# Session 5 — Sarah Rowell 1:1 call logging + Michael thank-you draft review
+
+Short maintenance session: logged Kay's takeaways from the unscheduled 5/22 Sarah Rowell 1:1 into the vault, and reviewed a one-line thank-you reply.
+
+## Actions Taken (Session 5)
+- **UPDATED** [[entities/sarah-rowell]] — appended a 2026-05-22 Relationship Notes entry with Sarah's ten coaching takeaways (keep it local; lean into woman-in-a-man's-world edge; build broker relationships; lean into meetings/associations; say yes to all river-guide owner meetings + all intros; brokers can be declined on fit; be opportunistic with female intros; follow gut; use edge + forge relationships).
+- **CREATED** [[calls/2026-05-22-sarah-rowell-1on1]] — manual call note (`source: manual`, `classification_type: partner`) capturing the same takeaways, linked to prep brief [[briefs/2026-05-22-sarah-rowell-1on1]]. Both artifacts already committed.
+- **DRAFTED** (chat only, reactive-mode) — light grammar smoothing on Kay's thank-you reply to **Michael** ("not only… but he's *also*" + comma flow). Verdict: send-ready, no voice/rule issues (niceties present, no em dashes, plain text). Offered address verification before send.
+
+## Decisions (Session 5)
+- No APPROVE/REJECT meeting litmus. Sarah's takeaways **ratify existing doctrine** ([[feedback_bias_yes_on_introductions]], [[feedback_women_network_priority]], [[feedback_river_guides_not_intermediaries]], broker selectivity) rather than introduce new rules → no memory delta.
+
+## Open Loops (Session 5)
+- None new. (Michael reply is Kay's to send; no follow-up owned by the system.)

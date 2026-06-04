@@ -1,0 +1,47 @@
+niche: Estate Management Companies
+slug: estate-management
+version: 1.0.0
+last_updated: 2026-04-20
+
+keywords:
+  - estate manager
+  - estate management
+  - household manager
+  - butler
+  - private service
+  - family office operations
+  - residential concierge
+  - UHNW residential
+  - private residence
+  - estate operations
+  - DEMA
+  - Private Service Institute
+
+negative_keywords:
+  - estate planning (legal/tax — different niche)
+  - estate sale (liquidation)
+  - real estate agent
+
+customer_segment_keywords:
+  - UHNW
+  - HNW
+  - family office
+  - private client
+  - billionaire
+  - Forbes 400
+  - luxury real estate
+  - Palm Beach
+  - Aspen
+  - Hamptons
+  - Southampton
+  - Bridgehampton
+  - Nantucket
+  - Greenwich
+
+pe_platforms_to_exclude: []
+  # Estate management is too unconsolidated for meaningful PE platforms — very fragmented
+
+notes: |
+  Industry is fragmented with no pure-play M&A specialists. Succession signals come via placement agencies
+  (Mahler Private Staffing, Starkey International) and family-office executive recruiters (Linda Mack / Mack International).
+  David Gonzalez's Private Service Institute podcast IS the industry map.

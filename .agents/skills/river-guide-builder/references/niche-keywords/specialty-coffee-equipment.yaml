@@ -1,0 +1,53 @@
+niche: Specialty Coffee Equipment Service
+slug: specialty-coffee-equipment
+version: 1.0.0
+last_updated: 2026-04-20
+
+keywords:
+  - specialty coffee
+  - espresso machine
+  - coffee equipment
+  - barista equipment
+  - authorized service
+  - authorized dealer
+  - La Marzocco
+  - Nuova Simonelli
+  - Victoria Arduino
+  - Gruppo Cimbali
+  - Slayer
+  - Sanremo
+  - Astoria
+  - Rancilio
+  - SCA
+  - Specialty Coffee Association
+
+negative_keywords:
+  - Starbucks
+  - Dunkin
+  - Nespresso consumer
+  - Keurig
+  - drip coffee
+  - instant coffee
+
+customer_segment_keywords:
+  - specialty coffee shop
+  - third wave coffee
+  - fine dining
+  - Michelin
+  - luxury hotel
+  - five-star hotel
+  - boutique hotel
+  - Marriott Luxury
+  - Four Seasons
+  - Aman
+  - hotel F&B
+
+pe_platforms_to_exclude:
+  - Franchise Equity Partners
+  - 7 Brew Coffee (PE-acquired drive-thru)
+  - Roark Capital (restaurant PE)
+  - Blackstone (restaurant deals)
+
+notes: |
+  International-OEM authorized-dealer moat. Italian HQ OEMs cannot run direct US metro service.
+  OEM US leadership (La Marzocco USA GM, Nuova Simonelli USA service manager) = highest intro leverage.

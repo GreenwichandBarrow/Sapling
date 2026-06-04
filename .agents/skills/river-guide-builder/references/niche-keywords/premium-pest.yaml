@@ -1,0 +1,57 @@
+niche: Premium Pest Management
+slug: premium-pest
+version: 1.0.0
+last_updated: 2026-04-20
+
+keywords:
+  - pest control
+  - pest management
+  - exterminator
+  - extermination
+  - HACCP
+  - food safety
+  - FSMA
+  - IPM
+  - integrated pest management
+  - fumigation
+  - termite
+  - mosquito
+  - wildlife control
+  - rodent control
+  - commercial pest
+
+negative_keywords:
+  - pesticide manufacturer
+  - chemical distributor
+  - agricultural pesticide
+
+customer_segment_keywords:
+  - luxury hotel
+  - five-star hotel
+  - fine dining
+  - Michelin
+  - food processing
+  - food manufacturing
+  - hospitality
+  - luxury retail
+  - museum
+  - distribution center
+  - restaurant group
+
+pe_platforms_to_exclude:
+  - Rentokil
+  - Rollins
+  - Orkin
+  - Terminix
+  - Anticimex
+  - EQT Partners
+  - PestCo
+  - Thompson Street Capital
+  - Greenix
+  - Certus
+  - TopBuild
+  - HomeTeam Pest Defense
+
+notes: |
+  Customer base = food-regulated + luxury commercial. HACCP/FSMA compliance is the moat.
+  Bank-side / insurance / M&A advisor network: PCO Bookkeepers (Dan Gordon), Potomac Pest Control Group (Paul Giannamore), NPMA (Dominique Stumpf), PCT (Jerry Mix).

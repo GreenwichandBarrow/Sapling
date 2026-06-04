@@ -1,0 +1,64 @@
+niche: Specialty Insurance Brokerage
+slug: specialty-insurance
+version: 1.0.0
+last_updated: 2026-04-20
+
+keywords:
+  - specialty insurance
+  - fine art insurance
+  - collectibles insurance
+  - jewelry insurance
+  - wine insurance
+  - classic auto insurance
+  - aviation insurance
+  - yacht insurance
+  - equine insurance
+  - cyber UHNW
+  - HNW personal lines
+  - private client insurance
+  - MGA
+  - wholesale insurance
+  - WSIA
+  - PRMA
+  - TMPAA
+
+negative_keywords:
+  - auto insurance (mass-market)
+  - home insurance (commodity)
+  - health insurance
+  - life insurance (commodity)
+  - small commercial P&C (generic)
+
+customer_segment_keywords:
+  - HNW
+  - UHNW
+  - family office
+  - art collector
+  - gallery
+  - museum
+  - auction house
+  - private aviation
+  - yacht owner
+  - classic car collector
+  - wine collector
+  - jewelry dealer
+  - fine art dealer
+
+pe_platforms_to_exclude:
+  - Hub International (specialty-encroaching competitor)
+  - ALKEME
+  - BroadStreet Partners
+  - Hilb Group
+  - Carlyle Group (Hilb sponsor)
+  - King Risk Partners
+  - Arthur J. Gallagher
+  - AssuredPartners
+  - Acrisure
+  - Patriot Growth
+  - Risk Strategies (has G&B warm intros via Wise — exclude LEADERSHIP not relationship contacts)
+
+notes: |
+  G&B Rank 1 niche. Specialty/MGA premium rule: 25%+ specialty-revenue mix = 4.0-6.0x multiple premium.
+  Cyber UHNW 27% CAGR. Sica Fletcher = #1 insurance M&A advisor ($19B+ since 2014).
+  Q4 2026 conference chain: WSIA Marketplace Oct 11-14 San Diego → PRMA Summit Oct 18-20 Indianapolis → TMPAA Summit Oct 19-21 Scottsdale.
+  NY = avoid domicile (no reciprocity, 40% higher compliance).

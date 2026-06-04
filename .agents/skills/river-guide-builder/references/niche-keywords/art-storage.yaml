@@ -1,0 +1,53 @@
+niche: Art Storage & Related Services
+slug: art-storage
+version: 1.0.0
+last_updated: 2026-04-20
+
+keywords:
+  - art storage
+  - fine art storage
+  - art handling
+  - art transport
+  - fine art logistics
+  - art crating
+  - art installation
+  - conservation storage
+  - museum storage
+  - freeport
+  - climate-controlled storage
+  - PACCIN
+  - ICEFAT
+
+negative_keywords:
+  - self-storage
+  - climate-controlled (generic consumer)
+  - mini-storage
+
+customer_segment_keywords:
+  - auction house
+  - Sotheby's
+  - Christie's
+  - Phillips
+  - Bonhams
+  - museum
+  - gallery
+  - Zwirner
+  - Gagosian
+  - Hauser & Wirth
+  - Pace Gallery
+  - Acquavella
+  - collector
+  - art advisor
+  - art dealer
+  - fine art insurance
+
+pe_platforms_to_exclude:
+  - Acumen (G&B DNC)
+  - Uovo (G&B DNC)
+  - Hangman (G&B DNC)
+  - Crozier (Iron Mountain subsidiary)
+
+notes: |
+  Industry has ~12-15 national operators — too concentrated for dedicated M&A/CPA specialists.
+  Auction-house logistics leads + museum registrars + fine art insurance brokers ARE the deal-flow proximity layer.
+  Kay has prior LOI history in this niche; folder contains "135 Top Art World Professionals.docx" reference.

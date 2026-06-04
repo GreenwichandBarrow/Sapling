@@ -1,0 +1,74 @@
+niche: Vertical SaaS for Luxury & High-Value Asset Service Industries
+slug: vertical-saas-luxury
+version: 1.0.0
+last_updated: 2026-04-20
+
+# UMBRELLA THESIS — river-guide matches will be BROADER than per-sub-niche versions.
+# Kay accepted umbrella-level noise in exchange for coverage breadth (per 2026-04-20 session).
+
+keywords:
+  - vertical SaaS
+  - vertical software
+  - hospitality PMS
+  - property management system (luxury context)
+  - yacht management software
+  - fleet management (luxury/yacht)
+  - private aviation software
+  - FBO software
+  - club management software
+  - family office software
+  - Addepar
+  - Mews
+  - Cloudbeds
+  - Jonas Club
+  - Voly
+  - FL3XX
+
+negative_keywords:
+  - enterprise SaaS (Salesforce, Oracle, SAP)
+  - consumer SaaS
+  - generic vertical (healthcare, education, government)
+
+customer_segment_keywords:
+  - luxury hospitality
+  - boutique hotel
+  - private residence club
+  - private club
+  - country club
+  - yacht charter
+  - private jet
+  - family office
+  - HNW
+  - UHNW
+  - fine art
+  - auction
+  - equine
+
+pe_platforms_to_exclude:
+  - Vista Equity Partners
+  - Thoma Bravo
+  - Insight Partners
+  - JMI Equity
+  - Volition Capital
+  - Stripes
+  - Pamlico
+
+# Sub-niches (user may pick one or more for per-sub-niche river-guide passes)
+sub_niches:
+  - yacht-fleet-management
+  - private-aviation-operations
+  - estate-property-software
+  - fine-art-collectibles-software
+  - equine-operations
+  - luxury-hospitality-pms
+  - private-clubs
+  - luxury-transportation-dispatch
+  - HNW-family-office-operations
+  - specialty-luxury-retail-backoffice
+
+notes: |
+  Umbrella thesis scores 2.72/3.0. Coheres as ADMISSION POLICY (what qualifies), NOT as ACTIVATION TRIGGER.
+  10 H / 27 M / 5 L on today's river-guide run = M-heavy because few individuals cover 5+ sub-niches.
+  Well-mapped sub-niches: hospitality PMS, private clubs, yacht/fleet, private aviation, HNW family-office.
+  Thin sub-niches: specialty luxury retail, luxury transportation, equine, fine-art/collectibles software, estate/property software.
+  Software Equity Group (Allen Cinzori, Brad Weekes, Kris Beible) = top-volume specialty M&A boutique.

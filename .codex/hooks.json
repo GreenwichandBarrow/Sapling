@@ -1,0 +1,74 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".codex/hooks/run-hook.sh session_start",
+            "timeout": 35
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Write|Edit|Read|apply_patch|mcp__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".codex/hooks/run-hook.sh pre_tool_use",
+            "timeout": 35,
+            "statusMessage": "Checking Sapling safety policy"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash|Write|Edit|apply_patch|mcp__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".codex/hooks/run-hook.sh post_tool_use",
+            "timeout": 35,
+            "statusMessage": "Reviewing Sapling tool output"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".codex/hooks/run-hook.sh stop",
+            "timeout": 25
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".codex/hooks/run-hook.sh pre_compact",
+            "timeout": 25
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".codex/hooks/run-hook.sh user_prompt_submit",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

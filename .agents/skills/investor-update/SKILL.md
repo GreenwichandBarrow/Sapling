@@ -42,7 +42,7 @@ curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KE
 **Forbidden in investor deliverables:** writing "Attio MCP unauthenticated / disconnected" as a data-availability caveat without first running the op-env resolve + REST health-check above. Investor decks must not contain phantom-outage caveats.
 </credentials>
 
-**Template + example loading invariant:** Every call-prep subagent invocation MUST load `templates/{mode}.md` AND the most recent file in `examples/{mode}/` as the format reference BEFORE drafting. Do not fall through to a generic template. If the example folder is empty, stop and ask Kay for a golden.
+**Template + example loading invariant:** Every call-prep subagent invocation MUST load `templates/{mode}.md` AND the most recent file in `examples/{mode}/` as the format reference BEFORE drafting. For monthly/biweekly call prep, the current format is numbered situational sections, underlined `Insight:` lines, and tight 2-4 line bodies. Do not create thematic-wall briefs and do not create a `Questions for {Investor}` section; questions stay in Kay's head. If an older example conflicts with these rules, the template rules win until a newer Kay-approved example replaces it. If the example folder is empty, stop and ask Kay for a golden.
 </objective>
 
 <mode_routing>
@@ -60,7 +60,7 @@ curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KE
 - Guillermo Lavergne → biweekly
 - BK Growth, Saltoun Capital, Tom Jackson, Clayton Sachs, 6 others → quarterly only
 
-**Invariant enforcement:** every subagent invocation MUST load `templates/{mode}.md` AND `examples/{mode}/{most-recent-file}.md` BEFORE drafting. Fail the run if either is unreadable. Do not fall through to a generic template.
+**Invariant enforcement:** every subagent invocation MUST load `templates/{mode}.md` AND `examples/{mode}/{most-recent-file}.md` BEFORE drafting. Fail the run if either is unreadable. Do not fall through to a generic template. Monthly/biweekly briefs must format-check against the numbered situational-section pattern and must not include a standalone questions section.
 </mode_routing>
 
 <essential_principles>

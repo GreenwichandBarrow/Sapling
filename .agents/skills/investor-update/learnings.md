@@ -4,6 +4,8 @@ Active learnings feed back into SKILL.md and templates at calibration time. Clea
 
 ## Active learnings
 
-### 2026-05-28 — Biweekly/monthly format = numbered situational sections, not thematic walls
+None.
 
-Biweekly and monthly investor briefs use numbered situational sections + underlined `Insight:` lines + tight 2-4 line bodies. NOT thematic walls. NOT a "Questions for {investor}" section — questions live in Kay's head. Source: 2026-05-28 Guillermo 5/29 prep rejected for thematic-wall format; April 9, 2026 Guillermo doc canonized as golden. Apply: every monthly/biweekly run loads the most-recent example in `examples/{mode}/` AS the format spec, not just as reference.
+## Promoted learnings
+
+- 2026-05-28 learning promoted on 2026-06-05: monthly/biweekly call prep now requires numbered situational sections, `Insight:` lines, tight 2-4 line bodies, and no standalone Questions section. Older monthly examples that conflict are historical until replaced by a newer Kay-approved example.

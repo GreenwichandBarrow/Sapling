@@ -89,7 +89,8 @@ TRACE_PATHS: {trace_paths}
 SYSTEM_INVENTORY:
 - Skills: .agents/skills/*/SKILL.md
 - Hooks: .codex/hooks/*.py
-- CLAUDE.md files: CLAUDE.md, brain/CLAUDE.md, .claude/CLAUDE.md
+- Codex doctrine files: AGENTS.md, brain/AGENTS.md if present
+- Legacy doctrine reference files: CLAUDE.md, brain/CLAUDE.md, .claude/CLAUDE.md
 - Schemas: schemas/vault/*.yaml
 
 CHATROOM: {chatroom_path}
@@ -113,7 +114,8 @@ IMPORTANCE SCORING:
 TARGET FORMAT:
 - skill:{name} = edit existing skill
 - skill:new:{name} = propose new skill (creates inbox item)
-- claude-md = edit CLAUDE.md
+- agents-md = edit AGENTS.md
+- claude-md = legacy reference only during the monitoring window
 - hook:{name} = edit existing hook
 - hook:new:{name} = propose new hook (creates inbox item)
 - schema:{name} = edit schema
@@ -169,7 +171,8 @@ TRACE_PATHS: {trace_paths}
 SYSTEM_INVENTORY:
 - Skills: .agents/skills/*/SKILL.md
 - Hooks: .codex/hooks/*.py
-- CLAUDE.md files: CLAUDE.md, brain/CLAUDE.md, .claude/CLAUDE.md
+- Codex doctrine files: AGENTS.md, brain/AGENTS.md if present
+- Legacy doctrine reference files: CLAUDE.md, brain/CLAUDE.md, .claude/CLAUDE.md
 - Schemas: schemas/vault/*.yaml
 
 CHATROOM: {chatroom_path}
@@ -183,7 +186,7 @@ YOUR TASKS:
 2. Review system inventory for:
    - Skills with overlapping purposes
    - Hooks that add friction without value
-   - CLAUDE.md sections that are too long or duplicative
+   - AGENTS.md sections that are too long or duplicative
    - Features that aren't used
 3. Challenge additions if they add unnecessary complexity
 4. Propose consolidations, removals, or simplifications
@@ -245,7 +248,8 @@ TRACE_PATHS: {trace_paths}
 SYSTEM_INVENTORY:
 - Skills: .agents/skills/*/SKILL.md
 - Hooks: .codex/hooks/*.py
-- CLAUDE.md files: CLAUDE.md, brain/CLAUDE.md, .claude/CLAUDE.md
+- Codex doctrine files: AGENTS.md, brain/AGENTS.md if present
+- Legacy doctrine reference files: CLAUDE.md, brain/CLAUDE.md, .claude/CLAUDE.md
 
 CHATROOM: {chatroom_path}
 - Read at start to see what others have posted

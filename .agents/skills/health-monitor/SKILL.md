@@ -60,8 +60,8 @@ Tests every external API and integration. Each check: can we authenticate and ge
 Checks scheduled jobs, usage limits, and webhook health.
 
 **Launchd Jobs:**
-Expected jobs (this list is the source of truth — must match CLAUDE.md's
-Scheduled Skills table; missing-plist for any skill here = RED):
+Expected jobs (this list is the source of truth — must match `AGENTS.md` and
+`docs/scheduled-skills.md`; missing-plist for any skill here = RED):
 - `com.greenwich-barrow.deal-aggregator` (Mon-Fri 6am ET)
 - `com.greenwich-barrow.deal-aggregator-afternoon` (Mon-Fri 2pm ET)
 - `com.greenwich-barrow.deal-aggregator-friday` (Fri evening)
@@ -82,13 +82,13 @@ launchctl list | grep greenwich
 ```
 - GREEN: exit code 0, ran within expected schedule
 - YELLOW: exit code 0 but last run > 2x expected interval; OR single non-zero exit in last 7 days
-- RED: non-zero exit code (like 126 = permission error); OR 2+ consecutive failed runs; OR missing plist for a skill listed in CLAUDE.md's scheduled skills table
+- RED: non-zero exit code (like 126 = permission error); OR 2+ consecutive failed runs; OR missing plist for a skill listed in `AGENTS.md` / `docs/scheduled-skills.md`
 
 **Consecutive-failure escalation (critical):**
 Slack notifies on individual fails, but repeated failures get lost in the noise. For each scheduled skill, grep the last 7 days of logs for `exit: [1-9]` — if 2+ consecutive runs failed, surface as RED in the morning briefing with the skill name, fail count, and error excerpt. Do not wait for a third fail or for Kay to notice the Slack pattern.
 
 **Plist coverage audit:**
-Cross-reference `launchctl list | grep greenwich` against the scheduled-skills table in CLAUDE.md. Any skill listed in CLAUDE.md but missing from launchctl = RED (never deployed or silently unloaded).
+Cross-reference `launchctl list | grep greenwich` against `AGENTS.md` and `docs/scheduled-skills.md`. Any scheduled skill listed there but missing from launchctl/systemd = RED (never deployed or silently unloaded).
 
 On RED: tail the last 50 lines of the log file for error context:
 ```bash

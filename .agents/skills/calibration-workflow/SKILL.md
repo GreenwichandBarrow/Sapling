@@ -1,6 +1,6 @@
 ---
 name: calibration-workflow
-description: Analyze decision traces and calibrate the system to your preferences. Proposes targeted improvements to skills, CLAUDE.md, and workflows based on patterns in your decisions. Use periodically or after accumulating decision traces.
+description: Analyze decision traces and calibrate the system to your preferences. Proposes targeted improvements to skills, AGENTS.md, and workflows based on patterns in your decisions. Use periodically or after accumulating decision traces.
 # WARNING: 2.8x over archetype cap; refactor pending per item 2.
 archetype: router
 context_budget:
@@ -129,7 +129,8 @@ python3 .claude/scripts/list-unreviewed-traces.py [date_filter]
 **System Inventory (paths only, agents read on-demand):**
 - Skills: `.agents/skills/*/SKILL.md`
 - Hooks: `.codex/hooks/*.py`
-- CLAUDE.md files: `CLAUDE.md`, `brain/CLAUDE.md`, `.claude/CLAUDE.md`
+- Codex doctrine files: `AGENTS.md`, `brain/AGENTS.md` if present
+- Legacy doctrine files: `CLAUDE.md`, `brain/CLAUDE.md`, `.claude/CLAUDE.md` remain reference-only during the monitoring window
 - Schemas: `schemas/vault/*.yaml`
 - **SOP:** `G&B Weekly Operating Schedule` in Google Drive (MANAGER DOCUMENTS / AI OPERATIONS). This is the master operating document showing team roles, daily deliverables, notification schedule, and event-driven workflows. Calibration agents MUST review this when proposing changes — any improvement that changes a deliverable, schedule, or notification must update the SOP as part of the change.
   - Drive folder ID: `1F98mmZy6I89YBA9GT_OrOum1Hn4wu9SG`
@@ -534,7 +535,7 @@ If creature is set (user ran /onboard):
 ║  Traces: 8 processed · 3 applied                     ( 🔥 )      ║
 ║                                                       \_/        ║
 ║  ✓ calibration-workflow: Add evolution stages                    ║
-║  ✓ CLAUDE.md: Update querying docs                               ║
+║  ✓ AGENTS.md: Update querying docs                               ║
 ║                                                                  ║
 ║  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  ║
 ║  [████░░░░░░░░░░░░░░░░] 8/10 to Hatchling                        ║
@@ -550,7 +551,7 @@ If creature is set (user ran /onboard):
 ║  Traces: 12 processed · 4 applied                    (o  o)      ║
 ║                                                     (  🔥  )     ║
 ║  ✓ calibration-workflow: Add evolution stages        \    /      ║
-║  ✓ CLAUDE.md: Update querying docs                    \  /       ║
+║  ✓ AGENTS.md: Update querying docs                    \  /       ║
 ║  ✓ today skill: Fix date formatting                              ║
 ║                                                                  ║
 ║  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  ║
@@ -570,7 +571,7 @@ If creature is set (user ran /onboard):
 ║  Changes: 6 applied                             /    ||    \     ║
 ║                                                ( 🔥  ||  🔥 )     ║
 ║  ✓ calibration-workflow: Refactor              \    ||    /      ║
-║  ✓ CLAUDE.md: Major update                      \   ||   /       ║
+║  ✓ AGENTS.md: Major update                      \   ||   /       ║
 ║  ✓ onboard: Add new creature                     \  ||  /        ║
 ║  ✓ today: Performance fix                     ~~~~ ETERNAL ~~~~  ║
 ║  ✓ client-context: Bug fix                                       ║
@@ -592,7 +593,7 @@ If no creature (user hasn't run /onboard):
 ║  Traces: 8 processed · 3 applied                                 ║
 ║                                                                  ║
 ║  ✓ calibration-workflow: Add evolution stages                    ║
-║  ✓ CLAUDE.md: Update querying docs                               ║
+║  ✓ AGENTS.md: Update querying docs                               ║
 ║                                                                  ║
 ║  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  ║
 ║  [████░░░░░░░░░░░░░░░░] 8/10 to next stage                       ║

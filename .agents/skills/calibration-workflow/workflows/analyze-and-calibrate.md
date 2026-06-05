@@ -49,7 +49,10 @@ skills:
   - .agents/skills/*/SKILL.md
 hooks:
   - .codex/hooks/*.py
-claude_md:
+codex_doctrine:
+  - AGENTS.md
+  - brain/AGENTS.md (if exists)
+legacy_doctrine_reference_only:
   - CLAUDE.md
   - brain/CLAUDE.md
   - .claude/CLAUDE.md (if exists)
@@ -130,8 +133,11 @@ Format for agent prompts - show ITEMS not just traces:
 **Hooks ({count}):**
 {list of hook paths}
 
-**CLAUDE.md files:**
-{list of claude.md paths}
+**Codex doctrine files:**
+{list of AGENTS.md paths}
+
+**Legacy doctrine reference files:**
+{list of CLAUDE.md paths}
 
 **Schemas ({count}):**
 {list of schema paths}
@@ -187,7 +193,7 @@ TASKS:
 1. Read ALL traces thoroughly
 2. Identify gaps that would have prevented issues
 3. Check current inventory for coverage
-4. Propose new skills, hooks, CLAUDE.md changes
+4. Propose new skills, hooks, and AGENTS.md changes
 5. Post findings to chatroom
 6. Post -> READY when complete
 
@@ -309,7 +315,7 @@ Proposals fall into two categories:
 
 **Direct changes (apply in calibration):**
 - Edit existing skill
-- Add to CLAUDE.md
+- Add to AGENTS.md
 - Modify hook
 - Update schema
 
@@ -665,7 +671,7 @@ Traces marked as reviewed:
 
 To rollback: git revert HEAD
 
-🤖 Generated with [Codex](https://claude.com/claude-code)
+Generated with Codex
 
 Co-Authored-By: Codex <noreply@anthropic.com>
 EOF

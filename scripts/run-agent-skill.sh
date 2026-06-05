@@ -123,7 +123,7 @@ HEADLESS_PROMPT_FILE=""
 case "$SKILL_NAME:$SKILL_ARGS" in
   "target-discovery:phase2-sunday")
     HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/target-discovery/headless-phase2-prompt.md"
-    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_phase2_integrity.py\"}" ;;
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_phase2_integrity.py\" --date \"$TODAY\"}" ;;
   "weekly-tracker:friday")
     HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/weekly-tracker/headless-friday-prompt.md"
     POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_weekly_tracker_integrity.py\"}" ;;

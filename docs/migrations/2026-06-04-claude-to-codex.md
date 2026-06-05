@@ -64,13 +64,13 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | deal-aggregator cluster | morning/afternoon/friday timers + headless prompts | `run-agent-skill.sh deal-aggregator` variants | 1 | cutover | Morning Codex pilot wrote the daily artifact, posted 1 new deal, passed validator, and all three live services now use `run-agent-skill.sh`. |
 | email-intelligence | weekday timer + headless prompt | `run-agent-skill.sh email-intelligence` | 1 | cutover | Codex pilot completed with no send path used, wrote `brain/context/email-scan-results-2026-06-05.md`, passed `validate_email_intelligence_integrity.py`, and live systemd service now uses `run-agent-skill.sh`. |
 | health-monitor | weekly timer | `run-agent-skill.sh health-monitor` | 1 | cutover | Codex pilot completed, wrote `brain/trackers/health/2026-06-04-health.md`, validated artifact, posted Slack per RED/YELLOW rule, and live systemd service now uses `run-agent-skill.sh`. |
-| jj-operations | Sunday timer + headless prompt | `run-agent-skill.sh jj-operations:sunday-prep` | 1 | pending | Validator exists. |
+| jj-operations | Sunday timer + headless prompt | `run-agent-skill.sh jj-operations:sunday-prep` | 1 | cutover | Validator passed against week of 2026-06-01; live service now uses `run-agent-skill.sh`. Observe Sunday 2026-06-07 Codex run. |
 | launchd-debugger | daily/on-failure prompts | `run-agent-skill.sh launchd-debugger` variants | 1 | cutover | Daily Codex pilot completed after scanner hardening; live systemd service now uses `run-agent-skill.sh`. |
 | niche-intelligence | Tuesday timer + headless prompt | `run-agent-skill.sh niche-intelligence:tuesday` | 1 | pending | Validator exists; dependency on last30days noted in old runner. |
 | nightly-tracker-audit | nightly timer + prompt | `run-agent-skill.sh nightly-tracker-audit:nightly` | 1 | cutover | Codex validation completed after runner inherited `op-env.sh`; live systemd service now uses `run-agent-skill.sh`. |
 | post-call-analyzer | poll script + triggered prompt | `run-agent-skill.sh post-call-analyzer:on-trigger` | 1 | cutover | Codex poller pilot completed with 0 queued notes; live poll service now uses `post_call_analyzer_poll.codex.sh`. Analyzer trigger has Codex prompt/validator coverage but did not run on a fresh queued note during the pilot. |
 | relationship-manager | weekday timer + prompt | `run-agent-skill.sh relationship-manager:daily` | 1 | cutover | Claude run passed on 2026-06-05; Codex runner now has same-day idempotency skip for valid artifacts; live service uses `run-agent-skill.sh relationship-manager:daily`. |
-| target-discovery | Sunday timer + prompt | `run-agent-skill.sh target-discovery phase2-sunday` | 1 | pending | Validator exists; JJ dependency. |
+| target-discovery | Sunday timer + prompt | `run-agent-skill.sh target-discovery phase2-sunday` | 1 | cutover | Validator moved to `.codex/hooks`, uses pool-only check with explicit `--date`, and passed against 2026-05-31 pool; live service now uses `run-agent-skill.sh`. |
 | Direct script refresh jobs | refresh/probe/export/snapshot scripts | unchanged initially | 1 | pending | Apollo, Attio, JJ snapshot, external probe, weekly export, and weekly snapshot appear agent-free. |
 | post-call-analyzer poll | `scripts/post_call_analyzer_poll.sh` -> `scripts/run-skill.sh post-call-analyzer:on-trigger` | `scripts/post_call_analyzer_poll.codex.sh` -> `run-agent-skill.sh post-call-analyzer:on-trigger` | 1 | cutover | Live poll service now uses the Codex poller; zero-queue pilot passed. Fresh queued-note analyzer run still needs observation. |
 | Readiness checker | n/a | `scripts/check-codex-migration-readiness.sh` | 1 | ported | Non-live gate for syntax, hooks, Codex CLI, 1Password key resolution, and synthetic safety checks. |
@@ -181,8 +181,6 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 
 ### Intentionally left on Claude for safety
 
-- `target-discovery-sunday.service`: recurring validator/date-anchor race remains; do not cut over until deterministic validation is fixed or a Sunday-cluster pilot passes.
-- `jj-operations-sunday.service`: depends on the target-discovery/JJ pool artifact cluster; keep with the Sunday cluster until validated together.
 - `conference-discovery.service`: mutates the Conference Pipeline sheet; prompt has snapshot/validator safeguards, but no live Codex sheet-mutation pilot was run overnight.
 - `niche-intelligence.service`: writes Drive/Sheets and depends on research sources; future Tuesday workflow remains pending a supervised or dry-run-equivalent Codex pilot.
 - `calibration-workflow.service`: blocked; last legacy run waited for human approval and produced no durable artifact. Needs a dedicated headless prompt/validator before Codex cutover.
@@ -190,7 +188,6 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 ### Deferred to Phase 2 / Phase 3
 
 - Phase 2: revise migrated skills for Codex-native execution improvements after faithful migration is stable.
-- Phase 2: fix target-discovery validator/date-anchor behavior and validate the Sunday target-discovery/JJ cluster together.
 - Phase 2: observe a fresh queued-note Codex post-call-analyzer run, not just a zero-queue poller run.
 - Phase 3: remove or archive Claude Code runtime files only after the Codex scheduled system has passed enough live cycles.
 
@@ -201,3 +198,12 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - `relationship-manager` ran successfully on Claude at 2026-06-05 06:50 EDT and passed `validate_relationship_manager_integrity.py` for `brain/context/relationship-status-2026-06-05.md`.
 - `scripts/run-agent-skill.sh` now has a same-day idempotency gate for `relationship-manager:daily`: if the current date artifact exists and validates, Codex skips rather than duplicating Attio/vault writes. A supervised rerun can set `RELATIONSHIP_MANAGER_ALLOW_RERUN=1`.
 - `relationship-manager.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh relationship-manager:daily`; the next scheduled live Codex run is Monday 2026-06-08 06:50 EDT.
+
+
+## Sunday Cluster Cutover - 2026-06-05
+
+- `scripts/validate_phase2_integrity.py` now calls `.codex/hooks/enrichment_integrity_check.py`, runs the `--pool-only` enrichment check, and accepts `--date YYYY-MM-DD` for deterministic scheduled validation.
+- `scripts/run-agent-skill.sh` now passes `--date "$TODAY"` to the target-discovery Phase 2 post-run validator.
+- Regression validation passed against the prior Sunday pool: `python3 scripts/validate_phase2_integrity.py --date 2026-05-31` returned PASS for Premium Pest Management.
+- JJ tab validation passed for the prior completed week: `python3 scripts/validate_jj_operations_integrity.py --week-start 2026-06-01` verified all five Call Log tabs and populated owner names.
+- `target-discovery-sunday.service` and `jj-operations-sunday.service` live systemd `ExecStart` values now point to Codex runner paths. Timers were unchanged. Next live Codex observation window is Sunday 2026-06-07.

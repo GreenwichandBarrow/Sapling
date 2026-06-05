@@ -16,6 +16,7 @@ Behavior:
     defaults to "Premium Pest Management"), run the integrity check
     against today's pool artifact.
   - Pool artifact path: brain/context/jj-week-pool-{YYYY-MM-DD}.md
+  - Accepts --date YYYY-MM-DD for deterministic scheduled validation.
   - Returns exit 0 only if ALL invoked niches pass.
 
 Exit codes:
@@ -29,11 +30,11 @@ from __future__ import annotations
 import os
 import subprocess
 import sys
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-HOOK_PATH = REPO_ROOT / ".claude" / "hooks" / "enrichment_integrity_check.py"
+HOOK_PATH = REPO_ROOT / ".codex" / "hooks" / "enrichment_integrity_check.py"
 POOL_DIR = REPO_ROOT / "brain" / "context"
 
 # Mirrors scripts/refresh_jj_snapshot.py NICHE_SHEETS. Update both when a
@@ -48,8 +49,8 @@ NICHE_SHEETS = {
 }
 
 
-def _today_pool_path() -> Path:
-    return POOL_DIR / f"jj-week-pool-{date.today().isoformat()}.md"
+def _pool_path(run_date: date) -> Path:
+    return POOL_DIR / f"jj-week-pool-{run_date.isoformat()}.md"
 
 
 def _niches_to_check() -> list[str]:
@@ -91,9 +92,20 @@ def _run_check(niche: str, sheet_id: str, pool_path: Path) -> tuple[int, str]:
     )
 
 
+def _run_date(argv: list[str]) -> date:
+    if "--date" in argv:
+        idx = argv.index("--date")
+        try:
+            return datetime.fromisoformat(argv[idx + 1]).date()
+        except (IndexError, ValueError) as exc:
+            raise SystemExit(f"ERROR: invalid --date argument: {exc}")
+    return date.today()
+
+
 def main() -> int:
+    run_date = _run_date(sys.argv[1:])
     niches = _niches_to_check()
-    pool_path = _today_pool_path()
+    pool_path = _pool_path(run_date)
 
     if not niches:
         print("ERROR: no niches configured in JJ_CALL_NICHES", file=sys.stderr)

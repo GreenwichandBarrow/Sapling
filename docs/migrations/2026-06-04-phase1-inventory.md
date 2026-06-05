@@ -11,8 +11,8 @@ This inventory records the live surfaces found during the Claude Code to Codex P
 - Skills: 46 migrated skill files exist in `.agents/skills`, matching the 46 legacy `.claude/skills` files.
 - Hooks: legacy `.claude/hooks` were copied into `.codex/hooks`, with `.codex/hooks.json` routing through `.codex/hooks/run-hook.sh`.
 - Live scheduled jobs: 21 user systemd timers were found.
-- Live Codex cutover: `health-monitor.service`, `nightly-tracker-audit.service`, `launchd-debugger.service`, `email-intelligence.service`, `relationship-manager.service`, `post-call-analyzer-poll.service`, and the `deal-aggregator` service cluster now use Codex runner paths.
-- Live legacy agent runner: 5 direct `run-skill.sh` services still remain on Claude because they are blocked, date-sensitive, or mutating workflows that were not safe to blindly pilot yet.
+- Live Codex cutover: `health-monitor.service`, `nightly-tracker-audit.service`, `launchd-debugger.service`, `email-intelligence.service`, `relationship-manager.service`, `target-discovery-sunday.service`, `jj-operations-sunday.service`, `post-call-analyzer-poll.service`, and the `deal-aggregator` service cluster now use Codex runner paths.
+- Live legacy agent runner: 3 direct `run-skill.sh` services still remain on Claude because they are blocked, date-sensitive, or mutating workflows that were not safe to blindly pilot yet.
 - Direct script jobs: 6 recurring jobs appear agent-free and should remain unchanged in Phase 1 unless they internally trigger agent work.
 - Cron: one user crontab entry exists for temp cleanup only.
 - MCP: no active repo-level `.mcp.json` was found. The only live-looking MCP state was `~/.claude/mcp-needs-auth-cache.json`; scheduled Codex jobs must not depend on MCP until tested.
@@ -107,8 +107,8 @@ Phase 1 status: must-have safety hook logic is copied and synthetic checks pass 
 | `deal-aggregator-afternoon.timer` | weekdays 14:00 | `deal-aggregator-afternoon.service` | Codex runner | cutover |
 | `weekly-snapshot.timer` | Fri 22:00 | `weekly-snapshot.service` | direct script | unchanged |
 | `weekly-archive-export.timer` | Sat 09:00 | `weekly-archive-export.service` | direct script | unchanged |
-| `target-discovery-sunday.timer` | Sun 15:00 | `target-discovery-sunday.service` | Claude runner | pending validation; validator race noted |
-| `jj-operations-sunday.timer` | Sun 18:00 | `jj-operations-sunday.service` | Claude runner | pending validation |
+| `target-discovery-sunday.timer` | Sun 15:00 | `target-discovery-sunday.service` | Codex runner | cutover; pool-only validator fixed |
+| `jj-operations-sunday.timer` | Sun 18:00 | `jj-operations-sunday.service` | Codex runner | cutover; prior week validator passed |
 | `conference-discovery.timer` | Sun 21:00 | `conference-discovery.service` | Claude runner | pending validation |
 | `niche-intelligence.timer` | Tue 22:30 | `niche-intelligence.service` | Claude runner | pending validation |
 
@@ -120,9 +120,7 @@ These live services still point at `scripts/run-skill.sh`:
 
 - `calibration-workflow.service`
 - `conference-discovery.service`
-- `jj-operations-sunday.service`
 - `niche-intelligence.service`
-- `target-discovery-sunday.service`
 
 Conversion rule: validate each workflow manually, then apply `scripts/prepare-codex-systemd-cutover.sh --apply --group <group>`. Do not edit timers during Phase 1 unless required.
 
@@ -131,7 +129,7 @@ Conversion rule: validate each workflow manually, then apply `scripts/prepare-co
 - `health-monitor`: validated and cut over.
 - `deal-aggregator`: morning, afternoon, and Friday digest validated and cut over as one cluster.
 - `post-call-analyzer`: poller cut over after zero-queue Codex pilot; analyzer trigger has prompt/validator coverage but still needs an observed queued-note Codex run.
-- `target-discovery` / `jj-operations`: related via JJ niche context and should be treated carefully as a Sunday cluster.
+- `target-discovery` / `jj-operations`: Sunday cluster validators passed against the previous completed cycle and both services are cut over. Observe the Sunday 2026-06-07 live Codex run.
 - `email-intelligence`: validated no-send/draft-only behavior for the 2026-06-05 pilot and cut over.
 - `relationship-manager`: validated via 2026-06-05 Claude artifact, same-day Codex skip guard added, and service cut over. Observe the Monday 2026-06-08 live Codex run.
 - `calibration-workflow`: blocked until headless prompt and durable-output validator exist.

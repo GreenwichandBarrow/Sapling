@@ -61,7 +61,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | Runner | `scripts/run-skill.sh` | `scripts/run-agent-skill.sh` | 1 | ported | New runner created; old runner preserved. |
 | calibration-workflow | systemd + `run-skill.sh calibration-workflow` | `run-agent-skill.sh calibration-workflow` | 1 | blocked | Last Claude run exited 0 while waiting for human approval and wrote no artifact; needs dedicated headless prompt/validator before Codex cutover. |
 | conference-discovery | systemd + headless Sunday prompt | `run-agent-skill.sh conference-discovery sunday` | 1 | pending | Active timer Sun 21:00; validator exists. |
-| deal-aggregator cluster | morning/afternoon/friday timers + headless prompts | `run-agent-skill.sh deal-aggregator` variants | 1 | pending | Material cluster; validators exist. |
+| deal-aggregator cluster | morning/afternoon/friday timers + headless prompts | `run-agent-skill.sh deal-aggregator` variants | 1 | cutover | Morning Codex pilot wrote the daily artifact, posted 1 new deal, passed validator, and all three live services now use `run-agent-skill.sh`. |
 | email-intelligence | weekday timer + headless prompt | `run-agent-skill.sh email-intelligence` | 1 | pending | Email-adjacent; must verify draft-only/no send before validation. |
 | health-monitor | weekly timer | `run-agent-skill.sh health-monitor` | 1 | cutover | Codex pilot completed, wrote `brain/trackers/health/2026-06-04-health.md`, validated artifact, posted Slack per RED/YELLOW rule, and live systemd service now uses `run-agent-skill.sh`. |
 | jj-operations | Sunday timer + headless prompt | `run-agent-skill.sh jj-operations:sunday-prep` | 1 | pending | Validator exists. |
@@ -157,3 +157,5 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - `launchd-debugger` Codex pilot initially exposed a false-positive scanner bug: legacy documentation text inside Codex JSON logs could match loose `PREFLIGHT FAILED` detection, and an older failed retry could remain visible after a newer success. `scripts/scan_launchd_failures.py` now anchors real wrapper markers, detects Codex runner failure lines, and treats only the newest log per job as current state.
 - `launchd-debugger` clean Codex pilot completed at 2026-06-05 02:59 EDT with 0 failures, no Slack post, and validator pass.
 - `launchd-debugger.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh launchd-debugger:daily`; timer was unchanged.
+- `deal-aggregator` Codex morning pilot completed at 2026-06-05 03:15 EDT, wrote `brain/context/deal-aggregator-scan-2026-06-05.md`, posted 1 new Website Closers match to Slack, added its fingerprint, and passed `validate_deal_aggregator_integrity.py`.
+- `deal-aggregator.service`, `deal-aggregator-afternoon.service`, and `deal-aggregator-friday.service` live systemd `ExecStart` values now point to `scripts/run-agent-skill.sh`; timers were unchanged.

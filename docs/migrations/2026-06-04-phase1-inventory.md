@@ -11,8 +11,8 @@ This inventory records the live surfaces found during the Claude Code to Codex P
 - Skills: 46 migrated skill files exist in `.agents/skills`, matching the 46 legacy `.claude/skills` files.
 - Hooks: legacy `.claude/hooks` were copied into `.codex/hooks`, with `.codex/hooks.json` routing through `.codex/hooks/run-hook.sh`.
 - Live scheduled jobs: 21 user systemd timers were found.
-- Live Codex cutover: `health-monitor.service`, `nightly-tracker-audit.service`, and `launchd-debugger.service` now use `scripts/run-agent-skill.sh`.
-- Live legacy agent runner: 10 agent-backed services still use `scripts/run-skill.sh` and must remain on Claude until each workflow or dependency cluster is validated.
+- Live Codex cutover: `health-monitor.service`, `nightly-tracker-audit.service`, `launchd-debugger.service`, and the `deal-aggregator` service cluster now use `scripts/run-agent-skill.sh`.
+- Live legacy agent runner: 7 agent-backed services still use `scripts/run-skill.sh` and must remain on Claude until each workflow or dependency cluster is validated.
 - Direct script jobs: 6 recurring jobs appear agent-free and should remain unchanged in Phase 1 unless they internally trigger agent work.
 - Cron: one user crontab entry exists for temp cleanup only.
 - MCP: no active repo-level `.mcp.json` was found. The only live-looking MCP state was `~/.claude/mcp-needs-auth-cache.json`; scheduled Codex jobs must not depend on MCP until tested.
@@ -97,14 +97,14 @@ Phase 1 status: must-have safety hook logic is copied and synthetic checks pass 
 | `launchd-debugger.timer` | daily 05:00 | `launchd-debugger.service` | Codex runner | cutover |
 | `relationship-manager.timer` | weekdays 06:50 | `relationship-manager.service` | Claude runner | pending validation |
 | `email-intelligence.timer` | weekdays 07:00 | `email-intelligence.service` | Claude runner | pending no-send validation |
-| `deal-aggregator.timer` | weekdays 07:30 | `deal-aggregator.service` | Claude runner | pending cluster validation |
-| `deal-aggregator-friday.timer` | Fri 07:30 | `deal-aggregator-friday.service` | Claude runner | pending cluster validation |
+| `deal-aggregator.timer` | weekdays 07:30 | `deal-aggregator.service` | Codex runner | cutover |
+| `deal-aggregator-friday.timer` | Fri 07:30 | `deal-aggregator-friday.service` | Codex runner | cutover |
 | `apollo-credits-refresh.timer` | weekdays hourly 08:00-20:00 | `apollo-credits-refresh.service` | direct script | unchanged |
 | `attio-snapshot-refresh.timer` | weekdays hourly 08:00-20:00 | `attio-snapshot-refresh.service` | direct script | unchanged |
 | `external-services-probe.timer` | weekdays half-hourly 08:00-20:30 | `external-services-probe.service` | direct script | unchanged |
 | `jj-snapshot-refresh.timer` | weekdays 09:00, 14:30, 18:00 | `jj-snapshot-refresh.service` | direct script | unchanged |
 | `post-call-analyzer-poll.timer` | daily 13:00 and 18:00 ET | `post-call-analyzer-poll.service` | legacy poller -> Claude runner | pending cluster validation |
-| `deal-aggregator-afternoon.timer` | weekdays 14:00 | `deal-aggregator-afternoon.service` | Claude runner | pending cluster validation |
+| `deal-aggregator-afternoon.timer` | weekdays 14:00 | `deal-aggregator-afternoon.service` | Codex runner | cutover |
 | `weekly-snapshot.timer` | Fri 22:00 | `weekly-snapshot.service` | direct script | unchanged |
 | `weekly-archive-export.timer` | Sat 09:00 | `weekly-archive-export.service` | direct script | unchanged |
 | `target-discovery-sunday.timer` | Sun 15:00 | `target-discovery-sunday.service` | Claude runner | pending validation; validator race noted |
@@ -120,9 +120,6 @@ These live services still point at `scripts/run-skill.sh`:
 
 - `calibration-workflow.service`
 - `conference-discovery.service`
-- `deal-aggregator.service`
-- `deal-aggregator-afternoon.service`
-- `deal-aggregator-friday.service`
 - `email-intelligence.service`
 - `jj-operations-sunday.service`
 - `niche-intelligence.service`

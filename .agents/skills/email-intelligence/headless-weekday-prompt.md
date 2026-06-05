@@ -9,7 +9,7 @@ You are running the `email-intelligence` skill non-interactively under systemd a
    - Inbound Gmail (`gog gmail search "newer_than:2d label:INBOX" --json --max 50`)
    - Outbound Gmail (`gog gmail search "from:kay.s@greenwichandbarrow.com newer_than:2d" --json --max 50`)
    - Gmail drafts (`gog gmail draft list --json`)
-   - Granola transcripts via MCP for any meetings since last run
+   - Granola transcripts via `~/.local/bin/granola-api since <iso-checkpoint>` and `granola-api get-note <note_id>` for any meetings since last run; MCP is optional only
    - `brain/context/session-decisions-{previous-workday}.md` for cross-check before flagging drafts as stale
 3. **Per-email classification + urgent side effects.** Walk the inbound list. For each email:
    - Classify (DIRECT / BLAST / NEWSLETTER) per `<deal_flow_classification>`.
@@ -42,17 +42,17 @@ You are running the `email-intelligence` skill non-interactively under systemd a
 - Presenting RECOMMEND / YES / NO / DISCUSS framings for any auto-trigger pathway. The auto-triggers (CIM, Active Deal Fast-Path, bookkeeper P&L) are deterministic - they fire without approval per their SKILL.md sections.
 - **Creating the bookkeeper trigger inbox item and stopping there.** Step 4c (invoke budget-manager) is mandatory, not optional. Skipping it is the root failure this prompt exists to prevent.
 - Surfacing the bookkeeper P&L trigger as a Decision item in any artifact section. The trigger is wired; only the OUTPUT (variance flags, runway change) is decision-worthy and that lives in budget-manager's own artifact.
-- Halting on a single MCP failure (Granola 401, Attio timeout) - graceful-degrade, log the failure mode in the artifact's Actionable Items section, continue.
+- Halting on a single optional integration failure (Granola REST/API, Attio REST/API, or MCP convenience path) - graceful-degrade, log the failure mode in the artifact's Actionable Items section, continue.
 - Skipping the artifact write because "nothing material today" - always write the artifact, even if every section is "None".
 - Overwriting an existing same-day artifact silently - if `brain/context/email-scan-results-{TODAY}.md` already exists with ≥200 bytes, abort cleanly and emit `EMAIL-INTEL ABORT: artifact already exists for {TODAY}` (idempotency for retry safety).
 
 ## Failure handling
 
 - **Gmail API 401** → exit non-zero immediately so the wrapper Slack-alerts; do NOT silently proceed with stale data.
-- **Granola MCP unavailable** → continue without Granola ingestion, note in artifact's Actionable Items, exit 0.
+- **Granola API unavailable** → continue without Granola ingestion, note in artifact's Actionable Items, exit 0. Do not attempt MCP reconnect in scheduled mode.
 - **Drive folder creation fails on bookkeeper P&L step 4a** → still write inbox item + invoke budget-manager (it reads from email attachment in worst case), note the Drive failure in the artifact.
 - **budget-manager invocation fails (step 4c)** → log `BOOKKEEPER-PL-CHAIN: FAILED ...`, surface in artifact, continue with rest of email-intelligence run, exit 0. The wrapper-level validator catches this and Slack-alerts.
-- **Attio MCP 401** → CIM auto-trigger Attio write skipped, surfaced in artifact under Actionable Items so pipeline-manager flags it; continue.
+- **Attio REST/API unavailable** → CIM auto-trigger Attio write skipped, surfaced in artifact under Actionable Items so pipeline-manager flags it; continue. Do not attempt MCP reconnect in scheduled mode.
 
 ## Why this prompt exists
 

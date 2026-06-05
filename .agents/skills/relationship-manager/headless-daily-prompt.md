@@ -6,7 +6,7 @@ You are running the `relationship-manager` skill non-interactively under launchd
 
 1. **Read SKILL.md fully** at `.agents/skills/relationship-manager/SKILL.md`.
 2. **Pull source data** in parallel where possible:
-   - Attio People (cadence, last_interaction, owner status) — if MCP returns 401 or `hasAttioWorkspaceId: false`, fall back to local cache + Gmail signal-counting. Add a "System Status Alerts" entry naming the failure mode; do NOT halt.
+   - Attio People (cadence, last_interaction, owner status) via `~/.local/bin/attio-api` or Attio REST. If Attio REST/API is unavailable, fall back to local cache + Gmail signal-counting. Add a "System Status Alerts" entry naming the failure mode; do NOT halt. MCP is optional only.
    - Recent Gmail traffic for last_interaction inference
    - Vault `brain/calls/` and `brain/entities/` for engagement signals
    - `brain/context/session-decisions-{previous-workday}.md` for action-already-taken verification
@@ -23,7 +23,7 @@ You are running the `relationship-manager` skill non-interactively under launchd
 ## Forbidden in headless mode
 
 - Asking the user anything.
-- Halting on Attio MCP failures — graceful-degrade, keep producing the artifact.
+- Halting on Attio REST/API or optional MCP failures — graceful-degrade, keep producing the artifact.
 - Drafting outreach (that's outreach-manager's job — surface targets only).
 - Presenting RECOMMEND / YES / NO / DISCUSS framings.
 - Skipping the artifact write because "nothing material today" — always write the artifact, even if all sections are "None".
@@ -43,6 +43,6 @@ The wrapper-side validator (`scripts/validate_relationship_manager_integrity.py`
 
 ## Why this prompt exists
 
-Bare `claude -p '/relationship-manager'` invocations under launchd risk the silent-exit-0 failure mode. This prompt forbids that path and codifies the graceful-degrade pattern for Attio MCP outages.
+Bare legacy invocations under launchd risk the silent-exit-0 failure mode. This prompt forbids that path and codifies the graceful-degrade pattern for Attio REST/API outages.
 
 Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead `ai-ops-jrj.4`.

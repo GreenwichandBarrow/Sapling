@@ -16,7 +16,7 @@ schedule: "Daily 5:00am ET + on-failure trigger"
 <objective>
 Health-monitor catches silent overnight failures *post hoc* — it observes, it does not repair. Every Friday it surfaces a list of REDs that have already cost a morning. This skill is the agents-all-the-way-down repair layer Harrison Wells recommended: a daily cron that detects every failed scheduled job in the last 24h, spawns a debug subagent per failure, and either applies a safe operational fix and re-runs the job OR posts a diagnosis to Slack #operations with a recommended action.
 
-The skill never touches business data. Fixes are operational only — re-run, regenerate cached artifact, restart MCP server, retry transient API. Anything else is escalated as a SURFACE, not a FIX.
+The skill never touches business data. Fixes are operational only — re-run, regenerate cached artifact, retry transient API, or surface a code-fix recommendation. It does not reconnect MCP in scheduled mode. Anything else is escalated as a SURFACE, not a FIX.
 </objective>
 
 <credentials>
@@ -98,7 +98,7 @@ Run subagents in parallel — they share no state.
 |-------|--------|-------------|
 | AUTH (Codex CLI 401, OAuth token expired) | SURFACE | none — Kay must re-auth |
 | TRANSIENT_API (5xx, network timeout, rate-limited 429) | FIX | re-run via `launchctl start` |
-| MCP_DISCONNECT (mcp__attio, mcp__granola, legacy MCP tools return "not connected") | FIX **only after REST health-check confirms underlying service is up** — if REST = 200, reclassify as SKILL_CODE_NEEDS_REST_FALLBACK and SURFACE (skill should use REST, not MCP). Otherwise reconnect via `claude mcp restart` (if available) OR mark for manual `/mcp` reconnect, then re-run | reconnect, then re-run |
+| MCP_DISCONNECT (mcp__attio, mcp__granola, legacy MCP tools return "not connected") | SURFACE as SKILL_CODE_NEEDS_REST_FALLBACK if REST/wrapper health is good; scheduled skills should use REST/wrappers, not MCP. If REST/wrapper health is also down, classify as AUTH or EXTERNAL_OUTAGE as appropriate. | surface code-fix or real outage |
 | VALIDATOR_REJECT (POST_RUN_CHECK said skill output was wrong) | SURFACE | never auto-fix sheet/Attio drift — Kay reviews |
 | MISSING_ARTIFACT (cached snapshot didn't refresh) | FIX | regenerate via `scripts/refresh-{name}.sh`, then re-run |
 | SCHEMA_VIOLATION (vault write rejected by validate-edits.py) | SURFACE | code change required |

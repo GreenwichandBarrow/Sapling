@@ -69,8 +69,8 @@ gog gmail search -a kay.s@greenwichandbarrow.com --query 'label:"auto/industry r
 
 --- SOURCE 3: GRANOLA CALLS (last 14 days) ---
 
-mcp__granola__list_meetings (filter to last 14 days)
-mcp__granola__get_meeting_transcript({meeting_id})
+~/.local/bin/granola-api since <14-days-ago-iso>
+~/.local/bin/granola-api get-note <note_id>
 
 Extract: new industries mentioned, market intelligence, investor thesis feedback, river guide connections, competitive intel from other searchers.
 
@@ -171,8 +171,8 @@ Glob for: brain/calls/*.md
 Read each file's frontmatter (people, companies, tags) and body.
 
 SOURCE B — GRANOLA (meetings older than 14 days):
-mcp__granola__list_meetings (get ALL, skip anything from last 14 days)
-mcp__granola__get_meeting_transcript({meeting_id})
+~/.local/bin/granola-api since <historical-window-iso>
+~/.local/bin/granola-api get-note <note_id>
 
 WHAT TO EXTRACT:
 - Industries discussed as potential acquisition targets

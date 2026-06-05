@@ -54,7 +54,7 @@ The wrapper passed you the failed job's log path via the `LOG_FILE` environment 
    > **Step C:** Decide FIX or SURFACE per the SKILL.md decision tree. The allowlist of fixes is narrow:
    >   - `launchctl start com.greenwich-barrow.{job}` (re-run)
    >   - `scripts/refresh-attio-snapshot.sh` / `scripts/refresh-jj-snapshot.sh` / `scripts/refresh-apollo-credits.sh` (regenerate cached artifact)
-   >   - Restart MCP server: only via `claude mcp restart` if available; otherwise mark as SURFACE.
+   >   - Do not reconnect MCP in scheduled mode. If REST/wrapper health is good, mark as SURFACE with `SKILL_CODE_NEEDS_REST_FALLBACK`; if REST/wrapper health is down, classify the real auth/outage cause.
    > Anything else → SURFACE.
    >
    > **HARD PROHIBITIONS:**

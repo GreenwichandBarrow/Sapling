@@ -74,7 +74,7 @@ If verification fails, log the failure to chatroom and notify user — do NOT pr
 |------|---------|
 | `gog` CLI | Gmail (newsletters), Google Sheets (tracker), Google Drive (one-pagers) |
 | `last30days` skill | Web/social research via `/last30days` |
-| Granola MCP | Meeting transcript retrieval |
+| Granola REST wrapper | Meeting transcript retrieval via `~/.local/bin/granola-api` |
 | OneNote MCP | SEARCH FUND notebook — industry memos, deal convos, research notes |
 | `python-pptx` | One-pager generation |
 | `WebSearch` | Supplemental research for scoring |

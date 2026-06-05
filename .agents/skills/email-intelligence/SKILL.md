@@ -19,7 +19,7 @@ source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 ```
 Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — it exports literal op:// reference strings, not values (hook-blocked; see `feedback_op_env_before_op_backed_cli`).
 
-**REST is the default, MCP is a convenience.** If an MCP call appears below (`mcp__granola__*`, `mcp__attio__*`), it has a REST fallback. An unloaded MCP tool is NOT an outage — fall through to REST. For Granola, the canonical wrapper is `~/.local/bin/granola-api`.
+**REST/wrapper is the default; MCP is optional only.** Scheduled runs must use `~/.local/bin/granola-api` for Granola and `~/.local/bin/attio-api` or direct Attio REST for Attio. An unloaded MCP tool is NOT an outage and must not block a scheduled run.
 
 **Health-check pattern (mandatory before claiming a service is down in an artifact):**
 ```bash
@@ -331,18 +331,14 @@ For each detected intro:
 <granola_ingestion>
 ## Granola Ingestion
 
-Query Granola MCP for meetings since last run:
-```
-mcp__granola__list_meetings
-mcp__granola__get_meeting_transcript
-```
-
-**REST fallback (preferred — no MCP, no OAuth, no reconnect):**
+Query Granola through the REST wrapper for meetings since last run:
 ```bash
 source /home/ubuntu/projects/Sapling/scripts/op-env.sh
-granola-api since "$(date -u -d 'yesterday' +%Y-%m-%dT00:00:00Z)"   # list updated notes
-granola-api get-note <note_id>                                       # full transcript + summary
+~/.local/bin/granola-api since "$(date -u -d 'yesterday' +%Y-%m-%dT00:00:00Z)"   # list updated notes
+~/.local/bin/granola-api get-note <note_id>                                      # full transcript + summary
 ```
+
+MCP tools, if present in an interactive session, are optional convenience only. Scheduled runs must not depend on MCP, OAuth reconnect, or MCP restart.
 
 For each new meeting:
 1. Write call note to `brain/calls/{date}-{slug}.md`

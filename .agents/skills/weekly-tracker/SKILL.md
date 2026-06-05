@@ -125,7 +125,7 @@ Count unique threads, not individual messages. For each thread, verify it's acqu
 
 ### Agent 2: Calendar & Meetings Collector
 **Task:** Classify all meetings for the week.
-**Tools:** gog calendar list, Granola MCP, vault reads
+**Tools:** gog calendar list, `~/.local/bin/granola-api`, vault reads
 **Returns:**
 ```json
 {
@@ -146,7 +146,7 @@ Classify each event:
 - **Networking** — river guides, advisors, fellow searchers, introductions
 - **Internal** — skip (team calls, recurring standups)
 
-Cross-reference with `brain/calls/` for logged call notes. Use Granola MCP to verify meeting counts if available.
+Cross-reference with `brain/calls/` for logged call notes. Use `~/.local/bin/granola-api` to verify meeting counts if available; MCP is optional only and must not block scheduled runs.
 
 ### Agent 3: Attio Pipeline Collector
 **Task:** Pull pipeline movements and deal stage data from Attio Lists.

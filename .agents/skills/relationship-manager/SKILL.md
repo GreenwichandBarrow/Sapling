@@ -19,7 +19,7 @@ source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 ```
 Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
 
-**REST is the default for Attio, MCP is a convenience.** Attio MCP (`mcp__attio__*`) is frequently unregistered in this session. An unloaded MCP tool is NOT an outage — use REST instead:
+**REST/wrapper is the default for Attio; MCP is optional only.** Use `~/.local/bin/attio-api` or direct Attio REST. An unloaded MCP tool is NOT an outage and must not block scheduled runs:
 ```bash
 # Read a person/company record
 curl -s -H "Authorization: Bearer $ATTIO_API_KEY" "https://api.attio.com/v2/objects/people/records/{record_id}"
@@ -37,7 +37,7 @@ curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KE
 # 200 = up. Non-200 = real outage. Unloaded MCP tool = not an outage.
 ```
 
-**Forbidden in the relationship-status artifact:** writing "Attio MCP unauthenticated / disconnected" as a system-status alert without first running the op-env resolve + REST health-check above. Phantom outages corrupt the morning briefing.
+**Forbidden in the relationship-status artifact:** writing "Attio MCP unauthenticated / disconnected" as a system-status alert. Scheduled runs use REST/wrapper first; only report a real Attio outage after the op-env resolve + REST health-check above fails.
 </credentials>
 
 <objective>
@@ -194,7 +194,7 @@ Scan `brain/entities/` for files matching ALL of:
 For each entity matching detection criteria:
 
 1. **Look up Attio person by email** (preferred) or `name + company`:
-   - `gog` not used here — use Attio MCP `search_records` with email filter
+   - `gog` not used here — use `~/.local/bin/attio-api query-people` or Attio REST with an email filter
    - If Attio person not found → skip (will retry tomorrow; person record auto-creates on next email send/receive)
    - If Attio person found → proceed
 
@@ -313,7 +313,7 @@ python3 "$HOME/projects/Sapling/scripts/validate_relationship_manager_integrity.
 - At least one expected section header is present
 - Artifact is ≥200 bytes (rejects empty stubs)
 
-**What it does NOT check:** Attio write success. The skill is designed to graceful-degrade when Attio MCP is down — the artifact + "System Status Alerts" section is the deliverable, Attio sync is downstream-best-effort.
+**What it does NOT check:** Attio write success. The skill is designed to graceful-degrade when Attio REST/API is down — the artifact + "System Status Alerts" section is the deliverable, Attio sync is downstream-best-effort.
 
 The launchd wrapper (`scripts/run-skill.sh`) overrides EXIT_CODE on POST_RUN_CHECK failure and emits a Slack alert prefixed `VALIDATOR FAILED`. Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead: `ai-ops-jrj.4`.
 </artifact>

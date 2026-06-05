@@ -13,19 +13,19 @@
 #
 # Modes:
 #   DRY_RUN=1 → log "WOULD FIRE" lines only, never spawn
-#   default   → background-detached spawn of run-skill.sh launchd-debugger:on-failure
+#   default   → background-detached spawn of run-agent-skill.sh launchd-debugger:on-failure
 #               with FROM_HEALTH_BRIDGE=1 + RED_ITEM_* + HEALTH_ARTIFACT_PATH env
 #
 # Always exits 0 — never blocks the parent wrapper.
 
 set -u
 
-WORKDIR="$HOME/Documents/AI Operations"
+WORKDIR="${WORKDIR:-$HOME/projects/Sapling}"
 LOG_DIR="$WORKDIR/logs/scheduled"
 TODAY=$(date +%Y-%m-%d)
 HHMM=$(date +%H%M)
 BRIDGE_LOG="$LOG_DIR/health-monitor-red-bridge-${TODAY}-${HHMM}.log"
-WRAPPER_PATH="$WORKDIR/scripts/run-skill.sh"
+WRAPPER_PATH="$WORKDIR/scripts/run-agent-skill.sh"
 
 mkdir -p "$LOG_DIR"
 
@@ -35,7 +35,7 @@ log() {
 
 log "=== health-monitor-red-bridge start ==="
 
-# Recursion guard 1: arg-form (when run-skill.sh's auto-fire path passes the
+# Recursion guard 1: arg-form (when run-agent-skill.sh's auto-fire path passes the
 # failing job name as $1). Belt-and-suspenders — the wrapper integration we
 # write below uses the artifact-path form, but this guards against future
 # refactors that pass the skill name positionally.

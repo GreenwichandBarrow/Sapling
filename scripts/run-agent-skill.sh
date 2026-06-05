@@ -228,4 +228,18 @@ if [ -n "${POST_RUN_CHECK:-}" ]; then
   fi
 fi
 
+# Health-monitor RED bridge: when health-monitor exits clean and its artifact
+# landed at the expected path, fan out one launchd-debugger:on-failure spawn per
+# RED row in the markdown artifact. The bridge is background-detached so the
+# parent wrapper exits immediately.
+if [ "$SKILL_NAME" = "health-monitor" ]; then
+  HEALTH_ARTIFACT="$WORKDIR/brain/trackers/health/$(date +%Y-%m-%d)-health.md"
+  if [ -f "$HEALTH_ARTIFACT" ]; then
+    log "Firing health-monitor RED bridge against $HEALTH_ARTIFACT"
+    nohup bash "$WORKDIR/scripts/health-monitor-red-bridge.sh" "$HEALTH_ARTIFACT" </dev/null >/dev/null 2>&1 &
+  else
+    log "health-monitor RED bridge skipped — artifact not found at $HEALTH_ARTIFACT"
+  fi
+fi
+
 log "Completed: $(date)"

@@ -1,16 +1,24 @@
 #!/usr/bin/env python3
-"""Scan logs/scheduled/ for launchd job failures in the last 24 hours.
+"""Scan logs/scheduled/ for scheduled job failures in the last 24 hours.
 
-Wrapped by `scripts/run-skill.sh` indirectly via the launchd-debugger skill
-(invoked daily 5am ET). Emits a JSON list of failed jobs to stdout — one
-entry per failed run, ready for the headless prompt to fan out into per-job
-debug subagents.
+Used by the launchd-debugger skill (invoked daily 5am ET, and on failure).
+Emits a JSON list of failed jobs to stdout — one entry per failed run, ready
+for the headless prompt to fan out into per-job debug subagents.
 
 Detection logic
 ---------------
 
-The shared wrapper (`scripts/run-skill.sh`) writes one log file per run at
-`logs/scheduled/{skill}-{YYYY-MM-DD}-{HHMM}.log` and embeds these markers:
+The shared Codex wrapper (`scripts/run-agent-skill.sh`) writes one log file per
+run at `logs/scheduled/{skill}-{YYYY-MM-DD}-{HHMM}.log` and embeds these
+markers:
+
+  * `FAILED: codex exec exited {N}` — Codex CLI exited non-zero.
+  * `FAILED: post-run check exited {N}` — POST_RUN_CHECK validator rejected
+    output after Codex exited 0.
+  * `Completed: {date}` — successful wrapper completion.
+
+The legacy Claude wrapper (`scripts/run-skill.sh`) is retained during migration
+fallback and embeds these markers:
 
   * `Finished claude run: {date}, exit: {N} (attempts: {n})` — final wrapper
     exit code (skill exit OR validator-overridden exit).
@@ -20,18 +28,19 @@ The shared wrapper (`scripts/run-skill.sh`) writes one log file per run at
 
 Some jobs (the bash-only refresh scripts under `apollo-credits-refresh.sh`,
 `refresh-attio-snapshot.sh`, `refresh-jj-snapshot.sh`) do NOT use the shared
-wrapper and emit no `Finished claude run` marker. We treat absence of an
-explicit error pattern as success for those (they're tiny, idempotent, and
-their own watchdog is the snapshot-staleness banner on the dashboard).
+wrapper and emit no Codex or legacy runner marker. We treat absence of an
+explicit error pattern as success for those; their own watchdog is the
+snapshot-staleness banner on the dashboard.
 
 Failure conditions surfaced
 ---------------------------
 
 A log entry becomes a failure record if ANY of:
-  1. `exit:` line shows non-zero
-  2. `VALIDATOR FAILED` marker present
-  3. `PREFLIGHT FAILED` marker present
-  4. `STOP marker` line written by a headless skill (e.g.
+  1. Codex `FAILED: ... exited {N}` line is present
+  2. Legacy `exit:` line shows non-zero
+  3. `VALIDATOR FAILED` marker present
+  4. `PREFLIGHT FAILED` marker present
+  5. `STOP marker` line written by a headless skill (e.g.
      `NIGHTLY-TRACKER-AUDIT STOP: ...`)
 
 Per-skill dedup: only the most recent failed log per skill is returned

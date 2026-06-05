@@ -40,7 +40,7 @@ TIME WINDOW: Last 14 days only. Do NOT go further back — the HISTORICAL agent 
 
 Use last30days for Reddit/HN/Polymarket, then supplement with WebSearch:
 
-python3 ~/.agents/skills/last30days/skills/last30days/scripts/last30days.py "{query}" --emit=compact --save-dir=~/last30days-output --search reddit,hn,polymarket
+python3 ~/.codex/skills/last30days/skills/last30days/scripts/last30days.py "{query}" --emit=compact --save-dir=~/last30days-output --search reddit,hn,polymarket
 
 Queries:
 1. "private equity acquisitions small business services 2026"

@@ -228,3 +228,10 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - It has now been copied to `~/.codex/skills/last30days` at commit `850c7e0`, preserving the GitHub remote.
 - `scripts/check-codex-migration-readiness.sh` now fails if the Codex-side `last30days` skill or `scripts/last30days.py` entrypoint is missing.
 - Phase 2 cleanup: update niche-intelligence internals to prefer the Codex path directly where they currently mention the legacy Claude path.
+
+
+## External GitHub Skill Audit - 2026-06-05
+
+- Audited personal skill directories under `~/.claude/skills` and `~/.codex/skills` for Git remotes. Only `last30days` had a GitHub remote on the VPS.
+- Audited repo-local `.claude/skills` and `.agents/skills` for nested `.git` directories; none were found. Repo-local GitHub-provenance skills such as `evolve` and `create-skill` were already copied as part of the Sapling `.claude/skills` -> `.agents/skills` migration.
+- Updated the active Codex niche-intelligence sub-agent reference to call `~/.codex/skills/last30days/skills/last30days/scripts/last30days.py` instead of a non-existent `~/.agents/skills/last30days` path.

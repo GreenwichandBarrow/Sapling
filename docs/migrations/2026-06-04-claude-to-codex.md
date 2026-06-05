@@ -245,3 +245,9 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Phase 1 policy for this workflow: report-first/proposal-only. Direct skill, hook, memory, and script improvements move to Phase 2 unless they are required for the headless run itself.
 - Codex pilot completed at 2026-06-05 11:53 EDT and passed `scripts/validate_calibration_workflow_integrity.py --date 2026-06-05`.
 - `calibration-workflow.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh calibration-workflow`; timer was unchanged.
+
+## Phase 2 Hardening Checkpoint - 2026-06-05
+
+- Added focused unit coverage for every `scripts/validate_*_integrity.py` validator; the Phase 2 regression bundle now covers scheduled artifact shape, REST snapshot contracts, no-send email safety, conference status mutation safety, JJ call-log integrity, calibration report autonomy, and post-call analyzer ledger shape.
+- Updated active scheduled-skill documentation and validator wording to reference `scripts/run-agent-skill.sh` / `codex exec` where live Codex services now use those paths. Historical Claude failure-mode notes and preserved rollback files remain untouched until Phase 3.
+- Deferred follow-up: audit `scripts/health-monitor-red-bridge.sh` before wiring it into the Codex runner. It still carries old Mac-path / `run-skill.sh` assumptions and should be either ported deliberately to VPS Codex semantics or archived in Phase 3 after live health-monitor observation.

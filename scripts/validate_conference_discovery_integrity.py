@@ -3,7 +3,7 @@
 Wrapper-level integrity validator for conference-discovery scheduled runs.
 
 Runs as POST_RUN_CHECK after launchd wrapper completes. Catches three classes
-of silent-success failures where Claude exits 0 but the Conference Pipeline
+of silent-success failures where the agent exits 0 but the Conference Pipeline
 tab has been corrupted:
 
   1. **Row-count delta wipe** — original 2026-05-03 incident. ~70 rows

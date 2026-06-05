@@ -65,6 +65,49 @@ def fail(msg: str) -> int:
     return 1
 
 
+def validate_snapshot_data(data: object) -> list[str]:
+    failures: list[str] = []
+    if not isinstance(data, dict):
+        return [f"snapshot root is {type(data).__name__}, expected dict"]
+
+    missing = [k for k in REQUIRED_KEYS if k not in data]
+    if missing:
+        return [f"snapshot missing required keys: {missing}"]
+
+    niches = data["niches_scanned"]
+    if not isinstance(niches, list) or not niches:
+        failures.append(
+            "`niches_scanned` empty or not a list — refresh script must "
+            "have hit an early-return before NICHE_SHEETS iteration"
+        )
+
+    weekly = data["weekly_buckets"]
+    if not isinstance(weekly, list) or not weekly:
+        failures.append(
+            "`weekly_buckets` empty or not a list — dashboard JJ-dials "
+            "trend panel needs this populated"
+        )
+
+    lifetime = data.get("dials_lifetime")
+    if not isinstance(lifetime, int) or isinstance(lifetime, bool):
+        failures.append(
+            f"`dials_lifetime` is {lifetime!r} ({type(lifetime).__name__}), "
+            "expected a positive int"
+        )
+    elif lifetime <= 0:
+        failures.append(
+            f"`dials_lifetime` is {lifetime} — FALSE ZERO. Lifetime dials "
+            "are monotonic for an established calling operation, so 0 means "
+            "the gog OAuth refresh failed and refresh_jj_snapshot.py fell "
+            "back to a working-tab-only scan (all niches 0). The dashboard "
+            "JJ row is feeding off bad data. Check the refresh log for "
+            "'OAuth refresh failed' and re-run via "
+            "`systemctl --user start jj-snapshot-refresh.service`."
+        )
+
+    return failures
+
+
 def main() -> int:
     if not SNAPSHOT.exists():
         return fail(f"snapshot missing: {SNAPSHOT}")
@@ -81,46 +124,12 @@ def main() -> int:
     except json.JSONDecodeError as e:
         return fail(f"snapshot not valid JSON: {e}")
 
-    if not isinstance(data, dict):
-        return fail(
-            f"snapshot root is {type(data).__name__}, expected dict"
-        )
-
-    missing = [k for k in REQUIRED_KEYS if k not in data]
-    if missing:
-        return fail(f"snapshot missing required keys: {missing}")
+    failures = validate_snapshot_data(data)
+    if failures:
+        return fail("; ".join(failures))
 
     niches = data["niches_scanned"]
-    if not isinstance(niches, list) or not niches:
-        return fail(
-            "`niches_scanned` empty or not a list — refresh script must "
-            "have hit an early-return before NICHE_SHEETS iteration"
-        )
-
     weekly = data["weekly_buckets"]
-    if not isinstance(weekly, list) or not weekly:
-        return fail(
-            "`weekly_buckets` empty or not a list — dashboard JJ-dials "
-            "trend panel needs this populated"
-        )
-
-    lifetime = data.get("dials_lifetime")
-    if not isinstance(lifetime, int) or isinstance(lifetime, bool):
-        return fail(
-            f"`dials_lifetime` is {lifetime!r} ({type(lifetime).__name__}), "
-            "expected a positive int"
-        )
-    if lifetime <= 0:
-        return fail(
-            f"`dials_lifetime` is {lifetime} — FALSE ZERO. Lifetime dials "
-            "are monotonic for an established calling operation, so 0 means "
-            "the gog OAuth refresh failed and refresh_jj_snapshot.py fell "
-            "back to a working-tab-only scan (all niches 0). The dashboard "
-            "JJ row is feeding off bad data. Check the refresh log for "
-            "'OAuth refresh failed' and re-run via "
-            "`systemctl --user start jj-snapshot-refresh.service`."
-        )
-
     print(
         f"OK: {SNAPSHOT.name} fresh ({age:.0f}s old) — "
         f"{len(niches)} niches, dials_today={data.get('dials_today')}, "

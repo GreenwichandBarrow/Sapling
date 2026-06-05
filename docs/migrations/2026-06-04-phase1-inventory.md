@@ -11,8 +11,8 @@ This inventory records the live surfaces found during the Claude Code to Codex P
 - Skills: 46 migrated skill files exist in `.agents/skills`, matching the 46 legacy `.claude/skills` files.
 - Hooks: legacy `.claude/hooks` were copied into `.codex/hooks`, with `.codex/hooks.json` routing through `.codex/hooks/run-hook.sh`.
 - Live scheduled jobs: 21 user systemd timers were found.
-- Live Codex cutover: `health-monitor.service`, `nightly-tracker-audit.service`, `launchd-debugger.service`, `email-intelligence.service`, `relationship-manager.service`, `target-discovery-sunday.service`, `jj-operations-sunday.service`, `conference-discovery.service`, `post-call-analyzer-poll.service`, and the `deal-aggregator` service cluster now use Codex runner paths.
-- Live legacy agent runner: 2 direct `run-skill.sh` services still remain on Claude because they are blocked, date-sensitive, or mutating workflows that were not safe to blindly pilot yet.
+- Live Codex cutover: all agent-backed scheduled services except `calibration-workflow.service` now use Codex runner paths.
+- Live legacy agent runner: only `calibration-workflow.service` remains on Claude because it is blocked and needs a durable headless prompt/validator redesign.
 - Direct script jobs: 6 recurring jobs appear agent-free and should remain unchanged in Phase 1 unless they internally trigger agent work.
 - Cron: one user crontab entry exists for temp cleanup only.
 - MCP: no active repo-level `.mcp.json` was found. The only live-looking MCP state was `~/.claude/mcp-needs-auth-cache.json`; scheduled Codex jobs must not depend on MCP until tested.
@@ -110,7 +110,7 @@ Phase 1 status: must-have safety hook logic is copied and synthetic checks pass 
 | `target-discovery-sunday.timer` | Sun 15:00 | `target-discovery-sunday.service` | Codex runner | cutover; pool-only validator fixed |
 | `jj-operations-sunday.timer` | Sun 18:00 | `jj-operations-sunday.service` | Codex runner | cutover; prior week validator passed |
 | `conference-discovery.timer` | Sun 21:00 | `conference-discovery.service` | Codex runner | cutover; prior run validator passed |
-| `niche-intelligence.timer` | Tue 22:30 | `niche-intelligence.service` | Claude runner | pending validation |
+| `niche-intelligence.timer` | Tue 22:30 | `niche-intelligence.service` | Codex runner | cutover; prior run validator passed |
 
 `launchpadlib-cache-clean.timer` is also present, but it is unrelated to Sapling agent migration.
 
@@ -119,7 +119,6 @@ Phase 1 status: must-have safety hook logic is copied and synthetic checks pass 
 These live services still point at `scripts/run-skill.sh`:
 
 - `calibration-workflow.service`
-- `niche-intelligence.service`
 
 Conversion rule: validate each workflow manually, then apply `scripts/prepare-codex-systemd-cutover.sh --apply --group <group>`. Do not edit timers during Phase 1 unless required.
 

@@ -143,7 +143,7 @@ case "$SKILL_NAME:$SKILL_ARGS" in
     HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/launchd-debugger/headless-on-failure-prompt.md" ;;
   "niche-intelligence:tuesday")
     HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/niche-intelligence/headless-tuesday-prompt.md"
-    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_niche_intelligence_integrity.py\"}" ;;
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_niche_intelligence_integrity.py\" --date \"$TODAY\"}" ;;
   "email-intelligence:")
     HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/email-intelligence/headless-weekday-prompt.md"
     POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_email_intelligence_integrity.py\" --date \"$TODAY\" --log-file \"$LOG_FILE\"}" ;;

@@ -66,7 +66,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | health-monitor | weekly timer | `run-agent-skill.sh health-monitor` | 1 | cutover | Codex pilot completed, wrote `brain/trackers/health/2026-06-04-health.md`, validated artifact, posted Slack per RED/YELLOW rule, and live systemd service now uses `run-agent-skill.sh`. |
 | jj-operations | Sunday timer + headless prompt | `run-agent-skill.sh jj-operations:sunday-prep` | 1 | cutover | Validator passed against week of 2026-06-01; live service now uses `run-agent-skill.sh`. Observe Sunday 2026-06-07 Codex run. |
 | launchd-debugger | daily/on-failure prompts | `run-agent-skill.sh launchd-debugger` variants | 1 | cutover | Daily Codex pilot completed after scanner hardening; live systemd service now uses `run-agent-skill.sh`. |
-| niche-intelligence | Tuesday timer + headless prompt | `run-agent-skill.sh niche-intelligence:tuesday` | 1 | pending | Validator exists; dependency on last30days noted in old runner. |
+| niche-intelligence | Tuesday timer + headless prompt | `run-agent-skill.sh niche-intelligence:tuesday` | 1 | cutover | Prior run validator passed for 2026-06-02; live service now uses `run-agent-skill.sh` with explicit date validation. Last30days dependency still lives under legacy skill path and is tracked for cleanup. |
 | nightly-tracker-audit | nightly timer + prompt | `run-agent-skill.sh nightly-tracker-audit:nightly` | 1 | cutover | Codex validation completed after runner inherited `op-env.sh`; live systemd service now uses `run-agent-skill.sh`. |
 | post-call-analyzer | poll script + triggered prompt | `run-agent-skill.sh post-call-analyzer:on-trigger` | 1 | cutover | Codex poller pilot completed with 0 queued notes; live poll service now uses `post_call_analyzer_poll.codex.sh`. Analyzer trigger has Codex prompt/validator coverage but did not run on a fresh queued note during the pilot. |
 | relationship-manager | weekday timer + prompt | `run-agent-skill.sh relationship-manager:daily` | 1 | cutover | Claude run passed on 2026-06-05; Codex runner now has same-day idempotency skip for valid artifacts; live service uses `run-agent-skill.sh relationship-manager:daily`. |
@@ -181,7 +181,6 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 
 ### Intentionally left on Claude for safety
 
-- `niche-intelligence.service`: writes Drive/Sheets and depends on research sources; future Tuesday workflow remains pending a supervised or dry-run-equivalent Codex pilot.
 - `calibration-workflow.service`: blocked; last legacy run waited for human approval and produced no durable artifact. Needs a dedicated headless prompt/validator before Codex cutover.
 
 ### Deferred to Phase 2 / Phase 3
@@ -213,3 +212,11 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - `scripts/validate_conference_discovery_integrity.py` now gives the live Pipeline sheet read a 90-second timeout and retries once, matching observed `gog` cold-cache behavior.
 - Regression validation passed against `conference-pipeline-pre-run-2026-05-31.json`: row-count delta, header positions, cell mutations, and authorized statuses all passed.
 - `conference-discovery.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh conference-discovery sunday`. Timer was unchanged. Next live Codex observation window is Sunday 2026-06-07 21:00 EDT.
+
+
+## Niche Intelligence Cutover - 2026-06-05
+
+- Regression validation passed against the 2026-06-02 niche-intelligence artifacts: markdown report and JSON sidecar both satisfy `validate_niche_intelligence_integrity.py`.
+- `scripts/run-agent-skill.sh` now passes `--date "$TODAY"` to the niche-intelligence post-run validator.
+- `niche-intelligence.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh niche-intelligence:tuesday`. Timer was unchanged. Next live Codex observation window is Tuesday 2026-06-09 22:30 EDT.
+- Phase 2 cleanup: migrate or vendor the `last30days` dependency out of `~/.claude/skills/last30days`; current faithful migration leaves it available in place because prior successful runs depended on that path.

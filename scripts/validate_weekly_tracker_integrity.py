@@ -18,6 +18,7 @@ If --week-ending omitted, computes most-recent Friday from today.
 
 import json
 import os
+import re
 import subprocess
 import sys
 from datetime import date, datetime, timedelta
@@ -30,6 +31,16 @@ VAULT_DIR = os.environ.get(
     "WEEKLY_TRACKER_VAULT_DIR",
     os.path.join(_REPO_ROOT, "brain", "trackers", "weekly"),
 )
+
+REQUIRED_SECTIONS = [
+    "## Key Metrics",
+    "## System Throughput",
+    "## Signal Quality",
+    "## Pipeline Health",
+    "## Channel Performance",
+    "## Flags",
+]
+MIN_SNAPSHOT_BYTES = 1000
 
 
 def most_recent_friday(today: date) -> date:
@@ -64,6 +75,48 @@ def vault_snapshot_path(week_ending: date) -> str:
     return os.path.join(VAULT_DIR, f"{week_ending.isoformat()}-weekly-tracker.md")
 
 
+def validate_vault_snapshot(snapshot: str, week_ending: date) -> list[str]:
+    failures: list[str] = []
+    if not os.path.exists(snapshot):
+        failures.append(
+            f"vault snapshot missing: {snapshot} "
+            f"(weekly-tracker should write per SKILL.md Step 4.5)"
+        )
+        return failures
+
+    size = os.path.getsize(snapshot)
+    if size < MIN_SNAPSHOT_BYTES:
+        failures.append(
+            f"vault snapshot suspiciously small ({size} bytes < {MIN_SNAPSHOT_BYTES}): {snapshot}"
+        )
+
+    with open(snapshot) as f:
+        content = f.read()
+
+    if not content.startswith("---"):
+        failures.append(f"vault snapshot has no YAML frontmatter: {snapshot}")
+    else:
+        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+        if not fm_match:
+            failures.append(f"vault snapshot frontmatter unterminated: {snapshot}")
+        else:
+            fm = fm_match.group(1)
+            if f"date: {week_ending.isoformat()}" not in fm:
+                failures.append(
+                    f"vault snapshot frontmatter date does not match {week_ending}"
+                )
+            if "type: tracker" not in fm:
+                failures.append("vault snapshot frontmatter missing 'type: tracker'")
+            if "topic/weekly-tracker" not in fm:
+                failures.append("vault snapshot frontmatter missing topic/weekly-tracker tag")
+
+    missing_sections = [section for section in REQUIRED_SECTIONS if section not in content]
+    if missing_sections:
+        failures.append(f"vault snapshot missing required section(s): {missing_sections}")
+
+    return failures
+
+
 def main() -> int:
     args = sys.argv[1:]
     if "--week-ending" in args:
@@ -74,13 +127,9 @@ def main() -> int:
 
     failures = []
 
-    # Check 1: Vault snapshot file exists for this week
+    # Check 1: Vault snapshot file exists and has the expected content shape.
     snapshot = vault_snapshot_path(week_ending)
-    if not os.path.exists(snapshot):
-        failures.append(
-            f"vault snapshot missing: {snapshot} "
-            f"(weekly-tracker should write per SKILL.md Step 4.5)"
-        )
+    failures.extend(validate_vault_snapshot(snapshot, week_ending))
 
     # Check 2: Sheet has a column for this week-ending in 'Weekly Topline'
     expected = expected_column_header(week_ending)

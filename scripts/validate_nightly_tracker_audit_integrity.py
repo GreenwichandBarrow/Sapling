@@ -3,7 +3,7 @@
 Wrapper-level integrity validator for nightly-tracker-audit scheduled runs.
 
 Runs as POST_RUN_CHECK after launchd wrapper completes. Independent of skill-internal
-validation. Catches silent-success failures where Claude exits 0 but the Industry
+validation. Catches silent-success failures where the agent exits 0 but the Industry
 Research Tracker WEEKLY REVIEW tab is still dirty (Tabled/Killed rows lingering,
 blank gaps, non-sequential rank).
 
@@ -48,35 +48,31 @@ def is_blank(row: list[str]) -> bool:
     return not row[COL_NICHE].strip()
 
 
-def main() -> int:
-    try:
-        rows = get_data_rows(SHEET_ID, TAB, DATA_RANGE)
-    except Exception as e:
-        print(f"NIGHTLY-TRACKER-AUDIT VALIDATOR FAILED: could not read sheet: {e}", file=sys.stderr)
-        return 2
+def analyze_weekly_review_rows(rows: list[list[str]]) -> tuple[list[str], int]:
+    rows = [list(row) for row in rows]
+    failures: list[str] = []
 
-    failures = []
-
-    # Trim trailing blanks for analysis
+    # Trim trailing blanks for analysis.
     while rows and is_blank(rows[-1]):
         rows.pop()
 
     if not rows:
-        print("NIGHTLY-TRACKER-AUDIT VALIDATOR FAILED: WEEKLY REVIEW has no data rows", file=sys.stderr)
-        return 2
+        return (["WEEKLY REVIEW has no data rows"], 0)
 
-    # Check 1: No Tabled/Killed rows
+    # Check 1: No Tabled/Killed rows.
     bad_status_rows = []
     for i, row in enumerate(rows, start=4):  # row index in sheet (data starts row 4)
         if is_blank(row):
             continue
         status = row[COL_STATUS].strip() if len(row) > COL_STATUS else ""
         if status in ("Tabled", "Killed"):
-            bad_status_rows.append(f"row {i} ({row[COL_NICHE]}) has status={status!r} — should be in {status.upper()} tab")
+            bad_status_rows.append(
+                f"row {i} ({row[COL_NICHE]}) has status={status!r} — should be in {status.upper()} tab"
+            )
     if bad_status_rows:
         failures.append("Tabled/Killed rows still in WEEKLY REVIEW:\n    " + "\n    ".join(bad_status_rows))
 
-    # Check 2: No blank rows in middle
+    # Check 2: No blank rows in middle.
     seen_data = False
     seen_blank_after_data = False
     blank_gap_rows = []
@@ -91,7 +87,7 @@ def main() -> int:
     if blank_gap_rows:
         failures.append("Blank gaps between data rows:\n    " + "\n    ".join(blank_gap_rows))
 
-    # Check 3: Rank column is sequential 1, 2, 3, ... for non-blank rows
+    # Check 3: Rank column is sequential 1, 2, 3, ... for non-blank rows.
     rank_issues = []
     expected_rank = 1
     for i, row in enumerate(rows, start=4):
@@ -110,13 +106,25 @@ def main() -> int:
     if rank_issues:
         failures.append("Rank column not sequential:\n    " + "\n    ".join(rank_issues))
 
+    data_count = sum(1 for r in rows if not is_blank(r))
+    return failures, data_count
+
+
+def main() -> int:
+    try:
+        rows = get_data_rows(SHEET_ID, TAB, DATA_RANGE)
+    except Exception as e:
+        print(f"NIGHTLY-TRACKER-AUDIT VALIDATOR FAILED: could not read sheet: {e}", file=sys.stderr)
+        return 2
+
+    failures, data_count = analyze_weekly_review_rows(rows)
+
     if failures:
         print("NIGHTLY-TRACKER-AUDIT VALIDATOR FAILED:", file=sys.stderr)
         for f in failures:
             print(f"  - {f}", file=sys.stderr)
         return 2
 
-    data_count = sum(1 for r in rows if not is_blank(r))
     print(f"NIGHTLY-TRACKER-AUDIT VALIDATOR PASSED")
     print(f"  WEEKLY REVIEW: {data_count} data rows, no blanks, no Tabled/Killed lingering, rank sequential")
     return 0

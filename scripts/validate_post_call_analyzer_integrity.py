@@ -3,7 +3,7 @@
 
 Per universal POST_RUN_CHECK doctrine (feedback_mutating_skill_hardening_pattern.md):
 every scheduled mutating skill must have an integrity validator that runs after
-Claude exits 0. Non-zero exit from this script → wrapper overrides skill exit
+the agent exits 0. Non-zero exit from this script → wrapper overrides skill exit
 code → Slack alert with VALIDATOR FAILED prefix.
 
 Checks (matches SKILL.md "Validator (mandatory)" section):
@@ -27,6 +27,9 @@ from pathlib import Path
 
 def find_repo_root() -> Path:
     here = Path(__file__).resolve()
+    for parent in [here.parent, *here.parents]:
+        if (parent / "AGENTS.md").exists() and (parent / ".codex").exists():
+            return parent
     for parent in [here.parent, *here.parents]:
         if (parent / "CLAUDE.md").exists() and (parent / ".claude").exists():
             return parent
@@ -73,14 +76,8 @@ def check_queue_freshness() -> None:
         )
 
 
-def check_processed_entries() -> None:
-    if not PROCESSED_LEDGER.exists():
-        return
-    try:
-        ledger = json.loads(PROCESSED_LEDGER.read_text())
-    except json.JSONDecodeError as e:
-        failures.append(f"processed.json malformed: {e}")
-        return
+def validate_processed_ledger(ledger: object) -> list[str]:
+    ledger_failures: list[str] = []
 
     # Ledger shapes supported:
     #   New (post-2026-05-13): {"processed": [{"id": ..., "doc_url": ..., ...}, ...], "last_updated": ...}
@@ -89,8 +86,7 @@ def check_processed_entries() -> None:
     if isinstance(ledger, dict) and "processed" in ledger:
         items = ledger["processed"]
         if not isinstance(items, list):
-            failures.append(f"processed.json 'processed' field is {type(items).__name__}, expected list")
-            return
+            return [f"processed.json 'processed' field is {type(items).__name__}, expected list"]
         entries_iter = (
             items if items and isinstance(items[0], dict) else [{"id": e} for e in items]
         )
@@ -99,10 +95,14 @@ def check_processed_entries() -> None:
             {"id": k, **v} if isinstance(v, dict) else {"id": k} for k, v in ledger.items()
         ]
     else:
-        failures.append(f"processed.json unexpected shape: {type(ledger).__name__}")
-        return
+        return [f"processed.json unexpected shape: {type(ledger).__name__}"]
 
     for entry in entries_iter:
+        if not isinstance(entry, dict):
+            ledger_failures.append(
+                f"processed entry has unexpected shape: {type(entry).__name__}"
+            )
+            continue
         nid = entry.get("id")
         if not nid:
             continue
@@ -115,7 +115,20 @@ def check_processed_entries() -> None:
             or entry.get("processed_at")
         )
         if not has_artifacts:
-            failures.append(f"processed entry {nid} has no artifact + no failure marker")
+            ledger_failures.append(f"processed entry {nid} has no artifact + no failure marker")
+    return ledger_failures
+
+
+def check_processed_entries() -> None:
+    if not PROCESSED_LEDGER.exists():
+        return
+    try:
+        ledger = json.loads(PROCESSED_LEDGER.read_text())
+    except json.JSONDecodeError as e:
+        failures.append(f"processed.json malformed: {e}")
+        return
+
+    failures.extend(validate_processed_ledger(ledger))
 
 
 def check_processed_rotation() -> None:

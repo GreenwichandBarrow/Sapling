@@ -98,7 +98,7 @@ Run subagents in parallel — they share no state.
 |-------|--------|-------------|
 | AUTH (Codex CLI 401, OAuth token expired) | SURFACE | none — Kay must re-auth |
 | TRANSIENT_API (5xx, network timeout, rate-limited 429) | FIX | re-run via `launchctl start` |
-| MCP_DISCONNECT (mcp__attio, mcp__granola, mcp__superhuman returns "not connected") | FIX **only after REST health-check confirms underlying service is up** — if REST = 200, reclassify as SKILL_CODE_NEEDS_REST_FALLBACK and SURFACE (skill should use REST, not MCP). Otherwise reconnect via `claude mcp restart` (if available) OR mark for manual `/mcp` reconnect, then re-run | reconnect, then re-run |
+| MCP_DISCONNECT (mcp__attio, mcp__granola, legacy MCP tools return "not connected") | FIX **only after REST health-check confirms underlying service is up** — if REST = 200, reclassify as SKILL_CODE_NEEDS_REST_FALLBACK and SURFACE (skill should use REST, not MCP). Otherwise reconnect via `claude mcp restart` (if available) OR mark for manual `/mcp` reconnect, then re-run | reconnect, then re-run |
 | VALIDATOR_REJECT (POST_RUN_CHECK said skill output was wrong) | SURFACE | never auto-fix sheet/Attio drift — Kay reviews |
 | MISSING_ARTIFACT (cached snapshot didn't refresh) | FIX | regenerate via `scripts/refresh-{name}.sh`, then re-run |
 | SCHEMA_VIOLATION (vault write rejected by validate-edits.py) | SURFACE | code change required |

@@ -286,11 +286,11 @@ def probe_vault() -> dict:
 
 
 def probe_mcp_processes() -> dict:
-    """Liveness check for attio-mcp / superhuman MCP processes.
+    """Liveness check for MCP processes used by scheduled workflows.
 
-    Some MCP-backed services are intentionally browser/OAuth-gated. If their
-    individual probes are already classified as manual skips, missing local MCP
-    processes should not become a fresh broken-system error.
+    Attio MCP is intentionally browser/OAuth-gated. If the Attio probe is
+    classified as a manual skip, a missing local process should not become a
+    fresh broken-system error.
     """
     try:
         rc, out, _err, ms = _run(["ps", "ax"])
@@ -299,58 +299,22 @@ def probe_mcp_processes() -> dict:
     if rc != 0:
         return _result("error", ms, f"ps exit {rc}")
 
-    counts = {
-        "attio-mcp": sum(
-            1 for ln in out.splitlines() if "attio-mcp" in ln and "grep" not in ln
-        ),
-        "superhuman": sum(
-            1
-            for ln in out.splitlines()
-            if "superhuman" in ln.lower() and "grep" not in ln
-        ),
-    }
-    individual = {
-        "attio-mcp": probe_attio_mcp(),
-        "superhuman": probe_superhuman(),
-    }
-    manual_skips = [
-        name
-        for name, result in individual.items()
-        if counts[name] == 0 and result.get("status") == "skip"
-    ]
-    unexpected_missing = [
-        name
-        for name, result in individual.items()
-        if counts[name] == 0 and result.get("status") != "skip"
-    ]
-
-    msg = (
-        f"attio-mcp={counts['attio-mcp']} superhuman={counts['superhuman']}"
+    count = sum(
+        1 for ln in out.splitlines() if "attio-mcp" in ln and "grep" not in ln
     )
-    if manual_skips:
-        msg += f"; manual-skip={','.join(manual_skips)}"
-    if unexpected_missing:
-        msg += f"; unexpected-missing={','.join(unexpected_missing)}"
+    attio_result = probe_attio_mcp()
+    msg = f"attio-mcp={count}"
 
-    active_expected = len(counts) - len(manual_skips)
-    active_count = sum(counts.values())
-
-    if unexpected_missing:
-        if active_count >= 1:
-            return _result("warn", ms, msg)
-        return _result("error", ms, msg)
-    if active_expected == 0:
+    if count == 0 and attio_result.get("status") == "skip":
         return _result(
             "skip",
             ms,
-            msg,
-            skip_reason="MCP-backed services require manual OAuth/browser reconnect",
+            msg + "; manual-skip=attio-mcp",
+            skip_reason="Attio MCP requires manual OAuth/browser reconnect",
         )
-    if active_count >= active_expected:
-        return _result("ok", ms, msg)
-    if active_count >= 1:
-        return _result("warn", ms, msg)
-    return _result("error", ms, msg)
+    if count == 0:
+        return _result("error", ms, msg + "; unexpected-missing=attio-mcp")
+    return _result("ok", ms, msg)
 
 
 # -----------------------------------------------------------------------------
@@ -360,10 +324,6 @@ def probe_mcp_processes() -> dict:
 
 def probe_attio_mcp() -> dict:
     return _skip("OAuth re-flow required (Smithery UI)")
-
-
-def probe_superhuman() -> dict:
-    return _skip("OAuth refresh required (manual)")
 
 
 def probe_linkt() -> dict:
@@ -385,7 +345,6 @@ PROBES: dict[str, Callable[[], dict]] = {
     "launchd": probe_launchd,
     "vault": probe_vault,
     "attio-mcp": probe_attio_mcp,
-    "superhuman": probe_superhuman,
     "linkt": probe_linkt,
     # MCP-process liveness is informational; not a yaml row, but useful for ops
     "mcp-processes": probe_mcp_processes,

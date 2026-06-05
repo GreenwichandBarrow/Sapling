@@ -129,7 +129,7 @@ Cards handed to Kay in person are GOLD. Use them verbatim.
 
 4. **Read templates** from the Google Sheet (`preconf_intermediary` or `preconf_owner`).
 
-5. **Draft each email** via Gmail directly using `gog gmail draft create` (per `feedback_gmail_only_no_superhuman`):
+5. **Draft each email** via Gmail directly using `gog gmail draft create` (Gmail draft-only path):
    - Populate variables: `{{first_name}}`, `{{conference}}`, `{{conference_day}}` (e.g., "Thursday"), `{{personalization}}` (one specific reason this person is interesting based on their firm/background)
    - Queue for Monday morning send (never Sunday per `feedback_no_sunday_emails`)
    - `{{buy_box_intermediary}}` optional in pre-conf (skip unless natural; buy-box hits harder post-conference when relationship is fresh)
@@ -195,7 +195,7 @@ Kay will send these together — card image + her notes per person — in the sa
    - `{{reciprocal_hook}}` (intermediary only) = what Kay can offer them, inferred from the notes (e.g., if Kay noted "he's building a practice in X" → offer a relevant connection or insight). Leave blank if nothing natural.
    - `{{deal_sector}}` (deal variant only) = the business/sector the intermediary mentioned, from Kay's notes.
 
-8. **Use Gmail draft via gog CLI** (per `feedback_gmail_only_no_superhuman`):
+8. **Use Gmail draft via gog CLI** (Gmail draft-only path):
    ```bash
    gog gmail draft create --to "{email}" --subject "{subject}" --body "{body}" -a kay.s@greenwichandbarrow.com
    ```

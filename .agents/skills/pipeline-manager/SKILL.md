@@ -11,8 +11,6 @@ context_budget:
 user_invocable: true
 ---
 
-> **2026-05-01 calibration:** Superhuman fully sunset 4/29/26. All draft references in this file mean **Gmail directly** via the bash wrapper. See .
-
 <credentials>
 ## Credentials (read first)
 
@@ -244,7 +242,7 @@ Reply by number.
 - Group by niche when multiple niches are active. One header per niche.
 - Kay responds with decisions per item: "1 draft, 2 approve" or "1 cadence, 2 pass"
 - On Kay's decision:
-  - "draft" → create Gmail draft via `gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29)` for Kay's review before sending
+  - "draft" → create Gmail draft via `gmail-draft.sh` or `gog gmail draft create` for Kay's review before sending
   - "cadence" → enroll in Codex-managed email cadence via Gmail drafts
   - "approve" → route to Gmail drafts + JJ call list based on channel
   - "pass" → move target to Passed tab on the tracker sheet
@@ -401,12 +399,12 @@ Before scanning for signals, ingest new data from external tools into the vault.
 5. Set `source: granola`, populate people/companies as wiki-links, generate tags
 6. Create any missing entities in brain/entities/
 
-### Superhuman Draft Status Check
-Check Superhuman for the status of outreach drafts created by outreach-manager. NOTE: Drafts are created via superhuman-cli Bash command (NOT the MCP `superhuman_draft` tool which uses Gmail API). Use `superhuman_search` MCP or check sent folder to determine if drafts were sent.
+### Gmail Draft Status Check
+Check Gmail for the status of outreach drafts created by outreach-manager. Use `gog gmail draft list`, Gmail search, and the sent folder to determine whether drafts were sent.
 
 Results from this check feed directly into the **Draft Status** section of `brain/context/email-scan-results-{YYYY-MM-DD}.md` (see Email Scan Results Artifact below).
 
-1. Query Superhuman for all drafts and recently sent emails matching known outreach targets
+1. Query Gmail drafts and recently sent emails matching known outreach targets
 2. For each draft that was sent:
    - Update Attio: move target from "Identified" to "Contacted" (source: Gmail sent folder scan + target sheet "Day 0 Sent" column)
    - Log the sent date in the email-scan-results artifact
@@ -415,7 +413,7 @@ Results from this check feed directly into the **Draft Status** section of `brai
      - Unsent after 24 hours: "Thank-you to {name} still unsent. Approaching 48-hour window."
      - Unsent after 48 hours: "Thank-you to {name} is 48+ hours old. Send today or it loses impact."
    - **Outreach drafts (less urgent):**
-     - Unsent after 2+ business days: "{n} outreach drafts unsent in Superhuman. Review and send?"
+     - Unsent after 2+ business days: "{n} outreach drafts unsent in Gmail. Review and send?"
 4. For any replies detected (responses to outreach emails):
    - Flag as high-priority pipeline signal
    - Recommend stage change based on reply content
@@ -424,7 +422,7 @@ This is how the system knows Kay sent the email and triggers the Attio stage adv
 
 ### Outbound Email Scan (catches manually-sent emails + auto-creates missing Active Deals entries)
 
-The Superhuman Draft Status Check above only catches emails that originated as outreach-manager drafts. Kay also sends emails manually — typed directly in Superhuman, forwarded from another thread, or replied inline. These must also trigger pipeline stage changes.
+The Gmail Draft Status Check above only catches emails that originated as outreach-manager drafts. Kay also sends emails manually, forwards from another thread, or replies inline. These must also trigger pipeline stage changes.
 
 **CRITICAL (added 2026-04-15 after Timothy Wong / MMPC gap):** Attio auto-creates **People records** from email interactions, but does NOT auto-create **Active Deals list entries**. If an outbound email's recipient has a Person record but no Active Deals list entry, this scan must CREATE the list entry — not just skip them. The scan is a reconciler-and-creator, not a read-only updater.
 
@@ -444,7 +442,7 @@ The Superhuman Draft Status Check above only catches emails that originated as o
    - Flag in morning briefing: "Auto-created Active Deals entry for {Company} at Contacted (outbound email detected, prior list entry missing)"
 5. **Path C — No Person record and no list entry:**
    - This shouldn't happen (Attio auto-creates People from email) but if it does, create both
-6. **Deduplication:** Skip any recipient already captured by the Superhuman Draft Status Check above. Use the recipient email as the dedup key.
+6. **Deduplication:** Skip any recipient already captured by the Gmail Draft Status Check above. Use the recipient email as the dedup key.
 7. **Scope:** Only process emails sent to external recipients. Ignore internal emails (to @greenwichandbarrow.com addresses).
 8. **Log cross-reference source:** Every created entry records `source: manual-outbound-email` with the message ID for audit trail.
 
@@ -468,7 +466,7 @@ For each approved target ("Kay: Decision" = "Approve"), check target sheet date 
 1. **Email send detection:** Read "Day 0 Sent" column + Gmail sent folder scan.
    → If Day 0 sent: advance Attio from Identified to Contacted
 
-2. **Follow-up emails:** Codex drafts Day 3/14 follow-ups in Superhuman each morning. Pipeline-manager checks "Day 0 Sent" / "Day 3 Sent" dates to identify targets due for follow-up based on business days elapsed.
+2. **Follow-up emails:** Codex drafts Day 3/14 follow-ups in Gmail each morning. Pipeline-manager checks "Day 0 Sent" / "Day 3 Sent" dates to identify targets due for follow-up based on business days elapsed.
 
 3. **Reply detected (any stage):** If inbound email from target detected in Gmail:
    → Update Attio to "Engaged", set "Cadence Status" to "Replied" on target sheet
@@ -481,7 +479,7 @@ For each approved target ("Kay: Decision" = "Approve"), check target sheet date 
 ### New Approval Detection
 
 For each row where "Kay: Decision" = "Approve" and "Day 0 Sent" is blank (no cadence started):
-→ These are newly approved targets. Signal outreach-manager to draft initial outreach in Superhuman.
+→ These are newly approved targets. Signal outreach-manager to draft initial outreach in Gmail.
 → Present in briefing: "{n} new approvals on {niche} target list. Outreach drafts queued."
 
 ### Conference Decision Scan
@@ -605,16 +603,16 @@ emails_scanned: N
 {If no draft-vs-sent pairs found: "No draft calibration data today."}
 ```
 
-**Draft Status population:** The Superhuman Draft Status Check AND the Outbound Email Scan (see sections above) both feed this section. For each outreach or thank-you draft created by outreach-manager or pipeline-manager:
-- Check Superhuman sent folder / `superhuman_search` MCP for matching sent emails
+**Draft Status population:** The Gmail Draft Status Check AND the Outbound Email Scan (see sections above) both feed this section. For each outreach or thank-you draft created by outreach-manager or pipeline-manager:
+- Check Gmail sent folder via `gog gmail search` for matching sent emails
 - If sent: record target name, company, and sent date
 - If unsent: record target name, company, and age in days since draft was created
 
 For each manually-sent email detected by the Outbound Email Scan that matched an Attio Active Deals entry:
 - Record target name, company, sent date, and note "(manual — not from draft)"
-- This gives downstream skills (and Kay's morning review) a single place to see what was sent vs. pending without re-querying Superhuman or Gmail.
+- This gives downstream skills (and Kay's morning review) a single place to see what was sent vs. pending without re-querying Gmail.
 
-This artifact is the handoff contract between pipeline-manager (which scans Gmail and checks Superhuman) and downstream consumers (/start, deal-aggregator). They never scan Gmail directly — they read this file.
+This artifact is the handoff contract between pipeline-manager (which scans Gmail and checks Gmail) and downstream consumers (/start, deal-aggregator). They never scan Gmail directly — they read this file.
 
 ### Active Deal Fast-Path (PRIORITY — runs during Gmail ingestion)
 

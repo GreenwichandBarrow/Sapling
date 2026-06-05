@@ -15,28 +15,26 @@ spec.loader.exec_module(probe)
 
 
 class McpProcessProbeTest(unittest.TestCase):
-    def test_all_manual_oauth_skips_do_not_report_error(self) -> None:
+    def test_attio_manual_oauth_skip_does_not_report_error(self) -> None:
         with patch.object(probe, "_run", return_value=(0, "", "", 12)):
             result = probe.probe_mcp_processes()
 
         self.assertEqual(result["status"], "skip")
-        self.assertIn("manual-skip=attio-mcp,superhuman", result["message"])
+        self.assertIn("manual-skip=attio-mcp", result["message"])
         self.assertIn("manual OAuth", result["skip_reason"])
 
-    def test_running_active_process_with_other_manual_skip_is_ok(self) -> None:
+    def test_running_attio_process_is_ok(self) -> None:
         ps = "123 ? S 0:00 /usr/bin/attio-mcp\n"
         with patch.object(probe, "_run", return_value=(0, ps, "", 12)):
             result = probe.probe_mcp_processes()
 
         self.assertEqual(result["status"], "ok")
         self.assertIn("attio-mcp=1", result["message"])
-        self.assertIn("manual-skip=superhuman", result["message"])
 
     def test_unexpected_missing_still_errors(self) -> None:
         with (
             patch.object(probe, "_run", return_value=(0, "", "", 12)),
             patch.object(probe, "probe_attio_mcp", return_value=probe._result("ok", 1, "healthy")),
-            patch.object(probe, "probe_superhuman", return_value=probe._skip("manual")),
         ):
             result = probe.probe_mcp_processes()
 

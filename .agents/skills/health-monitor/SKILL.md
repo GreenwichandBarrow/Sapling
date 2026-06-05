@@ -12,7 +12,7 @@ schedule: Friday 12:30 AM ET
 ---
 
 <objective>
-Detect silent failures before they become lost deals or broken workflows. Every issue found in production this month (deal-aggregator failing silently, Project Restoration skipping stages, E&K deal untracked, Gmail draft routing failures) would have been caught by this skill. (Superhuman row removed 2026-05-01 — Superhuman sunset 4/29 per `feedback_gmail_only_no_superhuman`; all drafts now go through Gmail directly via `gog gmail draft create`.)
+Detect silent failures before they become lost deals or broken workflows. Every issue found in production this month (deal-aggregator failing silently, Project Restoration skipping stages, E&K deal untracked, Gmail draft routing failures) would have been caught by this skill.
 </objective>
 
 <credentials>

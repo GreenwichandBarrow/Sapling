@@ -159,7 +159,7 @@ The calibration agent should propose skill improvements that address the specifi
 
 ### Draft Calibration Loop
 
-The agent drafts emails in Gmail (`gog gmail draft create`). Kay edits before sending. The edits are learning signal. (Superhuman sunset 4/29 per `feedback_gmail_only_no_superhuman`.)
+The agent drafts emails in Gmail (`gog gmail draft create`). Kay edits before sending. The edits are learning signal..
 
 **How it works:**
 1. **Pipeline-manager morning scan** reads sent emails from the last 24 hours via Gmail

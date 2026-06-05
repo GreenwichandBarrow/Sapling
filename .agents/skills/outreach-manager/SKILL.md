@@ -11,8 +11,6 @@ context_budget:
 user_invocable: true
 ---
 
-> **2026-05-01 calibration:** Superhuman fully sunset 4/29/26. All draft references in this file mean **Gmail directly** via the bash wrapper. See .
-
 <credentials>
 ## Credentials (read first)
 
@@ -95,10 +93,10 @@ Handles outreach for Kay Email targets sourced from skill/target-discovery (Apol
 
 ### Cold Outreach Delivery
 
-All cold outreach emails are drafted in **Superhuman** via the CLI wrapper. Kay reviews Day 0 emails, then hits send on all emails from Gmail (Day 0 reviewed, Day 3/6/14 follow-ups sent without editing).
+All cold outreach emails are drafted in **Gmail** via `~/.local/bin/gmail-draft.sh` or `gog gmail draft create`. Kay reviews Day 0 emails, then sends from Gmail. Follow-up drafts are draft-only; never send.
 
 ```bash
-~/.local/bin/gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29) --to "{email}" --subject "{subject}" --body "{body}"
+~/.local/bin/gmail-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
 ```
 
 **No third-party email tool ever gets SMTP credentials.** Kay sends every email herself from Gmail. Codex drafts, Kay sends.
@@ -116,7 +114,7 @@ Codex manages the outreach cadence by tracking per-touchpoint date columns on th
 - **Cadence Status** — current state: `Active`, `Complete`, `Replied`
 
 **Real-time tracking flow:**
-1. Codex drafts email/DM in Superhuman (or surfaces DM text in briefing)
+1. Codex drafts email in Gmail and surfaces DM text in briefing
 2. Kay says "looks good" or confirms sent
 3. Codex immediately updates: target sheet (writes date to the specific touchpoint column, e.g. "Day 0 Sent", "Day 3 Sent"; sets "Cadence Status" to `Active` or `Complete`) + Attio note on the contact record
 
@@ -125,9 +123,9 @@ Codex manages the outreach cadence by tracking per-touchpoint date columns on th
 **Daily cadence check (runs each morning):**
 1. Read target sheet: find all targets where "Cadence Status" = `Active`
 2. For each active target, check which touchpoint columns are blank:
-   - "Day 0 Sent" filled, "Day 3 Sent" blank, 3+ business days since Day 0 → draft Day 3 follow-up in Superhuman
+   - "Day 0 Sent" filled, "Day 3 Sent" blank, 3+ business days since Day 0 → draft Day 3 follow-up in Gmail
    - "Day 3 Sent" filled, "Day 6 DM Sent" blank, 3+ business days since Day 3 → surface LinkedIn DM in briefing (message text + LinkedIn URL)
-   - "Day 6 DM Sent" filled, "Day 14 Sent" blank, 8+ business days since Day 6 → draft Day 14 final email in Superhuman
+   - "Day 6 DM Sent" filled, "Day 14 Sent" blank, 8+ business days since Day 6 → draft Day 14 final email in Gmail
    - "Day 14 Sent" filled → set "Cadence Status" to `Complete`
 3. Draft 5 new Day 0 emails for fresh targets (approved, Day 0 Sent blank)
 4. Present in morning briefing: "5 new drafts to review, X follow-ups to send, X LinkedIn DMs to send"
@@ -342,17 +340,17 @@ Before writing any Day 0 outreach email, build a research brief for the target. 
 - Company website is down or domain expired
 - Owner is a Kay LinkedIn connection (route to warm intro instead of cold)
 
-**Get it right the first time.** Superhuman CLI cannot update or delete drafts. Every draft created is permanent until Kay manually deletes it.
+**Get it right the first time.** Every draft should be clean enough for Kay to review without cleanup churn.
 
 ### Draft Creation
 
-All outreach drafts use the Superhuman CLI wrapper (NOT the MCP tool — it uses Gmail API which creates invisible drafts):
+All outreach drafts use the Gmail draft wrapper or direct `gog gmail draft create`:
 
 ```bash
-~/.local/bin/gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29) --to "{email}" --subject "Intro {first name} & Kay" --body "{body}"
+~/.local/bin/gmail-draft.sh --to "{email}" --subject "Intro {first name} & Kay" --body "{body}"
 ```
 
-**CRITICAL:** Always verify the Superhuman CLI is using the G&B account (`kay.s@greenwichandbarrow.com`), not the personal email. If the G&B token is expired, the CLI silently falls back to the personal account. Check the output for the account confirmation line.
+**CRITICAL:** Always verify drafts land in the G&B Gmail account (`kay.s@greenwichandbarrow.com`), not a personal account. Check wrapper output or `gog` account status.
 
 Sign off "Very best, Kay" only — signature is built in.
 
@@ -520,7 +518,7 @@ When targets reply to Sam's emails, replies arrive in Kay's Gmail inbox (kay.s@g
 3. Kay reviews and sends
 
 ```bash
-~/.local/bin/gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29) --to "{email}" --subject "Re: {original subject}" --body "{body}"
+~/.local/bin/gmail-draft.sh --to "{email}" --subject "Re: {original subject}" --body "{body}"
 ```
 
 Same voice rules, same SMTP rules as Kay Email channel. Kay sends every reply herself.
@@ -543,7 +541,7 @@ Same voice rules, same SMTP rules as Kay Email channel. Kay sends every reply he
 
 1. Check Sam's shared sheets for new contacts made (new dates in "Date contacted")
 2. Check Kay's inbox for replies from DealsX niche targets
-3. For new replies: draft response in Superhuman, surface in morning briefing
+3. For new replies: draft response in Gmail, surface in morning briefing
 4. For new contacts: batch-update Attio entries
 5. Report in briefing: "DealsX: X new contacts this week, X replies pending response"
 </dealsx_coordination>
@@ -594,9 +592,9 @@ Kay Schneider
 Greenwich & Barrow
 ```
 
-Draft in Superhuman via the CLI wrapper:
+Draft in Gmail via the wrapper:
 ```bash
-~/.local/bin/gmail-draft.sh  # (was superhuman-draft.sh — Superhuman sunset 4/29) --to "{email}" --subject "{subject}" --body "{body}"
+~/.local/bin/gmail-draft.sh --to "{email}" --subject "{subject}" --body "{body}"
 ```
 Kay reviews and sends from Gmail.
 
@@ -641,7 +639,7 @@ Sorry I missed you at {Conference Name}. Would still love to connect. Do you hav
 Kay
 ```
 
-Draft all in Superhuman. Present during morning briefing. Kay approves and sends.
+Draft all in Gmail. Present during morning briefing. Kay approves and sends.
 </conference_outreach>
 
 <intermediary_outreach>
@@ -659,7 +657,7 @@ Handles outreach to force multipliers — people who know every owner in the nic
 **Voice rules (must read before drafting):**
 - `feedback_no_search_fund_language_intermediaries.md` — drop "search fund" / "search vehicle"; use "holding company in formation"
 - `feedback_kay_handles_all_replies.md` — replies always Kay (Kay-sent or Sam-DealsX-sent)
-- `feedback_gmail_only_no_superhuman.md` — drafts in Gmail directly (Superhuman sunset Apr 28)
+- Gmail-only drafting doctrine — drafts go directly to Gmail
 
 ### Who Are Intermediaries? (8 categories per the sheet)
 
@@ -723,8 +721,8 @@ Draft all intermediary emails in Gmail directly.
 - Conference targets excluded from cold cadence
 
 ### Channel Rules
-- **Kay Email:** All via Superhuman CLI wrapper. Kay sends every email herself. No third-party SMTP access ever.
-- **DealsX Email:** Sam sends from his infrastructure. We provide templates and exclusion lists. Replies come to Kay's inbox, Codex drafts responses in Superhuman.
+- **Kay Email:** All via Gmail drafts. Kay sends every email herself. No third-party SMTP access ever.
+- **DealsX Email:** Sam sends from his infrastructure. We provide templates and exclusion lists. Replies come to Kay's inbox, Codex drafts responses in Gmail.
 - **Phone:** JJ's call columns in the target sheet. JJ logs outcomes. Only for JJ-Call-Only niches.
 - **LinkedIn DM (Kay Email niches):** Kay sends manually from LinkedIn. Codex drafts and surfaces in morning briefing. Tracked in Attio notes.
 - **LinkedIn DM (DealsX niches):** Sam's team handles.
@@ -760,7 +758,7 @@ Verify every target was routed to the correct subagent based on its niche's Col 
 No cross-channel contamination.
 
 ### 2. Draft Delivery Validation (Kay Email niches only)
-Confirm every email draft was created via the Superhuman CLI Bash wrapper (NOT the MCP `superhuman_draft` tool). Verify the CLI returned a success response AND confirmed the G&B account (not personal email fallback).
+Confirm every email draft was created via the Gmail draft wrapper or `gog gmail draft create`. Verify success and the G&B account.
 
 ### 3. Cadence Tracking Validation (Kay Email niches only)
 Verify the target sheet has been updated for every outreach action:
@@ -773,7 +771,7 @@ Verify the target sheet has been updated for every outreach action:
 - Warm intro intercept ran BEFORE Sam contacted new batch
 - Exclusion list provided to Sam (PE-owned, already in Attio, warm intros, Jessica contacts)
 - Attio entries created/updated for Sam's reported contacts
-- Replies from DealsX targets drafted in Superhuman (not ignored)
+- Replies from DealsX targets drafted in Gmail (not ignored)
 
 ### 5. Warm Intro Validation
 For each target: if "Agent Notes" contains "WARM INTRO" → verify NO cold email was drafted and no JJ call was scheduled. Warm intros get a different approach and skip JJ entirely. For DealsX niches, warm intro targets must be PULLED from Sam's list and routed to Kay Email.
@@ -793,7 +791,7 @@ HARD STOP: never outreach to PE-owned companies. Applies to ALL channels includi
 
 ### Daily (Kay Email Niches)
 - [ ] 5 new Day 0 drafts in Gmail (personalized, research brief completed)
-- [ ] All due follow-ups (Day 3/14) drafted in Superhuman
+- [ ] All due follow-ups (Day 3/14) drafted in Gmail
 - [ ] All due LinkedIn DMs (Day 6) surfaced in briefing
 - [ ] Target sheet updated in real-time as Kay confirms sends
 - [ ] Attio notes logged for every outreach action
@@ -801,7 +799,7 @@ HARD STOP: never outreach to PE-owned companies. Applies to ALL channels includi
 
 ### Daily (DealsX Niches — when active)
 - [ ] Sam's shared sheets checked for new contacts
-- [ ] Replies from DealsX targets drafted in Superhuman
+- [ ] Replies from DealsX targets drafted in Gmail
 - [ ] Attio entries updated for Sam's reported contacts
 - [ ] Warm intro intercept completed before each new Sam batch
 - [ ] Exclusion list current (PE-owned, Attio existing, Jessica contacts)

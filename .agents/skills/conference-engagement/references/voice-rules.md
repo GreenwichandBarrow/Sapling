@@ -34,7 +34,7 @@ All voice rules below apply to every template in this skill.
 
 ## Gmail Delivery
 
-Drafts go directly into Kay's Gmail Drafts via the gog CLI (per `feedback_gmail_only_no_superhuman`):
+Drafts go directly into Kay's Gmail Drafts via the gog CLI:
 
 ```bash
 gog gmail draft create \

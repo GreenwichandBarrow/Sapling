@@ -1,6 +1,6 @@
 ---
 name: email-intelligence
-description: "Gmail/Granola scanning, deal flow classification, CIM auto-trigger, Active Deal Fast-Path, intro detection, and email-scan-results artifact. Runs before pipeline-manager. (Superhuman sunset 4/29 — Gmail-only.)"
+description: "Gmail/Granola scanning, deal flow classification, CIM auto-trigger, Active Deal Fast-Path, intro detection, and email-scan-results artifact. Runs before pipeline-manager. Gmail-only for drafts and sent-status checks."
 archetype: router
 context_budget:
   skill_md: 200
@@ -31,7 +31,7 @@ curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KE
 </credentials>
 
 <objective>
-Scan all inbound and outbound email, Gmail drafts, and Granola transcripts. Classify, detect deal signals, and write the email-scan-results artifact that pipeline-manager and other skills consume. (Superhuman sunset 4/29 per `feedback_gmail_only_no_superhuman` — Gmail draft scanning replaces Superhuman MCP.)
+Scan all inbound and outbound email, Gmail drafts, and Granola transcripts. Classify, detect deal signals, and write the email-scan-results artifact that pipeline-manager and other skills consume.
 
 **This is the first skill to run in the morning workflow.** Everything downstream depends on its output.
 
@@ -82,7 +82,7 @@ When describing actions Kay took via email, use the **exact language from the co
 
 **When the reply from the vendor is available, quote the key phrase** (e.g., "downgraded back to Starter tier" per Reid at Linkt). When no reply exists, say "requested" not "confirmed."
 
-### Gmail Draft Status (replaces Superhuman MCP — sunset 4/29)
+### Gmail Draft Status
 Check Gmail drafts via `gog gmail draft list --json`:
 - Which drafts were sent vs still pending
 - Age of unsent drafts (flag if > 48 hours)
@@ -296,7 +296,7 @@ Got it, reviewing this week and will follow up with my read by {{end_of_week_dat
 
 ### Draft creation
 
-Drafts go into Gmail via `~/.local/bin/gmail-draft.sh` (Bash wrapper, parallel to `superhuman-draft.sh`). NEVER call `gog gmail send` for these. NEVER use the Superhuman MCP tools (sunset 4/29). If the wrapper is missing, fall back to `gog gmail draft create` directly with the same payload. DO NOT skip silently.
+Drafts go into Gmail via `~/.local/bin/gmail-draft.sh`. NEVER call `gog gmail send` for these. If the wrapper is missing, fall back to `gog gmail draft create` directly with the same payload. DO NOT skip silently.
 
 Pass:
 - `--to` (broker email)
@@ -307,7 +307,7 @@ Pass:
 ### Forbidden patterns
 
 - **Auto-send broker NDA/CIM acknowledgment without Kay review.** This NEVER fires. Drafts are CREATED only. Per `feedback_kay_handles_all_replies` Kay sends every reply herself.
-- Use Superhuman MCP `superhuman_draft` or `superhuman_ask_ai` to compose. Sunset 4/29.
+- Use any non-Gmail drafting tool or send-capable command.
 
 ### Logging
 

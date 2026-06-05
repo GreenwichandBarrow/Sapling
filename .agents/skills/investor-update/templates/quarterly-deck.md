@@ -49,7 +49,7 @@
 
 ## Investor Email Drafts (personalized per investor)
 
-After the deck is approved, draft 12 personalized emails in Superhuman (via `~/.local/bin/superhuman-draft.sh`):
+After the deck is approved, draft 12 personalized emails in Gmail via `gog gmail draft create` or `~/.local/bin/gmail-draft.sh`:
 
 | Investor | Personalization |
 |----------|-----------------|
@@ -84,6 +84,6 @@ Email structure:
 - [ ] All deal names coded (first 2-3 letters only)
 - [ ] No em dashes anywhere
 - [ ] `STRICTLY CONFIDENTIAL` on every slide
-- [ ] 12 personalized email drafts created in Superhuman
+- [ ] 12 personalized email drafts created in Gmail
 - [ ] Motion follow-up tasks created for all 12 investors, due 2 weeks out
 - [ ] Deck lives in DRAFTS folder; only moved to QUARTERLIES SENT after Kay's send

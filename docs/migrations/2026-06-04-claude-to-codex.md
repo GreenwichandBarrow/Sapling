@@ -69,10 +69,10 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | niche-intelligence | Tuesday timer + headless prompt | `run-agent-skill.sh niche-intelligence:tuesday` | 1 | pending | Validator exists; dependency on last30days noted in old runner. |
 | nightly-tracker-audit | nightly timer + prompt | `run-agent-skill.sh nightly-tracker-audit:nightly` | 1 | cutover | Codex validation completed after runner inherited `op-env.sh`; live systemd service now uses `run-agent-skill.sh`. |
 | post-call-analyzer | poll script + triggered prompt | `run-agent-skill.sh post-call-analyzer:on-trigger` | 1 | cutover | Codex poller pilot completed with 0 queued notes; live poll service now uses `post_call_analyzer_poll.codex.sh`. Analyzer trigger has Codex prompt/validator coverage but did not run on a fresh queued note during the pilot. |
-| relationship-manager | weekday timer + prompt | `run-agent-skill.sh relationship-manager:daily` | 1 | pending | Validator exists. |
+| relationship-manager | weekday timer + prompt | `run-agent-skill.sh relationship-manager:daily` | 1 | cutover | Claude run passed on 2026-06-05; Codex runner now has same-day idempotency skip for valid artifacts; live service uses `run-agent-skill.sh relationship-manager:daily`. |
 | target-discovery | Sunday timer + prompt | `run-agent-skill.sh target-discovery phase2-sunday` | 1 | pending | Validator exists; JJ dependency. |
 | Direct script refresh jobs | refresh/probe/export/snapshot scripts | unchanged initially | 1 | pending | Apollo, Attio, JJ snapshot, external probe, weekly export, and weekly snapshot appear agent-free. |
-| post-call-analyzer poll | `scripts/post_call_analyzer_poll.sh` -> `scripts/run-skill.sh post-call-analyzer:on-trigger` | Codex poll trigger or updated script to call `run-agent-skill.sh` | 1 | pending | This direct script still triggers Claude runner internally; cut over with post-call analyzer cluster. |
+| post-call-analyzer poll | `scripts/post_call_analyzer_poll.sh` -> `scripts/run-skill.sh post-call-analyzer:on-trigger` | `scripts/post_call_analyzer_poll.codex.sh` -> `run-agent-skill.sh post-call-analyzer:on-trigger` | 1 | cutover | Live poll service now uses the Codex poller; zero-queue pilot passed. Fresh queued-note analyzer run still needs observation. |
 | Readiness checker | n/a | `scripts/check-codex-migration-readiness.sh` | 1 | ported | Non-live gate for syntax, hooks, Codex CLI, 1Password key resolution, and synthetic safety checks. |
 | Systemd cutover templates | live user units | `docs/migrations/systemd-codex-templates/README.md` | 1 | ported | Non-live service mapping and controlled cutover procedure; no timers modified yet. |
 | post-call analyzer Codex poller | `scripts/post_call_analyzer_poll.sh` | `scripts/post_call_analyzer_poll.codex.sh` | 1 | ported | Parallel variant launches `run-agent-skill.sh`; live service unchanged until validation. |
@@ -181,7 +181,6 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 
 ### Intentionally left on Claude for safety
 
-- `relationship-manager.service`: next run is 2026-06-05 06:50 EDT. It can attempt Attio writes and does not have a same-day double-run/idempotency gate suitable for an overnight manual pilot. Leave on Claude until an idempotent Codex pilot path is added or the next scheduled run can be supervised through its artifact validator.
 - `target-discovery-sunday.service`: recurring validator/date-anchor race remains; do not cut over until deterministic validation is fixed or a Sunday-cluster pilot passes.
 - `jj-operations-sunday.service`: depends on the target-discovery/JJ pool artifact cluster; keep with the Sunday cluster until validated together.
 - `conference-discovery.service`: mutates the Conference Pipeline sheet; prompt has snapshot/validator safeguards, but no live Codex sheet-mutation pilot was run overnight.
@@ -191,7 +190,14 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 ### Deferred to Phase 2 / Phase 3
 
 - Phase 2: revise migrated skills for Codex-native execution improvements after faithful migration is stable.
-- Phase 2: add same-day idempotency/double-run guards for mutating workflows such as relationship-manager.
 - Phase 2: fix target-discovery validator/date-anchor behavior and validate the Sunday target-discovery/JJ cluster together.
 - Phase 2: observe a fresh queued-note Codex post-call-analyzer run, not just a zero-queue poller run.
 - Phase 3: remove or archive Claude Code runtime files only after the Codex scheduled system has passed enough live cycles.
+
+
+## Morning Phase 1 Closeout - 2026-06-05
+
+- Morning scheduled artifacts were reviewed and committed, including `brain/trackers/weekly/2026-06-05-deal-aggregator-digest.md` and refreshed snapshot JSON files.
+- `relationship-manager` ran successfully on Claude at 2026-06-05 06:50 EDT and passed `validate_relationship_manager_integrity.py` for `brain/context/relationship-status-2026-06-05.md`.
+- `scripts/run-agent-skill.sh` now has a same-day idempotency gate for `relationship-manager:daily`: if the current date artifact exists and validates, Codex skips rather than duplicating Attio/vault writes. A supervised rerun can set `RELATIONSHIP_MANAGER_ALLOW_RERUN=1`.
+- `relationship-manager.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh relationship-manager:daily`; the next scheduled live Codex run is Monday 2026-06-08 06:50 EDT.

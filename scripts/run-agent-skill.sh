@@ -170,6 +170,25 @@ if [ -n "$HEADLESS_PROMPT_FILE" ] && [ ! -f "$HEADLESS_PROMPT_FILE" ]; then
   exit 4
 fi
 
+# Idempotency guard for mutating daily relationship syncs. If a valid artifact
+# already exists for today, do not re-run Codex and risk duplicate Attio/vault writes.
+# Set RELATIONSHIP_MANAGER_ALLOW_RERUN=1 only for an intentional supervised rerun.
+if [ "$SKILL_NAME:$SKILL_ARGS" = "relationship-manager:daily" ] && [ -z "${RELATIONSHIP_MANAGER_ALLOW_RERUN:-}" ]; then
+  RELATIONSHIP_ARTIFACT="$WORKDIR/brain/context/relationship-status-$TODAY.md"
+  if [ -f "$RELATIONSHIP_ARTIFACT" ]; then
+    log "Idempotency check: existing relationship artifact found for $TODAY; validating before skip."
+    set +e
+    python3 "$WORKDIR/scripts/validate_relationship_manager_integrity.py" --date "$TODAY" >> "$LOG_FILE" 2>&1
+    existing_status=$?
+    set -e
+    if [ "$existing_status" -eq 0 ]; then
+      log "SKIPPED: relationship-manager already has a valid artifact for $TODAY. Set RELATIONSHIP_MANAGER_ALLOW_RERUN=1 for a supervised rerun."
+      exit 0
+    fi
+    log "Existing relationship artifact failed validation; proceeding with Codex run."
+  fi
+fi
+
 PROMPT_FILE="${HEADLESS_PROMPT_FILE:-}"
 if [ -z "$PROMPT_FILE" ]; then
   PROMPT_FILE="$(mktemp)"

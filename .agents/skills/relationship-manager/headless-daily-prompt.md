@@ -12,6 +12,7 @@ You are running the `relationship-manager` skill non-interactively under launchd
    - `brain/context/session-decisions-{previous-workday}.md` for action-already-taken verification
 3. **Process per SKILL.md sections**: nurture cadence monitoring → action-already-taken verification → People record management → vault→Attio sync → warm intro tracking.
 4. **Write the artifact** at `brain/context/relationship-status-{YYYY-MM-DD}.md` matching the SKILL.md "Output Artifact" template — frontmatter (`date`, `type: relationship-status`), all section headers (omit body if section is empty but keep the header with "None — no X").
+5. **Idempotency:** the scheduled Codex runner skips same-day reruns when `brain/context/relationship-status-{YYYY-MM-DD}.md` already exists and passes `scripts/validate_relationship_manager_integrity.py --date {YYYY-MM-DD}`. Treat that as intentional safety against duplicate Attio/vault writes. Only rerun with `RELATIONSHIP_MANAGER_ALLOW_RERUN=1` during a supervised fix.
 
 ## What success looks like
 

@@ -1,8 +1,10 @@
 ---
 name: margins-multiples-binding-gates
-description: For Kay, the BINDING niche-screen gates are MARGINS and MULTIPLES — not fragmentation/recurring. The "multiples wall" is universal — anywhere a business is good, PE has bid it up past a winnable price.
-metadata:
+description: "For Kay, the BINDING niche-screen gates are MARGINS and MULTIPLES — not fragmentation/recurring. The \"multiples wall\" is universal — anywhere a business is good, PE has bid it up past a winnable price."
+metadata: 
+  node_type: memory
   type: feedback
+  originSessionId: 110efd9e-cdd8-4954-9907-22075916395f
 ---
 
 2026-06-03 strategic reframe (Kay's own, surfaced mid School-of-Hard-Knocks niche exploration). This is load-bearing for all future niche/deal screening.
@@ -15,7 +17,7 @@ metadata:
 
 **Survivors survive for structural reasons:** they're too-new/regulatory (building energy compliance — NYC LL97 forces recurring demand, PE hasn't reached the small end) or early-innings (reserve studies). The best-recurring niches are the most picked-over.
 
-**Edge ≠ economics:** a domain-expert investor or a warm network helps SOURCE (off-market access, certainty, legacy fit) but does NOT lower the multiple or fix the margin. See [[2026-06-03-investor-edge-doesnt-override-economics]].
+**Edge ≠ economics:** a domain-expert investor, a co-lead, or a warm network helps SOURCE (off-market access, certainty, legacy fit) and breaks ties — but it is **never a go/no-go upgrade**. It does NOT lower the multiple, fix the margin, or advance a niche past the margins+multiples gate, and it never substitutes for a formal disposition step (no auto-advance on a strong signal). Confirmed across 3 surfaces 2026-05-31→06-03: HOA had a domain-expert co-lead (Guillermo) + confirmed women-led network and still held on the multiples wall ([[2026-06-03-investor-edge-doesnt-override-economics]]); warm network keeps yielding advisors-not-owners, a layer problem not a warmth problem ([[2026-05-31-convert-expert-contacts-to-owner-introducers]]); strong signals don't auto-advance, disposition is a formal step ([[2026-06-03-niche-disposition-not-from-chat]]).
 
 **Why:** prevents re-chasing structurally-walled niches and re-learning the same lesson (it cost a year of deep 30-niche scoring).
 

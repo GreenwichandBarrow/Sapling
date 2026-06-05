@@ -57,3 +57,21 @@ The backlog confirms the system is otherwise healthy: 152 of 153 old traces had 
 ## Thursday meta-calibration buckets (note)
 
 This was a manual Thursday run focused on the core trace calibration + backlog clear. The 6 Thursday buckets (rule graduation, memory consolidation, skill-doc refresh, open-loop promotion, learnings promotion, freshness audit) were partially exercised inline: rule graduation (#1/#2 code+doctrine, #3 Kay-directed), memory consolidation (#6 fold, dropped duplicates). Bucket 5 (skill `learnings.md` → evolve) and bucket 6 (freshness audit) not run — recommend folding into tomorrow's automated Friday run or a dedicated pass.
+
+## Evolution banner
+
+```
+╔══════════════════════════════════════════════════════════════════╗
+║  🌿 PERSONAL OS · v1.1.4 → v1.1.5 · Level 2 SPROUT               ║
+║  Traces: 228 processed · 190 applied this run · 1 skipped         ║
+║                                                                  ║
+║  ✓ task_tracker.py: verb-receipts → verb-logs (32% noise cut)    ║
+║  ✓ task-tracker-manager SKILL: emitter spec aligned              ║
+║  ✓ niche-intelligence: CEO-directed niche force-advance          ║
+║  ✓ memory: 2 new + 2 sharpened (edge≠econ, deck cluster)         ║
+║  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  ║
+║  [█████████░░░░░░░░░░░] 228/500 to SAPLING                       ║
+║  To undo: git revert a0f8755                                     ║
+╚══════════════════════════════════════════════════════════════════╝
+```
+

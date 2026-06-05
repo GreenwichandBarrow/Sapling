@@ -6,6 +6,8 @@ status: prospect
 company: "[[entities/pest-end]]"
 role: "Pest-End"
 linkedin: https://www.linkedin.com/in/leigh-fryxell-73b908bb
+attio_id: e4392877-23ca-4b54-b16b-b51c5a2b41ff
+attio_synced_at: 2026-06-05T07:00:00Z
 tags: ["date/2026-05-29", "entity", "person", "person/leigh-fryxell", "company/pest-end", "topic/pest-management", "topic/conference", "topic/women-network"]
 ---
 

@@ -5,6 +5,9 @@ type: person
 status: prospect
 company: "[[entities/anacapa-partners]]"
 role: Investor (Anacapa-associated)
+email: warrenchan@anacapapartners.com
+attio_id: b7ad9651-581f-4894-b674-3915fc08968d
+attio_synced_at: 2026-06-05T07:00:00Z
 tags:
   - date/2026-06-03
   - entity
@@ -22,7 +25,7 @@ tags:
 - Investor associated with [[entities/anacapa-partners|Anacapa]]; reached out via LinkedIn (responded to Kay's connection).
 - His family collects art; received an inbound opportunity to acquire an artist's business (leaning out of it) — which prompted his outreach.
 - Curious about Kay's perspective on **services to the art world and their fit with the search/acquisition model**.
-- Verified email NOT yet captured to vault — the address lives in the live Gmail reply thread; do not guess/construct.
+- Verified email: warrenchan@anacapapartners.com (confirmed from Gmail thread 2026-06-03).
 
 ## Communication Style
 - TBD — informal register (signed "Warren," addressed "Kay"). First substantive exchange 2026-05-29 → 06-03.

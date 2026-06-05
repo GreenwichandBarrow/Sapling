@@ -3,7 +3,7 @@
 Wrapper-level integrity validator for niche-intelligence scheduled Tuesday runs.
 
 Runs as POST_RUN_CHECK after launchd wrapper completes. Independent of skill-internal
-validation. Catches silent-success failures where Claude exits 0 but produced no
+validation. Catches silent-success failures where the agent exits 0 but produced no
 real artifacts (the failure mode that hit 4/14, 4/21, 4/28 — wrapper fell through
 to bare `/niche-intelligence` with no headless prompt).
 
@@ -64,29 +64,21 @@ def sidecar_path(run_date: date) -> str:
     return os.path.join(SIDECAR_DIR, f"niche-intel-{run_date.isoformat()}.json")
 
 
-def validate_report(run_date: date, failures: list[str]) -> None:
-    path = report_path(run_date)
-    if not os.path.exists(path):
-        failures.append(f"markdown report missing: {path}")
-        return
-
-    size = os.path.getsize(path)
+def validate_report_content(content: str, run_date: date, size: int, path: str) -> list[str]:
+    failures: list[str] = []
     if size < 500:
         failures.append(
             f"markdown report suspiciously small ({size} bytes) — likely empty stub: {path}"
         )
 
-    with open(path) as f:
-        content = f.read()
-
     if not content.startswith("---"):
         failures.append(f"markdown report has no YAML frontmatter (must start with '---'): {path}")
-        return
+        return failures
 
     fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
     if not fm_match:
         failures.append(f"markdown report frontmatter unterminated: {path}")
-        return
+        return failures
 
     fm = fm_match.group(1)
     if f"date: {run_date.isoformat()}" not in fm:
@@ -95,29 +87,31 @@ def validate_report(run_date: date, failures: list[str]) -> None:
         )
     if "type: output" not in fm:
         failures.append("markdown report frontmatter missing 'type: output'")
+    return failures
 
 
-def validate_sidecar(run_date: date, failures: list[str]) -> None:
-    path = sidecar_path(run_date)
+def validate_report(run_date: date, failures: list[str]) -> None:
+    path = report_path(run_date)
     if not os.path.exists(path):
-        failures.append(f"JSON sidecar missing: {path}")
+        failures.append(f"markdown report missing: {path}")
         return
 
-    try:
-        with open(path) as f:
-            data = json.load(f)
-    except json.JSONDecodeError as e:
-        failures.append(f"JSON sidecar does not parse: {path} ({e})")
-        return
+    with open(path) as f:
+        content = f.read()
 
+    failures.extend(validate_report_content(content, run_date, os.path.getsize(path), path))
+
+
+def validate_sidecar_data(data: object, run_date: date, path: str = "JSON sidecar") -> list[str]:
+    failures: list[str] = []
     if not isinstance(data, dict):
         failures.append(f"JSON sidecar is not an object: {path}")
-        return
+        return failures
 
     missing = [k for k in REQUIRED_SIDECAR_FIELDS if k not in data]
     if missing:
         failures.append(f"JSON sidecar missing required fields: {missing}")
-        return
+        return failures
 
     # Field-level sanity checks
     if data.get("run_date") != run_date.isoformat():
@@ -173,6 +167,24 @@ def validate_sidecar(run_date: date, failures: list[str]) -> None:
         failures.append(
             f"JSON sidecar runtime_seconds={runtime!r} — must be positive number"
         )
+
+    return failures
+
+
+def validate_sidecar(run_date: date, failures: list[str]) -> None:
+    path = sidecar_path(run_date)
+    if not os.path.exists(path):
+        failures.append(f"JSON sidecar missing: {path}")
+        return
+
+    try:
+        with open(path) as f:
+            data = json.load(f)
+    except json.JSONDecodeError as e:
+        failures.append(f"JSON sidecar does not parse: {path} ({e})")
+        return
+
+    failures.extend(validate_sidecar_data(data, run_date, path))
 
 
 def main() -> int:

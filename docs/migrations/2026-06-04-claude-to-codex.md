@@ -252,3 +252,21 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Added focused unit coverage for every `scripts/validate_*_integrity.py` validator; the Phase 2 regression bundle now covers scheduled artifact shape, REST snapshot contracts, no-send email safety, conference status mutation safety, JJ call-log integrity, calibration report autonomy, and post-call analyzer ledger shape.
 - Updated active scheduled-skill documentation and validator wording to reference `scripts/run-agent-skill.sh` / `codex exec` where live Codex services now use those paths. Historical Claude failure-mode notes and preserved rollback files remain untouched until Phase 3.
 - Ported `scripts/health-monitor-red-bridge.sh` to VPS Codex semantics (`~/projects/Sapling` default and `scripts/run-agent-skill.sh` child runner), and added the health-monitor RED bridge block to `scripts/run-agent-skill.sh`. Live observation is still needed on the next health-monitor cycle.
+
+
+## Phase 2 Completion Checkpoint - 2026-06-05
+
+- `scripts/scan_launchd_failures.py` now has focused parser coverage for Codex exec failures, Codex post-run validation failures, legacy Claude fallback failures, STOP markers, and newest-log-wins retry resolution.
+- Active `.codex/hooks` now route through `.codex/hooks` scripts and `.agents/skills` rules instead of depending on copied `.claude/hooks` / `.claude/skills` paths. Ephemeral hook state moved to `.codex` / `~/.codex`; durable legacy calibration stats remain reference-preserved until the monitoring window ends.
+- Core migrated skills now point operational doctrine checks at `AGENTS.md` and `docs/scheduled-skills.md`; `CLAUDE.md` references in calibration workflow are marked legacy reference-only.
+- Scheduled Codex jobs now use explicit cost-aware model routing: frequent validator-backed jobs default to `gpt-5.4-mini`; judgment/research-heavy weekly jobs default to `gpt-5.5`; `CODEX_MODEL` can still override all jobs if needed.
+- Direct refresh/probe/export/snapshot timer scripts were confirmed agent-free, syntax-checked, and documented as validated. Their focused validator coverage remains in the Phase 2 regression bundle.
+- Final Phase 2 validation passed: `scripts/check-codex-migration-readiness.sh` reports READY, and the full regression bundle ran 54 tests successfully.
+
+### Monitoring Window Items
+
+- Observe a fresh queued-note Codex `post-call-analyzer:on-trigger` run; the poller already passed a zero-queue pilot.
+- Observe the next Sunday Codex runs for target-discovery, JJ operations, and conference-discovery on 2026-06-07.
+- Observe the next Tuesday niche-intelligence Codex run on 2026-06-09.
+- Observe the next health-monitor cycle to confirm the RED bridge fires through the Codex runner when applicable.
+- Defer Phase 3 Claude cleanup until after one week of stable Codex scheduled operation.

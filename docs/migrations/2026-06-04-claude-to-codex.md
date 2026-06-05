@@ -8,7 +8,7 @@ Project: `~/projects/Sapling`
 
 1. **Phase 1 - Faithful Migration:** preserve behavior while moving from Claude Code to Codex.
 2. **Phase 2 - Codex-Native Improvement:** improve migrated skills, orchestration, permissions, validation, and cost/model routing after stability.
-3. **Phase 3 - Claude Code Cleanup:** after a quiet period, archive or remove expired Claude Code artifacts and fallback paths.
+3. **Phase 3 - Claude Code Cleanup:** after a one-week monitoring period, archive or remove expired Claude Code artifacts and fallback paths.
 
 ## Decisions
 
@@ -42,10 +42,10 @@ Project: `~/projects/Sapling`
 6. Make scheduled jobs depend on MCP only after MCP paths are tested.
 7. Port nice-to-have hooks after safety hooks and scheduled jobs are stable.
 8. Failed scheduled jobs, if any, remain on Claude temporarily and get blocker notes.
-9. Delete/archive Claude files only after a quiet period.
+9. Delete/archive Claude files only after a one-week monitoring period.
 10. Optimize per-job Codex model routing/cost after migration.
 11. Revise migrated skills after cutover to take advantage of Codex-native capabilities.
-12. Post-migration cleanup phase for obsolete Claude-era artifacts.
+12. Post-migration cleanup phase for obsolete Claude-era artifacts is deferred until after one week of stable Codex operation.
 13. Neutralize legacy migration-specific naming in future migrations where practical.
 
 ## Migration Matrix
@@ -187,7 +187,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 
 - Phase 2: revise migrated skills for Codex-native execution improvements after faithful migration is stable.
 - Phase 2: observe a fresh queued-note Codex post-call-analyzer run, not just a zero-queue poller run.
-- Phase 3: remove or archive Claude Code runtime files only after the Codex scheduled system has passed enough live cycles.
+- Phase 3: remove or archive Claude Code runtime files only after one week of stable Codex scheduled operation.
 
 
 ## Morning Phase 1 Closeout - 2026-06-05

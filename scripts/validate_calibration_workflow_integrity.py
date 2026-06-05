@@ -37,17 +37,7 @@ def parse_frontmatter(text: str) -> dict[str, str]:
     return result
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--date", default=date.today().isoformat())
-    args = parser.parse_args()
-
-    report = REPO_ROOT / "brain" / "outputs" / "calibrations" / f"{args.date}-codex-calibration.md"
-    if not report.exists():
-        print(f"CALIBRATION VALIDATOR FAILED: missing report {report}", file=sys.stderr)
-        return 2
-
-    text = report.read_text(encoding="utf-8")
+def validate_report_text(text: str, report_date: str) -> tuple[list[str], str | None]:
     failures: list[str] = []
 
     if len(text.encode("utf-8")) < 800:
@@ -55,7 +45,7 @@ def main() -> int:
 
     frontmatter = parse_frontmatter(text)
     expected = {
-        "date": args.date,
+        "date": report_date,
         "type": "output",
         "output_type": "calibration",
         "runtime": "codex",
@@ -69,7 +59,7 @@ def main() -> int:
         failures.append(f"frontmatter status={status!r}, expected one of {sorted(ALLOWED_STATUSES)}")
 
     for heading in REQUIRED_HEADINGS:
-        required = heading.format(date=args.date)
+        required = heading.format(date=report_date)
         if required not in text:
             failures.append(f"missing heading: {required}")
 
@@ -88,6 +78,22 @@ def main() -> int:
     for pattern in forbidden_waits:
         if re.search(pattern, lower):
             failures.append(f"report contains interactive/waiting phrasing matching {pattern!r}")
+
+    return failures, status
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--date", default=date.today().isoformat())
+    args = parser.parse_args()
+
+    report = REPO_ROOT / "brain" / "outputs" / "calibrations" / f"{args.date}-codex-calibration.md"
+    if not report.exists():
+        print(f"CALIBRATION VALIDATOR FAILED: missing report {report}", file=sys.stderr)
+        return 2
+
+    text = report.read_text(encoding="utf-8")
+    failures, status = validate_report_text(text, args.date)
 
     if failures:
         print("CALIBRATION VALIDATOR FAILED:", file=sys.stderr)

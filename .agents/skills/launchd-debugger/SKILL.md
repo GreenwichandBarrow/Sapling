@@ -9,7 +9,7 @@ context_budget:
   sub_agent_limit: 500
 user_invocable: true
 version: v1.2.0
-trigger: "Scheduled daily 5:00am ET via launchd (com.greenwich-barrow.launchd-debugger) + auto-fire by scripts/run-skill.sh on any non-zero scheduled-skill exit (FAILED_LOG_FILE env passes the failed log path)."
+trigger: "Scheduled daily 5:00am ET via launchd (com.greenwich-barrow.launchd-debugger) + auto-fire by scripts/run-agent-skill.sh on any non-zero scheduled-skill exit (FAILED_LOG_FILE env passes the failed log path)."
 schedule: "Daily 5:00am ET + on-failure trigger"
 ---
 
@@ -165,8 +165,8 @@ If the scan returned zero failures, no Slack at all.
 <integration>
 ## Integration with existing infra
 
-- **Logs:** Reads `logs/scheduled/*.log` produced by `scripts/run-skill.sh`. Writes its own log to `logs/scheduled/launchd-debugger-{date}-{HHMM}.log` via the same wrapper.
-- **Wrapper:** Invoked via `scripts/run-skill.sh launchd-debugger:daily` — wrapper case routes to `headless-daily-prompt.md`.
+- **Logs:** Reads `logs/scheduled/*.log` produced by `scripts/run-agent-skill.sh`. Writes its own log to `logs/scheduled/launchd-debugger-{date}-{HHMM}.log` via the same wrapper.
+- **Wrapper:** Invoked via `scripts/run-agent-skill.sh launchd-debugger:daily` — wrapper case routes to `headless-daily-prompt.md`.
 - **POST_RUN_CHECK:** `scripts/validate_launchd_debugger_integrity.py` confirms the artifact exists with required fields. Per `feedback_mutating_skill_hardening_pattern.md`, this skill is treated as mutating because it can `launchctl start` other jobs.
 - **Slack:** `$SLACK_WEBHOOK_OPERATIONS` from `scripts/.env.launchd`.
 - **Health-monitor relationship:** Health-monitor still runs Friday 12:30am — it still detects silent failures across the *whole system*. This skill is the *narrow daily* layer that catches launchd failures specifically and tries to self-heal before the morning briefing.
@@ -187,7 +187,7 @@ If the scan returned zero failures, no Slack at all.
 
 **Health-monitor RED bridge.** New trigger path: `scripts/health-monitor-red-bridge.sh` reads the weekly health-monitor markdown artifact at `brain/trackers/health/{TODAY}-health.md` and fans out one `launchd-debugger:on-failure` spawn per RED row in the standard health tables. Yellow rows stay informational. The Trend table is filtered (parser keys on `NF==5` standard rows + `$3 == "RED"` status column; Trend rows have `NF==6` with RED in historical columns). Closes the gap where pipeline/data-integrity REDs (stale deals, missing vault entities, orphan links) sat unaddressed between health-monitor's Friday 12:30 AM fire and Kay seeing them in Friday morning's briefing.
 
-**Wrapper integration.** `scripts/run-skill.sh` (v1.2 block at the bottom, after the v1.1 on-failure auto-fire): when `SKILL_NAME == "health-monitor"` AND `EXIT_CODE == 0` AND `VALIDATOR_FAILED` empty AND artifact exists at the expected path, the wrapper background-detaches `bash scripts/health-monitor-red-bridge.sh "$HEALTH_ARTIFACT"`. Skipped on validator failure (the v1.1 on-failure auto-fire already covers that path). Mirrors the v1.1 nohup-detach pattern so the parent wrapper exits immediately.
+**Wrapper integration.** `scripts/run-agent-skill.sh` (v1.2 block at the bottom, after the v1.1 on-failure auto-fire): when `SKILL_NAME == "health-monitor"` AND `EXIT_CODE == 0` AND `VALIDATOR_FAILED` empty AND artifact exists at the expected path, the wrapper background-detaches `bash scripts/health-monitor-red-bridge.sh "$HEALTH_ARTIFACT"`. Skipped on validator failure (the v1.1 on-failure auto-fire already covers that path). Mirrors the v1.1 nohup-detach pattern so the parent wrapper exits immediately.
 
 **FROM_HEALTH_BRIDGE env contract.** Bridge-triggered on-failure runs are distinguished from log-failure on-failure runs by the `FROM_HEALTH_BRIDGE=1` sentinel. When set, the on-failure prompt skips the `FAILED_LOG_FILE` validation and `scan_launchd_failures.py` call — it instead synthesizes a single-element failure list directly from `RED_ITEM_LABEL` + `RED_ITEM_DETAIL` + `HEALTH_ARTIFACT_PATH`. The diagnosing subagent's brief is replaced with a RED-finding-specific brief that classifies pipeline/data-integrity REDs as `UNKNOWN` → SURFACE (they need Kay's judgment, not an operational fix).
 
@@ -205,7 +205,7 @@ If the scan returned zero failures, no Slack at all.
 
 ## v1.1.0 — 2026-05-01
 
-**Failure-trigger architecture.** `scripts/run-skill.sh` now auto-fires `launchd-debugger:on-failure` on any non-zero scheduled-skill exit (recursion-guarded — launchd-debugger does not trigger itself). Failures get diagnosed within ~3 minutes of occurring instead of waiting for the 5am daily run. Background-detached so the failed parent skill's exit is not held up.
+**Failure-trigger architecture.** `scripts/run-agent-skill.sh` now auto-fires `launchd-debugger:on-failure` on any non-zero scheduled-skill exit (recursion-guarded — launchd-debugger does not trigger itself). Failures get diagnosed within ~3 minutes of occurring instead of waiting for the 5am daily run. Background-detached so the failed parent skill's exit is not held up.
 
 **On-failure mode.** New headless prompt at `.agents/skills/launchd-debugger/headless-on-failure-prompt.md`. Reads `FAILED_LOG_FILE` env var (set by triggering wrapper) → calls `scan_launchd_failures.py --log-file "$FAILED_LOG_FILE"` for single-failure diagnosis. Same FIX/SURFACE allowlist, same suppression filters, faster path (<5min vs daily's <10min). Appends to today's daily artifact if it exists, otherwise creates fresh.
 

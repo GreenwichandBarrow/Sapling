@@ -299,7 +299,7 @@ Pipeline-manager reads this artifact and presents it in Section 4 (Gmail email d
 
 **Wrapper-level POST_RUN_CHECK validator** (authoritative): `scripts/validate_relationship_manager_integrity.py`
 
-Runs after `claude -p` exits, regardless of skill-internal logic. Catches the silent-success failure mode where Codex exits 0 but no artifact landed.
+Runs after `codex exec` exits, regardless of skill-internal logic. Catches the silent-success failure mode where Codex exits 0 but no artifact landed.
 
 **Copyable invocation (manual run):**
 ```bash
@@ -315,7 +315,7 @@ python3 "$HOME/projects/Sapling/scripts/validate_relationship_manager_integrity.
 
 **What it does NOT check:** Attio write success. The skill is designed to graceful-degrade when Attio REST/API is down — the artifact + "System Status Alerts" section is the deliverable, Attio sync is downstream-best-effort.
 
-The launchd wrapper (`scripts/run-skill.sh`) overrides EXIT_CODE on POST_RUN_CHECK failure and emits a Slack alert prefixed `VALIDATOR FAILED`. Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead: `ai-ops-jrj.4`.
+The scheduled wrapper (`scripts/run-agent-skill.sh`) overrides EXIT_CODE on POST_RUN_CHECK failure and emits a Slack alert prefixed `VALIDATOR FAILED`. Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead: `ai-ops-jrj.4`.
 </artifact>
 
 <stop_hooks>

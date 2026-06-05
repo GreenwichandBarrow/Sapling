@@ -471,7 +471,7 @@ Every source scanned this run MUST appear as a row — no exceptions. Missing ro
 <weekly_digest>
 ## Weekly Source-Productivity Digest (Phase 2)
 
-**Triggered:** Friday 6:00 AM ET via `com.greenwich-barrow.deal-aggregator-friday.plist` — `run-skill.sh deal-aggregator --digest-mode`. Also invocable manually with `/deal-aggregator --digest-mode`.
+**Triggered:** Friday 6:00 AM ET via `com.greenwich-barrow.deal-aggregator-friday.plist` — `run-agent-skill.sh deal-aggregator --digest-mode`. Also invocable manually with `/deal-aggregator --digest-mode`.
 
 **Purpose:** Give Kay a single weekly artifact to decide which sources are earning their slot, which new sources should be added, and which should be retired. No auto-writes — proposals are approval-gated.
 
@@ -576,7 +576,7 @@ After Kay approves a proposed addition or retirement:
 <wrapper_hardening>
 ## Wrapper Hardening (POST_RUN_CHECK)
 
-Per `feedback_mutating_skill_hardening_pattern.md`, every scheduled mutating skill ships with a wrapper-level integrity validator. Deal-aggregator's three modes each have a validator wired into `scripts/run-skill.sh`:
+Per `feedback_mutating_skill_hardening_pattern.md`, every scheduled mutating skill ships with a wrapper-level integrity validator. Deal-aggregator's three modes each have a validator wired into `scripts/run-agent-skill.sh`:
 
 | Mode | Headless prompt | Validator command (POST_RUN_CHECK) |
 |------|-----------------|-------------------------------------|

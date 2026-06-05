@@ -3,7 +3,7 @@
 Wrapper-level integrity validator for relationship-manager scheduled runs.
 
 Runs as POST_RUN_CHECK after launchd wrapper completes. Independent of skill-internal
-validation. Catches silent-success failures where Claude exits 0 but no artifact
+validation. Catches silent-success failures where the agent exits 0 but no artifact
 landed at brain/context/relationship-status-{date}.md.
 
 Note: Does NOT gate on Attio writes succeeding. Attio REST/API can be down,

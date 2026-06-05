@@ -205,7 +205,7 @@ schema_version: "1.0.0"
 date: {YYYY-MM-DD}
 type: tracker
 title: "System Health — {date}"
-tags: ["date/{YYYY-MM-DD}", "output", "output/tracker", "topic/health-monitor", "source/claude"]
+tags: ["date/{YYYY-MM-DD}", "output", "output/tracker", "topic/health-monitor", "source/codex"]
 ---
 ```
 

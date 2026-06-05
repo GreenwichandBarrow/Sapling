@@ -508,7 +508,7 @@ The driver script in `scripts/validate_phase2_integrity.py` calls `.codex/hooks/
 - Re-run the validator
 - If it still fails, exit Phase 2 with the validator's exit code
 
-**Defense-in-depth:** `scripts/run-skill.sh` runs this same validator independently as `POST_RUN_CHECK` after the wrapper sees Codex exit 0. If you skip the in-loop check, the wrapper still catches the failure and fires the Slack alert — but the in-loop check is faster (you can correct mid-run) and cheaper (no Slack noise on transient gaps).
+**Defense-in-depth:** `scripts/run-agent-skill.sh` runs this same validator independently as `POST_RUN_CHECK` after the wrapper sees Codex exit 0. If you skip the in-loop check, the wrapper still catches the failure and fires the Slack alert — but the in-loop check is faster (you can correct mid-run) and cheaper (no Slack noise on transient gaps).
 </calls_first_flow>
 
 <dealsx_list_ingestion>

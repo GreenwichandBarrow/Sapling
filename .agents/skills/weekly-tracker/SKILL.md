@@ -444,7 +444,7 @@ Write `brain/trackers/weekly/{YYYY-MM-DD}-weekly-tracker.md` with frontmatter an
 
 1. **PreToolUse hook (skill-internal):** `.codex/hooks/router/handlers/weekly_tracker_validation.py` — blocks Slack webhook from firing if validation fails. First line of defense; runs inside the agent's tool-call loop.
 
-2. **POST_RUN_CHECK validator (wrapper-level):** `scripts/validate_weekly_tracker_integrity.py` — runs AFTER `claude -p` exits, regardless of internal hook state. Catches the silent-success failure mode where the agent exits 0 but artifacts are missing (e.g. 4/24 partial-write where vault snapshot landed but sheet column did not).
+2. **POST_RUN_CHECK validator (wrapper-level):** `scripts/validate_weekly_tracker_integrity.py` — runs AFTER `codex exec` exits, regardless of internal hook state. Catches the silent-success failure mode where the agent exits 0 but artifacts are missing (e.g. 4/24 partial-write where vault snapshot landed but sheet column did not).
 
 **Wrapper validator copyable invocation (manual run):**
 ```bash
@@ -452,7 +452,7 @@ python3 "$HOME/projects/Sapling/scripts/validate_weekly_tracker_integrity.py"
 # Pass --week-ending YYYY-MM-DD to override auto-Friday computation
 ```
 
-The validator returns exit 2 on failure. The launchd wrapper (`scripts/run-skill.sh`) overrides EXIT_CODE on POST_RUN_CHECK failure and emits a Slack alert prefixed `VALIDATOR FAILED`. Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead: `ai-ops-jrj.3`.
+The validator returns exit 2 on failure. The scheduled wrapper (`scripts/run-agent-skill.sh`) overrides EXIT_CODE on POST_RUN_CHECK failure and emits a Slack alert prefixed `VALIDATOR FAILED`. Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead: `ai-ops-jrj.3`.
 
 Before notifying, validate all deliverables exist:
 
@@ -727,7 +727,7 @@ tags:
   - output/tracker
   - status/published
   - topic/weekly-tracker
-  - source/claude
+  - source/codex
 ---
 ```
 

@@ -199,7 +199,7 @@ Litmus: only trace choices between alternatives that change future behavior with
 Skills run on schedule (Mac launchd / Hetzner systemd timers) independent of active sessions. **Full table + wrapper-hardening doctrine: `docs/scheduled-skills.md`.** Key invariants:
 
 - **Universal POST_RUN_CHECK doctrine (2026-05-04):** Every scheduled skill needs a validator — no exemptions. Mutating skills get integrity validators (row-count delta, schema, headers); read-only skills get artifact-landed validators.
-- **Wrapper:** `scripts/run-skill.sh` shared by all jobs. Routes `skill:mode` args to `.agents/skills/{skill}/headless-{mode}-prompt.md` for skills that misbehave under bare `/skill-name` invocation.
+- **Wrapper:** `scripts/run-agent-skill.sh` shared by live Codex jobs. Routes `skill:mode` args to `.agents/skills/{skill}/headless-{mode}-prompt.md` for skills that misbehave under bare `/skill-name` invocation.
 - **`weekly-tracker`** is Friday-only but triggered by the orchestrator during the morning workflow (not launchd) — Kay needs results by 10am ET.
 
 ## Behaviors

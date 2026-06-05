@@ -100,14 +100,14 @@ For each row where Col C = "Killed":
 
 **Wrapper-level POST_RUN_CHECK validator** (authoritative): `scripts/validate_nightly_tracker_audit_integrity.py`
 
-Runs after `claude -p` exits, regardless of skill-internal logic. Catches the silent-success failure mode where Codex exits 0 but WEEKLY REVIEW still has Tabled/Killed rows lingering, blank gaps, or non-sequential rank.
+Runs after `codex exec` exits, regardless of skill-internal logic. Catches the silent-success failure mode where Codex exits 0 but WEEKLY REVIEW still has Tabled/Killed rows lingering, blank gaps, or non-sequential rank.
 
 **Copyable invocation (manual run):**
 ```bash
 python3 "$HOME/projects/Sapling/scripts/validate_nightly_tracker_audit_integrity.py"
 ```
 
-The launchd wrapper (`scripts/run-skill.sh`) overrides EXIT_CODE on POST_RUN_CHECK failure and emits a Slack alert prefixed `VALIDATOR FAILED`. Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead: `ai-ops-jrj.2`.
+The scheduled wrapper (`scripts/run-agent-skill.sh`) overrides EXIT_CODE on POST_RUN_CHECK failure and emits a Slack alert prefixed `VALIDATOR FAILED`. Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead: `ai-ops-jrj.2`.
 
 **In-line invariants (informational; validator is authoritative):**
 - Row count after = row count before minus moved rows

@@ -39,14 +39,14 @@ Lightweight shell script. **Server-side, fires twice a day at 1pm + 6pm ET via s
 2. Calls `granola-api since <checkpoint>` to fetch notes updated after the checkpoint.
 3. For each note ID returned that is NOT in `brain/trackers/post-call-analyzer/processed.json`:
    - Write `brain/trackers/post-call-analyzer/queue/{note_id}.json` with note metadata snapshot
-4. If queue is non-empty → invokes `scripts/run-skill.sh post-call-analyzer:on-trigger` (background).
+4. If queue is non-empty → invokes `scripts/run-agent-skill.sh post-call-analyzer:on-trigger` (background).
 5. Updates checkpoint to current UTC timestamp on success.
 
 Defensive: HTTP errors / empty responses / missing `op` resolution → log + exit 0; checkpoint NOT advanced so the next fire retries.
 
 ### Stage 2 — Codex run (`headless-on-trigger-prompt.md`)
 
-Triggered by the detector via `run-skill.sh post-call-analyzer:on-trigger`. For each queued note ID:
+Triggered by the detector via `run-agent-skill.sh post-call-analyzer:on-trigger`. For each queued note ID:
 
 1. **Pull full note** via `granola-api get-note <id>` — yields transcript, summary_markdown, attendees, web_url, calendar_event.
 2. **Match attendees to Attio** — for each non-Kay attendee email, POST `/v2/objects/people/records/query` filtered by `email_addresses`. For each unique company domain, POST `/v2/objects/companies/records/query` filtered by `domains`.
@@ -114,7 +114,7 @@ Install via `bash scripts/install_systemd_units.sh` then `systemctl --user enabl
 Logs:
 - Detector: `logs/scheduled/post-call-analyzer-poll-{date}.log`
 - Codex run: `logs/scheduled/post-call-analyzer-{date}-{HHMM}.log` (via wrapper)
-- Wrapper case in `scripts/run-skill.sh` routes `post-call-analyzer:on-trigger` → headless prompt + POST_RUN_CHECK validator.
+- Wrapper case in `scripts/run-agent-skill.sh` routes `post-call-analyzer:on-trigger` → headless prompt + POST_RUN_CHECK validator.
 
 ## Files owned
 

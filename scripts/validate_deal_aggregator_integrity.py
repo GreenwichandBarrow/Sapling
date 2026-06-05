@@ -3,7 +3,7 @@
 Wrapper-level integrity validator for deal-aggregator scheduled runs.
 
 Runs as POST_RUN_CHECK after launchd wrapper completes. Independent of skill-internal
-validation. Catches silent-success failures where Claude exits 0 but no artifact
+validation. Catches silent-success failures where the agent exits 0 but no artifact
 landed (4/27 + 4/30 morning incidents — wrapper exited 0, no scan happened, the
 afternoon run had to flag "morning artifact missing" the next day).
 

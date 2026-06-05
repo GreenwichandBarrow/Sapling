@@ -4,7 +4,7 @@ Wrapper-level integrity validator for weekly-tracker scheduled runs.
 
 Runs as POST_RUN_CHECK after launchd wrapper completes. Independent of any
 internal validation hooks the skill itself uses. Catches silent-success
-failures where Claude exits 0 but produced no real artifacts.
+failures where the agent exits 0 but produced no real artifacts.
 
 Exit codes:
   0  Pass — vault snapshot AND sheet column for current week both present

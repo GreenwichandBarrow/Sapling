@@ -1,6 +1,6 @@
 # launchd-debugger — Headless On-Failure Run
 
-You are running the `launchd-debugger` skill non-interactively, triggered by the wrapper (`scripts/run-skill.sh`) immediately after another scheduled skill exited non-zero. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals. You must finish in under 5 minutes — the failure just happened and Kay needs the verdict before the morning briefing.
+You are running the `launchd-debugger` skill non-interactively, triggered by the wrapper (`scripts/run-agent-skill.sh`) immediately after another scheduled skill exited non-zero. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals. You must finish in under 5 minutes — the failure just happened and Kay needs the verdict before the morning briefing.
 
 The wrapper passed you the failed job's log path via the `LOG_FILE` environment variable. Your job is to diagnose THAT specific failure (not enumerate the last 24h), apply a safe operational fix or surface to Slack, and write the artifact entry.
 
@@ -184,4 +184,4 @@ When the triggering path is the bridge instead of a direct on-failure spawn, `FA
 - It does **not** fire for the Trend table (historical states, not current).
 - It does **not** fire when health-monitor itself failed (the v1.1 on-failure auto-fire handles that).
 - It does **not** fire when health-monitor's POST_RUN_CHECK validator rejected the artifact (same v1.1 path).
-- It does **not** retry on its own. Recursion guard: if `FROM_HEALTH_BRIDGE=1` is set when run-skill.sh evaluates the bridge call, the bridge script exits 0 without firing. If the diagnosing subagent itself fails, the wrapper's existing on-failure auto-fire handles the diagnosis loop — which then sees `SKILL_NAME == "launchd-debugger"` and short-circuits, preventing infinite recursion.
+- It does **not** retry on its own. Recursion guard: if `FROM_HEALTH_BRIDGE=1` is set when run-agent-skill.sh evaluates the bridge call, the bridge script exits 0 without firing. If the diagnosing subagent itself fails, the wrapper's existing on-failure auto-fire handles the diagnosis loop — which then sees `SKILL_NAME == "launchd-debugger"` and short-circuits, preventing infinite recursion.

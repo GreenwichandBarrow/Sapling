@@ -154,18 +154,22 @@ def snapshot_path(run_date: date) -> str:
 
 def get_pipeline_data_rows(sheet_id: str, tab: str, rng: str) -> list[list[str]]:
     """Return data rows (excluding header) with at least one non-empty cell."""
-    result = subprocess.run(
-        ["gog", "sheets", "get", sheet_id, f"'{tab}'!{rng}", "--json"],
-        capture_output=True,
-        text=True,
-        timeout=30,
-    )
+    args = ["gog", "sheets", "get", sheet_id, f"{tab}!{rng}", "--json"]
+    try:
+        result = subprocess.run(args, capture_output=True, text=True, timeout=90)
+    except subprocess.TimeoutExpired:
+        print(
+            "[validate_conference_discovery] gog sheets get timed out after 90s, retrying once",
+            file=sys.stderr,
+        )
+        result = subprocess.run(args, capture_output=True, text=True, timeout=90)
     if result.returncode != 0:
         raise RuntimeError(f"gog sheets get failed: {result.stderr.strip()}")
     data = json.loads(result.stdout)
     rows = data.get("values", [])
     # Strip rows that are entirely blank
     return [r for r in rows if any(c and c.strip() for c in r)]
+
 
 
 # ---------------------------------------------------------------------------

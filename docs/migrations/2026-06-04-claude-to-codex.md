@@ -60,7 +60,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | Codex env | `scripts/.env.launchd` | `scripts/.env.codex` | 1 | validated | 1Password reference resolves; read-only Codex smoke test completed successfully. |
 | Runner | `scripts/run-skill.sh` | `scripts/run-agent-skill.sh` | 1 | ported | New runner created; old runner preserved. |
 | calibration-workflow | systemd + `run-skill.sh calibration-workflow` | `run-agent-skill.sh calibration-workflow` | 1 | blocked | Last Claude run exited 0 while waiting for human approval and wrote no artifact; needs dedicated headless prompt/validator before Codex cutover. |
-| conference-discovery | systemd + headless Sunday prompt | `run-agent-skill.sh conference-discovery sunday` | 1 | pending | Active timer Sun 21:00; validator exists. |
+| conference-discovery | systemd + headless Sunday prompt | `run-agent-skill.sh conference-discovery sunday` | 1 | cutover | Prior run validator passed for 2026-05-31 after validator timeout hardening; live service now uses `run-agent-skill.sh`. Observe Sunday 2026-06-07 Codex run. |
 | deal-aggregator cluster | morning/afternoon/friday timers + headless prompts | `run-agent-skill.sh deal-aggregator` variants | 1 | cutover | Morning Codex pilot wrote the daily artifact, posted 1 new deal, passed validator, and all three live services now use `run-agent-skill.sh`. |
 | email-intelligence | weekday timer + headless prompt | `run-agent-skill.sh email-intelligence` | 1 | cutover | Codex pilot completed with no send path used, wrote `brain/context/email-scan-results-2026-06-05.md`, passed `validate_email_intelligence_integrity.py`, and live systemd service now uses `run-agent-skill.sh`. |
 | health-monitor | weekly timer | `run-agent-skill.sh health-monitor` | 1 | cutover | Codex pilot completed, wrote `brain/trackers/health/2026-06-04-health.md`, validated artifact, posted Slack per RED/YELLOW rule, and live systemd service now uses `run-agent-skill.sh`. |
@@ -181,7 +181,6 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 
 ### Intentionally left on Claude for safety
 
-- `conference-discovery.service`: mutates the Conference Pipeline sheet; prompt has snapshot/validator safeguards, but no live Codex sheet-mutation pilot was run overnight.
 - `niche-intelligence.service`: writes Drive/Sheets and depends on research sources; future Tuesday workflow remains pending a supervised or dry-run-equivalent Codex pilot.
 - `calibration-workflow.service`: blocked; last legacy run waited for human approval and produced no durable artifact. Needs a dedicated headless prompt/validator before Codex cutover.
 
@@ -207,3 +206,10 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Regression validation passed against the prior Sunday pool: `python3 scripts/validate_phase2_integrity.py --date 2026-05-31` returned PASS for Premium Pest Management.
 - JJ tab validation passed for the prior completed week: `python3 scripts/validate_jj_operations_integrity.py --week-start 2026-06-01` verified all five Call Log tabs and populated owner names.
 - `target-discovery-sunday.service` and `jj-operations-sunday.service` live systemd `ExecStart` values now point to Codex runner paths. Timers were unchanged. Next live Codex observation window is Sunday 2026-06-07.
+
+
+## Conference Discovery Cutover - 2026-06-05
+
+- `scripts/validate_conference_discovery_integrity.py` now gives the live Pipeline sheet read a 90-second timeout and retries once, matching observed `gog` cold-cache behavior.
+- Regression validation passed against `conference-pipeline-pre-run-2026-05-31.json`: row-count delta, header positions, cell mutations, and authorized statuses all passed.
+- `conference-discovery.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh conference-discovery sunday`. Timer was unchanged. Next live Codex observation window is Sunday 2026-06-07 21:00 EDT.

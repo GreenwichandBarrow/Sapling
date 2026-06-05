@@ -31,7 +31,8 @@ Trend compares 7-day attributed matches against the prior 7-day fingerprint wind
 - Target: 1-3/day
 - Status: 🔴 Critical
 - Daily surfaced counts: 2026-05-29: 0; 2026-06-01: 0; 2026-06-02: 0; 2026-06-03: 1; 2026-06-04: 0; 2026-06-05: 1.
-- Missing scan artifacts in the 2026-05-29 to 2026-06-05 window: 2026-05-30, 2026-05-31.
+- Expected non-run days in the 2026-05-29 to 2026-06-05 window: 2026-05-30, 2026-05-31 (weekend; weekday timer only).
+- Missing scheduled weekday scan artifacts: none.
 
 ## 3. Proposed Additions
 

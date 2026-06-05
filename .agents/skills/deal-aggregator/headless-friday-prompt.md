@@ -17,7 +17,7 @@ This is the **weekly source-productivity digest** path (Phase 2 in SKILL.md). It
 
 1. **Read SKILL.md fully** at `.agents/skills/deal-aggregator/SKILL.md`. Follow the SKILL.md `<weekly_digest>` section exclusively. Ignore the daily-scan path — that's for morning/afternoon runs without the `--digest-mode` flag.
 2. **Compute the 7-day window:** `window_end = TODAY`, `window_start = TODAY - 7 days` (ET).
-3. **Read last 7 days of daily scorecards** from `brain/context/deal-aggregator-scan-{date}.md` (one file per weekday). Missing files = note in digest, continue.
+3. **Read last 7 days of daily scorecards** from `brain/context/deal-aggregator-scan-{date}.md` for scheduled run days only. The live timer runs Mon-Fri, so Saturday/Sunday dates are expected non-run days, not missing artifacts. Missing weekday files = note in digest, continue.
 4. **Read last 30 days of fingerprint store** from `brain/context/deal-aggregator-fingerprints.jsonl`. Group matches by source + date for the Source Productivity table.
 5. **Read last 7 days of email-scan-results** from `brain/context/email-scan-results-{date}.md`. This feeds the Source Scout subagent's new-source discovery (sender domains).
 6. **Read the Sourcing Sheet** (ID `1z8o2obq2mOG9drQ0umCmBk31K3OS2afMNGpVAlbLljw`) — both `General Sources` and `Niche-Specific Sources` tabs. This is the active-source roster the digest reports against.
@@ -39,6 +39,7 @@ This is the **weekly source-productivity digest** path (Phase 2 in SKILL.md). It
 - Each proposed addition includes: name, category, URL, rationale, recommended tab, access method, RECOMMEND→YES/NO/DISCUSS line.
 - Each proposed retirement includes: name, days silent, 3 live-check results, RECOMMEND→YES/NO/DISCUSS line.
 - Trend arrows populated via prior-week comparison (prior digest file or prior 7-day fingerprint window).
+- Weekend dates are listed as expected non-run days, not missing scan artifacts.
 - Slack ping sent ONLY if there's at least one decision-worthy item (proposal or critical volume).
 - No writes to the Sourcing Sheet.
 - No double-write if a prior child already produced today's digest.
@@ -58,7 +59,7 @@ This is the **weekly source-productivity digest** path (Phase 2 in SKILL.md). It
 
 - **Sourcing Sheet unreachable** → fall back to last known source list cached in vault context; note `sourcing_sheet_source: cached` in digest frontmatter; continue.
 - **Fingerprint store missing or empty** → write digest with all sources showing 0 matches and "no fingerprint data" note in Source Productivity section; continue.
-- **A daily scan artifact missing for a day in the window** → note the gap in the digest's Volume Check section; compute average over available days only; continue.
+- **A daily scan artifact missing for a scheduled weekday in the window** → note the gap in the digest's Volume Check section; compute average over available scheduled weekdays only; continue. Weekend dates are expected non-run days unless a weekend timer exists.
 - **Source Scout web-verify fails for a candidate addition** → drop that candidate (don't propose unverified sources); log in digest; continue.
 - **Live-check fails for a retirement candidate** → keep the source on the active roster, log "live-check failed: {reason}" in digest's Proposed Retirements section as evidence of due diligence; continue. Never retire on silence alone.
 

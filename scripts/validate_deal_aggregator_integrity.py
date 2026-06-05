@@ -103,6 +103,23 @@ def resolve_required_sections(mode: str, run_date: date) -> list:
     return base  # 5 sections, pre-cutover ordering
 
 
+
+def validate_digest_schedule_language(content: str) -> list:
+    """Weekend dates are expected non-run days for the current weekday digest timer."""
+    failures = []
+    missing_lines = [
+        line for line in content.splitlines() if "Missing scan artifacts" in line
+    ]
+    for line in missing_lines:
+        for raw in re.findall(r"\b\d{4}-\d{2}-\d{2}\b", line):
+            parsed = datetime.fromisoformat(raw).date()
+            if parsed.weekday() >= 5:
+                failures.append(
+                    f"weekend date {raw} is listed as a missing scan artifact; "
+                    "label it as an expected non-run day"
+                )
+    return failures
+
 def validate_artifact(artifact_path: str, required_sections: list, run_date: date) -> list:
     """Return a list of failure strings (empty list = pass)."""
     failures = []
@@ -134,6 +151,9 @@ def validate_artifact(artifact_path: str, required_sections: list, run_date: dat
                 )
 
     # Section headers — every required section must appear
+    if required_sections == DIGEST_SECTIONS:
+        failures.extend(validate_digest_schedule_language(content))
+
     missing = [s for s in required_sections if s not in content]
     if missing:
         failures.append(

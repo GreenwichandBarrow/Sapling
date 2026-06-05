@@ -4,7 +4,7 @@
 Runs as POST_RUN_CHECK after launchd wrapper completes. Confirms the daily
 artifact at brain/trackers/health/launchd-debugger-{TODAY}.json exists and
 contains every required field. Catches the silent-success failure mode where
-Claude exits 0 but never wrote the artifact (the morning briefing pipeline
+the agent exits 0 but never wrote the artifact (the morning briefing pipeline
 relies on this artifact to know whether overnight self-healing happened).
 
 Required artifact fields:
@@ -56,26 +56,7 @@ REQUIRED_RESULT_FIELDS = {"job", "cause", "action"}
 ALLOWED_ACTIONS = {"FIX", "SURFACE"}
 
 
-def main() -> int:
-    today = date.today().isoformat()
-    artifact_path = ARTIFACT_DIR / f"launchd-debugger-{today}.json"
-
-    if not artifact_path.exists():
-        print(
-            f"LAUNCHD-DEBUGGER VALIDATOR FAILED: artifact missing at {artifact_path}",
-            file=sys.stderr,
-        )
-        return 2
-
-    try:
-        data = json.loads(artifact_path.read_text())
-    except (OSError, json.JSONDecodeError) as exc:
-        print(
-            f"LAUNCHD-DEBUGGER VALIDATOR FAILED: artifact unreadable: {exc}",
-            file=sys.stderr,
-        )
-        return 2
-
+def validate_artifact_data(data: dict, today: str) -> tuple[list[str], dict[str, int]]:
     failures: list[str] = []
 
     missing = REQUIRED_TOP_FIELDS - set(data.keys())
@@ -122,10 +103,6 @@ def main() -> int:
                 f"results[{i}] action={action!r} not in {ALLOWED_ACTIONS}"
             )
 
-    # Soft accounting check: every failure must either be fixed, surfaced to
-    # Slack, OR suppressed (known-incident / cross-day-dedup) — v1.1 added
-    # suppression so a SURFACE may legitimately have slack_posted=false.
-    # Count suppressed = SURFACE results with slack_posted == False.
     fixes_ok = data.get("fixes_succeeded", 0)
     surfaces = data.get("surfaces_to_slack", 0)
     suppressed_count = sum(
@@ -147,6 +124,37 @@ def main() -> int:
                 f"< failures_detected ({declared})"
             )
 
+    return failures, {
+        "declared": declared if isinstance(declared, int) else -1,
+        "fixes_ok": fixes_ok if isinstance(fixes_ok, int) else 0,
+        "surfaces": surfaces if isinstance(surfaces, int) else 0,
+        "suppressed_count": suppressed_count,
+        "runtime_seconds": data.get("runtime_seconds") if isinstance(data.get("runtime_seconds"), int) else -1,
+    }
+
+
+def main() -> int:
+    today = date.today().isoformat()
+    artifact_path = ARTIFACT_DIR / f"launchd-debugger-{today}.json"
+
+    if not artifact_path.exists():
+        print(
+            f"LAUNCHD-DEBUGGER VALIDATOR FAILED: artifact missing at {artifact_path}",
+            file=sys.stderr,
+        )
+        return 2
+
+    try:
+        data = json.loads(artifact_path.read_text())
+    except (OSError, json.JSONDecodeError) as exc:
+        print(
+            f"LAUNCHD-DEBUGGER VALIDATOR FAILED: artifact unreadable: {exc}",
+            file=sys.stderr,
+        )
+        return 2
+
+    failures, stats = validate_artifact_data(data, today)
+
     if failures:
         print("LAUNCHD-DEBUGGER VALIDATOR FAILED:", file=sys.stderr)
         for f in failures:
@@ -155,9 +163,10 @@ def main() -> int:
 
     print("LAUNCHD-DEBUGGER VALIDATOR PASSED")
     print(
-        f"  artifact: {artifact_path.name}, failures={declared}, "
-        f"fixed={fixes_ok}, surfaced={surfaces}, suppressed={suppressed_count}, "
-        f"runtime={data.get('runtime_seconds')}s"
+        f"  artifact: {artifact_path.name}, failures={stats['declared']}, "
+        f"fixed={stats['fixes_ok']}, surfaced={stats['surfaces']}, "
+        f"suppressed={stats['suppressed_count']}, "
+        f"runtime={stats['runtime_seconds']}s"
     )
     return 0
 

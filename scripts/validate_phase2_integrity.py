@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Phase 2 Sunday-night post-run integrity validator.
 
-Driver that calls `.claude/hooks/enrichment_integrity_check.py` once per
-active JJ-Call-Only niche. Wrapped by `scripts/run-skill.sh` as the
+Driver that calls `.codex/hooks/enrichment_integrity_check.py` once per
+active JJ-Call-Only niche. Wrapped by `scripts/run-agent-skill.sh` as the
 POST_RUN_CHECK for `com.greenwich-barrow.target-discovery-sunday.plist`.
 
 Why this exists: a single Phase 2 run may process multiple JJ-Call-Only
@@ -58,6 +58,16 @@ def _niches_to_check() -> list[str]:
     return [n.strip() for n in raw.split(",") if n.strip()]
 
 
+def format_hook_result(niche: str, returncode: int, stdout: str, stderr: str) -> tuple[int, str]:
+    output = (stdout + stderr).strip()
+    if returncode == 0:
+        return (0, f"[{niche}] PASS\n{output}")
+    return (
+        returncode,
+        f"[{niche}] FAIL (exit {returncode})\n{output}",
+    )
+
+
 def _run_check(niche: str, sheet_id: str, pool_path: Path) -> tuple[int, str]:
     if not pool_path.exists():
         return (
@@ -83,13 +93,7 @@ def _run_check(niche: str, sheet_id: str, pool_path: Path) -> tuple[int, str]:
     except FileNotFoundError as exc:
         return (2, f"[{niche}] could not invoke hook: {exc}")
 
-    output = (result.stdout + result.stderr).strip()
-    if result.returncode == 0:
-        return (0, f"[{niche}] PASS\n{output}")
-    return (
-        result.returncode,
-        f"[{niche}] FAIL (exit {result.returncode})\n{output}",
-    )
+    return format_hook_result(niche, result.returncode, result.stdout, result.stderr)
 
 
 def _run_date(argv: list[str]) -> date:

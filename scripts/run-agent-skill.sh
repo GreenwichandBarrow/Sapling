@@ -173,6 +173,20 @@ if [ -n "$HEADLESS_PROMPT_FILE" ] && [ ! -f "$HEADLESS_PROMPT_FILE" ]; then
   exit 4
 fi
 
+if [ -z "${CODEX_MODEL:-}" ]; then
+  case "$SKILL_NAME:$SKILL_ARGS" in
+    "calibration-workflow:"|"calibration-workflow:weekly"|\
+    "conference-discovery:sunday"|\
+    "jj-operations:sunday-prep"|\
+    "niche-intelligence:tuesday"|\
+    "target-discovery:phase2-sunday")
+      CODEX_MODEL="${CODEX_HEAVY_MODEL:-gpt-5.5}" ;;
+    *)
+      CODEX_MODEL="${CODEX_ROUTINE_MODEL:-gpt-5.4-mini}" ;;
+  esac
+fi
+log "Model: $CODEX_MODEL"
+
 # Idempotency guard for mutating daily relationship syncs. If a valid artifact
 # already exists for today, do not re-run Codex and risk duplicate Attio/vault writes.
 # Set RELATIONSHIP_MANAGER_ALLOW_RERUN=1 only for an intentional supervised rerun.

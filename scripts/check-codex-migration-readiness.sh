@@ -148,6 +148,12 @@ else
   fail "CODEX_API_KEY resolves but does not have expected OpenAI key prefix"
 fi
 
+if [ -n "${CODEX_ROUTINE_MODEL:-}" ] && [ -n "${CODEX_HEAVY_MODEL:-}" ]; then
+  pass "Codex scheduled model routing configured"
+else
+  fail "CODEX_ROUTINE_MODEL and CODEX_HEAVY_MODEL must be set in scripts/.env.codex"
+fi
+
 if [ -e "${CODEX_SCHEDULED_KILL_SWITCH:-$HOME/.config/sapling/disable-codex-scheduled}" ]; then
   warn "Codex scheduled kill switch is currently enabled"
 else

@@ -81,6 +81,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | Email no-send audit | migrated skill docs/scripts | `scripts/audit-email-no-send.sh` | 1 | ported | Blocks executable-looking Gmail send commands while allowing draft-only policy text. |
 | Phase 1 inventory | live VPS skills/hooks/timers/cron/MCP/config | `docs/migrations/2026-06-04-phase1-inventory.md` | 1 | ported | Comprehensive inventory created before further cutovers. |
 | Failure scanner | `scripts/scan_launchd_failures.py` | Codex-aware scheduler failure scan | 1 | validated | Anchored real wrapper markers, detects Codex runner failures, and ignores resolved older failures after newer success logs. |
+| Scheduled model routing | Codex default model | Routine/heavy explicit model routing | 1 | ported | Phase 2 cost control: frequent validator-backed jobs default to `gpt-5.4-mini`; judgment/research-heavy weekly jobs default to `gpt-5.5`; `CODEX_MODEL` can still force one model for all jobs. |
 
 ## Safety Requirements
 

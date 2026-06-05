@@ -1,9 +1,9 @@
 # Personal OS Statistics
 # Updated automatically by calibration-stats-updater hook
 
-total_traces_processed: 38
-total_calibrations: 4
-last_calibration: 2026-05-21
+total_traces_processed: 228
+total_calibrations: 5
+last_calibration: 2026-06-04
 
 # Level thresholds (decision traces)
 # Level 1: 0-99 (Seed)

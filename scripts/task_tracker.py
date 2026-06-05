@@ -559,7 +559,27 @@ def snapshot_ranges(client: SheetsClient, verb: str, ranges: list[str]) -> str:
     return str(path)
 
 
+# Verbs whose "trace" is a mechanical receipt of an instruction Kay already
+# gave, not a decision between alternatives. Per decision-traces SKILL.md
+# anti-pattern #6 these belong in brain/context/verb-logs/, never brain/traces/
+# — they pollute calibration input. The 2026-06-04 calibration found 12 of 38
+# traces in the prior batch were exactly these receipts (32% noise).
+_RECEIPT_VERBS = {
+    "compact-todo",
+    "schedule-to-day-slot",
+    "build-week",
+    "build-week-v2",
+    "distribute-week",
+    "reformat",
+}
+
+
 def trace(verb: str, slug: str, lines: list[str]) -> None:
+    if verb in _RECEIPT_VERBS:
+        # Mechanical receipt — route to verb-logs, preserve the rollback record
+        # without polluting brain/traces/ (calibration input).
+        log_verb_receipt(verb, slug, lines)
+        return
     today_iso = date.today().isoformat()
     trace_dir = _REPO_ROOT / "brain" / "traces"
     trace_dir.mkdir(parents=True, exist_ok=True)
@@ -580,6 +600,21 @@ def trace(verb: str, slug: str, lines: list[str]) -> None:
         *lines,
     ])
     trace_path.write_text(body)
+
+
+def log_verb_receipt(verb: str, slug: str, lines: list[str]) -> None:
+    """Mechanical verb receipt → brain/context/verb-logs/, NOT brain/traces/.
+    Per decision-traces SKILL.md anti-pattern #6 — these are receipts of an
+    instruction already given, not decisions, and they pollute calibration."""
+    today_iso = date.today().isoformat()
+    log_dir = _REPO_ROOT / "brain" / "context" / "verb-logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_path = log_dir / f"{today_iso}-task-tracker.log"
+    with log_path.open("a") as f:
+        ts = datetime.now().isoformat()
+        f.write(f"\n[{ts}] {verb} — {slug}\n")
+        for line in lines:
+            f.write(f"  {line}\n")
 
 
 def log_append_receipt(verb: str, lines: list[str]) -> None:

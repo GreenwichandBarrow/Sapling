@@ -6,12 +6,12 @@ Runs as POST_RUN_CHECK after launchd wrapper completes. Independent of skill-int
 validation. Catches silent-success failures where Claude exits 0 but no artifact
 landed at brain/context/relationship-status-{date}.md.
 
-Note: Does NOT gate on Attio writes succeeding. Attio MCP can be down (as of
-2026-04-26), and we still want a graceful artifact recording the fact in
-"System Status Alerts" rather than the wrapper hard-failing.
+Note: Does NOT gate on Attio writes succeeding. Attio REST/API can be down,
+and we still want a graceful artifact recording the fact in "System Status
+Alerts" rather than the wrapper hard-failing.
 
 Exit codes:
-  0  Pass — artifact exists, has frontmatter, has at least one expected section header
+  0  Pass — artifact exists, has frontmatter, and has every expected section header
   2  Fail — artifact missing or malformed
 
 Usage:
@@ -31,8 +31,9 @@ VAULT_DIR = os.environ.get(
     os.path.join(_REPO_ROOT, "brain", "context"),
 )
 
-# Sections defined by SKILL.md "Output Artifact" template.
-# At least one of these must appear (skill may legitimately omit empty sections).
+# Sections defined by SKILL.md "Output Artifact" template. The headless
+# prompt requires keeping every header and writing an explicit "None" body for
+# empty sections. Missing headers are partial/silent outputs.
 EXPECTED_SECTIONS = [
     "## Overdue Contacts",
     "## Auto-Resolved",
@@ -76,11 +77,12 @@ def main() -> int:
                 if f"date: {run_date.isoformat()}" not in fm:
                     failures.append(f"frontmatter date does not match run date {run_date}")
 
-        # At least one expected section must be present
-        sections_found = [s for s in EXPECTED_SECTIONS if s in content]
-        if not sections_found:
+        # Every expected section must be present. Empty sections are valid only
+        # when their header remains in the artifact with an explicit body.
+        missing_sections = [section for section in EXPECTED_SECTIONS if section not in content]
+        if missing_sections:
             failures.append(
-                f"no expected sections found; expected at least one of: {EXPECTED_SECTIONS}"
+                f"missing expected section header(s): {missing_sections}"
             )
 
         # Sanity: artifact should be > 200 bytes — empty stubs are not real outputs

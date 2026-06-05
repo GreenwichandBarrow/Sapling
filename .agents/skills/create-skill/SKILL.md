@@ -1,6 +1,6 @@
 ---
 name: create-skill
-description: Create Codex skills with context engineering built in. Use when building new skills, auditing existing skills, or adding components to skills. Supports four archetypes: simple, router, orchestrator, and reference.
+description: "Create Codex skills with context engineering built in. Use when building new skills, auditing existing skills, or adding components to skills. Supports four archetypes: simple, router, orchestrator, and reference."
 context_budget:
   skill_md: 200
   max_references: 12

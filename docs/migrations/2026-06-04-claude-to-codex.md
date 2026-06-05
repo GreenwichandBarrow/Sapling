@@ -57,7 +57,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | Doctrine | `CLAUDE.md` | `AGENTS.md` | 1 | ported | Direct port with runtime terminology adapted. |
 | Skills | `.claude/skills` | `.agents/skills` | 1/2/3 | ported | Full copy; tiering still evidence-based. |
 | Hooks | `.claude/hooks` + `.claude/settings.json` | `.codex/hooks` + `.codex/hooks.json` | 1 | ported | Must-have safety hooks copied; requires Codex hook validation/trust. |
-| Codex env | `scripts/.env.launchd` | `scripts/.env.codex` | 1 | blocked | 1Password reference resolves, but stored value failed Codex/OpenAI auth smoke test. |
+| Codex env | `scripts/.env.launchd` | `scripts/.env.codex` | 1 | validated | 1Password reference resolves; read-only Codex smoke test completed successfully. |
 | Runner | `scripts/run-skill.sh` | `scripts/run-agent-skill.sh` | 1 | ported | New runner created; old runner preserved. |
 | calibration-workflow | systemd + `run-skill.sh calibration-workflow` | `run-agent-skill.sh calibration-workflow` | 1 | pending | Active timer Thu 23:00. |
 | conference-discovery | systemd + headless Sunday prompt | `run-agent-skill.sh conference-discovery sunday` | 1 | pending | Active timer Sun 21:00; validator exists. |
@@ -111,13 +111,8 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 
 ## Current Blockers
 
-1. Replace the current value in the 1Password item referenced by `scripts/.env.codex` with a valid OpenAI API key:
-   - Vault: `GB Server`
-   - Item: `OpenAI API Key`
-   - Field: `password`
-   - Expected env reference: `op://GB Server/OpenAI API Key/password`
-2. Real Codex validation and systemd cutover cannot proceed until the OpenAI API smoke test succeeds. The current value resolves but returned `401 Unauthorized`.
-3. `post-call-analyzer-poll.service` must not be cut over until the Codex poller variant and analyzer workflow are tested as one cluster.
+1. Production pilot workflow execution needs explicit approval because it can write real health artifacts and may send failure/blocker notifications.
+2. `post-call-analyzer-poll.service` must not be cut over until the Codex poller variant and analyzer workflow are tested as one cluster.
 
 ## Safety Validation
 
@@ -130,6 +125,9 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Systemd dry-run generated Codex service variants under `docs/migrations/systemd-codex-templates/generated/` without modifying live units.
 - `prepare-codex-systemd-cutover.sh --apply --group health-monitor` was tested while readiness failed and correctly refused to edit `~/.config/systemd/user/health-monitor.service`.
 - Email no-send audit passes after removing executable send examples from migrated `gogcli` references.
+- `scripts/check-codex-migration-readiness.sh` passed after `CODEX_API_KEY` was moved to `op://GB Server/OpenAI API Key/password`.
+- Read-only `codex exec` smoke test completed successfully and returned project name `Sapling OS`.
+- Migrated `.agents/skills/create-skill/SKILL.md` frontmatter was fixed so Codex no longer logs an invalid YAML startup warning.
 
 ## Rollback Policy
 

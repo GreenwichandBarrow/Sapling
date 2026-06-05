@@ -86,6 +86,13 @@ export GOG_ACCOUNT="${GOG_ACCOUNT:-kay.s@greenwichandbarrow.com}"
 TODAY="${TODAY:-$(date +%Y-%m-%d)}"
 export TODAY
 
+# Many validators call gog after Codex exits. Codex itself may source op-env.sh
+# inside the prompt, but that does not affect this wrapper process.
+if [ -f "$WORKDIR/scripts/op-env.sh" ]; then
+  # shellcheck disable=SC1091
+  source "$WORKDIR/scripts/op-env.sh" >/dev/null 2>&1 || true
+fi
+
 # Hard email safety preflight: scheduled jobs may create drafts only through explicit draft paths.
 # Scan the active skill plus known email-adjacent trigger scripts; do not scan every
 # script for every job, because legacy/fallback scripts can contain unrelated send references.

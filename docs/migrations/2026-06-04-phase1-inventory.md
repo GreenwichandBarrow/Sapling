@@ -11,8 +11,8 @@ This inventory records the live surfaces found during the Claude Code to Codex P
 - Skills: 46 migrated skill files exist in `.agents/skills`, matching the 46 legacy `.claude/skills` files.
 - Hooks: legacy `.claude/hooks` were copied into `.codex/hooks`, with `.codex/hooks.json` routing through `.codex/hooks/run-hook.sh`.
 - Live scheduled jobs: 21 user systemd timers were found.
-- Live Codex cutover: `health-monitor.service` now uses `scripts/run-agent-skill.sh`.
-- Live legacy agent runner: 12 agent-backed services still use `scripts/run-skill.sh` and must remain on Claude until each workflow or dependency cluster is validated.
+- Live Codex cutover: `health-monitor.service` and `nightly-tracker-audit.service` now use `scripts/run-agent-skill.sh`.
+- Live legacy agent runner: 11 agent-backed services still use `scripts/run-skill.sh` and must remain on Claude until each workflow or dependency cluster is validated.
 - Direct script jobs: 6 recurring jobs appear agent-free and should remain unchanged in Phase 1 unless they internally trigger agent work.
 - Cron: one user crontab entry exists for temp cleanup only.
 - MCP: no active repo-level `.mcp.json` was found. The only live-looking MCP state was `~/.claude/mcp-needs-auth-cache.json`; scheduled Codex jobs must not depend on MCP until tested.
@@ -92,7 +92,7 @@ Phase 1 status: must-have safety hook logic is copied and synthetic checks pass 
 | Timer | Next/Pattern | Service | Current Runtime | Phase 1 Status |
 | --- | --- | --- | --- | --- |
 | `calibration-workflow.timer` | Thu 23:00 | `calibration-workflow.service` | Claude runner | blocked |
-| `nightly-tracker-audit.timer` | daily 23:30 | `nightly-tracker-audit.service` | Claude runner | pending validation |
+| `nightly-tracker-audit.timer` | daily 23:30 | `nightly-tracker-audit.service` | Codex runner | cutover |
 | `health-monitor.timer` | Fri 00:30 | `health-monitor.service` | Codex runner | cutover |
 | `launchd-debugger.timer` | daily 05:00 | `launchd-debugger.service` | Claude runner | pending validation |
 | `relationship-manager.timer` | weekdays 06:50 | `relationship-manager.service` | Claude runner | pending validation |
@@ -127,7 +127,6 @@ These live services still point at `scripts/run-skill.sh`:
 - `jj-operations-sunday.service`
 - `launchd-debugger.service`
 - `niche-intelligence.service`
-- `nightly-tracker-audit.service`
 - `relationship-manager.service`
 - `target-discovery-sunday.service`
 

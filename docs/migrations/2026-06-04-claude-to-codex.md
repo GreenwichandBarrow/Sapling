@@ -67,7 +67,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | jj-operations | Sunday timer + headless prompt | `run-agent-skill.sh jj-operations:sunday-prep` | 1 | pending | Validator exists. |
 | launchd-debugger | daily/on-failure prompts | `run-agent-skill.sh launchd-debugger` variants | 1 | pending | Name retained for workflow history; runner says Codex. |
 | niche-intelligence | Tuesday timer + headless prompt | `run-agent-skill.sh niche-intelligence:tuesday` | 1 | pending | Validator exists; dependency on last30days noted in old runner. |
-| nightly-tracker-audit | nightly timer + prompt | `run-agent-skill.sh nightly-tracker-audit:nightly` | 1 | pending | Validator exists. |
+| nightly-tracker-audit | nightly timer + prompt | `run-agent-skill.sh nightly-tracker-audit:nightly` | 1 | cutover | Codex validation completed after runner inherited `op-env.sh`; live systemd service now uses `run-agent-skill.sh`. |
 | post-call-analyzer | poll script + triggered prompt | `run-agent-skill.sh post-call-analyzer:on-trigger` | 1 | pending | Email-adjacent; verify no send. |
 | relationship-manager | weekday timer + prompt | `run-agent-skill.sh relationship-manager:daily` | 1 | pending | Validator exists. |
 | target-discovery | Sunday timer + prompt | `run-agent-skill.sh target-discovery phase2-sunday` | 1 | pending | Validator exists; JJ dependency. |
@@ -135,6 +135,8 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - `health-monitor` artifact validation passed for `brain/trackers/health/2026-06-04-health.md` and `brain/traces/agents/2026-06-04-health-monitor.md`.
 - `health-monitor.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh health-monitor`; rollback is the `.pre-codex-*` backup in `~/.config/systemd/user` or the pre-migration backup snapshot.
 - Comprehensive inventory confirms 46 migrated skills, copied Codex hooks, 21 user systemd timers, one unrelated user cron cleanup job, no active repo-level MCP config, and one live Codex-cutover service (`health-monitor`).
+- `nightly-tracker-audit` Codex production validation completed successfully at 2026-06-04 23:40 EDT after `scripts/run-agent-skill.sh` was fixed to source `scripts/op-env.sh` for wrapper-level validators.
+- `nightly-tracker-audit.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh nightly-tracker-audit:nightly`; timer was unchanged.
 
 ## Rollback Policy
 

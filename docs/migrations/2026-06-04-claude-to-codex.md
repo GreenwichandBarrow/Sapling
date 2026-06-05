@@ -65,7 +65,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | email-intelligence | weekday timer + headless prompt | `run-agent-skill.sh email-intelligence` | 1 | pending | Email-adjacent; must verify draft-only/no send before validation. |
 | health-monitor | weekly timer | `run-agent-skill.sh health-monitor` | 1 | cutover | Codex pilot completed, wrote `brain/trackers/health/2026-06-04-health.md`, validated artifact, posted Slack per RED/YELLOW rule, and live systemd service now uses `run-agent-skill.sh`. |
 | jj-operations | Sunday timer + headless prompt | `run-agent-skill.sh jj-operations:sunday-prep` | 1 | pending | Validator exists. |
-| launchd-debugger | daily/on-failure prompts | `run-agent-skill.sh launchd-debugger` variants | 1 | pending | Name retained for workflow history; runner says Codex. |
+| launchd-debugger | daily/on-failure prompts | `run-agent-skill.sh launchd-debugger` variants | 1 | cutover | Daily Codex pilot completed after scanner hardening; live systemd service now uses `run-agent-skill.sh`. |
 | niche-intelligence | Tuesday timer + headless prompt | `run-agent-skill.sh niche-intelligence:tuesday` | 1 | pending | Validator exists; dependency on last30days noted in old runner. |
 | nightly-tracker-audit | nightly timer + prompt | `run-agent-skill.sh nightly-tracker-audit:nightly` | 1 | cutover | Codex validation completed after runner inherited `op-env.sh`; live systemd service now uses `run-agent-skill.sh`. |
 | post-call-analyzer | poll script + triggered prompt | `run-agent-skill.sh post-call-analyzer:on-trigger` | 1 | pending | Email-adjacent; verify no send. |
@@ -80,6 +80,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | Scheduled prompt/validator coverage | old runner + systemd `POST_RUN_CHECK` | runner defaults + readiness checks | 1 | ported | Known scheduled headless prompts and validators are checked before cutover; runner has defaults for manual validation safety. |
 | Email no-send audit | migrated skill docs/scripts | `scripts/audit-email-no-send.sh` | 1 | ported | Blocks executable-looking Gmail send commands while allowing draft-only policy text. |
 | Phase 1 inventory | live VPS skills/hooks/timers/cron/MCP/config | `docs/migrations/2026-06-04-phase1-inventory.md` | 1 | ported | Comprehensive inventory created before further cutovers. |
+| Failure scanner | `scripts/scan_launchd_failures.py` | Codex-aware scheduler failure scan | 1 | validated | Anchored real wrapper markers, detects Codex runner failures, and ignores resolved older failures after newer success logs. |
 
 ## Safety Requirements
 
@@ -134,7 +135,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - `health-monitor` Codex production pilot completed successfully at 2026-06-04 22:40 EDT.
 - `health-monitor` artifact validation passed for `brain/trackers/health/2026-06-04-health.md` and `brain/traces/agents/2026-06-04-health-monitor.md`.
 - `health-monitor.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh health-monitor`; rollback is the `.pre-codex-*` backup in `~/.config/systemd/user` or the pre-migration backup snapshot.
-- Comprehensive inventory confirms 46 migrated skills, copied Codex hooks, 21 user systemd timers, one unrelated user cron cleanup job, no active repo-level MCP config, and one live Codex-cutover service (`health-monitor`).
+- Comprehensive inventory confirms 46 migrated skills, copied Codex hooks, 21 user systemd timers, one unrelated user cron cleanup job, no active repo-level MCP config, and three live Codex-cutover services (`health-monitor`, `nightly-tracker-audit`, and `launchd-debugger`).
 - `nightly-tracker-audit` Codex production validation completed successfully at 2026-06-04 23:40 EDT after `scripts/run-agent-skill.sh` was fixed to source `scripts/op-env.sh` for wrapper-level validators.
 - `nightly-tracker-audit.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh nightly-tracker-audit:nightly`; timer was unchanged.
 
@@ -150,3 +151,9 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Validated workflows/clusters are cut over to Codex.
 - Failed workflows remain safely on Claude temporarily with blocker notes.
 - Claude files are preserved, not deleted.
+
+## Overnight Phase 1 Notes - 2026-06-05
+
+- `launchd-debugger` Codex pilot initially exposed a false-positive scanner bug: legacy documentation text inside Codex JSON logs could match loose `PREFLIGHT FAILED` detection, and an older failed retry could remain visible after a newer success. `scripts/scan_launchd_failures.py` now anchors real wrapper markers, detects Codex runner failure lines, and treats only the newest log per job as current state.
+- `launchd-debugger` clean Codex pilot completed at 2026-06-05 02:59 EDT with 0 failures, no Slack post, and validator pass.
+- `launchd-debugger.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh launchd-debugger:daily`; timer was unchanged.

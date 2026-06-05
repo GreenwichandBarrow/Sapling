@@ -79,12 +79,19 @@ LOG_FILENAME_RE = re.compile(
     r"^(?P<skill>.+?)-(?P<date>\d{4}-\d{2}-\d{2})-(?P<time>\d{4})\.log$"
 )
 
-EXIT_LINE_RE = re.compile(r"Finished claude run:.*exit:\s*(?P<code>-?\d+)")
+EXIT_LINE_RE = re.compile(
+    r"^Finished claude run:.*exit:\s*(?P<code>-?\d+)",
+    re.MULTILINE,
+)
+CODEX_FAILURE_RE = re.compile(
+    r"^FAILED: (?:codex exec|post-run check) exited (?P<code>-?\d+)",
+    re.MULTILINE,
+)
 # Anchor on the wrapper's real override marker (em-dash, U+2014) — NOT the bare
 # substring. The bare form false-matches skills' own SUCCESS-summary negation
 # prose, e.g. nightly-tracker-audit's "No STOP marker, no `VALIDATOR FAILED`."
-VALIDATOR_FAIL_RE = re.compile(r"VALIDATOR FAILED — overriding skill exit code")
-PREFLIGHT_FAIL_RE = re.compile(r"PREFLIGHT FAILED")
+VALIDATOR_FAIL_RE = re.compile(r"^VALIDATOR FAILED — overriding skill exit code", re.MULTILINE)
+PREFLIGHT_FAIL_RE = re.compile(r"^PREFLIGHT FAILED \(auth\):", re.MULTILINE)
 STOP_MARKER_RE = re.compile(r"^[A-Z][A-Z0-9-]+\s+STOP:\s*(.+)$", re.MULTILINE)
 
 
@@ -96,7 +103,14 @@ def parse_log(path: Path) -> dict | None:
         return None
 
     exit_match = EXIT_LINE_RE.search(text)
-    exit_code: int | None = int(exit_match.group("code")) if exit_match else None
+    codex_failure_match = CODEX_FAILURE_RE.search(text)
+    exit_code: int | None
+    if exit_match:
+        exit_code = int(exit_match.group("code"))
+    elif codex_failure_match:
+        exit_code = int(codex_failure_match.group("code"))
+    else:
+        exit_code = None
 
     validator_failed = bool(VALIDATOR_FAIL_RE.search(text))
     preflight_failed = bool(PREFLIGHT_FAIL_RE.search(text))
@@ -124,6 +138,8 @@ def parse_log(path: Path) -> dict | None:
         signature = sig_lines[-1].strip() if sig_lines else "VALIDATOR FAILED"
     elif stop_match:
         signature = stop_match.group(0).strip()
+    elif codex_failure_match:
+        signature = codex_failure_match.group(0).strip()
     elif exit_code is not None:
         # Grep last few non-empty lines for an error hint.
         non_empty = [ln for ln in lines[-15:] if ln.strip()]
@@ -170,8 +186,9 @@ def scan(window_hours: int = DEFAULT_WINDOW_HOURS, log_file: Path | None = None)
     cutoff = datetime.now(tz=timezone.utc) - timedelta(hours=window_hours)
     cutoff_ts = cutoff.timestamp()
 
-    # Bucket failures per skill, keep only the most-recent failure per skill.
-    per_skill: dict[str, dict] = {}
+    # Only the latest log per skill represents current state. An older failed
+    # run followed by a newer successful retry is resolved and should not page.
+    latest_per_skill: dict[str, tuple[Path, float]] = {}
 
     for log_path in LOG_DIR.glob("*.log"):
         try:
@@ -189,17 +206,20 @@ def scan(window_hours: int = DEFAULT_WINDOW_HOURS, log_file: Path | None = None)
             continue
         skill = match.group("skill")
 
+        prior = latest_per_skill.get(skill)
+        if prior is None or stat.st_mtime > prior[1]:
+            latest_per_skill[skill] = (log_path, stat.st_mtime)
+
+    failures = []
+    for skill, (log_path, _mtime) in latest_per_skill.items():
         record = parse_log(log_path)
         if record is None:
             continue
         record["job"] = skill
-
-        prior = per_skill.get(skill)
-        if prior is None or record["last_log_mtime"] > prior["last_log_mtime"]:
-            per_skill[skill] = record
+        failures.append(record)
 
     # Stable ordering: oldest failure first so the agent debugs in chronological order.
-    return sorted(per_skill.values(), key=lambda r: r["last_log_mtime"])
+    return sorted(failures, key=lambda r: r["last_log_mtime"])
 
 
 def main() -> int:

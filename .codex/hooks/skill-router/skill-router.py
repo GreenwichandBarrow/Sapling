@@ -40,7 +40,7 @@ def extract_file_paths(prompt: str) -> list[str]:
         paths.add(match.group(1))
 
     # Match paths starting with common directories
-    dir_pattern = r'(?:^|\s|["\'\`])((?:src|app|lib|components|screens|hooks|utils|services|\.claude|\.github|brain|schemas)\/[\w\-./]+)'
+    dir_pattern = r'(?:^|\s|["\'\`])((?:src|app|lib|components|screens|hooks|utils|services|\.agents|\.codex|\.claude|\.github|brain|schemas)\/[\w\-./]+)'
     for match in re.finditer(dir_pattern, prompt, re.IGNORECASE):
         paths.add(match.group(1))
 

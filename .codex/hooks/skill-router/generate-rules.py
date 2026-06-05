@@ -97,8 +97,8 @@ def extract_auto_trigger(content: str) -> dict:
                     triggers["intentPatterns"].append(escaped)
 
     # Deduplicate
-    triggers["keywords"] = list(set(triggers["keywords"]))
-    triggers["intentPatterns"] = list(set(triggers["intentPatterns"]))[:5]  # Limit intent patterns
+    triggers["keywords"] = sorted(set(triggers["keywords"]))
+    triggers["intentPatterns"] = sorted(set(triggers["intentPatterns"]))[:5]  # Limit intent patterns
 
     return triggers
 
@@ -138,7 +138,7 @@ def extract_keywords_from_description(description: str) -> list:
     quoted = re.findall(r'"([^"]+)"', description)
     keywords.extend([q.lower() for q in quoted if len(q) <= 30])
 
-    return list(set(keywords))
+    return sorted(set(keywords))
 
 
 def parse_skill_file(skill_path: Path) -> dict | None:
@@ -178,7 +178,7 @@ def parse_skill_file(skill_path: Path) -> dict | None:
     triggers["keywords"].extend([p.lower() for p in name_parts if len(p) >= 3])
 
     # Deduplicate keywords
-    triggers["keywords"] = list(set(triggers["keywords"]))
+    triggers["keywords"] = sorted(set(triggers["keywords"]))
 
     # Determine priority based on trigger specificity
     has_auto_trigger = bool(auto_triggers.get("keywords") or auto_triggers.get("intentPatterns"))
@@ -195,7 +195,7 @@ def parse_skill_file(skill_path: Path) -> dict | None:
 
 def generate_rules(project_dir: str) -> dict:
     """Generate complete skill-rules.json from project skills."""
-    skills_dir = Path(project_dir) / ".claude" / "skills"
+    skills_dir = Path(project_dir) / ".agents" / "skills"
 
     rules = {
         "version": "2.0",
@@ -222,7 +222,7 @@ def generate_rules(project_dir: str) -> dict:
         return rules
 
     # Scan all SKILL.md files
-    for skill_md in skills_dir.glob("*/SKILL.md"):
+    for skill_md in sorted(skills_dir.glob("*/SKILL.md")):
         skill_name = skill_md.parent.name
         skill_config = parse_skill_file(skill_md)
 

@@ -49,7 +49,7 @@ def validate_vault_schema(input_data: dict) -> HandlerResult:
         return None
 
     project_dir = os.environ.get("CODEX_PROJECT_DIR", os.getcwd())
-    script_path = os.path.join(project_dir, ".claude", "hooks", "validate-edits.py")
+    script_path = os.path.join(project_dir, ".codex", "hooks", "validate-edits.py")
 
     if not os.path.exists(script_path):
         return None

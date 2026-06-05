@@ -21,7 +21,7 @@ def chatroom_state_sync(input_data: dict) -> HandlerResult:
         return None
 
     project_dir = os.environ.get("CODEX_PROJECT_DIR", os.getcwd())
-    script_path = os.path.join(project_dir, ".claude", "hooks", "chatroom-state-sync.py")
+    script_path = os.path.join(project_dir, ".codex", "hooks", "chatroom-state-sync.py")
 
     if not os.path.exists(script_path):
         return None

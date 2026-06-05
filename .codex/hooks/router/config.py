@@ -20,14 +20,15 @@ DAILY_NOTE_TEMPLATE = "brain/notes/daily/"
 SCHEMA_DIR = "schemas/vault/"
 MIGRATION_DIR = "schemas/migrations/"
 
-# Stats file (protected from direct writes)
+# Stats file (protected from direct writes). Kept at the legacy path during the
+# monitoring window because calibration-workflow still owns that state file.
 STATS_FILE = ".claude/stats.yaml"
 
 # State directory for continuation/dedup
-STATE_DIR = PROJECT_DIR / ".claude" / "state"
+STATE_DIR = PROJECT_DIR / ".codex" / "state"
 
 # Safe directories for git auto-staging (new untracked files here are auto-staged)
-SAFE_DIRS = ["brain/", "schemas/", ".claude/", ".beads/"]
+SAFE_DIRS = ["brain/", "schemas/", ".agents/", ".codex/", ".claude/", ".beads/"]
 
 # Commit message area mappings (path prefix -> area name)
 # Used by git-smart-stage.sh via commit-areas.conf, but also available to Python handlers
@@ -45,7 +46,9 @@ COMMIT_AREAS = {
     "brain/inbox/": "inbox",
     "brain/": "brain",
     "schemas/": "schemas",
-    ".claude/": "claude config",
+    ".agents/": "agent skills",
+    ".codex/": "codex config",
+    ".claude/": "legacy claude config",
     ".beads/": "beads",
 }
 

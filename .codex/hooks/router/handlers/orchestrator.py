@@ -11,7 +11,7 @@ from typing import Optional
 from ..config import CHATROOM_PREFIX
 from ..models import Decision, HandlerResult
 
-STATE_DIR = Path(os.path.expanduser("~/.claude/hook-state"))
+STATE_DIR = Path(os.path.expanduser("~/.codex/hook-state"))
 MAX_ATTEMPTS = 3
 
 

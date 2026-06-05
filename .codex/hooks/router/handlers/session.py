@@ -11,7 +11,7 @@ from ..models import HandlerResult
 def session_init(input_data: dict) -> HandlerResult:
     """SessionStart: run session-init.sh (sets env, creates daily note)."""
     project_dir = os.environ.get("CODEX_PROJECT_DIR", os.getcwd())
-    script_path = os.path.join(project_dir, ".claude", "hooks", "session-init.sh")
+    script_path = os.path.join(project_dir, ".codex", "hooks", "session-init.sh")
 
     if not os.path.exists(script_path):
         return None
@@ -99,7 +99,7 @@ def calendar_check(input_data: dict) -> HandlerResult:
 def dedup_cleanup(input_data: dict) -> HandlerResult:
     """SessionStart[startup]: clean up memory dedup state files."""
     project_dir = os.environ.get("CODEX_PROJECT_DIR", os.getcwd())
-    dedup_dir = Path(project_dir) / ".claude" / "state" / "memory-dedup"
+    dedup_dir = Path(project_dir) / ".codex" / "state" / "memory-dedup"
 
     if dedup_dir.exists():
         for log_file in dedup_dir.glob("*.log"):

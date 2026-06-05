@@ -7,7 +7,7 @@
 if [ -n "${SAPLING_SAFE_DIRS:-}" ]; then
     read -ra SAFE_DIRS <<< "$SAPLING_SAFE_DIRS"
 else
-    SAFE_DIRS=(brain/ schemas/ .claude/ .beads/)
+    SAFE_DIRS=(brain/ schemas/ .agents/ .codex/ .claude/ .beads/)
 fi
 
 # Max file size for auto-staging new files (1MB)

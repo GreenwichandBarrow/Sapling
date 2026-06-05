@@ -17,7 +17,7 @@ def skill_router(input_data: dict) -> HandlerResult:
         return None
 
     project_dir = os.environ.get("CODEX_PROJECT_DIR", os.getcwd())
-    router_dir = Path(project_dir) / ".claude" / "hooks" / "skill-router"
+    router_dir = Path(project_dir) / ".codex" / "hooks" / "skill-router"
     rules_path = router_dir / "skill-rules.json"
     generate_script = router_dir / "generate-rules.py"
     router_script = router_dir / "skill-router.py"
@@ -26,7 +26,7 @@ def skill_router(input_data: dict) -> HandlerResult:
         return None
 
     # Auto-regenerate rules if needed
-    skills_dir = Path(project_dir) / ".claude" / "skills"
+    skills_dir = Path(project_dir) / ".agents" / "skills"
     regenerate = False
 
     if not rules_path.exists():

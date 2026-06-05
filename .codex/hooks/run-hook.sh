@@ -5,7 +5,8 @@ event="${1:?hook event required}"
 project_dir="$(git rev-parse --show-toplevel)"
 
 export CODEX_PROJECT_DIR="$project_dir"
-# Compatibility for the ported Claude-era hook router during Phase 1.
+# Compatibility alias for migrated hook scripts that still read the old name
+# during the one-week monitoring window.
 export CLAUDE_PROJECT_DIR="$project_dir"
 
 case "$event" in

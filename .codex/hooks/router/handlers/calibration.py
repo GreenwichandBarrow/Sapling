@@ -26,7 +26,7 @@ def calibration_stats_updater(input_data: dict) -> HandlerResult:
         return None
 
     project_dir = os.environ.get("CODEX_PROJECT_DIR", os.getcwd())
-    script_path = os.path.join(project_dir, ".claude", "hooks", "calibration-stats-updater.py")
+    script_path = os.path.join(project_dir, ".codex", "hooks", "calibration-stats-updater.py")
 
     if not os.path.exists(script_path):
         return None

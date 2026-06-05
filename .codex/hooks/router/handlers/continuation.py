@@ -61,7 +61,7 @@ Check these locations for in-progress work:
     STATE_FILE.write_text(state_content)
 
     return HandlerResult(
-        additional_context="CONTINUATION STATE SAVED: Before this compaction, state was saved to .claude/state/continuation.md. After compaction, read this file to resume your work.",
+        additional_context="CONTINUATION STATE SAVED: Before this compaction, state was saved to .codex/state/continuation.md. After compaction, read this file to resume your work.",
     )
 
 
@@ -90,10 +90,10 @@ def load_continuation_state(input_data: dict) -> HandlerResult:
         additional_context="""SESSION RESUMED AFTER COMPACTION
 
 Your previous session ran out of context and was compacted.
-Saved state is available at: .claude/state/continuation.md
+Saved state is available at: .codex/state/continuation.md
 
 IMMEDIATE ACTIONS:
-1. Read .claude/state/continuation.md for saved context
+1. Read .codex/state/continuation.md for saved context
 2. Check your todo list (if you were using TodoWrite)
 3. Resume the task you were working on
 

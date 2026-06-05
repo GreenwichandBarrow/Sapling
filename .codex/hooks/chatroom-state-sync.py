@@ -13,7 +13,7 @@ Benefits:
 4. Enables faster polling (5s vs 15-30s)
 5. Serializes concurrent writes (consistency)
 
-State file: ~/.claude/hook-state/chatroom-{date}-{slug}.json
+State file: ~/.codex/hook-state/chatroom-{date}-{slug}.json
 """
 import json
 import sys
@@ -24,7 +24,7 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any, List, Optional
 
-STATE_DIR = Path(os.path.expanduser("~/.claude/hook-state"))
+STATE_DIR = Path(os.path.expanduser("~/.codex/hook-state"))
 LOCK_TIMEOUT = 5  # seconds
 
 

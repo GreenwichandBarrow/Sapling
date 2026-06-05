@@ -49,6 +49,40 @@ def fail(msg: str) -> int:
     return 1
 
 
+def validate_snapshot_data(data: object) -> list[str]:
+    if not isinstance(data, dict):
+        return [f"snapshot root is {type(data).__name__}, expected dict"]
+
+    missing = [k for k in REQUIRED_KEYS if k not in data]
+    if missing:
+        return [f"snapshot missing required keys: {missing}"]
+
+    raw = data["raw_response"]
+    if not isinstance(raw, dict):
+        return [f"`raw_response` is {type(raw).__name__}, expected dict"]
+
+    status = raw.get("enrich_status")
+    if status != 200:
+        return [
+            f"`raw_response.enrich_status` = {status!r} (expected 200) — "
+            "Apollo rejected the enrich call; rate-limit headers may be "
+            "absent or stale"
+        ]
+
+    headers = raw.get("rate_limit_headers")
+    if not isinstance(headers, dict):
+        return [
+            f"`raw_response.rate_limit_headers` is "
+            f"{type(headers).__name__}, expected dict"
+        ]
+
+    missing_headers = [h for h in REQUIRED_HEADERS if h not in headers]
+    if missing_headers:
+        return [f"rate_limit_headers missing required keys: {missing_headers}"]
+
+    return []
+
+
 def main() -> int:
     if not SNAPSHOT.exists():
         return fail(f"snapshot missing: {SNAPSHOT}")
@@ -65,42 +99,11 @@ def main() -> int:
     except json.JSONDecodeError as e:
         return fail(f"snapshot not valid JSON: {e}")
 
-    if not isinstance(data, dict):
-        return fail(
-            f"snapshot root is {type(data).__name__}, expected dict"
-        )
+    failures = validate_snapshot_data(data)
+    if failures:
+        return fail("; ".join(failures))
 
-    missing = [k for k in REQUIRED_KEYS if k not in data]
-    if missing:
-        return fail(f"snapshot missing required keys: {missing}")
-
-    raw = data["raw_response"]
-    if not isinstance(raw, dict):
-        return fail(
-            f"`raw_response` is {type(raw).__name__}, expected dict"
-        )
-
-    status = raw.get("enrich_status")
-    if status != 200:
-        return fail(
-            f"`raw_response.enrich_status` = {status!r} (expected 200) — "
-            "Apollo rejected the enrich call; rate-limit headers may be "
-            "absent or stale"
-        )
-
-    headers = raw.get("rate_limit_headers")
-    if not isinstance(headers, dict):
-        return fail(
-            f"`raw_response.rate_limit_headers` is "
-            f"{type(headers).__name__}, expected dict"
-        )
-
-    missing_headers = [h for h in REQUIRED_HEADERS if h not in headers]
-    if missing_headers:
-        return fail(
-            f"rate_limit_headers missing required keys: {missing_headers}"
-        )
-
+    headers = data["raw_response"]["rate_limit_headers"]
     print(
         f"OK: {SNAPSHOT.name} fresh ({age:.0f}s old) — "
         f"enrich_status=200, "

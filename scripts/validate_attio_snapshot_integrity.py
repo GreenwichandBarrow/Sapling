@@ -42,6 +42,56 @@ def fail(msg: str) -> int:
     return 1
 
 
+def validate_snapshot_data(data: object) -> list[str]:
+    failures: list[str] = []
+    if not isinstance(data, dict):
+        return [f"snapshot root is {type(data).__name__}, expected dict"]
+
+    missing = [k for k in REQUIRED_KEYS if k not in data]
+    if missing:
+        return [f"snapshot missing required keys: {missing}"]
+
+    deals = data["deals"]
+    if not isinstance(deals, list):
+        failures.append(f"`deals` is {type(deals).__name__}, expected list")
+        deals = []
+
+    stages = data["stages"]
+    if not isinstance(stages, list) or not stages:
+        failures.append(
+            "`stages` is empty or not a list — Attio API contract violation "
+            "(every list has stages)"
+        )
+        stages = []
+
+    stage_titles = set()
+    for idx, stage in enumerate(stages):
+        if not isinstance(stage, dict):
+            failures.append(f"`stages[{idx}]` is {type(stage).__name__}, expected dict")
+            continue
+        title = stage.get("title")
+        if not isinstance(title, str) or not title.strip():
+            failures.append(f"`stages[{idx}].title` missing or blank")
+            continue
+        stage_titles.add(title)
+
+    for idx, deal in enumerate(deals):
+        if not isinstance(deal, dict):
+            failures.append(f"`deals[{idx}]` is {type(deal).__name__}, expected dict")
+            continue
+        stage = deal.get("stage")
+        if stage_titles and stage not in stage_titles:
+            failures.append(
+                f"`deals[{idx}].stage`={stage!r} is not in stage titles {sorted(stage_titles)}"
+            )
+
+    closed_count = data.get("closed_count")
+    if not isinstance(closed_count, int) or isinstance(closed_count, bool) or closed_count < 0:
+        failures.append(f"`closed_count` is {closed_count!r}, expected int >= 0")
+
+    return failures
+
+
 def main() -> int:
     if not SNAPSHOT.exists():
         return fail(f"snapshot missing: {SNAPSHOT}")
@@ -58,27 +108,11 @@ def main() -> int:
     except json.JSONDecodeError as e:
         return fail(f"snapshot not valid JSON: {e}")
 
-    if not isinstance(data, dict):
-        return fail(
-            f"snapshot root is {type(data).__name__}, expected dict"
-        )
-
-    missing = [k for k in REQUIRED_KEYS if k not in data]
-    if missing:
-        return fail(f"snapshot missing required keys: {missing}")
-
-    if not isinstance(data["deals"], list):
-        return fail(
-            f"`deals` is {type(data['deals']).__name__}, expected list"
-        )
+    failures = validate_snapshot_data(data)
+    if failures:
+        return fail("; ".join(failures))
 
     stages = data["stages"]
-    if not isinstance(stages, list) or not stages:
-        return fail(
-            "`stages` is empty or not a list — Attio API contract violation "
-            "(every list has stages)"
-        )
-
     deal_count = len(data["deals"])
     print(
         f"OK: {SNAPSHOT.name} fresh ({age:.0f}s old) — "

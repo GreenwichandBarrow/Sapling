@@ -59,7 +59,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | Hooks | `.claude/hooks` + `.claude/settings.json` | `.codex/hooks` + `.codex/hooks.json` | 1 | ported | Must-have safety hooks copied; requires Codex hook validation/trust. |
 | Codex env | `scripts/.env.launchd` | `scripts/.env.codex` | 1 | validated | 1Password reference resolves; read-only Codex smoke test completed successfully. |
 | Runner | `scripts/run-skill.sh` | `scripts/run-agent-skill.sh` | 1 | ported | New runner created; old runner preserved. |
-| calibration-workflow | systemd + `run-skill.sh calibration-workflow` | `run-agent-skill.sh calibration-workflow` | 1 | blocked | Last Claude run exited 0 while waiting for human approval and wrote no artifact; needs dedicated headless prompt/validator before Codex cutover. |
+| calibration-workflow | systemd + `run-skill.sh calibration-workflow` | `run-agent-skill.sh calibration-workflow` | 1 | cutover | Codex pilot wrote `brain/outputs/calibrations/2026-06-05-codex-calibration.md`, validator passed, and live service now uses `run-agent-skill.sh`. |
 | conference-discovery | systemd + headless Sunday prompt | `run-agent-skill.sh conference-discovery sunday` | 1 | cutover | Prior run validator passed for 2026-05-31 after validator timeout hardening; live service now uses `run-agent-skill.sh`. Observe Sunday 2026-06-07 Codex run. |
 | deal-aggregator cluster | morning/afternoon/friday timers + headless prompts | `run-agent-skill.sh deal-aggregator` variants | 1 | cutover | Morning Codex pilot wrote the daily artifact, posted 1 new deal, passed validator, and all three live services now use `run-agent-skill.sh`. |
 | email-intelligence | weekday timer + headless prompt | `run-agent-skill.sh email-intelligence` | 1 | cutover | Codex pilot completed with no send path used, wrote `brain/context/email-scan-results-2026-06-05.md`, passed `validate_email_intelligence_integrity.py`, and live systemd service now uses `run-agent-skill.sh`. |
@@ -181,7 +181,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 
 ### Intentionally left on Claude for safety
 
-- `calibration-workflow.service`: blocked; last legacy run waited for human approval and produced no durable artifact. Needs a dedicated headless prompt/validator before Codex cutover.
+- None among agent scheduled services after the calibration-workflow Codex cutover on 2026-06-05. Legacy Claude files remain preserved for rollback until Phase 3.
 
 ### Deferred to Phase 2 / Phase 3
 
@@ -235,3 +235,13 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Audited personal skill directories under `~/.claude/skills` and `~/.codex/skills` for Git remotes. Only `last30days` had a GitHub remote on the VPS.
 - Audited repo-local `.claude/skills` and `.agents/skills` for nested `.git` directories; none were found. Repo-local GitHub-provenance skills such as `evolve` and `create-skill` were already copied as part of the Sapling `.claude/skills` -> `.agents/skills` migration.
 - Updated the active Codex niche-intelligence sub-agent reference to call `~/.codex/skills/last30days/skills/last30days/scripts/last30days.py` instead of a non-existent `~/.agents/skills/last30days` path.
+
+
+## Calibration Workflow Codex Port - 2026-06-05
+
+- Added `.agents/skills/calibration-workflow/headless-weekly-prompt.md` for non-interactive Codex runs. The Phase 1 scheduled mode writes a durable report and does not wait for approval.
+- Added `scripts/validate_calibration_workflow_integrity.py` to require the dated Codex calibration report, required headings, Codex runtime frontmatter, and explicit safety notes.
+- Added calibration-workflow prompt/validator coverage to `scripts/run-agent-skill.sh` and `scripts/check-codex-migration-readiness.sh`.
+- Phase 1 policy for this workflow: report-first/proposal-only. Direct skill, hook, memory, and script improvements move to Phase 2 unless they are required for the headless run itself.
+- Codex pilot completed at 2026-06-05 11:53 EDT and passed `scripts/validate_calibration_workflow_integrity.py --date 2026-06-05`.
+- `calibration-workflow.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh calibration-workflow`; timer was unchanged.

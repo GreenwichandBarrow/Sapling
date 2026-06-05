@@ -36,6 +36,7 @@ else
 fi
 
 scheduled_coverage=(
+  "calibration-workflow:weekly|.agents/skills/calibration-workflow/headless-weekly-prompt.md|scripts/validate_calibration_workflow_integrity.py"
   "target-discovery:phase2-sunday|.agents/skills/target-discovery/headless-phase2-prompt.md|scripts/validate_phase2_integrity.py"
   "weekly-tracker:friday|.agents/skills/weekly-tracker/headless-friday-prompt.md|scripts/validate_weekly_tracker_integrity.py"
   "nightly-tracker-audit:nightly|.agents/skills/nightly-tracker-audit/headless-nightly-prompt.md|scripts/validate_nightly_tracker_audit_integrity.py"

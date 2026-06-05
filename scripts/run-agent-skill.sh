@@ -121,6 +121,9 @@ fi
 
 HEADLESS_PROMPT_FILE=""
 case "$SKILL_NAME:$SKILL_ARGS" in
+  "calibration-workflow:"|"calibration-workflow:weekly")
+    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/calibration-workflow/headless-weekly-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_calibration_workflow_integrity.py\" --date \"$TODAY\"}" ;;
   "target-discovery:phase2-sunday")
     HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/target-discovery/headless-phase2-prompt.md"
     POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_phase2_integrity.py\" --date \"$TODAY\"}" ;;

@@ -43,7 +43,7 @@ OUTPUTS_DIR = os.environ.get(
 )
 
 # Sections defined by SKILL.md <artifact> schema. Skill may emit "None" body
-# for empty sections but section headers must be present.
+# for empty sections but every section header must be present.
 EXPECTED_SECTIONS = [
     "Actionable Items",
     "Deal Flow",
@@ -54,6 +54,7 @@ EXPECTED_SECTIONS = [
     "Broker BLAST",
     "Auto-Drafts",
 ]
+MIN_ARTIFACT_BYTES = 1000
 
 # Pattern for the bookkeeper P&L trigger inbox file.
 # Inbox naming convention: {YYYY-MM-DD}-{month}-management-report-budget-trigger.md
@@ -114,6 +115,45 @@ def _expected_budget_output_exists(period_yyyy_mm: str) -> bool:
     return False
 
 
+def validate_artifact(artifact: str, run_date: date) -> list[str]:
+    failures: list[str] = []
+    if not os.path.exists(artifact):
+        failures.append(f"artifact missing: {artifact}")
+        return failures
+
+    with open(artifact) as f:
+        content = f.read()
+
+    size = os.path.getsize(artifact)
+    if size < MIN_ARTIFACT_BYTES:
+        failures.append(
+            f"artifact suspiciously small ({size} bytes < {MIN_ARTIFACT_BYTES}) - likely empty stub"
+        )
+
+    if not content.startswith("---"):
+        failures.append(f"artifact has no YAML frontmatter: {artifact}")
+    else:
+        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+        if not fm_match:
+            failures.append(f"artifact frontmatter unterminated: {artifact}")
+        else:
+            fm = fm_match.group(1)
+            if f"date: {run_date.isoformat()}" not in fm:
+                failures.append(f"artifact frontmatter date does not match {run_date}")
+            if "type: context" not in fm:
+                failures.append("artifact frontmatter missing 'type: context'")
+            if "source: email-intelligence" not in fm:
+                failures.append("artifact frontmatter missing 'source: email-intelligence'")
+
+    missing_sections = [s for s in EXPECTED_SECTIONS if s not in content]
+    if missing_sections:
+        failures.append(
+            f"missing expected section header(s) ({len(missing_sections)}/8): {missing_sections}"
+        )
+
+    return failures
+
+
 def main() -> int:
     args = sys.argv[1:]
     run_date = date.today()
@@ -137,32 +177,7 @@ def main() -> int:
         CONTEXT_DIR, f"email-scan-results-{run_date.isoformat()}.md"
     )
 
-    if not os.path.exists(artifact):
-        failures.append(f"artifact missing: {artifact}")
-    else:
-        with open(artifact) as f:
-            content = f.read()
-
-        if os.path.getsize(artifact) < 200:
-            failures.append(
-                f"artifact suspiciously small ({os.path.getsize(artifact)} bytes) - likely empty stub"
-            )
-
-        # Frontmatter (lenient - skill body is the deliverable, but a totally
-        # frontmatter-free file means the writer broke).
-        if not content.startswith("---"):
-            failures.append(f"artifact has no YAML frontmatter: {artifact}")
-
-        # At least one expected section header must be present. We do not
-        # require all 8 - the SKILL.md says all 8 should be present but the
-        # skill body is responsible for that. The validator just confirms
-        # the artifact looks structurally like an email-scan-results doc.
-        sections_found = [s for s in EXPECTED_SECTIONS if s in content]
-        if len(sections_found) < 3:
-            failures.append(
-                f"too few expected section headers found ({len(sections_found)}/8); "
-                f"likely a malformed artifact. Found: {sections_found}"
-            )
+    failures.extend(validate_artifact(artifact, run_date))
 
     # ---- Check 2: bookkeeper P&L chain gap ----
     # If today's inbox has a bookkeeper P&L trigger file, the log MUST contain

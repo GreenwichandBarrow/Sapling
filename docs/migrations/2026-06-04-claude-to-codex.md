@@ -164,3 +164,34 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - `scripts/run-agent-skill.sh` email-send preflight now ignores explicit prohibition/policy prose such as `NEVER call gog gmail send`, while still blocking executable-looking send paths.
 - `post_call_analyzer_poll.codex.sh` pilot completed at 2026-06-05 03:52 EDT with 0 queued Granola notes and no analyzer side effects.
 - `post-call-analyzer-poll.service` live systemd `ExecStart` now points to `scripts/post_call_analyzer_poll.codex.sh`; timer was unchanged. Analyzer execution remains protected by `run-agent-skill.sh post-call-analyzer:on-trigger` and `validate_post_call_analyzer_integrity.py`, but a fresh queued-note Codex analyzer run did not occur during this pilot.
+
+
+## Overnight Phase 1 Handoff - 2026-06-05 03:55 EDT
+
+### Live on Codex runner paths
+
+- `health-monitor.service`
+- `nightly-tracker-audit.service`
+- `launchd-debugger.service`
+- `email-intelligence.service`
+- `deal-aggregator.service`
+- `deal-aggregator-afternoon.service`
+- `deal-aggregator-friday.service`
+- `post-call-analyzer-poll.service` (poller on Codex variant; analyzer fires through `run-agent-skill.sh post-call-analyzer:on-trigger` only when queued notes exist)
+
+### Intentionally left on Claude for safety
+
+- `relationship-manager.service`: next run is 2026-06-05 06:50 EDT. It can attempt Attio writes and does not have a same-day double-run/idempotency gate suitable for an overnight manual pilot. Leave on Claude until an idempotent Codex pilot path is added or the next scheduled run can be supervised through its artifact validator.
+- `target-discovery-sunday.service`: recurring validator/date-anchor race remains; do not cut over until deterministic validation is fixed or a Sunday-cluster pilot passes.
+- `jj-operations-sunday.service`: depends on the target-discovery/JJ pool artifact cluster; keep with the Sunday cluster until validated together.
+- `conference-discovery.service`: mutates the Conference Pipeline sheet; prompt has snapshot/validator safeguards, but no live Codex sheet-mutation pilot was run overnight.
+- `niche-intelligence.service`: writes Drive/Sheets and depends on research sources; future Tuesday workflow remains pending a supervised or dry-run-equivalent Codex pilot.
+- `calibration-workflow.service`: blocked; last legacy run waited for human approval and produced no durable artifact. Needs a dedicated headless prompt/validator before Codex cutover.
+
+### Deferred to Phase 2 / Phase 3
+
+- Phase 2: revise migrated skills for Codex-native execution improvements after faithful migration is stable.
+- Phase 2: add same-day idempotency/double-run guards for mutating workflows such as relationship-manager.
+- Phase 2: fix target-discovery validator/date-anchor behavior and validate the Sunday target-discovery/JJ cluster together.
+- Phase 2: observe a fresh queued-note Codex post-call-analyzer run, not just a zero-queue poller run.
+- Phase 3: remove or archive Claude Code runtime files only after the Codex scheduled system has passed enough live cycles.

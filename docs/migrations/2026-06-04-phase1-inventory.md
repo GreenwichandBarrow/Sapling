@@ -12,7 +12,7 @@ This inventory records the live surfaces found during the Claude Code to Codex P
 - Hooks: legacy `.claude/hooks` were copied into `.codex/hooks`, with `.codex/hooks.json` routing through `.codex/hooks/run-hook.sh`.
 - Live scheduled jobs: 21 user systemd timers were found.
 - Live Codex cutover: `health-monitor.service`, `nightly-tracker-audit.service`, `launchd-debugger.service`, `email-intelligence.service`, `post-call-analyzer-poll.service`, and the `deal-aggregator` service cluster now use Codex runner paths.
-- Live legacy agent runner: 5 agent-backed services still use `scripts/run-skill.sh` and must remain on Claude until each workflow or dependency cluster is validated.
+- Live legacy agent runner: 6 direct `run-skill.sh` services still remain on Claude because they are blocked, date-sensitive, or mutating workflows that were not safe to blindly pilot overnight.
 - Direct script jobs: 6 recurring jobs appear agent-free and should remain unchanged in Phase 1 unless they internally trigger agent work.
 - Cron: one user crontab entry exists for temp cleanup only.
 - MCP: no active repo-level `.mcp.json` was found. The only live-looking MCP state was `~/.claude/mcp-needs-auth-cache.json`; scheduled Codex jobs must not depend on MCP until tested.

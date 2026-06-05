@@ -1,0 +1,32 @@
+# Server-side detector for post-call-analyzer. Rewritten 2026-05-13 from
+# MCP-based Python poller to REST-based Bash poller via granola-api wrapper.
+# No MCP, no OAuth, no reconnect. Credentials resolve from 1Password.
+#
+# Pairs with: post-call-analyzer-poll.timer
+
+[Unit]
+Description=G&B post-call-analyzer detector (REST via granola-api)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/projects/Sapling
+EnvironmentFile=%h/projects/Sapling/scripts/.env.launchd
+Environment=PATH=%h/.npm-global/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/bin/bash %h/projects/Sapling/scripts/post_call_analyzer_poll.codex.sh
+
+# Cap any one tick — protects timer from a hung subprocess
+TimeoutStartSec=600
+
+# Kill only the ExecStart PID at exit, NOT the entire cgroup. The poll script
+# detaches the headless Claude analyzer via `setsid nohup … & disown`, but
+# without this directive systemd reaps the detached child via cgroup tracking
+# the moment oneshot finishes, killing the analyzer before it can write its
+# first log line or post to Slack. Fix landed 2026-05-28 after the analyzer
+# silently dropped 3 calls in a week (Oswaldo 5/26, Team TB JJ 5/27, Jeff
+# Stevens 5/27). Reference: feedback memory feedback_systemd_killmode_for_detached_children.
+KillMode=process
+
+[Install]
+WantedBy=default.target

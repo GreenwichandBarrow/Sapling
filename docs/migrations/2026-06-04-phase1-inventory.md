@@ -11,8 +11,8 @@ This inventory records the live surfaces found during the Claude Code to Codex P
 - Skills: 46 migrated skill files exist in `.agents/skills`, matching the 46 legacy `.claude/skills` files.
 - Hooks: legacy `.claude/hooks` were copied into `.codex/hooks`, with `.codex/hooks.json` routing through `.codex/hooks/run-hook.sh`.
 - Live scheduled jobs: 21 user systemd timers were found.
-- Live Codex cutover: `health-monitor.service`, `nightly-tracker-audit.service`, `launchd-debugger.service`, `email-intelligence.service`, and the `deal-aggregator` service cluster now use `scripts/run-agent-skill.sh`.
-- Live legacy agent runner: 6 agent-backed services still use `scripts/run-skill.sh` and must remain on Claude until each workflow or dependency cluster is validated.
+- Live Codex cutover: `health-monitor.service`, `nightly-tracker-audit.service`, `launchd-debugger.service`, `email-intelligence.service`, `post-call-analyzer-poll.service`, and the `deal-aggregator` service cluster now use Codex runner paths.
+- Live legacy agent runner: 5 agent-backed services still use `scripts/run-skill.sh` and must remain on Claude until each workflow or dependency cluster is validated.
 - Direct script jobs: 6 recurring jobs appear agent-free and should remain unchanged in Phase 1 unless they internally trigger agent work.
 - Cron: one user crontab entry exists for temp cleanup only.
 - MCP: no active repo-level `.mcp.json` was found. The only live-looking MCP state was `~/.claude/mcp-needs-auth-cache.json`; scheduled Codex jobs must not depend on MCP until tested.
@@ -103,7 +103,7 @@ Phase 1 status: must-have safety hook logic is copied and synthetic checks pass 
 | `attio-snapshot-refresh.timer` | weekdays hourly 08:00-20:00 | `attio-snapshot-refresh.service` | direct script | unchanged |
 | `external-services-probe.timer` | weekdays half-hourly 08:00-20:30 | `external-services-probe.service` | direct script | unchanged |
 | `jj-snapshot-refresh.timer` | weekdays 09:00, 14:30, 18:00 | `jj-snapshot-refresh.service` | direct script | unchanged |
-| `post-call-analyzer-poll.timer` | daily 13:00 and 18:00 ET | `post-call-analyzer-poll.service` | legacy poller -> Claude runner | pending cluster validation |
+| `post-call-analyzer-poll.timer` | daily 13:00 and 18:00 ET | `post-call-analyzer-poll.service` | Codex poller -> Codex runner on trigger | cutover; zero-queue poller pilot only |
 | `deal-aggregator-afternoon.timer` | weekdays 14:00 | `deal-aggregator-afternoon.service` | Codex runner | cutover |
 | `weekly-snapshot.timer` | Fri 22:00 | `weekly-snapshot.service` | direct script | unchanged |
 | `weekly-archive-export.timer` | Sat 09:00 | `weekly-archive-export.service` | direct script | unchanged |
@@ -131,7 +131,7 @@ Conversion rule: validate each workflow manually, then apply `scripts/prepare-co
 
 - `health-monitor`: validated and cut over.
 - `deal-aggregator`: morning, afternoon, and Friday digest validated and cut over as one cluster.
-- `post-call-analyzer`: poller plus analyzer should be validated and cut over as one cluster.
+- `post-call-analyzer`: poller cut over after zero-queue Codex pilot; analyzer trigger has prompt/validator coverage but still needs an observed queued-note Codex run.
 - `target-discovery` / `jj-operations`: related via JJ niche context and should be treated carefully as a Sunday cluster.
 - `email-intelligence`: validated no-send/draft-only behavior for the 2026-06-05 pilot and cut over.
 - `relationship-manager`: may mutate CRM/contact state; validate with artifact checks before live cutover.

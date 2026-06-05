@@ -68,7 +68,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | launchd-debugger | daily/on-failure prompts | `run-agent-skill.sh launchd-debugger` variants | 1 | cutover | Daily Codex pilot completed after scanner hardening; live systemd service now uses `run-agent-skill.sh`. |
 | niche-intelligence | Tuesday timer + headless prompt | `run-agent-skill.sh niche-intelligence:tuesday` | 1 | pending | Validator exists; dependency on last30days noted in old runner. |
 | nightly-tracker-audit | nightly timer + prompt | `run-agent-skill.sh nightly-tracker-audit:nightly` | 1 | cutover | Codex validation completed after runner inherited `op-env.sh`; live systemd service now uses `run-agent-skill.sh`. |
-| post-call-analyzer | poll script + triggered prompt | `run-agent-skill.sh post-call-analyzer:on-trigger` | 1 | pending | Email-adjacent; verify no send. |
+| post-call-analyzer | poll script + triggered prompt | `run-agent-skill.sh post-call-analyzer:on-trigger` | 1 | cutover | Codex poller pilot completed with 0 queued notes; live poll service now uses `post_call_analyzer_poll.codex.sh`. Analyzer trigger has Codex prompt/validator coverage but did not run on a fresh queued note during the pilot. |
 | relationship-manager | weekday timer + prompt | `run-agent-skill.sh relationship-manager:daily` | 1 | pending | Validator exists. |
 | target-discovery | Sunday timer + prompt | `run-agent-skill.sh target-discovery phase2-sunday` | 1 | pending | Validator exists; JJ dependency. |
 | Direct script refresh jobs | refresh/probe/export/snapshot scripts | unchanged initially | 1 | pending | Apollo, Attio, JJ snapshot, external probe, weekly export, and weekly snapshot appear agent-free. |
@@ -162,3 +162,5 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - `email-intelligence` Codex pilot completed at 2026-06-05 03:49 EDT, wrote `brain/context/email-scan-results-2026-06-05.md`, scanned Gmail drafts without sending, found no CIM/NDA/active-deal fast-path triggers, found no auto-draft trigger, and passed `validate_email_intelligence_integrity.py`.
 - `email-intelligence.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh email-intelligence`; timer was unchanged.
 - `scripts/run-agent-skill.sh` email-send preflight now ignores explicit prohibition/policy prose such as `NEVER call gog gmail send`, while still blocking executable-looking send paths.
+- `post_call_analyzer_poll.codex.sh` pilot completed at 2026-06-05 03:52 EDT with 0 queued Granola notes and no analyzer side effects.
+- `post-call-analyzer-poll.service` live systemd `ExecStart` now points to `scripts/post_call_analyzer_poll.codex.sh`; timer was unchanged. Analyzer execution remains protected by `run-agent-skill.sh post-call-analyzer:on-trigger` and `validate_post_call_analyzer_integrity.py`, but a fresh queued-note Codex analyzer run did not occur during this pilot.

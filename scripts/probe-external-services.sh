@@ -1,5 +1,5 @@
 #!/bin/bash
-# Wrapper for probe_external_services.py — invoked by launchd every 30 min
+# Wrapper for probe_external_services.py — invoked by the scheduler every 30 min
 # during business hours. Sources scripts/.env.launchd so the probe can read
 # APOLLO_API_KEY / SLACK_WEBHOOK_* / etc., then runs via the dashboard venv's
 # Python so `requests` and any other deps are available.
@@ -25,5 +25,5 @@ LOG_FILE="$LOG_DIR/external-services-$STAMP.log"
   "$REPO_ROOT/dashboard/.venv/bin/python" "$REPO_ROOT/scripts/probe_external_services.py"
 } >> "$LOG_FILE" 2>&1
 
-# Prune logs older than 14 days (matches refresh-attio-snapshot + run-skill convention).
+# Prune logs older than 14 days (matches refresh-attio-snapshot + scheduled-runner convention).
 find "$LOG_DIR" -name "external-services-*.log" -mtime +14 -delete 2>/dev/null || true

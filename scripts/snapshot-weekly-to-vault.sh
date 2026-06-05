@@ -1,5 +1,5 @@
 #!/bin/bash
-# Wrapper for snapshot_weekly_to_vault.py — invoked by launchd Friday 22:00 ET.
+# Wrapper for snapshot_weekly_to_vault.py — invoked by the scheduler Friday 22:00 ET.
 # Phase C of the dashboard-as-source pivot. No secrets needed (reads vault
 # files locally). Uses dashboard venv for yaml dependency.
 

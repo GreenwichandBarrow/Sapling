@@ -1,5 +1,5 @@
 #!/bin/bash
-# Wrapper for refresh_jj_snapshot.py — invoked by launchd 3x/day Mon-Fri
+# Wrapper for refresh_jj_snapshot.py — invoked by the scheduler 3x/day Mon-Fri
 # (9am, 2:30pm, 6pm ET) so the dashboard's JJ activity stays current
 # around JJ's 10am-2pm ET shift.
 
@@ -23,7 +23,7 @@ VALIDATOR_EXIT=0
   echo "=== refresh-jj-snapshot.sh @ $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
   set -a
   # Resolve op:// secret references (GOG_KEYRING_PASSWORD etc.) via op inject,
-  # same as run-skill.sh. The systemd unit supplies OP_SERVICE_ACCOUNT_TOKEN
+  # same as the scheduled runners. The systemd unit supplies OP_SERVICE_ACCOUNT_TOKEN
   # via EnvironmentFile; sourcing the raw file would leave op:// unresolved.
   # shellcheck source=scripts/load-env.sh
   source "$REPO_ROOT/scripts/load-env.sh"
@@ -41,7 +41,7 @@ VALIDATOR_EXIT=0
   echo "--- validator exit: $VALIDATOR_EXIT ---"
 } >> "$LOG_FILE" 2>&1
 
-# 14-day rotation (matches run-skill.sh convention).
+# 14-day rotation (matches the scheduled-runner convention).
 find "$LOG_DIR" -name "jj-snapshot-refresh-*.log" -mtime +14 -delete 2>/dev/null || true
 
 # Propagate the worse of refresh / validator exit codes so launchd-debugger

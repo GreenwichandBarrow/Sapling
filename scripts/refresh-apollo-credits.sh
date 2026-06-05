@@ -1,5 +1,5 @@
 #!/bin/bash
-# Wrapper for refresh_apollo_credits.py — invoked by launchd hourly during
+# Wrapper for refresh_apollo_credits.py — invoked by the scheduler hourly during
 # business hours. Sources the env file (APOLLO_API_KEY) and runs via the
 # dashboard venv's Python so `requests` is available.
 
@@ -36,7 +36,7 @@ VALIDATOR_EXIT=0
   echo "--- validator exit: $VALIDATOR_EXIT ---"
 } >> "$LOG_FILE" 2>&1
 
-# Prune logs older than 14 days (matches the convention in run-skill.sh).
+# Prune logs older than 14 days (matches the scheduled-runner convention).
 find "$LOG_DIR" -name "apollo-credits-*.log" -mtime +14 -delete 2>/dev/null || true
 
 # Propagate the worse of refresh / validator exit codes so launchd-debugger

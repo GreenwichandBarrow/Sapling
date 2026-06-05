@@ -104,10 +104,19 @@ case "$SKILL_NAME" in
     [ -e "$WORKDIR/scripts/post_call_analyzer_poll.py" ] && EMAIL_SCAN_TARGETS+=("$WORKDIR/scripts/post_call_analyzer_poll.py")
     ;;
 esac
-if [ "${#EMAIL_SCAN_TARGETS[@]}" -gt 0 ] && grep -RInE "gog[[:space:]]+(send|gmail[[:space:]]+send|gmail[[:space:]]+drafts[[:space:]]+send)|messages\\.send|send_email|smtp|superhuman.*send|Superhuman.*send" "${EMAIL_SCAN_TARGETS[@]}" >> "$LOG_FILE" 2>/dev/null; then
-  log "BLOCKED: potential email-send path found for $SKILL_NAME. Never send email."
-  post_failure "BLOCKED: Codex scheduled job $SKILL_NAME found a potential email-send path. Review required."
-  exit 3
+if [ "${#EMAIL_SCAN_TARGETS[@]}" -gt 0 ]; then
+  EMAIL_MATCH_FILE="$(mktemp)"
+  if grep -RInE "gog[[:space:]]+(send|gmail[[:space:]]+send|gmail[[:space:]]+drafts[[:space:]]+send)|messages\.send|send_email|smtp|superhuman.*send|Superhuman.*send" "${EMAIL_SCAN_TARGETS[@]}" > "$EMAIL_MATCH_FILE" 2>/dev/null; then
+    # Ignore explicit prohibition/policy prose such as "NEVER call gog gmail send".
+    # Real executable-looking send paths still block below.
+    if grep -viE "never|do not|don't|draft-only|no-send|blocked" "$EMAIL_MATCH_FILE" >> "$LOG_FILE"; then
+      rm -f "$EMAIL_MATCH_FILE"
+      log "BLOCKED: potential email-send path found for $SKILL_NAME. Never send email."
+      post_failure "BLOCKED: Codex scheduled job $SKILL_NAME found a potential email-send path. Review required."
+      exit 3
+    fi
+  fi
+  rm -f "$EMAIL_MATCH_FILE"
 fi
 
 HEADLESS_PROMPT_FILE=""

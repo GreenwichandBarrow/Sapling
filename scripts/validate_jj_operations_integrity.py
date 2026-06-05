@@ -3,7 +3,7 @@
 Wrapper-level integrity validator for jj-operations Sunday prep run.
 
 Runs as POST_RUN_CHECK after launchd wrapper completes. Independent of
-skill-internal validation. Catches silent-success failures where Claude
+skill-internal validation. Catches silent-success failures where the agent
 exits 0 but JJ's Mon-Fri Call Log tabs are missing, empty, or have blank
 Owner Name (Col K) — the 4/19 failure mode.
 
@@ -29,6 +29,9 @@ from datetime import date, datetime, timedelta
 
 
 # Mirrors scripts/validate_phase2_integrity.py NICHE_SHEETS.
+os.environ.setdefault("GOG_ACCOUNT", "kay.s@greenwichandbarrow.com")
+
+
 NICHE_SHEETS = {
     "Art Insurance": "15M76-gpcklwc47HDXIwyFC9Tj8K4wDOor4i0uxCYyHQ",
     "Domestic TCI": "1lEAx-3pEshsSc0Rix4KunJ38mzHahjAmV6nQA_cuwLw",
@@ -108,6 +111,40 @@ def get_col_values(sheet_id: str, tab: str, col_letter: str, max_row: int = 200)
     return [r[0] if r else "" for r in rows]
 
 
+def validate_call_log_tabs(
+    niche: str,
+    tabs: list[str],
+    expected_tabs: list[str],
+    col_values,
+) -> list[str]:
+    failures: list[str] = []
+    missing = [t for t in expected_tabs if t not in tabs]
+    if missing:
+        return [f"[{niche}] missing Call Log tabs: {missing}"]
+
+    # Each existing tab must have at least one row with Col K populated.
+    for tab in expected_tabs:
+        owner_names = col_values(tab, "K")
+        non_blank = [v for v in owner_names if v.strip()]
+        if not non_blank:
+            failures.append(f"[{niche}] tab '{tab}' has zero rows with Col K (Owner Name) — dial-blocking")
+            continue
+
+        # Identify if any row has Col B (Company) populated but Col K (Owner)
+        # blank — partial enrichment.
+        companies = col_values(tab, "B")
+        blanks = []
+        for i, company in enumerate(companies):
+            if company.strip() and (i >= len(owner_names) or not owner_names[i].strip()):
+                blanks.append(i + 2)  # row number (header at row 1)
+        if blanks:
+            failures.append(
+                f"[{niche}] tab '{tab}' has {len(blanks)} rows with Company set but Owner Name blank "
+                f"(rows {blanks[:5]}{'...' if len(blanks) > 5 else ''})"
+            )
+    return failures
+
+
 def main() -> int:
     args = sys.argv[1:]
     if "--week-start" in args:
@@ -134,29 +171,14 @@ def main() -> int:
             failures.append(f"[{niche}] could not list tabs: {e}")
             continue
 
-        missing = [t for t in expected_tabs if t not in tabs]
-        if missing:
-            failures.append(f"[{niche}] missing Call Log tabs: {missing}")
-            continue
-
-        # Each existing tab must have at least one row with Col K populated
-        for tab in expected_tabs:
-            owner_names = get_col_values(sheet_id, tab, "K")
-            non_blank = [v for v in owner_names if v.strip()]
-            if not non_blank:
-                failures.append(f"[{niche}] tab '{tab}' has zero rows with Col K (Owner Name) — dial-blocking")
-                continue
-            # Identify if any row has Col B (Company) populated but Col K (Owner) blank — partial enrichment
-            companies = get_col_values(sheet_id, tab, "B")
-            blanks = []
-            for i, company in enumerate(companies):
-                if company.strip() and (i >= len(owner_names) or not owner_names[i].strip()):
-                    blanks.append(i + 2)  # row number (header at row 1)
-            if blanks:
-                failures.append(
-                    f"[{niche}] tab '{tab}' has {len(blanks)} rows with Company set but Owner Name blank "
-                    f"(rows {blanks[:5]}{'...' if len(blanks) > 5 else ''})"
-                )
+        failures.extend(
+            validate_call_log_tabs(
+                niche,
+                tabs,
+                expected_tabs,
+                lambda tab, col: get_col_values(sheet_id, tab, col),
+            )
+        )
 
     if failures:
         print(f"JJ-OPERATIONS VALIDATOR FAILED for week of {monday}:", file=sys.stderr)

@@ -59,11 +59,11 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | Hooks | `.claude/hooks` + `.claude/settings.json` | `.codex/hooks` + `.codex/hooks.json` | 1 | ported | Must-have safety hooks copied; requires Codex hook validation/trust. |
 | Codex env | `scripts/.env.launchd` | `scripts/.env.codex` | 1 | validated | 1Password reference resolves; read-only Codex smoke test completed successfully. |
 | Runner | `scripts/run-skill.sh` | `scripts/run-agent-skill.sh` | 1 | ported | New runner created; old runner preserved. |
-| calibration-workflow | systemd + `run-skill.sh calibration-workflow` | `run-agent-skill.sh calibration-workflow` | 1 | pending | Active timer Thu 23:00. |
+| calibration-workflow | systemd + `run-skill.sh calibration-workflow` | `run-agent-skill.sh calibration-workflow` | 1 | blocked | Last Claude run exited 0 while waiting for human approval and wrote no artifact; needs dedicated headless prompt/validator before Codex cutover. |
 | conference-discovery | systemd + headless Sunday prompt | `run-agent-skill.sh conference-discovery sunday` | 1 | pending | Active timer Sun 21:00; validator exists. |
 | deal-aggregator cluster | morning/afternoon/friday timers + headless prompts | `run-agent-skill.sh deal-aggregator` variants | 1 | pending | Material cluster; validators exist. |
 | email-intelligence | weekday timer + headless prompt | `run-agent-skill.sh email-intelligence` | 1 | pending | Email-adjacent; must verify draft-only/no send before validation. |
-| health-monitor | weekly timer | `run-agent-skill.sh health-monitor` | 1 | pending | Pilot candidate. |
+| health-monitor | weekly timer | `run-agent-skill.sh health-monitor` | 1 | cutover | Codex pilot completed, wrote `brain/trackers/health/2026-06-04-health.md`, validated artifact, posted Slack per RED/YELLOW rule, and live systemd service now uses `run-agent-skill.sh`. |
 | jj-operations | Sunday timer + headless prompt | `run-agent-skill.sh jj-operations:sunday-prep` | 1 | pending | Validator exists. |
 | launchd-debugger | daily/on-failure prompts | `run-agent-skill.sh launchd-debugger` variants | 1 | pending | Name retained for workflow history; runner says Codex. |
 | niche-intelligence | Tuesday timer + headless prompt | `run-agent-skill.sh niche-intelligence:tuesday` | 1 | pending | Validator exists; dependency on last30days noted in old runner. |
@@ -79,6 +79,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | Systemd cutover tool | live user units | `scripts/prepare-codex-systemd-cutover.sh` | 1 | ported | Supports dry-run generation and guarded `--apply` by workflow group; refuses apply if readiness fails. |
 | Scheduled prompt/validator coverage | old runner + systemd `POST_RUN_CHECK` | runner defaults + readiness checks | 1 | ported | Known scheduled headless prompts and validators are checked before cutover; runner has defaults for manual validation safety. |
 | Email no-send audit | migrated skill docs/scripts | `scripts/audit-email-no-send.sh` | 1 | ported | Blocks executable-looking Gmail send commands while allowing draft-only policy text. |
+| Phase 1 inventory | live VPS skills/hooks/timers/cron/MCP/config | `docs/migrations/2026-06-04-phase1-inventory.md` | 1 | ported | Comprehensive inventory created before further cutovers. |
 
 ## Safety Requirements
 
@@ -108,11 +109,13 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Readiness checker verifies known scheduled headless prompt files and validator files exist.
 - `gogcli` migrated reference docs no longer include email-send examples; draft-only examples remain.
 - `scripts/audit-email-no-send.sh` added as a durable no-send scan for migrated skills/scripts.
+- `docs/migrations/2026-06-04-phase1-inventory.md` added with the live VPS skills, hooks, timers, cron, MCP/config, and remaining Claude-runner surfaces.
 
 ## Current Blockers
 
-1. Production pilot workflow execution needs explicit approval because it can write real health artifacts and may send failure/blocker notifications.
+1. `calibration-workflow` needs a dedicated headless prompt and durable-output validator before Codex cutover; leave it on Claude temporarily.
 2. `post-call-analyzer-poll.service` must not be cut over until the Codex poller variant and analyzer workflow are tested as one cluster.
+3. `target-discovery-sunday` has a recurring validator race noted by the Codex health-monitor pilot; resolve or add a deterministic validation path before Codex cutover.
 
 ## Safety Validation
 
@@ -128,6 +131,10 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - `scripts/check-codex-migration-readiness.sh` passed after `CODEX_API_KEY` was moved to `op://GB Server/OpenAI API Key/password`.
 - Read-only `codex exec` smoke test completed successfully and returned project name `Sapling OS`.
 - Migrated `.agents/skills/create-skill/SKILL.md` frontmatter was fixed so Codex no longer logs an invalid YAML startup warning.
+- `health-monitor` Codex production pilot completed successfully at 2026-06-04 22:40 EDT.
+- `health-monitor` artifact validation passed for `brain/trackers/health/2026-06-04-health.md` and `brain/traces/agents/2026-06-04-health-monitor.md`.
+- `health-monitor.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh health-monitor`; rollback is the `.pre-codex-*` backup in `~/.config/systemd/user` or the pre-migration backup snapshot.
+- Comprehensive inventory confirms 46 migrated skills, copied Codex hooks, 21 user systemd timers, one unrelated user cron cleanup job, no active repo-level MCP config, and one live Codex-cutover service (`health-monitor`).
 
 ## Rollback Policy
 

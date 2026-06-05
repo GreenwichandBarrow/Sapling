@@ -66,7 +66,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | health-monitor | weekly timer | `run-agent-skill.sh health-monitor` | 1 | cutover | Codex pilot completed, wrote `brain/trackers/health/2026-06-04-health.md`, validated artifact, posted Slack per RED/YELLOW rule, and live systemd service now uses `run-agent-skill.sh`. |
 | jj-operations | Sunday timer + headless prompt | `run-agent-skill.sh jj-operations:sunday-prep` | 1 | cutover | Validator passed against week of 2026-06-01; live service now uses `run-agent-skill.sh`. Observe Sunday 2026-06-07 Codex run. |
 | launchd-debugger | daily/on-failure prompts | `run-agent-skill.sh launchd-debugger` variants | 1 | cutover | Daily Codex pilot completed after scanner hardening; live systemd service now uses `run-agent-skill.sh`. |
-| niche-intelligence | Tuesday timer + headless prompt | `run-agent-skill.sh niche-intelligence:tuesday` | 1 | cutover | Prior run validator passed for 2026-06-02; live service now uses `run-agent-skill.sh` with explicit date validation. Last30days dependency still lives under legacy skill path and is tracked for cleanup. |
+| niche-intelligence | Tuesday timer + headless prompt | `run-agent-skill.sh niche-intelligence:tuesday` | 1 | cutover | Prior run validator passed for 2026-06-02; live service now uses `run-agent-skill.sh` with explicit date validation. `last30days` GitHub skill dependency is copied into `~/.codex/skills/last30days`. |
 | nightly-tracker-audit | nightly timer + prompt | `run-agent-skill.sh nightly-tracker-audit:nightly` | 1 | cutover | Codex validation completed after runner inherited `op-env.sh`; live systemd service now uses `run-agent-skill.sh`. |
 | post-call-analyzer | poll script + triggered prompt | `run-agent-skill.sh post-call-analyzer:on-trigger` | 1 | cutover | Codex poller pilot completed with 0 queued notes; live poll service now uses `post_call_analyzer_poll.codex.sh`. Analyzer trigger has Codex prompt/validator coverage but did not run on a fresh queued note during the pilot. |
 | relationship-manager | weekday timer + prompt | `run-agent-skill.sh relationship-manager:daily` | 1 | cutover | Claude run passed on 2026-06-05; Codex runner now has same-day idempotency skip for valid artifacts; live service uses `run-agent-skill.sh relationship-manager:daily`. |
@@ -219,4 +219,12 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Regression validation passed against the 2026-06-02 niche-intelligence artifacts: markdown report and JSON sidecar both satisfy `validate_niche_intelligence_integrity.py`.
 - `scripts/run-agent-skill.sh` now passes `--date "$TODAY"` to the niche-intelligence post-run validator.
 - `niche-intelligence.service` live systemd `ExecStart` now points to `scripts/run-agent-skill.sh niche-intelligence:tuesday`. Timer was unchanged. Next live Codex observation window is Tuesday 2026-06-09 22:30 EDT.
-- Phase 2 cleanup: migrate or vendor the `last30days` dependency out of `~/.claude/skills/last30days`; current faithful migration leaves it available in place because prior successful runs depended on that path.
+- The `last30days` GitHub skill dependency (`https://github.com/mvanhorn/last30days-skill`, commit `850c7e0`) was copied from `~/.claude/skills/last30days` to `~/.codex/skills/last30days`. Readiness now verifies the Codex copy exists.
+
+
+## External Skill Dependency Migration - 2026-06-05
+
+- `last30days` was not a repo-local Sapling skill; it was an external GitHub-backed skill installed at `~/.claude/skills/last30days` from `https://github.com/mvanhorn/last30days-skill`.
+- It has now been copied to `~/.codex/skills/last30days` at commit `850c7e0`, preserving the GitHub remote.
+- `scripts/check-codex-migration-readiness.sh` now fails if the Codex-side `last30days` skill or `scripts/last30days.py` entrypoint is missing.
+- Phase 2 cleanup: update niche-intelligence internals to prefer the Codex path directly where they currently mention the legacy Claude path.

@@ -16,6 +16,7 @@ This inventory records the live surfaces found during the Claude Code to Codex P
 - Direct script jobs: 6 recurring jobs appear agent-free and should remain unchanged in Phase 1 unless they internally trigger agent work.
 - Cron: one user crontab entry exists for temp cleanup only.
 - MCP: no active repo-level `.mcp.json` was found. The only live-looking MCP state was `~/.claude/mcp-needs-auth-cache.json`; scheduled Codex jobs must not depend on MCP until tested.
+- External skills: `last30days` was copied from `~/.claude/skills/last30days` to `~/.codex/skills/last30days` and is now checked by readiness.
 
 ## Skills
 

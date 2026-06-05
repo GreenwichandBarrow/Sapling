@@ -29,6 +29,12 @@ check_file ".codex/hooks/run-hook.sh"
 check_file "scripts/run-agent-skill.sh"
 check_file "scripts/.env.codex"
 
+if [ -f "$HOME/.codex/skills/last30days/skills/last30days/SKILL.md" ] && [ -f "$HOME/.codex/skills/last30days/skills/last30days/scripts/last30days.py" ]; then
+  pass "Codex last30days skill dependency exists"
+else
+  fail "Codex last30days skill dependency is missing under $HOME/.codex/skills/last30days"
+fi
+
 scheduled_coverage=(
   "target-discovery:phase2-sunday|.agents/skills/target-discovery/headless-phase2-prompt.md|scripts/validate_phase2_integrity.py"
   "weekly-tracker:friday|.agents/skills/weekly-tracker/headless-friday-prompt.md|scripts/validate_weekly_tracker_integrity.py"

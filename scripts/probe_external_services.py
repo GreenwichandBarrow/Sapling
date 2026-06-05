@@ -286,21 +286,69 @@ def probe_vault() -> dict:
 
 
 def probe_mcp_processes() -> dict:
-    """Liveness check for attio-mcp / superhuman MCP processes."""
+    """Liveness check for attio-mcp / superhuman MCP processes.
+
+    Some MCP-backed services are intentionally browser/OAuth-gated. If their
+    individual probes are already classified as manual skips, missing local MCP
+    processes should not become a fresh broken-system error.
+    """
     try:
         rc, out, _err, ms = _run(["ps", "ax"])
     except subprocess.TimeoutExpired:
         return _result("error", PROBE_TIMEOUT_SEC * 1000, "timed out")
     if rc != 0:
         return _result("error", ms, f"ps exit {rc}")
-    attio = sum(1 for ln in out.splitlines() if "attio-mcp" in ln and "grep" not in ln)
-    superhuman = sum(1 for ln in out.splitlines()
-                     if "superhuman" in ln.lower() and "grep" not in ln)
-    total = attio + superhuman
-    msg = f"attio-mcp={attio} superhuman={superhuman}"
-    if total >= 2:
+
+    counts = {
+        "attio-mcp": sum(
+            1 for ln in out.splitlines() if "attio-mcp" in ln and "grep" not in ln
+        ),
+        "superhuman": sum(
+            1
+            for ln in out.splitlines()
+            if "superhuman" in ln.lower() and "grep" not in ln
+        ),
+    }
+    individual = {
+        "attio-mcp": probe_attio_mcp(),
+        "superhuman": probe_superhuman(),
+    }
+    manual_skips = [
+        name
+        for name, result in individual.items()
+        if counts[name] == 0 and result.get("status") == "skip"
+    ]
+    unexpected_missing = [
+        name
+        for name, result in individual.items()
+        if counts[name] == 0 and result.get("status") != "skip"
+    ]
+
+    msg = (
+        f"attio-mcp={counts['attio-mcp']} superhuman={counts['superhuman']}"
+    )
+    if manual_skips:
+        msg += f"; manual-skip={','.join(manual_skips)}"
+    if unexpected_missing:
+        msg += f"; unexpected-missing={','.join(unexpected_missing)}"
+
+    active_expected = len(counts) - len(manual_skips)
+    active_count = sum(counts.values())
+
+    if unexpected_missing:
+        if active_count >= 1:
+            return _result("warn", ms, msg)
+        return _result("error", ms, msg)
+    if active_expected == 0:
+        return _result(
+            "skip",
+            ms,
+            msg,
+            skip_reason="MCP-backed services require manual OAuth/browser reconnect",
+        )
+    if active_count >= active_expected:
         return _result("ok", ms, msg)
-    if total >= 1:
+    if active_count >= 1:
         return _result("warn", ms, msg)
     return _result("error", ms, msg)
 

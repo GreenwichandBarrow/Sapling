@@ -700,19 +700,19 @@ _SKILL_CATALOG: dict[str, tuple[str, str, str | None]] = {
         "CIO",
         "Per-niche ecosystem build",
     ),
-    # CPO — relationships, people, JJ
+    # CPO — relationships, people, cold call operations
     "relationship-manager": (
         "Nurture cadence monitoring, overdue-contact surfacing, Attio People hygiene.",
         "CPO",
         None,
     ),
     "jj-operations-sunday": (
-        "Sunday prep — creates Mon–Fri Call Log tabs for the week ahead.",
+        "Cold Call Operations Sunday prep — creates Mon-Fri Call Log tabs for the week ahead.",
         "CPO",
         None,
     ),
     "jj-operations": (
-        "Daily call prep, 10am Slack delivery, post-shift outcome harvest into master sheet.",
+        "Cold Call Operations — daily call prep, 10am Slack delivery, post-shift outcome harvest into master sheet.",
         "CPO",
         "Manual harvest after 2pm shift",
     ),

@@ -64,7 +64,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | deal-aggregator cluster | morning/afternoon/friday timers + headless prompts | `run-agent-skill.sh deal-aggregator` variants | 1 | cutover | Morning Codex pilot wrote the daily artifact, posted 1 new deal, passed validator, and all three live services now use `run-agent-skill.sh`. |
 | email-intelligence | weekday timer + headless prompt | `run-agent-skill.sh email-intelligence` | 1 | cutover | Codex pilot completed with no send path used, wrote `brain/context/email-scan-results-2026-06-05.md`, passed `validate_email_intelligence_integrity.py`, and live systemd service now uses `run-agent-skill.sh`. |
 | health-monitor | weekly timer | `run-agent-skill.sh health-monitor` | 1 | cutover | Codex pilot completed, wrote `brain/trackers/health/2026-06-04-health.md`, validated artifact, posted Slack per RED/YELLOW rule, and live systemd service now uses `run-agent-skill.sh`. |
-| jj-operations | Sunday timer + headless prompt | `run-agent-skill.sh jj-operations:sunday-prep` | 1 | cutover | Validator passed against week of 2026-06-01; live service now uses `run-agent-skill.sh`. Observe Sunday 2026-06-07 Codex run. |
+| Cold Call Operations (`jj-operations`) | Sunday timer + headless prompt | `run-agent-skill.sh jj-operations:sunday-prep` | 1 | cutover | Validator passed against week of 2026-06-01; live service now uses `run-agent-skill.sh`. Observe Sunday 2026-06-07 Codex run. |
 | launchd-debugger | daily/on-failure prompts | `run-agent-skill.sh launchd-debugger` variants | 1 | cutover | Daily Codex pilot completed after scanner hardening; live systemd service now uses `run-agent-skill.sh`. |
 | niche-intelligence | Tuesday timer + headless prompt | `run-agent-skill.sh niche-intelligence:tuesday` | 1 | cutover | Prior run validator passed for 2026-06-02; live service now uses `run-agent-skill.sh` with explicit date validation. `last30days` GitHub skill dependency is copied into `~/.codex/skills/last30days`. |
 | nightly-tracker-audit | nightly timer + prompt | `run-agent-skill.sh nightly-tracker-audit:nightly` | 1 | cutover | Codex validation completed after runner inherited `op-env.sh`; live systemd service now uses `run-agent-skill.sh`. |
@@ -205,7 +205,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - `scripts/run-agent-skill.sh` now passes `--date "$TODAY"` to the target-discovery Phase 2 post-run validator.
 - Regression validation passed against the prior Sunday pool: `python3 scripts/validate_phase2_integrity.py --date 2026-05-31` returned PASS for Premium Pest Management.
 - JJ tab validation passed for the prior completed week: `python3 scripts/validate_jj_operations_integrity.py --week-start 2026-06-01` verified all five Call Log tabs and populated owner names.
-- `target-discovery-sunday.service` and `jj-operations-sunday.service` live systemd `ExecStart` values now point to Codex runner paths. Timers were unchanged. Next live Codex observation window is Sunday 2026-06-07.
+- `target-discovery-sunday.service` and Cold Call Operations (`jj-operations-sunday.service`) live systemd `ExecStart` values now point to Codex runner paths. Timers were unchanged. Next live Codex observation window is Sunday 2026-06-07.
 
 
 ## Conference Discovery Cutover - 2026-06-05
@@ -274,7 +274,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
   - `deal-aggregator-friday.service`: `run-skill.sh deal-aggregator --digest-mode` -> `run-agent-skill.sh deal-aggregator --digest-mode`
   - `email-intelligence.service`: `run-skill.sh email-intelligence` -> `run-agent-skill.sh email-intelligence`
   - `health-monitor.service`: `run-skill.sh health-monitor` -> `run-agent-skill.sh health-monitor`
-  - `jj-operations-sunday.service`: `run-skill.sh jj-operations:sunday-prep` -> `run-agent-skill.sh jj-operations:sunday-prep`
+  - Cold Call Operations (`jj-operations-sunday.service`): `run-skill.sh jj-operations:sunday-prep` -> `run-agent-skill.sh jj-operations:sunday-prep`
   - `launchd-debugger.service`: `run-skill.sh launchd-debugger:daily` -> `run-agent-skill.sh launchd-debugger:daily`
   - `niche-intelligence.service`: `run-skill.sh niche-intelligence:tuesday` -> `run-agent-skill.sh niche-intelligence:tuesday`
   - `nightly-tracker-audit.service`: `run-skill.sh nightly-tracker-audit:nightly` -> `run-agent-skill.sh nightly-tracker-audit:nightly`
@@ -300,7 +300,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 ### Monitoring Window Items
 
 - Observe a fresh queued-note Codex `post-call-analyzer:on-trigger` run; the poller already passed a zero-queue pilot.
-- Observe the next Sunday Codex runs for target-discovery, JJ operations, and conference-discovery on 2026-06-07.
+- Observe the next Sunday Codex runs for target-discovery, Cold Call Operations, and conference-discovery on 2026-06-07.
 - Observe the next Tuesday niche-intelligence Codex run on 2026-06-09.
 - Observe the next health-monitor cycle to confirm the RED bridge fires through the Codex runner when applicable.
 - Defer Phase 3 Claude cleanup until after one week of stable Codex scheduled operation.

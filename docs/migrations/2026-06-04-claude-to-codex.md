@@ -263,6 +263,29 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Direct refresh/probe/export/snapshot timer scripts were confirmed agent-free, syntax-checked, and documented as validated. Weekly dashboard snapshots now use `scripts/validate_weekly_snapshot_integrity.py` instead of the agent/sheet weekly-tracker validator, and the wrapper runs it as a post-run check.
 - Final Phase 2 validation passed: `scripts/check-codex-migration-readiness.sh` reports READY, and the full regression bundle ran successfully. The dedicated weekly dashboard snapshot validator was added after the first live direct weekly snapshot exposed the validator-shape mismatch.
 
+## Phase 2 Replacement-First Scheduler Checkpoint - 2026-06-06
+
+- Phase 2 completion standard: do not merely turn off Claude scheduled references; first confirm every preserved Claude scheduled service has a live Codex or direct-script replacement with the same workflow intent.
+- Verified each preserved `.pre-codex-*` service backup maps to an active replacement:
+  - `calibration-workflow.service`: `run-skill.sh calibration-workflow` -> `run-agent-skill.sh calibration-workflow`
+  - `conference-discovery.service`: `run-skill.sh conference-discovery sunday` -> `run-agent-skill.sh conference-discovery sunday`
+  - `deal-aggregator.service`: `run-skill.sh deal-aggregator` -> `run-agent-skill.sh deal-aggregator`
+  - `deal-aggregator-afternoon.service`: `run-skill.sh deal-aggregator --afternoon` -> `run-agent-skill.sh deal-aggregator --afternoon`
+  - `deal-aggregator-friday.service`: `run-skill.sh deal-aggregator --digest-mode` -> `run-agent-skill.sh deal-aggregator --digest-mode`
+  - `email-intelligence.service`: `run-skill.sh email-intelligence` -> `run-agent-skill.sh email-intelligence`
+  - `health-monitor.service`: `run-skill.sh health-monitor` -> `run-agent-skill.sh health-monitor`
+  - `jj-operations-sunday.service`: `run-skill.sh jj-operations:sunday-prep` -> `run-agent-skill.sh jj-operations:sunday-prep`
+  - `launchd-debugger.service`: `run-skill.sh launchd-debugger:daily` -> `run-agent-skill.sh launchd-debugger:daily`
+  - `niche-intelligence.service`: `run-skill.sh niche-intelligence:tuesday` -> `run-agent-skill.sh niche-intelligence:tuesday`
+  - `nightly-tracker-audit.service`: `run-skill.sh nightly-tracker-audit:nightly` -> `run-agent-skill.sh nightly-tracker-audit:nightly`
+  - `post-call-analyzer-poll.service`: `post_call_analyzer_poll.sh` -> `post_call_analyzer_poll.codex.sh`
+  - `relationship-manager.service`: `run-skill.sh relationship-manager:daily` -> `run-agent-skill.sh relationship-manager:daily`
+  - `target-discovery-sunday.service`: `run-skill.sh target-discovery phase2-sunday` -> `run-agent-skill.sh target-discovery phase2-sunday`
+- Active non-backup systemd unit files have no `run-skill.sh`, `.claude`, `claude`, `CLAUDE`, or `ANTHROPIC` references.
+- Process check after stopping one stale legacy `post-call-analyzer` Claude invocation: no real `claude -p` or `scripts/run-skill.sh` processes remain.
+- `scripts/check-codex-migration-readiness.sh` reports READY and `scripts/scan_launchd_failures.py --lookback-hours 96` returns `[]`.
+- Claude rollback artifacts remain preserved but inactive until Phase 3 after the one-week monitoring window.
+
 ### Monitoring Window Items
 
 - Observe a fresh queued-note Codex `post-call-analyzer:on-trigger` run; the poller already passed a zero-queue pilot.

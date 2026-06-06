@@ -16,6 +16,8 @@ LOG_FILE="$LOG_DIR/weekly-snapshot-$STAMP.log"
 {
   echo "=== snapshot-weekly-to-vault.sh @ $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
   "$REPO_ROOT/dashboard/.venv/bin/python" "$REPO_ROOT/scripts/snapshot_weekly_to_vault.py"
+  echo "=== POST_RUN_CHECK: validate_weekly_snapshot_integrity.py ==="
+  "$REPO_ROOT/dashboard/.venv/bin/python" "$REPO_ROOT/scripts/validate_weekly_snapshot_integrity.py"
 } >> "$LOG_FILE" 2>&1
 
 # Prune logs older than 14 days (matches refresh-attio-snapshot pattern).

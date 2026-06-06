@@ -71,7 +71,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 | post-call-analyzer | poll script + triggered prompt | `run-agent-skill.sh post-call-analyzer:on-trigger` | 1 | cutover | Codex poller pilot completed with 0 queued notes; live poll service now uses `post_call_analyzer_poll.codex.sh`. Analyzer trigger has Codex prompt/validator coverage but did not run on a fresh queued note during the pilot. |
 | relationship-manager | weekday timer + prompt | `run-agent-skill.sh relationship-manager:daily` | 1 | cutover | Claude run passed on 2026-06-05; Codex runner now has same-day idempotency skip for valid artifacts; live service uses `run-agent-skill.sh relationship-manager:daily`. |
 | target-discovery | Sunday timer + prompt | `run-agent-skill.sh target-discovery phase2-sunday` | 1 | cutover | Validator moved to `.codex/hooks`, uses pool-only check with explicit `--date`, and passed against 2026-05-31 pool; live service now uses `run-agent-skill.sh`. |
-| Direct script refresh jobs | refresh/probe/export/snapshot scripts | agent-free systemd timer scripts | 1 | validated | Apollo, Attio, JJ snapshot, external probe, weekly export, and weekly snapshot are agent-free, timer-enabled, syntax-checked, and covered by focused validators where they mutate snapshots. |
+| Direct script refresh jobs | refresh/probe/export/snapshot scripts | agent-free systemd timer scripts | 1 | validated | Apollo, Attio, JJ snapshot, external probe, weekly export, and weekly snapshot are agent-free, timer-enabled, syntax-checked, and covered by focused validators where they mutate snapshots. Weekly dashboard snapshots use a dedicated validator because their artifact shape differs from the agent-driven weekly tracker. |
 | post-call-analyzer poll | `scripts/post_call_analyzer_poll.sh` -> `scripts/run-skill.sh post-call-analyzer:on-trigger` | `scripts/post_call_analyzer_poll.codex.sh` -> `run-agent-skill.sh post-call-analyzer:on-trigger` | 1 | cutover | Live poll service now uses the Codex poller; zero-queue pilot passed. Fresh queued-note analyzer run still needs observation. |
 | Readiness checker | n/a | `scripts/check-codex-migration-readiness.sh` | 1 | ported | Non-live gate for syntax, hooks, Codex CLI, 1Password key resolution, and synthetic safety checks. |
 | Systemd cutover templates | live user units | `docs/migrations/systemd-codex-templates/README.md` | 1 | ported | Non-live service mapping and controlled cutover procedure; no timers modified yet. |
@@ -260,8 +260,8 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Active `.codex/hooks` now route through `.codex/hooks` scripts and `.agents/skills` rules instead of depending on copied `.claude/hooks` / `.claude/skills` paths. Ephemeral hook state moved to `.codex` / `~/.codex`; durable legacy calibration stats remain reference-preserved until the monitoring window ends.
 - Core migrated skills now point operational doctrine checks at `AGENTS.md` and `docs/scheduled-skills.md`; `CLAUDE.md` references in calibration workflow are marked legacy reference-only.
 - Scheduled Codex jobs now use explicit cost-aware model routing: frequent validator-backed jobs default to `gpt-5.4-mini`; judgment/research-heavy weekly jobs default to `gpt-5.5`; `CODEX_MODEL` can still override all jobs if needed.
-- Direct refresh/probe/export/snapshot timer scripts were confirmed agent-free, syntax-checked, and documented as validated. Their focused validator coverage remains in the Phase 2 regression bundle.
-- Final Phase 2 validation passed: `scripts/check-codex-migration-readiness.sh` reports READY, and the full regression bundle ran 54 tests successfully.
+- Direct refresh/probe/export/snapshot timer scripts were confirmed agent-free, syntax-checked, and documented as validated. Weekly dashboard snapshots now use `scripts/validate_weekly_snapshot_integrity.py` instead of the agent/sheet weekly-tracker validator, and the wrapper runs it as a post-run check.
+- Final Phase 2 validation passed: `scripts/check-codex-migration-readiness.sh` reports READY, and the full regression bundle ran successfully. The dedicated weekly dashboard snapshot validator was added after the first live direct weekly snapshot exposed the validator-shape mismatch.
 
 ### Monitoring Window Items
 
@@ -270,3 +270,4 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Observe the next Tuesday niche-intelligence Codex run on 2026-06-09.
 - Observe the next health-monitor cycle to confirm the RED bridge fires through the Codex runner when applicable.
 - Defer Phase 3 Claude cleanup until after one week of stable Codex scheduled operation.
+- Do not delete, archive, or retire Claude Code artifacts during Phase 2; Phase 3 cleanup starts only after the one-week monitoring checkpoint.

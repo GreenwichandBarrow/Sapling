@@ -2125,7 +2125,7 @@ def _build_trends(
     ]
 
     if jj is not None and jj.weekly_buckets:
-        # Align JJ snapshot weekly buckets to the same 12-week window we built.
+        # Align the Cold Call activity snapshot weekly buckets to the same 12-week window we built.
         # Snapshot already provides 12 buckets ending today.
         jj_counts = [b.dials for b in jj.weekly_buckets[-12:]]
         jj_now = jj_counts[-1] if jj_counts else 0
@@ -2852,7 +2852,7 @@ def load_credit_tiles() -> list[CreditTile]:
     return tiles
 
 
-# JJ activity snapshot — written by scripts/refresh_jj_snapshot.py
+# Cold Call activity snapshot — written by scripts/refresh_jj_snapshot.py
 @dataclass
 class JJWeeklyBucket:
     week_start: date
@@ -3169,7 +3169,7 @@ def check_dashboard_staleness() -> list[StalenessCheck]:
     """
     checks = [
         _check_snapshot_staleness(PIPELINE_SNAPSHOT_PATH, "Attio pipeline", _attio_threshold()),
-        _check_snapshot_staleness(JJ_SNAPSHOT_PATH, "JJ activity", _jj_threshold()),
+        _check_snapshot_staleness(JJ_SNAPSHOT_PATH, "Cold Call activity", _jj_threshold()),
     ]
     return [c for c in checks if c is not None and c.is_stale]
 

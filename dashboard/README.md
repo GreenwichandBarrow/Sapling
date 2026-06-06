@@ -75,7 +75,7 @@ Both registered in launchd; status: `launchctl list | grep snapshot`.
 | Job | Schedule | Output | Wrapper |
 |-----|----------|--------|---------|
 | `attio-snapshot-refresh` | Mon-Fri hourly 8am-8pm ET (65 fires/wk) | `brain/context/attio-pipeline-snapshot.json` | `scripts/refresh-attio-snapshot.sh` |
-| `jj-snapshot-refresh` | Mon-Fri 9am, 2:30pm, 6pm ET (15 fires/wk) | `brain/context/jj-activity-snapshot.json` | `scripts/refresh-jj-snapshot.sh` |
+| Cold Call Snapshot Refresh (`jj-snapshot-refresh`) | Mon-Fri 9am, 2:30pm, 6pm ET (15 fires/wk) | `brain/context/jj-activity-snapshot.json` | `scripts/refresh-jj-snapshot.sh` |
 
 Both use `scripts/.env.launchd` for secrets (`ATTIO_API_KEY`).
 Logs at `logs/scheduled/{name}-{date-time}.log`, 14-day rotation.

@@ -325,3 +325,10 @@ These are intentional improvements to consider after Phase 2 monitoring, before 
    - Confirm the intended workflow: pull from the first/source tab in the cold call file, select the weekly batch, enrich through Apollo, and populate weekday call tabs for execution.
    - Clarify whether the target is 40 per day tab, 40 total per week, or another batch size.
    - Make the dashboard expose Cold Call Operations readiness: source pool freshness, Apollo enrichment status, daily tab population, and execution/results snapshot.
+
+4. Codex-native bookend workflow revamp:
+   - Review legacy Claude slash commands in `.claude/commands/`, especially `goodmorning`, `goodnight`, `savestate`, and `pickingback`.
+   - Improve `goodmorning` for Codex and the new dashboard-led operating model.
+   - Preserve `goodnight` if its existing structure remains solid, with only Codex terminology/tooling updates as needed.
+   - Reassess whether `savestate` and `pickingback` are still needed in Codex. They existed mainly because long Claude Code sessions became thin and required manual session handoff.
+   - If still useful, convert them into lightweight Codex handoff/checkpoint workflows rather than automatically committing, updating skills, or adding hooks without an explicit reason.

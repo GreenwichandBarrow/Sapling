@@ -305,3 +305,23 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Observe the next health-monitor cycle to confirm the RED bridge fires through the Codex runner when applicable.
 - Defer Phase 3 Claude cleanup until after one week of stable Codex scheduled operation.
 - Do not delete, archive, or retire Claude Code artifacts during Phase 2; Phase 3 cleanup starts only after the one-week monitoring checkpoint.
+
+## Phase 2.5 Running List - Post-Migration Operating Model Refinements
+
+These are intentional improvements to consider after Phase 2 monitoring, before or alongside Phase 3 cleanup. They are not blockers for the one-week Codex stability window.
+
+1. Dashboard as G&B operating cockpit:
+   - Evolve the dashboard from passive status board into the primary command center for running the whole system.
+   - Include what ran, what changed, what needs Kay, stale-data warnings, spend/usage, blocked workflows, approval queues, and recommended next actions.
+   - Preserve the dashboard as the go-to monitoring surface during the Phase 2 stability week.
+
+2. Target Discovery / DealsX / Cold Call Operations separation:
+   - Reassess target-discovery now that DealsX creates its own target lists.
+   - Treat DealsX list creation as DealsX-owned unless Codex is explicitly asked to audit, spot-check, summarize, or reconcile those lists.
+   - Keep target-discovery focused on proprietary G&B target pools and G&B-approved routing.
+   - Preserve interconnection with Cold Call Operations where upstream targets are G&B-created or G&B-approved.
+
+3. Cold Call Operations weekly workflow clarification:
+   - Confirm the intended workflow: pull from the first/source tab in the cold call file, select the weekly batch, enrich through Apollo, and populate weekday call tabs for execution.
+   - Clarify whether the target is 40 per day tab, 40 total per week, or another batch size.
+   - Make the dashboard expose Cold Call Operations readiness: source pool freshness, Apollo enrichment status, daily tab population, and execution/results snapshot.

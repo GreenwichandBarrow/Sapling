@@ -158,24 +158,15 @@ def probe_apollo() -> dict:
     return _result("warn", ms, f"HTTP {code}")
 
 
-def probe_anthropic() -> dict:
-    key = os.environ.get("ANTHROPIC_API_KEY")
+def probe_openai_codex() -> dict:
+    key = os.environ.get("CODEX_API_KEY") or os.environ.get("OPENAI_API_KEY")
     if not key:
-        return _skip("ANTHROPIC_API_KEY not in env")
-    body = json.dumps({
-        "model": "claude-haiku-4-5-20251001",
-        "max_tokens": 1,
-        "messages": [{"role": "user", "content": "hi"}],
-    })
+        return _skip("CODEX_API_KEY not in env")
     res = _http_status_and_time(
-        "https://api.anthropic.com/v1/messages",
-        method="POST",
+        "https://api.openai.com/v1/models",
         headers=[
-            f"x-api-key: {key}",
-            "anthropic-version: 2023-06-01",
-            "content-type: application/json",
+            f"Authorization: Bearer {key}",
         ],
-        data=body,
     )
     if res is None:
         return _result("error", None, "request failed")
@@ -339,7 +330,7 @@ PROBES: dict[str, Callable[[], dict]] = {
     "gog": probe_gog,
     "github": probe_github,
     "apollo": probe_apollo,
-    "claude-api": probe_anthropic,
+    "openai-codex": probe_openai_codex,
     "slack-webhooks": probe_slack_webhooks,
     "granola": probe_granola_mcp,
     "launchd": probe_launchd,

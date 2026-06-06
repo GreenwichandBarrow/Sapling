@@ -1,8 +1,9 @@
 #!/bin/bash
 # Wrapper for probe_external_services.py — invoked by the scheduler every 30 min
-# during business hours. Sources scripts/.env.launchd so the probe can read
-# APOLLO_API_KEY / SLACK_WEBHOOK_* / etc., then runs via the dashboard venv's
-# Python so `requests` and any other deps are available.
+# during business hours. Sources scripts/.env.launchd for service keys and
+# scripts/.env.codex for the 1Password-backed CODEX_API_KEY probe, then runs
+# via the dashboard venv's Python so `requests` and any other deps are
+# available.
 #
 # Mirrors scripts/refresh-attio-snapshot.sh structure.
 
@@ -21,6 +22,7 @@ LOG_FILE="$LOG_DIR/external-services-$STAMP.log"
   # shellcheck disable=SC1091
   source "$REPO_ROOT/scripts/load-env.sh"
   load_env "$REPO_ROOT/scripts/.env.launchd"
+  load_env "$REPO_ROOT/scripts/.env.codex"
   set +a
   "$REPO_ROOT/dashboard/.venv/bin/python" "$REPO_ROOT/scripts/probe_external_services.py"
 } >> "$LOG_FILE" 2>&1

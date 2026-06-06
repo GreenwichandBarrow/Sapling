@@ -15,6 +15,26 @@ spec.loader.exec_module(probe)
 
 
 class McpProcessProbeTest(unittest.TestCase):
+    def test_openai_codex_probe_skips_without_key(self) -> None:
+        with patch.dict("os.environ", {}, clear=True):
+            result = probe.probe_openai_codex()
+
+        self.assertEqual(result["status"], "skip")
+        self.assertIn("CODEX_API_KEY", result["skip_reason"])
+
+    def test_openai_codex_probe_uses_bearer_key(self) -> None:
+        with (
+            patch.dict("os.environ", {"CODEX_API_KEY": "sk-test"}, clear=True),
+            patch.object(probe, "_http_status_and_time", return_value=(200, 0.123)) as http,
+        ):
+            result = probe.probe_openai_codex()
+
+        self.assertEqual(result["status"], "ok")
+        self.assertEqual(result["message"], "200 OK")
+        self.assertEqual(result["latency_ms"], 123)
+        self.assertEqual(http.call_args.args[0], "https://api.openai.com/v1/models")
+        self.assertIn("Authorization: Bearer sk-test", http.call_args.kwargs["headers"])
+
     def test_attio_manual_oauth_skip_does_not_report_error(self) -> None:
         with patch.object(probe, "_run", return_value=(0, "", "", 12)):
             result = probe.probe_mcp_processes()

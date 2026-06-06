@@ -28,12 +28,12 @@ tiles:
     trend: steady use · winding down
     trend_arrow: flat
 
-  - label: Claude API · this month
+  - label: OpenAI/Codex API · this month
     value: "—"
     unit: spent
-    runway_text: pending billing-API wire-up
+    runway_text: monitor Business Codex credits + Platform API caps
     runway_color: none
-    trend: live read pending
+    trend: live usage read pending
     trend_arrow: flat
 
   - label: Subscription cost

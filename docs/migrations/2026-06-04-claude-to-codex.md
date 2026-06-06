@@ -286,6 +286,17 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - `scripts/check-codex-migration-readiness.sh` reports READY and `scripts/scan_launchd_failures.py --lookback-hours 96` returns `[]`.
 - Claude rollback artifacts remain preserved but inactive until Phase 3 after the one-week monitoring window.
 
+## Phase 2 Dashboard Connectivity Checkpoint - 2026-06-06
+
+- Dashboard service is active as `dashboard.service` and serves Streamlit on `0.0.0.0:8501`.
+- Tailscale Serve maps `https://agent-vps-7731c88b.tail868ef9.ts.net/` to `http://127.0.0.1:8501`; direct URL check returned HTTP 200.
+- Dashboard data loaders can read the current Attio pipeline snapshot, JJ activity snapshot, external-service snapshot, weekly tracker history, and the 2026-06-05 weekly dashboard snapshot.
+- `dashboard.data_sources.check_dashboard_staleness()` returned no stale snapshots under the weekend-aware freshness rules.
+- Updated Infrastructure Zone 2 from legacy `claude-api` to `openai-codex`; the external-services probe now checks `https://api.openai.com/v1/models` with `CODEX_API_KEY` / `OPENAI_API_KEY`.
+- `scripts/probe-external-services.sh` now loads both `.env.launchd` and `.env.codex` through `scripts/load-env.sh`, preserving existing service probes while adding the 1Password-backed Codex/OpenAI probe.
+- Live probe with systemd-like environment returned healthy checks for `openai-codex`, Apollo, Gog, Slack webhooks, GitHub, and vault.
+- Credits Zone 3 now labels the LLM spend tile as `OpenAI/Codex API · this month` and points Kay to monitor Business Codex credits plus Platform API caps until live usage readout is wired.
+
 ### Monitoring Window Items
 
 - Observe a fresh queued-note Codex `post-call-analyzer:on-trigger` run; the poller already passed a zero-queue pilot.

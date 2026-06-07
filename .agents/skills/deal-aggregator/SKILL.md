@@ -43,6 +43,10 @@ source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 Exports `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_ACTIVE_DEALS`, `SLACK_WEBHOOK_OPERATIONS`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
 
 If `${#SLACK_WEBHOOK_ACTIVE_DEALS}` = 0 after sourcing, surface to Kay — 1Password resolve broken. Do NOT log "Slack unavailable" or skip deal-surfacing without confirming the var is actually empty.
+
+Google access also resolves through `gog` with `GOG_KEYRING_PASSWORD` from `op-env.sh`. If any `gog sheets`, `gog docs`, or `gog drive` call appears unauthenticated, run `gog auth list --check` after sourcing `op-env.sh` before reporting an outage. Do not bypass 1Password by looking for ad hoc OAuth files first.
+
+Gmail safety is strict: this skill may create Gmail drafts only where explicitly specified. It must never send, draft-send, forward, autoreply, or call any Gmail send API. All Gmail draft work uses `gog gmail drafts create --account kay.s@greenwichandbarrow.com --gmail-no-send ...`; Kay sends manually.
 </credentials>
 
 **This skill DOES:**
@@ -124,7 +128,7 @@ Row 3 is headers: Rank, Niche Hypothesis, Current Status, Outreach Channel, Scor
 **Step 0c — Load keywords from DEALSX tab (REQUIRED for listing matching):**
 Read the DEALSX tab for the keyword corpus per niche:
 ```bash
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "'DEALSX'!B5:I20" --json
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "'DEALSX'!B5:I20" -a kay.s@greenwichandbarrow.com --json
 ```
 Relevant DEALSX fields: "Niche" (Sam's broad DealsX-submitted names), "Quick notes" (Industries/Types sub-verticals), "Keywords" (pre-tokenized match corpus).
 
@@ -141,9 +145,9 @@ Read the three buy-box docs from the Deal Aggregator Drive folder. These are the
 
 **Threshold discipline:** Per `feedback_strategic_thresholds_need_grounding` and `feedback_deal_screen_300k_salary_15pct_margin` — financial floors are constraint-driven (Kay's $300K salary + debt service produces the $2M EBITDA practical floor). Never relax them by source, channel, niche, or any other axis. Relax INDUSTRY filters or NICHE-strict requirements when the channel justifies it (per `feedback_broker_channel_opportunistic_floor` — separate Broker-Channel Buy Box, geography window pending Kay's lock). Never touch the financial gate without a constraint argument.
 ```bash
-gog docs cat 14hf5QaKtcP_Um0u_P0LZyUM_zvv7haWVVkgGmRL9iyc > /tmp/buybox-services.txt
-gog docs cat 1lkxntRwn3FOPXig86qF36eNyUS0BfbMumfNuIyInD-M > /tmp/buybox-insurance.txt
-gog docs cat 1I8r8w0FPJUepfBxM6HM7V_q4ibmitybIBF6w6sMQumU > /tmp/buybox-saas.txt
+gog docs cat 14hf5QaKtcP_Um0u_P0LZyUM_zvv7haWVVkgGmRL9iyc -a kay.s@greenwichandbarrow.com > /tmp/buybox-services.txt
+gog docs cat 1lkxntRwn3FOPXig86qF36eNyUS0BfbMumfNuIyInD-M -a kay.s@greenwichandbarrow.com > /tmp/buybox-insurance.txt
+gog docs cat 1I8r8w0FPJUepfBxM6HM7V_q4ibmitybIBF6w6sMQumU -a kay.s@greenwichandbarrow.com > /tmp/buybox-saas.txt
 ```
 Parse each doc's financial bands, structural requirements, industry hard-excludes, and geography filters. Each doc begins with the Data Availability Rule — absence of a disclosed field never auto-rejects; it flags for review.
 
@@ -250,7 +254,7 @@ Implemented via `scripts/deal-aggregator-fingerprint.sh` (hash | check | add). S
 
 ### Afternoon Run (`--afternoon` flag)
 
-The skill runs twice on weekdays: 7:30am ET (morning, full run — after email-intelligence's 7am artifact lands) and 2pm ET (afternoon, top-up run). Wrapper passes `--afternoon` in the second plist.
+The skill runs twice on weekdays: 7:30am ET (morning, full run — after email-intelligence's 7am artifact lands) and 2pm ET (afternoon, top-up run). The Codex/systemd wrapper passes `--afternoon` for the second timer.
 
 **Morning run (default, no flag):**
 - Full Channel 0a/0b/0c load
@@ -341,7 +345,7 @@ When Kay receives a broker introduction (detected via email-scan-results).
    - Add to Intermediary Target List Sheet (`18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`)
    - If scrapable → add to scanning rotation
    - If email-only → classify as email-only intermediary
-4. **Draft response** — Gmail draft (`gog gmail draft create`): short, warm, offer NDA, don't over-explain
+4. **Draft response** — Gmail draft only (`gog gmail drafts create --account kay.s@greenwichandbarrow.com --gmail-no-send ...`): short, warm, offer NDA, don't over-explain. NEVER send, draft-send, forward, or autoreply.
 5. **Update this skill** — Add new platform to scanning list if applicable
 
 **Classify new intermediaries:**
@@ -471,7 +475,7 @@ Every source scanned this run MUST appear as a row — no exceptions. Missing ro
 <weekly_digest>
 ## Weekly Source-Productivity Digest (Phase 2)
 
-**Triggered:** Friday 6:00 AM ET via `com.greenwich-barrow.deal-aggregator-friday.plist` — `run-agent-skill.sh deal-aggregator --digest-mode`. Also invocable manually with `/deal-aggregator --digest-mode`.
+**Triggered:** Friday 7:30 AM ET via `deal-aggregator-friday.timer` — `run-agent-skill.sh deal-aggregator --digest-mode`. Also invocable manually with `/deal-aggregator --digest-mode`.
 
 **Purpose:** Give Kay a single weekly artifact to decide which sources are earning their slot, which new sources should be added, and which should be retired. No auto-writes — proposals are approval-gated.
 
@@ -592,7 +596,7 @@ Per `feedback_mutating_skill_hardening_pattern.md`, every scheduled mutating ski
 
 **Failure path:** Validator non-zero → wrapper overrides skill exit code → Slack alert posts to `SLACK_WEBHOOK_OPERATIONS` with "VALIDATOR FAILED" prefix. This catches the silent-success failure mode where Codex exits 0 without writing the artifact (4/27 + 4/30 morning incidents — the run emitted operator-question framings instead of executing, exited cleanly, and the absence was only noticed when the afternoon top-up flagged "morning artifact missing").
 
-Wired 2026-05-02 (launchd-debugger investigation). Pattern source: `memory/feedback_mutating_skill_hardening_pattern.md`.
+Wired 2026-05-02 during the legacy launchd-debugger investigation; now enforced by the Codex/systemd runner. Pattern source: `memory/feedback_mutating_skill_hardening_pattern.md`.
 </wrapper_hardening>
 
 <stop_hooks>
@@ -620,7 +624,7 @@ Wired 2026-05-02 (launchd-debugger investigation). Pattern source: `memory/feedb
 - [ ] Entity created in vault with proper schema
 - [ ] Intermediary Target List Sheet entry
 - [ ] Website researched and scrapability assessed
-- [ ] Draft response in Gmail (`gog gmail draft create`) — short, warm, offers NDA
+- [ ] Draft response in Gmail draft-only mode (`gog gmail drafts create --account kay.s@greenwichandbarrow.com --gmail-no-send ...`) — short, warm, offers NDA; never send
 
 ### Friday Digest Stop Hook (Phase 2)
 - [ ] Digest file exists at `brain/trackers/weekly/{YYYY-MM-DD}-deal-aggregator-digest.md`
@@ -666,7 +670,7 @@ Wired 2026-05-02 (launchd-debugger investigation). Pattern source: `memory/feedb
 ### Phase 2 (Source stewardship — landed 2026-04-22)
 - [ ] Daily scan artifact includes `## Source Scorecard` with per-source match counts + listings reviewed + last match date
 - [ ] Every "blocked" source was verified via a second fetch attempt before being marked `blocked (verified)`
-- [ ] Friday 6 AM ET digest file written to `brain/trackers/weekly/{date}-deal-aggregator-digest.md` with all 5 sections
+- [ ] Friday 7:30 AM ET digest file written to `brain/trackers/weekly/{date}-deal-aggregator-digest.md` with all 5 sections
 - [ ] Source Scout subagent surfaces proposed additions (from week's inbox/newsletter signals) and proposed retirements (30+ days no match + 3 live-checks passed)
 - [ ] No auto-writes to the Sourcing Sheet — every addition/retirement awaits Kay's explicit approval
 - [ ] Slack notification to `#operations` only when ≥1 proposed change OR volume = 🔴 (silent on healthy weeks)

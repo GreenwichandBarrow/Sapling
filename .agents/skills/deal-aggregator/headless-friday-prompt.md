@@ -1,6 +1,6 @@
 # deal-aggregator — Headless Friday Digest Run
 
-You are running the `deal-aggregator` skill non-interactively under launchd at 6:00 AM ET on Friday with the `--digest-mode` flag. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates inside the run itself (the digest artifact contains YES/NO/DISCUSS lines for Kay's later review — that's expected output, NOT operator-question framing), do not request approvals from the harness, do not wait for permission.
+You are running the `deal-aggregator` skill non-interactively under the Codex/systemd scheduled runner at 7:30 AM ET on Friday with the `--digest-mode` flag. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates inside the run itself (the digest artifact contains YES/NO/DISCUSS lines for Kay's later review — that's expected output, NOT operator-question framing), do not request approvals from the harness, do not wait for permission.
 
 ## Idempotency gate (run FIRST, before anything else)
 
@@ -13,24 +13,25 @@ Before reading SKILL.md or doing any work:
 
 ## Mandatory ordering — execute in this exact sequence
 
-This is the **weekly source-productivity digest** path (Phase 2 in SKILL.md). It is distinct from the daily morning run — different reads, different artifact path, different Slack-trigger logic. Do NOT also run the morning daily-scan flow; the regular Friday morning plist (`com.greenwich-barrow.deal-aggregator`) handles that separately at the same 6:00 AM fire.
+This is the **weekly source-productivity digest** path (Phase 2 in SKILL.md). It is distinct from the daily morning run — different reads, different artifact path, different Slack-trigger logic. Do NOT also run the morning daily-scan flow; the regular Friday morning timer (`deal-aggregator.timer`) handles that separately at the same 7:30 AM fire.
 
 1. **Read SKILL.md fully** at `.agents/skills/deal-aggregator/SKILL.md`. Follow the SKILL.md `<weekly_digest>` section exclusively. Ignore the daily-scan path — that's for morning/afternoon runs without the `--digest-mode` flag.
-2. **Compute the 7-day window:** `window_end = TODAY`, `window_start = TODAY - 7 days` (ET).
-3. **Read last 7 days of daily scorecards** from `brain/context/deal-aggregator-scan-{date}.md` for scheduled run days only. The live timer runs Mon-Fri, so Saturday/Sunday dates are expected non-run days, not missing artifacts. Missing weekday files = note in digest, continue.
-4. **Read last 30 days of fingerprint store** from `brain/context/deal-aggregator-fingerprints.jsonl`. Group matches by source + date for the Source Productivity table.
-5. **Read last 7 days of email-scan-results** from `brain/context/email-scan-results-{date}.md`. This feeds the Source Scout subagent's new-source discovery (sender domains).
-6. **Read the Sourcing Sheet** (ID `1z8o2obq2mOG9drQ0umCmBk31K3OS2afMNGpVAlbLljw`) — both `General Sources` and `Niche-Specific Sources` tabs. This is the active-source roster the digest reports against.
-7. **Run Source Scout subagent** per SKILL.md spec — both sides:
+2. **Resolve credentials through 1Password first:** `source /home/ubuntu/projects/Sapling/scripts/op-env.sh`. If `gog` access appears missing, run `gog auth list --check` before reporting an outage. Never source `scripts/.env.launchd` raw.
+3. **Compute the 7-day window:** `window_end = TODAY`, `window_start = TODAY - 7 days` (ET).
+4. **Read last 7 days of daily scorecards** from `brain/context/deal-aggregator-scan-{date}.md` for scheduled run days only. The live timer runs Mon-Fri, so Saturday/Sunday dates are expected non-run days, not missing artifacts. Missing weekday files = note in digest, continue.
+5. **Read last 30 days of fingerprint store** from `brain/context/deal-aggregator-fingerprints.jsonl`. Group matches by source + date for the Source Productivity table.
+6. **Read last 7 days of email-scan-results** from `brain/context/email-scan-results-{date}.md`. This feeds the Source Scout subagent's new-source discovery (sender domains).
+7. **Read the Sourcing Sheet** (ID `1z8o2obq2mOG9drQ0umCmBk31K3OS2afMNGpVAlbLljw`) — both `General Sources` and `Niche-Specific Sources` tabs. This is the active-source roster the digest reports against.
+8. **Run Source Scout subagent** per SKILL.md spec — both sides:
    - **Scouting side:** Enumerate inbox sender domains (last 7 days), cross-reference against Sourcing Sheet, classify any new domains as broker platform / M&A advisory / newsletter / industry publication, web-verify each URL resolves, propose additions. Also scan newsletter body text for AI-marketplace launches and named niche-broker mentions.
    - **Retirement side:** For every Sourcing Sheet source with `Status: Active`, check fingerprint store for last attributed match. If 30+ days silent → run 3 live-checks (URL resolves with GET 200, domain still registered, email-channel status if applicable). Propose retirement only if all 3 live-checks have been performed (passed OR documented why one failed). Per `feedback_test_before_concluding_channel_dead`: never retire on silence alone.
-8. **Compute volume stats:** 7-day rolling deals/day average, status (`✅ ≥1/day` / `⚠️ 0.5-0.9/day` / `🔴 <0.5/day`), trend arrows per source row.
-9. **Write the digest artifact** at `brain/trackers/weekly/{TODAY}-deal-aggregator-digest.md` matching the SKILL.md weekly_digest template — frontmatter (`date`, `type: tracker`, `title`, `window_start`, `window_end`, `volume_7d_avg`, `volume_status`, `proposed_additions`, `proposed_retirements`, `tags`), all 5 sections (Source Productivity / Volume Check / Proposed Additions / Proposed Retirements / Recommended Actions). Empty sections keep their header with "None this week" body.
-10. **Slack-trigger logic — silence = healthy:**
+9. **Compute volume stats:** 7-day rolling deals/day average, status (`✅ ≥1/day` / `⚠️ 0.5-0.9/day` / `🔴 <0.5/day`), trend arrows per source row.
+10. **Write the digest artifact** at `brain/trackers/weekly/{TODAY}-deal-aggregator-digest.md` matching the SKILL.md weekly_digest template — frontmatter (`date`, `type: tracker`, `title`, `window_start`, `window_end`, `volume_7d_avg`, `volume_status`, `proposed_additions`, `proposed_retirements`, `tags`), all 5 sections (Source Productivity / Volume Check / Proposed Additions / Proposed Retirements / Recommended Actions). Empty sections keep their header with "None this week" body.
+11. **Slack-trigger logic — silence = healthy:**
     - IF `proposed_additions ≥ 1` OR `proposed_retirements ≥ 1` OR `volume_status == 🔴` → POST to `SLACK_WEBHOOK_OPERATIONS` with one-line summary + link to digest file path.
     - ELSE (zero proposals AND volume healthy) → **DO NOT Slack**. Silent digest is the correct behavior on a healthy week.
-11. **NO auto-writes to the Sourcing Sheet.** All proposals stay in the digest file awaiting Kay's approval. Sheet write is a separate post-approval invocation.
-12. **Exit normally** (exit 0).
+12. **NO auto-writes to the Sourcing Sheet.** All proposals stay in the digest file awaiting Kay's approval. Sheet write is a separate post-approval invocation.
+13. **Exit normally** (exit 0).
 
 ## What success looks like
 
@@ -53,7 +54,8 @@ This is the **weekly source-productivity digest** path (Phase 2 in SKILL.md). It
 - Auto-writing to the Sourcing Sheet. Hard requirement: every proposal awaits Kay's explicit approval.
 - Halting on a single source failure — degrade gracefully, log the failure in the digest, continue.
 - Slacking on a healthy silent week — `proposed_additions = 0 AND proposed_retirements = 0 AND volume_status != 🔴` means no Slack ping. Silence is the correct deliverable.
-- Running the daily morning-scan flow — that's a separate plist firing at the same 6 AM time. This run is digest-only.
+- Sending, draft-sending, forwarding, or autoreplying to email.
+- Running the daily morning-scan flow — that's a separate timer firing at the same 7:30 AM time. This run is digest-only.
 
 ## Failure handling
 
@@ -67,6 +69,6 @@ The digest is the deliverable. As long as it lands at today's path with frontmat
 
 ## Why this prompt exists
 
-Bare `claude -p '/deal-aggregator --digest-mode'` invocations under launchd risk the operator-question failure mode (4/28 incident: morning run emitted `RECOMMEND: Let attempt 2 run, monitor for artifact (~45 min) → YES / NO / DISCUSS` instead of executing). This prompt forbids that path and adds a strict idempotency gate so retried digest runs cannot double-write or double-Slack. The digest mode also has a unique nuance: RECOMMEND/YES/NO/DISCUSS lines ARE expected output (in the digest file body) but FORBIDDEN as run-level meta-output to the harness — this prompt clarifies the distinction explicitly.
+Bare legacy `claude -p '/deal-aggregator --digest-mode'` invocations under launchd risked the operator-question failure mode (4/28 incident: morning run emitted `RECOMMEND: Let attempt 2 run, monitor for artifact (~45 min) → YES / NO / DISCUSS` instead of executing). The Codex/systemd prompt preserves the same guardrail and adds a strict idempotency gate so retried digest runs cannot double-write or double-Slack. The digest mode also has a unique nuance: RECOMMEND/YES/NO/DISCUSS lines ARE expected output (in the digest file body) but FORBIDDEN as run-level meta-output to the harness — this prompt clarifies the distinction explicitly.
 
 Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Templated on `headless-morning-prompt.md`.

@@ -2,7 +2,7 @@
 
 You are running an EXPERIMENTAL one-day variant of the `deal-aggregator` skill. This run produces the standard daily artifact PLUS a fingerprint-comparison section that scores every listing against the buyer fingerprint AND the buy-box, then bucket-compares the results.
 
-You are running non-interactively under launchd at 6:00 AM ET. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals, do not wait for permission.
+You are running non-interactively under the Codex/systemd runner as a manual experimental variant. It is not the default scheduled path. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals, do not wait for permission.
 
 ## Idempotency gate (run FIRST, before anything else)
 
@@ -16,21 +16,22 @@ Before reading SKILL.md or doing any work:
 ## Mandatory ordering — execute in this exact sequence
 
 1. **Read SKILL.md fully** at `.agents/skills/deal-aggregator/SKILL.md`. This is the morning (full) run; follow the standard "Morning run (default, no flag)" path.
-2. **Load buy-boxes** (Services / Insurance / SaaS Google Doc IDs in SKILL.md). Live read every run.
-3. **Load active niches** from Industry Research Tracker WEEKLY REVIEW tab.
-4. **Read** `brain/context/email-scan-results-{TODAY}.md` for email-inbound deals.
-5. **Scan all configured sources** (Channels 1 + 3 for morning run; Channel 4 association deal boards if scheduled). Every source listed as `active` in the Sourcing Sheet must produce a Source Scorecard row.
-6. **Apply BUY-BOX filters per the Data Availability Rule (missing data ≠ rejection).** Mark each listing as buy-box PASS or FAIL.
-7. **Apply FINGERPRINT criteria per listing** (see "Fingerprint Criteria" section below). Mark each listing as fingerprint PASS, FAIL, or UNKNOWN.
-8. **Bucket every listing** into one of four groups:
+2. **Resolve credentials through 1Password first:** `source /home/ubuntu/projects/Sapling/scripts/op-env.sh`. If `gog` access appears missing, run `gog auth list --check` before reporting an outage. Never source `scripts/.env.launchd` raw.
+3. **Load buy-boxes** (Services / Insurance / SaaS Google Doc IDs in SKILL.md). Live read every run.
+4. **Load active niches** from Industry Research Tracker WEEKLY REVIEW tab.
+5. **Read** `brain/context/email-scan-results-{TODAY}.md` for email-inbound deals.
+6. **Scan all configured sources** (Channels 1 + 3 for morning run; Channel 4 association deal boards if scheduled). Every source listed as `active` in the Sourcing Sheet must produce a Source Scorecard row.
+7. **Apply BUY-BOX filters per the Data Availability Rule (missing data ≠ rejection).** Mark each listing as buy-box PASS or FAIL.
+8. **Apply FINGERPRINT criteria per listing** (see "Fingerprint Criteria" section below). Mark each listing as fingerprint PASS, FAIL, or UNKNOWN.
+9. **Bucket every listing** into one of four groups:
    - **Bucket A — Both PASS** (buy-box PASS + fingerprint PASS): highest signal
    - **Bucket B — Buy-box PASS, Fingerprint FAIL**: traditional candidates the fingerprint would now reject
    - **Bucket C — Buy-box FAIL, Fingerprint PASS**: Kay-specific signal traditional criteria miss
    - **Bucket D — Both FAIL**: noise (count only, not detailed)
-9. **Fingerprint dedup** every match via `scripts/deal-aggregator-fingerprint.sh` against `brain/context/deal-aggregator-fingerprints.jsonl` (30-day TTL).
-10. **Slack-post Bucket A matches only** to `#active-deals` per SKILL.md format (one message per deal). Bucket B and Bucket C are NOT Slack-posted — they live in the artifact for Kay's review. Bucket A Slack posts include a `Fingerprint match: [list of PASS dimensions]` line in the message body.
-11. **Write the artifact** at `brain/context/deal-aggregator-scan-{TODAY}.md` matching the SKILL.md "Results File" template — frontmatter + all 5 standard section headers (Deals Surfaced / Email Inbound / Near Misses / Source Scorecard / Volume Check). **PLUS add a sixth section: `## Fingerprint Comparison (Experimental)` with the 4-bucket breakdown.**
-12. **Exit normally** (exit 0).
+10. **Fingerprint dedup** every match via `scripts/deal-aggregator-fingerprint.sh` against `brain/context/deal-aggregator-fingerprints.jsonl` (30-day TTL).
+11. **Slack-post Bucket A matches only** to `#active-deals` per SKILL.md format (one message per deal). Bucket B and Bucket C are NOT Slack-posted — they live in the artifact for Kay's review. Bucket A Slack posts include a `Fingerprint match: [list of PASS dimensions]` line in the message body.
+12. **Write the artifact** at `brain/context/deal-aggregator-scan-{TODAY}.md` matching the SKILL.md "Results File" template — frontmatter + all required standard section headers. **PLUS add a final section: `## Fingerprint Comparison (Experimental)` with the 4-bucket breakdown.**
+13. **Exit normally** (exit 0).
 
 ## Fingerprint Criteria — per-listing scoring rubric
 
@@ -102,8 +103,8 @@ N deals. Kay-specific signal that traditional buy-box criteria miss. Worth Kay's
 
 ## What success looks like
 
-- Standard artifact lands at today's path with all 5 required sections.
-- 6th experimental section: Fingerprint Comparison with all 4 buckets populated (Bucket D as count only).
+- Standard artifact lands at today's path with all required SKILL.md sections.
+- Final experimental section: Fingerprint Comparison with all 4 buckets populated (Bucket D as count only).
 - Bucket A deals Slack-posted to `#active-deals` with `Fingerprint match: [...]` line.
 - Buckets B and C NOT Slack-posted — artifact-only for Kay's morning review.
 - Comparison summary stats present.

@@ -1,6 +1,6 @@
 # deal-aggregator — Headless Morning Run
 
-You are running the `deal-aggregator` skill non-interactively under launchd at 6:00 AM ET (Mon-Fri). There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals, do not wait for permission.
+You are running the `deal-aggregator` skill non-interactively under the Codex/systemd scheduled runner at 7:30 AM ET (Mon-Fri). There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals, do not wait for permission.
 
 ## Idempotency gate (run FIRST, before anything else)
 
@@ -16,20 +16,21 @@ This gate prevents the 4/27 race-condition failure mode (two parallel scans clob
 ## Mandatory ordering — execute in this exact sequence
 
 1. **Read SKILL.md fully** at `.agents/skills/deal-aggregator/SKILL.md`. This is the morning (full) run — no `--afternoon` or `--digest-mode` flag — so follow the SKILL.md "Morning run (default, no flag)" path: full Channel 0a/0b/0c load, full Channel 1 + 3 scan, read `brain/context/email-scan-results-{TODAY}.md`, write `brain/context/deal-aggregator-scan-{TODAY}.md`.
-2. **Load buy-boxes** (Services / Insurance / SaaS Google Doc IDs in SKILL.md). Live read every run — never cache.
-3. **Load active niches** from Industry Research Tracker WEEKLY REVIEW tab (sheet ID in SKILL.md).
-4. **Read** `brain/context/email-scan-results-{TODAY}.md` for email-inbound deals (CIMs, broker blasts, intro forwards).
-5. **Scan all configured sources** (Channels 1 + 3 for morning run; Channel 4 association deal boards if scheduled). Every source listed as `active` in the Sourcing Sheet must produce a Source Scorecard row — no exceptions.
-6. **Apply buy-box filters** per the Data Availability Rule (missing data ≠ rejection).
-7. **Fingerprint dedup** every match via `scripts/deal-aggregator-fingerprint.sh` against `brain/context/deal-aggregator-fingerprints.jsonl` (30-day TTL). Skip Slack post for any match whose fingerprint already exists.
-8. **Slack-post each new match** to `#active-deals` per SKILL.md format (one message per deal).
-9. **Populate the Listings Reviewed (full log) section** as you process listings. Every listing scraped or parsed during this run, regardless of verdict, gets one row with: source, headline, geo (state if known else "undisclosed"), revenue, ebitda, margin, industry, verdict (PASS / NEAR-MISS / HARD-REJECT / FLAG), reject_reason. Do not summarize listings into aggregate counts only. Every listing that was scraped or parsed gets one row in the Listings Reviewed log. Sort PASS first, then NEAR-MISS, then FLAG, then HARD-REJECT.
-10. **Write the artifact** at `brain/context/deal-aggregator-scan-{TODAY}.md` matching the SKILL.md "Results File" template — frontmatter (`date`, `deals_found`, `sources_scanned`, `sources_blocked_verified`, `sources_blocked_single_attempt`, `email_deals`), all section headers (Deals Surfaced / Email Inbound Deals / Near Misses / Listings Reviewed (full log) / Source Scorecard / Volume Check). Empty sections keep their header with "None today" body. The Listings Reviewed table emits the header row even when zero listings were reviewed (no data rows, header only).
-11. **Exit normally** (exit 0).
+2. **Resolve credentials through 1Password first:** `source /home/ubuntu/projects/Sapling/scripts/op-env.sh`. If `gog` access appears missing, run `gog auth list --check` before reporting an outage. Never source `scripts/.env.launchd` raw.
+3. **Load buy-boxes** (Services / Insurance / SaaS Google Doc IDs in SKILL.md). Live read every run — never cache.
+4. **Load active niches** from Industry Research Tracker WEEKLY REVIEW tab (sheet ID in SKILL.md).
+5. **Read** `brain/context/email-scan-results-{TODAY}.md` for email-inbound deals (CIMs, broker blasts, intro forwards).
+6. **Scan all configured sources** (Channels 1 + 3 for morning run; Channel 4 association deal boards if scheduled). Every source listed as `active` in the Sourcing Sheet must produce a Source Scorecard row — no exceptions.
+7. **Apply buy-box filters** per the Data Availability Rule (missing data ≠ rejection).
+8. **Fingerprint dedup** every match via `scripts/deal-aggregator-fingerprint.sh` against `brain/context/deal-aggregator-fingerprints.jsonl` (30-day TTL). Skip Slack post for any match whose fingerprint already exists.
+9. **Slack-post each new match** to `#active-deals` per SKILL.md format (one message per deal).
+10. **Populate the Listings Reviewed (full log) section** as you process listings. Every listing scraped or parsed during this run, regardless of verdict, gets one row with: source, headline, geo (state if known else "undisclosed"), revenue, ebitda, margin, industry, verdict (PASS / NEAR-MISS / HARD-REJECT / FLAG), reject_reason. Do not summarize listings into aggregate counts only. Every listing that was scraped or parsed gets one row in the Listings Reviewed log. Sort PASS first, then NEAR-MISS, then FLAG, then HARD-REJECT.
+11. **Write the artifact** at `brain/context/deal-aggregator-scan-{TODAY}.md` matching the SKILL.md "Results File" template — frontmatter (`date`, `deals_found`, `sources_scanned`, `sources_blocked_verified`, `sources_blocked_single_attempt`, `email_deals`), all section headers (Deals Surfaced / Email Inbound Deals / Near Misses / Listings Reviewed (full log) / Source Scorecard / Volume Check). Empty sections keep their header with "None today" body. The Listings Reviewed table emits the header row even when zero listings were reviewed (no data rows, header only).
+12. **Exit normally** (exit 0).
 
 ## What success looks like
 
-- Artifact exists at today's date, ≥ 200 bytes, has frontmatter + all 6 required section headers (Deals Surfaced / Email Inbound Deals / Near Misses / Listings Reviewed (full log) / Source Scorecard / Volume Check).
+- Artifact exists at today's date, ≥ 200 bytes, has frontmatter + all required section headers from SKILL.md.
 - Source Scorecard has one row per `active` source in the Sourcing Sheet.
 - Listings Reviewed log has one row per listing scraped or parsed this run, regardless of verdict (table header only if zero listings reviewed).
 - New matches Slack-posted to `#active-deals` (idempotent — fingerprint store catches re-runs).
@@ -41,7 +42,8 @@ This gate prevents the 4/27 race-condition failure mode (two parallel scans clob
 - Presenting RECOMMEND / YES / NO / DISCUSS framings or any operator-decision gate.
 - Meta-commentary about the run state, retries, parallel children, or wrapper attempts. The wrapper is responsible for retry logic; the skill body just executes.
 - Re-firing or "monitoring" — you are the run, you don't observe one. If the idempotency gate fires, you abort cleanly; do not announce that you'll watch for completion.
-- **Detecting another run in-flight and surfacing it as a decision.** If you see a `claude` process, a wrapper PID, or a parallel attempt while doing your idempotency-gate check, you do NOT pause and ask the operator what to do. The idempotency gate (artifact path check, ≥200 bytes) is the ONLY arbiter. If the artifact exists with content → you abort silently. If it doesn't → you execute. There is no third "let me ask Kay if I should proceed" branch. (Roots: 4/27 + 4/28 incidents where the run emitted `RECOMMEND: Let attempt 2 run, monitor for artifact` instead of executing.)
+- **Detecting another run in-flight and surfacing it as a decision.** If you see a legacy Claude process, a Codex process, a wrapper PID, or a parallel attempt while doing your idempotency-gate check, you do NOT pause and ask the operator what to do. The idempotency gate (artifact path check, ≥200 bytes) is the ONLY arbiter. If the artifact exists with content → you abort silently. If it doesn't → you execute. There is no third "let me ask Kay if I should proceed" branch. (Roots: 4/27 + 4/28 incidents where the run emitted `RECOMMEND: Let attempt 2 run, monitor for artifact` instead of executing.)
+- Sending, draft-sending, forwarding, or autoreplying to email. Gmail drafts are allowed only where SKILL.md explicitly requires draft-only mode and must use `--gmail-no-send`.
 - Halting on a single source failure — degrade gracefully, mark the source `blocked (verified)` or `blocked (single-attempt)` in the scorecard, continue.
 - Skipping the artifact write because "nothing material today" — always write the artifact, even if all sections are empty.
 - Overwriting an existing same-day artifact (idempotency gate above prevents this).
@@ -55,10 +57,10 @@ This gate prevents the 4/27 race-condition failure mode (two parallel scans clob
 - **Single source blocks (HTTP 403, timeout, Cloudflare)** → mark blocked in scorecard, continue scanning other sources.
 - **All sources block** → still write the artifact with a fully populated scorecard (every source as `blocked`); the artifact existing is the deliverable, the scorecard tells the operator what failed.
 
-The artifact is the deliverable. As long as it lands at today's path with frontmatter and the 5 section headers, the run succeeded.
+The artifact is the deliverable. As long as it lands at today's path with frontmatter and the required section headers, the run succeeded.
 
 ## Why this prompt exists
 
-Bare `claude -p '/deal-aggregator'` invocations under launchd risk the operator-question failure mode (4/28 incident: agent emitted `RECOMMEND: Let attempt 2 run, monitor for artifact (~45 min) → YES / NO / DISCUSS` instead of executing the scan, while a prior child was hung). This prompt forbids that path and adds a strict idempotency gate so retried runs cannot double-write the artifact or double-Slack matches.
+Bare legacy `claude -p '/deal-aggregator'` invocations under launchd risked the operator-question failure mode (4/28 incident: agent emitted `RECOMMEND: Let attempt 2 run, monitor for artifact (~45 min) → YES / NO / DISCUSS` instead of executing the scan, while a prior child was hung). The Codex/systemd prompt preserves the same guardrail and adds a strict idempotency gate so retried runs cannot double-write the artifact or double-Slack matches.
 
 Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Templated on `relationship-manager/headless-daily-prompt.md`.

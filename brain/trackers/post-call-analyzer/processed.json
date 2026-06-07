@@ -5,7 +5,10 @@
       "title": "AI Friday: Measuring the Real ROI of AI in Software Engineering",
       "processed_at": "2026-05-08T21:04:51+00:00",
       "vault_call_note": "brain/calls/2026-05-08-ai-friday-real-roi-of-ai.md",
-      "detector": "mcp"
+      "detector": "mcp",
+      "transcript_failed": true,
+      "transcript_backfill_error": "granola-api: HTTP 400 on /v1/notes/acd80cd9-a501-4028-80e4-830d37f8b976?include=transcript\n{\"code\":\"VALIDATION_ERROR\",\"message\":\"Invalid path parameters\",\"details\":[{\"field\":\"note_id\",\"issue\":\"Invalid\"}],\"requestId\":\"f3f9e7ee-1a65-4566-b293-60643a486aae\",\"timestamp\":\"2026-06-07T19:49:24.923Z\"}",
+      "transcript_backfilled_at": "2026-06-07T19:49:24+00:00"
     },
     {
       "id": "not_4rmlqyNoUbrPey",
@@ -21,7 +24,9 @@
       },
       "tasks_appended": 5,
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1L57glBZTe7TeLvqY7xTvwqDXvJ4BOzR7fqmpcke39aI/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:49:28+00:00"
     },
     {
       "id": "not_JWvbXhhZGo12aO",
@@ -37,7 +42,9 @@
       },
       "tasks_appended": 2,
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1PsGl2UVk791cwMcW1ZdNJPwdUeH0wiYRoP8MvNqo4u4/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:49:32+00:00"
     },
     {
       "id": "not_f6APj5PQS9UqEk",
@@ -53,7 +60,9 @@
       },
       "tasks_appended": 3,
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1WmT7FVglIH-N5mk1vNWSCC-7wZBU9z5MiaI_dNnOxf4/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:49:36+00:00"
     },
     {
       "id": "not_U1ou7lmFRtIFtH",
@@ -68,7 +77,9 @@
       "attio_skip_reason": "no external attendee \u2014 solo webinar, no Attio match (expected)",
       "tasks_appended": 1,
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1NhFFZbR_QDYarOHMCSJzMJ2-WDzQ6p35UzVVogSH9Ok/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:49:40+00:00"
     },
     {
       "id": "not_v0sa5nV8gTSYNO",
@@ -84,7 +95,9 @@
       },
       "tasks_appended": 4,
       "slack_posted": true,
-      "detector": "manual-backfill-by-claude"
+      "detector": "manual-backfill-by-claude",
+      "transcript_doc_url": "https://docs.google.com/document/d/1aGgRgkHG9dvghCR6OzKisnBcrD12kdhYroHhxmn_-PM/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:49:44+00:00"
     },
     {
       "id": "not_KKWlYwkGEw8dup",
@@ -99,7 +112,9 @@
       "attio_skip_reason": "panel session, no specific counterparty",
       "tasks_appended": 1,
       "slack_posted": true,
-      "detector": "manual-backfill-by-claude"
+      "detector": "manual-backfill-by-claude",
+      "transcript_doc_url": "https://docs.google.com/document/d/1dNbqnLkoPRXiFBsPWf1LZ2xF2DZ98a6Nr74nOuTSjYE/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:49:49+00:00"
     },
     {
       "id": "not_Vzn86Nudrldub0",
@@ -114,7 +129,9 @@
       "attio_skip_reason": "panel session, no specific counterparty",
       "tasks_appended": 1,
       "slack_posted": true,
-      "detector": "manual-backfill-by-claude"
+      "detector": "manual-backfill-by-claude",
+      "transcript_doc_url": "https://docs.google.com/document/d/15p2Ih02lTpOFheeTTggovUWd8oAU5KuSeRazniJ6Psk/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:49:53+00:00"
     },
     {
       "id": "not_JCaHfPrTIZFzWm",
@@ -129,7 +146,9 @@
       "attio_skip_reason": "panel session, no specific counterparty",
       "tasks_appended": 1,
       "slack_posted": true,
-      "detector": "manual-backfill-by-claude"
+      "detector": "manual-backfill-by-claude",
+      "transcript_doc_url": "https://docs.google.com/document/d/1dik9HWuxPBS8IF80Nw8S1avkm1qXnk6oD3WAGgP9uJs/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:49:57+00:00"
     },
     {
       "id": "not_HL86I5DUTLn1jV",
@@ -144,7 +163,9 @@
       "attio_skip_reason": "small-group session, no specific counterparty",
       "tasks_appended": 1,
       "slack_posted": true,
-      "detector": "manual-backfill-by-claude"
+      "detector": "manual-backfill-by-claude",
+      "transcript_doc_url": "https://docs.google.com/document/d/1POqIlu16qdIMx0jr2uWIjCCzYxpe3X-XPUZaXbjHo2g/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:01+00:00"
     },
     {
       "id": "not_xEkdQVGMNxxTHQ",
@@ -159,7 +180,9 @@
       "attio_skip_reason": "conference session, no specific counterparty",
       "tasks_appended": 1,
       "slack_posted": true,
-      "detector": "manual-backfill-by-claude"
+      "detector": "manual-backfill-by-claude",
+      "transcript_doc_url": "https://docs.google.com/document/d/1F6B2ifeQC6BjcihxIdItL7FOFOplL_wSy7VeevPaMi4/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:05+00:00"
     },
     {
       "id": "not_7sEFNCGtIbcIUM",
@@ -174,7 +197,9 @@
       "attio_skip_reason": "group peer call; not writing per-attendee notes per orchestrator instruction",
       "tasks_appended": 1,
       "slack_posted": true,
-      "detector": "manual-backfill-by-claude"
+      "detector": "manual-backfill-by-claude",
+      "transcript_doc_url": "https://docs.google.com/document/d/1BBLx7BfCvaCMQOM9EV5KhwEfZMjKm-_ErrOCuldbuE4/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:08+00:00"
     },
     {
       "id": "not_CWgPBpifBvuH9Q",
@@ -189,7 +214,9 @@
       "attio_skip_reason": "conference content, no specific counterparty",
       "tasks_appended": 1,
       "slack_posted": true,
-      "detector": "manual-backfill-by-claude"
+      "detector": "manual-backfill-by-claude",
+      "transcript_doc_url": "https://docs.google.com/document/d/1IXFVToxDOa3qyIN3s1Y28-N2HlGwakFkJidQox8ZRgg/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:12+00:00"
     },
     {
       "id": "not_Gn4BVFoV13pDKF",
@@ -205,7 +232,9 @@
       },
       "tasks_appended": 4,
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/19qWaa4lZTY1LRqj0cSD54ER91B27OPy-c2ZOrwETpV4/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:16+00:00"
     },
     {
       "id": "not_lrTNq6HzuDmTck",
@@ -220,7 +249,9 @@
       "attio_skip_reason": "internal team meeting \u2014 JJ + Abigail are team members, not external counterparties",
       "tasks_appended": 4,
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1mU4vYXTVLUVyAKbm2PS0DVO0M4RwN9u6rHAvx6NSRis/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:20+00:00"
     },
     {
       "id": "not_Uq2NMa3Kz51FFq",
@@ -236,7 +267,9 @@
       },
       "tasks_appended": 6,
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/14KBmTdMygqJJSlIMIfwNsR_pp6M3IaQKMT0klI-p4xE/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:24+00:00"
     },
     {
       "id": "not_ba29fLctM5PaPZ",
@@ -252,7 +285,9 @@
       "tasks_staged": 5,
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_ba29fLctM5PaPZ.json",
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1YSyGd-ipFEvMIA2U2j_jWD0uf57WxbHtt_XDCIrKaXw/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:28+00:00"
     },
     {
       "id": "not_lCCr0zlFExAVkg",
@@ -268,7 +303,9 @@
       "tasks_staged": 5,
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_lCCr0zlFExAVkg.json",
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1_GpB4R4bgOq8HDxTFtJ-cAtZgA0H-3gheuPXII7fPLs/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:32+00:00"
     },
     {
       "id": "not_OcIlALJ6zRGx5s",
@@ -284,7 +321,9 @@
       "tasks_staged": 4,
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_OcIlALJ6zRGx5s.json",
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1y3HuAnEFXW9KrBQkjvP2h_V7h4423YhjjcwRhwFadGQ/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:36+00:00"
     },
     {
       "id": "not_bE9HS6Eck0mGcK",
@@ -301,7 +340,9 @@
       "tasks_staged": 5,
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_bE9HS6Eck0mGcK.json",
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1cZ9UtWFC_R1zPB_IrpdpfnD6ZcoCtbDGftdckNlBNPc/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:40+00:00"
     },
     {
       "id": "not_iJBpnl17jLmXhu",
@@ -313,7 +354,10 @@
       "attio_failed": true,
       "skip_reason": "Calendar-linked capture recorded empty audio (no transcript). Substantive content captured in companion note not_bE9HS6Eck0mGcK; no duplicate Doc/Attio/vault/tasks created. Noted in companion Slack message rather than posting a separate dud alert.",
       "slack_posted": false,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1XBYrrnIHQMhwxT8a3TPHZo_bh-Bt93lllLF0cETZnKk/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:43+00:00",
+      "transcript_failed": true
     },
     {
       "id": "not_RBVjFhMF2BBE7l",
@@ -330,7 +374,9 @@
       "tasks_staged": 2,
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_RBVjFhMF2BBE7l.json",
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1vFK-qTOinF8MgsAxniplshVd6-tviVrqYPaNT62Tqnk/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:48+00:00"
     },
     {
       "id": "not_cs3dxW0xAkyjsq",
@@ -347,7 +393,9 @@
       "tasks_staged": 3,
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_cs3dxW0xAkyjsq.json",
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1Z8pP3-6nDxX_nwgEFM4m2KLKtww91nH65Ojt26QwONI/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:51+00:00"
     },
     {
       "id": "not_GreaWNeyHKAQNu",
@@ -363,7 +411,9 @@
       "tasks_staged": 4,
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_GreaWNeyHKAQNu.json",
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1S7vMJXqaxk6ft7Igi2kdlB22fSSLJVseTtqAEFUHBaI/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:55+00:00"
     },
     {
       "id": "not_ZB5wBLTttNp99C",
@@ -378,7 +428,9 @@
       "tasks_staged": 0,
       "tasks_skip_reason": "no action items extractable from near-empty transcript",
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1eq3mof1F7zfpgGE0S7P65edRsB_cq-EvgZS2Z_Y63eQ/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:50:59+00:00"
     },
     {
       "id": "not_XcqNWs33vyFKLj",
@@ -395,7 +447,9 @@
       "tasks_staged": 5,
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_XcqNWs33vyFKLj.json",
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1tro33r6_vEUUO_QjqzhNUYEKYecjIRL5qf89Mdr2Wa8/edit?usp=drivesdk",
+      "transcript_backfilled_at": "2026-06-07T19:51:04+00:00"
     },
     {
       "id": "not_bUaxcsrMLNl2wX",
@@ -412,7 +466,9 @@
       "tasks_staged": 3,
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_bUaxcsrMLNl2wX.json",
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_backfilled_at": "2026-06-07T19:48:28+00:00",
+      "transcript_doc_url": "https://docs.google.com/document/d/1Kr5GBcn2kC6g3HOJXZQdqV9z6t0cF8KZ4hrD4Gq1u0I/edit"
     },
     {
       "id": "not_uJ8NVTccYPOK3o",
@@ -429,24 +485,28 @@
       "tasks_staged": 3,
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_uJ8NVTccYPOK3o.json",
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_backfilled_at": "2026-06-07T19:48:28+00:00",
+      "transcript_doc_url": "https://docs.google.com/document/d/1uqDFC4rXsyff6JtiFZTay570uQhT3IL0Sud1LtogX2I/edit"
     },
     {
       "id": "not_S1QjnzM5EFfWMP",
       "title": "Franchising for the ETA Buyer: Resales, Roll-Ups, and Real Deals",
-      "counterparty": "Acquiring Minds webinar (Alex Smersnack / Franzi — no direct counterparty)",
+      "counterparty": "Acquiring Minds webinar (Alex Smersnack / Franzi \u2014 no direct counterparty)",
       "processed_at": "2026-06-04T18:05:00+00:00",
       "vault_call_note": "brain/calls/2026-06-04-acquiring-minds-franchising-webinar.md",
       "doc_url": "https://docs.google.com/document/d/1L-7Nm5in9O5IQuh_sCX5B5NzL6EFf1h46AfBlfvyh1I/edit",
       "doc_id": "1L-7Nm5in9O5IQuh_sCX5B5NzL6EFf1h46AfBlfvyh1I",
       "attio_notes": {},
       "attio_failed": true,
-      "attio_skip_reason": "webinar/educational session — Kay is sole attendee, no external counterparty to match in Attio",
+      "attio_skip_reason": "webinar/educational session \u2014 Kay is sole attendee, no external counterparty to match in Attio",
       "tasks_staged": 3,
       "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_S1QjnzM5EFfWMP.json",
       "slack_posted": true,
-      "detector": "granola-api-rest"
+      "detector": "granola-api-rest",
+      "transcript_backfilled_at": "2026-06-07T19:48:28+00:00",
+      "transcript_doc_url": "https://docs.google.com/document/d/1-4yumIw7YBiZec2_OLixEZ6Pp-EQKLsIT470vHnzerA/edit"
     }
   ],
-  "last_updated": "2026-06-04T18:05:00+00:00"
+  "last_updated": "2026-06-07T19:51:04+00:00"
 }

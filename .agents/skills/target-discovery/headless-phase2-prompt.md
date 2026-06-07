@@ -1,4 +1,4 @@
-# Headless Phase 2 — Sunday-Night JJ-Call-Only Owner Enrichment
+# Headless Phase 2 — Sunday Cold-Call Owner Enrichment
 
 **You are running as a non-interactive scheduled job.** No human is on the
 other end of this conversation. Every choice you make happens silently and
@@ -9,7 +9,7 @@ must be defensible by output, not by clarifying question.
 1. **No clarifying questions.** If you would normally ask "which niche?",
    "should I proceed?", or "YES/NO/DISCUSS" — answer it yourself from this
    prompt and continue. There is no operator to answer.
-2. **Do not exit 0 unless every active JJ-Call-Only niche has a pool
+2. **Do not exit 0 unless every active cold-call niche has a pool
    artifact written and integrity-validated.** A clean exit with zero
    work is the bug we are fixing. If a step blocks, exit non-zero with
    the reason in stderr.
@@ -22,11 +22,17 @@ must be defensible by output, not by clarifying question.
 
 ## Your job
 
-Run target-discovery Phase 2 (Sunday-night pipeline) for every niche on
+Run target-discovery Phase 2 (Sunday prep pipeline) for every niche on
 WEEKLY REVIEW where Status is `Active-Outreach` AND Outreach Channel
-(Col D) is `JJ-Call-Only`. Use the calls-first-flow section in
+is `Cold-Call-Only` or legacy `JJ-Call-Only`. Use the calls-first-flow section in
 `.agents/skills/target-discovery/SKILL.md` as the authoritative
 implementation guide.
+
+**Sheet header rule:** Do not hardcode column letters, column numbers, or
+fixed table ranges. Resolve every sheet field by header name using
+`scripts/col-lookup.py` or an equivalent header-map read, then use the
+resolved cell/range only for that execution. If a required header cannot
+be resolved, exit non-zero with the missing header name.
 
 **Today's date (for artifact naming):** run `date +%Y-%m-%d` and use
 that string. The integrity validator looks at
@@ -34,30 +40,30 @@ that string. The integrity validator looks at
 
 ## Step-by-step
 
-### Step 0: Identify active JJ-Call-Only niches
+### Step 0: Identify active cold-call niches
 
-```bash
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B4:K20" -a kay.s@greenwichandbarrow.com -j
-```
+Read WEEKLY REVIEW by resolving `Status`, `Outreach Channel`, and niche-name
+headers at runtime. WEEKLY REVIEW currently uses header row 2, so pass
+`--header-row 2` to `scripts/col-lookup.py` if using the helper.
 
-Parse the response. For each row where Status (Col J or equivalent) is
-`Active-Outreach` AND Outreach Channel (Col D) is `JJ-Call-Only`, record
-the niche name. Map niche name → target sheet ID using the
+For each row where `Status` is `Active-Outreach` AND `Outreach Channel`
+is `Cold-Call-Only` or legacy `JJ-Call-Only`, record the niche name. Map
+niche name → target sheet ID using the
 `NICHE_SHEETS` dictionary in `scripts/refresh_jj_snapshot.py` (the
-canonical map).
+canonical map; file name remains legacy until Phase 3/schema cleanup).
 
 If zero niches match, this is a recoverable nothing-to-do state.
 **Still write a stub pool artifact** at
 `brain/context/jj-week-pool-{YYYY-MM-DD}.md` with a single line
-`# No active JJ-Call-Only niches today` so the validator's
+`# No active cold-call niches today` so the validator's
 "missing artifact = silent failure" check passes. Then exit 0.
 
 ### Step 1: Per-niche pool selection (write artifact FIRST)
 
-For each active JJ-Call-Only niche:
+For each active cold-call niche:
 
 1. Read the niche's "Full Target List" tab via gog.
-2. Filter rows where Col T (JJ: Call Status) is empty.
+2. Resolve the active call-status header by name, then filter to rows where that field is empty (uncalled). Candidate headers include `Cold Call Status`, `Call Status`, and legacy `JJ: Call Status`; do not hardcode a column position.
 3. Sort by row number ascending.
 4. Take the top 200 (fewer if the list is short).
 5. Append the row numbers under a `## {Niche Name}` heading in
@@ -77,9 +83,10 @@ post-run integrity validator. **Do not skip.**
 ### Step 2: Owner enrichment
 
 Per SKILL.md `<calls_first_flow>` Phase 2 Step 2: for each pool row with
-Col K (Owner Name) blank, run Apollo `/people/match` (via
-`skill/list-builder` if helpful) by company domain. Write owner name
-(K), title (L), owner LinkedIn (Q), email (M) from the response.
+`Owner Name` blank, run Apollo `/people/match` (via `skill/list-builder`
+if helpful) by company domain. Write `Owner Name`, `Owner Title`,
+`LinkedIn Owner`, and `Email` from the response using header-resolved
+fields.
 
 Apollo credit budget per run: ~200 credits per niche × N niches. If
 remaining monthly credits would drop below 50 mid-run, log the partial
@@ -89,7 +96,8 @@ state and exit 1 — let Kay decide.
 
 Per SKILL.md Phase 2 Step 3. For each newly enriched row, search
 `"{company name}" "acquired by" OR "portfolio company" OR "subsidiary"`.
-PE-owned → move row to "Do Not Call" tab with Col S `PE-OWNED: {ev}`.
+PE-owned → move row to "Do Not Call" tab with `Agent Notes`
+`PE-OWNED: {ev}`.
 Remove from pool artifact and backfill from next-in-queue rows.
 
 ### Step 4: Warm intro check
@@ -107,29 +115,29 @@ POST_RUN_CHECK — running it inside the conversation lets you SEE the
 failure and react before declaring done.
 
 ```bash
-JJ_CALL_NICHES="<comma-separated active niche names>" \
+JJ_CALL_NICHES="<comma-separated active niche names; legacy env var name>" \
   python3 scripts/validate_phase2_integrity.py
 ```
 
 If the validator returns non-zero, do NOT exit 0. Read the failure
-output, attempt one corrective pass (e.g., re-enrich a row whose Col K
-ended up blank), then re-run the validator. If it still fails, exit
+output, attempt one corrective pass (e.g., re-enrich a row whose
+`Owner Name` ended up blank), then re-run the validator. If it still fails, exit
 with the validator's exit code and let the Sunday Slack alert fire so
-Kay can intervene before JJ's Monday 10am tab is built from a broken
+Kay can intervene before Monday's cold-call tabs are built from a broken
 pool.
 
-### Step 6: Hand off to jj-operations
+### Step 6: Hand off to cold-call-operations
 
-Once the validator passes, jj-operations Sunday-prep (separate launchd
-job at the same time slot) reads the pool artifact and creates the
+Once the validator passes, cold-call-operations Sunday-prep (separate systemd
+job at the later Sunday slot) reads the pool artifact and creates the
 Mon–Fri Call Log tabs. Your job ends when the validator passes. Do
-not invoke jj-operations from inside this prompt — the launchd job
+not invoke cold-call-operations from inside this prompt — the systemd job
 sequence handles it.
 
 ## Exit criteria summary
 
-- Pool artifact written for each active JJ-Call-Only niche → exit 0
-- Zero active JJ-Call-Only niches today → stub artifact written, exit 0
+- Pool artifact written for each active cold-call niche → exit 0
+- Zero active cold-call niches today → stub artifact written, exit 0
 - Any blocker (Apollo budget, sheet read failure, write failure) → exit
   non-zero with the failure mode in the final log line
 - Integrity validator returned non-zero after one corrective pass →

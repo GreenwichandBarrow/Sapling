@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Phase 2 Sunday-night post-run integrity validator.
+"""Phase 2 Sunday post-run integrity validator.
 
 Driver that calls `.codex/hooks/enrichment_integrity_check.py` once per
-active JJ-Call-Only niche. Wrapped by `scripts/run-agent-skill.sh` as the
+active cold-call niche. Wrapped by `scripts/run-agent-skill.sh` as the
 POST_RUN_CHECK for `com.greenwich-barrow.target-discovery-sunday.plist`.
 
-Why this exists: a single Phase 2 run may process multiple JJ-Call-Only
+Why this exists: a single Phase 2 run may process multiple cold-call
 niches. Each niche has its own target sheet and its own Mon-Fri Call Log
 tabs. The integrity check must run per-niche so a silent failure on
 one niche doesn't get masked by a pass on another.
@@ -21,7 +21,7 @@ Behavior:
 
 Exit codes:
   0 — all niches passed integrity check
-  1 — at least one niche failed (drift or missing Col K)
+  1 — at least one niche failed (drift or missing `Owner Name`)
   2 — error invoking subprocess or pool artifact missing entirely
 """
 
@@ -38,7 +38,7 @@ HOOK_PATH = REPO_ROOT / ".codex" / "hooks" / "enrichment_integrity_check.py"
 POOL_DIR = REPO_ROOT / "brain" / "context"
 
 # Mirrors scripts/refresh_jj_snapshot.py NICHE_SHEETS. Update both when a
-# new JJ-Call-Only niche activates a target sheet.
+# new cold-call niche activates a target sheet.
 NICHE_SHEETS = {
     "Art Insurance": "15M76-gpcklwc47HDXIwyFC9Tj8K4wDOor4i0uxCYyHQ",
     "Domestic TCI": "1lEAx-3pEshsSc0Rix4KunJ38mzHahjAmV6nQA_cuwLw",
@@ -78,10 +78,10 @@ def _run_check(niche: str, sheet_id: str, pool_path: Path) -> tuple[int, str]:
     try:
         # --pool-only: this validator gates target-discovery's 3pm fire,
         # which enriches the pool but does NOT create the Mon-Fri Call Log
-        # tabs (jj-operations does that at 6pm). Walking the tabs here
+        # tabs (cold-call-operations does that at 6pm). Walking the tabs here
         # produced ~192 false "missing tab" failures every Sunday
-        # (2026-05-31). Tab existence + tab Col K are covered by
-        # validate_jj_operations_integrity.py at 6pm.
+        # (2026-05-31). Tab existence + tab `Owner Name` are covered by
+        # the cold-call operations validator at 6pm.
         result = subprocess.run(
             ["python3", str(HOOK_PATH), "--pool-only", sheet_id, str(pool_path)],
             capture_output=True,

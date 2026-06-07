@@ -1,25 +1,24 @@
 #!/usr/bin/env python3
 """Enrichment integrity stop hook.
 
-Validates the target-discovery Phase 2 contract before jj-operations
+Validates the target-discovery Phase 2 contract before cold-call-operations
 declares its Sunday-night prep "done":
 
   1. The pool selected in Step 1 (and updated through backfills) is the
      exact set of rows that appear on the Mon–Fri Call Log tabs.
-  2. Every row on every Mon–Fri Call Log tab has Col K (Owner Name)
-     populated.
+  2. Every row on every Mon–Fri Call Log tab has `Owner Name` populated.
 
-Rationale: on 2026-04-20 JJ opened his Monday tab to find 36 of 40 rows
+Rationale: on 2026-04-20 the Monday tab had 36 of 40 rows
 with blank owner names because Phase 2 enrichment targeted rows that
-were NOT the same rows jj-operations prep wrote to the tabs. This hook
+were NOT the same rows cold-call-operations prep wrote to the tabs. This hook
 blocks that failure mode.
 
 Usage:
   python3 enrichment_integrity_check.py [--pool-only] <sheet_id> <pool_artifact_path>
 
-  --pool-only: validate only that every pool row has Col K (Owner Name)
+  --pool-only: validate only that every pool row has `Owner Name`
   populated in the Full Target List. Skips the Call Log tab walk. Use for
-  target-discovery's 3pm fire, BEFORE jj-operations creates the tabs at
+  target-discovery's 3pm fire, BEFORE cold-call-operations creates the tabs at
   6pm. Full mode (default) additionally walks the Mon-Fri tabs and is for
   invokers that run after the tabs exist.
 
@@ -30,7 +29,7 @@ Exit codes:
 
 Invokers:
   - target-discovery Phase 2 Step 5 end / 3pm POST_RUN_CHECK (Sunday) — --pool-only
-  - jj-operations prep mode, as the final check before declaring done — full
+  - cold-call-operations prep mode, as the final check before declaring done — full
   - Morning briefing (warn-only) on Monday when log indicates failure — full
 """
 
@@ -55,6 +54,56 @@ def _fetch_range(sheet_id: str, range_: str) -> list[list[str]]:
         raise RuntimeError(f"gog sheets get failed ({range_}): {result.stderr}")
     payload = json.loads(result.stdout)
     return payload.get("values", []) or []
+
+
+def _idx_to_letter(idx: int) -> str:
+    """Convert a 0-based column index to an A1-style column letter."""
+    result = ""
+    while True:
+        result = chr(65 + idx % 26) + result
+        idx = idx // 26 - 1
+        if idx < 0:
+            return result
+
+
+def _header_map(sheet_id: str, tab: str, header_row: int = 1) -> dict[str, int]:
+    """Return {header_name: zero_based_index} for a tab."""
+    rows = _fetch_range(sheet_id, f"'{tab}'!{header_row}:{header_row}")
+    headers = rows[0] if rows else []
+    return {str(value).strip(): idx for idx, value in enumerate(headers) if str(value).strip()}
+
+
+def _resolve_header(headers: dict[str, int], tab: str, candidates: list[str]) -> tuple[str, int]:
+    for candidate in candidates:
+        if candidate in headers:
+            return candidate, headers[candidate]
+    available = ", ".join(sorted(headers)) or "(none)"
+    raise RuntimeError(
+        f"required header not found in {tab!r}; tried {candidates}; available: {available}"
+    )
+
+
+def _fetch_header_rows(
+    sheet_id: str,
+    tab: str,
+    required: dict[str, list[str]],
+    max_row: int,
+) -> tuple[dict[str, tuple[str, int]], list[list[str]]]:
+    """Resolve required headers, then fetch rows through the rightmost required field."""
+    headers = _header_map(sheet_id, tab)
+    resolved = {
+        key: _resolve_header(headers, tab, candidates)
+        for key, candidates in required.items()
+    }
+    rightmost = max(idx for _, idx in resolved.values())
+    end_col = _idx_to_letter(rightmost)
+    rows = _fetch_range(sheet_id, f"'{tab}'!A2:{end_col}{max_row}")
+    return resolved, rows
+
+
+def _value(row: list[str], resolved: dict[str, tuple[str, int]], key: str) -> str:
+    idx = resolved[key][1]
+    return row[idx].strip() if len(row) > idx and row[idx] else ""
 
 
 def _mon_fri_tab_names(anchor: date | None = None) -> list[str]:
@@ -168,12 +217,22 @@ def _run_check(sheet_id: str, pool_path: Path) -> tuple[bool, list[str]]:
             "Step 1 produced no selection"
         )
 
-    # Read company-name column (B) from Full Target List for row->company map
-    full_list_b = _fetch_range(sheet_id, "Full Target List!B2:B2000")
+    # Resolve headers instead of assuming physical columns; target sheets drift.
+    full_required = {
+        "company": ["Company"],
+        "owner": ["Owner Name"],
+    }
+    full_resolved, full_list = _fetch_header_rows(
+        sheet_id,
+        "Full Target List",
+        full_required,
+        max_row=2000,
+    )
     row_to_company: dict[int, str] = {}
-    for idx, row in enumerate(full_list_b, start=2):  # row 2 = first data row
-        if row and row[0].strip():
-            row_to_company[idx] = row[0].strip()
+    for idx, row in enumerate(full_list, start=2):  # row 2 = first data row
+        company = _value(row, full_resolved, "company")
+        if company:
+            row_to_company[idx] = company
     pool_companies = {row_to_company[r] for r in pool_rows if r in row_to_company}
 
     # Walk each Mon–Fri Call Log tab
@@ -181,22 +240,27 @@ def _run_check(sheet_id: str, pool_path: Path) -> tuple[bool, list[str]]:
     seen_companies: set[str] = set()
     for tab in tab_names:
         try:
-            tab_rows = _fetch_range(sheet_id, f"{tab}!B2:K50")
+            tab_resolved, tab_rows = _fetch_header_rows(
+                sheet_id,
+                tab,
+                {"company": ["Company"], "owner": ["Owner Name"]},
+                max_row=50,
+            )
         except RuntimeError as exc:
             failures.append(f"could not read {tab!r}: {exc}")
             continue
 
         for row_idx, row in enumerate(tab_rows, start=2):
-            company = row[0].strip() if row and len(row) > 0 else ""
+            company = _value(row, tab_resolved, "company")
             if not company:
                 continue  # blank row, skip
 
-            # Invariant 2: Col K (Owner Name) populated
-            owner = row[9].strip() if len(row) > 9 else ""
+            # Invariant 2: Owner Name populated
+            owner = _value(row, tab_resolved, "owner")
             if not owner:
                 failures.append(
                     f"{tab} row {row_idx}: company {company!r} has blank "
-                    "Col K (Owner Name) — enrichment never landed"
+                    "`Owner Name` — enrichment never landed"
                 )
 
             # Invariant 1: company on the tab should be in pool
@@ -222,17 +286,17 @@ def _run_pool_only_check(sheet_id: str, pool_path: Path) -> tuple[bool, list[str
     """Validate pool enrichment WITHOUT walking the Call Log tabs.
 
     Scope: this is what target-discovery Phase 2 actually produces at its
-    Sunday 3pm fire — owner names written to the Full Target List Col K for
+    Sunday 3pm fire — owner names written to the Full Target List for
     every row in the Step 1 pool. It does NOT create the Mon–Fri Call Log
-    tabs; jj-operations does that at 6pm, and its own validator
-    (validate_jj_operations_integrity.py) checks tab existence + tab Col K.
+    tabs; cold-call-operations does that at 6pm, and its own validator
+    checks tab existence + tab `Owner Name`.
 
     Running the full tab-walk check at 3pm produced ~192 false failures
     every Sunday because the tabs don't exist yet (2026-05-31 incident).
     Pool-only mode is the correct contract for the 3pm validator.
 
-    Invariant: every pool row maps to a Full Target List row whose Col K
-    (Owner Name) is populated.
+    Invariant: every pool row maps to a Full Target List row whose
+    `Owner Name` is populated.
     """
     failures: list[str] = []
 
@@ -244,29 +308,33 @@ def _run_pool_only_check(sheet_id: str, pool_path: Path) -> tuple[bool, list[str
         )
         return (False, failures)
 
-    # Read company (B) + owner (K) from Full Target List in one fetch.
-    full_list = _fetch_range(sheet_id, "Full Target List!B2:K2000")
+    full_resolved, full_list = _fetch_header_rows(
+        sheet_id,
+        "Full Target List",
+        {"company": ["Company"], "owner": ["Owner Name"]},
+        max_row=2000,
+    )
     # idx 0 == sheet row 2
     for r in sorted(pool_rows):
         data_idx = r - 2
         if data_idx < 0 or data_idx >= len(full_list):
             failures.append(
                 f"pool row {r} is outside Full Target List data range "
-                "(B2:K2000) — stale or bad row number in pool artifact"
+                "— stale or bad row number in pool artifact"
             )
             continue
         row = full_list[data_idx]
-        company = row[0].strip() if len(row) > 0 else ""
-        owner = row[9].strip() if len(row) > 9 else ""
+        company = _value(row, full_resolved, "company")
+        owner = _value(row, full_resolved, "owner")
         label = company or f"row {r}"
         if not company:
             failures.append(
-                f"pool row {r}: blank company in Full Target List Col B — "
+                f"pool row {r}: blank `Company` in Full Target List — "
                 "row number does not point at a real target"
             )
         if not owner:
             failures.append(
-                f"pool row {r} ({label}): blank Col K (Owner Name) in Full "
+                f"pool row {r} ({label}): blank `Owner Name` in Full "
                 "Target List — enrichment never landed"
             )
 
@@ -310,11 +378,11 @@ def main() -> int:
     if passed:
         if pool_only:
             print(
-                "PASS: pool enrichment OK — every pool row has Col K (Owner "
-                "Name) populated in Full Target List"
+                "PASS: pool enrichment OK — every pool row has `Owner Name` "
+                "populated in Full Target List"
             )
         else:
-            print("PASS: enrichment integrity OK — pool ↔ tabs aligned, all Col K populated")
+            print("PASS: enrichment integrity OK — pool ↔ tabs aligned, all `Owner Name` populated")
         return 0
 
     print("FAIL: enrichment integrity check detected drift", file=sys.stderr)

@@ -14,14 +14,22 @@ user_invocable: true
 <objective>
 Find targets. That's it.
 
-This skill discovers acquisition targets via skill/list-builder (Apollo, primary) and supplemental free research. Targets that pass all buy box + ICP criteria auto-advance to outreach. Edge cases and warm intro paths surface in the morning briefing for Kay. Approved targets go to skill/outreach-manager for all outreach drafting.
+This skill discovers acquisition targets via skill/list-builder (Apollo, primary) and supplemental free research. Targets that pass all buy box + ICP criteria auto-advance to the correct downstream workflow. Edge cases and warm intro paths surface in the morning briefing for Kay. Approved targets go to outreach-manager for draft-only email work or cold-call-operations for calling work.
+
+## Codex-era role
+
+This skill still adds value, but only as the **target discovery, enrichment, dedup, and routing engine**:
+- Own: finding companies, enriching rows, Apollo credit discipline, warm-intro checks, Attio/conference dedup, sheet write gates, and channel routing.
+- Consume: `niche-intelligence` for thesis/ICP, `pipeline-manager` for Attio/pipeline exclusions, `deal-aggregator` for market/listing signal context, and `cold-call-operations` for weekly call execution.
+- Avoid duplicating: email drafting/sending, call-log operations, DealsX list building, broad deal screening, and relationship cadence management.
+- If DealsX is building a list, do not create a proxy list. Wait for Sam's CSV/shared sheet, then run only warm-intro, Attio dedup, conference overlap, and hard-stop screening.
 
 **Trigger:** Niche status changes to Active-Outreach on the Industry Research Tracker. Target-discovery does a one-time initial load when a niche first enters Active-Outreach (fill the sheet with a solid batch). After that, the weekly tracker dashboard determines if more targets are needed based on pipeline throughput data. Do not run daily — run on initial activation and when the weekly review signals the pipeline needs refilling.
 
-**Channel-aware enrichment (CRITICAL):** Read Col D (Outreach Channel) from WEEKLY REVIEW BEFORE invoking list-builder. The channel determines enrichment depth:
-- `Kay Email` → invoke list-builder in `email-first` mode (full inline enrichment, all 9 stop hooks). Codex drafts in Gmail (`gog gmail draft create`), Kay reviews and sends.
+**Channel-aware enrichment (CRITICAL):** Read `Outreach Channel` from WEEKLY REVIEW by header name BEFORE invoking list-builder. The channel determines enrichment depth:
+- `Kay Email` → invoke list-builder in `email-first` mode (full inline enrichment, all 9 stop hooks). Route approved targets to outreach-manager for Gmail drafts only; Kay reviews and sends manually.
 - `DealsX Email` → Sam's team handles list building + enrichment + mass email/LinkedIn outreach. target-discovery runs warm intro check + Attio dedup on Sam's list only (see DealsX List Ingestion section).
-- `JJ-Call-Only` → invoke list-builder in `calls-first` mode (volume load, 5 stop hooks, 0 credits)
+- `Cold-Call-Only` / legacy `JJ-Call-Only` → invoke list-builder in `calls-first` mode (volume load, 5 stop hooks, 0 credits)
 
 <credentials>
 ## Credentials (read first)
@@ -31,6 +39,10 @@ This skill discovers acquisition targets via skill/list-builder (Apollo, primary
 source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 ```
 Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_OPERATIONS`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+
+**Gmail safety contract:** target-discovery may not send, draft-send, forward, autoreply, or schedule-send email. If it triggers any email work, it routes to outreach-manager as draft-only work. Any direct Gmail draft command must use `gog gmail drafts create --account kay.s@greenwichandbarrow.com --gmail-no-send`; if that exact draft-only path is unavailable, skip and surface the blocker. Kay alone sends emails.
+
+**Sheet header resolution contract (mandatory):** Never hardcode Google Sheet column letters, column numbers, or fixed table ranges as business logic. Resolve every field by header name at runtime using `scripts/col-lookup.py` or an equivalent header-map read, then use the resolved cell/range only for that execution. If a required header cannot be resolved, stop that branch and log the missing header. This prevents target sheets from breaking when columns move.
 
 **Health-check (before claiming Apollo/Attio is down):**
 ```bash
@@ -47,13 +59,13 @@ Forbidden: pausing target discovery on a phantom "Apollo credit balance unavaila
 - **skill/niche-intelligence** — activated niche with one-pager, scorecard, buy-box target validation, ICP criteria
 - **skill/pipeline-manager** — existing Attio contacts in this niche, intermediary referrals, deals already in pipeline (to avoid duplicates)
 
-**Outputs to other skills (routed by Outreach Channel — Col D on WEEKLY REVIEW):**
-- `Kay Email` → Approved targets go to skill/outreach-manager Kay Email subagent for Codex-drafted Gmail emails + Attio entry at "Identified"
+**Outputs to other skills (routed by `Outreach Channel` on WEEKLY REVIEW):**
+- `Kay Email` → Approved targets go to skill/outreach-manager Kay Email subagent for Codex-drafted Gmail drafts + Attio entry at "Identified"; Kay sends manually
 - `DealsX Email` → Approved targets (from Sam's list, after warm intro + Attio dedup) go to skill/outreach-manager DealsX Coordination subagent. Provide templates + exclusion list to Sam. Sam handles sending.
-- `JJ-Call-Only` → Approved targets go to skill/jj-operations call queue. No email sequences. JJ cold calls only.
+- `Cold-Call-Only` / legacy `JJ-Call-Only` → Approved targets go to skill/cold-call-operations call queue. No email sequences. Cold calls only.
 - `Other` → STOP. Ask Kay how to route.
 
-**CRITICAL:** Always read Col D (Outreach Channel) from WEEKLY REVIEW before routing approved targets. If Col D is empty or unrecognized, STOP and ask Kay. Never assume a default.
+**CRITICAL:** Always read `Outreach Channel` from WEEKLY REVIEW before routing approved targets. If the header is missing, empty, or unrecognized, STOP and ask Kay. Never assume a default.
 
 Goal: Fill the pipeline with qualified targets on activation, then refill as needed based on weekly throughput data.
 </objective>
@@ -174,7 +186,7 @@ Web search: site:linkedin.com/in/ "{Owner Name}" "{Company Name}"
 ```
 If no result: try without company name, verify by title/location match.
 
-**Not a gate** — some people genuinely don't have LinkedIn (common in fine art world). Mark Col Q as "No LinkedIn presence" and move on.
+**Not a gate** — some people genuinely don't have LinkedIn (common in fine art world). Mark `LinkedIn Owner` as "No LinkedIn presence" and move on.
 
 #### Phase D: Email Verification (1 credit per target)
 
@@ -202,7 +214,7 @@ Run warm-intro-finder for each target: search Attio People records for the owner
 
 | Result | Action |
 |--------|--------|
-| Warm intro path found | **Write to "Do Not Call" tab** with all enriched data + Col S note: "WARM INTRO: {connection} — {path details}". Also surface in morning briefing: "{Name}, {Company} — warm intro via {connection}. Personal draft or cold outreach?" Kay decides. |
+| Warm intro path found | **Write to "Do Not Call" tab** with all enriched data + `Agent Notes`: "WARM INTRO: {connection} — {path details}". Also surface in morning briefing: "{Name}, {Company} — warm intro via {connection}. Personal draft or cold outreach?" Kay decides. |
 | No warm intro path | Proceed to Phase F (assemble row). |
 
 **Why this exists:** Warm intros are higher-conversion than cold email. If Kay has a path to the owner through her network, burning that with a cold outreach cadence is worse than no outreach at all. The warm intro check MUST run before the target enters any automated pipeline.
@@ -217,12 +229,12 @@ When discovering targets for the art storage niche, cross-reference every candid
 
 ### Write Gate (HARD RULE)
 **No row hits the Full Target List tab until it meets ALL of these:**
-- Col C (Website) — populated and verified (loads a real page, not a redirect to a parent company)
-- Col K (Owner Name) — real person identified, not "Unknown"
-- Col M (Email) OR Col N (Phone Company) OR Col O (Phone Owner) OR Col Q (LinkedIn Owner) — at least one contact method. LinkedIn DM is a valid outreach channel.
-- Col Q (LinkedIn Owner) — populated with URL, or explicitly "No LinkedIn presence"
-- Col R (LinkedIn Company) — populated with URL, or explicitly "No company page"
-- Col F (Employees) — sourced number or LinkedIn range, never unsourced estimate
+- `Website` — populated and verified (loads a real page, not a redirect to a parent company)
+- `Owner Name` — real person identified, not "Unknown"
+- At least one contact method: `Email`, `Phone Company`, `Phone Owner`, or `LinkedIn Owner`. LinkedIn DM is a valid outreach channel.
+- `LinkedIn Owner` — populated with URL, or explicitly "No LinkedIn presence"
+- `LinkedIn Company` — populated with URL, or explicitly "No company page"
+- `Employees` — sourced number or LinkedIn range, never unsourced estimate
 
 This applies to ALL sources. No exceptions. If enrichment can't meet this bar after reasonable effort, log the company name in the daily briefing as "could not enrich" with what's missing. Do NOT add it to the sheet with blank fields for Kay to catch.
 
@@ -240,14 +252,9 @@ Template: "G&B Target List Template" in MANAGER DOCUMENTS / G&B MASTER TEMPLATES
 
 **Template tabs:** Full Target List | Do Not Call | Niche Context | Associations | Call Log M.DD.YY
 
-**Template columns A-W (23 columns):**
-- A: Source, B: Company, C: Website, D: Headquarters, E: Industry, F: Employees
-- G: Rev Source, H: Revenue, I: Year Founded, J: Ownership
-- K: Owner Name, L: Owner Title, M: Email
-- N: Phone (Company), O: Phone (Owner)
-- P: LinkedIn Connection, Q: LinkedIn (Owner), R: LinkedIn (Company)
-- S: Agent Notes (MUST start with "RECOMMEND: Approve" or "RECOMMEND: Pass" + reasoning)
-- T: JJ: Call Status, U: JJ: Call Date, V: JJ: Call Notes, W: JJ: Owner Sentiment
+**Template headers:** `Source`, `Company`, `Website`, `Headquarters`, `Industry`, `Employees`, `Rev Source`, `Revenue`, `Year Founded`, `Ownership`, `Owner Name`, `Owner Title`, `Email`, `Phone Company`, `Phone Owner`, `LinkedIn Connection`, `LinkedIn Owner`, `LinkedIn Company`, `Agent Notes`, legacy cold-call status/date/notes/sentiment headers.
+
+Resolve these headers at runtime. Do not assume their physical order.
 
 Targets that fail screening are not written to the sheet. Warm intro targets go to the "Do Not Call" tab (and surface in morning briefing for Kay).
 
@@ -264,15 +271,15 @@ This checklist runs sequentially for EVERY target BEFORE it is written to the Fu
 
 **Hard Stops (block auto-advance, set do not write to sheet):**
 
-1. **PE ownership check.** Search for PE/VC ownership signals: Apollo org data, web search `"{company name}" "portfolio company" OR "acquired by" OR "backed by"`. If PE ownership detected → do not write to sheet, Col S (Agent Notes) = "PE-owned ({evidence})". STOP — skip remaining checks.
-2. **Email verification check.** Read Apollo email status from Phase D enrichment. If status is guessed, unavailable, or bounced AND no LinkedIn Owner URL exists → do not write to sheet, Col S (Agent Notes) = "Email not verified ({status})". STOP — skip remaining checks. (If email is unavailable but LinkedIn Owner exists, target is still valid as a LinkedIn DM target — do not pass.)
-3. **Generic email check.** If the only email is a generic address (info@, office@, contact@, hello@, admin@, general@, gallery@, art@) → do not write to sheet, Col S (Agent Notes) = "Email not verified (generic)". STOP — skip remaining checks. Generic emails are never used for outreach.
-4. **Wrong domain email check.** If Apollo returned an email on a different domain than the company (e.g., university email, previous employer) → do not write to sheet, Col S (Agent Notes) = "Email not verified (wrong domain)". STOP — skip remaining checks.
-5. **Owner identification check.** Read "Owner Name" column. If name is "Unknown", blank, or generic (e.g., "Info", "Admin", "Contact", "Office") → do not write to sheet, Col S (Agent Notes) = "Owner not identified". STOP — skip remaining checks.
-6. **HQ country verification (CRITICAL).** Do NOT trust Apollo HQ data alone — Apollo often lists a US satellite office as HQ for international firms. Verify by checking the company LinkedIn page and/or website "About" page for actual headquarters location. If HQ is outside the US → do not write to sheet, Col S (Agent Notes) = "International HQ ({actual location})". STOP — skip remaining checks.
-7. **Solo practitioner check.** Cross-reference Apollo employee count against LinkedIn company page and website team page. If the firm appears to be a solo practitioner or 1-2 person operation regardless of what Apollo says → do not write to sheet, Col S (Agent Notes) = "Solo practitioner ({evidence})". STOP — skip remaining checks. Apollo employee counts are frequently inflated for small firms.
-8. **Business type verification.** Check the company website to confirm it is actually the type of business in the target niche (e.g., art advisory, not a design firm, gallery, auction house, or art moving company). If the business doesn't match the niche → do not write to sheet, Col S (Agent Notes) = "Not {niche} ({actual business type})". STOP — skip remaining checks.
-9. **Company age check.** Check "Year Founded" (from Apollo or website). If the company is less than 5 years old → do not write to sheet, Col S (Agent Notes) = "Too young (founded {year})". STOP — skip remaining checks.
+1. **PE ownership check.** Search for PE/VC ownership signals: Apollo org data, web search `"{company name}" "portfolio company" OR "acquired by" OR "backed by"`. If PE ownership detected → do not write to sheet; set `Agent Notes` = "PE-owned ({evidence})". STOP — skip remaining checks.
+2. **Email verification check.** Read Apollo email status from Phase D enrichment. If status is guessed, unavailable, or bounced AND no LinkedIn Owner URL exists → do not write to sheet; set `Agent Notes` = "Email not verified ({status})". STOP — skip remaining checks. (If email is unavailable but LinkedIn Owner exists, target is still valid as a LinkedIn DM target — do not pass.)
+3. **Generic email check.** If the only email is a generic address (info@, office@, contact@, hello@, admin@, general@, gallery@, art@) → do not write to sheet; set `Agent Notes` = "Email not verified (generic)". STOP — skip remaining checks. Generic emails are never used for outreach.
+4. **Wrong domain email check.** If Apollo returned an email on a different domain than the company (e.g., university email, previous employer) → do not write to sheet; set `Agent Notes` = "Email not verified (wrong domain)". STOP — skip remaining checks.
+5. **Owner identification check.** Read `Owner Name`. If name is "Unknown", blank, or generic (e.g., "Info", "Admin", "Contact", "Office") → do not write to sheet; set `Agent Notes` = "Owner not identified". STOP — skip remaining checks.
+6. **HQ country verification (CRITICAL).** Do NOT trust Apollo HQ data alone — Apollo often lists a US satellite office as HQ for international firms. Verify by checking the company LinkedIn page and/or website "About" page for actual headquarters location. If HQ is outside the US → do not write to sheet; set `Agent Notes` = "International HQ ({actual location})". STOP — skip remaining checks.
+7. **Solo practitioner check.** Cross-reference Apollo employee count against LinkedIn company page and website team page. If the firm appears to be a solo practitioner or 1-2 person operation regardless of what Apollo says → do not write to sheet; set `Agent Notes` = "Solo practitioner ({evidence})". STOP — skip remaining checks. Apollo employee counts are frequently inflated for small firms.
+8. **Business type verification.** Check the company website to confirm it is actually the type of business in the target niche (e.g., art advisory, not a design firm, gallery, auction house, or art moving company). If the business doesn't match the niche → do not write to sheet; set `Agent Notes` = "Not {niche} ({actual business type})". STOP — skip remaining checks.
+9. **Company age check.** Check `Year Founded` from Apollo or website. If the company is less than 5 years old → do not write to sheet; set `Agent Notes` = "Too young (founded {year})". STOP — skip remaining checks.
 
 **Soft Filters (flag but do NOT block auto-advance):**
 
@@ -282,7 +289,7 @@ This checklist runs sequentially for EVERY target BEFORE it is written to the Fu
 
 **Warm Intro Check (routes differently, not a block — already ran in Phase E):**
 
-13. **Warm intro check.** This was already executed in Phase E before the target reached the sheet. If Phase E flagged a warm intro path, the target was written to the "Do Not Call" tab and surfaced in the morning briefing. This check is a safety net: if a target somehow reached auto-advance without Phase E running, re-run warm-intro-finder now. If warm intro found → write to "Do Not Call" tab with Col S note: "WARM INTRO: {connection} — {path details}". Route to morning briefing: "{Name}, {Company} — warm intro via {connection}. Personal draft or cold outreach?"
+13. **Warm intro check.** This was already executed in Phase E before the target reached the sheet. If Phase E flagged a warm intro path, the target was written to the "Do Not Call" tab and surfaced in the morning briefing. This check is a safety net: if a target somehow reached auto-advance without Phase E running, re-run warm-intro-finder now. If warm intro found → write to "Do Not Call" tab with `Agent Notes`: "WARM INTRO: {connection} — {path details}". Route to morning briefing: "{Name}, {Company} — warm intro via {connection}. Personal draft or cold outreach?"
 
 **Edge Case Routing:**
 
@@ -295,10 +302,10 @@ Only targets that clear all hard stops, have 0-1 soft flags, and have no warm in
 After the stop hook, the agent scores each target against buy box criteria AND niche ICP criteria. Targets are triaged into three buckets:
 
 **Auto-Approve (no Kay review needed):**
-Targets that PASS all buy box + ICP criteria AND clear the stop hook above. Agent writes the target to the Full Target List tab and flows them to the appropriate channel based on Outreach Channel (Col D): Kay Email → outreach-manager Kay Email subagent, DealsX Email → outreach-manager DealsX Coordination subagent, JJ-Call-Only → jj-operations. Col S notes: "AUTO-APPROVED: meets all criteria." (plus any soft filter cautions appended).
+Targets that PASS all buy box + ICP criteria AND clear the stop hook above. Agent writes the target to the Full Target List tab and flows them to the appropriate channel based on `Outreach Channel`: Kay Email → outreach-manager Kay Email subagent for draft-only email work, DealsX Email → outreach-manager DealsX Coordination subagent, Cold-Call-Only / legacy JJ-Call-Only → cold-call-operations. `Agent Notes` says: "AUTO-APPROVED: meets all criteria." (plus any soft filter cautions appended).
 
 **Warm Intro Path (write to Do Not Call tab + surface in morning briefing):**
-Targets where warm-intro-finder (checking Attio, vault, Gmail, network) finds a connection. Write to "Do Not Call" tab with warm intro details in Col S. Surface for Kay to decide: personal draft or cold outreach cadence.
+Targets where warm-intro-finder (checking Attio, vault, Gmail, network) finds a connection. Write to "Do Not Call" tab with warm intro details in `Agent Notes`. Surface for Kay to decide: personal draft or cold outreach cadence.
 Briefing format: "{Name}, {Company} — warm intro via {path}. Personal draft or cold outreach?"
 
 **Edge Cases (surface in morning briefing):**
@@ -309,7 +316,7 @@ Kay no longer reviews every target. She spot-checks outputs. If she sees bad tar
 
 ### Step 4: Attio Dedup Check (Read-Only)
 Before handing off to outreach-manager:
-- Check every approved target against Attio Active Deals. If the person/company already exists in the pipeline, flag them on the target sheet (Col S: "Already in Attio") and skip.
+- Check every approved target against Attio Active Deals. If the person/company already exists in the pipeline, flag them on the target sheet (`Agent Notes`: "Already in Attio") and skip.
 - If they're already receiving outreach from conference-discovery (pre-conference email in flight), exclude from cold outreach.
 - **Do NOT create Attio records.** Target-discovery only writes to the Google Sheet. Outreach-manager creates Attio entries at "Identified" stage after auto-approval. This keeps the CRM clean — only approved targets enter the pipeline.
 
@@ -317,7 +324,7 @@ Before handing off to outreach-manager:
 Pass approved, deduped targets to skill/outreach-manager's cold outreach subagent with:
 - Company name, website, headquarters
 - Owner name, title, email, phone (company + owner), LinkedIn
-- LinkedIn Owner URL (Col Q) — for LinkedIn DM drafting and connection degree lookup
+- `LinkedIn Owner` URL — for LinkedIn DM drafting and connection degree lookup
 - Research context (what makes them a good target, any personal hooks found)
 - Apollo enrichment data
 </target_discovery>
@@ -348,7 +355,7 @@ The ICP is a living document. Track these signals to know if it needs adjustment
 - Track spot-check rejection rate. If Kay rejects 2+ auto-approved targets in a single review, pause auto-advance for that niche and tighten criteria before resuming.
 - Log rejection reasons (wrong size, PE-backed, wrong industry, wrong geography). Patterns in rejections = ICP criteria to tighten.
 
-**After JJ's calls (from outreach-manager):**
+**After cold calls (from cold-call-operations):**
 - High "Wrong Number" rate = bad contact data, not an ICP problem.
 - High "Not Interested" rate = wrong type of company. ICP may need adjustment.
 - Connected + positive conversations = ICP is working.
@@ -367,9 +374,9 @@ If the niche is running dry or ICP is consistently off, escalate to Kay. Don't w
 </essential_principles>
 
 <calls_first_flow>
-## Calls-First Flow (JJ-Call-Only Niches)
+## Calls-First Flow (Cold-Call-Only Niches)
 
-When Col D = `JJ-Call-Only`, the entire discovery pipeline changes. Three phases replace the single inline enrichment:
+When `Outreach Channel` = `Cold-Call-Only` or legacy `JJ-Call-Only`, the entire discovery pipeline changes. Three phases replace the single inline enrichment:
 
 ### Phase 1: Volume Load (on activation + monthly refill)
 
@@ -388,17 +395,17 @@ Invoke list-builder in `calls-first` mode. Target: 500-1000 companies.
 
 **Auto-advance:** Targets passing 5 reduced stop hooks are written directly to the "Full Target List" tab. Kay spot-checks.
 
-### Phase 2: Sunday Night Pipeline (Sunday 11pm ET)
+### Phase 2: Sunday Prep Pipeline (current timer: Sunday 3pm ET)
 
-**This is a single sequential pipeline that runs every Sunday night. All steps must complete before jj-operations creates the week's Call Log tabs on Monday morning. The order is critical — SELECT this week's 200 first, THEN enrich those exact rows, THEN screen, THEN create tabs.**
+**This is a single sequential pipeline that runs every Sunday afternoon. All steps must complete before cold-call-operations creates the week's Call Log tabs later Sunday (currently 6pm ET). The order is critical — SELECT this week's 200 first, THEN enrich those exact rows, THEN screen, THEN hand off the cleaned pool.**
 
-**Design invariant:** the 200 rows enriched Sunday night MUST be the same 200 rows jj-operations prep writes to Mon–Fri Call Log tabs. Steps 1 and 4 read from the identical row set — no drift.
+**Design invariant:** the 200 rows enriched Sunday afternoon MUST be the same 200 rows cold-call-operations prep writes to Mon–Fri Call Log tabs. Steps 1 and 4 read from the identical row set — no drift.
 
 #### Step 1: Select This Week's Call Pool (row selection, 0 credits)
 Pick the exact 200 targets that will populate Mon–Fri Call Log tabs. This is the **master row set** that Steps 2–5 operate on.
 
 1. Read "Full Target List" tab, all rows
-2. Filter to rows where Col T (JJ: Call Status) is empty (uncalled)
+2. Resolve the active call-status header by name, then filter to rows where that field is empty (uncalled). Candidate headers include `Cold Call Status`, `Call Status`, and legacy `JJ: Call Status`. Do not hardcode the column position.
 3. Sort by row number (ascending — oldest on list first)
 4. Take top 200
 5. Persist row numbers to a scratch artifact: `brain/context/jj-week-pool-{YYYY-MM-DD}.md` (source of truth for Steps 2–5)
@@ -407,11 +414,11 @@ Pick the exact 200 targets that will populate Mon–Fri Call Log tabs. This is t
 **If fewer than 200 uncalled rows remain:** flag in Monday briefing — list is running low, trigger target-discovery Phase 1 monthly refill.
 
 #### Step 2: Owner Enrichment (Apollo primary → Linkt optional → web research fallback)
-Enrich owner name + title + LinkedIn on every row in Step 1's pool where Col K (Owner Name) is blank. This is the ONLY enrichment step — Phase 1 intentionally loads companies without owners.
+Enrich owner name + title + LinkedIn on every row in Step 1's pool where `Owner Name` is blank. This is the ONLY enrichment step — Phase 1 intentionally loads companies without owners.
 
 **Primary path: Apollo `/people/match` via list-builder skill:**
-1. For each pool row with Col K blank: call Apollo `/people/match` by company domain (one owner-title match per company)
-2. Write owner name (Col K), title (Col L), owner LinkedIn (Col Q), email (Col M) from Apollo response
+1. For each pool row with `Owner Name` blank: call Apollo `/people/match` by company domain (one owner-title match per company)
+2. Write `Owner Name`, `Owner Title`, `LinkedIn Owner`, and `Email` from Apollo response, resolving each header at runtime
 3. Credit cost: 1 credit per match × up to 200 rows = ~200 credits/week
 4. Log: "Phase 2 Step 2 (Apollo): {n}/{pool_size} matched, {credits} credits burned"
 
@@ -423,7 +430,7 @@ Enrich owner name + title + LinkedIn on every row in Step 1's pool where Col K (
 
 **Fallback path: free web research (for rows neither Apollo nor Linkt match):**
 1. For still-un-matched rows: web research (company website, LinkedIn People tab, Google)
-2. Write owner name (Col K), title (Col L), owner LinkedIn (Col Q) from research
+2. Write `Owner Name`, `Owner Title`, and `LinkedIn Owner` from research, resolving each header at runtime
 3. Log: "Phase 2 Step 2 (Web): {n}/{remaining} owners identified via research"
 
 **Subscription notes:** Apollo is the always-on canonical source (list-builder skill). Linkt is time-limited and optional. When Linkt subscription ends, remove the Linkt step without re-architecting — Apollo + web research is sufficient.
@@ -433,7 +440,7 @@ Re-check pool rows enriched in Step 2 for PE/VC ownership. Owner research often 
 
 1. For each newly enriched row: search `"{company name}" "acquired by" OR "portfolio company" OR "backed by" OR "subsidiary"`
 2. Also flag: franchise models, government entities, non-target business types
-3. PE-owned → move to "Do Not Call" tab with Col S: "PE-OWNED: {evidence}". Remove from pool artifact; backfill pool from next-in-queue rows (go back to Step 1 logic for one replacement round).
+3. PE-owned → move to "Do Not Call" tab with `Agent Notes`: "PE-OWNED: {evidence}". Remove from pool artifact; backfill pool from next-in-queue rows (go back to Step 1 logic for one replacement round).
 4. Government/franchise → delete from Full Target List (not acquisition targets). Same backfill rule.
 5. Log: "Phase 2 Step 3: {n} PE-owned removed, {n} govt/franchise removed, {n} backfilled"
 
@@ -441,29 +448,29 @@ Re-check pool rows enriched in Step 2 for PE/VC ownership. Owner research often 
 Run warm-intro-finder on every row in the post-Step-3 pool (all have owner names by now).
 
 1. For each row: check Attio, Gmail, vault entities for connections to owner or company
-2. Warm intro found → move to "Do Not Call" tab with Col S: "WARM INTRO: {connection} — {path details}". Backfill pool same as Step 3.
+2. Warm intro found → move to "Do Not Call" tab with `Agent Notes`: "WARM INTRO: {connection} — {path details}". Backfill pool same as Step 3.
 3. Surface in Monday morning briefing: "{Name}, {Company} — warm intro via {connection}. Personal draft or cold outreach?"
 4. Log: "Phase 2 Step 4: {n} warm intros found, {n} backfilled"
 
-#### Step 5: Create Week's Call Log Tabs (hand off to jj-operations)
+#### Step 5: Hand Off Week's Call Pool (to cold-call-operations)
 After Steps 1–4 complete, the pool is clean: exactly 200 rows, all enriched, PE-screened, warm-intro-cleared.
 
-1. jj-operations prep reads the pool artifact from Step 1 (post-backfill final state)
+1. cold-call-operations prep reads the pool artifact from Step 1 (post-backfill final state). The artifact filename may remain `jj-week-pool-{YYYY-MM-DD}.md` until Phase 3/schema cleanup because validators depend on it.
 2. Distributes 40/day across Mon–Fri tabs
-3. Writes owner name, title, phone, LinkedIn into each tab's Col K–Q alongside the company data
-4. Target: 100% Tier-1 coverage (no blank Col K rows on call tabs)
+3. Writes owner name, title, phone, and LinkedIn into each tab using header-resolved fields alongside the company data
+4. Target: 100% Tier-1 coverage (no blank `Owner Name` rows on call tabs)
 
 **Cost:** up to ~200 Linkt credits/week through 5/30; 0 credits after (web-research fallback).
 
 ### Phase 3: Post-Engagement Enrichment (triggered by jj-operations harvest)
 
-When JJ connects with an owner and gets positive sentiment:
-1. jj-operations harvest updates call outcome on sheet
+When cold-call-operations logs a positive owner connection:
+1. cold-call-operations harvest updates call outcome on sheet
 2. If Call Status = "Connected" AND Sentiment = "Interested" or "Neutral":
    - Run Apollo `/people/match` for email reveal (1 credit)
    - Run warm-intro-finder (check if Kay has a connection for warmer follow-up)
-   - Flag for pipeline-manager: "JJ connected with {owner} at {company}. Ready for follow-up."
-3. If owner said "send me more info" → draft follow-up email in Gmail (`gog gmail draft create`)
+   - Flag for pipeline-manager: "Cold call connected with {owner} at {company}. Ready for follow-up."
+3. If owner said "send me more info" → route to outreach-manager for a draft-only follow-up email. Kay sends manually.
 
 **Cost:** ~1 credit per positive engagement. At 5-10% connect rate, ~5-10 credits/week.
 
@@ -471,26 +478,26 @@ When JJ connects with an owner and gets positive sentiment:
 
 | Day | Time | What Happens |
 |-----|------|-------------|
-| Sunday | 11pm | Phase 2 Step 1: Select this week's 200-row pool (Col T empty, oldest first) |
-| Sunday | 11pm | Phase 2 Step 2: Owner enrichment on the pool (Linkt primary → web research fallback) |
-| Sunday | 11pm | Phase 2 Step 3: PE re-screen on newly enriched pool rows (backfill pool as needed) |
-| Sunday | 11pm | Phase 2 Step 4: Warm intro check on final pool (backfill as needed) |
-| Sunday | 11pm | Phase 2 Step 5: jj-operations prep creates 5 Call Log tabs from the cleaned pool |
-| Monday | 10am | Slack to JJ: week's sheet link + call guide |
-| Mon-Fri | 10am-2pm | JJ calls 40 targets/day |
-| Mon-Fri | 4pm | jj-operations harvest: update Full Target List, trigger Phase 3 for positive calls |
+| Sunday | 3pm | Phase 2 Step 1: Select this week's 200-row pool (legacy uncalled status empty, oldest first) |
+| Sunday | 3pm | Phase 2 Step 2: Owner enrichment on the pool (Apollo primary → web research fallback) |
+| Sunday | 3pm | Phase 2 Step 3: PE re-screen on newly enriched pool rows (backfill pool as needed) |
+| Sunday | 3pm | Phase 2 Step 4: Warm intro check on final pool (backfill as needed) |
+| Sunday | 6pm | cold-call-operations prep creates 5 Call Log tabs from the cleaned pool |
+| Monday | 10am | Slack to cold-call operator: week's sheet link + call guide |
+| Mon-Fri | 10am-2pm | Cold-call operator calls 40 targets/day |
+| Mon-Fri | 4pm | cold-call-operations harvest: update Full Target List, trigger Phase 3 for positive calls |
 | Friday | | Weekly tracker reports: calls made, connection rate, enrichment pipeline depth |
 
 ### Stop Hook: Call-Tab Enrichment Integrity (MANDATORY)
 
-**This pipeline's contract is:** the 200 rows enriched Sunday night are the exact same 200 rows JJ calls Mon–Fri. If that invariant breaks, JJ's tabs show blank Col K (Owner Name) and his shift is wasted.
+**This pipeline's contract is:** the 200 rows enriched Sunday afternoon are the exact same 200 rows cold-call-operations distributes across Mon–Fri. If that invariant breaks, call tabs show blank `Owner Name` and the shift is wasted.
 
 **You MUST invoke the validator as the final action of Phase 2.** The `enrichment_integrity_check.py` hook is not enforced by anything other than your own discipline — silent skipping = the 2026-04-19 silent-failure bug.
 
 **Required invocation (run this; do not paraphrase):**
 
 ```bash
-JJ_CALL_NICHES="<comma-separated active JJ-Call-Only niche names>" \
+JJ_CALL_NICHES="<comma-separated active cold-call niche names; legacy env var name>" \
   python3 scripts/validate_phase2_integrity.py
 ```
 
@@ -498,7 +505,7 @@ The driver script in `scripts/validate_phase2_integrity.py` calls `.codex/hooks/
 
 1. Pool artifact for today exists at `brain/context/jj-week-pool-{YYYY-MM-DD}.md`
 2. Every row number in the artifact maps to a row on the niche's "Full Target List" tab
-3. Every Mon–Fri Call Log tab row has Col K (Owner Name) populated
+3. Every Mon–Fri Call Log tab row has `Owner Name` populated
 4. Every pool company appears on exactly one Mon–Fri Call Log tab (no drift)
 
 **If the validator returns non-zero:**
@@ -514,7 +521,7 @@ The driver script in `scripts/validate_phase2_integrity.py` calls `.codex/hooks/
 <dealsx_list_ingestion>
 ## DealsX List Ingestion (DealsX Email Niches)
 
-When Col D = `DealsX Email`, Sam Singh's team at DealsX handles list building, enrichment, and mass email + LinkedIn outreach. target-discovery does NOT run the full 6-phase pipeline. Instead, target-discovery's role is limited to two critical guard rails on Sam's list.
+When `Outreach Channel` = `DealsX Email`, Sam Singh's team at DealsX handles list building, enrichment, and mass email + LinkedIn outreach. target-discovery does NOT run the full 6-phase pipeline or create a substitute list. Instead, target-discovery's role is limited to two critical guard rails on Sam's provided list.
 
 **Current DealsX niches:** Fractional CFO, Specialty Insurance Brokerage, Estate Management.
 
@@ -559,6 +566,7 @@ When Col D = `DealsX Email`, Sam Singh's team at DealsX handles list building, e
 - No sheet population (Sam manages his own tracking)
 - No auto-advance logic (Sam decides send timing)
 - No email drafting (Sam handles outreach copy)
+- If no DealsX CSV/shared sheet is available, do not invent one. Log: "Waiting on DealsX target list for {niche}" and stop the DealsX branch.
 </dealsx_list_ingestion>
 
 <validation>
@@ -568,40 +576,34 @@ After target discovery completes, verify all deliverables before notifying Kay:
 
 ### Step 0: Outreach Channel Gate (HARD STOP — runs FIRST before any routing)
 
-Before routing ANY approved targets to outreach-manager or jj-operations, read Col D (Outreach Channel) from WEEKLY REVIEW for this niche:
+Before routing ANY approved targets, read `Outreach Channel` from WEEKLY REVIEW for this niche by resolving headers at runtime. Do not use fixed ranges.
 
-```bash
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B4:K20" -a kay.s@greenwichandbarrow.com -j
-```
+Use `scripts/col-lookup.py` or an equivalent header map. WEEKLY REVIEW headers currently use header row 2, so pass `--header-row 2` when using the helper.
 
-**Match the niche name to the correct row, then read Col D.**
+**Match the niche name to the correct row, then read `Outreach Channel`.**
 
-| Col D Value | Route To | Action |
+| `Outreach Channel` Value | Route To | Action |
 |-------------|----------|--------|
-| `Kay Email` | skill/outreach-manager Kay Email subagent | Codex drafts in Gmail (`gog gmail draft create`), Kay reviews and sends. Full inline enrichment pipeline (Phases A-F). |
+| `Kay Email` | skill/outreach-manager Kay Email subagent | Codex drafts in Gmail only; Kay reviews and sends manually. Full inline enrichment pipeline (Phases A-F). |
 | `DealsX Email` | skill/outreach-manager DealsX Coordination subagent | Sam's team handles list building + mass email/LinkedIn. target-discovery runs warm intro check + Attio dedup on Sam's list only (see DealsX List Ingestion). Provide templates + exclusion list to Sam. |
-| `JJ-Call-Only` | skill/jj-operations call queue | JJ cold calls only. No email sequences. |
+| `Cold-Call-Only` / legacy `JJ-Call-Only` | skill/cold-call-operations call queue | Cold calls only. No email sequences. |
 | `Other` | **STOP. Ask Kay.** | Notify Kay: "Outreach Channel is 'Other' for {niche}. How should targets be routed?" |
-| Empty/missing | **STOP. Do not route.** | Notify Kay: "Outreach Channel (Col D) is empty for {niche}. Cannot route targets." |
+| Empty/missing | **STOP. Do not route.** | Notify Kay: "`Outreach Channel` is empty for {niche}. Cannot route targets." |
 
-**This is a HARD STOP.** If Col D is empty, missing, or "Other", target-discovery MUST NOT hand targets to any downstream skill. Discovery can continue (finding and enriching targets), but routing is blocked until Kay sets the channel. Log the block in the daily briefing.
+**This is a HARD STOP.** If `Outreach Channel` is empty, missing, or "Other", target-discovery MUST NOT hand targets to any downstream skill. Discovery can continue (finding and enriching targets), but routing is blocked until Kay sets the channel. Log the block in the daily briefing.
 
 ### Step 1: Sheet Validation
 - Confirm Google Sheet in TARGET LISTS folder has new rows with today's date
 - Verify phone numbers are formatted correctly: `(XXX) XXX-XXXX`
 
 ### Step 1b: Contact Completeness Check (STOP HOOK)
-Read every row on the Full Target List tab. For each row, check cols K-R (Owner Name, Title, Email, Phone, LinkedIn Owner, LinkedIn Company):
-
-```bash
-gog sheets get {SHEET_ID} "Full Target List!B:R" -a kay.s@greenwichandbarrow.com -p
-```
+Read every row on the Full Target List tab. For each row, check required headers by name: `Website`, `Owner Name`, `Owner Title`, `Email`, `Phone Company`, `Phone Owner`, `LinkedIn Owner`, `LinkedIn Company`, and `Employees`.
 
 **Flag every row missing ANY of these:**
-- Col C (Website) — empty (mandatory for all targets, no exceptions)
-- Col K (Owner Name) — empty or "Unknown"
-- Col F (Employees) — empty or unsourced estimate
-- ALL of Col M (Email), Col N (Phone Company), Col O (Phone Owner), AND Col Q (LinkedIn Owner) empty — must have at least one contact method
+- `Website` — empty (mandatory for all targets, no exceptions)
+- `Owner Name` — empty or "Unknown"
+- `Employees` — empty or unsourced estimate
+- ALL of `Email`, `Phone Company`, `Phone Owner`, AND `LinkedIn Owner` empty — must have at least one contact method
 
 **If missing contacts found:**
 1. Spawn a sub-agent to enrich (company website, LinkedIn People tab, web search, state registrations)
@@ -609,14 +611,14 @@ gog sheets get {SHEET_ID} "Full Target List!B:R" -a kay.s@greenwichandbarrow.com
 3. Re-check after enrichment
 4. Any STILL missing after enrichment → flag in the daily briefing: "{n} targets missing contact info."
 
-**A target cannot be handed to outreach-manager without at minimum: Owner Name + (Email OR Phone OR LinkedIn Owner).** LinkedIn DM is a valid outreach channel.
+**A target cannot be handed to outreach-manager without at minimum: `Owner Name` + (`Email` OR `Phone Company` OR `Phone Owner` OR `LinkedIn Owner`).** LinkedIn DM is a valid outreach channel.
 
 ### Step 2: Attio Dedup Validation
 - Confirm Attio was checked (read-only) for existing entries before handoff
 - Confirm no Attio records were CREATED by target-discovery (Attio writes happen in outreach-manager only)
 
 ### Step 3: Handoff Validation
-- Confirm target data was passed to the correct downstream skill based on Col D (Kay Email → outreach-manager Kay Email subagent, DealsX Email → outreach-manager DealsX Coordination subagent, JJ-Call-Only → jj-operations)
+- Confirm target data was passed to the correct downstream skill based on `Outreach Channel` (Kay Email → outreach-manager Kay Email subagent, DealsX Email → outreach-manager DealsX Coordination subagent, Cold-Call-Only / legacy JJ-Call-Only → cold-call-operations)
 - Confirm every target has at least one contact method (Email OR Phone OR LinkedIn Owner)
 - Flag targets with LinkedIn-only contact (no email/phone) — outreach-manager routes these to LinkedIn DM instead of email outreach
 

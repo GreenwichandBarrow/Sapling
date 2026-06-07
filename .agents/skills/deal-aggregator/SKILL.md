@@ -199,7 +199,13 @@ For each active niche from Step 0a, resolve its keyword corpus:
 **Step 0b — Load buy-box criteria (REQUIRED before scanning):**
 Read the three buy-box docs from the Deal Aggregator Drive folder. These are the single source of truth for all filter criteria. Never use cached or hardcoded bands; always re-read on every run so the skill reflects Kay's current criteria.
 
-**Threshold discipline:** Per `feedback_strategic_thresholds_need_grounding` and `feedback_deal_screen_300k_salary_15pct_margin` — financial floors are constraint-driven (Kay's $300K salary + debt service produces the $2M EBITDA practical floor). Never relax them by source, channel, niche, or any other axis. Relax INDUSTRY filters or NICHE-strict requirements when the channel justifies it (per `feedback_broker_channel_opportunistic_floor` — separate Broker-Channel Buy Box, geography window pending Kay's lock). Never touch the financial gate without a constraint argument.
+**Current Kay screening calibration (2026-06-07):** The funnel has been too tight because Kay's prefiltering was becoming the roadblock. Preserve more reviewable opportunities when the qualitative signal is strong.
+
+- **Positive signals to elevate:** recurring revenue and reoccurring/repeat revenue patterns, cohort/customer durability (retention, renewal behavior, churn, repeat purchasing, contract length, concentration), and criticality of the service (must-have workflow, compliance/safety/revenue-critical service, low willingness to switch).
+- **EBITDA bands:** `$3M+` EBITDA is preferred. `$750K-$3M` EBITDA is reviewable when recurring revenue, cohort durability, or service criticality is strong. `<$750K` EBITDA is below the current lower bound unless Kay explicitly asks for a special-case review.
+- **Hard no categories:** retail and restaurants are hard no unless Kay explicitly reverses this in CIO review.
+- **Behavioral rule:** do not auto-reject a broker/platform opportunity solely because EBITDA is below `$3M` if it is at least `$750K` and has strong recurring/reoccurring revenue, cohort/customer durability, or service-criticality evidence. Route it to `BROKER-OPPORTUNISTIC` or `FLAG` with the key signals preserved.
+- **Formal docs:** the Drive buy-box docs remain the durable source of truth. If a Drive doc conflicts with this calibration, log the conflict in the artifact and preserve the item for CIO review rather than silently discarding it.
 ```bash
 gog docs cat 14hf5QaKtcP_Um0u_P0LZyUM_zvv7haWVVkgGmRL9iyc -a kay.s@greenwichandbarrow.com > /tmp/buybox-services.txt
 gog docs cat 1lkxntRwn3FOPXig86qF36eNyUS0BfbMumfNuIyInD-M -a kay.s@greenwichandbarrow.com > /tmp/buybox-insurance.txt
@@ -248,14 +254,14 @@ Stop hook: if agent-browser is not installed, log "BROWSER_AUTOMATION_UNAVAILABL
 
 1. Sub-agent visits each platform's listing page (via WebFetch OR agent-browser per routing above)
 2. Scrape new listings since last scan (track by listing ID or date)
-3. For each listing, extract every field the listing discloses: company description, industry, revenue (or ARR for SaaS / commission revenue for insurance), EBITDA, asking price, geography, operating history, ownership structure, employee count
+3. For each listing, extract every field the listing discloses: company description, industry, revenue (or ARR for SaaS / commission revenue for insurance), EBITDA, asking price, geography, operating history, ownership structure, employee count, recurring-revenue evidence, reoccurring/repeat revenue evidence, cohort/customer durability evidence, and service-criticality evidence
 4. Determine category (Services / Insurance / SaaS) per routing above; apply the matching buy-box
 5. Screen: for each buy-box criterion, either confirm pass (disclosed + passes), flag fail (disclosed + fails → auto-reject), or mark "not disclosed" (do not reject; flag for review)
 6. Deal passes the gate if: no disclosed criterion fails AND no industry hard-exclude matches AND thesis or new-niche match exists
 7. Two types of passing matches:
    - **Thesis match** — fits an active niche thesis from Step 0a. High priority.
    - **Buy-box match, new niche** — passes the buy-box gate but sits in an industry not on the active thesis list. Route to niche-intelligence as a discovery signal.
-8. Broker/platform listings that clear disclosed financial/structural gates but do not match an active thesis corpus become `BROKER-OPPORTUNISTIC`, not generic `NEAR-MISS`, when the source type is broker/platform/opportunistic and no hard-exclude applies.
+8. Broker/platform listings that clear disclosed financial/structural gates but do not match an active thesis corpus become `BROKER-OPPORTUNISTIC`, not generic `NEAR-MISS`, when the source type is broker/platform/opportunistic and no hard-exclude applies. Also route `$750K-$3M` EBITDA listings to `BROKER-OPPORTUNISTIC` or `FLAG` when they show strong recurring/reoccurring revenue, cohort/customer durability, or service-criticality signals and are not retail/restaurants.
 
 **Slack notification — ONE per deal (FINGERPRINT CHECK REQUIRED FIRST):**
 
@@ -481,7 +487,7 @@ Inbound owner replies to DealsX cold outreach (Channel 6). Contact handoffs — 
 
 ## Broker Opportunistic Review
 Financially plausible broker/platform listings that do not match an active thesis corpus. Artifact-only by default; use this lane for CIO review and corpus/source tuning.
-1. **{Company/Profile}** — {Source} | {Revenue} | {EBITDA} | {Industry} | Why it matters | {Link}
+1. **{Company/Profile}** — {Source} | {Revenue} | {EBITDA} | {Industry} | Key signals: {recurring/cohort/criticality} | Why it matters | {Link}
 
 ## Near Misses (not Slacked)
 - {listing} — {reason not flagged}
@@ -492,13 +498,13 @@ Every listing scraped or parsed during this run lands here as one row, regardles
 
 Required when ≥ 1 listing was reviewed. If zero listings were reviewed (every source blocked), emit the table header only, with no data rows. Sort: PASS first, then NEAR-MISS, then FLAG, then HARD-REJECT.
 
-| Source | Headline | Geo | Revenue | EBITDA | Margin | Industry | Verdict | Reject Reason |
-|--------|----------|-----|---------|--------|--------|----------|---------|---------------|
-| {Source} | {Listing headline or blind-profile descriptor} | {state, or "undisclosed"} | {Revenue or "undisclosed"} | {EBITDA or "undisclosed"} | {Margin% or "undisclosed"} | {Industry per listing} | {PASS / BROKER-OPPORTUNISTIC / NEAR-MISS / HARD-REJECT / FLAG} | {one-line reason if not PASS, else blank} |
+| Source | Headline | Geo | Revenue | EBITDA | Margin | Industry | Key Signals | Verdict | Reject Reason |
+|--------|----------|-----|---------|--------|--------|----------|-------------|---------|---------------|
+| {Source} | {Listing headline or blind-profile descriptor} | {state, or "undisclosed"} | {Revenue or "undisclosed"} | {EBITDA or "undisclosed"} | {Margin% or "undisclosed"} | {Industry per listing} | {recurring/reoccurring revenue / cohort durability / service criticality / "not disclosed"} | {PASS / BROKER-OPPORTUNISTIC / NEAR-MISS / HARD-REJECT / FLAG} | {one-line reason if not PASS, else blank} |
 
 Verdict definitions:
 - `PASS` — clears buy-box gate AND matches an active niche corpus. Slack-posted (subject to fingerprint dedup).
-- `BROKER-OPPORTUNISTIC` — clears disclosed financial/structural gate from a broker/platform/opportunistic channel, has no hard-exclude, but no active-niche corpus match. Artifact-only, not Slack-posted by default.
+- `BROKER-OPPORTUNISTIC` — clears disclosed financial/structural gate from a broker/platform/opportunistic channel, has no hard-exclude, but no active-niche corpus match; OR sits in the `$750K-$3M` EBITDA review band with strong recurring/reoccurring revenue, cohort/customer durability, or service-criticality signal. Artifact-only, not Slack-posted by default.
 - `NEAR-MISS` — partially promising, sparse, or useful for thesis/corpus tuning, but not enough for pass or broker-opportunistic review.
 - `HARD-REJECT` — fails buy-box on a disclosed-and-failed criterion, hits an industry hard-exclude, or geography hard-excluded.
 - `FLAG` — undisclosed-field heavy or ambiguous; logged for human review without auto-rejection.
@@ -726,9 +732,10 @@ Wired 2026-05-02 during the legacy launchd-debugger investigation; now enforced 
 
 ### Guardrails
 - **Never contact an owner directly** on a broker-sourced deal. Always go through the broker.
-- **Buy-box filter criteria come from the three Drive docs, not from this SKILL.md.** Never hardcode revenue floors, EBITDA bands, margin floors, or industry excludes in the skill or subagent prompt. If a criterion needs to change, Kay edits the Drive doc — the skill picks it up on the next run.
+- **Buy-box filter criteria come from the three Drive docs plus Kay's current calibration above.** The Drive docs are the durable criteria store; if they conflict with Kay's latest calibration, log the conflict and preserve the item for CIO review rather than silently dropping it.
 - **Data Availability Rule is absolute.** A listing that doesn't disclose a field is never auto-rejected on that field. Flag for review, continue scoring against disclosed fields.
 - **Hard-excludes apply per the matching buy-box doc's Industry Hard-Excludes section, when disclosed on the listing.** No external lists, no blacklists maintained — scope is pass-through review of existing deals only.
+- **Retail and restaurants are current hard no categories.** Do not preserve them for broker-opportunistic review unless Kay explicitly asks for a special-case look.
 </validation>
 
 <success_criteria>

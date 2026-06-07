@@ -344,6 +344,7 @@ These are intentional improvements to consider after Phase 2 monitoring, before 
    - Frame: `deal-aggregator` is a very large, operationally important skill that is largely underperforming on deal-flow volume. It should be stabilized, measured, and improved deliberately rather than casually patched.
    - Treat `deal-aggregator` as a multi-leg funnel, not a single monolithic skill: source roster, daily scan, afternoon top-up, email-inbound parsing, buy-box/niche matching, dedup/Slack surfacing, forensic logging, Friday source-productivity digest, and new-intermediary onboarding.
    - Investigate low volume from the 2026-06-05 digest (`volume_7d_avg: 0.33`, red status) before changing screening logic.
+   - 2026-06-07 Kay calibration: prioritize recurring or reoccurring/repeat revenue, cohort/customer durability, and criticality of service. `$3M+` EBITDA is preferred; `$750K-$3M` is reviewable when those quality signals are strong; `<$750K` remains below current lower bound. Retail and restaurants are hard no categories.
    - Make the email-inbound leg more reliable and visible. The 2026-06-05 morning run had `email_scan_source: missing`, which blinded broker blasts, CIMs, NDA follow-ups, and DealsX replies for that run.
    - Separate strict thesis matches from opportunistic broker-channel review so financially plausible broker listings do not get buried only because they miss the active niche corpus.
    - Rebuild or enrich active niche keyword corpora with G&B-native language in addition to DealsX names/keywords.

@@ -48,15 +48,15 @@ For every listing scanned, score each of the 10 dimensions as PASS / FAIL / UNKN
 
 5. **Lifestyle — asset-light + remote-manageable + recurring revenue.** PASS: services / tech-enabled / subscription / recurring contracts / no daily on-site tether. FAIL: balance-sheet-heavy, inventory-heavy, equipment-heavy, franchise, daily on-site requirement, capital-intensive. UNKNOWN.
 
-6. **Risk tolerance — financial floor + hard-no filters.** **HARD FAIL** if any of: California-located, retail business, lending/credit business, carve-out structure, OR EBITDA disclosed <$2.5M. PASS otherwise. (Hard-fail triggers fingerprint FAIL regardless of other scores.)
+6. **Risk tolerance — financial floor + hard-no filters.** **HARD FAIL** if any of: retail business, restaurant, lending/credit business, carve-out structure, OR EBITDA disclosed <$750K. PASS otherwise, with `$750K-$3M` treated as reviewable when recurring/reoccurring revenue, cohort/customer durability, or service-criticality signal is strong. (Hard-fail triggers fingerprint FAIL regardless of other scores.)
 
 7. **Brand alignment — bagel-shop test + brand-independent-of-operator.** PASS: signs of community-minded ownership in listing copy, established brand independent of founder, NOT predatory. FAIL: founder = brand, predatory category (e.g., payday lending, gambling, addictive products), race-to-bottom positioning. UNKNOWN.
 
-8. **Network leverage — niche intersects Kay's network.** PASS if industry touches any of: jewelry / watches / luxury retail, fine dining / hospitality / restaurants / F&B, marine logistics / cargo / customs / trade-credit insurance, fashion / Chanel-tier luxury B2B, premium B2B services to luxury sectors, NYU Stern Luxury MBA cohort verticals (luxury, prestige, brand). FAIL: zero touch with Kay's network. UNKNOWN if industry not disclosed.
+8. **Network leverage — niche intersects Kay's network.** PASS if industry touches any of: jewelry / watches / luxury retail services (not retail stores), hospitality services (not restaurants), marine logistics / cargo / customs / trade-credit insurance, fashion / Chanel-tier luxury B2B, premium B2B services to luxury sectors, NYU Stern Luxury MBA cohort verticals (luxury, prestige, brand). FAIL: zero touch with Kay's network. UNKNOWN if industry not disclosed.
 
-9. **Investor narrative — survives hostile probing.** **HARD FAIL** if any of: SaaS-labeled (current macro block), retail, California, lending, carve-out. PASS: clean recurring rev, defensible, fragmented, easy one-sentence answer to "why this niche?". (Hard-fail triggers fingerprint FAIL regardless of other scores.)
+9. **Investor narrative — survives hostile probing.** **HARD FAIL** if any of: retail, restaurants, lending, carve-out. PASS: clean recurring/reoccurring revenue, defensible, fragmented, critical service, easy one-sentence answer to "why this niche?". (Hard-fail triggers fingerprint FAIL regardless of other scores.)
 
-10. **Stage fit — Bridge functional.** PASS: $2.5M+ EBITDA + asset-light + scalable (recurring rev, low marginal cost) + defensible + fragmented + viable management path. FAIL: outside Bridge functional profile (capital-intensive, daily on-site, no recurring revenue, owner-personality-dependent). UNKNOWN.
+10. **Stage fit — Bridge functional.** PASS: `$3M+` EBITDA preferred, or `$750K-$3M` EBITDA with strong recurring/reoccurring revenue, cohort/customer durability, or service-criticality signal + viable management path. FAIL: below `$750K`, capital-intensive without compensating durability, daily on-site dependence, no recurring/reoccurring revenue, owner-personality-dependent. UNKNOWN.
 
 ### Aggregation rules
 

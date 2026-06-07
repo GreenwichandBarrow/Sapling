@@ -199,6 +199,13 @@ row to the Pipeline tab. Use `gog sheets append`, not clear-then-write.
 One conference = one row, multi-day = single row with date range in the
 `Date of Conference` field.
 
+Formatting matters because Kay works directly in this sheet. Preserve the gray
+fill and bold styling on `Week Of` divider rows. When inserting a new week
+divider, copy formatting from the nearest existing divider. When inserting event
+rows, inherit formatting from nearby event rows in the same section, not from a
+gray divider row. Preserve dropdown validation and conditional formatting on
+`Decision`, `Status`, `Agent Rec`, and `Registration Paid`.
+
 ### Step 4: Re-sort EVENTS WITHIN each week section chronologically
 
 Per SKILL.md: earliest at top, farthest at bottom — but the sort target
@@ -235,8 +242,22 @@ For each live header row:
 5. **Never prune** a future week — empty future weeks are valid
    placeholders Kay may populate.
 6. **Skip pruning** if the label fails to parse (log to stderr).
-7. Log each pruned header to the Slack notification at end-of-run:
-   `"{n} past-empty headers pruned: {labels}"`.
+7. Log each pruned header to the run log. Do not include prune details in the
+   normal success Slack unless Kay action is required.
+
+### Step 5b: Formatting preservation check
+
+After append, sort, and prune:
+
+1. Re-read the live Pipeline tab.
+2. Verify every `Week Of` divider row still has divider formatting (gray fill,
+   bold, and dropdown-free divider behavior where applicable).
+3. Verify event rows did not accidentally inherit divider gray fill.
+4. Verify dropdowns still exist on `Decision`, `Status`, `Agent Rec`, and
+   `Registration Paid`.
+5. If formatting is degraded but data is safe, keep the run successful only if
+   the issue is minor and logged. Include a Slack warning only if Kay action is
+   required. Never rewrite the whole sheet to fix formatting.
 
 ### Step 6: Run the integrity validator yourself
 
@@ -261,8 +282,26 @@ Common failure modes and recovery:
 
 ### Step 7: Slack notification (only if everything passed)
 
-Per SKILL.md "Slack Notification (end of Phase 1)" — send the AI-Operations
-channel summary using `SLACK_WEBHOOK_OPERATIONS`.
+Per SKILL.md "Slack Notification (end of Phase 1)" — send a tight
+AI-Operations doorbell notification using `SLACK_WEBHOOK_OPERATIONS`.
+
+Normal success message format:
+
+```text
+Conference Pipeline updated
+
+{n} new conferences added:
+- {this_week_count} this week
+- {future_week_count} in following weeks
+
+Review:
+https://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit
+```
+
+Do not include event names, scoring, archive details, or long bullet lists in
+normal success Slack. The Google Sheet is the detailed deliverable. Only add
+extra Slack detail for validation failures, urgent booking deadlines, or
+formatting issues requiring Kay action.
 
 ## Exit criteria summary
 

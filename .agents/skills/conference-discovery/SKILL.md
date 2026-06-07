@@ -762,6 +762,24 @@ After adding, removing, or modifying any rows in the Pipeline tab, re-sort event
 
 **This is mandatory.** The sheet must always be sorted chronologically — earliest date at top, farthest at bottom. Never leave the sheet unsorted after a write operation.
 
+### 1c. Sheet Formatting Preservation
+
+The Conference Pipeline sheet is the product. Kay works directly in the Google
+Sheet, so formatting matters:
+
+- Preserve the gray fill and bold styling on `Week Of` divider rows.
+- Preserve dropdown validation and conditional formatting on `Decision`,
+  `Status`, `Agent Rec`, and `Registration Paid`.
+- When inserting a new week divider row, copy formatting from the nearest
+  existing week divider row before/after it. Do not leave a plain white divider.
+- When inserting event rows, inherit formatting from nearby event rows in the
+  same section, not from the gray divider row.
+- After every append/sort/archive pass, visually/structurally verify that week
+  divider rows are still gray and event rows are not accidentally gray.
+- If formatting cannot be preserved with the current sheet API path, surface a
+  warning in the run log and Slack only if Kay action is required. Do not
+  rewrite the sheet to fix formatting.
+
 ### 2. Attendee List Validation (if processing attendees)
 Verify `brain/outputs/{date}-{conference-slug}-targets.md` exists with:
 - Valid frontmatter per output schema
@@ -784,12 +802,15 @@ Verify:
 
 All conference discovery notifications go to the AI-Operations Slack channel. Use the `SLACK_WEBHOOK_OPERATIONS` webhook from `scripts/op-env.sh`.
 
+Normal successful discovery notifications should be tight. The Google Sheet is
+the detailed deliverable; Slack is only the doorbell.
+
 **After discovery run (sheet updates confirmed and written):**
 ```bash
 source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
-  -d '{"text":"Conference Pipeline updated — {n} new conferences added, {n} modified, {n} moved to Skipped.\n\nChanges:\n{bullet summary of what was added/changed}\n\nReview the pipeline:\nhttps://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit"}'
+  -d '{"text":"Conference Pipeline updated\n\n{n} new conferences added:\n- {this_week_count} this week\n- {future_week_count} in following weeks\n\nReview:\nhttps://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit"}'
 ```
 
 **After post-conference processing:**
@@ -801,9 +822,11 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 ```
 
 **Slack message content:**
-- Summary of what was added/changed (numbered list matching what Kay approved)
+- Normal successful run: no event names, no scoring detail, no archive detail.
+- Include only update notice, total new conferences, this-week count, following-weeks count, and the sheet link.
 - Direct link to the Conference Pipeline sheet
 - Keep it scannable, no walls of text
+- If validation fails, formatting breaks in a way Kay must fix, or a booking deadline is urgent, include the specific issue.
 
 **If validation fails:** Do NOT send Slack. Report which checks failed and fix before retrying.
 </validation>

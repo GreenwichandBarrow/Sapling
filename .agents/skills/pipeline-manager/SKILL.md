@@ -29,6 +29,12 @@ curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KE
 ```
 
 **Forbidden in the briefing artifact:** writing "MCP unauthenticated / disconnected / unavailable" as a system-status alert without first running the op-env resolve + REST health-check above. Phantom outages corrupt downstream decisions.
+
+**Gmail safety contract (mandatory):** Pipeline-manager may read Gmail evidence and create Gmail DRAFTS only. It must never send, draft-send, forward, autoreply, or schedule-send email. Every `gog gmail` command must include Kay's account and the no-send guard:
+```bash
+gog gmail ... --account kay.s@greenwichandbarrow.com --gmail-no-send
+```
+Draft creation uses `gog gmail drafts create --account kay.s@greenwichandbarrow.com --gmail-no-send ...`. If a draft command cannot be made draft-only, skip it and surface the blocker. Kay alone sends emails.
 </credentials>
 
 <learnings>
@@ -54,6 +60,14 @@ This file is read on every run and is the durable correction layer that compleme
 Keep Attio pipelines current without Kay having to remember to update them. Scan activity signals (calendar, email, call notes, vault), match them to pipeline entries, recommend stage changes, and execute approved updates via Attio API.
 
 Kay is the bottleneck on pipeline management. This skill removes that bottleneck by making pipeline updates a 30-second yes/no review instead of a manual drag-and-drop chore.
+
+## Codex-era role
+
+This skill is still necessary, but it must add value as the **evidence-to-Attio reconciler**, not as a duplicate deal screener or relationship manager:
+- Own: pipeline stage truth, Active Deals folder/Attio reconciliation, email/Granola evidence handoffs, stale pipeline flags, and verified task handoffs.
+- Consume: `relationship-manager` artifacts for People/nurture status, `deal-aggregator` artifacts for market/listing intake, `niche-intelligence` artifacts for thesis/niche state, and `task-tracker-manager` for To Do writes.
+- Avoid duplicating: broad deal sourcing, full relationship cadence analysis, and niche thesis scoring unless the section is explicitly a handoff or validator.
+- Prefer deterministic reconciliation over prose-heavy judgment. When evidence is missing or stale, write the missing artifact/blocker instead of inventing a recommendation.
 </objective>
 
 <essential_principles>
@@ -153,7 +167,7 @@ The morning briefing in conversation must be **brief** — a quick reminder of w
 **Keep in briefing (conversation):**
 - Pipeline stage changes needing yes/no approval (1 line each)
 - Pipeline summary stats (3-4 lines)
-- Quick action items (send email, make call)
+- Quick action items (draft email for Kay review, make call)
 - Today's calendar/agenda items
 - Stale deal flags (kill/advance/keep)
 - Overdue contacts needing a touchpoint
@@ -226,37 +240,37 @@ Reply by number.
 - *Pipeline shifts* (Attio stage changes, new active deals, NDA-signed detections) → 🔴 if action-needed today, 🟡 if review-needed-soon. Always Obama framing.
 - *Pipeline summary stats* (Active Deals N, niche counts) → omit from briefing; lives on Active Deal Pipeline + M&A Analytics dashboard pages.
 - *To Do action steps* → 🔴 (same-day) or 🟡 (this week).
-- *Gmail drafts to send* → 🔴 as a single bundled Decision: **RECOMMEND: Approve all N drafts to send Mon AM** → YES/NO/DISCUSS. Not one item per draft.
+- *Gmail drafts ready for Kay review* → 🔴 as a single bundled Decision: **RECOMMEND: Review N draft(s) Mon AM** → YES/NO/DISCUSS. Never ask Codex to send or schedule-send. Not one item per draft.
 - *Targets for review* → 🟡 Decision (warm intro vs cadence vs pass) — bundle by niche.
 - *Brief needed for TODAY (D+0) or TOMORROW (D+1) external meetings* → 🔴 Decision: **RECOMMEND: Generate brief for {name}** → YES/NO/DISCUSS (mandatory invariant per CLAUDE.md brief-decisions pre-flight + `feedback_preflight_covers_today_and_tomorrow.md`).
 - *Aging deferrals (≥5 days)* → 🟢 Decision: **RECOMMEND: {kill/do-now/re-defer}** → YES/NO/DISCUSS.
 - *Broken scheduled skill or stuck snapshot job* → 🔴 Decision: **RECOMMEND: Investigate {job} (last log {timestamp})** → YES/NO. Don't bury silent failures.
-- *On deck for JJ tomorrow* → **Today / ASAP** the day before only (per JJ "On Deck" timing rule below).
+- *On deck for cold calls tomorrow* → **Today / ASAP** the day before only (per cold-call "On Deck" timing rule below).
 - *Today's calendar/agenda* → 1-line tail above System Status, not its own bucket.
 
 **Targets for Review rules:**
 - This section surfaces targets from target-discovery's auto-advance system that need Kay's decision. Two categories only:
-  1. **Warm intro targets** — warm-intro-finder found a connection path (via Attio, vault, Gmail, Kay's network). Kay decides: "draft" (create a Gmail draft for her personal outreach) or "cadence" (enroll in Codex-managed email cadence via Gmail drafts).
-  2. **Edge case targets** — borderline on buy box/ICP criteria (borderline size, geography, unclear ownership, possible PE backing). Kay decides: "approve" (send to Gmail drafts + JJ based on channel) or "pass" (move to Passed tab on tracker).
-- **Auto-approved targets do NOT appear here.** Targets that passed all buy box + ICP criteria with no warm intro flow automatically to Gmail drafts + JJ. Only exceptions surface.
+  1. **Warm intro targets** — warm-intro-finder found a connection path (via Attio, vault, Gmail, Kay's network). Kay decides: "draft" (create a Gmail draft for her personal outreach) or "cadence" (prepare draft-only follow-up cadence for Kay review).
+  2. **Edge case targets** — borderline on buy box/ICP criteria (borderline size, geography, unclear ownership, possible PE backing). Kay decides: "approve" (route to draft-only outreach + cold call list based on channel) or "pass" (move to Passed tab on tracker).
+- **Auto-approved targets do NOT appear here.** Targets that passed all buy box + ICP criteria with no warm intro flow automatically route to draft-only Gmail outreach + the cold call list. Only exceptions surface.
 - Group by niche when multiple niches are active. One header per niche.
 - Kay responds with decisions per item: "1 draft, 2 approve" or "1 cadence, 2 pass"
 - On Kay's decision:
-  - "draft" → create Gmail draft via `gmail-draft.sh` or `gog gmail draft create` for Kay's review before sending
-  - "cadence" → enroll in Codex-managed email cadence via Gmail drafts
-  - "approve" → route to Gmail drafts + JJ call list based on channel
+  - "draft" → create Gmail draft via `gog gmail drafts create --account kay.s@greenwichandbarrow.com --gmail-no-send` for Kay's review
+  - "cadence" → prepare draft-only Gmail follow-ups; Kay sends each draft manually
+  - "approve" → route to Gmail drafts + cold call list based on channel
   - "pass" → move target to Passed tab on the tracker sheet
 
 Each item numbered. Each has a clear action or question. No informational items without an ask. No items requiring deep review — those go to Slack.
 
-**JJ "On Deck" timing rule:** Only show JJ items the day BEFORE they are due. Not earlier. Example: if Freedman Risk follow-up is due Thursday April 2, it appears in Wednesday April 1's briefing — not before. This prevents noise and keeps Kay focused on what's actionable today/tomorrow only.
+**Cold-call "On Deck" timing rule:** Only show cold-call items the day BEFORE they are due. Not earlier. Example: if Freedman Risk follow-up is due Thursday April 2, it appears in Wednesday April 1's briefing — not before. This prevents noise and keeps Kay focused on what's actionable today/tomorrow only.
 
 After Kay reviews all three categories, confirm summary:
 ```
 Pipeline manager complete:
 - {n} pipeline stages updated
 - {n} rows appended to To Do
-- {n} email drafts in Gmail
+- {n} draft-only emails in Gmail for Kay review
 - {n} stale deals flagged
 ```
 
@@ -313,11 +327,11 @@ Relationship management (nurture cadence monitoring, action-already-taken verifi
 9. **CIM auto-trigger validation** — for every CIM detected during Gmail ingestion, verify all 4 steps completed: (a) ACTIVE DEALS folder exists with CIM/ subfolder, (b) CIM file uploaded to CIM/ subfolder with size > 0, (c) inbox item written to `brain/inbox/` with `urgency: critical` and `topic/cim-received` tag, (d) deal-evaluation was invoked with `source: intermediary-inbound`. If any step failed, retry once. If still failing, flag in morning briefing: "CIM auto-trigger incomplete for {company} — {which step failed}." A missed CIM is a missed deal.
 10. **Attio-Target Sheet Reconciliation** — after the morning scan completes, compare Attio Active Deals stages against target sheet outreach columns for all active targets. Use col-lookup.py to resolve header names to cells (never hardcode column letters):
    - For each Attio entry at "Identified": check target sheet "Day 0 Sent" column. If sheet has a date → MISMATCH. Auto-advance Attio to "Contacted" and log.
-   - For each Attio entry at "Contacted": if "JJ: Call Status" = "Connected" + positive sentiment → MISMATCH. Flag for review (potential First Conversation).
+   - For each Attio entry at "Contacted": if cold-call status = "Connected" + positive sentiment → MISMATCH. Flag for review (potential First Conversation).
    This reconciliation runs as a safety net — it catches drift that the real-time detection missed.
 
 11. **Outbound-email → Active Deals list-entry coverage (added 2026-04-15)** — for every outbound email to an external recipient in the past 14 days, verify an Attio Active Deals list entry exists for that recipient's company. Iterate:
-   - Get all outbound emails: `gog gmail search "from:kay.s@greenwichandbarrow.com newer_than:14d" --json --max 100`
+   - Get all outbound emails: `gog gmail search "from:kay.s@greenwichandbarrow.com newer_than:14d" --json --max 100 --account kay.s@greenwichandbarrow.com --gmail-no-send`
    - For each unique external recipient: find Person → find Company → verify list entry exists
    - If missing: auto-create list entry at "Contacted" stage (per Outbound Email Scan Path B). Flag in morning briefing.
    Root cause: Attio auto-creates People from email but NOT list entries. This hook closes the gap (Timothy Wong / MMPC 2026-04-09 incident).
@@ -383,7 +397,7 @@ Before sending the briefing to Kay, validate against the 4-bucket spec:
 - [ ] **System Status is compact tail** — 1 line per scheduled skill, comma-separated when clean. Expand only if broken/blocked.
 - [ ] **Every item has explicit ask** — question or action verb. No informational items without an ask per `feedback_morning_briefing_format`.
 - [ ] **No counter-options stacked in same question** — per `feedback_no_counter_in_question`. Primary question alone; follow up if no.
-- [ ] **Bundled approvals where possible** — multiple email drafts to send → one "Approve all N as-is?" line, not N items. Reduces decisions-per-briefing.
+- [ ] **Bundled approvals where possible** — multiple email drafts ready for Kay review → one "Review all N?" line, not N items. Reduces decisions-per-briefing.
 
 If any check fails, fix in-line before sending. Do not present a malformed briefing and ask Kay to forgive it.
 
@@ -400,7 +414,7 @@ Before scanning for signals, ingest new data from external tools into the vault.
 6. Create any missing entities in brain/entities/
 
 ### Gmail Draft Status Check
-Check Gmail for the status of outreach drafts created by outreach-manager. Use `gog gmail draft list`, Gmail search, and the sent folder to determine whether drafts were sent.
+Check Gmail for the status of outreach drafts created by outreach-manager. Use `gog gmail drafts list --account kay.s@greenwichandbarrow.com --gmail-no-send`, Gmail search with the same guard, and the sent folder to determine whether Kay sent them manually.
 
 Results from this check feed directly into the **Draft Status** section of `brain/context/email-scan-results-{YYYY-MM-DD}.md` (see Email Scan Results Artifact below).
 
@@ -418,7 +432,7 @@ Results from this check feed directly into the **Draft Status** section of `brai
    - Flag as high-priority pipeline signal
    - Recommend stage change based on reply content
 
-This is how the system knows Kay sent the email and triggers the Attio stage advancement. Codex manages follow-up cadence via Gmail drafts (Day 3/14 follow-ups drafted each morning). JJ's call list is managed independently by jj-operations.
+This is how the system knows Kay sent the email and triggers the Attio stage advancement. Codex may prepare follow-up drafts (Day 3/14 follow-ups drafted each morning), but Kay sends manually. Cold call lists are managed independently by cold-call-operations.
 
 ### Outbound Email Scan (catches manually-sent emails + auto-creates missing Active Deals entries)
 
@@ -426,9 +440,9 @@ The Gmail Draft Status Check above only catches emails that originated as outrea
 
 **CRITICAL (added 2026-04-15 after Timothy Wong / MMPC gap):** Attio auto-creates **People records** from email interactions, but does NOT auto-create **Active Deals list entries**. If an outbound email's recipient has a Person record but no Active Deals list entry, this scan must CREATE the list entry — not just skip them. The scan is a reconciler-and-creator, not a read-only updater.
 
-1. Query Gmail for all outbound emails (extended window for slow-reply JJ-route follow-ups):
+1. Query Gmail for all outbound emails (extended window for slow-reply cold-call follow-ups):
    ```bash
-   gog gmail search "from:kay.s@greenwichandbarrow.com newer_than:14d" --json --max 100
+   gog gmail search "from:kay.s@greenwichandbarrow.com newer_than:14d" --json --max 100 --account kay.s@greenwichandbarrow.com --gmail-no-send
    ```
 2. For each sent email, extract the recipient address(es) and cross-reference against Attio:
    - First: find the Person record (Attio auto-creates these on first email interaction — always exists for any recipient Kay has emailed)
@@ -446,7 +460,7 @@ The Gmail Draft Status Check above only catches emails that originated as outrea
 7. **Scope:** Only process emails sent to external recipients. Ignore internal emails (to @greenwichandbarrow.com addresses).
 8. **Log cross-reference source:** Every created entry records `source: manual-outbound-email` with the message ID for audit trail.
 
-This ensures manually-sent outreach emails (not just outreach-manager drafts) trigger the Attio stage change AND create list entries when missing. Codex manages follow-up cadence via Gmail drafts for all targets.
+This ensures manually-sent outreach emails (not just outreach-manager drafts) trigger the Attio stage change AND create list entries when missing. Codex may prepare follow-up cadence drafts for all targets; Kay sends manually.
 
 
 ### Cadence Advancement (runs during morning scan)
@@ -485,8 +499,8 @@ For each row where "Kay: Decision" = "Approve" and "Day 0 Sent" is blank (no cad
 ### Conference Decision Scan
 Conference decisions (Col M = "Attend"/"Register Only") are now handled by conference-discovery. Pipeline-manager does not scan the Conference Pipeline sheet.
 
-### Target List Monitoring (JJ Call Outcomes)
-Read the active niche sprint's master sheet ("{Niche} - Target List") in LINKT TARGET LISTS folder. Scan JJ's call columns (Q-T) for new entries since last scan:
+### Target List Monitoring (Cold Call Outcomes)
+Read the active niche sprint's master sheet ("{Niche} - Target List") in LINKT TARGET LISTS folder. Scan cold-call outcome columns for new entries since last scan:
 - New "Connected" + "Interested" → move Attio from "Contacted" to "First Conversation"
 - New "Connected" + "Not Selling" → flag for Kay's review (keep or kill?)
 - New "Voicemail" → no stage change, note logged
@@ -500,7 +514,7 @@ Niche sprints have 4 active states tracked on the Industry Research Tracker:
 | Status | Meaning | Target Discovery Volume | Outreach |
 |--------|---------|------------------------|----------|
 | Under Review | Niche identified, one-pager and scorecard in progress. | None | None |
-| Active-Outreach | Full owner outreach active. | 4-6 targets/day | Full cadence via Gmail drafts (Codex-managed) |
+| Active-Outreach | Full owner outreach active. | 4-6 targets/day | Draft-only cadence prepared in Gmail; Kay sends manually |
 | Active-Long Term | Niche winding down, finishing existing pipeline. | No new targets | Complete existing cadences only |
 | Tabled/Killed | Sprint stopped. | None | None |
 
@@ -519,9 +533,9 @@ When Kay changes a niche status during a session (e.g., approves a niche to Acti
    - Tabled/Killed --> cancel any pending target-discovery runs, stop outreach-manager drafts for that niche
    - Active-Long Term --> stop target-discovery, let existing outreach cadences complete
 
-### JJ Daily Call Prep
+### Cold Call Daily Prep
 
-JJ call prep, Call Log creation, 10am Slack delivery, and post-shift outcome harvesting are now handled by jj-operations. Pipeline-manager reads JJ call outcomes from the master target sheet for stage change signals (e.g., "Connected + Interested" triggers First Conversation recommendation in the morning briefing).
+Cold call prep, Call Log creation, 10am Slack delivery, and post-shift outcome harvesting are now handled by cold-call-operations. Pipeline-manager reads cold-call outcomes from the master target sheet for stage change signals (e.g., "Connected + Interested" triggers First Conversation recommendation in the morning briefing).
 
 ### Warm Intro Detection
 When processing new targets (from target-discovery handoff), scan for warm intro paths before presenting to Kay:
@@ -533,7 +547,7 @@ When processing new targets (from target-discovery handoff), scan for warm intro
 This replaces the previous approach where Kay manually flagged warm intros. The agent does the research, Kay just sees the result.
 
 ### Gmail → brain/inbox/
-1. Query `gog gmail search "newer_than:2d label:INBOX" --json --max 50` for recent inbound emails (outbound scanning is handled separately by the Outbound Email Scan step above)
+1. Query `gog gmail search "newer_than:2d label:INBOX" --json --max 50 --account kay.s@greenwichandbarrow.com --gmail-no-send` for recent inbound emails (outbound scanning is handled separately by the Outbound Email Scan step above)
 2. Parse for actionable items: explicit requests, questions, deadlines, documents needing action
 3. Check idempotency: if `source_ref` (message ID) already exists in brain/inbox/, skip
 4. Write to `brain/inbox/YYYY-MM-DD-{slug}.md` using inbox schema (schemas/vault/inbox.yaml)
@@ -604,7 +618,7 @@ emails_scanned: N
 ```
 
 **Draft Status population:** The Gmail Draft Status Check AND the Outbound Email Scan (see sections above) both feed this section. For each outreach or thank-you draft created by outreach-manager or pipeline-manager:
-- Check Gmail sent folder via `gog gmail search` for matching sent emails
+- Check Gmail sent folder via `gog gmail search ... --account kay.s@greenwichandbarrow.com --gmail-no-send` for matching sent emails
 - If sent: record target name, company, and sent date
 - If unsent: record target name, company, and age in days since draft was created
 
@@ -674,7 +688,7 @@ During Gmail ingestion, detect introduction emails — someone introducing Kay t
 
 **Key difference from cold targets:**
 - Warm intro email references the introducer by name
-- Skips JJ confirmation call — the intro IS the warm touch
+- Skips cold-call confirmation call — the intro IS the warm touch
 - Higher priority than cold targets in the daily review
 - Also draft a thank-you email to the introducer
 
@@ -686,7 +700,7 @@ During Gmail ingestion, detect introduction emails — someone introducing Kay t
 | Day 5-6 | Email (Gmail) | Follow-up if no response |
 | Day 8-10 | LinkedIn DM (Kay) | High-value only |
 
-No Day 3 JJ call. The introducer already warmed the connection.
+No Day 3 cold call. The introducer already warmed the connection.
 
 ## Inbound Intermediary Deal Detection (runs during Gmail ingestion)
 
@@ -746,7 +760,7 @@ gog drive mkdir "CORRESPONDENCE" --parent {new_company_folder_id}
 **Step 2: File the CIM**
 ```bash
 # Download attachment from email
-gog gmail attachment {message_id} {attachment_id} --output /tmp/{filename}
+gog gmail attachment {message_id} {attachment_id} --output /tmp/{filename} --account kay.s@greenwichandbarrow.com --gmail-no-send
 
 # Upload to CIM subfolder
 gog drive upload /tmp/{filename} --parent {cim_folder_id} --name "{filename}"
@@ -819,12 +833,14 @@ if [ -z "$TEMPLATE_BODY" ]; then
   exit 0
 fi
 
-# Fill placeholders, create Gmail draft via gog (USE-GOG-FALLBACK decision 2026-05-04)
-gog gmail draft \
+# Fill placeholders, create Gmail draft via gog. Draft-only guard is mandatory.
+gog gmail drafts create \
   --to "{intermediary_email}" \
   --subject "Re: {original_subject}" \
   --body "$FILLED_BODY" \
-  --thread "{gmail_thread_id}"
+  --thread "{gmail_thread_id}" \
+  --account kay.s@greenwichandbarrow.com \
+  --gmail-no-send
 ```
 
 The auto-ack creates a Gmail DRAFT only — Kay reviews and sends per `feedback_kay_handles_all_replies`. The auto-trigger (Steps 1-4) handles internal Drive/Attio/deal-eval work. The auto-ack handles the broker-facing reply. Two parallel surfaces, no conflict.
@@ -901,7 +917,7 @@ From: {Intermediary Name} ({Firm Name})
 ### On Kay's Approval
 - **"Proceed"** (CIM auto-screened) → continue deal-evaluation at Phase 3 (financial analysis on the CIM already in Drive). The buy-box screen is done — this advances to deep analysis.
 - **"Yes"** (no CIM) → trigger deal-evaluation skill with `source: intermediary-inbound` and `intermediary: {name}`. The deal-evaluation skill runs its fast buy-box screen (see deal-evaluation Intermediary Inbound Pathway).
-- **"Pass"** → MANDATORY template-driven per `feedback_no_intermediary_drafts_outside_template`. Look up `DECLINE POST-REVIEW` snippet from canonical doc `1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4` via `gog docs export`. Fill `{first_name}`, `{their_subject}`, `{reason}` (one-line specific reason from the buy-box screen output). Create as Gmail draft via `gog gmail draft`. If template not found, skip with warning to morning briefing — do NOT draft ad-hoc copy. Also: log the deal in vault with reason. Tag the intermediary's Attio People record with the deal type they sent (e.g., `sends: manufacturing`, `sends: healthcare`) for future filtering.
+- **"Pass"** → MANDATORY template-driven per `feedback_no_intermediary_drafts_outside_template`. Look up `DECLINE POST-REVIEW` snippet from canonical doc `1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4` via `gog docs export`. Fill `{first_name}`, `{their_subject}`, `{reason}` (one-line specific reason from the buy-box screen output). Create as Gmail draft via `gog gmail drafts create --account kay.s@greenwichandbarrow.com --gmail-no-send`. If template not found, skip with warning to morning briefing — do NOT draft ad-hoc copy. Also: log the deal in vault with reason. Tag the intermediary's Attio People record with the deal type they sent (e.g., `sends: manufacturing`, `sends: healthcare`) for future filtering.
 - **"Move to owner call"** → request a management call directly via the intermediary. Skips the ad-hoc "need more info" info-gathering pattern (deprecated 2026-05-04 — too rare for broker engagement; we move to owner conversation instead). Trigger deal-evaluation Phase 4 (call prep) with `pending_owner_call: true`.
 - **"Save for later" / "Table"** → no action, stays in inbox queue.
 
@@ -999,7 +1015,7 @@ Extract all external meetings (skip internal/team calls). Each meeting is a sign
 
 ### Gmail
 ```bash
-gog gmail search "after:{YESTERDAY} before:{TODAY}" --json --max 30
+gog gmail search "after:{YESTERDAY} before:{TODAY}" --json --max 30 --account kay.s@greenwichandbarrow.com --gmail-no-send
 ```
 Look for:
 - NDA documents (PDF attachments with "NDA" in subject/filename) → NDA Executed
@@ -1233,7 +1249,7 @@ Pipeline updates complete:
 1. `gog calendar list --from {TODAY} --to {TOMORROW} --json` — list TODAY (D+0) and TOMORROW (D+1) events. Per `memory/feedback_preflight_covers_today_and_tomorrow.md` (2026-05-06): D+1-only scans drop same-day externals. Always scan D+0 + D+1, no exceptions.
    - **Friday rule:** scan covers **today + Mon AND Tue** (weekend briefing is lighter and may miss Monday)
    - **Sunday rule:** scan covers **today + Monday** (standard)
-2. Filter to external meetings only (skip internal/team calls — Camilla, JJ, etc.).
+2. Filter to external meetings only (skip internal/team calls — Camilla, cold-call ops, etc.).
 3. For each external meeting: check session-decisions files from the prior 3 days. If Kay has already approved or declined a brief for this meeting, SKIP — do not re-ask.
 4. For each remaining external meeting, surface as a Decisions-bucket item using Obama framing:
    - **RECOMMEND: Generate brief for {name} ({time} {date})** — [one-sentence cadence/context reason] → **YES / NO / LET'S DISCUSS**
@@ -1265,10 +1281,10 @@ Bounced emails damage Kay's sender domain reputation. Her email is her entire bu
 
 After pipeline updates, surface any follow-up tasks:
 
-- **"Need to Send Thank You"** → FIRST verify Kay hasn't already sent the thank you (search `from:kay.s@greenwichandbarrow.com to:{contact_email} newer_than:7d`). If already sent, auto-move to Nurture and skip. If not sent: classify recipient as intermediary (broker/IB/lawyer/CPA) vs other.
+- **"Need to Send Thank You"** → FIRST verify Kay hasn't already sent the thank you (search `from:kay.s@greenwichandbarrow.com to:{contact_email} newer_than:7d` with `--account kay.s@greenwichandbarrow.com --gmail-no-send`). If already sent, auto-move to Nurture and skip. If not sent: classify recipient as intermediary (broker/IB/lawyer/CPA) vs other.
   - **Intermediary thank-you** → MANDATORY template-driven per `feedback_no_intermediary_drafts_outside_template`. Look up THANK YOU snippet from canonical doc `1gTQoCbaX8IyrTDli4Xd6IBtCqCT-DwciOUnNmgv0_J4` via `gog docs export`. Fill `{first_name}`, `{call_callback}` (1-2 sentences from Granola transcript referencing specific topics they raised), `{next_step}` (1 sentence committing to the action item from the call). If template not found in doc, skip with warning surfaced to morning briefing. Do NOT draft ad-hoc body copy.
   - **Non-intermediary thank-you** (owner, peer, investor, internal) → draft personalized using Kay's voice (memory: `user_outreach_voice.md`), referencing Granola/call/calendar specifics. No template doctrine for these audiences yet.
-  - In both cases, create as Gmail draft via `gog gmail draft` (USE-GOG-FALLBACK decision 2026-05-04, supersedes the prior `gmail-draft.sh` wrapper plan).
+  - In both cases, create as Gmail draft via `gog gmail drafts create --account kay.s@greenwichandbarrow.com --gmail-no-send`.
 - **Introduction promised** → ask Kay for the person's name/company. Create `brain/entities/{slug}.md` in the vault with proper schema. If the intro is to a target company owner, add them to Attio Active Deals at "Identified" stage. If the intro is to an intermediary (broker/IB/lawyer/CPA), do NOT create a pipeline entry — log to the broker target Sheet per `feedback_brokers_stay_in_sheet_until_reply`. When the intro email arrives later, they're already tracked.
 - **Introduction received** → match the intro email to the tracked entity, move to "Contacted" stage
 - **NDA Executed** → remind to request financials if not already received

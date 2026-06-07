@@ -28,6 +28,8 @@ curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KE
 ```
 
 **Forbidden in the scan artifact:** writing "MCP unauthenticated / disconnected / unavailable" as a system-status alert without first running the op-env resolve + REST health-check above. Phantom outages corrupt downstream decisions.
+
+**Gmail auth and no-send safety:** Scheduled runs use the durable `gog` OAuth token for `kay.s@greenwichandbarrow.com`, unlocked by `GOG_KEYRING_PASSWORD` from 1Password via `op-env.sh`. Before diagnosing Gmail as unavailable, run `gog auth list --check` after sourcing `op-env.sh`. Every Gmail command should pass `--account kay.s@greenwichandbarrow.com --gmail-no-send`; drafts may be created, but send, draft-send, forward, and autoreply paths are forbidden.
 </credentials>
 
 <objective>
@@ -55,7 +57,7 @@ Scan all inbound and outbound email, Gmail drafts, and Granola transcripts. Clas
 
 ### Inbound Email Scan
 ```bash
-gog gmail search "newer_than:2d label:INBOX" --json --max 50
+gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send "newer_than:2d label:INBOX" --json --max 50
 ```
 
 For each email, classify and extract:
@@ -66,7 +68,7 @@ For each email, classify and extract:
 
 ### Outbound Email Scan
 ```bash
-gog gmail search "from:kay.s@greenwichandbarrow.com newer_than:2d" --json --max 50
+gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send "from:kay.s@greenwichandbarrow.com newer_than:2d" --json --max 50
 ```
 
 Detect manually-sent outreach emails not created by outreach-manager. If Kay sent an email to a target in the Active Deals pipeline, update the cadence tracking.
@@ -83,7 +85,7 @@ When describing actions Kay took via email, use the **exact language from the co
 **When the reply from the vendor is available, quote the key phrase** (e.g., "downgraded back to Starter tier" per Reid at Linkt). When no reply exists, say "requested" not "confirmed."
 
 ### Gmail Draft Status
-Check Gmail drafts via `gog gmail draft list --json`:
+Check Gmail drafts via `gog gmail drafts list --account kay.s@greenwichandbarrow.com --gmail-no-send --json`:
 - Which drafts were sent vs still pending
 - Age of unsent drafts (flag if > 48 hours)
 - Cadence triggers from sent drafts
@@ -296,18 +298,18 @@ Got it, reviewing this week and will follow up with my read by {{end_of_week_dat
 
 ### Draft creation
 
-Drafts go into Gmail via `~/.local/bin/gmail-draft.sh`. NEVER call `gog gmail send` for these. If the wrapper is missing, fall back to `gog gmail draft create` directly with the same payload. DO NOT skip silently.
+Drafts go into Gmail via `~/.local/bin/gmail-draft.sh`. NEVER call `gog gmail send`, `gog gmail drafts send`, `gog gmail forward`, or `gog gmail autoreply` for these. If the wrapper is missing, fall back to `gog gmail drafts create --account kay.s@greenwichandbarrow.com --gmail-no-send` directly with the same payload. DO NOT skip silently.
 
 Pass:
 - `--to` (broker email)
 - `--subject` (rendered with `Re:` prefix logic)
 - `--body` (rendered template, plain text)
-- `--in-reply-to` (the inbound message ID, so Gmail threads it)
+- `--reply-to-message-id` (the inbound Gmail message ID, so Gmail threads it)
 
 ### Forbidden patterns
 
 - **Auto-send broker NDA/CIM acknowledgment without Kay review.** This NEVER fires. Drafts are CREATED only. Per `feedback_kay_handles_all_replies` Kay sends every reply herself.
-- Use any non-Gmail drafting tool or send-capable command.
+- Use any non-Gmail drafting tool or send-capable command, including Gmail `send`, draft `send`, `forward`, or `autoreply`.
 
 ### Logging
 

@@ -332,3 +332,10 @@ These are intentional improvements to consider after Phase 2 monitoring, before 
    - Preserve `goodnight` if its existing structure remains solid, with only Codex terminology/tooling updates as needed.
    - Reassess whether `savestate` and `pickingback` are still needed in Codex. They existed mainly because long Claude Code sessions became thin and required manual session handoff.
    - If still useful, convert them into lightweight Codex handoff/checkpoint workflows rather than automatically committing, updating skills, or adding hooks without an explicit reason.
+
+5. Credential and OAuth routing audit:
+   - Review every migrated skill, scheduled prompt, hook, and helper script that depends on OAuth, API keys, credits, or service tokens.
+   - Any secret needed by scheduled jobs should resolve through 1Password explicitly, not through implicit shell memory or stale Claude-era assumptions.
+   - Confirm `gog`/Google access, Apollo, Attio, Slack, OpenAI/Codex, GitHub, and any other service auth paths are documented in the skill or runner that uses them.
+   - Where a service uses a durable local OAuth token rather than a raw API key, document that intentionally and add a health check so failures say what to refresh.
+   - Avoid the old failure mode where a skill looks for a local token, cannot find it, and does not know to use or refresh the corresponding 1Password-backed path.

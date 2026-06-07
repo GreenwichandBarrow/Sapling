@@ -5,10 +5,11 @@ You are running the `email-intelligence` skill non-interactively under systemd a
 ## Mandatory ordering - execute in this exact sequence
 
 1. **Read SKILL.md fully** at `.agents/skills/email-intelligence/SKILL.md`. Internalize every `<*_auto_trigger>` block and the `<artifact>` schema.
+1a. **Resolve credentials before any service call.** Source `/home/ubuntu/projects/Sapling/scripts/op-env.sh`, then run `gog auth list --check` if Gmail access fails or appears missing. Do not report a Gmail/OAuth outage until `op-env.sh` has been sourced and the durable `gog` token has been checked.
 2. **Pull source data:**
-   - Inbound Gmail (`gog gmail search "newer_than:2d label:INBOX" --json --max 50`)
-   - Outbound Gmail (`gog gmail search "from:kay.s@greenwichandbarrow.com newer_than:2d" --json --max 50`)
-   - Gmail drafts (`gog gmail draft list --json`)
+   - Inbound Gmail (`gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send "newer_than:2d label:INBOX" --json --max 50`)
+   - Outbound Gmail (`gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send "from:kay.s@greenwichandbarrow.com newer_than:2d" --json --max 50`)
+   - Gmail drafts (`gog gmail drafts list --account kay.s@greenwichandbarrow.com --gmail-no-send --json`)
    - Granola transcripts via `~/.local/bin/granola-api since <iso-checkpoint>` and `granola-api get-note <note_id>` for any meetings since last run; MCP is optional only
    - `brain/context/session-decisions-{previous-workday}.md` for cross-check before flagging drafts as stale
 3. **Per-email classification + urgent side effects.** Walk the inbound list. For each email:
@@ -40,6 +41,7 @@ You are running the `email-intelligence` skill non-interactively under systemd a
 
 - Asking the user anything ("would you like me to...", "should I run budget-manager...", "do you want me to proceed...").
 - Presenting RECOMMEND / YES / NO / DISCUSS framings for any auto-trigger pathway. The auto-triggers (CIM, Active Deal Fast-Path, bookkeeper P&L) are deterministic - they fire without approval per their SKILL.md sections.
+- Sending email in any form. Forbidden commands include `gog gmail send`, `gog gmail drafts send`, `gog gmail draft send`, `gog gmail forward`, and `gog gmail autoreply`. Draft creation is allowed only through explicit draft-create paths.
 - **Creating the bookkeeper trigger inbox item and stopping there.** Step 4c (invoke budget-manager) is mandatory, not optional. Skipping it is the root failure this prompt exists to prevent.
 - Surfacing the bookkeeper P&L trigger as a Decision item in any artifact section. The trigger is wired; only the OUTPUT (variance flags, runway change) is decision-worthy and that lives in budget-manager's own artifact.
 - Halting on a single optional integration failure (Granola REST/API, Attio REST/API, or MCP convenience path) - graceful-degrade, log the failure mode in the artifact's Actionable Items section, continue.

@@ -19,7 +19,7 @@ find .agents/skills scripts -type f \
   -print0 |
 while IFS= read -r -d '' file; do
   awk -v file="$file" '
-    /^[[:space:]]*(gog[[:space:]]+(send([[:space:]]|$)|gmail[[:space:]]+send([[:space:]]|$)|gmail[[:space:]]+drafts[[:space:]]+send([[:space:]]|$))|python[0-9.]*[[:space:]].*messages\.send|curl[[:space:]].*messages\.send|.*send_email[[:space:]]*\()/ {
+    /^[[:space:]]*(gog[[:space:]]+(send([[:space:]]|$)|gmail[[:space:]]+(send|forward|autoreply)([[:space:]]|$)|gmail[[:space:]]+drafts?[[:space:]]+send([[:space:]]|$))|python[0-9.]*[[:space:]].*messages\.send|curl[[:space:]].*messages\.send|.*send_email[[:space:]]*\()/ {
       printf "%s:%d:%s\n", file, FNR, $0
     }
   ' "$file"

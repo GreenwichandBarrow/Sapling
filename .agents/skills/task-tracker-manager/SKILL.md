@@ -11,7 +11,15 @@ context_budget:
 
 # Task Tracker Manager
 
-Standing owner of Kay's personal task system. The tracker lives as weekly Google Sheets files in the `To Do Archive` Drive folder. Each Sunday's `build-week` Drive-copies the prior week's file into a new `TO DO M.D.YY` file (e.g., `TO DO 5.31.26`); the prior file becomes immutable history. The **current week's sheet ID is resolved dynamically** via `scripts/tracker_sheet_resolver.py` (hybrid pointer + Drive-search fallback; pointer at `~/.claude/config/current-tracker-sheet.json`). Use `python3 scripts/tracker_sheet_resolver.py --print-id` to print the current ID for shell consumers; the resolver auto-rebuilds the pointer if missing/stale. Built 2026-04-26 on Excel; migrated to Google Sheets 2026-05-12; weekly-files architecture shipped 2026-05-26. This skill is the operational layer — Chief of Staff calls into it, this skill executes.
+Standing owner of Kay's personal task system. The tracker lives as weekly Google Sheets files in the `To Do Archive` Drive folder. Each Sunday's `build-week` Drive-copies the prior week's file into a new `TO DO M.D.YY` file (e.g., `TO DO 5.31.26`); the prior file becomes immutable history. The **current week's sheet ID is resolved dynamically** via `scripts/tracker_sheet_resolver.py` (hybrid pointer + Drive-search fallback; canonical pointer at `~/.config/sapling/current-tracker-sheet.json`; legacy `~/.claude/config/current-tracker-sheet.json` is read fallback only). Use `python3 scripts/tracker_sheet_resolver.py --print-id` to print the current ID for shell consumers; the resolver auto-rebuilds the pointer if missing/stale. Built 2026-04-26 on Excel; migrated to Google Sheets 2026-05-12; weekly-files architecture shipped 2026-05-26. This skill is the operational layer — Chief of Staff calls into it, this skill executes.
+
+**Credential prerequisite:** before any manual `gog` / Google-backed task-tracker command, use the 1Password-backed helper:
+
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+```
+
+`scripts/task_tracker.py` and `scripts/tracker_sheet_resolver.py` also source this helper for their internal `gog` subprocesses. If Google access appears missing, check this path before diagnosing OAuth, rotating credentials, or reporting an outage.
 
 Architecture lives in `memory/project_personal_task_tracker.md`. Update that memory whenever the architecture changes.
 

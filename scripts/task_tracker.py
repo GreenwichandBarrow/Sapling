@@ -27,8 +27,9 @@ Subcommands:
     report                  Markdown health summary (overdue, empty slots, carryover).
     gantt-tick              Fill a week-cell on a Gantt project tab.
 
-Auth: gog refresh token from ~/.config/gogcli/credentials.json. API quota
-retried with exponential backoff. Affected ranges snapshotted to
+Auth: gog refresh token from ~/.config/gogcli/credentials.json, with
+GOG_KEYRING_PASSWORD resolved through scripts/op-env.sh before gog calls. API
+quota retried with exponential backoff. Affected ranges snapshotted to
 brain/context/rollback-snapshots/tasks-{verb}-{timestamp}.json before each write.
 """
 
@@ -55,6 +56,18 @@ SNAPSHOT_KEEP = 5
 
 GOG_CREDS_PATH = Path.home() / ".config" / "gogcli" / "credentials.json"
 GOG_ACCOUNT = os.environ.get("GOG_ACCOUNT", "kay.s@greenwichandbarrow.com")
+
+
+def _run_gog(args: list[str], *, timeout: int = 30) -> subprocess.CompletedProcess:
+    """Run gog with 1Password-backed environment loaded when needed."""
+    command = "source scripts/op-env.sh >/dev/null 2>&1 || true; exec \"$@\""
+    return subprocess.run(
+        ["bash", "-lc", command, "gog-wrapper", "gog", *args],
+        cwd=_REPO_ROOT,
+        capture_output=True,
+        text=True,
+        timeout=timeout,
+    )
 
 # Sheet ID resolution — env override > resolver pointer > Drive search > migration fallback.
 # Resolver lives in scripts/tracker_sheet_resolver.py (2026-05-26 refactor: weekly-files architecture).
@@ -389,9 +402,9 @@ def _get_access_token() -> str:
     with tempfile.NamedTemporaryFile("r", suffix=".json", delete=False) as tmp:
         tmp_path = Path(tmp.name)
     try:
-        export = subprocess.run(
-            ["gog", "auth", "tokens", "export", GOG_ACCOUNT, "--out", str(tmp_path), "--overwrite"],
-            capture_output=True, text=True, timeout=15,
+        export = _run_gog(
+            ["auth", "tokens", "export", GOG_ACCOUNT, "--out", str(tmp_path), "--overwrite"],
+            timeout=15,
         )
         if export.returncode != 0:
             sys.exit(f"task-tracker-manager: gog token export failed: {export.stderr[:200]}")
@@ -1240,10 +1253,7 @@ def _pull_carryover_to_week(client: "SheetsClient", dry_run: bool = False) -> di
 
 def _drive_copy_file(src_file_id: str, new_title: str) -> str:
     """Drive-copy a sheet to a new file. Returns new file ID. Raises on failure."""
-    result = subprocess.run(
-        ["gog", "drive", "copy", src_file_id, new_title, "--json"],
-        capture_output=True, text=True, timeout=60
-    )
+    result = _run_gog(["drive", "copy", src_file_id, new_title, "--json"], timeout=60)
     if result.returncode != 0:
         raise RuntimeError(f"gog drive copy failed: {result.stderr.strip() or result.stdout.strip()}")
     try:
@@ -1258,10 +1268,7 @@ def _drive_copy_file(src_file_id: str, new_title: str) -> str:
 
 def _drive_move_file(file_id: str, parent_folder_id: str) -> None:
     """Move a file under a parent folder. Idempotent."""
-    result = subprocess.run(
-        ["gog", "drive", "move", file_id, "--parent", parent_folder_id],
-        capture_output=True, text=True, timeout=30
-    )
+    result = _run_gog(["drive", "move", file_id, "--parent", parent_folder_id], timeout=30)
     if result.returncode != 0:
         # Non-fatal — log warning
         print(f"task-tracker-manager: WARN drive move failed ({result.stderr.strip()})", file=sys.stderr)
@@ -1269,12 +1276,11 @@ def _drive_move_file(file_id: str, parent_folder_id: str) -> None:
 
 def _find_to_do_archive_folder_id() -> str | None:
     """Find the 'To Do Archive' folder by name. Returns ID or None (caller falls back to legacy parent)."""
-    result = subprocess.run(
-        ["gog", "drive", "search",
-         "name = 'To Do Archive' and mimeType = 'application/vnd.google-apps.folder' and trashed = false",
-         "--raw-query", "--json"],
-        capture_output=True, text=True, timeout=30
-    )
+    result = _run_gog([
+        "drive", "search",
+        "name = 'To Do Archive' and mimeType = 'application/vnd.google-apps.folder' and trashed = false",
+        "--raw-query", "--json",
+    ], timeout=30)
     if result.returncode != 0:
         return None
     try:

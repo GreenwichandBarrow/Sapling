@@ -53,7 +53,7 @@ JJ-operations runs independently via launchd (8am) and posts to Slack at 10am. D
   ```
 
   That single call dispatches to `cmd_build_week_v2` and executes the full cross-file rollover end-to-end:
-  1. Resolves prior file via `scripts/tracker_sheet_resolver.py` (pointer at `~/.claude/config/current-tracker-sheet.json`, Drive-search fallback)
+  1. Resolves prior file via `scripts/tracker_sheet_resolver.py` (canonical pointer at `~/.config/sapling/current-tracker-sheet.json`; legacy Claude pointer is read fallback only; Drive-search fallback)
   2. Snapshots prior file (Week + 7 day tabs + To Do) to rollback JSON
   3. `gog drive copy` → new file `TO DO {next-Sun-date}.YY` (e.g., `TO DO 5.31.26`)
   4. Moves new file into `To Do Archive` Drive folder

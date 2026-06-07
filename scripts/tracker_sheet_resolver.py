@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """tracker_sheet_resolver.py — discover the current week's TO DO sheet ID.
 
-Hybrid pointer + Drive-search resolver. Pointer at ~/.claude/config/current-tracker-sheet.json
-holds {sheet_id, title, week_of, updated_at}. Updated atomically by the build-week verb.
+Hybrid pointer + Drive-search resolver. Pointer at
+~/.config/sapling/current-tracker-sheet.json holds {sheet_id, title, week_of,
+updated_at}. The legacy Claude pointer path remains a read fallback only.
+Updated atomically by the build-week verb.
 
 Resolution order:
   1. TRACKER_SHEET_ID env var (backward-compat override)
@@ -30,7 +32,10 @@ from typing import Optional
 
 # ---- constants ----
 
-POINTER_PATH = Path.home() / ".claude" / "config" / "current-tracker-sheet.json"
+_SCRIPT_DIR = Path(__file__).resolve().parent
+_REPO_ROOT = _SCRIPT_DIR.parent
+POINTER_PATH = Path.home() / ".config" / "sapling" / "current-tracker-sheet.json"
+LEGACY_POINTER_PATH = Path.home() / ".claude" / "config" / "current-tracker-sheet.json"
 TRACKER_FOLDER_NAME = "To Do Archive"  # Kay created 2026-05-26
 LEGACY_PARENT_FOLDER_ID = "12IpnsQ5V_M1fiTm0NZM9wKhlerauILMd"  # STRATEGIC PLANNING (pre-migration)
 SHEET_NAME_PATTERN = re.compile(r"^TO DO (\d{1,2})\.(\d{1,2})\.(\d{2,4})$")
@@ -43,13 +48,17 @@ _PROCESS_CACHE: dict = {"value": None}
 # ---- pointer I/O ----
 
 def _read_pointer() -> Optional[dict]:
-    try:
-        if not POINTER_PATH.exists():
-            return None
-        with open(POINTER_PATH) as f:
-            return json.load(f)
-    except (json.JSONDecodeError, OSError):
-        return None
+    for path in (POINTER_PATH, LEGACY_POINTER_PATH):
+        try:
+            if not path.exists():
+                continue
+            with open(path) as f:
+                pointer = json.load(f)
+            pointer.setdefault("_pointer_path", str(path))
+            return pointer
+        except (json.JSONDecodeError, OSError):
+            continue
+    return None
 
 
 def write_pointer(sheet_id: str, title: str, week_of: date) -> None:
@@ -93,9 +102,14 @@ def _is_pointer_fresh(pointer: dict, today: Optional[date] = None) -> bool:
 def _gog_drive_search(query: str) -> list:
     """Run gog drive search via subprocess. Returns list of file dicts (id, name, createdTime)."""
     try:
+        command = "source scripts/op-env.sh >/dev/null 2>&1 || true; exec \"$@\""
         result = subprocess.run(
-            ["gog", "drive", "search", query, "--raw-query", "--json"],
-            capture_output=True, text=True, timeout=30
+            [
+                "bash", "-lc", command, "gog-wrapper",
+                "gog", "drive", "search", query, "--raw-query", "--json",
+            ],
+            cwd=_REPO_ROOT,
+            capture_output=True, text=True, timeout=30,
         )
         if result.returncode != 0:
             return []

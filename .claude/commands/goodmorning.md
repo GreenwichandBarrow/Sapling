@@ -4,7 +4,7 @@ description: Morning orchestration — email-intel, relationship-manager, pipeli
 
 # /goodmorning
 
-Morning bookend to `/goodnight`. Kay says "good morning claude" or invokes `/goodmorning` → full morning workflow per CLAUDE.md executes in one call.
+Morning bookend to `/goodnight`. Kay says "good morning DaVinci" or invokes `/goodmorning` → full Codex-native morning workflow executes in one call.
 
 ## Execute Now
 
@@ -12,7 +12,7 @@ Morning bookend to `/goodnight`. Kay says "good morning claude" or invokes `/goo
 
 Spawn in a single message:
 
-- **email-intelligence** → writes `brain/context/email-scan-results-{date}.md` (Gmail, Superhuman, Granola scanning)
+- **email-intelligence** → writes `brain/context/email-scan-results-{date}.md` (Gmail + approved Google/Granola sources; no Superhuman dependency)
 - **relationship-manager** → writes `brain/context/relationship-status-{date}.md` (nurture cadences, overdue contacts)
 
 ### Step 2 — Cross-reference previous session-decisions
@@ -40,9 +40,9 @@ For each niche with status `Active-Outreach` on the Industry Research Tracker:
 - If new activation with no target sheet OR weekly dashboard flagged refill needed → run target-discovery
 - Skip niches with adequate pipeline
 
-### Step 5 — JJ-operations
+### Step 5 — Cold call operations
 
-JJ-operations runs independently via launchd (8am) and posts to Slack at 10am. Do NOT re-run during /goodmorning — it has its own schedule. Verify it fired by checking `logs/scheduled/jj-operations-{date}.log` and flag if missing.
+Cold call operations run independently via systemd and post to Slack. Do NOT re-run during /goodmorning — it has its own schedule. Verify it fired by checking the cold-call operation logs and flag if missing.
 
 ### Step 6 — Day-of-week overlays
 
@@ -52,7 +52,9 @@ JJ-operations runs independently via launchd (8am) and posts to Slack at 10am. D
   python3 /home/ubuntu/projects/Sapling/scripts/task_tracker.py build-week
   ```
 
-  That single call dispatches to `cmd_build_week_v2` and executes the full cross-file rollover end-to-end:
+  First run a dry-run / existing-file check. If a `TO DO {today's Sunday}.YY` file already exists, do **not** create another one. Treat the existing file as the weekly canvas and verify the pointer instead.
+
+  That single call dispatches to `cmd_build_week_v2` and executes the full cross-file rollover end-to-end when no current-week file exists:
   1. Resolves prior file via `scripts/tracker_sheet_resolver.py` (canonical pointer at `~/.config/sapling/current-tracker-sheet.json`; legacy Claude pointer is read fallback only; Drive-search fallback)
   2. Snapshots prior file (Week + 7 day tabs + To Do) to rollback JSON
   3. `gog drive copy` → new file `TO DO {next-Sun-date}.YY` (e.g., `TO DO 5.31.26`)
@@ -67,7 +69,7 @@ JJ-operations runs independently via launchd (8am) and posts to Slack at 10am. D
 
   **After build-week completes:** Kay reviews the new file's Week tab (formula mirror of day tabs) and adjusts items DIRECTLY on day tabs (Week tab auto-updates via formulas). No separate distribute-week needed. No manual carryover walk needed.
 
-  **Optional flags:** `--dry-run` (JSON preview, no writes), `--skip-recurring`, `--skip-carryover`, `--legacy` (pre-2026-05-26 in-place rebuild for recovery), `--title-prefix STR` / `--no-pointer-update` / `--no-folder-move` (sandbox testing).
+  **Optional flags:** `--dry-run` (JSON preview, no writes), `--skip-recurring`, `--skip-carryover`, `--legacy` (pre-2026-05-26 in-place rebuild for recovery), `--refresh-pointer` (recovery only), `--title-prefix STR` / `--no-pointer-update` / `--no-folder-move` / `--force-new-file` (sandbox testing only).
 
   **Prior file** stays in Drive as immutable history (in `To Do Archive` folder). Never edit a frozen prior file — drift won't propagate to the live week.
 

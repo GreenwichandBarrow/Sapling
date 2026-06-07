@@ -40,6 +40,8 @@ Single autonomous command via `/goodmorning` Sunday step:
 python3 /home/ubuntu/projects/Sapling/scripts/task_tracker.py build-week
 ```
 
+Before a live build, `build-week` trusts the canonical pointer by default and checks for an existing `TO DO {Sunday}.YY` file. If one already exists, routine runs refuse to create a duplicate. Use `--refresh-pointer` only for recovery and `--force-new-file` only for explicit sandbox/testing copies.
+
 `cmd_build_week` dispatches to `cmd_build_week_v2` which executes end-to-end:
 1. Resolve PRIOR file via `tracker_sheet_resolver.py` (pointer fast-path, Drive-search fallback)
 2. Snapshot prior file (Week + 7 day tabs + To Do) to rollback JSON
@@ -88,6 +90,7 @@ Steps are atomic within a single `build-week` invocation. No separate human gate
 - Sunday morning as part of `goodmorning` → **build-week** (weekly rebuild ceremony — targets the **Week planning tab**: writes a combined far-right `archive_{Sun-date}` tab of the prior Week tab, clears all 7 day-blocks on the Week tab + re-titles it, stamps the recurring `To Do` rows **onto the Week tab**; day tabs untouched; `--skip-recurring` to bypass; `--dry-run` to preview). `archive` is a DEPRECATED alias that delegates here.
 - After Kay finalizes the week on the Week tab (Sunday) → **distribute-week** (fans the finalized Week plan OUT into the 7 day tabs; collision-aware, `--dry-run` / `--force` / `--day {X}`)
 - Kay says "move {day} slot N to {day}" / approves a carryover during the Sunday walkthrough → **move-day-item** (`--state completed|incomplete|added|deleted`)
+- `/goodnight` daily closeout → **carry-forward-day** (moves all unchecked/non-empty priority slots from today's day tab to tomorrow's next empty slots; no item-by-item approval needed; `--dry-run` available)
 - Kay says "make X a weekly recurring task on {day}" / "always put Y on Mondays" → **recurring-add**
 - Kay says "stop the recurring task in row N" / "drop the recurring X" → **recurring-remove**
 - Kay says "start a project for X" / "create a Gantt for {project}" → **projects-create-gantt**

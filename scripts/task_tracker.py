@@ -582,6 +582,7 @@ _RECEIPT_VERBS = {
     "schedule-to-day-slot",
     "build-week",
     "build-week-v2",
+    "carry-forward-day",
     "distribute-week",
     "reformat",
 }
@@ -1274,20 +1275,36 @@ def _drive_move_file(file_id: str, parent_folder_id: str) -> None:
         print(f"task-tracker-manager: WARN drive move failed ({result.stderr.strip()})", file=sys.stderr)
 
 
-def _find_to_do_archive_folder_id() -> str | None:
-    """Find the 'To Do Archive' folder by name. Returns ID or None (caller falls back to legacy parent)."""
-    result = _run_gog([
-        "drive", "search",
-        "name = 'To Do Archive' and mimeType = 'application/vnd.google-apps.folder' and trashed = false",
-        "--raw-query", "--json",
-    ], timeout=30)
+def _drive_search_files(query: str) -> list[dict]:
+    result = _run_gog(["drive", "search", query, "--raw-query", "--json"], timeout=30)
     if result.returncode != 0:
-        return None
+        return []
     try:
         data = json.loads(result.stdout) if result.stdout.strip() else []
     except json.JSONDecodeError:
-        return None
-    files = data if isinstance(data, list) else data.get("files", []) or data.get("results", []) or []
+        return []
+    if isinstance(data, list):
+        return data
+    return data.get("files", []) or data.get("results", []) or []
+
+
+def _find_existing_tracker_files(title: str) -> list[dict]:
+    safe_title = title.replace("'", "\\'")
+    query = (
+        f"name = '{safe_title}' "
+        "and mimeType = 'application/vnd.google-apps.spreadsheet' "
+        "and trashed = false"
+    )
+    files = _drive_search_files(query)
+    files.sort(key=lambda f: f.get("modifiedTime", ""), reverse=True)
+    return files
+
+
+def _find_to_do_archive_folder_id() -> str | None:
+    """Find the 'To Do Archive' folder by name. Returns ID or None (caller falls back to legacy parent)."""
+    files = _drive_search_files(
+        "name = 'To Do Archive' and mimeType = 'application/vnd.google-apps.folder' and trashed = false"
+    )
     if not files:
         return None
     return files[0].get("id")
@@ -1508,6 +1525,7 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
 
     # ---- dry-run preview ----
     if getattr(args, "dry_run", False):
+        existing_files = [] if getattr(args, "force_new_file", False) else _find_existing_tracker_files(new_title)
         preview = {
             "prior_sheet": prior_info,
             "would_create": new_title,
@@ -1515,6 +1533,15 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
             "destination_folder": "To Do Archive (resolved at write time)",
             "recurring_preview": _stamp_recurring_day_tabs.__doc__ and "see helper",
             "formula_count_estimate": 7 * 3,  # 3 ranges per day (status slots, task slots, habit checkboxes)
+            "existing_target_files": [
+                {
+                    "id": f.get("id"),
+                    "name": f.get("name"),
+                    "modifiedTime": f.get("modifiedTime"),
+                    "webViewLink": f.get("webViewLink"),
+                }
+                for f in existing_files
+            ],
         }
         # Carryover dry-run preview against current state (best-effort — won't reflect post-stamp)
         try:
@@ -1528,6 +1555,22 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
             preview["carryover_preview_count"] = "unknown"
         print(json.dumps(preview, indent=2, default=str))
         return 0
+
+    existing_files = [] if getattr(args, "force_new_file", False) else _find_existing_tracker_files(new_title)
+    if existing_files:
+        print(
+            f"task-tracker-manager: refused build-week — {len(existing_files)} existing "
+            f"file(s) named {new_title!r} already exist. This prevents duplicate weekly files.",
+            file=sys.stderr,
+        )
+        for f in existing_files[:5]:
+            print(
+                f"  - {f.get('id')} modified={f.get('modifiedTime')} "
+                f"url={f.get('webViewLink', '')}",
+                file=sys.stderr,
+            )
+        print("task-tracker-manager: use --force-new-file only for explicit sandbox/testing copies.", file=sys.stderr)
+        return 1
 
     # ---- 1. Snapshot prior file (Week + all 7 day tabs + To Do) ----
     snap_ranges = [f"'{TAB_WEEK}'!A1:O51"] + \
@@ -1703,7 +1746,7 @@ def cmd_build_week(args) -> int:
         except ImportError as e:
             print(f"task-tracker-manager: resolver import failed ({e}); falling back to --legacy mode", file=sys.stderr)
         else:
-            prior_info = resolve_current_sheet(force_refresh=True)
+            prior_info = resolve_current_sheet(force_refresh=getattr(args, "refresh_pointer", False))
             prior_client = SheetsClient(prior_info["sheet_id"])
             return cmd_build_week_v2(args, prior_client, prior_info)
 
@@ -2978,6 +3021,151 @@ def cmd_move_day_item(args) -> int:
     return 0
 
 
+def cmd_carry_forward_day(args) -> int:
+    """Move all incomplete items from one day tab to the next day's empty slots.
+
+    Default is today -> tomorrow. Completed and empty slots stay where they are.
+    This is the Good Night carry-forward path: it does not require Kay to approve
+    each individual move.
+    """
+    today = date.today()
+    src_name = _resolve_day_tab_name(args.from_day) if args.from_day else DAY_LABELS[today.weekday()]
+    dst_name = _resolve_day_tab_name(args.to_day) if args.to_day else DAY_LABELS[(today.weekday() + 1) % 7]
+
+    if src_name == dst_name:
+        sys.exit("task-tracker-manager: refused carry-forward-day — source and destination are the same day")
+
+    client = SheetsClient()
+    meta = client.get_metadata()
+    if find_day_tab(meta, src_name) is None:
+        sys.exit(f"task-tracker-manager: source day tab '{src_name}' not found")
+    if find_day_tab(meta, dst_name) is None:
+        sys.exit(f"task-tracker-manager: destination day tab '{dst_name}' not found")
+
+    src_vals = client.get_values(
+        day_tab_block(src_name, DAY_COL_STATUS, DAY_COL_LAST, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW)
+    )
+    dst_tasks = client.get_values(
+        day_tab_range(dst_name, DAY_COL_TASK, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW)
+    )
+
+    dst_empty_slots = [
+        i + 1 for i in range(DAY_SLOT_COUNT)
+        if not (dst_tasks[i][0] if i < len(dst_tasks) and dst_tasks[i] else "")
+    ]
+    moves: list[dict] = []
+    for i in range(DAY_SLOT_COUNT):
+        row = src_vals[i] if i < len(src_vals) else []
+        status = row[DAY_COL_STATUS] if len(row) > DAY_COL_STATUS else ""
+        task = row[DAY_COL_TASK] if len(row) > DAY_COL_TASK else ""
+        task_text = str(task or "").strip()
+        if not task_text or task_text.lower() == "task" or _is_truthy(status):
+            continue
+        if not dst_empty_slots:
+            moves.append({
+                "src_slot": i + 1,
+                "task": task_text,
+                "refused": "destination full",
+            })
+            continue
+        dst_slot = dst_empty_slots.pop(0)
+        moves.append({
+            "src_slot": i + 1,
+            "src_row": DAY_SLOT_FIRST_ROW + i,
+            "dst_slot": dst_slot,
+            "dst_row": DAY_SLOT_FIRST_ROW + dst_slot - 1,
+            "task": task_text,
+            "payload": [
+                False,
+                task_text,
+                row[DAY_COL_TYPE] if len(row) > DAY_COL_TYPE else "",
+                row[DAY_COL_PROJECT] if len(row) > DAY_COL_PROJECT else "",
+                row[DAY_COL_NOTES] if len(row) > DAY_COL_NOTES else "",
+            ],
+        })
+
+    refused = [m for m in moves if m.get("refused")]
+    planned = [m for m in moves if not m.get("refused")]
+
+    if args.dry_run:
+        print(f"task-tracker-manager: carry-forward-day (DRY RUN) {src_name} → {dst_name}")
+        print(f"  Would move: {len(planned)}")
+        print(f"  Refused: {len(refused)}")
+        for m in planned:
+            print(f"  - {src_name} slot {m['src_slot']} → {dst_name} slot {m['dst_slot']}: {m['task']}")
+        for m in refused:
+            print(f"  - REFUSED {src_name} slot {m['src_slot']}: {m['task']} ({m['refused']})")
+        return 0 if not refused else 1
+
+    if refused:
+        print(
+            f"task-tracker-manager: refused carry-forward-day — {len(refused)} item(s) "
+            f"could not fit in {dst_name}",
+            file=sys.stderr,
+        )
+        for m in refused:
+            print(f"  - {src_name} slot {m['src_slot']}: {m['task']} ({m['refused']})", file=sys.stderr)
+        return 1
+
+    if not planned:
+        print(f"task-tracker-manager: carry-forward-day complete — no incomplete {src_name} items to move")
+        return 0
+
+    snap = snapshot_ranges(client, "carry-forward-day", [
+        day_tab_block(src_name, DAY_COL_STATUS, DAY_COL_LAST, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW),
+        day_tab_block(dst_name, DAY_COL_STATUS, DAY_COL_LAST, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW),
+    ])
+
+    for m in planned:
+        client.values_update(
+            day_tab_block(dst_name, DAY_COL_STATUS, DAY_COL_LAST, m["dst_row"], m["dst_row"]),
+            [m["payload"]],
+        )
+
+    src_tab = find_day_tab(meta, src_name)
+    clear_reqs = []
+    for m in planned:
+        clear_reqs.append({
+            "repeatCell": {
+                "range": {
+                    "sheetId": src_tab["sheetId"],
+                    "startRowIndex": m["src_row"] - 1,
+                    "endRowIndex": m["src_row"],
+                    "startColumnIndex": DAY_COL_STATUS,
+                    "endColumnIndex": DAY_COL_LAST + 1,
+                },
+                "cell": {"userEnteredValue": {"stringValue": ""}},
+                "fields": "userEnteredValue",
+            }
+        })
+        clear_reqs.append({
+            "updateCells": {
+                "rows": [{"values": [{"userEnteredValue": {"boolValue": False}}]}],
+                "fields": "userEnteredValue",
+                "start": {
+                    "sheetId": src_tab["sheetId"],
+                    "rowIndex": m["src_row"] - 1,
+                    "columnIndex": DAY_COL_STATUS,
+                },
+            }
+        })
+    client.batch_update(clear_reqs)
+
+    trace("carry-forward-day", f"{src_name.lower()}-to-{dst_name.lower()}", [
+        f"- moved: {len(planned)}",
+        f"- source: {src_name}",
+        f"- destination: {dst_name}",
+        f"- snapshot: {snap}",
+        "",
+        *[
+            f"- {src_name} slot {m['src_slot']} → {dst_name} slot {m['dst_slot']}: {m['task']}"
+            for m in planned
+        ],
+    ])
+    print(f"task-tracker-manager: carry-forward-day complete — moved {len(planned)} item(s) {src_name} → {dst_name}")
+    return 0
+
+
 def cmd_gantt_tick(args) -> int:
     client = SheetsClient()
     meta = client.get_metadata()
@@ -3156,6 +3344,10 @@ def main():
                     help="skip pointer update — leaves resolver pointing at prior file (sandbox testing)")
     bw.add_argument("--no-folder-move", action="store_true",
                     help="skip move-to-To-Do-Archive — new file stays in source folder (sandbox testing)")
+    bw.add_argument("--force-new-file", action="store_true",
+                    help="allow creating a duplicate target weekly file. Testing only; routine runs should refuse duplicates.")
+    bw.add_argument("--refresh-pointer", action="store_true",
+                    help="force Drive search before resolving the prior file. Recovery only; routine runs trust the pointer.")
     bw.set_defaults(func=cmd_build_week)
 
     dw = sub.add_parser("distribute-week",
@@ -3195,6 +3387,16 @@ def main():
     mdi.add_argument("--force", action="store_true",
                      help="overwrite an occupied dest slot")
     mdi.set_defaults(func=cmd_move_day_item)
+
+    cf = sub.add_parser("carry-forward-day",
+                        help="Move all incomplete items from one day tab to the next day's empty slots.")
+    cf.add_argument("--from", dest="from_day", default=None,
+                    help="source day tab (default: today)")
+    cf.add_argument("--to", dest="to_day", default=None,
+                    help="destination day tab (default: tomorrow)")
+    cf.add_argument("--dry-run", action="store_true",
+                    help="show planned carry-forward moves without writing")
+    cf.set_defaults(func=cmd_carry_forward_day)
 
     mg = sub.add_parser("migrate",
                         help="2026-05-17 one-shot cutover (dry-run by default; "

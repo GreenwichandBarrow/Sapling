@@ -1,6 +1,6 @@
 ---
 name: conference-discovery
-description: "Weekly conference discovery, registration, and attendee list processing. Finds conferences, registers Kay, processes attendee/exhibitor lists into targets. Hands targets to outreach-manager."
+description: "Weekly conference discovery and attendee-list processing. Finds high-signal conferences, prepares registration tasks for Kay, processes attendee/exhibitor lists into targets, and hands outreach work to outreach-manager."
 # WARNING: 3.8x over archetype cap; refactor pending per item 2.
 archetype: router
 context_budget:
@@ -12,17 +12,46 @@ user_invocable: true
 ---
 
 <objective>
-Get Kay in front of business owners every week. Conferences are the highest-ROI channel for direct owner conversations. This skill handles discovery, registration, and attendee list processing. All outreach (pre-conference emails, post-conference follow-ups) is handled by skill/outreach-manager.
+Get Kay in front of business owners every week. Conferences are the highest-ROI channel for direct owner conversations. This skill handles discovery, registration-task preparation, and attendee list processing. All outreach (pre-conference emails, post-conference follow-ups) is handled by skill/outreach-manager.
 
 Target rhythm: 1 conference every Monday. Tuesday/Wednesday NYC-only as backup. Thursday possible but less preferred.
 
-Reference: Colin Woolway and Will Gallagher attended 1-2 conferences/week and landed their acquisition. Kay is a solo searcher with a lean team (Codex, analyst, VA, bookkeeper). Codex owns conference logistics end-to-end.
+Reference: Colin Woolway and Will Gallagher attended 1-2 conferences/week and landed their acquisition. Kay is a solo searcher with a lean team (Codex, analyst, VA, bookkeeper). Codex owns conference logistics through reviewed tasks, not silent purchase/registration.
 
 **Outputs to other skills:**
 - Processed attendee/exhibitor target lists → skill/outreach-manager (conference outreach subagent)
 - Post-conference conversation data (Granola transcripts + notes) → skill/outreach-manager (conference outreach subagent)
 - New contacts → Attio Active Deals at appropriate stage → skill/pipeline-manager takes over
 </objective>
+
+<codex_role>
+## Codex-Era Role Boundary
+
+Own:
+- Surface high-signal conferences and intermediary networking events into the Conference Pipeline.
+- Maintain the Conference Pipeline safely with snapshots, dedup checks, append-zone discipline, and header-resolved writes.
+- Prepare registration and attendee-list acquisition tasks for Kay's review.
+- Process attendee/exhibitor lists into target files and Attio-ready contact records.
+- Hand pre/post-conference outreach to outreach-manager under draft-only/no-send rules.
+
+Do not own:
+- Sending emails.
+- Purchasing tickets, submitting registration forms, or committing Kay to attend without explicit review.
+- Overwriting Kay's Conference Pipeline `Decision` values.
+- Moving active deals in Attio after a conference; pipeline-manager owns active-deal reconciliation.
+
+Use 1Password via `scripts/op-env.sh` before every `gog`, Slack, or other op://-backed operation. If 1Password resolution fails, stop and surface it instead of falling back to local env files.
+</codex_role>
+
+<email_safety>
+## Email Safety
+
+This skill must never send email. It may identify outreach targets and hand them
+to outreach-manager, where Gmail output is draft-only and must use
+`--account kay.s@greenwichandbarrow.com --gmail-no-send` where gog supports the
+safety flag. Any command or API path that sends, schedules, replies, forwards,
+or auto-submits email is a blocker.
+</email_safety>
 
 <credentials>
 ## Credentials (read first)
@@ -31,7 +60,7 @@ Reference: Colin Woolway and Will Gallagher attended 1-2 conferences/week and la
 ```bash
 source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 ```
-Exports `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_OPERATIONS`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+Exports `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_OPERATIONS`. Never source raw local env files for this skill; use the 1Password-backed helper.
 
 If `${#SLACK_WEBHOOK_OPERATIONS}` = 0 after sourcing, surface to Kay — 1Password resolve broken. Do NOT log "Slack unavailable" without confirming the var is actually empty.
 </credentials>
@@ -41,10 +70,10 @@ If `${#SLACK_WEBHOOK_OPERATIONS}` = 0 after sourcing, surface to Kay — 1Passwo
 
 This skill mutates the Conference Pipeline Google Sheet. It must run with the hardening pattern from `feedback_mutating_skill_hardening_pattern`:
 
-- **POST_RUN_CHECK validator:** `scripts/validate_conference_discovery_integrity.py` runs after every scheduled fire. The launchd wrapper sets POST_RUN_CHECK in the plist; non-zero exit overrides Codex's exit code and routes to Slack #operations with "VALIDATOR FAILED" prefix. The validator now enforces THREE invariants:
+- **POST_RUN_CHECK validator:** `scripts/validate_conference_discovery_integrity.py` runs after every scheduled fire. The scheduled wrapper sets POST_RUN_CHECK; non-zero exit overrides Codex's exit code and routes to Slack #operations with "VALIDATOR FAILED" prefix. The validator now enforces THREE invariants:
   1. **Row-count delta** within `MAX_ARCHIVAL_DELTA` (15) — catches wipe/clear-rewrite (2026-05-03 pattern).
   2. **Header-position invariant** — for every dated week-of header in the snapshot, the live header must appear ABOVE the first event whose start date falls within its week. Catches header displacement (2026-05-10 pattern where headers got pushed to the bottom while events stayed in place).
-  3. **Cell-mutation invariant** — for every event row in the snapshot (matched by URL+name composite, then URL pool, then name fallback), the live counterpart must show only allowed cell changes. Hard mutations (any one fails the run): status (col C) overwritten with a different non-empty value not on the allow-list, event name (D) changed, date (B) changed, niche (G) changed. Soft mutations (allow up to 5): URL change, other cell wiggle. Catches "agent stomped Kay's selection" (2026-05-10 `Art Business Conference NYC` pattern).
+  3. **Cell-mutation invariant** — for every event row in the snapshot (matched by Website+Event Name composite, then Website pool, then Event Name fallback), the live counterpart must show only allowed field changes. Hard mutations (any one fails the run): `Decision` overwritten with a different non-empty value not on the allow-list, `Event Name` changed, `Date of Conference` changed, or `Niche` changed. Soft mutations (allow up to 5): Website change, other cell wiggle. Catches "agent stomped Kay's selection" (2026-05-10 `Art Business Conference NYC` pattern).
 - **Headless prompt:** `.agents/skills/conference-discovery/headless-sunday-prompt.md` is what `scripts/run-agent-skill.sh` pipes to Codex when the wrapper is invoked with `conference-discovery:sunday`. The prompt mandates **a pre-run snapshot** of the Pipeline tab to `brain/context/rollback-snapshots/conference-pipeline-pre-run-{date}.json` BEFORE any mutating operation, plus the per-row delete pattern + forbidden-patterns + append-zone discipline below.
 - **Memory rule:** `feedback_no_clear_rewrite_populated_sheets.md` — never `gog sheets clear` + rewrite on a populated tab. Per-row deletes only; snapshot first. Belt-and-suspenders: `Bash(gog sheets clear:*)` is on the project-local deny list as of 2026-05-04.
 
@@ -60,7 +89,7 @@ The validator + headless prompt + deny rule + memory rule together prevent recur
 
 These are absolute rules. The validator catches them post-hoc; the headless prompt forbids them at run time; this section is the canonical statement.
 
-1. **Never move week-of header rows.** Headers (col A single-cell rows like `5/11`, `TBD`) may only be INSERTED (new week) or DELETED (auto-prune of past, empty headers). Headers must never be relocated within the sheet. If you find yourself wanting to "re-sort" the sheet by moving headers around, STOP — the sheet is already in chronological order; sort events WITHIN their week section, not headers across sections.
+1. **Never move week-of header rows.** Headers are rows where only the `Week Of` field is populated (for example `5/11`, `TBD`). They may only be INSERTED (new week) or DELETED (auto-prune of past, empty headers). Headers must never be relocated within the sheet. If you find yourself wanting to "re-sort" the sheet by moving headers around, STOP — the sheet is already in chronological order; sort events WITHIN their week section, not headers across sections.
 
 2. **Never overwrite an existing non-empty Decision value with a different non-empty value.** Decision dropdown values represent Kay's manual selections (or prior agent decisions she ratified). They are only legal to set on an empty cell, or to advance along the natural progression:
    - `""` → `NEW` (agent-discovery only) or any of: `Evaluating` / `Need to Book` / `Need to Register`
@@ -92,7 +121,7 @@ These are absolute rules. The validator catches them post-hoc; the headless prom
 
 After the weekly auto-archival pass completes (Step 1 of the Sunday-night run, after archiving Skip/Attended/past-passive events to their destination tabs), run an auto-prune pass on the week-of headers:
 
-1. **Enumerate live headers** — iterate the Pipeline tab, identify each row where col A is populated and cols B-O are empty (the `is_header_row` definition).
+1. **Enumerate live headers** — iterate the Pipeline tab, identify each row where only the `Week Of` field is populated (the `is_header_row` definition).
 2. **Count anchored events per header** — for each header, count the event rows between this header and the next header (or the end of the data range).
 3. **Parse the header's label to a date.** Labels are `m/d` format (e.g., `4/27`, `5/4`). The TBD label is special — see exception below. If the date parse fails for any reason, SKIP that header (logged) — never delete an unparseable header on guesswork.
 4. **Prune condition:** delete the header row only if BOTH:
@@ -211,11 +240,12 @@ All events go into the existing **Conference Pipeline** Google Sheet (ID: 1bdf7x
 
 The two tracker tabs serve different purposes: WEEKLY REVIEW = Kay's work decisions; Sam's DealsX Universe = conference-search aperture (broader net so dedicated vertical events aren't missed). Run parallel searches against both, then dedupe results before presenting.
 
-**Do NOT hardcode niches here.** Always read the current active niches from the Industry Research Tracker at runtime:
+**Do NOT hardcode niches or sheet columns here.** Always read the current active niches from the Industry Research Tracker at runtime, resolving fields by header name:
 ```bash
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B3:D20" -a kay.s@greenwichandbarrow.com -j
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!1:200" -a kay.s@greenwichandbarrow.com -j
 ```
-Filter for rows where Current Status (col D) contains "Active". Use the Niche Hypothesis (col B) as the search term.
+Filter for rows where the resolved `Current Status` field contains "Active". Use the resolved `Niche Hypothesis` field as the search term.
 
 **Why Active-Diligence triggers conference discovery:** Conferences are a form of customer validation. Attending an industry conference and talking to practitioners is diligence — you learn how the niche works, what matters, who the players are. This makes conferences a natural fit for the Active-Diligence phase, not just Active-Outreach.
 
@@ -269,13 +299,9 @@ Some niches (blue collar services, fractional/advisory, niche storage) have very
 
 Each niche's target sheet should have an **"Associations" tab** listing relevant professional associations. This is the primary source for conference discovery — check association event calendars before using aggregators.
 
-**Associations tab columns:**
-| Column | Header |
-|--------|--------|
-| A | Association Name |
-| B | Website |
-| C | Events Page URL |
-| D | Scope (National / State / Local) |
+**Associations tab fields:**
+`Association Name`, `Website`, `Events Page URL`, `Scope (National / State / Local)`.
+Resolve by header name at runtime.
 | E | Membership Cost |
 | F | Member? (Y/N) |
 | G | Notes |
@@ -396,7 +422,7 @@ Some events require association membership. Kay is open to joining if it unlocks
 Codex handles all phases directly (no sub-agents needed). The workflow is sequential and runs weekly.
 
 ## Team Roles
-- **Codex:** Discovery, registration logistics, attendee scraping, target scoring, pipeline integration
+- **Codex:** Discovery, registration-task logistics, attendee scraping, target scoring, pipeline integration
 - **Kay:** Picks conferences, attends, provides post-conference notes
 - **Outreach Manager:** All email drafting (pre-conference and post-conference follow-ups)
 - **Analyst:** Not involved (focused on financial analysis and deck building)
@@ -448,21 +474,21 @@ For each conference found, capture:
 - Conference website URL
 - Register-only candidate? (Y/N)
 
-Prepare rows for the Conference Pipeline Google Sheet (do NOT write yet — the Stop Hook in the Validation section requires Kay's approval first). All columns have dropdown data validation where applicable.
+Prepare rows for the Conference Pipeline Google Sheet. Scheduled Sunday runs may write new `NEW` rows directly after validation; interactive proposal mode requires Kay approval before writing. All fields have dropdown data validation where applicable.
 
-**One conference = one row.** Multi-day conferences get a single row with the date range in column B — Date of Conference (e.g., "2026-05-03 - 05-06"). Never create separate rows for different days of the same conference. Kay makes one attend/skip decision per conference, not per day. Which specific day she attends is her choice, not a pipeline decision.
+**One conference = one row.** Multi-day conferences get a single row with the date range in the `Date of Conference` field (e.g., "2026-05-03 - 05-06"). Never create separate rows for different days of the same conference. Kay makes one attend/skip decision per conference, not per day. Which specific day she attends is her choice, not a pipeline decision.
 
-**Column layout (live header verified 2026-05-04):**
-A: Week Of | B: Date of Conference | C: Decision | D: Event Name | E: Location | F: Travel | G: Niche | H: Registration Cost | I: Registration Paid | J: Reg Deadline | K: Est. Attendees | L: Attendee List | M: Website | N: Status | O: Agent Rec
+**Pipeline fields (resolve by header, live header verified 2026-06-07):**
+`Week Of`, `Date of Conference`, `Decision`, `Event Name`, `Location`, `Travel`, `Niche`, `Registration Cost`, `Registration Paid`, `Reg Deadline`, `Est. Attendees`, `Attendee List`, `Website`, `Status`, `Agent Rec`, `Notes`, `Agent Notes`.
 
-**Dropdown columns:**
-- **Decision (col C):** Attend, Register Only, Skip — Kay's final call (sits up front so it's the first thing Kay sees scrolling)
-- **Status (col N):** Discovered, Evaluating, Registered, Prep Complete, Attended, Skipped
-- **Agent Rec (col O):** Attend, Register Only, Skip, Investigate — Codex's recommendation
-- **Registration Paid (col I):** Yes / No — set to Yes once payment confirmed
+**Dropdown fields:**
+- **Decision:** Kay's final call. Scheduled discovery writes `NEW` for newly-discovered rows and never overwrites Kay's non-empty choice.
+- **Status:** Discovered, Evaluating, Registered, Prep Complete, Attended, Skipped.
+- **Agent Rec:** Attend, Register Only, Skip, Investigate — Codex's recommendation.
+- **Registration Paid:** Yes / No — set to Yes only after Kay/payment confirmation.
 
-Codex fills in: all columns except C (Decision).
-Kay fills in: Decision (C). She may also edit any other cell.
+Codex fills in all fields except Kay-owned `Decision`, where scheduled discovery may only create `NEW` on newly-discovered rows.
+Kay fills in `Decision`. She may also edit any other cell.
 
 When Kay marks Decision = Skip, Codex moves the row to the Skipped tab.
 
@@ -476,7 +502,7 @@ Before adding new conferences, scan the Pipeline tab and auto-move rows off Pipe
 **Process:**
 1. Read all Pipeline rows
 2. Identify rows matching any archival criteria above
-3. **Project each Pipeline row onto the destination tab's schema (see Column Mapping below) — NEVER append the raw Pipeline row.**
+3. **Project each Pipeline row onto the destination tab's schema (see Header Mapping below) — NEVER append the raw Pipeline row.**
 4. Append the projected row to the correct tab (Attended or Skipped)
 5. Delete matching rows from the Pipeline tab (per-row delete; snapshot first)
 6. Re-sort all three tabs chronologically after changes
@@ -484,34 +510,34 @@ Before adding new conferences, scan the Pipeline tab and auto-move rows off Pipe
 
 This keeps the Pipeline tab clean — only future conferences that still need decisions or action.
 
-#### Column Mapping (MANDATORY — Pipeline ≠ Skipped/Attended schema)
+#### Header Mapping (MANDATORY — Pipeline ≠ Skipped/Attended schema)
 
-The **Pipeline** tab and the **Skipped/Attended** tabs have DIFFERENT, non-aligned schemas. Pipeline has 16 columns and a leading `Week Of` (A) plus `Decision` (C); Skipped/Attended have 14 columns, no `Week Of`, and `Decision` lives in **M**. Appending a raw Pipeline row into Skipped/Attended shifts every field ~2 columns right (the 2026-05-18 bug: "Skip" landed under *Location*, the date under *Event Name*).
+The **Pipeline** tab and the **Skipped/Attended** tabs have DIFFERENT, non-aligned schemas. Pipeline includes `Week Of`; Skipped/Attended do not. Appending a raw Pipeline row into Skipped/Attended shifts fields into the wrong headers (the 2026-05-18 bug: "Skip" landed under *Location*, the date under *Event Name*).
 
 | Pipeline (source)            | → | Skipped / Attended (destination) |
 |------------------------------|---|----------------------------------|
-| A `Week Of`                  | → | *(dropped — not in destination)* |
-| B `Date of Conference`       | → | A `Date of Conference` (Attended: `Date of Attendance`) |
-| D `Event Name`               | → | B `Event Name`                   |
-| E `Location`                 | → | C `Location`                     |
-| F `Travel`                   | → | D `Travel`                       |
-| G `Niche`                    | → | E `Niche`                        |
-| H `Registration Cost`        | → | F `Registration Cost`            |
-| J `Reg Deadline`             | → | G `Reg Deadline`                 |
-| K `Est. Attendees`           | → | H `Est. Attendees`               |
-| L `Attendee List`            | → | I `Attendee List`                |
-| M `Website`                  | → | J `Website`                      |
-| N `Status`                   | → | K `Status`                       |
-| O `Agent Rec`                | → | L `Agent Recommendation`         |
-| C `Decision`                 | → | M `Decision`                     |
-| P `Notes`                    | → | N `Notes`                        |
-| I `Registration Paid`        | → | *(dropped — not in destination)* |
+| `Week Of`                    | → | *(dropped — not in destination)* |
+| `Date of Conference`         | → | `Date of Conference` or `Date of Attendance` |
+| `Event Name`                 | → | `Event Name`                     |
+| `Location`                   | → | `Location`                       |
+| `Travel`                     | → | `Travel`                         |
+| `Niche`                      | → | `Niche`                          |
+| `Registration Cost`          | → | `Registration Cost`              |
+| `Reg Deadline`               | → | `Reg Deadline`                   |
+| `Est. Attendees`             | → | `Est. Attendees`                 |
+| `Attendee List`              | → | `Attendee List`                  |
+| `Website`                    | → | `Website`                        |
+| `Status`                     | → | `Status`                         |
+| `Agent Rec`                  | → | `Agent Recommendation` or `Agent Rec` |
+| `Decision`                   | → | `Decision`                       |
+| `Notes`                      | → | `Notes`                          |
+| `Registration Paid`          | → | *(dropped if destination has no matching header)* |
 
-Destination write range is `{tab}!A:N` (14 columns). Never write to O/P on Skipped/Attended — if a prior bad paste left data there, clear `{tab}!O{r}:P{r}` for the affected rows.
+Build the destination row from destination headers. Never write fields that do not exist on the destination tab; if a prior bad paste left overflow fields, fix only those specific cells after snapshotting.
 
-**Forbidden pattern:** appending `Pipeline!A:P` verbatim to Skipped/Attended. Always build the projected 14-column row per the table above and write via `--values-json` (row data contains commas/pipes — positional `gog sheets update` will split it).
+**Forbidden pattern:** appending a raw Pipeline row verbatim to Skipped/Attended. Always build the projected row per the table above and write via `--values-json` (row data contains commas/pipes — positional `gog sheets update` will split it).
 
-**Post-move validation (add to Stop Hook):** for every row appended to Skipped/Attended this run, assert column A parses as a date (or date range) and column M ∈ {`Skip`, `Attend`, `Register Only`, terminal states}. If column C contains `Skip`/`Attend` or column B contains a date, the projection was skipped — abort and snapshot-restore.
+**Post-move validation (add to Stop Hook):** for every row appended to Skipped/Attended this run, assert the destination date field parses as a date (or date range) and the destination `Decision` field is one of `Skip`, `Attend`, `Register Only`, or a terminal state. If these values land under the wrong destination headers, abort and snapshot-restore.
 
 ### Conference Calendar
 
@@ -528,7 +554,7 @@ Statuses: Discovered, Evaluating, Registered, Prep Complete, Attended, Skipped
 
 ### Slack Notification (end of Phase 1)
 
-After discovery is complete, Kay has approved the proposed changes via the Stop Hook, sheet is updated, and sort validation passes, send a Slack notification to the SVA channel. See Validation section (Step 5) for the notification format and webhook details.
+After discovery is complete, the sheet is updated, and sort validation passes, send a Slack notification to the AI-Operations channel. See Validation section (Step 5) for the notification format and webhook details.
 </discovery>
 
 <registration>
@@ -660,17 +686,17 @@ The debrief is designed to be easily digestible on a phone screen — short bull
 <conference_decision_scan>
 ## Conference Decision Scan (Moved from pipeline-manager)
 
-After Kay reviews the Conference Pipeline sheet Monday morning and marks decisions in Col C ("Attend" or "Register Only"), this scan picks them up and executes.
+After Kay reviews the Conference Pipeline sheet Monday morning and marks decisions in the `Decision` field ("Attend" or "Register Only"), this scan picks them up and creates reviewed next actions.
 
 **When to run:** Monday morning scan, or any time Kay marks a new decision on the sheet.
 
 **Process:**
-1. Check Conference Pipeline Google Sheet for any row where Decision (Col C) = "Attend" or "Register Only" AND Status (Col N) is NOT yet "Registered"
+1. Check Conference Pipeline Google Sheet for any row where resolved `Decision` = "Attend" or "Register Only" AND resolved `Status` is NOT yet "Registered"
 2. For each new decision:
-   - Append To Do row via task-tracker-manager: "Register for {conference name}" with due date 2 days before registration closes (Col J — Reg Deadline)
-   - Include registration link from conference website (Col M — Website)
-   - If attendee list is publicly available (Col L — Attendee List), begin attendee list acquisition
-   - Update Status (Col N) to "Registered" after To Do row appended
+   - Append To Do row via task-tracker-manager: "Register for {conference name}" with due date 2 days before the resolved `Reg Deadline`
+   - Include registration link from the resolved `Website`
+   - If attendee list is publicly available in the resolved `Attendee List` field, begin attendee list acquisition
+   - Leave `Status` unchanged unless Kay/payment confirmation justifies an allowed status such as "Registered"
 3. Present changes to Kay before writing (per Stop Hook above)
 
 **Note:** Kay picks conferences Monday morning. This scan runs after her review. Gives Kay a grace period to change her mind before registration is kicked off.
@@ -698,40 +724,41 @@ Apply this pre-flight in BOTH paths: the discovery subagent that proposes new ro
 
 **Write directly to the sheet. Kay reviews there, not in the conversation.**
 
-The Conference Pipeline sheet IS the review surface. Don't dump raw search results or proposed rows into the conversation — that's noise. Write the filtered, quality-checked rows to the sheet, send Kay the link, and she marks Decision (col C) on the sheet itself.
+The Conference Pipeline sheet IS the review surface. Don't dump raw search results or proposed rows into the conversation — that's noise. Write the filtered, quality-checked rows to the sheet, send Kay the link, and she marks `Decision` on the sheet itself.
 
 **Procedure:**
 1. Run discovery searches (parallel subagents for each niche)
 2. Apply audience filter and owner verification gate — only conferences that pass go on the sheet
 3. **Run 3-tuple dedup pre-flight** (date + venue + host) on each proposed row against existing Pipeline rows — see "Pre-flight: Conference Pipeline dedup" above. Drop any row where 2 of 3 match.
 4. Write new rows to the Pipeline tab using `gog sheets update` or `gog sheets append` with `--values-json` flag (NOT `--values`)
-5. Re-sort all data rows chronologically by the leftmost date column
+5. Re-sort event rows within each `Week Of` section chronologically by the resolved `Date of Conference` start date
 6. Send Slack notification with link to the sheet
-7. Kay reviews on the sheet and marks Decision column
+7. Kay reviews on the sheet and marks `Decision`
 
 **gog sheets syntax:**
 ```bash
-# Append new rows
-gog sheets append {SHEET_ID} "Pipeline!A:O" --values-json '[["col1","col2",...],...]' -a kay.s@greenwichandbarrow.com
+# Always source 1Password-backed env first.
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 
-# Update specific range
-gog sheets update {SHEET_ID} "Pipeline!A{row}:O{row}" --values-json '[["col1","col2",...]]' -a kay.s@greenwichandbarrow.com
+# Append/update rows only after building row values from live headers.
+gog sheets append {SHEET_ID} "{TAB}!{resolved_append_range}" --values-json '[["field1","field2",...]]' -a kay.s@greenwichandbarrow.com
+gog sheets update {SHEET_ID} "{TAB}!{resolved_row_range}" --values-json '[["field1","field2",...]]' -a kay.s@greenwichandbarrow.com
 ```
 
 **Do NOT present conference results in the conversation.** The sheet is the single source of truth. Keep the conversation clean — just confirm what was added and send the link.
 
 ### 1. Sheet Validation (after discovery, post-approval)
-Verify the Conference Pipeline Google Sheet has new rows with data in all required columns (live header verified 2026-05-04):
-- Columns A-O (Week Of, Date of Conference, Decision, Event Name, Location, Travel, Niche, Registration Cost, Registration Paid, Reg Deadline, Est. Attendees, Attendee List, Website, Status, Agent Rec)
-- Decision (col C) left blank — Kay fills this
-- No blank cells in required columns for newly added rows
+Verify the Conference Pipeline Google Sheet has new rows with data in all required fields:
+- Required fields: `Week Of`, `Date of Conference`, `Decision`, `Event Name`, `Location`, `Travel`, `Niche`, `Registration Cost`, `Reg Deadline`, `Est. Attendees`, `Attendee List`, `Website`, `Status`, `Agent Rec`
+- `Decision` is `NEW` only on newly-discovered rows and is never overwritten when already non-empty
+- No blank cells in required fields for newly added rows
 
 ### 1b. Chronological Sort Validation (REQUIRED after every write)
-After adding, removing, or modifying any rows in the Pipeline tab, re-sort ALL data rows (row 2 onwards) by Column B (Date of Conference) in chronological order. Then verify:
-- Read back Pipeline!B2:B{last_row} and confirm dates are in ascending order
+After adding, removing, or modifying any rows in the Pipeline tab, re-sort event rows within each `Week Of` section by resolved `Date of Conference` start date. Then verify:
+- Read back the Pipeline tab and confirm dates are in ascending order inside each week section
 - No header row was displaced
 - No data was lost during sort (row count before = row count after)
-- All columns preserved their association (no misaligned rows)
+- All fields preserved their header association (no misaligned rows)
 
 **This is mandatory.** The sheet must always be sorted chronologically — earliest date at top, farthest at bottom. Never leave the sheet unsorted after a write operation.
 
@@ -755,11 +782,11 @@ Verify:
 
 ### 5. Slack Notification via AI-Operations Channel (only after validation passes)
 
-All conference discovery notifications go to the AI-Operations Slack channel. Use the `SLACK_WEBHOOK_OPERATIONS` webhook from `scripts/.env.launchd`. (Kay attends conferences, not JJ — SVA is JJ's channel.)
+All conference discovery notifications go to the AI-Operations Slack channel. Use the `SLACK_WEBHOOK_OPERATIONS` webhook from `scripts/op-env.sh`.
 
 **After discovery run (sheet updates confirmed and written):**
 ```bash
-source scripts/.env.launchd
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
   -d '{"text":"Conference Pipeline updated — {n} new conferences added, {n} modified, {n} moved to Skipped.\n\nChanges:\n{bullet summary of what was added/changed}\n\nReview the pipeline:\nhttps://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit"}'
@@ -767,7 +794,7 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 
 **After post-conference processing:**
 ```bash
-source scripts/.env.launchd
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
   -d '{"text":"Post-conference processing complete for {conference name}.\n{n} contacts added to Attio. Follow-up drafts in Gmail.\n\nDebrief: {Google Doc link}\n\nReview the debrief for anything you might have missed.\n\nConference Pipeline:\nhttps://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit"}'
@@ -787,7 +814,7 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 ### Per Conference
 - [ ] Conference Prep doc created in conference Drive folder (if Monday conference with meetings/targets)
 - [ ] Conference discovered and evaluated with full details
-- [ ] Registration completed (or flagged for register-only)
+- [ ] Registration task created or event flagged for register-only
 - [ ] Attendee/exhibitor list acquired and processed
 - [ ] Top targets identified, scored, and handed to outreach-manager
 - [ ] Kay attended and captured conversations (Granola + notes)

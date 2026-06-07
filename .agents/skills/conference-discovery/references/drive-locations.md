@@ -5,10 +5,10 @@
 - **URL:** https://docs.google.com/spreadsheets/d/1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY/edit
 - **Tabs:**
   - `Pipeline` — All active conferences: Discovered through Attended, including Register Only. Single view.
-  - `Skipped` — Archive for conferences Kay passes on. Same columns.
-- **Columns:** Date of Conference (A), Event Name (B), Location (C), Travel (D), Niche (E), Registration Cost (F), Reg Deadline (G), Est. Attendees (H), Attendee List (I), Website (J), Status (K), Agent Rec (L), Decision (M), Notes (N), Agent Notes (O)
-- **Dropdowns:** Status (K), Agent Rec (L), Decision (M) all have data validation dropdowns
-- **Codex fills:** A-L, O. **Kay fills:** M, N.
+  - `Skipped` — Archive for conferences Kay passes on. Resolve fields by header name; schema may differ from Pipeline.
+- **Pipeline fields:** `Week Of`, `Date of Conference`, `Decision`, `Event Name`, `Location`, `Travel`, `Niche`, `Registration Cost`, `Registration Paid`, `Reg Deadline`, `Est. Attendees`, `Attendee List`, `Website`, `Status`, `Agent Rec`, `Notes`, `Agent Notes`.
+- **Dropdowns:** `Decision`, `Status`, `Agent Rec`, and `Registration Paid` have data validation dropdowns.
+- **Codex fills:** conference discovery fields and `Agent Rec`; scheduled discovery may set `Decision=NEW` only for newly-discovered rows. **Kay owns:** non-empty `Decision` values and review notes.
 
 ## Drive Folders
 

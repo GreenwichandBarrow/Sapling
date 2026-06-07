@@ -2,17 +2,17 @@
 """
 Wrapper-level integrity validator for conference-discovery scheduled runs.
 
-Runs as POST_RUN_CHECK after launchd wrapper completes. Catches three classes
+Runs as POST_RUN_CHECK after the scheduled wrapper completes. Catches three classes
 of silent-success failures where the agent exits 0 but the Conference Pipeline
 tab has been corrupted:
 
   1. **Row-count delta wipe** — original 2026-05-03 incident. ~70 rows
      cleared in a clear+rewrite that timed out before rewrite.
   2. **Header displacement** — 2026-05-10 incident. Week-of section headers
-     (col A single-cell rows) got moved to the bottom while events stayed in
+     got moved to the bottom while events stayed in
      place. Row count was within tolerance, so the row-count check passed.
   3. **Cell mutation on user selections** — 2026-05-10 incident. Status
-     dropdown values in col C that Kay had set ("Need to Book", etc.) got
+     dropdown values in the Decision field that Kay had set ("Need to Book", etc.) got
      overwritten with different non-empty values during agent re-sort. Row
      count unchanged, so the row-count check passed.
 
@@ -51,7 +51,7 @@ from datetime import date, datetime, timedelta
 
 SHEET_ID = "1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY"
 TAB = "Pipeline"
-DATA_RANGE = "A2:O500"  # Row 1 is header, data starts row 2
+SHEET_READ_RANGE = "A1:Z500"  # Wide safety read; business fields resolve by header.
 # Script-relative so this works on both Mac (Documents/AI Operations) and the
 # Linux VPS (~/projects/Sapling) without code changes. Walks up one dir from
 # scripts/ to the project root, then into brain/context/rollback-snapshots.
@@ -65,13 +65,34 @@ SNAPSHOT_DIR = os.path.normpath(
     )
 )
 
-# Column indices (0-based) in a row of 15 cells.
-COL_A_WEEK_HEADER = 0
-COL_B_DATE = 1
-COL_C_STATUS = 2
-COL_D_NAME = 3
-COL_G_NICHE = 6
-COL_M_URL = 12
+DEFAULT_PIPELINE_HEADERS = [
+    "Week Of",
+    "Date of Conference",
+    "Decision",
+    "Event Name",
+    "Location",
+    "Travel",
+    "Niche",
+    "Registration Cost",
+    "Registration Paid",
+    "Reg Deadline",
+    "Est. Attendees",
+    "Attendee List",
+    "Website",
+    "Status",
+    "Agent Rec",
+    "Notes",
+    "Agent Notes",
+]
+
+HEADER_ALIASES = {
+    "week_of": ("Week Of", "Week"),
+    "date": ("Date of Conference", "Date", "Conference Date"),
+    "decision": ("Decision",),
+    "event_name": ("Event Name", "Conference", "Name"),
+    "niche": ("Niche",),
+    "website": ("Website", "URL", "Event URL"),
+}
 
 # Auto-archival per SKILL.md routes Skip → Skipped tab, Attended → Attended tab,
 # past-date passive → Skipped tab. A typical run archives 0–8 rows. We allow up
@@ -152,8 +173,44 @@ def snapshot_path(run_date: date) -> str:
     )
 
 
-def get_pipeline_data_rows(sheet_id: str, tab: str, rng: str) -> list[list[str]]:
-    """Return data rows (excluding header) with at least one non-empty cell."""
+def _norm_header(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", (value or "").strip().lower())
+
+
+class PipelineSchema:
+    """Resolve Conference Pipeline fields by header name, not sheet position."""
+
+    def __init__(self, headers: list[str]):
+        self.headers = headers or DEFAULT_PIPELINE_HEADERS
+        self._by_header = {
+            _norm_header(header): idx
+            for idx, header in enumerate(self.headers)
+            if header and header.strip()
+        }
+        self._fields: dict[str, int] = {}
+        for field, aliases in HEADER_ALIASES.items():
+            for alias in aliases:
+                idx = self._by_header.get(_norm_header(alias))
+                if idx is not None:
+                    self._fields[field] = idx
+                    break
+            if field not in self._fields:
+                raise ValueError(
+                    f"required Conference Pipeline header missing for {field}: "
+                    f"expected one of {aliases}, saw {self.headers!r}"
+                )
+
+    def idx(self, field: str) -> int:
+        return self._fields[field]
+
+    def known_fields(self) -> list[str]:
+        return list(self._fields)
+
+
+def get_pipeline_sheet(
+    sheet_id: str, tab: str, rng: str
+) -> tuple[PipelineSchema, list[list[str]]]:
+    """Return (header schema, data rows) with at least one non-empty cell."""
     args = ["gog", "sheets", "get", sheet_id, f"{tab}!{rng}", "--json"]
     try:
         result = subprocess.run(args, capture_output=True, text=True, timeout=90)
@@ -167,8 +224,11 @@ def get_pipeline_data_rows(sheet_id: str, tab: str, rng: str) -> list[list[str]]
         raise RuntimeError(f"gog sheets get failed: {result.stderr.strip()}")
     data = json.loads(result.stdout)
     rows = data.get("values", [])
-    # Strip rows that are entirely blank
-    return [r for r in rows if any(c and c.strip() for c in r)]
+    if not rows:
+        raise RuntimeError("Pipeline tab returned no rows, including no header row")
+    headers = rows[0]
+    data_rows = [r for r in rows[1:] if any(c and c.strip() for c in r)]
+    return PipelineSchema(headers), data_rows
 
 
 
@@ -177,33 +237,39 @@ def get_pipeline_data_rows(sheet_id: str, tab: str, rng: str) -> list[list[str]]
 # ---------------------------------------------------------------------------
 
 
-def is_header_row(row: list[str]) -> bool:
-    """A week-of header is a single-cell row (col A populated, all others empty)."""
+def is_header_row(row: list[str], schema: PipelineSchema) -> bool:
+    """A week-of header is a row with only the Week Of field populated."""
     if not row:
         return False
-    if not (row[0] and row[0].strip()):
+    week_idx = schema.idx("week_of")
+    if not cell(row, week_idx).strip():
         return False
-    return all((not c) or (not c.strip()) for c in row[1:])
+    return all(
+        idx == week_idx or not (value and value.strip())
+        for idx, value in enumerate(row)
+    )
 
 
-def event_url_key(row: list[str]) -> str | None:
-    """Normalized URL for indexing (col M). None if missing."""
-    if len(row) > COL_M_URL and row[COL_M_URL] and row[COL_M_URL].strip():
-        return row[COL_M_URL].strip().rstrip("/").lower()
+def event_url_key(row: list[str], schema: PipelineSchema) -> str | None:
+    """Normalized Website value for indexing. None if missing."""
+    url = cell(row, schema.idx("website")).strip()
+    if url:
+        return url.rstrip("/").lower()
     return None
 
 
-def event_name_key(row: list[str]) -> str | None:
-    """Normalized name for indexing (col D). None if missing."""
-    if len(row) > COL_D_NAME and row[COL_D_NAME] and row[COL_D_NAME].strip():
-        return row[COL_D_NAME].strip().lower()
+def event_name_key(row: list[str], schema: PipelineSchema) -> str | None:
+    """Normalized Event Name value for indexing. None if missing."""
+    name = cell(row, schema.idx("event_name")).strip()
+    if name:
+        return name.lower()
     return None
 
 
-def event_key_label(row: list[str]) -> str:
+def event_key_label(row: list[str], schema: PipelineSchema) -> str:
     """Human-readable key for log/failure output."""
-    name = event_name_key(row)
-    url = event_url_key(row)
+    name = event_name_key(row, schema)
+    url = event_url_key(row, schema)
     if name and url:
         return f"{name[:50]} <{url[:60]}>"
     return name or url or "<unkeyable>"
@@ -252,7 +318,7 @@ def parse_header_week(label: str, anchor_year: int) -> tuple[date, date] | None:
 
 
 def parse_event_date_range(s: str, anchor_year: int) -> tuple[date, date] | None:
-    """Extract (start, end) dates from a col B value like '5/15/26' or
+    """Extract (start, end) dates from a Date of Conference value like '5/15/26' or
     '5/27/26 - 5/29/26'. Returns None for 'TBD' or unparseable strings."""
     if not s or not s.strip():
         return None
@@ -355,6 +421,8 @@ def _is_legitimate_archival(
 def check_header_positions(
     snapshot_rows: list[list[str]],
     live_rows: list[list[str]],
+    snapshot_schema: PipelineSchema,
+    live_schema: PipelineSchema,
     anchor_year: int,
     verbose: bool = False,
 ) -> list[str]:
@@ -373,13 +441,15 @@ def check_header_positions(
     failures: list[str] = []
 
     snapshot_headers = [
-        (i, r[COL_A_WEEK_HEADER]) for i, r in enumerate(snapshot_rows) if is_header_row(r)
+        (i, cell(r, snapshot_schema.idx("week_of")))
+        for i, r in enumerate(snapshot_rows)
+        if is_header_row(r, snapshot_schema)
     ]
 
     live_header_index = {}  # label -> live row idx
     for i, r in enumerate(live_rows):
-        if is_header_row(r):
-            live_header_index[r[COL_A_WEEK_HEADER].strip()] = i
+        if is_header_row(r, live_schema):
+            live_header_index[cell(r, live_schema.idx("week_of")).strip()] = i
 
     today = date.today()
 
@@ -404,14 +474,14 @@ def check_header_positions(
         first_event_idx = None
         first_event_summary = None
         for i, r in enumerate(live_rows):
-            if is_header_row(r):
+            if is_header_row(r, live_schema):
                 continue
-            er = parse_event_date_range(cell(r, COL_B_DATE), anchor_year)
+            er = parse_event_date_range(cell(r, live_schema.idx("date")), anchor_year)
             if er and event_starts_in_week(er, week):
                 first_event_idx = i
                 first_event_summary = (
-                    cell(r, COL_B_DATE),
-                    cell(r, COL_D_NAME)[:60],
+                    cell(r, live_schema.idx("date")),
+                    cell(r, live_schema.idx("event_name"))[:60],
                 )
                 break
 
@@ -463,7 +533,7 @@ def check_header_positions(
 
 
 def classify_status_mutation(snap_val: str, live_val: str) -> str:
-    """Return 'noop', 'allowed', 'hard', or 'soft' for a status (col C) delta."""
+    """Return 'noop', 'allowed', 'hard', or 'soft' for a Decision delta."""
     sv = (snap_val or "").strip()
     lv = (live_val or "").strip()
     if sv == lv:
@@ -481,9 +551,7 @@ def classify_status_mutation(snap_val: str, live_val: str) -> str:
     return "hard"
 
 
-def classify_generic_mutation(
-    col_idx: int, snap_val: str, live_val: str
-) -> str:
+def classify_generic_mutation(field: str, snap_val: str, live_val: str) -> str:
     """Return 'noop', 'allowed', 'hard', or 'soft' for non-status columns."""
     sv = (snap_val or "").strip()
     lv = (live_val or "").strip()
@@ -492,20 +560,19 @@ def classify_generic_mutation(
     if not sv:
         # Auto-fill of a previously-empty cell is allowed regardless of column.
         return "allowed"
-    # Hard columns: changing a non-empty event identity field is a regression.
-    if col_idx == COL_D_NAME:
+    # Hard fields: changing a non-empty event identity field is a regression.
+    if field in {"event_name", "date", "niche"}:
         return "hard"
-    if col_idx == COL_B_DATE:
-        return "hard"
-    if col_idx == COL_G_NICHE:
-        return "hard"
-    # URL column: filling in a previously-empty URL is OK (caught above);
+    # Website field: filling in a previously-empty URL is OK (caught above);
     # mutating an existing URL is suspicious but soft-warn.
     return "soft"
 
 
 def _match_snapshot_to_live(
-    snapshot_rows: list[list[str]], live_rows: list[list[str]]
+    snapshot_rows: list[list[str]],
+    live_rows: list[list[str]],
+    snapshot_schema: PipelineSchema,
+    live_schema: PipelineSchema,
 ) -> tuple[dict, list[int]]:
     """Build snap_idx → (live_idx, live_row) mapping using two-pass matching.
 
@@ -523,10 +590,12 @@ def _match_snapshot_to_live(
     Returns (match_map, unmatched_snap_indices).
     """
     snap_events = [
-        (i, r) for i, r in enumerate(snapshot_rows) if not is_header_row(r)
+        (i, r)
+        for i, r in enumerate(snapshot_rows)
+        if not is_header_row(r, snapshot_schema)
     ]
     live_events = [
-        (i, r) for i, r in enumerate(live_rows) if not is_header_row(r)
+        (i, r) for i, r in enumerate(live_rows) if not is_header_row(r, live_schema)
     ]
 
     consumed_live: set[int] = set()
@@ -534,13 +603,19 @@ def _match_snapshot_to_live(
 
     # Pass 1: composite (url, name)
     for snap_i, snap_row in snap_events:
-        sk = (event_url_key(snap_row), event_name_key(snap_row))
+        sk = (
+            event_url_key(snap_row, snapshot_schema),
+            event_name_key(snap_row, snapshot_schema),
+        )
         if sk == (None, None):
             continue
         for live_i, live_row in live_events:
             if live_i in consumed_live:
                 continue
-            lk = (event_url_key(live_row), event_name_key(live_row))
+            lk = (
+                event_url_key(live_row, live_schema),
+                event_name_key(live_row, live_schema),
+            )
             if sk == lk:
                 match_map[snap_i] = (live_i, live_row)
                 consumed_live.add(live_i)
@@ -550,13 +625,13 @@ def _match_snapshot_to_live(
     for snap_i, snap_row in snap_events:
         if snap_i in match_map:
             continue
-        su = event_url_key(snap_row)
+        su = event_url_key(snap_row, snapshot_schema)
         if su is None:
             continue
         for live_i, live_row in live_events:
             if live_i in consumed_live:
                 continue
-            if event_url_key(live_row) == su:
+            if event_url_key(live_row, live_schema) == su:
                 match_map[snap_i] = (live_i, live_row)
                 consumed_live.add(live_i)
                 break
@@ -565,13 +640,13 @@ def _match_snapshot_to_live(
     for snap_i, snap_row in snap_events:
         if snap_i in match_map:
             continue
-        sn = event_name_key(snap_row)
+        sn = event_name_key(snap_row, snapshot_schema)
         if sn is None:
             continue
         for live_i, live_row in live_events:
             if live_i in consumed_live:
                 continue
-            if event_name_key(live_row) == sn:
+            if event_name_key(live_row, live_schema) == sn:
                 match_map[snap_i] = (live_i, live_row)
                 consumed_live.add(live_i)
                 break
@@ -583,6 +658,8 @@ def _match_snapshot_to_live(
 def check_cell_mutations(
     snapshot_rows: list[list[str]],
     live_rows: list[list[str]],
+    snapshot_schema: PipelineSchema,
+    live_schema: PipelineSchema,
     verbose: bool = False,
 ) -> list[str]:
     """For every event row in the snapshot, verify its live counterpart has
@@ -590,15 +667,17 @@ def check_cell_mutations(
     failures: list[str] = []
     soft_count = 0
 
-    match_map, unmatched = _match_snapshot_to_live(snapshot_rows, live_rows)
+    match_map, unmatched = _match_snapshot_to_live(
+        snapshot_rows, live_rows, snapshot_schema, live_schema
+    )
 
     today = date.today()
 
     # Handle unmatched (missing) events first — must justify each absence.
     for snap_i in unmatched:
         snap_row = snapshot_rows[snap_i]
-        snap_status = cell(snap_row, COL_C_STATUS).strip()
-        snap_date = cell(snap_row, COL_B_DATE)
+        snap_status = cell(snap_row, snapshot_schema.idx("decision")).strip()
+        snap_date = cell(snap_row, snapshot_schema.idx("date"))
 
         # Legitimate archival per SKILL.md auto-archival rules:
         #   Skip / Skipped → Skipped tab, regardless of date
@@ -619,7 +698,7 @@ def check_cell_mutations(
                         f"Attended-tab archival"
                     )
                 print(
-                    f"[check_b] {event_key_label(snap_row)} archived "
+                    f"[check_b] {event_key_label(snap_row, snapshot_schema)} archived "
                     f"legitimately ({reason})",
                     file=sys.stderr,
                 )
@@ -631,7 +710,7 @@ def check_cell_mutations(
         if not snap_status and _is_past_date(snap_date, today):
             if verbose:
                 print(
-                    f"[check_b] {event_key_label(snap_row)} archived as "
+                    f"[check_b] {event_key_label(snap_row, snapshot_schema)} archived as "
                     f"past-date passive (no status)",
                     file=sys.stderr,
                 )
@@ -644,7 +723,7 @@ def check_cell_mutations(
         soft_count += 1
         if verbose:
             print(
-                f"[check_b] SOFT: {event_key_label(snap_row)} not matched in "
+                f"[check_b] SOFT: {event_key_label(snap_row, snapshot_schema)} not matched in "
                 f"live (snap_status={snap_status!r}, date="
                 f"{snap_date!r}). Either deleted without archival reason or "
                 f"key drifted.",
@@ -654,24 +733,23 @@ def check_cell_mutations(
     # Walk every matched pair.
     for snap_i, (live_i, live_row) in match_map.items():
         snap_row = snapshot_rows[snap_i]
-        col_count = max(len(snap_row), len(live_row))
-        for c_idx in range(col_count):
-            if c_idx == COL_A_WEEK_HEADER:
-                # Event rows always have empty col A; skip.
+        for field in snapshot_schema.known_fields():
+            if field == "week_of":
+                # Event rows always have empty Week Of; skip.
                 continue
-            snap_val = cell(snap_row, c_idx)
-            live_val = cell(live_row, c_idx)
-            if c_idx == COL_C_STATUS:
+            snap_val = cell(snap_row, snapshot_schema.idx(field))
+            live_val = cell(live_row, live_schema.idx(field))
+            if field == "decision":
                 cls = classify_status_mutation(snap_val, live_val)
             else:
-                cls = classify_generic_mutation(c_idx, snap_val, live_val)
+                cls = classify_generic_mutation(field, snap_val, live_val)
 
             if cls in ("noop", "allowed"):
                 continue
             if cls == "hard":
                 failures.append(
-                    f"HARD mutation on event {event_key_label(snap_row)!r} "
-                    f"col {_col_letter(c_idx)}: snapshot={snap_val!r} → "
+                    f"HARD mutation on event {event_key_label(snap_row, snapshot_schema)!r} "
+                    f"field {field!r}: snapshot={snap_val!r} -> "
                     f"live={live_val!r}. This is the 2026-05-10 stomp pattern."
                 )
             else:  # soft
@@ -679,8 +757,8 @@ def check_cell_mutations(
                 if verbose:
                     print(
                         f"[check_b] SOFT mutation on event "
-                        f"{event_key_label(snap_row)!r} col "
-                        f"{_col_letter(c_idx)}: snapshot={snap_val!r} → "
+                        f"{event_key_label(snap_row, snapshot_schema)!r} field "
+                        f"{field!r}: snapshot={snap_val!r} -> "
                         f"live={live_val!r}",
                         file=sys.stderr,
                     )
@@ -693,13 +771,6 @@ def check_cell_mutations(
         )
 
     return failures
-
-
-def _col_letter(idx: int) -> str:
-    """0-indexed column number → letter (A, B, ..., O)."""
-    if 0 <= idx < 26:
-        return chr(ord("A") + idx)
-    return f"col{idx}"
 
 
 # ---------------------------------------------------------------------------
@@ -722,6 +793,7 @@ def main() -> int:
     snap_path = snapshot_path(run_date)
     snapshot: dict | None = None
     snapshot_count: int | None = None
+    snapshot_schema = PipelineSchema(DEFAULT_PIPELINE_HEADERS)
     if not os.path.exists(snap_path):
         failures.append(
             f"pre-run snapshot missing at {snap_path} — skill must write this "
@@ -731,6 +803,9 @@ def main() -> int:
         try:
             with open(snap_path) as f:
                 snapshot = json.load(f)
+            snapshot_schema = PipelineSchema(
+                snapshot.get("headers") or DEFAULT_PIPELINE_HEADERS
+            )
             snapshot_count = int(snapshot.get("row_count", -1))
             if snapshot_count < 0:
                 failures.append(
@@ -742,10 +817,11 @@ def main() -> int:
             failures.append(f"could not parse snapshot at {snap_path}: {exc}")
 
     # Load live sheet
+    live_schema: PipelineSchema | None = None
     live_rows: list[list[str]] | None = None
     live_count: int | None = None
     try:
-        live_rows = get_pipeline_data_rows(SHEET_ID, TAB, DATA_RANGE)
+        live_schema, live_rows = get_pipeline_sheet(SHEET_ID, TAB, SHEET_READ_RANGE)
         live_count = len(live_rows)
     except Exception as exc:
         failures.append(f"could not read live Pipeline tab: {exc}")
@@ -775,7 +851,12 @@ def main() -> int:
         anchor_year = run_date.year
         failures.extend(
             check_header_positions(
-                snapshot.get("rows", []), live_rows, anchor_year, verbose=verbose
+                snapshot.get("rows", []),
+                live_rows,
+                snapshot_schema,
+                live_schema,
+                anchor_year,
+                verbose=verbose,
             )
         )
 
@@ -783,7 +864,11 @@ def main() -> int:
     if snapshot is not None and live_rows is not None:
         failures.extend(
             check_cell_mutations(
-                snapshot.get("rows", []), live_rows, verbose=verbose
+                snapshot.get("rows", []),
+                live_rows,
+                snapshot_schema,
+                live_schema,
+                verbose=verbose,
             )
         )
 
@@ -793,13 +878,13 @@ def main() -> int:
     # where an agent writes a status not in Kay's dropdown.
     if live_rows is not None:
         for idx, row in enumerate(live_rows):
-            if is_header_row(row):
+            if is_header_row(row, live_schema):
                 continue
-            val = cell(row, COL_C_STATUS).strip()
+            val = cell(row, live_schema.idx("decision")).strip()
             if val not in AUTHORIZED_STATUSES:
                 failures.append(
                     f"[check_c] unauthorized status {val!r} on row "
-                    f"{event_key_label(row)}. Allowed values: "
+                    f"{event_key_label(row, live_schema)}. Allowed values: "
                     f"{sorted(s for s in AUTHORIZED_STATUSES if s)}. "
                     f"Either add {val!r} to Kay's dropdown on the Pipeline "
                     f"tab + update AUTHORIZED_STATUSES, or change the cell "

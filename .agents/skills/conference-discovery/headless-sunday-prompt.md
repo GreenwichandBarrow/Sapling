@@ -20,6 +20,7 @@ must be defensible by output, not by clarifying question.
    ```json
    {
      "tab": "Pipeline",
+     "headers": [<header row from the Pipeline tab>],
      "captured_at": "<ISO8601 timestamp>",
      "row_count": <integer count of data rows excluding header>,
      "rows": [<full row arrays from gog sheets get>]
@@ -48,7 +49,7 @@ must be defensible by output, not by clarifying question.
    and react instead of silently exiting 0.
 
 6. **NEVER move week-of header rows.** (2026-05-10 regression guard.)
-   Headers are the single-cell rows in col A that label each week (`4/27`,
+   Headers are the rows where only the `Week Of` field is populated (`4/27`,
    `5/4`, ..., `TBD`). They may only be INSERTED (new week) or DELETED
    (auto-prune of past + empty headers, Step 6 below). They may NEVER be
    relocated within the sheet. If your "re-sort" logic would move a header,
@@ -101,6 +102,15 @@ Execute the conference-discovery skill's weekly Sunday-night cycle. Use
 implementation guide. Today's date for artifact naming: run
 `date +%Y-%m-%d` and use that string verbatim.
 
+## Sheet field rule
+
+Resolve all Conference Pipeline fields by header name at runtime. Do not use
+fixed sheet letters, fixed numeric positions, or fixed business ranges as
+logic. The canonical fields for this run are `Week Of`, `Date of Conference`,
+`Decision`, `Event Name`, `Niche`, `Website`, `Status`, `Agent Rec`, and
+`Notes`. If a required header is missing or renamed beyond recognition, stop
+and exit non-zero instead of guessing.
+
 ## Step-by-step
 
 ### Step 0: Write pre-run snapshot (BEFORE any mutation)
@@ -113,12 +123,13 @@ on the VPS (or `Documents/AI Operations/brain/...` on the legacy Mac box, both w
 # to walking up from this skill's location. Both Mac and Linux VPS resolve.
 PROJECT_ROOT="${WORKDIR:-$(cd "$(dirname "$0")/../../.." 2>/dev/null && pwd)}"
 PROJECT_ROOT="${PROJECT_ROOT:-$HOME/projects/Sapling}"  # belt-and-suspenders
+source "$PROJECT_ROOT/scripts/op-env.sh"
 mkdir -p "$PROJECT_ROOT/brain/context/rollback-snapshots"
 TODAY=$(date +%Y-%m-%d)
 SNAP="$PROJECT_ROOT/brain/context/rollback-snapshots/conference-pipeline-pre-run-${TODAY}.json"
 
-# Pull current Pipeline state (full data range)
-gog sheets get 1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY "Pipeline!A2:O500" --json \
+# Pull current Pipeline state including the header row.
+gog sheets get 1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY "Pipeline!A1:Z500" --json \
   -a kay.s@greenwichandbarrow.com > /tmp/pipeline-current.json
 
 # Build the snapshot file. Use python so the JSON is well-formed.
@@ -126,9 +137,12 @@ python3 - <<EOF
 import json, datetime, os
 with open("/tmp/pipeline-current.json") as f:
     data = json.load(f)
-rows = [r for r in data.get("values", []) if any(c and c.strip() for c in r)]
+values = data.get("values", [])
+headers = values[0] if values else []
+rows = [r for r in values[1:] if any(c and c.strip() for c in r)]
 snap = {
     "tab": "Pipeline",
+    "headers": headers,
     "captured_at": datetime.datetime.now().isoformat(),
     "row_count": len(rows),
     "rows": rows,
@@ -158,21 +172,20 @@ a bug (state-machine confusion, off-by-one, or stale snapshot logic).
 Kay's review is required before that volume of moves.
 
 **Move method:** for each archival row, FIRST project the Pipeline row onto
-the destination tab's 14-column schema per the **Column Mapping (MANDATORY)**
-table in SKILL.md ("Auto-Archival" section). Pipeline is 16 cols with leading
-`Week Of` (A) + `Decision` (C); Skipped/Attended are 14 cols with no `Week Of`
-and `Decision` in M. **Never `append` a raw `Pipeline!A:P` row** — that shifts
-every field ~2 columns right (the 2026-05-18 misalignment bug). Build the
-projected `A:N` row, append it via `gog sheets append ... --values-json`
-(row data has commas/pipes; positional args split it), then delete the source
-row by index via row-deletion. NEVER clear the entire Pipeline range. NEVER
-"clear and rewrite."
+the destination tab's schema by matching destination headers to source
+headers. Pipeline contains a `Week Of` field that destination tabs do not use;
+Skipped/Attended keep `Decision` under their own matching destination header.
+**Never append a raw Pipeline row** — that shifts fields into the wrong
+destination headers (the 2026-05-18 misalignment bug). Build a projected row
+from header names, append it via `gog sheets append ... --values-json` (row data
+has commas/pipes; positional args split it), then delete the source row by row
+index. NEVER clear the entire Pipeline range. NEVER "clear and rewrite."
 
-**Post-move assertion:** after appending, re-read the destination row. Column
-A must parse as a date/date-range and column M must be a Decision value
-(`Skip`/`Attend`/`Register Only`/terminal). If column B holds a date or column
-C holds `Skip`/`Attend`, the projection was skipped — restore from the snapshot
-and exit 1.
+**Post-move assertion:** after appending, re-read the destination row and
+resolve the destination headers. The destination `Date` field must parse as a
+date/date-range and the destination `Decision` field must be a valid decision
+value (`Skip`/`Attend`/`Register Only`/terminal). If those values land under
+the wrong headers, restore from the snapshot and exit 1.
 
 ### Step 2: Discovery + scoring (per SKILL.md Phase 1)
 
@@ -183,7 +196,8 @@ prepare proposed Pipeline rows in memory.
 
 For each new conference that passes the criteria filter, append a single
 row to the Pipeline tab. Use `gog sheets append`, not clear-then-write.
-One conference = one row, multi-day = single row with date range in col A.
+One conference = one row, multi-day = single row with date range in the
+`Date of Conference` field.
 
 ### Step 4: Re-sort EVENTS WITHIN each week section chronologically
 
@@ -194,7 +208,7 @@ sections. Headers stay where they are (see rule 6 above). Process:
 1. Walk the live Pipeline rows top-to-bottom.
 2. For each week-of section (header row → next header row), collect the
    event rows inside it.
-3. Sort those event rows by col B (start date), ascending. TBD entries
+3. Sort those event rows by the resolved `Date of Conference` start date, ascending. TBD entries
    sort to the bottom of their section (treat as `+infinity`).
 4. Write the re-sorted block back in place using row-by-row updates.
    Do NOT clear+rewrite. Do NOT cross section boundaries.
@@ -209,7 +223,7 @@ manually.
 After Step 1's auto-archival pass, some week-of headers may have zero
 remaining anchored events. If those headers are past-dated, prune them.
 
-For each live header (col A single-cell row):
+For each live header row:
 1. Count event rows between this header and the next header (or end of
    data range).
 2. Parse the header's label (`m/d` format like `4/27`) to a date in the
@@ -240,9 +254,9 @@ Common failure modes and recovery:
 - `header 'X/Y' is BELOW its first matching event` → header was
   displaced. Use the snapshot to find the correct header position; use
   row-insert + row-delete to relocate WITHOUT clear+rewrite.
-- `HARD mutation on event ... col C` → status was stomped. Restore the
-  snapshot's col C value via `gog sheets update` on that single cell.
-- `HARD mutation on event ... col B` / `col D` / `col G` → date/name/niche
+- `HARD mutation on event ... field 'decision'` → status was stomped. Restore the
+  snapshot's `Decision` value via `gog sheets update` on that single cell.
+- `HARD mutation on event ... field 'date'` / `field 'event_name'` / `field 'niche'` → date/name/niche
   was corrupted. Restore from snapshot.
 
 ### Step 7: Slack notification (only if everything passed)

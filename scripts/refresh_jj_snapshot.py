@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Refresh brain/context/jj-activity-snapshot.json from JJ's niche sheets.
+"""Refresh brain/context/jj-activity-snapshot.json from cold-call niche sheets.
 
 Aggregates cold-call activity across all known niche target sheets:
-  - Reads `Full Target List` tab columns T (1st Call Date) + V (2nd Call Date)
+  - Reads first-call and second-call date fields by header name
   - Normalizes date formats (slashes, dots, 2/4-digit years)
   - Buckets dials per day for the last 84 days
   - Computes weekly totals (12 buckets) + this-week / today aggregates
@@ -11,8 +11,8 @@ Per `feedback_jj_call_date_from_field_not_tab.md`, dial counts MUST come from
 populated Call Date field values, never from tab grouping. Tab names are
 estimated batch dates only.
 
-Run via launchd post-shift (Mon-Fri 2:30pm ET) so the dashboard reflects
-JJ's day before Kay reviews evening / morning.
+Run via scheduled post-shift refresh (Mon-Fri) so the dashboard reflects
+cold-call activity before Kay reviews evening / morning.
 
 Usage:
     GOG_ACCOUNT=... ./refresh_jj_snapshot.py
@@ -49,7 +49,7 @@ GOG_ACCOUNT = os.environ.get("GOG_ACCOUNT", "kay.s@greenwichandbarrow.com")
 # Match Call Log tab names like "Call Log 4.21.26" or "Call Log 04.21.2026".
 _CALL_LOG_TAB_RE = re.compile(r"^Call Log\s+\d+[./]\d+[./]\d+$", re.IGNORECASE)
 
-# Known niche target sheets (from .claude/skills/jj-operations/SKILL.md).
+# Known niche target sheets (from the legacy jj-operations skill).
 # Add more here as new niches activate. Sheet name → sheet ID.
 NICHE_SHEETS = {
     "Art Insurance": "15M76-gpcklwc47HDXIwyFC9Tj8K4wDOor4i0uxCYyHQ",
@@ -196,17 +196,67 @@ def _read_sheet_range(sheet_id: str, range_a1: str) -> list[list[str]] | None:
     return data if isinstance(data, list) else []
 
 
+def _idx_to_letter(idx: int) -> str:
+    result = ""
+    while True:
+        result = chr(65 + idx % 26) + result
+        idx = idx // 26 - 1
+        if idx < 0:
+            return result
+
+
+def _header_map(sheet_id: str, tab_name: str | None) -> dict[str, int]:
+    range_str = "1:1" if tab_name is None else f"'{tab_name}'!1:1"
+    rows = _read_sheet_range(sheet_id, range_str)
+    if not rows:
+        return {}
+    return {
+        str(value).strip(): idx
+        for idx, value in enumerate(rows[0])
+        if str(value).strip()
+    }
+
+
+def _resolve_any(headers: dict[str, int], candidates: list[str]) -> tuple[str, int] | None:
+    for candidate in candidates:
+        if candidate in headers:
+            return candidate, headers[candidate]
+    return None
+
+
 def _scan_tab_dials(sheet_id: str, tab_name: str | None) -> list[date]:
-    """Read T2:V from one tab. tab_name=None defaults to the first tab."""
-    range_str = "T2:V" if tab_name is None else f"'{tab_name}'!T2:V"
+    """Read call-date headers from one tab. tab_name=None defaults to the first tab."""
+    headers = _header_map(sheet_id, tab_name)
+    if not headers:
+        return []
+
+    first = _resolve_any(headers, [
+        "Cold Call 1st Date",
+        "1st Call Date",
+        "JJ: 1st Call Date",
+        "JJ: Call Date",
+        "Call Date",
+    ])
+    second = _resolve_any(headers, [
+        "Cold Call 2nd Date",
+        "2nd Call Date",
+        "JJ: 2nd Call Date",
+    ])
+    resolved = [item for item in (first, second) if item]
+    if not resolved:
+        label = tab_name or "working tab"
+        print(f"[refresh-jj] WARN: no call-date headers found on {label}", file=sys.stderr)
+        return []
+
+    rightmost = max(idx for _, idx in resolved)
+    range_str = f"A2:{_idx_to_letter(rightmost)}" if tab_name is None else f"'{tab_name}'!A2:{_idx_to_letter(rightmost)}"
     rows = _read_sheet_range(sheet_id, range_str)
     if rows is None:
         return []
     dials: list[date] = []
     for row in rows:
-        first_call = row[0] if len(row) > 0 else ""
-        second_call = row[2] if len(row) > 2 else ""
-        for raw in (first_call, second_call):
+        for _, idx in resolved:
+            raw = row[idx] if len(row) > idx else ""
             d = _normalize_date(raw)
             if d:
                 dials.append(d)
@@ -221,16 +271,12 @@ def _scan_niche_dials(
     """Aggregate dials across the working tab + every Call Log tab.
 
     Per `feedback_jj_call_date_from_field_not_tab.md`, dial counts come from
-    Call Date field values, but JJ rolls deals through tabs as a working list
+    Call Date field values, but cold-call operators roll deals through tabs as a working list
     — so a dial logged on a 4.21.26 Call Log tab might have a 4.24.26 date.
     We must scan every tab to find them all.
 
-    Two column schemas in the wild:
-      OLD (e.g. Art Storage "Active" tab): T=JJ: Call Date, V=JJ: Owner Sentiment
-      NEW (e.g. Premium Pest "Full Target List"): T=JJ: 1st Call Date, V=JJ: 2nd Call Date
-
-    Reading T:V handles both — sentiment text in V on the old schema fails
-    the date regex and is filtered out by `_normalize_date`.
+    Multiple header schemas exist in the wild. Resolve by header name rather
+    than assuming fixed column positions.
     """
     # Always scan the working tab (first tab, no name needed)
     dials = _scan_tab_dials(sheet_id, None)

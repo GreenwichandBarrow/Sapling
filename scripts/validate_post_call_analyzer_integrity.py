@@ -13,8 +13,8 @@ Checks (matches SKILL.md "Validator (mandatory)" section):
   3. No file in processed/ older than 30 days (rotate — WARN, not FAIL)
   4. Checkpoint file modification time <24h ago (detector ran recently)
 
-Self-locates REPO_ROOT for server (~/projects/Sapling) and iMac legacy
-(~/Documents/AI Operations) install paths.
+Self-locates REPO_ROOT for server (~/projects/Sapling) and Codex migration
+worktrees.
 """
 
 from __future__ import annotations
@@ -30,12 +30,8 @@ def find_repo_root() -> Path:
     for parent in [here.parent, *here.parents]:
         if (parent / "AGENTS.md").exists() and (parent / ".codex").exists():
             return parent
-    for parent in [here.parent, *here.parents]:
-        if (parent / "CLAUDE.md").exists() and (parent / ".claude").exists():
-            return parent
     for candidate in [
         Path.home() / "projects/Sapling",
-        Path.home() / "Documents/AI Operations",
     ]:
         if candidate.exists():
             return candidate

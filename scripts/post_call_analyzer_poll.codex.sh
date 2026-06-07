@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Codex cutover variant of post_call_analyzer_poll.sh.
-# This is intentionally non-live until post-call-analyzer is validated.
+# Codex post-call analyzer detector. Live systemd timer polls Granola through
+# the 1Password-backed granola-api REST wrapper.
 
 set -uo pipefail
 
-REPO_ROOT="${CODEX_PROJECT_DIR:-${CLAUDE_PROJECT_DIR:-/home/ubuntu/projects/Sapling}}"
+REPO_ROOT="${CODEX_PROJECT_DIR:-/home/ubuntu/projects/Sapling}"
 CACHE_DIR="$HOME/.cache/post-call-analyzer"
 CHECKPOINT_FILE="$CACHE_DIR/last-checkpoint.txt"
 QUEUE_DIR="$REPO_ROOT/brain/trackers/post-call-analyzer/queue"

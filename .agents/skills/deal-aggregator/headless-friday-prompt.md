@@ -25,13 +25,14 @@ This is the **weekly source-productivity digest** path (Phase 2 in SKILL.md). It
 8. **Run Source Scout subagent** per SKILL.md spec — both sides:
    - **Scouting side:** Enumerate inbox sender domains (last 7 days), cross-reference against Sourcing Sheet, classify any new domains as broker platform / M&A advisory / newsletter / industry publication, web-verify each URL resolves, propose additions. Also scan newsletter body text for AI-marketplace launches and named niche-broker mentions.
    - **Retirement side:** For every Sourcing Sheet source with `Status: Active`, check fingerprint store for last attributed match. If 30+ days silent → run 3 live-checks (URL resolves with GET 200, domain still registered, email-channel status if applicable). Propose retirement only if all 3 live-checks have been performed (passed OR documented why one failed). Per `feedback_test_before_concluding_channel_dead`: never retire on silence alone.
-9. **Compute volume stats:** 7-day rolling deals/day average, status (`✅ ≥1/day` / `⚠️ 0.5-0.9/day` / `🔴 <0.5/day`), trend arrows per source row.
-10. **Write the digest artifact** at `brain/trackers/weekly/{TODAY}-deal-aggregator-digest.md` matching the SKILL.md weekly_digest template — frontmatter (`date`, `type: tracker`, `title`, `window_start`, `window_end`, `volume_7d_avg`, `volume_status`, `proposed_additions`, `proposed_retirements`, `tags`), all 5 sections (Source Productivity / Volume Check / Proposed Additions / Proposed Retirements / Recommended Actions). Empty sections keep their header with "None this week" body.
+9. **Compute funnel stats:** 7-day rolling deals/day average, status (`✅ ≥1/day` / `⚠️ 0.5-0.9/day` / `🔴 <0.5/day`), trend arrows per source row, email-leg live/missing count, broker-opportunistic count/themes, blocked-source count, and primary bottleneck (`source coverage`, `email leg`, `screening strictness`, `source quality`, or `healthy`).
+10. **Write the digest artifact** at `brain/trackers/weekly/{TODAY}-deal-aggregator-digest.md` matching the SKILL.md weekly_digest template — frontmatter (`date`, `type: tracker`, `title`, `window_start`, `window_end`, `volume_7d_avg`, `volume_status`, `proposed_additions`, `proposed_retirements`, `tags`), all 5 sections (Source Productivity / Volume Check / Proposed Additions / Proposed Retirements / Recommended Actions). The Volume Check section must include email-leg health, broker-opportunistic themes, source blockers, and funnel diagnosis. Empty sections keep their header with "None this week" body.
 11. **Slack-trigger logic — silence = healthy:**
     - IF `proposed_additions ≥ 1` OR `proposed_retirements ≥ 1` OR `volume_status == 🔴` → POST to `SLACK_WEBHOOK_OPERATIONS` with one-line summary + link to digest file path.
     - ELSE (zero proposals AND volume healthy) → **DO NOT Slack**. Silent digest is the correct behavior on a healthy week.
 12. **NO auto-writes to the Sourcing Sheet.** All proposals stay in the digest file awaiting Kay's approval. Sheet write is a separate post-approval invocation.
-13. **Exit normally** (exit 0).
+13. **Write dashboard status** at `brain/context/deal-aggregator-status.json` per SKILL.md Funnel Effectiveness Layer. Include weekly volume, proposed changes, email-leg health, blocked-source count, broker-opportunistic count, and top bottleneck.
+14. **Exit normally** (exit 0).
 
 ## What success looks like
 
@@ -43,6 +44,7 @@ This is the **weekly source-productivity digest** path (Phase 2 in SKILL.md). It
 - Weekend dates are listed as expected non-run days, not missing scan artifacts.
 - Slack ping sent ONLY if there's at least one decision-worthy item (proposal or critical volume).
 - No writes to the Sourcing Sheet.
+- Dashboard status JSON written for the command-center dashboard.
 - No double-write if a prior child already produced today's digest.
 
 ## Forbidden in headless mode

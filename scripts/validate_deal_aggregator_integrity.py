@@ -52,6 +52,7 @@ WEEKLY_DIR = os.environ.get(
 DAILY_SECTIONS = [
     "## Deals Surfaced",
     "## Email Inbound Deals",
+    "## Broker Opportunistic Review",
     "## Near Misses",
     "## Listings Reviewed (full log)",
     "## Source Scorecard",
@@ -73,6 +74,8 @@ DIGEST_SECTIONS = [
 # The 2026-05-04 morning artifact predates the cutover and remains valid without it.
 LISTINGS_REVIEWED_SECTION = "## Listings Reviewed (full log)"
 LISTINGS_REVIEWED_REQUIRED_FROM = date(2026, 5, 4)  # afternoon mode and later
+BROKER_OPPORTUNISTIC_SECTION = "## Broker Opportunistic Review"
+BROKER_OPPORTUNISTIC_REQUIRED_FROM = date(2026, 6, 8)
 
 MIN_BYTES = 200
 
@@ -89,7 +92,11 @@ def resolve_required_sections(mode: str, run_date: date) -> list:
     if mode == "digest":
         return DIGEST_SECTIONS
 
-    base = [s for s in DAILY_SECTIONS if s != LISTINGS_REVIEWED_SECTION]
+    base = [
+        s
+        for s in DAILY_SECTIONS
+        if s not in (LISTINGS_REVIEWED_SECTION, BROKER_OPPORTUNISTIC_SECTION)
+    ]
 
     require_listings = False
     if mode == "afternoon" and run_date >= LISTINGS_REVIEWED_REQUIRED_FROM:
@@ -99,8 +106,13 @@ def resolve_required_sections(mode: str, run_date: date) -> list:
         require_listings = True
 
     if require_listings:
-        return DAILY_SECTIONS  # full 6-section list, with Listings Reviewed in canonical position
-    return base  # 5 sections, pre-cutover ordering
+        base = [*base[:2], LISTINGS_REVIEWED_SECTION, *base[2:]]
+
+    if run_date >= BROKER_OPPORTUNISTIC_REQUIRED_FROM:
+        insert_at = 2
+        base = [*base[:insert_at], BROKER_OPPORTUNISTIC_SECTION, *base[insert_at:]]
+
+    return base
 
 
 

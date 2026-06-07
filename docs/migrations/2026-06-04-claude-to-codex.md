@@ -341,6 +341,7 @@ These are intentional improvements to consider after Phase 2 monitoring, before 
    - Avoid the old failure mode where a skill looks for a local token, cannot find it, and does not know to use or refresh the corresponding 1Password-backed path.
 
 6. Deal Aggregator funnel effectiveness review:
+   - Frame: `deal-aggregator` is a very large, operationally important skill that is largely underperforming on deal-flow volume. It should be stabilized, measured, and improved deliberately rather than casually patched.
    - Treat `deal-aggregator` as a multi-leg funnel, not a single monolithic skill: source roster, daily scan, afternoon top-up, email-inbound parsing, buy-box/niche matching, dedup/Slack surfacing, forensic logging, Friday source-productivity digest, and new-intermediary onboarding.
    - Investigate low volume from the 2026-06-05 digest (`volume_7d_avg: 0.33`, red status) before changing screening logic.
    - Make the email-inbound leg more reliable and visible. The 2026-06-05 morning run had `email_scan_source: missing`, which blinded broker blasts, CIMs, NDA follow-ups, and DealsX replies for that run.
@@ -349,3 +350,4 @@ These are intentional improvements to consider after Phase 2 monitoring, before 
    - Fix browser fallback for blocked sources such as BizBuySell (`agent-browser` unavailable on the VPS during the latest run).
    - Make the Friday digest more action-oriented: source yield, dead/stale sources, new source tests, near-miss themes, and recommended source-expansion actions.
    - Add dashboard visibility for last run, deals surfaced, email leg status, sources scanned/blocked, near misses, 7-day volume, and pending source changes.
+   - Refactor the oversized `deal-aggregator` skill into a lean router plus reference files after behavior stabilizes. Prefer references (`sources.md`, `screening.md`, `email-inbound.md`, `weekly-digest.md`) before separate sub-skills; create sub-skills only for independently invoked workflows such as Source Scout or Broker Opportunistic Review.

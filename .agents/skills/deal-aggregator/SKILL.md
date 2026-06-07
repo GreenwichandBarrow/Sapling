@@ -73,7 +73,61 @@ Gmail safety is strict: this skill may create Gmail drafts only where explicitly
 - Deal matches → individual Slack notifications → Kay reacts thumbs up/down → pipeline-manager takes over on NDA
 - Niche signals → niche-intelligence (new thesis ideas, market patterns)
 - New intermediary entities → Intermediary Target List Sheet (`18zzE1y-BU1xuD-y0BOmEl8GtJ4I-iclSuBqAi0q3pkk`)
+- Dashboard health snapshot → `brain/context/deal-aggregator-status.json`
 </objective>
+
+<funnel_effectiveness>
+## Funnel Effectiveness Layer
+
+The goal is not only to run scans; the goal is to improve qualified deal flow. Every run should make it clear whether the bottleneck is source coverage, source quality, email availability, screening strictness, or surfacing UX.
+
+### Daily classification lanes
+
+Every reviewed listing belongs to exactly one lane:
+
+- `PASS` — clears buy-box gate and matches an active thesis corpus. Slack-posted, subject to fingerprint dedup.
+- `BROKER-OPPORTUNISTIC` — clears disclosed financial/structural gates, comes from a broker/platform/opportunistic channel, has no hard-exclude, but does not match an active thesis corpus. Artifact-only by default; not Slack-posted unless Kay later approves a broker-opportunistic rule.
+- `NEAR-MISS` — promising enough to learn from but missing a required disclosed criterion, too sparse to evaluate, or useful for corpus tuning.
+- `HARD-REJECT` — fails a disclosed-and-failed buy-box criterion, hard-exclude, or clearly ineligible geography/category.
+- `FLAG` — ambiguous or undisclosed-field-heavy; requires human review but should not be fabricated into a pass.
+
+**Broker-opportunistic lane purpose:** protect the funnel from being too narrow. If a financially viable broker listing is outside current active theses, preserve it for CIO review instead of burying it in generic near misses. This is especially important while G&B is tuning the source roster and active niche corpus.
+
+### Email leg reliability
+
+Email-inbound deal flow is a first-class leg. The morning run should not silently treat a missing email artifact as normal.
+
+If `brain/context/email-scan-results-{date}.md` is missing:
+1. Retry a small bounded wait/check loop before declaring missing.
+2. Record `email_scan_status: missing` in frontmatter and dashboard status.
+3. Add a visible Near Misses / Volume Check note: "email leg unavailable."
+4. Do not scan Gmail directly; email-intelligence owns Gmail access and writes the artifact.
+
+Afternoon run should treat a present email artifact as a recovery opportunity and note whether the morning email leg was unavailable.
+
+### Dashboard status output
+
+Every morning/afternoon run writes `brain/context/deal-aggregator-status.json` with:
+
+```json
+{
+  "date": "YYYY-MM-DD",
+  "mode": "morning|afternoon|digest",
+  "artifact": "brain/context/deal-aggregator-scan-YYYY-MM-DD.md",
+  "email_scan_status": "live|missing|cached|late_recovered",
+  "deals_found": 0,
+  "broker_opportunistic": 0,
+  "near_misses": 0,
+  "sources_scanned": 0,
+  "sources_blocked_verified": 0,
+  "sources_blocked_single_attempt": 0,
+  "volume_status": "ON TRACK|BELOW TARGET|ABOVE TARGET|CRITICAL",
+  "needs_attention": []
+}
+```
+
+Digest mode updates the same status file with the weekly `volume_7d_avg`, proposed additions/retirements, stale sources, and top funnel bottlenecks. This is the dashboard contract.
+</funnel_effectiveness>
 
 <channels>
 ## Channels
@@ -140,6 +194,8 @@ For each active niche from Step 0a, resolve its keyword corpus:
   3. Any other populated fields on that WR row ("Target Pool", "Outreach Channel") that contain industry language
   Combine these into a match corpus for the niche. Log "DealsX reference blank for {niche}; corpus built from WR row (Niche Hypothesis + Quick notes)" in the scan artifact for visibility and calibration.
 
+**Codex-native corpus enrichment:** Do not rely on DealsX naming alone. For every active niche, add G&B-native synonyms from the WEEKLY REVIEW row, the relevant buy-box doc language, prior `BROKER-OPPORTUNISTIC` and `NEAR-MISS` themes, and obvious broker-market language. Log the enrichment path in the artifact so weak corpora can be improved in CIO review.
+
 **Step 0b — Load buy-box criteria (REQUIRED before scanning):**
 Read the three buy-box docs from the Deal Aggregator Drive folder. These are the single source of truth for all filter criteria. Never use cached or hardcoded bands; always re-read on every run so the skill reflects Kay's current criteria.
 
@@ -199,6 +255,7 @@ Stop hook: if agent-browser is not installed, log "BROWSER_AUTOMATION_UNAVAILABL
 7. Two types of passing matches:
    - **Thesis match** — fits an active niche thesis from Step 0a. High priority.
    - **Buy-box match, new niche** — passes the buy-box gate but sits in an industry not on the active thesis list. Route to niche-intelligence as a discovery signal.
+8. Broker/platform listings that clear disclosed financial/structural gates but do not match an active thesis corpus become `BROKER-OPPORTUNISTIC`, not generic `NEAR-MISS`, when the source type is broker/platform/opportunistic and no hard-exclude applies.
 
 **Slack notification — ONE per deal (FINGERPRINT CHECK REQUIRED FIRST):**
 
@@ -407,6 +464,8 @@ sources_blocked_verified: {n}
 sources_blocked_single_attempt: {n}
 email_deals: {n}
 dealsx_replies: {n}
+broker_opportunistic: {n}
+email_scan_status: {live|missing|cached|late_recovered}
 ---
 # Deal Aggregator Scan — {date}
 
@@ -420,6 +479,10 @@ dealsx_replies: {n}
 Inbound owner replies to DealsX cold outreach (Channel 6). Contact handoffs — no financials. Surfaced to Slack, count toward daily volume, do NOT trigger target-discovery.
 1. **{Lead Name}** — {Lead Website} | {Lead Email} | {LinkedIn or "—"}
 
+## Broker Opportunistic Review
+Financially plausible broker/platform listings that do not match an active thesis corpus. Artifact-only by default; use this lane for CIO review and corpus/source tuning.
+1. **{Company/Profile}** — {Source} | {Revenue} | {EBITDA} | {Industry} | Why it matters | {Link}
+
 ## Near Misses (not Slacked)
 - {listing} — {reason not flagged}
 
@@ -431,11 +494,12 @@ Required when ≥ 1 listing was reviewed. If zero listings were reviewed (every 
 
 | Source | Headline | Geo | Revenue | EBITDA | Margin | Industry | Verdict | Reject Reason |
 |--------|----------|-----|---------|--------|--------|----------|---------|---------------|
-| {Source} | {Listing headline or blind-profile descriptor} | {state, or "undisclosed"} | {Revenue or "undisclosed"} | {EBITDA or "undisclosed"} | {Margin% or "undisclosed"} | {Industry per listing} | {PASS / NEAR-MISS / HARD-REJECT / FLAG} | {one-line reason if not PASS, else blank} |
+| {Source} | {Listing headline or blind-profile descriptor} | {state, or "undisclosed"} | {Revenue or "undisclosed"} | {EBITDA or "undisclosed"} | {Margin% or "undisclosed"} | {Industry per listing} | {PASS / BROKER-OPPORTUNISTIC / NEAR-MISS / HARD-REJECT / FLAG} | {one-line reason if not PASS, else blank} |
 
 Verdict definitions:
 - `PASS` — clears buy-box gate AND matches an active niche corpus. Slack-posted (subject to fingerprint dedup).
-- `NEAR-MISS` — clears buy-box financial gate but no active-niche corpus match. Worth tracking for thesis-drift / corpus-tuning calibration.
+- `BROKER-OPPORTUNISTIC` — clears disclosed financial/structural gate from a broker/platform/opportunistic channel, has no hard-exclude, but no active-niche corpus match. Artifact-only, not Slack-posted by default.
+- `NEAR-MISS` — partially promising, sparse, or useful for thesis/corpus tuning, but not enough for pass or broker-opportunistic review.
 - `HARD-REJECT` — fails buy-box on a disclosed-and-failed criterion, hits an industry hard-exclude, or geography hard-excluded.
 - `FLAG` — undisclosed-field heavy or ambiguous; logged for human review without auto-rejection.
 
@@ -467,8 +531,11 @@ Every source scanned this run MUST appear as a row — no exceptions. Missing ro
 
 ## Volume Check
 - Deals surfaced today: {n}
+- Broker-opportunistic review items: {n}
 - 7-day rolling average: {n}
 - Target: 1-3/day — {ON TRACK / BELOW TARGET / ABOVE TARGET}
+- Email leg: {live|missing|cached|late_recovered}
+- Funnel bottleneck: {source coverage / email leg / screening strictness / source quality / healthy}
 ```
 </results_file>
 
@@ -520,6 +587,10 @@ Trend arrow: compare this week's match count to prior week's (prior digest file 
 - 7-day rolling average: {n}/day
 - Target: 1–3/day
 - Status: {✅ On track / ⚠️ Below target / 🔴 Critical}
+- Email leg health: {live/missing count over scheduled days}
+- Broker-opportunistic items: {n} this week, with top themes
+- Source blockers: {blocked verified/single-attempt/login-gated}
+- Funnel diagnosis: {source coverage / email leg / screening strictness / source quality / healthy}
 
 ## 3. Proposed Additions
 
@@ -539,7 +610,7 @@ Trend arrow: compare this week's match count to prior week's (prior digest file 
 
 ## 5. Recommended Actions (Kay's Review Bucket)
 
-Summary list — 1 line per proposal with its YES/NO/DISCUSS for quick approval. On YES, Codex writes the change to the Sourcing Sheet; on NO/DISCUSS, no write.
+Summary list — 1 line per proposal with its YES/NO/DISCUSS for quick approval. Include source additions/retirements, email-leg fixes, browser-fallback fixes, and broker-opportunistic corpus/source tuning. On YES for source-sheet changes, Codex writes the change to the Sourcing Sheet; on NO/DISCUSS, no write.
 ```
 
 ### Source Scout Subagent
@@ -614,6 +685,8 @@ Wired 2026-05-02 during the legacy launchd-debugger investigation; now enforced 
 - [ ] No duplicate listings (dedup across platforms AND email inbound)
 - [ ] Zero matches = report "No matches" — never fabricate
 - [ ] Scan artifact logs, for each niche, which corpus path was used: "DealsX keywords" or "WR row enrichment (Niche Hypothesis + Quick notes)" — so underperforming niches can be calibrated next cycle
+- [ ] Broker-opportunistic lane populated for financially plausible broker/platform listings that do not match active niche corpus but have no hard-exclude.
+- [ ] `brain/context/deal-aggregator-status.json` written for dashboard consumption.
 
 ### Source Scorecard Stop Hook (Phase 2)
 - [ ] Every source with `Status: Active` on the Sourcing Sheet has a row in the scan artifact's `## Source Scorecard`. Row count = Active row count on the sheet. Mismatch = scan agent skipped a source → hard fail.
@@ -644,6 +717,7 @@ Wired 2026-05-02 during the legacy launchd-debugger investigation; now enforced 
 - [ ] Email inbound deals from email-scan-results processed
 - [ ] Matches sent to Slack individually with links
 - [ ] Results file written with volume check
+- [ ] Dashboard status JSON written with email leg status, blocked-source counts, broker-opportunistic count, and needs-attention list
 
 ### Weekly
 - [ ] Niche signals compiled and sent to niche-intelligence

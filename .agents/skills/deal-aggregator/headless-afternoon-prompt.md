@@ -19,21 +19,24 @@ The afternoon artifact is **separate from the morning artifact**. Never overwrit
 2. **Resolve credentials through 1Password first:** `source /home/ubuntu/projects/Sapling/scripts/op-env.sh`. If `gog` access appears missing, run `gog auth list --check` before reporting an outage. Never source `scripts/.env.launchd` raw.
 3. **Re-read buy-boxes** (Services / Insurance / SaaS Google Doc IDs in SKILL.md). Live read — Kay may have edited during the day.
 4. **Re-read active niches** from Industry Research Tracker WEEKLY REVIEW tab (sheet ID in SKILL.md). Kay may have toggled niche statuses since morning.
-5. **Read** `brain/context/email-scan-results-{TODAY}.md` for any new email-inbound deals (CIMs, broker blasts, intro forwards) that landed after the morning email-intelligence run.
+5. **Read** `brain/context/email-scan-results-{TODAY}.md` for any new email-inbound deals (CIMs, broker blasts, intro forwards) that landed after the morning email-intelligence run. If missing, run a bounded retry loop (3 checks, 60 seconds apart) before declaring `email_scan_status: missing`. If the morning artifact noted missing email but the afternoon artifact is present, record `email_scan_status: late_recovered`.
 6. **Rescan time-sensitive platforms only:** Rejigg (afternoon listings), Flippa (afternoon updates), Everingham & Kerr (afternoon blasts). Skip the full broker-platform sweep — morning run covered those. Channel 4 (association deal boards) skipped in afternoon run.
 7. **Apply buy-box filters** per the Data Availability Rule (missing data ≠ rejection).
 8. **Fingerprint dedup** every match via `scripts/deal-aggregator-fingerprint.sh` against `brain/context/deal-aggregator-fingerprints.jsonl` (30-day TTL). Skip Slack post for any match whose fingerprint already exists — this catches morning-run dupes.
-9. **Slack-post each new match** to `#active-deals` per SKILL.md format (one message per deal).
-10. **Populate the Listings Reviewed (full log) section** as you process listings. Every listing scraped or parsed during this run, regardless of verdict, gets one row with: source, headline, geo (state if known else "undisclosed"), revenue, ebitda, margin, industry, verdict (PASS / NEAR-MISS / HARD-REJECT / FLAG), reject_reason. Do not summarize listings into aggregate counts only. Every listing that was scraped or parsed gets one row in the Listings Reviewed log. Sort PASS first, then NEAR-MISS, then FLAG, then HARD-REJECT.
-11. **Write the artifact** at `brain/context/deal-aggregator-scan-{TODAY}-afternoon.md` matching the SKILL.md "Results File" template — frontmatter (`date`, `deals_found`, `sources_scanned`, `sources_blocked_verified`, `sources_blocked_single_attempt`, `email_deals`), all section headers (Deals Surfaced / Email Inbound Deals / Near Misses / Listings Reviewed (full log) / Source Scorecard / Volume Check). Empty sections keep their header with "None today" body. Source Scorecard rows = the time-sensitive platforms you actually scanned this run (Rejigg / Flippa / Everingham & Kerr / email channel), not all sources. The Listings Reviewed table emits the header row even when zero listings were reviewed (no data rows, header only).
-12. **Exit normally** (exit 0).
+9. **Slack-post each new PASS match and DealsX reply** to `#active-deals` per SKILL.md format (one message per deal). Do not Slack-post `BROKER-OPPORTUNISTIC` items by default; they are artifact-only for CIO review.
+10. **Populate the Listings Reviewed (full log) section** as you process listings. Every listing scraped or parsed during this run, regardless of verdict, gets one row with: source, headline, geo (state if known else "undisclosed"), revenue, ebitda, margin, industry, verdict (PASS / BROKER-OPPORTUNISTIC / NEAR-MISS / HARD-REJECT / FLAG), reject_reason. Do not summarize listings into aggregate counts only. Every listing that was scraped or parsed gets one row in the Listings Reviewed log. Sort PASS first, then BROKER-OPPORTUNISTIC, then NEAR-MISS, then FLAG, then HARD-REJECT.
+11. **Write the artifact** at `brain/context/deal-aggregator-scan-{TODAY}-afternoon.md` matching the SKILL.md "Results File" template — frontmatter (`date`, `deals_found`, `sources_scanned`, `sources_blocked_verified`, `sources_blocked_single_attempt`, `email_deals`, `dealsx_replies`, `broker_opportunistic`, `email_scan_status`), all section headers (Deals Surfaced / Email Inbound Deals / DealsX Proprietary Outreach Replies / Broker Opportunistic Review / Near Misses / Listings Reviewed (full log) / Source Scorecard / Volume Check). Empty sections keep their header with "None today" body. Source Scorecard rows = the time-sensitive platforms you actually scanned this run (Rejigg / Flippa / Everingham & Kerr / email channel), not all sources. The Listings Reviewed table emits the header row even when zero listings were reviewed (no data rows, header only).
+12. **Write dashboard status** at `brain/context/deal-aggregator-status.json` per SKILL.md Funnel Effectiveness Layer. Include `needs_attention` entries for missing email artifact, blocked sources, critical volume, or unavailable browser fallback.
+13. **Exit normally** (exit 0).
 
 ## What success looks like
 
 - Afternoon artifact exists at `brain/context/deal-aggregator-scan-{TODAY}-afternoon.md`, ≥ 200 bytes, has frontmatter + all required section headers from SKILL.md.
 - Source Scorecard has one row per time-sensitive source actually scanned this run.
 - Listings Reviewed log has one row per listing scraped or parsed this run, regardless of verdict (table header only if zero listings reviewed).
-- New matches Slack-posted to `#active-deals` (idempotent — fingerprint store catches morning-run dupes).
+- New PASS matches and DealsX replies Slack-posted to `#active-deals` (idempotent — fingerprint store catches morning-run dupes).
+- Broker-opportunistic listings preserved for CIO review without Slack noise.
+- Dashboard status JSON written.
 - Morning artifact (`brain/context/deal-aggregator-scan-{TODAY}.md`) is untouched.
 - No double-write if a prior child already produced today's afternoon artifact.
 
@@ -54,7 +57,7 @@ The afternoon artifact is **separate from the morning artifact**. Never overwrit
 
 - **Buy-box doc unreachable** → use last cached version if present, write a note in the artifact's frontmatter (`buy_box_source: cached`); do NOT exit non-zero.
 - **Industry Research Tracker unreachable** → fall back to last known active-niche list cached in vault context; write a note in the artifact; do NOT exit non-zero.
-- **email-scan-results artifact missing for today** → write artifact with `email_deals: 0` and a Near Misses row noting the gap; continue.
+- **email-scan-results artifact missing for today after bounded retry** → write artifact with `email_deals: 0`, `email_scan_status: missing`, a Near Misses row noting the gap, and a dashboard `needs_attention` entry; continue.
 - **Single source blocks (HTTP 403, timeout, Cloudflare)** → mark blocked in scorecard, continue scanning other sources.
 - **All time-sensitive sources block** → still write the artifact with a fully populated scorecard (every scanned source as `blocked`); the artifact existing is the deliverable, the scorecard tells the operator what failed.
 - **Morning artifact missing for today** → not your problem; the afternoon run executes regardless. Note `morning_artifact_missing: true` in afternoon frontmatter for diagnostics, continue.

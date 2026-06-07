@@ -2,7 +2,7 @@
 """
 Wrapper-level integrity validator for niche-intelligence scheduled Tuesday runs.
 
-Runs as POST_RUN_CHECK after launchd wrapper completes. Independent of skill-internal
+Runs as POST_RUN_CHECK after the Codex/systemd runner completes. Independent of skill-internal
 validation. Catches silent-success failures where the agent exits 0 but produced no
 real artifacts (the failure mode that hit 4/14, 4/21, 4/28 — wrapper fell through
 to bare `/niche-intelligence` with no headless prompt).

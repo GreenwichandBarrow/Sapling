@@ -58,14 +58,14 @@ Valid flags: --emit=compact|json|md|context|path, --search=reddit,hn,polymarket,
 # 12weekyear.com, baldridgecpa.com, plug-newsletter.com, e.pehub.com,
 # wealthmanagement.com, taxalchemy.com, and more). Pull the whole bucket, not
 # per-publisher subject queries.
-gog gmail search -a kay.s@greenwichandbarrow.com --query 'label:"auto/subscriptions & education" newer_than:7d' -j --max 50
-gog gmail read {message_id} -a kay.s@greenwichandbarrow.com -j
+gog gmail search -a kay.s@greenwichandbarrow.com --gmail-no-send --query 'label:"auto/subscriptions & education" newer_than:7d' -j --max 50
+gog gmail read {message_id} -a kay.s@greenwichandbarrow.com --gmail-no-send -j
 
 Extract: M&A deals, PE activity, regulatory changes, fragmented industry mentions, niche signals from operator/searcher newsletters.
 Filter out: Big tech M&A, pure VC/startup, macro commentary without implications, leadership-development pieces with no industry signal.
 
 # Also pull the industry-research bucket (mailing lists, association reports, trade publications)
-gog gmail search -a kay.s@greenwichandbarrow.com --query 'label:"auto/industry research" newer_than:14d' -j --max 30
+gog gmail search -a kay.s@greenwichandbarrow.com --gmail-no-send --query 'label:"auto/industry research" newer_than:14d' -j --max 30
 
 --- SOURCE 3: GRANOLA CALLS (last 14 days) ---
 
@@ -78,11 +78,11 @@ Extract: new industries mentioned, market intelligence, investor thesis feedback
 
 # Broker blasts, CIMs, intermediary inbound, deal teasers, etc. all route to
 # auto/deal flow via Gmail filter. Use the label, not a subject-exclusion query.
-gog gmail search -a kay.s@greenwichandbarrow.com --query 'label:"auto/deal flow" newer_than:14d' -j --max 50
-gog gmail read {message_id} -a kay.s@greenwichandbarrow.com -j
+gog gmail search -a kay.s@greenwichandbarrow.com --gmail-no-send --query 'label:"auto/deal flow" newer_than:14d' -j --max 50
+gog gmail read {message_id} -a kay.s@greenwichandbarrow.com --gmail-no-send -j
 
 # Also scan investors bucket for portfolio news + searcher cohort signal
-gog gmail search -a kay.s@greenwichandbarrow.com --query 'label:"auto/investors" newer_than:14d' -j --max 30
+gog gmail search -a kay.s@greenwichandbarrow.com --gmail-no-send --query 'label:"auto/investors" newer_than:14d' -j --max 30
 
 Look for: broker teasers, CIMs, investor portfolio news, industry association newsletters, outreach responses, conference announcements.
 Filter out: marketing, internal logistics, personal emails.
@@ -102,7 +102,7 @@ Pattern recognition:
 - Same industry from 2+ sources = strong signal
 - Broker mentioning deal flow = strong signal
 - Single offhand mention = weak signal
-- Aligns with buy box (regulatory, recurring, fragmented) = boost
+- Aligns with buy box (regulatory, recurring/reoccurring, cohort durability, critical service, fragmented) = boost
 
 Mark processed signals as status: processed after extraction.
 
@@ -204,7 +204,7 @@ You are the HISTORICAL EMAIL sub-agent.
 YOUR TASK: Mine Gmail for niche-relevant signals across the full search fund history (older than 14 days).
 
 HOW TO ACCESS:
-gog gmail search -a kay.s@greenwichandbarrow.com --query "{query}" -j --max {n}
+gog gmail search -a kay.s@greenwichandbarrow.com --gmail-no-send --query "{query}" -j --max {n}
 
 SEARCH QUERIES (run all):
 1. "subject:industry OR subject:acquisition OR subject:deal older_than:14d" --max 50
@@ -214,7 +214,7 @@ SEARCH QUERIES (run all):
 5. "from:@axial.net OR from:@dealstream OR from:@bizbuysell older_than:14d" --max 20
 
 Read relevant emails:
-gog gmail read {message_id} -a kay.s@greenwichandbarrow.com -j
+gog gmail read {message_id} -a kay.s@greenwichandbarrow.com --gmail-no-send -j
 
 WHAT TO EXTRACT:
 - Industries that came up in broker conversations
@@ -425,7 +425,7 @@ Rank the top 5 strongest signals by:
 1. Number of independent sources
 2. Named companies available
 3. Contacts who can help
-4. Alignment with buy box (B2B, asset-light, recurring, compliance-driven, 50+ targets)
+4. Alignment with buy box (B2B, asset-light, recurring/reoccurring revenue, cohort durability, critical service, compliance-driven, 50+ targets)
 5. Actionability (can Kay get on the phone with owners within 2 weeks?)
 
 For each signal, write a 2-3 sentence synthesis explaining WHY this pattern matters — not just that it appeared in multiple places, but what the convergence implies about the opportunity.
@@ -464,7 +464,7 @@ A contact mentioning a niche is a LEAD, not evidence of fit. Jeremy Black saying
 
 For each niche, explicitly separate:
 - **Signal source:** Who suggested it and why (this is context, not evidence)
-- **Independent validation:** What the data shows on margins, target pool, recurring revenue, etc. (this is what the score is based on)
+- **Independent validation:** What the data shows on margins, target pool, recurring/reoccurring revenue, cohort/customer durability, service criticality, etc. (this is what the score is based on)
 
 If a niche was suggested by a trusted contact but fails the criteria on data, say so clearly: "{Contact} recommended this, but the data shows {reason it fails}. Flagging for Kay's decision."
 
@@ -473,9 +473,9 @@ A niche MUST be:
 - B2B services or vertical SaaS
 - Asset-light (NOT balance sheet businesses — no real estate, fleet, facilities)
 - Mission-critical or compliance-driven ("need to have" not "nice to have")
-- Recurring or convertible-to-recurring revenue (50%+)
+- Recurring revenue, reoccurring/repeat revenue, or convertible-to-recurring revenue (50%+ behavior preferred)
 - Fragmented (many small players, not consolidated)
-- Have acquirable targets ($2-10M EBITDA, 10+ years operating, retirement-age owners)
+- Have acquirable targets (`$3M+` EBITDA preferred; `$750K-$3M` reviewable when quality signals are strong; 10+ years operating, succession-relevant owners)
 - Healthy margins (15%+ EBITDA)
 - NOT: B2C, retail, restaurants, construction, franchises, physician practices, seasonal
 

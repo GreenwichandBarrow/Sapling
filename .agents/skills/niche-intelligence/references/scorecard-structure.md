@@ -5,7 +5,7 @@
 Each niche gets its own standalone scorecard xlsx file, stored in its Drive folder alongside the one-pager pptx.
 
 **Structure of each niche xlsx:**
-- **Tab 1: INITIAL SCREEN** -- Pass/fail gate on 4 criteria (margins, recurring revenue, growth, Growth TAM). Must pass all 4 to proceed to detailed scoring.
+- **Tab 1: INITIAL SCREEN** -- Pass/fail gate on 4 criteria (margins, recurring/reoccurring revenue, growth, Growth TAM). Must pass all 4 to proceed to detailed scoring.
 - **Tab 2: Industry Scorecard** -- Detailed 7-category scoring with weighted formulas (renamed from TEMPLATE tab in the master). Sub-criteria scored as +/+/-/-, formulas auto-calculate weighted totals.
 - **Tab 3+: Company Scorecards** -- Added by deal-evaluation skill as individual acquisition targets within the niche are scored. Each company gets its own tab.
 
@@ -34,7 +34,7 @@ Run BEFORE the Industry Scorecard. All 4 must pass to proceed.
 | Criterion | Pass Threshold | What to evaluate |
 |-----------|---------------|------------------|
 | Margins | 15%+ EBITDA | Typical EBITDA margins for companies in this industry |
-| Recurring Revenue | Existing or convertible | Is there contractual/subscription revenue, or a clear path to convert? |
+| Recurring / Reoccurring Revenue | Existing, repeatable, or convertible | Is there contractual/subscription revenue, reoccurring/repeat purchase behavior, strong retention/cohort durability, or a clear path to convert? |
 | Industry Growth | Above GDP (~3%+) | Industry CAGR relative to GDP growth |
 | Growth TAM | $500M+ market size | Total addressable market. $500M is the investor floor — below this is a red flag. |
 
@@ -52,14 +52,14 @@ Run BEFORE the Industry Scorecard. All 4 must pass to proceed.
 | Size | Business Quality / TAM | 10% | >$1.5B | $750M-1.5B | $300M-750M | <$300M | Scalability, TAM vs number operating in space |
 | Size | Market Position | 10% | No competitive entrance possible | Major barriers to entry | Some barriers | No barriers | Market share, penetration, switching costs, differentiation, pricing power |
 | Criticality | Revenue Concentration | 10% | Co has power over suppliers & customers | Power over one, parity with other | Supplier or customer has power | Both have power over co | % revenue from top 5 customers, retention, underserved customers |
-| Criticality | Predictable Revenue | 15% | Majority recurring | Mostly recurring | Mix of recurring/project/seasonal | Limited recurring | % recurring revenue |
+| Criticality | Predictable Revenue | 15% | Majority recurring/reoccurring with strong retention | Mostly recurring/reoccurring | Mix of recurring/project/seasonal | Limited recurring/reoccurring | % recurring revenue, repeat purchase, renewal, retention, cohort durability |
 | Criticality | Operating Efficiency | 10% | >25% | 20-25% | 15-20% | <15% | EBITDA margins |
 | Penetration | Revenue Sustainability | 10% | Highly fragmented, no major cos | Small cos established | A few formidable players | 1-2 cos control market | Competitive intensity, fragmentation, CLV, CAC ratio |
-| KS Fit | KS Fit | 15% | 4/4 criteria | 3/4 | 2/4 | 1/4 | B2B, 50%+ recurring, 15%+ margins, steady/growing |
+| KS Fit | KS Fit | 15% | 4/4 criteria | 3/4 | 2/4 | 1/4 | B2B, 50%+ recurring/reoccurring or durable repeat revenue, 15%+ margins, steady/growing |
 
 **KS Fit Criteria:**
-- Tier 1: 50%+ Recurring Revenue, Healthy Margins 15%+, Steady or Growing
-- Tier 2: B2B, $15M+ Rev, $1.5M+ EBITDA
+- Tier 1: 50%+ recurring/reoccurring or durable repeat revenue, healthy margins 15%+, steady or growing
+- Tier 2: B2B, scalable revenue base, company-level EBITDA preferably $3M+ but $750K-$3M reviewable when quality signals are strong
 
 ## Detailed Scorecard (TEMPLATE tab, 7 categories, weighted)
 

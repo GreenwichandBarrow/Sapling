@@ -1,6 +1,6 @@
 ---
 name: niche-intelligence
-description: "Niche Intelligence workflow. Gathers data from newsletters, web, calls, email, and research — identifies new niches — runs initial screen (margins, recurring revenue, growth, Growth TAM) — creates one-pagers — scores against G&B industry scorecard — updates Industry Research Tracker. Run every Tuesday night (ready Wednesday AM for analyst meeting) by 1pm EST."
+description: "Niche Intelligence workflow. Gathers data from newsletters, web, calls, email, and research — identifies new niches — runs initial screen (margins, recurring/reoccurring revenue, growth, Growth TAM) — creates one-pagers — scores against G&B industry scorecard — updates Industry Research Tracker. Run every Tuesday night so the report is ready Wednesday morning for the analyst meeting."
 # WARNING: 2.2x over archetype cap; refactor pending per item 2.
 archetype: orchestrator
 context_budget:
@@ -21,6 +21,8 @@ source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 Exports `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_OPERATIONS`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
 
 If a `gog` call fails with `aes.KeyUnwrap(): integrity check failed`, the cause is almost always that `op-env.sh` was not sourced — the keyring is fine. Re-source and retry, NEVER rotate credentials.
+
+Gmail access is read-only in this workflow. Use `gog gmail search/read ... --gmail-no-send` when reading newsletters, broker/deal-flow mail, investor updates, or historical email. This skill never sends, draft-sends, forwards, or autoreplies to email.
 </credentials>
 
 <essential_principles>
@@ -78,6 +80,8 @@ If verification fails, log the failure to chatroom and notify user — do NOT pr
 | OneNote MCP | SEARCH FUND notebook — industry memos, deal convos, research notes |
 | `python-pptx` | One-pager generation |
 | `WebSearch` | Supplemental research for scoring |
+
+**Headless gaps are evidence, not excuses.** If Granola MCP, OneNote MCP, ChatGPT export, or any other source is unavailable in the scheduled environment, document the gap in the report and sidecar. Use available fallbacks (`brain/calls/`, vault outputs, inbox signals) without pretending the missing source was covered.
 
 ### Schedule
 
@@ -148,6 +152,14 @@ tags:
 **Option A (queue for Tuesday):** Leave in inbox. The RECENT agent's passive signal source picks up `topic/niche-signal` items automatically during the next Tuesday run.
 
 **Option B (run now):** Invoke `/niche-intelligence --from-inbox` to process all pending niche ideas through Steps 2-5 immediately. Useful for testing or when Kay wants results before the next Tuesday cycle.
+
+**Option C (organic intake chat):** Kay can flag a new niche idea in a dedicated CIO chat as it comes up from meetings, emails, deal leads, new websites, or brainstorming. The chat should create a lightweight `brain/inbox/` niche idea record, do only enough first-pass analysis to route it, and then choose:
+- queue for Tuesday if normal priority,
+- run `/niche-intelligence --from-inbox` if time-sensitive or tied to an active lead,
+- tag as `watchlist` / `needs-more-signal` if the idea is too thin,
+- tag as `do-not-resurface` only when there is clear prior killed/tabled rationale.
+
+The intake chat is for capture and routing, not bypassing the pipeline. Anything that might become an active niche still goes through Identify → One-Pager → Score → Tracker.
 
 ### The rule:
 **Every niche idea, regardless of source, must go through: Identify → One-Pager → Score → Tracker.** The only question is timing (now vs. Tuesday).
@@ -235,9 +247,11 @@ The HISTORICAL orchestrator:
 
 **INITIAL SCREEN (pass/fail — must pass all 4 to proceed):**
 1. **Margins** — Do companies in this industry typically have 15%+ EBITDA margins?
-2. **Recurring Revenue** — Is there existing recurring/contractual revenue, or a clear path to convert?
+2. **Recurring / Reoccurring Revenue** — Is there existing recurring/contractual revenue, reoccurring/repeat revenue behavior, or a clear path to convert?
 3. **Industry Growth** — Is the market growing above GDP?
 4. **Growth TAM** — Is the total addressable market $500M+? (Investor floor — below $500M is a red flag)
+
+**Kay calibration (2026-06-07):** recurring revenue, reoccurring/repeat revenue patterns, cohort/customer durability, and service criticality are the most important positive signals. The industry screen should elevate niches where customers repeat, renew, retain, or depend on the service even if individual company listings often fall below the old `$3M+` preference. Retail and restaurants remain hard-no categories. Do not apply company-level EBITDA thresholds as industry-level rejection gates.
 
 **INDUSTRY SCORECARD (reference for ranking — does NOT gate decisions):**
 - Full 7-category weighted evaluation (Growth, Size, Economics, Criticality, Risks, Porter's, Value Creation, Impact)
@@ -262,7 +276,7 @@ Thesis: {2-3 sentences}
 
 QUICK SCREEN:
 - Margins: {Strong/Moderate/Weak} — {typical industry margins}
-- Recurring Revenue: {High/Moderate/Low} — {revenue model description}
+- Recurring / Reoccurring Revenue: {High/Moderate/Low} — {contractual revenue, repeat purchasing, renewal/cohort durability, or conversion path}
 - Industry Growth: {Strong/Moderate/Weak} — {CAGR}%, {key drivers}
 
 TARGET TAM:
@@ -278,7 +292,7 @@ MARKET TAM:
 - Key demand drivers: {list}
 ```
 
-**No automated rejection.** All niches proceed through the full pipeline. The data is for Kay's decision, not a gate. Flag thin target pools clearly but do NOT auto-kill or auto-table. Kay makes all niche decisions.
+**No automated rejection.** All niches proceed through the full pipeline. The data is for Kay's decision, not a gate. Flag thin target pools clearly but do NOT auto-kill or auto-table. Kay makes all niche decisions. Company-level constraints such as `$750K-$3M` review band, `$3M+` preferred EBITDA, and `<$750K` lower bound belong to deal/company screening; for niche evaluation they inform target availability and sourcing strategy, not automatic industry rejection.
 
 ### Step 3: One-Pager Creation
 

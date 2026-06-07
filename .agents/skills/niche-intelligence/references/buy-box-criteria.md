@@ -1,4 +1,4 @@
-# G&B Buy Box Criteria (March 2026)
+# G&B Buy Box Criteria (March 2026; Kay calibration added 2026-06-07)
 
 Source: Consolidated from G&B Lead Gen Criteria (2.10.26), G&B Acquisition Criteria (Feb 2026), G&B One Pager (7.9.25), deal history lessons, and Kay's latest direction.
 Google Doc: G&B Buy Box 3.18.26 in ANALYST / G AND B BUY BOX folder
@@ -8,22 +8,23 @@ Google Doc: G&B Buy Box 3.18.26 in ANALYST / G AND B BUY BOX folder
 | Gate | Services/Infrastructure | Vertical SaaS/Software |
 |------|------------------------|----------------------|
 | Revenue | $10-50M | $5-40M |
-| EBITDA | $2-5M preferred | $2M+ acceptable |
+| EBITDA | $3M+ preferred; $750K-$3M reviewable with strong quality signals | Same |
 | EBITDA Margins | 15%+ required | 15%+ required |
 | Operating History | 10+ years preferred | 5+ years |
 | Employees | 11-200 preferred | 11-200 preferred |
-| Revenue Quality | Recurring or convertible | Recurring |
+| Revenue Quality | Recurring, reoccurring/repeat, or convertible | Recurring, reoccurring/repeat, or convertible |
 | Ownership | Founder/closely held, no VC/PE | Same |
 | Customer Concentration | No single customer >15% | Same |
 | Business Type | B2B or B2B2C | B2B or B2B2C |
 
-**Small deal exception ($1-2M EBITDA):** Acceptable IF all are true:
-- 20%+ annual revenue growth over multiple years
-- Large industry TAM (business is small, industry is not)
-- Entry at 3-4x EBITDA (don't stretch on multiple)
-- No additional capital required
-- Clear path to $3M+ EBITDA within 3 years
-- Tradeoff: no management team, searcher does every job
+**Reviewable lower-middle-market band ($750K-$3M EBITDA):** Acceptable for review IF the business or niche shows strong quality signals:
+- recurring or reoccurring/repeat revenue behavior,
+- cohort/customer durability (retention, renewal, low churn, durable repeat purchase),
+- criticality of service (must-have, compliance/safety/revenue-critical, high switching cost),
+- large industry TAM or clear consolidation runway,
+- path to `$3M+` EBITDA within a credible hold period.
+
+Tradeoff: smaller deals may have thinner management, more owner dependence, and more operating burden. Preserve strong candidates for review; do not prefilter them away solely because they are below `$3M`.
 
 **Operating history exception (5-9 years for services):** Acceptable IF the company shows strong consistent growth, established market position, and durable customer relationships.
 
@@ -52,7 +53,7 @@ Google Doc: G&B Buy Box 3.18.26 in ANALYST / G AND B BUY BOX folder
 
 ## Explicit Exclusions
 
-VC/PE-backed, public companies, franchises, consumer retail/DTC, restaurants/hospitality, construction/labor-heavy, capital-intensive manufacturing, physician practices, seasonal businesses
+VC/PE-backed, public companies, franchises, consumer retail/DTC, restaurants, construction/labor-heavy, capital-intensive manufacturing, physician practices, seasonal businesses
 
 ## Industry Flags (signals a niche is worth investigating)
 

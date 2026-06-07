@@ -2,7 +2,7 @@
 """
 Wrapper-level integrity validator for relationship-manager scheduled runs.
 
-Runs as POST_RUN_CHECK after launchd wrapper completes. Independent of skill-internal
+Runs as POST_RUN_CHECK after the scheduled runner completes. Independent of skill-internal
 validation. Catches silent-success failures where the agent exits 0 but no artifact
 landed at brain/context/relationship-status-{date}.md.
 

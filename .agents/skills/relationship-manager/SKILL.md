@@ -38,12 +38,14 @@ curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KE
 ```
 
 **Forbidden in the relationship-status artifact:** writing "Attio MCP unauthenticated / disconnected" as a system-status alert. Scheduled runs use REST/wrapper first; only report a real Attio outage after the op-env resolve + REST health-check above fails.
+
+**Gmail auth and no-send safety:** Gmail/calendar verification uses the durable `gog` OAuth token for `kay.s@greenwichandbarrow.com`, unlocked by `GOG_KEYRING_PASSWORD` from 1Password via `op-env.sh`. If Gmail access appears missing, source `op-env.sh` and run `gog auth list --check` before reporting an outage. Every Gmail query should pass `--account kay.s@greenwichandbarrow.com --gmail-no-send`. This skill reads relationship evidence only; it never drafts, sends, forwards, or autoreplies to email.
 </credentials>
 
 <objective>
 Manage long-term relationship health across Kay's entire network. This skill monitors nurture cadences, verifies whether Kay already took pending actions, surfaces overdue contacts, and maintains People record attributes in Attio.
 
-**Output:** Writes `brain/context/relationship-status-{date}.md` artifact that pipeline-manager reads for Section 4 of the morning briefing.
+**Output:** Writes `brain/context/relationship-status-{date}.md` artifact that pipeline-manager reads for the morning relationship-health briefing.
 
 **This skill does NOT:**
 - Move deals through pipeline stages (that's pipeline-manager)
@@ -68,7 +70,7 @@ Manage long-term relationship health across Kay's entire network. This skill mon
 ### Data Sources for Last Interaction
 
 Check these in order (most recent wins):
-1. Gmail: last email to/from contact (`gog gmail search "to:{email} OR from:{email}" --max 1 --plain`)
+1. Gmail: last email to/from contact (`gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send "to:{email} OR from:{email}" --max 1 --plain`)
 2. Calendar: last meeting with contact
 3. Vault: last call note in `brain/calls/` mentioning the entity
 4. Attio `next_action` field: if it references recent contact (e.g., "Texted recently", "Spoke at event"), treat as recent interaction even without Gmail/calendar evidence
@@ -128,7 +130,7 @@ Search by **recipient + recency**, NOT by subject keyword — Kay's follow-ups a
 
 ```bash
 # For each contact about to be surfaced:
-gog gmail search "from:kay.s@greenwichandbarrow.com to:{contact_email} newer_than:14d" --json --max 5
+gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send "from:kay.s@greenwichandbarrow.com to:{contact_email} newer_than:14d" --json --max 5
 ```
 
 **Use a 14-day search window** (not 7 days) to catch thank-yous and follow-ups that were sent earlier in the period. A thank-you sent 8 days ago is still a valid interaction.
@@ -293,7 +295,7 @@ type: relationship-status
 - "Attio API token missing notes:read-write scope — engagement notes not syncing. Fix at Smithery / Attio admin."
 ```
 
-Pipeline-manager reads this artifact and presents it in Section 4 (Gmail email drafts to review/approve) of the morning briefing.
+Pipeline-manager reads this artifact and presents relationship health, overdue contacts, warm intros, and system-status alerts in the morning briefing.
 
 ## Validator (Stop Hook) — MANDATORY
 
@@ -310,7 +312,7 @@ python3 "$HOME/projects/Sapling/scripts/validate_relationship_manager_integrity.
 **What the validator checks:**
 - Artifact exists at `brain/context/relationship-status-{YYYY-MM-DD}.md` for run date
 - Artifact has YAML frontmatter with `date:` and `type: relationship-status`
-- At least one expected section header is present
+- Every expected section header is present
 - Artifact is ≥200 bytes (rejects empty stubs)
 
 **What it does NOT check:** Attio write success. The skill is designed to graceful-degrade when Attio REST/API is down — the artifact + "System Status Alerts" section is the deliverable, Attio sync is downstream-best-effort.
@@ -329,7 +331,7 @@ The scheduled wrapper (`scripts/run-agent-skill.sh`) overrides EXIT_CODE on POST
 - [ ] Vault entity frontmatter updated with `attio_id` + `attio_synced_at` for every successful sync
 - [ ] Artifact written to `brain/context/relationship-status-{date}.md`
 - [ ] Artifact has all sections (even if empty, mark "None")
-- [ ] No contacts surfaced that Kay already emailed in the last 7 days
+- [ ] No contacts surfaced that Kay already emailed in the last 14 days
 - [ ] Artifact notes that Gmail/calendar are the only verified channels (text/phone not captured)
 </stop_hooks>
 
@@ -341,5 +343,5 @@ The scheduled wrapper (`scripts/run-agent-skill.sh`) overrides EXIT_CODE on POST
 - [ ] Pending intros tracked and surfaced
 - [ ] Warm intro paths detected for new targets
 - [ ] People records updated accurately
-- [ ] Pipeline-manager can read the artifact and render Section 4
+- [ ] Pipeline-manager can read the artifact and render relationship health in the morning briefing
 </success_criteria>

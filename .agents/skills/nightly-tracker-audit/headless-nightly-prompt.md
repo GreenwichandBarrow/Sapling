@@ -1,6 +1,6 @@
 # nightly-tracker-audit — Headless Nightly Run
 
-You are running the `nightly-tracker-audit` skill non-interactively under launchd. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals.
+You are running the `nightly-tracker-audit` skill non-interactively under the Codex/systemd scheduled runner. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals.
 
 ## Mandatory ordering — execute in this exact sequence
 
@@ -38,6 +38,6 @@ If a sheet write fails or Drive move fails:
 
 ## Why this prompt exists
 
-Bare `claude -p '/nightly-tracker-audit'` invocations under launchd risk the same silent-exit-0 failure mode as the 4/19 target-discovery Phase 2 incident. This prompt forbids that path.
+Bare slash-command invocations in scheduled mode risk the same silent-exit-0 failure mode as the 4/19 target-discovery Phase 2 incident. This prompt forbids that path.
 
 Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead `ai-ops-jrj.2`.

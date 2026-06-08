@@ -1,9 +1,8 @@
 #!/bin/bash
 # Wrapper for probe_external_services.py — invoked by the scheduler every 30 min
-# during business hours. Sources scripts/.env.launchd for service keys and
-# scripts/.env.codex for the 1Password-backed CODEX_API_KEY probe, then runs
-# via the dashboard venv's Python so `requests` and any other deps are
-# available.
+# during business hours. Resolves 1Password-backed env refs from the service
+# env and Codex env files, then runs via the dashboard venv's Python so
+# `requests` and any other deps are available.
 #
 # Mirrors scripts/refresh-attio-snapshot.sh structure.
 

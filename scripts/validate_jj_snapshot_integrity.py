@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""Post-run integrity validator for `jj-snapshot-refresh`.
+"""Post-run integrity validator for cold-call snapshot refresh.
 
 Runs after `scripts/refresh-jj-snapshot.sh` completes. Catches the silent-
 success failure mode where the refresh script exits 0 but the dashboard's
-M&A Analytics JJ row + JJ-dials trend panel end up reading a stale or
+M&A Analytics cold-call row + dials trend panel end up reading a stale or
 malformed `brain/context/jj-activity-snapshot.json`.
 
 Checks:
   1. Snapshot file exists.
   2. mtime within MAX_AGE_SEC. Cadence is 3x daily (Mon-Fri 9am, 2:30pm,
      6pm ET). Longest gap between consecutive same-day fires is ~5.5h
-     (9am → 2:30pm). Use 18000s (5h) for the daytime spec; weekend or
-     overnight gaps are out-of-scope (the validator only fires post-run,
-     so it will always be checking a freshly-written snapshot).
+     (9am → 2:30pm). Use 21600s (6h) for the daytime spec. Manual
+     monitoring during weekends/off-hours allows a longer window because
+     the timer intentionally does not run then.
   3. File parses as JSON.
   4. Has the required top-level keys (`fetched_at`, `niches_scanned`,
      `per_niche_lifetime`, `dials_today`, `dials_lifetime`, `by_day`,
@@ -43,11 +43,14 @@ from __future__ import annotations
 import json
 import sys
 import time
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SNAPSHOT = REPO_ROOT / "brain" / "context" / "jj-activity-snapshot.json"
-MAX_AGE_SEC = 18000  # 5 hours — covers longest 9am→2:30pm same-day gap
+BUSINESS_MAX_AGE_SEC = 21600  # 6 hours — covers longest 9am→2:30pm same-day gap
+OFF_HOURS_MAX_AGE_SEC = 96 * 3600  # covers weekend/off-hours monitoring
 
 REQUIRED_KEYS = (
     "fetched_at",
@@ -63,6 +66,13 @@ REQUIRED_KEYS = (
 def fail(msg: str) -> int:
     print(f"VALIDATOR FAILED: {msg}", file=sys.stderr)
     return 1
+
+
+def max_age_seconds() -> int:
+    now = datetime.now(ZoneInfo("America/New_York"))
+    if now.weekday() < 5 and 9 <= now.hour <= 18:
+        return BUSINESS_MAX_AGE_SEC
+    return OFF_HOURS_MAX_AGE_SEC
 
 
 def validate_snapshot_data(data: object) -> list[str]:
@@ -84,7 +94,7 @@ def validate_snapshot_data(data: object) -> list[str]:
     weekly = data["weekly_buckets"]
     if not isinstance(weekly, list) or not weekly:
         failures.append(
-            "`weekly_buckets` empty or not a list — dashboard JJ-dials "
+            "`weekly_buckets` empty or not a list — dashboard cold-call dials "
             "trend panel needs this populated"
         )
 
@@ -100,9 +110,9 @@ def validate_snapshot_data(data: object) -> list[str]:
             "are monotonic for an established calling operation, so 0 means "
             "the gog OAuth refresh failed and refresh_jj_snapshot.py fell "
             "back to a working-tab-only scan (all niches 0). The dashboard "
-            "JJ row is feeding off bad data. Check the refresh log for "
+            "cold-call row is feeding off bad data. Check the refresh log for "
             "'OAuth refresh failed' and re-run via "
-            "`systemctl --user start jj-snapshot-refresh.service`."
+            "`systemctl --user start cold-call-snapshot-refresh.service`."
         )
 
     return failures
@@ -113,9 +123,10 @@ def main() -> int:
         return fail(f"snapshot missing: {SNAPSHOT}")
 
     age = time.time() - SNAPSHOT.stat().st_mtime
-    if age > MAX_AGE_SEC:
+    max_age = max_age_seconds()
+    if age > max_age:
         return fail(
-            f"snapshot stale: {age:.0f}s > {MAX_AGE_SEC}s "
+            f"snapshot stale: {age:.0f}s > {max_age}s "
             f"(file: {SNAPSHOT})"
         )
 

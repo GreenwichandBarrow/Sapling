@@ -1,7 +1,7 @@
 #!/bin/bash
-# Wrapper for refresh_jj_snapshot.py — invoked by the scheduler 3x/day Mon-Fri
-# (9am, 2:30pm, 6pm ET) so the dashboard's JJ activity stays current
-# around JJ's 10am-2pm ET shift.
+# Wrapper for refresh_jj_snapshot.py — legacy filename for the cold-call
+# snapshot refresh. Invoked by cold-call-snapshot-refresh.timer 3x/day Mon-Fri
+# (9am, 2:30pm, 6pm ET) so dashboard cold-call activity stays current.
 
 # NOTE: intentionally NOT using `set -e` because we want to capture the
 # refresh-script exit code, run the post-run validator, and propagate the

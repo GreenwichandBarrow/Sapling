@@ -1,7 +1,7 @@
 #!/bin/bash
 # Wrapper for refresh_apollo_credits.py — invoked by the scheduler hourly during
-# business hours. Sources the env file (APOLLO_API_KEY) and runs via the
-# dashboard venv's Python so `requests` is available.
+# business hours. Resolves 1Password-backed env refs via load-env.sh and runs
+# via the dashboard venv's Python so `requests` is available.
 
 # NOTE: intentionally NOT using `set -e` because we want to capture the
 # refresh-script exit code, run the post-run validator, and propagate the

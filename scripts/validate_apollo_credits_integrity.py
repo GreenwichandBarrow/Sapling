@@ -34,11 +34,14 @@ from __future__ import annotations
 import json
 import sys
 import time
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SNAPSHOT = REPO_ROOT / "brain" / "context" / "apollo-credits-snapshot.json"
-MAX_AGE_SEC = 3900  # 65 minutes — covers hourly cadence + one-cycle slip
+BUSINESS_MAX_AGE_SEC = 3900  # 65 minutes — covers hourly cadence + one-cycle slip
+OFF_HOURS_MAX_AGE_SEC = 72 * 3600  # Fri evening -> Mon morning monitoring window
 
 REQUIRED_KEYS = ("fetched_at", "raw_response")
 REQUIRED_HEADERS = ("x-rate-limit-minute", "x-minute-usage")
@@ -47,6 +50,13 @@ REQUIRED_HEADERS = ("x-rate-limit-minute", "x-minute-usage")
 def fail(msg: str) -> int:
     print(f"VALIDATOR FAILED: {msg}", file=sys.stderr)
     return 1
+
+
+def max_age_seconds() -> int:
+    now = datetime.now(ZoneInfo("America/New_York"))
+    if now.weekday() < 5 and 8 <= now.hour <= 20:
+        return BUSINESS_MAX_AGE_SEC
+    return OFF_HOURS_MAX_AGE_SEC
 
 
 def validate_snapshot_data(data: object) -> list[str]:
@@ -88,9 +98,10 @@ def main() -> int:
         return fail(f"snapshot missing: {SNAPSHOT}")
 
     age = time.time() - SNAPSHOT.stat().st_mtime
-    if age > MAX_AGE_SEC:
+    max_age = max_age_seconds()
+    if age > max_age:
         return fail(
-            f"snapshot stale: {age:.0f}s > {MAX_AGE_SEC}s "
+            f"snapshot stale: {age:.0f}s > {max_age}s "
             f"(file: {SNAPSHOT})"
         )
 

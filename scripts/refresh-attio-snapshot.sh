@@ -1,11 +1,11 @@
 #!/bin/bash
 # Wrapper for refresh_attio_snapshot.py — invoked by the scheduler hourly during
-# business hours. Sources the env file (ATTIO_API_KEY) and runs via the
-# dashboard venv's Python so `requests` is available.
+# business hours. Resolves 1Password-backed env refs via load-env.sh and runs
+# via the dashboard venv's Python so `requests` is available.
 
 # NOTE: intentionally NOT using `set -e` because we want to capture the
 # refresh-script exit code, run the post-run validator, and propagate the
-# worse of the two. The plist wrapper convention is "silent-success failure
+# worse of the two. The scheduled wrapper convention is "silent-success failure
 # is the bug we are guarding against," so the validator must always run.
 
 set -uo pipefail

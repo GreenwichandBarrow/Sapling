@@ -666,7 +666,7 @@ _SKILL_CATALOG: dict[str, tuple[str, str, str | None]] = {
         None,
     ),
     "target-discovery-sunday": (
-        "Weekly owner enrichment for the next 200 un-enriched targets on JJ-Call-Only sheets.",
+        "Weekly owner enrichment for the next 200 un-enriched targets on cold-call sheets.",
         "CIO",
         None,
     ),
@@ -706,15 +706,15 @@ _SKILL_CATALOG: dict[str, tuple[str, str, str | None]] = {
         "CPO",
         None,
     ),
-    "jj-operations-sunday": (
+    "cold-call-operations-sunday": (
         "Cold Call Operations Sunday prep — creates Mon-Fri Call Log tabs for the week ahead.",
         "CPO",
         None,
     ),
-    "jj-operations": (
-        "Cold Call Operations — daily call prep, 10am Slack delivery, post-shift outcome harvest into master sheet.",
+    "cold-call-snapshot-refresh": (
+        "Cold Call Operations — refreshes call activity snapshot and keeps dashboard status current.",
         "CPO",
-        "Manual harvest after 2pm shift",
+        None,
     ),
     "warm-intro-finder": (
         "Mine network for warm intro paths to acquisition targets — Attio, vault, Gmail, LinkedIn.",
@@ -765,7 +765,7 @@ _CSUITE_DISPLAY_ORDER = [
     ("GC", "General Counsel"),
 ]
 
-# Skills declared scheduled in CLAUDE.md but with no plist registered = a "gap"
+# Skills declared scheduled in migration docs but with no timer registered = a "gap"
 # (the canary's job is to surface this). Empty as of 2026-04-25 — health-monitor
 # was registered Friday morning after the Apr 24 dashboard build surfaced the gap.
 _CLAUDE_MD_SCHEDULED_BUT_UNREGISTERED: set[str] = set()
@@ -790,7 +790,7 @@ class SkillHealth:
     c_suite: str  # CIO / CFO / CMO / CPO / COO / GC
     is_scheduled: bool  # has a launchd plist
     is_registered: bool  # appears in `launchctl list`
-    is_gap: bool  # CLAUDE.md says scheduled but no plist = surface as red gap
+    is_gap: bool  # migration docs say scheduled but no timer = surface as red gap
     schedule_text: str  # human-readable cadence ("Daily · 6:00 AM ET")
     next_fire_text: str | None  # for scheduled-but-not-today
     trigger_text: str | None  # for on-demand
@@ -1429,7 +1429,7 @@ def load_system_health() -> list[HealthTile]:
     if registered >= expected_per_md:
         tiles.append(HealthTile(
             "Spec vs. registered", "ok", f"{registered} / {expected_per_md}",
-            "All CLAUDE.md scheduled skills accounted for",
+            "All migration-documented scheduled skills accounted for",
         ))
     else:
         missing = sorted(_CLAUDE_MD_SCHEDULED_BUT_UNREGISTERED)
@@ -1988,9 +1988,9 @@ def _build_channels(
         ChannelRow(
             name="Operations calls",
             description=(
-                f"{ops_desc} · {jj_drafts_now} ops/JJ-attributed drafts this week"
+                f"{ops_desc} · {jj_drafts_now} cold-call-attributed drafts this week"
             ),
-            dot_class="jj",
+            dot_class="cold-call",
             sent=ops_sent, reply=ops_reply, positive=ops_positive, to_nda=ops_to_nda,
             reply_rate="—", bar_pct=0, bar_color="green", deferred=False,
         ),
@@ -2332,7 +2332,7 @@ def load_new_contacts(snapshot: PipelineSnapshot | None = None) -> NewContactsMe
 class NicheBreakdownRow:
     niche: str
     jj_dials_lifetime: int
-    jj_active: bool  # True if any lifetime dials → JJ-Call-Only channel
+    jj_active: bool  # True if any lifetime dials → cold-call channel
     email_pending: bool = True  # DealsX/LinkedIn per-niche classifier not yet wired
     kay_emails_this_week: int = 0  # Phase A Gap 5 partial — Kay-attributed sends matching niche keywords
 

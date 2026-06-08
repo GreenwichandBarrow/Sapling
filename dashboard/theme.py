@@ -1678,6 +1678,7 @@ GLOBAL_CSS = f"""
   }}
   .gb-ch-dot.kay {{ background: var(--accent); }}
   .gb-ch-dot.jj {{ background: var(--green); }}
+  .gb-ch-dot.cold-call {{ background: var(--green); }}
   .gb-ch-dot.dealsx {{ background: var(--purple); }}
   .gb-ch-dot.intermediary {{ background: var(--yellow); }}
   .gb-ch-dot.conference {{ background: {PALETTE["yellow"]}; }}

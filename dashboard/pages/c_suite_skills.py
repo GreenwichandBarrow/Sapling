@@ -9,7 +9,7 @@ risk page in the dashboard build. The C-suite → skill mapping is hardcoded
 in `data_sources._SKILL_CATALOG` (validated 2026-04-24); on-demand skills
 appear with a dashed status dot and "On-demand" badge.
 
-Health-monitor renders as a red Gap row because CLAUDE.md says it should
+Health-monitor renders as a red Gap row when migration docs say it should
 be Friday-scheduled but no plist is registered — surfacing that exact gap
 visually is exactly the kind of silent-failure canary the page exists for.
 
@@ -94,7 +94,7 @@ def _schedule_or_trigger(skill: SkillHealth) -> tuple[str, bool]:
     if skill.is_scheduled:
         return f"⏱ {skill.schedule_text}", False
     if skill.is_gap:
-        return "CLAUDE.md says scheduled · no job registered", True
+        return "Migration docs say scheduled · no job registered", True
     if skill.trigger_text:
         return skill.trigger_text, True
     return "On-demand", True

@@ -12,12 +12,16 @@ Wants=network-online.target
 [Service]
 Type=oneshot
 WorkingDirectory=%h/projects/Sapling
-EnvironmentFile=%h/projects/Sapling/scripts/.env.launchd
 Environment=PATH=%h/.npm-global/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
-ExecStart=/bin/bash %h/projects/Sapling/scripts/post_call_analyzer_poll.sh
+ExecStart=/bin/bash %h/projects/Sapling/scripts/post_call_analyzer_poll.codex.sh
 
 # Cap any one tick — protects timer from a hung subprocess
 TimeoutStartSec=600
+
+# The Codex poller detaches run-agent-skill.sh when queue entries exist.
+# Keep only the poller PID under this oneshot service so the detached analyzer
+# is not killed when the service exits.
+KillMode=process
 
 [Install]
 WantedBy=default.target

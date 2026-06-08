@@ -94,10 +94,12 @@ HEADER_ALIASES = {
     "website": ("Website", "URL", "Event URL"),
 }
 
-# Auto-archival per SKILL.md routes Skip → Skipped tab, Attended → Attended tab,
-# past-date passive → Skipped tab. A typical run archives 0–8 rows. We allow up
-# to 15 to give headroom for catch-up runs (e.g. multi-week skipped backlog),
-# while still catching wipe-class incidents (May 3 wiped ~70 rows in one swoop).
+# Auto-archival per SKILL.md routes past Skip rows → Skipped tab, Attended →
+# Attended tab, and past-date passive rows → Skipped tab. Future/current Skip
+# rows remain visible so Kay can change her mind before the event passes.
+# A typical run archives 0–8 rows. We allow up to 15 to give headroom for
+# catch-up runs (e.g. multi-week skipped backlog), while still catching
+# wipe-class incidents (May 3 wiped ~70 rows in one swoop).
 MAX_ARCHIVAL_DELTA = 15
 
 # Hard cell mutations = stomped user selections. Any one of these = fail.
@@ -392,9 +394,9 @@ def _is_legitimate_archival(
     """True if a snapshot row's absence from live is explainable by the
     skill's auto-archival rules (per SKILL.md):
 
-      - ``Skip`` / ``Skipped`` → routes to Skipped tab regardless of event
-        date. A future-dated Skip is still legitimately archived because the
-        skill doesn't gate Skip-routing on date.
+      - ``Skip`` / ``Skipped`` + past date → routes to Skipped tab. A
+        future/current Skip is NOT legitimate archival; Kay keeps those rows
+        visible to preserve optionality.
       - ``Attended``           → already-completed events; always legitimate.
       - ``Attending`` + past   → event happened; assume it progressed through
         Attended-tab archival even if the snapshot caught it pre-transition.
@@ -405,7 +407,7 @@ def _is_legitimate_archival(
     """
     s = (snap_status or "").strip()
     if s in ("Skip", "Skipped"):
-        return True
+        return _is_past_date(snap_date, today)
     if s == "Attended":
         return True
     if s == "Attending" and _is_past_date(snap_date, today):
@@ -680,15 +682,15 @@ def check_cell_mutations(
         snap_date = cell(snap_row, snapshot_schema.idx("date"))
 
         # Legitimate archival per SKILL.md auto-archival rules:
-        #   Skip / Skipped → Skipped tab, regardless of date
-        #   Attended       → Attended tab, regardless of date
-        #   Attending + past date → assume Attended-tab archival
+        #   Skip / Skipped + past date → Skipped tab
+        #   Attended                  → Attended tab, regardless of date
+        #   Attending + past date     → assume Attended-tab archival
         if _is_legitimate_archival(snap_status, snap_date, today):
             if verbose:
                 if snap_status in ("Skip", "Skipped"):
                     reason = (
-                        f"status={snap_status!r}, skill auto-archives "
-                        f"regardless of date"
+                        f"status={snap_status!r}, past date, archived to "
+                        f"Skipped"
                     )
                 elif snap_status == "Attended":
                     reason = f"status={snap_status!r}, already-completed event"

@@ -490,14 +490,20 @@ Prepare rows for the Conference Pipeline Google Sheet. Scheduled Sunday runs may
 Codex fills in all fields except Kay-owned `Decision`, where scheduled discovery may only create `NEW` on newly-discovered rows.
 Kay fills in `Decision`. She may also edit any other cell.
 
-When Kay marks Decision = Skip, Codex moves the row to the Skipped tab.
+When Kay marks Decision = Skip, Codex keeps the row visible on Pipeline until
+the conference date has passed. This lets Kay change her mind and keeps the
+current/future option set visible.
 
 ### Auto-Archival (runs every discovery cycle)
 
 Before adding new conferences, scan the Pipeline tab and auto-move rows off Pipeline when:
-1. **Decision = Skip** → move to **Skipped** tab
+1. **Decision = Skip AND date is past** → move to **Skipped** tab
 2. **Status = Attended** (or Decision = Attend AND date is past) → move to **Attended** tab
 3. **Date is past AND no Decision/Status indicating attendance** → move to **Skipped** tab (conference passed without attending)
+
+Never archive a current-week or future-dated event solely because Decision =
+Skip. Those rows stay on Pipeline so Kay can see the option set and revise the
+decision before the event passes.
 
 **Process:**
 1. Read all Pipeline rows

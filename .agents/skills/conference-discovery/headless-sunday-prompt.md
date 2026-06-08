@@ -162,9 +162,13 @@ Pipeline mutation without a verified snapshot on disk.
 ### Step 1: Auto-archival pass (per SKILL.md "Auto-Archival" section)
 
 Read all Pipeline rows. Identify rows matching archival criteria:
-- Decision = Skip → Skipped tab
+- Decision = Skip AND date is past → Skipped tab
 - Status = Attended OR (Decision = Attend AND date is past) → Attended tab
 - Date is past AND no attend decision/status → Skipped tab
+
+Do not archive current-week or future-dated rows solely because Decision =
+Skip. Kay uses those visible skipped rows to keep optionality and may change her
+mind before the event date passes.
 
 **Archival cap check:** If your candidate archival list exceeds 15 rows,
 STOP. Print the candidate list to stderr and exit 2. This is presumptively

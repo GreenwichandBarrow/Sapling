@@ -1,6 +1,12 @@
 {
-  "fetched_at": "2026-06-06T13:29:03-04:00",
+  "fetched_at": "2026-06-08T14:00:46-04:00",
   "services": {
+    "slack-webhooks": {
+      "status": "ok",
+      "latency_ms": null,
+      "message": "4 webhooks configured",
+      "skip_reason": null
+    },
     "attio-mcp": {
       "status": "skip",
       "latency_ms": null,
@@ -13,57 +19,51 @@
       "message": "",
       "skip_reason": "Browser session required (no API)"
     },
-    "slack-webhooks": {
-      "status": "ok",
-      "latency_ms": null,
-      "message": "4 webhooks configured",
-      "skip_reason": null
-    },
     "vault": {
       "status": "ok",
       "latency_ms": 16,
-      "message": "1191 markdown files",
+      "message": "1201 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "skip",
-      "latency_ms": 20,
+      "latency_ms": 22,
       "message": "attio-mcp=0; manual-skip=attio-mcp",
       "skip_reason": "Attio MCP requires manual OAuth/browser reconnect"
     },
     "launchd": {
       "status": "ok",
-      "latency_ms": 28,
+      "latency_ms": 47,
       "message": "20 timers registered",
+      "skip_reason": null
+    },
+    "apollo": {
+      "status": "ok",
+      "latency_ms": 129,
+      "message": "200 OK",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 103,
+      "latency_ms": 158,
       "message": "authenticated",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 96,
+      "latency_ms": 182,
       "message": "HTTP 405",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 200,
+      "latency_ms": 261,
       "message": "gh authenticated",
-      "skip_reason": null
-    },
-    "apollo": {
-      "status": "ok",
-      "latency_ms": 211,
-      "message": "200 OK",
       "skip_reason": null
     },
     "openai-codex": {
       "status": "ok",
-      "latency_ms": 634,
+      "latency_ms": 902,
       "message": "200 OK",
       "skip_reason": null
     }

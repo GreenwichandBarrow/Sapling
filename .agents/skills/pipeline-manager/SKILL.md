@@ -20,7 +20,7 @@ source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 ```
 Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — it exports literal op:// reference strings, not values (hook-blocked; see `feedback_op_env_before_op_backed_cli`).
 
-**REST is the default, MCP is a convenience.** If an MCP call appears below (`mcp__attio__*`, `mcp__granola__*`), it has a REST fallback in this same file. An unloaded MCP tool is NOT an outage — fall through to REST. For Granola, the canonical wrapper is `~/.local/bin/granola-api`.
+**REST is the default, MCP is a convenience.** If an MCP call appears below (`mcp__attio__*`), it has a REST fallback in this same file. An unloaded MCP tool is NOT an outage — fall through to REST. For Granola transcripts, pipeline-manager does not call MCP/OAuth/direct REST; `post-call-analyzer` owns transcript retrieval through the 1Password-backed `granola-api` wrapper and writes `brain/calls/` plus staged task artifacts for this skill to consume.
 
 **Health-check pattern (mandatory before claiming a service is down in an artifact):**
 ```bash
@@ -144,12 +144,32 @@ Also surface:
 
 Present max 5 nurture reminders per session. Prioritize by: relationship value, days overdue, relationship_type.
 
-### Section 4: Action Items (from Granola transcripts)
-Present action items extracted from recent meeting transcripts.
+### Section 4: Action Items (from post-call analyzer)
+Present action items staged by `post-call-analyzer`, not raw Granola scans.
 
-Format: "From your meeting with {name} on {date}: '{action item}'"
-- **Approve** → To Do row appended via task-tracker-manager with task text, type, project, and due date
-- **Skip** → no action
+Read every non-hidden JSON file in:
+`brain/trackers/post-call-analyzer/pending-tasks/*.json`
+
+Each file is a batch of review-ready task objects produced after the transcript
+Doc + meeting analysis Doc were saved. Treat these as candidates only. They are
+not commitments and they are not already on the To Do sheet.
+
+Format each item as a numbered decision:
+`From {source meeting/date}: "{task_text}" — recommended {suggested_day or "timing TBD"}`
+→ **YES / NO / DISCUSS**
+
+- **YES** → append a To Do row via `task-tracker-manager` using the approved
+  task text, type, project, and Kay-approved timing. Then move the source JSON
+  file to `brain/trackers/post-call-analyzer/pending-tasks/processed/` only
+  after every approved task in that file lands on the To Do sheet.
+- **NO** → do not append. Add a short declined marker to the processed archive
+  so the same task is not resurfaced forever.
+- **DISCUSS** → keep the JSON file in `pending-tasks/` unless Kay resolves the
+  decision in-session.
+
+Do not query Granola MCP or re-extract meeting action items here. The server
+post-call analyzer owns transcript retrieval through the 1Password-backed
+Granola REST wrapper and writes these staged task files as the handoff.
 
 ## Output Format
 
@@ -310,15 +330,20 @@ Relationship management (nurture cadence monitoring, action-already-taken verifi
 
 **Fallback:** If the relationship-status artifact doesn't exist (relationship-manager didn't run), pipeline-manager does a lightweight Attio People query to surface any contacts with overdue nurture cadences for the briefing. This fallback will be removed once relationship-manager is proven stable.
 
-### Sub-Agent 3: Granola Agent
-**Scope:** All meeting transcripts since last run
-**Scans:** Granola MCP for transcripts, extracts action items, next steps, commitments, intro promises
-**Returns:** Proposed To Do rows with task text, type, project, due dates
+### Sub-Agent 3: Post-Call Task Handoff
+**Scope:** staged task files from `post-call-analyzer`.
+**Reads:** `brain/trackers/post-call-analyzer/pending-tasks/*.json`.
+**Does not scan:** Granola MCP, Granola OAuth, local browser cache, or raw transcript sources.
+**Returns:** proposed To Do rows with source meeting, task text, type, project, suggested timing, analysis Doc link, and transcript Doc link.
+
+If pending task files are missing or empty, return "No staged post-call tasks".
+If any file is malformed, surface a single RED system item:
+`RECOMMEND: Repair malformed post-call task handoff — {filename} could not be parsed.`
 
 ### Stop Hooks (post-execution validation)
 1. **Pipeline validation** — confirms all approved stage changes were executed in Attio Lists
 2. **Relationships validation** — confirms all approved People attribute updates were executed, no blank next_actions left behind
-3. **Granola ingestion validation** — count meetings returned by `mcp__granola__list_meetings` vs files actually written to `brain/calls/`. Every meeting must have a corresponding file (or an idempotency skip logged). Mismatch = data loss.
+3. **Post-call staged-task validation** — for each pending task file presented to Kay, verify approved tasks were appended to the To Do tab before moving the file to `pending-tasks/processed/`. Files with NO/DISCUSS outcomes must be archived with an explicit declined/deferred marker or left pending, respectively. Never delete a pending task file silently.
 4. **Gmail ingestion validation** — count actionable emails identified during ingestion vs inbox files written to `brain/inbox/`. Every actionable email must have a corresponding file (or an idempotency skip logged). Mismatch = dropped action items.
 5. **Task-tracker validation** — for every approved action item (outreach tasks, follow-up tasks, Granola action items), verify it was appended to the To Do tab. Resolve the current week's sheet ID dynamically: `SHEET_ID=$(python3 /home/ubuntu/projects/Sapling/scripts/tracker_sheet_resolver.py --print-id)`, then read the To Do tab on that sheet and compare approved count vs appended-row count. Mismatch = tasks Kay thinks exist but don't.
 6. **Niche signal validation** — if any niche signals were detected during data ingestion, confirm each was written to `brain/inbox/` with the `topic/niche-signal` tag. Glob `brain/inbox/*niche-signal*` and verify count matches signals detected. Missing signals = lost intelligence for Friday's niche run.
@@ -405,13 +430,15 @@ If any check fails, fix in-line before sending. Do not present a malformed brief
 
 Before scanning for signals, ingest new data from external tools into the vault. The vault is the single source of truth.
 
-### Granola → brain/calls/
-1. Query `mcp__granola__list_meetings` for meetings since last run. **REST fallback (preferred):** `source /home/ubuntu/projects/Sapling/scripts/op-env.sh && granola-api since <iso-checkpoint>`
-2. For each new meeting, get full transcript via `mcp__granola__get_meeting_transcript`. **REST fallback:** `granola-api get-note <id>`
-3. Check idempotency: if `call_id` already exists in brain/calls/, skip
-4. Write to `brain/calls/YYYY-MM-DD-{slug}.md` using call schema (schemas/vault/call.yaml)
-5. Set `source: granola`, populate people/companies as wiki-links, generate tags
-6. Create any missing entities in brain/entities/
+### Post-call analyzer → brain/calls/ + staged task artifacts
+Pipeline-manager does not ingest Granola directly. Before signal detection:
+
+1. Read recent `brain/calls/*.md` written by `post-call-analyzer`.
+2. Read `brain/trackers/post-call-analyzer/pending-tasks/*.json` for review-ready action items.
+3. Verify the post-call analyzer validator is clean if call artifacts look stale:
+   `python3 scripts/validate_post_call_analyzer_integrity.py`
+4. If expected call artifacts are missing, surface a system item to repair
+   `post-call-analyzer`; do not query Granola MCP/OAuth from pipeline-manager.
 
 ### Gmail Draft Status Check
 Check Gmail for the status of outreach drafts created by outreach-manager. Use `gog gmail drafts list --account kay.s@greenwichandbarrow.com --gmail-no-send`, Gmail search with the same guard, and the sent folder to determine whether Kay sent them manually.
@@ -1035,24 +1062,17 @@ Glob: brain/calls/{YESTERDAY}*
 git log --after={YESTERDAY} --before={TODAY} --name-only --diff-filter=A -- brain/entities/
 ```
 
-### Granola (important signal source)
-Check for meeting transcripts via Granola MCP. Transcripts capture:
+### Post-call artifacts (important signal source)
+Read saved call notes and staged task artifacts produced by post-call-analyzer.
+These capture:
 - Action items mentioned during the meeting
 - Introductions promised ("I'll connect you with...")
 - Next steps agreed to
 - Deal-relevant information (financials coming, NDA discussion, etc.)
 
-```
-Use mcp__granola__list_meetings to find meetings in the date range
-Use mcp__granola__get_meeting_transcript for each meeting's full transcript
-```
-
-**REST fallback (preferred — no MCP needed):**
-```bash
-source /home/ubuntu/projects/Sapling/scripts/op-env.sh
-granola-api since "$(date -u -d 'yesterday' +%Y-%m-%dT00:00:00Z)"   # list updated notes
-granola-api get-note <note_id>                                       # full transcript + summary
-```
+Do not call Granola MCP or `granola-api` from pipeline-manager. If the artifact
+is missing, treat it as a post-call-analyzer health issue, not a cue to create a
+parallel ingestion path.
 
 Parse transcripts for pipeline-relevant signals: stage changes, new contacts to create, follow-up tasks.
 

@@ -1,0 +1,18 @@
+{
+  "date": "2026-06-08",
+  "mode": "morning",
+  "artifact": "brain/context/deal-aggregator-scan-2026-06-08.md",
+  "email_scan_status": "missing",
+  "deals_found": 0,
+  "broker_opportunistic": 5,
+  "near_misses": 0,
+  "sources_scanned": 17,
+  "sources_blocked_verified": 4,
+  "sources_blocked_single_attempt": 0,
+  "volume_status": "BELOW TARGET",
+  "needs_attention": [
+    "email_scan_results artifact missing after bounded retry",
+    "browser automation unavailable for BizBuySell, Flippa, Quiet Light, and Viking Mergers",
+    "volume below target with 0 new deals surfaced"
+  ]
+}

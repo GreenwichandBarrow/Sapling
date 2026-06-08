@@ -1,0 +1,15 @@
+
+[2026-06-07T16:51:44.902024] build-week-v2 — 2026-06-07
+  - prior file: TO DO 5.31.26 (1byrvq255ukWnltAQOn5lQ_fEE_j1dvv9EcgeBWapaSk)
+  - new file:   TO DO 6.7.26 (1jVqnwnNWbHYKX8druwX5oby6aC-XF5Jmy9tGv7kK5fs)
+  - destination folder: To Do Archive (1ujEwLzsB4C6ZwhMfiRT8lS5WxrzYwRra)
+  - week label: WEEK OF Jun 7-13
+  - recurring stamped onto new file day tabs: 4
+  - carryover pulled from prior → new: 34
+  - carryover refused (already present / no slot): 4
+  - Week tab formulas wired: 21 ranges
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-build-week-v2-20260607-165121.json
+    - carryover REFUSED: Mon src slot 1 Process payroll: already present on new file's day tab (recurring stamp or duplicate)
+    - carryover REFUSED: Mon src slot 2 Process conference registrations: already present on new file's day tab (recurring stamp or duplicate)
+    - carryover REFUSED: Wed src slot 1 Niche intel review: already present on new file's day tab (recurring stamp or duplicate)
+    - carryover REFUSED: Fri src slot 1 Weekly review — system health, M&A activities, budget: already present on new file's day tab (recurring stamp or duplicate)

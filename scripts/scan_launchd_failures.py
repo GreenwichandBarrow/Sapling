@@ -96,6 +96,7 @@ CODEX_FAILURE_RE = re.compile(
     r"^FAILED: (?:codex exec|post-run check) exited (?P<code>-?\d+)",
     re.MULTILINE,
 )
+BLOCKED_RE = re.compile(r"^BLOCKED:\s*(.+)$", re.MULTILINE)
 # Anchor on the wrapper's real override marker (em-dash, U+2014) — NOT the bare
 # substring. The bare form false-matches skills' own SUCCESS-summary negation
 # prose, e.g. nightly-tracker-audit's "No STOP marker, no `VALIDATOR FAILED`."
@@ -123,12 +124,14 @@ def parse_log(path: Path) -> dict | None:
 
     validator_failed = bool(VALIDATOR_FAIL_RE.search(text))
     preflight_failed = bool(PREFLIGHT_FAIL_RE.search(text))
+    blocked_match = BLOCKED_RE.search(text)
     stop_match = STOP_MARKER_RE.search(text)
 
     is_failure = (
         (exit_code is not None and exit_code != 0)
         or validator_failed
         or preflight_failed
+        or blocked_match is not None
         or stop_match is not None
     )
     if not is_failure:
@@ -141,6 +144,8 @@ def parse_log(path: Path) -> dict | None:
     # Build a one-line error signature.
     if preflight_failed:
         signature = "PREFLIGHT AUTH FAIL — legacy CLI auth preflight failed; re-auth required"
+    elif blocked_match:
+        signature = blocked_match.group(0).strip()
     elif validator_failed:
         # Find the validator line plus any preceding context.
         sig_lines = [ln for ln in lines[-30:] if "VALIDATOR" in ln or "FAIL" in ln]

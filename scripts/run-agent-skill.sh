@@ -109,7 +109,7 @@ if [ "${#EMAIL_SCAN_TARGETS[@]}" -gt 0 ]; then
   if grep -RInE "gog[[:space:]]+(send|gmail[[:space:]]+(send|forward|autoreply|drafts?[[:space:]]+send))|messages\.send|send_email|smtp|superhuman.*send|Superhuman.*send" "${EMAIL_SCAN_TARGETS[@]}" > "$EMAIL_MATCH_FILE" 2>/dev/null; then
     # Ignore explicit prohibition/policy prose such as "NEVER call gog gmail send".
     # Real executable-looking send paths still block below.
-    if grep -viE "never|do not|don't|draft-only|no-send|blocked" "$EMAIL_MATCH_FILE" >> "$LOG_FILE"; then
+    if grep -viE "never|do not|don't|forbidden|draft-only|no-send|blocked" "$EMAIL_MATCH_FILE" >> "$LOG_FILE"; then
       rm -f "$EMAIL_MATCH_FILE"
       log "BLOCKED: potential email-send path found for $SKILL_NAME. Never send email."
       post_failure "BLOCKED: Codex scheduled job $SKILL_NAME found a potential email-send path. Review required."

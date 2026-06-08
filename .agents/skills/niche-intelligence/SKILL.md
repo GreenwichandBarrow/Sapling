@@ -364,12 +364,13 @@ This section monitors the WEEKLY REVIEW tab for status changes and executes tran
 ### Reading the Tracker
 
 ```bash
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!B3:D20" -a kay.s@greenwichandbarrow.com -j
+source scripts/op-env.sh
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW" -a kay.s@greenwichandbarrow.com -j
 ```
 
 Orange headers on WEEKLY REVIEW mark agent-trigger columns:
-- **Col C** — Current Status (Active-Outreach, Active-Long Term, Under Review, etc.)
-- **Col D** — Outreach Channel (DealsX Email, Kay Email, JJ-Call-Only)
+- **Current Status** — Active - Outreach, Active - Long Term, Under Review, etc.
+- **Outreach Channel** — DealsX Email, Kay Email, Cold Call Only
 
 When Kay sets values in these columns, agents act. But a "done" niche should NOT re-trigger work every Tuesday — that defeats the purpose of consolidation.
 
@@ -377,8 +378,8 @@ When Kay sets values in these columns, agents act. But a "done" niche should NOT
 
 For each WEEKLY REVIEW row, skip the niche entirely if ALL four conditions are true:
 
-1. **Status (Col C)** = `Active - Outreach` or `Active - Long Term`
-2. **Outreach Channel (Col D)** = `DealsX Email`
+1. **Current Status** = `Active - Outreach` or `Active - Long Term`
+2. **Outreach Channel** = `DealsX Email`
 3. **One-pager exists** — check Drive folder `ACTIVE SPRINTS / {Niche Name}` for a `.pptx` file
 4. **Scorecard exists** — check same folder for a `.xlsx` file
 
@@ -410,7 +411,7 @@ If Status changes (e.g., Kay moves Active-Outreach → Tabled), the Status Chang
 
 When status = "Tabled" or "Killed":
 
-1. Read the niche's full row from WEEKLY REVIEW (cols A-J)
+1. Read the niche's full row from WEEKLY REVIEW by header names
 2. Append to the target tab:
    - "Tabled" → append to TABLED tab with: Niche Hypothesis, Start Date, "Tabled", Quick notes, Red flags, Score, Why Tabled, What would need to change, Date tabled (today)
    - "Killed" → append to KILLED tab with: Niche Hypothesis, Start Date, "Killed", Quick notes, Red flags, Score, Primary reason, Pattern learned, Date killed (today)
@@ -420,7 +421,7 @@ When status = "Tabled" or "Killed":
    - Killed: move niche folder to KILLED folder (19xsNk5KTVHF2jb6m_li8IAGjcw34nlMX)
 5. Stop target-discovery for that niche
 
-### Status Dropdown Values (orange column D)
+### Status Dropdown Values (`Current Status` orange header)
 
 - New — just added from pipeline, pending analyst review
 - Under Review — analyst evaluating
@@ -456,11 +457,11 @@ Contents: list of active niches with their phase (Outreach/Long Term) and any tr
 
 **3. Target List Template Validation (new Active sprints):**
 - Active - Outreach: target list sheet exists, outreach cadence running
-- Verify orange header on Col O (Kay Decision) in target list sheets
+- Verify the `Kay Decision` orange header exists in target list sheets
 
 **4. Kay Decision Column Validation (all active target lists):**
-- Check for rows where Col O = "Pass" not yet moved to Passed tab → move them
-- Check for rows where Col O = "Approve" not yet in Attio → flag for outreach-manager
+- Check for rows where `Kay Decision` = "Pass" not yet moved to Passed tab → move them
+- Check for rows where `Kay Decision` = "Approve" not yet in Attio → flag for outreach-manager
 
 </niche_sprint_tracking>
 

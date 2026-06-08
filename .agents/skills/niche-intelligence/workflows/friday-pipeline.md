@@ -221,7 +221,7 @@ This agent:
 ### Verification Gate 4 (STOP — must pass before Step 5)
 
 After tracker update completes, verify:
-1. Re-read WEEKLY REVIEW tab: `gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!A:I" -a kay.s@greenwichandbarrow.com -j`
+1. Re-read WEEKLY REVIEW tab: `source scripts/op-env.sh` then `gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW" -a kay.s@greenwichandbarrow.com -j`
 2. Confirm each new niche appears as a row
 3. Confirm Score column is blank or "Pending"
 

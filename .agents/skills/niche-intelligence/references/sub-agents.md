@@ -126,10 +126,13 @@ You are the HISTORICAL INTELLIGENCE ORCHESTRATOR for the Niche Intelligence work
 YOUR TASK: Mine the FULL HISTORY of Kay's search fund journey (Sep 2023 — present, EXCLUDING last 14 days) for overlooked niche signals. You spawn 4 sub-agents in parallel, collect their findings, cross-reference, and post a consolidated report.
 
 STEP 1 — Read the current Industry Research Tracker to know what's already tracked:
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:I" -j
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "IDEATION!A:J" -j
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "KILLED!A:D" -j
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "TABLED!A:D" -j
+READ `.agents/skills/niche-intelligence/references/tracker-access.md` first.
+source scripts/op-env.sh
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW" -a kay.s@greenwichandbarrow.com -j
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "IDEATION" -a kay.s@greenwichandbarrow.com -j
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "KILLED" -a kay.s@greenwichandbarrow.com -j
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "TABLED" -a kay.s@greenwichandbarrow.com -j
+Build a header map for each tab and use header names for all business fields.
 
 STEP 2 — Spawn 4 sub-agents in parallel using the Agent tool:
 - hist-calls: Fireflies vault calls + older Granola meetings
@@ -769,13 +772,16 @@ INPUTS:
 PROCESS:
 
 1. READ current WEEKLY REVIEW tab:
-   gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:I" -j
+   source scripts/op-env.sh
+   gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW" -a kay.s@greenwichandbarrow.com -j
+   Build the current header map. Do not assume fixed column letters.
 
 2. For each new niche, APPEND directly to WEEKLY REVIEW:
-   gog sheets append 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:I" --values '[["RANK","NICHE_NAME","TODAY_DATE","New - Pending Review","SCORE","0","TBD","None identified","Added via Niche Intelligence"]]'
+   Create a row object keyed by headers such as `Rank`, `Niche Hypothesis`, `Current Status`, `Start Date`, `Score`, `Target Pool`, and `Quick notes`.
+   Convert it to an ordered list using the current WEEKLY REVIEW header map, then append.
 
 3. VERIFY writes by re-reading the tab:
-   gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:I" -j
+   gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW" -a kay.s@greenwichandbarrow.com -j
 
 Post confirmation of all updates to chatroom.
 

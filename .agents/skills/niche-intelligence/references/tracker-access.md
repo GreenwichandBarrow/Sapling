@@ -7,83 +7,91 @@
 ## Reading Tabs
 
 ```bash
-# Read IDEATION tab (all rows)
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "IDEATION!A:K" -j
+# Load 1Password-backed credentials first.
+source scripts/op-env.sh
 
-# Read WEEKLY REVIEW tab
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:J" -j
-
-# Read KILLED tab (to exclude)
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "KILLED!A:I" -j
-
-# Read TABLED tab (can resurface if new data warrants)
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "TABLED!A:I" -j
+# Read whole tabs as transport, then resolve all business fields by header.
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "IDEATION" -a kay.s@greenwichandbarrow.com -j
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW" -a kay.s@greenwichandbarrow.com -j
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "KILLED" -a kay.s@greenwichandbarrow.com -j
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "TABLED" -a kay.s@greenwichandbarrow.com -j
 ```
+
+## Header Resolution Rules
+
+Never use column letters or fixed column numbers as business logic. A range may be used only as a transport envelope when the CLI requires it. After reading a tab:
+
+1. Find the header row by matching expected header names.
+2. Normalize headers with lower-case, trimmed whitespace, and collapsed spaces.
+3. Build a `header -> index` map.
+4. Read and write values by header name.
+5. If a required header is missing, stop with:
+   `NICHE-INTELLIGENCE STOP: tracker missing header "{Header Name}" on "{Tab Name}"`
 
 ## Tab Column Structures
 
 ### WEEKLY REVIEW
-| Col | Field | Agent-Trigger? |
-|-----|-------|----------------|
-| A | Rank | |
-| B | Niche Hypothesis | |
-| C | Current Status | ORANGE — triggers pipeline-manager, target-discovery |
-| D | Outreach Channel | ORANGE — gates target routing (DealsX Email / Kay Email / JJ-Call-Only) |
-| E | Score | |
-| F | QSBS | |
-| G | Target Pool | |
-| H | Quick notes | |
-| I | Red flags noted | |
-| J | Start Date | |
-| K | Days in Review | |
+| Header | Agent-Trigger? |
+|--------|----------------|
+| Rank | |
+| Niche Hypothesis | |
+| Current Status | ORANGE - triggers pipeline-manager, target-discovery |
+| Outreach Channel | ORANGE - gates target routing (DealsX Email / Kay Email / Cold Call Only) |
+| Score | |
+| QSBS | |
+| Target Pool | |
+| Quick notes | |
+| Red flags noted | |
+| Start Date | |
+| Days in Review | |
 
 ### IDEATION
-| Col | Field |
-|-----|-------|
-| A | Section |
-| B | Rank |
-| C | Niche |
-| D | Score (/3) |
-| E | Margins |
-| F | Recurring Revenue |
-| G | AI Defensibility |
-| H | Right to Win (Kay) |
-| I | Network Access |
-| J | Target Pool |
-| K | Notes |
-| L | QSBS |
+| Header |
+|--------|
+| Section |
+| Rank |
+| Niche |
+| Score (/3) |
+| Margins |
+| Recurring Revenue |
+| AI Defensibility |
+| Right to Win (Kay) |
+| Network Access |
+| Target Pool |
+| Notes |
+| QSBS |
 
 ### TABLED
-| Col | Field |
-|-----|-------|
-| A | Niche Hypothesis |
-| B | Start Date |
-| C | Current Status |
-| D | Quick notes |
-| E | Red flags |
-| F | Score |
-| G | Why Tabled |
-| H | What would need to change |
-| I | Date tabled |
+| Header |
+|--------|
+| Niche Hypothesis |
+| Start Date |
+| Current Status |
+| Quick notes |
+| Red flags |
+| Score |
+| Why Tabled |
+| What would need to change |
+| Date tabled |
 
 ### KILLED
-| Col | Field |
-|-----|-------|
-| A | Niche Hypothesis |
-| B | Start Date |
-| C | Current Status |
-| D | Quick notes |
-| E | Red flags |
-| F | Score |
-| G | Primary reason |
-| H | Pattern learned |
-| I | Date Killed |
+| Header |
+|--------|
+| Niche Hypothesis |
+| Start Date |
+| Current Status |
+| Quick notes |
+| Red flags |
+| Score |
+| Primary reason |
+| Pattern learned |
+| Date Killed |
 
 ## Writing to Tabs
 
 **CRITICAL: IDEATION tab has section headers.** Do NOT blindly append — new niches must go in the correct section.
 
-IDEATION section headers (separator rows in column A):
+IDEATION section headers (separator rows under the `Section` header):
 - `— INTERSECTION (Luxury + Compliance) —`
 - `— LUXURY INFRASTRUCTURE —`
 - `— COMPLIANCE INFRASTRUCTURE —`
@@ -95,12 +103,16 @@ IDEATION section headers (separator rows in column A):
 2. Determine which section the niche belongs to (Intersection, Luxury, Compliance, Other)
 3. Find the last row of that section (the row before the NEXT section header)
 4. INSERT a new row at that position: `gog sheets insert {sheetId} "IDEATION" rows {row} -a {account} --count 1 -j`
-5. WRITE the niche data to the newly inserted row: `gog sheets update {sheetId} "IDEATION!A{row}:K{row}" -a {account} --values-json '[["Section","Rank","Niche","Score","Margins","Recurring","AI","RTW","Network","Target Pool","Notes"]]' -j
+5. WRITE the niche data by ordering values according to the current header map. Do not hard-code a write range that assumes fixed columns.
 
-```bash
-# Append row to WEEKLY REVIEW (no sections — append is fine)
-gog sheets append 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins -a kay.s@greenwichandbarrow.com --range "WEEKLY REVIEW!A:J" --values-json '[["6","Niche Name","2026-03-21","New - Pending Review","2.75","0","TBD","TBD","None identified","Promoted from IDEATION via Niche Intelligence"]]'
-```
+**Process for adding to WEEKLY REVIEW:**
+1. Read the full WEEKLY REVIEW tab.
+2. Build the header map from the current header row.
+3. Create a row object keyed by headers, for example:
+   `{"Rank": "6", "Niche Hypothesis": "Niche Name", "Current Status": "New", "Start Date": "{today}", "Score": "2.75", "Target Pool": "TBD", "Quick notes": "Promoted from Niche Intelligence"}`
+4. Convert the row object to an ordered list using the current header map.
+5. Append the ordered row.
+6. Re-read the tab and verify the niche appears once.
 
 ## Drive Folder Operations
 
@@ -139,7 +151,7 @@ gog drive move {folder_id} --parent {target_status_folder_id} -a kay.s@greenwich
 4. New
 (Tabled and Killed get moved to their own tabs overnight — never appear in sorted list)
 
-**Status dropdown values (orange header, column D):**
+**Status dropdown values (`Current Status` orange header):**
 - New — just came through pipeline
 - Under Review — analyst evaluating
 - Active - Outreach — full target discovery (4-6/day) with owner outreach cadence (agent trigger)

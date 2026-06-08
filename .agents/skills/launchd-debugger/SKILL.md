@@ -1,6 +1,6 @@
 ---
 name: launchd-debugger
-description: "Daily 5am ET scan of overnight launchd job logs PLUS auto-fire on every non-zero scheduled-skill exit. Spawns a debug subagent per failed job to diagnose, attempt safe fixes (re-run, restart, retry transient), or surface to Slack #operations. Suppresses Slack noise via known-incident registry + cross-day dedup. Catches silent failures before the morning briefing."
+description: "Daily 5am ET scan of overnight scheduled job logs PLUS auto-fire on every non-zero scheduled-skill exit. Spawns a debug subagent per failed job to diagnose, attempt safe fixes (re-run, restart, retry transient), or surface to Slack #operations. Suppresses Slack noise via known-incident registry + cross-day dedup. Catches silent failures before the morning briefing."
 archetype: router
 context_budget:
   skill_md: 200
@@ -9,7 +9,7 @@ context_budget:
   sub_agent_limit: 500
 user_invocable: true
 version: v1.2.0
-trigger: "Scheduled daily 5:00am ET via launchd (com.greenwich-barrow.launchd-debugger) + auto-fire by scripts/run-agent-skill.sh on any non-zero scheduled-skill exit (FAILED_LOG_FILE env passes the failed log path)."
+trigger: "Scheduled daily 5:00am ET via systemd user timer (`launchd-debugger.timer`) + auto-fire by scripts/run-agent-skill.sh on any non-zero scheduled-skill exit (FAILED_LOG_FILE env passes the failed log path)."
 schedule: "Daily 5:00am ET + on-failure trigger"
 ---
 
@@ -26,7 +26,7 @@ The skill never touches business data. Fixes are operational only — re-run, re
 ```bash
 source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 ```
-Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — legacy file with unresolved references; see `feedback_op_env_before_op_backed_cli`.
 
 **MCP_DISCONNECT diagnosis: REST-verify before classifying.** A scheduled skill log line that says "Attio MCP not connected" or "Granola MCP unavailable" is NOT automatically an MCP_DISCONNECT cause. Before flagging the cause, run the REST health-check for the underlying service:
 ```bash
@@ -43,13 +43,13 @@ If REST returns 200, the underlying service is fine — the upstream skill faile
 - Detection: scan `logs/scheduled/*.log` for files modified in last 24h with non-zero exit, `VALIDATOR FAILED`, `PREFLIGHT FAILED`, or `STOP:` markers.
 - Per-failure diagnosis via Task subagent.
 - Safe operational fix attempts (whitelist below).
-- Re-run via `launchctl start com.greenwich-barrow.{skill}` after a fix.
+- Re-run via `systemctl --user start {skill}.service` after a fix.
 - Slack #operations notification when fix is unsafe or fails.
 - Daily artifact at `brain/trackers/health/launchd-debugger-{YYYY-MM-DD}.json` for validator + audit trail.
 
 ## What this skill does NOT do
 
-- Cannot rewrite plists or change schedules (that's Kay).
+- Cannot rewrite systemd units or change schedules unless Kay explicitly approves.
 - Cannot touch Attio, Drive, vault content (calls/entities/outputs), or Sheets.
 - Does not duplicate health-monitor's broader checks (service connectivity, pipeline hygiene, data freshness). Health-monitor still owns those — this skill targets the narrow "did the cron run successfully" question.
 - Does not evaluate whether a skill's *output* was correct. The POST_RUN_CHECK validators on each mutating skill own that — this skill only fans out on validator-flagged failures.
@@ -87,7 +87,7 @@ For each failure, launch a Task subagent with this brief:
 > Step 1: Read the full log file.
 > Step 2: Classify the cause into one of: AUTH, TRANSIENT_API, MCP_DISCONNECT, VALIDATOR_REJECT, MISSING_ARTIFACT, SCHEMA_VIOLATION, CODE_BUG, EXTERNAL_OUTAGE, UNKNOWN.
 > Step 3: Decide FIX vs SURFACE per the decision tree below.
-> Step 4: If FIX, apply the fix, then `launchctl start com.greenwich-barrow.{job}` to re-run. Wait 60s. Re-scan that one log file to verify success.
+> Step 4: If FIX, apply the fix, then `systemctl --user start {job}.service` to re-run. Wait 60s. Re-scan that one log file to verify success.
 > Step 5: Return JSON: `{job, cause, action: "FIX"|"SURFACE", fix_applied?, rerun_exit_code?, slack_text?}`
 
 Run subagents in parallel — they share no state.
@@ -97,13 +97,13 @@ Run subagents in parallel — they share no state.
 | Cause | Action | Allowed fix |
 |-------|--------|-------------|
 | AUTH (Codex CLI 401, OAuth token expired) | SURFACE | none — Kay must re-auth |
-| TRANSIENT_API (5xx, network timeout, rate-limited 429) | FIX | re-run via `launchctl start` |
+| TRANSIENT_API (5xx, network timeout, rate-limited 429) | FIX | re-run via `systemctl --user start {job}.service` |
 | MCP_DISCONNECT (mcp__attio, mcp__granola, legacy MCP tools return "not connected") | SURFACE as SKILL_CODE_NEEDS_REST_FALLBACK if REST/wrapper health is good; scheduled skills should use REST/wrappers, not MCP. If REST/wrapper health is also down, classify as AUTH or EXTERNAL_OUTAGE as appropriate. | surface code-fix or real outage |
 | VALIDATOR_REJECT (POST_RUN_CHECK said skill output was wrong) | SURFACE | never auto-fix sheet/Attio drift — Kay reviews |
 | MISSING_ARTIFACT (cached snapshot didn't refresh) | FIX | regenerate via `scripts/refresh-{name}.sh`, then re-run |
 | SCHEMA_VIOLATION (vault write rejected by validate-edits.py) | SURFACE | code change required |
 | CODE_BUG (Python traceback, undefined var, etc.) | SURFACE | code change required |
-| EXTERNAL_OUTAGE (vendor down — Apollo/Anthropic/Google) | SURFACE | wait for vendor |
+| EXTERNAL_OUTAGE (vendor down — Apollo/OpenAI/Google) | SURFACE | wait for vendor |
 | UNKNOWN | SURFACE | always |
 
 **Hard prohibitions (any violation = SURFACE):**
@@ -111,8 +111,8 @@ Run subagents in parallel — they share no state.
 - No writes to Attio (no MCP `mcp__attio__update_record` etc.).
 - No writes to vault content (`brain/calls/`, `brain/entities/`, `brain/outputs/`, `brain/inbox/`).
 - No writes to Google Sheets, Drive, or Docs.
-- No schema changes, no plist edits, no `.env.launchd` edits.
-- No `launchctl unload` or `launchctl load` — only `launchctl start` (one-shot re-run).
+- No schema changes, no systemd unit edits, no `.env.launchd` edits.
+- No `systemctl --user disable`, `enable`, `stop`, or daemon-reload — only `systemctl --user start {job}.service` for a one-shot re-run.
 
 ## Step 4 — Aggregate + write artifact
 
@@ -139,7 +139,7 @@ Write `brain/trackers/health/launchd-debugger-{YYYY-MM-DD}.json`:
       "job": "attio-snapshot-refresh",
       "cause": "TRANSIENT_API",
       "action": "FIX",
-      "fix_applied": "launchctl start com.greenwich-barrow.attio-snapshot-refresh",
+      "fix_applied": "systemctl --user start attio-snapshot-refresh.service",
       "rerun_exit_code": 0
     }
   ]
@@ -167,9 +167,9 @@ If the scan returned zero failures, no Slack at all.
 
 - **Logs:** Reads `logs/scheduled/*.log` produced by `scripts/run-agent-skill.sh`. Writes its own log to `logs/scheduled/launchd-debugger-{date}-{HHMM}.log` via the same wrapper.
 - **Wrapper:** Invoked via `scripts/run-agent-skill.sh launchd-debugger:daily` — wrapper case routes to `headless-daily-prompt.md`.
-- **POST_RUN_CHECK:** `scripts/validate_launchd_debugger_integrity.py` confirms the artifact exists with required fields. Per `feedback_mutating_skill_hardening_pattern.md`, this skill is treated as mutating because it can `launchctl start` other jobs.
-- **Slack:** `$SLACK_WEBHOOK_OPERATIONS` from `scripts/.env.launchd`.
-- **Health-monitor relationship:** Health-monitor still runs Friday 12:30am — it still detects silent failures across the *whole system*. This skill is the *narrow daily* layer that catches launchd failures specifically and tries to self-heal before the morning briefing.
+- **POST_RUN_CHECK:** `scripts/validate_launchd_debugger_integrity.py` confirms the artifact exists with required fields. Per `feedback_mutating_skill_hardening_pattern.md`, this skill is treated as mutating because it can one-shot re-run other jobs with `systemctl --user start`.
+- **Slack:** `$SLACK_WEBHOOK_OPERATIONS` resolved through `scripts/op-env.sh` / 1Password.
+- **Health-monitor relationship:** Health-monitor still runs Friday 12:30am — it still detects silent failures across the *whole system*. This skill is the *narrow daily* layer that catches scheduled-job failures specifically and tries to self-heal before the morning briefing.
 </integration>
 
 <success_criteria>
@@ -199,9 +199,9 @@ If the scan returned zero failures, no Slack at all.
 
 **DRY_RUN flag.** `DRY_RUN=1` env disables spawning — the bridge logs `WOULD FIRE: launchd-debugger:on-failure for RED={slug} detail={detail}` lines to stderr + the bridge log instead. Used for end-to-end verification without burning subagent token spend.
 
-**Cadence.** Fires Friday 12:30 AM ET (right after `health-monitor` plist completes). One bridge fire per Friday, N subagents spawned in parallel where N = RED-row count. Cross-day dedup (7-day window, keyed on `health-monitor-red:{RED_ITEM_ID}`) means a RED that persists week-over-week (e.g. orphan-entity-links 22 → 46 → 89) surfaces to Slack on first detection only — subsequent weeks land in the artifact silently.
+**Cadence.** Fires Friday 12:30 AM ET (right after `health-monitor.timer` completes). One bridge fire per Friday, N subagents spawned in parallel where N = RED-row count. Cross-day dedup (7-day window, keyed on `health-monitor-red:{RED_ITEM_ID}`) means a RED that persists week-over-week (e.g. orphan-entity-links 22 → 46 → 89) surfaces to Slack on first detection only — subsequent weeks land in the artifact silently.
 
-**Verified DRY_RUN against 2026-05-01 health artifact:** 4 RED rows detected, 4 WOULD-FIRE log lines emitted, slugs `launchd-niche-intelligence-tue` / `stale-entries` / `missing-vault-entities` / `orphaned-entity-links`. Trend table's 3 RED-containing rows correctly filtered out by the `NF==5 && $3=="RED"` parser.
+**Verified DRY_RUN against 2026-05-01 health artifact:** 4 RED rows detected, 4 WOULD-FIRE log lines emitted, slugs `scheduled-niche-intelligence-tue` / `stale-entries` / `missing-vault-entities` / `orphaned-entity-links`. Trend table's 3 RED-containing rows correctly filtered out by the `NF==5 && $3=="RED"` parser.
 
 ## v1.1.0 — 2026-05-01
 
@@ -213,7 +213,7 @@ If the scan returned zero failures, no Slack at all.
 
 **Cross-day dedup.** Before posting Slack, the debug subagent reads the prior 7 days of `brain/trackers/health/launchd-debugger-*.json` artifacts. If a `(job + cause + error_signature[:50])` tuple already surfaced (with `slack_posted == true`), the current SURFACE is downgraded to artifact-only entry (no Slack) with `suppression_reason: "cross-day-dedup:7d"`. Prevents a repeating bug from generating N Slack pings/day across its open lifetime.
 
-**Wrapper case for `niche-intelligence:tuesday`.** Routes to Agent B's headless prompt + validator (parallel track). When Agent B's plist update fires Tuesday, the wrapper now correctly routes the headless prompt instead of falling through to bare `/niche-intelligence` (the documented exit-1 path).
+**Wrapper case for `niche-intelligence:tuesday`.** Routes to the headless prompt + validator. When `niche-intelligence.timer` fires Tuesday, the wrapper correctly routes the headless prompt instead of falling through to a bare slash-command invocation.
 
 **Schema additions to result entries:** `slack_posted` (bool), `suppression_reason` (string|null), `triggered_by` ("daily"|"on-failure"). The validator's accounting check passes when `fixes_succeeded + surfaces_to_slack + suppressed_count == failures_detected`.
 </changelog>

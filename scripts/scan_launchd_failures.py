@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Scan logs/scheduled/ for scheduled job failures in the last 24 hours.
 
-Used by the launchd-debugger skill (invoked daily 5am ET, and on failure).
+Used by the launchd-debugger skill (invoked daily 5am ET by systemd, and on failure).
 Emits a JSON list of failed jobs to stdout — one entry per failed run, ready
 for the headless prompt to fan out into per-job debug subagents.
 
@@ -17,17 +17,17 @@ markers:
     output after Codex exited 0.
   * `Completed: {date}` — successful wrapper completion.
 
-The legacy Claude wrapper (`scripts/run-skill.sh`) is retained during migration
-fallback and embeds these markers:
+The legacy Claude wrapper (`scripts/run-skill.sh`) is retained only as a temporary
+Phase 3 fallback reference and embeds these markers:
 
   * `Finished claude run: {date}, exit: {N} (attempts: {n})` — final wrapper
     exit code (skill exit OR validator-overridden exit).
   * `VALIDATOR FAILED — overriding skill exit code` — POST_RUN_CHECK
     validator rejected output even though Claude exited 0.
-  * `PREFLIGHT FAILED (auth): ...` — Claude CLI 401 on preflight.
+  * `PREFLIGHT FAILED (auth): ...` — legacy CLI auth preflight.
 
 Some jobs (the bash-only refresh scripts under `apollo-credits-refresh.sh`,
-`refresh-attio-snapshot.sh`, `refresh-jj-snapshot.sh`) do NOT use the shared
+`refresh-attio-snapshot.sh`, `refresh-jj-snapshot.sh` (legacy cold-call snapshot filename) do NOT use the shared
 wrapper and emit no Codex or legacy runner marker. We treat absence of an
 explicit error pattern as success for those; their own watchdog is the
 snapshot-staleness banner on the dashboard.
@@ -140,7 +140,7 @@ def parse_log(path: Path) -> dict | None:
 
     # Build a one-line error signature.
     if preflight_failed:
-        signature = "PREFLIGHT AUTH FAIL — Claude CLI 401, re-auth required"
+        signature = "PREFLIGHT AUTH FAIL — legacy CLI auth preflight failed; re-auth required"
     elif validator_failed:
         # Find the validator line plus any preceding context.
         sig_lines = [ln for ln in lines[-30:] if "VALIDATOR" in ln or "FAIL" in ln]
@@ -209,8 +209,8 @@ def scan(window_hours: int = DEFAULT_WINDOW_HOURS, log_file: Path | None = None)
 
         match = LOG_FILENAME_RE.match(log_path.name)
         if not match:
-            # launchd-side stderr files (e.g. *-launchd.log) and anything
-            # without the dated convention are skipped — they hold launchd
+            # systemd/legacy stderr sidecar files and anything
+            # without the dated convention are skipped — they hold scheduler
             # bootstrap output, not skill exit state.
             continue
         skill = match.group("skill")
@@ -233,7 +233,7 @@ def scan(window_hours: int = DEFAULT_WINDOW_HOURS, log_file: Path | None = None)
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Scan logs/scheduled/ for launchd job failures.",
+        description="Scan logs/scheduled/ for scheduled job failures.",
     )
     parser.add_argument(
         "--lookback-hours",

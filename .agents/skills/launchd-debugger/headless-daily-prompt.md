@@ -1,6 +1,6 @@
 # launchd-debugger — Headless Daily Run
 
-You are running the `launchd-debugger` skill non-interactively under launchd at 5am ET. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals.
+You are running the `launchd-debugger` skill non-interactively under the Codex/systemd scheduled runner at 5am ET. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals.
 
 Your job is to scan the last 24 hours of `logs/scheduled/`, fan out one debug subagent per failed job, attempt safe operational fixes, and surface anything unsafe to Slack #operations. You must finish in under 10 minutes.
 
@@ -46,18 +46,18 @@ Your job is to scan the last 24 hours of `logs/scheduled/`, fan out one debug su
    > **Step B:** Classify the cause as ONE of: `AUTH`, `TRANSIENT_API`, `MCP_DISCONNECT`, `VALIDATOR_REJECT`, `MISSING_ARTIFACT`, `SCHEMA_VIOLATION`, `CODE_BUG`, `EXTERNAL_OUTAGE`, `UNKNOWN`.
    >
    > **Step C:** Decide FIX or SURFACE per the SKILL.md decision tree. The allowlist of fixes is narrow:
-   >   - `launchctl start com.greenwich-barrow.{job}` (re-run)
-   >   - `scripts/refresh-attio-snapshot.sh` / `scripts/refresh-jj-snapshot.sh` / `scripts/refresh-apollo-credits.sh` (regenerate cached artifact)
+  >   - `systemctl --user start {job}.service` (one-shot re-run)
+  >   - `scripts/refresh-attio-snapshot.sh` / `scripts/refresh-jj-snapshot.sh` (legacy cold-call snapshot filename) / `scripts/refresh-apollo-credits.sh` (regenerate cached artifact)
    >   - Do not reconnect MCP in scheduled mode. If REST/wrapper health is good, mark as SURFACE with `SKILL_CODE_NEEDS_REST_FALLBACK`; if REST/wrapper health is down, classify the real auth/outage cause.
    > Anything else → SURFACE.
    >
    > **HARD PROHIBITIONS:**
    >   - No `rm`, no destructive shell.
    >   - No writes to Attio (no `mcp__attio__*` write tools), Drive, Sheets, or vault content (`brain/calls/`, `brain/entities/`, `brain/outputs/`, `brain/inbox/`).
-   >   - No plist edits, no `.env.launchd` edits, no schema changes.
-   >   - No `launchctl unload`/`launchctl load` — only `launchctl start`.
+  >   - No systemd unit edits, no `.env.launchd` edits, no schema changes.
+  >   - No `systemctl --user disable`, `enable`, `stop`, or daemon-reload — only `systemctl --user start {job}.service`.
    >
-   > **Step D:** If FIX, apply the fix. Then `launchctl start com.greenwich-barrow.{job}`. Sleep 60 seconds. Find the newest log for that job and read its tail to confirm `exit: 0`. If re-run also failed, downgrade to SURFACE.
+  > **Step D:** If FIX, apply the fix. Then `systemctl --user start {job}.service`. Sleep 60 seconds. Find the newest log for that job and read its tail to confirm completion. If re-run also failed, downgrade to SURFACE.
    >
    > **Step E:** Return JSON only (no prose):
    > ```json
@@ -65,7 +65,7 @@ Your job is to scan the last 24 hours of `logs/scheduled/`, fan out one debug su
    >   "job": "{job}",
    >   "cause": "TRANSIENT_API",
    >   "action": "FIX",
-   >   "fix_applied": "launchctl start com.greenwich-barrow.{job}",
+  >   "fix_applied": "systemctl --user start {job}.service",
    >   "rerun_exit_code": 0,
    >   "slack_text": null
    > }
@@ -130,7 +130,7 @@ Your job is to scan the last 24 hours of `logs/scheduled/`, fan out one debug su
    ```
    Note: `surfaces_to_slack` counts only entries with `action == "SURFACE"` AND `slack_posted == true`. Suppressed surfaces count toward `failures_detected` but NOT `surfaces_to_slack`. Validator's accounting check still passes because `fixes_succeeded + surfaces_to_slack + suppressed_count == failures_detected`. Compute `runtime_seconds` as `$(date +%s) - $START_TS`. Ensure `brain/trackers/health/` exists (`mkdir -p`).
 
-10. **Print a one-line summary** to stdout for the launchd log:
+10. **Print a one-line summary** to stdout for the scheduled log:
     `launchd-debugger: {failures_detected} failures, {fixes_succeeded}/{fixes_attempted} fixed, {surfaces_to_slack} surfaced, {suppressed} suppressed — runtime {N}s`
 
 The wrapper's POST_RUN_CHECK runs `scripts/validate_launchd_debugger_integrity.py` which confirms the artifact exists with all required fields. If the validator exits non-zero, the wrapper overrides the exit code and posts `VALIDATOR FAILED` to Slack — that's intentional, do not catch or mask it.
@@ -146,4 +146,4 @@ The wrapper's POST_RUN_CHECK runs `scripts/validate_launchd_debugger_integrity.p
 
 ## Why this prompt exists
 
-Bare `claude -p '/launchd-debugger'` invocations under launchd risk the silent-exit-0 failure mode documented in `memory/feedback_mutating_skill_hardening_pattern.md`. This prompt forbids that path and mandates artifact-first ordering so the validator can backstop. v1.1 added known-incident registry + cross-day dedup so a single open bug doesn't generate N Slack pings/day across the bug's open lifetime.
+Bare slash-command invocations in scheduled mode risk the silent-exit-0 failure mode documented in `memory/feedback_mutating_skill_hardening_pattern.md`. This prompt forbids that path and mandates artifact-first ordering so the validator can backstop. v1.1 added known-incident registry + cross-day dedup so a single open bug doesn't generate N Slack pings/day across the bug's open lifetime.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Wrapper-level integrity validator for launchd-debugger scheduled runs.
 
-Runs as POST_RUN_CHECK after launchd wrapper completes. Confirms the daily
+Runs as POST_RUN_CHECK after the scheduled wrapper completes. Confirms the daily
 artifact at brain/trackers/health/launchd-debugger-{TODAY}.json exists and
 contains every required field. Catches the silent-success failure mode where
 the agent exits 0 but never wrote the artifact (the morning briefing pipeline

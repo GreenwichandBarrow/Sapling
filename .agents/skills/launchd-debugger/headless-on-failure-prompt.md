@@ -52,18 +52,18 @@ The wrapper passed you the failed job's log path via the `LOG_FILE` environment 
    > **Step B:** Classify the cause as ONE of: `AUTH`, `TRANSIENT_API`, `MCP_DISCONNECT`, `VALIDATOR_REJECT`, `MISSING_ARTIFACT`, `SCHEMA_VIOLATION`, `CODE_BUG`, `EXTERNAL_OUTAGE`, `UNKNOWN`.
    >
    > **Step C:** Decide FIX or SURFACE per the SKILL.md decision tree. The allowlist of fixes is narrow:
-   >   - `launchctl start com.greenwich-barrow.{job}` (re-run)
-   >   - `scripts/refresh-attio-snapshot.sh` / `scripts/refresh-jj-snapshot.sh` / `scripts/refresh-apollo-credits.sh` (regenerate cached artifact)
+  >   - `systemctl --user start {job}.service` (one-shot re-run)
+   >   - `scripts/refresh-attio-snapshot.sh` / `scripts/refresh-jj-snapshot.sh` (legacy cold-call snapshot filename) / `scripts/refresh-apollo-credits.sh` (regenerate cached artifact)
    >   - Do not reconnect MCP in scheduled mode. If REST/wrapper health is good, mark as SURFACE with `SKILL_CODE_NEEDS_REST_FALLBACK`; if REST/wrapper health is down, classify the real auth/outage cause.
    > Anything else → SURFACE.
    >
    > **HARD PROHIBITIONS:**
    >   - No `rm`, no destructive shell.
    >   - No writes to Attio (no `mcp__attio__*` write tools), Drive, Sheets, or vault content (`brain/calls/`, `brain/entities/`, `brain/outputs/`, `brain/inbox/`).
-   >   - No plist edits, no `.env.launchd` edits, no schema changes.
-   >   - No `launchctl unload`/`launchctl load` — only `launchctl start`.
+  >   - No systemd unit edits, no `.env.launchd` edits, no schema changes.
+  >   - No `systemctl --user disable`, `enable`, `stop`, or daemon-reload — only `systemctl --user start {job}.service`.
    >
-   > **Step D:** If FIX, apply the fix. Then `launchctl start com.greenwich-barrow.{job}`. Sleep 60 seconds. Find the newest log for that job and read its tail to confirm `exit: 0`. If re-run also failed, downgrade to SURFACE.
+  > **Step D:** If FIX, apply the fix. Then `systemctl --user start {job}.service`. Sleep 60 seconds. Find the newest log for that job and read its tail to confirm completion. If re-run also failed, downgrade to SURFACE.
    >
    > **Step E:** Return JSON only (no prose):
    > ```json
@@ -71,7 +71,7 @@ The wrapper passed you the failed job's log path via the `LOG_FILE` environment 
    >   "job": "{job}",
    >   "cause": "TRANSIENT_API",
    >   "action": "FIX",
-   >   "fix_applied": "launchctl start com.greenwich-barrow.{job}",
+  >   "fix_applied": "systemctl --user start {job}.service",
    >   "rerun_exit_code": 0,
    >   "slack_text": null
    > }
@@ -129,7 +129,7 @@ v1.2 adds a second trigger path: `scripts/health-monitor-red-bridge.sh` reads he
 When the triggering path is the bridge instead of a direct on-failure spawn, `FAILED_LOG_FILE` is **not** set. Instead, these env vars are populated:
 
 - `FROM_HEALTH_BRIDGE=1` — sentinel that this prompt was bridge-triggered
-- `RED_ITEM_ID` — slugified label (e.g. `launchd-niche-intelligence-tue`, `stale-entries`, `missing-vault-entities`, `orphaned-entity-links`)
+- `RED_ITEM_ID` — slugified label (e.g. `scheduled-niche-intelligence-tue`, `stale-entries`, `missing-vault-entities`, `orphaned-entity-links`)
 - `RED_ITEM_LABEL` — the raw label string from column 2 of the markdown table
 - `RED_ITEM_DETAIL` — the full detail string from column 4 (may contain a recommended-action sentence, may not)
 - `HEALTH_ARTIFACT_PATH` — abs path to the health-monitor `.md` artifact this RED came from
@@ -152,7 +152,7 @@ When the triggering path is the bridge instead of a direct on-failure spawn, `FA
    Do NOT call `scan_launchd_failures.py` — there's no log-file to scan. The RED detail string IS the diagnostic context.
 
 2. **Spawn the same single subagent** (step 6) but with this brief instead:
-   > You are diagnosing a health-monitor RED finding (not a launchd job failure). The RED item is:
+  > You are diagnosing a health-monitor RED finding (not a scheduled job failure). The RED item is:
    >
    > Label: `{RED_ITEM_LABEL}`
    > ID: `{RED_ITEM_ID}`
@@ -164,11 +164,11 @@ When the triggering path is the bridge instead of a direct on-failure spawn, `FA
    > **Step B:** Classify the cause using the same enum (AUTH, TRANSIENT_API, MCP_DISCONNECT, VALIDATOR_REJECT, MISSING_ARTIFACT, SCHEMA_VIOLATION, CODE_BUG, EXTERNAL_OUTAGE, UNKNOWN). For pipeline/data-integrity REDs that are not infrastructure failures (e.g. "stale entries", "missing vault entities", "orphaned entity links"), classify as `UNKNOWN` — these need Kay's judgment, not an operational fix.
    >
    > **Step C:** Decision tree. The fix allowlist remains narrow:
-   >   - `launchctl start com.greenwich-barrow.{job}` for infrastructure REDs that name a launchd job in the label (`launchd: {name}`).
+  >   - `systemctl --user start {job}.service` for infrastructure REDs that name a scheduled job in the label (`scheduled: {name}`).
    >   - Cached-snapshot regen (`scripts/refresh-attio-snapshot.sh` etc.) when label is "{name} snapshot stale".
    >   - **Anything else (pipeline staleness, missing entities, orphan links, drift) → SURFACE.** These are not operational fixes — they are work items for Kay.
    >
-   > **HARD PROHIBITIONS** are unchanged from the on-failure brief — no destructive shell, no Attio/Drive/Sheets/vault content writes, no plist edits, no `launchctl unload/load`.
+  > **HARD PROHIBITIONS** are unchanged from the on-failure brief — no destructive shell, no Attio/Drive/Sheets/vault content writes, no systemd unit edits, no `systemctl --user disable/enable/stop`.
    >
    > **Step D:** If FIX, apply + re-run + verify exit 0 (same protocol). If SURFACE, populate `slack_text` as: `health-monitor RED: {RED_ITEM_LABEL} — {cause}. Detail: {RED_ITEM_DETAIL[:200]}. Recommended: {one-sentence action from the RED detail if present, else "Walk with Kay during Friday meta-calibration."}. Source: {HEALTH_ARTIFACT_PATH}`.
    >

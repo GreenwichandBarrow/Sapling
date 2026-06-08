@@ -7,7 +7,7 @@ context_budget:
   max_references: 12
   learnings_md: 40
   sub_agent_limit: 500
-trigger: Scheduled Friday 12:30 AM ET via launchd (com.greenwich-barrow.health-monitor). Output ready for Friday morning briefing alongside weekly-tracker. Also runs on-demand via /health-check.
+trigger: Scheduled Friday 12:30 AM ET via Codex/systemd user timer (`health-monitor.timer`). Output ready for Friday morning briefing alongside weekly-tracker. Also runs on-demand via /health-check.
 schedule: Friday 12:30 AM ET
 ---
 
@@ -22,7 +22,7 @@ Detect silent failures before they become lost deals or broken workflows. Every 
 ```bash
 source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 ```
-Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — hook-blocked; see `feedback_op_env_before_op_backed_cli`.
+Exports `ATTIO_API_KEY`, `APOLLO_API_KEY`, `GRANOLA_KEY`, `GOG_KEYRING_PASSWORD`, `SLACK_WEBHOOK_*`. **NEVER `source scripts/.env.launchd` raw** — legacy file with unresolved references; see `feedback_op_env_before_op_backed_cli`.
 
 **REST is the default health-check transport, MCP is a convenience.** A health-monitor check that calls `mcp__granola__list_meetings` or any `mcp__attio__*` tool MUST treat "MCP not loaded" as a session-state issue, NOT a service outage. Use REST to verify the underlying service before flagging RED:
 ```bash
@@ -59,36 +59,43 @@ Tests every external API and integration. Each check: can we authenticate and ge
 ### Sub-Agent 2: Infrastructure Agent
 Checks scheduled jobs, usage limits, and webhook health.
 
-**Launchd Jobs:**
+**Scheduled Jobs:**
 Expected jobs (this list is the source of truth — must match `AGENTS.md` and
-`docs/scheduled-skills.md`; missing-plist for any skill here = RED):
-- `com.greenwich-barrow.deal-aggregator` (Mon-Fri 6am ET)
-- `com.greenwich-barrow.deal-aggregator-afternoon` (Mon-Fri 2pm ET)
-- `com.greenwich-barrow.deal-aggregator-friday` (Fri evening)
-- `com.greenwich-barrow.email-intelligence` (Mon-Fri 7am ET)
-- `com.greenwich-barrow.jj-operations-sunday` (Sun 11pm ET)
-- `com.greenwich-barrow.target-discovery-sunday` (Sun 11pm ET)
-- `com.greenwich-barrow.niche-intelligence` (Tue 11pm ET)
-- `com.greenwich-barrow.nightly-tracker-audit` (Nightly)
-- `com.greenwich-barrow.conference-discovery` (Weekly)
-- `com.greenwich-barrow.health-monitor` (Fri 12:30 AM ET)
-- `com.greenwich-barrow.calibration-workflow` (Thu 11pm ET)
-- `com.greenwich-barrow.attio-snapshot-refresh` (Mon-Fri hourly 8am-8pm ET) — feeds dashboard's landing hero, Active Deal Pipeline, M&A Analytics deal-flow KPIs
-- `com.greenwich-barrow.jj-snapshot-refresh` (Mon-Fri 9am/2:30pm/6pm ET) — feeds dashboard's M&A Analytics JJ row + JJ trend panel
+`docs/scheduled-skills.md`; missing systemd timer for any skill here = RED):
+- `deal-aggregator.timer` (Mon-Fri 7:30am ET)
+- `deal-aggregator-afternoon.timer` (Mon-Fri 2pm ET)
+- `deal-aggregator-friday.timer` (Fri 7:30am ET digest)
+- `email-intelligence.timer` (Mon-Fri 7am ET)
+- `cold-call-operations-sunday.timer` (Sun 6pm ET)
+- `cold-call-snapshot-refresh.timer` (Mon-Fri 9am ET) — feeds dashboard cold-call activity
+- `target-discovery-sunday.timer` (Sun 3pm ET)
+- `niche-intelligence.timer` (Tue 10:30pm ET)
+- `nightly-tracker-audit.timer` (Nightly 11:30pm ET)
+- `conference-discovery.timer` (Sun 9pm ET)
+- `health-monitor.timer` (Fri 12:30am ET)
+- `launchd-debugger.timer` (Daily 5am ET; legacy name, systemd runner)
+- `calibration-workflow.timer` (Thu 11pm ET)
+- `attio-snapshot-refresh.timer` (Mon-Fri 8am ET) — feeds dashboard's landing hero, Active Deal Pipeline, M&A Analytics deal-flow KPIs
+- `apollo-credits-refresh.timer` (Mon-Fri 8am ET)
+- `external-services-probe.timer` (Mon-Fri 8am ET)
+- `post-call-analyzer-poll.timer` (Daily 1pm + 6pm ET)
+- `weekly-snapshot.timer` (Fri 10pm ET)
+- `weekly-archive-export.timer` (Sat 9am ET)
 
 For each:
 ```bash
-launchctl list | grep greenwich
+systemctl --user list-timers --all
+systemctl --user status {timer-or-service} --no-pager
 ```
 - GREEN: exit code 0, ran within expected schedule
 - YELLOW: exit code 0 but last run > 2x expected interval; OR single non-zero exit in last 7 days
-- RED: non-zero exit code (like 126 = permission error); OR 2+ consecutive failed runs; OR missing plist for a skill listed in `AGENTS.md` / `docs/scheduled-skills.md`
+- RED: non-zero exit code (like 126 = permission error); OR 2+ consecutive failed runs; OR missing systemd timer for a skill listed in `AGENTS.md` / `docs/scheduled-skills.md`
 
 **Consecutive-failure escalation (critical):**
 Slack notifies on individual fails, but repeated failures get lost in the noise. For each scheduled skill, grep the last 7 days of logs for `exit: [1-9]` — if 2+ consecutive runs failed, surface as RED in the morning briefing with the skill name, fail count, and error excerpt. Do not wait for a third fail or for Kay to notice the Slack pattern.
 
-**Plist coverage audit:**
-Cross-reference `launchctl list | grep greenwich` against `AGENTS.md` and `docs/scheduled-skills.md`. Any scheduled skill listed there but missing from launchctl/systemd = RED (never deployed or silently unloaded).
+**Timer coverage audit:**
+Cross-reference `systemctl --user list-timers --all` against `AGENTS.md` and `docs/scheduled-skills.md`. Any scheduled skill listed there but missing from systemd = RED (never deployed or silently disabled).
 
 On RED: tail the last 50 lines of the log file for error context:
 ```bash
@@ -172,7 +179,7 @@ done
 | Granola ingestion | Most recent `brain/calls/` file date | > 3 days since last meeting | > 7 days |
 | Vault entity sync | Compare Attio People count vs vault entity count | Drift > 20% | Drift > 50% |
 | Attio dashboard snapshot | `fetched_at` in `brain/context/attio-pipeline-snapshot.json` | > 4h during business hours OR > 60h overall | > 12h during business hours OR > 80h overall |
-| JJ dashboard snapshot | `fetched_at` in `brain/context/jj-activity-snapshot.json` | > 30h during business hours OR > 72h overall | > 48h during business hours OR > 96h overall |
+| Cold-call dashboard snapshot | `fetched_at` in `brain/context/jj-activity-snapshot.json` | > 30h during business hours OR > 72h overall | > 48h during business hours OR > 96h overall |
 
 The dashboard's `data_sources.check_dashboard_staleness()` does the same
 check live against a 2h/30h threshold (during business hours) and surfaces
@@ -241,7 +248,7 @@ Dashboard format:
 | ... | ... | ... |
 
 ## Action Items
-1. [RED] Fix deal-aggregator launchd permissions
+1. [RED] Fix deal-aggregator scheduler permissions
 2. [RED] Backfill skipped stages for Project Restoration and E&K SaaS
 3. [YELLOW] Apollo credits at 487 — monitor consumption
 ```
@@ -271,7 +278,7 @@ If ALL GREEN, no Slack notification. Silence = healthy.
 
 | Incident | Check | How |
 |----------|-------|-----|
-| deal-aggregator exit 126 | Infrastructure → launchd | Non-zero exit code flagged RED |
+| deal-aggregator exit 126 | Infrastructure → scheduler | Non-zero exit code flagged RED |
 | Project Restoration skipped stages | Pipeline Hygiene → stage skipping | Identified → Closed without NDA/Financials |
 | E&K deal not in Attio | Pipeline Hygiene → untracked deals | Gmail NDA/CIM signals with no Attio entry |
 | Weekly tracker missed deal activity | Data Integrity → freshness | Attio stage changes not reflected in tracker |

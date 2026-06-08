@@ -6,12 +6,19 @@ You are running the `email-intelligence` skill non-interactively under systemd a
 
 1. **Read SKILL.md fully** at `.agents/skills/email-intelligence/SKILL.md`. Internalize every `<*_auto_trigger>` block and the `<artifact>` schema.
 1a. **Resolve credentials before any service call.** Source `/home/ubuntu/projects/Sapling/scripts/op-env.sh`, then run `gog auth list --check` if Gmail access fails or appears missing. Do not report a Gmail/OAuth outage until `op-env.sh` has been sourced and the durable `gog` token has been checked.
-2. **Pull source data:**
+2. **Prepare compact source data before analysis.** Run:
+   ```bash
+   source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+   python3 scripts/prepare_email_intelligence_context.py --date {TODAY}
+   ```
+   Then read `brain/context/email-intelligence-input-{TODAY}.json` and use it as the primary source artifact. This script captures `gog` output internally and writes bounded snippets plus `draft_details` so raw HTML/email bodies do not enter Codex logs or blow token budgets.
+2a. **Pull source data only through the compact artifact unless a deterministic auto-trigger requires a full fetch:**
    - Inbound Gmail (`gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send "newer_than:2d label:INBOX" --json --max 50`)
    - Outbound Gmail (`gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send "from:kay.s@greenwichandbarrow.com newer_than:2d" --json --max 50`)
    - Gmail drafts (`gog gmail drafts list --account kay.s@greenwichandbarrow.com --gmail-no-send --json`)
    - Granola transcripts via `~/.local/bin/granola-api since <iso-checkpoint>` and `granola-api get-note <note_id>` for any meetings since last run; MCP is optional only
    - `brain/context/session-decisions-{previous-workday}.md` for cross-check before flagging drafts as stale
+   Do not run `gog gmail thread get` directly for broad scanning or draft aging. The compact artifact already includes `candidate_threads` and `draft_details`. If a CIM/NDA/bookkeeper/active-deal trigger requires full thread detail, run it for that one thread only, redirect or capture output, and summarize from bounded text. Never print raw thread JSON or raw HTML to stdout.
 3. **Per-email classification + urgent side effects.** Walk the inbound list. For each email:
    - Classify (DIRECT / BLAST / NEWSLETTER) per `<deal_flow_classification>`.
    - If CIM detected → fire `<cim_auto_trigger>` 4-step pipeline immediately (folder, file, inbox, deal-evaluation invoke). Do not defer.
@@ -47,6 +54,7 @@ You are running the `email-intelligence` skill non-interactively under systemd a
 - Halting on a single optional integration failure (Granola REST/API, Attio REST/API, or MCP convenience path) - graceful-degrade, log the failure mode in the artifact's Actionable Items section, continue.
 - Skipping the artifact write because "nothing material today" - always write the artifact, even if every section is "None".
 - Overwriting an existing same-day artifact silently - if `brain/context/email-scan-results-{TODAY}.md` already exists with ≥200 bytes, abort cleanly and emit `EMAIL-INTEL ABORT: artifact already exists for {TODAY}` (idempotency for retry safety).
+- Printing raw Gmail thread JSON, raw HTML, or base64-decoded full email bodies to stdout. Use `scripts/prepare_email_intelligence_context.py` and bounded excerpts instead.
 
 ## Failure handling
 

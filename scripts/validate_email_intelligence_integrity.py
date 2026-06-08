@@ -6,6 +6,7 @@ Runs as POST_RUN_CHECK after the systemd/launchd wrapper completes. Independent
 of skill-internal validation. Catches two silent-success failure modes:
 
   1. email-scan-results artifact missing or malformed at the expected path.
+  1a. compact email-intelligence input artifact missing or malformed.
   2. **Bookkeeper P&L chain skipped silently** - a bookkeeper P&L trigger
      inbox item was written this run (or already exists for today) but the
      headless prompt's mandated `BOOKKEEPER-PL-CHAIN:` log marker is absent.
@@ -23,6 +24,7 @@ Usage:
 import os
 import re
 import sys
+import json
 from datetime import date, datetime
 
 
@@ -55,6 +57,7 @@ EXPECTED_SECTIONS = [
     "Auto-Drafts",
 ]
 MIN_ARTIFACT_BYTES = 1000
+MIN_INPUT_BYTES = 500
 
 # Pattern for the bookkeeper P&L trigger inbox file.
 # Inbox naming convention: {YYYY-MM-DD}-{month}-management-report-budget-trigger.md
@@ -154,6 +157,44 @@ def validate_artifact(artifact: str, run_date: date) -> list[str]:
     return failures
 
 
+def validate_compact_input(input_artifact: str, run_date: date) -> list[str]:
+    failures: list[str] = []
+    if not os.path.exists(input_artifact):
+        failures.append(f"compact input artifact missing: {input_artifact}")
+        return failures
+
+    size = os.path.getsize(input_artifact)
+    if size < MIN_INPUT_BYTES:
+        failures.append(
+            f"compact input artifact suspiciously small ({size} bytes < {MIN_INPUT_BYTES})"
+        )
+        return failures
+
+    try:
+        with open(input_artifact) as f:
+            data = json.load(f)
+    except Exception as exc:
+        failures.append(f"compact input artifact invalid JSON: {exc}")
+        return failures
+
+    if data.get("date") != run_date.isoformat():
+        failures.append(
+            f"compact input artifact date {data.get('date')!r} does not match {run_date}"
+        )
+
+    safety = data.get("safety", {})
+    if safety.get("gmail_no_send") is not True:
+        failures.append("compact input artifact missing gmail_no_send safety marker")
+    if safety.get("raw_thread_bodies_printed_to_stdout") is not False:
+        failures.append("compact input artifact missing raw-body suppression marker")
+
+    for key in ("inbound", "outbound", "drafts", "draft_details", "candidate_threads"):
+        if key not in data:
+            failures.append(f"compact input artifact missing key: {key}")
+
+    return failures
+
+
 def main() -> int:
     args = sys.argv[1:]
     run_date = date.today()
@@ -176,7 +217,11 @@ def main() -> int:
     artifact = os.path.join(
         CONTEXT_DIR, f"email-scan-results-{run_date.isoformat()}.md"
     )
+    input_artifact = os.path.join(
+        CONTEXT_DIR, f"email-intelligence-input-{run_date.isoformat()}.json"
+    )
 
+    failures.extend(validate_compact_input(input_artifact, run_date))
     failures.extend(validate_artifact(artifact, run_date))
 
     # ---- Check 2: bookkeeper P&L chain gap ----
@@ -217,6 +262,9 @@ def main() -> int:
         return 2
 
     print(f"EMAIL-INTELLIGENCE VALIDATOR PASSED for {run_date}")
+    print(f"  compact input: {input_artifact}")
+    if os.path.exists(input_artifact):
+        print(f"  compact input size: {os.path.getsize(input_artifact)} bytes")
     print(f"  artifact: {artifact}")
     if os.path.exists(artifact):
         print(f"  size: {os.path.getsize(artifact)} bytes")

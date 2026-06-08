@@ -55,6 +55,19 @@ Scan all inbound and outbound email, Gmail drafts, and Granola transcripts. Clas
 <gmail_scanning>
 ## Gmail Ingestion
 
+### Compact Context Preflight (Scheduled + Recommended On-Demand)
+
+Before reading individual Gmail threads, source 1Password-backed env and build the compact email context artifact:
+
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+python3 scripts/prepare_email_intelligence_context.py --date {YYYY-MM-DD}
+```
+
+Read `brain/context/email-intelligence-input-{YYYY-MM-DD}.json` first. It contains compact inbound/outbound metadata, `draft_details` with timestamps/subjects/recipients, and bounded excerpts for likely deal/newsletter candidates. This is the default path for Codex runs.
+
+**Why:** raw `gog gmail thread get ... --json` can return very large HTML payloads. Do not print raw thread JSON, raw base64-decoded bodies, or raw HTML into the Codex log. If full thread detail is necessary for a deterministic auto-trigger (CIM, NDA, bookkeeper P&L, active deal fast-path), fetch only that one thread, capture output, and summarize from bounded text.
+
 ### Inbound Email Scan
 ```bash
 gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send "newer_than:2d label:INBOX" --json --max 50

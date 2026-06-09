@@ -17,7 +17,7 @@ Project: `~/projects/Sapling`
 - Runner: create a neutral `scripts/run-agent-skill.sh` with `AGENT_RUNTIME=codex`.
 - Skills: migrate all `.claude/skills` to `.agents/skills`; validate scheduled/core workflows first.
 - Headless prompts: preserve separate headless prompt files.
-- Auth: scheduled jobs use `CODEX_API_KEY` resolved through 1Password only.
+- Auth: scheduled jobs use the saved Codex CLI ChatGPT/OAuth login for the `ubuntu` user; `CODEX_API_KEY` is intentionally unset for `codex exec`.
 - Permissions: broad during migration; tighten after validation.
 - MCP: migrate config, but scheduled jobs do not depend on MCP until tested.
 - Hooks: must-have safety hooks/stop hooks before cutover; nice-to-have hooks later.
@@ -47,6 +47,7 @@ Project: `~/projects/Sapling`
 11. Revise migrated skills after cutover to take advantage of Codex-native capabilities.
 12. Post-migration cleanup phase for obsolete Claude-era artifacts is deferred until after one week of stable Codex operation.
 13. Neutralize legacy migration-specific naming in future migrations where practical.
+14. Phase 3: remove temporary lowercase operating-area symlinks after all active iMac/MacBook Codex chats are confirmed rebound to the current uppercase VPS/Sapling paths.
 
 ## Migration Matrix
 
@@ -87,7 +88,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 
 - Never send email.
 - Email draft workflows require explicit draft-only verification before validation.
-- `CODEX_API_KEY` must resolve through 1Password at runtime.
+- Codex CLI ChatGPT/OAuth login must be present for the `ubuntu` user at runtime.
 - `~/.config/sapling/disable-codex-scheduled` disables Codex scheduled jobs only.
 - Safety hooks are copied for interactive use; scheduled jobs also enforce key safety checks inside the runner.
 
@@ -98,13 +99,13 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - `.agents/skills` created from `.claude/skills`.
 - `.codex/hooks` created from `.claude/hooks`.
 - `.codex/hooks.json` created with a wrapper script at `.codex/hooks/run-hook.sh`.
-- `scripts/.env.codex` created with a placeholder 1Password reference for `CODEX_API_KEY`.
+- `scripts/.env.codex` created for scheduled model routing; its former Platform API key reference was removed after the OAuth-login cutover.
 - `scripts/run-agent-skill.sh` created as a neutral runner with `AGENT_RUNTIME=codex`.
 - `scripts/check-codex-migration-readiness.sh` created as a non-secret readiness gate.
 - `docs/migrations/systemd-codex-templates/README.md` created with non-live cutover mapping.
 - `scripts/post_call_analyzer_poll.codex.sh` created as a non-live Codex trigger variant.
 - `scripts/prepare-codex-systemd-cutover.sh` created to generate dry-run service variants and later apply validated workflow groups only.
-- Runner smoke test blocks safely before `codex exec` when `CODEX_API_KEY` is unresolved.
+- Runner invokes `codex exec` with `CODEX_API_KEY` unset so it uses the saved Codex OAuth login.
 - Runner uses the supported `codex exec --dangerously-bypass-approvals-and-sandbox` flag for Phase 1 broad permissions on this VPS Codex build.
 - Runner email-send scan is scoped to the active skill and known email-adjacent trigger scripts to avoid false positives from unrelated legacy scripts.
 - Runner now defaults known scheduled workflow validators for manual Codex runs even when systemd has not injected `POST_RUN_CHECK`.
@@ -125,12 +126,12 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Secret-file hook synthetic test: `cat scripts/.env.launchd` is denied.
 - Runner email safety scan blocks potential send paths before `codex exec`.
 - Runner kill switch path: `~/.config/sapling/disable-codex-scheduled`.
-- `scripts/check-codex-migration-readiness.sh` currently reports `CODEX_API_KEY` unresolved; this is expected until the 1Password item exists.
+- `scripts/check-codex-migration-readiness.sh` verifies Codex OAuth with a minimal `codex exec` smoke test.
 - `scripts/prepare-codex-systemd-cutover.sh --apply` refuses live service edits while readiness fails.
 - Systemd dry-run generated Codex service variants under `docs/migrations/systemd-codex-templates/generated/` without modifying live units.
 - `prepare-codex-systemd-cutover.sh --apply --group health-monitor` was tested while readiness failed and correctly refused to edit `~/.config/systemd/user/health-monitor.service`.
 - Email no-send audit passes after removing executable send examples from migrated `gogcli` references.
-- `scripts/check-codex-migration-readiness.sh` passed after `CODEX_API_KEY` was moved to `op://GB Server/OpenAI API Key/password`.
+- `scripts/check-codex-migration-readiness.sh` passes with the cached Codex ChatGPT/OAuth login.
 - Read-only `codex exec` smoke test completed successfully and returned project name `Sapling OS`.
 - Migrated `.agents/skills/create-skill/SKILL.md` frontmatter was fixed so Codex no longer logs an invalid YAML startup warning.
 - `health-monitor` Codex production pilot completed successfully at 2026-06-04 22:40 EDT.
@@ -292,7 +293,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Tailscale Serve maps `https://agent-vps-7731c88b.tail868ef9.ts.net/` to `http://127.0.0.1:8501`; direct URL check returned HTTP 200.
 - Dashboard data loaders can read the current Attio pipeline snapshot, Cold Call activity snapshot (`jj-activity-snapshot.json`), external-service snapshot, weekly tracker history, and the 2026-06-05 weekly dashboard snapshot.
 - `dashboard.data_sources.check_dashboard_staleness()` returned no stale snapshots under the weekend-aware freshness rules.
-- Updated Infrastructure Zone 2 from legacy `claude-api` to `openai-codex`; the external-services probe now checks `https://api.openai.com/v1/models` with `CODEX_API_KEY` / `OPENAI_API_KEY`.
+- Updated Infrastructure Zone 2 from legacy `claude-api` to `openai-codex`; the external-services probe now checks `codex login status` with `CODEX_API_KEY` unset.
 - `scripts/probe-external-services.sh` now loads both `.env.launchd` and `.env.codex` through `scripts/load-env.sh`, preserving existing service probes while adding the 1Password-backed Codex/OpenAI probe.
 - Live probe with systemd-like environment returned healthy checks for `openai-codex`, Apollo, Gog, Slack webhooks, GitHub, and vault.
 - Credits Zone 3 now labels the LLM spend tile as `OpenAI/Codex API · this month` and points Kay to monitor Business Codex credits plus Platform API caps until live usage readout is wired.
@@ -305,6 +306,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Observe the next health-monitor cycle to confirm the RED bridge fires through the Codex runner when applicable.
 - Defer Phase 3 Claude cleanup until after one week of stable Codex scheduled operation.
 - Do not delete, archive, or retire Claude Code artifacts during Phase 2; Phase 3 cleanup starts only after the one-week monitoring checkpoint.
+- Keep temporary lowercase operating-area symlinks during the monitoring week so existing Codex threads bound to old paths keep working; remove them in Phase 3 after all active threads use the uppercase paths.
 
 ## Phase 2.5 Running List - Post-Migration Operating Model Refinements
 

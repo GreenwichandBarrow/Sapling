@@ -1,0 +1,816 @@
+{
+  "verb": "expand-day-tab-capacity",
+  "timestamp": "20260609-230120",
+  "sheet_id": "102bmS-QjW7nhBBKF-sWVKSLvDgKhmdl2CcuZiRJvOdQ",
+  "ranges": {
+    "'Sun'!A1:E55": [
+      [
+        "SUNDAY \u00b7 Jun 7"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        true,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation"
+      ],
+      [
+        false,
+        "Exercises"
+      ],
+      [
+        false,
+        "ACV drink"
+      ],
+      [
+        true,
+        "Probiotic protein shake"
+      ],
+      [
+        false,
+        "Class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        true,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        true,
+        "Run Phase 2.5"
+      ],
+      [
+        true,
+        "Create weekly schedule"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Mon'!A1:E55": [
+      [
+        "MONDAY \u00b7 Jun 8"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        true,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation"
+      ],
+      [
+        false,
+        "Exercises"
+      ],
+      [
+        false,
+        "ACV drink"
+      ],
+      [
+        true,
+        "Probiotic protein shake"
+      ],
+      [
+        false,
+        "Class"
+      ],
+      [
+        true,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        true,
+        "Process payroll (recurring)"
+      ],
+      [
+        true,
+        "Process conference registrations (recurring)"
+      ],
+      [
+        true,
+        "Send Q1 Updates to investors (5/12)"
+      ],
+      [
+        false,
+        "Send DealsX specialization file"
+      ],
+      [
+        true,
+        "DealsX kicks off targeted outreach"
+      ],
+      [
+        true,
+        "DealsX linkedin Halts"
+      ],
+      [
+        false,
+        "Prep for call with Jay"
+      ],
+      [
+        false,
+        "Email Krupa, Deborah"
+      ],
+      [
+        false,
+        "Email Hamptons Pest"
+      ],
+      [
+        true,
+        "Contiue Phase 2.5 Codex Migration"
+      ],
+      [
+        false,
+        "Call Mohela - loan history, iRS"
+      ],
+      [
+        true,
+        "Pay Harrison bill"
+      ],
+      [
+        false,
+        "Contact Greg - Franchise"
+      ],
+      [
+        false,
+        "Email Becky, contact at NYBB"
+      ],
+      [
+        false,
+        "Thank you Paul"
+      ],
+      [
+        false,
+        "Thank you Bob"
+      ],
+      [
+        false,
+        "Thank you Laura"
+      ],
+      [
+        true,
+        "Thank you Eric"
+      ],
+      [
+        false,
+        "Reply to Carlos"
+      ],
+      [
+        true,
+        "Reply to Matt"
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Tue'!A1:E55": [
+      [
+        "TUESDAY \u00b7 Jun 9"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation"
+      ],
+      [
+        false,
+        "Exercises"
+      ],
+      [
+        false,
+        "ACV drink"
+      ],
+      [
+        false,
+        "Probiotic protein shake"
+      ],
+      [
+        false,
+        "Class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Website ReBuild kcik off"
+      ],
+      [
+        false,
+        "Follow-up emails to lunch attendees"
+      ],
+      [
+        false,
+        "Follow-up emails to conference 1:1s"
+      ],
+      [
+        false,
+        "Send DealsX specialization file"
+      ],
+      [
+        false,
+        "DealsX targeted outreach, share lists"
+      ],
+      [
+        false,
+        "Prep for call with Jay"
+      ],
+      [
+        false,
+        "Email Krupa, Deborah"
+      ],
+      [
+        false,
+        "Email Hamptons Pest"
+      ],
+      [
+        false,
+        "Create project for French passports"
+      ],
+      [
+        false,
+        "Review Mid-Search Summit Market Update takeaways, anchor in playbook update (four-horsemen framework)"
+      ],
+      [
+        false,
+        "Connect with Richard & NYBB"
+      ],
+      [
+        false,
+        "Contact Greg - Franchise"
+      ],
+      [
+        false,
+        "Email Becky, contact at NYBB"
+      ],
+      [
+        false,
+        "Reply to Carlos"
+      ],
+      [
+        false,
+        "Thank you Paul"
+      ],
+      [
+        false,
+        "Thank you Bob"
+      ],
+      [
+        "",
+        "Thank you Laura"
+      ],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Wed'!A1:E55": [
+      [
+        "WEDNESDAY \u00b7 Jun 10"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation"
+      ],
+      [
+        false,
+        "Exercises"
+      ],
+      [
+        false,
+        "ACV drink"
+      ],
+      [
+        false,
+        "Probiotic protein shake"
+      ],
+      [
+        false,
+        "Class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Niche intel review (recurring)"
+      ],
+      [
+        false,
+        "Change of address (overdue 5/21)"
+      ],
+      [
+        false
+      ],
+      [
+        false,
+        "Continue thesis deck"
+      ],
+      [
+        false,
+        "Thank you Jay"
+      ],
+      [
+        false,
+        "Thank you Warren"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Thu'!A1:E55": [
+      [
+        "THURSDAY \u00b7 Jun 11"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation"
+      ],
+      [
+        false,
+        "Exercises"
+      ],
+      [
+        false,
+        "ACV drink"
+      ],
+      [
+        false,
+        "Probiotic protein shake"
+      ],
+      [
+        false,
+        "Class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Fri'!A1:E55": [
+      [
+        "FRIDAY \u00b7 Jun 12"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation"
+      ],
+      [
+        false,
+        "Exercises"
+      ],
+      [
+        false,
+        "ACV drink"
+      ],
+      [
+        false,
+        "Probiotic protein shake"
+      ],
+      [
+        false,
+        "Class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget (recurring)"
+      ],
+      [
+        false,
+        "Decide on office rent cut"
+      ],
+      [
+        false
+      ],
+      [
+        false,
+        "Get reimbursed for Motion"
+      ],
+      [
+        false,
+        "Submit the boys to NY Models"
+      ],
+      [
+        false,
+        "Submit the boys to State Models"
+      ],
+      [
+        false,
+        "Submit the boys to Zuri Model and Talent"
+      ],
+      [
+        false,
+        "Submit the boys to Teri B"
+      ],
+      [
+        false,
+        "Submit the boys to Stellar"
+      ],
+      [
+        false,
+        "Call Mohela - loan history, iRS"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Sat'!A1:E55": [
+      [
+        "SATURDAY \u00b7 Jun 13"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS"
+      ],
+      [
+        false,
+        "Water & hygiene"
+      ],
+      [
+        false,
+        "Meditation"
+      ],
+      [
+        false,
+        "Exercises"
+      ],
+      [
+        false,
+        "ACV drink"
+      ],
+      [
+        false,
+        "Probiotic protein shake"
+      ],
+      [
+        false,
+        "Class"
+      ],
+      [
+        false,
+        "Bike to work"
+      ],
+      [
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Omega 3 & magnesium"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Phase 2.5"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ]
+  }
+}

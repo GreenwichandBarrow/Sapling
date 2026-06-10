@@ -16,9 +16,9 @@ RE-ORDERED Sun→Sat (the archive grid was Mon-first):
   Row 6      Sun..Sat 2-col-merged sub-headers (9pt bold)
   Rows 7-13  7 habit rows: col0 label, status checkbox per day at odd col
   Row 15     SUNDAY..SATURDAY 2-col-merged headers (11pt bold, white/sage-dark)
-  Rows 23-37 15 priority slots/day: status checkbox col + task col per day
-  Row 39     notes sub-headers (2-col-merged)
-  Rows 40-47 merged free-notes block per day
+  Rows 24-48 25 priority slots/day: status checkbox col + task col per day
+  Row 50     notes sub-headers (2-col-merged)
+  Rows 51-58 merged free-notes block per day
 
 Native checkboxes (Data Validation BOOLEAN). Sage palette. Per-day donut is
 intentionally SKIPPED for now (the per-day donuts already live on the 7 day
@@ -154,7 +154,7 @@ def structure_requests(sid: int, wd) -> list[dict]:
             "start": {"sheetId": sid, "rowIndex": tt.WK_DAYHDR_ROW - 1,
                       "columnIndex": c0}}})
 
-    # ---- Rows 23-37: 15 priority slots/day ----
+    # ---- Rows 24-48: 25 priority slots/day ----
     for i in DI:
         sc = tt.wk_status_col(i)
         tc = tt.wk_content_col(i)
@@ -193,7 +193,7 @@ def structure_requests(sid: int, wd) -> list[dict]:
                   "startIndex": tt.WK_SLOT_FIRST_ROW - 1, "endIndex": tt.WK_SLOT_LAST_ROW},
         "properties": {"pixelSize": 30}, "fields": "pixelSize"}})
 
-    # ---- Row 39: notes sub-headers (2-col merged) + 40-47 merged block ----
+    # ---- Row 50: notes sub-headers (2-col merged) + 51-58 merged block ----
     for i in DI:
         c0 = tt.wk_status_col(i)
         R.append({"mergeCells": {
@@ -219,7 +219,7 @@ def structure_requests(sid: int, wd) -> list[dict]:
 def populate_from_day_tabs(client, wd) -> dict:
     """Reverse-populate the Week grid FROM the current 7 day tabs so Kay sees
     this week's already-placed plan at a glance. Reads each day tab's slots
-    (rows 13-27, A=status B=task) + habits (rows 4-10, A=status) and writes
+    (rows 16-40, A=status B=task) + habits (rows 5-13, A=status) and writes
     into the matching Week-grid day block. Returns a summary dict."""
     summary = {"slots_written": 0, "habits_written": 0, "per_day": {}}
     for i, day_name in enumerate(tt.WK_DAY_ORDER):
@@ -281,7 +281,7 @@ def main():
             if existing is None else
             f"'{tt.TAB_WEEK}' already exists (sheetId={existing['sheetId']}) — would re-apply structure",
             "APPLY archive-grid structure re-ordered Sun→Sat (title, habit "
-            "tracker, day headers, 15 slots/day, notes block, native "
+            "tracker, day headers, 25 slots/day, notes block, native "
             "checkboxes, sage palette, done-row CF)",
             "SKIP per-day donut (Week tab is a planning canvas; day tabs keep "
             "their donuts) — design simplification, flagged",
@@ -289,14 +289,14 @@ def main():
         if not args.no_populate:
             report["would"].append(
                 "REVERSE-POPULATE Week grid from the 7 day tabs' current slots "
-                "+ habits (rows 13-27 / 4-10)")
+                "+ habits (rows 16-40 / 5-13)")
         print(json.dumps(report, indent=2))
         return
 
     # ---- snapshot (additive op; snapshot any pre-existing Week tab) ----
-    snap_ranges = [f"'{n}'!A1:L40" for n in tt.WK_DAY_ORDER]
+    snap_ranges = [f"'{n}'!A1:L50" for n in tt.WK_DAY_ORDER]
     if existing is not None:
-        snap_ranges.append(f"'{tt.TAB_WEEK}'!A1:O50")
+        snap_ranges.append(f"'{tt.TAB_WEEK}'!A1:O60")
     snap = tt.snapshot_ranges(client, "build-week-tab", snap_ranges)
     report["snapshot"] = snap
 

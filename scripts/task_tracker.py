@@ -216,16 +216,16 @@ DAY_IDX_TO_TAB = {DAY_BY_NAME[k.lower()]: DAY_LABELS[DAY_BY_NAME[k.lower()]]
 
 # Per-day-tab layout (1-based rows for A1 references)
 DAY_TITLE_ROW = 1            # merged A1:E1 "SUNDAY · May 17"
-DAY_HABITS_HEADER_ROW = 3    # "HABITS"
-DAY_HABIT_FIRST_ROW = 4      # rows 4..10 = 7 habit rows
-DAY_HABIT_LAST_ROW = 12
-DAY_COL_HEADER_ROW = 13      # ✓ | Task | Type | Project | Notes
-DAY_SLOT_FIRST_ROW = 14      # rows 13..27 = 15 priority slots
-DAY_SLOT_LAST_ROW = 28
-DAY_NOTES_HEADER_ROW = 30    # "NOTES"
-DAY_NOTES_FIRST_ROW = 31     # rows 30..37 = free-notes block
-DAY_NOTES_LAST_ROW = 38
-DAY_GRID_ROWS = 41           # generous; chart anchors col G row 1
+DAY_HABITS_HEADER_ROW = 4    # "HABITS"
+DAY_HABIT_FIRST_ROW = 5      # rows 5..13 = 9 habit rows
+DAY_HABIT_LAST_ROW = 13
+DAY_COL_HEADER_ROW = 15      # ✓ | Task | Type | Project | Notes
+DAY_SLOT_FIRST_ROW = 16      # rows 16..40 = 25 priority slots
+DAY_SLOT_LAST_ROW = 40
+DAY_NOTES_HEADER_ROW = 42    # "NOTES"
+DAY_NOTES_FIRST_ROW = 43     # rows 43..50 = free-notes block
+DAY_NOTES_LAST_ROW = 50
+DAY_GRID_ROWS = 53           # generous; chart anchors col G row 1
 DAY_GRID_COLS = 12           # A..E content + G chart anchor headroom
 
 # Per-day-tab columns (0-based)
@@ -236,8 +236,8 @@ DAY_COL_PROJECT = 3  # D — Project dropdown
 DAY_COL_NOTES = 4    # E — Notes free text
 DAY_COL_LAST = DAY_COL_NOTES
 DAY_HEADERS = ["✓", "Task", "Type", "Project", "Notes"]
-DAY_SLOT_COUNT = DAY_SLOT_LAST_ROW - DAY_SLOT_FIRST_ROW + 1  # 15
-DAY_HABIT_COUNT = DAY_HABIT_LAST_ROW - DAY_HABIT_FIRST_ROW + 1  # 7
+DAY_SLOT_COUNT = DAY_SLOT_LAST_ROW - DAY_SLOT_FIRST_ROW + 1  # 25
+DAY_HABIT_COUNT = DAY_HABIT_LAST_ROW - DAY_HABIT_FIRST_ROW + 1  # 9
 
 TAB_DONUT_DATA = "_donut_data"
 
@@ -259,14 +259,14 @@ WK_HABIT_DAYHDR_ROW = 6        # Sun..Sat 2-col-merged sub-headers
 WK_HABIT_FIRST_ROW = 7         # rows 7..13 = 7 habit rows (label col 0)
 WK_HABIT_LAST_ROW = 15
 WK_DAYHDR_ROW = 16             # SUNDAY..SATURDAY 2-col-merged headers
-WK_SLOT_FIRST_ROW = 24         # rows 23..37 = 15 priority slots
-WK_SLOT_LAST_ROW = 38
-WK_NOTES_HDR_ROW = 40          # notes label row
-WK_NOTES_FIRST_ROW = 41        # rows 40..47 = merged notes block per day
-WK_NOTES_LAST_ROW = 48
-WK_GRID_ROWS = 51
+WK_SLOT_FIRST_ROW = 24         # rows 24..48 = 25 priority slots
+WK_SLOT_LAST_ROW = 48
+WK_NOTES_HDR_ROW = 50          # notes label row
+WK_NOTES_FIRST_ROW = 51        # rows 51..58 = merged notes block per day
+WK_NOTES_LAST_ROW = 58
+WK_GRID_ROWS = 61
 WK_GRID_COLS = 15              # col0 label + 7 day-pairs (status + content)
-WK_SLOT_COUNT = WK_SLOT_LAST_ROW - WK_SLOT_FIRST_ROW + 1   # 15
+WK_SLOT_COUNT = WK_SLOT_LAST_ROW - WK_SLOT_FIRST_ROW + 1   # 25
 WK_HABIT_COUNT = WK_HABIT_LAST_ROW - WK_HABIT_FIRST_ROW + 1  # 7
 
 # Day order on the Week grid is Sun→Sat (design-corrected; archive grid was
@@ -1082,28 +1082,28 @@ def _day_clear_requests(sid: int) -> list[dict]:
     Notes empty, free-notes block empty. Title row + headers + dropdowns + CF +
     checkbox data-validation are PRESERVED (only userEnteredValue is touched)."""
     reqs: list[dict] = []
-    # Habit status checkboxes (col A, rows 4..10) → FALSE
+    # Habit status checkboxes (col A, rows 5..13) → FALSE
     reqs.append({"repeatCell": {
         "range": {"sheetId": sid,
                   "startRowIndex": DAY_HABIT_FIRST_ROW - 1, "endRowIndex": DAY_HABIT_LAST_ROW,
                   "startColumnIndex": DAY_COL_STATUS, "endColumnIndex": DAY_COL_STATUS + 1},
         "cell": {"userEnteredValue": {"boolValue": False}},
         "fields": "userEnteredValue"}})
-    # Slot status checkboxes (col A, rows 13..27) → FALSE
+    # Slot status checkboxes (col A, rows 16..40) → FALSE
     reqs.append({"repeatCell": {
         "range": {"sheetId": sid,
                   "startRowIndex": DAY_SLOT_FIRST_ROW - 1, "endRowIndex": DAY_SLOT_LAST_ROW,
                   "startColumnIndex": DAY_COL_STATUS, "endColumnIndex": DAY_COL_STATUS + 1},
         "cell": {"userEnteredValue": {"boolValue": False}},
         "fields": "userEnteredValue"}})
-    # Slot Task/Type/Project/Notes (cols B..E, rows 13..27) → empty
+    # Slot Task/Type/Project/Notes (cols B..E, rows 16..40) → empty
     reqs.append({"repeatCell": {
         "range": {"sheetId": sid,
                   "startRowIndex": DAY_SLOT_FIRST_ROW - 1, "endRowIndex": DAY_SLOT_LAST_ROW,
                   "startColumnIndex": DAY_COL_TASK, "endColumnIndex": DAY_COL_LAST + 1},
         "cell": {"userEnteredValue": {"stringValue": ""}},
         "fields": "userEnteredValue"}})
-    # Free-notes block (cols A..E, rows 30..37) → empty
+    # Free-notes block (cols A..E, rows 43..50) → empty
     reqs.append({"repeatCell": {
         "range": {"sheetId": sid,
                   "startRowIndex": DAY_NOTES_FIRST_ROW - 1, "endRowIndex": DAY_NOTES_LAST_ROW,
@@ -1129,21 +1129,21 @@ def _week_clear_requests(sid: int) -> list[dict]:
                       "startColumnIndex": sc, "endColumnIndex": sc + 1},
             "cell": {"userEnteredValue": {"boolValue": False}},
             "fields": "userEnteredValue"}})
-        # Priority slot status checkboxes (rows 24..38, day's status col) → FALSE
+        # Priority slot status checkboxes (rows 24..48, day's status col) → FALSE
         reqs.append({"repeatCell": {
             "range": {"sheetId": sid,
                       "startRowIndex": WK_SLOT_FIRST_ROW - 1, "endRowIndex": WK_SLOT_LAST_ROW,
                       "startColumnIndex": sc, "endColumnIndex": sc + 1},
             "cell": {"userEnteredValue": {"boolValue": False}},
             "fields": "userEnteredValue"}})
-        # Priority slot task content (rows 24..38, day's content col) → empty
+        # Priority slot task content (rows 24..48, day's content col) → empty
         reqs.append({"repeatCell": {
             "range": {"sheetId": sid,
                       "startRowIndex": WK_SLOT_FIRST_ROW - 1, "endRowIndex": WK_SLOT_LAST_ROW,
                       "startColumnIndex": cc, "endColumnIndex": cc + 1},
             "cell": {"userEnteredValue": {"stringValue": ""}},
             "fields": "userEnteredValue"}})
-        # Per-day notes block (rows 41..48, day's status + content cols) → empty
+        # Per-day notes block (rows 51..58, day's status + content cols) → empty
         reqs.append({"repeatCell": {
             "range": {"sheetId": sid,
                       "startRowIndex": WK_NOTES_FIRST_ROW - 1, "endRowIndex": WK_NOTES_LAST_ROW,
@@ -1172,7 +1172,7 @@ def _pull_carryover_to_week(client: "SheetsClient", dry_run: bool = False) -> di
     day_order = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
     for i, day_tab in enumerate(day_order):
-        # Read day tab's priority slots (cols A=status, B=task, rows 14..28)
+        # Read day tab's priority slots (cols A=status, B=task, rows 16..40)
         rng = f"'{day_tab}'!A{DAY_SLOT_FIRST_ROW}:B{DAY_SLOT_LAST_ROW}"
         try:
             vals = client.get_values(rng) or []
@@ -1229,7 +1229,7 @@ def _pull_carryover_to_week(client: "SheetsClient", dry_run: bool = False) -> di
             if not empty_slots:
                 summary["refused"].append({
                     "day": day_tab, "src_slot": src_slot, "task": task,
-                    "reason": "no empty slot on Week tab for this day (15 slots full)"
+                    "reason": "no empty slot on Week tab for this day (25 slots full)"
                 })
                 continue
             dst_slot, wk_row = empty_slots.pop(0)
@@ -1461,7 +1461,7 @@ def _carryover_cross_file(prior_client: SheetsClient, new_client: SheetsClient, 
 def _build_week_formulas(meta: dict) -> list[tuple[str, list[list]]]:
     """Generate the formula writes that wire the Week tab to be a live mirror of day tabs.
 
-    For each day i in 0..6, for each slot s in 1..15:
+    For each day i in 0..6, for each slot s in 1..25:
       Week!<status_col><WK_SLOT_FIRST_ROW + s - 1> = "='<DayTab>'!A<DAY_SLOT_FIRST_ROW + s - 1>"
       Week!<content_col><WK_SLOT_FIRST_ROW + s - 1> = "='<DayTab>'!B<DAY_SLOT_FIRST_ROW + s - 1>"
     Plus 7 habit checkbox formulas per day.
@@ -1473,7 +1473,7 @@ def _build_week_formulas(meta: dict) -> list[tuple[str, list[list]]]:
     if week_tab is None:
         return writes  # Week tab missing — skip silently; build_week_tab.py needs to run first
 
-    slot_count = WK_SLOT_LAST_ROW - WK_SLOT_FIRST_ROW + 1  # 15
+    slot_count = WK_SLOT_COUNT
     habit_count = WK_HABIT_LAST_ROW - WK_HABIT_FIRST_ROW + 1  # 9 per WK constants
 
     for i in range(7):
@@ -1941,9 +1941,9 @@ def cmd_distribute_week(args) -> int:
 
     Design-corrected model (2026-05-17): after `build-week` rebuilds the Week
     tab and Kay lays out the full week there, this verb reads each Week-grid
-    day-block's 15 priority slots (status + task) and habit checkboxes and
-    writes them into the corresponding day tab's slots (rows 13-27) + habits
-    (rows 4-10). Collision-aware: refuses to overwrite a non-empty day-tab slot
+    day-block's 25 priority slots (status + task) and habit checkboxes and
+    writes them into the corresponding day tab's slots (rows 16-40) + habits
+    (rows 5-13). Collision-aware: refuses to overwrite a non-empty day-tab slot
     that the Week plan does NOT also fill at the same slot index, unless
     --force (so re-running after a manual day-tab edit is safe by default).
 
@@ -2045,7 +2045,7 @@ def cmd_distribute_week(args) -> int:
     for _widx, name in targets:
         slots = plan[name]["slots"]
         habits = plan[name]["habits"]
-        # Slot block A:E rows 13..27 — write [status, task, "", "", ""].
+        # Slot block A:E rows 16..40 — write [status, task, "", "", ""].
         # Type/Project/Notes are NOT carried (the Week canvas holds task text
         # only; Kay enriches on the day tab, or recurring metadata was set on
         # the Recurring Template and is re-applied if she re-promotes). Existing
@@ -2059,7 +2059,7 @@ def cmd_distribute_week(args) -> int:
             day_tab_block(name, DAY_COL_STATUS, DAY_COL_LAST,
                           DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW),
             rows_vals)
-        # Habit checkboxes rows 4..10 col A.
+        # Habit checkboxes rows 5..13 col A.
         client.values_update(
             day_tab_range(name, DAY_COL_STATUS, DAY_HABIT_FIRST_ROW, DAY_HABIT_LAST_ROW),
             [[h] for h in habits])
@@ -2109,7 +2109,7 @@ def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
     if not day_tabs:
         sys.exit("task-tracker-manager: no day tabs present — run scripts/build_day_tabs.py first")
 
-    # 1. Walk the 7 day tabs' 15 slots each — read A (status) + B (task) columns.
+    # 1. Walk the 7 day tabs' 25 slots each — read A (status) + B (task) columns.
     #    MUST run BEFORE the Sunday clear (build-week) so completed items flow to
     #    To Do before slots are wiped.
     weekly_checked: list[dict] = []  # one entry per (day, slot) where checkbox=TRUE and task non-empty
@@ -2740,8 +2740,8 @@ def cmd_reformat(args) -> int:
                 needs_compact = True; break
         if needs_compact:
             n = len(packed)
-            new_status = [[s] for s, _ in packed] + [[False]] * (15 - n)
-            new_task   = [[t] for _, t in packed] + [[""]] * (15 - n)
+            new_status = [[s] for s, _ in packed] + [[False]] * (DAY_SLOT_COUNT - n)
+            new_task   = [[t] for _, t in packed] + [[""]] * (DAY_SLOT_COUNT - n)
             client.values_update(f"'{day_tab}'!A{DAY_SLOT_FIRST_ROW}:A{DAY_SLOT_LAST_ROW}", new_status)
             client.values_update(f"'{day_tab}'!B{DAY_SLOT_FIRST_ROW}:B{DAY_SLOT_LAST_ROW}", new_task)
             compact_summary["day_tab_packed"] += 1
@@ -2765,8 +2765,8 @@ def cmd_reformat(args) -> int:
                     needs_compact = True; break
             if needs_compact:
                 n = len(packed)
-                new_status = [[s] for s, _ in packed] + [[False]] * (15 - n)
-                new_task   = [[t] for _, t in packed] + [[""]] * (15 - n)
+                new_status = [[s] for s, _ in packed] + [[False]] * (WK_SLOT_COUNT - n)
+                new_task   = [[t] for _, t in packed] + [[""]] * (WK_SLOT_COUNT - n)
                 client.values_update(f"'{TAB_WEEK}'!{sc}{WK_SLOT_FIRST_ROW}:{sc}{WK_SLOT_LAST_ROW}", new_status)
                 client.values_update(f"'{TAB_WEEK}'!{cc}{WK_SLOT_FIRST_ROW}:{cc}{WK_SLOT_LAST_ROW}", new_task)
                 compact_summary["week_block_packed"] += 1
@@ -3323,7 +3323,7 @@ def main():
                         help="Move a To Do row into a day TAB's priority slot (day-tab model).")
     pr.add_argument("--todo-row", type=int, required=True)
     pr.add_argument("--day", required=True, help="Sun..Sat / Mon..Sun")
-    pr.add_argument("--slot", type=int, required=True, help="1..15")
+    pr.add_argument("--slot", type=int, required=True, help="1..25")
     pr.set_defaults(func=cmd_promote)
 
     bw = sub.add_parser("build-week",
@@ -3373,11 +3373,11 @@ def main():
     mdi.add_argument("--from", dest="from_day", default=None,
                      help="source day tab (Sun..Sat); required unless --state added")
     mdi.add_argument("--slot", type=int, default=None,
-                     help="source slot 1..15 (also dest slot if --to-slot omitted)")
+                     help="source slot 1..25 (also dest slot if --to-slot omitted)")
     mdi.add_argument("--to", dest="to_day", default=None,
                      help="dest day tab (Sun..Sat); required unless --state deleted")
     mdi.add_argument("--to-slot", type=int, default=None,
-                     help="dest slot 1..15; omit to auto-pick first empty")
+                     help="dest slot 1..25; omit to auto-pick first empty")
     mdi.add_argument("--state", required=True,
                      choices=["completed", "incomplete", "added", "deleted"])
     mdi.add_argument("--task", default=None, help="required for --state added")
@@ -3412,7 +3412,7 @@ def main():
     ra.add_argument("--type", required=True, choices=TYPE_OPTIONS)
     ra.add_argument("--project", default="")
     ra.add_argument("--slot", type=int, default=None,
-                    help="1..15; omit for auto-pick first empty slot on that day")
+                    help="1..25; omit for auto-pick first empty slot on that day")
     ra.add_argument("--notes", default="")
     ra.set_defaults(func=cmd_recurring_add)
 
@@ -3440,7 +3440,7 @@ def main():
     sds.add_argument("--task", required=True)
     sds.add_argument("--day", required=True, help="Sun..Sat / Mon..Sun")
     sds.add_argument("--slot", type=int, default=None,
-                     help="1..15; if omitted, auto-pick first empty slot")
+                     help="1..25; if omitted, auto-pick first empty slot")
     sds.add_argument("--type", default="", help="Work / Home (optional)")
     sds.add_argument("--project", default="", help="optional")
     sds.add_argument("--notes", default="", help="optional")

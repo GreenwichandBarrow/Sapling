@@ -1,0 +1,24 @@
+
+[2026-06-09T23:02:12.320405] carry-forward-day — tue-to-wed
+  - moved: 17
+  - source: Tue
+  - destination: Wed
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260609-230208.json
+  
+  - Tue slot 1 → Wed slot 3: Website ReBuild kcik off
+  - Tue slot 2 → Wed slot 7: Follow-up emails to lunch attendees
+  - Tue slot 3 → Wed slot 8: Follow-up emails to conference 1:1s
+  - Tue slot 4 → Wed slot 9: Send DealsX specialization file
+  - Tue slot 5 → Wed slot 10: DealsX targeted outreach, share lists
+  - Tue slot 6 → Wed slot 11: Prep for call with Jay
+  - Tue slot 7 → Wed slot 12: Email Krupa, Deborah
+  - Tue slot 8 → Wed slot 13: Email Hamptons Pest
+  - Tue slot 9 → Wed slot 14: Create project for French passports
+  - Tue slot 10 → Wed slot 15: Review Mid-Search Summit Market Update takeaways, anchor in playbook update (four-horsemen framework)
+  - Tue slot 11 → Wed slot 16: Connect with Richard & NYBB
+  - Tue slot 12 → Wed slot 17: Contact Greg - Franchise
+  - Tue slot 13 → Wed slot 18: Email Becky, contact at NYBB
+  - Tue slot 14 → Wed slot 19: Reply to Carlos
+  - Tue slot 15 → Wed slot 20: Thank you Paul
+  - Tue slot 16 → Wed slot 21: Thank you Bob
+  - Tue slot 17 → Wed slot 22: Thank you Laura

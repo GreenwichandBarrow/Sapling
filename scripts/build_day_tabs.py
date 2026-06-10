@@ -8,13 +8,13 @@ sage palette.
 Per day tab (structurally identical, only the title row differs):
 
   Row 1     merged A1:E1 title "SUNDAY · May 17" — 20pt bold, sage-dark fill
-  Row 3     "HABITS" header
-  Rows 4-10 7 habit rows: A=native checkbox, B:E merged label, 14pt
-  Row 12    column headers ✓ | Task | Type | Project | Notes — 12pt bold
-  Rows 13-27 15 priority slots: A=native checkbox, B=Task 17pt,
+  Row 4     "HABITS" header
+  Rows 5-13 9 habit rows: A=native checkbox, B:E merged label, 14pt
+  Row 15    column headers ✓ | Task | Type | Project | Notes — 12pt bold
+  Rows 16-40 25 priority slots: A=native checkbox, B=Task 17pt,
             C=Type dropdown, D=Project dropdown, E=Notes; row height ~34px
-  Row 29    "NOTES" header
-  Rows 30-37 free-notes block, A:E merged per row
+  Row 42    "NOTES" header
+  Rows 43-50 free-notes block, A:E merged per row
 
 Idempotent: re-running repairs layout/formatting without destroying slot
 content (only formatting + structural cells are (re)written; existing
@@ -63,16 +63,16 @@ DAY_TAB_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 DAY_FULL = {"Sun": "SUNDAY", "Mon": "MONDAY", "Tue": "TUESDAY", "Wed": "WEDNESDAY",
             "Thu": "THURSDAY", "Fri": "FRIDAY", "Sat": "SATURDAY"}
 DAY_TITLE_ROW = 1
-DAY_HABITS_HEADER_ROW = 3
-DAY_HABIT_FIRST_ROW = 4
-DAY_HABIT_LAST_ROW = 12
-DAY_COL_HEADER_ROW = 13
-DAY_SLOT_FIRST_ROW = 14
-DAY_SLOT_LAST_ROW = 28
-DAY_NOTES_HEADER_ROW = 30
-DAY_NOTES_FIRST_ROW = 31
-DAY_NOTES_LAST_ROW = 38
-DAY_GRID_ROWS = 41
+DAY_HABITS_HEADER_ROW = 4
+DAY_HABIT_FIRST_ROW = 5
+DAY_HABIT_LAST_ROW = 13
+DAY_COL_HEADER_ROW = 15
+DAY_SLOT_FIRST_ROW = 16
+DAY_SLOT_LAST_ROW = 40
+DAY_NOTES_HEADER_ROW = 42
+DAY_NOTES_FIRST_ROW = 43
+DAY_NOTES_LAST_ROW = 50
+DAY_GRID_ROWS = 53
 DAY_GRID_COLS = 12
 
 HABITS_DEFAULT = [
@@ -234,14 +234,14 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
         "fields": "userEnteredValue,userEnteredFormat",
         "start": {"sheetId": sid, "rowIndex": 0, "columnIndex": 0}}})
 
-    # ---- HABITS header row 3 ----
+    # ---- HABITS header row 4 ----
     V.append({"updateCells": {
         "rows": [{"values": [_txt("HABITS", bold=True, size=12, fg=SAGE_DARK)]}],
         "fields": "userEnteredValue,userEnteredFormat",
         "start": {"sheetId": sid, "rowIndex": DAY_HABITS_HEADER_ROW - 1,
                   "columnIndex": 0}}})
 
-    # ---- Habit rows 4..10: A native checkbox, B:E merged label 14pt ----
+    # ---- Habit rows 5..13: A native checkbox, B:E merged label 14pt ----
     R.append({"setDataValidation": {
         "range": {"sheetId": sid, "startRowIndex": DAY_HABIT_FIRST_ROW - 1,
                   "endRowIndex": DAY_HABIT_LAST_ROW, "startColumnIndex": 0,
@@ -261,7 +261,7 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
             "fields": "userEnteredValue,userEnteredFormat",
             "start": {"sheetId": sid, "rowIndex": r0, "columnIndex": 0}}})
 
-    # ---- Column headers row 12 ----
+    # ---- Column headers row 15 ----
     headers = ["✓", "Task", "Type", "Project", "Notes"]
     V.append({"updateCells": {
         "rows": [{"values": [_txt(h, bold=True, size=12, fg=WHITE, bg=SAGE_DARK,
@@ -271,7 +271,7 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
         "start": {"sheetId": sid, "rowIndex": DAY_COL_HEADER_ROW - 1,
                   "columnIndex": 0}}})
 
-    # ---- Priority slots 13..27 ----
+    # ---- Priority slots 16..40 ----
     # A: native checkbox
     R.append({"setDataValidation": {
         "range": {"sheetId": sid, "startRowIndex": DAY_SLOT_FIRST_ROW - 1,
@@ -309,7 +309,7 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
                   "startIndex": DAY_SLOT_FIRST_ROW - 1, "endIndex": DAY_SLOT_LAST_ROW},
         "properties": {"pixelSize": 34}, "fields": "pixelSize"}})
 
-    # ---- NOTES header row 29 + free-notes block 30..37 merged A:E per row ----
+    # ---- NOTES header row 42 + free-notes block 43..50 merged A:E per row ----
     V.append({"updateCells": {
         "rows": [{"values": [_txt("NOTES", bold=True, size=12, fg=SAGE_DARK)]}],
         "fields": "userEnteredValue,userEnteredFormat",
@@ -329,7 +329,7 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
             "properties": {"pixelSize": w}, "fields": "pixelSize"}})
 
     # ---- Conditional formatting ----
-    # Slot rule: =$A13=TRUE → strikethrough + sage-extra-light over A13:E27
+    # Slot rule: =$A16=TRUE → strikethrough + sage-extra-light over A16:E40
     R.append({"addConditionalFormatRule": {
         "rule": {
             "ranges": [{"sheetId": sid,

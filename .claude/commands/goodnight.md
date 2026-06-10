@@ -1,5 +1,5 @@
 ---
-description: Evening shutdown — carry forward unfinished tasks, session decisions, decision traces, memory updates, git commit
+description: Evening shutdown — carry forward unfinished tasks, inventory active threads, session decisions, decision traces, memory updates, git commit
 ---
 
 # /goodnight
@@ -7,12 +7,13 @@ description: Evening shutdown — carry forward unfinished tasks, session decisi
 Close the day. Bookend `/goodmorning`. Every night Kay invokes `/goodnight`, the system:
 
 1. Moves incomplete items from today's day tab to tomorrow's day tab without asking Kay item-by-item.
-2. Writes `brain/context/session-decisions-{date}.md` covering the full day (merging continuation files, email threads, and in-session decisions).
-3. Extracts decision traces to `brain/traces/{date}-{slug}.md` for any APPROVE/REJECT with non-obvious reasoning (human override, judgment call, surprising choice).
-4. Updates repo memory with new feedback/project/reference/user entries whenever the day produced a durable insight.
-5. Scans for stop-hook / new-skill / feedback-memory candidates (patterns repeated 3+ times this session → propose formalization). Existing-skill *improvements* are routed to Phase 2.5 skill review.
-6. Commits the vault/repo changes to git.
-7. Returns a 4-6 line summary to Kay (carry-forward, decisions, traces written, memory delta, commit SHA).
+2. Inventories all active Codex threads/worktrees so evening closeout covers the full day, not only the current chat.
+3. Writes `brain/context/session-decisions-{date}.md` covering the full day (merging continuation files, email threads, thread outputs, and in-session decisions).
+4. Extracts decision traces to `brain/traces/{date}-{slug}.md` for any APPROVE/REJECT with non-obvious reasoning (human override, judgment call, surprising choice).
+5. Updates repo memory with new feedback/project/reference/user entries whenever the day produced a durable insight.
+6. Scans for stop-hook / new-skill / feedback-memory candidates (patterns repeated 3+ times this session → propose formalization). Existing-skill *improvements* are routed to Phase 2.5 skill review.
+7. Commits the vault/repo changes to git.
+8. Returns a concise summary to Kay (carry-forward, decisions, traces written, memory delta, commit SHA).
 
 ## Execute Now
 
@@ -33,8 +34,20 @@ If the destination day is full, surface the refusal in the evening summary and d
 Collect inputs:
 - Read `brain/context/continuation-{date}*.md` if a continuation file exists (mid-day resume).
 - Scan the current session transcript for all APPROVE / REJECT / PASS / SENT / CREATED / UPDATED / DELETED / DRAFTED / DEFER verb tags.
+- Include all Step 2A thread-inventory outcomes and any decisions/actions/artifacts from active/recent threads.
 - Read `brain/context/email-scan-results-{date}.md` and `brain/context/deal-aggregator-scan-{date}.md` for day's skill outputs.
 - Read prior `session-decisions-{previous-workday}.md` to confirm which deferrals triggered today and which carry forward.
+
+### Step 2A — Multi-thread inventory (mandatory)
+
+Before writing `session-decisions`, inventory other Codex threads so the closeout covers all work done today, not only this chat. Use Codex thread tools when available: search for `list_threads` / `read_thread` with `tool_search`, then list active/recent threads and read any thread updated today or explicitly referenced by Kay. If thread tools are unavailable, fall back to repo evidence: `git status --short`, today's `brain/context/continuation-{date}*.md`, `brain/context/verb-logs/`, and files changed/created today.
+
+For each active/recent thread, record one of these outcomes in the session-decisions source notes:
+- **Included** — decisions/actions/artifacts were incorporated into tonight's session-decisions, trace scan, memory scan, and commit plan.
+- **No repo delta** — thread had discussion only, no durable artifact or task output to commit.
+- **Excluded with reason** — thread is intentionally not part of tonight's closeout (for example: user asked to pause, work is blocked, separate repo/worktree, or unsafe to stage).
+
+Do not use thread inventory to re-open decisions or ask Kay to adjudicate routine bookkeeping. If another thread produced repo changes, either commit them in the goodnight commit or explicitly list why they were left uncommitted.
 
 ### Step 3 — Write session-decisions file
 
@@ -87,11 +100,14 @@ Path is environment-dependent — use whichever is the active repo root:
 - VPS: `/home/ubuntu/projects/Sapling`
 
 ```bash
+git status --short
 git add brain/context/session-decisions-*.md brain/traces/ brain/trackers/ memory/ .claude/skills/ .claude/commands/ .claude/hooks/ scratch/ dashboard/data/ 2>/dev/null
 git status --short
 ```
 
-Review staged files. Commit with a message in the form:
+Review the full dirty tree before staging and the staged tree after staging. Stage all repo changes from included active threads, but do **not** stage unrelated dirty files, secret/config files, or work from a thread that Step 2A marked excluded. If any changed files remain unstaged after the goodnight commit, the summary must say why.
+
+Commit with a message in the form:
 
 ```
 evening {YYYY-MM-DD}: {top-line summary} (N traces, M memory updates)
@@ -103,11 +119,12 @@ Push only when the current repo workflow expects it and the remote is clean. Dur
 
 ### Step 8 — Summary to Kay
 
-Return 4-6 lines:
+Return a concise summary:
 
 ```
 Evening — {YYYY-MM-DD}
 - Carry-forward: {N moved from Today → Tomorrow, or refusal reason}
+- Thread inventory: {N included / M no repo delta / K excluded with reason}
 - Decisions logged: N (X APPROVE / Y REJECT / Z PASS)
 - Traces written: {list slugs} OR "0 met litmus — [reason]"
 - Memory delta: {new files, updated files}
@@ -125,7 +142,7 @@ No extra commentary. No "have a good night" unless Kay says it first.
 - **If Kay explicitly says "don't save X" or "that's not a trace-worthy decision," honor it.** But default to writing the trace — calibration-workflow filters noise later; it can't recover missing data.
 - **If Superhuman MCP is down (token expired), suppress all draft-status claims in the summary** per `feedback_superhuman_down_suppress_drafts`.
 - **If the day has no decisions worth tracing, no memory updates, and no calibration candidates,** still write the session-decisions file (even if short) and still commit-and-push. The discipline of the bookend is the point, not the volume.
-- **Commit is default.** Push follows the current branch/release workflow and should not be forced during migration.
+- **Commit is default.** The commit must account for all included active threads, not only the current chat. Push follows the current branch/release workflow and should not be forced during migration.
 - **Hook / feedback-memory updates within /goodnight scope — but NOT skill edits.** Step 5's calibration scan is not just *propose* for the items `evolve` does not cover: if a **stop hook** or **`feedback_*.md` memory** has been surfaced and confirmed by Kay within the session, apply it before commit and let it ride the evening commit. **Skill-file edits do NOT happen in /goodnight** — skill improvement is owned by the `evolve` skill (learnings.md → durable changes), which runs on its own cadence/on-demand. Surface a confirmed skill-improvement as an `evolve` candidate in the summary instead of editing the skill here. (Trimmed 2026-05-17: nightly ad-hoc skill editing was redundant with `evolve` per Harrison's Evolving Skills framework.)
 
 ## Variables

@@ -4,7 +4,7 @@ description: All replies (Kay-sent or Sam-DealsX-sent) route to Kay via dashboar
 type: feedback
 originSessionId: e26dda1b-d8f3-41ea-b671-19271a6fed00
 ---
-**Rule: Kay personally handles every reply to every outbound campaign — whether Kay sent the original, Sam-at-DealsX sent it, or anyone else on her behalf. Replies route to Kay via the dashboard. Never propose automated reply sequences, AI-drafted reply chains, or Sam-handled reply correspondence.**
+**Rule: Kay personally handles every reply to every outbound campaign — whether Kay sent the original, Sam-at-DealsX sent it, or anyone else on her behalf. Replies route to Kay via the dashboard. Never propose automated reply sequences, AI-drafted reply chains, or Sam-handled reply correspondence. Codex never sends email for Kay and should not ask whether to send; Kay handles all sends. Codex may draft for Kay's review only.**
 
 **Why:** Kay's voice on inbound conversations is the highest-value touch point in the funnel. A broker, intermediary, or owner replying to a cold email is a warm signal — Kay handling that personally preserves authenticity, avoids voice drift, and keeps relationship ownership clear. DealsX's role is volume on the outbound side only.
 
@@ -24,6 +24,8 @@ originSessionId: e26dda1b-d8f3-41ea-b671-19271a6fed00
    - Replies arrive in Kay's Gmail
    - Kay handles personally
    - Claude can draft *suggested* replies for Kay's review on individual important threads (existing pattern), but never bulk-process or auto-send
+   - Do not ask Kay whether to send. The workflow stops at draft/recommendation; Kay sends herself when ready.
+   - Gmail drafts are for real message drafts only. Reusable language/templates live in the Google Drive G&B master template folder and should be pulled through the relevant email/outreach skill, not preserved as generic Gmail drafts
 
 4. **Reply timing follows existing memory** — `feedback_followup_timing.md` (within 24-48 hours of engagement) — but execution is always Kay.
 

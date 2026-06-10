@@ -343,6 +343,7 @@ These are intentional improvements to consider after Phase 2 monitoring, before 
    - Avoid the old failure mode where a skill looks for a local token, cannot find it, and does not know to use or refresh the corresponding 1Password-backed path.
 
 6. Deal Aggregator funnel effectiveness review:
+   - 2026-06-10 Kay direction: keep this on the Phase 2.5 list until the funnel reliably surfaces 1-3 evaluable deals per week; do not mark it resolved just because the scheduled jobs run cleanly.
    - Frame: `deal-aggregator` is a very large, operationally important skill that is largely underperforming on deal-flow volume. It should be stabilized, measured, and improved deliberately rather than casually patched.
    - Treat `deal-aggregator` as a multi-leg funnel, not a single monolithic skill: source roster, daily scan, afternoon top-up, email-inbound parsing, buy-box/niche matching, dedup/Slack surfacing, forensic logging, Friday source-productivity digest, and new-intermediary onboarding.
    - Investigate low volume from the 2026-06-05 digest (`volume_7d_avg: 0.33`, red status) before changing screening logic.

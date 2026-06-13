@@ -77,13 +77,13 @@ Exact Codex-native coverage found:
 | `start` | likely covered by `today`, but requires semantic review |
 | `calibrate` | likely covered by `calibration-workflow`, but requires semantic review |
 | `migrate` | likely covered by `migration-workflow`, but requires semantic review |
-| `goodmorning` | not yet verified as a faithful Codex-native command/skill |
-| `savestate` | not yet migrated as a Codex-native checkpoint workflow |
-| `pickingback` | not yet migrated as a Codex-native resume workflow |
-| `commit` / `push` | partly covered by hooks/git workflow, but not a faithful command migration |
-| `dashboard` | not yet migrated as a Codex-native command/skill |
-| `cfo`, `cio`, `cmo`, `coo`, `cpo`, `gc` agent commands | not yet migrated as Codex-native agent/persona commands |
-| `ideate`, `refine`, `task` | not yet verified/migrated |
+| `goodmorning` | repaired by new `goodmorning` skill; pending first live run validation |
+| `savestate` | repaired by new `session-checkpoint` skill |
+| `pickingback` | repaired by new `session-checkpoint` skill |
+| `commit` / `push` | repaired by new `commit-steward` skill; push remains explicit during migration |
+| `dashboard` | repaired by new `dashboard-command` skill |
+| `cfo`, `cio`, `cmo`, `coo`, `cpo`, `gc` agent commands | repaired by new `c-suite-advisors` skill |
+| `ideate`, `refine`, `task` | repaired by new `plan-refinery-command` and `task-command` skills |
 
 This is a primary audit gap. Slash commands need the same treatment as skills because several encoded important operating behavior.
 
@@ -150,6 +150,19 @@ Priority order:
 5. `dashboard`
 6. C-suite agent commands
 7. `calibrate`, `start`, `task`, `ideate`, `refine`, `migrate`
+
+Phase A repair status:
+- Added `goodmorning` to preserve morning orchestration, day overlays, Sunday tracker safety, cold-call transition, and decisions-only briefing.
+- Added `session-checkpoint` to preserve `/savestate` and `/pickingback`.
+- Added `commit-steward` to preserve session wrap-up, atomic commit, dirty-tree classification, and explicit push handling.
+- Added `dashboard-command` to preserve dashboard link, health check, and one-restart recovery behavior.
+- Added `c-suite-advisors` to preserve CFO/CIO/CMO/COO/CPO/GC role contracts without runtime `.claude/agents` calls.
+- Added `task-command` to preserve `/task` execution/tracking/decision-trace behavior.
+- Added `plan-refinery-command` to preserve `/ideate` and `/refine` routing while using the existing `plan-refinery` skill.
+
+Remaining Phase A review:
+- `start` is likely obsolete/superseded by `goodmorning` and `today`, but the preserved Claude file contains older MCP/Superhuman assumptions. Do not revive those dependencies. Classify after checking whether any unique useful behavior remains.
+- `calibrate` and `migrate` appear to route to existing skills; confirm no lost flags or prompt semantics.
 
 ### Phase B - Scheduled/Core Skill Fidelity
 

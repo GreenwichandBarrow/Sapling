@@ -346,6 +346,8 @@ These are intentional improvements to consider after Phase 2 monitoring, before 
    - Improve `goodmorning` for Codex and the new dashboard-led operating model.
    - Preserve `goodnight` if its existing structure remains solid, with only Codex terminology/tooling updates as needed.
    - Reassess whether `savestate` and `pickingback` are still needed in Codex. They existed mainly because long Claude Code sessions became thin and required manual session handoff.
+   - 2026-06-13 finding: the preserved Claude command `.claude/commands/goodnight.md` was more robust than the initial Codex chat/skill routing captured. It owned multi-thread inventory, session-decisions structure, explicit trace/no-trace reporting, memory deltas, calibration candidates, and commit discipline. Codex initially treated `/goodnight` mostly as task carry-forward via `task-tracker-manager`, which explains unpushed commits and lingering dirty state.
+   - Corrective action: created repo-backed `goodnight-closeout` under `.agents/skills/` and mapped Good Night routing to it. Future slash-command migrations must compare `.claude/commands/*.md` against Codex skill/chat prompts, not only `.claude/skills/`.
    - If still useful, convert them into lightweight Codex handoff/checkpoint workflows rather than automatically committing, updating skills, or adding hooks without an explicit reason.
 
 5. Credential and OAuth routing audit:

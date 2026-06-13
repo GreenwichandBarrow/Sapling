@@ -62,7 +62,7 @@ options:
 
 **On selection:**
 1. Map selection to creature name (ember/drift/bloom)
-2. Update `.claude/stats.yaml`:
+2. Update `.codex/stats.yaml`:
    ```yaml
    creature: ember  # or drift/bloom
    creature_selected_at: 2025-01-08
@@ -387,17 +387,17 @@ Use the `/commit` skill to save all onboarding files:
 
 **Files to stage:**
 - `brain/context/*.md` - Generated context files
-- `.claude/stats.yaml` - Creature selection and timestamps
+- `.codex/stats.yaml` - Creature selection and timestamps
 
 **Do NOT stage:**
 - `.env.local` - Contains API keys
 - `.agents/skills/generate-visuals/.env` - Contains API keys
-- `.claude/onboard-state.json` - Temporary state file
+- `.codex/onboard-state.json` - Temporary state file
 
 Invoke `/commit` - it will create an appropriate commit message.
 
 ### Step 15: Clean Up & Next Steps
-- Delete `.claude/onboard-state.json` if exists
+- Delete `.codex/onboard-state.json` if exists
 - Mark onboarding complete in stats.yaml: `onboarded_at: {date}`
 
 ```
@@ -412,7 +412,7 @@ Your egg is waiting. Let's get to work!
 </workflow>
 
 <state_persistence>
-Save state after each step to `.claude/onboard-state.json`:
+Save state after each step to `.codex/onboard-state.json`:
 
 ```json
 {

@@ -96,11 +96,10 @@ Potentially intentional compatibility:
 - `.claude` included in safe staging during the monitoring window
 - legacy `CLAUDE.md` reference files retained
 
-Needs review:
-- `.codex/hooks/calibration-stats-updater.py` still writes `.claude/stats.yaml`
-- `onboard` and `calibration-workflow` still refer to `.claude/stats.yaml` and `.claude/creatures`
-- `agent-chatroom` still references `~/.claude/hook-state`
-- some hook comments still address "Claude" rather than "Codex"
+Reviewed and classified:
+- `.codex/hooks/calibration-stats-updater.py` now writes `.codex/stats.yaml`; legacy `.claude/stats.yaml` is fallback seed/history only.
+- `onboard`, `calibration-workflow`, and `agent-chatroom` now use Codex-owned state paths for active state.
+- Some hook comments still address "Claude" in historical explanations, old leak examples, compatibility aliases, and Phase 3 cleanup notes; these are not active runtime dependencies.
 
 Classification required:
 - keep temporarily for backward compatibility
@@ -111,9 +110,10 @@ Phase C corrective action completed:
 - Moved live calibration stats ownership from `.claude/stats.yaml` to `.codex/stats.yaml`, seeded from the legacy stats file so prior calibration counts are preserved.
 - Updated `.codex/hooks/calibration-stats-updater.py` and hook router config so future direct-write protection and auto-updates target `.codex/stats.yaml`.
 - Copied the unreviewed-trace helper from `.claude/scripts/list-unreviewed-traces.py` to `.codex/scripts/list-unreviewed-traces.py` and updated calibration prompts to use the Codex path.
-- Updated onboard/session-state documentation from `.claude/onboard-state.json` to `.codex/onboard-state.json`.
+- Updated onboard/session-state documentation from `.claude/onboard-state.json` to `.codex/onboard-state.json`, including onboarding workflow sub-docs.
 - Updated agent-chatroom documentation from `~/.claude/hook-state` to `~/.codex/hook-state`, matching the actual Codex hook implementation.
 - Left legacy `.claude` files in place as read-only migration history until Phase 3 cleanup.
+- Classified `meeting-brief-manager` launchd wording as non-blocking stale documentation because no active meeting-brief systemd timer/unit is installed. The canonical pre-call/post-call work now lives in the dedicated chat plus `meeting-brief`/`post-call-analyzer` skills; full meeting-brief-manager cleanup can be handled in Phase 3 or dashboard/orchestrator redesign.
 
 ### 5. Scheduled jobs are cut over, but names and references need cleanup
 

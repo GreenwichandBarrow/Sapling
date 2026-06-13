@@ -58,7 +58,7 @@ Each creature has art for each stage:
 
 To display current creature state:
 
-1. Read `.claude/stats.yaml` for:
+1. Read `.codex/stats.yaml` for:
    - `creature`: ember|drift|bloom
    - `total_traces_processed`: number
 2. Calculate stage from traces:

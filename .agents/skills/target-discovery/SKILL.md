@@ -148,7 +148,7 @@ Spawn a Codex-Code browser-scraping sub-agent against a specific directory URL (
 - If a row can't be enriched to the write gate after the scrape + Apollo pass, log it as "could not enrich (scraped from {directory})" and skip. Don't add stubs.
 - Respect the directory's terms of access. Member-tier directories require Kay's membership; don't bypass auth she doesn't have.
 
-**Initial pilot niche:** Premium Pest Management (JJ-Call-Only). Apollo coverage has been weakest here. Start with the NJPMA member directory plus state pest-control license registries for NY, NJ, PA, CT.
+**Initial pilot niche:** Premium Pest Management (Cold-Call-Only; legacy `JJ-Call-Only` compatibility). Apollo coverage has been weakest here. Start with the NJPMA member directory plus state pest-control license registries for NY, NJ, PA, CT.
 
 **Token-budget note:** Browser scraping inside Codex burns meaningful context. Do NOT auto-fire the scraper on every active niche. The gate is the existing "Apollo returned < 10 candidates after exhausting keyword variations" trigger plus a failed supplemental-web pass — only then does the scraper run.
 

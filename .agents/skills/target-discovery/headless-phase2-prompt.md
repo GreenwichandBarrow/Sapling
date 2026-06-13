@@ -15,7 +15,7 @@ must be defensible by output, not by clarifying question.
    the reason in stderr.
 3. **No duplicate-prevention shortcuts.** Do NOT invent reasons that
    another Phase 2 run is in flight. Do NOT call `ps` or `pgrep` to
-   "check for duplicates." launchd ensures single-instance.
+   "check for duplicates." systemd ensures single-instance.
 4. **Pool artifact gets written FIRST.** Before any Apollo call, before
    any sheet read past the row-selection query, the pool artifact for
    today must exist on disk. If you cannot write it, exit non-zero.

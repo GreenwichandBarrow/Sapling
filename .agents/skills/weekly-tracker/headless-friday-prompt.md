@@ -1,6 +1,6 @@
 # weekly-tracker — Headless Friday Run
 
-You are running the `weekly-tracker` skill non-interactively under launchd. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals.
+You are running the `weekly-tracker` skill non-interactively under the Codex/systemd scheduled runner. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals.
 
 ## Mandatory ordering — execute in this exact sequence
 
@@ -36,6 +36,6 @@ If a sub-agent fails or sheet write returns non-200:
 
 ## Why this prompt exists
 
-Bare `claude -p '/weekly-tracker'` invocations under launchd have a documented failure mode: the agent asks "for which week?" or invents a clarifying question and exits 0 — silent success. This prompt forbids that path explicitly.
+Bare legacy prompt invocations had a documented failure mode: the agent asks "for which week?" or invents a clarifying question and exits 0 — silent success. This prompt forbids that path explicitly.
 
 Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead `ai-ops-jrj.3`.

@@ -5,9 +5,9 @@ You are running the `nightly-tracker-audit` skill non-interactively under the Co
 ## Mandatory ordering — execute in this exact sequence
 
 1. **Read SKILL.md fully** at `.agents/skills/nightly-tracker-audit/SKILL.md`.
-2. **Read WEEKLY REVIEW** per Step 1: `gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "'WEEKLY REVIEW'!A3:K30"`.
-3. **Process Tabled niches** per Step 2 — for each row with Col C = "Tabled":
-   - Move row to TABLED tab (preserve all data + add Why Tabled in Col M)
+2. **Read WEEKLY REVIEW** per Step 1, resolving every field by header name. Do not hardcode column letters, column numbers, or fixed ranges. Required headers include `Rank`, `Niche Hypothesis`, `Current Status`, `Outreach Channel`, `Score`, `QSBS`, `Target Pool`, `Quick notes`, `Red flags noted`, `Start Date`, and `Days in Review`.
+3. **Process Tabled niches** per Step 2 — for each row where `Current Status` = "Tabled":
+   - Move row to TABLED tab (preserve all resolved fields + add `Date Tabled` and `Why Tabled`)
    - Move corresponding Drive folder from WEEKLY REVIEW to TABLED status folder
    - Remove row from WEEKLY REVIEW
 4. **Process Killed niches** per Step 3 — same flow, KILLED tab + KILLED folder.
@@ -16,7 +16,7 @@ You are running the `nightly-tracker-audit` skill non-interactively under the Co
 
 ## What success looks like
 
-- Zero rows in WEEKLY REVIEW with Col C = "Tabled" or "Killed".
+- Zero rows in WEEKLY REVIEW where `Current Status` = "Tabled" or "Killed".
 - No blank rows between data rows.
 - Rank column is sequential 1..N.
 - TABLED + KILLED tabs have the moved rows appended.

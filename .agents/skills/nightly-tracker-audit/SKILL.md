@@ -44,41 +44,40 @@ Lightweight nightly job that keeps the Industry Research Tracker clean. Runs eve
 ## Step 1: Read WEEKLY REVIEW
 
 ```bash
-gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "WEEKLY REVIEW!A3:K30" -a kay.s@greenwichandbarrow.com -j
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+gog sheets get 1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins "'WEEKLY REVIEW'" -a kay.s@greenwichandbarrow.com -j
 ```
 
-Column mapping:
-| Col | Field |
-|-----|-------|
-| A | Rank |
-| B | Niche Hypothesis |
-| C | Current Status (ORANGE — agent-trigger) |
-| D | Outreach Channel (ORANGE — agent-trigger) |
-| E | Score |
-| F | QSBS |
-| G | Target Pool |
-| H | Quick notes |
-| I | Red flags noted |
-| J | Start Date |
-| K | Days in Review |
+Resolve required columns by header name at runtime. Do not hardcode Google Sheet column letters, column numbers, or fixed table ranges as business logic. Required headers:
+- `Rank`
+- `Niche Hypothesis`
+- `Current Status`
+- `Outreach Channel`
+- `Score`
+- `QSBS`
+- `Target Pool`
+- `Quick notes`
+- `Red flags noted`
+- `Start Date`
+- `Days in Review`
 
 ## Step 2: Process Tabled Niches
 
-For each row where Col C = "Tabled":
-1. Read full row data (A-K)
-2. Append to TABLED tab with same columns A-K, plus:
-   - Col L: Date Tabled (today)
-   - Col M: Why Tabled (from Quick notes or Red flags, or "Moved by nightly audit")
+For each row where the `Current Status` field = "Tabled":
+1. Read the row by resolved headers.
+2. Append to TABLED tab with the same resolved fields, plus:
+   - `Date Tabled`: today
+   - `Why Tabled`: from `Quick notes` or `Red flags noted`, or "Moved by nightly audit"
 3. Delete the row from WEEKLY REVIEW
 4. Move Drive folder to TABLED folder (1_k_c1F11ZNrv4MilATFrURLHdkNx0kRx)
 
 ## Step 3: Process Killed Niches
 
-For each row where Col C = "Killed":
-1. Read full row data (A-K)
-2. Append to KILLED tab with same columns A-K, plus:
-   - Col L: Date Killed (today)
-   - Col M: Why Killed (from Quick notes or Red flags, or "Moved by nightly audit")
+For each row where the `Current Status` field = "Killed":
+1. Read the row by resolved headers.
+2. Append to KILLED tab with the same resolved fields, plus:
+   - `Date Killed`: today
+   - `Why Killed`: from `Quick notes` or `Red flags noted`, or "Moved by nightly audit"
 3. Delete the row from WEEKLY REVIEW
 4. Move Drive folder to KILLED folder (19xsNk5KTVHF2jb6m_li8IAGjcw34nlMX)
 

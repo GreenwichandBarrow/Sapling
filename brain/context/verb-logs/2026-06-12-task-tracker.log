@@ -14,3 +14,24 @@
   - Fri slot 9 → Sat slot 9: Submit the boys to Teri B
   - Fri slot 10 → Sat slot 10: Submit the boys to Stellar
   - Fri slot 11 → Sat slot 11: Call Mohela - loan history, iRS
+
+[2026-06-12T22:48:48.065763] carry-forward-day — fri-to-sat
+  - moved: 9
+  - source: Fri
+  - destination: Sat
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260612-224845.json
+  
+  - Fri slot 2 → Sat slot 12: Weekly review — system health, M&A activities, budget (recurring)
+  - Fri slot 3 → Sat slot 13: Decide on office rent cut
+  - Fri slot 5 → Sat slot 14: Get reimbursed for Motion
+  - Fri slot 6 → Sat slot 15: Submit the boys to NY Models
+  - Fri slot 7 → Sat slot 16: Submit the boys to State Models
+  - Fri slot 8 → Sat slot 17: Submit the boys to Zuri Model and Talent
+  - Fri slot 9 → Sat slot 18: Submit the boys to Teri B
+  - Fri slot 10 → Sat slot 19: Submit the boys to Stellar
+  - Fri slot 11 → Sat slot 20: Call Mohela - loan history, iRS
+
+[2026-06-12T22:52:00] manual-correction — clear-duplicate-sat-block
+  - cleared: Sat!A27:E35
+  - reason: noon sparse restore left the first Fri-to-Sat carry-forward copy in Sat slots 3-11; evening carry-forward duplicated the same items into slots 12-20
+  - verification: Sat now contains Phase 2.5 plus one copy of the 9 Friday carry-forward items

@@ -1,6 +1,6 @@
 ---
 name: outreach-manager
-description: "Owns all outreach across all channels and funnels. Four subagents: Kay Email cold outreach, DealsX coordination, conference outreach, intermediary outreach. Channel routing by niche (Kay Email / DealsX Email / JJ-Call-Only). Attio dedup catches crossover."
+description: "Owns all outreach across all channels and funnels. Four subagents: Kay Email cold outreach, DealsX coordination, conference outreach, intermediary outreach. Channel routing by niche (Kay Email / DealsX Email / Cold-Call-Only, with legacy JJ-Call-Only compatibility). Attio dedup catches crossover."
 # WARNING: 4x over archetype cap; refactor pending per item 2.
 archetype: orchestrator
 context_budget:
@@ -42,7 +42,7 @@ This skill receives targets from two upstream skills and runs personalized outre
 
 **Outputs to other skills:**
 - Outreach status updates → skill/pipeline-manager (stage progression based on responses)
-- JJ's call outcomes feed back into pipeline-manager
+- Cold-call outcomes feed back into pipeline-manager
 - Weekly outreach metrics → skill/weekly-tracker
 
 Four subagents:
@@ -53,22 +53,22 @@ Four subagents:
 
 ### Niche Channel Routing
 
-Each niche is assigned a channel on the WEEKLY REVIEW tab (Col D). This determines which subagent handles outreach.
+Each niche is assigned a channel in the WEEKLY REVIEW tab's `Outreach Channel` field. This determines which subagent handles outreach.
 
 | Niche | Channel | Notes |
 |-------|---------|-------|
-| Art Advisory | Kay Email | Small TAM, relationship-driven, no JJ calls |
+| Art Advisory | Kay Email | Small TAM, relationship-driven, no cold calls |
 | Art Storage | Kay Email | Small TAM, Active-Long Term |
 | Fractional CFO | DealsX Email | Sam handles outreach |
 | Specialty Insurance Brokerage | DealsX Email | Sam handles, Margot geographic arbitrage thesis |
 | Estate Management | DealsX Email | Sam handles, UHNW focus |
-| Premium Pest Management | JJ-Call-Only | Decoupled, handled by jj-operations, not outreach-manager's scope |
+| Premium Pest Management | Cold-Call-Only | Decoupled, handled by cold-call operations (`jj-operations` legacy id), not outreach-manager's scope |
 
-**Channel routing rule:** Before running any subagent, read the WEEKLY REVIEW tab Col D for the niche. Route to the correct subagent. Never cross channels.
+**Channel routing rule:** Before running any subagent, resolve the WEEKLY REVIEW tab's `Outreach Channel` field by header name for the niche. Route to the correct subagent. Never cross channels.
 
 **Delivery model (Kay Email channel):** Codex drafts in Gmail directly. Kay reviews and sends. No third-party tool ever touches Kay's SMTP credentials.
 **Delivery model (DealsX Email channel):** Sam/DealsX handles all outreach. We provide templates, exclusion lists, and warm intro intercepts. We draft replies to inbound responses.
-**Delivery model (JJ-Call-Only channel):** Handled entirely by jj-operations skill, not outreach-manager.
+**Delivery model (Cold-Call-Only channel):** Handled entirely by cold-call operations (`jj-operations` legacy id until Phase 3 cleanup), not outreach-manager.
 </objective>
 
 <dedup_layer>
@@ -79,7 +79,7 @@ Before either subagent drafts outreach, run these checks:
 1. **Does this person already exist in the pipeline?** If yes, check their current stage and last outreach date. Don't double-contact someone already in an active cadence.
 2. **Is this person receiving outreach from the other subagent?** If a conference target is also in the cold outreach queue (or vice versa), the conference outreach subagent takes priority — the conference framing ("I'll be at your booth Thursday" or "Great meeting you yesterday") is always stronger than cold email.
 3. **Has this person been contacted in the last 30 days?** If yes, skip unless there's a new context (conference, referral, signal change).
-4. **Warm intro check (CRITICAL).** Before cold outreach, search Attio People records for the target owner AND anyone at their company. If Kay has an existing connection (LinkedIn import, prior email, meeting), flag as "Warm Intro" on the target sheet. Warm intro targets skip cold email + JJ call entirely — instead, draft a warm intro request email for Kay referencing the mutual connection. See Warm Intro Outreach section below.
+4. **Warm intro check (CRITICAL).** Before cold outreach, search Attio People records for the target owner AND anyone at their company. If Kay has an existing connection (LinkedIn import, prior email, meeting), flag as "Warm Intro" on the target sheet. Warm intro targets skip cold email + cold call entirely — instead, draft a warm intro request email for Kay referencing the mutual connection. See Warm Intro Outreach section below.
 
 The dedup + warm intro check runs once when targets are received, before any drafting begins.
 </dedup_layer>
@@ -87,7 +87,7 @@ The dedup + warm intro check runs once when targets are received, before any dra
 <cold_outreach>
 ## Subagent 1: Kay Email Cold Outreach
 
-**Channel gate:** This subagent ONLY runs for niches where Col D on WEEKLY REVIEW = "Kay Email". For DealsX Email niches, see Subagent 1b. For JJ-Call-Only niches, see jj-operations skill.
+**Channel gate:** This subagent ONLY runs for niches where the WEEKLY REVIEW `Outreach Channel` field = "Kay Email". For DealsX Email niches, see Subagent 1b. For Cold-Call-Only or legacy JJ-Call-Only niches, see cold-call operations.
 
 Handles outreach for Kay Email targets sourced from skill/target-discovery (Apollo + free sources).
 
@@ -165,13 +165,13 @@ After Day 14 with no response, move to nurture cadence (pipeline-manager handles
 
 This subagent only handles niches routed to Kay Email. See the Niche Channel Routing table in the objective for the full mapping.
 
-| Niche | Email | LinkedIn DM | JJ Call |
+| Niche | Email | LinkedIn DM | Cold Call |
 |-------|-------|-------------|---------|
 | Art Advisory | Yes | Yes | NO — small world, cold call burns relationships |
 | Art Storage | Yes | Yes | NO — small TAM, relationship-driven |
 
 DealsX Email niches (Fractional CFO, Specialty Insurance Brokerage, Estate Management) are handled by Subagent 1b.
-JJ-Call-Only niches (Premium Pest Management) are handled by jj-operations.
+Cold-Call-Only niches (Premium Pest Management) are handled by cold-call operations.
 
 ### Target Sheet Columns
 
@@ -191,7 +191,7 @@ JJ-Call-Only niches (Premium Pest Management) are handled by jj-operations.
 - **Cadence Status** — `Active` / `Complete` / `Replied`
 - **LinkedIn Connection** — Kay marks 1st/2nd/3rd degree manually
 
-**JJ call columns (managed by JJ, for niches where calls are approved):**
+**Cold-call columns (managed by the cold-call workflow, for niches where calls are approved):**
 - **JJ: Call Status** — dropdown: Not Called, Connected, Voicemail, Callback, Not Interested, Wrong Number, Schedule Requested
 - **JJ: Call Date**
 - **JJ: Call Notes**
@@ -377,30 +377,30 @@ When Kay confirms an email was sent or a LinkedIn DM was sent, immediately creat
 
 This ensures the full outreach timeline lives in Attio alongside the automatically-tracked email history.
 
-### JJ Call Prep (for JJ-Call-Only niches ONLY)
+### Cold-Call Prep (for Cold-Call-Only niches ONLY)
 
-**Channel gate:** This section only runs for niches where Col D on WEEKLY REVIEW = "JJ-Call-Only". Kay Email niches and DealsX Email niches do NOT get JJ calls through outreach-manager.
+**Channel gate:** This section only runs for niches where the WEEKLY REVIEW `Outreach Channel` field = "Cold-Call-Only" or legacy "JJ-Call-Only". Kay Email niches and DealsX Email niches do NOT get cold calls through outreach-manager.
 
-For JJ-Call-Only niches, outreach-manager populates the call columns on the target sheet after Day 0 email is sent.
+For Cold-Call-Only niches, outreach-manager populates the call columns on the target sheet after Day 0 email is sent.
 
-**JJ call timing:** JJ calls on Day 3 (same day as follow-up email). The call is a confirmation call, not a cold call — "We sent {owner name} a note a couple days ago and I just wanted to make sure it came through."
+**Cold-call timing:** The cold-call operator calls on Day 3 (same day as follow-up email). The call is a confirmation call, not a generic cold call — "We sent {owner name} a note a couple days ago and I just wanted to make sure it came through."
 
 **Script:**
 ```
-Hi, this is JJ with Greenwich & Barrow. We sent {owner name} a note
+Hi, this is {caller name} with Greenwich & Barrow. We sent {owner name} a note
 a couple days ago and I just wanted to make sure it came through.
 We've been researching the {niche} space and would love to connect
 briefly with {owner name} about their experience.
 Would {owner name} have a few minutes for a quick call?
 ```
 
-**JJ positioning:** JJ is a team member at G&B, not an assistant. He speaks as "we" and represents the firm in his own right. Never frame JJ as calling "on behalf of" anyone.
+**Caller positioning:** The caller speaks as part of the G&B team, not as an assistant. They speak as "we" and represent the firm in their own right. Never frame the call as being made "on behalf of" Kay.
 
-**If the owner wants to schedule a call with Kay:** JJ books a time directly with the owner on the phone, then emails Howie (barrie@greenwichandbarrow.com) with: owner name, owner email, and agreed time. Howie creates the calendar invite.
+**If the owner wants to schedule a call with Kay:** the caller books a time directly with the owner on the phone, then emails Howie (barrie@greenwichandbarrow.com) with: owner name, owner email, and agreed time. Howie creates the calendar invite.
 
-**JJ works directly from the target sheet.** No separate call list. JJ fills in the JJ columns on the Active tab.
+**The caller works directly from the target sheet.** No separate call list. The caller fills in the cold-call fields on the Active tab; legacy sheets may still label those fields `JJ:*` until Phase 3 cleanup.
 
-**Feedback:** JJ is encouraged to share qualitative observations on Slack anytime.
+**Feedback:** the cold-call operator is encouraged to share qualitative observations on Slack anytime.
 
 ### Follow-Up Emails
 
@@ -454,7 +454,7 @@ Two scenarios trigger a warm intro flag:
 **A. Shared Attio connection found** (during outreach-manager warm intro check):
 1. Note "WARM INTRO via {connection name}" in "Agent Notes"
 2. Surface in morning briefing: "Warm intro available: {target owner} at {company}. You're connected to {connection name}. Cold outreach paused for this target."
-3. Cold outreach is PAUSED for this target — no email draft, no JJ call
+3. Cold outreach is PAUSED for this target — no email draft, no cold call
 4. Kay decides approach case by case
 5. Codex drafts per Kay's direction — no template, each is unique
 
@@ -463,7 +463,7 @@ Two scenarios trigger a warm intro flag:
 2. Kay decides approach
 3. Codex drafts per Kay's direction
 4. Thank-you to introducer is always drafted (short, same day)
-5. No JJ call — warm intros are Kay-only
+5. No cold call — warm intros are Kay-only
 </cold_outreach>
 
 <dealsx_coordination>
@@ -471,7 +471,7 @@ Two scenarios trigger a warm intro flag:
 
 > **NOT YET ACTIVE.** This subagent is pending until Sam Singh / DealsX engagement is confirmed and onboarded. Do not run any DealsX workflows until this flag is removed.
 
-**Channel gate:** This subagent ONLY runs for niches where Col D on WEEKLY REVIEW = "DealsX Email". Currently: Specialty Insurance Brokerage, Fractional CFO, Estate Management.
+**Channel gate:** This subagent ONLY runs for niches where the WEEKLY REVIEW `Outreach Channel` field = "DealsX Email". Currently: Specialty Insurance Brokerage, Fractional CFO, Estate Management.
 
 Sam Singh / DealsX handles mass email + LinkedIn outreach for these niches. Our role is coordination, not execution.
 
@@ -679,7 +679,7 @@ Handles outreach to force multipliers — people who know every owner in the nic
 
 If they don't respond, move on. Different from owner outreach which has Day 0/3/14 cadence.
 
-No JJ call. Intermediaries hear from Kay directly only.
+No cold call. Intermediaries hear from Kay directly only.
 
 ### Conference River Guide Play
 
@@ -714,7 +714,7 @@ Draft all intermediary emails in Gmail directly.
 ### Volume & Cadence
 - **Kay Email niches:** 5 new cold targets per day, every weekday. No zero days. 25+ owner emails per week minimum.
 - **DealsX Email niches:** Sam handles volume. No daily limit from our side. We track replies only.
-- **JJ-Call-Only niches:** Handled by jj-operations, not outreach-manager.
+- **Cold-Call-Only niches:** Handled by cold-call operations, not outreach-manager.
 - Quality over quantity — deep research on each Kay Email target, personalized Day 0 outreach
 - Follow-ups (Day 3/14) are templated — Kay just hits send (Kay Email niches only)
 - LinkedIn DMs (Day 6) are templated — Kay copy-pastes and sends (Kay Email niches only)
@@ -723,7 +723,7 @@ Draft all intermediary emails in Gmail directly.
 ### Channel Rules
 - **Kay Email:** All via Gmail drafts. Kay sends every email herself. No third-party SMTP access ever.
 - **DealsX Email:** Sam sends from his infrastructure. We provide templates and exclusion lists. Replies come to Kay's inbox, Codex drafts responses in Gmail.
-- **Phone:** JJ's call columns in the target sheet. JJ logs outcomes. Only for JJ-Call-Only niches.
+- **Phone:** cold-call fields in the target sheet. The caller logs outcomes. Only for Cold-Call-Only niches.
 - **LinkedIn DM (Kay Email niches):** Kay sends manually from LinkedIn. Codex drafts and surfaces in morning briefing. Tracked in Attio notes.
 - **LinkedIn DM (DealsX niches):** Sam's team handles.
 - **All channels:** Same voice, same framing (curiosity, not acquisition pitch).
@@ -732,7 +732,7 @@ Draft all intermediary emails in Gmail directly.
 - **Codex:** Deep research per Kay Email target, draft all Kay Email emails/DMs, track cadence timing, update sheet + Attio in real-time, coordinate with Sam on DealsX niches, draft replies to DealsX inbound
 - **Kay:** Review Day 0 emails (Kay Email), send all Kay emails, send LinkedIn DMs (Kay Email), take calls, review DealsX reply drafts
 - **Sam / DealsX:** Own full outreach cadence for DealsX niches (email + LinkedIn). Provide contact sheets. NOT YET ACTIVE.
-- **JJ:** Confirmation calls from sheet (JJ-Call-Only niches only), log outcomes
+- **Cold-call operator:** Confirmation calls from sheet (Cold-Call-Only niches only), log outcomes
 
 ### Coordination with Other Skills
 - **pipeline-manager:** After Day 14 with no response, pipeline-manager takes over with nurture cadence. Outreach-manager does not re-contact nurture targets unless pipeline-manager flags them.
@@ -751,10 +751,10 @@ Before drafting outreach for ANY company, check if they were previously contacte
 Before drafting outreach for any target, verify the target is on Kay's tracker. If not on the tracker, flag: "{company} is not on the tracker. Add first or skip?" Do NOT draft outreach for unknown targets.
 
 ### 1. Channel Routing Validation
-Verify every target was routed to the correct subagent based on its niche's Col D value on WEEKLY REVIEW:
+Verify every target was routed to the correct subagent based on its niche's `Outreach Channel` value on WEEKLY REVIEW:
 - Kay Email niches → Subagent 1 only
 - DealsX Email niches → Subagent 1b only
-- JJ-Call-Only niches → jj-operations (not outreach-manager)
+- Cold-Call-Only niches → cold-call operations (`jj-operations` legacy id; not outreach-manager)
 No cross-channel contamination.
 
 ### 2. Draft Delivery Validation (Kay Email niches only)
@@ -774,7 +774,7 @@ Verify the target sheet has been updated for every outreach action:
 - Replies from DealsX targets drafted in Gmail (not ignored)
 
 ### 5. Warm Intro Validation
-For each target: if "Agent Notes" contains "WARM INTRO" → verify NO cold email was drafted and no JJ call was scheduled. Warm intros get a different approach and skip JJ entirely. For DealsX niches, warm intro targets must be PULLED from Sam's list and routed to Kay Email.
+For each target: if "Agent Notes" contains "WARM INTRO" → verify NO cold email was drafted and no cold call was scheduled. Warm intros get a different approach and skip the cold-call workflow entirely. For DealsX niches, warm intro targets must be PULLED from Sam's list and routed to Kay Email.
 
 ### 6. Dedup Validation
 No person should have outreach queued from multiple subagents. Conference outreach takes priority over cold outreach. Kay Email warm intro takes priority over DealsX cold outreach.

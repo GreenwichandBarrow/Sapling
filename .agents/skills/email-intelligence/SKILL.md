@@ -47,7 +47,7 @@ Scan all inbound and outbound email, Gmail drafts, and Granola transcripts. Clas
 - Recommend pipeline stage changes (that's pipeline-manager)
 - Update People records (that's relationship-manager)
 - Create outreach drafts (that's outreach-manager)
-- Prep JJ's calls (that's jj-operations)
+- Prep cold-call operations (that's the legacy `jj-operations` skill until Phase 3 cleanup)
 
 **Attio write governance:** Email-intelligence writes to Attio ONLY for time-sensitive items: CIM detected (new entry at "Financials Received"), NDA detected (new entry at "NDA Signed"). All other stage changes go through pipeline-manager.
 </objective>

@@ -127,6 +127,17 @@ Notable legacy surfaces:
 - `claude-usage-refresh.timer` is disabled, but service/timer files still exist.
 - Docs and some generated templates still mention Claude/launchd/JJ for historical reasons.
 
+Corrective action completed during Phase B:
+- Removed active Superhuman wording from `docs/scheduled-skills.md`; email intelligence is Gmail/Granola-based and draft-only.
+- Updated active `email-intelligence`, `relationship-manager`, and `outreach-manager` language so current workflows refer to cold-call operations rather than JJ as the operating model.
+- Preserved legacy technical identifiers (`jj-operations`, `JJ_CALL_NICHES`, `JJ:*` sheet headers) only where scripts, validators, or existing Google Sheets still depend on them.
+- Updated `outreach-manager` to resolve `Outreach Channel` by header name instead of column letters.
+- Updated skill-router descriptions so Codex routes cold-call work by current terminology while retaining the legacy skill id until Phase 3 cleanup.
+
+Remaining Phase B classification:
+- Review the remaining scheduled/core skill prompts one by one for semantic fidelity, especially `post-call-analyzer`, `target-discovery`, `niche-intelligence`, `conference-discovery`, and `deal-aggregator`.
+- Decide whether Phase 3 should rename legacy cold-call artifacts (`jj-operations`, `jj-activity-snapshot.json`, `validate_jj_*`) or keep them as compatibility aliases until downstream dashboards are renamed.
+
 ## Audit Plan
 
 ### Phase A - Command Fidelity

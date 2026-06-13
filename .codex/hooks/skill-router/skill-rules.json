@@ -765,7 +765,7 @@
       "source": "description"
     },
     "jj-operations": {
-      "description": "JJ daily call prep, daily call tab creation, 10am Slack delivery, and post-shift outcome harvesting. Owns all JJ-facing operations.",
+      "description": "Cold-call operations: weekly call prep, call-tab creation, Slack delivery, and post-shift outcome harvesting. Legacy skill id remains jj-operations until Phase 3 cleanup.",
       "priority": 5,
       "triggers": {
         "keywords": [
@@ -1122,7 +1122,7 @@
       "source": "description"
     },
     "outreach-manager": {
-      "description": "Owns all outreach across all channels and funnels. Four subagents: Kay Email cold outreach, DealsX coordination, conference outreach, intermediary outreach. Channel routing by niche (Kay Email / DealsX Email / JJ-Call-Only). Attio dedup catches crossover.",
+      "description": "Owns all outreach across all channels and funnels. Four subagents: Kay Email cold outreach, DealsX coordination, conference outreach, intermediary outreach. Channel routing by niche (Kay Email / DealsX Email / Cold-Call-Only, with legacy JJ-Call-Only compatibility). Attio dedup catches crossover.",
       "priority": 5,
       "triggers": {
         "keywords": [

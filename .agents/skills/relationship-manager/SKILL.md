@@ -50,7 +50,7 @@ Manage long-term relationship health across Kay's entire network. This skill mon
 **This skill does NOT:**
 - Move deals through pipeline stages (that's pipeline-manager)
 - Create outreach drafts for targets (that's outreach-manager)
-- Manage JJ's call operations (that's jj-operations)
+- Manage cold-call operations (that's the legacy `jj-operations` skill until Phase 3 cleanup)
 - Scan email for deal signals (that's email-intelligence, future)
 </objective>
 

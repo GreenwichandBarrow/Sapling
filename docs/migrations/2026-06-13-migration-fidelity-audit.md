@@ -74,9 +74,9 @@ Exact Codex-native coverage found:
 | `onboard` | covered by `onboard` skill |
 | `socrates` | covered by `socrates` skill |
 | `triage` | covered by `triage` skill |
-| `start` | likely covered by `today`, but requires semantic review |
-| `calibrate` | likely covered by `calibration-workflow`, but requires semantic review |
-| `migrate` | likely covered by `migration-workflow`, but requires semantic review |
+| `start` | intentionally improved by `today`; direct Gmail/MCP scanning and Superhuman outreach from Claude command are not revived |
+| `calibrate` | faithful plus improved via `calibration-workflow`; now uses AGENTS-era references and 1Password-first credential handling |
+| `migrate` | faithful via `migration-workflow`; preserves detect/preview/apply/validate flow |
 | `goodmorning` | repaired by new `goodmorning` skill; pending first live run validation |
 | `savestate` | repaired by new `session-checkpoint` skill |
 | `pickingback` | repaired by new `session-checkpoint` skill |
@@ -161,8 +161,8 @@ Phase A repair status:
 - Added `plan-refinery-command` to preserve `/ideate` and `/refine` routing while using the existing `plan-refinery` skill.
 
 Remaining Phase A review:
-- `start` is likely obsolete/superseded by `goodmorning` and `today`, but the preserved Claude file contains older MCP/Superhuman assumptions. Do not revive those dependencies. Classify after checking whether any unique useful behavior remains.
-- `calibrate` and `migrate` appear to route to existing skills; confirm no lost flags or prompt semantics.
+- First live-run validation still needed for `goodmorning` and `goodnight-closeout`, because those are high-value daily bookends.
+- Continue watching whether old `/start` users should be redirected to `goodmorning` instead of `today` for daily operating briefings.
 
 ### Phase B - Scheduled/Core Skill Fidelity
 

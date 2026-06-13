@@ -73,7 +73,8 @@ Important operating rules:
 - Do not send emails. Ever.
 - If email follow-up is needed, create draft-only recommendations or draft text for Kay to review.
 - Action items should be routed through the Task Manager workflow before changing canonical task trackers.
-- Use the repo-backed `today`, `weekly-tracker`, `task-tracker-manager`, and `tracker-manager` skills where appropriate for daily planning, goodmorning/goodnight, weekly planning, and task tracker updates.
+- Use the repo-backed `today`, `weekly-tracker`, `task-tracker-manager`, `tracker-manager`, and `goodnight-closeout` skills where appropriate for daily planning, goodmorning/goodnight, weekly planning, task tracker updates, and end-of-day repository stewardship.
+- On goodnight, `goodnight-closeout` is the owner of commits, push status, skill-learning updates, hook/guardrail checks, decision traces, and the final dirty-tree ledger. `task-tracker-manager` is only a sub-step for carrying unfinished daily tasks forward.
 - Use 1Password-backed credentials where credentials are needed.
 - Treat the VPS/Sapling operating system as the canonical backend.
 

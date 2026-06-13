@@ -239,6 +239,19 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Updated the active Codex niche-intelligence sub-agent reference to call `~/.codex/skills/last30days/skills/last30days/scripts/last30days.py` instead of a non-existent `~/.agents/skills/last30days` path.
 
 
+## Phase 3 Readiness / Claude Spend Guard - 2026-06-13
+
+- VPS Tailscale and Codex remote project connection were restored after upgrading the remote Codex CLI from `0.137.0` to `0.139.0`.
+- Active scheduled timers were audited. Agent scheduled services are on Codex runner paths (`scripts/run-agent-skill.sh`) or agent-free scripts.
+- No active Claude Code or Anthropic processes were found on the VPS.
+- The remaining active Claude-named timer, `claude-usage-refresh.timer`, was telemetry only: it read local `~/.claude/projects/*.jsonl` usage metadata for dashboard reporting and did not invoke Claude Code. It was disabled with `systemctl --user disable --now claude-usage-refresh.timer` to avoid any Claude-related scheduled activity before the 2026-06-15 Anthropic pricing change.
+- `codex-usage-refresh.timer` remains active for Codex/dashboard telemetry.
+- Stale migration-era processes were cleaned up: the old root-owned Codex app-server and the old `codex yolo` process from 2026-06-08 were stopped. The active `ubuntu` Codex app-server and desktop proxy remain running.
+- Legacy Claude files, skills, transcripts, and context remain preserved for history/rollback. They are not active scheduled operating paths.
+- Legacy disabled `jj-*` unit files remain present but disabled; the active replacement timers are `cold-call-operations-sunday.timer` and `cold-call-snapshot-refresh.timer`.
+- Remaining Phase 2.5 work is dashboard/product work, not Claude cutover: finish dashboard plumbing and build the new email orchestrator. These do not block reducing Claude Code usage/plan once Kay confirms no manual Claude sessions are needed.
+
+
 ## Calibration Workflow Codex Port - 2026-06-05
 
 - Added `.agents/skills/calibration-workflow/headless-weekly-prompt.md` for non-interactive Codex runs. The Phase 1 scheduled mode writes a durable report and does not wait for approval.

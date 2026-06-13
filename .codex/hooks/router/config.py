@@ -20,9 +20,9 @@ DAILY_NOTE_TEMPLATE = "brain/notes/daily/"
 SCHEMA_DIR = "schemas/vault/"
 MIGRATION_DIR = "schemas/migrations/"
 
-# Stats file (protected from direct writes). Kept at the legacy path during the
-# monitoring window because calibration-workflow still owns that state file.
-STATS_FILE = ".claude/stats.yaml"
+# Stats file (protected from direct writes). Codex owns the live stats file;
+# legacy .claude/stats.yaml is read-only migration history.
+STATS_FILE = ".codex/stats.yaml"
 
 # State directory for continuation/dedup
 STATE_DIR = PROJECT_DIR / ".codex" / "state"

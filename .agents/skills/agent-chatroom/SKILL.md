@@ -373,7 +373,7 @@ WITH STATE SYNC (post-write hook):
    - `agents_waiting: {"draft-agent": "research-agent"}`
    - `has_close: false`
    - `coordination_complete: false`
-3. **Writes** to `~/.claude/hook-state/chatroom-{slug}.json`
+3. **Writes** to `~/.codex/hook-state/chatroom-{slug}.json`
 4. **Optionally** returns feedback to the writing agent
 
 ## Benefits
@@ -389,7 +389,7 @@ WITH STATE SYNC (post-write hook):
 ## State File Location
 
 ```
-~/.claude/hook-state/chatroom-{date}-{slug}.json
+~/.codex/hook-state/chatroom-{date}-{slug}.json
 ```
 
 Example:
@@ -505,7 +505,7 @@ brain/traces/
 └── agents/                        # Agent coordination logs
     └── 2025-12-26-client-update.md
 
-~/.claude/hook-state/
+~/.codex/hook-state/
 └── chatroom-2025-12-26-client-update.json  # Pre-computed state
 ```
 

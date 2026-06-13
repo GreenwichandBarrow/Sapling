@@ -1,0 +1,13 @@
+# Personal OS Statistics
+# Updated automatically by calibration-stats-updater hook
+
+total_traces_processed: 228
+total_calibrations: 5
+last_calibration: 2026-06-04
+
+# Level thresholds (decision traces)
+# Level 1: 0-99 (Seed)
+# Level 2: 100-499 (Sprout)
+# Level 3: 500-999 (Sapling)
+# Level 4: 1000-2499 (Tree)
+# Level 5: 2500+ (Forest)

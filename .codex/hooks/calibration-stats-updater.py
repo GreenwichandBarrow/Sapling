@@ -6,7 +6,7 @@ Triggers on: Write to brain/outputs/calibrations/*.md
 Actions:
 1. Move applied traces to brain/traces/processed/
 2. Count total processed traces
-3. Update .claude/stats.yaml
+3. Update .codex/stats.yaml
 4. Git commit the archive
 5. Print evolution banner
 """
@@ -78,7 +78,7 @@ def git_stage_all():
     """Stage traces, stats, and version for commit"""
     try:
         subprocess.run(["git", "add", "brain/traces/"], check=True, capture_output=True)
-        subprocess.run(["git", "add", ".claude/stats.yaml"], check=True, capture_output=True)
+        subprocess.run(["git", "add", ".codex/stats.yaml"], check=True, capture_output=True)
         subprocess.run(["git", "add", "VERSION"], check=True, capture_output=True)
         subprocess.run(["git", "add", "brain/outputs/calibrations/"], check=True, capture_output=True)
     except:
@@ -112,13 +112,15 @@ def get_level_info(traces):
     return {'level': 5, 'title': 'FOREST', 'icon': '🌲🌲🌲', 'current': traces}
 
 def update_stats(traces):
-    """Update .claude/stats.yaml"""
-    stats_path = ".claude/stats.yaml"
+    """Update .codex/stats.yaml, seeding from legacy .claude/stats.yaml if needed."""
+    stats_path = ".codex/stats.yaml"
+    legacy_stats_path = ".claude/stats.yaml"
 
     # Read existing to get calibration count
     calibrations = 1
     try:
-        with open(stats_path, 'r') as f:
+        read_path = stats_path if os.path.exists(stats_path) else legacy_stats_path
+        with open(read_path, 'r') as f:
             content = f.read()
             match = re.search(r'total_calibrations:\s*(\d+)', content)
             if match:
@@ -141,6 +143,7 @@ last_calibration: {date.today().isoformat()}
 # Level 5: 2500+ (Forest)
 """
 
+    os.makedirs(os.path.dirname(stats_path), exist_ok=True)
     with open(stats_path, 'w') as f:
         f.write(stats_content)
 

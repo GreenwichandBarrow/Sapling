@@ -86,7 +86,7 @@ Only proceed if both checks pass.
 | Context files exist, no --reset | Ask: overwrite/merge/cancel |
 | --creature flag | workflows/creature-select.md |
 | --reset flag | workflows/fresh-start.md (force) |
-| Resume from interrupted | Load .claude/onboard-state.json, continue |
+| Resume from interrupted | Load .codex/onboard-state.json, continue |
 </routing>
 
 <creatures>
@@ -149,7 +149,7 @@ Templates in: `.agents/skills/onboard/templates/`
 |-------|----------|
 | Website scrape fails | "Couldn't load that—no worries, I'll ask a couple questions instead" |
 | Invalid URL | Show example, re-ask |
-| Session interrupted | Save to .claude/onboard-state.json, resume on next /onboard |
+| Session interrupted | Save to .codex/onboard-state.json, resume on next /onboard |
 | All questions skipped | Create minimal files with TODOs |
 | API key invalid | Validate format, offer to re-enter or skip |
 </error_handling>
@@ -164,7 +164,7 @@ Templates in: `.agents/skills/onboard/templates/`
 
 <success_criteria>
 - [ ] User's name collected
-- [ ] Creature selected and stored in .claude/stats.yaml
+- [ ] Creature selected and stored in .codex/stats.yaml
 - [ ] At least one context file populated (or all skipped with TODOs)
 - [ ] System explanation delivered (/task, /calibrate, /today)
 - [ ] Welcome banner displayed with creature and name

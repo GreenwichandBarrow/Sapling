@@ -22,7 +22,7 @@ You must not:
 
 1. Read `.agents/skills/calibration-workflow/SKILL.md` for domain context, but override any instruction that requires human approval, Claude-only paths, direct commit, or Slack success posting.
 2. Run the trace inventory helper:
-   `python3 .claude/scripts/list-unreviewed-traces.py`
+   `python3 .codex/scripts/list-unreviewed-traces.py`
 3. Read the latest calibration report in `brain/outputs/calibrations/` and reconcile whether apparent backlog is real or already handled.
 4. Sample enough unreviewed traces to classify them into:
    - already covered by existing memory/skill/doctrine

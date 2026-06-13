@@ -107,6 +107,14 @@ Classification required:
 - rename to neutral/Sapling path
 - remove during Phase 3 cleanup
 
+Phase C corrective action completed:
+- Moved live calibration stats ownership from `.claude/stats.yaml` to `.codex/stats.yaml`, seeded from the legacy stats file so prior calibration counts are preserved.
+- Updated `.codex/hooks/calibration-stats-updater.py` and hook router config so future direct-write protection and auto-updates target `.codex/stats.yaml`.
+- Copied the unreviewed-trace helper from `.claude/scripts/list-unreviewed-traces.py` to `.codex/scripts/list-unreviewed-traces.py` and updated calibration prompts to use the Codex path.
+- Updated onboard/session-state documentation from `.claude/onboard-state.json` to `.codex/onboard-state.json`.
+- Updated agent-chatroom documentation from `~/.claude/hook-state` to `~/.codex/hook-state`, matching the actual Codex hook implementation.
+- Left legacy `.claude` files in place as read-only migration history until Phase 3 cleanup.
+
 ### 5. Scheduled jobs are cut over, but names and references need cleanup
 
 Active systemd timers show Codex-side scheduled jobs running, including:

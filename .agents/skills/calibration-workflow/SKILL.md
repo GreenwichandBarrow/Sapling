@@ -113,13 +113,13 @@ Each bucket appends a section to the weekly calibration report (`brain/outputs/{
 Collect unreviewed traces using the helper script (avoids reading all files):
 
 ```bash
-python3 .claude/scripts/list-unreviewed-traces.py [date_filter]
+python3 .codex/scripts/list-unreviewed-traces.py [date_filter]
 ```
 
 **Examples:**
-- `python3 .claude/scripts/list-unreviewed-traces.py` → all unreviewed
-- `python3 .claude/scripts/list-unreviewed-traces.py 2025-12-28` → single date
-- `python3 .claude/scripts/list-unreviewed-traces.py "2025-12-27 and 2025-12-28"` → multiple dates
+- `python3 .codex/scripts/list-unreviewed-traces.py` → all unreviewed
+- `python3 .codex/scripts/list-unreviewed-traces.py 2025-12-28` → single date
+- `python3 .codex/scripts/list-unreviewed-traces.py "2025-12-27 and 2025-12-28"` → multiple dates
 
 **Script returns:**
 - Trace paths, dates, tasks, targets
@@ -409,7 +409,7 @@ Based on user choice:
 3. Write calibration output file ONCE (with full content + Result banner) → **hook fires:**
    - Bumps VERSION (patch)
    - Moves applied traces to `brain/traces/processed/`
-   - Updates `.claude/stats.yaml` with new count + level
+   - Updates `.codex/stats.yaml` with new count + level
    - Stages everything with `git add`
    - Returns message: "All changes staged. Run /commit to finalize."
 4. Run `/commit` to create single atomic commit including ALL changes
@@ -466,7 +466,7 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 </references_index>
 
 <leveling_system>
-Track progress in `.claude/stats.yaml`:
+Track progress in `.codex/stats.yaml`:
 
 ```yaml
 total_traces_processed: {count}
@@ -494,7 +494,7 @@ creature: ember  # ember | drift | bloom (set during /onboard)
 
 **After applying changes:**
 1. Count total traces with `review_status: applied`
-2. Update `.claude/stats.yaml`
+2. Update `.codex/stats.yaml`
 3. Calculate stage from trace count
 4. If creature set: Read art from `.claude/creatures/{creature}/{stage}.txt`
 5. Display evolution banner with creature
@@ -618,7 +618,7 @@ If no creature (user hasn't run /onboard):
 - [ ] Selected changes applied correctly
 - [ ] Traces marked with review_status
 - [ ] VERSION file bumped
-- [ ] `.claude/stats.yaml` updated with new trace count
+- [ ] `.codex/stats.yaml` updated with new trace count
 - [ ] Single atomic commit created with version in message
 - [ ] Evolution banner displayed with level progress
 - [ ] Evolution banner appended to calibration output file

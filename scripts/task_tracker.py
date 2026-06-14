@@ -36,6 +36,7 @@ brain/context/rollback-snapshots/tasks-{verb}-{timestamp}.json before each write
 from __future__ import annotations
 
 import argparse
+from types import SimpleNamespace
 import json
 import os
 import subprocess
@@ -1473,6 +1474,74 @@ def _carryover_cross_file(prior_client: SheetsClient, new_client: SheetsClient, 
     return summary
 
 
+def _sync_combined_day_tasks_to_todo(day_client: SheetsClient, todo_client: SheetsClient | None = None,
+                                     todo_meta: dict | None = None,
+                                     dry_run: bool = False) -> dict:
+    """Fold combined day-tab task text back into the To Do backend."""
+    todo_client = todo_client or day_client
+    meta = todo_meta or todo_client.get_metadata()
+    if find_tab(meta, TAB_TODO) is None:
+        return {"combined": [], "skipped": [{"reason": "To Do tab missing"}]}
+
+    day_tasks: list[dict] = []
+    for day_tab in DAY_TAB_NAMES:
+        vals = day_client.get_values(f"'{day_tab}'!A{DAY_SLOT_FIRST_ROW}:E{DAY_SLOT_LAST_ROW}") or []
+        for slot_i, row in enumerate(vals, start=1):
+            status = row[DAY_COL_STATUS] if len(row) > DAY_COL_STATUS else ""
+            task = row[DAY_COL_TASK] if len(row) > DAY_COL_TASK else ""
+            task_text = str(task or "").strip()
+            if not task_text or ":" not in task_text:
+                continue
+            prefix = task_text.split(":", 1)[0].strip()
+            if len(prefix) >= 8:
+                done = status is True or str(status).strip().upper() == "TRUE"
+                day_tasks.append({"day": day_tab, "slot": slot_i, "task": task_text, "prefix": prefix, "done": done})
+
+    todo_rows = todo_client.get_values(f"'{TAB_TODO}'!A2:G{TODO_MAX_ROWS}") or []
+    combined: list[dict] = []
+    skipped: list[dict] = []
+    used_candidate_rows: set[int] = set()
+    for d in day_tasks:
+        prefix = d["prefix"]
+        candidates = []
+        for idx, row in enumerate(todo_rows, start=2):
+            if idx in used_candidate_rows:
+                continue
+            task = row[TODO_COL_TASK] if len(row) > TODO_COL_TASK else ""
+            task_text = str(task or "").strip()
+            row_status = row[TODO_COL_STATUS] if len(row) > TODO_COL_STATUS else ""
+            if str(row_status).strip() == "Completed" and not d["done"]:
+                continue
+            if task_text and task_text != d["task"] and task_text.lower().startswith((prefix + " ").lower()):
+                candidates.append({"row": idx, "values": row, "task": task_text})
+        if len(candidates) < 3:
+            continue
+        if any(len(c["task"]) > max(len(prefix) + 80, 120) for c in candidates):
+            skipped.append({"day": d["day"], "slot": d["slot"], "task": d["task"],
+                            "reason": "candidate task too long", "rows": [c["row"] for c in candidates]})
+            continue
+
+        keep = candidates[0]
+        keep_vals = list(keep["values"]) + [""] * (len(TODO_HEADERS) - len(keep["values"]))
+        keep_vals[TODO_COL_STATUS] = "Completed" if d["done"] else "Not Completed"
+        keep_vals[TODO_COL_TASK] = d["task"]
+        if not keep_vals[TODO_COL_NOTES]:
+            keep_vals[TODO_COL_NOTES] = f"Combined from To Do rows {', '.join(str(c['row']) for c in candidates)} based on {d['day']} slot {d['slot']}."
+        if not keep_vals[TODO_COL_HORIZON]:
+            keep_vals[TODO_COL_HORIZON] = "Short Term"
+        clear_rows = [c["row"] for c in candidates[1:]]
+
+        if not dry_run:
+            todo_client.values_update(f"'{TAB_TODO}'!A{keep['row']}:G{keep['row']}", [keep_vals[:len(TODO_HEADERS)]])
+            for row_num in clear_rows:
+                todo_client.values_update(f"'{TAB_TODO}'!A{row_num}:G{row_num}", [[""] * len(TODO_HEADERS)])
+        combined.append({"day": d["day"], "slot": d["slot"], "task": d["task"],
+                         "kept_row": keep["row"], "cleared_rows": clear_rows,
+                         "source_tasks": [c["task"] for c in candidates]})
+        used_candidate_rows.update(c["row"] for c in candidates)
+
+    return {"combined": combined, "skipped": skipped}
+
 def _build_week_formulas(meta: dict) -> list[tuple[str, list[list]]]:
     """Generate the formula writes that wire the Week tab to be a live mirror of day tabs.
 
@@ -1588,6 +1657,20 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
             )
         print("task-tracker-manager: use --force-new-file only for explicit sandbox/testing copies.", file=sys.stderr)
         return 1
+
+    # ---- 0. Reconcile prior day-tab completions and combined task edits into To Do BEFORE copy ----
+    try:
+        sync_args = SimpleNamespace(dry_run=False)
+        cmd_sync_done_status(sync_args, _client=prior_client, _meta=prior_client.get_metadata())
+    except Exception as e:
+        print(f"task-tracker-manager: WARN pre-copy sync-done-status skipped — {e}", file=sys.stderr)
+    combined_summary = {"combined": [], "skipped": []}
+    try:
+        combined_summary = _sync_combined_day_tasks_to_todo(prior_client, prior_client, prior_client.get_metadata(), dry_run=False)
+        if combined_summary["combined"]:
+            print(f"task-tracker-manager: folded {len(combined_summary['combined'])} combined day-task edit(s) into To Do before copy")
+    except Exception as e:
+        print(f"task-tracker-manager: WARN combined day-task reconciliation skipped — {e}", file=sys.stderr)
 
     # ---- 1. Snapshot prior file (Week + all 7 day tabs + To Do) ----
     snap_ranges = [f"'{TAB_WEEK}'!A1:O51"] + \
@@ -1729,6 +1812,7 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
         f"- carryover pulled from prior → new: {len(carryover_summary['pulled'])}",
         f"- carryover refused (already present / no slot): {len(carryover_summary['refused'])}",
         f"- Week tab formulas wired: {len(formula_writes)} ranges",
+        f"- combined day-task edits folded before copy: {len(combined_summary['combined'])}",
         f"- snapshot: {snap}",
     ]
     if recurring_summary["refused"]:

@@ -44,15 +44,16 @@ Before a live build, `build-week` trusts the canonical pointer by default and ch
 
 `cmd_build_week` dispatches to `cmd_build_week_v2` which executes end-to-end:
 1. Resolve PRIOR file via `tracker_sheet_resolver.py` (pointer fast-path, Drive-search fallback)
-2. Snapshot prior file (Week + 7 day tabs + To Do) to rollback JSON
-3. `gog drive copy` prior → NEW file `TO DO {next-Sun-date}.YY` in `STRATEGIC PLANNING`; after the new file is built successfully, move the PRIOR file to `To Do Archive`
-4. Clear all 7 day tabs on new file (structure/CF/dropdowns/checkbox-validation preserved)
-5. Stamp recurring `To Do` rows (Horizon `Weekly Recurring {day}`) onto new file's day tabs
-6. Cross-file carryover: read PRIOR day-tab incompletes → write to NEW day-tab next-empty-slot (dedup vs recurring)
-7. Wire Week tab cells as in-file formulas (`=Tue!B14` etc.) — live read-only mirror of day tabs
-8. Re-title Week tab + per-day header dates + each day tab's `A1`
-9. Update pointer atomically (LAST step — mid-rollover failures leave prior file canonical)
-10. Trace
+2. Reconcile the PRIOR file before copying: run `sync-done-status` so checked day-tab items mark matching `To Do` rows `Completed`, and fold conservative combined day-task edits back into `To Do` (example: a day tab combines several stale "Submit the boys to X" rows into one colon-delimited task). Exact matches are auto-written; ambiguous/fuzzy non-exact completions are skipped or surfaced, never guessed.
+3. Snapshot prior file (Week + 7 day tabs + To Do) to rollback JSON
+4. `gog drive copy` prior → NEW file `TO DO {next-Sun-date}.YY` in `STRATEGIC PLANNING`; after the new file is built successfully, move the PRIOR file to `To Do Archive`
+5. Clear all 7 day tabs on new file (structure/CF/dropdowns/checkbox-validation preserved)
+6. Stamp recurring `To Do` rows (Horizon `Weekly Recurring {day}`) onto new file's day tabs
+7. Cross-file carryover: read PRIOR day-tab incompletes → write to NEW day-tab next-empty-slot (dedup vs recurring)
+8. Wire Week tab cells as in-file formulas (`=Tue!B14` etc.) — live read-only mirror of day tabs
+9. Re-title Week tab + per-day header dates + each day tab's `A1`
+10. Update pointer atomically (LAST step — mid-rollover failures leave prior file canonical)
+11. Trace
 
 **After build-week completes:** Kay reviews the new file's Week tab (auto-mirror of day tabs via formulas), adjusts items DIRECTLY on day tabs. Week tab auto-updates. No `distribute-week` step needed.
 
@@ -60,12 +61,15 @@ Before a live build, `build-week` trusts the canonical pointer by default and ch
 
 **Carryover doctrine (weekly-files):** carryover is AUTO-PULLED CROSS-FILE from prior file's day tabs into the new file's day tabs during `build-week` step 6. Read happens BEFORE the new file's day tabs are touched in any other way (only recurring stamps land first, and dedup catches collisions). Prior file is immutable history once rollover completes.
 
+**Prior-week To Do reconciliation doctrine:** before the prior file is copied into the new week, the Sunday build must treat the prior daily tabs as the final working surface for that week. Checked priority slots update exact matching `To Do` backend rows to `Completed`; consolidated daily task text can update task shape in `To Do` when the pattern is conservative and obvious (for example, one colon-delimited task replacing 3+ short rows with the same prefix). This prevents completed items and Kay's daily cleanup edits from being copied forward as stale backend rows.
+
 **Order-of-operations (critical):**
 ```
 cmd_build_week_v2:
-  1. resolve prior → snapshot → drive copy new file into STRATEGIC PLANNING → build new file → archive prior file
-  2. clear new file day tabs → stamp recurring → cross-file carryover from prior
-  3. wire formulas → retitle → update pointer atomically (LAST)
+  1. resolve prior → reconcile prior day tabs into prior To Do → snapshot
+  2. drive copy new file into STRATEGIC PLANNING → build new file → archive prior file
+  3. clear new file day tabs → stamp recurring → cross-file carryover from prior
+  4. wire formulas → retitle → update pointer atomically (LAST)
 ```
 Steps are atomic within a single `build-week` invocation. No separate human gate between sub-steps. The new file is the live working surface; the prior file is frozen history.
 
@@ -87,7 +91,7 @@ Steps are atomic within a single `build-week` invocation. No separate human gate
 - Kay says "move {todo-row} to {day} slot {N}" (To Do → week tab) → **promote**
 - Kay says "schedule X for Wed" / "X goes on Friday" / direct day-slot drop with no To Do source row → **schedule-to-day-slot**
 - Kay says "sync done items" / "reconcile weekly to To Do" / "the weekly slots aren't matching To Do" → **sync-done-status**
-- Sunday morning as part of `goodmorning` → **build-week** (weekly rebuild ceremony — targets the **Week planning tab**: writes a combined far-right `archive_{Sun-date}` tab of the prior Week tab, clears all 7 day-blocks on the Week tab + re-titles it, stamps the recurring `To Do` rows **onto the Week tab**; day tabs untouched; `--skip-recurring` to bypass; `--dry-run` to preview). `archive` is a DEPRECATED alias that delegates here.
+- Sunday morning as part of `goodmorning` → **build-week** (weekly-files ceremony: reconcile prior day tabs into prior `To Do`, copy prior file into the new current-week file in `STRATEGIC PLANNING`, archive the prior file, clear/rebuild new day tabs, stamp recurring rows, pull carryover, and wire Week as a formula mirror). `archive` is a DEPRECATED alias that delegates here.
 - After Kay finalizes the week on the Week tab (Sunday) → **distribute-week** (fans the finalized Week plan OUT into the 7 day tabs; collision-aware, `--dry-run` / `--force` / `--day {X}`)
 - Kay says "move {day} slot N to {day}" / approves a carryover during the Sunday walkthrough → **move-day-item** (`--state completed|incomplete|added|deleted`)
 - `/goodnight` daily closeout calls this skill ONLY for **carry-forward-day** (moves all unchecked/non-empty priority slots from today's day tab to tomorrow's next empty slots; no item-by-item approval needed; `--dry-run` available). Repo closeout, commits, pushes, durable learnings, hooks, and decision traces belong to `goodnight-closeout`.
@@ -399,7 +403,7 @@ When Kay says "add 'draft Calder follow-up' to To Do":
 | `goodmorning` (weekday) | `report` (overdue + today's empty slots) + batch `append` if open loops | Capture pass at end of morning workflow |
 | `goodmorning` **Sunday** | `report` (full week-planning health: carryover, empty slots, stale items, stale Gantt) → walk-through with Kay → `promote`/`append` for each decision | **Canonical Sunday weekly-planning ceremony.** Drives the new-week tab setup. See `goodmorning.md` Step 6 Sunday overlay. |
 | Mid-day conversation | `append` / `promote` / `gantt-tick` / `sync-done-status` | On Kay's request |
-| `goodmorning` **Sunday** ceremony | `report` (carryover) → Kay walks each carryover (`move-day-item`) → `sync-done-status` across 7 day tabs (reflect last week's progress onto `To Do` Status) → `build-week` (Week tab: archive + clear + re-title + stamp recurring) → Kay finalizes the week on the Week tab (approved promotions / direct entry) → `distribute-week` (fan Week → 7 day tabs) → `reformat` if needed | The single Sunday-evening `goodnight` `archive` trigger is RETIRED. `archive-todo` is RETIRED (no sweep, no `Completed To Do` tab — done = `Status=Completed` in place). `distribute-week` runs AFTER Kay finalizes the Week tab. **Recurring items come from `To Do` rows with `Horizon = Weekly Recurring {day}`** — Kay sets the Horizon dropdown directly or uses `recurring-add` / `recurring-remove`, NOT a separate tab or hardcoded code. |
+| `goodmorning` **Sunday** ceremony | `build-week` handles reconciliation + rollover: prior day-tab checked items update exact matching `To Do` rows, conservative combined daily task edits fold into `To Do`, new file is created in `STRATEGIC PLANNING`, prior file is archived, recurring and carryover land on day tabs, Week is wired as a formula mirror | `archive-todo` is RETIRED (no sweep, no `Completed To Do` tab — done = `Status=Completed` in place). **Recurring items come from `To Do` rows with `Horizon = Weekly Recurring {day}`** — Kay sets the Horizon dropdown directly or uses `recurring-add` / `recurring-remove`, NOT a separate tab or hardcoded code. |
 | Friday briefing | `report` (full health, including carryover) | Part of weekly-tracker context |
 
 ## Failure modes to watch

@@ -397,6 +397,25 @@ GLOBAL_CSS = f"""
     overflow: hidden;
   }}
 
+  .gb-email-queues {{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }}
+  .gb-email-queue {{
+    border: 1px solid var(--border-soft);
+    border-radius: 6px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.015);
+  }}
+  .gb-email-queue ul {{
+    margin: 8px 0 0 16px;
+    padding: 0;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.45;
+  }}
+
   /* -------- TILE GRID -------- */
   /* 4-col grid per locked mockup. Hero tile spans full width via grid-column: 1/-1 */
   .gb-grid {{

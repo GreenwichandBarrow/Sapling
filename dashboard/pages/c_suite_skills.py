@@ -38,6 +38,7 @@ if str(_DASHBOARD_DIR) not in sys.path:
 from data_sources import (  # noqa: E402
     CSuiteGroup,
     SkillHealth,
+    load_email_orchestrator_status,
     load_skill_health,
     skill_health_summary,
 )
@@ -616,6 +617,67 @@ def _render_summary(summary: dict[str, int]) -> str:
     ) + '</div>'
 
 
+def _render_email_orchestration_panel() -> str:
+    """Render the email routing surface without exposing raw email content."""
+    email = load_email_orchestrator_status()
+    status_label = {
+        "ok": "Ready",
+        "warn": "Needs review",
+        "alert": "Blocked",
+    }.get(email.status, "Unknown")
+    status_class = {
+        "ok": "green",
+        "warn": "yellow",
+        "alert": "red",
+    }.get(email.status, "grey")
+    fetched = email.fetched_at or "not fetched"
+    source = email.source_artifact or "no source artifact"
+    review_items = email.review_count
+
+    needs = email.needs_kay[:3]
+    blocked = email.blocked[:3]
+    queue_rows = []
+    for label, items, css in (
+        ("Needs Kay", needs, "yellow"),
+        ("Blocked", blocked, "red"),
+    ):
+        if items:
+            body = "".join(f"<li>{escape(item)}</li>" for item in items)
+        else:
+            body = "<li>None</li>"
+            css = "green"
+        queue_rows.append(
+            f'<div class="gb-email-queue"><div class="gb-source-group-title">'
+            f'<span class="gb-status-dot {css}"></span>{label}</div><ul>{body}</ul></div>'
+        )
+
+    return dedent(
+        f"""
+        <div class="gb-zone gb-zone-plain">
+          <div class="gb-zone-head">
+            <div>
+              <div class="gb-zone-label">Email Orchestration</div>
+              <div class="gb-zone-subtitle">Routes email-derived signals into deal flow, relationships, tasks, and Good Morning without sending email</div>
+            </div>
+            <div class="gb-zone-meta"><span class="gb-status-dot {status_class}"></span>{escape(status_label)}</div>
+          </div>
+          <div class="gb-deal-status-grid">
+            <div><span class="num">{escape(email.source_status)}</span>source</div>
+            <div><span class="num">{email.drafts_pending}</span>drafts pending</div>
+            <div><span class="num {'red' if email.send_blockers else 'dim'}">{email.send_blockers}</span>send blockers</div>
+            <div><span class="num">{email.deal_items}</span>deal items</div>
+            <div><span class="num">{email.pipeline_items}</span>pipeline items</div>
+            <div><span class="num">{email.relationship_items}</span>relationship items</div>
+            <div><span class="num">{email.task_candidates}</span>task candidates</div>
+            <div><span class="num {'yellow' if review_items else 'green'}">{review_items}</span>review items</div>
+          </div>
+          <div class="gb-source-detail" style="margin: 10px 0 14px;">Source: {escape(source)} · fetched {escape(fetched)}</div>
+          <div class="gb-email-queues">{''.join(queue_rows)}</div>
+        </div>
+        """
+    ).strip()
+
+
 # Visual stubs only — pill row is interactive via st.segmented_control
 # in render(); dropdowns + search render but don't mutate state.
 def _render_filter_bar_stubs() -> str:
@@ -661,6 +723,7 @@ def render() -> None:
     st.markdown(_render_subtitle(), unsafe_allow_html=True)
     st.markdown(_render_legend(), unsafe_allow_html=True)
     st.markdown(_render_summary(summary), unsafe_allow_html=True)
+    st.markdown(_render_email_orchestration_panel(), unsafe_allow_html=True)
 
     current_view = st.session_state.get("csuite_filter", "Scheduled")
     st.markdown(_render_weekly_flow(groups, current_view), unsafe_allow_html=True)

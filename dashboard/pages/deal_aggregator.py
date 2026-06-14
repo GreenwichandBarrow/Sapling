@@ -354,6 +354,122 @@ def _render_filtered_summary(rejected: list[dict[str, str]]) -> str:
     """).strip()
 
 
+def _to_int(value: str | None) -> int:
+    if not value:
+        return 0
+    digits = "".join(ch for ch in value if ch.isdigit())
+    return int(digits or 0)
+
+
+def _source_effectiveness(
+    sources: list[dict[str, str]],
+    listings: list[dict[str, str]],
+) -> list[dict[str, str | int | float]]:
+    rows: dict[str, dict[str, str | int | float]] = {}
+    for source in sources:
+        name = (source.get("Source") or "Unknown").strip()
+        rows[name] = {
+            "Source": name,
+            "Category": source.get("Category") or "—",
+            "Status": source.get("Status") or "—",
+            "Reviewed": _to_int(source.get("Listings Reviewed")),
+            "Surfaced": _to_int(source.get("Matches")),
+            "Learning": 0,
+            "Rejected": 0,
+            "Last Match Date": source.get("Last Match Date") or "—",
+        }
+
+    for listing in listings:
+        name = (listing.get("Source") or "Unknown").strip()
+        row = rows.setdefault(
+            name,
+            {
+                "Source": name,
+                "Category": "—",
+                "Status": "captured in listings",
+                "Reviewed": 0,
+                "Surfaced": 0,
+                "Learning": 0,
+                "Rejected": 0,
+                "Last Match Date": "—",
+            },
+        )
+        row["Reviewed"] = int(row["Reviewed"]) + 1
+        verdict = (listing.get("Verdict") or "").upper()
+        if verdict == "PASS":
+            row["Surfaced"] = int(row["Surfaced"]) + 1
+        elif verdict == "HARD-REJECT":
+            row["Rejected"] = int(row["Rejected"]) + 1
+        elif verdict in {"BROKER-OPPORTUNISTIC", "NEAR-MISS", "FLAG"}:
+            row["Learning"] = int(row["Learning"]) + 1
+
+    for row in rows.values():
+        reviewed = int(row["Reviewed"])
+        useful = int(row["Surfaced"]) + int(row["Learning"])
+        row["Useful"] = useful
+        row["Useful Rate"] = (useful / reviewed) if reviewed else 0.0
+
+    return sorted(
+        rows.values(),
+        key=lambda r: (float(r["Useful Rate"]), int(r["Useful"]), int(r["Reviewed"])),
+        reverse=True,
+    )
+
+
+def _render_source_effectiveness(sources: list[dict[str, str]], listings: list[dict[str, str]]) -> str:
+    rows = _source_effectiveness(sources, listings)
+    if not rows:
+        body = '<tr><td colspan="8"><div class="gb-empty">No source effectiveness data captured in this window.</div></td></tr>'
+    else:
+        body = ""
+        for row in rows:
+            reviewed = int(row["Reviewed"])
+            useful_rate = float(row["Useful Rate"])
+            rate_text = f"{round(useful_rate * 100)}%" if reviewed else "—"
+            if reviewed == 0:
+                rate_class = "dim"
+            elif useful_rate >= 0.20:
+                rate_class = "green"
+            elif useful_rate > 0:
+                rate_class = "yellow"
+            else:
+                rate_class = "dim"
+            body += dedent(
+                f"""
+                <tr>
+                  <td>{_source_cell(str(row['Source']))}<div class="gb-source-detail">{escape(str(row['Category']))}</div></td>
+                  <td>{escape(str(row['Status']))}</td>
+                  <td class="gb-num">{reviewed}</td>
+                  <td class="gb-num" style="color: var(--green);">{int(row['Surfaced'])}</td>
+                  <td class="gb-num" style="color: var(--yellow);">{int(row['Learning'])}</td>
+                  <td class="gb-num dim">{int(row['Rejected'])}</td>
+                  <td class="gb-num {rate_class}">{rate_text}</td>
+                  <td class="gb-source-detail">{escape(str(row['Last Match Date']))}</td>
+                </tr>
+                """
+            ).strip()
+
+    return dedent(
+        f"""
+        <div class="gb-zone gb-zone-plain">
+          <div class="gb-zone-head">
+            <div>
+              <div class="gb-zone-label">Source Effectiveness</div>
+              <div class="gb-zone-subtitle">Assesses whether each source is creating surfaced matches or useful learning, not just scan volume</div>
+            </div>
+            <div class="gb-zone-meta">{len(rows)} sources</div>
+          </div>
+          <div class="gb-table-wrap">
+            <table class="gb-table gb-review-table">
+              <thead><tr><th>Source</th><th>Status</th><th class="gb-num">Reviewed</th><th class="gb-num">Surfaced</th><th class="gb-num">Learning</th><th class="gb-num">Rejected</th><th class="gb-num">Useful rate</th><th>Last match</th></tr></thead>
+              <tbody>{body}</tbody>
+            </table>
+          </div>
+        </div>
+        """
+    ).strip()
+
+
 def _source_category(source: str, raw_category: str) -> str:
     s = source.lower()
     if any(x in s for x in ("everingham", "benchmark", "viking", "searchfunder", "iag", "rejigg", "dealforce", "smb deal hunter")):
@@ -485,6 +601,7 @@ def render() -> None:
         unsafe_allow_html=True,
     )
     st.markdown(_render_filtered_summary(rejected), unsafe_allow_html=True)
+    st.markdown(_render_source_effectiveness(sources, listings), unsafe_allow_html=True)
     st.markdown(_render_sources_reviewed(sources), unsafe_allow_html=True)
 
     n = len(filtered_rows)

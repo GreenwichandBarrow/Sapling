@@ -13,6 +13,7 @@ crashing the page.
 from __future__ import annotations
 
 from datetime import date, datetime, timedelta, timezone
+from html import escape
 from textwrap import dedent
 
 import sys
@@ -25,6 +26,171 @@ if str(_DASHBOARD_DIR) not in sys.path:
 
 def _tile(body: str) -> str:
     return dedent(body).strip()
+
+
+def _status_dot(status: str) -> str:
+    if status in {"ok", "green"}:
+        return "green"
+    if status in {"warn", "yellow"}:
+        return "yellow"
+    if status in {"alert", "red"}:
+        return "red"
+    return "grey"
+
+
+def _command_item(title: str, value: str, detail: str, status: str, href: str) -> str:
+    return dedent(
+        f"""
+        <a class="gb-command-item" href="{href}" target="_self">
+          <div class="gb-command-item-head">
+            <span class="gb-status-dot {_status_dot(status)}"></span>
+            <span>{escape(title)}</span>
+          </div>
+          <div class="gb-command-value">{escape(value)}</div>
+          <div class="gb-command-detail">{escape(detail)}</div>
+        </a>
+        """
+    ).strip()
+
+
+def _command_center_strip() -> str:
+    """Top-level operating cockpit: what ran, what needs review, and freshness."""
+    items: list[str] = []
+
+    try:
+        from data_sources import load_skill_health, skill_health_summary
+        from pages.c_suite_skills import _bookend_summary
+
+        groups = load_skill_health()
+        summary = skill_health_summary(groups)
+        bookend = _bookend_summary()
+        scheduled_issues = summary["daily_issue"] + summary["gaps"]
+        scheduled_status = "alert" if scheduled_issues else "ok"
+        items.append(_command_item(
+            "Scheduled Work",
+            f"{summary['daily_completed']} / {summary['daily_total']} due-by-now",
+            f"{scheduled_issues} issues, {summary['daily_remaining']} later today",
+            scheduled_status,
+            "/c-suite-skills",
+        ))
+        bookend_issues = bookend["daily_issues"]
+        bookend_status = "alert" if bookend_issues else ("warn" if bookend["daily_fired"] < bookend["daily_total"] else "ok")
+        items.append(_command_item(
+            "Bookends",
+            f"{bookend['daily_fired']} / {bookend['daily_total']} complete",
+            f"{bookend_issues} issues in Good Morning / Good Night flow",
+            bookend_status,
+            "/c-suite-skills",
+        ))
+    except Exception:
+        items.append(_command_item(
+            "Scheduled Work",
+            "unavailable",
+            "skill-health loader failed",
+            "alert",
+            "/c-suite-skills",
+        ))
+
+    try:
+        from data_sources import check_dashboard_staleness
+
+        stale = check_dashboard_staleness()
+        if stale:
+            first = stale[0]
+            items.append(_command_item(
+                "Freshness",
+                f"{len(stale)} stale source{'s' if len(stale) != 1 else ''}",
+                f"{first.label} {first.age_hours:.1f}h old",
+                "warn",
+                "/infrastructure",
+            ))
+        else:
+            items.append(_command_item(
+                "Freshness",
+                "current",
+                "all dashboard snapshots within thresholds",
+                "ok",
+                "/infrastructure",
+            ))
+    except Exception:
+        items.append(_command_item(
+            "Freshness",
+            "unavailable",
+            "staleness check failed",
+            "alert",
+            "/infrastructure",
+        ))
+
+    try:
+        from pages.deal_aggregator import _load_artifact_tables, _verdict_groups
+
+        listings, _sources, _summary = _load_artifact_tables(date.today(), 1)
+        surfaced, learning, rejected = _verdict_groups(listings)
+        status = "ok" if surfaced else ("warn" if learning else "warn")
+        items.append(_command_item(
+            "Deal Intake",
+            f"{len(surfaced)} surfaced",
+            f"{len(learning)} borderline, {len(rejected)} filtered today",
+            status,
+            "/deal-aggregator",
+        ))
+    except Exception:
+        items.append(_command_item(
+            "Deal Intake",
+            "unavailable",
+            "deal-aggregator artifact read failed",
+            "alert",
+            "/deal-aggregator",
+        ))
+
+    try:
+        from data_sources import load_credit_tiles, load_system_health, system_health_summary
+
+        health = load_system_health()
+        health_summary = system_health_summary(health)
+        credits = load_credit_tiles()
+        review = [t for t in health if t.status in ("alert", "warn")]
+        if health_summary["alert"]:
+            status = "alert"
+        elif health_summary["warn"]:
+            status = "warn"
+        else:
+            status = "ok"
+        if review:
+            detail = f"{review[0].label}: {review[0].detail}"
+        else:
+            live_credits = sum(1 for c in credits if c.runway_color == "green")
+            detail = f"{live_credits} / {len(credits)} usage meters live" if credits else "usage meters unavailable"
+        items.append(_command_item(
+            "System",
+            f"{health_summary['healthy']} healthy",
+            detail,
+            status,
+            "/infrastructure",
+        ))
+    except Exception:
+        items.append(_command_item(
+            "System",
+            "unavailable",
+            "infrastructure loader failed",
+            "alert",
+            "/infrastructure",
+        ))
+
+    return _tile(f"""
+    <section class="gb-command-strip">
+      <div class="gb-command-head">
+        <div>
+          <div class="gb-command-eyebrow">Command Center</div>
+          <div class="gb-command-title">Today&apos;s operating status</div>
+        </div>
+        <div class="gb-command-meta">Live local checks · no email sending</div>
+      </div>
+      <div class="gb-command-grid">
+        {''.join(items)}
+      </div>
+    </section>
+    """)
 
 
 # -----------------------------------------------------------------------------
@@ -97,8 +263,8 @@ def _hero_active_deal_pipeline() -> str:
 
     if snapshot is None:
         return _tile("""
-        <a class="gb-tile hero" href="/deal-pipeline" target="_self">
-        <div class="label">Active Deal Pipeline · NDA Forward</div>
+        <a class="gb-tile hero" href="/ma-analytics" target="_self">
+        <div class="label">Active Pipeline Snapshot</div>
         <div class="gb-hero-row">
         <div class="gb-hero-headline">
         <div class="gb-hero-num">&mdash;<span class="unit">snapshot unreachable</span></div>
@@ -131,11 +297,11 @@ def _hero_active_deal_pipeline() -> str:
     closed_post_nda = getattr(snapshot, "closed_count_post_nda", 0)
 
     if total == 0:
-        headline_unit = "NDA forward"
+        headline_unit = "NDA-forward deals"
     elif total == 1:
-        headline_unit = "active conversation"
+        headline_unit = "NDA-forward deal"
     else:
-        headline_unit = "active conversations"
+        headline_unit = "NDA-forward deals"
 
     advanced_html = (
         f'<span class="green">&uarr; {advanced} advanced this week</span>'
@@ -159,18 +325,11 @@ def _hero_active_deal_pipeline() -> str:
         )
 
     return _tile(f"""
-    <a class="gb-tile hero" href="/deal-pipeline" target="_self">
-    <div class="label">Active Deal Pipeline &middot; NDA Forward</div>
+    <a class="gb-tile hero" href="/ma-analytics" target="_self">
+    <div class="label">Active Pipeline Snapshot</div>
     <div class="gb-hero-row">
     <div class="gb-hero-headline">
     <div class="gb-hero-num">{total}<span class="unit">{headline_unit}</span></div>
-    <div class="gb-hero-trend">
-    {advanced_html}
-    &nbsp;&middot;&nbsp;
-    {stalled_html}
-    &nbsp;&middot;&nbsp;
-    <span>{closed_post_nda} closed post-NDA lifetime</span>
-    </div>
     <div class="gb-hero-cta">View pipeline &rarr;</div>
     </div>
     <div class="gb-stage-bar">
@@ -190,55 +349,32 @@ def _hero_active_deal_pipeline() -> str:
 
 
 def _tile_deal_aggregator() -> str:
-    """Today's count + delta vs prior scan day. Falls back to placeholder on read failure."""
+    """Main dashboard tile for today's Deal Aggregator review lanes."""
     try:
-        from data_sources import load_scan
+        from pages.deal_aggregator import _load_artifact_tables, _verdict_groups
+
         today = date.today()
-        today_scan = load_scan(today)
-        today_count = today_scan.deals_found if today_scan else None
+        listings, _sources, _summary = _load_artifact_tables(today, 1)
+        surfaced, learning, rejected = _verdict_groups(listings)
 
-        # Walk back up to 7 days to find the most recent prior scan (skips weekends).
-        prior_count = None
-        prior_date = None
-        for offset in range(1, 8):
-            d = today - timedelta(days=offset)
-            scan = load_scan(d)
-            if scan is not None:
-                prior_count = scan.deals_found
-                prior_date = d
-                break
+        surfaced_n = len(surfaced)
+        learning_n = len(learning)
+        rejected_n = len(rejected)
 
-        if today_count is None and prior_count is None:
-            primary = '<span class="primary">&mdash;<span class="unit">no recent scan</span></span>'
-            footer = '<span class="gb-horizon">TODAY</span>'
-        else:
-            display_count = today_count if today_count is not None else prior_count
-            display_label = "new leads" if today_count is not None else f"on {prior_date.strftime('%-m/%-d')}"
-            primary = f'<div class="primary">{display_count}<span class="unit">{display_label}</span></div>'
-
-            if today_count is not None and prior_count is not None and prior_date is not None:
-                delta = today_count - prior_count
-                prior_label = prior_date.strftime("%-m/%-d")
-                if delta > 0:
-                    trend = f'<span class="gb-trend up">&uarr; vs. {prior_count} on {prior_label}</span>'
-                elif delta < 0:
-                    trend = f'<span class="gb-trend down">&darr; vs. {prior_count} on {prior_label}</span>'
-                else:
-                    trend = f'<span class="gb-trend">flat vs. {prior_label}</span>'
-                horizon = "TODAY"
-            else:
-                # Today's scan not yet run (weekend, or before 6am Mon-Fri fire). Show the
-                # prior-day count without a fake delta and label the horizon clearly.
-                trend = '<span class="gb-trend">awaiting next scan</span>'
-                horizon = "LAST SCAN"
-            footer = f'{trend}<span class="gb-horizon">{horizon}</span>'
+        status_class = "up" if surfaced_n else ("flat" if learning_n else "")
+        footer_text = "review intake" if surfaced_n or learning_n else "scan complete"
 
         return _tile(f"""
         <a class="gb-tile" href="/deal-aggregator" target="_self">
         <div class="label">Deal Aggregator</div>
-        {primary}
+        <div class="gb-deal-agg-tile-lines">
+          <div><span class="num">{surfaced_n}</span> surfaced today</div>
+          <div><span class="num">{learning_n}</span> borderline</div>
+          <div><span class="num dim">{rejected_n}</span> filtered</div>
+        </div>
         <div class="footer">
-        {footer}
+        <span class="gb-trend {status_class}">&rarr; {escape(footer_text)}</span>
+        <span class="gb-horizon">TODAY</span>
         </div>
         </a>
         """)
@@ -254,99 +390,77 @@ def _tile_deal_aggregator() -> str:
         </a>
         """)
 
-
 def _tile_ma_analytics() -> str:
-    """Stacked metric list. Owner = strict deal-owner conversations; Quality
-    expands beyond recorded calls to include conference/luncheon conversations
-    (manual feed). Cold channels only: cold emails (DealsX), cold LinkedIn DM,
-    cold calls (JJ) — Kay's own emails/DMs are WARM relationship outreach and
-    are deliberately excluded. NDAs dropped — already on the Active Deal
-    Pipeline tile."""
-    owner_now: object = 0
-    quality_now: object = 0
-    cold_emails: object = "&mdash;"
-    cold_li: object = "&mdash;"
-    cold_calls: object = "&mdash;"
-    reply_rate = "&mdash;"
+    """Main dashboard tile for Kay's current weekly sourcing goals."""
+    goals = []
     try:
-        from datetime import date, timedelta
-        from data_sources import (
-            load_ma_analytics,
-            load_jj_activity,
-            load_dealsx_manual,
-            load_quality_conversations,
-        )
+        from data_sources import load_ma_analytics
 
-        today = date.today()
-        ws, we = today - timedelta(days=6), today
-
-        ma = load_ma_analytics(today=today)
-        om = ma.outreach_metrics
-        jj = load_jj_activity()
-        dealsx = load_dealsx_manual(ws, we)
-        manual = load_quality_conversations(ws, we)
-
-        # The deal-flow tile counts partner-classified calls — that is the
-        # broad "meaningful conversation" set (intermediaries, capital
-        # partners, peers), NOT actual target business owners. Call
-        # frontmatter has no owner sub-type, so owner-ness can only come from
-        # explicit curation. Owner conversations = ONLY entries explicitly
-        # flagged type=owner in the manual feed (a recorded owner call must
-        # get a manual owner entry to count). Today that is correctly 0.
-        partner_calls = int(ma.deal_flow_tiles[0].value) if ma.deal_flow_tiles else 0
-        owner_now = sum(1 for m in manual if m.type == "owner")
-        # Quality = every meaningful conversation: partner-classified calls +
-        # all curated conference/meeting conversations.
-        quality_now = partner_calls + len(manual)
-
-        # COLD emails only = DealsX. Kay's own sends are warm relationship
-        # outreach and are excluded from the cold funnel entirely.
-        dealsx_sent = dealsx.sent if dealsx else 0
-        dealsx_replied = dealsx.replied if dealsx else 0
-        if dealsx_sent:
-            cold_emails = dealsx_sent
-
-        # Cold LinkedIn DM = DealsX LinkedIn volume when fed (linkedin_sent
-        # >= 0). Kay's CEO LinkedIn DMs are warm — not counted here.
-        dealsx_li = dealsx.linkedin_sent if dealsx else -1
-        if dealsx_li >= 0:
-            cold_li = dealsx_li
-
-        # Cold calls = JJ dial campaign.
-        jj_calls = jj.dials_in_window(ws, we) if jj else 0
-        if jj_calls:
-            cold_calls = jj_calls
-
-        # Reply rate over the cold-email channel (DealsX).
-        if dealsx_sent:
-            reply_rate = f"{dealsx_replied / dealsx_sent * 100:.1f}%"
+        ma = load_ma_analytics(today=date.today())
+        goals = ma.weekly_goals
     except Exception:
-        pass
+        goals = []
+
+    if not goals:
+        goal_rows = """
+        <div class="gb-ma-label">Conferences / networking</div><div class="gb-ma-value">&mdash;</div>
+        <div class="gb-ma-label">Intermediary / river-guide</div><div class="gb-ma-value">&mdash;</div>
+        <div class="gb-ma-label">Owner / seller</div><div class="gb-ma-value">&mdash;</div>
+        """
+        footer_text = "source check needed"
+    else:
+        def _dot(status: str) -> str:
+            if status == "on_track":
+                return "green"
+            if status == "below":
+                return "red"
+            return "yellow"
+
+        def _short(label: str) -> str:
+            return {
+                "Conferences / networking": "Conferences / networking",
+                "Intermediary / river-guide": "Intermediary / river-guide",
+                "Owner / seller": "Owner / seller",
+            }.get(label, label)
+
+        goal_rows = "".join(
+            f'<div class="gb-ma-label"><span class="gb-status-dot {_dot(g.status)}" '
+            f'style="width:7px;height:7px;display:inline-block;margin-right:7px;"></span>{escape(_short(g.label))}</div>'
+            f'<div class="gb-ma-value">{g.count} / {g.target_min}-{g.target_max}</div>'
+            for g in goals
+        )
+        below = sum(1 for g in goals if g.status == "below")
+        above = sum(1 for g in goals if g.status == "above")
+        if below:
+            footer_text = f"{below} below goal"
+        elif above:
+            footer_text = f"{above} above target"
+        else:
+            footer_text = "all on track"
+
     return _tile(f"""
     <a class="gb-tile" href="/ma-analytics" target="_self">
     <div class="label">M&amp;A Analytics</div>
+    <div style="font-size: 0.78em; color: #888; margin-bottom: 12px; letter-spacing: 0.16em; text-transform: uppercase;">This Month's Weekly Goals</div>
     <div class="gb-ma-list">
-    <div class="gb-ma-label">Owner conversations</div><div class="gb-ma-value">{owner_now}</div>
-    <div class="gb-ma-label">Quality conversations</div><div class="gb-ma-value">{quality_now}</div>
-    <div class="gb-ma-label">Cold emails</div><div class="gb-ma-value">{cold_emails}</div>
-    <div class="gb-ma-label">Cold LinkedIn DM</div><div class="gb-ma-value">{cold_li}</div>
-    <div class="gb-ma-label">Cold calls</div><div class="gb-ma-value">{cold_calls}</div>
-    <div class="gb-ma-label">Reply rate</div><div class="gb-ma-value">{reply_rate}</div>
+    {goal_rows}
     </div>
     <div class="footer">
-    <span class="gb-trend flat">&rarr; Cold outreach &middot; warm excluded</span>
+    <span class="gb-trend flat">&rarr; {escape(footer_text)}</span>
     <span class="gb-horizon">THIS WEEK</span>
     </div>
     </a>
     """)
 
-
 def _tile_c_suite_skills() -> str:
-    """Live: count of scheduled skills that fired today + alert state."""
+    """Live: daily scheduled + bookend-triggered skill status."""
     try:
         from data_sources import load_skill_health, skill_health_summary
+        from pages.c_suite_skills import _bookend_summary
+
         groups = load_skill_health()
         summary = skill_health_summary(groups)
+        bookend = _bookend_summary()
     except Exception:
         return _tile("""
         <a class="gb-tile" href="/c-suite-skills" target="_self">
@@ -358,40 +472,31 @@ def _tile_c_suite_skills() -> str:
         </div>
         </a>
         """)
-    fired = summary["fired_today"]
-    on_deck = summary["on_deck"]
-    missed = summary["missed"]
-    gaps = summary["gaps"]
-    today_scheduled = summary["today_scheduled"]
-    today_failed = summary["today_failed"]
-    wtd_fired = summary["wtd_fired"]
-    wtd_expected = summary["wtd_expected"]
-    if gaps > 0 or missed > 0:
-        dot = "red"
-        bits = []
-        if gaps:
-            bits.append(f"{gaps} gap")
-        if missed:
-            bits.append(f"{missed} missed")
-        status_text = " &middot; ".join(bits)
-    elif on_deck > 0:
-        dot = "yellow"
-        status_text = f"{on_deck} on deck"
-    else:
-        dot = "green"
-        status_text = "all on schedule"
-    failed_clause = f", {today_failed} failed" if today_failed > 0 else ""
+
+    scheduled_completed = summary["daily_completed"]
+    scheduled_total = summary["daily_total"]
+    scheduled_issues = summary["daily_issue"] + summary["gaps"]
+    bookend_completed = bookend["daily_fired"]
+    bookend_total = bookend["daily_total"]
+    bookend_issues = bookend["daily_issues"]
     return _tile(f"""
     <a class="gb-tile" href="/c-suite-skills" target="_self">
     <div class="label">C-Suite &amp; Skills</div>
-    <div class="primary">{fired}<span class="unit">/ {today_scheduled} fired{failed_clause}</span></div>
-    <div class="gb-status-row">
-    <span class="gb-status-dot {dot}"></span>
-    <span class="gb-status-text">{status_text}</span>
+    <div style="font-size: 0.78em; color: #888; margin-bottom: 12px; letter-spacing: 0.16em; text-transform: uppercase;">Daily</div>
+    <div style="font-size: 0.82em; color: #6f7788; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px;">Scheduled</div>
+    <div class="primary" style="font-size: 1.72em; line-height: 1.05; margin-bottom: 6px;">{scheduled_completed}<span class="unit">/ {scheduled_total} completed</span></div>
+    <div class="gb-status-row" style="margin-top: 0;">
+    <span class="gb-status-dot {'red' if scheduled_issues else 'green'}"></span>
+    <span class="gb-status-text">{scheduled_issues} {'issue' if scheduled_issues == 1 else 'issues'}</span>
     </div>
-    <div style="font-size: 0.78em; color: #888; margin-top: 4px;">Week-to-date: {wtd_fired}/{wtd_expected} fired</div>
+    <div style="font-size: 0.82em; color: #6f7788; letter-spacing: 0.12em; text-transform: uppercase; margin: 16px 0 6px;">Bookend Triggered</div>
+    <div style="font-size: 0.9em; color: #cfd3dc; font-variant-numeric: tabular-nums; margin-bottom: 6px;">{bookend_completed} / {bookend_total} completed</div>
+    <div class="gb-status-row" style="margin-top: 0;">
+    <span class="gb-status-dot {'red' if bookend_issues else 'green'}"></span>
+    <span class="gb-status-text">{bookend_issues} {'issue' if bookend_issues == 1 else 'issues'}</span>
+    </div>
     <div class="footer">
-    <span class="gb-trend flat">&rarr; {summary["ondemand"]} on-demand</span>
+    <span class="gb-trend flat">&rarr; {summary["ondemand"]} on-demand skills</span>
     <span class="gb-horizon">TODAY</span>
     </div>
     </a>
@@ -399,15 +504,16 @@ def _tile_c_suite_skills() -> str:
 
 
 def _tile_infrastructure() -> str:
-    """Live: System Health tile counts + alert state."""
+    """Live: infrastructure operating status for the landing page."""
     try:
-        from data_sources import load_system_health, system_health_summary
+        from data_sources import load_credit_tiles, load_system_health, system_health_summary
         tiles = load_system_health()
+        credits = load_credit_tiles()
         summary = system_health_summary(tiles)
     except Exception:
         return _tile("""
         <a class="gb-tile" href="/infrastructure" target="_self">
-        <div class="label">Infrastructure</div>
+        <div class="label">System Health &amp; Infrastructure</div>
         <div class="primary">&mdash;<span class="unit">probes unreachable</span></div>
         <div class="footer">
         <span class="gb-trend flat">&rarr; check page</span>
@@ -415,27 +521,52 @@ def _tile_infrastructure() -> str:
         </div>
         </a>
         """)
-    healthy = summary["healthy"]
-    total = sum(summary.values())
-    if summary["alert"] > 0:
-        dot = "red"
-        status_text = (
-            f'{summary["alert"]} alert &middot; {summary["warn"]} warn'
-            if summary["warn"] else f'{summary["alert"]} alert'
-        )
-    elif summary["warn"] > 0:
-        dot = "yellow"
-        status_text = f'{summary["warn"]} warn'
+
+    problem_tiles = [t for t in tiles if t.status in ("alert", "warn")]
+    problem_tiles.sort(key=lambda t: 0 if t.status == "alert" else 1)
+    if problem_tiles:
+        issue = problem_tiles[0]
+        issue_dot = "red" if issue.status == "alert" else "yellow"
+        issue_text = f'{escape(issue.label)} needs review'
+        issue_detail = escape(issue.detail)
     else:
-        dot = "green"
-        status_text = "all systems nominal"
+        issue_dot = "green"
+        issue_text = "No infrastructure issues"
+        issue_detail = ""
+
+    usage_live = sum(1 for t in credits if t.runway_color == "green")
+    usage_total = len(credits)
+    usage_dot = "green" if usage_total and usage_live == usage_total else "yellow"
+    usage_text = f'{usage_live} / {usage_total} usage meters live' if usage_total else "Usage meters unavailable"
+
+    if summary["alert"]:
+        primary = "Issue"
+        primary_unit = "needs review"
+    elif summary["warn"]:
+        primary = "Running"
+        primary_unit = "with review item"
+    else:
+        primary = "Running"
+        primary_unit = "all clear"
+
+    issue_detail_html = f'<div style="font-size: 0.78em; color: #7f8798; margin-top: 3px; line-height: 1.25;">{issue_detail}</div>' if issue_detail else ""
+
     return _tile(f"""
     <a class="gb-tile" href="/infrastructure" target="_self">
-    <div class="label">Infrastructure</div>
-    <div class="primary">{healthy}<span class="unit">/ {total} healthy</span></div>
+    <div class="label">System Health &amp; Infrastructure</div>
+    <div class="primary" style="font-size: 2.1em;">{primary}<span class="unit">{primary_unit}</span></div>
     <div class="gb-status-row">
-    <span class="gb-status-dot {dot}"></span>
-    <span class="gb-status-text">{status_text}</span>
+    <span class="gb-status-dot green"></span>
+    <span class="gb-status-text">Core systems running</span>
+    </div>
+    <div class="gb-status-row" style="margin-top: 7px;">
+    <span class="gb-status-dot {issue_dot}"></span>
+    <span class="gb-status-text">{issue_text}</span>
+    </div>
+    {issue_detail_html}
+    <div class="gb-status-row" style="margin-top: 7px;">
+    <span class="gb-status-dot {usage_dot}"></span>
+    <span class="gb-status-text">{usage_text}</span>
     </div>
     <div class="footer">
     <span class="gb-trend flat">&rarr; live probes</span>
@@ -448,6 +579,7 @@ def _tile_infrastructure() -> str:
 def render() -> None:
     import streamlit as st
 
+    command_strip = _command_center_strip()
     hero = _hero_active_deal_pipeline()
     small_tiles = [
         _tile_deal_aggregator(),
@@ -456,7 +588,7 @@ def render() -> None:
         _tile_infrastructure(),
     ]
     st.markdown(
-        f'<div class="gb-grid">{hero}{"".join(small_tiles)}</div>',
+        f'{command_strip}<div class="gb-grid">{hero}{"".join(small_tiles)}</div>',
         unsafe_allow_html=True,
     )
     st.markdown(

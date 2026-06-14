@@ -311,6 +311,92 @@ GLOBAL_CSS = f"""
     font-weight: 600;
   }}
 
+  /* -------- COMMAND CENTER STRIP -------- */
+  .gb-command-strip {{
+    background: linear-gradient(135deg, rgba(74, 158, 255, 0.08), rgba(20, 24, 33, 0.98));
+    border: 1px solid rgba(74, 158, 255, 0.22);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }}
+  .gb-command-head {{
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }}
+  .gb-command-eyebrow {{
+    font-size: 10.5px;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }}
+  .gb-command-title {{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text);
+  }}
+  .gb-command-meta {{
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    padding-top: 3px;
+  }}
+  .gb-command-grid {{
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+  }}
+  .gb-command-item {{
+    display: block;
+    min-height: 104px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 13px;
+    text-decoration: none !important;
+    color: inherit !important;
+    transition: all 0.18s;
+  }}
+  .gb-command-item:hover {{
+    background: rgba(255,255,255,0.045);
+    border-color: var(--border-bright);
+    transform: translateY(-1px);
+  }}
+  .gb-command-item-head {{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 10.5px;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }}
+  .gb-command-value {{
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }}
+  .gb-command-detail {{
+    margin-top: 8px;
+    color: var(--text-muted);
+    font-size: 11.5px;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }}
+
   /* -------- TILE GRID -------- */
   /* 4-col grid per locked mockup. Hero tile spans full width via grid-column: 1/-1 */
   .gb-grid {{
@@ -503,6 +589,25 @@ GLOBAL_CSS = f"""
     color: var(--text-muted);
   }}
 
+  .gb-deal-agg-tile-lines {{
+    display: grid;
+    gap: 8px;
+    margin-top: 6px;
+    color: var(--text-muted);
+    font-size: 13.5px;
+  }}
+  .gb-deal-agg-tile-lines .num {{
+    display: inline-block;
+    min-width: 28px;
+    margin-right: 6px;
+    color: var(--text);
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }}
+  .gb-deal-agg-tile-lines .num.dim {{ color: var(--text-dim); }}
+
   /* M&A stacked tile list */
   .gb-ma-list {{
     display: grid;
@@ -619,6 +724,23 @@ GLOBAL_CSS = f"""
     font-weight: 500;
     margin-right: 5px;
     font-variant-numeric: tabular-nums;
+  }}
+  .gb-summary.gb-summary-rows {{
+    display: grid;
+    gap: 8px;
+    padding: 10px 0 20px;
+  }}
+  .gb-summary-row {{
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    align-items: baseline;
+    color: var(--text-muted);
+  }}
+  .gb-summary-label {{
+    min-width: 128px;
+    color: var(--text);
+    font-weight: 500;
   }}
 
   /* -------- FILTER BAR -------- */
@@ -750,6 +872,113 @@ GLOBAL_CSS = f"""
   .gb-status-badge.reviewed {{ background: rgba(139, 147, 167, 0.14); color: var(--text-muted); }}
   .gb-status-badge.pursuing {{ background: rgba(63, 209, 127, 0.12); color: var(--green); }}
   .gb-status-badge.passed   {{ background: rgba(107, 114, 128, 0.14); color: var(--text-dim); }}
+
+  .gb-status-badge.pass {{ background: rgba(63, 209, 127, 0.12); color: var(--green); }}
+  .gb-status-badge.brokeropportunistic {{ background: rgba(245, 194, 80, 0.13); color: var(--yellow); }}
+  .gb-status-badge.nearmiss {{ background: rgba(176, 132, 240, 0.13); color: var(--purple); }}
+  .gb-status-badge.flag {{ background: rgba(74, 158, 255, 0.12); color: var(--accent); }}
+  .gb-status-badge.hardreject {{ background: rgba(255, 93, 93, 0.12); color: var(--red); }}
+
+  .gb-deal-status-grid {{
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+    margin: 8px 0 20px;
+  }}
+  .gb-deal-status-grid > div {{
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--panel);
+    padding: 12px 14px;
+    color: var(--text-muted);
+    font-size: 12px;
+  }}
+  .gb-deal-status-grid .num {{
+    display: block;
+    color: var(--text);
+    font-size: 22px;
+    line-height: 1.1;
+    margin-bottom: 5px;
+    font-variant-numeric: tabular-nums;
+  }}
+  .gb-deal-status-grid .num.green {{ color: var(--green); }}
+  .gb-deal-status-grid .num.red {{ color: var(--red); }}
+  .gb-deal-status-grid .num.dim {{ color: var(--text-dim); }}
+  .gb-review-table tbody td {{ font-size: 11.5px; vertical-align: top; }}
+  .gb-review-table .gb-company.compact {{ font-size: 12.5px; line-height: 1.35; }}
+  .gb-inline-link {{ color: var(--text) !important; text-decoration: none !important; }}
+  .gb-inline-link:hover {{ color: var(--accent) !important; }}
+  .gb-section-footnote {{
+    color: var(--text-dim);
+    font-size: 11.5px;
+    padding: 10px 2px 0;
+  }}
+  .gb-reject-summary {{
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--panel);
+    padding: 16px;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) 1.1fr;
+    gap: 18px;
+    color: var(--text-muted);
+    font-size: 12px;
+  }}
+  .gb-reject-summary .num {{
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    margin-right: 7px;
+  }}
+  .gb-chip-row {{ display: flex; flex-wrap: wrap; gap: 8px; align-content: flex-start; }}
+  .gb-chip {{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 9px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+    color: var(--text-muted);
+    font-size: 11px;
+  }}
+  .gb-chip span {{ color: var(--text); font-variant-numeric: tabular-nums; }}
+  .gb-source-group {{
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--panel);
+    overflow: hidden;
+    margin-bottom: 12px;
+  }}
+  .gb-source-group-title {{
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--text);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }}
+  .gb-source-row {{
+    display: grid;
+    grid-template-columns: 1.7fr 1fr 0.8fr 0.7fr 0.9fr;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--text-muted);
+    font-size: 12px;
+  }}
+  .gb-source-row:last-child {{ border-bottom: none; }}
+  .gb-source-detail {{ color: var(--text-dim); font-size: 11px; margin-top: 3px; }}
+  .gb-status-dot {{
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-right: 7px;
+  }}
+  .gb-status-dot.ok {{ background: var(--green); }}
+  .gb-status-dot.warn {{ background: var(--yellow); }}
+  .gb-raw-archive .gb-table-wrap {{ border-radius: 0 0 10px 10px; border-left: none; border-right: none; border-bottom: none; }}
 
   .gb-link-cell {{ text-align: center; width: 40px; }}
   .gb-link-icon {{
@@ -1211,6 +1440,28 @@ GLOBAL_CSS = f"""
   .gb-flow-tile.fired-warn {{ border-color: var(--yellow); background: rgba(240, 200, 90, 0.06); }}
   .gb-flow-tile.fired-err {{ border-color: var(--red); background: rgba(255, 90, 90, 0.06); }}
   .gb-flow-tile.missed {{ border-color: var(--red); background: rgba(255, 90, 90, 0.04); border-style: dashed; }}
+  .gb-flow-legend {{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 10px 0 10px;
+  }}
+  .gb-flow-legend-pill {{
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--border-soft);
+    border-radius: 6px;
+    padding: 6px 9px;
+    background: rgba(255,255,255,0.02);
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }}
+  .gb-flow-legend-pill.fired-ok {{ border-color: var(--green); background: rgba(63, 209, 127, 0.06); }}
+  .gb-flow-legend-pill.missed {{ border-color: var(--red); background: rgba(255, 90, 90, 0.04); border-style: dashed; }}
   .gb-flow-tile-name {{
     font-family: "SF Mono", "Menlo", "Monaco", monospace;
     font-size: 10.5px;
@@ -1330,6 +1581,16 @@ GLOBAL_CSS = f"""
     color: var(--text-muted);
     line-height: 1.35;
   }}
+  .gb-usage-tile .unit {{
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }}
+  .gb-usage-trend {{
+    display: block;
+    margin-top: 6px;
+    color: var(--text-muted);
+  }}
 
   /* Zone 2: External Connectivity & Tooling — service rows */
   .gb-svc-row {{
@@ -1418,6 +1679,30 @@ GLOBAL_CSS = f"""
   .gb-svc-chevron {{ color: var(--text-dim); text-align: center; font-size: 14px; }}
   .gb-svc-row:hover .gb-svc-chevron {{ color: var(--accent); }}
   .gb-svc-row .gb-status-dot {{ width: 10px; height: 10px; }}
+  .gb-tooling-actions {{
+    border-bottom: 1px solid var(--border);
+  }}
+  .gb-tooling-subhead {{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }}
+  .gb-tooling-subhead span:first-child {{
+    color: var(--text);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+  }}
+  .gb-stack-list-compact .gb-stack-row {{
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }}
 
   /* Zone 3: Credits & Subscription Spend — tile grid */
   .gb-credits-grid {{
@@ -1569,6 +1854,9 @@ GLOBAL_CSS = f"""
     gap: 1px;
     background: var(--border);
   }}
+  .gb-kpi-strip.gb-kpi-strip-three {{
+    grid-template-columns: repeat(3, 1fr);
+  }}
   .gb-kpi-tile {{
     background: var(--panel);
     padding: 18px 20px;
@@ -1640,6 +1928,86 @@ GLOBAL_CSS = f"""
   .gb-kpi-sub .delta-up {{ color: var(--green); }}
   .gb-kpi-sub .delta-down {{ color: var(--red); }}
   .gb-kpi-sub .delta-flat {{ color: var(--text-dim); }}
+  .gb-weekly-detail {{
+    margin-top: 5px;
+    line-height: 1.35;
+  }}
+  .gb-weekly-detail-label {{
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }}
+  .gb-weekly-detail ol {{
+    margin: 0;
+    padding-left: 16px;
+  }}
+  .gb-weekly-detail li {{
+    margin: 2px 0;
+  }}
+
+  .gb-pipe-strip {{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }}
+  .gb-pipe-cell {{
+    background: var(--panel);
+    padding: 16px 14px;
+    min-height: 118px;
+    border-top: 3px solid var(--neutral);
+  }}
+  .gb-pipe-cell.active {{ border-top-color: var(--accent); }}
+  .gb-pipe-cell.closed {{ border-top-color: var(--red); }}
+  .gb-pipe-cell.empty {{ opacity: 0.78; }}
+  .gb-pipe-top {{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 30px;
+  }}
+  .gb-pipe-label {{
+    color: var(--text-dim);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1.25;
+  }}
+  .gb-pipe-badge {{
+    color: var(--text);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 1px 7px;
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+  }}
+  .gb-pipe-list {{
+    margin: 10px 0 0 0 !important;
+    padding-left: 13px !important;
+    color: var(--text);
+    font-size: 9.5px !important;
+    line-height: 1.28 !important;
+  }}
+  .gb-pipe-list li {{
+    margin: 1px 0 !important;
+    font-size: 9.5px !important;
+    line-height: 1.28 !important;
+  }}
+  .gb-pipe-list a {{
+    color: var(--text);
+    text-decoration: none;
+    font-size: 9.5px !important;
+    line-height: 1.28 !important;
+  }}
+  .gb-pipe-list a:hover {{ color: var(--accent); }}
+  .gb-pipe-list .dim {{ color: var(--text-dim); }}
+  .gb-pipe-meta {{
+    color: var(--text-muted);
+    font-size: 9px !important;
+    line-height: 1.25;
+    margin-top: 8px;
+  }}
 
   /* Zone 3: Channel Performance table — extends .gb-table with channel-row chrome. */
   .gb-ch-table {{ width: 100%; border-collapse: collapse; }}
@@ -1872,6 +2240,30 @@ GLOBAL_CSS = f"""
     .gb-topbar h1 {{ font-size: 18px; }}
     .gb-topbar .meta {{ font-size: 11px; }}
 
+    /* --- Command strip: stack checks before the primary tiles --- */
+    .gb-command-strip {{
+      padding: 16px;
+      margin-bottom: 12px;
+    }}
+    .gb-command-head {{
+      flex-direction: column;
+      gap: 4px;
+    }}
+    .gb-command-title {{ font-size: 18px; }}
+    .gb-command-meta {{ white-space: normal; }}
+    .gb-command-grid {{
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }}
+    .gb-command-item {{
+      min-height: 0;
+      padding: 11px 12px;
+    }}
+    .gb-command-value {{
+      font-size: 20px;
+      white-space: normal;
+    }}
+
     /* --- Landing tile grid: 4 cols → 1 col --- */
     .gb-grid {{
       grid-template-columns: 1fr;
@@ -1951,10 +2343,14 @@ GLOBAL_CSS = f"""
     }}
 
     /* --- M&A Analytics: KPI strip 5 → 2 cols, smaller value font --- */
-    .gb-kpi-strip {{
+    .gb-kpi-strip,
+    .gb-kpi-strip.gb-kpi-strip-three {{
       grid-template-columns: repeat(2, 1fr);
     }}
     .gb-kpi-value {{ font-size: 24px; }}
+    .gb-pipe-strip {{
+      grid-template-columns: repeat(2, 1fr);
+    }}
 
     /* --- M&A Analytics: trends grid 2 → 1 col --- */
     .gb-trend-grid {{

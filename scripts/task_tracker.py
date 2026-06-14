@@ -239,6 +239,7 @@ DAY_COL_NOTES = 4    # E — Notes free text
 DAY_COL_LAST = DAY_COL_NOTES
 DAY_HEADERS = ["✓", "Task", "Type", "Project", "Notes"]
 DAY_SLOT_COUNT = DAY_SLOT_LAST_ROW - DAY_SLOT_FIRST_ROW + 1  # 25
+TOP_PRIORITY_SLOT_COUNT = 3  # fixed green-shaded priority band per day
 DAY_HABIT_COUNT = DAY_HABIT_LAST_ROW - DAY_HABIT_FIRST_ROW + 1  # 9
 
 TAB_DONUT_DATA = "_donut_data"
@@ -1105,6 +1106,15 @@ def _day_clear_requests(sid: int) -> list[dict]:
                   "startColumnIndex": DAY_COL_TASK, "endColumnIndex": DAY_COL_LAST + 1},
         "cell": {"userEnteredValue": {"stringValue": ""}},
         "fields": "userEnteredValue"}})
+    # Top 3 priority slots retain fixed sage shading after the weekly clear.
+    reqs.append({"repeatCell": {
+        "range": {"sheetId": sid,
+                  "startRowIndex": DAY_SLOT_FIRST_ROW - 1,
+                  "endRowIndex": DAY_SLOT_FIRST_ROW - 1 + TOP_PRIORITY_SLOT_COUNT,
+                  "startColumnIndex": DAY_COL_STATUS, "endColumnIndex": DAY_COL_LAST + 1},
+        "cell": {"userEnteredFormat": {"backgroundColor": hex_to_rgb(SAGE_LIGHT_HEX)}},
+        "fields": "userEnteredFormat.backgroundColor"}})
+
     # Free-notes block (cols A..E, rows 43..50) → empty
     reqs.append({"repeatCell": {
         "range": {"sheetId": sid,
@@ -2629,6 +2639,7 @@ def cmd_reformat(args) -> int:
         sys.exit("task-tracker-manager: no day tabs present — run scripts/build_day_tabs.py first")
     todo_sid = find_tab(meta, TAB_TODO)["sheetId"] if find_tab(meta, TAB_TODO) else None
     pj_sid = find_tab(meta, TAB_PROJECTS)["sheetId"] if find_tab(meta, TAB_PROJECTS) else None
+    week_sid = find_tab(meta, TAB_WEEK)["sheetId"] if find_tab(meta, TAB_WEEK) else None
 
     snap = snapshot_ranges(client, "reformat", [
         day_tab_block(n, DAY_COL_STATUS, DAY_COL_LAST, 1, DAY_GRID_ROWS)
@@ -2644,6 +2655,17 @@ def cmd_reformat(args) -> int:
     # Per day tab: slot rule =$A13=TRUE over A13:E27, habit rule =$A4=TRUE over A4:E10.
     for day_name, props in day_tabs:
         sid = props["sheetId"]
+        # Top 3 priority slots: fixed sage shading across A:E.
+        R.append({"repeatCell": {
+            "range": {"sheetId": sid,
+                        "startRowIndex": DAY_SLOT_FIRST_ROW - 1,
+                        "endRowIndex": DAY_SLOT_FIRST_ROW - 1 + TOP_PRIORITY_SLOT_COUNT,
+                        "startColumnIndex": DAY_COL_STATUS,
+                        "endColumnIndex": DAY_COL_LAST + 1},
+            "cell": {"userEnteredFormat": {"backgroundColor": hex_to_rgb(SAGE_LIGHT_HEX)}},
+            "fields": "userEnteredFormat.backgroundColor",
+        }})
+
         # Slot rule: status TRUE → strikethrough + sage-extra-light across A:E.
         R.append({"addConditionalFormatRule": {
             "rule": {
@@ -2682,6 +2704,21 @@ def cmd_reformat(args) -> int:
             },
             "index": 0,
         }})
+
+    # Week tab: mirror the same fixed top-3 priority shading for each day block.
+    if week_sid is not None:
+        for i in range(7):
+            sc = wk_status_col(i)
+            tc = wk_content_col(i)
+            R.append({"repeatCell": {
+                "range": {"sheetId": week_sid,
+                            "startRowIndex": WK_SLOT_FIRST_ROW - 1,
+                            "endRowIndex": WK_SLOT_FIRST_ROW - 1 + TOP_PRIORITY_SLOT_COUNT,
+                            "startColumnIndex": sc,
+                            "endColumnIndex": tc + 1},
+                "cell": {"userEnteredFormat": {"backgroundColor": hex_to_rgb(SAGE_LIGHT_HEX)}},
+                "fields": "userEnteredFormat.backgroundColor",
+            }})
 
     # To Do tab CF — Status is now a 3-state dropdown string (2026-05-17).
     # Completed → strikethrough + sage-light. On-going → subtle sage fill (no
@@ -2757,30 +2794,8 @@ def cmd_reformat(args) -> int:
             compact_summary["day_tab_packed"] += 1
             print(f"task-tracker-manager: packed {day_tab} day tab ({n} items at top)")
 
-    # Week-tab day-blocks
-    week_tab = find_tab(meta, TAB_WEEK)
-    if week_tab is not None:
-        for i, day_name in enumerate(WK_DAY_ORDER):
-            sc = col_letter(wk_status_col(i))
-            cc = col_letter(wk_content_col(i))
-            try:
-                statuses = _flat(client.get_values(f"'{TAB_WEEK}'!{sc}{WK_SLOT_FIRST_ROW}:{sc}{WK_SLOT_LAST_ROW}"), default=False)
-                tasks    = _flat(client.get_values(f"'{TAB_WEEK}'!{cc}{WK_SLOT_FIRST_ROW}:{cc}{WK_SLOT_LAST_ROW}"), default="")
-            except Exception:
-                continue
-            packed = [(s, t) for s, t in zip(statuses, tasks) if str(t or "").strip()]
-            needs_compact = False
-            for j, t in enumerate(tasks):
-                if not str(t or "").strip() and any(str(tt or "").strip() for tt in tasks[j+1:]):
-                    needs_compact = True; break
-            if needs_compact:
-                n = len(packed)
-                new_status = [[s] for s, _ in packed] + [[False]] * (WK_SLOT_COUNT - n)
-                new_task   = [[t] for _, t in packed] + [[""]] * (WK_SLOT_COUNT - n)
-                client.values_update(f"'{TAB_WEEK}'!{sc}{WK_SLOT_FIRST_ROW}:{sc}{WK_SLOT_LAST_ROW}", new_status)
-                client.values_update(f"'{TAB_WEEK}'!{cc}{WK_SLOT_FIRST_ROW}:{cc}{WK_SLOT_LAST_ROW}", new_task)
-                compact_summary["week_block_packed"] += 1
-                print(f"task-tracker-manager: packed Week tab {day_name} day-block ({n} items at top)")
+    # Week tab is a formula mirror of day tabs; never compact it directly.
+    # Day-tab packing flows through formulas instead.
 
     trace("reformat", "rules-reapplied", [
         f"- applied {len(R)} conditional-format rules",

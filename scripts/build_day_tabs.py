@@ -287,6 +287,14 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
             "verticalAlignment": "MIDDLE",
             "textFormat": {"fontSize": 17, "foregroundColor": INK}}},
         "fields": "userEnteredFormat(verticalAlignment,textFormat)"}})
+    # Top 3 priority slots: fixed sage shading across A:E
+    R.append({"repeatCell": {
+        "range": {"sheetId": sid, "startRowIndex": DAY_SLOT_FIRST_ROW - 1,
+                  "endRowIndex": DAY_SLOT_FIRST_ROW - 1 + TOP_PRIORITY_SLOT_COUNT,
+                  "startColumnIndex": 0, "endColumnIndex": 5},
+        "cell": {"userEnteredFormat": {"backgroundColor": SAGE_LIGHT}},
+        "fields": "userEnteredFormat.backgroundColor"}})
+
     # C: Type dropdown
     R.append({"setDataValidation": {
         "range": {"sheetId": sid, "startRowIndex": DAY_SLOT_FIRST_ROW - 1,

@@ -171,6 +171,12 @@ def structure_requests(sid: int, wd) -> list[dict]:
                 "verticalAlignment": "MIDDLE", "wrapStrategy": "WRAP",
                 "textFormat": {"fontSize": 10, "foregroundColor": INK}}},
             "fields": "userEnteredFormat(verticalAlignment,wrapStrategy,textFormat)"}})
+        R.append({"repeatCell": {
+            "range": {"sheetId": sid, "startRowIndex": tt.WK_SLOT_FIRST_ROW - 1,
+                      "endRowIndex": tt.WK_SLOT_FIRST_ROW - 1 + tt.TOP_PRIORITY_SLOT_COUNT,
+                      "startColumnIndex": sc, "endColumnIndex": tc + 1},
+            "cell": {"userEnteredFormat": {"backgroundColor": SAGE_LIGHT}},
+            "fields": "userEnteredFormat.backgroundColor"}})
         # Done-row CF: status TRUE → strikethrough + sage-extra-light over the
         # day's status+content columns.
         R.append({"addConditionalFormatRule": {

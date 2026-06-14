@@ -1,6 +1,6 @@
 ---
 name: task-tracker-manager
-description: Owns Kay's personal task tracker — weekly Google Sheets files in the `To Do Archive` Drive folder (current week resolved via `scripts/tracker_sheet_resolver.py`; e.g., `TO DO 5.31.26`). Single capture point + Week planning tab + 7 permanent day tabs (Sun..Sat) + Gantt project tabs. Append items, promote items into a day tab's priority slots, run the Sunday build-week rebuild ceremony (creates next week's file, pulls carryover cross-file), move/carry items between day tabs, re-apply conditional formatting, surface a To Do health report. Reports to Chief of Staff. NOT operational sheets — that's tracker-manager.
+description: Owns Kay's personal task tracker — weekly Google Sheets files with the current week in `STRATEGIC PLANNING` and prior weeks in the `To Do Archive` Drive folder (current week resolved via `scripts/tracker_sheet_resolver.py`; e.g., `TO DO 5.31.26`). Single capture point + Week planning tab + 7 permanent day tabs (Sun..Sat) + Gantt project tabs. Append items, promote items into a day tab's priority slots, run the Sunday build-week rebuild ceremony (creates next week's file, pulls carryover cross-file), move/carry items between day tabs, re-apply conditional formatting, surface a To Do health report. Reports to Chief of Staff. NOT operational sheets — that's tracker-manager.
 archetype: router
 context_budget:
   skill_md: 200
@@ -11,7 +11,7 @@ context_budget:
 
 # Task Tracker Manager
 
-Standing owner of Kay's personal task system. The tracker lives as weekly Google Sheets files in the `To Do Archive` Drive folder. Each Sunday's `build-week` Drive-copies the prior week's file into a new `TO DO M.D.YY` file (e.g., `TO DO 5.31.26`); the prior file becomes immutable history. The **current week's sheet ID is resolved dynamically** via `scripts/tracker_sheet_resolver.py` (hybrid pointer + Drive-search fallback; canonical pointer at `~/.config/sapling/current-tracker-sheet.json`; legacy `~/.claude/config/current-tracker-sheet.json` is read fallback only). Use `python3 scripts/tracker_sheet_resolver.py --print-id` to print the current ID for shell consumers; the resolver auto-rebuilds the pointer if missing/stale. Built 2026-04-26 on Excel; migrated to Google Sheets 2026-05-12; weekly-files architecture shipped 2026-05-26. This skill is the operational layer — Chief of Staff calls into it, this skill executes.
+Standing owner of Kay's personal task system. The tracker lives as weekly Google Sheets files with the current week in `STRATEGIC PLANNING` and prior weeks in the `To Do Archive` Drive folder. Each Sunday's `build-week` Drive-copies the prior week's file into a new `TO DO M.D.YY` file in `STRATEGIC PLANNING` (e.g., `TO DO 5.31.26`), then moves the prior file into `To Do Archive` as immutable history. The **current week's sheet ID is resolved dynamically** via `scripts/tracker_sheet_resolver.py` (hybrid pointer + Drive-search fallback; canonical pointer at `~/.config/sapling/current-tracker-sheet.json`; legacy `~/.claude/config/current-tracker-sheet.json` is read fallback only). Use `python3 scripts/tracker_sheet_resolver.py --print-id` to print the current ID for shell consumers; the resolver auto-rebuilds the pointer if missing/stale. Built 2026-04-26 on Excel; migrated to Google Sheets 2026-05-12; weekly-files architecture shipped 2026-05-26. This skill is the operational layer — Chief of Staff calls into it, this skill executes.
 
 **Credential prerequisite:** before any manual `gog` / Google-backed task-tracker command, use the 1Password-backed helper:
 
@@ -45,7 +45,7 @@ Before a live build, `build-week` trusts the canonical pointer by default and ch
 `cmd_build_week` dispatches to `cmd_build_week_v2` which executes end-to-end:
 1. Resolve PRIOR file via `tracker_sheet_resolver.py` (pointer fast-path, Drive-search fallback)
 2. Snapshot prior file (Week + 7 day tabs + To Do) to rollback JSON
-3. `gog drive copy` prior → NEW file `TO DO {next-Sun-date}.YY`, move to `To Do Archive` folder
+3. `gog drive copy` prior → NEW file `TO DO {next-Sun-date}.YY` in `STRATEGIC PLANNING`; after the new file is built successfully, move the PRIOR file to `To Do Archive`
 4. Clear all 7 day tabs on new file (structure/CF/dropdowns/checkbox-validation preserved)
 5. Stamp recurring `To Do` rows (Horizon `Weekly Recurring {day}`) onto new file's day tabs
 6. Cross-file carryover: read PRIOR day-tab incompletes → write to NEW day-tab next-empty-slot (dedup vs recurring)
@@ -63,7 +63,7 @@ Before a live build, `build-week` trusts the canonical pointer by default and ch
 **Order-of-operations (critical):**
 ```
 cmd_build_week_v2:
-  1. resolve prior → snapshot → drive copy → move to folder
+  1. resolve prior → snapshot → drive copy new file into STRATEGIC PLANNING → build new file → archive prior file
   2. clear new file day tabs → stamp recurring → cross-file carryover from prior
   3. wire formulas → retitle → update pointer atomically (LAST)
 ```
@@ -104,7 +104,7 @@ Steps are atomic within a single `build-week` invocation. No separate human gate
 
 | File | Location | Owned? |
 |---|---|---|
-| Personal task tracker | Weekly Google Sheets files (e.g., `TO DO 5.31.26`) in `To Do Archive` Drive folder. Current sheet ID resolved via `scripts/tracker_sheet_resolver.py --print-id` (env var `TRACKER_SHEET_ID` overrides) | YES |
+| Personal task tracker | Current weekly Google Sheet in `STRATEGIC PLANNING`; prior weekly files in `To Do Archive`. Current sheet ID resolved via `scripts/tracker_sheet_resolver.py --print-id` (env var `TRACKER_SHEET_ID` overrides) | YES |
 | Legacy Excel (read-only) | `~/My Drive/STRATEGIC PLANNING/TO DO 4.26.26.xlsx` — preserved as historical artifact; do not write | Read-only reference |
 
 Out of scope: Industry Research Tracker, DealsX, target lists, vault, briefs. Those belong to other skills.

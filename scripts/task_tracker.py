@@ -56,6 +56,8 @@ SNAPSHOT_KEEP = 5
 
 GOG_CREDS_PATH = Path.home() / ".config" / "gogcli" / "credentials.json"
 GOG_ACCOUNT = os.environ.get("GOG_ACCOUNT", "kay.s@greenwichandbarrow.com")
+STRATEGIC_PLANNING_FOLDER_ID = "12IpnsQ5V_M1fiTm0NZM9wKhlerauILMd"
+TO_DO_ARCHIVE_FOLDER_NAME = "To Do Archive"
 
 
 def _run_gog(args: list[str], *, timeout: int = 30) -> subprocess.CompletedProcess:
@@ -1252,9 +1254,12 @@ def _pull_carryover_to_week(client: "SheetsClient", dry_run: bool = False) -> di
 # Phase 3 (2026-05-26) — Weekly-files architecture: cross-file rollover helpers
 # =================================================================================
 
-def _drive_copy_file(src_file_id: str, new_title: str) -> str:
+def _drive_copy_file(src_file_id: str, new_title: str, parent_folder_id: str | None = None) -> str:
     """Drive-copy a sheet to a new file. Returns new file ID. Raises on failure."""
-    result = _run_gog(["drive", "copy", src_file_id, new_title, "--json"], timeout=60)
+    cmd = ["drive", "copy", src_file_id, new_title, "--json"]
+    if parent_folder_id:
+        cmd += ["--parent", parent_folder_id]
+    result = _run_gog(cmd, timeout=60)
     if result.returncode != 0:
         raise RuntimeError(f"gog drive copy failed: {result.stderr.strip() or result.stdout.strip()}")
     try:
@@ -1301,9 +1306,9 @@ def _find_existing_tracker_files(title: str) -> list[dict]:
 
 
 def _find_to_do_archive_folder_id() -> str | None:
-    """Find the 'To Do Archive' folder by name. Returns ID or None (caller falls back to legacy parent)."""
+    """Find the To Do Archive folder by name. Returns ID or None."""
     files = _drive_search_files(
-        "name = 'To Do Archive' and mimeType = 'application/vnd.google-apps.folder' and trashed = false"
+        f"name = '{TO_DO_ARCHIVE_FOLDER_NAME}' and mimeType = 'application/vnd.google-apps.folder' and trashed = false"
     )
     if not files:
         return None
@@ -1500,15 +1505,16 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
     """Phase 3 (2026-05-26) — cross-file weekly rollover.
 
     1. Snapshot prior file
-    2. gog drive copy prior → new file `TO DO {next-Sun-date}.YY`
-    3. Move new file into 'To Do Archive' folder
+    2. gog drive copy prior → new file `TO DO {next-Sun-date}.YY` in STRATEGIC PLANNING
+    3. After the new file is built, move the prior file into the To Do Archive folder
     4. Open new file, clear all 7 day tabs (preserve structure/formatting)
     5. Stamp recurring onto new file's day tabs
     6. Cross-file carryover (read prior day tabs → write new day tabs)
     7. Wire Week tab formulas (in-file refs to day tabs)
     8. Re-title Week tab + per-day header dates
-    9. Update pointer atomically (LAST step — prior-file refs remain valid on mid-rollover failure)
-    10. Trace
+    9. Move prior file into To Do Archive after the new file is ready
+    10. Update pointer atomically (LAST step before trace)
+    11. Trace
     """
     from datetime import date as _date
     sys.path.insert(0, str(Path(__file__).parent))
@@ -1530,7 +1536,8 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
             "prior_sheet": prior_info,
             "would_create": new_title,
             "week_label": week_label,
-            "destination_folder": "To Do Archive (resolved at write time)",
+            "new_file_folder": "STRATEGIC PLANNING",
+            "prior_file_after_success": "To Do Archive (resolved at write time)",
             "recurring_preview": _stamp_recurring_day_tabs.__doc__ and "see helper",
             "formula_count_estimate": 7 * 3,  # 3 ranges per day (status slots, task slots, habit checkboxes)
             "existing_target_files": [
@@ -1582,23 +1589,16 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
     # ---- 2. Drive copy prior → new file ----
     print(f"task-tracker-manager: gog drive copy → {new_title}")
     try:
-        new_sheet_id = _drive_copy_file(prior_info["sheet_id"], new_title)
+        new_sheet_id = _drive_copy_file(prior_info["sheet_id"], new_title, STRATEGIC_PLANNING_FOLDER_ID)
     except RuntimeError as e:
         print(f"task-tracker-manager: drive copy FAILED — {e}", file=sys.stderr)
         return 1
     print(f"task-tracker-manager: new file created — id={new_sheet_id}")
 
-    # ---- 3. Move to To Do Archive folder ----
-    folder_id = None
-    if getattr(args, "no_folder_move", False):
-        print(f"task-tracker-manager: --no-folder-move set — new file stays in source folder")
-    else:
-        folder_id = _find_to_do_archive_folder_id()
-        if folder_id:
-            _drive_move_file(new_sheet_id, folder_id)
-            print(f"task-tracker-manager: moved → To Do Archive folder ({folder_id})")
-        else:
-            print(f"task-tracker-manager: WARN 'To Do Archive' folder not found; new file remains in default location", file=sys.stderr)
+    # ---- 3. New file is already in STRATEGIC PLANNING; prior file archives after build succeeds ----
+    folder_id = _find_to_do_archive_folder_id()
+    if not folder_id:
+        print(f"task-tracker-manager: WARN '{TO_DO_ARCHIVE_FOLDER_NAME}' folder not found; prior file will remain in STRATEGIC PLANNING", file=sys.stderr)
 
     # ---- 4. Open new file + clear all 7 day tabs ----
     new_client = SheetsClient(new_sheet_id)
@@ -1678,7 +1678,16 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
         new_client.values_update(f"'{day_tab}'!A1", [[title]])
     print(f"task-tracker-manager: re-titled all 7 day tabs (A1) for week {wd[0].isoformat()}..{wd[6].isoformat()}")
 
-    # ---- 9. Update pointer atomically (LAST step before trace) ----
+    # ---- 9. Move prior file into To Do Archive after new file is ready ----
+    prior_archived = False
+    if getattr(args, "no_folder_move", False):
+        print(f"task-tracker-manager: --no-folder-move set — prior file stays in source folder")
+    elif folder_id:
+        _drive_move_file(prior_info["sheet_id"], folder_id)
+        prior_archived = True
+        print(f"task-tracker-manager: archived prior file → {TO_DO_ARCHIVE_FOLDER_NAME} ({folder_id})")
+
+    # ---- 10. Update pointer atomically (LAST step before trace) ----
     if getattr(args, "no_pointer_update", False):
         print(f"task-tracker-manager: --no-pointer-update set — pointer unchanged (resolver still points at prior file)")
     else:
@@ -1688,11 +1697,12 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
         except Exception as e:
             print(f"task-tracker-manager: WARN pointer write failed ({e}); resolver fallback to Drive search will recover", file=sys.stderr)
 
-    # ---- 10. Trace ----
+    # ---- 11. Trace ----
     trace_lines = [
         f"- prior file: {prior_info.get('title')} ({prior_info.get('sheet_id')})",
         f"- new file:   {new_title} ({new_sheet_id})",
-        f"- destination folder: {'To Do Archive (' + folder_id + ')' if folder_id else 'default location'}",
+        f"- new file folder: STRATEGIC PLANNING ({STRATEGIC_PLANNING_FOLDER_ID})",
+        f"- prior file archived: {prior_archived} ({folder_id or 'missing archive folder'})",
         f"- week label: {week_label}",
         f"- recurring stamped onto new file day tabs: {len(recurring_summary['stamped'])}",
         f"- carryover pulled from prior → new: {len(carryover_summary['pulled'])}",
@@ -3343,7 +3353,7 @@ def main():
     bw.add_argument("--no-pointer-update", action="store_true",
                     help="skip pointer update — leaves resolver pointing at prior file (sandbox testing)")
     bw.add_argument("--no-folder-move", action="store_true",
-                    help="skip move-to-To-Do-Archive — new file stays in source folder (sandbox testing)")
+                    help="skip moving the prior file into To Do Archive (sandbox testing)")
     bw.add_argument("--force-new-file", action="store_true",
                     help="allow creating a duplicate target weekly file. Testing only; routine runs should refuse duplicates.")
     bw.add_argument("--refresh-pointer", action="store_true",

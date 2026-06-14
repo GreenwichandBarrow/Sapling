@@ -36,8 +36,10 @@ _SCRIPT_DIR = Path(__file__).resolve().parent
 _REPO_ROOT = _SCRIPT_DIR.parent
 POINTER_PATH = Path.home() / ".config" / "sapling" / "current-tracker-sheet.json"
 LEGACY_POINTER_PATH = Path.home() / ".claude" / "config" / "current-tracker-sheet.json"
-TRACKER_FOLDER_NAME = "To Do Archive"  # Kay created 2026-05-26
-LEGACY_PARENT_FOLDER_ID = "12IpnsQ5V_M1fiTm0NZM9wKhlerauILMd"  # STRATEGIC PLANNING (pre-migration)
+ARCHIVE_FOLDER_NAME = "To Do Archive"  # prior-week files live here
+STRATEGIC_PLANNING_FOLDER_ID = "12IpnsQ5V_M1fiTm0NZM9wKhlerauILMd"  # current weekly file lives here
+TRACKER_FOLDER_NAME = ARCHIVE_FOLDER_NAME  # backward-compatible alias for older error text
+LEGACY_PARENT_FOLDER_ID = STRATEGIC_PLANNING_FOLDER_ID
 SHEET_NAME_PATTERN = re.compile(r"^TO DO (\d{1,2})\.(\d{1,2})\.(\d{2,4})$")
 ENV_OVERRIDE = "TRACKER_SHEET_ID"
 
@@ -122,8 +124,8 @@ def _gog_drive_search(query: str) -> list:
 
 
 def _find_archive_folder_id() -> Optional[str]:
-    """Find the 'To Do Archive' folder by name. Returns ID or None."""
-    q = (f"name = '{TRACKER_FOLDER_NAME}' "
+    """Find the To Do Archive folder by name. Returns ID or None."""
+    q = (f"name = '{ARCHIVE_FOLDER_NAME}' "
          f"and mimeType = 'application/vnd.google-apps.folder' "
          f"and trashed = false")
     files = _gog_drive_search(q)
@@ -147,21 +149,25 @@ def _parse_sheet_date(title: str) -> Optional[date]:
 
 
 def _search_to_do_files() -> list:
-    """Search Drive for `TO DO M.D.YY` spreadsheets — archive folder first, then legacy parent."""
+    """Search Drive for weekly tracker sheets in live folder plus archive."""
     candidates: list = []
+    seen: set[str] = set()
+
+    parent_ids = [STRATEGIC_PLANNING_FOLDER_ID]
     archive_id = _find_archive_folder_id()
     if archive_id:
-        q = (f"'{archive_id}' in parents "
+        parent_ids.append(archive_id)
+
+    for parent_id in parent_ids:
+        q = (f"'{parent_id}' in parents "
              f"and name contains 'TO DO' "
              f"and mimeType = 'application/vnd.google-apps.spreadsheet' "
              f"and trashed = false")
-        candidates = _gog_drive_search(q)
-    if not candidates:
-        q = (f"'{LEGACY_PARENT_FOLDER_ID}' in parents "
-             f"and name contains 'TO DO' "
-             f"and mimeType = 'application/vnd.google-apps.spreadsheet' "
-             f"and trashed = false")
-        candidates = _gog_drive_search(q)
+        for f in _gog_drive_search(q):
+            fid = f.get("id")
+            if fid and fid not in seen:
+                seen.add(fid)
+                candidates.append(f)
     return candidates
 
 

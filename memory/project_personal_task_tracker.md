@@ -10,13 +10,13 @@ Built 2026-04-26 to replace Motion (which generated too much noise). **Graduated
 
 ## File location (weekly-files architecture, shipped 2026-05-26)
 
-- **Live working sheets:** Weekly `TO DO M.D.YY` files (e.g. `TO DO 5.31.26`) in the `To Do Archive` Drive folder
+- **Live working sheet:** Current weekly `TO DO M.D.YY` file (e.g. `TO DO 6.14.26`) lives directly in `STRATEGIC PLANNING`; prior weekly files live in `To Do Archive`
 - **Current week's sheet ID:** resolved dynamically via `scripts/tracker_sheet_resolver.py`
   - CLI: `python3 /home/ubuntu/projects/Sapling/scripts/tracker_sheet_resolver.py --print-id`
   - Pointer file: `~/.claude/config/current-tracker-sheet.json` (atomic write at each Sunday rollover)
-  - Resolution chain: env `TRACKER_SHEET_ID` override → process cache → pointer (if fresh, i.e. `week_of ≥ most-recent-Sunday`) → Drive search fallback in `To Do Archive` folder (auto-rebuilds pointer)
-  - Current week's sheet (Sun 5/24 onward): `TO DO 5.24.26` (ID `1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk`). Renamed from `TO DO 5.12.26` to week-start convention 2026-05-26 by Kay; sheet ID unchanged. First cross-file rollover Sun 5/31 will create `TO DO 5.31.26` in the `To Do Archive` folder
-- **Each Sunday's `build-week`:** Drive-copies prior week's file → new `TO DO M.D.YY` file → cross-file carryover-pulls incompletes from prior file's day tabs → wires new file's Week tab cells as in-file formulas (`=Tue!B14` etc.) → updates pointer atomically as last step
+  - Resolution chain: env `TRACKER_SHEET_ID` override → process cache → pointer (if fresh, i.e. `week_of ≥ most-recent-Sunday`) → Drive search fallback across `STRATEGIC PLANNING` plus `To Do Archive` (auto-rebuilds pointer)
+  - Current week's sheet (Sun 5/24 onward): `TO DO 5.24.26` (ID `1ewqQshtN5pz8kmMTEvBZgAFy-0XB37-MVONkN_mdZmk`). Renamed from `TO DO 5.12.26` to week-start convention 2026-05-26 by Kay; sheet ID unchanged. Each Sunday rollover creates the new `TO DO M.D.YY` in `STRATEGIC PLANNING`, then moves the prior week file into `To Do Archive`
+- **Each Sunday's `build-week`:** Drive-copies prior week's file → new `TO DO M.D.YY` file in `STRATEGIC PLANNING` → cross-file carryover-pulls incompletes from prior file's day tabs → moves prior week file into `To Do Archive` after the new file is built successfully → wires new file's Week tab cells as in-file formulas (`=Tue!B14` etc.) → updates pointer atomically as last step
 - **Legacy Excel:** `~/My Drive/STRATEGIC PLANNING/TO DO 4.26.26.xlsx` — preserved as historical artifact, READ-ONLY
 - **Snapshots:** `brain/context/rollback-snapshots/tasks-{verb}-{timestamp}.json` — last 5 per verb retained; embed `client.sheet_id` so prior-file refs remain valid post-rollover
 

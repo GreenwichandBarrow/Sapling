@@ -122,37 +122,6 @@ def _command_center_strip() -> str:
         ))
 
     try:
-        from data_sources import load_email_orchestrator_status
-
-        email = load_email_orchestrator_status()
-        if email.send_blockers:
-            value = f"{email.send_blockers} send blocker{'s' if email.send_blockers != 1 else ''}"
-        elif email.review_count:
-            value = f"{email.review_count} review item{'s' if email.review_count != 1 else ''}"
-        else:
-            value = "clear"
-        detail = (
-            email.needs_kay[0]
-            if email.needs_kay
-            else (email.blocked[0] if email.blocked else f"source {email.source_status}")
-        )
-        items.append(_command_item(
-            "Email",
-            value,
-            detail,
-            email.status,
-            "/c-suite-skills",
-        ))
-    except Exception:
-        items.append(_command_item(
-            "Email",
-            "unavailable",
-            "email-orchestrator status loader failed",
-            "alert",
-            "/c-suite-skills",
-        ))
-
-    try:
         from pages.deal_aggregator import _load_artifact_tables, _verdict_groups
 
         listings, _sources, _summary = _load_artifact_tables(date.today(), 1)
@@ -421,6 +390,58 @@ def _tile_deal_aggregator() -> str:
         </a>
         """)
 
+def _tile_email_orchestration() -> str:
+    """Main dashboard tile for email-derived operating signals."""
+    try:
+        from data_sources import load_email_orchestrator_status
+
+        email = load_email_orchestrator_status()
+        if email.send_blockers:
+            primary = str(email.send_blockers)
+            unit = "send blockers"
+            dot = "red"
+            footer = "review before action"
+        elif email.review_count:
+            primary = str(email.review_count)
+            unit = "review items"
+            dot = "yellow"
+            footer = "review routing"
+        else:
+            primary = "Clear"
+            unit = "email routing"
+            dot = "green"
+            footer = "no review items"
+        detail = (
+            f"{email.drafts_pending} drafts pending · {email.deal_items} deal · "
+            f"{email.pipeline_items} pipeline · {email.relationship_items} relationship"
+        )
+        return _tile(f"""
+        <a class="gb-tile" href="/email-orchestration" target="_self">
+        <div class="label">Email Orchestration</div>
+        <div class="primary" style="font-size: 2.1em;">{escape(primary)}<span class="unit">{escape(unit)}</span></div>
+        <div class="gb-status-row">
+        <span class="gb-status-dot {dot}"></span>
+        <span class="gb-status-text">{escape(detail)}</span>
+        </div>
+        <div class="footer">
+        <span class="gb-trend flat">&rarr; {escape(footer)}</span>
+        <span class="gb-horizon">TODAY</span>
+        </div>
+        </a>
+        """)
+    except Exception:
+        return _tile("""
+        <a class="gb-tile" href="/email-orchestration" target="_self">
+        <div class="label">Email Orchestration</div>
+        <div class="primary">&mdash;<span class="unit">status unavailable</span></div>
+        <div class="footer">
+        <span class="gb-trend flat">&rarr; check page</span>
+        <span class="gb-horizon">TODAY</span>
+        </div>
+        </a>
+        """)
+
+
 def _tile_ma_analytics() -> str:
     """Main dashboard tile for Kay's current weekly sourcing goals."""
     goals = []
@@ -614,6 +635,7 @@ def render() -> None:
     hero = _hero_active_deal_pipeline()
     small_tiles = [
         _tile_deal_aggregator(),
+        _tile_email_orchestration(),
         _tile_ma_analytics(),
         _tile_c_suite_skills(),
         _tile_infrastructure(),

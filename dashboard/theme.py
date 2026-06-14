@@ -33,6 +33,7 @@ PALETTE = {
 NAV_ITEMS = [
     ("Greenwich & Barrow Dashboard", "dashboard", True),
     ("Deal Aggregator", "deal-aggregator", True),
+    ("Email Orchestration", "email-orchestration", True),
     ("Active Deal Pipeline", "deal-pipeline", True),
     ("M&A Analytics", "ma-analytics", True),
     ("C-Suite & Skills", "c-suite-skills", True),

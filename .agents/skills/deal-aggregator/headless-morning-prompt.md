@@ -8,10 +8,13 @@ Before reading SKILL.md or doing any work:
 
 1. Compute `TODAY` as today's date in `YYYY-MM-DD` (Eastern Time).
 2. Check whether `brain/context/deal-aggregator-scan-{TODAY}.md` already exists.
-3. If it exists AND its size is ≥ 200 bytes, **STOP IMMEDIATELY**. Print `DEAL-AGGREGATOR ABORT: artifact already exists for {TODAY} — refusing to double-write` to stdout and exit normally (exit 0). Do not re-scan, do not re-Slack, do not append, do not overwrite. A prior attempt (this run's earlier child, or a manual re-fire) already produced the deliverable.
+3. If it exists AND its size is ≥ 200 bytes:
+   - Read the artifact frontmatter before deciding whether to abort.
+   - If the artifact frontmatter says `email_scan_status: missing` AND `brain/context/email-scan-results-{TODAY}.md` now exists, continue in **late email recovery mode** instead of aborting. In this mode, re-read the existing artifact, preserve prior non-email findings where possible, process the email artifact, set `email_scan_status: late_recovered`, rewrite the same morning artifact, and rely on fingerprint dedup before any Slack post.
+   - Otherwise **STOP IMMEDIATELY**. Print `DEAL-AGGREGATOR ABORT: artifact already exists for {TODAY} — refusing to double-write` to stdout and exit normally (exit 0). Do not re-scan, do not re-Slack, do not append, do not overwrite. A prior attempt (this run's earlier child, or a manual re-fire) already produced the deliverable.
 4. If it does not exist (or is < 200 bytes — treat as a corrupt partial), continue to the execution section.
 
-This gate prevents the 4/27 race-condition failure mode (two parallel scans clobbering the artifact + double-Slacking matches).
+This gate prevents the 4/27 race-condition failure mode (two parallel scans clobbering the artifact + double-Slacking matches). The only allowed same-day rewrite is the narrow late-email recovery path above, because the prior artifact explicitly recorded an incomplete email leg and the email-intelligence artifact is now available.
 
 ## Mandatory ordering — execute in this exact sequence
 
@@ -37,7 +40,7 @@ This gate prevents the 4/27 race-condition failure mode (two parallel scans clob
 - New PASS matches and DealsX replies Slack-posted to `#active-deals` (idempotent — fingerprint store catches re-runs).
 - Broker-opportunistic listings preserved for CIO review without Slack noise.
 - Dashboard status JSON written.
-- No double-write if a prior child already produced today's artifact.
+- No double-write if a prior child already produced today's artifact, except the narrow `email_scan_status: missing` → `late_recovered` recovery path.
 
 ## Forbidden in headless mode
 
@@ -49,7 +52,7 @@ This gate prevents the 4/27 race-condition failure mode (two parallel scans clob
 - Sending, draft-sending, forwarding, or autoreplying to email. Gmail drafts are allowed only where SKILL.md explicitly requires draft-only mode and must use `--gmail-no-send`.
 - Halting on a single source failure — degrade gracefully, mark the source `blocked (verified)` or `blocked (single-attempt)` in the scorecard, continue.
 - Skipping the artifact write because "nothing material today" — always write the artifact, even if all sections are empty.
-- Overwriting an existing same-day artifact (idempotency gate above prevents this).
+- Overwriting an existing same-day artifact, except the idempotency gate's narrow late-email recovery path (`email_scan_status: missing` and today's email artifact now exists).
 - **Do not summarize listings into aggregate counts only. Every listing that was scraped or parsed gets one row in the Listings Reviewed log.** Source Scorecard reports COUNTS per source; Listings Reviewed reports the LISTINGS themselves. Both required.
 
 ## Failure handling

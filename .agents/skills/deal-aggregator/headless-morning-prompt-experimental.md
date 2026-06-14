@@ -10,7 +10,10 @@ Before reading SKILL.md or doing any work:
 
 1. Compute `TODAY` as today's date in `YYYY-MM-DD` (Eastern Time).
 2. Check whether `brain/context/deal-aggregator-scan-{TODAY}.md` already exists.
-3. If it exists AND its size is ≥ 200 bytes, **STOP IMMEDIATELY**. Print `DEAL-AGGREGATOR ABORT: artifact already exists for {TODAY} — refusing to double-write` to stdout and exit normally (exit 0).
+3. If it exists AND its size is ≥ 200 bytes:
+   - Read the artifact frontmatter before deciding whether to abort.
+   - If the artifact frontmatter says `email_scan_status: missing` AND `brain/context/email-scan-results-{TODAY}.md` now exists, continue in **late email recovery mode** instead of aborting. In this mode, re-read the existing artifact, preserve prior non-email findings where possible, process the email artifact, set `email_scan_status: late_recovered`, rewrite the same morning artifact, and rely on fingerprint dedup before any Slack post.
+   - Otherwise **STOP IMMEDIATELY**. Print `DEAL-AGGREGATOR ABORT: artifact already exists for {TODAY} — refusing to double-write` to stdout and exit normally (exit 0).
 4. If it does not exist (or is < 200 bytes — treat as a corrupt partial), continue to the execution section.
 
 ## Mandatory ordering — execute in this exact sequence

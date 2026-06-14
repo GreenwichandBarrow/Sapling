@@ -24,7 +24,6 @@ categories:
   - label: "CRM & Pipeline"
     services:
       - { name: "Attio", note: "CRM + future Meet Record" }
-      - { name: "Linkt", note: "list builder · sunset 2026-05-30" }
       - { name: "Apollo", note: "enrichment only" }
       - { name: "DealsX", note: "email + LinkedIn DMs · live May 7" }
       - { name: "BizBuySell", note: "deal marketplace · $24.95/mo" }
@@ -57,9 +56,6 @@ categories:
       - { name: "Microsoft Excel", note: "365" }
       - { name: "DocSend", note: "doc sharing + tracking · $70/mo" }
 
-  - label: "Task Management"
-    services:
-      - { name: "Motion", note: "key expires 7d", health: warn }
 
   - label: "Communication"
     services:

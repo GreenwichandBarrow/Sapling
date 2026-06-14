@@ -159,24 +159,18 @@ def probe_apollo() -> dict:
 
 
 def probe_openai_codex() -> dict:
-    key = os.environ.get("CODEX_API_KEY") or os.environ.get("OPENAI_API_KEY")
-    if not key:
-        return _skip("CODEX_API_KEY not in env")
-    res = _http_status_and_time(
-        "https://api.openai.com/v1/models",
-        headers=[
-            f"Authorization: Bearer {key}",
-        ],
-    )
-    if res is None:
-        return _result("error", None, "request failed")
-    code, secs = res
-    ms = int(secs * 1000)
-    if code == 200:
-        return _result("ok", ms, "200 OK")
-    if code in (401, 403):
-        return _result("error", ms, f"HTTP {code} (key issue)")
-    return _result("warn", ms, f"HTTP {code}")
+    if not shutil.which("codex"):
+        return _result("error", None, "codex CLI not on PATH")
+    try:
+        rc, out, err, ms = _run(["env", "-u", "CODEX_API_KEY", "codex", "login", "status"])
+    except subprocess.TimeoutExpired:
+        return _result("error", PROBE_TIMEOUT_SEC * 1000, "timed out")
+    status_text = out + err
+    if rc == 0 and "Logged in using ChatGPT" in status_text:
+        return _result("ok", ms, "Codex OAuth login active")
+    if rc == 0:
+        return _result("warn", ms, "Codex login is not ChatGPT OAuth")
+    return _result("error", ms, f"codex login status exit {rc}")
 
 
 def probe_slack_webhooks() -> dict:

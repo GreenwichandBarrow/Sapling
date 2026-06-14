@@ -26,7 +26,7 @@ Phase 1 policy:
   - Never modifies timers.
   - Never deletes Claude files.
   - Applies only explicitly selected service ExecStart changes.
-  - Requires CODEX_API_KEY readiness before --apply.
+  - Requires Codex OAuth readiness before --apply.
 EOF
 }
 

@@ -1,0 +1,22 @@
+[Unit]
+Description=G&B codex-usage-refresh timer
+
+[Timer]
+OnCalendar=Mon..Fri 08:00:00
+OnCalendar=Mon..Fri 09:00:00
+OnCalendar=Mon..Fri 10:00:00
+OnCalendar=Mon..Fri 11:00:00
+OnCalendar=Mon..Fri 12:00:00
+OnCalendar=Mon..Fri 13:00:00
+OnCalendar=Mon..Fri 14:00:00
+OnCalendar=Mon..Fri 15:00:00
+OnCalendar=Mon..Fri 16:00:00
+OnCalendar=Mon..Fri 17:00:00
+OnCalendar=Mon..Fri 18:00:00
+OnCalendar=Mon..Fri 19:00:00
+OnCalendar=Mon..Fri 20:00:00
+Persistent=true
+Unit=codex-usage-refresh.service
+
+[Install]
+WantedBy=timers.target

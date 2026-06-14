@@ -37,13 +37,6 @@ services:
     action: muted
     action_text: Logs ↗
 
-  - name: linkt
-    kind: service
-    description: Legacy list builder · sunsetting in favor of Apollo by 2026-05-30.
-    health: warn
-    status_text: Sunset planned · do not refill
-    action: muted
-    action_text: Logs ↗
 
   - name: gog
     kind: service
@@ -69,13 +62,6 @@ services:
     action: muted
     action_text: Logs ↗
 
-  - name: motion
-    kind: service
-    description: Task & project management API · used by /task, briefing automation, operations workflows.
-    health: ok
-    status_text: Healthy · API key valid
-    action: muted
-    action_text: Logs ↗
 
   - name: github
     kind: service

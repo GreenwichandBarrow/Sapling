@@ -100,7 +100,7 @@ def _render_zone_1(tiles: list[HealthTile]) -> str:
         <div class="gb-zone-head">
         <div>
         <div class="gb-zone-label">System Health</div>
-        <div class="gb-zone-sublabel">VPS environment · systemd timers, hooks, disk, vault, briefing pipeline</div>
+        <div class="gb-zone-sublabel">Dashboard, VPS access, AI runtimes, git sync, and disk</div>
         </div>
         <div class="gb-zone-meta">{''.join(pills)}</div>
         </div>
@@ -111,6 +111,63 @@ def _render_zone_1(tiles: list[HealthTile]) -> str:
     grid += "</div>"
     return f'<section class="gb-zone">{head}{grid}</section>'
 
+
+
+def _render_usage_tile(tile: CreditTile) -> str:
+    status = {"green": "ok", "yellow": "warn", "red": "alert"}.get(tile.runway_color, "unknown")
+    dot = _HEALTH_DOT_CLASS.get(status, "grey")
+    extra = _HEALTH_TILE_CLASS.get(status, "")
+    runway = tile.runway_text.split(" · ")[0] if tile.runway_text else ""
+    trend = tile.trend or ""
+    trend_html = f'<span class="gb-usage-trend">{escape(trend)}</span>' if trend else ""
+    return dedent(
+        f"""
+        <div class="gb-health-tile gb-usage-tile{extra}">
+        <div class="gb-health-tile-label">{escape(tile.label)}</div>
+        <div class="gb-health-tile-value">
+        <span class="gb-status-dot {dot}"></span>
+        {escape(tile.value)} <span class="unit">{escape(tile.unit)}</span>
+        </div>
+        <div class="gb-health-tile-detail">{escape(runway)}{trend_html}</div>
+        </div>
+        """
+    ).strip()
+
+
+def _render_zone_system_usage(health_tiles: list[HealthTile], credits: list[CreditTile]) -> str:
+    health = system_health_summary(health_tiles)
+    in_range = sum(1 for t in credits if t.runway_color == "green")
+    pending = sum(1 for t in credits if t.runway_color == "none")
+    monitor = sum(1 for t in credits if t.runway_color == "yellow")
+    alert = sum(1 for t in credits if t.runway_color == "red")
+    pills = []
+    if health["healthy"]:
+        pills.append(f'<span class="pill">{health["healthy"]} healthy</span>')
+    if health["warn"]:
+        pills.append(f'<span class="pill yellow">{health["warn"]} warn</span>')
+    if health["alert"]:
+        pills.append(f'<span class="pill red">{health["alert"]} alert</span>')
+    if in_range:
+        pills.append(f'<span class="pill">{in_range} usage in range</span>')
+    if monitor:
+        pills.append(f'<span class="pill yellow">{monitor} usage monitor</span>')
+    if alert:
+        pills.append(f'<span class="pill red">{alert} usage alert</span>')
+    if pending:
+        pills.append(f'<span class="pill neutral">{pending} usage pending</span>')
+    head = dedent(
+        f"""
+        <div class="gb-zone-head">
+        <div>
+        <div class="gb-zone-label">System Health &amp; Usage</div>
+        <div class="gb-zone-sublabel">Dashboard runtime, VPS access, AI runtimes, git sync, disk, Apollo, Anthropic, and OpenAI usage</div>
+        </div>
+        <div class="gb-zone-meta">{''.join(pills)}</div>
+        </div>
+        """
+    ).strip()
+    tiles = "".join(_render_health_tile(t) for t in health_tiles) + "".join(_render_usage_tile(t) for t in credits)
+    return f'<section class="gb-zone gb-system-usage-zone">{head}<div class="gb-health-grid">{tiles}</div></section>'
 
 def _render_stack_chip(service: StackService) -> str:
     health = service.health if service.health in ("ok", "warn", "alert", "retired") else "ok"
@@ -140,6 +197,27 @@ def _render_stack_row(category: StackCategory) -> str:
         </div>
         """
     ).strip()
+
+
+def _stack_health_summary(categories: list[StackCategory]) -> dict[str, int]:
+    counts = {"total": 0, "healthy": 0, "warn": 0, "alert": 0, "retired": 0}
+    for category in categories:
+        for service in category.services:
+            counts["total"] += 1
+            if service.health == "warn":
+                counts["warn"] += 1
+            elif service.health == "alert":
+                counts["alert"] += 1
+            elif service.health == "retired":
+                counts["retired"] += 1
+            else:
+                counts["healthy"] += 1
+    return counts
+
+
+def _render_stack_inventory(categories: list[StackCategory]) -> str:
+    rows = "".join(_render_stack_row(c) for c in categories)
+    return f'<div class="gb-stack-list gb-stack-list-compact">{rows}</div>'
 
 
 def _render_zone_5(categories: list[StackCategory]) -> str:
@@ -214,6 +292,75 @@ def _render_zone_2(services: list[ExternalService]) -> str:
     body = "".join(_render_service_row(s) for s in sorted_services)
     return f'<section class="gb-zone">{head}<div>{body}</div></section>'
 
+
+def _render_zone_tooling(services: list[ExternalService], categories: list[StackCategory]) -> str:
+    service_summary = external_services_summary(services)
+    stack_summary = _stack_health_summary(categories)
+    pills = []
+    if service_summary["healthy"]:
+        pills.append(f'<span class="pill">{service_summary["healthy"]} healthy</span>')
+    if service_summary["warn"]:
+        pills.append(f'<span class="pill yellow">{service_summary["warn"]} warn</span>')
+    if service_summary["alert"]:
+        pills.append(f'<span class="pill red">{service_summary["alert"]} needs action</span>')
+
+    head = dedent(
+        f"""
+        <div class="gb-zone-head">
+        <div>
+        <div class="gb-zone-label">Tooling &amp; Integrations</div>
+        <div class="gb-zone-sublabel">Connected services, local tools, and stack inventory · issues first, inventory below</div>
+        </div>
+        <div class="gb-zone-meta">{service_summary["total"]} monitored · {stack_summary["total"]} inventory {''.join(pills)}</div>
+        </div>
+        """
+    ).strip()
+
+    action_services = [s for s in services if s.health in ("alert", "warn")]
+    order = {"alert": 0, "warn": 1, "ok": 2}
+    action_services.sort(key=lambda s: order.get(s.health, 3))
+    if action_services:
+        action_rows = "".join(_render_service_row(s) for s in action_services)
+    else:
+        action_rows = '<div class="gb-zone-empty">No integration issues.</div>'
+
+    inventory_head = dedent(
+        f"""
+        <div class="gb-tooling-subhead">
+        <span>Full stack inventory</span>
+        <span>{stack_summary["total"]} tools · {len(categories)} categories</span>
+        </div>
+        """
+    ).strip()
+    return (
+        f'<section class="gb-zone gb-tooling-zone">{head}'
+        f'<div class="gb-tooling-actions">{action_rows}</div>'
+        f'{inventory_head}{_render_stack_inventory(categories)}</section>'
+    )
+
+
+
+def _render_zone_tooling_inventory(categories: list[StackCategory]) -> str:
+    stack_summary = _stack_health_summary(categories)
+    pills = []
+    if stack_summary["healthy"]:
+        pills.append(f'<span class="pill">{stack_summary["healthy"]} healthy</span>')
+    if stack_summary["warn"]:
+        pills.append(f'<span class="pill yellow">{stack_summary["warn"]} watch</span>')
+    if stack_summary["alert"]:
+        pills.append(f'<span class="pill red">{stack_summary["alert"]} issue</span>')
+    head = dedent(
+        f"""
+        <div class="gb-zone-head">
+        <div>
+        <div class="gb-zone-label">Tech Stack &amp; Tooling</div>
+        <div class="gb-zone-sublabel">Reference inventory only · operational issues surface above or on the relevant page</div>
+        </div>
+        <div class="gb-zone-meta">{stack_summary["total"]} tools · {len(categories)} categories {''.join(pills)}</div>
+        </div>
+        """
+    ).strip()
+    return f'<section class="gb-zone">{head}{_render_stack_inventory(categories)}</section>'
 
 def _render_credit_tile(tile: CreditTile) -> str:
     arrow_glyph = {"up": "↑", "down": "↓", "flat": "→"}.get(tile.trend_arrow, "→")
@@ -311,21 +458,20 @@ def _render_subtitle() -> str:
     )
 
 
-def _render_summary(health_tiles: list[HealthTile], stack_n: int) -> str:
-    """Match mockup-infrastructure.html: lead with healthy, then needs action,
-    warnings, shortest credit runway, calibrations this week. Credit + calibration
-    pills render with em-dash until those zones wire up (Session 5 pt 2)."""
-    summary = system_health_summary(health_tiles)
-    healthy_color = "var(--green)" if summary["healthy"] else "var(--text-dim)"
-    alert_color = "var(--red)" if summary["alert"] else "var(--text-dim)"
-    warn_color = "var(--yellow)" if summary["warn"] else "var(--text-dim)"
+def _render_summary(health_tiles: list[HealthTile], credits: list[CreditTile], stack: list[StackCategory]) -> str:
+    """Top operating status across system health, credit usage, and tooling inventory."""
+    health = system_health_summary(health_tiles)
+    credits_in_range = sum(1 for t in credits if t.runway_color == "green")
+    credits_pending = sum(1 for t in credits if t.runway_color == "none")
+    stack_count = tech_stack_count(stack)
+    system_color = "var(--green)" if health["alert"] == 0 and health["warn"] == 0 else "var(--yellow)"
+    spend_color = "var(--green)" if credits_pending == 0 else "var(--text-muted)"
     return (
         '<div class="gb-summary">'
-        f'<div><span class="num" style="color:{healthy_color};">{summary["healthy"]}</span>healthy</div>'
-        f'<div><span class="num" style="color:{alert_color};">{summary["alert"]}</span>needs action</div>'
-        f'<div><span class="num" style="color:{warn_color};">{summary["warn"]}</span>warnings</div>'
-        '<div><span class="num" style="color:var(--text-dim);">&mdash;</span>shortest credit runway</div>'
-        '<div><span class="num" style="color:var(--text-dim);">&mdash;</span>calibrations this week</div>'
+        f'<div><span class="num" style="color:{system_color};">{health["healthy"]} / {sum(health.values())}</span>system healthy</div>'
+        f'<div><span class="num" style="color:{spend_color};">{credits_in_range}</span>usage in range</div>'
+        f'<div><span class="num" style="color:var(--text-muted);">{credits_pending}</span>usage pending data</div>'
+        f'<div><span class="num">{stack_count}</span>tools inventoried</div>'
         "</div>"
     )
 
@@ -335,24 +481,15 @@ def render() -> None:
 
     health_tiles = load_system_health()
     stack = load_tech_stack()
-    stack_n = tech_stack_count(stack)
-    services = load_external_services()
     credits = load_credit_tiles()
-    calib = load_calibration_log()
-
     st.markdown(_render_subtitle(), unsafe_allow_html=True)
-    st.markdown(_render_summary(health_tiles, stack_n), unsafe_allow_html=True)
-    st.markdown(_render_zone_1(health_tiles), unsafe_allow_html=True)
-    st.markdown(_render_zone_2(services), unsafe_allow_html=True)
-    st.markdown(_render_zone_3(credits), unsafe_allow_html=True)
-    st.markdown(_render_zone_4(calib), unsafe_allow_html=True)
-    st.markdown(_render_zone_5(stack), unsafe_allow_html=True)
+    st.markdown(_render_summary(health_tiles, credits, stack), unsafe_allow_html=True)
+    st.markdown(_render_zone_system_usage(health_tiles, credits), unsafe_allow_html=True)
+    st.markdown(_render_zone_tooling_inventory(stack), unsafe_allow_html=True)
 
     st.markdown(
-        '<div class="gb-page-note">All 5 zones live. External services + '
-        "credits + calibration entries are operator-maintained YAML "
-        "(<code>dashboard/data/*.yaml</code>); live auth probes and "
-        "billing API readers swap in later."
+        '<div class="gb-page-note">Infrastructure focuses on runtime health and usage. '
+        "Tooling is kept as reference inventory; credentials are managed through 1Password and the VPS operating layer."
         "</div>",
         unsafe_allow_html=True,
     )

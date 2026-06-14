@@ -126,7 +126,7 @@ else
   fail "$HOME/.config/op-sa-token.env is missing"
 fi
 
-# Resolve only existence/non-placeholder status. Never print the secret value.
+# Load scheduled settings. Authentication uses the saved Codex CLI ChatGPT/OAuth login, not CODEX_API_KEY.
 set +u
 set -a
 source "$HOME/.config/op-sa-token.env" >/dev/null 2>&1 || true
@@ -136,16 +136,18 @@ set -a
 load_env "$ROOT/scripts/.env.codex" >/dev/null 2>&1 || true
 set +a
 set -u
-if [ -n "${CODEX_API_KEY:-}" ] && [[ "${CODEX_API_KEY:-}" != op://* ]]; then
-  pass "CODEX_API_KEY resolves through 1Password"
+
+if [ -f "$HOME/.codex/auth.json" ]; then
+  pass "Codex cached OAuth login exists"
 else
-  fail "CODEX_API_KEY is missing or unresolved through 1Password"
+  warn "$HOME/.codex/auth.json not found; Codex may be using an OS credential store"
 fi
 
-if [ -n "${CODEX_API_KEY:-}" ] && [[ "${CODEX_API_KEY:-}" == sk-* ]]; then
-  pass "CODEX_API_KEY has expected OpenAI key prefix"
+if env -u CODEX_API_KEY codex exec --cd "$ROOT" --sandbox read-only --model "${CODEX_ROUTINE_MODEL:-gpt-5.4-mini}" --output-last-message /tmp/sapling-codex-auth-smoke.txt "Reply exactly: CODEX_AUTH_OK" >/tmp/sapling-codex-auth-smoke.log 2>&1 \
+  && grep -q "CODEX_AUTH_OK" /tmp/sapling-codex-auth-smoke.txt; then
+  pass "Codex OAuth login smoke test"
 else
-  fail "CODEX_API_KEY resolves but does not have expected OpenAI key prefix"
+  fail "Codex OAuth login smoke test failed; run codex login or codex login --device-auth as ubuntu"
 fi
 
 if [ -n "${CODEX_ROUTINE_MODEL:-}" ] && [ -n "${CODEX_HEAVY_MODEL:-}" ]; then

@@ -1,0 +1,11 @@
+[Unit]
+Description=G&B claude-usage-refresh
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/projects/Sapling
+Environment=PATH=%h/.npm-global/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/bin/bash %h/projects/Sapling/scripts/refresh-claude-usage.sh
+
+[Install]
+WantedBy=default.target

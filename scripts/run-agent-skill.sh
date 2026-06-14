@@ -59,7 +59,8 @@ if [ -e "$KILL_SWITCH" ]; then
   exit 0
 fi
 
-# Load 1Password service account token and resolve Codex env refs.
+# Load scheduled Codex settings. Authentication intentionally uses the saved
+# Codex CLI ChatGPT/OAuth login instead of a Platform API key.
 # shellcheck disable=SC1091
 set -a
 source "$HOME/.config/op-sa-token.env" >/dev/null 2>&1 || true
@@ -69,18 +70,6 @@ source "$WORKDIR/scripts/load-env.sh"
 set -a
 load_env "$WORKDIR/scripts/.env.codex"
 set +a
-
-if [ -z "${CODEX_API_KEY:-}" ] || [[ "${CODEX_API_KEY:-}" == op://* ]]; then
-  log "BLOCKED: CODEX_API_KEY is missing or unresolved. Confirm scripts/.env.codex 1Password reference."
-  post_failure "BLOCKED: Codex scheduled job $SKILL_NAME cannot run because CODEX_API_KEY is missing or unresolved."
-  exit 2
-fi
-
-if [[ "${CODEX_API_KEY:-}" != sk-* ]]; then
-  log "BLOCKED: CODEX_API_KEY resolves, but does not look like an OpenAI API key."
-  post_failure "BLOCKED: Codex scheduled job $SKILL_NAME cannot run because CODEX_API_KEY does not look like an OpenAI API key."
-  exit 2
-fi
 
 export GOG_ACCOUNT="${GOG_ACCOUNT:-kay.s@greenwichandbarrow.com}"
 TODAY="${TODAY:-$(date +%Y-%m-%d)}"
@@ -219,7 +208,7 @@ fi
 
 log "Codex command: ${CODEX_CMD[*]} < prompt"
 set +e
-CODEX_API_KEY="$CODEX_API_KEY" "${CODEX_CMD[@]}" - < "$PROMPT_FILE" >> "$LOG_FILE" 2>&1
+env -u CODEX_API_KEY "${CODEX_CMD[@]}" - < "$PROMPT_FILE" >> "$LOG_FILE" 2>&1
 status=$?
 set -e
 

@@ -14,8 +14,8 @@ RE-ORDERED Sun→Sat (the archive grid was Mon-first):
   Row 1      merged A1:O1 title "WEEK OF May 17-23" — 16pt bold, sage-light fill
   Row 5      "HABIT TRACKER" — 10pt bold
   Row 6      Sun..Sat 2-col-merged sub-headers (9pt bold)
-  Rows 7-13  7 habit rows: col0 label, status checkbox per day at odd col
-  Row 15     SUNDAY..SATURDAY 2-col-merged headers (11pt bold, white/sage-dark)
+  Rows 7-15  9 habit rows: col0 label, status checkbox per day at odd col
+  Row 16     SUNDAY..SATURDAY 2-col-merged headers (11pt bold, white/sage-dark)
   Rows 24-48 25 priority slots/day: status checkbox col + task col per day
   Row 50     notes sub-headers (2-col-merged)
   Rows 51-58 merged free-notes block per day
@@ -25,9 +25,9 @@ intentionally SKIPPED for now (the per-day donuts already live on the 7 day
 tabs; the Week tab is a planning canvas, kept simple — flagged in the report).
 
 Modes:
-  (default)        create Week tab + structure + reverse-populate from day tabs
+  (default)        reset/format Week tab + wire formulas from day tabs
   --dry-run        report what would be created; NO writes
-  --no-populate    create + format only; skip the reverse-populate pass
+  --no-populate    compatibility flag; formulas are still wired
 """
 
 from __future__ import annotations
@@ -71,6 +71,26 @@ def week_label(wd):
 def structure_requests(sid: int, wd) -> list[dict]:
     """All structural/formatting/value requests for the Week tab (Sun→Sat)."""
     R: list[dict] = []
+
+    R.append({"updateSheetProperties": {
+        "properties": {"sheetId": sid, "gridProperties": {
+            "rowCount": tt.WK_GRID_ROWS,
+            "columnCount": tt.WK_GRID_COLS,
+            "frozenRowCount": 1,
+        }},
+        "fields": "gridProperties(rowCount,columnCount,frozenRowCount)",
+    }})
+
+    # Reset stale merges, values, formatting, and validation before rebuilding.
+    # The Week tab is a formula mirror; old value-populated layouts must not survive.
+    full_range = {"sheetId": sid, "startRowIndex": 0, "endRowIndex": tt.WK_GRID_ROWS,
+                  "startColumnIndex": 0, "endColumnIndex": tt.WK_GRID_COLS}
+    R.append({"unmergeCells": {"range": full_range}})
+    R.append({"repeatCell": {
+        "range": full_range,
+        "cell": {},
+        "fields": "userEnteredValue,userEnteredFormat,dataValidation",
+    }})
     DI = list(range(7))  # 0=Sun..6=Sat
 
     # ---- column widths: col0 label 180; per day status 36 + content 200 ----
@@ -292,10 +312,9 @@ def main():
             "SKIP per-day donut (Week tab is a planning canvas; day tabs keep "
             "their donuts) — design simplification, flagged",
         ]
-        if not args.no_populate:
-            report["would"].append(
-                "REVERSE-POPULATE Week grid from the 7 day tabs' current slots "
-                "+ habits (rows 16-40 / 5-13)")
+        report["would"].append(
+            "WIRE Week grid formulas from the 7 day tabs current slots "
+            "+ habits (rows 16-40 / 5-13)")
         print(json.dumps(report, indent=2))
         return
 
@@ -327,9 +346,12 @@ def main():
     # ---- structure / formatting ----
     client.batch_update(structure_requests(wk_sid, wd))
 
-    # ---- reverse-populate from the 7 day tabs ----
-    if not args.no_populate:
-        report["populate"] = populate_from_day_tabs(client, wd)
+    # ---- wire formulas from the 7 day tabs ----
+    meta = client.get_metadata()
+    formula_writes = tt._build_week_formulas(meta)
+    for rng, vals in formula_writes:
+        client.values_update(rng, vals)
+    report["formula_ranges"] = len(formula_writes)
 
     report["donut_note"] = ("Per-day donut intentionally skipped on the Week "
                             "tab — it is a planning canvas; the 7 day tabs "

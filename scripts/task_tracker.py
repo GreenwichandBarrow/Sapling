@@ -1649,7 +1649,18 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
         print(f"task-tracker-manager: carryover pulled {len(carryover_summary['pulled'])} item(s) from prior → new"
               + (f"; {len(carryover_summary['refused'])} refused" if carryover_summary["refused"] else ""))
 
-    # ---- 7. Wire Week tab formulas ----
+    # ---- 7. Rebuild Week tab structure, then wire formulas ----
+    week_tab_props = find_tab(new_meta, TAB_WEEK)
+    if week_tab_props:
+        try:
+            import build_week_tab
+            new_client.batch_update(build_week_tab.structure_requests(week_tab_props["sheetId"], wd))
+            new_meta = new_client.get_metadata()
+            print("task-tracker-manager: rebuilt Week tab structure on new file")
+        except Exception as e:
+            print(f"task-tracker-manager: WARN Week tab structure rebuild skipped — {e}", file=sys.stderr)
+
+    # ---- 7b. Wire Week tab formulas ----
     formula_writes = _build_week_formulas(new_meta)
     for rng, vals in formula_writes:
         new_client.values_update(rng, vals)

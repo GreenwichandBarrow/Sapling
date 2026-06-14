@@ -1,4 +1,4 @@
-"""Dashboard landing page — hero Active Deal Pipeline tile + 4 small tiles.
+"""Dashboard landing page — hero Active Deal Pipeline tile + lead-in tiles.
 
 Layout matches `dashboard/mockup-landing.html` (locked Session 4 PM):
   Row 1: HERO Active Deal Pipeline (full-width, 56px / weight-200 headline,
@@ -26,171 +26,6 @@ if str(_DASHBOARD_DIR) not in sys.path:
 
 def _tile(body: str) -> str:
     return dedent(body).strip()
-
-
-def _status_dot(status: str) -> str:
-    if status in {"ok", "green"}:
-        return "green"
-    if status in {"warn", "yellow"}:
-        return "yellow"
-    if status in {"alert", "red"}:
-        return "red"
-    return "grey"
-
-
-def _command_item(title: str, value: str, detail: str, status: str, href: str) -> str:
-    return dedent(
-        f"""
-        <a class="gb-command-item" href="{href}" target="_self">
-          <div class="gb-command-item-head">
-            <span class="gb-status-dot {_status_dot(status)}"></span>
-            <span>{escape(title)}</span>
-          </div>
-          <div class="gb-command-value">{escape(value)}</div>
-          <div class="gb-command-detail">{escape(detail)}</div>
-        </a>
-        """
-    ).strip()
-
-
-def _command_center_strip() -> str:
-    """Top-level operating cockpit: what ran, what needs review, and freshness."""
-    items: list[str] = []
-
-    try:
-        from data_sources import load_skill_health, skill_health_summary
-        from pages.c_suite_skills import _bookend_summary
-
-        groups = load_skill_health()
-        summary = skill_health_summary(groups)
-        bookend = _bookend_summary()
-        scheduled_issues = summary["daily_issue"] + summary["gaps"]
-        scheduled_status = "alert" if scheduled_issues else "ok"
-        items.append(_command_item(
-            "Scheduled Work",
-            f"{summary['daily_completed']} / {summary['daily_total']} due-by-now",
-            f"{scheduled_issues} issues, {summary['daily_remaining']} later today",
-            scheduled_status,
-            "/c-suite-skills",
-        ))
-        bookend_issues = bookend["daily_issues"]
-        bookend_status = "alert" if bookend_issues else ("warn" if bookend["daily_fired"] < bookend["daily_total"] else "ok")
-        items.append(_command_item(
-            "Bookends",
-            f"{bookend['daily_fired']} / {bookend['daily_total']} complete",
-            f"{bookend_issues} issues in Good Morning / Good Night flow",
-            bookend_status,
-            "/c-suite-skills",
-        ))
-    except Exception:
-        items.append(_command_item(
-            "Scheduled Work",
-            "unavailable",
-            "skill-health loader failed",
-            "alert",
-            "/c-suite-skills",
-        ))
-
-    try:
-        from data_sources import check_dashboard_staleness
-
-        stale = check_dashboard_staleness()
-        if stale:
-            first = stale[0]
-            items.append(_command_item(
-                "Freshness",
-                f"{len(stale)} stale source{'s' if len(stale) != 1 else ''}",
-                f"{first.label} {first.age_hours:.1f}h old",
-                "warn",
-                "/infrastructure",
-            ))
-        else:
-            items.append(_command_item(
-                "Freshness",
-                "current",
-                "all dashboard snapshots within thresholds",
-                "ok",
-                "/infrastructure",
-            ))
-    except Exception:
-        items.append(_command_item(
-            "Freshness",
-            "unavailable",
-            "staleness check failed",
-            "alert",
-            "/infrastructure",
-        ))
-
-    try:
-        from pages.deal_aggregator import _load_artifact_tables, _verdict_groups
-
-        listings, _sources, _summary = _load_artifact_tables(date.today(), 1)
-        surfaced, learning, rejected = _verdict_groups(listings)
-        status = "ok" if surfaced else ("warn" if learning else "warn")
-        items.append(_command_item(
-            "Deal Intake",
-            f"{len(surfaced)} surfaced",
-            f"{len(learning)} borderline, {len(rejected)} filtered today",
-            status,
-            "/deal-aggregator",
-        ))
-    except Exception:
-        items.append(_command_item(
-            "Deal Intake",
-            "unavailable",
-            "deal-aggregator artifact read failed",
-            "alert",
-            "/deal-aggregator",
-        ))
-
-    try:
-        from data_sources import load_credit_tiles, load_system_health, system_health_summary
-
-        health = load_system_health()
-        health_summary = system_health_summary(health)
-        credits = load_credit_tiles()
-        review = [t for t in health if t.status in ("alert", "warn")]
-        if health_summary["alert"]:
-            status = "alert"
-        elif health_summary["warn"]:
-            status = "warn"
-        else:
-            status = "ok"
-        if review:
-            detail = f"{review[0].label}: {review[0].detail}"
-        else:
-            live_credits = sum(1 for c in credits if c.runway_color == "green")
-            detail = f"{live_credits} / {len(credits)} usage meters live" if credits else "usage meters unavailable"
-        items.append(_command_item(
-            "System",
-            f"{health_summary['healthy']} healthy",
-            detail,
-            status,
-            "/infrastructure",
-        ))
-    except Exception:
-        items.append(_command_item(
-            "System",
-            "unavailable",
-            "infrastructure loader failed",
-            "alert",
-            "/infrastructure",
-        ))
-
-    return _tile(f"""
-    <section class="gb-command-strip">
-      <div class="gb-command-head">
-        <div>
-          <div class="gb-command-eyebrow">Command Center</div>
-          <div class="gb-command-title">Today&apos;s operating status</div>
-        </div>
-        <div class="gb-command-meta">Live local checks · no email sending</div>
-      </div>
-      <div class="gb-command-grid">
-        {''.join(items)}
-      </div>
-    </section>
-    """)
 
 
 # -----------------------------------------------------------------------------
@@ -631,7 +466,6 @@ def _tile_infrastructure() -> str:
 def render() -> None:
     import streamlit as st
 
-    command_strip = _command_center_strip()
     hero = _hero_active_deal_pipeline()
     small_tiles = [
         _tile_deal_aggregator(),
@@ -641,7 +475,7 @@ def render() -> None:
         _tile_infrastructure(),
     ]
     st.markdown(
-        f'{command_strip}<div class="gb-grid">{hero}{"".join(small_tiles)}</div>',
+        f'<div class="gb-grid">{hero}{"".join(small_tiles)}</div>',
         unsafe_allow_html=True,
     )
     st.markdown(

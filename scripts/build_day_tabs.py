@@ -65,26 +65,40 @@ DAY_FULL = {"Sun": "SUNDAY", "Mon": "MONDAY", "Tue": "TUESDAY", "Wed": "WEDNESDA
 DAY_TITLE_ROW = 1
 DAY_HABITS_HEADER_ROW = 4
 DAY_HABIT_FIRST_ROW = 5
-DAY_HABIT_LAST_ROW = 13
-DAY_COL_HEADER_ROW = 15
-DAY_SLOT_FIRST_ROW = 16
-DAY_SLOT_LAST_ROW = 40
-DAY_NOTES_HEADER_ROW = 42
-DAY_NOTES_FIRST_ROW = 43
-DAY_NOTES_LAST_ROW = 50
-DAY_GRID_ROWS = 53
+DAY_HABIT_LAST_ROW = 14
+DAY_COL_HEADER_ROW = 16
+DAY_SLOT_FIRST_ROW = 17
+DAY_SLOT_LAST_ROW = 41
+DAY_NOTES_HEADER_ROW = 43
+DAY_NOTES_FIRST_ROW = 44
+DAY_NOTES_LAST_ROW = 51
+DAY_GRID_ROWS = 54
 DAY_GRID_COLS = 12
+TOP_PRIORITY_SLOT_COUNT = 3
 
 HABITS_DEFAULT = [
-    "Water & hygiene",
-    "Meditation",
-    "Exercises",
-    "ACV drink",
-    "Probiotic protein shake",
-    "Class",
-    "Bike to work",
+    "Sleep 8h",
+    "Water + hygiene",
+    "Headspace",
+    "Mobility sequence",
+    "Journal",
+    "14h fast: 7:30p-9:30a",
+    "ACV turmeric tonic",
+    "Protein/probiotic shake",
+    "Coffee cutoff 11a",
+    "Lunch yogurt parfait",
+]
+HABITS_SUPPLEMENTAL_DEFAULT = [
+    "Matcha cutoff 2p",
     "10K steps",
-    "Omega 3 & magnesium",
+    "Exercise",
+    "Multivitamin",
+    "Omega-3",
+    "Curcumin",
+    "Urolithin A",
+    "Magnesium",
+    "Eating cutoff 7:30p",
+    "Screen cutoff 9:30p",
 ]
 TYPE_OPTIONS = ["Work", "Home"]
 PROJECT_OPTIONS = ["G&B", "Kai Grey", "Panthera Grey", "Myself Renewed", "Home"]
@@ -223,6 +237,10 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
     R: list[dict] = []
     V: list[dict] = []
 
+    R.append({"updateSheetProperties": {
+        "properties": {"sheetId": sid, "gridProperties": {"rowCount": DAY_GRID_ROWS, "columnCount": DAY_GRID_COLS}},
+        "fields": "gridProperties.rowCount,gridProperties.columnCount"}})
+
     # ---- Title row 1: merge A1:E1, 20pt bold, sage-dark fill ----
     R.append({"mergeCells": {
         "range": {"sheetId": sid, "startRowIndex": 0, "endRowIndex": 1,
@@ -236,32 +254,37 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
 
     # ---- HABITS header row 4 ----
     V.append({"updateCells": {
-        "rows": [{"values": [_txt("HABITS", bold=True, size=12, fg=SAGE_DARK)]}],
+        "rows": [{"values": [
+            _txt("HABITS", bold=True, size=12, fg=SAGE_DARK), {}, {}, {},
+            _txt("SUPPLEMENTAL", bold=True, size=12, fg=SAGE_DARK),
+        ]}],
         "fields": "userEnteredValue,userEnteredFormat",
         "start": {"sheetId": sid, "rowIndex": DAY_HABITS_HEADER_ROW - 1,
                   "columnIndex": 0}}})
 
-    # ---- Habit rows 5..13: A native checkbox, B:E merged label 14pt ----
-    R.append({"setDataValidation": {
-        "range": {"sheetId": sid, "startRowIndex": DAY_HABIT_FIRST_ROW - 1,
-                  "endRowIndex": DAY_HABIT_LAST_ROW, "startColumnIndex": 0,
-                  "endColumnIndex": 1},
-        "rule": {"condition": {"type": "BOOLEAN"}, "strict": True}}})
+    # ---- Habit rows 5..14: A/B primary checkbox+label, C/D supplemental checkbox+label ----
+    for c0 in (0, 2):
+        R.append({"setDataValidation": {
+            "range": {"sheetId": sid, "startRowIndex": DAY_HABIT_FIRST_ROW - 1,
+                      "endRowIndex": DAY_HABIT_LAST_ROW, "startColumnIndex": c0,
+                      "endColumnIndex": c0 + 1},
+            "rule": {"condition": {"type": "BOOLEAN"}, "strict": True}}})
     for i, label in enumerate(HABITS_DEFAULT):
         r0 = DAY_HABIT_FIRST_ROW - 1 + i
-        R.append({"mergeCells": {
-            "range": {"sheetId": sid, "startRowIndex": r0, "endRowIndex": r0 + 1,
-                      "startColumnIndex": 1, "endColumnIndex": 5},
-            "mergeType": "MERGE_ALL"}})
+        supplemental = HABITS_SUPPLEMENTAL_DEFAULT[i]
+        goal = "GOAL" if label.startswith("14h fast") else ""
         V.append({"updateCells": {
             "rows": [{"values": [
                 {"userEnteredValue": {"boolValue": False}},
                 _txt(label, size=14),
+                {"userEnteredValue": {"boolValue": False}},
+                _txt(supplemental, size=14),
+                _txt(goal, size=10, fg=SAGE_DARK),
             ]}],
             "fields": "userEnteredValue,userEnteredFormat",
             "start": {"sheetId": sid, "rowIndex": r0, "columnIndex": 0}}})
 
-    # ---- Column headers row 15 ----
+    # ---- Column headers row 16 ----
     headers = ["✓", "Task", "Type", "Project", "Notes"]
     V.append({"updateCells": {
         "rows": [{"values": [_txt(h, bold=True, size=12, fg=WHITE, bg=SAGE_DARK,
@@ -350,18 +373,19 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
                 "format": {"backgroundColor": SAGE_EXTRA_LIGHT,
                            "textFormat": {"strikethrough": True, "foregroundColor": MUTED}}}},
         "index": 0}})
-    # Habit rule: =$A4=TRUE → sage-extra-light fill over A4:E10
-    R.append({"addConditionalFormatRule": {
-        "rule": {
-            "ranges": [{"sheetId": sid,
-                        "startRowIndex": DAY_HABIT_FIRST_ROW - 1,
-                        "endRowIndex": DAY_HABIT_LAST_ROW,
-                        "startColumnIndex": 0, "endColumnIndex": 5}],
-            "booleanRule": {
-                "condition": {"type": "CUSTOM_FORMULA",
-                              "values": [{"userEnteredValue": f"=$A{DAY_HABIT_FIRST_ROW}=TRUE"}]},
-                "format": {"backgroundColor": SAGE_EXTRA_LIGHT}}},
-        "index": 0}})
+    # Habit rules: primary/supplemental checked → sage-extra-light fill over A:E
+    for col_letter in ("A", "C"):
+        R.append({"addConditionalFormatRule": {
+            "rule": {
+                "ranges": [{"sheetId": sid,
+                            "startRowIndex": DAY_HABIT_FIRST_ROW - 1,
+                            "endRowIndex": DAY_HABIT_LAST_ROW,
+                            "startColumnIndex": 0, "endColumnIndex": 5}],
+                "booleanRule": {
+                    "condition": {"type": "CUSTOM_FORMULA",
+                                  "values": [{"userEnteredValue": f"=${col_letter}{DAY_HABIT_FIRST_ROW}=TRUE"}]},
+                    "format": {"backgroundColor": SAGE_EXTRA_LIGHT}}},
+            "index": 0}})
 
     return R + V
 

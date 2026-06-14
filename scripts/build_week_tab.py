@@ -140,7 +140,7 @@ def structure_requests(sid: int, wd) -> list[dict]:
             "start": {"sheetId": sid, "rowIndex": tt.WK_HABIT_DAYHDR_ROW - 1,
                       "columnIndex": c0}}})
 
-    # ---- Rows 7-13: 7 habit rows. col0 label, status checkbox per day ----
+    # ---- Rows 7-16: 10 primary habit rows. col0 label, status checkbox per day ----
     for hi, label in enumerate(tt.HABITS_DEFAULT):
         r0 = tt.WK_HABIT_FIRST_ROW - 1 + hi
         R.append({"updateCells": {
@@ -155,7 +155,7 @@ def structure_requests(sid: int, wd) -> list[dict]:
                       "startColumnIndex": sc, "endColumnIndex": sc + 1},
             "rule": {"condition": {"type": "BOOLEAN"}, "strict": True}}})
 
-    # ---- Row 15: SUNDAY..SATURDAY headers (2-col merged, white/sage-dark) ----
+    # ---- Day headers (2-col merged, white/sage-dark) ----
     for i in DI:
         c0 = tt.wk_status_col(i)
         full = {"Sun": "SUNDAY", "Mon": "MONDAY", "Tue": "TUESDAY",
@@ -174,7 +174,7 @@ def structure_requests(sid: int, wd) -> list[dict]:
             "start": {"sheetId": sid, "rowIndex": tt.WK_DAYHDR_ROW - 1,
                       "columnIndex": c0}}})
 
-    # ---- Rows 24-48: 25 priority slots/day ----
+    # ---- Priority slots: 25 rows/day ----
     for i in DI:
         sc = tt.wk_status_col(i)
         tc = tt.wk_content_col(i)
@@ -245,15 +245,15 @@ def structure_requests(sid: int, wd) -> list[dict]:
 def populate_from_day_tabs(client, wd) -> dict:
     """Reverse-populate the Week grid FROM the current 7 day tabs so Kay sees
     this week's already-placed plan at a glance. Reads each day tab's slots
-    (rows 16-40, A=status B=task) + habits (rows 5-13, A=status) and writes
+    (rows 17-41, A=status B=task) + primary habits (rows 5-14, A=status) and writes
     into the matching Week-grid day block. Returns a summary dict."""
     summary = {"slots_written": 0, "habits_written": 0, "per_day": {}}
     for i, day_name in enumerate(tt.WK_DAY_ORDER):
-        block = client.get_values(f"'{day_name}'!A1:E37")
+        block = client.get_values(f"'{day_name}'!A1:E{tt.DAY_SLOT_LAST_ROW}")
         sc = tt.wk_status_col(i)
         tc = tt.wk_content_col(i)
         col = tt.col_letter
-        # Slots: day-tab rows 13..27 → Week rows 23..37
+        # Slots: day-tab priority rows → Week priority rows
         st_vals, tk_vals = [], []
         for r in range(tt.DAY_SLOT_FIRST_ROW - 1, tt.DAY_SLOT_LAST_ROW):
             row = block[r] if r < len(block) else []
@@ -266,7 +266,7 @@ def populate_from_day_tabs(client, wd) -> dict:
             f"'{tt.TAB_WEEK}'!{col(tc)}{tt.WK_SLOT_FIRST_ROW}:{col(tc)}{tt.WK_SLOT_LAST_ROW}",
             tk_vals)
         nslots = sum(1 for tk in tk_vals if tk[0])
-        # Habits: day-tab rows 4..10 col A → Week rows 7..13 status col
+        # Habits: day-tab primary habit rows col A → Week habit rows status col
         hb_vals = []
         for r in range(tt.DAY_HABIT_FIRST_ROW - 1, tt.DAY_HABIT_LAST_ROW):
             row = block[r] if r < len(block) else []
@@ -314,7 +314,7 @@ def main():
         ]
         report["would"].append(
             "WIRE Week grid formulas from the 7 day tabs current slots "
-            "+ habits (rows 16-40 / 5-13)")
+            "+ habits (rows 17-41 / 5-14)")
         print(json.dumps(report, indent=2))
         return
 

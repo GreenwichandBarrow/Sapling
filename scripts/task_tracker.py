@@ -219,16 +219,16 @@ DAY_IDX_TO_TAB = {DAY_BY_NAME[k.lower()]: DAY_LABELS[DAY_BY_NAME[k.lower()]]
 
 # Per-day-tab layout (1-based rows for A1 references)
 DAY_TITLE_ROW = 1            # merged A1:E1 "SUNDAY · May 17"
-DAY_HABITS_HEADER_ROW = 4    # "HABITS"
-DAY_HABIT_FIRST_ROW = 5      # rows 5..13 = 9 habit rows
-DAY_HABIT_LAST_ROW = 13
-DAY_COL_HEADER_ROW = 15      # ✓ | Task | Type | Project | Notes
-DAY_SLOT_FIRST_ROW = 16      # rows 16..40 = 25 priority slots
-DAY_SLOT_LAST_ROW = 40
-DAY_NOTES_HEADER_ROW = 42    # "NOTES"
-DAY_NOTES_FIRST_ROW = 43     # rows 43..50 = free-notes block
-DAY_NOTES_LAST_ROW = 50
-DAY_GRID_ROWS = 53           # generous; chart anchors col G row 1
+DAY_HABITS_HEADER_ROW = 4    # "HABITS" + "SUPPLEMENTAL"
+DAY_HABIT_FIRST_ROW = 5      # rows 5..14 = 10 habit rows
+DAY_HABIT_LAST_ROW = 14
+DAY_COL_HEADER_ROW = 16      # ✓ | Task | Type | Project | Notes
+DAY_SLOT_FIRST_ROW = 17      # rows 17..41 = 25 priority slots
+DAY_SLOT_LAST_ROW = 41
+DAY_NOTES_HEADER_ROW = 43    # "NOTES"
+DAY_NOTES_FIRST_ROW = 44     # rows 44..51 = free-notes block
+DAY_NOTES_LAST_ROW = 51
+DAY_GRID_ROWS = 54           # generous; chart anchors col G row 1
 DAY_GRID_COLS = 12           # A..E content + G chart anchor headroom
 
 # Per-day-tab columns (0-based)
@@ -241,7 +241,7 @@ DAY_COL_LAST = DAY_COL_NOTES
 DAY_HEADERS = ["✓", "Task", "Type", "Project", "Notes"]
 DAY_SLOT_COUNT = DAY_SLOT_LAST_ROW - DAY_SLOT_FIRST_ROW + 1  # 25
 TOP_PRIORITY_SLOT_COUNT = 3  # fixed green-shaded priority band per day
-DAY_HABIT_COUNT = DAY_HABIT_LAST_ROW - DAY_HABIT_FIRST_ROW + 1  # 9
+DAY_HABIT_COUNT = DAY_HABIT_LAST_ROW - DAY_HABIT_FIRST_ROW + 1  # 10
 
 TAB_DONUT_DATA = "_donut_data"
 
@@ -260,18 +260,18 @@ TAB_WEEK = "Week"
 WK_TITLE_ROW = 1               # merged A1:O1 "WEEK OF May 17-23"
 WK_HABITS_HEADER_ROW = 5       # "HABIT TRACKER"
 WK_HABIT_DAYHDR_ROW = 6        # Sun..Sat 2-col-merged sub-headers
-WK_HABIT_FIRST_ROW = 7         # rows 7..13 = 7 habit rows (label col 0)
-WK_HABIT_LAST_ROW = 15
-WK_DAYHDR_ROW = 16             # SUNDAY..SATURDAY 2-col-merged headers
-WK_SLOT_FIRST_ROW = 24         # rows 24..48 = 25 priority slots
-WK_SLOT_LAST_ROW = 48
-WK_NOTES_HDR_ROW = 50          # notes label row
-WK_NOTES_FIRST_ROW = 51        # rows 51..58 = merged notes block per day
-WK_NOTES_LAST_ROW = 58
-WK_GRID_ROWS = 61
+WK_HABIT_FIRST_ROW = 7         # rows 7..16 = 10 primary habit rows (label col 0)
+WK_HABIT_LAST_ROW = 16
+WK_DAYHDR_ROW = 17             # SUNDAY..SATURDAY 2-col-merged headers
+WK_SLOT_FIRST_ROW = 25         # rows 25..49 = 25 priority slots
+WK_SLOT_LAST_ROW = 49
+WK_NOTES_HDR_ROW = 51          # notes label row
+WK_NOTES_FIRST_ROW = 52        # rows 52..59 = merged notes block per day
+WK_NOTES_LAST_ROW = 59
+WK_GRID_ROWS = 62
 WK_GRID_COLS = 15              # col0 label + 7 day-pairs (status + content)
 WK_SLOT_COUNT = WK_SLOT_LAST_ROW - WK_SLOT_FIRST_ROW + 1   # 25
-WK_HABIT_COUNT = WK_HABIT_LAST_ROW - WK_HABIT_FIRST_ROW + 1  # 7
+WK_HABIT_COUNT = WK_HABIT_LAST_ROW - WK_HABIT_FIRST_ROW + 1  # 10
 
 # Day order on the Week grid is Sun→Sat (design-corrected; archive grid was
 # Mon-first). Column mapping: col 0 = habit/notes label, then for day i
@@ -290,15 +290,28 @@ def wk_content_col(day_idx: int) -> int:
 
 
 HABITS_DEFAULT = [
-    "Water & hygiene",
-    "Meditation",
-    "Exercises",
-    "ACV drink",
-    "Probiotic protein shake",
-    "Class",
-    "Bike to work",
+    "Sleep 8h",
+    "Water + hygiene",
+    "Headspace",
+    "Mobility sequence",
+    "Journal",
+    "14h fast: 7:30p-9:30a",
+    "ACV turmeric tonic",
+    "Protein/probiotic shake",
+    "Coffee cutoff 11a",
+    "Lunch yogurt parfait",
+]
+HABITS_SUPPLEMENTAL_DEFAULT = [
+    "Matcha cutoff 2p",
     "10K steps",
-    "Omega 3 & magnesium",
+    "Exercise",
+    "Multivitamin",
+    "Omega-3",
+    "Curcumin",
+    "Urolithin A",
+    "Magnesium",
+    "Eating cutoff 7:30p",
+    "Screen cutoff 9:30p",
 ]
 
 
@@ -1086,21 +1099,22 @@ def _day_clear_requests(sid: int) -> list[dict]:
     Notes empty, free-notes block empty. Title row + headers + dropdowns + CF +
     checkbox data-validation are PRESERVED (only userEnteredValue is touched)."""
     reqs: list[dict] = []
-    # Habit status checkboxes (col A, rows 5..13) → FALSE
-    reqs.append({"repeatCell": {
-        "range": {"sheetId": sid,
-                  "startRowIndex": DAY_HABIT_FIRST_ROW - 1, "endRowIndex": DAY_HABIT_LAST_ROW,
-                  "startColumnIndex": DAY_COL_STATUS, "endColumnIndex": DAY_COL_STATUS + 1},
-        "cell": {"userEnteredValue": {"boolValue": False}},
-        "fields": "userEnteredValue"}})
-    # Slot status checkboxes (col A, rows 16..40) → FALSE
+    # Habit status checkboxes (primary col A + supplemental col C, rows 5..14) → FALSE
+    for col in (0, 2):
+        reqs.append({"repeatCell": {
+            "range": {"sheetId": sid,
+                      "startRowIndex": DAY_HABIT_FIRST_ROW - 1, "endRowIndex": DAY_HABIT_LAST_ROW,
+                      "startColumnIndex": col, "endColumnIndex": col + 1},
+            "cell": {"userEnteredValue": {"boolValue": False}},
+            "fields": "userEnteredValue"}})
+    # Slot status checkboxes (col A, rows 17..41) → FALSE
     reqs.append({"repeatCell": {
         "range": {"sheetId": sid,
                   "startRowIndex": DAY_SLOT_FIRST_ROW - 1, "endRowIndex": DAY_SLOT_LAST_ROW,
                   "startColumnIndex": DAY_COL_STATUS, "endColumnIndex": DAY_COL_STATUS + 1},
         "cell": {"userEnteredValue": {"boolValue": False}},
         "fields": "userEnteredValue"}})
-    # Slot Task/Type/Project/Notes (cols B..E, rows 16..40) → empty
+    # Slot Task/Type/Project/Notes (cols B..E, rows 17..41) → empty
     reqs.append({"repeatCell": {
         "range": {"sheetId": sid,
                   "startRowIndex": DAY_SLOT_FIRST_ROW - 1, "endRowIndex": DAY_SLOT_LAST_ROW,
@@ -1185,7 +1199,7 @@ def _pull_carryover_to_week(client: "SheetsClient", dry_run: bool = False) -> di
     day_order = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
     for i, day_tab in enumerate(day_order):
-        # Read day tab's priority slots (cols A=status, B=task, rows 16..40)
+        # Read day tab's priority slots (cols A=status, B=task, rows 17..41)
         rng = f"'{day_tab}'!A{DAY_SLOT_FIRST_ROW}:B{DAY_SLOT_LAST_ROW}"
         try:
             vals = client.get_values(rng) or []
@@ -1887,7 +1901,7 @@ def cmd_build_week(args) -> int:
               + ("" if week_tab is not None else " — run scripts/build_week_tab.py first"))
         print(f"  Would write combined archive tab: {archive_name!r} (far-right)")
         print(f"  Would clear ALL 7 day-blocks on the Week tab + re-title row 1 → {week_label!r}")
-        print("  Would re-stamp per-day header dates (row 15):")
+        print("  Would re-stamp per-day header dates (row 17):")
         for i in range(7):
             print(f"    {WK_DAY_ORDER[i]} → {day_title_text(WK_DAY_ORDER[i], wd[i])!r}")
         if getattr(args, "skip_recurring", False):
@@ -1982,7 +1996,7 @@ def cmd_build_week(args) -> int:
         "rows": [{"values": [{"userEnteredValue": {"stringValue": week_label}}]}],
         "fields": "userEnteredValue",
         "start": {"sheetId": wk_sid, "rowIndex": WK_TITLE_ROW - 1, "columnIndex": 0}}})
-    # Per-day header dates (row 15, merged anchors at status cols)
+    # Per-day header dates (row 17, merged anchors at status cols)
     for i in range(7):
         sc = wk_status_col(i)
         mutate.append({"updateCells": {
@@ -2057,8 +2071,8 @@ def cmd_distribute_week(args) -> int:
     Design-corrected model (2026-05-17): after `build-week` rebuilds the Week
     tab and Kay lays out the full week there, this verb reads each Week-grid
     day-block's 25 priority slots (status + task) and habit checkboxes and
-    writes them into the corresponding day tab's slots (rows 16-40) + habits
-    (rows 5-13). Collision-aware: refuses to overwrite a non-empty day-tab slot
+    writes them into the corresponding day tab's slots (rows 17-41) + habits
+    (rows 5-14). Collision-aware: refuses to overwrite a non-empty day-tab slot
     that the Week plan does NOT also fill at the same slot index, unless
     --force (so re-running after a manual day-tab edit is safe by default).
 
@@ -2160,7 +2174,7 @@ def cmd_distribute_week(args) -> int:
     for _widx, name in targets:
         slots = plan[name]["slots"]
         habits = plan[name]["habits"]
-        # Slot block A:E rows 16..40 — write [status, task, "", "", ""].
+        # Slot block A:E rows 17..41 — write [status, task, "", "", ""].
         # Type/Project/Notes are NOT carried (the Week canvas holds task text
         # only; Kay enriches on the day tab, or recurring metadata was set on
         # the Recurring Template and is re-applied if she re-promotes). Existing
@@ -2174,7 +2188,7 @@ def cmd_distribute_week(args) -> int:
             day_tab_block(name, DAY_COL_STATUS, DAY_COL_LAST,
                           DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW),
             rows_vals)
-        # Habit checkboxes rows 5..13 col A.
+        # Habit checkboxes rows 5..14 col A.
         client.values_update(
             day_tab_range(name, DAY_COL_STATUS, DAY_HABIT_FIRST_ROW, DAY_HABIT_LAST_ROW),
             [[h] for h in habits])
@@ -2782,23 +2796,24 @@ def cmd_reformat(args) -> int:
             },
             "index": 0,
         }})
-        # Habit rule: status TRUE → sage-extra-light fill across A:E.
-        R.append({"addConditionalFormatRule": {
-            "rule": {
-                "ranges": [{"sheetId": sid,
-                            "startRowIndex": DAY_HABIT_FIRST_ROW - 1,
-                            "endRowIndex": DAY_HABIT_LAST_ROW,
-                            "startColumnIndex": DAY_COL_STATUS,
-                            "endColumnIndex": DAY_COL_LAST + 1}],
-                "booleanRule": {
-                    "condition": {"type": "CUSTOM_FORMULA",
-                                  "values": [{"userEnteredValue":
-                                              f"=$A{DAY_HABIT_FIRST_ROW}=TRUE"}]},
-                    "format": {"backgroundColor": hex_to_rgb(SAGE_EXTRA_LIGHT_HEX)},
+        # Habit rules: primary/supplemental checked → sage-extra-light fill across A:E.
+        for col_letter in ("A", "C"):
+            R.append({"addConditionalFormatRule": {
+                "rule": {
+                    "ranges": [{"sheetId": sid,
+                                "startRowIndex": DAY_HABIT_FIRST_ROW - 1,
+                                "endRowIndex": DAY_HABIT_LAST_ROW,
+                                "startColumnIndex": DAY_COL_STATUS,
+                                "endColumnIndex": DAY_COL_LAST + 1}],
+                    "booleanRule": {
+                        "condition": {"type": "CUSTOM_FORMULA",
+                                      "values": [{"userEnteredValue":
+                                                  f"=${col_letter}{DAY_HABIT_FIRST_ROW}=TRUE"}]},
+                        "format": {"backgroundColor": hex_to_rgb(SAGE_EXTRA_LIGHT_HEX)},
+                    },
                 },
-            },
-            "index": 0,
-        }})
+                "index": 0,
+            }})
 
     # Week tab: mirror the same fixed top-3 priority shading for each day block.
     if week_sid is not None:

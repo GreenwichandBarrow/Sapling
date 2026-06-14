@@ -249,7 +249,7 @@ Status values: `pending`, `ported`, `validated`, `cutover`, `blocked`.
 - Stale migration-era processes were cleaned up: the old root-owned Codex app-server and the old `codex yolo` process from 2026-06-08 were stopped. The active `ubuntu` Codex app-server and desktop proxy remain running.
 - Legacy Claude files, skills, transcripts, and context remain preserved for history/rollback. They are not active scheduled operating paths.
 - Legacy disabled `jj-*` unit files remain present but disabled; the active replacement timers are `cold-call-operations-sunday.timer` and `cold-call-snapshot-refresh.timer`.
-- Remaining Phase 2.5 work is dashboard/product work, not Claude cutover: finish dashboard plumbing and build the new email orchestrator. These do not block reducing Claude Code usage/plan once Kay confirms no manual Claude sessions are needed.
+- Remaining Phase 2.5 work is dashboard/product work, not Claude cutover: finish dashboard plumbing and wire the new email orchestrator into dashboard/status production. These do not block reducing Claude Code usage/plan once Kay confirms no manual Claude sessions are needed.
 
 
 ## Calibration Workflow Codex Port - 2026-06-05
@@ -329,19 +329,27 @@ These are intentional improvements to consider after Phase 2 monitoring, before 
    - Evolve the dashboard from passive status board into the primary command center for running the whole system.
    - Include what ran, what changed, what needs Kay, stale-data warnings, spend/usage, blocked workflows, approval queues, and recommended next actions.
    - Preserve the dashboard as the go-to monitoring surface during the Phase 2 stability week.
+   - 2026-06-14: added a landing-page Command Center strip that aggregates scheduled work, bookend workflow status, dashboard freshness, deal intake, and system health from existing local loaders.
 
-2. Target Discovery / DealsX / Cold Call Operations separation:
+2. Email Orchestrator:
+   - 2026-06-14: created the repo-backed `email-orchestrator` skill contract.
+   - It coordinates `email-intelligence`, `pipeline-manager`, `relationship-manager`, `task-tracker-manager`, `deal-aggregator`, and `goodmorning`.
+   - It may read, classify, draft-only, route, and write dashboard status.
+   - It must never send, draft-send, forward, autoreply, or schedule-send email.
+   - Remaining implementation: add the producer for `brain/context/email-orchestrator-status.json` and expose that status on the dashboard.
+
+3. Target Discovery / DealsX / Cold Call Operations separation:
    - Reassess target-discovery now that DealsX creates its own target lists.
    - Treat DealsX list creation as DealsX-owned unless Codex is explicitly asked to audit, spot-check, summarize, or reconcile those lists.
    - Keep target-discovery focused on proprietary G&B target pools and G&B-approved routing.
    - Preserve interconnection with Cold Call Operations where upstream targets are G&B-created or G&B-approved.
 
-3. Cold Call Operations weekly workflow clarification:
+4. Cold Call Operations weekly workflow clarification:
    - Confirm the intended workflow: pull from the first/source tab in the cold call file, select the weekly batch, enrich through Apollo, and populate weekday call tabs for execution.
    - Clarify whether the target is 40 per day tab, 40 total per week, or another batch size.
    - Make the dashboard expose Cold Call Operations readiness: source pool freshness, Apollo enrichment status, daily tab population, and execution/results snapshot.
 
-4. Codex-native bookend workflow revamp:
+5. Codex-native bookend workflow revamp:
    - Review legacy Claude slash commands in `.claude/commands/`, especially `goodmorning`, `goodnight`, `savestate`, and `pickingback`.
    - Improve `goodmorning` for Codex and the new dashboard-led operating model.
    - Preserve `goodnight` if its existing structure remains solid, with only Codex terminology/tooling updates as needed.
@@ -350,14 +358,14 @@ These are intentional improvements to consider after Phase 2 monitoring, before 
    - Corrective action: created repo-backed `goodnight-closeout` under `.agents/skills/` and mapped Good Night routing to it. Future slash-command migrations must compare `.claude/commands/*.md` against Codex skill/chat prompts, not only `.claude/skills/`.
    - If still useful, convert them into lightweight Codex handoff/checkpoint workflows rather than automatically committing, updating skills, or adding hooks without an explicit reason.
 
-5. Credential and OAuth routing audit:
+6. Credential and OAuth routing audit:
    - Review every migrated skill, scheduled prompt, hook, and helper script that depends on OAuth, API keys, credits, or service tokens.
    - Any secret needed by scheduled jobs should resolve through 1Password explicitly, not through implicit shell memory or stale Claude-era assumptions.
    - Confirm `gog`/Google access, Apollo, Attio, Slack, OpenAI/Codex, GitHub, and any other service auth paths are documented in the skill or runner that uses them.
    - Where a service uses a durable local OAuth token rather than a raw API key, document that intentionally and add a health check so failures say what to refresh.
    - Avoid the old failure mode where a skill looks for a local token, cannot find it, and does not know to use or refresh the corresponding 1Password-backed path.
 
-6. Deal Aggregator funnel effectiveness review:
+7. Deal Aggregator funnel effectiveness review:
    - 2026-06-10 Kay direction: keep this on the Phase 2.5 list until the funnel reliably surfaces 1-3 evaluable deals per week; do not mark it resolved just because the scheduled jobs run cleanly.
    - Frame: `deal-aggregator` is a very large, operationally important skill that is largely underperforming on deal-flow volume. It should be stabilized, measured, and improved deliberately rather than casually patched.
    - Treat `deal-aggregator` as a multi-leg funnel, not a single monolithic skill: source roster, daily scan, afternoon top-up, email-inbound parsing, buy-box/niche matching, dedup/Slack surfacing, forensic logging, Friday source-productivity digest, and new-intermediary onboarding.

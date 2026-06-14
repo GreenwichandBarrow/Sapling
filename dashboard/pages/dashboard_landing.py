@@ -122,6 +122,37 @@ def _command_center_strip() -> str:
         ))
 
     try:
+        from data_sources import load_email_orchestrator_status
+
+        email = load_email_orchestrator_status()
+        if email.send_blockers:
+            value = f"{email.send_blockers} send blocker{'s' if email.send_blockers != 1 else ''}"
+        elif email.review_count:
+            value = f"{email.review_count} review item{'s' if email.review_count != 1 else ''}"
+        else:
+            value = "clear"
+        detail = (
+            email.needs_kay[0]
+            if email.needs_kay
+            else (email.blocked[0] if email.blocked else f"source {email.source_status}")
+        )
+        items.append(_command_item(
+            "Email",
+            value,
+            detail,
+            email.status,
+            "/c-suite-skills",
+        ))
+    except Exception:
+        items.append(_command_item(
+            "Email",
+            "unavailable",
+            "email-orchestrator status loader failed",
+            "alert",
+            "/c-suite-skills",
+        ))
+
+    try:
         from pages.deal_aggregator import _load_artifact_tables, _verdict_groups
 
         listings, _sources, _summary = _load_artifact_tables(date.today(), 1)

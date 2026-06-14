@@ -347,7 +347,7 @@ GLOBAL_CSS = f"""
   }}
   .gb-command-grid {{
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 10px;
   }}
   .gb-command-item {{
@@ -378,7 +378,7 @@ GLOBAL_CSS = f"""
   }}
   .gb-command-value {{
     color: var(--text);
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 300;
     line-height: 1.1;
     font-variant-numeric: tabular-nums;

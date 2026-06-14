@@ -604,6 +604,11 @@ _SKILL_CATALOG: dict[str, tuple[str, str, str | None]] = {
         "COO",
         "Evening workflow",
     ),
+    "task-tracker-manager": (
+        "Personal task tracker operations — Sunday build-week and nightly carry-forward.",
+        "COO",
+        "Good morning / good night workflow",
+    ),
     "socrates": (
         "Strategic conversation BEFORE plan mode — Socratic questioning, frames problem, surfaces assumptions, names alternatives, hands off to /plan at convergence. Per Harrison Wells 4/30.",
         "COO",
@@ -770,6 +775,27 @@ _CSUITE_DISPLAY_ORDER = [
 # was registered Friday morning after the Apr 24 dashboard build surfaced the gap.
 _CLAUDE_MD_SCHEDULED_BUT_UNREGISTERED: set[str] = set()
 
+# Bookend-triggered work is expected from Kay-invoked /goodmorning or
+# /goodnight workflows, not wall-clock timers and not one-off on-demand asks.
+_BOOKEND_DAILY_SKILLS: set[str] = {
+    "email-intelligence",
+    "relationship-manager",
+    "pipeline-manager",
+    "task-tracker-manager",
+    "decision-traces",
+}
+_BOOKEND_DAY_OVERLAYS: dict[int, set[str]] = {
+    5: {"weekly-tracker", "health-monitor", "calibration-workflow"},
+    7: {"task-tracker-manager"},
+}
+_BOOKEND_TRIGGERED_SKILLS: set[str] = (
+    _BOOKEND_DAILY_SKILLS | set().union(*_BOOKEND_DAY_OVERLAYS.values())
+)
+
+
+def _bookend_triggered_for_day(day: date) -> set[str]:
+    return _BOOKEND_DAILY_SKILLS | _BOOKEND_DAY_OVERLAYS.get(day.isoweekday(), set())
+
 # launchd's StartCalendarInterval uses 0=Sun OR 7=Sun (both accepted by Apple).
 # Map both to "Sun" so plists from either convention render correctly.
 _WEEKDAY_NAMES = {0: "Sun", 1: "Mon", 2: "Tue", 3: "Wed", 4: "Thu", 5: "Fri", 6: "Sat", 7: "Sun"}
@@ -933,27 +959,75 @@ _LOG_FILENAME_RE = re.compile(
     r"^(?P<skill>[a-z0-9-]+?)-(?P<date>\d{4}-\d{2}-\d{2})-(?P<hhmm>\d{4})\.log$"
 )
 
+# Some timers intentionally invoke legacy scripts/skill modes whose log prefix
+# differs from the timer name. The dashboard canary should judge the scheduled
+# operating surface, not leak those implementation names into false reds.
+_LOG_ALIASES: dict[str, tuple[tuple[str, set[int] | None], ...]] = {
+    "cold-call-snapshot-refresh": (("jj-snapshot-refresh", None),),
+    "deal-aggregator-afternoon": (("deal-aggregator", {1400}),),
+}
+
+
+def _matches_skill_log(skill: str, actual_skill: str, hhmm: int) -> bool:
+    if actual_skill == skill:
+        return True
+    for alias, allowed_times in _LOG_ALIASES.get(skill, ()):
+        if actual_skill != alias:
+            continue
+        if allowed_times is None or hhmm in allowed_times:
+            return True
+    return False
+
+
+def _digest_runs_for_friday(start: date | None = None, end: date | None = None) -> list[SkillRun]:
+    """Weekly deal-aggregator digest uses an artifact as the durable proof."""
+    runs: list[SkillRun] = []
+    if not WEEKLY_TRACKERS_DIR.exists():
+        return runs
+    for entry in WEEKLY_TRACKERS_DIR.glob("*-deal-aggregator-digest.md"):
+        try:
+            d = date.fromisoformat(entry.name[:10])
+        except ValueError:
+            continue
+        if start and d < start:
+            continue
+        if end and d > end:
+            continue
+        runs.append(
+            SkillRun(
+                fired_at=datetime(d.year, d.month, d.day, 7, 30),
+                status="ok",
+                log_path=entry,
+                snippet="Weekly deal-aggregator digest artifact landed",
+            )
+        )
+    runs.sort(key=lambda r: r.fired_at, reverse=True)
+    return runs
+
 
 def _scan_logs_for_skill(skill: str, limit: int = 5) -> list[SkillRun]:
     """Return up to `limit` most recent runs for this skill, newest first."""
-    if not SCHEDULED_LOGS_DIR.exists():
-        return []
     runs: list[SkillRun] = []
-    for entry in SCHEDULED_LOGS_DIR.iterdir():
-        m = _LOG_FILENAME_RE.match(entry.name)
-        if not m or m.group("skill") != skill:
-            continue
-        try:
-            d = date.fromisoformat(m.group("date"))
-        except ValueError:
-            continue
-        hhmm = m.group("hhmm")
-        try:
-            fired = datetime(d.year, d.month, d.day, int(hhmm[:2]), int(hhmm[2:]))
-        except ValueError:
-            continue
-        snippet, status = _read_log_summary(entry)
-        runs.append(SkillRun(fired_at=fired, status=status, log_path=entry, snippet=snippet))
+    if SCHEDULED_LOGS_DIR.exists():
+        for entry in SCHEDULED_LOGS_DIR.iterdir():
+            m = _LOG_FILENAME_RE.match(entry.name)
+            if not m:
+                continue
+            try:
+                d = date.fromisoformat(m.group("date"))
+                hhmm = int(m.group("hhmm"))
+            except ValueError:
+                continue
+            if not _matches_skill_log(skill, m.group("skill"), hhmm):
+                continue
+            try:
+                fired = datetime(d.year, d.month, d.day, hhmm // 100, hhmm % 100)
+            except ValueError:
+                continue
+            snippet, status = _read_log_summary(entry)
+            runs.append(SkillRun(fired_at=fired, status=status, log_path=entry, snippet=snippet))
+    if skill == "deal-aggregator-friday":
+        runs.extend(_digest_runs_for_friday())
     runs.sort(key=lambda r: r.fired_at, reverse=True)
     return runs[:limit]
 
@@ -962,26 +1036,29 @@ def _scan_logs_for_skill_in_range(
     skill: str, start: date, end: date
 ) -> list[SkillRun]:
     """All runs for `skill` with fired-date in [start, end] (inclusive)."""
-    if not SCHEDULED_LOGS_DIR.exists():
-        return []
     runs: list[SkillRun] = []
-    for entry in SCHEDULED_LOGS_DIR.iterdir():
-        m = _LOG_FILENAME_RE.match(entry.name)
-        if not m or m.group("skill") != skill:
-            continue
-        try:
-            d = date.fromisoformat(m.group("date"))
-        except ValueError:
-            continue
-        if d < start or d > end:
-            continue
-        hhmm = m.group("hhmm")
-        try:
-            fired = datetime(d.year, d.month, d.day, int(hhmm[:2]), int(hhmm[2:]))
-        except ValueError:
-            continue
-        snippet, status = _read_log_summary(entry)
-        runs.append(SkillRun(fired_at=fired, status=status, log_path=entry, snippet=snippet))
+    if SCHEDULED_LOGS_DIR.exists():
+        for entry in SCHEDULED_LOGS_DIR.iterdir():
+            m = _LOG_FILENAME_RE.match(entry.name)
+            if not m:
+                continue
+            try:
+                d = date.fromisoformat(m.group("date"))
+                hhmm = int(m.group("hhmm"))
+            except ValueError:
+                continue
+            if d < start or d > end:
+                continue
+            if not _matches_skill_log(skill, m.group("skill"), hhmm):
+                continue
+            try:
+                fired = datetime(d.year, d.month, d.day, hhmm // 100, hhmm % 100)
+            except ValueError:
+                continue
+            snippet, status = _read_log_summary(entry)
+            runs.append(SkillRun(fired_at=fired, status=status, log_path=entry, snippet=snippet))
+    if skill == "deal-aggregator-friday":
+        runs.extend(_digest_runs_for_friday(start, end))
     runs.sort(key=lambda r: r.fired_at, reverse=True)
     return runs
 
@@ -1196,7 +1273,13 @@ def skill_health_summary(groups: list[CSuiteGroup]) -> dict[str, int]:
     """
     counts = {
         "total": 0,
+        "scheduled_skills": 0,
         "fired_today": 0,
+        "daily_completed": 0,
+        "daily_scheduled": 0,
+        "daily_issue": 0,
+        "daily_remaining": 0,
+        "daily_total": 0,
         "on_deck": 0,
         "gaps": 0,
         "ondemand": 0,
@@ -1205,22 +1288,46 @@ def skill_health_summary(groups: list[CSuiteGroup]) -> dict[str, int]:
         "today_failed": 0,
         "wtd_fired": 0,
         "wtd_expected": 0,
+        "weekly_completed": 0,
+        "weekly_expected": 0,
+        "weekly_issues": 0,
+        "weekly_remaining": 0,
+        "weekly_issues_resolved": 0,
+        "weekly_status_on_track": 1,
+        "bookend_total": len(_bookend_triggered_for_day(date.today())),
+        "bookend_fired": 0,
+        "bookend_issues": 0,
+        "bookend_remaining": 0,
     }
     today = date.today()
     sunday = _week_sunday(today)
+    expected_bookend = _bookend_triggered_for_day(today)
+    seen_bookend: set[str] = set()
     for g in groups:
         for s in g.skills:
             counts["total"] += 1
+            if s.is_scheduled or s.is_gap:
+                counts["scheduled_skills"] += 1
             if s.today_status.startswith("fired"):
                 counts["fired_today"] += 1
             elif s.today_status == "scheduled-later":
                 counts["on_deck"] += 1
             elif s.today_status == "gap":
                 counts["gaps"] += 1
-            elif s.today_status == "ondemand":
+            elif s.today_status == "ondemand" and s.name not in _BOOKEND_TRIGGERED_SKILLS:
                 counts["ondemand"] += 1
             elif s.today_status == "missed":
                 counts["missed"] += 1
+
+            if s.name in expected_bookend:
+                seen_bookend.add(s.name)
+                if s.last_run and s.last_run.fired_at.date() == today:
+                    if s.last_run.status == "err":
+                        counts["bookend_issues"] += 1
+                    else:
+                        counts["bookend_fired"] += 1
+                else:
+                    counts["bookend_remaining"] += 1
 
             # Today's scheduled denominator: fire-eligible today (any flavor).
             if s.today_status.startswith("fired") or s.today_status in ("missed", "scheduled-later"):
@@ -1228,6 +1335,22 @@ def skill_health_summary(groups: list[CSuiteGroup]) -> dict[str, int]:
             # Today's failures: missed + fired-err (Kay 2026-05-15 Q1).
             if s.today_status == "missed" or s.today_status == "fired-err":
                 counts["today_failed"] += 1
+
+            # Landing tile daily view: denominator is due-by-now today
+            # (completed + issue). Runs scheduled later today stay outside the
+            # denominator and appear as "remaining today."
+            if s.is_scheduled and s.intervals and _should_fire_on_day(s.intervals, today):
+                if s.today_status in ("fired-ok", "fired-warn"):
+                    counts["daily_completed"] += 1
+                    counts["daily_scheduled"] += 1
+                elif s.today_status in ("missed", "fired-err"):
+                    counts["daily_issue"] += 1
+                    counts["daily_scheduled"] += 1
+                elif s.today_status == "scheduled-later":
+                    counts["daily_remaining"] += 1
+            counts["daily_total"] = (
+                counts["daily_completed"] + counts["daily_issue"] + counts["daily_remaining"]
+            )
 
             # Week-to-date: walk Sun..today, count expected vs successful per
             # (day, skill). Today's own status comes from today_status; prior
@@ -1247,6 +1370,46 @@ def skill_health_summary(groups: list[CSuiteGroup]) -> dict[str, int]:
                             if day_status in ("fired-ok", "fired-warn"):
                                 counts["wtd_fired"] += 1
                     day += timedelta(days=1)
+
+            # Landing/detail tile weekly view: full Sun-Sat scheduled
+            # occurrences, split into completed so far, issues so far, and
+            # remaining later this week.
+            if s.is_scheduled and s.intervals:
+                warning_days = 0
+                day = sunday
+                for _ in range(7):
+                    if _should_fire_on_day(s.intervals, day):
+                        counts["weekly_expected"] += 1
+                        if day > today:
+                            counts["weekly_remaining"] += 1
+                        elif day == today:
+                            status = s.today_status
+                            if status == "fired-warn":
+                                warning_days += 1
+                            if status in ("fired-ok", "fired-warn"):
+                                counts["weekly_completed"] += 1
+                            elif status in ("missed", "fired-err"):
+                                counts["weekly_issues"] += 1
+                                counts["weekly_status_on_track"] = 0
+                            elif status == "scheduled-later":
+                                counts["weekly_remaining"] += 1
+                        else:
+                            status = s.week_status_by_day.get(day.isoweekday())
+                            if status == "fired-warn":
+                                warning_days += 1
+                            if status in ("fired-ok", "fired-warn"):
+                                counts["weekly_completed"] += 1
+                            elif status == "fired-err":
+                                counts["weekly_completed"] += 1
+                                counts["weekly_issues_resolved"] += 1
+                            elif status == "missed":
+                                counts["weekly_issues"] += 1
+                                counts["weekly_status_on_track"] = 0
+                    day += timedelta(days=1)
+                if warning_days > 3:
+                    counts["weekly_issues"] += 1
+                    counts["weekly_status_on_track"] = 0
+    counts["bookend_remaining"] += len(expected_bookend - seen_bookend)
     return counts
 
 
@@ -1264,6 +1427,9 @@ EXTERNAL_SERVICES_SNAPSHOT_PATH = VAULT_ROOT / "context" / "external-services-sn
 EXTERNAL_SERVICES_SNAPSHOT_MAX_AGE_SEC = 2 * 60 * 60  # 2h freshness window
 CREDITS_PATH = DASHBOARD_DATA_DIR / "credits.yaml"
 APOLLO_CREDITS_SNAPSHOT_PATH = VAULT_ROOT / "context" / "apollo-credits-snapshot.json"
+CLAUDE_USAGE_SNAPSHOT_PATH = VAULT_ROOT / "context" / "claude-usage-snapshot.json"
+CODEX_USAGE_SNAPSHOT_PATH = VAULT_ROOT / "context" / "codex-usage-snapshot.json"
+EMAIL_ORCHESTRATOR_STATUS_PATH = VAULT_ROOT / "context" / "email-orchestrator-status.json"
 CALIBRATION_PATH = DASHBOARD_DATA_DIR / "calibration.yaml"
 SCHEMAS_DIR = REPO_ROOT / "schemas" / "vault"
 HOOKS_SETTINGS_PATHS = [
@@ -1278,6 +1444,78 @@ class HealthTile:
     status: str  # ok | warn | alert | unknown
     value: str  # "12 / 12"
     detail: str  # "All scheduled skills present in launchctl"
+
+
+@dataclass
+class EmailOrchestratorDashboardStatus:
+    source_status: str
+    fetched_at: str | None
+    source_artifact: str | None
+    drafts_pending: int
+    send_blockers: int
+    deal_items: int
+    pipeline_items: int
+    relationship_items: int
+    task_candidates: int
+    needs_kay: list[str] = field(default_factory=list)
+    blocked: list[str] = field(default_factory=list)
+
+    @property
+    def status(self) -> str:
+        if self.send_blockers or self.blocked or self.source_status in {"missing", "error"}:
+            return "alert"
+        if self.source_status == "stale" or self.needs_kay:
+            return "warn"
+        return "ok"
+
+    @property
+    def review_count(self) -> int:
+        return len(self.needs_kay) + len(self.blocked) + self.send_blockers
+
+
+def load_email_orchestrator_status() -> EmailOrchestratorDashboardStatus:
+    """Read the email-orchestrator status artifact for dashboard display."""
+    if not EMAIL_ORCHESTRATOR_STATUS_PATH.exists():
+        return EmailOrchestratorDashboardStatus(
+            source_status="missing",
+            fetched_at=None,
+            source_artifact=None,
+            drafts_pending=0,
+            send_blockers=0,
+            deal_items=0,
+            pipeline_items=0,
+            relationship_items=0,
+            task_candidates=0,
+            blocked=["email-orchestrator-status.json missing"],
+        )
+    try:
+        data = json.loads(EMAIL_ORCHESTRATOR_STATUS_PATH.read_text())
+    except (OSError, json.JSONDecodeError) as exc:
+        return EmailOrchestratorDashboardStatus(
+            source_status="error",
+            fetched_at=None,
+            source_artifact=str(EMAIL_ORCHESTRATOR_STATUS_PATH.relative_to(REPO_ROOT)),
+            drafts_pending=0,
+            send_blockers=0,
+            deal_items=0,
+            pipeline_items=0,
+            relationship_items=0,
+            task_candidates=0,
+            blocked=[f"status artifact unreadable: {exc}"],
+        )
+    return EmailOrchestratorDashboardStatus(
+        source_status=str(data.get("source_status") or "unknown"),
+        fetched_at=data.get("fetched_at"),
+        source_artifact=data.get("source_artifact"),
+        drafts_pending=int(data.get("drafts_pending") or 0),
+        send_blockers=int(data.get("send_blockers") or 0),
+        deal_items=int(data.get("deal_items") or 0),
+        pipeline_items=int(data.get("pipeline_items") or 0),
+        relationship_items=int(data.get("relationship_items") or 0),
+        task_candidates=int(data.get("task_candidates") or 0),
+        needs_kay=list(data.get("needs_kay") or []),
+        blocked=list(data.get("blocked") or []),
+    )
 
 
 def _registered_count() -> int:
@@ -1398,74 +1636,151 @@ def _briefing_last_run() -> tuple[bool, str]:
     return latest.status == "ok", latest.fired_at.strftime("Last %a %-I:%M %p")
 
 
+def _dashboard_service_status() -> tuple[str, str]:
+    """Return (status, detail) for the Streamlit dashboard service."""
+    try:
+        out = subprocess.run(
+            ["systemctl", "--user", "is-active", "dashboard.service"],
+            cwd=REPO_ROOT, capture_output=True, text=True, timeout=5,
+        )
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        return "unknown", "systemctl unavailable"
+    state = out.stdout.strip() or out.stderr.strip() or "unknown"
+    if out.returncode == 0 and state == "active":
+        return "ok", "Streamlit service active"
+    return "alert", f"dashboard.service {state}"
+
+
+def _tailscale_status() -> tuple[str, str, str]:
+    """Return (status, value, detail) for private dashboard access."""
+    try:
+        out = subprocess.run(
+            ["tailscale", "status", "--json"],
+            cwd=REPO_ROOT, capture_output=True, text=True, timeout=5,
+        )
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        return "alert", "check", "tailscale CLI unavailable"
+    if out.returncode != 0:
+        msg = (out.stderr or out.stdout).strip()[:120]
+        return "alert", "down", msg or "tailscale status failed"
+    try:
+        data = json.loads(out.stdout)
+    except json.JSONDecodeError:
+        return "warn", "unknown", "tailscale status unreadable"
+    self_node = data.get("Self") or {}
+    online = bool(self_node.get("Online"))
+    host = self_node.get("DNSName") or self_node.get("HostName") or "this VPS"
+    if online:
+        return "ok", "connected", f"{host} online"
+    return "alert", "offline", f"{host} not online"
+
+
+def _ai_runtime_status() -> tuple[str, str, str]:
+    """Return aggregate Codex/OpenAI + Claude/Anthropic runtime status."""
+    snapshot = _load_external_services_snapshot()
+    openai_status = None
+    if snapshot:
+        probe = snapshot.get("openai-codex") or {}
+        openai_status = probe.get("status")
+        openai_msg = probe.get("message") or "OpenAI/Codex probe present"
+    else:
+        openai_msg = "OpenAI/Codex probe stale or missing"
+
+    try:
+        claude = subprocess.run(
+            ["claude", "--version"],
+            cwd=REPO_ROOT, capture_output=True, text=True, timeout=5,
+        )
+        claude_ok = claude.returncode == 0
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        claude_ok = False
+
+    if openai_status == "ok" and claude_ok:
+        return "ok", "available", f"{openai_msg}; Claude CLI available"
+    if openai_status == "ok":
+        return "warn", "partial", f"{openai_msg}; Claude CLI not confirmed"
+    if claude_ok:
+        return "warn", "partial", f"{openai_msg}; Claude CLI available"
+    return "alert", "check", f"{openai_msg}; Claude CLI not confirmed"
+
+
+def _git_sync_status() -> tuple[str, str, str]:
+    """Return repo branch/commit/push health."""
+    def run_git(args: list[str]) -> subprocess.CompletedProcess[str]:
+        return subprocess.run(
+            ["git", *args], cwd=REPO_ROOT, capture_output=True, text=True, timeout=5
+        )
+
+    try:
+        branch_out = run_git(["rev-parse", "--abbrev-ref", "HEAD"])
+        branch = branch_out.stdout.strip() if branch_out.returncode == 0 else "unknown"
+        dirty_out = run_git(["status", "--porcelain"])
+        dirty = len([line for line in dirty_out.stdout.splitlines() if line.strip()]) if dirty_out.returncode == 0 else 0
+        upstream_out = run_git(["rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}"])
+        upstream = upstream_out.stdout.strip() if upstream_out.returncode == 0 else ""
+        ahead = behind = 0
+        if upstream:
+            sync_out = run_git(["rev-list", "--left-right", "--count", f"{upstream}...HEAD"])
+            if sync_out.returncode == 0:
+                parts = sync_out.stdout.split()
+                if len(parts) == 2:
+                    behind = int(parts[0])
+                    ahead = int(parts[1])
+    except (FileNotFoundError, subprocess.TimeoutExpired, ValueError):
+        return "unknown", "check", "git status unavailable"
+
+    issues = []
+    if branch != "main":
+        issues.append(f"branch {branch}")
+    if dirty:
+        issues.append(f"{dirty} uncommitted")
+    if ahead:
+        issues.append(f"{ahead} unpushed")
+    if behind:
+        issues.append(f"{behind} behind origin")
+    if not upstream:
+        issues.append("no upstream")
+    if issues:
+        return "warn", "check", " · ".join(issues)
+    return "ok", "synced", "main clean and pushed"
+
+
 def load_system_health() -> list[HealthTile]:
-    """Build the System Health tile list (Zone 1 of Infrastructure)."""
+    """Build break-the-system infrastructure health tiles."""
     tiles: list[HealthTile] = []
 
-    # 1. Launchd jobs registered (count vs filesystem)
-    registered = _registered_count()
-    expected = _expected_plist_count()
-    import _scheduler_adapter  # noqa: PLC0415
-    scheduler_word = "systemd timers" if _scheduler_adapter.IS_LINUX else "launchctl"
-    if registered == 0 and expected == 0:
-        tiles.append(HealthTile(
-            "Scheduled jobs registered", "unknown", "—",
-            f"{scheduler_word} unavailable in this environment",
-        ))
-    elif registered >= expected and expected > 0:
-        tiles.append(HealthTile(
-            "Scheduled jobs registered", "ok", f"{registered} / {expected}",
-            f"All scheduled skills present in {scheduler_word}",
-        ))
-    else:
-        tiles.append(HealthTile(
-            "Scheduled jobs registered", "warn",
-            f"{registered} / {expected}",
-            f"Some jobs not loaded into {scheduler_word}",
-        ))
+    svc_status, svc_detail = _dashboard_service_status()
+    tiles.append(HealthTile(
+        "Dashboard service",
+        svc_status,
+        "running" if svc_status == "ok" else "check",
+        svc_detail,
+    ))
 
-    # 2. Spec vs registered (catches health-monitor-style gaps)
-    expected_per_md = expected + len(_CLAUDE_MD_SCHEDULED_BUT_UNREGISTERED)
-    if registered >= expected_per_md:
-        tiles.append(HealthTile(
-            "Spec vs. registered", "ok", f"{registered} / {expected_per_md}",
-            "All migration-documented scheduled skills accounted for",
-        ))
-    else:
-        missing = sorted(_CLAUDE_MD_SCHEDULED_BUT_UNREGISTERED)
-        tiles.append(HealthTile(
-            "Spec vs. registered", "alert",
-            f"{registered} / {expected_per_md}",
-            f"Missing job: {', '.join(missing)}",
-        ))
+    ts_status, ts_value, ts_detail = _tailscale_status()
+    tiles.append(HealthTile(
+        "VPS access",
+        ts_status,
+        ts_value,
+        ts_detail,
+    ))
 
-    # 3. Logs writing today
-    writing, today_count = _logs_writing_today()
-    if writing:
-        tiles.append(HealthTile(
-            "Logs writing today", "ok", "healthy",
-            f"{today_count} log files written today · 14-day rotation",
-        ))
-    else:
-        tiles.append(HealthTile(
-            "Logs writing today", "warn", "no logs yet",
-            "No scheduled-skill logs have been written today",
-        ))
+    ai_status, ai_value, ai_detail = _ai_runtime_status()
+    tiles.append(HealthTile(
+        "AI runtimes",
+        ai_status,
+        ai_value,
+        ai_detail,
+    ))
 
-    # 4. Hooks firing (count of configured hooks across settings)
-    hooks = _hooks_count()
-    if hooks > 0:
-        tiles.append(HealthTile(
-            "Hooks configured", "ok", f"{hooks}",
-            f"{hooks} hook entries across project + user settings",
-        ))
-    else:
-        tiles.append(HealthTile(
-            "Hooks configured", "warn", "0",
-            "No hooks found in settings.json",
-        ))
+    git_status, git_value, git_detail = _git_sync_status()
+    tiles.append(HealthTile(
+        "Git sync",
+        git_status,
+        git_value,
+        git_detail,
+    ))
 
-    # 5. Disk space
     pct, human = _disk_usage_pct()
     if pct >= 90:
         tiles.append(HealthTile("Disk space", "alert", f"{pct:.0f}%", f"{human} · prune logs"))
@@ -1474,48 +1789,7 @@ def load_system_health() -> list[HealthTile]:
     else:
         tiles.append(HealthTile("Disk space", "ok", f"{pct:.0f}%", human))
 
-    # 6. Vault schema validation
-    total, viol = _vault_files_validated()
-    if total == 0:
-        tiles.append(HealthTile(
-            "Vault frontmatter", "unknown", "—", "brain/ unreachable",
-        ))
-    elif viol == 0:
-        tiles.append(HealthTile(
-            "Vault frontmatter", "ok", "passing",
-            f"{total} files · all carry frontmatter",
-        ))
-    else:
-        tiles.append(HealthTile(
-            "Vault frontmatter", "warn", f"{viol} miss",
-            f"{viol} of {total} files lack frontmatter",
-        ))
-
-    # 7. Background commits — last commit time
-    try:
-        out = subprocess.run(
-            ["git", "log", "-1", "--format=%cr"],
-            cwd=REPO_ROOT, capture_output=True, text=True, timeout=5,
-        )
-        commit_age = out.stdout.strip() if out.returncode == 0 else "unknown"
-        tiles.append(HealthTile(
-            "Last commit", "ok", commit_age or "unknown",
-            "git working tree managed by background hook",
-        ))
-    except (FileNotFoundError, subprocess.TimeoutExpired):
-        tiles.append(HealthTile("Last commit", "unknown", "—", "git not available"))
-
-    # 8. Briefing pipeline (proxy: pipeline-manager log)
-    ok, briefing_text = _briefing_last_run()
-    tiles.append(HealthTile(
-        "Briefing pipeline",
-        "ok" if ok else "warn",
-        "on time" if ok else "check",
-        briefing_text,
-    ))
-
     return tiles
-
 
 def system_health_summary(tiles: list[HealthTile]) -> dict[str, int]:
     counts = {"healthy": 0, "warn": 0, "alert": 0, "unknown": 0}
@@ -1697,14 +1971,43 @@ class CallSummary:
 
 
 @dataclass
+class WeeklyGoalMetric:
+    label: str
+    count: int
+    target_min: int = 1
+    target_max: int = 3
+    detail: str = ""
+    items: list[str] = field(default_factory=list)
+
+    @property
+    def status(self) -> str:
+        if self.target_min <= self.count <= self.target_max:
+            return "on_track"
+        if self.count < self.target_min:
+            return "below"
+        return "above"
+
+
+@dataclass
+class SourceMixRow:
+    source: str
+    ltd_activity: str
+    financials_received: str
+    note: str
+    status: str = "pending"
+
+
+@dataclass
 class MAAnalytics:
     week_start: date
     week_end: date
     deal_flow_tiles: list[KPITile]  # Zone 1 (5 tiles)
-    channels: list[ChannelRow]  # Zone 3 (7 rows: Kay email, Kay LinkedIn, Intermediary, JJ, DealsX×2, Conference)
+    channels: list[ChannelRow]  # Legacy weekly channel rows; source mix is the default page view
+    source_rows: list[SourceMixRow]  # Lifetime source attribution for deal starts
     trends: list[TrendPanel]  # Zone 4 (4 panels)
     trend_x_labels: tuple[str, str, str]  # (start, mid, end) shared across trends
-    activity_rows: list[ActivityRow]  # Zone 5
+    activity_rows: list[ActivityRow]  # Legacy weekly activity rows; top-goal detail is default page view
+    weekly_goals: list[WeeklyGoalMetric] = field(default_factory=list)
     niche_breakdown: NicheBreakdown | None = None  # Zone 6 (Phase A.4)
     outreach_metrics: OutreachMetrics | None = None  # Phase A.1 backing data
     new_contacts: NewContactsMetric | None = None  # Phase A.3 backing data
@@ -2433,7 +2736,9 @@ def _build_activity_rows(
     week_start: date,
     week_end: date,
     new_contacts: NewContactsMetric | None = None,
+    manual: list[QualityConversation] | None = None,
 ) -> list[ActivityRow]:
+    manual = manual or []
     in_window = _calls_in_window(calls, week_start, week_end)
 
     conf_calls = [c for c in in_window if _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)]
@@ -2452,42 +2757,36 @@ def _build_activity_rows(
 
     cim_count = _count_cims_in_window(week_start, week_end)
 
-    if new_contacts is not None and new_contacts.snapshot_count:
-        new_contacts_text = (
-            f"{new_contacts.snapshot_count} companies in Attio snapshot · "
-            f"WoW delta pending historical snapshots"
-        )
-        new_contacts_count = new_contacts.snapshot_count
-    else:
-        new_contacts_text = "Attio snapshot unavailable"
-        new_contacts_count = 0
+    manual_networking = [c for c in manual if c.type == "quality" and c.venue]
+    manual_quality = [c for c in manual if c.type == "quality"]
+    manual_owners = [c for c in manual if c.type == "owner"]
+
+    def _manual_display(c: QualityConversation) -> str:
+        suffix = c.venue or c.note
+        return f"{c.name} · {suffix}" if suffix else c.name
+
+    conference_chips = [_slug_display(c) for c in conf_calls] + [_manual_display(c) for c in manual_networking]
+    intermediary_chips = [_slug_display(c) for c in intermediary_calls] + [_manual_display(c) for c in manual_quality]
+    owner_chips = [_manual_display(c) for c in manual_owners]
 
     return [
         ActivityRow(
-            category="Active Niches",
-            chips=list(_ACTIVE_NICHES),
-            count=len(_ACTIVE_NICHES),
-            empty_text=None,
+            category="Conferences / networking",
+            chips=conference_chips,
+            count=len(conference_chips),
+            empty_text="No conferences or networking events captured this week",
         ),
         ActivityRow(
-            # Cumulative pipeline-universe count, NOT new-this-week — relabeled
-            # honest until historical snapshots enable a true WoW delta.
-            category="Companies in Attio (cumulative)",
-            chips=[],
-            count=new_contacts_count,
-            empty_text=new_contacts_text,
+            category="Intermediary / river-guide conversations",
+            chips=intermediary_chips,
+            count=len(intermediary_chips),
+            empty_text="No intermediary or river-guide conversations captured this week",
         ),
         ActivityRow(
-            category="Conferences attended",
-            chips=[_slug_display(c) for c in conf_calls],
-            count=len(conf_calls),
-            empty_text="No conferences this week",
-        ),
-        ActivityRow(
-            category="Intermediary meetings",
-            chips=[_slug_display(c) for c in intermediary_calls],
-            count=len(intermediary_calls),
-            empty_text="No intermediary meetings this week",
+            category="Owner / seller conversations",
+            chips=owner_chips,
+            count=len(owner_chips),
+            empty_text="No owner or seller conversations captured this week",
         ),
         ActivityRow(
             category="CIMs received",
@@ -2496,12 +2795,100 @@ def _build_activity_rows(
             empty_text=(f"{cim_count} CIMs flagged in email-scan-results"
                         if cim_count else "No CIMs received this week"),
         ),
-        ActivityRow(
-            category="Business cards added",
-            chips=[],
-            count=0,
-            empty_text="conference-engagement output not yet wired",
+    ]
+
+
+def _build_weekly_goals(
+    calls: list[CallSummary],
+    week_start: date,
+    week_end: date,
+    manual: list[QualityConversation] | None = None,
+) -> list[WeeklyGoalMetric]:
+    """Kay's current top weekly M&A operating goals.
+
+    Target band for each = 1-3/week. Counts are tracked-source counts, not yet a
+    perfect activity ledger: email attribution for intermediary / owner activity
+    still needs a future integration pass.
+    """
+    manual = manual or []
+    in_window = _calls_in_window(calls, week_start, week_end)
+
+    def _slug_display(call: CallSummary) -> str:
+        words = call.slug.replace("-", " ")
+        return f"{call.date.strftime('%b %-d')} · {words.title()}"
+
+    def _manual_display(c: QualityConversation) -> str:
+        label = c.name
+        if c.venue:
+            label = f"{label} ({c.venue})"
+        return f"{c.date.strftime('%b %-d')} · {label}"
+
+    conference_calls = [c for c in in_window if _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)]
+    manual_networking = [c for c in manual if c.type == "quality" and c.venue]
+
+    intermediary_calls = [
+        c for c in in_window
+        if c.classification == "partner"
+        and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
+        and not _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)
+        and not _slug_matches(c.slug, _COACHING_SLUG_HINTS)
+    ]
+    intermediary_manual = [c for c in manual if c.type == "quality"]
+
+    owner_manual = [c for c in manual if c.type == "owner"]
+
+    conference_items = [_slug_display(c) for c in conference_calls] + [_manual_display(c) for c in manual_networking]
+    intermediary_items = [_slug_display(c) for c in intermediary_calls] + [_manual_display(c) for c in intermediary_manual]
+    owner_items = [_manual_display(c) for c in owner_manual]
+
+    return [
+        WeeklyGoalMetric(
+            label="Conferences / networking",
+            count=len(conference_items),
+            detail="formal conferences, gatherings, get-togethers, networking meetings",
+            items=conference_items,
         ),
+        WeeklyGoalMetric(
+            label="Intermediary / river-guide",
+            count=len(intermediary_items),
+            detail="calls and curated quality conversations; email attribution pending",
+            items=intermediary_items,
+        ),
+        WeeklyGoalMetric(
+            label="Owner / seller",
+            count=len(owner_items),
+            detail="curated owner/seller conversations; email/call owner tagging pending",
+            items=owner_items,
+        ),
+    ]
+
+
+def _build_source_mix(
+    calls: list[CallSummary],
+    jj: JJActivity | None = None,
+    outreach: OutreachMetrics | None = None,
+) -> list[SourceMixRow]:
+    """Lifetime source mix for real deal starts.
+
+    Attio currently does not expose source on pipeline deals in the dashboard
+    snapshot, so financials-by-source remains pending until that field is wired.
+    """
+    conference_count = sum(1 for c in calls if _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS))
+    intermediary_count = sum(
+        1 for c in calls
+        if c.classification == "partner"
+        and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
+        and not _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)
+        and not _slug_matches(c.slug, _COACHING_SLUG_HINTS)
+    )
+    cold_calls = jj.dials_lifetime if jj else 0
+    return [
+        SourceMixRow("Warm email", "—", "pending", "LTD email-source attribution not yet wired"),
+        SourceMixRow("LinkedIn", "—", "pending", "LTD LinkedIn-source attribution not yet wired"),
+        SourceMixRow("Conferences / networking", str(conference_count), "pending", "formal events, gatherings, and networking meetings"),
+        SourceMixRow("Intermediary / river-guide", str(intermediary_count), "pending", "broker, advisor, peer, and river-guide path"),
+        SourceMixRow("Cold email", "—", "pending", "historical channel; DealsX source attribution pending"),
+        SourceMixRow("Cold call", str(cold_calls), "pending", "historical channel; financials attribution pending"),
     ]
 
 
@@ -2531,6 +2918,7 @@ def load_ma_analytics(today: date | None = None) -> MAAnalytics:
     new_contacts = load_new_contacts(snapshot=snapshot)
     niche_breakdown = load_niche_breakdown(today=today, jj=jj)
     dealsx = load_dealsx_manual(week_start, week_end)
+    manual_quality = load_quality_conversations(week_start, week_end)
 
     deal_flow_tiles = _build_deal_flow_tiles(
         snapshot, calls, week_start, week_end, prior_start, prior_end
@@ -2538,17 +2926,21 @@ def load_ma_analytics(today: date | None = None) -> MAAnalytics:
     channels = _build_channels(calls, week_start, week_end, jj=jj, outreach=outreach, dealsx=dealsx)
     trends, x_labels = _build_trends(snapshot, calls, today, jj=jj, weekly_history=weekly_history)
     activity_rows = _build_activity_rows(
-        calls, week_start, week_end, new_contacts=new_contacts
+        calls, week_start, week_end, new_contacts=new_contacts, manual=manual_quality
     )
+    weekly_goals = _build_weekly_goals(calls, week_start, week_end, manual_quality)
+    source_rows = _build_source_mix(calls, jj=jj, outreach=outreach)
 
     return MAAnalytics(
         week_start=week_start,
         week_end=week_end,
         deal_flow_tiles=deal_flow_tiles,
         channels=channels,
+        source_rows=source_rows,
         trends=trends,
         trend_x_labels=x_labels,
         activity_rows=activity_rows,
+        weekly_goals=weekly_goals,
         niche_breakdown=niche_breakdown,
         outreach_metrics=outreach,
         new_contacts=new_contacts,
@@ -2737,6 +3129,71 @@ def _load_apollo_credits_snapshot() -> dict | None:
         return None
 
 
+
+def _load_usage_snapshot(path: Path) -> dict | None:
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+
+
+def _format_token_count(value: int | None) -> str:
+    if not isinstance(value, int):
+        return "—"
+    if value >= 1_000_000_000:
+        return f"{value / 1_000_000_000:.1f}B"
+    if value >= 1_000_000:
+        return f"{value / 1_000_000:.1f}M"
+    if value >= 1_000:
+        return f"{value / 1_000:.1f}K"
+    return str(value)
+
+
+def _usage_tile_overrides(snapshot: dict, source_label: str, now: datetime | None = None) -> dict | None:
+    fetched_at_str = snapshot.get("fetched_at")
+    if not fetched_at_str:
+        return None
+    try:
+        fetched_at = datetime.fromisoformat(fetched_at_str)
+    except ValueError:
+        return None
+    if fetched_at.tzinfo is None:
+        fetched_at = fetched_at.replace(tzinfo=timezone.utc)
+    now = now or datetime.now(fetched_at.tzinfo)
+    age_hours = (now - fetched_at).total_seconds() / 3600.0
+
+    month = snapshot.get("month") if isinstance(snapshot.get("month"), dict) else {}
+    today = snapshot.get("today") if isinstance(snapshot.get("today"), dict) else {}
+    month_total = month.get("total_tokens")
+    today_total = today.get("total_tokens")
+    if not isinstance(month_total, int):
+        return None
+
+    color = "green" if age_hours <= 24 else "grey"
+    freshness = f"refreshed {fetched_at.strftime('%H:%M')}" if age_hours <= 24 else f"snapshot stale · {age_hours:.0f}h old"
+    today_text = _format_token_count(today_total) if isinstance(today_total, int) else "—"
+    models = snapshot.get("models") if isinstance(snapshot.get("models"), list) else []
+    top_model = ""
+    if models and isinstance(models[0], dict):
+        top_model = str(models[0].get("model") or "")
+        if top_model == "unknown":
+            top_model = ""
+    trend = f"{today_text} today · {freshness}"
+    if top_model:
+        trend = f"{trend} · top model {top_model}"
+
+    return {
+        "value": _format_token_count(month_total),
+        "unit": "tokens this month",
+        "runway_text": f"live from {source_label} metadata",
+        "runway_color": color,
+        "trend": trend,
+        "trend_arrow": "flat",
+    }
+
+
 def _apollo_tile_overrides(snapshot: dict, now: datetime | None = None) -> dict | None:
     """Compute tile-field overrides from an Apollo snapshot.
 
@@ -2831,13 +3288,26 @@ def load_credit_tiles() -> list[CreditTile]:
     apollo_overrides = (
         _apollo_tile_overrides(apollo_snapshot) if apollo_snapshot else None
     )
+    claude_snapshot = _load_usage_snapshot(CLAUDE_USAGE_SNAPSHOT_PATH)
+    claude_overrides = (
+        _usage_tile_overrides(claude_snapshot, "Claude Code") if claude_snapshot else None
+    )
+    codex_snapshot = _load_usage_snapshot(CODEX_USAGE_SNAPSHOT_PATH)
+    codex_overrides = (
+        _usage_tile_overrides(codex_snapshot, "Codex session") if codex_snapshot else None
+    )
 
     tiles: list[CreditTile] = []
     for t in data.get("tiles", []):
         label = t.get("label", "?")
+        label_l = label.lower()
         merged = dict(t)
-        if apollo_overrides and "apollo" in label.lower():
+        if apollo_overrides and "apollo" in label_l:
             merged.update(apollo_overrides)
+        elif claude_overrides and ("claude" in label_l or "anthropic" in label_l):
+            merged.update(claude_overrides)
+        elif codex_overrides and ("codex" in label_l or "openai" in label_l or "chatgpt" in label_l):
+            merged.update(codex_overrides)
         tiles.append(
             CreditTile(
                 label=label,

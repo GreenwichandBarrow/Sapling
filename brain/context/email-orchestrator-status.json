@@ -1,0 +1,17 @@
+{
+  "blocked": [],
+  "deal_items": 11,
+  "drafts_pending": 4,
+  "fetched_at": "2026-06-14T16:01:51.280564-04:00",
+  "needs_kay": [
+    "4 Gmail drafts older than 48 hours",
+    "1 email-derived task candidate(s)",
+    "11 broker/listing row(s) extracted"
+  ],
+  "pipeline_items": 0,
+  "relationship_items": 0,
+  "send_blockers": 0,
+  "source_artifact": "brain/context/email-scan-results-2026-06-14.md",
+  "source_status": "ok",
+  "task_candidates": 1
+}

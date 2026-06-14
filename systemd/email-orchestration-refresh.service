@@ -1,0 +1,15 @@
+# Dashboard status refresh for email orchestration. This is read-only over
+# existing email-intelligence artifacts; it does not call Gmail and cannot send.
+
+[Unit]
+Description=G&B email-orchestration-refresh
+After=email-intelligence.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/projects/Sapling
+Environment=PATH=%h/.npm-global/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 %h/projects/Sapling/scripts/refresh_email_orchestrator_status.py
+
+[Install]
+WantedBy=default.target

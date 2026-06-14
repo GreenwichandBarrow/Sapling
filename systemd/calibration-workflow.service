@@ -7,10 +7,11 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
+EnvironmentFile=%h/.config/op-sa-token.env
 Type=oneshot
 WorkingDirectory=%h/projects/Sapling
 Environment=PATH=%h/.npm-global/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
-ExecStart=/bin/bash %h/projects/Sapling/scripts/run-skill.sh calibration-workflow
+ExecStart=/bin/bash %h/projects/Sapling/scripts/run-agent-skill.sh calibration-workflow
 
 [Install]
 WantedBy=default.target

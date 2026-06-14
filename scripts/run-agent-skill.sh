@@ -196,7 +196,11 @@ if [ "$SKILL_NAME:$SKILL_ARGS" = "relationship-manager:daily" ] && [ -z "${RELAT
 fi
 
 PROMPT_FILE="${HEADLESS_PROMPT_FILE:-}"
-if [ -z "$PROMPT_FILE" ]; then
+if [ -n "$HEADLESS_PROMPT_FILE" ] && [ "$SKILL_NAME" = "calibration-workflow" ]; then
+  PROMPT_FILE="$(mktemp)"
+  sed "s/{YYYY-MM-DD}/$TODAY/g" "$HEADLESS_PROMPT_FILE" > "$PROMPT_FILE"
+  printf "\n\nScheduled date: %s\nUse this scheduled date for every report date, frontmatter date, tag date, title date, heading date, and validation path.\n" "$TODAY" >> "$PROMPT_FILE"
+elif [ -z "$PROMPT_FILE" ]; then
   PROMPT_FILE="$(mktemp)"
   printf "Use the $%s skill. Arguments: %s\n\nRun this scheduled workflow faithfully in Sapling. NEVER send email. Drafts only where explicitly supported. Validate outputs and summarize results." "$SKILL_NAME" "$SKILL_ARGS" > "$PROMPT_FILE"
 fi

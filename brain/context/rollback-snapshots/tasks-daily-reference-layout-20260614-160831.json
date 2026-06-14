@@ -1,0 +1,1171 @@
+{
+  "verb": "daily-reference-layout",
+  "timestamp": "20260614-160831",
+  "sheet_id": "1jYAFzzYYvDKE-n3cW31i6w_JrIE-L7ASdcycVRXQvvo",
+  "ranges": {
+    "'Sun'!A1:F54": [
+      [
+        "SUNDAY \u00b7 Jun 14"
+      ],
+      [],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3"
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Mon'!A1:F54": [
+      [
+        "MONDAY \u00b7 Jun 15"
+      ],
+      [],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3"
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Process payroll"
+      ],
+      [
+        false,
+        "Process conference registrations"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Tue'!A1:F54": [
+      [
+        "TUESDAY \u00b7 Jun 16"
+      ],
+      [],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3"
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Move out Harrison aptmt"
+      ],
+      [
+        false,
+        "Set up Harrison Helps"
+      ],
+      [
+        false,
+        "Write back to Katie Walker"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Wed'!A1:F54": [
+      [
+        "WEDNESDAY \u00b7 Jun 17"
+      ],
+      [],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3"
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Niche intel review"
+      ],
+      [
+        false,
+        "Pest 10-co research \u2014 initial firm list build"
+      ],
+      [
+        false,
+        "Continue thesis deck"
+      ],
+      [
+        false,
+        "Website rebuild \u2014 continue"
+      ],
+      [
+        false,
+        "Email Krupa"
+      ],
+      [
+        false,
+        "Email Deborah"
+      ],
+      [
+        false,
+        "Email Hamptons Pest"
+      ],
+      [
+        false,
+        "Email Jay"
+      ],
+      [
+        false,
+        "Email Jason"
+      ],
+      [
+        false,
+        "Refactor task-tracker-manager (weekly files architecture)"
+      ],
+      [
+        false,
+        "Continue work on Thesis deck"
+      ],
+      [
+        false,
+        "Move out Harrison aptmt"
+      ],
+      [
+        false,
+        "Set up Harrison Helps"
+      ],
+      [
+        false,
+        "Write back to Katie Walker"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Thu'!A1:F54": [
+      [
+        "THURSDAY \u00b7 Jun 18"
+      ],
+      [],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3"
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Deal aggregator: broker website signups (continue)"
+      ],
+      [
+        false,
+        "Website rebuild \u2014 continue"
+      ],
+      [
+        false,
+        "Email Krupa, Deborah"
+      ],
+      [
+        false,
+        "Email Jay & Jason"
+      ],
+      [
+        false,
+        "Email Hamptons Pest"
+      ],
+      [
+        false,
+        "Set up Harrison Helps"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Fri'!A1:F54": [
+      [
+        "FRIDAY \u00b7 Jun 19"
+      ],
+      [],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3"
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget"
+      ],
+      [
+        false,
+        "Follow-up emails to conference 1:1s"
+      ],
+      [
+        false,
+        "Deal aggregator: complete project list"
+      ],
+      [
+        false,
+        "Decide on office rent cut (15d deferred 5/13)"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Sat'!A1:F54": [
+      [
+        "SATURDAY \u00b7 Jun 20"
+      ],
+      [],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3"
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Deal aggregator: finalize project"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ]
+  }
+}

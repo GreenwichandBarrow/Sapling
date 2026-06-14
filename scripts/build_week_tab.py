@@ -8,17 +8,13 @@ The tracker has BOTH surfaces:
                  out the full week.
   * 7 day tabs — Sun..Sat daily execution surface, fed by `distribute-week`.
 
-Structure is modelled on the verbatim `archive_May 11-17` grid copy but
-RE-ORDERED Sun→Sat (the archive grid was Mon-first):
+Structure follows the `TO DO 6.7.26` Week reference layout:
 
-  Row 1      merged A1:O1 title "WEEK OF May 17-23" — 16pt bold, sage-light fill
-  Row 5      "HABIT TRACKER" — 10pt bold
-  Row 6      Sun..Sat 2-col-merged sub-headers (9pt bold)
-  Rows 7-15  9 habit rows: col0 label, status checkbox per day at odd col
-  Row 16     SUNDAY..SATURDAY 2-col-merged headers (11pt bold, white/sage-dark)
-  Rows 24-48 25 priority slots/day: status checkbox col + task col per day
-  Row 50     notes sub-headers (2-col-merged)
-  Rows 51-58 merged free-notes block per day
+  Row 1      merged A1:O1 title "WEEK OF Jun 7-13" — 16pt bold, sage-light fill
+  Row 3      DAILY FOCUS / THEME
+  Row 6      SUNDAY..SATURDAY 2-col-merged day headers
+  Rows 8-22  15 visible planning slots/day: status checkbox col + task col per day
+  Row 24     notes sub-headers (2-col-merged)
 
 Native checkboxes (Data Validation BOOLEAN). Sage palette. Per-day donut is
 intentionally SKIPPED for now (the per-day donuts already live on the 7 day
@@ -118,42 +114,19 @@ def structure_requests(sid: int, wd) -> list[dict]:
         "fields": "userEnteredValue,userEnteredFormat",
         "start": {"sheetId": sid, "rowIndex": 0, "columnIndex": 0}}})
 
-    # ---- Row 5: HABIT TRACKER header ----
+    # ---- Row 3: daily focus/theme ----
     R.append({"updateCells": {
-        "rows": [{"values": [_txt("HABIT TRACKER", bold=True, size=10, fg=SAGE_DARK)]}],
+        "rows": [{"values": [_txt("DAILY FOCUS / THEME", bold=True, size=10, fg=SAGE_DARK)]}],
         "fields": "userEnteredValue,userEnteredFormat",
-        "start": {"sheetId": sid, "rowIndex": tt.WK_HABITS_HEADER_ROW - 1,
+        "start": {"sheetId": sid, "rowIndex": tt.WK_FOCUS_ROW - 1,
                   "columnIndex": 0}}})
-
-    # ---- Row 6: Sun..Sat habit sub-headers (2-col merged) ----
     for i in DI:
         c0 = tt.wk_status_col(i)
         R.append({"mergeCells": {
-            "range": {"sheetId": sid, "startRowIndex": tt.WK_HABIT_DAYHDR_ROW - 1,
-                      "endRowIndex": tt.WK_HABIT_DAYHDR_ROW,
+            "range": {"sheetId": sid, "startRowIndex": tt.WK_FOCUS_ROW - 1,
+                      "endRowIndex": tt.WK_FOCUS_ROW,
                       "startColumnIndex": c0, "endColumnIndex": c0 + 2},
             "mergeType": "MERGE_ALL"}})
-        R.append({"updateCells": {
-            "rows": [{"values": [_txt(tt.WK_DAY_ORDER[i], bold=True, size=9,
-                                      fg=SAGE_DARK, halign="CENTER")]}],
-            "fields": "userEnteredValue,userEnteredFormat",
-            "start": {"sheetId": sid, "rowIndex": tt.WK_HABIT_DAYHDR_ROW - 1,
-                      "columnIndex": c0}}})
-
-    # ---- Rows 7-16: 10 primary habit rows. col0 label, status checkbox per day ----
-    for hi, label in enumerate(tt.HABITS_DEFAULT):
-        r0 = tt.WK_HABIT_FIRST_ROW - 1 + hi
-        R.append({"updateCells": {
-            "rows": [{"values": [_txt(label, size=10, fg=INK)]}],
-            "fields": "userEnteredValue,userEnteredFormat",
-            "start": {"sheetId": sid, "rowIndex": r0, "columnIndex": 0}}})
-    for i in DI:
-        sc = tt.wk_status_col(i)
-        R.append({"setDataValidation": {
-            "range": {"sheetId": sid, "startRowIndex": tt.WK_HABIT_FIRST_ROW - 1,
-                      "endRowIndex": tt.WK_HABIT_LAST_ROW,
-                      "startColumnIndex": sc, "endColumnIndex": sc + 1},
-            "rule": {"condition": {"type": "BOOLEAN"}, "strict": True}}})
 
     # ---- Day headers (2-col merged, white/sage-dark) ----
     for i in DI:
@@ -174,7 +147,7 @@ def structure_requests(sid: int, wd) -> list[dict]:
             "start": {"sheetId": sid, "rowIndex": tt.WK_DAYHDR_ROW - 1,
                       "columnIndex": c0}}})
 
-    # ---- Priority slots: 25 rows/day ----
+    # ---- Priority slots: 15 rows/day ----
     for i in DI:
         sc = tt.wk_status_col(i)
         tc = tt.wk_content_col(i)
@@ -245,9 +218,9 @@ def structure_requests(sid: int, wd) -> list[dict]:
 def populate_from_day_tabs(client, wd) -> dict:
     """Reverse-populate the Week grid FROM the current 7 day tabs so Kay sees
     this week's already-placed plan at a glance. Reads each day tab's slots
-    (rows 17-41, A=status B=task) + primary habits (rows 5-14, A=status) and writes
-    into the matching Week-grid day block. Returns a summary dict."""
-    summary = {"slots_written": 0, "habits_written": 0, "per_day": {}}
+    (rows 17-41, A=status B=task) into the matching Week-grid day block's first 15 visible slots.
+    Returns a summary dict."""
+    summary = {"slots_written": 0, "per_day": {}}
     for i, day_name in enumerate(tt.WK_DAY_ORDER):
         block = client.get_values(f"'{day_name}'!A1:E{tt.DAY_SLOT_LAST_ROW}")
         sc = tt.wk_status_col(i)
@@ -255,7 +228,7 @@ def populate_from_day_tabs(client, wd) -> dict:
         col = tt.col_letter
         # Slots: day-tab priority rows → Week priority rows
         st_vals, tk_vals = [], []
-        for r in range(tt.DAY_SLOT_FIRST_ROW - 1, tt.DAY_SLOT_LAST_ROW):
+        for r in range(tt.DAY_SLOT_FIRST_ROW - 1, tt.DAY_SLOT_FIRST_ROW - 1 + tt.WK_SLOT_COUNT):
             row = block[r] if r < len(block) else []
             st_vals.append([bool(row[0]) if len(row) > 0 and row[0] not in ("", None) else False])
             tk_vals.append([row[1] if len(row) > 1 and str(row[1]).strip() else ""])
@@ -266,16 +239,7 @@ def populate_from_day_tabs(client, wd) -> dict:
             f"'{tt.TAB_WEEK}'!{col(tc)}{tt.WK_SLOT_FIRST_ROW}:{col(tc)}{tt.WK_SLOT_LAST_ROW}",
             tk_vals)
         nslots = sum(1 for tk in tk_vals if tk[0])
-        # Habits: day-tab primary habit rows col A → Week habit rows status col
-        hb_vals = []
-        for r in range(tt.DAY_HABIT_FIRST_ROW - 1, tt.DAY_HABIT_LAST_ROW):
-            row = block[r] if r < len(block) else []
-            hb_vals.append([bool(row[0]) if len(row) > 0 and row[0] not in ("", None) else False])
-        client.values_update(
-            f"'{tt.TAB_WEEK}'!{col(sc)}{tt.WK_HABIT_FIRST_ROW}:{col(sc)}{tt.WK_HABIT_LAST_ROW}",
-            hb_vals)
         summary["slots_written"] += nslots
-        summary["habits_written"] += sum(1 for h in hb_vals if h[0])
         summary["per_day"][day_name] = nslots
     return summary
 
@@ -306,15 +270,15 @@ def main():
             f"CREATE '{tt.TAB_WEEK}' tab at index 0 (LEFTMOST, before 'Sun')"
             if existing is None else
             f"'{tt.TAB_WEEK}' already exists (sheetId={existing['sheetId']}) — would re-apply structure",
-            "APPLY archive-grid structure re-ordered Sun→Sat (title, habit "
-            "tracker, day headers, 25 slots/day, notes block, native "
+            "APPLY task-only Week structure re-ordered Sun→Sat (title, "
+            "day headers, 25 slots/day, notes block, native "
             "checkboxes, sage palette, done-row CF)",
             "SKIP per-day donut (Week tab is a planning canvas; day tabs keep "
             "their donuts) — design simplification, flagged",
         ]
         report["would"].append(
-            "WIRE Week grid formulas from the 7 day tabs current slots "
-            "+ habits (rows 17-41 / 5-14)")
+            "WIRE Week grid formulas from the 7 day tabs current first 15 task slots "
+            "(day rows 17-31 → Week rows 8-22)")
         print(json.dumps(report, indent=2))
         return
 

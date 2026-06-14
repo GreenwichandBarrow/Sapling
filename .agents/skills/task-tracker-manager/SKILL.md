@@ -30,8 +30,8 @@ Architecture lives in `memory/project_personal_task_tracker.md`. Update that mem
   - **`Status`** = 3-state native dropdown: `Not Completed` / `On-going` / `Completed`. Replaces the old native checkbox + the archive-todo sweep. **"Done" = `Status == "Completed"`.** Done-row conditional formatting fires on `Status == "Completed"`.
   - **`Horizon`** = native dropdown: `Short Term`, `Long Term`, `Weekly Recurring Mon`..`Weekly Recurring Sat` (extensible later to Quarterly/Yearly). A **recurring item** = `Horizon` starts with "Weekly Recurring" + `Status == "On-going"`; `build-week` reads these rows directly from `To Do` (NOT a separate tab) and stamps each onto its day. `Long Term`/someday items now live here with `Horizon=Long Term` (no separate tab).
   - Day tabs and the Week tab **KEEP native checkboxes** (Kay's working surfaces, unchanged) — only the `To Do` backend changed to the Status dropdown.
-- **`Week` tab** — the Sunday planning canvas, ALL 7 days visible Sun→Sat, one block per day side by side, **leftmost in the strip (index 0, before `Sun`)**. `build-week` resets stale Week layout, reapplies structure, and wires formulas from the day tabs after recurring and carryover land; Kay lays out / finalizes the whole week here. Layout: col 0 = habit/notes label; for day i (0=Sun..6=Sat) status checkbox col `1+2*i`, task col `2+2*i`. Row 1 merged title `WEEK OF May 17-23`, row 5 `HABIT TRACKER`, row 6 Sun..Sat sub-headers, rows 7–16 ten primary habit rows, row 17 SUNDAY..SATURDAY day headers (carry dates), rows 25–49 twenty-five priority slots/day, with each day block's first three slots shaded sage, rows 52–59 notes block. Builder: `scripts/build_week_tab.py` (idempotent repair; expands grid, resets stale merges/values/formatting, reapplies structure, wires formulas).
-- **7 day tabs** (`Sun Mon Tue Wed Thu Fri Sat`, immediately after `Week`) — the calm, large-font daily *execution* surface. Kay works these Mon–Sat. Per-day layout: row 1 merged title `SUNDAY · May 17` (20pt), row 4 `HABITS` plus `SUPPLEMENTAL`, rows 5–14 ten primary habit rows (A/B checkbox+label) plus ten supplemental rows (C/D checkbox+label), row 16 column headers, rows 17–41 twenty-five priority slots (A=native checkbox · B=Task 17pt · C=Type dropdown · D=Project dropdown · E=Notes), with rows 17–19 shaded sage as the top-three priority band, rows 44–51 free-notes block. Builder: `scripts/build_day_tabs.py` (idempotent; expands grid; `--dry-run`).
+- **`Week` tab** — the Sunday planning canvas, ALL 7 days visible Sun→Sat, one block per day side by side, **leftmost in the strip (index 0, before `Sun`)**. Week is task-only: habits live on day tabs, not Week. Layout follows the 6.7 reference: row 1 merged title `WEEK OF Jun 7-13`, row 3 `DAILY FOCUS / THEME`, row 6 SUNDAY..SATURDAY day headers, rows 8–22 fifteen visible planning slots/day, first three slots shaded sage, row 24 `notes · ideas · jot`. Builder: `scripts/build_week_tab.py` (idempotent repair; expands grid, resets stale merges/values/formatting, reapplies structure, wires task formulas from day tabs).
+- **7 day tabs** (`Sun Mon Tue Wed Thu Fri Sat`, immediately after `Week`) — the calm, large-font daily *execution* surface. Kay works these Mon–Sat. Per-day layout follows the 6.7 reference: row 1 title, row 2 `DAILY FOCUS / THEME`, row 4 `HABITS` plus `SUPPLEMENTAL`, rows 5–14 primary habits (A/B), supplemental habits (C/D), secondary supplemental habits or goal (E/F), row 16 task headers, rows 17–41 twenty-five priority slots (A=native checkbox · B=Task 17pt · C=Type dropdown · D=Project dropdown · E=Notes), rows 17–19 shaded sage as the top-three priority band, rows 44–51 free-notes block. Builder: `scripts/build_day_tabs.py` (idempotent; expands grid; `--dry-run`).
 
 **Sunday flow (weekly-files architecture, shipped 2026-05-26):**
 
@@ -165,11 +165,11 @@ python3 scripts/task_tracker.py build-week [--skip-recurring] [--skip-carryover]
 1. Computes the Sunday-boundary week (`today - (weekday+1)%7` → Sun..Sat).
 2. Snapshots the **Week tab** + `To Do` + all 7 day tabs to one rollback JSON.
 3. Writes ONE combined far-right `archive_{Sun-date}` tab capturing the prior week's **Week tab** verbatim (values-only flat archive). The Week tab is NOT destroyed — it is cleared + re-titled in place; title/headers/labels/dropdowns/CF/checkbox-validation formatting is preserved.
-4. Clears all 7 day-blocks on the Week tab: habit checkboxes, 25 priority slots/day, notes block.
+4. Clears all 7 day-blocks on the Week tab: 15 visible planning slots/day plus notes row; habits are not present on Week.
 5. Re-titles the Week tab's row-1 title to `WEEK OF {Sun-Sat}` + re-stamps the per-day header-row dates.
 6. **Reads the recurring `To Do` rows** (Horizon starts with "Weekly Recurring" + Status `On-going`) and **stamps each onto the Week tab** for its day (collision-refuse logic — explicit slot pins, blank slots auto-pick first empty, conflicts warn+skip). `--skip-recurring` bypasses.
 6a. **AUTO-PULL incomplete carryover from prior week's day tabs onto the new Week tab (NEW — 2026-05-26 per Kay):**
-    - For each of the 7 day tabs, read every priority slot (rows 16–40, status col A + task col B).
+    - For each of the 7 day tabs, read every priority slot (rows 17–41, status col A + task col B).
     - An item is "incomplete" if `Task` is non-empty AND `Status` checkbox is FALSE.
     - For each incomplete item: write the Task text into the same day's day-block on the new Week tab (collision-refuse vs recurring stamps; auto-pick next empty slot if its prior slot is occupied by a recurring item).
     - Items whose source slot has Status TRUE are SKIPPED (they were completed last week; no need to carry).
@@ -189,7 +189,7 @@ python3 scripts/task_tracker.py build-week [--skip-recurring] [--skip-carryover]
 python3 scripts/task_tracker.py distribute-week [--dry-run] [--force] [--day Wed]
 ```
 
-Run AFTER Kay finalizes the week on the Week tab. Reads each Week-grid day-block's 25 priority slots (status + task) + habit checkboxes and writes them into the corresponding day tab's slots (rows 16–40) + habits (rows 5–13).
+Legacy/recovery only. Week is now a formula mirror of day tabs. If used, reads each Week-grid day-block's visible planning slots (status + task) and writes them into the corresponding day tab's task slots; habits are not distributed from Week.
 
 - **Collision-aware:** refuses to overwrite a non-empty day-tab slot the Week plan changes (or that the Week plan leaves empty) unless `--force` — so re-running after a manual day-tab edit is safe by default. `--dry-run` reports planned writes + collisions; `--day {Sun..Sat}` limits to one day.
 - Task text only is carried onto/off the Week canvas (compact); day-tab Type/Project/Notes are reset to blank on distribute (Kay enriches on the day tab, or the metadata was set on the recurring `To Do` row). Snapshots every target day tab + the Week tab; always traces.
@@ -298,7 +298,7 @@ python3 scripts/task_tracker.py recurring-remove --row 12
 
 ### 4. reformat
 
-Re-apply conditional formatting (strikethrough/sage-light done-row fill across Week priorities, day-tab priorities, habits, and the `To Do` tab — done-row CF fires on `Status == "Completed"`) after a manual edit broke a rule.
+Re-apply conditional formatting (strikethrough/sage-light done-row fill across Week priorities, day-tab priorities, day-tab habits, and the `To Do` tab — done-row CF fires on `Status == "Completed"`) after a manual edit broke a rule.
 
 ```bash
 python3 scripts/task_tracker.py reformat

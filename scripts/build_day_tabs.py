@@ -11,7 +11,7 @@ Per day tab (structurally identical, only the title row differs):
   Row 4     "HABITS" header
   Rows 5-13 9 habit rows: A=native checkbox, B:E merged label, 14pt
   Row 15    column headers ✓ | Task | Type | Project | Notes — 12pt bold
-  Rows 16-40 25 priority slots: A=native checkbox, B=Task 17pt,
+  Rows 17-41 25 priority slots: A=native checkbox, B=Task 17pt,
             C=Type dropdown, D=Project dropdown, E=Notes; row height ~34px
   Row 42    "NOTES" header
   Rows 43-50 free-notes block, A:E merged per row
@@ -100,6 +100,13 @@ HABITS_SUPPLEMENTAL_DEFAULT = [
     "Eating cutoff 7:30p",
     "Screen cutoff 9:30p",
 ]
+HABITS_SUPPLEMENTAL_SECONDARY_DEFAULT = [
+    "Sauna",
+    "Glutamine",
+    "Ketones",
+    "Red light",
+]
+HABIT_GOAL_TEXT = "Protein 120g + Fiber 25g"
 TYPE_OPTIONS = ["Work", "Home"]
 PROJECT_OPTIONS = ["G&B", "Kai Grey", "Panthera Grey", "Myself Renewed", "Home"]
 
@@ -241,16 +248,22 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
         "properties": {"sheetId": sid, "gridProperties": {"rowCount": DAY_GRID_ROWS, "columnCount": DAY_GRID_COLS}},
         "fields": "gridProperties.rowCount,gridProperties.columnCount"}})
 
-    # ---- Title row 1: merge A1:E1, 20pt bold, sage-dark fill ----
+    # ---- Title row 1: merge A1:F1, 20pt bold, sage-dark fill ----
     R.append({"mergeCells": {
         "range": {"sheetId": sid, "startRowIndex": 0, "endRowIndex": 1,
-                  "startColumnIndex": 0, "endColumnIndex": 5},
+                  "startColumnIndex": 0, "endColumnIndex": 6},
         "mergeType": "MERGE_ALL"}})
     V.append({"updateCells": {
         "rows": [{"values": [_txt(day_title_text(day_name, d), bold=True, size=20,
                                   fg=WHITE, bg=SAGE_DARK)]}],
         "fields": "userEnteredValue,userEnteredFormat",
         "start": {"sheetId": sid, "rowIndex": 0, "columnIndex": 0}}})
+
+    # ---- Row 2: daily focus/theme label ----
+    V.append({"updateCells": {
+        "rows": [{"values": [_txt("DAILY FOCUS / THEME", bold=True, size=10, fg=SAGE_DARK)]}],
+        "fields": "userEnteredValue,userEnteredFormat",
+        "start": {"sheetId": sid, "rowIndex": 1, "columnIndex": 0}}})
 
     # ---- HABITS header row 4 ----
     V.append({"updateCells": {
@@ -262,25 +275,32 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
         "start": {"sheetId": sid, "rowIndex": DAY_HABITS_HEADER_ROW - 1,
                   "columnIndex": 0}}})
 
-    # ---- Habit rows 5..14: A/B primary checkbox+label, C/D supplemental checkbox+label ----
-    for c0 in (0, 2):
+    # ---- Habit rows 5..14: A/B primary, C/D supplemental, E/F secondary supplemental/goal ----
+    for c0, end_row in ((0, DAY_HABIT_LAST_ROW), (2, DAY_HABIT_LAST_ROW), (4, DAY_HABIT_FIRST_ROW + 4)):
         R.append({"setDataValidation": {
             "range": {"sheetId": sid, "startRowIndex": DAY_HABIT_FIRST_ROW - 1,
-                      "endRowIndex": DAY_HABIT_LAST_ROW, "startColumnIndex": c0,
+                      "endRowIndex": end_row, "startColumnIndex": c0,
                       "endColumnIndex": c0 + 1},
             "rule": {"condition": {"type": "BOOLEAN"}, "strict": True}}})
     for i, label in enumerate(HABITS_DEFAULT):
         r0 = DAY_HABIT_FIRST_ROW - 1 + i
-        supplemental = HABITS_SUPPLEMENTAL_DEFAULT[i]
-        goal = "GOAL" if label.startswith("14h fast") else ""
+        row_values = [
+            {"userEnteredValue": {"boolValue": False}},
+            _txt(label, size=14),
+            {"userEnteredValue": {"boolValue": False}},
+            _txt(HABITS_SUPPLEMENTAL_DEFAULT[i], size=14),
+        ]
+        if i < len(HABITS_SUPPLEMENTAL_SECONDARY_DEFAULT):
+            row_values += [
+                {"userEnteredValue": {"boolValue": False}},
+                _txt(HABITS_SUPPLEMENTAL_SECONDARY_DEFAULT[i], size=14),
+            ]
+        elif label.startswith("14h fast"):
+            row_values += [_txt("GOAL", bold=True, size=10, fg=SAGE_DARK), {}]
+        elif label.startswith("ACV turmeric"):
+            row_values += [{}, _txt(HABIT_GOAL_TEXT, size=14)]
         V.append({"updateCells": {
-            "rows": [{"values": [
-                {"userEnteredValue": {"boolValue": False}},
-                _txt(label, size=14),
-                {"userEnteredValue": {"boolValue": False}},
-                _txt(supplemental, size=14),
-                _txt(goal, size=10, fg=SAGE_DARK),
-            ]}],
+            "rows": [{"values": row_values}],
             "fields": "userEnteredValue,userEnteredFormat",
             "start": {"sheetId": sid, "rowIndex": r0, "columnIndex": 0}}})
 
@@ -340,7 +360,7 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
                   "startIndex": DAY_SLOT_FIRST_ROW - 1, "endIndex": DAY_SLOT_LAST_ROW},
         "properties": {"pixelSize": 34}, "fields": "pixelSize"}})
 
-    # ---- NOTES header row 42 + free-notes block 43..50 merged A:E per row ----
+    # ---- NOTES header row 43 + free-notes block 44..51 merged A:F per row ----
     V.append({"updateCells": {
         "rows": [{"values": [_txt("NOTES", bold=True, size=12, fg=SAGE_DARK)]}],
         "fields": "userEnteredValue,userEnteredFormat",
@@ -349,11 +369,11 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
     for r0 in range(DAY_NOTES_FIRST_ROW - 1, DAY_NOTES_LAST_ROW):
         R.append({"mergeCells": {
             "range": {"sheetId": sid, "startRowIndex": r0, "endRowIndex": r0 + 1,
-                      "startColumnIndex": 0, "endColumnIndex": 5},
+                      "startColumnIndex": 0, "endColumnIndex": 6},
             "mergeType": "MERGE_ALL"}})
 
     # ---- Column widths ----
-    for c, w in {0: 44, 1: 420, 2: 90, 3: 130, 4: 240}.items():
+    for c, w in {0: 44, 1: 270, 2: 44, 3: 190, 4: 44, 5: 200}.items():
         R.append({"updateDimensionProperties": {
             "range": {"sheetId": sid, "dimension": "COLUMNS",
                       "startIndex": c, "endIndex": c + 1},
@@ -380,7 +400,7 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
                 "ranges": [{"sheetId": sid,
                             "startRowIndex": DAY_HABIT_FIRST_ROW - 1,
                             "endRowIndex": DAY_HABIT_LAST_ROW,
-                            "startColumnIndex": 0, "endColumnIndex": 5}],
+                            "startColumnIndex": 0, "endColumnIndex": 6}],
                 "booleanRule": {
                     "condition": {"type": "CUSTOM_FORMULA",
                                   "values": [{"userEnteredValue": f"=${col_letter}{DAY_HABIT_FIRST_ROW}=TRUE"}]},

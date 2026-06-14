@@ -229,7 +229,7 @@ DAY_NOTES_HEADER_ROW = 43    # "NOTES"
 DAY_NOTES_FIRST_ROW = 44     # rows 44..51 = free-notes block
 DAY_NOTES_LAST_ROW = 51
 DAY_GRID_ROWS = 54           # generous; chart anchors col G row 1
-DAY_GRID_COLS = 12           # A..E content + G chart anchor headroom
+DAY_GRID_COLS = 12           # A..F content + G chart anchor headroom
 
 # Per-day-tab columns (0-based)
 DAY_COL_STATUS = 0   # A — native checkbox
@@ -256,22 +256,25 @@ TAB_DONUT_DATA = "_donut_data"
 # verbatim `archive_May 11-17` copy but re-ordered Sun→Sat.
 TAB_WEEK = "Week"
 
-# Week-tab grid layout (1-based rows for A1 references; mirrors archive grid).
+# Week-tab grid layout (1-based rows for A1 references). Habits intentionally
+# live only on the day tabs; Week is a task-planning mirror.
 WK_TITLE_ROW = 1               # merged A1:O1 "WEEK OF May 17-23"
-WK_HABITS_HEADER_ROW = 5       # "HABIT TRACKER"
-WK_HABIT_DAYHDR_ROW = 6        # Sun..Sat 2-col-merged sub-headers
-WK_HABIT_FIRST_ROW = 7         # rows 7..16 = 10 primary habit rows (label col 0)
-WK_HABIT_LAST_ROW = 16
-WK_DAYHDR_ROW = 17             # SUNDAY..SATURDAY 2-col-merged headers
-WK_SLOT_FIRST_ROW = 25         # rows 25..49 = 25 priority slots
-WK_SLOT_LAST_ROW = 49
-WK_NOTES_HDR_ROW = 51          # notes label row
-WK_NOTES_FIRST_ROW = 52        # rows 52..59 = merged notes block per day
-WK_NOTES_LAST_ROW = 59
-WK_GRID_ROWS = 62
+WK_SHOW_HABITS = False
+WK_HABITS_HEADER_ROW = 0       # retired on Week tab
+WK_HABIT_DAYHDR_ROW = 0        # retired on Week tab
+WK_HABIT_FIRST_ROW = 0         # retired on Week tab
+WK_HABIT_LAST_ROW = 0          # retired on Week tab
+WK_FOCUS_ROW = 3               # DAILY FOCUS / THEME
+WK_DAYHDR_ROW = 6              # SUNDAY..SATURDAY 2-col-merged headers
+WK_SLOT_FIRST_ROW = 8          # rows 8..22 = 15 visible planning slots
+WK_SLOT_LAST_ROW = 22
+WK_NOTES_HDR_ROW = 24          # notes label row
+WK_NOTES_FIRST_ROW = 25        # rows 25..27 = optional notes space
+WK_NOTES_LAST_ROW = 27
+WK_GRID_ROWS = 28
 WK_GRID_COLS = 15              # col0 label + 7 day-pairs (status + content)
-WK_SLOT_COUNT = WK_SLOT_LAST_ROW - WK_SLOT_FIRST_ROW + 1   # 25
-WK_HABIT_COUNT = WK_HABIT_LAST_ROW - WK_HABIT_FIRST_ROW + 1  # 10
+WK_SLOT_COUNT = WK_SLOT_LAST_ROW - WK_SLOT_FIRST_ROW + 1   # 15
+WK_HABIT_COUNT = 0
 
 # Day order on the Week grid is Sun→Sat (design-corrected; archive grid was
 # Mon-first). Column mapping: col 0 = habit/notes label, then for day i
@@ -313,6 +316,13 @@ HABITS_SUPPLEMENTAL_DEFAULT = [
     "Eating cutoff 7:30p",
     "Screen cutoff 9:30p",
 ]
+HABITS_SUPPLEMENTAL_SECONDARY_DEFAULT = [
+    "Sauna",
+    "Glutamine",
+    "Ketones",
+    "Red light",
+]
+HABIT_GOAL_TEXT = "Protein 120g + Fiber 25g"
 
 
 # --------------------------------------------------------------- auth + API
@@ -1099,11 +1109,11 @@ def _day_clear_requests(sid: int) -> list[dict]:
     Notes empty, free-notes block empty. Title row + headers + dropdowns + CF +
     checkbox data-validation are PRESERVED (only userEnteredValue is touched)."""
     reqs: list[dict] = []
-    # Habit status checkboxes (primary col A + supplemental col C, rows 5..14) → FALSE
-    for col in (0, 2):
+    # Habit status checkboxes (primary A, supplemental C, secondary supplemental E) → FALSE.
+    for col, last_row in ((0, DAY_HABIT_LAST_ROW), (2, DAY_HABIT_LAST_ROW), (4, DAY_HABIT_FIRST_ROW + 4)):
         reqs.append({"repeatCell": {
             "range": {"sheetId": sid,
-                      "startRowIndex": DAY_HABIT_FIRST_ROW - 1, "endRowIndex": DAY_HABIT_LAST_ROW,
+                      "startRowIndex": DAY_HABIT_FIRST_ROW - 1, "endRowIndex": last_row,
                       "startColumnIndex": col, "endColumnIndex": col + 1},
             "cell": {"userEnteredValue": {"boolValue": False}},
             "fields": "userEnteredValue"}})
@@ -1142,28 +1152,21 @@ def _day_clear_requests(sid: int) -> list[dict]:
 
 def _week_clear_requests(sid: int) -> list[dict]:
     """Build repeatCell requests that reset the Week planning tab to a clean week:
-    for each of the 7 day-columns — habit checkboxes FALSE, slot status checkboxes FALSE,
+    for each of the 7 day-columns — slot status checkboxes FALSE,
     slot task text empty, per-day notes block empty. Title row + headers + labels +
     dropdowns + CF + checkbox data-validation are PRESERVED (only userEnteredValue is touched)."""
     reqs: list[dict] = []
     for i in range(7):
         sc = wk_status_col(i)
         cc = wk_content_col(i)
-        # Habit status checkboxes (rows 7..15, day's status col) → FALSE
-        reqs.append({"repeatCell": {
-            "range": {"sheetId": sid,
-                      "startRowIndex": WK_HABIT_FIRST_ROW - 1, "endRowIndex": WK_HABIT_LAST_ROW,
-                      "startColumnIndex": sc, "endColumnIndex": sc + 1},
-            "cell": {"userEnteredValue": {"boolValue": False}},
-            "fields": "userEnteredValue"}})
-        # Priority slot status checkboxes (rows 24..48, day's status col) → FALSE
+        # Priority slot status checkboxes (Week task rows) → FALSE
         reqs.append({"repeatCell": {
             "range": {"sheetId": sid,
                       "startRowIndex": WK_SLOT_FIRST_ROW - 1, "endRowIndex": WK_SLOT_LAST_ROW,
                       "startColumnIndex": sc, "endColumnIndex": sc + 1},
             "cell": {"userEnteredValue": {"boolValue": False}},
             "fields": "userEnteredValue"}})
-        # Priority slot task content (rows 24..48, day's content col) → empty
+        # Priority slot task content (Week task rows) → empty
         reqs.append({"repeatCell": {
             "range": {"sheetId": sid,
                       "startRowIndex": WK_SLOT_FIRST_ROW - 1, "endRowIndex": WK_SLOT_LAST_ROW,
@@ -1562,8 +1565,6 @@ def _build_week_formulas(meta: dict) -> list[tuple[str, list[list]]]:
     For each day i in 0..6, for each slot s in 1..25:
       Week!<status_col><WK_SLOT_FIRST_ROW + s - 1> = "='<DayTab>'!A<DAY_SLOT_FIRST_ROW + s - 1>"
       Week!<content_col><WK_SLOT_FIRST_ROW + s - 1> = "='<DayTab>'!B<DAY_SLOT_FIRST_ROW + s - 1>"
-    Plus 7 habit checkbox formulas per day.
-
     Returns list of (a1_range, values) tuples — caller batches the writes.
     """
     writes: list[tuple[str, list[list]]] = []
@@ -1572,8 +1573,6 @@ def _build_week_formulas(meta: dict) -> list[tuple[str, list[list]]]:
         return writes  # Week tab missing — skip silently; build_week_tab.py needs to run first
 
     slot_count = WK_SLOT_COUNT
-    habit_count = WK_HABIT_LAST_ROW - WK_HABIT_FIRST_ROW + 1  # 9 per WK constants
-
     for i in range(7):
         day_tab = WK_DAY_ORDER[i]
         sc = col_letter(wk_status_col(i))
@@ -1586,10 +1585,6 @@ def _build_week_formulas(meta: dict) -> list[tuple[str, list[list]]]:
         # Priority slot task formulas (=DayTab!B14, =DayTab!B15, …)
         task_formulas = [[f"='{day_tab}'!B{DAY_SLOT_FIRST_ROW + s}"] for s in range(slot_count)]
         writes.append((f"'{TAB_WEEK}'!{cc}{WK_SLOT_FIRST_ROW}:{cc}{WK_SLOT_LAST_ROW}", task_formulas))
-
-        # Habit checkbox formulas (=DayTab!A4, =DayTab!A5, …)
-        habit_formulas = [[f"='{day_tab}'!A{DAY_HABIT_FIRST_ROW + h}"] for h in range(habit_count)]
-        writes.append((f"'{TAB_WEEK}'!{sc}{WK_HABIT_FIRST_ROW}:{sc}{WK_HABIT_LAST_ROW}", habit_formulas))
 
     return writes
 
@@ -1632,7 +1627,7 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
             "new_file_folder": "STRATEGIC PLANNING",
             "prior_file_after_success": "To Do Archive (resolved at write time)",
             "recurring_preview": _stamp_recurring_day_tabs.__doc__ and "see helper",
-            "formula_count_estimate": 7 * 3,  # 3 ranges per day (status slots, task slots, habit checkboxes)
+            "formula_count_estimate": 7 * 2,  # 2 ranges per day (status slots, task slots)
             "existing_target_files": [
                 {
                     "id": f.get("id"),
@@ -2070,9 +2065,8 @@ def cmd_distribute_week(args) -> int:
 
     Design-corrected model (2026-05-17): after `build-week` rebuilds the Week
     tab and Kay lays out the full week there, this verb reads each Week-grid
-    day-block's 25 priority slots (status + task) and habit checkboxes and
-    writes them into the corresponding day tab's slots (rows 17-41) + habits
-    (rows 5-14). Collision-aware: refuses to overwrite a non-empty day-tab slot
+    day-block's 25 priority slots (status + task) and writes them into the
+    corresponding day tab's slots (rows 17-41). Collision-aware: refuses to overwrite a non-empty day-tab slot
     that the Week plan does NOT also fill at the same slot index, unless
     --force (so re-running after a manual day-tab edit is safe by default).
 
@@ -2106,17 +2100,12 @@ def cmd_distribute_week(args) -> int:
         tc = col_letter(wk_content_col(widx))
         st = client.get_values(f"'{TAB_WEEK}'!{sc}{WK_SLOT_FIRST_ROW}:{sc}{WK_SLOT_LAST_ROW}")
         tk = client.get_values(f"'{TAB_WEEK}'!{tc}{WK_SLOT_FIRST_ROW}:{tc}{WK_SLOT_LAST_ROW}")
-        hb = client.get_values(f"'{TAB_WEEK}'!{sc}{WK_HABIT_FIRST_ROW}:{sc}{WK_HABIT_LAST_ROW}")
         slots = []
         for i in range(WK_SLOT_COUNT):
             s = st[i][0] if i < len(st) and st[i] else ""
             t = tk[i][0] if i < len(tk) and tk[i] else ""
             slots.append((_is_truthy(s), str(t).strip() if t else ""))
-        habits = []
-        for i in range(WK_HABIT_COUNT):
-            h = hb[i][0] if i < len(hb) and hb[i] else ""
-            habits.append(_is_truthy(h))
-        plan[name] = {"slots": slots, "habits": habits}
+        plan[name] = {"slots": slots}
 
     # Inspect destination day-tab slots for collisions.
     collisions: list[str] = []
@@ -2143,8 +2132,7 @@ def cmd_distribute_week(args) -> int:
         print(f"  Targets: {[n for _w, n in targets] or '(none)'}")
         for _widx, name in targets:
             filled = sum(1 for _s, t in plan[name]["slots"] if t)
-            print(f"    {name}: would write {filled} slot(s) + "
-                  f"{sum(plan[name]['habits'])} habit check(s)")
+            print(f"    {name}: would write {filled} slot(s)")
         if collisions:
             print(f"  COLLISIONS ({len(collisions)}) — would "
                   f"{'OVERWRITE (--force)' if getattr(args,'force',False) else 'REFUSE without --force'}:")
@@ -2173,7 +2161,6 @@ def cmd_distribute_week(args) -> int:
     written = {}
     for _widx, name in targets:
         slots = plan[name]["slots"]
-        habits = plan[name]["habits"]
         # Slot block A:E rows 17..41 — write [status, task, "", "", ""].
         # Type/Project/Notes are NOT carried (the Week canvas holds task text
         # only; Kay enriches on the day tab, or recurring metadata was set on
@@ -2188,10 +2175,6 @@ def cmd_distribute_week(args) -> int:
             day_tab_block(name, DAY_COL_STATUS, DAY_COL_LAST,
                           DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW),
             rows_vals)
-        # Habit checkboxes rows 5..14 col A.
-        client.values_update(
-            day_tab_range(name, DAY_COL_STATUS, DAY_HABIT_FIRST_ROW, DAY_HABIT_LAST_ROW),
-            [[h] for h in habits])
         written[name] = sum(1 for _d, t in slots if t)
 
     trace("distribute-week", wd[0].isoformat(), [
@@ -2796,15 +2779,15 @@ def cmd_reformat(args) -> int:
             },
             "index": 0,
         }})
-        # Habit rules: primary/supplemental checked → sage-extra-light fill across A:E.
-        for col_letter in ("A", "C"):
+        # Habit rules: primary/supplemental checked → sage-extra-light fill across A:F.
+        for col_letter in ("A", "C", "E"):
             R.append({"addConditionalFormatRule": {
                 "rule": {
                     "ranges": [{"sheetId": sid,
                                 "startRowIndex": DAY_HABIT_FIRST_ROW - 1,
                                 "endRowIndex": DAY_HABIT_LAST_ROW,
                                 "startColumnIndex": DAY_COL_STATUS,
-                                "endColumnIndex": DAY_COL_LAST + 1}],
+                                "endColumnIndex": 6}],
                     "booleanRule": {
                         "condition": {"type": "CUSTOM_FORMULA",
                                       "values": [{"userEnteredValue":

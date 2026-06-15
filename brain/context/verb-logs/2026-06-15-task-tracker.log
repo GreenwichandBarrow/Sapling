@@ -1,0 +1,20 @@
+
+[2026-06-15T00:13:36.125177] carry-forward-day — mon-to-tue
+  - moved: 13
+  - source: Mon
+  - destination: Tue
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260615-001333.json
+
+  - Mon slot 1 → Tue slot 5: Process payroll
+  - Mon slot 2 → Tue slot 6: Process conference registrations
+  - Mon slot 3 → Tue slot 7: Email Filipe @ Pest Mgmt company
+  - Mon slot 4 → Tue slot 8: DealsX targeted outreach, share lists
+  - Mon slot 5 → Tue slot 9: Send DealsX specialization file
+  - Mon slot 6 → Tue slot 10: Follow up email to Matt
+  - Mon slot 7 → Tue slot 11: Pest 10-company research — June head-to-head vs DealsX + JJ
+  - Mon slot 8 → Tue slot 12: Call IRS to confirm Form 8822-B address update
+  - Mon slot 9 → Tue slot 13: Scan WPMA directory for NY-based members
+  - Mon slot 10 → Tue slot 14: Thank you: Jay, Laura, Paul, Bob
+  - Mon slot 11 → Tue slot 15: Reply to Carlos
+  - Mon slot 12 → Tue slot 16: Follow-up emails to lunch attendees & conferences
+  - Mon slot 13 → Tue slot 17: Follow up: Krupa, Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg

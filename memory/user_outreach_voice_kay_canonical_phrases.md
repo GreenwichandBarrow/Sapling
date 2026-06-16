@@ -65,6 +65,17 @@ For first-touch LinkedIn outreach to a 3rd-degree connection:
 
 In first-touch peer-to-peer outreach where the recipient doesn't need it yet, Kay sometimes OMITS the "Greenwich & Barrow" firm name and just says "running a traditional search." The firm name is contextual, not first-touch essential. Don't force it in if the message reads cleaner without.
 
+## XPX / intermediary follow-up pattern
+
+When Kay intended to meet an intermediary at an event but missed it, use her actual sent Anthony Citrolo note as the model:
+
+- Mention the event specifically: **"I had hoped to connect at the XPX event in Bethpage the other week, but unfortunately I wasn't feeling well and couldn't make it."**
+- Then: **"I wanted to reach out directly and introduce myself."**
+- Keep the body tight: event context -> buyer profile -> why this person -> quick call.
+- Do NOT force "I'm the founder of Greenwich & Barrow" if the note reads cleaner without it.
+- Do NOT use PE-coded phrases like "backed by investors", "fund", or "pipeline" in these broker/intermediary intros unless Kay explicitly provides them. Kay's preferred phrasing here is **"I'm a well capitalized buyer"** and **"continue getting to know business owners and advisors in the market."**
+- Do NOT attach the "What We Look For" footer by default on this event-follow-up style. Include it only if Kay asks or provides it.
+
 ## Precipitating trace
 
 2026-05-12 — Kay sent her own version of the Kevin O'Connell LinkedIn outreach after iterating with me 4-5 times. Her final version:

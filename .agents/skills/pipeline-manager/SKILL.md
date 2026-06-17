@@ -147,10 +147,11 @@ Present max 5 nurture reminders per session. Prioritize by: relationship value, 
 ### Section 4: Action Items (from post-call analyzer)
 Present action items staged by `post-call-analyzer`, not raw Granola scans.
 
-Read every non-hidden JSON file in:
-`brain/trackers/post-call-analyzer/pending-tasks/*.json`
+Default Good Morning scope is **fresh post-call analysis only**: read non-hidden JSON files in `brain/trackers/post-call-analyzer/pending-tasks/*.json`, but surface only task batches whose `staged_at`, `call_date`, source call timestamp, or file mtime is within the prior 24 hours of the morning run. These are candidates for Kay approval, not commitments, and they are not already on the To Do sheet.
 
-Each file is a batch of review-ready task objects produced after the transcript
+Older pending files are backlog, not morning-review material. Do not dump them into the briefing. If older files exist, surface at most one low-priority routing item: `Post-call task backlog exists — recommend Task Manager review/suppress stale items`, or omit it when the Task Manager thread already owns that cleanup.
+
+Each fresh file is a batch of review-ready task objects produced after the transcript
 Doc + meeting analysis Doc were saved. Treat these as candidates only. They are
 not commitments and they are not already on the To Do sheet.
 
@@ -331,12 +332,12 @@ Relationship management (nurture cadence monitoring, action-already-taken verifi
 **Fallback:** If the relationship-status artifact doesn't exist (relationship-manager didn't run), pipeline-manager does a lightweight Attio People query to surface any contacts with overdue nurture cadences for the briefing. This fallback will be removed once relationship-manager is proven stable.
 
 ### Sub-Agent 3: Post-Call Task Handoff
-**Scope:** staged task files from `post-call-analyzer`.
-**Reads:** `brain/trackers/post-call-analyzer/pending-tasks/*.json`.
+**Scope:** fresh staged task files from `post-call-analyzer` for the prior 24 hours.
+**Reads:** `brain/trackers/post-call-analyzer/pending-tasks/*.json`, filtered by `staged_at`, `call_date`, source call timestamp, or file mtime to the prior 24 hours for routine Good Morning.
 **Does not scan:** Granola MCP, Granola OAuth, local browser cache, or raw transcript sources.
 **Returns:** proposed To Do rows with source meeting, task text, type, project, suggested timing, analysis Doc link, and transcript Doc link.
 
-If pending task files are missing or empty, return "No staged post-call tasks".
+If no fresh pending task files exist, return "No fresh staged post-call tasks". Older pending files should be summarized as backlog only, not expanded into the briefing.
 If any file is malformed, surface a single RED system item:
 `RECOMMEND: Repair malformed post-call task handoff — {filename} could not be parsed.`
 
@@ -434,7 +435,7 @@ Before scanning for signals, ingest new data from external tools into the vault.
 Pipeline-manager does not ingest Granola directly. Before signal detection:
 
 1. Read recent `brain/calls/*.md` written by `post-call-analyzer`.
-2. Read `brain/trackers/post-call-analyzer/pending-tasks/*.json` for review-ready action items.
+2. Read `brain/trackers/post-call-analyzer/pending-tasks/*.json` for review-ready action items, filtering routine Good Morning output to post-call task batches from the prior 24 hours.
 3. Verify the post-call analyzer validator is clean if call artifacts look stale:
    `python3 scripts/validate_post_call_analyzer_integrity.py`
 4. If expected call artifacts are missing, surface a system item to repair

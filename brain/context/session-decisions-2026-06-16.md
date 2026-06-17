@@ -22,6 +22,9 @@ tags: [date/2026-06-16, context, topic/session-decisions, topic/goodnight, topic
 - DRAFTED Richard Strautman XPX follow-up. Kay corrected the copy to remove PE-coded language and avoid "pipeline" phrasing.
 - APPROVE durable outreach learning: for XPX/intermediary missed-event follow-ups, use Kay's concise Anthony-style structure, mention the XPX Bethpage event, avoid "backed by investors" / fund language, avoid "pipeline" language, and omit the What We Look For footer unless Kay requests it.
 
+### Good Morning Post-Call Task Scope
+- APPROVE updating Good Morning / `pipeline-manager` so routine morning briefings surface only fresh post-call-analysis task candidates from the prior 24 hours. Older post-call task files are backlog and should be routed to Task Manager review, not dumped into Daily Ops.
+
 ### Closeout / Repo Hygiene
 - PASS no email sending. Codex drafted copy only; Kay handles sends.
 - PASS push hold. Branch remains dirty across unrelated workstreams, and closeout should not push while `scripts/.env.codex`, dashboard/product files, generated artifacts, and broad vault changes remain unresolved.
@@ -35,11 +38,14 @@ tags: [date/2026-06-16, context, topic/session-decisions, topic/goodnight, topic
 - UPDATED outreach memory `memory/user_outreach_voice_kay_canonical_phrases.md` with the XPX / intermediary follow-up pattern.
 - WROTE decision trace `brain/traces/2026-06-16-xpx-intermediary-outreach-voice.md`.
 - REVIEWED fallback thread inventory because Codex thread tools were unavailable; fallback used git status, dated artifacts, task-tracker verb logs, and scheduled outputs.
+- RAN addendum goodnight carry-forward dry run after the Good Morning skill update: 0 remaining Tuesday items to move, 0 refused; no live write needed.
+- COMMITTED Good Morning skill update: `c76a5b1c pipeline-manager: surface fresh post-call tasks`.
+- WROTE decision trace `brain/traces/2026-06-16-good-morning-fresh-post-call-tasks.md`.
 
 ## Deferred
 
 - DEFER Deal Aggregator source-quality / browser-fallback tuning to Thursday, 2026-06-18.
-- DEFER post-call task queue review to Task Manager thread. Do not write those staged tasks to the To Do tracker until Kay approves a proposed list.
+- DEFER post-call task queue review to Task Manager thread. Do not write those staged tasks to the To Do tracker until Kay approves a proposed list. Routine Good Morning should only surface prior-24-hour post-call task candidates.
 - DEFER broad dirty-tree cleanup. Reason: dirty files span multiple workstreams and include sensitive/config-looking files.
 - DEFER push. Reason: branch has closeout commits ahead of origin and a broad dirty tree; pushing would mix closeout state with unresolved local work.
 
@@ -54,6 +60,7 @@ tags: [date/2026-06-16, context, topic/session-decisions, topic/goodnight, topic
 - Task Manager thread should review `brain/trackers/post-call-analyzer/pending-tasks/` and propose which items, if any, belong on the To Do tracker.
 - Deal Aggregator Phase 2.5 tuning is a Thursday 2026-06-18 focus.
 - Future XPX/intermediary outreach should use the Anthony/Richard correction pattern and avoid PE-coded language.
+- Tomorrow morning should include any post-call-analysis task candidates from the prior 24 hours for approval, but should not expand the older backlog.
 
 ## Sources Reviewed
 
@@ -66,4 +73,5 @@ tags: [date/2026-06-16, context, topic/session-decisions, topic/goodnight, topic
 - `memory/user_outreach_voice_kay_canonical_phrases.md`.
 - `git status -sb`.
 - `git cherry -v origin/codex-migration-phase-1`.
+- `git show --stat --oneline c76a5b1c`.
 - Live task-tracker carry-forward output from `python3 scripts/task_tracker.py carry-forward-day --date 2026-06-16`.

@@ -14,6 +14,7 @@ You are running the `email-intelligence` skill non-interactively under systemd a
    Then read `brain/context/email-intelligence-input-{TODAY}.json` and use it as the primary source artifact. This script captures `gog` output internally and writes bounded snippets plus `draft_details` so raw HTML/email bodies do not enter Codex logs or blow token budgets.
 2a. **Pull source data only through the compact artifact unless a deterministic auto-trigger requires a full fetch:**
    - Inbound Gmail (`gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send "newer_than:2d label:INBOX" --json --max 50`)
+   - Explicit deal-flow label Gmail (`gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send 'newer_than:7d label:"auto/deal flow"' --json --max 50`), merged/deduped with Inbox so archived/labeled deal-flow emails still reach deal-aggregator via the artifact
    - Outbound Gmail (`gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send "from:kay.s@greenwichandbarrow.com newer_than:2d" --json --max 50`)
    - Gmail drafts (`gog gmail drafts list --account kay.s@greenwichandbarrow.com --gmail-no-send --json`)
    - Granola transcripts via `~/.local/bin/granola-api since <iso-checkpoint>` and `granola-api get-note <note_id>` for any meetings since last run; MCP is optional only

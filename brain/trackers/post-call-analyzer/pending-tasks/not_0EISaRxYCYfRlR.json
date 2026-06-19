@@ -1,0 +1,62 @@
+[
+  {
+    "task_text": "Build the first-pass multi-acquisition Excel model from Melissa's structure and validate assumptions against the pest buy-box.",
+    "type": "Analysis",
+    "project": "Pest thesis",
+    "suggested_day": "Thu",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Melissa 2026-06-17 mtg. Analysis: https://docs.google.com/document/d/15R3azL4YPdy2-05PjCfR-3aDskx577RBiliJG-eawxg/edit?usp=drivesdk",
+    "source_call_id": "not_0EISaRxYCYfRlR",
+    "source_doc_url": "https://docs.google.com/document/d/15R3azL4YPdy2-05PjCfR-3aDskx577RBiliJG-eawxg/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1J7t8F_oD7LPJQbbg6C4d69Mazf9blSnZdq_2D7bCSP4/edit?usp=drivesdk",
+    "staged_at": "2026-06-17T17:06:38.569063+00:00"
+  },
+  {
+    "task_text": "Stress-test seller note, rollover, and interest-rate assumptions against the model cash flows before using them in the next seller conversation.",
+    "type": "Deal",
+    "project": "Pest thesis",
+    "suggested_day": "Thu",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Melissa 2026-06-17 mtg. Analysis: https://docs.google.com/document/d/15R3azL4YPdy2-05PjCfR-3aDskx577RBiliJG-eawxg/edit?usp=drivesdk",
+    "source_call_id": "not_0EISaRxYCYfRlR",
+    "source_doc_url": "https://docs.google.com/document/d/15R3azL4YPdy2-05PjCfR-3aDskx577RBiliJG-eawxg/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1J7t8F_oD7LPJQbbg6C4d69Mazf9blSnZdq_2D7bCSP4/edit?usp=drivesdk",
+    "staged_at": "2026-06-17T17:06:38.569063+00:00"
+  },
+  {
+    "task_text": "Talk to Sarah about QSBS / capital gains implications for the seller-side structure.",
+    "type": "Follow-up",
+    "project": "Pest thesis",
+    "suggested_day": "Thu",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Melissa 2026-06-17 mtg. Analysis: https://docs.google.com/document/d/15R3azL4YPdy2-05PjCfR-3aDskx577RBiliJG-eawxg/edit?usp=drivesdk",
+    "source_call_id": "not_0EISaRxYCYfRlR",
+    "source_doc_url": "https://docs.google.com/document/d/15R3azL4YPdy2-05PjCfR-3aDskx577RBiliJG-eawxg/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1J7t8F_oD7LPJQbbg6C4d69Mazf9blSnZdq_2D7bCSP4/edit?usp=drivesdk",
+    "staged_at": "2026-06-17T17:06:38.569063+00:00"
+  },
+  {
+    "task_text": "Press Jeff Stevens on whether Anacapa can support the roll-up strategy and the cap-table shape.",
+    "type": "Relationship",
+    "project": "Pest thesis",
+    "suggested_day": "Thu",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Melissa 2026-06-17 mtg. Analysis: https://docs.google.com/document/d/15R3azL4YPdy2-05PjCfR-3aDskx577RBiliJG-eawxg/edit?usp=drivesdk",
+    "source_call_id": "not_0EISaRxYCYfRlR",
+    "source_doc_url": "https://docs.google.com/document/d/15R3azL4YPdy2-05PjCfR-3aDskx577RBiliJG-eawxg/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1J7t8F_oD7LPJQbbg6C4d69Mazf9blSnZdq_2D7bCSP4/edit?usp=drivesdk",
+    "staged_at": "2026-06-17T17:06:38.569063+00:00"
+  },
+  {
+    "task_text": "Share the model draft back with Melissa for a sanity check once the base case is built.",
+    "type": "Follow-up",
+    "project": "Pest thesis",
+    "suggested_day": "Fri",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Melissa 2026-06-17 mtg. Analysis: https://docs.google.com/document/d/15R3azL4YPdy2-05PjCfR-3aDskx577RBiliJG-eawxg/edit?usp=drivesdk",
+    "source_call_id": "not_0EISaRxYCYfRlR",
+    "source_doc_url": "https://docs.google.com/document/d/15R3azL4YPdy2-05PjCfR-3aDskx577RBiliJG-eawxg/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1J7t8F_oD7LPJQbbg6C4d69Mazf9blSnZdq_2D7bCSP4/edit?usp=drivesdk",
+    "staged_at": "2026-06-17T17:06:38.569063+00:00"
+  }
+]

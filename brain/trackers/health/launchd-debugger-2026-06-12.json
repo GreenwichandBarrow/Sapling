@@ -1,0 +1,28 @@
+{
+  "date": "2026-06-12",
+  "scan_started_at": "2026-06-12T05:01:00-04:00",
+  "scan_finished_at": "2026-06-12T05:02:04-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 1,
+  "runtime_seconds": 64,
+  "results": [
+    {
+      "job": "calibration-workflow",
+      "cause": "CODE_BUG",
+      "action": "SURFACE",
+      "slack_posted": true,
+      "suppression_reason": null,
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_text": "launchd-debugger: calibration-workflow FAILED — CODE_BUG. FAILED: post-run check exited 2. Recommended: fix the calibration workflow to bind report/validator dates to the scheduled run date, not wall-clock rollover after midnight. Log: /home/ubuntu/projects/Sapling/logs/scheduled/calibration-workflow-2026-06-11-2300.log",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/calibration-workflow-2026-06-11-2300.log",
+      "last_log_mtime": "2026-06-11T23:02:58-04:00",
+      "exit_code": 2,
+      "validator_failed": false,
+      "preflight_failed": false,
+      "error_signature": "FAILED: post-run check exited 2"
+    }
+  ]
+}

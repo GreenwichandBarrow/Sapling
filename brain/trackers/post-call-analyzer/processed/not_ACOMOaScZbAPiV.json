@@ -1,0 +1,18 @@
+{
+  "id": "not_ACOMOaScZbAPiV",
+  "title": "Richard I Kay",
+  "counterparty": "Richard",
+  "processed_at": "2026-06-17T17:06:45.103317+00:00",
+  "vault_call_note": "brain/calls/2026-06-17-richard-stony-hill-advisors.md",
+  "doc_url": "https://docs.google.com/document/d/1g0XTKOuc3B8hQrYJ-XQpklNo9Rk28MeG7iYbGQIQOC8/edit?usp=drivesdk",
+  "doc_id": "1g0XTKOuc3B8hQrYJ-XQpklNo9Rk28MeG7iYbGQIQOC8",
+  "transcript_doc_url": "https://docs.google.com/document/d/1nfIigBp62uINt--iUapN_yIUQRa7-3T4Lb4txIDnKjs/edit?usp=drivesdk",
+  "transcript_doc_id": "1nfIigBp62uINt--iUapN_yIUQRa7-3T4Lb4txIDnKjs",
+  "attio_notes": {},
+  "tasks_appended": 3,
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_ACOMOaScZbAPiV.json",
+  "slack_posted": true,
+  "detector": "granola-api-rest",
+  "queued_at": "2026-06-17T13:00:45-04:00",
+  "attio_failed": true
+}

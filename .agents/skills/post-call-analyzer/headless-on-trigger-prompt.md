@@ -167,6 +167,8 @@ If any referenced entity doesn't exist in `brain/entities/`, create the stub per
 
 Format per SKILL.md "Slack message format" section. Post via `$SLACK_WEBHOOK_OPERATIONS`.
 
+Before posting, build a final per-call result object containing the actual artifact URLs and failure markers that will be written to `processed.json`. The Slack message MUST be generated from that final result object, not from intermediate variables or earlier fallback state. Do not post a "failed" Slack message if the final result object has a valid `doc_url` / `transcript_doc_url`.
+
 ```python
 import os, json, urllib.request
 msg = {"blocks": [
@@ -192,13 +194,15 @@ mv brain/trackers/post-call-analyzer/queue/{note_id}.json \
    brain/trackers/post-call-analyzer/processed/{note_id}.json
 ```
 
+Replace the moved archive file's contents with the final per-call result object before appending to the ledger. The per-note archive and `processed.json` ledger must agree on `id`, `doc_url`, `transcript_doc_url`, `vault_call_note`, `tasks_file`, `processed_at`, `slack_posted`, and any explicit failure markers.
+
 Append `{note_id}` to `brain/trackers/post-call-analyzer/processed.json` ledger. Use object entries rather than bare IDs when possible, including `id`, `doc_url`, `transcript_doc_url`, `vault_call_note`, `tasks_file`, `processed_at`, and any explicit failure markers.
 
 ## Failure handling
 
 - `granola-api` fails for one queue entry → log + skip THAT entry (do not abort the loop); leave queue file in place for next run.
-- Transcript Doc create fails → continue with analysis + Attio + staged tasks + Slack + vault, BUT Slack message must say `Transcript save failed — Granola source only` and skip the transcript Doc link.
-- Analysis Doc create fails → continue with Attio + staged tasks + Slack + vault, BUT Slack message must say `Analysis Doc creation failed — saved transcript only` and skip the analysis Doc link.
+- Transcript Doc create fails → continue with analysis + Attio + staged tasks + Slack + vault, BUT only if the final result object has `transcript_failed: true`, Slack message must say `Transcript save failed — Granola source only` and skip the transcript Doc link.
+- Analysis Doc create fails → continue with Attio + staged tasks + Slack + vault, BUT only if the final result object has `doc_failed: true`, Slack message must say `Analysis Doc creation failed — saved transcript only` and skip the analysis Doc link.
 - Attio match fails for an attendee → continue without writing that note; log `ATTIO-MATCH-FAIL: {email}`.
 - Attio note POST fails → log `ATTIO-WRITE-FAIL: {record_id}`; continue with the other writes.
 - Task staging fails → surface `TASKS-FAIL:` prefix in Slack; vault note is the fallback record.

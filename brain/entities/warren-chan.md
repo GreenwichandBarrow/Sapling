@@ -7,7 +7,7 @@ company: "[[entities/anacapa-partners]]"
 role: Investor (Anacapa-associated)
 email: warrenchan@anacapapartners.com
 attio_id: b7ad9651-581f-4894-b674-3915fc08968d
-attio_synced_at: 2026-06-05T07:00:00Z
+attio_synced_at: 2026-06-10T11:00:19Z
 tags:
   - date/2026-06-03
   - entity

@@ -1,9 +1,8 @@
-"""Dashboard landing page — hero Active Deal Pipeline tile + lead-in tiles.
+"""Dashboard landing page — active pipeline lead-in + operating tiles.
 
-Layout matches `dashboard/mockup-landing.html` (locked Session 4 PM):
-  Row 1: HERO Active Deal Pipeline (full-width, 56px / weight-200 headline,
-         4 stage breakdown cells, accent-blue gradient)
-  Row 2: Deal Aggregator · M&A Analytics · C-Suite & Skills · Infrastructure
+Layout matches the reviewed command-center dashboard: top row pairs Active
+Pipeline Snapshot with M&A Activity, and the lower row carries the remaining
+operating tiles.
 
 Each tile that has a corresponding live page reads its loader inside a
 try/except so a data-source failure falls back to a placeholder rather than
@@ -29,7 +28,7 @@ def _tile(body: str) -> str:
 
 
 # -----------------------------------------------------------------------------
-# Hero tile — Active Deal Pipeline (NDA-forward)
+# Hero tile — Active Pipeline Snapshot (NDA-forward)
 # -----------------------------------------------------------------------------
 
 
@@ -89,7 +88,7 @@ def _stalled_count(deals: list, today: date) -> int:
 
 
 def _hero_active_deal_pipeline() -> str:
-    """Live: Active Deal Pipeline hero — 4 stage cells + headline + trend."""
+    """Live: Active Pipeline Snapshot hero — 4 stage cells + headline."""
     try:
         from data_sources import load_pipeline
         snapshot = load_pipeline(scope="active")
@@ -98,7 +97,7 @@ def _hero_active_deal_pipeline() -> str:
 
     if snapshot is None:
         return _tile("""
-        <a class="gb-tile hero" href="/ma-analytics" target="_self">
+        <a class="gb-tile hero" href="/deal-pipeline" target="_self">
         <div class="label">Active Pipeline Snapshot</div>
         <div class="gb-hero-row">
         <div class="gb-hero-headline">
@@ -128,7 +127,7 @@ def _hero_active_deal_pipeline() -> str:
     advanced = _advanced_this_week(deals, today)
     stalled = _stalled_count(deals, today)
     # Hero is NDA-forward scoped, so show post-NDA closures only — pre-NDA
-    # outreach attrition lives on Deal Aggregator / M&A Analytics, not here.
+    # outreach attrition lives on Deal Aggregator / M&A Activity, not here.
     closed_post_nda = getattr(snapshot, "closed_count_post_nda", 0)
 
     if total == 0:
@@ -160,7 +159,7 @@ def _hero_active_deal_pipeline() -> str:
         )
 
     return _tile(f"""
-    <a class="gb-tile hero" href="/ma-analytics" target="_self">
+    <a class="gb-tile hero" href="/deal-pipeline" target="_self">
     <div class="label">Active Pipeline Snapshot</div>
     <div class="gb-hero-row">
     <div class="gb-hero-headline">
@@ -317,18 +316,15 @@ def _tile_ma_analytics() -> str:
             for g in goals
         )
         below = sum(1 for g in goals if g.status == "below")
-        above = sum(1 for g in goals if g.status == "above")
         if below:
             footer_text = f"{below} below goal"
-        elif above:
-            footer_text = f"{above} above target"
         else:
             footer_text = "all on track"
 
     return _tile(f"""
     <a class="gb-tile" href="/ma-analytics" target="_self">
-    <div class="label">M&amp;A Analytics</div>
-    <div style="font-size: 0.78em; color: #888; margin-bottom: 12px; letter-spacing: 0.16em; text-transform: uppercase;">This Month's Weekly Goals</div>
+    <div class="label">M&amp;A Activity</div>
+    <div style="font-size: 0.78em; color: #888; margin-bottom: 12px; letter-spacing: 0.16em; text-transform: uppercase;">Weekly Goals</div>
     <div class="gb-ma-list">
     {goal_rows}
     </div>
@@ -391,7 +387,7 @@ def _tile_c_suite_skills() -> str:
 
 
 def _tile_infrastructure() -> str:
-    """Live: infrastructure operating status for the landing page."""
+    """Live: fixed operating summary for infrastructure on the landing page."""
     try:
         from data_sources import load_credit_tiles, load_system_health, system_health_summary
         tiles = load_system_health()
@@ -409,52 +405,95 @@ def _tile_infrastructure() -> str:
         </a>
         """)
 
-    problem_tiles = [t for t in tiles if t.status in ("alert", "warn")]
-    problem_tiles.sort(key=lambda t: 0 if t.status == "alert" else 1)
-    if problem_tiles:
-        issue = problem_tiles[0]
-        issue_dot = "red" if issue.status == "alert" else "yellow"
-        issue_text = f'{escape(issue.label)} needs review'
-        issue_detail = escape(issue.detail)
-    else:
-        issue_dot = "green"
-        issue_text = "No infrastructure issues"
-        issue_detail = ""
+    def _tile_by_label(label: str):
+        return next((t for t in tiles if t.label == label), None)
+
+    dashboard = _tile_by_label("Dashboard service")
+    vps = _tile_by_label("VPS access")
+    disk = _tile_by_label("Disk space")
+    git = _tile_by_label("Git sync")
+
+    core_alert = any(t and t.status == "alert" for t in (dashboard, vps, disk))
+    core_warn = any(t and t.status == "warn" for t in (dashboard, vps, disk))
+    git_status = git.status if git else "unknown"
+    git_detail = escape(git.detail) if git and git.detail else ""
 
     usage_live = sum(1 for t in credits if t.runway_color == "green")
     usage_total = len(credits)
-    usage_dot = "green" if usage_total and usage_live == usage_total else "yellow"
-    usage_text = f'{usage_live} / {usage_total} usage meters live' if usage_total else "Usage meters unavailable"
+    usage_ok = bool(usage_total and usage_live == usage_total)
 
-    if summary["alert"]:
+    if core_alert:
         primary = "Issue"
         primary_unit = "needs review"
-    elif summary["warn"]:
+        core_dot = "red"
+        core_text = "Core systems need review"
+    elif core_warn:
         primary = "Running"
         primary_unit = "with review item"
+        core_dot = "yellow"
+        core_text = "Core systems running"
+    elif summary["alert"]:
+        primary = "Issue"
+        primary_unit = "needs review"
+        core_dot = "green"
+        core_text = "Core systems running"
+    elif summary["warn"] or not usage_ok:
+        primary = "Running"
+        primary_unit = "with review item"
+        core_dot = "green"
+        core_text = "Core systems running"
     else:
         primary = "Running"
         primary_unit = "all clear"
+        core_dot = "green"
+        core_text = "Core systems running"
 
-    issue_detail_html = f'<div style="font-size: 0.78em; color: #7f8798; margin-top: 3px; line-height: 1.25;">{issue_detail}</div>' if issue_detail else ""
+    if git_status == "alert":
+        git_dot = "red"
+        git_text = "Git sync needs review"
+    elif git_status == "warn":
+        git_dot = "yellow"
+        git_text = "Git sync needs review"
+    elif git_status == "ok":
+        git_dot = "green"
+        git_text = "Git sync clean"
+    else:
+        git_dot = "yellow"
+        git_text = "Git sync status unknown"
+
+    if usage_ok:
+        usage_dot = "green"
+        usage_text = f"{usage_live} / {usage_total} usage meters live"
+        usage_detail_html = ""
+    elif usage_total:
+        usage_dot = "yellow"
+        usage_text = "Usage meters need review"
+        usage_detail_html = f'<div style="font-size: 0.78em; color: #7f8798; margin-top: 3px; line-height: 1.25;">{usage_live} / {usage_total} live</div>'
+    else:
+        usage_dot = "yellow"
+        usage_text = "Usage meters unavailable"
+        usage_detail_html = ""
+
+    git_detail_html = f'<div style="font-size: 0.78em; color: #7f8798; margin-top: 3px; line-height: 1.25;">{git_detail}</div>' if git_detail and git_status != "ok" else ""
 
     return _tile(f"""
     <a class="gb-tile" href="/infrastructure" target="_self">
     <div class="label">System Health &amp; Infrastructure</div>
     <div class="primary" style="font-size: 2.1em;">{primary}<span class="unit">{primary_unit}</span></div>
     <div class="gb-status-row">
-    <span class="gb-status-dot green"></span>
-    <span class="gb-status-text">Core systems running</span>
+    <span class="gb-status-dot {core_dot}"></span>
+    <span class="gb-status-text">{core_text}</span>
     </div>
     <div class="gb-status-row" style="margin-top: 7px;">
-    <span class="gb-status-dot {issue_dot}"></span>
-    <span class="gb-status-text">{issue_text}</span>
+    <span class="gb-status-dot {git_dot}"></span>
+    <span class="gb-status-text">{git_text}</span>
     </div>
-    {issue_detail_html}
+    {git_detail_html}
     <div class="gb-status-row" style="margin-top: 7px;">
     <span class="gb-status-dot {usage_dot}"></span>
     <span class="gb-status-text">{usage_text}</span>
     </div>
+    {usage_detail_html}
     <div class="footer">
     <span class="gb-trend flat">&rarr; live probes</span>
     <span class="gb-horizon">NOW</span>
@@ -462,15 +501,14 @@ def _tile_infrastructure() -> str:
     </a>
     """)
 
-
 def render() -> None:
     import streamlit as st
 
     hero = _hero_active_deal_pipeline()
     small_tiles = [
+        _tile_ma_analytics(),
         _tile_deal_aggregator(),
         _tile_email_orchestration(),
-        _tile_ma_analytics(),
         _tile_c_suite_skills(),
         _tile_infrastructure(),
     ]
@@ -480,8 +518,8 @@ def render() -> None:
     )
     st.markdown(
         '<div class="gb-page-note">All tiles read live data &mdash; Active '
-        "Deal Pipeline, Deal Aggregator, M&amp;A Analytics, C-Suite &amp; "
-        "Skills, and Infrastructure."
+        "Pipeline Snapshot, M&amp;A Activity, Deal Aggregator, Email Orchestration, "
+        "C-Suite &amp; Skills, and Infrastructure."
         "</div>",
         unsafe_allow_html=True,
     )

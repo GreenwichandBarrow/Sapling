@@ -17,6 +17,8 @@ Skill-local feedback loop per Harrison Wells coaching session 4/30. Pilot skill 
 
 ## Active learnings
 
+- [2026-06-18] Do NOT treat Attio as self-maintaining pipeline truth. Reason: Kay-confirmed pipeline facts plus call/email/Drive evidence are the source truth; pipeline-manager must reconcile Attio and the dashboard snapshot to that truth. Source: G&B Dashboard thread correction on Project Drone / Total Extermination / BTEC.
+
 (All 2026-05-03 entries pruned 2026-05-21 — graduated to global memory + CLAUDE.md, observed 18+ clean runs without violation per lifecycle rule. Originals preserved in git history. Re-add only if violated in next 30 days.)
 
 ## Watching for

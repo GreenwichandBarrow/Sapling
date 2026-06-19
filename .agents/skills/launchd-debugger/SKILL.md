@@ -1,6 +1,6 @@
 ---
 name: launchd-debugger
-description: "Daily 5am ET scan of overnight scheduled job logs PLUS auto-fire on every non-zero scheduled-skill exit. Spawns a debug subagent per failed job to diagnose, attempt safe fixes (re-run, restart, retry transient), or surface to Slack #operations. Suppresses Slack noise via known-incident registry + cross-day dedup. Catches silent failures before the morning briefing."
+description: "Daily 8:20am ET post-morning-skill scan of scheduled job logs PLUS auto-fire on every non-zero scheduled-skill exit. Spawns a debug subagent per failed job to diagnose, attempt safe fixes (re-run, restart, retry transient), or surface to Slack #operations. Suppresses Slack noise via known-incident registry + cross-day dedup. Catches silent failures before the morning briefing."
 archetype: router
 context_budget:
   skill_md: 200
@@ -9,8 +9,8 @@ context_budget:
   sub_agent_limit: 500
 user_invocable: true
 version: v1.2.0
-trigger: "Scheduled daily 5:00am ET via systemd user timer (`launchd-debugger.timer`) + auto-fire by scripts/run-agent-skill.sh on any non-zero scheduled-skill exit (FAILED_LOG_FILE env passes the failed log path)."
-schedule: "Daily 5:00am ET + on-failure trigger"
+trigger: "Scheduled daily 8:20am ET via systemd user timer (`launchd-debugger.timer`) + auto-fire by scripts/run-agent-skill.sh on any non-zero scheduled-skill exit (FAILED_LOG_FILE env passes the failed log path)."
+schedule: "Daily 8:20am ET + on-failure trigger"
 ---
 
 <objective>
@@ -121,7 +121,7 @@ Write `brain/trackers/health/launchd-debugger-{YYYY-MM-DD}.json`:
 ```json
 {
   "date": "2026-05-01",
-  "scan_started_at": "2026-05-01T05:00:00-04:00",
+  "scan_started_at": "2026-05-01T08:20:00-04:00",
   "scan_finished_at": "2026-05-01T05:04:23-04:00",
   "failures_detected": 2,
   "fixes_attempted": 1,
@@ -183,6 +183,10 @@ If the scan returned zero failures, no Slack at all.
 </success_criteria>
 
 <changelog>
+## v1.2.1 — 2026-06-19
+
+**Bridge audit preservation.** Health-monitor RED bridge execution must leave an audit trail and bridge/on-failure artifact entries must survive the later 8:20am daily scan. `run-agent-skill.sh` and legacy `run-skill.sh` run `health-monitor-red-bridge.sh` synchronously enough to log parser/firing output, while the bridge still background-detaches child on-failure runs. The daily headless prompt now preserves existing same-day `results[]` entries instead of overwriting them with a zero-failure daily scan.
+
 ## v1.2.0 — 2026-05-06
 
 **Health-monitor RED bridge.** New trigger path: `scripts/health-monitor-red-bridge.sh` reads the weekly health-monitor markdown artifact at `brain/trackers/health/{TODAY}-health.md` and fans out one `launchd-debugger:on-failure` spawn per RED row in the standard health tables. Yellow rows stay informational. The Trend table is filtered (parser keys on `NF==5` standard rows + `$3 == "RED"` status column; Trend rows have `NF==6` with RED in historical columns). Closes the gap where pipeline/data-integrity REDs (stale deals, missing vault entities, orphan links) sat unaddressed between health-monitor's Friday 12:30 AM fire and Kay seeing them in Friday morning's briefing.
@@ -205,7 +209,7 @@ If the scan returned zero failures, no Slack at all.
 
 ## v1.1.0 — 2026-05-01
 
-**Failure-trigger architecture.** `scripts/run-agent-skill.sh` now auto-fires `launchd-debugger:on-failure` on any non-zero scheduled-skill exit (recursion-guarded — launchd-debugger does not trigger itself). Failures get diagnosed within ~3 minutes of occurring instead of waiting for the 5am daily run. Background-detached so the failed parent skill's exit is not held up.
+**Failure-trigger architecture.** `scripts/run-agent-skill.sh` now auto-fires `launchd-debugger:on-failure` on any non-zero scheduled-skill exit (recursion-guarded — launchd-debugger does not trigger itself). Failures get diagnosed within ~3 minutes of occurring instead of waiting for the 8:20am daily run. Background-detached so the failed parent skill's exit is not held up.
 
 **On-failure mode.** New headless prompt at `.agents/skills/launchd-debugger/headless-on-failure-prompt.md`. Reads `FAILED_LOG_FILE` env var (set by triggering wrapper) → calls `scan_launchd_failures.py --log-file "$FAILED_LOG_FILE"` for single-failure diagnosis. Same FIX/SURFACE allowlist, same suppression filters, faster path (<5min vs daily's <10min). Appends to today's daily artifact if it exists, otherwise creates fresh.
 

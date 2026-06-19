@@ -11,7 +11,7 @@ context_budget:
 
 # Task Tracker Manager
 
-Standing owner of Kay's personal task system. The tracker lives as weekly Google Sheets files with the current week in `STRATEGIC PLANNING` and prior weeks in the `To Do Archive` Drive folder. Each Sunday's `build-week` Drive-copies the prior week's file into a new `TO DO M.D.YY` file in `STRATEGIC PLANNING` (e.g., `TO DO 5.31.26`), then moves the prior file into `To Do Archive` as immutable history. The **current week's sheet ID is resolved dynamically** via `scripts/tracker_sheet_resolver.py` (hybrid pointer + Drive-search fallback; canonical pointer at `~/.config/sapling/current-tracker-sheet.json`; legacy `~/.claude/config/current-tracker-sheet.json` is read fallback only). Use `python3 scripts/tracker_sheet_resolver.py --print-id` to print the current ID for shell consumers; the resolver auto-rebuilds the pointer if missing/stale. Built 2026-04-26 on Excel; migrated to Google Sheets 2026-05-12; weekly-files architecture shipped 2026-05-26. This skill is the operational layer — Chief of Staff calls into it, this skill executes.
+Standing owner of Kay's personal task system. The tracker lives as weekly Google Sheets files with the current week in `STRATEGIC PLANNING` and prior weeks in the `To Do Archive` Drive folder. Each Sunday's `build-week` creates the new `TO DO M.D.YY` file in `STRATEGIC PLANNING` from the blank structural template, then reconciles prior-week content into the new file and moves the prior file into `To Do Archive` as immutable history. The **current week's sheet ID is resolved dynamically** via `scripts/tracker_sheet_resolver.py` (hybrid pointer + Drive-search fallback; canonical pointer at `~/.config/sapling/current-tracker-sheet.json`; legacy `~/.claude/config/current-tracker-sheet.json` is read fallback only). Use `python3 scripts/tracker_sheet_resolver.py --print-id` to print the current ID for shell consumers; the resolver auto-rebuilds the pointer if missing/stale. Built 2026-04-26 on Excel; migrated to Google Sheets 2026-05-12; weekly-files architecture shipped 2026-05-26. Template-first rollover doctrine shipped 2026-06-14 after the `TO DO 6.14.26` repair. This skill is the operational layer — Chief of Staff calls into it, this skill executes.
 
 **Credential prerequisite:** before any manual `gog` / Google-backed task-tracker command, use the 1Password-backed helper:
 
@@ -23,14 +23,16 @@ source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 
 Architecture lives in `memory/project_personal_task_tracker.md`. Update that memory whenever the architecture changes.
 
+**Blank weekly template:** `G&B TO DO Weekly Template - Codex Reference 2026-06-14` (`1EaznKNTweSVRxbXpoEA2CyXLD8P96mWVU0K38-5pMxc`) is the canonical structural source for new weekly files. It should stay empty: preserve tabs, tab order, row/column sizing, merges, formulas, dropdowns, checkboxes, conditional formatting, habit/task/notes frames, and project scaffolding, but not dated labels, task content, completed states, daily-focus text, notes, carryover items, or populated backend rows.
+
 **Sheet ID env override:** Scripts read `TRACKER_SHEET_ID` from env if set, otherwise default to the constant above. Future rebuilds: update the constant + set `TRACKER_SHEET_ID` to the new id.
 
 **Architecture (2026-05-17 — single-To Do-backend + BOTH-surfaces model):** The tracker has ONE `To Do` backend tab plus a `Week` planning tab AND 7 day tabs. The retired tabs (`To Do Long Term`, `Recurring Weekly To Dos`, `Completed To Do`, `_donut_data`) were renamed `_retired_{name}_2026-05-17` + hidden by the migration (final deletion is a later follow-up).
-- **`To Do` tab** — the single capture point for all tasks. Columns: **A=Status, B=Task, C=Type, D=Project, E=Due, F=Notes, G=Horizon**.
+- **`To Do` tab** — the single capture point for all tasks. Columns: **A=Status, B=Task, C=Type, D=Project, E=Due, F=Notes, G=Horizon, H=Day of the Week**.
   - **`Status`** = 3-state native dropdown: `Not Completed` / `On-going` / `Completed`. Replaces the old native checkbox + the archive-todo sweep. **"Done" = `Status == "Completed"`.** Done-row conditional formatting fires on `Status == "Completed"`.
-  - **`Horizon`** = native dropdown: `Short Term`, `Long Term`, `Weekly Recurring Mon`..`Weekly Recurring Sat` (extensible later to Quarterly/Yearly). A **recurring item** = `Horizon` starts with "Weekly Recurring" + `Status == "On-going"`; `build-week` reads these rows directly from `To Do` (NOT a separate tab) and stamps each onto its day. `Long Term`/someday items now live here with `Horizon=Long Term` (no separate tab).
+  - **`Horizon`** = native dropdown: `Short Term`, `Long Term`, `Weekly Recurring Sun`..`Weekly Recurring Sat` (extensible later to Quarterly/Yearly). A **recurring item** = `Horizon` starts with "Weekly Recurring" + `Status == "On-going"`; `build-week` reads these rows directly from `To Do` (NOT a separate tab) and stamps each onto its day. `Long Term`/someday items now live here with `Horizon=Long Term` (no separate tab).
   - Day tabs and the Week tab **KEEP native checkboxes** (Kay's working surfaces, unchanged) — only the `To Do` backend changed to the Status dropdown.
-- **`Week` tab** — the Sunday planning canvas, ALL 7 days visible Sun→Sat, one block per day side by side, **leftmost in the strip (index 0, before `Sun`)**. Week is task-only: habits live on day tabs, not Week. Layout follows the 6.7 reference: row 1 merged title `WEEK OF Jun 7-13`, row 3 `DAILY FOCUS / THEME`, row 6 SUNDAY..SATURDAY day headers, rows 8–22 fifteen visible planning slots/day, first three slots shaded sage, row 24 `notes · ideas · jot`. Builder: `scripts/build_week_tab.py` (idempotent repair; expands grid, resets stale merges/values/formatting, reapplies structure, wires task formulas from day tabs).
+- **`Week` tab** — the Sunday planning canvas, ALL 7 days visible Sun→Sat, one block per day side by side, **leftmost in the strip (index 0, before `Sun`)**. Week is task-only: habits live on day tabs, not Week. Layout follows the 6.7 reference: row 1 merged title `WEEK OF Jun 7-13`, row 3 `DAILY FOCUS / THEME`, row 6 SUNDAY..SATURDAY day headers, rows 8–32 twenty-five visible planning slots/day, first three slots shaded sage, row 34 `notes · ideas · jot`. Builder: `scripts/build_week_tab.py` (idempotent repair; expands grid, resets stale merges/values/formatting, reapplies structure, wires task formulas from day tabs).
 - **7 day tabs** (`Sun Mon Tue Wed Thu Fri Sat`, immediately after `Week`) — the calm, large-font daily *execution* surface. Kay works these Mon–Sat. Per-day layout follows the 6.7 reference: row 1 title, row 2 `DAILY FOCUS / THEME`, row 4 `HABITS` plus `SUPPLEMENTAL`, rows 5–14 primary habits (A/B), supplemental habits (C/D), secondary supplemental habits or goal (E/F), row 16 task headers, rows 17–41 twenty-five priority slots (A=native checkbox · B=Task 17pt · C=Type dropdown · D=Project dropdown · E=Notes), rows 17–19 shaded sage as the top-three priority band, rows 44–51 free-notes block. Builder: `scripts/build_day_tabs.py` (idempotent; expands grid; `--dry-run`).
 
 **Sunday flow (weekly-files architecture, shipped 2026-05-26):**
@@ -43,33 +45,39 @@ python3 /home/ubuntu/projects/Sapling/scripts/task_tracker.py build-week
 Before a live build, `build-week` trusts the canonical pointer by default and checks for an existing `TO DO {Sunday}.YY` file. If one already exists, routine runs refuse to create a duplicate. Use `--refresh-pointer` only for recovery and `--force-new-file` only for explicit sandbox/testing copies.
 
 `cmd_build_week` dispatches to `cmd_build_week_v2` which executes end-to-end:
-1. Resolve PRIOR file via `tracker_sheet_resolver.py` (pointer fast-path, Drive-search fallback)
-2. Reconcile the PRIOR file before copying: run `sync-done-status` so checked day-tab items mark matching `To Do` rows `Completed`, and fold conservative combined day-task edits back into `To Do` (example: a day tab combines several stale "Submit the boys to X" rows into one colon-delimited task). Exact matches are auto-written; ambiguous/fuzzy non-exact completions are skipped or surfaced, never guessed.
-3. Snapshot prior file (Week + 7 day tabs + To Do) to rollback JSON
-4. `gog drive copy` prior → NEW file `TO DO {next-Sun-date}.YY` in `STRATEGIC PLANNING`; after the new file is built successfully, move the PRIOR file to `To Do Archive`
-5. Clear all 7 day tabs on new file (structure/CF/dropdowns/checkbox-validation preserved)
-6. Stamp recurring `To Do` rows (Horizon `Weekly Recurring {day}`) onto new file's day tabs
-7. Cross-file carryover: read PRIOR day-tab incompletes → write to NEW day-tab next-empty-slot (dedup vs recurring)
-8. Wire Week tab cells as in-file formulas (`=Tue!B14` etc.) — live read-only mirror of day tabs
-9. Re-title Week tab + per-day header dates + each day tab's `A1`
-10. Update pointer atomically (LAST step — mid-rollover failures leave prior file canonical)
-11. Trace
+1. Resolve PRIOR file via `tracker_sheet_resolver.py` (pointer fast-path, Drive-search fallback).
+2. Create the NEW file by Drive-copying the blank weekly template into `STRATEGIC PLANNING` with title `TO DO {next-Sun-date}.YY`. Do not copy prior-week layout as the structural source.
+3. Reconcile the PRIOR file before importing content: run `sync-done-status` so checked day-tab items mark matching `To Do` rows `Completed`; ensure every non-empty prior day-tab priority item is represented in the prior `To Do` backend; and fold conservative combined day-task edits back into `To Do` (example: a day tab combines several stale "Submit the boys to X" rows into one colon-delimited task). Exact matches are auto-written; ambiguous/fuzzy non-exact completions are skipped or surfaced, never guessed.
+4. Snapshot prior file (Week + 7 day tabs + To Do) to rollback JSON.
+5. Copy the reconciled prior `To Do` backend into the NEW file's `To Do` tab, with `On-going` rows first, then `Not Completed`, then `Completed` rows sorted/moved to the bottom.
+6. Copy any prior project tracking tabs and real project tabs into the NEW file, preserving the template tab order first and placing copied project tabs after the template-owned tabs. Remove template placeholder/example project tabs such as `PROJECT 1`; they are frame examples, not live project tabs.
+7. Copy prior daily tabs into the NEW file as far-right archive tabs. These are history only; do not use them as the live day tabs.
+8. Populate the NEW Week tab with recurring `To Do` rows (`Horizon = Weekly Recurring {day}`, Status `On-going`) as the baseline. Do not guess non-recurring day placement during `build-week`; Kay assigns `Day of the Week` in column H, then `schedule-from-todo-days` writes those assignments to the Week planning tab.
+9. Leave NEW live day tabs empty except for template structure until Kay approves the Week tab; after approval, `distribute-week` flows the Week tab into the daily tabs.
+10. Re-title Week tab + per-day header dates + each day tab's `A1`.
+11. After the new file is built and validated, move the PRIOR file to `To Do Archive`.
+12. Update pointer atomically (LAST step — mid-rollover failures leave prior file canonical).
+13. Trace
 
-**After build-week completes:** Kay reviews the new file's Week tab (auto-mirror of day tabs via formulas), adjusts items DIRECTLY on day tabs. Week tab auto-updates. No `distribute-week` step needed.
+**After build-week completes:** Kay opens the new file and reviews the `To Do` tab first. She marks items she knows are complete; completed backend rows should sort/move to the bottom of the `To Do` list for review clarity. Kay then assigns items to a day using `Day of the Week` in column H, and `schedule-from-todo-days` places those items onto the matching day block on the Week planning tab. Daily tabs remain empty until Kay approves the Week plan. `build-week` must already have placed recurring `To Do` rows on the Week tab as the baseline. When Kay says the Week tab looks good, run `distribute-week` to flow the approved Week tab across the appropriate daily tabs.
 
-**Alignment doctrine:** Week tab cells are FORMULAS pointing at same-file day tabs. Day tabs = the SINGLE edit surface. Week tab = live read-only view. No drift possible — they're the same data through formula refs.
+**Alignment doctrine:** Week tab is the Sunday planning surface. Day tabs are the daily execution surface after Kay approves the Week tab and `distribute-week` fans the plan out. Do not treat the Week tab as final until Kay explicitly says it looks good.
 
-**Carryover doctrine (weekly-files):** carryover is AUTO-PULLED CROSS-FILE from prior file's day tabs into the new file's day tabs during `build-week` step 6. Read happens BEFORE the new file's day tabs are touched in any other way (only recurring stamps land first, and dedup catches collisions). Prior file is immutable history once rollover completes.
+**Carryover doctrine (weekly-files):** carryover is mediated through the reconciled `To Do` backend and Kay's Sunday review, not by using the prior week as the structural source. Prior day tabs are reviewed first; missing day-tab tasks are added to `To Do`, completed exact matches are marked `Completed`, and consolidated day-tab rows are folded into `To Do` when conservative. The new week receives the reconciled `To Do` backend with completed rows at the bottom. Recurring rows must already be on the Week tab as the baseline; Kay then assigns active items from `To Do` to `Day of the Week` in column H; `schedule-from-todo-days` writes them to the Week planning tab. Week approval/distribution remains available when Kay uses the Week planning surface directly. Prior live day tabs are copied into the current workbook only as far-right archive tabs.
 
 **Prior-week To Do reconciliation doctrine:** before the prior file is copied into the new week, the Sunday build must treat the prior daily tabs as the final working surface for that week. Checked priority slots update exact matching `To Do` backend rows to `Completed`; consolidated daily task text can update task shape in `To Do` when the pattern is conservative and obvious (for example, one colon-delimited task replacing 3+ short rows with the same prefix). This prevents completed items and Kay's daily cleanup edits from being copied forward as stale backend rows.
 
 **Order-of-operations (critical):**
 ```
 cmd_build_week_v2:
-  1. resolve prior → reconcile prior day tabs into prior To Do → snapshot
-  2. drive copy new file into STRATEGIC PLANNING → build new file → archive prior file
-  3. clear new file day tabs → stamp recurring → cross-file carryover from prior
-  4. wire formulas → retitle → update pointer atomically (LAST)
+  1. resolve prior → copy blank template into STRATEGIC PLANNING as new week
+  2. reconcile prior day tabs into prior To Do → snapshot
+  3. copy reconciled To Do + project tabs into new file
+  4. copy prior daily tabs into far-right archive tabs in the new file
+  5. populate recurring rows onto Week only; Day of Week assignments are later written to the Week planning tab via `schedule-from-todo-days`
+  6. Kay reviews To Do, marks completed; completed rows move bottom; Kay finalizes Week
+  7. after Kay approval, distribute Week to daily tabs
+  8. retitle → validate → archive prior file → update pointer atomically (LAST)
 ```
 Steps are atomic within a single `build-week` invocation. No separate human gate between sub-steps. The new file is the live working surface; the prior file is frozen history.
 
@@ -77,13 +85,17 @@ Steps are atomic within a single `build-week` invocation. No separate human gate
 
 **Forbidden pattern (clarified 2026-05-26 after Kay's correction):** do NOT mirror mid-week day-tab edits back to the Week tab via writes. Under the formula architecture this isn't possible (cells are formulas) but the rule remains for legacy mode + any future arch changes. The "rebuild Week tab from current day tabs" anti-pattern is forbidden.
 
-**Cleanliness model:** No row relocation, no checkbox-sweep, no donut/%-display. `To Do` cleanliness is achieved via **saved filter/sort views in the Sheet UI** (e.g. filter `Status != Completed`, sort by `Due`), NOT by moving completed rows to another tab. Completed rows stay in place with `Status=Completed` and render via done-row CF. **Distinction:** *completed* rows are never relocated (filter views handle them); *empty/gap* rows ARE physically removed — see compaction doctrine below.
+**To Do backend sort order:** Sunday build and cleanup pack rows in this order: `On-going` first, `Not Completed` second, `Completed` last. This keeps recurring/permanent operating items visible while still keeping completed rows at the bottom for review.
+
+**Cleanliness model:** No checkbox-sweep, no donut/%-display, and no separate `Completed To Do` tab. Completed rows stay in the `To Do` tab with `Status=Completed` and render via done-row CF, but for Kay's Sunday review they should sort/move to the bottom of the `To Do` list. `On-going` rows stay at the top, followed by `Not Completed`; `Completed` rows stay packed at the bottom. Empty/gap rows ARE physically removed — see compaction doctrine below.
 
 **Empty-row compaction doctrine (codified 2026-05-31 per Kay):** the `To Do` backend tab accumulates GAP rows — leftover `FALSE` checkbox cells from the pre-2026-05-17 checkbox architecture, blank rows, stray empty-checkbox rows. Two mechanisms feed the pile: `append` only ever fills the first empty row (it never removes), and `build-week`'s Drive-copy carries the whole cluttered tab forward every Sunday. Left alone it bloats to hundreds of rows (observed 2026-05-31: 412 rows, only 125 real, 286 gaps). The **`compact-todo`** verb strips every gap row, packs the real rows contiguously from row 2, physically deletes the surplus rows (retaining a ~40-row validated append buffer), and re-applies Status/Type/Project/Horizon dropdown validation (the relative done-row CF survives untouched). It runs automatically inside `build-week` (step 4b, on the freshly-copied new file, before the recurring stamp) so every week starts clean, and is callable on demand. This is NOT completed-row relocation — gap rows hold no data and are pure clutter.
 
 **Pack-to-top doctrine (codified 2026-05-26):** every verb that writes to day-tab or Week-tab priority slots MUST keep items packed at the TOP of the 25-slot range. No leading empty rows, no gaps between items. The 25 slots are a CAPACITY CEILING, not a fixed seating chart. `promote`, `schedule-to-day-slot`, `move-day-item`, `distribute-week`, `sync-done-status`, recurring-stamp, carryover-pull — all use next-empty-slot logic. `--slot N` override allowed but warns if it leaves earlier slots empty. See `memory/feedback_task_tracker_pack_to_top.md`.
 
-**Recurring items (live in `To Do`, no separate tab):** A recurring item is a normal `To Do` row with `Horizon` = `Weekly Recurring {day}` (e.g. `Weekly Recurring Mon`) and `Status = On-going`. The Sunday `build-week` ceremony reads these rows directly from `To Do` and stamps each onto its day's slots after the day-blocks are cleared. Occupied-slot conflicts log + skip (Kay resolves manually). Primary edit path is the `recurring-add` / `recurring-remove` verbs (which write/clear `To Do` rows with the right Horizon); Kay can also set the `Horizon` dropdown directly on any `To Do` row. Known weekly recurring G&B items: Mon — Process payroll, Mon — Process conference registrations, Wed — Niche intel review, Fri — Weekly review (system health + M&A + budget).
+**Prior-day cleanup after carry-forward (codified 2026-06-18 per Kay):** when `carry-forward-day` moves unchecked items from a prior day into the current day during Good Morning or Good Night, it must also clean the source day tab: checked/completed task rows pack to the top, any remaining unchecked rows follow, and blank rows are pushed below. This keeps the prior day readable after moved items are cleared and prevents black/blank gaps from accumulating.
+
+**Recurring items (live in `To Do`, no separate tab):** A recurring item is a normal `To Do` row with `Horizon` = `Weekly Recurring {day}` (e.g. `Weekly Recurring Sun`) and `Status = On-going`. The Sunday `build-week` ceremony reads these rows directly from `To Do` and stamps each onto its day's slots after the day-blocks are cleared. Occupied-slot conflicts log + skip (Kay resolves manually). Primary edit path is the `recurring-add` / `recurring-remove` verbs (which write/clear `To Do` rows with the right Horizon); Kay can also set the `Horizon` dropdown directly on any `To Do` row. Known weekly recurring G&B items: Sun — Create weekly schedule, Mon — Process payroll, Mon — Process conference registrations, Wed — Niche intel review, Fri — Weekly review (system health + M&A + budget).
 
 ## When to invoke
 
@@ -91,10 +103,10 @@ Steps are atomic within a single `build-week` invocation. No separate human gate
 - Kay says "move {todo-row} to {day} slot {N}" (To Do → week tab) → **promote**
 - Kay says "schedule X for Wed" / "X goes on Friday" / direct day-slot drop with no To Do source row → **schedule-to-day-slot**
 - Kay says "sync done items" / "reconcile weekly to To Do" / "the weekly slots aren't matching To Do" → **sync-done-status**
-- Sunday morning as part of `goodmorning` → **build-week** (weekly-files ceremony: reconcile prior day tabs into prior `To Do`, copy prior file into the new current-week file in `STRATEGIC PLANNING`, archive the prior file, clear/rebuild new day tabs, stamp recurring rows, pull carryover, and wire Week as a formula mirror). `archive` is a DEPRECATED alias that delegates here.
+- Sunday morning as part of `goodmorning` → **build-week** (template-first weekly-files ceremony: copy the blank weekly template into `STRATEGIC PLANNING`, reconcile prior day tabs into prior `To Do`, copy the reconciled backend and project tabs into the new file with completed rows at bottom, archive prior day tabs as far-right history tabs, populate recurring rows and explicit day assignments on Week as the baseline, validate, then wait for Kay's Week-tab approval before `distribute-week`). `archive` is a DEPRECATED alias that delegates here.
 - After Kay finalizes the week on the Week tab (Sunday) → **distribute-week** (fans the finalized Week plan OUT into the 7 day tabs; collision-aware, `--dry-run` / `--force` / `--day {X}`)
 - Kay says "move {day} slot N to {day}" / approves a carryover during the Sunday walkthrough → **move-day-item** (`--state completed|incomplete|added|deleted`)
-- `/goodnight` daily closeout calls this skill ONLY for **carry-forward-day** (moves all unchecked/non-empty priority slots from today's day tab to tomorrow's next empty slots; no item-by-item approval needed; `--dry-run` available). Repo closeout, commits, pushes, durable learnings, hooks, and decision traces belong to `goodnight-closeout`.
+- `/goodnight` daily closeout and Good Morning repair runs call this skill for **carry-forward-day** (moves all unchecked/non-empty priority slots from the closeout date's day tab to the following day's next empty slots; no item-by-item approval needed; `--dry-run` available). After moving, it cleans the source day tab so checked/completed rows pack to the top and blanks fall below. If no `--date` is supplied, runs before 4am ET close out the prior calendar day. Repo closeout, commits, pushes, durable learnings, hooks, and decision traces belong to `goodnight-closeout`.
 - Kay says "make X a weekly recurring task on {day}" / "always put Y on Mondays" → **recurring-add**
 - Kay says "stop the recurring task in row N" / "drop the recurring X" → **recurring-remove**
 - Kay says "start a project for X" / "create a Gantt for {project}" → **projects-create-gantt**
@@ -165,7 +177,7 @@ python3 scripts/task_tracker.py build-week [--skip-recurring] [--skip-carryover]
 1. Computes the Sunday-boundary week (`today - (weekday+1)%7` → Sun..Sat).
 2. Snapshots the **Week tab** + `To Do` + all 7 day tabs to one rollback JSON.
 3. Writes ONE combined far-right `archive_{Sun-date}` tab capturing the prior week's **Week tab** verbatim (values-only flat archive). The Week tab is NOT destroyed — it is cleared + re-titled in place; title/headers/labels/dropdowns/CF/checkbox-validation formatting is preserved.
-4. Clears all 7 day-blocks on the Week tab: 15 visible planning slots/day plus notes row; habits are not present on Week.
+4. Clears all 7 day-blocks on the Week tab: 25 visible planning slots/day plus notes row; habits are not present on Week.
 5. Re-titles the Week tab's row-1 title to `WEEK OF {Sun-Sat}` + re-stamps the per-day header-row dates.
 6. **Reads the recurring `To Do` rows** (Horizon starts with "Weekly Recurring" + Status `On-going`) and **stamps each onto the Week tab** for its day (collision-refuse logic — explicit slot pins, blank slots auto-pick first empty, conflicts warn+skip). `--skip-recurring` bypasses.
 6a. **AUTO-PULL incomplete carryover from prior week's day tabs onto the new Week tab (NEW — 2026-05-26 per Kay):**
@@ -412,3 +424,8 @@ When Kay says "add 'draft Calder follow-up' to To Do":
 - Auth failure (gog refresh token revoked): script exits with `task-tracker-manager: gog token export failed`. Fix via `gog auth login` for the kay.s account.
 - Tab name collision on archive: if `archive_{week-label}` already exists from a prior failed rollover, append `_v2`, `_v3`, etc. (already handled in code).
 - Conditional formatting drift: if a manual edit removed a CF rule, run `reformat` — it re-adds the canonical rules. Note that `reformat` is additive only — duplicate rules may stack. Manually delete duplicates in the Sheet UI if they accumulate.
+
+
+### schedule-from-todo-days
+
+Populate the Week planning tab from the `To Do` tab column H `Day of the Week`. Use after Kay reviews/cleans the backend and assigns days. Completed rows and blank-day rows are skipped; task rows are written packed to the top of each Week day block. Daily tabs are not populated until Kay approves the Week plan and asks to distribute.

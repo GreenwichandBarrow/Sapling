@@ -8,8 +8,6 @@ Do not edit by hand. To regenerate: re-run the generator script on the iMac (the
 
 - `calibration-workflow.service` + `calibration-workflow.timer`
 - `conference-discovery.service` + `conference-discovery.timer`
-- `deal-aggregator-afternoon.service` + `deal-aggregator-afternoon.timer`
-- `deal-aggregator-friday.service` + `deal-aggregator-friday.timer`
 - `deal-aggregator.service` + `deal-aggregator.timer`
 - `email-intelligence.service` + `email-intelligence.timer`
 - `external-services-probe.service` + `external-services-probe.timer`

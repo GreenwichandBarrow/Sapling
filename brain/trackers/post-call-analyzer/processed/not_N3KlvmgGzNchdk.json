@@ -1,0 +1,18 @@
+{
+  "id": "not_N3KlvmgGzNchdk",
+  "title": "Sara I Kay",
+  "processed_at": "2026-06-18T22:04:59.910939+00:00",
+  "vault_call_note": "brain/calls/2026-06-18-sara-ttcer-partners.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_N3KlvmgGzNchdk.json",
+  "doc_url": "https://docs.google.com/document/d/12BpID8QGCLTXeWH786DLVUnlNki0AL1CbjRX7I8nn38/edit?usp=drivesdk",
+  "doc_id": "12BpID8QGCLTXeWH786DLVUnlNki0AL1CbjRX7I8nn38",
+  "transcript_doc_url": "https://docs.google.com/document/d/1-XJ3Ihwko5oV7t6GIKoxuH33IR32xZs0fMXhUHlACgo/edit?usp=drivesdk",
+  "transcript_doc_id": "1-XJ3Ihwko5oV7t6GIKoxuH33IR32xZs0fMXhUHlACgo",
+  "attio_notes": {
+    "person:sara@ttcerpartners.com": "45d0978f-cc17-47ab-a731-d55c5d324f6a",
+    "company:ttcerpartners.com": "81c501d6-7607-476f-918c-b9357d868675"
+  },
+  "tasks_appended": 2,
+  "slack_posted": true,
+  "detector": "granola-api-rest"
+}

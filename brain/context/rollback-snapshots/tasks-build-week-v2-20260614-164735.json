@@ -1,0 +1,3006 @@
+{
+  "verb": "build-week-v2",
+  "timestamp": "20260614-164735",
+  "sheet_id": "102bmS-QjW7nhBBKF-sWVKSLvDgKhmdl2CcuZiRJvOdQ",
+  "ranges": {
+    "'Week'!A1:O51": [
+      [
+        "WEEK OF Jun 7-13"
+      ],
+      [],
+      [
+        "DAILY FOCUS / THEME",
+        "",
+        "",
+        "",
+        "Investor Communication",
+        "",
+        "Website Rebuild",
+        "",
+        "New Industry thesis",
+        "",
+        "Road to LOI",
+        "",
+        "Financials"
+      ],
+      [],
+      [],
+      [
+        "",
+        "SUNDAY \u00b7 Jun 7",
+        "",
+        "MONDAY \u00b7 Jun 8",
+        "",
+        "TUESDAY \u00b7 Jun 9",
+        "",
+        "WEDNESDAY \u00b7 Jun 10",
+        "",
+        "THURSDAY \u00b7 Jun 11",
+        "",
+        "FRIDAY \u00b7 Jun 12",
+        "",
+        "SATURDAY \u00b7 Jun 13"
+      ],
+      [],
+      [
+        "",
+        false,
+        "Run Phase 2.5",
+        false,
+        "Process payroll (recurring)",
+        false,
+        "Website ReBuild kcik off",
+        false,
+        "Niche intel review (recurring)",
+        false,
+        "",
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget (recurring)",
+        false,
+        "Phase 3"
+      ],
+      [
+        "",
+        false,
+        "Create weekly schedule",
+        false,
+        "Process conference registrations (recurring)",
+        false,
+        "Follow-up emails to lunch attendees",
+        false,
+        "Change of address (overdue 5/21)",
+        false,
+        "",
+        false,
+        "Decide on office rent cut",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Send all Q1 Updates to investors",
+        false,
+        "Follow-up emails to conference 1:1s",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Send DealsX specialization file",
+        false,
+        "Submit the boys to NY Models",
+        false,
+        "Continue thesis deck",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "DealsX kicks off targeted outreach, share lists",
+        false,
+        "Submit the boys to State Models",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "DealsX linkedin Halts",
+        false,
+        "Submit the boys to Zuri Model and Talent",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Prep for call with Jay",
+        false,
+        "Submit the boys to Teri B",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Email Krupa, Deborah",
+        false,
+        "Submit the boys to Stellar",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Email Hamptons Pest",
+        false,
+        "Create project for French passports",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Contiue Phase 2.5 Codex Migration",
+        false,
+        "Review Mid-Search Summit Market Update takeaways, anchor in playbook update (four-horsemen framework)",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Call Mohela - loan history",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Get reimbursed for Motion",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Contact Greg - Franchise",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Email Becky, contact at NYBB",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Call IRS",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [],
+      [
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot"
+      ],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Prep for call with Jay",
+        false,
+        "",
+        false,
+        "",
+        true,
+        "Thank you Warren",
+        false,
+        "",
+        true,
+        "Change of address (overdue 5/21)"
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Email Krupa, Deborah",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Website ReBuild kcik off"
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Email Hamptons Pest",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Continue thesis deck"
+      ],
+      [
+        "",
+        false,
+        "",
+        true,
+        "Contiue Phase 2.5 Codex Migration",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Thank you: Jay, Laura, Paul, Bob"
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Call Mohela - loan history, iRS",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Follow-up emails to lunch attendees & conferences"
+      ],
+      [
+        "",
+        false,
+        "",
+        true,
+        "Pay Harrison bill",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Follow up: Krupa, Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg"
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Contact Greg - Franchise",
+        false,
+        "",
+        true,
+        "Prep for call with Jay",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Send DealsX specialization file"
+      ]
+    ],
+    "'Sun'!A1:F54": [
+      [
+        "SUNDAY \u00b7 Jun 7"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        true,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        true,
+        "Journal",
+        false,
+        "Omega-3"
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        true,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        true,
+        "Run Phase 2.5"
+      ],
+      [
+        true,
+        "Create weekly schedule"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Mon'!A1:F54": [
+      [
+        "MONDAY \u00b7 Jun 8"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        true,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        true,
+        "Journal",
+        false,
+        "Omega-3"
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        true,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        true,
+        "Process payroll (recurring)"
+      ],
+      [
+        true,
+        "Process conference registrations (recurring)"
+      ],
+      [
+        true,
+        "Send Q1 Updates to investors (5/12)"
+      ],
+      [
+        false,
+        "Send DealsX specialization file"
+      ],
+      [
+        true,
+        "DealsX kicks off targeted outreach"
+      ],
+      [
+        true,
+        "DealsX linkedin Halts"
+      ],
+      [
+        false,
+        "Prep for call with Jay"
+      ],
+      [
+        false,
+        "Email Krupa, Deborah"
+      ],
+      [
+        false,
+        "Email Hamptons Pest"
+      ],
+      [
+        true,
+        "Contiue Phase 2.5 Codex Migration"
+      ],
+      [
+        false,
+        "Call Mohela - loan history, iRS"
+      ],
+      [
+        true,
+        "Pay Harrison bill"
+      ],
+      [
+        false,
+        "Contact Greg - Franchise"
+      ],
+      [
+        false,
+        "Email Becky, contact at NYBB"
+      ],
+      [
+        false,
+        "Thank you Paul"
+      ],
+      [
+        false,
+        "Thank you Bob"
+      ],
+      [
+        false,
+        "Thank you Laura"
+      ],
+      [
+        true,
+        "Thank you Eric"
+      ],
+      [
+        false,
+        "Reply to Carlos"
+      ],
+      [
+        true,
+        "Reply to Matt"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Tue'!A1:F54": [
+      [
+        "TUESDAY \u00b7 Jun 9"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        true,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        true,
+        "Journal",
+        false,
+        "Omega-3"
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        true,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        true,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Wed'!A1:F54": [
+      [
+        "WEDNESDAY \u00b7 Jun 10"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        true,
+        "Sleep 8h",
+        true,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        true,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        true,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        true,
+        "Omega-3"
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        true,
+        "Protein/probiotic shake",
+        true,
+        "Magnesium"
+      ],
+      [
+        true,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        true,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        true,
+        "Prep for call with Jay",
+        "Work",
+        "G&B"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Thu'!A1:F54": [
+      [
+        "THURSDAY \u00b7 Jun 11"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        true,
+        "Water + hygiene",
+        true,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        true,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        true,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        true,
+        "Omega-3"
+      ],
+      [
+        true,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        true,
+        "Protein/probiotic shake",
+        true,
+        "Magnesium"
+      ],
+      [
+        true,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        true,
+        "Email remaining quarterly updates"
+      ],
+      [
+        true,
+        "Niche intel review (recurring)",
+        "Work",
+        "G&B"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        true,
+        "Thank you Warren",
+        "Work",
+        "G&B"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false,
+        "Reply to Carlos",
+        "Work",
+        "G&B"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false,
+        "Make sure we dont get charged by Linkt"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Fri'!A1:F54": [
+      [
+        "FRIDAY \u00b7 Jun 12"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        true,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        true,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        true,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        true,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3"
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        true,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        true,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ],
+      [
+        true,
+        "Weekly review \u2014 system health, M&A activities, budget (recurring)",
+        "Work",
+        "G&B"
+      ],
+      [
+        true,
+        "Decide on office rent cut",
+        "Work",
+        "G&B",
+        "Keep, but emailed Evan about renting desk"
+      ],
+      [
+        true,
+        "Call Mohela - loan history, iRS"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Sat'!A1:F54": [
+      [
+        "SATURDAY \u00b7 Jun 13"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        true,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        true,
+        "Headspace",
+        true,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        true,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3"
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        true,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        true,
+        "Phase 2.5",
+        "Work"
+      ],
+      [
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget (recurring)",
+        "Work",
+        "G&B"
+      ],
+      [
+        true,
+        "Decide on office rent cut"
+      ],
+      [
+        false,
+        "Get reimbursed for Motion"
+      ],
+      [
+        false,
+        "Submit the boys to: NY Models, State Models, Zuri Models, Teri B and Stellar"
+      ],
+      [
+        false,
+        "Pay remaining IRS"
+      ],
+      [
+        true,
+        "Change of address (overdue 5/21)",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Website ReBuild kcik off",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Continue thesis deck",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Thank you: Jay, Laura, Paul, Bob",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Follow-up emails to lunch attendees & conferences",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Follow up: Krupa, Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Send DealsX specialization file",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "DealsX targeted outreach, share lists",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Create project for French passports",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Review Mid-Search Summit Market Update takeaways, anchor in playbook update (four-horsemen framework)",
+        "Home",
+        "G&B"
+      ],
+      [
+        false,
+        "Investigate email-intelligence hang",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Review 3 Website Closers items for Phase 2.5 tuning",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Update Deal Aggregator source roster",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Contact Eric - testing IQ & Sensory, DOT program",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Contact Rebecca - follow up on programming",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Update RCN Plan"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [],
+      [
+        "NOTES"
+      ]
+    ],
+    "'To Do'!A1:G400": [
+      [
+        "Status",
+        "Task",
+        "Type",
+        "Project",
+        "Due",
+        "Notes",
+        "Horizon"
+      ],
+      [
+        "Not Completed",
+        "Order gift for Lois (Jack Hugh Mackay)",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Sign up kids for Kano Martial Arts judo class",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Look into music lessons",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Find new therapist",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Sign up for more Italki lessons",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Fix Kaiden's iPad screen",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "On-going",
+        "Create weekly schedule",
+        "Work",
+        "",
+        "",
+        "Sunday planning",
+        "Weekly Recurring Sun"
+      ],
+      [
+        "Not Completed",
+        "Create travel plans to Paris",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Download & sign into LeapFrog",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Stool test for microbiome",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Get assessment vitamin full make up",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Visit nutritionist",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Look into GLP1",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Set up email alerts on FE International",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Set up email alerts on Benchmark International",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Switch to higher-yield business savings account",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Update bank accounts with new G&B address",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Cancel Linkt by date",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Cancel Motion & Superhuman annual plans (or downgrade to monthly)",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Consider signing up for better bookkeeping",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Verify recipient 501(c)(3) status; board vote + grant approval",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Hold a board meeting + adopt written resolution",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Add Myself Renewed to QuickBooks (nonprofit category)",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Confirm registration with NY Charities Bureau",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Make first personal donation of $1,000",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Confirm nonprofit bank account exists + PayPal Giving Fund integration",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Draft personal giving statement aligned with legacy vision",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Add donation page language + set up donation processor",
+        "Work",
+        "Myself Renewed",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review Kai Grey Ventures renewal",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Create brochure for LF",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Set up meetings with the list of Lenders to build relationships",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Call Gusto about invoice amount",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Submit the boys to: NY Models, State Models, Zuri Models, Teri B and Stellar",
+        "Home",
+        "Home",
+        "",
+        "Combined from To Do rows 34, 35, 36, 37, 38 based on Sat slot 5.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Email Filipe @ Pest Mgmt company",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Re-plan deal aggregator expansion (dedicated session)",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Connect Roberta & Elspeth",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Connect Lily & Suzanne",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Try Claude on website rebuild",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Post-March-budget expense review (find cuts; explore summer desk takeover)",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Deal aggregator email kickoff",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Quarterly update (Q1 FY26 wrap-up)",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review finders fee doc",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Watch video & complete SLD buy back",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Submit new PSLF form",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Fix email-intelligence -> budget-manager auto-invoke trigger gap",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Find Art lawyer contacts",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Reach out to organizer of Art Oct conference",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Bday cards & baby cards",
+        "Home",
+        "",
+        "",
+        "Inbox: brain/inbox/2026-05-12-bday-and-baby-cards.md",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Convert items from kaystrash@yahoo.com to kaystrash23@gmail.com",
+        "Home",
+        "",
+        "",
+        "Inbox: brain/inbox/2026-05-12-yahoo-to-gmail-migration.md. Export old emails, set up forwarding, recreate filters, update third-party accounts.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review AgTech drone teaser when Carlos sends (decline default \u2014 off geography/thesis)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review restaurant inventory mgmt deal when Carlos sends (decline default \u2014 software AI-risk)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Take Miami-PE rollup contacts forward from Carlos \u2014 these are the higher-value asset",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Email women from ACG WOL luncheon - upload cards & notes",
+        "Work",
+        "G&B",
+        "",
+        "Post-conference card processing + outreach",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Pest thesis deck - model how many acquisitions make the play work",
+        "Work",
+        "Pest",
+        "",
+        "Thesis deck math; pairs with deck build (Wed slot 4)",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Scan WPMA directory for NY-based members",
+        "Work",
+        "Pest",
+        "",
+        "Pre-Women in Pest Mgmt week of 5/18; network mining",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Follow up email to Matt",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Complete change of address",
+        "Home",
+        "Myself Renewed",
+        "2026-05-21",
+        "Personal admin",
+        "Short Term"
+      ],
+      [
+        "On-going",
+        "Niche intel review",
+        "Work",
+        "G&B",
+        "",
+        "Walk through niche-intelligence sprint status + new one-pagers",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "On-going",
+        "Process payroll",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "On-going",
+        "Process conference registrations",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "Not Completed",
+        "Follow-up email to lunch attendees",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "Monday send",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Follow-up emails to conference 1:1s",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "Monday send",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Krupa Shah:send follow up email",
+        "Work",
+        "G&B",
+        "",
+        "Reciprocal real-estate-component deal flow; success-fee-only sale-leaseback specialist",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Respond to Becky",
+        "Work",
+        "G&B",
+        "2026-05-18",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Draft Q1 investor update \u2014 purpose-first framing per 5/20 convergence",
+        "Work",
+        "G&B",
+        "2026-05-27",
+        "Top priority for tomorrow per Kay 5/26. Open Loop #1 from 5-20. Court-case psychology trap pattern \u2014 behavior precedes identity change.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Pest 10-company research \u2014 June head-to-head vs DealsX + JJ",
+        "Work",
+        "G&B",
+        "2026-06-30",
+        "Kay 5/26 directive: 10 women-owned NY pest firms, Kay+Claude execute through June. Wind-down DealsX+JJ contingent on outperformance. Seed: 2026-05-15-pest-20-women-owned-west-village.md (7 verified).",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Refactor task-tracker-manager \u2192 weekly sheet files architecture (Phases 1-6)",
+        "Work",
+        "G&B",
+        "2026-05-31",
+        "Plan approved 5/26 \u2014 peppy-leaping-honey.md. Phase 1 (resolver + SheetsClient refactor) ships tonight; Phase 5 first real rollover targets Sun 5/31.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Decide whether to screen AgTech drone opportunity (Carlos to send teaser)",
+        "Search",
+        "Deal Flow",
+        "",
+        "From Carlos Nieto 5/13 mtg. Analysis: https://docs.google.com/document/d/1jTzxubPJMAkr94MBEDVowKRbcer6orS96dByVjwvJEA/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Create project for French passports",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term"
+      ],
+      [
+        "Not Completed",
+        "Plan away with whole Schneider gang",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term"
+      ],
+      [
+        "Not Completed",
+        "Marriage Contract \u2014 add Aramaic",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term"
+      ],
+      [
+        "Not Completed",
+        "Create Wedding Album",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term"
+      ],
+      [
+        "Not Completed",
+        "Get engagement ring fixed",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term"
+      ],
+      [
+        "On-going",
+        "Weekly review \u2014 system health, M&A activities, budget",
+        "Work",
+        "G&B",
+        "",
+        "Walk through health-monitor + M&A analytics dashboard + budget-manager output",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Not Completed",
+        "Send proof-of-funds letter to Sam Curcio (Transworld)",
+        "Outreach",
+        "Intermediary-Sam-Curcio",
+        "2026-05-26",
+        "From Sam Curcio 2026-05-22 mtg. Sam will not run buyer-match alerts until proof-of-funds is on file (broker standard for vetting search funds). Analysis: https://docs.google.com/document/d/1_2Kvd0PrJcnWsPIgtYX2khzfXlc8phhvdEFqCIFFp48/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review Mid-Search Summit Market Update takeaways, anchor in playbook update (four-horsemen framework)",
+        "Strategy",
+        "Conference-Followup",
+        "",
+        "From Mid-Search Summit 2026-05-19 session. Panel covered LOI activity highs, four-horsemen framework, average deal $32M EV at 5.8x. Analysis: https://docs.google.com/document/d/18uF18bsqHmgNW_vEwC3mXsr2x7acaWPrCHAsDUfBUGQ/edit",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Call IRS to confirm Form 8822-B address update",
+        "Home",
+        "Home",
+        "2026-06-15",
+        "IRS business line: 800-829-4933. Ask to confirm business mailing address currently on file for EIN before updating bank address.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Confirm LiveOak payroll transfer coverage",
+        "Work",
+        "G&B",
+        "2026-06-15",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Send DealsX specialization file",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Prep for call with Jay",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Email Krupa, Deborah",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Email Hamptons Pest",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Call Mohela - loan history, iRS",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Contact Greg - Franchise",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Email Becky, contact at NYBB",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Thank you: Jay, Laura, Paul, Bob",
+        "",
+        "",
+        "",
+        "Combined from To Do rows 91, 92, 93 based on Sat slot 10.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Reply to Carlos",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Make sure we dont get charged by Linkt",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Get reimbursed for Motion",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Submit the boys to: NY Models, State Models, Zuri Models, Teri B and Stellar",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Pay remaining IRS",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Website ReBuild kcik off",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Continue thesis deck",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Thank you: Jay, Laura, Paul, Bob",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Follow-up emails to lunch attendees & conferences",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Follow up: Krupa, Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "DealsX targeted outreach, share lists",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Investigate email-intelligence hang",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review 3 Website Closers items for Phase 2.5 tuning",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Update Deal Aggregator source roster",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Contact Eric - testing IQ & Sensory, DOT program",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Contact Rebecca - follow up on programming",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Update RCN Plan",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Renew CitiBike",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "File G&B annual report by June",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Take Osvaldo intro warm when Carlos forwards (peer searcher, same stage)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email Jay & Jason about pest management",
+        "Work",
+        "Pest",
+        "",
+        "Owner/operator pest outreach",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email Carlos Nieto (DCA)",
+        "Work",
+        "G&B",
+        "",
+        "Follow-up post 5/13 ESB meeting",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow up: Carlos Nieto (Digital Capital Advisors)",
+        "Work",
+        "G&B",
+        "",
+        "Post-5/13 Empire State meeting; intermediary. Next-step + verified email in brain/calls/2026-05-13-carlos-nieto-dca.md",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Circle back: Becky Wuest Creavin (Peapack Private) re Matt/XPX",
+        "Work",
+        "G&B",
+        "",
+        "Becky offered to nudge Matt; verified email bcreavin@peapackprivate.com; draft queued Mon AM",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email Matt @ peapack private",
+        "Work",
+        "G&B",
+        "",
+        "No verified email/surname; dependent on Becky circle-back",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Laura Smith (BankUnited) - 2 warm intros",
+        "Work",
+        "G&B",
+        "",
+        "BLOCKED: no verified email. Intros offered: Stephanie (lawyer/super-connector) + a BankUnited colleague. Need verified address first",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Thank-you email to Sam Curcio (Transworld) \u2014 5/22 call",
+        "Work",
+        "G&B",
+        "",
+        "Reframed from 'Respond to Sam' per Kay 5/26.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Reply to Op Ponce (Poza Capital) with logistics/manufacturing deals outside G&B's box + clarify whether his 'self-funded only' framing flexes to traditional structure",
+        "Work",
+        "Partnerships",
+        "",
+        "From Op Ponce 2026-05-26 mtg. Analysis: https://docs.google.com/document/d/1lBz_aMvKV92eGxglwm5AUd7ujfhlN0Zi_hZkuvrzIfc/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Provide new outbound phone number (current number RoboKiller-flagged, killing JJ call connect rates)",
+        "Work",
+        "JJ Ops",
+        "",
+        "From Team TB JJ 2026-05-27 mtg. Analysis: https://docs.google.com/document/d/1nR247tmyZqYL-jwbYUUsE0FVJK-F1E-xFXHOkwDKIXs/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Confirm JJ has set up auto-forwarding from operations@greenwichandbarrow.com to Kay's monitored inbox (voicemail text-back replies silently dropping today)",
+        "Work",
+        "JJ Ops",
+        "",
+        "From Team TB JJ 2026-05-27 mtg. Analysis: https://docs.google.com/document/d/1nR247tmyZqYL-jwbYUUsE0FVJK-F1E-xFXHOkwDKIXs/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Accept Osvaldo intro from Carlos (peer searcher at similar stage)",
+        "Search",
+        "Network",
+        "",
+        "From Carlos Nieto 5/13 mtg. https://docs.google.com/document/d/1jTzxubPJMAkr94MBEDVowKRbcer6orS96dByVjwvJEA/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Schedule June Harrison coaching session at 10 AM (avoid lunch-hour conflict).",
+        "Work",
+        "Admin",
+        "",
+        "From Harrison Wells (Dodo Digital) 2026-05-15 mtg. Analysis: https://docs.google.com/document/d/1pyApBUsJr5EZMGNHW7spXunLJkK_BXdBL58yg-k9JsM/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow up with Sarah De Blasio",
+        "Work",
+        "G&B",
+        "",
+        "(completed 2026-05-17)",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Run budget-manager monthly mode for March P&L",
+        "Work",
+        "G&B",
+        "",
+        "(completed 2026-05-17)",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Reply to Janet Crockett \u2014 confirm year-end 12/31/2025 G&B investment figures (Saltoun annual review)",
+        "Work",
+        "G&B",
+        "2026-05-12",
+        "(completed 2026-05-17) Citrin Cooperman accountants doing annual portfolio review. Inbox: brain/inbox/2026-05-12-saltoun-annual-financial-review.md",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Draft post-call thank-you to Sam Curcio (use canonical Intermediary Email Templates Doc, pull live via bash scripts/fetch-template-doc.sh)",
+        "Outreach",
+        "Intermediary-Sam-Curcio",
+        "",
+        "From Sam Curcio 2026-05-22 mtg. THANK YOU only variant unless a specific listing was named. Schedule for Mon 5/25 AM (no Sunday sends). Analysis: https://docs.google.com/document/d/1_2Kvd0PrJcnWsPIgtYX2khzfXlc8phhvdEFqCIFFp48/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Run Phase 2.5",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Process payroll (recurring)",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Process conference registrations (recurring)",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Send Q1 Updates to investors (5/12)",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "DealsX kicks off targeted outreach",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "DealsX linkedin Halts",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Contiue Phase 2.5 Codex Migration",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Pay Harrison bill",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Thank you Eric",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Reply to Matt",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email remaining quarterly updates",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Niche intel review (recurring)",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Thank you Warren",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Weekly review \u2014 system health, M&A activities, budget (recurring)",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Decide on office rent cut",
+        "Work",
+        "G&B",
+        "",
+        "Keep, but emailed Evan about renting desk",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Phase 2.5",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Change of address (overdue 5/21)",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ]
+    ]
+  }
+}

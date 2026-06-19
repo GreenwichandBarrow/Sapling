@@ -1,6 +1,23 @@
 {
   "processed": [
     {
+      "id": "not_boyGLr8uI00tAe",
+      "title": "Team TB Camilla I Kay",
+      "counterparty": "Camilla de Sanna (Greenwich & Barrow)",
+      "processed_at": "2026-06-16T22:04:12+00:00",
+      "vault_call_note": "brain/calls/2026-06-16-team-tb-camilla-kay.md",
+      "doc_url": "https://docs.google.com/document/d/1UI0w-KPr1Mbtj002aUhA0lZuvyk1tNhMv91ffHtX-HM/edit?usp=drivesdk",
+      "doc_id": "1UI0w-KPr1Mbtj002aUhA0lZuvyk1tNhMv91ffHtX-HM",
+      "attio_notes": {
+        "person_camilla_de_sanna": "c1b68337-c3ae-4574-9434-e18c15951527",
+        "company_greenwich_and_barrow": "c783516c-5c6e-4768-9db1-28f5c9bbe3d7"
+      },
+      "tasks_appended": 6,
+      "slack_posted": true,
+      "detector": "granola-api-rest",
+      "transcript_doc_url": "https://docs.google.com/document/d/1OKNI6yp8fBt2ZG62lQ-DNFLoh4ov2rQILmuPDXY-gnM/edit?usp=drivesdk"
+    },
+    {
       "id": "acd80cd9-a501-4028-80e4-830d37f8b976",
       "title": "AI Friday: Measuring the Real ROI of AI in Software Engineering",
       "processed_at": "2026-05-08T21:04:51+00:00",
@@ -506,7 +523,292 @@
       "detector": "granola-api-rest",
       "transcript_backfilled_at": "2026-06-07T19:48:28+00:00",
       "transcript_doc_url": "https://docs.google.com/document/d/1-4yumIw7YBiZec2_OLixEZ6Pp-EQKLsIT470vHnzerA/edit"
+    },
+    {
+      "id": "not_DwWI3B5j0lUjec",
+      "title": "Harrison I Kay",
+      "counterparty": "Harrison Wells (Dodo Digital)",
+      "processed_at": "2026-06-08T22:04:35+00:00",
+      "vault_call_note": "brain/calls/2026-06-08-harrison-wells-codex-vps-setup.md",
+      "doc_url": "https://docs.google.com/document/d/1ktj2iHBf9wcWlShgefZ1KzjKHCUXa5xf8HYGcUANuKY/edit?usp=drivesdk",
+      "doc_id": "1ktj2iHBf9wcWlShgefZ1KzjKHCUXa5xf8HYGcUANuKY",
+      "transcript_doc_url": "https://docs.google.com/document/d/1Twha0my-oN71wX6wr_BWC7Heal5S_UQasSUPzNyjQEE/edit?usp=drivesdk",
+      "transcript_doc_id": "1Twha0my-oN71wX6wr_BWC7Heal5S_UQasSUPzNyjQEE",
+      "attio_notes": {
+        "person_harrison_wells": "7041d857-ad13-4c81-98ff-e07062644cf1",
+        "company_dodo_digital": "32014a2f-e427-4f91-9dd3-11f30eb2a58e"
+      },
+      "tasks_staged": 3,
+      "pending_tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_DwWI3B5j0lUjec.json",
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_18ViwPvhPgSkJu",
+      "title": "Jay Davis <> Kay Schneider",
+      "counterparty": "Jay Davis (The Nashton Company)",
+      "processed_at": "2026-06-09T17:04:13.650963Z",
+      "vault_call_note": "brain/calls/2026-06-09-jay-davis.md",
+      "doc_url": "https://docs.google.com/document/d/1pZn5Yz3yDAl0KBIbPXHwzMGhMNAlUGtv0b6kojYgZ40/edit",
+      "transcript_doc_url": "https://docs.google.com/document/d/12r38WLanjdrDCQAQg7Es2Oz-FxuijQBFO6wavA1lf3E/edit",
+      "granola_url": "https://notes.granola.ai/d/025e8420-a2f8-45b7-b2cb-8e9eaeb6d7ef",
+      "attio_notes": {
+        "person_jay_davis": "416bf418-806a-448e-b324-887f6f4616a9",
+        "company_the_nashton_company": "35d51f14-03a6-4f55-bb91-cfc4753212a9"
+      },
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_18ViwPvhPgSkJu.json",
+      "tasks_appended": 3,
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_x7rczlsbmnDIHG",
+      "title": "Kay/Warren- Art in Search",
+      "counterparty": "Warren Chan (Anacapa Partners)",
+      "processed_at": "2026-06-09T22:05:56Z",
+      "vault_call_note": "brain/calls/2026-06-09-warren-chan-art-in-search.md",
+      "doc_url": "https://docs.google.com/document/d/1SE1UxatwCKk05zbYqmnxTpT4BjX8kEbf_zc0tkvXKf4/edit?usp=drivesdk",
+      "doc_id": "1SE1UxatwCKk05zbYqmnxTpT4BjX8kEbf_zc0tkvXKf4",
+      "transcript_doc_url": "https://docs.google.com/document/d/1c0L5uzSEfPkC7jZwfBUKKThEV5c624cCGoyAMPYVPcg/edit?usp=drivesdk",
+      "transcript_doc_id": "1c0L5uzSEfPkC7jZwfBUKKThEV5c624cCGoyAMPYVPcg",
+      "granola_url": "https://notes.granola.ai/d/66eeea01-0600-4b60-a62f-4684f93d3cb1",
+      "attio_notes": {
+        "person_warren_chan": "b7ad9651-581f-4894-b674-3915fc08968d",
+        "company_anacapa_partners": "997e2224-8729-42e6-9045-294c59e1e585"
+      },
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_x7rczlsbmnDIHG.json",
+      "tasks_appended": 3,
+      "transcript_failed": true,
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_8zOVYiJQpNxwD2",
+      "title": "Team TB Camilla I Kay",
+      "counterparty": "Camilla de Sanna (Greenwich & Barrow)",
+      "processed_at": "2026-06-11T17:05:14Z",
+      "vault_call_note": "brain/calls/2026-06-11-team-tb-camilla-kay.md",
+      "doc_url": "https://docs.google.com/document/d/1oGsVfsxX_sBwmfgOKn5KzVWZZD8ovt9eCYV97MTpR7w/edit?usp=drivesdk",
+      "doc_id": "1oGsVfsxX_sBwmfgOKn5KzVWZZD8ovt9eCYV97MTpR7w",
+      "transcript_doc_url": "https://docs.google.com/document/d/1aSTwXFFGjcXR3c-EbpePMnpJxxTuK536-sl1bv7DPCA/edit?usp=drivesdk",
+      "transcript_doc_id": "1aSTwXFFGjcXR3c-EbpePMnpJxxTuK536-sl1bv7DPCA",
+      "granola_url": "https://notes.granola.ai/d/0b5358c3-9a12-498a-bd16-4d88fb2f8296",
+      "attio_notes": {
+        "person_camilla_de_sanna": "52146e57-68cf-4681-927c-9c2ddcdc7ea3",
+        "company_greenwich_and_barrow": "1f3d7760-bafa-4f9e-996e-448dbff55ae9"
+      },
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_8zOVYiJQpNxwD2.json",
+      "tasks_appended": 5,
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_8yRDupDFjs2V59",
+      "title": "Laura Smith / Randi Mason search fund lunch",
+      "processed_at": "2026-06-11T22:06:09Z",
+      "vault_call_note": "brain/calls/2026-06-11-laura-smith-randi-mason-search-fund-lunch.md",
+      "doc_url": "https://docs.google.com/document/d/1ICeH5OKWT3gNjmjWm9P8eKQb9x5MD2ZWXqs1u5exWAc/edit?usp=drivesdk",
+      "doc_id": "1ICeH5OKWT3gNjmjWm9P8eKQb9x5MD2ZWXqs1u5exWAc",
+      "transcript_doc_url": "https://docs.google.com/document/d/11I3ZkQ7Ta52pGvfr2NtXhVgdTr0YJe3LhL6HF-pPfSs/edit?usp=drivesdk",
+      "transcript_doc_id": "11I3ZkQ7Ta52pGvfr2NtXhVgdTr0YJe3LhL6HF-pPfSs",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_8yRDupDFjs2V59.json",
+      "tasks_appended": 3,
+      "attio_records": {
+        "person_laura_smith": "4c0cfff0-139c-48a5-bfbf-5110e7a37e27",
+        "person_randi_mason": "9058c9cd-903e-4cc0-92ae-ffdc15a62a87",
+        "company_bankunited": "27f8ac3f-3086-4c8d-9761-ccea202be14e",
+        "company_morrison_cohen": "a62feb53-ea17-4f87-b4d0-f06027a779e5"
+      },
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_CRJXGc5U8RzeVd",
+      "title": "Phone call with +16466415423",
+      "processed_at": "2026-06-15T22:05:36Z",
+      "vault_call_note": "brain/calls/2026-06-15-total-extermination.md",
+      "doc_url": "https://docs.google.com/document/d/1hG52O_6CnYfQqP1uQ0-boubmVUdkN_BMz2XIDiQfsLo/edit",
+      "transcript_doc_url": "https://docs.google.com/document/d/1eokNoKv2h9qQ59bu4_UGIUV-Jy4q2FPgrkTvVuKdP4o/edit?usp=drivesdk",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_CRJXGc5U8RzeVd.json",
+      "granola_url": "https://notes.granola.ai/d/cb24053f-62e0-4850-9ae3-a7ca49ef6397",
+      "attio_failed": true,
+      "attio_skip_reason": "no email addresses in note metadata; no Attio match attempted",
+      "slack_posted": true,
+      "slack_failed": false,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_g9Bxw2JxAkstpb",
+      "call_id": "9f6e1711-1889-414d-8867-59e5e47807a3",
+      "title": "You're Invited:  Mind Your Business & Legacy | Smart Steps for Business Owners",
+      "processed_at": "2026-06-16T17:11:00Z",
+      "vault_call_note": "brain/calls/2026-06-16-mind-your-business-legacy.md",
+      "doc_url": "https://docs.google.com/document/d/13kamcvQijE5BKnB_m6z-eYJYBF84mDlnamDBdzKNSvY/edit?usp=drivesdk",
+      "doc_id": "13kamcvQijE5BKnB_m6z-eYJYBF84mDlnamDBdzKNSvY",
+      "transcript_doc_url": "https://docs.google.com/document/d/13oQKTQMXURnhzM2EwycyEI-st_XMpnP6pTCJlTchmjw/edit?usp=drivesdk",
+      "transcript_doc_id": "13oQKTQMXURnhzM2EwycyEI-st_XMpnP6pTCJlTchmjw",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_g9Bxw2JxAkstpb.json",
+      "tasks_appended": 2,
+      "attio_failed": true,
+      "attio_skip_reason": "public owner-education session with no external attendee emails to match",
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_0EISaRxYCYfRlR",
+      "title": "Melissa I Kay",
+      "counterparty": "Melissa",
+      "processed_at": "2026-06-17T17:06:38.637260+00:00",
+      "vault_call_note": "brain/calls/2026-06-17-melissa-rosenblatt.md",
+      "doc_url": "https://docs.google.com/document/d/15R3azL4YPdy2-05PjCfR-3aDskx577RBiliJG-eawxg/edit?usp=drivesdk",
+      "doc_id": "15R3azL4YPdy2-05PjCfR-3aDskx577RBiliJG-eawxg",
+      "transcript_doc_url": "https://docs.google.com/document/d/1J7t8F_oD7LPJQbbg6C4d69Mazf9blSnZdq_2D7bCSP4/edit?usp=drivesdk",
+      "transcript_doc_id": "1J7t8F_oD7LPJQbbg6C4d69Mazf9blSnZdq_2D7bCSP4",
+      "attio_notes": {
+        "people": [
+          "4b5fa1d4-3a8b-4880-acac-6dd0e0d69808"
+        ],
+        "companies": [
+          "98aaac90-42ca-4c6d-9f10-8663159322c7"
+        ]
+      },
+      "tasks_appended": 5,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_0EISaRxYCYfRlR.json",
+      "slack_posted": true,
+      "detector": "granola-api-rest",
+      "queued_at": "2026-06-17T13:00:45-04:00"
+    },
+    {
+      "id": "not_ACOMOaScZbAPiV",
+      "title": "Richard I Kay",
+      "counterparty": "Richard",
+      "processed_at": "2026-06-17T17:06:45.103317+00:00",
+      "vault_call_note": "brain/calls/2026-06-17-richard-stony-hill-advisors.md",
+      "doc_url": "https://docs.google.com/document/d/1g0XTKOuc3B8hQrYJ-XQpklNo9Rk28MeG7iYbGQIQOC8/edit?usp=drivesdk",
+      "doc_id": "1g0XTKOuc3B8hQrYJ-XQpklNo9Rk28MeG7iYbGQIQOC8",
+      "transcript_doc_url": "https://docs.google.com/document/d/1nfIigBp62uINt--iUapN_yIUQRa7-3T4Lb4txIDnKjs/edit?usp=drivesdk",
+      "transcript_doc_id": "1nfIigBp62uINt--iUapN_yIUQRa7-3T4Lb4txIDnKjs",
+      "attio_notes": {},
+      "tasks_appended": 3,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_ACOMOaScZbAPiV.json",
+      "slack_posted": true,
+      "detector": "granola-api-rest",
+      "queued_at": "2026-06-17T13:00:45-04:00",
+      "attio_failed": true
+    },
+    {
+      "id": "not_GCw1aPPMdm0VFf",
+      "title": "G&B Industry Brainstorm",
+      "counterparty": "Guillermo",
+      "processed_at": "2026-06-17T17:06:53.873036+00:00",
+      "vault_call_note": "brain/calls/2026-06-17-guillermo-lavergne-brainstorm.md",
+      "doc_url": "https://docs.google.com/document/d/1vH8YOF_TDbIRVBGvS1kCL8UKi-r6en9SkQajR12u4ZM/edit?usp=drivesdk",
+      "doc_id": "1vH8YOF_TDbIRVBGvS1kCL8UKi-r6en9SkQajR12u4ZM",
+      "transcript_doc_url": "https://docs.google.com/document/d/1bCBV0I1axi7b0v7y885XLo3d0LwDr1wvuaYPldO5TJQ/edit?usp=drivesdk",
+      "transcript_doc_id": "1bCBV0I1axi7b0v7y885XLo3d0LwDr1wvuaYPldO5TJQ",
+      "attio_notes": {
+        "people": [
+          "2b613b57-537c-4cef-8fc5-e053b51d7a98"
+        ],
+        "companies": [
+          "98e2059b-756c-4337-9883-d2ae9b5241d4"
+        ]
+      },
+      "tasks_appended": 3,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_GCw1aPPMdm0VFf.json",
+      "slack_posted": true,
+      "detector": "granola-api-rest",
+      "queued_at": "2026-06-17T13:00:45-04:00"
+    },
+    {
+      "id": "not_JQ0MU06WuNPXNd",
+      "doc_url": "https://docs.google.com/document/d/1jZvSw9obc_tvJwNezDSN0pgFTiLgPkYI5yKIlTtCSaQ/edit?usp=drivesdk",
+      "transcript_doc_url": "https://docs.google.com/document/d/1VGktuH__oDD2QFJXtjtFoMsGHtvTZcKALcvwQOTqPV4/edit?usp=drivesdk",
+      "vault_call_note": "brain/calls/2026-06-17-wsn-group.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_JQ0MU06WuNPXNd.json",
+      "processed_at": "2026-06-17T22:06:45.771246+00:00",
+      "slack_posted": true
+    },
+    {
+      "id": "not_sdLuO59ZrULcvz",
+      "doc_url": "https://docs.google.com/document/d/1WC7K6oS0d_7zwKIEps4UdmDo07z-2Qo5p-FPoCwG--A/edit?usp=drivesdk",
+      "transcript_doc_url": "https://docs.google.com/document/d/1kE54DTfBcP3PcM_kmfT758_uJShsMhqSQKL9jK_iwLw/edit?usp=drivesdk",
+      "vault_call_note": "brain/calls/2026-06-17-carlos-in3o-checkin.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_sdLuO59ZrULcvz.json",
+      "processed_at": "2026-06-17T22:06:45.771246+00:00",
+      "slack_posted": true
+    },
+    {
+      "id": "not_N3KlvmgGzNchdk",
+      "title": "Sara I Kay",
+      "processed_at": "2026-06-18T22:04:59.910939+00:00",
+      "vault_call_note": "brain/calls/2026-06-18-sara-ttcer-partners.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_N3KlvmgGzNchdk.json",
+      "doc_url": "https://docs.google.com/document/d/12BpID8QGCLTXeWH786DLVUnlNki0AL1CbjRX7I8nn38/edit?usp=drivesdk",
+      "doc_id": "12BpID8QGCLTXeWH786DLVUnlNki0AL1CbjRX7I8nn38",
+      "transcript_doc_url": "https://docs.google.com/document/d/1-XJ3Ihwko5oV7t6GIKoxuH33IR32xZs0fMXhUHlACgo/edit?usp=drivesdk",
+      "transcript_doc_id": "1-XJ3Ihwko5oV7t6GIKoxuH33IR32xZs0fMXhUHlACgo",
+      "attio_notes": {
+        "person:sara@ttcerpartners.com": "45d0978f-cc17-47ab-a731-d55c5d324f6a",
+        "company:ttcerpartners.com": "81c501d6-7607-476f-918c-b9357d868675"
+      },
+      "tasks_appended": 2,
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_SsyewDCTVlVDeY",
+      "title": "Luka I Kay",
+      "processed_at": "2026-06-18T22:05:20.807660+00:00",
+      "vault_call_note": "brain/calls/2026-06-18-luka-pest-thesis.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_SsyewDCTVlVDeY.json",
+      "doc_url": "https://docs.google.com/document/d/171pJo0O7Agk23yD251LZdOyCdxBDpubDDF1yOHhwGYY/edit?usp=drivesdk",
+      "doc_id": "171pJo0O7Agk23yD251LZdOyCdxBDpubDDF1yOHhwGYY",
+      "transcript_doc_url": "https://docs.google.com/document/d/1e1F2tK2x29DUF1Xc2uNkh0lRpzJLBtIQ0RH-IUSxrao/edit?usp=drivesdk",
+      "transcript_doc_id": "1e1F2tK2x29DUF1Xc2uNkh0lRpzJLBtIQ0RH-IUSxrao",
+      "attio_notes": {
+        "person:luka@esteliopartners.com": "1b839ec5-7509-4704-bab3-c3b18623003c",
+        "person:luka@accesscorp.com": "b0919884-e7fd-4b6d-93a4-7bdf47ea0ff4",
+        "company:esteliopartners.com": "c0ba96ca-c43d-4221-8477-b6510934d5e1",
+        "company:accesscorp.com": "3a18061b-d159-4eda-9c48-0603360ac49b"
+      },
+      "tasks_appended": 2,
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_WZWDP8r2HnrW3n",
+      "title": "Jeff I Kay Mtg",
+      "processed_at": "2026-06-18T22:05:35.185793+00:00",
+      "vault_call_note": "brain/calls/2026-06-18-jeff-pest-opportunity.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_WZWDP8r2HnrW3n.json",
+      "doc_url": "https://docs.google.com/document/d/1EWjY42z4aMqdcjrHX8BMOWw7Z3T5bpNvu3HWl9XNgyM/edit?usp=drivesdk",
+      "doc_id": "1EWjY42z4aMqdcjrHX8BMOWw7Z3T5bpNvu3HWl9XNgyM",
+      "transcript_doc_url": "https://docs.google.com/document/d/1Vm8lYCyf_d5itO9Yr4L-VUxGHzP7LmgHaATeu98XMkc/edit?usp=drivesdk",
+      "transcript_doc_id": "1Vm8lYCyf_d5itO9Yr4L-VUxGHzP7LmgHaATeu98XMkc",
+      "attio_notes": {
+        "person:jeffstevens@anacapapartners.com": "cb24ea9c-8a39-4ce0-a081-b0e03c9ba5c9",
+        "company:anacapapartners.com": "997e2224-8729-42e6-9045-294c59e1e585"
+      },
+      "tasks_appended": 2,
+      "slack_posted": true,
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_0KnxAbG8jAIVTt",
+      "title": "Understanding a Quality of Earnings Analysis: What's Included and Why",
+      "processed_at": "2026-06-19T17:04:58Z",
+      "doc_url": "https://docs.google.com/document/d/1TPM1zOUnM0MrhDnXj1IEif5IbI1UJucM45pW8KN5S8E/edit?usp=drivesdk",
+      "transcript_doc_url": "https://docs.google.com/document/d/15BbbODz2pLE8Cp8f2X2QaHJXQbsFAXGsvNzStpCkrSY/edit?usp=drivesdk",
+      "vault_call_note": "brain/calls/2026-06-18-acquiring-minds-qoe-webinar.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_0KnxAbG8jAIVTt.json",
+      "slack_posted": true,
+      "attio_failed": true,
+      "attio_skip_reason": "no external attendees; educational webinar",
+      "attio_notes": {},
+      "task_count": 2,
+      "queue_file": "brain/trackers/post-call-analyzer/queue/not_0KnxAbG8jAIVTt.json",
+      "processed_archive": "brain/trackers/post-call-analyzer/processed/not_0KnxAbG8jAIVTt.json"
     }
-  ],
-  "last_updated": "2026-06-07T19:51:04+00:00"
+  ]
 }

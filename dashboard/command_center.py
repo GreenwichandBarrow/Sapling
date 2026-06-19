@@ -60,8 +60,8 @@ _PAGE_RENDERERS = {
     "dashboard": (dashboard_landing.render, "Dashboard"),
     "deal-aggregator": (deal_aggregator.render, "Deal Aggregator"),
     "email-orchestration": (email_orchestration.render, "Email Orchestration"),
-    "deal-pipeline": (deal_pipeline.render, "Active Deal Pipeline"),
-    "ma-analytics": (ma_analytics.render, "M&A Analytics"),
+    "deal-pipeline": (deal_pipeline.render, "Pipeline"),
+    "ma-analytics": (ma_analytics.render, "M&A Activity"),
     "c-suite-skills": (c_suite_skills.render, "C-Suite & Skills"),
     "infrastructure": (infrastructure.render, "Infrastructure"),
 }
@@ -101,12 +101,13 @@ def _render_back_home() -> None:
     )
 
 
-def _render_topbar(title: str) -> None:
+def _render_topbar(title: str, refresh_label: str | None = None) -> None:
     # Kay reads "Last updated" to judge snapshot freshness — it must be ET,
     # not the VPS host timezone (UTC), or a fresh dashboard looks stale.
     now = datetime.now(ZoneInfo("America/New_York"))
     date_str = now.strftime("%A, %B %-d, %Y")
-    updated_str = now.strftime("%H:%M:%S ET")
+    updated_str = now.strftime("%-I:%M:%S %p ET")
+    cadence = refresh_label or f"Refreshing every {REFRESH_SECONDS}s"
     st.markdown(
         f"""
         <div class="gb-topbar">
@@ -114,7 +115,7 @@ def _render_topbar(title: str) -> None:
           <div class="meta">
             {escape(date_str)}
             <span class="sep">&middot;</span>
-            Refreshing every {REFRESH_SECONDS}s
+            {escape(cadence)}
             <span class="sep">&middot;</span>
             Last updated {escape(updated_str)}
           </div>
@@ -159,7 +160,8 @@ def main() -> None:
     is_dashboard = nav is pages_by_url["dashboard"]
     if not is_dashboard:
         _render_back_home()
-    _render_topbar(nav.title)
+    refresh_label = "Daily morning refresh" if nav is pages_by_url["email-orchestration"] else None
+    _render_topbar(nav.title, refresh_label)
     _render_staleness_banner()
 
     nav.run()

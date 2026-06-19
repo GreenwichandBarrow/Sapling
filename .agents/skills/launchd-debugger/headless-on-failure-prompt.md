@@ -120,7 +120,7 @@ The wrapper's POST_RUN_CHECK runs `scripts/validate_launchd_debugger_integrity.p
 
 ## Why this prompt exists
 
-The daily 5am scan catches everything that failed overnight, but a job that fails at 23:30 ET has 5.5 hours of staleness before the daily run picks it up — long enough that Kay's morning briefing reads stale state. v1.1 added auto-fire-on-failure so failures get diagnosed immediately, and this prompt is the single-failure-focused variant that runs in <5min instead of the daily's <10min budget.
+The daily 8:20am scan catches overnight and morning-skill failures, but a job that fails at 23:30 ET has 5.5 hours of staleness before the daily run picks it up — long enough that Kay's morning briefing can read stale state if she comes online early. v1.1 added auto-fire-on-failure so failures get diagnosed immediately, and this prompt is the single-failure-focused variant that runs in <5min instead of the daily <10min budget.
 
 ## When triggered from health-monitor RED bridge
 

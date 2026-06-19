@@ -1,0 +1,28 @@
+{
+  "fetched_at": "2026-06-19T17:00:44.556221-04:00",
+  "models": [
+    {
+      "model": "unknown",
+      "tokens": 870948320
+    }
+  ],
+  "month": {
+    "cached_input_tokens": 783084544,
+    "input_tokens": 866615099,
+    "output_tokens": 4333221,
+    "reasoning_output_tokens": 1727082,
+    "total_tokens": 870948320
+  },
+  "period_end": "2026-06-19T17:00:44.556221-04:00",
+  "period_start": "2026-06-01T00:00:00-04:00",
+  "scanned_files": 270,
+  "sessions_with_usage": 266,
+  "source": "local_codex_session_usage_metadata",
+  "today": {
+    "cached_input_tokens": 331373184,
+    "input_tokens": 374788185,
+    "output_tokens": 1206168,
+    "reasoning_output_tokens": 328425,
+    "total_tokens": 375994353
+  }
+}

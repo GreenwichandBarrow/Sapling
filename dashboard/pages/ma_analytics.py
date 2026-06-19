@@ -1,10 +1,10 @@
-"""M&A Analytics page — activity rollups across deal flow + outreach + ops.
+"""M&A Activity page — weekly sourcing goals and source/outcome rollups.
 
 Replaces the Weekly Activity Tracker Google Sheet (the spreadsheet Kay used to
 maintain manually). Five zones — three live, two DealsX-deferred until that
 integration ships:
 
-    Zone 1: Deal Flow Headline       LIVE  — Attio snapshot + brain/calls/
+    Zone 1: Deal Flow Outcomes       LIVE  — Attio snapshot + brain/calls/
     Zone 2: Outbound Funnel          DEFERRED — pending DealsX integration
     Zone 2.5: AI Response Categories DEFERRED — pending DealsX integration
     Zone 3: Channel Performance      PARTIAL — live rows + DealsX-deferred row
@@ -98,12 +98,12 @@ def _goal_color(goal: WeeklyGoalMetric) -> str:
 
 
 def _goal_sub(goal: WeeklyGoalMetric) -> str:
-    target = f"goal {goal.target_min}-{goal.target_max}/week"
+    target = f"goal {goal.target_min}-{goal.target_max}/wk"
     if goal.status == "on_track":
-        return f"on track · {target}"
+        return f"{target} · on track"
     if goal.status == "below":
-        return f"below goal · {target}"
-    return f"above target · {target}"
+        return f"{target} · below goal"
+    return f"{target} · check"
 
 
 def _render_goal_tile(goal: WeeklyGoalMetric) -> str:
@@ -199,12 +199,7 @@ def _render_zone_1(ma: MAAnalytics) -> str:
     labels = ["Quality conversations" if t.label == "Owner conversations" else t.label for t in ma.deal_flow_tiles]
     week_values = [str(t.value) for t in ma.deal_flow_tiles]
 
-    snapshot = load_pipeline(scope="full")
-    ltd_values = ["—", "—", "—", "—", "—"]
-    if snapshot is not None and ltd_values:
-        # True LTD stage-history is a plumbing task. Closed post-NDA is the one
-        # durable LTD outcome currently present in the snapshot contract.
-        ltd_values[-1] = str(snapshot.closed_count_post_nda)
+    ltd_values = [str(v) for v in (ma.deal_flow_ltd_values or ["—", "—", "—", "—", "—"])]
 
     header_cells = "".join(f'<th class="right">{escape(label)}</th>' for label in labels)
     week_cells = "".join(f'<td class="right">{escape(v)}</td>' for v in week_values)
@@ -220,7 +215,7 @@ def _render_zone_1(ma: MAAnalytics) -> str:
         </thead>
         <tbody>
         <tr><td><div class="gb-ch-name">This week</div></td>{week_cells}</tr>
-        <tr><td><div class="gb-ch-name">LTD</div><div class="gb-ch-desc">stage-history backfill pending</div></td>{ltd_cells}</tr>
+        <tr><td><div class="gb-ch-name">LTD</div></td>{ltd_cells}</tr>
         </tbody>
         </table>
         """
@@ -572,7 +567,12 @@ def _render_zone_6(ma: MAAnalytics) -> str:
 
 
 def _render_source_row(row: SourceMixRow) -> str:
-    pill = '<span class="gb-ch-pill">Pending</span>' if row.status == "pending" else escape(row.financials_received)
+    if row.status == "pending":
+        pill = '<span class="gb-ch-pill">Pending</span>'
+    elif row.status == "needs_map":
+        pill = '<span class="gb-ch-pill">Source map needed</span>'
+    else:
+        pill = escape(row.financials_received)
     return dedent(
         f"""
         <tr>
@@ -592,10 +592,10 @@ def _render_source_mix(ma: MAAnalytics) -> str:
         """
         <div class="gb-zone-head">
         <div>
-        <div class="gb-zone-label">Lead Source Mix · LTD</div>
-        <div class="gb-zone-sublabel">Where real deal starts are coming from over the life of the search · financials are the key conversion point</div>
+        <div class="gb-zone-label">Lead Source Mix · Since Feb 2025</div>
+        <div class="gb-zone-sublabel">Directional source counts from search start · financials-by-source needs Attio source mapping</div>
         </div>
-        <div class="gb-zone-meta">source attribution</div>
+        <div class="gb-zone-meta">source attribution draft</div>
         </div>
         """
     ).strip()
@@ -606,8 +606,8 @@ def _render_source_mix(ma: MAAnalytics) -> str:
         <thead>
         <tr>
         <th>Source</th>
-        <th class="right">LTD</th>
-        <th class="right">Financials received</th>
+        <th class="right">Since Feb 2025</th>
+        <th class="right">Financials by source</th>
         </tr>
         </thead>
         <tbody>{rows}</tbody>
@@ -629,7 +629,6 @@ def render() -> None:
 
     st.markdown(_render_filter_bar(ma), unsafe_allow_html=True)
     st.markdown(_render_zone_goals(ma), unsafe_allow_html=True)
-    st.markdown(_render_pipeline_snapshot(), unsafe_allow_html=True)
     st.markdown(_render_zone_1(ma), unsafe_allow_html=True)
     st.markdown(_render_source_mix(ma), unsafe_allow_html=True)
 

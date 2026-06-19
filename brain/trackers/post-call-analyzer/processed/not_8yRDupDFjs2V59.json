@@ -1,0 +1,20 @@
+{
+  "id": "not_8yRDupDFjs2V59",
+  "title": "Laura Smith / Randi Mason search fund lunch",
+  "processed_at": "2026-06-11T22:06:09Z",
+  "vault_call_note": "brain/calls/2026-06-11-laura-smith-randi-mason-search-fund-lunch.md",
+  "doc_url": "https://docs.google.com/document/d/1ICeH5OKWT3gNjmjWm9P8eKQb9x5MD2ZWXqs1u5exWAc/edit?usp=drivesdk",
+  "doc_id": "1ICeH5OKWT3gNjmjWm9P8eKQb9x5MD2ZWXqs1u5exWAc",
+  "transcript_doc_url": "https://docs.google.com/document/d/11I3ZkQ7Ta52pGvfr2NtXhVgdTr0YJe3LhL6HF-pPfSs/edit?usp=drivesdk",
+  "transcript_doc_id": "11I3ZkQ7Ta52pGvfr2NtXhVgdTr0YJe3LhL6HF-pPfSs",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_8yRDupDFjs2V59.json",
+  "tasks_appended": 3,
+  "attio_records": {
+    "person_laura_smith": "4c0cfff0-139c-48a5-bfbf-5110e7a37e27",
+    "person_randi_mason": "9058c9cd-903e-4cc0-92ae-ffdc15a62a87",
+    "company_bankunited": "27f8ac3f-3086-4c8d-9761-ccea202be14e",
+    "company_morrison_cohen": "a62feb53-ea17-4f87-b4d0-f06027a779e5"
+  },
+  "slack_posted": true,
+  "detector": "granola-api-rest"
+}

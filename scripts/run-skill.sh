@@ -345,7 +345,7 @@ if [ "$EXIT_CODE" = "0" ] \
   HEALTH_ARTIFACT="$WORKDIR/brain/trackers/health/$(date +%Y-%m-%d)-health.md"
   if [ -f "$HEALTH_ARTIFACT" ]; then
     echo "Firing health-monitor RED bridge against $HEALTH_ARTIFACT" >> "$LOG_FILE"
-    nohup bash "$WORKDIR/scripts/health-monitor-red-bridge.sh" "$HEALTH_ARTIFACT" </dev/null >/dev/null 2>&1 &
+    bash "$WORKDIR/scripts/health-monitor-red-bridge.sh" "$HEALTH_ARTIFACT" >> "$LOG_FILE" 2>&1 || true
   else
     echo "health-monitor RED bridge skipped — artifact not found at $HEALTH_ARTIFACT" >> "$LOG_FILE"
   fi

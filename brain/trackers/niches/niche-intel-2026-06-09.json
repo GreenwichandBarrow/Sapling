@@ -1,0 +1,34 @@
+{
+  "run_date": "2026-06-09",
+  "run_mode": "tuesday",
+  "runner": "Codex/systemd",
+  "niches_evaluated": 5,
+  "niches_identified": 1,
+  "one_pagers_written": 1,
+  "scorecards_written": 1,
+  "tracker_updated": true,
+  "runtime_seconds": 1784,
+  "zero_finding_reason": "",
+  "sources_covered": {
+    "recent_track": "Partial complete: Gmail subscriptions/education, industry research, deal flow, and investor buckets read-only; recent Granola notes; recent vault outputs/calls/inbox; selected web checks. last30days degraded because Reddit returned 403 and X/YouTube were unavailable.",
+    "historical_track": "Partial complete: live tracker tabs, 127 local call notes, and required read-only Gmail historical searches/thread reads. OneNote MCP unavailable; requested ChatGPT export missing; historical Granola API returned only recent notes."
+  },
+  "open_loops_infra": [
+    "OneNote MCP unavailable in scheduled environment; SEARCH FUND notebook not covered.",
+    "Requested ChatGPT export ~/Downloads/031aafe3*/selected_business_conversations.json was missing.",
+    "last30days degraded: Reddit returned 403 and X/YouTube were unavailable.",
+    "Historical Granola API returned only recent notes; local brain/calls used as fallback.",
+    "Attio cross-reference was not performed because the legacy prompt's .env-reading pattern is unsafe in headless mode."
+  ],
+  "niches": [
+    {
+      "name": "NY Metro Commercial Fleet Maintenance & Tire Service",
+      "score": 2.18,
+      "drive_folder": "https://drive.google.com/drive/folders/1vinfjIikPiJ9EFY-c7jvP1UkoXD80o1G",
+      "one_pager": "https://docs.google.com/presentation/d/1FSK0bxFtMzL8RrrKKAKc4nB6TaMVyXBU/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true",
+      "scorecard": "https://docs.google.com/spreadsheets/d/1TVPkxHnfzqcxQFP7V-4_PocULqkJ4Ebx/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true",
+      "tracker_row": "WEEKLY REVIEW!A30:K30",
+      "status": "New - Pending Review"
+    }
+  ]
+}

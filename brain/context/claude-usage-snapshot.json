@@ -1,0 +1,39 @@
+{
+  "fetched_at": "2026-06-12T20:00:44.600145-04:00",
+  "messages_with_usage": 1834,
+  "models": [
+    {
+      "messages": 1213,
+      "model": "claude-opus-4-8",
+      "tokens": 126770986
+    },
+    {
+      "messages": 588,
+      "model": "claude-sonnet-4-6",
+      "tokens": 39595639
+    },
+    {
+      "messages": 33,
+      "model": "claude-haiku-4-5-20251001",
+      "tokens": 1585608
+    }
+  ],
+  "month": {
+    "cache_creation_input_tokens": 12354420,
+    "cache_read_input_tokens": 153293637,
+    "input_tokens": 647331,
+    "output_tokens": 1656845,
+    "total_tokens": 167952233
+  },
+  "period_end": "2026-06-12T20:00:44.600145-04:00",
+  "period_start": "2026-06-01T00:00:00-04:00",
+  "scanned_files": 1906,
+  "source": "local_claude_transcript_usage_metadata",
+  "today": {
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0
+  }
+}

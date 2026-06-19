@@ -6,6 +6,8 @@ status: prospect
 company: "[[entities/bankunited]]"
 role: SVP, Alternative Funds Group — Relationship Manager
 email: stetreault@bankunited.com
+attio_id: 9058c9cd-903e-4cc0-92ae-ffdc15a62a87
+attio_synced_at: 2026-06-10T11:03:10Z
 tags:
   - date/2026-06-03
   - entity

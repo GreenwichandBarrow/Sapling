@@ -1,17 +1,23 @@
 {
   "blocked": [],
-  "deal_items": 11,
-  "drafts_pending": 4,
-  "fetched_at": "2026-06-14T16:01:51.280564-04:00",
+  "deal_items": 20,
+  "drafts_missing_recipient": 1,
+  "drafts_pending": 2,
+  "fetched_at": "2026-06-19T10:07:15.592154-04:00",
+  "input_artifact": "brain/context/email-intelligence-input-2026-06-19.json",
+  "input_status": "ok",
   "needs_kay": [
-    "4 Gmail drafts older than 48 hours",
-    "1 email-derived task candidate(s)",
-    "11 broker/listing row(s) extracted"
+    "1 draft(s) missing recipient",
+    "5 email-derived task candidate(s)",
+    "20 broker/listing row(s) extracted",
+    "1 introduction/relationship item(s)",
+    "Clarify email follow-through identity/source: Greg; Sara"
   ],
   "pipeline_items": 0,
-  "relationship_items": 0,
+  "relationship_items": 1,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-06-14.md",
+  "source_artifact": "brain/context/email-scan-results-2026-06-19.md",
   "source_status": "ok",
-  "task_candidates": 1
+  "stale_drafts": 0,
+  "task_candidates": 5
 }

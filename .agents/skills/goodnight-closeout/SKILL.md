@@ -30,7 +30,7 @@ Own the end-of-day closeout for the Sapling operating system. This is the Codex-
    - Identify unpushed commits with `git cherry -v origin/$(git branch --show-current)` when upstream exists.
 
 2. **Run daily task carry-forward**
-   - Invoke `task-tracker-manager` `carry-forward-day` for `/goodnight`.
+   - Invoke `task-tracker-manager` `carry-forward-day --date {closeout_date}` for `/goodnight` so late-night runs after midnight do not carry the wrong day.
    - Use `--dry-run` first when the tracker pointer, Google auth, or sheet state looks uncertain.
    - Do not ask Kay to approve routine unfinished-task carry-forward.
 

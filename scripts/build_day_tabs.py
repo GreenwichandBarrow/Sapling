@@ -393,14 +393,14 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
                 "format": {"backgroundColor": SAGE_EXTRA_LIGHT,
                            "textFormat": {"strikethrough": True, "foregroundColor": MUTED}}}},
         "index": 0}})
-    # Habit rules: primary/supplemental checked → sage-extra-light fill over A:E
-    for col_letter in ("A", "C"):
+    # Habit rules: each checkbox shades only its own checkbox+label pair.
+    for col_letter, start_col, end_col in (("A", 0, 2), ("C", 2, 4), ("E", 4, 6)):
         R.append({"addConditionalFormatRule": {
             "rule": {
                 "ranges": [{"sheetId": sid,
                             "startRowIndex": DAY_HABIT_FIRST_ROW - 1,
                             "endRowIndex": DAY_HABIT_LAST_ROW,
-                            "startColumnIndex": 0, "endColumnIndex": 6}],
+                            "startColumnIndex": start_col, "endColumnIndex": end_col}],
                 "booleanRule": {
                     "condition": {"type": "CUSTOM_FORMULA",
                                   "values": [{"userEnteredValue": f"=${col_letter}{DAY_HABIT_FIRST_ROW}=TRUE"}]},

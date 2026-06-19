@@ -44,6 +44,7 @@ import sys
 import tempfile
 import time
 from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 import requests
@@ -59,6 +60,7 @@ GOG_CREDS_PATH = Path.home() / ".config" / "gogcli" / "credentials.json"
 GOG_ACCOUNT = os.environ.get("GOG_ACCOUNT", "kay.s@greenwichandbarrow.com")
 STRATEGIC_PLANNING_FOLDER_ID = "12IpnsQ5V_M1fiTm0NZM9wKhlerauILMd"
 TO_DO_ARCHIVE_FOLDER_NAME = "To Do Archive"
+WEEKLY_TEMPLATE_SHEET_ID = "1EaznKNTweSVRxbXpoEA2CyXLD8P96mWVU0K38-5pMxc"
 
 
 def _run_gog(args: list[str], *, timeout: int = 30) -> subprocess.CompletedProcess:
@@ -114,6 +116,7 @@ ENTITY_COLOR_HEX = {
 TAB_TODO = "To Do"
 TAB_TODO_LONG_TERM = "To Do Long Term"
 TAB_PROJECTS = "Projects"
+TEMPLATE_PROJECT_PLACEHOLDER_TABS = {"PROJECT 1"}
 TAB_COMPLETED_TODO = "Completed To Do"
 TAB_RECURRING_TEMPLATE = "Recurring Weekly To Dos"
 
@@ -136,7 +139,9 @@ TODO_COL_PROJECT = 3
 TODO_COL_DUE = 4
 TODO_COL_NOTES = 5
 TODO_COL_HORIZON = 6
-TODO_HEADERS = ["Status", "Task", "Type", "Project", "Due", "Notes", "Horizon"]
+TODO_COL_DAY = 7
+TODO_HEADERS = ["Status", "Task", "Type", "Project", "Due", "Notes", "Horizon", "Day of the Week"]
+DAY_OF_WEEK_OPTIONS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 TODO_MAX_ROWS = 400
 
 # 2026-05-17 consolidation: Status is a 3-state dropdown (was native checkbox);
@@ -146,8 +151,9 @@ TODO_MAX_ROWS = 400
 STATUS_OPTIONS = ["Not Completed", "On-going", "Completed"]
 HORIZON_OPTIONS = [
     "Short Term", "Long Term",
-    "Weekly Recurring Mon", "Weekly Recurring Tue", "Weekly Recurring Wed",
-    "Weekly Recurring Thu", "Weekly Recurring Fri", "Weekly Recurring Sat",
+    "Weekly Recurring Sun", "Weekly Recurring Mon", "Weekly Recurring Tue",
+    "Weekly Recurring Wed", "Weekly Recurring Thu", "Weekly Recurring Fri",
+    "Weekly Recurring Sat",
 ]
 RECURRING_HORIZON_PREFIX = "Weekly Recurring"  # extensible: Quarterly/Yearly later
 
@@ -267,13 +273,13 @@ WK_HABIT_LAST_ROW = 0          # retired on Week tab
 WK_FOCUS_ROW = 3               # DAILY FOCUS / THEME
 WK_DAYHDR_ROW = 6              # SUNDAY..SATURDAY 2-col-merged headers
 WK_SLOT_FIRST_ROW = 8          # rows 8..22 = 15 visible planning slots
-WK_SLOT_LAST_ROW = 22
-WK_NOTES_HDR_ROW = 24          # notes label row
-WK_NOTES_FIRST_ROW = 25        # rows 25..27 = optional notes space
-WK_NOTES_LAST_ROW = 27
-WK_GRID_ROWS = 28
+WK_SLOT_LAST_ROW = 32
+WK_NOTES_HDR_ROW = 34          # notes label row
+WK_NOTES_FIRST_ROW = 35        # rows 35..37 = optional notes space
+WK_NOTES_LAST_ROW = 37
+WK_GRID_ROWS = 38
 WK_GRID_COLS = 15              # col0 label + 7 day-pairs (status + content)
-WK_SLOT_COUNT = WK_SLOT_LAST_ROW - WK_SLOT_FIRST_ROW + 1   # 15
+WK_SLOT_COUNT = WK_SLOT_LAST_ROW - WK_SLOT_FIRST_ROW + 1   # 25
 WK_HABIT_COUNT = 0
 
 # Day order on the Week grid is Sun→Sat (design-corrected; archive grid was
@@ -612,6 +618,7 @@ _RECEIPT_VERBS = {
     "carry-forward-day",
     "distribute-week",
     "reformat",
+    "schedule-from-todo-days",
 }
 
 
@@ -694,7 +701,7 @@ def cmd_append(args) -> int:
 
     # Snapshot the target row before writing
     snap = snapshot_ranges(client, "append",
-        [f"'{TAB_TODO}'!A{target_row}:G{target_row}"])
+        [f"'{TAB_TODO}'!A{target_row}:{col_letter(len(TODO_HEADERS) - 1)}{target_row}"])
 
     horizon = getattr(args, "horizon", None) or "Short Term"
     if horizon not in HORIZON_OPTIONS:
@@ -707,8 +714,9 @@ def cmd_append(args) -> int:
         args.due or "",
         args.notes or "",
         horizon,           # Horizon
+        "",                # Day of the Week
     ]
-    client.values_update(f"'{TAB_TODO}'!A{target_row}:G{target_row}", [row_values])
+    client.values_update(f"'{TAB_TODO}'!A{target_row}:{col_letter(len(TODO_HEADERS) - 1)}{target_row}", [row_values])
 
     log_append_receipt("append", [
         f"task: {args.task}",
@@ -800,6 +808,7 @@ def _compact_todo(client: "SheetsClient", *, buffer: int = 40, dry_run: bool = F
         _dv(TODO_COL_TYPE, TYPE_OPTIONS),
         _dv(TODO_COL_PROJECT, PROJECT_OPTIONS),
         _dv(TODO_COL_HORIZON, HORIZON_OPTIONS),
+        _dv(TODO_COL_DAY, DAY_OF_WEEK_OPTIONS),
     ]
     client.batch_update(reqs)
     return summary
@@ -976,7 +985,7 @@ def _read_recurring_template(client: SheetsClient) -> list[dict]:
     Malformed Horizon days are warned + skipped so one bad row can't abort the
     Sunday rollover."""
     rows = client.get_values(
-        f"'{TAB_TODO}'!A2:{col_letter(TODO_COL_HORIZON)}{TODO_MAX_ROWS}")
+        f"'{TAB_TODO}'!A2:{col_letter(len(TODO_HEADERS) - 1)}{TODO_MAX_ROWS}")
     out: list[dict] = []
     for i, row in enumerate(rows):
         task = (row[TODO_COL_TASK] if len(row) > TODO_COL_TASK else "").strip() if row else ""
@@ -1514,7 +1523,7 @@ def _sync_combined_day_tasks_to_todo(day_client: SheetsClient, todo_client: Shee
                 done = status is True or str(status).strip().upper() == "TRUE"
                 day_tasks.append({"day": day_tab, "slot": slot_i, "task": task_text, "prefix": prefix, "done": done})
 
-    todo_rows = todo_client.get_values(f"'{TAB_TODO}'!A2:G{TODO_MAX_ROWS}") or []
+    todo_rows = todo_client.get_values(f"'{TAB_TODO}'!A2:{col_letter(len(TODO_HEADERS) - 1)}{TODO_MAX_ROWS}") or []
     combined: list[dict] = []
     skipped: list[dict] = []
     used_candidate_rows: set[int] = set()
@@ -1549,9 +1558,9 @@ def _sync_combined_day_tasks_to_todo(day_client: SheetsClient, todo_client: Shee
         clear_rows = [c["row"] for c in candidates[1:]]
 
         if not dry_run:
-            todo_client.values_update(f"'{TAB_TODO}'!A{keep['row']}:G{keep['row']}", [keep_vals[:len(TODO_HEADERS)]])
+            todo_client.values_update(f"'{TAB_TODO}'!A{keep['row']}:{col_letter(len(TODO_HEADERS) - 1)}{keep['row']}", [keep_vals[:len(TODO_HEADERS)]])
             for row_num in clear_rows:
-                todo_client.values_update(f"'{TAB_TODO}'!A{row_num}:G{row_num}", [[""] * len(TODO_HEADERS)])
+                todo_client.values_update(f"'{TAB_TODO}'!A{row_num}:{col_letter(len(TODO_HEADERS) - 1)}{row_num}", [[""] * len(TODO_HEADERS)])
         combined.append({"day": d["day"], "slot": d["slot"], "task": d["task"],
                          "kept_row": keep["row"], "cleared_rows": clear_rows,
                          "source_tasks": [c["task"] for c in candidates]})
@@ -1589,20 +1598,251 @@ def _build_week_formulas(meta: dict) -> list[tuple[str, list[list]]]:
     return writes
 
 
-def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int:
-    """Phase 3 (2026-05-26) — cross-file weekly rollover.
 
-    1. Snapshot prior file
-    2. gog drive copy prior → new file `TO DO {next-Sun-date}.YY` in STRATEGIC PLANNING
-    3. After the new file is built, move the prior file into the To Do Archive folder
-    4. Open new file, clear all 7 day tabs (preserve structure/formatting)
-    5. Stamp recurring onto new file's day tabs
-    6. Cross-file carryover (read prior day tabs → write new day tabs)
-    7. Wire Week tab formulas (in-file refs to day tabs)
-    8. Re-title Week tab + per-day header dates
-    9. Move prior file into To Do Archive after the new file is ready
-    10. Update pointer atomically (LAST step before trace)
-    11. Trace
+def _copy_sheet_to_spreadsheet(source_client: SheetsClient, source_sheet_id: int, dest_spreadsheet_id: str) -> dict:
+    """Copy one sheet/tab from source spreadsheet to a destination spreadsheet."""
+    return source_client._retry(lambda: source_client.session.post(
+        f"https://sheets.googleapis.com/v4/spreadsheets/{source_client.sheet_id}/sheets/{source_sheet_id}:copyTo",
+        json={"destinationSpreadsheetId": dest_spreadsheet_id},
+        timeout=60,
+    ))
+
+
+def _rename_and_move_sheet(client: SheetsClient, sheet_id: int, title: str, index: int | None = None) -> None:
+    props = {"sheetId": sheet_id, "title": title}
+    fields = "title"
+    if index is not None:
+        props["index"] = index
+        fields = "title,index"
+    client.batch_update([{"updateSheetProperties": {"properties": props, "fields": fields}}])
+
+
+def _delete_sheet(client: SheetsClient, sheet_id: int) -> None:
+    client.batch_update([{"deleteSheet": {"sheetId": sheet_id}}])
+
+
+def _unique_sheet_title(existing: set[str], preferred: str, max_len: int = 99) -> str:
+    base = preferred[:max_len].rstrip()
+    if base not in existing:
+        existing.add(base)
+        return base
+    i = 2
+    while True:
+        suffix = f" {i}"
+        candidate = f"{base[:max_len-len(suffix)]}{suffix}".rstrip()
+        if candidate not in existing:
+            existing.add(candidate)
+            return candidate
+        i += 1
+
+
+def _copy_tab_between_spreadsheets(source_client: SheetsClient, dest_client: SheetsClient,
+                                   source_props: dict, new_title: str,
+                                   index: int | None = None) -> str:
+    copied = _copy_sheet_to_spreadsheet(source_client, source_props["sheetId"], dest_client.sheet_id)
+    new_sheet_id = copied.get("sheetId")
+    if new_sheet_id is None:
+        raise RuntimeError(f"copyTo returned no sheetId for {source_props.get('title')!r}: {copied}")
+    _rename_and_move_sheet(dest_client, new_sheet_id, new_title, index=index)
+    return new_title
+
+
+def _normalize_todo_row(row: list) -> list:
+    row = list(row or []) + [""] * len(TODO_HEADERS)
+    row = row[:len(TODO_HEADERS)]
+    if row[TODO_COL_TASK] and not row[TODO_COL_STATUS]:
+        row[TODO_COL_STATUS] = "Not Completed"
+    if row[TODO_COL_TASK] and not row[TODO_COL_HORIZON]:
+        row[TODO_COL_HORIZON] = "Short Term"
+    return row
+
+
+def _read_real_todo_rows(client: SheetsClient) -> list[list]:
+    rows = client.get_values(f"'{TAB_TODO}'!A2:{col_letter(len(TODO_HEADERS) - 1)}{TODO_MAX_ROWS}") or []
+    out = []
+    for row in rows:
+        norm = _normalize_todo_row(row)
+        if str(norm[TODO_COL_TASK] or "").strip():
+            out.append(norm)
+    return out
+
+
+def _write_todo_rows_sorted(client: SheetsClient, rows: list[list], *, clear_to: int = TODO_MAX_ROWS) -> dict:
+    ongoing = [r for r in rows if str(r[TODO_COL_STATUS]).strip() == "On-going"]
+    not_completed = [r for r in rows if str(r[TODO_COL_STATUS]).strip() == "Not Completed"]
+    other_active = [r for r in rows if str(r[TODO_COL_STATUS]).strip() not in {"On-going", "Not Completed", "Completed"}]
+    done = [r for r in rows if str(r[TODO_COL_STATUS]).strip() == "Completed"]
+    packed = ongoing + not_completed + other_active + done
+    last_col = col_letter(len(TODO_HEADERS) - 1)
+    client.values_update(f"'{TAB_TODO}'!A1:{last_col}1", [TODO_HEADERS])
+    if packed:
+        client.values_update(f"'{TAB_TODO}'!A2:{last_col}{len(packed)+1}", packed)
+
+    # Sheets rejects clear ranges past the current grid. Template/prior files can
+    # have fewer than TODO_MAX_ROWS rows, so cap the cleanup to the live grid.
+    grid_rows = clear_to
+    try:
+        meta = client.get_metadata()
+        todo_props = find_tab(meta, TAB_TODO)
+        if todo_props:
+            grid_rows = min(clear_to, todo_props.get("gridProperties", {}).get("rowCount", clear_to))
+    except Exception:
+        grid_rows = clear_to
+    clear_start = len(packed) + 2
+    if clear_start <= grid_rows:
+        client.values_clear(f"'{TAB_TODO}'!A{clear_start}:{last_col}{grid_rows}")
+    return {"ongoing": len(ongoing), "not_completed": len(not_completed), "other_active": len(other_active), "completed": len(done), "active": len(ongoing) + len(not_completed) + len(other_active), "total": len(packed)}
+
+
+def _append_missing_day_tasks_to_todo(prior_client: SheetsClient, dry_run: bool = False) -> dict:
+    """Ensure every prior daily-tab task slot has a To Do backend row.
+
+    This is intentionally conservative: exact task-text matching only. Checked day slots
+    become Completed when appended; unchecked day slots become Not Completed. Existing
+    To Do rows are not reshaped here; combined edits are handled separately.
+    """
+    todo_rows = _read_real_todo_rows(prior_client)
+    existing = {str(r[TODO_COL_TASK]).strip().lower() for r in todo_rows if str(r[TODO_COL_TASK]).strip()}
+    additions: list[list] = []
+    for day_tab in DAY_TAB_NAMES:
+        vals = prior_client.get_values(f"'{day_tab}'!A{DAY_SLOT_FIRST_ROW}:E{DAY_SLOT_LAST_ROW}") or []
+        for slot_i, row in enumerate(vals, start=1):
+            task = str(row[DAY_COL_TASK] if len(row) > DAY_COL_TASK else "" or "").strip()
+            if not task or task.lower() in existing:
+                continue
+            status_val = row[DAY_COL_STATUS] if len(row) > DAY_COL_STATUS else ""
+            is_done = (status_val is True) or (str(status_val).strip().upper() == "TRUE")
+            type_val = row[DAY_COL_TYPE] if len(row) > DAY_COL_TYPE else ""
+            project_val = row[DAY_COL_PROJECT] if len(row) > DAY_COL_PROJECT else ""
+            notes_val = row[DAY_COL_NOTES] if len(row) > DAY_COL_NOTES else ""
+            additions.append([
+                "Completed" if is_done else "Not Completed",
+                task,
+                type_val if type_val in TYPE_OPTIONS else "",
+                project_val,
+                "",
+                notes_val,
+                "Short Term",
+            ])
+            existing.add(task.lower())
+    if additions and not dry_run:
+        _write_todo_rows_sorted(prior_client, todo_rows + additions)
+    return {"added": len(additions), "tasks": [r[TODO_COL_TASK] for r in additions]}
+
+
+def _copy_project_surfaces(prior_client: SheetsClient, new_client: SheetsClient,
+                           prior_meta: dict, new_meta: dict) -> dict:
+    """Copy project tracking data/tabs from prior workbook into the new template workbook.
+
+    Template placeholder project tabs are structural examples only. They are deleted
+    from the newly copied template before real project tabs are copied from the prior
+    week, so placeholders like PROJECT 1 never become live weekly tabs.
+    """
+    template_owned = {TAB_WEEK, TAB_TODO, *DAY_TAB_NAMES}
+    copied: list[str] = []
+    updated: list[str] = []
+    deleted_placeholders: list[str] = []
+
+    # Remove placeholder project tabs that exist only because the blank template
+    # carries a frame/example. Real project tabs come only from the prior week.
+    for title in TEMPLATE_PROJECT_PLACEHOLDER_TABS:
+        props = find_tab(new_meta, title)
+        if props:
+            _delete_sheet(new_client, props["sheetId"])
+            deleted_placeholders.append(title)
+    if deleted_placeholders:
+        new_meta = new_client.get_metadata()
+
+    prior_projects = find_tab(prior_meta, TAB_PROJECTS)
+    new_projects = find_tab(new_meta, TAB_PROJECTS)
+    if prior_projects and new_projects:
+        vals = prior_client.get_values(f"'{TAB_PROJECTS}'!A1:Z200") or []
+        new_client.values_clear(f"'{TAB_PROJECTS}'!A1:Z200")
+        if vals:
+            new_client.values_update(f"'{TAB_PROJECTS}'!A1:{col_letter(max(len(r) for r in vals)-1)}{len(vals)}", vals)
+        updated.append(TAB_PROJECTS)
+
+    new_meta = new_client.get_metadata()
+    existing = {s["properties"]["title"] for s in new_meta.get("sheets", [])}
+    insert_at = len(new_meta.get("sheets", []))
+    for s in prior_meta.get("sheets", []):
+        title = s["properties"]["title"]
+        if title in template_owned or title == TAB_PROJECTS or title.startswith("archive_"):
+            continue
+        # Skip retired/system tabs; copy user-facing project/Gantt tabs only.
+        if title.startswith("_retired_") or title == TAB_RECURRING_TEMPLATE or title == TAB_COMPLETED_TODO or title == TAB_TODO_LONG_TERM:
+            continue
+        dest_title = _unique_sheet_title(existing, title)
+        _copy_tab_between_spreadsheets(prior_client, new_client, s["properties"], dest_title, index=insert_at)
+        copied.append(dest_title)
+        insert_at += 1
+    return {"projects_updated": updated, "project_tabs_copied": copied, "deleted_template_placeholders": deleted_placeholders}
+
+
+def _archive_prior_day_tabs(prior_client: SheetsClient, new_client: SheetsClient,
+                            prior_meta: dict, prior_sunday: date) -> dict:
+    new_meta = new_client.get_metadata()
+    existing = {s["properties"]["title"] for s in new_meta.get("sheets", [])}
+    insert_at = len(new_meta.get("sheets", []))
+    copied: list[str] = []
+    for day in DAY_TAB_NAMES:
+        props = find_tab(prior_meta, day)
+        if not props:
+            continue
+        title = _unique_sheet_title(existing, f"archive_{prior_sunday.month}.{prior_sunday.day}_{day}")
+        _copy_tab_between_spreadsheets(prior_client, new_client, props, title, index=insert_at)
+        copied.append(title)
+        insert_at += 1
+    return {"archive_tabs_copied": copied}
+
+
+def _clear_live_day_task_slots(client: SheetsClient, meta: dict) -> None:
+    reqs: list[dict] = []
+    for d in DAY_TAB_NAMES:
+        props = find_tab(meta, d)
+        if not props:
+            continue
+        sid = props["sheetId"]
+        # Clear only task slots; template habit checkboxes stay blank/unchecked as designed.
+        reqs.append({"repeatCell": {
+            "range": {"sheetId": sid,
+                      "startRowIndex": DAY_SLOT_FIRST_ROW - 1, "endRowIndex": DAY_SLOT_LAST_ROW,
+                      "startColumnIndex": DAY_COL_STATUS, "endColumnIndex": DAY_COL_LAST + 1},
+            "cell": {"userEnteredValue": {"stringValue": ""}},
+            "fields": "userEnteredValue"}})
+    if reqs:
+        client.batch_update(reqs)
+
+
+def _retitle_week_and_day_headers(client: SheetsClient, meta: dict, wd: list[date], week_label: str) -> None:
+    week_tab_props = find_tab(meta, TAB_WEEK)
+    if week_tab_props:
+        wk_sid = week_tab_props["sheetId"]
+        reqs = [{"updateCells": {
+            "rows": [{"values": [{"userEnteredValue": {"stringValue": week_label}}]}],
+            "fields": "userEnteredValue",
+            "start": {"sheetId": wk_sid, "rowIndex": WK_TITLE_ROW - 1, "columnIndex": 0}}}]
+        for i in range(7):
+            reqs.append({"updateCells": {
+                "rows": [{"values": [{"userEnteredValue": {
+                    "stringValue": day_title_text(WK_DAY_ORDER[i], wd[i])}}]}],
+                "fields": "userEnteredValue",
+                "start": {"sheetId": wk_sid, "rowIndex": WK_DAYHDR_ROW - 1,
+                          "columnIndex": wk_status_col(i)}}})
+        client.batch_update(reqs)
+    for i, day_tab in enumerate(DAY_TAB_NAMES):
+        if find_tab(meta, day_tab):
+            client.values_update(f"'{day_tab}'!A1", [[day_title_text(day_tab, wd[i])]])
+
+
+def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int:
+    """Template-first weekly rollover.
+
+    Create the new weekly tracker from the blank structural template, reconcile the
+    prior file's day tabs into its To Do backend, import the reconciled backend and
+    project surfaces, archive prior daily tabs at the far right, seed the Week tab
+    with recurring/explicit-day items only, and leave live day tabs empty until Kay
+    approves the Week plan.
     """
     from datetime import date as _date
     sys.path.insert(0, str(Path(__file__).parent))
@@ -1610,6 +1850,11 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
 
     wd = week_dates(_date.today())
     sun_date = wd[0]
+    prior_week_raw = prior_info.get("week_of") or (sun_date - timedelta(days=7)).isoformat()
+    try:
+        prior_sunday = date.fromisoformat(str(prior_week_raw)[:10])
+    except Exception:
+        prior_sunday = sun_date - timedelta(days=7)
     title_prefix = getattr(args, "title_prefix", "") or ""
     new_title = f"{title_prefix}TO DO {sun_date.month}.{sun_date.day}.{sun_date.year % 100}"
     if sun_date.month == wd[6].month:
@@ -1617,223 +1862,162 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
     else:
         week_label = f"WEEK OF {sun_date.strftime('%b')} {sun_date.day}-{wd[6].strftime('%b')} {wd[6].day}"
 
-    # ---- dry-run preview ----
+    existing_files = [] if getattr(args, "force_new_file", False) else _find_existing_tracker_files(new_title)
     if getattr(args, "dry_run", False):
-        existing_files = [] if getattr(args, "force_new_file", False) else _find_existing_tracker_files(new_title)
         preview = {
             "prior_sheet": prior_info,
+            "template_sheet_id": WEEKLY_TEMPLATE_SHEET_ID,
             "would_create": new_title,
             "week_label": week_label,
             "new_file_folder": "STRATEGIC PLANNING",
-            "prior_file_after_success": "To Do Archive (resolved at write time)",
-            "recurring_preview": _stamp_recurring_day_tabs.__doc__ and "see helper",
-            "formula_count_estimate": 7 * 2,  # 2 ranges per day (status slots, task slots)
-            "existing_target_files": [
-                {
-                    "id": f.get("id"),
-                    "name": f.get("name"),
-                    "modifiedTime": f.get("modifiedTime"),
-                    "webViewLink": f.get("webViewLink"),
-                }
-                for f in existing_files
-            ],
+            "existing_target_files": [{
+                "id": f.get("id"), "name": f.get("name"),
+                "modifiedTime": f.get("modifiedTime"), "webViewLink": f.get("webViewLink"),
+            } for f in existing_files],
         }
-        # Carryover dry-run preview against current state (best-effort — won't reflect post-stamp)
         try:
-            preview["carryover_preview_count"] = sum(
-                1 for day_tab in DAY_TAB_NAMES
-                for row in (prior_client.get_values(f"'{day_tab}'!A{DAY_SLOT_FIRST_ROW}:B{DAY_SLOT_LAST_ROW}") or [])
-                if (len(row) > 1 and str(row[1]).strip()
-                    and not ((row[0] is True) or str(row[0]).strip().upper() == "TRUE"))
-            )
-        except Exception:
-            preview["carryover_preview_count"] = "unknown"
+            todo_rows = _read_real_todo_rows(prior_client)
+            preview["prior_todo_real_rows"] = len(todo_rows)
+            preview["prior_todo_completed_rows"] = sum(1 for r in todo_rows if str(r[TODO_COL_STATUS]).strip() == "Completed")
+            preview["missing_day_tasks_to_add"] = _append_missing_day_tasks_to_todo(prior_client, dry_run=True)["added"]
+            preview["recurring_rows_to_week"] = len([r for r in todo_rows if _todo_is_recurring(str(r[TODO_COL_HORIZON] or ""))])
+        except Exception as e:
+            preview["inspection_error"] = str(e)
         print(json.dumps(preview, indent=2, default=str))
         return 0
 
-    existing_files = [] if getattr(args, "force_new_file", False) else _find_existing_tracker_files(new_title)
     if existing_files:
         print(
             f"task-tracker-manager: refused build-week — {len(existing_files)} existing "
-            f"file(s) named {new_title!r} already exist. This prevents duplicate weekly files.",
+            f"file(s) named {new_title!r} already exist. Delete/rename the bad file or use "
+            f"--title-prefix for a sandbox test.",
             file=sys.stderr,
         )
         for f in existing_files[:5]:
-            print(
-                f"  - {f.get('id')} modified={f.get('modifiedTime')} "
-                f"url={f.get('webViewLink', '')}",
-                file=sys.stderr,
-            )
-        print("task-tracker-manager: use --force-new-file only for explicit sandbox/testing copies.", file=sys.stderr)
+            print(f"  - {f.get('id')} modified={f.get('modifiedTime')} url={f.get('webViewLink','')}", file=sys.stderr)
         return 1
 
-    # ---- 0. Reconcile prior day-tab completions and combined task edits into To Do BEFORE copy ----
+    # 1. Reconcile prior file before importing content.
     try:
-        sync_args = SimpleNamespace(dry_run=False)
-        cmd_sync_done_status(sync_args, _client=prior_client, _meta=prior_client.get_metadata())
+        cmd_sync_done_status(SimpleNamespace(dry_run=False), _client=prior_client, _meta=prior_client.get_metadata())
     except Exception as e:
         print(f"task-tracker-manager: WARN pre-copy sync-done-status skipped — {e}", file=sys.stderr)
+    missing_summary = {"added": 0, "tasks": []}
+    try:
+        missing_summary = _append_missing_day_tasks_to_todo(prior_client, dry_run=False)
+        if missing_summary["added"]:
+            print(f"task-tracker-manager: added {missing_summary['added']} missing day-tab task(s) into prior To Do")
+    except Exception as e:
+        print(f"task-tracker-manager: WARN missing day-task reconciliation skipped — {e}", file=sys.stderr)
     combined_summary = {"combined": [], "skipped": []}
     try:
         combined_summary = _sync_combined_day_tasks_to_todo(prior_client, prior_client, prior_client.get_metadata(), dry_run=False)
         if combined_summary["combined"]:
-            print(f"task-tracker-manager: folded {len(combined_summary['combined'])} combined day-task edit(s) into To Do before copy")
+            print(f"task-tracker-manager: folded {len(combined_summary['combined'])} combined day-task edit(s) into prior To Do")
     except Exception as e:
         print(f"task-tracker-manager: WARN combined day-task reconciliation skipped — {e}", file=sys.stderr)
 
-    # ---- 1. Snapshot prior file (Week + all 7 day tabs + To Do) ----
-    snap_ranges = [f"'{TAB_WEEK}'!A1:O51"] + \
-                  [f"'{d}'!A1:E40" for d in DAY_TAB_NAMES] + \
-                  [f"'{TAB_TODO}'!A1:G400"]
+    # Sort/pack prior To Do so the imported backend starts clean.
+    todo_rows = _read_real_todo_rows(prior_client)
+    prior_pack = _write_todo_rows_sorted(prior_client, todo_rows)
+
+    # 2. Snapshot prior file after reconciliation.
+    snap_ranges = [f"'{TAB_WEEK}'!A1:O51"] + [f"'{d}'!A1:F54" for d in DAY_TAB_NAMES] + [f"'{TAB_TODO}'!A1:{col_letter(len(TODO_HEADERS) - 1)}400"]
     snap = snapshot_ranges(prior_client, "build-week-v2", snap_ranges)
-    print(f"task-tracker-manager: snapshot prior file → {snap}")
+    print(f"task-tracker-manager: snapshot reconciled prior file → {snap}")
 
-    # ---- 2. Drive copy prior → new file ----
-    print(f"task-tracker-manager: gog drive copy → {new_title}")
+    # 3. Copy blank template into Strategic Planning as the new weekly file.
+    print(f"task-tracker-manager: gog drive copy template → {new_title}")
     try:
-        new_sheet_id = _drive_copy_file(prior_info["sheet_id"], new_title, STRATEGIC_PLANNING_FOLDER_ID)
+        new_sheet_id = _drive_copy_file(WEEKLY_TEMPLATE_SHEET_ID, new_title, STRATEGIC_PLANNING_FOLDER_ID)
     except RuntimeError as e:
-        print(f"task-tracker-manager: drive copy FAILED — {e}", file=sys.stderr)
+        print(f"task-tracker-manager: template drive copy FAILED — {e}", file=sys.stderr)
         return 1
-    print(f"task-tracker-manager: new file created — id={new_sheet_id}")
+    print(f"task-tracker-manager: new template-based file created — id={new_sheet_id}")
 
-    # ---- 3. New file is already in STRATEGIC PLANNING; prior file archives after build succeeds ----
-    folder_id = _find_to_do_archive_folder_id()
-    if not folder_id:
-        print(f"task-tracker-manager: WARN '{TO_DO_ARCHIVE_FOLDER_NAME}' folder not found; prior file will remain in STRATEGIC PLANNING", file=sys.stderr)
-
-    # ---- 4. Open new file + clear all 7 day tabs ----
     new_client = SheetsClient(new_sheet_id)
+    prior_meta = prior_client.get_metadata()
     new_meta = new_client.get_metadata()
-    clear_reqs = []
-    for d in DAY_TAB_NAMES:
-        tab_props = find_tab(new_meta, d)
-        if tab_props is None:
-            print(f"task-tracker-manager: WARN day tab {d!r} missing on new file — skipping clear", file=sys.stderr)
-            continue
-        clear_reqs += _day_clear_requests(tab_props["sheetId"])
-    if clear_reqs:
-        new_client.batch_update(clear_reqs)
-        print(f"task-tracker-manager: cleared {len(DAY_TAB_NAMES)} day tabs on new file")
 
-    # ---- 4b. Compact new file's To Do tab (strip gap rows the Drive-copy carried over) ----
-    # The copy inherits the prior file's accumulated FALSE/blank gap rows. Compact
-    # before the recurring stamp reads To Do (real rows, incl recurring, are preserved).
-    try:
-        ct = _compact_todo(new_client, buffer=40, dry_run=False)
-        if ct["removed"]:
-            print(f"task-tracker-manager: compacted To Do on new file — kept {ct['real']} rows, "
-                  f"removed {ct['removed']} gap rows ({ct['deleted_rows']} deleted)")
-    except Exception as e:
-        print(f"task-tracker-manager: WARN To Do compaction skipped on new file — {e}", file=sys.stderr)
+    # 4. Import reconciled To Do backend, active rows first and completed rows at bottom.
+    todo_import = _write_todo_rows_sorted(new_client, _read_real_todo_rows(prior_client))
+    print(f"task-tracker-manager: imported To Do — {todo_import['ongoing']} on-going, {todo_import['not_completed']} not completed, {todo_import['completed']} completed")
 
-    # ---- 5. Stamp recurring onto new file's day tabs ----
-    recurring_summary = {"stamped": [], "refused": [], "rows_read": 0}
-    if not getattr(args, "skip_recurring", False):
-        recurring_summary = _stamp_recurring_day_tabs(new_client, new_meta, dry_run=False)
-        print(f"task-tracker-manager: stamped {len(recurring_summary['stamped'])} recurring row(s) onto new file day tabs"
-              + (f"; {len(recurring_summary['refused'])} refused" if recurring_summary["refused"] else ""))
+    # 5. Copy project tracking surfaces.
+    project_summary = _copy_project_surfaces(prior_client, new_client, prior_meta, new_meta)
+    print(f"task-tracker-manager: copied project surfaces — Projects data: {bool(project_summary['projects_updated'])}; "
+          f"extra tabs: {len(project_summary['project_tabs_copied'])}; "
+          f"template placeholders removed: {project_summary.get('deleted_template_placeholders', [])}")
 
-    # ---- 6. Cross-file carryover ----
-    carryover_summary = {"pulled": [], "refused": [], "rows_read": 0}
-    if not getattr(args, "skip_carryover", False):
-        carryover_summary = _carryover_cross_file(prior_client, new_client, dry_run=False)
-        print(f"task-tracker-manager: carryover pulled {len(carryover_summary['pulled'])} item(s) from prior → new"
-              + (f"; {len(carryover_summary['refused'])} refused" if carryover_summary["refused"] else ""))
+    # 6. Copy prior daily tabs as far-right archive tabs.
+    archive_summary = _archive_prior_day_tabs(prior_client, new_client, prior_meta, prior_sunday)
+    print(f"task-tracker-manager: archived prior daily tabs into new file — {len(archive_summary['archive_tabs_copied'])} tab(s)")
 
-    # ---- 7. Rebuild Week tab structure, then wire formulas ----
+    # 7. Rebuild/retitle Week and live day headers from template, clear live day task slots.
+    new_meta = new_client.get_metadata()
     week_tab_props = find_tab(new_meta, TAB_WEEK)
     if week_tab_props:
         try:
             import build_week_tab
             new_client.batch_update(build_week_tab.structure_requests(week_tab_props["sheetId"], wd))
-            new_meta = new_client.get_metadata()
-            print("task-tracker-manager: rebuilt Week tab structure on new file")
+            print("task-tracker-manager: rebuilt Week tab structure from approved layout")
         except Exception as e:
             print(f"task-tracker-manager: WARN Week tab structure rebuild skipped — {e}", file=sys.stderr)
+    new_meta = new_client.get_metadata()
+    _clear_live_day_task_slots(new_client, new_meta)
+    _retitle_week_and_day_headers(new_client, new_meta, wd, week_label)
 
-    # ---- 7b. Wire Week tab formulas ----
-    formula_writes = _build_week_formulas(new_meta)
-    for rng, vals in formula_writes:
-        new_client.values_update(rng, vals)
-    print(f"task-tracker-manager: wired {len(formula_writes)} formula ranges (~{sum(len(v) for _, v in formula_writes)} cells) on new file Week tab")
+    # 8. Populate Week baseline only. Do not touch live day tabs with tasks.
+    recurring_summary = {"stamped": [], "refused": [], "rows_read": 0, "tab_present": False}
+    if not getattr(args, "skip_recurring", False):
+        recurring_summary = _stamp_recurring_week(new_client, new_client.get_metadata(), dry_run=False)
+        print(f"task-tracker-manager: stamped {len(recurring_summary['stamped'])} recurring row(s) onto Week"
+              + (f"; {len(recurring_summary['refused'])} refused" if recurring_summary["refused"] else ""))
 
-    # ---- 8. Re-title Week tab + per-day header dates + each day-tab A1 title ----
-    # Bug fix 2026-05-26: Drive-copy carries source file's day-tab titles forward (e.g.,
-    # "SUNDAY · May 17" stays on Sun day tab after copy). We MUST re-stamp each day tab's
-    # row 1 to the current week's date, otherwise day tabs show last week's dates.
-    week_tab_props = find_tab(new_meta, TAB_WEEK)
-    if week_tab_props:
-        wk_sid = week_tab_props["sheetId"]
-        title_reqs = [{
-            "updateCells": {
-                "rows": [{"values": [{"userEnteredValue": {"stringValue": week_label}}]}],
-                "fields": "userEnteredValue",
-                "start": {"sheetId": wk_sid, "rowIndex": WK_TITLE_ROW - 1, "columnIndex": 0}
-            }
-        }]
-        for i in range(7):
-            sc = wk_status_col(i)
-            title_reqs.append({
-                "updateCells": {
-                    "rows": [{"values": [{"userEnteredValue": {
-                        "stringValue": day_title_text(WK_DAY_ORDER[i], wd[i])}}]}],
-                    "fields": "userEnteredValue",
-                    "start": {"sheetId": wk_sid, "rowIndex": WK_DAYHDR_ROW - 1, "columnIndex": sc}
-                }
-            })
-        new_client.batch_update(title_reqs)
-        print(f"task-tracker-manager: re-titled Week tab → {week_label!r}")
-
-    # Per-day-tab A1 title retitle (each day tab is its own sheet; can't batch with Week tab reqs)
-    for i, day_tab in enumerate(DAY_TAB_NAMES):
-        title = day_title_text(day_tab, wd[i])
-        new_client.values_update(f"'{day_tab}'!A1", [[title]])
-    print(f"task-tracker-manager: re-titled all 7 day tabs (A1) for week {wd[0].isoformat()}..{wd[6].isoformat()}")
-
-    # ---- 9. Move prior file into To Do Archive after new file is ready ----
+    # 9. Archive prior file only after new file exists and content is imported.
+    folder_id = _find_to_do_archive_folder_id()
     prior_archived = False
     if getattr(args, "no_folder_move", False):
-        print(f"task-tracker-manager: --no-folder-move set — prior file stays in source folder")
+        print("task-tracker-manager: --no-folder-move set — prior file stays in source folder")
     elif folder_id:
         _drive_move_file(prior_info["sheet_id"], folder_id)
         prior_archived = True
         print(f"task-tracker-manager: archived prior file → {TO_DO_ARCHIVE_FOLDER_NAME} ({folder_id})")
+    else:
+        print(f"task-tracker-manager: WARN '{TO_DO_ARCHIVE_FOLDER_NAME}' folder not found; prior file not moved", file=sys.stderr)
 
-    # ---- 10. Update pointer atomically (LAST step before trace) ----
+    # 10. Pointer update is last.
     if getattr(args, "no_pointer_update", False):
-        print(f"task-tracker-manager: --no-pointer-update set — pointer unchanged (resolver still points at prior file)")
+        print("task-tracker-manager: --no-pointer-update set — pointer unchanged")
     else:
         try:
             write_pointer(new_sheet_id, new_title, sun_date)
             print(f"task-tracker-manager: pointer updated → {new_title} ({new_sheet_id})")
         except Exception as e:
-            print(f"task-tracker-manager: WARN pointer write failed ({e}); resolver fallback to Drive search will recover", file=sys.stderr)
+            print(f"task-tracker-manager: WARN pointer write failed ({e}); resolver fallback should recover", file=sys.stderr)
 
-    # ---- 11. Trace ----
     trace_lines = [
         f"- prior file: {prior_info.get('title')} ({prior_info.get('sheet_id')})",
-        f"- new file:   {new_title} ({new_sheet_id})",
-        f"- new file folder: STRATEGIC PLANNING ({STRATEGIC_PLANNING_FOLDER_ID})",
-        f"- prior file archived: {prior_archived} ({folder_id or 'missing archive folder'})",
+        f"- template source: {WEEKLY_TEMPLATE_SHEET_ID}",
+        f"- new file: {new_title} ({new_sheet_id})",
         f"- week label: {week_label}",
-        f"- recurring stamped onto new file day tabs: {len(recurring_summary['stamped'])}",
-        f"- carryover pulled from prior → new: {len(carryover_summary['pulled'])}",
-        f"- carryover refused (already present / no slot): {len(carryover_summary['refused'])}",
-        f"- Week tab formulas wired: {len(formula_writes)} ranges",
-        f"- combined day-task edits folded before copy: {len(combined_summary['combined'])}",
+        f"- missing day-tab tasks added to prior To Do: {missing_summary['added']}",
+        f"- combined day-task edits folded before import: {len(combined_summary['combined'])}",
+        f"- prior To Do packed before import: {prior_pack}",
+        f"- imported To Do: {todo_import}",
+        f"- project tabs copied: {project_summary['project_tabs_copied']}",
+        f"- template project placeholders removed: {project_summary.get('deleted_template_placeholders', [])}",
+        f"- archive daily tabs copied: {archive_summary['archive_tabs_copied']}",
+        f"- recurring stamped onto Week: {len(recurring_summary['stamped'])}",
+        f"- prior file archived: {prior_archived} ({folder_id or 'missing archive folder'})",
         f"- snapshot: {snap}",
     ]
     if recurring_summary["refused"]:
         for ref in recurring_summary["refused"]:
             trace_lines.append(f"  - recurring REFUSED: {ref.get('day')} slot {ref.get('slot')}: {ref.get('reason')}")
-    if carryover_summary["refused"]:
-        for ref in carryover_summary["refused"][:5]:
-            trace_lines.append(f"  - carryover REFUSED: {ref.get('day')} src slot {ref.get('src_slot')} {ref.get('task','')[:60]}: {ref.get('reason')}")
     trace("build-week-v2", sun_date.isoformat(), trace_lines)
-    print(f"task-tracker-manager: build-week (v2) complete — new file {new_title} live; pointer updated")
+    print(f"task-tracker-manager: build-week (template-first) complete — new file {new_title} live; Week ready for Kay review")
     return 0
-
 
 def cmd_build_week(args) -> int:
     """Sunday weekly rebuild ceremony.
@@ -2060,6 +2244,127 @@ def cmd_build_week(args) -> int:
     return 0
 
 
+
+def cmd_schedule_from_todo_days(args) -> int:
+    """Populate the Week planning tab from To Do rows with Day of the Week set.
+
+    Kay's Sunday scheduling bridge: she reviews the To Do backend, assigns a day
+    in column H, this command writes those non-completed rows into the matching
+    Week day block. Daily tabs remain untouched until Kay approves the Week plan
+    and asks to fan it out.
+    """
+    client = SheetsClient()
+    meta = client.get_metadata()
+    snap_ranges = [f"'{TAB_TODO}'!A1:{col_letter(len(TODO_HEADERS) - 1)}{TODO_MAX_ROWS}",
+                   f"'{TAB_WEEK}'!A1:{col_letter(WK_GRID_COLS - 1)}{WK_GRID_ROWS}"] + [
+        day_tab_block(d, DAY_COL_STATUS, DAY_COL_LAST, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW)
+        for d in DAY_TAB_NAMES if find_tab(meta, d)
+    ]
+    snap = snapshot_ranges(client, "schedule-from-todo-days", snap_ranges)
+
+    rows = _read_real_todo_rows(client)
+    ongoing = [r for r in rows if str(r[TODO_COL_STATUS]).strip() == "On-going"]
+    not_completed = [r for r in rows if str(r[TODO_COL_STATUS]).strip() == "Not Completed"]
+    other_active = [r for r in rows if str(r[TODO_COL_STATUS]).strip() not in {"On-going", "Not Completed", "Completed"}]
+    done = [r for r in rows if str(r[TODO_COL_STATUS]).strip() == "Completed"]
+    pack_summary = {
+        "ongoing": len(ongoing),
+        "not_completed": len(not_completed),
+        "other_active": len(other_active),
+        "completed": len(done),
+        "active": len(ongoing) + len(not_completed) + len(other_active),
+        "total": len(rows),
+    }
+    if not getattr(args, "dry_run", False):
+        pack_summary = _write_todo_rows_sorted(client, rows)
+        rows = _read_real_todo_rows(client)
+
+    planned: dict[str, list[str]] = {d: [] for d in DAY_TAB_NAMES}
+    skipped: list[dict] = []
+    for r in rows:
+        status = str(r[TODO_COL_STATUS] or "").strip()
+        task = str(r[TODO_COL_TASK] or "").strip()
+        if not task or status == "Completed":
+            continue
+        horizon = str(r[TODO_COL_HORIZON] or "").strip()
+        if _todo_is_recurring(horizon):
+            day3 = _recurring_day3(horizon)
+            if day3:
+                day_tab = _resolve_day_tab_name(day3)
+                if task not in planned[day_tab]:
+                    planned[day_tab].append(task)
+        day_value = str(r[TODO_COL_DAY] if len(r) > TODO_COL_DAY else "" or "").strip()
+        if day_value:
+            try:
+                day_tab = _resolve_day_tab_name(day_value)
+            except SystemExit:
+                skipped.append({"task": task, "day": day_value, "reason": "unrecognized day"})
+                continue
+            if task not in planned[day_tab]:
+                planned[day_tab].append(task)
+
+    collisions = {d: len(v) for d, v in planned.items() if len(v) > WK_SLOT_COUNT}
+    if collisions:
+        print(f"task-tracker-manager: refused schedule-from-todo-days — too many tasks for Week slots: {collisions}", file=sys.stderr)
+        return 1
+
+    summary = {d: len(v) for d, v in planned.items() if v}
+    if getattr(args, "dry_run", False):
+        print(json.dumps({
+            "target": "Week",
+            "pack_summary": pack_summary,
+            "would_write": summary,
+            "week_slot_capacity": WK_SLOT_COUNT,
+            "skipped": skipped,
+            "snapshot": snap,
+        }, indent=2))
+        return 0
+
+    # Clear Week task slots only, then write recurring baseline + H-assigned tasks.
+    week_tab = find_tab(client.get_metadata(), TAB_WEEK)
+    if week_tab is None:
+        print("task-tracker-manager: Week tab not found", file=sys.stderr)
+        return 1
+    try:
+        import build_week_tab
+        client.batch_update(build_week_tab.structure_requests(week_tab["sheetId"], week_dates(date.today())))
+    except Exception as e:
+        print(f"task-tracker-manager: WARN Week structure rebuild skipped — {e}", file=sys.stderr)
+    writes: list[tuple[str, list[list]]] = []
+    for widx, day in enumerate(WK_DAY_ORDER):
+        sc = col_letter(wk_status_col(widx))
+        tc = col_letter(wk_content_col(widx))
+        values_status = []
+        values_task = []
+        for i in range(WK_SLOT_COUNT):
+            task = planned[day][i] if i < len(planned[day]) else ""
+            values_status.append([False])
+            values_task.append([task])
+        writes.append((f"'{TAB_WEEK}'!{sc}{WK_SLOT_FIRST_ROW}:{sc}{WK_SLOT_LAST_ROW}", values_status))
+        writes.append((f"'{TAB_WEEK}'!{tc}{WK_SLOT_FIRST_ROW}:{tc}{WK_SLOT_LAST_ROW}", values_task))
+    for rng, vals in writes:
+        client.values_update(rng, vals)
+
+    # Daily tabs should remain empty until Kay approves Week and asks to distribute.
+    blank = [[False, "", "", "", ""] for _ in range(DAY_SLOT_COUNT)]
+    for day_tab in DAY_TAB_NAMES:
+        if find_tab(meta, day_tab):
+            client.values_update(day_tab_block(day_tab, DAY_COL_STATUS, DAY_COL_LAST, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW), blank)
+
+    trace("schedule-from-todo-days", date.today().isoformat(), [
+        f"- target: Week planning tab",
+        f"- packed To Do: {pack_summary}",
+        f"- wrote Week from To Do Day of the Week: {summary}",
+        f"- daily tabs cleared/not populated pending Kay approval",
+        f"- skipped: {skipped}",
+        f"- snapshot: {snap}",
+    ])
+    print(f"task-tracker-manager: scheduled To Do day assignments into Week — {summary}; daily tabs left empty. snapshot: {snap}")
+    if skipped:
+        print(f"task-tracker-manager: skipped {len(skipped)} row(s): {skipped[:10]}")
+    return 0
+
+
 def cmd_distribute_week(args) -> int:
     """Fan the finalized Week planning tab OUT into the 7 day tabs.
 
@@ -2249,7 +2554,7 @@ def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
     #    Recurring-Horizon rows are EXCLUDED: a daily check of a stamped recurring
     #    instance must never mark the permanent recurring template row 'Completed'.
     todo_rows = client.get_values(
-        f"'{TAB_TODO}'!A2:{col_letter(TODO_COL_HORIZON)}{TODO_MAX_ROWS}")
+        f"'{TAB_TODO}'!A2:{col_letter(len(TODO_HEADERS) - 1)}{TODO_MAX_ROWS}")
     todo_by_task: dict[str, list[dict]] = {}
     for i, row in enumerate(todo_rows):
         task = row[TODO_COL_TASK] if len(row) > TODO_COL_TASK else ""
@@ -2441,7 +2746,7 @@ def cmd_recurring_add(args) -> int:
     day3 = DAY_LABELS[day_idx]
     horizon = f"{RECURRING_HORIZON_PREFIX} {day3}"
     if horizon not in HORIZON_OPTIONS:
-        sys.exit(f"task-tracker-manager: weekly recurring supports Mon..Sat only "
+        sys.exit(f"task-tracker-manager: weekly recurring supports Sun..Sat "
                  f"(got {day3}). {horizon!r} not in {HORIZON_OPTIONS}")
     if args.type not in TYPE_OPTIONS:
         sys.exit(f"task-tracker-manager: --type must be one of {TYPE_OPTIONS}")
@@ -2463,10 +2768,10 @@ def cmd_recurring_add(args) -> int:
         sys.exit(f"task-tracker-manager: To Do tab is full (>{TODO_MAX_ROWS}).")
 
     snap = snapshot_ranges(client, "recurring-add",
-        [f"'{TAB_TODO}'!A{target_row}:G{target_row}"])
-    client.values_update(f"'{TAB_TODO}'!A{target_row}:G{target_row}", [[
+        [f"'{TAB_TODO}'!A{target_row}:{col_letter(len(TODO_HEADERS) - 1)}{target_row}"])
+    client.values_update(f"'{TAB_TODO}'!A{target_row}:{col_letter(len(TODO_HEADERS) - 1)}{target_row}", [[
         "On-going", args.task, args.type, args.project or "", "",
-        args.notes or "", horizon,
+        args.notes or "", horizon, "",
     ]])
 
     trace("recurring-add", f"{day3.lower()}-row{target_row}", [
@@ -2491,19 +2796,19 @@ def cmd_recurring_remove(args) -> int:
     if not (2 <= args.row <= TODO_MAX_ROWS):
         sys.exit(f"task-tracker-manager: --row must be 2..{TODO_MAX_ROWS} (1 is the header)")
 
-    pre = client.get_values(f"'{TAB_TODO}'!A{args.row}:G{args.row}")
+    pre = client.get_values(f"'{TAB_TODO}'!A{args.row}:{col_letter(len(TODO_HEADERS) - 1)}{args.row}")
     pre_row = pre[0] if pre and pre[0] else []
     if not pre_row or not any((c or "").strip() if isinstance(c, str) else c for c in pre_row):
         sys.exit(f"task-tracker-manager: To Do row {args.row} is already empty")
-    pad = list(pre_row) + [""] * (7 - len(pre_row))
+    pad = list(pre_row) + [""] * (len(TODO_HEADERS) - len(pre_row))
     horizon = str(pad[TODO_COL_HORIZON] or "")
     if not _todo_is_recurring(horizon):
         sys.exit(f"task-tracker-manager: refused — To Do row {args.row} Horizon "
                  f"{horizon!r} is not recurring. Use a normal edit, not recurring-remove.")
 
     snap = snapshot_ranges(client, "recurring-remove",
-        [f"'{TAB_TODO}'!A{args.row}:G{args.row}"])
-    client.values_clear(f"'{TAB_TODO}'!A{args.row}:G{args.row}")
+        [f"'{TAB_TODO}'!A{args.row}:{col_letter(len(TODO_HEADERS) - 1)}{args.row}"])
+    client.values_clear(f"'{TAB_TODO}'!A{args.row}:{col_letter(len(TODO_HEADERS) - 1)}{args.row}")
 
     trace("recurring-remove", f"row{args.row}", [
         f"- removed To Do row: {args.row}",
@@ -2779,15 +3084,15 @@ def cmd_reformat(args) -> int:
             },
             "index": 0,
         }})
-        # Habit rules: primary/supplemental checked → sage-extra-light fill across A:F.
-        for col_letter in ("A", "C", "E"):
+        # Habit rules: each checkbox shades only its own checkbox+label pair.
+        for col_letter, start_col, end_col in (("A", 0, 2), ("C", 2, 4), ("E", 4, 6)):
             R.append({"addConditionalFormatRule": {
                 "rule": {
                     "ranges": [{"sheetId": sid,
                                 "startRowIndex": DAY_HABIT_FIRST_ROW - 1,
                                 "endRowIndex": DAY_HABIT_LAST_ROW,
-                                "startColumnIndex": DAY_COL_STATUS,
-                                "endColumnIndex": 6}],
+                                "startColumnIndex": start_col,
+                                "endColumnIndex": end_col}],
                     "booleanRule": {
                         "condition": {"type": "CUSTOM_FORMULA",
                                       "values": [{"userEnteredValue":
@@ -2912,7 +3217,7 @@ def cmd_report(args) -> int:
     unscheduled = []
     long_term = []
     todo_rows = client.get_values(
-        f"'{TAB_TODO}'!A2:{col_letter(TODO_COL_HORIZON)}{TODO_MAX_ROWS}")
+        f"'{TAB_TODO}'!A2:{col_letter(len(TODO_HEADERS) - 1)}{TODO_MAX_ROWS}")
     for i, row in enumerate(todo_rows):
         r = 2 + i  # 1-based
         status = row[TODO_COL_STATUS] if len(row) > TODO_COL_STATUS else ""
@@ -3139,14 +3444,76 @@ def cmd_move_day_item(args) -> int:
     return 0
 
 
+def _default_closeout_date() -> date:
+    """Return the human operating date for Good Night carry-forward.
+
+    Good Night often runs after midnight. Before 4am ET, treat the closeout as
+    the prior calendar day so Sunday night does not become Monday -> Tuesday.
+    """
+    now = datetime.now(ZoneInfo("America/New_York"))
+    if now.hour < 4:
+        return (now - timedelta(days=1)).date()
+    return now.date()
+
+
+def _pack_day_tab_checked_rows(client: SheetsClient, day_name: str) -> dict:
+    """Pack a day tab's task rows with checked items first, then active items.
+
+    This keeps yesterday readable after carry-forward clears incomplete rows out
+    of the middle of the day. Formatting/validation live on the sheet rows, so
+    only values are rewritten.
+    """
+    vals = client.get_values(
+        day_tab_block(day_name, DAY_COL_STATUS, DAY_COL_LAST, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW)
+    )
+    completed: list[list] = []
+    active: list[list] = []
+    for i in range(DAY_SLOT_COUNT):
+        row = list(vals[i]) if i < len(vals) else []
+        padded = row + [""] * ((DAY_COL_LAST + 1) - len(row))
+        task_text = str(padded[DAY_COL_TASK] or "").strip()
+        if not task_text or task_text.lower() == "task":
+            continue
+        payload = [
+            bool(_is_truthy(padded[DAY_COL_STATUS])),
+            task_text,
+            padded[DAY_COL_TYPE],
+            padded[DAY_COL_PROJECT],
+            padded[DAY_COL_NOTES],
+        ]
+        if payload[DAY_COL_STATUS]:
+            completed.append(payload)
+        else:
+            active.append(payload)
+
+    packed = completed + active
+    blank = [False, "", "", "", ""]
+    values = packed + [blank[:] for _ in range(DAY_SLOT_COUNT - len(packed))]
+    client.values_update(
+        day_tab_block(day_name, DAY_COL_STATUS, DAY_COL_LAST, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW),
+        values,
+    )
+    return {
+        "completed": len(completed),
+        "active": len(active),
+        "blank": DAY_SLOT_COUNT - len(packed),
+    }
+
+
 def cmd_carry_forward_day(args) -> int:
     """Move all incomplete items from one day tab to the next day's empty slots.
 
-    Default is today -> tomorrow. Completed and empty slots stay where they are.
-    This is the Good Night carry-forward path: it does not require Kay to approve
-    each individual move.
+    Default is closeout-date -> following day. Completed and empty slots stay
+    where they are. This is the Good Night carry-forward path: it does not
+    require Kay to approve each individual move.
     """
-    today = date.today()
+    if getattr(args, "date", None):
+        try:
+            today = date.fromisoformat(args.date)
+        except ValueError:
+            sys.exit("task-tracker-manager: --date must be YYYY-MM-DD")
+    else:
+        today = _default_closeout_date()
     src_name = _resolve_day_tab_name(args.from_day) if args.from_day else DAY_LABELS[today.weekday()]
     dst_name = _resolve_day_tab_name(args.to_day) if args.to_day else DAY_LABELS[(today.weekday() + 1) % 7]
 
@@ -3225,14 +3592,25 @@ def cmd_carry_forward_day(args) -> int:
             print(f"  - {src_name} slot {m['src_slot']}: {m['task']} ({m['refused']})", file=sys.stderr)
         return 1
 
-    if not planned:
-        print(f"task-tracker-manager: carry-forward-day complete — no incomplete {src_name} items to move")
-        return 0
-
     snap = snapshot_ranges(client, "carry-forward-day", [
         day_tab_block(src_name, DAY_COL_STATUS, DAY_COL_LAST, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW),
         day_tab_block(dst_name, DAY_COL_STATUS, DAY_COL_LAST, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW),
     ])
+
+    if not planned:
+        pack_summary = _pack_day_tab_checked_rows(client, src_name)
+        trace("carry-forward-day", f"{src_name.lower()}-to-{dst_name.lower()}", [
+            "- moved: 0",
+            f"- source: {src_name}",
+            f"- destination: {dst_name}",
+            f"- source packed: {pack_summary}",
+            f"- snapshot: {snap}",
+        ])
+        print(
+            f"task-tracker-manager: carry-forward-day complete — no incomplete {src_name} "
+            f"items to move; packed {src_name} checked rows to top"
+        )
+        return 0
 
     for m in planned:
         client.values_update(
@@ -3268,11 +3646,13 @@ def cmd_carry_forward_day(args) -> int:
             }
         })
     client.batch_update(clear_reqs)
+    pack_summary = _pack_day_tab_checked_rows(client, src_name)
 
     trace("carry-forward-day", f"{src_name.lower()}-to-{dst_name.lower()}", [
         f"- moved: {len(planned)}",
         f"- source: {src_name}",
         f"- destination: {dst_name}",
+        f"- source packed: {pack_summary}",
         f"- snapshot: {snap}",
         "",
         *[
@@ -3280,7 +3660,10 @@ def cmd_carry_forward_day(args) -> int:
             for m in planned
         ],
     ])
-    print(f"task-tracker-manager: carry-forward-day complete — moved {len(planned)} item(s) {src_name} → {dst_name}")
+    print(
+        f"task-tracker-manager: carry-forward-day complete — moved {len(planned)} "
+        f"item(s) {src_name} → {dst_name}; packed {src_name} checked rows to top"
+    )
     return 0
 
 
@@ -3468,6 +3851,12 @@ def main():
                     help="force Drive search before resolving the prior file. Recovery only; routine runs trust the pointer.")
     bw.set_defaults(func=cmd_build_week)
 
+    sfd = sub.add_parser("schedule-from-todo-days",
+                         help="Populate the Week tab from To Do column H Day of the Week assignments.")
+    sfd.add_argument("--dry-run", action="store_true",
+                     help="report what would be written without changing the Week tab")
+    sfd.set_defaults(func=cmd_schedule_from_todo_days)
+
     dw = sub.add_parser("distribute-week",
                         help="Fan the finalized Week planning tab OUT into the 7 "
                              "day tabs (collision-aware; snapshot+trace).")
@@ -3512,6 +3901,8 @@ def main():
                     help="source day tab (default: today)")
     cf.add_argument("--to", dest="to_day", default=None,
                     help="destination day tab (default: tomorrow)")
+    cf.add_argument("--date", default=None,
+                    help="closeout date YYYY-MM-DD; default uses NY operating date, treating before 4am as prior day")
     cf.add_argument("--dry-run", action="store_true",
                     help="show planned carry-forward moves without writing")
     cf.set_defaults(func=cmd_carry_forward_day)

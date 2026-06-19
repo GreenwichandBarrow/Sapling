@@ -33,7 +33,7 @@ curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KE
 </credentials>
 
 <objective>
-Scan all inbound and outbound email, Gmail drafts, and Granola transcripts. Classify, detect deal signals, and write the email-scan-results artifact that pipeline-manager and other skills consume.
+Scan all inbound and outbound email, Gmail drafts, the `auto/deal flow` Gmail label, and Granola transcripts. Classify, detect deal signals, and write the email-scan-results artifact that pipeline-manager and other skills consume.
 
 **This is the first skill to run in the morning workflow.** Everything downstream depends on its output.
 
@@ -71,6 +71,7 @@ Read `brain/context/email-intelligence-input-{YYYY-MM-DD}.json` first. It contai
 ### Inbound Email Scan
 ```bash
 gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send "newer_than:2d label:INBOX" --json --max 50
+gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send 'newer_than:7d label:"auto/deal flow"' --json --max 50
 ```
 
 For each email, classify and extract:

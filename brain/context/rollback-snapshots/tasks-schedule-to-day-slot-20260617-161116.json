@@ -1,0 +1,12 @@
+{
+  "verb": "schedule-to-day-slot",
+  "timestamp": "20260617-161116",
+  "sheet_id": "12vE5XpAXeVFxzVHvRz6Hb0oRBQNEkt-ZPS7ANctJDQo",
+  "ranges": {
+    "'Thu'!A22:E22": [
+      [
+        false
+      ]
+    ]
+  }
+}

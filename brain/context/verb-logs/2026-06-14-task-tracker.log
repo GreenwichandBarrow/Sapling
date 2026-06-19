@@ -1,0 +1,42 @@
+
+[2026-06-14T15:10:39.493925] reformat — rules-reapplied
+  - applied 30 conditional-format rules
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-reformat-20260614-151033.json
+  - pack-to-top: 0 day tab(s) compacted
+  - pack-to-top: 1 Week-tab day-block(s) compacted
+
+[2026-06-14T16:48:00.875030] build-week-v2 — 2026-06-14
+  - prior file: TO DO 6.7.26 (102bmS-QjW7nhBBKF-sWVKSLvDgKhmdl2CcuZiRJvOdQ)
+  - template source: 1EaznKNTweSVRxbXpoEA2CyXLD8P96mWVU0K38-5pMxc
+  - new file: TO DO 6.14.26 (12vE5XpAXeVFxzVHvRz6Hb0oRBQNEkt-ZPS7ANctJDQo)
+  - week label: WEEK OF Jun 14-20
+  - missing day-tab tasks added to prior To Do: 0
+  - combined day-task edits folded before import: 2
+  - prior To Do packed before import: {'active': 103, 'completed': 36, 'total': 139}
+  - imported To Do: {'active': 103, 'completed': 36, 'total': 139}
+  - project tabs copied: ['Deal Aggregator Expansion', 'Myself Renewed Healthcare']
+  - archive daily tabs copied: ['archive_6.7_Sun', 'archive_6.7_Mon', 'archive_6.7_Tue', 'archive_6.7_Wed', 'archive_6.7_Thu', 'archive_6.7_Fri', 'archive_6.7_Sat']
+  - recurring stamped onto Week: 5
+  - prior file archived: True (1ujEwLzsB4C6ZwhMfiRT8lS5WxrzYwRra)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-build-week-v2-20260614-164735.json
+
+[2026-06-14T17:37:30.711767] schedule-from-todo-days — 2026-06-14
+  - packed To Do: {'ongoing': 6, 'not_completed': 68, 'other_active': 0, 'completed': 41, 'active': 74, 'total': 115}
+  - wrote day tabs from To Do Day of the Week: {'Sun': 3, 'Mon': 19, 'Tue': 1, 'Fri': 2}
+  - skipped: []
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260614-173725.json
+
+[2026-06-14T17:43:37.736342] schedule-from-todo-days — 2026-06-14
+  - target: Week planning tab
+  - packed To Do: {'ongoing': 6, 'not_completed': 68, 'other_active': 0, 'completed': 41, 'active': 74, 'total': 115}
+  - wrote Week from To Do Day of the Week: {'Sun': 5, 'Mon': 21, 'Tue': 1, 'Wed': 1, 'Fri': 3}
+  - daily tabs cleared/not populated pending Kay approval
+  - skipped: []
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260614-174328.json
+
+[2026-06-14T17:50:12.747474] distribute-week — 2026-06-14
+  - week (Sunday boundary): 2026-06-14 .. 2026-06-20
+  - fanned Week plan → day tabs: {'Sun': 5, 'Mon': 13, 'Tue': 4, 'Wed': 3, 'Thu': 0, 'Fri': 5, 'Sat': 0}
+  - forced over collisions: False
+  - collisions at run: none
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-distribute-week-20260614-175010.json

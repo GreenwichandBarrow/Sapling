@@ -531,7 +531,7 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 - Single notification, not one per brief
 - Every brief entry must include the person's name, meeting type, time, and Google Doc link
 - Doc links are mandatory. Never send the notification without them.
-- If running via launchd (overnight), notification arrives with the morning batch. No overnight pings.
+- There is currently no active systemd/launchd timer for this manager. If a timer is explicitly reintroduced later, notification should arrive with the morning batch; no overnight pings.
 
 **If no meetings found:** Do not send a Slack notification. Silent exit.
 </phase_4>
@@ -555,17 +555,19 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 
 If multiple meetings are found on the same target date, subagents for different meetings run in parallel.
 
-## Nightly Automation Flow
+## On-Demand Manager Flow
+
+There is no active VPS systemd timer for `meeting-brief-manager` as of 2026-06-19. Good Morning/pipeline-manager owns the daily brief-needed surfacing; this manager is invoked manually or by an explicit future timer.
 
 ```
-1. launchd fires meeting-brief-manager
-2. Calendar scan: tomorrow + day after tomorrow
+1. Kay/Codex invokes meeting-brief-manager, or a future explicit timer fires it
+2. Calendar scan: tomorrow + day after tomorrow, with Friday covering Monday/Tuesday when used for morning prep
 3. Classify each meeting
 4. Skip internals
 5. Route externals to Subagent 1 (parallel if multiple)
 6. Route investors to Subagent 2 (parallel if multiple)
 7. All stop hooks pass
-8. Single consolidated Slack notification
+8. Single consolidated Slack notification when appropriate
 9. Exit
 ```
 </execution_flow>

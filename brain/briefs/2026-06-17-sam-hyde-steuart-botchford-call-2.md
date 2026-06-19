@@ -1,6 +1,6 @@
 ---
 schema_version: "1.0.0"
-date: 2026-06-17
+date: 2026-06-22
 type: brief
 title: "Call Prep: Sam Hyde and Steuart Botchford"
 people: ["[[entities/sam-hyde]]", "[[entities/steuart-botchford]]"]
@@ -17,7 +17,7 @@ tags:
 
 # FOLLOW-UP CALL: Sam Hyde and Steuart Botchford - Call #2
 
-Advisor / investor-style update call | Wednesday June 17, 2026, 10:00 AM ET  
+Advisor / investor-style update call | Monday June 22, 2026, 11:00 AM ET  
 Google Meet
 
 ---
@@ -60,4 +60,5 @@ Reconnect after Kay's June 8 confidential update and use Sam and Steuart as patt
 - 2025-06-14 - Sam replied that the most valuable way for him to engage is to understand specific companies Kay is pursuing and how she is thinking about them.
 - 2026-06-08 - Kay sent Sam and Steuart the latest confidential Greenwich & Barrow update and asked to catch up on latest industries and deals.
 - 2026-06-08 - Sam replied positively and asked Rossy Jimenez to coordinate time.
-- 2026-06-17 - Sam, Steuart, and Kay scheduled for update call.
+- 2026-06-17 - Sam, Steuart, and Kay originally scheduled for update call.
+- 2026-06-22 - Call moved to Monday June 22 at 11:00 AM ET.

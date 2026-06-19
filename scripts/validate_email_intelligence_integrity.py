@@ -192,6 +192,14 @@ def validate_compact_input(input_artifact: str, run_date: date) -> list[str]:
         if key not in data:
             failures.append(f"compact input artifact missing key: {key}")
 
+    queries = data.get("queries", {})
+    deal_flow_query = str(queries.get("deal_flow_label") or "")
+    if "auto/deal flow" not in deal_flow_query:
+        failures.append(
+            "compact input artifact missing auto/deal flow Gmail label query "
+            "(queries.deal_flow_label)"
+        )
+
     return failures
 
 

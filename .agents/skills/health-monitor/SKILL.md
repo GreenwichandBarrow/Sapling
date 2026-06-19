@@ -63,8 +63,6 @@ Checks scheduled jobs, usage limits, and webhook health.
 Expected jobs (this list is the source of truth — must match `AGENTS.md` and
 `docs/scheduled-skills.md`; missing systemd timer for any skill here = RED):
 - `deal-aggregator.timer` (Mon-Fri 7:30am ET)
-- `deal-aggregator-afternoon.timer` (Mon-Fri 2pm ET)
-- `deal-aggregator-friday.timer` (Fri 7:30am ET digest)
 - `email-intelligence.timer` (Mon-Fri 7am ET)
 - `cold-call-operations-sunday.timer` (Sun 6pm ET)
 - `cold-call-snapshot-refresh.timer` (Mon-Fri 9am ET) — feeds dashboard cold-call activity
@@ -73,7 +71,7 @@ Expected jobs (this list is the source of truth — must match `AGENTS.md` and
 - `nightly-tracker-audit.timer` (Nightly 11:30pm ET)
 - `conference-discovery.timer` (Sun 9pm ET)
 - `health-monitor.timer` (Fri 12:30am ET)
-- `launchd-debugger.timer` (Daily 5am ET; legacy name, systemd runner)
+- `launchd-debugger.timer` (Daily 8:20am ET after email-intelligence/deal-aggregator; legacy name, systemd runner)
 - `calibration-workflow.timer` (Thu 11pm ET)
 - `attio-snapshot-refresh.timer` (Mon-Fri 8am ET) — feeds dashboard's landing hero, Active Deal Pipeline, M&A Analytics deal-flow KPIs
 - `apollo-credits-refresh.timer` (Mon-Fri 8am ET)

@@ -6,6 +6,8 @@ status: prospect
 company: "[[entities/morrison-cohen]]"
 role: Partner & Co-Chair, Corporate Practice
 email: rmason@morrisoncohen.com
+attio_id: c6578661-fd70-4aa2-8f5a-05732d1a2c2c
+attio_synced_at: 2026-06-10T11:03:10Z
 tags:
   - date/2026-06-03
   - entity

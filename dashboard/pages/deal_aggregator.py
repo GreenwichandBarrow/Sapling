@@ -474,7 +474,7 @@ def _source_category(source: str, raw_category: str) -> str:
     s = source.lower()
     if any(x in s for x in ("everingham", "benchmark", "viking", "searchfunder", "iag", "rejigg", "dealforce", "smb deal hunter")):
         return "Email newsletters / broker blasts"
-    if any(x in s for x in ("bizbuysell", "business exits", "flippa", "quiet light", "website closers", "empire", "synergy")):
+    if any(x in s for x in ("bizbuysell", "bizquest", "dealmatch", "baton", "business exits", "flippa", "quiet light", "website closers", "empire", "synergy")):
         return "Broker marketplaces"
     if raw_category.lower().startswith("niche") or any(x in s for x in ("sica", "pco", "marshberry", "agency")):
         return "Association / niche boards"

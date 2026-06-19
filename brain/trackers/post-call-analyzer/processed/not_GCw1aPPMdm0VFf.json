@@ -1,0 +1,24 @@
+{
+  "id": "not_GCw1aPPMdm0VFf",
+  "title": "G&B Industry Brainstorm",
+  "counterparty": "Guillermo",
+  "processed_at": "2026-06-17T17:06:53.873036+00:00",
+  "vault_call_note": "brain/calls/2026-06-17-guillermo-lavergne-brainstorm.md",
+  "doc_url": "https://docs.google.com/document/d/1vH8YOF_TDbIRVBGvS1kCL8UKi-r6en9SkQajR12u4ZM/edit?usp=drivesdk",
+  "doc_id": "1vH8YOF_TDbIRVBGvS1kCL8UKi-r6en9SkQajR12u4ZM",
+  "transcript_doc_url": "https://docs.google.com/document/d/1bCBV0I1axi7b0v7y885XLo3d0LwDr1wvuaYPldO5TJQ/edit?usp=drivesdk",
+  "transcript_doc_id": "1bCBV0I1axi7b0v7y885XLo3d0LwDr1wvuaYPldO5TJQ",
+  "attio_notes": {
+    "people": [
+      "2b613b57-537c-4cef-8fc5-e053b51d7a98"
+    ],
+    "companies": [
+      "98e2059b-756c-4337-9883-d2ae9b5241d4"
+    ]
+  },
+  "tasks_appended": 3,
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_GCw1aPPMdm0VFf.json",
+  "slack_posted": true,
+  "detector": "granola-api-rest",
+  "queued_at": "2026-06-17T13:00:45-04:00"
+}

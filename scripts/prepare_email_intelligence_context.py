@@ -342,7 +342,16 @@ def main() -> int:
     )
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
-    inbound = [compact_thread(t) for t in gmail_search("newer_than:2d label:INBOX", args.inbound_max)]
+    inbound_raw = gmail_search("newer_than:2d label:INBOX", args.inbound_max)
+    deal_flow_raw = gmail_search('newer_than:7d label:"auto/deal flow"', args.inbound_max)
+
+    inbound_by_id = {}
+    for thread in inbound_raw + deal_flow_raw:
+        thread_id = thread.get("id") or thread.get("threadId")
+        if thread_id:
+            inbound_by_id[thread_id] = thread
+
+    inbound = [compact_thread(t) for t in inbound_by_id.values()]
     outbound = [
         compact_thread(t)
         for t in gmail_search(f"from:{ACCOUNT} newer_than:2d", args.outbound_max)
@@ -365,6 +374,7 @@ def main() -> int:
         },
         "queries": {
             "inbound": "newer_than:2d label:INBOX",
+            "deal_flow_label": "newer_than:7d label:\"auto/deal flow\"",
             "outbound": f"from:{ACCOUNT} newer_than:2d",
         },
         "inbound": inbound,

@@ -18,3 +18,28 @@
   - Mon slot 11 → Tue slot 15: Reply to Carlos
   - Mon slot 12 → Tue slot 16: Follow-up emails to lunch attendees & conferences
   - Mon slot 13 → Tue slot 17: Follow up: Krupa, Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg
+
+[2026-06-15T11:18:59.952687] distribute-week — 2026-06-14
+  - week (Sunday boundary): 2026-06-14 .. 2026-06-20
+  - fanned Week plan → day tabs: {'Sun': 5, 'Mon': 13, 'Tue': 4, 'Wed': 3, 'Thu': 3, 'Fri': 6, 'Sat': 0}
+  - forced over collisions: True
+  - collisions at run: ['Tue slot 5: day tab has "Process payroll" but Week plan is empty there', 'Tue slot 6: day tab has "Process conference registrations" but Week plan is empty there', 'Tue slot 7: day tab has "Email Filipe @ Pest Mgmt company" but Week plan is empty there', 'Tue slot 8: day tab has "DealsX targeted outreach, share lists" but Week plan is empty there', 'Tue slot 9: day tab has "Send DealsX specialization file" but Week plan is empty there', 'Tue slot 10: day tab has "Follow up email to Matt" but Week plan is empty there', 'Tue slot 11: day tab has "Pest 10-company research — June head-to-head vs DealsX + JJ" but Week plan is empty there', 'Tue slot 12: day tab has "Call IRS to confirm Form 8822-B address update" but Week plan is empty there', 'Tue slot 13: day tab has "Scan WPMA directory for NY-based members" but Week plan is empty there', 'Tue slot 14: day tab has "Thank you: Jay, Laura, Paul, Bob" but Week plan is empty there', 'Tue slot 15: day tab has "Reply to Carlos" but Week plan is empty there', 'Tue slot 16: day tab has "Follow-up emails to lunch attendees & conferences" but Week plan is empty there', 'Tue slot 17: day tab has "Follow up: Krupa, Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg" but Week plan is empty there']
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-distribute-week-20260615-111840.json
+
+[2026-06-15T13:43:51.282735] schedule-to-day-slot — tue-5
+  - task: Schedule 2-3 luxury/hospitality pest validation calls
+  - placement: Tue tab slot 5 (row 21)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260615-134350.json
+
+[2026-06-15T22:24:24.939364] carry-forward-day — tue-to-wed
+  - moved: 5
+  - source: Tue
+  - destination: Wed
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260615-222422.json
+  
+  - Tue slot 1 → Wed slot 2: Review Mid-Search Summit Market Update takeaways, anchor in playbook update (four-horsemen framework)
+  - Tue slot 2 → Wed slot 3: Contact Eric - testing IQ & Sensory, DOT program
+  - Tue slot 3 → Wed slot 6: Contact Rebecca - follow up on programming
+  - Tue slot 4 → Wed slot 7: Re-plan deal aggregator expansion (dedicated session)
+  - Tue slot 5 → Wed slot 8: Schedule 2-3 luxury/hospitality pest validation calls

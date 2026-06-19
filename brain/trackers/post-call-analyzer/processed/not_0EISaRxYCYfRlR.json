@@ -1,0 +1,24 @@
+{
+  "id": "not_0EISaRxYCYfRlR",
+  "title": "Melissa I Kay",
+  "counterparty": "Melissa",
+  "processed_at": "2026-06-17T17:06:38.637260+00:00",
+  "vault_call_note": "brain/calls/2026-06-17-melissa-rosenblatt.md",
+  "doc_url": "https://docs.google.com/document/d/15R3azL4YPdy2-05PjCfR-3aDskx577RBiliJG-eawxg/edit?usp=drivesdk",
+  "doc_id": "15R3azL4YPdy2-05PjCfR-3aDskx577RBiliJG-eawxg",
+  "transcript_doc_url": "https://docs.google.com/document/d/1J7t8F_oD7LPJQbbg6C4d69Mazf9blSnZdq_2D7bCSP4/edit?usp=drivesdk",
+  "transcript_doc_id": "1J7t8F_oD7LPJQbbg6C4d69Mazf9blSnZdq_2D7bCSP4",
+  "attio_notes": {
+    "people": [
+      "4b5fa1d4-3a8b-4880-acac-6dd0e0d69808"
+    ],
+    "companies": [
+      "98aaac90-42ca-4c6d-9f10-8663159322c7"
+    ]
+  },
+  "tasks_appended": 5,
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_0EISaRxYCYfRlR.json",
+  "slack_posted": true,
+  "detector": "granola-api-rest",
+  "queued_at": "2026-06-17T13:00:45-04:00"
+}

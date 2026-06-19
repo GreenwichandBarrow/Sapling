@@ -7,6 +7,7 @@ skill outputs (zero-deal days, sub-headers, missing fields).
 
 from __future__ import annotations
 
+from collections import Counter
 from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -28,6 +29,8 @@ PIPELINE_SNAPSHOT_PATH = VAULT_ROOT / "context" / "attio-pipeline-snapshot.json"
 JJ_SNAPSHOT_PATH = VAULT_ROOT / "context" / "jj-activity-snapshot.json"
 DEALSX_SNAPSHOT_PATH = VAULT_ROOT / "context" / "dealsx-weekly-snapshot.json"
 QUALITY_CONV_PATH = VAULT_ROOT / "context" / "quality-conversations-manual.json"
+CONFERENCE_PIPELINE_SNAPSHOT_PATH = VAULT_ROOT / "context" / "conference-pipeline-snapshot.json"
+PIPELINE_SOURCE_MAP_PATH = VAULT_ROOT / "context" / "pipeline-source-map.json"
 WEEKLY_TRACKERS_DIR = VAULT_ROOT / "trackers" / "weekly"
 
 _SESSION_DECISIONS_RE = re.compile(r"^session-decisions-(\d{4}-\d{2}-\d{2})\.md$")
@@ -113,6 +116,9 @@ class DealAggregatorScan:
 SOURCE_BUCKETS = {
     "axial": "axial",
     "bizbuysell": "bizbuysell",
+    "bizquest": "bizbuysell",
+    "dealmatch": "bizbuysell",
+    "baton": "bizbuysell",
     "email": "email",
     "dealsx": "dealsx",
     "rejigg": "email",
@@ -1457,20 +1463,37 @@ class EmailOrchestratorDashboardStatus:
     pipeline_items: int
     relationship_items: int
     task_candidates: int
+    stale_drafts: int = 0
+    drafts_missing_recipient: int = 0
+    input_artifact: str | None = None
+    input_status: str = "unknown"
     needs_kay: list[str] = field(default_factory=list)
     blocked: list[str] = field(default_factory=list)
 
     @property
+    def dashboard_needs_kay(self) -> list[str]:
+        return [
+            item
+            for item in self.needs_kay
+            if not str(item).startswith("Clarify email follow-through identity/source")
+        ]
+
+    @property
     def status(self) -> str:
-        if self.send_blockers or self.blocked or self.source_status in {"missing", "error"}:
+        if (
+            self.send_blockers
+            or self.blocked
+            or self.source_status in {"missing", "error"}
+            or self.input_status in {"missing", "error"}
+        ):
             return "alert"
-        if self.source_status == "stale" or self.needs_kay:
+        if self.source_status == "stale" or self.input_status == "stale" or self.dashboard_needs_kay:
             return "warn"
         return "ok"
 
     @property
     def review_count(self) -> int:
-        return len(self.needs_kay) + len(self.blocked) + self.send_blockers
+        return len(self.dashboard_needs_kay) + len(self.blocked) + self.send_blockers
 
 
 def load_email_orchestrator_status() -> EmailOrchestratorDashboardStatus:
@@ -1513,6 +1536,10 @@ def load_email_orchestrator_status() -> EmailOrchestratorDashboardStatus:
         pipeline_items=int(data.get("pipeline_items") or 0),
         relationship_items=int(data.get("relationship_items") or 0),
         task_candidates=int(data.get("task_candidates") or 0),
+        stale_drafts=int(data.get("stale_drafts") or 0),
+        drafts_missing_recipient=int(data.get("drafts_missing_recipient") or 0),
+        input_artifact=data.get("input_artifact"),
+        input_status=str(data.get("input_status") or "unknown"),
         needs_kay=list(data.get("needs_kay") or []),
         blocked=list(data.get("blocked") or []),
     )
@@ -1886,6 +1913,7 @@ _ACTIVE_NICHES = [
 _INVESTOR_SLUG_HINTS = (
     "guillermo",
     "jeff-stevens",
+    "jeff-pest-opportunity",
     "jeff-kay",
     "stevens-monthly",
     "stevens-biweekly",
@@ -1914,6 +1942,14 @@ _COACHING_SLUG_HINTS = (
     "harrison-wells",
     "jackson-niketas",
 )
+
+# Owner/seller calls sometimes arrive from Granola/Gmail without reliable
+# `classification_type` metadata. Keep this deliberately narrow and promote
+# repeated examples into the source artifact instead of growing a broad heuristic.
+_OWNER_SELLER_SLUG_HINTS = (
+    "total-extermination",
+)
+SEARCH_START_DATE = date(2025, 2, 1)
 _CIM_PATTERN = re.compile(r"\bCIM(?:s|s received)?\b", re.IGNORECASE)
 _CALL_FILENAME_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-(.+)\.md$")
 
@@ -1981,11 +2017,11 @@ class WeeklyGoalMetric:
 
     @property
     def status(self) -> str:
-        if self.target_min <= self.count <= self.target_max:
+        # Kay's current weekly M&A goals are minimum viable activity targets:
+        # any captured activity is on track; zero is the only below-goal state.
+        if self.count >= self.target_min:
             return "on_track"
-        if self.count < self.target_min:
-            return "below"
-        return "above"
+        return "below"
 
 
 @dataclass
@@ -1998,10 +2034,33 @@ class SourceMixRow:
 
 
 @dataclass
+class PipelineSourceRecord:
+    company: str
+    source: str
+    source_label: str
+    current_stage: str | None = None
+    source_confidence: str = "needs_review"
+    qualified_conversation_date: date | None = None
+    nda_signed_date: date | None = None
+    financials_received_date: date | None = None
+    loi_submitted_date: date | None = None
+    signed_loi_date: date | None = None
+    closed_not_proceeding_date: date | None = None
+
+
+@dataclass
+class PipelineSourceMap:
+    search_start: date
+    generated_at: str | None
+    records: list[PipelineSourceRecord]
+
+
+@dataclass
 class MAAnalytics:
     week_start: date
     week_end: date
     deal_flow_tiles: list[KPITile]  # Zone 1 (5 tiles)
+    deal_flow_ltd_values: list[int | str]
     channels: list[ChannelRow]  # Legacy weekly channel rows; source mix is the default page view
     source_rows: list[SourceMixRow]  # Lifetime source attribution for deal starts
     trends: list[TrendPanel]  # Zone 4 (4 panels)
@@ -2106,6 +2165,173 @@ def _closures_in_window(snapshot: PipelineSnapshot, start: date, end: date) -> i
     return n
 
 
+def _deal_flow_ltd_values(
+    snapshot: PipelineSnapshot | None,
+    calls: list[CallSummary],
+) -> list[int | str]:
+    """Cumulative deal-flow outcome values for the M&A Activity table.
+
+    The Attio snapshot is stage-state, not a full transition ledger yet. Treat
+    current stages as a cumulative funnel: a deal in Financials also counts as
+    NDA-forward, a deal in Submitted LOI also counts as Financials, etc. Closed
+    post-NDA records count toward NDA signed and closed/not-proceeding; the
+    current snapshot contract does not yet identify whether those closed records
+    also reached Financials or LOI.
+    """
+    quality_conversations = sum(
+        1
+        for c in calls
+        if c.classification == "partner"
+        and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
+        and not _slug_matches(c.slug, _COACHING_SLUG_HINTS)
+    )
+    if snapshot is None:
+        return [quality_conversations, "—", "—", "—", "—"]
+
+    stage_counts = Counter(d.stage for d in snapshot.deals)
+    closed_post_nda = snapshot.closed_count_post_nda
+    signed_loi = stage_counts.get("Signed LOI", 0)
+    submitted_loi = stage_counts.get("Submitted LOI", 0) + signed_loi
+    financials = stage_counts.get("Financials Received", 0) + submitted_loi
+    nda = stage_counts.get("NDA", 0) + financials + closed_post_nda
+
+    return [
+        quality_conversations,
+        nda,
+        financials,
+        submitted_loi,
+        closed_post_nda,
+    ]
+
+
+def _source_map_date(value: str | None) -> date | None:
+    if not value:
+        return None
+    try:
+        return date.fromisoformat(str(value)[:10])
+    except ValueError:
+        return None
+
+
+def load_pipeline_source_map() -> PipelineSourceMap | None:
+    """Load durable pipeline event/source attribution.
+
+    Attio's dashboard snapshot is current state only. This artifact is the
+    cumulative event ledger used for M&A Activity lifetime rows and source mix.
+    """
+    if not PIPELINE_SOURCE_MAP_PATH.exists():
+        return None
+    try:
+        data = json.loads(PIPELINE_SOURCE_MAP_PATH.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+    search_start = _source_map_date(data.get("search_start")) or SEARCH_START_DATE
+    records: list[PipelineSourceRecord] = []
+    for raw in data.get("records", []):
+        if not isinstance(raw, dict) or not raw.get("company"):
+            continue
+        records.append(
+            PipelineSourceRecord(
+                company=str(raw.get("company", "")).strip(),
+                source=str(raw.get("source", "unknown")).strip() or "unknown",
+                source_label=str(raw.get("source_label") or raw.get("source") or "Unknown"),
+                current_stage=raw.get("current_stage"),
+                source_confidence=str(raw.get("source_confidence") or "needs_review"),
+                qualified_conversation_date=_source_map_date(raw.get("qualified_conversation_date")),
+                nda_signed_date=_source_map_date(raw.get("nda_signed_date")),
+                financials_received_date=_source_map_date(raw.get("financials_received_date")),
+                loi_submitted_date=_source_map_date(raw.get("loi_submitted_date")),
+                signed_loi_date=_source_map_date(raw.get("signed_loi_date")),
+                closed_not_proceeding_date=_source_map_date(raw.get("closed_not_proceeding_date")),
+            )
+        )
+    return PipelineSourceMap(
+        search_start=search_start,
+        generated_at=data.get("generated_at"),
+        records=records,
+    )
+
+
+def _date_in_window(value: date | None, start: date, end: date) -> bool:
+    return value is not None and start <= value <= end
+
+
+def _deal_flow_values_from_source_map(
+    source_map: PipelineSourceMap | None,
+    start: date,
+    end: date,
+) -> list[int]:
+    if source_map is None:
+        return [0, 0, 0, 0, 0]
+    records = source_map.records
+    return [
+        sum(1 for r in records if _date_in_window(r.qualified_conversation_date, start, end)),
+        sum(1 for r in records if _date_in_window(r.nda_signed_date, start, end)),
+        sum(1 for r in records if _date_in_window(r.financials_received_date, start, end)),
+        sum(1 for r in records if _date_in_window(r.loi_submitted_date, start, end)),
+        sum(1 for r in records if _date_in_window(r.closed_not_proceeding_date, start, end)),
+    ]
+
+
+def _deal_flow_ltd_from_source_map(
+    source_map: PipelineSourceMap | None,
+    calls: list[CallSummary],
+) -> list[int | str]:
+    if source_map is None:
+        return ["—", "—", "—", "—", "—"]
+    quality_conversations = sum(
+        1
+        for c in calls
+        if c.date >= source_map.search_start
+        and c.classification == "partner"
+        and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
+        and not _slug_matches(c.slug, _COACHING_SLUG_HINTS)
+    )
+    _quality, nda, financials, loi, closed = _deal_flow_values_from_source_map(
+        source_map, source_map.search_start, date.today()
+    )
+    return [quality_conversations, nda, financials, loi, closed]
+
+
+def _source_mix_from_source_map(source_map: PipelineSourceMap | None) -> list[SourceMixRow] | None:
+    if source_map is None:
+        return None
+
+    order = [
+        ("warm_email", "Warm email"),
+        ("linkedin", "LinkedIn"),
+        ("conference_networking", "Conferences / networking"),
+        ("intermediary_river_guide", "Intermediary / river-guide"),
+        ("cold_email", "Cold email"),
+        ("cold_call", "Cold call"),
+        ("broker_marketplace", "Broker marketplace"),
+        ("unknown", "Unknown / needs source map"),
+    ]
+    by_source: dict[str, list[PipelineSourceRecord]] = {}
+    for r in source_map.records:
+        by_source.setdefault(r.source or "unknown", []).append(r)
+
+    rows: list[SourceMixRow] = []
+    for source, label in order:
+        records = by_source.get(source, [])
+        if not records and source == "unknown":
+            continue
+        starts = sum(
+            1
+            for r in records
+            if r.qualified_conversation_date or r.nda_signed_date or r.financials_received_date or r.current_stage
+        )
+        financials = sum(1 for r in records if r.financials_received_date)
+        needs_review = sum(1 for r in records if r.source_confidence == "needs_review")
+        if records:
+            note = f"{needs_review} source review needed" if needs_review else "source mapped"
+            status = "needs_map" if needs_review else "complete"
+            rows.append(SourceMixRow(label, str(starts), str(financials), note, status))
+        elif source in {"warm_email", "linkedin", "conference_networking", "intermediary_river_guide", "cold_email", "cold_call"}:
+            rows.append(SourceMixRow(label, "backfill needed", "source map needed", "historical source map pending", "needs_map"))
+    return rows
+
+
 def _build_deal_flow_tiles(
     snapshot: PipelineSnapshot | None,
     calls: list[CallSummary],
@@ -2113,6 +2339,7 @@ def _build_deal_flow_tiles(
     week_end: date,
     prior_start: date,
     prior_end: date,
+    source_map: PipelineSourceMap | None = None,
 ) -> list[KPITile]:
     # Owner conversations: partner-classified calls, exclude investor cadences
     # and coaching / build-partner sessions (Kay being coached ≠ deal owner).
@@ -2130,8 +2357,15 @@ def _build_deal_flow_tiles(
     owner_prior = _owner_count(prior_start, prior_end)
     owner_sub, _ = _delta_phrase(owner_now, owner_prior)
 
-    if snapshot is None:
+    if source_map is not None:
+        _q, nda, fin, loi, closed = _deal_flow_values_from_source_map(source_map, week_start, week_end)
+        _pq, nda_prior, fin_prior, loi_prior, closed_prior = _deal_flow_values_from_source_map(
+            source_map, prior_start, prior_end
+        )
+        snap_sub = "from pipeline source map"
+    elif snapshot is None:
         nda = fin = loi = closed = 0
+        nda_prior = fin_prior = loi_prior = closed_prior = 0
         snap_sub = "Attio snapshot unavailable"
     else:
         nda = _stage_advances_in_window(snapshot, "NDA", week_start, week_end)
@@ -2140,14 +2374,11 @@ def _build_deal_flow_tiles(
               _stage_advances_in_window(snapshot, "Signed LOI", week_start, week_end)
         closed = _closures_in_window(snapshot, week_start, week_end)
         snap_sub = "from Attio snapshot"
-
-    nda_prior = _stage_advances_in_window(snapshot, "NDA", prior_start, prior_end) if snapshot else 0
-    fin_prior = (_stage_advances_in_window(snapshot, "Financials Received", prior_start, prior_end)
-                 if snapshot else 0)
-    loi_prior = ((_stage_advances_in_window(snapshot, "Submitted LOI", prior_start, prior_end) +
-                  _stage_advances_in_window(snapshot, "Signed LOI", prior_start, prior_end))
-                 if snapshot else 0)
-    closed_prior = _closures_in_window(snapshot, prior_start, prior_end) if snapshot else 0
+        nda_prior = _stage_advances_in_window(snapshot, "NDA", prior_start, prior_end)
+        fin_prior = _stage_advances_in_window(snapshot, "Financials Received", prior_start, prior_end)
+        loi_prior = (_stage_advances_in_window(snapshot, "Submitted LOI", prior_start, prior_end) +
+                     _stage_advances_in_window(snapshot, "Signed LOI", prior_start, prior_end))
+        closed_prior = _closures_in_window(snapshot, prior_start, prior_end)
 
     nda_sub, _ = _delta_phrase(nda, nda_prior)
     fin_sub, _ = _delta_phrase(fin, fin_prior)
@@ -2737,17 +2968,21 @@ def _build_activity_rows(
     week_end: date,
     new_contacts: NewContactsMetric | None = None,
     manual: list[QualityConversation] | None = None,
+    conference_events: list[ConferencePipelineEvent] | None = None,
 ) -> list[ActivityRow]:
     manual = manual or []
+    conference_events = conference_events or []
     in_window = _calls_in_window(calls, week_start, week_end)
 
     conf_calls = [c for c in in_window if _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)]
+    owner_calls = [c for c in in_window if _slug_matches(c.slug, _OWNER_SELLER_SLUG_HINTS)]
     intermediary_calls = [
         c for c in in_window
         if c.classification == "partner"
         and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
         and not _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)
         and not _slug_matches(c.slug, _COACHING_SLUG_HINTS)
+        and not _slug_matches(c.slug, _OWNER_SELLER_SLUG_HINTS)
     ]
 
     def _slug_display(call: CallSummary) -> str:
@@ -2758,16 +2993,20 @@ def _build_activity_rows(
     cim_count = _count_cims_in_window(week_start, week_end)
 
     manual_networking = [c for c in manual if c.type == "quality" and c.venue]
-    manual_quality = [c for c in manual if c.type == "quality"]
+    manual_quality = [c for c in manual if c.type == "quality" and not c.venue]
     manual_owners = [c for c in manual if c.type == "owner"]
 
     def _manual_display(c: QualityConversation) -> str:
         suffix = c.venue or c.note
         return f"{c.name} · {suffix}" if suffix else c.name
 
-    conference_chips = [_slug_display(c) for c in conf_calls] + [_manual_display(c) for c in manual_networking]
+    conference_chips = _dedupe_activity_labels(
+        [_conference_display(c) for c in conference_events]
+        + [_slug_display(c) for c in conf_calls]
+        + [_manual_display(c) for c in manual_networking]
+    )
     intermediary_chips = [_slug_display(c) for c in intermediary_calls] + [_manual_display(c) for c in manual_quality]
-    owner_chips = [_manual_display(c) for c in manual_owners]
+    owner_chips = [_slug_display(c) for c in owner_calls] + [_manual_display(c) for c in manual_owners]
 
     return [
         ActivityRow(
@@ -2803,6 +3042,7 @@ def _build_weekly_goals(
     week_start: date,
     week_end: date,
     manual: list[QualityConversation] | None = None,
+    conference_events: list[ConferencePipelineEvent] | None = None,
 ) -> list[WeeklyGoalMetric]:
     """Kay's current top weekly M&A operating goals.
 
@@ -2811,6 +3051,7 @@ def _build_weekly_goals(
     still needs a future integration pass.
     """
     manual = manual or []
+    conference_events = conference_events or []
     in_window = _calls_in_window(calls, week_start, week_end)
 
     def _slug_display(call: CallSummary) -> str:
@@ -2826,20 +3067,26 @@ def _build_weekly_goals(
     conference_calls = [c for c in in_window if _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)]
     manual_networking = [c for c in manual if c.type == "quality" and c.venue]
 
+    owner_calls = [c for c in in_window if _slug_matches(c.slug, _OWNER_SELLER_SLUG_HINTS)]
     intermediary_calls = [
         c for c in in_window
         if c.classification == "partner"
         and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
         and not _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)
         and not _slug_matches(c.slug, _COACHING_SLUG_HINTS)
+        and not _slug_matches(c.slug, _OWNER_SELLER_SLUG_HINTS)
     ]
-    intermediary_manual = [c for c in manual if c.type == "quality"]
+    intermediary_manual = [c for c in manual if c.type == "quality" and not c.venue]
 
     owner_manual = [c for c in manual if c.type == "owner"]
 
-    conference_items = [_slug_display(c) for c in conference_calls] + [_manual_display(c) for c in manual_networking]
+    conference_items = _dedupe_activity_labels(
+        [_conference_display(c) for c in conference_events]
+        + [_slug_display(c) for c in conference_calls]
+        + [_manual_display(c) for c in manual_networking]
+    )
     intermediary_items = [_slug_display(c) for c in intermediary_calls] + [_manual_display(c) for c in intermediary_manual]
-    owner_items = [_manual_display(c) for c in owner_manual]
+    owner_items = [_slug_display(c) for c in owner_calls] + [_manual_display(c) for c in owner_manual]
 
     return [
         WeeklyGoalMetric(
@@ -2868,27 +3115,30 @@ def _build_source_mix(
     jj: JJActivity | None = None,
     outreach: OutreachMetrics | None = None,
 ) -> list[SourceMixRow]:
-    """Lifetime source mix for real deal starts.
+    """Lead-source mix from search start, with untrusted channels labeled plainly.
 
-    Attio currently does not expose source on pipeline deals in the dashboard
-    snapshot, so financials-by-source remains pending until that field is wired.
+    Search start is February 2025. Call-derived counts are directional but live;
+    Gmail/LinkedIn source attribution and financials-by-source need a durable
+    source map, ideally on Attio pipeline records.
     """
-    conference_count = sum(1 for c in calls if _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS))
+    calls_since_start = [c for c in calls if c.date >= SEARCH_START_DATE]
+    conference_count = sum(1 for c in calls_since_start if _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS))
     intermediary_count = sum(
-        1 for c in calls
+        1 for c in calls_since_start
         if c.classification == "partner"
         and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
         and not _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)
         and not _slug_matches(c.slug, _COACHING_SLUG_HINTS)
+        and not _slug_matches(c.slug, _OWNER_SELLER_SLUG_HINTS)
     )
-    cold_calls = jj.dials_lifetime if jj else 0
+    cold_calls = jj.dials_lifetime if jj else "backfill needed"
     return [
-        SourceMixRow("Warm email", "—", "pending", "LTD email-source attribution not yet wired"),
-        SourceMixRow("LinkedIn", "—", "pending", "LTD LinkedIn-source attribution not yet wired"),
-        SourceMixRow("Conferences / networking", str(conference_count), "pending", "formal events, gatherings, and networking meetings"),
-        SourceMixRow("Intermediary / river-guide", str(intermediary_count), "pending", "broker, advisor, peer, and river-guide path"),
-        SourceMixRow("Cold email", "—", "pending", "historical channel; DealsX source attribution pending"),
-        SourceMixRow("Cold call", str(cold_calls), "pending", "historical channel; financials attribution pending"),
+        SourceMixRow("Warm email", "backfill needed", "source map needed", "Gmail history not yet classified by lead source", "needs_map"),
+        SourceMixRow("LinkedIn", "backfill needed", "source map needed", "LinkedIn activity not yet classified by lead source", "needs_map"),
+        SourceMixRow("Conferences / networking", str(conference_count), "source map needed", "call + conference records since Feb 2025", "needs_map"),
+        SourceMixRow("Intermediary / river-guide", str(intermediary_count), "source map needed", "broker, advisor, peer, and river-guide calls since Feb 2025", "needs_map"),
+        SourceMixRow("Cold email", "backfill needed", "source map needed", "DealsX / Gmail history needs source backfill", "needs_map"),
+        SourceMixRow("Cold call", str(cold_calls), "source map needed", "JJ operations dials since tracked launch", "needs_map"),
     ]
 
 
@@ -2919,22 +3169,37 @@ def load_ma_analytics(today: date | None = None) -> MAAnalytics:
     niche_breakdown = load_niche_breakdown(today=today, jj=jj)
     dealsx = load_dealsx_manual(week_start, week_end)
     manual_quality = load_quality_conversations(week_start, week_end)
+    conference_events = load_conference_pipeline_events(week_start, week_end, today=today)
+    pipeline_source_map = load_pipeline_source_map()
 
     deal_flow_tiles = _build_deal_flow_tiles(
-        snapshot, calls, week_start, week_end, prior_start, prior_end
+        snapshot, calls, week_start, week_end, prior_start, prior_end, source_map=pipeline_source_map
+    )
+    deal_flow_ltd_values = (
+        _deal_flow_ltd_from_source_map(pipeline_source_map, calls)
+        if pipeline_source_map is not None
+        else _deal_flow_ltd_values(snapshot, calls)
     )
     channels = _build_channels(calls, week_start, week_end, jj=jj, outreach=outreach, dealsx=dealsx)
     trends, x_labels = _build_trends(snapshot, calls, today, jj=jj, weekly_history=weekly_history)
     activity_rows = _build_activity_rows(
-        calls, week_start, week_end, new_contacts=new_contacts, manual=manual_quality
+        calls,
+        week_start,
+        week_end,
+        new_contacts=new_contacts,
+        manual=manual_quality,
+        conference_events=conference_events,
     )
-    weekly_goals = _build_weekly_goals(calls, week_start, week_end, manual_quality)
-    source_rows = _build_source_mix(calls, jj=jj, outreach=outreach)
+    weekly_goals = _build_weekly_goals(
+        calls, week_start, week_end, manual_quality, conference_events=conference_events
+    )
+    source_rows = _source_mix_from_source_map(pipeline_source_map) or _build_source_mix(calls, jj=jj, outreach=outreach)
 
     return MAAnalytics(
         week_start=week_start,
         week_end=week_end,
         deal_flow_tiles=deal_flow_tiles,
+        deal_flow_ltd_values=deal_flow_ltd_values,
         channels=channels,
         source_rows=source_rows,
         trends=trends,
@@ -3456,6 +3721,21 @@ class QualityConversation:
     note: str
 
 
+
+
+@dataclass
+class ConferencePipelineEvent:
+    date: date
+    event_name: str
+    source_tab: str
+    decision: str = ""
+    status: str = ""
+    location: str = ""
+    niche: str = ""
+    website: str = ""
+    calendar_title: str = ""
+    calendar_link: str = ""
+
 def load_quality_conversations(
     window_start: date, window_end: date
 ) -> list[QualityConversation]:
@@ -3490,6 +3770,125 @@ def load_quality_conversations(
                 note=str(c.get("note", "")).strip(),
             )
         )
+    return out
+
+
+def _normalize_event_text(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", str(value or "").lower()).strip()
+
+
+def _event_date(value: str) -> date | None:
+    try:
+        return date.fromisoformat(str(value or "")[:10])
+    except ValueError:
+        return None
+
+
+def _calendar_match_for_event(event: dict, calendar_events: list[dict]) -> dict | None:
+    event_date = str(event.get("date", ""))[:10]
+    event_name = _normalize_event_text(str(event.get("event_name", "")))
+    if not event_date or not event_name:
+        return None
+    for cal in calendar_events:
+        if str(cal.get("date", ""))[:10] != event_date:
+            continue
+        title = _normalize_event_text(str(cal.get("summary", "")))
+        location = _normalize_event_text(str(cal.get("location", "")))
+        combined = f"{title} {location}".strip()
+        if not combined:
+            continue
+        event_tokens = {t for t in event_name.split() if len(t) >= 4}
+        cal_tokens = set(combined.split())
+        if event_tokens and len(event_tokens & cal_tokens) >= 2:
+            return cal
+    return None
+
+
+def _conference_pipeline_is_countable(event: dict, today: date) -> bool:
+    d = _event_date(str(event.get("date", "")))
+    if d is None or d > today:
+        return False
+    decision = str(event.get("decision", "")).strip().lower()
+    status = str(event.get("status", "")).strip().lower()
+    tab = str(event.get("tab", "")).strip().lower()
+    if tab == "attended":
+        return True
+    if decision in {"attending", "attend"}:
+        return True
+    if status in {"attended", "registered"}:
+        return True
+    return False
+
+
+def load_conference_pipeline_events(
+    window_start: date,
+    window_end: date,
+    today: date | None = None,
+) -> list[ConferencePipelineEvent]:
+    """Current-week conference/networking events from the canonical tracker.
+
+    Source contract is brain/context/conference-pipeline-snapshot.json, produced
+    by scripts/refresh_conference_pipeline_snapshot.py. Pipeline rows count when
+    they are current/past and marked Attending/Attend; the Attended tab is only
+    a historical fallback because it is often populated after the week closes.
+    Calendar rows are used as verification/context, not as the sole source.
+    """
+    today = today or date.today()
+    if not CONFERENCE_PIPELINE_SNAPSHOT_PATH.exists():
+        return []
+    try:
+        data = json.loads(CONFERENCE_PIPELINE_SNAPSHOT_PATH.read_text())
+    except (OSError, json.JSONDecodeError):
+        return []
+
+    calendar_events = data.get("calendar_events", [])
+    out: list[ConferencePipelineEvent] = []
+    seen: set[tuple[str, str]] = set()
+    for raw in data.get("events", []):
+        if not _conference_pipeline_is_countable(raw, today):
+            continue
+        d = _event_date(str(raw.get("date", "")))
+        if d is None or not (window_start <= d <= window_end):
+            continue
+        name = str(raw.get("event_name", "")).strip()
+        if not name:
+            continue
+        key = (d.isoformat(), _normalize_event_text(name))
+        if key in seen:
+            continue
+        seen.add(key)
+        cal = _calendar_match_for_event(raw, calendar_events) or {}
+        out.append(
+            ConferencePipelineEvent(
+                date=d,
+                event_name=name,
+                source_tab=str(raw.get("tab", "")).strip(),
+                decision=str(raw.get("decision", "")).strip(),
+                status=str(raw.get("status", "")).strip(),
+                location=str(raw.get("location", "")).strip(),
+                niche=str(raw.get("niche", "")).strip(),
+                website=str(raw.get("website", "")).strip(),
+                calendar_title=str(cal.get("summary", "")).strip(),
+                calendar_link=str(cal.get("htmlLink", "")).strip(),
+            )
+        )
+    out.sort(key=lambda e: (e.date, e.event_name.lower()))
+    return out
+
+
+def _conference_display(event: ConferencePipelineEvent) -> str:
+    return f"{event.date.strftime('%b %-d')} · {event.event_name}"
+
+
+def _dedupe_activity_labels(labels: list[str]) -> list[str]:
+    out: list[str] = []
+    seen: set[str] = set()
+    for label in labels:
+        key = _normalize_event_text(label)
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        out.append(label)
     return out
 
 

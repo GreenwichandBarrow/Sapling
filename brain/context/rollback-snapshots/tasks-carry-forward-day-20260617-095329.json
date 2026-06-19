@@ -1,0 +1,197 @@
+{
+  "verb": "carry-forward-day",
+  "timestamp": "20260617-095329",
+  "sheet_id": "12vE5XpAXeVFxzVHvRz6Hb0oRBQNEkt-ZPS7ANctJDQo",
+  "ranges": {
+    "'Mon'!A17:E41": [
+      [
+        false,
+        "Process payroll"
+      ],
+      [
+        true,
+        "Process conference registrations"
+      ],
+      [
+        false,
+        "Email Filipe @ Pest Mgmt company"
+      ],
+      [
+        false,
+        "DealsX targeted outreach, share lists"
+      ],
+      [
+        true,
+        "Send DealsX specialization file"
+      ],
+      [
+        true,
+        "Follow up email to Matt"
+      ],
+      [
+        false,
+        "Pest 10-company research \u2014 June head-to-head vs DealsX + JJ"
+      ],
+      [
+        false,
+        "Call IRS to confirm Form 8822-B address update"
+      ],
+      [
+        false,
+        "Scan WPMA directory for NY-based members"
+      ],
+      [
+        true,
+        "Thank you: Jay, Bob"
+      ],
+      [
+        true,
+        "Reply to Carlos"
+      ],
+      [
+        false,
+        "Follow up: Krupa, Deborah, Hamptons Pest, Greg"
+      ],
+      [
+        true,
+        "Introduction: Anthony, Richard"
+      ],
+      [
+        false,
+        "THank you: Laura, Paul, "
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Wed'!A17:E41": [
+      [
+        false,
+        "Niche intel review"
+      ],
+      [
+        false,
+        "Review Mid-Search Summit Market Update takeaways, anchor in playbook update (four-horsemen framework)"
+      ],
+      [
+        false,
+        "Contact Eric - testing IQ & Sensory, DOT program"
+      ],
+      [
+        false,
+        "Connect Roberta & Elspeth"
+      ],
+      [
+        false,
+        "Connect Lily & Suzanne"
+      ],
+      [
+        false,
+        "Contact Rebecca - follow up on programming"
+      ],
+      [
+        false,
+        "Re-plan deal aggregator expansion (dedicated session)"
+      ],
+      [
+        false,
+        "Schedule 2-3 luxury/hospitality pest validation calls",
+        "Work",
+        "Pest",
+        "From Camilla pest thesis call: test premium/discreet pest thesis with luxury retail and hospitality facilities managers."
+      ],
+      [
+        false,
+        "Email Lisa & Ray (Peapack Private) thank-you/follow-up",
+        "Work",
+        "G&B",
+        "24-hour thank-you / follow-up."
+      ],
+      [
+        false,
+        "Send 24-hour thank-you to Richard Strautman",
+        "Work",
+        "G&B",
+        "24-hour thank-you / follow-up."
+      ],
+      [
+        false,
+        "Try Claude on website rebuild"
+      ],
+      [
+        false,
+        "Pay remaining IRS"
+      ],
+      [
+        false,
+        "Update RCN Plan"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ]
+  }
+}

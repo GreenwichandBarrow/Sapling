@@ -1,0 +1,12 @@
+{
+  "id": "not_8zOVYiJQpNxwD2",
+  "title": "Team TB Camilla I Kay",
+  "created_at": "2026-06-11T12:59:59.843Z",
+  "updated_at": "2026-06-11T14:19:41.523Z",
+  "owner": {
+    "name": "Kay Schneider",
+    "email": "kay.s@greenwichandbarrow.com"
+  },
+  "queued_at": "2026-06-11T13:00:45-04:00",
+  "detector": "granola-api-rest"
+}

@@ -34,8 +34,8 @@ NAV_ITEMS = [
     ("Greenwich & Barrow Dashboard", "dashboard", True),
     ("Deal Aggregator", "deal-aggregator", True),
     ("Email Orchestration", "email-orchestration", True),
-    ("Active Deal Pipeline", "deal-pipeline", True),
-    ("M&A Analytics", "ma-analytics", True),
+    ("Pipeline", "deal-pipeline", True),
+    ("M&A Activity", "ma-analytics", True),
     ("C-Suite & Skills", "c-suite-skills", True),
     ("Infrastructure", "infrastructure", True),
 ]
@@ -417,8 +417,112 @@ GLOBAL_CSS = f"""
     line-height: 1.45;
   }}
 
+  .gb-email-deadline-intro {{
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--panel);
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }}
+  .gb-email-deadline-summary {{
+    color: var(--text);
+    font-size: 18px;
+    line-height: 1.25;
+    margin-top: 8px;
+    font-weight: 400;
+  }}
+  .gb-email-follow-meta {{
+    color: var(--text-dim);
+    font-size: 11.5px;
+    white-space: nowrap;
+    padding-top: 4px;
+  }}
+  .gb-email-deadline-bucket {{
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--panel);
+    overflow: hidden;
+    margin-bottom: 14px;
+  }}
+  .gb-email-deadline-bucket.yellow {{ border-color: rgba(245, 194, 80, 0.30); }}
+  .gb-email-deadline-bucket.blue {{ border-color: rgba(74, 158, 255, 0.30); }}
+  .gb-email-deadline-bucket.green {{ border-color: rgba(66, 211, 133, 0.28); }}
+  .gb-email-deadline-bucket.purple {{ border-color: rgba(188, 143, 255, 0.30); }}
+  .gb-email-deadline-head {{
+    padding: 15px 18px;
+    border-bottom: 1px solid var(--border-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+  }}
+  .gb-email-deadline-title {{
+    color: var(--text);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }}
+  .gb-email-deadline-subtitle {{
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-top: 6px;
+  }}
+  .gb-email-deadline-count {{
+    color: var(--text);
+    font-size: 24px;
+    font-weight: 300;
+    font-variant-numeric: tabular-nums;
+  }}
+  .gb-email-deadline-body {{ display: grid; }}
+  .gb-email-deadline-row {{
+    display: grid;
+    grid-template-columns: minmax(300px, 1.7fr) 150px 135px 110px;
+    gap: 14px;
+    align-items: center;
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--border-soft);
+  }}
+  .gb-email-deadline-row:last-child {{ border-bottom: none; }}
+  .gb-targeted-outreach-row {{
+    grid-template-columns: minmax(360px, 1fr) 130px;
+  }}
+  .gb-targeted-outreach-row .gb-email-open {{
+    justify-self: end;
+  }}
+  .gb-email-person {{ color: var(--text); font-size: 13px; font-weight: 500; }}
+  .gb-email-context {{ color: var(--text-muted); font-size: 11.5px; margin-top: 4px; }}
+  .gb-email-target-links {{ margin-top: 7px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }}
+  .gb-email-source-link {{ color: var(--accent) !important; text-decoration: none !important; font-size: 11.5px; }}
+  .gb-email-source-link:hover {{ text-decoration: underline !important; }}
+  .gb-email-due {{ color: var(--text); font-size: 12px; font-variant-numeric: tabular-nums; }}
+  .gb-email-priority {{
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 9px;
+    color: var(--text-muted);
+    font-size: 11px;
+    background: rgba(255,255,255,0.02);
+  }}
+  .gb-email-priority.late {{ color: var(--red); border-color: rgba(255, 93, 93, 0.35); background: rgba(255, 93, 93, 0.08); }}
+  .gb-email-priority.prep {{ color: var(--yellow); border-color: rgba(245, 194, 80, 0.35); background: rgba(245, 194, 80, 0.08); }}
+  .gb-email-priority.ready {{ color: var(--green); border-color: rgba(66, 211, 133, 0.30); background: rgba(66, 211, 133, 0.07); }}
+  .gb-email-open {{ color: var(--accent) !important; text-decoration: none !important; font-size: 12px; }}
+  .gb-email-open:hover {{ text-decoration: underline !important; }}
+  .gb-email-open.muted {{ color: var(--text-dim) !important; }}
+  .gb-email-empty {{
+    color: var(--text-dim);
+    font-size: 12.5px;
+    padding: 18px;
+  }}
+
   /* -------- TILE GRID -------- */
-  /* 4-col grid per locked mockup. Hero tile spans full width via grid-column: 1/-1 */
+  /* Landing: pipeline snapshot leads left, M&A activity sits beside it, remaining tiles below. */
   .gb-grid {{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -446,9 +550,9 @@ GLOBAL_CSS = f"""
     transform: translateY(-1px);
   }}
 
-  /* HERO tile — Active Deal Pipeline featured at top, full grid width */
+  /* HERO tile — Active Pipeline Snapshot featured at top-left */
   .gb-tile.hero {{
-    grid-column: 1 / -1;
+    grid-column: span 3;
     min-height: 200px;
     padding: 28px 32px;
     background: linear-gradient(135deg, var(--panel) 0%, rgba(74, 158, 255, 0.04) 100%);
@@ -655,7 +759,7 @@ GLOBAL_CSS = f"""
     letter-spacing: 0.04em;
   }}
 
-  /* -------- ARCHIVE NESTED SECTION (bottom of M&A Analytics) -------- */
+  /* -------- ARCHIVE NESTED SECTION (bottom of M&A Activity) -------- */
   .gb-archive-divider {{
     margin: 48px 0 24px;
     height: 1px;
@@ -693,7 +797,7 @@ GLOBAL_CSS = f"""
   }}
   .gb-subtitle .highlight {{ color: var(--text); font-weight: 500; }}
 
-  /* Stat-pills row — sits above filter bar on Active Deal Pipeline. */
+  /* Stat-pills row — legacy pipeline page styling. */
   .gb-stat-pills {{
     display: flex;
     flex-wrap: wrap;
@@ -1017,7 +1121,7 @@ GLOBAL_CSS = f"""
     font-size: 13px;
   }}
 
-  /* -------- KANBAN BOARD (Active Deal Pipeline) -------- */
+  /* -------- KANBAN BOARD (legacy pipeline styling) -------- */
   /* 4 columns (NDA forward) — fits typical desktop without horizontal scroll. */
   .gb-kanban-wrap {{
     overflow-x: auto;
@@ -2309,7 +2413,7 @@ GLOBAL_CSS = f"""
     .gb-tile {{ padding: 16px; min-height: 0; }}
     .gb-tile .primary {{ font-size: 28px; }}
 
-    /* --- Active Deal Pipeline kanban: horizontal scroll, narrower cols --- */
+    /* --- Legacy pipeline kanban: horizontal scroll, narrower cols --- */
     .gb-kanban {{
       grid-template-columns: repeat(4, 240px);
     }}
@@ -2362,7 +2466,7 @@ GLOBAL_CSS = f"""
       margin-top: 4px;
     }}
 
-    /* --- M&A Analytics: KPI strip 5 → 2 cols, smaller value font --- */
+    /* --- M&A Activity: KPI strip 5 → 2 cols, smaller value font --- */
     .gb-kpi-strip,
     .gb-kpi-strip.gb-kpi-strip-three {{
       grid-template-columns: repeat(2, 1fr);
@@ -2372,12 +2476,12 @@ GLOBAL_CSS = f"""
       grid-template-columns: repeat(2, 1fr);
     }}
 
-    /* --- M&A Analytics: trends grid 2 → 1 col --- */
+    /* --- M&A Activity: trends grid 2 → 1 col --- */
     .gb-trend-grid {{
       grid-template-columns: 1fr;
     }}
 
-    /* --- M&A Analytics: activity row collapses --- */
+    /* --- M&A Activity: activity row collapses --- */
     .gb-act-row {{
       grid-template-columns: 1fr;
       gap: 6px;

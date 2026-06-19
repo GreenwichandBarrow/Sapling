@@ -14,10 +14,12 @@ from router.handlers.meeting_brief import meeting_brief_stop_check
 from router.handlers.git import git_auto_commit_stop
 from router.handlers.no_column_letters import no_column_letters
 from router.handlers.no_sunday_send_recommendations import no_sunday_send_recommendations
+from router.handlers.pipeline_source_tagging_guard import pipeline_source_tagging_guard
 
 HANDLERS = [
     HandlerConfig(fn=no_column_letters, name="no-column-letters"),
     HandlerConfig(fn=no_sunday_send_recommendations, name="no-sunday-send-recommendations"),
+    HandlerConfig(fn=pipeline_source_tagging_guard, name="pipeline-source-tagging-guard"),
     HandlerConfig(fn=orchestrator_stop_gate, name="orchestrator-stop-gate"),
     HandlerConfig(fn=meeting_brief_stop_check, name="meeting-brief-stop-check"),
     HandlerConfig(fn=git_auto_commit_stop, name="git-auto-commit-stop"),

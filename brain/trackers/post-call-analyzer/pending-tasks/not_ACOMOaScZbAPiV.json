@@ -1,0 +1,38 @@
+[
+  {
+    "task_text": "Check whether the machinery listing is local and still live, and decide if it fits the NY Metro buy-box.",
+    "type": "Analysis",
+    "project": "Broker channel",
+    "suggested_day": "Thu",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Richard 2026-06-17 mtg. Analysis: https://docs.google.com/document/d/1g0XTKOuc3B8hQrYJ-XQpklNo9Rk28MeG7iYbGQIQOC8/edit?usp=drivesdk",
+    "source_call_id": "not_ACOMOaScZbAPiV",
+    "source_doc_url": "https://docs.google.com/document/d/1g0XTKOuc3B8hQrYJ-XQpklNo9Rk28MeG7iYbGQIQOC8/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1nfIigBp62uINt--iUapN_yIUQRa7-3T4Lb4txIDnKjs/edit?usp=drivesdk",
+    "staged_at": "2026-06-17T17:06:45.053818+00:00"
+  },
+  {
+    "task_text": "Check whether the sports surfaces listing is local and still live, and decide if it fits the NY Metro buy-box.",
+    "type": "Analysis",
+    "project": "Broker channel",
+    "suggested_day": "Thu",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Richard 2026-06-17 mtg. Analysis: https://docs.google.com/document/d/1g0XTKOuc3B8hQrYJ-XQpklNo9Rk28MeG7iYbGQIQOC8/edit?usp=drivesdk",
+    "source_call_id": "not_ACOMOaScZbAPiV",
+    "source_doc_url": "https://docs.google.com/document/d/1g0XTKOuc3B8hQrYJ-XQpklNo9Rk28MeG7iYbGQIQOC8/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1nfIigBp62uINt--iUapN_yIUQRa7-3T4Lb4txIDnKjs/edit?usp=drivesdk",
+    "staged_at": "2026-06-17T17:06:45.053818+00:00"
+  },
+  {
+    "task_text": "Decide whether Stony Hill should stay on the warm broker list as a recurring NY Metro source.",
+    "type": "Relationship",
+    "project": "Broker channel",
+    "suggested_day": "Fri",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Richard 2026-06-17 mtg. Analysis: https://docs.google.com/document/d/1g0XTKOuc3B8hQrYJ-XQpklNo9Rk28MeG7iYbGQIQOC8/edit?usp=drivesdk",
+    "source_call_id": "not_ACOMOaScZbAPiV",
+    "source_doc_url": "https://docs.google.com/document/d/1g0XTKOuc3B8hQrYJ-XQpklNo9Rk28MeG7iYbGQIQOC8/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1nfIigBp62uINt--iUapN_yIUQRa7-3T4Lb4txIDnKjs/edit?usp=drivesdk",
+    "staged_at": "2026-06-17T17:06:45.053818+00:00"
+  }
+]

@@ -1,0 +1,846 @@
+{
+  "account": "kay.s@greenwichandbarrow.com",
+  "candidate_threads": [
+    {
+      "candidate_reason": "deal_keyword_in_metadata",
+      "date": "2026-06-16 09:04",
+      "from": "Search Fund Coalition Events <sfc@calendar.luma-mail.com>",
+      "id": "19ed0886b0d6deff",
+      "labels": [
+        "IMPORTANT",
+        "[Superhuman]/AI/Marketing",
+        "auto/meetings",
+        "CATEGORY_UPDATES",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "date": "Tue, 16 Jun 2026 13:04:20 +0000",
+          "from": "Search Fund Coalition Events <sfc@calendar.luma-mail.com>",
+          "message_id": "19ed0886b0d6deff",
+          "size_estimate": 170017,
+          "snippet": "Search Fund Coalition Events You&#39;ve got a spot at ETA Deal Team Day: NYC JUN 24 Wednesday, June 24 8:30 AM - 6:30 PM EDT Baton \u2197 New York, NY Regular Admission $69.30 Hey there, Thanks for signing",
+          "subject": "Registration approved for ETA Deal Team Day: NYC",
+          "text_excerpt": "You\u2019ve got a spot at\n\nETA Deal Team Day: NYC\n\nWednesday, June 24 8:30 AM - 6:30 PM EDT\n\nLocation: In Person\n\nTicket: Regular Admission - $69.30\n\nHey there, Thanks for signing up for our ETA Deal Team Day: NYC We\u2019re excited to see you on June 24th for a jam-packed day with targeted deal team support, great conversations and connections throughout the day. Stay tuned for more details. Looking forward to connecting with you soon! Best, The Search Fund Coalition Team\n\nEvent Page: https://luma.com/dtdnyc626?pk=g-t2c1KHdVeVob7lu\n\nMy Ticket: https://luma.com/e/ticket/evt-XP6PussNftTwVKf?pk=g-t2c1KHdVeVob7lu\n\nPayment Information\n\nTotal\n\n$69.30\n\nPayment Method\n\n\u00b7\u00b7\u00b7\u00b7 2933\n\nDate\n\nJun 16, 2026\n\nDownload the Luma App \u2014 Access your tickets for quick check-in, receive event updates and blasts, and get directions conveniently.\n\nhttps://luma.com/ios?utm_source=email\n\nhttps://luma.com/android?utm_source=email\n\nSent using luma.com",
+          "to": "admin@greenwichandbarrow.com"
+        }
+      ],
+      "raw_body_bytes_seen": 29916,
+      "snippet": "",
+      "subject": "Registration approved for ETA Deal Team Day: NYC"
+    }
+  ],
+  "date": "2026-06-17",
+  "draft_details": [
+    {
+      "draft_id": "r-2113500240594183431",
+      "from": "kay.s@greenwichandbarrow.com",
+      "internal_date_utc": "2026-06-16T16:20:28+00:00",
+      "labels": [
+        "DRAFT"
+      ],
+      "latest_message_id": "19ed13bf7d33310f",
+      "message_id": "19ed13bf7d33310f",
+      "snippet": "Hi Ray, It was great meeting you this morning at the Peapack Private event. I enjoyed learning that you are based in Garden City. I will be out on Long Island the week of July 6 and would love to find",
+      "subject": "Great meeting you this morning",
+      "thread_id": "19ed13bf7d33310f",
+      "to": "rradigan@peapackprivate.com"
+    },
+    {
+      "draft_id": "r2363324621639405294",
+      "from": "kay.s@greenwichandbarrow.com",
+      "internal_date_utc": "2026-06-16T16:20:27+00:00",
+      "labels": [
+        "DRAFT"
+      ],
+      "latest_message_id": "19ed13bf32dd5c91",
+      "message_id": "19ed13bf32dd5c91",
+      "snippet": "Hi Lisa, It was great meeting you this morning at the Peapack Private event. I enjoyed hearing a bit about the business you thought could be interesting for my search. If you are comfortable sharing, I",
+      "subject": "Great meeting you this morning",
+      "thread_id": "19ed13bf32dd5c91",
+      "to": "lmcknight@peapackprivate.com"
+    },
+    {
+      "draft_id": "r-6221565818758668413",
+      "from": "kay.s@greenwichandbarrow.com",
+      "internal_date_utc": "2026-06-16T11:02:43+00:00",
+      "labels": [
+        "DRAFT"
+      ],
+      "latest_message_id": "19ed019101e0c26e",
+      "message_id": "19ed019101e0c26e",
+      "snippet": "Got it, signing now and will send back today. Best, Kay",
+      "subject": "Re: E&K: New Acquisition Opportunity - Provider of Metal Manufacturing;  Precision Machining, Stamping & Tool & Die",
+      "thread_id": "19e28b9600f7365b",
+      "to": "admin1@everkerr.com"
+    },
+    {
+      "draft_id": "r6750036722485215789",
+      "from": "kay.s@greenwichandbarrow.com",
+      "internal_date_utc": "2026-06-09T17:23:42+00:00",
+      "labels": [
+        "DRAFT"
+      ],
+      "latest_message_id": "19ead69591dee1ab",
+      "message_id": "19ead69591dee1ab",
+      "snippet": "Hi XX, I hope you&#39;re well. I was introduced to you through XX and wanted to reach out directly. I&#39;m currently acquiring a single business through my search fund, Greenwich &amp; Barrow, and",
+      "subject": "Introduction to Broker",
+      "thread_id": "19ead69591dee1ab",
+      "to": ""
+    },
+    {
+      "draft_id": "r-1479602056831011487",
+      "from": "kay.s@greenwichandbarrow.com",
+      "internal_date_utc": "2026-06-09T17:23:30+00:00",
+      "labels": [
+        "DRAFT"
+      ],
+      "latest_message_id": "19ead69270bfca3c",
+      "message_id": "19ead69270bfca3c",
+      "snippet": "Hi [Name], I hope you&#39;re well. I wanted to follow up on my note below and see if it makes sense to reconnect. Happy to work around your schedule. Best, Kay",
+      "subject": "Follow Up to Intermediary",
+      "thread_id": "19ead69270bfca3c",
+      "to": ""
+    },
+    {
+      "draft_id": "r-3386019576559963499",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "internal_date_utc": "2026-06-11T14:35:32+00:00",
+      "labels": [
+        "SENT"
+      ],
+      "latest_message_id": "19eb71c1deb4d1b2",
+      "message_id": "19e96df6a095469a",
+      "snippet": "Hi Matt, Hope all is well. I&#39;m happy to learn more / have a call with the VA claim firm if you think I may also be reading the industry wrong - coming from an outsider perspective, and quick search",
+      "subject": "Re: Great meeting you",
+      "thread_id": "19dcfe99a6a3a792",
+      "to": "Matthew Luczyk <mluczyk@peapackprivate.com>"
+    },
+    {
+      "draft_id": "r6313621414716482441",
+      "from": "kay.s@greenwichandbarrow.com",
+      "internal_date_utc": "2026-05-16T16:38:39+00:00",
+      "labels": [
+        "DRAFT"
+      ],
+      "latest_message_id": "19e31a778b04ee7c",
+      "message_id": "19e31a778b04ee7c",
+      "snippet": "Hi Monica, Really enjoyed our conversation at the Heels to Deals luncheon. It was a pleasure meeting you, and I was glad to hear about the Italian and Indian founders in your network who may be",
+      "subject": "Great meeting you at Heels to Deals",
+      "thread_id": "19e31a778b04ee7c",
+      "to": "mchawla@norris-law.com"
+    },
+    {
+      "draft_id": "r442603803878436480",
+      "from": "kay.s@greenwichandbarrow.com",
+      "internal_date_utc": "2026-05-16T16:38:38+00:00",
+      "labels": [
+        "DRAFT"
+      ],
+      "latest_message_id": "19e31a774cac4261",
+      "message_id": "19e31a774cac4261",
+      "snippet": "Hi Deborah, Really enjoyed our conversation at the Heels to Deals luncheon. It was great sitting across from you, and I was especially interested to hear about your carve-out team at Schulman Lobel",
+      "subject": "Great meeting you at Heels to Deals",
+      "thread_id": "19e31a774cac4261",
+      "to": "dchichester@schulmanlobel.com"
+    }
+  ],
+  "drafts": {
+    "drafts": [
+      {
+        "id": "r-2113500240594183431",
+        "messageId": "19ed13bf7d33310f",
+        "threadId": "19ed13bf7d33310f"
+      },
+      {
+        "id": "r2363324621639405294",
+        "messageId": "19ed13bf32dd5c91",
+        "threadId": "19ed13bf32dd5c91"
+      },
+      {
+        "id": "r-6221565818758668413",
+        "messageId": "19ed019101e0c26e",
+        "threadId": "19e28b9600f7365b"
+      },
+      {
+        "id": "r6750036722485215789",
+        "messageId": "19ead69591dee1ab",
+        "threadId": "19ead69591dee1ab"
+      },
+      {
+        "id": "r-1479602056831011487",
+        "messageId": "19ead69270bfca3c",
+        "threadId": "19ead69270bfca3c"
+      },
+      {
+        "id": "r-3386019576559963499",
+        "messageId": "19e96df6a095469a",
+        "threadId": "19dcfe99a6a3a792"
+      },
+      {
+        "id": "r6313621414716482441",
+        "messageId": "19e31a778b04ee7c",
+        "threadId": "19e31a778b04ee7c"
+      },
+      {
+        "id": "r442603803878436480",
+        "messageId": "19e31a774cac4261",
+        "threadId": "19e31a774cac4261"
+      }
+    ],
+    "nextPageToken": ""
+  },
+  "generated_at": "2026-06-17T11:00:23+00:00",
+  "inbound": [
+    {
+      "candidate_reason": null,
+      "date": "2026-06-17 06:22",
+      "from": "Mike Allen <mike@axios.com>",
+      "id": "19ed51a6cdab1ff1",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "auto/subscriptions & education",
+        "[Superhuman]/AI/News",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "\u26a1 Axios AM: MAGA hawk mutiny"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-17 06:01",
+      "from": "Cornell Alumni Career Programs <alumnicareer@m.cornell.edu>",
+      "id": "19ed506f24f1f4d7",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "[Superhuman]/AI/News",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Financial basics for starting a business webinar"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-17 04:21",
+      "from": "DMARC Aggregate Report <dmarcreport@microsoft.com>",
+      "id": "19ed4ac29ef56549",
+      "labels": [
+        "UNREAD",
+        "auto/tech stack",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "[Preview] Report Domain: greenwichandbarrow.com Submitter: enterprise.protection.outlook.com Report-ID: f096f0495cfe4d7aa6b06be240346449"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 15:52",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "19ed14b7a8f2f31e",
+      "labels": [
+        "SENT"
+      ],
+      "message_count": 3,
+      "snippet": "",
+      "subject": "Catch up"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 14:03",
+      "from": "XPX <XPX@my.exitplanningexchange.com>",
+      "id": "19ed19a9167e0381",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "auto/industry research",
+        "[Superhuman]/AI/Marketing",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "XPX CT & ACG CT Summer Social at New England Brewing Company"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 15:40",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "19eb72e6374e338c",
+      "labels": [
+        "SENT"
+      ],
+      "message_count": 7,
+      "snippet": "",
+      "subject": "Greenwich & Barrow Update 6.11.26 - CONFIDENTIAL"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 11:38",
+      "from": "Team Tailscale <aperture@tailscale.com>",
+      "id": "19ed11579b2a2d22",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "[Superhuman]/AI/Marketing",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "New in Aperture: Build a flexible AI stack and avoid provider lock-in"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 19:07",
+      "from": "Ian McMilan <ian@ttcerpartners.com>",
+      "id": "19ed10d003415fd1",
+      "labels": [
+        "IMPORTANT",
+        "CATEGORY_PERSONAL",
+        "INBOX"
+      ],
+      "message_count": 3,
+      "snippet": "",
+      "subject": "Kay Schneider and Ian McMilan @ Thu, Jun 18, 2026 12:00pm \u2013 12:30pm (GMT-07)"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 11:28",
+      "from": "Ian McMilan <ian@ttcerpartners.com>",
+      "id": "19ed10cd37e524df",
+      "labels": [
+        "IMPORTANT",
+        "auto/meetings",
+        "CATEGORY_PERSONAL",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Canceled event: Kay Schneider and Ian McMilan @ Thu Jun 18, 2026 3pm - 3:30pm (EDT) (kay.s@greenwichandbarrow.com)"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 11:04",
+      "from": "Wealth Stack Weekly <hi@wealthstack1.com>",
+      "id": "19ed0f65c9361dce",
+      "labels": [
+        "UNREAD",
+        "IMPORTANT",
+        "CATEGORY_UPDATES",
+        "[Superhuman]/AI/News",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Income that shows up whether you work or not."
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 10:26",
+      "from": "XPX <XPX@my.exitplanningexchange.com>",
+      "id": "19ed0d37d2e5014f",
+      "labels": [
+        "UNREAD",
+        "auto/industry research",
+        "[Superhuman]/AI/Marketing",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Join us! XPX New Jersey: July Summer Networking Social"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 10:22",
+      "from": "Frank Sondors <salesforge@mail.beehiiv.com>",
+      "id": "19ed0cf9bbaf8152",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "[Superhuman]/AI/Marketing",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "One thing about them you don't know yet"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 10:15",
+      "from": "Wealth Management <Informa@enews.wealthmanagement.com>",
+      "id": "19ed0c96fce25f63",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/subscriptions & education",
+        "[Superhuman]/AI/News",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Hi KAY, Live Tomorrow @ 2 PM ET! Unlocking Planning Opportunities under the OBBB"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 10:13",
+      "from": "Team Grata <hello@grata.com>",
+      "id": "19ed0c7ccee22b63",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "[Superhuman]/AI/Marketing",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Full market coverage, six-figure savings"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-11 10:32",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "19eb7187b4ab8f97",
+      "labels": [
+        "[Superhuman]/AI/Waiting",
+        "SENT"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Summer Office - desk Free"
+    },
+    {
+      "candidate_reason": "deal_keyword_in_metadata",
+      "date": "2026-06-16 09:04",
+      "from": "Search Fund Coalition Events <sfc@calendar.luma-mail.com>",
+      "id": "19ed0886b0d6deff",
+      "labels": [
+        "IMPORTANT",
+        "[Superhuman]/AI/Marketing",
+        "auto/meetings",
+        "CATEGORY_UPDATES",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Registration approved for ETA Deal Team Day: NYC"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 07:55",
+      "from": "Kay Schneider <k.schneider@meet-greenwichandbarrow.com>",
+      "id": "19ed049007fc9cef",
+      "labels": [
+        "[Superhuman]/AI/Respond",
+        "[Superhuman]/AI/Meeting",
+        "IMPORTANT",
+        "CATEGORY_PERSONAL",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "RE: RE: Interest in acquiring Total Extermination"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 19:00",
+      "from": "Michael Girdley <media@girdley.com>",
+      "id": "19ecd83dcb0d2430",
+      "labels": [
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 2,
+      "snippet": "",
+      "subject": "One more thing before midnight"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 18:58",
+      "from": "\"(646) 641-5423\" <19177272735.16466415423.b3KZ3mBMBc@txt.voice.google.com>",
+      "id": "19ecd81bb0480a7e",
+      "labels": [
+        "[Superhuman]/AI/Respond",
+        "[Superhuman]/AI/Meeting",
+        "[Superhuman]/AI/Pitch",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "New text message from (646) 641-5423"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 11:29",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "19e7340e9b580425",
+      "labels": [
+        "SENT"
+      ],
+      "message_count": 12,
+      "snippet": "",
+      "subject": "Reconnect - Pest"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 14:11",
+      "from": "<carlos@in3o.com>",
+      "id": "19e40a4500ae343c",
+      "labels": [
+        "IMPORTANT",
+        "auto/personal & network",
+        "CATEGORY_PERSONAL"
+      ],
+      "message_count": 7,
+      "snippet": "",
+      "subject": "FW: Announcing Prestige Landscape Services, a new add-on for LMC Landscape Partners"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 22:15",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "19ecca51094e5804",
+      "labels": [
+        "SENT"
+      ],
+      "message_count": 5,
+      "snippet": "",
+      "subject": "Introduction"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 15:34",
+      "from": "Anthropic Team <notice@email.anthropic.com>",
+      "id": "19eccc775bb2eb42",
+      "labels": [
+        "[Superhuman]/AI/Marketing",
+        "auto/tech stack",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "We\u2019re pausing the Agent SDK credit change"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 13:37",
+      "from": "XPX <XPX@my.exitplanningexchange.com>",
+      "id": "19ecc5c6304e389e",
+      "labels": [
+        "auto/industry research",
+        "[Superhuman]/AI/Marketing",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Join us! XPX New York City - Summer Networking Social"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 13:36",
+      "from": "XPX <XPX@my.exitplanningexchange.com>",
+      "id": "19ecc5b9b070161e",
+      "labels": [
+        "auto/industry research",
+        "[Superhuman]/AI/Marketing",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Join us! XPX New Jersey: The Human Side of Succession Planning"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 13:18",
+      "from": "\"DealsX Team (via Google Docs)\" <drive-shares-dm-noreply@google.com>",
+      "id": "19ecc4ac75134e6e",
+      "labels": [
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Share request for \"Personal connections for email reference:\""
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 13:11",
+      "from": "XPX <XPX@my.exitplanningexchange.com>",
+      "id": "19ecc443a8dceda7",
+      "labels": [
+        "UNREAD",
+        "auto/industry research",
+        "[Superhuman]/AI/Marketing",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Last Chance! XPX Connecticut -Getting to Close:  Members stories on how they got challenging deals closed."
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 12:03",
+      "from": "Zoom <no-reply@zoom.us>",
+      "id": "19ecc05abdfe814f",
+      "labels": [
+        "auto/meetings",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Understanding a Quality of Earnings Analysis: What's Included and Why Confirmation"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 11:15",
+      "from": "NJPMA <classes+njpma@neonemails.com>",
+      "id": "19ecbda8cf2eddbf",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "[Superhuman]/AI/Marketing",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "NJPMA \u2013 NJDEP Category 8B (Mosquito) class on Tuesday, June 16, 2026 \u2013 REGISTER NOW!! \u2013 This will be the last 8B class until September 2026."
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 10:49",
+      "from": "alex@rejigg.com",
+      "id": "19ecbbcdd9af3767",
+      "labels": [
+        "IMPORTANT",
+        "[Superhuman]/AI/Pitch",
+        "CATEGORY_PERSONAL",
+        "INBOX"
+      ],
+      "message_count": 3,
+      "snippet": "",
+      "subject": "Heading to New York, would love to connect"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 07:02",
+      "from": "\"Everingham & Kerr, Inc.\" <admin1@everkerr.com>",
+      "id": "19e28b9600f7365b",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "auto/deal flow"
+      ],
+      "message_count": 6,
+      "snippet": "",
+      "subject": "E&K: New Acquisition Opportunity - Provider of Metal Manufacturing;  Precision Machining, Stamping & Tool & Die"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 10:16",
+      "from": "Squarespace <noreply@mail.squarespace.com>",
+      "id": "19ecba3d81e5f6aa",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "[Superhuman]/AI/Marketing",
+        "auto/tech stack",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "20% off a more affordable email solution"
+    }
+  ],
+  "outbound": [
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 15:52",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "19ed14b7a8f2f31e",
+      "labels": [
+        "SENT"
+      ],
+      "message_count": 3,
+      "snippet": "",
+      "subject": "Catch up"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 15:40",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "19eb72e6374e338c",
+      "labels": [
+        "SENT"
+      ],
+      "message_count": 7,
+      "snippet": "",
+      "subject": "Greenwich & Barrow Update 6.11.26 - CONFIDENTIAL"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 12:20",
+      "from": "kay.s@greenwichandbarrow.com",
+      "id": "19ed13bf7d33310f",
+      "labels": [
+        "DRAFT"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Great meeting you this morning"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 12:20",
+      "from": "kay.s@greenwichandbarrow.com",
+      "id": "19ed13bf32dd5c91",
+      "labels": [
+        "DRAFT"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Great meeting you this morning"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 19:07",
+      "from": "Ian McMilan <ian@ttcerpartners.com>",
+      "id": "19ed10d003415fd1",
+      "labels": [
+        "IMPORTANT",
+        "CATEGORY_PERSONAL",
+        "INBOX"
+      ],
+      "message_count": 3,
+      "snippet": "",
+      "subject": "Kay Schneider and Ian McMilan @ Thu, Jun 18, 2026 12:00pm \u2013 12:30pm (GMT-07)"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 07:37",
+      "from": "Harrison Wells <harrison@dododigital.ai>",
+      "id": "19e863c193e89ea2",
+      "labels": [
+        "auto/finance & legal",
+        "[Superhuman]/AI/Auto/Finance_&_Legal",
+        "IMPORTANT",
+        "auto/personal & network",
+        "CATEGORY_PERSONAL"
+      ],
+      "message_count": 21,
+      "snippet": "",
+      "subject": "Invoice + Codex check in"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 07:02",
+      "from": "\"Everingham & Kerr, Inc.\" <admin1@everkerr.com>",
+      "id": "19e28b9600f7365b",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "auto/deal flow"
+      ],
+      "message_count": 6,
+      "snippet": "",
+      "subject": "E&K: New Acquisition Opportunity - Provider of Metal Manufacturing;  Precision Machining, Stamping & Tool & Die"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 14:11",
+      "from": "<carlos@in3o.com>",
+      "id": "19e40a4500ae343c",
+      "labels": [
+        "IMPORTANT",
+        "auto/personal & network",
+        "CATEGORY_PERSONAL"
+      ],
+      "message_count": 7,
+      "snippet": "",
+      "subject": "FW: Announcing Prestige Landscape Services, a new add-on for LMC Landscape Partners"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 22:15",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "19ecca51094e5804",
+      "labels": [
+        "SENT"
+      ],
+      "message_count": 5,
+      "snippet": "",
+      "subject": "Introduction"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 14:28",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "19ecc87cf1f005ad",
+      "labels": [
+        "[Superhuman]/AI/Meeting",
+        "[Superhuman]/AI/Waiting",
+        "SENT"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Introduction"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-16 11:29",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "19e7340e9b580425",
+      "labels": [
+        "SENT"
+      ],
+      "message_count": 12,
+      "snippet": "",
+      "subject": "Reconnect - Pest"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 11:58",
+      "from": "Granola <invoice+statements+acct_1OmfmSCilWDhJZLI@stripe.com>",
+      "id": "19ec659eedd131f1",
+      "labels": [
+        "auto/finance & legal",
+        "IMPORTANT",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 2,
+      "snippet": "",
+      "subject": "Your receipt from Granola #2968-5633"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-06-15 12:14",
+      "from": "James Emden <jemden@helmsleyspear.com>",
+      "id": "19e7e23e77fbc2d4",
+      "labels": [
+        "IMPORTANT",
+        "auto/personal & network",
+        "[Superhuman]/AI/Auto/Personal_&_Network",
+        "CATEGORY_PERSONAL"
+      ],
+      "message_count": 20,
+      "snippet": "",
+      "subject": "Re: Updated invitation: Lunch James I Kay @ Thu Jun 4, 2026 12pm - 1pm (EDT) (jemden@helmsleyspear.com)"
+    }
+  ],
+  "queries": {
+    "inbound": "newer_than:2d label:INBOX",
+    "outbound": "from:kay.s@greenwichandbarrow.com newer_than:2d"
+  },
+  "safety": {
+    "gmail_no_send": true,
+    "max_body_chars_per_candidate_message": 6000,
+    "max_candidate_threads_enriched": 18,
+    "raw_thread_bodies_printed_to_stdout": false
+  }
+}

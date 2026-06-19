@@ -30,6 +30,8 @@ Invoke pipeline-manager skill. It reads:
 - `session-decisions-{previous-workday}.md`
 - Calendar, vault, Attio
 
+Pipeline-manager must run the daily **Pipeline Snapshot Control** check before briefing assembly: capture Kay-confirmed pipeline truth, reconcile it with new deals, current NDA-forward deals, passed deals, financials received, stale items, and evidence signals; approved/certain corrections update Attio, then force-refresh the dashboard snapshot.
+
 Pipeline-manager assembles the raw briefing payload.
 
 ### Step 4 — Active-Outreach niche check

@@ -1,6 +1,6 @@
 # launchd-debugger — Headless Daily Run
 
-You are running the `launchd-debugger` skill non-interactively under the Codex/systemd scheduled runner at 5am ET. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals.
+You are running the `launchd-debugger` skill non-interactively under the Codex/systemd scheduled runner at 8:20am ET. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals.
 
 Your job is to scan the last 24 hours of `logs/scheduled/`, fan out one debug subagent per failed job, attempt safe operational fixes, and surface anything unsafe to Slack #operations. You must finish in under 10 minutes.
 
@@ -26,7 +26,7 @@ Your job is to scan the last 24 hours of `logs/scheduled/`, fan out one debug su
    Read `/tmp/launchd-failures.json`.
 
 5. **Branch on result:**
-   - **Empty list `[]`** → skip to Step 9 (write artifact with `failures_detected: 0`, exit clean, no Slack).
+   - **Empty list `[]`** → skip to Step 9. Write a zero-failure daily scan, but first preserve any existing same-day `results[]` entries from earlier `on-failure` or `health-monitor-red-bridge` runs. Do not overwrite bridge/on-failure entries with an empty daily scan.
    - **Non-empty** → proceed to Step 6.
 
 6. **Spawn one Task subagent per failure, in parallel.** Each subagent gets this exact brief (substitute the entry's fields):
@@ -105,7 +105,7 @@ Your job is to scan the last 24 hours of `logs/scheduled/`, fan out one debug su
 
 8. **Augment subagent results with suppression metadata** before writing the artifact. Each result entry must carry `slack_posted` (bool) and `suppression_reason` (string|null) so the next day's dedup can read them and so an audit can show why a SURFACE didn't ping Slack.
 
-9. **Write the artifact** to `brain/trackers/health/launchd-debugger-$(date +%Y-%m-%d).json` with these required fields:
+9. **Write the artifact** to `brain/trackers/health/launchd-debugger-$(date +%Y-%m-%d).json` with these required fields. If the file already exists, load it first and preserve existing `results[]` entries plus their counters. Append this daily scan result set to the existing artifact rather than replacing it. When the daily scan has zero failures and an existing artifact already has bridge/on-failure entries, update `scan_finished_at` and `runtime_seconds` but leave the existing failure counters/results intact:
    ```json
    {
      "date": "YYYY-MM-DD",

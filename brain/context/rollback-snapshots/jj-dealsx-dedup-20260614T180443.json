@@ -1,0 +1,2413 @@
+{
+  "captured_at": "2026-06-14T18:04:43.431612",
+  "sheet_id": "1Y0ZjEkc2LHhBoO4QGO8Ny9MvG90NpojQn8bloKA291I",
+  "dealsx_sheet_id": "1VaviHqaJT9Wtm6X1h9B6Q8aOrA8adTiBvt851pkEUFg",
+  "pool_artifact": "brain/context/jj-week-pool-2026-06-14.md",
+  "week_tabs": [
+    "Call Log 6.15.26",
+    "Call Log 6.16.26",
+    "Call Log 6.17.26",
+    "Call Log 6.18.26",
+    "Call Log 6.19.26"
+  ],
+  "drops": {
+    "blank_owner": [],
+    "do_not_call": [
+      {
+        "source_row": 48,
+        "company": "Alpha Eden - Your Local Pest Control Experts",
+        "owner": "Jack Marlowe (former)",
+        "row": [
+          "Apollo",
+          "Alpha Eden - Your Local Pest Control Experts",
+          "http://www.alphaedenpest.com",
+          "",
+          "Commercial Pest Management",
+          "43",
+          "",
+          "",
+          "1986",
+          "",
+          "Jack Marlowe (former)",
+          "Founder/Owner",
+          "",
+          "(888) 771-8854",
+          "",
+          "",
+          "",
+          "http://www.linkedin.com/company/alpha-ecological-say-frog0",
+          "PE-OWNED: Acquired by Western Exterminator (Rentokil-owned strategic). Source: westernexterminator.com/about/acquisitions/alpha-eden + theorg.com listing of Jack Marlowe as former founder/owner",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "source_row": 136,
+        "company": "Standard Pest Control, Inc.",
+        "owner": "Filippe Chagas",
+        "row": [
+          "Apollo",
+          "Standard Pest Control, Inc.",
+          "http://www.standardpestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "5",
+          "",
+          "",
+          "1983",
+          "",
+          "Filippe Chagas",
+          "Owner",
+          "",
+          "(908) 322-6552",
+          "",
+          "",
+          "http://www.linkedin.com/in/filippe-chagas-4520a911a",
+          "http://www.linkedin.com/company/standard-pest-control-inc",
+          "ACTIVE ENGAGEMENT FLAG (Phase 2 2026-05-10 warm-intro check): Filippe Chagas was already contacted by JJ on 2026-04-22 per brain/entities/filippe-chagas.md \u2014 owner open to Kay call, draft pending Superhuman re-auth. DO NOT re-cold-call. Hand to Kay for direct follow-up. | Prior: Standard Pest Control: Owner Filippe Chagas found, no email on Apollo. No direct dial.",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      }
+    ],
+    "skip_flag": [],
+    "dealsx_overlap": [
+      {
+        "source_row": 5,
+        "company": "Fenix Pest Control",
+        "owner": "Lance Bodily",
+        "row": [
+          "Apollo",
+          "Fenix Pest Control",
+          "http://www.fenixpestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "41",
+          "",
+          "",
+          "2018",
+          "",
+          "Lance Bodily",
+          "President",
+          "lance@fenixpestcontrol.com",
+          "(515) 310-9990",
+          "",
+          "",
+          "http://www.linkedin.com/in/lance-bodily-4259111b2",
+          "http://www.linkedin.com/company/fenix-pest-control-inc",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 206,
+            "company": "Fenix Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 223,
+            "company": "Fenix Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 6,
+        "company": "Miche Pest Control",
+        "owner": "Tom Miche",
+        "row": [
+          "Apollo",
+          "Miche Pest Control",
+          "http://www.michepestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "11",
+          "",
+          "",
+          "2019",
+          "",
+          "Tom Miche",
+          "President",
+          "tmiche@michepestcontrol.com",
+          "",
+          "",
+          "",
+          "http://www.linkedin.com/in/tmiche",
+          "http://www.linkedin.com/company/michepestcontrol",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 227,
+            "company": "Miche Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 8,
+        "company": "Go-Forth Pest Control",
+        "owner": "Chase Hazelwood",
+        "row": [
+          "Apollo",
+          "Go-Forth Pest Control",
+          "http://www.go-forth.com",
+          "",
+          "Commercial Pest Management",
+          "75",
+          "",
+          "",
+          "1959",
+          "",
+          "Chase Hazelwood",
+          "Owner & CEO",
+          "",
+          "(336) 841-6111",
+          "",
+          "",
+          "http://www.linkedin.com/in/chasehazelwood",
+          "http://www.linkedin.com/company/go-forth-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 417,
+            "company": "Go-Forth Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 12,
+        "company": "Proforce Pest Control",
+        "owner": "Sterling Howard",
+        "row": [
+          "Apollo",
+          "Proforce Pest Control",
+          "http://www.proforcepest.com",
+          "",
+          "Commercial Pest Management",
+          "110",
+          "",
+          "",
+          "2015",
+          "",
+          "Sterling Howard",
+          "Vice President",
+          "showard@proforcepest.com",
+          "",
+          "",
+          "",
+          "http://www.linkedin.com/in/sterlinghoward",
+          "http://www.linkedin.com/company/proforcepestcontrol",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 469,
+            "company": "ProForce Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 17,
+        "company": "Action Pest Control",
+        "owner": "Rob Dupain",
+        "row": [
+          "Apollo",
+          "Action Pest Control",
+          "http://www.actionpest.com",
+          "",
+          "Commercial Pest Management",
+          "120",
+          "",
+          "",
+          "1946",
+          "",
+          "Rob Dupain",
+          "OWNER",
+          "robd@actionpest.com",
+          "(812) 477-5546",
+          "",
+          "",
+          "http://www.linkedin.com/in/rob-dupain-2068b236",
+          "http://www.linkedin.com/company/action-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 314,
+            "company": "Action Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 20,
+        "company": "Rest Easy Pest Control",
+        "owner": "Jeremy Ecker",
+        "row": [
+          "Apollo",
+          "Rest Easy Pest Control",
+          "http://www.resteasypestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "31",
+          "",
+          "",
+          "",
+          "",
+          "Jeremy Ecker",
+          "Chief Executive Officer",
+          "jeremy@resteasypest.com",
+          "(888) 927-9842",
+          "",
+          "",
+          "http://www.linkedin.com/in/jeremyecker",
+          "http://www.linkedin.com/company/rest-easy-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 28,
+            "company": "Rest Easy Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 21,
+        "company": "Anchor Pest Control",
+        "owner": "Carmen Reino",
+        "row": [
+          "Apollo",
+          "Anchor Pest Control",
+          "http://www.anchorpestcontrol.net",
+          "",
+          "Commercial Pest Management",
+          "28",
+          "",
+          "",
+          "2005",
+          "",
+          "Carmen Reino",
+          "Owner",
+          "carmen@anchorpestcontrol.net",
+          "(732) 636-8761",
+          "",
+          "",
+          "http://www.linkedin.com/in/carmen-reino-4715ba117",
+          "http://www.linkedin.com/company/anchor-pest-controlnj",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 53,
+            "company": "Anchor Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 96,
+            "company": "Anchor Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 145,
+            "company": "Anchor Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 28,
+        "company": "Prewett Pest Control",
+        "owner": "Rusty Prewett",
+        "row": [
+          "Apollo",
+          "Prewett Pest Control",
+          "http://www.prewettpestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "17",
+          "",
+          "",
+          "2020",
+          "",
+          "Rusty Prewett",
+          "Founder & CEO",
+          "",
+          "",
+          "",
+          "",
+          "http://www.linkedin.com/in/rusty-prewett-5baa9111",
+          "http://www.linkedin.com/company/prewett-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 74,
+            "company": "Prewett Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 29,
+        "company": "proof. Pest Control",
+        "owner": "John Seger",
+        "row": [
+          "Apollo",
+          "proof. Pest Control",
+          "http://www.proofpest.com",
+          "",
+          "Commercial Pest Management",
+          "61",
+          "",
+          "",
+          "2015",
+          "",
+          "John Seger",
+          "Part Owner",
+          "johns@proofpest.com",
+          "(248) 509-5151",
+          "",
+          "",
+          "http://www.linkedin.com/in/john-seger-7b6520183",
+          "http://www.linkedin.com/company/proof.-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest & ENV Service (Good Fit) Valid",
+            "row": 44,
+            "company": "proof. Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 32,
+        "company": "Scherzinger Pest Control",
+        "owner": "Kurt Scherzinger",
+        "row": [
+          "Apollo",
+          "Scherzinger Pest Control",
+          "http://www.stopzbugs.com",
+          "",
+          "Commercial Pest Management",
+          "73",
+          "",
+          "",
+          "1934",
+          "",
+          "Kurt Scherzinger",
+          "President",
+          "kurt@stopzbugs.com",
+          "(877) 748-9888",
+          "",
+          "",
+          "http://www.linkedin.com/in/kurt-scherzinger-a-c-e-b856b211",
+          "http://www.linkedin.com/company/scherzinger-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 541,
+            "company": "Scherzinger Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 34,
+        "company": "Cascade Pest Control",
+        "owner": "Kurt Treftz",
+        "row": [
+          "Apollo",
+          "Cascade Pest Control",
+          "http://www.cascadepest.com",
+          "",
+          "Commercial Pest Management",
+          "24",
+          "",
+          "",
+          "1979",
+          "",
+          "Kurt Treftz",
+          "Founder/Owner; Director/President",
+          "kurt@cascadepest.com",
+          "(888) 989-8979",
+          "",
+          "",
+          "http://www.linkedin.com/in/kurttreftz",
+          "http://www.linkedin.com/company/cascade-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 216,
+            "company": "Cascade Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 276,
+            "company": "Cascade Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 37,
+        "company": "Pete's Pest Control",
+        "owner": "Peter Lett",
+        "row": [
+          "Apollo",
+          "Pete's Pest Control",
+          "http://www.petethebugguy.com",
+          "",
+          "Commercial Pest Management",
+          "16",
+          "",
+          "",
+          "2010",
+          "",
+          "Peter Lett",
+          "Owner",
+          "",
+          "(913) 232-8016",
+          "",
+          "",
+          "http://www.linkedin.com/in/peter-lett-7480a511",
+          "http://www.linkedin.com/company/petespestcontrol",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 201,
+            "company": "Pete's Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 202,
+            "company": "Pete's Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 38,
+        "company": "Fenn Termite & Pest Control, Inc.",
+        "owner": "Della Fenn",
+        "row": [
+          "Apollo",
+          "Fenn Termite & Pest Control, Inc.",
+          "http://www.fennpest.com",
+          "",
+          "Commercial Pest Management",
+          "25",
+          "",
+          "",
+          "1953",
+          "",
+          "Della Fenn",
+          "Owner",
+          "",
+          "(714) 736-9000",
+          "",
+          "",
+          "http://www.linkedin.com/in/della-fenn-1a11a941",
+          "http://www.linkedin.com/company/fenn-termite-&-pest-control-inc.",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest & ENV Service (Good Fit) Valid",
+            "row": 2,
+            "company": "Fenn Termite & Pest Control, Inc."
+          },
+          {
+            "tab": "Specialty Pest & ENV Service (Good Fit) Valid",
+            "row": 14,
+            "company": "Fenn Termite & Pest Control, Inc."
+          }
+        ]
+      },
+      {
+        "source_row": 46,
+        "company": "Specter Pest Control",
+        "owner": "Mitch Temple",
+        "row": [
+          "Apollo",
+          "Specter Pest Control",
+          "http://www.specterservice.com",
+          "",
+          "Commercial Pest Management",
+          "18",
+          "",
+          "",
+          "",
+          "",
+          "Mitch Temple",
+          "Co-Owner",
+          "mitch@specterservice.com",
+          "(256) 286-4164",
+          "",
+          "",
+          "http://www.linkedin.com/in/mitch-temple-29870a1b0",
+          "http://www.linkedin.com/company/specter-service-company",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 251,
+            "company": "Specter Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 47,
+        "company": "Blue Beetle Pest Control",
+        "owner": "Mitch Shipman",
+        "row": [
+          "Apollo",
+          "Blue Beetle Pest Control",
+          "http://www.bluebeetlepest.com",
+          "",
+          "Commercial Pest Management",
+          "21",
+          "",
+          "",
+          "2003",
+          "",
+          "Mitch Shipman",
+          "Business Owner",
+          "mitchs@bluebeetlepest.com",
+          "(816) 333-7378",
+          "",
+          "",
+          "http://www.linkedin.com/in/mitch-shipman-0b159026b",
+          "http://www.linkedin.com/company/bluebeetlepestcontrol",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 158,
+            "company": "Blue Beetle Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 52,
+        "company": "Arizona Pest Control",
+        "owner": "Matthew Terry",
+        "row": [
+          "Apollo",
+          "Arizona Pest Control",
+          "http://www.azpest.com",
+          "",
+          "Commercial Pest Management",
+          "20",
+          "",
+          "",
+          "1947",
+          "",
+          "Matthew Terry",
+          "Small Business Owner",
+          "",
+          "(520) 298-7821",
+          "",
+          "",
+          "http://www.linkedin.com/in/matthew-terry-83017a1a3",
+          "http://www.linkedin.com/company/arizona-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 79,
+            "company": "Arizona Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 62,
+        "company": "Bug Off Pest Control Center",
+        "owner": "Andy Linares",
+        "row": [
+          "Apollo",
+          "Bug Off Pest Control Center",
+          "http://www.bugoffpccenter.com",
+          "",
+          "Commercial Pest Management",
+          "6",
+          "",
+          "",
+          "1987",
+          "",
+          "Andy Linares",
+          "President",
+          "andy@bugoffpccenter.com",
+          "(212) 781-2304",
+          "",
+          "",
+          "http://www.linkedin.com/in/andylinares",
+          "http://www.linkedin.com/company/bug-off-pest-control-center",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 69,
+            "company": "Bug Off Pest Control Center"
+          }
+        ]
+      },
+      {
+        "source_row": 64,
+        "company": "Pinnacle Pest Control",
+        "owner": "Jim Lopez",
+        "row": [
+          "Apollo",
+          "Pinnacle Pest Control",
+          "http://www.pinnaclepest.com",
+          "",
+          "Commercial Pest Management",
+          "22",
+          "",
+          "",
+          "1998",
+          "",
+          "Jim Lopez",
+          "President / CEO",
+          "jlopez@pinnaclepest.com",
+          "(916) 381-5793",
+          "",
+          "",
+          "http://www.linkedin.com/in/jim-lopez-aa95a119",
+          "http://www.linkedin.com/company/pinnacle-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 196,
+            "company": "Pinnacle Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 65,
+        "company": "ANCHOR PEST CONTROL",
+        "owner": "Carmen Reino",
+        "row": [
+          "Apollo",
+          "ANCHOR PEST CONTROL",
+          "http://www.anchorpest.com",
+          "",
+          "Commercial Pest Management",
+          "8",
+          "",
+          "",
+          "",
+          "",
+          "Carmen Reino",
+          "Founder, Owner & President",
+          "",
+          "(209) 536-1981",
+          "",
+          "",
+          "http://www.linkedin.com/in/carmen-reino-4715ba117",
+          "http://www.linkedin.com/company/anchor-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 53,
+            "company": "Anchor Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 96,
+            "company": "Anchor Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 145,
+            "company": "Anchor Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 66,
+        "company": "Magic City Pest Control",
+        "owner": "Samantha Stuart",
+        "row": [
+          "Apollo",
+          "Magic City Pest Control",
+          "http://www.magiccitypestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "16",
+          "",
+          "",
+          "2020",
+          "",
+          "Samantha Stuart",
+          "Co-Founder & Chief Administrator",
+          "sstuart@magiccitypestcontrol.com",
+          "(205) 538-1435",
+          "",
+          "",
+          "http://www.linkedin.com/in/samantha-stuart-25a42abb",
+          "http://www.linkedin.com/company/magic-city-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 123,
+            "company": "Magic City Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 67,
+        "company": "Sage Pest Control",
+        "owner": "Brandon Grover",
+        "row": [
+          "Apollo",
+          "Sage Pest Control",
+          "http://www.sagepestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "35",
+          "",
+          "",
+          "2009",
+          "",
+          "Brandon Grover",
+          "CEO & Founder",
+          "brandon@sagepest.com",
+          "(704) 727-7000",
+          "",
+          "",
+          "http://www.linkedin.com/in/grover-brandon",
+          "http://www.linkedin.com/company/sage-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 105,
+            "company": "Sage Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 151,
+            "company": "Sage Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 70,
+        "company": "Natura Pest Control",
+        "owner": "Eric Bassett",
+        "row": [
+          "Apollo",
+          "Natura Pest Control",
+          "http://www.naturapestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "20",
+          "",
+          "",
+          "2013",
+          "",
+          "Eric Bassett",
+          "Owner - Vice President",
+          "eric@naturapestcontrol.com",
+          "(360) 215-2876",
+          "",
+          "",
+          "http://www.linkedin.com/in/eric-bassett-ace-1459b280",
+          "http://www.linkedin.com/company/natura-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 403,
+            "company": "Natura Pest Control LLC"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 408,
+            "company": "Natura Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 75,
+        "company": "ZipZap Termite & Pest Control",
+        "owner": "Janet Preece",
+        "row": [
+          "Apollo",
+          "ZipZap Termite & Pest Control",
+          "http://www.zipzappestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "10",
+          "",
+          "",
+          "1993",
+          "",
+          "Janet Preece",
+          "Owner & President",
+          "",
+          "(816) 407-7378",
+          "",
+          "",
+          "",
+          "http://www.linkedin.com/company/zipzap-termite-&-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 432,
+            "company": "ZipZap Termite & Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 78,
+        "company": "U.S. Pest Control, Inc.",
+        "owner": "Aaron Owens",
+        "row": [
+          "Apollo",
+          "U.S. Pest Control, Inc.",
+          "http://www.uspestcontrolinc.com",
+          "",
+          "Commercial Pest Management",
+          "9",
+          "",
+          "",
+          "1990",
+          "",
+          "Aaron Owens",
+          "Owner",
+          "aaron@uspestcontrolinc.com",
+          "(804) 788-0800",
+          "",
+          "",
+          "http://www.linkedin.com/in/aaron-owens-6924aa197",
+          "http://www.linkedin.com/company/u-s-pest-control-inc",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 239,
+            "company": "U.S. Pest Control, Inc."
+          }
+        ]
+      },
+      {
+        "source_row": 80,
+        "company": "All U Need Pest Control",
+        "owner": "Steve Groeper",
+        "row": [
+          "Apollo",
+          "All U Need Pest Control",
+          "http://www.alluneedpest.com",
+          "",
+          "Commercial Pest Management",
+          "39",
+          "",
+          "",
+          "2013",
+          "",
+          "Steve Groeper",
+          "Owner",
+          "",
+          "(239) 573-6760",
+          "",
+          "",
+          "",
+          "http://www.linkedin.com/company/all-u-need-pest-control-inc",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 114,
+            "company": "All U Need Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 125,
+            "company": "All U Need Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 81,
+        "company": "Brock Lawn & Pest Control",
+        "owner": "Derek Pumphrey",
+        "row": [
+          "Apollo",
+          "Brock Lawn & Pest Control",
+          "http://www.brockpest.com",
+          "",
+          "Commercial Pest Management",
+          "6",
+          "",
+          "",
+          "1968",
+          "",
+          "Derek Pumphrey",
+          "Executive Vice President",
+          "dpumphrey@brockpest.com",
+          "(850) 234-1099",
+          "",
+          "",
+          "http://www.linkedin.com/in/derek-pumphrey-80551b134",
+          "http://www.linkedin.com/company/brock-lawn-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 486,
+            "company": "Brock Lawn and Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 83,
+        "company": "Rocklin Pest Control",
+        "owner": "Don Jones",
+        "row": [
+          "Apollo",
+          "Rocklin Pest Control",
+          "http://www.rocklinpestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "6",
+          "",
+          "",
+          "1984",
+          "",
+          "Don Jones",
+          "Business Owner",
+          "don@rocklinpestcontrol.com",
+          "(916) 250-0008",
+          "",
+          "",
+          "http://www.linkedin.com/in/don-jones-1a5217187",
+          "http://www.linkedin.com/company/rocklin-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 236,
+            "company": "Rocklin Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 84,
+        "company": "Knockout Pest Control",
+        "owner": "Arthur Katz",
+        "row": [
+          "Apollo",
+          "Knockout Pest Control",
+          "http://www.knockoutpest.com",
+          "",
+          "Commercial Pest Management",
+          "18",
+          "",
+          "",
+          "1975",
+          "",
+          "Arthur Katz",
+          "Founder",
+          "akatz@knockoutpest.com",
+          "(800) 244-7378",
+          "",
+          "",
+          "http://www.linkedin.com/in/arthur-katz-75273b5",
+          "http://www.linkedin.com/company/knockout-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 370,
+            "company": "Knockout Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 85,
+        "company": "Vinx Pest Control",
+        "owner": "Ryan Marshall",
+        "row": [
+          "Apollo",
+          "Vinx Pest Control",
+          "http://www.vinxpestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "35",
+          "",
+          "",
+          "2013",
+          "",
+          "Ryan Marshall",
+          "CEO",
+          "ryan@vinxpestcontrol.com",
+          "(801) 692-0070",
+          "",
+          "",
+          "http://www.linkedin.com/in/ryan-marshall-14205b26",
+          "http://www.linkedin.com/company/vinx-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 115,
+            "company": "Vinx Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 212,
+            "company": "Vinx Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 87,
+        "company": "Apex Pest Control",
+        "owner": "Dustin Barousse",
+        "row": [
+          "Apollo",
+          "Apex Pest Control",
+          "http://www.apexpestcontrol.net",
+          "",
+          "Commercial Pest Management",
+          "36",
+          "",
+          "",
+          "1969",
+          "",
+          "Dustin Barousse",
+          "Owner",
+          "dustin@apexpestcontrolcompany.com",
+          "(800) 684-2284",
+          "",
+          "",
+          "http://www.linkedin.com/in/dustin-barousse-2a95569",
+          "http://www.linkedin.com/company/apex-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 7,
+            "company": "Apex Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 71,
+            "company": "Apex Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 136,
+            "company": "Apex Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 197,
+            "company": "Apex Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 92,
+        "company": "Kilauea Pest Control",
+        "owner": "John Speed",
+        "row": [
+          "Apollo",
+          "Kilauea Pest Control",
+          "http://www.kilaueapest.com",
+          "",
+          "Commercial Pest Management",
+          "26",
+          "",
+          "",
+          "2002",
+          "",
+          "John Speed",
+          "President",
+          "john@kilaueapest.com",
+          "(808) 236-2847",
+          "",
+          "",
+          "http://www.linkedin.com/in/john-speed-a1355b5",
+          "http://www.linkedin.com/company/kilauea-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 195,
+            "company": "Kilauea Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 99,
+        "company": "Mint Pest Control",
+        "owner": "Brandon Sizemore",
+        "row": [
+          "Apollo",
+          "Mint Pest Control",
+          "http://www.mintpest.com",
+          "",
+          "Commercial Pest Management",
+          "21",
+          "",
+          "",
+          "",
+          "",
+          "Brandon Sizemore",
+          "Co-Founder & President",
+          "b.sizemore@mintpest.com",
+          "(888) 739-9099",
+          "",
+          "",
+          "http://www.linkedin.com/in/brandon-sizemore-cpa-a6a3173a",
+          "http://www.linkedin.com/company/mint-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 54,
+            "company": "Mint Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 76,
+            "company": "Mint Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 101,
+        "company": "Presto Pest Control",
+        "owner": "John Mountjoy",
+        "row": [
+          "Apollo",
+          "Presto Pest Control",
+          "http://www.prestopestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "26",
+          "",
+          "",
+          "1999",
+          "",
+          "John Mountjoy",
+          "Owner, Operator",
+          "",
+          "(888) 335-9583",
+          "",
+          "",
+          "http://www.linkedin.com/in/john-mountjoy-b7988316",
+          "http://www.linkedin.com/company/presto-pest-control-inc-",
+          "Phase 1 \u2014 volume load, calls-first",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 10,
+            "company": "Presto Pest Control, Inc."
+          }
+        ]
+      },
+      {
+        "source_row": 102,
+        "company": "Absolute Pest Control, Inc",
+        "owner": "Brad Anderson",
+        "row": [
+          "Apollo",
+          "Absolute Pest Control, Inc",
+          "http://www.absolutepest.com",
+          "",
+          "Commercial Pest Management",
+          "28",
+          "",
+          "",
+          "1985",
+          "",
+          "Brad Anderson",
+          "Owner",
+          "",
+          "(518) 533-3621",
+          "",
+          "",
+          "http://www.linkedin.com/in/brad-anderson-91abb216",
+          "http://www.linkedin.com/company/absolute-pest-control-inc",
+          "Phase 1 \u2014 volume load, calls-first | Email skip: brad@absolutebugs.com domain mismatch (absolutebugs.com vs absolutepest.com) | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 90,
+            "company": "Absolute Pest Control, Inc"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 487,
+            "company": "Absolute pest control"
+          }
+        ]
+      },
+      {
+        "source_row": 108,
+        "company": "Cantu Pest Control",
+        "owner": "Tony Rios",
+        "row": [
+          "Apollo",
+          "Cantu Pest Control",
+          "http://www.cantupestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "13",
+          "",
+          "",
+          "1983",
+          "",
+          "Tony Rios",
+          "V.P. & General Manager",
+          "tony.rios@cantupestcontrol.com",
+          "(972) 562-9999",
+          "",
+          "",
+          "http://www.linkedin.com/in/tony-rios-64021428",
+          "http://www.linkedin.com/company/cantu-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 307,
+            "company": "Cantu Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 123,
+        "company": "HomeShield Pest Control",
+        "owner": "Ian Morgan",
+        "row": [
+          "Apollo",
+          "HomeShield Pest Control",
+          "http://www.homeshieldxp.com",
+          "",
+          "Commercial Pest Management",
+          "30",
+          "",
+          "",
+          "2005",
+          "",
+          "Ian Morgan",
+          "President",
+          "ian@homeshieldpestcontrol.com",
+          "(615) 255-8808",
+          "",
+          "",
+          "http://www.linkedin.com/in/ian-morgan-43735353",
+          "http://www.linkedin.com/company/homeshield-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 295,
+            "company": "HomeShield Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 124,
+        "company": "Absolute Pest Control",
+        "owner": "Brad Anderson",
+        "row": [
+          "Apollo",
+          "Absolute Pest Control",
+          "http://www.absolutebugs.com",
+          "",
+          "Commercial Pest Management",
+          "21",
+          "",
+          "",
+          "1997",
+          "",
+          "Brad Anderson",
+          "Owner",
+          "brad@absolutebugs.com",
+          "(330) 425-3210",
+          "",
+          "",
+          "http://www.linkedin.com/in/brad-anderson-91abb216",
+          "http://www.linkedin.com/company/absolute-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 90,
+            "company": "Absolute Pest Control, Inc"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 487,
+            "company": "Absolute pest control"
+          }
+        ]
+      },
+      {
+        "source_row": 130,
+        "company": "ALL FLORIDA PEST CONTROL",
+        "owner": "Jim Maler",
+        "row": [
+          "Apollo",
+          "ALL FLORIDA PEST CONTROL",
+          "http://www.allfloridapests.com",
+          "",
+          "Commercial Pest Management",
+          "40",
+          "",
+          "",
+          "",
+          "",
+          "Jim Maler",
+          "President",
+          "",
+          "(866) 981-1204",
+          "",
+          "",
+          "http://www.linkedin.com/in/jim-maler-3a857b8",
+          "http://www.linkedin.com/company/all-florida-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 103,
+            "company": "ALL FLORIDA PEST CONTROL"
+          }
+        ]
+      },
+      {
+        "source_row": 133,
+        "company": "Preferred Pest Control LLC",
+        "owner": "Dawn Cooperider",
+        "row": [
+          "Apollo",
+          "Preferred Pest Control LLC",
+          "http://www.toughonpests.com",
+          "",
+          "Commercial Pest Management",
+          "14",
+          "",
+          "",
+          "1970",
+          "",
+          "Dawn Cooperider",
+          "Chief Executive Officer",
+          "dawn@toughonpests.com",
+          "(816) 279-2000",
+          "",
+          "",
+          "http://www.linkedin.com/in/dawn-cooperider",
+          "http://www.linkedin.com/company/preferred-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 144,
+            "company": "Preferred Pest Control LLC"
+          }
+        ]
+      },
+      {
+        "source_row": 135,
+        "company": "Cypress Creek Pest Control",
+        "owner": "Zach Ivey",
+        "row": [
+          "Apollo",
+          "Cypress Creek Pest Control",
+          "http://www.cycreekpestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "30",
+          "",
+          "",
+          "1968",
+          "",
+          "Zach Ivey",
+          "President",
+          "zach@cycreekpestcontrol.com",
+          "(281) 469-2679",
+          "",
+          "",
+          "http://www.linkedin.com/in/zach-ivey-149610a9",
+          "http://www.linkedin.com/company/cypress-creek-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 127,
+            "company": "Cypress Creek Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 180,
+            "company": "Cypress Creek Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 149,
+        "company": "Aerex Pest Control",
+        "owner": "Ross Kirshner",
+        "row": [
+          "Apollo",
+          "Aerex Pest Control",
+          "http://www.aerex.com",
+          "",
+          "Commercial Pest Management",
+          "13",
+          "",
+          "",
+          "",
+          "",
+          "Ross Kirshner",
+          "Co-Owner",
+          "ross@aerex.com",
+          "(847) 255-8888",
+          "",
+          "",
+          "http://www.linkedin.com/in/ross-kirshner-14221449",
+          "http://www.linkedin.com/company/aerex-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 85,
+            "company": "Aerex Pest Control"
+          },
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 225,
+            "company": "Aerex Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 151,
+        "company": "Debug Pest Control - RI, CT, MASS",
+        "owner": "Bill Horgan",
+        "row": [
+          "Apollo",
+          "Debug Pest Control - RI, CT, MASS",
+          "http://www.debugpestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "20",
+          "",
+          "",
+          "1993",
+          "",
+          "Bill Horgan",
+          "President",
+          "bill@debugpestcontrol.com",
+          "(401) 567-0266",
+          "",
+          "",
+          "http://www.linkedin.com/in/bill-horgan-debug-pest-control",
+          "http://www.linkedin.com/company/debug-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 264,
+            "company": "Debug Pest Control - RI, CT, MASS"
+          }
+        ]
+      },
+      {
+        "source_row": 156,
+        "company": "Brezden Pest Control",
+        "owner": "John Brezden",
+        "row": [
+          "Apollo",
+          "Brezden Pest Control",
+          "http://www.brezdenpest.com",
+          "",
+          "Commercial Pest Management",
+          "11",
+          "",
+          "",
+          "1980",
+          "",
+          "John Brezden",
+          "Owner",
+          "john@brezdenpest.com",
+          "(805) 544-9446",
+          "",
+          "",
+          "http://www.linkedin.com/in/john-brezden-a6594a25",
+          "http://www.linkedin.com/company/brezden-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest & ENV Service (Good Fit) Valid",
+            "row": 5,
+            "company": "Brezden Pest Control"
+          },
+          {
+            "tab": "Specialty Pest & ENV Service (Good Fit) Valid",
+            "row": 27,
+            "company": "Brezden Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 161,
+        "company": "Fast Action Pest Control",
+        "owner": "Gary Evans",
+        "row": [
+          "Apollo",
+          "Fast Action Pest Control",
+          "http://www.fastactionpestcontrol.com",
+          "",
+          "Commercial Pest Management",
+          "50",
+          "",
+          "",
+          "2001",
+          "",
+          "Gary Evans",
+          "Owner",
+          "gary@fastactionpestcontrol.com",
+          "(916) 714-7274",
+          "",
+          "",
+          "http://www.linkedin.com/in/gary-evans-9283147",
+          "http://www.linkedin.com/company/fast-action-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 549,
+            "company": "Fast Action Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 172,
+        "company": "Remedy Pest Control",
+        "owner": "Eric Broadway",
+        "row": [
+          "Apollo",
+          "Remedy Pest Control",
+          "http://www.remedypest.com",
+          "",
+          "Commercial Pest Management",
+          "7",
+          "",
+          "",
+          "2019",
+          "",
+          "Eric Broadway",
+          "Co-Founder",
+          "eric@remedypest.com",
+          "(704) 464-4944",
+          "",
+          "",
+          "http://www.linkedin.com/in/ericbroadway",
+          "http://www.linkedin.com/company/remedy-pest-control-nc",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 63,
+            "company": "Remedy Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 175,
+        "company": "Killroy Pest Control",
+        "owner": "Rich Schmidt",
+        "row": [
+          "Apollo",
+          "Killroy Pest Control",
+          "http://www.killroy.com",
+          "",
+          "Commercial Pest Management",
+          "21",
+          "",
+          "",
+          "1956",
+          "",
+          "Rich Schmidt",
+          "Part Owner/Vice President",
+          "",
+          "(888) 545-5769",
+          "",
+          "",
+          "http://www.linkedin.com/in/rich-schmidt-07947aa",
+          "http://www.linkedin.com/company/killroy-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 204,
+            "company": "Killroy Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 176,
+        "company": "Hello Pest Control",
+        "owner": "Jason Heyman",
+        "row": [
+          "Apollo",
+          "Hello Pest Control",
+          "http://www.hellopestcontrol.co",
+          "",
+          "Commercial Pest Management",
+          "6",
+          "",
+          "",
+          "",
+          "",
+          "Jason Heyman",
+          "Co-Owner",
+          "jason@hellopestcontrol.co",
+          "(888) 973-7839",
+          "",
+          "",
+          "http://www.linkedin.com/in/jason-heyman-775b5811",
+          "http://www.linkedin.com/company/hello-pest-control",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 122,
+            "company": "Hello Pest Control"
+          }
+        ]
+      },
+      {
+        "source_row": 179,
+        "company": "Smithereen Pest Management",
+        "owner": "Andy McCormack",
+        "row": [
+          "Apollo",
+          "Smithereen Pest Management",
+          "http://www.smithereen.com",
+          "",
+          "Commercial Pest Management",
+          "74",
+          "",
+          "",
+          "1888",
+          "",
+          "Andy McCormack",
+          "Vice President",
+          "amccormack@smithereen.com",
+          "(800) 336-3500",
+          "",
+          "",
+          "http://www.linkedin.com/in/andy-mccormack-19377a9",
+          "http://www.linkedin.com/company/smithereen-pest-management",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 368,
+            "company": "Smithereen Pest Management"
+          }
+        ]
+      },
+      {
+        "source_row": 180,
+        "company": "Pest Management, Inc.",
+        "owner": "Kennneth Schlotterback",
+        "row": [
+          "Apollo",
+          "Pest Management, Inc.",
+          "http://www.pestmanagementinc.com",
+          "",
+          "Commercial Pest Management",
+          "34",
+          "",
+          "",
+          "1957",
+          "",
+          "Kennneth Schlotterback",
+          "Owner",
+          "",
+          "(855) 351-6096",
+          "",
+          "",
+          "http://www.linkedin.com/in/kennneth-schlotterback-b6538190",
+          "http://www.linkedin.com/company/pest-management-inc-",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 104,
+            "company": "Pest Management, Inc."
+          }
+        ]
+      },
+      {
+        "source_row": 181,
+        "company": "Native Pest Management",
+        "owner": "Luke Lewis",
+        "row": [
+          "Apollo",
+          "Native Pest Management",
+          "http://www.nativepest.com",
+          "",
+          "Commercial Pest Management",
+          "41",
+          "",
+          "",
+          "2015",
+          "",
+          "Luke Lewis",
+          "President",
+          "luke@nativepest.com",
+          "(561) 328-8290",
+          "",
+          "",
+          "http://www.linkedin.com/in/nativepestmanagement",
+          "http://www.linkedin.com/company/native-pest-management",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 453,
+            "company": "Native Pest Management"
+          }
+        ]
+      },
+      {
+        "source_row": 184,
+        "company": "Noosa Pest Management",
+        "owner": "Fred Wingate",
+        "row": [
+          "Apollo",
+          "Noosa Pest Management",
+          "http://www.noosapest.com",
+          "",
+          "Commercial Pest Management",
+          "20",
+          "",
+          "",
+          "2006",
+          "",
+          "Fred Wingate",
+          "Owner",
+          "",
+          "(704) 499-9922",
+          "",
+          "",
+          "http://www.linkedin.com/in/fred-wingate-69476a68",
+          "http://www.linkedin.com/company/noosa-pest-management",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 455,
+            "company": "Noosa Pest Management"
+          }
+        ]
+      },
+      {
+        "source_row": 185,
+        "company": "Holifield Pest Management",
+        "owner": "Joseph Johnson",
+        "row": [
+          "Apollo",
+          "Holifield Pest Management",
+          "http://www.holifieldpest.com",
+          "",
+          "Commercial Pest Management",
+          "6",
+          "",
+          "",
+          "1998",
+          "",
+          "Joseph Johnson",
+          "Vice President / COO",
+          "joeyj@holifieldpest.com",
+          "",
+          "",
+          "",
+          "http://www.linkedin.com/in/joseph-johnson-2659a61bb",
+          "http://www.linkedin.com/company/holifield-pest-management",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 373,
+            "company": "Holifield Pest Management"
+          }
+        ]
+      },
+      {
+        "source_row": 187,
+        "company": "Positive Pest Management",
+        "owner": "Positive Management",
+        "row": [
+          "Apollo",
+          "Positive Pest Management",
+          "http://www.positivepest.net",
+          "",
+          "Commercial Pest Management",
+          "6",
+          "",
+          "",
+          "2000",
+          "",
+          "Positive Management",
+          "President & CEO",
+          "benett@positivepest.net",
+          "(800) 294-3130",
+          "",
+          "",
+          "http://www.linkedin.com/in/positive-pest-management-0a82792b8",
+          "http://www.linkedin.com/company/positive-pest-management",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest & ENV Service (Good Fit) Valid",
+            "row": 18,
+            "company": "Positive Pest Management"
+          }
+        ]
+      },
+      {
+        "source_row": 192,
+        "company": "Standard Pest Management",
+        "owner": "Gil Bloom",
+        "row": [
+          "Apollo",
+          "Standard Pest Management",
+          "http://www.standardpest.com",
+          "",
+          "Commercial Pest Management",
+          "18",
+          "",
+          "",
+          "1929",
+          "",
+          "Gil Bloom",
+          "President",
+          "gbloom@standardpest.com",
+          "(718) 728-4040",
+          "",
+          "",
+          "http://www.linkedin.com/in/gil-bloom-ba0043a",
+          "http://www.linkedin.com/company/standard-pest-management",
+          "Phase 1 \u2014 volume load, calls-first | Receiving DealsX outreach 2026-05-11",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest & ENV Service (Good Fit) Valid",
+            "row": 8,
+            "company": "Standard Pest Management"
+          }
+        ]
+      },
+      {
+        "source_row": 206,
+        "company": "Green Pest Management, Delaware",
+        "owner": "Justin Butler",
+        "row": [
+          "Apollo",
+          "Green Pest Management, Delaware",
+          "http://www.greenpestmgmt.com",
+          "",
+          "Commercial Pest Management",
+          "20",
+          "",
+          "",
+          "2014",
+          "",
+          "Justin Butler",
+          "Co Owner",
+          "",
+          "(302) 777-2390",
+          "",
+          "",
+          "http://www.linkedin.com/in/justin-butler-2960b1107",
+          "http://www.linkedin.com/company/green-pest-management-delaware",
+          "Phase 1 \u2014 volume load, calls-first",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 184,
+            "company": "Green Pest Management, Delaware"
+          }
+        ]
+      },
+      {
+        "source_row": 207,
+        "company": "PAYNE PEST MANAGEMENT, INC.",
+        "owner": "Kathy Payne",
+        "row": [
+          "Apollo",
+          "PAYNE PEST MANAGEMENT, INC.",
+          "http://www.paynepestmgmt.com",
+          "",
+          "Commercial Pest Management",
+          "27",
+          "",
+          "",
+          "2006",
+          "",
+          "Kathy Payne",
+          "Owner/CFO",
+          "",
+          "(858) 368-9846",
+          "",
+          "",
+          "http://www.linkedin.com/in/kathy-payne-23b72a20",
+          "http://www.linkedin.com/company/payne-pest-management-inc-",
+          "Phase 1 \u2014 volume load, calls-first",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 208,
+            "company": "PAYNE PEST MANAGEMENT, INC."
+          }
+        ]
+      },
+      {
+        "source_row": 210,
+        "company": "Witt Pest Management",
+        "owner": "Adam Witt",
+        "row": [
+          "Apollo",
+          "Witt Pest Management",
+          "http://www.wittpm.com",
+          "",
+          "Commercial Pest Management",
+          "21",
+          "",
+          "",
+          "1908",
+          "",
+          "Adam Witt",
+          "President",
+          "",
+          "(412) 681-1900",
+          "",
+          "",
+          "http://www.linkedin.com/in/adam-witt-2aa743",
+          "http://www.linkedin.com/company/witt-pest-management",
+          "Phase 1 \u2014 volume load, calls-first | Phase 2 owner-enrich 2026-05-17 (web research; Apollo 403/1010 unavailable)",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "match_metadata": [
+          {
+            "tab": "Specialty Pest& ENV Service(Probable Fit) Valid",
+            "row": 504,
+            "company": "Witt Pest Management"
+          }
+        ]
+      }
+    ]
+  }
+}

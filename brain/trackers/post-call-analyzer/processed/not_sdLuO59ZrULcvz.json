@@ -1,0 +1,64 @@
+{
+  "id": "not_sdLuO59ZrULcvz",
+  "title": "Carlos I Kay checkin",
+  "counterparty": "Carlos",
+  "date": "2026-06-17",
+  "time": "2:00 PM ET",
+  "granola_url": "https://notes.granola.ai/d/6e36da36-6af7-4d12-9063-2c60e4c5c9a0",
+  "doc_url": "https://docs.google.com/document/d/1WC7K6oS0d_7zwKIEps4UdmDo07z-2Qo5p-FPoCwG--A/edit?usp=drivesdk",
+  "doc_failed": false,
+  "transcript_doc_url": "https://docs.google.com/document/d/1kE54DTfBcP3PcM_kmfT758_uJShsMhqSQKL9jK_iwLw/edit?usp=drivesdk",
+  "transcript_failed": false,
+  "vault_call_note": "brain/calls/2026-06-17-carlos-in3o-checkin.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_sdLuO59ZrULcvz.json",
+  "tasks_failed": false,
+  "attio_notes": [
+    {
+      "object": "people",
+      "record_id": "12f84371-c37e-47ae-adb8-c3317716ccaf",
+      "response": {
+        "id": {
+          "workspace_id": "243821c3-e0c9-46f9-8ee8-50e0094e12fb",
+          "note_id": "ba9be132-6c5e-4198-9170-bc1ae43a092b"
+        },
+        "parent_object": "people",
+        "parent_record_id": "12f84371-c37e-47ae-adb8-c3317716ccaf",
+        "title": "2026-06-17 \u2014 Meeting w/ Kay (G&B)",
+        "meeting_id": null,
+        "content_plaintext": "[2026-06-17] Carlos I Kay checkin\nF&B Inventory Management Introduction\nCarlos\u2019s contact Angelo is the seller; call scheduled for next Wednesday (the 24th)\nKay\u2019s investor Tom is interested as a direct buyer, not as a search fund deal\nTom runs a significant tech business, does tuck-ins and roll-ups\nHas a refrigerator monitoring business, so F&B inventory fits his portfolio\nAgreed approach: Kay introduces Tom to Carlos directly via three-way email\nCarlos then speaks to Angelo and positions Tom as a serious operator/acquirer\nCarlos will talk to Angelo first, then confirm before Kay sends the intro\nAnacapa / Drone Business\nKay spoke to Jeff (Anacapa founder) about the drone opportunity\nJeff\u2019s concern: limited US market legs currently\nCarlos\u2019s concern: AI replication risk, low barriers to entry\nBoth see it as worrisome across multiple angles\nCarlos has been traveling heavily (Colombia, Chile, Buenos Aires) and hasn\u2019t reached Michael Maher yet\nHas it on his to-do list; plans to connect around oil and gas angle\nMachinery Company Lead (Pennsylvania)\nOwner inherited from her husband, no kids, approaching retirement age\nSpecialty focus: aerospace, oil and gas, automotive\nCarlos flagged SBA loan as a potential structure for a management buyout\nFirst American has appetite for this space and has done similar deals\nKay noted current search fund terms limit bank debt to roughly 10% of deal size\nInsurance / 1099 Platform Update\nCarlos\u2019s portfolio company launched the app, then immediately launched in five languages\nMain investor went on vacation right after launch; likely to run short on marketing funds\nExpected to come back to Carlos for bridge support to sustain the launch\nNext Steps\nIntro email: Kay to Tom and Carlos, three-way, so Carlos can position himself directly (Kay)\nReach out to Michael Maher at Anacapa re: oil and gas angle (Carlos)\nCarlos to confirm with Angelo before Kay sends the Tom intro (Carlos)\nKey takeaways:\nDirect-buyer framing matters more than category gloss.\nTom is the right bridge if positioned as an operating buyer.\nKeep the intro sequence simple and specific.\nAnalysis: (analysis doc unavailable)\nTranscript: (transcript doc unavailable)\nGranola: https://notes.granola.ai/d/6e36da36-6af7-4d12-9063-2c60e4c5c9a0",
+        "content_markdown": "[2026-06-17] Carlos I Kay checkin\n### F&B Inventory Management Introduction\n- Carlos\u2019s contact Angelo is the seller; call scheduled for next Wednesday (the 24th)\n- Kay\u2019s investor Tom is interested as a direct buyer, not as a search fund deal\n  - Tom runs a significant tech business, does tuck-ins and roll-ups\n  - Has a refrigerator monitoring business, so F&B inventory fits his portfolio\n- Agreed approach: Kay introduces Tom to Carlos directly via three-way email\n  - Carlos then speaks to Angelo and positions Tom as a serious operator/acquirer\n  - Carlos will talk to Angelo first, then confirm before Kay sends the intro\n### Anacapa / Drone Business\n- Kay spoke to Jeff (Anacapa founder) about the drone opportunity\n  - Jeff\u2019s concern: limited US market legs currently\n- Carlos\u2019s concern: AI replication risk, low barriers to entry\n  - Both see it as worrisome across multiple angles\n- Carlos has been traveling heavily (Colombia, Chile, Buenos Aires) and hasn\u2019t reached Michael Maher yet\n  - Has it on his to-do list; plans to connect around oil and gas angle\n### Machinery Company Lead (Pennsylvania)\n- Owner inherited from her husband, no kids, approaching retirement age\n- Specialty focus: aerospace, oil and gas, automotive\n- Carlos flagged SBA loan as a potential structure for a management buyout\n  - First American has appetite for this space and has done similar deals\n  - Kay noted current search fund terms limit bank debt to roughly 10% of deal size\n### Insurance / 1099 Platform Update\n- Carlos\u2019s portfolio company launched the app, then immediately launched in five languages\n- Main investor went on vacation right after launch; likely to run short on marketing funds\n  - Expected to come back to Carlos for bridge support to sustain the launch\n### Next Steps\n- Intro email: Kay to Tom and Carlos, three-way, so Carlos can position himself directly (Kay)\n- Reach out to Michael Maher at Anacapa re: oil and gas angle (Carlos)\n- Carlos to confirm with Angelo before Kay sends the Tom intro (Carlos)\nKey takeaways:\n- Direct-buyer framing matters more than category gloss.\n- Tom is the right bridge if positioned as an operating buyer.\n- Keep the intro sequence simple and specific.\nAnalysis: (analysis doc unavailable)\nTranscript: (transcript doc unavailable)\nGranola: https://notes.granola.ai/d/6e36da36-6af7-4d12-9063-2c60e4c5c9a0",
+        "tags": [],
+        "created_by_actor": {
+          "type": "api-token",
+          "id": "579a1ace-d3bf-4b5a-9c86-e909e148ebab"
+        },
+        "created_at": "2026-06-17T22:07:10.438000000Z"
+      }
+    },
+    {
+      "object": "companies",
+      "record_id": "4b7823ac-9198-4ec7-b186-288238cb6fde",
+      "response": {
+        "id": {
+          "workspace_id": "243821c3-e0c9-46f9-8ee8-50e0094e12fb",
+          "note_id": "cbd86f4a-5635-420b-8127-ad4f8972fa80"
+        },
+        "parent_object": "companies",
+        "parent_record_id": "4b7823ac-9198-4ec7-b186-288238cb6fde",
+        "title": "2026-06-17 \u2014 Meeting w/ Kay (G&B)",
+        "meeting_id": null,
+        "content_plaintext": "[2026-06-17] Carlos I Kay checkin\nF&B Inventory Management Introduction\nCarlos\u2019s contact Angelo is the seller; call scheduled for next Wednesday (the 24th)\nKay\u2019s investor Tom is interested as a direct buyer, not as a search fund deal\nTom runs a significant tech business, does tuck-ins and roll-ups\nHas a refrigerator monitoring business, so F&B inventory fits his portfolio\nAgreed approach: Kay introduces Tom to Carlos directly via three-way email\nCarlos then speaks to Angelo and positions Tom as a serious operator/acquirer\nCarlos will talk to Angelo first, then confirm before Kay sends the intro\nAnacapa / Drone Business\nKay spoke to Jeff (Anacapa founder) about the drone opportunity\nJeff\u2019s concern: limited US market legs currently\nCarlos\u2019s concern: AI replication risk, low barriers to entry\nBoth see it as worrisome across multiple angles\nCarlos has been traveling heavily (Colombia, Chile, Buenos Aires) and hasn\u2019t reached Michael Maher yet\nHas it on his to-do list; plans to connect around oil and gas angle\nMachinery Company Lead (Pennsylvania)\nOwner inherited from her husband, no kids, approaching retirement age\nSpecialty focus: aerospace, oil and gas, automotive\nCarlos flagged SBA loan as a potential structure for a management buyout\nFirst American has appetite for this space and has done similar deals\nKay noted current search fund terms limit bank debt to roughly 10% of deal size\nInsurance / 1099 Platform Update\nCarlos\u2019s portfolio company launched the app, then immediately launched in five languages\nMain investor went on vacation right after launch; likely to run short on marketing funds\nExpected to come back to Carlos for bridge support to sustain the launch\nNext Steps\nIntro email: Kay to Tom and Carlos, three-way, so Carlos can position himself directly (Kay)\nReach out to Michael Maher at Anacapa re: oil and gas angle (Carlos)\nCarlos to confirm with Angelo before Kay sends the Tom intro (Carlos)\nKey takeaways:\nDirect-buyer framing matters more than category gloss.\nTom is the right bridge if positioned as an operating buyer.\nKeep the intro sequence simple and specific.\nAnalysis: (analysis doc unavailable)\nTranscript: (transcript doc unavailable)\nGranola: https://notes.granola.ai/d/6e36da36-6af7-4d12-9063-2c60e4c5c9a0",
+        "content_markdown": "[2026-06-17] Carlos I Kay checkin\n### F&B Inventory Management Introduction\n- Carlos\u2019s contact Angelo is the seller; call scheduled for next Wednesday (the 24th)\n- Kay\u2019s investor Tom is interested as a direct buyer, not as a search fund deal\n  - Tom runs a significant tech business, does tuck-ins and roll-ups\n  - Has a refrigerator monitoring business, so F&B inventory fits his portfolio\n- Agreed approach: Kay introduces Tom to Carlos directly via three-way email\n  - Carlos then speaks to Angelo and positions Tom as a serious operator/acquirer\n  - Carlos will talk to Angelo first, then confirm before Kay sends the intro\n### Anacapa / Drone Business\n- Kay spoke to Jeff (Anacapa founder) about the drone opportunity\n  - Jeff\u2019s concern: limited US market legs currently\n- Carlos\u2019s concern: AI replication risk, low barriers to entry\n  - Both see it as worrisome across multiple angles\n- Carlos has been traveling heavily (Colombia, Chile, Buenos Aires) and hasn\u2019t reached Michael Maher yet\n  - Has it on his to-do list; plans to connect around oil and gas angle\n### Machinery Company Lead (Pennsylvania)\n- Owner inherited from her husband, no kids, approaching retirement age\n- Specialty focus: aerospace, oil and gas, automotive\n- Carlos flagged SBA loan as a potential structure for a management buyout\n  - First American has appetite for this space and has done similar deals\n  - Kay noted current search fund terms limit bank debt to roughly 10% of deal size\n### Insurance / 1099 Platform Update\n- Carlos\u2019s portfolio company launched the app, then immediately launched in five languages\n- Main investor went on vacation right after launch; likely to run short on marketing funds\n  - Expected to come back to Carlos for bridge support to sustain the launch\n### Next Steps\n- Intro email: Kay to Tom and Carlos, three-way, so Carlos can position himself directly (Kay)\n- Reach out to Michael Maher at Anacapa re: oil and gas angle (Carlos)\n- Carlos to confirm with Angelo before Kay sends the Tom intro (Carlos)\nKey takeaways:\n- Direct-buyer framing matters more than category gloss.\n- Tom is the right bridge if positioned as an operating buyer.\n- Keep the intro sequence simple and specific.\nAnalysis: (analysis doc unavailable)\nTranscript: (transcript doc unavailable)\nGranola: https://notes.granola.ai/d/6e36da36-6af7-4d12-9063-2c60e4c5c9a0",
+        "tags": [],
+        "created_by_actor": {
+          "type": "api-token",
+          "id": "579a1ace-d3bf-4b5a-9c86-e909e148ebab"
+        },
+        "created_at": "2026-06-17T22:07:10.984000000Z"
+      }
+    }
+  ],
+  "attio_failed": false,
+  "processed_at": "2026-06-17T22:06:45.771246+00:00",
+  "slack_posted": true
+}

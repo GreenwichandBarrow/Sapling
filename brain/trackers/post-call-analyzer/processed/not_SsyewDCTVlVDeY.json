@@ -1,0 +1,20 @@
+{
+  "id": "not_SsyewDCTVlVDeY",
+  "title": "Luka I Kay",
+  "processed_at": "2026-06-18T22:05:20.807660+00:00",
+  "vault_call_note": "brain/calls/2026-06-18-luka-pest-thesis.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_SsyewDCTVlVDeY.json",
+  "doc_url": "https://docs.google.com/document/d/171pJo0O7Agk23yD251LZdOyCdxBDpubDDF1yOHhwGYY/edit?usp=drivesdk",
+  "doc_id": "171pJo0O7Agk23yD251LZdOyCdxBDpubDDF1yOHhwGYY",
+  "transcript_doc_url": "https://docs.google.com/document/d/1e1F2tK2x29DUF1Xc2uNkh0lRpzJLBtIQ0RH-IUSxrao/edit?usp=drivesdk",
+  "transcript_doc_id": "1e1F2tK2x29DUF1Xc2uNkh0lRpzJLBtIQ0RH-IUSxrao",
+  "attio_notes": {
+    "person:luka@esteliopartners.com": "1b839ec5-7509-4704-bab3-c3b18623003c",
+    "person:luka@accesscorp.com": "b0919884-e7fd-4b6d-93a4-7bdf47ea0ff4",
+    "company:esteliopartners.com": "c0ba96ca-c43d-4221-8477-b6510934d5e1",
+    "company:accesscorp.com": "3a18061b-d159-4eda-9c48-0603360ac49b"
+  },
+  "tasks_appended": 2,
+  "slack_posted": true,
+  "detector": "granola-api-rest"
+}

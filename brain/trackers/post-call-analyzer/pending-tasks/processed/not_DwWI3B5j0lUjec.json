@@ -1,0 +1,38 @@
+[
+  {
+    "task_text": "Confirm Codex opens in a fresh VPS chat without falling back to local desktop behavior.",
+    "type": "Ops",
+    "project": "Codex migration",
+    "suggested_day": "Today",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Harrison 2026-06-08 mtg. Analysis: https://docs.google.com/document/d/1ktj2iHBf9wcWlShgefZ1KzjKHCUXa5xf8HYGcUANuKY/edit?usp=drivesdk",
+    "source_call_id": "not_DwWI3B5j0lUjec",
+    "source_doc_url": "https://docs.google.com/document/d/1ktj2iHBf9wcWlShgefZ1KzjKHCUXa5xf8HYGcUANuKY/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1Twha0my-oN71wX6wr_BWC7Heal5S_UQasSUPzNyjQEE/edit?usp=drivesdk",
+    "staged_at": "2026-06-08T22:03:14.485709+00:00"
+  },
+  {
+    "task_text": "Audit shell aliases and wrappers for lingering local-only or `claude -p` execution paths.",
+    "type": "Ops",
+    "project": "Codex migration",
+    "suggested_day": "This week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Harrison 2026-06-08 mtg. Analysis: https://docs.google.com/document/d/1ktj2iHBf9wcWlShgefZ1KzjKHCUXa5xf8HYGcUANuKY/edit?usp=drivesdk",
+    "source_call_id": "not_DwWI3B5j0lUjec",
+    "source_doc_url": "https://docs.google.com/document/d/1ktj2iHBf9wcWlShgefZ1KzjKHCUXa5xf8HYGcUANuKY/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1Twha0my-oN71wX6wr_BWC7Heal5S_UQasSUPzNyjQEE/edit?usp=drivesdk",
+    "staged_at": "2026-06-08T22:03:14.485709+00:00"
+  },
+  {
+    "task_text": "Verify the Codex business workspace/API usage is fully shut down so the account stays on the personal plan.",
+    "type": "Ops",
+    "project": "Account hygiene",
+    "suggested_day": "This week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Harrison 2026-06-08 mtg. Analysis: https://docs.google.com/document/d/1ktj2iHBf9wcWlShgefZ1KzjKHCUXa5xf8HYGcUANuKY/edit?usp=drivesdk",
+    "source_call_id": "not_DwWI3B5j0lUjec",
+    "source_doc_url": "https://docs.google.com/document/d/1ktj2iHBf9wcWlShgefZ1KzjKHCUXa5xf8HYGcUANuKY/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1Twha0my-oN71wX6wr_BWC7Heal5S_UQasSUPzNyjQEE/edit?usp=drivesdk",
+    "staged_at": "2026-06-08T22:03:14.485709+00:00"
+  }
+]

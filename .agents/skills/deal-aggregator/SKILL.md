@@ -103,7 +103,7 @@ If `brain/context/email-scan-results-{date}.md` is missing:
 3. Add a visible Near Misses / Volume Check note: "email leg unavailable."
 4. Do not scan Gmail directly; email-intelligence owns Gmail access and writes the artifact.
 
-Afternoon run should treat a present email artifact as a recovery opportunity and note whether the morning email leg was unavailable.
+Retired 2026-06-19: the separate afternoon recovery run is no longer scheduled. Email leg reliability is handled by the 7am email-intelligence artifact and the single 7:30am deal-aggregator run; missing email artifacts surface in Good Morning instead of triggering another daily deal-aggregator status overwrite.
 
 ### Dashboard status output
 
@@ -139,6 +139,10 @@ Scan searchable broker platforms for new listings matching the buy box.
 - Business Exits (businessexits.com/listings/) — email + searchable, consistently accessible
 - DealForce (dealforce.com) — Generational Equity buyer platform, registration required, filter by SIC/EBITDA/revenue
 - Rejigg (rejigg.com) — automated deal match emails + searchable
+- BizBuySell (bizbuysell.com) — high-volume main-street marketplace + email digest; known scraper 403, requires agent-browser/email route
+- BizQuest (bizquest.com) — BizBuySell/LoopNet-adjacent marketplace; added from NY ETA/SMB chat recommendation on 2026-06-16, test public scrape + email alerts
+- DealMatch (domain/account TBD) — recommended in NY ETA/SMB chat on 2026-06-16; add to source-scout queue, verify URL/registration and whether email digest exists before live scan
+- Baton Market (baton.com) — registered by Kay 2026-06-19; email alerts expected. Sender observed: `chat@baton.com`, already labeled `auto/deal flow`. Treat as active email-alert marketplace source; email-intelligence captures alerts and deal-aggregator classifies in the morning run.
 - Flippa (flippa.com) — email alerts + searchable (mostly digital/online businesses)
 
 **AI-powered marketplaces (confirmed scrapable):**
@@ -164,9 +168,11 @@ Scan searchable broker platforms for new listings matching the buy box.
 - IAG M&A Advisors (iagmerger.com) — Kay has account, advisory
 - ProNova Partners (pronovapartners.com) — 403 blocked, relationship-only
 
-**Gated platforms (need Kay's registration):**
+**Gated platforms (need Kay's registration / source-scout validation):**
 - FE International (app.feinternational.com) — requires buyer registration
 - Website Closers (websiteclosers.com) — no public listings page
+- DealMatch — URL/account/scrapability TBD; source recommended by peer, validate before daily rotation
+- Baton Market — registered 2026-06-19; now active via email alerts from `chat@baton.com` / Baton domain. Web marketplace may remain login-gated; primary path is email-intelligence.
 
 **Scanning process:**
 
@@ -548,7 +554,7 @@ Every source scanned this run MUST appear as a row — no exceptions. Missing ro
 <weekly_digest>
 ## Weekly Source-Productivity Digest (Phase 2)
 
-**Triggered:** Friday 7:30 AM ET via `deal-aggregator-friday.timer` — `run-agent-skill.sh deal-aggregator --digest-mode`. Also invocable manually with `/deal-aggregator --digest-mode`.
+**Retired as a separate scheduled run 2026-06-19.** Weekly/source-productivity review is folded into the single weekday morning deal-aggregator artifact and Good Morning review. Manual `/deal-aggregator --digest-mode` remains available for forensic/source-review work, but no Friday timer should run it automatically.
 
 **Purpose:** Give Kay a single weekly artifact to decide which sources are earning their slot, which new sources should be added, and which should be retired. No auto-writes — proposals are approval-gated.
 
@@ -657,13 +663,13 @@ After Kay approves a proposed addition or retirement:
 <wrapper_hardening>
 ## Wrapper Hardening (POST_RUN_CHECK)
 
-Per `feedback_mutating_skill_hardening_pattern.md`, every scheduled mutating skill ships with a wrapper-level integrity validator. Deal-aggregator's three modes each have a validator wired into `scripts/run-agent-skill.sh`:
+Per `feedback_mutating_skill_hardening_pattern.md`, every scheduled mutating skill ships with a wrapper-level integrity validator. Deal-aggregator now has one scheduled mode wired into `scripts/run-agent-skill.sh`:
 
 | Mode | Headless prompt | Validator command (POST_RUN_CHECK) |
 |------|-----------------|-------------------------------------|
 | Morning (`deal-aggregator:`) | `headless-morning-prompt.md` | `python3 scripts/validate_deal_aggregator_integrity.py --mode morning --date $TODAY` |
-| Afternoon (`deal-aggregator:--afternoon`) | `headless-afternoon-prompt.md` | `python3 scripts/validate_deal_aggregator_integrity.py --mode afternoon --date $TODAY` |
-| Friday digest (`deal-aggregator:--digest-mode`) | `headless-friday-prompt.md` | `python3 scripts/validate_deal_aggregator_integrity.py --mode digest --date $TODAY` |
+
+Retired modes (`--afternoon`, `--digest-mode`) remain manual/forensic only and must not be enabled as systemd timers. The duplicate scheduled modes caused dashboard/status overwrites and Good Morning communication mismatch.
 
 **What the validator checks:**
 - Today's artifact exists at the expected path (morning / afternoon / digest)

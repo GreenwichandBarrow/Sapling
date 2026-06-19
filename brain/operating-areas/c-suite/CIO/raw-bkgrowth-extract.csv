@@ -1,0 +1,84 @@
+source_name,source_portfolio_url,portfolio_company,portfolio_company_website,raw_title_or_note,raw_extraction_basis,triage_status
+BK Growth,https://www.bkgrowth.com/portfolio,4EverYoung,https://4everyoungantiaging.com/,4EverYoung,approved page HTML gallery title/link,not_curated_consumer_health
+BK Growth,https://www.bkgrowth.com/portfolio,Advanced Aircrew Academy,https://www.aircrewacademy.com/,Advanced Aircrew Academy,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Allied Electric,https://alliedelectricinc.com/,Allied Electric,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Anterra Tech,https://anterratech.com/,Anterra Tech,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Apex Fundraiser,https://apexleadershipco.com/,Apex Fundraiser,approved page HTML gallery title/link,not_curated_likely_consumer_school_fundraising
+BK Growth,https://www.bkgrowth.com/portfolio,ArborOne,,ArborOne,approved page HTML gallery title without link,needs_source_clarification
+BK Growth,https://www.bkgrowth.com/portfolio,Ascend,https://www.ascendsoftware.com/,Ascend,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Atlantic Duct Cleaning,https://www.atlanticductcleaning.com/,Atlantic Duct Cleaning,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Auronix,https://www.auronix.mx/,Auronix,approved page HTML gallery title/link,covered_by_ttcer_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Avesta,https://www.avestaketaminewellness.com/,Avesta,approved page HTML gallery title/link,not_curated_consumer_health
+BK Growth,https://www.bkgrowth.com/portfolio,Axero,https://axerosolutions.com/,Axero,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Beartown Holdings,https://www.smtrs.com/,Beartown Holdings,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Beecker,https://www.beeckerco.com/,Beecker,approved page HTML gallery title/link,covered_by_ttcer_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Canyonlands Camps,https://www.canyonlandsfund.com/,Canyonlands Camps,approved page HTML gallery title/link,not_curated_likely_consumer
+BK Growth,https://www.bkgrowth.com/portfolio,Central Storage & Warehouse,https://www.csw-wi.com/,Central Storage & Warehouse,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Chesapeake Technology,https://chesapeaketech.com/,Chesapeake Technology,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Clariti,https://www.claritisoftware.com/,Clariti,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Climate Earth,https://climateearth.com/,Climate Earth,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Comprehensive Mobile Care,https://www.compmobilecare.com/,Comprehensive Mobile Care,approved page HTML gallery title/link,not_curated_healthcare_services_pending
+BK Growth,https://www.bkgrowth.com/portfolio,Concierge Plus,https://conciergeplus.com/,Concierge Plus,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Crystal Practice Management,https://www.crystalpm.com/,Crystal Practice Management,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,DaVinci,https://wdgcorp.com/,DaVinci,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,ECP,https://www.ecp123.com/,ECP,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,ELK Analytics,https://elkanalytics.com/,ELK Analytics,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Energy Ogre,https://www.energyogre.com/,Energy Ogre,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Ennoble Care,https://www.ennoblecare.com/,Ennoble Care,approved page HTML gallery title/link,not_curated_healthcare_services_pending
+BK Growth,https://www.bkgrowth.com/portfolio,ETU,https://www.etu.co/,ETU,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Eventus,https://eventussecurity.com/,Eventus,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,ExpensePoint,https://www.expensepoint.com/,ExpensePoint,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Facial Aesthetics,https://facialaestheticsinc.com/,Facial Aesthetics,approved page HTML gallery title/link,not_curated_consumer_health
+BK Growth,https://www.bkgrowth.com/portfolio,Fleetflo,https://www.fleetflo.com/,Fleetflo,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,FluidSecure,https://www.fluidsecure.com/,FluidSecure,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Frotcom,https://www.frotcom.com/,Frotcom,approved page HTML gallery title/link,covered_by_ttcer_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Gendler & Lewis Dermatology,https://amyblewismd.com/,Gendler & Lewis Dermatology,approved page HTML gallery title/link,not_curated_consumer_health
+BK Growth,https://www.bkgrowth.com/portfolio,Gendler & Lewis Dermatology,https://gendlerdermatology.com/,Gendler & Lewis Dermatology,approved page HTML gallery title/link,covered_by_pacific_lake_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Gilles Hoppenot,https://www.ghs.fr/,Gilles Hoppenot,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Govineer Solutions,https://www.govineersolutions.com/,Govineer Solutions,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Grasp,https://www.grasptech.com/,Grasp,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Halsey Health,https://www.halseyhealth.com/,Halsey Health,approved page HTML gallery title/link,not_curated_healthcare_services_pending
+BK Growth,https://www.bkgrowth.com/portfolio,Happy Paws Vet Partners,https://happypawsveterinarypartners.com/,Happy Paws Vet Partners,approved page HTML gallery title/link,not_curated_consumer_vet_pending
+BK Growth,https://www.bkgrowth.com/portfolio,Honolulu Ship Supply,https://honship.com/,Honolulu Ship Supply,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Innovative Lab Services,https://www.innlabserv.com/,Innovative Lab Services,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,IT Pipes,https://itpipes.com/,IT Pipes,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,JD2M,https://www.jedeclaremonmeuble.com/,JD2M,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Juvonno,https://www.juvonno.com/,Junvonno,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Mas Labor,https://maslabor.com/,Mas Labor,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,MaxRTE,https://maxrte.com/,MaxRTE.png,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,MD Clarity,https://www.mdclarity.com/,MD Clarity,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,North American Trade Schools,https://natradeschools.edu/,North American Trade Schools,approved page HTML gallery title/link,not_curated_education_pending
+BK Growth,https://www.bkgrowth.com/portfolio,NovoPath,https://www.novopath.com/,NovoPath,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Nutrishare,https://nutrishare.com/,Nutrishare,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Objective Management Group,https://www.objectivemanagement.com/,objective-logo.webp,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Olea Software,https://www.oleasoftware.com/,Olea Software,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,P3 Works,https://www.p3-works.com/home,P3 Works,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Pacific Fertility Center,https://www.pfcla.com/,Pacific Fertility Center,approved page HTML gallery title/link,not_curated_consumer_health
+BK Growth,https://www.bkgrowth.com/portfolio,Page Vault,https://www.page-vault.com/,Page Vault,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Pathfinder Brands,https://www.pathfinderbrands.co/,Pathfinder Brands,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Peace Aging Care Experts,https://www.peaceagingcare.com/,Peace Aging Care Experts,approved page HTML gallery title/link,not_curated_healthcare_services_pending
+BK Growth,https://www.bkgrowth.com/portfolio,Peak Propane,https://www.peakpropane.com/,Peak Propane,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Pelvic Health Solutions,https://phsfl.com/,Pelvic Health Solutions,approved page HTML gallery title/link,not_curated_consumer_health
+BK Growth,https://www.bkgrowth.com/portfolio,Precision Med,https://www.precisionmed.com/,Precision Med,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Quality Standard,https://qualitystandard.com/,quality-standard-logo_sm.png,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,RDI,,RDI,approved page HTML gallery title without link,needs_source_clarification
+BK Growth,https://www.bkgrowth.com/portfolio,ReVive,https://revive.md/,ReVive,approved page HTML gallery title/link,covered_by_ttcer_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Route Two Partners,https://www.routetwopartners.com/,Route Two Partners,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,SAMS,https://njbsoft.com/,SAMS,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Scribbles Software,https://www.scribsoft.com/,Scribbles Software,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Sector 7 Energy,https://www.sector7energy.com/,Sector 7 Energy,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Smash My Trash,,Smash My Trash,approved page HTML gallery title without link,needs_source_clarification
+BK Growth,https://www.bkgrowth.com/portfolio,SoftTrip,https://www.softrip.com/,SoftTrip,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Spanish Schoolhouse,https://spanishschoolhouse.com/,Spanish Schoolhouse,approved page HTML gallery title/link,not_curated_education_consumer
+BK Growth,https://www.bkgrowth.com/portfolio,StaffScheduleCare,https://www.staffschedulecare.com/,StaffScheduleCare,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Stage2Data,https://stage2data.com/,Stage2Data,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,STAT,http://www.statanalysis.com/,STAT,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Tank Track,https://tank-track.com/,Tank Track,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,TaskRay,https://taskray.com/,TaskRay,approved page HTML gallery title/link,covered_by_ttcer_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Team Management Systems,https://teamservice.com/,Team Management Systems,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Triyam,https://www.triyam.com/,Tiryam,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,TopQuadrant,https://www.topquadrant.com/,TopQuadrant,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Tortorella Group,https://www.tortorella.com/,Tortorella Group,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Utility Management Solutions,https://utilitymanage.com/,Utility Management Solutions,approved page HTML gallery title/link,curated_seed
+BK Growth,https://www.bkgrowth.com/portfolio,Voice Friend,http://www.voicefriend.net/,Voice Friend,approved page HTML gallery title/link,needs_triage
+BK Growth,https://www.bkgrowth.com/portfolio,Wu Consulting Group,https://wuconsulting.com/,Wu Consulting Group,approved page HTML gallery title/link,needs_triage

@@ -4,3 +4,30 @@
   - placement: Fri tab slot 25 (row 41)
   - overwrote: (slot was empty)
   - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260619-083008.json
+
+[2026-06-19T22:49:14.504008] carry-forward-day — fri-to-sat
+  - moved: 19
+  - source: Fri
+  - destination: Sat
+  - source packed: {'completed': 6, 'active': 0, 'blank': 19}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260619-224910.json
+  
+  - Fri slot 1 → Sat slot 1: Weekly review — system health, M&A activities, budget
+  - Fri slot 2 → Sat slot 2: Submit the boys to: NY Models, State Models, Zuri Models, Teri B and Stellar
+  - Fri slot 3 → Sat slot 3: Create project for French passports
+  - Fri slot 4 → Sat slot 6: Make sure we dont get charged by Linkt
+  - Fri slot 5 → Sat slot 7: Get reimbursed for Motion
+  - Fri slot 6 → Sat slot 8: Budget Manager run skill
+  - Fri slot 7 → Sat slot 9: Do luxury-retailer store visits for pest buying criteria
+  - Fri slot 8 → Sat slot 10: Continue financial modeling
+  - Fri slot 12 → Sat slot 11: Dashboard plumbing: deal aggregator
+  - Fri slot 16 → Sat slot 12: Niche intel review
+  - Fri slot 17 → Sat slot 13: Pay remaining IRS
+  - Fri slot 18 → Sat slot 14: Scan WPMA directory for NY-based members
+  - Fri slot 19 → Sat slot 15: Pest 10-company research — June head-to-head vs DealsX + JJ
+  - Fri slot 20 → Sat slot 16: Try Claude on website rebuild
+  - Fri slot 21 → Sat slot 17: Connect Roberta & Elspeth
+  - Fri slot 22 → Sat slot 18: Connect Lily & Suzanne
+  - Fri slot 23 → Sat slot 19: Call IRS to confirm Form 8822-B address update
+  - Fri slot 24 → Sat slot 20: Contact Rebecca - follow up on programming
+  - Fri slot 25 → Sat slot 21: Email Filipe @ Pest Mgmt company

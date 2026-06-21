@@ -110,20 +110,20 @@ Required inputs, in priority order:
 - Kay-confirmed pipeline facts from the morning review or current session. These are authoritative once stated clearly.
 - Evidence signals: `email-scan-results-{date}.md`, recent `brain/calls/`, current/prior `session-decisions`, ACTIVE DEALS Drive folders, and financials/CIM artifacts.
 - Current Attio snapshot: `brain/context/attio-pipeline-snapshot.json` from `Active Deals – Owners`; use it as the current database state to reconcile, not as final truth.
-- Active dashboard scope: NDA-forward only (`NDA`, `Financials Received`, `Submitted LOI`, `Signed LOI`).
+- Active dashboard scope: engaged pipeline only (`Contacted` shown as `Warmed / Teaser`, plus `NDA`, `Financials Received`, `Submitted LOI`, `Signed LOI`). Exclude raw `Identified` rows from Good Morning active-pipeline counts.
 
 Ask Kay only for missing status that cannot be defensibly inferred. The prompt must be short and operational:
-`Pipeline check: I have {N} NDA-forward deals. Any new deals, passes, financials received, or stage changes since yesterday?`
+`Pipeline check: I have {N} engaged active deals on the dashboard. Any new deals, passes, financials received, or stage changes since yesterday?`
 
 If signals already show a likely stage change, recommend it directly instead of asking an open question:
 `RECOMMEND: Move {Company} from {old_stage} to {new_stage} — {evidence}. → YES / NO / DISCUSS`
 
 Daily checks:
 1. **New deals** — any direct/intermediary deal with teaser/CIM/financials, new ACTIVE DEALS folder, or Kay-stated active deal must exist in Attio. If CIM/financials exist, create/move to `Financials Received`.
-2. **Current deals** — list every NDA-forward deal by company and stage internally; surface only mismatches, stale items, or requested confirmations.
+2. **Current deals** — list every engaged dashboard deal by company and stage internally; surface only mismatches, stale items, or requested confirmations. Do not count raw `Identified` rows as active pipeline.
 3. **Passed deals** — any Kay-stated pass, decline draft sent, call note pass, or session-decision REJECT on an active deal must move to `Closed / Not Proceeding` after Kay confirms if evidence is ambiguous.
 4. **Financials received** — any company Kay says is in Financials Received, or any CIM/financials artifact exists, must be in Attio at `Financials Received`; missing Attio entries are bugs to fix, not dashboard display issues.
-5. **Stale deals** — flag NDA-forward deals with no movement for 14+ days as `kill / advance / keep watching`, but only if there is a concrete company name and current stage.
+5. **Stale deals** — flag engaged dashboard deals with no movement for 14+ days as `kill / advance / keep watching`, but only if there is a concrete company name and current stage.
 
 Source tagging control:
 - Treat source tagging as forward operating hygiene, not a broad historical CRM cleanup. Attio is the operating database to reconcile, not the sole source of truth; Salesflare-era history is incomplete unless backed by evidence.
@@ -247,34 +247,48 @@ Updated 2026-06-19 per Kay: Good Morning should be a concise operating edit surf
 
 **Required sections, in order:**
 
+Dashboard sections come first, in dashboard-navigation order, before non-dashboard operating follow-up. Current order: Email Orchestration, Active Pipeline, Deal Aggregator, C-Suite & Skills, System Health, Meeting Briefs, Tasks & Follow-up, then Decisions Needed only if needed.
+
 1. **Email Orchestration**
-   - Audience = Kay. Show email follow-through items she needs to review/approve/handle today: thank-yous to send, stale drafts, overdue follow-ups, draft-only review bundles, and email-derived deal/pipeline signals needing a decision.
-   - Mirror the Email Orchestration dashboard tab subsections: `24-hour thank-yous`, `48-hour follow-ups`, `EOW follow-ups`, plus `Draft review` or `Deal-flow email` only when populated.
-   - Include at most one operational-status line such as `Ops: email scan fresh at 7:07; auto/deal flow included` only when it matters for trust/freshness. This line must still be numbered. Do not fill this section with back-end scan mechanics.
-   - If `email-orchestrator-status.json` reports `Clarify email follow-through identity/source`, surface that under Email Orchestration with a concrete ask for Kay to identify the person/event/source; do not leave unclear rows as dashboard-only mystery items.
+   - Audience = Kay. Show only email follow-through items she needs to review/approve/handle today. This section is not an inbox digest.
+   - Mirror the Email Orchestration dashboard tab subsections exactly: `24-hour thank-yous`, `48-hour follow-ups`, and `EOW follow-ups`.
+   - Do not include a generic `Draft review` row. Drafts may appear only inside the relevant dashboard follow-up bucket, and only with concrete context: recipient/name, subject/purpose, age, and the decision needed. If the draft purpose is unclear, surface as `Clarify draft identity` with the draft subject/recipient; do not say only `2 Gmail drafts pending`.
+   - Do not include `Deal-flow email` in Email Orchestration. Deal-flow alerts, broker blasts, marketplace emails, and auto/deal-flow label outputs belong in the Deal Aggregator section.
+   - Do not invent Email Orchestration subsection labels such as `Team follow-up`, `Ops follow-up`, or other ad hoc categories. If an email item does not fit the three dashboard follow-up buckets, route it to Deal Aggregator, Tasks & Follow-up, or omit it.
+   - Generic unread-email reminders are prohibited. Surface an email outside the three buckets only if there is a concrete action or analysis recommendation, e.g. `Run monthly budget assessment from Start Virtual EOW financials` rather than `read Start Virtual email`.
+   - Include at most one operational-status line only when it matters for trust/freshness, and only if it is tied to a Kay decision. Do not fill this section with back-end scan mechanics.
 
 2. **Active Pipeline**
-   - Group by stage, not by generic list. Show active, non-closed deals only.
+   - Group by stage, not by generic list. Match the dashboard Active Pipeline Snapshot scope exactly: `Contacted` as `Warmed / Teaser`, plus `NDA`, `Financials Received`, `Submitted LOI`, and `Signed LOI`. Exclude raw `Identified` rows even though they are non-closed Attio rows.
    - Stage format: `Warmed / Teaser`, `NDA`, `Financials Received`, `Submitted LOI`, `Signed LOI`; under each, list the deals in that stage and the action/status Kay needs to confirm. `Warmed / Teaser` comes first because it is most likely to drift out of date.
    - Ask for status where missing, but recommend concrete stage moves when evidence supports them. Do not discuss closed deals unless changed in-session.
 
 3. **Deal Aggregator**
-   - Show surfaced deals/source decisions Kay needs to review: thumbs up/down, source registration, source retirement/addition, or screening calibration.
-   - Include at most one operational-status line for run freshness/volume. Do not dump source mechanics or retired mode details.
+   - Show only still-open surfaced-deal or source decisions Kay needs to review: thumbs up/down, source registration/access blockers, source retirement/addition approvals, or screening calibration.
+   - Do not show completed source-admin confirmations as numbered items. If a source was already added/labeled/resolved, omit it from the briefing unless it creates a new decision or failure.
+   - Include at most one operational-status line for run freshness/volume, only when it changes Kay's decision surface. Do not dump source mechanics or retired mode details.
+   - This section's final dashboard-aligned subsections are pending the deal-aggregator plumbing review; until then, keep it sparse and action-only.
 
-4. **Meeting Briefs**
-   - Scan upcoming external meetings in the brief-prep window and ask whether a brief is needed.
-   - Default window: next 48 hours. Friday covers Friday + Monday + Tuesday; Sunday covers Sunday + Monday.
-   - Track last-minute meeting additions for the next few weeks: if meetings are repeatedly added inside the 48-hour window without enough prep time, surface a coverage fix.
+4. **C-Suite & Skills**
+   - Dashboard-aligned skill/status section. Surface only Kay-relevant skill failures, missed expected runs, approvals needed, or migration/plumbing decisions. If none, write `N/A`.
+   - Do not duplicate System Health failures unless Kay needs a skill-specific decision.
 
 5. **System Health**
-   - Failure-only section. Surface the same RED/YELLOW failures that would otherwise create a Slack alert: failed scheduled jobs, stale required artifacts, stale snapshots, or dashboard/system plumbing failures. If none, write `N/A`.
+   - Failure-only dashboard section. Surface the same RED/YELLOW failures that would otherwise create a Slack alert: failed scheduled jobs, stale required artifacts, stale snapshots, or dashboard/system plumbing failures. If none, write `N/A`.
    - Debugger/health-monitor findings must name the failing check and the recommended fix.
    - Do not place planned plumbing work here; planned dashboard plumbing belongs in Tasks & Follow-up.
 
-6. **Tasks & Follow-up**
-   - Remaining task approvals, carryovers, post-call candidates, dashboard plumbing work, M&A operating items, investor/niche work, deal work, and Task Manager routing items.
-   - Use roman numerals or letters for subtasks when Kay needs to approve several sub-items.
+6. **Meeting Briefs**
+   - Non-dashboard operating follow-up section. Scan upcoming external meetings in the brief-prep window and ask whether a brief is needed.
+   - Default window: next 48 hours. Friday covers Friday + Monday + Tuesday; Sunday covers Sunday + Monday.
+   - Track last-minute meeting additions for the next few weeks: if meetings are repeatedly added inside the 48-hour window without enough prep time, surface a coverage fix.
+
+7. **Tasks & Follow-up**
+   - Do not repeat the To Do list or advise Kay how to prioritize it. The To Do file is the canonical task surface.
+   - If there are existing open tasks, report only the count, e.g. `Task Manager: 21 open tasks today.`
+   - Surface only items that are NOT already on the To Do list and need Kay approval/routing, especially post-call analysis outputs, new relationship-manager candidates, new dashboard/plumbing failures, or newly discovered operating loops.
+   - Before surfacing any task-like item, check whether it is already on today's To Do list. If it is already there, omit it from the morning brief.
+   - Use roman numerals or letters for subtasks only when Kay needs to approve several new sub-items.
 
 **Numbering and decisions:** Every referable line across every section gets a stable number, including operational/freshness lines. Continue numbering sequentially from top to bottom and do not reset numbering by section. Default to a collapsed, easy-to-reference format: main section headers are flush left, and each numbered line begins with the dashboard subsection label in bold, e.g. `1. **24-hour thank-yous:** Laura / Stephanie / Randi drafts ready`. Use expanded subsection headers only when a subsection has 2+ separate items that need individual decisions. Sub-items use roman numerals or letters. Include `Decisions Needed` only when a separate consolidated approval list helps; otherwise the numbered items inside each section are the decision surface. Keep the Obama framing for true approvals, but brief operational items can use concise `YES / NO / DISCUSS` or `KEEP / MOVE / CLOSE` choices.
 
@@ -283,41 +297,43 @@ Updated 2026-06-19 per Kay: Good Morning should be a concise operating edit surf
 
 **Email Orchestration**
 
-1. **Ops:** {Freshness line only if relevant}
-2. **24-hour thank-yous:** {Thank-you item or N/A} → **REVIEW / SKIP / DISCUSS**
-3. **48-hour follow-ups:** {Follow-up item or N/A} → **KEEP TODAY / MOVE / DROP**
-4. **EOW follow-ups:** {EOW follow-up item or N/A} → **KEEP / MOVE / DROP**
-5. **Draft review:** {Draft bundle or N/A} → **REVIEW / SKIP / DISCUSS**
+1. **24-hour thank-yous:** {Thank-you item or N/A} → **REVIEW / SKIP / DISCUSS**
+2. **48-hour follow-ups:** {Follow-up item or N/A} → **KEEP TODAY / MOVE / DROP**
+3. **EOW follow-ups:** {EOW follow-up item or N/A} → **KEEP / MOVE / DROP**
 
 **Active Pipeline**
 
-6. **Ops:** {Snapshot freshness/count mismatch only if relevant}
-7. **Warmed / Teaser:** {Deal} — {Kay action/status needed} → **ADVANCE / NURTURE / CLOSE / DISCUSS**
-8. **NDA:** {Deal} — {Kay action/status needed} → **KEEP / ADVANCE / CLOSE / DISCUSS**
-9. **Financials Received:** {Deal} — {Kay action/status needed} → **MODEL / REQUEST INFO / CLOSE / DISCUSS**
-10. **Submitted LOI:** {Deal or N/A} → **FOLLOW UP / HOLD / DISCUSS**
-11. **Signed LOI:** {Deal or N/A}
+4. **Ops:** {Snapshot freshness/count mismatch only if relevant}
+5. **Warmed / Teaser:** {Deal} — {Kay action/status needed} → **ADVANCE / NURTURE / CLOSE / DISCUSS**
+6. **NDA:** {Deal} — {Kay action/status needed} → **KEEP / ADVANCE / CLOSE / DISCUSS**
+7. **Financials Received:** {Deal} — {Kay action/status needed} → **MODEL / REQUEST INFO / CLOSE / DISCUSS**
+8. **Submitted LOI:** {Deal or N/A} → **FOLLOW UP / HOLD / DISCUSS**
+9. **Signed LOI:** {Deal or N/A}
 
 **Deal Aggregator**
 
-12. **Ops:** {Run freshness/volume only if relevant}
-13. **New surfaced deals:** {Deal/source decision} → **YES / NO / DISCUSS**
-14. **Source registration / access:** {Source decision or N/A} → **REVIEW / DEFER**
+10. **Ops:** {Run freshness/volume only if relevant}
+11. **New surfaced deals:** {Deal/source decision} → **YES / NO / DISCUSS**
+12. **Deal-flow email:** {Only if specific deal-flow email needs aggregator decision} → **RUN REVIEW / WAIT / DISCUSS**
+
+**C-Suite & Skills**
+
+13. **Skills:** {Skill failure/approval item or N/A} → **FIX / DEFER / DISCUSS**
+
+**System Health**
+
+14. **Failures:** {Failure item or N/A} → **FIX / DEFER / DISCUSS**
 
 **Meeting Briefs**
 
 15. **Next 48 hours:** {Meeting brief decision or N/A} → **PREP / SKIP / DISCUSS**
 16. **Last-minute meeting watch:** {Gap/watch item or N/A}
 
-**System Health**
-
-17. **Failures:** {Failure item or N/A} → **FIX / DEFER / DISCUSS**
-
 **Tasks & Follow-up**
 
-18. **Today:** {Task approval/carryover, dashboard plumbing, M&A operating item, or N/A}
-19. **Post-call / Task Manager:** {Task Manager routing item or N/A}
-20. **Deferred:** {Deferred item or N/A}
+17. **Task Manager:** {Open task count only, e.g. 21 open tasks today}
+18. **Post-call / new routing:** {Only new item not already on To Do, or N/A}
+19. **Deferred / unresolved:** {Only new item not already on To Do, or N/A}
 ```
 
 **Briefing hygiene (CRITICAL):**
@@ -494,10 +510,10 @@ The manager is the last line of defense. Sub-agents will make errors. The manage
 
 Before sending the briefing to Kay, validate against the dashboard-section spec:
 
-- [ ] **Required sections present in order** — Email Orchestration, Active Pipeline, Deal Aggregator, Meeting Briefs, System Health, Tasks & Follow-up, then Decisions Needed only if needed.
-- [ ] **Each main section has Kay-actionable numbered items or `N/A`** — no report dumps, no missing section headers. One operational-status line per section max, only for freshness/trust.
+- [ ] **Required sections present in order** — Email Orchestration, Active Pipeline, Deal Aggregator, C-Suite & Skills, System Health, Meeting Briefs, Tasks & Follow-up, then Decisions Needed only if needed.
+- [ ] **Each main section has Kay-actionable numbered items or `N/A`** — no report dumps, no missing section headers. One operational-status line per section max, only for freshness/trust. Tasks & Follow-up may include a task-count line, but must not repeat existing To Do rows.
 - [ ] **All referable lines are numbered sequentially across the whole brief** — includes ops/freshness lines and Kay-actionable items; numbering never resets by section; main section headers are flush left, and numbered lines default to `N. **Dashboard subsection:** item`. Use expanded subsection headers only for subsections with 2+ separate decision items; sub-items use roman numerals or letters.
-- [ ] **Dashboard subsections reflected when useful** — Email Orchestration uses 24-hour thank-yous, 48-hour follow-ups, EOW follow-ups, and draft/deal-flow subsections when populated.
+- [ ] **Dashboard subsections reflected exactly** — Email Orchestration uses only 24-hour thank-yous, 48-hour follow-ups, and EOW follow-ups. Drafts appear only inside those buckets with concrete context; deal-flow email appears only in Deal Aggregator.
 - [ ] **Active Pipeline is grouped by stage and excludes closed deals** — surface only active, non-closed deals; closed deals appear only if changed in the current session.
 - [ ] **Deal Aggregator references one morning run** — do not combine or overwrite with retired afternoon/Friday digest output.
 - [ ] **System Health is failure-only** — include only RED/YELLOW failures that would merit Slack/system alerting; otherwise `N/A`. Planned dashboard plumbing and non-failure operating work belong in Tasks & Follow-up.

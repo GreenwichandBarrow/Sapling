@@ -249,6 +249,8 @@ Updated 2026-06-19 per Kay: Good Morning should be a concise operating edit surf
 
 Dashboard sections come first, in dashboard-navigation order, before non-dashboard operating follow-up. Current order: Email Orchestration, Active Pipeline, Deal Aggregator, C-Suite & Skills, System Health, Meeting Briefs, Tasks & Follow-up, then Decisions Needed only if needed.
 
+**Sunday Task Manager pre-flight (mandatory before briefing):** If the local date is Sunday, run `source /home/ubuntu/projects/Sapling/scripts/op-env.sh && python3 /home/ubuntu/projects/Sapling/scripts/task_tracker.py build-week` before composing the Good Morning brief. Then verify the canonical pointer resolves to `TO DO {today Sunday M.D.YY}` in the Google Drive `STRATEGIC PLANNING` folder. If that file already exists, do not create a duplicate; verify the pointer and use the existing dated file as the weekly canvas. The Sunday build is part of Good Morning, not Good Night, and it must happen before task counts or Week-tab guidance. If the build fails, surface it under **System Health** as a broken-system item; do not silently continue with the prior week file.
+
 1. **Email Orchestration**
    - Audience = Kay. Show only email follow-through items she needs to review/approve/handle today. This section is not an inbox digest.
    - Mirror the Email Orchestration dashboard tab subsections exactly: `24-hour thank-yous`, `48-hour follow-ups`, and `EOW follow-ups`.

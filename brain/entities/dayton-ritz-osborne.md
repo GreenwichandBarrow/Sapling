@@ -2,15 +2,15 @@
 schema_version: 1.1.0
 date: 2026-05-01
 type: company
-status: prospect
+status: closed
 attio_id: 1c698aae-f9f9-44b3-89e8-21fc65ab5afb
-tags: ["date/2026-05-01", "entity", "company", "company/dayton-ritz-osborne", "stage/contacted", "category/insurance"]
+tags: ["date/2026-05-01", "entity", "company", "company/dayton-ritz-osborne", "stage/closed-not-proceeding", "category/insurance"]
 ---
 
 # Dayton, Ritz + Osborne
 
 ## Quick Facts
-- Active Deals pipeline (Attio list) — stage: Contacted since 2026-03-30
+- Active Deals pipeline (Attio list) - moved to Closed / Not Proceeding on 2026-06-22 per Kay instruction.
 - Location: East Hampton, New York
 - Employee range: 11-50
 - ARR bucket: $1M-$10M
@@ -27,3 +27,4 @@ tags: ["date/2026-05-01", "entity", "company", "company/dayton-ritz-osborne", "s
 ## Relationship Notes
 - 2026-03-31: Email interaction logged.
 - 2026-05-01: Entity stub created (vault coverage backfill).
+- 2026-06-22: Kay instructed removal from active pipeline; Attio moved to Closed / Not Proceeding.

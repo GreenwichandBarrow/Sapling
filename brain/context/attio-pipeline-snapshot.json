@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-19T21:00:53Z",
+  "fetched_at": "2026-06-22T10:53:55Z",
   "list_id": "0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b",
   "list_name": "Active Deals \u2013 Owners",
   "stages": [
@@ -89,17 +89,6 @@
       "category": "Financial Services"
     },
     {
-      "record_id": "1c698aae-f9f9-44b3-89e8-21fc65ab5afb",
-      "company": "Dayton, Ritz + Osborne",
-      "stage": "Contacted",
-      "stage_since": "2026-03-30T14:11:07.351000000Z",
-      "location": "East Hampton, New York",
-      "employee_range": "11-50",
-      "arr_bucket": "$1M-$10M",
-      "last_interaction": "2026-03-31T17:46:11.000000000Z",
-      "category": "Marketplace"
-    },
-    {
       "record_id": "d2d0caa0-f465-43fe-a3c0-a0bea21dce34",
       "company": "Personal Risk Management Solutions",
       "stage": "Identified",
@@ -155,9 +144,9 @@
       "category": "Insurance"
     }
   ],
-  "closed_count": 142,
+  "closed_count": 143,
   "closed_count_post_nda": 4,
-  "closed_count_pre_nda": 138,
+  "closed_count_pre_nda": 139,
   "closed_recent": [
     {
       "record_id": "dcff892b-901a-48b1-8d76-579f38abf3b4",

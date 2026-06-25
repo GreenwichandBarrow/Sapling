@@ -1,0 +1,38 @@
+[
+  {
+    "task_text": "Call Peter back and continue the NoFo acquisition conversation directly with him.",
+    "type": "Follow-up",
+    "project": "NoFo Tick Mosquito Control",
+    "suggested_day": "Today",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From NoFo Tick Mosquito Control 2026-06-25 mtg. Analysis: https://docs.google.com/document/d/1A4BXrEwSoy9pMiDeowuNVsmfQdJbu1K1ziinimL3Kfw/edit?usp=drivesdk",
+    "source_call_id": "not_s7Z6Ixb0kab4NQ",
+    "source_doc_url": "https://docs.google.com/document/d/1A4BXrEwSoy9pMiDeowuNVsmfQdJbu1K1ziinimL3Kfw/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1Bj3fw1Rhy6OiZSLcyoZK0YEE7QHI2NBLqKuldQ7qlwg/edit?usp=drivesdk",
+    "staged_at": "2026-06-25T17:11:24.316672Z"
+  },
+  {
+    "task_text": "Schedule the in-person meeting next week and confirm the right attendees.",
+    "type": "Follow-up",
+    "project": "NoFo Tick Mosquito Control",
+    "suggested_day": "This week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From NoFo Tick Mosquito Control 2026-06-25 mtg. Analysis: https://docs.google.com/document/d/1A4BXrEwSoy9pMiDeowuNVsmfQdJbu1K1ziinimL3Kfw/edit?usp=drivesdk",
+    "source_call_id": "not_s7Z6Ixb0kab4NQ",
+    "source_doc_url": "https://docs.google.com/document/d/1A4BXrEwSoy9pMiDeowuNVsmfQdJbu1K1ziinimL3Kfw/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1Bj3fw1Rhy6OiZSLcyoZK0YEE7QHI2NBLqKuldQ7qlwg/edit?usp=drivesdk",
+    "staged_at": "2026-06-25T17:11:24.316672Z"
+  },
+  {
+    "task_text": "If Peter shares materials, request them before the meeting so Kay can review the operating picture.",
+    "type": "Analysis",
+    "project": "NoFo Tick Mosquito Control",
+    "suggested_day": "This week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From NoFo Tick Mosquito Control 2026-06-25 mtg. Analysis: https://docs.google.com/document/d/1A4BXrEwSoy9pMiDeowuNVsmfQdJbu1K1ziinimL3Kfw/edit?usp=drivesdk",
+    "source_call_id": "not_s7Z6Ixb0kab4NQ",
+    "source_doc_url": "https://docs.google.com/document/d/1A4BXrEwSoy9pMiDeowuNVsmfQdJbu1K1ziinimL3Kfw/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1Bj3fw1Rhy6OiZSLcyoZK0YEE7QHI2NBLqKuldQ7qlwg/edit?usp=drivesdk",
+    "staged_at": "2026-06-25T17:11:24.316672Z"
+  }
+]

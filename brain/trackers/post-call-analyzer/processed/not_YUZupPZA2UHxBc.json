@@ -1,0 +1,20 @@
+{
+  "id": "not_YUZupPZA2UHxBc",
+  "date": "2026-06-25",
+  "counterparty": "Andrew Freiman",
+  "location": "remote",
+  "granola_url": "https://notes.granola.ai/d/869a24f4-1cb1-4b77-88ba-98c9228a582b",
+  "doc_url": "https://docs.google.com/document/d/1STf-7X2PS4IJIOQ0dif_rKYXSj0lwz8rEavPpUtbcvo/edit?usp=drivesdk",
+  "transcript_doc_url": "https://docs.google.com/document/d/1m7JEsrhBc7gbjA2akI_YS-Sgpxt3rNAKIG0sLMtN2b4/edit?usp=drivesdk",
+  "processed_at": "2026-06-25T17:11:24.316672Z",
+  "vault_call_note": "/home/ubuntu/projects/Sapling/brain/calls/2026-06-25-andrew-freiman-thesis-pressure-test.md",
+  "tasks_file": "/home/ubuntu/projects/Sapling/brain/trackers/post-call-analyzer/pending-tasks/not_YUZupPZA2UHxBc.json",
+  "task_count": 3,
+  "slack_summary_lines": [
+    "Andrew reinforced a thesis-dominant search posture with some room for opportunistic learning.",
+    "Pest remains the core thread, with adjacent niche ideas serving as tests of the same logic.",
+    "Several concrete leads emerged, including the small pest operator ride-along and the specialty steel distributor."
+  ],
+  "slack_posted": true,
+  "attio_failed": true
+}

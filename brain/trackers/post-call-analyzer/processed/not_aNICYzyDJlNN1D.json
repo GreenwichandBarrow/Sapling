@@ -1,0 +1,28 @@
+{
+  "id": "not_aNICYzyDJlNN1D",
+  "date": "2026-06-25",
+  "counterparty": "Camilla de Sanna",
+  "location": "remote",
+  "granola_url": "https://notes.granola.ai/d/27f7ef29-6419-4f91-89a6-7c81a10d0f9f",
+  "doc_url": "https://docs.google.com/document/d/16L_KkBLusz6EWZeenqqOQb2zn3_tF9ZDEvBv9sXcGjc/edit?usp=drivesdk",
+  "transcript_doc_url": "https://docs.google.com/document/d/1aIFDU0XsSwCNYk5NJ7xqFa5WhUufzUuqoGboAvjWEhU/edit?usp=drivesdk",
+  "processed_at": "2026-06-25T17:11:24.316672Z",
+  "vault_call_note": "/home/ubuntu/projects/Sapling/brain/calls/2026-06-25-team-tb-camilla-pest-thesis-roundup.md",
+  "tasks_file": "/home/ubuntu/projects/Sapling/brain/trackers/post-call-analyzer/pending-tasks/not_aNICYzyDJlNN1D.json",
+  "task_count": 4,
+  "slack_summary_lines": [
+    "Investor feedback converged on a sharper thesis: Kay should lean into her background, not generic opportunism.",
+    "Pest still has believers, but machinery and the Mary seller look unusually promising near term.",
+    "The call clarified which leads are real follow-ups versus thesis exploration."
+  ],
+  "slack_posted": true,
+  "attio_notes": {
+    "people": [
+      "52146e57-68cf-4681-927c-9c2ddcdc7ea3"
+    ],
+    "companies": [
+      "1f3d7760-bafa-4f9e-996e-448dbff55ae9"
+    ]
+  },
+  "attio_failed": false
+}

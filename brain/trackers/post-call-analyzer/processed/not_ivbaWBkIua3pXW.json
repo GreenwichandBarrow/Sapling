@@ -1,0 +1,20 @@
+{
+  "id": "not_ivbaWBkIua3pXW",
+  "date": "2026-06-25",
+  "counterparty": "NoFo Ticket Mosquito Control",
+  "location": "remote",
+  "granola_url": "https://notes.granola.ai/d/fc234217-164d-4135-952a-fadea586a37e",
+  "doc_url": "https://docs.google.com/document/d/1EQPR5eoFOO1cGq-Hy3ks9N4T87wMhHX9EJO2GAgbS6I/edit?usp=drivesdk",
+  "transcript_doc_url": "https://docs.google.com/document/d/1VtDb-UFSxxUD-aZN3lD_Em3FYEhOa4qP1RlEZtJVwpc/edit?usp=drivesdk",
+  "processed_at": "2026-06-25T17:11:24.316672Z",
+  "vault_call_note": "/home/ubuntu/projects/Sapling/brain/calls/2026-06-25-nofo-ticket-mosquito-control-voicemail.md",
+  "tasks_file": "/home/ubuntu/projects/Sapling/brain/trackers/post-call-analyzer/pending-tasks/not_ivbaWBkIua3pXW.json",
+  "task_count": 1,
+  "slack_summary_lines": [
+    "Reached the voicemail at NoFo Ticket Mosquito Control; no live discussion happened.",
+    "This is a relationship touch, not a diligence signal, but it confirms a callback path.",
+    "The next step is a live conversation with Peter or Lisa once they are available."
+  ],
+  "slack_posted": true,
+  "attio_failed": true
+}

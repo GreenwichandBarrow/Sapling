@@ -1,11 +1,14 @@
 {
-  "blocked": [],
+  "blocked": [
+    "source artifact is stale",
+    "compact input artifact is stale"
+  ],
   "deal_items": 28,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-06-24T19:55:56.278251-04:00",
+  "fetched_at": "2026-06-25T07:11:11.660200-04:00",
   "input_artifact": "brain/context/email-intelligence-input-2026-06-24.json",
-  "input_status": "ok",
+  "input_status": "stale",
   "needs_kay": [
     "28 broker/listing row(s) extracted",
     "Clarify email follow-through identity/source: Krupa; Greg; Denning; Matt (+1 more)"
@@ -14,7 +17,7 @@
   "relationship_items": 0,
   "send_blockers": 0,
   "source_artifact": "brain/context/email-scan-results-2026-06-24.md",
-  "source_status": "ok",
+  "source_status": "stale",
   "stale_drafts": 0,
   "task_candidates": 0
 }

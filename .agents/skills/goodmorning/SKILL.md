@@ -1,6 +1,6 @@
 ---
 name: goodmorning
-description: Morning operating bookend for Kay and Greenwich & Barrow. Use when Kay says "good morning", invokes /goodmorning, asks for a morning briefing, or starts the daily operating rhythm. Preserves the Claude-era morning orchestration: email intelligence, relationship manager, pipeline manager, prior decisions, day-of-week overlays, Sunday tracker build, and a concise decisions-only briefing.
+description: "Morning operating bookend for Kay and Greenwich & Barrow. Use when Kay says \"good morning\", invokes /goodmorning, asks for a morning briefing, or starts the daily operating rhythm. Preserves the Claude-era morning orchestration: email intelligence, relationship manager, pipeline manager, prior decisions, day-of-week overlays, Sunday tracker build, and a concise decisions-only briefing."
 ---
 
 # Good Morning
@@ -29,6 +29,19 @@ Non-negotiables:
    - Treat old `JJ` references as legacy cold-call compatibility, not current user-facing naming.
 6. Verify cold-call operations fired when scheduled. Do not re-run if the job already produced a current artifact.
 7. Apply day-of-week overlays.
+
+## Task Manager Carry-Forward Stop Hook
+
+Good Morning is not complete until Task Manager has been verified. Before writing the morning brief:
+
+1. Run `task-tracker-manager` / `scripts/task_tracker.py sync-done-status` to reconcile checked day-tab items back to the To Do tab.
+2. Determine the current live day tab. For every earlier live day tab in the current week (`Sun` through yesterday), run a dry-run carry-forward into the current day: `scripts/task_tracker.py carry-forward-day --from {prior_day} --to {current_day} --dry-run`.
+3. If any prior-day dry run shows pending moves, execute those carry-forwards before the brief, earliest day first, then run `scripts/task_tracker.py report`.
+4. Carry-forward must include overflow task rows above the visible `NOTES` header, not just canonical rows 17-41. If report/carry-forward disagree on counts, treat that as a Task Manager health failure.
+5. If carry-forward cannot run, is blocked, or the report still shows unprocessed items on any earlier live day tab, surface this in the **System Health** section as a numbered failure item. Do not say the task tracker is ready.
+6. Do not repeat the user's full To Do list in the brief. Report the open-task count only, plus any new post-call or system-generated task decisions that are not already on the To Do sheet.
+
+Stop condition: if Task Manager verification is skipped or inconclusive, the Good Morning brief must mark **System Health: Task Manager carry-forward unverified** and recommend repair before day planning.
 
 ## Day Overlays
 
@@ -80,4 +93,4 @@ Avoid:
 
 ## Success Criteria
 
-The run is complete when Kay has a concise daily decision brief, scheduled/core status has been checked, Sunday tracker behavior is safe, and no unreviewed email-sending or duplicate tracker action occurred.
+The run is complete when Kay has a concise daily decision brief, scheduled/core status has been checked, Task Manager carry-forward has been verified or repaired, Sunday tracker behavior is safe, and no unreviewed email-sending or duplicate tracker action occurred.

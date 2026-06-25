@@ -112,11 +112,8 @@ def _render_goal_tile(goal: WeeklyGoalMetric) -> str:
     if goal.items:
         items_html = "".join(
             f'<li>{escape(item)}</li>'
-            for item in goal.items[: goal.target_max]
+            for item in goal.items
         )
-        more = len(goal.items) - goal.target_max
-        if more > 0:
-            items_html += f'<li>+{more} more</li>'
         detail = (
             '<div class="gb-kpi-sub gb-weekly-detail">'
             '<div class="gb-weekly-detail-label">Weekly detail:</div>'
@@ -190,20 +187,20 @@ def _render_zone_1(ma: MAAnalytics) -> str:
         <div class="gb-zone-head">
         <div>
         <div class="gb-zone-label">Deal Flow Outcomes</div>
-        <div class="gb-zone-sublabel">Pipeline movement created by the sourcing work · this week and lifetime</div>
+        <div class="gb-zone-sublabel">Pipeline movement created by the sourcing work · this week and this month</div>
         </div>
-        <div class="gb-zone-meta">weekly + LTD</div>
+        <div class="gb-zone-meta">week + month</div>
         </div>
         """
     ).strip()
     labels = ["Quality conversations" if t.label == "Owner conversations" else t.label for t in ma.deal_flow_tiles]
     week_values = [str(t.value) for t in ma.deal_flow_tiles]
 
-    ltd_values = [str(v) for v in (ma.deal_flow_ltd_values or ["—", "—", "—", "—", "—"])]
+    month_values = [str(v) for v in (ma.deal_flow_month_values or ["—", "—", "—", "—", "—"])]
 
     header_cells = "".join(f'<th class="right">{escape(label)}</th>' for label in labels)
     week_cells = "".join(f'<td class="right">{escape(v)}</td>' for v in week_values)
-    ltd_cells = "".join(f'<td class="right">{escape(v)}</td>' for v in ltd_values)
+    month_cells = "".join(f'<td class="right">{escape(v)}</td>' for v in month_values)
     table = dedent(
         f"""
         <table class="gb-ch-table gb-outcomes-table">
@@ -215,7 +212,7 @@ def _render_zone_1(ma: MAAnalytics) -> str:
         </thead>
         <tbody>
         <tr><td><div class="gb-ch-name">This week</div></td>{week_cells}</tr>
-        <tr><td><div class="gb-ch-name">LTD</div></td>{ltd_cells}</tr>
+        <tr><td><div class="gb-ch-name">This month</div></td>{month_cells}</tr>
         </tbody>
         </table>
         """
@@ -257,7 +254,7 @@ def _stage_age_text(stage_deals: list) -> str:
 
 
 def _render_pipeline_snapshot() -> str:
-    snapshot = load_pipeline(scope="full")
+    snapshot = load_pipeline(scope="engaged")
     head = dedent(
         """
         <div class="gb-zone-head">
@@ -272,10 +269,9 @@ def _render_pipeline_snapshot() -> str:
     if snapshot is None:
         return f'<section class="gb-zone">{head}<div class="gb-zone-empty">Attio snapshot unavailable</div></section>'
 
-    # Dashboard pipeline starts once there has been engagement. Raw Identified
-    # records remain in Attio, but this operating view should not show them
-    # until a direct or intermediary-routed response moves them forward.
-    stages = [stage for stage in snapshot.stages if stage != "Identified"]
+    # Shared loader owns the engaged-pipeline filter: Contacted plus
+    # NDA-forward, excluding raw Identified CRM inventory.
+    stages = snapshot.stages
     cells = []
     for stage in stages:
         deals = [d for d in snapshot.deals if d.stage == stage]
@@ -562,17 +558,14 @@ def _render_zone_6(ma: MAAnalytics) -> str:
 
 
 # -----------------------------------------------------------------------------
-# Lifetime Source Mix
+# Go-forward Source Mix
 # -----------------------------------------------------------------------------
 
 
 def _render_source_row(row: SourceMixRow) -> str:
-    if row.status == "pending":
-        pill = '<span class="gb-ch-pill">Pending</span>'
-    elif row.status == "needs_map":
-        pill = '<span class="gb-ch-pill">Source map needed</span>'
-    else:
-        pill = escape(row.financials_received)
+    month_cell = escape(row.current_month)
+    if row.status == "needs_map" and row.current_month not in {"0", "—"}:
+        month_cell = f'{escape(row.current_month)} <span class="gb-ch-pill">Needs review</span>'
     return dedent(
         f"""
         <tr>
@@ -580,8 +573,8 @@ def _render_source_row(row: SourceMixRow) -> str:
         <div class="gb-ch-name">{escape(row.source)}</div>
         <div class="gb-ch-desc">{escape(row.note)}</div>
         </td>
-        <td class="right">{escape(row.ltd_activity)}</td>
-        <td class="right">{pill}</td>
+        <td class="right">{escape(row.this_week)}</td>
+        <td class="right">{month_cell}</td>
         </tr>
         """
     ).strip()
@@ -592,10 +585,10 @@ def _render_source_mix(ma: MAAnalytics) -> str:
         """
         <div class="gb-zone-head">
         <div>
-        <div class="gb-zone-label">Lead Source Mix · Since Feb 2025</div>
-        <div class="gb-zone-sublabel">Directional source counts from search start · financials-by-source needs Attio source mapping</div>
+        <div class="gb-zone-label">Lead Source Mix · Go-Forward</div>
+        <div class="gb-zone-sublabel">Source-tagged opportunities from June 2026 forward</div>
         </div>
-        <div class="gb-zone-meta">source attribution draft</div>
+        <div class="gb-zone-meta">source attribution</div>
         </div>
         """
     ).strip()
@@ -606,8 +599,8 @@ def _render_source_mix(ma: MAAnalytics) -> str:
         <thead>
         <tr>
         <th>Source</th>
-        <th class="right">Since Feb 2025</th>
-        <th class="right">Financials by source</th>
+        <th class="right">This week</th>
+        <th class="right">{escape(ma.source_month_label)}</th>
         </tr>
         </thead>
         <tbody>{rows}</tbody>

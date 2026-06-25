@@ -217,6 +217,19 @@ status=$?
 set -e
 
 if [ "$status" -ne 0 ]; then
+  if grep -q "Selected model is at capacity" "$LOG_FILE" && [ -z "${CODEX_MODEL_FALLBACK_ATTEMPTED:-}" ]; then
+    FALLBACK_MODEL="${CODEX_FALLBACK_MODEL:-gpt-5.5}"
+    log "RETRY: codex exec hit model capacity on $CODEX_MODEL; retrying once with $FALLBACK_MODEL"
+    CODEX_MODEL_FALLBACK_ATTEMPTED=1
+    CODEX_CMD=(codex exec --cd "$WORKDIR" --dangerously-bypass-approvals-and-sandbox --json --output-last-message "$LOG_FILE.final" --model "$FALLBACK_MODEL")
+    set +e
+    env -u CODEX_API_KEY "${CODEX_CMD[@]}" - < "$PROMPT_FILE" >> "$LOG_FILE" 2>&1
+    status=$?
+    set -e
+  fi
+fi
+
+if [ "$status" -ne 0 ]; then
   log "FAILED: codex exec exited $status"
   post_failure "FAILED: Codex scheduled job $SKILL_NAME exited $status."
   exit "$status"

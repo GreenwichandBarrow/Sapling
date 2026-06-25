@@ -74,8 +74,8 @@ services:
   - name: keyreach
     kind: service
     description: DealsX outreach platform · email + LinkedIn DM sequences for the Sam Singh workflow.
-    health: ok
-    status_text: Healthy · signed in 2026-05-10
+    health: warn
+    status_text: Summer pause planned · remove $1K/mo from runway plan
     action: muted
     action_text: Logs ↗
 

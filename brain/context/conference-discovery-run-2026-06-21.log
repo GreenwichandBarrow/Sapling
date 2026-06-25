@@ -1,0 +1,15 @@
+2026-06-21T21:06:07.260958 Archival candidates accepted=1; passive blocked for validator compatibility=8
+2026-06-21T21:06:07.260998 PASSIVE_NOT_ARCHIVED row=4 decision='NEW' event='ACG CT Annual Golf & Tennis Outing'
+2026-06-21T21:06:07.261007 PASSIVE_NOT_ARCHIVED row=6 decision='Evaluating' event='NJCPA Convention and Expo'
+2026-06-21T21:06:07.261011 PASSIVE_NOT_ARCHIVED row=7 decision='Evaluating' event='NPMA Executive Leadership Forum'
+2026-06-21T21:06:07.261015 PASSIVE_NOT_ARCHIVED row=8 decision='Evaluating' event='ACG NJ Breakfast Meeting'
+2026-06-21T21:06:07.261020 PASSIVE_NOT_ARCHIVED row=9 decision='Evaluating' event='Greater NJ EPC - Year End Tax & Estate Planning (Breakfast or Lunch TBD)'
+2026-06-21T21:06:07.261024 PASSIVE_NOT_ARCHIVED row=10 decision='Evaluating' event='ACG New York Family Office & Limited Partner Series - Summer Edition'
+2026-06-21T21:06:07.261033 PASSIVE_NOT_ARCHIVED row=11 decision='Evaluating' event='EPC Long Island Study Group/Webinar - The New Legacy: Strategic Estate Planning with Art & Collectibles'
+2026-06-21T21:06:07.261037 PASSIVE_NOT_ARCHIVED row=12 decision='NEW' event='XPX Philadelphia - The Fine Print That Bites: Managing Risk Through Reps, Warranties, and Indemnities'
+2026-06-21T21:06:09.669230 APPENDED Attended: 'Peapack Wealth Breakfast'
+2026-06-21T21:06:10.050215 Deleted 1 archived Pipeline source rows
+2026-06-21T21:06:12.070537 ADDED row 19: 'ACG NJ Angel Investor Forum | June 23, 2026'
+2026-06-21T21:06:13.007213 SORTED section '6/22' events=7
+2026-06-21T21:06:13.728122 PRUNE_SKIP_UNPARSEABLE 'July - August'
+2026-06-21T21:06:13.971679 PRUNED_HEADER row=2 label='6/8'

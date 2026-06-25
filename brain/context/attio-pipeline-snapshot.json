@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-22T10:53:55Z",
+  "fetched_at": "2026-06-25T00:00:54Z",
   "list_id": "0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b",
   "list_name": "Active Deals \u2013 Owners",
   "stages": [
@@ -89,6 +89,28 @@
       "category": "Financial Services"
     },
     {
+      "record_id": "dcff892b-901a-48b1-8d76-579f38abf3b4",
+      "company": "Total Extermination",
+      "stage": "Contacted",
+      "stage_since": "2026-06-24T14:53:42.378000000Z",
+      "location": null,
+      "employee_range": null,
+      "arr_bucket": null,
+      "last_interaction": null,
+      "category": null
+    },
+    {
+      "record_id": "232db745-bc70-4cc9-99ea-fa8e3b86525c",
+      "company": "NoFo Tick Control",
+      "stage": "Contacted",
+      "stage_since": "2026-06-24T23:11:21.299000000Z",
+      "location": "Centereach, New York",
+      "employee_range": null,
+      "arr_bucket": null,
+      "last_interaction": null,
+      "category": "B2C"
+    },
+    {
       "record_id": "d2d0caa0-f465-43fe-a3c0-a0bea21dce34",
       "company": "Personal Risk Management Solutions",
       "stage": "Identified",
@@ -144,16 +166,10 @@
       "category": "Insurance"
     }
   ],
-  "closed_count": 143,
-  "closed_count_post_nda": 4,
+  "closed_count": 142,
+  "closed_count_post_nda": 3,
   "closed_count_pre_nda": 139,
   "closed_recent": [
-    {
-      "record_id": "dcff892b-901a-48b1-8d76-579f38abf3b4",
-      "company": "Total Extermination",
-      "stage_since": "2026-06-19T12:29:15.776000000Z",
-      "location": null
-    },
     {
       "record_id": "08d198dc-f9eb-4c7e-b127-63fbea65dc60",
       "company": "Project Drone",

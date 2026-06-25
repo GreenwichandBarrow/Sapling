@@ -1,6 +1,26 @@
 {
   "processed": [
     {
+      "id": "not_dWpaqEVizVSDm2",
+      "title": "Sam I Steuart I Kay",
+      "counterparty": "Ultima Search Partners",
+      "processed_at": "2026-06-22T17:05:03Z",
+      "vault_call_note": "brain/calls/2026-06-22-ultima-search-partners.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_dWpaqEVizVSDm2.json",
+      "doc_url": "https://docs.google.com/document/d/1IEf5Rnwy8B2eUnaGD8KLsKNv0ZNC8rcK0z3seHeFwAs/edit?usp=drivesdk",
+      "doc_id": "1IEf5Rnwy8B2eUnaGD8KLsKNv0ZNC8rcK0z3seHeFwAs",
+      "transcript_doc_url": "https://docs.google.com/document/d/1CLH87yZCvIamXQ2uE7VtS8gEbYvpBJAb-7RjltiCJV0/edit?usp=drivesdk",
+      "transcript_doc_id": "1CLH87yZCvIamXQ2uE7VtS8gEbYvpBJAb-7RjltiCJV0",
+      "attio_notes": {
+        "person_sam_hyde": "a1265dea-7035-41ca-8faf-b05dc7428921",
+        "person_steuart_botchford": "f10b9bfb-d533-41ab-84ac-02d800e40ec4",
+        "company_ultima_search_partners": "a1336f5b-cd37-40a0-ab96-c70af7bc52c2"
+      },
+      "slack_posted": true,
+      "detector": "granola-api-rest",
+      "task_count": 3
+    },
+    {
       "id": "not_boyGLr8uI00tAe",
       "title": "Team TB Camilla I Kay",
       "counterparty": "Camilla de Sanna (Greenwich & Barrow)",
@@ -809,6 +829,153 @@
       "task_count": 2,
       "queue_file": "brain/trackers/post-call-analyzer/queue/not_0KnxAbG8jAIVTt.json",
       "processed_archive": "brain/trackers/post-call-analyzer/processed/not_0KnxAbG8jAIVTt.json"
+    },
+    {
+      "id": "not_9oERM59ZRwzCB8",
+      "title": "Mike I Kay",
+      "counterparty": "Michael Horowitz",
+      "processed_at": "2026-06-22T22:08:53.119013Z",
+      "vault_call_note": "brain/calls/2026-06-22-michael-horowitz.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_9oERM59ZRwzCB8.json",
+      "doc_url": "https://docs.google.com/document/d/1gKRvGHgAFOUnY5SVvpAC4VlIKmG5lxRE67gJ7383wS0/edit?usp=drivesdk",
+      "doc_id": "1gKRvGHgAFOUnY5SVvpAC4VlIKmG5lxRE67gJ7383wS0",
+      "transcript_doc_url": "https://docs.google.com/document/d/1zdrzRbEsCFiOY2zJf8sHkRWc0csU6VlVmnG2qEWSyZs/edit?usp=drivesdk",
+      "transcript_doc_id": "1zdrzRbEsCFiOY2zJf8sHkRWc0csU6VlVmnG2qEWSyZs",
+      "attio_notes": {
+        "person_michael": "f05ff39e-2480-4869-b3cd-ce869a7250b1",
+        "company_streetlight-cap": "4b50bf09-762a-4f3f-8301-20f18740a3ac"
+      },
+      "slack_posted": true,
+      "detector": "granola-api-rest",
+      "task_count": 2
+    },
+    {
+      "id": "not_b0A4fstAemZ6Ik",
+      "title": "Doug I Kay",
+      "counterparty": "Doug Tudor",
+      "processed_at": "2026-06-22T22:09:00.997976Z",
+      "vault_call_note": "brain/calls/2026-06-22-doug-tudor.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_b0A4fstAemZ6Ik.json",
+      "doc_url": "https://docs.google.com/document/d/1474yj0diKmbjJOftgQbS7nPdciyAL5QnlTuxfbdL3uI/edit?usp=drivesdk",
+      "doc_id": "1474yj0diKmbjJOftgQbS7nPdciyAL5QnlTuxfbdL3uI",
+      "transcript_doc_url": "https://docs.google.com/document/d/1q-3pb5o8uECTzMonz3Sk4sxIu5MoHeXADf0ahs_cn6o/edit?usp=drivesdk",
+      "transcript_doc_id": "1q-3pb5o8uECTzMonz3Sk4sxIu5MoHeXADf0ahs_cn6o",
+      "attio_notes": {
+        "person_dougtudor": "16bccaee-e31b-44f0-a27e-85b6663b649f"
+      },
+      "slack_posted": true,
+      "detector": "granola-api-rest",
+      "task_count": 2
+    },
+    {
+      "id": "not_EvPA42AGHd3z5O",
+      "title": "Albert I Kay",
+      "counterparty": "Albert Kim",
+      "processed_at": "2026-06-23T17:11:04Z",
+      "vault_call_note": "brain/calls/2026-06-23-albert-kim-recording-failure.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_EvPA42AGHd3z5O.json",
+      "doc_url": "https://docs.google.com/document/d/1B6ipHcEAt__y91ddws0C-elFZWAuOXK7WqhTfCxSv88/edit?usp=drivesdk",
+      "doc_id": "1B6ipHcEAt__y91ddws0C-elFZWAuOXK7WqhTfCxSv88",
+      "transcript_doc_url": "https://docs.google.com/document/d/1-BXPJtNgjoNUFVMrMNPogWNr0VGK6au2LoGhkIUKOgs/edit?usp=drivesdk",
+      "transcript_doc_id": "1-BXPJtNgjoNUFVMrMNPogWNr0VGK6au2LoGhkIUKOgs",
+      "attio_notes": {
+        "person_albert_kim": "39542e49-e507-4698-9753-fd8e97a5eda1",
+        "company_north_clark_partners": "1c08a667-57a5-4679-9ae2-6a51da66356b"
+      },
+      "slack_posted": true,
+      "detector": "granola-api-rest",
+      "task_count": 1,
+      "transcript_failed": true,
+      "attio_failed": false,
+      "tasks_failed": false,
+      "doc_failed": false
+    },
+    {
+      "id": "not_Fx8JX6vUNT1oCD",
+      "title": "Pest Control Market Intelligence",
+      "counterparty": "Albert Kim",
+      "processed_at": "2026-06-23T17:11:04Z",
+      "vault_call_note": "brain/calls/2026-06-23-albert-kim-pest-market-intel.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_Fx8JX6vUNT1oCD.json",
+      "doc_url": "https://docs.google.com/document/d/19OCtLlnbQEIKoqZMgH1PH4CIdJ2jcm7rNW69bxVV4ro/edit?usp=drivesdk",
+      "doc_id": "19OCtLlnbQEIKoqZMgH1PH4CIdJ2jcm7rNW69bxVV4ro",
+      "transcript_doc_url": "https://docs.google.com/document/d/139ZG6J4XAAw-50nYVPIkibY2_4Yg53cK0v6IZi0o1Xo/edit?usp=drivesdk",
+      "transcript_doc_id": "139ZG6J4XAAw-50nYVPIkibY2_4Yg53cK0v6IZi0o1Xo",
+      "attio_notes": {
+        "person_albert_kim": "3d0c6bb4-d78f-4e17-9195-63aaf2d76cd0",
+        "company_north_clark_partners": "ba182596-7203-4715-8461-bd46eb852a28"
+      },
+      "slack_posted": true,
+      "detector": "granola-api-rest",
+      "task_count": 4,
+      "transcript_failed": false,
+      "attio_failed": false,
+      "tasks_failed": false,
+      "doc_failed": false
+    },
+    {
+      "id": "not_Rrymwi7mA77lOH",
+      "title": "Event Encounter",
+      "counterparty": "Event Encounter",
+      "processed_at": "2026-06-23T17:11:04Z",
+      "vault_call_note": "brain/calls/2026-06-23-event-encounter.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_Rrymwi7mA77lOH.json",
+      "doc_url": "https://docs.google.com/document/d/1lmC2mlNuvLCWbag2ncYLtnoGSmQAB633B2Qui9bsGxs/edit?usp=drivesdk",
+      "doc_id": "1lmC2mlNuvLCWbag2ncYLtnoGSmQAB633B2Qui9bsGxs",
+      "transcript_doc_url": "https://docs.google.com/document/d/1dl92iWDF_5Gh88sBIclL8B8gYhS9-3grFGgcFzJB8iY/edit?usp=drivesdk",
+      "transcript_doc_id": "1dl92iWDF_5Gh88sBIclL8B8gYhS9-3grFGgcFzJB8iY",
+      "attio_notes": {},
+      "slack_posted": true,
+      "detector": "granola-api-rest",
+      "task_count": 0,
+      "transcript_failed": false,
+      "attio_failed": true,
+      "tasks_failed": true,
+      "doc_failed": false
+    },
+    {
+      "id": "not_xndVqMpoAGUHGh",
+      "title": "Juan I Kay",
+      "counterparty": "Juan / Total Extermination",
+      "processed_at": "2026-06-23T22:05:56Z",
+      "vault_call_note": "brain/calls/2026-06-23-total-extermination.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_xndVqMpoAGUHGh.json",
+      "doc_url": "https://docs.google.com/document/d/1TfBB21gHV73JQBRmnVOQ7cM7G_6IixGBl-JTlOIPSGQ/edit",
+      "doc_id": "1TfBB21gHV73JQBRmnVOQ7cM7G_6IixGBl-JTlOIPSGQ",
+      "transcript_doc_url": "https://docs.google.com/document/d/1HtsAJ41sWNCHQrnQx2Rl-8ZJdhA0jrsmyo7Ogb8NRw8/edit",
+      "transcript_doc_id": "1HtsAJ41sWNCHQrnQx2Rl-8ZJdhA0jrsmyo7Ogb8NRw8",
+      "attio_notes": {
+        "person_juan_total_extermination": {
+          "workspace_id": "243821c3-e0c9-46f9-8ee8-50e0094e12fb",
+          "note_id": "d163ec7d-2644-46bb-959d-1c2d012bd3ce"
+        },
+        "company_total_extermination": {
+          "workspace_id": "243821c3-e0c9-46f9-8ee8-50e0094e12fb",
+          "note_id": "917fa851-14f2-40f8-a105-449270334f81"
+        }
+      },
+      "slack_posted": true,
+      "detector": "granola-api-rest",
+      "task_count": 3
+    },
+    {
+      "id": "not_cypEuRlzBVorke",
+      "title": "ETA Deal Team Day: NYC",
+      "counterparty": "ETA Deal Team Day",
+      "processed_at": "2026-06-24T22:05:05Z",
+      "vault_call_note": "brain/calls/2026-06-24-eta-deal-team-day-nyc.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_cypEuRlzBVorke.json",
+      "doc_url": "https://docs.google.com/document/d/16CLWn3mEk4BWj9npyUlLc5TTO8XZXrYkIqUHfYnyLq8/edit",
+      "doc_id": "16CLWn3mEk4BWj9npyUlLc5TTO8XZXrYkIqUHfYnyLq8",
+      "transcript_doc_url": "https://docs.google.com/document/d/1eq-MdhldjHu3ppMaPhVBQMvoqCSXrJDstxc_DUnKEPg/edit?usp=drivesdk",
+      "transcript_doc_id": "1eq-MdhldjHu3ppMaPhVBQMvoqCSXrJDstxc_DUnKEPg",
+      "granola_url": "https://notes.granola.ai/d/5c2cc028-3e5a-40e3-9325-04401a88282f",
+      "attio_notes": {},
+      "attio_failed": true,
+      "attio_skip_reason": "no external attendees \u2014 internal deal-team day",
+      "slack_posted": true,
+      "detector": "granola-api-rest",
+      "task_count": 4
     }
   ]
 }

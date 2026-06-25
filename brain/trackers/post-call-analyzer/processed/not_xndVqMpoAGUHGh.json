@@ -1,0 +1,25 @@
+{
+  "id": "not_xndVqMpoAGUHGh",
+  "title": "Juan I Kay",
+  "counterparty": "Juan / Total Extermination",
+  "processed_at": "2026-06-23T22:05:56Z",
+  "vault_call_note": "brain/calls/2026-06-23-total-extermination.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_xndVqMpoAGUHGh.json",
+  "doc_url": "https://docs.google.com/document/d/1TfBB21gHV73JQBRmnVOQ7cM7G_6IixGBl-JTlOIPSGQ/edit",
+  "doc_id": "1TfBB21gHV73JQBRmnVOQ7cM7G_6IixGBl-JTlOIPSGQ",
+  "transcript_doc_url": "https://docs.google.com/document/d/1HtsAJ41sWNCHQrnQx2Rl-8ZJdhA0jrsmyo7Ogb8NRw8/edit",
+  "transcript_doc_id": "1HtsAJ41sWNCHQrnQx2Rl-8ZJdhA0jrsmyo7Ogb8NRw8",
+  "attio_notes": {
+    "person_juan_total_extermination": {
+      "workspace_id": "243821c3-e0c9-46f9-8ee8-50e0094e12fb",
+      "note_id": "d163ec7d-2644-46bb-959d-1c2d012bd3ce"
+    },
+    "company_total_extermination": {
+      "workspace_id": "243821c3-e0c9-46f9-8ee8-50e0094e12fb",
+      "note_id": "917fa851-14f2-40f8-a105-449270334f81"
+    }
+  },
+  "slack_posted": true,
+  "detector": "granola-api-rest",
+  "task_count": 3
+}

@@ -1,0 +1,229 @@
+{
+  "created_at": "2026-06-20T14:12:04.337964+00:00",
+  "purpose": "pre-update runway plan for confirmed July cost cuts",
+  "sheet_id": "1vTeGviuQk9zLqacJrdBZS2Bopk8kQZtmEHWheqpCdq0",
+  "range": "Runway Forecast!A1:B75",
+  "data": {
+    "range": "'Runway Forecast'!A1:B75",
+    "values": [
+      [
+        "G&B RUNWAY FORECAST",
+        "As of May 31, 2026"
+      ],
+      [],
+      [
+        "FUND POSITION",
+        "FUND POSITION"
+      ],
+      [
+        "Total Invested",
+        "552521.12"
+      ],
+      [
+        "Fund Balance (May 31)",
+        "168968.34"
+      ],
+      [
+        "Remaining Health Installment",
+        "0"
+      ],
+      [
+        "Available After Installment",
+        "168968.34"
+      ],
+      [
+        "DD Reserve (Current)",
+        "40000"
+      ],
+      [
+        "Available for Operations",
+        "128968.34"
+      ],
+      [],
+      [
+        "BURN RATE",
+        "BURN RATE"
+      ],
+      [
+        "Jan 2026 Net Burn",
+        "31303.94"
+      ],
+      [
+        "Feb 2026 Net Burn",
+        "30096.38"
+      ],
+      [
+        "Mar 2026 Net Burn",
+        "31903.6"
+      ],
+      [
+        "Apr 2026 Net Burn",
+        "33296.47"
+      ],
+      [
+        "May 2026 Net Burn",
+        "22139.53"
+      ],
+      [
+        "Steady-State Monthly Burn",
+        "21600"
+      ],
+      [
+        "Interest Income (monthly avg)",
+        "521"
+      ],
+      [
+        "Net Steady-State Burn",
+        "21079"
+      ],
+      [],
+      [
+        "RUNWAY",
+        "RUNWAY"
+      ],
+      [
+        "Months at Steady-State (from Jun 1)",
+        "6.1"
+      ],
+      [
+        "Projected Zero (Steady-State)",
+        "Dec 2026"
+      ],
+      [
+        "Fund Deadline",
+        "Feb 2027"
+      ],
+      [
+        "Shortfall",
+        "-2 months"
+      ],
+      [
+        "Monthly Savings Needed",
+        "4958"
+      ],
+      [],
+      [
+        "INVESTOR REPORTING",
+        "INVESTOR REPORTING"
+      ],
+      [
+        "budget_remaining",
+        "168968"
+      ],
+      [
+        "budget_pct",
+        "30.62%"
+      ],
+      [
+        "burn_rate",
+        "21079"
+      ],
+      [
+        "runway_months",
+        "6.1"
+      ],
+      [],
+      [],
+      [
+        "PLAN OF RECORD \u2014 No Salary Cut (salary = emergency backstop only)",
+        "Updated 2026-06-20 \u00b7 anchor May 31 close"
+      ],
+      [],
+      [
+        "ASSUMPTIONS"
+      ],
+      [
+        "Anchor balance (May 31 2026)",
+        "168968"
+      ],
+      [
+        "Base net steady-state burn /mo",
+        "21079"
+      ],
+      [
+        "JJ wind-down (off Jul 1)",
+        "-1100"
+      ],
+      [
+        "DealsX wind-down (off Aug 1)",
+        "-1581"
+      ],
+      [
+        "Office pause (Jul + Aug only)",
+        "-1000"
+      ],
+      [
+        "Discretionary trim from Jul (coffee+rides)",
+        "-600"
+      ],
+      [
+        "Conferences & Networking (PROTECTED)",
+        "700"
+      ],
+      [
+        "Bookkeeper (SV True, unchanged)",
+        "247"
+      ],
+      [
+        "DD Reserve held",
+        "40000"
+      ],
+      [],
+      [
+        "Month",
+        "Net Burn"
+      ],
+      [
+        "Jun 2026",
+        "21079"
+      ],
+      [
+        "Jul 2026",
+        "18379"
+      ],
+      [
+        "Aug 2026",
+        "16798"
+      ],
+      [
+        "Sep 2026",
+        "17798"
+      ],
+      [
+        "Oct 2026",
+        "17798"
+      ],
+      [
+        "Nov 2026",
+        "17798"
+      ],
+      [
+        "Dec 2026",
+        "17798"
+      ],
+      [
+        "Jan 2027",
+        "17798"
+      ],
+      [
+        "Feb 2027",
+        "17798"
+      ],
+      [],
+      [
+        "RESULT"
+      ],
+      [
+        "Runway after DD reserve reaches early Dec 2026; target remains Feb 2027."
+      ],
+      [
+        "Monthly savings needed to reach deadline",
+        "4958"
+      ],
+      [],
+      [
+        "CONFERENCE BUDGET CHECK"
+      ]
+    ]
+  }
+}

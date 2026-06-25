@@ -1,21 +1,17 @@
 {
-  "date": "2026-06-19",
-  "mode": "digest",
-  "artifact": "brain/trackers/weekly/2026-06-19-deal-aggregator-digest.md",
+  "date": "2026-06-24",
+  "mode": "morning",
+  "artifact": "brain/context/deal-aggregator-scan-2026-06-24.md",
   "email_scan_status": "live",
-  "weekly_deals_found": 1,
-  "volume_7d_avg": 0.2,
-  "volume_status": "🔴",
-  "proposed_additions": 1,
-  "proposed_retirements": 0,
-  "email_leg_health": "live (5/5 scheduled weekday artifacts present)",
-  "sources_blocked_verified": 4,
-  "sources_blocked_single_attempt": 9,
-  "sources_blocked_login_gated": 0,
-  "broker_opportunistic": 30,
-  "top_bottleneck": "screening strictness",
+  "deals_found": 0,
+  "broker_opportunistic": 0,
+  "near_misses": 1,
+  "sources_scanned": 14,
+  "sources_blocked_verified": 0,
+  "sources_blocked_single_attempt": 1,
+  "volume_status": "BELOW TARGET",
   "needs_attention": [
-    "volume below target: 1 weekly match across the scheduled weekday window",
-    "restore browser fallback for JS/403-gated sources"
+    "blocked source: Synergy Business Brokers Real Estate (403 on one attempt)",
+    "volume below target: zero PASS deals surfaced today"
   ]
 }

@@ -1,0 +1,25 @@
+{
+  "processed_by": "goodmorning-followup",
+  "processed_at": "2026-06-24T14:54:29.278086+00:00",
+  "source_file": "brain/trackers/post-call-analyzer/pending-tasks/not_EvPA42AGHd3z5O.json",
+  "kay_decision": {
+    "kay_decision_at": "2026-06-24T14:54:29.278086+00:00",
+    "decision_summary": "Granola retest task from Albert batch rejected by Kay; do not add to To Do.",
+    "actions_taken": [],
+    "do_not_resurface_original_tasks": true
+  },
+  "staged_tasks": [
+    {
+      "task_text": "Re-test Granola microphone and system-audio capture before the next externally important call.",
+      "type": "Ops",
+      "project": "post-call-analyzer",
+      "suggested_day": "Today/ASAP",
+      "suggested_due_date": "",
+      "notes_with_doc_link": "From Albert Kim 2026-06-23 mtg. Analysis: https://docs.google.com/document/d/1B6ipHcEAt__y91ddws0C-elFZWAuOXK7WqhTfCxSv88/edit?usp=drivesdk",
+      "source_call_id": "not_EvPA42AGHd3z5O",
+      "source_doc_url": "https://docs.google.com/document/d/1B6ipHcEAt__y91ddws0C-elFZWAuOXK7WqhTfCxSv88/edit?usp=drivesdk",
+      "source_transcript_url": "https://docs.google.com/document/d/1-BXPJtNgjoNUFVMrMNPogWNr0VGK6au2LoGhkIUKOgs/edit?usp=drivesdk",
+      "staged_at": "2026-06-23T17:09:54Z"
+    }
+  ]
+}

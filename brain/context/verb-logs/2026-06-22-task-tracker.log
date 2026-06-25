@@ -1,0 +1,14 @@
+
+[2026-06-22T06:31:04.112868] carry-forward-day — sun-to-mon
+  - moved: 6
+  - source: Sun
+  - destination: Mon
+  - source packed: {'completed': 3, 'active': 0, 'blank': 23, 'rows': '17:42'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260622-063100.json
+  
+  - Sun slot 1 → Mon slot 24: Create weekly schedule
+  - Sun slot 2 → Mon slot 25: Confirm LiveOak payroll transfer coverage
+  - Sun slot 3 → Mon slot 26: Pay remaining IRS
+  - Sun slot 4 → Mon slot 27: Pay Dad for swim lessons and membership
+  - Sun slot 5 → Mon slot 28: Dashboard plumbing: deal aggregator
+  - Sun slot 9 → Mon slot 29: Sailing camp / switch SMLI weeks

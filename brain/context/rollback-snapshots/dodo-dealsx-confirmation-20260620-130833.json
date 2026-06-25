@@ -1,0 +1,31 @@
+{
+  "range": "'Tech Stack Inventory'!A22:K23",
+  "values": [
+    [
+      "DealsX / KeyReach",
+      "Outreach",
+      "Monthly",
+      "0",
+      "0",
+      "1000",
+      "Pausing for summer",
+      "Cold outbound",
+      "No May checking transaction found under DealsX/KeyReach; keep as service-plan item and remove $1K/mo from runway starting Jul per Kay.",
+      "0",
+      "0"
+    ],
+    [
+      "AI Consultant / Dodo Digital",
+      "AI/Consulting",
+      "Monthly",
+      "0",
+      "0",
+      "1000",
+      "Paused / budget-only service",
+      "Claude / internal ops",
+      "VALIDATION FLAG: budget-only service vendor, not dashboard tech stack. May checking maps Dodo Digital to the $1,000 AI consultant charge; removed from runway plan starting Jul.",
+      "0",
+      "0"
+    ]
+  ]
+}

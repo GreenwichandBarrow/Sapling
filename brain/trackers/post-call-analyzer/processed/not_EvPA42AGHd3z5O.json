@@ -1,0 +1,23 @@
+{
+  "id": "not_EvPA42AGHd3z5O",
+  "title": "Albert I Kay",
+  "counterparty": "Albert Kim",
+  "processed_at": "2026-06-23T17:11:04Z",
+  "vault_call_note": "brain/calls/2026-06-23-albert-kim-recording-failure.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_EvPA42AGHd3z5O.json",
+  "doc_url": "https://docs.google.com/document/d/1B6ipHcEAt__y91ddws0C-elFZWAuOXK7WqhTfCxSv88/edit?usp=drivesdk",
+  "doc_id": "1B6ipHcEAt__y91ddws0C-elFZWAuOXK7WqhTfCxSv88",
+  "transcript_doc_url": "https://docs.google.com/document/d/1-BXPJtNgjoNUFVMrMNPogWNr0VGK6au2LoGhkIUKOgs/edit?usp=drivesdk",
+  "transcript_doc_id": "1-BXPJtNgjoNUFVMrMNPogWNr0VGK6au2LoGhkIUKOgs",
+  "attio_notes": {
+    "person_albert_kim": "39542e49-e507-4698-9753-fd8e97a5eda1",
+    "company_north_clark_partners": "1c08a667-57a5-4679-9ae2-6a51da66356b"
+  },
+  "slack_posted": true,
+  "detector": "granola-api-rest",
+  "task_count": 1,
+  "transcript_failed": true,
+  "attio_failed": false,
+  "tasks_failed": false,
+  "doc_failed": false
+}

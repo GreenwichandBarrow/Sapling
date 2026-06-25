@@ -16,10 +16,11 @@ Scope notes:
 from __future__ import annotations
 
 from collections import Counter, defaultdict
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from html import escape
 from textwrap import dedent
 
+import json
 import sys
 from pathlib import Path
 
@@ -30,13 +31,10 @@ if str(_DASHBOARD_DIR) not in sys.path:
 
 from data_sources import (  # noqa: E402
     DEAL_AGG_DIR,
-    DealRow,
     ScanCoverage,
     _parse_frontmatter,
     _section,
-    _source_bucket,
     coverage_summary,
-    flatten_rows,
     load_recent_scans,
     load_scan,
 )
@@ -50,113 +48,38 @@ from data_sources import (  # noqa: E402
 WINDOW_DAYS = 14
 
 
-def _dash(value: str | None) -> str:
-    return escape(value) if value else '<span class="gb-num dim">&mdash;</span>'
+NEWSLETTER_SOURCE_ROSTER = (
+    "BizBuySell",
+    "Business Exits",
+    "Calder Capital",
+    "DealForce",
+    "Everingham & Kerr",
+    "Rejigg",
+    "Transworld Business Advisors",
+    "Viking Mergers",
+    "Axial",
+    "Baton",
+)
 
+DIRECT_EMAIL_SOURCE_ROSTER = (
+    "Benchmark International",
+    "Eric Mendelson",
+    "Bob Williamson / Cetane",
+    "Matt Luczyk / Peapack",
+    "Richard / Stone Hill Advisors",
+    "Carlos / In3O",
+    "IAG M&A Advisors",
+    "DealsX replies",
+)
 
-def _source_cell(source: str) -> str:
-    bucket = _source_bucket(source)
-    return (
-        f'<span class="gb-source-tag">'
-        f'<span class="src-dot {bucket}"></span>{escape(source)}</span>'
-    )
+# Marketplace sources Kay may need to check manually. SaaS/paywall sources stay
+# hidden unless Kay reactivates them.
+MANUAL_MARKETPLACE_SOURCE_ROSTER = (
+    "BizQuest",
+    "DealMatch",
+    "Searchfunder",
+)
 
-
-def _company_cell(row: DealRow) -> str:
-    industry = (
-        f'<div class="gb-industry-tag">{escape(row.industry)}</div>'
-        if row.industry
-        else ""
-    )
-    return f'<div class="gb-company">{escape(row.company)}</div>{industry}'
-
-
-def _num_cell(value: str | None) -> str:
-    if not value:
-        return '<td class="gb-num dim">&mdash;</td>'
-    return f'<td class="gb-num">{escape(value)}</td>'
-
-
-def _status_cell(status: str) -> str:
-    slug = status.lower().split()[0] if status else "new"
-    return f'<td><span class="gb-status-badge {slug}">{escape(status)}</span></td>'
-
-
-def _link_cell(link: str | None) -> str:
-    if not link:
-        return '<td class="gb-link-cell"></td>'
-    return (
-        f'<td class="gb-link-cell">'
-        f'<a class="gb-link-icon" href="{escape(link)}" target="_blank" '
-        f'rel="noreferrer noopener">&#x2197;</a></td>'
-    )
-
-
-def _render_row(row: DealRow) -> str:
-    return dedent(
-        f"""
-        <tr>
-        <td>{_source_cell(row.source)}</td>
-        <td>{_company_cell(row)}</td>
-        <td class="gb-owner">{_dash(row.owner)}</td>
-        <td class="gb-location">{_dash(row.location)}</td>
-        {_num_cell(row.revenue)}
-        {_num_cell(row.ebitda)}
-        {_num_cell(row.asking)}
-        {_status_cell(row.status)}
-        {_link_cell(row.link)}
-        </tr>
-        """
-    ).strip()
-
-
-def _render_empty(coverage: ScanCoverage | None = None) -> str:
-    """Empty state that explains *why* it's empty.
-
-    Three cases:
-      1. No coverage object → fall back to the legacy single-line message.
-      2. Some scans read, no missing slots → genuinely-zero-deals (honest scan).
-      3. Scans read but slots missing → coverage gap, surface which slots.
-    """
-    if coverage is None:
-        body = (
-            "No deals surfaced in the last 7 days. Deal-aggregator scan is "
-            "running on schedule; zero matches is the honest answer."
-        )
-    else:
-        lines: list[str] = []
-        # Lead line — match-count framing.
-        lines.append(
-            f"<strong>0 deals</strong> across "
-            f"<strong>{coverage.scans_read} scan{'s' if coverage.scans_read != 1 else ''}</strong> "
-            f"in the last 7 days."
-        )
-        if coverage.last_successful:
-            lines.append(
-                f"Last successful scan: <span class='highlight'>{escape(coverage.last_successful)}</span>."
-            )
-        # Coverage gaps — only surface if any.
-        if coverage.missing_slots:
-            missed = ", ".join(escape(s) for s in coverage.missing_slots)
-            lines.append(
-                f"Missing slots: <span style='color: var(--yellow);'>{missed}</span>."
-            )
-            lines.append(
-                "Weekend mornings don't run by design (Mon-Fri 6am + 2pm only). "
-                "Weekday gaps are scheduled-skill misfires — separate fix from the dashboard."
-            )
-        else:
-            lines.append(
-                "All weekday slots covered. Zero matches is the honest answer — "
-                "luxury-service niches flow through specialty channels and proprietary "
-                "outbound, not general broker platforms."
-            )
-        body = "<br/>".join(lines)
-    return (
-        '<tr><td colspan="9">'
-        f'<div class="gb-empty">{body}</div>'
-        "</td></tr>"
-    )
 
 
 def _render_subtitle(latest_run: str | None) -> str:
@@ -251,6 +174,56 @@ def _strip_md_links(value: str) -> tuple[str, str | None]:
     return m.group(1), m.group(2)
 
 
+def _source_display_name(source: str) -> str:
+    value = (source or "").strip()
+    lower = value.lower()
+    if not value:
+        return ""
+    alias_groups = (
+        (("transworld",), "Transworld Business Advisors"),
+        (("bizbuysell",), "BizBuySell"),
+        (("everingham", "everkerr"), "Everingham & Kerr"),
+        (("flippa",), "Flippa"),
+        (("quiet light", "quietlight"), "Quiet Light"),
+        (("website closers", "websiteclosers"), "Website Closers"),
+        (("smb deal hunter", "helen guo"), "SMB Deal Hunter (Helen Guo)"),
+        (("axial",), "Axial"),
+        (("calder",), "Calder Capital"),
+        (("benchmark",), "Benchmark International"),
+        (("cetane", "bob williamson"), "Bob Williamson / Cetane"),
+        (("peapack", "peapackprivate", "matt luczyk", "lisa mcknight", "lmcknight", "raymond radigan", "rradigan"), "Matt Luczyk / Peapack"),
+        (("stone hill", "stony hill"), "Richard / Stone Hill Advisors"),
+        (("eric mendelson", "mendelson"), "Eric Mendelson"),
+        (("bizquest",), "BizQuest"),
+        (("dealmatch", "deal match"), "DealMatch"),
+        (("searchfunder", "search funder"), "Searchfunder"),
+        (("business exits",), "Business Exits"),
+        (("rejigg",), "Rejigg"),
+        (("dealforce", "generational"), "DealForce"),
+        (("baton",), "Baton"),
+        (("prospect geni", "dealsx", "lead interested"), "DealsX replies"),
+        (("carlos", "carlo", "in3o"), "Carlos / In3O"),
+        (("greenwichandbarrow", "meet-greenwichandbarrow", "txt.voice.google", "google voice"), "Internal / non-source"),
+        (("email channel",), "Direct deal email"),
+    )
+    for needles, display in alias_groups:
+        if any(needle in lower for needle in needles):
+            return display
+    return value
+
+
+def _safe_int(value: str | None) -> int:
+    try:
+        return int(str(value or "0").replace(",", "").strip() or "0")
+    except ValueError:
+        return 0
+
+
+def _is_paused_source(name: str) -> bool:
+    lowered = (name or "").strip().lower()
+    return any(paused == lowered or paused in lowered for paused in PAUSED_SOURCE_NAMES)
+
+
 def _load_artifact_tables(today: date, days: int) -> tuple[list[dict[str, str]], list[dict[str, str]], dict[str, str]]:
     listings: list[dict[str, str]] = []
     sources_by_name: dict[str, dict[str, str]] = {}
@@ -270,9 +243,85 @@ def _load_artifact_tables(today: date, days: int) -> tuple[list[dict[str, str]],
                 summary[key] = str(fm.get(key))
         listings.extend(_parse_md_table(_section(body, "Listings Reviewed")))
         for row in _parse_md_table(_section(body, "Source Scorecard")):
-            name = row.get("Source", "").strip()
-            if name and name not in sources_by_name:
-                sources_by_name[name] = row
+            name = _source_display_name(row.get("Source", ""))
+            if name and name.lower() not in sources_by_name:
+                row = dict(row)
+                row["Source"] = name
+                sources_by_name[name.lower()] = row
+
+    inferred_sources: dict[str, dict[str, int]] = {}
+    for row in listings:
+        name = _source_display_name(row.get("Source", ""))
+        if not name:
+            continue
+        stats = inferred_sources.setdefault(name, {"reviewed": 0, "matches": 0})
+        stats["reviewed"] += 1
+        if (row.get("Verdict") or "").upper() == "PASS":
+            stats["matches"] += 1
+
+    for name, stats in inferred_sources.items():
+        key = name.lower()
+        existing = sources_by_name.get(key)
+        if existing:
+            existing["Listings Reviewed"] = str(_safe_int(existing.get("Listings Reviewed")) + stats["reviewed"])
+            existing["Matches"] = str(_safe_int(existing.get("Matches")) + stats["matches"])
+            if (existing.get("Category") or "").strip().lower() in {"", "general"}:
+                existing["Category"] = _source_category(name, "Newsletter")
+            if (existing.get("HTTP") or "").strip().lower() in {"", "—", "-", "403", "404"}:
+                existing["HTTP"] = "email"
+            if "blocked" in (existing.get("Status") or "").lower() and not _is_paused_source(name):
+                existing["Status"] = "active"
+            continue
+        sources_by_name[key] = {
+            "Source": name,
+            "Category": _source_category(name, "Newsletter"),
+            "Status": "active",
+            "HTTP": "email",
+            "Listings Reviewed": str(stats["reviewed"]),
+            "Matches": str(stats["matches"]),
+            "Last Match Date": "-",
+        }
+
+    for name in NEWSLETTER_SOURCE_ROSTER:
+        key = name.lower()
+        if key not in sources_by_name:
+            sources_by_name[key] = {
+                "Source": name,
+                "Category": "Newsletter",
+                "Status": "active",
+                "HTTP": "email",
+                "Listings Reviewed": "0",
+                "Matches": "0",
+                "Last Match Date": "-",
+            }
+
+    for name in DIRECT_EMAIL_SOURCE_ROSTER:
+        key = name.lower()
+        if key not in sources_by_name:
+            sources_by_name[key] = {
+                "Source": name,
+                "Category": "Direct email",
+                "Status": "active",
+                "HTTP": "email",
+                "Listings Reviewed": "0",
+                "Matches": "0",
+                "Last Match Date": "-",
+            }
+
+    for name in MANUAL_MARKETPLACE_SOURCE_ROSTER:
+        key = name.lower()
+        if key not in sources_by_name:
+            sources_by_name[key] = {
+                "Source": name,
+                "Category": "Marketplace",
+                "Status": "manual",
+                "Access": "manual",
+                "HTTP": "manual",
+                "Listings Reviewed": "0",
+                "Matches": "0",
+                "Last Match Date": "-",
+            }
+
     return listings, list(sources_by_name.values()), summary
 
 
@@ -283,18 +332,262 @@ def _verdict_groups(listings: list[dict[str, str]]) -> tuple[list[dict[str, str]
     return surfaced, learning, rejected
 
 
+PAUSED_SOURCE_NAMES = {
+    "flippa",
+    "quiet light",
+    "quietlight",
+    "website closers",
+    "websiteclosers",
+    "smb deal hunter (helen guo)",
+    "empire flippers",
+    "gp bullhound",
+    "pco bookkeepers",
+    "sica fletcher",
+    "synergy business brokers",
+    "synergy business brokers real estate",
+    # Generic email rows are attribution failures, not source names for Kay.
+    "direct deal email",
+    "internal / non-source",
+    "greenwichandbarrow",
+    "meet-greenwichandbarrow",
+    "txt.voice.google",
+    "google voice",
+}
+
+
+def _is_active_source_for_dashboard(row: dict[str, str]) -> bool:
+    name = (row.get("Source") or "").strip().lower()
+    status = (row.get("Status") or "").strip().lower()
+    if not name:
+        return False
+    if any(term in status for term in ("dormant", "paused", "paywalled")):
+        return False
+    if _is_paused_source(name):
+        return False
+    return True
+
+
+def _source_channel(source: str, raw_category: str = "") -> str:
+    s = source.lower()
+    category = raw_category.lower()
+
+    # Direct email = an intermediary/contact/broker email addressed to Kay with
+    # a particular deal reference, not a saved-search or bulk newsletter feed.
+    direct_email_terms = (
+        "benchmark",
+        "bob williamson",
+        "cetane",
+        "carlos",
+        "eric mendelson",
+        "in3o",
+        "matt luczyk",
+        "mendelson",
+        "peapack",
+        "richard / stone hill",
+        "iag",
+        "stone hill",
+        "stony hill",
+        "woodbridge",
+        "pronova",
+        "dealsx replies",
+        "direct deal email",
+    )
+    newsletter_terms = (
+        "axial",
+        "baton",
+        "bizbuysell",
+        "bizquest",
+        "business exits",
+        "calder",
+        "dealforce",
+        "everingham",
+        "everkerr",
+        "generational",
+        "rejigg",
+        "searchfunder",
+        "smb deal hunter",
+        "transworld",
+        "viking",
+    )
+    if "marketplace" in category and not any(term in category for term in ("email", "newsletter", "saved search")):
+        return "marketplace"
+    if "direct email" in category or "email-only" in category or "direct" in category or any(term in s for term in direct_email_terms):
+        return "direct_email"
+    if "newsletter" in category or "saved search" in category or any(term in s for term in newsletter_terms):
+        return "newsletter"
+    return "marketplace"
+
+def _source_channel_counts(sources: list[dict[str, str]]) -> Counter[str]:
+    counts: Counter[str] = Counter()
+    seen: set[str] = set()
+    for row in sources:
+        if not _is_active_source_for_dashboard(row) or _source_requires_manual_search(row):
+            continue
+        name = (row.get("Source") or "").strip()
+        if not name or name.lower() in seen:
+            continue
+        seen.add(name.lower())
+        counts[_source_channel(name, row.get("Category", ""))] += 1
+    return counts
+
+
+def _artifact_date_from_path(path: Path) -> date | None:
+    try:
+        return date.fromisoformat(
+            path.name.replace("deal-aggregator-scan-", "")
+            .replace("-afternoon", "")
+            .replace(".md", "")
+        )
+    except ValueError:
+        return None
+
+
+def _activity_bucket(activity: dict[str, dict[str, int]], name: str) -> dict[str, int]:
+    return activity.setdefault(
+        name.lower(),
+        {
+            "week_reviewed": 0,
+            "week_matches": 0,
+            "month_reviewed": 0,
+            "month_matches": 0,
+        },
+    )
+
+
+def _bump_activity(
+    activity: dict[str, dict[str, int]],
+    name: str,
+    artifact_date: date,
+    week_start: date,
+    month_start: date,
+    *,
+    is_match: bool = False,
+) -> None:
+    if not name:
+        return
+    bucket = _activity_bucket(activity, name)
+    if artifact_date >= week_start:
+        bucket["week_reviewed"] += 1
+        if is_match:
+            bucket["week_matches"] += 1
+    if artifact_date >= month_start:
+        bucket["month_reviewed"] += 1
+        if is_match:
+            bucket["month_matches"] += 1
+
+
+def _email_input_paths(today: date, days: int) -> list[Path]:
+    paths: list[Path] = []
+    for offset in range(days):
+        d = today.fromordinal(today.toordinal() - offset)
+        path = DEAL_AGG_DIR / f"email-intelligence-input-{d.isoformat()}.json"
+        if path.exists():
+            paths.append(path)
+    return paths
+
+
+def _email_artifact_date(path: Path) -> date | None:
+    try:
+        return date.fromisoformat(path.name.replace("email-intelligence-input-", "").replace(".json", ""))
+    except ValueError:
+        return None
+
+
+def _email_record_text(record: dict) -> str:
+    parts: list[str] = []
+    for key in ("from", "to", "cc", "bcc", "subject", "snippet", "summary", "text", "body", "labels", "labelIds"):
+        value = record.get(key)
+        if value is not None:
+            parts.append(str(value))
+    for msg in record.get("messages", []) if isinstance(record.get("messages"), list) else []:
+        if isinstance(msg, dict):
+            parts.append(_email_record_text(msg))
+    return " ".join(parts)
+
+
+def _email_records(data: dict) -> list[dict]:
+    rows: list[dict] = []
+    for section in ("inbound", "outbound", "candidate_threads"):
+        for record in data.get(section, []) if isinstance(data.get(section), list) else []:
+            if isinstance(record, dict):
+                rows.append(record)
+    return rows
+
+
+def _add_direct_email_activity(
+    activity: dict[str, dict[str, int]],
+    today: date,
+    lookback_days: int,
+    week_start: date,
+    month_start: date,
+) -> None:
+    seen: set[tuple[str, str, str]] = set()
+    direct_names = {name.lower() for name in DIRECT_EMAIL_SOURCE_ROSTER}
+    for path in _email_input_paths(today, lookback_days):
+        artifact_date = _email_artifact_date(path)
+        if artifact_date is None:
+            continue
+        try:
+            data = json.loads(path.read_text())
+        except (OSError, json.JSONDecodeError):
+            continue
+        for record in _email_records(data):
+            text = _email_record_text(record)
+            name = _source_display_name(text)
+            if name.lower() not in direct_names:
+                continue
+            # Count each source/thread/day once across inbound/outbound mirrors.
+            record_id = str(record.get("threadId") or record.get("thread_id") or record.get("id") or record.get("subject") or text[:120])
+            key = (path.name, name.lower(), record_id)
+            if key in seen:
+                continue
+            seen.add(key)
+            _bump_activity(activity, name, artifact_date, week_start, month_start)
+
+
+def _source_window_activity(today: date) -> dict[str, dict[str, int]]:
+    activity: dict[str, dict[str, int]] = {}
+    month_start = today.replace(day=1)
+    lookback_days = max((today - month_start).days + 1, 7)
+    week_start = today - timedelta(days=6)
+
+    for path in _scan_artifact_paths(today, lookback_days):
+        artifact_date = _artifact_date_from_path(path)
+        if artifact_date is None:
+            continue
+        raw = path.read_text()
+        _fm, body = _parse_frontmatter(raw)
+        for listing in _parse_md_table(_section(body, "Listings Reviewed")):
+            name = _source_display_name(listing.get("Source", ""))
+            if not name:
+                continue
+            is_match = (listing.get("Verdict") or "").upper() == "PASS"
+            _bump_activity(activity, name, artifact_date, week_start, month_start, is_match=is_match)
+
+    _add_direct_email_activity(activity, today, lookback_days, week_start, month_start)
+    return activity
+
+
+def _apply_source_window_activity(sources: list[dict[str, str]], activity: dict[str, dict[str, int]]) -> None:
+    for row in sources:
+        name = _source_display_name(row.get("Source", ""))
+        stats = activity.get(name.lower(), {})
+        row["This Week Reviewed"] = str(stats.get("week_reviewed", 0))
+        row["This Week Matches"] = str(stats.get("week_matches", 0))
+        row["This Month Reviewed"] = str(stats.get("month_reviewed", 0))
+        row["This Month Matches"] = str(stats.get("month_matches", 0))
+
+
 def _render_run_status(summary: dict[str, str], listings: list[dict[str, str]], sources: list[dict[str, str]], coverage: ScanCoverage) -> str:
     surfaced, learning, rejected = _verdict_groups(listings)
-    email_status = summary.get("email_scan_status", "unknown")
-    blocked = sum(1 for s in sources if "blocked" in (s.get("Status", "").lower()))
+    filtered_count = len(learning) + len(rejected)
+    active_sources = [row for row in sources if _is_active_source_for_dashboard(row) and not _source_requires_manual_search(row)]
+    source_counts = _source_channel_counts(sources)
     return dedent(f"""
     <div class="gb-deal-status-grid">
-      <div><span class="num">{len(surfaced)}</span>surfaced matches</div>
-      <div><span class="num" style="color: var(--yellow);">{len(learning)}</span>borderline / learning</div>
-      <div><span class="num dim">{len(rejected)}</span>filtered out</div>
-      <div><span class="num">{len(sources)}</span>sources reviewed</div>
-      <div><span class="num {'green' if email_status == 'live' else ''}">{escape(email_status)}</span>email leg</div>
-      <div><span class="num {'red' if blocked else 'dim'}">{blocked}</span>blocked sources</div>
+      <div><span class="num">{len(surfaced)}</span>matches</div>
+      <div><span class="num dim">{filtered_count}</span>filtered out</div>
+      <div><span class="num">{len(active_sources)}</span>sources checked<div class="gb-source-detail">{source_counts['marketplace']} marketplaces &middot; {source_counts['newsletter']} newsletters &middot; {source_counts['direct_email']} direct emails</div></div>
     </div>
     """).strip()
 
@@ -315,7 +608,7 @@ def _render_review_table(title: str, subtitle: str, rows: list[dict[str, str]], 
             why = row.get("Key Signals") or row.get("Reject Reason") or "—"
             body += dedent(f"""
             <tr>
-              <td>{_source_cell(row.get('Source', '—'))}</td>
+              <td>{escape(row.get('Source', '—'))}</td>
               <td><div class="gb-company compact">{_deal_name_link(row)}</div><div class="gb-industry-tag">{escape(row.get('Industry') or '—')}</div></td>
               <td class="gb-num">{escape(row.get('Revenue') or '—')}</td>
               <td class="gb-num">{escape(row.get('EBITDA') or '—')}</td>
@@ -328,7 +621,7 @@ def _render_review_table(title: str, subtitle: str, rows: list[dict[str, str]], 
         body = f'<tr><td colspan="7"><div class="gb-empty">{escape(empty)}</div></td></tr>'
     more = ""
     if limit and len(rows) > limit:
-        more = f'<div class="gb-section-footnote">+ {len(rows) - limit} more in raw intake archive</div>'
+        more = f'<div class="gb-section-footnote">+ {len(rows) - limit} more</div>'
     return dedent(f"""
     <div class="gb-zone gb-zone-plain">
       <div class="gb-zone-head"><div><div class="gb-zone-label">{escape(title)}</div><div class="gb-zone-subtitle">{escape(subtitle)}</div></div><div class="gb-zone-meta">{len(rows)} items</div></div>
@@ -338,208 +631,93 @@ def _render_review_table(title: str, subtitle: str, rows: list[dict[str, str]], 
     """).strip()
 
 
-def _render_filtered_summary(rejected: list[dict[str, str]]) -> str:
-    reasons = Counter((r.get("Reject Reason") or "Unspecified").strip() for r in rejected)
-    industries = Counter((r.get("Industry") or "Unspecified").strip() for r in rejected)
-    reason_html = "".join(f'<div><span class="num dim">{count}</span>{escape(reason)}</div>' for reason, count in reasons.most_common(4))
-    industry_html = "".join(f'<span class="gb-chip">{escape(name)} <span>{count}</span></span>' for name, count in industries.most_common(8))
-    if not rejected:
-        reason_html = '<div class="gb-empty">No hard rejects captured in this window.</div>'
-        industry_html = ""
-    return dedent(f"""
-    <div class="gb-zone gb-zone-plain">
-      <div class="gb-zone-head"><div><div class="gb-zone-label">Filtered Out Summary</div><div class="gb-zone-subtitle">Default view shows rejection patterns, not every rejected listing</div></div><div class="gb-zone-meta">{len(rejected)} filtered</div></div>
-      <div class="gb-reject-summary"><div>{reason_html}</div><div class="gb-chip-row">{industry_html}</div></div>
-    </div>
-    """).strip()
-
-
-def _to_int(value: str | None) -> int:
-    if not value:
-        return 0
-    digits = "".join(ch for ch in value if ch.isdigit())
-    return int(digits or 0)
-
-
-def _source_effectiveness(
-    sources: list[dict[str, str]],
-    listings: list[dict[str, str]],
-) -> list[dict[str, str | int | float]]:
-    rows: dict[str, dict[str, str | int | float]] = {}
-    for source in sources:
-        name = (source.get("Source") or "Unknown").strip()
-        rows[name] = {
-            "Source": name,
-            "Category": source.get("Category") or "—",
-            "Status": source.get("Status") or "—",
-            "Reviewed": _to_int(source.get("Listings Reviewed")),
-            "Surfaced": _to_int(source.get("Matches")),
-            "Learning": 0,
-            "Rejected": 0,
-            "Last Match Date": source.get("Last Match Date") or "—",
-        }
-
-    for listing in listings:
-        name = (listing.get("Source") or "Unknown").strip()
-        row = rows.setdefault(
-            name,
-            {
-                "Source": name,
-                "Category": "—",
-                "Status": "captured in listings",
-                "Reviewed": 0,
-                "Surfaced": 0,
-                "Learning": 0,
-                "Rejected": 0,
-                "Last Match Date": "—",
-            },
-        )
-        row["Reviewed"] = int(row["Reviewed"]) + 1
-        verdict = (listing.get("Verdict") or "").upper()
-        if verdict == "PASS":
-            row["Surfaced"] = int(row["Surfaced"]) + 1
-        elif verdict == "HARD-REJECT":
-            row["Rejected"] = int(row["Rejected"]) + 1
-        elif verdict in {"BROKER-OPPORTUNISTIC", "NEAR-MISS", "FLAG"}:
-            row["Learning"] = int(row["Learning"]) + 1
-
-    for row in rows.values():
-        reviewed = int(row["Reviewed"])
-        useful = int(row["Surfaced"]) + int(row["Learning"])
-        row["Useful"] = useful
-        row["Useful Rate"] = (useful / reviewed) if reviewed else 0.0
-
-    return sorted(
-        rows.values(),
-        key=lambda r: (float(r["Useful Rate"]), int(r["Useful"]), int(r["Reviewed"])),
-        reverse=True,
-    )
-
-
-def _render_source_effectiveness(sources: list[dict[str, str]], listings: list[dict[str, str]]) -> str:
-    rows = _source_effectiveness(sources, listings)
-    if not rows:
-        body = '<tr><td colspan="8"><div class="gb-empty">No source effectiveness data captured in this window.</div></td></tr>'
-    else:
-        body = ""
-        for row in rows:
-            reviewed = int(row["Reviewed"])
-            useful_rate = float(row["Useful Rate"])
-            rate_text = f"{round(useful_rate * 100)}%" if reviewed else "—"
-            if reviewed == 0:
-                rate_class = "dim"
-            elif useful_rate >= 0.20:
-                rate_class = "green"
-            elif useful_rate > 0:
-                rate_class = "yellow"
-            else:
-                rate_class = "dim"
-            body += dedent(
-                f"""
-                <tr>
-                  <td>{_source_cell(str(row['Source']))}<div class="gb-source-detail">{escape(str(row['Category']))}</div></td>
-                  <td>{escape(str(row['Status']))}</td>
-                  <td class="gb-num">{reviewed}</td>
-                  <td class="gb-num" style="color: var(--green);">{int(row['Surfaced'])}</td>
-                  <td class="gb-num" style="color: var(--yellow);">{int(row['Learning'])}</td>
-                  <td class="gb-num dim">{int(row['Rejected'])}</td>
-                  <td class="gb-num {rate_class}">{rate_text}</td>
-                  <td class="gb-source-detail">{escape(str(row['Last Match Date']))}</td>
-                </tr>
-                """
-            ).strip()
-
-    return dedent(
-        f"""
-        <div class="gb-zone gb-zone-plain">
-          <div class="gb-zone-head">
-            <div>
-              <div class="gb-zone-label">Source Effectiveness</div>
-              <div class="gb-zone-subtitle">Assesses whether each source is creating surfaced matches or useful learning, not just scan volume</div>
-            </div>
-            <div class="gb-zone-meta">{len(rows)} sources</div>
-          </div>
-          <div class="gb-table-wrap">
-            <table class="gb-table gb-review-table">
-              <thead><tr><th>Source</th><th>Status</th><th class="gb-num">Reviewed</th><th class="gb-num">Surfaced</th><th class="gb-num">Learning</th><th class="gb-num">Rejected</th><th class="gb-num">Useful rate</th><th>Last match</th></tr></thead>
-              <tbody>{body}</tbody>
-            </table>
-          </div>
-        </div>
-        """
-    ).strip()
-
 
 def _source_category(source: str, raw_category: str) -> str:
-    s = source.lower()
-    if any(x in s for x in ("everingham", "benchmark", "viking", "searchfunder", "iag", "rejigg", "dealforce", "smb deal hunter")):
-        return "Email newsletters / broker blasts"
-    if any(x in s for x in ("bizbuysell", "bizquest", "dealmatch", "baton", "business exits", "flippa", "quiet light", "website closers", "empire", "synergy")):
-        return "Broker marketplaces"
-    if raw_category.lower().startswith("niche") or any(x in s for x in ("sica", "pco", "marshberry", "agency")):
-        return "Association / niche boards"
-    return "Other sources"
+    channel = _source_channel(source, raw_category)
+    if channel == "direct_email":
+        return "Direct email"
+    if channel == "newsletter":
+        return "Newsletter"
+    return "Marketplace"
+
+
+def _source_is_manual_marketplace(row: dict[str, str]) -> bool:
+    return _source_channel(row.get("Source", ""), row.get("Category", "")) == "marketplace"
+
+def _source_requires_manual_search(row: dict[str, str]) -> bool:
+    status = (row.get("Status") or "").strip().lower()
+    access = (row.get("Access") or "").strip().lower()
+    source = (row.get("Source") or "").strip().lower()
+    if not source or _is_paused_source(source):
+        return False
+    if any(term in status for term in ("dormant", "paused", "paywalled")):
+        return False
+    if not _source_is_manual_marketplace(row):
+        return False
+    manual_terms = (
+        "pending",
+        "need to register",
+        "login-gated",
+        "manual",
+        "setup",
+    )
+    return any(term in status for term in manual_terms) or any(term in access for term in manual_terms)
+
+def _source_is_automated_run_coverage(row: dict[str, str]) -> bool:
+    return _is_active_source_for_dashboard(row) and not _source_requires_manual_search(row)
+
+
+def _render_source_rows(rows: list[dict[str, str]]) -> str:
+    body = ""
+    for row in rows:
+        status = row.get("Status", "—")
+        status_lower = status.lower()
+        cls = "warn" if any(term in status_lower for term in ("blocked", "pending", "login", "manual", "few public", "no public")) else "ok"
+        body += dedent(f"""
+        <div class="gb-source-row gb-source-row-coverage">
+          <div>{escape(row.get('Source', '—'))}<div class="gb-source-detail">{escape(_source_category(row.get('Source', ''), row.get('Category', '')))}</div></div>
+          <div><span class="gb-status-dot {cls}"></span>{escape(status)}</div>
+          <div><span class="gb-source-detail">this week</span><br>{escape(row.get('This Week Reviewed') or '0')} reviewed &middot; {escape(row.get('This Week Matches') or '0')} matches</div>
+          <div><span class="gb-source-detail">this month</span><br>{escape(row.get('This Month Reviewed') or '0')} reviewed &middot; {escape(row.get('This Month Matches') or '0')} matches</div>
+        </div>
+        """).strip()
+    return body
 
 
 def _render_sources_reviewed(sources: list[dict[str, str]]) -> str:
-    grouped: dict[str, list[dict[str, str]]] = defaultdict(list)
-    for row in sources:
-        grouped[_source_category(row.get("Source", ""), row.get("Category", ""))].append(row)
+    eligible_sources = [row for row in sources if _is_active_source_for_dashboard(row)]
+    automated_sources = [row for row in eligible_sources if _source_is_automated_run_coverage(row)]
+    manual_sources = [row for row in eligible_sources if _source_requires_manual_search(row)]
+
+    automated_grouped: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in automated_sources:
+        automated_grouped[_source_category(row.get("Source", ""), row.get("Category", ""))].append(row)
+
     body = ""
-    for category in ("Email newsletters / broker blasts", "Broker marketplaces", "Association / niche boards", "Other sources"):
-        rows = grouped.get(category, [])
-        if not rows:
-            continue
-        body += f'<div class="gb-source-group"><div class="gb-source-group-title">{escape(category)}</div>'
-        for row in rows:
-            status = row.get("Status", "—")
-            cls = "warn" if "blocked" in status.lower() else "ok"
-            body += dedent(f"""
-            <div class="gb-source-row">
-              <div>{_source_cell(row.get('Source', '—'))}<div class="gb-source-detail">{escape(row.get('Category') or '—')}</div></div>
-              <div><span class="gb-status-dot {cls}"></span>{escape(status)}</div>
-              <div>{escape(row.get('Listings Reviewed') or '0')} reviewed</div>
-              <div>{escape(row.get('Matches') or '0')} matches</div>
-              <div class="gb-source-detail">last match {escape(row.get('Last Match Date') or '—')}</div>
-            </div>
-            """).strip()
+    if automated_sources:
+        body += '<div class="gb-source-group"><div class="gb-source-group-title">Automated run coverage</div>'
+        for category in ("Marketplace", "Newsletter", "Direct email"):
+            rows = automated_grouped.get(category, [])
+            if not rows:
+                continue
+            body += f'<div class="gb-source-group-title gb-source-subgroup-title">{escape(category)}</div>'
+            body += _render_source_rows(rows)
         body += "</div>"
+
+    if manual_sources:
+        body += '<div class="gb-source-group"><div class="gb-source-group-title">Manual deal sources to aggregate</div>'
+        body += _render_source_rows(manual_sources)
+        body += "</div>"
+
     if not body:
         body = '<div class="gb-empty">No source scorecard captured in this window.</div>'
     return dedent(f"""
     <div class="gb-zone gb-zone-plain">
-      <div class="gb-zone-head"><div><div class="gb-zone-label">Sources Reviewed</div><div class="gb-zone-subtitle">Source coverage and source quality, grouped for skill improvement</div></div><div class="gb-zone-meta">{len(sources)} sources</div></div>
+      <div class="gb-zone-head"><div><div class="gb-zone-label">Source Coverage</div><div class="gb-zone-subtitle">Sources the skill reviews when it runs, plus marketplace sources that still require manual aggregation</div></div><div class="gb-zone-meta">{len(automated_sources)} automated · {len(manual_sources)} manual</div></div>
       {body}
     </div>
     """).strip()
 
-
-def _render_table(rows: list[DealRow], coverage: ScanCoverage | None = None) -> str:
-    body = (
-        "".join(_render_row(r) for r in rows) if rows else _render_empty(coverage)
-    )
-    return dedent(
-        f"""
-        <div class="gb-table-wrap">
-        <table class="gb-table">
-        <thead>
-        <tr>
-        <th>Source</th>
-        <th>Company</th>
-        <th>Owner</th>
-        <th>Location</th>
-        <th class="gb-num">Revenue</th>
-        <th class="gb-num">EBITDA</th>
-        <th class="gb-num">Asking</th>
-        <th>Status</th>
-        <th class="gb-link-cell"></th>
-        </tr>
-        </thead>
-        <tbody>{body}</tbody>
-        </table>
-        </div>
-        """
-    ).strip()
 
 
 # Interactive time filter — maps pill label → window-days lookback.
@@ -552,12 +730,8 @@ def render() -> None:
     import streamlit as st
 
     today = datetime.now().date()
-    # Always load the full window so filter pills can narrow without re-fetch.
     scans = load_recent_scans(today, WINDOW_DAYS)
-    all_rows = flatten_rows(scans)
     today_scan = load_scan(today)
-    today_rows = today_scan.rows if today_scan else []
-    week_rows = [r for r in all_rows if (today - r.scan_date).days < 7]
     latest_run = today_scan.last_run if today_scan else (
         scans[0].last_run if scans else None
     )
@@ -576,47 +750,23 @@ def render() -> None:
         label_visibility="collapsed",
     ) or _DEFAULT_TIME_FILTER
     days = _TIME_FILTER_DAYS[selected]
-    filtered_rows = [r for r in all_rows if (today - r.scan_date).days < days]
     listings, sources, summary = _load_artifact_tables(today, days)
+    _apply_source_window_activity(sources, _source_window_activity(today))
     surfaced, learning, rejected = _verdict_groups(listings)
 
     st.markdown(_render_run_status(summary, listings, sources, coverage), unsafe_allow_html=True)
     st.markdown(
         _render_review_table(
-            "Surfaced Matches",
+            "Matches",
             "Deals the skill promoted as worth review now",
             surfaced,
-            "No surfaced matches in this window. That may be correct, but the learning queue below is where we tune misses.",
+            "No matches in this window. That may be correct.",
         ),
         unsafe_allow_html=True,
     )
-    st.markdown(
-        _render_review_table(
-            "Borderline / Learning Queue",
-            "Promising, ambiguous, or off-thesis deals retained for calibration",
-            learning,
-            "No borderline deals captured in this window.",
-            limit=12,
-        ),
-        unsafe_allow_html=True,
-    )
-    st.markdown(_render_filtered_summary(rejected), unsafe_allow_html=True)
-    st.markdown(_render_source_effectiveness(sources, listings), unsafe_allow_html=True)
     st.markdown(_render_sources_reviewed(sources), unsafe_allow_html=True)
 
-    n = len(filtered_rows)
-    deal_word = "deal" if n == 1 else "deals"
     st.markdown(
-        f'<div class="gb-zone gb-zone-plain gb-raw-archive">'
-        f'<div class="gb-zone-head"><div><div class="gb-zone-label">Raw Intake Archive</div>'
-        f'<div class="gb-zone-subtitle">Email inbound and parsed scan rows for audit, not the default work queue</div></div>'
-        f'<div class="gb-zone-meta">{selected} · {n} {deal_word}</div></div>'
-        f'{_render_table(filtered_rows, coverage)}'
-        f'</div>',
-        unsafe_allow_html=True,
-    )
-
-    st.markdown(
-        '<div class="gb-page-note">Skill improvement note: if Kay would have reviewed, requested a CIM, or signed an NDA for a borderline or filtered deal, that example should become Deal Aggregator calibration input. No emails are sent from this page.</div>',
+        '<div class="gb-page-note">Skill improvement note: if Kay would have reviewed, requested a CIM, or signed an NDA for a filtered deal, that example should become Deal Aggregator calibration input. No emails are sent from this page.</div>',
         unsafe_allow_html=True,
     )

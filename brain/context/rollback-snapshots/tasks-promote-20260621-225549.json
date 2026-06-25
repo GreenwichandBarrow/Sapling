@@ -1,0 +1,22 @@
+{
+  "verb": "promote",
+  "timestamp": "20260621-225549",
+  "sheet_id": "1sN1yb6R7ippscvFWoaJKTSu0s2qBfxBoRn5dCviPTcY",
+  "ranges": {
+    "'To Do'!A156:F156": [
+      [
+        "Not Completed",
+        "Research & email: Thomas Pest Services, Inc. (woman founded)",
+        "Work",
+        "Pest thesis",
+        "2026-06-22",
+        "Source: Camilla pest company list"
+      ]
+    ],
+    "'Mon'!A34:E34": [
+      [
+        false
+      ]
+    ]
+  }
+}

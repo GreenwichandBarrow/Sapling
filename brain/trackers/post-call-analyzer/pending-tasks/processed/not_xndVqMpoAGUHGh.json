@@ -1,0 +1,52 @@
+{
+  "processed_by": "goodmorning-followup",
+  "processed_at": "2026-06-24T14:54:29.278086+00:00",
+  "source_file": "brain/trackers/post-call-analyzer/pending-tasks/not_xndVqMpoAGUHGh.json",
+  "kay_decision": {
+    "kay_decision_at": "2026-06-24T14:54:29.278086+00:00",
+    "decision_summary": "Juan / Total Extermination: do not add NY 7A coursework yet; building-manager referral mapping is tied to tomorrow meeting; keep Juan active as possible second acquisition and market-learning relationship; ride-along follow-up added to To Do.",
+    "actions_taken": [
+      "Attio Active Deals stage set to Contacted",
+      "To Do row added for ride-along follow-up"
+    ],
+    "do_not_resurface_original_tasks": true
+  },
+  "staged_tasks": [
+    {
+      "task_text": "Start the NY 7A applicator coursework now so the licensing path is not a late-stage blocker for any premium pest acquisition.",
+      "type": "Ops",
+      "project": "Premium pest thesis",
+      "suggested_day": "This week",
+      "suggested_due_date": "",
+      "notes_with_doc_link": "From Juan / Total Extermination 2026-06-23 mtg. Analysis: https://docs.google.com/document/d/1TfBB21gHV73JQBRmnVOQ7cM7G_6IixGBl-JTlOIPSGQ/edit",
+      "source_call_id": "not_xndVqMpoAGUHGh",
+      "source_doc_url": "https://docs.google.com/document/d/1TfBB21gHV73JQBRmnVOQ7cM7G_6IixGBl-JTlOIPSGQ/edit",
+      "source_transcript_url": "https://docs.google.com/document/d/1HtsAJ41sWNCHQrnQx2Rl-8ZJdhA0jrsmyo7Ogb8NRw8/edit",
+      "staged_at": "2026-06-23T22:05:56Z"
+    },
+    {
+      "task_text": "Use the commercial real-estate contact meeting to map the NYC building-manager and property-management referral channels that keep premium pest work flowing.",
+      "type": "Relationship",
+      "project": "Premium pest thesis",
+      "suggested_day": "This week",
+      "suggested_due_date": "",
+      "notes_with_doc_link": "From Juan / Total Extermination 2026-06-23 mtg. Analysis: https://docs.google.com/document/d/1TfBB21gHV73JQBRmnVOQ7cM7G_6IixGBl-JTlOIPSGQ/edit",
+      "source_call_id": "not_xndVqMpoAGUHGh",
+      "source_doc_url": "https://docs.google.com/document/d/1TfBB21gHV73JQBRmnVOQ7cM7G_6IixGBl-JTlOIPSGQ/edit",
+      "source_transcript_url": "https://docs.google.com/document/d/1HtsAJ41sWNCHQrnQx2Rl-8ZJdhA0jrsmyo7Ogb8NRw8/edit",
+      "staged_at": "2026-06-23T22:05:56Z"
+    },
+    {
+      "task_text": "Decide whether Juan / Total Extermination stays a relationship-only pest reference or should get another diligence conversation if scale and transitionability improve.",
+      "type": "Analysis",
+      "project": "Search thesis",
+      "suggested_day": "This week",
+      "suggested_due_date": "",
+      "notes_with_doc_link": "From Juan / Total Extermination 2026-06-23 mtg. Analysis: https://docs.google.com/document/d/1TfBB21gHV73JQBRmnVOQ7cM7G_6IixGBl-JTlOIPSGQ/edit",
+      "source_call_id": "not_xndVqMpoAGUHGh",
+      "source_doc_url": "https://docs.google.com/document/d/1TfBB21gHV73JQBRmnVOQ7cM7G_6IixGBl-JTlOIPSGQ/edit",
+      "source_transcript_url": "https://docs.google.com/document/d/1HtsAJ41sWNCHQrnQx2Rl-8ZJdhA0jrsmyo7Ogb8NRw8/edit",
+      "staged_at": "2026-06-23T22:05:56Z"
+    }
+  ]
+}

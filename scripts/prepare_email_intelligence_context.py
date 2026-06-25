@@ -28,19 +28,38 @@ MAX_SECTION_CHARS = 1800
 MAX_CANDIDATE_THREADS = 18
 
 DEAL_NEWSLETTER_SENDERS = [
-    "helenguo",
-    "smbdealhunter",
     "acquiringminds",
     "bizbuysell",
     "flippa",
     "empireflippers",
     "quietlight",
     "quiet light",
+    "calder",
+    "calder capital",
+    "caldergr",
+    "caldergr.com",
     "synergy",
     "viking",
     "generational equity",
+    "generational group",
+    "generational.deals",
+    "dealforce",
+    "lisa.lippe",
     "sunbelt",
     "transworld",
+]
+
+BOOKKEEPER_SENDERS = [
+    "startvirtual.com",
+    "anthony.b@startvirtual.com",
+]
+
+BOOKKEEPER_REPORT_KEYWORDS = [
+    "management report",
+    "monthly report",
+    "profit and loss",
+    "balance sheet",
+    "p&l",
 ]
 
 DEAL_KEYWORDS = [
@@ -226,6 +245,18 @@ def normalize_ws(text: str) -> str:
     return text.strip()
 
 
+def attachment_filenames(message: dict[str, Any]) -> list[str]:
+    filenames: list[str] = []
+    payload = message.get("payload", {})
+    for part in iter_parts(payload):
+        if not isinstance(part, dict):
+            continue
+        filename = str(part.get("filename") or "").strip()
+        if filename:
+            filenames.append(filename)
+    return filenames
+
+
 def message_text(message: dict[str, Any]) -> tuple[str, int]:
     payload = message.get("payload", {})
     plain_chunks: list[str] = []
@@ -255,6 +286,14 @@ def candidate_reason(thread: dict[str, Any]) -> str | None:
             str(thread.get("snippet", "")),
         ]
     ).lower()
+    from_startvirtual = any(sender in haystack for sender in BOOKKEEPER_SENDERS)
+    has_bookkeeper_report_signal = any(
+        keyword in haystack for keyword in BOOKKEEPER_REPORT_KEYWORDS
+    )
+    if from_startvirtual and has_bookkeeper_report_signal:
+        return "bookkeeper_monthly_report_metadata"
+    if from_startvirtual:
+        return "bookkeeper_sender_check_attachments"
     if any(sender in haystack for sender in DEAL_NEWSLETTER_SENDERS):
         return "known_deal_or_marketplace_sender"
     if any(keyword in haystack for keyword in DEAL_KEYWORDS):
@@ -319,6 +358,7 @@ def enrich_candidate(thread: dict[str, Any]) -> dict[str, Any]:
                 "subject": header_value(message, "Subject"),
                 "snippet": message.get("snippet", ""),
                 "size_estimate": message.get("sizeEstimate"),
+                "attachment_filenames": attachment_filenames(message),
                 "text_excerpt": extract_relevant_windows(text),
             }
         )

@@ -50,7 +50,9 @@ Anthony emails P&L + BS PDFs (subject "Management Report" or attachment "Profit 
   → Slack ping at end of run: "{Month} budget report ready. Runway {N} mo. Flags: {count}. {dashboard link}"
 ```
 
-**Detection signal:** Email from `*@startvirtual.com` or `anthony.b@startvirtual.com` with subject/body/attachment containing "Management Report", "Profit and Loss", or "Balance Sheet".
+**Detection signal:** Email from `*@startvirtual.com` or `anthony.b@startvirtual.com` **AND** a monthly-report signal: subject/body/attachment contains "Management Report", "Monthly Report", "Profit and Loss", "P&L", or "Balance Sheet" with a month/year reference when available. Anthony's routine Friday cleanup confirmations are **not** sufficient to trigger monthly mode unless they include monthly-report attachments or report language.
+
+**Fallback watchdog:** If no monthly-report email has triggered by the last calendar day of the following month, run a read-only Gmail/Drive check for the missing month and surface a system-status item if the report is still absent. Do not nudge Anthony automatically; his cadence is independent.
 
 **Why auto-fire:** Bookkeeper P&L delivery is a deterministic recurring trigger, not a judgment call. Surfacing "RECOMMEND: Run budget-manager?" wastes Kay's decision budget. The judgment call is what to do *with* the runway/variance numbers, not whether to recompute when fresh data arrives. See `memory/feedback_bookkeeper_pl_auto_trigger_budget_manager.md` and `memory/feedback_decision_fatigue_minimization.md`.
 
@@ -233,6 +235,7 @@ curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
 Run all of these before declaring success. Any failure → no Slack post, surface gap to Kay.
 
 - [ ] **Tab 1 month column populated.** `'Monthly Actuals vs Budget'!{month_col}3:{month_col}39` has actual values, not blank. The header row contains "{Month} {Year}" exactly.
+- [ ] **Budget Dashboard file update verified.** Before any `gog sheets update`, re-fetch the live Budget Dashboard ranges being changed and save a rollback snapshot to `brain/context/rollback-snapshots/budget-dashboard-{period}-{timestamp}.json`. After all writes, re-fetch the live Google Sheet and verify the month column, YTD block, and Runway Forecast values match the reconciled metrics. If the snapshot is missing or the post-write live values do not match, fail the run, do not Slack, and surface the gap to Kay.
 - [ ] **Tab 1 bottom block updated.** Three rows at bottom of Tab 1 (Net Burn, Cumulative Spend, Fund Balance) all reflect the new month.
 - [ ] **Tab 2 BURN RATE block has the new month row.** Specifically: a row labeled `"{Month} {Year} Net Burn"` exists in column A between the prior month and the "Steady-State Monthly Burn" row, with the dollar value in column B. **This is the bug from 2026-04-29 — the subagent updated aggregates but skipped adding the per-month line. Insert the row, shift everything below down by 1, and re-write atomically.**
 - [ ] **Tab 2 RUNWAY block updated.** "Months at Steady-State (from {next_month} 1)", "Projected Zero", "Shortfall", and "Monthly Savings Needed" all reflect the new month's data.

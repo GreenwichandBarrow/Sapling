@@ -253,6 +253,8 @@ Dashboard sections come first, in dashboard-navigation order, before non-dashboa
 
 1. **Email Orchestration**
    - Audience = Kay. Show only email follow-through items she needs to review/approve/handle today. This section is not an inbox digest.
+   - Source of truth for the three dashboard buckets is `brain/context/email-follow-through-backlog.json`, filtered to non-completed active rows. Do not infer `N/A` from `email-scan-results-{date}.md`; email-intelligence is a signal source, not the dashboard queue.
+   - Before surfacing any overdue/not-started/not-drafted person, run a bounded sent-mail verification by recipient/name and recent window. If Kay already sent the email, update that backlog row to `completed` with sent-thread evidence and omit it from the brief. Treat stale dashboard rows as source-data bugs to fix, not as items to re-ask Kay about.
    - Mirror the Email Orchestration dashboard tab subsections exactly: `24-hour thank-yous`, `48-hour follow-ups`, and `EOW follow-ups`.
    - Do not include a generic `Draft review` row. Drafts may appear only inside the relevant dashboard follow-up bucket, and only with concrete context: recipient/name, subject/purpose, age, and the decision needed. If the draft purpose is unclear, surface as `Clarify draft identity` with the draft subject/recipient; do not say only `2 Gmail drafts pending`.
    - Do not include `Deal-flow email` in Email Orchestration. Deal-flow alerts, broker blasts, marketplace emails, and auto/deal-flow label outputs belong in the Deal Aggregator section.
@@ -273,6 +275,7 @@ Dashboard sections come first, in dashboard-navigation order, before non-dashboa
 
 4. **C-Suite & Skills**
    - Dashboard-aligned skill/status section. Surface only Kay-relevant skill failures, missed expected runs, approvals needed, or migration/plumbing decisions. If none, write `N/A`.
+   - **Monday conference pipeline line:** every Monday, include a concise `Conference Pipeline` update in this section even if healthy: last Sunday conference-discovery run status/time, number of stale rows archived, number of new conferences added, and current Pipeline review count or `N/A`. If the run missed, validator failed, or stale past rows remain, make it a numbered fix item here (and System Health only if it is a RED/YELLOW failure).
    - Do not duplicate System Health failures unless Kay needs a skill-specific decision.
 
 5. **System Health**
@@ -320,22 +323,23 @@ Dashboard sections come first, in dashboard-navigation order, before non-dashboa
 
 **C-Suite & Skills**
 
-13. **Skills:** {Skill failure/approval item or N/A} → **FIX / DEFER / DISCUSS**
+13. **Conference Pipeline:** {Monday run status: last run time, archived rows, new conferences, current review count; N/A on non-Mondays unless failure} → **REVIEW / FIX / DISCUSS**
+14. **Skills:** {Other skill failure/approval item or N/A} → **FIX / DEFER / DISCUSS**
 
 **System Health**
 
-14. **Failures:** {Failure item or N/A} → **FIX / DEFER / DISCUSS**
+15. **Failures:** {Failure item or N/A} → **FIX / DEFER / DISCUSS**
 
 **Meeting Briefs**
 
-15. **Next 48 hours:** {Meeting brief decision or N/A} → **PREP / SKIP / DISCUSS**
-16. **Last-minute meeting watch:** {Gap/watch item or N/A}
+16. **Next 48 hours:** {Meeting brief decision or N/A} → **PREP / SKIP / DISCUSS**
+17. **Last-minute meeting watch:** {Gap/watch item or N/A}
 
 **Tasks & Follow-up**
 
-17. **Task Manager:** {Open task count only, e.g. 21 open tasks today}
-18. **Post-call / new routing:** {Only new item not already on To Do, or N/A}
-19. **Deferred / unresolved:** {Only new item not already on To Do, or N/A}
+18. **Task Manager:** {Open task count only, e.g. 21 open tasks today}
+19. **Post-call / new routing:** {Only new item not already on To Do, or N/A}
+20. **Deferred / unresolved:** {Only new item not already on To Do, or N/A}
 ```
 
 **Briefing hygiene (CRITICAL):**
@@ -513,9 +517,11 @@ The manager is the last line of defense. Sub-agents will make errors. The manage
 Before sending the briefing to Kay, validate against the dashboard-section spec:
 
 - [ ] **Required sections present in order** — Email Orchestration, Active Pipeline, Deal Aggregator, C-Suite & Skills, System Health, Meeting Briefs, Tasks & Follow-up, then Decisions Needed only if needed.
+- [ ] **Monday Conference Pipeline status present** — on Mondays, C-Suite & Skills includes `Conference Pipeline` with last Sunday run status/time, stale rows archived, new conferences added, and current review count or a fix item if the run missed/failed.
 - [ ] **Each main section has Kay-actionable numbered items or `N/A`** — no report dumps, no missing section headers. One operational-status line per section max, only for freshness/trust. Tasks & Follow-up may include a task-count line, but must not repeat existing To Do rows.
 - [ ] **All referable lines are numbered sequentially across the whole brief** — includes ops/freshness lines and Kay-actionable items; numbering never resets by section; main section headers are flush left, and numbered lines default to `N. **Dashboard subsection:** item`. Use expanded subsection headers only for subsections with 2+ separate decision items; sub-items use roman numerals or letters.
 - [ ] **Dashboard subsections reflected exactly** — Email Orchestration uses only 24-hour thank-yous, 48-hour follow-ups, and EOW follow-ups. Drafts appear only inside those buckets with concrete context; deal-flow email appears only in Deal Aggregator.
+- [ ] **Email Orchestration source verified** — the section was built from `brain/context/email-follow-through-backlog.json`, not from email-scan alone; every overdue/not-drafted person was checked against recent sent mail and any already-sent row was marked `completed` before composing the brief.
 - [ ] **Active Pipeline is grouped by stage and excludes closed deals** — surface only active, non-closed deals; closed deals appear only if changed in the current session.
 - [ ] **Deal Aggregator references one morning run** — do not combine or overwrite with retired afternoon/Friday digest output.
 - [ ] **System Health is failure-only** — include only RED/YELLOW failures that would merit Slack/system alerting; otherwise `N/A`. Planned dashboard plumbing and non-failure operating work belong in Tasks & Follow-up.

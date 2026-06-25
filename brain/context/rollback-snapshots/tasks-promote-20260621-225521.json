@@ -1,0 +1,22 @@
+{
+  "verb": "promote",
+  "timestamp": "20260621-225521",
+  "sheet_id": "1sN1yb6R7ippscvFWoaJKTSu0s2qBfxBoRn5dCviPTcY",
+  "ranges": {
+    "'To Do'!A169:F169": [
+      [
+        "Not Completed",
+        "Research & email: Parkway Pest Services",
+        "Work",
+        "Pest thesis",
+        "2026-06-26",
+        "Source: Camilla pest company list"
+      ]
+    ],
+    "'Fri'!A28:E28": [
+      [
+        false
+      ]
+    ]
+  }
+}

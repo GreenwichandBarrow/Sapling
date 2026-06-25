@@ -1,0 +1,169 @@
+{
+  "verb": "carry-forward-day",
+  "timestamp": "20260621-003430",
+  "sheet_id": "12vE5XpAXeVFxzVHvRz6Hb0oRBQNEkt-ZPS7ANctJDQo",
+  "ranges": {
+    "'Sun'!A17:E42": [
+      [
+        true,
+        "Create weekly schedule"
+      ],
+      [
+        true,
+        "Confirm LiveOak payroll transfer coverage"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Mon'!A17:E42": [
+      [
+        false
+      ],
+      [
+        true,
+        "Process conference registrations"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        true,
+        "Send DealsX specialization file"
+      ],
+      [
+        true,
+        "Follow up email to Matt"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        true,
+        "Thank you: Jay, Bob"
+      ],
+      [
+        true,
+        "Reply to Carlos"
+      ],
+      [
+        false
+      ],
+      [
+        true,
+        "Introduction: Anthony, Richard"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "not_Rrymwi7mA77lOH",
+  "title": "Event Encounter",
+  "counterparty": "Event Encounter",
+  "processed_at": "2026-06-23T17:11:04Z",
+  "vault_call_note": "brain/calls/2026-06-23-event-encounter.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_Rrymwi7mA77lOH.json",
+  "doc_url": "https://docs.google.com/document/d/1lmC2mlNuvLCWbag2ncYLtnoGSmQAB633B2Qui9bsGxs/edit?usp=drivesdk",
+  "doc_id": "1lmC2mlNuvLCWbag2ncYLtnoGSmQAB633B2Qui9bsGxs",
+  "transcript_doc_url": "https://docs.google.com/document/d/1dl92iWDF_5Gh88sBIclL8B8gYhS9-3grFGgcFzJB8iY/edit?usp=drivesdk",
+  "transcript_doc_id": "1dl92iWDF_5Gh88sBIclL8B8gYhS9-3grFGgcFzJB8iY",
+  "attio_notes": {},
+  "slack_posted": true,
+  "detector": "granola-api-rest",
+  "task_count": 0,
+  "transcript_failed": false,
+  "attio_failed": true,
+  "tasks_failed": true,
+  "doc_failed": false
+}

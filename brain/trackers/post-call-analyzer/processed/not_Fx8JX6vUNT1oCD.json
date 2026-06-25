@@ -1,0 +1,23 @@
+{
+  "id": "not_Fx8JX6vUNT1oCD",
+  "title": "Pest Control Market Intelligence",
+  "counterparty": "Albert Kim",
+  "processed_at": "2026-06-23T17:11:04Z",
+  "vault_call_note": "brain/calls/2026-06-23-albert-kim-pest-market-intel.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_Fx8JX6vUNT1oCD.json",
+  "doc_url": "https://docs.google.com/document/d/19OCtLlnbQEIKoqZMgH1PH4CIdJ2jcm7rNW69bxVV4ro/edit?usp=drivesdk",
+  "doc_id": "19OCtLlnbQEIKoqZMgH1PH4CIdJ2jcm7rNW69bxVV4ro",
+  "transcript_doc_url": "https://docs.google.com/document/d/139ZG6J4XAAw-50nYVPIkibY2_4Yg53cK0v6IZi0o1Xo/edit?usp=drivesdk",
+  "transcript_doc_id": "139ZG6J4XAAw-50nYVPIkibY2_4Yg53cK0v6IZi0o1Xo",
+  "attio_notes": {
+    "person_albert_kim": "3d0c6bb4-d78f-4e17-9195-63aaf2d76cd0",
+    "company_north_clark_partners": "ba182596-7203-4715-8461-bd46eb852a28"
+  },
+  "slack_posted": true,
+  "detector": "granola-api-rest",
+  "task_count": 4,
+  "transcript_failed": false,
+  "attio_failed": false,
+  "tasks_failed": false,
+  "doc_failed": false
+}

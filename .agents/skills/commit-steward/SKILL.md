@@ -1,6 +1,6 @@
 ---
 name: commit-steward
-description: Commit and push steward for Kay's operating system. Use when Kay invokes /commit, /push, asks to save changes, close a work session, commit work, or explain why commits are lingering. Preserves the Claude-era wrap-up checklist: memory, skills, hooks, context, decisions, atomic commits, dirty-tree classification, and explicit push handling.
+description: "Commit and push steward for Kay's operating system. Use when Kay invokes /commit, /push, asks to save changes, close a work session, commit work, or explain why commits are lingering. Preserves the Claude-era wrap-up checklist: memory, skills, hooks, context, decisions, atomic commits, dirty-tree classification, and explicit push handling."
 ---
 
 # Commit Steward

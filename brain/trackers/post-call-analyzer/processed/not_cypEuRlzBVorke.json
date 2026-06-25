@@ -1,0 +1,19 @@
+{
+  "id": "not_cypEuRlzBVorke",
+  "title": "ETA Deal Team Day: NYC",
+  "counterparty": "ETA Deal Team Day",
+  "processed_at": "2026-06-24T22:05:05Z",
+  "vault_call_note": "brain/calls/2026-06-24-eta-deal-team-day-nyc.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_cypEuRlzBVorke.json",
+  "doc_url": "https://docs.google.com/document/d/16CLWn3mEk4BWj9npyUlLc5TTO8XZXrYkIqUHfYnyLq8/edit",
+  "doc_id": "16CLWn3mEk4BWj9npyUlLc5TTO8XZXrYkIqUHfYnyLq8",
+  "transcript_doc_url": "https://docs.google.com/document/d/1eq-MdhldjHu3ppMaPhVBQMvoqCSXrJDstxc_DUnKEPg/edit?usp=drivesdk",
+  "transcript_doc_id": "1eq-MdhldjHu3ppMaPhVBQMvoqCSXrJDstxc_DUnKEPg",
+  "granola_url": "https://notes.granola.ai/d/5c2cc028-3e5a-40e3-9325-04401a88282f",
+  "attio_notes": {},
+  "attio_failed": true,
+  "attio_skip_reason": "no external attendees \u2014 internal deal-team day",
+  "slack_posted": true,
+  "detector": "granola-api-rest",
+  "task_count": 4
+}

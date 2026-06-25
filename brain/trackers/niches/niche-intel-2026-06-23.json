@@ -1,0 +1,55 @@
+{
+  "run_date": "2026-06-23",
+  "run_mode": "tuesday",
+  "run_by": "Codex/systemd",
+  "niches_evaluated": 3,
+  "niches_identified": 3,
+  "one_pagers_written": 3,
+  "scorecards_written": 3,
+  "tracker_updated": true,
+  "tracker_range": "WEEKLY REVIEW!A31:K33",
+  "runtime_seconds": 1761,
+  "zero_finding_reason": "",
+  "sources_covered": {
+    "recent_track": "Covered web/social partial, newsletters, Granola metadata plus vault call notes, Gmail deal flow/investors with --gmail-no-send, vault research, and passive inbox signals. Social coverage was partial: Reddit 403, no useful HN/Polymarket hits, X/YouTube unavailable.",
+    "historical_track": "Covered local historical call notes, read-only Gmail searches/thread reads with --gmail-no-send, processed ChatGPT memory proxies, and prior OneNote-mined proxy reports. OneNote MCP unavailable, raw ChatGPT export missing, historical Granola API limited."
+  },
+  "open_loops_infra": [
+    "OneNote MCP unavailable in scheduled environment; historical agent used prior OneNote-mined proxy reports.",
+    "Raw ChatGPT export not found under ~/Downloads; historical agent used processed memory proxies.",
+    "last30days social coverage partial: Reddit public search returned 403; X/YouTube unavailable; HN/Polymarket yielded no useful hits.",
+    "Attio cross-reference was not performed because no safe readily available Attio tool was exposed; no secret files were inspected."
+  ],
+  "niches": [
+    {
+      "name": "Luxury Amenity Management for Commercial/Residential Real Estate",
+      "score": 2.28,
+      "score_100": 76,
+      "drive_folder": "https://drive.google.com/drive/folders/19xLWShSBhpsL--S9KMcpv91yL-RGKUoz",
+      "drive_folder_id": "19xLWShSBhpsL--S9KMcpv91yL-RGKUoz",
+      "one_pager": "https://docs.google.com/presentation/d/1aXSMc3bPzPGGNieiWwVqJROdEK2Efjfk/edit?usp=drivesdk",
+      "scorecard": "https://docs.google.com/spreadsheets/d/1zIIw_AbowIFUqxzb2C-CDZPkp1SOQ_oD/edit?usp=drivesdk",
+      "tracker_row": 31
+    },
+    {
+      "name": "Premium Physical Security Integration & Lifecycle Maintenance for Luxury Retail and Class-A Commercial Portfolios",
+      "score": 2.31,
+      "score_100": 77,
+      "drive_folder": "https://drive.google.com/drive/folders/1y1_LewZFzgAw4IA-2eTW-PN54mn2t3pp",
+      "drive_folder_id": "1y1_LewZFzgAw4IA-2eTW-PN54mn2t3pp",
+      "one_pager": "https://docs.google.com/presentation/d/1_j4FgLvyrEN7to_XMStldqqyzFpmAqz4/edit?usp=drivesdk",
+      "scorecard": "https://docs.google.com/spreadsheets/d/1zrs07_XCVczFw1RBq_p6HtwZ3-HXkDUt/edit?usp=drivesdk",
+      "tracker_row": 32
+    },
+    {
+      "name": "Asset-Light Boat and Yacht Transport Coordination for Marinas, Dealers, Brokers, and Seasonal Owners",
+      "score": 2.13,
+      "score_100": 71,
+      "drive_folder": "https://drive.google.com/drive/folders/1L12LpO5wUA6duYVUHQqw5nutKr8nqrEY",
+      "drive_folder_id": "1L12LpO5wUA6duYVUHQqw5nutKr8nqrEY",
+      "one_pager": "https://docs.google.com/presentation/d/1FQhqZ0Pijterw17sB2wrMlCbVOUUvVBX/edit?usp=drivesdk",
+      "scorecard": "https://docs.google.com/spreadsheets/d/11lxxLYK49ZpOc3YAg4K9QDA-GGNyNLyn/edit?usp=drivesdk",
+      "tracker_row": 33
+    }
+  ]
+}

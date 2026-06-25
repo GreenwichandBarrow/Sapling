@@ -1,0 +1,18 @@
+{
+  "range": "'Tech Stack Inventory'!A22:K22",
+  "values": [
+    [
+      "AI Consultant / Stone Street Software",
+      "AI/Consulting",
+      "Monthly",
+      "0",
+      "0",
+      "1000",
+      "Paused from Jul",
+      "Claude / internal ops",
+      "May invoice appears under Professional Fees / Consulting, not Apps & Software; removed from runway plan starting Jul.",
+      "0",
+      "0"
+    ]
+  ]
+}

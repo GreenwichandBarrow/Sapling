@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "generated_at": "2026-06-19T20:34:04.424980Z",
+  "generated_at": "2026-06-20T13:01:38.438365Z",
   "search_start": "2025-02-01",
   "notes": "Durable source/event ledger for M&A dashboard plumbing. Attio snapshot is current state only; this file tracks cumulative stage events and source attribution. Backfill gaps should be resolved by Good Morning/pipeline-manager, not guessed in the dashboard.",
   "records": [
@@ -89,6 +89,20 @@
       "evidence": [
         "brain/calls/2026-06-15-total-extermination.md",
         "brain/context/attio-pipeline-snapshot.json"
+      ]
+    },
+    {
+      "company": "WISK",
+      "current_stage": "Closed / Not Proceeding",
+      "source": "intermediary_river_guide",
+      "source_label": "Intermediary / river-guide",
+      "source_detail": "F&B inventory-management software opportunity from Carlos; Kay confirmed on 2026-06-20 that it belongs in recent closed pipeline items.",
+      "source_confidence": "confirmed",
+      "closed_not_proceeding_date": "2026-06-20",
+      "evidence": [
+        "brain/calls/2026-06-17-carlos-in3o-checkin.md",
+        "brain/calls/2026-06-17-carlos-i-kay-checkin.md",
+        "Kay dashboard correction on 2026-06-20"
       ]
     }
   ]

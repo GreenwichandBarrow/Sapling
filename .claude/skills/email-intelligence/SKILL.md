@@ -231,10 +231,12 @@ The trigger fires INDEPENDENTLY of overall email classification. A NEWSLETTER wi
 
 **Pattern mirrors CIM auto-trigger.** Anthony's monthly Management Report is a deterministic recurring input. Auto-fire `budget-manager monthly` mode on detection — do NOT surface as a Decision item in the morning briefing. See `memory/feedback_bookkeeper_pl_auto_trigger_budget_manager.md` for the precedent.
 
-**Detection triggers (any one):**
-- Sender domain is `startvirtual.com` (currently `anthony.b@startvirtual.com`)
-- Subject contains "Management Report" + a month/year reference (e.g., "March 2026")
-- Attachment filename contains "Profit and Loss", "Balance Sheet", "P&L", or "Management Report"
+**Detection triggers (sender + monthly-report signal):**
+- Sender domain is `startvirtual.com` (currently `anthony.b@startvirtual.com`) AND at least one monthly-report signal is present.
+- Monthly-report signals: subject/body contains "Management Report" or "Monthly Report" with a month/year reference when available; OR attachment filename contains "Profit and Loss", "Balance Sheet", "P&L", or "Management Report".
+- Anthony's routine Friday transaction-cleanup confirmations do **not** trigger this chain unless they include monthly-report language or the P&L / Balance Sheet / Management Report attachments.
+
+**Fallback watchdog:** If the last calendar day of a month arrives and the prior month's budget report has not landed in `brain/outputs/` and no matching monthly folder exists under `BOOKKEEPING / MONTHLY REPORTING`, surface a system-status gap. Do not send or draft a nudge to Anthony unless Kay explicitly asks.
 
 **4-step automatic execution (CRITICAL: all four steps execute in-session, not deferred):**
 1. File the PDFs from email to `BOOKKEEPING / MONTHLY REPORTING / {MONTH YEAR}` Drive subfolder (folder ID `1Z__A8AXWBCwQN7x1nK2fqaqhVKlJBJOb`). Create the month subfolder if it doesn't exist.

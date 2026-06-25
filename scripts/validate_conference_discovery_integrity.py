@@ -381,7 +381,11 @@ def _is_past_date(snap_date: str, today: date | None = None) -> bool:
     """
     if today is None:
         today = date.today()
-    er = parse_event_date_range(snap_date or "", today.year)
+    raw = (snap_date or "").strip()
+    if re.fullmatch(r"\d{5}", raw):
+        start = date(1899, 12, 30) + timedelta(days=int(raw))
+        return start < today
+    er = parse_event_date_range(raw, today.year)
     if er is None:
         return False
     start, _end = er
@@ -401,12 +405,16 @@ def _is_legitimate_archival(
       - ``Attending`` + past   → event happened; assume it progressed through
         Attended-tab archival even if the snapshot caught it pre-transition.
 
-    Everything else (Evaluating, Need to Book, Need to Register, Registered,
-    Future / Map-Only with future date, empty status, etc.) is NOT a
-    legitimate archival — those rows should still be on the Pipeline tab.
+    - Passive review states (blank, ``NEW``, ``Evaluating``) + past date →
+        routes to Skipped tab because the event passed without attendance.
+
+    Everything else (Need to Book, Need to Register, Registered, Future /
+    Map-Only with future date, etc.) is NOT a legitimate archival — those rows
+    should still be on the Pipeline tab unless Kay explicitly advances or skips
+    them.
     """
     s = (snap_status or "").strip()
-    if s in ("Skip", "Skipped"):
+    if s in ("Skip", "Skipped", "NEW", "Evaluating", ""):
         return _is_past_date(snap_date, today)
     if s == "Attended":
         return True
@@ -682,12 +690,13 @@ def check_cell_mutations(
         snap_date = cell(snap_row, snapshot_schema.idx("date"))
 
         # Legitimate archival per SKILL.md auto-archival rules:
-        #   Skip / Skipped + past date → Skipped tab
-        #   Attended                  → Attended tab, regardless of date
-        #   Attending + past date     → assume Attended-tab archival
+        #   Skip / Skipped + past date              → Skipped tab
+        #   blank / NEW / Evaluating + past date    → Skipped tab
+        #   Attended                                → Attended tab, regardless of date
+        #   Attending + past date                   → assume Attended-tab archival
         if _is_legitimate_archival(snap_status, snap_date, today):
             if verbose:
-                if snap_status in ("Skip", "Skipped"):
+                if snap_status in ("Skip", "Skipped", "NEW", "Evaluating", ""):
                     reason = (
                         f"status={snap_status!r}, past date, archived to "
                         f"Skipped"
@@ -702,18 +711,6 @@ def check_cell_mutations(
                 print(
                     f"[check_b] {event_key_label(snap_row, snapshot_schema)} archived "
                     f"legitimately ({reason})",
-                    file=sys.stderr,
-                )
-            continue
-
-        # Legitimate passive archival: past date + no status.
-        # (Empty-status rows are pre-triage; if their date has slid past,
-        # the skill drops them in the next sweep.)
-        if not snap_status and _is_past_date(snap_date, today):
-            if verbose:
-                print(
-                    f"[check_b] {event_key_label(snap_row, snapshot_schema)} archived as "
-                    f"past-date passive (no status)",
                     file=sys.stderr,
                 )
             continue

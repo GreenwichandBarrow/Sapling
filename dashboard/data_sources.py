@@ -64,9 +64,19 @@ _WEEKLY_TRACKER_FILENAME_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-weekly-tracker\.
 _FIRST_NUM_RE = re.compile(r"\b(\d+(?:[.,]\d+)?)\b")
 PIPELINE_ATTIO_URL_BASE = "https://app.attio.com/greenwich-barrow/company"
 
-# Active deal pipeline scope: NDA forward only. Identified + Contacted moved
-# to M&A Analytics (outbound funnel) on 2026-04-24 — scope-doc Section 3.
-ACTIVE_PIPELINE_STAGES = (
+# Engaged pipeline scope for the dashboard and Good Morning: records where
+# there has been at least direct/intermediary engagement. Raw Identified records
+# remain CRM/outbound funnel inventory and should not be counted as active.
+ENGAGED_PIPELINE_STAGES = (
+    "Contacted",
+    "NDA",
+    "Financials Received",
+    "Submitted LOI",
+    "Signed LOI",
+)
+
+# NDA-forward scope for landing-page conversion metrics.
+NDA_FORWARD_PIPELINE_STAGES = (
     "NDA",
     "Financials Received",
     "Submitted LOI",
@@ -531,11 +541,15 @@ class PipelineSnapshot:
     closed_count_pre_nda: int = 0  # outreach attrition (no engagement)
 
 
-def load_pipeline(scope: str = "active") -> PipelineSnapshot | None:
+def load_pipeline(scope: str = "engaged") -> PipelineSnapshot | None:
     """Load the Attio pipeline snapshot.
 
-    `scope="active"` (default) filters to NDA-forward stages only —
-    Identified + Contacted live on M&A Analytics as outbound funnel data.
+    `scope="engaged"` (default) filters to Contacted plus NDA-forward stages —
+    the Active Pipeline Snapshot definition used by the dashboard and Good
+    Morning. Raw Identified rows are source/outbound inventory, not active
+    pipeline.
+    `scope="active"` is kept as a backwards-compatible alias for NDA-forward.
+    `scope="nda_forward"` filters to NDA-forward stages only.
     `scope="full"` returns every stage (used by tests / debugging only).
     """
     if not PIPELINE_SNAPSHOT_PATH.exists():
@@ -546,13 +560,21 @@ def load_pipeline(scope: str = "active") -> PipelineSnapshot | None:
     terminal_stages = [s["title"] for s in stage_defs if s.get("is_terminal")]
     terminal = terminal_stages[0] if terminal_stages else "Closed / Not Proceeding"
 
-    if scope == "active":
-        # Honor the snapshot's stage order but filter to NDA-forward.
-        active_stages = [s for s in all_active if s in ACTIVE_PIPELINE_STAGES]
+    if scope in {"engaged", "dashboard"}:
+        active_stages = [s for s in all_active if s in ENGAGED_PIPELINE_STAGES]
         deals = [
             PipelineDeal(**d)
             for d in data.get("deals", [])
-            if d.get("stage") in ACTIVE_PIPELINE_STAGES
+            if d.get("stage") in ENGAGED_PIPELINE_STAGES
+        ]
+    elif scope in {"active", "nda_forward"}:
+        # Backwards-compatible active scope: historical callers used this for
+        # NDA-forward conversion metrics.
+        active_stages = [s for s in all_active if s in NDA_FORWARD_PIPELINE_STAGES]
+        deals = [
+            PipelineDeal(**d)
+            for d in data.get("deals", [])
+            if d.get("stage") in NDA_FORWARD_PIPELINE_STAGES
         ]
     else:
         active_stages = all_active
@@ -1075,6 +1097,14 @@ def _week_sunday(today: date) -> date:
     return today if iso == 7 else today - timedelta(days=iso)
 
 
+def _warning_days_for_skill(skill_status: str, week_status: dict[int, str]) -> int:
+    """Count warning days in the current Sun-today window for one skill."""
+    warning_days = sum(1 for status in week_status.values() if status == "fired-warn")
+    if skill_status == "fired-warn":
+        warning_days += 1
+    return warning_days
+
+
 def _build_week_status(
     intervals: list[dict], runs_in_week: list[SkillRun], today: date
 ) -> dict[int, str]:
@@ -1202,12 +1232,16 @@ def _build_skill_health(
 ) -> SkillHealth:
     is_registered = skill in registered
     plist = _read_plist(skill)
-    is_scheduled = plist is not None
-    is_gap = (not is_scheduled) and skill in _CLAUDE_MD_SCHEDULED_BUT_UNREGISTERED
+    has_timer_config = plist is not None
+    is_scheduled = has_timer_config and is_registered
+    is_gap = (not is_scheduled) and (
+        skill in _CLAUDE_MD_SCHEDULED_BUT_UNREGISTERED
+        or (has_timer_config and not is_registered)
+    )
     intervals = (plist or {}).get("StartCalendarInterval") or []
     if isinstance(intervals, dict):
         intervals = [intervals]
-    schedule_text = _format_schedule(intervals) if is_scheduled else "—"
+    schedule_text = _format_schedule(intervals) if has_timer_config else "—"
     next_fire = _next_fire(intervals) if is_scheduled else None
     next_fire_text = next_fire.strftime("Next %a %b %-d") if next_fire else None
     recent = _scan_logs_for_skill(skill, limit=5)
@@ -1344,11 +1378,15 @@ def skill_health_summary(groups: list[CSuiteGroup]) -> dict[str, int]:
 
             # Landing tile daily view: denominator is due-by-now today
             # (completed + issue). Runs scheduled later today stay outside the
-            # denominator and appear as "remaining today."
+            # denominator and appear as "remaining today." Warnings only become
+            # dashboard issues after they repeat more than three days.
             if s.is_scheduled and s.intervals and _should_fire_on_day(s.intervals, today):
+                warning_days = _warning_days_for_skill(s.today_status, s.week_status_by_day)
                 if s.today_status in ("fired-ok", "fired-warn"):
                     counts["daily_completed"] += 1
                     counts["daily_scheduled"] += 1
+                    if s.today_status == "fired-warn" and warning_days > 3:
+                        counts["daily_issue"] += 1
                 elif s.today_status in ("missed", "fired-err"):
                     counts["daily_issue"] += 1
                     counts["daily_scheduled"] += 1
@@ -2027,10 +2065,10 @@ class WeeklyGoalMetric:
 @dataclass
 class SourceMixRow:
     source: str
-    ltd_activity: str
-    financials_received: str
+    this_week: str
+    current_month: str
     note: str
-    status: str = "pending"
+    status: str = "complete"
 
 
 @dataclass
@@ -2060,9 +2098,10 @@ class MAAnalytics:
     week_start: date
     week_end: date
     deal_flow_tiles: list[KPITile]  # Zone 1 (5 tiles)
-    deal_flow_ltd_values: list[int | str]
+    deal_flow_month_values: list[int | str]
+    source_month_label: str
     channels: list[ChannelRow]  # Legacy weekly channel rows; source mix is the default page view
-    source_rows: list[SourceMixRow]  # Lifetime source attribution for deal starts
+    source_rows: list[SourceMixRow]  # Go-forward source attribution for deal starts
     trends: list[TrendPanel]  # Zone 4 (4 panels)
     trend_x_labels: tuple[str, str, str]  # (start, mid, end) shared across trends
     activity_rows: list[ActivityRow]  # Legacy weekly activity rows; top-goal detail is default page view
@@ -2273,62 +2312,83 @@ def _deal_flow_values_from_source_map(
     ]
 
 
-def _deal_flow_ltd_from_source_map(
-    source_map: PipelineSourceMap | None,
-    calls: list[CallSummary],
-) -> list[int | str]:
-    if source_map is None:
-        return ["—", "—", "—", "—", "—"]
-    quality_conversations = sum(
+def _quality_conversations_in_window(calls: list[CallSummary], start: date, end: date) -> int:
+    return sum(
         1
         for c in calls
-        if c.date >= source_map.search_start
+        if start <= c.date <= end
         and c.classification == "partner"
         and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
         and not _slug_matches(c.slug, _COACHING_SLUG_HINTS)
     )
-    _quality, nda, financials, loi, closed = _deal_flow_values_from_source_map(
-        source_map, source_map.search_start, date.today()
-    )
+
+
+def _deal_flow_window_values(
+    source_map: PipelineSourceMap | None,
+    calls: list[CallSummary],
+    start: date,
+    end: date,
+) -> list[int | str]:
+    quality_conversations = _quality_conversations_in_window(calls, start, end)
+    if source_map is None:
+        return [quality_conversations, "—", "—", "—", "—"]
+    _quality, nda, financials, loi, closed = _deal_flow_values_from_source_map(source_map, start, end)
     return [quality_conversations, nda, financials, loi, closed]
 
 
-def _source_mix_from_source_map(source_map: PipelineSourceMap | None) -> list[SourceMixRow] | None:
+def _first_source_event_date(record: PipelineSourceRecord) -> date | None:
+    candidates = [
+        record.qualified_conversation_date,
+        record.nda_signed_date,
+        record.financials_received_date,
+        record.loi_submitted_date,
+        record.signed_loi_date,
+        record.closed_not_proceeding_date,
+    ]
+    dated = [d for d in candidates if d is not None]
+    return min(dated) if dated else None
+
+
+def _source_mix_from_source_map(
+    source_map: PipelineSourceMap | None,
+    week_start: date,
+    week_end: date,
+    month_start: date,
+    month_end: date,
+) -> list[SourceMixRow] | None:
     if source_map is None:
         return None
 
     order = [
-        ("warm_email", "Warm email"),
-        ("linkedin", "LinkedIn"),
-        ("conference_networking", "Conferences / networking"),
-        ("intermediary_river_guide", "Intermediary / river-guide"),
-        ("cold_email", "Cold email"),
-        ("cold_call", "Cold call"),
-        ("broker_marketplace", "Broker marketplace"),
-        ("unknown", "Unknown / needs source map"),
+        ("warm_email", "Warm email", "direct CEO/warm email outreach"),
+        ("linkedin", "LinkedIn", "LinkedIn-originated outreach"),
+        ("conference_networking", "Conferences / networking", "formal events, gatherings, and networking meetings"),
+        ("intermediary_river_guide", "Intermediary / river-guide", "broker, advisor, peer, and river-guide path"),
+        ("broker_marketplace", "Broker marketplace", "marketplace or broker-platform listing"),
+        ("cold_email", "Cold email", "historical channel; only show go-forward tagged starts"),
+        ("cold_call", "Cold call", "historical channel; only show go-forward tagged starts"),
+        ("inbound_email", "Inbound email", "broker/newsletter or direct inbound email"),
+        ("unknown", "Unknown / needs review", "Good Morning should ask Kay to map this source"),
     ]
     by_source: dict[str, list[PipelineSourceRecord]] = {}
     for r in source_map.records:
         by_source.setdefault(r.source or "unknown", []).append(r)
 
     rows: list[SourceMixRow] = []
-    for source, label in order:
+    for source, label, default_note in order:
         records = by_source.get(source, [])
-        if not records and source == "unknown":
-            continue
-        starts = sum(
+        week_count = sum(1 for r in records if _date_in_window(_first_source_event_date(r), week_start, week_end))
+        month_count = sum(1 for r in records if _date_in_window(_first_source_event_date(r), month_start, month_end))
+        needs_review = sum(
             1
             for r in records
-            if r.qualified_conversation_date or r.nda_signed_date or r.financials_received_date or r.current_stage
+            if r.source_confidence == "needs_review"
+            and _date_in_window(_first_source_event_date(r), month_start, month_end)
         )
-        financials = sum(1 for r in records if r.financials_received_date)
-        needs_review = sum(1 for r in records if r.source_confidence == "needs_review")
-        if records:
-            note = f"{needs_review} source review needed" if needs_review else "source mapped"
-            status = "needs_map" if needs_review else "complete"
-            rows.append(SourceMixRow(label, str(starts), str(financials), note, status))
-        elif source in {"warm_email", "linkedin", "conference_networking", "intermediary_river_guide", "cold_email", "cold_call"}:
-            rows.append(SourceMixRow(label, "backfill needed", "source map needed", "historical source map pending", "needs_map"))
+        note = f"{needs_review} source review needed" if needs_review else default_note
+        status = "needs_map" if needs_review else "complete"
+        if week_count or month_count or source != "unknown":
+            rows.append(SourceMixRow(label, str(week_count), str(month_count), note, status))
     return rows
 
 
@@ -3115,30 +3175,14 @@ def _build_source_mix(
     jj: JJActivity | None = None,
     outreach: OutreachMetrics | None = None,
 ) -> list[SourceMixRow]:
-    """Lead-source mix from search start, with untrusted channels labeled plainly.
-
-    Search start is February 2025. Call-derived counts are directional but live;
-    Gmail/LinkedIn source attribution and financials-by-source need a durable
-    source map, ideally on Attio pipeline records.
-    """
-    calls_since_start = [c for c in calls if c.date >= SEARCH_START_DATE]
-    conference_count = sum(1 for c in calls_since_start if _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS))
-    intermediary_count = sum(
-        1 for c in calls_since_start
-        if c.classification == "partner"
-        and not _slug_matches(c.slug, _INVESTOR_SLUG_HINTS)
-        and not _slug_matches(c.slug, _CONFERENCE_SLUG_HINTS)
-        and not _slug_matches(c.slug, _COACHING_SLUG_HINTS)
-        and not _slug_matches(c.slug, _OWNER_SELLER_SLUG_HINTS)
-    )
-    cold_calls = jj.dials_lifetime if jj else "backfill needed"
+    """Fallback source mix when the go-forward source map is unavailable."""
     return [
-        SourceMixRow("Warm email", "backfill needed", "source map needed", "Gmail history not yet classified by lead source", "needs_map"),
-        SourceMixRow("LinkedIn", "backfill needed", "source map needed", "LinkedIn activity not yet classified by lead source", "needs_map"),
-        SourceMixRow("Conferences / networking", str(conference_count), "source map needed", "call + conference records since Feb 2025", "needs_map"),
-        SourceMixRow("Intermediary / river-guide", str(intermediary_count), "source map needed", "broker, advisor, peer, and river-guide calls since Feb 2025", "needs_map"),
-        SourceMixRow("Cold email", "backfill needed", "source map needed", "DealsX / Gmail history needs source backfill", "needs_map"),
-        SourceMixRow("Cold call", str(cold_calls), "source map needed", "JJ operations dials since tracked launch", "needs_map"),
+        SourceMixRow("Warm email", "—", "—", "source map unavailable", "needs_map"),
+        SourceMixRow("LinkedIn", "—", "—", "source map unavailable", "needs_map"),
+        SourceMixRow("Conferences / networking", "—", "—", "source map unavailable", "needs_map"),
+        SourceMixRow("Intermediary / river-guide", "—", "—", "source map unavailable", "needs_map"),
+        SourceMixRow("Broker marketplace", "—", "—", "source map unavailable", "needs_map"),
+        SourceMixRow("Unknown / needs review", "—", "—", "Good Morning should ask Kay to map unclear sources", "needs_map"),
     ]
 
 
@@ -3157,6 +3201,9 @@ def load_ma_analytics(today: date | None = None) -> MAAnalytics:
     today = today or date.today()
     week_start = today - timedelta(days=6)
     week_end = today
+    month_start = today.replace(day=1)
+    month_end = today
+    source_month_label = today.strftime("%B %Y")
     prior_end = week_start - timedelta(days=1)
     prior_start = prior_end - timedelta(days=6)
 
@@ -3175,10 +3222,8 @@ def load_ma_analytics(today: date | None = None) -> MAAnalytics:
     deal_flow_tiles = _build_deal_flow_tiles(
         snapshot, calls, week_start, week_end, prior_start, prior_end, source_map=pipeline_source_map
     )
-    deal_flow_ltd_values = (
-        _deal_flow_ltd_from_source_map(pipeline_source_map, calls)
-        if pipeline_source_map is not None
-        else _deal_flow_ltd_values(snapshot, calls)
+    deal_flow_month_values = _deal_flow_window_values(
+        pipeline_source_map, calls, month_start, month_end
     )
     channels = _build_channels(calls, week_start, week_end, jj=jj, outreach=outreach, dealsx=dealsx)
     trends, x_labels = _build_trends(snapshot, calls, today, jj=jj, weekly_history=weekly_history)
@@ -3193,13 +3238,16 @@ def load_ma_analytics(today: date | None = None) -> MAAnalytics:
     weekly_goals = _build_weekly_goals(
         calls, week_start, week_end, manual_quality, conference_events=conference_events
     )
-    source_rows = _source_mix_from_source_map(pipeline_source_map) or _build_source_mix(calls, jj=jj, outreach=outreach)
+    source_rows = _source_mix_from_source_map(
+        pipeline_source_map, week_start, week_end, month_start, month_end
+    ) or _build_source_mix(calls, jj=jj, outreach=outreach)
 
     return MAAnalytics(
         week_start=week_start,
         week_end=week_end,
         deal_flow_tiles=deal_flow_tiles,
-        deal_flow_ltd_values=deal_flow_ltd_values,
+        deal_flow_month_values=deal_flow_month_values,
+        source_month_label=source_month_label,
         channels=channels,
         source_rows=source_rows,
         trends=trends,
@@ -3436,8 +3484,8 @@ def _usage_tile_overrides(snapshot: dict, source_label: str, now: datetime | Non
     if not isinstance(month_total, int):
         return None
 
-    color = "green" if age_hours <= 24 else "grey"
-    freshness = f"refreshed {fetched_at.strftime('%H:%M')}" if age_hours <= 24 else f"snapshot stale · {age_hours:.0f}h old"
+    color = "green" if age_hours <= 24 else "yellow"
+    freshness = f"refreshed {fetched_at.strftime('%-I:%M %p')}" if age_hours <= 24 else f"snapshot stale · {age_hours:.0f}h old"
     today_text = _format_token_count(today_total) if isinstance(today_total, int) else "—"
     models = snapshot.get("models") if isinstance(snapshot.get("models"), list) else []
     top_model = ""
@@ -3525,7 +3573,7 @@ def _apollo_tile_overrides(snapshot: dict, now: datetime | None = None) -> dict 
             "unit": "remaining / min",
             "runway_text": f"{minute_used} / {minute_limit} used in current minute window",
             "runway_color": color,
-            "trend": f"live · refreshed {fetched_at.strftime('%H:%M')}",
+            "trend": f"live · refreshed {fetched_at.strftime('%-I:%M %p')}",
             "trend_arrow": arrow,
         }
 
@@ -3536,7 +3584,7 @@ def _apollo_tile_overrides(snapshot: dict, now: datetime | None = None) -> dict 
         "unit": "remaining",
         "runway_text": "API reachable · usage headers unavailable",
         "runway_color": "yellow",
-        "trend": f"refreshed {fetched_at.strftime('%H:%M')} · headers blank",
+        "trend": f"refreshed {fetched_at.strftime('%-I:%M %p')} · headers blank",
         "trend_arrow": "flat",
     }
 

@@ -1,0 +1,18 @@
+{
+  "id": "not_b0A4fstAemZ6Ik",
+  "title": "Doug I Kay",
+  "counterparty": "Doug Tudor",
+  "processed_at": "2026-06-22T22:09:00.997976Z",
+  "vault_call_note": "brain/calls/2026-06-22-doug-tudor.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_b0A4fstAemZ6Ik.json",
+  "doc_url": "https://docs.google.com/document/d/1474yj0diKmbjJOftgQbS7nPdciyAL5QnlTuxfbdL3uI/edit?usp=drivesdk",
+  "doc_id": "1474yj0diKmbjJOftgQbS7nPdciyAL5QnlTuxfbdL3uI",
+  "transcript_doc_url": "https://docs.google.com/document/d/1q-3pb5o8uECTzMonz3Sk4sxIu5MoHeXADf0ahs_cn6o/edit?usp=drivesdk",
+  "transcript_doc_id": "1q-3pb5o8uECTzMonz3Sk4sxIu5MoHeXADf0ahs_cn6o",
+  "attio_notes": {
+    "person_dougtudor": "16bccaee-e31b-44f0-a27e-85b6663b649f"
+  },
+  "slack_posted": true,
+  "detector": "granola-api-rest",
+  "task_count": 2
+}

@@ -1,0 +1,18 @@
+{
+  "range": "'Tech Stack Inventory'!A25:K25",
+  "values": [
+    [
+      "BizBuySell",
+      "Deal Sourcing",
+      "Monthly",
+      "24.95",
+      "24.95",
+      "0",
+      "Active / dashboard validated",
+      "",
+      "May checking statement shows BizBuySell $24.95; added to operational dashboard under CRM & Pipeline.",
+      "299.4",
+      "299.4"
+    ]
+  ]
+}

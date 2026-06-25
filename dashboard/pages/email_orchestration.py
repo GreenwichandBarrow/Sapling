@@ -97,6 +97,21 @@ def _manual_backlog_records() -> list[dict[str, str]]:
     return items
 
 
+@lru_cache(maxsize=1)
+def _manual_backlog_metadata() -> dict[str, str]:
+    path = _backlog_path()
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text())
+    except json.JSONDecodeError:
+        return {}
+    return {
+        "targeted_outreach_draft_doc_url": data.get("targeted_outreach_draft_doc_url", ""),
+        "targeted_outreach_draft_doc_id": data.get("targeted_outreach_draft_doc_id", ""),
+    }
+
+
 def _manual_backlog_items() -> list[dict[str, str]]:
     return [
         item
@@ -437,10 +452,10 @@ def _action_link(item: dict[str, str]) -> str:
     return f'<a class="gb-email-open" href="{link}" target="_blank" rel="noreferrer noopener">Review draft</a>'
 
 
-def _targeted_action_link(item: dict[str, str]) -> str:
+def _targeted_action_link(item: dict[str, str], shared_draft_url: str = "") -> str:
     link = _gmail_thread_link(item.get("thread_id", ""))
     if not link:
-        link = item.get("draft_url") or ""
+        link = shared_draft_url or item.get("draft_url") or ""
     if link:
         return f'<a class="gb-email-open" href="{escape(link)}" target="_blank" rel="noreferrer noopener">Review draft</a>'
     return '<span class="gb-email-open muted">Prepare draft</span>'
@@ -484,6 +499,7 @@ def _render_rows(items: list[dict[str, str]], bucket: str, empty: str) -> str:
 def _render_targeted_rows(items: list[dict[str, str]], empty: str) -> str:
     if not items:
         return f'<div class="gb-email-empty">{escape(empty)}</div>'
+    shared_draft_url = _manual_backlog_metadata().get("targeted_outreach_draft_doc_url", "")
     rows = ""
     for index, item in enumerate(items, start=1):
         rows += dedent(
@@ -494,7 +510,7 @@ def _render_targeted_rows(items: list[dict[str, str]], empty: str) -> str:
                 <div class="gb-email-context">{escape(item['event']) + ' · ' if item.get('event') else ''}{escape(item['subject'])}</div>
                 {_targeted_source_links(item)}
               </div>
-              <div>{_targeted_action_link(item)}</div>
+              <div>{_targeted_action_link(item, shared_draft_url)}</div>
             </div>
             """
         ).strip()
@@ -588,7 +604,7 @@ def render() -> None:
         ),
         unsafe_allow_html=True,
     )
-    targeted_outreach = _targeted_outreach_items(buckets["warm"])
+    targeted_outreach = _targeted_outreach_items(buckets["warm"])[:3]
     st.markdown(_render_targeted_bucket(targeted_outreach), unsafe_allow_html=True)
 
     st.markdown(

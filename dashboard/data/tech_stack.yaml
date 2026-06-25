@@ -18,16 +18,14 @@
 categories:
   - label: "AI & LLMs"
     services:
-      - { name: "Claude Code", note: "Anthropic · $217.75/mo" }
+      - { name: "Claude Code", note: "Anthropic · downgraded to individual Pro $17/mo effective Jun 27" }
       - { name: "ChatGPT", note: "OpenAI" }
 
   - label: "CRM & Pipeline"
     services:
       - { name: "Attio", note: "CRM + future Meet Record" }
       - { name: "Apollo", note: "enrichment only" }
-      - { name: "DealsX", note: "email + LinkedIn DMs · live May 7" }
-      - { name: "BizBuySell", note: "deal marketplace · $24.95/mo" }
-      - { name: "KeyReach", note: "DealsX outreach platform · Kay's account free · covered by DealsX $1.5K/mo fee" }
+      - { name: "DealsX", note: "email + LinkedIn DMs · summer pause planned", health: warn }
 
   - label: "Email"
     services:
@@ -46,6 +44,7 @@ categories:
     services:
       - { name: "Granola", note: "may be absorbed by Attio Meet Record", health: warn }
       - { name: "Obsidian", note: "vault" }
+      - { name: "OneNote", note: "Microsoft 365" }
 
   - label: "Storage & Docs"
     services:
@@ -54,7 +53,7 @@ categories:
       - { name: "Google Sheets" }
       - { name: "Google Slides" }
       - { name: "Microsoft Excel", note: "365" }
-      - { name: "DocSend", note: "doc sharing + tracking · $70/mo" }
+      - { name: "DocSend", note: "doc sharing + tracking · Personal $15/mo" }
 
 
   - label: "Communication"
@@ -73,6 +72,7 @@ categories:
   - label: "Operations & Finance"
     services:
       - { name: "Gusto", note: "payroll" }
+      - { name: "QuickBooks", note: "accounting · transition with Kick · $41.37/mo" }
 
   - label: "Development"
     services:
@@ -84,4 +84,4 @@ categories:
     services:
       - { name: "Hetzner", note: "server hosting · ~$11/mo" }
       - { name: "Tailscale", note: "VPN / mesh networking · $8.71/mo" }
-      - { name: "1Password", note: "password manager · $52/mo" }
+      - { name: "1Password", note: "password manager · $52.13/yr ($4.34/mo)" }

@@ -107,7 +107,18 @@ Retired 2026-06-19: the separate afternoon recovery run is no longer scheduled. 
 
 ### Dashboard status output
 
-Every morning/afternoon run writes `brain/context/deal-aggregator-status.json` with:
+If `email-scan-results` contains listing rows from a sender/source that is not already in the static source roster, the run must add that source to the Source Scorecard using the correct channel (`Newsletter` for broker blasts/saved-search digests, `Direct email` for a one-off deal email addressed to Kay). Parsed listing sources must not disappear from dashboard Source Coverage.
+
+Current dashboard Source Coverage doctrine (2026-06-20):
+- Dashboard Source Coverage is an operating roster, not a historical experiment log. Do not show legacy source-test rows unless Kay confirms she is signed up or actively receiving deal flow from that source.
+- Paused / hidden unless reactivated: Empire Flippers, Flippa, Quiet Light, Website Closers, SMB Deal Hunter, Synergy Business Brokers, GP Bullhound, PCO Bookkeepers, and Sica Fletcher.
+- Empire Flippers, Flippa, Quiet Light, and Website Closers are SaaS / digital-heavy and remain out while SaaS is deprioritized.
+- Source Coverage is also Kay's relationship/source guide. Each source row should show: source name, status, this week reviewed/matches, and this month reviewed/matches. This makes stale broker/intermediary sources visible without showing raw debug tables.
+- Newsletter roster includes BizBuySell, Business Exits, Calder Capital, DealForce, Everingham & Kerr, Rejigg, Transworld Business Advisors, Viking Mergers, Axial, and Baton. Calder Capital is active because Kay signed up for the newsletter on 2026-06-20.
+- Direct email means a named intermediary/contact/broker relationship sending Kay a particular deal reference. Current direct-email roster: Benchmark International; Eric Mendelson (firm name TBD); Bob Williamson / Cetane; Matt Luczyk / Peapack; Richard / Stone Hill Advisors; Carlos / In3O; IAG M&A Advisors; DealsX replies (temporary through DealsX sunset).
+- Never show a generic `Direct deal email` source row, Kay/self-sent message, Google Voice text notification, or meet-greenwichandbarrow system message on the dashboard. Normalize domain variants such as `quietlight.com`, `websiteclosers.com`, `greenwichandbarrow.com`, `meet-greenwichandbarrow.com`, and `txt.voice.google.com` before source-coverage display. If a direct deal email cannot be attributed to a named contact/source, surface the attribution gap in Good Morning / plumbing notes, not as a dashboard source.
+
+Every weekday morning run writes `brain/context/deal-aggregator-status.json` with:
 
 ```json
 {
@@ -126,7 +137,7 @@ Every morning/afternoon run writes `brain/context/deal-aggregator-status.json` w
 }
 ```
 
-Digest mode updates the same status file with the weekly `volume_7d_avg`, proposed additions/retirements, stale sources, and top funnel bottlenecks. This is the dashboard contract.
+Manual digest mode must **not** update `brain/context/deal-aggregator-status.json`. That file is the daily dashboard contract and must continue to point at the latest weekday morning scan artifact. If a manual digest needs machine-readable status, write a separate digest-specific artifact instead of overwriting daily status.
 </funnel_effectiveness>
 
 <channels>
@@ -137,13 +148,11 @@ Scan searchable broker platforms for new listings matching the buy box.
 
 **General broker platforms (cross-industry):**
 - Business Exits (businessexits.com/listings/) — email + searchable, consistently accessible
-- DealForce (dealforce.com) — Generational Equity buyer platform, registration required, filter by SIC/EBITDA/revenue
+- DealForce (dealforce.com) — Generational Equity buyer platform; Kay added saved search 2026-06-20, email alerts expected from DealForce / Generational sender domains; route alerts through email-intelligence.
 - Rejigg (rejigg.com) — automated deal match emails + searchable
-- BizBuySell (bizbuysell.com) — high-volume main-street marketplace + email digest; known scraper 403, requires agent-browser/email route
 - BizQuest (bizquest.com) — BizBuySell/LoopNet-adjacent marketplace; added from NY ETA/SMB chat recommendation on 2026-06-16, test public scrape + email alerts
 - DealMatch (domain/account TBD) — recommended in NY ETA/SMB chat on 2026-06-16; add to source-scout queue, verify URL/registration and whether email digest exists before live scan
 - Baton Market (baton.com) — registered by Kay 2026-06-19; email alerts expected. Sender observed: `chat@baton.com`, already labeled `auto/deal flow`. Treat as active email-alert marketplace source; email-intelligence captures alerts and deal-aggregator classifies in the morning run.
-- Flippa (flippa.com) — email alerts + searchable (mostly digital/online businesses)
 
 **AI-powered marketplaces (confirmed scrapable):**
 - DealFlow Agent (dealflowagent.com) — landing page only, no live listings (4/21: `/listings` 404, marketing-buyer-counts content only). Monitor for marketplace launch; not a live-flow source.
@@ -157,10 +166,12 @@ Scan searchable broker platforms for new listings matching the buy box.
 - Searchfunder (searchfunder.com) — member deal board + email digest. Kay has annual membership. Path: enable email alerts in notification settings → email-intelligence picks up digest → deal-aggregator classifies matches. Backend scraping not available on member tier.
 
 **General broker platforms (email-only, no searchable platform):**
+- BizBuySell (bizbuysell.com) — saved-search / membership emails only; Kay confirmed 2026-06-20 this should be treated as newsletter/email flow, not active marketplace scraping
 - Everingham & Kerr (everkerr.com) — most active broker, email listings
+- Calder Capital (caldergr.com) — M&A advisor/broker email source; Kay requested active email-source coverage 2026-06-20; route deal emails through email-intelligence.
+- Transworld Business Advisors — broker newsletter / multi-listing email source, including Samuel Curcio / Transworld Business Advisors NY blasts. Classify as newsletter in dashboard source coverage when email-intelligence extracts listing rows.
 - Benchmark International (embracebenchmark.com) — email deal flow, advisory only
-- Viking Mergers (vikingmergers.com) — periodic deal blasts
-- Quiet Light (quietlight.com) — email + searchable but persistently Cloudflare-blocked
+- Viking Mergers (vikingmergers.com) — periodic newsletter/deal blasts; active but low-priority because Viking is not highly present in the Northeast
 
 **Relationship-only intermediaries (no public listings):**
 - Woodbridge International (woodbridgegrp.com) — homepage accessible, no public listings
@@ -168,9 +179,13 @@ Scan searchable broker platforms for new listings matching the buy box.
 - IAG M&A Advisors (iagmerger.com) — Kay has account, advisory
 - ProNova Partners (pronovapartners.com) — 403 blocked, relationship-only
 
+**Paused SaaS / digital sources (do not scan while SaaS is deprioritized):**
+- Flippa (flippa.com) — paused 2026-06-20; emails may still arrive but should not be scanned or counted as active source unless SaaS is reactivated
+- Quiet Light (quietlight.com) — paused 2026-06-20; emails may still arrive but should not be scanned or counted as active source unless SaaS is reactivated
+- Website Closers (websiteclosers.com) — paused 2026-06-20; do not scan or count as active source unless SaaS is reactivated
+
 **Gated platforms (need Kay's registration / source-scout validation):**
 - FE International (app.feinternational.com) — requires buyer registration
-- Website Closers (websiteclosers.com) — no public listings page
 - DealMatch — URL/account/scrapability TBD; source recommended by peer, validate before daily rotation
 - Baton Market — registered 2026-06-19; now active via email alerts from `chat@baton.com` / Baton domain. Web marketplace may remain login-gated; primary path is email-intelligence.
 
@@ -201,6 +216,16 @@ For each active niche from Step 0a, resolve its keyword corpus:
   Combine these into a match corpus for the niche. Log "DealsX reference blank for {niche}; corpus built from WR row (Niche Hypothesis + Quick notes)" in the scan artifact for visibility and calibration.
 
 **Codex-native corpus enrichment:** Do not rely on DealsX naming alone. For every active niche, add G&B-native synonyms from the WEEKLY REVIEW row, the relevant buy-box doc language, prior `BROKER-OPPORTUNISTIC` and `NEAR-MISS` themes, and obvious broker-market language. Log the enrichment path in the artifact so weak corpora can be improved in CIO review.
+
+**Step 0d — Load new-niche watchlist from latest Niche Intelligence (REQUIRED):**
+Read the latest `brain/trackers/niches/niche-intel-YYYY-MM-DD.json` sidecar and any `WEEKLY REVIEW` rows with Current Status `New`. These are NOT active theses and must not become `PASS` / Slack-posted solely because they match. They are a watchlist corpus used to upgrade relevant listings into `BROKER-OPPORTUNISTIC`, `NEAR-MISS`, or `FLAG` with a clear `new-niche-watchlist` note for CIO review and next niche-intelligence calibration.
+
+Current watchlist additions from the 2026-06-23 Niche Intelligence assessment:
+- **Luxury Amenity Management for Commercial/Residential Real Estate** — corpus: luxury amenity management, amenity operator, amenity operations, building amenities, resident amenities, tenant amenities, fitness center management, spa management, pool management, concierge staffing, lifestyle programming, club amenities, Class-A amenities, multifamily amenity management, hospitality amenity services, portfolio amenity contracts.
+- **Premium Physical Security Integration & Lifecycle Maintenance for Luxury Retail and Class-A Commercial Portfolios** — corpus: physical security integration, security systems integrator, access control, video surveillance, CCTV, intrusion detection, visitor management, managed video, hosted access control, preventive maintenance, lifecycle maintenance, luxury retail security, Class-A commercial security, multisite security standards, RMR security, monitoring contracts. Exclude pure cybersecurity software unless it is bundled with physical security integration or managed physical-security service contracts.
+- **Asset-Light Boat and Yacht Transport Coordination for Marinas, Dealers, Brokers, and Seasonal Owners** — corpus: boat transport, yacht transport, marine transport coordination, boat hauling brokerage, yacht hauling brokerage, oversize permits, escort coordination, marina logistics, dealer transport, yacht broker logistics, seasonal boat moves, boat-show transport, asset-light carrier coordination, marine logistics. Prefer asset-light coordinator/broker models; fleet-heavy towing/hauling without coordination or recurring marina/dealer relationships is at most `FLAG`.
+
+A watchlist match should be logged in Listings Reviewed as `new-niche-watchlist: {niche name}`. If it also clears financial/structural gates and has no hard-exclude, classify as `BROKER-OPPORTUNISTIC` rather than generic `NEAR-MISS`; otherwise preserve as `FLAG`/`NEAR-MISS` with the watchlist signal.
 
 **Step 0b — Load buy-box criteria (REQUIRED before scanning):**
 Read the three buy-box docs from the Deal Aggregator Drive folder. These are the single source of truth for all filter criteria. Never use cached or hardcoded bands; always re-read on every run so the skill reflects Kay's current criteria.
@@ -241,9 +266,6 @@ CALIFORNIA soft-exclude per `feedback_no_california` applies on all modes — fl
 
 Default: WebFetch. If WebFetch returns 403 / 401 / JS shell / Cloudflare challenge, route through `agent-browser` (installed via `npm i -g agent-browser && agent-browser install`). Known JS-shell / Cloudflare-blocked / 403 sources that MUST use agent-browser:
 
-- BizBuySell (`bizbuysell.com`) — 403 on scraper user-agents
-- Flippa (`flippa.com`) — JS shell, no server-rendered listings
-- Quiet Light (`quietlight.com`) — Cloudflare-gated
 - businessesforsale.com — 403
 - Any gated marketplace requiring login (Acquire, FE International, Axial, BizScout, Kumo post-registration)
 
@@ -333,7 +355,7 @@ The skill runs twice on weekdays: 7:30am ET (morning, full run — after email-i
 
 **Afternoon run (`--afternoon`):**
 - Re-read buy-boxes + active niches (in case Kay edited during the day)
-- Rescan ONLY the email-driven channels (Channel 2) + time-sensitive platforms (Rejigg, Flippa, Everingham & Kerr afternoon blasts)
+- Rescan ONLY the email-driven channels (Channel 2) + time-sensitive non-SaaS platforms (Rejigg, Everingham & Kerr afternoon blasts)
 - Check fingerprint store for any deals that landed after morning run
 - Write `brain/context/deal-aggregator-scan-{date}-afternoon.md` (separate artifact, do NOT overwrite morning)
 - Slack notify new (non-fingerprinted) matches
@@ -521,12 +543,23 @@ Forbidden: do not summarize listings into aggregate counts only. Every listing t
 
 Every source scanned this run MUST appear as a row — no exceptions. Missing rows = scan agent skipped a source and the run fails its stop hook.
 
+Dashboard source categories are intentionally limited to three audience-facing buckets:
+- `Marketplace` — searchable listing sites or buyer platforms the skill scrubs directly.
+- `Newsletter` — recurring broker/platform blasts, saved-search alerts, or membership digests parsed from email.
+- `Direct email` — any intermediary, broker, advisor, or contact email addressed to Kay with a particular deal reference.
+
+Manual deal-source work is separate from reviewed sources. Only marketplace-style sources that require login, setup, registration, or manual search should appear in the manual queue; direct relationship/email sources should not be shown as manual marketplace work.
+
+Dashboard deal status is binary for Kay: `Matches` = PASS rows; `Filtered out` = every non-PASS row, including broker-opportunistic, near-miss, flag, and hard-reject. Keep internal lanes in artifacts if useful for calibration, but do not expose a separate borderline/learning metric on the dashboard.
+
+Every `auto/deal flow` source observed in the current-week email artifact must be accounted for in Source Scorecard unless it is explicitly paused. Current active email/newsletter/direct sources that must not disappear from dashboard coverage: BizBuySell, Calder Capital, DealForce / Generational, Transworld Business Advisors, Everingham & Kerr, Business Exits, Baton, Axial, DealsX replies, and direct intermediary forwards. Current paused/ignored sources: Flippa, Quiet Light / quietlight.com, Website Closers / websiteclosers.com, and SMB Deal Hunter. If an observed active sender has zero listing rows, include a scorecard row with `Listings Reviewed: 0` and a status reason rather than letting the source vanish.
+
 | Source | Category | Status | HTTP | Listings Reviewed | Matches | Last Match Date |
 |--------|----------|--------|------|-------------------|---------|-----------------|
-| Business Exits | General | active | 200 | 12 | 0 | 2026-04-14 |
-| BizBuySell | General | active | 200 | 47 | 1 | 2026-04-22 |
-| Quiet Light | General | blocked (verified) | 403 | 0 | — | 2026-03-30 |
-| Sica Fletcher | Niche-Specific (Insurance) | active | 200 | 8 | 0 | 2026-04-18 |
+| Business Exits | Marketplace | active | 200 | 12 | 0 | 2026-04-14 |
+| BizBuySell | Newsletter | active email/newsletter | — | email-derived | 1 | 2026-04-22 |
+| Quiet Light | Marketplace | dormant | — | 0 | — | — |
+| Sica Fletcher | Marketplace | active | 200 | 8 | 0 | 2026-04-18 |
 | (… one row per source in Sourcing Sheet "Active" status …) | | | | | | |
 
 **Status values:**
@@ -688,6 +721,7 @@ Wired 2026-05-02 during the legacy launchd-debugger investigation; now enforced 
 ### Scan Stop Hook
 - [ ] Step 0b completed: all three buy-box docs were freshly read from Drive this run (Services, Insurance, SaaS). Cached or hardcoded bands = hard fail.
 - [ ] Step 0c completed: keyword corpus resolved for EVERY active niche. For any niche where the WEEKLY REVIEW "DealsX Niche" field is blank, the corpus was built from the WR row itself (Niche Hypothesis + Quick notes + other populated fields). Niche-name-alone matching is NOT acceptable when other WR row data is available. This is a hard requirement.
+- [ ] Step 0d completed: latest Niche Intelligence `New` rows / sidecar were loaded as watchlist corpus. Watchlist matches must be logged as `new-niche-watchlist: {niche}` and are not PASS/Slack eligible unless Kay separately promotes the niche to active.
 - [ ] Every match includes: source, listing URL, company description, industry, revenue/EBITDA (or "not disclosed"), geography
 - [ ] Listing URL is a working link (not a search results page or homepage)
 - [ ] Each listing routed to the correct buy-box category (Services / Insurance / SaaS) per the routing rule
@@ -701,6 +735,7 @@ Wired 2026-05-02 during the legacy launchd-debugger investigation; now enforced 
 - [ ] `brain/context/deal-aggregator-status.json` written for dashboard consumption.
 
 ### Source Scorecard Stop Hook (Phase 2)
+- [ ] The run artifact separates source coverage into two concepts: (1) automated run coverage — sources the skill actually scrubs or reads from email when it runs, categorized only as Marketplace, Newsletter, or Direct email; (2) Manual deal sources to aggregate — marketplace-style sources that require login, setup, registration, or manual search. Direct relationship/email sources do not belong in the manual marketplace queue. Do not blend these into one source list.
 - [ ] Every source with `Status: Active` on the Sourcing Sheet has a row in the scan artifact's `## Source Scorecard`. Row count = Active row count on the sheet. Mismatch = scan agent skipped a source → hard fail.
 - [ ] No source marked `blocked` without a verification second-attempt. If only one fetch attempt was made, the status MUST be `blocked (single-attempt)`, NOT `blocked (verified)`. Precedent: Sica Fletcher mis-labeled 404 for days in April 2026 — `feedback_test_before_concluding_channel_dead` exists specifically to prevent this.
 - [ ] `Matches` and `Last Match Date` columns pulled from the fingerprint JSONL, not fabricated. If fingerprint store is empty for a source, `Matches` = 0 and `Last Match Date` = "—".

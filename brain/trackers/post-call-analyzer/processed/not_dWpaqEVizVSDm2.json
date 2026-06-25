@@ -1,0 +1,20 @@
+{
+  "id": "not_dWpaqEVizVSDm2",
+  "title": "Sam I Steuart I Kay",
+  "counterparty": "Ultima Search Partners",
+  "processed_at": "2026-06-22T17:05:03Z",
+  "vault_call_note": "brain/calls/2026-06-22-ultima-search-partners.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_dWpaqEVizVSDm2.json",
+  "doc_url": "https://docs.google.com/document/d/1IEf5Rnwy8B2eUnaGD8KLsKNv0ZNC8rcK0z3seHeFwAs/edit?usp=drivesdk",
+  "doc_id": "1IEf5Rnwy8B2eUnaGD8KLsKNv0ZNC8rcK0z3seHeFwAs",
+  "transcript_doc_url": "https://docs.google.com/document/d/1CLH87yZCvIamXQ2uE7VtS8gEbYvpBJAb-7RjltiCJV0/edit?usp=drivesdk",
+  "transcript_doc_id": "1CLH87yZCvIamXQ2uE7VtS8gEbYvpBJAb-7RjltiCJV0",
+  "attio_notes": {
+    "person_sam_hyde": "a1265dea-7035-41ca-8faf-b05dc7428921",
+    "person_steuart_botchford": "f10b9bfb-d533-41ab-84ac-02d800e40ec4",
+    "company_ultima_search_partners": "a1336f5b-cd37-40a0-ab96-c70af7bc52c2"
+  },
+  "slack_posted": true,
+  "detector": "granola-api-rest",
+  "task_count": 3
+}

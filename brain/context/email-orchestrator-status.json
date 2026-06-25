@@ -1,23 +1,20 @@
 {
   "blocked": [],
-  "deal_items": 20,
-  "drafts_missing_recipient": 1,
-  "drafts_pending": 2,
-  "fetched_at": "2026-06-19T10:07:15.592154-04:00",
-  "input_artifact": "brain/context/email-intelligence-input-2026-06-19.json",
+  "deal_items": 28,
+  "drafts_missing_recipient": 0,
+  "drafts_pending": 0,
+  "fetched_at": "2026-06-24T19:55:56.278251-04:00",
+  "input_artifact": "brain/context/email-intelligence-input-2026-06-24.json",
   "input_status": "ok",
   "needs_kay": [
-    "1 draft(s) missing recipient",
-    "5 email-derived task candidate(s)",
-    "20 broker/listing row(s) extracted",
-    "1 introduction/relationship item(s)",
-    "Clarify email follow-through identity/source: Greg; Sara"
+    "28 broker/listing row(s) extracted",
+    "Clarify email follow-through identity/source: Krupa; Greg; Denning; Matt (+1 more)"
   ],
   "pipeline_items": 0,
-  "relationship_items": 1,
+  "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-06-19.md",
+  "source_artifact": "brain/context/email-scan-results-2026-06-24.md",
   "source_status": "ok",
   "stale_drafts": 0,
-  "task_candidates": 5
+  "task_candidates": 0
 }

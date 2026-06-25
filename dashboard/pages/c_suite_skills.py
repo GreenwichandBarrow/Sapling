@@ -94,7 +94,9 @@ def _schedule_or_trigger(skill: SkillHealth) -> tuple[str, bool]:
     if skill.is_scheduled:
         return f"⏱ {skill.schedule_text}", False
     if skill.is_gap:
-        return "Migration docs say scheduled · no job registered", True
+        if skill.schedule_text and skill.schedule_text != "—":
+            return f"Timer disabled · {skill.schedule_text}", True
+        return "Migration docs say scheduled · no active timer", True
     if skill.trigger_text:
         return skill.trigger_text, True
     return "On-demand", True

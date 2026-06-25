@@ -164,11 +164,13 @@ Pipeline mutation without a verified snapshot on disk.
 Read all Pipeline rows. Identify rows matching archival criteria:
 - Decision = Skip AND date is past → Skipped tab
 - Status = Attended OR (Decision = Attend AND date is past) → Attended tab
-- Date is past AND no attend decision/status → Skipped tab
+- Date is past AND Decision is blank, NEW, Evaluating, Skip/Skipped, or otherwise has no attendance/registration commitment → Skipped tab
 
 Do not archive current-week or future-dated rows solely because Decision =
 Skip. Kay uses those visible skipped rows to keep optionality and may change her
-mind before the event date passes.
+mind before the event date passes. Past `Evaluating` or `NEW` rows are passive
+misses and should be moved to Skipped during this pass rather than preserved for
+review after the event has passed.
 
 **Archival cap check:** If your candidate archival list exceeds 15 rows,
 STOP. Print the candidate list to stderr and exit 2. This is presumptively

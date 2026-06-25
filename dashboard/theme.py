@@ -1092,6 +1092,9 @@ GLOBAL_CSS = f"""
     font-size: 12px;
   }}
   .gb-source-row:last-child {{ border-bottom: none; }}
+  .gb-source-row-coverage {{
+    grid-template-columns: 1.8fr 0.9fr 1.1fr 1.1fr;
+  }}
   .gb-source-detail {{ color: var(--text-dim); font-size: 11px; margin-top: 3px; }}
   .gb-status-dot {{
     display: inline-block;
@@ -2073,6 +2076,9 @@ GLOBAL_CSS = f"""
     grid-template-columns: repeat(5, 1fr);
     gap: 1px;
     background: var(--border);
+  }}
+  .gb-pipe-strip-with-closed {{
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }}
   .gb-pipe-cell {{
     background: var(--panel);

@@ -60,8 +60,10 @@ Scheduled jobs must use 1Password-backed secrets. MCP tools are optional conveni
    - Task candidate -> `task-tracker-manager` after Kay approval
    - Morning decision -> `goodmorning`
 4. Collapse duplicates by entity, thread, and decision.
-5. Produce a decisions-only summary for Kay when human approval is needed.
-6. Write dashboard status to `brain/context/email-orchestrator-status.json`.
+5. For the Email Orchestration dashboard, seed `24-hour thank-yous` from prior-day external calendar meetings before rendering. Exclude all-day/internal/webinar/reminder events; include external attendees and `Person I Kay` / `Kay / Person` style external meetings.
+6. Before exposing any row in `brain/context/email-follow-through-backlog.json` as active on the dashboard or in Good Morning, verify whether Kay already sent it using bounded sent-mail search by recipient/name and recent window. If sent evidence exists, mark the row `completed` with thread/date evidence and do not surface it.
+7. Produce a decisions-only summary for Kay when human approval is needed.
+8. Write dashboard status to `brain/context/email-orchestrator-status.json`.
 
 ## Dashboard Status Contract
 
@@ -84,6 +86,20 @@ Write JSON with this shape:
 ```
 
 `send_blockers` is a safety metric: it counts items that would require sending and therefore must stop for Kay review.
+
+## Targeted Outreach Draft Contract
+
+For the Email Orchestration dashboard's targeted outreach section, use one shared Google Doc for all daily outreach draft text. Do not create one Google Doc per target. Store the shared doc metadata once in `brain/context/email-follow-through-backlog.json` using:
+
+```json
+{
+  "targeted_outreach_draft_doc_id": "...",
+  "targeted_outreach_draft_doc_url": "...",
+  "targeted_outreach_draft_doc_policy": "Single shared Google Doc for all targeted outreach drafts; do not create per-target draft docs."
+}
+```
+
+Each targeted outreach dashboard row should link to that shared doc. Row-level `draft_url` values are legacy only and should not be used for new targeted outreach. The dashboard remains draft/review only and never sends email.
 
 ## Output Rules
 

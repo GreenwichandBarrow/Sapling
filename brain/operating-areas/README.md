@@ -31,6 +31,7 @@ Do not create device-local Codex projects for ongoing operational work unless th
 - [Non-Profit - Myself Renewed](family-office/Non-Profit-Myself-Renewed/README.md)
 - [Private Lending - KF Capital](family-office/Private-Lending-KF-Capital/README.md)
 - [Real Estate - Kai Grey](family-office/Real-Estate-Kai-Grey/README.md)
+- [Travel - Month Abroad](family-office/Travel-Month-Abroad/README.md)
 - [Trust - Panthera Grey](family-office/Trust-Panthera-Grey/README.md)
 
 ## Filing Rule

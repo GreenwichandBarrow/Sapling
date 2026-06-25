@@ -121,10 +121,14 @@ def _systemd_registered_jobs() -> set[str]:
     names: set[str] = set()
     for line in out.stdout.splitlines():
         parts = line.split()
-        if not parts:
+        if len(parts) < 2:
             continue
         unit = parts[0]
-        if unit.endswith(".timer"):
+        state = parts[1]
+        # A timer unit file can exist while the timer is disabled/inactive.
+        # The dashboard canary should treat only enabled timers as registered;
+        # disabled generated files are surfaced separately as gaps.
+        if unit.endswith(".timer") and state == "enabled":
             names.add(unit[: -len(".timer")])
     return names
 

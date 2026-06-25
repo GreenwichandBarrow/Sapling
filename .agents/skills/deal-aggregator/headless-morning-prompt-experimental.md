@@ -22,6 +22,7 @@ Before reading SKILL.md or doing any work:
 2. **Resolve credentials through 1Password first:** `source /home/ubuntu/projects/Sapling/scripts/op-env.sh`. If `gog` access appears missing, run `gog auth list --check` before reporting an outage. Never source `scripts/.env.launchd` raw.
 3. **Load buy-boxes** (Services / Insurance / SaaS Google Doc IDs in SKILL.md). Live read every run.
 4. **Load active niches** from Industry Research Tracker WEEKLY REVIEW tab.
+4a. **Load new-niche watchlist** from the latest niche-intelligence sidecar / WEEKLY REVIEW `New` rows per SKILL.md Step 0d. Watchlist matches are NOT PASS/Slack eligible by themselves; use them to preserve `BROKER-OPPORTUNISTIC`, `NEAR-MISS`, or `FLAG` signals for CIO review.
 5. **Read** `brain/context/email-scan-results-{TODAY}.md` for email-inbound deals. If missing, run a bounded retry loop (3 checks, 60 seconds apart) before declaring `email_scan_status: missing`. Do not scan Gmail directly.
 6. **Scan all configured sources** (Channels 1 + 3 for morning run; Channel 4 association deal boards if scheduled). Every source listed as `active` in the Sourcing Sheet must produce a Source Scorecard row.
 7. **Apply BUY-BOX filters per the Data Availability Rule (missing data ≠ rejection).** Mark each listing as buy-box PASS or FAIL.

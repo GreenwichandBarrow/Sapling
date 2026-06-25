@@ -451,26 +451,28 @@ def _render_zone_4(log: CalibrationLog) -> str:
 def _render_subtitle() -> str:
     return (
         '<div class="gb-subtitle">'
-        "System health, external connectivity, credits &amp; spend, and what "
-        'the system learned this week. <span class="highlight">One place to ask '
-        "&ldquo;is the plumbing OK?&rdquo;</span>"
+        "System health, external connectivity, credits &amp; spend."
         "</div>"
     )
 
 
 def _render_summary(health_tiles: list[HealthTile], credits: list[CreditTile], stack: list[StackCategory]) -> str:
-    """Top operating status across system health, credit usage, and tooling inventory."""
+    """Top operating status across system health, usage freshness, and tooling inventory."""
     health = system_health_summary(health_tiles)
     credits_in_range = sum(1 for t in credits if t.runway_color == "green")
-    credits_pending = sum(1 for t in credits if t.runway_color == "none")
+    credits_monitor = sum(1 for t in credits if t.runway_color == "yellow")
+    credits_alert = sum(1 for t in credits if t.runway_color == "red")
+    credits_pending = sum(1 for t in credits if t.runway_color in {"none", "grey"})
     stack_count = tech_stack_count(stack)
     system_color = "var(--green)" if health["alert"] == 0 and health["warn"] == 0 else "var(--yellow)"
-    spend_color = "var(--green)" if credits_pending == 0 else "var(--text-muted)"
+    usage_issue_count = credits_monitor + credits_alert + credits_pending
+    usage_issue_label = "usage needs review" if credits_monitor or credits_alert else "usage pending data"
+    usage_issue_color = "var(--yellow)" if credits_monitor else "var(--red)" if credits_alert else "var(--text-muted)"
     return (
         '<div class="gb-summary">'
         f'<div><span class="num" style="color:{system_color};">{health["healthy"]} / {sum(health.values())}</span>system healthy</div>'
-        f'<div><span class="num" style="color:{spend_color};">{credits_in_range}</span>usage in range</div>'
-        f'<div><span class="num" style="color:var(--text-muted);">{credits_pending}</span>usage pending data</div>'
+        f'<div><span class="num" style="color:var(--green);">{credits_in_range}</span>usage in range</div>'
+        f'<div><span class="num" style="color:{usage_issue_color};">{usage_issue_count}</span>{usage_issue_label}</div>'
         f'<div><span class="num">{stack_count}</span>tools inventoried</div>'
         "</div>"
     )

@@ -1,0 +1,494 @@
+{
+  "tech_stack": {
+    "range": "'Tech Stack Inventory'!A1:K30",
+    "values": [
+      [
+        "Tool",
+        "Category",
+        "Billing Now",
+        "Current $/Mo",
+        "If Annual $/Mo",
+        "Saves $/Mo",
+        "Status",
+        "Overlaps",
+        "Notes",
+        "Annual Total",
+        "If Annual/Yr"
+      ],
+      [
+        "Linkt",
+        "List Building",
+        "Monthly",
+        "0",
+        "0",
+        "300",
+        "Cancelled / dashboard absent OK",
+        "Apollo",
+        "VALIDATION FLAG: absent from operational dashboard because canceled. Removed from forward run-rate; Apollo is replacement list-building system.",
+        "0",
+        "0"
+      ],
+      [
+        "Claude Code",
+        "AI/Orchestration",
+        "Monthly",
+        "17",
+        "17",
+        "200.75",
+        "Downgraded effective Jun 27",
+        "ChatGPT",
+        "May checking shows $217.75 old Max plan charge; Individual Pro $17/mo effective Jun 27.",
+        "204",
+        "204"
+      ],
+      [
+        "Attio CRM",
+        "CRM",
+        "Annual",
+        "69",
+        "69",
+        "17",
+        "Active / verify renewal",
+        "",
+        "Does not appear in May checking statement. Prior note referenced $901.49/yr, but row modeled $69/mo; verify renewal invoice.",
+        "828",
+        "828"
+      ],
+      [
+        "SquareSpace",
+        "Website",
+        "Annual",
+        "49",
+        "49",
+        "0",
+        "Active / verify",
+        "",
+        "Does not appear in May checking statement; verify from annual renewal receipt.",
+        "588",
+        "588"
+      ],
+      [
+        "QuickBooks",
+        "Accounting",
+        "Monthly",
+        "41.37",
+        "41.37",
+        "0",
+        "Active / dashboard validated",
+        "Kick",
+        "May checking statement shows Intuit/QBooks $41.37. Added to operational dashboard under Operations & Finance; keep through bookkeeper/Kick transition.",
+        "496.44",
+        "496.44"
+      ],
+      [
+        "Superhuman",
+        "Email",
+        "Annual",
+        "0",
+        "0",
+        "43.55",
+        "Cancelled / dashboard absent OK",
+        "Gmail",
+        "VALIDATION FLAG: absent from operational dashboard because canceled. May checking shows $43.55 historical charge; May 22 cancellation email confirms no forward run-rate.",
+        "0",
+        "0"
+      ],
+      [
+        "Howie",
+        "Scheduling",
+        "Annual",
+        "25",
+        "10",
+        "15",
+        "Active / verify",
+        "Calendar",
+        "Does not appear in May checking statement. Prior note says annual $120/yr ($10/mo), but row modeled $25/mo; verify actual plan.",
+        "300",
+        "120"
+      ],
+      [
+        "Google Workspace",
+        "Workspace",
+        "Annual",
+        "28.71",
+        "28.71",
+        "4",
+        "Active",
+        "",
+        "May checking statement shows GOOGLE*SVCSGREENWICHAN $28.71.",
+        "344.52",
+        "344.52"
+      ],
+      [
+        "Google One",
+        "Storage",
+        "Monthly",
+        "2.16",
+        "2.16",
+        "0",
+        "Active / verify",
+        "Google Workspace",
+        "May checking statement shows PAYPAL *GOOGLE GOOGLE ONE $2.16. Small separate storage charge; can fold into Google Workspace later.",
+        "25.92",
+        "25.92"
+      ],
+      [
+        "Google Voice",
+        "Phone",
+        "Annual",
+        "10",
+        "10",
+        "0",
+        "Active / verify",
+        "",
+        "Does not appear in May checking statement; verify from annual renewal receipt.",
+        "120",
+        "120"
+      ],
+      [
+        "ChatGPT",
+        "AI",
+        "Monthly",
+        "21.73",
+        "21.73",
+        "0",
+        "Active",
+        "Claude",
+        "May checking statement shows OpenAI/ChatGPT $21.73.",
+        "260.76",
+        "260.76"
+      ],
+      [
+        "Canva",
+        "Design",
+        "Annual",
+        "10",
+        "10",
+        "5",
+        "Active / verify",
+        "",
+        "Does not appear in May checking statement; verify from annual renewal receipt.",
+        "120",
+        "120"
+      ],
+      [
+        "Slack",
+        "Comms",
+        "Annual",
+        "15",
+        "15",
+        "0",
+        "Active / verify",
+        "",
+        "Does not appear in May checking statement; verify from annual renewal receipt.",
+        "180",
+        "180"
+      ],
+      [
+        "Granola",
+        "Meetings",
+        "Monthly",
+        "15.24",
+        "15.24",
+        "0",
+        "Active",
+        "",
+        "May checking statement shows Granola $15.24.",
+        "182.88",
+        "182.88"
+      ],
+      [
+        "GitHub",
+        "Code Hosting",
+        "Free",
+        "0",
+        "0",
+        "0",
+        "Active",
+        "",
+        "Free tier.",
+        "0",
+        "0"
+      ],
+      [
+        "Cursor",
+        "Coding IDE",
+        "Free",
+        "0",
+        "0",
+        "0",
+        "Active",
+        "Claude Code",
+        "Free tier.",
+        "0",
+        "0"
+      ],
+      [
+        "Apollo",
+        "List Building",
+        "Monthly",
+        "64.24",
+        "64.24",
+        "0",
+        "Active",
+        "Linkt",
+        "May checking statement shows Apollo $64.24. Replaced Linkt for list building; integrates to Attio directly.",
+        "770.88",
+        "770.88"
+      ],
+      [
+        "Hetzner",
+        "Infrastructure",
+        "Monthly",
+        "11",
+        "11",
+        "0",
+        "Active / verify",
+        "",
+        "Does not appear in May checking statement; verify VPS billing source.",
+        "132",
+        "132"
+      ],
+      [
+        "Tailscale",
+        "Infrastructure",
+        "Monthly",
+        "8.71",
+        "8.71",
+        "0",
+        "Active",
+        "",
+        "May checking statement shows Tailscale $8.71; prior free-tier note was stale.",
+        "104.52",
+        "104.52"
+      ],
+      [
+        "1Password",
+        "Security",
+        "Annual",
+        "4.34",
+        "4.34",
+        "47.79",
+        "Active",
+        "",
+        "May checking statement shows annual $52.13. Run-rate shown as monthly equivalent, not cash-timing.",
+        "52.13",
+        "52.13"
+      ],
+      [
+        "DealsX / KeyReach",
+        "Outreach",
+        "Monthly",
+        "0",
+        "0",
+        "1000",
+        "Pausing for summer",
+        "Cold outbound",
+        "No May checking transaction found under DealsX/KeyReach; keep as service-plan item and remove $1K/mo from runway starting Jul per Kay.",
+        "0",
+        "0"
+      ],
+      [
+        "AI Consultant / Dodo Digital",
+        "AI/Consulting",
+        "Monthly",
+        "0",
+        "0",
+        "1000",
+        "Paused / budget-only service",
+        "Claude / internal ops",
+        "VALIDATION FLAG: budget-only service vendor, not dashboard tech stack. May checking maps Dodo Digital to the $1,000 AI consultant charge; removed from runway plan starting Jul.",
+        "0",
+        "0"
+      ],
+      [
+        "DocSend",
+        "Document Sharing",
+        "Monthly",
+        "70.77",
+        "70.77",
+        "0",
+        "Active / dashboard validated",
+        "",
+        "May checking statement shows Dropbox DocSend $70.77; present on operational dashboard.",
+        "849.24",
+        "849.24"
+      ],
+      [
+        "BizBuySell",
+        "Marketplace",
+        "Free",
+        "0",
+        "0",
+        "24.95",
+        "Downgraded free / marketplace absent OK",
+        "",
+        "Kay downgraded to free membership on 2026-06-20. Not tech stack; marketplace only. Apr/May $24.95 charges are historical until June statement confirms stopped.",
+        "0",
+        "0"
+      ],
+      [
+        "Total Costs",
+        "",
+        "",
+        "463.27",
+        "447.27",
+        "2657.04",
+        "Updated 2026-06-20",
+        "",
+        "Forward run-rate after confirmed July pauses/downgrades, Linkt cancellation, and BizBuySell free downgrade. Uses May checking statement cash amounts where available.",
+        "5559.29",
+        "5367.29"
+      ]
+    ]
+  },
+  "runway": {
+    "range": "'Runway Forecast'!A22:B62",
+    "values": [
+      [
+        "Months at Plan of Record (from Jun 1)",
+        "7.4"
+      ],
+      [
+        "Projected Zero (Plan of Record)",
+        "Jan 2027"
+      ],
+      [
+        "Fund Deadline",
+        "Feb 2027"
+      ],
+      [
+        "Shortfall",
+        "-1 month"
+      ],
+      [
+        "Additional Monthly Savings Needed",
+        "1500"
+      ],
+      [],
+      [
+        "INVESTOR REPORTING",
+        "INVESTOR REPORTING"
+      ],
+      [
+        "budget_remaining",
+        "168968"
+      ],
+      [
+        "budget_pct",
+        "30.62%"
+      ],
+      [
+        "burn_rate_plan",
+        "16913"
+      ],
+      [
+        "runway_months_plan",
+        "7.4"
+      ],
+      [],
+      [],
+      [
+        "PLAN OF RECORD \u2014 No Salary Cut; office rent held for now",
+        "Updated 2026-06-20 \u00b7 cold call ends Jul, Claude downgraded Jun 27, AI consultant paused, DealsX summer pause, Linkt cancelled, BizBuySell free"
+      ],
+      [],
+      [
+        "ASSUMPTIONS"
+      ],
+      [
+        "Anchor balance (May 31 2026)",
+        "168968"
+      ],
+      [
+        "Base net steady-state burn /mo",
+        "21079"
+      ],
+      [
+        "Cold calling service ends Jul 1",
+        "-1040"
+      ],
+      [
+        "AI consultant paused from Jul",
+        "-1000"
+      ],
+      [
+        "Claude downgrade effective Jun 27 (to $17/mo)",
+        "-201"
+      ],
+      [
+        "DealsX summer pause from Jul",
+        "-1000"
+      ],
+      [
+        "Linkt cancelled from Jul",
+        "-300"
+      ],
+      [
+        "Office rent decision held",
+        "0"
+      ],
+      [
+        "Discretionary trim from Jul (coffee+rides)",
+        "-600"
+      ],
+      [
+        "DD Reserve held",
+        "40000"
+      ],
+      [],
+      [
+        "Month",
+        "Net Burn"
+      ],
+      [
+        "Jun 2026",
+        "16913"
+      ],
+      [
+        "Jul 2026",
+        "16913"
+      ],
+      [
+        "Aug 2026",
+        "16913"
+      ],
+      [
+        "Sep 2026",
+        "16913"
+      ],
+      [
+        "Oct 2026",
+        "16913"
+      ],
+      [
+        "Nov 2026",
+        "16913"
+      ],
+      [
+        "Dec 2026",
+        "16913"
+      ],
+      [
+        "Jan 2027",
+        "16913"
+      ],
+      [
+        "Feb 2027",
+        "16938"
+      ],
+      [],
+      [
+        "RESULT"
+      ],
+      [
+        "Additional savings needed to fully bridge to Feb 2027",
+        "1500"
+      ],
+      [
+        "Additional savings needed to fully bridge to Feb 2027",
+        "1525"
+      ]
+    ]
+  }
+}

@@ -5,6 +5,8 @@ type: person
 status: partner
 company: "[[entities/anacapa-partners]]"
 role: Anacapa contact
+attio_id: 7e3b6a0b-8799-47f2-93d0-9a22d5325625
+attio_synced_at: 2026-06-22T10:54:18Z
 tags:
   - date/2026-06-18
   - entity

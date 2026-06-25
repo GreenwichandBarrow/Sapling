@@ -6,6 +6,8 @@ status: prospect
 company: "[[entities/north-clark-partners]]"
 role: Searcher / acquisition entrepreneur
 email: albert@northclarkpartners.com
+attio_id: 1db71496-0ebf-41c3-b4b2-6f9e6d663ffd
+attio_synced_at: 2026-06-23T10:57:13Z
 tags:
   - date/2026-06-22
   - entity

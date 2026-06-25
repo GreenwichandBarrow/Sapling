@@ -4,6 +4,8 @@ date: 2026-06-15
 type: person
 status: prospect
 company: "[[entities/total-extermination]]"
+attio_id: e0638357-e2c6-40b6-9147-d042f3c21064
+attio_synced_at: 2026-06-22T10:54:18Z
 tags:
   - date/2026-06-15
   - entity

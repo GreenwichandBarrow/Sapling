@@ -31,7 +31,7 @@ This is the **weekly source-productivity digest** path (Phase 2 in SKILL.md). It
     - IF `proposed_additions ≥ 1` OR `proposed_retirements ≥ 1` OR `volume_status == 🔴` → POST to `SLACK_WEBHOOK_OPERATIONS` with one-line summary + link to digest file path.
     - ELSE (zero proposals AND volume healthy) → **DO NOT Slack**. Silent digest is the correct behavior on a healthy week.
 12. **NO auto-writes to the Sourcing Sheet.** All proposals stay in the digest file awaiting Kay's approval. Sheet write is a separate post-approval invocation.
-13. **Write dashboard status** at `brain/context/deal-aggregator-status.json` per SKILL.md Funnel Effectiveness Layer. Include weekly volume, proposed changes, email-leg health, blocked-source count, broker-opportunistic count, and top bottleneck.
+13. **Do not write** `brain/context/deal-aggregator-status.json`. That file belongs to the weekday morning run and must continue to point at the latest daily scan artifact. The digest artifact itself is the manual/forensic deliverable.
 14. **Exit normally** (exit 0).
 
 ## What success looks like
@@ -44,7 +44,7 @@ This is the **weekly source-productivity digest** path (Phase 2 in SKILL.md). It
 - Weekend dates are listed as expected non-run days, not missing scan artifacts.
 - Slack ping sent ONLY if there's at least one decision-worthy item (proposal or critical volume).
 - No writes to the Sourcing Sheet.
-- Dashboard status JSON written for the command-center dashboard.
+- Daily dashboard status JSON left untouched; digest findings live only in the weekly digest artifact.
 - No double-write if a prior child already produced today's digest.
 
 ## Forbidden in headless mode

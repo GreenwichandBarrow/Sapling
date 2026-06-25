@@ -1,0 +1,61 @@
+{
+  "processed_by": "goodmorning-followup",
+  "processed_at": "2026-06-24T14:54:29.278086+00:00",
+  "source_file": "brain/trackers/post-call-analyzer/pending-tasks/not_Fx8JX6vUNT1oCD.json",
+  "kay_decision": {
+    "kay_decision_at": "2026-06-24T14:54:29.278086+00:00",
+    "decision_summary": "Albert Kim post-call proposed tasks rejected by Kay; do not add to To Do.",
+    "actions_taken": [],
+    "do_not_resurface_original_tasks": true
+  },
+  "staged_tasks": [
+    {
+      "task_text": "Reassess east coast / NYC pest coverage against current multiple pressure.",
+      "type": "Deal",
+      "project": "pest-thesis",
+      "suggested_day": "This week",
+      "suggested_due_date": "",
+      "notes_with_doc_link": "From Albert Kim 2026-06-23 mtg. Analysis: https://docs.google.com/document/d/19OCtLlnbQEIKoqZMgH1PH4CIdJ2jcm7rNW69bxVV4ro/edit?usp=drivesdk",
+      "source_call_id": "not_Fx8JX6vUNT1oCD",
+      "source_doc_url": "https://docs.google.com/document/d/19OCtLlnbQEIKoqZMgH1PH4CIdJ2jcm7rNW69bxVV4ro/edit?usp=drivesdk",
+      "source_transcript_url": "https://docs.google.com/document/d/139ZG6J4XAAw-50nYVPIkibY2_4Yg53cK0v6IZi0o1Xo/edit?usp=drivesdk",
+      "staged_at": "2026-06-23T17:09:54Z"
+    },
+    {
+      "task_text": "Clarify broken deal fee terms with Boulay before any deeper LOI or closing work.",
+      "type": "Ops",
+      "project": "search-ops",
+      "suggested_day": "This week",
+      "suggested_due_date": "",
+      "notes_with_doc_link": "From Albert Kim 2026-06-23 mtg. Analysis: https://docs.google.com/document/d/19OCtLlnbQEIKoqZMgH1PH4CIdJ2jcm7rNW69bxVV4ro/edit?usp=drivesdk",
+      "source_call_id": "not_Fx8JX6vUNT1oCD",
+      "source_doc_url": "https://docs.google.com/document/d/19OCtLlnbQEIKoqZMgH1PH4CIdJ2jcm7rNW69bxVV4ro/edit?usp=drivesdk",
+      "source_transcript_url": "https://docs.google.com/document/d/139ZG6J4XAAw-50nYVPIkibY2_4Yg53cK0v6IZi0o1Xo/edit?usp=drivesdk",
+      "staged_at": "2026-06-23T17:09:54Z"
+    },
+    {
+      "task_text": "Meet the 500k EBITDA seller as exploratory market intel, not serious diligence.",
+      "type": "Follow-up",
+      "project": "pest-thesis",
+      "suggested_day": "Today/ASAP",
+      "suggested_due_date": "",
+      "notes_with_doc_link": "From Albert Kim 2026-06-23 mtg. Analysis: https://docs.google.com/document/d/19OCtLlnbQEIKoqZMgH1PH4CIdJ2jcm7rNW69bxVV4ro/edit?usp=drivesdk",
+      "source_call_id": "not_Fx8JX6vUNT1oCD",
+      "source_doc_url": "https://docs.google.com/document/d/19OCtLlnbQEIKoqZMgH1PH4CIdJ2jcm7rNW69bxVV4ro/edit?usp=drivesdk",
+      "source_transcript_url": "https://docs.google.com/document/d/139ZG6J4XAAw-50nYVPIkibY2_4Yg53cK0v6IZi0o1Xo/edit?usp=drivesdk",
+      "staged_at": "2026-06-23T17:09:54Z"
+    },
+    {
+      "task_text": "Keep Albert warm and share future pest deal flow if a live fit appears.",
+      "type": "Relationship",
+      "project": "pest-thesis",
+      "suggested_day": "This week",
+      "suggested_due_date": "",
+      "notes_with_doc_link": "From Albert Kim 2026-06-23 mtg. Analysis: https://docs.google.com/document/d/19OCtLlnbQEIKoqZMgH1PH4CIdJ2jcm7rNW69bxVV4ro/edit?usp=drivesdk",
+      "source_call_id": "not_Fx8JX6vUNT1oCD",
+      "source_doc_url": "https://docs.google.com/document/d/19OCtLlnbQEIKoqZMgH1PH4CIdJ2jcm7rNW69bxVV4ro/edit?usp=drivesdk",
+      "source_transcript_url": "https://docs.google.com/document/d/139ZG6J4XAAw-50nYVPIkibY2_4Yg53cK0v6IZi0o1Xo/edit?usp=drivesdk",
+      "staged_at": "2026-06-23T17:09:54Z"
+    }
+  ]
+}

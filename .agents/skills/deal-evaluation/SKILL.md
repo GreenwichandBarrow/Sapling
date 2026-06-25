@@ -17,6 +17,8 @@ Manage the full deal evaluation lifecycle from first owner call through go/no-go
 This skill picks up where pipeline-manager leaves off. Pipeline-manager handles sourcing through first contact. This skill handles everything from post-call follow-up through LOI or decline.
 
 **Core question:** Does this deal work for Kay's personal economics, and does it pass the company scorecard for the analyst and investors?
+
+For CIM, teaser, deck, broker package, and financial-package review, use the canonical intake and three-pillar scorecard in [references/intake-scorecard.md](references/intake-scorecard.md). It adapts the Acquiring Minds "Score It or Skip It" frame Kay provided: Target Quality, Deal Structure, and Buyer Fit.
 </objective>
 
 <credentials>
@@ -139,7 +141,11 @@ Run against available information from the CIM, teaser, or email body:
 | Customer concentration | <15% single customer | Yes |
 | Industry fit | B2B, recurring/contractual revenue, compliance-driven, fragmented market | Soft |
 
+Apply the intake rubric in [references/intake-scorecard.md](references/intake-scorecard.md) before assigning a verdict. The fast screen must distinguish facts from assumptions and must not treat missing working-capital, add-back, seller-financing, valuation, or seller-motivation data as neutral.
+
 **Size is situational:** A sub-scale business can still be a fit if it's a platform play in a fragmented niche (bolt-on acquisition strategy), has exceptional margins, or is in a thesis-aligned space with clear roll-up potential. The buy-box screen flags below-range size but does NOT auto-reject. The full evaluation continues.
+
+**Current G&B size lens:** $3M+ EBITDA is preferred. $750K-$3M EBITDA is reviewable only when revenue quality, customer durability, criticality, and thesis fit are unusually strong. Below $750K EBITDA is below the current lower bound. Retail and restaurants are hard-no categories unless Kay explicitly overrides.
 
 **Scoring:**
 - All hard-fail criteria met + 2+ soft criteria → **PASS** (proceed)
@@ -160,9 +166,10 @@ Regardless of the screening outcome, ALWAYS produce:
 
 1. **Buy-Box Screen Google Doc** — Copy template (`1MEIkGgyhoF2P3Iwt3U3-8fCGTpDIwF5trTI3mCuk-xw`), populate with CIM data, save to `ANALYST / ACTIVE DEALS / {COMPANY} / NOTES /`. Name: "Buy-Box Screen - {Company Name} {M.DD.YY}"
 2. **Slack ping to #active-deals** — Single message containing:
-   - Verdict (PASS/FLAG/FAIL)
+   - Recommendation (Proceed / Proceed but request more information / Relationship-only / Pass / Insufficient information)
    - Key numbers (revenue, EBITDA, margins)
-   - One-line reasoning
+   - One-line reasoning tied to Target Quality, Deal Structure, and Buyer Fit
+   - Missing diligence items or broker/seller questions when applicable
    - Links: CIM, Buy-Box Screen doc, Deal folder
 
 **The Buy-Box Screen doc includes a QUICK SCREEN section with three pre-scorecard metrics:**
@@ -180,8 +187,9 @@ These three map directly to the IDEATION tab columns (E: Margins, F: Recurring R
 - [ ] Doc is populated (not empty template)
 - [ ] Financial summary table has data
 - [ ] Quick Screen section (Margins, Recurring Revenue, Industry Growth) is populated
-- [ ] Verdict line is present
+- [ ] Recommendation line uses one of the five approved outcomes
 - [ ] Slack message includes doc link + CIM link + deal folder link
+- [ ] Why-this-matters section is present for Kay
 
 ### Step 2A: Screen PASSES
 
@@ -386,16 +394,26 @@ Pipeline-manager Sub-Agent 1 (Pipeline Agent) scans emails from contacts linked 
 ```json
 {
   "company": "Company Name",
+  "business_summary_plain_english": "",
+  "source_context": {"source": "", "seller": "", "intermediary": "", "process_deadline": ""},
   "source_files": ["P&L 2023.xlsx", "Tax Return 2024.pdf"],
   "data_quality": "clean|partial|needs_manual_review",
   "revenue": {"2022": 0, "2023": 0, "2024": 0, "ltm": 0},
   "ebitda": {"2022": 0, "2023": 0, "2024": 0, "ltm": 0},
   "margins": {"2022": 0, "2023": 0, "2024": 0},
+  "revenue_quality": {"recurring_pct": null, "contracted_pct": null, "reoccurring_pct": null, "one_time_project_pct": null, "retention_or_churn": ""},
   "ltm_period_end": "2024-12-31",
   "employees": 0,
   "customer_concentration": {"top_customer_pct": 0, "top_5_pct": 0},
+  "working_capital": {"provided": false, "notes": ""},
+  "capex": {"provided": false, "notes": ""},
+  "valuation": {"asking_price": null, "multiple": null, "notes": ""},
+  "deal_structure": {"seller_financing": "", "rollover": "", "earnout": "", "real_estate": "", "notes": ""},
   "flags": ["missing 2022 data", "EBITDA calculated not stated"],
-  "addbacks": {"owner_compensation": 0, "one_time_items": 0}
+  "facts": [],
+  "assumptions": [],
+  "unknowns": [],
+  "addbacks": {"owner_compensation": 0, "one_time_items": 0, "wage_normalization": 0, "other": []}
 }
 ```
 
@@ -405,6 +423,8 @@ Pipeline-manager Sub-Agent 1 (Pipeline Agent) scans emails from contacts linked 
 - [ ] LTM figures populated (or flagged if not available)
 - [ ] Data quality assessment is honest (don't claim "clean" if numbers were inferred)
 - [ ] Source files listed so Kay can verify
+- [ ] Facts, assumptions, and unknowns are separated
+- [ ] Working capital, capex, add-backs, valuation, and deal-structure fields are populated or explicitly marked unknown
 
 ### Sub-Agent 3b: Company Researcher (runs parallel with 3a)
 **Task:** Deep research on the company and owner. Feeds scorecard and Thumbs Up/Down later.
@@ -468,6 +488,8 @@ Present to Kay:
 - Quick summary: "{Company}: Revenue ${X}M, EBITDA ${X}M, {X}% margins, {trend}"
 - Flag any data quality issues from 3a
 - Key research findings from 3b (owner profile, competitive position, risk flags)
+- Missing diligence items and broker/seller questions from the intake rubric
+- Why this matters for Kay: time cost, downside, upside, and next action
 - Kay plays with assumptions and decides if math works
 - **Phase 4 pre-population runs automatically** — Kay does NOT need to "confirm" before scorecard and Thumbs Up/Down start building
 
@@ -480,18 +502,19 @@ Present to Kay:
 **Architecture:** 4a and 4b run in parallel after 3a/3b/3c complete. They pre-populate everything they can from data. Kay fills in the 30% discretionary and final recommendation.
 
 ### Sub-Agent 4a: Pre-Scorecard
-**Task:** Score the 70% hard gates using 3a (financials) and 3b (research). Leave 30% discretionary blank for Kay.
+**Task:** Score the deal using the three-pillar G&B scorecard in [references/intake-scorecard.md](references/intake-scorecard.md). Score factual fields from 3a (financials) and 3b (research). Leave only genuinely judgmental Kay/G&B fit items for Kay.
 **Tools:** gog drive, vault reads, Attio API
 
 **Steps:**
-1. Read the 10 scorecard criteria from the template
-2. Auto-score the 70% hard gate criteria using:
+1. Read the scorecard template and map each criterion to one of the three pillars: Target Quality, Deal Structure, Buyer Fit
+2. Auto-score objective criteria using:
    - Revenue, EBITDA, margins from 3a's JSON output
-   - Employee count, geography, operating history from 3b's research brief
+   - Recurring/reoccurring revenue quality, retention/cohort durability, customer concentration, add-backs, working capital, capex, and valuation from 3a
+   - Employee count, geography, operating history, market fragmentation, seller motivation, transition risk, and competitive position from 3b
    - Owner age/succession signals from 3b
    - Customer concentration from 3a
-3. Leave 30% discretionary criteria blank with note: "Kay to assess: culture fit, growth story, personal conviction"
-4. Calculate partial score (70% portion only)
+3. Leave only subjective Buyer Fit criteria blank with note: "Kay to assess: personal fit, investor fit, operator fit, and conviction"
+4. Calculate preliminary scores by pillar plus total known-score coverage
 5. Save to shared folder: MODELS/
 
 **Excel round-trip cleanup:** After uploading the edited .xlsx, delete the original empty copy from Drive to avoid orphan files: `gog drive delete {original_copy_id} --force`
@@ -500,19 +523,23 @@ Present to Kay:
 ```json
 {
   "scorecard_file_id": "",
-  "hard_gate_score": 0,
-  "discretionary_score": "PENDING - Kay to complete",
+  "pillar_scores": {"target_quality": 0, "deal_structure": 0, "buyer_fit": "PENDING - Kay to complete"},
+  "known_score_coverage_pct": 0,
   "flags": [],
-  "preliminary_recommendation": "proceed|caution|pass (based on hard gates only)"
+  "missing_diligence_items": [],
+  "broker_or_seller_questions": [],
+  "preliminary_recommendation": "proceed|proceed_request_more_info|relationship_only|pass|insufficient_information"
 }
 ```
 
 **Stop Hook:**
 - [ ] Scorecard exists in shared folder MODELS/
-- [ ] 70% hard gate criteria scored with data from 3a/3b
-- [ ] 30% discretionary clearly marked as "Kay to complete"
-- [ ] No discretionary scores invented — blank is correct
-- [ ] Preliminary recommendation based on hard gates only (not final)
+- [ ] Target Quality, Deal Structure, and Buyer Fit are all represented
+- [ ] Known objective fields are scored with data from 3a/3b
+- [ ] Subjective Kay/G&B fit fields are clearly marked as "Kay to complete"
+- [ ] No subjective scores invented — blank is correct
+- [ ] Missing diligence items and broker/seller questions are listed
+- [ ] Preliminary recommendation uses one of the five approved outcomes
 
 ### Sub-Agent 4b: Pre-Thumbs Up/Down (runs parallel with 4a)
 **Task:** Pre-populate the Thumbs Up/Down with data from 3a (financials) and 3b (research). Leave "What We Like", "What We Need to Validate", and recommendation for Kay.

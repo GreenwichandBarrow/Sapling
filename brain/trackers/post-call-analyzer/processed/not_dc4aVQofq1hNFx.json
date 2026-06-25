@@ -1,0 +1,32 @@
+{
+  "id": "not_dc4aVQofq1hNFx",
+  "title": "Phone call with +16318886636",
+  "counterparty": "NoFo Tick Control",
+  "date": "2026-06-25",
+  "time": "5:40 PM ET",
+  "location": "remote",
+  "granola_url": "https://notes.granola.ai/d/4cf2dc11-d3a3-4215-8ba5-d86fc3a7b307",
+  "doc_url": "https://docs.google.com/document/d/1GJoDTRGQuYjipVuvnSZqSw34ReP1W6Bs47WWMbBsiFo/edit?usp=drivesdk",
+  "doc_id": "1GJoDTRGQuYjipVuvnSZqSw34ReP1W6Bs47WWMbBsiFo",
+  "transcript_doc_url": "https://docs.google.com/document/d/1RArbqQbefDPWAP7t4Cp3eA5QtEHZXGDyDpYcTZUngb8/edit?usp=drivesdk",
+  "transcript_doc_id": "1RArbqQbefDPWAP7t4Cp3eA5QtEHZXGDyDpYcTZUngb8",
+  "vault_call_note": "/home/ubuntu/projects/Sapling/brain/calls/2026-06-25-nofo-tick-mosquito-control.md",
+  "tasks_file": "/home/ubuntu/projects/Sapling/brain/trackers/post-call-analyzer/pending-tasks/not_dc4aVQofq1hNFx.json",
+  "task_count": 2,
+  "processed_at": "2026-06-25T22:13:38.477284+00:00",
+  "slack_posted": true,
+  "attio_notes": {
+    "people": [
+      "45b9fcc9-8cec-47c1-8286-dbf716b20dc7"
+    ],
+    "companies": [
+      "232db745-bc70-4cc9-99ea-fa8e3b86525c"
+    ]
+  },
+  "attio_failed": false,
+  "transcript_failed": false,
+  "doc_failed": false,
+  "tasks_failed": false,
+  "queued_at": "2026-06-25T18:00:45-04:00",
+  "detector": "granola-api-rest"
+}

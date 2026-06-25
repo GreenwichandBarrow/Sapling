@@ -1,0 +1,32 @@
+{
+  "id": "not_45sXNMLKhywhXg",
+  "title": "Jeff I Kay Mtg",
+  "counterparty": "Jeff Stevens",
+  "date": "2026-06-25",
+  "time": "4:30 PM ET",
+  "location": "remote",
+  "granola_url": "https://notes.granola.ai/d/e6243928-33ac-4583-914c-cb238f7681fd",
+  "doc_url": "https://docs.google.com/document/d/1PMsqQoW99ZarDylOz8_m40RE1Bz93wUslDm7USOsEzk/edit?usp=drivesdk",
+  "doc_id": "1PMsqQoW99ZarDylOz8_m40RE1Bz93wUslDm7USOsEzk",
+  "transcript_doc_url": "https://docs.google.com/document/d/1Qh5ZSytWrlBwBDxUIpR8LWD0Qq510oMk7GfdYEAd8lI/edit?usp=drivesdk",
+  "transcript_doc_id": "1Qh5ZSytWrlBwBDxUIpR8LWD0Qq510oMk7GfdYEAd8lI",
+  "vault_call_note": "/home/ubuntu/projects/Sapling/brain/calls/2026-06-25-jeff-i-kay-mtg.md",
+  "tasks_file": "/home/ubuntu/projects/Sapling/brain/trackers/post-call-analyzer/pending-tasks/not_45sXNMLKhywhXg.json",
+  "task_count": 3,
+  "processed_at": "2026-06-25T22:13:32.886530+00:00",
+  "slack_posted": true,
+  "attio_notes": {
+    "people": [
+      "cb24ea9c-8a39-4ce0-a081-b0e03c9ba5c9"
+    ],
+    "companies": [
+      "997e2224-8729-42e6-9045-294c59e1e585"
+    ]
+  },
+  "attio_failed": false,
+  "transcript_failed": false,
+  "doc_failed": false,
+  "tasks_failed": false,
+  "queued_at": "2026-06-25T18:00:45-04:00",
+  "detector": "granola-api-rest"
+}

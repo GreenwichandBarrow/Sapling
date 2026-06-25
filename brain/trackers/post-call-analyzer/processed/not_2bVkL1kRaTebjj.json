@@ -1,0 +1,28 @@
+{
+  "id": "not_2bVkL1kRaTebjj",
+  "title": "Granola Recording Check",
+  "counterparty": "Granola Recording Check",
+  "date": "2026-06-25",
+  "time": "5:25 PM ET",
+  "location": "remote",
+  "granola_url": "https://notes.granola.ai/d/4bc461ae-fc3b-4b00-9d0e-fbc49d6edd71",
+  "doc_url": "https://docs.google.com/document/d/1MZ67xEVmS2-9Y8d7_6tHNAgZyZj6gK5egHu7ogcWwtg/edit?usp=drivesdk",
+  "doc_id": "1MZ67xEVmS2-9Y8d7_6tHNAgZyZj6gK5egHu7ogcWwtg",
+  "transcript_doc_url": "https://docs.google.com/document/d/1UifDFJbZLSpiExtE9uUexn7WZWGOgiwrIpIGu2e1zt4/edit?usp=drivesdk",
+  "transcript_doc_id": "1UifDFJbZLSpiExtE9uUexn7WZWGOgiwrIpIGu2e1zt4",
+  "vault_call_note": "/home/ubuntu/projects/Sapling/brain/calls/2026-06-25-granola-recording-check.md",
+  "tasks_file": "/home/ubuntu/projects/Sapling/brain/trackers/post-call-analyzer/pending-tasks/not_2bVkL1kRaTebjj.json",
+  "task_count": 0,
+  "processed_at": "2026-06-25T22:13:26.373190+00:00",
+  "slack_posted": true,
+  "attio_notes": {
+    "people": [],
+    "companies": []
+  },
+  "attio_failed": true,
+  "transcript_failed": true,
+  "doc_failed": false,
+  "tasks_failed": true,
+  "queued_at": "2026-06-25T18:00:45-04:00",
+  "detector": "granola-api-rest"
+}

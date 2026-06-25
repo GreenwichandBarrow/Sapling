@@ -1,0 +1,26 @@
+[
+  {
+    "task_text": "Schedule the office visit with Peter and Lisa for next week so Kay can see the dashboards and operating setup in person.",
+    "type": "Follow-up",
+    "project": "NoFo Tick Control",
+    "suggested_day": "Next week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From NoFo Tick Control 2026-06-25 mtg. Analysis: https://docs.google.com/document/d/1GJoDTRGQuYjipVuvnSZqSw34ReP1W6Bs47WWMbBsiFo/edit?usp=drivesdk",
+    "source_call_id": "not_dc4aVQofq1hNFx",
+    "source_doc_url": "https://docs.google.com/document/d/1GJoDTRGQuYjipVuvnSZqSw34ReP1W6Bs47WWMbBsiFo/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1RArbqQbefDPWAP7t4Cp3eA5QtEHZXGDyDpYcTZUngb8/edit?usp=drivesdk",
+    "staged_at": "2026-06-25T22:13:38.477319+00:00"
+  },
+  {
+    "task_text": "Prepare diligence questions on cash handling, customer retention, and the new pest expansion before the office visit.",
+    "type": "Analysis",
+    "project": "NoFo Tick Control",
+    "suggested_day": "Before the visit",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From NoFo Tick Control 2026-06-25 mtg. Analysis: https://docs.google.com/document/d/1GJoDTRGQuYjipVuvnSZqSw34ReP1W6Bs47WWMbBsiFo/edit?usp=drivesdk",
+    "source_call_id": "not_dc4aVQofq1hNFx",
+    "source_doc_url": "https://docs.google.com/document/d/1GJoDTRGQuYjipVuvnSZqSw34ReP1W6Bs47WWMbBsiFo/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1RArbqQbefDPWAP7t4Cp3eA5QtEHZXGDyDpYcTZUngb8/edit?usp=drivesdk",
+    "staged_at": "2026-06-25T22:13:38.477324+00:00"
+  }
+]

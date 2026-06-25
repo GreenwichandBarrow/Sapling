@@ -1092,6 +1092,98 @@
       "slack_posted": true,
       "detector": "granola-api-rest",
       "task_count": 3
+    },
+    {
+      "id": "not_2bVkL1kRaTebjj",
+      "title": "Granola Recording Check",
+      "counterparty": "Granola Recording Check",
+      "date": "2026-06-25",
+      "time": "5:25 PM ET",
+      "location": "remote",
+      "granola_url": "https://notes.granola.ai/d/4bc461ae-fc3b-4b00-9d0e-fbc49d6edd71",
+      "doc_url": "https://docs.google.com/document/d/1MZ67xEVmS2-9Y8d7_6tHNAgZyZj6gK5egHu7ogcWwtg/edit?usp=drivesdk",
+      "doc_id": "1MZ67xEVmS2-9Y8d7_6tHNAgZyZj6gK5egHu7ogcWwtg",
+      "transcript_doc_url": "https://docs.google.com/document/d/1UifDFJbZLSpiExtE9uUexn7WZWGOgiwrIpIGu2e1zt4/edit?usp=drivesdk",
+      "transcript_doc_id": "1UifDFJbZLSpiExtE9uUexn7WZWGOgiwrIpIGu2e1zt4",
+      "vault_call_note": "/home/ubuntu/projects/Sapling/brain/calls/2026-06-25-granola-recording-check.md",
+      "tasks_file": "/home/ubuntu/projects/Sapling/brain/trackers/post-call-analyzer/pending-tasks/not_2bVkL1kRaTebjj.json",
+      "task_count": 0,
+      "processed_at": "2026-06-25T22:13:26.373190+00:00",
+      "slack_posted": true,
+      "attio_notes": {
+        "people": [],
+        "companies": []
+      },
+      "attio_failed": true,
+      "transcript_failed": true,
+      "doc_failed": false,
+      "tasks_failed": true,
+      "queued_at": "2026-06-25T18:00:45-04:00",
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_45sXNMLKhywhXg",
+      "title": "Jeff I Kay Mtg",
+      "counterparty": "Jeff Stevens",
+      "date": "2026-06-25",
+      "time": "4:30 PM ET",
+      "location": "remote",
+      "granola_url": "https://notes.granola.ai/d/e6243928-33ac-4583-914c-cb238f7681fd",
+      "doc_url": "https://docs.google.com/document/d/1PMsqQoW99ZarDylOz8_m40RE1Bz93wUslDm7USOsEzk/edit?usp=drivesdk",
+      "doc_id": "1PMsqQoW99ZarDylOz8_m40RE1Bz93wUslDm7USOsEzk",
+      "transcript_doc_url": "https://docs.google.com/document/d/1Qh5ZSytWrlBwBDxUIpR8LWD0Qq510oMk7GfdYEAd8lI/edit?usp=drivesdk",
+      "transcript_doc_id": "1Qh5ZSytWrlBwBDxUIpR8LWD0Qq510oMk7GfdYEAd8lI",
+      "vault_call_note": "/home/ubuntu/projects/Sapling/brain/calls/2026-06-25-jeff-i-kay-mtg.md",
+      "tasks_file": "/home/ubuntu/projects/Sapling/brain/trackers/post-call-analyzer/pending-tasks/not_45sXNMLKhywhXg.json",
+      "task_count": 3,
+      "processed_at": "2026-06-25T22:13:32.886530+00:00",
+      "slack_posted": true,
+      "attio_notes": {
+        "people": [
+          "cb24ea9c-8a39-4ce0-a081-b0e03c9ba5c9"
+        ],
+        "companies": [
+          "997e2224-8729-42e6-9045-294c59e1e585"
+        ]
+      },
+      "attio_failed": false,
+      "transcript_failed": false,
+      "doc_failed": false,
+      "tasks_failed": false,
+      "queued_at": "2026-06-25T18:00:45-04:00",
+      "detector": "granola-api-rest"
+    },
+    {
+      "id": "not_dc4aVQofq1hNFx",
+      "title": "Phone call with +16318886636",
+      "counterparty": "NoFo Tick Control",
+      "date": "2026-06-25",
+      "time": "5:40 PM ET",
+      "location": "remote",
+      "granola_url": "https://notes.granola.ai/d/4cf2dc11-d3a3-4215-8ba5-d86fc3a7b307",
+      "doc_url": "https://docs.google.com/document/d/1GJoDTRGQuYjipVuvnSZqSw34ReP1W6Bs47WWMbBsiFo/edit?usp=drivesdk",
+      "doc_id": "1GJoDTRGQuYjipVuvnSZqSw34ReP1W6Bs47WWMbBsiFo",
+      "transcript_doc_url": "https://docs.google.com/document/d/1RArbqQbefDPWAP7t4Cp3eA5QtEHZXGDyDpYcTZUngb8/edit?usp=drivesdk",
+      "transcript_doc_id": "1RArbqQbefDPWAP7t4Cp3eA5QtEHZXGDyDpYcTZUngb8",
+      "vault_call_note": "/home/ubuntu/projects/Sapling/brain/calls/2026-06-25-nofo-tick-mosquito-control.md",
+      "tasks_file": "/home/ubuntu/projects/Sapling/brain/trackers/post-call-analyzer/pending-tasks/not_dc4aVQofq1hNFx.json",
+      "task_count": 2,
+      "processed_at": "2026-06-25T22:13:38.477284+00:00",
+      "slack_posted": true,
+      "attio_notes": {
+        "people": [
+          "45b9fcc9-8cec-47c1-8286-dbf716b20dc7"
+        ],
+        "companies": [
+          "232db745-bc70-4cc9-99ea-fa8e3b86525c"
+        ]
+      },
+      "attio_failed": false,
+      "transcript_failed": false,
+      "doc_failed": false,
+      "tasks_failed": false,
+      "queued_at": "2026-06-25T18:00:45-04:00",
+      "detector": "granola-api-rest"
     }
   ]
 }

@@ -1,26 +1,19 @@
 {
-  "blocked": [
-    "source artifact is stale",
-    "compact input artifact is stale"
-  ],
-  "deal_items": 15,
+  "blocked": [],
+  "deal_items": 0,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-06-26T07:00:53.340625-04:00",
-  "input_artifact": "brain/context/email-intelligence-input-2026-06-25.json",
-  "input_status": "stale",
+  "fetched_at": "2026-06-26T07:10:44.949642-04:00",
+  "input_artifact": "brain/context/email-intelligence-input-2026-06-26.json",
+  "input_status": "ok",
   "needs_kay": [
-    "3 email-derived task candidate(s)",
-    "15 broker/listing row(s) extracted",
-    "4 prior-day external meeting thank-you row(s) seeded",
-    "2 email follow-through row(s) auto-completed from sent-mail evidence",
     "Clarify email follow-through identity/source: Krupa; Greg; Denning; Matt (+1 more)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-06-25.md",
-  "source_status": "stale",
+  "source_artifact": "brain/context/email-scan-results-2026-06-26.md",
+  "source_status": "ok",
   "stale_drafts": 0,
-  "task_candidates": 3
+  "task_candidates": 0
 }

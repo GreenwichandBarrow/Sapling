@@ -44,3 +44,9 @@
   - Thu slot 36 → Fri slot 48: Pay remaining IRS
   - Thu slot 37 → Fri slot 49: Pay Dad for swim lessons and membership
   - Thu slot 38 → Fri slot 50: Sailing camp / switch SMLI weeks
+
+[2026-06-26T07:08:44.919972] reformat — rules-reapplied
+  - applied 79 conditional-format rules
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-reformat-20260626-070839.json
+  - pack-to-top: 0 day tab(s) compacted
+  - pack-to-top: 0 Week-tab day-block(s) compacted

@@ -3052,6 +3052,8 @@ def cmd_reformat(args) -> int:
     # Per day tab: slot rule =$A13=TRUE over A13:E27, habit rule =$A4=TRUE over A4:E10.
     for day_name, props in day_tabs:
         sid = props["sheetId"]
+        task_last_row = _day_task_last_row(client, day_name)
+        R.extend(_day_task_format_requests(sid, DAY_SLOT_FIRST_ROW, task_last_row))
         # Top 3 priority slots: fixed sage shading across A:E.
         R.append({"repeatCell": {
             "range": {"sheetId": sid,
@@ -3486,6 +3488,49 @@ def _day_task_values_block(day_name: str, last_row: int) -> str:
     return day_tab_block(day_name, DAY_COL_STATUS, DAY_COL_LAST, DAY_SLOT_FIRST_ROW, last_row)
 
 
+def _day_task_format_requests(sheet_id: int, start_row: int, end_row: int) -> list[dict]:
+    """Canonical formatting/validation for day-tab task rows.
+
+    Rows are 1-based and inclusive. Used for overflow rows inserted above NOTES
+    so they behave like normal day-tab task slots instead of raw copied grid rows.
+    """
+    if end_row < start_row:
+        return []
+    return [
+        {"setDataValidation": {
+            "range": {"sheetId": sheet_id, "startRowIndex": start_row - 1,
+                      "endRowIndex": end_row, "startColumnIndex": DAY_COL_STATUS,
+                      "endColumnIndex": DAY_COL_STATUS + 1},
+            "rule": {"condition": {"type": "BOOLEAN"}, "strict": True}}},
+        {"repeatCell": {
+            "range": {"sheetId": sheet_id, "startRowIndex": start_row - 1,
+                      "endRowIndex": end_row, "startColumnIndex": DAY_COL_TASK,
+                      "endColumnIndex": DAY_COL_TASK + 1},
+            "cell": {"userEnteredFormat": {
+                "verticalAlignment": "MIDDLE",
+                "textFormat": {"fontSize": 17, "foregroundColor": hex_to_rgb(INK_HEX)}}},
+            "fields": "userEnteredFormat(verticalAlignment,textFormat)"}},
+        {"setDataValidation": {
+            "range": {"sheetId": sheet_id, "startRowIndex": start_row - 1,
+                      "endRowIndex": end_row, "startColumnIndex": DAY_COL_TYPE,
+                      "endColumnIndex": DAY_COL_TYPE + 1},
+            "rule": {"condition": {"type": "ONE_OF_LIST",
+                                   "values": [{"userEnteredValue": o} for o in TYPE_OPTIONS]},
+                     "showCustomUi": True, "strict": False}}},
+        {"setDataValidation": {
+            "range": {"sheetId": sheet_id, "startRowIndex": start_row - 1,
+                      "endRowIndex": end_row, "startColumnIndex": DAY_COL_PROJECT,
+                      "endColumnIndex": DAY_COL_PROJECT + 1},
+            "rule": {"condition": {"type": "ONE_OF_LIST",
+                                   "values": [{"userEnteredValue": o} for o in PROJECT_OPTIONS]},
+                     "showCustomUi": True, "strict": False}}},
+        {"updateDimensionProperties": {
+            "range": {"sheetId": sheet_id, "dimension": "ROWS",
+                      "startIndex": start_row - 1, "endIndex": end_row},
+            "properties": {"pixelSize": 34}, "fields": "pixelSize"}},
+    ]
+
+
 def _pack_day_tab_checked_rows(client: SheetsClient, day_name: str) -> dict:
     """Pack a day tab's task rows with checked items first, then active items.
 
@@ -3640,7 +3685,7 @@ def cmd_carry_forward_day(args) -> int:
                 },
                 "inheritFromBefore": True,
             }
-        }])
+        }, *_day_task_format_requests(dst_tab["sheetId"], insert_at_row, insert_at_row + overflow_needed - 1)])
 
     if not planned:
         pack_summary = _pack_day_tab_checked_rows(client, src_name)

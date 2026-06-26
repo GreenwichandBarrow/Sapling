@@ -1,16 +1,14 @@
 {
-  "date": "2026-06-25",
+  "date": "2026-06-26",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-06-25.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-06-26.md",
   "email_scan_status": "live",
   "deals_found": 0,
-  "broker_opportunistic": 6,
-  "near_misses": 2,
-  "sources_scanned": 15,
+  "broker_opportunistic": 1,
+  "near_misses": 3,
+  "sources_scanned": 20,
   "sources_blocked_verified": 0,
   "sources_blocked_single_attempt": 0,
   "volume_status": "BELOW TARGET",
-  "needs_attention": [
-    "volume below target: zero PASS deals surfaced today"
-  ]
+  "needs_attention": []
 }

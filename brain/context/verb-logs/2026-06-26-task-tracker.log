@@ -1,0 +1,46 @@
+
+[2026-06-26T07:02:06.181411] carry-forward-day — thu-to-fri
+  - moved: 38
+  - source: Thu
+  - destination: Fri
+  - source packed: {'completed': 0, 'active': 0, 'blank': 38, 'rows': '17:54'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260626-070157.json
+  
+  - Thu slot 1 → Fri slot 13: Connect Roberta & Elspeth
+  - Thu slot 2 → Fri slot 14: Connect Lily & Suzanne
+  - Thu slot 3 → Fri slot 15: Pull Megan pre-LOI prep meeting notes
+  - Thu slot 4 → Fri slot 16: Research & email: Positive Pest Management
+  - Thu slot 5 → Fri slot 17: Research & email: Suburban Exterminating
+  - Thu slot 6 → Fri slot 18: Research & email: Arrow Exterminating Co.
+  - Thu slot 7 → Fri slot 19: Email DealsX to pause for summer
+  - Thu slot 8 → Fri slot 20: Set up meetings with the list of Lenders to build relationships
+  - Thu slot 9 → Fri slot 21: Research & email: Top 3
+  - Thu slot 10 → Fri slot 22: Order more business cards and change title to founder
+  - Thu slot 11 → Fri slot 23: Try Claude on website rebuild
+  - Thu slot 12 → Fri slot 24: Review finders fee doc
+  - Thu slot 13 → Fri slot 25: Update Tailscale SSH checkPeriod for Sapling VPS
+  - Thu slot 14 → Fri slot 26: Call IRS to confirm Form 8822-B address update
+  - Thu slot 15 → Fri slot 27: Make Mamo aptmt on LI
+  - Thu slot 16 → Fri slot 28: Make derm aptmt for summer
+  - Thu slot 17 → Fri slot 29: Make dentist aptmt for Sept
+  - Thu slot 18 → Fri slot 30: Research & email: Bed Bug 911 (woman led)
+  - Thu slot 19 → Fri slot 31: Call RCN - make sure they upgraded our plan
+  - Thu slot 20 → Fri slot 32: Pest thesis deck
+  - Thu slot 21 → Fri slot 33: Do luxury-retailer store visits for pest buying criteria
+  - Thu slot 22 → Fri slot 34: Continue financial modeling for Pest / Multi, - how many acquisitions make the play work
+  - Thu slot 23 → Fri slot 35: Pay Labcorp
+  - Thu slot 24 → Fri slot 36: Schedule 2-3 luxury/hospitality pest validation calls
+  - Thu slot 25 → Fri slot 37: Scan WPMA directory for NY-based members
+  - Thu slot 26 → Fri slot 38: Pest 10-company research
+  - Thu slot 27 → Fri slot 39: Email Filipe @ Pest Mgmt company
+  - Thu slot 28 → Fri slot 40: Follow up: Hamptons Pest, Greg
+  - Thu slot 29 → Fri slot 41: Research & email: Thomas Pest Services, Inc. (woman founded)
+  - Thu slot 30 → Fri slot 42: Research & email: E&G Exterminators / E&G Pest Solutions (woman leadership)
+  - Thu slot 31 → Fri slot 43: Order paper towels and suppplies before heading to port
+  - Thu slot 32 → Fri slot 44: Circle back with Andrew Freiman & clayton (no response on quarterly)
+  - Thu slot 33 → Fri slot 45: Try to join a NYPMA committee
+  - Thu slot 34 → Fri slot 46: Let clayton know I will be away for the summer
+  - Thu slot 35 → Fri slot 47: Confirm LiveOak payroll transfer coverage
+  - Thu slot 36 → Fri slot 48: Pay remaining IRS
+  - Thu slot 37 → Fri slot 49: Pay Dad for swim lessons and membership
+  - Thu slot 38 → Fri slot 50: Sailing camp / switch SMLI weeks

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-25",
+  "updated_at": "2026-06-26",
   "items": [
     {
       "bucket": "thank",
@@ -567,11 +567,19 @@
       "email": "jemden@helmsleyspear.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-06-25",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Lunch James I Kay",
       "event_date": "2026-06-24",
-      "calendar_event_id": "62bner6je451o0cdpn5b2ntcdh"
+      "calendar_event_id": "62bner6je451o0cdpn5b2ntcdh",
+      "completed_at": "2026-06-25",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19edc6e4c1674e17, subject 'Pest Management', sent 2026-06-25 18:15.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19edc6e4c1674e17",
+        "subject": "Pest Management",
+        "sent_at": "2026-06-25 18:15"
+      }
     },
     {
       "bucket": "thank",
@@ -591,10 +599,66 @@
       "email": "jeffstevens@anacapapartners.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-06-25",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Jeff I Kay Mtg",
       "event_date": "2026-06-24",
+      "calendar_event_id": "_60rk2c268koj0b9p8d33cb9k8krj6ba264s38b9l64ok4chi60qjag9o88",
+      "completed_at": "2026-06-25",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19ed14b7a8f2f31e, subject 'Catch up', sent 2026-06-25 16:43.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19ed14b7a8f2f31e",
+        "subject": "Catch up",
+        "sent_at": "2026-06-25 16:43"
+      }
+    },
+    {
+      "bucket": "thank",
+      "person": "Team TB Camilla",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-06-26",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Team TB Camilla I Kay",
+      "event_date": "2026-06-25",
+      "calendar_event_id": "_8kp3eh1m6sqjeba36ks3ab9k8p330b9o74rjab9j652jedpj64p3echh88"
+    },
+    {
+      "bucket": "thank",
+      "person": "Team TB JJ",
+      "email": "abigail@startvirtual.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-06-26",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Team TB JJ I Kay",
+      "event_date": "2026-06-25",
+      "calendar_event_id": "r43ufdr3e5o1miireqf68usf0u_20260624T150000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Lunch James",
+      "email": "jemden@helmsleyspear.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-06-26",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Lunch James I Kay",
+      "event_date": "2026-06-25",
+      "calendar_event_id": "62bner6je451o0cdpn5b2ntcdh"
+    },
+    {
+      "bucket": "thank",
+      "person": "Jeff I Kay Mtg",
+      "email": "jeffstevens@anacapapartners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-06-26",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Jeff I Kay Mtg",
+      "event_date": "2026-06-25",
       "calendar_event_id": "_60rk2c268koj0b9p8d33cb9k8krj6ba264s38b9l64ok4chi60qjag9o88"
     }
   ],

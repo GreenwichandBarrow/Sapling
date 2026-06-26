@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-25T18:00:44.594168-04:00",
+  "fetched_at": "2026-06-25T20:00:44.560605-04:00",
   "messages_with_usage": 1834,
   "models": [
     {
@@ -25,7 +25,7 @@
     "output_tokens": 1656845,
     "total_tokens": 167952233
   },
-  "period_end": "2026-06-25T18:00:44.594168-04:00",
+  "period_end": "2026-06-25T20:00:44.560605-04:00",
   "period_start": "2026-06-01T00:00:00-04:00",
   "scanned_files": 1906,
   "source": "local_claude_transcript_usage_metadata",

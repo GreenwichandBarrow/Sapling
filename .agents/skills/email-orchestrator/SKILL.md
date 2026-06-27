@@ -61,9 +61,10 @@ Scheduled jobs must use 1Password-backed secrets. MCP tools are optional conveni
    - Morning decision -> `goodmorning`
 4. Collapse duplicates by entity, thread, and decision.
 5. For the Email Orchestration dashboard, seed `24-hour thank-yous` from prior-day external calendar meetings before rendering. Exclude all-day/internal/webinar/reminder events; include external attendees and `Person I Kay` / `Kay / Person` style external meetings.
-6. Before exposing any row in `brain/context/email-follow-through-backlog.json` as active on the dashboard or in Good Morning, verify whether Kay already sent it using bounded sent-mail search by recipient/name and recent window. If sent evidence exists, mark the row `completed` with thread/date evidence and do not surface it.
-7. Produce a decisions-only summary for Kay when human approval is needed.
-8. Write dashboard status to `brain/context/email-orchestrator-status.json`.
+6. Before exposing any row in `brain/context/email-follow-through-backlog.json` as active on the dashboard or in Good Morning, verify whether Kay already sent it using bounded sent-mail search by recipient/name and recent window. If sent evidence exists or Kay confirms it is done, mark the row `completed` with source/date evidence and do not surface it. This applies to 24-hour thank-yous, 48-hour follow-ups, and EOW follow-ups.
+7. For EOW/follow-up rows, surface names explicitly after verification. Never report a vague count or `+N more`; unclear identity/source rows must name the person/context that needs Kay's decision.
+8. Produce a decisions-only summary for Kay when human approval is needed.
+9. Write dashboard status to `brain/context/email-orchestrator-status.json`.
 
 ## Dashboard Status Contract
 

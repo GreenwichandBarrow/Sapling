@@ -268,10 +268,12 @@ Dashboard sections come first, in dashboard-navigation order, before non-dashboa
    - Ask for status where missing, but recommend concrete stage moves when evidence supports them. Do not discuss closed deals unless changed in-session.
 
 3. **Deal Aggregator**
-   - Show only still-open surfaced-deal or source decisions Kay needs to review: thumbs up/down, source registration/access blockers, source retirement/addition approvals, or screening calibration.
-   - Do not show completed source-admin confirmations as numbered items. If a source was already added/labeled/resolved, omit it from the briefing unless it creates a new decision or failure.
-   - Include at most one operational-status line for run freshness/volume, only when it changes Kay's decision surface. Do not dump source mechanics or retired mode details.
-   - This section's final dashboard-aligned subsections are pending the deal-aggregator plumbing review; until then, keep it sparse and action-only.
+   - Mirror the Deal Aggregator dashboard tab exactly. Use these three numbered lines in this order: `Surfaced matches`, `Sources covered`, and `Manual check sources`.
+   - `Surfaced matches`: show the surfaced-match count and compare it to the 1-3/day volume target. Example: `0 surfaced matches; below 1-3/day target`. Include broker-opportunistic or near-miss counts only if Kay needs to review/decide on them.
+   - `Sources covered`: show the source-channel coverage split: `{marketplace} marketplace; {email_newsletters} email newsletters; {direct_email} direct email`. If the split is not available from `brain/context/deal-aggregator-status.json`, show `split unavailable` and treat that as a plumbing gap, not a reason to invent categories.
+   - `Manual check sources`: list only sources Kay personally needs to check today because they were not covered by automation or require account/manual access. If none, write `N/A`.
+   - Do not show completed source-admin confirmations as numbered items. If a source was already added/labeled/resolved, omit it unless it creates a new decision or failure.
+   - Do not use ad hoc deal-aggregator labels such as `Ops`, `Source registration / access`, `Deal-flow email`, or `New surfaced deals`; map items into the three dashboard-aligned lines above.
 
 4. **C-Suite & Skills**
    - Dashboard-aligned skill/status section. Surface only Kay-relevant skill failures, missed expected runs, approvals needed, or migration/plumbing decisions. If none, write `N/A`.
@@ -317,9 +319,9 @@ Dashboard sections come first, in dashboard-navigation order, before non-dashboa
 
 **Deal Aggregator**
 
-10. **Ops:** {Run freshness/volume only if relevant}
-11. **New surfaced deals:** {Deal/source decision} → **YES / NO / DISCUSS**
-12. **Deal-flow email:** {Only if specific deal-flow email needs aggregator decision} → **RUN REVIEW / WAIT / DISCUSS**
+10. **Surfaced matches:** {count} surfaced matches; {on/below/above} 1-3/day target.
+11. **Sources covered:** {marketplace} marketplace; {email_newsletters} email newsletters; {direct_email} direct email.
+12. **Manual check sources:** {Source list or N/A} → **CHECK / SKIP / DISCUSS**
 
 **C-Suite & Skills**
 

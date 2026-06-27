@@ -159,15 +159,32 @@ python3 .codex/hooks/router/pre_tool_use.py --check brain/calls/*.md brain/entit
 Or spot-check the 10 most recently modified vault files for schema compliance.
 
 **Orphaned Entities:**
-Check for vault entities referenced in call notes or other files that don't exist:
+Before counting orphaned real-contact links, run the Attio -> Vault backfill so Attio contacts get matching vault entity files instead of being reported as hygiene failures:
 ```bash
-grep -roh '\[\[entities/[^]]*\]\]' brain/ | sort -u | while read link; do
-  slug=$(echo "$link" | sed 's/\[\[entities\///;s/\]\]//;s/|.*//')
-  [ ! -f "brain/entities/${slug}.md" ] && echo "MISSING: $slug"
-done
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+python3 scripts/backfill_vault_entities_from_attio.py
 ```
-- YELLOW: 1-3 orphaned links
-- RED: 4+ orphaned links
+
+Then count normalized unique missing entity slugs. Normalize before counting aliases; do not count each display-text variant as a separate orphan.
+```bash
+python3 - <<'PY'
+from pathlib import Path
+import re
+brain = Path('brain')
+pattern = re.compile(r'\[\[entities/([^\]\|#]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]')
+missing = set()
+for path in brain.rglob('*.md'):
+    text = path.read_text(errors='ignore')
+    for match in pattern.finditer(text):
+        slug = match.group(1).strip().rstrip('\\')
+        if slug and not (brain / 'entities' / f'{slug}.md').exists():
+            missing.add(slug)
+for slug in sorted(missing):
+    print(f'MISSING: {slug}')
+PY
+```
+- YELLOW: 1-3 normalized unique orphaned slugs
+- RED: 4+ normalized unique orphaned slugs
 
 **Data Freshness:**
 | Data | Check | YELLOW | RED |

@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "generated_at": "2026-06-20T13:01:38.438365Z",
+  "generated_at": "2026-06-26T16:21:24.976419Z",
   "search_start": "2025-02-01",
   "notes": "Durable source/event ledger for M&A dashboard plumbing. Attio snapshot is current state only; this file tracks cumulative stage events and source attribution. Backfill gaps should be resolved by Good Morning/pipeline-manager, not guessed in the dashboard.",
   "records": [
@@ -30,6 +30,19 @@
       "evidence": [
         "brain/context/attio-pipeline-snapshot.json"
       ]
+    },
+    {
+      "company": "NoFo Tick Control",
+      "current_stage": "Financials Received",
+      "source": "unknown",
+      "source_label": "Unknown / needs source map",
+      "source_detail": "Source not yet mapped.",
+      "source_confidence": "needs_review",
+      "evidence": [
+        "brain/context/attio-pipeline-snapshot.json"
+      ],
+      "attio_record_id": "232db745-bc70-4cc9-99ea-fa8e3b86525c",
+      "financials_received_date": "2026-06-26"
     },
     {
       "company": "Pest Management Business \u2014 Rejigg #38863 (PA)",
@@ -90,6 +103,20 @@
         "brain/calls/2026-06-15-total-extermination.md",
         "brain/context/attio-pipeline-snapshot.json"
       ]
+    },
+    {
+      "company": "VPN, Identity, Malware, & Antivirus Protection",
+      "current_stage": "Closed / Not Proceeding",
+      "source": "unknown",
+      "source_label": "Unknown / needs source map",
+      "source_detail": "Source not yet mapped.",
+      "source_confidence": "needs_review",
+      "evidence": [
+        "brain/context/attio-pipeline-snapshot.json"
+      ],
+      "attio_record_id": "59e87cef-1e74-4130-af66-abde0e130f02",
+      "nda_signed_date": "2026-06-26",
+      "closed_not_proceeding_date": "2026-06-26"
     },
     {
       "company": "WISK",

@@ -30,6 +30,12 @@ MAX_CANDIDATE_THREADS = 18
 DEAL_NEWSLETTER_SENDERS = [
     "acquiringminds",
     "bizbuysell",
+    "bizquest",
+    "bizscout",
+    "dealos",
+    "baton",
+    "alerts.baton.com",
+    "no-reply@alerts.baton.com",
     "flippa",
     "empireflippers",
     "quietlight",

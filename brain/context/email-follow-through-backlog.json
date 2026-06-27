@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-26",
+  "updated_at": "2026-06-26T10:49:09-04:00",
   "items": [
     {
       "bucket": "thank",
@@ -17,9 +17,20 @@
       "person": "Krupa",
       "context": "Follow-up from ACG Women in Leadership conference",
       "due_date": "2026-05-16",
-      "status": "overdue",
+      "status": "completed",
       "source": "manual",
-      "event": "ACG Women in Leadership conference"
+      "event": "ACG Women in Leadership conference",
+      "status_label": "completed",
+      "completed_at": "2026-06-26",
+      "completed_note": "Kay confirmed EOW follow-up done after sent-mail verification check.",
+      "sent_evidence": {
+        "source": "kay_confirmed_after_gog_check",
+        "checked_at": "2026-06-26",
+        "query": "in:sent newer_than:60d Krupa",
+        "thread_id": "19ed6c5dad9aba55",
+        "subject": "ACG WOL Follow Up - Sale Leasebacks",
+        "note": "Gmail search found related Krupa thread; Kay confirmed done."
+      }
     },
     {
       "bucket": "eow",
@@ -46,7 +57,13 @@
       "due_date": "2026-06-13",
       "status": "overdue",
       "source": "manual",
-      "event": "Heels & Deals connection"
+      "event": "Heels & Deals connection",
+      "kay_confirmed_keep": true,
+      "identity_confirmed": true,
+      "last_gog_checked_at": "2026-06-26",
+      "sent_check_result": "no_sent_completion_evidence_found",
+      "status_label": "overdue",
+      "review_note": "Keep active per Kay after EOW sent-mail verification."
     },
     {
       "bucket": "warm",
@@ -520,16 +537,34 @@
       "due_date": "2026-06-26",
       "status": "not drafted",
       "source": "manual-goodmorning-2026-06-24",
-      "event": "EOW follow-up requested by Kay"
+      "event": "EOW follow-up requested by Kay",
+      "kay_confirmed_keep": true,
+      "identity_confirmed": true,
+      "last_gog_checked_at": "2026-06-26",
+      "sent_check_result": "no_sent_completion_evidence_found",
+      "status_label": "not drafted",
+      "review_note": "Keep active per Kay after EOW sent-mail verification."
     },
     {
       "bucket": "eow",
       "person": "Matt",
       "context": "Thank-you / EOW follow-up",
       "due_date": "2026-06-26",
-      "status": "not drafted",
+      "status": "completed",
       "source": "manual-goodmorning-2026-06-24",
-      "event": "Thank-you requested by Kay"
+      "event": "Thank-you requested by Kay",
+      "status_label": "completed",
+      "completed_at": "2026-06-26",
+      "completed_note": "Kay confirmed EOW/thank-you follow-up done; Gmail sent-mail evidence found.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "checked_at": "2026-06-26",
+        "query": "in:sent newer_than:60d Matt",
+        "thread_id": "19ed7409f0d8f7db",
+        "subject": "Follow Up",
+        "sent_at": "2026-06-24 08:36",
+        "note": "Kay also confirmed done."
+      }
     },
     {
       "bucket": "eow",
@@ -538,7 +573,11 @@
       "due_date": "2026-06-26",
       "status": "not drafted",
       "source": "manual-goodmorning-2026-06-24",
-      "event": "EOW follow-up requested by Kay"
+      "event": "EOW follow-up requested by Kay",
+      "needs_kay_clarification": true,
+      "last_gog_checked_at": "2026-06-26",
+      "sent_check_result": "not_verified_in_current_check",
+      "review_note": "Raise specifically in Good Morning if still unclear; do not hide behind a count."
     },
     {
       "bucket": "eow",
@@ -547,7 +586,11 @@
       "due_date": "2026-06-26",
       "status": "not drafted",
       "source": "manual-goodmorning-2026-06-24",
-      "event": "EOW follow-up requested by Kay"
+      "event": "EOW follow-up requested by Kay",
+      "needs_kay_clarification": true,
+      "last_gog_checked_at": "2026-06-26",
+      "sent_check_result": "not_verified_in_current_check",
+      "review_note": "Raise specifically in Good Morning if still unclear; do not hide behind a count."
     },
     {
       "bucket": "thank",
@@ -572,14 +615,17 @@
       "event": "Lunch James I Kay",
       "event_date": "2026-06-24",
       "calendar_event_id": "62bner6je451o0cdpn5b2ntcdh",
-      "completed_at": "2026-06-25",
+      "completed_at": "2026-06-26T10:49:09-04:00",
       "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19edc6e4c1674e17, subject 'Pest Management', sent 2026-06-25 18:15.",
       "sent_evidence": {
         "source": "gmail_sent_search",
         "thread_id": "19edc6e4c1674e17",
         "subject": "Pest Management",
         "sent_at": "2026-06-25 18:15"
-      }
+      },
+      "completion_source": "kay_confirmed_sent_2026-06-26",
+      "dashboard_visible": false,
+      "notes": "Kay confirmed James thank-you sent; closed from Good Morning item 1."
     },
     {
       "bucket": "thank",
@@ -599,67 +645,69 @@
       "email": "jeffstevens@anacapapartners.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-06-25",
-      "status": "completed",
+      "status": "not_needed",
       "source": "calendar-prior-day-refresh",
       "event": "Jeff I Kay Mtg",
       "event_date": "2026-06-24",
       "calendar_event_id": "_60rk2c268koj0b9p8d33cb9k8krj6ba264s38b9l64ok4chi60qjag9o88",
-      "completed_at": "2026-06-25",
+      "completed_at": "2026-06-26T10:49:09-04:00",
       "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19ed14b7a8f2f31e, subject 'Catch up', sent 2026-06-25 16:43.",
       "sent_evidence": {
         "source": "gmail_sent_search",
         "thread_id": "19ed14b7a8f2f31e",
         "subject": "Catch up",
         "sent_at": "2026-06-25 16:43"
-      }
+      },
+      "completion_source": "kay_confirmed_not_needed_2026-06-26",
+      "dashboard_visible": false,
+      "notes": "Kay confirmed Jeff follow-up not needed; suppress from Good Morning/dashboard."
     },
     {
       "bucket": "thank",
-      "person": "Team TB Camilla",
-      "email": "",
-      "context": "24-hour thank-you after external meeting",
-      "due_date": "2026-06-26",
-      "status": "not drafted",
-      "source": "calendar-prior-day-refresh",
-      "event": "Team TB Camilla I Kay",
-      "event_date": "2026-06-25",
-      "calendar_event_id": "_8kp3eh1m6sqjeba36ks3ab9k8p330b9o74rjab9j652jedpj64p3echh88"
-    },
-    {
-      "bucket": "thank",
-      "person": "Team TB JJ",
-      "email": "abigail@startvirtual.com",
-      "context": "24-hour thank-you after external meeting",
-      "due_date": "2026-06-26",
-      "status": "not drafted",
-      "source": "calendar-prior-day-refresh",
-      "event": "Team TB JJ I Kay",
-      "event_date": "2026-06-25",
-      "calendar_event_id": "r43ufdr3e5o1miireqf68usf0u_20260624T150000Z"
-    },
-    {
-      "bucket": "thank",
-      "person": "Lunch James",
+      "person": "James",
       "email": "jemden@helmsleyspear.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-06-26",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Lunch James I Kay",
       "event_date": "2026-06-25",
-      "calendar_event_id": "62bner6je451o0cdpn5b2ntcdh"
+      "calendar_event_id": "62bner6je451o0cdpn5b2ntcdh",
+      "completed_at": "2026-06-26T10:49:09-04:00",
+      "completion_source": "kay_confirmed_sent_2026-06-26",
+      "dashboard_visible": false,
+      "notes": "Kay confirmed James thank-you sent; closed from Good Morning item 1."
     },
     {
       "bucket": "thank",
-      "person": "Jeff I Kay Mtg",
+      "person": "Jeff",
       "email": "jeffstevens@anacapapartners.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-06-26",
-      "status": "not drafted",
+      "status": "not_needed",
       "source": "calendar-prior-day-refresh",
       "event": "Jeff I Kay Mtg",
       "event_date": "2026-06-25",
-      "calendar_event_id": "_60rk2c268koj0b9p8d33cb9k8krj6ba264s38b9l64ok4chi60qjag9o88"
+      "calendar_event_id": "_60rk2c268koj0b9p8d33cb9k8krj6ba264s38b9l64ok4chi60qjag9o88",
+      "completed_at": "2026-06-26T10:49:09-04:00",
+      "completion_source": "kay_confirmed_not_needed_2026-06-26",
+      "dashboard_visible": false,
+      "notes": "Kay confirmed Jeff follow-up not needed; suppress from Good Morning/dashboard."
+    },
+    {
+      "bucket": "thank",
+      "person": "Lisa",
+      "email": "",
+      "context": "24-hour thank-you after external call",
+      "due_date": "2026-06-26",
+      "status": "open",
+      "source": "calendar-prior-day-refresh-manual-repair",
+      "event": "Call Lisa at NoFoTick",
+      "event_date": "2026-06-25",
+      "calendar_event_id": "",
+      "dashboard_visible": true,
+      "needs_kay": "send_needed",
+      "notes": "Kay confirmed Lisa should remain open; thank-you still needs to be sent."
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

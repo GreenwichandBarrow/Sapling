@@ -3,11 +3,73 @@
   "deal_items": 0,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-06-26T07:10:44.949642-04:00",
+  "fetched_at": "2026-06-26T10:50:03-04:00",
+  "follow_through_completed_items": [
+    {
+      "completed_at": "2026-06-26T10:50:03-04:00",
+      "due_date": "2026-06-26",
+      "email": "jemden@helmsleyspear.com",
+      "event": "Lunch James I Kay",
+      "event_date": "2026-06-25",
+      "person": "James",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "completed",
+      "completion_source": "kay_confirmed_sent_2026-06-26"
+    },
+    {
+      "completed_at": "2026-06-26T10:50:03-04:00",
+      "due_date": "2026-06-26",
+      "email": "jeffstevens@anacapapartners.com",
+      "event": "Jeff I Kay Mtg",
+      "event_date": "2026-06-25",
+      "person": "Jeff",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not_needed",
+      "completion_source": "kay_confirmed_not_needed_2026-06-26"
+    }
+  ],
+  "follow_through_pending_items": [
+    {
+      "bucket": "eow",
+      "context": "Follow-up from May Heels to Deals Luncheon",
+      "due_date": "2026-05-30",
+      "event": "May Heels to Deals Luncheon",
+      "kay_confirmed_keep": "false",
+      "needs_kay_clarification": "false",
+      "person": "Monica Chawla",
+      "status": "overdue"
+    },
+    {
+      "bucket": "eow",
+      "context": "EOW follow-up",
+      "due_date": "2026-06-26",
+      "event": "EOW follow-up requested by Kay",
+      "kay_confirmed_keep": "true",
+      "needs_kay_clarification": "false",
+      "person": "Denning",
+      "status": "not drafted"
+    },
+    {
+      "bucket": "followup",
+      "context": "Connected through Heels & Deals contact; phone tag by text",
+      "due_date": "2026-06-13",
+      "event": "Heels & Deals connection",
+      "kay_confirmed_keep": "true",
+      "needs_kay_clarification": "false",
+      "person": "Greg",
+      "status": "overdue"
+    }
+  ],
   "input_artifact": "brain/context/email-intelligence-input-2026-06-26.json",
   "input_status": "ok",
   "needs_kay": [
-    "Clarify email follow-through identity/source: Krupa; Greg; Denning; Matt (+1 more)"
+    "1 prior-day thank-you remains open: Lisa needs send",
+    "3 EOW/follow-up row(s) still active after sent-mail check: Monica Chawla; Denning; Greg",
+    "Clarify email follow-through identity/source: Paul (EOW follow-up); Brooke Neidich (EOW follow-up)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
@@ -15,5 +77,24 @@
   "source_artifact": "brain/context/email-scan-results-2026-06-26.md",
   "source_status": "ok",
   "stale_drafts": 0,
-  "task_candidates": 0
+  "task_candidates": 0,
+  "thank_you_items": [
+    {
+      "completed_at": "",
+      "due_date": "2026-06-26",
+      "email": "",
+      "event": "Call Lisa at NoFoTick",
+      "event_date": "2026-06-25",
+      "person": "Lisa",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "send_needed"
+    }
+  ],
+  "unclear_followthrough_items": [
+    "Paul (EOW follow-up)",
+    "Brooke Neidich (EOW follow-up)"
+  ],
+  "manual_update": "Kay confirmed James sent, Jeff not needed, Lisa keep/send on 2026-06-26."
 }

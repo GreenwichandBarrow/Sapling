@@ -176,6 +176,29 @@ When surfacing a contact for outreach, check whether the person is an assistant 
 - **Example:** Chase Lacson (assistant) at Goodman Taft has next_action "Reschedule call" — but the email should go to Molly Epstein (principal). Surface as "Molly Epstein (Goodman Taft)" not "Chase Lacson."
 </people_records>
 
+
+<attio_to_vault_backfill>
+## Attio → Vault Entity Backfill
+
+**Purpose:** When relationship/status/call artifacts contain `[[entities/{slug}]]` links for real contacts that already exist in Attio, the vault must not leave those links orphaned. Attio can be ahead of the vault; relationship-manager owns closing that gap.
+
+Run this before final artifact writing and before reporting orphaned real contacts:
+
+```bash
+source /home/ubuntu/projects/Sapling/scripts/op-env.sh
+python3 /home/ubuntu/projects/Sapling/scripts/backfill_vault_entities_from_attio.py
+```
+
+Behavior:
+- Scans `brain/` for missing `[[entities/{slug}]]` targets.
+- Looks up matching Attio People by full name derived from the slug.
+- If exactly one exact Attio match exists, creates/updates `brain/entities/{slug}.md` and backfills `attio_id`, `attio_url`, email, relationship type, cadence, and Attio context.
+- If multiple Attio records match, leaves `attio_id` unset and marks the entity `attio_sync_status: dedup_needed`; report the candidate records under `Attio Dedup Needed`.
+- If no Attio match exists, mark/report `not_found` but do not invent a contact.
+
+This is the inverse of Vault → Attio Sync. Both directions are required for alignment: Attio owns relationship/contact truth; vault owns durable knowledge graph links.
+</attio_to_vault_backfill>
+
 <vault_to_attio_sync>
 ## Vault → Attio Sync (Engagement Notes Backfill)
 
@@ -326,6 +349,7 @@ The scheduled wrapper (`scripts/run-agent-skill.sh`) overrides EXIT_CODE on POST
 - [ ] All overdue contacts verified against Gmail before surfacing (no false positives)
 - [ ] Trigger-based contacts (next_action contains "when"/"once"/"after"/"if") excluded from overdue list
 - [ ] Auto-resolved contacts had their Attio records updated
+- [ ] Attio → Vault backfill ran for orphaned `[[entities/...]]` links before reporting vault hygiene failures
 - [ ] Vault → Attio sync ran for any vault entity modified in last 7 days with unsynced engagement notes
 - [ ] Sync writes are idempotent (re-runs don't duplicate notes)
 - [ ] Vault entity frontmatter updated with `attio_id` + `attio_synced_at` for every successful sync

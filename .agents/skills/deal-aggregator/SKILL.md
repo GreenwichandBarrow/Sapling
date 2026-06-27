@@ -109,12 +109,14 @@ Retired 2026-06-19: the separate afternoon recovery run is no longer scheduled. 
 
 If `email-scan-results` contains listing rows from a sender/source that is not already in the static source roster, the run must add that source to the Source Scorecard using the correct channel (`Newsletter` for broker blasts/saved-search digests, `Direct email` for a one-off deal email addressed to Kay). Parsed listing sources must not disappear from dashboard Source Coverage.
 
+Current Good Morning deal-aggregator structure (2026-06-26): mirror the dashboard tab, in this order: `Surfaced matches`, `Sources covered`, `Manual check sources`. Do not invent ad hoc labels such as `Ops`, `Source registration / access`, or `New surfaced deals` unless they map into one of those three lines.
+
 Current dashboard Source Coverage doctrine (2026-06-20):
 - Dashboard Source Coverage is an operating roster, not a historical experiment log. Do not show legacy source-test rows unless Kay confirms she is signed up or actively receiving deal flow from that source.
 - Paused / hidden unless reactivated: Empire Flippers, Flippa, Quiet Light, Website Closers, SMB Deal Hunter, Synergy Business Brokers, GP Bullhound, PCO Bookkeepers, and Sica Fletcher.
 - Empire Flippers, Flippa, Quiet Light, and Website Closers are SaaS / digital-heavy and remain out while SaaS is deprioritized.
 - Source Coverage is also Kay's relationship/source guide. Each source row should show: source name, status, this week reviewed/matches, and this month reviewed/matches. This makes stale broker/intermediary sources visible without showing raw debug tables.
-- Newsletter roster includes BizBuySell, Business Exits, Calder Capital, DealForce, Everingham & Kerr, Rejigg, Transworld Business Advisors, Viking Mergers, Axial, and Baton. Calder Capital is active because Kay signed up for the newsletter on 2026-06-20.
+- Newsletter roster includes BizBuySell, BizQuest, BizScout, Business Exits, Calder Capital, DealForce, Everingham & Kerr, Rejigg, Transworld Business Advisors, Viking Mergers, Axial, and Baton. Calder Capital is active because Kay signed up for the newsletter on 2026-06-20. BizQuest, BizScout, and Baton are active profile-backed sources because Kay added profiles on 2026-06-26.
 - Direct email means a named intermediary/contact/broker relationship sending Kay a particular deal reference. Current direct-email roster: Benchmark International; Eric Mendelson (firm name TBD); Bob Williamson / Cetane; Matt Luczyk / Peapack; Richard / Stone Hill Advisors; Carlos / In3O; IAG M&A Advisors; DealsX replies (temporary through DealsX sunset).
 - Never show a generic `Direct deal email` source row, Kay/self-sent message, Google Voice text notification, or meet-greenwichandbarrow system message on the dashboard. Normalize domain variants such as `quietlight.com`, `websiteclosers.com`, `greenwichandbarrow.com`, `meet-greenwichandbarrow.com`, and `txt.voice.google.com` before source-coverage display. If a direct deal email cannot be attributed to a named contact/source, surface the attribution gap in Good Morning / plumbing notes, not as a dashboard source.
 
@@ -130,12 +132,24 @@ Every weekday morning run writes `brain/context/deal-aggregator-status.json` wit
   "broker_opportunistic": 0,
   "near_misses": 0,
   "sources_scanned": 0,
+  "sources_covered": {
+    "marketplace": 0,
+    "email_newsletters": 0,
+    "direct_email": 0
+  },
+  "manual_check_sources": [],
   "sources_blocked_verified": 0,
   "sources_blocked_single_attempt": 0,
   "volume_status": "ON TRACK|BELOW TARGET|ABOVE TARGET|CRITICAL",
   "needs_attention": []
 }
 ```
+
+Good Morning / dashboard rendering contract for the `Deal Aggregator` section:
+
+1. `Surfaced matches` — show the count of surfaced matches from `deals_found` plus volume context against the 1-3/day target, e.g. `0 surfaced matches; below 1-3/day target`. Include broker-opportunistic/near-miss counts only if they change Kay's review decision.
+2. `Sources covered` — show the channel split in one line: `{marketplace} marketplace; {email_newsletters} email newsletters; {direct_email} direct email`. If the split is unavailable, use `sources_scanned` once as a fallback and mark the split as unavailable so the plumbing gap is visible.
+3. `Manual check sources` — list only sources Kay must manually check today because automation cannot cover them or access is blocked. If none, write `N/A`. Do not list sources already covered by the run.
 
 Manual digest mode must **not** update `brain/context/deal-aggregator-status.json`. That file is the daily dashboard contract and must continue to point at the latest weekday morning scan artifact. If a manual digest needs machine-readable status, write a separate digest-specific artifact instead of overwriting daily status.
 </funnel_effectiveness>
@@ -150,16 +164,18 @@ Scan searchable broker platforms for new listings matching the buy box.
 - Business Exits (businessexits.com/listings/) — email + searchable, consistently accessible
 - DealForce (dealforce.com) — Generational Equity buyer platform; Kay added saved search 2026-06-20, email alerts expected from DealForce / Generational sender domains; route alerts through email-intelligence.
 - Rejigg (rejigg.com) — automated deal match emails + searchable
-- BizQuest (bizquest.com) — BizBuySell/LoopNet-adjacent marketplace; added from NY ETA/SMB chat recommendation on 2026-06-16, test public scrape + email alerts
+- BizQuest (bizquest.com) — BizBuySell/LoopNet-adjacent marketplace; profile added by Kay 2026-06-26. Treat as active profile-backed email/newsletter source; test public scrape only as secondary coverage.
 - DealMatch (domain/account TBD) — recommended in NY ETA/SMB chat on 2026-06-16; add to source-scout queue, verify URL/registration and whether email digest exists before live scan
-- Baton Market (baton.com) — registered by Kay 2026-06-19; email alerts expected. Sender observed: `chat@baton.com`, already labeled `auto/deal flow`. Treat as active email-alert marketplace source; email-intelligence captures alerts and deal-aggregator classifies in the morning run.
+- Baton Market (baton.com) — registered by Kay 2026-06-19; profile confirmed active 2026-06-26. Sender observed: `chat@baton.com` and `no-reply@alerts.baton.com`, already labeled `auto/deal flow`. Treat as active email-alert marketplace source; email-intelligence captures alerts and deal-aggregator classifies in the morning run.
 
 **AI-powered marketplaces (confirmed scrapable):**
 - DealFlow Agent (dealflowagent.com) — landing page only, no live listings (4/21: `/listings` 404, marketing-buyer-counts content only). Monitor for marketplace launch; not a live-flow source.
 
+**AI-powered marketplaces (profile-backed / scrapability TBD):**
+- BizScout (bizscout.com) — Partial public marketplace via "DealOS"; profile added by Kay 2026-06-26. Treat as active profile-backed email/newsletter source; test buyer-tier access and public scrape as secondary coverage.
+
 **AI-powered marketplaces (need Kay to register first — scrapability TBD):**
 - Acquire.com (acquire.com) — SaaS/digital-heavy. Likely login-gated. Register and re-test.
-- BizScout (bizscout.com) — Partial public marketplace via "DealOS." Verified buyer tier promises exclusive access — test both tiers after register.
 - Kumo (kumo.so) — Did not resolve on initial fetch; retest before adding.
 
 **Deal-sharing communities:**
@@ -187,7 +203,7 @@ Scan searchable broker platforms for new listings matching the buy box.
 **Gated platforms (need Kay's registration / source-scout validation):**
 - FE International (app.feinternational.com) — requires buyer registration
 - DealMatch — URL/account/scrapability TBD; source recommended by peer, validate before daily rotation
-- Baton Market — registered 2026-06-19; now active via email alerts from `chat@baton.com` / Baton domain. Web marketplace may remain login-gated; primary path is email-intelligence.
+- Baton Market — registered 2026-06-19 and profile confirmed active 2026-06-26; now active via email alerts from `chat@baton.com`, `no-reply@alerts.baton.com`, and Baton domain. Web marketplace may remain login-gated; primary path is email-intelligence.
 
 **Scanning process:**
 
@@ -267,7 +283,7 @@ CALIFORNIA soft-exclude per `feedback_no_california` applies on all modes — fl
 Default: WebFetch. If WebFetch returns 403 / 401 / JS shell / Cloudflare challenge, route through `agent-browser` (installed via `npm i -g agent-browser && agent-browser install`). Known JS-shell / Cloudflare-blocked / 403 sources that MUST use agent-browser:
 
 - businessesforsale.com — 403
-- Any gated marketplace requiring login (Acquire, FE International, Axial, BizScout, Kumo post-registration)
+- Any gated marketplace requiring login (Acquire, FE International, Axial, Kumo post-registration)
 
 Command pattern for agent-browser scrapes:
 ```bash
@@ -552,7 +568,7 @@ Manual deal-source work is separate from reviewed sources. Only marketplace-styl
 
 Dashboard deal status is binary for Kay: `Matches` = PASS rows; `Filtered out` = every non-PASS row, including broker-opportunistic, near-miss, flag, and hard-reject. Keep internal lanes in artifacts if useful for calibration, but do not expose a separate borderline/learning metric on the dashboard.
 
-Every `auto/deal flow` source observed in the current-week email artifact must be accounted for in Source Scorecard unless it is explicitly paused. Current active email/newsletter/direct sources that must not disappear from dashboard coverage: BizBuySell, Calder Capital, DealForce / Generational, Transworld Business Advisors, Everingham & Kerr, Business Exits, Baton, Axial, DealsX replies, and direct intermediary forwards. Current paused/ignored sources: Flippa, Quiet Light / quietlight.com, Website Closers / websiteclosers.com, and SMB Deal Hunter. If an observed active sender has zero listing rows, include a scorecard row with `Listings Reviewed: 0` and a status reason rather than letting the source vanish.
+Every `auto/deal flow` source observed in the current-week email artifact must be accounted for in Source Scorecard unless it is explicitly paused. Current active email/newsletter/direct sources that must not disappear from dashboard coverage: BizBuySell, BizQuest, BizScout, Calder Capital, DealForce / Generational, Transworld Business Advisors, Everingham & Kerr, Business Exits, Baton, Axial, DealsX replies, and direct intermediary forwards. Current paused/ignored sources: Flippa, Quiet Light / quietlight.com, Website Closers / websiteclosers.com, and SMB Deal Hunter. If an observed active sender has zero listing rows, include a scorecard row with `Listings Reviewed: 0` and a status reason rather than letting the source vanish.
 
 | Source | Category | Status | HTTP | Listings Reviewed | Matches | Last Match Date |
 |--------|----------|--------|------|-------------------|---------|-----------------|

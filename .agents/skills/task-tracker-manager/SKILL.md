@@ -33,7 +33,7 @@ Architecture lives in `memory/project_personal_task_tracker.md`. Update that mem
   - **`Horizon`** = native dropdown: `Short Term`, `Long Term`, `Weekly Recurring Sun`..`Weekly Recurring Sat` (extensible later to Quarterly/Yearly). A **recurring item** = `Horizon` starts with "Weekly Recurring" + `Status == "On-going"`; `build-week` reads these rows directly from `To Do` (NOT a separate tab) and stamps each onto its day. `Long Term`/someday items now live here with `Horizon=Long Term` (no separate tab).
   - Day tabs and the Week tab **KEEP native checkboxes** (Kay's working surfaces, unchanged) — only the `To Do` backend changed to the Status dropdown.
 - **`Week` tab** — the Sunday planning canvas, ALL 7 days visible Sun→Sat, one block per day side by side, **leftmost in the strip (index 0, before `Sun`)**. Week is task-only: habits live on day tabs, not Week. Layout follows the 6.7 reference: row 1 merged title `WEEK OF Jun 7-13`, row 3 `DAILY FOCUS / THEME`, row 6 SUNDAY..SATURDAY day headers, rows 8–32 twenty-five visible planning slots/day, first three slots shaded sage, row 34 `notes · ideas · jot`. Builder: `scripts/build_week_tab.py` (idempotent repair; expands grid, resets stale merges/values/formatting, reapplies structure, wires task formulas from day tabs).
-- **7 day tabs** (`Sun Mon Tue Wed Thu Fri Sat`, immediately after `Week`) — the calm, large-font daily *execution* surface. Kay works these Mon–Sat. Per-day layout follows the 6.7 reference: row 1 title, row 2 `DAILY FOCUS / THEME`, row 4 `HABITS` plus `SUPPLEMENTAL`, rows 5–14 primary habits (A/B), supplemental habits (C/D), secondary supplemental habits or goal (E/F), row 16 task headers, rows 17–41 twenty-five priority slots (A=native checkbox · B=Task 17pt · C=Type dropdown · D=Project dropdown · E=Notes), rows 17–19 shaded sage as the top-three priority band, rows 44–51 free-notes block. Builder: `scripts/build_day_tabs.py` (idempotent; expands grid; `--dry-run`).
+- **7 day tabs** (`Sun Mon Tue Wed Thu Fri Sat`, immediately after `Week`) — the calm, large-font daily *execution* surface. Kay works these Mon–Sat. Per-day layout follows the 6.7 reference: row 1 title, row 2 `DAILY FOCUS / THEME`, row 4 `HABITS` plus `SUPPLEMENTAL`, rows 5–14 primary habits (A/B), supplemental habits (C/D), secondary supplemental habits or goal (E/F), row 16 task headers, rows 17–66 fifty priority slots (A=native checkbox · B=Task 17pt · C=Type dropdown · D=Project dropdown · E=Notes), rows 17–19 shaded sage as the top-three priority band, row 67 `NOTES`, rows 68–75 free-notes block. Builder: `scripts/build_day_tabs.py` (idempotent; expands grid; `--dry-run`).
 
 **Sunday flow (weekly-files architecture, shipped 2026-05-26):**
 
@@ -91,9 +91,9 @@ Steps are atomic within a single `build-week` invocation. No separate human gate
 
 **Empty-row compaction doctrine (codified 2026-05-31 per Kay):** the `To Do` backend tab accumulates GAP rows — leftover `FALSE` checkbox cells from the pre-2026-05-17 checkbox architecture, blank rows, stray empty-checkbox rows. Two mechanisms feed the pile: `append` only ever fills the first empty row (it never removes), and `build-week`'s Drive-copy carries the whole cluttered tab forward every Sunday. Left alone it bloats to hundreds of rows (observed 2026-05-31: 412 rows, only 125 real, 286 gaps). The **`compact-todo`** verb strips every gap row, packs the real rows contiguously from row 2, physically deletes the surplus rows (retaining a ~40-row validated append buffer), and re-applies Status/Type/Project/Horizon dropdown validation (the relative done-row CF survives untouched). It runs automatically inside `build-week` (step 4b, on the freshly-copied new file, before the recurring stamp) so every week starts clean, and is callable on demand. This is NOT completed-row relocation — gap rows hold no data and are pure clutter.
 
-**Pack-to-top doctrine (codified 2026-05-26):** every verb that writes to day-tab or Week-tab priority slots MUST keep items packed at the TOP of the 25-slot range. No leading empty rows, no gaps between items. The 25 slots are a CAPACITY CEILING, not a fixed seating chart. `promote`, `schedule-to-day-slot`, `move-day-item`, `distribute-week`, `sync-done-status`, recurring-stamp, carryover-pull — all use next-empty-slot logic. `--slot N` override allowed but warns if it leaves earlier slots empty. See `memory/feedback_task_tracker_pack_to_top.md`.
+**Pack-to-top doctrine (codified 2026-05-26):** every verb that writes to day-tab or Week-tab priority slots MUST keep items packed at the TOP of the 50-slot range. No leading empty rows, no gaps between items. The 50 slots are a CAPACITY CEILING, not a fixed seating chart. `promote`, `schedule-to-day-slot`, `move-day-item`, `distribute-week`, `sync-done-status`, recurring-stamp, carryover-pull — all use next-empty-slot logic. `--slot N` override allowed but warns if it leaves earlier slots empty. See `memory/feedback_task_tracker_pack_to_top.md`.
 
-**Prior-day cleanup after carry-forward (codified 2026-06-18 per Kay; overflow fix 2026-06-20):** when `carry-forward-day` moves unchecked items from a prior day into the current day during Good Morning or Good Night, it must scan every task row above the visible `NOTES` header, not just the canonical rows 17-41. If manual edits pushed tasks below the 25-slot block, those overflow rows still carry forward. If the destination day lacks enough blank task rows, insert overflow task rows immediately above `NOTES` and immediately re-apply native checkbox validation, Type/Project dropdowns, 17pt task text formatting, and task-row height to every inserted overflow row. After moving, clean the source day tab: checked/completed task rows pack to the top, any remaining unchecked rows follow, and blank rows are pushed below. This keeps the prior day readable after moved items are cleared and prevents black/blank gaps from accumulating.
+**Prior-day cleanup after carry-forward (codified 2026-06-18 per Kay; overflow fix 2026-06-20):** when `carry-forward-day` moves unchecked items from a prior day into the current day during Good Morning or Good Night, it must scan every task row above the visible `NOTES` header, not just the canonical rows 17-66. If manual edits push tasks below the 50-slot block, those overflow rows still carry forward. If the destination day lacks enough blank task rows, insert overflow task rows immediately above `NOTES` and immediately re-apply native checkbox validation, Type/Project dropdowns, 17pt task text formatting, and task-row height to every inserted overflow row. After moving, clean the source day tab: checked/completed task rows pack to the top, any remaining unchecked rows follow, and blank rows are pushed below. This keeps the prior day readable after moved items are cleared and prevents black/blank gaps from accumulating.
 
 **Weekday Good Morning sweep (codified 2026-06-24 per Kay):** Good Morning must not only check yesterday. It must sweep every earlier live day tab in the current week into the current day, earliest first (`Sun` through yesterday), using `carry-forward-day --from {prior_day} --to {current_day}` after dry-run verification. This catches missed Good Night runs and older stranded rows. Future-day tabs (`tomorrow` onward) are planned work and must not be pulled forward. The report command must use the same above-`NOTES` task boundary as carry-forward so overflow rows remain visible in health checks.
 
@@ -164,7 +164,7 @@ python3 scripts/task_tracker.py promote \
 ```
 
 - `--day` accepts Sun..Sat / Mon..Sun (resolves to the matching day TAB)
-- `--slot` is 1-25 (rows 17-41 on the target day tab)
+- `--slot` is 1-50 (rows 17-66 on the target day tab)
 - Copies Task (+ Type/Project) from the To Do row into the day tab's slot (A:E), leaves the To Do row in place but prepends a `→ promoted to {day} slot {N} on {date}` marker to its Notes field so it's visually de-prioritized but still readable.
 - Refuses to overwrite a non-empty priority slot (shows current contents, errors out).
 
@@ -183,7 +183,7 @@ python3 scripts/task_tracker.py build-week [--skip-recurring] [--skip-carryover]
 5. Re-titles the Week tab's row-1 title to `WEEK OF {Sun-Sat}` + re-stamps the per-day header-row dates.
 6. **Reads the recurring `To Do` rows** (Horizon starts with "Weekly Recurring" + Status `On-going`) and **stamps each onto the Week tab** for its day (collision-refuse logic — explicit slot pins, blank slots auto-pick first empty, conflicts warn+skip). `--skip-recurring` bypasses.
 6a. **AUTO-PULL incomplete carryover from prior week's day tabs onto the new Week tab (NEW — 2026-05-26 per Kay):**
-    - For each of the 7 day tabs, read every priority slot (rows 17–41, status col A + task col B).
+    - For each of the 7 day tabs, read every priority slot (rows 17–66, status col A + task col B).
     - An item is "incomplete" if `Task` is non-empty AND `Status` checkbox is FALSE.
     - For each incomplete item: write the Task text into the same day's day-block on the new Week tab (collision-refuse vs recurring stamps; auto-pick next empty slot if its prior slot is occupied by a recurring item).
     - Items whose source slot has Status TRUE are SKIPPED (they were completed last week; no need to carry).
@@ -232,7 +232,7 @@ python3 scripts/task_tracker.py move-day-item \
 python3 scripts/task_tracker.py sync-done-status [--dry-run]
 ```
 
-When Kay checks a priority-slot status box during the week, this verb walks all 7 day TABS × 25 priority slots (cols A=status checkbox, B=task; rows 17-41) and finds every checked slot, then matches each slot's Task field against the To Do tab's Task field (exact case, leading/trailing whitespace stripped). For each unambiguous match where the To Do `Status` is not yet `Completed`, the verb sets `Status` to `Completed` so the existing conditional formatting paints strikethrough + sage-light fill.
+When Kay checks a priority-slot status box during the week, this verb walks all 7 day TABS × 50 priority slots (cols A=status checkbox, B=task; rows 17-66) and finds every checked slot, then matches each slot's Task field against the To Do tab's Task field (exact case, leading/trailing whitespace stripped). For each unambiguous match where the To Do `Status` is not yet `Completed`, the verb sets `Status` to `Completed` so the existing conditional formatting paints strikethrough + sage-light fill.
 
 - **Match found, To Do Status != Completed** → set to `Completed`.
 - **Match found, To Do Status already `Completed`** → no-op.
@@ -253,7 +253,7 @@ python3 scripts/task_tracker.py schedule-to-day-slot \
 ```
 
 - `--day` accepts Sun..Sat / Mon..Sun (resolves to the matching day TAB)
-- `--slot` is 1..25 (rows 17-41) — **optional**; if omitted, auto-picks the first empty slot for that day tab. (Single-step alternative to `append` → `promote`.)
+- `--slot` is 1..50 (rows 17-66) — **optional**; if omitted, auto-picks the first empty slot for that day tab. (Single-step alternative to `append` → `promote`.)
 - Optional `--type` / `--project` / `--notes` write into C/D/E of the slot.
 - Refuses to overwrite an occupied slot unless `--force` is passed.
 - Status cell auto-fills as an unchecked native Sheets checkbox.
@@ -294,7 +294,7 @@ python3 scripts/task_tracker.py recurring-add \
 
 - `--day` accepts Mon..Sun (case-insensitive, canonicalizes to 3-letter form) — sets `Horizon = Weekly Recurring {day}`.
 - `--type` is `Work` or `Home` (required).
-- `--slot` is optional; omit for auto-pick at stamp time. Numeric 1..25. (Stored in Notes as a slot pin if given.)
+- `--slot` is optional; omit for auto-pick at stamp time. Numeric 1..50. (Stored in Notes as a slot pin if given.)
 - `--project` and `--notes` are free text, optional.
 - Writes a normal `To Do` row (Status `On-going`) at the first empty row >=6.
 

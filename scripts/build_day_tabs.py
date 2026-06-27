@@ -68,11 +68,11 @@ DAY_HABIT_FIRST_ROW = 5
 DAY_HABIT_LAST_ROW = 14
 DAY_COL_HEADER_ROW = 16
 DAY_SLOT_FIRST_ROW = 17
-DAY_SLOT_LAST_ROW = 41
-DAY_NOTES_HEADER_ROW = 43
-DAY_NOTES_FIRST_ROW = 44
-DAY_NOTES_LAST_ROW = 51
-DAY_GRID_ROWS = 54
+DAY_SLOT_LAST_ROW = 66
+DAY_NOTES_HEADER_ROW = 67
+DAY_NOTES_FIRST_ROW = 68
+DAY_NOTES_LAST_ROW = 75
+DAY_GRID_ROWS = 78
 DAY_GRID_COLS = 12
 TOP_PRIORITY_SLOT_COUNT = 3
 
@@ -247,6 +247,12 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
     R.append({"updateSheetProperties": {
         "properties": {"sheetId": sid, "gridProperties": {"rowCount": DAY_GRID_ROWS, "columnCount": DAY_GRID_COLS}},
         "fields": "gridProperties.rowCount,gridProperties.columnCount"}})
+    # Clear stale note-block merges from the old 25-slot layout before applying
+    # the expanded 50-slot frame. Values are left intact by this structural pass.
+    R.append({"unmergeCells": {
+        "range": {"sheetId": sid, "startRowIndex": DAY_SLOT_FIRST_ROW - 1,
+                  "endRowIndex": DAY_NOTES_LAST_ROW, "startColumnIndex": 0,
+                  "endColumnIndex": 6}}})
 
     # ---- Title row 1: merge A1:F1, 20pt bold, sage-dark fill ----
     R.append({"mergeCells": {

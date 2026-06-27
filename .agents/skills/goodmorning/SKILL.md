@@ -30,6 +30,40 @@ Non-negotiables:
 6. Verify cold-call operations fired when scheduled. Do not re-run if the job already produced a current artifact.
 7. Apply day-of-week overlays.
 
+## Day-Triggered Weekly Skills Section
+
+Every Good Morning brief must include a compact section for skills that are expected specifically because of the day of week. This is a dashboard-facing status section, not a task-list repeat.
+
+Section label: `Day-Triggered Weekly Skills`
+
+Rules:
+- Include only skills whose schedule or doctrine is specific to the current weekday.
+- State `done / pending / failed / not scheduled today` with the latest artifact or failure signal when available.
+- If a scheduled weekly skill has not run yet because Kay launched Good Morning early, say so plainly and give the expected run window.
+- If the skill is trigger-based rather than weekday-scheduled, mention it only when the trigger is present or when Kay has specifically asked about it.
+- Numbering continues from the rest of the brief.
+
+Day map:
+- Sunday: weekly task tracker build; target-discovery Phase 2 at 3pm ET; cold-call operations prep at 6pm ET; conference-discovery at 9pm ET.
+- Monday: conference-discovery / Conference Pipeline status from the Sunday run.
+- Wednesday: niche-intelligence status from Tuesday night.
+- Friday: weekly-tracker snapshot/export; health-monitor Friday report; calibration-workflow Thursday-night run for Friday meta-calibration.
+
+Budget manager note:
+- `budget-manager` is not a standing Friday weekly skill. It is trigger-based from bookkeeper/StartVirtual monthly P&L or Balance Sheet delivery. Surface it in this section only when a budget-manager trigger/output exists, or when the month-end missing-report watchdog is relevant.
+
+## Email Orchestration Pre-Dashboard Rule
+
+The Good Morning brief is the edit surface; the dashboard becomes the reference after the brief. For the `Email Orchestration` section, `24-hour thank-yous` must be built from **prior-day external meetings/calls**, not same-day calendar items. Before briefing:
+
+1. Run or review `scripts/refresh_email_orchestrator_status.py`; it seeds prior-day external meetings/calls into `brain/context/email-follow-through-backlog.json`.
+2. Verify each prior-day thank-you against Gmail sent mail via `gog`/email-orchestrator evidence.
+3. If sent evidence exists, report it as verified/completed and do not ask Kay to approve it.
+4. If no sent evidence exists, surface the person/event as a numbered Good Morning item for Kay approval before writing or keeping it active on the dashboard.
+5. For 48-hour follow-ups and EOW follow-ups, check Gmail sent-mail evidence before surfacing the row. Suppress completed rows; include first names for verified completions and active rows. Never say only "N rows completed" or hide names behind "+N more".
+6. EOW follow-ups must name each unresolved person. If the identity/source is unclear, raise the exact person/context in the morning brief instead of posting a generic reminder.
+7. After Kay responds, route approved unsent thank-you work through the email-orchestrator/task-manager path; never send email.
+
 ## Task Manager Carry-Forward Stop Hook
 
 Good Morning is not complete until Task Manager has been verified. Before writing the morning brief:

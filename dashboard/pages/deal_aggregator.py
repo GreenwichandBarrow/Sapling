@@ -50,6 +50,8 @@ WINDOW_DAYS = 14
 
 NEWSLETTER_SOURCE_ROSTER = (
     "BizBuySell",
+    "BizQuest",
+    "BizScout",
     "Business Exits",
     "Calder Capital",
     "DealForce",
@@ -75,7 +77,6 @@ DIRECT_EMAIL_SOURCE_ROSTER = (
 # Marketplace sources Kay may need to check manually. SaaS/paywall sources stay
 # hidden unless Kay reactivates them.
 MANUAL_MARKETPLACE_SOURCE_ROSTER = (
-    "BizQuest",
     "DealMatch",
     "Searchfunder",
 )
@@ -195,6 +196,7 @@ def _source_display_name(source: str) -> str:
         (("stone hill", "stony hill"), "Richard / Stone Hill Advisors"),
         (("eric mendelson", "mendelson"), "Eric Mendelson"),
         (("bizquest",), "BizQuest"),
+        (("bizscout", "dealos"), "BizScout"),
         (("dealmatch", "deal match"), "DealMatch"),
         (("searchfunder", "search funder"), "Searchfunder"),
         (("business exits",), "Business Exits"),
@@ -409,6 +411,9 @@ def _source_channel(source: str, raw_category: str = "") -> str:
         "transworld",
         "viking",
     )
+    profile_backed_newsletter_terms = ("baton", "bizquest", "bizscout")
+    if any(term in s for term in profile_backed_newsletter_terms):
+        return "newsletter"
     if "marketplace" in category and not any(term in category for term in ("email", "newsletter", "saved search")):
         return "marketplace"
     if "direct email" in category or "email-only" in category or "direct" in category or any(term in s for term in direct_email_terms):

@@ -1,6 +1,6 @@
 {
   "verb": "sync-done-status",
-  "timestamp": "20260624-105056",
+  "timestamp": "20260626-100954",
   "sheet_id": "1sN1yb6R7ippscvFWoaJKTSu0s2qBfxBoRn5dCviPTcY",
   "ranges": {
     "'To Do'!A2:A400": [
@@ -188,6 +188,15 @@
         "Not Completed"
       ],
       [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
         "Not Completed"
       ],
       [
@@ -218,16 +227,7 @@
         "Not Completed"
       ],
       [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
+        "Completed"
       ],
       [
         "Not Completed"
@@ -459,6 +459,9 @@
       ],
       [
         "Not Completed"
+      ],
+      [
+        "Completed"
       ],
       [
         "Not Completed"

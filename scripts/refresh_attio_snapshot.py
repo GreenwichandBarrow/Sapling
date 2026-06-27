@@ -31,6 +31,11 @@ SNAPSHOT_PATH = REPO_ROOT / "brain" / "context" / "attio-pipeline-snapshot.json"
 LIST_ID = "0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b"  # Active Deals – Owners
 LIST_NAME = "Active Deals – Owners"
 TERMINAL_STAGE = "Closed / Not Proceeding"
+STAGE_ALIASES = {
+    "NDA Executed": "NDA",
+    "LOI / Offer Submitted": "Submitted LOI",
+    "LOI Signed": "Signed LOI",
+}
 
 API_BASE = "https://api.attio.com/v2"
 PAGE_LIMIT = 50  # Attio max per page
@@ -94,6 +99,7 @@ def _entry_stage_and_since(entry: dict) -> tuple[str | None, str | None]:
         return None, None
     stage_obj = stage_field[0] if isinstance(stage_field, list) else stage_field
     title = (stage_obj.get("status") or {}).get("title")
+    title = STAGE_ALIASES.get(title, title)
     # `active_from` is when the entry entered current stage
     since = stage_obj.get("active_from")
     return title, since

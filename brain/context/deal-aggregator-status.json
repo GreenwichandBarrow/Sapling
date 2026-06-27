@@ -10,5 +10,33 @@
   "sources_blocked_verified": 0,
   "sources_blocked_single_attempt": 0,
   "volume_status": "BELOW TARGET",
-  "needs_attention": []
+  "needs_attention": [],
+  "sources_covered": {
+    "marketplace": 6,
+    "email_newsletters": 4,
+    "direct_email": 4
+  },
+  "sources_covered_detail": {
+    "marketplace": [
+      "Baton Market",
+      "Business Exits",
+      "DealForce",
+      "Empire Flippers",
+      "Rejigg",
+      "Synergy Business Brokers Real Estate"
+    ],
+    "email_newsletters": [
+      "BizBuySell",
+      "Calder Capital",
+      "PCO Bookkeepers",
+      "Viking Mergers"
+    ],
+    "direct_email": [
+      "DealsX Proprietary Outreach",
+      "Everingham & Kerr",
+      "IAG M&A Advisors",
+      "Transworld Business Advisors"
+    ]
+  },
+  "manual_check_sources": []
 }

@@ -229,12 +229,12 @@ DAY_HABITS_HEADER_ROW = 4    # "HABITS" + "SUPPLEMENTAL"
 DAY_HABIT_FIRST_ROW = 5      # rows 5..14 = 10 habit rows
 DAY_HABIT_LAST_ROW = 14
 DAY_COL_HEADER_ROW = 16      # ✓ | Task | Type | Project | Notes
-DAY_SLOT_FIRST_ROW = 17      # rows 17..41 = 25 priority slots
-DAY_SLOT_LAST_ROW = 41
-DAY_NOTES_HEADER_ROW = 43    # "NOTES"
-DAY_NOTES_FIRST_ROW = 44     # rows 44..51 = free-notes block
-DAY_NOTES_LAST_ROW = 51
-DAY_GRID_ROWS = 54           # generous; chart anchors col G row 1
+DAY_SLOT_FIRST_ROW = 17      # rows 17..66 = 50 priority slots
+DAY_SLOT_LAST_ROW = 66
+DAY_NOTES_HEADER_ROW = 67    # "NOTES"
+DAY_NOTES_FIRST_ROW = 68     # rows 68..75 = free-notes block
+DAY_NOTES_LAST_ROW = 75
+DAY_GRID_ROWS = 78           # matches max day-tab usage observed 2026-06-26
 DAY_GRID_COLS = 12           # A..F content + G chart anchor headroom
 
 # Per-day-tab columns (0-based)
@@ -245,7 +245,7 @@ DAY_COL_PROJECT = 3  # D — Project dropdown
 DAY_COL_NOTES = 4    # E — Notes free text
 DAY_COL_LAST = DAY_COL_NOTES
 DAY_HEADERS = ["✓", "Task", "Type", "Project", "Notes"]
-DAY_SLOT_COUNT = DAY_SLOT_LAST_ROW - DAY_SLOT_FIRST_ROW + 1  # 25
+DAY_SLOT_COUNT = DAY_SLOT_LAST_ROW - DAY_SLOT_FIRST_ROW + 1  # 50
 TOP_PRIORITY_SLOT_COUNT = 3  # fixed green-shaded priority band per day
 DAY_HABIT_COUNT = DAY_HABIT_LAST_ROW - DAY_HABIT_FIRST_ROW + 1  # 10
 
@@ -3070,7 +3070,7 @@ def cmd_reformat(args) -> int:
             "rule": {
                 "ranges": [{"sheetId": sid,
                             "startRowIndex": DAY_SLOT_FIRST_ROW - 1,
-                            "endRowIndex": DAY_SLOT_LAST_ROW,
+                            "endRowIndex": task_last_row,
                             "startColumnIndex": DAY_COL_STATUS,
                             "endColumnIndex": DAY_COL_LAST + 1}],
                 "booleanRule": {

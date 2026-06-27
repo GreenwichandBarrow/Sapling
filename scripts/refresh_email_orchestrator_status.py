@@ -41,6 +41,10 @@ class EmailOrchestratorStatus:
     pipeline_items: int = 0
     relationship_items: int = 0
     task_candidates: int = 0
+    thank_you_items: list[dict[str, str]] = field(default_factory=list)
+    follow_through_completed_items: list[dict[str, str]] = field(default_factory=list)
+    follow_through_pending_items: list[dict[str, str]] = field(default_factory=list)
+    unclear_followthrough_items: list[str] = field(default_factory=list)
     needs_kay: list[str] = field(default_factory=list)
     blocked: list[str] = field(default_factory=list)
 
@@ -351,11 +355,12 @@ def run_gog_json(args: list[str], timeout: int = 30) -> dict:
 def external_meeting_person(summary: str) -> str:
     cleaned = re.sub(r"\s+", " ", summary or "").strip()
     patterns = [
-        r"^(.*?)\s+[|I]\s+Kay$",
-        r"^Kay\s+[|I/]\s+(.*?)$",
-        r"^(.*?)\s*/\s*Kay",
+        r"^(?:Lunch\s+)?(.+?)\s+[|I]\s+Kay(?:\s+Mtg)?$",
+        r"^Kay\s+[|I/]\s+(.*?)(?:\s+Mtg)?$",
+        r"^(?:Lunch\s+)?(.+?)\s*/\s*Kay",
         r"^Kay\s*/\s*(.*?)$",
         r"^Call w/\s+(.*?)$",
+        r"^Call\s+(.+?)(?:\s+at\s+.+)?$",
     ]
     for pattern in patterns:
         match = re.search(pattern, cleaned, flags=re.IGNORECASE)
@@ -384,6 +389,7 @@ def is_external_calendar_event(event: dict) -> bool:
         "hold",
         "reminder",
         "deal team day",
+        "team tb",
     )
     if any(term in lowered for term in skip_terms):
         return False
@@ -394,7 +400,7 @@ def is_external_calendar_event(event: dict) -> bool:
         and "greenwichandbarrow.com" not in str(att.get("email") or "").lower()
         for att in attendees
     )
-    kay_pair_pattern = bool(re.search(r"\b(kay\s*[/|I]|[/|I]\s*kay|call w/)\b", summary, flags=re.IGNORECASE))
+    kay_pair_pattern = bool(re.search(r"\b(kay\s*[/|I]|[/|I]\s*kay|call w/|call\s+)\b", summary, flags=re.IGNORECASE))
     return external_attendee or kay_pair_pattern
 
 
@@ -515,12 +521,12 @@ def sent_thread_after_due(record: dict) -> dict | None:
     return None
 
 
-def reconcile_backlog_with_sent_mail() -> int:
+def reconcile_backlog_with_sent_mail() -> list[dict[str, str]]:
     data = load_json(BACKLOG_PATH)
     items = data.get("items", [])
     if not isinstance(items, list):
-        return 0
-    changed = 0
+        return []
+    changed_rows: list[dict[str, str]] = []
     today = now_et().date().isoformat()
     for record in items:
         if not isinstance(record, dict):
@@ -545,11 +551,110 @@ def reconcile_backlog_with_sent_mail() -> int:
             "subject": thread.get("subject", ""),
             "sent_at": sent_at,
         }
-        changed += 1
-    if changed:
+        changed_rows.append({
+            "bucket": str(record.get("bucket") or ""),
+            "person": str(record.get("person") or ""),
+            "event": str(record.get("event") or ""),
+            "completed_at": record["completed_at"],
+            "sent_at": sent_at,
+            "sent_subject": str(thread.get("subject") or ""),
+            "sent_thread_id": str(thread.get("id") or ""),
+        })
+    if changed_rows:
         data["updated_at"] = today
         BACKLOG_PATH.write_text(json.dumps(data, indent=2) + "\n")
-    return changed
+    return changed_rows
+
+
+def display_first_name(value: str) -> str:
+    raw = re.sub(r"\s+", " ", value or "").strip()
+    raw = re.sub(r"^(Lunch|Call)\s+", "", raw, flags=re.IGNORECASE)
+    raw = re.split(r"\s+[|I/]\s+Kay|\s+at\s+", raw, maxsplit=1, flags=re.IGNORECASE)[0]
+    return raw.split()[0] if raw else "Unassigned"
+
+
+def follow_through_completed_summary_items(changed_rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for record in changed_rows:
+        if not isinstance(record, dict):
+            continue
+        person = display_first_name(str(record.get("person") or record.get("event") or ""))
+        rows.append({
+            "bucket": str(record.get("bucket") or ""),
+            "person": person,
+            "event": str(record.get("event") or ""),
+            "completed_at": str(record.get("completed_at") or ""),
+            "sent_at": str(record.get("sent_at") or ""),
+            "sent_subject": str(record.get("sent_subject") or ""),
+            "sent_thread_id": str(record.get("sent_thread_id") or ""),
+        })
+    return rows
+
+
+def thank_you_summary_items() -> list[dict[str, str]]:
+    """Return prior-day thank-you rows for Good Morning/dashboard review.
+
+    Completed rows are included with sent evidence so the morning brief can say
+    they were verified; pending rows are the only ones Kay should approve/add.
+    """
+    data = load_json(BACKLOG_PATH)
+    yesterday = (now_et().date() - timedelta(days=1)).isoformat()
+    rows: list[dict[str, str]] = []
+    for record in data.get("items", []) or []:
+        if not isinstance(record, dict):
+            continue
+        if str(record.get("bucket") or "") != "thank":
+            continue
+        if str(record.get("event_date") or "") != yesterday:
+            continue
+        evidence = record.get("sent_evidence") or {}
+        rows.append({
+            "person": str(record.get("person") or ""),
+            "email": str(record.get("email") or ""),
+            "event": str(record.get("event") or ""),
+            "event_date": str(record.get("event_date") or ""),
+            "due_date": str(record.get("due_date") or ""),
+            "status": str(record.get("status") or ""),
+            "completed_at": str(record.get("completed_at") or ""),
+            "sent_thread_id": str(evidence.get("thread_id") or ""),
+            "sent_subject": str(evidence.get("subject") or ""),
+            "sent_at": str(evidence.get("sent_at") or ""),
+        })
+    return sorted(rows, key=lambda row: (row["status"].lower() not in COMPLETED_STATUSES, row["person"].lower()))
+
+
+def pending_followthrough_summary_items(evidence: list[dict[str, str]]) -> list[dict[str, str]]:
+    """Return active EOW/follow-up rows after sent-mail reconciliation.
+
+    Good Morning should not surface EOW rows until sent-mail evidence has been
+    checked. Completed rows stay suppressed; active rows carry enough identity
+    detail for Kay to approve, keep, or clarify without a vague count.
+    """
+    data = load_json(BACKLOG_PATH)
+    rows: list[dict[str, str]] = []
+    for record in data.get("items", []) or []:
+        if not isinstance(record, dict):
+            continue
+        bucket = str(record.get("bucket") or "")
+        if bucket not in {"eow", "followup"}:
+            continue
+        if str(record.get("status") or "").lower() in COMPLETED_STATUSES:
+            continue
+        if record.get("needs_kay_clarification"):
+            continue
+        if email_evidence_completes(record, evidence):
+            continue
+        rows.append({
+            "bucket": bucket,
+            "person": str(record.get("person") or ""),
+            "event": str(record.get("event") or ""),
+            "context": str(record.get("context") or ""),
+            "due_date": str(record.get("due_date") or ""),
+            "status": str(record.get("status") or ""),
+            "kay_confirmed_keep": str(bool(record.get("kay_confirmed_keep"))).lower(),
+            "needs_kay_clarification": str(bool(record.get("needs_kay_clarification"))).lower(),
+        })
+    return sorted(rows, key=lambda row: (row["bucket"], row["due_date"], row["person"].lower()))
 
 
 def unclear_followthrough_items(evidence: list[dict[str, str]]) -> list[str]:
@@ -562,15 +667,27 @@ def unclear_followthrough_items(evidence: list[dict[str, str]]) -> list[str]:
             continue
         if str(record.get("bucket") or "") == "warm":
             continue
+        if record.get("kay_confirmed_keep") or record.get("identity_confirmed"):
+            continue
         if email_evidence_completes(record, evidence):
             continue
         person = str(record.get("person") or "").strip()
         email = str(record.get("email") or "").strip()
-        event = str(record.get("event") or "").strip().lower()
+        event = str(record.get("event") or "").strip()
+        event_l = event.lower()
+        context = str(record.get("context") or "").strip()
+        bucket = str(record.get("bucket") or "").strip()
         has_call_artifact = bool(record.get("call_artifact"))
         weak_person = len(tokens(person)) <= 1
-        if missing_recipient(person) or (not email and not has_call_artifact and (weak_person or event.startswith("needs source"))):
-            unclear.append(person or "unassigned follow-through")
+        forced_clarify = bool(record.get("needs_kay_clarification"))
+        missing_eow_context = bucket == "eow" and not email and not has_call_artifact
+        if forced_clarify or missing_recipient(person) or missing_eow_context or (not email and not has_call_artifact and (weak_person or event_l.startswith("needs source"))):
+            detail = person or "unassigned follow-through"
+            if context and context.lower() != detail.lower():
+                detail = f"{detail} ({context})"
+            elif event and event.lower() != detail.lower():
+                detail = f"{detail} ({event})"
+            unclear.append(detail)
     return unclear
 
 
@@ -624,10 +741,22 @@ def build_status() -> EmailOrchestratorStatus:
     input_state = input_status(input_path, now)
     seeded_count = seed_prior_day_thank_yous()
     enriched_count = enrich_backlog_source_links()
-    reconciled_count = reconcile_backlog_with_sent_mail()
+    reconciled_items_raw = reconcile_backlog_with_sent_mail()
+    reconciled_count = len(reconciled_items_raw)
+    follow_through_completed_items = follow_through_completed_summary_items(reconciled_items_raw)
     compact_input = load_json(input_path)
     evidence = compact_email_evidence(compact_input)
+    pending_followthrough_items = pending_followthrough_summary_items(evidence)
     unclear_items = unclear_followthrough_items(evidence)
+    thank_items = thank_you_summary_items()
+    pending_thank_items = [
+        item for item in thank_items
+        if str(item.get("status") or "").lower() not in COMPLETED_STATUSES
+    ]
+    completed_thank_items = [
+        item for item in thank_items
+        if str(item.get("status") or "").lower() in COMPLETED_STATUSES
+    ]
 
     needs_kay: list[str] = []
     blocked: list[str] = []
@@ -645,16 +774,23 @@ def build_status() -> EmailOrchestratorStatus:
         needs_kay.append(f"{deal_items} broker/listing row(s) extracted")
     if relationship_items:
         needs_kay.append(f"{relationship_items} introduction/relationship item(s)")
-    if seeded_count:
-        needs_kay.append(f"{seeded_count} prior-day external meeting thank-you row(s) seeded")
+    if pending_thank_items:
+        names = "; ".join(item.get("person") or "Unassigned" for item in pending_thank_items[:4])
+        extra = f" (+{len(pending_thank_items) - 4} more)" if len(pending_thank_items) > 4 else ""
+        needs_kay.append(f"{len(pending_thank_items)} prior-day thank-you(s) need approval: {names}{extra}")
+    if completed_thank_items:
+        needs_kay.append(f"{len(completed_thank_items)} prior-day thank-you(s) verified sent")
     if enriched_count:
         needs_kay.append(f"{enriched_count} email follow-through source link field(s) enriched")
-    if reconciled_count:
-        needs_kay.append(f"{reconciled_count} email follow-through row(s) auto-completed from sent-mail evidence")
+    if follow_through_completed_items:
+        names = "; ".join(item.get("person") or "Unassigned" for item in follow_through_completed_items)
+        needs_kay.append(f"{len(follow_through_completed_items)} email follow-through row(s) auto-completed from sent-mail evidence: {names}")
+    if pending_followthrough_items:
+        names = "; ".join(item.get("person") or "Unassigned" for item in pending_followthrough_items)
+        needs_kay.append(f"{len(pending_followthrough_items)} EOW/follow-up row(s) still active after sent-mail check: {names}")
     if unclear_items:
-        names = "; ".join(unclear_items[:4])
-        extra = f" (+{len(unclear_items) - 4} more)" if len(unclear_items) > 4 else ""
-        needs_kay.append(f"Clarify email follow-through identity/source: {names}{extra}")
+        names = "; ".join(unclear_items)
+        needs_kay.append(f"Clarify email follow-through identity/source: {names}")
 
     return EmailOrchestratorStatus(
         fetched_at=now.isoformat(),
@@ -670,6 +806,10 @@ def build_status() -> EmailOrchestratorStatus:
         pipeline_items=pipeline_items,
         relationship_items=relationship_items,
         task_candidates=task_candidates,
+        thank_you_items=thank_items,
+        follow_through_completed_items=follow_through_completed_items,
+        follow_through_pending_items=pending_followthrough_items,
+        unclear_followthrough_items=unclear_items,
         needs_kay=needs_kay,
         blocked=blocked,
     )

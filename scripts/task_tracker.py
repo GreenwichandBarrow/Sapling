@@ -3675,17 +3675,32 @@ def cmd_carry_forward_day(args) -> int:
     if overflow_needed:
         dst_tab = find_day_tab(meta, dst_name)
         insert_at_row = dst_last_row + 1
-        client.batch_update([{
+        insert_start_index = insert_at_row - 1
+        grid_rows = int(dst_tab.get("gridProperties", {}).get("rowCount", 0) or 0)
+        requests = []
+        if insert_start_index > grid_rows:
+            requests.append({
+                "updateSheetProperties": {
+                    "properties": {
+                        "sheetId": dst_tab["sheetId"],
+                        "gridProperties": {"rowCount": insert_start_index},
+                    },
+                    "fields": "gridProperties.rowCount",
+                }
+            })
+        requests.append({
             "insertDimension": {
                 "range": {
                     "sheetId": dst_tab["sheetId"],
                     "dimension": "ROWS",
-                    "startIndex": insert_at_row - 1,
-                    "endIndex": insert_at_row - 1 + overflow_needed,
+                    "startIndex": insert_start_index,
+                    "endIndex": insert_start_index + overflow_needed,
                 },
                 "inheritFromBefore": True,
             }
-        }, *_day_task_format_requests(dst_tab["sheetId"], insert_at_row, insert_at_row + overflow_needed - 1)])
+        })
+        requests.extend(_day_task_format_requests(dst_tab["sheetId"], insert_at_row, insert_at_row + overflow_needed - 1))
+        client.batch_update(requests)
 
     if not planned:
         pack_summary = _pack_day_tab_checked_rows(client, src_name)

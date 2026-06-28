@@ -1,0 +1,57 @@
+
+[2026-06-27T22:37:12.703083] carry-forward-day — fri-to-sun
+  - moved: 49
+  - source: Fri
+  - destination: Sun
+  - source packed: {'completed': 1, 'active': 0, 'blank': 49, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260627-223703.json
+  
+  - Fri slot 1 → Sun slot 5: Weekly review — system health, M&A activities, budget
+  - Fri slot 2 → Sun slot 6: Submit the boys to: NY Models, State Models, Zuri Models, Teri B and Stellar
+  - Fri slot 3 → Sun slot 7: Create project for French passports
+  - Fri slot 4 → Sun slot 8: Verify Howie plan and update budget run-rate
+  - Fri slot 5 → Sun slot 9: Verify Attio payment / renewal amount
+  - Fri slot 6 → Sun slot 10: Make sure we dont get charged by Linkt
+  - Fri slot 7 → Sun slot 11: Get reimbursed for Motion
+  - Fri slot 8 → Sun slot 12: Bday cards & baby cards
+  - Fri slot 9 → Sun slot 13: Cancel Motion (or downgrade to monthly)
+  - Fri slot 10 → Sun slot 14: Research & email: Horizon Pest Control
+  - Fri slot 11 → Sun slot 15: Research & email: Excel Termite and Pest Control
+  - Fri slot 12 → Sun slot 16: Research & email: Parkway Pest Services
+  - Fri slot 13 → Sun slot 17: Connect Roberta & Elspeth
+  - Fri slot 14 → Sun slot 18: Connect Lily & Suzanne
+  - Fri slot 15 → Sun slot 19: Pull Megan pre-LOI prep meeting notes
+  - Fri slot 16 → Sun slot 20: Research & email: Positive Pest Management
+  - Fri slot 17 → Sun slot 21: Research & email: Suburban Exterminating
+  - Fri slot 18 → Sun slot 22: Research & email: Arrow Exterminating Co.
+  - Fri slot 19 → Sun slot 23: Email DealsX to pause for summer
+  - Fri slot 20 → Sun slot 24: Set up meetings with the list of Lenders to build relationships
+  - Fri slot 21 → Sun slot 25: Research & email: Top 3
+  - Fri slot 22 → Sun slot 26: Order more business cards and change title to founder
+  - Fri slot 23 → Sun slot 27: Try Claude on website rebuild
+  - Fri slot 24 → Sun slot 28: Review finders fee doc
+  - Fri slot 25 → Sun slot 29: Update Tailscale SSH checkPeriod for Sapling VPS
+  - Fri slot 26 → Sun slot 30: Call IRS to confirm Form 8822-B address update
+  - Fri slot 27 → Sun slot 31: Make Mamo aptmt on LI
+  - Fri slot 28 → Sun slot 32: Make derm aptmt for summer
+  - Fri slot 29 → Sun slot 33: Make dentist aptmt for Sept
+  - Fri slot 30 → Sun slot 34: Research & email: Bed Bug 911 (woman led)
+  - Fri slot 31 → Sun slot 35: Call RCN - make sure they upgraded our plan
+  - Fri slot 32 → Sun slot 36: Pest thesis deck
+  - Fri slot 33 → Sun slot 37: Do luxury-retailer store visits for pest buying criteria
+  - Fri slot 34 → Sun slot 38: Continue financial modeling for Pest / Multi, - how many acquisitions make the play work
+  - Fri slot 35 → Sun slot 39: Pay Labcorp
+  - Fri slot 36 → Sun slot 40: Schedule 2-3 luxury/hospitality pest validation calls
+  - Fri slot 37 → Sun slot 41: Scan WPMA directory for NY-based members
+  - Fri slot 38 → Sun slot 42: Pest 10-company research
+  - Fri slot 39 → Sun slot 43: Email Filipe @ Pest Mgmt company
+  - Fri slot 40 → Sun slot 44: Follow up: Hamptons Pest, Greg
+  - Fri slot 41 → Sun slot 45: Research & email: Thomas Pest Services, Inc. (woman founded)
+  - Fri slot 42 → Sun slot 46: Research & email: E&G Exterminators / E&G Pest Solutions (woman leadership)
+  - Fri slot 43 → Sun slot 47: Order paper towels and suppplies before heading to port
+  - Fri slot 45 → Sun slot 48: Try to join a NYPMA committee
+  - Fri slot 46 → Sun slot 49: Let clayton know I will be away for the summer
+  - Fri slot 47 → Sun slot 50: Confirm LiveOak payroll transfer coverage
+  - Fri slot 48 → Sun slot 51: Pay remaining IRS
+  - Fri slot 49 → Sun slot 52: Pay Dad for swim lessons and membership
+  - Fri slot 50 → Sun slot 53: Sailing camp / switch SMLI weeks

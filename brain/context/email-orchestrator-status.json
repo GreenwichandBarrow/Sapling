@@ -1,35 +1,21 @@
 {
-  "blocked": [],
+  "blocked": [
+    "source artifact is stale",
+    "compact input artifact is stale"
+  ],
   "deal_items": 0,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-06-26T10:50:03-04:00",
+  "fetched_at": "2026-06-28T09:10:50.600133-04:00",
   "follow_through_completed_items": [
     {
-      "completed_at": "2026-06-26T10:50:03-04:00",
-      "due_date": "2026-06-26",
-      "email": "jemden@helmsleyspear.com",
-      "event": "Lunch James I Kay",
-      "event_date": "2026-06-25",
-      "person": "James",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "completed",
-      "completion_source": "kay_confirmed_sent_2026-06-26"
-    },
-    {
-      "completed_at": "2026-06-26T10:50:03-04:00",
-      "due_date": "2026-06-26",
-      "email": "jeffstevens@anacapapartners.com",
+      "bucket": "thank",
+      "completed_at": "2026-06-25",
       "event": "Jeff I Kay Mtg",
-      "event_date": "2026-06-25",
       "person": "Jeff",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not_needed",
-      "completion_source": "kay_confirmed_not_needed_2026-06-26"
+      "sent_at": "2026-06-25 16:43",
+      "sent_subject": "Catch up",
+      "sent_thread_id": "19ed14b7a8f2f31e"
     }
   ],
   "follow_through_pending_items": [
@@ -65,36 +51,23 @@
     }
   ],
   "input_artifact": "brain/context/email-intelligence-input-2026-06-26.json",
-  "input_status": "ok",
+  "input_status": "stale",
   "needs_kay": [
-    "1 prior-day thank-you remains open: Lisa needs send",
+    "1 email follow-through row(s) auto-completed from sent-mail evidence: Jeff",
     "3 EOW/follow-up row(s) still active after sent-mail check: Monica Chawla; Denning; Greg",
-    "Clarify email follow-through identity/source: Paul (EOW follow-up); Brooke Neidich (EOW follow-up)"
+    "Clarify email follow-through identity/source: Paul (EOW follow-up); Brooke Neidich (EOW follow-up); Lisa (24-hour thank-you after external call)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
   "source_artifact": "brain/context/email-scan-results-2026-06-26.md",
-  "source_status": "ok",
+  "source_status": "stale",
   "stale_drafts": 0,
   "task_candidates": 0,
-  "thank_you_items": [
-    {
-      "completed_at": "",
-      "due_date": "2026-06-26",
-      "email": "",
-      "event": "Call Lisa at NoFoTick",
-      "event_date": "2026-06-25",
-      "person": "Lisa",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "send_needed"
-    }
-  ],
+  "thank_you_items": [],
   "unclear_followthrough_items": [
     "Paul (EOW follow-up)",
-    "Brooke Neidich (EOW follow-up)"
-  ],
-  "manual_update": "Kay confirmed James sent, Jeff not needed, Lisa keep/send on 2026-06-26."
+    "Brooke Neidich (EOW follow-up)",
+    "Lisa (24-hour thank-you after external call)"
+  ]
 }

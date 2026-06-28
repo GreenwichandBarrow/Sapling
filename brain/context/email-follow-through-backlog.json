@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-26T10:49:09-04:00",
+  "updated_at": "2026-06-28",
   "items": [
     {
       "bucket": "thank",
@@ -645,12 +645,12 @@
       "email": "jeffstevens@anacapapartners.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-06-25",
-      "status": "not_needed",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Jeff I Kay Mtg",
       "event_date": "2026-06-24",
       "calendar_event_id": "_60rk2c268koj0b9p8d33cb9k8krj6ba264s38b9l64ok4chi60qjag9o88",
-      "completed_at": "2026-06-26T10:49:09-04:00",
+      "completed_at": "2026-06-25",
       "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19ed14b7a8f2f31e, subject 'Catch up', sent 2026-06-25 16:43.",
       "sent_evidence": {
         "source": "gmail_sent_search",

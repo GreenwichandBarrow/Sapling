@@ -1,42 +1,25 @@
 {
-  "date": "2026-06-26",
+  "date": "2026-06-29",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-06-26.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-06-29.md",
   "email_scan_status": "live",
   "deals_found": 0,
   "broker_opportunistic": 1,
-  "near_misses": 3,
-  "sources_scanned": 20,
+  "near_misses": 5,
+  "sources_scanned": 28,
+  "sources_covered": {
+    "marketplace": 5,
+    "email_newsletters": 12,
+    "direct_email": 3
+  },
+  "manual_check_sources": [],
   "sources_blocked_verified": 0,
   "sources_blocked_single_attempt": 0,
-  "volume_status": "BELOW TARGET",
-  "needs_attention": [],
-  "sources_covered": {
-    "marketplace": 6,
-    "email_newsletters": 4,
-    "direct_email": 4
-  },
-  "sources_covered_detail": {
-    "marketplace": [
-      "Baton Market",
-      "Business Exits",
-      "DealForce",
-      "Empire Flippers",
-      "Rejigg",
-      "Synergy Business Brokers Real Estate"
-    ],
-    "email_newsletters": [
-      "BizBuySell",
-      "Calder Capital",
-      "PCO Bookkeepers",
-      "Viking Mergers"
-    ],
-    "direct_email": [
-      "DealsX Proprietary Outreach",
-      "Everingham & Kerr",
-      "IAG M&A Advisors",
-      "Transworld Business Advisors"
-    ]
-  },
-  "manual_check_sources": []
+  "volume_status": "CRITICAL",
+  "needs_attention": [
+    {
+      "type": "dealsx_attribution_gap",
+      "message": "3 DealsX Lead Interested notifications detected (message IDs 19f086aa73f7bf6f, 19efc600a80be468, 19ef13f19d36df24), but lead identity/body fields were unavailable in the email artifacts; Slack suppressed to avoid unfingerprinted generic posts."
+    }
+  ]
 }

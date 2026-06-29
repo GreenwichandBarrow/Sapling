@@ -1,23 +1,10 @@
 {
-  "blocked": [
-    "source artifact is stale",
-    "compact input artifact is stale"
-  ],
-  "deal_items": 0,
+  "blocked": [],
+  "deal_items": 41,
   "drafts_missing_recipient": 0,
-  "drafts_pending": 0,
-  "fetched_at": "2026-06-28T09:10:50.600133-04:00",
-  "follow_through_completed_items": [
-    {
-      "bucket": "thank",
-      "completed_at": "2026-06-25",
-      "event": "Jeff I Kay Mtg",
-      "person": "Jeff",
-      "sent_at": "2026-06-25 16:43",
-      "sent_subject": "Catch up",
-      "sent_thread_id": "19ed14b7a8f2f31e"
-    }
-  ],
+  "drafts_pending": 1,
+  "fetched_at": "2026-06-29T07:10:08.834740-04:00",
+  "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -50,21 +37,37 @@
       "status": "overdue"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-06-26.json",
-  "input_status": "stale",
+  "input_artifact": "brain/context/email-intelligence-input-2026-06-29.json",
+  "input_status": "ok",
   "needs_kay": [
-    "1 email follow-through row(s) auto-completed from sent-mail evidence: Jeff",
+    "1 Gmail drafts older than 48 hours",
+    "3 email-derived task candidate(s)",
+    "41 broker/listing row(s) extracted",
+    "1 prior-day thank-you(s) need approval: Megan <> Kay",
     "3 EOW/follow-up row(s) still active after sent-mail check: Monica Chawla; Denning; Greg",
     "Clarify email follow-through identity/source: Paul (EOW follow-up); Brooke Neidich (EOW follow-up); Lisa (24-hour thank-you after external call)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-06-26.md",
-  "source_status": "stale",
-  "stale_drafts": 0,
-  "task_candidates": 0,
-  "thank_you_items": [],
+  "source_artifact": "brain/context/email-scan-results-2026-06-29.md",
+  "source_status": "ok",
+  "stale_drafts": 1,
+  "task_candidates": 3,
+  "thank_you_items": [
+    {
+      "completed_at": "",
+      "due_date": "2026-06-29",
+      "email": "megan@ml-cap.com",
+      "event": "Megan <> Kay",
+      "event_date": "2026-06-28",
+      "person": "Megan <> Kay",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    }
+  ],
   "unclear_followthrough_items": [
     "Paul (EOW follow-up)",
     "Brooke Neidich (EOW follow-up)",

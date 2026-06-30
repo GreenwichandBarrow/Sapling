@@ -1,25 +1,23 @@
 {
-  "date": "2026-06-29",
+  "date": "2026-06-30",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-06-29.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-06-30.md",
   "email_scan_status": "live",
   "deals_found": 0,
-  "broker_opportunistic": 1,
-  "near_misses": 5,
-  "sources_scanned": 28,
+  "broker_opportunistic": 0,
+  "near_misses": 2,
+  "sources_scanned": 19,
   "sources_covered": {
-    "marketplace": 5,
-    "email_newsletters": 12,
-    "direct_email": 3
+    "marketplace": 7,
+    "email_newsletters": 8,
+    "direct_email": 4
   },
   "manual_check_sources": [],
   "sources_blocked_verified": 0,
   "sources_blocked_single_attempt": 0,
-  "volume_status": "CRITICAL",
+  "volume_status": "BELOW TARGET",
   "needs_attention": [
-    {
-      "type": "dealsx_attribution_gap",
-      "message": "3 DealsX Lead Interested notifications detected (message IDs 19f086aa73f7bf6f, 19efc600a80be468, 19ef13f19d36df24), but lead identity/body fields were unavailable in the email artifacts; Slack suppressed to avoid unfingerprinted generic posts."
-    }
+    "volume below target: 0 surfaced matches",
+    "email leg live; no actionable inbound deal surfaced"
   ]
 }

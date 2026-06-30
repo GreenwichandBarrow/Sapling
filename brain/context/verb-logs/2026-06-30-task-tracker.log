@@ -1,0 +1,15 @@
+
+[2026-06-30T07:40:56.004674] schedule-from-todo-days — 2026-06-30
+  - target: Week planning tab
+  - packed To Do: {'ongoing': 6, 'not_completed': 68, 'other_active': 0, 'completed': 89, 'active': 74, 'total': 163}
+  - wrote Week from To Do Day of the Week: {'Sun': 2, 'Mon': 6, 'Tue': 3, 'Wed': 10, 'Thu': 3, 'Fri': 13}
+  - daily tabs cleared/not populated pending Kay approval
+  - skipped: []
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260630-074049.json
+
+[2026-06-30T07:45:01.711758] distribute-week — 2026-06-28
+  - week (Sunday boundary): 2026-06-28 .. 2026-07-04
+  - fanned Week plan → day tabs: {'Sun': 2, 'Mon': 6, 'Tue': 3, 'Wed': 10, 'Thu': 3, 'Fri': 13, 'Sat': 0}
+  - forced over collisions: False
+  - collisions at run: none
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-distribute-week-20260630-074459.json

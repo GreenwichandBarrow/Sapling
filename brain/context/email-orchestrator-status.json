@@ -1,9 +1,9 @@
 {
   "blocked": [],
-  "deal_items": 41,
+  "deal_items": 51,
   "drafts_missing_recipient": 0,
   "drafts_pending": 1,
-  "fetched_at": "2026-06-29T07:10:08.834740-04:00",
+  "fetched_at": "2026-06-30T07:11:24.958270-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -37,12 +37,12 @@
       "status": "overdue"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-06-29.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-06-30.json",
   "input_status": "ok",
   "needs_kay": [
     "1 Gmail drafts older than 48 hours",
     "3 email-derived task candidate(s)",
-    "41 broker/listing row(s) extracted",
+    "51 broker/listing row(s) extracted",
     "1 prior-day thank-you(s) need approval: Megan <> Kay",
     "3 EOW/follow-up row(s) still active after sent-mail check: Monica Chawla; Denning; Greg",
     "Clarify email follow-through identity/source: Paul (EOW follow-up); Brooke Neidich (EOW follow-up); Lisa (24-hour thank-you after external call)"
@@ -50,17 +50,17 @@
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-06-29.md",
+  "source_artifact": "brain/context/email-scan-results-2026-06-30.md",
   "source_status": "ok",
   "stale_drafts": 1,
   "task_candidates": 3,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-06-29",
+      "due_date": "2026-06-30",
       "email": "megan@ml-cap.com",
       "event": "Megan <> Kay",
-      "event_date": "2026-06-28",
+      "event_date": "2026-06-29",
       "person": "Megan <> Kay",
       "sent_at": "",
       "sent_subject": "",

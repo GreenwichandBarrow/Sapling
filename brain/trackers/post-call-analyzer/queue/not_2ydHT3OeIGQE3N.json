@@ -1,0 +1,12 @@
+{
+  "id": "not_2ydHT3OeIGQE3N",
+  "title": "Phone call with +13363143224",
+  "created_at": "2026-07-01T17:15:17.577Z",
+  "updated_at": "2026-07-01T17:16:39.533Z",
+  "owner": {
+    "name": "Kay Schneider",
+    "email": "kay.s@greenwichandbarrow.com"
+  },
+  "queued_at": "2026-07-01T18:00:45-04:00",
+  "detector": "granola-api-rest"
+}

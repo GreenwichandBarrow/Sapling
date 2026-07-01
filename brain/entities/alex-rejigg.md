@@ -6,6 +6,8 @@ status: partner
 company: "[[entities/rejigg]]"
 role: Rejigg contact
 email: alex@rejigg.com
+attio_id: 42fa8f0f-b12e-45a9-a5ea-4478c0c78366
+attio_synced_at: "2026-07-01T06:56:49-04:00"
 tags:
   - date/2026-06-29
   - entity

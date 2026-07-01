@@ -1,0 +1,53 @@
+{
+  "run_date": "2026-06-30",
+  "run_mode": "tuesday",
+  "runner": "Codex/systemd",
+  "niches_evaluated": 4,
+  "niches_identified": 1,
+  "one_pagers_written": 1,
+  "scorecards_written": 1,
+  "tracker_updated": true,
+  "runtime_seconds": 1667,
+  "zero_finding_reason": "",
+  "sources_covered": {
+    "recent_track": "Partial-complete: web/social, newsletters, Granola/vault calls, Gmail deal flow/investors, vault research, and passive inbox signals covered; Reddit returned 403, HN/Polymarket had no usable hits, X/YouTube unavailable.",
+    "historical_track": "Partial-complete: vault calls and targeted older Gmail covered; OneNote SEARCH FUND unavailable; raw ChatGPT export not found."
+  },
+  "open_loops_infra": [
+    "OneNote SEARCH FUND content extraction unavailable in this headless run.",
+    "Raw ChatGPT export selected_business_conversations.json not found on VPS.",
+    "Target-discovery must validate 50+ acquirable geotechnical/CMT/special-inspection firms before outreach activation."
+  ],
+  "niches": [
+    {
+      "name": "Geotechnical Engineering & Construction Materials Testing for Infrastructure/Commercial Construction",
+      "score": 2.31,
+      "drive_folder": "https://drive.google.com/drive/folders/1ZclGPvVxMK56mUY-VdMt4bRtCsOhoWWR",
+      "drive_folder_id": "1ZclGPvVxMK56mUY-VdMt4bRtCsOhoWWR",
+      "one_pager_file_id": "1oU08ske_pU3r4hGcZKNR0zGvv3Yfmqqt",
+      "one_pager_url": "https://docs.google.com/presentation/d/1oU08ske_pU3r4hGcZKNR0zGvv3Yfmqqt/edit?usp=drivesdk",
+      "scorecard_file_id": "1InaIkTuA4LCjqBBpZOdT1SHeAdLTUIvH",
+      "scorecard_url": "https://docs.google.com/spreadsheets/d/1InaIkTuA4LCjqBBpZOdT1SHeAdLTUIvH/edit?usp=drivesdk",
+      "tracker_tab": "WEEKLY REVIEW",
+      "tracker_row": 34,
+      "tracker_rank": 31,
+      "status": "New"
+    }
+  ],
+  "source_coverage_diagnostics": {
+    "recent": {
+      "web_social": "Partial: public web usable; Reddit 403; HN/Polymarket no usable hits; X/YouTube unavailable.",
+      "newsletters": "Covered via Gmail labels with --gmail-no-send.",
+      "granola_calls": "Partial-complete with date-only Granola query and vault notes.",
+      "gmail_deal_flow_investors": "Covered via Gmail labels with --gmail-no-send.",
+      "vault_research": "Covered recent brain/calls and brain/outputs.",
+      "passive_signals": "Covered in-window topic/niche-signal inbox items."
+    },
+    "historical": {
+      "calls": "Partial-complete via brain/calls and vault notes.",
+      "gmail": "Covered targeted older_than:14d searches with --gmail-no-send.",
+      "onenote": "Unavailable in current tool environment.",
+      "chatgpt_export": "Unavailable; export file not found."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "not_2ydHT3OeIGQE3N",
+  "title": "Phone call with +13363143224",
+  "counterparty": "336-314-3224",
+  "processed_at": "2026-07-01T21:30:00Z",
+  "doc_url": "https://docs.google.com/document/d/1_xxf5E86wElOK4_vuFHahviody9WpqknTHQqR48JX-Y/edit",
+  "transcript_doc_url": "https://docs.google.com/document/d/1XDwbRRtPUSu7Ri_13M-OOGradVyCNUFNxW7PNKE5AY8/edit",
+  "vault_call_note": "brain/calls/2026-07-01-phone-call-with-13363143224.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_2ydHT3OeIGQE3N.json",
+  "task_count": 0,
+  "attio_failed": true,
+  "attio_skip_reason": "no external attendees; voicemail/automated answering system only",
+  "tasks_failed": false,
+  "doc_failed": false,
+  "transcript_failed": false,
+  "slack_posted": true
+}

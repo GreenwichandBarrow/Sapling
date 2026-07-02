@@ -1,0 +1,29 @@
+{
+  "date": "2026-07-02",
+  "scan_started_at": "2026-07-02T08:20:58-04:00",
+  "scan_finished_at": "2026-07-02T08:22:34-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 0,
+  "runtime_seconds": 96,
+  "results": [
+    {
+      "job": "post-call-analyzer",
+      "cause": "VALIDATOR_REJECT",
+      "action": "SURFACE",
+      "triggered_by": "daily",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/post-call-analyzer-2026-07-01-1800.log",
+      "last_log_mtime": "2026-07-01T18:05:43-04:00",
+      "exit_code": 1,
+      "validator_failed": false,
+      "preflight_failed": false,
+      "error_signature": "FAILED: post-run check exited 1",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_text": "launchd-debugger: post-call-analyzer FAILED \u2014 VALIDATOR_REJECT. FAILED: post-run check exited 1. Recommended: repair the validator/data drift by backfilling missing artifact or failure-marker metadata before the next run. Log: /home/ubuntu/projects/Sapling/logs/scheduled/post-call-analyzer-2026-07-01-1800.log",
+      "slack_posted": false,
+      "suppression_reason": "cross-day-dedup:7d"
+    }
+  ]
+}

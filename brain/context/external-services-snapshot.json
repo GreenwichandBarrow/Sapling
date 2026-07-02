@@ -1,12 +1,6 @@
 {
-  "fetched_at": "2026-07-01T18:00:46-04:00",
+  "fetched_at": "2026-07-01T20:30:46-04:00",
   "services": {
-    "slack-webhooks": {
-      "status": "ok",
-      "latency_ms": null,
-      "message": "4 webhooks configured",
-      "skip_reason": null
-    },
     "linkt": {
       "status": "skip",
       "latency_ms": null,
@@ -19,51 +13,57 @@
       "message": "",
       "skip_reason": "OAuth re-flow required (Smithery UI)"
     },
-    "vault": {
+    "slack-webhooks": {
       "status": "ok",
-      "latency_ms": 41,
-      "message": "1555 markdown files",
+      "latency_ms": null,
+      "message": "4 webhooks configured",
       "skip_reason": null
     },
     "launchd": {
       "status": "ok",
-      "latency_ms": 42,
+      "latency_ms": 27,
       "message": "21 timers registered",
+      "skip_reason": null
+    },
+    "vault": {
+      "status": "ok",
+      "latency_ms": 38,
+      "message": "1557 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "skip",
-      "latency_ms": 29,
+      "latency_ms": 41,
       "message": "attio-mcp=0; manual-skip=attio-mcp",
       "skip_reason": "Attio MCP requires manual OAuth/browser reconnect"
     },
-    "granola": {
-      "status": "ok",
-      "latency_ms": 171,
-      "message": "HTTP 405",
-      "skip_reason": null
-    },
     "openai-codex": {
       "status": "ok",
-      "latency_ms": 243,
+      "latency_ms": 103,
       "message": "Codex OAuth login active",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 281,
+      "latency_ms": 116,
       "message": "authenticated",
+      "skip_reason": null
+    },
+    "granola": {
+      "status": "ok",
+      "latency_ms": 120,
+      "message": "HTTP 405",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 304,
+      "latency_ms": 224,
       "message": "gh authenticated",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 1185,
+      "latency_ms": 1289,
       "message": "200 OK",
       "skip_reason": null
     }

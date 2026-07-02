@@ -1,10 +1,20 @@
 {
   "blocked": [],
-  "deal_items": 54,
+  "deal_items": 68,
   "drafts_missing_recipient": 0,
-  "drafts_pending": 0,
-  "fetched_at": "2026-07-01T07:10:39.846058-04:00",
-  "follow_through_completed_items": [],
+  "drafts_pending": 2,
+  "fetched_at": "2026-07-02T07:10:19.020152-04:00",
+  "follow_through_completed_items": [
+    {
+      "bucket": "thank",
+      "completed_at": "2026-07-01",
+      "event": "Jeff I Kay Mtg",
+      "person": "Jeff",
+      "sent_at": "2026-07-01 12:38",
+      "sent_subject": "Intro Anacapa",
+      "sent_thread_id": "19e661bafc8d39e9"
+    }
+  ],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -37,41 +47,32 @@
       "status": "overdue"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-07-01.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-07-02.json",
   "input_status": "ok",
   "needs_kay": [
-    "54 broker/listing row(s) extracted",
-    "2 prior-day thank-you(s) need approval: Guillermo I Kay Bi-Weekly Mtg; Megan <> Kay",
+    "1 Gmail drafts older than 48 hours",
+    "1 email-derived task candidate(s)",
+    "68 broker/listing row(s) extracted",
+    "1 prior-day thank-you(s) need approval: Katie I Kay (Kay to call Katie on cell)",
+    "1 email follow-through row(s) auto-completed from sent-mail evidence: Jeff",
     "3 EOW/follow-up row(s) still active after sent-mail check: Monica Chawla; Denning; Greg",
     "Clarify email follow-through identity/source: Paul (EOW follow-up); Brooke Neidich (EOW follow-up); Lisa (24-hour thank-you after external call)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-07-01.md",
+  "source_artifact": "brain/context/email-scan-results-2026-07-02.md",
   "source_status": "ok",
-  "stale_drafts": 0,
-  "task_candidates": 0,
+  "stale_drafts": 1,
+  "task_candidates": 1,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-07-01",
-      "email": "glavergne@ashfordventures.com",
-      "event": "Guillermo I Kay Bi-Weekly Mtg",
-      "event_date": "2026-06-30",
-      "person": "Guillermo I Kay Bi-Weekly Mtg",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-07-01",
-      "email": "megan@ml-cap.com",
-      "event": "Megan <> Kay",
-      "event_date": "2026-06-30",
-      "person": "Megan <> Kay",
+      "due_date": "2026-07-02",
+      "email": "kwalker@plexuscap.com",
+      "event": "Katie I Kay (Kay to call Katie on cell)",
+      "event_date": "2026-07-01",
+      "person": "Katie I Kay (Kay to call Katie on cell)",
       "sent_at": "",
       "sent_subject": "",
       "sent_thread_id": "",

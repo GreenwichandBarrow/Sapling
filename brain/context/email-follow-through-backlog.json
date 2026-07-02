@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-01",
+  "updated_at": "2026-07-02",
   "items": [
     {
       "bucket": "thank",
@@ -684,15 +684,22 @@
       "email": "jeffstevens@anacapapartners.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-06-26",
-      "status": "not_needed",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Jeff I Kay Mtg",
       "event_date": "2026-06-25",
       "calendar_event_id": "_60rk2c268koj0b9p8d33cb9k8krj6ba264s38b9l64ok4chi60qjag9o88",
-      "completed_at": "2026-06-26T10:49:09-04:00",
+      "completed_at": "2026-07-01",
       "completion_source": "kay_confirmed_not_needed_2026-06-26",
       "dashboard_visible": false,
-      "notes": "Kay confirmed Jeff follow-up not needed; suppress from Good Morning/dashboard."
+      "notes": "Kay confirmed Jeff follow-up not needed; suppress from Good Morning/dashboard.",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19e661bafc8d39e9, subject 'Intro Anacapa', sent 2026-07-01 12:38.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19e661bafc8d39e9",
+        "subject": "Intro Anacapa",
+        "sent_at": "2026-07-01 12:38"
+      }
     },
     {
       "bucket": "thank",
@@ -756,6 +763,18 @@
       "event": "Guillermo I Kay Bi-Weekly Mtg",
       "event_date": "2026-06-30",
       "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260701T173000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Katie I Kay (Kay to call Katie on cell)",
+      "email": "kwalker@plexuscap.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-02",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Katie I Kay (Kay to call Katie on cell)",
+      "event_date": "2026-07-01",
+      "calendar_event_id": "_70pj4d9g6ss3cb9m85348b9k88p30b9p74p42b9l650j2h1h68p4agpp6s"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

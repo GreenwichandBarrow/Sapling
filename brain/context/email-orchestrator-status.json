@@ -1,9 +1,9 @@
 {
   "blocked": [],
-  "deal_items": 68,
+  "deal_items": 41,
   "drafts_missing_recipient": 0,
-  "drafts_pending": 2,
-  "fetched_at": "2026-07-02T14:51:43.224327-04:00",
+  "drafts_pending": 0,
+  "fetched_at": "2026-07-03T07:10:44.923084-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -37,37 +37,22 @@
       "status": "overdue"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-07-02.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-07-03.json",
   "input_status": "ok",
   "needs_kay": [
-    "1 Gmail drafts older than 48 hours",
     "1 email-derived task candidate(s)",
-    "68 broker/listing row(s) extracted",
-    "1 prior-day thank-you(s) need approval: Katie I Kay (Kay to call Katie on cell)",
+    "41 broker/listing row(s) extracted",
     "3 EOW/follow-up row(s) still active after sent-mail check: Monica Chawla; Denning; Greg",
     "Clarify email follow-through identity/source: Paul (EOW follow-up); Brooke Neidich (EOW follow-up); Lisa (24-hour thank-you after external call)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-07-02.md",
+  "source_artifact": "brain/context/email-scan-results-2026-07-03.md",
   "source_status": "ok",
-  "stale_drafts": 1,
+  "stale_drafts": 0,
   "task_candidates": 1,
-  "thank_you_items": [
-    {
-      "completed_at": "",
-      "due_date": "2026-07-02",
-      "email": "kwalker@plexuscap.com",
-      "event": "Katie I Kay (Kay to call Katie on cell)",
-      "event_date": "2026-07-01",
-      "person": "Katie I Kay (Kay to call Katie on cell)",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    }
-  ],
+  "thank_you_items": [],
   "unclear_followthrough_items": [
     "Paul (EOW follow-up)",
     "Brooke Neidich (EOW follow-up)",

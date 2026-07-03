@@ -1,0 +1,51 @@
+
+[2026-07-02T14:50:36.555540] carry-forward-day — sun-to-thu
+  - moved: 2
+  - source: Sun
+  - destination: Thu
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260702-145034.json
+  
+  - Sun slot 1 → Thu slot 4: Create weekly schedule
+  - Sun slot 2 → Thu slot 5: Confirm LiveOak payroll transfer coverage
+
+[2026-07-02T14:50:51.003458] carry-forward-day — mon-to-thu
+  - moved: 4
+  - source: Mon
+  - destination: Thu
+  - source packed: {'completed': 2, 'active': 0, 'blank': 48, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260702-145049.json
+  
+  - Mon slot 3 → Thu slot 6: Set up meetings with the list of Lenders to build relationships
+  - Mon slot 4 → Thu slot 7: Email Filipe @ Pest Mgmt company
+  - Mon slot 5 → Thu slot 8: Bday cards & baby cards
+  - Mon slot 6 → Thu slot 9: Do luxury-retailer store visits for pest buying criteria
+
+[2026-07-02T14:51:05.605442] carry-forward-day — tue-to-thu
+  - moved: 3
+  - source: Tue
+  - destination: Thu
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260702-145104.json
+  
+  - Tue slot 1 → Thu slot 10: Try Claude on website rebuild
+  - Tue slot 2 → Thu slot 11: Review finders fee doc
+  - Tue slot 3 → Thu slot 12: Update Tailscale SSH checkPeriod for Sapling VPS
+
+[2026-07-02T14:51:22.941678] carry-forward-day — wed-to-thu
+  - moved: 10
+  - source: Wed
+  - destination: Thu
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260702-145118.json
+  
+  - Wed slot 1 → Thu slot 13: Niche intel review
+  - Wed slot 2 → Thu slot 14: Call IRS to confirm Form 8822-B address update
+  - Wed slot 3 → Thu slot 15: Thank you: Jay, Laura, Paul, Bob
+  - Wed slot 4 → Thu slot 16: Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg
+  - Wed slot 5 → Thu slot 17: Pull Megan pre-LOI prep meeting notes
+  - Wed slot 6 → Thu slot 18: Email DealsX to pause for summer
+  - Wed slot 7 → Thu slot 19: Dashboard plumbing: deal aggregator
+  - Wed slot 8 → Thu slot 20: Reach out to Ray to schedule time to get together
+  - Wed slot 9 → Thu slot 21: Pay Northwell & Labcorp
+  - Wed slot 10 → Thu slot 22: Send new email outreach on dashboard (3 companies)

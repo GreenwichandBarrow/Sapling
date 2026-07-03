@@ -1,0 +1,30 @@
+
+[2026-07-03T10:23:51.462494] carry-forward-day — thu-to-fri
+  - moved: 22
+  - source: Thu
+  - destination: Fri
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260703-102343.json
+  
+  - Thu slot 1 → Fri slot 14: Order gift for Lois (Jack Hugh Mackay)
+  - Thu slot 2 → Fri slot 15: Connect Roberta & Elspeth
+  - Thu slot 3 → Fri slot 16: Connect Lily & Suzanne
+  - Thu slot 4 → Fri slot 17: Create weekly schedule
+  - Thu slot 5 → Fri slot 18: Confirm LiveOak payroll transfer coverage
+  - Thu slot 6 → Fri slot 19: Set up meetings with the list of Lenders to build relationships
+  - Thu slot 7 → Fri slot 20: Email Filipe @ Pest Mgmt company
+  - Thu slot 8 → Fri slot 21: Bday cards & baby cards
+  - Thu slot 9 → Fri slot 22: Do luxury-retailer store visits for pest buying criteria
+  - Thu slot 10 → Fri slot 23: Try Claude on website rebuild
+  - Thu slot 11 → Fri slot 24: Review finders fee doc
+  - Thu slot 12 → Fri slot 25: Update Tailscale SSH checkPeriod for Sapling VPS
+  - Thu slot 13 → Fri slot 26: Niche intel review
+  - Thu slot 14 → Fri slot 27: Call IRS to confirm Form 8822-B address update
+  - Thu slot 15 → Fri slot 28: Thank you: Jay, Laura, Paul, Bob
+  - Thu slot 16 → Fri slot 29: Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg
+  - Thu slot 17 → Fri slot 30: Pull Megan pre-LOI prep meeting notes
+  - Thu slot 18 → Fri slot 31: Email DealsX to pause for summer
+  - Thu slot 19 → Fri slot 32: Dashboard plumbing: deal aggregator
+  - Thu slot 20 → Fri slot 33: Reach out to Ray to schedule time to get together
+  - Thu slot 21 → Fri slot 34: Pay Northwell & Labcorp
+  - Thu slot 22 → Fri slot 35: Send new email outreach on dashboard (3 companies)

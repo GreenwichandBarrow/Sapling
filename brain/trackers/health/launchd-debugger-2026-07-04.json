@@ -1,0 +1,29 @@
+{
+  "date": "2026-07-04",
+  "scan_started_at": "2026-07-04T08:21:06-04:00",
+  "scan_finished_at": "2026-07-04T08:24:09-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 1,
+  "runtime_seconds": 183,
+  "results": [
+    {
+      "job": "weekly-tracker",
+      "cause": "CODE_BUG",
+      "action": "SURFACE",
+      "triggered_by": "daily",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/weekly-tracker-2026-07-03-1026.log",
+      "last_log_mtime": "2026-07-03T10:39:07-04:00",
+      "exit_code": 1,
+      "validator_failed": false,
+      "preflight_failed": false,
+      "error_signature": "FAILED: codex exec exited 1",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_text": "launchd-debugger: weekly-tracker FAILED \u2014 CODE_BUG. FAILED: codex exec exited 1. Recommended: patch the weekly-tracker quarter-rollup/search path to handle non-matching `rg`/parser failures safely, then rerun. Log: /home/ubuntu/projects/Sapling/logs/scheduled/weekly-tracker-2026-07-03-1026.log",
+      "slack_posted": true,
+      "suppression_reason": null
+    }
+  ]
+}

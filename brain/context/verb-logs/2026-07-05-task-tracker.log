@@ -22,3 +22,19 @@
   - daily tabs cleared/not populated pending Kay approval
   - skipped: []
   - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260705-145753.json
+
+[2026-07-05T15:01:04.276859] schedule-from-todo-days — 2026-07-05
+  - target: Week planning tab
+  - packed To Do: {'ongoing': 6, 'not_completed': 69, 'other_active': 0, 'completed': 90, 'active': 75, 'total': 165}
+  - wrote Week from To Do Day of the Week: {'Sun': 2, 'Mon': 12, 'Tue': 1, 'Wed': 1, 'Fri': 10}
+  - daily tabs cleared/not populated pending Kay approval
+  - skipped: []
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260705-150057.json
+
+[2026-07-05T15:01:39.263073] schedule-from-todo-days — 2026-07-05
+  - target: Week planning tab
+  - packed To Do: {'ongoing': 6, 'not_completed': 70, 'other_active': 0, 'completed': 90, 'active': 76, 'total': 166}
+  - wrote Week from To Do Day of the Week: {'Sun': 2, 'Mon': 13, 'Tue': 1, 'Wed': 1, 'Fri': 10}
+  - daily tabs cleared/not populated pending Kay approval
+  - skipped: []
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260705-150132.json

@@ -1,7 +1,7 @@
 {
   "verb": "schedule-from-todo-days",
-  "timestamp": "20260621-113304",
-  "sheet_id": "1sN1yb6R7ippscvFWoaJKTSu0s2qBfxBoRn5dCviPTcY",
+  "timestamp": "20260705-150129",
+  "sheet_id": "183fc3jt3200rN9PJr80VfAnJXUz2YNcui8nHnkmIKmk",
   "ranges": {
     "'To Do'!A1:H400": [
       [
@@ -75,7 +75,8 @@
         "",
         "",
         "",
-        "Short Term"
+        "Short Term",
+        "Friday"
       ],
       [
         "Not Completed",
@@ -84,7 +85,8 @@
         "",
         "",
         "",
-        "Short Term"
+        "Short Term",
+        "Friday"
       ],
       [
         "Not Completed",
@@ -93,7 +95,8 @@
         "",
         "",
         "",
-        "Short Term"
+        "Short Term",
+        "Friday"
       ],
       [
         "Not Completed",
@@ -111,7 +114,8 @@
         "",
         "",
         "",
-        "Short Term"
+        "Short Term",
+        "Friday"
       ],
       [
         "Not Completed",
@@ -129,16 +133,8 @@
         "",
         "",
         "",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Download & sign into LeapFrog",
-        "Home",
-        "",
-        "",
-        "",
-        "Short Term"
+        "Short Term",
+        "Friday"
       ],
       [
         "Not Completed",
@@ -201,8 +197,7 @@
         "",
         "",
         "",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -310,18 +305,16 @@
         "",
         "",
         "",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
-        "Submit the boys to: NY Models, State Models, Zuri Models, Teri B and Stellar",
+        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar",
         "Home",
         "Home",
         "",
         "Combined from To Do rows 34, 35, 36, 37, 38 based on Sat slot 5.",
-        "Short Term",
-        "Friday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -330,18 +323,7 @@
         "G&B",
         "",
         "",
-        "Short Term",
-        "Monday"
-      ],
-      [
-        "Completed",
-        "Re-plan deal aggregator expansion (dedicated session)",
-        "Work",
-        "G&B",
-        "",
-        "",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -350,8 +332,7 @@
         "G&B",
         "",
         "",
-        "Short Term",
-        "Thursday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -360,8 +341,7 @@
         "G&B",
         "",
         "",
-        "Short Term",
-        "Thursday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -370,24 +350,13 @@
         "G&B",
         "",
         "",
-        "Short Term",
-        "Tuesday"
+        "Short Term"
       ],
       [
         "Not Completed",
         "Review finders fee doc",
         "Work",
         "G&B",
-        "",
-        "",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Completed",
-        "Watch video & complete SLD buy back",
-        "Home",
-        "Home",
         "",
         "",
         "Short Term"
@@ -427,7 +396,7 @@
         "",
         "Inbox: brain/inbox/2026-05-12-bday-and-baby-cards.md",
         "Short Term",
-        "Monday"
+        "Friday"
       ],
       [
         "Not Completed",
@@ -439,32 +408,13 @@
         "Short Term"
       ],
       [
-        "Completed",
-        "Review restaurant inventory mgmt deal when Carlos sends (decline default \u2014 software AI-risk)",
-        "Work",
-        "G&B",
-        "",
-        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
-        "Short Term"
-      ],
-      [
-        "Completed",
-        "Take Miami-PE rollup contacts forward from Carlos \u2014 these are the higher-value asset",
-        "Work",
-        "G&B",
-        "",
-        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
-        "Short Term"
-      ],
-      [
         "Not Completed",
         "Pest thesis deck - model how many acquisitions make the play work",
         "Work",
         "Pest",
         "",
         "Thesis deck math; pairs with deck build (Wed slot 4)",
-        "Short Term",
-        "MOnday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -473,8 +423,7 @@
         "Pest",
         "",
         "Pre-Women in Pest Mgmt week of 5/18; network mining",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -483,18 +432,7 @@
         "G&B",
         "2026-06-30",
         "Kay 5/26 directive: 10 women-owned NY pest firms, Kay+Claude execute through June. Wind-down DealsX+JJ contingent on outperformance. Seed: 2026-05-15-pest-20-women-owned-west-village.md (7 verified).",
-        "Short Term",
-        "Monday"
-      ],
-      [
-        "Completed",
-        "Decide whether to screen AgTech drone opportunity (Carlos to send teaser)",
-        "Search",
-        "Deal Flow",
-        "",
-        "From Carlos Nieto 5/13 mtg. Analysis: https://docs.google.com/document/d/1jTzxubPJMAkr94MBEDVowKRbcer6orS96dByVjwvJEA/edit",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -584,26 +522,6 @@
       ],
       [
         "Not Completed",
-        "Pay remaining IRS",
-        "",
-        "",
-        "",
-        "",
-        "Short Term",
-        "Sunday"
-      ],
-      [
-        "Not Completed",
-        "Follow-up emails to lunch attendees & conferences",
-        "Work",
-        "G&B",
-        "",
-        "",
-        "Short Term",
-        "Monday"
-      ],
-      [
-        "Not Completed",
         "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg",
         "Work",
         "G&B",
@@ -613,70 +531,12 @@
         "Monday"
       ],
       [
-        "Completed",
-        "DealsX targeted outreach, share lists",
-        "Work",
-        "G&B",
-        "",
-        "",
-        "Short Term"
-      ],
-      [
-        "Completed",
-        "Update RCN Plan",
-        "",
-        "",
-        "",
-        "",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Schedule 2-3 luxury/hospitality pest validation calls",
-        "Work",
-        "Pest",
-        "",
-        "From Camilla pest thesis call: test premium/discreet pest thesis with luxury retail and hospitality facilities managers.",
-        "Short Term",
-        "monday"
-      ],
-      [
         "Not Completed",
         "Update Tailscale SSH checkPeriod for Sapling VPS",
         "Work",
         "Sapling OS",
         "2026-06-21",
         "Tailscale ACL: keep action=check; set checkPeriod=168h for Kay SSH to Sapling VPS as ubuntu. Scope narrowly to Kay identity + VPS destination; do not broaden users or machines. After policy update, Kay should approve SSH on Sunday; next check is ~1 week from successful re-auth. Admin: https://login.tailscale.com/admin/acls",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Not Completed",
-        "Send 24-hour thank-you to Richard Strautman",
-        "Work",
-        "G&B",
-        "",
-        "24-hour thank-you / follow-up.",
-        "Short Term",
-        "Monday"
-      ],
-      [
-        "Not Completed",
-        "Email Andrew Saltoun to schedule call",
-        "Work",
-        "G&B",
-        "2026-06-22",
-        "Schedule call.",
-        "Short Term",
-        "Monday"
-      ],
-      [
-        "Not Completed",
-        "Send Tom/Carlos intro on F&B inventory deal",
-        "Work",
-        "G&B",
-        "2026-06-17",
-        "Only after Carlos confirms with Angelo first.",
         "Short Term",
         "Monday"
       ],
@@ -687,8 +547,7 @@
         "Pest",
         "2026-06-18",
         "Test who buys pest services and what criteria they use.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -716,7 +575,7 @@
         "",
         "Find prior meeting where Megan described the items she prepared before having a signed LOI; use as checklist when Kay reaches a similar stage.",
         "Short Term",
-        "Monday"
+        "Tuesday"
       ],
       [
         "Not Completed",
@@ -726,7 +585,7 @@
         "2026-06-21",
         "Budget cleanup: confirm whether Howie is 5/mo or annual 20/yr (0/mo); update Budget Dashboard if needed.",
         "Short Term",
-        "Friday"
+        "Monday"
       ],
       [
         "Not Completed",
@@ -736,7 +595,7 @@
         "2026-06-21",
         "Budget cleanup: confirm actual Attio renewal/payment amount; current budget row models 9/mo but prior note referenced 01.49/yr.",
         "Short Term",
-        "Friday"
+        "Monday"
       ],
       [
         "Not Completed",
@@ -745,8 +604,7 @@
         "G&B",
         "2026-06-24",
         "Month-to-month. Budget plan excludes DealsX from July; send pause note Wednesday and save confirmation when received.",
-        "Short Term",
-        "Wednesday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -756,7 +614,7 @@
         "2026-06-21",
         "",
         "Short Term",
-        "Sunday"
+        "Friday"
       ],
       [
         "Not Completed",
@@ -765,8 +623,7 @@
         "",
         "",
         "",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -775,18 +632,7 @@
         "",
         "",
         "",
-        "Short Term",
-        "Sunday"
-      ],
-      [
-        "Not Completed",
-        "Respond to Doug, Ray",
-        "",
-        "",
-        "",
-        "",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -795,14 +641,223 @@
         "Pest thesis",
         "",
         "From Camilla 2026-06-16 post-call analysis",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Reach out to Ray to schedule time to get together",
+        "Work",
+        "G&B",
+        "2026-07-01",
+        "Wednesday of the first week of July.",
         "Short Term",
         "Monday"
       ],
       [
-        "Completed",
-        "Follow up email to Matt",
+        "Not Completed",
+        "Pay Northwell & Labcorp",
+        "Home",
+        "Home",
+        "2026-06-22",
+        "",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Send new email outreach on dashboard (3 companies)",
+        "Work",
+        "Pest thesis",
+        "2026-06-22",
+        "\u2192 promoted to Mon slot 3 on 2026-06-21; Source: Camilla pest company list",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Order more business cards and change title to founder",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Follow up: Hamptons Pest, Greg",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Try to join a NYPMA committee",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review last month's monthly budget files from email",
         "Work",
         "G&B",
+        "2026-07-10",
+        "Monthly budget files from last month are visible in email; review on Friday.",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Completed",
+        "Submit the boys to: NY Models",
+        "Home",
+        "Home",
+        "",
+        "Combined from To Do rows 34, 35, 36, 37, 38 based on Sat slot 5.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Pay remaining IRS",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow-up emails to lunch attendees & conferences",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Schedule 2-3 luxury/hospitality pest validation calls",
+        "Work",
+        "Pest",
+        "",
+        "From Camilla pest thesis call: test premium/discreet pest thesis with luxury retail and hospitality facilities managers.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Let clayton know I will be away for the summer",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow up: Deborah",
+        "Work",
+        "Premium pest thesis",
+        "",
+        "Kay wants to take Juan up on his offered ride-along; Total Extermination is not a first-acquisition candidate, but remains useful as a potential second acquisition / market-learning relationship. Source: Juan 2026-06-23 post-call decision.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Send 24-hour thank-you to Richard Strautman",
+        "Work",
+        "G&B",
+        "",
+        "24-hour thank-you / follow-up.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email Andrew Saltoun to schedule call",
+        "Work",
+        "G&B",
+        "2026-06-22",
+        "Schedule call.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Send Tom/Carlos intro on F&B inventory deal",
+        "Work",
+        "G&B",
+        "2026-06-17",
+        "Only after Carlos confirms with Angelo first.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Respond to Doug, Ray",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Re-plan deal aggregator expansion (dedicated session)",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Watch video & complete SLD buy back",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Review restaurant inventory mgmt deal when Carlos sends (decline default \u2014 software AI-risk)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Take Miami-PE rollup contacts forward from Carlos \u2014 these are the higher-value asset",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Decide whether to screen AgTech drone opportunity (Carlos to send teaser)",
+        "Search",
+        "Deal Flow",
+        "",
+        "From Carlos Nieto 5/13 mtg. Analysis: https://docs.google.com/document/d/1jTzxubPJMAkr94MBEDVowKRbcer6orS96dByVjwvJEA/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "DealsX targeted outreach, share lists",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Update RCN Plan",
+        "",
+        "",
         "",
         "",
         "Short Term"
@@ -1070,15 +1125,6 @@
       ],
       [
         "Completed",
-        "Follow up with Sarah De Blasio",
-        "Work",
-        "G&B",
-        "",
-        "(completed 2026-05-17)",
-        "Short Term"
-      ],
-      [
-        "Completed",
         "Run budget-manager monthly mode for March P&L",
         "Work",
         "G&B",
@@ -1228,8 +1274,7 @@
         "G&B",
         "",
         "24-hour thank-you / follow-up.",
-        "Short Term",
-        "Wednesday"
+        "Short Term"
       ],
       [
         "Completed",
@@ -1238,8 +1283,7 @@
         "Home",
         "2026-06-17",
         "",
-        "Short Term",
-        "Wednesday"
+        "Short Term"
       ],
       [
         "Completed",
@@ -1248,8 +1292,7 @@
         "Home",
         "2026-06-21",
         "",
-        "Short Term",
-        "Sunday"
+        "Short Term"
       ],
       [
         "Completed",
@@ -1403,11 +1446,93 @@
         "",
         "",
         "Short Term"
+      ],
+      [
+        "Completed",
+        "Email Bob: congrats on Cetane transaction + ask about deals",
+        "Work",
+        "G&B",
+        "",
+        "Congratulate Bob on the Cetane transaction and ask whether he is seeing any relevant deals.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow up: Deborah",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Thank you: Paul",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Get kids health forms for camp",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Confirm XPX tristate membership",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Dashboard plumbing: deal aggregator - marketplaces",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Call Sailing camp about availability",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Circle back with Andrew Freiman & clayton (no response on quarterly)",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review 2 briefs for Tuesday's calls",
+        "Work",
+        "G&B",
+        "2026-07-06",
+        "Review the two prep briefs for Tuesday's calls.",
+        "Short Term",
+        "Monday"
       ]
     ],
     "'Week'!A1:O38": [
       [
-        "WEEK OF Jun 21-27"
+        "WEEK OF Jul 5-11"
       ],
       [],
       [
@@ -1417,19 +1542,19 @@
       [],
       [
         "",
-        "SUNDAY \u00b7 Jun 21",
+        "SUNDAY \u00b7 Jul 5",
         "",
-        "MONDAY \u00b7 Jun 22",
+        "MONDAY \u00b7 Jul 6",
         "",
-        "TUESDAY \u00b7 Jun 23",
+        "TUESDAY \u00b7 Jul 7",
         "",
-        "WEDNESDAY \u00b7 Jun 24",
+        "WEDNESDAY \u00b7 Jul 8",
         "",
-        "THURSDAY \u00b7 Jun 25",
+        "THURSDAY \u00b7 Jul 9",
         "",
-        "FRIDAY \u00b7 Jun 26",
+        "FRIDAY \u00b7 Jul 10",
         "",
-        "SATURDAY \u00b7 Jun 27"
+        "SATURDAY \u00b7 Jul 11"
       ],
       [],
       [
@@ -1439,7 +1564,7 @@
         false,
         "Process payroll",
         false,
-        "",
+        "Pull Megan pre-LOI prep meeting notes",
         false,
         "Niche intel review",
         false,
@@ -1461,6 +1586,150 @@
         false,
         "",
         false,
+        "Order gift for Lois (Jack Hugh Mackay)",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Call IRS to confirm Form 8822-B address update",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Sign up kids for Kano Martial Arts judo class",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Thank you: Jay, Laura, Paul, Bob",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Look into music lessons",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Make sure we dont get charged by Linkt",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Sign up for more Italki lessons",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Get reimbursed for Motion",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Create travel plans for July in Paris/France next year",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Bday cards & baby cards",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Update Tailscale SSH checkPeriod for Sapling VPS",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Create project for French passports",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Verify Howie plan and update budget run-rate",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Pay Dad for swim lessons and membership",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Verify Attio payment / renewal amount",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Review last month's monthly budget files from email",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Reach out to Ray to schedule time to get together",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
         "",
         false
       ],
@@ -1469,151 +1738,7 @@
         false,
         "",
         false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
+        "Pay Northwell & Labcorp",
         false,
         "",
         false,
@@ -1850,12 +1975,1069 @@
         "notes \u00b7 ideas \u00b7 jot"
       ]
     ],
-    "'Sun'!A17:E41": [],
-    "'Mon'!A17:E41": [],
-    "'Tue'!A17:E41": [],
-    "'Wed'!A17:E41": [],
-    "'Thu'!A17:E41": [],
-    "'Fri'!A17:E41": [],
-    "'Sat'!A17:E41": []
+    "'Sun'!A17:E66": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Mon'!A17:E66": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Tue'!A17:E66": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Wed'!A17:E66": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Thu'!A17:E66": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Fri'!A17:E66": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Sat'!A17:E66": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ]
   }
 }

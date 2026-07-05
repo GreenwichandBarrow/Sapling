@@ -1,6 +1,6 @@
 {
   "verb": "schedule-from-todo-days",
-  "timestamp": "20260705-145736",
+  "timestamp": "20260705-150057",
   "sheet_id": "183fc3jt3200rN9PJr80VfAnJXUz2YNcui8nHnkmIKmk",
   "ranges": {
     "'To Do'!A1:H400": [
@@ -305,15 +305,6 @@
         "",
         "",
         "",
-        "Short Term"
-      ],
-      [
-        "Completed",
-        "Submit the boys to: NY Models",
-        "Home",
-        "Home",
-        "",
-        "Combined from To Do rows 34, 35, 36, 37, 38 based on Sat slot 5.",
         "Short Term"
       ],
       [
@@ -706,6 +697,15 @@
         "",
         "",
         "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Submit the boys to: NY Models",
+        "Home",
+        "Home",
+        "",
+        "Combined from To Do rows 34, 35, 36, 37, 38 based on Sat slot 5.",
         "Short Term"
       ],
       [
@@ -1508,6 +1508,16 @@
         "",
         "",
         "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review last month's monthly budget files from email",
+        "Work",
+        "G&B",
+        "2026-07-10",
+        "Monthly budget files from last month are visible in email; review on Friday.",
+        "Short Term",
+        "Friday"
       ]
     ],
     "'Week'!A1:O38": [
@@ -1544,7 +1554,7 @@
         false,
         "Process payroll",
         false,
-        "",
+        "Pull Megan pre-LOI prep meeting notes",
         false,
         "Niche intel review",
         false,
@@ -1566,7 +1576,7 @@
         false,
         "",
         false,
-        "",
+        "Order gift for Lois (Jack Hugh Mackay)",
         false
       ],
       [
@@ -1574,7 +1584,7 @@
         false,
         "",
         false,
-        "",
+        "Call IRS to confirm Form 8822-B address update",
         false,
         "",
         false,
@@ -1582,7 +1592,7 @@
         false,
         "",
         false,
-        "",
+        "Sign up kids for Kano Martial Arts judo class",
         false
       ],
       [
@@ -1590,7 +1600,7 @@
         false,
         "",
         false,
-        "",
+        "Thank you: Jay, Laura, Paul, Bob",
         false,
         "",
         false,
@@ -1598,7 +1608,7 @@
         false,
         "",
         false,
-        "",
+        "Look into music lessons",
         false
       ],
       [
@@ -1606,7 +1616,7 @@
         false,
         "",
         false,
-        "",
+        "Make sure we dont get charged by Linkt",
         false,
         "",
         false,
@@ -1614,7 +1624,7 @@
         false,
         "",
         false,
-        "",
+        "Sign up for more Italki lessons",
         false
       ],
       [
@@ -1622,7 +1632,7 @@
         false,
         "",
         false,
-        "",
+        "Get reimbursed for Motion",
         false,
         "",
         false,
@@ -1630,7 +1640,7 @@
         false,
         "",
         false,
-        "",
+        "Create travel plans for July in Paris/France next year",
         false
       ],
       [
@@ -1638,7 +1648,7 @@
         false,
         "",
         false,
-        "",
+        "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg",
         false,
         "",
         false,
@@ -1646,7 +1656,7 @@
         false,
         "",
         false,
-        "",
+        "Bday cards & baby cards",
         false
       ],
       [
@@ -1654,7 +1664,7 @@
         false,
         "",
         false,
-        "",
+        "Update Tailscale SSH checkPeriod for Sapling VPS",
         false,
         "",
         false,
@@ -1662,7 +1672,7 @@
         false,
         "",
         false,
-        "",
+        "Create project for French passports",
         false
       ],
       [
@@ -1670,7 +1680,7 @@
         false,
         "",
         false,
-        "",
+        "Verify Howie plan and update budget run-rate",
         false,
         "",
         false,
@@ -1678,7 +1688,7 @@
         false,
         "",
         false,
-        "",
+        "Pay Dad for swim lessons and membership",
         false
       ],
       [
@@ -1686,23 +1696,7 @@
         false,
         "",
         false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
+        "Verify Attio payment / renewal amount",
         false,
         "",
         false,
@@ -1718,7 +1712,23 @@
         false,
         "",
         false,
+        "Reach out to Ray to schedule time to get together",
+        false,
         "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Pay Northwell & Labcorp",
         false,
         "",
         false,
@@ -1955,12 +1965,1069 @@
         "notes \u00b7 ideas \u00b7 jot"
       ]
     ],
-    "'Sun'!A17:E66": [],
-    "'Mon'!A17:E66": [],
-    "'Tue'!A17:E66": [],
-    "'Wed'!A17:E66": [],
-    "'Thu'!A17:E66": [],
-    "'Fri'!A17:E66": [],
-    "'Sat'!A17:E66": []
+    "'Sun'!A17:E66": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Mon'!A17:E66": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Tue'!A17:E66": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Wed'!A17:E66": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Thu'!A17:E66": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Fri'!A17:E66": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Sat'!A17:E66": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ]
   }
 }

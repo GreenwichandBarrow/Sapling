@@ -38,3 +38,10 @@
   - daily tabs cleared/not populated pending Kay approval
   - skipped: []
   - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260705-150132.json
+
+[2026-07-05T15:03:22.912885] distribute-week — 2026-07-05
+  - week (Sunday boundary): 2026-07-05 .. 2026-07-11
+  - fanned Week plan → day tabs: {'Sun': 2, 'Mon': 13, 'Tue': 1, 'Wed': 1, 'Thu': 0, 'Fri': 10, 'Sat': 0}
+  - forced over collisions: False
+  - collisions at run: none
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-distribute-week-20260705-150320.json

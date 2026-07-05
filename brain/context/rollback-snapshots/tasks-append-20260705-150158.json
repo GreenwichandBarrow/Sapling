@@ -1,0 +1,10 @@
+{
+  "verb": "append",
+  "timestamp": "20260705-150158",
+  "sheet_id": "183fc3jt3200rN9PJr80VfAnJXUz2YNcui8nHnkmIKmk",
+  "ranges": {
+    "'To Do'!A168:H168": {
+      "_error": "400 Client Error: Bad Request for url: https://sheets.googleapis.com/v4/spreadsheets/183fc3jt3200rN9PJr80VfAnJXUz2YNcui8nHnkmIKmk/values/'To%20Do'!A168:H168?valueRenderOption=UNFORMATTED_VALUE&dateTimeRenderOption=FORMATTED_STRING"
+    }
+  }
+}

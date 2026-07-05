@@ -55,15 +55,18 @@
       "person": "Greg",
       "context": "Connected through Heels & Deals contact; phone tag by text",
       "due_date": "2026-06-13",
-      "status": "overdue",
+      "status": "scheduled",
       "source": "manual",
       "event": "Heels & Deals connection",
       "kay_confirmed_keep": true,
       "identity_confirmed": true,
-      "last_gog_checked_at": "2026-06-26",
-      "sent_check_result": "no_sent_completion_evidence_found",
-      "status_label": "overdue",
-      "review_note": "Keep active per Kay after EOW sent-mail verification."
+      "last_gog_checked_at": "2026-07-05",
+      "sent_check_result": "scheduled_call_found",
+      "status_label": "scheduled",
+      "review_note": "Suppress as overdue: Kay confirmed follow-up occurred and Google Calendar shows Greg I Kay scheduled for 2026-07-08 11:00 ET.",
+      "scheduled_event": "Greg I Kay",
+      "scheduled_for": "2026-07-08T11:00:00-04:00",
+      "calendar_event_id": "5pn075bcgeo64n1hf4rh819qb8"
     },
     {
       "bucket": "warm",

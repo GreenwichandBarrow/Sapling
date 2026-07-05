@@ -6,7 +6,7 @@
   "deal_items": 41,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-05T09:04:32.802781-04:00",
+  "fetched_at": "2026-07-05T15:04:44.502148-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -37,7 +37,7 @@
       "kay_confirmed_keep": "true",
       "needs_kay_clarification": "false",
       "person": "Greg",
-      "status": "overdue"
+      "status": "scheduled"
     }
   ],
   "input_artifact": "brain/context/email-intelligence-input-2026-07-03.json",

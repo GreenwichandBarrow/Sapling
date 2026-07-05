@@ -1,9 +1,12 @@
 {
-  "blocked": [],
+  "blocked": [
+    "source artifact is stale",
+    "compact input artifact is stale"
+  ],
   "deal_items": 41,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-03T10:24:12.807918-04:00",
+  "fetched_at": "2026-07-05T09:04:32.802781-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -38,7 +41,7 @@
     }
   ],
   "input_artifact": "brain/context/email-intelligence-input-2026-07-03.json",
-  "input_status": "ok",
+  "input_status": "stale",
   "needs_kay": [
     "1 email-derived task candidate(s)",
     "41 broker/listing row(s) extracted",
@@ -49,7 +52,7 @@
   "relationship_items": 0,
   "send_blockers": 0,
   "source_artifact": "brain/context/email-scan-results-2026-07-03.md",
-  "source_status": "ok",
+  "source_status": "stale",
   "stale_drafts": 0,
   "task_candidates": 1,
   "thank_you_items": [],

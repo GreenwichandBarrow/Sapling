@@ -1,20 +1,28 @@
 {
-  "date": "2026-07-03",
+  "date": "2026-07-06",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-07-03.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-07-06.md",
   "email_scan_status": "live",
   "deals_found": 0,
-  "broker_opportunistic": 4,
+  "broker_opportunistic": 1,
   "near_misses": 3,
-  "sources_scanned": 15,
+  "sources_scanned": 26,
   "sources_covered": {
-    "marketplace": 6,
-    "email_newsletters": 6,
-    "direct_email": 3
+    "marketplace": 11,
+    "email_newsletters": 11,
+    "direct_email": 4
   },
-  "manual_check_sources": [],
+  "manual_check_sources": [
+    "Acquire.com",
+    "Axial",
+    "BizScout (DealOS)",
+    "FE International",
+    "Kumo"
+  ],
   "sources_blocked_verified": 0,
   "sources_blocked_single_attempt": 0,
   "volume_status": "BELOW TARGET",
-  "needs_attention": []
+  "needs_attention": [
+    "volume below target: 0 surfaced matches; 0.0 7-day avg"
+  ]
 }

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-02",
+  "updated_at": "2026-07-06",
   "items": [
     {
       "bucket": "thank",
@@ -778,6 +778,18 @@
       "event": "Katie I Kay (Kay to call Katie on cell)",
       "event_date": "2026-07-01",
       "calendar_event_id": "_70pj4d9g6ss3cb9m85348b9k88p30b9p74p42b9l650j2h1h68p4agpp6s"
+    },
+    {
+      "bucket": "thank",
+      "person": "Kay Schneider and Sam Singh",
+      "email": "sam@dealsx.io",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-06",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Kay Schneider and Sam Singh",
+      "event_date": "2026-07-05",
+      "calendar_event_id": "df8o2is5uijqu6r3iljqv4vfr8"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-06",
+  "updated_at": "2026-07-07",
   "items": [
     {
       "bucket": "thank",
@@ -790,6 +790,42 @@
       "event": "Kay Schneider and Sam Singh",
       "event_date": "2026-07-05",
       "calendar_event_id": "df8o2is5uijqu6r3iljqv4vfr8"
+    },
+    {
+      "bucket": "thank",
+      "person": "Kay Schneider and Sam Singh",
+      "email": "sam@dealsx.io",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-07",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Kay Schneider and Sam Singh",
+      "event_date": "2026-07-06",
+      "calendar_event_id": "df8o2is5uijqu6r3iljqv4vfr8"
+    },
+    {
+      "bucket": "thank",
+      "person": "Clayton",
+      "email": "cesachs@datacor.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-07",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Clayton I Kay",
+      "event_date": "2026-07-06",
+      "calendar_event_id": "39vhlb4v0aunpkc9p11talm6mq"
+    },
+    {
+      "bucket": "thank",
+      "person": "Andrew <> Kay",
+      "email": "andrew@cromwellharbor.net",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-07",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Andrew <> Kay",
+      "event_date": "2026-07-06",
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g8co3ch1g6ss3ed2260qk8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g60p3gdi3712k4chl64s34chk6d0kce9g712jgcpp6d0j2d9i8520"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

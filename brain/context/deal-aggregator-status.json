@@ -1,28 +1,26 @@
 {
-  "date": "2026-07-06",
+  "date": "2026-07-07",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-07-06.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-07-07.md",
   "email_scan_status": "live",
   "deals_found": 0,
-  "broker_opportunistic": 1,
-  "near_misses": 3,
-  "sources_scanned": 26,
+  "broker_opportunistic": 5,
+  "near_misses": 8,
+  "sources_scanned": 19,
   "sources_covered": {
-    "marketplace": 11,
-    "email_newsletters": 11,
+    "marketplace": 8,
+    "email_newsletters": 7,
     "direct_email": 4
   },
   "manual_check_sources": [
-    "Acquire.com",
-    "Axial",
-    "BizScout (DealOS)",
-    "FE International",
-    "Kumo"
+    "BizQuest (403; browser fallback unavailable)",
+    "Axial (403; browser fallback unavailable)"
   ],
   "sources_blocked_verified": 0,
-  "sources_blocked_single_attempt": 0,
+  "sources_blocked_single_attempt": 2,
   "volume_status": "BELOW TARGET",
   "needs_attention": [
-    "volume below target: 0 surfaced matches; 0.0 7-day avg"
+    "BizQuest and Axial blocked (403); browser fallback unavailable because agent-browser is not installed",
+    "0 PASS today; volume remains below the 1-3/day target"
   ]
 }

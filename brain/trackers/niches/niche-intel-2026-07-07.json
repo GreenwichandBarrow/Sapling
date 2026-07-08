@@ -1,0 +1,35 @@
+{
+  "run_date": "2026-07-07",
+  "run_mode": "tuesday",
+  "runner": "Codex/systemd",
+  "niches_evaluated": 1,
+  "niches_identified": 1,
+  "one_pagers_written": 1,
+  "scorecards_written": 1,
+  "tracker_updated": true,
+  "runtime_seconds": 5400,
+  "zero_finding_reason": "",
+  "sources_covered": {
+    "recent_track": "Partial coverage: last30days/web, newsletters, Gmail deal flow/investors, Granola last-14-day checks, vault calls/outputs, passive inbox. Gaps: Reddit 403, weak HN/Polymarket hits, some unreadable Axial bodies, attachments/CIMs not opened, no passive topic/niche-signal items.",
+    "historical_track": "Partial coverage: live tracker tabs, older brain/calls, historical Gmail query families, selected vault outputs. Gaps: OneNote SEARCH FUND unavailable, ChatGPT export missing, full historical Granola pagination incomplete."
+  },
+  "open_loops_infra": [
+    "OneNote SEARCH FUND source unavailable in scheduled environment.",
+    "ChatGPT selected_business_conversations.json not found under /home/ubuntu.",
+    "Historical Granola wrapper returned only recent page for broad since query; relied on vault-synced call notes.",
+    "last30days Reddit returned 403; HN/Polymarket produced no useful hits."
+  ],
+  "niches": [
+    {
+      "name": "Medical/Lab/IVF Specialty Cleaning",
+      "score": 2.37,
+      "drive_folder": "https://drive.google.com/drive/folders/17mzSN2ve06iFtfHU_Ik4nJTkEu7SXS4e",
+      "one_pager": "https://docs.google.com/presentation/d/1HZdVFADRhG7kJwAclwPRyjMRwUAQ4nM9/edit?usp=drivesdk",
+      "scorecard": "https://docs.google.com/spreadsheets/d/1RAavtMULjIsOqoDMp_y9c7XRXGloOVGx/edit?usp=drivesdk",
+      "tracker_rows": {
+        "weekly_review": 35,
+        "ideation": 24
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "attio_note_ids": {
+    "companies": [
+      "7c1a64d9-5118-474a-8077-1e2733db5af0"
+    ],
+    "people": []
+  },
+  "counterparty": "BK Growth",
+  "date": "2026-07-08",
+  "doc_url": "https://docs.google.com/document/d/1Gj5lnj5LBFh6cItaleqqQC_Pxx1DeDVWxhPylqQd7sQ/edit?usp=drivesdk",
+  "granola_url": "https://notes.granola.ai/d/528c390d-3d31-4234-a192-04bc61756df9",
+  "id": "not_jp2LFmBsn07E3f",
+  "location": "remote",
+  "processed_archive": "brain/trackers/post-call-analyzer/processed/not_jp2LFmBsn07E3f.json",
+  "processed_at": "2026-07-08T22:10:44.800411Z",
+  "queue_file": "brain/trackers/post-call-analyzer/queue/not_jp2LFmBsn07E3f.json",
+  "slack_posted": true,
+  "summary_2to3_lines": "Lender fit matters more than rate. Flexible private credit can justify a premium when operating risk is real. Software only clears when quality is clearly high.",
+  "task_count": 2,
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_jp2LFmBsn07E3f.json",
+  "time": "2:00 PM ET",
+  "title": "BK Growth 1st Thursday Zoom",
+  "transcript_doc_url": "https://docs.google.com/document/d/1CuWXIkdCLvIoQU9--ExI_hskXfAlPmZ19ox5LK9vAJg/edit?usp=drivesdk",
+  "vault_call_note": "brain/calls/2026-07-08-bk-growth-1st-thursday-zoom.md"
+}

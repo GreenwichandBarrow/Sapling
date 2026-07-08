@@ -1,0 +1,27 @@
+{
+  "attio_note_ids": {
+    "companies": [
+      "9d40b7fe-904d-4abc-adb5-461213936da3"
+    ],
+    "people": [
+      "9a65d488-3d6a-4a67-93ec-56612b1fc729"
+    ]
+  },
+  "counterparty": "Camilla",
+  "date": "2026-07-08",
+  "doc_url": "https://docs.google.com/document/d/1civ7_q0UkbvVaVQudQe-pAShlStYXOP5I9iGtQUXVDw/edit?usp=drivesdk",
+  "granola_url": "https://notes.granola.ai/d/e6c7d9e6-3ab6-4f7e-918e-938c9ac79f9d",
+  "id": "not_yVtLyk6tSzmnQt",
+  "location": "remote",
+  "processed_archive": "brain/trackers/post-call-analyzer/processed/not_yVtLyk6tSzmnQt.json",
+  "processed_at": "2026-07-08T22:10:44.800411Z",
+  "queue_file": "brain/trackers/post-call-analyzer/queue/not_yVtLyk6tSzmnQt.json",
+  "slack_posted": true,
+  "summary_2to3_lines": "Industry focus is now the gating criterion. The deck is moving toward a luxury-services platform framed around a strong anchor brand plus adjacent infrastructure.",
+  "task_count": 3,
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_yVtLyk6tSzmnQt.json",
+  "time": "12:30 PM ET",
+  "title": "Team TB Camilla I Kay",
+  "transcript_doc_url": "https://docs.google.com/document/d/1QTaDXTDOKecd7-8DEqjFgFR5PKIs5frRqDz5kjOcB0g/edit?usp=drivesdk",
+  "vault_call_note": "brain/calls/2026-07-08-team-tb-camilla-kay.md"
+}

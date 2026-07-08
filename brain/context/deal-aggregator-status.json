@@ -1,26 +1,22 @@
 {
-  "date": "2026-07-07",
+  "date": "2026-07-08",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-07-07.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-07-08.md",
   "email_scan_status": "live",
   "deals_found": 0,
-  "broker_opportunistic": 5,
-  "near_misses": 8,
-  "sources_scanned": 19,
+  "broker_opportunistic": 1,
+  "near_misses": 4,
+  "sources_scanned": 15,
   "sources_covered": {
-    "marketplace": 8,
-    "email_newsletters": 7,
-    "direct_email": 4
+    "marketplace": 6,
+    "email_newsletters": 6,
+    "direct_email": 3
   },
-  "manual_check_sources": [
-    "BizQuest (403; browser fallback unavailable)",
-    "Axial (403; browser fallback unavailable)"
-  ],
+  "manual_check_sources": ["N/A"],
   "sources_blocked_verified": 0,
-  "sources_blocked_single_attempt": 2,
+  "sources_blocked_single_attempt": 0,
   "volume_status": "BELOW TARGET",
   "needs_attention": [
-    "BizQuest and Axial blocked (403); browser fallback unavailable because agent-browser is not installed",
-    "0 PASS today; volume remains below the 1-3/day target"
+    "volume below 1-3/day target"
   ]
 }

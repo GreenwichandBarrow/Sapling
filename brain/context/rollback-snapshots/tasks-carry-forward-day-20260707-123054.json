@@ -1,49 +1,60 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260702-145034",
-  "sheet_id": "1Cc3sQjeYT7GzGcAuOnHbuOA7P648xzgKqGTZuTusg5c",
+  "timestamp": "20260707-123054",
+  "sheet_id": "183fc3jt3200rN9PJr80VfAnJXUz2YNcui8nHnkmIKmk",
   "ranges": {
-    "'Sun'!A17:E66": [
+    "'Mon'!A17:E66": [
       [
-        false,
-        "Create weekly schedule"
+        true,
+        "Process payroll"
       ],
       [
         false,
-        "Confirm LiveOak payroll transfer coverage"
+        "Process conference registrations"
       ],
       [
-        false
+        false,
+        "Call IRS to confirm Form 8822-B address update"
       ],
       [
-        false
+        false,
+        "Thank you: Jay, Laura, Paul, Bob"
       ],
       [
-        false
+        false,
+        "Make sure we dont get charged by Linkt"
       ],
       [
-        false
+        false,
+        "Get reimbursed for Motion"
       ],
       [
-        false
+        false,
+        "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg"
       ],
       [
-        false
+        false,
+        "Update Tailscale SSH checkPeriod for Sapling VPS"
       ],
       [
-        false
+        false,
+        "Verify Howie plan and update budget run-rate"
       ],
       [
-        false
+        false,
+        "Verify Attio payment / renewal amount"
       ],
       [
-        false
+        false,
+        "Reach out to Ray to schedule time to get together"
       ],
       [
-        false
+        false,
+        "Pay Northwell & Labcorp"
       ],
       [
-        false
+        false,
+        "Review 2 briefs for Tuesday's calls"
       ],
       [
         false
@@ -157,18 +168,16 @@
         false
       ]
     ],
-    "'Thu'!A17:E66": [
+    "'Tue'!A17:E66": [
       [
         false,
-        "Order gift for Lois (Jack Hugh Mackay)"
+        "Pull Megan pre-LOI prep meeting notes"
       ],
       [
-        false,
-        "Connect Roberta & Elspeth"
+        false
       ],
       [
-        false,
-        "Connect Lily & Suzanne"
+        false
       ],
       [
         false

@@ -809,11 +809,19 @@
       "email": "cesachs@datacor.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-07",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Clayton I Kay",
       "event_date": "2026-07-06",
-      "calendar_event_id": "39vhlb4v0aunpkc9p11talm6mq"
+      "calendar_event_id": "39vhlb4v0aunpkc9p11talm6mq",
+      "completed_at": "2026-07-07",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19eb7282a03a2143, subject 'Greenwich & Barrow Update 6.11.26 - CONFIDENTIAL', sent 2026-07-07 11:38.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19eb7282a03a2143",
+        "subject": "Greenwich & Barrow Update 6.11.26 - CONFIDENTIAL",
+        "sent_at": "2026-07-07 11:38"
+      }
     },
     {
       "bucket": "thank",

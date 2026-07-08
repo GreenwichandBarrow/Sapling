@@ -3,8 +3,18 @@
   "deal_items": 0,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-07T07:10:45.203159-04:00",
-  "follow_through_completed_items": [],
+  "fetched_at": "2026-07-07T12:32:15.626290-04:00",
+  "follow_through_completed_items": [
+    {
+      "bucket": "thank",
+      "completed_at": "2026-07-07",
+      "event": "Clayton I Kay",
+      "person": "Clayton",
+      "sent_at": "2026-07-07 11:38",
+      "sent_subject": "Greenwich & Barrow Update 6.11.26 - CONFIDENTIAL",
+      "sent_thread_id": "19eb7282a03a2143"
+    }
+  ],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -40,7 +50,9 @@
   "input_artifact": "brain/context/email-intelligence-input-2026-07-07.json",
   "input_status": "ok",
   "needs_kay": [
-    "3 prior-day thank-you(s) need approval: Andrew <> Kay; Clayton; Kay Schneider and Sam Singh",
+    "2 prior-day thank-you(s) need approval: Andrew <> Kay; Kay Schneider and Sam Singh",
+    "1 prior-day thank-you(s) verified sent",
+    "1 email follow-through row(s) auto-completed from sent-mail evidence: Clayton",
     "3 EOW/follow-up row(s) still active after sent-mail check: Monica Chawla; Denning; Greg",
     "Clarify email follow-through identity/source: Paul (EOW follow-up); Brooke Neidich (EOW follow-up)"
   ],
@@ -53,24 +65,24 @@
   "task_candidates": 0,
   "thank_you_items": [
     {
+      "completed_at": "2026-07-07",
+      "due_date": "2026-07-07",
+      "email": "cesachs@datacor.com",
+      "event": "Clayton I Kay",
+      "event_date": "2026-07-06",
+      "person": "Clayton",
+      "sent_at": "2026-07-07 11:38",
+      "sent_subject": "Greenwich & Barrow Update 6.11.26 - CONFIDENTIAL",
+      "sent_thread_id": "19eb7282a03a2143",
+      "status": "completed"
+    },
+    {
       "completed_at": "",
       "due_date": "2026-07-07",
       "email": "andrew@cromwellharbor.net",
       "event": "Andrew <> Kay",
       "event_date": "2026-07-06",
       "person": "Andrew <> Kay",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-07-07",
-      "email": "cesachs@datacor.com",
-      "event": "Clayton I Kay",
-      "event_date": "2026-07-06",
-      "person": "Clayton",
       "sent_at": "",
       "sent_subject": "",
       "sent_thread_id": "",

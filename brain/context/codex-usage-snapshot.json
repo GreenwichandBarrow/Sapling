@@ -1,28 +1,28 @@
 {
-  "fetched_at": "2026-07-07T08:00:44.570379-04:00",
+  "fetched_at": "2026-07-07T20:00:44.580675-04:00",
   "models": [
     {
       "model": "unknown",
-      "tokens": 416140878
+      "tokens": 420588701
     }
   ],
   "month": {
-    "cached_input_tokens": 364757888,
-    "input_tokens": 414073659,
-    "output_tokens": 2067219,
-    "reasoning_output_tokens": 813978,
-    "total_tokens": 416140878
+    "cached_input_tokens": 367975680,
+    "input_tokens": 418498700,
+    "output_tokens": 2090001,
+    "reasoning_output_tokens": 826661,
+    "total_tokens": 420588701
   },
-  "period_end": "2026-07-07T08:00:44.570379-04:00",
+  "period_end": "2026-07-07T20:00:44.580675-04:00",
   "period_start": "2026-07-01T00:00:00-04:00",
-  "scanned_files": 505,
-  "sessions_with_usage": 65,
+  "scanned_files": 509,
+  "sessions_with_usage": 69,
   "source": "local_codex_session_usage_metadata",
   "today": {
-    "cached_input_tokens": 6511872,
-    "input_tokens": 6982335,
-    "output_tokens": 103633,
-    "reasoning_output_tokens": 72687,
-    "total_tokens": 7085968
+    "cached_input_tokens": 214727680,
+    "input_tokens": 243172332,
+    "output_tokens": 975612,
+    "reasoning_output_tokens": 270861,
+    "total_tokens": 244147944
   }
 }

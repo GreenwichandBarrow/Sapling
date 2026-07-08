@@ -1,0 +1,20 @@
+
+[2026-07-07T12:30:59.962399] carry-forward-day — mon-to-tue
+  - moved: 12
+  - source: Mon
+  - destination: Tue
+  - source packed: {'completed': 1, 'active': 0, 'blank': 49, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260707-123054.json
+  
+  - Mon slot 2 → Tue slot 2: Process conference registrations
+  - Mon slot 3 → Tue slot 3: Call IRS to confirm Form 8822-B address update
+  - Mon slot 4 → Tue slot 4: Thank you: Jay, Laura, Paul, Bob
+  - Mon slot 5 → Tue slot 5: Make sure we dont get charged by Linkt
+  - Mon slot 6 → Tue slot 6: Get reimbursed for Motion
+  - Mon slot 7 → Tue slot 7: Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg
+  - Mon slot 8 → Tue slot 8: Update Tailscale SSH checkPeriod for Sapling VPS
+  - Mon slot 9 → Tue slot 9: Verify Howie plan and update budget run-rate
+  - Mon slot 10 → Tue slot 10: Verify Attio payment / renewal amount
+  - Mon slot 11 → Tue slot 11: Reach out to Ray to schedule time to get together
+  - Mon slot 12 → Tue slot 12: Pay Northwell & Labcorp
+  - Mon slot 13 → Tue slot 13: Review 2 briefs for Tuesday's calls

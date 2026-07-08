@@ -861,11 +861,19 @@
       "email": "cesachs@datacor.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-08",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Clayton I Kay",
       "event_date": "2026-07-07",
-      "calendar_event_id": "39vhlb4v0aunpkc9p11talm6mq"
+      "calendar_event_id": "39vhlb4v0aunpkc9p11talm6mq",
+      "completed_at": "2026-07-08",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19f4276c1de1568f, subject 'RE: Clayton I Kay', sent 2026-07-08 12:04.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19f4276c1de1568f",
+        "subject": "RE: Clayton I Kay",
+        "sent_at": "2026-07-08 12:04"
+      }
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

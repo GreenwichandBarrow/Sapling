@@ -1,0 +1,21 @@
+
+[2026-07-08T12:11:59.813622] carry-forward-day — tue-to-wed
+  - moved: 13
+  - source: Tue
+  - destination: Wed
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260708-121153.json
+  
+  - Tue slot 1 → Wed slot 2: Pull Megan pre-LOI prep meeting notes
+  - Tue slot 2 → Wed slot 3: Process conference registrations
+  - Tue slot 3 → Wed slot 4: Call IRS to confirm Form 8822-B address update
+  - Tue slot 4 → Wed slot 5: Thank you: Jay, Laura, Paul, Bob
+  - Tue slot 5 → Wed slot 6: Make sure we dont get charged by Linkt
+  - Tue slot 6 → Wed slot 7: Get reimbursed for Motion
+  - Tue slot 7 → Wed slot 8: Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg
+  - Tue slot 8 → Wed slot 9: Update Tailscale SSH checkPeriod for Sapling VPS
+  - Tue slot 9 → Wed slot 10: Verify Howie plan and update budget run-rate
+  - Tue slot 10 → Wed slot 11: Verify Attio payment / renewal amount
+  - Tue slot 11 → Wed slot 12: Reach out to Ray to schedule time to get together
+  - Tue slot 12 → Wed slot 13: Pay Northwell & Labcorp
+  - Tue slot 13 → Wed slot 14: Review 2 briefs for Tuesday's calls

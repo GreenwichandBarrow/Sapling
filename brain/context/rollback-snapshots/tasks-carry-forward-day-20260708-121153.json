@@ -1,53 +1,60 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260702-145049",
-  "sheet_id": "1Cc3sQjeYT7GzGcAuOnHbuOA7P648xzgKqGTZuTusg5c",
+  "timestamp": "20260708-121153",
+  "sheet_id": "183fc3jt3200rN9PJr80VfAnJXUz2YNcui8nHnkmIKmk",
   "ranges": {
-    "'Mon'!A17:E66": [
+    "'Tue'!A17:E66": [
       [
-        true,
-        "Process payroll"
+        false,
+        "Pull Megan pre-LOI prep meeting notes"
       ],
       [
-        true,
+        false,
         "Process conference registrations"
       ],
       [
         false,
-        "Set up meetings with the list of Lenders to build relationships"
+        "Call IRS to confirm Form 8822-B address update"
       ],
       [
         false,
-        "Email Filipe @ Pest Mgmt company"
+        "Thank you: Jay, Laura, Paul, Bob"
       ],
       [
         false,
-        "Bday cards & baby cards"
+        "Make sure we dont get charged by Linkt"
       ],
       [
         false,
-        "Do luxury-retailer store visits for pest buying criteria"
+        "Get reimbursed for Motion"
       ],
       [
-        false
+        false,
+        "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg"
       ],
       [
-        false
+        false,
+        "Update Tailscale SSH checkPeriod for Sapling VPS"
       ],
       [
-        false
+        false,
+        "Verify Howie plan and update budget run-rate"
       ],
       [
-        false
+        false,
+        "Verify Attio payment / renewal amount"
       ],
       [
-        false
+        false,
+        "Reach out to Ray to schedule time to get together"
       ],
       [
-        false
+        false,
+        "Pay Northwell & Labcorp"
       ],
       [
-        false
+        false,
+        "Review 2 briefs for Tuesday's calls"
       ],
       [
         false
@@ -161,26 +168,22 @@
         false
       ]
     ],
-    "'Thu'!A17:E66": [
+    "'Wed'!A17:E66": [
       [
         false,
-        "Order gift for Lois (Jack Hugh Mackay)"
+        "Niche intel review"
       ],
       [
-        false,
-        "Connect Roberta & Elspeth"
+        false
       ],
       [
-        false,
-        "Connect Lily & Suzanne"
+        false
       ],
       [
-        false,
-        "Create weekly schedule"
+        false
       ],
       [
-        false,
-        "Confirm LiveOak payroll transfer coverage"
+        false
       ],
       [
         false

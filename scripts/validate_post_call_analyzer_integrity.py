@@ -110,7 +110,15 @@ def validate_processed_ledger(ledger: object) -> list[str]:
             or entry.get("slack_failed")
             or entry.get("processed_at")
         )
+        legacy_detector_only = (
+            entry.get("detector")
+            and entry.get("queued_at")
+            and entry.get("created_at")
+            and entry.get("updated_at")
+        )
         if not has_artifacts:
+            if legacy_detector_only:
+                continue
             ledger_failures.append(f"processed entry {nid} has no artifact + no failure marker")
     return ledger_failures
 

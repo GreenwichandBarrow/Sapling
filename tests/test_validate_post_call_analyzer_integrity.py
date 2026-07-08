@@ -31,6 +31,25 @@ class PostCallAnalyzerValidatorTest(unittest.TestCase):
 
         self.assertEqual(failures, [])
 
+
+    def test_processed_ledger_accepts_legacy_detector_only_entries(self) -> None:
+        ledger = {
+            "processed": [
+                {
+                    "id": "not_legacy",
+                    "title": "Legacy queued note",
+                    "created_at": "2026-06-09T16:00:22.901Z",
+                    "updated_at": "2026-06-09T16:38:29.096Z",
+                    "queued_at": "2026-06-09T13:00:45-04:00",
+                    "detector": "granola-api-rest",
+                }
+            ]
+        }
+
+        failures = validator.validate_processed_ledger(ledger)
+
+        self.assertEqual(failures, [])
+
     def test_processed_ledger_flags_entries_without_artifact_or_failure(self) -> None:
         ledger = {"processed": [{"id": "not_empty"}]}
 

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-07",
+  "updated_at": "2026-07-08",
   "items": [
     {
       "bucket": "thank",
@@ -829,11 +829,43 @@
       "email": "andrew@cromwellharbor.net",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-07",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Andrew <> Kay",
       "event_date": "2026-07-06",
-      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g8co3ch1g6ss3ed2260qk8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g60p3gdi3712k4chl64s34chk6d0kce9g712jgcpp6d0j2d9i8520"
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g8co3ch1g6ss3ed2260qk8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g60p3gdi3712k4chl64s34chk6d0kce9g712jgcpp6d0j2d9i8520",
+      "completed_at": "2026-07-07",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19ea8376931a3f42, subject 'Greenwich & Barrow Update 6.8.26 - CONFIDENTIAL', sent 2026-07-07 18:08.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19ea8376931a3f42",
+        "subject": "Greenwich & Barrow Update 6.8.26 - CONFIDENTIAL",
+        "sent_at": "2026-07-07 18:08"
+      }
+    },
+    {
+      "bucket": "thank",
+      "person": "Greg",
+      "email": "greg@gripcommpr.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-08",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Greg I Kay",
+      "event_date": "2026-07-07",
+      "calendar_event_id": "5pn075bcgeo64n1hf4rh819qb8"
+    },
+    {
+      "bucket": "thank",
+      "person": "Clayton",
+      "email": "cesachs@datacor.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-08",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Clayton I Kay",
+      "event_date": "2026-07-07",
+      "calendar_event_id": "39vhlb4v0aunpkc9p11talm6mq"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

@@ -1201,6 +1201,29 @@
       "doc_failed": false,
       "transcript_failed": false,
       "slack_posted": true
+    },
+    {
+      "id": "not_q5a78Cftv4pHcb",
+      "title": "Greg I Kay",
+      "counterparty": "Greg Pitkoff",
+      "counterparty_company": "GRiP Communications",
+      "processed_at": "2026-07-08T17:05:51.875173+00:00",
+      "queued_at": "2026-07-08T13:00:45-04:00",
+      "doc_url": "https://docs.google.com/document/d/16VRw5GicUkdNcTCrRvb7_IxMorUzM1_ZOG8zTY2sMeA/edit?usp=drivesdk",
+      "transcript_doc_url": "https://docs.google.com/document/d/103Ob9vbi_e5dB7oQyOO2SH5sU3BZKgs3WJ4_SumEzQY/edit?usp=drivesdk",
+      "vault_call_note": "brain/calls/2026-07-08-greg-pitkoff.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_q5a78Cftv4pHcb.json",
+      "task_count": 3,
+      "attio_notes": {
+        "person_greg_pitkoff": "55c0ce6d-8293-4710-8272-5f29ed081e1c",
+        "company_grip_communications": "2b7b90a5-ef7b-4dac-a00b-7d76ff93ad94"
+      },
+      "granola_url": "https://notes.granola.ai/d/2311016d-252a-47dc-94cd-78684cb952a6",
+      "slack_posted": true,
+      "attio_failed": false,
+      "tasks_failed": false,
+      "doc_failed": false,
+      "transcript_failed": false
     }
   ]
 }

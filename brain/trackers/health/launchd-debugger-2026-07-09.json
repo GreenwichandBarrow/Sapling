@@ -1,0 +1,29 @@
+{
+  "date": "2026-07-09",
+  "scan_started_at": "2026-07-09T08:21:00-04:00",
+  "scan_finished_at": "2026-07-09T08:22:24-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 0,
+  "runtime_seconds": 84,
+  "results": [
+    {
+      "job": "email-intelligence",
+      "cause": "VALIDATOR_REJECT",
+      "action": "SURFACE",
+      "triggered_by": "daily",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/email-intelligence-2026-07-09-0700.log",
+      "last_log_mtime": "2026-07-09T07:07:56-04:00",
+      "exit_code": 2,
+      "validator_failed": false,
+      "preflight_failed": false,
+      "error_signature": "FAILED: post-run check exited 2",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_text": "launchd-debugger: email-intelligence FAILED — VALIDATOR_REJECT. FAILED: post-run check exited 2. Recommended: update the email-intelligence artifact/frontmatter template to emit required `type: context` and `source: email-intelligence`, then rerun manually. Log: /home/ubuntu/projects/Sapling/logs/scheduled/email-intelligence-2026-07-09-0700.log",
+      "slack_posted": false,
+      "suppression_reason": "cross-day-dedup:7d"
+    }
+  ]
+}

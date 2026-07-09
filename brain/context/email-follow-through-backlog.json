@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-08",
+  "updated_at": "2026-07-09",
   "items": [
     {
       "bucket": "thank",
@@ -761,11 +761,19 @@
       "email": "glavergne@ashfordventures.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-01",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Guillermo I Kay Bi-Weekly Mtg",
       "event_date": "2026-06-30",
-      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260701T173000Z"
+      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260701T173000Z",
+      "completed_at": "2026-07-08",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19edb5fa720630a4, subject 'Brainstorm Part II', sent 2026-07-08 13:30.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19edb5fa720630a4",
+        "subject": "Brainstorm Part II",
+        "sent_at": "2026-07-08 13:30"
+      }
     },
     {
       "bucket": "thank",
@@ -874,6 +882,30 @@
         "subject": "RE: Clayton I Kay",
         "sent_at": "2026-07-08 12:04"
       }
+    },
+    {
+      "bucket": "thank",
+      "person": "Greg",
+      "email": "greg@gripcommpr.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-09",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Greg I Kay",
+      "event_date": "2026-07-08",
+      "calendar_event_id": "5pn075bcgeo64n1hf4rh819qb8"
+    },
+    {
+      "bucket": "thank",
+      "person": "Clayton",
+      "email": "cesachs@datacor.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-09",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Clayton I Kay",
+      "event_date": "2026-07-08",
+      "calendar_event_id": "39vhlb4v0aunpkc9p11talm6mq"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

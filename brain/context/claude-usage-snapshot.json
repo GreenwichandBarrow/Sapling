@@ -1,7 +1,13 @@
 {
-  "fetched_at": "2026-07-08T20:00:44.559400-04:00",
-  "messages_with_usage": 0,
-  "models": [],
+  "fetched_at": "2026-07-09T08:00:44.568194-04:00",
+  "messages_with_usage": 2,
+  "models": [
+    {
+      "messages": 2,
+      "model": "<synthetic>",
+      "tokens": 0
+    }
+  ],
   "month": {
     "cache_creation_input_tokens": 0,
     "cache_read_input_tokens": 0,
@@ -9,9 +15,9 @@
     "output_tokens": 0,
     "total_tokens": 0
   },
-  "period_end": "2026-07-08T20:00:44.559400-04:00",
+  "period_end": "2026-07-09T08:00:44.568194-04:00",
   "period_start": "2026-07-01T00:00:00-04:00",
-  "scanned_files": 1906,
+  "scanned_files": 2,
   "source": "local_claude_transcript_usage_metadata",
   "today": {
     "cache_creation_input_tokens": 0,

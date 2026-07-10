@@ -1,9 +1,9 @@
 {
   "blocked": [],
-  "deal_items": 80,
+  "deal_items": 55,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-09T13:35:49.324203-04:00",
+  "fetched_at": "2026-07-10T07:10:45.291813-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -37,47 +37,21 @@
       "status": "scheduled"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-07-09.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-07-10.json",
   "input_status": "ok",
   "needs_kay": [
-    "80 broker/listing row(s) extracted",
-    "2 prior-day thank-you(s) need approval: Clayton; Greg",
+    "55 broker/listing row(s) extracted",
     "3 EOW/follow-up row(s) still active after sent-mail check: Monica Chawla; Denning; Greg",
     "Clarify email follow-through identity/source: Paul (EOW follow-up); Brooke Neidich (EOW follow-up)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-07-09.md",
+  "source_artifact": "brain/context/email-scan-results-2026-07-10.md",
   "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 0,
-  "thank_you_items": [
-    {
-      "completed_at": "",
-      "due_date": "2026-07-09",
-      "email": "cesachs@datacor.com",
-      "event": "Clayton I Kay",
-      "event_date": "2026-07-08",
-      "person": "Clayton",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-07-09",
-      "email": "greg@gripcommpr.com",
-      "event": "Greg I Kay",
-      "event_date": "2026-07-08",
-      "person": "Greg",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    }
-  ],
+  "thank_you_items": [],
   "unclear_followthrough_items": [
     "Paul (EOW follow-up)",
     "Brooke Neidich (EOW follow-up)"

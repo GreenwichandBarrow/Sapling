@@ -1,56 +1,68 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260702-145104",
-  "sheet_id": "1Cc3sQjeYT7GzGcAuOnHbuOA7P648xzgKqGTZuTusg5c",
+  "timestamp": "20260709-133552",
+  "sheet_id": "183fc3jt3200rN9PJr80VfAnJXUz2YNcui8nHnkmIKmk",
   "ranges": {
-    "'Tue'!A17:E66": [
+    "'Wed'!A17:E66": [
       [
         false,
-        "Try Claude on website rebuild"
+        "Niche intel review"
       ],
       [
         false,
-        "Review finders fee doc"
+        "Pull Megan pre-LOI prep meeting notes"
+      ],
+      [
+        true,
+        "Process conference registrations"
+      ],
+      [
+        false,
+        "Call IRS to confirm Form 8822-B address update"
+      ],
+      [
+        false,
+        "Thank you: Jay, Laura, Paul, Bob"
+      ],
+      [
+        false,
+        "Make sure we dont get charged by Linkt"
+      ],
+      [
+        false,
+        "Get reimbursed for Motion"
+      ],
+      [
+        false,
+        "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg"
       ],
       [
         false,
         "Update Tailscale SSH checkPeriod for Sapling VPS"
       ],
       [
-        false
+        false,
+        "Verify Howie plan and update budget run-rate"
       ],
       [
-        false
+        false,
+        "Verify Attio payment / renewal amount"
       ],
       [
-        false
+        true,
+        "Reach out to Ray to schedule time to get together"
       ],
       [
-        false
+        true,
+        "Pay Northwell & Labcorp"
       ],
       [
-        false
+        true,
+        "Review 2 briefs for Tuesday's calls"
       ],
       [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
+        false,
+        "Reach out to Guillermo to schedule next brainstorm"
       ],
       [
         false
@@ -160,40 +172,31 @@
     ],
     "'Thu'!A17:E66": [
       [
-        false,
-        "Order gift for Lois (Jack Hugh Mackay)"
+        false
       ],
       [
-        false,
-        "Connect Roberta & Elspeth"
+        false
       ],
       [
-        false,
-        "Connect Lily & Suzanne"
+        false
       ],
       [
-        false,
-        "Create weekly schedule"
+        false
       ],
       [
-        false,
-        "Confirm LiveOak payroll transfer coverage"
+        false
       ],
       [
-        false,
-        "Set up meetings with the list of Lenders to build relationships"
+        false
       ],
       [
-        false,
-        "Email Filipe @ Pest Mgmt company"
+        false
       ],
       [
-        false,
-        "Bday cards & baby cards"
+        false
       ],
       [
-        false,
-        "Do luxury-retailer store visits for pest buying criteria"
+        false
       ],
       [
         false

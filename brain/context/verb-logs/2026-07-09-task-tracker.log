@@ -1,0 +1,25 @@
+
+[2026-07-09T13:20:17.720310] schedule-to-day-slot — fri-11
+  - task: Check NYC Housing Connect for new Manhattan lotteries
+  - placement: Fri tab slot 11 (row 27)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260709-132017.json
+
+[2026-07-09T13:35:55.582412] carry-forward-day — wed-to-thu
+  - moved: 11
+  - source: Wed
+  - destination: Thu
+  - source packed: {'completed': 4, 'active': 0, 'blank': 46, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260709-133552.json
+  
+  - Wed slot 1 → Thu slot 1: Niche intel review
+  - Wed slot 2 → Thu slot 2: Pull Megan pre-LOI prep meeting notes
+  - Wed slot 4 → Thu slot 3: Call IRS to confirm Form 8822-B address update
+  - Wed slot 5 → Thu slot 4: Thank you: Jay, Laura, Paul, Bob
+  - Wed slot 6 → Thu slot 5: Make sure we dont get charged by Linkt
+  - Wed slot 7 → Thu slot 6: Get reimbursed for Motion
+  - Wed slot 8 → Thu slot 7: Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg
+  - Wed slot 9 → Thu slot 8: Update Tailscale SSH checkPeriod for Sapling VPS
+  - Wed slot 10 → Thu slot 9: Verify Howie plan and update budget run-rate
+  - Wed slot 11 → Thu slot 10: Verify Attio payment / renewal amount
+  - Wed slot 15 → Thu slot 11: Reach out to Guillermo to schedule next brainstorm

@@ -1,0 +1,43 @@
+
+[2026-07-10T08:17:55.324784] carry-forward-day — thu-to-fri
+  - moved: 11
+  - source: Thu
+  - destination: Fri
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260710-081751.json
+  
+  - Thu slot 1 → Fri slot 12: Niche intel review
+  - Thu slot 2 → Fri slot 13: Pull Megan pre-LOI prep meeting notes
+  - Thu slot 3 → Fri slot 14: Call IRS to confirm Form 8822-B address update
+  - Thu slot 4 → Fri slot 15: Thank you: Jay, Laura, Paul, Bob
+  - Thu slot 5 → Fri slot 16: Make sure we dont get charged by Linkt
+  - Thu slot 6 → Fri slot 17: Get reimbursed for Motion
+  - Thu slot 7 → Fri slot 18: Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg
+  - Thu slot 8 → Fri slot 19: Update Tailscale SSH checkPeriod for Sapling VPS
+  - Thu slot 9 → Fri slot 20: Verify Howie plan and update budget run-rate
+  - Thu slot 10 → Fri slot 21: Verify Attio payment / renewal amount
+  - Thu slot 11 → Fri slot 22: Reach out to Guillermo to schedule next brainstorm
+
+[2026-07-10T08:20:33.238563] schedule-to-day-slot — fri-23
+  - task: Website rebuild focus block
+  - placement: Fri tab slot 23 (row 39)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260710-082032.json
+
+[2026-07-10T08:20:33.821996] schedule-to-day-slot — fri-24
+  - task: Follow up: Carlos, Lisa/Peter, Jose
+  - placement: Fri tab slot 24 (row 40)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260710-082033.json
+
+[2026-07-10T08:20:34.009894] schedule-to-day-slot — fri-24
+  - task: Deck focus block
+  - placement: Fri tab slot 24 (row 40)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260710-082033.json
+
+[2026-07-10T08:20:36.652073] schedule-to-day-slot — fri-25
+  - task: Restart niche intel / target discovery process with DealsX
+  - placement: Fri tab slot 25 (row 41)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260710-082036.json

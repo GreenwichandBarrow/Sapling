@@ -68,6 +68,13 @@ BOOKKEEPER_REPORT_KEYWORDS = [
     "p&l",
 ]
 
+BOOKKEEPER_LOOKBACK_QUERY = (
+    'newer_than:14d '
+    '(from:startvirtual.com OR from:anthony.b@startvirtual.com) '
+    '("Management Report" OR "Monthly Report" OR "Profit and Loss" OR '
+    '"Balance Sheet" OR "P&L")'
+)
+
 DEAL_KEYWORDS = [
     "for sale",
     "business match",
@@ -326,6 +333,18 @@ def extract_relevant_windows(text: str) -> str:
     return "\n\n---\n\n".join(windows)[:MAX_BODY_CHARS]
 
 
+
+
+def candidate_priority(thread: dict[str, Any]) -> tuple[int, str]:
+    reason = str(thread.get("candidate_reason") or "")
+    priority = {
+        "bookkeeper_monthly_report_metadata": 0,
+        "bookkeeper_sender_check_attachments": 1,
+        "deal_keyword_in_metadata": 2,
+        "known_deal_or_marketplace_sender": 3,
+    }.get(reason, 9)
+    return priority, str(thread.get("date") or "")
+
 def compact_thread(thread: dict[str, Any]) -> dict[str, Any]:
     reason = candidate_reason(thread)
     item = {
@@ -390,9 +409,10 @@ def main() -> int:
 
     inbound_raw = gmail_search("newer_than:2d label:INBOX", args.inbound_max)
     deal_flow_raw = gmail_search('newer_than:7d label:"auto/deal flow"', args.inbound_max)
+    bookkeeper_raw = gmail_search(BOOKKEEPER_LOOKBACK_QUERY, 20)
 
     inbound_by_id = {}
-    for thread in inbound_raw + deal_flow_raw:
+    for thread in inbound_raw + deal_flow_raw + bookkeeper_raw:
         thread_id = thread.get("id") or thread.get("threadId")
         if thread_id:
             inbound_by_id[thread_id] = thread
@@ -402,9 +422,10 @@ def main() -> int:
         compact_thread(t)
         for t in gmail_search(f"from:{ACCOUNT} newer_than:2d", args.outbound_max)
     ]
-    candidate_threads = [t for t in inbound if t.get("candidate_reason")][
-        :MAX_CANDIDATE_THREADS
-    ]
+    candidate_threads = sorted(
+        [t for t in inbound if t.get("candidate_reason")],
+        key=candidate_priority,
+    )[:MAX_CANDIDATE_THREADS]
     enriched = [enrich_candidate(t) for t in candidate_threads]
 
     drafts_data = gmail_drafts()
@@ -421,6 +442,7 @@ def main() -> int:
         "queries": {
             "inbound": "newer_than:2d label:INBOX",
             "deal_flow_label": "newer_than:7d label:\"auto/deal flow\"",
+            "bookkeeper_reports": BOOKKEEPER_LOOKBACK_QUERY,
             "outbound": f"from:{ACCOUNT} newer_than:2d",
         },
         "inbound": inbound,

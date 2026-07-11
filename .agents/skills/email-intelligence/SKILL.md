@@ -72,7 +72,10 @@ Read `brain/context/email-intelligence-input-{YYYY-MM-DD}.json` first. It contai
 ```bash
 gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send "newer_than:2d label:INBOX" --json --max 50
 gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send 'newer_than:7d label:"auto/deal flow"' --json --max 50
+gog gmail search --account kay.s@greenwichandbarrow.com --gmail-no-send 'newer_than:14d (from:startvirtual.com OR from:anthony.b@startvirtual.com) ("Management Report" OR "Monthly Report" OR "Profit and Loss" OR "Balance Sheet" OR "P&L")' --json --max 20
 ```
+
+The explicit StartVirtual report query is mandatory. Do not rely on the 2-day inbox window for bookkeeper reports: Friday-afternoon Management Reports can age past `newer_than:2d` before the next Monday scheduled run.
 
 For each email, classify and extract:
 1. **Deal flow classification:** BLAST (BCC'd, generic), DIRECT (personalized to Kay), or NEWSLETTER

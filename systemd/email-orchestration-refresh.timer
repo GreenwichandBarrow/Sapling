@@ -2,7 +2,7 @@
 Description=G&B email-orchestration-refresh timer
 
 [Timer]
-OnCalendar=Mon..Fri 07:10:00
+OnCalendar=Mon..Fri 06:50:00
 Persistent=true
 Unit=email-orchestration-refresh.service
 

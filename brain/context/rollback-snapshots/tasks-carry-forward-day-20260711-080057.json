@@ -1,36 +1,32 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260703-102343",
-  "sheet_id": "1Cc3sQjeYT7GzGcAuOnHbuOA7P648xzgKqGTZuTusg5c",
+  "timestamp": "20260711-080057",
+  "sheet_id": "183fc3jt3200rN9PJr80VfAnJXUz2YNcui8nHnkmIKmk",
   "ranges": {
-    "'Thu'!A17:E66": [
+    "'Fri'!A17:E66": [
+      [
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget"
+      ],
       [
         false,
         "Order gift for Lois (Jack Hugh Mackay)"
       ],
       [
         false,
-        "Connect Roberta & Elspeth"
+        "Sign up kids for Kano Martial Arts judo class"
       ],
       [
         false,
-        "Connect Lily & Suzanne"
+        "Look into music lessons"
       ],
       [
         false,
-        "Create weekly schedule"
+        "Sign up for more Italki lessons"
       ],
       [
         false,
-        "Confirm LiveOak payroll transfer coverage"
-      ],
-      [
-        false,
-        "Set up meetings with the list of Lenders to build relationships"
-      ],
-      [
-        false,
-        "Email Filipe @ Pest Mgmt company"
+        "Create travel plans for July in Paris/France next year"
       ],
       [
         false,
@@ -38,23 +34,30 @@
       ],
       [
         false,
-        "Do luxury-retailer store visits for pest buying criteria"
+        "Create project for French passports"
       ],
       [
         false,
-        "Try Claude on website rebuild"
+        "Pay Dad for swim lessons and membership"
       ],
       [
         false,
-        "Review finders fee doc"
+        "Review last month's monthly budget files from email"
       ],
       [
         false,
-        "Update Tailscale SSH checkPeriod for Sapling VPS"
+        "Check NYC Housing Connect for new Manhattan lotteries",
+        "Home",
+        "Housing",
+        "Review https://housingconnect.nyc.gov/PublicWeb/search-lotteries for NYC - Manhattan lottery openings."
       ],
       [
         false,
         "Niche intel review"
+      ],
+      [
+        false,
+        "Pull Megan pre-LOI prep meeting notes"
       ],
       [
         false,
@@ -66,43 +69,59 @@
       ],
       [
         false,
+        "Make sure we dont get charged by Linkt"
+      ],
+      [
+        false,
+        "Get reimbursed for Motion"
+      ],
+      [
+        false,
         "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg"
       ],
       [
         false,
-        "Pull Megan pre-LOI prep meeting notes"
+        "Update Tailscale SSH checkPeriod for Sapling VPS"
       ],
       [
         false,
-        "Email DealsX to pause for summer"
+        "Verify Howie plan and update budget run-rate"
       ],
       [
         false,
-        "Dashboard plumbing: deal aggregator"
+        "Verify Attio payment / renewal amount"
       ],
       [
         false,
-        "Reach out to Ray to schedule time to get together"
+        "Reach out to Guillermo to schedule next brainstorm"
       ],
       [
         false,
-        "Pay Northwell & Labcorp"
+        "Website rebuild focus block",
+        "Work",
+        "G&B",
+        "Today focus: website rebuild."
       ],
       [
         false,
-        "Send new email outreach on dashboard (3 companies)"
+        "Deck focus block",
+        "Work",
+        "G&B",
+        "Today focus: deck work."
       ],
       [
-        false
+        false,
+        "Restart niche intel / target discovery process with DealsX",
+        "Work",
+        "G&B",
+        "Get back into niche intel / target discovery process, including DealsX."
       ],
       [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
+        false,
+        "Follow up: Carlos, Lisa/Peter, Jose",
+        "Work",
+        "G&B",
+        "Today focus follow-up emails. Draft only; Kay sends."
       ],
       [
         false
@@ -177,58 +196,45 @@
         false
       ]
     ],
-    "'Fri'!A17:E66": [
+    "'Sat'!A17:E66": [
       [
-        false,
-        "Weekly review \u2014 system health, M&A activities, budget"
+        false
       ],
       [
-        false,
-        "Sign up kids for Kano Martial Arts judo class"
+        false
       ],
       [
-        false,
-        "Look into music lessons"
+        false
       ],
       [
-        false,
-        "Sign up for more Italki lessons"
+        false
       ],
       [
-        false,
-        "Fix Kaiden's iPad screen"
+        false
       ],
       [
-        false,
-        "Create travel plans for July in Paris/France next year"
+        false
       ],
       [
-        false,
-        "Cancel Motion (or downgrade to monthly)"
+        false
       ],
       [
-        false,
-        "Submit the boys to: NY Models, State Models, Zuri Models, Teri B and Stellar"
+        false
       ],
       [
-        false,
-        "Create project for French passports"
+        false
       ],
       [
-        false,
-        "Verify Howie plan and update budget run-rate"
+        false
       ],
       [
-        false,
-        "Verify Attio payment / renewal amount"
+        false
       ],
       [
-        false,
-        "Pay Dad for swim lessons and membership"
+        false
       ],
       [
-        false,
-        "Order more business cards and change title to founder"
+        false
       ],
       [
         false

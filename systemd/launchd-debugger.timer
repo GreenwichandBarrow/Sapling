@@ -5,7 +5,7 @@
 Description=G&B launchd-debugger timer
 
 [Timer]
-OnCalendar=*-*-* 08:20:00
+OnCalendar=*-*-* 07:20:00
 Persistent=true
 Unit=launchd-debugger.service
 

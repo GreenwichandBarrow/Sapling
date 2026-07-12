@@ -32,3 +32,9 @@
   - Fri slot 24 → Sat slot 24: Deck focus block
   - Fri slot 25 → Sat slot 25: Restart niche intel / target discovery process with DealsX
   - Fri slot 26 → Sat slot 26: Follow up: Carlos, Lisa/Peter, Jose
+
+[2026-07-11T11:59:40.713101] schedule-to-day-slot — sat-27
+  - task: Build first-asset thesis map for luxury holdco
+  - placement: Sat tab slot 27 (row 43)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260711-115940.json

@@ -1,11 +1,11 @@
 {
   "verb": "distribute-week",
-  "timestamp": "20260614-175010",
-  "sheet_id": "12vE5XpAXeVFxzVHvRz6Hb0oRBQNEkt-ZPS7ANctJDQo",
+  "timestamp": "20260712-152745",
+  "sheet_id": "12rN-RtkEhfcApIo2Ep7J41Nq1KxR7TgziViNwy7k4HI",
   "ranges": {
-    "'Sun'!A1:E54": [
+    "'Sun'!A1:E78": [
       [
-        "SUNDAY \u00b7 Jun 14"
+        "SUNDAY \u00b7 Jul 12"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -167,14 +167,88 @@
       [
         false
       ],
-      [],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
       [
         "NOTES"
       ]
     ],
-    "'Mon'!A1:E54": [
+    "'Mon'!A1:E78": [
       [
-        "MONDAY \u00b7 Jun 15"
+        "MONDAY \u00b7 Jul 13"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -336,14 +410,88 @@
       [
         false
       ],
-      [],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
       [
         "NOTES"
       ]
     ],
-    "'Tue'!A1:E54": [
+    "'Tue'!A1:E78": [
       [
-        "TUESDAY \u00b7 Jun 16"
+        "TUESDAY \u00b7 Jul 14"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -505,14 +653,88 @@
       [
         false
       ],
-      [],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
       [
         "NOTES"
       ]
     ],
-    "'Wed'!A1:E54": [
+    "'Wed'!A1:E78": [
       [
-        "WEDNESDAY \u00b7 Jun 17"
+        "WEDNESDAY \u00b7 Jul 15"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -674,14 +896,88 @@
       [
         false
       ],
-      [],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
       [
         "NOTES"
       ]
     ],
-    "'Thu'!A1:E54": [
+    "'Thu'!A1:E78": [
       [
-        "THURSDAY \u00b7 Jun 18"
+        "THURSDAY \u00b7 Jul 16"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -843,14 +1139,88 @@
       [
         false
       ],
-      [],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
       [
         "NOTES"
       ]
     ],
-    "'Fri'!A1:E54": [
+    "'Fri'!A1:E78": [
       [
-        "FRIDAY \u00b7 Jun 19"
+        "FRIDAY \u00b7 Jul 17"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -1012,14 +1382,88 @@
       [
         false
       ],
-      [],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
       [
         "NOTES"
       ]
     ],
-    "'Sat'!A1:E54": [
+    "'Sat'!A1:E78": [
       [
-        "SATURDAY \u00b7 Jun 20"
+        "SATURDAY \u00b7 Jul 18"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -1181,14 +1625,88 @@
       [
         false
       ],
-      [],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
       [
         "NOTES"
       ]
     ],
     "'Week'!A1:O38": [
       [
-        "WEEK OF Jun 14-20"
+        "WEEK OF Jul 12-18"
       ],
       [],
       [
@@ -1198,123 +1716,171 @@
       [],
       [
         "",
-        "SUNDAY \u00b7 Jun 14",
+        "SUNDAY \u00b7 Jul 12",
         "",
-        "MONDAY \u00b7 Jun 15",
+        "MONDAY \u00b7 Jul 13",
         "",
-        "TUESDAY \u00b7 Jun 16",
+        "TUESDAY \u00b7 Jul 14",
         "",
-        "WEDNESDAY \u00b7 Jun 17",
+        "WEDNESDAY \u00b7 Jul 15",
         "",
-        "THURSDAY \u00b7 Jun 18",
+        "THURSDAY \u00b7 Jul 16",
         "",
-        "FRIDAY \u00b7 Jun 19",
+        "FRIDAY \u00b7 Jul 17",
         "",
-        "SATURDAY \u00b7 Jun 20"
+        "SATURDAY \u00b7 Jul 18"
       ],
       [],
       [
         "",
-        true,
+        false,
         "Create weekly schedule",
         false,
-        "Process payroll",
+        "Text jewelry seller to reconnect",
         false,
-        "Review Mid-Search Summit Market Update takeaways, anchor in playbook update (four-horsemen framework)",
+        "Prepare crisp thesis and owner-intro ask for Tuesday LI broker meeting",
         false,
-        "Niche intel review",
+        "Use Wednesday broker call to pressure-test thesis, target areas, and website clarity",
         false,
-        "",
+        "Use investor calls to ask what proof/evidence they need behind insurance/storage/luxury infrastructure Deal 1 or LDE path",
         false,
         "Weekly review \u2014 system health, M&A activities, budget",
         false
       ],
       [
         "",
-        true,
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
+        false,
+        "Ask Arthur for coffee or pop by office while local for summer",
+        false,
+        "Pull Megan pre-LOI prep meeting notes",
+        false,
+        "Align analyst in Team TB on 60-day priority stack and list review criteria",
+        false,
+        "Thursday follow-up checkpoint for Monday direct outreach non-responses",
+        false,
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
+        false
+      ],
+      [
+        "",
+        false,
+        "Choose weekly Body Reset movement slots",
+        false,
+        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros",
+        false,
+        "Decide whether to register for beauty supply chain conference attendee/exhibitor list",
+        false,
+        "Niche intel review",
+        false,
+        "",
+        false,
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies",
+        false
+      ],
+      [
+        "",
+        false,
+        "Add Kay food staples to Sunday grocery run",
+        false,
+        "Follow up with Denning for fashion/art/luxury introductions",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Check NYC Housing Connect for new Manhattan lotteries",
+        false
+      ],
+      [
+        "",
+        false,
         "Confirm LiveOak payroll transfer coverage",
         false,
+        "Send thank-you to Greg and ask for the insurance owner intro he suggested",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Visit store carrying jewelry line to see product and merchandising in person",
+        false
+      ],
+      [
+        "",
+        false,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug",
+        false,
+        "Reconnect with Levi on prior art storage path",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Scope minimum viable G&B website update",
+        false
+      ],
+      [
+        "",
+        false,
+        "North Star for week: convert warm/live paths into seller conversations and financials",
+        false,
+        "Circle back with Paul on art storage conversation",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark",
+        false
+      ],
+      [
+        "",
+        false,
+        "Review existing insurance target list against new luxury asset risk criteria",
+        false,
+        "Ask family friend jewelry business owner for market-mapping conversation",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "Review existing art storage target list against luxury asset custody criteria",
+        false,
+        "Process payroll",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
         "Process conference registrations",
-        false,
-        "Contact Eric - testing IQ & Sensory, DOT program",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Submit the boys to: NY Models, State Models, Zuri Models, Teri B and Stellar",
-        false
-      ],
-      [
-        "",
-        false,
-        "Try Claude on website rebuild",
-        false,
-        "Email Filipe @ Pest Mgmt company",
-        false,
-        "Contact Rebecca - follow up on programming",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Create project for French passports",
-        false
-      ],
-      [
-        "",
-        false,
-        "Pay remaining IRS",
-        false,
-        "DealsX targeted outreach, share lists",
-        false,
-        "Re-plan deal aggregator expansion (dedicated session)",
-        false,
-        "Connect Roberta & Elspeth",
-        false,
-        "",
-        false,
-        "Make sure we dont get charged by Linkt",
-        false
-      ],
-      [
-        "",
-        false,
-        "Update RCN Plan",
-        false,
-        "Send DealsX specialization file",
-        false,
-        "",
-        false,
-        "Connect Lily & Suzanne",
-        false,
-        "",
-        false,
-        "Get reimbursed for Motion",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Follow up email to Matt",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Pest 10-company research \u2014 June head-to-head vs DealsX + JJ",
         false,
         "",
         false,
@@ -1346,7 +1912,7 @@
         false,
         "",
         false,
-        "Scan WPMA directory for NY-based members",
+        "Follow up: Carlos, Lisa/Peter, Jose",
         false,
         "",
         false,
@@ -1362,55 +1928,7 @@
         false,
         "",
         false,
-        "Thank you: Jay, Laura, Paul, Bob",
-        false,
         "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Reply to Carlos",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Follow-up emails to lunch attendees & conferences",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Follow up: Krupa, Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg",
         false,
         "",
         false,

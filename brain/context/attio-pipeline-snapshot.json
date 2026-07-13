@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-11T00:00:57Z",
+  "fetched_at": "2026-07-12T18:28:45Z",
   "list_id": "0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b",
   "list_name": "Active Deals \u2013 Owners",
   "stages": [
@@ -78,17 +78,6 @@
       "category": "Financial Services"
     },
     {
-      "record_id": "dcff892b-901a-48b1-8d76-579f38abf3b4",
-      "company": "Total Extermination",
-      "stage": "Contacted",
-      "stage_since": "2026-06-24T14:53:42.378000000Z",
-      "location": null,
-      "employee_range": null,
-      "arr_bucket": null,
-      "last_interaction": null,
-      "category": null
-    },
-    {
       "record_id": "1c39e7e8-06ef-4bc0-9d1f-5a82527ff023",
       "company": "Fox Machinery",
       "stage": "Contacted",
@@ -155,10 +144,16 @@
       "category": "Insurance"
     }
   ],
-  "closed_count": 145,
-  "closed_count_post_nda": 6,
+  "closed_count": 146,
+  "closed_count_post_nda": 7,
   "closed_count_pre_nda": 139,
   "closed_recent": [
+    {
+      "record_id": "dcff892b-901a-48b1-8d76-579f38abf3b4",
+      "company": "Total Extermination",
+      "stage_since": "2026-07-12T18:28:36.364000000Z",
+      "location": null
+    },
     {
       "record_id": "232db745-bc70-4cc9-99ea-fa8e3b86525c",
       "company": "NoFo Tick Control",

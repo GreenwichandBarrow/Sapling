@@ -19,7 +19,15 @@ fi
 
 WORKDIR="$(cd "$(dirname "$0")/.." && pwd)"
 LOG_DIR="$WORKDIR/logs/scheduled"
-LOG_FILE="$LOG_DIR/${LOG_PREFIX:-$SKILL_NAME}-$(date +%Y-%m-%d-%H%M).log"
+# Scheduled services may set LOG_PREFIX for mode-specific names
+# (for example jj-operations-sunday). Nested skill calls inherit the
+# parent environment, so only honor LOG_PREFIX when it belongs to this
+# skill; otherwise default to SKILL_NAME to avoid clobbering parent logs.
+EFFECTIVE_LOG_PREFIX="$SKILL_NAME"
+if [ -n "${LOG_PREFIX:-}" ] && [[ "$LOG_PREFIX" == "$SKILL_NAME"* ]]; then
+  EFFECTIVE_LOG_PREFIX="$LOG_PREFIX"
+fi
+LOG_FILE="$LOG_DIR/${EFFECTIVE_LOG_PREFIX}-$(date +%Y-%m-%d-%H%M).log"
 KILL_SWITCH="${CODEX_SCHEDULED_KILL_SWITCH:-$HOME/.config/sapling/disable-codex-scheduled}"
 
 mkdir -p "$LOG_DIR"

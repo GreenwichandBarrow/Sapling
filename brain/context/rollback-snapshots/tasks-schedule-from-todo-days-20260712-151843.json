@@ -1,7 +1,7 @@
 {
   "verb": "schedule-from-todo-days",
-  "timestamp": "20260705-150057",
-  "sheet_id": "183fc3jt3200rN9PJr80VfAnJXUz2YNcui8nHnkmIKmk",
+  "timestamp": "20260712-151843",
+  "sheet_id": "12rN-RtkEhfcApIo2Ep7J41Nq1KxR7TgziViNwy7k4HI",
   "ranges": {
     "'To Do'!A1:H400": [
       [
@@ -69,14 +69,68 @@
         "Weekly Recurring Sun"
       ],
       [
+        "On-going",
+        "Check NYC Housing Connect for new Manhattan lotteries",
+        "Home",
+        "Housing",
+        "",
+        "Review https://housingconnect.nyc.gov/PublicWeb/search-lotteries for NYC - Manhattan lottery openings.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "On-going",
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug",
+        "Home",
+        "Home",
+        "",
+        "Through end of August: give the kids $10 on Sunday for the week and $10 on Friday for the day.",
+        "Weekly Recurring Sun"
+      ],
+      [
+        "On-going",
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Sunday planning item. Choose the week\u2019s single highest-leverage Deal 1 focus and success signal before populating the week.",
+        "Weekly Recurring Sun"
+      ],
+      [
+        "On-going",
+        "Choose weekly Body Reset movement slots",
+        "Home",
+        "Body Reset",
+        "",
+        "Sunday scheduling item. Choose realistic class/home movement slots based on childcare, location, and week constraints.",
+        "Weekly Recurring Sun"
+      ],
+      [
+        "On-going",
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
+        "Home",
+        "Support the North Star",
+        "",
+        "Friday is not for outreach or meeting-dependent work, especially in summer. Use for internal/admin/review and family logistics.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "On-going",
+        "Add Kay food staples to Sunday grocery run",
+        "Home",
+        "Body Reset",
+        "",
+        "Every Sunday grocery run: add Kay staples for the existing default: protein powder support, yogurt/cottage cheese, berries/fruit, vegetables/snacks, easy protein, dinner basics.",
+        "Weekly Recurring Sun",
+        "Sun"
+      ],
+      [
         "Not Completed",
         "Order gift for Lois (Jack Hugh Mackay)",
         "Home",
         "",
         "",
         "",
-        "Short Term",
-        "Friday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -85,18 +139,7 @@
         "",
         "",
         "",
-        "Short Term",
-        "Friday"
-      ],
-      [
-        "Not Completed",
-        "Look into music lessons",
-        "Home",
-        "",
-        "",
-        "",
-        "Short Term",
-        "Friday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -114,8 +157,7 @@
         "",
         "",
         "",
-        "Short Term",
-        "Friday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -133,8 +175,7 @@
         "",
         "",
         "",
-        "Short Term",
-        "Friday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -291,15 +332,6 @@
       ],
       [
         "Not Completed",
-        "Create brochure for LF",
-        "Work",
-        "",
-        "",
-        "",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
         "Set up meetings with the list of Lenders to build relationships",
         "Work",
         "",
@@ -314,15 +346,6 @@
         "Home",
         "",
         "Combined from To Do rows 34, 35, 36, 37, 38 based on Sat slot 5.",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Email Filipe @ Pest Mgmt company",
-        "Work",
-        "G&B",
-        "",
-        "",
         "Short Term"
       ],
       [
@@ -395,8 +418,7 @@
         "",
         "",
         "Inbox: brain/inbox/2026-05-12-bday-and-baby-cards.md",
-        "Short Term",
-        "Friday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -409,40 +431,12 @@
       ],
       [
         "Not Completed",
-        "Pest thesis deck - model how many acquisitions make the play work",
-        "Work",
-        "Pest",
-        "",
-        "Thesis deck math; pairs with deck build (Wed slot 4)",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Scan WPMA directory for NY-based members",
-        "Work",
-        "Pest",
-        "",
-        "Pre-Women in Pest Mgmt week of 5/18; network mining",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Pest 10-company research \u2014 June head-to-head vs DealsX + JJ",
-        "Work",
-        "G&B",
-        "2026-06-30",
-        "Kay 5/26 directive: 10 women-owned NY pest firms, Kay+Claude execute through June. Wind-down DealsX+JJ contingent on outperformance. Seed: 2026-05-15-pest-20-women-owned-west-village.md (7 verified).",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
         "Create project for French passports",
         "Home",
         "",
         "",
         "(was LT: Idea)",
-        "Long Term",
-        "Friday"
+        "Long Term"
       ],
       [
         "Not Completed",
@@ -497,8 +491,7 @@
         "",
         "",
         "Combined from To Do rows 91, 92, 93 based on Sat slot 10.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -507,8 +500,7 @@
         "",
         "",
         "",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -517,8 +509,7 @@
         "",
         "",
         "",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -527,8 +518,7 @@
         "G&B",
         "",
         "Krupa note from removed row 65: Reciprocal real-estate-component deal flow; success-fee-only sale-leaseback specialist",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -537,8 +527,7 @@
         "Sapling OS",
         "2026-06-21",
         "Tailscale ACL: keep action=check; set checkPeriod=168h for Kay SSH to Sapling VPS as ubuntu. Scope narrowly to Kay identity + VPS destination; do not broaden users or machines. After policy update, Kay should approve SSH on Sunday; next check is ~1 week from successful re-auth. Admin: https://login.tailscale.com/admin/acls",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -547,15 +536,6 @@
         "Pest",
         "2026-06-18",
         "Test who buys pest services and what criteria they use.",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Ask Sarah Rosenthal for warm intro to Lacey Wismer",
-        "Work",
-        "Pest",
-        "2026-06-18",
-        "No-ask conversation on roll-up strategy.",
         "Short Term"
       ],
       [
@@ -584,8 +564,7 @@
         "G&B",
         "2026-06-21",
         "Budget cleanup: confirm whether Howie is 5/mo or annual 20/yr (0/mo); update Budget Dashboard if needed.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -594,16 +573,6 @@
         "G&B",
         "2026-06-21",
         "Budget cleanup: confirm actual Attio renewal/payment amount; current budget row models 9/mo but prior note referenced 01.49/yr.",
-        "Short Term",
-        "Monday"
-      ],
-      [
-        "Not Completed",
-        "Email DealsX to pause for summer",
-        "Work",
-        "G&B",
-        "2026-06-24",
-        "Month-to-month. Budget plan excludes DealsX from July; send pause note Wednesday and save confirmation when received.",
         "Short Term"
       ],
       [
@@ -613,8 +582,7 @@
         "Home",
         "2026-06-21",
         "",
-        "Short Term",
-        "Friday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -624,44 +592,6 @@
         "",
         "",
         "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Dashboard plumbing: deal aggregator",
-        "",
-        "",
-        "",
-        "",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Build preliminary pest model using 75-truck broker financials as proxy",
-        "Work",
-        "Pest thesis",
-        "",
-        "From Camilla 2026-06-16 post-call analysis",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Reach out to Ray to schedule time to get together",
-        "Work",
-        "G&B",
-        "2026-07-01",
-        "Wednesday of the first week of July.",
-        "Short Term",
-        "Monday"
-      ],
-      [
-        "Not Completed",
-        "Pay Northwell & Labcorp",
-        "Home",
-        "Home",
-        "2026-06-22",
-        "",
-        "Short Term",
-        "Monday"
       ],
       [
         "Not Completed",
@@ -683,6 +613,298 @@
       ],
       [
         "Not Completed",
+        "Review registered event materials for useful info",
+        "Work",
+        "G&B",
+        "",
+        "Registered for this coming weekend's event but not planning to attend; see what attendee/material/info access is available now that registration is active.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Renew kids' work permits",
+        "Home",
+        "Home",
+        "",
+        "Renew the kids' working permits.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Renew Kilian's passport",
+        "Home",
+        "Home",
+        "",
+        "Renew Kilian's passport.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Email Melissa to assist with BK Growth contact and file folders",
+        "Work",
+        "G&B",
+        "",
+        "Draft only; Kay sends. Ask Melissa to assist with BK Growth contact and file folders.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Build first-asset thesis map for luxury holdco",
+        "Work",
+        "G&B",
+        "",
+        "Use the 10-question Deal 1 filter; return top 1-3 niches for immediate sourcing.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Website rebuild focus block",
+        "Work",
+        "G&B",
+        "",
+        "Today focus: website rebuild.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Deck focus block",
+        "Work",
+        "G&B",
+        "",
+        "Today focus: deck work.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Follow up: Carlos, Lisa/Peter, Jose",
+        "Work",
+        "G&B",
+        "",
+        "Today focus follow-up emails. Draft only; Kay sends.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "North Star for week: convert warm/live paths into seller conversations and financials",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-18",
+        "Success by next Sunday: 2 seller/seller-adjacent conversations scheduled/completed; 1 path moved toward financials, second call, or clear process next step.",
+        "Short Term",
+        "Sun"
+      ],
+      [
+        "Not Completed",
+        "Text jewelry seller to reconnect",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-13",
+        "Highest-priority live seller path. Goal: next call, process clarity, and path toward financials.",
+        "Short Term",
+        "Mon"
+      ],
+      [
+        "Not Completed",
+        "Ask Arthur for coffee or pop by office while local for summer",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-14",
+        "Goal: specialty insurance market map, named owners/books, and intro paths.",
+        "Short Term",
+        "Tue"
+      ],
+      [
+        "Not Completed",
+        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-14",
+        "Goal: revive promised intros and map luxury asset insurance / jewelers block paths.",
+        "Short Term",
+        "Tue"
+      ],
+      [
+        "Not Completed",
+        "Follow up with Denning for fashion/art/luxury introductions",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-14",
+        "He understood the thesis and had planned intros. Goal: owner/advisor paths.",
+        "Short Term",
+        "Tue"
+      ],
+      [
+        "Not Completed",
+        "Send thank-you to Greg and ask for the insurance owner intro he suggested",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-14",
+        "General insurance may still lead to specialty owner referrals.",
+        "Short Term",
+        "Tue"
+      ],
+      [
+        "Not Completed",
+        "Prepare crisp thesis and owner-intro ask for Tuesday LI broker meeting",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-14",
+        "Ask for owner-led businesses that fit the G&B architecture, not generic deal flow.",
+        "Short Term",
+        "Tue"
+      ],
+      [
+        "Not Completed",
+        "Use Wednesday broker call to pressure-test thesis, target areas, and website clarity",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-15",
+        "She gets Kay's background. Goal: specific focus areas, seller ideas, and what website language helps her route deals.",
+        "Short Term",
+        "Wed"
+      ],
+      [
+        "Not Completed",
+        "Align analyst in Team TB on 60-day priority stack and list review criteria",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-15",
+        "Insurance/storage lists are raw material; rescore for Kay-touch, outsource, kill. Jewelry insurance needs separate build.",
+        "Short Term",
+        "Wed"
+      ],
+      [
+        "Not Completed",
+        "Use investor calls to test whether insurance/storage/luxury infrastructure lanes are financeable",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-16",
+        "Do not over-explain. Listen for confidence, objections, valuation/multiple constraints, and LDE appetite.",
+        "Short Term",
+        "Thu"
+      ],
+      [
+        "Not Completed",
+        "Reconnect with Levi on prior art storage path",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-18",
+        "Goal: revive path or get referrals. Storage remains active because it already produced serious conversations.",
+        "Short Term",
+        "Thu"
+      ],
+      [
+        "Not Completed",
+        "Circle back with Paul on art storage conversation",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-18",
+        "Contact from David who owns art storage company and did not respond to texts. Use better channel if available.",
+        "Short Term",
+        "Thu"
+      ],
+      [
+        "Not Completed",
+        "Ask family friend jewelry business owner for market-mapping conversation",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-18",
+        "Goal: legacy jewelry economics, insurance pain, repair/recurring opportunities, wholesale, inventory, and intro map.",
+        "Short Term",
+        "Thu"
+      ],
+      [
+        "Not Completed",
+        "Visit store carrying jewelry line to see product and merchandising in person",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-18",
+        "Diligence on live jewelry opportunity; build conviction and questions before next seller conversation.",
+        "Short Term",
+        "Fri"
+      ],
+      [
+        "Not Completed",
+        "Scope minimum viable G&B website update",
+        "Work",
+        "G&B Website",
+        "2026-07-18",
+        "One landing page with short holdco vision, values, companies we seek/contact. Remove investment partners and long bio. Conversion tool, not brand project.",
+        "Short Term",
+        "Fri"
+      ],
+      [
+        "Not Completed",
+        "Review existing insurance target list against new luxury asset risk criteria",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-18",
+        "Only after warm/live paths are moving. Score Kay-touch / outsourced / kill.",
+        "Short Term",
+        "Fri"
+      ],
+      [
+        "Not Completed",
+        "Review existing art storage target list against luxury asset custody criteria",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-18",
+        "Only after warm/live paths are moving. Score Kay-touch / outsourced / kill.",
+        "Short Term",
+        "Fri"
+      ],
+      [
+        "Not Completed",
+        "Decide whether to register for beauty supply chain conference attendee/exhibitor list",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-14",
+        "Only do it if registration gives access to a real usable list of packaging/kitting/assembly targets.",
+        "Short Term",
+        "Tue"
+      ],
+      [
+        "Completed",
+        "Choose this week\u2019s summer movement slots",
+        "Home",
+        "Body Reset",
+        "2026-07-12",
+        "Replaced by ongoing weekly Sunday task: Choose weekly Body Reset movement slots.",
+        "Short Term",
+        "Sun"
+      ],
+      [
+        "Not Completed",
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies",
+        "Home",
+        "Family Wealth / Kids Modeling",
+        "2026-07-18",
+        "Friday family admin prep only. Do not send Friday; send next business day.",
+        "Short Term",
+        "Fri"
+      ],
+      [
+        "Not Completed",
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark",
+        "Work",
+        "Nonprofit Activation",
+        "2026-07-18",
+        "Women's health / pregnancy-focused nonprofit is legally formed and near 3-year activity mark. Need clean next step.",
+        "Short Term",
+        "Fri"
+      ],
+      [
+        "Not Completed",
+        "Send kids modeling submissions to 5 referred agencies",
+        "Home",
+        "Family Wealth / Kids Modeling",
+        "2026-07-20",
+        "Prepared on Friday; send next business day because Friday outreach is lower quality, especially in summer.",
+        "Short Term"
+      ],
+      [
+        "Completed",
         "Follow up: Hamptons Pest, Greg",
         "",
         "",
@@ -691,13 +913,61 @@
         "Short Term"
       ],
       [
-        "Not Completed",
-        "Try to join a NYPMA committee",
+        "Completed",
+        "Review last month's monthly budget files from email",
+        "Work",
+        "G&B",
+        "2026-07-10",
+        "Monthly budget files from last month are visible in email; review on Friday.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Reach out to Guillermo to schedule next brainstorm",
         "",
         "",
         "",
         "",
         "Short Term"
+      ],
+      [
+        "Completed",
+        "Restart niche intel / target discovery process with DealsX",
+        "Work",
+        "G&B",
+        "",
+        "Get back into niche intel / target discovery process, including DealsX.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Reach out to Ray to schedule time to get together",
+        "Work",
+        "G&B",
+        "2026-07-01",
+        "Wednesday of the first week of July.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Completed",
+        "Pay Northwell & Labcorp",
+        "Home",
+        "Home",
+        "2026-06-22",
+        "",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Completed",
+        "Review 2 briefs for Tuesday's calls",
+        "Work",
+        "G&B",
+        "2026-07-06",
+        "Review the two prep briefs for Tuesday's calls.",
+        "Short Term",
+        "Monday"
       ],
       [
         "Completed",
@@ -1510,19 +1780,108 @@
         "Short Term"
       ],
       [
-        "Not Completed",
-        "Review last month's monthly budget files from email",
+        "Dropped",
+        "Look into music lessons",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Create brochure for LF",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Email Filipe @ Pest Mgmt company",
         "Work",
         "G&B",
-        "2026-07-10",
-        "Monthly budget files from last month are visible in email; review on Friday.",
-        "Short Term",
-        "Friday"
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Pest thesis deck - model how many acquisitions make the play work",
+        "Work",
+        "Pest",
+        "",
+        "Thesis deck math; pairs with deck build (Wed slot 4)",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Scan WPMA directory for NY-based members",
+        "Work",
+        "Pest",
+        "",
+        "Pre-Women in Pest Mgmt week of 5/18; network mining",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Pest 10-company research \u2014 June head-to-head vs DealsX + JJ",
+        "Work",
+        "G&B",
+        "2026-06-30",
+        "Kay 5/26 directive: 10 women-owned NY pest firms, Kay+Claude execute through June. Wind-down DealsX+JJ contingent on outperformance. Seed: 2026-05-15-pest-20-women-owned-west-village.md (7 verified).",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Ask Sarah Rosenthal for warm intro to Lacey Wismer",
+        "Work",
+        "Pest",
+        "2026-06-18",
+        "No-ask conversation on roll-up strategy.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Email DealsX to pause for summer",
+        "Work",
+        "G&B",
+        "2026-06-24",
+        "Month-to-month. Budget plan excludes DealsX from July; send pause note Wednesday and save confirmation when received.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Dashboard plumbing: deal aggregator",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Build preliminary pest model using 75-truck broker financials as proxy",
+        "Work",
+        "Pest thesis",
+        "",
+        "From Camilla 2026-06-16 post-call analysis",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Try to join a NYPMA committee",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
       ]
     ],
     "'Week'!A1:O38": [
       [
-        "WEEK OF Jul 5-11"
+        "WEEK OF Jul 12-18"
       ],
       [],
       [
@@ -1532,19 +1891,19 @@
       [],
       [
         "",
-        "SUNDAY \u00b7 Jul 5",
+        "SUNDAY \u00b7 Jul 12",
         "",
-        "MONDAY \u00b7 Jul 6",
+        "MONDAY \u00b7 Jul 13",
         "",
-        "TUESDAY \u00b7 Jul 7",
+        "TUESDAY \u00b7 Jul 14",
         "",
-        "WEDNESDAY \u00b7 Jul 8",
+        "WEDNESDAY \u00b7 Jul 15",
         "",
-        "THURSDAY \u00b7 Jul 9",
+        "THURSDAY \u00b7 Jul 16",
         "",
-        "FRIDAY \u00b7 Jul 10",
+        "FRIDAY \u00b7 Jul 17",
         "",
-        "SATURDAY \u00b7 Jul 11"
+        "SATURDAY \u00b7 Jul 18"
       ],
       [],
       [
@@ -1558,7 +1917,7 @@
         false,
         "Niche intel review",
         false,
-        "",
+        "Use investor calls to test whether insurance/storage/luxury infrastructure lanes are financeable",
         false,
         "Weekly review \u2014 system health, M&A activities, budget",
         false
@@ -1570,29 +1929,109 @@
         false,
         "Process conference registrations",
         false,
-        "",
+        "Ask Arthur for coffee or pop by office while local for summer",
         false,
-        "",
+        "Use Wednesday broker call to pressure-test thesis, target areas, and website clarity",
         false,
-        "",
+        "Reconnect with Levi on prior art storage path",
         false,
-        "Order gift for Lois (Jack Hugh Mackay)",
+        "Check NYC Housing Connect for new Manhattan lotteries",
         false
       ],
       [
         "",
         false,
-        "",
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug",
         false,
         "Call IRS to confirm Form 8822-B address update",
         false,
+        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros",
+        false,
+        "Align analyst in Team TB on 60-day priority stack and list review criteria",
+        false,
+        "Circle back with Paul on art storage conversation",
+        false,
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
+        false
+      ],
+      [
         "",
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
+        false,
+        "Follow up: Carlos, Lisa/Peter, Jose",
+        false,
+        "Follow up with Denning for fashion/art/luxury introductions",
+        false,
+        "",
+        false,
+        "Ask family friend jewelry business owner for market-mapping conversation",
+        false,
+        "Visit store carrying jewelry line to see product and merchandising in person",
+        false
+      ],
+      [
+        "",
+        false,
+        "Choose weekly Body Reset movement slots",
+        false,
+        "Text jewelry seller to reconnect",
+        false,
+        "Send thank-you to Greg and ask for the insurance owner intro he suggested",
         false,
         "",
         false,
         "",
         false,
-        "Sign up kids for Kano Martial Arts judo class",
+        "Scope minimum viable G&B website update",
+        false
+      ],
+      [
+        "",
+        false,
+        "Add Kay food staples to Sunday grocery run",
+        false,
+        "",
+        false,
+        "Prepare crisp thesis and owner-intro ask for Tuesday LI broker meeting",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Review existing insurance target list against new luxury asset risk criteria",
+        false
+      ],
+      [
+        "",
+        false,
+        "North Star for week: convert warm/live paths into seller conversations and financials",
+        false,
+        "",
+        false,
+        "Decide whether to register for beauty supply chain conference attendee/exhibitor list",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Review existing art storage target list against luxury asset custody criteria",
+        false
+      ],
+      [
+        "",
+        false,
+        "Choose this week's summer movement slots",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies",
         false
       ],
       [
@@ -1600,15 +2039,15 @@
         false,
         "",
         false,
-        "Thank you: Jay, Laura, Paul, Bob",
-        false,
         "",
         false,
         "",
         false,
         "",
         false,
-        "Look into music lessons",
+        "",
+        false,
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark",
         false
       ],
       [
@@ -1616,103 +2055,7 @@
         false,
         "",
         false,
-        "Make sure we dont get charged by Linkt",
-        false,
         "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Sign up for more Italki lessons",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Get reimbursed for Motion",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Create travel plans for July in Paris/France next year",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Bday cards & baby cards",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Update Tailscale SSH checkPeriod for Sapling VPS",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Create project for French passports",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Verify Howie plan and update budget run-rate",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Pay Dad for swim lessons and membership",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Verify Attio payment / renewal amount",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Reach out to Ray to schedule time to get together",
         false,
         "",
         false,
@@ -1728,7 +2071,23 @@
         false,
         "",
         false,
-        "Pay Northwell & Labcorp",
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
         false,
         "",
         false,

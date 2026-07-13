@@ -144,11 +144,11 @@ TODO_HEADERS = ["Status", "Task", "Type", "Project", "Due", "Notes", "Horizon", 
 DAY_OF_WEEK_OPTIONS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 TODO_MAX_ROWS = 400
 
-# 2026-05-17 consolidation: Status is a 3-state dropdown (was native checkbox);
+# 2026-05-17 consolidation: Status is a dropdown (was native checkbox);
 # Horizon classifies the item + (for recurring) carries the target day.
 # To Do Long Term + Recurring Weekly To Dos + Completed To Do tabs are retired —
 # everything lives in the single `To Do` tab, filtered by Horizon.
-STATUS_OPTIONS = ["Not Completed", "On-going", "Completed"]
+STATUS_OPTIONS = ["Not Completed", "On-going", "Completed", "Dropped"]
 HORIZON_OPTIONS = [
     "Short Term", "Long Term",
     "Weekly Recurring Sun", "Weekly Recurring Mon", "Weekly Recurring Tue",
@@ -1670,9 +1670,10 @@ def _read_real_todo_rows(client: SheetsClient) -> list[list]:
 def _write_todo_rows_sorted(client: SheetsClient, rows: list[list], *, clear_to: int = TODO_MAX_ROWS) -> dict:
     ongoing = [r for r in rows if str(r[TODO_COL_STATUS]).strip() == "On-going"]
     not_completed = [r for r in rows if str(r[TODO_COL_STATUS]).strip() == "Not Completed"]
-    other_active = [r for r in rows if str(r[TODO_COL_STATUS]).strip() not in {"On-going", "Not Completed", "Completed"}]
+    other_active = [r for r in rows if str(r[TODO_COL_STATUS]).strip() not in {"On-going", "Not Completed", "Completed", "Dropped"}]
     done = [r for r in rows if str(r[TODO_COL_STATUS]).strip() == "Completed"]
-    packed = ongoing + not_completed + other_active + done
+    dropped = [r for r in rows if str(r[TODO_COL_STATUS]).strip() == "Dropped"]
+    packed = ongoing + not_completed + other_active + done + dropped
     last_col = col_letter(len(TODO_HEADERS) - 1)
     client.values_update(f"'{TAB_TODO}'!A1:{last_col}1", [TODO_HEADERS])
     if packed:
@@ -1691,7 +1692,7 @@ def _write_todo_rows_sorted(client: SheetsClient, rows: list[list], *, clear_to:
     clear_start = len(packed) + 2
     if clear_start <= grid_rows:
         client.values_clear(f"'{TAB_TODO}'!A{clear_start}:{last_col}{grid_rows}")
-    return {"ongoing": len(ongoing), "not_completed": len(not_completed), "other_active": len(other_active), "completed": len(done), "active": len(ongoing) + len(not_completed) + len(other_active), "total": len(packed)}
+    return {"ongoing": len(ongoing), "not_completed": len(not_completed), "other_active": len(other_active), "completed": len(done), "dropped": len(dropped), "active": len(ongoing) + len(not_completed) + len(other_active), "total": len(packed)}
 
 
 def _append_missing_day_tasks_to_todo(prior_client: SheetsClient, dry_run: bool = False) -> dict:
@@ -2265,13 +2266,15 @@ def cmd_schedule_from_todo_days(args) -> int:
     rows = _read_real_todo_rows(client)
     ongoing = [r for r in rows if str(r[TODO_COL_STATUS]).strip() == "On-going"]
     not_completed = [r for r in rows if str(r[TODO_COL_STATUS]).strip() == "Not Completed"]
-    other_active = [r for r in rows if str(r[TODO_COL_STATUS]).strip() not in {"On-going", "Not Completed", "Completed"}]
+    other_active = [r for r in rows if str(r[TODO_COL_STATUS]).strip() not in {"On-going", "Not Completed", "Completed", "Dropped"}]
     done = [r for r in rows if str(r[TODO_COL_STATUS]).strip() == "Completed"]
+    dropped = [r for r in rows if str(r[TODO_COL_STATUS]).strip() == "Dropped"]
     pack_summary = {
         "ongoing": len(ongoing),
         "not_completed": len(not_completed),
         "other_active": len(other_active),
         "completed": len(done),
+        "dropped": len(dropped),
         "active": len(ongoing) + len(not_completed) + len(other_active),
         "total": len(rows),
     }
@@ -2284,7 +2287,7 @@ def cmd_schedule_from_todo_days(args) -> int:
     for r in rows:
         status = str(r[TODO_COL_STATUS] or "").strip()
         task = str(r[TODO_COL_TASK] or "").strip()
-        if not task or status == "Completed":
+        if not task or status in {"Completed", "Dropped"}:
             continue
         horizon = str(r[TODO_COL_HORIZON] or "").strip()
         if _todo_is_recurring(horizon):

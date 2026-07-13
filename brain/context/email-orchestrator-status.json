@@ -1,23 +1,20 @@
 {
-  "blocked": [
-    "source artifact is stale",
-    "compact input artifact is stale"
-  ],
-  "deal_items": 55,
+  "blocked": [],
+  "deal_items": 0,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-12T14:06:51.711239-04:00",
+  "fetched_at": "2026-07-12T14:31:20.581609-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
-      "context": "Follow-up from May Heels to Deals Luncheon",
-      "due_date": "2026-05-30",
-      "event": "May Heels to Deals Luncheon",
-      "kay_confirmed_keep": "false",
+      "context": "EOW follow-up",
+      "due_date": "2026-06-26",
+      "event": "EOW follow-up requested by Kay",
+      "kay_confirmed_keep": "true",
       "needs_kay_clarification": "false",
-      "person": "Monica Chawla",
-      "status": "overdue"
+      "person": "Brooke Neidich",
+      "status": "not drafted"
     },
     {
       "bucket": "eow",
@@ -28,25 +25,40 @@
       "needs_kay_clarification": "false",
       "person": "Denning",
       "status": "not drafted"
+    },
+    {
+      "bucket": "eow",
+      "context": "EOW follow-up",
+      "due_date": "2026-06-26",
+      "event": "EOW follow-up requested by Kay",
+      "kay_confirmed_keep": "true",
+      "needs_kay_clarification": "false",
+      "person": "Paul",
+      "status": "not drafted"
+    },
+    {
+      "bucket": "followup",
+      "context": "Connected through Heels & Deals contact; phone tag by text",
+      "due_date": "2026-06-13",
+      "event": "Heels & Deals connection",
+      "kay_confirmed_keep": "true",
+      "needs_kay_clarification": "false",
+      "person": "Greg",
+      "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-07-10.json",
-  "input_status": "stale",
+  "input_artifact": "brain/context/email-intelligence-input-2026-07-12.json",
+  "input_status": "ok",
   "needs_kay": [
-    "55 broker/listing row(s) extracted",
-    "2 EOW/follow-up row(s) still active after sent-mail check: Monica Chawla; Denning",
-    "Clarify email follow-through identity/source: Paul (EOW follow-up); Brooke Neidich (EOW follow-up)"
+    "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-07-10.md",
-  "source_status": "stale",
+  "source_artifact": "brain/context/email-scan-results-2026-07-12.md",
+  "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 0,
   "thank_you_items": [],
-  "unclear_followthrough_items": [
-    "Paul (EOW follow-up)",
-    "Brooke Neidich (EOW follow-up)"
-  ]
+  "unclear_followthrough_items": []
 }

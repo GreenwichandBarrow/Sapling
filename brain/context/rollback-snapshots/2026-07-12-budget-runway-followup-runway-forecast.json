@@ -1,0 +1,271 @@
+{
+  "range": "'Runway Forecast'!A1:Z80",
+  "values": [
+    [
+      "G&B RUNWAY FORECAST",
+      "As of Jun 30, 2026"
+    ],
+    [],
+    [
+      "FUND POSITION",
+      "FUND POSITION"
+    ],
+    [
+      "Total Invested",
+      "551845.01"
+    ],
+    [
+      "Fund Balance (Jun 30)",
+      "142224.43"
+    ],
+    [
+      "Remaining Health Installment",
+      "0"
+    ],
+    [
+      "Available After Installment",
+      "142224.43"
+    ],
+    [
+      "DD Reserve (Current)",
+      "40000"
+    ],
+    [
+      "Available for Operations",
+      "102224.43"
+    ],
+    [],
+    [
+      "BURN RATE",
+      "BURN RATE"
+    ],
+    [
+      "Jan 2026 Net Burn",
+      "31303.94"
+    ],
+    [
+      "Feb 2026 Net Burn",
+      "30096.38"
+    ],
+    [
+      "Mar 2026 Net Burn",
+      "31903.6"
+    ],
+    [
+      "Apr 2026 Net Burn",
+      "33296.47"
+    ],
+    [
+      "May 2026 Net Burn",
+      "22139.53"
+    ],
+    [
+      "Jun 2026 Net Burn",
+      "26034.59"
+    ],
+    [
+      "Steady-State Monthly Burn",
+      "21600"
+    ],
+    [
+      "Interest Income (monthly avg)",
+      "521"
+    ],
+    [
+      "Net Steady-State Burn",
+      "21079"
+    ],
+    [],
+    [
+      "RUNWAY",
+      "RUNWAY"
+    ],
+    [
+      "Months at Steady-State (from Jul 1)",
+      "4.85"
+    ],
+    [
+      "Projected Zero (Steady-State)",
+      "Nov 2026"
+    ],
+    [
+      "Fund Deadline",
+      "Feb 2027"
+    ],
+    [
+      "Shortfall",
+      "-2 months"
+    ],
+    [
+      "Monthly Savings Needed",
+      "6476"
+    ],
+    [],
+    [
+      "INVESTOR REPORTING",
+      "INVESTOR REPORTING"
+    ],
+    [
+      "budget_remaining",
+      "142224.43"
+    ],
+    [
+      "budget_pct",
+      "25.77%"
+    ],
+    [
+      "burn_rate",
+      "21079.0"
+    ],
+    [
+      "runway_months",
+      "4.85"
+    ],
+    [],
+    [],
+    [
+      "STEADY-STATE — software/travel cleanup still needed",
+      "Updated 2026-07-11 · June close filed from Anthony's Jul 3 report"
+    ],
+    [
+      "ASSUMPTIONS"
+    ],
+    [
+      "Anchor balance (May 31 2026)",
+      "168968",
+      "April accrual; health $0 fwd"
+    ],
+    [
+      "Base net steady-state burn /mo",
+      "21079",
+      "communicated"
+    ],
+    [
+      "Cold calling service ends Jul 1",
+      "-1040",
+      "notice mid-June; PAYPAL*PAYONEERINC actual"
+    ],
+    [
+      "AI consultant paused from Jul",
+      "-1000",
+      "friend space; full-cancel = backstop"
+    ],
+    [
+      "Claude downgrade effective Jun 27 (to $17/mo)",
+      "-201",
+      "conferences NOT trimmed"
+    ],
+    [
+      "DealsX summer pause from Jul",
+      "-1000",
+      "local cadence; big regs + out-of-region = one-offs"
+    ],
+    [
+      "Linkt cancelled from Jul",
+      "-300",
+      "immaterial"
+    ],
+    [
+      "Office rent decision held",
+      "0"
+    ],
+    [
+      "Discretionary trim from Jul (coffee+rides)",
+      "-600"
+    ],
+    [
+      "DD Reserve held",
+      "40000",
+      "End Balance",
+      "Ops Cash (-40K)"
+    ],
+    [
+      "",
+      "",
+      "169472",
+      "129472"
+    ],
+    [
+      "Month",
+      "Net Burn",
+      "148420",
+      "108420"
+    ],
+    [
+      "Jun 2026",
+      "21079",
+      "130068",
+      "90068"
+    ],
+    [
+      "Jul 2026",
+      "16857",
+      "113297",
+      "73297"
+    ],
+    [
+      "Aug 2026",
+      "16857",
+      "95526",
+      "55526"
+    ],
+    [
+      "Sep 2026",
+      "16857",
+      "77755",
+      "37755"
+    ],
+    [
+      "Oct 2026",
+      "16857",
+      "59984",
+      "19984"
+    ],
+    [
+      "Nov 2026",
+      "16857",
+      "42213",
+      "2213"
+    ],
+    [
+      "Dec 2026",
+      "16857",
+      "24442",
+      "-15558"
+    ],
+    [
+      "Jan 2027",
+      "16857",
+      "6671",
+      "-33329"
+    ],
+    [
+      "Feb 2027",
+      "16857"
+    ],
+    [
+      "",
+      "",
+      "Reaches Feb 2027 on total cash (+$6,671), no salary cut"
+    ],
+    [
+      "RESULT",
+      "",
+      "Ops cash (reserve-protected) thins ~early Jan; office full-cancel or deeper trim closes it"
+    ],
+    [
+      "Additional savings needed to fully bridge to Feb 2027",
+      "1444",
+      "Salary pause kept in pocket as emergency backstop only"
+    ],
+    [
+      "Additional savings needed to fully bridge to Feb 2027",
+      "1525"
+    ],
+    [
+      "CONFERENCE BUDGET CHECK",
+      "",
+      "Local 1-3/wk fits $700/mo (most $0-90); recent ran hot from InsurTech $1,695 + Boston + Charlotte trips"
+    ]
+  ]
+}

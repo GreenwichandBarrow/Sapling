@@ -55,21 +55,20 @@
       "person": "Greg",
       "context": "Connected through Heels & Deals contact; phone tag by text",
       "due_date": "2026-06-13",
-      "status": "completed",
+      "status": "not drafted",
       "source": "manual",
       "event": "Heels & Deals connection",
-      "kay_confirmed_keep": false,
+      "kay_confirmed_keep": true,
       "identity_confirmed": true,
       "last_gog_checked_at": "2026-07-05",
       "sent_check_result": "scheduled_call_found",
-      "status_label": "suppressed",
-      "review_note": "Suppress as overdue: Kay confirmed follow-up occurred and Google Calendar shows Greg I Kay scheduled for 2026-07-08 11:00 ET.",
+      "status_label": "not drafted",
+      "review_note": "Keep active per Kay decision on 2026-07-12.",
       "scheduled_event": "Greg I Kay",
       "scheduled_for": "2026-07-08T11:00:00-04:00",
       "calendar_event_id": "5pn075bcgeo64n1hf4rh819qb8",
-      "completed_at": "2026-07-10",
-      "completed_note": "Kay confirmed no specific Greg follow-up needed; not likely to be a valuable contact.",
-      "drop_reason": "Kay confirmed no specific Greg follow-up needed; suppress from follow-through."
+      "needs_kay_clarification": false,
+      "last_kay_decision_at": "2026-07-12"
     },
     {
       "bucket": "warm",
@@ -139,8 +138,14 @@
       "event": "May Heels to Deals Luncheon",
       "context": "Follow-up from May Heels to Deals Luncheon",
       "due_date": "2026-05-30",
-      "status": "overdue",
-      "source": "manual-dedupe-alias"
+      "status": "completed",
+      "source": "manual-dedupe-alias",
+      "status_label": "dropped",
+      "completed_at": "2026-07-12",
+      "completed_note": "Kay confirmed drop from EOW follow-up on 2026-07-12.",
+      "drop_reason": "Dropped per Kay decision on 2026-07-12.",
+      "kay_confirmed_keep": false,
+      "needs_kay_clarification": false
     },
     {
       "bucket": "thank",
@@ -549,7 +554,9 @@
       "last_gog_checked_at": "2026-06-26",
       "sent_check_result": "no_sent_completion_evidence_found",
       "status_label": "not drafted",
-      "review_note": "Keep active per Kay after EOW sent-mail verification."
+      "review_note": "Keep active per Kay decision on 2026-07-12.",
+      "needs_kay_clarification": false,
+      "last_kay_decision_at": "2026-07-12"
     },
     {
       "bucket": "eow",
@@ -580,10 +587,14 @@
       "status": "not drafted",
       "source": "manual-goodmorning-2026-06-24",
       "event": "EOW follow-up requested by Kay",
-      "needs_kay_clarification": true,
+      "needs_kay_clarification": false,
       "last_gog_checked_at": "2026-06-26",
       "sent_check_result": "not_verified_in_current_check",
-      "review_note": "Raise specifically in Good Morning if still unclear; do not hide behind a count."
+      "review_note": "Keep active per Kay decision on 2026-07-12.",
+      "status_label": "not drafted",
+      "kay_confirmed_keep": true,
+      "identity_confirmed": true,
+      "last_kay_decision_at": "2026-07-12"
     },
     {
       "bucket": "eow",
@@ -593,10 +604,14 @@
       "status": "not drafted",
       "source": "manual-goodmorning-2026-06-24",
       "event": "EOW follow-up requested by Kay",
-      "needs_kay_clarification": true,
+      "needs_kay_clarification": false,
       "last_gog_checked_at": "2026-06-26",
       "sent_check_result": "not_verified_in_current_check",
-      "review_note": "Raise specifically in Good Morning if still unclear; do not hide behind a count."
+      "review_note": "Keep active per Kay decision on 2026-07-12.",
+      "status_label": "not drafted",
+      "kay_confirmed_keep": true,
+      "identity_confirmed": true,
+      "last_kay_decision_at": "2026-07-12"
     },
     {
       "bucket": "thank",
@@ -860,11 +875,20 @@
       "email": "greg@gripcommpr.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-08",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Greg I Kay",
       "event_date": "2026-07-07",
-      "calendar_event_id": "5pn075bcgeo64n1hf4rh819qb8"
+      "calendar_event_id": "5pn075bcgeo64n1hf4rh819qb8",
+      "status_label": "superseded",
+      "kay_confirmed_keep": false,
+      "needs_kay_clarification": false,
+      "identity_confirmed": true,
+      "last_kay_decision_at": "2026-07-12",
+      "review_note": "Keep active per Kay decision on 2026-07-12.",
+      "completed_at": "2026-07-12",
+      "completed_note": "Superseded by Kay-approved active Greg EOW/follow-up row on 2026-07-12; avoid duplicate thank-you surfacing.",
+      "drop_reason": "Superseded by active Greg follow-up row."
     },
     {
       "bucket": "thank",
@@ -892,11 +916,20 @@
       "email": "greg@gripcommpr.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-09",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Greg I Kay",
       "event_date": "2026-07-08",
-      "calendar_event_id": "5pn075bcgeo64n1hf4rh819qb8"
+      "calendar_event_id": "5pn075bcgeo64n1hf4rh819qb8",
+      "status_label": "superseded",
+      "kay_confirmed_keep": false,
+      "needs_kay_clarification": false,
+      "identity_confirmed": true,
+      "last_kay_decision_at": "2026-07-12",
+      "review_note": "Keep active per Kay decision on 2026-07-12.",
+      "completed_at": "2026-07-12",
+      "completed_note": "Superseded by Kay-approved active Greg EOW/follow-up row on 2026-07-12; avoid duplicate thank-you surfacing.",
+      "drop_reason": "Superseded by active Greg follow-up row."
     },
     {
       "bucket": "thank",

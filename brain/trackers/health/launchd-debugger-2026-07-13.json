@@ -1,0 +1,28 @@
+{
+  "date": "2026-07-13",
+  "scan_started_at": "2026-07-13T07:20:57-04:00",
+  "scan_finished_at": "2026-07-13T07:23:07.843602-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 0,
+  "runtime_seconds": 130,
+  "results": [
+    {
+      "job": "email-intelligence",
+      "cause": "VALIDATOR_REJECT",
+      "action": "SURFACE",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_text": "launchd-debugger: email-intelligence FAILED \u2014 VALIDATOR_REJECT. FAILED: post-run check exited 2. Recommended: fix the email-intelligence artifact frontmatter so it emits the validator-required fields, then rerun only after the code path is corrected. Log: /home/ubuntu/projects/Sapling/logs/scheduled/email-intelligence-2026-07-13-0630.log",
+      "slack_posted": false,
+      "suppression_reason": "cross-day-dedup:7d",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/email-intelligence-2026-07-13-0630.log",
+      "last_log_mtime": "2026-07-13T06:54:51-04:00",
+      "exit_code": 2,
+      "validator_failed": false,
+      "preflight_failed": false,
+      "error_signature": "FAILED: post-run check exited 2"
+    }
+  ]
+}

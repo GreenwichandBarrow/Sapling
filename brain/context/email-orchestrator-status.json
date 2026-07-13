@@ -3,7 +3,7 @@
   "deal_items": 0,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-12T14:31:20.581609-04:00",
+  "fetched_at": "2026-07-13T06:54:51.757434-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -47,7 +47,7 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-07-12.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-07-13.json",
   "input_status": "ok",
   "needs_kay": [
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg"
@@ -55,7 +55,7 @@
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-07-12.md",
+  "source_artifact": "brain/context/email-scan-results-2026-07-13.md",
   "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 0,

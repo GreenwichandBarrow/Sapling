@@ -1,9 +1,9 @@
 {
   "blocked": [],
-  "deal_items": 0,
+  "deal_items": 31,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-13T09:09:14.606254-04:00",
+  "fetched_at": "2026-07-14T06:50:45.190823-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -47,18 +47,38 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-07-13.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-07-14.json",
   "input_status": "ok",
   "needs_kay": [
-    "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg"
+    "1 email-derived task candidate(s)",
+    "31 broker/listing row(s) extracted",
+    "2 introduction/relationship item(s)",
+    "1 prior-day thank-you(s) need approval: Ray",
+    "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
+    "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call)"
   ],
   "pipeline_items": 0,
-  "relationship_items": 0,
+  "relationship_items": 2,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-07-13.md",
+  "source_artifact": "brain/context/email-scan-results-2026-07-14.md",
   "source_status": "ok",
   "stale_drafts": 0,
-  "task_candidates": 0,
-  "thank_you_items": [],
-  "unclear_followthrough_items": []
+  "task_candidates": 1,
+  "thank_you_items": [
+    {
+      "completed_at": "",
+      "due_date": "2026-07-14",
+      "email": "rradigan@peapackprivate.com",
+      "event": "Ray I Kay",
+      "event_date": "2026-07-13",
+      "person": "Ray",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    }
+  ],
+  "unclear_followthrough_items": [
+    "Lisa (24-hour thank-you after external call)"
+  ]
 }

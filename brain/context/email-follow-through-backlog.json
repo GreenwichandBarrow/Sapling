@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-10",
+  "updated_at": "2026-07-14",
   "items": [
     {
       "bucket": "thank",
@@ -942,6 +942,18 @@
       "event": "Clayton I Kay",
       "event_date": "2026-07-08",
       "calendar_event_id": "39vhlb4v0aunpkc9p11talm6mq"
+    },
+    {
+      "bucket": "thank",
+      "person": "Ray",
+      "email": "rradigan@peapackprivate.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-14",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Ray I Kay",
+      "event_date": "2026-07-13",
+      "calendar_event_id": "6o9och4ur6um6dt9l73id7ki4m"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

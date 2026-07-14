@@ -55,7 +55,7 @@ The wrapper passed you the failed job's log path via the `LOG_FILE` environment 
   >   - `systemctl --user start {job}.service` (one-shot re-run)
    >   - `scripts/refresh-attio-snapshot.sh` / `scripts/refresh-jj-snapshot.sh` (legacy cold-call snapshot filename) / `scripts/refresh-apollo-credits.sh` (regenerate cached artifact)
    >   - Do not reconnect MCP in scheduled mode. If REST/wrapper health is good, mark as SURFACE with `SKILL_CODE_NEEDS_REST_FALLBACK`; if REST/wrapper health is down, classify the real auth/outage cause.
-   > Anything else → SURFACE.
+   > Anything else → SURFACE. For validator/schema/idempotency wiring bugs, set cause `VALIDATOR_REJECT`, action `SURFACE`, and include `SKILL_CODE_NEEDS_FIX` in `slack_text` / `error_signature` context so it is not mistaken for business-data drift.
    >
    > **HARD PROHIBITIONS:**
    >   - No `rm`, no destructive shell.
@@ -82,7 +82,7 @@ The wrapper passed you the failed job's log path via the `LOG_FILE` environment 
 
    **a. Known-incident check** — if matched against an actively-suppressed incident, set `slack_posted: false`, `suppression_reason: "known-incident:{incident.id}"`, do NOT post.
 
-   **b. Cross-day dedup check** — read prior 7 days of `brain/trackers/health/launchd-debugger-*.json`, build set of `(job, cause, error_signature[:50])` tuples where `slack_posted == true`. If current tuple matches, set `slack_posted: false`, `suppression_reason: "cross-day-dedup:7d"`, do NOT post. **Important:** include today's daily-mode artifact if it already exists — the on-failure run can fire after the 5am daily run on the same date.
+   **b. Cross-day dedup check** — read prior 7 days of `brain/trackers/health/launchd-debugger-*.json`, build set of `(job, cause, error_signature[:50])` tuples where `slack_posted == true`. If current tuple matches, set `slack_posted: false`, `suppression_reason: "cross-day-dedup:7d"`, do NOT post. Exception: if `slack_text` or `error_signature` contains `SKILL_CODE_NEEDS_FIX`, do not apply cross-day dedup unless a known-incident entry matches; code/validator wiring regressions must stay visible until fixed or explicitly tracked. **Important:** include today's daily-mode artifact if it already exists — the on-failure run can fire after the 5am daily run on the same date.
 
    **c. Otherwise** post to Slack and set `slack_posted: true`.
 

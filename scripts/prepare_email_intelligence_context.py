@@ -17,6 +17,7 @@ import re
 import subprocess
 import sys
 from datetime import date, datetime, timezone
+import calendar
 from pathlib import Path
 from typing import Any
 
@@ -74,6 +75,14 @@ BOOKKEEPER_LOOKBACK_QUERY = (
     '("Management Report" OR "Monthly Report" OR "Profit and Loss" OR '
     '"Balance Sheet" OR "P&L")'
 )
+
+MONTH_NAME_TO_NUM = {
+    name.lower(): i for i, name in enumerate(calendar.month_name) if name
+}
+MONTH_ABBR_TO_NUM = {
+    name.lower(): i for i, name in enumerate(calendar.month_abbr) if name
+}
+MONTH_TOKEN_TO_NUM = {**MONTH_NAME_TO_NUM, **MONTH_ABBR_TO_NUM}
 
 DEAL_KEYWORDS = [
     "for sale",
@@ -291,6 +300,53 @@ def message_text(message: dict[str, Any]) -> tuple[str, int]:
     return normalize_ws(text), raw_bytes
 
 
+def infer_bookkeeper_period(text: str, fallback_date: str | None = None) -> str | None:
+    """Infer YYYY-MM for a StartVirtual monthly report from metadata/body text."""
+    lower = text.lower()
+    fallback_year = date.today().year
+    fallback_month = date.today().month
+    if fallback_date:
+        try:
+            parsed = datetime.fromisoformat(fallback_date.replace("Z", "+00:00"))
+            fallback_year = parsed.year
+            fallback_month = parsed.month
+        except ValueError:
+            pass
+
+    for token, month_num in sorted(MONTH_TOKEN_TO_NUM.items(), key=lambda x: -len(x[0])):
+        match = re.search(rf"\b{re.escape(token)}\b(?:\s+|[-_/])?(20\d{{2}})?", lower)
+        if not match:
+            continue
+        year = int(match.group(1)) if match.group(1) else fallback_year
+        # If a December report arrives in January and omits the year, treat it
+        # as prior year. This keeps the idempotency check aligned with reporting
+        # periods rather than receipt dates.
+        if not match.group(1) and fallback_month == 1 and month_num == 12:
+            year -= 1
+        return f"{year:04d}-{month_num:02d}"
+    return None
+
+
+def budget_outputs_for_period(period_yyyy_mm: str | None) -> list[str]:
+    if not period_yyyy_mm:
+        return []
+    try:
+        year = period_yyyy_mm.split("-")[0]
+        month_num = int(period_yyyy_mm.split("-")[1])
+        month_full = calendar.month_name[month_num].lower()
+        month_short = calendar.month_abbr[month_num].lower()
+    except (IndexError, ValueError):
+        return []
+    suffixes = (
+        f"-budget-report-{month_full}-{year}.md",
+        f"-budget-report-{month_short}-{year}.md",
+    )
+    output_dir = REPO_ROOT / "brain" / "outputs"
+    if not output_dir.exists():
+        return []
+    return sorted(p.name for p in output_dir.iterdir() if p.name.endswith(suffixes))
+
+
 def candidate_reason(thread: dict[str, Any]) -> str | None:
     haystack = " ".join(
         [
@@ -357,6 +413,19 @@ def compact_thread(thread: dict[str, Any]) -> dict[str, Any]:
         "snippet": thread.get("snippet", ""),
         "candidate_reason": reason,
     }
+    if reason and reason.startswith("bookkeeper_"):
+        haystack = " ".join(
+            [
+                str(thread.get("subject", "")),
+                str(thread.get("snippet", "")),
+                str(thread.get("date", "")),
+            ]
+        )
+        period = infer_bookkeeper_period(haystack, str(thread.get("date") or ""))
+        outputs = budget_outputs_for_period(period)
+        item["bookkeeper_period"] = period
+        item["bookkeeper_already_processed"] = bool(outputs)
+        item["existing_budget_outputs"] = outputs
     return item
 
 

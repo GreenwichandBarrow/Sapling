@@ -67,14 +67,17 @@ BOOKKEEPER_INBOX_RE = re.compile(
 )
 
 # Marker the headless prompt MUST emit to stdout when the bookkeeper chain
-# fires. Three valid forms:
+# fires or intentionally skips an already-processed monthly report. Valid forms:
 #   "BOOKKEEPER-PL-CHAIN: invoked budget-manager monthly for period YYYY-MM"
 #   "BOOKKEEPER-PL-CHAIN: dry-run for period YYYY-MM"
 #   "BOOKKEEPER-PL-CHAIN: FAILED for period YYYY-MM reason: ..."
-# Any of these counts as "the chain attempted" (failures are surfaced via
-# the artifact, not the wrapper - wrapper just confirms chain wasn't silently
-# skipped).
-CHAIN_MARKER_RE = re.compile(r"BOOKKEEPER-PL-CHAIN:\s*(invoked|dry-run|FAILED)", re.IGNORECASE)
+#   "BOOKKEEPER-PL-CHAIN: skipped existing budget-manager monthly for period YYYY-MM existing_output=..."
+# Any of these counts as "the chain handled the trigger". Failures are surfaced
+# via the artifact; the wrapper confirms the chain was not silently skipped.
+CHAIN_MARKER_RE = re.compile(
+    r"BOOKKEEPER-PL-CHAIN:\s*(invoked|dry-run|FAILED|skipped existing)",
+    re.IGNORECASE,
+)
 
 
 def _today_inbox_bookkeeper_triggers(run_date: date) -> list[str]:
@@ -111,9 +114,16 @@ def _expected_budget_output_exists(period_yyyy_mm: str) -> bool:
         "jul", "aug", "sep", "oct", "nov", "dec",
     ]
     month_short = months[month_num - 1]
-    suffix = f"-budget-report-{month_short}-{year_short}.md"
+    month_full = [
+        "january", "february", "march", "april", "may", "june",
+        "july", "august", "september", "october", "november", "december",
+    ][month_num - 1]
+    suffixes = (
+        f"-budget-report-{month_full}-{year_short}.md",
+        f"-budget-report-{month_short}-{year_short}.md",
+    )
     for fname in os.listdir(OUTPUTS_DIR):
-        if fname.endswith(suffix):
+        if fname.endswith(suffixes):
             return True
     return False
 
@@ -143,10 +153,20 @@ def validate_artifact(artifact: str, run_date: date) -> list[str]:
             fm = fm_match.group(1)
             if f"date: {run_date.isoformat()}" not in fm:
                 failures.append(f"artifact frontmatter date does not match {run_date}")
-            if "type: context" not in fm:
-                failures.append("artifact frontmatter missing 'type: context'")
-            if "source: email-intelligence" not in fm:
-                failures.append("artifact frontmatter missing 'source: email-intelligence'")
+            has_current_type = "type: email-scan-results" in fm
+            has_legacy_type = "type: context" in fm
+            if not (has_current_type or has_legacy_type):
+                failures.append(
+                    "artifact frontmatter missing valid type "
+                    "('email-scan-results' or legacy 'context')"
+                )
+            has_skill_origin = "skill_origin: email-intelligence" in fm
+            has_legacy_source = "source: email-intelligence" in fm
+            if not (has_skill_origin or has_legacy_source):
+                failures.append(
+                    "artifact frontmatter missing email-intelligence origin "
+                    "('skill_origin' or legacy 'source')"
+                )
 
     missing_sections = [s for s in EXPECTED_SECTIONS if s not in content]
     if missing_sections:

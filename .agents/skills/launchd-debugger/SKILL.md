@@ -99,7 +99,7 @@ Run subagents in parallel — they share no state.
 | AUTH (Codex CLI 401, OAuth token expired) | SURFACE | none — Kay must re-auth |
 | TRANSIENT_API (5xx, network timeout, rate-limited 429) | FIX | re-run via `systemctl --user start {job}.service` |
 | MCP_DISCONNECT (mcp__attio, mcp__granola, legacy MCP tools return "not connected") | SURFACE as SKILL_CODE_NEEDS_REST_FALLBACK if REST/wrapper health is good; scheduled skills should use REST/wrappers, not MCP. If REST/wrapper health is also down, classify as AUTH or EXTERNAL_OUTAGE as appropriate. | surface code-fix or real outage |
-| VALIDATOR_REJECT (POST_RUN_CHECK said skill output was wrong) | SURFACE | never auto-fix sheet/Attio drift — Kay reviews |
+| VALIDATOR_REJECT (POST_RUN_CHECK said skill output was wrong) | SURFACE | never auto-fix sheet/Attio/Drive/vault data drift. If the log points to validator/schema/idempotency wiring rather than business-data drift, surface as `SKILL_CODE_NEEDS_FIX` and do not allow cross-day dedup to hide it unless a known-incident/bead explicitly suppresses it. |
 | MISSING_ARTIFACT (cached snapshot didn't refresh) | FIX | regenerate via `scripts/refresh-{name}.sh`, then re-run |
 | SCHEMA_VIOLATION (vault write rejected by validate-edits.py) | SURFACE | code change required |
 | CODE_BUG (Python traceback, undefined var, etc.) | SURFACE | code change required |

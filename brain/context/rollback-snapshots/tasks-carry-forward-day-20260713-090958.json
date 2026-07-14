@@ -1,60 +1,56 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260708-121153",
-  "sheet_id": "183fc3jt3200rN9PJr80VfAnJXUz2YNcui8nHnkmIKmk",
+  "timestamp": "20260713-090958",
+  "sheet_id": "12rN-RtkEhfcApIo2Ep7J41Nq1KxR7TgziViNwy7k4HI",
   "ranges": {
-    "'Tue'!A17:E66": [
+    "'Sun'!A17:E66": [
       [
         false,
-        "Pull Megan pre-LOI prep meeting notes"
+        "Create weekly schedule"
       ],
       [
         false,
-        "Process conference registrations"
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
       ],
       [
         false,
-        "Call IRS to confirm Form 8822-B address update"
+        "Choose weekly Body Reset movement slots"
       ],
       [
         false,
-        "Thank you: Jay, Laura, Paul, Bob"
+        "Add Kay food staples to Sunday grocery run"
       ],
       [
         false,
-        "Make sure we dont get charged by Linkt"
+        "Confirm LiveOak payroll transfer coverage"
       ],
       [
         false,
-        "Get reimbursed for Motion"
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
       ],
       [
         false,
-        "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg"
+        "North Star for week: convert warm/live paths into seller conversations and financials"
       ],
       [
         false,
-        "Update Tailscale SSH checkPeriod for Sapling VPS"
+        "Review existing insurance target list against new luxury asset risk criteria"
       ],
       [
         false,
-        "Verify Howie plan and update budget run-rate"
+        "Review existing art storage target list against luxury asset custody criteria"
       ],
       [
-        false,
-        "Verify Attio payment / renewal amount"
+        false
       ],
       [
-        false,
-        "Reach out to Ray to schedule time to get together"
+        false
       ],
       [
-        false,
-        "Pay Northwell & Labcorp"
+        false
       ],
       [
-        false,
-        "Review 2 briefs for Tuesday's calls"
+        false
       ],
       [
         false
@@ -168,43 +164,54 @@
         false
       ]
     ],
-    "'Wed'!A17:E66": [
+    "'Mon'!A17:E66": [
       [
         false,
-        "Niche intel review"
+        "Text jewelry seller to reconnect"
       ],
       [
-        false
+        false,
+        "Ask Arthur for coffee or pop by office while local for summer"
       ],
       [
-        false
+        false,
+        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros"
       ],
       [
-        false
+        false,
+        "Follow up with Denning for fashion/art/luxury introductions"
       ],
       [
-        false
+        false,
+        "Send thank-you to Greg and ask for the insurance owner intro he suggested"
       ],
       [
-        false
+        false,
+        "Reconnect with Levi on prior art storage path"
       ],
       [
-        false
+        false,
+        "Circle back with Paul on art storage conversation"
       ],
       [
-        false
+        false,
+        "Ask family friend jewelry business owner for market-mapping conversation"
       ],
       [
-        false
+        false,
+        "Process payroll"
       ],
       [
-        false
+        false,
+        "Process conference registrations"
       ],
       [
-        false
+        false,
+        "Call IRS to confirm Form 8822-B address update"
       ],
       [
-        false
+        false,
+        "Follow up: Carlos, Lisa/Peter, Jose"
       ],
       [
         false

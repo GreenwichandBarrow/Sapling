@@ -49,7 +49,7 @@ Your job is to scan the last 24 hours of `logs/scheduled/`, fan out one debug su
   >   - `systemctl --user start {job}.service` (one-shot re-run)
   >   - `scripts/refresh-attio-snapshot.sh` / `scripts/refresh-jj-snapshot.sh` (legacy cold-call snapshot filename) / `scripts/refresh-apollo-credits.sh` (regenerate cached artifact)
    >   - Do not reconnect MCP in scheduled mode. If REST/wrapper health is good, mark as SURFACE with `SKILL_CODE_NEEDS_REST_FALLBACK`; if REST/wrapper health is down, classify the real auth/outage cause.
-   > Anything else → SURFACE.
+   > Anything else → SURFACE. For validator/schema/idempotency wiring bugs, set cause `VALIDATOR_REJECT`, action `SURFACE`, and include `SKILL_CODE_NEEDS_FIX` in `slack_text` / `error_signature` context so it is not mistaken for business-data drift.
    >
    > **HARD PROHIBITIONS:**
    >   - No `rm`, no destructive shell.
@@ -92,7 +92,7 @@ Your job is to scan the last 24 hours of `logs/scheduled/`, fan out one debug su
    print(json.dumps(recent))
    PY
    ```
-   Build a set of prior signature tuples: `(result.job, result.cause, result.error_signature[:50])` from every artifact entry where `slack_posted == true`. If the current failure's tuple already appears, set `slack_posted: false`, set `suppression_reason: "cross-day-dedup:7d"`, do NOT post to Slack.
+   Build a set of prior signature tuples: `(result.job, result.cause, result.error_signature[:50])` from every artifact entry where `slack_posted == true`. If the current failure's tuple already appears, set `slack_posted: false`, set `suppression_reason: "cross-day-dedup:7d"`, do NOT post to Slack. Exception: if `slack_text` or `error_signature` contains `SKILL_CODE_NEEDS_FIX`, do not apply cross-day dedup unless a known-incident entry matches; code/validator wiring regressions must stay visible until fixed or explicitly tracked.
 
    **c. If neither suppression triggered**, post to Slack and set `slack_posted: true`:
    ```bash

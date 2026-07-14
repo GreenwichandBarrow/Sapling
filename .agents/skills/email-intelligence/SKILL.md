@@ -264,7 +264,8 @@ The trigger fires INDEPENDENTLY of overall email classification. A NEWSLETTER wi
 
 **Fallback watchdog:** If the last calendar day of a month arrives and the prior month's budget report has not landed in `brain/outputs/` and no matching monthly folder exists under `BOOKKEEPING / MONTHLY REPORTING`, surface a system-status gap. Do not send or draft a nudge to Anthony unless Kay explicitly asks.
 
-**4-step automatic execution (CRITICAL: all four steps execute in-session, not deferred):**
+**Automatic execution (CRITICAL: new periods execute in-session; already-processed periods skip cleanly):**
+0. **Check period idempotency before mutating anything.** Determine `period: {YYYY-MM}` from Anthony's subject/body/attachment. If `brain/outputs/*-budget-report-{month-year}.md` already exists for that period, do not create another trigger inbox item and do not invoke `budget-manager monthly` again. Emit `BOOKKEEPER-PL-CHAIN: skipped existing budget-manager monthly for period {YYYY-MM} existing_output={path}` and record the report as already processed/no action in the email artifact.
 1. File the PDFs from email to `BOOKKEEPING / MONTHLY REPORTING / {MONTH YEAR}` Drive subfolder (folder ID `1Z__A8AXWBCwQN7x1nK2fqaqhVKlJBJOb`). Create the month subfolder if it doesn't exist.
 2. Create inbox item at `brain/inbox/{date}-{month}-management-report-budget-trigger.md` with `urgency: trigger` and tags `topic/bookkeeper-pl-received`, `trigger/budget-manager-monthly`. Filename pattern is load-bearing: the wrapper-level validator matches on it.
 3. **Invoke `budget-manager monthly` IN THIS SESSION.** Pass `period: {YYYY-MM}` for the detected month. Wait for budget-manager's 3-subagent pipeline to complete. Forbidden pattern: creating the inbox item and stopping. That is the March 2026 silent-skip failure (inbox landed 2026-04-29, no budget-manager output 13 days later).
@@ -274,8 +275,9 @@ The trigger fires INDEPENDENTLY of overall email classification. A NEWSLETTER wi
 **Validation (must pass before next-step Slack):**
 - PDFs in Drive with size > 0
 - Inbox item written
-- budget-manager invoked successfully (Phase 1 Document Ingester returned non-empty JSON)
-- Stdout log contains `BOOKKEEPER-PL-CHAIN:` marker for this period
+- For new periods: budget-manager invoked successfully (Phase 1 Document Ingester returned non-empty JSON)
+- For already-processed periods: no duplicate trigger or budget-manager run is created
+- Stdout log contains `BOOKKEEPER-PL-CHAIN:` marker for this period (`invoked`, `FAILED`, `dry-run`, or `skipped existing`)
 
 **No Attio write.** Bookkeeper reports do not flow into Active Deals or any Attio list.
 

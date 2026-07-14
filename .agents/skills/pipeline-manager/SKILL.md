@@ -286,7 +286,7 @@ Dashboard sections come first, in dashboard-navigation order, before non-dashboa
    - Do not place planned plumbing work here; planned dashboard plumbing belongs in Tasks & Follow-up.
 
 6. **Meeting Briefs**
-   - Non-dashboard operating follow-up section. Scan upcoming external meetings in the brief-prep window and ask whether a brief is needed.
+   - Non-dashboard operating follow-up section. Scan upcoming external and investor meetings in the brief-prep window and ask whether a brief is needed. This is a proposal surface, not an auto-generation step.
    - Default window: next 48 hours. Friday covers Friday + Monday + Tuesday; Sunday covers Sunday + Monday.
    - Track last-minute meeting additions for the next few weeks: if meetings are repeatedly added inside the 48-hour window without enough prep time, surface a coverage fix.
 
@@ -1383,7 +1383,7 @@ Pipeline updates complete:
 3. For each external meeting: check session-decisions files from the prior 3 days. If Kay has already approved or declined a brief for this meeting, SKIP — do not re-ask.
 4. For each remaining external meeting, surface as a Decisions-bucket item using Obama framing:
    - **RECOMMEND: Generate brief for {name} ({time} {date})** — [one-sentence cadence/context reason] → **YES / NO / LET'S DISCUSS**
-5. Kay answers YES → invoke the appropriate brief command per the routing table below. Kay answers NO → skip, no artifact.
+5. Kay answers YES → invoke the appropriate brief command per the routing table below and save Drive + vault artifacts. Kay answers NO → skip, no artifact. Never auto-generate a brief from the morning scan without Kay approval.
 
 **Briefing-assembly invariant:** If any external meeting exists in the D+0 + D+1 scan window and is neither already-decided nor surfaced in Decisions, the briefing is malformed — fix before delivering.
 

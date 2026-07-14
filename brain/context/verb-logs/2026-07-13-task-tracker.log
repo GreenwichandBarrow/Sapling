@@ -1,0 +1,37 @@
+
+[2026-07-13T09:10:01.450768] carry-forward-day — sun-to-mon
+  - moved: 9
+  - source: Sun
+  - destination: Mon
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260713-090958.json
+
+  - Sun slot 1 → Mon slot 13: Create weekly schedule
+  - Sun slot 2 → Mon slot 14: Set weekly North Star from 60-day LOI sprint and One-Year Plan
+  - Sun slot 3 → Mon slot 15: Choose weekly Body Reset movement slots
+  - Sun slot 4 → Mon slot 16: Add Kay food staples to Sunday grocery run
+  - Sun slot 5 → Mon slot 17: Confirm LiveOak payroll transfer coverage
+  - Sun slot 6 → Mon slot 18: Kids allowance: Sunday $10/week + Friday $10/day through Aug
+  - Sun slot 7 → Mon slot 19: North Star for week: convert warm/live paths into seller conversations and financials
+  - Sun slot 8 → Mon slot 20: Review existing insurance target list against new luxury asset risk criteria
+  - Sun slot 9 → Mon slot 21: Review existing art storage target list against luxury asset custody criteria
+
+[2026-07-13T22:18:26.817535] carry-forward-day — mon-to-tue
+  - moved: 12
+  - source: Mon
+  - destination: Tue
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260713-221821.json
+
+  - Mon slot 1 → Tue slot 13: Text jewelry seller to reconnect
+  - Mon slot 2 → Tue slot 14: Ask Arthur for coffee or pop by office while local for summer
+  - Mon slot 3 → Tue slot 15: Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros
+  - Mon slot 4 → Tue slot 16: Follow up with Denning for fashion/art/luxury introductions
+  - Mon slot 5 → Tue slot 17: Send thank-you to Greg and ask for the insurance owner intro he suggested
+  - Mon slot 6 → Tue slot 18: Reconnect with Levi on prior art storage path
+  - Mon slot 7 → Tue slot 19: Circle back with Paul on art storage conversation
+  - Mon slot 8 → Tue slot 20: Ask family friend jewelry business owner for market-mapping conversation
+  - Mon slot 9 → Tue slot 21: Process payroll
+  - Mon slot 10 → Tue slot 22: Process conference registrations
+  - Mon slot 11 → Tue slot 23: Call IRS to confirm Form 8822-B address update
+  - Mon slot 12 → Tue slot 24: Follow up: Carlos, Lisa/Peter, Jose

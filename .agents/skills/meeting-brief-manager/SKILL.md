@@ -1,6 +1,6 @@
 ---
 name: meeting-brief-manager
-description: "Unified meeting prep orchestrator. Scans calendar 2 nights ahead, classifies meetings (external vs investor vs internal), routes to specialized subagents. Runs nightly via launchd."
+description: "Unified meeting prep orchestrator. On-demand only unless an explicit future timer is reintroduced. Good Morning surfaces brief-needed decisions for upcoming external/investor meetings; this manager generates briefs after Kay approves."
 # WARNING: 2.9x over archetype cap; refactor pending per item 2.
 archetype: orchestrator
 context_budget:
@@ -12,11 +12,11 @@ user_invocable: true
 ---
 
 <objective>
-Unified meeting preparation orchestrator. Scans the calendar two nights ahead, classifies every meeting (internal, investor, external), and routes non-internal meetings to specialized subagents that produce fully formatted briefs with Google Docs and vault copies.
+Unified meeting preparation orchestrator. Generates fully formatted briefs with Google Docs and vault copies after Kay approves a brief decision. Good Morning/pipeline-manager owns the morning-before surfacing step: it scans upcoming external and investor meetings, asks Kay whether a brief is needed, and invokes this manager only after Kay says yes.
 
 Replaces the standalone meeting-brief skill and absorbs call-prep mode from investor-update.
 
-**Core principle:** Every external or investor meeting Kay walks into should have a brief ready the morning before. Tuesday meeting = brief ready Monday morning. The skill runs the night before that, giving a full day of lead time.
+**Core principle:** Every external or investor meeting Kay walks into should have the chance to be briefed the morning before. Tuesday meeting = Monday morning prompt. Briefs are generated on-demand after Kay approves, not silently overnight.
 </objective>
 
 <credentials>
@@ -42,9 +42,10 @@ curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $ATTIO_API_KE
 <essential_principles>
 ## When to Trigger
 
-- **Nightly via launchd** — runs every evening, scans calendar for day+2 (two nights ahead)
-- **On-demand** — Kay invokes `/meeting-brief-manager` or asks for a meeting brief
-- **Pipeline-manager integration** — pipeline-manager can trigger this during its daily scan
+- **Good Morning prompt** — pipeline-manager scans today/tomorrow external and investor meetings and asks Kay whether each needs a brief.
+- **On-demand** — Kay invokes `/meeting-brief-manager` or asks for a meeting brief.
+- **After approval only** — when Kay says yes, route to the appropriate meeting-brief mode and save the Drive + vault copies.
+- **No silent automation** — do not auto-generate external/investor briefs unless Kay has already approved that specific meeting or an explicit future timer is reintroduced with the same approval guard.
 
 ## Meeting Classification
 
@@ -81,9 +82,9 @@ At runtime, also query Attio for the full investor list to catch any investor no
 </essential_principles>
 
 <phase_1>
-## Phase 1: Calendar Scan (2 Nights Ahead)
+## Phase 1: Calendar Scan (Approval-Aware)
 
-Scan the calendar window from tomorrow through day+3 to catch meetings two days out:
+For Good Morning handoff, pipeline-manager scans today/tomorrow and surfaces brief-needed decisions. When this manager is invoked on-demand, scan the relevant upcoming meeting window only to identify the approved meeting and gather context:
 
 ```bash
 gog calendar list --from {tomorrow} --to {day+3} --json
@@ -99,7 +100,7 @@ For each event returned:
 - All-day events unless they have external attendees
 - Events already briefed (check `brain/briefs/{date}-*.md` for existing brief)
 
-**Output:** List of meetings requiring briefs, each tagged with category and routed to the appropriate subagent.
+**Output:** List of Kay-approved meetings requiring briefs, each tagged with category and routed to the appropriate subagent. If approval is missing, return the proposed brief decision for Good Morning instead of generating the brief.
 </phase_1>
 
 <phase_2_subagent_1>

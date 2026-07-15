@@ -1303,6 +1303,46 @@
       "title": "Team TB Camilla I Kay",
       "transcript_doc_url": "https://docs.google.com/document/d/1QTaDXTDOKecd7-8DEqjFgFR5PKIs5frRqDz5kjOcB0g/edit?usp=drivesdk",
       "vault_call_note": "brain/calls/2026-07-08-team-tb-camilla-kay.md"
+    },
+    {
+      "id": "not_jLfxXmq918zp2u",
+      "title": "Kay Schneider and Sara Rosenthal",
+      "counterparty": "Sara Rosenthal",
+      "doc_url": "https://docs.google.com/document/d/1GwNPhbPCyY4WpTdzBSvv1QQKqsAicdN9La7n3kdmyAU/edit?usp=drivesdk",
+      "transcript_doc_url": "https://docs.google.com/document/d/15YrU1t6D1uP-Bn-NCnUIXnZGRM_9YYRw0-jCtM3xfLM/edit?usp=drivesdk",
+      "vault_call_note": "brain/calls/2026-07-15-sara-rosenthal.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_jLfxXmq918zp2u.json",
+      "processed_at": "2026-07-15T17:15:35.403712Z",
+      "slack_posted": true,
+      "attio_notes": {
+        "people": [
+          "45d0978f-cc17-47ab-a731-d55c5d324f6a"
+        ],
+        "companies": [
+          "81c501d6-7607-476f-918c-b9357d868675"
+        ]
+      },
+      "task_count": 3
+    },
+    {
+      "id": "not_nz3Jcy4V9Zi3ZO",
+      "title": "Jackie I Kay",
+      "counterparty": "Jackie Hirsch",
+      "doc_url": "https://docs.google.com/document/d/100rEMTTRiMHx9QhHwdRIwkyAicPIhU5oGJ-yI2LyqdA/edit?usp=drivesdk",
+      "transcript_doc_url": "https://docs.google.com/document/d/1O1xZ9PjiScqbVeT-H8CN9Siww-_BxnbScusZQeGfceE/edit?usp=drivesdk",
+      "vault_call_note": "brain/calls/2026-07-15-jackie-hirsch.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_nz3Jcy4V9Zi3ZO.json",
+      "processed_at": "2026-07-15T17:15:35.403712Z",
+      "slack_posted": true,
+      "attio_notes": {
+        "people": [
+          "9d80670f-c573-495b-8ead-f3d7088eb59d"
+        ],
+        "companies": [
+          "57c5045d-0ef5-4858-b21c-f6384b9c5924"
+        ]
+      },
+      "task_count": 3
     }
   ]
 }

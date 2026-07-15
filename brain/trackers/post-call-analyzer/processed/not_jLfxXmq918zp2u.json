@@ -1,0 +1,20 @@
+{
+  "id": "not_jLfxXmq918zp2u",
+  "title": "Kay Schneider and Sara Rosenthal",
+  "counterparty": "Sara Rosenthal",
+  "doc_url": "https://docs.google.com/document/d/1GwNPhbPCyY4WpTdzBSvv1QQKqsAicdN9La7n3kdmyAU/edit?usp=drivesdk",
+  "transcript_doc_url": "https://docs.google.com/document/d/15YrU1t6D1uP-Bn-NCnUIXnZGRM_9YYRw0-jCtM3xfLM/edit?usp=drivesdk",
+  "vault_call_note": "brain/calls/2026-07-15-sara-rosenthal.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_jLfxXmq918zp2u.json",
+  "processed_at": "2026-07-15T17:15:35.403712Z",
+  "slack_posted": true,
+  "attio_notes": {
+    "people": [
+      "45d0978f-cc17-47ab-a731-d55c5d324f6a"
+    ],
+    "companies": [
+      "81c501d6-7607-476f-918c-b9357d868675"
+    ]
+  },
+  "task_count": 3
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "task_text": "Schedule the owner sit-down and request financials, inventory detail, and lease terms.",
+    "type": "Deal",
+    "project": "Luxury jewelry opportunity",
+    "suggested_day": "Today",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Sara Rosenthal 2026-07-15 mtg. Analysis: https://docs.google.com/document/d/1GwNPhbPCyY4WpTdzBSvv1QQKqsAicdN9La7n3kdmyAU/edit?usp=drivesdk",
+    "source_call_id": "not_jLfxXmq918zp2u",
+    "source_doc_url": "https://docs.google.com/document/d/1GwNPhbPCyY4WpTdzBSvv1QQKqsAicdN9La7n3kdmyAU/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/15YrU1t6D1uP-Bn-NCnUIXnZGRM_9YYRw0-jCtM3xfLM/edit?usp=drivesdk",
+    "staged_at": "2026-07-15T17:15:35.403712Z"
+  },
+  {
+    "task_text": "Do desktop research on who actually buys high-end jewelry and luxury retail assets.",
+    "type": "Analysis",
+    "project": "Luxury jewelry opportunity",
+    "suggested_day": "This week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Sara Rosenthal 2026-07-15 mtg. Analysis: https://docs.google.com/document/d/1GwNPhbPCyY4WpTdzBSvv1QQKqsAicdN9La7n3kdmyAU/edit?usp=drivesdk",
+    "source_call_id": "not_jLfxXmq918zp2u",
+    "source_doc_url": "https://docs.google.com/document/d/1GwNPhbPCyY4WpTdzBSvv1QQKqsAicdN9La7n3kdmyAU/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/15YrU1t6D1uP-Bn-NCnUIXnZGRM_9YYRw0-jCtM3xfLM/edit?usp=drivesdk",
+    "staged_at": "2026-07-15T17:15:35.403712Z"
+  },
+  {
+    "task_text": "Hold the broader investor conversation until the fit and structure are clearer.",
+    "type": "Ops",
+    "project": "Search thesis",
+    "suggested_day": "This week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Sara Rosenthal 2026-07-15 mtg. Analysis: https://docs.google.com/document/d/1GwNPhbPCyY4WpTdzBSvv1QQKqsAicdN9La7n3kdmyAU/edit?usp=drivesdk",
+    "source_call_id": "not_jLfxXmq918zp2u",
+    "source_doc_url": "https://docs.google.com/document/d/1GwNPhbPCyY4WpTdzBSvv1QQKqsAicdN9La7n3kdmyAU/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/15YrU1t6D1uP-Bn-NCnUIXnZGRM_9YYRw0-jCtM3xfLM/edit?usp=drivesdk",
+    "staged_at": "2026-07-15T17:15:35.403712Z"
+  }
+]

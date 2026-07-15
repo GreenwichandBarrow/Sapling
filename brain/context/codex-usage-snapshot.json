@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-15T12:00:44.580069-04:00",
+  "fetched_at": "2026-07-15T13:00:44.586341-04:00",
   "models": [
     {
       "model": "unknown",
@@ -13,7 +13,7 @@
     "reasoning_output_tokens": 1816542,
     "total_tokens": 870165947
   },
-  "period_end": "2026-07-15T12:00:44.580069-04:00",
+  "period_end": "2026-07-15T13:00:44.586341-04:00",
   "period_start": "2026-07-01T00:00:00-04:00",
   "scanned_files": 608,
   "sessions_with_usage": 171,

@@ -1,20 +1,10 @@
 {
   "blocked": [],
-  "deal_items": 31,
+  "deal_items": 52,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-14T11:17:18.967541-04:00",
-  "follow_through_completed_items": [
-    {
-      "bucket": "thank",
-      "completed_at": "2026-07-14",
-      "event": "Ray I Kay",
-      "person": "Ray",
-      "sent_at": "2026-07-14 10:05",
-      "sent_subject": "Follow Up",
-      "sent_thread_id": "19ed73b338808210"
-    }
-  ],
+  "fetched_at": "2026-07-15T06:50:44.972926-04:00",
+  "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -57,36 +47,83 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-07-14.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-07-15.json",
   "input_status": "ok",
   "needs_kay": [
-    "1 email-derived task candidate(s)",
-    "31 broker/listing row(s) extracted",
-    "2 introduction/relationship item(s)",
-    "1 prior-day thank-you(s) verified sent",
-    "1 email follow-through row(s) auto-completed from sent-mail evidence: Ray",
+    "2 email-derived task candidate(s)",
+    "52 broker/listing row(s) extracted",
+    "1 introduction/relationship item(s)",
+    "5 prior-day thank-you(s) need approval: Guillermo I Kay Bi-Weekly Mtg; Jackie; Kay Schneider and Sara Rosenthal; Ray (+1 more)",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call)"
   ],
   "pipeline_items": 0,
-  "relationship_items": 2,
+  "relationship_items": 1,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-07-14.md",
+  "source_artifact": "brain/context/email-scan-results-2026-07-15.md",
   "source_status": "ok",
   "stale_drafts": 0,
-  "task_candidates": 1,
+  "task_candidates": 2,
   "thank_you_items": [
     {
-      "completed_at": "2026-07-14",
-      "due_date": "2026-07-14",
+      "completed_at": "",
+      "due_date": "2026-07-15",
+      "email": "glavergne@ashfordventures.com",
+      "event": "Guillermo I Kay Bi-Weekly Mtg",
+      "event_date": "2026-07-14",
+      "person": "Guillermo I Kay Bi-Weekly Mtg",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-07-15",
+      "email": "jackie@crowneatlantic.com",
+      "event": "Jackie I Kay",
+      "event_date": "2026-07-14",
+      "person": "Jackie",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-07-15",
+      "email": "sara@ttcerpartners.com",
+      "event": "Kay Schneider and Sara Rosenthal",
+      "event_date": "2026-07-14",
+      "person": "Kay Schneider and Sara Rosenthal",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-07-15",
       "email": "rradigan@peapackprivate.com",
       "event": "Ray I Kay",
-      "event_date": "2026-07-13",
+      "event_date": "2026-07-14",
       "person": "Ray",
-      "sent_at": "2026-07-14 10:05",
-      "sent_subject": "Follow Up",
-      "sent_thread_id": "19ed73b338808210",
-      "status": "completed"
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-07-15",
+      "email": "adilene@belen-partners.com",
+      "event": "WSN Group",
+      "event_date": "2026-07-14",
+      "person": "WSN Group",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
     }
   ],
   "unclear_followthrough_items": [

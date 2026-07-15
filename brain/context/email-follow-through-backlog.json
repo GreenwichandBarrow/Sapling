@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-14",
+  "updated_at": "2026-07-15",
   "items": [
     {
       "bucket": "thank",
@@ -962,6 +962,66 @@
         "subject": "Follow Up",
         "sent_at": "2026-07-14 10:05"
       }
+    },
+    {
+      "bucket": "thank",
+      "person": "Ray",
+      "email": "rradigan@peapackprivate.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-15",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Ray I Kay",
+      "event_date": "2026-07-14",
+      "calendar_event_id": "6o9och4ur6um6dt9l73id7ki4m"
+    },
+    {
+      "bucket": "thank",
+      "person": "Jackie",
+      "email": "jackie@crowneatlantic.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-15",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Jackie I Kay",
+      "event_date": "2026-07-14",
+      "calendar_event_id": "1hci4lem3p3hg2qq3luc6t02tu"
+    },
+    {
+      "bucket": "thank",
+      "person": "WSN Group",
+      "email": "adilene@belen-partners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-15",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "WSN Group",
+      "event_date": "2026-07-14",
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6h1jada46ssk2chm8cok8gpg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g70ojec1m650jeh9o8h336e1k710k2dpl74q38dpi6oq48gpm8p30_20260715T170000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Guillermo I Kay Bi-Weekly Mtg",
+      "email": "glavergne@ashfordventures.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-15",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Guillermo I Kay Bi-Weekly Mtg",
+      "event_date": "2026-07-14",
+      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260715T173000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Kay Schneider and Sara Rosenthal",
+      "email": "sara@ttcerpartners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-15",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Kay Schneider and Sara Rosenthal",
+      "event_date": "2026-07-14",
+      "calendar_event_id": "fl0tc7vf6fn8penkrtbocq08fo"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

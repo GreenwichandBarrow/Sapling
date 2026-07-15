@@ -3,6 +3,8 @@ schema_version: 1.1.0
 date: 2026-07-07
 type: person
 status: prospect
+company: "[[entities/crowne-atlantic]]"
+role: Business broker / M&A advisor
 email: jackie@crowneatlantic.com
 attio_id: 9d80670f-c573-495b-8ead-f3d7088eb59d
 attio_url: https://app.attio.com/greenwich-barrow/person/9d80670f-c573-495b-8ead-f3d7088eb59d
@@ -12,6 +14,7 @@ tags:
   - entity
   - person
   - person/jackie-hirsch
+  - company/crowne-atlantic
 ---
 
 # Jackie Hirsch

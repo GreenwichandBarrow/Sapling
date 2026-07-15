@@ -3611,6 +3611,11 @@ def cmd_carry_forward_day(args) -> int:
     src_vals = client.get_values(_day_task_values_block(src_name, src_last_row))
     dst_tasks = client.get_values(day_tab_range(dst_name, DAY_COL_TASK, DAY_SLOT_FIRST_ROW, dst_last_row))
 
+    dst_existing_tasks = {
+        str(row[0]).strip().casefold()
+        for row in dst_tasks
+        if row and str(row[0] or "").strip()
+    }
     dst_empty_slots = [
         i + 1 for i in range(dst_row_count)
         if not (dst_tasks[i][0] if i < len(dst_tasks) and dst_tasks[i] else "")
@@ -3624,11 +3629,31 @@ def cmd_carry_forward_day(args) -> int:
         task_text = str(task or "").strip()
         if not task_text or task_text.lower() == "task" or _is_truthy(status):
             continue
+        task_key = task_text.casefold()
+        if task_key in dst_existing_tasks:
+            moves.append({
+                "src_slot": i + 1,
+                "src_row": DAY_SLOT_FIRST_ROW + i,
+                "dst_slot": None,
+                "dst_row": None,
+                "task": task_text,
+                "payload": [
+                    False,
+                    task_text,
+                    row[DAY_COL_TYPE] if len(row) > DAY_COL_TYPE else "",
+                    row[DAY_COL_PROJECT] if len(row) > DAY_COL_PROJECT else "",
+                    row[DAY_COL_NOTES] if len(row) > DAY_COL_NOTES else "",
+                ],
+                "overflow_inserted": False,
+                "already_in_destination": True,
+            })
+            continue
         if not dst_empty_slots:
             overflow_needed += 1
             dst_slot = dst_row_count + overflow_needed
         else:
             dst_slot = dst_empty_slots.pop(0)
+        dst_existing_tasks.add(task_key)
         moves.append({
             "src_slot": i + 1,
             "src_row": DAY_SLOT_FIRST_ROW + i,
@@ -3643,6 +3668,7 @@ def cmd_carry_forward_day(args) -> int:
                 row[DAY_COL_NOTES] if len(row) > DAY_COL_NOTES else "",
             ],
             "overflow_inserted": dst_slot > dst_row_count,
+            "already_in_destination": False,
         })
 
     refused: list[dict] = []
@@ -3655,7 +3681,10 @@ def cmd_carry_forward_day(args) -> int:
         if overflow_needed:
             print(f"  Would insert {overflow_needed} overflow task row(s) above {dst_name} NOTES")
         for m in planned:
-            print(f"  - {src_name} slot {m['src_slot']} → {dst_name} slot {m['dst_slot']}: {m['task']}")
+            if m.get("already_in_destination"):
+                print(f"  - {src_name} slot {m['src_slot']} already exists on {dst_name}; would clear source: {m['task']}")
+            else:
+                print(f"  - {src_name} slot {m['src_slot']} → {dst_name} slot {m['dst_slot']}: {m['task']}")
         for m in refused:
             print(f"  - REFUSED {src_name} slot {m['src_slot']}: {m['task']} ({m['refused']})")
         return 0 if not refused else 1
@@ -3721,6 +3750,8 @@ def cmd_carry_forward_day(args) -> int:
         return 0
 
     for m in planned:
+        if m.get("already_in_destination"):
+            continue
         client.values_update(
             day_tab_block(dst_name, DAY_COL_STATUS, DAY_COL_LAST, m["dst_row"], m["dst_row"]),
             [m["payload"]],
@@ -3764,7 +3795,11 @@ def cmd_carry_forward_day(args) -> int:
         f"- snapshot: {snap}",
         "",
         *[
-            f"- {src_name} slot {m['src_slot']} → {dst_name} slot {m['dst_slot']}: {m['task']}"
+            (
+                f"- {src_name} slot {m['src_slot']} already existed on {dst_name}; cleared source: {m['task']}"
+                if m.get("already_in_destination")
+                else f"- {src_name} slot {m['src_slot']} → {dst_name} slot {m['dst_slot']}: {m['task']}"
+            )
             for m in planned
         ],
     ])

@@ -949,11 +949,19 @@
       "email": "rradigan@peapackprivate.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-14",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Ray I Kay",
       "event_date": "2026-07-13",
-      "calendar_event_id": "6o9och4ur6um6dt9l73id7ki4m"
+      "calendar_event_id": "6o9och4ur6um6dt9l73id7ki4m",
+      "completed_at": "2026-07-14",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19ed73b338808210, subject 'Follow Up', sent 2026-07-14 10:05.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19ed73b338808210",
+        "subject": "Follow Up",
+        "sent_at": "2026-07-14 10:05"
+      }
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

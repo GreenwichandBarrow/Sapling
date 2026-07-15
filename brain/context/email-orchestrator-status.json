@@ -3,8 +3,18 @@
   "deal_items": 31,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-14T06:50:45.190823-04:00",
-  "follow_through_completed_items": [],
+  "fetched_at": "2026-07-14T11:17:18.967541-04:00",
+  "follow_through_completed_items": [
+    {
+      "bucket": "thank",
+      "completed_at": "2026-07-14",
+      "event": "Ray I Kay",
+      "person": "Ray",
+      "sent_at": "2026-07-14 10:05",
+      "sent_subject": "Follow Up",
+      "sent_thread_id": "19ed73b338808210"
+    }
+  ],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -53,7 +63,8 @@
     "1 email-derived task candidate(s)",
     "31 broker/listing row(s) extracted",
     "2 introduction/relationship item(s)",
-    "1 prior-day thank-you(s) need approval: Ray",
+    "1 prior-day thank-you(s) verified sent",
+    "1 email follow-through row(s) auto-completed from sent-mail evidence: Ray",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call)"
   ],
@@ -66,16 +77,16 @@
   "task_candidates": 1,
   "thank_you_items": [
     {
-      "completed_at": "",
+      "completed_at": "2026-07-14",
       "due_date": "2026-07-14",
       "email": "rradigan@peapackprivate.com",
       "event": "Ray I Kay",
       "event_date": "2026-07-13",
       "person": "Ray",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
+      "sent_at": "2026-07-14 10:05",
+      "sent_subject": "Follow Up",
+      "sent_thread_id": "19ed73b338808210",
+      "status": "completed"
     }
   ],
   "unclear_followthrough_items": [

@@ -19,9 +19,9 @@ Non-negotiables:
 
 ## Morning Flow
 
-1. Read the latest Good Night / closeout context if available.
+1. Read the latest Good Night / closeout context if available. Resolve this by globbing `brain/context/session-decisions-*.md` and selecting the latest file at or before the operating date; if none exists, continue and mark the source as absent rather than failing.
 2. Run or review `email-intelligence` and `relationship-manager` in parallel when credentials and schedules allow.
-3. Cross-reference open items from `brain/session-decisions/` and recent Good Night ledgers.
+3. Cross-reference open items from `brain/context/session-decisions-*.md` and recent Good Night ledgers. Use the latest existing file at or before the operating date; never hard-fail because an exact prior-day file is missing.
 4. Run or review `pipeline-manager` for deal, niche, investor, and relationship context.
 5. Check Active Outreach:
    - Skip DealsX Email unless Kay explicitly re-enables it.

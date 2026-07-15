@@ -499,7 +499,7 @@ Before presenting the briefing, the manager (Codex orchestrator) MUST review all
 3. **Imprecise characterizations** — Compare sub-agent summaries of email actions against the email-scan-results artifact. If the sub-agent says "cancelled" but the artifact says "downgraded", use the artifact's language.
 4. **Stale items without names** — "8 entries stale for 17 days" is useless without company names. Either resolve names or don't present the stat.
 5. **Relationship items already handled** — Cross-check relationship-manager artifact's overdue contacts against Attio `next_action` for trigger-based conditions. Filter out trigger-based contacts before presenting.
-6. **Session decisions from prior day** — Read `brain/context/session-decisions-{previous-workday}.md`. Cross-reference all recommendations against it:
+6. **Session decisions from prior day** — Read the latest existing `brain/context/session-decisions-*.md` at or before the operating date; do not hardcode a non-existent previous-workday file. Cross-reference all recommendations against it:
    - **Suppress** items that were PASS'd or had action confirmed (SENT/CREATED/UPDATED)
    - **Verify** items that were APPROVE'd but have no action recorded — surface as: "You approved X yesterday — was it completed?"
    - **Honor deferrals** — DEFER'd with a date → suppress until that date. DEFER'd with a trigger condition → suppress until the trigger is detected in today's signals.

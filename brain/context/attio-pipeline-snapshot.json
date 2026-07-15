@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-14T00:00:57Z",
+  "fetched_at": "2026-07-15T01:51:18Z",
   "list_id": "0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b",
   "list_name": "Active Deals \u2013 Owners",
   "stages": [
@@ -33,6 +33,17 @@
     }
   ],
   "deals": [
+    {
+      "record_id": "68293dcd-c897-4803-92dd-3f52f96ef76c",
+      "company": "Sidney Garber",
+      "stage": "Financials Received",
+      "stage_since": "2026-07-15T01:50:50.486000000Z",
+      "location": null,
+      "employee_range": null,
+      "arr_bucket": null,
+      "last_interaction": null,
+      "category": null
+    },
     {
       "record_id": "1f0049fe-4b04-440c-b5f9-a6fa5ba5e922",
       "company": "ARTMOVEMENT",

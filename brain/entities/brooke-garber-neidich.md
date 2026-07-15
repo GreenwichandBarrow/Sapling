@@ -6,6 +6,7 @@ status: prospect
 company: "[[entities/sidney-garber]]"
 role: Owner
 attio_id: 9f5b97a4-20d2-4e2c-b264-d9c5b137ffae
+attio_synced_at: 2026-07-15T06:45:13-04:00
 tags:
   - date/2026-07-14
   - entity

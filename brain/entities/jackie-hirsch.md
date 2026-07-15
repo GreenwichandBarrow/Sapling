@@ -8,7 +8,7 @@ role: Business broker / M&A advisor
 email: jackie@crowneatlantic.com
 attio_id: 9d80670f-c573-495b-8ead-f3d7088eb59d
 attio_url: https://app.attio.com/greenwich-barrow/person/9d80670f-c573-495b-8ead-f3d7088eb59d
-attio_synced_at: 2026-07-09T10:54:32Z
+attio_synced_at: 2026-07-15T06:45:13-04:00
 tags:
   - date/2026-07-07
   - entity

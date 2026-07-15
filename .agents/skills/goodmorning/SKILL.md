@@ -77,6 +77,23 @@ Good Morning is not complete until Task Manager has been verified. Before writin
 
 Stop condition: if Task Manager verification is skipped or inconclusive, the Good Morning brief must mark **System Health: Task Manager carry-forward unverified** and recommend repair before day planning.
 
+
+## Post-Call Task Intake Stop Hook
+
+Good Morning is not complete until staged post-call action items have been reviewed. This prevents Granola/post-call analysis from creating hidden task debt.
+
+Before writing the morning brief:
+
+1. Scan `brain/trackers/post-call-analyzer/pending-tasks/*.json`, excluding `pending-tasks/processed/`.
+2. Parse every JSON array or object with a `tasks` / `items` array. Ignore files with zero tasks only after naming them in the operator notes or health detail.
+3. Deduplicate against the current To Do sheet by exact `task_text` match plus obvious already-completed task text match. Do not surface tasks already present on the To Do sheet unless the staged item contains materially new context.
+4. Group remaining staged tasks by source call title/person when available; include the source analysis Doc link when present.
+5. Surface the remaining items in a numbered **Post-Call Action Items** section with the format: `{task} -- from {call/person}; RECOMMEND: add to {suggested_day or today/this week} -> YES / NO / DISCUSS`.
+6. Keep this section decision-oriented. If there are many items, prioritize 3-5 highest-signal items and state how many lower-priority staged items remain queued; do not dump the whole backlog.
+7. After Kay responds, approved items route through `task-tracker-manager`; rejected/skipped items are recorded in the session decisions or staging resolution notes. Only after approval/rejection is recorded should the related staged task file move to `brain/trackers/post-call-analyzer/pending-tasks/processed/{note_id}.json`.
+
+Stop condition: if staged post-call tasks exist and are not surfaced, the Good Morning brief must mark **System Health: post-call staged tasks pending but not surfaced** and recommend repair before saying the morning run is complete.
+
 ## Day Overlays
 
 Sunday:
@@ -127,4 +144,4 @@ Avoid:
 
 ## Success Criteria
 
-The run is complete when Kay has a concise daily decision brief, scheduled/core status has been checked, Task Manager carry-forward has been verified or repaired, Sunday tracker behavior is safe, and no unreviewed email-sending or duplicate tracker action occurred.
+The run is complete when Kay has a concise daily decision brief, scheduled/core status has been checked, Task Manager carry-forward has been verified or repaired, staged post-call tasks have been surfaced or explicitly marked as a System Health failure, Sunday tracker behavior is safe, and no unreviewed email-sending or duplicate tracker action occurred.

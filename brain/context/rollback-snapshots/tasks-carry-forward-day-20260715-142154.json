@@ -1,19 +1,63 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260709-133552",
-  "sheet_id": "183fc3jt3200rN9PJr80VfAnJXUz2YNcui8nHnkmIKmk",
+  "timestamp": "20260715-142154",
+  "sheet_id": "12rN-RtkEhfcApIo2Ep7J41Nq1KxR7TgziViNwy7k4HI",
   "ranges": {
-    "'Wed'!A17:E66": [
+    "'Tue'!A17:E66": [
+      [
+        true,
+        "Prepare crisp thesis and owner-intro ask for Tuesday LI broker meeting"
+      ],
+      [
+        true,
+        "Text jewelry seller to reconnect"
+      ],
       [
         false,
-        "Niche intel review"
+        "Ask Arthur for coffee or pop by office while local for summer"
+      ],
+      [
+        false,
+        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros"
+      ],
+      [
+        false,
+        "Follow up with Denning for fashion/art/luxury introductions"
+      ],
+      [
+        false,
+        "Send thank-you to Greg and ask for the insurance owner intro he suggested"
+      ],
+      [
+        false,
+        "Reconnect with Levi on prior art storage path"
+      ],
+      [
+        false,
+        "Circle back with Paul on art storage conversation"
+      ],
+      [
+        false,
+        "Ask family friend jewelry business owner for market-mapping conversation"
       ],
       [
         false,
         "Pull Megan pre-LOI prep meeting notes"
       ],
       [
-        true,
+        false,
+        "Check beauty supply chain conference app for fragrance/beauty testing and packaging target lists"
+      ],
+      [
+        false,
+        "Review new SLD video"
+      ],
+      [
+        false,
+        "Process payroll"
+      ],
+      [
+        false,
         "Process conference registrations"
       ],
       [
@@ -22,50 +66,7 @@
       ],
       [
         false,
-        "Thank you: Jay, Laura, Paul, Bob"
-      ],
-      [
-        false,
-        "Make sure we dont get charged by Linkt"
-      ],
-      [
-        false,
-        "Get reimbursed for Motion"
-      ],
-      [
-        false,
-        "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg"
-      ],
-      [
-        false,
-        "Update Tailscale SSH checkPeriod for Sapling VPS"
-      ],
-      [
-        false,
-        "Verify Howie plan and update budget run-rate"
-      ],
-      [
-        false,
-        "Verify Attio payment / renewal amount"
-      ],
-      [
-        true,
-        "Reach out to Ray to schedule time to get together"
-      ],
-      [
-        true,
-        "Pay Northwell & Labcorp"
-      ],
-      [
-        true,
-        "Review 2 briefs for Tuesday's calls"
-      ],
-      [
-        false,
-        "Reach out to Guillermo to schedule next brainstorm"
-      ],
-      [
-        false
+        "Follow up: Carlos, Lisa/Peter, Jose"
       ],
       [
         false
@@ -170,24 +171,45 @@
         false
       ]
     ],
-    "'Thu'!A17:E66": [
+    "'Wed'!A17:E66": [
       [
-        false
+        false,
+        "Discuss jewelry opportunity with Sara: fundability, Deal 1 fit, and likely investor objections",
+        "Work",
+        "G&B",
+        "Ask what would make investors accept vs reject this as retail"
       ],
       [
-        false
+        false,
+        "Use WSN mentor group to pressure-test seller psychology and transition conversation",
+        "Work",
+        "G&B",
+        "Focus on helping a 76-year-old legacy owner evaluate options without pushing"
       ],
       [
-        false
+        false,
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
+        "Work",
+        "G&B",
+        "Full sale, staged transition, seller financing, rollover/advisory role, or broader process"
       ],
       [
-        false
+        false,
+        "Use Wednesday broker call to pressure-test thesis, target areas, and website clarity",
+        "Work",
+        "G&B"
       ],
       [
-        false
+        false,
+        "Align analyst in Team TB on 60-day priority stack and list review criteria",
+        "Work",
+        "G&B"
       ],
       [
-        false
+        false,
+        "Niche intel review",
+        "Work",
+        "G&B"
       ],
       [
         false

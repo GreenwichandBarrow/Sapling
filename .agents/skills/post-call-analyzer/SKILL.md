@@ -113,6 +113,8 @@ If the call had zero extractable items: post `*Post-call analysis — {Counterpa
 2. Each processed entry has: matching Google Doc URL captured AND vault call note file present (or explicit failure marker)
 3. No file in `processed/` older than 30 days (rotate — warn, not fail)
 4. Checkpoint file modification time < 24h ago (detector ran recently)
+5. Staged task handoff guard: if `brain/trackers/post-call-analyzer/pending-tasks/*.json` contains one or more non-empty task files older than the next Good Morning cycle after `staged_at` / file mtime, validator flags RED with `HANDOFF-FAIL: staged post-call tasks pending Good Morning review`. Zero-task files may remain for audit only if they are explicitly marked zero-action or archived.
+6. Staged task file shape guard: every non-empty pending-task file must parse as a JSON array or an object containing `tasks` / `items`, and each task must include `task_text`, `source_call_id` or source Doc URL, and `staged_at` or a file mtime fallback. Malformed task files flag RED because Good Morning cannot safely surface them.
 
 Validator failure → wrapper overrides exit code → Slack alert with `VALIDATOR FAILED` prefix per `feedback_mutating_skill_hardening_pattern.md`.
 

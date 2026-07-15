@@ -1017,11 +1017,19 @@
       "email": "sara@ttcerpartners.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-15",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Kay Schneider and Sara Rosenthal",
       "event_date": "2026-07-14",
-      "calendar_event_id": "fl0tc7vf6fn8penkrtbocq08fo"
+      "calendar_event_id": "fl0tc7vf6fn8penkrtbocq08fo",
+      "completed_at": "2026-07-15",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19f6646269e284c9, subject 'Kay Schneider and Sara Rosenthal', sent 2026-07-15 12:02.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19f6646269e284c9",
+        "subject": "Kay Schneider and Sara Rosenthal",
+        "sent_at": "2026-07-15 12:02"
+      }
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

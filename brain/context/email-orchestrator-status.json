@@ -3,8 +3,18 @@
   "deal_items": 52,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-15T06:50:44.972926-04:00",
-  "follow_through_completed_items": [],
+  "fetched_at": "2026-07-15T14:20:51.032682-04:00",
+  "follow_through_completed_items": [
+    {
+      "bucket": "thank",
+      "completed_at": "2026-07-15",
+      "event": "Kay Schneider and Sara Rosenthal",
+      "person": "Kay",
+      "sent_at": "2026-07-15 12:02",
+      "sent_subject": "Kay Schneider and Sara Rosenthal",
+      "sent_thread_id": "19f6646269e284c9"
+    }
+  ],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -53,7 +63,9 @@
     "2 email-derived task candidate(s)",
     "52 broker/listing row(s) extracted",
     "1 introduction/relationship item(s)",
-    "5 prior-day thank-you(s) need approval: Guillermo I Kay Bi-Weekly Mtg; Jackie; Kay Schneider and Sara Rosenthal; Ray (+1 more)",
+    "4 prior-day thank-you(s) need approval: Guillermo I Kay Bi-Weekly Mtg; Jackie; Ray; WSN Group",
+    "1 prior-day thank-you(s) verified sent",
+    "1 email follow-through row(s) auto-completed from sent-mail evidence: Kay",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call)"
   ],
@@ -65,6 +77,18 @@
   "stale_drafts": 0,
   "task_candidates": 2,
   "thank_you_items": [
+    {
+      "completed_at": "2026-07-15",
+      "due_date": "2026-07-15",
+      "email": "sara@ttcerpartners.com",
+      "event": "Kay Schneider and Sara Rosenthal",
+      "event_date": "2026-07-14",
+      "person": "Kay Schneider and Sara Rosenthal",
+      "sent_at": "2026-07-15 12:02",
+      "sent_subject": "Kay Schneider and Sara Rosenthal",
+      "sent_thread_id": "19f6646269e284c9",
+      "status": "completed"
+    },
     {
       "completed_at": "",
       "due_date": "2026-07-15",
@@ -84,18 +108,6 @@
       "event": "Jackie I Kay",
       "event_date": "2026-07-14",
       "person": "Jackie",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-07-15",
-      "email": "sara@ttcerpartners.com",
-      "event": "Kay Schneider and Sara Rosenthal",
-      "event_date": "2026-07-14",
-      "person": "Kay Schneider and Sara Rosenthal",
       "sent_at": "",
       "sent_subject": "",
       "sent_thread_id": "",

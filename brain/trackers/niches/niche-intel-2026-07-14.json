@@ -1,0 +1,51 @@
+{
+  "run_date": "2026-07-14",
+  "run_mode": "tuesday",
+  "niches_evaluated": 5,
+  "niches_identified": 1,
+  "one_pagers_written": 1,
+  "scorecards_written": 1,
+  "tracker_updated": true,
+  "runtime_seconds": 5100,
+  "zero_finding_reason": "not applicable because one candidate was identified and advanced through one-pager, scorecard, and tracker update",
+  "sources_covered": {
+    "recent_track": "Completed last-14-day sweep across available web/social, Gmail/newsletter/deal-flow, vault/call, and passive-signal sources; weak or duplicate signals documented in chatroom.",
+    "historical_track": "Completed available historical calls, Gmail, tracker, and local vault fallback review; OneNote MCP unavailable and ChatGPT export missing, both documented as source gaps."
+  },
+  "open_loops_infra": [
+    "OneNote MCP tools were not exposed in this Codex session, so SEARCH FUND notebook coverage was unavailable.",
+    "ChatGPT export selected_business_conversations.json was not found under /home/ubuntu, so historical ChatGPT conversation coverage was unavailable.",
+    "Granola historical coverage used local brain/calls fallbacks because the REST wrapper surfaced recent paginated notes first."
+  ],
+  "niches": [
+    {
+      "name": "Water/Wastewater SCADA & Controls Compliance Service Providers",
+      "score": 2.47,
+      "drive_folder": "https://drive.google.com/drive/folders/1bWAHoFr8C9BriAmM4ksMXZ61Fm18JLb_"
+    }
+  ],
+  "artifacts": {
+    "chatroom": "brain/traces/agents/2026-07-14-niche-intelligence.md",
+    "markdown_report": "brain/outputs/2026-07-14-niche-intelligence-report.md",
+    "one_pagers": [
+      {
+        "name": "Water/Wastewater SCADA & Controls Compliance Service Providers",
+        "url": "https://docs.google.com/presentation/d/10t1FOK19yjnURXnZPBw3Y5-I_KcEW90b/edit?usp=drivesdk",
+        "file_id": "10t1FOK19yjnURXnZPBw3Y5-I_KcEW90b"
+      }
+    ],
+    "scorecards": [
+      {
+        "name": "Water/Wastewater SCADA & Controls Compliance Service Providers",
+        "url": "https://docs.google.com/spreadsheets/d/1-kzT7Rzced_LL-We9pTOEx4-92FposQn/edit?usp=drivesdk",
+        "file_id": "1-kzT7Rzced_LL-We9pTOEx4-92FposQn"
+      }
+    ],
+    "tracker_write": {
+      "sheet_id": "1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins",
+      "tab": "WEEKLY REVIEW",
+      "updated_range": "'WEEKLY REVIEW'!A40:K40",
+      "rank": "37"
+    }
+  }
+}

@@ -1,20 +1,25 @@
 {
-  "date": "2026-07-14",
+  "date": "2026-07-15",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-07-14.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-07-15.md",
   "email_scan_status": "live",
-  "deals_found": 0,
-  "broker_opportunistic": 5,
-  "near_misses": 4,
+  "deals_found": 1,
+  "broker_opportunistic": 24,
+  "near_misses": 8,
   "sources_scanned": 15,
   "sources_covered": {
     "marketplace": 6,
-    "email_newsletters": 6,
-    "direct_email": 3
+    "email_newsletters": 8,
+    "direct_email": 1
   },
   "manual_check_sources": [],
   "sources_blocked_verified": 0,
   "sources_blocked_single_attempt": 0,
   "volume_status": "BELOW TARGET",
-  "needs_attention": []
+  "needs_attention": [
+    {
+      "type": "volume",
+      "detail": "7-day surfaced-match average remains below target; today produced 1 Slack-pinged pass."
+    }
+  ]
 }

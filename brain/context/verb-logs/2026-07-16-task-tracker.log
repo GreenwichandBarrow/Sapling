@@ -1,0 +1,24 @@
+
+[2026-07-16T09:40:30.268632] carry-forward-day — wed-to-thu
+  - moved: 16
+  - source: Wed
+  - destination: Thu
+  - source packed: {'completed': 4, 'active': 0, 'blank': 46, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260716-094025.json
+  
+  - Wed slot 3 → Thu slot 3: Draft seller-call prep framework: transition priorities, questions, and deal-structure options
+  - Wed slot 5 → Thu slot 4: Align analyst in Team TB on 60-day priority stack and list review criteria
+  - Wed slot 6 → Thu slot 5: Niche intel review
+  - Wed slot 7 → Thu slot 6: Ask Arthur for coffee or pop by office while local for summer
+  - Wed slot 8 → Thu slot 7: Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros
+  - Wed slot 9 → Thu slot 8: Follow up with Denning for fashion/art/luxury introductions
+  - Wed slot 10 → Thu slot 9: Send thank-you to Greg and ask for the insurance owner intro he suggested
+  - Wed slot 11 → Thu slot 10: Reconnect with Levi on prior art storage path
+  - Wed slot 12 → Thu slot 11: Circle back with Paul on art storage conversation
+  - Wed slot 13 → Thu slot 12: Ask family friend jewelry business owner for market-mapping conversation
+  - Wed slot 14 → Thu slot 13: Pull Megan pre-LOI prep meeting notes
+  - Wed slot 15 → Thu slot 14: Check beauty supply chain conference app for fragrance/beauty testing and packaging target lists
+  - Wed slot 16 → Thu slot 15: Review new SLD video
+  - Wed slot 17 → Thu slot 16: Process payroll
+  - Wed slot 19 → Thu slot 17: Call IRS to confirm Form 8822-B address update
+  - Wed slot 20 → Thu slot 18: Follow up: Carlos, Lisa/Peter, Jose

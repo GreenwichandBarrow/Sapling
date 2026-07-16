@@ -1,12 +1,75 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260710-081751",
-  "sheet_id": "183fc3jt3200rN9PJr80VfAnJXUz2YNcui8nHnkmIKmk",
+  "timestamp": "20260716-094025",
+  "sheet_id": "12rN-RtkEhfcApIo2Ep7J41Nq1KxR7TgziViNwy7k4HI",
   "ranges": {
-    "'Thu'!A17:E66": [
+    "'Wed'!A17:E66": [
+      [
+        true,
+        "Discuss jewelry opportunity with Sara: fundability, Deal 1 fit, and likely investor objections",
+        "Work",
+        "G&B",
+        "Ask what would make investors accept vs reject this as retail"
+      ],
+      [
+        true,
+        "Use WSN mentor group to pressure-test seller psychology and transition conversation",
+        "Work",
+        "G&B",
+        "Focus on helping a 76-year-old legacy owner evaluate options without pushing"
+      ],
       [
         false,
-        "Niche intel review"
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
+        "Work",
+        "G&B",
+        "Full sale, staged transition, seller financing, rollover/advisory role, or broader process"
+      ],
+      [
+        true,
+        "Use Wednesday broker call to pressure-test thesis, target areas, and website clarity",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Align analyst in Team TB on 60-day priority stack and list review criteria",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Niche intel review",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Ask Arthur for coffee or pop by office while local for summer"
+      ],
+      [
+        false,
+        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros"
+      ],
+      [
+        false,
+        "Follow up with Denning for fashion/art/luxury introductions"
+      ],
+      [
+        false,
+        "Send thank-you to Greg and ask for the insurance owner intro he suggested"
+      ],
+      [
+        false,
+        "Reconnect with Levi on prior art storage path"
+      ],
+      [
+        false,
+        "Circle back with Paul on art storage conversation"
+      ],
+      [
+        false,
+        "Ask family friend jewelry business owner for market-mapping conversation"
       ],
       [
         false,
@@ -14,66 +77,27 @@
       ],
       [
         false,
+        "Check beauty supply chain conference app for fragrance/beauty testing and packaging target lists"
+      ],
+      [
+        false,
+        "Review new SLD video"
+      ],
+      [
+        false,
+        "Process payroll"
+      ],
+      [
+        true,
+        "Process conference registrations"
+      ],
+      [
+        false,
         "Call IRS to confirm Form 8822-B address update"
       ],
       [
         false,
-        "Thank you: Jay, Laura, Paul, Bob"
-      ],
-      [
-        false,
-        "Make sure we dont get charged by Linkt"
-      ],
-      [
-        false,
-        "Get reimbursed for Motion"
-      ],
-      [
-        false,
-        "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg"
-      ],
-      [
-        false,
-        "Update Tailscale SSH checkPeriod for Sapling VPS"
-      ],
-      [
-        false,
-        "Verify Howie plan and update budget run-rate"
-      ],
-      [
-        false,
-        "Verify Attio payment / renewal amount"
-      ],
-      [
-        false,
-        "Reach out to Guillermo to schedule next brainstorm"
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
+        "Follow up: Carlos, Lisa/Peter, Jose"
       ],
       [
         false
@@ -166,53 +190,41 @@
         false
       ]
     ],
-    "'Fri'!A17:E66": [
+    "'Thu'!A17:E66": [
       [
-        false,
-        "Weekly review \u2014 system health, M&A activities, budget"
+        true,
+        "Use investor calls to ask what proof/evidence they need behind insurance/storage/luxury infrastructure Deal 1 or LDE path"
       ],
       [
         false,
-        "Order gift for Lois (Jack Hugh Mackay)"
+        "Thursday follow-up checkpoint for Monday direct outreach non-responses"
       ],
       [
-        false,
-        "Sign up kids for Kano Martial Arts judo class"
+        false
       ],
       [
-        false,
-        "Look into music lessons"
+        false
       ],
       [
-        false,
-        "Sign up for more Italki lessons"
+        false
       ],
       [
-        false,
-        "Create travel plans for July in Paris/France next year"
+        false
       ],
       [
-        false,
-        "Bday cards & baby cards"
+        false
       ],
       [
-        false,
-        "Create project for French passports"
+        false
       ],
       [
-        false,
-        "Pay Dad for swim lessons and membership"
+        false
       ],
       [
-        false,
-        "Review last month's monthly budget files from email"
+        false
       ],
       [
-        false,
-        "Check NYC Housing Connect for new Manhattan lotteries",
-        "Home",
-        "Housing",
-        "Review https://housingconnect.nyc.gov/PublicWeb/search-lotteries for NYC - Manhattan lottery openings."
+        false
       ],
       [
         false

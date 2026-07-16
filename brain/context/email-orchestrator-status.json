@@ -3,18 +3,8 @@
   "deal_items": 38,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-16T06:50:44.914635-04:00",
-  "follow_through_completed_items": [
-    {
-      "bucket": "thank",
-      "completed_at": "2026-07-15",
-      "event": "Guillermo I Kay Bi-Weekly Mtg",
-      "person": "Guillermo",
-      "sent_at": "2026-07-15 14:31",
-      "sent_subject": "Brainstorm Part II",
-      "sent_thread_id": "19edb5fa720630a4"
-    }
-  ],
+  "fetched_at": "2026-07-16T09:38:36.070801-04:00",
+  "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -62,7 +52,6 @@
   "needs_kay": [
     "38 broker/listing row(s) extracted",
     "5 prior-day thank-you(s) need approval: Andrew <> Kay; Guillermo I Kay Bi-Weekly Mtg; Jackie; Kay Schneider and Sara Rosenthal (+1 more)",
-    "1 email follow-through row(s) auto-completed from sent-mail evidence: Guillermo",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call)"
   ],

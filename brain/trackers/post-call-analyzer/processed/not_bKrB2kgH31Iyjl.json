@@ -1,0 +1,24 @@
+{
+  "id": "not_bKrB2kgH31Iyjl",
+  "counterparty": "Camilla",
+  "title": "Camilla I Kay",
+  "date": "2026-07-16",
+  "time": "13:00 ET",
+  "location": "remote",
+  "granola_url": "https://notes.granola.ai/d/574bf599-2e6b-43d7-b683-a9a425a04fbb",
+  "doc_url": "https://docs.google.com/document/d/1yLdz41geFVIlSwFNyhpT7bdA_0yHqOUH9JbMX2g9ZE4/edit?usp=drivesdk",
+  "transcript_doc_url": "https://docs.google.com/document/d/1kA75L7vv51R_Zcuu60FHGspLqD_OCyvfvkw6kpGIk9g/edit?usp=drivesdk",
+  "vault_call_note": "brain/calls/2026-07-16-camilla-de-sanna.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_bKrB2kgH31Iyjl.json",
+  "processed_at": "2026-07-16T22:05:42Z",
+  "slack_posted": true,
+  "attio_notes": {
+    "people": [
+      "52146e57-68cf-4681-927c-9c2ddcdc7ea3"
+    ],
+    "companies": [
+      "1f3d7760-bafa-4f9e-996e-448dbff55ae9"
+    ]
+  },
+  "attio_failed": false
+}

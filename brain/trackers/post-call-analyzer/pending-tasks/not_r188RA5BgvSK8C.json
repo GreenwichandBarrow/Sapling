@@ -1,0 +1,38 @@
+[
+  {
+    "task_text": "Ask the owner for financial statements and inventory detail this week.",
+    "type": "Deal",
+    "project": "Jewelry brand",
+    "suggested_day": "Friday",
+    "suggested_due_date": "2026-07-17",
+    "notes_with_doc_link": "From Erika 2026-07-16 mtg. Analysis: https://docs.google.com/document/d/1j2ds0RPmJzknat1YnMqRgaXaqyMfUaPT4igb3_uve8E/edit?usp=drivesdk",
+    "source_call_id": "not_r188RA5BgvSK8C",
+    "source_doc_url": "https://docs.google.com/document/d/1j2ds0RPmJzknat1YnMqRgaXaqyMfUaPT4igb3_uve8E/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/17NLMcBsmNHYhGFBJcfKzBR_XSGZJp04wYyhzIGzIlrU/edit?usp=drivesdk",
+    "staged_at": "2026-07-16T17:08:00Z"
+  },
+  {
+    "task_text": "Prepare a one-page investor framing for Guillermo focused on ROIC, inventory intensity, and why the deal still fits.",
+    "type": "Analysis",
+    "project": "Jewelry brand",
+    "suggested_day": "This week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Erika 2026-07-16 mtg. Analysis: https://docs.google.com/document/d/1j2ds0RPmJzknat1YnMqRgaXaqyMfUaPT4igb3_uve8E/edit?usp=drivesdk",
+    "source_call_id": "not_r188RA5BgvSK8C",
+    "source_doc_url": "https://docs.google.com/document/d/1j2ds0RPmJzknat1YnMqRgaXaqyMfUaPT4igb3_uve8E/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/17NLMcBsmNHYhGFBJcfKzBR_XSGZJp04wYyhzIGzIlrU/edit?usp=drivesdk",
+    "staged_at": "2026-07-16T17:08:00Z"
+  },
+  {
+    "task_text": "Schedule the in-person follow-up once the numbers are in hand.",
+    "type": "Follow-up",
+    "project": "Jewelry brand",
+    "suggested_day": "Next week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Erika 2026-07-16 mtg. Analysis: https://docs.google.com/document/d/1j2ds0RPmJzknat1YnMqRgaXaqyMfUaPT4igb3_uve8E/edit?usp=drivesdk",
+    "source_call_id": "not_r188RA5BgvSK8C",
+    "source_doc_url": "https://docs.google.com/document/d/1j2ds0RPmJzknat1YnMqRgaXaqyMfUaPT4igb3_uve8E/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/17NLMcBsmNHYhGFBJcfKzBR_XSGZJp04wYyhzIGzIlrU/edit?usp=drivesdk",
+    "staged_at": "2026-07-16T17:08:00Z"
+  }
+]

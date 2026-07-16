@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-15",
+  "updated_at": "2026-07-16",
   "items": [
     {
       "bucket": "thank",
@@ -1005,11 +1005,19 @@
       "email": "glavergne@ashfordventures.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-15",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Guillermo I Kay Bi-Weekly Mtg",
       "event_date": "2026-07-14",
-      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260715T173000Z"
+      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260715T173000Z",
+      "completed_at": "2026-07-15",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19edb5fa720630a4, subject 'Brainstorm Part II', sent 2026-07-15 14:31.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19edb5fa720630a4",
+        "subject": "Brainstorm Part II",
+        "sent_at": "2026-07-15 14:31"
+      }
     },
     {
       "bucket": "thank",
@@ -1030,6 +1038,66 @@
         "subject": "Kay Schneider and Sara Rosenthal",
         "sent_at": "2026-07-15 12:02"
       }
+    },
+    {
+      "bucket": "thank",
+      "person": "Jackie",
+      "email": "jackie@crowneatlantic.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-16",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Jackie I Kay",
+      "event_date": "2026-07-15",
+      "calendar_event_id": "1hci4lem3p3hg2qq3luc6t02tu"
+    },
+    {
+      "bucket": "thank",
+      "person": "Kay Schneider and Sara Rosenthal",
+      "email": "sara@ttcerpartners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-16",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Kay Schneider and Sara Rosenthal",
+      "event_date": "2026-07-15",
+      "calendar_event_id": "fl0tc7vf6fn8penkrtbocq08fo"
+    },
+    {
+      "bucket": "thank",
+      "person": "WSN Group",
+      "email": "adilene@belen-partners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-16",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "WSN Group",
+      "event_date": "2026-07-15",
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6h1jada46ssk2chm8cok8gpg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g70ojec1m650jeh9o8h336e1k710k2dpl74q38dpi6oq48gpm8p30_20260715T170000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Guillermo I Kay Bi-Weekly Mtg",
+      "email": "glavergne@ashfordventures.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-16",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Guillermo I Kay Bi-Weekly Mtg",
+      "event_date": "2026-07-15",
+      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260715T173000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Andrew <> Kay",
+      "email": "andrew@cromwellharbor.net",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-16",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Andrew <> Kay",
+      "event_date": "2026-07-15",
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g8co32e1l6ks32cq2612k8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6h142cpo88rk4hhk6kqk4chk8p142hi36h0kcci48cr3ed226gs0"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

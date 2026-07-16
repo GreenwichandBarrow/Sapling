@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-16T13:00:45-04:00",
+  "fetched_at": "2026-07-16T18:00:45-04:00",
   "services": {
     "slack-webhooks": {
       "status": "ok",
@@ -7,63 +7,63 @@
       "message": "4 webhooks configured",
       "skip_reason": null
     },
-    "attio-mcp": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "OAuth re-flow required (Smithery UI)"
-    },
     "linkt": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
       "skip_reason": "Browser session required (no API)"
     },
-    "launchd": {
-      "status": "ok",
-      "latency_ms": 21,
-      "message": "20 timers registered",
-      "skip_reason": null
+    "attio-mcp": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "OAuth re-flow required (Smithery UI)"
     },
     "vault": {
       "status": "ok",
-      "latency_ms": 32,
-      "message": "1654 markdown files",
+      "latency_ms": 36,
+      "message": "1657 markdown files",
+      "skip_reason": null
+    },
+    "launchd": {
+      "status": "ok",
+      "latency_ms": 45,
+      "message": "20 timers registered",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "skip",
-      "latency_ms": 32,
+      "latency_ms": 36,
       "message": "attio-mcp=0; manual-skip=attio-mcp",
       "skip_reason": "Attio MCP requires manual OAuth/browser reconnect"
     },
-    "granola": {
+    "gog": {
       "status": "ok",
-      "latency_ms": 154,
-      "message": "HTTP 405",
+      "latency_ms": 207,
+      "message": "authenticated",
       "skip_reason": null
     },
     "openai-codex": {
       "status": "ok",
-      "latency_ms": 175,
+      "latency_ms": 217,
       "message": "Codex OAuth login active",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 174,
+      "latency_ms": 202,
       "message": "200 OK",
       "skip_reason": null
     },
-    "gog": {
+    "granola": {
       "status": "ok",
-      "latency_ms": 191,
-      "message": "authenticated",
+      "latency_ms": 198,
+      "message": "HTTP 405",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 240,
+      "latency_ms": 298,
       "message": "gh authenticated",
       "skip_reason": null
     }

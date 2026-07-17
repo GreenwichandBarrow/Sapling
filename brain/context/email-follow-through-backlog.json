@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-16",
+  "updated_at": "2026-07-17",
   "items": [
     {
       "bucket": "thank",
@@ -811,11 +811,19 @@
       "email": "sam@dealsx.io",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-06",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Kay Schneider and Sam Singh",
       "event_date": "2026-07-05",
-      "calendar_event_id": "df8o2is5uijqu6r3iljqv4vfr8"
+      "calendar_event_id": "df8o2is5uijqu6r3iljqv4vfr8",
+      "completed_at": "2026-07-16",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19e8e9bc5350901e, subject 'Invoice', sent 2026-07-16 22:28.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19e8e9bc5350901e",
+        "subject": "Invoice",
+        "sent_at": "2026-07-16 22:28"
+      }
     },
     {
       "bucket": "thank",
@@ -823,11 +831,19 @@
       "email": "sam@dealsx.io",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-07",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Kay Schneider and Sam Singh",
       "event_date": "2026-07-06",
-      "calendar_event_id": "df8o2is5uijqu6r3iljqv4vfr8"
+      "calendar_event_id": "df8o2is5uijqu6r3iljqv4vfr8",
+      "completed_at": "2026-07-16",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19e8e9bc5350901e, subject 'Invoice', sent 2026-07-16 22:28.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19e8e9bc5350901e",
+        "subject": "Invoice",
+        "sent_at": "2026-07-16 22:28"
+      }
     },
     {
       "bucket": "thank",
@@ -1098,6 +1114,30 @@
       "event": "Andrew <> Kay",
       "event_date": "2026-07-15",
       "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g8co32e1l6ks32cq2612k8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6h142cpo88rk4hhk6kqk4chk8p142hi36h0kcci48cr3ed226gs0"
+    },
+    {
+      "bucket": "thank",
+      "person": "Andrew <> Kay",
+      "email": "andrew@cromwellharbor.net",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-17",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Andrew <> Kay",
+      "event_date": "2026-07-16",
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g8co32e1l6ks32cq2612k8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6h142cpo88rk4hhk6kqk4chk8p142hi36h0kcci48cr3ed226gs0"
+    },
+    {
+      "bucket": "thank",
+      "person": "Camilla",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-17",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Camilla I Kay",
+      "event_date": "2026-07-16",
+      "calendar_event_id": "0ced2hh177c80okagpnvk83omd"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

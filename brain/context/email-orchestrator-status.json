@@ -1,10 +1,29 @@
 {
   "blocked": [],
-  "deal_items": 38,
+  "deal_items": 35,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-16T09:38:36.070801-04:00",
-  "follow_through_completed_items": [],
+  "fetched_at": "2026-07-17T06:50:44.962710-04:00",
+  "follow_through_completed_items": [
+    {
+      "bucket": "thank",
+      "completed_at": "2026-07-16",
+      "event": "Kay Schneider and Sam Singh",
+      "person": "Kay",
+      "sent_at": "2026-07-16 22:28",
+      "sent_subject": "Invoice",
+      "sent_thread_id": "19e8e9bc5350901e"
+    },
+    {
+      "bucket": "thank",
+      "completed_at": "2026-07-16",
+      "event": "Kay Schneider and Sam Singh",
+      "person": "Kay",
+      "sent_at": "2026-07-16 22:28",
+      "sent_subject": "Invoice",
+      "sent_thread_id": "19e8e9bc5350901e"
+    }
+  ],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -47,28 +66,30 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-07-16.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-07-17.json",
   "input_status": "ok",
   "needs_kay": [
-    "38 broker/listing row(s) extracted",
-    "5 prior-day thank-you(s) need approval: Andrew <> Kay; Guillermo I Kay Bi-Weekly Mtg; Jackie; Kay Schneider and Sara Rosenthal (+1 more)",
+    "2 email-derived task candidate(s)",
+    "35 broker/listing row(s) extracted",
+    "2 prior-day thank-you(s) need approval: Andrew <> Kay; Camilla",
+    "2 email follow-through row(s) auto-completed from sent-mail evidence: Kay; Kay",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
-    "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call)"
+    "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-07-16.md",
+  "source_artifact": "brain/context/email-scan-results-2026-07-17.md",
   "source_status": "ok",
   "stale_drafts": 0,
-  "task_candidates": 0,
+  "task_candidates": 2,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-07-16",
+      "due_date": "2026-07-17",
       "email": "andrew@cromwellharbor.net",
       "event": "Andrew <> Kay",
-      "event_date": "2026-07-15",
+      "event_date": "2026-07-16",
       "person": "Andrew <> Kay",
       "sent_at": "",
       "sent_subject": "",
@@ -77,47 +98,11 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-07-16",
-      "email": "glavergne@ashfordventures.com",
-      "event": "Guillermo I Kay Bi-Weekly Mtg",
-      "event_date": "2026-07-15",
-      "person": "Guillermo I Kay Bi-Weekly Mtg",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-07-16",
-      "email": "jackie@crowneatlantic.com",
-      "event": "Jackie I Kay",
-      "event_date": "2026-07-15",
-      "person": "Jackie",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-07-16",
-      "email": "sara@ttcerpartners.com",
-      "event": "Kay Schneider and Sara Rosenthal",
-      "event_date": "2026-07-15",
-      "person": "Kay Schneider and Sara Rosenthal",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-07-16",
-      "email": "adilene@belen-partners.com",
-      "event": "WSN Group",
-      "event_date": "2026-07-15",
-      "person": "WSN Group",
+      "due_date": "2026-07-17",
+      "email": "",
+      "event": "Camilla I Kay",
+      "event_date": "2026-07-16",
+      "person": "Camilla",
       "sent_at": "",
       "sent_subject": "",
       "sent_thread_id": "",
@@ -125,6 +110,7 @@
     }
   ],
   "unclear_followthrough_items": [
-    "Lisa (24-hour thank-you after external call)"
+    "Lisa (24-hour thank-you after external call)",
+    "Camilla (24-hour thank-you after external meeting)"
   ]
 }

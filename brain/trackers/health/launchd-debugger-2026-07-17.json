@@ -1,0 +1,29 @@
+{
+  "date": "2026-07-17",
+  "scan_started_at": "2026-07-17T07:21:06-04:00",
+  "scan_finished_at": "2026-07-17T07:21:57-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 1,
+  "runtime_seconds": 51,
+  "results": [
+    {
+      "job": "post-call-analyzer",
+      "cause": "VALIDATOR_REJECT",
+      "action": "SURFACE",
+      "slack_posted": true,
+      "suppression_reason": null,
+      "triggered_by": "daily",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/post-call-analyzer-2026-07-16-1800.log",
+      "last_log_mtime": "2026-07-16T18:07:38-04:00",
+      "exit_code": 1,
+      "validator_failed": false,
+      "preflight_failed": false,
+      "error_signature": "FAILED: post-run check exited 1",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "slack_text": "launchd-debugger: post-call-analyzer FAILED — VALIDATOR_REJECT. FAILED: post-run check exited 1. Recommended: fix the post-call-analyzer validator so legacy pending-task backlog does not block the daily scan, or archive the stale Good Morning handoff files before the next run. SKILL_CODE_NEEDS_FIX. Log: /home/ubuntu/projects/Sapling/logs/scheduled/post-call-analyzer-2026-07-16-1800.log"
+    }
+  ]
+}

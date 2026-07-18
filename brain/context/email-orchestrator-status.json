@@ -3,27 +3,8 @@
   "deal_items": 35,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-17T06:50:44.962710-04:00",
-  "follow_through_completed_items": [
-    {
-      "bucket": "thank",
-      "completed_at": "2026-07-16",
-      "event": "Kay Schneider and Sam Singh",
-      "person": "Kay",
-      "sent_at": "2026-07-16 22:28",
-      "sent_subject": "Invoice",
-      "sent_thread_id": "19e8e9bc5350901e"
-    },
-    {
-      "bucket": "thank",
-      "completed_at": "2026-07-16",
-      "event": "Kay Schneider and Sam Singh",
-      "person": "Kay",
-      "sent_at": "2026-07-16 22:28",
-      "sent_subject": "Invoice",
-      "sent_thread_id": "19e8e9bc5350901e"
-    }
-  ],
+  "fetched_at": "2026-07-17T13:18:24.272008-04:00",
+  "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -72,7 +53,6 @@
     "2 email-derived task candidate(s)",
     "35 broker/listing row(s) extracted",
     "2 prior-day thank-you(s) need approval: Andrew <> Kay; Camilla",
-    "2 email follow-through row(s) auto-completed from sent-mail evidence: Kay; Kay",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting)"
   ],

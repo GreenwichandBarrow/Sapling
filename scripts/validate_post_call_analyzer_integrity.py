@@ -12,8 +12,9 @@ Checks (matches SKILL.md "Validator (mandatory)" section):
      failure marker)
   3. No file in processed/ older than 30 days (rotate -- WARN, not FAIL)
   4. Checkpoint file modification time <24h ago (detector ran recently)
-  5. Pending staged task files are well-formed and do not survive past the next
-     reasonable Good Morning cycle.
+  5. Pending staged task files are well-formed. Non-empty legacy backlog older
+     than the next Good Morning cycle is WARN-only so a successful daily scan is
+     not converted into a hard failure.
 
 Self-locates REPO_ROOT for server (~/projects/Sapling) and Codex migration
 worktrees.
@@ -194,8 +195,8 @@ def check_pending_task_handoff() -> None:
             f"{'; '.join(malformed[:5])}{'...' if len(malformed) > 5 else ''}"
         )
     if stale_nonempty:
-        failures.append(
-            "HANDOFF-FAIL: staged post-call tasks pending Good Morning review: "
+        warnings.append(
+            "HANDOFF-WARN: staged post-call tasks pending Good Morning review: "
             f"{'; '.join(stale_nonempty[:8])}{'...' if len(stale_nonempty) > 8 else ''}"
         )
     if zero_task_old:

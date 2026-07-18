@@ -64,9 +64,7 @@ Expected jobs (this list is the source of truth — must match `AGENTS.md` and
 `docs/scheduled-skills.md`; missing systemd timer for any skill here = RED):
 - `deal-aggregator.timer` (Mon-Fri 7:30am ET)
 - `email-intelligence.timer` (Mon-Fri 7am ET)
-- `cold-call-operations-sunday.timer` (Sun 6pm ET)
 - `cold-call-snapshot-refresh.timer` (Mon-Fri 9am ET) — feeds dashboard cold-call activity
-- `target-discovery-sunday.timer` (Sun 3pm ET)
 - `niche-intelligence.timer` (Tue 10:30pm ET)
 - `nightly-tracker-audit.timer` (Nightly 11:30pm ET)
 - `conference-discovery.timer` (Sun 9pm ET)
@@ -79,6 +77,9 @@ Expected jobs (this list is the source of truth — must match `AGENTS.md` and
 - `post-call-analyzer-poll.timer` (Daily 1pm + 6pm ET)
 - `weekly-snapshot.timer` (Fri 10pm ET)
 - `weekly-archive-export.timer` (Sat 9am ET)
+
+**Intentionally on-demand / disabled timers (do not flag RED):**
+Kay confirmed on 2026-07-17 that Cold Call Operations Sunday prep and Phase 2 target discovery should be treated as on-demand workflows unless she explicitly reactivates them. The canonical cold-call workflow name is Cold Call Operations; `jj-operations-sunday.timer` is a legacy installed alias only. `cold-call-operations-sunday.timer`, `jj-operations-sunday.timer`, and `target-discovery-sunday.timer` may be disabled/inactive without appearing in Slack health alerts or morning System Health as scheduled-skill failures.
 
 For each:
 ```bash
@@ -125,13 +126,15 @@ Flag if an entry jumped forward by 2+ stages (e.g., Identified → Closed, or Id
 - YELLOW: Any entry that skipped 1 intermediate stage
 
 **Untracked Deal Detection:**
-Cross-reference Gmail deal flow (NDA attachments, CIM attachments, broker correspondence) against Attio Active Deals. Flag any deal with email activity but no Attio entry.
+Cross-reference Gmail deal flow (NDA attachments, CIM attachments, broker correspondence) against Attio Active Deals. Flag a missing active deal only when the email identifies an underlying selling company/opportunity that should be in the pipeline.
+
+Do NOT flag broker/source organizations themselves as missing active deals. Everingham & Kerr, Transworld, BizBuySell, BizQuest, Baton, and similar senders are deal-flow sources unless a specific underlying company/listing has been promoted into the active pipeline. For Everingham & Kerr specifically, treat the source company as a broker/source relationship; Joe Varone is the contact. Health should ask whether a specific E&K listing should be tracked, not say "Everingham & Kerr is missing from Attio" as if E&K were the target company.
 
 ```bash
-# Find NDA-related emails in last 14 days
+# Find NDA/CIM/deal-package signals in last 14 days
 gog gmail search "(NDA OR confidential information memorandum OR CIM) newer_than:14d" --json --max 20
 ```
-For each, check if the company/contact has an Attio Active Deals entry. Missing = RED.
+For each signal, extract the underlying company/listing name first. If there is no specific underlying company/listing, route it to source coverage or relationship-manager instead of Active Deals. Missing underlying company = RED only after source-vs-target attribution is clear.
 
 **Stale Entry Detection:**
 - YELLOW: Entry in same stage > 14 days with no email or calendar activity
@@ -295,7 +298,7 @@ If ALL GREEN, no Slack notification. Silence = healthy.
 |----------|-------|-----|
 | deal-aggregator exit 126 | Infrastructure → scheduler | Non-zero exit code flagged RED |
 | Project Restoration skipped stages | Pipeline Hygiene → stage skipping | Identified → Closed without NDA/Financials |
-| E&K deal not in Attio | Pipeline Hygiene → untracked deals | Gmail NDA/CIM signals with no Attio entry |
+| E&K listing attribution | Pipeline Hygiene → untracked deals | Health must distinguish broker/source company Everingham & Kerr + contact Joe Varone from the underlying selling company before flagging Attio mismatch |
 | Weekly tracker missed deal activity | Data Integrity → freshness | Attio stage changes not reflected in tracker |
 </essential_principles>
 

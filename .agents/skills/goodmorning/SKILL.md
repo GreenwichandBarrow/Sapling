@@ -16,6 +16,7 @@ Non-negotiables:
 - Do not make scheduled jobs depend on MCP until tested.
 - Do not create duplicate weekly tracker files.
 - Keep the final briefing decision-oriented, with no filler.
+- Use plain business language. Do not mention validator names, exit codes, JSON, scripts, stack traces, or code-level diagnoses unless Kay explicitly asks for technical detail. Translate technical health into what changed, whether it matters to Kay, and whether action is needed.
 
 ## Morning Flow
 
@@ -38,7 +39,7 @@ Section label: `Day-Triggered Weekly Skills`
 
 Rules:
 - Include only skills whose schedule or doctrine is specific to the current weekday.
-- State `done / pending / failed / not scheduled today` with the latest artifact or failure signal when available.
+- State `done / pending / failed / not scheduled today` with the latest artifact or failure signal when available. For scheduled Friday weekly tracker/dashboard copy-down work, do not ask Kay whether to run it; verify it, run/repair it if missing, and report only the plain-language result.
 - If a scheduled weekly skill has not run yet because Kay launched Good Morning early, say so plainly and give the expected run window.
 - If the skill is trigger-based rather than weekday-scheduled, mention it only when the trigger is present or when Kay has specifically asked about it.
 - Numbering continues from the rest of the brief.
@@ -47,7 +48,7 @@ Day map:
 - Sunday: weekly task tracker build; target-discovery Phase 2 at 3pm ET; cold-call operations prep at 6pm ET; conference-discovery at 9pm ET.
 - Monday: conference-discovery / Conference Pipeline status from the Sunday run.
 - Wednesday: niche-intelligence status from Tuesday night.
-- Friday: weekly-tracker snapshot/export; health-monitor Friday report; calibration-workflow Thursday-night run for Friday meta-calibration.
+- Friday: weekly-tracker/dashboard copy-down snapshot/export; health-monitor Friday report; calibration-workflow Thursday-night run for Friday meta-calibration. The weekly tracker/dashboard copy-down is expected every Friday; Good Morning should verify it and trigger/repair it when missing rather than asking Kay.
 
 Budget manager note:
 - `budget-manager` is not a standing Friday weekly skill. It is trigger-based from bookkeeper/StartVirtual monthly P&L or Balance Sheet delivery. Surface it in this section only when a budget-manager trigger/output exists, or when the month-end missing-report watchdog is relevant.
@@ -73,7 +74,7 @@ Good Morning is not complete until Task Manager has been verified. Before writin
 3. If any prior-day dry run shows pending moves, execute those carry-forwards before the brief, earliest day first, then run `scripts/task_tracker.py report`.
 4. Carry-forward must include overflow task rows above the visible `NOTES` header, not just canonical rows 17-41. If report/carry-forward disagree on counts, treat that as a Task Manager health failure.
 5. If carry-forward cannot run, is blocked, or the report still shows unprocessed items on any earlier live day tab, surface this in the **System Health** section as a numbered failure item. Do not say the task tracker is ready.
-6. Do not repeat the user's full To Do list in the brief. Report the open-task count only, plus any new post-call or system-generated task decisions that are not already on the To Do sheet.
+6. Do not repeat the user's full To Do list in the brief. Do not report total open-task counts or overdue-task counts; Kay will work the list directly and the count is not healthy/helpful for her. Only surface new system-generated items that are not already on the To Do sheet, or a Task Manager failure that blocks the list from being usable.
 
 Stop condition: if Task Manager verification is skipped or inconclusive, the Good Morning brief must mark **System Health: Task Manager carry-forward unverified** and recommend repair before day planning.
 
@@ -88,8 +89,8 @@ Before writing the morning brief:
 2. Parse every JSON array or object with a `tasks` / `items` array. Ignore files with zero tasks only after naming them in the operator notes or health detail.
 3. Deduplicate against the current To Do sheet by exact `task_text` match plus obvious already-completed task text match. Do not surface tasks already present on the To Do sheet unless the staged item contains materially new context.
 4. Group remaining staged tasks by source call title/person when available; include the source analysis Doc link when present.
-5. Surface the remaining items in a numbered **Post-Call Action Items** section with the format: `{task} -- from {call/person}; RECOMMEND: add to {suggested_day or today/this week} -> YES / NO / DISCUSS`.
-6. Keep this section decision-oriented. If there are many items, prioritize 3-5 highest-signal items and state how many lower-priority staged items remain queued; do not dump the whole backlog.
+5. Surface only actionable next steps in a numbered **Post-Call Action Items** section with the format: `{task} -- from {call/person}; RECOMMEND: add to {suggested_day or today/this week} -> YES / NO / DISCUSS`. Do not convert decisions, strategy questions, or discussion prompts into tasks. If an item is a decision rather than an action, either omit it or put it in the relevant dashboard/business section as a concise discussion item.
+6. Keep this section decision-oriented. If there are many items, prioritize 3-5 highest-signal items and do not dump the whole backlog. Avoid backlog counts unless they indicate a system failure Kay must act on.
 7. After Kay responds, approved items route through `task-tracker-manager`; rejected/skipped items are recorded in the session decisions or staging resolution notes. Only after approval/rejection is recorded should the related staged task file move to `brain/trackers/post-call-analyzer/pending-tasks/processed/{note_id}.json`.
 
 Stop condition: if staged post-call tasks exist and are not surfaced, the Good Morning brief must mark **System Health: post-call staged tasks pending but not surfaced** and recommend repair before saying the morning run is complete.
@@ -113,7 +114,8 @@ Wednesday:
 - Surface any new niches that emerged from calls, email, or pipeline activity.
 
 Friday:
-- Confirm weekly tracker snapshot/export, `health-monitor`, and `calibration-workflow` status.
+- Confirm weekly tracker/dashboard copy-down snapshot/export, `health-monitor`, and `calibration-workflow` status. If the weekly snapshot/export is missing by the morning run, run the copy-down/weekly snapshot path or flag a repair, not a Kay decision.
+- For July 2026 focus, suppress broad non-urgent post-call backlog and source/plumbing prompts that are not tied to jewelry or the long-term holdco vision. The next two-week operating focus is jewelry and long-term holdco vision unless Kay changes it.
 
 ## Briefing Format
 

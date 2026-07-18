@@ -1,59 +1,63 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260711-080057",
-  "sheet_id": "183fc3jt3200rN9PJr80VfAnJXUz2YNcui8nHnkmIKmk",
+  "timestamp": "20260717-132018",
+  "sheet_id": "12rN-RtkEhfcApIo2Ep7J41Nq1KxR7TgziViNwy7k4HI",
   "ranges": {
-    "'Fri'!A17:E66": [
+    "'Thu'!A17:E66": [
       [
-        false,
-        "Weekly review \u2014 system health, M&A activities, budget"
+        true,
+        "Use investor calls to ask what proof/evidence they need behind insurance/storage/luxury infrastructure Deal 1 or LDE path"
       ],
       [
         false,
-        "Order gift for Lois (Jack Hugh Mackay)"
+        "Thursday follow-up checkpoint for Monday direct outreach non-responses"
       ],
       [
         false,
-        "Sign up kids for Kano Martial Arts judo class"
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
+        "Work",
+        "G&B",
+        "Full sale, staged transition, seller financing, rollover/advisory role, or broader process"
       ],
       [
         false,
-        "Look into music lessons"
+        "Align analyst in Team TB on 60-day priority stack and list review criteria",
+        "Work",
+        "G&B"
       ],
       [
         false,
-        "Sign up for more Italki lessons"
+        "Niche intel review",
+        "Work",
+        "G&B"
       ],
       [
         false,
-        "Create travel plans for July in Paris/France next year"
+        "Ask Arthur for coffee or pop by office while local for summer"
       ],
       [
         false,
-        "Bday cards & baby cards"
+        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros"
       ],
       [
         false,
-        "Create project for French passports"
+        "Follow up with Denning for fashion/art/luxury introductions"
       ],
       [
         false,
-        "Pay Dad for swim lessons and membership"
+        "Send thank-you to Greg and ask for the insurance owner intro he suggested"
       ],
       [
         false,
-        "Review last month's monthly budget files from email"
+        "Reconnect with Levi on prior art storage path"
       ],
       [
         false,
-        "Check NYC Housing Connect for new Manhattan lotteries",
-        "Home",
-        "Housing",
-        "Review https://housingconnect.nyc.gov/PublicWeb/search-lotteries for NYC - Manhattan lottery openings."
+        "Circle back with Paul on art storage conversation"
       ],
       [
         false,
-        "Niche intel review"
+        "Ask family friend jewelry business owner for market-mapping conversation"
       ],
       [
         false,
@@ -61,67 +65,47 @@
       ],
       [
         false,
+        "Check beauty supply chain conference app for fragrance/beauty testing and packaging target lists"
+      ],
+      [
+        false,
+        "Review new SLD video"
+      ],
+      [
+        false,
+        "Process payroll"
+      ],
+      [
+        false,
         "Call IRS to confirm Form 8822-B address update"
       ],
       [
         false,
-        "Thank you: Jay, Laura, Paul, Bob"
+        "Follow up: Carlos, Lisa/Peter, Jose"
       ],
       [
-        false,
-        "Make sure we dont get charged by Linkt"
+        false
       ],
       [
-        false,
-        "Get reimbursed for Motion"
+        false
       ],
       [
-        false,
-        "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg"
+        false
       ],
       [
-        false,
-        "Update Tailscale SSH checkPeriod for Sapling VPS"
+        false
       ],
       [
-        false,
-        "Verify Howie plan and update budget run-rate"
+        false
       ],
       [
-        false,
-        "Verify Attio payment / renewal amount"
+        false
       ],
       [
-        false,
-        "Reach out to Guillermo to schedule next brainstorm"
+        false
       ],
       [
-        false,
-        "Website rebuild focus block",
-        "Work",
-        "G&B",
-        "Today focus: website rebuild."
-      ],
-      [
-        false,
-        "Deck focus block",
-        "Work",
-        "G&B",
-        "Today focus: deck work."
-      ],
-      [
-        false,
-        "Restart niche intel / target discovery process with DealsX",
-        "Work",
-        "G&B",
-        "Get back into niche intel / target discovery process, including DealsX."
-      ],
-      [
-        false,
-        "Follow up: Carlos, Lisa/Peter, Jose",
-        "Work",
-        "G&B",
-        "Today focus follow-up emails. Draft only; Kay sends."
+        false
       ],
       [
         false
@@ -196,27 +180,34 @@
         false
       ]
     ],
-    "'Sat'!A17:E66": [
+    "'Fri'!A17:E66": [
       [
-        false
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget"
       ],
       [
-        false
+        false,
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
       ],
       [
-        false
+        false,
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
       ],
       [
-        false
+        false,
+        "Check NYC Housing Connect for new Manhattan lotteries"
       ],
       [
-        false
+        false,
+        "Visit store carrying jewelry line to see product and merchandising in person"
       ],
       [
-        false
+        false,
+        "Scope minimum viable G&B website update"
       ],
       [
-        false
+        false,
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark"
       ],
       [
         false

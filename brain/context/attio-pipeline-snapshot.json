@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-17T00:00:58Z",
+  "fetched_at": "2026-07-18T00:00:57Z",
   "list_id": "0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b",
   "list_name": "Active Deals \u2013 Owners",
   "stages": [
@@ -43,122 +43,24 @@
       "arr_bucket": null,
       "last_interaction": null,
       "category": null
-    },
-    {
-      "record_id": "1f0049fe-4b04-440c-b5f9-a6fa5ba5e922",
-      "company": "ARTMOVEMENT",
-      "stage": "Identified",
-      "stage_since": "2026-05-01T13:53:06.619000000Z",
-      "location": "Los Angeles, California",
-      "employee_range": "11-50",
-      "arr_bucket": "$1M-$10M",
-      "last_interaction": null,
-      "category": "Warehousing"
-    },
-    {
-      "record_id": "96a7a578-31dc-49d0-b8da-a6f7440cc4e2",
-      "company": "Securitas Global Risk Solutions",
-      "stage": "Contacted",
-      "stage_since": "2026-03-30T14:26:07.645000000Z",
-      "location": "Wayne, Pennsylvania",
-      "employee_range": "1-10",
-      "arr_bucket": "$1M-$10M",
-      "last_interaction": "2026-03-26T12:00:00.000000000Z",
-      "category": "Technology"
-    },
-    {
-      "record_id": "4509e585-9610-44f2-a2a4-42e661c1a5a6",
-      "company": "JWI Group",
-      "stage": "Contacted",
-      "stage_since": "2026-03-30T14:11:09.310000000Z",
-      "location": "Yonkers, New York",
-      "employee_range": null,
-      "arr_bucket": null,
-      "last_interaction": "2026-03-31T14:52:36.000000000Z",
-      "category": "Insurance"
-    },
-    {
-      "record_id": "aaa67973-28df-4250-bde3-3c9ce44d7a0b",
-      "company": "Allan Block Insurance",
-      "stage": "Identified",
-      "stage_since": "2026-05-01T13:53:08.615000000Z",
-      "location": "Tarrytown, New York",
-      "employee_range": "11-50",
-      "arr_bucket": "$1M-$10M",
-      "last_interaction": null,
-      "category": "Financial Services"
-    },
+    }
+  ],
+  "closed_count": 157,
+  "closed_count_post_nda": 9,
+  "closed_count_pre_nda": 148,
+  "closed_recent": [
     {
       "record_id": "1c39e7e8-06ef-4bc0-9d1f-5a82527ff023",
       "company": "Fox Machinery",
-      "stage": "Contacted",
-      "stage_since": "2026-06-26T14:35:08.864000000Z",
-      "location": null,
-      "employee_range": null,
-      "arr_bucket": null,
-      "last_interaction": null,
-      "category": null
+      "stage_since": "2026-07-17T18:08:23.477059288Z",
+      "location": null
     },
     {
       "record_id": "d2d0caa0-f465-43fe-a3c0-a0bea21dce34",
       "company": "Personal Risk Management Solutions",
-      "stage": "Identified",
-      "stage_since": "2026-03-14T22:04:30.812000000Z",
-      "location": "New York, New York",
-      "employee_range": "11-50",
-      "arr_bucket": "$1M-$10M",
-      "last_interaction": null,
-      "category": "Enterprise"
+      "stage_since": "2026-07-17T18:06:47.649615608Z",
+      "location": "New York, New York"
     },
-    {
-      "record_id": "942a4249-cd1c-4d25-ad8f-af89bbf3eaec",
-      "company": "M&M Environmental",
-      "stage": "Contacted",
-      "stage_since": "2026-04-15T17:53:51.578000000Z",
-      "location": "New York, New York",
-      "employee_range": "11-50",
-      "arr_bucket": "$1M-$10M",
-      "last_interaction": "2026-04-09T22:47:23.000000000Z",
-      "category": "Consulting & Professional Services"
-    },
-    {
-      "record_id": "a133305c-d8f4-456e-9139-1874b823df73",
-      "company": "Grober Imbey Insurance Agency",
-      "stage": "Identified",
-      "stage_since": "2026-05-01T13:53:10.046000000Z",
-      "location": "Valley Stream, New York",
-      "employee_range": "11-50",
-      "arr_bucket": "$1M-$10M",
-      "last_interaction": null,
-      "category": "Insurance"
-    },
-    {
-      "record_id": "1254349b-3e8e-4266-beca-98d2c8301df5",
-      "company": "LG Planning Group",
-      "stage": "Identified",
-      "stage_since": "2026-05-01T13:53:11.957000000Z",
-      "location": "Melville, New York",
-      "employee_range": "11-50",
-      "arr_bucket": "$1M-$10M",
-      "last_interaction": null,
-      "category": "B2B"
-    },
-    {
-      "record_id": "cc951997-0b21-4374-ac4b-756eb7991bd2",
-      "company": "Lang Insurance",
-      "stage": "Identified",
-      "stage_since": "2026-05-01T13:53:13.923000000Z",
-      "location": "Coram, New York",
-      "employee_range": "1-10",
-      "arr_bucket": "$1M-$10M",
-      "last_interaction": null,
-      "category": "Insurance"
-    }
-  ],
-  "closed_count": 146,
-  "closed_count_post_nda": 7,
-  "closed_count_pre_nda": 139,
-  "closed_recent": [
     {
       "record_id": "dcff892b-901a-48b1-8d76-579f38abf3b4",
       "company": "Total Extermination",

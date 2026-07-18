@@ -12,7 +12,7 @@ Do not edit by hand. To regenerate: re-run the generator script on the iMac (the
 - `email-intelligence.service` + `email-intelligence.timer`
 - `external-services-probe.service` + `external-services-probe.timer`
 - `health-monitor.service` + `health-monitor.timer`
-- `jj-operations-sunday.service` + `jj-operations-sunday.timer`
+- `jj-operations-sunday.service` + `jj-operations-sunday.timer` — legacy installed alias for Cold Call Operations Sunday prep; intentionally on-demand/disabled as of 2026-07-17
 - `launchd-debugger.service` + `launchd-debugger.timer`
 - `niche-intelligence.service` + `niche-intelligence.timer`
 - `nightly-tracker-audit.service` + `nightly-tracker-audit.timer`
@@ -29,4 +29,6 @@ Do not edit by hand. To regenerate: re-run the generator script on the iMac (the
 
 Run `bash scripts/install_systemd_units.sh` on the server.
 Units are installed but **not enabled** — enable selectively per skill.
+
+Current operating status: Cold Call Operations Sunday prep and Phase 2 target discovery are intentionally on-demand as of 2026-07-17. Legacy `jj-operations-sunday.timer`, canonical `cold-call-operations-sunday.timer`, and `target-discovery-sunday.timer` may remain installed and disabled without being treated as health failures.
 

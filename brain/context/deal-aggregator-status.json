@@ -4,17 +4,16 @@
   "artifact": "brain/context/deal-aggregator-scan-2026-07-17.md",
   "email_scan_status": "live",
   "deals_found": 0,
-  "broker_opportunistic": 1,
+  "broker_opportunistic": 0,
   "near_misses": [
-    "- **Textile Manufacturing Company in CA with Repeat Wholesale Accounts** \u2014 California soft-exclude plus EBITDA $600K below the lower bound; keep the repeat wholesale signal.",
     "- **Profitable Ground Transport Company Serving Medical & Community Client** \u2014 service-criticality is hinted, but the financials are undisclosed.",
     "- **Security Solutions Provider** \u2014 watchlist signal for premium physical security integration, but financials and structure are undisclosed.",
     "- **Clip Art Subscription Business / Mobile App Portfolio / Cryptocurrency Education Platform** \u2014 paused SaaS/digital source, so these are signal-only and not active-thesis candidates today."
   ],
-  "sources_scanned": 19,
+  "sources_scanned": 18,
   "sources_covered": {
     "marketplace": 10,
-    "email_newsletters": 7,
+    "email_newsletters": 6,
     "direct_email": 2
   },
   "manual_check_sources": [],

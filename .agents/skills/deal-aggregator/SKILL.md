@@ -348,6 +348,7 @@ Read `brain/context/email-scan-results-{date}.md` for deal-related emails classi
 - Newsletter content (market commentary without specific deals)
 - Broker marketing (capability presentations, tombstones)
 - Deals already flagged from platform scanning (dedup by company name/description — see Cross-Day Deduplication below)
+- SMB Deal Hunter / Helen Guo emails. Kay confirmed on 2026-07-17 that the underlying deals are paywalled and G&B will not pay, so these emails must not be parsed into Email Inbound Deals, Listings Reviewed, Broker Opportunistic Review, Source Scorecard, dashboard source coverage, volume counts, or weekly digest recommendations.
 
 ### Cross-Day Deduplication (background, not surfaced to Kay)
 
@@ -568,7 +569,7 @@ Manual deal-source work is separate from reviewed sources. Only marketplace-styl
 
 Dashboard deal status is binary for Kay: `Matches` = PASS rows; `Filtered out` = every non-PASS row, including broker-opportunistic, near-miss, flag, and hard-reject. Keep internal lanes in artifacts if useful for calibration, but do not expose a separate borderline/learning metric on the dashboard.
 
-Every `auto/deal flow` source observed in the current-week email artifact must be accounted for in Source Scorecard unless it is explicitly paused. Current active email/newsletter/direct sources that must not disappear from dashboard coverage: BizBuySell, BizQuest, BizScout, Calder Capital, DealForce / Generational, Transworld Business Advisors, Everingham & Kerr, Business Exits, Baton, Axial, DealsX replies, and direct intermediary forwards. Current paused/ignored sources: Flippa, Quiet Light / quietlight.com, Website Closers / websiteclosers.com, and SMB Deal Hunter. If an observed active sender has zero listing rows, include a scorecard row with `Listings Reviewed: 0` and a status reason rather than letting the source vanish.
+Every `auto/deal flow` source observed in the current-week email artifact must be accounted for in Source Scorecard unless it is explicitly paused. Current active email/newsletter/direct sources that must not disappear from dashboard coverage: BizBuySell, BizQuest, BizScout, Calder Capital, DealForce / Generational, Transworld Business Advisors, Everingham & Kerr, Business Exits, Baton, Axial, DealsX replies, and direct intermediary forwards. Current paused/ignored sources: Flippa, Quiet Light / quietlight.com, Website Closers / websiteclosers.com. Current paywalled/excluded sources: SMB Deal Hunter / Helen Guo; do not include even a dormant Source Scorecard row unless Kay explicitly reactivates and pays for access. If an observed active sender has zero listing rows, include a scorecard row with `Listings Reviewed: 0` and a status reason rather than letting the source vanish.
 
 | Source | Category | Status | HTTP | Listings Reviewed | Matches | Last Match Date |
 |--------|----------|--------|------|-------------------|---------|-----------------|

@@ -1,0 +1,26 @@
+
+[2026-07-18T09:48:41.010989] carry-forward-day — fri-to-sat
+  - moved: 18
+  - source: Fri
+  - destination: Sat
+  - source packed: {'completed': 6, 'active': 0, 'blank': 44, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260718-094836.json
+  
+  - Fri slot 2 → Sat slot 2: Friday internal/admin review: family admin, finance/admin, website/list cleanup only
+  - Fri slot 3 already existed on Sat; cleared source: Pull contact info and prepare kids modeling submissions to 5 referred agencies
+  - Fri slot 4 → Sat slot 3: Check NYC Housing Connect for new Manhattan lotteries
+  - Fri slot 5 → Sat slot 4: Visit store carrying jewelry line to see product and merchandising in person
+  - Fri slot 6 → Sat slot 5: Scope minimum viable G&B website update
+  - Fri slot 7 → Sat slot 6: Identify first nonprofit activation requirement for 501(c)(3) activity mark
+  - Fri slot 9 → Sat slot 7: Draft seller-call prep framework: transition priorities, questions, and deal-structure options
+  - Fri slot 12 → Sat slot 8: Ask Arthur for coffee or pop by office while local for summer
+  - Fri slot 13 → Sat slot 9: Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros
+  - Fri slot 14 → Sat slot 10: Follow up with Denning for fashion/art/luxury introductions
+  - Fri slot 15 → Sat slot 11: Send thank-you to Greg and ask for the insurance owner intro he suggested
+  - Fri slot 16 → Sat slot 12: Reconnect with Levi on prior art storage path
+  - Fri slot 17 → Sat slot 13: Circle back with Paul on art storage conversation
+  - Fri slot 18 → Sat slot 14: Ask family friend jewelry business owner for market-mapping conversation
+  - Fri slot 19 → Sat slot 15: Pull Megan pre-LOI prep meeting notes
+  - Fri slot 20 → Sat slot 16: Check beauty supply chain conference app for fragrance/beauty testing and packaging target lists
+  - Fri slot 21 → Sat slot 17: Review new SLD video
+  - Fri slot 23 → Sat slot 18: Call IRS to confirm Form 8822-B address update

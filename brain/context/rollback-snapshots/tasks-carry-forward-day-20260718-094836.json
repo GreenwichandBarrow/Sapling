@@ -1,89 +1,111 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260713-090958",
+  "timestamp": "20260718-094836",
   "sheet_id": "12rN-RtkEhfcApIo2Ep7J41Nq1KxR7TgziViNwy7k4HI",
   "ranges": {
-    "'Sun'!A17:E66": [
+    "'Fri'!A17:E66": [
       [
-        false,
-        "Create weekly schedule"
+        true,
+        "Weekly review \u2014 system health, M&A activities, budget"
       ],
       [
         false,
-        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
       ],
       [
         false,
-        "Choose weekly Body Reset movement slots"
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
       ],
       [
         false,
-        "Add Kay food staples to Sunday grocery run"
+        "Check NYC Housing Connect for new Manhattan lotteries"
       ],
       [
         false,
-        "Confirm LiveOak payroll transfer coverage"
+        "Visit store carrying jewelry line to see product and merchandising in person"
       ],
       [
         false,
-        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
+        "Scope minimum viable G&B website update"
       ],
       [
         false,
-        "North Star for week: convert warm/live paths into seller conversations and financials"
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark"
+      ],
+      [
+        true,
+        "Thursday follow-up checkpoint for Monday direct outreach non-responses"
       ],
       [
         false,
-        "Review existing insurance target list against new luxury asset risk criteria"
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
+        "Work",
+        "G&B",
+        "Full sale, staged transition, seller financing, rollover/advisory role, or broader process"
+      ],
+      [
+        true,
+        "Align analyst in Team TB on 60-day priority stack and list review criteria",
+        "Work",
+        "G&B"
+      ],
+      [
+        true,
+        "Niche intel review",
+        "Work",
+        "G&B"
       ],
       [
         false,
-        "Review existing art storage target list against luxury asset custody criteria"
+        "Ask Arthur for coffee or pop by office while local for summer"
       ],
       [
-        false
+        false,
+        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros"
       ],
       [
-        false
+        false,
+        "Follow up with Denning for fashion/art/luxury introductions"
       ],
       [
-        false
+        false,
+        "Send thank-you to Greg and ask for the insurance owner intro he suggested"
       ],
       [
-        false
+        false,
+        "Reconnect with Levi on prior art storage path"
       ],
       [
-        false
+        false,
+        "Circle back with Paul on art storage conversation"
       ],
       [
-        false
+        false,
+        "Ask family friend jewelry business owner for market-mapping conversation"
       ],
       [
-        false
+        false,
+        "Pull Megan pre-LOI prep meeting notes"
       ],
       [
-        false
+        false,
+        "Check beauty supply chain conference app for fragrance/beauty testing and packaging target lists"
       ],
       [
-        false
+        false,
+        "Review new SLD video"
       ],
       [
-        false
+        true,
+        "Process payroll"
       ],
       [
-        false
+        false,
+        "Call IRS to confirm Form 8822-B address update"
       ],
       [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
+        true,
+        "Follow up: Carlos, Lisa/Peter, Jose"
       ],
       [
         false
@@ -164,54 +186,46 @@
         false
       ]
     ],
-    "'Mon'!A17:E66": [
+    "'Sat'!A17:E66": [
       [
         false,
-        "Text jewelry seller to reconnect"
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies",
+        "Home",
+        "Family Wealth / Kids Modeling",
+        "Weekend top priority: prep all materials to go out to agencies; send next business day."
       ],
       [
-        false,
-        "Ask Arthur for coffee or pop by office while local for summer"
+        false
       ],
       [
-        false,
-        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros"
+        false
       ],
       [
-        false,
-        "Follow up with Denning for fashion/art/luxury introductions"
+        false
       ],
       [
-        false,
-        "Send thank-you to Greg and ask for the insurance owner intro he suggested"
+        false
       ],
       [
-        false,
-        "Reconnect with Levi on prior art storage path"
+        false
       ],
       [
-        false,
-        "Circle back with Paul on art storage conversation"
+        false
       ],
       [
-        false,
-        "Ask family friend jewelry business owner for market-mapping conversation"
+        false
       ],
       [
-        false,
-        "Process payroll"
+        false
       ],
       [
-        false,
-        "Process conference registrations"
+        false
       ],
       [
-        false,
-        "Call IRS to confirm Form 8822-B address update"
+        false
       ],
       [
-        false,
-        "Follow up: Carlos, Lisa/Peter, Jose"
+        false
       ],
       [
         false

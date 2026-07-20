@@ -1,24 +1,32 @@
 {
-  "date": "2026-07-17",
+  "date": "2026-07-20",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-07-17.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-07-20.md",
   "email_scan_status": "live",
   "deals_found": 0,
-  "broker_opportunistic": 0,
-  "near_misses": [
-    "- **Profitable Ground Transport Company Serving Medical & Community Client** \u2014 service-criticality is hinted, but the financials are undisclosed.",
-    "- **Security Solutions Provider** \u2014 watchlist signal for premium physical security integration, but financials and structure are undisclosed.",
-    "- **Clip Art Subscription Business / Mobile App Portfolio / Cryptocurrency Education Platform** \u2014 paused SaaS/digital source, so these are signal-only and not active-thesis candidates today."
-  ],
+  "broker_opportunistic": 6,
+  "near_misses": 3,
   "sources_scanned": 18,
   "sources_covered": {
-    "marketplace": 10,
-    "email_newsletters": 6,
-    "direct_email": 2
+    "marketplace": null,
+    "email_newsletters": null,
+    "direct_email": null
   },
-  "manual_check_sources": [],
+  "sources_covered_split": "unavailable",
+  "sources_covered_fallback": 18,
+  "manual_check_sources": [
+    "Acquire.com",
+    "Axial",
+    "BizScout (DealOS)",
+    "FE International",
+    "Kumo",
+    "Searchfunder"
+  ],
   "sources_blocked_verified": 0,
   "sources_blocked_single_attempt": 0,
   "volume_status": "BELOW TARGET",
-  "needs_attention": []
+  "needs_attention": [
+    "0 surfaced matches; below 1-3/day target",
+    "source coverage split unavailable; fallback used"
+  ]
 }

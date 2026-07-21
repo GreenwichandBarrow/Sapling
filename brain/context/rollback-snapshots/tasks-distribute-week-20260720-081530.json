@@ -1,11 +1,11 @@
 {
   "verb": "distribute-week",
-  "timestamp": "20260615-111840",
-  "sheet_id": "12vE5XpAXeVFxzVHvRz6Hb0oRBQNEkt-ZPS7ANctJDQo",
+  "timestamp": "20260720-081530",
+  "sheet_id": "1QIpyr0hMR940-0fyfUIKV7xs4A-XcrDg06-8rXL273I",
   "ranges": {
-    "'Sun'!A1:E54": [
+    "'Sun'!A1:E78": [
       [
-        "SUNDAY \u00b7 Jun 14"
+        "SUNDAY \u00b7 Jul 19"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -55,32 +55,32 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
@@ -93,24 +93,64 @@
         "Notes"
       ],
       [
-        true,
-        "Create weekly schedule"
+        false
       ],
       [
-        true,
-        "Confirm LiveOak payroll transfer coverage"
+        false
       ],
       [
-        false,
-        "Try Claude on website rebuild"
+        false
       ],
       [
-        false,
-        "Pay remaining IRS"
+        false
       ],
       [
-        false,
-        "Update RCN Plan"
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
       ],
       [
         false
@@ -172,14 +212,43 @@
       [
         false
       ],
-      [],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
       [
         "NOTES"
       ]
     ],
-    "'Mon'!A1:E54": [
+    "'Mon'!A1:E78": [
       [
-        "MONDAY \u00b7 Jun 15"
+        "MONDAY \u00b7 Jul 20"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -229,32 +298,32 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
@@ -341,14 +410,88 @@
       [
         false
       ],
-      [],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
       [
         "NOTES"
       ]
     ],
-    "'Tue'!A1:E54": [
+    "'Tue'!A1:E78": [
       [
-        "TUESDAY \u00b7 Jun 16"
+        "TUESDAY \u00b7 Jul 21"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -398,32 +541,32 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
@@ -436,72 +579,28 @@
         "Notes"
       ],
       [
-        false,
-        "Review Mid-Search Summit Market Update takeaways, anchor in playbook update (four-horsemen framework)"
+        false
       ],
       [
-        false,
-        "Contact Eric - testing IQ & Sensory, DOT program"
+        false
       ],
       [
-        false,
-        "Contact Rebecca - follow up on programming"
+        false
       ],
       [
-        false,
-        "Re-plan deal aggregator expansion (dedicated session)"
+        false
       ],
       [
-        false,
-        "Process payroll"
+        false
       ],
       [
-        false,
-        "Process conference registrations"
+        false
       ],
       [
-        false,
-        "Email Filipe @ Pest Mgmt company"
+        false
       ],
       [
-        false,
-        "DealsX targeted outreach, share lists"
-      ],
-      [
-        false,
-        "Send DealsX specialization file"
-      ],
-      [
-        false,
-        "Follow up email to Matt"
-      ],
-      [
-        false,
-        "Pest 10-company research \u2014 June head-to-head vs DealsX + JJ"
-      ],
-      [
-        false,
-        "Call IRS to confirm Form 8822-B address update"
-      ],
-      [
-        false,
-        "Scan WPMA directory for NY-based members"
-      ],
-      [
-        false,
-        "Thank you: Jay, Laura, Paul, Bob"
-      ],
-      [
-        false,
-        "Reply to Carlos"
-      ],
-      [
-        false,
-        "Follow-up emails to lunch attendees & conferences"
-      ],
-      [
-        false,
-        "Follow up: Krupa, Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg"
+        false
       ],
       [
         false
@@ -527,14 +626,115 @@
       [
         false
       ],
-      [],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
       [
         "NOTES"
       ]
     ],
-    "'Wed'!A1:E54": [
+    "'Wed'!A1:E78": [
       [
-        "WEDNESDAY \u00b7 Jun 17"
+        "WEDNESDAY \u00b7 Jul 22"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -584,32 +784,32 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
@@ -622,22 +822,13 @@
         "Notes"
       ],
       [
-        false,
-        "Niche intel review"
-      ],
-      [
         false
       ],
       [
         false
       ],
       [
-        false,
-        "Connect Roberta & Elspeth"
-      ],
-      [
-        false,
-        "Connect Lily & Suzanne"
+        false
       ],
       [
         false
@@ -699,14 +890,94 @@
       [
         false
       ],
-      [],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
       [
         "NOTES"
       ]
     ],
-    "'Thu'!A1:E54": [
+    "'Thu'!A1:E78": [
       [
-        "THURSDAY \u00b7 Jun 18"
+        "THURSDAY \u00b7 Jul 23"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -756,32 +1027,32 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
@@ -868,14 +1139,88 @@
       [
         false
       ],
-      [],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
       [
         "NOTES"
       ]
     ],
-    "'Fri'!A1:E54": [
+    "'Fri'!A1:E78": [
       [
-        "FRIDAY \u00b7 Jun 19"
+        "FRIDAY \u00b7 Jul 24"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -925,32 +1270,32 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
@@ -963,24 +1308,64 @@
         "Notes"
       ],
       [
-        false,
-        "Weekly review \u2014 system health, M&A activities, budget"
+        false
       ],
       [
-        false,
-        "Submit the boys to: NY Models, State Models, Zuri Models, Teri B and Stellar"
+        false
       ],
       [
-        false,
-        "Create project for French passports"
+        false
       ],
       [
-        false,
-        "Make sure we dont get charged by Linkt"
+        false
       ],
       [
-        false,
-        "Get reimbursed for Motion"
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
       ],
       [
         false
@@ -1042,14 +1427,43 @@
       [
         false
       ],
-      [],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
       [
         "NOTES"
       ]
     ],
-    "'Sat'!A1:E54": [
+    "'Sat'!A1:E78": [
       [
-        "SATURDAY \u00b7 Jun 20"
+        "SATURDAY \u00b7 Jul 25"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -1099,32 +1513,32 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
@@ -1211,151 +1625,215 @@
       [
         false
       ],
-      [],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
       [
         "NOTES"
       ]
     ],
     "'Week'!A1:O38": [
       [
-        "WEEK OF Jun 14-20"
+        "WEEK OF Jul 19-25"
       ],
       [],
       [
-        "DAILY FOCUS / THEME",
-        "DOWNGRADE CLAUDE",
-        "",
-        "EMAIL FOLLOW UPS",
-        "",
-        "WEBSITE REBUILD",
-        "",
-        "NICHE / INDUSTRY BRAINSTORM",
-        "",
-        "DASHBOARD",
-        "",
-        "FINANCIALS"
+        "DAILY FOCUS / THEME"
       ],
       [],
       [],
       [
         "",
-        "SUNDAY \u00b7 Jun 14",
+        "SUNDAY \u00b7 Jul 19",
         "",
-        "MONDAY \u00b7 Jun 15",
+        "MONDAY \u00b7 Jul 20",
         "",
-        "TUESDAY \u00b7 Jun 16",
+        "TUESDAY \u00b7 Jul 21",
         "",
-        "WEDNESDAY \u00b7 Jun 17",
+        "WEDNESDAY \u00b7 Jul 22",
         "",
-        "THURSDAY \u00b7 Jun 18",
+        "THURSDAY \u00b7 Jul 23",
         "",
-        "FRIDAY \u00b7 Jun 19",
+        "FRIDAY \u00b7 Jul 24",
         "",
-        "SATURDAY \u00b7 Jun 20"
+        "SATURDAY \u00b7 Jul 25"
       ],
       [],
       [
         "",
-        true,
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
+        false,
+        "Library block 10:00-2:30: jewelry industry analysis / market structure",
+        false,
+        "Library block 10:00-2:30: continue jewelry deck",
+        false,
+        "Library block 10:00-2:30: write What We Need to Believe page",
+        false,
+        "Library block 10:00-2:30: build potential offer structures and transition/options framing",
+        false,
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility",
+        false,
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
+      ],
+      [
+        "",
+        false,
+        "Draft/schedule Greg thank-you and insurance contacts follow-up",
+        false,
+        "Start company analysis from public info + competitive analysis",
+        false,
+        "Start growth levers for jewelry brand",
+        false,
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
+        false,
+        "Narrow/edit must-have diligence questions to top 5",
+        false,
+        "Set up Claude workflow for Friday: slides + website aesthetics",
+        false
+      ],
+      [
+        "",
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions",
+        false,
+        "Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options",
+        false,
+        "Prepare high-level seller data ask draft",
+        false,
+        "Start holdco vision + infrastructure adjacency map",
+        false,
+        "",
+        false,
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
+        false
+      ],
+      [
+        "",
+        false,
         "Create weekly schedule",
         false,
-        "Process payroll",
+        "Call IRS to confirm Form 8822-B address update",
         false,
-        "Review Mid-Search Summit Market Update takeaways, anchor in playbook update (four-horsemen framework)",
+        "Pull Megan pre-LOI prep meeting notes",
         false,
-        "Niche intel review",
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
         false,
-        "Work on Dashboard Plumbing",
+        "",
         false,
         "Weekly review \u2014 system health, M&A activities, budget",
         false
       ],
       [
         "",
-        true,
+        false,
         "Confirm LiveOak payroll transfer coverage",
+        false,
+        "Process payroll",
+        false,
+        "Fix Kaiden's iPad screen",
+        false,
+        "Niche intel review",
+        false,
+        "",
+        false,
+        "Check NYC Housing Connect for new Manhattan lotteries",
+        false
+      ],
+      [
+        "",
+        false,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug",
         false,
         "Process conference registrations",
         false,
-        "Contact Eric - testing IQ & Sensory, DOT program",
+        "",
         false,
         "",
         false,
-        "Work on Email Orchestration on Dashboard",
+        "",
         false,
-        "Submit the boys to: NY Models, State Models, Zuri Models, Teri B and Stellar",
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark",
         false
       ],
       [
         "",
         false,
-        "Try Claude on website rebuild",
+        "Add Kay food staples to Sunday grocery run",
         false,
-        "Email Filipe @ Pest Mgmt company",
-        false,
-        "Contact Rebecca - follow up on programming",
-        false,
-        "",
-        false,
-        "Work on Deal Aggregator on Dashboard",
-        false,
-        "Create project for French passports",
-        false
-      ],
-      [
-        "",
-        false,
-        "Pay remaining IRS",
-        false,
-        "DealsX targeted outreach, share lists",
-        false,
-        "Re-plan deal aggregator expansion (dedicated session)",
-        false,
-        "Connect Roberta & Elspeth",
-        false,
-        "",
-        false,
-        "Make sure we dont get charged by Linkt",
-        false
-      ],
-      [
-        "",
-        false,
-        "Update RCN Plan",
-        false,
-        "Send DealsX specialization file",
-        false,
-        "",
-        false,
-        "Connect Lily & Suzanne",
-        false,
-        "",
-        false,
-        "Get reimbursed for Motion",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Follow up email to Matt",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Budget Manager run skill",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Pest 10-company research \u2014 June head-to-head vs DealsX + JJ",
+        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -1371,23 +1849,7 @@
         false,
         "",
         false,
-        "Call IRS to confirm Form 8822-B address update",
-        false,
         "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Scan WPMA directory for NY-based members",
         false,
         "",
         false,
@@ -1403,23 +1865,7 @@
         false,
         "",
         false,
-        "Thank you: Jay, Laura, Paul, Bob",
-        false,
         "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Reply to Carlos",
         false,
         "",
         false,
@@ -1435,7 +1881,7 @@
         false,
         "",
         false,
-        "Follow-up emails to lunch attendees & conferences",
+        "",
         false,
         "",
         false,
@@ -1451,7 +1897,39 @@
         false,
         "",
         false,
-        "Follow up: Krupa, Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg",
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
         false,
         "",
         false,

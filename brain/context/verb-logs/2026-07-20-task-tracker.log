@@ -1,0 +1,58 @@
+
+[2026-07-20T07:39:16.538696] build-week-v2 — 2026-07-19
+  - prior file: TO DO 7.12.26 (12rN-RtkEhfcApIo2Ep7J41Nq1KxR7TgziViNwy7k4HI)
+  - template source: 1EaznKNTweSVRxbXpoEA2CyXLD8P96mWVU0K38-5pMxc
+  - new file: TO DO 7.19.26 (1QIpyr0hMR940-0fyfUIKV7xs4A-XcrDg06-8rXL273I)
+  - week label: WEEK OF Jul 19-25
+  - missing day-tab tasks added to prior To Do: 8
+  - combined day-task edits folded before import: 1
+  - prior To Do packed before import: {'ongoing': 12, 'not_completed': 115, 'other_active': 0, 'completed': 115, 'dropped': 43, 'active': 127, 'total': 285}
+  - imported To Do: {'ongoing': 12, 'not_completed': 115, 'other_active': 0, 'completed': 115, 'dropped': 43, 'active': 127, 'total': 285}
+  - project tabs copied: ['Deal Aggregator Expansion', 'Myself Renewed Healthcare']
+  - template project placeholders removed: ['PROJECT 1']
+  - archive daily tabs copied: ['archive_7.12_Sun', 'archive_7.12_Mon', 'archive_7.12_Tue', 'archive_7.12_Wed', 'archive_7.12_Thu', 'archive_7.12_Fri', 'archive_7.12_Sat']
+  - recurring stamped onto Week: 26
+  - prior file archived: True (1ujEwLzsB4C6ZwhMfiRT8lS5WxrzYwRra)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-build-week-v2-20260720-073752.json
+
+[2026-07-20T07:41:07.789412] schedule-from-todo-days — 2026-07-20
+  - target: Week planning tab
+  - packed To Do: {'ongoing': 12, 'not_completed': 115, 'other_active': 0, 'completed': 115, 'dropped': 43, 'active': 127, 'total': 285}
+  - wrote Week from To Do Day of the Week: {'Sun': 7, 'Mon': 19, 'Tue': 6, 'Wed': 4, 'Thu': 3, 'Fri': 8, 'Sat': 1}
+  - daily tabs cleared/not populated pending Kay approval
+  - skipped: []
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260720-074101.json
+
+[2026-07-20T07:44:44.911020] schedule-from-todo-days — 2026-07-20
+  - target: Week planning tab
+  - packed To Do: {'ongoing': 12, 'not_completed': 115, 'other_active': 0, 'completed': 115, 'dropped': 43, 'active': 127, 'total': 285}
+  - wrote Week from To Do Day of the Week: {'Sun': 7, 'Mon': 7, 'Tue': 4, 'Wed': 4, 'Thu': 2, 'Fri': 6, 'Sat': 1}
+  - daily tabs cleared/not populated pending Kay approval
+  - skipped: [{'task': 'Fasting rhythm shifts to 7:45pm kitchen closed / 8:30am latte', 'day': 'Monday', 'reason': 'future due date 2026-08-17 outside current week'}, {'task': 'Fasting rhythm shifts to 7:30pm kitchen closed / 8:30am latte', 'day': 'Monday', 'reason': 'future due date 2026-09-14 outside current week'}, {'task': 'Fall fasting rhythm resets to 8:00pm kitchen closed / 8:30am latte', 'day': 'Thursday', 'reason': 'future due date 2026-10-01 outside current week'}, {'task': 'Winter ramp begins: 7:45pm kitchen closed / 8:30am latte', 'day': 'Monday', 'reason': 'future due date 2026-11-16 outside current week'}, {'task': 'Winter ramp shifts to 7:30pm kitchen closed / 8:30am latte', 'day': 'Tuesday', 'reason': 'future due date 2026-12-01 outside current week'}, {'task': 'Winter ramp shifts to 7:15pm kitchen closed / 8:30am latte', 'day': 'Tuesday', 'reason': 'future due date 2026-12-15 outside current week'}, {'task': 'Winter ramp shifts to 7:00pm kitchen closed / 8:30am latte', 'day': 'Friday', 'reason': 'future due date 2027-01-01 outside current week'}, {'task': 'Winter ramp shifts to 6:45pm kitchen closed / 8:30am latte', 'day': 'Friday', 'reason': 'future due date 2027-01-15 outside current week'}, {'task': 'Winter target rhythm begins: 6:30pm kitchen closed / 8:30am latte', 'day': 'Monday', 'reason': 'future due date 2027-02-01 outside current week'}, {'task': 'Spring release begins: 6:45pm kitchen closed / 8:30am latte', 'day': 'Monday', 'reason': 'future due date 2027-03-01 outside current week'}, {'task': 'Spring release shifts to 7:00pm kitchen closed / 8:30am latte', 'day': 'Monday', 'reason': 'future due date 2027-03-15 outside current week'}, {'task': 'Spring release shifts to 7:15pm kitchen closed / 8:30am latte', 'day': 'Monday', 'reason': 'future due date 2027-03-29 outside current week'}, {'task': 'Spring release shifts to 7:30pm kitchen closed / 8:30am latte', 'day': 'Monday', 'reason': 'future due date 2027-04-12 outside current week'}, {'task': 'Spring release shifts to 7:45pm kitchen closed / 8:30am latte', 'day': 'Monday', 'reason': 'future due date 2027-04-26 outside current week'}, {'task': 'Spring/fall rhythm returns: 8:00pm kitchen closed / 8:30am latte', 'day': 'Monday', 'reason': 'future due date 2027-05-10 outside current week'}, {'task': 'Summer ramp shifts to 7:45pm kitchen closed / 8:30am latte', 'day': 'Monday', 'reason': 'future due date 2027-06-07 outside current week'}, {'task': 'Summer rhythm shifts to 7:30pm kitchen closed / 8:30am latte', 'day': 'Monday', 'reason': 'future due date 2027-07-05 outside current week'}]
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260720-074437.json
+
+[2026-07-20T08:02:22.544704] schedule-from-todo-days — 2026-07-20
+  - target: Week planning tab
+  - packed To Do: {'ongoing': 12, 'not_completed': 112, 'other_active': 0, 'completed': 117, 'dropped': 44, 'active': 124, 'total': 285}
+  - wrote Week from To Do Day of the Week: {'Sun': 7, 'Mon': 7, 'Tue': 5, 'Wed': 5, 'Thu': 2, 'Fri': 6, 'Sat': 1}
+  - daily tabs cleared/not populated pending Kay approval
+  - skipped: []
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260720-080211.json
+
+[2026-07-20T08:15:33.796122] distribute-week — 2026-07-19
+  - week (Sunday boundary): 2026-07-19 .. 2026-07-25
+  - fanned Week plan → day tabs: {'Sun': 7, 'Mon': 7, 'Tue': 5, 'Wed': 5, 'Thu': 2, 'Fri': 6, 'Sat': 1}
+  - forced over collisions: False
+  - collisions at run: none
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-distribute-week-20260720-081530.json
+
+[2026-07-20T12:47:32.202654] carry-forward-day — sun-to-mon
+  - moved: 3
+  - source: Sun
+  - destination: Mon
+  - source packed: {'completed': 4, 'active': 0, 'blank': 46, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260720-124730.json
+  
+  - Sun slot 2 → Mon slot 8: Draft/schedule Greg thank-you and insurance contacts follow-up
+  - Sun slot 3 → Mon slot 9: Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions
+  - Sun slot 6 → Mon slot 10: Kids allowance: Sunday $10/week + Friday $10/day through Aug

@@ -1,56 +1,51 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260713-221821",
-  "sheet_id": "12rN-RtkEhfcApIo2Ep7J41Nq1KxR7TgziViNwy7k4HI",
+  "timestamp": "20260720-124730",
+  "sheet_id": "1QIpyr0hMR940-0fyfUIKV7xs4A-XcrDg06-8rXL273I",
   "ranges": {
-    "'Mon'!A17:E66": [
+    "'Sun'!A17:E66": [
       [
-        false,
-        "Text jewelry seller to reconnect"
+        true,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
       ],
       [
         false,
-        "Ask Arthur for coffee or pop by office while local for summer"
+        "Draft/schedule Greg thank-you and insurance contacts follow-up"
       ],
       [
         false,
-        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros"
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
+      ],
+      [
+        true,
+        "Create weekly schedule"
+      ],
+      [
+        true,
+        "Confirm LiveOak payroll transfer coverage"
       ],
       [
         false,
-        "Follow up with Denning for fashion/art/luxury introductions"
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
       ],
       [
-        false,
-        "Send thank-you to Greg and ask for the insurance owner intro he suggested"
+        true,
+        "Add Kay food staples to Sunday grocery run"
       ],
       [
-        false,
-        "Reconnect with Levi on prior art storage path"
+        false
       ],
       [
-        false,
-        "Circle back with Paul on art storage conversation"
+        false
       ],
       [
-        false,
-        "Ask family friend jewelry business owner for market-mapping conversation"
+        false
       ],
       [
-        false,
-        "Process payroll"
+        false
       ],
       [
-        false,
-        "Process conference registrations"
-      ],
-      [
-        false,
-        "Call IRS to confirm Form 8822-B address update"
-      ],
-      [
-        false,
-        "Follow up: Carlos, Lisa/Peter, Jose"
+        false
       ],
       [
         false
@@ -167,54 +162,49 @@
         false
       ]
     ],
-    "'Tue'!A17:E66": [
+    "'Mon'!A17:E66": [
       [
-        false,
-        "Prepare crisp thesis and owner-intro ask for Tuesday LI broker meeting"
+        true,
+        "Library block 10:00-2:30: jewelry industry analysis / market structure"
       ],
       [
         false,
-        "Text jewelry seller to reconnect"
+        "Start company analysis from public info + competitive analysis"
       ],
       [
         false,
-        "Ask Arthur for coffee or pop by office while local for summer"
+        "Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options"
       ],
       [
         false,
-        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros"
+        "Call IRS to confirm Form 8822-B address update"
+      ],
+      [
+        true,
+        "Process payroll"
       ],
       [
         false,
-        "Follow up with Denning for fashion/art/luxury introductions"
+        "Process conference registrations"
       ],
       [
         false,
-        "Send thank-you to Greg and ask for the insurance owner intro he suggested"
+        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte"
       ],
       [
-        false,
-        "Reconnect with Levi on prior art storage path"
+        false
       ],
       [
-        false,
-        "Circle back with Paul on art storage conversation"
+        false
       ],
       [
-        false,
-        "Ask family friend jewelry business owner for market-mapping conversation"
+        false
       ],
       [
-        false,
-        "Pull Megan pre-LOI prep meeting notes"
+        false
       ],
       [
-        false,
-        "Check beauty supply chain conference app for fragrance/beauty testing and packaging target lists"
-      ],
-      [
-        false,
-        "Review new SLD video"
+        false
       ],
       [
         false

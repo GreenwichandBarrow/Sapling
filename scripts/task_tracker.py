@@ -988,9 +988,10 @@ def _read_recurring_template(client: SheetsClient) -> list[dict]:
         f"'{TAB_TODO}'!A2:{col_letter(len(TODO_HEADERS) - 1)}{TODO_MAX_ROWS}")
     out: list[dict] = []
     for i, row in enumerate(rows):
+        status = (row[TODO_COL_STATUS] if len(row) > TODO_COL_STATUS else "").strip() if row else ""
         task = (row[TODO_COL_TASK] if len(row) > TODO_COL_TASK else "").strip() if row else ""
         horizon = (row[TODO_COL_HORIZON] if len(row) > TODO_COL_HORIZON else "").strip() if row else ""
-        if not task or not _todo_is_recurring(horizon):
+        if status != STATUS_ONGOING or not task or not _todo_is_recurring(horizon):
             continue
         day3 = _recurring_day3(horizon)
         if day3 is None:
@@ -1881,7 +1882,12 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
             preview["prior_todo_real_rows"] = len(todo_rows)
             preview["prior_todo_completed_rows"] = sum(1 for r in todo_rows if str(r[TODO_COL_STATUS]).strip() == "Completed")
             preview["missing_day_tasks_to_add"] = _append_missing_day_tasks_to_todo(prior_client, dry_run=True)["added"]
-            preview["recurring_rows_to_week"] = len([r for r in todo_rows if _todo_is_recurring(str(r[TODO_COL_HORIZON] or ""))])
+            preview["recurring_rows_to_week"] = len([
+                r for r in todo_rows
+                if len(r) > TODO_COL_HORIZON
+                and str(r[TODO_COL_STATUS] or "") == STATUS_ONGOING
+                and _todo_is_recurring(str(r[TODO_COL_HORIZON] or ""))
+            ])
         except Exception as e:
             preview["inspection_error"] = str(e)
         print(json.dumps(preview, indent=2, default=str))
@@ -2282,7 +2288,9 @@ def cmd_schedule_from_todo_days(args) -> int:
         pack_summary = _write_todo_rows_sorted(client, rows)
         rows = _read_real_todo_rows(client)
 
-    planned: dict[str, list[str]] = {d: [] for d in DAY_TAB_NAMES}
+    week_start, week_end = week_dates(date.today())[0], week_dates(date.today())[-1]
+    day_assigned: dict[str, list[str]] = {d: [] for d in DAY_TAB_NAMES}
+    recurring_baseline: dict[str, list[str]] = {d: [] for d in DAY_TAB_NAMES}
     skipped: list[dict] = []
     for r in rows:
         status = str(r[TODO_COL_STATUS] or "").strip()
@@ -2294,15 +2302,32 @@ def cmd_schedule_from_todo_days(args) -> int:
             day3 = _recurring_day3(horizon)
             if day3:
                 day_tab = _resolve_day_tab_name(day3)
-                if task not in planned[day_tab]:
-                    planned[day_tab].append(task)
+                if task not in recurring_baseline[day_tab]:
+                    recurring_baseline[day_tab].append(task)
         day_value = str(r[TODO_COL_DAY] if len(r) > TODO_COL_DAY else "" or "").strip()
         if day_value:
+            due_value = str(r[TODO_COL_DUE] if len(r) > TODO_COL_DUE else "" or "").strip()
+            if due_value:
+                try:
+                    due_date = datetime.strptime(due_value, "%Y-%m-%d").date()
+                except ValueError:
+                    skipped.append({"task": task, "day": day_value, "reason": f"unparseable due date {due_value!r}"})
+                    continue
+                if due_date > week_end:
+                    skipped.append({"task": task, "day": day_value, "reason": f"future due date {due_value} outside current week"})
+                    continue
             try:
                 day_tab = _resolve_day_tab_name(day_value)
             except SystemExit:
                 skipped.append({"task": task, "day": day_value, "reason": "unrecognized day"})
                 continue
+            if task not in day_assigned[day_tab]:
+                day_assigned[day_tab].append(task)
+
+    planned: dict[str, list[str]] = {d: [] for d in DAY_TAB_NAMES}
+    for day_tab in DAY_TAB_NAMES:
+        planned[day_tab].extend(day_assigned[day_tab])
+        for task in recurring_baseline[day_tab]:
             if task not in planned[day_tab]:
                 planned[day_tab].append(task)
 

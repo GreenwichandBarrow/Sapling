@@ -1,7 +1,7 @@
 {
   "verb": "schedule-from-todo-days",
-  "timestamp": "20260712-151843",
-  "sheet_id": "12rN-RtkEhfcApIo2Ep7J41Nq1KxR7TgziViNwy7k4HI",
+  "timestamp": "20260720-074437",
+  "sheet_id": "1QIpyr0hMR940-0fyfUIKV7xs4A-XcrDg06-8rXL273I",
   "ranges": {
     "'To Do'!A1:H400": [
       [
@@ -97,11 +97,11 @@
       ],
       [
         "On-going",
-        "Choose weekly Body Reset movement slots",
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions",
         "Home",
         "Body Reset",
         "",
-        "Sunday scheduling item. Choose realistic class/home movement slots based on childcare, location, and week constraints.",
+        "Summer version through Aug 24. Sunday planning should place already-defined slots, not decide the whole plan from scratch.",
         "Weekly Recurring Sun"
       ],
       [
@@ -264,7 +264,7 @@
         "Work",
         "Myself Renewed",
         "",
-        "",
+        "Resolution should approve nonprofit activation, Kay paid role/duties, W-2 payroll setup, NY minimum wage base pay, and business donation/startup funding handling.",
         "Short Term"
       ],
       [
@@ -287,11 +287,11 @@
       ],
       [
         "Not Completed",
-        "Make first personal donation of $1,000",
+        "Make initial business donation to Myself Renewed",
         "Work",
         "Myself Renewed",
         "",
-        "",
+        "Use business funds to seed the nonprofit; record cleanly in business books and nonprofit books, with donation receipt/documentation.",
         "Short Term"
       ],
       [
@@ -360,15 +360,6 @@
       [
         "Not Completed",
         "Connect Lily & Suzanne",
-        "Work",
-        "G&B",
-        "",
-        "",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Try Claude on website rebuild",
         "Work",
         "G&B",
         "",
@@ -649,230 +640,58 @@
       ],
       [
         "Not Completed",
-        "Build first-asset thesis map for luxury holdco",
-        "Work",
-        "G&B",
-        "",
-        "Use the 10-question Deal 1 filter; return top 1-3 niches for immediate sourcing.",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Website rebuild focus block",
-        "Work",
-        "G&B",
-        "",
-        "Today focus: website rebuild.",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Deck focus block",
-        "Work",
-        "G&B",
-        "",
-        "Today focus: deck work.",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Follow up: Carlos, Lisa/Peter, Jose",
-        "Work",
-        "G&B",
-        "",
-        "Today focus follow-up emails. Draft only; Kay sends.",
-        "Short Term",
-        "Monday"
-      ],
-      [
-        "Not Completed",
-        "North Star for week: convert warm/live paths into seller conversations and financials",
-        "Work",
-        "60-Day LOI Sprint",
-        "2026-07-18",
-        "Success by next Sunday: 2 seller/seller-adjacent conversations scheduled/completed; 1 path moved toward financials, second call, or clear process next step.",
-        "Short Term",
-        "Sun"
-      ],
-      [
-        "Not Completed",
-        "Text jewelry seller to reconnect",
-        "Work",
-        "60-Day LOI Sprint",
-        "2026-07-13",
-        "Highest-priority live seller path. Goal: next call, process clarity, and path toward financials.",
-        "Short Term",
-        "Mon"
-      ],
-      [
-        "Not Completed",
         "Ask Arthur for coffee or pop by office while local for summer",
         "Work",
         "60-Day LOI Sprint",
-        "2026-07-14",
-        "Goal: specialty insurance market map, named owners/books, and intro paths.",
-        "Short Term",
-        "Tue"
+        "",
+        "Deferred during Week 1 jewelry LOI sprint; revive only if jewelry path stalls or insurance angle becomes immediately useful.",
+        "Short Term"
       ],
       [
         "Not Completed",
-        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros",
+        "Draft/schedule Greg thank-you and insurance contacts follow-up",
         "Work",
         "60-Day LOI Sprint",
-        "2026-07-14",
-        "Goal: revive promised intros and map luxury asset insurance / jewelers block paths.",
+        "2026-07-19",
+        "Weekend task: thank Greg and ask for the insurance contacts he offered. Draft/schedule only; do not distract from Week 1 jewelry sprint.",
         "Short Term",
-        "Tue"
-      ],
-      [
-        "Not Completed",
-        "Follow up with Denning for fashion/art/luxury introductions",
-        "Work",
-        "60-Day LOI Sprint",
-        "2026-07-14",
-        "He understood the thesis and had planned intros. Goal: owner/advisor paths.",
-        "Short Term",
-        "Tue"
-      ],
-      [
-        "Not Completed",
-        "Send thank-you to Greg and ask for the insurance owner intro he suggested",
-        "Work",
-        "60-Day LOI Sprint",
-        "2026-07-14",
-        "General insurance may still lead to specialty owner referrals.",
-        "Short Term",
-        "Tue"
-      ],
-      [
-        "Not Completed",
-        "Prepare crisp thesis and owner-intro ask for Tuesday LI broker meeting",
-        "Work",
-        "60-Day LOI Sprint",
-        "2026-07-14",
-        "Ask for owner-led businesses that fit the G&B architecture, not generic deal flow.",
-        "Short Term",
-        "Tue"
-      ],
-      [
-        "Not Completed",
-        "Use Wednesday broker call to pressure-test thesis, target areas, and website clarity",
-        "Work",
-        "60-Day LOI Sprint",
-        "2026-07-15",
-        "She gets Kay's background. Goal: specific focus areas, seller ideas, and what website language helps her route deals.",
-        "Short Term",
-        "Wed"
-      ],
-      [
-        "Not Completed",
-        "Align analyst in Team TB on 60-day priority stack and list review criteria",
-        "Work",
-        "60-Day LOI Sprint",
-        "2026-07-15",
-        "Insurance/storage lists are raw material; rescore for Kay-touch, outsource, kill. Jewelry insurance needs separate build.",
-        "Short Term",
-        "Wed"
-      ],
-      [
-        "Not Completed",
-        "Use investor calls to test whether insurance/storage/luxury infrastructure lanes are financeable",
-        "Work",
-        "60-Day LOI Sprint",
-        "2026-07-16",
-        "Do not over-explain. Listen for confidence, objections, valuation/multiple constraints, and LDE appetite.",
-        "Short Term",
-        "Thu"
+        "Sun"
       ],
       [
         "Not Completed",
         "Reconnect with Levi on prior art storage path",
         "Work",
         "60-Day LOI Sprint",
-        "2026-07-18",
-        "Goal: revive path or get referrals. Storage remains active because it already produced serious conversations.",
-        "Short Term",
-        "Thu"
+        "",
+        "Deferred during Week 1 jewelry LOI sprint; revive only if jewelry path stalls.",
+        "Short Term"
       ],
       [
         "Not Completed",
         "Circle back with Paul on art storage conversation",
         "Work",
         "60-Day LOI Sprint",
-        "2026-07-18",
-        "Contact from David who owns art storage company and did not respond to texts. Use better channel if available.",
-        "Short Term",
-        "Thu"
+        "",
+        "Deferred during Week 1 jewelry LOI sprint; revive only if jewelry path stalls.",
+        "Short Term"
       ],
       [
         "Not Completed",
         "Ask family friend jewelry business owner for market-mapping conversation",
         "Work",
         "60-Day LOI Sprint",
-        "2026-07-18",
-        "Goal: legacy jewelry economics, insurance pain, repair/recurring opportunities, wholesale, inventory, and intro map.",
-        "Short Term",
-        "Thu"
+        "",
+        "Deferred during Week 1 jewelry LOI sprint; use only if specific market-mapping input is needed after deck gaps are clear.",
+        "Short Term"
       ],
       [
         "Not Completed",
         "Visit store carrying jewelry line to see product and merchandising in person",
         "Work",
         "60-Day LOI Sprint",
-        "2026-07-18",
-        "Diligence on live jewelry opportunity; build conviction and questions before next seller conversation.",
-        "Short Term",
-        "Fri"
-      ],
-      [
-        "Not Completed",
-        "Scope minimum viable G&B website update",
-        "Work",
-        "G&B Website",
-        "2026-07-18",
-        "One landing page with short holdco vision, values, companies we seek/contact. Remove investment partners and long bio. Conversion tool, not brand project.",
-        "Short Term",
-        "Fri"
-      ],
-      [
-        "Not Completed",
-        "Review existing insurance target list against new luxury asset risk criteria",
-        "Work",
-        "60-Day LOI Sprint",
-        "2026-07-18",
-        "Only after warm/live paths are moving. Score Kay-touch / outsourced / kill.",
-        "Short Term",
-        "Fri"
-      ],
-      [
-        "Not Completed",
-        "Review existing art storage target list against luxury asset custody criteria",
-        "Work",
-        "60-Day LOI Sprint",
-        "2026-07-18",
-        "Only after warm/live paths are moving. Score Kay-touch / outsourced / kill.",
-        "Short Term",
-        "Fri"
-      ],
-      [
-        "Not Completed",
-        "Decide whether to register for beauty supply chain conference attendee/exhibitor list",
-        "Work",
-        "60-Day LOI Sprint",
-        "2026-07-14",
-        "Only do it if registration gives access to a real usable list of packaging/kitting/assembly targets.",
-        "Short Term",
-        "Tue"
-      ],
-      [
-        "Completed",
-        "Choose this week\u2019s summer movement slots",
-        "Home",
-        "Body Reset",
-        "2026-07-12",
-        "Replaced by ongoing weekly Sunday task: Choose weekly Body Reset movement slots.",
-        "Short Term",
-        "Sun"
+        "",
+        "Deferred during Week 1 jewelry LOI sprint unless needed after seller engagement or public-info company analysis.",
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -880,9 +699,9 @@
         "Home",
         "Family Wealth / Kids Modeling",
         "2026-07-18",
-        "Friday family admin prep only. Do not send Friday; send next business day.",
+        "Weekend top priority: prep all materials to go out to agencies. Do not send until next business day unless Kay chooses otherwise.",
         "Short Term",
-        "Fri"
+        "Sat"
       ],
       [
         "Not Completed",
@@ -902,6 +721,595 @@
         "2026-07-20",
         "Prepared on Friday; send next business day because Friday outreach is lower quality, especially in summer.",
         "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Check beauty supply chain conference app for fragrance/beauty testing and packaging target lists",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-14",
+        "Conference attendee data opens/starts tomorrow. Extract usable targets only; opportunistic lane, not allowed to displace warm-path outreach.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Send JPEGs for adult school IDs to PS11",
+        "Home",
+        "Home",
+        "",
+        "PS11 requested JPEGs for adult school IDs.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Pay RSM",
+        "Home",
+        "Home",
+        "2026-08-01",
+        "RSM requested payment by Aug 1.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Pay Mark for swimming",
+        "Home",
+        "Home",
+        "",
+        "I owe Mark for swimming.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Send Emily 504",
+        "Home",
+        "Home",
+        "",
+        "Send Emily 504.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Buy new Zane dragon LEGO for Kaiden",
+        "Home",
+        "Home",
+        "2026-08-01",
+        "Buy the new Zane dragon LEGO for Kaiden.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Find dine-in theater for Minions",
+        "Home",
+        "Home",
+        "",
+        "Find a dine-in theater showing Minions.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Library block 10:00-2:30: jewelry industry analysis / market structure",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-20",
+        "Week 1 build sprint. Output: market structure and industry analysis for LOI-ready deck.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Start company analysis from public info + competitive analysis",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-20",
+        "Use public information only. Build company/brand facts, positioning, distribution, pricing, competitors, and visible growth gaps.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-20",
+        "Controlled outreach. Goal: move toward conversation and minimum information without making her feel pushed.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Library block 10:00-2:30: continue jewelry deck",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-21",
+        "Continue building the LOI-ready deck and fill gaps from Monday analysis.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Start growth levers for jewelry brand",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-21",
+        "Growth levers before What We Need to Believe: wholesale/distribution, ecommerce, CRM/private client, operational planning, product/category expansion, infrastructure adjacencies.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Prepare high-level seller data ask draft",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-21",
+        "Draft soft ask for EBITDA/owner earnings, revenue mix, inventory, lease/key team, and price/transition expectations.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Library block 10:00-2:30: write What We Need to Believe page",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-22",
+        "Write after growth levers are clearer. Frame as LOI decision criteria, not investor-permission request.",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Not Completed",
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-22",
+        "Show why this business may be different from the category risks investors will assume.",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Not Completed",
+        "Start holdco vision + infrastructure adjacency map",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-22",
+        "Map jewelry brand as possible jewel/anchor plus infrastructure adjacencies: insurance, repair/restoration, storage/custody, logistics, compliance, software/services.",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Not Completed",
+        "Library block 10:00-2:30: build potential offer structures and transition/options framing",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-23",
+        "Include full sale, seller note, staged sale, rollover/advisory role, legacy, team, liquidity, continued involvement, upside.",
+        "Short Term",
+        "Thursday"
+      ],
+      [
+        "Not Completed",
+        "Narrow/edit must-have diligence questions to top 5",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-23",
+        "Edit down to the five items required before LOI: EBITDA/earnings, revenue mix, inventory, price/transition expectations, key team/lease exposure.",
+        "Short Term",
+        "Thursday"
+      ],
+      [
+        "Not Completed",
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility",
+        "Work",
+        "G&B Website",
+        "2026-07-24",
+        "Only if it supports seller/investor credibility. Light lookbook-style design, not a full brand project.",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Reduce plastics",
+        "Home",
+        "Home Environment",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Reverse osmosis filtration",
+        "Home",
+        "Home Environment",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Research creatine as a potential daily add",
+        "Home",
+        "Body Reset",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Draft Kay nonprofit role description and minimum-wage payroll assumptions",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Define actual services/duties, expected hours, work location, and base wage. NY 2026 minimum wage: $17/hr for NYC, Long Island, Westchester; $16/hr for rest of NY.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Set Kay up as W-2 employee in nonprofit payroll",
+        "Work",
+        "Myself Renewed",
+        "",
+        "After board approval: enter Kay as employee, configure withholding/payroll taxes, choose pay schedule, and confirm wage matches NY minimum wage for work location.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Run first nonprofit payroll and confirm W-2/payroll-tax records",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Execute first payroll only after funding, board approval, and employee setup are complete; confirm paystub, withholding, employer taxes, and W-2 reporting path.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Monitor/follow up with Eric on Kilian testing",
+        "Home",
+        "Kilian",
+        "2026-07-21",
+        "Email sent 2026-07-17. Keep an eye out for response; follow up by Tuesday if no reply.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Monitor/follow up with Dr. Zullo on assessment request",
+        "Home",
+        "Kilian",
+        "2026-07-21",
+        "Request sent 2026-07-17. Keep an eye out for response; follow up by Tuesday if no reply.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-07-20",
+        "Soft seasonal ramp begins. Hold 8:00pm stop first, then move in 15-minute increments only after the rhythm feels established.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Fasting rhythm shifts to 7:45pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-08-17",
+        "Summer ramp step 2. Only a 15-minute shift after nearly a month at 8:00pm.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Fasting rhythm shifts to 7:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-09-14",
+        "Summer/suburbs defense step 3. Hold through end of September.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Fall fasting rhythm resets to 8:00pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-10-01",
+        "Fall natural-strength season: more walking/classes. Return to 8:00pm stop while preserving no late-night eating.",
+        "Short Term",
+        "Thursday"
+      ],
+      [
+        "Not Completed",
+        "Winter ramp begins: 7:45pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-11-16",
+        "Pre-winter soft step. Start tightening before December darkness, only 15 minutes from fall rhythm.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Winter ramp shifts to 7:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-12-01",
+        "Winter defense step 2. Hold for two weeks.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Winter ramp shifts to 7:15pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-12-15",
+        "Winter defense step 3. Small shift; keep dinner/family rhythm intact.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Winter ramp shifts to 7:00pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-01-01",
+        "January defense step. This is when darkness/low-walking risk is highest.",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Winter ramp shifts to 6:45pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-01-15",
+        "Late-January defense step. Only tighten if prior step is stable enough.",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Winter target rhythm begins: 6:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-02-01",
+        "Peak winter defense. 14-hour fast. Hold through February if it feels stable.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Spring release begins: 6:45pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-03-01",
+        "Soft transition out of winter. Add only 15 minutes back first.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Spring release shifts to 7:00pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-03-15",
+        "Movement/walking should be improving; release slowly.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Spring release shifts to 7:15pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-03-29",
+        "Continue gentle release out of winter as movement increases.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Spring release shifts to 7:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-04-12",
+        "Continue gradual return toward natural strength-season rhythm.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Spring release shifts to 7:45pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-04-26",
+        "Almost back to spring/fall default; keep no late-night eating intact.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Spring/fall rhythm returns: 8:00pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-05-10",
+        "Natural strength-season default. 12.5-hour fast, supports higher walking/classes while preventing late-night eating.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Summer ramp shifts to 7:45pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-06-07",
+        "Soft summer drift defense step 1. 15-minute shift only.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Summer rhythm shifts to 7:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-07-05",
+        "Summer/suburbs defense default. Hold through summer if stable.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Set up Claude workflow for Friday: slides + website aesthetics",
+        "Work",
+        "G&B Website",
+        "2026-07-24",
+        "- create/use Claude Project named G&B Slide + Website Support\n- for PowerPoint: use Claude app Project chat, not Claude Code\n- for website: use Claude Project + Artifacts for aesthetic direction/mockups\n- Claude Code only for actual repo/file edits",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
+        "Work",
+        "G&B",
+        "",
+        "Full sale, staged transition, seller financing, rollover/advisory role, or broader process",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Send thank-you to Greg and ask for the insurance owner intro he suggested",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review new SLD video",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow up: Carlos, Lisa/Peter, Jose",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Deferred during Week 1 jewelry LOI sprint; revive only if jewelry path stalls or jeweler\u2019s block becomes urgent.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow up: Carlos, Lisa/Peter, Jose",
+        "Work",
+        "G&B",
+        "",
+        "Today focus follow-up emails. Draft only; Kay sends.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Completed",
+        "North Star for week: convert warm/live paths into seller conversations and financials",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-18",
+        "Success by next Sunday: 2 seller/seller-adjacent conversations scheduled/completed; 1 path moved toward financials, second call, or clear process next step.",
+        "Short Term",
+        "Sun"
+      ],
+      [
+        "Completed",
+        "Text jewelry seller to reconnect",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-14",
+        "Rollover to Tuesday. Highest-priority live seller path. Goal: next call, process clarity, and path toward financials.",
+        "Short Term",
+        "Tue"
+      ],
+      [
+        "Completed",
+        "Prepare crisp thesis and owner-intro ask for Tuesday LI broker meeting",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-14",
+        "Ask for owner-led businesses that fit the G&B architecture, not generic deal flow.",
+        "Short Term",
+        "Tue"
+      ],
+      [
+        "Completed",
+        "Use Wednesday broker call to pressure-test thesis, target areas, and website clarity",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-15",
+        "She gets Kay\u2019s background. Goal: specific focus areas, seller ideas, and what website language helps her route deals.",
+        "Short Term",
+        "Wed"
+      ],
+      [
+        "Completed",
+        "Align analyst in Team TB on 60-day priority stack and list review criteria",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Removed per Kay on 2026-07-17; not needed for Week 1 jewelry LOI sprint.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Investor proof/evidence discussion for insurance/storage/luxury infrastructure Deal 1 or LDE path",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Deferred until a specific deal is ready for investor review. Investors broadly like the lanes; abstract proof-standard discussion is premature.",
+        "Long Term"
+      ],
+      [
+        "Completed",
+        "Review existing insurance target list against new luxury asset risk criteria",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-12",
+        "Today review: score Kay-touch / outsourced / kill against luxury asset risk criteria.",
+        "Short Term",
+        "Sun"
+      ],
+      [
+        "Completed",
+        "Review existing art storage target list against luxury asset custody criteria",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-12",
+        "Today review: score Kay-touch / outsourced / kill against luxury asset custody criteria.",
+        "Short Term",
+        "Sun"
+      ],
+      [
+        "Completed",
+        "Registered for beauty supply chain conference app access",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-13",
+        "Completed: registered for app access to fragrance/beauty testing and packaging target lists; not attending conference.",
+        "Short Term",
+        "Tue"
+      ],
+      [
+        "Completed",
+        "Choose this week\u2019s summer movement slots",
+        "Home",
+        "Body Reset",
+        "2026-07-12",
+        "Replaced by ongoing weekly Sunday task: Choose weekly Body Reset movement slots.",
+        "Short Term",
+        "Sun"
       ],
       [
         "Completed",
@@ -1780,6 +2188,106 @@
         "Short Term"
       ],
       [
+        "Completed",
+        "Set annual fasting-window calendar alerts with Barrie",
+        "Home",
+        "Body Reset",
+        "2026-07-20",
+        "Completed: Barrie created the daily kitchen-closed calendar events. Daily To Do checklist now carries the current latte/kitchen-closed/fast-duration line.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Completed",
+        "Choose weekly Body Reset movement slots",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Discuss jewelry opportunity with Sara: fundability, Deal 1 fit, and likely investor objections",
+        "Work",
+        "G&B",
+        "",
+        "Ask what would make investors accept vs reject this as retail",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Use WSN mentor group to pressure-test seller psychology and transition conversation",
+        "Work",
+        "G&B",
+        "",
+        "Focus on helping a 76-year-old legacy owner evaluate options without pushing",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Use investor calls to ask what proof/evidence they need behind insurance/storage/luxury infrastructure Deal 1 or LDE path",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Thursday follow-up checkpoint for Monday direct outreach non-responses",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Try Claude on website rebuild",
+        "Work",
+        "G&B",
+        "",
+        "Superseded by Friday lookbook-style G&B website review in Week 1 jewelry LOI sprint.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Build first-asset thesis map for luxury holdco",
+        "Work",
+        "G&B",
+        "",
+        "Superseded by active jewelry brand / holdco sprint beginning 2026-07-20.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Website rebuild focus block",
+        "Work",
+        "G&B",
+        "",
+        "Superseded by Friday lookbook-style G&B website review in Week 1 jewelry LOI sprint.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Deck focus block",
+        "Work",
+        "G&B",
+        "",
+        "Superseded by explicit jewelry sprint deck tasks for 2026-07-20 week.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Scope minimum viable G&B website update",
+        "Work",
+        "G&B Website",
+        "",
+        "Superseded by Friday lookbook-style G&B website review focused only on seller/investor credibility.",
+        "Short Term"
+      ],
+      [
         "Dropped",
         "Look into music lessons",
         "Home",
@@ -1877,11 +2385,254 @@
         "",
         "",
         "Short Term"
+      ],
+      [
+        "Dropped",
+        "Thursday follow-up checkpoint for Tuesday direct outreach non-responses",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Superseded by Week 1 jewelry LOI sprint. No broad outreach/follow-up checkpoint next week unless jewelry path stalls.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Sunday schedule build: add Week 1 jewelry sprint plan to next week\u2019s green priority bands",
+        "Work",
+        "G&B",
+        "2026-07-19",
+        "Replaced by explicit Week 1 jewelry sprint rows with day assignments in To Do.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Fasting Phase 1 begins: 8pm kitchen closed / 8am latte",
+        "Home",
+        "Body Reset",
+        "2026-07-20",
+        "Superseded by annual seasonal fasting rhythm on 2026-07-17.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Fasting Phase 2 begins: 7:45pm kitchen closed / 8am latte",
+        "Home",
+        "Body Reset",
+        "2026-08-03",
+        "Superseded by annual seasonal fasting rhythm on 2026-07-17.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Fasting Phase 3 begins: 7:30pm kitchen closed / 8am latte",
+        "Home",
+        "Body Reset",
+        "2026-08-24",
+        "Superseded by annual seasonal fasting rhythm on 2026-07-17.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Fasting Phase 4 begins: 7:00pm kitchen closed / 8am latte",
+        "Home",
+        "Body Reset",
+        "2026-09-14",
+        "Superseded by annual seasonal fasting rhythm on 2026-07-17.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Fasting Phase 5 begins: 6:45pm kitchen closed / 8:15am latte",
+        "Home",
+        "Body Reset",
+        "2026-09-28",
+        "Superseded by annual seasonal fasting rhythm on 2026-07-17.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Fasting target phase begins: 6:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-10-12",
+        "Superseded by annual seasonal fasting rhythm on 2026-07-17.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Summer fasting rhythm active: 7:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-07-20",
+        "Superseded by slower body-rhythm phasing on 2026-07-17; no abrupt seasonal jumps.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Fall fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-10-01",
+        "Superseded by slower body-rhythm phasing on 2026-07-17; no abrupt seasonal jumps.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Winter fasting rhythm begins: 6:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-12-01",
+        "Superseded by slower body-rhythm phasing on 2026-07-17; winter ramps across Dec/Jan/Feb.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Spring fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-03-01",
+        "Superseded by slower body-rhythm phasing on 2026-07-17; spring ramps back out.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Summer fasting rhythm begins: 7:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-06-01",
+        "Superseded by slower body-rhythm phasing on 2026-07-17; no abrupt seasonal jumps.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Daily meal rhythm: break fast + lunch parfait + afternoon snack + dinner protein/fiber/fat",
+        "Home",
+        "Body Reset",
+        "",
+        "Added too early; Kay wants to discuss meal architecture before adding recurring daily checklist items.",
+        "Weekly Recurring Sun"
+      ],
+      [
+        "Dropped",
+        "Daily meal rhythm: break fast + lunch parfait + afternoon snack + dinner protein/fiber/fat",
+        "Home",
+        "Body Reset",
+        "",
+        "Added too early; Kay wants to discuss meal architecture before adding recurring daily checklist items.",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "Dropped",
+        "Daily meal rhythm: break fast + lunch parfait + afternoon snack + dinner protein/fiber/fat",
+        "Home",
+        "Body Reset",
+        "",
+        "Added too early; Kay wants to discuss meal architecture before adding recurring daily checklist items.",
+        "Weekly Recurring Tue"
+      ],
+      [
+        "Dropped",
+        "Daily meal rhythm: break fast + lunch parfait + afternoon snack + dinner protein/fiber/fat",
+        "Home",
+        "Body Reset",
+        "",
+        "Added too early; Kay wants to discuss meal architecture before adding recurring daily checklist items.",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "Dropped",
+        "Daily meal rhythm: break fast + lunch parfait + afternoon snack + dinner protein/fiber/fat",
+        "Home",
+        "Body Reset",
+        "",
+        "Added too early; Kay wants to discuss meal architecture before adding recurring daily checklist items.",
+        "Weekly Recurring Thu"
+      ],
+      [
+        "Dropped",
+        "Daily meal rhythm: break fast + lunch parfait + afternoon snack + dinner protein/fiber/fat",
+        "Home",
+        "Body Reset",
+        "",
+        "Added too early; Kay wants to discuss meal architecture before adding recurring daily checklist items.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "Daily meal rhythm: break fast + lunch parfait + afternoon snack + dinner protein/fiber/fat",
+        "Home",
+        "Body Reset",
+        "",
+        "Added too early; Kay wants to discuss meal architecture before adding recurring daily checklist items.",
+        "Weekly Recurring Sat"
+      ],
+      [
+        "Dropped",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        "Home",
+        "Body Reset",
+        "",
+        "Moved into daily tab checklist rows instead of recurring To Do task rows.",
+        "Weekly Recurring Sun"
+      ],
+      [
+        "Dropped",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        "Home",
+        "Body Reset",
+        "",
+        "Moved into daily tab checklist rows instead of recurring To Do task rows.",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "Dropped",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        "Home",
+        "Body Reset",
+        "",
+        "Moved into daily tab checklist rows instead of recurring To Do task rows.",
+        "Weekly Recurring Tue"
+      ],
+      [
+        "Dropped",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        "Home",
+        "Body Reset",
+        "",
+        "Moved into daily tab checklist rows instead of recurring To Do task rows.",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "Dropped",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        "Home",
+        "Body Reset",
+        "",
+        "Moved into daily tab checklist rows instead of recurring To Do task rows.",
+        "Weekly Recurring Thu"
+      ],
+      [
+        "Dropped",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        "Home",
+        "Body Reset",
+        "",
+        "Moved into daily tab checklist rows instead of recurring To Do task rows.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        "Home",
+        "Body Reset",
+        "",
+        "Moved into daily tab checklist rows instead of recurring To Do task rows.",
+        "Weekly Recurring Sat"
       ]
     ],
     "'Week'!A1:O38": [
       [
-        "WEEK OF Jul 12-18"
+        "WEEK OF Jul 19-25"
       ],
       [],
       [
@@ -1891,19 +2642,19 @@
       [],
       [
         "",
-        "SUNDAY \u00b7 Jul 12",
+        "SUNDAY \u00b7 Jul 19",
         "",
-        "MONDAY \u00b7 Jul 13",
+        "MONDAY \u00b7 Jul 20",
         "",
-        "TUESDAY \u00b7 Jul 14",
+        "TUESDAY \u00b7 Jul 21",
         "",
-        "WEDNESDAY \u00b7 Jul 15",
+        "WEDNESDAY \u00b7 Jul 22",
         "",
-        "THURSDAY \u00b7 Jul 16",
+        "THURSDAY \u00b7 Jul 23",
         "",
-        "FRIDAY \u00b7 Jul 17",
+        "FRIDAY \u00b7 Jul 24",
         "",
-        "SATURDAY \u00b7 Jul 18"
+        "SATURDAY \u00b7 Jul 25"
       ],
       [],
       [
@@ -1917,10 +2668,11 @@
         false,
         "Niche intel review",
         false,
-        "Use investor calls to test whether insurance/storage/luxury infrastructure lanes are financeable",
+        "Library block 10:00-2:30: build potential offer structures and transition/options framing",
         false,
         "Weekly review \u2014 system health, M&A activities, budget",
-        false
+        false,
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
       ],
       [
         "",
@@ -1929,11 +2681,11 @@
         false,
         "Process conference registrations",
         false,
-        "Ask Arthur for coffee or pop by office while local for summer",
+        "Library block 10:00-2:30: continue jewelry deck",
         false,
-        "Use Wednesday broker call to pressure-test thesis, target areas, and website clarity",
+        "Library block 10:00-2:30: write What We Need to Believe page",
         false,
-        "Reconnect with Levi on prior art storage path",
+        "Narrow/edit must-have diligence questions to top 5",
         false,
         "Check NYC Housing Connect for new Manhattan lotteries",
         false
@@ -1945,11 +2697,11 @@
         false,
         "Call IRS to confirm Form 8822-B address update",
         false,
-        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros",
+        "Start growth levers for jewelry brand",
         false,
-        "Align analyst in Team TB on 60-day priority stack and list review criteria",
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
         false,
-        "Circle back with Paul on art storage conversation",
+        "Fall fasting rhythm resets to 8:00pm kitchen closed / 8:30am latte",
         false,
         "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
         false
@@ -1959,91 +2711,11 @@
         false,
         "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
         false,
-        "Follow up: Carlos, Lisa/Peter, Jose",
+        "Library block 10:00-2:30: jewelry industry analysis / market structure",
         false,
-        "Follow up with Denning for fashion/art/luxury introductions",
+        "Prepare high-level seller data ask draft",
         false,
-        "",
-        false,
-        "Ask family friend jewelry business owner for market-mapping conversation",
-        false,
-        "Visit store carrying jewelry line to see product and merchandising in person",
-        false
-      ],
-      [
-        "",
-        false,
-        "Choose weekly Body Reset movement slots",
-        false,
-        "Text jewelry seller to reconnect",
-        false,
-        "Send thank-you to Greg and ask for the insurance owner intro he suggested",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Scope minimum viable G&B website update",
-        false
-      ],
-      [
-        "",
-        false,
-        "Add Kay food staples to Sunday grocery run",
-        false,
-        "",
-        false,
-        "Prepare crisp thesis and owner-intro ask for Tuesday LI broker meeting",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Review existing insurance target list against new luxury asset risk criteria",
-        false
-      ],
-      [
-        "",
-        false,
-        "North Star for week: convert warm/live paths into seller conversations and financials",
-        false,
-        "",
-        false,
-        "Decide whether to register for beauty supply chain conference attendee/exhibitor list",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Review existing art storage target list against luxury asset custody criteria",
-        false
-      ],
-      [
-        "",
-        false,
-        "Choose this week's summer movement slots",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Pull contact info and prepare kids modeling submissions to 5 referred agencies",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
+        "Start holdco vision + infrastructure adjacency map",
         false,
         "",
         false,
@@ -2053,9 +2725,73 @@
       [
         "",
         false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions",
+        false,
+        "Start company analysis from public info + competitive analysis",
+        false,
+        "Winter ramp shifts to 7:30pm kitchen closed / 8:30am latte",
+        false,
         "",
         false,
         "",
+        false,
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility",
+        false
+      ],
+      [
+        "",
+        false,
+        "Add Kay food staples to Sunday grocery run",
+        false,
+        "Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options",
+        false,
+        "Winter ramp shifts to 7:15pm kitchen closed / 8:30am latte",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Winter ramp shifts to 7:00pm kitchen closed / 8:30am latte",
+        false
+      ],
+      [
+        "",
+        false,
+        "Draft/schedule Greg thank-you and insurance contacts follow-up",
+        false,
+        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Winter ramp shifts to 6:45pm kitchen closed / 8:30am latte",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Fasting rhythm shifts to 7:45pm kitchen closed / 8:30am latte",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Set up Claude workflow for Friday: slides + website aesthetics",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Fasting rhythm shifts to 7:30pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -2071,7 +2807,7 @@
         false,
         "",
         false,
-        "",
+        "Winter ramp begins: 7:45pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -2087,7 +2823,7 @@
         false,
         "",
         false,
-        "",
+        "Winter target rhythm begins: 6:30pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -2103,7 +2839,7 @@
         false,
         "",
         false,
-        "",
+        "Spring release begins: 6:45pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -2119,7 +2855,7 @@
         false,
         "",
         false,
-        "",
+        "Spring release shifts to 7:00pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -2135,7 +2871,7 @@
         false,
         "",
         false,
-        "",
+        "Spring release shifts to 7:15pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -2151,7 +2887,7 @@
         false,
         "",
         false,
-        "",
+        "Spring release shifts to 7:30pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -2167,7 +2903,7 @@
         false,
         "",
         false,
-        "",
+        "Spring release shifts to 7:45pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -2183,7 +2919,7 @@
         false,
         "",
         false,
-        "",
+        "Spring/fall rhythm returns: 8:00pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -2199,7 +2935,23 @@
         false,
         "",
         false,
+        "Summer ramp shifts to 7:45pm kitchen closed / 8:30am latte",
+        false,
         "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Summer rhythm shifts to 7:30pm kitchen closed / 8:30am latte",
         false,
         "",
         false,

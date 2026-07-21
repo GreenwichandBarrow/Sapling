@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-17",
+  "updated_at": "2026-07-21",
   "items": [
     {
       "bucket": "thank",
@@ -997,11 +997,19 @@
       "email": "jackie@crowneatlantic.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-15",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Jackie I Kay",
       "event_date": "2026-07-14",
-      "calendar_event_id": "1hci4lem3p3hg2qq3luc6t02tu"
+      "calendar_event_id": "1hci4lem3p3hg2qq3luc6t02tu",
+      "completed_at": "2026-07-20",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19f6693fb987dd4e, subject 'Great speaking with you', sent 2026-07-20 17:58.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19f6693fb987dd4e",
+        "subject": "Great speaking with you",
+        "sent_at": "2026-07-20 17:58"
+      }
     },
     {
       "bucket": "thank",
@@ -1061,11 +1069,19 @@
       "email": "jackie@crowneatlantic.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-16",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Jackie I Kay",
       "event_date": "2026-07-15",
-      "calendar_event_id": "1hci4lem3p3hg2qq3luc6t02tu"
+      "calendar_event_id": "1hci4lem3p3hg2qq3luc6t02tu",
+      "completed_at": "2026-07-20",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19f6693fb987dd4e, subject 'Great speaking with you', sent 2026-07-20 17:58.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19f6693fb987dd4e",
+        "subject": "Great speaking with you",
+        "sent_at": "2026-07-20 17:58"
+      }
     },
     {
       "bucket": "thank",

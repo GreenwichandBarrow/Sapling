@@ -1,22 +1,22 @@
 {
-  "date": "2026-07-21",
+  "date": "2026-07-22",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-07-21.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-07-22.md",
   "email_scan_status": "live",
   "deals_found": 0,
-  "broker_opportunistic": 1,
-  "near_misses": 4,
-  "sources_scanned": 16,
+  "broker_opportunistic": 0,
+  "near_misses": 6,
+  "sources_scanned": 18,
   "sources_covered": {
-    "marketplace": 6,
-    "email_newsletters": 7,
+    "marketplace": 7,
+    "email_newsletters": 8,
     "direct_email": 3
   },
-  "manual_check_sources": [
-    "N/A"
-  ],
+  "manual_check_sources": [],
   "sources_blocked_verified": 0,
   "sources_blocked_single_attempt": 0,
-  "volume_status": "BELOW TARGET",
-  "needs_attention": []
+  "volume_status": "CRITICAL",
+  "needs_attention": [
+    "critical volume: 0 surfaced matches; 7-day average 0.0/day"
+  ]
 }

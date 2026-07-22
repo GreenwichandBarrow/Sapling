@@ -3,27 +3,8 @@
   "deal_items": 42,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-21T06:50:00.878985-04:00",
-  "follow_through_completed_items": [
-    {
-      "bucket": "thank",
-      "completed_at": "2026-07-20",
-      "event": "Jackie I Kay",
-      "person": "Jackie",
-      "sent_at": "2026-07-20 17:58",
-      "sent_subject": "Great speaking with you",
-      "sent_thread_id": "19f6693fb987dd4e"
-    },
-    {
-      "bucket": "thank",
-      "completed_at": "2026-07-20",
-      "event": "Jackie I Kay",
-      "person": "Jackie",
-      "sent_at": "2026-07-20 17:58",
-      "sent_subject": "Great speaking with you",
-      "sent_thread_id": "19f6693fb987dd4e"
-    }
-  ],
+  "fetched_at": "2026-07-21T09:45:21.120175-04:00",
+  "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -70,7 +51,6 @@
   "input_status": "ok",
   "needs_kay": [
     "42 broker/listing row(s) extracted",
-    "2 email follow-through row(s) auto-completed from sent-mail evidence: Jackie; Jackie",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting)"
   ],

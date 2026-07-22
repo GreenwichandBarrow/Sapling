@@ -1,0 +1,16 @@
+
+[2026-07-21T09:45:00.173668] carry-forward-day — mon-to-tue
+  - moved: 8
+  - source: Mon
+  - destination: Tue
+  - source packed: {'completed': 2, 'active': 0, 'blank': 48, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260721-094457.json
+  
+  - Mon slot 2 → Tue slot 6: Start company analysis from public info + competitive analysis
+  - Mon slot 3 → Tue slot 7: Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options
+  - Mon slot 4 → Tue slot 8: Call IRS to confirm Form 8822-B address update
+  - Mon slot 6 → Tue slot 9: Process conference registrations
+  - Mon slot 7 → Tue slot 10: Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte
+  - Mon slot 8 → Tue slot 11: Draft/schedule Greg thank-you and insurance contacts follow-up
+  - Mon slot 9 → Tue slot 12: Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions
+  - Mon slot 10 → Tue slot 13: Kids allowance: Sunday $10/week + Friday $10/day through Aug

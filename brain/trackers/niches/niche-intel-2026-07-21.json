@@ -1,0 +1,57 @@
+{
+  "run_date": "2026-07-21",
+  "run_mode": "tuesday",
+  "runner": "Codex/systemd",
+  "niches_evaluated": 3,
+  "niches_identified": 3,
+  "one_pagers_written": 3,
+  "scorecards_written": 3,
+  "tracker_updated": true,
+  "runtime_seconds": 2400,
+  "zero_finding_reason": "Not applicable: three niche candidates were identified, scored, written to Drive, and appended to WEEKLY REVIEW.",
+  "sources_covered": {
+    "recent_track": "Covered web/social, newsletters, Granola calls, Gmail deal flow/investors, vault research, and passive signals. Gaps: Reddit 403 via last30days, X/YouTube unavailable, Polymarket no useful markets, one Axial janitorial body partially extractable, no CIM attachments opened.",
+    "historical_track": "Covered historical vault calls, historical Gmail, and killed/tabled tracker context. Gaps: OneNote MCP unavailable, ChatGPT export missing from VPS, historical Granola pagination not exhausted."
+  },
+  "source_coverage_diagnostics": {
+    "gmail_readonly": true,
+    "gmail_no_send_used": true,
+    "op_env_resolved": true,
+    "onenote": "unavailable: no OneNote MCP tools exposed and no local export found",
+    "chatgpt_export": "missing: ~/Downloads absent and no selected_business_conversations.json found under /home/ubuntu",
+    "last30days": "partial: Reddit returned 403; X/YouTube unavailable; Polymarket produced no useful niche markets",
+    "attio": "not checked: skill example conflicted with secret-handling rules; CRM duplicate check remains an open loop"
+  },
+  "open_loops_infra": [
+    "Expose or export OneNote SEARCH FUND notebook to scheduled Codex environment.",
+    "Place the selected ChatGPT export on the VPS or remove it from the required historical source list.",
+    "Add a safe Attio CRM lookup path that does not read secrets from .env directly.",
+    "Add attachment/CIM opening support to the Gmail gather pass."
+  ],
+  "niches": [
+    {
+      "name": "Yacht Property Management for Private Yacht Owners in Coastal HNW Markets",
+      "score": 2.12,
+      "drive_folder": "https://drive.google.com/drive/folders/1rlCxKK2lYH2XHz33q17ZzhO9Gf10ukSQ",
+      "one_pager": "https://docs.google.com/presentation/d/1FKtFSjH4ZgaplJZKVcGFBn-9a8m9C4Gx/edit",
+      "scorecard": "https://docs.google.com/spreadsheets/d/12OeFnnBLYHo3NokwGgYzGR_vLPv5QLl-/edit",
+      "weekly_review_row": 41
+    },
+    {
+      "name": "MoCRA-Compliant Beauty 3PL, Kitting, and Fulfillment for Independent Cosmetics Brands",
+      "score": 2.13,
+      "drive_folder": "https://drive.google.com/drive/folders/1Rcp1HYFJnBo60JZDOwyxI61FJGMdxmO2",
+      "one_pager": "https://docs.google.com/presentation/d/1msCpE52gq3Tk2kWVG-6oVdhCQSh-pPnO/edit",
+      "scorecard": "https://docs.google.com/spreadsheets/d/1WFZ1xMHTw9aW7OY2uxszdL-4SgcFpAB4/edit",
+      "weekly_review_row": 42
+    },
+    {
+      "name": "Jeweler's Block Insurance Brokerage for Independent Jewelry Retailers, Wholesalers, and Pawn/Jewelry Trade Businesses",
+      "score": 1.93,
+      "drive_folder": "https://drive.google.com/drive/folders/1v89CuViXP9UYHAN646RFF-wd6TX4Miac",
+      "one_pager": "https://docs.google.com/presentation/d/18UhRulGaWoq1vs-3f-lEporgQvTdtMt-/edit",
+      "scorecard": "https://docs.google.com/spreadsheets/d/19WK6m-g9BmN2PiRFdp-XYb2qFUJcx7rG/edit",
+      "weekly_review_row": 43
+    }
+  ]
+}

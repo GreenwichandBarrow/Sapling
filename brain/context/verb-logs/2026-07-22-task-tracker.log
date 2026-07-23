@@ -1,0 +1,19 @@
+
+[2026-07-22T09:18:10.552536] carry-forward-day — tue-to-wed
+  - moved: 11
+  - source: Tue
+  - destination: Wed
+  - source packed: {'completed': 1, 'active': 0, 'blank': 49, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260722-091806.json
+  
+  - Tue slot 2 → Wed slot 6: Start growth levers for jewelry brand
+  - Tue slot 3 → Wed slot 7: Prepare high-level seller data ask draft
+  - Tue slot 4 → Wed slot 8: Pull Megan pre-LOI prep meeting notes
+  - Tue slot 6 → Wed slot 9: Start company analysis from public info + competitive analysis
+  - Tue slot 7 → Wed slot 10: Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options
+  - Tue slot 8 → Wed slot 11: Call IRS to confirm Form 8822-B address update
+  - Tue slot 9 → Wed slot 12: Process conference registrations
+  - Tue slot 10 → Wed slot 13: Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte
+  - Tue slot 11 → Wed slot 14: Draft/schedule Greg thank-you and insurance contacts follow-up
+  - Tue slot 12 → Wed slot 15: Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions
+  - Tue slot 13 → Wed slot 16: Kids allowance: Sunday $10/week + Friday $10/day through Aug

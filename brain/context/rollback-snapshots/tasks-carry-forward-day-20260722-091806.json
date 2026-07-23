@@ -1,95 +1,35 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260716-094025",
-  "sheet_id": "12rN-RtkEhfcApIo2Ep7J41Nq1KxR7TgziViNwy7k4HI",
+  "timestamp": "20260722-091806",
+  "sheet_id": "1QIpyr0hMR940-0fyfUIKV7xs4A-XcrDg06-8rXL273I",
   "ranges": {
-    "'Wed'!A17:E66": [
+    "'Tue'!A17:E66": [
       [
         true,
-        "Discuss jewelry opportunity with Sara: fundability, Deal 1 fit, and likely investor objections",
-        "Work",
-        "G&B",
-        "Ask what would make investors accept vs reject this as retail"
-      ],
-      [
-        true,
-        "Use WSN mentor group to pressure-test seller psychology and transition conversation",
-        "Work",
-        "G&B",
-        "Focus on helping a 76-year-old legacy owner evaluate options without pushing"
+        "Library block 10:00-2:30: continue jewelry deck"
       ],
       [
         false,
-        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
-        "Work",
-        "G&B",
-        "Full sale, staged transition, seller financing, rollover/advisory role, or broader process"
-      ],
-      [
-        true,
-        "Use Wednesday broker call to pressure-test thesis, target areas, and website clarity",
-        "Work",
-        "G&B"
+        "Start growth levers for jewelry brand"
       ],
       [
         false,
-        "Align analyst in Team TB on 60-day priority stack and list review criteria",
-        "Work",
-        "G&B"
-      ],
-      [
-        false,
-        "Niche intel review",
-        "Work",
-        "G&B"
-      ],
-      [
-        false,
-        "Ask Arthur for coffee or pop by office while local for summer"
-      ],
-      [
-        false,
-        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros"
-      ],
-      [
-        false,
-        "Follow up with Denning for fashion/art/luxury introductions"
-      ],
-      [
-        false,
-        "Send thank-you to Greg and ask for the insurance owner intro he suggested"
-      ],
-      [
-        false,
-        "Reconnect with Levi on prior art storage path"
-      ],
-      [
-        false,
-        "Circle back with Paul on art storage conversation"
-      ],
-      [
-        false,
-        "Ask family friend jewelry business owner for market-mapping conversation"
+        "Prepare high-level seller data ask draft"
       ],
       [
         false,
         "Pull Megan pre-LOI prep meeting notes"
       ],
       [
-        false,
-        "Check beauty supply chain conference app for fragrance/beauty testing and packaging target lists"
+        false
       ],
       [
         false,
-        "Review new SLD video"
+        "Start company analysis from public info + competitive analysis"
       ],
       [
         false,
-        "Process payroll"
-      ],
-      [
-        true,
-        "Process conference registrations"
+        "Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options"
       ],
       [
         false,
@@ -97,7 +37,44 @@
       ],
       [
         false,
-        "Follow up: Carlos, Lisa/Peter, Jose"
+        "Process conference registrations"
+      ],
+      [
+        false,
+        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte"
+      ],
+      [
+        false,
+        "Draft/schedule Greg thank-you and insurance contacts follow-up"
+      ],
+      [
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
+      ],
+      [
+        false,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
       ],
       [
         false
@@ -190,23 +167,26 @@
         false
       ]
     ],
-    "'Thu'!A17:E66": [
+    "'Wed'!A17:E66": [
       [
-        true,
-        "Use investor calls to ask what proof/evidence they need behind insurance/storage/luxury infrastructure Deal 1 or LDE path"
+        false,
+        "Library block 10:00-2:30: write What We Need to Believe page"
       ],
       [
         false,
-        "Thursday follow-up checkpoint for Monday direct outreach non-responses"
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue"
       ],
       [
-        false
+        false,
+        "Start holdco vision + infrastructure adjacency map"
       ],
       [
-        false
+        false,
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options"
       ],
       [
-        false
+        false,
+        "Niche intel review"
       ],
       [
         false

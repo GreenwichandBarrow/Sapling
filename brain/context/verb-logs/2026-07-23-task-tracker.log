@@ -1,0 +1,23 @@
+
+[2026-07-23T10:14:22.091711] carry-forward-day — wed-to-thu
+  - moved: 15
+  - source: Wed
+  - destination: Thu
+  - source packed: {'completed': 1, 'active': 0, 'blank': 49, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260723-101418.json
+  
+  - Wed slot 2 → Thu slot 3: Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue
+  - Wed slot 3 → Thu slot 5: Start holdco vision + infrastructure adjacency map
+  - Wed slot 4 → Thu slot 6: Draft seller-call prep framework: transition priorities, questions, and deal-structure options
+  - Wed slot 5 → Thu slot 7: Niche intel review
+  - Wed slot 6 → Thu slot 8: Start growth levers for jewelry brand
+  - Wed slot 7 → Thu slot 9: Prepare high-level seller data ask draft
+  - Wed slot 8 → Thu slot 10: Pull Megan pre-LOI prep meeting notes
+  - Wed slot 9 → Thu slot 11: Start company analysis from public info + competitive analysis
+  - Wed slot 10 → Thu slot 12: Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options
+  - Wed slot 11 → Thu slot 13: Call IRS to confirm Form 8822-B address update
+  - Wed slot 12 → Thu slot 14: Process conference registrations
+  - Wed slot 13 → Thu slot 15: Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte
+  - Wed slot 14 → Thu slot 16: Draft/schedule Greg thank-you and insurance contacts follow-up
+  - Wed slot 15 → Thu slot 17: Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions
+  - Wed slot 16 → Thu slot 18: Kids allowance: Sunday $10/week + Friday $10/day through Aug

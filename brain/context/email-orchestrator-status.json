@@ -1,9 +1,9 @@
 {
   "blocked": [],
-  "deal_items": 0,
+  "deal_items": 39,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-23T10:13:43.862924-04:00",
+  "fetched_at": "2026-07-24T06:50:45.252024-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -47,19 +47,21 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-07-23.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-07-24.json",
   "input_status": "ok",
   "needs_kay": [
+    "2 email-derived task candidate(s)",
+    "39 broker/listing row(s) extracted",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-07-23.md",
+  "source_artifact": "brain/context/email-scan-results-2026-07-24.md",
   "source_status": "ok",
   "stale_drafts": 0,
-  "task_candidates": 0,
+  "task_candidates": 2,
   "thank_you_items": [],
   "unclear_followthrough_items": [
     "Lisa (24-hour thank-you after external call)",

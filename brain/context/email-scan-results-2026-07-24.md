@@ -64,19 +64,15 @@ tags:
 | Helen Guo, SMB Deal Hunter | Industrial Maintenance Company in TX with Master Service Agreements and $1M EBITDA | TX | undisclosed | $1M | undisclosed | Industrial maintenance | deal-newsletter-known-sender | 19f8b6e1f17231a5 | 4 |
 | Helen Guo, SMB Deal Hunter | Tree Service and Disaster Relief Company in MO with Owner Staying On and $500K EBITDA | MO | undisclosed | $500K | undisclosed | Tree service / disaster relief | deal-newsletter-known-sender | 19f8b6e1f17231a5 | 5 |
 | New Deal via Axial | Rapid Growth $3.3mn EBITDA New Jersey Based Warehousing Provider | NJ | undisclosed | $3.3M | undisclosed | Warehousing / logistics | single-listing-blast | 19f90789ba511f4b | 1 |
-| BizBuySell | July's Top 7 Listings for You on BizBuySell - listing 1 | undisclosed | $315,000 | undisclosed | undisclosed | ecommerce / brand | deal-newsletter-known-sender | 19f7eb5b9c08257d | 1 |
-| BizBuySell | July's Top 7 Listings for You on BizBuySell - listing 2 | undisclosed | $1,495,000 | undisclosed | undisclosed | infrastructure services | deal-newsletter-known-sender | 19f7eb5b9c08257d | 2 |
-| BizBuySell | July's Top 7 Listings for You on BizBuySell - listing 3 | undisclosed | $179,000 | undisclosed | undisclosed | resale / downsizing services | deal-newsletter-known-sender | 19f7eb5b9c08257d | 3 |
-| BizBuySell | July's Top 7 Listings for You on BizBuySell - listing 4 | undisclosed | undisclosed | undisclosed | undisclosed | undisclosed | deal-newsletter-known-sender | 19f7eb5b9c08257d | 4 |
-| BizBuySell | July's Top 7 Listings for You on BizBuySell - listing 5 | undisclosed | undisclosed | undisclosed | undisclosed | undisclosed | deal-newsletter-known-sender | 19f7eb5b9c08257d | 5 |
-| BizBuySell | July's Top 7 Listings for You on BizBuySell - listing 6 | undisclosed | undisclosed | undisclosed | undisclosed | undisclosed | deal-newsletter-known-sender | 19f7eb5b9c08257d | 6 |
-| BizBuySell | July's Top 7 Listings for You on BizBuySell - listing 7 | undisclosed | undisclosed | undisclosed | undisclosed | undisclosed | deal-newsletter-known-sender | 19f7eb5b9c08257d | 7 |
+| BizQuest Search Agent | Profitable Watercolor Stationery Brand Serving the Wedding Market | Tuckahoe, NY | $315,000 | undisclosed | undisclosed | ecommerce / brand | deal-newsletter-known-sender | 19f7eb5b9c08257d | 1 |
+| BizQuest Search Agent | Technology Integration & Low-Voltage Infrastructure Company | New York | $1,495,000 | undisclosed | undisclosed | infrastructure services | deal-newsletter-known-sender | 19f7eb5b9c08257d | 2 |
+| BizQuest Search Agent | Scalable Personal Property Resale And Downsizing Services Operation | Syracuse, NY | $179,000 | undisclosed | undisclosed | resale / downsizing services | deal-newsletter-known-sender | 19f7eb5b9c08257d | 3 |
 | bizalert@bizbuysell.com | Waterfront Beach Club & Event Venue | NY | $13.6M | undisclosed | undisclosed | events / hospitality | deal-newsletter-known-sender | 19f75a6bd3626e10 | 1 |
 | bizalert@bizbuysell.com | Premier Golf & Celebrity Sports Event Business | NY | $30M | undisclosed | undisclosed | events / sports entertainment | deal-newsletter-known-sender | 19f75a6bd3626e10 | 2 |
-| NewBizOpps@bizbuysell.com | Well-Located Self-Service Laundry match 1 | undisclosed | undisclosed | undisclosed | undisclosed | laundry / self-service | deal-newsletter-pattern | 19f7f9682d9441ce | 1 |
-| NewBizOpps@bizbuysell.com | Well-Located Self-Service Laundry match 2 | undisclosed | undisclosed | undisclosed | undisclosed | laundry / self-service | deal-newsletter-pattern | 19f7f9682d9441ce | 2 |
-| NewBizOpps@bizbuysell.com | Well-Located Self-Service Laundry match 3 | undisclosed | undisclosed | undisclosed | undisclosed | laundry / self-service | deal-newsletter-pattern | 19f7f9682d9441ce | 3 |
-| NewBizOpps@bizbuysell.com | Well-Located Self-Service Laundry match 4 | undisclosed | undisclosed | undisclosed | undisclosed | laundry / self-service | deal-newsletter-pattern | 19f7f9682d9441ce | 4 |
+| NewBizOpps@bizbuysell.com | 14mm Ask! Waterfront Beach Club & Event Venue – 36+ Years Established | Mamaroneck, NY | $5,100,000 | $14,000,000 | undisclosed | events / hospitality | deal-newsletter-pattern | 19f7f9682d9441ce | 4 |
+| NewBizOpps@bizbuysell.com | SBA Eligible - $8.83M Revenue B2B Janitorial & Industrial Company | Rome, NY | $8,830,000 | $750,000 | undisclosed | janitorial / industrial services | deal-newsletter-pattern | 19f7f9682d9441ce | 5 |
+| NewBizOpps@bizbuysell.com | Exclusive High-End Aviation Catering Company Serving Private & Corporate Clients | New York, NY | $4,800,000 | $685,000 | undisclosed | catering | deal-newsletter-pattern | 19f7f9682d9441ce | 6 |
+| NewBizOpps@bizbuysell.com | Huge Daves Killer Bread Route – Staten Island | Staten Island, NY | $353,600 | $343,300 | undisclosed | food distribution | deal-newsletter-pattern | 19f7f9682d9441ce | 7 |
 | BizBuySell | Well-Established Electrical Contracting Business | MN | $550,000 | undisclosed | undisclosed | electrical contracting | deal-newsletter-known-sender | 19f8146fd6109730 | 3 |
 | BizBuySell | Western Slope CO CPA Practice for Sale | CO | $875,000 | undisclosed | undisclosed | accounting / CPA | deal-newsletter-known-sender | 19f8146fd6109730 | 4 |
 | BizBuySell | Professional Commercial Kitchen Ready to Operate | GA | undisclosed | undisclosed | undisclosed | commercial kitchen | deal-newsletter-known-sender | 19f8146fd6109730 | 5 |
@@ -90,12 +86,12 @@ tags:
 | Flippa | 4M+ Installs Productivity App Portfolio | undisclosed | undisclosed | undisclosed | undisclosed | digital asset / marketplace | deal-newsletter-known-sender | 19f7bbf6da8fa8b3 | 1 |
 | Flippa | $1.4M Car Accessory Brand | undisclosed | $1.4M | undisclosed | undisclosed | ecommerce / brand | deal-newsletter-known-sender | 19f7bbf6da8fa8b3 | 2 |
 | Flippa | 80% Margin Documentary Channel | undisclosed | undisclosed | undisclosed | undisclosed | digital asset / marketplace | deal-newsletter-known-sender | 19f7bbf6da8fa8b3 | 3 |
-| Quiet Light | Amazon FBA Baby Brand | undisclosed | $154,165 | $26,272 | undisclosed | ecommerce / baby products | deal-newsletter-known-sender | 19f80b83886b7cf8 | 1 |
-| Flippa | Puzzle App | undisclosed | $1.2M | undisclosed | 96% | software / mobile apps | deal-newsletter-known-sender | 19f80ec4dc1d6ec5 | 1 |
+| Quiet Light | 8-Year-Old Amazon FBA Baby Brand - Low 4- to 5-Hour Workload - 600+ Reviews - Buy Low Opportunity | undisclosed | $154,165 | $26,272 | undisclosed | ecommerce / baby products | deal-newsletter-known-sender | 19f80b83886b7cf8 | 1 |
+| Flippa | 2-year-old iOS and Android number-matching puzzle game app | undisclosed | $1.2M | undisclosed | 96% | software / mobile apps | deal-newsletter-known-sender | 19f80ec4dc1d6ec5 | 1 |
 | Flippa | Premium Hangover Recovery Amazon FBA | undisclosed | $296K | undisclosed | undisclosed | ecommerce / brand | deal-newsletter-known-sender | 19f80ec4dc1d6ec5 | 2 |
-| Flippa | Caption SaaS | undisclosed | undisclosed | undisclosed | undisclosed | software / SaaS | deal-newsletter-known-sender | 19f80ec4dc1d6ec5 | 3 |
-| Quiet Light | Growing Amazon FBA Nursery Brand | undisclosed | $801,440 | $107,276 | undisclosed | ecommerce / nursery products | deal-newsletter-known-sender | 19f85038c7702787 | 1 |
-| Quiet Light | 37-Year-Old Fundraising Tech & Product Platform | undisclosed | $2,108,457 | $387,775 | undisclosed | software / fundraising platform | deal-newsletter-known-sender | 19f85df5d0d8c6ee | 1 |
+| Flippa | 3-Yr Caption SaaS | undisclosed | undisclosed | undisclosed | undisclosed | software / SaaS | deal-newsletter-known-sender | 19f80ec4dc1d6ec5 | 3 |
+| Quiet Light | Growing Amazon FBA Nursery Brand - 1,100+ 4.8-Star Reviews - 1-2 Hours of Owner Involvement | undisclosed | $801,440 | $107,276 | undisclosed | ecommerce / nursery products | deal-newsletter-known-sender | 19f85038c7702787 | 1 |
+| Quiet Light | 37-Year-Old Fundraising Tech & Product Platform - Database of 190K+ Households - Zero Paid Acquisition | undisclosed | $2,108,457 | $387,775 | undisclosed | software / fundraising platform | deal-newsletter-known-sender | 19f85df5d0d8c6ee | 1 |
 
 ## 8. Auto-Drafts Created
 - None.

@@ -1,0 +1,11 @@
+{
+  "date": "2026-07-25",
+  "scan_started_at": "2026-07-25T07:21:19-04:00",
+  "scan_finished_at": "2026-07-25T07:21:58.991164-04:00",
+  "failures_detected": 0,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 0,
+  "runtime_seconds": 39,
+  "results": []
+}

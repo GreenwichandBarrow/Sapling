@@ -1,87 +1,44 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260718-094836",
-  "sheet_id": "12rN-RtkEhfcApIo2Ep7J41Nq1KxR7TgziViNwy7k4HI",
+  "timestamp": "20260724-134010",
+  "sheet_id": "1QIpyr0hMR940-0fyfUIKV7xs4A-XcrDg06-8rXL273I",
   "ranges": {
-    "'Fri'!A17:E66": [
+    "'Thu'!A17:E66": [
       [
         true,
-        "Weekly review \u2014 system health, M&A activities, budget"
+        "Library block 10:00-2:30: build potential offer structures and transition/options framing"
       ],
       [
         false,
-        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
+        "Narrow/edit must-have diligence questions to top 5"
       ],
       [
         false,
-        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
-      ],
-      [
-        false,
-        "Check NYC Housing Connect for new Manhattan lotteries"
-      ],
-      [
-        false,
-        "Visit store carrying jewelry line to see product and merchandising in person"
-      ],
-      [
-        false,
-        "Scope minimum viable G&B website update"
-      ],
-      [
-        false,
-        "Identify first nonprofit activation requirement for 501(c)(3) activity mark"
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue"
       ],
       [
         true,
-        "Thursday follow-up checkpoint for Monday direct outreach non-responses"
+        "Fix Kaiden's iPad screen"
       ],
       [
         false,
-        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
-        "Work",
-        "G&B",
-        "Full sale, staged transition, seller financing, rollover/advisory role, or broader process"
-      ],
-      [
-        true,
-        "Align analyst in Team TB on 60-day priority stack and list review criteria",
-        "Work",
-        "G&B"
-      ],
-      [
-        true,
-        "Niche intel review",
-        "Work",
-        "G&B"
+        "Start holdco vision + infrastructure adjacency map"
       ],
       [
         false,
-        "Ask Arthur for coffee or pop by office while local for summer"
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options"
       ],
       [
         false,
-        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros"
+        "Niche intel review"
       ],
       [
         false,
-        "Follow up with Denning for fashion/art/luxury introductions"
+        "Start growth levers for jewelry brand"
       ],
       [
         false,
-        "Send thank-you to Greg and ask for the insurance owner intro he suggested"
-      ],
-      [
-        false,
-        "Reconnect with Levi on prior art storage path"
-      ],
-      [
-        false,
-        "Circle back with Paul on art storage conversation"
-      ],
-      [
-        false,
-        "Ask family friend jewelry business owner for market-mapping conversation"
+        "Prepare high-level seller data ask draft"
       ],
       [
         false,
@@ -89,23 +46,53 @@
       ],
       [
         false,
-        "Check beauty supply chain conference app for fragrance/beauty testing and packaging target lists"
-      ],
-      [
-        false,
-        "Review new SLD video"
+        "Start company analysis from public info + competitive analysis"
       ],
       [
         true,
-        "Process payroll"
+        "Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options"
       ],
       [
         false,
         "Call IRS to confirm Form 8822-B address update"
       ],
       [
-        true,
-        "Follow up: Carlos, Lisa/Peter, Jose"
+        false,
+        "Process conference registrations"
+      ],
+      [
+        false,
+        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte"
+      ],
+      [
+        false,
+        "Draft/schedule Greg thank-you and insurance contacts follow-up"
+      ],
+      [
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
+      ],
+      [
+        false,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
       ],
       [
         false
@@ -186,28 +173,30 @@
         false
       ]
     ],
-    "'Sat'!A17:E66": [
+    "'Fri'!A17:E66": [
       [
         false,
-        "Pull contact info and prepare kids modeling submissions to 5 referred agencies",
-        "Home",
-        "Family Wealth / Kids Modeling",
-        "Weekend top priority: prep all materials to go out to agencies; send next business day."
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility"
       ],
       [
-        false
+        false,
+        "Set up Claude workflow for Friday: slides + website aesthetics"
       ],
       [
-        false
+        false,
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
       ],
       [
-        false
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget"
       ],
       [
-        false
+        false,
+        "Check NYC Housing Connect for new Manhattan lotteries"
       ],
       [
-        false
+        false,
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark"
       ],
       [
         false

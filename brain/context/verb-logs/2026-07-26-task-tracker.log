@@ -1,0 +1,16 @@
+
+[2026-07-26T20:14:56.843012] build-week-v2 — 2026-07-26
+  - prior file: TO DO 7.19.26 (1QIpyr0hMR940-0fyfUIKV7xs4A-XcrDg06-8rXL273I)
+  - template source: 1EaznKNTweSVRxbXpoEA2CyXLD8P96mWVU0K38-5pMxc
+  - new file: TO DO 7.26.26 (1i-QgsE7qBAVxMw0tyIPxXFojx8rqXiYUd8EATjtIkW0)
+  - week label: WEEK OF Jul 26-Aug 1
+  - missing day-tab tasks added to prior To Do: 0
+  - combined day-task edits folded before import: 0
+  - prior To Do packed before import: {'ongoing': 12, 'not_completed': 106, 'other_active': 0, 'completed': 123, 'dropped': 44, 'active': 118, 'total': 285}
+  - imported To Do: {'ongoing': 12, 'not_completed': 106, 'other_active': 0, 'completed': 123, 'dropped': 44, 'active': 118, 'total': 285}
+  - project tabs copied: ['Deal Aggregator Expansion', 'Myself Renewed Healthcare']
+  - template project placeholders removed: ['PROJECT 1']
+  - archive daily tabs copied: ['archive_7.19_Sun', 'archive_7.19_Mon', 'archive_7.19_Tue', 'archive_7.19_Wed', 'archive_7.19_Thu', 'archive_7.19_Fri', 'archive_7.19_Sat']
+  - recurring stamped onto Week: 12
+  - prior file archived: True (1ujEwLzsB4C6ZwhMfiRT8lS5WxrzYwRra)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-build-week-v2-20260726-201433.json

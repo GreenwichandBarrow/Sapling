@@ -149,6 +149,10 @@ TODO_MAX_ROWS = 400
 # To Do Long Term + Recurring Weekly To Dos + Completed To Do tabs are retired —
 # everything lives in the single `To Do` tab, filtered by Horizon.
 STATUS_OPTIONS = ["Not Completed", "On-going", "Completed", "Dropped"]
+STATUS_NOT_COMPLETED = "Not Completed"
+STATUS_ONGOING = "On-going"
+STATUS_COMPLETED = "Completed"
+STATUS_DROPPED = "Dropped"
 HORIZON_OPTIONS = [
     "Short Term", "Long Term",
     "Weekly Recurring Sun", "Weekly Recurring Mon", "Weekly Recurring Tue",

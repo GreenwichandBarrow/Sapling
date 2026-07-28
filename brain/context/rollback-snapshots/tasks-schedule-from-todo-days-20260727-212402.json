@@ -1,7 +1,7 @@
 {
   "verb": "schedule-from-todo-days",
-  "timestamp": "20260720-074423",
-  "sheet_id": "1QIpyr0hMR940-0fyfUIKV7xs4A-XcrDg06-8rXL273I",
+  "timestamp": "20260727-212402",
+  "sheet_id": "1i-QgsE7qBAVxMw0tyIPxXFojx8rqXiYUd8EATjtIkW0",
   "ranges": {
     "'To Do'!A1:H400": [
       [
@@ -134,7 +134,7 @@
       ],
       [
         "Not Completed",
-        "Sign up kids for Kano Martial Arts judo class",
+        "Sign up Kilian for fall Kano Martial Arts judo class",
         "Home",
         "",
         "",
@@ -153,15 +153,6 @@
       [
         "Not Completed",
         "Sign up for more Italki lessons",
-        "Home",
-        "",
-        "",
-        "",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Fix Kaiden's iPad screen",
         "Home",
         "",
         "",
@@ -427,7 +418,8 @@
         "",
         "",
         "(was LT: Idea)",
-        "Long Term"
+        "Long Term",
+        "friday"
       ],
       [
         "Not Completed",
@@ -564,15 +556,6 @@
         "G&B",
         "2026-06-21",
         "Budget cleanup: confirm actual Attio renewal/payment amount; current budget row models 9/mo but prior note referenced 01.49/yr.",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Pay Dad for swim lessons and membership",
-        "Home",
-        "Home",
-        "2026-06-21",
-        "",
         "Short Term"
       ],
       [
@@ -733,15 +716,6 @@
       ],
       [
         "Not Completed",
-        "Send JPEGs for adult school IDs to PS11",
-        "Home",
-        "Home",
-        "",
-        "PS11 requested JPEGs for adult school IDs.",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
         "Pay RSM",
         "Home",
         "Home",
@@ -751,21 +725,13 @@
       ],
       [
         "Not Completed",
-        "Pay Mark for swimming",
-        "Home",
-        "Home",
-        "",
-        "I owe Mark for swimming.",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
         "Send Emily 504",
         "Home",
         "Home",
         "",
         "Send Emily 504.",
-        "Short Term"
+        "Short Term",
+        "tuesday"
       ],
       [
         "Not Completed",
@@ -777,7 +743,7 @@
         "Short Term"
       ],
       [
-        "Not Completed",
+        "Completed",
         "Find dine-in theater for Minions",
         "Home",
         "Home",
@@ -786,54 +752,22 @@
         "Short Term"
       ],
       [
-        "Not Completed",
-        "Library block 10:00-2:30: jewelry industry analysis / market structure",
-        "Work",
-        "Jewelry LOI Sprint",
-        "2026-07-20",
-        "Week 1 build sprint. Output: market structure and industry analysis for LOI-ready deck.",
-        "Short Term",
-        "Monday"
-      ],
-      [
-        "Not Completed",
+        "Completed",
         "Start company analysis from public info + competitive analysis",
         "Work",
         "Jewelry LOI Sprint",
         "2026-07-20",
         "Use public information only. Build company/brand facts, positioning, distribution, pricing, competitors, and visible growth gaps.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
-        "Not Completed",
-        "Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options",
-        "Work",
-        "Jewelry LOI Sprint",
-        "2026-07-20",
-        "Controlled outreach. Goal: move toward conversation and minimum information without making her feel pushed.",
-        "Short Term",
-        "Monday"
-      ],
-      [
-        "Not Completed",
-        "Library block 10:00-2:30: continue jewelry deck",
-        "Work",
-        "Jewelry LOI Sprint",
-        "2026-07-21",
-        "Continue building the LOI-ready deck and fill gaps from Monday analysis.",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Not Completed",
+        "Completed",
         "Start growth levers for jewelry brand",
         "Work",
         "Jewelry LOI Sprint",
         "2026-07-21",
         "Growth levers before What We Need to Believe: wholesale/distribution, ecommerce, CRM/private client, operational planning, product/category expansion, infrastructure adjacencies.",
-        "Short Term",
-        "Tuesday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -842,16 +776,6 @@
         "Jewelry LOI Sprint",
         "2026-07-21",
         "Draft soft ask for EBITDA/owner earnings, revenue mix, inventory, lease/key team, and price/transition expectations.",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Not Completed",
-        "Library block 10:00-2:30: write What We Need to Believe page",
-        "Work",
-        "Jewelry LOI Sprint",
-        "2026-07-22",
-        "Write after growth levers are clearer. Frame as LOI decision criteria, not investor-permission request.",
         "Short Term",
         "Wednesday"
       ],
@@ -866,24 +790,13 @@
         "Wednesday"
       ],
       [
-        "Not Completed",
+        "Completed",
         "Start holdco vision + infrastructure adjacency map",
         "Work",
         "Jewelry LOI Sprint",
         "2026-07-22",
         "Map jewelry brand as possible jewel/anchor plus infrastructure adjacencies: insurance, repair/restoration, storage/custody, logistics, compliance, software/services.",
-        "Short Term",
-        "Wednesday"
-      ],
-      [
-        "Not Completed",
-        "Library block 10:00-2:30: build potential offer structures and transition/options framing",
-        "Work",
-        "Jewelry LOI Sprint",
-        "2026-07-23",
-        "Include full sale, seller note, staged sale, rollover/advisory role, legacy, team, liquidity, continued involvement, upside.",
-        "Short Term",
-        "Thursday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -960,7 +873,7 @@
         "Short Term"
       ],
       [
-        "Not Completed",
+        "Completed",
         "Monitor/follow up with Eric on Kilian testing",
         "Home",
         "Kilian",
@@ -969,7 +882,7 @@
         "Short Term"
       ],
       [
-        "Not Completed",
+        "Completed",
         "Monitor/follow up with Dr. Zullo on assessment request",
         "Home",
         "Kilian",
@@ -994,8 +907,7 @@
         "Body Reset",
         "2026-08-17",
         "Summer ramp step 2. Only a 15-minute shift after nearly a month at 8:00pm.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1004,8 +916,7 @@
         "Body Reset",
         "2026-09-14",
         "Summer/suburbs defense step 3. Hold through end of September.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1014,8 +925,7 @@
         "Body Reset",
         "2026-10-01",
         "Fall natural-strength season: more walking/classes. Return to 8:00pm stop while preserving no late-night eating.",
-        "Short Term",
-        "Thursday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1024,8 +934,7 @@
         "Body Reset",
         "2026-11-16",
         "Pre-winter soft step. Start tightening before December darkness, only 15 minutes from fall rhythm.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1034,8 +943,7 @@
         "Body Reset",
         "2026-12-01",
         "Winter defense step 2. Hold for two weeks.",
-        "Short Term",
-        "Tuesday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1044,8 +952,7 @@
         "Body Reset",
         "2026-12-15",
         "Winter defense step 3. Small shift; keep dinner/family rhythm intact.",
-        "Short Term",
-        "Tuesday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1054,8 +961,7 @@
         "Body Reset",
         "2027-01-01",
         "January defense step. This is when darkness/low-walking risk is highest.",
-        "Short Term",
-        "Friday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1064,8 +970,7 @@
         "Body Reset",
         "2027-01-15",
         "Late-January defense step. Only tighten if prior step is stable enough.",
-        "Short Term",
-        "Friday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1074,8 +979,7 @@
         "Body Reset",
         "2027-02-01",
         "Peak winter defense. 14-hour fast. Hold through February if it feels stable.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1084,8 +988,7 @@
         "Body Reset",
         "2027-03-01",
         "Soft transition out of winter. Add only 15 minutes back first.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1094,8 +997,7 @@
         "Body Reset",
         "2027-03-15",
         "Movement/walking should be improving; release slowly.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1104,8 +1006,7 @@
         "Body Reset",
         "2027-03-29",
         "Continue gentle release out of winter as movement increases.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1114,8 +1015,7 @@
         "Body Reset",
         "2027-04-12",
         "Continue gradual return toward natural strength-season rhythm.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1124,8 +1024,7 @@
         "Body Reset",
         "2027-04-26",
         "Almost back to spring/fall default; keep no late-night eating intact.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1134,8 +1033,7 @@
         "Body Reset",
         "2027-05-10",
         "Natural strength-season default. 12.5-hour fast, supports higher walking/classes while preventing late-night eating.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1144,8 +1042,7 @@
         "Body Reset",
         "2027-06-07",
         "Soft summer drift defense step 1. 15-minute shift only.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1154,8 +1051,7 @@
         "Body Reset",
         "2027-07-05",
         "Summer/suburbs defense default. Hold through summer if stable.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -1174,7 +1070,8 @@
         "G&B",
         "",
         "Full sale, staged transition, seller financing, rollover/advisory role, or broader process",
-        "Short Term"
+        "Short Term",
+        "Wednesday"
       ],
       [
         "Not Completed",
@@ -1196,6 +1093,84 @@
       ],
       [
         "Completed",
+        "Fix Kaiden's iPad screen",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Library block 10:00-2:30: jewelry industry analysis / market structure",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-20",
+        "Week 1 build sprint. Output: market structure and industry analysis for LOI-ready deck.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Completed",
+        "Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-20",
+        "Controlled outreach. Goal: move toward conversation and minimum information without making her feel pushed.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Completed",
+        "Library block 10:00-2:30: continue jewelry deck",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-21",
+        "Continue building the LOI-ready deck and fill gaps from Monday analysis.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Library block 10:00-2:30: write What We Need to Believe page",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-22",
+        "Write after growth levers are clearer. Frame as LOI decision criteria, not investor-permission request.",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Completed",
+        "Library block 10:00-2:30: build potential offer structures and transition/options framing",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-23",
+        "Include full sale, seller note, staged sale, rollover/advisory role, legacy, team, liquidity, continued involvement, upside.",
+        "Short Term",
+        "Thursday"
+      ],
+      [
+        "Completed",
+        "Pay Dad for swim lessons and membership",
+        "Home",
+        "Home",
+        "2026-06-21",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Send JPEGs for adult school IDs to PS11",
+        "Home",
+        "Home",
+        "",
+        "PS11 requested JPEGs for adult school IDs.",
+        "Short Term"
+      ],
+      [
+        "Completed",
         "Follow up: Carlos, Lisa/Peter, Jose",
         "Work",
         "60-Day LOI Sprint",
@@ -1210,8 +1185,7 @@
         "G&B",
         "",
         "Today focus follow-up emails. Draft only; Kay sends.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Completed",
@@ -1220,8 +1194,7 @@
         "60-Day LOI Sprint",
         "2026-07-18",
         "Success by next Sunday: 2 seller/seller-adjacent conversations scheduled/completed; 1 path moved toward financials, second call, or clear process next step.",
-        "Short Term",
-        "Sun"
+        "Short Term"
       ],
       [
         "Completed",
@@ -1230,8 +1203,7 @@
         "60-Day LOI Sprint",
         "2026-07-14",
         "Rollover to Tuesday. Highest-priority live seller path. Goal: next call, process clarity, and path toward financials.",
-        "Short Term",
-        "Tue"
+        "Short Term"
       ],
       [
         "Completed",
@@ -1240,8 +1212,7 @@
         "60-Day LOI Sprint",
         "2026-07-14",
         "Ask for owner-led businesses that fit the G&B architecture, not generic deal flow.",
-        "Short Term",
-        "Tue"
+        "Short Term"
       ],
       [
         "Completed",
@@ -1250,8 +1221,7 @@
         "60-Day LOI Sprint",
         "2026-07-15",
         "She gets Kay\u2019s background. Goal: specific focus areas, seller ideas, and what website language helps her route deals.",
-        "Short Term",
-        "Wed"
+        "Short Term"
       ],
       [
         "Completed",
@@ -1278,8 +1248,7 @@
         "60-Day LOI Sprint",
         "2026-07-12",
         "Today review: score Kay-touch / outsourced / kill against luxury asset risk criteria.",
-        "Short Term",
-        "Sun"
+        "Short Term"
       ],
       [
         "Completed",
@@ -1288,8 +1257,7 @@
         "60-Day LOI Sprint",
         "2026-07-12",
         "Today review: score Kay-touch / outsourced / kill against luxury asset custody criteria.",
-        "Short Term",
-        "Sun"
+        "Short Term"
       ],
       [
         "Completed",
@@ -1298,8 +1266,7 @@
         "60-Day LOI Sprint",
         "2026-07-13",
         "Completed: registered for app access to fragrance/beauty testing and packaging target lists; not attending conference.",
-        "Short Term",
-        "Tue"
+        "Short Term"
       ],
       [
         "Completed",
@@ -1308,8 +1275,7 @@
         "Body Reset",
         "2026-07-12",
         "Replaced by ongoing weekly Sunday task: Choose weekly Body Reset movement slots.",
-        "Short Term",
-        "Sun"
+        "Short Term"
       ],
       [
         "Completed",
@@ -1354,8 +1320,7 @@
         "G&B",
         "2026-07-01",
         "Wednesday of the first week of July.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Completed",
@@ -1364,8 +1329,7 @@
         "Home",
         "2026-06-22",
         "",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Completed",
@@ -1374,8 +1338,7 @@
         "G&B",
         "2026-07-06",
         "Review the two prep briefs for Tuesday's calls.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Completed",
@@ -2194,8 +2157,7 @@
         "Body Reset",
         "2026-07-20",
         "Completed: Barrie created the daily kitchen-closed calendar events. Daily To Do checklist now carries the current latte/kitchen-closed/fast-duration line.",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Completed",
@@ -2240,6 +2202,15 @@
         "",
         "",
         "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Pay Mark for swimming",
+        "Home",
+        "Home",
+        "",
+        "I owe Mark for swimming.",
         "Short Term"
       ],
       [
@@ -2632,7 +2603,7 @@
     ],
     "'Week'!A1:O38": [
       [
-        "WEEK OF Jul 19-25"
+        "WEEK OF Jul 26-Aug 1"
       ],
       [],
       [
@@ -2642,19 +2613,19 @@
       [],
       [
         "",
-        "SUNDAY \u00b7 Jul 19",
+        "SUNDAY \u00b7 Jul 26",
         "",
-        "MONDAY \u00b7 Jul 20",
+        "MONDAY \u00b7 Jul 27",
         "",
-        "TUESDAY \u00b7 Jul 21",
+        "TUESDAY \u00b7 Jul 28",
         "",
-        "WEDNESDAY \u00b7 Jul 22",
+        "WEDNESDAY \u00b7 Jul 29",
         "",
-        "THURSDAY \u00b7 Jul 23",
+        "THURSDAY \u00b7 Jul 30",
         "",
-        "FRIDAY \u00b7 Jul 24",
+        "FRIDAY \u00b7 Jul 31",
         "",
-        "SATURDAY \u00b7 Jul 25"
+        "SATURDAY \u00b7 Aug 1"
       ],
       [],
       [
@@ -2664,15 +2635,14 @@
         false,
         "Process payroll",
         false,
-        "Pull Megan pre-LOI prep meeting notes",
+        "",
         false,
         "Niche intel review",
         false,
-        "Library block 10:00-2:30: build potential offer structures and transition/options framing",
+        "",
         false,
         "Weekly review \u2014 system health, M&A activities, budget",
-        false,
-        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
+        false
       ],
       [
         "",
@@ -2681,11 +2651,11 @@
         false,
         "Process conference registrations",
         false,
-        "Library block 10:00-2:30: continue jewelry deck",
+        "",
         false,
-        "Library block 10:00-2:30: write What We Need to Believe page",
+        "",
         false,
-        "Narrow/edit must-have diligence questions to top 5",
+        "",
         false,
         "Check NYC Housing Connect for new Manhattan lotteries",
         false
@@ -2695,13 +2665,13 @@
         false,
         "Kids allowance: Sunday $10/week + Friday $10/day through Aug",
         false,
-        "Call IRS to confirm Form 8822-B address update",
+        "",
         false,
-        "Start growth levers for jewelry brand",
+        "",
         false,
-        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
+        "",
         false,
-        "Fall fasting rhythm resets to 8:00pm kitchen closed / 8:30am latte",
+        "",
         false,
         "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
         false
@@ -2711,15 +2681,15 @@
         false,
         "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
         false,
-        "Library block 10:00-2:30: jewelry industry analysis / market structure",
-        false,
-        "Prepare high-level seller data ask draft",
-        false,
-        "Start holdco vision + infrastructure adjacency map",
+        "",
         false,
         "",
         false,
-        "Identify first nonprofit activation requirement for 501(c)(3) activity mark",
+        "",
+        false,
+        "",
+        false,
+        "",
         false
       ],
       [
@@ -2727,15 +2697,15 @@
         false,
         "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions",
         false,
-        "Start company analysis from public info + competitive analysis",
+        "",
         false,
-        "Winter ramp shifts to 7:30pm kitchen closed / 8:30am latte",
+        "",
         false,
         "",
         false,
         "",
         false,
-        "Review website direction: light lookbook-style G&B page for seller/investor credibility",
+        "",
         false
       ],
       [
@@ -2743,55 +2713,7 @@
         false,
         "Add Kay food staples to Sunday grocery run",
         false,
-        "Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options",
-        false,
-        "Winter ramp shifts to 7:15pm kitchen closed / 8:30am latte",
-        false,
         "",
-        false,
-        "",
-        false,
-        "Winter ramp shifts to 7:00pm kitchen closed / 8:30am latte",
-        false
-      ],
-      [
-        "",
-        false,
-        "Draft/schedule Greg thank-you and insurance contacts follow-up",
-        false,
-        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Winter ramp shifts to 6:45pm kitchen closed / 8:30am latte",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Fasting rhythm shifts to 7:45pm kitchen closed / 8:30am latte",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Set up Claude workflow for Friday: slides + website aesthetics",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Fasting rhythm shifts to 7:30pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -2807,23 +2729,7 @@
         false,
         "",
         false,
-        "Winter ramp begins: 7:45pm kitchen closed / 8:30am latte",
-        false,
         "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Winter target rhythm begins: 6:30pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -2839,23 +2745,7 @@
         false,
         "",
         false,
-        "Spring release begins: 6:45pm kitchen closed / 8:30am latte",
-        false,
         "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Spring release shifts to 7:00pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -2871,23 +2761,7 @@
         false,
         "",
         false,
-        "Spring release shifts to 7:15pm kitchen closed / 8:30am latte",
-        false,
         "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Spring release shifts to 7:30pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -2903,23 +2777,7 @@
         false,
         "",
         false,
-        "Spring release shifts to 7:45pm kitchen closed / 8:30am latte",
-        false,
         "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Spring/fall rhythm returns: 8:00pm kitchen closed / 8:30am latte",
         false,
         "",
         false,
@@ -2935,7 +2793,7 @@
         false,
         "",
         false,
-        "Summer ramp shifts to 7:45pm kitchen closed / 8:30am latte",
+        "",
         false,
         "",
         false,
@@ -2951,7 +2809,119 @@
         false,
         "",
         false,
-        "Summer rhythm shifts to 7:30pm kitchen closed / 8:30am latte",
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
         false,
         "",
         false,
@@ -3076,1069 +3046,12 @@
         "notes \u00b7 ideas \u00b7 jot"
       ]
     ],
-    "'Sun'!A17:E66": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Mon'!A17:E66": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Tue'!A17:E66": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Wed'!A17:E66": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Thu'!A17:E66": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Fri'!A17:E66": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Sat'!A17:E66": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ]
+    "'Sun'!A17:E66": [],
+    "'Mon'!A17:E66": [],
+    "'Tue'!A17:E66": [],
+    "'Wed'!A17:E66": [],
+    "'Thu'!A17:E66": [],
+    "'Fri'!A17:E66": [],
+    "'Sat'!A17:E66": []
   }
 }

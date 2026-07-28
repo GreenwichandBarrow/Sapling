@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "generated_at": "2026-07-17T04:38:53.943897Z",
+  "generated_at": "2026-07-28T01:25:41.781980Z",
   "search_start": "2025-02-01",
   "notes": "Durable source/event ledger for M&A dashboard plumbing. Attio snapshot is current state only; this file tracks cumulative stage events and source attribution. Backfill gaps should be resolved by Good Morning/pipeline-manager, not guessed in the dashboard.",
   "records": [
@@ -33,6 +33,19 @@
       "closed_not_proceeding_date": "2026-07-10"
     },
     {
+      "company": "Fox Machinery",
+      "current_stage": "Closed / Not Proceeding",
+      "source": "unknown",
+      "source_label": "Unknown / needs source map",
+      "source_detail": "Source not yet mapped.",
+      "source_confidence": "needs_review",
+      "evidence": [
+        "brain/context/attio-pipeline-snapshot.json"
+      ],
+      "attio_record_id": "1c39e7e8-06ef-4bc0-9d1f-5a82527ff023",
+      "closed_not_proceeding_date": "2026-07-17"
+    },
+    {
       "company": "NoFo Tick Control",
       "current_stage": "Closed / Not Proceeding",
       "source": "unknown",
@@ -45,6 +58,19 @@
       "attio_record_id": "232db745-bc70-4cc9-99ea-fa8e3b86525c",
       "financials_received_date": "2026-06-26",
       "closed_not_proceeding_date": "2026-07-10"
+    },
+    {
+      "company": "Personal Risk Management Solutions",
+      "current_stage": "Closed / Not Proceeding",
+      "source": "unknown",
+      "source_label": "Unknown / needs source map",
+      "source_detail": "Source not yet mapped.",
+      "source_confidence": "needs_review",
+      "evidence": [
+        "brain/context/attio-pipeline-snapshot.json"
+      ],
+      "attio_record_id": "d2d0caa0-f465-43fe-a3c0-a0bea21dce34",
+      "closed_not_proceeding_date": "2026-07-17"
     },
     {
       "company": "Pest Management Business \u2014 Rejigg #38863 (PA)",

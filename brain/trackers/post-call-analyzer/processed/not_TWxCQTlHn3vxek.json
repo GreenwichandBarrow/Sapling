@@ -1,0 +1,29 @@
+{
+  "id": "not_TWxCQTlHn3vxek",
+  "title": "Jeff I Kay Mtg",
+  "counterparty": "Jeff Stevens",
+  "date": "2026-07-29",
+  "time": "12:00 PM ET",
+  "granola_url": "https://notes.granola.ai/d/63826776-15fb-44ca-94e3-d7def89e0e97",
+  "doc_url": "https://docs.google.com/document/d/11hIHeHtwT1wUcPEISpzZTDpe8G42ihhhoai9rvD8aVI/edit",
+  "transcript_doc_url": "https://docs.google.com/document/d/1WpUPnajtiNwZ4HHZv1TiTZaEAayBO0WN1k4wPd245oQ/edit",
+  "vault_call_note": "brain/calls/2026-07-29-jeff-stevens-jewelry-lead.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_TWxCQTlHn3vxek.json",
+  "processed_at": "2026-07-29T17:05:59.719196+00:00",
+  "slack_posted": true,
+  "slack_failed": false,
+  "doc_failed": false,
+  "transcript_failed": false,
+  "attio_failed": false,
+  "tasks_failed": false,
+  "attio_notes": {
+    "people": [
+      "cb24ea9c-8a39-4ce0-a081-b0e03c9ba5c9"
+    ],
+    "companies": [
+      "997e2224-8729-42e6-9045-294c59e1e585"
+    ]
+  },
+  "task_count": 3,
+  "processed_archive": "brain/trackers/post-call-analyzer/processed/not_TWxCQTlHn3vxek.json"
+}

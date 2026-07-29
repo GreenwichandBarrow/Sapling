@@ -1,9 +1,9 @@
 {
   "blocked": [],
-  "deal_items": 42,
+  "deal_items": 40,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-28T06:50:45.373693-04:00",
+  "fetched_at": "2026-07-29T06:50:45.240958-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -47,22 +47,59 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-07-28.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-07-29.json",
   "input_status": "ok",
   "needs_kay": [
-    "2 email-derived task candidate(s)",
-    "42 broker/listing row(s) extracted",
+    "40 broker/listing row(s) extracted",
+    "3 prior-day thank-you(s) need approval: Guillermo I Kay Bi-Weekly Mtg; Jeff; Megan <> Kay",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-07-28.md",
+  "source_artifact": "brain/context/email-scan-results-2026-07-29.md",
   "source_status": "ok",
   "stale_drafts": 0,
-  "task_candidates": 2,
-  "thank_you_items": [],
+  "task_candidates": 0,
+  "thank_you_items": [
+    {
+      "completed_at": "",
+      "due_date": "2026-07-29",
+      "email": "glavergne@ashfordventures.com",
+      "event": "Guillermo I Kay Bi-Weekly Mtg",
+      "event_date": "2026-07-28",
+      "person": "Guillermo I Kay Bi-Weekly Mtg",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-07-29",
+      "email": "jeffstevens@anacapapartners.com",
+      "event": "Jeff I Kay Mtg",
+      "event_date": "2026-07-28",
+      "person": "Jeff",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-07-29",
+      "email": "megan@ml-cap.com",
+      "event": "Megan <> Kay",
+      "event_date": "2026-07-28",
+      "person": "Megan <> Kay",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    }
+  ],
   "unclear_followthrough_items": [
     "Lisa (24-hour thank-you after external call)",
     "Camilla (24-hour thank-you after external meeting)"

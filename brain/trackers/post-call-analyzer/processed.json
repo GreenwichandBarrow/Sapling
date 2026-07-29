@@ -1,6 +1,32 @@
 {
   "processed": [
     {
+      "id": "not_VJk2dwViEYW3JK",
+      "title": "Team TB Camilla I Kay",
+      "date": "2026-07-29",
+      "doc_url": "https://docs.google.com/document/d/1X7HP9jCHpTTRZrCFNFZKFRXHmd5UvKMxt8jxu1ZWsmY/edit?usp=drivesdk",
+      "transcript_doc_url": "https://docs.google.com/document/d/1yF3-lNpi32b3oA3O843AyRIqMFrmX_fo5QXjW-FjBX4/edit?usp=drivesdk",
+      "granola_url": "https://notes.granola.ai/d/cce1b800-8690-41d6-b47c-3a4c32384269",
+      "vault_call_note": "brain/calls/2026-07-29-team-tb-camilla-kay.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_VJk2dwViEYW3JK.json",
+      "processed_archive": "brain/trackers/post-call-analyzer/processed/not_VJk2dwViEYW3JK.json",
+      "processed_at": "2026-07-29T22:07:03.413407Z",
+      "slack_posted": true,
+      "attio_failed": false,
+      "attio_notes": {
+        "people": [
+          "52146e57-68cf-4681-927c-9c2ddcdc7ea3"
+        ],
+        "companies": [
+          "1f3d7760-bafa-4f9e-996e-448dbff55ae9"
+        ]
+      },
+      "task_count": 4,
+      "transcript_failed": false,
+      "doc_failed": false,
+      "tasks_failed": false
+    },
+    {
       "attio_notes": {
         "companies": [
           "98aaac90-42ca-4c6d-9f10-8663159322c7"

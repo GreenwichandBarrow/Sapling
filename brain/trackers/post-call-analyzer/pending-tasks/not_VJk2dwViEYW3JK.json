@@ -1,0 +1,50 @@
+[
+  {
+    "task_text": "Review the Sydney Garber financials and decide whether to keep the deal live after Jeff's hard pass.",
+    "type": "Deal",
+    "project": "Search",
+    "suggested_day": "Today",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Camilla 2026-07-29 mtg. Analysis: https://docs.google.com/document/d/1X7HP9jCHpTTRZrCFNFZKFRXHmd5UvKMxt8jxu1ZWsmY/edit?usp=drivesdk",
+    "source_call_id": "not_VJk2dwViEYW3JK",
+    "source_doc_url": "https://docs.google.com/document/d/1X7HP9jCHpTTRZrCFNFZKFRXHmd5UvKMxt8jxu1ZWsmY/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1yF3-lNpi32b3oA3O843AyRIqMFrmX_fo5QXjW-FjBX4/edit?usp=drivesdk",
+    "staged_at": "2026-07-29T22:07:03.413407Z"
+  },
+  {
+    "task_text": "Draft the next diligence questions on inventory valuation, weighted-average cost, and working capital treatment.",
+    "type": "Analysis",
+    "project": "Search",
+    "suggested_day": "Today",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Camilla 2026-07-29 mtg. Analysis: https://docs.google.com/document/d/1X7HP9jCHpTTRZrCFNFZKFRXHmd5UvKMxt8jxu1ZWsmY/edit?usp=drivesdk",
+    "source_call_id": "not_VJk2dwViEYW3JK",
+    "source_doc_url": "https://docs.google.com/document/d/1X7HP9jCHpTTRZrCFNFZKFRXHmd5UvKMxt8jxu1ZWsmY/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1yF3-lNpi32b3oA3O843AyRIqMFrmX_fo5QXjW-FjBX4/edit?usp=drivesdk",
+    "staged_at": "2026-07-29T22:07:03.413407Z"
+  },
+  {
+    "task_text": "Decide whether to share the DealsX login and walkthrough video with Camilla so she can test the seller-follow-up workflow.",
+    "type": "Relationship",
+    "project": "Search",
+    "suggested_day": "Today",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Camilla 2026-07-29 mtg. Analysis: https://docs.google.com/document/d/1X7HP9jCHpTTRZrCFNFZKFRXHmd5UvKMxt8jxu1ZWsmY/edit?usp=drivesdk",
+    "source_call_id": "not_VJk2dwViEYW3JK",
+    "source_doc_url": "https://docs.google.com/document/d/1X7HP9jCHpTTRZrCFNFZKFRXHmd5UvKMxt8jxu1ZWsmY/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1yF3-lNpi32b3oA3O843AyRIqMFrmX_fo5QXjW-FjBX4/edit?usp=drivesdk",
+    "staged_at": "2026-07-29T22:07:03.413407Z"
+  },
+  {
+    "task_text": "Reframe the working deck so acquisition diligence and the sourcing pipeline stay visible as parallel tracks.",
+    "type": "Ops",
+    "project": "Search",
+    "suggested_day": "This week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Camilla 2026-07-29 mtg. Analysis: https://docs.google.com/document/d/1X7HP9jCHpTTRZrCFNFZKFRXHmd5UvKMxt8jxu1ZWsmY/edit?usp=drivesdk",
+    "source_call_id": "not_VJk2dwViEYW3JK",
+    "source_doc_url": "https://docs.google.com/document/d/1X7HP9jCHpTTRZrCFNFZKFRXHmd5UvKMxt8jxu1ZWsmY/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1yF3-lNpi32b3oA3O843AyRIqMFrmX_fo5QXjW-FjBX4/edit?usp=drivesdk",
+    "staged_at": "2026-07-29T22:07:03.413407Z"
+  }
+]

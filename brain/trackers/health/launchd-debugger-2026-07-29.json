@@ -1,0 +1,26 @@
+{
+  "date": "2026-07-29",
+  "scan_started_at": "2026-07-29T07:21:10-04:00",
+  "scan_finished_at": "2026-07-29T07:22:55-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 1,
+  "runtime_seconds": 105,
+  "results": [
+    {
+      "job": "email-intelligence",
+      "cause": "VALIDATOR_REJECT",
+      "action": "SURFACE",
+      "error_signature": "FAILED: post-run check exited 2",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/email-intelligence-2026-07-29-0630.log",
+      "last_log_mtime": "2026-07-29T06:36:48-04:00",
+      "exit_code": 2,
+      "validator_failed": false,
+      "preflight_failed": false,
+      "slack_text": "launchd-debugger: email-intelligence FAILED \u2014 VALIDATOR_REJECT. FAILED: post-run check exited 2. SKILL_CODE_NEEDS_FIX. Recommended: fix the email-intelligence artifact frontmatter so it includes a valid `type` and `skill_origin`, then rerun the scheduled job. Log: /home/ubuntu/projects/Sapling/logs/scheduled/email-intelligence-2026-07-29-0630.log",
+      "slack_posted": true,
+      "suppression_reason": null
+    }
+  ]
+}

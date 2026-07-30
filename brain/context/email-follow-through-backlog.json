@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-29",
+  "updated_at": "2026-07-30",
   "items": [
     {
       "bucket": "thank",
@@ -743,11 +743,19 @@
       "email": "megan@ml-cap.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-06-29",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Megan <> Kay",
       "event_date": "2026-06-28",
-      "calendar_event_id": "_652jida66so42ba488qk6b9k8op46b9p60o32b9i6d148chn60r42ha660_20260629T173000Z"
+      "calendar_event_id": "_652jida66so42ba488qk6b9k8op46b9p60o32b9i6d148chn60r42ha660_20260629T173000Z",
+      "completed_at": "2026-07-29",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19fae137e0922cec, subject 'Megan <> Kay', sent 2026-07-29 11:25.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19fae137e0922cec",
+        "subject": "Megan <> Kay",
+        "sent_at": "2026-07-29 11:25"
+      }
     },
     {
       "bucket": "thank",
@@ -755,11 +763,19 @@
       "email": "megan@ml-cap.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-06-30",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Megan <> Kay",
       "event_date": "2026-06-29",
-      "calendar_event_id": "_652jida66so42ba488qk6b9k8op46b9p60o32b9i6d148chn60r42ha660_20260629T173000Z"
+      "calendar_event_id": "_652jida66so42ba488qk6b9k8op46b9p60o32b9i6d148chn60r42ha660_20260629T173000Z",
+      "completed_at": "2026-07-29",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19fae137e0922cec, subject 'Megan <> Kay', sent 2026-07-29 11:25.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19fae137e0922cec",
+        "subject": "Megan <> Kay",
+        "sent_at": "2026-07-29 11:25"
+      }
     },
     {
       "bucket": "thank",
@@ -767,11 +783,19 @@
       "email": "megan@ml-cap.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-01",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Megan <> Kay",
       "event_date": "2026-06-30",
-      "calendar_event_id": "_652jida66so42ba488qk6b9k8op46b9p60o32b9i6d148chn60r42ha660_20260629T173000Z"
+      "calendar_event_id": "_652jida66so42ba488qk6b9k8op46b9p60o32b9i6d148chn60r42ha660_20260629T173000Z",
+      "completed_at": "2026-07-29",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19fae137e0922cec, subject 'Megan <> Kay', sent 2026-07-29 11:25.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19fae137e0922cec",
+        "subject": "Megan <> Kay",
+        "sent_at": "2026-07-29 11:25"
+      }
     },
     {
       "bucket": "thank",
@@ -1113,11 +1137,19 @@
       "email": "glavergne@ashfordventures.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-16",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Guillermo I Kay Bi-Weekly Mtg",
       "event_date": "2026-07-15",
-      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260715T173000Z"
+      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260715T173000Z",
+      "completed_at": "2026-07-29",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19fae4293ca74a06, subject 'New Time Proposed: Guillermo I Kay Bi-Weekly Mtg', sent 2026-07-29 11:28.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19fae4293ca74a06",
+        "subject": "New Time Proposed: Guillermo I Kay Bi-Weekly Mtg",
+        "sent_at": "2026-07-29 11:28"
+      }
     },
     {
       "bucket": "thank",
@@ -1173,11 +1205,19 @@
       "email": "megan@ml-cap.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-29",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Megan <> Kay",
       "event_date": "2026-07-28",
-      "calendar_event_id": "_652jida66so42ba488qk6b9k8op46b9p60o32b9i6d148chn60r42ha660_20260729T173000Z"
+      "calendar_event_id": "_652jida66so42ba488qk6b9k8op46b9p60o32b9i6d148chn60r42ha660_20260729T173000Z",
+      "completed_at": "2026-07-29",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19fae137e0922cec, subject 'Megan <> Kay', sent 2026-07-29 11:25.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19fae137e0922cec",
+        "subject": "Megan <> Kay",
+        "sent_at": "2026-07-29 11:25"
+      }
     },
     {
       "bucket": "thank",
@@ -1185,11 +1225,31 @@
       "email": "glavergne@ashfordventures.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-29",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Guillermo I Kay Bi-Weekly Mtg",
       "event_date": "2026-07-28",
-      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260729T173000Z"
+      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260729T173000Z",
+      "completed_at": "2026-07-29",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19fae4293ca74a06, subject 'New Time Proposed: Guillermo I Kay Bi-Weekly Mtg', sent 2026-07-29 11:28.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19fae4293ca74a06",
+        "subject": "New Time Proposed: Guillermo I Kay Bi-Weekly Mtg",
+        "sent_at": "2026-07-29 11:28"
+      }
+    },
+    {
+      "bucket": "thank",
+      "person": "Jeff",
+      "email": "jeffstevens@anacapapartners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-30",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Jeff I Kay Mtg",
+      "event_date": "2026-07-29",
+      "calendar_event_id": "scg04ikfln8s13auceu49t4crg_20260722T160000Z"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

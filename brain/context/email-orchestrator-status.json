@@ -3,8 +3,63 @@
   "deal_items": 40,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-29T11:24:35.948528-04:00",
-  "follow_through_completed_items": [],
+  "fetched_at": "2026-07-30T06:50:44.955252-04:00",
+  "follow_through_completed_items": [
+    {
+      "bucket": "thank",
+      "completed_at": "2026-07-29",
+      "event": "Megan <> Kay",
+      "person": "Megan",
+      "sent_at": "2026-07-29 11:25",
+      "sent_subject": "Megan <> Kay",
+      "sent_thread_id": "19fae137e0922cec"
+    },
+    {
+      "bucket": "thank",
+      "completed_at": "2026-07-29",
+      "event": "Megan <> Kay",
+      "person": "Megan",
+      "sent_at": "2026-07-29 11:25",
+      "sent_subject": "Megan <> Kay",
+      "sent_thread_id": "19fae137e0922cec"
+    },
+    {
+      "bucket": "thank",
+      "completed_at": "2026-07-29",
+      "event": "Megan <> Kay",
+      "person": "Megan",
+      "sent_at": "2026-07-29 11:25",
+      "sent_subject": "Megan <> Kay",
+      "sent_thread_id": "19fae137e0922cec"
+    },
+    {
+      "bucket": "thank",
+      "completed_at": "2026-07-29",
+      "event": "Guillermo I Kay Bi-Weekly Mtg",
+      "person": "Guillermo",
+      "sent_at": "2026-07-29 11:28",
+      "sent_subject": "New Time Proposed: Guillermo I Kay Bi-Weekly Mtg",
+      "sent_thread_id": "19fae4293ca74a06"
+    },
+    {
+      "bucket": "thank",
+      "completed_at": "2026-07-29",
+      "event": "Megan <> Kay",
+      "person": "Megan",
+      "sent_at": "2026-07-29 11:25",
+      "sent_subject": "Megan <> Kay",
+      "sent_thread_id": "19fae137e0922cec"
+    },
+    {
+      "bucket": "thank",
+      "completed_at": "2026-07-29",
+      "event": "Guillermo I Kay Bi-Weekly Mtg",
+      "person": "Guillermo",
+      "sent_at": "2026-07-29 11:28",
+      "sent_subject": "New Time Proposed: Guillermo I Kay Bi-Weekly Mtg",
+      "sent_thread_id": "19fae4293ca74a06"
+    }
+  ],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -47,53 +102,30 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-07-29.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-07-30.json",
   "input_status": "ok",
   "needs_kay": [
     "40 broker/listing row(s) extracted",
-    "3 prior-day thank-you(s) need approval: Guillermo I Kay Bi-Weekly Mtg; Jeff; Megan <> Kay",
+    "1 prior-day thank-you(s) need approval: Jeff",
+    "6 email follow-through row(s) auto-completed from sent-mail evidence: Megan; Megan; Megan; Guillermo; Megan; Guillermo",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-07-29.md",
+  "source_artifact": "brain/context/email-scan-results-2026-07-30.md",
   "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 0,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-07-29",
-      "email": "glavergne@ashfordventures.com",
-      "event": "Guillermo I Kay Bi-Weekly Mtg",
-      "event_date": "2026-07-28",
-      "person": "Guillermo I Kay Bi-Weekly Mtg",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-07-29",
+      "due_date": "2026-07-30",
       "email": "jeffstevens@anacapapartners.com",
       "event": "Jeff I Kay Mtg",
-      "event_date": "2026-07-28",
+      "event_date": "2026-07-29",
       "person": "Jeff",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-07-29",
-      "email": "megan@ml-cap.com",
-      "event": "Megan <> Kay",
-      "event_date": "2026-07-28",
-      "person": "Megan <> Kay",
       "sent_at": "",
       "sent_subject": "",
       "sent_thread_id": "",

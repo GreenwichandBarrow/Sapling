@@ -1,0 +1,29 @@
+{
+  "date": "2026-07-30",
+  "scan_started_at": "2026-07-30T07:21:00-04:00",
+  "scan_finished_at": "2026-07-30T07:23:17-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 1,
+  "runtime_seconds": 137,
+  "results": [
+    {
+      "job": "email-intelligence",
+      "cause": "VALIDATOR_REJECT",
+      "action": "SURFACE",
+      "triggered_by": "daily",
+      "error_signature": "FAILED: post-run check exited 2",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/email-intelligence-2026-07-30-0630.log",
+      "last_log_mtime": "2026-07-30T06:39:52-04:00",
+      "exit_code": 2,
+      "validator_failed": false,
+      "preflight_failed": false,
+      "rerun_exit_code": null,
+      "fix_applied": null,
+      "slack_text": "launchd-debugger: email-intelligence FAILED — VALIDATOR_REJECT. FAILED: post-run check exited 2. SKILL_CODE_NEEDS_FIX: artifact frontmatter is missing a valid type and email-intelligence origin, so this is a validator/wiring issue, not business-data drift. Recommended: fix the scan artifact frontmatter write path so it emits valid `type` and `skill_origin`/`source` before validation. Log: /home/ubuntu/projects/Sapling/logs/scheduled/email-intelligence-2026-07-30-0630.log",
+      "slack_posted": true,
+      "suppression_reason": null
+    }
+  ]
+}

@@ -1,15 +1,15 @@
 {
-  "date": "2026-07-30",
+  "date": "2026-07-31",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-07-30.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-07-31.md",
   "email_scan_status": "live",
   "deals_found": 0,
   "broker_opportunistic": 2,
   "near_misses": 2,
-  "sources_scanned": 15,
+  "sources_scanned": 17,
   "sources_covered": {
-    "marketplace": 6,
-    "email_newsletters": 6,
+    "marketplace": 7,
+    "email_newsletters": 7,
     "direct_email": 3
   },
   "manual_check_sources": [],
@@ -17,6 +17,6 @@
   "sources_blocked_single_attempt": 0,
   "volume_status": "BELOW TARGET",
   "needs_attention": [
-    "volume below 1-3/day target; no PASS matches surfaced"
+    "Low volume: 0 PASS deals surfaced; inbox skewed to paused SaaS/digital assets and retail/ecommerce listings."
   ]
 }

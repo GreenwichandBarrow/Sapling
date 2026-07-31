@@ -1507,6 +1507,34 @@
       },
       "task_count": 3,
       "processed_archive": "brain/trackers/post-call-analyzer/processed/not_TWxCQTlHn3vxek.json"
+    },
+    {
+      "attio_failed": false,
+      "attio_notes": {
+        "companies": [
+          "98e2059b-756c-4337-9883-d2ae9b5241d4"
+        ],
+        "people": [
+          "2b613b57-537c-4cef-8fc5-e053b51d7a98"
+        ]
+      },
+      "counterparty": "Guillermo",
+      "date": "2026-07-31",
+      "doc_failed": false,
+      "doc_url": "https://docs.google.com/document/d/1xCZAsOloGTtIvweCp2KBxHDYxHNYfejaVG0IzN9iLrk/edit?usp=drivesdk",
+      "granola_url": "https://notes.granola.ai/d/53a050af-4769-42ca-bac6-7e36c7b55836",
+      "id": "not_1lPqdcPEWL8Vhz",
+      "location": "remote",
+      "processed_archive": "brain/trackers/post-call-analyzer/processed/not_1lPqdcPEWL8Vhz.json",
+      "processed_at": "2026-07-31T22:06:05.778230Z",
+      "slack_posted": true,
+      "task_count": 5,
+      "tasks_failed": false,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_1lPqdcPEWL8Vhz.json",
+      "time": "13:30 ET",
+      "transcript_doc_url": "https://docs.google.com/document/d/1_AFylbjqfseQIdmlLE35ZtYC0of1sDtWF-rlIsyhq-w/edit?usp=drivesdk",
+      "transcript_failed": false,
+      "vault_call_note": "brain/calls/2026-07-31-guillermo-lavergne.md"
     }
   ]
 }

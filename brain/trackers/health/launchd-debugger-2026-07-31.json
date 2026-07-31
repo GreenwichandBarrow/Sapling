@@ -1,0 +1,28 @@
+{
+  "date": "2026-07-31",
+  "scan_started_at": "2026-07-31T07:21:09-04:00",
+  "scan_finished_at": "2026-07-31T07:22:02.446797-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 1,
+  "runtime_seconds": 53,
+  "results": [
+    {
+      "job": "email-intelligence",
+      "cause": "VALIDATOR_REJECT",
+      "action": "SURFACE",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/email-intelligence-2026-07-31-0630.log",
+      "last_log_mtime": "2026-07-31T06:39:28-04:00",
+      "exit_code": 2,
+      "validator_failed": false,
+      "preflight_failed": false,
+      "error_signature": "FAILED: post-run check exited 2 | SKILL_CODE_NEEDS_FIX",
+      "last_50_lines": "EMAIL-INTELLIGENCE VALIDATOR FAILED for 2026-07-31:\n  - artifact frontmatter missing valid type ('email-scan-results' or legacy 'context')\n  - artifact frontmatter missing email-intelligence origin ('skill_origin' or legacy 'source')\nFAILED: post-run check exited 2",
+      "slack_text": "launchd-debugger: email-intelligence FAILED \u2014 VALIDATOR_REJECT. FAILED: post-run check exited 2. SKILL_CODE_NEEDS_FIX: artifact frontmatter is missing required type/origin fields; update the email-intelligence artifact schema wiring, not business data. Recommended: fix the artifact frontmatter to emit a valid `type` and `skill_origin`/`source`, then revalidate. Log: /home/ubuntu/projects/Sapling/logs/scheduled/email-intelligence-2026-07-31-0630.log",
+      "slack_posted": true,
+      "suppression_reason": null,
+      "triggered_by": "daily"
+    }
+  ]
+}

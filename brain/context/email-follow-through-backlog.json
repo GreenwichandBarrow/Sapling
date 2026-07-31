@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-30",
+  "updated_at": "2026-07-31",
   "items": [
     {
       "bucket": "thank",
@@ -1250,6 +1250,18 @@
       "event": "Jeff I Kay Mtg",
       "event_date": "2026-07-29",
       "calendar_event_id": "scg04ikfln8s13auceu49t4crg_20260722T160000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Guillermo I Kay Bi-Weekly Mtg",
+      "email": "glavergne@ashfordventures.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-07-31",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Guillermo I Kay Bi-Weekly Mtg",
+      "event_date": "2026-07-30",
+      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260729T173000Z"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

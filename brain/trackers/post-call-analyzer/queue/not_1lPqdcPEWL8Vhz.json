@@ -1,0 +1,12 @@
+{
+  "id": "not_1lPqdcPEWL8Vhz",
+  "title": "Guillermo I Kay Bi-Weekly Mtg",
+  "created_at": "2026-07-31T17:31:49.913Z",
+  "updated_at": "2026-07-31T20:01:56.490Z",
+  "owner": {
+    "name": "Kay Schneider",
+    "email": "kay.s@greenwichandbarrow.com"
+  },
+  "queued_at": "2026-07-31T18:00:45-04:00",
+  "detector": "granola-api-rest"
+}

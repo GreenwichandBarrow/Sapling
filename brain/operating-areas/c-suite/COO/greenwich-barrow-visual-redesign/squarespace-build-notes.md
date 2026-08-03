@@ -29,7 +29,7 @@ Use this as a visual redesign reference for the existing Squarespace site, not a
 
 5. Criteria
    - Three equal columns with thin borders.
-   - Critical service, Customer trust, Local reputation.
+   - Critical service, Client trust, Local reputation.
 
 6. Areas of Interest
    - Soft green band.

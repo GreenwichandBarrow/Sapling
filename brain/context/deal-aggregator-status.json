@@ -1,22 +1,27 @@
 {
-  "date": "2026-07-31",
+  "date": "2026-08-03",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-07-31.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-08-03.md",
   "email_scan_status": "live",
   "deals_found": 0,
-  "broker_opportunistic": 2,
-  "near_misses": 2,
+  "broker_opportunistic": 0,
+  "near_misses": 3,
   "sources_scanned": 17,
   "sources_covered": {
-    "marketplace": 7,
-    "email_newsletters": 7,
+    "marketplace": 6,
+    "email_newsletters": 8,
     "direct_email": 3
   },
-  "manual_check_sources": [],
+  "manual_check_sources": [
+    "Axial",
+    "BizScout (DealOS)",
+    "Empire Flippers"
+  ],
   "sources_blocked_verified": 0,
   "sources_blocked_single_attempt": 0,
   "volume_status": "BELOW TARGET",
   "needs_attention": [
-    "Low volume: 0 PASS deals surfaced; inbox skewed to paused SaaS/digital assets and retail/ecommerce listings."
+    "browser fallback unavailable for gated marketplaces",
+    "volume below target"
   ]
 }

@@ -1277,11 +1277,19 @@
       "email": "melissa@bkgrowth.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-08-03",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Melissa I Kay",
       "event_date": "2026-08-02",
-      "calendar_event_id": "27cqd5rg3rsu6m6nccc2eh3h4u"
+      "calendar_event_id": "27cqd5rg3rsu6m6nccc2eh3h4u",
+      "completed_at": "2026-08-03",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19fbd318a7228738, subject 'New lead', sent 2026-08-03 14:53.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19fbd318a7228738",
+        "subject": "New lead",
+        "sent_at": "2026-08-03 14:53"
+      }
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

@@ -1535,6 +1535,32 @@
       "transcript_doc_url": "https://docs.google.com/document/d/1_AFylbjqfseQIdmlLE35ZtYC0of1sDtWF-rlIsyhq-w/edit?usp=drivesdk",
       "transcript_failed": false,
       "vault_call_note": "brain/calls/2026-07-31-guillermo-lavergne.md"
+    },
+    {
+      "id": "not_MBKTVrWMUMHcDB",
+      "title": "Melissa I Kay",
+      "counterparty": "Melissa Rosenblatt",
+      "granola_url": "https://notes.granola.ai/d/dabd49fb-0e30-43be-b460-60c1474f855f",
+      "doc_url": "https://docs.google.com/document/d/1AV5urBetsixh0kUKx5hygFnCZ0yY43nYOgCKu7b3IIY/edit?usp=drivesdk",
+      "transcript_doc_url": "https://docs.google.com/document/d/1OkfyZjjZwCwgFndqD_yPCoDnx0O8R7nCTkBn6B-CxZI/edit?usp=drivesdk",
+      "vault_call_note": "brain/calls/2026-08-03-melissa-rosenblatt.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_MBKTVrWMUMHcDB.json",
+      "processed_archive": "brain/trackers/post-call-analyzer/processed/not_MBKTVrWMUMHcDB.json",
+      "processed_at": "2026-08-03T22:07:16Z",
+      "slack_posted": true,
+      "attio_failed": false,
+      "attio_notes": {
+        "people": [
+          "4b5fa1d4-3a8b-4880-acac-6dd0e0d69808"
+        ],
+        "companies": [
+          "98aaac90-42ca-4c6d-9f10-8663159322c7"
+        ]
+      },
+      "task_count": 4,
+      "transcript_failed": false,
+      "doc_failed": false,
+      "tasks_failed": false
     }
   ]
 }

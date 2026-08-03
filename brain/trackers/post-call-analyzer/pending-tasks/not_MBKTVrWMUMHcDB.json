@@ -1,0 +1,50 @@
+[
+  {
+    "task_text": "Send a brief text-first follow-up to Melissa asking for the missing NDA response and the full financial package.",
+    "type": "Follow-up",
+    "project": "",
+    "suggested_day": "2026-08-04",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Melissa 2026-08-03 mtg. Analysis: https://docs.google.com/document/d/1AV5urBetsixh0kUKx5hygFnCZ0yY43nYOgCKu7b3IIY/edit?usp=drivesdk",
+    "source_call_id": "not_MBKTVrWMUMHcDB",
+    "source_doc_url": "https://docs.google.com/document/d/1AV5urBetsixh0kUKx5hygFnCZ0yY43nYOgCKu7b3IIY/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1OkfyZjjZwCwgFndqD_yPCoDnx0O8R7nCTkBn6B-CxZI/edit?usp=drivesdk",
+    "staged_at": "2026-08-03T22:07:00Z"
+  },
+  {
+    "task_text": "Approve LOI language that separates normalized working capital from inventory and ties inventory to a third-party valuation.",
+    "type": "Deal",
+    "project": "",
+    "suggested_day": "2026-08-05",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Melissa 2026-08-03 mtg. Analysis: https://docs.google.com/document/d/1AV5urBetsixh0kUKx5hygFnCZ0yY43nYOgCKu7b3IIY/edit?usp=drivesdk",
+    "source_call_id": "not_MBKTVrWMUMHcDB",
+    "source_doc_url": "https://docs.google.com/document/d/1AV5urBetsixh0kUKx5hygFnCZ0yY43nYOgCKu7b3IIY/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1OkfyZjjZwCwgFndqD_yPCoDnx0O8R7nCTkBn6B-CxZI/edit?usp=drivesdk",
+    "staged_at": "2026-08-03T22:07:00Z"
+  },
+  {
+    "task_text": "Request the seller's balance sheet, 2026 YTD P&L, and inventory schedule before any valuation escalation.",
+    "type": "Analysis",
+    "project": "",
+    "suggested_day": "2026-08-04",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Melissa 2026-08-03 mtg. Analysis: https://docs.google.com/document/d/1AV5urBetsixh0kUKx5hygFnCZ0yY43nYOgCKu7b3IIY/edit?usp=drivesdk",
+    "source_call_id": "not_MBKTVrWMUMHcDB",
+    "source_doc_url": "https://docs.google.com/document/d/1AV5urBetsixh0kUKx5hygFnCZ0yY43nYOgCKu7b3IIY/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1OkfyZjjZwCwgFndqD_yPCoDnx0O8R7nCTkBn6B-CxZI/edit?usp=drivesdk",
+    "staged_at": "2026-08-03T22:07:00Z"
+  },
+  {
+    "task_text": "Pressure-test financing and insurance options for an inventory-heavy close, including asset-backed debt, Jeweler's Block, and trade credit insurance.",
+    "type": "Ops",
+    "project": "",
+    "suggested_day": "2026-08-05",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Melissa 2026-08-03 mtg. Analysis: https://docs.google.com/document/d/1AV5urBetsixh0kUKx5hygFnCZ0yY43nYOgCKu7b3IIY/edit?usp=drivesdk",
+    "source_call_id": "not_MBKTVrWMUMHcDB",
+    "source_doc_url": "https://docs.google.com/document/d/1AV5urBetsixh0kUKx5hygFnCZ0yY43nYOgCKu7b3IIY/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1OkfyZjjZwCwgFndqD_yPCoDnx0O8R7nCTkBn6B-CxZI/edit?usp=drivesdk",
+    "staged_at": "2026-08-03T22:07:00Z"
+  }
+]

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31",
+  "updated_at": "2026-08-03",
   "items": [
     {
       "bucket": "thank",
@@ -1257,11 +1257,31 @@
       "email": "glavergne@ashfordventures.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-31",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Guillermo I Kay Bi-Weekly Mtg",
       "event_date": "2026-07-30",
-      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260729T173000Z"
+      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260729T173000Z",
+      "completed_at": "2026-08-02",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19fb970d8ffb1ab6, subject 'SG FINANCIALS', sent 2026-08-02 11:36.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19fb970d8ffb1ab6",
+        "subject": "SG FINANCIALS",
+        "sent_at": "2026-08-02 11:36"
+      }
+    },
+    {
+      "bucket": "thank",
+      "person": "Melissa",
+      "email": "melissa@bkgrowth.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-03",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Melissa I Kay",
+      "event_date": "2026-08-02",
+      "calendar_event_id": "27cqd5rg3rsu6m6nccc2eh3h4u"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

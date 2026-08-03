@@ -1,10 +1,20 @@
 {
   "blocked": [],
-  "deal_items": 33,
+  "deal_items": 46,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-07-31T06:50:44.943600-04:00",
-  "follow_through_completed_items": [],
+  "fetched_at": "2026-08-03T06:50:44.927335-04:00",
+  "follow_through_completed_items": [
+    {
+      "bucket": "thank",
+      "completed_at": "2026-08-02",
+      "event": "Guillermo I Kay Bi-Weekly Mtg",
+      "person": "Guillermo",
+      "sent_at": "2026-08-02 11:36",
+      "sent_subject": "SG FINANCIALS",
+      "sent_thread_id": "19fb970d8ffb1ab6"
+    }
+  ],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -47,29 +57,30 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-07-31.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-08-03.json",
   "input_status": "ok",
   "needs_kay": [
-    "33 broker/listing row(s) extracted",
-    "1 prior-day thank-you(s) need approval: Guillermo I Kay Bi-Weekly Mtg",
+    "46 broker/listing row(s) extracted",
+    "1 prior-day thank-you(s) need approval: Melissa",
+    "1 email follow-through row(s) auto-completed from sent-mail evidence: Guillermo",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-07-31.md",
+  "source_artifact": "brain/context/email-scan-results-2026-08-03.md",
   "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 0,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-07-31",
-      "email": "glavergne@ashfordventures.com",
-      "event": "Guillermo I Kay Bi-Weekly Mtg",
-      "event_date": "2026-07-30",
-      "person": "Guillermo I Kay Bi-Weekly Mtg",
+      "due_date": "2026-08-03",
+      "email": "melissa@bkgrowth.com",
+      "event": "Melissa I Kay",
+      "event_date": "2026-08-02",
+      "person": "Melissa",
       "sent_at": "",
       "sent_subject": "",
       "sent_thread_id": "",

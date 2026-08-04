@@ -117,7 +117,6 @@
       "id": "19fc9554532d7ea7",
       "labels": [
         "CATEGORY_PROMOTIONS",
-        "UNREAD",
         "auto/deal flow",
         "INBOX"
       ],
@@ -530,8 +529,96 @@
     ],
     "nextPageToken": ""
   },
-  "generated_at": "2026-08-04T10:31:22+00:00",
+  "generated_at": "2026-08-04T14:32:08+00:00",
   "inbound": [
+    {
+      "candidate_reason": null,
+      "date": "2026-08-04 10:31",
+      "from": "Squarespace <noreply@mail.squarespace.com>",
+      "id": "19fcd2fb5cc882d9",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/tech stack",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Start earning for your side hustle"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-04 10:02",
+      "from": "\"Women's Search Network\" <andrea@womenssearchnetwork.com>",
+      "id": "19fcd15b44f33c96",
+      "labels": [
+        "UNREAD",
+        "TRASH",
+        "CATEGORY_UPDATES",
+        "auto/subscriptions & education"
+      ],
+      "message_count": 2,
+      "snippet": "",
+      "subject": "\u2b50 Join Our CEO AMA on August 18 + A Look Ahead at WSN's Fall Lineup"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-08-04 09:16",
+      "from": "NewBizOpps@bizbuysell.com",
+      "id": "19fcceaec62f267d",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "auto/deal flow",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "We found 5 Business for Sale listings related to Well-Located Self-Service Laundry!"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-08-04 08:00",
+      "from": "BizBuySell <news@bizbuysell.com>",
+      "id": "19fccc028aa52a52",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "auto/deal flow",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "New: The Financial Benchmarks Report"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-04 08:05",
+      "from": "Michael Girdley <media@girdley.com>",
+      "id": "19fccaa18f998db9",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 2,
+      "snippet": "",
+      "subject": "Have you asked what you\u2019re doing wrong?"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-03 19:59",
+      "from": "noreply-dmarc-support@google.com",
+      "id": "19fcc58b8c5426b1",
+      "labels": [
+        "UNREAD",
+        "auto/tech stack",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Report domain: greenwichandbarrow.com Submitter: google.com Report-ID: 10832117897097691588"
+    },
     {
       "candidate_reason": null,
       "date": "2026-08-04 06:07",
@@ -546,21 +633,6 @@
       "message_count": 1,
       "snippet": "",
       "subject": "\ud83d\udd12 Axios AM: Behind Trump's paywall"
-    },
-    {
-      "candidate_reason": null,
-      "date": "2026-08-04 04:18",
-      "from": "DMARC Aggregate Report <dmarcreport@microsoft.com>",
-      "id": "19fcbda17d1d7e87",
-      "labels": [
-        "UNREAD",
-        "auto/tech stack",
-        "CATEGORY_UPDATES",
-        "INBOX"
-      ],
-      "message_count": 1,
-      "snippet": "",
-      "subject": "[Preview] Report Domain: greenwichandbarrow.com Submitter: enterprise.protection.outlook.com Report-ID: e48e75b0a7134820bff5af420585f5cc"
     },
     {
       "candidate_reason": null,
@@ -583,7 +655,6 @@
       "from": "\"amazon.com\" <no-reply@amazon.com>",
       "id": "19fcac69358736d8",
       "labels": [
-        "UNREAD",
         "CATEGORY_UPDATES",
         "INBOX"
       ],
@@ -592,28 +663,12 @@
       "subject": "Your monthly spending summary"
     },
     {
-      "candidate_reason": null,
-      "date": "2026-08-03 21:29",
-      "from": "Mike Allen <mike@axios.com>",
-      "id": "19fca63f66bf2a86",
-      "labels": [
-        "UNREAD",
-        "CATEGORY_UPDATES",
-        "auto/subscriptions & education",
-        "INBOX"
-      ],
-      "message_count": 1,
-      "snippet": "",
-      "subject": "\ud83d\udedd Axios Finish Line: Return of recess"
-    },
-    {
       "candidate_reason": "deal_keyword_in_metadata",
       "date": "2026-08-03 16:33",
       "from": "New Deal via Axial <newdeal@axial.net>",
       "id": "19fc9554532d7ea7",
       "labels": [
         "CATEGORY_PROMOTIONS",
-        "UNREAD",
         "auto/deal flow",
         "INBOX"
       ],
@@ -719,18 +774,31 @@
       "subject": "Action Summary for 07/27/2026 - 08/03/2026"
     },
     {
-      "candidate_reason": null,
-      "date": "2026-08-02 07:12",
-      "from": "Walker Deibel <walker@buythenbuild.com>",
-      "id": "19fc22cb83b0198c",
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-08-04 10:09",
+      "from": "Chris Guthrie <chris@quietlight.com>",
+      "id": "19fcd1bf85adff6c",
       "labels": [
-        "CATEGORY_UPDATES",
-        "auto/subscriptions & education",
-        "INBOX"
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
       ],
       "message_count": 1,
       "snippet": "",
-      "subject": "Would you take $1 a day for a billion days?"
+      "subject": "5-Year-Old Viral Contest Website Portfolio | Very Low Owner Workload"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-03 18:37",
+      "from": "\"Helen Guo \u2747\ufe0f SMB Deal Hunter\" <helen@mail.smbdealhunter.xyz>",
+      "id": "19fc9c6c21d0361a",
+      "labels": [
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "$890k/yr. 8 employees. 2 locations."
     },
     {
       "candidate_reason": "known_deal_or_marketplace_sender",

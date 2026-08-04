@@ -1589,6 +1589,34 @@
       "transcript_doc_url": "https://docs.google.com/document/d/1OB8OBnvkAemZrZytVfFSaxr2r5Lo37Iy1ZsZRgpCWCQ/edit?usp=drivesdk",
       "transcript_failed": false,
       "vault_call_note": "brain/calls/2026-08-04-will-bressman.md"
+    },
+    {
+      "id": "not_CfDtCJEbKfjRBJ",
+      "date": "2026-08-04",
+      "time": "12:30 PM ET",
+      "location": "remote",
+      "counterparty": "Andrew Saltoun",
+      "granola_url": "https://notes.granola.ai/d/650b3e1e-a294-442a-bb04-0c265bbf02d8",
+      "transcript_doc_url": "https://docs.google.com/document/d/1r0SBDQ-96zIguC6mrKk6cjd4kXwl0gGE5hmHdHqIH3Q/edit",
+      "doc_url": "https://docs.google.com/document/d/1lkcOsH2T02ZrEhKvmVXyUQGceBHQFPdulMbthE3hrKo/edit",
+      "vault_call_note": "brain/calls/2026-08-04-andrew-saltoun.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_CfDtCJEbKfjRBJ.json",
+      "task_count": 2,
+      "attio_failed": false,
+      "doc_failed": false,
+      "transcript_failed": false,
+      "tasks_failed": false,
+      "attio_notes": {
+        "people": [
+          "e1b63f69-049d-4470-8a43-e8b892388328"
+        ],
+        "companies": [
+          "c50269d4-cbf4-4472-bdfc-c12bd63b8d62"
+        ]
+      },
+      "slack_posted": true,
+      "processed_at": "2026-08-04T22:06:03.117236Z",
+      "processed_archive": "brain/trackers/post-call-analyzer/processed/not_CfDtCJEbKfjRBJ.json"
     }
   ]
 }

@@ -1,0 +1,28 @@
+{
+  "attio_failed": false,
+  "attio_notes": {
+    "companies": [
+      "98aaac90-42ca-4c6d-9f10-8663159322c7"
+    ],
+    "people": [
+      "bc13021f-0ed1-4d26-9665-14099a74f730"
+    ]
+  },
+  "date": "2026-08-04",
+  "doc_failed": false,
+  "doc_url": "https://docs.google.com/document/d/1VdWECneyDzL9oZqk-BhEYEfTEgxAUrtd_kb-vxS_dkg/edit?usp=drivesdk",
+  "granola_url": "https://notes.granola.ai/d/71cd7b02-a3a8-4303-9b8c-d258b66bd963",
+  "id": "not_iWsNvTRTQHXtHy",
+  "processed_archive": "brain/trackers/post-call-analyzer/processed/not_iWsNvTRTQHXtHy.json",
+  "processed_at": "2026-08-04T17:05:37.021708Z",
+  "slack_failed": false,
+  "slack_posted": true,
+  "task_count": 3,
+  "tasks_failed": false,
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_iWsNvTRTQHXtHy.json",
+  "time": "11:30 AM ET",
+  "title": "Will I Kay",
+  "transcript_doc_url": "https://docs.google.com/document/d/1OB8OBnvkAemZrZytVfFSaxr2r5Lo37Iy1ZsZRgpCWCQ/edit?usp=drivesdk",
+  "transcript_failed": false,
+  "vault_call_note": "brain/calls/2026-08-04-will-bressman.md"
+}

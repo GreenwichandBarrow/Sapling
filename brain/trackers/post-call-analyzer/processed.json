@@ -1,30 +1,30 @@
 {
   "processed": [
     {
-      "id": "not_VJk2dwViEYW3JK",
-      "title": "Team TB Camilla I Kay",
+      "attio_failed": false,
+      "attio_notes": {
+        "companies": [
+          "1f3d7760-bafa-4f9e-996e-448dbff55ae9"
+        ],
+        "people": [
+          "52146e57-68cf-4681-927c-9c2ddcdc7ea3"
+        ]
+      },
       "date": "2026-07-29",
+      "doc_failed": false,
       "doc_url": "https://docs.google.com/document/d/1X7HP9jCHpTTRZrCFNFZKFRXHmd5UvKMxt8jxu1ZWsmY/edit?usp=drivesdk",
-      "transcript_doc_url": "https://docs.google.com/document/d/1yF3-lNpi32b3oA3O843AyRIqMFrmX_fo5QXjW-FjBX4/edit?usp=drivesdk",
       "granola_url": "https://notes.granola.ai/d/cce1b800-8690-41d6-b47c-3a4c32384269",
-      "vault_call_note": "brain/calls/2026-07-29-team-tb-camilla-kay.md",
-      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_VJk2dwViEYW3JK.json",
+      "id": "not_VJk2dwViEYW3JK",
       "processed_archive": "brain/trackers/post-call-analyzer/processed/not_VJk2dwViEYW3JK.json",
       "processed_at": "2026-07-29T22:07:03.413407Z",
       "slack_posted": true,
-      "attio_failed": false,
-      "attio_notes": {
-        "people": [
-          "52146e57-68cf-4681-927c-9c2ddcdc7ea3"
-        ],
-        "companies": [
-          "1f3d7760-bafa-4f9e-996e-448dbff55ae9"
-        ]
-      },
       "task_count": 4,
+      "tasks_failed": false,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_VJk2dwViEYW3JK.json",
+      "title": "Team TB Camilla I Kay",
+      "transcript_doc_url": "https://docs.google.com/document/d/1yF3-lNpi32b3oA3O843AyRIqMFrmX_fo5QXjW-FjBX4/edit?usp=drivesdk",
       "transcript_failed": false,
-      "doc_failed": false,
-      "tasks_failed": false
+      "vault_call_note": "brain/calls/2026-07-29-team-tb-camilla-kay.md"
     },
     {
       "attio_notes": {
@@ -1331,182 +1331,182 @@
       "vault_call_note": "brain/calls/2026-07-08-team-tb-camilla-kay.md"
     },
     {
-      "id": "not_jLfxXmq918zp2u",
-      "title": "Kay Schneider and Sara Rosenthal",
-      "counterparty": "Sara Rosenthal",
-      "doc_url": "https://docs.google.com/document/d/1GwNPhbPCyY4WpTdzBSvv1QQKqsAicdN9La7n3kdmyAU/edit?usp=drivesdk",
-      "transcript_doc_url": "https://docs.google.com/document/d/15YrU1t6D1uP-Bn-NCnUIXnZGRM_9YYRw0-jCtM3xfLM/edit?usp=drivesdk",
-      "vault_call_note": "brain/calls/2026-07-15-sara-rosenthal.md",
-      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_jLfxXmq918zp2u.json",
-      "processed_at": "2026-07-15T17:15:35.403712Z",
-      "slack_posted": true,
       "attio_notes": {
-        "people": [
-          "45d0978f-cc17-47ab-a731-d55c5d324f6a"
-        ],
         "companies": [
           "81c501d6-7607-476f-918c-b9357d868675"
+        ],
+        "people": [
+          "45d0978f-cc17-47ab-a731-d55c5d324f6a"
         ]
       },
-      "task_count": 3
-    },
-    {
-      "id": "not_nz3Jcy4V9Zi3ZO",
-      "title": "Jackie I Kay",
-      "counterparty": "Jackie Hirsch",
-      "doc_url": "https://docs.google.com/document/d/100rEMTTRiMHx9QhHwdRIwkyAicPIhU5oGJ-yI2LyqdA/edit?usp=drivesdk",
-      "transcript_doc_url": "https://docs.google.com/document/d/1O1xZ9PjiScqbVeT-H8CN9Siww-_BxnbScusZQeGfceE/edit?usp=drivesdk",
-      "vault_call_note": "brain/calls/2026-07-15-jackie-hirsch.md",
-      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_nz3Jcy4V9Zi3ZO.json",
+      "counterparty": "Sara Rosenthal",
+      "doc_url": "https://docs.google.com/document/d/1GwNPhbPCyY4WpTdzBSvv1QQKqsAicdN9La7n3kdmyAU/edit?usp=drivesdk",
+      "id": "not_jLfxXmq918zp2u",
       "processed_at": "2026-07-15T17:15:35.403712Z",
       "slack_posted": true,
-      "attio_notes": {
-        "people": [
-          "9d80670f-c573-495b-8ead-f3d7088eb59d"
-        ],
-        "companies": [
-          "57c5045d-0ef5-4858-b21c-f6384b9c5924"
-        ]
-      },
-      "task_count": 3
+      "task_count": 3,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_jLfxXmq918zp2u.json",
+      "title": "Kay Schneider and Sara Rosenthal",
+      "transcript_doc_url": "https://docs.google.com/document/d/15YrU1t6D1uP-Bn-NCnUIXnZGRM_9YYRw0-jCtM3xfLM/edit?usp=drivesdk",
+      "vault_call_note": "brain/calls/2026-07-15-sara-rosenthal.md"
     },
     {
-      "id": "not_8VjwuELdcFEY85",
-      "title": "WSN Group",
-      "time": "2026-07-15 12:30 PM ET",
-      "location": "remote",
-      "summary": "Kay's jewelry-brand lead is real enough to merit a bounded thesis sprint. The group pushed her to turn it into a one-page case, get valuation inputs, and decide quickly whether to pursue or kill it.",
-      "doc_url": "https://docs.google.com/document/d/1SoptZBIU07IRbW_o22-n3LkHoyJdCwd7bCKLvqRzCGw/edit",
-      "transcript_doc_url": "https://docs.google.com/document/d/1T8BydsFSQrMQk7MAvgcX0N4MDUnt3hYAHjq0jba_B04/edit",
-      "granola_url": "https://notes.granola.ai/d/e870a08c-944f-4e27-80ee-5a42cf79357a",
-      "vault_call_note": "brain/calls/2026-07-15-wsn-group.md",
-      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_8VjwuELdcFEY85.json",
-      "processed_at": "2026-07-15T22:05:34Z",
+      "attio_notes": {
+        "companies": [
+          "57c5045d-0ef5-4858-b21c-f6384b9c5924"
+        ],
+        "people": [
+          "9d80670f-c573-495b-8ead-f3d7088eb59d"
+        ]
+      },
+      "counterparty": "Jackie Hirsch",
+      "doc_url": "https://docs.google.com/document/d/100rEMTTRiMHx9QhHwdRIwkyAicPIhU5oGJ-yI2LyqdA/edit?usp=drivesdk",
+      "id": "not_nz3Jcy4V9Zi3ZO",
+      "processed_at": "2026-07-15T17:15:35.403712Z",
       "slack_posted": true,
       "task_count": 3,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_nz3Jcy4V9Zi3ZO.json",
+      "title": "Jackie I Kay",
+      "transcript_doc_url": "https://docs.google.com/document/d/1O1xZ9PjiScqbVeT-H8CN9Siww-_BxnbScusZQeGfceE/edit?usp=drivesdk",
+      "vault_call_note": "brain/calls/2026-07-15-jackie-hirsch.md"
+    },
+    {
       "attio_notes": {
-        "people": [
-          "c2d03a5d-9a82-4a68-9e1c-7c54fabcdb43",
-          "55748a47-eecf-4a01-94d0-f4a99e1e007b",
-          "9a53caa3-bd5c-4fb3-ad9c-f626a79ba3ba",
-          "2b613b57-537c-4cef-8fc5-e053b51d7a98"
-        ],
         "companies": [
           "02401582-0071-4e0c-a463-c80ded4848d1",
           "fdcc8630-c0fd-44ce-8fbd-cf18269b244c",
           "e159782b-bbfb-4541-abd4-23ff2f6a44a6",
           "ec6dcd65-d8de-4aca-921a-8ab3684b2594"
+        ],
+        "people": [
+          "c2d03a5d-9a82-4a68-9e1c-7c54fabcdb43",
+          "55748a47-eecf-4a01-94d0-f4a99e1e007b",
+          "9a53caa3-bd5c-4fb3-ad9c-f626a79ba3ba",
+          "2b613b57-537c-4cef-8fc5-e053b51d7a98"
         ]
-      }
+      },
+      "doc_url": "https://docs.google.com/document/d/1SoptZBIU07IRbW_o22-n3LkHoyJdCwd7bCKLvqRzCGw/edit",
+      "granola_url": "https://notes.granola.ai/d/e870a08c-944f-4e27-80ee-5a42cf79357a",
+      "id": "not_8VjwuELdcFEY85",
+      "location": "remote",
+      "processed_at": "2026-07-15T22:05:34Z",
+      "slack_posted": true,
+      "summary": "Kay's jewelry-brand lead is real enough to merit a bounded thesis sprint. The group pushed her to turn it into a one-page case, get valuation inputs, and decide quickly whether to pursue or kill it.",
+      "task_count": 3,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_8VjwuELdcFEY85.json",
+      "time": "2026-07-15 12:30 PM ET",
+      "title": "WSN Group",
+      "transcript_doc_url": "https://docs.google.com/document/d/1T8BydsFSQrMQk7MAvgcX0N4MDUnt3hYAHjq0jba_B04/edit",
+      "vault_call_note": "brain/calls/2026-07-15-wsn-group.md"
     },
     {
-      "id": "not_rrTawWeiE7Ff85",
-      "title": "Guillermo I Kay Bi-Weekly Mtg",
-      "time": "2026-07-15 01:30 PM ET",
-      "location": "remote",
-      "summary": "Guillermo pushed the jewelry-brand lead into a real decision point. The next step is a short thesis memo, valuation clarity, and a fast yes/no on whether it deserves a focused sprint.",
-      "doc_url": "https://docs.google.com/document/d/1YC4JPPcdQqHgUC3PIaWEOFqYUTSkx-skkIfg8lEhEdA/edit",
-      "transcript_doc_url": "https://docs.google.com/document/d/1KZUEb-jGOJl14bELyG6_vEB12bB4V6LIVNKSHc8ubck/edit",
-      "granola_url": "https://notes.granola.ai/d/1c5a8d0c-60c5-49d9-a010-1595d56ed256",
-      "vault_call_note": "brain/calls/2026-07-15-guillermo-i-kay-bi-weekly-mtg.md",
-      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_rrTawWeiE7Ff85.json",
-      "processed_at": "2026-07-15T22:07:55Z",
-      "slack_posted": true,
-      "task_count": 3,
       "attio_notes": {
-        "people": [
-          "2b613b57-537c-4cef-8fc5-e053b51d7a98"
-        ],
         "companies": [
           "98e2059b-756c-4337-9883-d2ae9b5241d4"
+        ],
+        "people": [
+          "2b613b57-537c-4cef-8fc5-e053b51d7a98"
         ]
-      }
+      },
+      "doc_url": "https://docs.google.com/document/d/1YC4JPPcdQqHgUC3PIaWEOFqYUTSkx-skkIfg8lEhEdA/edit",
+      "granola_url": "https://notes.granola.ai/d/1c5a8d0c-60c5-49d9-a010-1595d56ed256",
+      "id": "not_rrTawWeiE7Ff85",
+      "location": "remote",
+      "processed_at": "2026-07-15T22:07:55Z",
+      "slack_posted": true,
+      "summary": "Guillermo pushed the jewelry-brand lead into a real decision point. The next step is a short thesis memo, valuation clarity, and a fast yes/no on whether it deserves a focused sprint.",
+      "task_count": 3,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_rrTawWeiE7Ff85.json",
+      "time": "2026-07-15 01:30 PM ET",
+      "title": "Guillermo I Kay Bi-Weekly Mtg",
+      "transcript_doc_url": "https://docs.google.com/document/d/1KZUEb-jGOJl14bELyG6_vEB12bB4V6LIVNKSHc8ubck/edit",
+      "vault_call_note": "brain/calls/2026-07-15-guillermo-i-kay-bi-weekly-mtg.md"
     },
     {
-      "id": "not_KCJ9HejziMMX32",
-      "title": "Andrew <> Kay",
-      "processed_at": "2026-07-16T17:08:00Z",
-      "doc_url": "https://docs.google.com/document/d/1EWs4DHT8-KS7zPXrLl8b-pbVOgxtatUv97VhtIH8nOw/edit?usp=drivesdk",
-      "transcript_doc_url": "https://docs.google.com/document/d/1LgdpWztXJt4xiAYZWwxvOrFZbONqgZTzGj78BBMmXFo/edit?usp=drivesdk",
-      "vault_call_note": "brain/calls/2026-07-16-andrew-freiman-jewelry-search.md",
-      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_KCJ9HejziMMX32.json",
-      "slack_posted": true,
       "attio_failed": false,
       "attio_notes": {
-        "people": [
-          "1deda8c6-d091-48f3-b541-c99ed6756faf"
-        ],
         "companies": [
           "abf1a44b-a574-464c-9ddc-a768eccd9201"
+        ],
+        "people": [
+          "1deda8c6-d091-48f3-b541-c99ed6756faf"
         ]
       },
-      "tasks_appended": 2
+      "doc_url": "https://docs.google.com/document/d/1EWs4DHT8-KS7zPXrLl8b-pbVOgxtatUv97VhtIH8nOw/edit?usp=drivesdk",
+      "id": "not_KCJ9HejziMMX32",
+      "processed_at": "2026-07-16T17:08:00Z",
+      "slack_posted": true,
+      "tasks_appended": 2,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_KCJ9HejziMMX32.json",
+      "title": "Andrew <> Kay",
+      "transcript_doc_url": "https://docs.google.com/document/d/1LgdpWztXJt4xiAYZWwxvOrFZbONqgZTzGj78BBMmXFo/edit?usp=drivesdk",
+      "vault_call_note": "brain/calls/2026-07-16-andrew-freiman-jewelry-search.md"
     },
     {
-      "id": "not_r188RA5BgvSK8C",
-      "title": "WP Career Coach: Erika Teresko - Appointment",
-      "processed_at": "2026-07-16T17:08:00Z",
-      "doc_url": "https://docs.google.com/document/d/1j2ds0RPmJzknat1YnMqRgaXaqyMfUaPT4igb3_uve8E/edit?usp=drivesdk",
-      "transcript_doc_url": "https://docs.google.com/document/d/17NLMcBsmNHYhGFBJcfKzBR_XSGZJp04wYyhzIGzIlrU/edit?usp=drivesdk",
-      "vault_call_note": "brain/calls/2026-07-16-erika-teresko-appointment.md",
-      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_r188RA5BgvSK8C.json",
-      "slack_posted": true,
       "attio_failed": true,
       "attio_notes": {},
-      "tasks_appended": 3
+      "doc_url": "https://docs.google.com/document/d/1j2ds0RPmJzknat1YnMqRgaXaqyMfUaPT4igb3_uve8E/edit?usp=drivesdk",
+      "id": "not_r188RA5BgvSK8C",
+      "processed_at": "2026-07-16T17:08:00Z",
+      "slack_posted": true,
+      "tasks_appended": 3,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_r188RA5BgvSK8C.json",
+      "title": "WP Career Coach: Erika Teresko - Appointment",
+      "transcript_doc_url": "https://docs.google.com/document/d/17NLMcBsmNHYhGFBJcfKzBR_XSGZJp04wYyhzIGzIlrU/edit?usp=drivesdk",
+      "vault_call_note": "brain/calls/2026-07-16-erika-teresko-appointment.md"
     },
     {
-      "id": "not_bKrB2kgH31Iyjl",
-      "counterparty": "Camilla",
-      "title": "Camilla I Kay",
-      "date": "2026-07-16",
-      "time": "13:00 ET",
-      "location": "remote",
-      "granola_url": "https://notes.granola.ai/d/574bf599-2e6b-43d7-b683-a9a425a04fbb",
-      "doc_url": "https://docs.google.com/document/d/1yLdz41geFVIlSwFNyhpT7bdA_0yHqOUH9JbMX2g9ZE4/edit?usp=drivesdk",
-      "transcript_doc_url": "https://docs.google.com/document/d/1kA75L7vv51R_Zcuu60FHGspLqD_OCyvfvkw6kpGIk9g/edit?usp=drivesdk",
-      "vault_call_note": "brain/calls/2026-07-16-camilla-de-sanna.md",
-      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_bKrB2kgH31Iyjl.json",
-      "processed_at": "2026-07-16T22:05:42Z",
-      "slack_posted": true,
+      "attio_failed": false,
       "attio_notes": {
-        "people": [
-          "52146e57-68cf-4681-927c-9c2ddcdc7ea3"
-        ],
         "companies": [
           "1f3d7760-bafa-4f9e-996e-448dbff55ae9"
+        ],
+        "people": [
+          "52146e57-68cf-4681-927c-9c2ddcdc7ea3"
         ]
       },
-      "attio_failed": false
+      "counterparty": "Camilla",
+      "date": "2026-07-16",
+      "doc_url": "https://docs.google.com/document/d/1yLdz41geFVIlSwFNyhpT7bdA_0yHqOUH9JbMX2g9ZE4/edit?usp=drivesdk",
+      "granola_url": "https://notes.granola.ai/d/574bf599-2e6b-43d7-b683-a9a425a04fbb",
+      "id": "not_bKrB2kgH31Iyjl",
+      "location": "remote",
+      "processed_at": "2026-07-16T22:05:42Z",
+      "slack_posted": true,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_bKrB2kgH31Iyjl.json",
+      "time": "13:00 ET",
+      "title": "Camilla I Kay",
+      "transcript_doc_url": "https://docs.google.com/document/d/1kA75L7vv51R_Zcuu60FHGspLqD_OCyvfvkw6kpGIk9g/edit?usp=drivesdk",
+      "vault_call_note": "brain/calls/2026-07-16-camilla-de-sanna.md"
     },
     {
-      "id": "not_TWxCQTlHn3vxek",
-      "title": "Jeff I Kay Mtg",
-      "counterparty": "Jeff Stevens",
-      "date": "2026-07-29",
-      "time": "12:00 PM ET",
-      "granola_url": "https://notes.granola.ai/d/63826776-15fb-44ca-94e3-d7def89e0e97",
-      "doc_url": "https://docs.google.com/document/d/11hIHeHtwT1wUcPEISpzZTDpe8G42ihhhoai9rvD8aVI/edit",
-      "transcript_doc_url": "https://docs.google.com/document/d/1WpUPnajtiNwZ4HHZv1TiTZaEAayBO0WN1k4wPd245oQ/edit",
-      "vault_call_note": "brain/calls/2026-07-29-jeff-stevens-jewelry-lead.md",
-      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_TWxCQTlHn3vxek.json",
-      "processed_at": "2026-07-29T17:05:59.719196+00:00",
-      "slack_posted": true,
-      "slack_failed": false,
-      "doc_failed": false,
-      "transcript_failed": false,
       "attio_failed": false,
-      "tasks_failed": false,
       "attio_notes": {
-        "people": [
-          "cb24ea9c-8a39-4ce0-a081-b0e03c9ba5c9"
-        ],
         "companies": [
           "997e2224-8729-42e6-9045-294c59e1e585"
+        ],
+        "people": [
+          "cb24ea9c-8a39-4ce0-a081-b0e03c9ba5c9"
         ]
       },
+      "counterparty": "Jeff Stevens",
+      "date": "2026-07-29",
+      "doc_failed": false,
+      "doc_url": "https://docs.google.com/document/d/11hIHeHtwT1wUcPEISpzZTDpe8G42ihhhoai9rvD8aVI/edit",
+      "granola_url": "https://notes.granola.ai/d/63826776-15fb-44ca-94e3-d7def89e0e97",
+      "id": "not_TWxCQTlHn3vxek",
+      "processed_archive": "brain/trackers/post-call-analyzer/processed/not_TWxCQTlHn3vxek.json",
+      "processed_at": "2026-07-29T17:05:59.719196+00:00",
+      "slack_failed": false,
+      "slack_posted": true,
       "task_count": 3,
-      "processed_archive": "brain/trackers/post-call-analyzer/processed/not_TWxCQTlHn3vxek.json"
+      "tasks_failed": false,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_TWxCQTlHn3vxek.json",
+      "time": "12:00 PM ET",
+      "title": "Jeff I Kay Mtg",
+      "transcript_doc_url": "https://docs.google.com/document/d/1WpUPnajtiNwZ4HHZv1TiTZaEAayBO0WN1k4wPd245oQ/edit",
+      "transcript_failed": false,
+      "vault_call_note": "brain/calls/2026-07-29-jeff-stevens-jewelry-lead.md"
     },
     {
       "attio_failed": false,
@@ -1537,30 +1537,58 @@
       "vault_call_note": "brain/calls/2026-07-31-guillermo-lavergne.md"
     },
     {
-      "id": "not_MBKTVrWMUMHcDB",
-      "title": "Melissa I Kay",
+      "attio_failed": false,
+      "attio_notes": {
+        "companies": [
+          "98aaac90-42ca-4c6d-9f10-8663159322c7"
+        ],
+        "people": [
+          "4b5fa1d4-3a8b-4880-acac-6dd0e0d69808"
+        ]
+      },
       "counterparty": "Melissa Rosenblatt",
-      "granola_url": "https://notes.granola.ai/d/dabd49fb-0e30-43be-b460-60c1474f855f",
+      "doc_failed": false,
       "doc_url": "https://docs.google.com/document/d/1AV5urBetsixh0kUKx5hygFnCZ0yY43nYOgCKu7b3IIY/edit?usp=drivesdk",
-      "transcript_doc_url": "https://docs.google.com/document/d/1OkfyZjjZwCwgFndqD_yPCoDnx0O8R7nCTkBn6B-CxZI/edit?usp=drivesdk",
-      "vault_call_note": "brain/calls/2026-08-03-melissa-rosenblatt.md",
-      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_MBKTVrWMUMHcDB.json",
+      "granola_url": "https://notes.granola.ai/d/dabd49fb-0e30-43be-b460-60c1474f855f",
+      "id": "not_MBKTVrWMUMHcDB",
       "processed_archive": "brain/trackers/post-call-analyzer/processed/not_MBKTVrWMUMHcDB.json",
       "processed_at": "2026-08-03T22:07:16Z",
       "slack_posted": true,
+      "task_count": 4,
+      "tasks_failed": false,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_MBKTVrWMUMHcDB.json",
+      "title": "Melissa I Kay",
+      "transcript_doc_url": "https://docs.google.com/document/d/1OkfyZjjZwCwgFndqD_yPCoDnx0O8R7nCTkBn6B-CxZI/edit?usp=drivesdk",
+      "transcript_failed": false,
+      "vault_call_note": "brain/calls/2026-08-03-melissa-rosenblatt.md"
+    },
+    {
       "attio_failed": false,
       "attio_notes": {
-        "people": [
-          "4b5fa1d4-3a8b-4880-acac-6dd0e0d69808"
-        ],
         "companies": [
           "98aaac90-42ca-4c6d-9f10-8663159322c7"
+        ],
+        "people": [
+          "bc13021f-0ed1-4d26-9665-14099a74f730"
         ]
       },
-      "task_count": 4,
-      "transcript_failed": false,
+      "date": "2026-08-04",
       "doc_failed": false,
-      "tasks_failed": false
+      "doc_url": "https://docs.google.com/document/d/1VdWECneyDzL9oZqk-BhEYEfTEgxAUrtd_kb-vxS_dkg/edit?usp=drivesdk",
+      "granola_url": "https://notes.granola.ai/d/71cd7b02-a3a8-4303-9b8c-d258b66bd963",
+      "id": "not_iWsNvTRTQHXtHy",
+      "processed_archive": "brain/trackers/post-call-analyzer/processed/not_iWsNvTRTQHXtHy.json",
+      "processed_at": "2026-08-04T17:05:37.021708Z",
+      "slack_failed": false,
+      "slack_posted": true,
+      "task_count": 3,
+      "tasks_failed": false,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_iWsNvTRTQHXtHy.json",
+      "time": "11:30 AM ET",
+      "title": "Will I Kay",
+      "transcript_doc_url": "https://docs.google.com/document/d/1OB8OBnvkAemZrZytVfFSaxr2r5Lo37Iy1ZsZRgpCWCQ/edit?usp=drivesdk",
+      "transcript_failed": false,
+      "vault_call_note": "brain/calls/2026-08-04-will-bressman.md"
     }
   ]
 }

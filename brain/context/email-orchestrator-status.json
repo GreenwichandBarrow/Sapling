@@ -1,20 +1,10 @@
 {
   "blocked": [],
-  "deal_items": 46,
+  "deal_items": 55,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-08-03T17:33:42.821830-04:00",
-  "follow_through_completed_items": [
-    {
-      "bucket": "thank",
-      "completed_at": "2026-08-03",
-      "event": "Melissa I Kay",
-      "person": "Melissa",
-      "sent_at": "2026-08-03 14:53",
-      "sent_subject": "New lead",
-      "sent_thread_id": "19fbd318a7228738"
-    }
-  ],
+  "fetched_at": "2026-08-04T06:50:00.885599-04:00",
+  "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -57,34 +47,57 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-08-03.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-08-04.json",
   "input_status": "ok",
   "needs_kay": [
-    "46 broker/listing row(s) extracted",
-    "1 prior-day thank-you(s) verified sent",
-    "1 email follow-through row(s) auto-completed from sent-mail evidence: Melissa",
+    "55 broker/listing row(s) extracted",
+    "3 prior-day thank-you(s) need approval: Andrew; Melissa; Will",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-08-03.md",
+  "source_artifact": "brain/context/email-scan-results-2026-08-04.md",
   "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 0,
   "thank_you_items": [
     {
-      "completed_at": "2026-08-03",
-      "due_date": "2026-08-03",
+      "completed_at": "",
+      "due_date": "2026-08-04",
+      "email": "andrew@saltouncapital.com",
+      "event": "Andrew I Kay",
+      "event_date": "2026-08-03",
+      "person": "Andrew",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-08-04",
       "email": "melissa@bkgrowth.com",
       "event": "Melissa I Kay",
-      "event_date": "2026-08-02",
+      "event_date": "2026-08-03",
       "person": "Melissa",
-      "sent_at": "2026-08-03 14:53",
-      "sent_subject": "New lead",
-      "sent_thread_id": "19fbd318a7228738",
-      "status": "completed"
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-08-04",
+      "email": "will@bkgrowth.com",
+      "event": "Will I Kay",
+      "event_date": "2026-08-03",
+      "person": "Will",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
     }
   ],
   "unclear_followthrough_items": [

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03",
+  "updated_at": "2026-08-04",
   "items": [
     {
       "bucket": "thank",
@@ -1290,6 +1290,42 @@
         "subject": "New lead",
         "sent_at": "2026-08-03 14:53"
       }
+    },
+    {
+      "bucket": "thank",
+      "person": "Melissa",
+      "email": "melissa@bkgrowth.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-04",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Melissa I Kay",
+      "event_date": "2026-08-03",
+      "calendar_event_id": "27cqd5rg3rsu6m6nccc2eh3h4u"
+    },
+    {
+      "bucket": "thank",
+      "person": "Will",
+      "email": "will@bkgrowth.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-04",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Will I Kay",
+      "event_date": "2026-08-03",
+      "calendar_event_id": "7clefue9p8tt7nds0886r4bnhp"
+    },
+    {
+      "bucket": "thank",
+      "person": "Andrew",
+      "email": "andrew@saltouncapital.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-04",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Andrew I Kay",
+      "event_date": "2026-08-03",
+      "calendar_event_id": "c26atknqaden2kps50tfd2gpi8"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

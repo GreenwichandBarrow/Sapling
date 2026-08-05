@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "generated_at": "2026-08-04T14:32:00.631096Z",
+  "generated_at": "2026-08-05T16:20:49.490851Z",
   "search_start": "2025-02-01",
   "notes": "Durable source/event ledger for M&A dashboard plumbing. Attio snapshot is current state only; this file tracks cumulative stage events and source attribution. Backfill gaps should be resolved by Good Morning/pipeline-manager, not guessed in the dashboard.",
   "records": [

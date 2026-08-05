@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-08-04T20:30:45-04:00",
+  "fetched_at": "2026-08-05T18:00:45-04:00",
   "services": {
-    "linkt": {
+    "attio-mcp": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
-      "skip_reason": "Browser session required (no API)"
+      "skip_reason": "OAuth re-flow required (Smithery UI)"
     },
     "slack-webhooks": {
       "status": "ok",
@@ -13,57 +13,57 @@
       "message": "4 webhooks configured",
       "skip_reason": null
     },
-    "attio-mcp": {
+    "linkt": {
       "status": "skip",
       "latency_ms": null,
       "message": "",
-      "skip_reason": "OAuth re-flow required (Smithery UI)"
-    },
-    "mcp-processes": {
-      "status": "skip",
-      "latency_ms": 21,
-      "message": "attio-mcp=0; manual-skip=attio-mcp",
-      "skip_reason": "Attio MCP requires manual OAuth/browser reconnect"
-    },
-    "vault": {
-      "status": "ok",
-      "latency_ms": 28,
-      "message": "1749 markdown files",
-      "skip_reason": null
+      "skip_reason": "Browser session required (no API)"
     },
     "launchd": {
       "status": "ok",
-      "latency_ms": 37,
+      "latency_ms": 38,
       "message": "20 timers registered",
       "skip_reason": null
     },
+    "vault": {
+      "status": "ok",
+      "latency_ms": 36,
+      "message": "1754 markdown files",
+      "skip_reason": null
+    },
+    "mcp-processes": {
+      "status": "skip",
+      "latency_ms": 45,
+      "message": "attio-mcp=0; manual-skip=attio-mcp",
+      "skip_reason": "Attio MCP requires manual OAuth/browser reconnect"
+    },
     "granola": {
       "status": "ok",
-      "latency_ms": 90,
+      "latency_ms": 122,
       "message": "HTTP 405",
+      "skip_reason": null
+    },
+    "apollo": {
+      "status": "ok",
+      "latency_ms": 153,
+      "message": "200 OK",
       "skip_reason": null
     },
     "openai-codex": {
       "status": "ok",
-      "latency_ms": 114,
+      "latency_ms": 211,
       "message": "Codex OAuth login active",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 117,
+      "latency_ms": 245,
       "message": "authenticated",
-      "skip_reason": null
-    },
-    "apollo": {
-      "status": "ok",
-      "latency_ms": 107,
-      "message": "200 OK",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 201,
+      "latency_ms": 324,
       "message": "gh authenticated",
       "skip_reason": null
     }

@@ -529,51 +529,48 @@
     ],
     "nextPageToken": ""
   },
-  "generated_at": "2026-08-05T10:31:22+00:00",
+  "generated_at": "2026-08-05T16:20:52+00:00",
   "inbound": [
     {
       "candidate_reason": null,
-      "date": "2026-08-05 06:20",
-      "from": "Mike Allen <mike@axios.com>",
-      "id": "19fd16ff6cf5001f",
+      "date": "2026-08-05 10:53",
+      "from": "Crozier Fine Arts <contact@go.crozierfinearts.com>",
+      "id": "19fd26aa2bb9bac2",
       "labels": [
-        "UNREAD",
+        "CATEGORY_PROMOTIONS",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Discover Local and International Shuttle Networks"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-05 09:56",
+      "from": "Dan Primack <dan@axios.com>",
+      "id": "19fd235bff462f62",
+      "labels": [
         "CATEGORY_UPDATES",
         "auto/subscriptions & education",
         "INBOX"
       ],
       "message_count": 1,
       "snippet": "",
-      "subject": "\ud83d\uddf3\ufe0f Axios AM: Michigan looks left"
+      "subject": "Axios Pro Rata: Disney divests"
     },
     {
       "candidate_reason": null,
-      "date": "2026-08-05 06:01",
-      "from": "Cornell Alumni Career Programs <alumnicareer@m.cornell.edu>",
-      "id": "19fd15e98c9bdbed",
+      "date": "2026-08-05 09:20",
+      "from": "GJ King <gj@bkgrowth.com>",
+      "id": "19fd214c86325414",
       "labels": [
-        "UNREAD",
-        "CATEGORY_UPDATES",
+        "CATEGORY_PERSONAL",
+        "auto/investors",
         "INBOX"
       ],
       "message_count": 1,
       "snippet": "",
-      "subject": "Career resources from Cornell\u2014August edition"
-    },
-    {
-      "candidate_reason": null,
-      "date": "2026-08-04 21:29",
-      "from": "Mike Allen <mike@axios.com>",
-      "id": "19fcf8a2009adb29",
-      "labels": [
-        "UNREAD",
-        "CATEGORY_UPDATES",
-        "auto/subscriptions & education",
-        "INBOX"
-      ],
-      "message_count": 1,
-      "snippet": "",
-      "subject": "\ud83d\udc9e Axios Finish Line: Your secure future"
+      "subject": "Today's 1st Thursday Guest is Carla Larin of maxRTE"
     },
     {
       "candidate_reason": "known_deal_or_marketplace_sender",
@@ -701,20 +698,6 @@
       "subject": "New lead"
     },
     {
-      "candidate_reason": null,
-      "date": "2026-08-03 09:47",
-      "from": "notifications@axial.net",
-      "id": "19fc7e108145242c",
-      "labels": [
-        "auto/deal flow",
-        "CATEGORY_UPDATES",
-        "INBOX"
-      ],
-      "message_count": 1,
-      "snippet": "",
-      "subject": "Action Summary for 07/27/2026 - 08/03/2026"
-    },
-    {
       "candidate_reason": "known_deal_or_marketplace_sender",
       "date": "2026-08-04 16:07",
       "from": "\"Tory @ Flippa\" <marketing@flippa.com>",
@@ -821,6 +804,20 @@
       "message_count": 1,
       "snippet": "",
       "subject": "Rejigg Deal Next Steps: August 3, 2026"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-03 09:47",
+      "from": "notifications@axial.net",
+      "id": "19fc7e108145242c",
+      "labels": [
+        "auto/deal flow",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Action Summary for 07/27/2026 - 08/03/2026"
     },
     {
       "candidate_reason": "known_deal_or_marketplace_sender",

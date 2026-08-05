@@ -1,11 +1,11 @@
 {
-  "date": "2026-08-04",
+  "date": "2026-08-05",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-08-04.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-08-05.md",
   "email_scan_status": "live",
   "deals_found": 0,
   "broker_opportunistic": 2,
-  "near_misses": 4,
+  "near_misses": 1,
   "sources_scanned": 15,
   "sources_covered": {
     "marketplace": 6,
@@ -17,6 +17,7 @@
   "sources_blocked_single_attempt": 0,
   "volume_status": "BELOW TARGET",
   "needs_attention": [
-    "volume below target; no PASS deals surfaced"
+    "browser fallback unavailable: agent-browser missing on this host",
+    "below target: 0 PASS surfaced; two broker-opportunistic Axial items and one near-miss only"
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-04T18:00:45-04:00",
+  "fetched_at": "2026-08-04T20:30:45-04:00",
   "services": {
     "linkt": {
       "status": "skip",
@@ -19,51 +19,51 @@
       "message": "",
       "skip_reason": "OAuth re-flow required (Smithery UI)"
     },
-    "launchd": {
-      "status": "ok",
-      "latency_ms": 30,
-      "message": "20 timers registered",
-      "skip_reason": null
-    },
-    "vault": {
-      "status": "ok",
-      "latency_ms": 46,
-      "message": "1748 markdown files",
-      "skip_reason": null
-    },
     "mcp-processes": {
       "status": "skip",
-      "latency_ms": 39,
+      "latency_ms": 21,
       "message": "attio-mcp=0; manual-skip=attio-mcp",
       "skip_reason": "Attio MCP requires manual OAuth/browser reconnect"
     },
+    "vault": {
+      "status": "ok",
+      "latency_ms": 28,
+      "message": "1749 markdown files",
+      "skip_reason": null
+    },
+    "launchd": {
+      "status": "ok",
+      "latency_ms": 37,
+      "message": "20 timers registered",
+      "skip_reason": null
+    },
     "granola": {
       "status": "ok",
-      "latency_ms": 105,
+      "latency_ms": 90,
       "message": "HTTP 405",
-      "skip_reason": null
-    },
-    "apollo": {
-      "status": "ok",
-      "latency_ms": 141,
-      "message": "200 OK",
-      "skip_reason": null
-    },
-    "gog": {
-      "status": "ok",
-      "latency_ms": 210,
-      "message": "authenticated",
       "skip_reason": null
     },
     "openai-codex": {
       "status": "ok",
-      "latency_ms": 223,
+      "latency_ms": 114,
       "message": "Codex OAuth login active",
+      "skip_reason": null
+    },
+    "gog": {
+      "status": "ok",
+      "latency_ms": 117,
+      "message": "authenticated",
+      "skip_reason": null
+    },
+    "apollo": {
+      "status": "ok",
+      "latency_ms": 107,
+      "message": "200 OK",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 291,
+      "latency_ms": 201,
       "message": "gh authenticated",
       "skip_reason": null
     }

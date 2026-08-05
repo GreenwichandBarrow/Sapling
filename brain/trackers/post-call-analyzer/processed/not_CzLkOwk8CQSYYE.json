@@ -1,0 +1,32 @@
+{
+  "id": "not_CzLkOwk8CQSYYE",
+  "title": "Team TB Camilla I Kay",
+  "date": "2026-08-05",
+  "time": "12:30 PM ET",
+  "counterparty": "Camilla",
+  "location": "remote",
+  "granola_url": "https://notes.granola.ai/d/c47ecd3a-3c61-4332-a946-5d5b1f951d61",
+  "doc_url": "https://docs.google.com/document/d/13SXBEio21CD4GVgfPslInCVSMBkGIwpoSdS1xKFDKsQ/edit?usp=drivesdk",
+  "transcript_doc_url": "https://docs.google.com/document/d/1VLFYkaYbVzC47-V2r724rJHwJXNE8DWwlxPPa1REgOU/edit?usp=drivesdk",
+  "vault_call_note": "brain/calls/2026-08-05-camilla.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_CzLkOwk8CQSYYE.json",
+  "processed_archive": "brain/trackers/post-call-analyzer/processed/not_CzLkOwk8CQSYYE.json",
+  "task_count": 5,
+  "attio_failed": false,
+  "doc_failed": false,
+  "transcript_failed": false,
+  "tasks_failed": false,
+  "slack_posted": true,
+  "slack_failed": false,
+  "attio_notes": {
+    "people": [
+      "52146e57-68cf-4681-927c-9c2ddcdc7ea3"
+    ],
+    "companies": [
+      "1f3d7760-bafa-4f9e-996e-448dbff55ae9"
+    ]
+  },
+  "processed_at": "2026-08-05T20:10:00Z",
+  "slack_summary": "Mixed investor feedback kept the focus on capital structure, not conviction.\nTrunk shows, insurance, and deal execution all surfaced as practical next steps.\nKay should use the seller meeting and deck work to tighten the underwriting path.",
+  "slack_status": 200
+}

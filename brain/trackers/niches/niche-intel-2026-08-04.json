@@ -1,0 +1,44 @@
+{
+  "run_date": "2026-08-04",
+  "run_mode": "tuesday",
+  "niches_evaluated": 4,
+  "niches_identified": 3,
+  "one_pagers_written": 3,
+  "scorecards_written": 3,
+  "tracker_updated": true,
+  "runtime_seconds": 1835,
+  "sources_covered": {
+    "recent_track": "Complete with gaps: Gmail newsletters/deal flow/investor labels, recent Granola/vault notes, vault outputs, WebSearch, and passive inbox scan covered; last30days partial because Reddit returned 403, X/YouTube unavailable, Polymarket no data.",
+    "historical_track": "Partial: vault calls and Gmail history covered read-only; OneNote MCP unavailable; raw ChatGPT export unavailable; direct Granola full-history pagination incomplete."
+  },
+  "open_loops_infra": [
+    "OneNote SEARCH FUND MCP unavailable in Codex/systemd environment.",
+    "Raw ChatGPT export selected_business_conversations.json unavailable at expected local path.",
+    "Direct Granola full-history pagination incomplete; vault-synced call notes used as fallback.",
+    "last30days social coverage partial: Reddit returned 403; X/YouTube unavailable.",
+    "Current tracker-access.md marks IDEATION archived, so new scored rows were written directly to WEEKLY REVIEW."
+  ],
+  "niches": [
+    {
+      "name": "Insurance-Driven Contents Restoration, Pack-Out, Inventory, and Storage Services",
+      "score": 2.16,
+      "drive_folder": "https://drive.google.com/drive/folders/1MphKfR6D4oHsrzODLimC67KJnKIGAkwb",
+      "one_pager": "https://docs.google.com/presentation/d/1IP8PbYW7fPYkJTztzNy5AXOn7Qd1s1jO/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true",
+      "scorecard": "https://docs.google.com/spreadsheets/d/1Vb84cwyyelAiUAZ-LTEv5xyhXjtt32_K/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true"
+    },
+    {
+      "name": "Utility and Commercial Vegetation Management / Right-of-Way Tree Care",
+      "score": 2.15,
+      "drive_folder": "https://drive.google.com/drive/folders/138IVauuT6Yqexj7AfawGdXyA0kU695eM",
+      "one_pager": "https://docs.google.com/presentation/d/1hBcxryfrHjKIIIiCQP0HX_h5ZGOVGh32/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true",
+      "scorecard": "https://docs.google.com/spreadsheets/d/1WVBf4_WbaGdzWFBAqk6w5Tujbpb19d7C/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true"
+    },
+    {
+      "name": "CMMC / FAR Managed Compliance Services for SMB Federal Contractors",
+      "score": 2.32,
+      "drive_folder": "https://drive.google.com/drive/folders/1PVFR6JymQ8WZcAHaPNNaob55MBKhz758",
+      "one_pager": "https://docs.google.com/presentation/d/1OTzJdk-c3WT4nyw3aAok8eJ3MCu57gR6/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true",
+      "scorecard": "https://docs.google.com/spreadsheets/d/1oclP3NuRXyQydU_omC9654hRUvaYSp2i/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true"
+    }
+  ]
+}

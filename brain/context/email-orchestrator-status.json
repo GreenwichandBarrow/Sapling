@@ -1,9 +1,9 @@
 {
   "blocked": [],
-  "deal_items": 55,
+  "deal_items": 0,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-08-04T10:32:08.930021-04:00",
+  "fetched_at": "2026-08-05T06:50:44.957487-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -47,28 +47,27 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-08-04.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-08-05.json",
   "input_status": "ok",
   "needs_kay": [
-    "55 broker/listing row(s) extracted",
-    "3 prior-day thank-you(s) need approval: Andrew; Melissa; Will",
+    "3 prior-day thank-you(s) need approval: Andrew; Megan <> Kay; Will",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-08-04.md",
+  "source_artifact": "brain/context/email-scan-results-2026-08-05.md",
   "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 0,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-08-04",
+      "due_date": "2026-08-05",
       "email": "andrew@saltouncapital.com",
       "event": "Andrew I Kay",
-      "event_date": "2026-08-03",
+      "event_date": "2026-08-04",
       "person": "Andrew",
       "sent_at": "",
       "sent_subject": "",
@@ -77,11 +76,11 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-08-04",
-      "email": "melissa@bkgrowth.com",
-      "event": "Melissa I Kay",
-      "event_date": "2026-08-03",
-      "person": "Melissa",
+      "due_date": "2026-08-05",
+      "email": "megan@ml-cap.com",
+      "event": "Megan <> Kay",
+      "event_date": "2026-08-04",
+      "person": "Megan <> Kay",
       "sent_at": "",
       "sent_subject": "",
       "sent_thread_id": "",
@@ -89,10 +88,10 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-08-04",
+      "due_date": "2026-08-05",
       "email": "will@bkgrowth.com",
       "event": "Will I Kay",
-      "event_date": "2026-08-03",
+      "event_date": "2026-08-04",
       "person": "Will",
       "sent_at": "",
       "sent_subject": "",

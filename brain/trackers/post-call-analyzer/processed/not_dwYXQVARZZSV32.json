@@ -1,0 +1,27 @@
+{
+  "id": "not_dwYXQVARZZSV32",
+  "title": "Megan <> Kay",
+  "date": "2026-08-05",
+  "queued_at": "2026-08-06T18:00:45-04:00",
+  "processed_at": "2026-08-06T22:04:44Z",
+  "granola_url": "https://notes.granola.ai/d/26cea6fd-350a-4088-8da9-62415e4f5cb8",
+  "doc_url": "https://docs.google.com/document/d/1CN6xH0tPSm4kb93CIcsNH8rLvHSI_OCBpjzZu_0qT6s/edit?usp=drivesdk",
+  "transcript_doc_url": "https://docs.google.com/document/d/18heN9XceQuHRKqtHp5rZ2hJ-xrq7_AMOibJ75aDsmE0/edit?usp=drivesdk",
+  "vault_call_note": "brain/calls/2026-08-05-megan-ml-cap.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_dwYXQVARZZSV32.json",
+  "task_count": 3,
+  "attio_failed": false,
+  "attio_notes": {
+    "people": [
+      "55748a47-eecf-4a01-94d0-f4a99e1e007b"
+    ],
+    "companies": [
+      "fdcc8630-c0fd-44ce-8fbd-cf18269b244c"
+    ]
+  },
+  "doc_failed": false,
+  "transcript_failed": false,
+  "tasks_failed": false,
+  "slack_posted": true,
+  "slack_failed": false
+}

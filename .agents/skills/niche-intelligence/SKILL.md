@@ -1,6 +1,6 @@
 ---
 name: niche-intelligence
-description: "Niche Intelligence workflow. Gathers data from newsletters, web, calls, email, and research — identifies new niches — runs initial screen (margins, recurring/reoccurring revenue, growth, Growth TAM) — creates one-pagers — scores against G&B industry scorecard — updates Industry Research Tracker. Run every Tuesday night so the report is ready Wednesday morning for the analyst meeting."
+description: "Niche Intelligence workflow. Full run Monday night: gathers data from newsletters, web, calls, email, and research; identifies new niches; runs initial screen; creates one-pagers; scores against G&B industry scorecard; updates Industry Research Tracker; feeds Tuesday Good Morning as Kay's thesis decision surface. Light thesis signal scan Thursday night feeds Friday Good Morning with urgent/queue/park signals."
 # WARNING: 2.2x over archetype cap; refactor pending per item 2.
 archetype: orchestrator
 context_budget:
@@ -85,7 +85,16 @@ If verification fails, log the failure to chatroom and notify user — do NOT pr
 
 ### Schedule
 
-**Runs Tuesday night (automated).** Codex posts the Niche Intel Report link to #operations by 10am Wednesday for the analyst call. Kay reviews the report live on the call, not beforehand.
+Runs on two scheduled cycles:
+
+- **Monday night full Niche Intelligence run.** Codex posts the Niche Intel Report link to #operations by 10am Tuesday. Tuesday Good Morning surfaces the CEO-level `Activate / Hold / Kill / Test` recommendations directly to Kay, including recommended conversion channel and owner. Kay makes the thesis call from the Good Morning brief; after Kay decides, Codex updates or routes an update to the Industry Research Tracker so status and channel ownership are captured. Camilla is pulled in only when Kay wants economics, modeling, or diligence support on an activated or uncertain thesis.
+- **Thursday night light Thesis Signal Scan.** This is not a full one-pager/scorecard run. It scans fresh PE activity/news, call/email/inbox signals, deal-flow changes, conference signals, and active-thesis momentum. Friday Good Morning surfaces only status changes: urgent fast sprint, queue for Monday full run, park, or no meaningful signal.
+
+**Deal 1 thesis gate:** For the first search entity, any thesis recommended for `Activate` or `Test` must include an explicit tailwind or growth trend. If no tailwind exists, recommend `Hold`, `Park`, or `Kill`; do not move it into active sourcing.
+
+**Channel decision gate:** `Activate` / `Test` does not automatically mean target build or outreach. Every activated/test thesis must include a channel recommendation before execution: Tracker Channel, Execution Path, Secondary Channel if any, Do Not Use channels, owner split, and one-sentence rationale. The channel decision is made in Good Morning by Kay and must be written to the Industry Research Tracker `Outreach Channel` field before `target-discovery`, `outreach-manager`, DealsX, Camilla cold qualifiers, or Kay warm outreach starts.
+
+**Scheduled-cycle failure escalation:** If the Monday full run or Thursday signal scan fails, times out, produces no verified report, or skips tracker validation, the next Good Morning must surface a red system decision item: `RECOMMEND: Investigate Niche Intelligence failure` with the latest log/artifact timestamp and YES / NO / DISCUSS framing.
 
 </essential_principles>
 
@@ -106,13 +115,13 @@ No intake question needed — this is a fully automated workflow.
 
 ## Niche Inbox: How New Niche Ideas Enter the Pipeline
 
-Niche ideas come from many places — not just the Tuesday night gathering agents. The pipeline must accept ideas from ANY source and route them through the full process (Identify → One-Pager → Score → Add to tracker). **Nothing skips steps. Nothing goes straight to WEEKLY REVIEW without a one-pager and score.**
+Niche ideas come from many places — not just the Monday night gathering agents. The pipeline must accept ideas from ANY source and route them through the full process (Identify → One-Pager → Score → Add to tracker). **Nothing skips steps. Nothing goes straight to WEEKLY REVIEW without a one-pager and score.**
 
 ### Sources that feed niche ideas into the pipeline:
 
 | Source | How it arrives | Entry point |
 |--------|---------------|-------------|
-| Tuesday night gathering agents (RECENT + HISTORICAL) | Automated Step 1 run | Step 1b (Synthesize) → Step 2 (Identify) |
+| Monday night gathering agents (RECENT + HISTORICAL) | Automated Step 1 run | Step 1b (Synthesize) → Step 2 (Identify) |
 | Kay + Codex conversations | Kay mentions a niche idea, contact shares a list, brainstorming session | Written to `brain/inbox/` as niche signal → picked up at Step 2 |
 | OneNote research notes | Kay's handwritten notes reference industries (e.g., Mike Horowitz's insurance back-end list) | Written to `brain/inbox/` as niche signal → picked up at Step 2 |
 | Linkt data analysis | Patterns found across old or new Linkt exports (e.g., environmental compliance cluster) | Written to `brain/inbox/` as niche signal → picked up at Step 2 |
@@ -122,7 +131,7 @@ Niche ideas come from many places — not just the Tuesday night gathering agent
 
 ### Writing a niche idea to the inbox:
 
-When a niche idea surfaces outside of the Tuesday run, write it to:
+When a niche idea surfaces outside of the full weekly run, write it to:
 `brain/inbox/YYYY-MM-DD-niche-idea-{slug}.md`
 
 ```yaml
@@ -149,20 +158,127 @@ tags:
 
 ### Processing niche ideas:
 
-**Option A (queue for Tuesday):** Leave in inbox. The RECENT agent's passive signal source picks up `topic/niche-signal` items automatically during the next Tuesday run.
+**Option A (queue for Monday full run):** Leave in inbox. The RECENT agent's passive signal source picks up `topic/niche-signal` items automatically during the next Monday full weekly run.
 
-**Option B (run now):** Invoke `/niche-intelligence --from-inbox` to process all pending niche ideas through Steps 2-5 immediately. Useful for testing or when Kay wants results before the next Tuesday cycle.
+**Option B (run now):** Invoke `/niche-intelligence --from-inbox` to process all pending niche ideas through Steps 2-5 immediately. Useful for testing or when Kay wants results before the next Monday full cycle.
 
 **Option C (organic intake chat):** Kay can flag a new niche idea in a dedicated CIO chat as it comes up from meetings, emails, deal leads, new websites, or brainstorming. The chat should create a lightweight `brain/inbox/` niche idea record, do only enough first-pass analysis to route it, and then choose:
-- queue for Tuesday if normal priority,
+- queue for Monday full run if normal priority,
 - run `/niche-intelligence --from-inbox` if time-sensitive or tied to an active lead,
 - tag as `watchlist` / `needs-more-signal` if the idea is too thin,
 - tag as `do-not-resurface` only when there is clear prior killed/tabled rationale.
 
 The intake chat is for capture and routing, not bypassing the pipeline. Anything that might become an active niche still goes through Identify → One-Pager → Score → Tracker.
 
+### Dedicated CIO thesis brainstorming thread behavior
+
+When Kay raises a niche, market, company type, contact insight, podcast idea, investor comment, conference, or deal-flow pattern in the canonical CIO Niche Intake and Thesis Discovery thread, do not jump straight to outreach execution. First clarify and route the signal.
+
+Default first-pass questions to answer:
+- What is the precise niche?
+- Why now?
+- What customer pain is intensifying?
+- Is there recurring, reoccurring, repeat, or actuarial revenue?
+- Are margins likely attractive?
+- Is there enough target density in the U.S.?
+- Is PE already too far into it?
+- Does this fit G&B's luxury infrastructure / heritage / quality / community architecture?
+- Is it suitable for Deal 1, a future HoldCo company, or just market intelligence?
+
+For any promising or unresolved idea, produce a short `Niche Signal Capture` in the chat and, when the signal should persist, write it to `brain/inbox/` with `topic/niche-signal`.
+
+Required chat format:
+```
+Niche Signal Capture
+- Niche name:
+- One-sentence thesis:
+- Tailwind / growth driver:
+- Why it may fit G&B:
+- Main concern:
+- Suggested action: Urgent Fast Sprint / Queue for Monday / Park / Kill
+- Recommended Tracker Channel if Activate/Test: Kay Email / DealsX Email / Cold-Call-Only / No outreach yet
+- Recommended Execution Path: Kay warm outreach / DealsX batch / call-first / conference / intermediary / no outreach yet
+- Owner split: Kay / Codex / Camilla / DealsX
+```
+
+Routing rules:
+- `Urgent Fast Sprint` = time-sensitive, tied to an active deal/contact, or likely to support an LOI sprint before Monday.
+- `Queue for Monday` = promising but not time-sensitive; capture in inbox and let the Monday full run build the one-pager, scorecard, and tracker row.
+- `Park` = interesting but missing a tailwind, target-density proof, or revenue-quality evidence.
+- `Kill` = clear mismatch, prior killed rationale, no tailwind for Deal 1, too transactional, too retail/ecommerce/software/pure consulting, or no plausible target supply.
+- `Owner: Kay` = thesis decision, relationship judgment, or direct founder/investor/customer signal.
+- `Owner: Codex` = research, tracker routing, one-pager, scorecard, target-density proof, or Good Morning surfacing.
+- `Owner: Camilla` = only after Kay asks for economics, modeling, diligence, or execution support.
+- `Owner: DealsX` = outsourced outreach or market-list execution after Kay activates a thesis and approves the channel.
+
+Channel recommendation rule:
+- Recommend **Tracker Channel = Kay Email; Execution Path = Kay warm outreach** when trust, taste, luxury credibility, warm paths, or seller psychology materially change conversion odds.
+- Recommend **Tracker Channel = DealsX Email; Execution Path = DealsX batch** only when the thesis has enough target density, messaging can be standardized without losing trust, and broad outbound is likely to convert.
+- Recommend **Tracker Channel = Cold-Call-Only; Execution Path = call-first** only when phone responsiveness or local/service-market dynamics matter more than brand/taste credibility.
+- Recommend **Tracker Channel = No outreach yet; Execution Path = Conference or Intermediary** when the fastest path is concentrated around a known event, association, estate/planning network, trade group, or industry connector. Route through conference-discovery or relationship/warm-intro work before target-discovery.
+- Recommend **Tracker Channel = No outreach yet; Execution Path = no outreach yet** when the thesis is promising but ICP, target density, or tailwind evidence is not strong enough to risk burning the market.
+
+Kay is the default thesis decision-maker. Camilla is not the default recipient of new thesis ideas.
+
+### Robust niche discovery method
+
+The recurring failure mode is re-surfacing already-discussed niches instead of discovering new ones. Each full Monday run must include at least one source-led expansion pass before scoring. Do not start from prior favorite theses. Start from source systems and only then map to G&B fit.
+
+Minimum discovery passes for a full run:
+1. **Customer-environment map:** Pick 1-3 operating environments Kay knows or can credibly access, then list 50 recurring workflows/vendor touchpoints per environment before naming niches. Infer hidden third-party service categories only after the workflow map is complete.
+2. **NAICS / taxonomy sweep:** Pull NAICS-adjacent categories touching the relevant luxury sectors, building health, education/child safety, hospitality infrastructure, or investor-surfaced operating environments. Use definitions to expand the candidate universe, not to force generic categories.
+3. **Deal-flow artifact sweep:** Search SBA 7(a), broker marketplaces, Axial/DealsX artifacts, and CIM/teaser language for what is actually being financed or sold. Treat listings as saleability evidence, not thesis proof.
+4. **Directory / target-density proof:** Use association directories, Apollo/Grata/SourceScrub-style counts, Google Maps/business directories, and trade groups to prove there are independent companies in the relevant geography or US market. No niche should be named as promising without target-density evidence.
+5. **PE heat screen:** Check sponsor-backed platforms, add-on activity, and roll-up language. Flag crowded markets early; do not let PE-backed visibility masquerade as target supply.
+6. **Negative-memory check:** Compare against tracker killed/tabled/skipped lanes and prior chat decisions. If a niche was previously killed, it can only re-enter with materially new evidence.
+
+Discovery output before scoring must include:
+- Candidate universe count reviewed
+- Number killed for no tailwind
+- Number killed for no target density
+- Number killed for PE saturation
+- Number killed for revenue quality / transactional model
+- Number killed for weak Kay/searcher fit
+- 3-10 candidates that survived to preliminary evidence review
+
+Revenue-quality screen must distinguish: contractual recurring, non-contractual recurring, repeat revenue, actuarial revenue, and transactional revenue. Transactional-only businesses should not advance unless there is a clear path to repeat/reoccurring revenue with evidence.
+
+### Searcher-fit and purchase-ability lens
+
+Over the 2025-2026 search, the practical lesson is that purchase ability is often tied to searcher fit. A niche with good economics but no credible Kay-specific access, buyer empathy, operator-recruiting angle, or investor narrative may be theoretically attractive but weak for G&B. Conversely, a niche with moderate generic attractiveness can be more actionable if Kay has a real right to win.
+
+Every candidate that survives initial discovery must be tested against these searcher-fit questions before it is recommended for `Activate` or `Test`:
+- **Seller conversation credibility:** Would an owner believe Kay understands the customer, quality bar, and operating stakes of this business?
+- **Access edge:** Does Kay have warm paths through luxury, fashion, jewelry, art, hospitality, family office, private club, NYC/Long Island, investor, women-owner, or community networks?
+- **Customer fluency:** Can Kay credibly sell to or build relationships with the customer base without sounding like a financial buyer only?
+- **Taste / trust / quality edge:** Does the business benefit from judgment, discretion, brand stewardship, service standards, or reputation-sensitive execution?
+- **Operator recruiting edge:** Could Kay recruit and retain a credible operator or President for this category?
+- **Investor believability:** Would disciplined search investors understand why this is Kay's deal to win, not just a random market?
+- **Lifestyle / role fit:** Does the business avoid trapping Kay in day-to-day retail, founder-led craft, field-service dispatch, or pure consulting delivery?
+- **Purchase path:** Are likely sellers independent, succession-oriented, reachable, and emotionally/logically open to Kay as buyer?
+
+Use a three-point searcher-fit rating in discovery tables:
+- `Strong`: Kay's background/network materially improves access, credibility, and post-close value creation.
+- `Medium`: Some fit exists, but the sourcing or operating edge must be proven.
+- `Weak`: Attractive market may exist, but Kay has no clear right to win; do not recommend unless target-density and deal-flow evidence is unusually strong.
+
+For Deal 1, a niche should not be recommended for `Activate` unless both are true: (1) there is a clear tailwind or growth trend, and (2) searcher fit is `Strong` or clearly improvable to `Strong` through a named river guide, operator, customer channel, or proprietary target.
+
+### Hair and J-curve resilience lens
+
+Do not over-screen niches for being imperfect. Every acquirable SMB will have hair: founder dependence, messy systems, customer concentration, uneven margins, succession gaps, underbuilt sales, working-capital issues, or operational debt. The discovery question is not whether a niche is clean. The question is whether the business model has enough resilience to absorb the likely post-close J curve when Kay takes over.
+
+For each candidate, identify the specific source of resilience that could carry the acquisition through transition:
+- **Recurring / sticky revenue:** contractual renewals, required coverage, replenishment, installed-base service, reoccurring customer behavior, habit, or switching friction.
+- **Margins / cash generation:** enough gross margin, EBITDA margin, or owner cash flow to fund management upgrades, systems, recruiting, and early mistakes.
+- **Growth tailwind:** customer segment, regulation, compliance burden, infrastructure change, demographic shift, or category expansion that can offset execution drag.
+- **Trust / brand / relationship moat:** customer reluctance to switch because failure is costly, embarrassing, risky, or emotionally sensitive.
+- **Operational repeatability:** workflows that can be documented, delegated, trained, monitored, or centralized after acquisition.
+
+When reviewing a niche or deal, name the likely hair and then answer: `What absorbs the J curve?` A niche can advance with hair if at least one resilience pillar is strong and there is a credible path for Kay to improve the business post-close. A niche should be held or killed when the hair directly attacks the only reason the business looked attractive.
+
 ### The rule:
-**Every niche idea, regardless of source, must go through: Identify → One-Pager → Score → Tracker.** The only question is timing (now vs. Tuesday).
+**Every niche idea, regardless of source, must go through: Identify → One-Pager → Score → Tracker.** The only question is timing (now vs. Monday full run).
 
 </niche_inbox>
 
@@ -359,7 +475,7 @@ Previously this step produced `brain/outputs/{date}-validation-contacts-{niche-s
 
 ## Niche Sprint Status Tracking (Moved from pipeline-manager)
 
-This section monitors the WEEKLY REVIEW tab for status changes and executes transitions. It runs daily (not just Tuesday nights) because Kay can change niche statuses at any time during analyst calls.
+This section monitors the WEEKLY REVIEW tab for status changes and executes transitions. It runs daily because Kay can change niche statuses from Good Morning decisions, decision review, or direct discussion at any time.
 
 ### Reading the Tracker
 

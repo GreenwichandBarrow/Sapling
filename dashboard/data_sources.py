@@ -689,7 +689,12 @@ _SKILL_CATALOG: dict[str, tuple[str, str, str | None]] = {
         None,
     ),
     "niche-intelligence": (
-        "Newsletter scrape, niche identification, one-pagers, scorecards, tracker update.",
+        "Monday full thesis-development run: signals, one-pagers, scorecards, tracker update; feeds Tuesday Good Morning.",
+        "CIO",
+        None,
+    ),
+    "niche-intelligence-signal-scan": (
+        "Thursday light thesis signal scan; feeds Friday Good Morning with urgent/queue/park/no-signal status.",
         "CIO",
         None,
     ),

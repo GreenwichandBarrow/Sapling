@@ -26,10 +26,11 @@ This skill still adds value, but only as the **target discovery, enrichment, ded
 
 **Trigger:** Niche status changes to Active-Outreach on the Industry Research Tracker. Target-discovery does a one-time initial load when a niche first enters Active-Outreach (fill the sheet with a solid batch). After that, the weekly tracker dashboard determines if more targets are needed based on pipeline throughput data. Do not run daily — run on initial activation and when the weekly review signals the pipeline needs refilling.
 
-**Channel-aware enrichment (CRITICAL):** Read `Outreach Channel` from WEEKLY REVIEW by header name BEFORE invoking list-builder. The channel determines enrichment depth:
+**Channel-aware enrichment (CRITICAL):** Read `Outreach Channel` from WEEKLY REVIEW by header name BEFORE invoking list-builder. The channel must come from Kay's approved Good Morning / Niche Intelligence channel decision for the active thesis, not from agent inference. The channel determines enrichment depth:
 - `Kay Email` → invoke list-builder in `email-first` mode (full inline enrichment, all 9 stop hooks). Route approved targets to outreach-manager for Gmail drafts only; Kay reviews and sends manually.
 - `DealsX Email` → Sam's team handles list building + enrichment + mass email/LinkedIn outreach. target-discovery runs warm intro check + Attio dedup on Sam's list only (see DealsX List Ingestion section).
 - `Cold-Call-Only` / legacy `JJ-Call-Only` → invoke list-builder in `calls-first` mode (volume load, 5 stop hooks, 0 credits)
+- `No outreach yet` → STOP. Do not build a target list for execution. If research is needed, produce a bounded market/target-density memo only.
 
 <credentials>
 ## Credentials (read first)
@@ -590,7 +591,7 @@ Use `scripts/col-lookup.py` or an equivalent header map. WEEKLY REVIEW headers c
 | `Other` | **STOP. Ask Kay.** | Notify Kay: "Outreach Channel is 'Other' for {niche}. How should targets be routed?" |
 | Empty/missing | **STOP. Do not route.** | Notify Kay: "`Outreach Channel` is empty for {niche}. Cannot route targets." |
 
-**This is a HARD STOP.** If `Outreach Channel` is empty, missing, or "Other", target-discovery MUST NOT hand targets to any downstream skill. Discovery can continue (finding and enriching targets), but routing is blocked until Kay sets the channel. Log the block in the daily briefing.
+**This is a HARD STOP.** If `Outreach Channel` is empty, missing, stale, or "Other", target-discovery MUST NOT hand targets to any downstream skill. Discovery can continue only as research; no outreach handoff, DealsX list request, Camilla qualifier, or Kay draft starts until Kay approves the channel and the tracker is updated. Log the block in the daily briefing.
 
 ### Step 1: Sheet Validation
 - Confirm Google Sheet in TARGET LISTS folder has new rows with today's date

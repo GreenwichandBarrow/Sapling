@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Wrapper-level integrity validator for niche-intelligence scheduled Tuesday runs.
+Wrapper-level integrity validator for niche-intelligence scheduled full runs.
 
 Runs as POST_RUN_CHECK after the Codex/systemd runner completes. Independent of skill-internal
 validation. Catches silent-success failures where the agent exits 0 but produced no
@@ -14,7 +14,7 @@ Validates:
   2. JSON sidecar exists at brain/trackers/niches/niche-intel-{date}.json
      - Parses cleanly
      - Has all required fields (run_date, run_mode, niches_evaluated, etc.)
-     - niches_evaluated ≥ 1 (Tuesday run with 0 niches = silent failure)
+     - niches_evaluated ≥ 1 (full run with 0 niches = silent failure)
      - tracker_updated is True
      - runtime_seconds > 0
 
@@ -119,16 +119,16 @@ def validate_sidecar_data(data: object, run_date: date, path: str = "JSON sideca
             f"JSON sidecar run_date={data.get('run_date')!r}, expected {run_date.isoformat()!r}"
         )
 
-    if data.get("run_mode") != "tuesday":
+    if data.get("run_mode") not in {"monday", "tuesday", "full"}:
         failures.append(
-            f"JSON sidecar run_mode={data.get('run_mode')!r}, expected 'tuesday'"
+            f"JSON sidecar run_mode={data.get('run_mode')!r}, expected one of 'monday', 'tuesday', 'full'"
         )
 
     niches_evaluated = data.get("niches_evaluated")
     if not isinstance(niches_evaluated, int) or niches_evaluated < 1:
         failures.append(
             f"JSON sidecar niches_evaluated={niches_evaluated!r} — must be int ≥1 "
-            "(Tuesday run with 0 niches = silent failure)"
+            "(full run with 0 niches = silent failure)"
         )
 
     for int_field in ("niches_identified", "one_pagers_written", "scorecards_written"):

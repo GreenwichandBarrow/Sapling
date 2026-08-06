@@ -45,11 +45,11 @@ This skill receives targets from two upstream skills and runs personalized outre
 - Cold-call outcomes feed back into pipeline-manager
 - Weekly outreach metrics → skill/weekly-tracker
 
-Four subagents:
-1. **Kay Email Cold Outreach** — multi-channel cadence for Kay Email niches, Codex-drafted in Gmail
-1b. **DealsX Coordination** — coordination with Sam Singh / DealsX for mass email + LinkedIn outreach on DealsX niches
-2. **Conference Outreach** — pre-conference emails and post-conference follow-ups (Kay always, regardless of niche channel)
-3. **Intermediary Outreach** — relationship-building with association heads, brokers, river guides (Kay always)
+Four operating owners:
+1. **Kay Warm Outreach** — warm intros, high-trust owner relationships, conference follow-up, intermediary/river-guide asks, and any outreach where her background or relationship changes conversion odds
+2. **Camilla Cold Qualifiers** — first-call qualification for cold/proprietary responses to confirm size, owner seriousness, transition readiness, and whether Kay should enter
+3. **DealsX Coordination** — approved outbound execution for thesis lanes where cold/warmish email is the right conversion channel
+4. **Codex System Orchestration** — briefs, scripts, routing, channel decisions, tracker hygiene, warm-intro intercepts, and failure escalation
 
 ### Niche Channel Routing
 
@@ -66,8 +66,10 @@ Each niche is assigned a channel in the WEEKLY REVIEW tab's `Outreach Channel` f
 
 **Channel routing rule:** Before running any subagent, resolve the WEEKLY REVIEW tab's `Outreach Channel` field by header name for the niche. Route to the correct subagent. Never cross channels.
 
-**Delivery model (Kay Email channel):** Codex drafts in Gmail directly. Kay reviews and sends. No third-party tool ever touches Kay's SMTP credentials.
-**Delivery model (DealsX Email channel):** Sam/DealsX handles all outreach. We provide templates, exclusion lists, and warm intro intercepts. We draft replies to inbound responses.
+**Upstream channel-decision gate:** Outreach-manager must not infer a channel from the niche name, historical examples, or prior similar theses. If the current thesis was newly Activated/Tested, Good Morning or Niche Intelligence must show Kay's approved channel decision in the tracker before outreach-manager runs. Missing/empty/stale channel = STOP and surface in Good Morning: `RECOMMEND: approve channel for {niche} before outreach` -> APPROVE / EDIT / DISCUSS.
+
+**Delivery model (Kay Warm channel):** Codex drafts only warm, relationship-led outreach where Kay is the right sender. Kay reviews and sends. This channel is for warm paths and high-fit direct asks, not generic cold volume.
+**Delivery model (DealsX Email channel):** Sam/DealsX handles approved outbound execution. We provide templates, exclusion lists, and warm intro intercepts. Camilla owns first-call qualification for cold/proprietary responses; Kay enters only when the opportunity is high-fit or relationship trust matters.
 **Delivery model (Cold-Call-Only channel):** Handled entirely by cold-call operations (`jj-operations` legacy id until Phase 3 cleanup), not outreach-manager.
 </objective>
 

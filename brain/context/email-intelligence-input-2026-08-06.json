@@ -531,8 +531,139 @@
     ],
     "nextPageToken": ""
   },
-  "generated_at": "2026-08-06T10:31:26+00:00",
+  "generated_at": "2026-08-06T14:53:51+00:00",
   "inbound": [
+    {
+      "candidate_reason": null,
+      "date": "2026-08-06 10:10",
+      "from": "AP Intego <automated@apintego.com>",
+      "id": "19fd769122baa1be",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "The workers' compensation payment is coming up for Greenwich & Barrow LLC"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-06 10:08",
+      "from": "Frank Sondors <salesforge@mail.beehiiv.com>",
+      "id": "19fd76762e0aec19",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Fresh or pre-warmed mailboxes?"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-06 10:02",
+      "from": "NexAgency <jason@nexagency.ai>",
+      "id": "19fd7625b94b9dab",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "It's Time!"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-06 10:02",
+      "from": "Dan Primack <dan@axios.com>",
+      "id": "19fd761d19122d8b",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Axios Pro Rata: Loss leader"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-06 09:01",
+      "from": "Live Oak Bank <no-reply@liveoak.bank>",
+      "id": "19fd72a80069754d",
+      "labels": [
+        "auto/finance & legal",
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "You\u2019ll notice a new look upon your next login"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-06 09:00",
+      "from": "Harriet Schary <hschary@newyorkpma.com>",
+      "id": "19fd729575e8bcea",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "IMPORTANT",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "NYPMA:  Celebrating the Career of Len Douglen"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-06 08:34",
+      "from": "Wispr Flow <hello@mail.wispr.ai>",
+      "id": "19fd71126eb74aca",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "The dictation accuracy you trust, now for meetings"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-06 08:01",
+      "from": "Wealth Management <Informa@enews.wealthmanagement.com>",
+      "id": "19fd6f368bb730cc",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Hi KAY, you're invited! Estate Planning: Strengthening Client Relationships"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-06 07:01",
+      "from": "\"Cornell University, Division of Alumni Affairs and Development\" <alumniaffairs@m.cornell.edu>",
+      "id": "19fd6bc03126e744",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Celebrate the Dog Days of Summer \ud83d\udc3e"
+    },
     {
       "candidate_reason": null,
       "date": "2026-08-06 06:00",
@@ -731,19 +862,32 @@
       "subject": "August update: The EtA Hub\u2019s full-cycle evolution"
     },
     {
-      "candidate_reason": null,
-      "date": "2026-08-04 10:02",
-      "from": "\"Women's Search Network\" <andrea@womenssearchnetwork.com>",
-      "id": "19fcd15b44f33c96",
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-08-04 16:07",
+      "from": "\"Tory @ Flippa\" <marketing@flippa.com>",
+      "id": "19fce631edc89b3c",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "$3.9M Annual Revenue Multi-channel Compact Aircon Brand + More"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-08-04 10:09",
+      "from": "Chris Guthrie <chris@quietlight.com>",
+      "id": "19fcd1bf85adff6c",
       "labels": [
         "UNREAD",
-        "TRASH",
-        "CATEGORY_UPDATES",
-        "auto/subscriptions & education"
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
       ],
-      "message_count": 2,
+      "message_count": 1,
       "snippet": "",
-      "subject": "\u2b50 Join Our CEO AMA on August 18 + A Look Ahead at WSN's Fall Lineup"
+      "subject": "5-Year-Old Viral Contest Website Portfolio | Very Low Owner Workload"
     },
     {
       "candidate_reason": "known_deal_or_marketplace_sender",
@@ -772,34 +916,6 @@
       "message_count": 1,
       "snippet": "",
       "subject": "New: The Financial Benchmarks Report"
-    },
-    {
-      "candidate_reason": "known_deal_or_marketplace_sender",
-      "date": "2026-08-04 16:07",
-      "from": "\"Tory @ Flippa\" <marketing@flippa.com>",
-      "id": "19fce631edc89b3c",
-      "labels": [
-        "CATEGORY_PROMOTIONS",
-        "UNREAD",
-        "auto/deal flow"
-      ],
-      "message_count": 1,
-      "snippet": "",
-      "subject": "$3.9M Annual Revenue Multi-channel Compact Aircon Brand + More"
-    },
-    {
-      "candidate_reason": "known_deal_or_marketplace_sender",
-      "date": "2026-08-04 10:09",
-      "from": "Chris Guthrie <chris@quietlight.com>",
-      "id": "19fcd1bf85adff6c",
-      "labels": [
-        "UNREAD",
-        "auto/deal flow",
-        "CATEGORY_UPDATES"
-      ],
-      "message_count": 1,
-      "snippet": "",
-      "subject": "5-Year-Old Viral Contest Website Portfolio | Very Low Owner Workload"
     },
     {
       "candidate_reason": null,

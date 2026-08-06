@@ -4,7 +4,7 @@
 Description=G&B niche-intelligence timer
 
 [Timer]
-OnCalendar=Tue 22:30:00
+OnCalendar=Mon 22:30:00
 Persistent=true
 Unit=niche-intelligence.service
 

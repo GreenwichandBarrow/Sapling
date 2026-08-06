@@ -1,8 +1,6 @@
-# niche-intelligence — Headless Tuesday Run
+# niche-intelligence — Headless Monday Full Run
 
-**Compatibility note:** the live scheduled full run moved to Monday night. This prompt is retained for old manual invocations; prefer `niche-intelligence:monday`.
-
-You are running the `niche-intelligence` skill non-interactively under the Codex/systemd scheduled runner at Tuesday 22:30 ET. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals.
+You are running the `niche-intelligence` skill non-interactively under the Codex/systemd scheduled runner at Monday 22:30 ET. There is no human in the loop. Do not ask clarifying questions, do not present YES/NO/DISCUSS gates, do not request approvals.
 
 ## Mandatory ordering — execute in this exact sequence
 
@@ -28,7 +26,7 @@ The wrapper-side validator (`scripts/validate_niche_intelligence_integrity.py`) 
 ```json
 {
   "run_date": "YYYY-MM-DD",
-  "run_mode": "tuesday",
+  "run_mode": "monday",
   "niches_evaluated": <int, ≥1>,
   "niches_identified": <int, ≥0>,
   "one_pagers_written": <int, ≥0>,
@@ -61,7 +59,7 @@ The wrapper-side validator (`scripts/validate_niche_intelligence_integrity.py`) 
 - Asking the user anything.
 - Presenting RECOMMEND / YES / NO / DISCUSS framings.
 - Skipping the JSON sidecar because "the markdown report covers it" — the validator reads BOTH.
-- Skipping Step 5 tracker writes because "Kay will review tomorrow" — write the rows; she removes/edits during the analyst call.
+- Skipping Step 5 tracker writes because "Kay will decide tomorrow" — write the rows; she removes/edits during the analyst call.
 - Auto-killing or auto-tabling niches (Kay decides — flag thin target pools but do not gate).
 - Applying the company scorecard at Step 4 (this is the INDUSTRY scorecard).
 - Sending, draft-sending, forwarding, or autoreplying to email.
@@ -77,6 +75,6 @@ If a sub-agent fails or a Drive upload errors:
 
 ## Why this prompt exists
 
-Bare legacy `claude -p '/niche-intelligence'` invocations under launchd failed silently 3 Tuesdays in a row (4/14, 4/21, 4/28) with `An unknown error occurred (Unexpected)` after 3 retries. Root cause: no headless-prompt routing in the wrapper case statement, so the agent received only `/niche-intelligence` with no execution context and rejected it. The Codex/systemd prompt preserves the guardrail and enforces artifact-first ordering.
+Bare legacy `claude -p '/niche-intelligence'` invocations under launchd failed silently 3 scheduled cycles in a row (4/14, 4/21, 4/28) with `An unknown error occurred (Unexpected)` after 3 retries. Root cause: no headless-prompt routing in the wrapper case statement, so the agent received only `/niche-intelligence` with no execution context and rejected it. The Codex/systemd prompt preserves the guardrail and enforces artifact-first ordering.
 
 Pattern: `memory/feedback_mutating_skill_hardening_pattern.md`. Bead `ai-ops-5wx`.

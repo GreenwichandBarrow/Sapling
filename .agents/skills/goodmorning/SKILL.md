@@ -40,6 +40,7 @@ Section label: `Day-Triggered Weekly Skills`
 Rules:
 - Include only skills whose schedule or doctrine is specific to the current weekday.
 - State `done / pending / failed / not scheduled today` with the latest artifact or failure signal when available. For scheduled Friday weekly tracker/dashboard copy-down work, do not ask Kay whether to run it; verify it, run/repair it if missing, and report only the plain-language result.
+- If a scheduled strategic cycle was expected to run and did not produce its artifact, Good Morning must surface it as a red decision item the next morning. Use the format: `🔴 [System] RECOMMEND: Investigate failed {cycle name} run -- {plain-language missing artifact / impact} -> YES / NO / DISCUSS`. This applies especially to Monday-night `niche-intelligence` for Tuesday review and Thursday-night thesis signal scan for Friday review and Sunday-night `conference-discovery` for Monday registration review.
 - If a scheduled weekly skill has not run yet because Kay launched Good Morning early, say so plainly and give the expected run window.
 - If the skill is trigger-based rather than weekday-scheduled, mention it only when the trigger is present or when Kay has specifically asked about it.
 - Numbering continues from the rest of the brief.
@@ -47,8 +48,8 @@ Rules:
 Day map:
 - Sunday: weekly task tracker build; target-discovery Phase 2 at 3pm ET; cold-call operations prep at 6pm ET; conference-discovery at 9pm ET.
 - Monday: conference-discovery / Conference Pipeline status from the Sunday run.
-- Wednesday: niche-intelligence status from Tuesday night.
-- Friday: weekly-tracker/dashboard copy-down snapshot/export; health-monitor Friday report; calibration-workflow Thursday-night run for Friday meta-calibration. The weekly tracker/dashboard copy-down is expected every Friday; Good Morning should verify it and trigger/repair it when missing rather than asking Kay.
+- Tuesday: niche-intelligence CEO-decision status from Monday night.
+- Friday: Thursday-night thesis signal scan status before Friday systems work; weekly-tracker/dashboard copy-down snapshot/export; health-monitor Friday report; calibration-workflow Thursday-night run for Friday meta-calibration. The weekly tracker/dashboard copy-down is expected every Friday; Good Morning should verify it and trigger/repair it when missing rather than asking Kay.
 
 Budget manager note:
 - `budget-manager` is not a standing Friday weekly skill. It is trigger-based from bookkeeper/StartVirtual monthly P&L or Balance Sheet delivery. Surface it in this section only when a budget-manager trigger/output exists, or when the month-end missing-report watchdog is relevant.
@@ -107,36 +108,173 @@ Sunday:
 
 Monday:
 - Confirm `conference-discovery` status and whether the Conference Pipeline was updated.
+- If the Sunday conference-discovery run failed, did not run, or did not update/land the expected status artifact, surface it as a red system decision item before normal Monday planning.
 - Keep Slack notification tight: link + number added this week + number added future weeks.
 
-Wednesday:
-- Confirm `niche-intelligence` analyst-prep status.
-- Surface any new niches that emerged from calls, email, or pipeline activity.
+Tuesday:
+- Confirm `niche-intelligence` CEO-decision status from the Monday-night full run.
+- If the Monday-night niche-intelligence run failed, did not run, or did not land the expected Tuesday review artifact, surface it as a red system decision item before normal Tuesday planning.
+- If the Monday-night niche-intelligence run succeeded, Tuesday Good Morning must surface the top thesis recommendations directly to Kay as `Activate / Hold / Kill / Test` decisions. For any `Activate` or `Test` recommendation, include a separate **Channel Decision** before target build or outreach begins.
+- Tuesday channel-decision format: `RECOMMEND: Activate/Test {niche}; Tracker Channel = {Kay Email / DealsX Email / Cold-Call-Only / No outreach yet}; Execution Path = {Kay warm outreach / DealsX batch / call-first / conference / intermediary}; Reason = {one sentence} -> APPROVE CHANNEL / EDIT / DISCUSS`. Include owner split: Kay / Camilla / DealsX / Codex. Do not allow target-discovery, DealsX, Camilla cold qualifiers, or Kay outreach to start from an activated thesis until the channel is approved and written to the Industry Research Tracker `Outreach Channel` field. If the execution path is conference/intermediary/no-outreach, do not run target-discovery until a target-build channel is separately approved.
+- Do not defer default thesis review to Camilla or an analyst call; Camilla is routed in after Kay chooses where economics, modeling, or diligence support is needed. After Kay makes a thesis and channel decision, route the update through `tracker-manager`/`niche-intelligence` so the Industry Research Tracker reflects the decision, Outreach Channel, and next channel owner; do not leave the decision only in chat.
 
 Friday:
+- Confirm the Thursday-night thesis signal scan landed before Friday systems work.
+- If the scan failed, surface it as a red system decision item.
+- If the scan succeeded, surface only signal-change decisions: urgent fast sprint, queue for Monday full run, park, or no-action. If a Friday urgent fast sprint is recommended, include the same **Channel Decision** format before any target build or outreach begins. Do not create a full thesis-review block on Friday unless a signal is genuinely time-sensitive.
+- Surface any new niches that emerged from calls, email, or pipeline activity only when they change a Friday decision.
 - Confirm weekly tracker/dashboard copy-down snapshot/export, `health-monitor`, and `calibration-workflow` status. If the weekly snapshot/export is missing by the morning run, run the copy-down/weekly snapshot path or flag a repair, not a Kay decision.
 - For July 2026 focus, suppress broad non-urgent post-call backlog and source/plumbing prompts that are not tied to jewelry or the long-term holdco vision. The next two-week operating focus is jewelry and long-term holdco vision unless Kay changes it.
 
 ## Briefing Format
 
-Return at most five ordered decisions:
+The Good Morning brief is Kay's daily edit surface. Keep all existing checks running underneath, but organize the final output around the correct weekday operating rhythm so Kay can decide what belongs in each work block.
+
+Monday-Thursday use the deal-momentum operating rhythm:
 
 ```
-1. 🔴 [COO] RECOMMEND: ...
-   → YES / NO / DISCUSS
+Good morning. {Weekday}, {Month D}. Dashboard: [https://agent-vps-7731c88b.tail868ef9.ts.net](https://agent-vps-7731c88b.tail868ef9.ts.net)
+
+No emails were sent.
+
+**Today's Operating Read**
+- What changed:
+- Must-win outcome:
+- Park / ignore today:
+
+**9:30-11:00 Outreach Work**
+- Highest-leverage seller / investor / broker / analyst actions:
+- Direct asks that need to go out:
+- Follow-ups that should be dropped or deferred:
+
+**11:00-1:00 Relationship / Call Window**
+- Confirmed calls:
+- Prep needed:
+- Desired outcome for each call:
+
+**1:00-4:00 Strategy / Research**
+- Core strategic question:
+- Deck / model / research work:
+- What would increase conviction or expose a no:
+
+**8:30 Decision Review**
+- What to review tonight:
+- What to roll forward:
+- Optional bounded continuation block, only if energy is there:
+
+**System Health**
+- Include only if something needs Kay's attention or a broken-system escalation is required.
 ```
 
-Use:
-- 🔴 urgent
-- 🟡 important
-- 🟢 optional / monitor
+Friday uses a different operating rhythm and should not be forced into the Monday-Thursday deal-momentum blocks.
 
-Include C-suite label where useful: CEO, COO, CIO, CFO, CMO, CPO, GC, Chief of Staff.
+Summer Friday format:
+
+```
+Good morning. Friday, {Month D}. Dashboard: [https://agent-vps-7731c88b.tail868ef9.ts.net](https://agent-vps-7731c88b.tail868ef9.ts.net)
+
+No emails were sent.
+
+**Today's Operating Read**
+- What changed:
+- Must-win outcome:
+- Park / ignore today:
+
+**10:30-11:30 Personal Finance / Wealth Monitor**
+- What needs review:
+- Direct asks or follow-ups:
+- What can wait:
+
+**11:30-12:30 Nonprofit Operations**
+- Required actions:
+- Decisions or approvals:
+- What can wait:
+
+**12:30-1:30 Family Admin**
+- Required actions:
+- Decisions or approvals:
+- What can wait:
+
+**1:30-2:30 Systems / G&B Housekeeping**
+- System or dashboard work:
+- Website / file / tracker cleanup:
+- What can wait:
+
+**8:30 Decision Review**
+- What to review tonight:
+- What to roll forward:
+- Optional bounded continuation block, only if energy is there:
+
+**System Health**
+- Include only if something needs Kay's attention or a broken-system escalation is required.
+```
+
+Post-9/10 Friday format:
+
+```
+Good morning. Friday, {Month D}. Dashboard: [https://agent-vps-7731c88b.tail868ef9.ts.net](https://agent-vps-7731c88b.tail868ef9.ts.net)
+
+No emails were sent.
+
+**Today's Operating Read**
+- What changed:
+- Must-win outcome:
+- Park / ignore today:
+
+**9:30-11:00 Personal Finance / Wealth Monitor**
+- What needs review:
+- Direct asks or follow-ups:
+- What can wait:
+
+**11:00-12:00 Nonprofit Operations**
+- Required actions:
+- Decisions or approvals:
+- What can wait:
+
+**12:00-1:00 Family Admin**
+- Required actions:
+- Decisions or approvals:
+- What can wait:
+
+**1:00-3:00 Systems / Website / G&B Housekeeping**
+- System or dashboard work:
+- Website / file / tracker cleanup:
+- What can wait:
+
+**3:00-4:00 Weekly Review + Next Week Setup**
+- Weekly review:
+- Next-week setup:
+- What to close before Monday:
+
+**8:30 Decision Review**
+- What to review tonight:
+- What to roll forward:
+- Optional bounded continuation block, only if energy is there:
+
+**System Health**
+- Include only if something needs Kay's attention or a broken-system escalation is required.
+```
+
+Presentation rules:
+- Answer these questions explicitly: what changed since yesterday, today's must-win outcome, what should be ignored or parked, what belongs in Outreach Work, what belongs in Relationship / Call Window, what belongs in Strategy / Research, and what should wait for 8:30 Decision Review.
+- Preserve the underlying intelligence sources and checks: Email Orchestration, Active Pipeline, Deal Aggregator, Schedule / Meeting Briefs, Week Schedule / Task Manager, Post-Call Action Items, Day-Triggered Weekly Skills, and System Health.
+- Map each surfaced item into the work block where Kay should decide or act on it. Do not keep legacy buckets as the main visible structure unless Kay asks for diagnostic detail.
+- Monday-Thursday route recommendations into the deal-momentum blocks: Outreach Work, Relationship / Call Window, Strategy / Research, and 8:30 Decision Review.
+- Friday route recommendations into the Friday blocks instead: Personal Finance / Wealth Monitor, Nonprofit Operations, Family Admin, Systems / G&B Housekeeping, Weekly Review + Next Week Setup when post-9/10, and 8:30 Decision Review.
+- On Friday, do not recommend normal outreach, email pushes, or calls unless tied to a live seller, investor, lender, or LOI-critical deadline.
+- Keep the output decision-oriented and short. Do not create a long task dump, do not repeat the To Do list, and do not report total open-task counts or overdue-task counts.
+- Protect peak energy: put external-momentum work first in the Outreach block, especially seller, investor, broker, analyst, and direct-ask items.
+- Preserve afternoon for strategy, research, deck work, model thinking, thesis-building, diligence questions, and conviction-building.
+- Use `RECOMMEND: ... -> YES / NO / DISCUSS` only where Kay needs to approve a write, draft, brief, tracker change, or work-block choice.
+- Use plain business language. Avoid technical names unless the system issue is actionable for Kay.
+- Include "No emails were sent" whenever email was inspected or drafts were discussed.
+- If a section has nothing useful, write `N/A` for that line rather than inventing filler.
 
 Include:
 - current blockers
-- dashboard pointer only when useful
+- dashboard pointer in the header
 - explicit note if no email was sent
+- broken-system escalation at the end only if attention is needed
 
 Avoid:
 - raw logs

@@ -82,6 +82,9 @@ Memory recall weakens as the session fills. These fire on action triggers, not t
 ### Before re-asking Kay anything
 - Check `session-decisions-{date}.md` for prior answer. If found → present prior answer for validation, don't re-ask.
 
+### Before asking Kay to connect Google Drive / Docs
+- **Use VPS `gog` first for Sapling Google Workspace work.** In Codex desktop sessions, do not ask Kay to connect or reconnect the local Codex Google Drive connector when the needed Google Doc, Sheet, Drive file, Calendar item, or transcript can be reached through the existing VPS/Sapling `gog` path. Run the relevant `gog` command on `vps` from `/home/ubuntu/projects/Sapling`, using the 1Password-backed environment rule above when credentials are needed. Only ask Kay about the local Google connector if `gog` is unavailable, lacks the needed capability, or the user explicitly asks to use the local connector.
+
 ### When delivering a morning briefing
 - Run brief-decisions pre-flight: enumerate TODAY + tomorrow's external meetings, confirm HOLD vs accepted, surface unconfirmed as 🔴. (`feedback_preflight_covers_today_and_tomorrow`)
 - Single Decisions list ordered 🔴 → 🟡 → 🟢, cluster by entity, ≤5 items.
@@ -133,6 +136,7 @@ grep -r "\[\[entities/jane-smith\]\]" brain/
 **Beads (`bd`):** File-based issue tracking. `bd ready`, `bd create`, `bd close`, `bd sync`.
 **GOG (`gog`):** CLI for Google Workspace. Gmail, Calendar, Drive, Docs, Sheets, Slides, Tasks, Contacts, Forms, Chat, and more.
 - Account: `kay.s@greenwichandbarrow.com` (OAuth). Invoke via `/gogcli` skill.
+- In Codex desktop, this VPS `gog` path is the canonical Google Workspace access path for Sapling. Prefer it over the local Codex Google Drive connector for reading transcripts, Drive docs, Sheets, and operating materials.
 - Use `--json` when parsing output. Use `--dry-run` before destructive ops.
 - Prefer `--readonly` scopes when full access isn't needed.
 - Never expose OAuth tokens or credentials in logs/commits.

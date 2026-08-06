@@ -141,9 +141,15 @@ case "$SKILL_NAME:$SKILL_ARGS" in
     POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_launchd_debugger_integrity.py\"}" ;;
   "launchd-debugger:on-failure")
     HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/launchd-debugger/headless-on-failure-prompt.md" ;;
-  "niche-intelligence:tuesday")
-    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/niche-intelligence/headless-tuesday-prompt.md"
+  "niche-intelligence:monday")
+    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/niche-intelligence/headless-monday-prompt.md"
     POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_niche_intelligence_integrity.py\" --date \"$TODAY\"}" ;;
+  "niche-intelligence:tuesday")
+    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/niche-intelligence/headless-monday-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_niche_intelligence_integrity.py\" --date \"$TODAY\"}" ;;
+  "niche-intelligence:signal-scan")
+    HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/niche-intelligence/headless-thursday-signal-scan-prompt.md"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_thesis_signal_scan_integrity.py\" --date \"$TODAY\"}" ;;
   "email-intelligence:")
     HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/email-intelligence/headless-weekday-prompt.md"
     POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_email_intelligence_integrity.py\" --date \"$TODAY\" --log-file \"$LOG_FILE\"}" ;;
@@ -175,6 +181,7 @@ if [ -z "${CODEX_MODEL:-}" ]; then
     "calibration-workflow:"|"calibration-workflow:weekly"|\
     "conference-discovery:sunday"|\
     "jj-operations:sunday-prep"|\
+    "niche-intelligence:monday"|\
     "niche-intelligence:tuesday"|\
     "target-discovery:phase2-sunday")
       CODEX_MODEL="${CODEX_HEAVY_MODEL:-gpt-5.5}" ;;

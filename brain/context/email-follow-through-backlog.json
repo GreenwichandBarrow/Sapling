@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-05",
+  "updated_at": "2026-08-06",
   "items": [
     {
       "bucket": "thank",
@@ -1361,6 +1361,18 @@
       "source": "calendar-prior-day-refresh",
       "event": "Megan <> Kay",
       "event_date": "2026-08-04",
+      "calendar_event_id": "_652jida66so42ba488qk6b9k8op46b9p60o32b9i6d148chn60r42ha660_20260729T173000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Megan <> Kay",
+      "email": "megan@ml-cap.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-06",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Megan <> Kay",
+      "event_date": "2026-08-05",
       "calendar_event_id": "_652jida66so42ba488qk6b9k8op46b9p60o32b9i6d148chn60r42ha660_20260729T173000Z"
     }
   ],

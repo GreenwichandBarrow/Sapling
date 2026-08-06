@@ -1,16 +1,16 @@
 {
-  "date": "2026-08-05",
+  "date": "2026-08-06",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-08-05.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-08-06.md",
   "email_scan_status": "live",
   "deals_found": 0,
   "broker_opportunistic": 2,
   "near_misses": 1,
-  "sources_scanned": 15,
+  "sources_scanned": 20,
   "sources_covered": {
-    "marketplace": 6,
-    "email_newsletters": 6,
-    "direct_email": 3
+    "marketplace": 8,
+    "email_newsletters": 7,
+    "direct_email": 5
   },
   "manual_check_sources": [],
   "sources_blocked_verified": 0,
@@ -18,6 +18,6 @@
   "volume_status": "BELOW TARGET",
   "needs_attention": [
     "browser fallback unavailable: agent-browser missing on this host",
-    "below target: 0 PASS surfaced; two broker-opportunistic Axial items and one near-miss only"
+    "below target: 0 PASS surfaced; two broker-opportunistic items and one near-miss only"
   ]
 }

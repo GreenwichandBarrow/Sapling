@@ -1,0 +1,40 @@
+{
+  "date": "2026-08-07",
+  "scan_started_at": "2026-08-07T07:21:06-04:00",
+  "scan_finished_at": "2026-08-07T07:22:30-04:00",
+  "failures_detected": 2,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 2,
+  "runtime_seconds": 84,
+  "results": [
+    {
+      "job": "niche-intelligence",
+      "cause": "VALIDATOR_REJECT",
+      "action": "SURFACE",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/niche-intelligence-2026-08-06-2230.log",
+      "last_log_mtime": "2026-08-06T22:36:19-04:00",
+      "exit_code": 2,
+      "validator_failed": false,
+      "preflight_failed": false,
+      "error_signature": "FAILED: post-run check exited 2 | VALIDATOR FAILED for 2026-08-06: markdown report missing /home/ubuntu/projects/Sapling/brain/outputs/2026-08-06-thesis-signal-scan.md; JSON sidecar missing /home/ubuntu/projects/Sapling/brain/trackers/niches/thesis-signal-scan-2026-08-06.json | SKILL_CODE_NEEDS_FIX",
+      "slack_text": "launchd-debugger: niche-intelligence FAILED - VALIDATOR_REJECT. FAILED: post-run check exited 2. SKILL_CODE_NEEDS_FIX: validator wanted 2026-08-06 thesis-signal-scan outputs but the run wrote 2026-08-07 artifact paths. Recommended: make artifact filenames and validator inputs use the same run date. Log: /home/ubuntu/projects/Sapling/logs/scheduled/niche-intelligence-2026-08-06-2230.log",
+      "slack_posted": true,
+      "suppression_reason": null
+    },
+    {
+      "job": "email-intelligence",
+      "cause": "VALIDATOR_REJECT",
+      "action": "SURFACE",
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/email-intelligence-2026-08-07-0630.log",
+      "last_log_mtime": "2026-08-07T06:36:38-04:00",
+      "exit_code": 2,
+      "validator_failed": false,
+      "preflight_failed": false,
+      "error_signature": "FAILED: post-run check exited 2 | VALIDATOR FAILED for 2026-08-07: artifact frontmatter missing valid type ('email-scan-results' or legacy 'context'); artifact frontmatter missing email-intelligence origin ('skill_origin' or legacy 'source') | SKILL_CODE_NEEDS_FIX",
+      "slack_text": "launchd-debugger: email-intelligence FAILED - VALIDATOR_REJECT. FAILED: post-run check exited 2. SKILL_CODE_NEEDS_FIX: artifact frontmatter is missing valid type and email-intelligence origin fields. Recommended: restore type: output and skill_origin: email-intelligence (or legacy source) in the generated artifact frontmatter. Log: /home/ubuntu/projects/Sapling/logs/scheduled/email-intelligence-2026-08-07-0630.log",
+      "slack_posted": true,
+      "suppression_reason": null
+    }
+  ]
+}

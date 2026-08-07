@@ -531,8 +531,52 @@
     ],
     "nextPageToken": ""
   },
-  "generated_at": "2026-08-07T10:31:21+00:00",
+  "generated_at": "2026-08-07T12:45:59+00:00",
   "inbound": [
+    {
+      "candidate_reason": null,
+      "date": "2026-08-07 08:37",
+      "from": "Briefings from Goldman Sachs <briefings@newsletter.mail.gs.com>",
+      "id": "19fdc3aca875be99",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "How Geopolitics Affect Global GDP"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-07 08:26",
+      "from": "XPX <XPX@my.exitplanningexchange.com>",
+      "id": "19fdc30908029c35",
+      "labels": [
+        "UNREAD",
+        "auto/industry research",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "XPX August Community Newsletter: Recap of XPX Next 2026 - AI in Action"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-08-07 08:15",
+      "from": "Peter Lang <peter.lang@digitalagencybusiness.com>",
+      "id": "19fdc261200745ec",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "He helped two small agencies scale 100+ people then sell to large strategic. Here\u2019s what he learned."
+    },
     {
       "candidate_reason": null,
       "date": "2026-08-07 06:01",

@@ -381,7 +381,17 @@ For each new meeting:
 <artifact>
 ## Email Scan Results Artifact
 
-Write to `brain/context/email-scan-results-{date}.md`:
+Write to `brain/context/email-scan-results-{date}.md` with this frontmatter:
+
+```yaml
+---
+schema_version: 1.1.0
+date: {YYYY-MM-DD}
+type: email-scan-results
+skill_origin: email-intelligence
+tags: [date/{YYYY-MM-DD}, output/email-scan-results, status/draft, source/gmail]
+---
+```
 
 ### Required Sections (all 8 must be present, even if "None")
 

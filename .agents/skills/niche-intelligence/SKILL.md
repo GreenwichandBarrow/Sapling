@@ -222,7 +222,33 @@ Kay is the default thesis decision-maker. Camilla is not the default recipient o
 
 ### Robust niche discovery method
 
-The recurring failure mode is re-surfacing already-discussed niches instead of discovering new ones. Each full Monday run must include at least one source-led expansion pass before scoring. Do not start from prior favorite theses. Start from source systems and only then map to G&B fit.
+The recurring failure mode is re-surfacing already-discussed niches instead of discovering new ones, or stopping at visible end-markets instead of finding the picks-and-shovels vendors that benefit when those markets grow. Each full Monday run must include a source-led expansion pass before scoring. Do not start from prior favorite theses. Start from source systems, translate broad themes into growth trends, and only then map to G&B fit.
+
+#### G&B umbrella themes for expansion
+
+Use these themes as lenses, not as final niches:
+1. **Luxury, Heritage & Personal Goods** — jewelry, watches, beauty, fragrance, art, design, private-client goods, and heritage brands.
+2. **Asset Protection & Stewardship** — insurance, storage, appraisal, documentation, custody, repair, restoration, logistics, and risk management around valuable assets.
+3. **Beauty, Wellness & Longevity Infrastructure** — services and vendors that support beauty, longevity, aesthetics, wellness, personal care, and premium consumer health categories.
+4. **Family Wealth, Legacy & Life Infrastructure** — services supporting affluent families, children, education, estates, succession, elder/family transitions, and long-duration trust.
+5. **Trust, Compliance & Verification** — testing, certification, regulatory, audit, claims, records, QA, provenance, safety, and outsourced administrative workflows where trust must be documented.
+
+#### Picks-and-shovels expansion requirement
+
+For every strong theme or growth trend, run this expansion before naming final candidate niches:
+
+`Theme -> Growth Trend -> Operational Complexity Created -> Second-Order Beneficiaries -> Fragmented Service Niches -> Target-Density Proof -> Recommended Channel Path`
+
+Required question: **Who makes money because this trend creates operational complexity?**
+
+Each theme/trend must generate both mainline and edge candidates:
+- **Obvious/mainline:** brands, retailers, direct service providers, visible operators.
+- **Back-end infrastructure:** packaging, kitting, fulfillment, repair, storage, logistics, installation, maintenance, records, CRM/admin, billing, and workflow outsourcing.
+- **Picks-and-shovels:** vendors that sell necessary inputs, services, QA, equipment, recurring maintenance, or labor to the growing category.
+- **Compliance/risk:** testing, insurance, documentation, claims, safety, provenance, import/export, regulatory, and audit support.
+- **Specialty networks:** associations, trade shows, certification bodies, local specialists, and intermediaries that reveal hidden target pools.
+
+Example: If Korean skincare growth appears as a signal, do not stop at skincare brands, beauty retailers, or ecommerce. Also test beauty packaging 3PL, premium kitting and assembly, formulation/testing labs, import/regulatory compliance support, sampling and fulfillment vendors, QA/documentation workflows, and beauty conference exhibitor/service-provider lists. The same second-order logic should be applied to jewelry, watches, art, fragrance, hospitality, private-client insurance, wellness, and every other G&B theme.
 
 Minimum discovery passes for a full run:
 1. **Customer-environment map:** Pick 1-3 operating environments Kay knows or can credibly access, then list 50 recurring workflows/vendor touchpoints per environment before naming niches. Infer hidden third-party service categories only after the workflow map is complete.

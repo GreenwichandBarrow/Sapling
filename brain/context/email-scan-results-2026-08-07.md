@@ -1,6 +1,8 @@
 ---
 schema_version: 1.1.0
 date: 2026-08-07
+type: email-scan-results
+skill_origin: email-intelligence
 tags: [date/2026-08-07, output/email-scan-results, status/draft, source/gmail]
 ---
 

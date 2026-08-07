@@ -8,8 +8,8 @@ You are running the `niche-intelligence` skill non-interactively under the Codex
 2. **Resolve credentials through 1Password first:** `source /home/ubuntu/projects/Sapling/scripts/op-env.sh`. If `gog` access appears missing, run `gog auth list --check` before reporting an outage. Never source `scripts/.env.launchd` raw.
 3. **Create the chatroom** at `brain/traces/agents/{TODAY}-niche-intelligence.md`.
 4. **Step 1 — GATHER (parallel)**: spawn `niche-intel-recent` + `niche-intel-historical` agents per `references/sub-agents.md`. Wait for both to post to the chatroom before proceeding. Gmail reads are read-only and must use `--gmail-no-send`. Missing sources are documented explicitly.
-5. **Step 1b — SYNTHESIZE (sequential)**: run `niche-intel-synthesizer` to produce the 5 outputs (Cross-Source Signal Matrix, Named Company Registry, Contact-to-Niche Map, Lead Lifecycle Tracker, Convergence Report).
-6. **Step 2 — IDENTIFY + INDUSTRY VALIDATION (sequential)**: run `niche-intel-identifier` to surface 1-5 new niche candidates with INITIAL SCREEN + TARGET TAM + MARKET TAM blocks per SKILL.md. Niche count of 0 is acceptable only if the synthesizer convergence report is empty — document the reason in the final report.
+5. **Step 1b — SYNTHESIZE (sequential)**: run `niche-intel-synthesizer` to produce the 6 outputs (Cross-Source Signal Matrix, Named Company Registry, Contact-to-Niche Map, Lead Lifecycle Tracker, Picks-and-Shovels / Edge-Niche Expansion, Convergence Report).
+6. **Step 2 — IDENTIFY + INDUSTRY VALIDATION (sequential)**: run `niche-intel-identifier` only after the picks-and-shovels expansion exists; surface 1-5 new niche candidates with INITIAL SCREEN + TARGET TAM + MARKET TAM blocks per SKILL.md. Each candidate must include its umbrella theme, growth trend/tailwind, operational complexity created, and why it is a second-order beneficiary or edge niche rather than only a visible end-market. Niche count of 0 is acceptable only if the synthesizer convergence report is empty — document the reason in the final report.
 7. **Step 3 — ONE-PAGER (parallel)**: spawn `niche-intel-onepager` per identified niche. Each must produce a `.pptx` uploaded to the niche's Drive folder under ACTIVE SPRINTS, with a Sources section citing every source used (live hyperlinks per `feedback_onepager_must_cite_sources`).
 8. **Step 4 — SCORE (sequential)**: run `niche-intel-scorer` against the G&B INDUSTRY scorecard (NOT the company scorecard).
 9. **Step 5 — UPDATE (sequential)**: run `niche-intel-tracker` to write IDEATION rows + WEEKLY REVIEW promotions where warranted.
@@ -35,6 +35,8 @@ The wrapper-side validator (`scripts/validate_niche_intelligence_integrity.py`) 
   "runtime_seconds": <int, >0>,
   "zero_finding_reason": "<string, ≥20 chars — REQUIRED when niches_identified=0>",
   "sources_covered": {"recent_track": "...", "historical_track": "..."},
+  "umbrella_themes_reviewed": ["..."],
+  "edge_niches_considered": <int, ≥0>,
   "open_loops_infra": ["..."],
   "niches": [
     {"name": "...", "score": <float|null>, "drive_folder": "..."}
@@ -49,6 +51,7 @@ The wrapper-side validator (`scripts/validate_niche_intelligence_integrity.py`) 
 ## What success looks like
 
 - Chatroom has posts from RECENT + HISTORICAL gathering agents.
+- Synthesizer output includes a Picks-and-Shovels / Edge-Niche Expansion table showing second-order beneficiaries for each strong theme/trend.
 - Markdown report exists at `brain/outputs/{TODAY}-niche-intelligence-report.md`.
 - JSON sidecar exists at `brain/trackers/niches/niche-intel-{TODAY}.json` with `niches_evaluated ≥ 1` and `tracker_updated: true`.
 - One-pager `.pptx` files uploaded for every identified niche; counts in sidecar match the report body.

@@ -149,7 +149,10 @@ case "$SKILL_NAME:$SKILL_ARGS" in
     POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_niche_intelligence_integrity.py\" --date \"$TODAY\"}" ;;
   "niche-intelligence:signal-scan")
     HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/niche-intelligence/headless-thursday-signal-scan-prompt.md"
-    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_thesis_signal_scan_integrity.py\" --date \"$TODAY\"}" ;;
+    # Thursday 22:30 ET scan is designed for Friday Good Morning, so its
+    # business artifact date is the next calendar day.
+    SIGNAL_SCAN_DATE="${SIGNAL_SCAN_DATE:-$(date -d "$TODAY +1 day" +%Y-%m-%d)}"
+    POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_thesis_signal_scan_integrity.py\" --date \"$SIGNAL_SCAN_DATE\"}" ;;
   "email-intelligence:")
     HEADLESS_PROMPT_FILE="$WORKDIR/.agents/skills/email-intelligence/headless-weekday-prompt.md"
     POST_RUN_CHECK="${POST_RUN_CHECK:-python3 \"$WORKDIR/scripts/validate_email_intelligence_integrity.py\" --date \"$TODAY\" --log-file \"$LOG_FILE\"}" ;;
@@ -211,7 +214,11 @@ if [ "$SKILL_NAME:$SKILL_ARGS" = "relationship-manager:daily" ] && [ -z "${RELAT
 fi
 
 PROMPT_FILE="${HEADLESS_PROMPT_FILE:-}"
-if [ -n "$HEADLESS_PROMPT_FILE" ] && [ "$SKILL_NAME" = "calibration-workflow" ]; then
+if [ -n "$HEADLESS_PROMPT_FILE" ] && [ "$SKILL_NAME:$SKILL_ARGS" = "niche-intelligence:signal-scan" ]; then
+  PROMPT_FILE="$(mktemp)"
+  sed "s/{TODAY}/$SIGNAL_SCAN_DATE/g" "$HEADLESS_PROMPT_FILE" > "$PROMPT_FILE"
+  printf "\n\nScheduled run date: %s\nFriday Good Morning delivery date: %s\nUse the delivery date for every thesis-signal-scan report date, frontmatter date, tag date, title date, heading date, sidecar run_date, and validation path.\n" "$TODAY" "$SIGNAL_SCAN_DATE" >> "$PROMPT_FILE"
+elif [ -n "$HEADLESS_PROMPT_FILE" ] && [ "$SKILL_NAME" = "calibration-workflow" ]; then
   PROMPT_FILE="$(mktemp)"
   sed "s/{YYYY-MM-DD}/$TODAY/g" "$HEADLESS_PROMPT_FILE" > "$PROMPT_FILE"
   printf "\n\nScheduled date: %s\nUse this scheduled date for every report date, frontmatter date, tag date, title date, heading date, and validation path.\n" "$TODAY" >> "$PROMPT_FILE"

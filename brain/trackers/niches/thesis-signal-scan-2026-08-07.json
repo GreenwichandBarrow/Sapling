@@ -1,0 +1,28 @@
+{
+  "run_date": "2026-08-07",
+  "run_mode": "thursday_signal_scan",
+  "signals_reviewed": 6,
+  "recommendations_count": 2,
+  "urgent_fast_sprint_count": 0,
+  "queue_for_monday_count": 2,
+  "park_count": 4,
+  "sources_covered": {
+    "pe_news": "Recent web/news checks covered CMMC timing changes, luxury resale and repair M&A, and car wash PE activity. The strongest fresh external tailwind was CMMC: Phase 2 is suspended, but self-assessments and liability remain live.",
+    "email": "Live Gmail search after 2026-08-04 covered auto/deal flow, auto/investors, and INBOX. Two new 2026-08-06 deal-flow threads mattered: Helen Guo and Flippa.",
+    "calls": "Granola call notes from 2026-08-04 and 2026-08-05 covered jewelry structure, trunk-show distribution, insurance, customer concentration, and lender flexibility.",
+    "inbox": "One new niche-signal inbox note arrived on 2026-08-06: Berkshire and luxury recurring-model proxies.",
+    "conferences": "No new conference-discovery outputs changed in the window."
+  },
+  "recommendations": [
+    {
+      "bucket": "queue_for_monday",
+      "item": "Queue the Berkshire and luxury recurring-model proxy cluster for the Monday full run",
+      "tailwind": "Luxury circularity, insurance, compliance distribution, premium rental, and technical distribution all carry explicit recurrence or regulatory tailwinds."
+    },
+    {
+      "bucket": "queue_for_monday",
+      "item": "Re-screen CMMC managed compliance on Monday",
+      "tailwind": "Phase 2 is suspended, but self-assessments, SPRS, annual affirmations, and liability remain active."
+    }
+  ]
+}

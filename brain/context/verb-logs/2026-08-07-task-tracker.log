@@ -1,0 +1,96 @@
+
+[2026-08-07T08:59:25.182082] schedule-from-todo-days — 2026-08-07
+  - target: Week planning tab
+  - packed To Do: {'ongoing': 12, 'not_completed': 108, 'other_active': 0, 'completed': 129, 'dropped': 44, 'active': 120, 'total': 293}
+  - wrote Week from To Do Day of the Week: {'Sun': 7, 'Mon': 4, 'Tue': 2, 'Wed': 4, 'Thu': 1, 'Fri': 15, 'Sat': 1}
+  - daily tabs cleared/not populated pending Kay approval
+  - skipped: []
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260807-085919.json
+
+[2026-08-07T08:59:50.383736] distribute-week — 2026-08-02
+  - week (Sunday boundary): 2026-08-02 .. 2026-08-08
+  - fanned Week plan → day tabs: {'Fri': 15}
+  - forced over collisions: False
+  - collisions at run: none
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-distribute-week-20260807-085949.json
+
+[2026-08-07T09:04:40.745944] distribute-week — 2026-08-02
+  - week (Sunday boundary): 2026-08-02 .. 2026-08-08
+  - fanned Week plan → day tabs: {'Sun': 7, 'Mon': 4, 'Tue': 2, 'Wed': 4, 'Thu': 1, 'Fri': 15, 'Sat': 1}
+  - forced over collisions: False
+  - collisions at run: none
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-distribute-week-20260807-090438.json
+
+[2026-08-07T09:05:53.906232] distribute-week — 2026-08-02
+  - week (Sunday boundary): 2026-08-02 .. 2026-08-08
+  - fanned Week plan → day tabs: {'Sun': 7, 'Mon': 4, 'Tue': 2, 'Wed': 4, 'Thu': 1, 'Fri': 15, 'Sat': 1}
+  - forced over collisions: False
+  - collisions at run: none
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-distribute-week-20260807-090552.json
+
+[2026-08-07T09:07:50.931355] carry-forward-day — sun-to-fri
+  - moved: 7
+  - source: Sun
+  - destination: Fri
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260807-090749.json
+  
+  - Sun slot 1 → Fri slot 16: Add Kay food staples to Sunday grocery run
+  - Sun slot 2 → Fri slot 17: Draft/schedule Greg thank-you and insurance contacts follow-up
+  - Sun slot 3 → Fri slot 18: Confirm LiveOak payroll transfer coverage
+  - Sun slot 4 → Fri slot 19: Kids allowance: Sunday $10/week + Friday $10/day through Aug
+  - Sun slot 5 → Fri slot 20: Set weekly North Star from 60-day LOI sprint and One-Year Plan
+  - Sun slot 6 → Fri slot 21: Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions
+  - Sun slot 7 → Fri slot 22: Create weekly schedule
+
+[2026-08-07T09:07:53.547122] carry-forward-day — mon-to-fri
+  - moved: 1
+  - source: Mon
+  - destination: Fri
+  - source packed: {'completed': 3, 'active': 0, 'blank': 47, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260807-090752.json
+  
+  - Mon slot 1 → Fri slot 23: Call IRS to confirm Form 8822-B address update
+
+[2026-08-07T09:07:56.162801] carry-forward-day — tue-to-fri
+  - moved: 2
+  - source: Tue
+  - destination: Fri
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260807-090755.json
+  
+  - Tue slot 1 → Fri slot 24: Pull Megan pre-LOI prep meeting notes
+  - Tue slot 2 → Fri slot 25: Send Emily 504
+
+[2026-08-07T09:07:59.003267] carry-forward-day — wed-to-fri
+  - moved: 4
+  - source: Wed
+  - destination: Fri
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260807-090757.json
+  
+  - Wed slot 1 → Fri slot 26: Prepare high-level seller data ask draft
+  - Wed slot 2 → Fri slot 27: Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue
+  - Wed slot 3 → Fri slot 28: Draft seller-call prep framework: transition priorities, questions, and deal-structure options
+  - Wed slot 4 → Fri slot 29: Niche intel review
+
+[2026-08-07T09:08:46.823169] carry-forward-day — thu-to-fri
+  - moved: 1
+  - source: Thu
+  - destination: Fri
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260807-090845.json
+  
+  - Thu slot 1 → Fri slot 30: Narrow/edit must-have diligence questions to top 5
+
+[2026-08-07T09:10:25.084569] schedule-to-day-slot — fri-31
+  - task: Set up better target discovery on Axial
+  - placement: Fri tab slot 31 (row 47)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260807-091024.json
+
+[2026-08-07T09:15:34.690442] schedule-to-day-slot — fri-32
+  - task: Email afterschool program about whether waitlist opens up
+  - placement: Fri tab slot 32 (row 48)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260807-091534.json

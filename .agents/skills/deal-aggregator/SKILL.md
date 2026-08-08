@@ -12,9 +12,9 @@ user_invocable: true
 ---
 
 <objective>
-Surface prepped deals — businesses that are actively selling — from every non-DealsX channel, every day. These are deals Kay can evaluate immediately: they have financials, a teaser, or a CIM available.
+Surface prepped deals — businesses that are actively selling — from broker/email channels, plus DealsX positive-lead/dashboard signals, every day. These are deals Kay can evaluate immediately: they have financials, a teaser, or a CIM available.
 
-**This is distinct from cold outreach.** DealsX, outreach-manager, and JJ calls target owners who aren't selling yet. This skill finds businesses already on the market.
+**This is distinct from cold outreach.** DealsX, outreach-manager, and cold-call operations target owners who are not necessarily already selling. This skill still must read DealsX positive-lead/dashboard output as a sourcing signal, because Kay treats those leads as part of the daily sourcing picture even though DealsX owns the campaign operation.
 
 **Target: 1-3 evaluable deals per day.** If the skill consistently surfaces fewer, expand source coverage. The funnel needs volume.
 
@@ -23,10 +23,10 @@ Surface prepped deals — businesses that are actively selling — from every no
 2. Email inbound (CIMs, broker blasts, intro forwards — read from email-scan-results artifact)
 3. Industry-specific deal sources (niche brokers and M&A advisors)
 4. Association deal boards (classified sections, member transition programs)
-5. DealsX Proprietary Outreach Replies (owners who replied with interest to DealsX cold outreach — see Channel 6)
+5. DealsX Proprietary Outreach Replies and Dashboard Leads (owners/leads surfaced by DealsX cold outreach — see Channel 6)
 
 **This skill does NOT:**
-- Run or manage DealsX cold outreach itself (Sam's team owns the contact universe; DealsX is cold-email infra per `feedback_dealsx_is_cold_email_infra`). It DOES surface the inbound REPLIES that outreach produces (Channel 6).
+- Run or manage DealsX cold outreach itself (Sam's team owns the contact universe; DealsX is cold-email infra per `feedback_dealsx_is_cold_email_infra`). It DOES surface the inbound replies and dashboard-positive leads that outreach produces (Channel 6). Email parsing alone is not enough.
 - Trigger target-discovery from DealsX activity. DealsX-channel niches skip target-discovery entirely (`feedback_dealsx_skip_target_discovery`). A reply is inbound deal flow, never a refill signal.
 - Draft outreach to owners (broker is the gatekeeper for broker-sourced deals)
 - Enter deals into Attio (pipeline-manager handles that when NDA is signed)
@@ -65,6 +65,7 @@ Gmail safety is strict: this skill may create Gmail drafts only where explicitly
   - **SaaS Buy Box** — doc ID `1I8r8w0FPJUepfBxM6HM7V_q4ibmitybIBF6w6sMQumU` — applies to Vertical SaaS for Luxury and all new-niche SaaS listings
 - **Industry Research Tracker** (Sheet: `1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins`, WEEKLY REVIEW tab) — active niche list read at scan start
 - **email-scan-results artifact** (`brain/context/email-scan-results-{date}.md`) — inbound deal emails classified by email-intelligence
+- **DealsX dashboard / weekly snapshot** (`brain/context/dealsx-weekly-snapshot.json` or the current DealsX dashboard export/source of truth) — positive/replied leads and activity that may not appear as Gmail deal flow
 - **skill/pipeline-manager** — Intermediary Target List Sheet (broker stages, relationship status)
 
 **Data Availability Rule (applies to every buy-box criterion):** Missing data on a listing is never grounds to auto-reject. Apply each criterion only when the corresponding field is disclosed. If a field is not disclosed, the deal is NOT rejected on that criterion — it is flagged for review. A deal with several "not disclosed" fields but no disclosed-and-failed fields still passes the buy-box gate.
@@ -415,9 +416,11 @@ Monitor for off-market opportunities through industry associations.
 - IREM (irem.org) — Institute of Real Estate Management, member networking.
 - NARPM (narpm.org) — National Association of Residential Property Managers, occasional member transitions.
 
-### Channel 6: DealsX Proprietary Outreach Replies
+### Channel 6: DealsX Proprietary Outreach Replies and Dashboard Leads
 
-DealsX runs cold outreach on G&B's behalf (Sam's team owns the contact universe). When an owner replies with interest, DealsX forwards a lead notification. These are **inbound deal flow** — surface them; they count toward the daily 1-3 evaluable-deals target and show the DealsX funnel is producing.
+DealsX runs cold outreach on G&B's behalf (Sam's team owns the contact universe). When an owner replies with interest, DealsX may surface the lead through email, its dashboard, Sam's reporting, or a weekly snapshot. These are sourcing leads even when they are not emailed deal flow. Surface them; they count toward sourcing momentum, but label them as `DealsX lead` rather than broker-marketplace deal if no financials/teaser/CIM are available.
+
+Current gap acknowledged 2026-08-07: Deal Aggregator has not been effective because it is not reliably linked to the DealsX dashboard/leads source and because emailed deal-flow parsing has produced low useful volume. Until this input is wired, a low Deal Aggregator count must be interpreted as `coverage incomplete`, not `no leads exist`.
 
 **Detection — a DealsX reply notification is any email matching ALL of:**
 - Sender is `Prospect Geni <dealsx.notifaction@gmail.com>` (the DealsX lead-notification sender; "Prospect Geni" is DealsX's notification alias, NOT a person or separate tool), OR a forwarded reply from `@dealsx.io` referencing a DealsX-sent thread
@@ -750,6 +753,7 @@ Wired 2026-05-02 during the legacy launchd-debugger investigation; now enforced 
 - [ ] Scan artifact logs, for each niche, which corpus path was used: "DealsX keywords" or "WR row enrichment (Niche Hypothesis + Quick notes)" — so underperforming niches can be calibrated next cycle
 - [ ] Broker-opportunistic lane populated for financially plausible broker/platform listings that do not match active niche corpus but have no hard-exclude.
 - [ ] `brain/context/deal-aggregator-status.json` written for dashboard consumption.
+- [ ] DealsX dashboard/snapshot lead count checked and logged. If unavailable or stale, mark the run as `coverage incomplete` instead of concluding Deal Aggregator produced no leads.
 
 ### Source Scorecard Stop Hook (Phase 2)
 - [ ] The run artifact separates source coverage into two concepts: (1) automated run coverage — sources the skill actually scrubs or reads from email when it runs, categorized only as Marketplace, Newsletter, or Direct email; (2) Manual deal sources to aggregate — marketplace-style sources that require login, setup, registration, or manual search. Direct relationship/email sources do not belong in the manual marketplace queue. Do not blend these into one source list.

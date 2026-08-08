@@ -39,6 +39,10 @@ log() {
 
 post_failure() {
   local message="$1"
+  if [ "$SKILL_NAME" = "health-monitor" ]; then
+    log "Slack suppressed for health-monitor failure by Kay preference: $message"
+    return 0
+  fi
   if [ -n "${SLACK_WEBHOOK_OPERATIONS:-}" ]; then
     curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
       -H "Content-type: application/json" \
@@ -271,13 +275,13 @@ if [ -n "${POST_RUN_CHECK:-}" ]; then
 fi
 
 # Health-monitor RED bridge: when health-monitor exits clean and its artifact
-# landed at the expected path, fan out one launchd-debugger:on-failure spawn per
-# RED row in the markdown artifact. The bridge is background-detached so the
-# parent wrapper exits immediately.
+# landed at the expected path, run the bridge check. Slack firing is disabled by
+# default inside the bridge; health findings stay in the dashboard and Good
+# Morning unless Kay explicitly re-enables HEALTH_MONITOR_SLACK_BRIDGE=1.
 if [ "$SKILL_NAME" = "health-monitor" ]; then
   HEALTH_ARTIFACT="$WORKDIR/brain/trackers/health/$(date +%Y-%m-%d)-health.md"
   if [ -f "$HEALTH_ARTIFACT" ]; then
-    log "Firing health-monitor RED bridge against $HEALTH_ARTIFACT"
+    log "Health-monitor RED bridge check against $HEALTH_ARTIFACT (Slack disabled by default)"
     bash "$WORKDIR/scripts/health-monitor-red-bridge.sh" "$HEALTH_ARTIFACT" >> "$LOG_FILE" 2>&1 || true
   else
     log "health-monitor RED bridge skipped — artifact not found at $HEALTH_ARTIFACT"

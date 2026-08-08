@@ -1,36 +1,31 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260720-124730",
-  "sheet_id": "1QIpyr0hMR940-0fyfUIKV7xs4A-XcrDg06-8rXL273I",
+  "timestamp": "20260807-090755",
+  "sheet_id": "1DcwtZYMqA3OMDeQAsLsS9szIWScz22qVCO7jrfHpvww",
   "ranges": {
-    "'Sun'!A17:E66": [
+    "'Tue'!A17:E66": [
       [
-        true,
-        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
+        false,
+        "Pull Megan pre-LOI prep meeting notes"
       ],
       [
         false,
-        "Draft/schedule Greg thank-you and insurance contacts follow-up"
+        "Send Emily 504"
       ],
       [
-        false,
-        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
+        false
       ],
       [
-        true,
-        "Create weekly schedule"
+        false
       ],
       [
-        true,
-        "Confirm LiveOak payroll transfer coverage"
+        false
       ],
       [
-        false,
-        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
+        false
       ],
       [
-        true,
-        "Add Kay food staples to Sunday grocery run"
+        false
       ],
       [
         false
@@ -162,82 +157,98 @@
         false
       ]
     ],
-    "'Mon'!A17:E66": [
+    "'Fri'!A17:E66": [
       [
-        true,
-        "Library block 10:00-2:30: jewelry industry analysis / market structure"
+        false,
+        "Take truck for oil change"
       ],
       [
         false,
-        "Start company analysis from public info + competitive analysis"
+        "Scan IRS docs at FedEx"
       ],
       [
         false,
-        "Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options"
+        "Call IRS/government to confirm address change"
+      ],
+      [
+        false,
+        "Pay rent"
+      ],
+      [
+        false,
+        "Follow up with Sarah about Monday meeting"
+      ],
+      [
+        false,
+        "Book afterschool for Tuesday and Wednesday for the kids"
+      ],
+      [
+        false,
+        "Call Jesse at DUSC"
+      ],
+      [
+        false,
+        "Sign up Kaiden for RSM"
+      ],
+      [
+        false,
+        "Create project for French passports"
+      ],
+      [
+        false,
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark"
+      ],
+      [
+        false,
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility"
+      ],
+      [
+        false,
+        "Set up Claude workflow for Friday: slides + website aesthetics"
+      ],
+      [
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget"
+      ],
+      [
+        false,
+        "Check NYC Housing Connect for new Manhattan lotteries"
+      ],
+      [
+        false,
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
+      ],
+      [
+        false,
+        "Add Kay food staples to Sunday grocery run"
+      ],
+      [
+        false,
+        "Draft/schedule Greg thank-you and insurance contacts follow-up"
+      ],
+      [
+        false,
+        "Confirm LiveOak payroll transfer coverage"
+      ],
+      [
+        false,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
+      ],
+      [
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
+      ],
+      [
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
+      ],
+      [
+        false,
+        "Create weekly schedule"
       ],
       [
         false,
         "Call IRS to confirm Form 8822-B address update"
-      ],
-      [
-        true,
-        "Process payroll"
-      ],
-      [
-        false,
-        "Process conference registrations"
-      ],
-      [
-        false,
-        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte"
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
       ],
       [
         false

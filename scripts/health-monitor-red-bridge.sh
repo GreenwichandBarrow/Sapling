@@ -1,8 +1,12 @@
 #!/bin/bash
 # health-monitor-red-bridge.sh
 #
-# Reads health-monitor's weekly markdown artifact and auto-fires
-# launchd-debugger:on-failure for every RED row in the standard health tables.
+# Reads health-monitor's weekly markdown artifact and, when explicitly enabled,
+# auto-fires launchd-debugger:on-failure for every RED row in the standard
+# health tables.
+#
+# Default as of 2026-08-07: Slack bridge disabled by Kay preference. Health
+# findings stay in the health artifact, dashboard, and Good Morning brief.
 #
 # Yellow stays informational. Trend table is skipped (it cites historical RED
 # states for resolved items).
@@ -12,8 +16,9 @@
 #   - env FROM_HEALTH_BRIDGE=1 → exit 0
 #
 # Modes:
+#   HEALTH_MONITOR_SLACK_BRIDGE!=1 → log disabled and exit 0
 #   DRY_RUN=1 → log "WOULD FIRE" lines only, never spawn
-#   default   → background-detached spawn of run-agent-skill.sh launchd-debugger:on-failure
+#   HEALTH_MONITOR_SLACK_BRIDGE=1 → background-detached spawn of run-agent-skill.sh launchd-debugger:on-failure
 #               with FROM_HEALTH_BRIDGE=1 + RED_ITEM_* + HEALTH_ARTIFACT_PATH env
 #
 # Always exits 0 — never blocks the parent wrapper.
@@ -66,6 +71,11 @@ fi
 
 log "Artifact: $ARTIFACT"
 log "Mode: ${DRY_RUN:+DRY_RUN}${DRY_RUN:-LIVE}"
+
+if [ "${HEALTH_MONITOR_SLACK_BRIDGE:-0}" != "1" ]; then
+  log "DISABLED: health-monitor Slack bridge is off by Kay preference. Health findings remain in the health artifact, dashboard, and Good Morning. Set HEALTH_MONITOR_SLACK_BRIDGE=1 to re-enable."
+  exit 0
+fi
 
 # Parse RED rows. Filter:
 #   - row pipe-split into 5 fields (NF==5) → standard health table

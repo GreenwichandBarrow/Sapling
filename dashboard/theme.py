@@ -32,6 +32,7 @@ PALETTE = {
 # Tech Stack retired (merged into Infrastructure).
 NAV_ITEMS = [
     ("Greenwich & Barrow Dashboard", "dashboard", True),
+    ("Today's Good Morning Brief", "good-morning-brief", True),
     ("Deal Aggregator", "deal-aggregator", True),
     ("Email Orchestration", "email-orchestration", True),
     ("Pipeline", "deal-pipeline", True),

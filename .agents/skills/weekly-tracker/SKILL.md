@@ -70,7 +70,7 @@ Everything else is diagnostic — it shows whether the activity machine is conve
 
 - **Google Sheet:** `OPERATIONS / WEEKLY ACTIVITY TRACKER` (folder ID: `1-TcRl74G0Ezc0lEJC9__BiBPwnG7gwfR`)
   - Sheet ID: `1NGGZY_iq9h8cNzLAXSJ1vTcsfXWNU9oin2RiOMtl9NE`
-  - Tabs: `Weekly Topline`, `Weekly Detail`, `Quarterly Summary`, `Apollo Credit Tracker`
+  - Tabs: `Weekly Topline`, `Weekly Detail`, `Quarterly Summary`, `Linkt Credit Tracker`
   - Weekly snapshots: `OPERATIONS/WEEKLY ACTIVITY TRACKER/WEEKLY SNAPSHOTS/` (Drive)
 - **Vault:** `brain/trackers/weekly/{YYYY-MM-DD}-weekly-tracker.md` (week-ending date)
 
@@ -415,7 +415,7 @@ gog sheets update "$SHEET_ID" "'Weekly Topline'!{COL}1:{COL}9" --values-json '{.
 # Weekly Detail: write aggregate total to next historical column (left), then overwrite niche breakdown columns (right)
 gog sheets update "$SHEET_ID" "'Weekly Detail'!{COL}1:{COL}27" --values-json '{...}'
 gog sheets update "$SHEET_ID" "'Quarterly Summary'!{QCOL}3:{QCOL}31" --values-json '{...}'
-gog sheets update "$SHEET_ID" "'Apollo Credit Tracker'!{COL}1:{COL}28" --values-json '{...}'
+gog sheets update "$SHEET_ID" "'Linkt Credit Tracker'!{COL}1:{COL}28" --values-json '{...}'
 ```
 
 ### Step 4.5: Save Weekly Detail Snapshot to Drive
@@ -618,7 +618,7 @@ Investor-grade rollup. Cumulative totals and conversion funnels.
 | Niches Activated This Quarter | {count} | | | |
 | Niches Killed This Quarter | {count} | | | |
 
-### Tab 4: Apollo Credit Tracker
+### Tab 4: Linkt Credit Tracker
 Tracks credit consumption, list quality, and ICP efficiency week over week.
 
 | Row | Metric | Target | {Week Col} |
@@ -756,7 +756,7 @@ Tracker update is complete when ALL checks pass:
 - [ ] Key metrics populated in Topline (even if 0)
 - [ ] All metrics populated in Detail (even if 0)
 - [ ] Quarterly Summary updated with current quarter cumulative totals
-- [ ] Apollo Credit Tracker tab updated
+- [ ] Linkt Credit Tracker tab updated
 - [ ] LinkedIn DM metrics populated (even if 0)
 - [ ] JJ dial count populated
 - [ ] Weekly Detail snapshot exported as xlsx to Drive (`OPERATIONS/WEEKLY ACTIVITY TRACKER/WEEKLY SNAPSHOTS/Weekly Detail - {date}.xlsx`)

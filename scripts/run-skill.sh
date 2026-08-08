@@ -87,9 +87,13 @@ fi
 PREFLIGHT=$(echo "say OK" | "$HOME/.local/bin/claude" -p --model haiku --dangerously-skip-permissions 2>&1 | head -3)
 if echo "$PREFLIGHT" | grep -qE "401|authentication_error|Invalid authentication"; then
   echo "PREFLIGHT FAILED (auth): $PREFLIGHT" >> "$LOG_FILE"
-  curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
-    -H 'Content-type: application/json' \
-    -d "{\"text\":\"PREFLIGHT AUTH FAIL for $SKILL_NAME — Claude CLI 401. Kay must re-auth via \`claude\` command.\"}"
+  if [ "$SKILL_NAME" = "health-monitor" ]; then
+    echo "Slack suppressed for health-monitor preflight auth failure by Kay preference" >> "$LOG_FILE"
+  else
+    curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
+      -H 'Content-type: application/json' \
+      -d "{\"text\":\"PREFLIGHT AUTH FAIL for $SKILL_NAME — Claude CLI 401. Kay must re-auth via \`claude\` command.\"}"
+  fi
   exit 2
 fi
 
@@ -235,9 +239,13 @@ if [ -n "$REQUIRED_DEPS" ]; then
   done
   if [ -n "$MISSING_DEPS" ]; then
     echo "DEPS PREFLIGHT FAILED: missing dependencies:$MISSING_DEPS" >> "$LOG_FILE"
-    curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
-      -H 'Content-type: application/json' \
-      -d "{\"text\":\"DEPS PREFLIGHT FAIL for $SKILL_NAME - missing:$MISSING_DEPS. Skill aborted before running.\"}"
+    if [ "$SKILL_NAME" = "health-monitor" ]; then
+      echo "Slack suppressed for health-monitor deps preflight failure by Kay preference: missing:$MISSING_DEPS" >> "$LOG_FILE"
+    else
+      curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
+        -H 'Content-type: application/json' \
+        -d "{\"text\":\"DEPS PREFLIGHT FAIL for $SKILL_NAME - missing:$MISSING_DEPS. Skill aborted before running.\"}"
+    fi
     exit 3
   fi
   echo "Deps preflight OK ($REQUIRED_DEPS)" >> "$LOG_FILE"
@@ -308,9 +316,13 @@ if [ $EXIT_CODE -ne 0 ]; then
   else
     SLACK_TEXT="Scheduled skill FAILED: $SKILL_NAME (exit $EXIT_CODE). Check logs/scheduled/"
   fi
-  curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
-    -H 'Content-type: application/json' \
-    -d "{\"text\":\"$SLACK_TEXT\"}"
+  if [ "$SKILL_NAME" = "health-monitor" ]; then
+    echo "Slack suppressed for health-monitor failure by Kay preference: $SLACK_TEXT" >> "$LOG_FILE"
+  else
+    curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
+      -H 'Content-type: application/json' \
+      -d "{\"text\":\"$SLACK_TEXT\"}"
+  fi
 fi
 
 # v1.1 Failure-trigger: auto-fire launchd-debugger on any non-zero exit so the
@@ -333,8 +345,9 @@ if [ "$EXIT_CODE" != "0" ] && [ "$SKILL_NAME" != "launchd-debugger" ]; then
 fi
 
 # v1.2 health-monitor RED bridge: when health-monitor exits clean AND its
-# artifact landed at the expected path, fan out one launchd-debugger:on-failure
-# spawn per RED row in the markdown artifact. Yellow stays informational.
+# artifact landed at the expected path, run the bridge check. Slack firing is
+# disabled by default inside the bridge; health findings stay in the dashboard
+# and Good Morning unless Kay explicitly re-enables HEALTH_MONITOR_SLACK_BRIDGE=1.
 # Skipped on validator failure (the v1.1 on-failure auto-fire above already
 # fires for that case). Background-detached so the wrapper exits immediately.
 # Recursion-guarded inside the bridge script too (FROM_HEALTH_BRIDGE env +
@@ -344,7 +357,7 @@ if [ "$EXIT_CODE" = "0" ] \
    && [ "$SKILL_NAME" = "health-monitor" ]; then
   HEALTH_ARTIFACT="$WORKDIR/brain/trackers/health/$(date +%Y-%m-%d)-health.md"
   if [ -f "$HEALTH_ARTIFACT" ]; then
-    echo "Firing health-monitor RED bridge against $HEALTH_ARTIFACT" >> "$LOG_FILE"
+    echo "Health-monitor RED bridge check against $HEALTH_ARTIFACT (Slack disabled by default)" >> "$LOG_FILE"
     bash "$WORKDIR/scripts/health-monitor-red-bridge.sh" "$HEALTH_ARTIFACT" >> "$LOG_FILE" 2>&1 || true
   else
     echo "health-monitor RED bridge skipped — artifact not found at $HEALTH_ARTIFACT" >> "$LOG_FILE"

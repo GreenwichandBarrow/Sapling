@@ -90,7 +90,7 @@ Only 3 genuinely overdue contacts this cycle after trigger/assistant/dormant fil
 - [[entities/colin-woolway|Colin Woolway]] (2026-02-17, 59d; same-office peer)
 - [[entities/will-gallagher|Will Gallagher]] (2025-12-12, 126d — Occasionally threshold 210d)
 - [[entities/bettina-huang|Bettina Huang]] (2026-02-09, 67d)
-- [[entities/donald-moore@marsh|Donald Moore]] (2025-10-28, 171d; family-friend, bi-annual cadence per next_action)
+- [[entities/donald-moore|Donald Moore]] (2025-10-28, 171d; family-friend, bi-annual cadence per next_action)
 - [[entities/lauren-della-monica|Lauren Della Monica]] (2025-10-10, 189d)
 - [[entities/sarah-findlay|Sarah Findlay]] (2026-01-27, 80d)
 - [[entities/anton-bogdanov|Anton Bogdanov]] (2026-01-13, 94d)

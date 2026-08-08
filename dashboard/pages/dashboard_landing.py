@@ -276,6 +276,42 @@ def _tile_email_orchestration() -> str:
         """)
 
 
+def _tile_good_morning_brief() -> str:
+    """Main dashboard tile for reopening the latest morning brief."""
+    brief_dir = _DASHBOARD_DIR.parent / "brain" / "context"
+    today_path = brief_dir / f"good-morning-brief-{date.today().isoformat()}.md"
+    latest = today_path
+    if not latest.exists():
+        candidates = sorted(brief_dir.glob("good-morning-brief-*.md"), key=lambda p: p.name, reverse=True)
+        latest = candidates[0] if candidates else None
+
+    if latest is None:
+        primary = "Not saved"
+        unit = "brief"
+        footer = "run Good Morning"
+        dot = "yellow"
+    else:
+        primary = "Open"
+        unit = "today's brief" if latest == today_path else "latest brief"
+        footer = latest.stem.replace("good-morning-brief-", "")
+        dot = "green" if latest == today_path else "yellow"
+
+    return _tile(f"""
+    <a class="gb-tile" href="/good-morning-brief" target="_self">
+    <div class="label">Today&apos;s Good Morning Brief</div>
+    <div class="primary" style="font-size: 2.1em;">{escape(primary)}<span class="unit">{escape(unit)}</span></div>
+    <div class="gb-status-row">
+    <span class="gb-status-dot {dot}"></span>
+    <span class="gb-status-text">Reopen the morning edit surface</span>
+    </div>
+    <div class="footer">
+    <span class="gb-trend flat">&rarr; {escape(footer)}</span>
+    <span class="gb-horizon">TODAY</span>
+    </div>
+    </a>
+    """)
+
+
 def _tile_ma_analytics() -> str:
     """Main dashboard tile for Kay's current weekly sourcing goals."""
     goals = []
@@ -506,6 +542,7 @@ def render() -> None:
 
     hero = _hero_active_deal_pipeline()
     small_tiles = [
+        _tile_good_morning_brief(),
         _tile_ma_analytics(),
         _tile_deal_aggregator(),
         _tile_email_orchestration(),

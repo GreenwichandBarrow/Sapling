@@ -1,11 +1,11 @@
 {
   "verb": "distribute-week",
-  "timestamp": "20260630-074459",
-  "sheet_id": "1Cc3sQjeYT7GzGcAuOnHbuOA7P648xzgKqGTZuTusg5c",
+  "timestamp": "20260807-090552",
+  "sheet_id": "1DcwtZYMqA3OMDeQAsLsS9szIWScz22qVCO7jrfHpvww",
   "ranges": {
     "'Sun'!A1:E78": [
       [
-        "SUNDAY \u00b7 Jun 28"
+        "SUNDAY \u00b7 Aug 2"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -55,32 +55,32 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
@@ -93,25 +93,32 @@
         "Notes"
       ],
       [
-        false
+        true,
+        "Add Kay food staples to Sunday grocery run"
       ],
       [
-        false
+        false,
+        "Draft/schedule Greg thank-you and insurance contacts follow-up"
       ],
       [
-        false
+        true,
+        "Confirm LiveOak payroll transfer coverage"
       ],
       [
-        false
+        true,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
       ],
       [
-        false
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
       ],
       [
-        false
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
       ],
       [
-        false
+        true,
+        "Create weekly schedule"
       ],
       [
         false
@@ -248,7 +255,7 @@
     ],
     "'Mon'!A1:E78": [
       [
-        "MONDAY \u00b7 Jun 29"
+        "MONDAY \u00b7 Aug 3"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -298,32 +305,32 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
@@ -336,19 +343,23 @@
         "Notes"
       ],
       [
-        false
+        false,
+        "Call IRS to confirm Form 8822-B address update"
+      ],
+      [
+        false,
+        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte"
       ],
       [
         false
       ],
       [
-        false
+        false,
+        "Process payroll"
       ],
       [
-        false
-      ],
-      [
-        false
+        false,
+        "Process conference registrations"
       ],
       [
         false
@@ -491,7 +502,7 @@
     ],
     "'Tue'!A1:E78": [
       [
-        "TUESDAY \u00b7 Jun 30"
+        "TUESDAY \u00b7 Aug 4"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -541,32 +552,32 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
@@ -579,10 +590,12 @@
         "Notes"
       ],
       [
-        false
+        false,
+        "Pull Megan pre-LOI prep meeting notes"
       ],
       [
-        false
+        false,
+        "Send Emily 504"
       ],
       [
         false
@@ -734,7 +747,7 @@
     ],
     "'Wed'!A1:E78": [
       [
-        "WEDNESDAY \u00b7 Jul 1"
+        "WEDNESDAY \u00b7 Aug 5"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -784,32 +797,32 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
@@ -822,16 +835,20 @@
         "Notes"
       ],
       [
-        false
+        false,
+        "Prepare high-level seller data ask draft"
       ],
       [
-        false
+        false,
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue"
       ],
       [
-        false
+        false,
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options"
       ],
       [
-        false
+        false,
+        "Niche intel review"
       ],
       [
         false
@@ -977,7 +994,7 @@
     ],
     "'Thu'!A1:E78": [
       [
-        "THURSDAY \u00b7 Jul 2"
+        "THURSDAY \u00b7 Aug 6"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -1027,32 +1044,32 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
@@ -1065,7 +1082,8 @@
         "Notes"
       ],
       [
-        false
+        false,
+        "Narrow/edit must-have diligence questions to top 5"
       ],
       [
         false
@@ -1220,7 +1238,7 @@
     ],
     "'Fri'!A1:E78": [
       [
-        "FRIDAY \u00b7 Jul 3"
+        "FRIDAY \u00b7 Aug 7"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -1270,32 +1288,32 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
@@ -1308,49 +1326,64 @@
         "Notes"
       ],
       [
-        false
+        false,
+        "Take truck for oil change"
       ],
       [
-        false
+        false,
+        "Scan IRS docs at FedEx"
       ],
       [
-        false
+        false,
+        "Call IRS/government to confirm address change"
       ],
       [
-        false
+        false,
+        "Pay rent"
       ],
       [
-        false
+        false,
+        "Follow up with Sarah about Monday meeting"
       ],
       [
-        false
+        false,
+        "Book afterschool for Tuesday and Wednesday for the kids"
       ],
       [
-        false
+        false,
+        "Call Jesse at DUSC"
       ],
       [
-        false
+        false,
+        "Sign up Kaiden for RSM"
       ],
       [
-        false
+        false,
+        "Create project for French passports"
       ],
       [
-        false
+        false,
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark"
       ],
       [
-        false
+        false,
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility"
       ],
       [
-        false
+        false,
+        "Set up Claude workflow for Friday: slides + website aesthetics"
       ],
       [
-        false
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget"
       ],
       [
-        false
+        false,
+        "Check NYC Housing Connect for new Manhattan lotteries"
       ],
       [
-        false
+        false,
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
       ],
       [
         false
@@ -1463,7 +1496,7 @@
     ],
     "'Sat'!A1:E78": [
       [
-        "SATURDAY \u00b7 Jul 4"
+        "SATURDAY \u00b7 Aug 8"
       ],
       [
         "DAILY FOCUS / THEME"
@@ -1513,32 +1546,32 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
@@ -1551,7 +1584,8 @@
         "Notes"
       ],
       [
-        false
+        false,
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
       ],
       [
         false
@@ -1706,7 +1740,7 @@
     ],
     "'Week'!A1:O38": [
       [
-        "WEEK OF Jun 28-Jul 4"
+        "WEEK OF Aug 2-8"
       ],
       [],
       [
@@ -1716,35 +1750,52 @@
       [],
       [
         "",
-        "SUNDAY \u00b7 Jun 28",
+        "SUNDAY \u00b7 Aug 2",
         "",
-        "MONDAY \u00b7 Jun 29",
+        "MONDAY \u00b7 Aug 3",
         "",
-        "TUESDAY \u00b7 Jun 30",
+        "TUESDAY \u00b7 Aug 4",
         "",
-        "WEDNESDAY \u00b7 Jul 1",
+        "WEDNESDAY \u00b7 Aug 5",
         "",
-        "THURSDAY \u00b7 Jul 2",
+        "THURSDAY \u00b7 Aug 6",
         "",
-        "FRIDAY \u00b7 Jul 3",
+        "FRIDAY \u00b7 Aug 7",
         "",
-        "SATURDAY \u00b7 Jul 4"
+        "SATURDAY \u00b7 Aug 8"
       ],
       [],
       [
         "",
         false,
-        "Create weekly schedule",
+        "Add Kay food staples to Sunday grocery run",
         false,
-        "Process payroll",
+        "Call IRS to confirm Form 8822-B address update",
         false,
-        "Try Claude on website rebuild",
+        "Pull Megan pre-LOI prep meeting notes",
         false,
-        "Niche intel review",
+        "Prepare high-level seller data ask draft",
         false,
-        "Order gift for Lois (Jack Hugh Mackay)",
+        "Narrow/edit must-have diligence questions to top 5",
         false,
-        "Weekly review \u2014 system health, M&A activities, budget",
+        "Take truck for oil change",
+        false,
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
+      ],
+      [
+        "",
+        false,
+        "Draft/schedule Greg thank-you and insurance contacts follow-up",
+        false,
+        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte",
+        false,
+        "Send Emily 504",
+        false,
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
+        false,
+        "",
+        false,
+        "Scan IRS docs at FedEx",
         false
       ],
       [
@@ -1752,79 +1803,79 @@
         false,
         "Confirm LiveOak payroll transfer coverage",
         false,
+        "",
+        false,
+        "",
+        false,
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
+        false,
+        "",
+        false,
+        "Call IRS/government to confirm address change",
+        false
+      ],
+      [
+        "",
+        false,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug",
+        false,
+        "Process payroll",
+        false,
+        "",
+        false,
+        "Niche intel review",
+        false,
+        "",
+        false,
+        "Pay rent",
+        false
+      ],
+      [
+        "",
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
+        false,
         "Process conference registrations",
         false,
-        "Review finders fee doc",
+        "",
         false,
-        "Call IRS to confirm Form 8822-B address update",
+        "",
         false,
-        "Connect Roberta & Elspeth",
+        "",
         false,
-        "Sign up kids for Kano Martial Arts judo class",
+        "Follow up with Sarah about Monday meeting",
         false
       ],
       [
         "",
         false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions",
+        false,
         "",
         false,
-        "Set up meetings with the list of Lenders to build relationships",
+        "",
         false,
-        "Update Tailscale SSH checkPeriod for Sapling VPS",
+        "",
         false,
-        "Thank you: Jay, Laura, Paul, Bob",
+        "",
         false,
-        "Connect Lily & Suzanne",
-        false,
-        "Look into music lessons",
+        "Book afterschool for Tuesday and Wednesday for the kids",
         false
       ],
       [
         "",
         false,
-        "",
-        false,
-        "Email Filipe @ Pest Mgmt company",
+        "Create weekly schedule",
         false,
         "",
         false,
-        "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg",
-        false,
-        "",
-        false,
-        "Sign up for more Italki lessons",
-        false
-      ],
-      [
         "",
         false,
         "",
         false,
-        "Bday cards & baby cards",
-        false,
         "",
         false,
-        "Pull Megan pre-LOI prep meeting notes",
-        false,
-        "",
-        false,
-        "Fix Kaiden's iPad screen",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Do luxury-retailer store visits for pest buying criteria",
-        false,
-        "",
-        false,
-        "Email DealsX to pause for summer",
-        false,
-        "",
-        false,
-        "Create travel plans for July in Paris/France next year",
+        "Call Jesse at DUSC",
         false
       ],
       [
@@ -1836,11 +1887,11 @@
         false,
         "",
         false,
-        "Dashboard plumbing: deal aggregator",
+        "",
         false,
         "",
         false,
-        "Cancel Motion (or downgrade to monthly)",
+        "Sign up Kaiden for RSM",
         false
       ],
       [
@@ -1852,23 +1903,7 @@
         false,
         "",
         false,
-        "Reach out to Ray to schedule time to get together",
-        false,
         "",
-        false,
-        "Submit the boys to: NY Models, State Models, Zuri Models, Teri B and Stellar",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Pay Northwell & Labcorp",
         false,
         "",
         false,
@@ -1884,11 +1919,11 @@
         false,
         "",
         false,
-        "Send new email outreach on dashboard (3 companies)",
+        "",
         false,
         "",
         false,
-        "Verify Howie plan and update budget run-rate",
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark",
         false
       ],
       [
@@ -1904,7 +1939,7 @@
         false,
         "",
         false,
-        "Verify Attio payment / renewal amount",
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility",
         false
       ],
       [
@@ -1920,7 +1955,7 @@
         false,
         "",
         false,
-        "Pay Dad for swim lessons and membership",
+        "Set up Claude workflow for Friday: slides + website aesthetics",
         false
       ],
       [
@@ -1936,7 +1971,7 @@
         false,
         "",
         false,
-        "Order more business cards and change title to founder",
+        "Weekly review \u2014 system health, M&A activities, budget",
         false
       ],
       [
@@ -1952,7 +1987,7 @@
         false,
         "",
         false,
-        "",
+        "Check NYC Housing Connect for new Manhattan lotteries",
         false
       ],
       [
@@ -1968,7 +2003,7 @@
         false,
         "",
         false,
-        "",
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
         false
       ],
       [

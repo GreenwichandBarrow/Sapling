@@ -124,7 +124,7 @@ The daily 8:20am scan catches overnight and morning-skill failures, but a job th
 
 ## When triggered from health-monitor RED bridge
 
-v1.2 adds a second trigger path: `scripts/health-monitor-red-bridge.sh` reads health-monitor's weekly markdown artifact (`brain/trackers/health/{TODAY}-health.md`) and fires this prompt **once per RED row** in the standard health tables. RED-only — yellow rows stay informational. The Trend table is filtered out (it cites historical RED states for resolved items).
+Legacy/opt-in path only as of 2026-08-07: `scripts/health-monitor-red-bridge.sh` reads health-monitor's weekly markdown artifact (`brain/trackers/health/{TODAY}-health.md`) and fires this prompt **once per RED row** in the standard health tables only when `HEALTH_MONITOR_SLACK_BRIDGE=1`. By default, health-monitor RED findings do not come here and do not post Slack; they stay in the health report, dashboard, and Good Morning. RED-only — yellow rows stay informational. The Trend table is filtered out (it cites historical RED states for resolved items).
 
 When the triggering path is the bridge instead of a direct on-failure spawn, `FAILED_LOG_FILE` is **not** set. Instead, these env vars are populated:
 

@@ -6,14 +6,14 @@ call_id: "4316ba7f-d9ba-4b2a-9e77-8fd8730659bc"
 source: fireflies
 classification_type: partner
 people:
-  - "[[entities/oweazim,-kanayo]]"
+  - "[[entities/kanayo-oweazim]]"
   - "[[entities/kaycschneider]]"
 companies: []
 tags:
   - date/2025-05-13
   - call
   - source/fireflies
-  - person/oweazim,-kanayo
+  - person/kanayo-oweazim
   - person/kaycschneider
 ---
 

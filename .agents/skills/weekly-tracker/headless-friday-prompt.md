@@ -8,7 +8,7 @@ You are running the `weekly-tracker` skill non-interactively under the Codex/sys
 2. **Define the week** per Step 1: today is the run date; week-ending = most recent Friday. If today is Friday, week-ending = today.
 3. **Spawn all 6 sub-agents in parallel** per Step 2 (Gmail, Calendar/Meetings, Attio, Vault Activity, Tools, Apollo + Outreach Channels).
 4. **Aggregate + calculate** per Step 3.
-5. **Write to Google Sheet** per Step 4 — all 4 tabs (`Weekly Topline`, `Weekly Detail`, `Quarterly Summary`, `Apollo Credit Tracker`). The new column must use header format `Week ending M/D/YY` matching prior columns. THIS IS THE MOST FAILURE-PRONE STEP — verify each `gog sheets update` call returned success before proceeding.
+5. **Write to Google Sheet** per Step 4 — all 4 tabs (`Weekly Topline`, `Weekly Detail`, `Quarterly Summary`, `Linkt Credit Tracker`). The new column must use header format `Week ending M/D/YY` matching prior columns. THIS IS THE MOST FAILURE-PRONE STEP — verify each `gog sheets update` call returned success before proceeding.
 6. **Save vault snapshot** per Step 4.5 at `brain/trackers/weekly/{YYYY-MM-DD}-weekly-tracker.md` where the date is week-ending.
 7. **Save Drive snapshot** per Step 4.6.
 8. **Run internal validation hook** per Step 5 — the existing PreToolUse hook at `.codex/hooks/router/handlers/weekly_tracker_validation.py` blocks Slack on missing artifacts.

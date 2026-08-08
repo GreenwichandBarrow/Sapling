@@ -139,6 +139,7 @@ For each signal, extract the underlying company/listing name first. If there is 
 **Stale Entry Detection:**
 - YELLOW: Entry in same stage > 14 days with no email or calendar activity
 - RED: Entry in same stage > 21 days with no activity
+- Text-first exception: if the company/person entity, pipeline note, or Kay's latest session context says the live channel is text/phone and the owner lacks or does not use email, do NOT mark RED solely because Gmail/calendar are quiet. Surface as YELLOW `manual text-status check needed` unless Kay has already provided a current text update in the same day/week context.
 
 **Outreach Deliverability:**
 - Bounce rate: Count bounced emails over 7 days vs total sent. YELLOW at 2%, RED at 3%.
@@ -168,19 +169,27 @@ source /home/ubuntu/projects/Sapling/scripts/op-env.sh
 python3 scripts/backfill_vault_entities_from_attio.py
 ```
 
-Then count normalized unique missing entity slugs. Normalize before counting aliases; do not count each display-text variant as a separate orphan.
+Then count normalized unique missing entity slugs. Normalize before counting aliases; do not count each display-text variant as a separate orphan. Exclude historical health reports, rollback snapshots, and template/example placeholders; those are not live relationship data and should not create Slack red alerts. Only valid entity slugs count as real orphan candidates.
 ```bash
 python3 - <<'PY'
 from pathlib import Path
 import re
 brain = Path('brain')
 pattern = re.compile(r'\[\[entities/([^\]\|#]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]')
+valid_slug = re.compile(r'^[a-z0-9]+(?:-[a-z0-9]+)*$')
 missing = set()
 for path in brain.rglob('*.md'):
+    rel = path.relative_to(brain)
+    if rel.parts[:2] == ('trackers', 'health'):
+        continue
+    if rel.parts[:2] == ('context', 'rollback-snapshots'):
+        continue
     text = path.read_text(errors='ignore')
     for match in pattern.finditer(text):
         slug = match.group(1).strip().rstrip('\\')
-        if slug and not (brain / 'entities' / f'{slug}.md').exists():
+        if not valid_slug.fullmatch(slug):
+            continue
+        if not (brain / 'entities' / f'{slug}.md').exists():
             missing.add(slug)
 for slug in sorted(missing):
     print(f'MISSING: {slug}')
@@ -219,7 +228,7 @@ Agent 4: Data Integrity (background)
 Merge all sub-agent reports. Calculate overall system status:
 - **ALL GREEN** → system healthy
 - **Any YELLOW** → warning, include in dashboard
-- **Any RED** → alert, Slack notification required
+- **Any RED** → visible in health report, dashboard, and Good Morning. Do not send Slack for health-monitor findings unless Kay explicitly re-enables health Slack alerts.
 
 ### Step 3: Write dashboard to vault
 Save to `brain/trackers/health/{YYYY-MM-DD}-health.md`:
@@ -277,7 +286,17 @@ If a prior health report exists, compare:
 - REDs that were fixed (acknowledge)
 - Persistent YELLOWs becoming RED (flag degradation)
 
-### Step 5: Notify (only if YELLOW or RED)
+### Step 5: Notify
+
+As of 2026-08-07, Kay does not want Slack messages for health-monitor YELLOW/RED findings because Slack reads as urgent and false positives create noise. Keep health monitoring active, but route findings to:
+
+- `brain/trackers/health/{date}-health.md`
+- dashboard System Health
+- Good Morning System Health / broken-system section when Kay needs to know
+
+Do not post health-monitor status to `#operations` unless Kay explicitly re-enables `HEALTH_MONITOR_SLACK_BRIDGE=1` or asks for a one-off Slack alert.
+
+Legacy Slack payload, now opt-in only:
 ```bash
 curl -s -X POST "$SLACK_WEBHOOK_OPERATIONS" \
   -H "Content-Type: application/json" \
@@ -308,7 +327,7 @@ If ALL GREEN, no Slack notification. Silence = healthy.
 - [ ] All 4 sub-agents returned results (no silent failures)
 - [ ] Dashboard written to `brain/trackers/health/{date}-health.md`
 - [ ] Every RED has a specific action item
-- [ ] Slack notification sent if any YELLOW or RED
+- [ ] No Slack notification for health-monitor YELLOW or RED findings unless Kay explicitly re-enabled it
 - [ ] No Slack notification if all GREEN
 - [ ] Trend comparison against prior report (if exists)
 </success_criteria>

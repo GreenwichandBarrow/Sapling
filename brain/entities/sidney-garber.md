@@ -25,3 +25,4 @@ tags:
 
 ## Key Context
 - Added to Active Deals at Financials Received on 2026-07-14.
+- 2026-08-07: Brooke / Sidney Garber communication is text-first; Kay does not believe the owner has an email address. Do not treat absence of Gmail activity as proof that the deal is stale without asking for manual text-status context.

@@ -33,6 +33,7 @@ from pages import (  # noqa: E402
     deal_aggregator,
     deal_pipeline,
     email_orchestration,
+    good_morning_brief,
     infrastructure,
     ma_analytics,
 )
@@ -58,6 +59,7 @@ def _inject_css() -> None:
 
 _PAGE_RENDERERS = {
     "dashboard": (dashboard_landing.render, "Dashboard"),
+    "good-morning-brief": (good_morning_brief.render, "Today's Good Morning Brief"),
     "deal-aggregator": (deal_aggregator.render, "Deal Aggregator"),
     "email-orchestration": (email_orchestration.render, "Email Orchestration"),
     "deal-pipeline": (deal_pipeline.render, "Pipeline"),

@@ -1,0 +1,696 @@
+{
+  "verb": "distribute-week",
+  "timestamp": "20260807-085949",
+  "sheet_id": "1DcwtZYMqA3OMDeQAsLsS9szIWScz22qVCO7jrfHpvww",
+  "ranges": {
+    "'Fri'!A1:E78": [
+      [
+        "FRIDAY \u00b7 Aug 7"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "Breakfast: latte, then protein probiotic shake",
+        false,
+        "Urolithin A"
+      ],
+      [
+        false,
+        "Lunch: yogurt/cottage cheese parfait",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Snack: apple + peanut butter/cheese",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Week'!A1:O38": [
+      [
+        "WEEK OF Aug 2-8"
+      ],
+      [],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [],
+      [
+        "",
+        "SUNDAY \u00b7 Aug 2",
+        "",
+        "MONDAY \u00b7 Aug 3",
+        "",
+        "TUESDAY \u00b7 Aug 4",
+        "",
+        "WEDNESDAY \u00b7 Aug 5",
+        "",
+        "THURSDAY \u00b7 Aug 6",
+        "",
+        "FRIDAY \u00b7 Aug 7",
+        "",
+        "SATURDAY \u00b7 Aug 8"
+      ],
+      [],
+      [
+        "",
+        false,
+        "Add Kay food staples to Sunday grocery run",
+        false,
+        "Call IRS to confirm Form 8822-B address update",
+        false,
+        "Pull Megan pre-LOI prep meeting notes",
+        false,
+        "Prepare high-level seller data ask draft",
+        false,
+        "Narrow/edit must-have diligence questions to top 5",
+        false,
+        "Take truck for oil change",
+        false,
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
+      ],
+      [
+        "",
+        false,
+        "Draft/schedule Greg thank-you and insurance contacts follow-up",
+        false,
+        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte",
+        false,
+        "Send Emily 504",
+        false,
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
+        false,
+        "",
+        false,
+        "Scan IRS docs at FedEx",
+        false
+      ],
+      [
+        "",
+        false,
+        "Create weekly schedule",
+        false,
+        "Process payroll",
+        false,
+        "",
+        false,
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
+        false,
+        "",
+        false,
+        "Call IRS/government to confirm address change",
+        false
+      ],
+      [
+        "",
+        false,
+        "Confirm LiveOak payroll transfer coverage",
+        false,
+        "Process conference registrations",
+        false,
+        "",
+        false,
+        "Niche intel review",
+        false,
+        "",
+        false,
+        "Pay rent",
+        false
+      ],
+      [
+        "",
+        false,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Follow up with Sarah about Monday meeting",
+        false
+      ],
+      [
+        "",
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Book afterschool for Tuesday and Wednesday for the kids",
+        false
+      ],
+      [
+        "",
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Call Jesse at DUSC",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Sign up Kaiden for RSM",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Create project for French passports",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Set up Claude workflow for Friday: slides + website aesthetics",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Check NYC Housing Connect for new Manhattan lotteries",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [],
+      [
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot"
+      ]
+    ]
+  }
+}

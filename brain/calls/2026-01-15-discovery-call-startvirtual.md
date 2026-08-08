@@ -6,13 +6,13 @@ call_id: "8e83be4a-a780-48ea-90d3-42ee0fbd39ec"
 source: fireflies
 classification_type: partner
 people:
-  - "[[entities/jorge-(start-virtual)]]"
+  - "[[entities/jorge-start-virtual]]"
 companies: []
 tags:
   - date/2026-01-15
   - call
   - source/fireflies
-  - person/jorge-(start-virtual)
+  - person/jorge-start-virtual
 ---
 
 # Discovery Call  <> StartVirtual

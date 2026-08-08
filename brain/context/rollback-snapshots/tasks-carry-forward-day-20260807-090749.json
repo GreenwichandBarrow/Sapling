@@ -1,60 +1,12 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260723-101418",
-  "sheet_id": "1QIpyr0hMR940-0fyfUIKV7xs4A-XcrDg06-8rXL273I",
+  "timestamp": "20260807-090749",
+  "sheet_id": "1DcwtZYMqA3OMDeQAsLsS9szIWScz22qVCO7jrfHpvww",
   "ranges": {
-    "'Wed'!A17:E66": [
-      [
-        true,
-        "Library block 10:00-2:30: write What We Need to Believe page"
-      ],
+    "'Sun'!A17:E66": [
       [
         false,
-        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue"
-      ],
-      [
-        false,
-        "Start holdco vision + infrastructure adjacency map"
-      ],
-      [
-        false,
-        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options"
-      ],
-      [
-        false,
-        "Niche intel review"
-      ],
-      [
-        false,
-        "Start growth levers for jewelry brand"
-      ],
-      [
-        false,
-        "Prepare high-level seller data ask draft"
-      ],
-      [
-        false,
-        "Pull Megan pre-LOI prep meeting notes"
-      ],
-      [
-        false,
-        "Start company analysis from public info + competitive analysis"
-      ],
-      [
-        false,
-        "Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options"
-      ],
-      [
-        false,
-        "Call IRS to confirm Form 8822-B address update"
-      ],
-      [
-        false,
-        "Process conference registrations"
-      ],
-      [
-        false,
-        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte"
+        "Add Kay food staples to Sunday grocery run"
       ],
       [
         false,
@@ -62,11 +14,50 @@
       ],
       [
         false,
-        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
+        "Confirm LiveOak payroll transfer coverage"
       ],
       [
         false,
         "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
+      ],
+      [
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
+      ],
+      [
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
+      ],
+      [
+        false,
+        "Create weekly schedule"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
       ],
       [
         false
@@ -171,54 +162,66 @@
         false
       ]
     ],
-    "'Thu'!A17:E66": [
+    "'Fri'!A17:E66": [
       [
         false,
-        "Library block 10:00-2:30: build potential offer structures and transition/options framing"
-      ],
-      [
-        false,
-        "Narrow/edit must-have diligence questions to top 5"
-      ],
-      [
-        false
+        "Take truck for oil change"
       ],
       [
         false,
-        "Fix Kaiden's iPad screen"
+        "Scan IRS docs at FedEx"
       ],
       [
-        false
+        false,
+        "Call IRS/government to confirm address change"
       ],
       [
-        false
+        false,
+        "Pay rent"
       ],
       [
-        false
+        false,
+        "Follow up with Sarah about Monday meeting"
       ],
       [
-        false
+        false,
+        "Book afterschool for Tuesday and Wednesday for the kids"
       ],
       [
-        false
+        false,
+        "Call Jesse at DUSC"
       ],
       [
-        false
+        false,
+        "Sign up Kaiden for RSM"
       ],
       [
-        false
+        false,
+        "Create project for French passports"
       ],
       [
-        false
+        false,
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark"
       ],
       [
-        false
+        false,
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility"
       ],
       [
-        false
+        false,
+        "Set up Claude workflow for Friday: slides + website aesthetics"
       ],
       [
-        false
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget"
+      ],
+      [
+        false,
+        "Check NYC Housing Connect for new Manhattan lotteries"
+      ],
+      [
+        false,
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
       ],
       [
         false

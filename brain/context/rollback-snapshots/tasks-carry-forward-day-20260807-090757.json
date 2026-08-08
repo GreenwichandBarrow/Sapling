@@ -1,28 +1,16 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260724-134010",
-  "sheet_id": "1QIpyr0hMR940-0fyfUIKV7xs4A-XcrDg06-8rXL273I",
+  "timestamp": "20260807-090757",
+  "sheet_id": "1DcwtZYMqA3OMDeQAsLsS9szIWScz22qVCO7jrfHpvww",
   "ranges": {
-    "'Thu'!A17:E66": [
-      [
-        true,
-        "Library block 10:00-2:30: build potential offer structures and transition/options framing"
-      ],
+    "'Wed'!A17:E66": [
       [
         false,
-        "Narrow/edit must-have diligence questions to top 5"
+        "Prepare high-level seller data ask draft"
       ],
       [
         false,
         "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue"
-      ],
-      [
-        true,
-        "Fix Kaiden's iPad screen"
-      ],
-      [
-        false,
-        "Start holdco vision + infrastructure adjacency map"
       ],
       [
         false,
@@ -33,48 +21,46 @@
         "Niche intel review"
       ],
       [
-        false,
-        "Start growth levers for jewelry brand"
+        false
       ],
       [
-        false,
-        "Prepare high-level seller data ask draft"
+        false
       ],
       [
-        false,
-        "Pull Megan pre-LOI prep meeting notes"
+        false
       ],
       [
-        false,
-        "Start company analysis from public info + competitive analysis"
+        false
       ],
       [
-        true,
-        "Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options"
+        false
       ],
       [
-        false,
-        "Call IRS to confirm Form 8822-B address update"
+        false
       ],
       [
-        false,
-        "Process conference registrations"
+        false
       ],
       [
-        false,
-        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte"
+        false
       ],
       [
-        false,
-        "Draft/schedule Greg thank-you and insurance contacts follow-up"
+        false
       ],
       [
-        false,
-        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
+        false
       ],
       [
-        false,
-        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
       ],
       [
         false
@@ -176,15 +162,51 @@
     "'Fri'!A17:E66": [
       [
         false,
+        "Take truck for oil change"
+      ],
+      [
+        false,
+        "Scan IRS docs at FedEx"
+      ],
+      [
+        false,
+        "Call IRS/government to confirm address change"
+      ],
+      [
+        false,
+        "Pay rent"
+      ],
+      [
+        false,
+        "Follow up with Sarah about Monday meeting"
+      ],
+      [
+        false,
+        "Book afterschool for Tuesday and Wednesday for the kids"
+      ],
+      [
+        false,
+        "Call Jesse at DUSC"
+      ],
+      [
+        false,
+        "Sign up Kaiden for RSM"
+      ],
+      [
+        false,
+        "Create project for French passports"
+      ],
+      [
+        false,
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark"
+      ],
+      [
+        false,
         "Review website direction: light lookbook-style G&B page for seller/investor credibility"
       ],
       [
         false,
         "Set up Claude workflow for Friday: slides + website aesthetics"
-      ],
-      [
-        false,
-        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
       ],
       [
         false,
@@ -196,64 +218,47 @@
       ],
       [
         false,
-        "Identify first nonprofit activation requirement for 501(c)(3) activity mark"
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
       ],
       [
-        false
+        false,
+        "Add Kay food staples to Sunday grocery run"
       ],
       [
-        false
+        false,
+        "Draft/schedule Greg thank-you and insurance contacts follow-up"
       ],
       [
-        false
+        false,
+        "Confirm LiveOak payroll transfer coverage"
       ],
       [
-        false
+        false,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
       ],
       [
-        false
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
       ],
       [
-        false
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
       ],
       [
-        false
+        false,
+        "Create weekly schedule"
       ],
       [
-        false
+        false,
+        "Call IRS to confirm Form 8822-B address update"
       ],
       [
-        false
+        false,
+        "Pull Megan pre-LOI prep meeting notes"
       ],
       [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
+        false,
+        "Send Emily 504"
       ],
       [
         false

@@ -256,6 +256,8 @@ No emails were sent.
 ```
 
 Presentation rules:
+- Write the brief in Kay's working style: direct, practical, plain-spoken, and close to her language. Prefer phrases like `what changed`, `must-win`, `park / ignore today`, `what needs to go out`, `what can wait`, `where this belongs`, and `does this need action?`. Avoid consultant-y polish, generic productivity coaching, and technical/internal wording unless Kay asks for it.
+- Every surfaced item that Kay may respond to must be numbered. Numbering should continue across the whole brief and should not reset by section. Section headings stay unnumbered; `N/A` lines can be unnumbered when there is truly nothing to decide.
 - Answer these questions explicitly: what changed since yesterday, today's must-win outcome, what should be ignored or parked, what belongs in Outreach Work, what belongs in Relationship / Call Window, what belongs in Strategy / Research, and what should wait for 8:30 Decision Review.
 - Preserve the underlying intelligence sources and checks: Email Orchestration, Active Pipeline, Deal Aggregator, Schedule / Meeting Briefs, Week Schedule / Task Manager, Post-Call Action Items, Day-Triggered Weekly Skills, and System Health.
 - Map each surfaced item into the work block where Kay should decide or act on it. Do not keep legacy buckets as the main visible structure unless Kay asks for diagnostic detail.

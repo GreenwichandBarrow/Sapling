@@ -129,6 +129,7 @@ Plus: **Deal Aggregator Expansion** (Gantt, 12 weeks from 2026-05-11, G&B sage).
 - `build-week` reads these rows directly from `To Do` every Sunday and stamps each onto its day (collision-refuse: explicit slot pins, blank auto-picks, conflicts log+skip). `--skip-recurring` bypasses; `--dry-run` previews.
 - Edit path: `recurring-add --day Mon --task "..." --type Work --project "G&B" [--slot N] [--notes "..."]` (writes a `To Do` row, Status `On-going`, Horizon `Weekly Recurring Mon`) / `recurring-remove --row N` (clears the `To Do` row; refuses non-recurring rows). Or set the `Horizon` dropdown directly on any `To Do` row in the Sheet UI. Both verbs snapshot + trace (decision-content — compounds on every future Sunday).
 - Known weekly recurring G&B items: Sun — Create weekly schedule, Mon — Process payroll, Mon — Process conference registrations, Wed — Niche intel review, Fri — Weekly review (system health + M&A + budget).
+- Weekly rhythm scaffold (codified 2026-08-07): Monday-Thursday recurring rows can be broad working blocks — Outreach Work, Relationship / Call Window, Strategy / Research, and 8:30 Decision Review. Friday recurring rows can be Personal Finance / Wealth Monitor, Nonprofit Operations, Family Admin, Systems / Website / G&B Housekeeping, and 8:30 Decision Review. These are containers/prompts for the Week tab; actual tasks slot underneath them. `Review Good Morning Brief` is not a default recurring To Do item. `Weekly Review + Next Week Setup` becomes Friday recurring only once the post-9/10 Friday schedule starts.
 
 ## Open items
 

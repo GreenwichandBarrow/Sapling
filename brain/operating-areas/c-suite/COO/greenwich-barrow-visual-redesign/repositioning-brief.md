@@ -6,7 +6,7 @@ Rebuild the Greenwich & Barrow website around the firm’s long-duration holding
 
 ## Core Positioning Line
 
-A long-term home for enduring businesses built on heritage, quality, and community.
+A trusted home for your business, rooted in heritage, community, and quality.
 
 ## Design Direction
 

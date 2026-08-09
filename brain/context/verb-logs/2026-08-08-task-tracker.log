@@ -1,0 +1,30 @@
+
+[2026-08-08T10:10:15.869622] carry-forward-day — fri-to-sat
+  - moved: 22
+  - source: Fri
+  - destination: Sat
+  - source packed: {'completed': 9, 'active': 0, 'blank': 41, 'rows': '17:66'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260808-101011.json
+  
+  - Fri slot 1 → Sat slot 2: Systems / Dashboard: add a Today’s Good Morning Brief page/link to the dashboard.
+  - Fri slot 3 → Sat slot 3: Call IRS/government to confirm address change
+  - Fri slot 9 → Sat slot 4: Create project for French passports
+  - Fri slot 10 → Sat slot 5: Identify first nonprofit activation requirement for 501(c)(3) activity mark
+  - Fri slot 11 → Sat slot 6: Review website direction: light lookbook-style G&B page for seller/investor credibility
+  - Fri slot 12 → Sat slot 7: Set up Claude workflow for Friday: slides + website aesthetics
+  - Fri slot 13 → Sat slot 8: Weekly review — system health, M&A activities, budget
+  - Fri slot 14 → Sat slot 9: Check NYC Housing Connect for new Manhattan lotteries
+  - Fri slot 15 → Sat slot 10: Friday internal/admin review: family admin, finance/admin, website/list cleanup only
+  - Fri slot 16 → Sat slot 11: Draft/schedule Greg thank-you and insurance contacts follow-up
+  - Fri slot 17 → Sat slot 12: Call IRS to confirm Form 8822-B address update
+  - Fri slot 18 → Sat slot 13: Pull Megan pre-LOI prep meeting notes
+  - Fri slot 20 → Sat slot 14: Prepare high-level seller data ask draft
+  - Fri slot 21 → Sat slot 15: Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue
+  - Fri slot 22 → Sat slot 16: Draft seller-call prep framework: transition priorities, questions, and deal-structure options
+  - Fri slot 24 → Sat slot 17: Narrow/edit must-have diligence questions to top 5
+  - Fri slot 25 → Sat slot 18: Systems / Sourcing: set up better Axial target discovery/filtering.
+  - Fri slot 27 → Sat slot 19: Nonprofit Operations: create next-step game plan for W2 setup and nonprofit build-out.
+  - Fri slot 28 → Sat slot 20: Systems / G&B Housekeeping: clean up the Slack/system failures from this morning.
+  - Fri slot 29 → Sat slot 21: Weekend prep: prepare for a possible Sidney Garber meeting next week if he responds.
+  - Fri slot 30 → Sat slot 22: Renew child working permit
+  - Fri slot 31 → Sat slot 23: Renew passports

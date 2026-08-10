@@ -1,15 +1,13 @@
 {
-  "verb": "distribute-week",
-  "timestamp": "20260712-152745",
-  "sheet_id": "12rN-RtkEhfcApIo2Ep7J41Nq1KxR7TgziViNwy7k4HI",
+  "verb": "daily-focus-section-layout",
+  "timestamp": "20260809-131851",
+  "sheet_id": "1U1GN9xcg18S-o4mA-b3QZ3Sr-xUvhHDn2G23pLI1rmA",
   "ranges": {
-    "'Sun'!A1:E78": [
+    "'Sun'!A1:F90": [
       [
-        "SUNDAY \u00b7 Jul 12"
+        "SUNDAY \u00b7 Aug 9"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -19,32 +17,36 @@
         "SUPPLEMENTAL"
       ],
       [
-        false,
+        true,
         "Sleep 8h",
         false,
         "Matcha cutoff 2p",
-        false
+        false,
+        "Sauna"
       ],
       [
         false,
         "Water + hygiene",
         false,
         "10K steps",
-        false
+        false,
+        "Glutamine"
       ],
       [
-        false,
+        true,
         "Headspace",
         false,
         "Exercise",
-        false
+        false,
+        "Ketones"
       ],
       [
-        false,
+        true,
         "Mobility sequence",
         false,
         "Multivitamin",
-        false
+        false,
+        "Red light"
       ],
       [
         false,
@@ -64,7 +66,9 @@
         false,
         "ACV turmeric tonic",
         false,
-        "Urolithin A"
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
       ],
       [
         false,
@@ -85,6 +89,1579 @@
         "Screen cutoff 9:30p"
       ],
       [],
+      [
+        "DAILY FOCUS"
+      ],
+      [
+        "",
+        "Axial"
+      ],
+      [],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Systems / Sourcing: set up better Axial target discovery/filtering."
+      ],
+      [
+        false,
+        "Weekend prep: prepare for a possible Sidney Garber meeting next week if she responds."
+      ],
+      [
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
+      ],
+      [
+        true,
+        "Create weekly schedule"
+      ],
+      [
+        true,
+        "Confirm LiveOak payroll transfer coverage"
+      ],
+      [
+        false,
+        "Add Kay food staples to Sunday grocery run"
+      ],
+      [
+        false,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
+      ],
+      [
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Mon'!A1:F90": [
+      [
+        "MONDAY \u00b7 Aug 10"
+      ],
+      [],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [
+        "FOCUS",
+        "New niche for DealsX"
+      ],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Reach out to organizer of Art Oct conference"
+      ],
+      [
+        false,
+        "Call IRS to confirm Form 8822-B address update"
+      ],
+      [
+        false,
+        "Send new email outreach on dashboard (3 companies)"
+      ],
+      [
+        false,
+        "Visit store carrying jewelry line to see product and merchandising in person"
+      ],
+      [
+        false,
+        "Process payroll"
+      ],
+      [
+        false,
+        "Process conference registrations"
+      ],
+      [
+        false,
+        "Outreach Work: seller / broker / investor / analyst outreach block"
+      ],
+      [
+        false,
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
+      ],
+      [
+        false,
+        "Strategy / Research: deck, model, thesis, target discovery, niche work"
+      ],
+      [
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward"
+      ],
+      [
+        false,
+        "Draft/schedule Greg thank-you and insurance contacts follow-up"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Tue'!A1:F90": [
+      [
+        "TUESDAY \u00b7 Aug 11"
+      ],
+      [],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [
+        "FOCUS",
+        "Jewelry Deck (Add trunk shows, growth plan)"
+      ],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Pull Megan pre-LOI prep meeting notes"
+      ],
+      [
+        false,
+        "Order more business cards and change title to founder"
+      ],
+      [
+        false,
+        "Email Melissa to assist with BK Growth contact and file folders"
+      ],
+      [
+        false,
+        "Reconnect with Levi on prior art storage path"
+      ],
+      [
+        false,
+        "Circle back with Paul on art storage conversation"
+      ],
+      [
+        false,
+        "Take truck for oil change"
+      ],
+      [
+        false,
+        "Outreach Work: seller / broker / investor / analyst outreach block"
+      ],
+      [
+        false,
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
+      ],
+      [
+        false,
+        "Strategy / Research: deck, model, thesis, target discovery, niche work"
+      ],
+      [
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Wed'!A1:F90": [
+      [
+        "WEDNESDAY \u00b7 Aug 12"
+      ],
+      [],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [
+        "FOCUS",
+        "Website"
+      ],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Prepare high-level seller data ask draft"
+      ],
+      [
+        false,
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue"
+      ],
+      [
+        false,
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility"
+      ],
+      [
+        false,
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options"
+      ],
+      [
+        false,
+        "Niche intel review"
+      ],
+      [
+        false,
+        "Outreach Work: seller / broker / investor / analyst outreach block"
+      ],
+      [
+        false,
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
+      ],
+      [
+        false,
+        "Strategy / Research: deck, model, thesis, target discovery, niche work"
+      ],
+      [
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Thu'!A1:F90": [
+      [
+        "THURSDAY \u00b7 Aug 13"
+      ],
+      [],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [
+        "FOCUS",
+        "Quarterly Update"
+      ],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Narrow/edit must-have diligence questions to top 5"
+      ],
+      [
+        false,
+        "Outreach Work: seller / broker / investor / analyst outreach block"
+      ],
+      [
+        false,
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
+      ],
+      [
+        false,
+        "Strategy / Research: deck, model, thesis, target discovery, niche work"
+      ],
+      [
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Fri'!A1:F90": [
+      [
+        "FRIDAY \u00b7 Aug 14"
+      ],
+      [],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [
+        "FOCUS",
+        "Passport project"
+      ],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Create travel plans for July in Paris/France next year"
+      ],
+      [
+        false,
+        "Look into GLP1"
+      ],
+      [
+        false,
+        "Review Kai Grey Ventures renewal"
+      ],
+      [
+        false,
+        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar"
+      ],
+      [
+        false,
+        "Submit new PSLF form"
+      ],
+      [
+        false,
+        "Create project for French passports"
+      ],
+      [
+        false,
+        "Renew kids' work permits"
+      ],
+      [
+        false,
+        "Renew Kilian's passport"
+      ],
+      [
+        false,
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
+      ],
+      [
+        false,
+        "Pay RSM"
+      ],
+      [
+        false,
+        "Set up Claude workflow for Friday: slides + website aesthetics"
+      ],
+      [
+        false,
+        "Call IRS/government to confirm address change"
+      ],
+      [
+        false,
+        "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan"
+      ],
+      [
+        false,
+        "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning."
+      ],
+      [
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget"
+      ],
+      [
+        false,
+        "Check NYC Housing Connect for new Manhattan lotteries"
+      ],
+      [
+        false,
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
+      ],
+      [
+        false,
+        "Personal Finance / Wealth Monitor"
+      ],
+      [
+        false,
+        "Nonprofit Operations"
+      ],
+      [
+        false,
+        "Family Admin"
+      ],
+      [
+        false,
+        "Systems / Website / G&B Housekeeping"
+      ],
+      [
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        "NOTES"
+      ]
+    ],
+    "'Sat'!A1:F90": [
+      [
+        "SATURDAY \u00b7 Aug 15"
+      ],
+      [],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [
+        "FOCUS"
+      ],
       [
         "\u2713",
         "Task",
@@ -244,1909 +1821,6 @@
       ],
       [
         "NOTES"
-      ]
-    ],
-    "'Mon'!A1:E78": [
-      [
-        "MONDAY \u00b7 Jul 13"
-      ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
-      [],
-      [
-        "HABITS",
-        "",
-        "",
-        "",
-        "SUPPLEMENTAL"
-      ],
-      [
-        false,
-        "Sleep 8h",
-        false,
-        "Matcha cutoff 2p",
-        false
-      ],
-      [
-        false,
-        "Water + hygiene",
-        false,
-        "10K steps",
-        false
-      ],
-      [
-        false,
-        "Headspace",
-        false,
-        "Exercise",
-        false
-      ],
-      [
-        false,
-        "Mobility sequence",
-        false,
-        "Multivitamin",
-        false
-      ],
-      [
-        false,
-        "Journal",
-        false,
-        "Omega-3",
-        false
-      ],
-      [
-        false,
-        "14h fast: 7:30p-9:30a",
-        false,
-        "Curcumin",
-        "GOAL"
-      ],
-      [
-        false,
-        "ACV turmeric tonic",
-        false,
-        "Urolithin A"
-      ],
-      [
-        false,
-        "Protein/probiotic shake",
-        false,
-        "Magnesium"
-      ],
-      [
-        false,
-        "Coffee cutoff 11a",
-        false,
-        "Eating cutoff 7:30p"
-      ],
-      [
-        false,
-        "Lunch yogurt parfait",
-        false,
-        "Screen cutoff 9:30p"
-      ],
-      [],
-      [
-        "\u2713",
-        "Task",
-        "Type",
-        "Project",
-        "Notes"
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        "NOTES"
-      ]
-    ],
-    "'Tue'!A1:E78": [
-      [
-        "TUESDAY \u00b7 Jul 14"
-      ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
-      [],
-      [
-        "HABITS",
-        "",
-        "",
-        "",
-        "SUPPLEMENTAL"
-      ],
-      [
-        false,
-        "Sleep 8h",
-        false,
-        "Matcha cutoff 2p",
-        false
-      ],
-      [
-        false,
-        "Water + hygiene",
-        false,
-        "10K steps",
-        false
-      ],
-      [
-        false,
-        "Headspace",
-        false,
-        "Exercise",
-        false
-      ],
-      [
-        false,
-        "Mobility sequence",
-        false,
-        "Multivitamin",
-        false
-      ],
-      [
-        false,
-        "Journal",
-        false,
-        "Omega-3",
-        false
-      ],
-      [
-        false,
-        "14h fast: 7:30p-9:30a",
-        false,
-        "Curcumin",
-        "GOAL"
-      ],
-      [
-        false,
-        "ACV turmeric tonic",
-        false,
-        "Urolithin A"
-      ],
-      [
-        false,
-        "Protein/probiotic shake",
-        false,
-        "Magnesium"
-      ],
-      [
-        false,
-        "Coffee cutoff 11a",
-        false,
-        "Eating cutoff 7:30p"
-      ],
-      [
-        false,
-        "Lunch yogurt parfait",
-        false,
-        "Screen cutoff 9:30p"
-      ],
-      [],
-      [
-        "\u2713",
-        "Task",
-        "Type",
-        "Project",
-        "Notes"
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        "NOTES"
-      ]
-    ],
-    "'Wed'!A1:E78": [
-      [
-        "WEDNESDAY \u00b7 Jul 15"
-      ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
-      [],
-      [
-        "HABITS",
-        "",
-        "",
-        "",
-        "SUPPLEMENTAL"
-      ],
-      [
-        false,
-        "Sleep 8h",
-        false,
-        "Matcha cutoff 2p",
-        false
-      ],
-      [
-        false,
-        "Water + hygiene",
-        false,
-        "10K steps",
-        false
-      ],
-      [
-        false,
-        "Headspace",
-        false,
-        "Exercise",
-        false
-      ],
-      [
-        false,
-        "Mobility sequence",
-        false,
-        "Multivitamin",
-        false
-      ],
-      [
-        false,
-        "Journal",
-        false,
-        "Omega-3",
-        false
-      ],
-      [
-        false,
-        "14h fast: 7:30p-9:30a",
-        false,
-        "Curcumin",
-        "GOAL"
-      ],
-      [
-        false,
-        "ACV turmeric tonic",
-        false,
-        "Urolithin A"
-      ],
-      [
-        false,
-        "Protein/probiotic shake",
-        false,
-        "Magnesium"
-      ],
-      [
-        false,
-        "Coffee cutoff 11a",
-        false,
-        "Eating cutoff 7:30p"
-      ],
-      [
-        false,
-        "Lunch yogurt parfait",
-        false,
-        "Screen cutoff 9:30p"
-      ],
-      [],
-      [
-        "\u2713",
-        "Task",
-        "Type",
-        "Project",
-        "Notes"
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        "NOTES"
-      ]
-    ],
-    "'Thu'!A1:E78": [
-      [
-        "THURSDAY \u00b7 Jul 16"
-      ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
-      [],
-      [
-        "HABITS",
-        "",
-        "",
-        "",
-        "SUPPLEMENTAL"
-      ],
-      [
-        false,
-        "Sleep 8h",
-        false,
-        "Matcha cutoff 2p",
-        false
-      ],
-      [
-        false,
-        "Water + hygiene",
-        false,
-        "10K steps",
-        false
-      ],
-      [
-        false,
-        "Headspace",
-        false,
-        "Exercise",
-        false
-      ],
-      [
-        false,
-        "Mobility sequence",
-        false,
-        "Multivitamin",
-        false
-      ],
-      [
-        false,
-        "Journal",
-        false,
-        "Omega-3",
-        false
-      ],
-      [
-        false,
-        "14h fast: 7:30p-9:30a",
-        false,
-        "Curcumin",
-        "GOAL"
-      ],
-      [
-        false,
-        "ACV turmeric tonic",
-        false,
-        "Urolithin A"
-      ],
-      [
-        false,
-        "Protein/probiotic shake",
-        false,
-        "Magnesium"
-      ],
-      [
-        false,
-        "Coffee cutoff 11a",
-        false,
-        "Eating cutoff 7:30p"
-      ],
-      [
-        false,
-        "Lunch yogurt parfait",
-        false,
-        "Screen cutoff 9:30p"
-      ],
-      [],
-      [
-        "\u2713",
-        "Task",
-        "Type",
-        "Project",
-        "Notes"
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        "NOTES"
-      ]
-    ],
-    "'Fri'!A1:E78": [
-      [
-        "FRIDAY \u00b7 Jul 17"
-      ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
-      [],
-      [
-        "HABITS",
-        "",
-        "",
-        "",
-        "SUPPLEMENTAL"
-      ],
-      [
-        false,
-        "Sleep 8h",
-        false,
-        "Matcha cutoff 2p",
-        false
-      ],
-      [
-        false,
-        "Water + hygiene",
-        false,
-        "10K steps",
-        false
-      ],
-      [
-        false,
-        "Headspace",
-        false,
-        "Exercise",
-        false
-      ],
-      [
-        false,
-        "Mobility sequence",
-        false,
-        "Multivitamin",
-        false
-      ],
-      [
-        false,
-        "Journal",
-        false,
-        "Omega-3",
-        false
-      ],
-      [
-        false,
-        "14h fast: 7:30p-9:30a",
-        false,
-        "Curcumin",
-        "GOAL"
-      ],
-      [
-        false,
-        "ACV turmeric tonic",
-        false,
-        "Urolithin A"
-      ],
-      [
-        false,
-        "Protein/probiotic shake",
-        false,
-        "Magnesium"
-      ],
-      [
-        false,
-        "Coffee cutoff 11a",
-        false,
-        "Eating cutoff 7:30p"
-      ],
-      [
-        false,
-        "Lunch yogurt parfait",
-        false,
-        "Screen cutoff 9:30p"
-      ],
-      [],
-      [
-        "\u2713",
-        "Task",
-        "Type",
-        "Project",
-        "Notes"
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        "NOTES"
-      ]
-    ],
-    "'Sat'!A1:E78": [
-      [
-        "SATURDAY \u00b7 Jul 18"
-      ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
-      [],
-      [
-        "HABITS",
-        "",
-        "",
-        "",
-        "SUPPLEMENTAL"
-      ],
-      [
-        false,
-        "Sleep 8h",
-        false,
-        "Matcha cutoff 2p",
-        false
-      ],
-      [
-        false,
-        "Water + hygiene",
-        false,
-        "10K steps",
-        false
-      ],
-      [
-        false,
-        "Headspace",
-        false,
-        "Exercise",
-        false
-      ],
-      [
-        false,
-        "Mobility sequence",
-        false,
-        "Multivitamin",
-        false
-      ],
-      [
-        false,
-        "Journal",
-        false,
-        "Omega-3",
-        false
-      ],
-      [
-        false,
-        "14h fast: 7:30p-9:30a",
-        false,
-        "Curcumin",
-        "GOAL"
-      ],
-      [
-        false,
-        "ACV turmeric tonic",
-        false,
-        "Urolithin A"
-      ],
-      [
-        false,
-        "Protein/probiotic shake",
-        false,
-        "Magnesium"
-      ],
-      [
-        false,
-        "Coffee cutoff 11a",
-        false,
-        "Eating cutoff 7:30p"
-      ],
-      [
-        false,
-        "Lunch yogurt parfait",
-        false,
-        "Screen cutoff 9:30p"
-      ],
-      [],
-      [
-        "\u2713",
-        "Task",
-        "Type",
-        "Project",
-        "Notes"
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        "NOTES"
-      ]
-    ],
-    "'Week'!A1:O38": [
-      [
-        "WEEK OF Jul 12-18"
-      ],
-      [],
-      [
-        "DAILY FOCUS / THEME"
-      ],
-      [],
-      [],
-      [
-        "",
-        "SUNDAY \u00b7 Jul 12",
-        "",
-        "MONDAY \u00b7 Jul 13",
-        "",
-        "TUESDAY \u00b7 Jul 14",
-        "",
-        "WEDNESDAY \u00b7 Jul 15",
-        "",
-        "THURSDAY \u00b7 Jul 16",
-        "",
-        "FRIDAY \u00b7 Jul 17",
-        "",
-        "SATURDAY \u00b7 Jul 18"
-      ],
-      [],
-      [
-        "",
-        false,
-        "Create weekly schedule",
-        false,
-        "Text jewelry seller to reconnect",
-        false,
-        "Prepare crisp thesis and owner-intro ask for Tuesday LI broker meeting",
-        false,
-        "Use Wednesday broker call to pressure-test thesis, target areas, and website clarity",
-        false,
-        "Use investor calls to ask what proof/evidence they need behind insurance/storage/luxury infrastructure Deal 1 or LDE path",
-        false,
-        "Weekly review \u2014 system health, M&A activities, budget",
-        false
-      ],
-      [
-        "",
-        false,
-        "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
-        false,
-        "Ask Arthur for coffee or pop by office while local for summer",
-        false,
-        "Pull Megan pre-LOI prep meeting notes",
-        false,
-        "Align analyst in Team TB on 60-day priority stack and list review criteria",
-        false,
-        "Thursday follow-up checkpoint for Monday direct outreach non-responses",
-        false,
-        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
-        false
-      ],
-      [
-        "",
-        false,
-        "Choose weekly Body Reset movement slots",
-        false,
-        "Follow up with Mark from insurtech conference for platform walkthrough and Kim/other intros",
-        false,
-        "Decide whether to register for beauty supply chain conference attendee/exhibitor list",
-        false,
-        "Niche intel review",
-        false,
-        "",
-        false,
-        "Pull contact info and prepare kids modeling submissions to 5 referred agencies",
-        false
-      ],
-      [
-        "",
-        false,
-        "Add Kay food staples to Sunday grocery run",
-        false,
-        "Follow up with Denning for fashion/art/luxury introductions",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Check NYC Housing Connect for new Manhattan lotteries",
-        false
-      ],
-      [
-        "",
-        false,
-        "Confirm LiveOak payroll transfer coverage",
-        false,
-        "Send thank-you to Greg and ask for the insurance owner intro he suggested",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Visit store carrying jewelry line to see product and merchandising in person",
-        false
-      ],
-      [
-        "",
-        false,
-        "Kids allowance: Sunday $10/week + Friday $10/day through Aug",
-        false,
-        "Reconnect with Levi on prior art storage path",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Scope minimum viable G&B website update",
-        false
-      ],
-      [
-        "",
-        false,
-        "North Star for week: convert warm/live paths into seller conversations and financials",
-        false,
-        "Circle back with Paul on art storage conversation",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Identify first nonprofit activation requirement for 501(c)(3) activity mark",
-        false
-      ],
-      [
-        "",
-        false,
-        "Review existing insurance target list against new luxury asset risk criteria",
-        false,
-        "Ask family friend jewelry business owner for market-mapping conversation",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "Review existing art storage target list against luxury asset custody criteria",
-        false,
-        "Process payroll",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Process conference registrations",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Call IRS to confirm Form 8822-B address update",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Follow up: Carlos, Lisa/Peter, Jose",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [],
-      [
-        "",
-        "notes \u00b7 ideas \u00b7 jot",
-        "",
-        "notes \u00b7 ideas \u00b7 jot",
-        "",
-        "notes \u00b7 ideas \u00b7 jot",
-        "",
-        "notes \u00b7 ideas \u00b7 jot",
-        "",
-        "notes \u00b7 ideas \u00b7 jot",
-        "",
-        "notes \u00b7 ideas \u00b7 jot",
-        "",
-        "notes \u00b7 ideas \u00b7 jot"
       ]
     ]
   }

@@ -65,6 +65,7 @@ Memory recall weakens as the session fills. These fire on action triggers, not t
 - **After rotating a credential, verify via `curl` with output suppression BEFORE calling any MCP tool.** Pattern: `curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: Bearer $(cat /tmp/key)" https://api.example.com/...`. 200 = good, then `/mcp` reconnect. MCP error formatters (e.g. attio-mcp) leak Bearer tokens into transcript on 401. (Three rotations on 2026-04-27 from violating this.)
 
 ### Before research / network discovery
+- **Evidence labels before strategic claims:** Only present a claim as true when supported by data, source material, transcript evidence, financials, a verified system record, or an established prior decision. Otherwise label it as **Inference**, **Hypothesis**, or **Opinion / judgment**. Never collapse "strategically adjacent" into "validated Deal 1 fit." (`feedback_evidence_level_claims`)
 - **Prioritize women across intermediary/network/conference research**, especially in male-dominated verticals (pest, equipment, insurance, cleaning, HVAC). Bias silently — don't announce the lens. (`feedback_women_network_priority`)
 - DealsX-channel niches: cold-but-live re-engagement is DealsX's job, never a Kay-Email nudge candidate. (`feedback_cold_relive_insurance_dealsx_channel`)
 

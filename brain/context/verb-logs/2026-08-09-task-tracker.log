@@ -1,0 +1,63 @@
+
+[2026-08-09T10:33:59.830502] schedule-from-todo-days — 2026-08-09
+  - target: Week planning tab
+  - packed To Do: {'ongoing': 33, 'not_completed': 87, 'other_active': 0, 'completed': 141, 'dropped': 62, 'active': 120, 'total': 323}
+  - wrote Week from To Do Day of the Week: {'Sun': 9, 'Mon': 10, 'Tue': 10, 'Wed': 9, 'Thu': 5, 'Fri': 24}
+  - daily tabs cleared/not populated pending Kay approval
+  - skipped: []
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260809-103353.json
+
+[2026-08-09T10:35:49.675213] schedule-from-todo-days — 2026-08-09
+  - target: Week planning tab
+  - packed To Do: {'ongoing': 33, 'not_completed': 85, 'other_active': 0, 'completed': 141, 'dropped': 64, 'active': 118, 'total': 323}
+  - wrote Week from To Do Day of the Week: {'Sun': 9, 'Mon': 10, 'Tue': 10, 'Wed': 9, 'Thu': 5, 'Fri': 22}
+  - daily tabs cleared/not populated pending Kay approval
+  - skipped: []
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260809-103543.json
+
+[2026-08-09T10:42:34.699999] distribute-week — 2026-08-09
+  - week (Sunday boundary): 2026-08-09 .. 2026-08-15
+  - fanned Week plan → day tabs: {'Sun': 8, 'Mon': 10, 'Tue': 10, 'Wed': 9, 'Thu': 5, 'Fri': 21, 'Sat': 0}
+  - forced over collisions: False
+  - collisions at run: none
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-distribute-week-20260809-104232.json
+
+[2026-08-09T10:43:06.907323] reformat — rules-reapplied
+  - applied 79 conditional-format rules
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-reformat-20260809-104301.json
+  - pack-to-top: 2 day tab(s) compacted
+  - pack-to-top: 0 Week-tab day-block(s) compacted
+
+[2026-08-09T10:44:05.970421] distribute-week — 2026-08-09
+  - week (Sunday boundary): 2026-08-09 .. 2026-08-15
+  - fanned Week plan → day tabs: {'Fri': 21}
+  - forced over collisions: True
+  - collisions at run: ['Fri slot 9: day tab has "Pay RSM" but Week plan is empty there', 'Fri slot 10: day tab has "Set up Claude workflow for Friday: slides + website aesthetics" ≠ Week plan "Pay RSM"', 'Fri slot 11: day tab has "Call IRS/government to confirm address change" ≠ Week plan "Set up Claude workflow for Friday: slides + website aesthetics"', 'Fri slot 12: day tab has "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan" ≠ Week plan "Call IRS/government to confirm address change"', 'Fri slot 13: day tab has "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning." ≠ Week plan "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan"', 'Fri slot 14: day tab has "Weekly review — system health, M&A activities, budget" ≠ Week plan "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning."']
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-distribute-week-20260809-104405.json
+
+[2026-08-09T10:45:27.052803] reformat — rules-reapplied
+  - applied 79 conditional-format rules
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-reformat-20260809-104521.json
+  - pack-to-top: 2 day tab(s) compacted
+  - pack-to-top: 0 Week-tab day-block(s) compacted
+
+[2026-08-09T10:46:36.035256] schedule-from-todo-days — 2026-08-09
+  - target: Week planning tab
+  - packed To Do: {'ongoing': 33, 'not_completed': 85, 'other_active': 0, 'completed': 141, 'dropped': 64, 'active': 118, 'total': 323}
+  - wrote Week from To Do Day of the Week: {'Sun': 9, 'Mon': 10, 'Tue': 10, 'Wed': 9, 'Thu': 5, 'Fri': 22}
+  - daily tabs cleared/not populated pending Kay approval
+  - skipped: []
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260809-104630.json
+
+[2026-08-09T10:46:42.267801] distribute-week — 2026-08-09
+  - week (Sunday boundary): 2026-08-09 .. 2026-08-15
+  - fanned Week plan → day tabs: {'Sun': 9, 'Mon': 10, 'Tue': 10, 'Wed': 9, 'Thu': 5, 'Fri': 22, 'Sat': 0}
+  - forced over collisions: False
+  - collisions at run: none
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-distribute-week-20260809-104639.json
+
+[2026-08-09T10:46:47.476966] reformat — rules-reapplied
+  - applied 79 conditional-format rules
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-reformat-20260809-104643.json
+  - pack-to-top: 0 day tab(s) compacted
+  - pack-to-top: 0 Week-tab day-block(s) compacted

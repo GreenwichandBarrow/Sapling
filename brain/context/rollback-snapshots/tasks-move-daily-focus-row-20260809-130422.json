@@ -1,0 +1,700 @@
+{
+  "verb": "move-daily-focus-row",
+  "timestamp": "20260809-130422",
+  "sheet_id": "1EaznKNTweSVRxbXpoEA2CyXLD8P96mWVU0K38-5pMxc",
+  "ranges": {
+    "'Sun'!A1:F17": [
+      [
+        "SUNDAY"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "Breakfast: latte, then protein probiotic shake",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Lunch: yogurt/cottage cheese parfait",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Snack: apple + peanut butter/cheese",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ]
+    ],
+    "'Mon'!A1:F17": [
+      [
+        "MONDAY"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "Breakfast: latte, then protein probiotic shake",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Lunch: yogurt/cottage cheese parfait",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Snack: apple + peanut butter/cheese",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ]
+    ],
+    "'Tue'!A1:F17": [
+      [
+        "TUESDAY"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "Breakfast: latte, then protein probiotic shake",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Lunch: yogurt/cottage cheese parfait",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Snack: apple + peanut butter/cheese",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ]
+    ],
+    "'Wed'!A1:F17": [
+      [
+        "WEDNESDAY"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "Breakfast: latte, then protein probiotic shake",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Lunch: yogurt/cottage cheese parfait",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Snack: apple + peanut butter/cheese",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ]
+    ],
+    "'Thu'!A1:F17": [
+      [
+        "THURSDAY"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "Breakfast: latte, then protein probiotic shake",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Lunch: yogurt/cottage cheese parfait",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Snack: apple + peanut butter/cheese",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ]
+    ],
+    "'Fri'!A1:F17": [
+      [
+        "FRIDAY"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "Breakfast: latte, then protein probiotic shake",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Lunch: yogurt/cottage cheese parfait",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Snack: apple + peanut butter/cheese",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ]
+    ],
+    "'Sat'!A1:F17": [
+      [
+        "SATURDAY"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "Breakfast: latte, then protein probiotic shake",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Lunch: yogurt/cottage cheese parfait",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Snack: apple + peanut butter/cheese",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ]
+    ]
+  }
+}

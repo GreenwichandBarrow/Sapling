@@ -7,14 +7,17 @@ sage palette.
 
 Per day tab (structurally identical, only the title row differs):
 
-  Row 1     merged A1:E1 title "SUNDAY · May 17" — 20pt bold, sage-dark fill
+  Row 1     merged A1:F1 title "SUNDAY · May 17" — 20pt bold, sage-dark fill
   Row 4     "HABITS" header
-  Rows 5-13 9 habit rows: A=native checkbox, B:E merged label, 14pt
-  Row 15    column headers ✓ | Task | Type | Project | Notes — 12pt bold
-  Rows 17-41 25 priority slots: A=native checkbox, B=Task 17pt,
+  Rows 5-14 10 habit rows: A/B primary, C/D supplemental, E/F secondary/goal
+  Rows 15,18-19  visual breathing room between habits/focus/tasks
+  Row 16    DAILY FOCUS label
+  Row 17    daily focus value
+  Row 20    column headers ✓ | Task | Type | Project | Notes — 12pt bold
+  Rows 21-70 50 priority slots: A=native checkbox, B=Task 17pt,
             C=Type dropdown, D=Project dropdown, E=Notes; row height ~34px
-  Row 42    "NOTES" header
-  Rows 43-50 free-notes block, A:E merged per row
+  Row 71    "NOTES" header
+  Rows 72-79 free-notes block, A:F merged per row
 
 Idempotent: re-running repairs layout/formatting without destroying slot
 content (only formatting + structural cells are (re)written; existing
@@ -66,13 +69,15 @@ DAY_TITLE_ROW = 1
 DAY_HABITS_HEADER_ROW = 4
 DAY_HABIT_FIRST_ROW = 5
 DAY_HABIT_LAST_ROW = 14
-DAY_COL_HEADER_ROW = 16
-DAY_SLOT_FIRST_ROW = 17
-DAY_SLOT_LAST_ROW = 66
-DAY_NOTES_HEADER_ROW = 67
-DAY_NOTES_FIRST_ROW = 68
-DAY_NOTES_LAST_ROW = 75
-DAY_GRID_ROWS = 78
+DAY_FOCUS_LABEL_ROW = 16
+DAY_FOCUS_VALUE_ROW = 17
+DAY_COL_HEADER_ROW = 20
+DAY_SLOT_FIRST_ROW = 21
+DAY_SLOT_LAST_ROW = 70
+DAY_NOTES_HEADER_ROW = 71
+DAY_NOTES_FIRST_ROW = 72
+DAY_NOTES_LAST_ROW = 79
+DAY_GRID_ROWS = 82
 DAY_GRID_COLS = 12
 TOP_PRIORITY_SLOT_COUNT = 3
 
@@ -265,11 +270,14 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
         "fields": "userEnteredValue,userEnteredFormat",
         "start": {"sheetId": sid, "rowIndex": 0, "columnIndex": 0}}})
 
-    # ---- Row 2: daily focus/theme label ----
-    V.append({"updateCells": {
-        "rows": [{"values": [_txt("DAILY FOCUS / THEME", bold=True, size=10, fg=SAGE_DARK)]}],
-        "fields": "userEnteredValue,userEnteredFormat",
-        "start": {"sheetId": sid, "rowIndex": 1, "columnIndex": 0}}})
+    # ---- Clear retired top focus area (rows 2-3) ----
+    R.append({"repeatCell": {
+        "range": {"sheetId": sid, "startRowIndex": 1, "endRowIndex": 3,
+                  "startColumnIndex": 0, "endColumnIndex": 6},
+        "cell": {"userEnteredValue": {}, "userEnteredFormat": {
+            "backgroundColor": WHITE,
+            "textFormat": {"bold": False, "fontSize": 10, "foregroundColor": INK}}},
+        "fields": "userEnteredValue,userEnteredFormat(backgroundColor,textFormat)"}})
 
     # ---- HABITS header row 4 ----
     V.append({"updateCells": {
@@ -310,7 +318,32 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
             "fields": "userEnteredValue,userEnteredFormat",
             "start": {"sheetId": sid, "rowIndex": r0, "columnIndex": 0}}})
 
-    # ---- Column headers row 16 ----
+    # ---- Focus section: label row 16, value row 17 ----
+    V.append({"updateCells": {
+        "rows": [{"values": [
+            _txt("DAILY FOCUS", bold=True, size=12, fg=SAGE_DARK),
+            _txt("", size=12), _txt("", size=12), _txt("", size=12),
+            _txt("", size=12), _txt("", size=12),
+        ]}],
+        "fields": "userEnteredValue,userEnteredFormat",
+        "start": {"sheetId": sid, "rowIndex": DAY_FOCUS_LABEL_ROW - 1,
+                  "columnIndex": 0}}})
+    V.append({"updateCells": {
+        "rows": [{"values": [
+            _txt("", size=14),
+            _txt("", bold=True, size=17, fg=INK),
+            _txt("", size=14), _txt("", size=14),
+            _txt("", size=14), _txt("", size=14),
+        ]}],
+        "fields": "userEnteredValue,userEnteredFormat",
+        "start": {"sheetId": sid, "rowIndex": DAY_FOCUS_VALUE_ROW - 1,
+                  "columnIndex": 0}}})
+    R.append({"updateDimensionProperties": {
+        "range": {"sheetId": sid, "dimension": "ROWS",
+                  "startIndex": DAY_FOCUS_LABEL_ROW - 1, "endIndex": DAY_FOCUS_VALUE_ROW},
+        "properties": {"pixelSize": 30}, "fields": "pixelSize"}})
+
+    # ---- Column headers row 20 ----
     headers = ["✓", "Task", "Type", "Project", "Notes"]
     V.append({"updateCells": {
         "rows": [{"values": [_txt(h, bold=True, size=12, fg=WHITE, bg=SAGE_DARK,

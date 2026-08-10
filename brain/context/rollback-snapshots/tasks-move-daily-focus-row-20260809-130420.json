@@ -1,0 +1,706 @@
+{
+  "verb": "move-daily-focus-row",
+  "timestamp": "20260809-130420",
+  "sheet_id": "1U1GN9xcg18S-o4mA-b3QZ3Sr-xUvhHDn2G23pLI1rmA",
+  "ranges": {
+    "'Sun'!A1:F17": [
+      [
+        "SUNDAY \u00b7 Aug 9"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        true,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        true,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        true,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Systems / Sourcing: set up better Axial target discovery/filtering."
+      ]
+    ],
+    "'Mon'!A1:F17": [
+      [
+        "MONDAY \u00b7 Aug 10"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Reach out to organizer of Art Oct conference"
+      ]
+    ],
+    "'Tue'!A1:F17": [
+      [
+        "TUESDAY \u00b7 Aug 11"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Pull Megan pre-LOI prep meeting notes"
+      ]
+    ],
+    "'Wed'!A1:F17": [
+      [
+        "WEDNESDAY \u00b7 Aug 12"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Prepare high-level seller data ask draft"
+      ]
+    ],
+    "'Thu'!A1:F17": [
+      [
+        "THURSDAY \u00b7 Aug 13"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Narrow/edit must-have diligence questions to top 5"
+      ]
+    ],
+    "'Fri'!A1:F17": [
+      [
+        "FRIDAY \u00b7 Aug 14"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Create travel plans for July in Paris/France next year"
+      ]
+    ],
+    "'Sat'!A1:F17": [
+      [
+        "SATURDAY \u00b7 Aug 15"
+      ],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [
+        "HABITS",
+        "",
+        "",
+        "",
+        "SUPPLEMENTAL"
+      ],
+      [
+        false,
+        "Sleep 8h",
+        false,
+        "Matcha cutoff 2p",
+        false,
+        "Sauna"
+      ],
+      [
+        false,
+        "Water + hygiene",
+        false,
+        "10K steps",
+        false,
+        "Glutamine"
+      ],
+      [
+        false,
+        "Headspace",
+        false,
+        "Exercise",
+        false,
+        "Ketones"
+      ],
+      [
+        false,
+        "Mobility sequence",
+        false,
+        "Multivitamin",
+        false,
+        "Red light"
+      ],
+      [
+        false,
+        "Journal",
+        false,
+        "Omega-3",
+        false
+      ],
+      [
+        false,
+        "14h fast: 7:30p-9:30a",
+        false,
+        "Curcumin",
+        "GOAL"
+      ],
+      [
+        false,
+        "ACV turmeric tonic",
+        false,
+        "Urolithin A",
+        "",
+        "Protein 120g + Fiber 25g"
+      ],
+      [
+        false,
+        "Protein/probiotic shake",
+        false,
+        "Magnesium"
+      ],
+      [
+        false,
+        "Coffee cutoff 11a",
+        false,
+        "Eating cutoff 7:30p"
+      ],
+      [
+        false,
+        "Lunch yogurt parfait",
+        false,
+        "Screen cutoff 9:30p"
+      ],
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ]
+    ]
+  }
+}

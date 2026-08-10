@@ -1,0 +1,60 @@
+# 01 - Fresh Deal 1 Discovery Matrix for G&B
+
+Status: Complete, with explicit evidence labels.
+
+Purpose: identify luxury-adjacent infrastructure niches for Deal 1 without anchoring on insurance, art storage, or Sidney Garber. This is a discovery matrix, not an approved sourcing list. A niche should not move to outreach until it has a channel decision, target-density proof, and a one-page scorecard.
+
+Evidence key:
+- Fact: directly supported by a cited source or internal G&B tracker/call record.
+- Inference: reasoned from facts, but not independently proven for the specific niche.
+- Hypothesis: attractive idea requiring validation before sourcing scale.
+
+## Discovery Matrix
+
+| # | Niche | Revenue Quality | Growth Tailwinds | B2B / Repeat Demand | Target Density | Search Investor Fit | Kay Fit |
+|---|---|---|---|---|---|---|---|
+| 1 | MoCRA-compliant beauty 3PL, kitting, and fulfillment | Inference: fulfillment and kitting can be recurring by brand/account | Fact: FDA reports 15,309 active cosmetic facility registrations and 1.1M+ product listings as of March 31, 2026 | Fact: MoCRA creates ongoing registration/listing obligations | Hypothesis: likely fragmented but needs list proof | Inference: asset-light services can fit if margins and concentration clear | Inference: beauty/luxury adjacency fits |
+| 2 | Cosmetic and fragrance testing labs | Inference: testing demand repeats through launches, reformulations, and compliance | Fact: FDA product listing and safety-substantiation regime creates testing demand | Inference: B2B demand from brands, labs, manufacturers | Hypothesis: need target count and margins | Inference: technical service with compliance tailwind likely investor-friendly | Fact: Kay has science/pre-med background and beauty/luxury interest |
+| 3 | Luxury package testing and validation labs | Inference: project plus repeat work from brands and packaging suppliers | Fact: ISTA maintains package-testing standards and certification ecosystem | Inference: B2B demand from brands, 3PLs, packaging companies | Hypothesis: target density unknown | Inference: technical B2B infrastructure likely stronger than consumer retail | Inference: aesthetic plus operational infrastructure fit |
+| 4 | Premium beauty/fragrance contract packaging | Inference: repeat production programs but customer concentration risk | Fact: US prestige beauty reached $36B in 2025 per Circana | Inference: B2B repeat demand from beauty brands | Hypothesis: target density needs NAICS/list validation | Inference: could fit if not capex-heavy and margins durable | Inference: strong category fit |
+| 5 | Resale authentication services for luxury goods | Inference: transaction volume can create recurring marketplace/vendor demand | Fact: market-estimate sources project resale authentication growth | Fact: resale trust requires verification | Hypothesis: target density and PE ownership need validation | Inference: trust-based, tech-enabled service could fit | Inference: luxury authenticity and stewardship fit |
+| 6 | Luxury product provenance and documentation services | Hypothesis: recurring documentation and updates possible | Fact: luxury consumers increasingly value transparency, authenticity, and sustainability in cited luxury research | Inference: B2B demand from brands, resale, estates, platforms | Hypothesis: early category, target density uncertain | Hypothesis: may be too early unless embedded in existing service business | Inference: strong values and brand-stewardship fit |
+| 7 | Jewelry appraisal and valuation services | Inference: repeat estate, insurance, retail, and lending demand | Fact: market-estimate source projects appraisal services growth | Fact: client categories include insurers, estate/trust, retailers, auction houses | Hypothesis: target count and owner size need proof | Inference: technical service, low capex, repeat demand may fit | Fact: aligns with current jewelry/luxury asset work |
+| 8 | Watch and jewelry repair/restoration for retailers and estate jewelers | Inference: repeat B2B repair flow; consumer walk-ins less attractive | Fact: jewelry is repairable and linked to heirloom/redesign demand as a category characteristic | Inference: B2B channels can include retailers, insurers, estate jewelers | Hypothesis: target density likely meaningful but needs list | Inference: fits if not tiny/key-person artisan shop | Fact: resonates with Kay's drawer-of-broken-jewelry insight |
+| 9 | Estate contents inventory and cataloging services | Inference: project revenue, with repeat through estate attorneys/fiduciaries | Fact: wealth transfer to women and families is a documented macro trend | Inference: B2B referral demand through trust/estate channels | Hypothesis: target density and margins uncertain | Hypothesis: may be too bespoke unless process-driven | Inference: legacy/family stewardship fit |
+| 10 | Auction and consignment back-office services | Inference: repeat demand from dealers, estates, and marketplaces | Fact: resale and secondary luxury markets require trust, documentation, and logistics | Inference: B2B/repeat if embedded with dealers/platforms | Hypothesis: target density uncertain | Hypothesis: can become marketplace-like and messy if not service-focused | Inference: luxury commerce and systems fit |
+| 11 | Fine art installation and crating, excluding storage | Inference: repeat institutional/gallery/private-client work | Fact: fine-art logistics includes transport, packing/crating, warehousing, installation | Inference: B2B demand from galleries, museums, designers, collectors | Inference: fragmented service provider base likely | Inference: margins may be lower if labor/trucking heavy | Fact: prior G&B art-service work showed revenue but margin concerns |
+| 12 | Luxury hospitality espresso and beverage equipment service | Inference: route/service contracts create repeat revenue | Fact: hospitality and fine dining are recognized luxury sectors | Inference: B2B recurring maintenance/repair demand | Hypothesis: target density likely strong in metro markets, unproven | Inference: classic route-service model can fit search | Inference: less emotional fit, but infrastructure fit |
+| 13 | Wine-cellar and humidor climate-system service | Inference: maintenance/monitoring recurring potential | Fact: wine, spirits, and collectibles sit within luxury asset ecosystem | Inference: repeat demand from hospitality, clubs, UHNW homes, retailers | Hypothesis: target density unknown | Inference: attractive if B2B and service-contract heavy | Inference: luxury asset protection fit |
+| 14 | Spa, sauna, steam, and wellness amenity equipment maintenance | Inference: recurring maintenance and compliance cadence possible | Fact: wellness and longevity are cited growth themes in current family-office and consumer research | Inference: B2B demand from hotels, clubs, multifamily, gyms, spas | Hypothesis: target density needs proof | Inference: service-contract infrastructure could fit | Inference: luxury hospitality/wellness fit |
+| 15 | Hospitality Legionella / building water management | Fact: CDC identifies water management programs as primary Legionella prevention strategy | Fact: public-health and building-safety need is durable | Fact: monitoring and records can be recurring | Inference: target universe likely includes environmental firms and water consultants | Fact: B2B compliance services align with search criteria | Inference: lower aesthetic fit, strong infrastructure fit |
+| 16 | Indoor air quality and environmental monitoring for schools and luxury hospitality | Inference: recurring testing/monitoring possible | Fact: building health and air/water quality have post-COVID and wellness tailwinds | Inference: B2B demand from schools, hotels, offices | Hypothesis: target density and regulatory pull vary by state | Inference: investor-friendly if recurring and technical | Fact: school/luxury hotel environments previously resonated with Kay |
+| 17 | Premium physical security integration and maintenance for luxury retail and Class-A properties | Inference: monitoring, maintenance, upgrades produce repeat revenue | Fact: luxury retail and high-value assets require physical security | Inference: B2B repeat demand from retail, hospitality, property owners | Hypothesis: many targets but may be PE-owned or low-margin installation | Inference: could fit if service/monitoring dominates installation | Inference: trust/protection fit |
+| 18 | Luxury retail lighting, signage, and fixture maintenance | Inference: multi-location service programs produce repeat demand | Fact: luxury retail stores require brand-standard physical environments | Inference: B2B demand from retailers, property managers, hospitality | Hypothesis: target density likely high but needs filtering | Inference: search fit if route-based and not construction cyclicality | Inference: aesthetic plus operational infrastructure fit |
+| 19 | Private club and luxury amenity management support | Inference: recurring contracts likely, labor intensity risk | Fact: luxury experiences and access are gaining importance in luxury research | Inference: B2B demand from clubs, buildings, hospitality | Hypothesis: target density and margins uncertain | Hypothesis: may be people-heavy and lower margin | Inference: community, family, hospitality fit |
+| 20 | HNW / family-office cybersecurity and digital-identity protection | Inference: managed service subscriptions possible | Fact: AI increases cybersecurity and fraud risk; wealth management firms are adopting AI with governance needs | Fact: recurring MSP/security monitoring model exists broadly | Hypothesis: target density of niche HNW providers needs proof | Inference: strong revenue quality if technical and contracted | Inference: trust/protection fit, lower luxury-aesthetic fit |
+
+## Highest-Priority Test Set
+
+1. Beauty/fragrance compliance infrastructure: MoCRA-compliant 3PL, testing labs, contract packaging, package validation.
+2. Luxury asset verification infrastructure: appraisal, authentication, provenance, estate contents documentation.
+3. Luxury built-environment infrastructure: Legionella/water, IAQ, wellness amenity maintenance, security integration, lighting/signage maintenance.
+4. High-skill repair and preservation: watch/jewelry repair, wine-cellar/humidor systems, fine-art installation/crating.
+
+## What Must Happen Before Outreach
+
+- Prove target density with 50 to 100 named US targets per niche or a reason the niche can still work with a smaller, higher-conversion universe.
+- Classify target channel: DealsX cold, Kay warm, Camilla qualifier, conference/intermediary, or no-go.
+- Confirm search-fund revenue quality: margins, repeat or reoccurring revenue, low customer concentration, non-project volatility, limited capex, and management bench.
+- Identify the growth trend that creates urgency. No trend, no Deal 1 thesis.
+
+## Sources
+
+- FDA, Cosmetic product facility registrations and product listings: https://www.fda.gov/cosmetics/registration-listing-cosmetic-product-facilities-and-products
+- Circana, 2025 US beauty retail performance: https://www.globenewswire.com/news-release/2026/02/10/3235596/0/en/us-prestige-and-mass-beauty-retail-deliver-a-positive-performance-in-2025-circana-reports.html
+- ISTA package testing standards: https://www.ista.org/
+- McKinsey, State of Luxury 2026: https://www.mckinsey.com/industries/retail/our-insights/state-of-luxury
+- CDC, Legionella control and water management: https://www.cdc.gov/control-legionella/index.html
+- Research and Markets, Jewelry Appraisal Services market estimate: https://www.researchandmarkets.com/reports/6121614/jewelry-appraisal-services-market-global
+- Fortune Business Insights, Fine Art Logistics market estimate: https://www.fortunebusinessinsights.com/fine-art-logistics-market-118199
+- Future Market Insights, Resale Authentication Services market estimate: https://www.futuremarketinsights.com/reports/resale-authentication-services-market

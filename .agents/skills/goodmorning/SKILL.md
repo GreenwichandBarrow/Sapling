@@ -79,6 +79,8 @@ Good Morning is not complete until Task Manager has been verified. Before writin
 
 Stop condition: if Task Manager verification is skipped or inconclusive, the Good Morning brief must mark **System Health: Task Manager carry-forward unverified** and recommend repair before day planning.
 
+Workflow interruption guard: if Good Morning diverts into Task Manager repair, sheet formatting, weekly build, dashboard repair, or another blocking system fix, return to the Good Morning brief automatically after the repair is verified. Do not end the turn at the repair unless Kay explicitly redirects, pauses, or says the brief is no longer needed.
+
 
 ## Post-Call Task Intake Stop Hook
 

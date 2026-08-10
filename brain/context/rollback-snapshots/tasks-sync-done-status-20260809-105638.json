@@ -1,7 +1,7 @@
 {
   "verb": "sync-done-status",
-  "timestamp": "20260804-103012",
-  "sheet_id": "1DcwtZYMqA3OMDeQAsLsS9szIWScz22qVCO7jrfHpvww",
+  "timestamp": "20260809-105638",
+  "sheet_id": "1U1GN9xcg18S-o4mA-b3QZ3Sr-xUvhHDn2G23pLI1rmA",
   "ranges": {
     "'To Do'!A2:A400": [
       [
@@ -41,51 +41,69 @@
         "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
       ],
       [
-        "Not Completed"
+        "On-going"
+      ],
+      [
+        "On-going"
+      ],
+      [
+        "On-going"
+      ],
+      [
+        "On-going"
+      ],
+      [
+        "On-going"
+      ],
+      [
+        "On-going"
       ],
       [
+        "On-going"
+      ],
+      [
         "Not Completed"
       ],
       [
@@ -339,6 +357,30 @@
       ],
       [
         "Not Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
       ],
       [
         "Completed"
@@ -726,6 +768,78 @@
       ],
       [
         "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
       ],
       [
         "Dropped"

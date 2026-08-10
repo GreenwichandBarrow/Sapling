@@ -232,13 +232,15 @@ DAY_TITLE_ROW = 1            # merged A1:E1 "SUNDAY · May 17"
 DAY_HABITS_HEADER_ROW = 4    # "HABITS" + "SUPPLEMENTAL"
 DAY_HABIT_FIRST_ROW = 5      # rows 5..14 = 10 habit rows
 DAY_HABIT_LAST_ROW = 14
-DAY_COL_HEADER_ROW = 16      # ✓ | Task | Type | Project | Notes
-DAY_SLOT_FIRST_ROW = 17      # rows 17..66 = 50 priority slots
-DAY_SLOT_LAST_ROW = 66
-DAY_NOTES_HEADER_ROW = 67    # "NOTES"
-DAY_NOTES_FIRST_ROW = 68     # rows 68..75 = free-notes block
-DAY_NOTES_LAST_ROW = 75
-DAY_GRID_ROWS = 78           # matches max day-tab usage observed 2026-06-26
+DAY_FOCUS_LABEL_ROW = 16      # DAILY FOCUS label
+DAY_FOCUS_VALUE_ROW = 17      # daily focus value
+DAY_COL_HEADER_ROW = 20      # ✓ | Task | Type | Project | Notes
+DAY_SLOT_FIRST_ROW = 21      # rows 21..70 = 50 priority slots
+DAY_SLOT_LAST_ROW = 70
+DAY_NOTES_HEADER_ROW = 71    # "NOTES"
+DAY_NOTES_FIRST_ROW = 72     # rows 72..79 = free-notes block
+DAY_NOTES_LAST_ROW = 79
+DAY_GRID_ROWS = 82           # matches focus-section layout observed 2026-08-09
 DAY_GRID_COLS = 12           # A..F content + G chart anchor headroom
 
 # Per-day-tab columns (0-based)
@@ -3195,7 +3197,7 @@ def cmd_reformat(args) -> int:
     # write back packed (items at top, empties below). Closes gaps from manual deletes.
     compact_summary = {"day_tab_packed": 0, "week_block_packed": 0}
 
-    def _flat(vals, n=15, default=""):
+    def _flat(vals, n=DAY_SLOT_COUNT, default=""):
         out = []
         for v in (vals or []):
             cell = v[0] if (isinstance(v, list) and len(v) > 0) else default

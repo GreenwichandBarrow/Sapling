@@ -1,11 +1,11 @@
 {
-  "date": "2026-08-07",
+  "date": "2026-08-10",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-08-07.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-08-10.md",
   "email_scan_status": "live",
   "deals_found": 0,
   "broker_opportunistic": 2,
-  "near_misses": 1,
+  "near_misses": 2,
   "sources_scanned": 20,
   "sources_covered": {
     "marketplace": 8,
@@ -18,7 +18,7 @@
   "volume_status": "BELOW TARGET",
   "needs_attention": [
     "browser fallback unavailable: agent-browser missing on this host",
-    "below target: 0 PASS surfaced; two broker-opportunistic items and one near-miss only",
+    "below target: 0 PASS surfaced; two broker-opportunistic items and two near-misses only",
     "DealsX dashboard/snapshot leads are not integrated; low Deal Aggregator volume means coverage incomplete, not no leads."
   ],
   "dealsx_dashboard_status": "not_integrated"

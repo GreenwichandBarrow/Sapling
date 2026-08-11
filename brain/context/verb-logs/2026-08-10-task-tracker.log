@@ -1,0 +1,26 @@
+
+[2026-08-10T09:06:12.985230] carry-forward-day — sun-to-mon
+  - moved: 6
+  - source: Sun
+  - destination: Mon
+  - source packed: {'completed': 2, 'active': 0, 'blank': 48, 'rows': '21:70'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260810-090610.json
+  
+  - Sun slot 1 → Mon slot 12: Systems / Sourcing: set up better Axial target discovery/filtering.
+  - Sun slot 2 → Mon slot 13: Weekend prep: prepare for a possible Sidney Garber meeting next week if she responds.
+  - Sun slot 3 → Mon slot 14: Set weekly North Star from 60-day LOI sprint and One-Year Plan
+  - Sun slot 6 → Mon slot 15: Add Kay food staples to Sunday grocery run
+  - Sun slot 7 → Mon slot 16: Kids allowance: Sunday $10/week + Friday $10/day through Aug
+  - Sun slot 8 → Mon slot 17: Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions
+
+[2026-08-10T22:05:08.684015] schedule-to-day-slot — tue-11
+  - task: Check DealsX insurance emails: sent + responses
+  - placement: Tue tab slot 11 (row 31)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260810-220508.json
+
+[2026-08-10T22:20:53.992627] schedule-to-day-slot — tue-12
+  - task: Locate holdco financial model
+  - placement: Tue tab slot 12 (row 32)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260810-222053.json

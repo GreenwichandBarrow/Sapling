@@ -1,36 +1,40 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260807-090752",
-  "sheet_id": "1DcwtZYMqA3OMDeQAsLsS9szIWScz22qVCO7jrfHpvww",
+  "timestamp": "20260810-090610",
+  "sheet_id": "1U1GN9xcg18S-o4mA-b3QZ3Sr-xUvhHDn2G23pLI1rmA",
   "ranges": {
-    "'Mon'!A17:E66": [
+    "'Sun'!A21:E70": [
       [
         false,
-        "Call IRS to confirm Form 8822-B address update"
+        "Systems / Sourcing: set up better Axial target discovery/filtering."
+      ],
+      [
+        false,
+        "Weekend prep: prepare for a possible Sidney Garber meeting next week if she responds."
+      ],
+      [
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
       ],
       [
         true,
-        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte"
-      ],
-      [
-        false
+        "Create weekly schedule"
       ],
       [
         true,
-        "Process payroll"
+        "Confirm LiveOak payroll transfer coverage"
       ],
       [
-        true,
-        "Process conference registrations"
+        false,
+        "Add Kay food staples to Sunday grocery run"
       ],
       [
-        false
+        false,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
       ],
       [
-        false
-      ],
-      [
-        false
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
       ],
       [
         false
@@ -159,94 +163,83 @@
         false
       ]
     ],
-    "'Fri'!A17:E66": [
+    "'Mon'!A21:E70": [
       [
         false,
-        "Take truck for oil change"
+        "Reach out to organizer of Art Oct conference"
       ],
       [
         false,
-        "Scan IRS docs at FedEx"
+        "Call IRS to confirm Form 8822-B address update"
       ],
       [
         false,
-        "Call IRS/government to confirm address change"
+        "Send new email outreach on dashboard (3 companies)"
       ],
       [
         false,
-        "Pay rent"
+        "Visit store carrying jewelry line to see product and merchandising in person"
       ],
       [
         false,
-        "Follow up with Sarah about Monday meeting"
+        "Process payroll"
       ],
       [
         false,
-        "Book afterschool for Tuesday and Wednesday for the kids"
+        "Process conference registrations"
       ],
       [
         false,
-        "Call Jesse at DUSC"
+        "Outreach Work: seller / broker / investor / analyst outreach block"
       ],
       [
         false,
-        "Sign up Kaiden for RSM"
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
       ],
       [
         false,
-        "Create project for French passports"
+        "Strategy / Research: deck, model, thesis, target discovery, niche work"
       ],
       [
         false,
-        "Identify first nonprofit activation requirement for 501(c)(3) activity mark"
-      ],
-      [
-        false,
-        "Review website direction: light lookbook-style G&B page for seller/investor credibility"
-      ],
-      [
-        false,
-        "Set up Claude workflow for Friday: slides + website aesthetics"
-      ],
-      [
-        false,
-        "Weekly review \u2014 system health, M&A activities, budget"
-      ],
-      [
-        false,
-        "Check NYC Housing Connect for new Manhattan lotteries"
-      ],
-      [
-        false,
-        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
-      ],
-      [
-        false,
-        "Add Kay food staples to Sunday grocery run"
+        "8:30 Decision Review: review what moved, what parks, what rolls forward"
       ],
       [
         false,
         "Draft/schedule Greg thank-you and insurance contacts follow-up"
       ],
       [
-        false,
-        "Confirm LiveOak payroll transfer coverage"
+        false
       ],
       [
-        false,
-        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
+        false
       ],
       [
-        false,
-        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
+        false
       ],
       [
-        false,
-        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
+        false
       ],
       [
-        false,
-        "Create weekly schedule"
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
       ],
       [
         false

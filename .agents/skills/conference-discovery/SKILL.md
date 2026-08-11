@@ -498,7 +498,7 @@ current/future option set visible.
 
 Before adding new conferences, scan the Pipeline tab and auto-move rows off Pipeline when:
 1. **Decision = Skip AND date is past** → move to **Skipped** tab
-2. **Status = Attended** (or Decision = Attend AND date is past) → move to **Attended** tab
+2. **Status = Attended** OR Decision = Attend / Attending / Registered / Registered Only / Register Only AND date is past → move to **Attended** tab
 3. **Date is past AND Decision is blank, NEW, Evaluating, Skip/Skipped, or otherwise has no attendance/registration commitment** → move to **Skipped** tab (conference passed without attending). This explicitly includes last week's `Evaluating` items; they should not linger on Pipeline once the date has passed.
 
 Never archive a current-week or future-dated event solely because Decision =

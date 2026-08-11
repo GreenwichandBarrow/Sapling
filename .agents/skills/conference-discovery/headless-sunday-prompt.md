@@ -163,7 +163,7 @@ Pipeline mutation without a verified snapshot on disk.
 
 Read all Pipeline rows. Identify rows matching archival criteria:
 - Decision = Skip AND date is past → Skipped tab
-- Status = Attended OR (Decision = Attend AND date is past) → Attended tab
+- Status = Attended OR Decision = Attend / Attending / Registered / Registered Only / Register Only AND date is past → Attended tab
 - Date is past AND Decision is blank, NEW, Evaluating, Skip/Skipped, or otherwise has no attendance/registration commitment → Skipped tab
 
 Do not archive current-week or future-dated rows solely because Decision =

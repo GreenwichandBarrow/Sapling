@@ -1,0 +1,46 @@
+{
+  "run_date": "2026-08-10",
+  "run_mode": "monday",
+  "niches_evaluated": 1,
+  "niches_identified": 1,
+  "one_pagers_written": 1,
+  "scorecards_written": 1,
+  "tracker_updated": true,
+  "runtime_seconds": 9480,
+  "zero_finding_reason": "",
+  "sources_covered": {
+    "recent_track": "Completed: last-14-day web/social via last30days where available, read-only Gmail newsletters/deal-flow/investor buckets with --gmail-no-send, Granola after UTC timestamp retry, vault outputs/calls, and passive inbox signals. Diagnostics: last30days coverage thin due Reddit 403 and unavailable X/YouTube.",
+    "historical_track": "Completed: live tracker pre-flight, historical call notes, available Granola-backed call coverage, required read-only Gmail historical searches, and selected relevant email reads. Diagnostics: OneNote MCP unavailable; ChatGPT export missing from expected local paths."
+  },
+  "umbrella_themes_reviewed": [
+    "Luxury, Heritage & Personal Goods",
+    "Asset Protection & Stewardship",
+    "Beauty, Wellness & Longevity Infrastructure",
+    "Family Wealth, Legacy & Life Infrastructure",
+    "Trust, Compliance & Verification",
+    "Marine/HNW Stewardship"
+  ],
+  "edge_niches_considered": 6,
+  "open_loops_infra": [
+    "OneNote SEARCH FUND notebook unavailable in this Codex/systemd environment.",
+    "ChatGPT export selected_business_conversations.json not found under expected local paths.",
+    "Attio CRM cross-reference skipped because no safe credential path was available inside the synthesizer prompt.",
+    "last30days coverage was partial because Reddit returned 403 and X/YouTube were unavailable."
+  ],
+  "niches": [
+    {
+      "name": "Stormwater Control Measure Inspection, Maintenance, and Compliance O&M for HOAs, Multifamily, Retail Centers, and Commercial Campuses",
+      "score": 2.52,
+      "drive_folder": "https://drive.google.com/drive/folders/1YWvgpkdYQ5BDoUWmjVXSMglitObIcQ9t"
+    }
+  ],
+  "diagnostics": {
+    "runtime": "Codex/systemd",
+    "chatroom": "brain/traces/agents/2026-08-10-niche-intelligence.md",
+    "markdown_report": "brain/outputs/2026-08-10-niche-intelligence-report.md",
+    "tracker_row": 49,
+    "weekly_review_rank": 46,
+    "one_pager": "https://docs.google.com/presentation/d/1kfh6tDiH0QHpcTuE0ymAC0iv_eWf5vW7/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true",
+    "scorecard": "https://docs.google.com/spreadsheets/d/1cpVwJ324-oKKW5mm3QidQBvwVT_FNJir/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true"
+  }
+}

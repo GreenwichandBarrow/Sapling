@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-10",
+  "updated_at": "2026-08-11",
   "items": [
     {
       "bucket": "thank",
@@ -1398,6 +1398,30 @@
       "event": "Relationship / Call Window",
       "event_date": "2026-08-09",
       "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260810T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-11",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-10",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260810T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-11",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-10",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260811T153000Z"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

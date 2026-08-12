@@ -1,0 +1,29 @@
+{
+  "id": "not_BZUGq7z3Iecs8y",
+  "title": "Team TB Camilla I Kay",
+  "date": "2026-08-12",
+  "time": "12:30 PM ET",
+  "location": "remote",
+  "granola_url": "https://notes.granola.ai/d/bc89d6b9-c70f-4bd2-893a-22caa158f321",
+  "doc_url": "https://docs.google.com/document/d/1IGsJ3Y8mlSRWh_z_tjJLVdU_jycJtCylU2LWDL9SwGw/edit?usp=drivesdk",
+  "transcript_doc_url": "https://docs.google.com/document/d/1XpQyvtaIfrVDihSnzKOHdaEo_h9kDyORAOEMuROVjaU/edit?usp=drivesdk",
+  "vault_call_note": "brain/calls/2026-08-12-team-tb-camilla-kay.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_BZUGq7z3Iecs8y.json",
+  "task_count": 4,
+  "attio_failed": false,
+  "attio_notes": {
+    "people": [
+      "52146e57-68cf-4681-927c-9c2ddcdc7ea3"
+    ],
+    "companies": [
+      "1f3d7760-bafa-4f9e-996e-448dbff55ae9"
+    ]
+  },
+  "tasks_failed": false,
+  "doc_failed": false,
+  "transcript_failed": false,
+  "slack_posted": true,
+  "processed_at": "2026-08-12T22:05:59Z",
+  "summary": "Kay and Camilla reframed Greenwich and Barrow as a permanent holding company with a luxury care-and-continuity ecosystem. Sydney Garber remains the clearest deal signal, but Deals X process hygiene and label clarity are now the main operating bottlenecks. The next adjacent vertical may be garment care, leather care, or product care if current lists are exhausted.",
+  "processed_archive": "brain/trackers/post-call-analyzer/processed/not_BZUGq7z3Iecs8y.json"
+}

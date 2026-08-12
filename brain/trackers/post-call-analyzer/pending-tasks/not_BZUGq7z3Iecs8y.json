@@ -1,0 +1,50 @@
+[
+  {
+    "task_text": "Decide whether to text Sydney Garber with the number or wait for a live conversation when she is back in orbit.",
+    "type": "Deal",
+    "project": "Search",
+    "suggested_day": "Today",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Team TB Camilla I Kay 2026-08-12 mtg. Analysis: https://docs.google.com/document/d/1IGsJ3Y8mlSRWh_z_tjJLVdU_jycJtCylU2LWDL9SwGw/edit?usp=drivesdk",
+    "source_call_id": "not_BZUGq7z3Iecs8y",
+    "source_doc_url": "https://docs.google.com/document/d/1IGsJ3Y8mlSRWh_z_tjJLVdU_jycJtCylU2LWDL9SwGw/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1XpQyvtaIfrVDihSnzKOHdaEo_h9kDyORAOEMuROVjaU/edit?usp=drivesdk",
+    "staged_at": "2026-08-12T22:04:35Z"
+  },
+  {
+    "task_text": "Run a quick AI search on luxury garment care, leather care, and product care to test whether the next adjacent vertical is real.",
+    "type": "Analysis",
+    "project": "Search",
+    "suggested_day": "Today",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Team TB Camilla I Kay 2026-08-12 mtg. Analysis: https://docs.google.com/document/d/1IGsJ3Y8mlSRWh_z_tjJLVdU_jycJtCylU2LWDL9SwGw/edit?usp=drivesdk",
+    "source_call_id": "not_BZUGq7z3Iecs8y",
+    "source_doc_url": "https://docs.google.com/document/d/1IGsJ3Y8mlSRWh_z_tjJLVdU_jycJtCylU2LWDL9SwGw/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1XpQyvtaIfrVDihSnzKOHdaEo_h9kDyORAOEMuROVjaU/edit?usp=drivesdk",
+    "staged_at": "2026-08-12T22:04:35Z"
+  },
+  {
+    "task_text": "Normalize the Deals X inbox labels so FYI / Interested / Not Interested are distinct and \"In Progress\" does not mask the real state.",
+    "type": "Ops",
+    "project": "DealsX",
+    "suggested_day": "Friday",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Team TB Camilla I Kay 2026-08-12 mtg. Analysis: https://docs.google.com/document/d/1IGsJ3Y8mlSRWh_z_tjJLVdU_jycJtCylU2LWDL9SwGw/edit?usp=drivesdk",
+    "source_call_id": "not_BZUGq7z3Iecs8y",
+    "source_doc_url": "https://docs.google.com/document/d/1IGsJ3Y8mlSRWh_z_tjJLVdU_jycJtCylU2LWDL9SwGw/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1XpQyvtaIfrVDihSnzKOHdaEo_h9kDyORAOEMuROVjaU/edit?usp=drivesdk",
+    "staged_at": "2026-08-12T22:04:35Z"
+  },
+  {
+    "task_text": "Decide whether the Guillermo 2:30 PM meeting should be canceled or kept based on whether there is any new material to share.",
+    "type": "Follow-up",
+    "project": "Search",
+    "suggested_day": "Today",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From Team TB Camilla I Kay 2026-08-12 mtg. Analysis: https://docs.google.com/document/d/1IGsJ3Y8mlSRWh_z_tjJLVdU_jycJtCylU2LWDL9SwGw/edit?usp=drivesdk",
+    "source_call_id": "not_BZUGq7z3Iecs8y",
+    "source_doc_url": "https://docs.google.com/document/d/1IGsJ3Y8mlSRWh_z_tjJLVdU_jycJtCylU2LWDL9SwGw/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1XpQyvtaIfrVDihSnzKOHdaEo_h9kDyORAOEMuROVjaU/edit?usp=drivesdk",
+    "staged_at": "2026-08-12T22:04:35Z"
+  }
+]

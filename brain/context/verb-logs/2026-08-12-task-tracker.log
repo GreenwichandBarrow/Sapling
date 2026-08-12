@@ -1,0 +1,43 @@
+
+[2026-08-12T08:58:32.005837] carry-forward-day — tue-to-wed
+  - moved: 23
+  - source: Tue
+  - destination: Wed
+  - source packed: {'completed': 5, 'active': 0, 'blank': 45, 'rows': '21:70'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260812-085828.json
+  
+  - Tue slot 1 → Wed slot 10: Locate holdco financial model
+  - Tue slot 2 → Wed slot 11: Call IRS to confirm Form 8822-B address update
+  - Tue slot 3 → Wed slot 12: Text Sarah Finders Fee document
+  - Tue slot 4 → Wed slot 13: Call Troy
+  - Tue slot 5 → Wed slot 14: Reconnect with Levi on prior art storage path
+  - Tue slot 7 already existed on Wed; cleared source: Outreach Work: seller / broker / investor / analyst outreach block
+  - Tue slot 8 already existed on Wed; cleared source: Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work
+  - Tue slot 9 already existed on Wed; cleared source: Strategy / Research: deck, model, thesis, target discovery, niche work
+  - Tue slot 10 already existed on Wed; cleared source: 8:30 Decision Review: review what moved, what parks, what rolls forward
+  - Tue slot 12 → Wed slot 15: Circle back with Paul on art storage conversation
+  - Tue slot 13 → Wed slot 16: Order more business cards and change title to founder
+  - Tue slot 14 → Wed slot 17: Reach out to organizer of Art Oct conference
+  - Tue slot 15 → Wed slot 18: Email Melissa to assist with BK Growth contact and file folders
+  - Tue slot 16 → Wed slot 19: Send new email outreach on dashboard (3 companies)
+  - Tue slot 17 → Wed slot 20: Visit store carrying jewelry line to see product and merchandising in person
+  - Tue slot 20 → Wed slot 21: Draft/schedule Greg thank-you and insurance contacts follow-up
+  - Tue slot 22 → Wed slot 22: Weekend prep: prepare for a possible Sidney Garber meeting next week if she responds.
+  - Tue slot 23 → Wed slot 23: Set weekly North Star from 60-day LOI sprint and One-Year Plan
+  - Tue slot 24 → Wed slot 24: Add Kay food staples to Sunday grocery run
+  - Tue slot 25 → Wed slot 25: Kids allowance: Sunday $10/week + Friday $10/day through Aug
+  - Tue slot 26 → Wed slot 26: Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions
+  - Tue slot 27 → Wed slot 27: Pull Megan pre-LOI prep meeting notes
+  - Tue slot 28 → Wed slot 28: Watch SLD video
+
+[2026-08-12T10:13:42.134118] schedule-to-day-slot — wed-29
+  - task: Get Real Pigeons from the library
+  - placement: Wed tab slot 29 (row 49)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260812-101341.json
+
+[2026-08-12T14:24:28.863360] schedule-to-day-slot — sat-1
+  - task: Buy gift for baby Ruby
+  - placement: Sat tab slot 1 (row 21)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260812-142428.json

@@ -12,7 +12,7 @@ Per day tab (structurally identical, only the title row differs):
   Rows 5-14 10 habit rows: A/B primary, C/D supplemental, E/F secondary/goal
   Rows 15,18-19  visual breathing room between habits/focus/tasks
   Row 16    DAILY FOCUS label
-  Row 17    daily focus value
+  Row 17    daily focus checkbox + value
   Row 20    column headers ✓ | Task | Type | Project | Notes — 12pt bold
   Rows 21-70 50 priority slots: A=native checkbox, B=Task 17pt,
             C=Type dropdown, D=Project dropdown, E=Notes; row height ~34px
@@ -330,7 +330,7 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
                   "columnIndex": 0}}})
     V.append({"updateCells": {
         "rows": [{"values": [
-            _txt("", size=14),
+            {"userEnteredValue": {"boolValue": False}},
             _txt("", bold=True, size=17, fg=INK),
             _txt("", size=14), _txt("", size=14),
             _txt("", size=14), _txt("", size=14),
@@ -338,6 +338,23 @@ def day_tab_structure_requests(sid: int, day_name: str, d: date) -> list[dict]:
         "fields": "userEnteredValue,userEnteredFormat",
         "start": {"sheetId": sid, "rowIndex": DAY_FOCUS_VALUE_ROW - 1,
                   "columnIndex": 0}}})
+    R.append({"setDataValidation": {
+        "range": {"sheetId": sid, "startRowIndex": DAY_FOCUS_VALUE_ROW - 1,
+                  "endRowIndex": DAY_FOCUS_VALUE_ROW, "startColumnIndex": 0,
+                  "endColumnIndex": 1},
+        "rule": {"condition": {"type": "BOOLEAN"}, "strict": True}}})
+    R.append({"addConditionalFormatRule": {
+        "rule": {
+            "ranges": [{"sheetId": sid,
+                        "startRowIndex": DAY_FOCUS_VALUE_ROW - 1,
+                        "endRowIndex": DAY_FOCUS_VALUE_ROW,
+                        "startColumnIndex": 0, "endColumnIndex": 6}],
+            "booleanRule": {
+                "condition": {"type": "CUSTOM_FORMULA",
+                              "values": [{"userEnteredValue": f"=$A{DAY_FOCUS_VALUE_ROW}=TRUE"}]},
+                "format": {"backgroundColor": SAGE_EXTRA_LIGHT,
+                           "textFormat": {"strikethrough": True, "foregroundColor": MUTED}}}},
+        "index": 0}})
     R.append({"updateDimensionProperties": {
         "range": {"sheetId": sid, "dimension": "ROWS",
                   "startIndex": DAY_FOCUS_LABEL_ROW - 1, "endIndex": DAY_FOCUS_VALUE_ROW},

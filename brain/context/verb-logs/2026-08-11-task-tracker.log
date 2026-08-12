@@ -10,3 +10,34 @@
   - placement: Tue tab slot 14 (row 34)
   - overwrote: (slot was empty)
   - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260811-034428.json
+
+[2026-08-11T08:52:23.428953] carry-forward-day — mon-to-tue
+  - moved: 17
+  - source: Mon
+  - destination: Tue
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '21:70'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260811-085220.json
+  
+  - Mon slot 1 → Tue slot 15: Reach out to organizer of Art Oct conference
+  - Mon slot 2 → Tue slot 16: Call IRS to confirm Form 8822-B address update
+  - Mon slot 3 → Tue slot 17: Send new email outreach on dashboard (3 companies)
+  - Mon slot 4 → Tue slot 18: Visit store carrying jewelry line to see product and merchandising in person
+  - Mon slot 5 → Tue slot 19: Process payroll
+  - Mon slot 6 → Tue slot 20: Process conference registrations
+  - Mon slot 7 already existed on Tue; cleared source: Outreach Work: seller / broker / investor / analyst outreach block
+  - Mon slot 8 already existed on Tue; cleared source: Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work
+  - Mon slot 9 already existed on Tue; cleared source: Strategy / Research: deck, model, thesis, target discovery, niche work
+  - Mon slot 10 already existed on Tue; cleared source: 8:30 Decision Review: review what moved, what parks, what rolls forward
+  - Mon slot 11 → Tue slot 21: Draft/schedule Greg thank-you and insurance contacts follow-up
+  - Mon slot 12 → Tue slot 22: Systems / Sourcing: set up better Axial target discovery/filtering.
+  - Mon slot 13 → Tue slot 23: Weekend prep: prepare for a possible Sidney Garber meeting next week if she responds.
+  - Mon slot 14 → Tue slot 24: Set weekly North Star from 60-day LOI sprint and One-Year Plan
+  - Mon slot 15 → Tue slot 25: Add Kay food staples to Sunday grocery run
+  - Mon slot 16 → Tue slot 26: Kids allowance: Sunday $10/week + Friday $10/day through Aug
+  - Mon slot 17 → Tue slot 27: Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions
+
+[2026-08-11T11:06:09.756995] schedule-to-day-slot — tue-28
+  - task: Watch SLD video
+  - placement: Tue tab slot 28 (row 48)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260811-110609.json

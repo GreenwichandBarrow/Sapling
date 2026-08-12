@@ -1,61 +1,76 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260807-090755",
-  "sheet_id": "1DcwtZYMqA3OMDeQAsLsS9szIWScz22qVCO7jrfHpvww",
+  "timestamp": "20260811-085220",
+  "sheet_id": "1U1GN9xcg18S-o4mA-b3QZ3Sr-xUvhHDn2G23pLI1rmA",
   "ranges": {
-    "'Tue'!A17:E66": [
+    "'Mon'!A21:E70": [
       [
         false,
-        "Pull Megan pre-LOI prep meeting notes"
+        "Reach out to organizer of Art Oct conference"
       ],
       [
         false,
-        "Send Emily 504"
+        "Call IRS to confirm Form 8822-B address update"
       ],
       [
-        false
+        false,
+        "Send new email outreach on dashboard (3 companies)"
       ],
       [
-        false
+        false,
+        "Visit store carrying jewelry line to see product and merchandising in person"
       ],
       [
-        false
+        false,
+        "Process payroll"
       ],
       [
-        false
+        false,
+        "Process conference registrations"
       ],
       [
-        false
+        false,
+        "Outreach Work: seller / broker / investor / analyst outreach block"
       ],
       [
-        false
+        false,
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
       ],
       [
-        false
+        false,
+        "Strategy / Research: deck, model, thesis, target discovery, niche work"
       ],
       [
-        false
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward"
       ],
       [
-        false
+        false,
+        "Draft/schedule Greg thank-you and insurance contacts follow-up"
       ],
       [
-        false
+        false,
+        "Systems / Sourcing: set up better Axial target discovery/filtering."
       ],
       [
-        false
+        false,
+        "Weekend prep: prepare for a possible Sidney Garber meeting next week if she responds."
       ],
       [
-        false
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
       ],
       [
-        false
+        false,
+        "Add Kay food staples to Sunday grocery run"
       ],
       [
-        false
+        false,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
       ],
       [
-        false
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
       ],
       [
         false
@@ -157,98 +172,99 @@
         false
       ]
     ],
-    "'Fri'!A17:E66": [
+    "'Tue'!A21:E70": [
+      [
+        false,
+        "Pull Megan pre-LOI prep meeting notes"
+      ],
+      [
+        false,
+        "Order more business cards and change title to founder"
+      ],
+      [
+        false,
+        "Email Melissa to assist with BK Growth contact and file folders"
+      ],
+      [
+        false,
+        "Reconnect with Levi on prior art storage path"
+      ],
+      [
+        false,
+        "Circle back with Paul on art storage conversation"
+      ],
       [
         false,
         "Take truck for oil change"
       ],
       [
         false,
-        "Scan IRS docs at FedEx"
+        "Outreach Work: seller / broker / investor / analyst outreach block"
       ],
       [
         false,
-        "Call IRS/government to confirm address change"
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
       ],
       [
         false,
-        "Pay rent"
+        "Strategy / Research: deck, model, thesis, target discovery, niche work"
       ],
       [
         false,
-        "Follow up with Sarah about Monday meeting"
+        "8:30 Decision Review: review what moved, what parks, what rolls forward"
       ],
       [
         false,
-        "Book afterschool for Tuesday and Wednesday for the kids"
+        "Check DealsX insurance emails: sent + responses",
+        "Work",
+        "DealsX",
+        "Verify sent status and responses."
       ],
       [
         false,
-        "Call Jesse at DUSC"
+        "Locate holdco financial model",
+        "Work",
+        "G&B"
       ],
       [
         false,
-        "Sign up Kaiden for RSM"
+        "Call Troy",
+        "Work",
+        "G&B"
       ],
       [
         false,
-        "Create project for French passports"
+        "Text Sarah Finders Fee document",
+        "Work",
+        "G&B",
+        "Send via text."
       ],
       [
-        false,
-        "Identify first nonprofit activation requirement for 501(c)(3) activity mark"
+        false
       ],
       [
-        false,
-        "Review website direction: light lookbook-style G&B page for seller/investor credibility"
+        false
       ],
       [
-        false,
-        "Set up Claude workflow for Friday: slides + website aesthetics"
+        false
       ],
       [
-        false,
-        "Weekly review \u2014 system health, M&A activities, budget"
+        false
       ],
       [
-        false,
-        "Check NYC Housing Connect for new Manhattan lotteries"
+        false
       ],
       [
-        false,
-        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
+        false
       ],
       [
-        false,
-        "Add Kay food staples to Sunday grocery run"
+        false
       ],
       [
-        false,
-        "Draft/schedule Greg thank-you and insurance contacts follow-up"
+        false
       ],
       [
-        false,
-        "Confirm LiveOak payroll transfer coverage"
-      ],
-      [
-        false,
-        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
-      ],
-      [
-        false,
-        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
-      ],
-      [
-        false,
-        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
-      ],
-      [
-        false,
-        "Create weekly schedule"
-      ],
-      [
-        false,
-        "Call IRS to confirm Form 8822-B address update"
+        false
       ],
       [
         false

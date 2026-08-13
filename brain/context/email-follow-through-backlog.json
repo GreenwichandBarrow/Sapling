@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-12",
+  "updated_at": "2026-08-13",
   "items": [
     {
       "bucket": "thank",
@@ -1453,11 +1453,55 @@
       "email": "glavergne@ashfordventures.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-08-12",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Guillermo I Kay Bi-Weekly Mtg",
       "event_date": "2026-08-11",
-      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260812T173000Z"
+      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260812T173000Z",
+      "completed_at": "2026-08-12",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19fb970d8ffb1ab6, subject 'SG FINANCIALS', sent 2026-08-12 10:26.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19fb970d8ffb1ab6",
+        "subject": "SG FINANCIALS",
+        "sent_at": "2026-08-12 10:26"
+      }
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-13",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-12",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260812T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-13",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-12",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260813T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "One Hanover Happy Hour",
+      "email": "evan@twobridgeslp.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-13",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "One Hanover Happy Hour",
+      "event_date": "2026-08-12",
+      "calendar_event_id": "1p62i0qemj9h2nbto7lvpr81un_20260813T213000Z"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

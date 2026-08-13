@@ -1,27 +1,24 @@
 {
-  "date": "2026-08-12",
+  "date": "2026-08-13",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-08-12.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-08-13.md",
   "email_scan_status": "live",
   "deals_found": 0,
-  "broker_opportunistic": 1,
+  "broker_opportunistic": 0,
   "near_misses": 1,
-  "sources_scanned": 15,
+  "sources_scanned": 19,
   "sources_covered": {
-    "marketplace": 6,
-    "email_newsletters": 6,
-    "direct_email": 3
+    "marketplace": 8,
+    "email_newsletters": 7,
+    "direct_email": 4
   },
-  "manual_check_sources": [
-    "Business Exits (browser automation unavailable; source blocked after one fetch)"
-  ],
+  "manual_check_sources": [],
   "sources_blocked_verified": 0,
-  "sources_blocked_single_attempt": 1,
+  "sources_blocked_single_attempt": 0,
   "volume_status": "CRITICAL",
   "needs_attention": [
-    "critical volume: 0 surfaced matches; 1 broker-opportunistic item; 1 near miss",
-    "Business Exits blocked at 403 and browser fallback is unavailable in this run",
-    "coverage incomplete: DealsX dashboard snapshot is stale / not integrated for current-week leads"
+    "critical volume: 0 surfaced matches today",
+    "coverage incomplete: DealsX snapshot stale / not current-week"
   ],
   "dealsx_dashboard_status": "stale"
 }

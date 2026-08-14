@@ -3,18 +3,8 @@
   "deal_items": 27,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-08-13T06:50:44.970972-04:00",
-  "follow_through_completed_items": [
-    {
-      "bucket": "thank",
-      "completed_at": "2026-08-12",
-      "event": "Guillermo I Kay Bi-Weekly Mtg",
-      "person": "Guillermo",
-      "sent_at": "2026-08-12 10:26",
-      "sent_subject": "SG FINANCIALS",
-      "sent_thread_id": "19fb970d8ffb1ab6"
-    }
-  ],
+  "fetched_at": "2026-08-13T08:48:13.515996-04:00",
+  "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -62,7 +52,6 @@
   "needs_kay": [
     "27 broker/listing row(s) extracted",
     "3 prior-day thank-you(s) need approval: One Hanover Happy Hour; Relationship / Call Window; Relationship / Call Window",
-    "1 email follow-through row(s) auto-completed from sent-mail evidence: Guillermo",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg"
   ],
   "pipeline_items": 0,

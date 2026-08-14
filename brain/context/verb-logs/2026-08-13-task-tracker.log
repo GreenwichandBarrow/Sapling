@@ -1,0 +1,49 @@
+
+[2026-08-13T08:49:04.936155] schedule-to-day-slot — thu-6
+  - task: Fax W2 to NYS
+  - placement: Thu tab slot 6 (row 26)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260813-084904.json
+
+[2026-08-13T08:50:41.887344] carry-forward-day — wed-to-thu
+  - moved: 29
+  - source: Wed
+  - destination: Thu
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '21:70'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260813-085037.json
+  
+  - Wed slot 1 → Thu slot 7: Prepare high-level seller data ask draft
+  - Wed slot 2 → Thu slot 8: Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue
+  - Wed slot 3 → Thu slot 9: Review website direction: light lookbook-style G&B page for seller/investor credibility
+  - Wed slot 4 → Thu slot 10: Draft seller-call prep framework: transition priorities, questions, and deal-structure options
+  - Wed slot 5 → Thu slot 11: Niche intel review
+  - Wed slot 6 already existed on Thu; cleared source: Outreach Work: seller / broker / investor / analyst outreach block
+  - Wed slot 7 already existed on Thu; cleared source: Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work
+  - Wed slot 8 already existed on Thu; cleared source: Strategy / Research: deck, model, thesis, target discovery, niche work
+  - Wed slot 9 already existed on Thu; cleared source: 8:30 Decision Review: review what moved, what parks, what rolls forward
+  - Wed slot 10 → Thu slot 12: Locate holdco financial model
+  - Wed slot 11 → Thu slot 13: Call IRS to confirm Form 8822-B address update
+  - Wed slot 12 → Thu slot 14: Text Sarah Finders Fee document
+  - Wed slot 13 → Thu slot 15: Call Troy
+  - Wed slot 14 → Thu slot 16: Reconnect with Levi on prior art storage path
+  - Wed slot 15 → Thu slot 17: Circle back with Paul on art storage conversation
+  - Wed slot 16 → Thu slot 18: Order more business cards and change title to founder
+  - Wed slot 17 → Thu slot 19: Reach out to organizer of Art Oct conference
+  - Wed slot 18 → Thu slot 20: Email Melissa to assist with BK Growth contact and file folders
+  - Wed slot 19 → Thu slot 21: Send new email outreach on dashboard (3 companies)
+  - Wed slot 20 → Thu slot 22: Visit store carrying jewelry line to see product and merchandising in person
+  - Wed slot 21 → Thu slot 23: Draft/schedule Greg thank-you and insurance contacts follow-up
+  - Wed slot 22 → Thu slot 24: Weekend prep: prepare for a possible Sidney Garber meeting next week if she responds.
+  - Wed slot 23 → Thu slot 25: Set weekly North Star from 60-day LOI sprint and One-Year Plan
+  - Wed slot 24 → Thu slot 26: Add Kay food staples to Sunday grocery run
+  - Wed slot 25 → Thu slot 27: Kids allowance: Sunday $10/week + Friday $10/day through Aug
+  - Wed slot 26 → Thu slot 28: Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions
+  - Wed slot 27 → Thu slot 29: Pull Megan pre-LOI prep meeting notes
+  - Wed slot 28 → Thu slot 30: Watch SLD video
+  - Wed slot 29 → Thu slot 31: Get Real Pigeons from the library
+
+[2026-08-13T08:51:20.679721] schedule-to-day-slot — thu-32
+  - task: Pay One Hanover Square rent
+  - placement: Thu tab slot 32 (row 52)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260813-085120.json

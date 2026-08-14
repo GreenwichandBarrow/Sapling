@@ -1,9 +1,9 @@
 {
   "blocked": [],
-  "deal_items": 27,
+  "deal_items": 35,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-08-13T08:48:13.515996-04:00",
+  "fetched_at": "2026-08-14T06:50:00.877227-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -47,27 +47,27 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-08-13.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-08-14.json",
   "input_status": "ok",
   "needs_kay": [
-    "27 broker/listing row(s) extracted",
-    "3 prior-day thank-you(s) need approval: One Hanover Happy Hour; Relationship / Call Window; Relationship / Call Window",
+    "35 broker/listing row(s) extracted",
+    "2 prior-day thank-you(s) need approval: One Hanover Happy Hour; Relationship / Call Window",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-08-13.md",
+  "source_artifact": "brain/context/email-scan-results-2026-08-14.md",
   "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 0,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-08-13",
+      "due_date": "2026-08-14",
       "email": "evan@twobridgeslp.com",
       "event": "One Hanover Happy Hour",
-      "event_date": "2026-08-12",
+      "event_date": "2026-08-13",
       "person": "One Hanover Happy Hour",
       "sent_at": "",
       "sent_subject": "",
@@ -76,22 +76,10 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-08-13",
+      "due_date": "2026-08-14",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-08-12",
-      "person": "Relationship / Call Window",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-08-13",
-      "email": "",
-      "event": "Relationship / Call Window",
-      "event_date": "2026-08-12",
+      "event_date": "2026-08-13",
       "person": "Relationship / Call Window",
       "sent_at": "",
       "sent_subject": "",

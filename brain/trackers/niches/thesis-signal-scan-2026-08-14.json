@@ -1,0 +1,33 @@
+{
+  "run_date": "2026-08-14",
+  "run_mode": "thursday_signal_scan",
+  "signals_reviewed": 6,
+  "recommendations_count": 2,
+  "urgent_fast_sprint_count": 0,
+  "queue_for_monday_count": 2,
+  "park_count": 3,
+  "sources_covered": {
+    "pe_news": "Recent luxury repair/circularity and CMMC liability coverage, plus PE consolidation notes for luxury and auto services.",
+    "email": "BizBuySell, Helen Guo SMB Deal Hunter, Wealth Management, and Generational deal books or promo threads in the 2026-08-10 to 2026-08-14 window.",
+    "calls": "Internal Camilla and Andrew call notes, with the 2026-08-12 holding-company / luxury-care shift as the main thesis signal.",
+    "inbox": "Process recap / revisit list plus the earlier Berkshire / luxury proxy note.",
+    "conferences": "Repo sweep only; no new conference-discovery delta."
+  },
+  "edge_niches_considered": 3,
+  "recommendations": [
+    {
+      "bucket": "queue_for_monday",
+      "name": "Luxury care / garment care / leather repair",
+      "tailwind": "Luxury circularity, repair, and resale are getting more mainstream coverage, and the internal holdco frame now points toward care and continuity businesses.",
+      "edge_path": "Specialty garment care, leather repair, product care, white-glove logistics, and condition / documentation workflows.",
+      "why_now": "This is the clearest new adjacent lane that has both an internal thesis shift and an external market tailwind."
+    },
+    {
+      "bucket": "queue_for_monday",
+      "name": "CMMC managed compliance",
+      "tailwind": "Compliance obligations and liability remain live even after the phase-2 pause.",
+      "edge_path": "Managed compliance, evidence automation, documentation services, policy / training support, and assessment-readiness.",
+      "why_now": "The timing changed, but the recurring managed-compliance model still fits the Deal 1 filter."
+    }
+  ]
+}

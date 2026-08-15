@@ -1,12 +1,9 @@
 {
-  "blocked": [
-    "source artifact is stale",
-    "compact input artifact is stale"
-  ],
+  "blocked": [],
   "deal_items": 35,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-08-15T09:59:17.067107-04:00",
+  "fetched_at": "2026-08-15T10:08:48.342635-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -50,8 +47,8 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-08-14.json",
-  "input_status": "stale",
+  "input_artifact": "brain/context/email-intelligence-input-2026-08-15.json",
+  "input_status": "ok",
   "needs_kay": [
     "35 broker/listing row(s) extracted",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg"
@@ -59,8 +56,8 @@
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-08-14.md",
-  "source_status": "stale",
+  "source_artifact": "brain/context/email-scan-results-2026-08-15.md",
+  "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 0,
   "thank_you_items": [],

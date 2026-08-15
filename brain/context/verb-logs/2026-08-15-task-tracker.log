@@ -1,0 +1,70 @@
+
+[2026-08-15T10:00:44.996470] carry-forward-day — thu-to-sat
+  - moved: 32
+  - source: Thu
+  - destination: Sat
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '21:70'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260815-100038.json
+  
+  - Thu slot 1 → Sat slot 2: Narrow/edit must-have diligence questions to top 5
+  - Thu slot 2 → Sat slot 3: Outreach Work: seller / broker / investor / analyst outreach block
+  - Thu slot 3 → Sat slot 4: Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work
+  - Thu slot 4 → Sat slot 5: Strategy / Research: deck, model, thesis, target discovery, niche work
+  - Thu slot 5 → Sat slot 6: 8:30 Decision Review: review what moved, what parks, what rolls forward
+  - Thu slot 6 → Sat slot 7: Fax W2 to NYS
+  - Thu slot 7 → Sat slot 8: Prepare high-level seller data ask draft
+  - Thu slot 8 → Sat slot 9: Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue
+  - Thu slot 9 → Sat slot 10: Review website direction: light lookbook-style G&B page for seller/investor credibility
+  - Thu slot 10 → Sat slot 11: Draft seller-call prep framework: transition priorities, questions, and deal-structure options
+  - Thu slot 11 → Sat slot 12: Niche intel review
+  - Thu slot 12 → Sat slot 13: Locate holdco financial model
+  - Thu slot 13 → Sat slot 14: Call IRS to confirm Form 8822-B address update
+  - Thu slot 14 → Sat slot 15: Text Sarah Finders Fee document
+  - Thu slot 15 → Sat slot 16: Call Troy
+  - Thu slot 16 → Sat slot 17: Reconnect with Levi on prior art storage path
+  - Thu slot 17 → Sat slot 18: Circle back with Paul on art storage conversation
+  - Thu slot 18 → Sat slot 19: Order more business cards and change title to founder
+  - Thu slot 19 → Sat slot 20: Reach out to organizer of Art Oct conference
+  - Thu slot 20 → Sat slot 21: Email Melissa to assist with BK Growth contact and file folders
+  - Thu slot 21 → Sat slot 22: Send new email outreach on dashboard (3 companies)
+  - Thu slot 22 → Sat slot 23: Visit store carrying jewelry line to see product and merchandising in person
+  - Thu slot 23 → Sat slot 24: Draft/schedule Greg thank-you and insurance contacts follow-up
+  - Thu slot 24 → Sat slot 25: Weekend prep: prepare for a possible Sidney Garber meeting next week if she responds.
+  - Thu slot 25 → Sat slot 26: Set weekly North Star from 60-day LOI sprint and One-Year Plan
+  - Thu slot 26 → Sat slot 27: Add Kay food staples to Sunday grocery run
+  - Thu slot 27 → Sat slot 28: Kids allowance: Sunday $10/week + Friday $10/day through Aug
+  - Thu slot 28 → Sat slot 29: Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions
+  - Thu slot 29 → Sat slot 30: Pull Megan pre-LOI prep meeting notes
+  - Thu slot 30 → Sat slot 31: Watch SLD video
+  - Thu slot 31 → Sat slot 32: Get Real Pigeons from the library
+  - Thu slot 32 → Sat slot 33: Pay One Hanover Square rent
+
+[2026-08-15T10:00:51.167778] carry-forward-day — fri-to-sat
+  - moved: 22
+  - source: Fri
+  - destination: Sat
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '21:70'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260815-100046.json
+  
+  - Fri slot 1 → Sat slot 34: Create travel plans for July in Paris/France next year
+  - Fri slot 2 → Sat slot 35: Look into GLP1
+  - Fri slot 3 → Sat slot 36: Review Kai Grey Ventures renewal
+  - Fri slot 4 → Sat slot 37: Submit the boys to: State Models, Zuri Models, Teri B and Stellar
+  - Fri slot 5 → Sat slot 38: Submit new PSLF form
+  - Fri slot 6 → Sat slot 39: Create project for French passports
+  - Fri slot 7 → Sat slot 40: Renew kids' work permits
+  - Fri slot 8 → Sat slot 41: Renew Kilian's passport
+  - Fri slot 9 → Sat slot 42: Pull contact info and prepare kids modeling submissions to 5 referred agencies
+  - Fri slot 10 → Sat slot 43: Pay RSM
+  - Fri slot 11 → Sat slot 44: Set up Claude workflow for Friday: slides + website aesthetics
+  - Fri slot 12 → Sat slot 45: Call IRS/government to confirm address change
+  - Fri slot 13 → Sat slot 46: Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan
+  - Fri slot 14 → Sat slot 47: Systems / G&B Housekeeping: clean up the Slack/system failures from this morning.
+  - Fri slot 15 → Sat slot 48: Weekly review — system health, M&A activities, budget
+  - Fri slot 16 → Sat slot 49: Check NYC Housing Connect for new Manhattan lotteries
+  - Fri slot 17 → Sat slot 50: Friday internal/admin review: family admin, finance/admin, website/list cleanup only
+  - Fri slot 18 → Sat slot 51: Personal Finance / Wealth Monitor
+  - Fri slot 19 → Sat slot 52: Nonprofit Operations
+  - Fri slot 20 → Sat slot 53: Family Admin
+  - Fri slot 21 → Sat slot 54: Systems / Website / G&B Housekeeping
+  - Fri slot 22 already existed on Sat; cleared source: 8:30 Decision Review: review what moved, what parks, what rolls forward

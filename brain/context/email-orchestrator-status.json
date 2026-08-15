@@ -1,9 +1,12 @@
 {
-  "blocked": [],
+  "blocked": [
+    "source artifact is stale",
+    "compact input artifact is stale"
+  ],
   "deal_items": 35,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-08-14T06:50:00.877227-04:00",
+  "fetched_at": "2026-08-15T09:59:17.067107-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -48,44 +51,18 @@
     }
   ],
   "input_artifact": "brain/context/email-intelligence-input-2026-08-14.json",
-  "input_status": "ok",
+  "input_status": "stale",
   "needs_kay": [
     "35 broker/listing row(s) extracted",
-    "2 prior-day thank-you(s) need approval: One Hanover Happy Hour; Relationship / Call Window",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
   "source_artifact": "brain/context/email-scan-results-2026-08-14.md",
-  "source_status": "ok",
+  "source_status": "stale",
   "stale_drafts": 0,
   "task_candidates": 0,
-  "thank_you_items": [
-    {
-      "completed_at": "",
-      "due_date": "2026-08-14",
-      "email": "evan@twobridgeslp.com",
-      "event": "One Hanover Happy Hour",
-      "event_date": "2026-08-13",
-      "person": "One Hanover Happy Hour",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-08-14",
-      "email": "",
-      "event": "Relationship / Call Window",
-      "event_date": "2026-08-13",
-      "person": "Relationship / Call Window",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    }
-  ],
+  "thank_you_items": [],
   "unclear_followthrough_items": []
 }

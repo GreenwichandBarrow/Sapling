@@ -1,96 +1,38 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260808-101011",
-  "sheet_id": "1DcwtZYMqA3OMDeQAsLsS9szIWScz22qVCO7jrfHpvww",
+  "timestamp": "20260815-100038",
+  "sheet_id": "1U1GN9xcg18S-o4mA-b3QZ3Sr-xUvhHDn2G23pLI1rmA",
   "ranges": {
-    "'Fri'!A17:E66": [
+    "'Thu'!A21:E70": [
       [
         false,
-        "Systems / Dashboard: add a Today\u2019s Good Morning Brief page/link to the dashboard.",
-        "Work",
-        "G&B"
-      ],
-      [
-        true,
-        "Scan IRS docs at FedEx"
+        "Narrow/edit must-have diligence questions to top 5"
       ],
       [
         false,
-        "Call IRS/government to confirm address change"
-      ],
-      [
-        true,
-        "Pay rent"
-      ],
-      [
-        true,
-        "Follow up with Sarah about Monday meeting"
-      ],
-      [
-        true,
-        "Book afterschool for Tuesday and Wednesday for the kids"
-      ],
-      [
-        true,
-        "Call Jesse at DUSC"
-      ],
-      [
-        true,
-        "Sign up Kaiden for RSM"
+        "Outreach Work: seller / broker / investor / analyst outreach block"
       ],
       [
         false,
-        "Create project for French passports"
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
       ],
       [
         false,
-        "Identify first nonprofit activation requirement for 501(c)(3) activity mark"
+        "Strategy / Research: deck, model, thesis, target discovery, niche work"
       ],
       [
         false,
-        "Review website direction: light lookbook-style G&B page for seller/investor credibility"
+        "8:30 Decision Review: review what moved, what parks, what rolls forward"
       ],
       [
         false,
-        "Set up Claude workflow for Friday: slides + website aesthetics"
-      ],
-      [
-        false,
-        "Weekly review \u2014 system health, M&A activities, budget"
-      ],
-      [
-        false,
-        "Check NYC Housing Connect for new Manhattan lotteries"
-      ],
-      [
-        false,
-        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
-      ],
-      [
-        false,
-        "Draft/schedule Greg thank-you and insurance contacts follow-up"
-      ],
-      [
-        false,
-        "Call IRS to confirm Form 8822-B address update"
-      ],
-      [
-        false,
-        "Pull Megan pre-LOI prep meeting notes"
-      ],
-      [
-        true,
-        "Send Emily 504",
-        "",
-        "Work",
-        "G&B"
-      ],
-      [
-        false,
-        "Prepare high-level seller data ask draft",
-        "",
+        "Fax W2 to NYS",
         "Home",
         "Home"
+      ],
+      [
+        false,
+        "Prepare high-level seller data ask draft"
       ],
       [
         false,
@@ -98,58 +40,120 @@
       ],
       [
         false,
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility"
+      ],
+      [
+        false,
         "Draft seller-call prep framework: transition priorities, questions, and deal-structure options"
       ],
       [
-        true,
+        false,
         "Niche intel review"
       ],
       [
         false,
-        "Narrow/edit must-have diligence questions to top 5"
+        "Locate holdco financial model"
       ],
       [
         false,
-        "Systems / Sourcing: set up better Axial target discovery/filtering.",
+        "Call IRS to confirm Form 8822-B address update"
+      ],
+      [
+        false,
+        "Text Sarah Finders Fee document"
+      ],
+      [
+        false,
+        "Call Troy"
+      ],
+      [
+        false,
+        "Reconnect with Levi on prior art storage path"
+      ],
+      [
+        false,
+        "Circle back with Paul on art storage conversation",
         "Work",
         "G&B"
       ],
       [
-        true,
-        "Family Admin: email afterschool program about waitlists and 9-5 coverage options.",
+        false,
+        "Order more business cards and change title to founder",
+        "Work",
+        "G&B",
+        "Send via text."
+      ],
+      [
+        false,
+        "Reach out to organizer of Art Oct conference"
+      ],
+      [
+        false,
+        "Email Melissa to assist with BK Growth contact and file folders"
+      ],
+      [
+        false,
+        "Send new email outreach on dashboard (3 companies)"
+      ],
+      [
+        false,
+        "Visit store carrying jewelry line to see product and merchandising in person"
+      ],
+      [
+        false,
+        "Draft/schedule Greg thank-you and insurance contacts follow-up"
+      ],
+      [
+        false,
+        "Weekend prep: prepare for a possible Sidney Garber meeting next week if she responds."
+      ],
+      [
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
+      ],
+      [
+        false,
+        "Add Kay food staples to Sunday grocery run"
+      ],
+      [
+        false,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
+      ],
+      [
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
+      ],
+      [
+        false,
+        "Pull Megan pre-LOI prep meeting notes"
+      ],
+      [
+        false,
+        "Watch SLD video",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Get Real Pigeons from the library",
         "Home",
         "Home"
       ],
       [
         false,
-        "Nonprofit Operations: create next-step game plan for W2 setup and nonprofit build-out.",
-        "Work",
-        "Nonprofit"
-      ],
-      [
-        false,
-        "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning.",
+        "Pay One Hanover Square rent",
         "Work",
         "G&B"
       ],
       [
-        false,
-        "Weekend prep: prepare for a possible Sidney Garber meeting next week if he responds.",
-        "Work",
-        "G&B"
+        false
       ],
       [
-        false,
-        "Renew child working permit"
+        false
       ],
       [
-        false,
-        "Renew passports"
+        false
       ],
-      [],
-      [],
-      [],
-      [],
       [
         false
       ],
@@ -196,10 +200,12 @@
         false
       ]
     ],
-    "'Sat'!A17:E66": [
+    "'Sat'!A21:E70": [
       [
         false,
-        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
+        "Buy gift for baby Ruby",
+        "Home",
+        "Home"
       ],
       [
         false

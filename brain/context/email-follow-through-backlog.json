@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-14",
+  "updated_at": "2026-08-17",
   "items": [
     {
       "bucket": "thank",
@@ -1526,6 +1526,18 @@
       "event": "One Hanover Happy Hour",
       "event_date": "2026-08-13",
       "calendar_event_id": "1p62i0qemj9h2nbto7lvpr81un_20260813T213000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-17",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-16",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260817T153000Z"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

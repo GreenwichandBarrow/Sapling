@@ -1,22 +1,23 @@
 {
-  "date": "2026-08-15",
+  "date": "2026-08-17",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-08-15.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-08-17.md",
   "email_scan_status": "live",
   "deals_found": 0,
-  "broker_opportunistic": 1,
+  "broker_opportunistic": 2,
   "near_misses": 0,
-  "sources_scanned": 19,
+  "sources_scanned": 16,
   "sources_covered": {
-    "marketplace": 8,
+    "marketplace": 6,
     "email_newsletters": 7,
-    "direct_email": 4
+    "direct_email": 3
   },
   "manual_check_sources": [],
   "sources_blocked_verified": 0,
   "sources_blocked_single_attempt": 0,
   "volume_status": "BELOW TARGET",
   "needs_attention": [
-    "No PASS deals surfaced; volume below target"
+    "volume below target",
+    "DealsX snapshot stale"
   ]
 }

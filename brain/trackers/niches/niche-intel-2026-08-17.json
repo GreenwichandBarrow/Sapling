@@ -1,0 +1,70 @@
+{
+  "run_date": "2026-08-17",
+  "run_mode": "monday",
+  "niches_evaluated": 1,
+  "niches_identified": 1,
+  "one_pagers_written": 1,
+  "scorecards_written": 1,
+  "tracker_updated": true,
+  "runtime_seconds": 1680,
+  "zero_finding_reason": "",
+  "sources_covered": {
+    "recent_track": "Complete for available sources: read-only Gmail subscription, industry research, deal-flow, and investor buckets; recent Granola notes; vault outputs/calls; passive inbox; local last30days with limited coverage plus supplemental web research.",
+    "historical_track": "Partial: historical vault calls and targeted read-only Gmail searches/readbacks covered; OneNote MCP unavailable, ChatGPT export missing, older Granola beyond vault-synced calls not fully discoverable."
+  },
+  "umbrella_themes_reviewed": [
+    "Luxury, Heritage & Personal Goods",
+    "Asset Protection & Stewardship",
+    "Beauty, Wellness & Longevity Infrastructure",
+    "Family Wealth, Legacy & Life Infrastructure",
+    "Trust, Compliance & Verification",
+    "Luxury built environments",
+    "Marine and private-client recreation"
+  ],
+  "edge_niches_considered": 10,
+  "open_loops_infra": [
+    "OneNote SEARCH FUND notebook unavailable in this Codex/systemd session.",
+    "ChatGPT selected_business_conversations.json export missing from /home/ubuntu.",
+    "last30days local coverage was thin: no native web backend and no X/YouTube/ScrapeCreators coverage.",
+    "Attio cross-reference was not run because this scheduled flow did not have a credential-safe Attio path loaded."
+  ],
+  "niches": [
+    {
+      "name": "Luxury Leather Goods, Handbag, Footwear, and Garment Aftercare Services",
+      "score": 2.34,
+      "drive_folder": "https://drive.google.com/drive/folders/19YQlV4SQ7m2it3h-kT3c7GYHq0PwK3Xo"
+    }
+  ],
+  "deliverables": {
+    "markdown_report": "brain/outputs/2026-08-17-niche-intelligence-report.md",
+    "chatroom": "brain/traces/agents/2026-08-17-niche-intelligence.md",
+    "one_pagers": [
+      {
+        "name": "Luxury Leather Goods Handbag Footwear and Garment Aftercare Services August 2026.pptx",
+        "drive_file_id": "1nJNfWxR0-lGPAjtxoVfmt42ro6x4YIH8",
+        "url": "https://docs.google.com/presentation/d/1nJNfWxR0-lGPAjtxoVfmt42ro6x4YIH8/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true"
+      }
+    ],
+    "scorecards": [
+      {
+        "name": "Luxury Leather Goods Handbag Footwear and Garment Aftercare Services Scorecard August 2026.xlsx",
+        "drive_file_id": "1rNLbtwA5HkMFnln5-GCOSvlEaL0O_sjl",
+        "url": "https://docs.google.com/spreadsheets/d/1rNLbtwA5HkMFnln5-GCOSvlEaL0O_sjl/edit?usp=drivesdk"
+      }
+    ],
+    "tracker": {
+      "sheet_id": "1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins",
+      "tab": "WEEKLY REVIEW",
+      "row": 50,
+      "rank": 47
+    }
+  },
+  "source_coverage_diagnostics": {
+    "gmail": "Read-only searches and selected reads completed with --gmail-no-send.",
+    "granola": "Recent notes covered after UTC timestamp retry; historical Granola coverage came from vault-synced call notes.",
+    "vault": "Recent and historical brain/calls and brain/outputs reviewed by gather agents.",
+    "web_social": "last30days available but limited; supplemental web research used.",
+    "drive": "One-pager and scorecard uploaded and folder verified.",
+    "sheets": "WEEKLY REVIEW append verified exactly once."
+  }
+}

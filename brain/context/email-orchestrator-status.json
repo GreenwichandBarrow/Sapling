@@ -1,9 +1,9 @@
 {
   "blocked": [],
-  "deal_items": 53,
+  "deal_items": 64,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-08-17T12:48:58.064929-04:00",
+  "fetched_at": "2026-08-18T06:50:44.957906-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -47,27 +47,52 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-08-17.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-08-18.json",
   "input_status": "ok",
   "needs_kay": [
-    "53 broker/listing row(s) extracted",
-    "1 prior-day thank-you(s) need approval: Relationship / Call Window",
-    "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg"
+    "64 broker/listing row(s) extracted",
+    "3 prior-day thank-you(s) need approval: Brooke\u2019s cell; Relationship / Call Window; Relationship / Call Window",
+    "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
+    "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-08-17.md",
+  "source_artifact": "brain/context/email-scan-results-2026-08-18.md",
   "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 0,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-08-17",
+      "due_date": "2026-08-18",
+      "email": "",
+      "event": "Call Brooke\u2019s cell",
+      "event_date": "2026-08-17",
+      "person": "Brooke\u2019s cell",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-08-18",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-08-16",
+      "event_date": "2026-08-17",
+      "person": "Relationship / Call Window",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-08-18",
+      "email": "",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-17",
       "person": "Relationship / Call Window",
       "sent_at": "",
       "sent_subject": "",
@@ -75,5 +100,7 @@
       "status": "not drafted"
     }
   ],
-  "unclear_followthrough_items": []
+  "unclear_followthrough_items": [
+    "Lisa (24-hour thank-you after external call)"
+  ]
 }

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-17",
+  "updated_at": "2026-08-18",
   "items": [
     {
       "bucket": "thank",
@@ -1538,6 +1538,42 @@
       "event": "Relationship / Call Window",
       "event_date": "2026-08-16",
       "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260817T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-18",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-17",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260817T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Brooke\u2019s cell",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-18",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Call Brooke\u2019s cell",
+      "event_date": "2026-08-17",
+      "calendar_event_id": "_892jcdhh8opjab9k84q34b9k6l13iba284o4aba26csjch1h6srj4d9j8o"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-18",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-17",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260818T153000Z"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

@@ -1,0 +1,30 @@
+{
+  "id": "not_ai2tfUwYg4KMkt",
+  "processed_at": "2026-08-18T17:08:36.025233Z",
+  "granola_url": "https://notes.granola.ai/d/a52d727e-6be6-4d11-88bb-2224c48bd24b",
+  "title": "Call Brooke’s cell",
+  "date": "2026-08-18",
+  "time": "10:02 AM ET",
+  "location": "remote / phone",
+  "counterparty": "Brooke Garber Neidich / Sidney Garber",
+  "transcript_doc_id": "1XOGxZ0-J6l2Ga7GrDAR6uUijd5Gr5wgYJxqMwt0XFro",
+  "transcript_doc_url": "https://docs.google.com/document/d/1XOGxZ0-J6l2Ga7GrDAR6uUijd5Gr5wgYJxqMwt0XFro/edit",
+  "doc_id": "1f5M8bKO7r8hLZhKW44Bhg41dELhf2Ukr2xRyrmoVago",
+  "doc_url": "https://docs.google.com/document/d/1f5M8bKO7r8hLZhKW44Bhg41dELhf2Ukr2xRyrmoVago/edit",
+  "attio_notes": {
+    "people": [
+      "9f5b97a4-20d2-4e2c-b264-d9c5b137ffae"
+    ],
+    "companies": [
+      "68293dcd-c897-4803-92dd-3f52f96ef76c"
+    ]
+  },
+  "attio_failed": false,
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_ai2tfUwYg4KMkt.json",
+  "task_count": 4,
+  "vault_call_note": "brain/calls/2026-08-18-brooke-garber-neidich-sidney-garber.md",
+  "slack_summary": "Brook Garber Neidich / Sidney Garber looks like a real brand with durable product identity, but the operating story is constrained by manufacturing risk, margin pressure, and working-capital structure. Kay now has the transcript, analysis, Attio context, and four review-ready tasks queued for Good Morning.",
+  "slack_posted": true,
+  "processed_archive": "brain/trackers/post-call-analyzer/processed/not_ai2tfUwYg4KMkt.json",
+  "granola_note_title": "Call Brooke’s cell"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "not_6Il6nRp6glwgrj",
+  "processed_at": "2026-08-18T17:08:19.941173Z",
+  "granola_url": "https://notes.granola.ai/d/a3a53277-7d26-4afc-ad79-60df2b4d9843",
+  "title": "Phone call with +16465310680",
+  "date": "2026-08-18",
+  "time": "10:01 AM ET",
+  "location": "remote / phone",
+  "counterparty": "646-531-0680",
+  "transcript_doc_id": "1p0dS11BjmcrT4pU7dbDpVEyFA3LH2E1Ar6HWLjXYc9o",
+  "transcript_doc_url": "https://docs.google.com/document/d/1p0dS11BjmcrT4pU7dbDpVEyFA3LH2E1Ar6HWLjXYc9o/edit",
+  "doc_id": "1dZSO09fzmP_XneiIhzzUwrS-rjlZphR8Pg0idhV8rIU",
+  "doc_url": "https://docs.google.com/document/d/1dZSO09fzmP_XneiIhzzUwrS-rjlZphR8Pg0idhV8rIU/edit",
+  "attio_notes": {
+    "people": [],
+    "companies": []
+  },
+  "attio_failed": true,
+  "tasks_failed": true,
+  "task_count": 0,
+  "tasks_file": "",
+  "vault_call_note": "brain/calls/2026-08-18-phone-number-capture-glwgrj.md",
+  "slack_summary": "Granola only captured the dialed number and no recoverable conversation. The artifact is preserved, but there is no substantive business signal here.",
+  "slack_posted": true,
+  "processed_archive": "brain/trackers/post-call-analyzer/processed/not_6Il6nRp6glwgrj.json",
+  "granola_note_title": "Phone call with +16465310680"
+}

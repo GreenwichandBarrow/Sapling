@@ -1,0 +1,12 @@
+{
+  "id": "not_ai2tfUwYg4KMkt",
+  "title": "Call Brooke\u2019s cell",
+  "created_at": "2026-08-18T14:02:15.473Z",
+  "updated_at": "2026-08-18T16:23:35.749Z",
+  "owner": {
+    "name": "Kay Schneider",
+    "email": "kay.s@greenwichandbarrow.com"
+  },
+  "queued_at": "2026-08-18T13:00:47-04:00",
+  "detector": "granola-api-rest"
+}

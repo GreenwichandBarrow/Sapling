@@ -1,0 +1,12 @@
+{
+  "id": "not_6RPbp0NqTmdWYm",
+  "title": "Phone call with +16465310680",
+  "created_at": "2026-08-18T14:00:24.438Z",
+  "updated_at": "2026-08-18T14:00:50.084Z",
+  "owner": {
+    "name": "Kay Schneider",
+    "email": "kay.s@greenwichandbarrow.com"
+  },
+  "queued_at": "2026-08-18T13:00:47-04:00",
+  "detector": "granola-api-rest"
+}

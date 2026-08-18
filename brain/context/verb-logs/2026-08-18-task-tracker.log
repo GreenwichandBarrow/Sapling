@@ -1,0 +1,8 @@
+
+[2026-08-18T09:33:32.902646] schedule-from-todo-days — 2026-08-18
+  - target: Week planning tab
+  - packed To Do: {'ongoing': 35, 'not_completed': 84, 'other_active': 0, 'completed': 152, 'dropped': 66, 'active': 119, 'total': 337}
+  - wrote Week from To Do Day of the Week: {'Sun': 6, 'Mon': 6, 'Tue': 17, 'Wed': 12, 'Thu': 4, 'Fri': 19, 'Sat': 1}
+  - daily tabs cleared/not populated pending Kay approval
+  - skipped: [{'task': 'Complete Quarterly Update', 'day': 'Thursday', 'reason': 'future due date 2026-08-31 outside current week'}]
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260818-093307.json

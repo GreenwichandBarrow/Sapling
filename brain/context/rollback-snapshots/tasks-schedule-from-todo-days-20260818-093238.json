@@ -1,7 +1,7 @@
 {
   "verb": "schedule-from-todo-days",
-  "timestamp": "20260809-103353",
-  "sheet_id": "1U1GN9xcg18S-o4mA-b3QZ3Sr-xUvhHDn2G23pLI1rmA",
+  "timestamp": "20260818-093238",
+  "sheet_id": "1Tjprc8z5uXCP94Y-yJaNZDk3SwNC2h-0tRXctornetE",
   "ranges": {
     "'To Do'!A1:H400": [
       [
@@ -313,6 +313,15 @@
         "Weekly Recurring Fri"
       ],
       [
+        "On-going",
+        "Watch SLD video",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Weekly Recurring Tue"
+      ],
+      [
         "Not Completed",
         "Order gift for Lois (Jack Hugh Mackay)",
         "Home",
@@ -432,78 +441,6 @@
         "Short Term"
       ],
       [
-        "Dropped",
-        "Verify recipient 501(c)(3) status; board vote + grant approval",
-        "Work",
-        "Myself Renewed",
-        "",
-        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
-        "Short Term"
-      ],
-      [
-        "Dropped",
-        "Hold a board meeting + adopt written resolution",
-        "Work",
-        "Myself Renewed",
-        "",
-        "Resolution should approve nonprofit activation, Kay paid role/duties, W-2 payroll setup, NY minimum wage base pay, and business donation/startup funding handling. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
-        "Short Term"
-      ],
-      [
-        "Dropped",
-        "Add Myself Renewed to QuickBooks (nonprofit category)",
-        "Work",
-        "Myself Renewed",
-        "",
-        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
-        "Short Term"
-      ],
-      [
-        "Dropped",
-        "Confirm registration with NY Charities Bureau",
-        "Work",
-        "Myself Renewed",
-        "",
-        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
-        "Short Term"
-      ],
-      [
-        "Dropped",
-        "Make initial business donation to Myself Renewed",
-        "Work",
-        "Myself Renewed",
-        "",
-        "Use business funds to seed the nonprofit; record cleanly in business books and nonprofit books, with donation receipt/documentation. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
-        "Short Term"
-      ],
-      [
-        "Dropped",
-        "Confirm nonprofit bank account exists + PayPal Giving Fund integration",
-        "Work",
-        "Myself Renewed",
-        "",
-        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
-        "Short Term"
-      ],
-      [
-        "Dropped",
-        "Draft personal giving statement aligned with legacy vision",
-        "Work",
-        "Myself Renewed",
-        "",
-        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
-        "Short Term"
-      ],
-      [
-        "Dropped",
-        "Add donation page language + set up donation processor",
-        "Work",
-        "Myself Renewed",
-        "",
-        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
-        "Short Term"
-      ],
-      [
         "Not Completed",
         "Review Kai Grey Ventures renewal",
         "Work",
@@ -530,10 +467,10 @@
         "",
         "Combined from To Do rows 34, 35, 36, 37, 38 based on Sat slot 5.",
         "Short Term",
-        "Friday"
+        "Tuesday"
       ],
       [
-        "Not Completed",
+        "Dropped",
         "Connect Roberta & Elspeth",
         "Work",
         "G&B",
@@ -542,7 +479,7 @@
         "Short Term"
       ],
       [
-        "Not Completed",
+        "Dropped",
         "Connect Lily & Suzanne",
         "Work",
         "G&B",
@@ -586,7 +523,7 @@
         "",
         "",
         "Short Term",
-        "Monday"
+        "Wednesday"
       ],
       [
         "Not Completed",
@@ -651,16 +588,7 @@
         "2026-06-15",
         "IRS business line: 800-829-4933. Ask to confirm business mailing address currently on file for EIN before updating bank address.",
         "Short Term",
-        "Monday"
-      ],
-      [
-        "Dropped",
-        "Thank you: Jay, Laura, Paul, Bob",
-        "",
-        "",
-        "",
-        "Combined from To Do rows 91, 92, 93 based on Sat slot 10.",
-        "Short Term"
+        "Tuesday"
       ],
       [
         "Not Completed",
@@ -672,39 +600,12 @@
         "Short Term"
       ],
       [
-        "Dropped",
-        "Get reimbursed for Motion",
-        "",
-        "",
-        "",
-        "",
-        "Short Term"
-      ],
-      [
-        "Dropped",
-        "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg",
-        "Work",
-        "G&B",
-        "",
-        "Krupa note from removed row 65: Reciprocal real-estate-component deal flow; success-fee-only sale-leaseback specialist",
-        "Short Term"
-      ],
-      [
         "Not Completed",
         "Update Tailscale SSH checkPeriod for Sapling VPS",
         "Work",
         "Sapling OS",
         "2026-06-21",
         "Tailscale ACL: keep action=check; set checkPeriod=168h for Kay SSH to Sapling VPS as ubuntu. Scope narrowly to Kay identity + VPS destination; do not broaden users or machines. After policy update, Kay should approve SSH on Sunday; next check is ~1 week from successful re-auth. Admin: https://login.tailscale.com/admin/acls",
-        "Short Term"
-      ],
-      [
-        "Dropped",
-        "Do luxury-retailer store visits for pest buying criteria",
-        "Work",
-        "Pest",
-        "2026-06-18",
-        "Test who buys pest services and what criteria they use.",
         "Short Term"
       ],
       [
@@ -751,7 +652,8 @@
         "",
         "",
         "",
-        "Short Term"
+        "Short Term",
+        "Tuesday"
       ],
       [
         "Not Completed",
@@ -760,8 +662,7 @@
         "Pest thesis",
         "2026-06-22",
         "\u2192 promoted to Mon slot 3 on 2026-06-21; Source: Camilla pest company list",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -770,8 +671,7 @@
         "",
         "",
         "",
-        "Short Term",
-        "Tuesday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -828,8 +728,7 @@
         "60-Day LOI Sprint",
         "2026-07-19",
         "Weekend task: thank Greg and ask for the insurance contacts he offered. Draft/schedule only; do not distract from Week 1 jewelry sprint.",
-        "Short Term",
-        "Sun"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -848,16 +747,6 @@
         "60-Day LOI Sprint",
         "",
         "Deferred during Week 1 jewelry LOI sprint; revive only if jewelry path stalls.",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Dropped",
-        "Ask family friend jewelry business owner for market-mapping conversation",
-        "Work",
-        "60-Day LOI Sprint",
-        "",
-        "Deferred during Week 1 jewelry LOI sprint; use only if specific market-mapping input is needed after deck gaps are clear.",
         "Short Term"
       ],
       [
@@ -868,7 +757,7 @@
         "",
         "Deferred during Week 1 jewelry LOI sprint unless needed after seller engagement or public-info company analysis.",
         "Short Term",
-        "Monday"
+        "Wednesday"
       ],
       [
         "Not Completed",
@@ -878,25 +767,7 @@
         "2026-07-18",
         "Weekend top priority: prep all materials to go out to agencies. Do not send until next business day unless Kay chooses otherwise.",
         "Short Term",
-        "Friday"
-      ],
-      [
-        "Dropped",
-        "Identify first nonprofit activation requirement for 501(c)(3) activity mark",
-        "Work",
-        "Nonprofit Activation",
-        "2026-07-18",
-        "Women's health / pregnancy-focused nonprofit is legally formed and near 3-year activity mark. Need clean next step. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
-        "Short Term"
-      ],
-      [
-        "Dropped",
-        "Send kids modeling submissions to 5 referred agencies",
-        "Home",
-        "Family Wealth / Kids Modeling",
-        "2026-07-20",
-        "Prepared on Friday; send next business day because Friday outreach is lower quality, especially in summer.",
-        "Short Term"
+        "Tuesday"
       ],
       [
         "Not Completed",
@@ -909,32 +780,22 @@
       ],
       [
         "Not Completed",
-        "Pay RSM",
+        "Call RSM",
         "Home",
         "Home",
         "2026-08-01",
         "RSM requested payment by Aug 1.",
         "Short Term",
-        "Friday"
+        "Tuesday"
       ],
       [
         "Completed",
-        "Buy new Zane dragon LEGO for Kaiden",
-        "Home",
-        "Home",
-        "2026-08-01",
-        "Buy the new Zane dragon LEGO for Kaiden.",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
         "Prepare high-level seller data ask draft",
         "Work",
         "Jewelry LOI Sprint",
         "2026-07-21",
         "Draft soft ask for EBITDA/owner earnings, revenue mix, inventory, lease/key team, and price/transition expectations.",
-        "Short Term",
-        "Wednesday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -947,14 +808,13 @@
         "Wednesday"
       ],
       [
-        "Not Completed",
+        "Completed",
         "Narrow/edit must-have diligence questions to top 5",
         "Work",
         "Jewelry LOI Sprint",
         "2026-07-23",
         "Edit down to the five items required before LOI: EBITDA/earnings, revenue mix, inventory, price/transition expectations, key team/lease exposure.",
-        "Short Term",
-        "Thursday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -991,33 +851,6 @@
         "Body Reset",
         "",
         "",
-        "Short Term"
-      ],
-      [
-        "Dropped",
-        "Draft Kay nonprofit role description and minimum-wage payroll assumptions",
-        "Work",
-        "Myself Renewed",
-        "",
-        "Define actual services/duties, expected hours, work location, and base wage. NY 2026 minimum wage: $17/hr for NYC, Long Island, Westchester; $16/hr for rest of NY. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
-        "Short Term"
-      ],
-      [
-        "Dropped",
-        "Set Kay up as W-2 employee in nonprofit payroll",
-        "Work",
-        "Myself Renewed",
-        "",
-        "After board approval: enter Kay as employee, configure withholding/payroll taxes, choose pay schedule, and confirm wage matches NY minimum wage for work location. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
-        "Short Term"
-      ],
-      [
-        "Dropped",
-        "Run first nonprofit payroll and confirm W-2/payroll-tax records",
-        "Work",
-        "Myself Renewed",
-        "",
-        "Execute first payroll only after funding, board approval, and employee setup are complete; confirm paystub, withholding, employer taxes, and W-2 reporting path. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
         "Short Term"
       ],
       [
@@ -1193,15 +1026,7 @@
         "Short Term",
         "Wednesday"
       ],
-      [
-        "Not Completed",
-        "Send thank-you to Greg and ask for the insurance owner intro he suggested",
-        "",
-        "",
-        "",
-        "",
-        "Short Term"
-      ],
+      [],
       [
         "Not Completed",
         "Review new SLD video",
@@ -1209,15 +1034,6 @@
         "",
         "",
         "",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Take truck for oil change",
-        "Home",
-        "Home",
-        "2026-08-11",
-        "Oil change moved from Friday to next Tuesday.",
         "Short Term",
         "Tuesday"
       ],
@@ -1232,33 +1048,13 @@
         "Friday"
       ],
       [
-        "Not Completed",
+        "On-going",
         "Activate Friday recurring: Weekly Review + Next Week Setup",
         "Work",
         "G&B",
         "2026-09-11",
         "Add as Friday recurring once post-9/10 Friday schedule starts.",
         "Short Term"
-      ],
-      [
-        "Completed",
-        "Systems / Dashboard: add a Today\u2019s Good Morning Brief page/link to the dashboard.",
-        "Work",
-        "G&B",
-        "",
-        "",
-        "Short Term",
-        "Friday"
-      ],
-      [
-        "Not Completed",
-        "Systems / Sourcing: set up better Axial target discovery/filtering.",
-        "Work",
-        "G&B",
-        "",
-        "",
-        "Short Term",
-        "sunday"
       ],
       [
         "Not Completed",
@@ -1281,7 +1077,7 @@
         "Friday"
       ],
       [
-        "Not Completed",
+        "Completed",
         "Weekend prep: prepare for a possible Sidney Garber meeting next week if he responds.",
         "Work",
         "G&B",
@@ -1292,19 +1088,166 @@
       ],
       [
         "Not Completed",
-        "Renew child working permit",
-        "",
-        "",
-        "",
+        "Locate holdco financial model",
+        "Work",
+        "G&B",
+        "2026-08-11",
         "",
         "Short Term",
-        "Friday"
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Call Troy",
+        "Work",
+        "G&B",
+        "2026-08-11",
+        "",
+        "Short Term",
+        "Tuesday"
       ],
       [
         "Not Completed",
-        "Renew passports",
+        "Text Sarah Finders Fee document",
+        "Work",
+        "G&B",
+        "2026-08-11",
+        "Send via text.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Reconnect with Andrew Freiman re: Chenmark intro",
+        "Work",
+        "G&B",
+        "",
+        "Discuss Chenmark and whether an intro makes sense.",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Not Completed",
+        "Complete Quarterly Update",
+        "Work",
+        "G&B",
+        "2026-08-31",
+        "",
+        "Short Term",
+        "Thursday"
+      ],
+      [
+        "Not Completed",
+        "Change login info for operations folder + operations Gmail account",
+        "Work",
+        "G&B",
+        "",
+        "Update credentials/access details; use 1Password-backed credentials handling.",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Completed",
+        "Get Real Pigeons from the library",
+        "Home",
+        "Home",
+        "2026-08-12",
+        "",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Not Completed",
+        "Buy gift for baby Ruby",
+        "Home",
+        "Home",
+        "2026-08-15",
+        "",
+        "Short Term",
+        "Saturday"
+      ],
+      [
+        "Completed",
+        "Buy new backpacks, water bottles, and clothes for the kids",
+        "Home",
+        "Home",
+        "2026-08-16",
+        "",
+        "Short Term",
+        "Sunday"
+      ],
+      [
+        "Not Completed",
+        "Call Troy if NYS refund has not arrived",
+        "Home",
+        "Home",
+        "2026-10-05",
+        "First week of October checkpoint: call Troy if NYS refund has not arrived.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Fax W2 to NYS",
+        "Home",
+        "Home",
+        "2026-08-13",
+        "",
+        "Short Term",
+        "Thursday"
+      ],
+      [
+        "Not Completed",
+        "Pay One Hanover Square rent",
+        "Work",
+        "G&B",
+        "2026-08-13",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Weekend prep: prepare for a possible Sidney Garber meeting next week if she responds.",
         "",
         "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Take truck for oil change",
+        "Home",
+        "Home",
+        "2026-08-11",
+        "Oil change moved from Friday to next Tuesday.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Systems / Sourcing: set up better Axial target discovery/filtering.",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term",
+        "sunday"
+      ],
+      [
+        "Completed",
+        "Buy new Zane dragon LEGO for Kaiden",
+        "Home",
+        "Home",
+        "2026-08-01",
+        "Buy the new Zane dragon LEGO for Kaiden.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Systems / Dashboard: add a Today\u2019s Good Morning Brief page/link to the dashboard.",
+        "Work",
+        "G&B",
         "",
         "",
         "Short Term",
@@ -2576,6 +2519,196 @@
         "Short Term"
       ],
       [
+        "Completed",
+        "Check DealsX insurance emails: sent + responses",
+        "Work",
+        "DealsX",
+        "2026-08-11",
+        "Verify whether insurance outreach emails went out and whether any responses came back.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Dropped",
+        "Renew child working permit",
+        "",
+        "",
+        "",
+        "Dropped as duplicate per Kay on 2026-08-09; broader retained item remains active.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Renew passports",
+        "",
+        "",
+        "",
+        "Dropped as duplicate per Kay on 2026-08-09; broader retained item remains active.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Verify recipient 501(c)(3) status; board vote + grant approval",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Hold a board meeting + adopt written resolution",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Resolution should approve nonprofit activation, Kay paid role/duties, W-2 payroll setup, NY minimum wage base pay, and business donation/startup funding handling. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Add Myself Renewed to QuickBooks (nonprofit category)",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Confirm registration with NY Charities Bureau",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Make initial business donation to Myself Renewed",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Use business funds to seed the nonprofit; record cleanly in business books and nonprofit books, with donation receipt/documentation. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Confirm nonprofit bank account exists + PayPal Giving Fund integration",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Draft personal giving statement aligned with legacy vision",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Add donation page language + set up donation processor",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Thank you: Jay, Laura, Paul, Bob",
+        "",
+        "",
+        "",
+        "Combined from To Do rows 91, 92, 93 based on Sat slot 10.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Get reimbursed for Motion",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg",
+        "Work",
+        "G&B",
+        "",
+        "Krupa note from removed row 65: Reciprocal real-estate-component deal flow; success-fee-only sale-leaseback specialist",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Do luxury-retailer store visits for pest buying criteria",
+        "Work",
+        "Pest",
+        "2026-06-18",
+        "Test who buys pest services and what criteria they use.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Ask family friend jewelry business owner for market-mapping conversation",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Deferred during Week 1 jewelry LOI sprint; use only if specific market-mapping input is needed after deck gaps are clear.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark",
+        "Work",
+        "Nonprofit Activation",
+        "2026-07-18",
+        "Women's health / pregnancy-focused nonprofit is legally formed and near 3-year activity mark. Need clean next step. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Send kids modeling submissions to 5 referred agencies",
+        "Home",
+        "Family Wealth / Kids Modeling",
+        "2026-07-20",
+        "Prepared on Friday; send next business day because Friday outreach is lower quality, especially in summer.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Draft Kay nonprofit role description and minimum-wage payroll assumptions",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Define actual services/duties, expected hours, work location, and base wage. NY 2026 minimum wage: $17/hr for NYC, Long Island, Westchester; $16/hr for rest of NY. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Set Kay up as W-2 employee in nonprofit payroll",
+        "Work",
+        "Myself Renewed",
+        "",
+        "After board approval: enter Kay as employee, configure withholding/payroll taxes, choose pay schedule, and confirm wage matches NY minimum wage for work location. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Run first nonprofit payroll and confirm W-2/payroll-tax records",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Execute first payroll only after funding, board approval, and employee setup are complete; confirm paystub, withholding, employer taxes, and W-2 reporting path. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
         "Dropped",
         "Pay Mark for swimming",
         "Home",
@@ -2974,7 +3107,7 @@
     ],
     "'Week'!A1:O38": [
       [
-        "WEEK OF Aug 9-15"
+        "WEEK OF Aug 16-22"
       ],
       [],
       [
@@ -2984,35 +3117,228 @@
       [],
       [
         "",
-        "SUNDAY \u00b7 Aug 9",
+        "SUNDAY \u00b7 Aug 16",
         "",
-        "MONDAY \u00b7 Aug 10",
+        "MONDAY \u00b7 Aug 17",
         "",
-        "TUESDAY \u00b7 Aug 11",
+        "TUESDAY \u00b7 Aug 18",
         "",
-        "WEDNESDAY \u00b7 Aug 12",
+        "WEDNESDAY \u00b7 Aug 19",
         "",
-        "THURSDAY \u00b7 Aug 13",
+        "THURSDAY \u00b7 Aug 20",
         "",
-        "FRIDAY \u00b7 Aug 14",
+        "FRIDAY \u00b7 Aug 21",
         "",
-        "SATURDAY \u00b7 Aug 15"
+        "SATURDAY \u00b7 Aug 22"
       ],
       [],
       [
         "",
         false,
+        "Add Kay food staples to Sunday grocery run",
+        false,
+        "Reach out to organizer of Art Oct conference",
+        false,
+        "Pull Megan pre-LOI prep meeting notes",
+        false,
+        "Prepare high-level seller data ask draft",
+        false,
+        "Narrow/edit must-have diligence questions to top 5",
+        false,
+        "Create travel plans for July in Paris/France next year",
+        false,
+        "Buy gift for baby Ruby"
+      ],
+      [
+        "",
+        false,
+        "Draft/schedule Greg thank-you and insurance contacts follow-up",
+        false,
+        "Call IRS to confirm Form 8822-B address update",
+        false,
+        "Order more business cards and change title to founder",
+        false,
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
+        false,
+        "Fax W2 to NYS",
+        false,
+        "Look into GLP1",
+        false
+      ],
+      [
+        "",
+        false,
+        "Weekend prep: prepare for a possible Sidney Garber meeting next week if he responds.",
+        false,
+        "Send new email outreach on dashboard (3 companies)",
+        false,
+        "Email Melissa to assist with BK Growth contact and file folders",
+        false,
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility",
+        false,
+        "Pay One Hanover Square rent",
+        false,
+        "Review Kai Grey Ventures renewal",
+        false
+      ],
+      [
+        "",
+        false,
+        "Buy new backpacks, water bottles, and clothes for the kids",
+        false,
+        "Visit store carrying jewelry line to see product and merchandising in person",
+        false,
+        "Reconnect with Levi on prior art storage path",
+        false,
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
+        false,
+        "Outreach Work: seller / broker / investor / analyst outreach block",
+        false,
+        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar",
+        false
+      ],
+      [
+        "",
+        false,
+        "Create weekly schedule",
+        false,
+        "Process payroll",
+        false,
+        "Circle back with Paul on art storage conversation",
+        false,
+        "Get Real Pigeons from the library",
+        false,
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        false,
+        "Submit new PSLF form",
+        false
+      ],
+      [
+        "",
+        false,
+        "Confirm LiveOak payroll transfer coverage",
+        false,
+        "Process conference registrations",
+        false,
+        "Locate holdco financial model",
+        false,
+        "Niche intel review",
+        false,
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
+        false,
+        "Create project for French passports",
+        false
+      ],
+      [
+        "",
+        false,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug",
+        false,
+        "Outreach Work: seller / broker / investor / analyst outreach block",
+        false,
+        "Call Troy",
+        false,
+        "Outreach Work: seller / broker / investor / analyst outreach block",
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        false,
+        "Renew kids' work permits",
+        false
+      ],
+      [
+        "",
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
+        false,
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        false,
+        "Text Sarah Finders Fee document",
+        false,
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        false,
+        "",
+        false,
+        "Renew Kilian's passport",
+        false
+      ],
+      [
+        "",
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions",
+        false,
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
+        false,
+        "Outreach Work: seller / broker / investor / analyst outreach block",
+        false,
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
+        false,
+        "",
+        false,
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        false,
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        false,
+        "",
+        false,
+        "Pay RSM",
+        false
+      ],
+      [
         "",
         false,
         "",
         false,
         "",
         false,
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Set up Claude workflow for Friday: slides + website aesthetics",
+        false
+      ],
+      [
         "",
         false,
         "",
         false,
         "",
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Call IRS/government to confirm address change",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Watch SLD video",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan",
         false
       ],
       [
@@ -3028,7 +3354,7 @@
         false,
         "",
         false,
-        "",
+        "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning.",
         false
       ],
       [
@@ -3044,7 +3370,7 @@
         false,
         "",
         false,
-        "",
+        "Weekly review \u2014 system health, M&A activities, budget",
         false
       ],
       [
@@ -3060,7 +3386,7 @@
         false,
         "",
         false,
-        "",
+        "Check NYC Housing Connect for new Manhattan lotteries",
         false
       ],
       [
@@ -3076,7 +3402,7 @@
         false,
         "",
         false,
-        "",
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
         false
       ],
       [
@@ -3092,7 +3418,7 @@
         false,
         "",
         false,
-        "",
+        "Personal Finance / Wealth Monitor",
         false
       ],
       [
@@ -3108,7 +3434,7 @@
         false,
         "",
         false,
-        "",
+        "Nonprofit Operations",
         false
       ],
       [
@@ -3124,7 +3450,7 @@
         false,
         "",
         false,
-        "",
+        "Family Admin",
         false
       ],
       [
@@ -3140,7 +3466,7 @@
         false,
         "",
         false,
-        "",
+        "Systems / Website / G&B Housekeeping",
         false
       ],
       [
@@ -3156,199 +3482,7 @@
         false,
         "",
         false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
         false
       ],
       [
@@ -3417,7 +3551,7 @@
         "notes \u00b7 ideas \u00b7 jot"
       ]
     ],
-    "'Sun'!A17:E66": [
+    "'Sun'!A21:E70": [
       [
         false
       ],
@@ -3569,7 +3703,7 @@
         false
       ]
     ],
-    "'Mon'!A17:E66": [
+    "'Mon'!A21:E70": [
       [
         false
       ],
@@ -3721,7 +3855,7 @@
         false
       ]
     ],
-    "'Tue'!A17:E66": [
+    "'Tue'!A21:E70": [
       [
         false
       ],
@@ -3873,7 +4007,7 @@
         false
       ]
     ],
-    "'Wed'!A17:E66": [
+    "'Wed'!A21:E70": [
       [
         false
       ],
@@ -4025,7 +4159,7 @@
         false
       ]
     ],
-    "'Thu'!A17:E66": [
+    "'Thu'!A21:E70": [
       [
         false
       ],
@@ -4177,7 +4311,7 @@
         false
       ]
     ],
-    "'Fri'!A17:E66": [
+    "'Fri'!A21:E70": [
       [
         false
       ],
@@ -4329,7 +4463,7 @@
         false
       ]
     ],
-    "'Sat'!A17:E66": [
+    "'Sat'!A21:E70": [
       [
         false
       ],

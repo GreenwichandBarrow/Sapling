@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-18",
+  "updated_at": "2026-08-19",
   "items": [
     {
       "bucket": "thank",
@@ -1157,11 +1157,19 @@
       "email": "andrew@cromwellharbor.net",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-16",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Andrew <> Kay",
       "event_date": "2026-07-15",
-      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g8co32e1l6ks32cq2612k8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6h142cpo88rk4hhk6kqk4chk8p142hi36h0kcci48cr3ed226gs0"
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g8co32e1l6ks32cq2612k8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6h142cpo88rk4hhk6kqk4chk8p142hi36h0kcci48cr3ed226gs0",
+      "completed_at": "2026-08-18",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19ea8376931a3f42, subject 'Greenwich & Barrow Update 6.8.26 - CONFIDENTIAL', sent 2026-08-18 22:38.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19ea8376931a3f42",
+        "subject": "Greenwich & Barrow Update 6.8.26 - CONFIDENTIAL",
+        "sent_at": "2026-08-18 22:38"
+      }
     },
     {
       "bucket": "thank",
@@ -1169,11 +1177,19 @@
       "email": "andrew@cromwellharbor.net",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-17",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Andrew <> Kay",
       "event_date": "2026-07-16",
-      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g8co32e1l6ks32cq2612k8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6h142cpo88rk4hhk6kqk4chk8p142hi36h0kcci48cr3ed226gs0"
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g8co32e1l6ks32cq2612k8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g6h142cpo88rk4hhk6kqk4chk8p142hi36h0kcci48cr3ed226gs0",
+      "completed_at": "2026-08-18",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19ea8376931a3f42, subject 'Greenwich & Barrow Update 6.8.26 - CONFIDENTIAL', sent 2026-08-18 22:38.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19ea8376931a3f42",
+        "subject": "Greenwich & Barrow Update 6.8.26 - CONFIDENTIAL",
+        "sent_at": "2026-08-18 22:38"
+      }
     },
     {
       "bucket": "thank",
@@ -1574,6 +1590,54 @@
       "event": "Relationship / Call Window",
       "event_date": "2026-08-17",
       "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260818T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Brooke\u2019s cell",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-19",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Call Brooke\u2019s cell",
+      "event_date": "2026-08-18",
+      "calendar_event_id": "_892jcdhh8opjab9k84q34b9k6l13iba284o4aba26csjch1h6srj4d9j8o"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-19",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-18",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260818T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-19",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-18",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260819T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "WSN Group",
+      "email": "adilene@belen-partners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-19",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "WSN Group",
+      "event_date": "2026-08-18",
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6h1jada46ssk2chm8cok8gpg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g70ojec1m650jeh9o8h336e1k710k2dpl74q38dpi6oq48gpm8p30_20260819T170000Z"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

@@ -1,0 +1,50 @@
+[
+  {
+    "task_text": "Talk to investors before finalizing the LOI for the jewelry deal.",
+    "type": "Deal",
+    "project": "Luxury jewelry acquisition",
+    "suggested_day": "Today",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From WSN Group w/ Link 2026-08-19 mtg. Analysis: https://docs.google.com/document/d/1VvbZWYpujJpOZ2YBCjhljMl8KMd-Vq-RamG4RuOg4Aw/edit?usp=drivesdk",
+    "source_call_id": "not_kMGaUxYXmcj7YZ",
+    "source_doc_url": "https://docs.google.com/document/d/1VvbZWYpujJpOZ2YBCjhljMl8KMd-Vq-RamG4RuOg4Aw/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1sS5zRakUUzmMLD4W-C0yG6PaJ7cqb6jziOl6SHaOJ4I/edit?usp=drivesdk",
+    "staged_at": "2026-08-19T22:10:00Z"
+  },
+  {
+    "task_text": "Reach out to Lacy about deal structure and gap-capital options.",
+    "type": "Follow-up",
+    "project": "Luxury jewelry acquisition",
+    "suggested_day": "This week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From WSN Group w/ Link 2026-08-19 mtg. Analysis: https://docs.google.com/document/d/1VvbZWYpujJpOZ2YBCjhljMl8KMd-Vq-RamG4RuOg4Aw/edit?usp=drivesdk",
+    "source_call_id": "not_kMGaUxYXmcj7YZ",
+    "source_doc_url": "https://docs.google.com/document/d/1VvbZWYpujJpOZ2YBCjhljMl8KMd-Vq-RamG4RuOg4Aw/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1sS5zRakUUzmMLD4W-C0yG6PaJ7cqb6jziOl6SHaOJ4I/edit?usp=drivesdk",
+    "staged_at": "2026-08-19T22:10:00Z"
+  },
+  {
+    "task_text": "Temperature-check mezz debt with the warmest investors before modeling it in.",
+    "type": "Deal",
+    "project": "Luxury jewelry acquisition",
+    "suggested_day": "This week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From WSN Group w/ Link 2026-08-19 mtg. Analysis: https://docs.google.com/document/d/1VvbZWYpujJpOZ2YBCjhljMl8KMd-Vq-RamG4RuOg4Aw/edit?usp=drivesdk",
+    "source_call_id": "not_kMGaUxYXmcj7YZ",
+    "source_doc_url": "https://docs.google.com/document/d/1VvbZWYpujJpOZ2YBCjhljMl8KMd-Vq-RamG4RuOg4Aw/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1sS5zRakUUzmMLD4W-C0yG6PaJ7cqb6jziOl6SHaOJ4I/edit?usp=drivesdk",
+    "staged_at": "2026-08-19T22:10:00Z"
+  },
+  {
+    "task_text": "Ask each investor how they would describe the deal to their IC.",
+    "type": "Analysis",
+    "project": "Luxury jewelry acquisition",
+    "suggested_day": "This week",
+    "suggested_due_date": "",
+    "notes_with_doc_link": "From WSN Group w/ Link 2026-08-19 mtg. Analysis: https://docs.google.com/document/d/1VvbZWYpujJpOZ2YBCjhljMl8KMd-Vq-RamG4RuOg4Aw/edit?usp=drivesdk",
+    "source_call_id": "not_kMGaUxYXmcj7YZ",
+    "source_doc_url": "https://docs.google.com/document/d/1VvbZWYpujJpOZ2YBCjhljMl8KMd-Vq-RamG4RuOg4Aw/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1sS5zRakUUzmMLD4W-C0yG6PaJ7cqb6jziOl6SHaOJ4I/edit?usp=drivesdk",
+    "staged_at": "2026-08-19T22:10:00Z"
+  }
+]

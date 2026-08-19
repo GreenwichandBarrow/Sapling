@@ -1,0 +1,32 @@
+{
+  "attio_failed": false,
+  "attio_notes": {
+    "companies": [
+      "02401582-0071-4e0c-a463-c80ded4848d1",
+      "fdcc8630-c0fd-44ce-8fbd-cf18269b244c",
+      "ec6dcd65-d8de-4aca-921a-8ab3684b2594",
+      "e159782b-bbfb-4541-abd4-23ff2f6a44a6"
+    ],
+    "people": [
+      "c2d03a5d-9a82-4a68-9e1c-7c54fabcdb43",
+      "55748a47-eecf-4a01-94d0-f4a99e1e007b",
+      "9a53caa3-bd5c-4fb3-ad9c-f626a79ba3ba",
+      "a326f339-8158-45c7-b392-e38c725658d1"
+    ]
+  },
+  "created_at": "2026-08-19T17:09:31.849Z",
+  "date": "2026-08-19",
+  "doc_failed": false,
+  "doc_url": "https://docs.google.com/document/d/1VvbZWYpujJpOZ2YBCjhljMl8KMd-Vq-RamG4RuOg4Aw/edit?usp=drivesdk",
+  "granola_url": "https://notes.granola.ai/d/87299f73-ff08-47fb-a866-7c8f60034697",
+  "id": "not_kMGaUxYXmcj7YZ",
+  "processed_at": "2026-08-19T22:12:00Z",
+  "slack_posted": true,
+  "task_count": 4,
+  "tasks_failed": false,
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_kMGaUxYXmcj7YZ.json",
+  "title": "WSN Group w/ Link",
+  "transcript_doc_url": "https://docs.google.com/document/d/1sS5zRakUUzmMLD4W-C0yG6PaJ7cqb6jziOl6SHaOJ4I/edit?usp=drivesdk",
+  "transcript_failed": false,
+  "vault_call_note": "brain/calls/2026-08-19-wsn-group-w-link.md"
+}

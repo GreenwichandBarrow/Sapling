@@ -1,7 +1,7 @@
 {
   "verb": "sync-done-status",
-  "timestamp": "20260812-085748",
-  "sheet_id": "1U1GN9xcg18S-o4mA-b3QZ3Sr-xUvhHDn2G23pLI1rmA",
+  "timestamp": "20260819-092511",
+  "sheet_id": "1Tjprc8z5uXCP94Y-yJaNZDk3SwNC2h-0tRXctornetE",
   "ranges": {
     "'To Do'!A2:A400": [
       [
@@ -104,886 +104,7 @@
         "On-going"
       ],
       [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Completed"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Dropped"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
-      ],
-      [
-        "Not Completed"
+        "On-going"
       ],
       [
         "On-going"
@@ -993,6 +114,906 @@
       ],
       [
         "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
       ]
     ]
   }

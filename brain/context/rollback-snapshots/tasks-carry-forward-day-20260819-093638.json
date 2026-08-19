@@ -1,27 +1,11 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260811-085220",
-  "sheet_id": "1U1GN9xcg18S-o4mA-b3QZ3Sr-xUvhHDn2G23pLI1rmA",
+  "timestamp": "20260819-093638",
+  "sheet_id": "1Tjprc8z5uXCP94Y-yJaNZDk3SwNC2h-0tRXctornetE",
   "ranges": {
     "'Mon'!A21:E70": [
       [
-        false,
-        "Reach out to organizer of Art Oct conference"
-      ],
-      [
-        false,
-        "Call IRS to confirm Form 8822-B address update"
-      ],
-      [
-        false,
-        "Send new email outreach on dashboard (3 companies)"
-      ],
-      [
-        false,
-        "Visit store carrying jewelry line to see product and merchandising in person"
-      ],
-      [
-        false,
+        true,
         "Process payroll"
       ],
       [
@@ -29,48 +13,53 @@
         "Process conference registrations"
       ],
       [
-        false,
+        true,
         "Outreach Work: seller / broker / investor / analyst outreach block"
       ],
       [
-        false,
+        true,
         "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
       ],
       [
-        false,
+        true,
         "Strategy / Research: deck, model, thesis, target discovery, niche work"
       ],
       [
-        false,
+        true,
         "8:30 Decision Review: review what moved, what parks, what rolls forward"
       ],
       [
-        false,
-        "Draft/schedule Greg thank-you and insurance contacts follow-up"
+        false
       ],
       [
-        false,
-        "Systems / Sourcing: set up better Axial target discovery/filtering."
+        false
       ],
       [
-        false,
-        "Weekend prep: prepare for a possible Sidney Garber meeting next week if she responds."
+        false
       ],
       [
-        false,
-        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
+        false
       ],
       [
-        false,
-        "Add Kay food staples to Sunday grocery run"
+        false
       ],
       [
-        false,
-        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
+        false
       ],
       [
-        false,
-        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
       ],
       [
         false
@@ -172,30 +161,38 @@
         false
       ]
     ],
-    "'Tue'!A21:E70": [
+    "'Wed'!A21:E70": [
       [
         false,
-        "Pull Megan pre-LOI prep meeting notes"
+        "Reach out to organizer of Art Oct conference"
       ],
       [
         false,
-        "Order more business cards and change title to founder"
+        "Visit store carrying jewelry line to see product and merchandising in person"
       ],
       [
         false,
-        "Email Melissa to assist with BK Growth contact and file folders"
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue"
       ],
       [
         false,
-        "Reconnect with Levi on prior art storage path"
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility"
       ],
       [
         false,
-        "Circle back with Paul on art storage conversation"
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options"
       ],
       [
         false,
-        "Take truck for oil change"
+        "Reconnect with Andrew Freiman re: Chenmark intro"
+      ],
+      [
+        false,
+        "Change login info for operations folder + operations Gmail account"
+      ],
+      [
+        false,
+        "Niche intel review"
       ],
       [
         false,
@@ -215,41 +212,27 @@
       ],
       [
         false,
-        "Check DealsX insurance emails: sent + responses",
-        "Work",
-        "DealsX",
-        "Verify sent status and responses."
+        "Add Kay food staples to Sunday grocery run"
       ],
       [
         false,
-        "Locate holdco financial model",
-        "Work",
-        "G&B"
+        "Create weekly schedule"
       ],
       [
         false,
-        "Call Troy",
-        "Work",
-        "G&B"
+        "Confirm LiveOak payroll transfer coverage"
       ],
       [
         false,
-        "Text Sarah Finders Fee document",
-        "Work",
-        "G&B",
-        "Send via text."
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
       ],
       [
-        false
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
       ],
       [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
       ],
       [
         false

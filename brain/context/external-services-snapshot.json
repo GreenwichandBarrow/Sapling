@@ -1,6 +1,12 @@
 {
-  "fetched_at": "2026-08-18T20:30:45-04:00",
+  "fetched_at": "2026-08-19T18:00:45-04:00",
   "services": {
+    "linkt": {
+      "status": "skip",
+      "latency_ms": null,
+      "message": "",
+      "skip_reason": "Browser session required (no API)"
+    },
     "attio-mcp": {
       "status": "skip",
       "latency_ms": null,
@@ -13,57 +19,51 @@
       "message": "4 webhooks configured",
       "skip_reason": null
     },
-    "linkt": {
-      "status": "skip",
-      "latency_ms": null,
-      "message": "",
-      "skip_reason": "Browser session required (no API)"
-    },
     "launchd": {
       "status": "ok",
-      "latency_ms": 21,
+      "latency_ms": 31,
       "message": "21 timers registered",
+      "skip_reason": null
+    },
+    "vault": {
+      "status": "ok",
+      "latency_ms": 39,
+      "message": "1864 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "skip",
-      "latency_ms": 27,
+      "latency_ms": 47,
       "message": "attio-mcp=0; manual-skip=attio-mcp",
       "skip_reason": "Attio MCP requires manual OAuth/browser reconnect"
     },
-    "vault": {
+    "granola": {
       "status": "ok",
-      "latency_ms": 36,
-      "message": "1860 markdown files",
+      "latency_ms": 148,
+      "message": "HTTP 405",
       "skip_reason": null
     },
     "apollo": {
       "status": "ok",
-      "latency_ms": 118,
+      "latency_ms": 181,
       "message": "200 OK",
-      "skip_reason": null
-    },
-    "openai-codex": {
-      "status": "ok",
-      "latency_ms": 150,
-      "message": "Codex OAuth login active",
-      "skip_reason": null
-    },
-    "granola": {
-      "status": "ok",
-      "latency_ms": 133,
-      "message": "HTTP 405",
       "skip_reason": null
     },
     "gog": {
       "status": "ok",
-      "latency_ms": 168,
+      "latency_ms": 214,
       "message": "authenticated",
+      "skip_reason": null
+    },
+    "openai-codex": {
+      "status": "ok",
+      "latency_ms": 219,
+      "message": "Codex OAuth login active",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 228,
+      "latency_ms": 290,
       "message": "gh authenticated",
       "skip_reason": null
     }

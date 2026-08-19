@@ -3,27 +3,8 @@
   "deal_items": 50,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-08-19T06:50:44.898252-04:00",
-  "follow_through_completed_items": [
-    {
-      "bucket": "thank",
-      "completed_at": "2026-08-18",
-      "event": "Andrew <> Kay",
-      "person": "Andrew",
-      "sent_at": "2026-08-18 22:38",
-      "sent_subject": "Greenwich & Barrow Update 6.8.26 - CONFIDENTIAL",
-      "sent_thread_id": "19ea8376931a3f42"
-    },
-    {
-      "bucket": "thank",
-      "completed_at": "2026-08-18",
-      "event": "Andrew <> Kay",
-      "person": "Andrew",
-      "sent_at": "2026-08-18 22:38",
-      "sent_subject": "Greenwich & Barrow Update 6.8.26 - CONFIDENTIAL",
-      "sent_thread_id": "19ea8376931a3f42"
-    }
-  ],
+  "fetched_at": "2026-08-19T09:25:24.500557-04:00",
+  "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -71,7 +52,6 @@
   "needs_kay": [
     "50 broker/listing row(s) extracted",
     "4 prior-day thank-you(s) need approval: Brooke\u2019s cell; Relationship / Call Window; Relationship / Call Window; WSN Group",
-    "2 email follow-through row(s) auto-completed from sent-mail evidence: Andrew; Andrew",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg"
   ],
   "pipeline_items": 0,

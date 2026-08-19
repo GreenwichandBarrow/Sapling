@@ -1,15 +1,13 @@
 {
   "verb": "distribute-week",
-  "timestamp": "20260807-090438",
-  "sheet_id": "1DcwtZYMqA3OMDeQAsLsS9szIWScz22qVCO7jrfHpvww",
+  "timestamp": "20260819-092854",
+  "sheet_id": "1Tjprc8z5uXCP94Y-yJaNZDk3SwNC2h-0tRXctornetE",
   "ranges": {
-    "'Sun'!A1:E78": [
+    "'Sun'!A1:E82": [
       [
-        "SUNDAY \u00b7 Aug 2"
+        "SUNDAY \u00b7 Aug 16"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -84,6 +82,14 @@
         false,
         "Screen cutoff 9:30p"
       ],
+      [],
+      [
+        "DAILY FOCUS"
+      ],
+      [
+        false
+      ],
+      [],
       [],
       [
         "\u2713",
@@ -246,13 +252,11 @@
         "NOTES"
       ]
     ],
-    "'Mon'!A1:E78": [
+    "'Mon'!A1:E82": [
       [
-        "MONDAY \u00b7 Aug 3"
+        "MONDAY \u00b7 Aug 17"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -327,6 +331,14 @@
         false,
         "Screen cutoff 9:30p"
       ],
+      [],
+      [
+        "DAILY FOCUS"
+      ],
+      [
+        false
+      ],
+      [],
       [],
       [
         "\u2713",
@@ -489,13 +501,11 @@
         "NOTES"
       ]
     ],
-    "'Tue'!A1:E78": [
+    "'Tue'!A1:E82": [
       [
-        "TUESDAY \u00b7 Aug 4"
+        "TUESDAY \u00b7 Aug 18"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -570,6 +580,14 @@
         false,
         "Screen cutoff 9:30p"
       ],
+      [],
+      [
+        "DAILY FOCUS"
+      ],
+      [
+        false
+      ],
+      [],
       [],
       [
         "\u2713",
@@ -732,13 +750,11 @@
         "NOTES"
       ]
     ],
-    "'Wed'!A1:E78": [
+    "'Wed'!A1:E82": [
       [
-        "WEDNESDAY \u00b7 Aug 5"
+        "WEDNESDAY \u00b7 Aug 19"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -813,6 +829,14 @@
         false,
         "Screen cutoff 9:30p"
       ],
+      [],
+      [
+        "DAILY FOCUS"
+      ],
+      [
+        false
+      ],
+      [],
       [],
       [
         "\u2713",
@@ -975,13 +999,11 @@
         "NOTES"
       ]
     ],
-    "'Thu'!A1:E78": [
+    "'Thu'!A1:E82": [
       [
-        "THURSDAY \u00b7 Aug 6"
+        "THURSDAY \u00b7 Aug 20"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -1056,6 +1078,14 @@
         false,
         "Screen cutoff 9:30p"
       ],
+      [],
+      [
+        "DAILY FOCUS"
+      ],
+      [
+        false
+      ],
+      [],
       [],
       [
         "\u2713",
@@ -1218,13 +1248,11 @@
         "NOTES"
       ]
     ],
-    "'Fri'!A1:E78": [
+    "'Fri'!A1:E82": [
       [
-        "FRIDAY \u00b7 Aug 7"
+        "FRIDAY \u00b7 Aug 21"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -1301,6 +1329,14 @@
       ],
       [],
       [
+        "DAILY FOCUS"
+      ],
+      [
+        false
+      ],
+      [],
+      [],
+      [
         "\u2713",
         "Task",
         "Type",
@@ -1308,64 +1344,49 @@
         "Notes"
       ],
       [
-        false,
-        "Take truck for oil change"
+        false
       ],
       [
-        false,
-        "Scan IRS docs at FedEx"
+        false
       ],
       [
-        false,
-        "Call IRS/government to confirm address change"
+        false
       ],
       [
-        false,
-        "Pay rent"
+        false
       ],
       [
-        false,
-        "Follow up with Sarah about Monday meeting"
+        false
       ],
       [
-        false,
-        "Book afterschool for Tuesday and Wednesday for the kids"
+        false
       ],
       [
-        false,
-        "Call Jesse at DUSC"
+        false
       ],
       [
-        false,
-        "Sign up Kaiden for RSM"
+        false
       ],
       [
-        false,
-        "Create project for French passports"
+        false
       ],
       [
-        false,
-        "Identify first nonprofit activation requirement for 501(c)(3) activity mark"
+        false
       ],
       [
-        false,
-        "Review website direction: light lookbook-style G&B page for seller/investor credibility"
+        false
       ],
       [
-        false,
-        "Set up Claude workflow for Friday: slides + website aesthetics"
+        false
       ],
       [
-        false,
-        "Weekly review \u2014 system health, M&A activities, budget"
+        false
       ],
       [
-        false,
-        "Check NYC Housing Connect for new Manhattan lotteries"
+        false
       ],
       [
-        false,
-        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
+        false
       ],
       [
         false
@@ -1476,13 +1497,11 @@
         "NOTES"
       ]
     ],
-    "'Sat'!A1:E78": [
+    "'Sat'!A1:E82": [
       [
-        "SATURDAY \u00b7 Aug 8"
+        "SATURDAY \u00b7 Aug 22"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -1557,6 +1576,14 @@
         false,
         "Screen cutoff 9:30p"
       ],
+      [],
+      [
+        "DAILY FOCUS"
+      ],
+      [
+        false
+      ],
+      [],
       [],
       [
         "\u2713",
@@ -1721,7 +1748,7 @@
     ],
     "'Week'!A1:O38": [
       [
-        "WEEK OF Aug 2-8"
+        "WEEK OF Aug 16-22"
       ],
       [],
       [
@@ -1731,19 +1758,19 @@
       [],
       [
         "",
-        "SUNDAY \u00b7 Aug 2",
+        "SUNDAY \u00b7 Aug 16",
         "",
-        "MONDAY \u00b7 Aug 3",
+        "MONDAY \u00b7 Aug 17",
         "",
-        "TUESDAY \u00b7 Aug 4",
+        "TUESDAY \u00b7 Aug 18",
         "",
-        "WEDNESDAY \u00b7 Aug 5",
+        "WEDNESDAY \u00b7 Aug 19",
         "",
-        "THURSDAY \u00b7 Aug 6",
+        "THURSDAY \u00b7 Aug 20",
         "",
-        "FRIDAY \u00b7 Aug 7",
+        "FRIDAY \u00b7 Aug 21",
         "",
-        "SATURDAY \u00b7 Aug 8"
+        "SATURDAY \u00b7 Aug 22"
       ],
       [],
       [
@@ -1751,32 +1778,32 @@
         false,
         "Add Kay food staples to Sunday grocery run",
         false,
-        "Call IRS to confirm Form 8822-B address update",
+        "Process payroll",
         false,
-        "Pull Megan pre-LOI prep meeting notes",
+        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar",
         false,
-        "Prepare high-level seller data ask draft",
+        "Reach out to organizer of Art Oct conference",
         false,
-        "Narrow/edit must-have diligence questions to top 5",
+        "Outreach Work: seller / broker / investor / analyst outreach block",
         false,
-        "Take truck for oil change",
+        "Create travel plans for July in Paris/France next year",
         false,
-        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
+        "Buy gift for baby Ruby"
       ],
       [
         "",
         false,
-        "Draft/schedule Greg thank-you and insurance contacts follow-up",
+        "Create weekly schedule",
         false,
-        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte",
+        "Process conference registrations",
         false,
-        "Send Emily 504",
+        "Call IRS to confirm Form 8822-B address update",
         false,
-        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
+        "Visit store carrying jewelry line to see product and merchandising in person",
         false,
-        "",
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
         false,
-        "Scan IRS docs at FedEx",
+        "Look into GLP1",
         false
       ],
       [
@@ -1784,15 +1811,15 @@
         false,
         "Confirm LiveOak payroll transfer coverage",
         false,
-        "",
+        "Outreach Work: seller / broker / investor / analyst outreach block",
         false,
-        "",
+        "Pull Megan pre-LOI prep meeting notes",
         false,
-        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
         false,
-        "",
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
         false,
-        "Call IRS/government to confirm address change",
+        "Review Kai Grey Ventures renewal",
         false
       ],
       [
@@ -1800,15 +1827,15 @@
         false,
         "Kids allowance: Sunday $10/week + Friday $10/day through Aug",
         false,
-        "Process payroll",
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
         false,
-        "",
+        "Continue financial modeling",
         false,
-        "Niche intel review",
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility",
         false,
-        "",
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
         false,
-        "Pay rent",
+        "Submit new PSLF form",
         false
       ],
       [
@@ -1816,75 +1843,11 @@
         false,
         "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
         false,
-        "Process conference registrations",
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
         false,
-        "",
+        "Email Melissa to assist with BK Growth contact and file folders",
         false,
-        "",
-        false,
-        "",
-        false,
-        "Follow up with Sarah about Monday meeting",
-        false
-      ],
-      [
-        "",
-        false,
-        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Book afterschool for Tuesday and Wednesday for the kids",
-        false
-      ],
-      [
-        "",
-        false,
-        "Create weekly schedule",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Call Jesse at DUSC",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Sign up Kaiden for RSM",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
         false,
         "",
         false,
@@ -1894,17 +1857,17 @@
       [
         "",
         false,
-        "",
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions",
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        false,
+        "Reconnect with Levi on prior art storage path",
+        false,
+        "Reconnect with Andrew Freiman re: Chenmark intro",
         false,
         "",
         false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Identify first nonprofit activation requirement for 501(c)(3) activity mark",
+        "Renew kids' work permits",
         false
       ],
       [
@@ -1914,13 +1877,13 @@
         false,
         "",
         false,
-        "",
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies",
+        false,
+        "Change login info for operations folder + operations Gmail account",
         false,
         "",
         false,
-        "",
-        false,
-        "Review website direction: light lookbook-style G&B page for seller/investor credibility",
+        "Renew Kilian's passport",
         false
       ],
       [
@@ -1930,9 +1893,9 @@
         false,
         "",
         false,
-        "",
+        "Call RSM",
         false,
-        "",
+        "Niche intel review",
         false,
         "",
         false,
@@ -1946,9 +1909,57 @@
         false,
         "",
         false,
+        "Review new SLD video",
+        false,
+        "Outreach Work: seller / broker / investor / analyst outreach block",
+        false,
+        "",
+        false,
+        "Call IRS/government to confirm address change",
+        false
+      ],
+      [
         "",
         false,
         "",
+        false,
+        "",
+        false,
+        "Locate holdco financial model",
+        false,
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        false,
+        "",
+        false,
+        "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Text Sarah Finders Fee document",
+        false,
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
+        false,
+        "",
+        false,
+        "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning.",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Pay One Hanover Square rent",
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
         false,
         "",
         false,
@@ -1962,7 +1973,7 @@
         false,
         "",
         false,
-        "",
+        "Outreach Work: seller / broker / investor / analyst outreach block",
         false,
         "",
         false,
@@ -1978,7 +1989,7 @@
         false,
         "",
         false,
-        "",
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
         false,
         "",
         false,
@@ -1994,13 +2005,45 @@
         false,
         "",
         false,
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Personal Finance / Wealth Monitor",
+        false
+      ],
+      [
         "",
         false,
         "",
         false,
         "",
         false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        false,
         "",
+        false,
+        "",
+        false,
+        "Nonprofit Operations",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Watch SLD video",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Family Admin",
         false
       ],
       [
@@ -2016,7 +2059,7 @@
         false,
         "",
         false,
-        "",
+        "Systems / Website / G&B Housekeeping",
         false
       ],
       [
@@ -2032,23 +2075,7 @@
         false,
         "",
         false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
         false
       ],
       [

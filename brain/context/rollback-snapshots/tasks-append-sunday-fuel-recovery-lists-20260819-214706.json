@@ -1,0 +1,10 @@
+{
+  "verb": "append-sunday-fuel-recovery-lists",
+  "timestamp": "20260819-214706",
+  "sheet_id": "1Tjprc8z5uXCP94Y-yJaNZDk3SwNC2h-0tRXctornetE",
+  "ranges": {
+    "'To Do'!A340:H340": {
+      "_error": "400 Client Error: Bad Request for url: https://sheets.googleapis.com/v4/spreadsheets/1Tjprc8z5uXCP94Y-yJaNZDk3SwNC2h-0tRXctornetE/values/'To%20Do'!A340:H340?valueRenderOption=UNFORMATTED_VALUE&dateTimeRenderOption=FORMATTED_STRING"
+    }
+  }
+}

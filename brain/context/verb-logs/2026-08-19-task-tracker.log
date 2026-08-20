@@ -47,3 +47,9 @@
   - Tue slot 9 → Wed slot 28: Review new SLD video
   - Tue slot 10 → Wed slot 29: Locate holdco financial model
   - Tue slot 11 → Wed slot 30: Text Sarah Finders Fee document
+
+[2026-08-19T21:47:08.655054] schedule-to-day-slot — sun-1
+  - task: Put fuel & recovery lists to refrigerator
+  - placement: Sun tab slot 1 (row 21)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260819-214708.json

@@ -1,21 +1,48 @@
 {
   "blocked": [],
-  "deal_items": 50,
+  "deal_items": 0,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-08-19T09:25:24.500557-04:00",
-  "follow_through_completed_items": [],
-  "follow_through_pending_items": [
+  "fetched_at": "2026-08-20T06:50:44.986853-04:00",
+  "follow_through_completed_items": [
     {
-      "bucket": "eow",
-      "context": "EOW follow-up",
-      "due_date": "2026-06-26",
-      "event": "EOW follow-up requested by Kay",
-      "kay_confirmed_keep": "true",
-      "needs_kay_clarification": "false",
-      "person": "Brooke Neidich",
-      "status": "not drafted"
+      "bucket": "thank",
+      "completed_at": "2026-08-19",
+      "event": "Jeff I Kay Mtg",
+      "person": "Jeff",
+      "sent_at": "2026-08-19 18:32",
+      "sent_subject": "Hi",
+      "sent_thread_id": "1a01beeb80ed19dd"
     },
+    {
+      "bucket": "thank",
+      "completed_at": "2026-08-19",
+      "event": "Jeff I Kay Mtg",
+      "person": "Jeff",
+      "sent_at": "2026-08-19 18:32",
+      "sent_subject": "Hi",
+      "sent_thread_id": "1a01beeb80ed19dd"
+    },
+    {
+      "bucket": "thank",
+      "completed_at": "2026-08-19",
+      "event": "Will I Kay",
+      "person": "Will",
+      "sent_at": "2026-08-19 16:46",
+      "sent_subject": "Lead",
+      "sent_thread_id": "19fb31b16551882d"
+    },
+    {
+      "bucket": "thank",
+      "completed_at": "2026-08-19",
+      "event": "Will I Kay",
+      "person": "Will",
+      "sent_at": "2026-08-19 16:46",
+      "sent_subject": "Lead",
+      "sent_thread_id": "19fb31b16551882d"
+    }
+  ],
+  "follow_through_pending_items": [
     {
       "bucket": "eow",
       "context": "EOW follow-up",
@@ -47,39 +74,28 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-08-19.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-08-20.json",
   "input_status": "ok",
   "needs_kay": [
-    "50 broker/listing row(s) extracted",
-    "4 prior-day thank-you(s) need approval: Brooke\u2019s cell; Relationship / Call Window; Relationship / Call Window; WSN Group",
-    "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg"
+    "5 prior-day thank-you(s) need approval: Relationship / Call Window; Relationship / Call Window; WSN Group; WSN Group (+1 more)",
+    "4 email follow-through row(s) auto-completed from sent-mail evidence: Jeff; Jeff; Will; Will",
+    "3 EOW/follow-up row(s) still active after sent-mail check: Denning; Paul; Greg",
+    "Clarify email follow-through identity/source: Camilla (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-08-19.md",
+  "source_artifact": "brain/context/email-scan-results-2026-08-20.md",
   "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 0,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-08-19",
-      "email": "",
-      "event": "Call Brooke\u2019s cell",
-      "event_date": "2026-08-18",
-      "person": "Brooke\u2019s cell",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-08-19",
+      "due_date": "2026-08-20",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-08-18",
+      "event_date": "2026-08-19",
       "person": "Relationship / Call Window",
       "sent_at": "",
       "sent_subject": "",
@@ -88,10 +104,10 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-08-19",
+      "due_date": "2026-08-20",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-08-18",
+      "event_date": "2026-08-19",
       "person": "Relationship / Call Window",
       "sent_at": "",
       "sent_subject": "",
@@ -100,16 +116,42 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-08-19",
+      "due_date": "2026-08-20",
       "email": "adilene@belen-partners.com",
       "event": "WSN Group",
-      "event_date": "2026-08-18",
+      "event_date": "2026-08-19",
       "person": "WSN Group",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-08-20",
+      "email": "adilene@belen-partners.com",
+      "event": "WSN Group",
+      "event_date": "2026-08-19",
+      "person": "WSN Group",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-08-20",
+      "email": "adilene@belen-partners.com",
+      "event": "WSN Group w/ Link",
+      "event_date": "2026-08-19",
+      "person": "WSN Group w/ Link",
       "sent_at": "",
       "sent_subject": "",
       "sent_thread_id": "",
       "status": "not drafted"
     }
   ],
-  "unclear_followthrough_items": []
+  "unclear_followthrough_items": [
+    "Camilla (24-hour thank-you after external meeting)"
+  ]
 }

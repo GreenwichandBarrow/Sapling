@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19",
+  "updated_at": "2026-08-20",
   "items": [
     {
       "bucket": "thank",
@@ -1209,11 +1209,19 @@
       "email": "jeffstevens@anacapapartners.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-29",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Jeff I Kay Mtg",
       "event_date": "2026-07-28",
-      "calendar_event_id": "scg04ikfln8s13auceu49t4crg_20260722T160000Z"
+      "calendar_event_id": "scg04ikfln8s13auceu49t4crg_20260722T160000Z",
+      "completed_at": "2026-08-19",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 1a01beeb80ed19dd, subject 'Hi', sent 2026-08-19 18:32.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "1a01beeb80ed19dd",
+        "subject": "Hi",
+        "sent_at": "2026-08-19 18:32"
+      }
     },
     {
       "bucket": "thank",
@@ -1261,11 +1269,19 @@
       "email": "jeffstevens@anacapapartners.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-30",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Jeff I Kay Mtg",
       "event_date": "2026-07-29",
-      "calendar_event_id": "scg04ikfln8s13auceu49t4crg_20260722T160000Z"
+      "calendar_event_id": "scg04ikfln8s13auceu49t4crg_20260722T160000Z",
+      "completed_at": "2026-08-19",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 1a01beeb80ed19dd, subject 'Hi', sent 2026-08-19 18:32.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "1a01beeb80ed19dd",
+        "subject": "Hi",
+        "sent_at": "2026-08-19 18:32"
+      }
     },
     {
       "bucket": "thank",
@@ -1325,11 +1341,19 @@
       "email": "will@bkgrowth.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-08-04",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Will I Kay",
       "event_date": "2026-08-03",
-      "calendar_event_id": "7clefue9p8tt7nds0886r4bnhp"
+      "calendar_event_id": "7clefue9p8tt7nds0886r4bnhp",
+      "completed_at": "2026-08-19",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19fb31b16551882d, subject 'Lead', sent 2026-08-19 16:46.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19fb31b16551882d",
+        "subject": "Lead",
+        "sent_at": "2026-08-19 16:46"
+      }
     },
     {
       "bucket": "thank",
@@ -1349,11 +1373,19 @@
       "email": "will@bkgrowth.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-08-05",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Will I Kay",
       "event_date": "2026-08-04",
-      "calendar_event_id": "7clefue9p8tt7nds0886r4bnhp"
+      "calendar_event_id": "7clefue9p8tt7nds0886r4bnhp",
+      "completed_at": "2026-08-19",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19fb31b16551882d, subject 'Lead', sent 2026-08-19 16:46.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19fb31b16551882d",
+        "subject": "Lead",
+        "sent_at": "2026-08-19 16:46"
+      }
     },
     {
       "bucket": "thank",
@@ -1638,6 +1670,66 @@
       "event": "WSN Group",
       "event_date": "2026-08-18",
       "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6h1jada46ssk2chm8cok8gpg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g70ojec1m650jeh9o8h336e1k710k2dpl74q38dpi6oq48gpm8p30_20260819T170000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-20",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-19",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260819T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "WSN Group w/ Link",
+      "email": "adilene@belen-partners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-20",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "WSN Group w/ Link",
+      "event_date": "2026-08-19",
+      "calendar_event_id": "1fot8s3om5s09c801msf8muo58"
+    },
+    {
+      "bucket": "thank",
+      "person": "WSN Group",
+      "email": "adilene@belen-partners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-20",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "WSN Group",
+      "event_date": "2026-08-19",
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6h1jada46ssk2chm8cok8gpg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g70ojec1m650jeh9o8h336e1k710k2dpl74q38dpi6oq48gpm8p30_20260819T170000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "WSN Group",
+      "email": "adilene@belen-partners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-20",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "WSN Group",
+      "event_date": "2026-08-19",
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6koj4d9n8913ic266co48h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g88s3ed26751kagpm64q38c9k8gsjic9p8cr3ge9k8p34cgq660pg_20260819T170000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-20",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-19",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260820T153000Z"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

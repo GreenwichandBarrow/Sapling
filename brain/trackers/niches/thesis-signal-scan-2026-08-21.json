@@ -1,0 +1,32 @@
+{
+  "run_date": "2026-08-21",
+  "run_mode": "thursday_signal_scan",
+  "signals_reviewed": 7,
+  "recommendations_count": 1,
+  "urgent_fast_sprint_count": 0,
+  "queue_for_monday_count": 1,
+  "park_count": 3,
+  "zero_signal_reason": "",
+  "sources_covered": {
+    "pe_news": "Luxury circularity/repair market checks via Deloitte, Ellen MacArthur Foundation, and Vogue; HVAC PE heat and CMMC timing were reviewed as background.",
+    "email": "Gmail 8/17-8/21 deal-flow, investor, and newsletter buckets; mostly promotional/noise, with one DealsX lead and one investor invite.",
+    "calls": "[[brain/calls/2026-08-18-brooke-garber-neidich-sidney-garber]] and [[brain/calls/2026-08-19-wsn-group-w-link]].",
+    "inbox": "No new niche-signal inbox files were created after 2026-08-17; jewelry remains anchored by [[brain/inbox/2026-07-31-niche-idea-legacy-jewelry-brand]].",
+    "conferences": "[[brain/context/good-morning-brief-2026-08-17]] confirmed the Sunday conference-discovery delta: CT Pest Association Annual Fall Training Seminar 2026 and XPX New York City September Breakfast."
+  },
+  "edge_niches_considered": 3,
+  "recommendations": [
+    {
+      "bucket": "queue_for_monday",
+      "signal": "Legacy jewelry brands / heirloom jewelry services",
+      "why": "The current call set moved the thread from brand enthusiasm into concrete operating risk: inventory, manufacturing, working capital, and transition support. That is enough to justify a Monday re-screen, not enough to rush execution.",
+      "tailwind": "Luxury circularity, resale, and repair/refurbishment remain live growth trends, with major luxury players and policy coverage still pointing in the same direction.",
+      "edge_path": "Jewelry-adjacent infrastructure: repair, appraisal, certification, insurance, documentation, packaging, and workflow support.",
+      "evidence": [
+        "[[brain/calls/2026-08-18-brooke-garber-neidich-sidney-garber]]",
+        "[[brain/calls/2026-08-19-wsn-group-w-link]]",
+        "[[brain/inbox/2026-07-31-niche-idea-legacy-jewelry-brand]]"
+      ]
+    }
+  ]
+}

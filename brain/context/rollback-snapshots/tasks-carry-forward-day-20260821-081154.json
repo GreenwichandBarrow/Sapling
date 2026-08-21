@@ -1,0 +1,354 @@
+{
+  "verb": "carry-forward-day",
+  "timestamp": "20260821-081154",
+  "sheet_id": "1Tjprc8z5uXCP94Y-yJaNZDk3SwNC2h-0tRXctornetE",
+  "ranges": {
+    "'Thu'!A21:E70": [
+      [
+        true,
+        "Outreach Work: seller / broker / investor / analyst outreach block"
+      ],
+      [
+        true,
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
+      ],
+      [
+        true,
+        "Strategy / Research: deck, model, thesis, target discovery, niche work"
+      ],
+      [
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward"
+      ],
+      [
+        false,
+        "",
+        "Home",
+        "Home"
+      ],
+      [
+        false
+      ],
+      [
+        false,
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue"
+      ],
+      [
+        false,
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility"
+      ],
+      [
+        false,
+        "Reconnect with Andrew Freiman re: Chenmark intro"
+      ],
+      [
+        false,
+        "Change login info for operations folder + operations Gmail account"
+      ],
+      [
+        false,
+        "Niche intel review"
+      ],
+      [
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
+      ],
+      [
+        false,
+        "Process conference registrations"
+      ],
+      [
+        false,
+        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar"
+      ],
+      [
+        false,
+        "Call IRS to confirm Form 8822-B address update"
+      ],
+      [
+        false,
+        "Pull Megan pre-LOI prep meeting notes"
+      ],
+      [
+        false,
+        "Email Melissa to assist with BK Growth contact and file folders"
+      ],
+      [
+        false,
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
+      ],
+      [
+        false,
+        "Review new SLD video"
+      ],
+      [
+        false,
+        "Locate holdco financial model"
+      ],
+      [
+        false,
+        "Text Sarah Finders Fee document"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Fri'!A21:E70": [
+      [
+        false,
+        "Create travel plans for July in Paris/France next year"
+      ],
+      [
+        false,
+        "Look into GLP1"
+      ],
+      [
+        false,
+        "Review Kai Grey Ventures renewal"
+      ],
+      [
+        false,
+        "Submit new PSLF form"
+      ],
+      [
+        false,
+        "Create project for French passports"
+      ],
+      [
+        false,
+        "Renew kids' work permits"
+      ],
+      [
+        false,
+        "Complete paperwork for KA & my passport renewals",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Set up Claude workflow for Friday: slides + website aesthetics"
+      ],
+      [
+        false,
+        "Call IRS/government to confirm address change"
+      ],
+      [
+        false,
+        "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan"
+      ],
+      [
+        false,
+        "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning."
+      ],
+      [
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget"
+      ],
+      [
+        false,
+        "Check NYC Housing Connect for new Manhattan lotteries"
+      ],
+      [
+        false,
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only"
+      ],
+      [
+        false,
+        "Personal Finance / Wealth Monitor"
+      ],
+      [
+        false,
+        "Nonprofit Operations"
+      ],
+      [
+        false,
+        "Family Admin"
+      ],
+      [
+        false,
+        "Systems / Website / G&B Housekeeping"
+      ],
+      [
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ]
+  }
+}

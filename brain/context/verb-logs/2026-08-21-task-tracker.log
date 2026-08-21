@@ -1,0 +1,24 @@
+
+[2026-08-21T08:11:58.692444] carry-forward-day — thu-to-fri
+  - moved: 16
+  - source: Thu
+  - destination: Fri
+  - source packed: {'completed': 3, 'active': 0, 'blank': 47, 'rows': '21:70'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260821-081154.json
+  
+  - Thu slot 4 already existed on Fri; cleared source: 8:30 Decision Review: review what moved, what parks, what rolls forward
+  - Thu slot 7 → Fri slot 20: Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue
+  - Thu slot 8 → Fri slot 21: Review website direction: light lookbook-style G&B page for seller/investor credibility
+  - Thu slot 9 → Fri slot 22: Reconnect with Andrew Freiman re: Chenmark intro
+  - Thu slot 10 → Fri slot 23: Change login info for operations folder + operations Gmail account
+  - Thu slot 11 → Fri slot 24: Niche intel review
+  - Thu slot 12 → Fri slot 25: Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions
+  - Thu slot 13 → Fri slot 26: Process conference registrations
+  - Thu slot 14 → Fri slot 27: Submit the boys to: State Models, Zuri Models, Teri B and Stellar
+  - Thu slot 15 → Fri slot 28: Call IRS to confirm Form 8822-B address update
+  - Thu slot 16 → Fri slot 29: Pull Megan pre-LOI prep meeting notes
+  - Thu slot 17 → Fri slot 30: Email Melissa to assist with BK Growth contact and file folders
+  - Thu slot 18 → Fri slot 31: Pull contact info and prepare kids modeling submissions to 5 referred agencies
+  - Thu slot 19 → Fri slot 32: Review new SLD video
+  - Thu slot 20 → Fri slot 33: Locate holdco financial model
+  - Thu slot 21 → Fri slot 34: Text Sarah Finders Fee document

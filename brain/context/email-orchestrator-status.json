@@ -3,16 +3,16 @@
   "deal_items": 40,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-08-21T06:50:45.145542-04:00",
+  "fetched_at": "2026-08-21T08:13:05.826884-04:00",
   "follow_through_completed_items": [
     {
       "bucket": "thank",
-      "completed_at": "2026-08-20",
-      "event": "Kay Schneider and Sara Rosenthal",
-      "person": "Kay",
-      "sent_at": "2026-08-20 13:18",
-      "sent_subject": "Quick TB",
-      "sent_thread_id": "19f1e8dc606fa718"
+      "completed_at": "2026-08-21",
+      "event": "Melissa I Kay",
+      "person": "Melissa",
+      "sent_at": "2026-08-21 07:45",
+      "sent_subject": "Model Review",
+      "sent_thread_id": "1a0240ccec15637f"
     }
   ],
   "follow_through_pending_items": [
@@ -52,7 +52,7 @@
   "needs_kay": [
     "40 broker/listing row(s) extracted",
     "1 prior-day thank-you(s) need approval: Relationship / Call Window",
-    "1 email follow-through row(s) auto-completed from sent-mail evidence: Kay",
+    "1 email follow-through row(s) auto-completed from sent-mail evidence: Melissa",
     "3 EOW/follow-up row(s) still active after sent-mail check: Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Camilla (24-hour thank-you after external meeting)"
   ],

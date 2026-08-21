@@ -3,45 +3,8 @@
   "deal_items": 0,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-08-20T06:50:44.986853-04:00",
-  "follow_through_completed_items": [
-    {
-      "bucket": "thank",
-      "completed_at": "2026-08-19",
-      "event": "Jeff I Kay Mtg",
-      "person": "Jeff",
-      "sent_at": "2026-08-19 18:32",
-      "sent_subject": "Hi",
-      "sent_thread_id": "1a01beeb80ed19dd"
-    },
-    {
-      "bucket": "thank",
-      "completed_at": "2026-08-19",
-      "event": "Jeff I Kay Mtg",
-      "person": "Jeff",
-      "sent_at": "2026-08-19 18:32",
-      "sent_subject": "Hi",
-      "sent_thread_id": "1a01beeb80ed19dd"
-    },
-    {
-      "bucket": "thank",
-      "completed_at": "2026-08-19",
-      "event": "Will I Kay",
-      "person": "Will",
-      "sent_at": "2026-08-19 16:46",
-      "sent_subject": "Lead",
-      "sent_thread_id": "19fb31b16551882d"
-    },
-    {
-      "bucket": "thank",
-      "completed_at": "2026-08-19",
-      "event": "Will I Kay",
-      "person": "Will",
-      "sent_at": "2026-08-19 16:46",
-      "sent_subject": "Lead",
-      "sent_thread_id": "19fb31b16551882d"
-    }
-  ],
+  "fetched_at": "2026-08-20T08:17:41.439852-04:00",
+  "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -78,7 +41,6 @@
   "input_status": "ok",
   "needs_kay": [
     "5 prior-day thank-you(s) need approval: Relationship / Call Window; Relationship / Call Window; WSN Group; WSN Group (+1 more)",
-    "4 email follow-through row(s) auto-completed from sent-mail evidence: Jeff; Jeff; Will; Will",
     "3 EOW/follow-up row(s) still active after sent-mail check: Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Camilla (24-hour thank-you after external meeting)"
   ],

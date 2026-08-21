@@ -1,0 +1,34 @@
+
+[2026-08-20T11:54:48.809726] carry-forward-day — sun-to-thu
+  - moved: 1
+  - source: Sun
+  - destination: Thu
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '21:70'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260820-115446.json
+  
+  - Sun slot 1 → Thu slot 5: Put fuel & recovery lists to refrigerator
+
+[2026-08-20T11:54:52.731218] carry-forward-day — wed-to-thu
+  - moved: 17
+  - source: Wed
+  - destination: Thu
+  - source packed: {'completed': 13, 'active': 0, 'blank': 37, 'rows': '21:70'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260820-115445.json
+  
+  - Wed slot 1 → Thu slot 5: Reach out to organizer of Art Oct conference
+  - Wed slot 2 → Thu slot 6: Visit store carrying jewelry line to see product and merchandising in person
+  - Wed slot 3 → Thu slot 7: Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue
+  - Wed slot 4 → Thu slot 8: Review website direction: light lookbook-style G&B page for seller/investor credibility
+  - Wed slot 6 → Thu slot 9: Reconnect with Andrew Freiman re: Chenmark intro
+  - Wed slot 7 → Thu slot 10: Change login info for operations folder + operations Gmail account
+  - Wed slot 8 → Thu slot 11: Niche intel review
+  - Wed slot 18 → Thu slot 12: Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions
+  - Wed slot 19 → Thu slot 13: Process conference registrations
+  - Wed slot 20 → Thu slot 14: Submit the boys to: State Models, Zuri Models, Teri B and Stellar
+  - Wed slot 21 → Thu slot 15: Call IRS to confirm Form 8822-B address update
+  - Wed slot 22 → Thu slot 16: Pull Megan pre-LOI prep meeting notes
+  - Wed slot 24 → Thu slot 17: Email Melissa to assist with BK Growth contact and file folders
+  - Wed slot 26 → Thu slot 18: Pull contact info and prepare kids modeling submissions to 5 referred agencies
+  - Wed slot 28 → Thu slot 19: Review new SLD video
+  - Wed slot 29 → Thu slot 20: Locate holdco financial model
+  - Wed slot 30 → Thu slot 21: Text Sarah Finders Fee document

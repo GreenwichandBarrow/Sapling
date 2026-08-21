@@ -1,38 +1,16 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260815-100038",
-  "sheet_id": "1U1GN9xcg18S-o4mA-b3QZ3Sr-xUvhHDn2G23pLI1rmA",
+  "timestamp": "20260820-115445",
+  "sheet_id": "1Tjprc8z5uXCP94Y-yJaNZDk3SwNC2h-0tRXctornetE",
   "ranges": {
-    "'Thu'!A21:E70": [
+    "'Wed'!A21:E70": [
       [
         false,
-        "Narrow/edit must-have diligence questions to top 5"
+        "Reach out to organizer of Art Oct conference"
       ],
       [
         false,
-        "Outreach Work: seller / broker / investor / analyst outreach block"
-      ],
-      [
-        false,
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
-      ],
-      [
-        false,
-        "Strategy / Research: deck, model, thesis, target discovery, niche work"
-      ],
-      [
-        false,
-        "8:30 Decision Review: review what moved, what parks, what rolls forward"
-      ],
-      [
-        false,
-        "Fax W2 to NYS",
-        "Home",
-        "Home"
-      ],
-      [
-        false,
-        "Prepare high-level seller data ask draft"
+        "Visit store carrying jewelry line to see product and merchandising in person"
       ],
       [
         false,
@@ -43,81 +21,56 @@
         "Review website direction: light lookbook-style G&B page for seller/investor credibility"
       ],
       [
-        false,
+        true,
         "Draft seller-call prep framework: transition priorities, questions, and deal-structure options"
+      ],
+      [
+        false,
+        "Reconnect with Andrew Freiman re: Chenmark intro"
+      ],
+      [
+        false,
+        "Change login info for operations folder + operations Gmail account"
       ],
       [
         false,
         "Niche intel review"
       ],
       [
-        false,
-        "Locate holdco financial model"
+        true,
+        "Outreach Work: seller / broker / investor / analyst outreach block"
       ],
       [
-        false,
-        "Call IRS to confirm Form 8822-B address update"
+        true,
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
       ],
       [
-        false,
-        "Text Sarah Finders Fee document"
+        true,
+        "Strategy / Research: deck, model, thesis, target discovery, niche work"
       ],
       [
-        false,
-        "Call Troy"
+        true,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward"
       ],
       [
-        false,
-        "Reconnect with Levi on prior art storage path"
-      ],
-      [
-        false,
-        "Circle back with Paul on art storage conversation",
-        "Work",
-        "G&B"
-      ],
-      [
-        false,
-        "Order more business cards and change title to founder",
-        "Work",
-        "G&B",
-        "Send via text."
-      ],
-      [
-        false,
-        "Reach out to organizer of Art Oct conference"
-      ],
-      [
-        false,
-        "Email Melissa to assist with BK Growth contact and file folders"
-      ],
-      [
-        false,
-        "Send new email outreach on dashboard (3 companies)"
-      ],
-      [
-        false,
-        "Visit store carrying jewelry line to see product and merchandising in person"
-      ],
-      [
-        false,
-        "Draft/schedule Greg thank-you and insurance contacts follow-up"
-      ],
-      [
-        false,
-        "Weekend prep: prepare for a possible Sidney Garber meeting next week if she responds."
-      ],
-      [
-        false,
-        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
-      ],
-      [
-        false,
+        true,
         "Add Kay food staples to Sunday grocery run"
       ],
       [
-        false,
+        true,
+        "Create weekly schedule"
+      ],
+      [
+        true,
+        "Confirm LiveOak payroll transfer coverage"
+      ],
+      [
+        true,
         "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
+      ],
+      [
+        true,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
       ],
       [
         false,
@@ -125,25 +78,57 @@
       ],
       [
         false,
+        "Process conference registrations"
+      ],
+      [
+        false,
+        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar"
+      ],
+      [
+        false,
+        "Call IRS to confirm Form 8822-B address update"
+      ],
+      [
+        false,
         "Pull Megan pre-LOI prep meeting notes"
       ],
       [
-        false,
-        "Watch SLD video",
-        "Work",
-        "G&B"
+        true,
+        "Continue financial modeling"
       ],
       [
         false,
-        "Get Real Pigeons from the library",
-        "Home",
-        "Home"
+        "Email Melissa to assist with BK Growth contact and file folders"
+      ],
+      [
+        true,
+        "Reconnect with Levi on prior art storage path"
       ],
       [
         false,
-        "Pay One Hanover Square rent",
-        "Work",
-        "G&B"
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
+      ],
+      [
+        true,
+        "Call RSM"
+      ],
+      [
+        false,
+        "Review new SLD video"
+      ],
+      [
+        false,
+        "Locate holdco financial model"
+      ],
+      [
+        false,
+        "Text Sarah Finders Fee document"
+      ],
+      [
+        false
+      ],
+      [
+        false
       ],
       [
         false
@@ -200,21 +185,22 @@
         false
       ]
     ],
-    "'Sat'!A21:E70": [
+    "'Thu'!A21:E70": [
       [
         false,
-        "Buy gift for baby Ruby",
-        "Home",
-        "Home"
+        "Outreach Work: seller / broker / investor / analyst outreach block"
       ],
       [
-        false
+        false,
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
       ],
       [
-        false
+        false,
+        "Strategy / Research: deck, model, thesis, target discovery, niche work"
       ],
       [
-        false
+        false,
+        "8:30 Decision Review: review what moved, what parks, what rolls forward"
       ],
       [
         false

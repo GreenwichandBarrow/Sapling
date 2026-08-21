@@ -1,10 +1,20 @@
 {
   "blocked": [],
-  "deal_items": 0,
+  "deal_items": 40,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-08-20T08:17:41.439852-04:00",
-  "follow_through_completed_items": [],
+  "fetched_at": "2026-08-21T06:50:45.145542-04:00",
+  "follow_through_completed_items": [
+    {
+      "bucket": "thank",
+      "completed_at": "2026-08-20",
+      "event": "Kay Schneider and Sara Rosenthal",
+      "person": "Kay",
+      "sent_at": "2026-08-20 13:18",
+      "sent_subject": "Quick TB",
+      "sent_thread_id": "19f1e8dc606fa718"
+    }
+  ],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -37,76 +47,30 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-08-20.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-08-21.json",
   "input_status": "ok",
   "needs_kay": [
-    "5 prior-day thank-you(s) need approval: Relationship / Call Window; Relationship / Call Window; WSN Group; WSN Group (+1 more)",
+    "40 broker/listing row(s) extracted",
+    "1 prior-day thank-you(s) need approval: Relationship / Call Window",
+    "1 email follow-through row(s) auto-completed from sent-mail evidence: Kay",
     "3 EOW/follow-up row(s) still active after sent-mail check: Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Camilla (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-08-20.md",
+  "source_artifact": "brain/context/email-scan-results-2026-08-21.md",
   "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 0,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-08-20",
+      "due_date": "2026-08-21",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-08-19",
+      "event_date": "2026-08-20",
       "person": "Relationship / Call Window",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-08-20",
-      "email": "",
-      "event": "Relationship / Call Window",
-      "event_date": "2026-08-19",
-      "person": "Relationship / Call Window",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-08-20",
-      "email": "adilene@belen-partners.com",
-      "event": "WSN Group",
-      "event_date": "2026-08-19",
-      "person": "WSN Group",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-08-20",
-      "email": "adilene@belen-partners.com",
-      "event": "WSN Group",
-      "event_date": "2026-08-19",
-      "person": "WSN Group",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-08-20",
-      "email": "adilene@belen-partners.com",
-      "event": "WSN Group w/ Link",
-      "event_date": "2026-08-19",
-      "person": "WSN Group w/ Link",
       "sent_at": "",
       "sent_subject": "",
       "sent_thread_id": "",

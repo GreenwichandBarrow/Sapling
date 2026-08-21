@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-20",
+  "updated_at": "2026-08-21",
   "items": [
     {
       "bucket": "thank",
@@ -1113,11 +1113,19 @@
       "email": "sara@ttcerpartners.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-16",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Kay Schneider and Sara Rosenthal",
       "event_date": "2026-07-15",
-      "calendar_event_id": "fl0tc7vf6fn8penkrtbocq08fo"
+      "calendar_event_id": "fl0tc7vf6fn8penkrtbocq08fo",
+      "completed_at": "2026-08-20",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19f1e8dc606fa718, subject 'Quick TB', sent 2026-08-20 13:18.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19f1e8dc606fa718",
+        "subject": "Quick TB",
+        "sent_at": "2026-08-20 13:18"
+      }
     },
     {
       "bucket": "thank",
@@ -1729,6 +1737,18 @@
       "source": "calendar-prior-day-refresh",
       "event": "Relationship / Call Window",
       "event_date": "2026-08-19",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260820T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-21",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-20",
       "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260820T153000Z"
     }
   ],

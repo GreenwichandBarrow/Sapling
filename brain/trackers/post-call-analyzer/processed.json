@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-18T17:10:38.429744Z",
+  "last_updated": "2026-08-21T22:08:15.288299Z",
   "processed": [
     {
       "attio_failed": false,
@@ -1848,6 +1848,31 @@
       "transcript_doc_url": "https://docs.google.com/document/d/1sS5zRakUUzmMLD4W-C0yG6PaJ7cqb6jziOl6SHaOJ4I/edit?usp=drivesdk",
       "transcript_failed": false,
       "vault_call_note": "brain/calls/2026-08-19-wsn-group-w-link.md"
+    },
+    {
+      "id": "not_15uqodQzQMxmx3",
+      "title": "Melissa I Kay",
+      "date": "2026-08-21",
+      "granola_url": "https://notes.granola.ai/d/76561d01-e233-4975-8147-1eb6aead10da",
+      "doc_url": "https://docs.google.com/document/d/17dY_gz8ELMMSfYdjO3BsboRvpf8ruigFlUgA6Q7gJ1g/edit?usp=drivesdk",
+      "transcript_doc_url": "https://docs.google.com/document/d/1haZs4plERlYyctbbZzBgMmjdF3ne5FuAmqFEVAOO7HQ/edit?usp=drivesdk",
+      "vault_call_note": "brain/calls/2026-08-21-melissa-rosenblatt.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_15uqodQzQMxmx3.json",
+      "task_count": 5,
+      "attio_failed": false,
+      "attio_notes": {
+        "people": [
+          "2105f3d5-1eda-41c8-9c1a-87bcb7653412"
+        ],
+        "companies": [
+          "4f83c8d2-dd0c-4902-b233-4e2af6fceba3"
+        ]
+      },
+      "doc_failed": false,
+      "transcript_failed": false,
+      "tasks_failed": false,
+      "processed_at": "2026-08-21T22:08:15.288299Z",
+      "slack_posted": true
     }
   ]
 }

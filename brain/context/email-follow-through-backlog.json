@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-21",
+  "updated_at": "2026-08-24",
   "items": [
     {
       "bucket": "thank",
@@ -1758,6 +1758,42 @@
       "event": "Relationship / Call Window",
       "event_date": "2026-08-20",
       "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260820T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Sara & text her about finders fee & timing",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-24",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Call Sara & text her about finders fee & timing",
+      "event_date": "2026-08-23",
+      "calendar_event_id": "_6t1k6dpl6koj0b9n6133ab9k8oq34b9o6l33cb9n6l13gg9g8oq3ecpl60"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-24",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-23",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260824T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Ibrahim",
+      "email": "ivelutini@ashfordventures.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-24",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Ibrahim I Kay",
+      "event_date": "2026-08-23",
+      "calendar_event_id": "48ngu75o927vdfhlocugkho774"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

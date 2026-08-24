@@ -1,20 +1,10 @@
 {
   "blocked": [],
-  "deal_items": 40,
+  "deal_items": 49,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-08-21T08:13:05.826884-04:00",
-  "follow_through_completed_items": [
-    {
-      "bucket": "thank",
-      "completed_at": "2026-08-21",
-      "event": "Melissa I Kay",
-      "person": "Melissa",
-      "sent_at": "2026-08-21 07:45",
-      "sent_subject": "Model Review",
-      "sent_thread_id": "1a0240ccec15637f"
-    }
-  ],
+  "fetched_at": "2026-08-24T06:50:44.937711-04:00",
+  "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -47,30 +37,53 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-08-21.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-08-24.json",
   "input_status": "ok",
   "needs_kay": [
-    "40 broker/listing row(s) extracted",
-    "1 prior-day thank-you(s) need approval: Relationship / Call Window",
-    "1 email follow-through row(s) auto-completed from sent-mail evidence: Melissa",
+    "49 broker/listing row(s) extracted",
+    "3 prior-day thank-you(s) need approval: Ibrahim; Relationship / Call Window; Sara & text her about finders fee & timing",
     "3 EOW/follow-up row(s) still active after sent-mail check: Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Camilla (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-08-21.md",
+  "source_artifact": "brain/context/email-scan-results-2026-08-24.md",
   "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 0,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-08-21",
+      "due_date": "2026-08-24",
+      "email": "ivelutini@ashfordventures.com",
+      "event": "Ibrahim I Kay",
+      "event_date": "2026-08-23",
+      "person": "Ibrahim",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-08-24",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-08-20",
+      "event_date": "2026-08-23",
       "person": "Relationship / Call Window",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-08-24",
+      "email": "",
+      "event": "Call Sara & text her about finders fee & timing",
+      "event_date": "2026-08-23",
+      "person": "Sara & text her about finders fee & timing",
       "sent_at": "",
       "sent_subject": "",
       "sent_thread_id": "",

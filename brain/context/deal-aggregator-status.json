@@ -1,15 +1,15 @@
 {
-  "date": "2026-08-24",
+  "date": "2026-08-25",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-08-24.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-08-25.md",
   "email_scan_status": "live",
   "deals_found": 0,
   "broker_opportunistic": 1,
-  "near_misses": 2,
-  "sources_scanned": 19,
+  "near_misses": 0,
+  "sources_scanned": 17,
   "sources_covered": {
     "marketplace": 7,
-    "email_newsletters": 8,
+    "email_newsletters": 6,
     "direct_email": 4
   },
   "manual_check_sources": [],

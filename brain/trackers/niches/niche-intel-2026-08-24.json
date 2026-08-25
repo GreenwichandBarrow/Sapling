@@ -1,0 +1,62 @@
+{
+  "run_date": "2026-08-24",
+  "run_mode": "monday",
+  "runtime": "Codex/systemd",
+  "niches_evaluated": 3,
+  "niches_identified": 2,
+  "one_pagers_written": 2,
+  "scorecards_written": 2,
+  "tracker_updated": true,
+  "runtime_seconds": 2602,
+  "zero_finding_reason": "",
+  "sources_covered": {
+    "recent_track": "Complete across available headless sources: Gmail newsletters, Gmail deal flow/investor threads, recent Granola notes, recent vault calls/outputs, passive inbox scan, and supplemental web research. last30days CLI was unavailable, so full social coverage is incomplete.",
+    "historical_track": "Partial across available headless sources: local brain/calls corpus, historical Gmail read-only searches, and prior niche-intelligence outputs/traces. OneNote SEARCH FUND notebook, requested ChatGPT export, and older direct Granola coverage were unavailable/incomplete."
+  },
+  "source_coverage_diagnostics": {
+    "gmail_read_mode": "read-only with --gmail-no-send",
+    "last30days": "unavailable in headless environment; web search substituted",
+    "onenote": "unavailable; no OneNote MCP tool exposed in this session",
+    "chatgpt_export": "requested selected_business_conversations.json not found/read in headless environment",
+    "granola_historical": "direct historical pull incomplete; local brain/calls used as fallback",
+    "attio": "not checked; no safe CLI/MCP path available and no secret files inspected"
+  },
+  "umbrella_themes_reviewed": [
+    "Luxury, Heritage & Personal Goods",
+    "Asset Protection & Stewardship",
+    "Trust, Compliance & Verification",
+    "Beauty, Wellness & Longevity Infrastructure",
+    "Property / Building Health & Compliance",
+    "Healthcare Admin / Payment Infrastructure",
+    "Family Wealth, Legacy & Life Infrastructure",
+    "Real Estate Transaction Infrastructure"
+  ],
+  "edge_niches_considered": 3,
+  "open_loops_infra": [
+    "Restore or expose last30days CLI for scheduled niche-intelligence runs.",
+    "Expose OneNote SEARCH FUND notebook access in Codex/systemd or document a supported fallback.",
+    "Make selected_business_conversations.json available to the scheduled environment or remove it from the headless source contract.",
+    "Fix older Granola historical pull coverage or rely explicitly on brain/calls as the canonical transcript corpus.",
+    "Provide a safe Attio lookup path for company registry cross-reference without reading secret files."
+  ],
+  "niches": [
+    {
+      "name": "Commercial/Industrial Air Purification Installed-Base Service and Compliance Maintenance",
+      "score": 2.44,
+      "drive_folder": "https://drive.google.com/drive/folders/1cs20XcJiEy4NJexAdlyYwR0JoFbvw20E",
+      "one_pager": "https://docs.google.com/presentation/d/1QeTkNjrJHqsIFhNAvz7SIPVnRlZXYaUn/edit",
+      "scorecard": "https://docs.google.com/spreadsheets/d/1XYW7BYW08hriupby_K7rwQ5N9eJUqq1y/edit",
+      "tracker_status": "New",
+      "suggested_review_status": "TEST"
+    },
+    {
+      "name": "Art-Dealer Cultural-Goods Compliance and Back-Office Operations",
+      "score": 1.96,
+      "drive_folder": "https://drive.google.com/drive/folders/1pnJthlCdJREb5tyrWRRhqnuO6KJOKkjf",
+      "one_pager": "https://docs.google.com/presentation/d/1yjbQG2zS5uq1pmjY33tUzHCFxIz0cNh4/edit",
+      "scorecard": "https://docs.google.com/spreadsheets/d/1mXrWs_GamCdbxRYq3Fx6_ICAvha9aiWt/edit",
+      "tracker_status": "New",
+      "suggested_review_status": "HOLD"
+    }
+  ]
+}

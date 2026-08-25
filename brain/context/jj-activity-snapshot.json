@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-24T22:02:59Z",
+  "fetched_at": "2026-08-25T18:32:53Z",
   "niches_scanned": [
     "Art Insurance",
     "Domestic TCI",
@@ -21,7 +21,6 @@
   "dials_lifetime": 1254,
   "by_day": {
     "2026-06-08": 29,
-    "2026-05-26": 37,
     "2026-05-27": 40,
     "2026-05-28": 25,
     "2026-05-29": 15,
@@ -41,63 +40,63 @@
   },
   "weekly_buckets": [
     {
-      "week_start": "2026-06-02",
-      "week_end": "2026-06-08",
-      "dials": 125
+      "week_start": "2026-06-03",
+      "week_end": "2026-06-09",
+      "dials": 153
     },
     {
-      "week_start": "2026-06-09",
-      "week_end": "2026-06-15",
-      "dials": 113
+      "week_start": "2026-06-10",
+      "week_end": "2026-06-16",
+      "dials": 141
     },
     {
-      "week_start": "2026-06-16",
-      "week_end": "2026-06-22",
-      "dials": 140
+      "week_start": "2026-06-17",
+      "week_end": "2026-06-23",
+      "dials": 112
     },
     {
-      "week_start": "2026-06-23",
-      "week_end": "2026-06-29",
-      "dials": 84
+      "week_start": "2026-06-24",
+      "week_end": "2026-06-30",
+      "dials": 56
     },
     {
-      "week_start": "2026-06-30",
-      "week_end": "2026-07-06",
+      "week_start": "2026-07-01",
+      "week_end": "2026-07-07",
       "dials": 0
     },
     {
-      "week_start": "2026-07-07",
-      "week_end": "2026-07-13",
+      "week_start": "2026-07-08",
+      "week_end": "2026-07-14",
       "dials": 0
     },
     {
-      "week_start": "2026-07-14",
-      "week_end": "2026-07-20",
+      "week_start": "2026-07-15",
+      "week_end": "2026-07-21",
       "dials": 0
     },
     {
-      "week_start": "2026-07-21",
-      "week_end": "2026-07-27",
+      "week_start": "2026-07-22",
+      "week_end": "2026-07-28",
       "dials": 0
     },
     {
-      "week_start": "2026-07-28",
-      "week_end": "2026-08-03",
+      "week_start": "2026-07-29",
+      "week_end": "2026-08-04",
       "dials": 0
     },
     {
-      "week_start": "2026-08-04",
-      "week_end": "2026-08-10",
+      "week_start": "2026-08-05",
+      "week_end": "2026-08-11",
       "dials": 0
     },
     {
-      "week_start": "2026-08-11",
-      "week_end": "2026-08-17",
+      "week_start": "2026-08-12",
+      "week_end": "2026-08-18",
       "dials": 0
     },
     {
-      "week_start": "2026-08-18",
-      "week_end": "2026-08-24",
+      "week_start": "2026-08-19",
+      "week_end": "2026-08-25",
       "dials": 0
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-24",
+  "updated_at": "2026-08-25",
   "items": [
     {
       "bucket": "thank",
@@ -1789,11 +1789,79 @@
       "email": "ivelutini@ashfordventures.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-08-24",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Ibrahim I Kay",
       "event_date": "2026-08-23",
+      "calendar_event_id": "48ngu75o927vdfhlocugkho774",
+      "completed_at": "2026-08-24",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 1a0240189d3b9ece, subject 'Drafts for Review', sent 2026-08-24 18:26.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "1a0240189d3b9ece",
+        "subject": "Drafts for Review",
+        "sent_at": "2026-08-24 18:26"
+      }
+    },
+    {
+      "bucket": "thank",
+      "person": "Sara & text her about finders fee & timing",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-25",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Call Sara & text her about finders fee & timing",
+      "event_date": "2026-08-24",
+      "calendar_event_id": "_6t1k6dpl6koj0b9n6133ab9k8oq34b9o6l33cb9n6l13gg9g8oq3ecpl60"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-25",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-24",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260824T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Ibrahim",
+      "email": "ivelutini@ashfordventures.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-25",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Ibrahim I Kay",
+      "event_date": "2026-08-24",
       "calendar_event_id": "48ngu75o927vdfhlocugkho774"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-25",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-24",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260825T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Check In: SG LOI",
+      "email": "glavergne@ashfordventures.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-25",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Check In: SG LOI",
+      "event_date": "2026-08-24",
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g64qj8d1h8oq3cghi6cok8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8h13cdpm6d23ih1k8kqjehhk6os3cghg6h1jgdho61230h9j852g"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-21T22:08:15.288299Z",
+  "last_updated": "2026-08-25T22:07:35.481791Z",
   "processed": [
     {
       "attio_failed": false,
@@ -1872,6 +1872,34 @@
       "transcript_failed": false,
       "tasks_failed": false,
       "processed_at": "2026-08-21T22:08:15.288299Z",
+      "slack_posted": true
+    },
+    {
+      "id": "not_Lv9LA4uHntMa3n",
+      "title": "Check In: SG LOI",
+      "counterparty": "Guillermo Lavergne",
+      "company": "Ashford Venture Partners",
+      "date": "2026-08-25",
+      "granola_url": "https://notes.granola.ai/d/49fac70c-7c61-4c52-b34b-583b8cf58cc4",
+      "doc_url": "https://docs.google.com/document/d/12D-ZwsQWjYtrXU_W5YM4aB1yzWCETcIp8TW00kcmd-U/edit",
+      "transcript_doc_url": "https://docs.google.com/document/d/1WXvxh0gkVj4n2hQ6PefyRmNJCt2qsBGPFSBZ_xDO7ng/edit",
+      "vault_call_note": "brain/calls/2026-08-25-guillermo-lavergne-sg-loi.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_Lv9LA4uHntMa3n.json",
+      "task_count": 3,
+      "attio_failed": false,
+      "attio_notes": {
+        "people": [
+          "2b613b57-537c-4cef-8fc5-e053b51d7a98"
+        ],
+        "companies": [
+          "98e2059b-756c-4337-9883-d2ae9b5241d4"
+        ]
+      },
+      "doc_failed": false,
+      "transcript_failed": false,
+      "tasks_failed": false,
+      "processed_archive": "brain/trackers/post-call-analyzer/processed/not_Lv9LA4uHntMa3n.json",
+      "processed_at": "2026-08-25T22:07:35.481791Z",
       "slack_posted": true
     }
   ]

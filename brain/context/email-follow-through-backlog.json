@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-25",
+  "updated_at": "2026-08-26",
   "items": [
     {
       "bucket": "thank",
@@ -1862,6 +1862,54 @@
       "event": "Check In: SG LOI",
       "event_date": "2026-08-24",
       "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g64qj8d1h8oq3cghi6cok8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8h13cdpm6d23ih1k8kqjehhk6os3cghg6h1jgdho61230h9j852g"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-26",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-25",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260825T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Check In: SG LOI",
+      "email": "glavergne@ashfordventures.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-26",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Check In: SG LOI",
+      "event_date": "2026-08-25",
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g64qj8d1h8oq3cghi6cok8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8h13cdpm6d23ih1k8kqjehhk6os3cghg6h1jgdho61230h9j852g"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-26",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-25",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260826T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Jeff",
+      "email": "jeffstevens@anacapapartners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-26",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Jeff I Kay Mtg",
+      "event_date": "2026-08-25",
+      "calendar_event_id": "scg04ikfln8s13auceu49t4crg_20260826T160000Z"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

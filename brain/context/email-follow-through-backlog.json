@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-26",
+  "updated_at": "2026-08-27",
   "items": [
     {
       "bucket": "thank",
@@ -1377,11 +1377,19 @@
       "email": "andrew@saltouncapital.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-08-04",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Andrew I Kay",
       "event_date": "2026-08-03",
-      "calendar_event_id": "c26atknqaden2kps50tfd2gpi8"
+      "calendar_event_id": "c26atknqaden2kps50tfd2gpi8",
+      "completed_at": "2026-08-26",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 1a03df3215612507, subject 'LOI/Structure', sent 2026-08-26 10:22.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "1a03df3215612507",
+        "subject": "LOI/Structure",
+        "sent_at": "2026-08-26 10:22"
+      }
     },
     {
       "bucket": "thank",
@@ -1409,11 +1417,19 @@
       "email": "andrew@saltouncapital.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-08-05",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Andrew I Kay",
       "event_date": "2026-08-04",
-      "calendar_event_id": "c26atknqaden2kps50tfd2gpi8"
+      "calendar_event_id": "c26atknqaden2kps50tfd2gpi8",
+      "completed_at": "2026-08-26",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 1a03df3215612507, subject 'LOI/Structure', sent 2026-08-26 10:22.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "1a03df3215612507",
+        "subject": "LOI/Structure",
+        "sent_at": "2026-08-26 10:22"
+      }
     },
     {
       "bucket": "thank",
@@ -1905,11 +1921,67 @@
       "email": "jeffstevens@anacapapartners.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-08-26",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Jeff I Kay Mtg",
       "event_date": "2026-08-25",
-      "calendar_event_id": "scg04ikfln8s13auceu49t4crg_20260826T160000Z"
+      "calendar_event_id": "scg04ikfln8s13auceu49t4crg_20260826T160000Z",
+      "completed_at": "2026-08-26",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 1a03e829bf24e802, subject 'Mtg today', sent 2026-08-26 19:13.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "1a03e829bf24e802",
+        "subject": "Mtg today",
+        "sent_at": "2026-08-26 19:13"
+      }
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-27",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-26",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260826T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-27",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-26",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260827T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Jeff",
+      "email": "jeffstevens@anacapapartners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-27",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Jeff I Kay",
+      "event_date": "2026-08-26",
+      "calendar_event_id": "fofdohiiqcuesv75v7v85k2p8k"
+    },
+    {
+      "bucket": "thank",
+      "person": "Camilla",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-27",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Camilla I Kay",
+      "event_date": "2026-08-26",
+      "calendar_event_id": "vhpnfkt3o9j08vjqv54g7egi8g"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

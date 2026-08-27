@@ -1,10 +1,38 @@
 {
   "blocked": [],
-  "deal_items": 53,
+  "deal_items": 44,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-08-26T06:50:44.951465-04:00",
-  "follow_through_completed_items": [],
+  "fetched_at": "2026-08-27T06:50:44.944615-04:00",
+  "follow_through_completed_items": [
+    {
+      "bucket": "thank",
+      "completed_at": "2026-08-26",
+      "event": "Andrew I Kay",
+      "person": "Andrew",
+      "sent_at": "2026-08-26 10:22",
+      "sent_subject": "LOI/Structure",
+      "sent_thread_id": "1a03df3215612507"
+    },
+    {
+      "bucket": "thank",
+      "completed_at": "2026-08-26",
+      "event": "Andrew I Kay",
+      "person": "Andrew",
+      "sent_at": "2026-08-26 10:22",
+      "sent_subject": "LOI/Structure",
+      "sent_thread_id": "1a03df3215612507"
+    },
+    {
+      "bucket": "thank",
+      "completed_at": "2026-08-26",
+      "event": "Jeff I Kay Mtg",
+      "person": "Jeff",
+      "sent_at": "2026-08-26 19:13",
+      "sent_subject": "Mtg today",
+      "sent_thread_id": "1a03e829bf24e802"
+    }
+  ],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -37,29 +65,30 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-08-26.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-08-27.json",
   "input_status": "ok",
   "needs_kay": [
-    "53 broker/listing row(s) extracted",
-    "4 prior-day thank-you(s) need approval: Check In: SG LOI; Jeff; Relationship / Call Window; Relationship / Call Window",
+    "44 broker/listing row(s) extracted",
+    "4 prior-day thank-you(s) need approval: Camilla; Jeff; Relationship / Call Window; Relationship / Call Window",
+    "3 email follow-through row(s) auto-completed from sent-mail evidence: Andrew; Andrew; Jeff",
     "3 EOW/follow-up row(s) still active after sent-mail check: Denning; Paul; Greg",
-    "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting)"
+    "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-08-26.md",
+  "source_artifact": "brain/context/email-scan-results-2026-08-27.md",
   "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 0,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-08-26",
-      "email": "glavergne@ashfordventures.com",
-      "event": "Check In: SG LOI",
-      "event_date": "2026-08-25",
-      "person": "Check In: SG LOI",
+      "due_date": "2026-08-27",
+      "email": "",
+      "event": "Camilla I Kay",
+      "event_date": "2026-08-26",
+      "person": "Camilla",
       "sent_at": "",
       "sent_subject": "",
       "sent_thread_id": "",
@@ -67,10 +96,10 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-08-26",
+      "due_date": "2026-08-27",
       "email": "jeffstevens@anacapapartners.com",
-      "event": "Jeff I Kay Mtg",
-      "event_date": "2026-08-25",
+      "event": "Jeff I Kay",
+      "event_date": "2026-08-26",
       "person": "Jeff",
       "sent_at": "",
       "sent_subject": "",
@@ -79,10 +108,10 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-08-26",
+      "due_date": "2026-08-27",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-08-25",
+      "event_date": "2026-08-26",
       "person": "Relationship / Call Window",
       "sent_at": "",
       "sent_subject": "",
@@ -91,10 +120,10 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-08-26",
+      "due_date": "2026-08-27",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-08-25",
+      "event_date": "2026-08-26",
       "person": "Relationship / Call Window",
       "sent_at": "",
       "sent_subject": "",
@@ -104,6 +133,7 @@
   ],
   "unclear_followthrough_items": [
     "Lisa (24-hour thank-you after external call)",
+    "Camilla (24-hour thank-you after external meeting)",
     "Camilla (24-hour thank-you after external meeting)"
   ]
 }

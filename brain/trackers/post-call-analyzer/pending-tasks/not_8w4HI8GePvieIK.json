@@ -1,0 +1,38 @@
+[
+  {
+    "task_text": "Fix the waterfall catch-up calculation in the model before the seller walkthrough.",
+    "type": "Analysis",
+    "project": "Jeff / luxury retail deal",
+    "suggested_day": "Friday",
+    "suggested_due_date": "2026-08-28",
+    "notes_with_doc_link": "From Jeff Stevens 2026-08-27 mtg. Analysis: https://docs.google.com/document/d/1Ggy5mfMP0OUCwvGfFnx4O6J8rziU-BuPsEvKxo5RzuI/edit",
+    "source_call_id": "not_8w4HI8GePvieIK",
+    "source_doc_url": "https://docs.google.com/document/d/1Ggy5mfMP0OUCwvGfFnx4O6J8rziU-BuPsEvKxo5RzuI/edit",
+    "source_transcript_url": "https://docs.google.com/document/d/1ZeQijhcCfx8Sirik525eZK__aOwcYfvfyYidEMpSSEI/edit",
+    "staged_at": "2026-08-27T22:08:06.136617Z"
+  },
+  {
+    "task_text": "Add explicit inventory and working-capital definitions to the LOI.",
+    "type": "Deal",
+    "project": "Jeff / luxury retail deal",
+    "suggested_day": "Friday",
+    "suggested_due_date": "2026-08-28",
+    "notes_with_doc_link": "From Jeff Stevens 2026-08-27 mtg. Analysis: https://docs.google.com/document/d/1Ggy5mfMP0OUCwvGfFnx4O6J8rziU-BuPsEvKxo5RzuI/edit",
+    "source_call_id": "not_8w4HI8GePvieIK",
+    "source_doc_url": "https://docs.google.com/document/d/1Ggy5mfMP0OUCwvGfFnx4O6J8rziU-BuPsEvKxo5RzuI/edit",
+    "source_transcript_url": "https://docs.google.com/document/d/1ZeQijhcCfx8Sirik525eZK__aOwcYfvfyYidEMpSSEI/edit",
+    "staged_at": "2026-08-27T22:08:06.136617Z"
+  },
+  {
+    "task_text": "Run a sensitivity analysis on growth and margin assumptions before Friday.",
+    "type": "Analysis",
+    "project": "Jeff / luxury retail deal",
+    "suggested_day": "Friday",
+    "suggested_due_date": "2026-08-28",
+    "notes_with_doc_link": "From Jeff Stevens 2026-08-27 mtg. Analysis: https://docs.google.com/document/d/1Ggy5mfMP0OUCwvGfFnx4O6J8rziU-BuPsEvKxo5RzuI/edit",
+    "source_call_id": "not_8w4HI8GePvieIK",
+    "source_doc_url": "https://docs.google.com/document/d/1Ggy5mfMP0OUCwvGfFnx4O6J8rziU-BuPsEvKxo5RzuI/edit",
+    "source_transcript_url": "https://docs.google.com/document/d/1ZeQijhcCfx8Sirik525eZK__aOwcYfvfyYidEMpSSEI/edit",
+    "staged_at": "2026-08-27T22:08:06.136617Z"
+  }
+]

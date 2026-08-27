@@ -1,0 +1,29 @@
+{
+  "id": "not_8w4HI8GePvieIK",
+  "title": "Jeff I Kay",
+  "counterparty": "Jeff Stevens",
+  "date": "2026-08-27",
+  "time": "12:00 PM ET",
+  "location": "remote",
+  "granola_url": "https://notes.granola.ai/d/75e5dc81-af9a-4780-ad44-6885532d3d2f",
+  "summary_2to3_lines": "Inventory, working capital, and waterfall mechanics are the key diligence gates before Friday.\n\nJeff flagged the low-multiple risk and corrected the catch-up math; the model needs a clean pass before the seller walkthrough.\n\nLOI language now needs to be explicit about what is included and how the seller note protects cash flow.",
+  "doc_url": "https://docs.google.com/document/d/1Ggy5mfMP0OUCwvGfFnx4O6J8rziU-BuPsEvKxo5RzuI/edit",
+  "doc_failed": false,
+  "transcript_doc_url": "https://docs.google.com/document/d/1ZeQijhcCfx8Sirik525eZK__aOwcYfvfyYidEMpSSEI/edit",
+  "transcript_failed": false,
+  "attio_failed": false,
+  "attio_notes": {
+    "people": [
+      "cb24ea9c-8a39-4ce0-a081-b0e03c9ba5c9"
+    ],
+    "companies": [
+      "997e2224-8729-42e6-9045-294c59e1e585"
+    ]
+  },
+  "task_count": 3,
+  "tasks_failed": false,
+  "tasks_file": "/home/ubuntu/projects/Sapling/brain/trackers/post-call-analyzer/pending-tasks/not_8w4HI8GePvieIK.json",
+  "vault_call_note": "/home/ubuntu/projects/Sapling/brain/calls/2026-08-27-jeff-stevens.md",
+  "processed_at": "2026-08-27T22:08:06.136617Z",
+  "slack_posted": true
+}

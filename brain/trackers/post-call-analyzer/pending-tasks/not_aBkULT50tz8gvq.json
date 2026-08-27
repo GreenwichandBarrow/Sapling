@@ -1,0 +1,74 @@
+[
+  {
+    "task_text": "Send the LOI and NDA to the seller tomorrow.",
+    "type": "Deal",
+    "project": "Sydney Garber / LOI",
+    "suggested_day": "Friday",
+    "suggested_due_date": "2026-08-28",
+    "notes_with_doc_link": "From Camilla D 2026-08-27 mtg. Analysis: https://docs.google.com/document/d/1dO4dJMO8PB7zt0LPyuHs8YPJdWUsQoK0OxkVal4zLYg/edit",
+    "source_call_id": "not_aBkULT50tz8gvq",
+    "source_doc_url": "https://docs.google.com/document/d/1dO4dJMO8PB7zt0LPyuHs8YPJdWUsQoK0OxkVal4zLYg/edit",
+    "source_transcript_url": "https://docs.google.com/document/d/1pRwm0ejPgZ9_uEOIrlT0-W1_ARyfH0v-uJTe4aVZ5FE/edit",
+    "staged_at": "2026-08-27T22:08:06.136617Z"
+  },
+  {
+    "task_text": "Send Brooke pre-read materials tonight.",
+    "type": "Follow-up",
+    "project": "Sydney Garber / investor prep",
+    "suggested_day": "Tonight",
+    "suggested_due_date": "2026-08-27",
+    "notes_with_doc_link": "From Camilla D 2026-08-27 mtg. Analysis: https://docs.google.com/document/d/1dO4dJMO8PB7zt0LPyuHs8YPJdWUsQoK0OxkVal4zLYg/edit",
+    "source_call_id": "not_aBkULT50tz8gvq",
+    "source_doc_url": "https://docs.google.com/document/d/1dO4dJMO8PB7zt0LPyuHs8YPJdWUsQoK0OxkVal4zLYg/edit",
+    "source_transcript_url": "https://docs.google.com/document/d/1pRwm0ejPgZ9_uEOIrlT0-W1_ARyfH0v-uJTe4aVZ5FE/edit",
+    "staged_at": "2026-08-27T22:08:06.136617Z"
+  },
+  {
+    "task_text": "Reach out to Sarah about the holding-company structure.",
+    "type": "Relationship",
+    "project": "Sydney Garber / investor prep",
+    "suggested_day": "Friday",
+    "suggested_due_date": "2026-08-28",
+    "notes_with_doc_link": "From Camilla D 2026-08-27 mtg. Analysis: https://docs.google.com/document/d/1dO4dJMO8PB7zt0LPyuHs8YPJdWUsQoK0OxkVal4zLYg/edit",
+    "source_call_id": "not_aBkULT50tz8gvq",
+    "source_doc_url": "https://docs.google.com/document/d/1dO4dJMO8PB7zt0LPyuHs8YPJdWUsQoK0OxkVal4zLYg/edit",
+    "source_transcript_url": "https://docs.google.com/document/d/1pRwm0ejPgZ9_uEOIrlT0-W1_ARyfH0v-uJTe4aVZ5FE/edit",
+    "staged_at": "2026-08-27T22:08:06.136617Z"
+  },
+  {
+    "task_text": "Pull together the due diligence checklist for Monday.",
+    "type": "Ops",
+    "project": "Sydney Garber / diligence",
+    "suggested_day": "Monday",
+    "suggested_due_date": "2026-08-31",
+    "notes_with_doc_link": "From Camilla D 2026-08-27 mtg. Analysis: https://docs.google.com/document/d/1dO4dJMO8PB7zt0LPyuHs8YPJdWUsQoK0OxkVal4zLYg/edit",
+    "source_call_id": "not_aBkULT50tz8gvq",
+    "source_doc_url": "https://docs.google.com/document/d/1dO4dJMO8PB7zt0LPyuHs8YPJdWUsQoK0OxkVal4zLYg/edit",
+    "source_transcript_url": "https://docs.google.com/document/d/1pRwm0ejPgZ9_uEOIrlT0-W1_ARyfH0v-uJTe4aVZ5FE/edit",
+    "staged_at": "2026-08-27T22:08:06.136617Z"
+  },
+  {
+    "task_text": "Review Sydney Garber financials and documents ahead of Monday.",
+    "type": "Analysis",
+    "project": "Sydney Garber / diligence",
+    "suggested_day": "Weekend",
+    "suggested_due_date": "2026-08-30",
+    "notes_with_doc_link": "From Camilla D 2026-08-27 mtg. Analysis: https://docs.google.com/document/d/1dO4dJMO8PB7zt0LPyuHs8YPJdWUsQoK0OxkVal4zLYg/edit",
+    "source_call_id": "not_aBkULT50tz8gvq",
+    "source_doc_url": "https://docs.google.com/document/d/1dO4dJMO8PB7zt0LPyuHs8YPJdWUsQoK0OxkVal4zLYg/edit",
+    "source_transcript_url": "https://docs.google.com/document/d/1pRwm0ejPgZ9_uEOIrlT0-W1_ARyfH0v-uJTe4aVZ5FE/edit",
+    "staged_at": "2026-08-27T22:08:06.136617Z"
+  },
+  {
+    "task_text": "Add Camilla to the investor presentation and confirm her title.",
+    "type": "Relationship",
+    "project": "Sydney Garber / investor deck",
+    "suggested_day": "Friday",
+    "suggested_due_date": "2026-08-28",
+    "notes_with_doc_link": "From Camilla D 2026-08-27 mtg. Analysis: https://docs.google.com/document/d/1dO4dJMO8PB7zt0LPyuHs8YPJdWUsQoK0OxkVal4zLYg/edit",
+    "source_call_id": "not_aBkULT50tz8gvq",
+    "source_doc_url": "https://docs.google.com/document/d/1dO4dJMO8PB7zt0LPyuHs8YPJdWUsQoK0OxkVal4zLYg/edit",
+    "source_transcript_url": "https://docs.google.com/document/d/1pRwm0ejPgZ9_uEOIrlT0-W1_ARyfH0v-uJTe4aVZ5FE/edit",
+    "staged_at": "2026-08-27T22:08:06.136617Z"
+  }
+]

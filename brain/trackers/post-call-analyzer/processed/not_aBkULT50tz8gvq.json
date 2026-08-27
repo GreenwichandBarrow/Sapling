@@ -1,0 +1,29 @@
+{
+  "id": "not_aBkULT50tz8gvq",
+  "title": "Camilla I Kay",
+  "counterparty": "Camilla D",
+  "date": "2026-08-27",
+  "time": "1:45 PM ET",
+  "location": "remote",
+  "granola_url": "https://notes.granola.ai/d/5c53e7fe-2829-4e62-b2b0-aeaac654f3a9",
+  "summary_2to3_lines": "Investor feedback is converging toward a simpler capital structure and a one-business-first narrative.\n\nThe group agreed bank debt looks unattractive; the main work now is LOI/NDA execution plus diligence prep for Monday.\n\nCamilla’s calendar makes front-loading the next two weeks the practical constraint.",
+  "doc_url": "https://docs.google.com/document/d/1dO4dJMO8PB7zt0LPyuHs8YPJdWUsQoK0OxkVal4zLYg/edit",
+  "doc_failed": false,
+  "transcript_doc_url": "https://docs.google.com/document/d/1pRwm0ejPgZ9_uEOIrlT0-W1_ARyfH0v-uJTe4aVZ5FE/edit",
+  "transcript_failed": false,
+  "attio_failed": false,
+  "attio_notes": {
+    "people": [
+      "52146e57-68cf-4681-927c-9c2ddcdc7ea3"
+    ],
+    "companies": [
+      "1f3d7760-bafa-4f9e-996e-448dbff55ae9"
+    ]
+  },
+  "task_count": 6,
+  "tasks_failed": false,
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_aBkULT50tz8gvq.json",
+  "vault_call_note": "brain/calls/2026-08-27-camilla-de-sanna.md",
+  "processed_at": "2026-08-27T22:08:06.136617Z",
+  "slack_posted": true
+}

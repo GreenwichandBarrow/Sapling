@@ -6,6 +6,7 @@ status: in_progress
 source: email
 urgency: trigger
 entity: "[[entities/anthony-bacagan]]"
+result: "[[outputs/2026-08-28-budget-report-july-2026]]"
 source_ref: "1a04434972f8b44a"
 source_url: "https://mail.google.com/mail/u/0/#inbox/1a04434972f8b44a"
 automated: true
@@ -30,4 +31,4 @@ This item is created automatically by email-intelligence as part of the bookkeep
 
 ## Outcome
 
-Pending.
+Budget report written to [[outputs/2026-08-28-budget-report-july-2026]].

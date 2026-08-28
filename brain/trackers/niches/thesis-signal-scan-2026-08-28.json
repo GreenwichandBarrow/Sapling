@@ -1,0 +1,28 @@
+{
+  "run_date": "2026-08-28",
+  "run_mode": "thursday_signal_scan",
+  "signals_reviewed": 5,
+  "recommendations_count": 1,
+  "urgent_fast_sprint_count": 0,
+  "queue_for_monday_count": 1,
+  "park_count": 3,
+  "sources_covered": {
+    "pe_news": "Recent MSP, cyber, luxury-auto, and car-wash PE/news surfaced through live web search.",
+    "email": "Read-only Gmail scan with a seven-day window surfaced the Everingham & Kerr cyber teaser, SMB Deal Hunter luxury chauffeur/car wash bundle, Amazon men's accessories, Armory Show VIP, DealsX, and investor noise.",
+    "calls": "2026-08-27 Camilla and Jeff calls added capital-structure and holdco pressure, not a new thesis lane.",
+    "inbox": "The Berkshire / luxury recurring-model proxy note remained the best prior anchor; no newer niche inbox files were created.",
+    "conferences": "The conference tracker stayed effectively unchanged; the Armory Show email was conference-adjacent but not a pipeline delta."
+  },
+  "edge_niches_considered": 4,
+  "recommendations": [
+    {
+      "bucket": "queue_for_monday",
+      "niche": "Managed cybersecurity services and compliance-adjacent MSPs",
+      "visible_end_market": "SMB federal contractors and regulated SMBs",
+      "operational_complexity": "Evidence collection, policy maintenance, endpoint monitoring, response SLAs, and compliance reporting",
+      "second_order_beneficiary": "Managed compliance, evidence automation, and audit-readiness workflow vendors",
+      "tailwind": "Cyber risk and compliance demand remain active; recent PE consolidation and a live Everingham & Kerr teaser support the lane",
+      "why_not_urgent": "It overlaps existing CMMC/FAR work and does not have a Monday-morning urgency catalyst"
+    }
+  ]
+}

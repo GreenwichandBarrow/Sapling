@@ -1,36 +1,18 @@
 {
   "blocked": [],
-  "deal_items": 44,
+  "deal_items": 32,
   "drafts_missing_recipient": 0,
-  "drafts_pending": 0,
-  "fetched_at": "2026-08-27T06:50:44.944615-04:00",
+  "drafts_pending": 2,
+  "fetched_at": "2026-08-28T06:50:34.991978-04:00",
   "follow_through_completed_items": [
     {
       "bucket": "thank",
-      "completed_at": "2026-08-26",
-      "event": "Andrew I Kay",
-      "person": "Andrew",
-      "sent_at": "2026-08-26 10:22",
-      "sent_subject": "LOI/Structure",
-      "sent_thread_id": "1a03df3215612507"
-    },
-    {
-      "bucket": "thank",
-      "completed_at": "2026-08-26",
-      "event": "Andrew I Kay",
-      "person": "Andrew",
-      "sent_at": "2026-08-26 10:22",
-      "sent_subject": "LOI/Structure",
-      "sent_thread_id": "1a03df3215612507"
-    },
-    {
-      "bucket": "thank",
-      "completed_at": "2026-08-26",
-      "event": "Jeff I Kay Mtg",
-      "person": "Jeff",
-      "sent_at": "2026-08-26 19:13",
-      "sent_subject": "Mtg today",
-      "sent_thread_id": "1a03e829bf24e802"
+      "completed_at": "2026-08-27",
+      "event": "Ibrahim I Kay",
+      "person": "Ibrahim",
+      "sent_at": "2026-08-27 19:47",
+      "sent_subject": "NYC next week?",
+      "sent_thread_id": "1a01f6e567e1a18e"
     }
   ],
   "follow_through_pending_items": [
@@ -65,29 +47,42 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-08-27.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-08-28.json",
   "input_status": "ok",
   "needs_kay": [
-    "44 broker/listing row(s) extracted",
-    "4 prior-day thank-you(s) need approval: Camilla; Jeff; Relationship / Call Window; Relationship / Call Window",
-    "3 email follow-through row(s) auto-completed from sent-mail evidence: Andrew; Andrew; Jeff",
+    "1 email-derived task candidate(s)",
+    "32 broker/listing row(s) extracted",
+    "4 prior-day thank-you(s) need approval: Brooke; Camilla; Jeff; Relationship / Call Window",
+    "1 email follow-through row(s) auto-completed from sent-mail evidence: Ibrahim",
     "3 EOW/follow-up row(s) still active after sent-mail check: Denning; Paul; Greg",
-    "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting)"
+    "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Brooke (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-08-27.md",
+  "source_artifact": "brain/context/email-scan-results-2026-08-28.md",
   "source_status": "ok",
   "stale_drafts": 0,
-  "task_candidates": 0,
+  "task_candidates": 1,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-08-27",
+      "due_date": "2026-08-28",
+      "email": "",
+      "event": "Brooke I Kay",
+      "event_date": "2026-08-27",
+      "person": "Brooke",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-08-28",
       "email": "",
       "event": "Camilla I Kay",
-      "event_date": "2026-08-26",
+      "event_date": "2026-08-27",
       "person": "Camilla",
       "sent_at": "",
       "sent_subject": "",
@@ -96,10 +91,10 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-08-27",
+      "due_date": "2026-08-28",
       "email": "jeffstevens@anacapapartners.com",
       "event": "Jeff I Kay",
-      "event_date": "2026-08-26",
+      "event_date": "2026-08-27",
       "person": "Jeff",
       "sent_at": "",
       "sent_subject": "",
@@ -108,22 +103,10 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-08-27",
+      "due_date": "2026-08-28",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-08-26",
-      "person": "Relationship / Call Window",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-08-27",
-      "email": "",
-      "event": "Relationship / Call Window",
-      "event_date": "2026-08-26",
+      "event_date": "2026-08-27",
       "person": "Relationship / Call Window",
       "sent_at": "",
       "sent_subject": "",
@@ -134,6 +117,8 @@
   "unclear_followthrough_items": [
     "Lisa (24-hour thank-you after external call)",
     "Camilla (24-hour thank-you after external meeting)",
-    "Camilla (24-hour thank-you after external meeting)"
+    "Camilla (24-hour thank-you after external meeting)",
+    "Camilla (24-hour thank-you after external meeting)",
+    "Brooke (24-hour thank-you after external meeting)"
   ]
 }

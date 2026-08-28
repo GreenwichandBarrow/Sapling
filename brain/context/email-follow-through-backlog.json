@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-27",
+  "updated_at": "2026-08-28",
   "items": [
     {
       "bucket": "thank",
@@ -1849,11 +1849,19 @@
       "email": "ivelutini@ashfordventures.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-08-25",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Ibrahim I Kay",
       "event_date": "2026-08-24",
-      "calendar_event_id": "48ngu75o927vdfhlocugkho774"
+      "calendar_event_id": "48ngu75o927vdfhlocugkho774",
+      "completed_at": "2026-08-27",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 1a01f6e567e1a18e, subject 'NYC next week?', sent 2026-08-27 19:47.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "1a01f6e567e1a18e",
+        "subject": "NYC next week?",
+        "sent_at": "2026-08-27 19:47"
+      }
     },
     {
       "bucket": "thank",
@@ -1982,6 +1990,54 @@
       "event": "Camilla I Kay",
       "event_date": "2026-08-26",
       "calendar_event_id": "vhpnfkt3o9j08vjqv54g7egi8g"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-28",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-27",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260827T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Jeff",
+      "email": "jeffstevens@anacapapartners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-28",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Jeff I Kay",
+      "event_date": "2026-08-27",
+      "calendar_event_id": "fofdohiiqcuesv75v7v85k2p8k"
+    },
+    {
+      "bucket": "thank",
+      "person": "Camilla",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-28",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Camilla I Kay",
+      "event_date": "2026-08-27",
+      "calendar_event_id": "vhpnfkt3o9j08vjqv54g7egi8g"
+    },
+    {
+      "bucket": "thank",
+      "person": "Brooke",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-28",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Brooke I Kay",
+      "event_date": "2026-08-27",
+      "calendar_event_id": "_8kr34ghi69344ba26gq32b9k84pkab9o6cpk4b9i88o3edhk70sk6dhp6k"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

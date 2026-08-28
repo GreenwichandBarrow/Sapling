@@ -1,0 +1,64 @@
+{
+  "id": "not_lFLWFkGu7qvA8Y",
+  "title": "Brooke I Kay",
+  "date": "2026-08-28",
+  "counterparty": "Brooke",
+  "granola_url": "https://notes.granola.ai/d/9ad6563f-c783-478c-98d6-6defae2e3d38",
+  "doc_url": "https://docs.google.com/document/d/11nxFw5AwJeEU6Xvhupb-cHYJsWM14Ern9qNPfvmhVY8/edit",
+  "transcript_doc_url": "https://docs.google.com/document/d/1eoiIbQwVtjstL6Hipva9BPJeFiRPKPVupQHEZx4i3sg/edit",
+  "vault_call_note": "brain/calls/2026-08-28-brooke-i-kay.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_lFLWFkGu7qvA8Y.json",
+  "processed_at": "2026-08-28T17:05:20.077020+00:00",
+  "slack_posted": true,
+  "attio_failed": false,
+  "attio_notes": {
+    "people": [
+      {
+        "data": {
+          "id": {
+            "workspace_id": "243821c3-e0c9-46f9-8ee8-50e0094e12fb",
+            "note_id": "93ff7297-4c68-4fc3-8eac-2c2c156ff5fa"
+          },
+          "parent_object": "people",
+          "parent_record_id": "9f5b97a4-20d2-4e2c-b264-d9c5b137ffae",
+          "title": "2026-08-28 — Meeting w/ Kay (G&B)",
+          "meeting_id": null,
+          "content_plaintext": "Summary:\nLOI walkthrough on Brooke / Sidney Garber.\nMain open issue is inventory valuation, working capital, and closing mechanics.\nBrooke is reviewing with her husband and will reconnect next week.\nKey takeaways:\nSeller note and rollover are doing trust-work in the structure.\nInventory transfer and valuation method are the diligence bottleneck.\nYear-end report / operating artifacts are useful and should be reused.\nLinks:\nAnalysis: https://docs.google.com/document/d/11nxFw5AwJeEU6Xvhupb-cHYJsWM14Ern9qNPfvmhVY8/edit\nTranscript: https://docs.google.com/document/d/1eoiIbQwVtjstL6Hipva9BPJeFiRPKPVupQHEZx4i3sg/edit\nGranola: https://notes.granola.ai/d/9ad6563f-c783-478c-98d6-6defae2e3d38",
+          "content_markdown": "Summary:\n- LOI walkthrough on Brooke / Sidney Garber.\n- Main open issue is inventory valuation, working capital, and closing mechanics.\n- Brooke is reviewing with her husband and will reconnect next week.\nKey takeaways:\n- Seller note and rollover are doing trust-work in the structure.\n- Inventory transfer and valuation method are the diligence bottleneck.\n- Year-end report / operating artifacts are useful and should be reused.\nLinks:\n- Analysis: https://docs.google.com/document/d/11nxFw5AwJeEU6Xvhupb-cHYJsWM14Ern9qNPfvmhVY8/edit\n- Transcript: https://docs.google.com/document/d/1eoiIbQwVtjstL6Hipva9BPJeFiRPKPVupQHEZx4i3sg/edit\n- Granola: https://notes.granola.ai/d/9ad6563f-c783-478c-98d6-6defae2e3d38",
+          "tags": [],
+          "created_by_actor": {
+            "type": "api-token",
+            "id": "579a1ace-d3bf-4b5a-9c86-e909e148ebab"
+          },
+          "created_at": "2026-08-28T17:05:18.958000000Z"
+        }
+      }
+    ],
+    "companies": [
+      {
+        "data": {
+          "id": {
+            "workspace_id": "243821c3-e0c9-46f9-8ee8-50e0094e12fb",
+            "note_id": "0f437cd6-39d2-4a6e-aee3-71064a07bcb1"
+          },
+          "parent_object": "companies",
+          "parent_record_id": "68293dcd-c897-4803-92dd-3f52f96ef76c",
+          "title": "2026-08-28 — Meeting w/ Kay (G&B)",
+          "meeting_id": null,
+          "content_plaintext": "Summary:\nLOI walkthrough on Brooke / Sidney Garber.\nMain open issue is inventory valuation, working capital, and closing mechanics.\nBrooke is reviewing with her husband and will reconnect next week.\nKey takeaways:\nSeller note and rollover are doing trust-work in the structure.\nInventory transfer and valuation method are the diligence bottleneck.\nYear-end report / operating artifacts are useful and should be reused.\nLinks:\nAnalysis: https://docs.google.com/document/d/11nxFw5AwJeEU6Xvhupb-cHYJsWM14Ern9qNPfvmhVY8/edit\nTranscript: https://docs.google.com/document/d/1eoiIbQwVtjstL6Hipva9BPJeFiRPKPVupQHEZx4i3sg/edit\nGranola: https://notes.granola.ai/d/9ad6563f-c783-478c-98d6-6defae2e3d38",
+          "content_markdown": "Summary:\n- LOI walkthrough on Brooke / Sidney Garber.\n- Main open issue is inventory valuation, working capital, and closing mechanics.\n- Brooke is reviewing with her husband and will reconnect next week.\nKey takeaways:\n- Seller note and rollover are doing trust-work in the structure.\n- Inventory transfer and valuation method are the diligence bottleneck.\n- Year-end report / operating artifacts are useful and should be reused.\nLinks:\n- Analysis: https://docs.google.com/document/d/11nxFw5AwJeEU6Xvhupb-cHYJsWM14Ern9qNPfvmhVY8/edit\n- Transcript: https://docs.google.com/document/d/1eoiIbQwVtjstL6Hipva9BPJeFiRPKPVupQHEZx4i3sg/edit\n- Granola: https://notes.granola.ai/d/9ad6563f-c783-478c-98d6-6defae2e3d38",
+          "tags": [],
+          "created_by_actor": {
+            "type": "api-token",
+            "id": "579a1ace-d3bf-4b5a-9c86-e909e148ebab"
+          },
+          "created_at": "2026-08-28T17:05:19.744000000Z"
+        }
+      }
+    ]
+  },
+  "task_count": 3,
+  "tasks_failed": false,
+  "transcript_failed": false,
+  "doc_failed": false
+}

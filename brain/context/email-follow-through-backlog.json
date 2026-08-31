@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30",
+  "updated_at": "2026-08-31",
   "items": [
     {
       "bucket": "thank",
@@ -2050,6 +2050,30 @@
       "event": "Sarah I Kay",
       "event_date": "2026-08-29",
       "calendar_event_id": "_8kq3cgq56oqk4ba384o4cb9k75346b9p8csj4b9p8oo34d1o6oqj8ci470"
+    },
+    {
+      "bucket": "thank",
+      "person": "Sarah",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-31",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Sarah I Kay",
+      "event_date": "2026-08-30",
+      "calendar_event_id": "_8kq3cgq56oqk4ba384o4cb9k75346b9p8csj4b9p8oo34d1o6oqj8ci470"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-31",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-08-30",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260831T153000Z"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

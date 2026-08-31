@@ -1,0 +1,30 @@
+{
+  "id": "not_AScHmnXuSJa9Md",
+  "title": "Team TB Camilla I Kay",
+  "date": "2026-08-31",
+  "granola_url": "https://notes.granola.ai/d/8edd1384-f7b6-4ee7-b794-dc6e888ecc76",
+  "transcript_doc_url": "https://docs.google.com/document/d/1WSscbjH-HtKe8ohrzUp3meRq13VcBruxmTYlY80Q3uU/edit?usp=drivesdk",
+  "doc_url": "https://docs.google.com/document/d/1CVLEDTVC3WavIA8ytpanQlLSriBaQxgXNnUvUgryXB8/edit?usp=drivesdk",
+  "attio_notes": {
+    "people": [
+      "52146e57-68cf-4681-927c-9c2ddcdc7ea3"
+    ],
+    "companies": [
+      "1f3d7760-bafa-4f9e-996e-448dbff55ae9"
+    ]
+  },
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_AScHmnXuSJa9Md.json",
+  "vault_call_note": "brain/calls/2026-08-31-team-tb-camilla-kay.md",
+  "processed_archive": "brain/trackers/post-call-analyzer/processed/not_AScHmnXuSJa9Md.json",
+  "processed_at": "2026-08-31T17:06:06.152220Z",
+  "slack_posted": true,
+  "task_count": 4,
+  "transcript_failed": false,
+  "doc_failed": false,
+  "attio_failed": false,
+  "tasks_failed": false,
+  "counterparty": "Camilla",
+  "location": "remote",
+  "meeting_time": "2026-08-31 09:15-11:00 ET",
+  "slack_summary": "Kay and Camilla reviewed the target business assessment and sharpened the diligence lens around concentration, contracts, inventory, and lease/renovation exposure. The business looks real on brand and margin, but the base case still needs proof before growth channels can carry the story."
+}

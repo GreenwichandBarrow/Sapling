@@ -1,0 +1,50 @@
+[
+  {
+    "task_text": "Build the pre- and post-LOI diligence list for this deal, modeled on the Acumen structure, before the next seller conversation.",
+    "type": "Analysis",
+    "project": "deal-evaluation",
+    "suggested_day": "Tuesday",
+    "suggested_due_date": "2026-09-02",
+    "notes_with_doc_link": "From Team TB Camilla I Kay 2026-08-31 mtg. Analysis: https://docs.google.com/document/d/1CVLEDTVC3WavIA8ytpanQlLSriBaQxgXNnUvUgryXB8/edit?usp=drivesdk",
+    "source_call_id": "not_AScHmnXuSJa9Md",
+    "source_doc_url": "https://docs.google.com/document/d/1CVLEDTVC3WavIA8ytpanQlLSriBaQxgXNnUvUgryXB8/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1WSscbjH-HtKe8ohrzUp3meRq13VcBruxmTYlY80Q3uU/edit?usp=drivesdk",
+    "staged_at": "2026-08-31T17:06:06.152220Z"
+  },
+  {
+    "task_text": "Text the seller to schedule a feedback call this week and lock a recurring Monday slot if there is no response by tomorrow.",
+    "type": "Relationship",
+    "project": "deal-evaluation",
+    "suggested_day": "Monday",
+    "suggested_due_date": "2026-09-01",
+    "notes_with_doc_link": "From Team TB Camilla I Kay 2026-08-31 mtg. Analysis: https://docs.google.com/document/d/1CVLEDTVC3WavIA8ytpanQlLSriBaQxgXNnUvUgryXB8/edit?usp=drivesdk",
+    "source_call_id": "not_AScHmnXuSJa9Md",
+    "source_doc_url": "https://docs.google.com/document/d/1CVLEDTVC3WavIA8ytpanQlLSriBaQxgXNnUvUgryXB8/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1WSscbjH-HtKe8ohrzUp3meRq13VcBruxmTYlY80Q3uU/edit?usp=drivesdk",
+    "staged_at": "2026-08-31T17:06:06.152220Z"
+  },
+  {
+    "task_text": "Flesh out the growth and competition sections in the SIM with channel, trunk-show, and selective-door assumptions.",
+    "type": "Deal",
+    "project": "deal-evaluation",
+    "suggested_day": "Wednesday",
+    "suggested_due_date": "2026-09-03",
+    "notes_with_doc_link": "From Team TB Camilla I Kay 2026-08-31 mtg. Analysis: https://docs.google.com/document/d/1CVLEDTVC3WavIA8ytpanQlLSriBaQxgXNnUvUgryXB8/edit?usp=drivesdk",
+    "source_call_id": "not_AScHmnXuSJa9Md",
+    "source_doc_url": "https://docs.google.com/document/d/1CVLEDTVC3WavIA8ytpanQlLSriBaQxgXNnUvUgryXB8/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1WSscbjH-HtKe8ohrzUp3meRq13VcBruxmTYlY80Q3uU/edit?usp=drivesdk",
+    "staged_at": "2026-08-31T17:06:06.152220Z"
+  },
+  {
+    "task_text": "Track the seller’s promised rolling 12-month file, salary detail, and org chart when they arrive and use them to update the model.",
+    "type": "Ops",
+    "project": "deal-evaluation",
+    "suggested_day": "This week",
+    "suggested_due_date": "2026-09-04",
+    "notes_with_doc_link": "From Team TB Camilla I Kay 2026-08-31 mtg. Analysis: https://docs.google.com/document/d/1CVLEDTVC3WavIA8ytpanQlLSriBaQxgXNnUvUgryXB8/edit?usp=drivesdk",
+    "source_call_id": "not_AScHmnXuSJa9Md",
+    "source_doc_url": "https://docs.google.com/document/d/1CVLEDTVC3WavIA8ytpanQlLSriBaQxgXNnUvUgryXB8/edit?usp=drivesdk",
+    "source_transcript_url": "https://docs.google.com/document/d/1WSscbjH-HtKe8ohrzUp3meRq13VcBruxmTYlY80Q3uU/edit?usp=drivesdk",
+    "staged_at": "2026-08-31T17:06:06.152220Z"
+  }
+]

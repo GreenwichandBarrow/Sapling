@@ -14,3 +14,15 @@
   - daily tabs cleared/not populated pending Kay approval
   - skipped: []
   - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-from-todo-days-20260830-190625.json
+
+[2026-08-30T22:42:53.854546] schedule-to-day-slot — mon-1
+  - task: Email Jackie Hirsh: ask whether inventory is included in LOI offer or on top
+  - placement: Mon tab slot 1 (row 21)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260830-224253.json
+
+[2026-08-30T22:43:22.544995] schedule-to-day-slot — mon-2
+  - task: Follow up on Boulay emails to schedule time
+  - placement: Mon tab slot 2 (row 22)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260830-224322.json

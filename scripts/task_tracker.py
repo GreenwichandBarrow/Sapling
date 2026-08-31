@@ -364,6 +364,7 @@ class SheetsClient:
 
     def _retry(self, fn):
         last = None
+        last_response = None
         for attempt in range(5):
             try:
                 r = fn()
@@ -374,6 +375,7 @@ class SheetsClient:
             if r.status_code == 200:
                 return r.json()
             if r.status_code in (429,) or r.status_code >= 500:
+                last_response = r
                 time.sleep(2 ** attempt)
                 continue
             # 4xx other than rate-limit: print body for diagnosis
@@ -385,6 +387,12 @@ class SheetsClient:
             r.raise_for_status()
         if last:
             raise last
+        if last_response is not None:
+            raise RuntimeError(
+                f"API retry exhausted with status {last_response.status_code}: "
+                f"{last_response.text[:400]}"
+            )
+        raise RuntimeError("API retry exhausted without a response")
 
     def get_metadata(self) -> dict:
         return self._retry(lambda: self.session.get(
@@ -1953,7 +1961,7 @@ def cmd_build_week_v2(args, prior_client: SheetsClient, prior_info: dict) -> int
     new_meta = new_client.get_metadata()
 
     # 4. Import reconciled To Do backend, active rows first and completed rows at bottom.
-    todo_import = _write_todo_rows_sorted(new_client, _read_real_todo_rows(prior_client))
+    todo_import = _write_todo_rows_sorted(new_client, todo_rows)
     print(f"task-tracker-manager: imported To Do — {todo_import['ongoing']} on-going, {todo_import['not_completed']} not completed, {todo_import['completed']} completed")
 
     # 5. Copy project tracking surfaces.

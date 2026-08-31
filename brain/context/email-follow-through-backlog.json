@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-28",
+  "updated_at": "2026-08-30",
   "items": [
     {
       "bucket": "thank",
@@ -2038,6 +2038,18 @@
       "event": "Brooke I Kay",
       "event_date": "2026-08-27",
       "calendar_event_id": "_8kr34ghi69344ba26gq32b9k84pkab9o6cpk4b9i88o3edhk70sk6dhp6k"
+    },
+    {
+      "bucket": "thank",
+      "person": "Sarah",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-08-30",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Sarah I Kay",
+      "event_date": "2026-08-29",
+      "calendar_event_id": "_8kq3cgq56oqk4ba384o4cb9k75346b9p8csj4b9p8oo34d1o6oqj8ci470"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

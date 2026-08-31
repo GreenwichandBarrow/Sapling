@@ -1,0 +1,4648 @@
+{
+  "verb": "schedule-from-todo-days",
+  "timestamp": "20260830-190700",
+  "sheet_id": "12dvGVZXYImCxF820pgVEXvAdwpm38i5SqzE3mn3rsFI",
+  "ranges": {
+    "'To Do'!A1:H400": [
+      [
+        "Status",
+        "Task",
+        "Type",
+        "Project",
+        "Due",
+        "Notes",
+        "Horizon",
+        "Day of the Week"
+      ],
+      [
+        "On-going",
+        "Create weekly schedule",
+        "Work",
+        "",
+        "",
+        "Sunday planning",
+        "Weekly Recurring Sun"
+      ],
+      [
+        "On-going",
+        "Niche intel review",
+        "Work",
+        "G&B",
+        "",
+        "Walk through niche-intelligence sprint status + new one-pagers",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "On-going",
+        "Process payroll",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "On-going",
+        "Process conference registrations",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "On-going",
+        "Weekly review \u2014 system health, M&A activities, budget",
+        "Work",
+        "G&B",
+        "",
+        "Walk through health-monitor + M&A analytics dashboard + budget-manager output",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "On-going",
+        "Confirm LiveOak payroll transfer coverage",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Weekly Recurring Sun"
+      ],
+      [
+        "On-going",
+        "Check NYC Housing Connect for new Manhattan lotteries",
+        "Home",
+        "Housing",
+        "",
+        "Review https://housingconnect.nyc.gov/PublicWeb/search-lotteries for NYC - Manhattan lottery openings.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "On-going",
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug",
+        "Home",
+        "Home",
+        "",
+        "Through end of August: give the kids $10 on Sunday for the week and $10 on Friday for the day.",
+        "Weekly Recurring Sun"
+      ],
+      [
+        "On-going",
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Sunday planning item. Choose the week\u2019s single highest-leverage Deal 1 focus and success signal before populating the week.",
+        "Weekly Recurring Sun"
+      ],
+      [
+        "On-going",
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions",
+        "Home",
+        "Body Reset",
+        "",
+        "Summer version through Aug 24. Sunday planning should place already-defined slots, not decide the whole plan from scratch.",
+        "Weekly Recurring Sun"
+      ],
+      [
+        "On-going",
+        "Add Kay food staples to Sunday grocery run",
+        "Home",
+        "Body Reset",
+        "",
+        "Every Sunday grocery run: add Kay staples for the existing default: protein powder support, yogurt/cottage cheese, berries/fruit, vegetables/snacks, easy protein, dinner basics.",
+        "Weekly Recurring Sun",
+        "Sun"
+      ],
+      [
+        "On-going",
+        "Watch SLD video",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Weekly Recurring Tue"
+      ],
+      [
+        "On-going",
+        "Order gift for Lois (Jack Hugh Mackay)",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Sign up Kilian for fall Kano Martial Arts judo class",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Find new therapist",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Sign up for more Italki lessons",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Create travel plans for July in Paris/France next year",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term",
+        "friday"
+      ],
+      [
+        "Not Completed",
+        "Stool test for microbiome",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Get assessment vitamin full make up",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Visit nutritionist",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Look into GLP1",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Switch to higher-yield business savings account",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Update bank accounts with new G&B address",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Cancel Motion (or downgrade to monthly)",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Consider signing up for better bookkeeping",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review Kai Grey Ventures renewal",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Set up meetings with the list of Lenders to build relationships",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar",
+        "Home",
+        "Home",
+        "",
+        "Combined from To Do rows 34, 35, 36, 37, 38 based on Sat slot 5.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Review finders fee doc",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Submit new PSLF form",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Find Art lawyer contacts",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Reach out to organizer of Art Oct conference",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Not Completed",
+        "Convert items from kaystrash@yahoo.com to kaystrash23@gmail.com",
+        "Home",
+        "",
+        "",
+        "Inbox: brain/inbox/2026-05-12-yahoo-to-gmail-migration.md. Export old emails, set up forwarding, recreate filters, update third-party accounts.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Create project for French passports",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term",
+        "friday"
+      ],
+      [
+        "Not Completed",
+        "Plan away with whole Schneider gang",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term"
+      ],
+      [
+        "Not Completed",
+        "Marriage Contract \u2014 add Aramaic",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term"
+      ],
+      [
+        "Not Completed",
+        "Create Wedding Album",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term"
+      ],
+      [
+        "Not Completed",
+        "Get engagement ring fixed",
+        "Home",
+        "",
+        "",
+        "(was LT: Idea)",
+        "Long Term"
+      ],
+      [
+        "Not Completed",
+        "Call IRS to confirm Form 8822-B address update",
+        "Home",
+        "Home",
+        "2026-06-15",
+        "IRS business line: 800-829-4933. Ask to confirm business mailing address currently on file for EIN before updating bank address.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Make sure we dont get charged by Linkt",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Update Tailscale SSH checkPeriod for Sapling VPS",
+        "Work",
+        "Sapling OS",
+        "2026-06-21",
+        "Tailscale ACL: keep action=check; set checkPeriod=168h for Kay SSH to Sapling VPS as ubuntu. Scope narrowly to Kay identity + VPS destination; do not broaden users or machines. After policy update, Kay should approve SSH on Sunday; next check is ~1 week from successful re-auth. Admin: https://login.tailscale.com/admin/acls",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review George Yates intro email",
+        "Work",
+        "G&B",
+        "",
+        "Relationship-manager: Dayton, Ritz + Osborne intro email still pending; Kay approved adding only this item from relationship-manager list on 2026-06-18.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Pull Megan pre-LOI prep meeting notes",
+        "Work",
+        "Deal Evaluation",
+        "",
+        "Find prior meeting where Megan described the items she prepared before having a signed LOI; use as checklist when Kay reaches a similar stage.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Verify Howie plan and update budget run-rate",
+        "Work",
+        "G&B",
+        "2026-06-21",
+        "Budget cleanup: confirm whether Howie is 5/mo or annual 20/yr (0/mo); update Budget Dashboard if needed.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Verify Attio payment / renewal amount",
+        "Work",
+        "G&B",
+        "2026-06-21",
+        "Budget cleanup: confirm actual Attio renewal/payment amount; current budget row models 9/mo but prior note referenced 01.49/yr.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Send new email outreach on dashboard (3 companies)",
+        "Work",
+        "Pest thesis",
+        "2026-06-22",
+        "\u2192 promoted to Mon slot 3 on 2026-06-21; Source: Camilla pest company list",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Order more business cards and change title to founder",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Review registered event materials for useful info",
+        "Work",
+        "G&B",
+        "",
+        "Registered for this coming weekend's event but not planning to attend; see what attendee/material/info access is available now that registration is active.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Renew kids' work permits",
+        "Home",
+        "Home",
+        "",
+        "Renew the kids' working permits.",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Email Melissa to assist with BK Growth contact and file folders",
+        "Work",
+        "G&B",
+        "",
+        "Draft only; Kay sends. Ask Melissa to assist with BK Growth contact and file folders.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Ask Arthur for coffee or pop by office while local for summer",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Deferred during Week 1 jewelry LOI sprint; revive only if jewelry path stalls or insurance angle becomes immediately useful.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Draft/schedule Greg thank-you and insurance contacts follow-up",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-19",
+        "Weekend task: thank Greg and ask for the insurance contacts he offered. Draft/schedule only; do not distract from Week 1 jewelry sprint.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Circle back with Paul on art storage conversation",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Deferred during Week 1 jewelry LOI sprint; revive only if jewelry path stalls.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Visit store carrying jewelry line to see product and merchandising in person",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Deferred during Week 1 jewelry LOI sprint unless needed after seller engagement or public-info company analysis.",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Not Completed",
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies",
+        "Home",
+        "Family Wealth / Kids Modeling",
+        "2026-07-18",
+        "Weekend top priority: prep all materials to go out to agencies. Do not send until next business day unless Kay chooses otherwise.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Check beauty supply chain conference app for fragrance/beauty testing and packaging target lists",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-14",
+        "Conference attendee data opens/starts tomorrow. Extract usable targets only; opportunistic lane, not allowed to displace warm-path outreach.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-22",
+        "Show why this business may be different from the category risks investors will assume.",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Not Completed",
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility",
+        "Work",
+        "G&B Website",
+        "2026-07-24",
+        "Only if it supports seller/investor credibility. Light lookbook-style design, not a full brand project.",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Not Completed",
+        "Reduce plastics",
+        "Home",
+        "Home Environment",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Reverse osmosis filtration",
+        "Home",
+        "Home Environment",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Research creatine as a potential daily add",
+        "Home",
+        "Body Reset",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Fasting rhythm shifts to 7:45pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-08-17",
+        "Summer ramp step 2. Only a 15-minute shift after nearly a month at 8:00pm.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Fasting rhythm shifts to 7:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-09-14",
+        "Summer/suburbs defense step 3. Hold through end of September.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Fall fasting rhythm resets to 8:00pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-10-01",
+        "Fall natural-strength season: more walking/classes. Return to 8:00pm stop while preserving no late-night eating.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Winter ramp begins: 7:45pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-11-16",
+        "Pre-winter soft step. Start tightening before December darkness, only 15 minutes from fall rhythm.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Winter ramp shifts to 7:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-12-01",
+        "Winter defense step 2. Hold for two weeks.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Winter ramp shifts to 7:15pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-12-15",
+        "Winter defense step 3. Small shift; keep dinner/family rhythm intact.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Winter ramp shifts to 7:00pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-01-01",
+        "January defense step. This is when darkness/low-walking risk is highest.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Winter ramp shifts to 6:45pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-01-15",
+        "Late-January defense step. Only tighten if prior step is stable enough.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Winter target rhythm begins: 6:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-02-01",
+        "Peak winter defense. 14-hour fast. Hold through February if it feels stable.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Spring release begins: 6:45pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-03-01",
+        "Soft transition out of winter. Add only 15 minutes back first.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Spring release shifts to 7:00pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-03-15",
+        "Movement/walking should be improving; release slowly.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Spring release shifts to 7:15pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-03-29",
+        "Continue gentle release out of winter as movement increases.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Spring release shifts to 7:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-04-12",
+        "Continue gradual return toward natural strength-season rhythm.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Spring release shifts to 7:45pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-04-26",
+        "Almost back to spring/fall default; keep no late-night eating intact.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Spring/fall rhythm returns: 8:00pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-05-10",
+        "Natural strength-season default. 12.5-hour fast, supports higher walking/classes while preventing late-night eating.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Summer ramp shifts to 7:45pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-06-07",
+        "Soft summer drift defense step 1. 15-minute shift only.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Summer rhythm shifts to 7:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-07-05",
+        "Summer/suburbs defense default. Hold through summer if stable.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Set up Claude workflow for Friday: slides + website aesthetics",
+        "Work",
+        "G&B Website",
+        "2026-07-24",
+        "- create/use Claude Project named G&B Slide + Website Support\n- for PowerPoint: use Claude app Project chat, not Claude Code\n- for website: use Claude Project + Artifacts for aesthetic direction/mockups\n- Claude Code only for actual repo/file edits",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Review new SLD video",
+        "",
+        "",
+        "",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Call IRS/government to confirm address change",
+        "Work",
+        "G&B",
+        "2026-08-07",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning.",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Locate holdco financial model",
+        "Work",
+        "G&B",
+        "2026-08-11",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Text Sarah Finders Fee document",
+        "Work",
+        "G&B",
+        "2026-08-11",
+        "Send via text.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Reconnect with Andrew Freiman re: Chenmark intro",
+        "Work",
+        "G&B",
+        "",
+        "Discuss Chenmark and whether an intro makes sense.",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Not Completed",
+        "Complete Quarterly Update",
+        "Work",
+        "G&B",
+        "2026-08-31",
+        "",
+        "Short Term",
+        "Thursday"
+      ],
+      [
+        "Not Completed",
+        "Change login info for operations folder + operations Gmail account",
+        "Work",
+        "G&B",
+        "",
+        "Update credentials/access details; use 1Password-backed credentials handling.",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Not Completed",
+        "Buy gift for baby Ruby",
+        "Home",
+        "Home",
+        "2026-08-15",
+        "",
+        "Short Term",
+        "Saturday"
+      ],
+      [
+        "Not Completed",
+        "Call Troy if NYS refund has not arrived",
+        "Home",
+        "Home",
+        "2026-10-05",
+        "First week of October checkpoint: call Troy if NYS refund has not arrived.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Complete paperwork for KA & my passport renewals",
+        "Home",
+        "Home",
+        "2026-08-21",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Put fuel & recovery lists to refrigerator",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term",
+        "Sunday"
+      ],
+      [
+        "Not Completed",
+        "Contact the asset backed lender melissa mentioned",
+        "",
+        "",
+        "",
+        "",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Completed",
+        "Continue financial modeling",
+        "",
+        "",
+        "",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Reconnect with Levi on prior art storage path",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Deferred during Week 1 jewelry LOI sprint; revive only if jewelry path stalls.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Call RSM",
+        "Home",
+        "Home",
+        "2026-08-01",
+        "RSM requested payment by Aug 1.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
+        "Work",
+        "G&B",
+        "",
+        "Full sale, staged transition, seller financing, rollover/advisory role, or broader process",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Completed",
+        "Pay One Hanover Square rent",
+        "Work",
+        "G&B",
+        "2026-08-13",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Prepare high-level seller data ask draft",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-21",
+        "Draft soft ask for EBITDA/owner earnings, revenue mix, inventory, lease/key team, and price/transition expectations.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Narrow/edit must-have diligence questions to top 5",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-23",
+        "Edit down to the five items required before LOI: EBITDA/earnings, revenue mix, inventory, price/transition expectations, key team/lease exposure.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Weekend prep: prepare for a possible Sidney Garber meeting next week if he responds.",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term",
+        "Sunday"
+      ],
+      [
+        "Completed",
+        "Call Troy",
+        "Work",
+        "G&B",
+        "2026-08-11",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Get Real Pigeons from the library",
+        "Home",
+        "Home",
+        "2026-08-12",
+        "",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Completed",
+        "Buy new backpacks, water bottles, and clothes for the kids",
+        "Home",
+        "Home",
+        "2026-08-16",
+        "",
+        "Short Term",
+        "Sunday"
+      ],
+      [
+        "Completed",
+        "Fax W2 to NYS",
+        "Home",
+        "Home",
+        "2026-08-13",
+        "",
+        "Short Term",
+        "Thursday"
+      ],
+      [
+        "Completed",
+        "Weekend prep: prepare for a possible Sidney Garber meeting next week if she responds.",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Take truck for oil change",
+        "Home",
+        "Home",
+        "2026-08-11",
+        "Oil change moved from Friday to next Tuesday.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Systems / Sourcing: set up better Axial target discovery/filtering.",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term",
+        "sunday"
+      ],
+      [
+        "Completed",
+        "Buy new Zane dragon LEGO for Kaiden",
+        "Home",
+        "Home",
+        "2026-08-01",
+        "Buy the new Zane dragon LEGO for Kaiden.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Systems / Dashboard: add a Today\u2019s Good Morning Brief page/link to the dashboard.",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Completed",
+        "Send Emily 504",
+        "Home",
+        "Home",
+        "",
+        "Send Emily 504.",
+        "Short Term",
+        "tuesday"
+      ],
+      [
+        "Completed",
+        "Fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-07-20",
+        "Soft seasonal ramp begins. Hold 8:00pm stop first, then move in 15-minute increments only after the rhythm feels established.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Completed",
+        "Scan IRS docs at FedEx",
+        "Work",
+        "G&B",
+        "2026-08-07",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Completed",
+        "Pay rent",
+        "Home",
+        "Home",
+        "2026-08-07",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Completed",
+        "Follow up with Sarah about Monday meeting",
+        "Work",
+        "G&B",
+        "2026-08-07",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Completed",
+        "Book afterschool for Tuesday and Wednesday for the kids",
+        "Home",
+        "Home",
+        "2026-08-07",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Completed",
+        "Call Jesse at DUSC",
+        "Home",
+        "Home",
+        "2026-08-07",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Completed",
+        "Sign up Kaiden for RSM",
+        "Home",
+        "Home",
+        "2026-08-07",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Completed",
+        "Bday cards",
+        "Home",
+        "",
+        "",
+        "Inbox: brain/inbox/2026-05-12-bday-and-baby-cards.md",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Find dine-in theater for Minions",
+        "Home",
+        "Home",
+        "",
+        "Find a dine-in theater showing Minions.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Start company analysis from public info + competitive analysis",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-20",
+        "Use public information only. Build company/brand facts, positioning, distribution, pricing, competitors, and visible growth gaps.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Start growth levers for jewelry brand",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-21",
+        "Growth levers before What We Need to Believe: wholesale/distribution, ecommerce, CRM/private client, operational planning, product/category expansion, infrastructure adjacencies.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Start holdco vision + infrastructure adjacency map",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-22",
+        "Map jewelry brand as possible jewel/anchor plus infrastructure adjacencies: insurance, repair/restoration, storage/custody, logistics, compliance, software/services.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Monitor/follow up with Eric on Kilian testing",
+        "Home",
+        "Kilian",
+        "2026-07-21",
+        "Email sent 2026-07-17. Keep an eye out for response; follow up by Tuesday if no reply.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Monitor/follow up with Dr. Zullo on assessment request",
+        "Home",
+        "Kilian",
+        "2026-07-21",
+        "Request sent 2026-07-17. Keep an eye out for response; follow up by Tuesday if no reply.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Fix Kaiden's iPad screen",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Library block 10:00-2:30: jewelry industry analysis / market structure",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-20",
+        "Week 1 build sprint. Output: market structure and industry analysis for LOI-ready deck.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Completed",
+        "Engage seller: ask for transition conversation; offer NDA if helpful; signal high-level items needed for thoughtful options",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-20",
+        "Controlled outreach. Goal: move toward conversation and minimum information without making her feel pushed.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Completed",
+        "Library block 10:00-2:30: continue jewelry deck",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-21",
+        "Continue building the LOI-ready deck and fill gaps from Monday analysis.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Library block 10:00-2:30: write What We Need to Believe page",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-22",
+        "Write after growth levers are clearer. Frame as LOI decision criteria, not investor-permission request.",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Completed",
+        "Library block 10:00-2:30: build potential offer structures and transition/options framing",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-23",
+        "Include full sale, seller note, staged sale, rollover/advisory role, legacy, team, liquidity, continued involvement, upside.",
+        "Short Term",
+        "Thursday"
+      ],
+      [
+        "Completed",
+        "Pay Dad for swim lessons and membership",
+        "Home",
+        "Home",
+        "2026-06-21",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Send JPEGs for adult school IDs to PS11",
+        "Home",
+        "Home",
+        "",
+        "PS11 requested JPEGs for adult school IDs.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow up: Carlos, Lisa/Peter, Jose",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Deferred during Week 1 jewelry LOI sprint; revive only if jewelry path stalls or jeweler\u2019s block becomes urgent.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow up: Carlos, Lisa/Peter, Jose",
+        "Work",
+        "G&B",
+        "",
+        "Today focus follow-up emails. Draft only; Kay sends.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "North Star for week: convert warm/live paths into seller conversations and financials",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-18",
+        "Success by next Sunday: 2 seller/seller-adjacent conversations scheduled/completed; 1 path moved toward financials, second call, or clear process next step.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Text jewelry seller to reconnect",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-14",
+        "Rollover to Tuesday. Highest-priority live seller path. Goal: next call, process clarity, and path toward financials.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Prepare crisp thesis and owner-intro ask for Tuesday LI broker meeting",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-14",
+        "Ask for owner-led businesses that fit the G&B architecture, not generic deal flow.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Use Wednesday broker call to pressure-test thesis, target areas, and website clarity",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-15",
+        "She gets Kay\u2019s background. Goal: specific focus areas, seller ideas, and what website language helps her route deals.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Align analyst in Team TB on 60-day priority stack and list review criteria",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Removed per Kay on 2026-07-17; not needed for Week 1 jewelry LOI sprint.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Investor proof/evidence discussion for insurance/storage/luxury infrastructure Deal 1 or LDE path",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Deferred until a specific deal is ready for investor review. Investors broadly like the lanes; abstract proof-standard discussion is premature.",
+        "Long Term"
+      ],
+      [
+        "Completed",
+        "Review existing insurance target list against new luxury asset risk criteria",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-12",
+        "Today review: score Kay-touch / outsourced / kill against luxury asset risk criteria.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Review existing art storage target list against luxury asset custody criteria",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-12",
+        "Today review: score Kay-touch / outsourced / kill against luxury asset custody criteria.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Registered for beauty supply chain conference app access",
+        "Work",
+        "60-Day LOI Sprint",
+        "2026-07-13",
+        "Completed: registered for app access to fragrance/beauty testing and packaging target lists; not attending conference.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Choose this week\u2019s summer movement slots",
+        "Home",
+        "Body Reset",
+        "2026-07-12",
+        "Replaced by ongoing weekly Sunday task: Choose weekly Body Reset movement slots.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow up: Hamptons Pest, Greg",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Review last month's monthly budget files from email",
+        "Work",
+        "G&B",
+        "2026-07-10",
+        "Monthly budget files from last month are visible in email; review on Friday.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Reach out to Guillermo to schedule next brainstorm",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Restart niche intel / target discovery process with DealsX",
+        "Work",
+        "G&B",
+        "",
+        "Get back into niche intel / target discovery process, including DealsX.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Reach out to Ray to schedule time to get together",
+        "Work",
+        "G&B",
+        "2026-07-01",
+        "Wednesday of the first week of July.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Pay Northwell & Labcorp",
+        "Home",
+        "Home",
+        "2026-06-22",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Review 2 briefs for Tuesday's calls",
+        "Work",
+        "G&B",
+        "2026-07-06",
+        "Review the two prep briefs for Tuesday's calls.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Submit the boys to: NY Models",
+        "Home",
+        "Home",
+        "",
+        "Combined from To Do rows 34, 35, 36, 37, 38 based on Sat slot 5.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Pay remaining IRS",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow-up emails to lunch attendees & conferences",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Schedule 2-3 luxury/hospitality pest validation calls",
+        "Work",
+        "Pest",
+        "",
+        "From Camilla pest thesis call: test premium/discreet pest thesis with luxury retail and hospitality facilities managers.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Let clayton know I will be away for the summer",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow up: Deborah",
+        "Work",
+        "Premium pest thesis",
+        "",
+        "Kay wants to take Juan up on his offered ride-along; Total Extermination is not a first-acquisition candidate, but remains useful as a potential second acquisition / market-learning relationship. Source: Juan 2026-06-23 post-call decision.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Send 24-hour thank-you to Richard Strautman",
+        "Work",
+        "G&B",
+        "",
+        "24-hour thank-you / follow-up.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email Andrew Saltoun to schedule call",
+        "Work",
+        "G&B",
+        "2026-06-22",
+        "Schedule call.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Send Tom/Carlos intro on F&B inventory deal",
+        "Work",
+        "G&B",
+        "2026-06-17",
+        "Only after Carlos confirms with Angelo first.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Respond to Doug, Ray",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Re-plan deal aggregator expansion (dedicated session)",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Watch video & complete SLD buy back",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Review restaurant inventory mgmt deal when Carlos sends (decline default \u2014 software AI-risk)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Take Miami-PE rollup contacts forward from Carlos \u2014 these are the higher-value asset",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Decide whether to screen AgTech drone opportunity (Carlos to send teaser)",
+        "Search",
+        "Deal Flow",
+        "",
+        "From Carlos Nieto 5/13 mtg. Analysis: https://docs.google.com/document/d/1jTzxubPJMAkr94MBEDVowKRbcer6orS96dByVjwvJEA/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "DealsX targeted outreach, share lists",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Update RCN Plan",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Review Mid-Search Summit Market Update takeaways, anchor in playbook update (four-horsemen framework)",
+        "Strategy",
+        "Conference-Followup",
+        "",
+        "From Mid-Search Summit 2026-05-19 session. Panel covered LOI activity highs, four-horsemen framework, average deal $32M EV at 5.8x. Analysis: https://docs.google.com/document/d/18uF18bsqHmgNW_vEwC3mXsr2x7acaWPrCHAsDUfBUGQ/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Send DealsX specialization file",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Reply to Carlos",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Contact Eric - testing IQ & Sensory, DOT program",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Contact Rebecca - follow up on programming",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Call Gusto about invoice amount",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Post-March-budget expense review (find cuts; explore summer desk takeover)",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Quarterly update (Q1 FY26 wrap-up)",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Fix email-intelligence -> budget-manager auto-invoke trigger gap",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email women from ACG WOL luncheon - upload cards & notes",
+        "Work",
+        "G&B",
+        "",
+        "Post-conference card processing + outreach",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Complete change of address",
+        "Home",
+        "Myself Renewed",
+        "2026-05-21",
+        "Personal admin",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Draft Q1 investor update \u2014 purpose-first framing per 5/20 convergence",
+        "Work",
+        "G&B",
+        "2026-05-27",
+        "Top priority for tomorrow per Kay 5/26. Open Loop #1 from 5-20. Court-case psychology trap pattern \u2014 behavior precedes identity change.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Prep for call with Jay",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Call Mohela - loan history, iRS",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Renew CitiBike",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "File G&B annual report by June",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Take Osvaldo intro warm when Carlos forwards (peer searcher, same stage)",
+        "Work",
+        "G&B",
+        "",
+        "From Carlos (DCA) 2026-05-13 mtg. Analysis: https://docs.google.com/document/d/1fd3MP_PCX8mB0xdf8kTegPf8EdpP7WqGnyf5qErGGfg/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email Jay & Jason about pest management",
+        "Work",
+        "Pest",
+        "",
+        "Owner/operator pest outreach",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email Carlos Nieto (DCA)",
+        "Work",
+        "G&B",
+        "",
+        "Follow-up post 5/13 ESB meeting",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow up: Carlos Nieto (Digital Capital Advisors)",
+        "Work",
+        "G&B",
+        "",
+        "Post-5/13 Empire State meeting; intermediary. Next-step + verified email in brain/calls/2026-05-13-carlos-nieto-dca.md",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Circle back: Becky Wuest Creavin (Peapack Private) re Matt/XPX",
+        "Work",
+        "G&B",
+        "",
+        "Becky offered to nudge Matt; verified email bcreavin@peapackprivate.com; draft queued Mon AM",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email Matt @ peapack private",
+        "Work",
+        "G&B",
+        "",
+        "No verified email/surname; dependent on Becky circle-back",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Laura Smith (BankUnited) - 2 warm intros",
+        "Work",
+        "G&B",
+        "",
+        "BLOCKED: no verified email. Intros offered: Stephanie (lawyer/super-connector) + a BankUnited colleague. Need verified address first",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Thank-you email to Sam Curcio (Transworld) \u2014 5/22 call",
+        "Work",
+        "G&B",
+        "",
+        "Reframed from 'Respond to Sam' per Kay 5/26.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Reply to Op Ponce (Poza Capital) with logistics/manufacturing deals outside G&B's box + clarify whether his 'self-funded only' framing flexes to traditional structure",
+        "Work",
+        "Partnerships",
+        "",
+        "From Op Ponce 2026-05-26 mtg. Analysis: https://docs.google.com/document/d/1lBz_aMvKV92eGxglwm5AUd7ujfhlN0Zi_hZkuvrzIfc/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Provide new outbound phone number (current number RoboKiller-flagged, killing JJ call connect rates)",
+        "Work",
+        "JJ Ops",
+        "",
+        "From Team TB JJ 2026-05-27 mtg. Analysis: https://docs.google.com/document/d/1nR247tmyZqYL-jwbYUUsE0FVJK-F1E-xFXHOkwDKIXs/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Confirm JJ has set up auto-forwarding from operations@greenwichandbarrow.com to Kay's monitored inbox (voicemail text-back replies silently dropping today)",
+        "Work",
+        "JJ Ops",
+        "",
+        "From Team TB JJ 2026-05-27 mtg. Analysis: https://docs.google.com/document/d/1nR247tmyZqYL-jwbYUUsE0FVJK-F1E-xFXHOkwDKIXs/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Accept Osvaldo intro from Carlos (peer searcher at similar stage)",
+        "Search",
+        "Network",
+        "",
+        "From Carlos Nieto 5/13 mtg. https://docs.google.com/document/d/1jTzxubPJMAkr94MBEDVowKRbcer6orS96dByVjwvJEA/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Schedule June Harrison coaching session at 10 AM (avoid lunch-hour conflict).",
+        "Work",
+        "Admin",
+        "",
+        "From Harrison Wells (Dodo Digital) 2026-05-15 mtg. Analysis: https://docs.google.com/document/d/1pyApBUsJr5EZMGNHW7spXunLJkK_BXdBL58yg-k9JsM/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Run budget-manager monthly mode for March P&L",
+        "Work",
+        "G&B",
+        "",
+        "(completed 2026-05-17)",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Reply to Janet Crockett \u2014 confirm year-end 12/31/2025 G&B investment figures (Saltoun annual review)",
+        "Work",
+        "G&B",
+        "2026-05-12",
+        "(completed 2026-05-17) Citrin Cooperman accountants doing annual portfolio review. Inbox: brain/inbox/2026-05-12-saltoun-annual-financial-review.md",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Draft post-call thank-you to Sam Curcio (use canonical Intermediary Email Templates Doc, pull live via bash scripts/fetch-template-doc.sh)",
+        "Outreach",
+        "Intermediary-Sam-Curcio",
+        "",
+        "From Sam Curcio 2026-05-22 mtg. THANK YOU only variant unless a specific listing was named. Schedule for Mon 5/25 AM (no Sunday sends). Analysis: https://docs.google.com/document/d/1_2Kvd0PrJcnWsPIgtYX2khzfXlc8phhvdEFqCIFFp48/edit",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Run Phase 2.5",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Send Q1 Updates to investors (5/12)",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "DealsX kicks off targeted outreach",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "DealsX linkedin Halts",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Contiue Phase 2.5 Codex Migration",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Pay Harrison bill",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Thank you Eric",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Reply to Matt",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email remaining quarterly updates",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Thank you Warren",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Decide on office rent cut",
+        "Work",
+        "G&B",
+        "",
+        "Keep, but emailed Evan about renting desk",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Phase 2.5",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Change of address (overdue 5/21)",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email Lisa & Ray (Peapack Private) thank-you/follow-up",
+        "Work",
+        "G&B",
+        "",
+        "24-hour thank-you / follow-up.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Complete DUSC scholarship form",
+        "Home",
+        "Home",
+        "2026-06-17",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Pay Northwell",
+        "Home",
+        "Home",
+        "2026-06-21",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Thank you: Jay, Bob",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Introduction: Anthony, Richard",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow up: Krupa",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "THank you: Laura, Stephanie, Randi",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Continue Work on Dashboard Plumbing",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Work on Email Orchestration on Dashboard",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Call astound 800-746-4726 customer service and they will be able to put you into a new promo.",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email Guillermo & Ibrahim for a Part II next week",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Start shared Google deck for Camilla pest strategy brain dump",
+        "Work",
+        "Pest thesis",
+        "",
+        "From Camilla 2026-06-16 post-call analysis",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Begin Financial modeling thread: build pest multi-acquisition model package",
+        "Work",
+        "Pest thesis",
+        "",
+        "Use single-acquisition model as baseline; incorporate Melissa call transcript; include seller note, rollover, interest-rate, Anacapa cap-table, Richard listing checks, Carlos/Michael Mahre intro context.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Continue Pest thesis deck",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Dashboard plumbing: email orchestration",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Dashboard plumbing: active pipeline",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Dashboard plumbing: csuite skills",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Dashboard plumbing: M&A activity",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Dashboard plumbing: system health",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Budget Manager run skill",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email Bob: congrats on Cetane transaction + ask about deals",
+        "Work",
+        "G&B",
+        "",
+        "Congratulate Bob on the Cetane transaction and ask whether he is seeing any relevant deals.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Follow up: Deborah",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Thank you: Paul",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Get kids health forms for camp",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Confirm XPX tristate membership",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Dashboard plumbing: deal aggregator - marketplaces",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Call Sailing camp about availability",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Circle back with Andrew Freiman & clayton (no response on quarterly)",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Set annual fasting-window calendar alerts with Barrie",
+        "Home",
+        "Body Reset",
+        "2026-07-20",
+        "Completed: Barrie created the daily kitchen-closed calendar events. Daily To Do checklist now carries the current latte/kitchen-closed/fast-duration line.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Choose weekly Body Reset movement slots",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Discuss jewelry opportunity with Sara: fundability, Deal 1 fit, and likely investor objections",
+        "Work",
+        "G&B",
+        "",
+        "Ask what would make investors accept vs reject this as retail",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Use WSN mentor group to pressure-test seller psychology and transition conversation",
+        "Work",
+        "G&B",
+        "",
+        "Focus on helping a 76-year-old legacy owner evaluate options without pushing",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Use investor calls to ask what proof/evidence they need behind insurance/storage/luxury infrastructure Deal 1 or LDE path",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Thursday follow-up checkpoint for Monday direct outreach non-responses",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Check DealsX insurance emails: sent + responses",
+        "Work",
+        "DealsX",
+        "2026-08-11",
+        "Verify whether insurance outreach emails went out and whether any responses came back.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Dropped",
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
+        "Home",
+        "Support the North Star",
+        "",
+        "Friday is not for outreach or meeting-dependent work, especially in summer. Use for internal/admin/review and family logistics. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "Outreach Work: seller / broker / investor / analyst outreach block",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "Dropped",
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "Dropped",
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "Dropped",
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "Dropped",
+        "Outreach Work: seller / broker / investor / analyst outreach block",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Tue"
+      ],
+      [
+        "Dropped",
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Tue"
+      ],
+      [
+        "Dropped",
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Tue"
+      ],
+      [
+        "Dropped",
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Tue"
+      ],
+      [
+        "Dropped",
+        "Outreach Work: seller / broker / investor / analyst outreach block",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "Dropped",
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "Dropped",
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "Dropped",
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "Dropped",
+        "Outreach Work: seller / broker / investor / analyst outreach block",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Thu"
+      ],
+      [
+        "Dropped",
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Thu"
+      ],
+      [
+        "Dropped",
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Thu"
+      ],
+      [
+        "Dropped",
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Thu"
+      ],
+      [
+        "Dropped",
+        "Personal Finance / Wealth Monitor",
+        "Home",
+        "Personal Finance",
+        "",
+        "Friday schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "Nonprofit Operations",
+        "Work",
+        "Nonprofit",
+        "",
+        "Friday schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "Family Admin",
+        "Home",
+        "Home",
+        "",
+        "Friday schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "Systems / Website / G&B Housekeeping",
+        "Work",
+        "G&B",
+        "",
+        "Friday schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        "Work",
+        "G&B",
+        "",
+        "Friday schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "Activate Friday recurring: Weekly Review + Next Week Setup",
+        "Work",
+        "G&B",
+        "2026-09-11",
+        "Add as Friday recurring once post-9/10 Friday schedule starts. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Friday container. Detailed steps live on the Myself Renewed Healthcare project tab: 501(c)(3)/Charities Bureau, board resolution, bank/PayPal, QuickBooks, donation processor/page, giving statement, Kay W-2 role/payroll, first donation/funding handling.",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Family Admin: email afterschool program about waitlists and 9-5 coverage options.",
+        "Home",
+        "Home",
+        "",
+        "Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Renew Kilian's passport",
+        "Home",
+        "Home",
+        "",
+        "Renew Kilian's passport. | Dropped per Kay on 2026-08-19; replaced by KA + Kay passport paperwork task.",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Dropped",
+        "Connect Roberta & Elspeth",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Connect Lily & Suzanne",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Renew child working permit",
+        "",
+        "",
+        "",
+        "Dropped as duplicate per Kay on 2026-08-09; broader retained item remains active.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Renew passports",
+        "",
+        "",
+        "",
+        "Dropped as duplicate per Kay on 2026-08-09; broader retained item remains active.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Verify recipient 501(c)(3) status; board vote + grant approval",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Hold a board meeting + adopt written resolution",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Resolution should approve nonprofit activation, Kay paid role/duties, W-2 payroll setup, NY minimum wage base pay, and business donation/startup funding handling. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Add Myself Renewed to QuickBooks (nonprofit category)",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Confirm registration with NY Charities Bureau",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Make initial business donation to Myself Renewed",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Use business funds to seed the nonprofit; record cleanly in business books and nonprofit books, with donation receipt/documentation. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Confirm nonprofit bank account exists + PayPal Giving Fund integration",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Draft personal giving statement aligned with legacy vision",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Add donation page language + set up donation processor",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Thank you: Jay, Laura, Paul, Bob",
+        "",
+        "",
+        "",
+        "Combined from To Do rows 91, 92, 93 based on Sat slot 10.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Get reimbursed for Motion",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Follow up: Deborah, Hamptons Pest, Richard, NYBB, Becky, Greg",
+        "Work",
+        "G&B",
+        "",
+        "Krupa note from removed row 65: Reciprocal real-estate-component deal flow; success-fee-only sale-leaseback specialist",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Do luxury-retailer store visits for pest buying criteria",
+        "Work",
+        "Pest",
+        "2026-06-18",
+        "Test who buys pest services and what criteria they use.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Ask family friend jewelry business owner for market-mapping conversation",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Deferred during Week 1 jewelry LOI sprint; use only if specific market-mapping input is needed after deck gaps are clear.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Identify first nonprofit activation requirement for 501(c)(3) activity mark",
+        "Work",
+        "Nonprofit Activation",
+        "2026-07-18",
+        "Women's health / pregnancy-focused nonprofit is legally formed and near 3-year activity mark. Need clean next step. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Send kids modeling submissions to 5 referred agencies",
+        "Home",
+        "Family Wealth / Kids Modeling",
+        "2026-07-20",
+        "Prepared on Friday; send next business day because Friday outreach is lower quality, especially in summer.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Draft Kay nonprofit role description and minimum-wage payroll assumptions",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Define actual services/duties, expected hours, work location, and base wage. NY 2026 minimum wage: $17/hr for NYC, Long Island, Westchester; $16/hr for rest of NY. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Set Kay up as W-2 employee in nonprofit payroll",
+        "Work",
+        "Myself Renewed",
+        "",
+        "After board approval: enter Kay as employee, configure withholding/payroll taxes, choose pay schedule, and confirm wage matches NY minimum wage for work location. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Run first nonprofit payroll and confirm W-2/payroll-tax records",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Execute first payroll only after funding, board approval, and employee setup are complete; confirm paystub, withholding, employer taxes, and W-2 reporting path. | Consolidated into row 137 container and tracked on the Myself Renewed Healthcare project tab on 2026-08-09.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Pay Mark for swimming",
+        "Home",
+        "Home",
+        "",
+        "I owe Mark for swimming.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Try Claude on website rebuild",
+        "Work",
+        "G&B",
+        "",
+        "Superseded by Friday lookbook-style G&B website review in Week 1 jewelry LOI sprint.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Build first-asset thesis map for luxury holdco",
+        "Work",
+        "G&B",
+        "",
+        "Superseded by active jewelry brand / holdco sprint beginning 2026-07-20.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Website rebuild focus block",
+        "Work",
+        "G&B",
+        "",
+        "Superseded by Friday lookbook-style G&B website review in Week 1 jewelry LOI sprint.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Deck focus block",
+        "Work",
+        "G&B",
+        "",
+        "Superseded by explicit jewelry sprint deck tasks for 2026-07-20 week.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Scope minimum viable G&B website update",
+        "Work",
+        "G&B Website",
+        "",
+        "Superseded by Friday lookbook-style G&B website review focused only on seller/investor credibility.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Look into music lessons",
+        "Home",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Create brochure for LF",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Email Filipe @ Pest Mgmt company",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Pest thesis deck - model how many acquisitions make the play work",
+        "Work",
+        "Pest",
+        "",
+        "Thesis deck math; pairs with deck build (Wed slot 4)",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Scan WPMA directory for NY-based members",
+        "Work",
+        "Pest",
+        "",
+        "Pre-Women in Pest Mgmt week of 5/18; network mining",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Pest 10-company research \u2014 June head-to-head vs DealsX + JJ",
+        "Work",
+        "G&B",
+        "2026-06-30",
+        "Kay 5/26 directive: 10 women-owned NY pest firms, Kay+Claude execute through June. Wind-down DealsX+JJ contingent on outperformance. Seed: 2026-05-15-pest-20-women-owned-west-village.md (7 verified).",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Ask Sarah Rosenthal for warm intro to Lacey Wismer",
+        "Work",
+        "Pest",
+        "2026-06-18",
+        "No-ask conversation on roll-up strategy.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Email DealsX to pause for summer",
+        "Work",
+        "G&B",
+        "2026-06-24",
+        "Month-to-month. Budget plan excludes DealsX from July; send pause note Wednesday and save confirmation when received.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Dashboard plumbing: deal aggregator",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Build preliminary pest model using 75-truck broker financials as proxy",
+        "Work",
+        "Pest thesis",
+        "",
+        "From Camilla 2026-06-16 post-call analysis",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Try to join a NYPMA committee",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Thursday follow-up checkpoint for Tuesday direct outreach non-responses",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Superseded by Week 1 jewelry LOI sprint. No broad outreach/follow-up checkpoint next week unless jewelry path stalls.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Sunday schedule build: add Week 1 jewelry sprint plan to next week\u2019s green priority bands",
+        "Work",
+        "G&B",
+        "2026-07-19",
+        "Replaced by explicit Week 1 jewelry sprint rows with day assignments in To Do.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Fasting Phase 1 begins: 8pm kitchen closed / 8am latte",
+        "Home",
+        "Body Reset",
+        "2026-07-20",
+        "Superseded by annual seasonal fasting rhythm on 2026-07-17.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Fasting Phase 2 begins: 7:45pm kitchen closed / 8am latte",
+        "Home",
+        "Body Reset",
+        "2026-08-03",
+        "Superseded by annual seasonal fasting rhythm on 2026-07-17.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Fasting Phase 3 begins: 7:30pm kitchen closed / 8am latte",
+        "Home",
+        "Body Reset",
+        "2026-08-24",
+        "Superseded by annual seasonal fasting rhythm on 2026-07-17.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Fasting Phase 4 begins: 7:00pm kitchen closed / 8am latte",
+        "Home",
+        "Body Reset",
+        "2026-09-14",
+        "Superseded by annual seasonal fasting rhythm on 2026-07-17.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Fasting Phase 5 begins: 6:45pm kitchen closed / 8:15am latte",
+        "Home",
+        "Body Reset",
+        "2026-09-28",
+        "Superseded by annual seasonal fasting rhythm on 2026-07-17.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Fasting target phase begins: 6:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-10-12",
+        "Superseded by annual seasonal fasting rhythm on 2026-07-17.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Summer fasting rhythm active: 7:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-07-20",
+        "Superseded by slower body-rhythm phasing on 2026-07-17; no abrupt seasonal jumps.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Fall fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-10-01",
+        "Superseded by slower body-rhythm phasing on 2026-07-17; no abrupt seasonal jumps.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Winter fasting rhythm begins: 6:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2026-12-01",
+        "Superseded by slower body-rhythm phasing on 2026-07-17; winter ramps across Dec/Jan/Feb.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Spring fasting rhythm begins: 8:00pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-03-01",
+        "Superseded by slower body-rhythm phasing on 2026-07-17; spring ramps back out.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Summer fasting rhythm begins: 7:30pm kitchen closed / 8:30am latte",
+        "Home",
+        "Body Reset",
+        "2027-06-01",
+        "Superseded by slower body-rhythm phasing on 2026-07-17; no abrupt seasonal jumps.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Daily meal rhythm: break fast + lunch parfait + afternoon snack + dinner protein/fiber/fat",
+        "Home",
+        "Body Reset",
+        "",
+        "Added too early; Kay wants to discuss meal architecture before adding recurring daily checklist items.",
+        "Weekly Recurring Sun"
+      ],
+      [
+        "Dropped",
+        "Daily meal rhythm: break fast + lunch parfait + afternoon snack + dinner protein/fiber/fat",
+        "Home",
+        "Body Reset",
+        "",
+        "Added too early; Kay wants to discuss meal architecture before adding recurring daily checklist items.",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "Dropped",
+        "Daily meal rhythm: break fast + lunch parfait + afternoon snack + dinner protein/fiber/fat",
+        "Home",
+        "Body Reset",
+        "",
+        "Added too early; Kay wants to discuss meal architecture before adding recurring daily checklist items.",
+        "Weekly Recurring Tue"
+      ],
+      [
+        "Dropped",
+        "Daily meal rhythm: break fast + lunch parfait + afternoon snack + dinner protein/fiber/fat",
+        "Home",
+        "Body Reset",
+        "",
+        "Added too early; Kay wants to discuss meal architecture before adding recurring daily checklist items.",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "Dropped",
+        "Daily meal rhythm: break fast + lunch parfait + afternoon snack + dinner protein/fiber/fat",
+        "Home",
+        "Body Reset",
+        "",
+        "Added too early; Kay wants to discuss meal architecture before adding recurring daily checklist items.",
+        "Weekly Recurring Thu"
+      ],
+      [
+        "Dropped",
+        "Daily meal rhythm: break fast + lunch parfait + afternoon snack + dinner protein/fiber/fat",
+        "Home",
+        "Body Reset",
+        "",
+        "Added too early; Kay wants to discuss meal architecture before adding recurring daily checklist items.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "Daily meal rhythm: break fast + lunch parfait + afternoon snack + dinner protein/fiber/fat",
+        "Home",
+        "Body Reset",
+        "",
+        "Added too early; Kay wants to discuss meal architecture before adding recurring daily checklist items.",
+        "Weekly Recurring Sat"
+      ],
+      [
+        "Dropped",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        "Home",
+        "Body Reset",
+        "",
+        "Moved into daily tab checklist rows instead of recurring To Do task rows.",
+        "Weekly Recurring Sun"
+      ],
+      [
+        "Dropped",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        "Home",
+        "Body Reset",
+        "",
+        "Moved into daily tab checklist rows instead of recurring To Do task rows.",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "Dropped",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        "Home",
+        "Body Reset",
+        "",
+        "Moved into daily tab checklist rows instead of recurring To Do task rows.",
+        "Weekly Recurring Tue"
+      ],
+      [
+        "Dropped",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        "Home",
+        "Body Reset",
+        "",
+        "Moved into daily tab checklist rows instead of recurring To Do task rows.",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "Dropped",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        "Home",
+        "Body Reset",
+        "",
+        "Moved into daily tab checklist rows instead of recurring To Do task rows.",
+        "Weekly Recurring Thu"
+      ],
+      [
+        "Dropped",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        "Home",
+        "Body Reset",
+        "",
+        "Moved into daily tab checklist rows instead of recurring To Do task rows.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
+        "Home",
+        "Body Reset",
+        "",
+        "Moved into daily tab checklist rows instead of recurring To Do task rows.",
+        "Weekly Recurring Sat"
+      ]
+    ],
+    "'Week'!A1:O38": [
+      [
+        "WEEK OF Aug 30-Sep 5"
+      ],
+      [],
+      [
+        "DAILY FOCUS / THEME"
+      ],
+      [],
+      [],
+      [
+        "",
+        "SUNDAY \u00b7 Aug 30",
+        "",
+        "MONDAY \u00b7 Aug 31",
+        "",
+        "TUESDAY \u00b7 Sep 1",
+        "",
+        "WEDNESDAY \u00b7 Sep 2",
+        "",
+        "THURSDAY \u00b7 Sep 3",
+        "",
+        "FRIDAY \u00b7 Sep 4",
+        "",
+        "SATURDAY \u00b7 Sep 5"
+      ],
+      [],
+      [
+        "",
+        false,
+        "Add Kay food staples to Sunday grocery run",
+        false,
+        "Process payroll",
+        false,
+        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar",
+        false,
+        "Reach out to organizer of Art Oct conference",
+        false,
+        "Complete Quarterly Update",
+        false,
+        "Create travel plans for July in Paris/France next year",
+        false,
+        "Buy gift for baby Ruby"
+      ],
+      [
+        "",
+        false,
+        "Put fuel & recovery lists to refrigerator",
+        false,
+        "Process conference registrations",
+        false,
+        "Call IRS to confirm Form 8822-B address update",
+        false,
+        "Visit store carrying jewelry line to see product and merchandising in person",
+        false,
+        "",
+        false,
+        "Look into GLP1",
+        false
+      ],
+      [
+        "",
+        false,
+        "Create weekly schedule",
+        false,
+        "",
+        false,
+        "Pull Megan pre-LOI prep meeting notes",
+        false,
+        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
+        false,
+        "",
+        false,
+        "Review Kai Grey Ventures renewal",
+        false
+      ],
+      [
+        "",
+        false,
+        "Confirm LiveOak payroll transfer coverage",
+        false,
+        "",
+        false,
+        "Email Melissa to assist with BK Growth contact and file folders",
+        false,
+        "Review website direction: light lookbook-style G&B page for seller/investor credibility",
+        false,
+        "",
+        false,
+        "Submit new PSLF form",
+        false
+      ],
+      [
+        "",
+        false,
+        "Kids allowance: Sunday $10/week + Friday $10/day through Aug",
+        false,
+        "",
+        false,
+        "Pull contact info and prepare kids modeling submissions to 5 referred agencies",
+        false,
+        "Reconnect with Andrew Freiman re: Chenmark intro",
+        false,
+        "",
+        false,
+        "Create project for French passports",
+        false
+      ],
+      [
+        "",
+        false,
+        "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
+        false,
+        "",
+        false,
+        "Review new SLD video",
+        false,
+        "Change login info for operations folder + operations Gmail account",
+        false,
+        "",
+        false,
+        "Renew kids' work permits",
+        false
+      ],
+      [
+        "",
+        false,
+        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions",
+        false,
+        "",
+        false,
+        "Locate holdco financial model",
+        false,
+        "Contact the asset backed lender melissa mentioned",
+        false,
+        "",
+        false,
+        "Set up Claude workflow for Friday: slides + website aesthetics",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Text Sarah Finders Fee document",
+        false,
+        "Niche intel review",
+        false,
+        "",
+        false,
+        "Call IRS/government to confirm address change",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Watch SLD video",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning.",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Complete paperwork for KA & my passport renewals",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Check NYC Housing Connect for new Manhattan lotteries",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [],
+      [
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot",
+        "",
+        "notes \u00b7 ideas \u00b7 jot"
+      ]
+    ],
+    "'Sun'!A21:E70": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Mon'!A21:E70": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Tue'!A21:E70": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Wed'!A21:E70": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Thu'!A21:E70": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Fri'!A21:E70": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Sat'!A21:E70": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ]
+  }
+}

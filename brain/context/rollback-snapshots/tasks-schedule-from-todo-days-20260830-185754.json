@@ -1,7 +1,7 @@
 {
   "verb": "schedule-from-todo-days",
-  "timestamp": "20260817-124811",
-  "sheet_id": "1Tjprc8z5uXCP94Y-yJaNZDk3SwNC2h-0tRXctornetE",
+  "timestamp": "20260830-185754",
+  "sheet_id": "12dvGVZXYImCxF820pgVEXvAdwpm38i5SqzE3mn3rsFI",
   "ranges": {
     "'To Do'!A1:H400": [
       [
@@ -322,6 +322,15 @@
         "Weekly Recurring Tue"
       ],
       [
+        "On-going",
+        "Activate Friday recurring: Weekly Review + Next Week Setup",
+        "Work",
+        "G&B",
+        "2026-09-11",
+        "Add as Friday recurring once post-9/10 Friday schedule starts.",
+        "Short Term"
+      ],
+      [
         "Not Completed",
         "Order gift for Lois (Jack Hugh Mackay)",
         "Home",
@@ -467,25 +476,7 @@
         "",
         "Combined from To Do rows 34, 35, 36, 37, 38 based on Sat slot 5.",
         "Short Term",
-        "Friday"
-      ],
-      [
-        "Not Completed",
-        "Connect Roberta & Elspeth",
-        "Work",
-        "G&B",
-        "",
-        "",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Connect Lily & Suzanne",
-        "Work",
-        "G&B",
-        "",
-        "",
-        "Short Term"
+        "Tuesday"
       ],
       [
         "Not Completed",
@@ -523,7 +514,7 @@
         "",
         "",
         "Short Term",
-        "Monday"
+        "Wednesday"
       ],
       [
         "Not Completed",
@@ -588,7 +579,7 @@
         "2026-06-15",
         "IRS business line: 800-829-4933. Ask to confirm business mailing address currently on file for EIN before updating bank address.",
         "Short Term",
-        "Monday"
+        "Tuesday"
       ],
       [
         "Not Completed",
@@ -647,22 +638,12 @@
       ],
       [
         "Not Completed",
-        "Continue financial modeling",
-        "",
-        "",
-        "",
-        "",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
         "Send new email outreach on dashboard (3 companies)",
         "Work",
         "Pest thesis",
         "2026-06-22",
         "\u2192 promoted to Mon slot 3 on 2026-06-21; Source: Camilla pest company list",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -671,8 +652,7 @@
         "",
         "",
         "",
-        "Short Term",
-        "Tuesday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -690,16 +670,6 @@
         "Home",
         "",
         "Renew the kids' working permits.",
-        "Short Term",
-        "Friday"
-      ],
-      [
-        "Not Completed",
-        "Renew Kilian's passport",
-        "Home",
-        "Home",
-        "",
-        "Renew Kilian's passport.",
         "Short Term",
         "Friday"
       ],
@@ -729,18 +699,7 @@
         "60-Day LOI Sprint",
         "2026-07-19",
         "Weekend task: thank Greg and ask for the insurance contacts he offered. Draft/schedule only; do not distract from Week 1 jewelry sprint.",
-        "Short Term",
-        "Sun"
-      ],
-      [
-        "Not Completed",
-        "Reconnect with Levi on prior art storage path",
-        "Work",
-        "60-Day LOI Sprint",
-        "",
-        "Deferred during Week 1 jewelry LOI sprint; revive only if jewelry path stalls.",
-        "Short Term",
-        "Tuesday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -749,8 +708,7 @@
         "60-Day LOI Sprint",
         "",
         "Deferred during Week 1 jewelry LOI sprint; revive only if jewelry path stalls.",
-        "Short Term",
-        "Tuesday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -760,7 +718,7 @@
         "",
         "Deferred during Week 1 jewelry LOI sprint unless needed after seller engagement or public-info company analysis.",
         "Short Term",
-        "Monday"
+        "Wednesday"
       ],
       [
         "Not Completed",
@@ -770,7 +728,7 @@
         "2026-07-18",
         "Weekend top priority: prep all materials to go out to agencies. Do not send until next business day unless Kay chooses otherwise.",
         "Short Term",
-        "Friday"
+        "Tuesday"
       ],
       [
         "Not Completed",
@@ -783,26 +741,6 @@
       ],
       [
         "Not Completed",
-        "Pay RSM",
-        "Home",
-        "Home",
-        "2026-08-01",
-        "RSM requested payment by Aug 1.",
-        "Short Term",
-        "Friday"
-      ],
-      [
-        "Not Completed",
-        "Prepare high-level seller data ask draft",
-        "Work",
-        "Jewelry LOI Sprint",
-        "2026-07-21",
-        "Draft soft ask for EBITDA/owner earnings, revenue mix, inventory, lease/key team, and price/transition expectations.",
-        "Short Term",
-        "Wednesday"
-      ],
-      [
-        "Not Completed",
         "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
         "Work",
         "Jewelry LOI Sprint",
@@ -810,16 +748,6 @@
         "Show why this business may be different from the category risks investors will assume.",
         "Short Term",
         "Wednesday"
-      ],
-      [
-        "Not Completed",
-        "Narrow/edit must-have diligence questions to top 5",
-        "Work",
-        "Jewelry LOI Sprint",
-        "2026-07-23",
-        "Edit down to the five items required before LOI: EBITDA/earnings, revenue mix, inventory, price/transition expectations, key team/lease exposure.",
-        "Short Term",
-        "Thursday"
       ],
       [
         "Not Completed",
@@ -1023,31 +951,13 @@
       ],
       [
         "Not Completed",
-        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
-        "Work",
-        "G&B",
-        "",
-        "Full sale, staged transition, seller financing, rollover/advisory role, or broader process",
-        "Short Term",
-        "Wednesday"
-      ],
-      [
-        "Not Completed",
-        "Send thank-you to Greg and ask for the insurance owner intro he suggested",
-        "",
-        "",
-        "",
-        "",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
         "Review new SLD video",
         "",
         "",
         "",
         "",
-        "Short Term"
+        "Short Term",
+        "Tuesday"
       ],
       [
         "Not Completed",
@@ -1058,15 +968,6 @@
         "",
         "Short Term",
         "Friday"
-      ],
-      [
-        "Not Completed",
-        "Activate Friday recurring: Weekly Review + Next Week Setup",
-        "Work",
-        "G&B",
-        "2026-09-11",
-        "Add as Friday recurring once post-9/10 Friday schedule starts.",
-        "Short Term"
       ],
       [
         "Not Completed",
@@ -1090,27 +991,7 @@
       ],
       [
         "Not Completed",
-        "Weekend prep: prepare for a possible Sidney Garber meeting next week if he responds.",
-        "Work",
-        "G&B",
-        "",
-        "",
-        "Short Term",
-        "Sunday"
-      ],
-      [
-        "Not Completed",
         "Locate holdco financial model",
-        "Work",
-        "G&B",
-        "2026-08-11",
-        "",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Not Completed",
-        "Call Troy",
         "Work",
         "G&B",
         "2026-08-11",
@@ -1135,7 +1016,8 @@
         "G&B",
         "",
         "Discuss Chenmark and whether an intro makes sense.",
-        "Short Term"
+        "Short Term",
+        "Wednesday"
       ],
       [
         "Not Completed",
@@ -1144,7 +1026,8 @@
         "G&B",
         "2026-08-31",
         "",
-        "Short Term"
+        "Short Term",
+        "Thursday"
       ],
       [
         "Not Completed",
@@ -1153,15 +1036,6 @@
         "G&B",
         "",
         "Update credentials/access details; use 1Password-backed credentials handling.",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Get Real Pigeons from the library",
-        "Home",
-        "Home",
-        "2026-08-12",
-        "",
         "Short Term",
         "Wednesday"
       ],
@@ -1177,16 +1051,6 @@
       ],
       [
         "Not Completed",
-        "Buy new backpacks, water bottles, and clothes for the kids",
-        "Home",
-        "Home",
-        "2026-08-16",
-        "",
-        "Short Term",
-        "Sunday"
-      ],
-      [
-        "Not Completed",
         "Call Troy if NYS refund has not arrived",
         "Home",
         "Home",
@@ -1196,6 +1060,144 @@
       ],
       [
         "Not Completed",
+        "Complete paperwork for KA & my passport renewals",
+        "Home",
+        "Home",
+        "2026-08-21",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Put fuel & recovery lists to refrigerator",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term",
+        "Sunday"
+      ],
+      [
+        "Not Completed",
+        "Contact the asset backed lender melissa mentioned",
+        "",
+        "",
+        "",
+        "",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Completed",
+        "Continue financial modeling",
+        "",
+        "",
+        "",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Reconnect with Levi on prior art storage path",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Deferred during Week 1 jewelry LOI sprint; revive only if jewelry path stalls.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Call RSM",
+        "Home",
+        "Home",
+        "2026-08-01",
+        "RSM requested payment by Aug 1.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
+        "Work",
+        "G&B",
+        "",
+        "Full sale, staged transition, seller financing, rollover/advisory role, or broader process",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Completed",
+        "Pay One Hanover Square rent",
+        "Work",
+        "G&B",
+        "2026-08-13",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Prepare high-level seller data ask draft",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-21",
+        "Draft soft ask for EBITDA/owner earnings, revenue mix, inventory, lease/key team, and price/transition expectations.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Narrow/edit must-have diligence questions to top 5",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-23",
+        "Edit down to the five items required before LOI: EBITDA/earnings, revenue mix, inventory, price/transition expectations, key team/lease exposure.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Weekend prep: prepare for a possible Sidney Garber meeting next week if he responds.",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term",
+        "Sunday"
+      ],
+      [
+        "Completed",
+        "Call Troy",
+        "Work",
+        "G&B",
+        "2026-08-11",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Get Real Pigeons from the library",
+        "Home",
+        "Home",
+        "2026-08-12",
+        "",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Completed",
+        "Buy new backpacks, water bottles, and clothes for the kids",
+        "Home",
+        "Home",
+        "2026-08-16",
+        "",
+        "Short Term",
+        "Sunday"
+      ],
+      [
+        "Completed",
         "Fax W2 to NYS",
         "Home",
         "Home",
@@ -1205,17 +1207,7 @@
         "Thursday"
       ],
       [
-        "Not Completed",
-        "Pay One Hanover Square rent",
-        "Work",
-        "G&B",
-        "2026-08-13",
-        "",
-        "Short Term",
-        "Thursday"
-      ],
-      [
-        "Not Completed",
+        "Completed",
         "Weekend prep: prepare for a possible Sidney Garber meeting next week if she responds.",
         "",
         "",
@@ -2539,6 +2531,34 @@
       ],
       [
         "Dropped",
+        "Renew Kilian's passport",
+        "Home",
+        "Home",
+        "",
+        "Renew Kilian's passport. | Dropped per Kay on 2026-08-19; replaced by KA + Kay passport paperwork task.",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Dropped",
+        "Connect Roberta & Elspeth",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Connect Lily & Suzanne",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
         "Renew child working permit",
         "",
         "",
@@ -3116,7 +3136,7 @@
     ],
     "'Week'!A1:O38": [
       [
-        "WEEK OF Aug 16-22"
+        "WEEK OF Aug 30-5"
       ],
       [],
       [
@@ -3126,19 +3146,19 @@
       [],
       [
         "",
-        "SUNDAY \u00b7 Aug 16",
+        "SUNDAY \u00b7 Aug 30",
         "",
-        "MONDAY \u00b7 Aug 17",
+        "MONDAY \u00b7 Aug 31",
         "",
-        "TUESDAY \u00b7 Aug 18",
+        "TUESDAY \u00b7 Sep 1",
         "",
-        "WEDNESDAY \u00b7 Aug 19",
+        "WEDNESDAY \u00b7 Sep 2",
         "",
-        "THURSDAY \u00b7 Aug 20",
+        "THURSDAY \u00b7 Sep 3",
         "",
-        "FRIDAY \u00b7 Aug 21",
+        "FRIDAY \u00b7 Sep 4",
         "",
-        "SATURDAY \u00b7 Aug 22"
+        "SATURDAY \u00b7 Sep 5"
       ],
       [],
       [
@@ -3164,7 +3184,7 @@
         false,
         "Process conference registrations",
         false,
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        "",
         false,
         "Outreach Work: seller / broker / investor / analyst outreach block",
         false,
@@ -3212,7 +3232,7 @@
         false,
         "Strategy / Research: deck, model, thesis, target discovery, niche work",
         false,
-        "",
+        "Watch SLD video",
         false,
         "8:30 Decision Review: review what moved, what parks, what rolls forward",
         false,

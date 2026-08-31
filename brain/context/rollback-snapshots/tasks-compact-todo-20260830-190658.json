@@ -1,9 +1,9 @@
 {
-  "verb": "schedule-from-todo-days",
-  "timestamp": "20260818-093238",
-  "sheet_id": "1Tjprc8z5uXCP94Y-yJaNZDk3SwNC2h-0tRXctornetE",
+  "verb": "compact-todo",
+  "timestamp": "20260830-190658",
+  "sheet_id": "12dvGVZXYImCxF820pgVEXvAdwpm38i5SqzE3mn3rsFI",
   "ranges": {
-    "'To Do'!A1:H400": [
+    "'To Do'!A1:H341": [
       [
         "Status",
         "Task",
@@ -106,15 +106,6 @@
       ],
       [
         "On-going",
-        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
-        "Home",
-        "Support the North Star",
-        "",
-        "Friday is not for outreach or meeting-dependent work, especially in summer. Use for internal/admin/review and family logistics.",
-        "Weekly Recurring Fri"
-      ],
-      [
-        "On-going",
         "Add Kay food staples to Sunday grocery run",
         "Home",
         "Body Reset",
@@ -122,195 +113,6 @@
         "Every Sunday grocery run: add Kay staples for the existing default: protein powder support, yogurt/cottage cheese, berries/fruit, vegetables/snacks, easy protein, dinner basics.",
         "Weekly Recurring Sun",
         "Sun"
-      ],
-      [
-        "On-going",
-        "Outreach Work: seller / broker / investor / analyst outreach block",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Mon"
-      ],
-      [
-        "On-going",
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Mon"
-      ],
-      [
-        "On-going",
-        "Strategy / Research: deck, model, thesis, target discovery, niche work",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Mon"
-      ],
-      [
-        "On-going",
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Mon"
-      ],
-      [
-        "On-going",
-        "Outreach Work: seller / broker / investor / analyst outreach block",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Tue"
-      ],
-      [
-        "On-going",
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Tue"
-      ],
-      [
-        "On-going",
-        "Strategy / Research: deck, model, thesis, target discovery, niche work",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Tue"
-      ],
-      [
-        "On-going",
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Tue"
-      ],
-      [
-        "On-going",
-        "Outreach Work: seller / broker / investor / analyst outreach block",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Wed"
-      ],
-      [
-        "On-going",
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Wed"
-      ],
-      [
-        "On-going",
-        "Strategy / Research: deck, model, thesis, target discovery, niche work",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Wed"
-      ],
-      [
-        "On-going",
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Wed"
-      ],
-      [
-        "On-going",
-        "Outreach Work: seller / broker / investor / analyst outreach block",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Thu"
-      ],
-      [
-        "On-going",
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Thu"
-      ],
-      [
-        "On-going",
-        "Strategy / Research: deck, model, thesis, target discovery, niche work",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Thu"
-      ],
-      [
-        "On-going",
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
-        "Work",
-        "G&B",
-        "",
-        "Weekly schedule scaffold block.",
-        "Weekly Recurring Thu"
-      ],
-      [
-        "On-going",
-        "Personal Finance / Wealth Monitor",
-        "Home",
-        "Personal Finance",
-        "",
-        "Friday schedule scaffold block.",
-        "Weekly Recurring Fri"
-      ],
-      [
-        "On-going",
-        "Nonprofit Operations",
-        "Work",
-        "Nonprofit",
-        "",
-        "Friday schedule scaffold block.",
-        "Weekly Recurring Fri"
-      ],
-      [
-        "On-going",
-        "Family Admin",
-        "Home",
-        "Home",
-        "",
-        "Friday schedule scaffold block.",
-        "Weekly Recurring Fri"
-      ],
-      [
-        "On-going",
-        "Systems / Website / G&B Housekeeping",
-        "Work",
-        "G&B",
-        "",
-        "Friday schedule scaffold block.",
-        "Weekly Recurring Fri"
-      ],
-      [
-        "On-going",
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
-        "Work",
-        "G&B",
-        "",
-        "Friday schedule scaffold block.",
-        "Weekly Recurring Fri"
       ],
       [
         "On-going",
@@ -322,7 +124,7 @@
         "Weekly Recurring Tue"
       ],
       [
-        "Not Completed",
+        "On-going",
         "Order gift for Lois (Jack Hugh Mackay)",
         "Home",
         "",
@@ -468,24 +270,6 @@
         "Combined from To Do rows 34, 35, 36, 37, 38 based on Sat slot 5.",
         "Short Term",
         "Tuesday"
-      ],
-      [
-        "Dropped",
-        "Connect Roberta & Elspeth",
-        "Work",
-        "G&B",
-        "",
-        "",
-        "Short Term"
-      ],
-      [
-        "Dropped",
-        "Connect Lily & Suzanne",
-        "Work",
-        "G&B",
-        "",
-        "",
-        "Short Term"
       ],
       [
         "Not Completed",
@@ -647,16 +431,6 @@
       ],
       [
         "Not Completed",
-        "Continue financial modeling",
-        "",
-        "",
-        "",
-        "",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Not Completed",
         "Send new email outreach on dashboard (3 companies)",
         "Work",
         "Pest thesis",
@@ -694,16 +468,6 @@
       ],
       [
         "Not Completed",
-        "Renew Kilian's passport",
-        "Home",
-        "Home",
-        "",
-        "Renew Kilian's passport.",
-        "Short Term",
-        "Friday"
-      ],
-      [
-        "Not Completed",
         "Email Melissa to assist with BK Growth contact and file folders",
         "Work",
         "G&B",
@@ -729,16 +493,6 @@
         "2026-07-19",
         "Weekend task: thank Greg and ask for the insurance contacts he offered. Draft/schedule only; do not distract from Week 1 jewelry sprint.",
         "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Reconnect with Levi on prior art storage path",
-        "Work",
-        "60-Day LOI Sprint",
-        "",
-        "Deferred during Week 1 jewelry LOI sprint; revive only if jewelry path stalls.",
-        "Short Term",
-        "Tuesday"
       ],
       [
         "Not Completed",
@@ -780,25 +534,6 @@
       ],
       [
         "Not Completed",
-        "Call RSM",
-        "Home",
-        "Home",
-        "2026-08-01",
-        "RSM requested payment by Aug 1.",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Completed",
-        "Prepare high-level seller data ask draft",
-        "Work",
-        "Jewelry LOI Sprint",
-        "2026-07-21",
-        "Draft soft ask for EBITDA/owner earnings, revenue mix, inventory, lease/key team, and price/transition expectations.",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
         "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
         "Work",
         "Jewelry LOI Sprint",
@@ -806,15 +541,6 @@
         "Show why this business may be different from the category risks investors will assume.",
         "Short Term",
         "Wednesday"
-      ],
-      [
-        "Completed",
-        "Narrow/edit must-have diligence questions to top 5",
-        "Work",
-        "Jewelry LOI Sprint",
-        "2026-07-23",
-        "Edit down to the five items required before LOI: EBITDA/earnings, revenue mix, inventory, price/transition expectations, key team/lease exposure.",
-        "Short Term"
       ],
       [
         "Not Completed",
@@ -1018,17 +744,6 @@
       ],
       [
         "Not Completed",
-        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
-        "Work",
-        "G&B",
-        "",
-        "Full sale, staged transition, seller financing, rollover/advisory role, or broader process",
-        "Short Term",
-        "Wednesday"
-      ],
-      [],
-      [
-        "Not Completed",
         "Review new SLD video",
         "",
         "",
@@ -1048,25 +763,6 @@
         "Friday"
       ],
       [
-        "On-going",
-        "Activate Friday recurring: Weekly Review + Next Week Setup",
-        "Work",
-        "G&B",
-        "2026-09-11",
-        "Add as Friday recurring once post-9/10 Friday schedule starts.",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan",
-        "Work",
-        "Myself Renewed",
-        "",
-        "Friday container. Detailed steps live on the Myself Renewed Healthcare project tab: 501(c)(3)/Charities Bureau, board resolution, bank/PayPal, QuickBooks, donation processor/page, giving statement, Kay W-2 role/payroll, first donation/funding handling.",
-        "Short Term",
-        "Friday"
-      ],
-      [
         "Not Completed",
         "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning.",
         "Work",
@@ -1077,28 +773,8 @@
         "Friday"
       ],
       [
-        "Completed",
-        "Weekend prep: prepare for a possible Sidney Garber meeting next week if he responds.",
-        "Work",
-        "G&B",
-        "",
-        "",
-        "Short Term",
-        "Sunday"
-      ],
-      [
         "Not Completed",
         "Locate holdco financial model",
-        "Work",
-        "G&B",
-        "2026-08-11",
-        "",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Completed",
-        "Call Troy",
         "Work",
         "G&B",
         "2026-08-11",
@@ -1147,16 +823,6 @@
         "Wednesday"
       ],
       [
-        "Completed",
-        "Get Real Pigeons from the library",
-        "Home",
-        "Home",
-        "2026-08-12",
-        "",
-        "Short Term",
-        "Wednesday"
-      ],
-      [
         "Not Completed",
         "Buy gift for baby Ruby",
         "Home",
@@ -1165,6 +831,143 @@
         "",
         "Short Term",
         "Saturday"
+      ],
+      [
+        "Not Completed",
+        "Call Troy if NYS refund has not arrived",
+        "Home",
+        "Home",
+        "2026-10-05",
+        "First week of October checkpoint: call Troy if NYS refund has not arrived.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Complete paperwork for KA & my passport renewals",
+        "Home",
+        "Home",
+        "2026-08-21",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Put fuel & recovery lists to refrigerator",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term",
+        "Sunday"
+      ],
+      [
+        "Not Completed",
+        "Contact the asset backed lender melissa mentioned",
+        "",
+        "",
+        "",
+        "",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Completed",
+        "Continue financial modeling",
+        "",
+        "",
+        "",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Reconnect with Levi on prior art storage path",
+        "Work",
+        "60-Day LOI Sprint",
+        "",
+        "Deferred during Week 1 jewelry LOI sprint; revive only if jewelry path stalls.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Call RSM",
+        "Home",
+        "Home",
+        "2026-08-01",
+        "RSM requested payment by Aug 1.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
+        "Work",
+        "G&B",
+        "",
+        "Full sale, staged transition, seller financing, rollover/advisory role, or broader process",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Completed",
+        "Pay One Hanover Square rent",
+        "Work",
+        "G&B",
+        "2026-08-13",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Prepare high-level seller data ask draft",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-21",
+        "Draft soft ask for EBITDA/owner earnings, revenue mix, inventory, lease/key team, and price/transition expectations.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Narrow/edit must-have diligence questions to top 5",
+        "Work",
+        "Jewelry LOI Sprint",
+        "2026-07-23",
+        "Edit down to the five items required before LOI: EBITDA/earnings, revenue mix, inventory, price/transition expectations, key team/lease exposure.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Weekend prep: prepare for a possible Sidney Garber meeting next week if he responds.",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term",
+        "Sunday"
+      ],
+      [
+        "Completed",
+        "Call Troy",
+        "Work",
+        "G&B",
+        "2026-08-11",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Get Real Pigeons from the library",
+        "Home",
+        "Home",
+        "2026-08-12",
+        "",
+        "Short Term",
+        "Wednesday"
       ],
       [
         "Completed",
@@ -1177,15 +980,6 @@
         "Sunday"
       ],
       [
-        "Not Completed",
-        "Call Troy if NYS refund has not arrived",
-        "Home",
-        "Home",
-        "2026-10-05",
-        "First week of October checkpoint: call Troy if NYS refund has not arrived.",
-        "Short Term"
-      ],
-      [
         "Completed",
         "Fax W2 to NYS",
         "Home",
@@ -1194,16 +988,6 @@
         "",
         "Short Term",
         "Thursday"
-      ],
-      [
-        "Not Completed",
-        "Pay One Hanover Square rent",
-        "Work",
-        "G&B",
-        "2026-08-13",
-        "",
-        "Short Term",
-        "Tuesday"
       ],
       [
         "Completed",
@@ -2511,15 +2295,6 @@
       ],
       [
         "Completed",
-        "Family Admin: email afterschool program about waitlists and 9-5 coverage options.",
-        "Home",
-        "Home",
-        "",
-        "",
-        "Short Term"
-      ],
-      [
-        "Completed",
         "Check DealsX insurance emails: sent + responses",
         "Work",
         "DealsX",
@@ -2527,6 +2302,260 @@
         "Verify whether insurance outreach emails went out and whether any responses came back.",
         "Short Term",
         "Tuesday"
+      ],
+      [
+        "Dropped",
+        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
+        "Home",
+        "Support the North Star",
+        "",
+        "Friday is not for outreach or meeting-dependent work, especially in summer. Use for internal/admin/review and family logistics. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "Outreach Work: seller / broker / investor / analyst outreach block",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "Dropped",
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "Dropped",
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "Dropped",
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Mon"
+      ],
+      [
+        "Dropped",
+        "Outreach Work: seller / broker / investor / analyst outreach block",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Tue"
+      ],
+      [
+        "Dropped",
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Tue"
+      ],
+      [
+        "Dropped",
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Tue"
+      ],
+      [
+        "Dropped",
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Tue"
+      ],
+      [
+        "Dropped",
+        "Outreach Work: seller / broker / investor / analyst outreach block",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "Dropped",
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "Dropped",
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "Dropped",
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Wed"
+      ],
+      [
+        "Dropped",
+        "Outreach Work: seller / broker / investor / analyst outreach block",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Thu"
+      ],
+      [
+        "Dropped",
+        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Thu"
+      ],
+      [
+        "Dropped",
+        "Strategy / Research: deck, model, thesis, target discovery, niche work",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Thu"
+      ],
+      [
+        "Dropped",
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        "Work",
+        "G&B",
+        "",
+        "Weekly schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Thu"
+      ],
+      [
+        "Dropped",
+        "Personal Finance / Wealth Monitor",
+        "Home",
+        "Personal Finance",
+        "",
+        "Friday schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "Nonprofit Operations",
+        "Work",
+        "Nonprofit",
+        "",
+        "Friday schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "Family Admin",
+        "Home",
+        "Home",
+        "",
+        "Friday schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "Systems / Website / G&B Housekeeping",
+        "Work",
+        "G&B",
+        "",
+        "Friday schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        "Work",
+        "G&B",
+        "",
+        "Friday schedule scaffold block. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Weekly Recurring Fri"
+      ],
+      [
+        "Dropped",
+        "Activate Friday recurring: Weekly Review + Next Week Setup",
+        "Work",
+        "G&B",
+        "2026-09-11",
+        "Add as Friday recurring once post-9/10 Friday schedule starts. | Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan",
+        "Work",
+        "Myself Renewed",
+        "",
+        "Friday container. Detailed steps live on the Myself Renewed Healthcare project tab: 501(c)(3)/Charities Bureau, board resolution, bank/PayPal, QuickBooks, donation processor/page, giving statement, Kay W-2 role/payroll, first donation/funding handling.",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Not Completed",
+        "Family Admin: email afterschool program about waitlists and 9-5 coverage options.",
+        "Home",
+        "Home",
+        "",
+        "Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Renew Kilian's passport",
+        "Home",
+        "Home",
+        "",
+        "Renew Kilian's passport. | Dropped per Kay on 2026-08-19; replaced by KA + Kay passport paperwork task.",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Dropped",
+        "Connect Roberta & Elspeth",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Connect Lily & Suzanne",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
       ],
       [
         "Dropped",
@@ -3103,1516 +3132,6 @@
         "",
         "Moved into daily tab checklist rows instead of recurring To Do task rows.",
         "Weekly Recurring Sat"
-      ]
-    ],
-    "'Week'!A1:O38": [
-      [
-        "WEEK OF Aug 16-22"
-      ],
-      [],
-      [
-        "DAILY FOCUS / THEME"
-      ],
-      [],
-      [],
-      [
-        "",
-        "SUNDAY \u00b7 Aug 16",
-        "",
-        "MONDAY \u00b7 Aug 17",
-        "",
-        "TUESDAY \u00b7 Aug 18",
-        "",
-        "WEDNESDAY \u00b7 Aug 19",
-        "",
-        "THURSDAY \u00b7 Aug 20",
-        "",
-        "FRIDAY \u00b7 Aug 21",
-        "",
-        "SATURDAY \u00b7 Aug 22"
-      ],
-      [],
-      [
-        "",
-        false,
-        "Add Kay food staples to Sunday grocery run",
-        false,
-        "Reach out to organizer of Art Oct conference",
-        false,
-        "Pull Megan pre-LOI prep meeting notes",
-        false,
-        "Prepare high-level seller data ask draft",
-        false,
-        "Narrow/edit must-have diligence questions to top 5",
-        false,
-        "Create travel plans for July in Paris/France next year",
-        false,
-        "Buy gift for baby Ruby"
-      ],
-      [
-        "",
-        false,
-        "Draft/schedule Greg thank-you and insurance contacts follow-up",
-        false,
-        "Call IRS to confirm Form 8822-B address update",
-        false,
-        "Order more business cards and change title to founder",
-        false,
-        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
-        false,
-        "Fax W2 to NYS",
-        false,
-        "Look into GLP1",
-        false
-      ],
-      [
-        "",
-        false,
-        "Weekend prep: prepare for a possible Sidney Garber meeting next week if he responds.",
-        false,
-        "Send new email outreach on dashboard (3 companies)",
-        false,
-        "Email Melissa to assist with BK Growth contact and file folders",
-        false,
-        "Review website direction: light lookbook-style G&B page for seller/investor credibility",
-        false,
-        "Pay One Hanover Square rent",
-        false,
-        "Review Kai Grey Ventures renewal",
-        false
-      ],
-      [
-        "",
-        false,
-        "Buy new backpacks, water bottles, and clothes for the kids",
-        false,
-        "Visit store carrying jewelry line to see product and merchandising in person",
-        false,
-        "Reconnect with Levi on prior art storage path",
-        false,
-        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
-        false,
-        "Outreach Work: seller / broker / investor / analyst outreach block",
-        false,
-        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar",
-        false
-      ],
-      [
-        "",
-        false,
-        "Create weekly schedule",
-        false,
-        "Process payroll",
-        false,
-        "Circle back with Paul on art storage conversation",
-        false,
-        "Get Real Pigeons from the library",
-        false,
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
-        false,
-        "Submit new PSLF form",
-        false
-      ],
-      [
-        "",
-        false,
-        "Confirm LiveOak payroll transfer coverage",
-        false,
-        "Process conference registrations",
-        false,
-        "Locate holdco financial model",
-        false,
-        "Niche intel review",
-        false,
-        "Strategy / Research: deck, model, thesis, target discovery, niche work",
-        false,
-        "Create project for French passports",
-        false
-      ],
-      [
-        "",
-        false,
-        "Kids allowance: Sunday $10/week + Friday $10/day through Aug",
-        false,
-        "Outreach Work: seller / broker / investor / analyst outreach block",
-        false,
-        "Call Troy",
-        false,
-        "Outreach Work: seller / broker / investor / analyst outreach block",
-        false,
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
-        false,
-        "Renew kids' work permits",
-        false
-      ],
-      [
-        "",
-        false,
-        "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
-        false,
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
-        false,
-        "Text Sarah Finders Fee document",
-        false,
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
-        false,
-        "",
-        false,
-        "Renew Kilian's passport",
-        false
-      ],
-      [
-        "",
-        false,
-        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions",
-        false,
-        "Strategy / Research: deck, model, thesis, target discovery, niche work",
-        false,
-        "Outreach Work: seller / broker / investor / analyst outreach block",
-        false,
-        "Strategy / Research: deck, model, thesis, target discovery, niche work",
-        false,
-        "",
-        false,
-        "Pull contact info and prepare kids modeling submissions to 5 referred agencies",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
-        false,
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
-        false,
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
-        false,
-        "",
-        false,
-        "Pay RSM",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Strategy / Research: deck, model, thesis, target discovery, niche work",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Set up Claude workflow for Friday: slides + website aesthetics",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Call IRS/government to confirm address change",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Watch SLD video",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning.",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Weekly review \u2014 system health, M&A activities, budget",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Check NYC Housing Connect for new Manhattan lotteries",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Personal Finance / Wealth Monitor",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Nonprofit Operations",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Family Admin",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Systems / Website / G&B Housekeeping",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [],
-      [
-        "",
-        "notes \u00b7 ideas \u00b7 jot",
-        "",
-        "notes \u00b7 ideas \u00b7 jot",
-        "",
-        "notes \u00b7 ideas \u00b7 jot",
-        "",
-        "notes \u00b7 ideas \u00b7 jot",
-        "",
-        "notes \u00b7 ideas \u00b7 jot",
-        "",
-        "notes \u00b7 ideas \u00b7 jot",
-        "",
-        "notes \u00b7 ideas \u00b7 jot"
-      ]
-    ],
-    "'Sun'!A21:E70": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Mon'!A21:E70": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Tue'!A21:E70": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Wed'!A21:E70": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Thu'!A21:E70": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Fri'!A21:E70": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Sat'!A21:E70": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
       ]
     ]
   }

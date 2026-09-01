@@ -586,8 +586,23 @@
     ],
     "nextPageToken": ""
   },
-  "generated_at": "2026-09-01T16:27:14+00:00",
+  "generated_at": "2026-09-01T16:35:10+00:00",
   "inbound": [
+    {
+      "candidate_reason": null,
+      "date": "2026-09-01 12:28",
+      "from": "Peter Lang <peter.lang@digitalagencybusiness.com>",
+      "id": "1a05dcd21752733c",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_PERSONAL",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Just checking you caught this"
+    },
     {
       "candidate_reason": null,
       "date": "2026-09-01 11:02",

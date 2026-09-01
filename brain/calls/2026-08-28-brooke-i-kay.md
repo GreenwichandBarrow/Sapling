@@ -2,50 +2,47 @@
 schema_version: 1.1.0
 date: 2026-08-28
 type: call
-call_id: "c3f67b5b-1254-4d8f-877c-0a00939ee52c"
+call_id: 9ab1d36d-378f-5ddc-a1a0-7203d7efd146
 source: granola
 classification_type: client
 people: ["[[entities/kay-schneider]]", "[[entities/brooke-garber-neidich]]"]
-companies: ["[[entities/sidney-garber]]"]
-tags:
-  - date/2026-08-28
-  - call
-  - client/sidney-garber
-  - person/kay-schneider
-  - person/brooke-garber-neidich
-  - company/sidney-garber
-  - source/granola
-  - topic/jewelry
-  - topic/loi
-  - topic/inventory
-  - signal/working-capital-pressure
-  - signal/next-step-needed
+companies: ["[[entities/greenwich-and-barrow]]"]
+tags: [date/2026-08-28, call, client/greenwich-and-barrow, person/kay-schneider, person/brooke-garber-neidich, company/greenwich-and-barrow, topic/loi, topic/inventory, signal/concern-high, signal/next-step]
 granola_link: https://notes.granola.ai/d/9ad6563f-c783-478c-98d6-6defae2e3d38
 ---
 
 # Brooke I Kay
 
 **Date:** 2026-08-28
-**Attendees:** Kay Schneider; Brooke Garber Neidich
+**Attendees:** Kay Schneider, Brooke Garber-Neidich
+
+---
 
 ## Notes
 
-- Granola summary: see the linked transcript and analysis docs.
-- Analysis doc: https://docs.google.com/document/d/11nxFw5AwJeEU6Xvhupb-cHYJsWM14Ern9qNPfvmhVY8/edit
-- Transcript doc: https://docs.google.com/document/d/1eoiIbQwVtjstL6Hipva9BPJeFiRPKPVupQHEZx4i3sg/edit
-- Granola source: https://notes.granola.ai/d/9ad6563f-c783-478c-98d6-6defae2e3d38
+- The call focused on a first-pass LOI and the mechanics of a cash-free, debt-free acquisition.
+- Kay walked through deal value, cash treatment, working capital assumptions, seller note structure, and a proposed equity rollover.
+- The biggest diligence theme was inventory valuation and how the inventory would transfer at close.
+- They also discussed retail and wholesale agreements, manufacturing contracts, lease exposure, financial review, and due diligence sequencing.
+- Brooke planned to review the LOI with her husband before coming back with feedback.
+
+---
 
 ## AI Analysis
 
 ### Action Items
-- Reconnect next week after Brooke’s husband reviews the LOI.
-- Request clearer inventory valuation support before the next diligence pass.
-- Review the Gina report once Brooke sends it.
+
+- Brooke to review the LOI with her husband and share feedback.
+- Brooke to send Kay Gina's year-end report.
+- Reconnect next week to continue the LOI discussion.
 
 ### Signals
-- Working capital and inventory mechanics are the real diligence bottleneck.
-- Seller note / rollover terms are part of the trust structure, not just price.
-- Operational artifacts are useful when they are concrete and specific.
+
+- The business appears to have strong gross margins and meaningful brand value.
+- Inventory valuation and transfer mechanics remain a central diligence risk.
+- Contract coverage is incomplete, including manufacturing contracts.
+- Lease and office/showroom exposure should be clarified early.
+- Kay and Brooke both seem open to continuing the process with more detailed follow-up.
 
 ---
 *Auto-classified by Call Classifier*

@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "generated_at": "2026-08-07T12:45:54.611655Z",
+  "generated_at": "2026-09-01T15:02:27.632982Z",
   "search_start": "2025-02-01",
   "notes": "Durable source/event ledger for M&A dashboard plumbing. Attio snapshot is current state only; this file tracks cumulative stage events and source attribution. Backfill gaps should be resolved by Good Morning/pipeline-manager, not guessed in the dashboard.",
   "records": [
@@ -31,6 +31,19 @@
         "brain/context/attio-pipeline-snapshot.json"
       ],
       "closed_not_proceeding_date": "2026-07-10"
+    },
+    {
+      "company": "EPG",
+      "current_stage": "Financials Received",
+      "source": "unknown",
+      "source_label": "Unknown / needs source map",
+      "source_detail": "Source not yet mapped.",
+      "source_confidence": "needs_review",
+      "evidence": [
+        "brain/context/attio-pipeline-snapshot.json"
+      ],
+      "attio_record_id": "dc601f86-5f4d-41a1-bbc7-a5045a165561",
+      "financials_received_date": "2026-08-12"
     },
     {
       "company": "Fox Machinery",

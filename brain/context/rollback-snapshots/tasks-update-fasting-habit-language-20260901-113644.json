@@ -1,0 +1,455 @@
+{
+  "verb": "update-fasting-habit-language",
+  "timestamp": "20260901-113644",
+  "sheet_id": "12dvGVZXYImCxF820pgVEXvAdwpm38i5SqzE3mn3rsFI",
+  "ranges": {
+    "'Sun'!B5:B14": [
+      [
+        "Sleep 8h"
+      ],
+      [
+        "Water + hygiene"
+      ],
+      [
+        "Headspace"
+      ],
+      [
+        "Mobility sequence"
+      ],
+      [
+        "Journal"
+      ],
+      [
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast"
+      ],
+      [
+        "Breakfast: latte, then protein probiotic shake"
+      ],
+      [
+        "Lunch: yogurt/cottage cheese parfait"
+      ],
+      [
+        "Snack: apple + peanut butter/cheese"
+      ],
+      [
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat"
+      ]
+    ],
+    "'Sun'!D5:D14": [
+      [
+        "Matcha cutoff 2p"
+      ],
+      [
+        "10K steps"
+      ],
+      [
+        "Exercise"
+      ],
+      [
+        "Multivitamin"
+      ],
+      [
+        "Omega-3"
+      ],
+      [
+        "Curcumin"
+      ],
+      [
+        "Urolithin A"
+      ],
+      [
+        "Magnesium"
+      ],
+      [
+        "Eating cutoff 7:30p"
+      ],
+      [
+        "Screen cutoff 9:30p"
+      ]
+    ],
+    "'Mon'!B5:B14": [
+      [
+        "Sleep 8h"
+      ],
+      [
+        "Water + hygiene"
+      ],
+      [
+        "Headspace"
+      ],
+      [
+        "Mobility sequence"
+      ],
+      [
+        "Journal"
+      ],
+      [
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast"
+      ],
+      [
+        "Breakfast: latte, then protein probiotic shake"
+      ],
+      [
+        "Lunch: yogurt/cottage cheese parfait"
+      ],
+      [
+        "Snack: apple + peanut butter/cheese"
+      ],
+      [
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat"
+      ]
+    ],
+    "'Mon'!D5:D14": [
+      [
+        "Matcha cutoff 2p"
+      ],
+      [
+        "10K steps"
+      ],
+      [
+        "Exercise"
+      ],
+      [
+        "Multivitamin"
+      ],
+      [
+        "Omega-3"
+      ],
+      [
+        "Curcumin"
+      ],
+      [
+        "Urolithin A"
+      ],
+      [
+        "Magnesium"
+      ],
+      [
+        "Eating cutoff 7:30p"
+      ],
+      [
+        "Screen cutoff 9:30p"
+      ]
+    ],
+    "'Tue'!B5:B14": [
+      [
+        "Sleep 8h"
+      ],
+      [
+        "Water + hygiene"
+      ],
+      [
+        "Headspace"
+      ],
+      [
+        "Mobility sequence"
+      ],
+      [
+        "Journal"
+      ],
+      [
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast"
+      ],
+      [
+        "Breakfast: latte, then protein probiotic shake"
+      ],
+      [
+        "Lunch: yogurt/cottage cheese parfait"
+      ],
+      [
+        "Snack: apple + peanut butter/cheese"
+      ],
+      [
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat"
+      ]
+    ],
+    "'Tue'!D5:D14": [
+      [
+        "Matcha cutoff 2p"
+      ],
+      [
+        "10K steps"
+      ],
+      [
+        "Exercise"
+      ],
+      [
+        "Multivitamin"
+      ],
+      [
+        "Omega-3"
+      ],
+      [
+        "Curcumin"
+      ],
+      [
+        "Urolithin A"
+      ],
+      [
+        "Magnesium"
+      ],
+      [
+        "Eating cutoff 7:30p"
+      ],
+      [
+        "Screen cutoff 9:30p"
+      ]
+    ],
+    "'Wed'!B5:B14": [
+      [
+        "Sleep 8h"
+      ],
+      [
+        "Water + hygiene"
+      ],
+      [
+        "Headspace"
+      ],
+      [
+        "Mobility sequence"
+      ],
+      [
+        "Journal"
+      ],
+      [
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast"
+      ],
+      [
+        "Breakfast: latte, then protein probiotic shake"
+      ],
+      [
+        "Lunch: yogurt/cottage cheese parfait"
+      ],
+      [
+        "Snack: apple + peanut butter/cheese"
+      ],
+      [
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat"
+      ]
+    ],
+    "'Wed'!D5:D14": [
+      [
+        "Matcha cutoff 2p"
+      ],
+      [
+        "10K steps"
+      ],
+      [
+        "Exercise"
+      ],
+      [
+        "Multivitamin"
+      ],
+      [
+        "Omega-3"
+      ],
+      [
+        "Curcumin"
+      ],
+      [
+        "Urolithin A"
+      ],
+      [
+        "Magnesium"
+      ],
+      [
+        "Eating cutoff 7:30p"
+      ],
+      [
+        "Screen cutoff 9:30p"
+      ]
+    ],
+    "'Thu'!B5:B14": [
+      [
+        "Sleep 8h"
+      ],
+      [
+        "Water + hygiene"
+      ],
+      [
+        "Headspace"
+      ],
+      [
+        "Mobility sequence"
+      ],
+      [
+        "Journal"
+      ],
+      [
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast"
+      ],
+      [
+        "Breakfast: latte, then protein probiotic shake"
+      ],
+      [
+        "Lunch: yogurt/cottage cheese parfait"
+      ],
+      [
+        "Snack: apple + peanut butter/cheese"
+      ],
+      [
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat"
+      ]
+    ],
+    "'Thu'!D5:D14": [
+      [
+        "Matcha cutoff 2p"
+      ],
+      [
+        "10K steps"
+      ],
+      [
+        "Exercise"
+      ],
+      [
+        "Multivitamin"
+      ],
+      [
+        "Omega-3"
+      ],
+      [
+        "Curcumin"
+      ],
+      [
+        "Urolithin A"
+      ],
+      [
+        "Magnesium"
+      ],
+      [
+        "Eating cutoff 7:30p"
+      ],
+      [
+        "Screen cutoff 9:30p"
+      ]
+    ],
+    "'Fri'!B5:B14": [
+      [
+        "Sleep 8h"
+      ],
+      [
+        "Water + hygiene"
+      ],
+      [
+        "Headspace"
+      ],
+      [
+        "Mobility sequence"
+      ],
+      [
+        "Journal"
+      ],
+      [
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast"
+      ],
+      [
+        "Breakfast: latte, then protein probiotic shake"
+      ],
+      [
+        "Lunch: yogurt/cottage cheese parfait"
+      ],
+      [
+        "Snack: apple + peanut butter/cheese"
+      ],
+      [
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat"
+      ]
+    ],
+    "'Fri'!D5:D14": [
+      [
+        "Matcha cutoff 2p"
+      ],
+      [
+        "10K steps"
+      ],
+      [
+        "Exercise"
+      ],
+      [
+        "Multivitamin"
+      ],
+      [
+        "Omega-3"
+      ],
+      [
+        "Curcumin"
+      ],
+      [
+        "Urolithin A"
+      ],
+      [
+        "Magnesium"
+      ],
+      [
+        "Eating cutoff 7:30p"
+      ],
+      [
+        "Screen cutoff 9:30p"
+      ]
+    ],
+    "'Sat'!B5:B14": [
+      [
+        "Sleep 8h"
+      ],
+      [
+        "Water + hygiene"
+      ],
+      [
+        "Headspace"
+      ],
+      [
+        "Mobility sequence"
+      ],
+      [
+        "Journal"
+      ],
+      [
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast"
+      ],
+      [
+        "Breakfast: latte, then protein probiotic shake"
+      ],
+      [
+        "Lunch: yogurt/cottage cheese parfait"
+      ],
+      [
+        "Snack: apple + peanut butter/cheese"
+      ],
+      [
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat"
+      ]
+    ],
+    "'Sat'!D5:D14": [
+      [
+        "Matcha cutoff 2p"
+      ],
+      [
+        "10K steps"
+      ],
+      [
+        "Exercise"
+      ],
+      [
+        "Multivitamin"
+      ],
+      [
+        "Omega-3"
+      ],
+      [
+        "Curcumin"
+      ],
+      [
+        "Urolithin A"
+      ],
+      [
+        "Magnesium"
+      ],
+      [
+        "Eating cutoff 7:30p"
+      ],
+      [
+        "Screen cutoff 9:30p"
+      ]
+    ]
+  }
+}

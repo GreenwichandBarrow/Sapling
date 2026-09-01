@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-09-01T00:00:54Z",
+  "fetched_at": "2026-09-01T16:25:34Z",
   "list_id": "0cf5dd92-4a97-4c6b-9f6c-1e64c81bfc7b",
   "list_name": "Active Deals \u2013 Owners",
   "stages": [
@@ -36,19 +36,8 @@
     {
       "record_id": "68293dcd-c897-4803-92dd-3f52f96ef76c",
       "company": "Sidney Garber",
-      "stage": "Financials Received",
-      "stage_since": "2026-07-15T01:50:50.486000000Z",
-      "location": null,
-      "employee_range": null,
-      "arr_bucket": null,
-      "last_interaction": null,
-      "category": null
-    },
-    {
-      "record_id": "dc601f86-5f4d-41a1-bbc7-a5045a165561",
-      "company": "EPG",
-      "stage": "Financials Received",
-      "stage_since": "2026-08-12T13:35:49.336704769Z",
+      "stage": "Submitted LOI",
+      "stage_since": "2026-09-01T16:25:21.066600000Z",
       "location": null,
       "employee_range": null,
       "arr_bucket": null,
@@ -56,9 +45,9 @@
       "category": null
     }
   ],
-  "closed_count": 157,
+  "closed_count": 158,
   "closed_count_post_nda": 9,
-  "closed_count_pre_nda": 148,
+  "closed_count_pre_nda": 149,
   "closed_recent": [
     {
       "record_id": "1c39e7e8-06ef-4bc0-9d1f-5a82527ff023",

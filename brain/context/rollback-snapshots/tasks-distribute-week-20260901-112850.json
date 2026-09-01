@@ -1,15 +1,13 @@
 {
   "verb": "distribute-week",
-  "timestamp": "20260809-104232",
-  "sheet_id": "1U1GN9xcg18S-o4mA-b3QZ3Sr-xUvhHDn2G23pLI1rmA",
+  "timestamp": "20260901-112850",
+  "sheet_id": "12dvGVZXYImCxF820pgVEXvAdwpm38i5SqzE3mn3rsFI",
   "ranges": {
-    "'Sun'!A1:E78": [
+    "'Sun'!A1:E82": [
       [
-        "SUNDAY \u00b7 Aug 9"
+        "SUNDAY \u00b7 Aug 30"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -19,7 +17,7 @@
         "SUPPLEMENTAL"
       ],
       [
-        true,
+        false,
         "Sleep 8h",
         false,
         "Matcha cutoff 2p",
@@ -33,14 +31,14 @@
         false
       ],
       [
-        true,
+        false,
         "Headspace",
         false,
         "Exercise",
         false
       ],
       [
-        true,
+        false,
         "Mobility sequence",
         false,
         "Multivitamin",
@@ -55,35 +53,43 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
+      [],
+      [
+        "DAILY FOCUS"
+      ],
+      [
+        false
+      ],
+      [],
       [],
       [
         "\u2713",
@@ -246,13 +252,11 @@
         "NOTES"
       ]
     ],
-    "'Mon'!A1:E78": [
+    "'Mon'!A1:E82": [
       [
-        "MONDAY \u00b7 Aug 10"
+        "MONDAY \u00b7 Aug 31"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -298,35 +302,43 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
+      [],
+      [
+        "DAILY FOCUS"
+      ],
+      [
+        false
+      ],
+      [],
       [],
       [
         "\u2713",
@@ -489,13 +501,11 @@
         "NOTES"
       ]
     ],
-    "'Tue'!A1:E78": [
+    "'Tue'!A1:E82": [
       [
-        "TUESDAY \u00b7 Aug 11"
+        "TUESDAY \u00b7 Sep 1"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -541,35 +551,43 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
+      [],
+      [
+        "DAILY FOCUS"
+      ],
+      [
+        false
+      ],
+      [],
       [],
       [
         "\u2713",
@@ -732,13 +750,11 @@
         "NOTES"
       ]
     ],
-    "'Wed'!A1:E78": [
+    "'Wed'!A1:E82": [
       [
-        "WEDNESDAY \u00b7 Aug 12"
+        "WEDNESDAY \u00b7 Sep 2"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -784,35 +800,43 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
+      [],
+      [
+        "DAILY FOCUS"
+      ],
+      [
+        false
+      ],
+      [],
       [],
       [
         "\u2713",
@@ -975,13 +999,11 @@
         "NOTES"
       ]
     ],
-    "'Thu'!A1:E78": [
+    "'Thu'!A1:E82": [
       [
-        "THURSDAY \u00b7 Aug 13"
+        "THURSDAY \u00b7 Sep 3"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -1027,35 +1049,43 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
+      [],
+      [
+        "DAILY FOCUS"
+      ],
+      [
+        false
+      ],
+      [],
       [],
       [
         "\u2713",
@@ -1218,13 +1248,11 @@
         "NOTES"
       ]
     ],
-    "'Fri'!A1:E78": [
+    "'Fri'!A1:E82": [
       [
-        "FRIDAY \u00b7 Aug 14"
+        "FRIDAY \u00b7 Sep 4"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -1270,35 +1298,43 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
+      [],
+      [
+        "DAILY FOCUS"
+      ],
+      [
+        false
+      ],
+      [],
       [],
       [
         "\u2713",
@@ -1461,13 +1497,11 @@
         "NOTES"
       ]
     ],
-    "'Sat'!A1:E78": [
+    "'Sat'!A1:E82": [
       [
-        "SATURDAY \u00b7 Aug 15"
+        "SATURDAY \u00b7 Sep 5"
       ],
-      [
-        "DAILY FOCUS / THEME"
-      ],
+      [],
       [],
       [
         "HABITS",
@@ -1513,35 +1547,43 @@
       ],
       [
         false,
-        "14h fast: 7:30p-9:30a",
+        "8:30am latte / 8:00pm kitchen closed: 12.5h fast",
         false,
         "Curcumin",
         "GOAL"
       ],
       [
         false,
-        "ACV turmeric tonic",
+        "Breakfast: latte, then protein probiotic shake",
         false,
         "Urolithin A"
       ],
       [
         false,
-        "Protein/probiotic shake",
+        "Lunch: yogurt/cottage cheese parfait",
         false,
         "Magnesium"
       ],
       [
         false,
-        "Coffee cutoff 11a",
+        "Snack: apple + peanut butter/cheese",
         false,
         "Eating cutoff 7:30p"
       ],
       [
         false,
-        "Lunch yogurt parfait",
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat",
         false,
         "Screen cutoff 9:30p"
       ],
+      [],
+      [
+        "DAILY FOCUS"
+      ],
+      [
+        false
+      ],
+      [],
       [],
       [
         "\u2713",
@@ -1706,7 +1748,7 @@
     ],
     "'Week'!A1:O38": [
       [
-        "WEEK OF Aug 9-15"
+        "WEEK OF Aug 30-Sep 5"
       ],
       [],
       [
@@ -1716,49 +1758,50 @@
       [],
       [
         "",
-        "SUNDAY \u00b7 Aug 9",
+        "SUNDAY \u00b7 Aug 30",
         "",
-        "MONDAY \u00b7 Aug 10",
+        "MONDAY \u00b7 Aug 31",
         "",
-        "TUESDAY \u00b7 Aug 11",
+        "TUESDAY \u00b7 Sep 1",
         "",
-        "WEDNESDAY \u00b7 Aug 12",
+        "WEDNESDAY \u00b7 Sep 2",
         "",
-        "THURSDAY \u00b7 Aug 13",
+        "THURSDAY \u00b7 Sep 3",
         "",
-        "FRIDAY \u00b7 Aug 14",
+        "FRIDAY \u00b7 Sep 4",
         "",
-        "SATURDAY \u00b7 Aug 15"
+        "SATURDAY \u00b7 Sep 5"
       ],
       [],
       [
         "",
         false,
-        "Add Kay food staples to Sunday grocery run",
+        "Put fuel & recovery lists to refrigerator",
         false,
-        "Reach out to organizer of Art Oct conference",
+        "Email Jackie Hirsh: ask whether inventory is included in LOI offer or on top",
         false,
-        "Pull Megan pre-LOI prep meeting notes",
+        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar",
         false,
-        "Prepare high-level seller data ask draft",
+        "Reconnect with Andrew Freiman re: Chenmark intro",
         false,
-        "Narrow/edit must-have diligence questions to top 5",
+        "",
         false,
         "Create travel plans for July in Paris/France next year",
-        false
+        false,
+        "Buy gift for baby Ruby"
       ],
       [
         "",
         false,
         "",
         false,
+        "Follow up on Boulay emails to schedule time",
+        false,
         "Call IRS to confirm Form 8822-B address update",
         false,
-        "Order more business cards and change title to founder",
+        "Change login info for operations folder + operations Gmail account",
         false,
-        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue",
-        false,
-        "Outreach Work: seller / broker / investor / analyst outreach block",
+        "",
         false,
         "Look into GLP1",
         false
@@ -1766,33 +1809,17 @@
       [
         "",
         false,
-        "Systems / Sourcing: set up better Axial target discovery/filtering.",
+        "",
         false,
-        "Send new email outreach on dashboard (3 companies)",
+        "",
         false,
         "Email Melissa to assist with BK Growth contact and file folders",
         false,
-        "Review website direction: light lookbook-style G&B page for seller/investor credibility",
+        "Contact the asset backed lender melissa mentioned",
         false,
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
-        false,
-        "Review Kai Grey Ventures renewal",
-        false
-      ],
-      [
         "",
         false,
-        "Weekend prep: prepare for a possible Sidney Garber meeting next week if he responds.",
-        false,
-        "Visit store carrying jewelry line to see product and merchandising in person",
-        false,
-        "Reconnect with Levi on prior art storage path",
-        false,
-        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options",
-        false,
-        "Strategy / Research: deck, model, thesis, target discovery, niche work",
-        false,
-        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar",
+        "Review Kai Grey Ventures renewal",
         false
       ],
       [
@@ -1802,11 +1829,11 @@
         false,
         "Process payroll",
         false,
-        "Circle back with Paul on art storage conversation",
+        "Locate holdco financial model",
         false,
         "Niche intel review",
         false,
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        "",
         false,
         "Submit new PSLF form",
         false
@@ -1818,9 +1845,9 @@
         false,
         "Process conference registrations",
         false,
-        "Take truck for oil change",
+        "Complete Quarterly Update",
         false,
-        "Outreach Work: seller / broker / investor / analyst outreach block",
+        "",
         false,
         "",
         false,
@@ -1830,13 +1857,13 @@
       [
         "",
         false,
-        "Kids allowance: Sunday $10/week + Friday $10/day through Aug",
+        "Schedule exercise classes for the week",
         false,
-        "Outreach Work: seller / broker / investor / analyst outreach block",
+        "",
         false,
-        "Outreach Work: seller / broker / investor / analyst outreach block",
+        "Live Deal / Sidney Garber: reach out to Brooke about LOI updates",
         false,
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
+        "",
         false,
         "",
         false,
@@ -1846,107 +1873,11 @@
       [
         "",
         false,
-        "Set weekly North Star from 60-day LOI sprint and One-Year Plan",
-        false,
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
-        false,
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work",
-        false,
-        "Strategy / Research: deck, model, thesis, target discovery, niche work",
-        false,
-        "",
-        false,
-        "Renew Kilian's passport",
-        false
-      ],
-      [
-        "",
-        false,
-        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions",
-        false,
-        "Strategy / Research: deck, model, thesis, target discovery, niche work",
-        false,
-        "Strategy / Research: deck, model, thesis, target discovery, niche work",
-        false,
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
         "",
         false,
         "",
         false,
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
-        false,
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Pay RSM",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Set up Claude workflow for Friday: slides + website aesthetics",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Call IRS/government to confirm address change",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
+        "Live Deal / Sidney Garber: work through Camilla | Kay TB agenda action items",
         false,
         "",
         false,
@@ -1962,7 +1893,39 @@
         false,
         "",
         false,
+        "DealsX / Pipeline Support: confirm Camilla is receiving interested-lead emails and channel updates",
+        false,
         "",
+        false,
+        "",
+        false,
+        "Complete paperwork for my passport renewal",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Live Deal / Diligence: build pre- and post-LOI diligence list modeled on Acumen",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Live Deal / SIM: flesh out growth and competition sections",
         false,
         "",
         false,
@@ -1978,7 +1941,7 @@
         false,
         "",
         false,
-        "",
+        "Live Deal / Model: track rolling 12-month file, salary detail, and org chart",
         false,
         "",
         false,
@@ -1994,13 +1957,61 @@
         false,
         "",
         false,
+        "Live Deal / Conviction: separate buyer conviction from capital-side conviction",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
         "",
         false,
         "",
         false,
         "",
         false,
-        "Friday internal/admin review: family admin, finance/admin, website/list cleanup only",
+        "Pipeline: move Sidney Garber to LOI Submitted",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Pipeline: confirm EPG closed / not proceeding",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Review new SLD video",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
         false
       ],
       [
@@ -2016,7 +2027,7 @@
         false,
         "",
         false,
-        "Personal Finance / Wealth Monitor",
+        "",
         false
       ],
       [
@@ -2032,7 +2043,7 @@
         false,
         "",
         false,
-        "Nonprofit Operations",
+        "",
         false
       ],
       [
@@ -2048,7 +2059,7 @@
         false,
         "",
         false,
-        "Family Admin",
+        "",
         false
       ],
       [
@@ -2064,7 +2075,7 @@
         false,
         "",
         false,
-        "Systems / Website / G&B Housekeeping",
+        "",
         false
       ],
       [
@@ -2080,7 +2091,39 @@
         false,
         "",
         false,
-        "8:30 Decision Review: review what moved, what parks, what rolls forward",
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
         false
       ],
       [

@@ -2312,7 +2312,8 @@ def cmd_schedule_from_todo_days(args) -> int:
         if not task or status in {"Completed", "Dropped"}:
             continue
         horizon = str(r[TODO_COL_HORIZON] or "").strip()
-        if _todo_is_recurring(horizon):
+        is_recurring = _todo_is_recurring(horizon)
+        if is_recurring:
             day3 = _recurring_day3(horizon)
             if day3:
                 day_tab = _resolve_day_tab_name(day3)
@@ -2335,12 +2336,17 @@ def cmd_schedule_from_todo_days(args) -> int:
             except SystemExit:
                 skipped.append({"task": task, "day": day_value, "reason": "unrecognized day"})
                 continue
-            if task not in day_assigned[day_tab]:
+            if status == STATUS_ONGOING:
+                if task not in recurring_baseline[day_tab]:
+                    recurring_baseline[day_tab].append(task)
+            elif task not in day_assigned[day_tab]:
                 day_assigned[day_tab].append(task)
 
     planned: dict[str, list[str]] = {d: [] for d in DAY_TAB_NAMES}
     for day_tab in DAY_TAB_NAMES:
         planned[day_tab].extend(day_assigned[day_tab])
+        if recurring_baseline[day_tab] and len(planned[day_tab]) < TOP_PRIORITY_SLOT_COUNT:
+            planned[day_tab].extend([""] * (TOP_PRIORITY_SLOT_COUNT - len(planned[day_tab])))
         for task in recurring_baseline[day_tab]:
             if task not in planned[day_tab]:
                 planned[day_tab].append(task)

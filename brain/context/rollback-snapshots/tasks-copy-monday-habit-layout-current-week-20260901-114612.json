@@ -1,0 +1,505 @@
+{
+  "verb": "copy-monday-habit-layout-current-week",
+  "timestamp": "20260901-114612",
+  "sheet_id": "12dvGVZXYImCxF820pgVEXvAdwpm38i5SqzE3mn3rsFI",
+  "ranges": {
+    "'Sun'!B5:B17": [
+      [
+        "Sleep 8h"
+      ],
+      [
+        "Water + hygiene"
+      ],
+      [
+        "Headspace"
+      ],
+      [
+        "Mobility sequence"
+      ],
+      [
+        "Journal"
+      ],
+      [
+        "8:30am latte / 7:45pm kitchen closed: 12h45m fast"
+      ],
+      [
+        "Breakfast: latte, then protein probiotic shake"
+      ],
+      [
+        "Lunch: yogurt/cottage cheese parfait"
+      ],
+      [
+        "Snack: apple + peanut butter/cheese"
+      ],
+      [
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat"
+      ]
+    ],
+    "'Sun'!D5:D17": [
+      [
+        "Matcha cutoff 2p"
+      ],
+      [
+        "10K steps"
+      ],
+      [
+        "Exercise"
+      ],
+      [
+        "Multivitamin"
+      ],
+      [
+        "Omega-3"
+      ],
+      [
+        "Curcumin"
+      ],
+      [
+        "Urolithin A"
+      ],
+      [
+        "Magnesium"
+      ],
+      [
+        "Eating cutoff 7:45p"
+      ],
+      [
+        "Screen cutoff 9:30p"
+      ]
+    ],
+    "'Sun'!F5:F17": [
+      [
+        "Sauna"
+      ],
+      [
+        "Glutamine"
+      ],
+      [
+        "Ketones"
+      ],
+      [
+        "Red light"
+      ],
+      [],
+      [],
+      [
+        "Protein 120g + Fiber 25g"
+      ]
+    ],
+    "'Tue'!B5:B17": [
+      [
+        "Sleep 8h"
+      ],
+      [
+        "Water + hygiene"
+      ],
+      [
+        "Headspace"
+      ],
+      [
+        "Mobility sequence"
+      ],
+      [
+        "Journal"
+      ],
+      [
+        "8:30am latte / 7:45pm kitchen closed: 12h45m fast"
+      ],
+      [
+        "Breakfast: latte, then protein probiotic shake"
+      ],
+      [
+        "Lunch: yogurt/cottage cheese parfait"
+      ],
+      [
+        "Snack: apple + peanut butter/cheese"
+      ],
+      [
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat"
+      ]
+    ],
+    "'Tue'!D5:D17": [
+      [
+        "Matcha cutoff 2p"
+      ],
+      [
+        "10K steps"
+      ],
+      [
+        "Exercise"
+      ],
+      [
+        "Multivitamin"
+      ],
+      [
+        "Omega-3"
+      ],
+      [
+        "Curcumin"
+      ],
+      [
+        "Urolithin A"
+      ],
+      [
+        "Magnesium"
+      ],
+      [
+        "Eating cutoff 7:45p"
+      ],
+      [
+        "Screen cutoff 9:30p"
+      ]
+    ],
+    "'Tue'!F5:F17": [
+      [
+        "Sauna"
+      ],
+      [
+        "Glutamine"
+      ],
+      [
+        "Ketones"
+      ],
+      [
+        "Red light"
+      ],
+      [],
+      [],
+      [
+        "Protein 120g + Fiber 25g"
+      ]
+    ],
+    "'Wed'!B5:B17": [
+      [
+        "Sleep 8h"
+      ],
+      [
+        "Water + hygiene"
+      ],
+      [
+        "Headspace"
+      ],
+      [
+        "Mobility sequence"
+      ],
+      [
+        "Journal"
+      ],
+      [
+        "8:30am latte / 7:45pm kitchen closed: 12h45m fast"
+      ],
+      [
+        "Breakfast: latte, then protein probiotic shake"
+      ],
+      [
+        "Lunch: yogurt/cottage cheese parfait"
+      ],
+      [
+        "Snack: apple + peanut butter/cheese"
+      ],
+      [
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat"
+      ]
+    ],
+    "'Wed'!D5:D17": [
+      [
+        "Matcha cutoff 2p"
+      ],
+      [
+        "10K steps"
+      ],
+      [
+        "Exercise"
+      ],
+      [
+        "Multivitamin"
+      ],
+      [
+        "Omega-3"
+      ],
+      [
+        "Curcumin"
+      ],
+      [
+        "Urolithin A"
+      ],
+      [
+        "Magnesium"
+      ],
+      [
+        "Eating cutoff 7:45p"
+      ],
+      [
+        "Screen cutoff 9:30p"
+      ]
+    ],
+    "'Wed'!F5:F17": [
+      [
+        "Sauna"
+      ],
+      [
+        "Glutamine"
+      ],
+      [
+        "Ketones"
+      ],
+      [
+        "Red light"
+      ],
+      [],
+      [],
+      [
+        "Protein 120g + Fiber 25g"
+      ]
+    ],
+    "'Thu'!B5:B17": [
+      [
+        "Sleep 8h"
+      ],
+      [
+        "Water + hygiene"
+      ],
+      [
+        "Headspace"
+      ],
+      [
+        "Mobility sequence"
+      ],
+      [
+        "Journal"
+      ],
+      [
+        "8:30am latte / 7:45pm kitchen closed: 12h45m fast"
+      ],
+      [
+        "Breakfast: latte, then protein probiotic shake"
+      ],
+      [
+        "Lunch: yogurt/cottage cheese parfait"
+      ],
+      [
+        "Snack: apple + peanut butter/cheese"
+      ],
+      [
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat"
+      ]
+    ],
+    "'Thu'!D5:D17": [
+      [
+        "Matcha cutoff 2p"
+      ],
+      [
+        "10K steps"
+      ],
+      [
+        "Exercise"
+      ],
+      [
+        "Multivitamin"
+      ],
+      [
+        "Omega-3"
+      ],
+      [
+        "Curcumin"
+      ],
+      [
+        "Urolithin A"
+      ],
+      [
+        "Magnesium"
+      ],
+      [
+        "Eating cutoff 7:45p"
+      ],
+      [
+        "Screen cutoff 9:30p"
+      ]
+    ],
+    "'Thu'!F5:F17": [
+      [
+        "Sauna"
+      ],
+      [
+        "Glutamine"
+      ],
+      [
+        "Ketones"
+      ],
+      [
+        "Red light"
+      ],
+      [],
+      [],
+      [
+        "Protein 120g + Fiber 25g"
+      ]
+    ],
+    "'Fri'!B5:B17": [
+      [
+        "Sleep 8h"
+      ],
+      [
+        "Water + hygiene"
+      ],
+      [
+        "Headspace"
+      ],
+      [
+        "Mobility sequence"
+      ],
+      [
+        "Journal"
+      ],
+      [
+        "8:30am latte / 7:45pm kitchen closed: 12h45m fast"
+      ],
+      [
+        "Breakfast: latte, then protein probiotic shake"
+      ],
+      [
+        "Lunch: yogurt/cottage cheese parfait"
+      ],
+      [
+        "Snack: apple + peanut butter/cheese"
+      ],
+      [
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat"
+      ]
+    ],
+    "'Fri'!D5:D17": [
+      [
+        "Matcha cutoff 2p"
+      ],
+      [
+        "10K steps"
+      ],
+      [
+        "Exercise"
+      ],
+      [
+        "Multivitamin"
+      ],
+      [
+        "Omega-3"
+      ],
+      [
+        "Curcumin"
+      ],
+      [
+        "Urolithin A"
+      ],
+      [
+        "Magnesium"
+      ],
+      [
+        "Eating cutoff 7:45p"
+      ],
+      [
+        "Screen cutoff 9:30p"
+      ]
+    ],
+    "'Fri'!F5:F17": [
+      [
+        "Sauna"
+      ],
+      [
+        "Glutamine"
+      ],
+      [
+        "Ketones"
+      ],
+      [
+        "Red light"
+      ],
+      [],
+      [],
+      [
+        "Protein 120g + Fiber 25g"
+      ]
+    ],
+    "'Sat'!B5:B17": [
+      [
+        "Sleep 8h"
+      ],
+      [
+        "Water + hygiene"
+      ],
+      [
+        "Headspace"
+      ],
+      [
+        "Mobility sequence"
+      ],
+      [
+        "Journal"
+      ],
+      [
+        "8:30am latte / 7:45pm kitchen closed: 12h45m fast"
+      ],
+      [
+        "Breakfast: latte, then protein probiotic shake"
+      ],
+      [
+        "Lunch: yogurt/cottage cheese parfait"
+      ],
+      [
+        "Snack: apple + peanut butter/cheese"
+      ],
+      [
+        "Dinner: protein + rice/beans/lentils + vegetables + healthy fat"
+      ]
+    ],
+    "'Sat'!D5:D17": [
+      [
+        "Matcha cutoff 2p"
+      ],
+      [
+        "10K steps"
+      ],
+      [
+        "Exercise"
+      ],
+      [
+        "Multivitamin"
+      ],
+      [
+        "Omega-3"
+      ],
+      [
+        "Curcumin"
+      ],
+      [
+        "Urolithin A"
+      ],
+      [
+        "Magnesium"
+      ],
+      [
+        "Eating cutoff 7:45p"
+      ],
+      [
+        "Screen cutoff 9:30p"
+      ]
+    ],
+    "'Sat'!F5:F17": [
+      [
+        "Sauna"
+      ],
+      [
+        "Glutamine"
+      ],
+      [
+        "Ketones"
+      ],
+      [
+        "Red light"
+      ],
+      [],
+      [],
+      [
+        "Protein 120g + Fiber 25g"
+      ]
+    ]
+  }
+}

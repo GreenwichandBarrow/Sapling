@@ -586,7 +586,7 @@
     ],
     "nextPageToken": ""
   },
-  "generated_at": "2026-09-01T15:02:51+00:00",
+  "generated_at": "2026-09-01T16:27:14+00:00",
   "inbound": [
     {
       "candidate_reason": null,
@@ -594,7 +594,6 @@
       "from": "NEXT Insurance <support@apintego.zendesk.com>",
       "id": "1a05d7dfc9599f65",
       "labels": [
-        "UNREAD",
         "CATEGORY_UPDATES",
         "INBOX"
       ],
@@ -849,36 +848,6 @@
       "message_count": 1,
       "snippet": "",
       "subject": "AI Tools Transforming Business Buying - Newsletter"
-    },
-    {
-      "candidate_reason": null,
-      "date": "2026-08-30 11:08",
-      "from": "\"Toby's Estate Coffee\" <messenger@messaging.squareup.com>",
-      "id": "1a0533733a411e3b",
-      "labels": [
-        "auto/finance & legal",
-        "UNREAD",
-        "CATEGORY_UPDATES",
-        "INBOX"
-      ],
-      "message_count": 1,
-      "snippet": "",
-      "subject": "Receipt from Toby's Estate Coffee #TPrC"
-    },
-    {
-      "candidate_reason": null,
-      "date": "2026-08-30 11:03",
-      "from": "\"Toby's Estate Coffee\" <messenger@messaging.squareup.com>",
-      "id": "1a053326be5dfaa5",
-      "labels": [
-        "auto/finance & legal",
-        "UNREAD",
-        "CATEGORY_UPDATES",
-        "INBOX"
-      ],
-      "message_count": 1,
-      "snippet": "",
-      "subject": "Receipt from Toby's Estate Coffee #XHyy"
     },
     {
       "candidate_reason": null,

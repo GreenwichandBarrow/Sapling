@@ -1,11 +1,11 @@
 {
-  "date": "2026-09-01",
+  "date": "2026-09-02",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-09-01.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-09-02.md",
   "email_scan_status": "live",
   "deals_found": 0,
   "broker_opportunistic": 1,
-  "near_misses": 2,
+  "near_misses": 1,
   "sources_scanned": 20,
   "sources_covered": {
     "marketplace": 9,
@@ -15,9 +15,6 @@
   "manual_check_sources": [],
   "sources_blocked_verified": 0,
   "sources_blocked_single_attempt": 0,
-  "volume_status": "CRITICAL",
-  "needs_attention": [
-    "critical volume: 0 surfaced matches",
-    "DealsX snapshot is stale; latest cached week ends 2026-05-22"
-  ]
+  "volume_status": "BELOW TARGET",
+  "needs_attention": []
 }

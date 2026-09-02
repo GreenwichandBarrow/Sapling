@@ -1,14 +1,31 @@
 {
-  "blocked": [
-    "source artifact is stale",
-    "compact input artifact is stale"
-  ],
-  "deal_items": 28,
+  "blocked": [],
+  "deal_items": 26,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-09-01T11:03:19.220212-04:00",
-  "follow_through_completed_items": [],
+  "fetched_at": "2026-09-02T06:50:00.856492-04:00",
+  "follow_through_completed_items": [
+    {
+      "bucket": "thank",
+      "completed_at": "2026-09-01",
+      "event": "Clayton I Kay",
+      "person": "Clayton",
+      "sent_at": "2026-09-01 23:09",
+      "sent_subject": "Rent at One Hanover Square",
+      "sent_thread_id": "1a060160a56e6494"
+    }
+  ],
   "follow_through_pending_items": [
+    {
+      "bucket": "eow",
+      "context": "EOW follow-up",
+      "due_date": "2026-06-26",
+      "event": "EOW follow-up requested by Kay",
+      "kay_confirmed_keep": "true",
+      "needs_kay_clarification": "false",
+      "person": "Brooke Neidich",
+      "status": "not drafted"
+    },
     {
       "bucket": "eow",
       "context": "EOW follow-up",
@@ -40,29 +57,30 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-08-31.json",
-  "input_status": "stale",
+  "input_artifact": "brain/context/email-intelligence-input-2026-09-02.json",
+  "input_status": "ok",
   "needs_kay": [
     "1 email-derived task candidate(s)",
-    "28 broker/listing row(s) extracted",
+    "26 broker/listing row(s) extracted",
     "2 prior-day thank-you(s) need approval: Relationship / Call Window; Relationship / Call Window",
-    "3 EOW/follow-up row(s) still active after sent-mail check: Denning; Paul; Greg",
+    "1 email follow-through row(s) auto-completed from sent-mail evidence: Clayton",
+    "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Brooke (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-08-31.md",
-  "source_status": "stale",
+  "source_artifact": "brain/context/email-scan-results-2026-09-02.md",
+  "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 1,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-09-01",
+      "due_date": "2026-09-02",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-08-31",
+      "event_date": "2026-09-01",
       "person": "Relationship / Call Window",
       "sent_at": "",
       "sent_subject": "",
@@ -71,10 +89,10 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-09-01",
+      "due_date": "2026-09-02",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-08-31",
+      "event_date": "2026-09-01",
       "person": "Relationship / Call Window",
       "sent_at": "",
       "sent_subject": "",

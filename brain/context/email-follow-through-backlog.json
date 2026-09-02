@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-01",
+  "updated_at": "2026-09-02",
   "items": [
     {
       "bucket": "thank",
@@ -977,11 +977,19 @@
       "email": "cesachs@datacor.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-07-09",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Clayton I Kay",
       "event_date": "2026-07-08",
-      "calendar_event_id": "39vhlb4v0aunpkc9p11talm6mq"
+      "calendar_event_id": "39vhlb4v0aunpkc9p11talm6mq",
+      "completed_at": "2026-09-01",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 1a060160a56e6494, subject 'Rent at One Hanover Square', sent 2026-09-01 23:09.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "1a060160a56e6494",
+        "subject": "Rent at One Hanover Square",
+        "sent_at": "2026-09-01 23:09"
+      }
     },
     {
       "bucket": "thank",
@@ -2098,6 +2106,30 @@
       "event": "Relationship / Call Window",
       "event_date": "2026-08-31",
       "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260901T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-02",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-09-01",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260901T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-02",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-09-01",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260902T153000Z"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

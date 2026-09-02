@@ -1,0 +1,226 @@
+{
+  "range": "'Runway Forecast'!A1:B70",
+  "values": [
+    [
+      "Budget Dashboard",
+      "Greenwich & Barrow"
+    ],
+    [
+      "Last Updated",
+      "2026-08-28"
+    ],
+    [
+      "As of",
+      "2026-07-31"
+    ],
+    [
+      "Fund Balance",
+      "119203.22"
+    ],
+    [
+      "DD Reserve",
+      "40000"
+    ],
+    [
+      "Available for Operations",
+      "79203.22"
+    ],
+    [
+      "Steady-State Monthly Burn",
+      "20100"
+    ],
+    [
+      "Months at Steady-State (from Jul 1)",
+      "3.94"
+    ],
+    [
+      "Projected Zero",
+      "Dec 2026"
+    ],
+    [
+      "Shortfall",
+      "41396.78"
+    ],
+    [
+      "Monthly Savings Needed",
+      "6900.46"
+    ],
+    [
+      "Dashboard Source",
+      "July 2026 report + July close"
+    ],
+    [
+      "Notes",
+      "Health insurance is back at the normalized $2,750/mo rate; July travel and advertising stayed above the forward plan, so the runway is tighter than the June normalization implied"
+    ],
+    [],
+    [
+      "BURN RATE"
+    ],
+    [
+      "Jan 2026 Net Burn",
+      "31303.94"
+    ],
+    [
+      "Feb 2026 Net Burn",
+      "30096.38"
+    ],
+    [
+      "Mar 2026 Net Burn",
+      "31903.6"
+    ],
+    [
+      "Apr 2026 Net Burn",
+      "33296.47"
+    ],
+    [
+      "May 2026 Net Burn",
+      "22139.53"
+    ],
+    [
+      "June 2026 Net Burn",
+      "26034.59"
+    ],
+    [
+      "Trailing Average Burn",
+      "28175.18"
+    ],
+    [
+      "Jul 2026 Net Burn",
+      "22451.78"
+    ],
+    [
+      "Steady-State Monthly Burn",
+      "20100"
+    ],
+    [],
+    [
+      "Investor Reporting Snapshot"
+    ],
+    [
+      "budget_remaining",
+      "79203.22"
+    ],
+    [
+      "budget_pct",
+      "14.35%"
+    ],
+    [
+      "burn_rate",
+      "20100"
+    ],
+    [
+      "runway_months",
+      "3.94"
+    ],
+    [
+      "projected_zero",
+      "Dec 2026"
+    ],
+    [
+      "target_cash_date",
+      "Feb 2027"
+    ],
+    [
+      "monthly_gap_to_target",
+      "6900.5"
+    ],
+    [
+      "material_cuts_applied",
+      "StartVirtual VA $1,040/mo; AI consultant $1,000/mo; travel discipline"
+    ],
+    [
+      "watch_items",
+      "OpenAI/ChatGPT usage spike; office rent decision; travel discipline; advertising volatility"
+    ],
+    [
+      "JULY-FORWARD NORMALIZED RUN-RATE",
+      "Updated 2026-07-12"
+    ],
+    [
+      "Source",
+      "July 2026 actuals, July balance sheet, live tech stack inventory"
+    ],
+    [
+      "Cash anchor: Jul 31 fund balance",
+      "$119,203.22"
+    ],
+    [
+      "Less DD reserve",
+      "-$40,000"
+    ],
+    [
+      "Available for operations",
+      "$79,203.22"
+    ],
+    [
+      "July reported net burn",
+      "$22,451.78"
+    ],
+    [],
+    [
+      "Remove StartVirtual VA from July onward",
+      "-$1,040"
+    ],
+    [
+      "Remove paused AI consultant from July onward",
+      "-$1,000"
+    ],
+    [
+      "Normalize travel to smaller-event base (~$875/mo)",
+      "-$1,047"
+    ],
+    [
+      "Normalize software/marketing overlap to current stack",
+      "-$351"
+    ],
+    [
+      "Health insurance normalization",
+      "Already at $2,750/mo in June"
+    ],
+    [
+      "Accounting/CPA",
+      "Treat as annual/timing, not monthly run-rate unless new evidence appears"
+    ],
+    [
+      "Normalized net monthly burn",
+      "$20,100"
+    ],
+    [
+      "Runway at normalized burn",
+      "5.1 months"
+    ],
+    [
+      "Projected zero cash",
+      "Dec 2026"
+    ],
+    [
+      "Target monthly burn to reach Feb 2027",
+      "$14,600"
+    ],
+    [
+      "Additional monthly savings needed",
+      "$5,500"
+    ],
+    [
+      "One-time/timing items",
+      "High travel, payroll timing, CPA/tax payments, June OpenAI usage spike"
+    ],
+    [
+      "True recurring base",
+      "Payroll/benefits, office rent, bookkeeping, core tech stack, smaller-event travel"
+    ],
+    [
+      "Next decision lever",
+      "Office rent remains the largest clean remaining discretionary lever at $1,000/mo"
+    ],
+    [
+      "Tech risk",
+      "If June OpenAI/API usage repeats, add roughly $400/mo to burn"
+    ],
+    [
+      "No-email rule",
+      "No emails sent"
+    ]
+  ]
+}

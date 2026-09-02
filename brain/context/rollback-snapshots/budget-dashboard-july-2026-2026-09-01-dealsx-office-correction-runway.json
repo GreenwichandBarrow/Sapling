@@ -1,0 +1,234 @@
+{
+  "range": "'Runway Forecast'!A1:B65",
+  "values": [
+    [
+      "Budget Dashboard",
+      "Greenwich & Barrow"
+    ],
+    [
+      "Last Updated",
+      "2026-09-01"
+    ],
+    [
+      "As of",
+      "2026-07-31"
+    ],
+    [
+      "Fund Balance",
+      "119203.22"
+    ],
+    [
+      "DD Reserve",
+      "40000"
+    ],
+    [
+      "Available for Operations",
+      "79203.22"
+    ],
+    [
+      "Steady-State Monthly Burn",
+      "20700"
+    ],
+    [
+      "Months at Steady-State (from Aug 1)",
+      "3.83"
+    ],
+    [
+      "Projected Zero",
+      "Nov 2026"
+    ],
+    [
+      "Shortfall to Feb 2027",
+      "45000"
+    ],
+    [
+      "Monthly Savings Needed",
+      "7500"
+    ],
+    [
+      "Dashboard Source",
+      "July 2026 Anthony/StartVirtual P&L + Balance Sheet + July checking statement"
+    ],
+    [
+      "Notes",
+      "July net burn corrected to include $569.43 below-the-line other expenses; Payoneer treated as non-base until explained; OpenAI/ChatGPT treated as active $217.75/mo run-rate"
+    ],
+    [],
+    [
+      "BURN RATE"
+    ],
+    [
+      "Jan 2026 Net Burn",
+      "31303.94"
+    ],
+    [
+      "Feb 2026 Net Burn",
+      "30096.38"
+    ],
+    [
+      "Mar 2026 Net Burn",
+      "31903.60"
+    ],
+    [
+      "Apr 2026 Net Burn",
+      "33296.47"
+    ],
+    [
+      "May 2026 Net Burn",
+      "22139.53"
+    ],
+    [
+      "June 2026 Net Burn",
+      "26040.55"
+    ],
+    [
+      "Jul 2026 Net Burn",
+      "23021.21"
+    ],
+    [
+      "Trailing Average Burn",
+      "28257.38"
+    ],
+    [
+      "Steady-State Monthly Burn",
+      "20700"
+    ],
+    [
+      "Risk Case if Payoneer Repeats",
+      "23300"
+    ],
+    [],
+    [
+      "Investor Reporting Snapshot"
+    ],
+    [
+      "budget_remaining",
+      "119203.22"
+    ],
+    [
+      "budget_pct",
+      "21.60%"
+    ],
+    [
+      "burn_rate",
+      "20700"
+    ],
+    [
+      "runway_months",
+      "3.83"
+    ],
+    [
+      "projected_zero",
+      "Nov 2026"
+    ],
+    [
+      "target_cash_date",
+      "Feb 2027"
+    ],
+    [
+      "monthly_gap_to_target",
+      "7500"
+    ],
+    [
+      "material_cuts_applied",
+      "StartVirtual VA and AI consultant absent from July; DealsX/KeyReach absent; DocSend downgraded"
+    ],
+    [
+      "watch_items",
+      "Payoneer $2,575.50; Linkt $199.99 still charged; OpenAI/ChatGPT $217.75; office rent; travel discipline"
+    ],
+    [],
+    [
+      "JULY MONTH-END NORMALIZED RUN-RATE",
+      "Updated 2026-09-01"
+    ],
+    [
+      "Source",
+      "Anthony/StartVirtual July P&L, July Balance Sheet, July checking statement"
+    ],
+    [
+      "Cash anchor: Jul 31 fund balance",
+      "$119,203.22"
+    ],
+    [
+      "Less DD reserve",
+      "-$40,000"
+    ],
+    [
+      "Available for operations",
+      "$79,203.22"
+    ],
+    [
+      "July P&L net burn",
+      "$23,021.21"
+    ],
+    [
+      "Below-the-line other expenses included",
+      "$569.43"
+    ],
+    [
+      "Normalize payroll to monthly budget",
+      "+$920"
+    ],
+    [
+      "Remove Linkt if stopped/refunded",
+      "-$200"
+    ],
+    [
+      "Treat Payoneer as non-base until explained",
+      "-$2,576"
+    ],
+    [
+      "Normalize travel to smaller-event base",
+      "-$467"
+    ],
+    [
+      "OpenAI/ChatGPT",
+      "Keep $217.75/mo in base because June and July were both elevated"
+    ],
+    [
+      "Health insurance",
+      "Normalized at $2,750/mo"
+    ],
+    [
+      "Office rent",
+      "Still active at $1,000/mo"
+    ],
+    [
+      "Recommended normalized monthly burn",
+      "$20,700"
+    ],
+    [
+      "Runway at normalized burn",
+      "3.83 months from Aug 1"
+    ],
+    [
+      "Projected zero cash",
+      "Nov 2026"
+    ],
+    [
+      "Risk case if Payoneer repeats",
+      "$23,300/mo burn; ~3.4 months runway"
+    ],
+    [
+      "Target monthly burn to reach Feb 2027",
+      "$13,200"
+    ],
+    [
+      "Additional monthly savings needed",
+      "$7,500"
+    ],
+    [
+      "Recurring keep",
+      "Payroll/benefits, health, rent unless cut, bookkeeping, core tech, smaller-event travel"
+    ],
+    [
+      "Cancel/verify",
+      "Linkt charge, Payoneer recurrence, OpenAI plan/cap, office rent decision"
+    ],
+    [
+      "No-email rule",
+      "No emails sent"
+    ]
+  ]
+}

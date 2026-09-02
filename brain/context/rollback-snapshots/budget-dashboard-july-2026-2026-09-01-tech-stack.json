@@ -1,0 +1,254 @@
+{
+  "range": "'Tech Stack Inventory'!A1:H80",
+  "values": [
+    [
+      "Tool",
+      "Category",
+      "Billing Now",
+      "Current $/Mo",
+      "If Annual $/Mo",
+      "Saves $/Mo",
+      "Status",
+      "Overlaps"
+    ],
+    [
+      "Linkt",
+      "List Building",
+      "Monthly",
+      "0",
+      "0",
+      "300",
+      "Cancelled / dashboard absent OK",
+      "Apollo"
+    ],
+    [
+      "Claude Code",
+      "AI Coding",
+      "Monthly",
+      "21.78",
+      "21.78",
+      "195.97",
+      "Downgraded / actual bank charge",
+      "ANTHROPIC* CLAUDE SUB charged $21.78 on Jun 27; use cash charge until invoice proves lower"
+    ],
+    [
+      "Attio CRM",
+      "CRM",
+      "Annual",
+      "69",
+      "69",
+      "17",
+      "Active / verify renewal"
+    ],
+    [
+      "SquareSpace",
+      "Website",
+      "Annual",
+      "49",
+      "49",
+      "0",
+      "Active / verify"
+    ],
+    [
+      "QuickBooks",
+      "Accounting",
+      "Monthly",
+      "41.37",
+      "41.37",
+      "0",
+      "Active / dashboard validated",
+      "Kick"
+    ],
+    [
+      "Superhuman",
+      "Email",
+      "Annual",
+      "0",
+      "0",
+      "43.55",
+      "Cancelled / dashboard absent OK",
+      "Gmail"
+    ],
+    [
+      "Howie",
+      "Scheduling",
+      "Annual",
+      "25",
+      "10",
+      "15",
+      "Active / verify",
+      "Calendar"
+    ],
+    [
+      "Google Workspace",
+      "Email",
+      "Monthly",
+      "29.64",
+      "29.64",
+      "3.07",
+      "Active / actual bank charge",
+      "GOOGLE*SVCSGREENWICHAN charged $29.64 on Jun 1"
+    ],
+    [
+      "Google One",
+      "Storage",
+      "Monthly",
+      "2.16",
+      "2.16",
+      "0",
+      "Active / verify",
+      "Google Workspace"
+    ],
+    [
+      "Google Voice",
+      "Phone",
+      "Annual",
+      "10",
+      "10",
+      "0",
+      "Active / verify"
+    ],
+    [
+      "ChatGPT / OpenAI",
+      "AI",
+      "Monthly",
+      "21.78",
+      "21.78",
+      "0",
+      "Active / monitor usage spike",
+      "June OpenAI/ChatGPT charges totaled $426.70; forward base assumes subscription only and treats excess as usage spike until July confirms"
+    ],
+    [
+      "Canva",
+      "Design",
+      "Annual",
+      "10",
+      "10",
+      "5",
+      "Active / verify"
+    ],
+    [
+      "Slack",
+      "Comms",
+      "Annual",
+      "15",
+      "15",
+      "0",
+      "Active / verify"
+    ],
+    [
+      "Granola",
+      "Meetings",
+      "Monthly",
+      "15.24",
+      "15.24",
+      "0",
+      "Active"
+    ],
+    [
+      "GitHub",
+      "Code Hosting",
+      "Free",
+      "0",
+      "0",
+      "0",
+      "Active"
+    ],
+    [
+      "Cursor",
+      "Coding IDE",
+      "Free",
+      "0",
+      "0",
+      "0",
+      "Active",
+      "Claude Code"
+    ],
+    [
+      "Apollo",
+      "List Building",
+      "Monthly",
+      "64.24",
+      "64.24",
+      "0",
+      "Active",
+      "Linkt"
+    ],
+    [
+      "Hetzner",
+      "Infrastructure",
+      "Monthly",
+      "13.62",
+      "13.62",
+      "0",
+      "Active / actual bank charge",
+      "June cloud infrastructure charge was $13.62"
+    ],
+    [
+      "Tailscale",
+      "Infrastructure",
+      "Monthly",
+      "8.71",
+      "8.71",
+      "0",
+      "Active"
+    ],
+    [
+      "1Password",
+      "Security",
+      "Annual",
+      "4.34",
+      "4.34",
+      "47.79",
+      "Active"
+    ],
+    [
+      "DealsX / KeyReach",
+      "Outreach",
+      "Monthly",
+      "0",
+      "0",
+      "1000",
+      "Excluded from July / email Wed",
+      "Cold outbound"
+    ],
+    [
+      "AI Consultant / Dodo Digital",
+      "AI/Consulting",
+      "Monthly",
+      "0",
+      "0",
+      "1000",
+      "Confirmed stopped",
+      "Claude / internal ops"
+    ],
+    [
+      "DocSend",
+      "Document Sharing",
+      "Monthly",
+      "15",
+      "15",
+      "55.77",
+      "Downgraded to Personal"
+    ],
+    [
+      "BizBuySell",
+      "Marketplace",
+      "Free",
+      "0",
+      "0",
+      "24.95",
+      "Downgraded free / marketplace absent OK"
+    ],
+    [
+      "TOTAL COSTS",
+      "",
+      "",
+      "415.88",
+      "399.88",
+      "2707.10",
+      "Updated 2026-07-12",
+      "Forward tech stack excludes June OpenAI usage spike above subscription; monitor July"
+    ]
+  ]
+}

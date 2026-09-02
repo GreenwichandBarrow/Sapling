@@ -3,18 +3,8 @@
   "deal_items": 26,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-09-02T06:50:00.856492-04:00",
-  "follow_through_completed_items": [
-    {
-      "bucket": "thank",
-      "completed_at": "2026-09-01",
-      "event": "Clayton I Kay",
-      "person": "Clayton",
-      "sent_at": "2026-09-01 23:09",
-      "sent_subject": "Rent at One Hanover Square",
-      "sent_thread_id": "1a060160a56e6494"
-    }
-  ],
+  "fetched_at": "2026-09-02T09:55:20.460323-04:00",
+  "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -63,7 +53,6 @@
     "1 email-derived task candidate(s)",
     "26 broker/listing row(s) extracted",
     "2 prior-day thank-you(s) need approval: Relationship / Call Window; Relationship / Call Window",
-    "1 email follow-through row(s) auto-completed from sent-mail evidence: Clayton",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Brooke (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting)"
   ],

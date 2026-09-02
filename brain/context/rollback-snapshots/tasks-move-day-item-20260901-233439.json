@@ -1,0 +1,21 @@
+{
+  "verb": "move-day-item",
+  "timestamp": "20260901-233439",
+  "sheet_id": "12dvGVZXYImCxF820pgVEXvAdwpm38i5SqzE3mn3rsFI",
+  "ranges": {
+    "'Thu'!A21:E21": [
+      [
+        false,
+        "Pay DealsX invoice",
+        "Work",
+        "G&B",
+        "Invoice #00700150, ,520.00 outstanding"
+      ]
+    ],
+    "'Wed'!A25:E25": [
+      [
+        false
+      ]
+    ]
+  }
+}

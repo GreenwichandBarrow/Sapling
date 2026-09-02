@@ -124,3 +124,9 @@
   - forced over collisions: False
   - collisions at run: none
   - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-distribute-week-20260901-120210.json
+
+[2026-09-01T23:33:29.740690] schedule-to-day-slot — thu-1
+  - task: Pay DealsX invoice
+  - placement: Thu tab slot 1 (row 21)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260901-233329.json

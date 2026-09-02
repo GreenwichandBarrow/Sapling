@@ -1,0 +1,181 @@
+{
+  "range": "'Runway Forecast'!A1:C45",
+  "values": [
+    [
+      "Budget Dashboard",
+      "Greenwich & Barrow"
+    ],
+    [
+      "Last Updated",
+      "2026-09-01"
+    ],
+    [
+      "As of",
+      "2026-07-31"
+    ],
+    [
+      "Fund Balance",
+      "119203.22"
+    ],
+    [
+      "DD Reserve",
+      "40000"
+    ],
+    [
+      "Available for Operations",
+      "79203.22"
+    ],
+    [
+      "Steady-State Monthly Burn",
+      "20950"
+    ],
+    [
+      "Months at Steady-State (from Aug 1)",
+      "3.78"
+    ],
+    [
+      "Projected Zero",
+      "Nov 2026"
+    ],
+    [
+      "Shortfall to Feb 2027",
+      "46500"
+    ],
+    [
+      "Monthly Savings Needed",
+      "7750"
+    ],
+    [
+      "Dashboard Source",
+      "July 2026 P&L + Kay correction: Payoneer is DealsX; office rent removed from forward plan"
+    ],
+    [
+      "Notes",
+      "DealsX/Payoneer modeled at $1,250/mo unless price reduction lands; office rent removed assuming no further Stone Street charges; Linkt excluded but must be canceled/recovered"
+    ],
+    [],
+    [
+      "BURN RATE"
+    ],
+    [
+      "Jan 2026 Net Burn",
+      "31303.94"
+    ],
+    [
+      "Feb 2026 Net Burn",
+      "30096.38"
+    ],
+    [
+      "Mar 2026 Net Burn",
+      "31903.60"
+    ],
+    [
+      "Apr 2026 Net Burn",
+      "33296.47"
+    ],
+    [
+      "May 2026 Net Burn",
+      "22139.53"
+    ],
+    [
+      "June 2026 Net Burn",
+      "26040.55"
+    ],
+    [
+      "Jul 2026 Net Burn",
+      "23021.21"
+    ],
+    [
+      "Trailing Average Burn",
+      "28257.38"
+    ],
+    [
+      "Steady-State Monthly Burn",
+      "20950"
+    ],
+    [
+      "Risk Case if Office Rent Continues",
+      "21950"
+    ],
+    [],
+    [
+      "Investor Reporting Snapshot"
+    ],
+    [
+      "budget_remaining",
+      "119203.22"
+    ],
+    [
+      "budget_pct",
+      "21.60%"
+    ],
+    [
+      "burn_rate",
+      "20950"
+    ],
+    [
+      "runway_months",
+      "3.78"
+    ],
+    [
+      "projected_zero",
+      "Nov 2026"
+    ],
+    [
+      "target_cash_date",
+      "Feb 2027"
+    ],
+    [
+      "monthly_gap_to_target",
+      "7750"
+    ],
+    [
+      "material_cuts_applied",
+      "Office rent removed from forward plan; StartVirtual VA and AI consultant absent; DealsX remains at $1,250/mo"
+    ],
+    [
+      "watch_items",
+      "DealsX price reduction; Linkt $199.99 charge; OpenAI/ChatGPT $217.75; travel discipline"
+    ],
+    [],
+    [
+      "JULY MONTH-END NORMALIZED RUN-RATE",
+      "Updated 2026-09-01 after Kay correction"
+    ],
+    [
+      "Source",
+      "Anthony/StartVirtual July P&L, July Balance Sheet, July checking statement, Kay correction",
+      "April accrual; health $0 fwd"
+    ],
+    [
+      "Cash anchor: Jul 31 fund balance",
+      "$119,203.22",
+      "communicated"
+    ],
+    [
+      "Less DD reserve",
+      "-$40,000",
+      "notice mid-June; PAYPAL*PAYONEERINC actual"
+    ],
+    [
+      "Available for operations",
+      "$79,203.22",
+      "friend space; full-cancel = backstop"
+    ],
+    [
+      "July P&L net burn",
+      "$23,021.21",
+      "conferences NOT trimmed"
+    ],
+    [
+      "Below-the-line other expenses included",
+      "$569.43",
+      "local cadence; big regs + out-of-region = one-offs"
+    ],
+    [
+      "Normalize payroll to monthly budget",
+      "+$920",
+      "immaterial"
+    ]
+  ]
+}

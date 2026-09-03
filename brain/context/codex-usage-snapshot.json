@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-09-03T17:00:44.569285-04:00",
+  "fetched_at": "2026-09-03T18:00:44.576865-04:00",
   "models": [
     {
       "model": "unknown",
@@ -13,9 +13,9 @@
     "reasoning_output_tokens": 934922,
     "total_tokens": 969249067
   },
-  "period_end": "2026-09-03T17:00:44.569285-04:00",
+  "period_end": "2026-09-03T18:00:44.576865-04:00",
   "period_start": "2026-09-01T00:00:00-04:00",
-  "scanned_files": 1138,
+  "scanned_files": 1139,
   "sessions_with_usage": 60,
   "source": "local_codex_session_usage_metadata",
   "today": {

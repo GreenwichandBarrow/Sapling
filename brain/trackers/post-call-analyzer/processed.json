@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-31T17:06:06.152220Z",
+  "last_updated": "2026-09-03T22:06:20.164386Z",
   "processed": [
     {
       "attio_failed": false,
@@ -2053,6 +2053,34 @@
       "location": "remote",
       "meeting_time": "2026-08-31 09:15-11:00 ET",
       "slack_summary": "Kay and Camilla reviewed the target business assessment and sharpened the diligence lens around concentration, contracts, inventory, and lease/renovation exposure. The business looks real on brand and margin, but the base case still needs proof before growth channels can carry the story."
+    },
+    {
+      "id": "not_vhL3vLKOvXXmKo",
+      "title": "BK Growth 1st Thursday Zoom",
+      "date": "2026-09-03",
+      "counterparty": "BK Growth",
+      "time": "2026-09-03 14:00-15:00 ET",
+      "location": "remote / Zoom",
+      "granola_url": "https://notes.granola.ai/d/2f7feff5-5915-4a0e-8df8-13aa46c73db3",
+      "summary_2to3_lines": "Tank Track is a narrow vertical software business for septic operators. Rohit and Austin described a search process that won by going deep in the industry and then moving through targeted outreach, not broad cold email.\n\nThe operating lesson is that retention is strong and growth is now capacity-constrained, so they are hiring ahead of demand and using AI across engineering, support, and sales.",
+      "doc_url": "https://docs.google.com/document/d/1y8bu-l77rzxPgEkd_Hy0Pd7kQqWnoe5Wm2-GKc2_Csg/edit?usp=drivesdk",
+      "doc_failed": false,
+      "transcript_doc_url": "https://docs.google.com/document/d/15bWKlsw6wD6tNbxCmtGFuJPbwr8-ej86OlM_LK1uyQ0/edit?usp=drivesdk",
+      "transcript_failed": false,
+      "attio_failed": true,
+      "attio_skip_reason": "no non-Kay attendee emails captured",
+      "attio_notes": {
+        "people": [],
+        "companies": []
+      },
+      "task_count": 4,
+      "tasks_failed": false,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_vhL3vLKOvXXmKo.json",
+      "vault_call_note": "brain/calls/2026-09-03-bk-growth-1st-thursday-zoom.md",
+      "processed_at": "2026-09-03T22:05:57.048181Z",
+      "slack_posted": true,
+      "slack_failed": false,
+      "processed_archive": "brain/trackers/post-call-analyzer/processed/not_vhL3vLKOvXXmKo.json"
     }
   ]
 }

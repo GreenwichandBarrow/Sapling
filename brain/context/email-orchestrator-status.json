@@ -1,9 +1,9 @@
 {
   "blocked": [],
-  "deal_items": 26,
+  "deal_items": 0,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-09-02T09:55:20.460323-04:00",
+  "fetched_at": "2026-09-03T06:50:45.198348-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -47,29 +47,39 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-09-02.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-09-03.json",
   "input_status": "ok",
   "needs_kay": [
-    "1 email-derived task candidate(s)",
-    "26 broker/listing row(s) extracted",
-    "2 prior-day thank-you(s) need approval: Relationship / Call Window; Relationship / Call Window",
+    "3 prior-day thank-you(s) need approval: Greenwich & Barrow <> Boulay; Relationship / Call Window; Relationship / Call Window",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Brooke (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-09-02.md",
+  "source_artifact": "brain/context/email-scan-results-2026-09-03.md",
   "source_status": "ok",
   "stale_drafts": 0,
-  "task_candidates": 1,
+  "task_candidates": 0,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-09-02",
+      "due_date": "2026-09-03",
+      "email": "cbrownlee@boulaygroup.com",
+      "event": "Greenwich & Barrow <> Boulay",
+      "event_date": "2026-09-02",
+      "person": "Greenwich & Barrow <> Boulay",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-09-03",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-09-01",
+      "event_date": "2026-09-02",
       "person": "Relationship / Call Window",
       "sent_at": "",
       "sent_subject": "",
@@ -78,10 +88,10 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-09-02",
+      "due_date": "2026-09-03",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-09-01",
+      "event_date": "2026-09-02",
       "person": "Relationship / Call Window",
       "sent_at": "",
       "sent_subject": "",

@@ -49,3 +49,9 @@
   - Tue slot 16 → Wed slot 21: Review new SLD video
   - Tue slot 17 → Wed slot 22: Put fuel & recovery lists to refrigerator
   - Tue slot 18 → Wed slot 23: Schedule exercise classes for the week
+
+[2026-09-02T15:07:28.116134] schedule-to-day-slot — wed-24
+  - task: Pay Hetzner invoice
+  - placement: Wed tab slot 24 (row 44)
+  - overwrote: (slot was empty)
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-schedule-to-day-slot-20260902-150727.json

@@ -1,16 +1,15 @@
 {
-  "date": "2026-09-02",
+  "date": "2026-09-03",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-09-02.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-09-03.md",
   "email_scan_status": "live",
   "deals_found": 0,
-  "broker_opportunistic": 1,
-  "near_misses": 1,
+  "broker_opportunistic": 7,
   "sources_scanned": 20,
   "sources_covered": {
-    "marketplace": 9,
-    "email_newsletters": 8,
-    "direct_email": 3
+    "marketplace": 10,
+    "email_newsletters": 6,
+    "direct_email": 4
   },
   "manual_check_sources": [],
   "sources_blocked_verified": 0,

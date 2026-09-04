@@ -3,18 +3,8 @@
   "deal_items": 14,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-09-04T06:50:44.985447-04:00",
-  "follow_through_completed_items": [
-    {
-      "bucket": "thank",
-      "completed_at": "2026-09-03",
-      "event": "Greenwich & Barrow <> Boulay",
-      "person": "Greenwich",
-      "sent_at": "2026-09-03 09:49",
-      "sent_subject": "Re: Kay // Boulay",
-      "sent_thread_id": "19404efe49e2eb07"
-    }
-  ],
+  "fetched_at": "2026-09-04T12:09:08.191796-04:00",
+  "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -63,7 +53,6 @@
     "1 email-derived task candidate(s)",
     "14 broker/listing row(s) extracted",
     "2 prior-day thank-you(s) need approval: Erin; Relationship / Call Window",
-    "1 email follow-through row(s) auto-completed from sent-mail evidence: Greenwich",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Brooke (24-hour thank-you after external meeting); Erin (24-hour thank-you after external meeting)"
   ],

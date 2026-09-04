@@ -5,7 +5,7 @@ deals_found: 0
 sources_scanned: 17
 sources_blocked_verified: 0
 sources_blocked_single_attempt: 0
-email_deals: 0
+email_deals: 9
 dealsx_replies: 0
 broker_opportunistic: 10
 email_scan_status: live
@@ -17,7 +17,15 @@ tags: [date/2026-09-04, output/deal-aggregator-scan, topic/deal-aggregator, stat
 None today.
 
 ## Email Inbound Deals
-None today.
+1. **[[entities/bizquest|BizQuest]]** — High-Volume B2B Print, Promotional & Marketing Center - Manhattan | NY | undisclosed revenue | undisclosed EBITDA | print / promotional services | FLAG
+2. **[[entities/bizquest|BizQuest]]** — Fence Construction Business - Turnkey and Profitable/SBA Pre-Approved | Westchester County, NY | undisclosed revenue | undisclosed EBITDA | construction | HARD-REJECT
+3. **[[entities/bizquest|BizQuest]]** — Cake & Cookie Manufacturer/Distributor - Montauk | Montauk, NY | undisclosed revenue | undisclosed EBITDA | food manufacturing | HARD-REJECT
+4. **[[entities/quiet-light|Quiet Light]]** — Business Education Platform | undisclosed | $45,161,452 revenue | $10,843,118 EBITDA | education / software | HARD-REJECT
+5. **[[entities/quiet-light|Quiet Light]]** — Patented DTC Cooling Brand | undisclosed | $1.04M TTM SDE revenue | undisclosed EBITDA | consumer products | HARD-REJECT
+6. **[[entities/quiet-light|Quiet Light]]** — Amazon FBA Electric Lunchbox Brand | undisclosed | undisclosed revenue | undisclosed EBITDA | e-commerce | HARD-REJECT
+7. **[[entities/quiet-light|Quiet Light]]** — Amazon FBA Baby Brand | undisclosed | $144,550 revenue | $25,024 EBITDA | e-commerce | HARD-REJECT
+8. **[[entities/calder-capital|Calder Capital]]** — Event Planning and Entertainment Company | Mid-Atlantic | $432,721 revenue | $256,088 EBITDA | event services | HARD-REJECT
+9. **[[entities/quiet-light|Quiet Light]]** — Clip Art Subscription Business | undisclosed | $201,021 revenue | $71,076 EBITDA | digital assets / subscription | HARD-REJECT
 
 ## DealsX Proprietary Outreach Replies
 None today.
@@ -53,22 +61,11 @@ Every listing scraped or parsed during this run lands here as one row, regardles
 | [[entities/rejigg|Rejigg]] | Defense IT Solutions Provider A 30-year Department of Defense contractor generating $4.8M in revenue with $960k in | undisclosed | with $960k in EBITDA across two active contracts, a facility security clearance, and 75 past performance citations — operated on fewer than 15 hours per week by the current owner. Price $4M Revenue $4.8M EBITDA $960.8K | across two active contracts, a facility security clearance, and 75 past performance citations — operated on fewer than 15 hours per week by the current owner. Price $4M Revenue $4.8M EBITDA $960.8K | 7.8% | GovCon IT / Services | service criticality | BROKER-OPPORTUNISTIC | Recurring-contract service asset; no active thesis corpus match. |
 | [[entities/rejigg|Rejigg]] | Geotechnical Engineering Business Geotechnical engineering firm generating $3M in annual revenue with zero debt, 90% repeat clients, and nearly half its revenue from competitors who rely on its drilling rigs and lab capacity. | undisclosed | with zero debt, 90% repeat clients, and nearly half its revenue from competitors who rely on its drilling rigs and lab capacity. Price $2.9M Revenue $3M SDE $815.1K | $815.1K | 0.9% | Engineering services | cohort/customer durability | BROKER-OPPORTUNISTIC | Repeat-client service asset with service-criticality; no active thesis corpus match. |
 | [[entities/rejigg|Rejigg]] | Social Media Influencer Marketing Agency One of the world's first influencer marketing agencies built on 100% proprietary technology with no third-party licenses, deployed across 80 million creators to generate $10M in 2024 revenue with $2.2M | undisclosed | with $2.2M EBITDA, all through organic relationships with zero dedicated sales staff. Price - Revenue $10M EBITDA $2.2M | , all through organic relationships with zero dedicated sales staff. Price - Revenue $10M EBITDA $2.2M | 454.5% | Marketing / Services | service criticality | BROKER-OPPORTUNISTIC | Strong recurring economics; service asset outside current active thesis corpus. |
+| [[entities/bizquest|BizQuest]] | High-Volume B2B Print, Promotional & Marketing Center - Manhattan | NY | undisclosed | undisclosed | undisclosed | print / promotional services | not disclosed | FLAG | No disclosed financials; preserve for review. |
 | [[entities/business-exits|Business Exits]] | Cell Phone Tower Installation & Repair | undisclosed | $8,927,055 Income: $1,946,908 Service Sale Pending | $1,946,908 Service Sale Pending | 21.8% | Service | not disclosed | FLAG | No active thesis match; preserve for review. |
 | [[entities/business-exits|Business Exits]] | Design & Build Studio for Themed Props, Structures, & Interactive Experiences | undisclosed | $10,022,434 (2024) Income: $3,057,730 (2024) Construction, Manufacturing, Service Sale Pending | $3,057,730 (2024) Construction, Manufacturing, Service Sale Pending | 30.5% | Service | not disclosed | FLAG | No active thesis match; preserve for review. |
-| [[entities/entities-bizquest|entities/bizquest]] | BizQuest]] | High-Volume B2B Print, Promotional & Marketing Center - Manhattan | NY | undisclosed | undisclosed | undisclosed | not disclosed | FLAG | No disclosed financials; preserve for review. |
-| [[entities/entities-bizquest|entities/bizquest]] | BizQuest]] | Fence Construction Business - Turnkey and Profitable/SBA Pre-Approved | Westchester County, NY | undisclosed | undisclosed | undisclosed | not disclosed | FLAG | No disclosed financials; preserve for review. |
-| [[entities/entities-bizquest|entities/bizquest]] | BizQuest]] | Cake & Cookie Manufacturer/Distributor - Montauk | Montauk, NY | undisclosed | undisclosed | undisclosed | not disclosed | FLAG | No disclosed financials; preserve for review. |
-| [[entities/entities-calder-capital|entities/calder-capital]] | Calder Capital]] | Event Planning and Entertainment Company | Mid-Atlantic | $432,721 | $256,088 | undisclosed | not disclosed | FLAG | Review required. |
-| [[entities/entities-helen-guo|entities/helen-guo]] | Helen Guo]] | Bubble Tea and Gelato Franchisor | AZ | $784,659 | $235,398 | undisclosed | not disclosed | FLAG | Review required. |
-| [[entities/entities-helen-guo|entities/helen-guo]] | Helen Guo]] | Commercial Plumbing Contractor | MI | undisclosed | $1.24M | undisclosed | not disclosed | FLAG | Review required. |
-| [[entities/entities-helen-guo|entities/helen-guo]] | Helen Guo]] | Remote TV Advertising Sales Business | undisclosed | undisclosed | $575K | undisclosed | not disclosed | FLAG | Review required. |
-| [[entities/entities-helen-guo|entities/helen-guo]] | Helen Guo]] | Honey Manufacturer | MN | undisclosed | $660K | undisclosed | not disclosed | FLAG | Review required. |
-| [[entities/entities-helen-guo|entities/helen-guo]] | Helen Guo]] | Boiler Maintenance and Welding Company | NY | undisclosed | $450K | undisclosed | not disclosed | FLAG | Review required. |
-| [[entities/entities-quiet-light|entities/quiet-light]] | Quiet Light]] | Business Education Platform | undisclosed | $45,161,452 | $10,843,118 | undisclosed | not disclosed | FLAG | Review required. |
-| [[entities/entities-quiet-light|entities/quiet-light]] | Quiet Light]] | Patented DTC Cooling Brand | undisclosed | $1.04M TTM SDE | undisclosed | 43% SDE / 32% revenue growth YTD | not disclosed | FLAG | Review required. |
-| [[entities/entities-quiet-light|entities/quiet-light]] | Quiet Light]] | Amazon FBA Electric Lunchbox Brand | undisclosed | undisclosed | undisclosed | undisclosed | not disclosed | FLAG | Review required. |
-| [[entities/entities-quiet-light|entities/quiet-light]] | Quiet Light]] | Amazon FBA Baby Brand | undisclosed | $144,550 | $25,024 | undisclosed | not disclosed | FLAG | Review required. |
-| [[entities/entities-quiet-light|entities/quiet-light]] | Quiet Light]] | Clip Art Subscription Business | undisclosed | $201,021 | $71,076 | undisclosed | not disclosed | FLAG | Review required. |
+| [[entities/bizquest|BizQuest]] | Cake & Cookie Manufacturer/Distributor - Montauk | Montauk, NY | undisclosed | undisclosed | undisclosed | food manufacturing | not disclosed | HARD-REJECT | Manufacturing / consumer food exclusion. |
+| [[entities/bizquest|BizQuest]] | Fence Construction Business - Turnkey and Profitable/SBA Pre-Approved | Westchester County, NY | undisclosed | undisclosed | undisclosed | construction | not disclosed | HARD-REJECT | Construction exclusion. |
 | [[entities/business-exits|Business Exits]] | Category Defining Window Manufacturer | undisclosed | $4,895,568 Income: $1,539,977 Manufacturing, Retail Sale Pending | $1,539,977 Manufacturing, Retail Sale Pending | 31.5% | Manufacturing | not disclosed | HARD-REJECT | Construction / labor-heavy field services exclusion. |
 | [[entities/business-exits|Business Exits]] | DOT Pre-Qualified Civil & Site Work Contractor | Southeast & Gulf Coast | undisclosed | $7,873,849 (2024 & 2025 Avg) Income: $1,692,242 (2024 & 2025 Avg) Construction | $1,692,242 (2024 & 2025 Avg) Construction | 21.5% | Service | recurring/reoccurring revenue | HARD-REJECT | Construction / labor-heavy field services exclusion. |
 | [[entities/business-exits|Business Exits]] | Fast-Growing Plumbing Business in the Northwest | undisclosed | $7,710,000 (2026 Projection) Income: $2,700,000 (2026 Projection) Service Sale Pending | $2,700,000 (2026 Projection) Service Sale Pending | 35.0% | Service | not disclosed | HARD-REJECT | Construction / labor-heavy field services exclusion. |
@@ -80,11 +77,17 @@ Every listing scraped or parsed during this run lands here as one row, regardles
 | [[entities/business-exits|Business Exits]] | Northeast Commercial Contractor Serving Healthcare and Financial Clients | undisclosed | $21,959,113 (2024) Income: $2,784,735 (2024) Construction | $2,784,735 (2024) Construction | 12.7% | Healthcare | recurring/reoccurring revenue | HARD-REJECT | Construction / labor-heavy field services exclusion. |
 | [[entities/business-exits|Business Exits]] | Texas Based Non-Emergency Medical Transport | undisclosed | $7,743,083 Income: $2,874,318 Service Sale Pending | $2,874,318 Service Sale Pending | 37.1% | Transportation / Services | not disclosed | HARD-REJECT | Healthcare / provider-adjacent exclusion or below-fit healthcare practice. |
 | [[entities/business-exits|Business Exits]] | Thriving Texas HVAC Company Specializing in Residential New Construction | undisclosed | $21,986,180 Income: $2,284,289 Service Sale Pending | $2,284,289 Service Sale Pending | 10.4% | Construction | not disclosed | HARD-REJECT | Construction / labor-heavy field services exclusion. |
+| [[entities/calder-capital|Calder Capital]] | Event Planning and Entertainment Company | Mid-Atlantic | $432,721 | $256,088 | undisclosed | event services | not disclosed | HARD-REJECT | Below current EBITDA floor. |
 | [[entities/empire-flippers|Empire Flippers]] | Empire Flippers Cleaning Products, Home, Equipment | undisclosed | undisclosed | undisclosed | undisclosed | SaaS / eCommerce | not disclosed | HARD-REJECT | Digital / ecommerce asset outside current focus and below current floor. |
 | [[entities/empire-flippers|Empire Flippers]] | Empire Flippers Equipment, Hobbies | undisclosed | undisclosed | undisclosed | undisclosed | SaaS / eCommerce | not disclosed | HARD-REJECT | Digital / ecommerce asset outside current focus and below current floor. |
 | [[entities/empire-flippers|Empire Flippers]] | Empire Flippers Home, Occasions & Gifts | undisclosed | undisclosed | undisclosed | undisclosed | SaaS / eCommerce | not disclosed | HARD-REJECT | Digital / ecommerce asset outside current focus and below current floor. |
 | [[entities/empire-flippers|Empire Flippers]] | Empire Flippers Romance | undisclosed | undisclosed | undisclosed | undisclosed | SaaS / eCommerce | not disclosed | HARD-REJECT | Digital / ecommerce asset outside current focus and below current floor. |
 | [[entities/empire-flippers|Empire Flippers]] | Empire Flippers Supplements | undisclosed | undisclosed | undisclosed | undisclosed | SaaS / eCommerce | not disclosed | HARD-REJECT | Digital / ecommerce asset outside current focus and below current floor. |
+| [[entities/quiet-light|Quiet Light]] | Amazon FBA Baby Brand | undisclosed | $144,550 | $25,024 | undisclosed | e-commerce | not disclosed | HARD-REJECT | Digital / e-commerce asset outside current SaaS/digital focus. |
+| [[entities/quiet-light|Quiet Light]] | Amazon FBA Electric Lunchbox Brand | undisclosed | undisclosed | undisclosed | undisclosed | e-commerce | not disclosed | HARD-REJECT | Digital / e-commerce asset outside current SaaS/digital focus. |
+| [[entities/quiet-light|Quiet Light]] | Business Education Platform | undisclosed | $45,161,452 | $10,843,118 | undisclosed | education / software | not disclosed | HARD-REJECT | Digital / e-commerce asset outside current SaaS/digital focus. |
+| [[entities/quiet-light|Quiet Light]] | Clip Art Subscription Business | undisclosed | $201,021 | $71,076 | undisclosed | digital assets / subscription | not disclosed | HARD-REJECT | Digital / e-commerce asset outside current SaaS/digital focus. |
+| [[entities/quiet-light|Quiet Light]] | Patented DTC Cooling Brand | undisclosed | $1.04M TTM SDE | undisclosed | 43% SDE / 32% revenue growth YTD | consumer products | not disclosed | HARD-REJECT | Digital / e-commerce asset outside current SaaS/digital focus. |
 | [[entities/rejigg|Rejigg]] | Chemical-Free Breathable Insect Protection Clothing Patented chemical-free insect protection apparel with over 25 years of market presence, major retail vendor agreements, in-house manufacturing, and no direct competitors in its category. | undisclosed | $475K EBITDA $245K | $245K | 51.6% | Consumer / Retail | not disclosed | HARD-REJECT | Retail / DTC exclusion. |
 | [[entities/rejigg|Rejigg]] | Cloud Contact Center Workforce Software Call center efficiency software with 85% recurring license revenue, three-year contracts now in their sixth iteration with Fortune 500 clients, and margins near 45% on a fully remote team of eight. | undisclosed | , three-year contracts now in their sixth iteration with Fortune 500 clients, and margins near 45% on a fully remote team of eight. Price $6.5M Revenue $2.1M SDE $1.2M | $1.2M | 0.2% | SaaS / Software | recurring/reoccurring revenue | HARD-REJECT | SaaS / digital platform outside current focus and below ARR floor. |
 | [[entities/rejigg|Rejigg]] | Custom Awards Retailer Awards and recognition business with 70-80% repeat revenue, exclusive buying group access providing 50-mile geographic exclusivity, and no direct local competitor in a Southern California market of 200,000 residents. | undisclosed | , exclusive buying group access providing 50-mile geographic exclusivity, and no direct local competitor in a Southern California market of 200,000 residents. Price $1.3M Revenue $1.9M EBITDA $177.9K | $177.9K | 0.4% | Consumer / Retail | cohort/customer durability | HARD-REJECT | Retail / DTC exclusion. |
@@ -110,7 +113,7 @@ Every source scanned this run MUST appear as a row. Source categories are limite
 | Source | Category | Status | HTTP | Listings Reviewed | Matches | Last Match Date |
 |--------|----------|--------|------|-------------------|---------|-----------------|
 | BizBuySell | Newsletter | active email/newsletter | — | 0 | 0 | — |
-| BizQuest | Newsletter | active email/newsletter | — | 0 | 0 | — |
+| BizQuest | Newsletter | active email/newsletter | — | 3 | 0 | — |
 | Business Exits | Marketplace | active | 200 | 20 | 0 | — |
 | DealForce | Marketplace | active email alerts | — | 0 | 0 | — |
 | Empire Flippers | Marketplace | active | 200 | 5 | 0 | — |
@@ -120,8 +123,8 @@ Every source scanned this run MUST appear as a row. Source categories are limite
 | Viking Mergers | Newsletter | active email-only | 200 | 0 | 0 | — |
 | Viking Mergers | Newsletter | active newsletter | 200 | 0 | 0 | — |
 | Baton Market | Marketplace | active email alerts | 200 | 0 | 0 | — |
-| Calder Capital | Newsletter | active email-only | 406 | 0 | 0 | — |
-| Quiet Light | Marketplace | dormant | 200 | 0 | 0 | — |
+| Calder Capital | Newsletter | active email-only | 406 | 1 | 0 | — |
+| Quiet Light | Marketplace | dormant | 200 | 5 | 0 | — |
 | GP Bullhound | Direct email | active | 200 | 0 | 0 | — |
 | PCO Bookkeepers | Newsletter | active | 200 | 0 | 0 | — |
 | Sica Fletcher | Direct email | active | 200 | 0 | 0 | — |

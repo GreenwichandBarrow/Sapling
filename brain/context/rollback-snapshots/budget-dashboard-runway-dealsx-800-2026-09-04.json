@@ -1,0 +1,141 @@
+{
+  "range": "'Runway Forecast'!A1:C36",
+  "values": [
+    [
+      "Budget Dashboard",
+      "Greenwich & Barrow"
+    ],
+    [
+      "Last Updated",
+      "2026-09-04"
+    ],
+    [
+      "As of",
+      "2026-07-31"
+    ],
+    [
+      "Fund Balance",
+      "119203.22"
+    ],
+    [
+      "DD Reserve",
+      "40000"
+    ],
+    [
+      "Available for Operations",
+      "79203.22"
+    ],
+    [
+      "Steady-State Monthly Burn",
+      "19635.76"
+    ],
+    [
+      "Months at Steady-State (from Aug 1)",
+      "4.03"
+    ],
+    [
+      "Projected Zero",
+      "Dec 2026"
+    ],
+    [
+      "Shortfall to Feb 2027",
+      "38611"
+    ],
+    [
+      "Monthly Savings Needed",
+      "6435"
+    ],
+    [
+      "Dashboard Source",
+      "July 2026 P&L + Kay corrections: Payoneer/DealsX paused; Apollo/ZenLeads canceled; office lease cancellation approved Sep 2 and September rent waived"
+    ],
+    [
+      "Notes",
+      "Forward run-rate excludes DealsX, Apollo/ZenLeads, office rent, Linkt, StartVirtual VA, and AI consultant; open DealsX invoice is one-time payable, not recurring burn"
+    ],
+    [],
+    [
+      "BURN RATE"
+    ],
+    [
+      "Jan 2026 Net Burn",
+      "31303.94"
+    ],
+    [
+      "Feb 2026 Net Burn",
+      "30096.38"
+    ],
+    [
+      "Mar 2026 Net Burn",
+      "31903.60"
+    ],
+    [
+      "Apr 2026 Net Burn",
+      "33296.47"
+    ],
+    [
+      "May 2026 Net Burn",
+      "22139.53"
+    ],
+    [
+      "June 2026 Net Burn",
+      "26040.55"
+    ],
+    [
+      "Jul 2026 Net Burn",
+      "23021.21"
+    ],
+    [
+      "Trailing Average Burn",
+      "28257.38"
+    ],
+    [
+      "Steady-State Monthly Burn",
+      "19635.76"
+    ],
+    [
+      "Office Rent Risk Case",
+      "Retired - cancellation approved Sep 2; September rent waived"
+    ],
+    [],
+    [
+      "Investor Reporting Snapshot"
+    ],
+    [
+      "budget_remaining",
+      "119203.22"
+    ],
+    [
+      "budget_pct",
+      "21.60%"
+    ],
+    [
+      "burn_rate",
+      "19635.76"
+    ],
+    [
+      "runway_months",
+      "4.03"
+    ],
+    [
+      "projected_zero",
+      "Dec 2026"
+    ],
+    [
+      "target_cash_date",
+      "Feb 2027"
+    ],
+    [
+      "monthly_gap_to_target",
+      "6435"
+    ],
+    [
+      "material_cuts_applied",
+      "Office rent removed and September rent waived; StartVirtual VA, AI consultant, DealsX, Apollo/ZenLeads, and Linkt removed from recurring run-rate"
+    ],
+    [
+      "watch_items",
+      "DealsX open invoice/payment; Linkt charge recovery/cancellation confirmation; OpenAI/ChatGPT $217.75; travel discipline; October conference $1,300 one-time"
+    ]
+  ]
+}

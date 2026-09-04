@@ -1,0 +1,109 @@
+{
+  "range": "'Tech Stack Inventory'!A16:H26",
+  "values": [
+    [
+      "GitHub",
+      "Code Hosting",
+      "Free",
+      "0",
+      "0",
+      "0",
+      "Active"
+    ],
+    [
+      "Cursor",
+      "Coding IDE",
+      "Free",
+      "0",
+      "0",
+      "0",
+      "Active",
+      "Claude Code"
+    ],
+    [
+      "Apollo",
+      "List Building",
+      "Canceled Sep 2026",
+      "0",
+      "0",
+      "64.24",
+      "Canceled - ZenLeads is Apollo billing name",
+      "Linkt also canceled; use manual/web research only while preserving cash"
+    ],
+    [
+      "Hetzner",
+      "Infrastructure",
+      "Monthly",
+      "15.03",
+      "15.03",
+      "0",
+      "Active / actual July bank charge incl. foreign fee"
+    ],
+    [
+      "Tailscale",
+      "Infrastructure",
+      "Monthly",
+      "8.71",
+      "8.71",
+      "0",
+      "Active"
+    ],
+    [
+      "1Password",
+      "Security",
+      "Annual",
+      "4.34",
+      "4.34",
+      "47.79",
+      "Active"
+    ],
+    [
+      "DealsX / KeyReach",
+      "Outreach",
+      "Paused Sep 2026 / Payoneer",
+      "0",
+      "0",
+      "1250",
+      "Paused while focused on SG LOI",
+      "One open invoice remains payable; exclude from recurring run-rate"
+    ],
+    [
+      "AI Consultant / Dodo Digital",
+      "AI/Consulting",
+      "Monthly",
+      "0",
+      "0",
+      "1000",
+      "Confirmed stopped",
+      "Claude / internal ops"
+    ],
+    [
+      "DocSend",
+      "Document Sharing",
+      "Monthly",
+      "15.59",
+      "15.59",
+      "55.18",
+      "Downgraded / actual July bank charge"
+    ],
+    [
+      "BizBuySell",
+      "Marketplace",
+      "Free",
+      "0",
+      "0",
+      "24.95",
+      "Downgraded free / marketplace absent OK"
+    ],
+    [
+      "TOTAL COSTS",
+      "",
+      "",
+      "547.82",
+      "531.82",
+      "2967.31",
+      "Updated 2026-09-04",
+      "Excludes DealsX after pause and Apollo/ZenLeads after cancellation; Linkt remains excluded after cancellation; office rent tracked in runway, not tech stack"
+    ]
+  ]
+}

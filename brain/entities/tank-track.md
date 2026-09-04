@@ -1,27 +1,27 @@
 ---
 schema_version: 1.1.0
-date: 2026-09-03
+date: 2026-09-04
 type: company
 status: prospect
 tags:
-  - date/2026-09-03
+  - date/2026-09-04
   - entity
   - company
   - company/tank-track
+  - status/prospect
 ---
 
 # Tank Track
 
 ## Quick Facts
-- Field service software for septic businesses
-- Serves septic pumpers, installers, inspectors, and maintenance companies
+- Field service software business discussed on the [[calls/2026-09-03-bk-growth-1st-thursday-zoom|BK Growth 1st Thursday Zoom]].
+- Serves septic pumpers, installers, inspectors, and maintenance companies.
 
 ## Communication Style
-- **Tone:** Practical and operator-oriented
-- **Format:** Concrete examples and operating metrics
-- **Frequency:** Tied to growth, product, and hiring decisions
+- **Tone:** Direct, operator-focused, practical.
+- **Format:** Concise bullets and concrete examples.
+- **Frequency:** Only when there is a real operational update or decision.
 
 ## Key Context
-- Acquired by Rohit and partner Austin in January 2026
-- Growth has come from outbound sales, strong retention, pricing, and payments monetization
-- The team uses AI heavily across engineering and go-to-market operations
+- Acquired by [[entities/rohit-tank-track|Rohit]] and [[entities/austin-tank-track|Austin]].
+- The discussion emphasized narrow vertical focus, retention, and sales efficiency.

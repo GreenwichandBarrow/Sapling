@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-03",
+  "updated_at": "2026-09-04",
   "items": [
     {
       "bucket": "thank",
@@ -2149,11 +2149,19 @@
       "email": "cbrownlee@boulaygroup.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-09-03",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Greenwich & Barrow <> Boulay",
       "event_date": "2026-09-02",
-      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6l238chh75146di36csk8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g750jghhm60qjcga560p3eghk8gs4cc1p8534adpp8orkag9g8oo0"
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6l238chh75146di36csk8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g750jghhm60qjcga560p3eghk8gs4cc1p8534adpp8orkag9g8oo0",
+      "completed_at": "2026-09-03",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 19404efe49e2eb07, subject 'Re: Kay // Boulay', sent 2026-09-03 09:49.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "19404efe49e2eb07",
+        "subject": "Re: Kay // Boulay",
+        "sent_at": "2026-09-03 09:49"
+      }
     },
     {
       "bucket": "thank",
@@ -2166,6 +2174,30 @@
       "event": "Relationship / Call Window",
       "event_date": "2026-09-02",
       "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260903T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-04",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-09-03",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260903T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Erin",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-04",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Erin I Kay",
+      "event_date": "2026-09-03",
+      "calendar_event_id": "_88r3edq2652k6b9o8gr38b9k8krj0b9o64sjgba488skaci4650jgh2360"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

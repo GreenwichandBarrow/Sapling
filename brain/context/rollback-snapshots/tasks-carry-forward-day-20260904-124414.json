@@ -1,29 +1,9 @@
 {
   "verb": "carry-forward-day",
-  "timestamp": "20260820-115445",
-  "sheet_id": "1Tjprc8z5uXCP94Y-yJaNZDk3SwNC2h-0tRXctornetE",
+  "timestamp": "20260904-124414",
+  "sheet_id": "12dvGVZXYImCxF820pgVEXvAdwpm38i5SqzE3mn3rsFI",
   "ranges": {
     "'Wed'!A21:E70": [
-      [
-        false,
-        "Reach out to organizer of Art Oct conference"
-      ],
-      [
-        false,
-        "Visit store carrying jewelry line to see product and merchandising in person"
-      ],
-      [
-        false,
-        "Draft risk/mitigation page: retail, inventory, key-person, working capital, lease, non-recurring revenue"
-      ],
-      [
-        false,
-        "Review website direction: light lookbook-style G&B page for seller/investor credibility"
-      ],
-      [
-        true,
-        "Draft seller-call prep framework: transition priorities, questions, and deal-structure options"
-      ],
       [
         false,
         "Reconnect with Andrew Freiman re: Chenmark intro"
@@ -34,55 +14,34 @@
       ],
       [
         false,
+        "Contact the asset backed lender melissa mentioned"
+      ],
+      [
+        false,
         "Niche intel review"
       ],
       [
-        true,
-        "Outreach Work: seller / broker / investor / analyst outreach block"
-      ],
-      [
-        true,
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
-      ],
-      [
-        true,
-        "Strategy / Research: deck, model, thesis, target discovery, niche work"
-      ],
-      [
-        true,
-        "8:30 Decision Review: review what moved, what parks, what rolls forward"
-      ],
-      [
-        true,
-        "Add Kay food staples to Sunday grocery run"
-      ],
-      [
-        true,
-        "Create weekly schedule"
-      ],
-      [
-        true,
-        "Confirm LiveOak payroll transfer coverage"
-      ],
-      [
-        true,
-        "Kids allowance: Sunday $10/week + Friday $10/day through Aug"
-      ],
-      [
-        true,
-        "Set weekly North Star from 60-day LOI sprint and One-Year Plan"
+        false,
+        "Pay DealsX invoice",
+        "Work",
+        "G&B",
+        "Invoice #00700150, ,520.00 outstanding"
       ],
       [
         false,
-        "Choose 3 Body Reset slots for the week: beach yoga if available + 2 home strength/mobility sessions"
+        "Download Start Virtual bank account statements",
+        "Work",
+        "Start Virtual"
+      ],
+      [
+        true,
+        "Send lease break contract to Clayton",
+        "Home",
+        "Home"
       ],
       [
         false,
-        "Process conference registrations"
-      ],
-      [
-        false,
-        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar"
+        "Email Jackie Hirsh: ask whether inventory is included in LOI offer or on top"
       ],
       [
         false,
@@ -90,31 +49,7 @@
       ],
       [
         false,
-        "Pull Megan pre-LOI prep meeting notes"
-      ],
-      [
-        true,
-        "Continue financial modeling"
-      ],
-      [
-        false,
         "Email Melissa to assist with BK Growth contact and file folders"
-      ],
-      [
-        true,
-        "Reconnect with Levi on prior art storage path"
-      ],
-      [
-        false,
-        "Pull contact info and prepare kids modeling submissions to 5 referred agencies"
-      ],
-      [
-        true,
-        "Call RSM"
-      ],
-      [
-        false,
-        "Review new SLD video"
       ],
       [
         false,
@@ -122,7 +57,75 @@
       ],
       [
         false,
-        "Text Sarah Finders Fee document"
+        "Complete Quarterly Update"
+      ],
+      [
+        true,
+        "Schedule Boulay/QOE scoping call: scope, cost, inventory diligence experience"
+      ],
+      [
+        false,
+        "Text Brooke to schedule seller feedback call + Monday cadence"
+      ],
+      [
+        false,
+        "Add seller-alignment section to first pages of SIM"
+      ],
+      [
+        true,
+        "Build Acumen-modeled pre/post-LOI diligence list + spend gates"
+      ],
+      [
+        false,
+        "Await receipt of track rolling 12-month file, salary detail, and org chart"
+      ],
+      [
+        false,
+        "Build buyer vs capital conviction checklist for SIM"
+      ],
+      [
+        false,
+        "Pipeline: confirm EPG closed / not proceeding"
+      ],
+      [
+        false,
+        "Set up Sidney Garber shared Drive data room + request-list structure"
+      ],
+      [
+        true,
+        "Review new SLD video"
+      ],
+      [
+        false,
+        "Put fuel & recovery lists to refrigerator"
+      ],
+      [
+        false,
+        "Schedule exercise classes for the week"
+      ],
+      [
+        false,
+        "Pay Hetzner invoice",
+        "Work",
+        "G&B"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
       ],
       [
         false
@@ -185,46 +188,56 @@
         false
       ]
     ],
-    "'Thu'!A21:E70": [
+    "'Fri'!A21:E70": [
       [
         false,
-        "Outreach Work: seller / broker / investor / analyst outreach block"
-      ],
-      [
-        false,
-        "Relationship / Call Window: calls, follow-ups, meeting prep, live relationship work"
+        "Create travel plans for July in Paris/France next year"
       ],
       [
         false,
-        "Strategy / Research: deck, model, thesis, target discovery, niche work"
+        "Look into GLP1"
       ],
       [
         false,
-        "8:30 Decision Review: review what moved, what parks, what rolls forward"
+        "Review Kai Grey Ventures renewal"
       ],
       [
-        false
+        false,
+        "Submit new PSLF form"
       ],
       [
-        false
+        false,
+        "Create project for French passports"
       ],
       [
-        false
+        false,
+        "Renew kids' work permits"
       ],
       [
-        false
+        false,
+        "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning."
       ],
       [
-        false
+        false,
+        "Complete paperwork for my passport renewal"
       ],
       [
-        false
+        false,
+        "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan"
       ],
       [
-        false
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget"
       ],
       [
-        false
+        false,
+        "Check NYC Housing Connect for new Manhattan lotteries"
+      ],
+      [
+        false,
+        "Pick up my items from One Hanover Square",
+        "Home",
+        "Home"
       ],
       [
         false

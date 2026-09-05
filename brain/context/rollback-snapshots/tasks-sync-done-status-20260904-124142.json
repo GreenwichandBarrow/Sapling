@@ -1,7 +1,7 @@
 {
   "verb": "sync-done-status",
-  "timestamp": "20260828-135632",
-  "sheet_id": "1Tjprc8z5uXCP94Y-yJaNZDk3SwNC2h-0tRXctornetE",
+  "timestamp": "20260904-124142",
+  "sheet_id": "12dvGVZXYImCxF820pgVEXvAdwpm38i5SqzE3mn3rsFI",
   "ranges": {
     "'To Do'!A2:A400": [
       [
@@ -32,82 +32,70 @@
         "On-going"
       ],
       [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
         "Not Completed"
@@ -209,7 +197,7 @@
         "Not Completed"
       ],
       [
-        "Completed"
+        "Not Completed"
       ],
       [
         "Not Completed"
@@ -224,7 +212,7 @@
         "Not Completed"
       ],
       [
-        "Dropped"
+        "Not Completed"
       ],
       [
         "Not Completed"
@@ -236,7 +224,7 @@
         "Not Completed"
       ],
       [
-        "Completed"
+        "Not Completed"
       ],
       [
         "Not Completed"
@@ -260,10 +248,10 @@
         "Not Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
         "Not Completed"
@@ -272,7 +260,7 @@
         "Not Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
         "Not Completed"
@@ -281,82 +269,82 @@
         "Not Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
         "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
         "Completed"
@@ -788,34 +776,55 @@
         "Completed"
       ],
       [
-        "Completed"
+        "Dropped"
       ],
       [
-        "Completed"
+        "Dropped"
       ],
       [
-        "Completed"
+        "Dropped"
       ],
       [
-        "Completed"
+        "Dropped"
       ],
       [
-        "Completed"
+        "Dropped"
       ],
       [
-        "Completed"
+        "Dropped"
       ],
       [
-        "Completed"
+        "Dropped"
       ],
       [
-        "Completed"
+        "Dropped"
       ],
       [
-        "Completed"
+        "Dropped"
       ],
       [
-        "Completed"
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
       ],
       [
         "Dropped"
@@ -1014,6 +1023,51 @@
       ],
       [
         "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Completed"
       ],
       [
         "Not Completed"

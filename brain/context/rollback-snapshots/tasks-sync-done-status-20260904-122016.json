@@ -1,7 +1,7 @@
 {
   "verb": "sync-done-status",
-  "timestamp": "20260830-185241",
-  "sheet_id": "1u5H7M_rEiay2dPUiFZZPQYjB8ySNgNwo3nsIx_xpZF8",
+  "timestamp": "20260904-122016",
+  "sheet_id": "12dvGVZXYImCxF820pgVEXvAdwpm38i5SqzE3mn3rsFI",
   "ranges": {
     "'To Do'!A2:A400": [
       [
@@ -32,82 +32,34 @@
         "On-going"
       ],
       [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
-      ],
-      [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
-        "On-going"
+        "Not Completed"
       ],
       [
         "Not Completed"
@@ -296,7 +248,7 @@
         "Not Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
         "Not Completed"
@@ -308,7 +260,7 @@
         "Not Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
         "Not Completed"
@@ -317,40 +269,40 @@
         "Not Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
         "Completed"
@@ -822,6 +774,93 @@
       ],
       [
         "Completed"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
+      ],
+      [
+        "Dropped"
       ],
       [
         "Dropped"
@@ -1023,6 +1062,18 @@
       ],
       [
         "Dropped"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
+      ],
+      [
+        "Not Completed"
       ]
     ]
   }

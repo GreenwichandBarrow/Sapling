@@ -1,0 +1,28 @@
+
+[2026-09-04T12:44:18.329941] carry-forward-day — wed-to-fri
+  - moved: 20
+  - source: Wed
+  - destination: Fri
+  - source packed: {'completed': 4, 'active': 0, 'blank': 46, 'rows': '21:70'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260904-124414.json
+  
+  - Wed slot 1 → Fri slot 13: Reconnect with Andrew Freiman re: Chenmark intro
+  - Wed slot 2 → Fri slot 14: Change login info for operations folder + operations Gmail account
+  - Wed slot 3 → Fri slot 15: Contact the asset backed lender melissa mentioned
+  - Wed slot 4 → Fri slot 16: Niche intel review
+  - Wed slot 5 → Fri slot 17: Pay DealsX invoice
+  - Wed slot 6 → Fri slot 18: Download Start Virtual bank account statements
+  - Wed slot 8 → Fri slot 19: Email Jackie Hirsh: ask whether inventory is included in LOI offer or on top
+  - Wed slot 9 → Fri slot 20: Call IRS to confirm Form 8822-B address update
+  - Wed slot 10 → Fri slot 21: Email Melissa to assist with BK Growth contact and file folders
+  - Wed slot 11 → Fri slot 22: Locate holdco financial model
+  - Wed slot 12 → Fri slot 23: Complete Quarterly Update
+  - Wed slot 14 → Fri slot 24: Text Brooke to schedule seller feedback call + Monday cadence
+  - Wed slot 15 → Fri slot 25: Add seller-alignment section to first pages of SIM
+  - Wed slot 17 → Fri slot 26: Await receipt of track rolling 12-month file, salary detail, and org chart
+  - Wed slot 18 → Fri slot 27: Build buyer vs capital conviction checklist for SIM
+  - Wed slot 19 → Fri slot 28: Pipeline: confirm EPG closed / not proceeding
+  - Wed slot 20 → Fri slot 29: Set up Sidney Garber shared Drive data room + request-list structure
+  - Wed slot 22 → Fri slot 30: Put fuel & recovery lists to refrigerator
+  - Wed slot 23 → Fri slot 31: Schedule exercise classes for the week
+  - Wed slot 24 → Fri slot 32: Pay Hetzner invoice

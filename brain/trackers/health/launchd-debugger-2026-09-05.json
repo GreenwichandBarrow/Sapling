@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-05",
+  "scan_started_at": "2026-09-05T07:21:04-04:00",
+  "scan_finished_at": "2026-09-05T07:23:09.607407-04:00",
+  "failures_detected": 1,
+  "fixes_attempted": 0,
+  "fixes_succeeded": 0,
+  "surfaces_to_slack": 1,
+  "runtime_seconds": 125,
+  "results": [
+    {
+      "job": "goodmorning",
+      "cause": "CODE_BUG",
+      "action": "SURFACE",
+      "fix_applied": null,
+      "rerun_exit_code": null,
+      "last_log_path": "/home/ubuntu/projects/Sapling/logs/scheduled/goodmorning-2026-09-04-1208.log",
+      "last_log_mtime": "2026-09-04T12:20:43-04:00",
+      "exit_code": 1,
+      "validator_failed": false,
+      "preflight_failed": false,
+      "error_signature": "FAILED: codex exec exited 1",
+      "slack_text": "launchd-debugger: goodmorning FAILED \u2014 CODE_BUG. failed to record rollout items: thread ... not found before FAILED: codex exec exited 1. Recommended: surface for code fix; no operational one-shot rerun is allowed. Log: /home/ubuntu/projects/Sapling/logs/scheduled/goodmorning-2026-09-04-1208.log",
+      "slack_posted": true,
+      "suppression_reason": null
+    }
+  ]
+}

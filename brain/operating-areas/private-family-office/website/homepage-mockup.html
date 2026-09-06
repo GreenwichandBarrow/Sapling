@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Private Family Office - Homepage Mockup</title>
+  <style>
+    :root {
+      --paper: #f7f3ed;
+      --paper-deep: #eee7dc;
+      --ink: #32363a;
+      --muted: #697078;
+      --line: #3d4348;
+      --accent: #b99787;
+      --shadow: rgba(46, 44, 41, 0.20);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+      font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    .page {
+      width: min(1260px, calc(100% - 96px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 28px;
+      padding-bottom: 82px;
+    }
+
+    nav {
+      display: flex;
+      gap: 34px;
+      color: #37414a;
+      font-size: 16px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .logo {
+      justify-self: center;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      line-height: 0.9;
+      letter-spacing: 0.22em;
+      text-align: center;
+      color: #343b42;
+      text-transform: uppercase;
+    }
+
+    .logo small {
+      display: block;
+      margin-top: 4px;
+      font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      color: var(--accent);
+    }
+
+    .right-nav {
+      justify-self: end;
+      justify-content: flex-end;
+    }
+
+    .outline-button {
+      border: 1px solid #b99787;
+      padding: 12px 20px;
+      color: #9f7f70;
+    }
+
+    .intro {
+      margin-bottom: 76px;
+    }
+
+    .section-title {
+      margin: 0;
+      color: #3c444b;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .rule {
+      height: 1px;
+      margin-top: 24px;
+      background: var(--line);
+      opacity: 0.86;
+    }
+
+    .library {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 58px 76px;
+      align-items: start;
+    }
+
+    .book-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .book {
+      position: relative;
+      aspect-ratio: 0.77;
+      min-height: 292px;
+      padding: 26px 28px;
+      border: 1px solid rgba(28, 34, 39, 0.22);
+      border-radius: 1px;
+      background:
+        linear-gradient(120deg, transparent 0 58%, rgba(255, 255, 255, 0.055) 58.2% 100%),
+        radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.055), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.075)),
+        var(--cover);
+      box-shadow: 16px 18px 24px var(--shadow);
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .book::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 4px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.018) 0 1px, transparent 1px 5px);
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .book::after {
+      content: "PFO";
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      color: rgba(247, 243, 237, 0.62);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+      letter-spacing: 0.075em;
+      border-bottom: 1px solid rgba(185, 151, 135, 0.8);
+      padding-bottom: 1px;
+    }
+
+    .book h2 {
+      position: relative;
+      margin: 0;
+      max-width: 230px;
+      color: rgba(250, 247, 242, 0.92);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.28;
+      letter-spacing: 0.075em;
+      text-transform: uppercase;
+    }
+
+    .book-link:hover .book {
+      transform: translateY(-3px);
+      box-shadow: 20px 24px 28px rgba(46, 44, 41, 0.23);
+    }
+
+    .c1 { --cover: #343941; }
+    .c2 { --cover: #b88978; }
+    .c3 { --cover: #4a4d52; }
+    .c4 { --cover: #c8a092; }
+    .c5 { --cover: #5c6268; }
+    .c6 { --cover: #d1b2a4; }
+    .c7 { --cover: #6f7377; }
+    .c8 { --cover: #e0c8bc; }
+
+    @media (max-width: 1050px) {
+      .page { width: min(100% - 48px, 820px); }
+      header { grid-template-columns: 1fr; padding-bottom: 56px; }
+      nav, .right-nav { justify-self: center; }
+      .library { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px 48px; }
+    }
+
+    @media (max-width: 620px) {
+      .page { width: min(100% - 32px, 420px); padding-top: 32px; }
+      nav { display: none; }
+      .logo { font-size: 24px; }
+      .intro { margin-bottom: 46px; }
+      .section-title { font-size: 24px; }
+      .library { grid-template-columns: 1fr; gap: 34px; }
+      .book { min-height: 310px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <nav aria-label="Primary left">
+        <span>Home</span>
+      </nav>
+      <div class="logo">The Private<br>Family Office<small>The Modern Home</small></div>
+      <nav class="right-nav" aria-label="Primary right">
+        <span>Resources</span>
+        <span class="outline-button">Contact</span>
+      </nav>
+    </header>
+
+    <section class="intro" aria-labelledby="library-title">
+      <h1 class="section-title" id="library-title">A private family office system for the modern home.</h1>
+      <div class="rule"></div>
+    </section>
+
+    <section class="library" aria-label="Household library books">
+      <a class="book-link" href="#"><article class="book c1"><h2>Household Finance</h2></article></a>
+      <a class="book-link" href="#"><article class="book c2"><h2>Risk &amp; Protection</h2></article></a>
+      <a class="book-link" href="#"><article class="book c3"><h2>Home Operations</h2></article></a>
+      <a class="book-link" href="#"><article class="book c4"><h2>Children &amp; Dependents</h2></article></a>
+      <a class="book-link" href="#"><article class="book c5"><h2>Health &amp; Environment</h2></article></a>
+      <a class="book-link" href="#"><article class="book c6"><h2>Travel &amp; Mobility</h2></article></a>
+      <a class="book-link" href="#"><article class="book c7"><h2>Time &amp; Calendar</h2></article></a>
+      <a class="book-link" href="#"><article class="book c8"><h2>Giving &amp; Community</h2></article></a>
+    </section>
+  </main>
+</body>
+</html>

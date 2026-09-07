@@ -338,3 +338,323 @@ The tag language should feel academic and reference-library-like, not generic Sa
 ### Rationale
 
 Academic-style status tags preserve the reference-library tone while allowing the site to launch before the entire library is complete. This supports a phased build without making the product feel unfinished or overly commercial.
+
+## Product Decision: Use Forthcoming Status Tag
+
+### Decision
+
+Use **Forthcoming** as the status tag for books, envelopes, or resources that are planned but not yet released.
+
+### Rationale
+
+"Forthcoming" fits the academic/reference-library tone better than "Soon to be Released" while still signaling that the item is planned for future release.
+
+### Current Status Tag Set
+
+- **Open Access**: free and available
+- **Reader Access**: gated or member access
+- **In Preparation**: actively being built
+- **Forthcoming**: planned but not yet released
+
+## MVP Build Direction: Start with Risk & Protection
+
+### Decision
+
+The quickest path for book development is to build **Risk & Protection** first.
+
+The first MVP wedge should focus on household continuity and important documents because it is concrete, urgent, useful, and visually fits the approved envelope interface.
+
+### Quickest Path
+
+- Free: **Identity Documents Checklist**
+- Paid direction: **Household Continuity File**
+- Forthcoming: other envelopes inside Risk & Protection
+- Email capture: **Receive future releases from The Private Family Office**
+
+### Recommended MVP Scope
+
+1. **Homepage**  
+   Use the approved eight-book layout. All eight books should be visible.
+
+2. **One Built Book**  
+   Fully build **Risk & Protection** as the first live book/page, using the approved envelope interface.
+
+3. **Forthcoming Tags**  
+   Mark unfinished books or envelopes as **Forthcoming**. This lets the site feel intentional, not incomplete.
+
+4. **One Free Download**  
+   Create one useful downloadable asset from Risk & Protection, likely **Identity Documents Register** or **Household Continuity Starter Checklist**.
+
+5. **Email Capture**  
+   Use quiet, brand-forward language: **Receive future releases from The Private Family Office**. Avoid founder-forward newsletter language.
+
+6. **No Commerce Yet, or One Test Purchase**  
+   For a true MVP, payment can wait until the free download exists. The next phase can test Apple Pay or another low-friction checkout for a paid template.
+
+### Build Order
+
+1. Finalize MVP site map.
+2. Write the Risk & Protection page content.
+3. Create the first free download.
+4. Build the live website.
+5. Add email capture.
+6. Publish.
+7. Release new envelopes and books over time.
+
+### Facts
+
+- Risk & Protection is one of the eight working books.
+- The approved Risk & Protection mockup uses confidential envelope-style navigation.
+- The first free download should be self-serve and useful without requiring Kay to be the public face.
+- Unfinished books and envelopes can be labeled **Forthcoming**.
+
+### Assumptions
+
+- Important-document organization is a strong first wedge because it is easier to understand and act on than a broad household-management system.
+- A single useful free download can validate demand before building a larger paid library.
+- Payment infrastructure is not required before the site can start learning from traffic and email capture.
+
+### Hypotheses
+
+- Risk & Protection will be the highest-conversion starting book because it connects to urgent household anxiety: documents, insurance, legal basics, identity records, emergency access, and continuity.
+- The Identity Documents Checklist can become a low-friction lead magnet.
+- The Household Continuity File can become the first paid kit once the free download and page are live.
+
+## Initial Launch Decision: The 5 Ones
+
+### Decision
+
+The initial launch should follow the "5 Ones" focus model. This is the final launch direction for the first MVP pass.
+
+1. **One audience:** women becoming heads of household.
+2. **One problem:** important household documents and instructions are scattered.
+3. **One product:** **Important Documents / Household Protection File**.
+4. **One free asset:** **Identity Documents Checklist**.
+5. **One channel:** Pinterest as visual search, with SEO on the owned site.
+
+### Rationale
+
+This keeps the MVP focused enough to launch without turning The Private Family Office into a broad content project too early. It also preserves the self-serve library model, avoids making Kay the public face, and creates a practical path from free resource to paid digital product.
+
+### Operating Implication
+
+Until the MVP is live, new ideas should be evaluated against this launch filter. If an idea does not support the chosen audience, problem, product, free asset, or channel, it should be parked for later rather than added to the first launch scope.
+
+### Facts
+
+- The first built book is **Risk & Protection**.
+- The approved first free asset is **Identity Documents Checklist**.
+- The first paid-product direction is **Important Documents / Household Protection File**.
+- Pinterest is the first selected distribution channel, supported by SEO on the owned website.
+
+### Assumptions
+
+- Pinterest can function as visual search rather than personality-led social media.
+- SEO on the owned site can support compounding discovery over time.
+- A focused launch will produce clearer learning than trying to build all eight books at once.
+
+### Hypotheses
+
+- Women becoming heads of household will respond to a plain, serious resource for organizing household documents and continuity instructions.
+- The Identity Documents Checklist can capture email demand before commerce is added.
+- The Important Documents / Household Protection File can become the first paid product after initial demand is validated.
+
+## MVP Site Map Interaction: Forthcoming Books Capture Interest
+
+### Decision
+
+On the MVP homepage, clicking a **Forthcoming** book should open a quiet email-capture prompt rather than sending the visitor to an empty or underbuilt page.
+
+### Interaction
+
+When a visitor clicks a Forthcoming book, the site should show a modal or small overlay with:
+
+- The selected book name.
+- A **Forthcoming** status label.
+- A short note that the book is in preparation.
+- Email capture language: **Receive announcement of this book release from The Private Family Office** or a close variant.
+
+### Rationale
+
+This makes the eight-book homepage useful at launch even though only **Risk & Protection** is fully built. It also turns future-library interest into an email list without making the site feel unfinished or overly commercial.
+
+### Operating Implication
+
+For launch, **Risk & Protection** should open into the live book page. The other seven books may remain visible on the homepage with **Forthcoming** status and an email-capture interaction.
+
+## Risk & Protection Interaction: Envelopes Collapse Into Reading Navigation
+
+### Decision
+
+On the **Risk & Protection** page, the envelope interface should have two states: a larger browsing state and a compact reading state.
+
+When no envelope is selected, the envelopes can appear larger as the main visual interface. When a visitor clicks an envelope, the envelopes should shrink into a compact left-side navigation area, potentially as a scrolling vertical list, so the selected content has more reading space on the right.
+
+### Interaction
+
+- Initial state: envelopes are large enough to browse visually.
+- Selected state: envelopes reduce in size and move into a left-side navigator.
+- The selected envelope remains visibly active.
+- The right side becomes the primary reading/action pane.
+- The left-side envelope list can scroll if all envelopes do not fit comfortably.
+
+### Rationale
+
+This preserves the tactile envelope concept while making the page more useful once someone starts reading. The interaction should feel like opening a file drawer: the available envelopes remain visible, but the selected document contents become the main focus.
+
+### Operating Implication
+
+The MVP build should support this responsive behavior on desktop. On mobile, the envelopes may become a compact horizontal or vertical selector above the reading pane if a two-column layout is not practical.
+
+## Risk & Protection Decision: Full Eight-Envelope Structure and Review Cadence
+
+### Decision
+
+Use the full eight-envelope structure for **Risk & Protection**. Each envelope should include guidance on how often the documents or information inside it should be reviewed or updated.
+
+### Eight Envelopes
+
+1. **Identity Documents**
+2. **Insurance Policies**
+3. **Legal & Estate Documents**
+4. **Emergency Information**
+5. **Digital Access**
+6. **Property & Asset Records**
+7. **Beneficiaries & Account Access**
+8. **Continuity Instructions**
+
+### Review Cadence Rule
+
+Each envelope should include a simple update cadence, such as monthly, quarterly, annually, after tax season, before travel, after a move, after a birth or death, after a school change, or after a major financial or legal change.
+
+### Reminder Email Idea
+
+The email list can eventually support quiet household-administration reminders tied to review windows. Examples might include a December annual document review, an April post-tax document update, a monthly bill/account review, or seasonal insurance and travel checks.
+
+### Rationale
+
+The cadence layer makes the library more useful than a static checklist. It turns each envelope into an ongoing household-management system and creates a natural reason for subscribers to stay connected without relying on personality-led content.
+
+### Operating Implication
+
+When writing each envelope page, include a visible **Review Cadence** or **Review Rhythm** note near the checklist or action area.
+
+## Product Principle: Reminder Emails as Household Operating Support
+
+### Decision
+
+Reminder emails should become part of the product experience over time. They should help subscribers remember when household documents, policies, accounts, and instructions need to be reviewed or revised.
+
+### Rationale
+
+It is easy for household administration to disappear into day-to-day life. Review reminders create practical value by bringing important but non-urgent updates back to the surface at the right time. They also provide a natural, non-personality-driven way for The Private Family Office to stay connected with its audience.
+
+### Future Product Direction
+
+As the subscriber experience matures, readers should eventually be able to edit their notification or email reminder settings. Reminder preferences might include annual reviews, seasonal reviews, monthly reviews, document-specific reminders, or life-event prompts.
+
+### Operating Implication
+
+When building pages, downloads, and email capture, preserve the idea that subscribers may later receive useful review reminders tied to specific envelopes, documents, or household rhythms.
+
+## Documentation Rule: Venture-Wide vs. Book-Specific Concept Decisions
+
+### Decision
+
+Use the main **The Private Family Office - Concept Decisions** document for venture-wide decisions, including brand rules, audience, launch scope, distribution, status tag language, review-rhythm principles, reminder-email principles, and rules that apply across multiple books.
+
+Use book-specific concept-development documents inside each book folder for decisions that only apply to that book. For example, the eight envelope names for **Risk & Protection** belong in the Risk & Protection concept-development document, while the broader review-rhythm principle belongs in the main concept decisions document.
+
+### Rationale
+
+This keeps the overall venture architecture streamlined while allowing each book to develop its own internal structure, content map, and product ideas.
+
+### Operating Implication
+
+When a new decision is made, classify it before saving:
+
+- Venture-wide decision: save to the main Concept Decisions document.
+- Book-specific decision: save to that book's concept-development document.
+- Both: save the general principle in the main document and the implementation detail in the relevant book document.
+
+## Communication Rule: Avoid Product and Technical Shorthand
+
+### Decision
+
+In Private Family Office concept development, avoid product-management and technical shorthand in conversation unless Kay asks for it. Do not use acronyms such as CTA as working language.
+
+Use plain, academic, and strategic language instead. For example, say **next-step prompt**, **download prompt**, **reader action**, or **invitation to receive updates** rather than CTA.
+
+### Rationale
+
+The venture should be developed in language that matches its brand posture: serious, useful, academically grounded, and accessible. Technical shorthand can make the work feel more like software/product management than a private reference library for household life.
+
+### Operating Implication
+
+Future working documents, site copy, and strategy discussions should use complete language rather than unexplained acronyms or startup jargon.
+
+## Voice Rule: Write from a Positive and Rational Premise
+
+### Decision
+
+Private Family Office copy should not defend against negative framings that Kay does not hold. Avoid phrases such as "this is not alarmist" or similar language that introduces a negative idea just to reject it.
+
+Write from a positive, rational, organized premise. The voice should assume that household organization is useful, serious, and practical without needing to justify itself against fear-based or negative interpretations.
+
+### Rationale
+
+Kay's voice is constructive and rational. She thinks in terms of organizing the household, making important information findable, and helping people manage responsibility clearly. The copy should begin from that worldview.
+
+### Operating Implication
+
+When drafting site copy, avoid defensive "not X" constructions unless Kay has explicitly named that contrast as important. Prefer affirmative language about clarity, preparedness, order, usefulness, and continuity.
+
+## Site Orientation Rule: Flexible Entry with a Recommended First Pillar
+
+### Decision
+
+The site should present The Private Family Office as a system that can be built over time. Readers may begin in any section, but the site should recommend **Risk & Protection** as the first pillar for building a private family office for the modern home.
+
+### Rationale
+
+The full household system is useful because the parts connect, but building it takes time. A recommended starting place helps readers move from interest to action without making the library feel rigid or sequential.
+
+### Operating Implication
+
+The homepage or initial orientation copy should explain that the library shares a system readers can adapt for their own family management. It should invite flexible exploration while clearly pointing first-time readers toward **Risk & Protection**.
+
+## Public Orientation Copy: Process-Oriented Person
+
+### Decision
+
+Use the following public orientation language as the current working homepage copy:
+
+**The Private Family Office is an organization system for the process-oriented person managing the financial and operational responsibilities of household life. The library is designed to be built over time and used in the same way: section by section, as each part of the household becomes ready for more order. You can begin anywhere, but we recommend starting with Risk & Protection, the first pillar in building a private family office for the modern home.**
+
+### Rationale
+
+This keeps the external language broader and more identity-light while still speaking to the internal audience thesis: women becoming heads of household and carrying both financial and household operating responsibility.
+
+### Operating Implication
+
+Use **process-oriented person** in public-facing site copy for now. Preserve **women becoming heads of household** as the internal audience thesis and launch strategy, not necessarily the exact public headline language.
+
+## Download Design Rule: Match the Website System
+
+### Decision
+
+Private Family Office downloads, checklists, registers, templates, and printables should visually mimic the website system. The style should be minimalist, neutral, restrained, and consistent with the site's typography, colors, rules, and academic reference-library tone.
+
+### Design Direction
+
+- Use the same formal serif and clean sans-serif pairing as the website.
+- Use warm paper, grey, muted ink, and peach-accent colors.
+- Keep layouts spacious and orderly.
+- Use thin rules, restrained boxes, and clear section hierarchy.
+- Avoid decorative clutter, bright colors, cute worksheet styling, or generic Canva-template energy.
+- Treat each download as part of the same private reference library, not as a standalone lead magnet.
+
+### Operating Implication
+
+Create a reusable printable design pattern before producing multiple downloads. The first sample is the **Identity Documents Checklist** for the Risk & Protection book.
+

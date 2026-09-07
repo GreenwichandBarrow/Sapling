@@ -106,9 +106,11 @@ If work should be available on iMac, MacBook, and iPhone, start it in vps:/home/
 Role-specific material should be filed under:
 
 ```text
-brain/operating-areas/c-suite/chief-of-staff
-brain/operating-areas/c-suite/cfo
-brain/operating-areas/c-suite/cio
+brain/operating-areas/c-suite/Chief-of-Staff
+brain/operating-areas/c-suite/CFO
+brain/operating-areas/c-suite/CIO
 brain/operating-areas/family-office
 ```
+
+Do not open Codex with both `/home/ubuntu/projects/Sapling` and a nested role folder as separate workspace roots. The role folders are organization inside Sapling, not separate project roots. Duplicating the root plus a nested compatibility symlink can break Codex sandbox startup.
 

@@ -28,6 +28,8 @@ The working positioning is: "A private family office system for the modern home.
 - Never use mommy-blog, influencer, cute, loud-luxury, hustle, or public-founder language.
 - Never publish product recommendations unless Kay has personally used, tested, or directly vetted them; otherwise label them as research candidates.
 - Never number books, envelopes, or resource modules unless the order is meaningful to the user.
+- Avoid product/tech shorthand and acronyms such as CTA in conversation with Kay; use plain academic and strategic language instead.
+- In Kay-voice copy, do not defend against negative framings she does not hold; write from a positive, rational, organized premise instead.
 </non_negotiables>
 
 <current_architecture>

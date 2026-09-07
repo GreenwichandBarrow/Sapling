@@ -1,9 +1,12 @@
 {
-  "blocked": [],
+  "blocked": [
+    "source artifact is stale",
+    "compact input artifact is stale"
+  ],
   "deal_items": 14,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-09-04T12:09:08.191796-04:00",
+  "fetched_at": "2026-09-06T19:19:36.142319-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -48,11 +51,10 @@
     }
   ],
   "input_artifact": "brain/context/email-intelligence-input-2026-09-04.json",
-  "input_status": "ok",
+  "input_status": "stale",
   "needs_kay": [
     "1 email-derived task candidate(s)",
     "14 broker/listing row(s) extracted",
-    "2 prior-day thank-you(s) need approval: Erin; Relationship / Call Window",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Brooke (24-hour thank-you after external meeting); Erin (24-hour thank-you after external meeting)"
   ],
@@ -60,35 +62,10 @@
   "relationship_items": 0,
   "send_blockers": 0,
   "source_artifact": "brain/context/email-scan-results-2026-09-04.md",
-  "source_status": "ok",
+  "source_status": "stale",
   "stale_drafts": 0,
   "task_candidates": 1,
-  "thank_you_items": [
-    {
-      "completed_at": "",
-      "due_date": "2026-09-04",
-      "email": "",
-      "event": "Erin I Kay",
-      "event_date": "2026-09-03",
-      "person": "Erin",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    },
-    {
-      "completed_at": "",
-      "due_date": "2026-09-04",
-      "email": "",
-      "event": "Relationship / Call Window",
-      "event_date": "2026-09-03",
-      "person": "Relationship / Call Window",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    }
-  ],
+  "thank_you_items": [],
   "unclear_followthrough_items": [
     "Lisa (24-hour thank-you after external call)",
     "Brooke (24-hour thank-you after external meeting)",

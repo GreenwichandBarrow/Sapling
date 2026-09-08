@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-04",
+  "updated_at": "2026-09-08",
   "items": [
     {
       "bucket": "thank",
@@ -2198,6 +2198,18 @@
       "event": "Erin I Kay",
       "event_date": "2026-09-03",
       "calendar_event_id": "_88r3edq2652k6b9o8gr38b9k8krj0b9o64sjgba488skaci4650jgh2360"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-08",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-09-07",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260908T153000Z"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

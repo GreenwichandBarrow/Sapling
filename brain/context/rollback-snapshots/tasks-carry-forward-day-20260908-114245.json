@@ -1,0 +1,143 @@
+{
+  "verb": "carry-forward-day",
+  "timestamp": "20260908-114245",
+  "sheet_id": "1hsQlT0gkKHXF4pzw5sQiGNqXk9uzgE0PP5Ejx4ZBBJ4",
+  "ranges": {
+    "'Mon'!A21:E72": [
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Email Jackie Hirsh: ask whether inventory is included in LOI offer or on top",
+        "Work",
+        "G&B"
+      ],
+      [],
+      [],
+      [
+        true,
+        "Process payroll",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Process conference registrations",
+        "Work",
+        "G&B"
+      ],
+      [
+        "",
+        "Process Gusto Health Reimb"
+      ]
+    ],
+    "'Tue'!A21:E72": [
+      [],
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false,
+        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar",
+        "Home",
+        "Home",
+        "Combined from To Do rows 34, 35, 36, 37, 38 based on Sat slot 5."
+      ],
+      [
+        false,
+        "Call IRS to confirm Form 8822-B address update",
+        "Home",
+        "Home",
+        "IRS business line: 800-829-4933. Ask to confirm business mailing address currently on file for EIN before updating bank address."
+      ],
+      [
+        false,
+        "Email Melissa to assist with BK Growth contact and file folders",
+        "Work",
+        "G&B",
+        "Draft only; Kay sends. Ask Melissa to assist with BK Growth contact and file folders."
+      ],
+      [
+        false,
+        "Locate holdco financial model",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Send Quarterly Update",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Add seller-alignment section to first pages of SIM",
+        "Work",
+        "Sidney Garber",
+        "Outline what we know, what seller agrees with, and what still needs repetition/clarification."
+      ],
+      [
+        false,
+        "Live Deal / Model: track rolling 12-month file, salary detail, and org chart",
+        "Work",
+        "Sidney Garber"
+      ],
+      [
+        false,
+        "Build buyer vs capital conviction checklist for SIM",
+        "Work",
+        "Sidney Garber",
+        "Separate Kay/G&B go-no-go issues from investor/lender questions; make sure each is answered or mitigated in the SIM."
+      ],
+      [
+        false,
+        "Set up Sidney Garber shared Drive data room + request-list structure",
+        "Work",
+        "Sidney Garber",
+        "Use shared Google Drive; organize first-round and follow-up seller diligence requests."
+      ],
+      [
+        false,
+        "Pick up my items from One Hanover Square",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Pay Hetzner invoice",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Pay DealsX invoice",
+        "Work",
+        "G&B",
+        "Invoice #00700150, ,520.00 outstanding"
+      ],
+      [
+        false,
+        "Await receipt of track rolling 12-month file, salary detail, and org chart"
+      ],
+      [
+        false,
+        "Help Anthony with mapping in QuickBooks",
+        "Work"
+      ],
+      [
+        false,
+        "Review new SLD video"
+      ]
+    ]
+  }
+}

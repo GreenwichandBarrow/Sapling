@@ -1,0 +1,21 @@
+
+[2026-09-08T11:42:47.228470] carry-forward-day — mon-to-tue
+  - moved: 3
+  - source: Mon
+  - destination: Tue
+  - source packed: {'completed': 1, 'active': 0, 'blank': 51, 'rows': '21:72'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260908-114245.json
+
+  - Mon slot 3 → Tue slot 1: Email Jackie Hirsh: ask whether inventory is included in LOI offer or on top
+  - Mon slot 7 → Tue slot 18: Process conference registrations
+  - Mon slot 8 → Tue slot 19: Process Gusto Health Reimb
+
+[2026-09-08T11:43:46.615738] carry-forward-day — sun-to-tue
+  - moved: 2
+  - source: Sun
+  - destination: Tue
+  - source packed: {'completed': 2, 'active': 0, 'blank': 50, 'rows': '21:72'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260908-114345.json
+
+  - Sun slot 3 → Tue slot 20: Put fuel & recovery lists to refrigerator
+  - Sun slot 8 → Tue slot 21: Schedule exercise classes for the week

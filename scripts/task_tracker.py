@@ -2553,6 +2553,18 @@ def cmd_archive(args) -> int:
     return cmd_build_week(args)
 
 
+def _require_day_task_layout(client, day_names):
+    """Reject shifted headers before commands use fixed task-row boundaries."""
+    for day_name in day_names:
+        rows = client.get_values(f"'{day_name}'!A{DAY_COL_HEADER_ROW}:E{DAY_COL_HEADER_ROW}")
+        if rows != [DAY_HEADERS]:
+            sys.exit(
+                f"task-tracker-manager: refused command - {day_name} task header "
+                f"does not match configured row {DAY_COL_HEADER_ROW}; "
+                "verify live layout and correct row boundaries before retrying"
+            )
+
+
 def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
                          _meta: dict | None = None) -> int:
     """Reconcile checked weekly slots → matching To Do rows by exact task-text match.
@@ -2573,6 +2585,8 @@ def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
     day_tabs = list(_iter_day_tabs(meta))
     if not day_tabs:
         sys.exit("task-tracker-manager: no day tabs present — run scripts/build_day_tabs.py first")
+
+    _require_day_task_layout(client, [name for name, _ in day_tabs])
 
     # 1. Walk the 7 day tabs' 25 slots each — read A (status) + B (task) columns.
     #    MUST run BEFORE the Sunday clear (build-week) so completed items flow to
@@ -3260,6 +3274,7 @@ def cmd_reformat(args) -> int:
 def cmd_report(args) -> int:
     client = SheetsClient()
     meta = client.get_metadata()
+    _require_day_task_layout(client, [name for name, _ in _iter_day_tabs(meta)])
     today = date.today()
     today_iso = today.isoformat()
 
@@ -3647,6 +3662,8 @@ def cmd_carry_forward_day(args) -> int:
         sys.exit(f"task-tracker-manager: source day tab '{src_name}' not found")
     if find_day_tab(meta, dst_name) is None:
         sys.exit(f"task-tracker-manager: destination day tab '{dst_name}' not found")
+
+    _require_day_task_layout(client, [src_name, dst_name])
 
     src_last_row = _day_task_last_row(client, src_name)
     dst_last_row = _day_task_last_row(client, dst_name)

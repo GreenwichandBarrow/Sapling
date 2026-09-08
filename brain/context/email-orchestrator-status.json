@@ -1,9 +1,12 @@
 {
-  "blocked": [],
+  "blocked": [
+    "Live calendar: no external meetings September 7; Relationship / Call Window is an operating block, not a thank-you recipient.",
+    "Old follow-through records require identity and task-specific sent verification; an investor update alone does not establish completion of a prior thank-you."
+  ],
   "deal_items": 35,
-  "drafts_missing_recipient": 0,
-  "drafts_pending": 0,
-  "fetched_at": "2026-09-08T06:50:45.237262-04:00",
+  "drafts_missing_recipient": 1,
+  "drafts_pending": 1,
+  "fetched_at": "2026-09-08T11:42:54.729003-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -50,32 +53,16 @@
   "input_artifact": "brain/context/email-intelligence-input-2026-09-08.json",
   "input_status": "ok",
   "needs_kay": [
-    "35 broker/listing row(s) extracted",
-    "1 prior-day thank-you(s) need approval: Relationship / Call Window",
-    "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
-    "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Brooke (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting); Erin (24-hour thank-you after external meeting)"
+    "Repair email follow-through classification and completion matching before using old reminders as action requests."
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
-  "send_blockers": 0,
+  "send_blockers": 1,
   "source_artifact": "brain/context/email-scan-results-2026-09-08.md",
-  "source_status": "ok",
-  "stale_drafts": 0,
+  "source_status": "review_required",
+  "stale_drafts": 1,
   "task_candidates": 0,
-  "thank_you_items": [
-    {
-      "completed_at": "",
-      "due_date": "2026-09-08",
-      "email": "",
-      "event": "Relationship / Call Window",
-      "event_date": "2026-09-07",
-      "person": "Relationship / Call Window",
-      "sent_at": "",
-      "sent_subject": "",
-      "sent_thread_id": "",
-      "status": "not drafted"
-    }
-  ],
+  "thank_you_items": [],
   "unclear_followthrough_items": [
     "Lisa (24-hour thank-you after external call)",
     "Camilla (24-hour thank-you after external meeting)",
@@ -85,5 +72,11 @@
     "Sarah (24-hour thank-you after external meeting)",
     "Sarah (24-hour thank-you after external meeting)",
     "Erin (24-hour thank-you after external meeting)"
-  ]
+  ],
+  "operator_review": {
+    "date": "2026-09-08",
+    "gmail_draft_check": "One August 20 Lacey draft without recipient or subject; no draft changes made.",
+    "unverified_auto_completions_reverted": 4,
+    "scope": "Current snapshot corrected; underlying classifier remains a repair item."
+  }
 }

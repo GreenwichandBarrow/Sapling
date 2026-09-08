@@ -1,7 +1,7 @@
 {
   "verb": "sync-done-status",
-  "timestamp": "20260902-095524",
-  "sheet_id": "12dvGVZXYImCxF820pgVEXvAdwpm38i5SqzE3mn3rsFI",
+  "timestamp": "20260908-114132",
+  "sheet_id": "1hsQlT0gkKHXF4pzw5sQiGNqXk9uzgE0PP5Ejx4ZBBJ4",
   "ranges": {
     "'To Do'!A2:A400": [
       [
@@ -257,16 +257,16 @@
         "Not Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
-        "Not Completed"
+        "Completed"
       ],
       [
         "Completed"
@@ -776,13 +776,31 @@
         "Completed"
       ],
       [
-        "Dropped"
+        "Completed"
       ],
       [
-        "Dropped"
+        "Completed"
       ],
       [
-        "Dropped"
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
+      ],
+      [
+        "Completed"
       ],
       [
         "Dropped"
@@ -1064,13 +1082,13 @@
         "Dropped"
       ],
       [
-        "Not Completed"
+        "Dropped"
       ],
       [
-        "Not Completed"
+        "Dropped"
       ],
       [
-        "Not Completed"
+        "Dropped"
       ]
     ]
   }

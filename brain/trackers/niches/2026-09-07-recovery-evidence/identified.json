@@ -1,0 +1,535 @@
+{
+  "run_date": "2026-09-07",
+  "runtime": "Codex/systemd",
+  "status": "identified_for_review_not_activated",
+  "candidate_universe_count": 23,
+  "edge_scopes_considered": 13,
+  "preliminary_candidates_reviewed": 5,
+  "niches_identified": 3,
+  "automatic_kills": {
+    "no_tailwind": 0,
+    "no_target_density": 0,
+    "pe_saturation": 0,
+    "revenue_quality": 0,
+    "searcher_fit": 0
+  },
+  "counts_note": "Not nominated is not a tracker kill/table decision. Three proceed with incomplete screen evidence; no invented industry margins or target estimates.",
+  "as_of_note": "Events after 2026-09-07 excluded. Undated live vendor pages are present-state service/ownership assertions, not archived proof as of operating date.",
+  "discovery_passes": {
+    "customer_environment": "Synthesizer mapped 50 fine-jewelry brand workflows before nomination; reviewed source-led service expansion across all five umbrella themes.",
+    "taxonomy": "Census 2022 NAICS manual reviewed: 541380 testing laboratories/services; 541690 other scientific/technical consulting; 541330 engineering and 811310 equipment maintenance adjacent; billing 541219/561499 require company-specific classification. Broad codes are discovery categories, never niche TAM/count. K&S capability statement supplies 541380/541690 and medical-billing capability statement 541219 examples.",
+    "deal_flow": "Read historical Aug19 E&K electrical-services seller teaser and Aug24 specialty-RCM transaction newsletter; fresh Sept2 West Physics/RTS acquisition and Aug25 Multi-Pak packaging transaction. Axial/SBA full universe not queried; no SBA financing proof claimed.",
+    "directory": "NETA Spring/Summer2026 accredited-company directory, AAPM corporate affiliate directory and primary vendor service sites inspected. Branches and acquired platforms excluded from independent target totals; membership != saleability.",
+    "pe_heat": "WebPT Warburg ownership/RCM bundling; Shermco $1.6B sale to Blackstone announced Aug2025; Advanced Testing Systems in HIGHVOLT since2022; West Physics acquiring RTS Sept2026. Heat is constraint, not automatic rejection.",
+    "negative_memory": "Fresh live all-four-tab header-based read saved identifier-live-tracker.json. Rehab service RCM distinct from credentialing-only, concierge software and rejected clinics; medical physics distinct from cleaning; electrical testing child of broad equipment maintenance, distinct from water SCADA and killed fire/sign equipment lanes."
+  },
+  "not_nominated": [
+    {
+      "name": "Fine-jewelry incoming QA/inventory verification",
+      "reason": "Actual external jewelry-QA services found at Engraving Technologies (since1996) and broad international inspectors ProQC/NBNQC. This is not zero supply; however no five-company US specialist acquisition pool, contractual-repeat mix or $500M niche TAM established. Same-deal pain and June17 confidentiality/in-house objection remain. Retain as research hypothesis, no kill/table.",
+      "sources": [
+        "https://engravingtech.com/about/",
+        "https://proqc.com/industries/jewelry/",
+        "https://www.nbnqc.com/jewelry/"
+      ]
+    },
+    {
+      "name": "Consumer-health supplement primary contract packaging",
+      "reason": "Distinct primary fill/pack potentially exists, but new materialization risks duplicating tracked beauty/fragrance packaging and MoCRA 3PL; production/plant/working-capital exposure not resolved. Existing supplier acquisition used as context, not a fourth new row.",
+      "sources": [
+        "https://www.truvant.com/news/truvant-acquires-new-jersey-based-multi-pak-packaging-a-specialist-in-vitamins-supplements-and-otc"
+      ]
+    }
+  ],
+  "niches": [
+    {
+      "slug": "outpatient-rehabilitation-revenue-cycle-services",
+      "name": "Outsourced Billing, Denials and Authorization Services for Independent Outpatient PT, OT and Speech Therapy Practices",
+      "umbrella_theme": "Beauty, Wellness & Longevity Infrastructure; Family Wealth, Legacy & Life Infrastructure",
+      "tailwind": "Growing rehabilitation demand and complex therapy-specific payer documentation create recurring administrative work. BLS Aug27 2026 forecasts PT employment +12% over2025\u20132035; this is demand context, NOT billing-services revenue CAGR.",
+      "operational_complexity": "Timed therapy codes/modifiers, visit authorizations, payer enrollment, claim submission, denials, payment posting and AR follow-up recur with every treatment.",
+      "second_order_beneficiary": "Paid administrative operator supporting clinics, not ownership of clinicians, venture health brands, or standalone software.",
+      "thesis": "Specialist billers embed themselves in the monthly collections workflow of independent rehabilitation practices. Recurring transaction volume and payer-specific know-how can support durable relationships, while workflow automation may improve delivery; revenue retention and labor economics need verification.",
+      "signal_source": "Aug26 clinic expansion/billing hiring newsletter plus Aug24 specialty-RCM investment newsletter; signals trigger validation only.",
+      "initial_screen": {
+        "margins": {
+          "status": "UNKNOWN",
+          "evidence": "No verified industry EBITDA margin distribution; do not assert 15%+."
+        },
+        "recurring_reoccurring_revenue": {
+          "status": "PASS_MODEL_ONLY",
+          "evidence": "Multiple specialist providers offer ongoing claims/denial/collections operations; usage-linked or collections-linked recurring services, not contracted revenue percentage or audited retention."
+        },
+        "industry_growth": {
+          "status": "UNKNOWN",
+          "evidence": "PT employment 12%/10years is approximately1.14% annualized labor growth, not above-GDP niche revenue evidence."
+        },
+        "growth_tam": {
+          "status": "UNKNOWN",
+          "evidence": "No defensible $500M+ US specialty service-only TAM established."
+        },
+        "verdict": "INCOMPLETE; retain for scored analyst review, not certified initial-screen pass"
+      },
+      "target_tam": {
+        "total_firms": "At least five distinct named service-provider brands directly verified; full universe unknown",
+        "independently_owned": "PT Billing Services .com describes independent/family ownership; other four ownership unverified. No buy-box-scale independent count established.",
+        "already_backed_or_acquired": "WebPT/BMS platform comp excluded; WebPT majority Warburg investment documented2019. Full backed count unknown.",
+        "pe_consolidation_risk": "High in broad RCM and rehab software/RCM bundling; narrow service specialists unquantified",
+        "sprint_duration": "Not assigned; target count not established",
+        "observed_provider_count": 5
+      },
+      "market_tam": {
+        "market_size_usd": null,
+        "year": null,
+        "growth_cagr_pct": null,
+        "scope": "US outsourced PT/OT/SLP revenue-cycle services only",
+        "assessment": "UNKNOWN; clinical rehabilitation spending and broad healthcare RCM market are not this niche TAM.",
+        "demand_drivers": [
+          "Repeated payer transactions",
+          "Documentation/authorization complexity",
+          "Clinic growth and specialist outsourcing"
+        ]
+      },
+      "named_companies": [
+        {
+          "name": "PT Billing Services LLC",
+          "location": "Maryland; Harford origin",
+          "url": "https://ptbillingservices.com/about-us/",
+          "ownership": "Self-described independent family company",
+          "notes": "Carolyn Yodonise founded1996; PT/OT/SLP billing. Distinct domain/legal brand from .net.",
+          "saleability": "Not verified; no outreach authorized"
+        },
+        {
+          "name": "Physical Therapy Billing Services",
+          "location": "Clare, Michigan; location secondary-profile corroborated",
+          "url": "https://www.ptbillingservices.net/",
+          "ownership": "Unknown",
+          "notes": "20+year operating history and100+practice clients self-reported; not industry metrics.",
+          "saleability": "Not verified; no outreach authorized"
+        },
+        {
+          "name": "Medical Billing Center",
+          "location": "US; location not validated",
+          "url": "https://www.4mbc.com/",
+          "ownership": "Unknown",
+          "notes": "Outpatient therapy billing provider; company states founded by PTs2001.",
+          "saleability": "Not verified; no outreach authorized"
+        },
+        {
+          "name": "PT Pilot Billing",
+          "location": "Greater New Orleans origin; current HQ unverified",
+          "url": "https://ptpilotbilling.com/about/",
+          "ownership": "Founder-led stated; equity unknown",
+          "notes": "Founded by practice owners, named founder Matt Slimming; dedicated biller model.",
+          "saleability": "Not verified; no outreach authorized"
+        },
+        {
+          "name": "PT Outsource Solutions",
+          "location": "US; HQ unverified",
+          "url": "https://www.ptoutsourcesolutions.com/",
+          "ownership": "Unknown",
+          "notes": "Explicit PT/OT/SLP billing, credentialing and contracting; ten years experience claim is not business age.",
+          "saleability": "Not verified; no outreach authorized"
+        }
+      ],
+      "semantic_dedup": "Not credentialing management alone: ongoing revenue operations are main scope. Not tabled Back Office Systems for Concierge Practices: fee-for-service rehab claims operator rather than affluent cash-pay software. Not clinic acquisition; rejected pelvic-floor clinic lifecycle preserved.",
+      "searcher_fit": "Medium: service/process/customer trust fit; no named warm vendor access or proven domain operator.",
+      "hair": "Payer reimbursement pressure, client concentration, PHI/security, offshore labor, EMR platforms bundling RCM, AI commoditizing simple claims.",
+      "j_curve_resilience": "Hypothesis: repeat collections workflow and embedded claim histories; verify cohort retention and delivery margins before reliance.",
+      "key_question": "How many independent 10+year rehab-focused operators have durable customer cohorts, 15%+ normalized EBITDA and meaningful scale?",
+      "sources": [
+        {
+          "title": "PT Billing Services history",
+          "url": "https://ptbillingservices.com/about-us/",
+          "evidence": "Family company since1996; therapy-specific services"
+        },
+        {
+          "title": "PT Billing Services independent scope",
+          "url": "https://ptbillingservices.com/",
+          "evidence": "Independent outsourced PT biller"
+        },
+        {
+          "title": "Physical Therapy Billing Services",
+          "url": "https://www.ptbillingservices.net/",
+          "evidence": "Long-running specialty RCM with100+client-practice claim"
+        },
+        {
+          "title": "Medical Billing Center",
+          "url": "https://www.4mbc.com/",
+          "evidence": "Outpatient therapy billing and collections"
+        },
+        {
+          "title": "Medical Billing Center leadership",
+          "url": "https://www.4mbc.com/leadership/",
+          "evidence": "Founded by physical therapists2001"
+        },
+        {
+          "title": "PT Pilot Billing",
+          "url": "https://ptpilotbilling.com/about/",
+          "evidence": "Practice-owner origins and dedicated billers"
+        },
+        {
+          "title": "PT Outsource Solutions",
+          "url": "https://www.ptoutsourcesolutions.com/",
+          "evidence": "Therapy coding and payer workflow services"
+        },
+        {
+          "title": "WebPT RCM",
+          "url": "https://www.webpt.com/products/rcm-service",
+          "evidence": "Bundled platform/RCM competition"
+        },
+        {
+          "title": "WebPT Warburg announcement",
+          "url": "https://www.webpt.com/about/press/webpt-announces-significant-investment-from-warburg-pincus",
+          "evidence": "2019 majority investment"
+        },
+        {
+          "title": "BLS Physical Therapists",
+          "url": "https://www.bls.gov/ooh/healthcare/physical-therapists.htm",
+          "evidence": "Aug27 2026 employment projection; no revenue CAGR inference"
+        },
+        {
+          "title": "Historical RCM signal",
+          "url": "https://mail.google.com/mail/u/0/#all/1a0344b1f5883c2c",
+          "evidence": "Aug24 specialty RCM eight-deal newsletter"
+        },
+        {
+          "title": "Recent clinic signal",
+          "url": "https://mail.google.com/mail/u/0/#all/1a03f2e9df864a43",
+          "evidence": "Clinic growth is context, not vendor financial validation"
+        }
+      ]
+    },
+    {
+      "slug": "outpatient-diagnostic-medical-physics",
+      "name": "Outsourced Diagnostic Medical Physics QA and Radiation-Safety Services for Outpatient Imaging Facilities",
+      "umbrella_theme": "Trust, Compliance & Verification; Asset Protection & Stewardship",
+      "tailwind": "Ongoing imaging-equipment installed base, accreditation and dose-safety requirements support repeat testing. ACR CT accreditation explicitly requires annual physicist survey; above-GDP niche growth remains unverified.",
+      "operational_complexity": "Facilities must maintain equipment-performance evidence, modality-specific QA, shielding documentation and radiation-safety programs using qualified physicists.",
+      "second_order_beneficiary": "Technical compliance provider selling to imaging operators; not imaging clinic ownership, physician staffing, therapy treatment or equipment resale.",
+      "thesis": "Regional physics specialists supply recurring equipment QA and safety expertise that imaging facilities often cannot economically staff internally. Credentials, local regulatory knowledge and stored equipment history can create switching friction; the constraint is qualified talent and scalable firm supply.",
+      "signal_source": "Sept2 West Physics acquisition of Albany RTS; this is real acquired supplier and consolidation context, not independent target inventory.",
+      "initial_screen": {
+        "margins": {
+          "status": "UNKNOWN",
+          "evidence": "No primary industry EBITDA margin evidence found."
+        },
+        "recurring_reoccurring_revenue": {
+          "status": "PASS_MODEL_ONLY",
+          "evidence": "ACR CT annual survey and vendors annual/periodic QA establish repeat work; contract share/retention unknown."
+        },
+        "industry_growth": {
+          "status": "UNKNOWN",
+          "evidence": "Installed-base/regulatory demand is supported, not measured above-GDP service revenue growth."
+        },
+        "growth_tam": {
+          "status": "UNKNOWN",
+          "evidence": "Narrow US outsourced diagnostic-only physics TAM unverified; total medical physics/radiotherapy budgets unsuitable proxy."
+        },
+        "verdict": "INCOMPLETE; review candidate with quantified gaps, not pass/activation"
+      },
+      "target_tam": {
+        "total_firms": "Five named US providers verified; directory includes equipment and other physics services so no unfiltered count used",
+        "independently_owned": "Unicon, RPS and Intermountain publicly describe independence; Vent describes independent consulting, which is professional independence not verified equity. All scale/ownership needs diligence.",
+        "already_backed_or_acquired": "RTS acquired by West Physics Sept2026 excluded; national West Physics platform comp excluded. Other count unknown.",
+        "pe_consolidation_risk": "Medium/High consolidation pressure; exact PE ownership of all platforms not verified",
+        "sprint_duration": "Unknown, no reliable independent scaled count",
+        "observed_provider_count": 5
+      },
+      "market_tam": {
+        "market_size_usd": null,
+        "year": null,
+        "growth_cagr_pct": null,
+        "scope": "US outsourced diagnostic medical physics/QA and radiation safety for outpatient imaging",
+        "assessment": "UNKNOWN; no verified $500M floor. AAPM membership and imaging facilities are not provider or revenue counts.",
+        "demand_drivers": [
+          "Annual/periodic QA",
+          "Equipment changes and accreditation",
+          "Radiation-safety program support"
+        ]
+      },
+      "named_companies": [
+        {
+          "name": "Unicon Medical Physics",
+          "location": "Southwest Ohio; serves OH/KY/IN",
+          "url": "https://www.uniconmedicalphysics.com/",
+          "ownership": "Self-described independently owned",
+          "notes": "Diagnostic QA and radiation safety; current website claim.",
+          "saleability": "Not verified; no outreach authorized"
+        },
+        {
+          "name": "Radiological Physics Services",
+          "location": "New York; serves NY/NJ/CT",
+          "url": "https://www.rps.nyc/",
+          "ownership": "Self-described local independent, non-PE",
+          "notes": "Diagnostic facilities and radiation surveys; price claims marketing, not margin evidence.",
+          "saleability": "Not verified; no outreach authorized"
+        },
+        {
+          "name": "Intermountain Medical Physics",
+          "location": "Intermountain West; serves ID/WY/UT/WA/OR",
+          "url": "https://intermountainmedicalphysics.com/",
+          "ownership": "Self-described independent",
+          "notes": "Since2019; annual equipment evaluations and safety support; may be small/key-person.",
+          "saleability": "Not verified; no outreach authorized"
+        },
+        {
+          "name": "Vent Medical Physics",
+          "location": "Pennsylvania/New Jersey service footprint",
+          "url": "https://ventmedicalphysics.com/",
+          "ownership": "Independent consulting; equity unknown",
+          "notes": "Trevor Vent board-certified, CT/MRI/mammo/CBCT QA; scale unknown.",
+          "saleability": "Not verified; no outreach authorized"
+        },
+        {
+          "name": "Diagnostic Radiation Physics Services",
+          "location": "New Jersey service area; HQ unverified",
+          "url": "https://www.diagnosticradphys.com/locations/medical-physicist-new-jersey/",
+          "ownership": "Unknown",
+          "notes": "Equipment performance, RSO, shielding and accreditation support.",
+          "saleability": "Not verified; no outreach authorized"
+        }
+      ],
+      "semantic_dedup": "Not Medical/Lab/IVF Specialty Cleaning: qualified physics measurement rather than infection cleaning. Distinct service customer/competitor set under broad Commercial Equipment Maintenance; excludes oncology treatment planning/physician services and manufacturer sales.",
+      "searcher_fit": "Medium/Weak technical-domain fit until credible lead physicist/operator secured; service quality/customer retention transferable, no warm specialist vendor path verified.",
+      "hair": "Credentialed staff scarcity, liability, founder dependence, travel density, hospital negotiating power, platforms consolidating regional firms.",
+      "j_curve_resilience": "Annual compliance workload may absorb transition if qualified team stays and customer contracts transfer; not proven yet.",
+      "key_question": "Can a regional multi-physicist firm retain credentialed team and recurring cohorts while earning15%+ EBITDA, and is the narrow market over$500M?",
+      "sources": [
+        {
+          "title": "ACR CT QA requirements",
+          "url": "https://accreditationsupport.acr.org/support/solutions/articles/11000056188-quality-control-ct",
+          "evidence": "Revised Mar21 2025 annual physicist survey requirements"
+        },
+        {
+          "title": "Unicon",
+          "url": "https://www.uniconmedicalphysics.com/",
+          "evidence": "Independent regional diagnostic service provider"
+        },
+        {
+          "title": "RPS",
+          "url": "https://www.rps.nyc/",
+          "evidence": "NY-area medical physics services"
+        },
+        {
+          "title": "RPS independence",
+          "url": "https://www.rps.nyc/post/hedge-fund-buyouts-medical-physics-prices-ny-nj",
+          "evidence": "Self-described independent non-PE provider; competing firms price statements not independently adopted"
+        },
+        {
+          "title": "Intermountain",
+          "url": "https://intermountainmedicalphysics.com/",
+          "evidence": "Independent annual QA/RSO, since2019"
+        },
+        {
+          "title": "Vent",
+          "url": "https://ventmedicalphysics.com/",
+          "evidence": "Qualified diagnostic consulting"
+        },
+        {
+          "title": "DRPS",
+          "url": "https://www.diagnosticradphys.com/locations/medical-physicist-new-jersey/",
+          "evidence": "NJ diagnostic QA/RSO services"
+        },
+        {
+          "title": "West Physics RTS acquisition",
+          "url": "https://westphysics.com/west-physics-announces-acquisition-of-radiographic-testing-services-inc/",
+          "evidence": "Sept2 announcement; acquired comp"
+        },
+        {
+          "title": "AAPM directory",
+          "url": "https://w3.aapm.org/corporate_affiliates/",
+          "evidence": "Corporate directory includes equipment vendors; not independent-firm count"
+        },
+        {
+          "title": "K&S capabilities",
+          "url": "https://www.kslab.com/wp-content/uploads/2018/10/KS-Capabilities-Statement.pdf",
+          "evidence": "Taxonomy/capabilities only; historical ownership not current validation"
+        }
+      ]
+    },
+    {
+      "slug": "electrical-power-reliability-testing",
+      "name": "Independent Electrical Power-System Testing and Preventive Reliability Services for Commercial and Industrial Facilities",
+      "umbrella_theme": "Trust, Compliance & Verification; Asset Protection & Stewardship",
+      "tailwind": "Growing electricity loads and more complex installed power systems create testing/maintenance work. EIA2026 analysis supports load growth; market publisher projects North American electrical testing6.5% CAGR, a broader proxy not the exact US service-only scope.",
+      "operational_complexity": "Transformer/switchgear/relay condition assessment, calibrated measurements, planned shutdowns, maintenance records and emergency fault diagnosis protect uptime.",
+      "second_order_beneficiary": "Independent test/maintenance vendor serving installed power assets, rather than data-center development, utilities ownership, electrical construction or equipment manufacturing.",
+      "thesis": "Specialized third-party testing firms sell reliability and documented equipment condition to facilities where downtime is costly. Accreditation, certified technicians and equipment-history continuity support repeat service; national consolidators and demanding technical operations temper the opportunity.",
+      "signal_source": "Aug19 E&K actual unnamed Mid-Atlantic seller with maintenance/relay/thermography services; $6.1M revenue/$3.5M normalized EBITDA reported, not verified nor representative.",
+      "initial_screen": {
+        "margins": {
+          "status": "UNKNOWN",
+          "evidence": "Single teaser implies57.4% normalized EBITDA, exceptional/unverified. No typical-industry15%+ proof."
+        },
+        "recurring_reoccurring_revenue": {
+          "status": "PASS_MODEL_ONLY",
+          "evidence": "NETA explicitly describes routine testing/maintenance; A&F/Apparatus recurring programs. Actual contracted-share and renewal data unknown."
+        },
+        "industry_growth": {
+          "status": "PROXY_SUPPORT_ONLY",
+          "evidence": "EMR North America electrical testing6.5% forecast; includes broader geography/end-users, not measured niche growth."
+        },
+        "growth_tam": {
+          "status": "PROXY_SUPPORT_ONLY",
+          "evidence": "EMR North America broader electrical testing$2.66B2025; exact US C&I preventive-service TAM not carved out."
+        },
+        "verdict": "INCOMPLETE; promising growth/TAM proxy, no all-four pass"
+      },
+      "target_tam": {
+        "total_firms": "NETA directory demonstrates numerous company names and branches; at least five named service firms retained plus two platform/acquired comps",
+        "independently_owned": "Unknown. NETA third-party independence means independence from equipment/manufacturing conflicts, not absence of PE. A&F describes independent company but equity and scale unverified.",
+        "already_backed_or_acquired": "Shermco platform and Advanced Testing Systems/HIGHVOLT excluded from independent count; ABM branches excluded. Full count unknown.",
+        "pe_consolidation_risk": "High: Shermco $1.6B Blackstone transaction announced2025 plus strategic consolidation",
+        "sprint_duration": "Unknown until ownership/branch dedup and revenue-mix validation",
+        "observed_provider_count": 5
+      },
+      "market_tam": {
+        "market_size_usd": null,
+        "year": 2025,
+        "growth_cagr_pct": null,
+        "scope": "US commercial/industrial installed-asset testing and preventive reliability services, excluding utilities-only, construction and equipment sales",
+        "broader_proxy": {
+          "market": "North America electrical testing services",
+          "size_usd": 2660000000,
+          "base_year": 2025,
+          "cagr_pct": 6.5,
+          "forecast": "2026\u20132035",
+          "source": "https://www.expertmarketresearch.com/reports/north-america-electrical-testing-services-market"
+        },
+        "assessment": "Broader proxy clears$500M; exact niche does not automatically inherit it. Undated current publisher page; historical dated2025 reseller preview gives$2.50B2024/6.5%, consistent direction but not used as primary exact-niche estimate.",
+        "demand_drivers": [
+          "Power-system complexity",
+          "Growing load and uptime costs",
+          "Routine independent maintenance testing"
+        ]
+      },
+      "named_companies": [
+        {
+          "name": "A&F Electrical Testing",
+          "location": "Nesconset, NY; NYC office is same firm",
+          "url": "https://afelectricaltesting.com/",
+          "ownership": "Self-described independent, cap table unknown",
+          "notes": "Established1995; NETA acceptance/maintenance, relay and transformer services.",
+          "saleability": "Not verified; no outreach authorized"
+        },
+        {
+          "name": "Apparatus Testing & Engineering",
+          "location": "Rancho Cordova, CA; directory location",
+          "url": "https://www.apparatustesting.com/",
+          "ownership": "Independent of manufacturers; equity unknown",
+          "notes": "Since1983; NETA testing, predictive maintenance and24h response.",
+          "saleability": "Not verified; no outreach authorized"
+        },
+        {
+          "name": "1 Test Corp.",
+          "location": "Wilmington, MA",
+          "url": "https://netaworldjournal.org/wp-content/uploads/2026/05/NETA-World-SM26_FINAL.pdf",
+          "ownership": "Unknown",
+          "notes": "NETA directory name, separate company; website502, no unverified details used.",
+          "saleability": "Not verified; no outreach authorized"
+        },
+        {
+          "name": "360 Electrical & Engineering Services LLC",
+          "location": "Miami, FL",
+          "url": "https://netaworldjournal.org/wp-content/uploads/2026/04/NWJ-spring-2026.pdf",
+          "ownership": "Unknown",
+          "notes": "NETA directory service company; no scale/ownership claims.",
+          "saleability": "Not verified; no outreach authorized"
+        },
+        {
+          "name": "51 Power Services",
+          "location": "Burleson, TX",
+          "url": "https://netaworldjournal.org/wp-content/uploads/2025/11/NETA-World_FL25.pdf",
+          "ownership": "Unknown",
+          "notes": "NETA directory provider; specific preventive mix must be checked.",
+          "saleability": "Not verified; no outreach authorized"
+        }
+      ],
+      "semantic_dedup": "Explicit child scope of IDEATION Commercial Equipment Maintenance, whose sub-niche was TBD; not a second copy of parent. Distinct from water/wastewater SCADA integration, fire-pump/hydrant MRO and sign-lighting maintenance (both killed), geotechnical CMT and building energy audits. No parent activation or changes.",
+      "searcher_fit": "Medium/Weak until qualified technical operator and credible local access; A&F NY footprint gives geography relevance, not warm relationship.",
+      "hair": "Hazardous work/liability, technician retention, calibrated equipment investment, shutdown scheduling, emergency dispatch, construction mix and PE bids.",
+      "j_curve_resilience": "Hypothesis: repeat installed-base testing and failure-critical customer need; workforce continuity and maintenance mix determine resilience.",
+      "key_question": "Can NY/NE independent testing firms separate recurring maintenance from capital-project commissioning and sustain15%+ margins without owner dependence?",
+      "sources": [
+        {
+          "title": "NETA accreditation",
+          "url": "https://netadev.netaworld.org/accreditation/overview",
+          "evidence": "Third-party testing/maintenance company standards, not PE ownership certification"
+        },
+        {
+          "title": "NETA Spring2026 directory",
+          "url": "https://netaworldjournal.org/wp-content/uploads/2026/04/NWJ-spring-2026.pdf",
+          "evidence": "Named firms and branches"
+        },
+        {
+          "title": "NETA Summer2026 directory",
+          "url": "https://netaworldjournal.org/wp-content/uploads/2026/05/NETA-World-SM26_FINAL.pdf",
+          "evidence": "Named firms/locations"
+        },
+        {
+          "title": "NETA Fall2025 directory",
+          "url": "https://netaworldjournal.org/wp-content/uploads/2025/11/NETA-World_FL25.pdf",
+          "evidence": "51 Power Services location/provider evidence"
+        },
+        {
+          "title": "A&F",
+          "url": "https://afelectricaltesting.com/",
+          "evidence": "Independent testing since1995; preventive offerings"
+        },
+        {
+          "title": "Apparatus",
+          "url": "https://www.apparatustesting.com/",
+          "evidence": "Since1983, testing/maintenance"
+        },
+        {
+          "title": "ATS HIGHVOLT",
+          "url": "https://www.highvolt.com/en/ats",
+          "evidence": "ATS belongs to HIGHVOLT since2022; acquired comp exclusion"
+        },
+        {
+          "title": "Gryphon Shermco sale",
+          "url": "https://www.gryphon-inv.com/news/gryphon-investors-to-sell-shermco-to-blackstone-in-1-6-billion-transaction/",
+          "evidence": "Aug21 2025 $1.6B deal,600+NETA technicians/40service centers are platform scale not targets"
+        },
+        {
+          "title": "EIA demand analysis",
+          "url": "https://www.eia.gov/todayinenergy/detail.php?id=67344",
+          "evidence": "Mar12 2026 electricity-load trend; not service CAGR"
+        },
+        {
+          "title": "EMR original research",
+          "url": "https://www.expertmarketresearch.com/reports/north-america-electrical-testing-services-market",
+          "evidence": "Broader North America $2.66B2025/6.5% forecast proxy; narrow TAM unknown"
+        },
+        {
+          "title": "Historical seller signal",
+          "url": "https://mail.google.com/mail/u/0/#all/1a01bd7b7605d215",
+          "evidence": "Aug19 seller metrics unverified"
+        }
+      ]
+    }
+  ],
+  "shared_sources": [
+    {
+      "title": "Synthesis",
+      "url": "/tmp/niche-intel-2026-09-07-synthesis.md",
+      "evidence": "Six outputs and workflow map"
+    },
+    {
+      "title": "Gathering chatroom",
+      "url": "brain/traces/agents/2026-09-07-niche-intelligence.md",
+      "evidence": "RECENT/HISTORICAL findings"
+    },
+    {
+      "title": "Census2022 NAICS",
+      "url": "https://www.census.gov/naics/reference_files_tools/2022_NAICS_Manual.pdf",
+      "evidence": "Broad classification definitions"
+    },
+    {
+      "title": "Live tracker",
+      "url": "https://docs.google.com/spreadsheets/d/1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins/edit",
+      "evidence": "Four tabs re-read for semantic dedup"
+    }
+  ]
+}

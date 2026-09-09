@@ -1,0 +1,410 @@
+{
+  "range": "IDEATION!A1:AA999",
+  "values": [
+    [
+      "Section",
+      "Rank",
+      "Niche",
+      "Score (/3)",
+      "Margins",
+      "Recurring Revenue",
+      "AI Defensibility",
+      "Right to Win (Kay)",
+      "Network Access",
+      "Target Pool",
+      "Notes",
+      "QSBS"
+    ],
+    [
+      "\u2014 INTERSECTION (Luxury + Compliance) \u2014"
+    ],
+    [
+      "Intersection",
+      "4",
+      "Food safety compliance consulting (FSMA/HACCP)",
+      "2.25",
+      "Yes",
+      "Moderate (audit cycles)",
+      "Low (technical knowledge)",
+      "MODERATE \u2014 no food safety knowledge",
+      "STRONGEST \u2014 husband's network",
+      "",
+      "Not training (PE rolling that up). Technical compliance consulting. No PE activity found."
+    ],
+    [
+      "Intersection",
+      "5",
+      "Compliance e-learning for hospitality (bundled)",
+      "2",
+      "Yes (digital; high gross)",
+      "Yes (annual certification)",
+      "MODERATE",
+      "MODERATE",
+      "STRONG \u2014 husband + hospitality",
+      "",
+      "Bundle harassment + food + alcohol + safety for restaurant groups. Distribution advantage."
+    ],
+    [
+      "Compliance",
+      "",
+      "Insurance licensing/CE compliance SaaS+Service",
+      "2.25",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Overlaps with top 5 #4. Serves specialty brokerages. From COACH 12-13."
+    ],
+    [
+      "Compliance",
+      "NEW",
+      "AML compliance training for luxury sectors",
+      "2.38",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Post-AML Act 2020. Auction houses/dealers/galleries. Luxury-specific."
+    ],
+    [
+      "Moved from Under Review  Safety Data Sheet (SDS) management 2.13"
+    ],
+    [
+      "\u2014 LUXURY INFRASTRUCTURE \u2014"
+    ],
+    [
+      "Luxury",
+      "4",
+      "Luxury residence concierge operators",
+      "2.5",
+      "Likely",
+      "Yes (recurring)",
+      "MODERATE \u2014 AI risk",
+      "STRONG",
+      "MODERATE",
+      "",
+      "Lighter than estate mgmt. Different business model (lifestyle vs operations)."
+    ],
+    [
+      "Luxury",
+      "5",
+      "Private art advisory firms",
+      "2.5",
+      "Yes (advisory)",
+      "Yes (retainers)",
+      "STRONG",
+      "STRONG",
+      "STRONG",
+      "",
+      "Recurring retainers for collection strategy."
+    ],
+    [
+      "Luxury",
+      "6",
+      "Collection management consultants",
+      "2.5",
+      "Yes (advisory)",
+      "Yes (ongoing mgmt)",
+      "STRONG",
+      "STRONG",
+      "STRONG",
+      "",
+      "Ongoing management of art collections."
+    ],
+    [
+      "Moved from Under Review  Compliance e-learning for hospitality (bundled) 2"
+    ],
+    [
+      "\u2014 COMPLIANCE INFRASTRUCTURE \u2014"
+    ],
+    [
+      "Compliance",
+      "3",
+      "SEC filing preparation & XBRL tagging",
+      "2.13",
+      "Yes",
+      "Yes (quarterly)",
+      "STRONG \u2014 liability layer",
+      "MODERATE",
+      "LOW",
+      "",
+      "Recurring quarterly. Many boutique providers. No network access."
+    ],
+    [
+      "Compliance",
+      "5",
+      "Safety Data Sheet (SDS) management",
+      "2.13",
+      "Yes",
+      "Yes (annual subs)",
+      "STRONG \u2014 chemical-specific",
+      "LOW",
+      "LOW",
+      "",
+      "OSHA-driven. Very fragmented. Hard to source deals."
+    ],
+    [
+      "Compliance",
+      "6",
+      "Medical credentialing mgmt",
+      "2.38",
+      "Yes",
+      "Yes (continuous monitoring)",
+      "VERY STRONG",
+      "LOW",
+      "LOW",
+      "",
+      "Joint Commission standards. Strong recurring. No luxury overlap."
+    ],
+    [
+      "Compliance",
+      "",
+      "Outsourced compliance officers / monitoring",
+      "2.25",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Broader compliance-as-a-service thesis. Mission-critical; recurring. From COACH 14."
+    ],
+    [
+      "Compliance",
+      "NEW",
+      "Workplace Health & Safety Compliance Training (eLearning)",
+      "2.51",
+      "High (20-35% EBITDA)",
+      "High (85-90% renewal, mandated)",
+      "Medium (content threatened, requirements not)",
+      "None",
+      "Some (Sarah Rowell via WSN mentorship)",
+      "30-50",
+      "Score 2.51. Awaiting Kay ruling: distinct from killed Compliance E-Learning (General)? Sarah Rowell = strongest mentor alignment."
+    ],
+    [
+      "Compliance",
+      "NEW",
+      "Managed Cybersecurity Compliance Services",
+      "2.52",
+      "Medium (15-20% EBITDA)",
+      "High (90%+ retention)",
+      "Medium",
+      "None",
+      "None",
+      "",
+      "NOT for promotion. PE-saturated (72% of deals), VC competition (Vanta, Drata), no luxury angle."
+    ],
+    [
+      "Compliance",
+      "NEW",
+      "Premium Audit & Loss Control Services (Outsourced)",
+      "2.32",
+      "Medium (20-30% EBITDA)",
+      "High (annual carrier contracts)",
+      "Medium (field work hard to automate)",
+      "None",
+      "Some (Jeremy Black, Hunter Hartwell)",
+      "40-70",
+      "Largest target pool in insurance infrastructure. NEIS Inc. (family-owned since 1945) is lead target. Davies/Afirm validates exit."
+    ],
+    [
+      "Compliance",
+      "NEW",
+      "Surplus Lines Compliance & Tax Filing Services",
+      "2.65",
+      "Very High (30-45% EBITDA)",
+      "High (every E&S policy requires filing)",
+      "High (regulatory specificity, liability layer)",
+      "Moderate (IPLC thesis extends)",
+      "Some (KnK/ACCEL straddle IPLC)",
+      "10-20",
+      "IPLC extension play. E&S market $129.8B, filings up 12.4%. THIN POOL but cross-domain targets widen IPLC."
+    ],
+    [],
+    [
+      "Compliance",
+      "",
+      "Commercial Equipment Maintenance (asset-light, service-only)",
+      "TBD",
+      "Yes (15%+)",
+      "High (mandatory inspection contracts)",
+      "Low",
+      "MODERATE",
+      "LOW",
+      "500+",
+      "NAICS 811310. Sub-niche TBD: sterilization (strong but small), air quality (tabled), fire protection (not yet researched). Asset-light only. Regulation-driven (OSHA, FDA). PE untouched.",
+      "Likely Eligible"
+    ],
+    [
+      "Compliance",
+      "NEW",
+      "Medical/Lab/IVF Specialty Cleaning",
+      "2.37",
+      "Medium/High (validate margin premium)",
+      "High (recurring medical/lab protocols)",
+      "High",
+      "Moderate",
+      "Some",
+      "50-150+ if scoped to medical/lab/cleanroom/GMP specialty cleaning; IVF-only target pool likely thin",
+      "Specialized healthcare/lab/cleanroom cleaning with infection-control and contamination-control tailwinds. Distinct from generic commercial cleaning if scoped to medical-office/ASC/lab/GMP protocols; validate 50+ buy-box-scale independents and margin premium before sprint activation. One-pager: https://docs.google.com/presentation/d/1HZdVFADRhG7kJwAclwPRyjMRwUAQ4nM9/edit?usp=drivesdk. Scorecard: https://docs.google.com/spreadsheets/d/1RAavtMULjIsOqoDMp_y9c7XRXGloOVGx/edit?usp=drivesdk.",
+      "Likely Eligible"
+    ],
+    [],
+    [],
+    [],
+    [
+      "\u2014 OTHER / WATCH LIST \u2014"
+    ],
+    [
+      "\u2014 REVISIT (From Tabled/Killed \u2014 New Insights) \u2014"
+    ],
+    [],
+    [],
+    [
+      "Revisit",
+      "\u2014",
+      "Concierge medicine practices",
+      "2.63",
+      "Yes (membership)",
+      "Yes (annual memberships 2-25K/patient)",
+      "MODERATE",
+      "STRONG \u2014 serves UHNW clients",
+      "MODERATE \u2014 luxury network overlap",
+      "",
+      "5000-10000 practices. B market. 10%+ CAGR. Was Killed with no analysis. Membership model is deeply recurring."
+    ],
+    [
+      "Revisit",
+      "\u2014",
+      "Escrow & custodial software",
+      "2.25",
+      "Unknown",
+      "Yes (recurring B2B from law firms)",
+      "MODERATE",
+      "LOW",
+      "LOW",
+      "",
+      "Adjacent to trust admin thesis (#1). Regulatory complexity = sticky. Could be tech bolt-on."
+    ],
+    [
+      "Revisit",
+      "\u2014",
+      "Compliance & packaging SaaS (luxury CPG)",
+      "2",
+      "Unknown",
+      "Likely",
+      "MODERATE",
+      "MODERATE \u2014 Chanel/fashion CPG knowledge",
+      "MODERATE \u2014 luxury brand network",
+      "",
+      "Product compliance for cosmetics/fragrance/fashion goods. Chanel background = right to win in luxury CPG regulation."
+    ],
+    [
+      "Revisit",
+      "\u2014",
+      "Corporate entity & record management",
+      "2.25",
+      "Unknown",
+      "Likely",
+      "MODERATE",
+      "LOW",
+      "LOW",
+      "",
+      "Entity compliance. Could overlap with trust admin thesis. Needs more research."
+    ],
+    [
+      "Moved from Under Review",
+      "",
+      "Estate Management Companies",
+      "2.88"
+    ],
+    [
+      "Moved from Under Review",
+      "",
+      "Environmental Compliance Consulting",
+      "2.61"
+    ],
+    [
+      "Moved from Under Review",
+      "",
+      "Commercial Property Tax Appeal Services",
+      "2.58"
+    ],
+    [
+      "Moved from Under Review",
+      "",
+      "HNW Personal Lines Concierge Insurance Brokerage",
+      "2.49"
+    ],
+    [
+      "Moved from Under Review",
+      "",
+      "Insurance Marketing Organization (IMO/FMO) Aggregator",
+      "2.37"
+    ],
+    [
+      "Moved from Under Review",
+      "",
+      "Insurance Back-Office Outsourcing & SIU Services",
+      "2.17"
+    ],
+    [
+      "\u2014 SaaS \u2014 RETIRED ACTIVE-OUTREACH 2026-04-20 \u2014"
+    ],
+    [
+      "SaaS \u2014 retired Active-Outreach 2026-04-20",
+      "1",
+      "Healthcare Regulatory Compliance SaaS"
+    ],
+    [
+      "SaaS \u2014 retired Active-Outreach 2026-04-20",
+      "2",
+      "Funeral Home Management Software"
+    ],
+    [
+      "SaaS \u2014 retired Active-Outreach 2026-04-20",
+      "3",
+      "Veterinary Practice Management Software"
+    ],
+    [
+      "SaaS \u2014 retired Active-Outreach 2026-04-20",
+      "4",
+      "Digital Accessibility Compliance Services"
+    ],
+    [
+      "SaaS \u2014 retired Active-Outreach 2026-04-20",
+      "5",
+      "Childcare Center / Daycare Management Software"
+    ],
+    [
+      "SaaS \u2014 retired Active-Outreach 2026-04-20",
+      "6",
+      "Home Health Agency Software"
+    ],
+    [
+      "SaaS \u2014 retired Active-Outreach 2026-04-20",
+      "7",
+      "Behavioral Health Practice Management"
+    ],
+    [
+      "SaaS \u2014 retired Active-Outreach 2026-04-20",
+      "8",
+      "PT Clinic Software"
+    ],
+    [
+      "SaaS \u2014 retired Active-Outreach 2026-04-20",
+      "9",
+      "Fertility / IVF Clinic Software"
+    ],
+    [
+      "SaaS \u2014 retired Active-Outreach 2026-04-20",
+      "10",
+      "Senior Living & Home Care Operating Software"
+    ]
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "files": [
+    {
+      "hasThumbnail": true,
+      "id": "1GybDMX4zJ8TU8dxxX4FaYzJM7NLybAHR",
+      "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "modifiedTime": "2026-09-09T00:37:09.851Z",
+      "name": "Diagnostic Medical Physics QA September 2026.pptx",
+      "owners": [
+        {
+          "emailAddress": "kay.s@greenwichandbarrow.com"
+        }
+      ],
+      "parents": [
+        "1LwrGK216ooVbfFE2D8v8XFELhlqFpWSh"
+      ],
+      "size": "167454",
+      "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBNTK9yN2DZI0Q407i_a_Nuji1Be67r514aLJwWF3NXEGRw_vX6G2w7P57yLJmiLDtSbfYwE1wZTelYbykBdvisrDn-FmtFg0459tSFJ5_SXu5Y=s220",
+      "webViewLink": "https://docs.google.com/presentation/d/1GybDMX4zJ8TU8dxxX4FaYzJM7NLybAHR/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true"
+    },
+    {
+      "hasThumbnail": true,
+      "id": "10G33YObal28mUqA5mTOX-THINT3n2c5z",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "modifiedTime": "2026-09-09T00:37:08.164Z",
+      "name": "outpatient-diagnostic-medical-physics Scorecard September 2026.xlsx",
+      "owners": [
+        {
+          "emailAddress": "kay.s@greenwichandbarrow.com"
+        }
+      ],
+      "parents": [
+        "1LwrGK216ooVbfFE2D8v8XFELhlqFpWSh"
+      ],
+      "size": "15063",
+      "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBP2Fkis_5G9FX0ymSlsSBTPukyMoIqhxgQUVG1XACvTfJ5iFGs6VPOkYNICLGm_9h_RFTAd09seyZ9Ez374KsQsCxWPth4qLWHYvl9ZCVtifYI=s220",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/10G33YObal28mUqA5mTOX-THINT3n2c5z/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true"
+    }
+  ],
+  "nextPageToken": ""
+}

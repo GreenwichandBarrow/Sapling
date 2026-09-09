@@ -1,0 +1,1254 @@
+{
+  "run_date": "2026-09-07",
+  "runtime": "Codex/systemd",
+  "niches_evaluated": 23,
+  "candidate_universe_count": 23,
+  "edge_niches_considered": 13,
+  "umbrella_themes_reviewed": [
+    "Luxury, Heritage & Personal Goods",
+    "Asset Protection & Stewardship",
+    "Beauty, Wellness & Longevity Infrastructure",
+    "Family Wealth, Legacy & Life Infrastructure",
+    "Trust, Compliance & Verification"
+  ],
+  "workflow_map": {
+    "environment": "Heritage fine-jewelry brand",
+    "touchpoints": [
+      "supplier onboarding",
+      "supplier ownership checks",
+      "vendor insurance review",
+      "manufacturer agreement renewal",
+      "tooling ownership records",
+      "design-file access control",
+      "design revision approvals",
+      "prototype approval",
+      "production capacity planning",
+      "material sourcing",
+      "metal purity documentation",
+      "stone provenance documentation",
+      "purchase order control",
+      "deposit reconciliation",
+      "foreign currency settlements",
+      "production milestone tracking",
+      "factory inspection coordination",
+      "incoming piece counts",
+      "incoming visual quality inspection",
+      "stone setting checks",
+      "clasp/function checks",
+      "weight/specification reconciliation",
+      "defect photography",
+      "defect returns authorization",
+      "local repair dispatch",
+      "repair cost allocation",
+      "lot/serial traceability",
+      "SKU catalog maintenance",
+      "inventory tagging",
+      "barcode scanning",
+      "cycle counts",
+      "annual physical inventory",
+      "inventory valuation reconciliation",
+      "slow-moving stock review",
+      "core versus bespoke turn analysis",
+      "wholesale consignment tracking",
+      "wholesale inventory reconciliation",
+      "retailer replenishment",
+      "trunk-show stock allocation",
+      "insured outbound shipping",
+      "customs documentation",
+      "inbound shipment insurance",
+      "display/vitrine installation",
+      "retail security checks",
+      "customer repair intake",
+      "warranty eligibility review",
+      "aftercare scheduling",
+      "product condition reporting",
+      "supplier performance scorekeeping",
+      "recall/defect escalation"
+    ],
+    "evidence_level": "Analytical map anchored to three same-deal calls; not 50 verified outsourced functions"
+  },
+  "signal_matrix": [
+    [
+      "Beauty fulfillment / primary packaging / compliance",
+      "E&K buyer mandate; AMS/Vox; Truvant/Multi-Pak",
+      "Existing lanes only",
+      3,
+      "STRONG",
+      "3 independent events; separate niches not individually validated"
+    ],
+    [
+      "Specialty rehabilitation revenue-cycle services",
+      "Amboy portfolio clinic expansion + billing hiring",
+      "Aug24 specialty RCM deal newsletter",
+      2,
+      "STRONG",
+      "Macro/vendor convergence; rehab vendor pool unverified"
+    ],
+    [
+      "Fine-jewelry QA / inventory verification",
+      "Brooke Aug28 + Camilla Aug31 same deal",
+      "Brooke Aug18 same deal",
+      1.5,
+      "MODERATE",
+      "One deal, multiple participants; NOT independent market validation"
+    ],
+    [
+      "Managed cyber/compliance services",
+      "2 E&K distinct teasers; DivergeIT platform",
+      "Existing/tabled IT and active CMMC",
+      2,
+      "STRONG",
+      "Same broker discounted; semantic duplicate constraints"
+    ],
+    [
+      "Medical physics / outsourced radiation safety",
+      "West Physics/RTS event (release+newsletter once)",
+      "No independent historical corroboration",
+      1,
+      "MODERATE",
+      "Named acquired supplier, not acquirable count"
+    ],
+    [
+      "Electrical testing / power reliability",
+      "Energy/inspection PE activity adjacent, not same niche",
+      "Aug19 named-services unnamed seller",
+      1,
+      "MODERATE",
+      "Only exact-niche seller signal credited"
+    ],
+    [
+      "Healthcare textile management",
+      "Unitex investment newsletter",
+      "None",
+      1,
+      "MODERATE",
+      "5000 customer facilities is NOT target count"
+    ],
+    [
+      "Menstrual-product replenishment",
+      "Aunt Flow commercial agreement investor newsletter",
+      "None",
+      1,
+      "WEAK",
+      "Demand thesis only"
+    ],
+    [
+      "Pediatric independent evaluations / school administration",
+      "E&K $1M practice seller teaser",
+      "None",
+      1,
+      "MODERATE",
+      "Practice sale is not proof of admin service firms"
+    ],
+    [
+      "Trash chute / compactor sanitation",
+      "None",
+      "June17 call mention",
+      1,
+      "WEAK",
+      "Tabled pest/cleaning adjacency"
+    ],
+    [
+      "Specialty/HNW insurance / trade-risk brokerage",
+      "Aon/USI; MacKay",
+      "Jeremy broker referrals; existing tracker",
+      3,
+      "STRONG",
+      "Tracked; no fresh mandate"
+    ],
+    [
+      "Fine art logistics/storage",
+      "No eligible fresh change",
+      "Acumen/Hangman prior deal lessons",
+      1.5,
+      "MODERATE",
+      "Tracked with capital intensity counterevidence"
+    ],
+    [
+      "Estate / property management",
+      "Property listing; no fresh estate signal",
+      "Existing tracker",
+      1,
+      "MODERATE",
+      "Tracked"
+    ],
+    [
+      "Septic software",
+      "Tank Track group session",
+      "None",
+      1,
+      "MODERATE",
+      "Operating lesson; acquired software not new niche"
+    ],
+    [
+      "Jewelry/luxury aftercare",
+      "Aug31 explicit interest",
+      "Existing aftercare lane",
+      1,
+      "WEAK",
+      "Existing lane; no duplicate"
+    ],
+    [
+      "Power conversion / aerospace distribution",
+      "PE newsletter and sale listing",
+      "None",
+      1,
+      "MODERATE",
+      "Product-heavy; no service niche validated"
+    ],
+    [
+      "Asset integrity inspections",
+      "DarkVision newsletter",
+      "None",
+      1,
+      "WEAK",
+      "Platform comp; narrow pool unverified"
+    ],
+    [
+      "Tax/audit / QoE services",
+      "Smith+Howard PE; acquisition newsletters",
+      "None",
+      1,
+      "WEAK",
+      "General professional-service context"
+    ],
+    [
+      "Bordereaux / insurance administration",
+      "VIPR newsletter",
+      "Existing back-office/trade-risk themes",
+      1,
+      "MODERATE",
+      "Software comp, not authorization"
+    ],
+    [
+      "Hotel CRM / booking support",
+      "Edita newsletter",
+      "None",
+      1,
+      "WEAK",
+      "Software category, prior constraints"
+    ],
+    [
+      "NEMT / home-health staffing",
+      "Business Exits and deal newsletter",
+      "None",
+      1.5,
+      "MODERATE",
+      "Buyer/seller anecdotes; no verified niche growth"
+    ],
+    [
+      "Chauffeur / carwash / plumbing",
+      "Deal newsletters",
+      "Prior tabled/killed adjacency",
+      1,
+      "MODERATE",
+      "No strong Kay-specific edge"
+    ],
+    [
+      "Ecommerce / retail / publications",
+      "Deal blasts",
+      "Existing exclusions",
+      1,
+      "WEAK",
+      "No nomination; not automatic sheet kill"
+    ]
+  ],
+  "company_registry": [
+    {
+      "name": "Sidney Garber",
+      "entity": "[[entities/sidney-garber|Sidney Garber]]",
+      "source": "RECENT/HISTORICAL owner and team Granola calls",
+      "independence": "Independence unverified",
+      "routing_flag": "ACTIVE_DEAL_NO_OUTREACH",
+      "crm_exact_matches": [
+        {
+          "id": "68293dcd-c897-4803-92dd-3f52f96ef76c",
+          "name": [
+            {
+              "active_from": "2026-07-15T01:49:51.392000000Z",
+              "active_until": null,
+              "created_by_actor": {
+                "type": "api-token",
+                "id": "579a1ace-d3bf-4b5a-9c86-e909e148ebab"
+              },
+              "value": "Sidney Garber",
+              "attribute_type": "text"
+            }
+          ]
+        }
+      ],
+      "vault_matches": [
+        "brain/entities/brooke-garber-neidich.md",
+        "brain/entities/sidney-garber.md",
+        "brain/calls/2026-08-18-phone-number-capture-glwgrj.md",
+        "brain/calls/2026-08-18-phone-number-capture-TmdWYm.md",
+        "brain/calls/2026-08-18-brooke-garber-neidich-sidney-garber.md",
+        "brain/outputs/2026-08-21-thesis-signal-scan.md"
+      ],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://notes.granola.ai/d/a52d727e-6be6-4d11-88bb-2224c48bd24b",
+        "https://notes.granola.ai/d/8edd1384-f7b6-4ee7-b794-dc6e888ecc76"
+      ],
+      "crm_presence_flag": "ACTIVE_DEAL",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Tank Track",
+      "entity": "[[entities/tank-track|Tank Track]]",
+      "source": "RECENT BK Growth group-session Granola, Sep3",
+      "independence": "Acquired; comp only",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [
+        "brain/entities/rohit-tank-track.md",
+        "brain/entities/austin-tank-track.md",
+        "brain/entities/tank-track.md",
+        "brain/entities/rohit.md",
+        "brain/calls/2026-09-03-bk-growth-1st-thursday-zoom.md",
+        "brain/outputs/2026-09-04-thesis-signal-scan.md"
+      ],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://notes.granola.ai/d/2f7feff5-5915-4a0e-8df8-13aa46c73db3"
+      ],
+      "crm_presence_flag": "VAULT_HISTORY",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Truvant",
+      "entity": "[[entities/truvant|Truvant]]",
+      "source": "RECENT primary company/sponsor announcement",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://www.truvant.com/news/truvant-acquires-new-jersey-based-multi-pak-packaging-a-specialist-in-vitamins-supplements-and-otc"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Multi-Pak",
+      "entity": "[[entities/multi-pak|Multi-Pak]]",
+      "source": "RECENT primary company/sponsor announcement",
+      "independence": "Acquired; comp only",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "West Caldwell, NJ",
+      "source_urls": [
+        "https://www.truvant.com/news/truvant-acquires-new-jersey-based-multi-pak-packaging-a-specialist-in-vitamins-supplements-and-otc"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "AMS Fulfillment",
+      "entity": "[[entities/ams-fulfillment|AMS Fulfillment]]",
+      "source": "RECENT primary company/sponsor announcement",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [
+        {
+          "id": "2e7cd96d-ec63-48da-a793-bf8e41293c8b",
+          "name": [
+            {
+              "active_from": "2026-03-14T22:12:35.751000000Z",
+              "active_until": null,
+              "created_by_actor": {
+                "type": "api-token",
+                "id": "2c4fcd16-3313-4c93-aab6-501e38384d2e"
+              },
+              "value": "AMS Fulfillment",
+              "attribute_type": "text"
+            }
+          ]
+        }
+      ],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://fortpointcapital.com/news/ams-fulfillment-acquires-vox-fulfillment"
+      ],
+      "crm_presence_flag": "IN_CRM",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Vox Fulfillment",
+      "entity": "[[entities/vox-fulfillment|Vox Fulfillment]]",
+      "source": "RECENT primary company/sponsor announcement",
+      "independence": "Acquired; comp only",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Provo, UT",
+      "source_urls": [
+        "https://fortpointcapital.com/news/ams-fulfillment-acquires-vox-fulfillment"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "West Physics",
+      "entity": "[[entities/west-physics|West Physics]]",
+      "source": "RECENT primary company/sponsor announcement",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Atlanta, GA",
+      "source_urls": [
+        "https://westphysics.com/west-physics-announces-acquisition-of-radiographic-testing-services-inc/"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Radiographic Testing Services",
+      "entity": "[[entities/radiographic-testing-services|Radiographic Testing Services]]",
+      "source": "RECENT primary company/sponsor announcement",
+      "independence": "Acquired; comp only",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Albany, NY",
+      "source_urls": [
+        "https://westphysics.com/west-physics-announces-acquisition-of-radiographic-testing-services-inc/"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Origin",
+      "entity": "[[entities/origin|Origin]]",
+      "source": "RECENT Amboy Street investor newsletter, Aug26",
+      "independence": "Venture portfolio signal; not proven SMB target",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "rejected_vault_matches": [
+        "brain/entities/sara-rosenthal.md",
+        "brain/entities/scott-casper.md",
+        "brain/entities/megan-lawlor.md",
+        "brain/entities/clayton-sachs.md",
+        "brain/entities/filippe-chagas.md",
+        "brain/entities/eric-dreyer.md",
+        "brain/entities/oweazim-kanayo.md",
+        "brain/entities/tom-jackson.md"
+      ],
+      "identity_audit": "Substring/ordinary-word/other-context matches rejected; no verified prior vault history for this identity.",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a03f2e9df864a43"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Aunt Flow",
+      "entity": "[[entities/aunt-flow|Aunt Flow]]",
+      "source": "RECENT Amboy Street investor newsletter, Aug26",
+      "independence": "Venture portfolio signal; not proven SMB target",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a03f2e9df864a43"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Alloy",
+      "entity": "[[entities/alloy|Alloy]]",
+      "source": "RECENT Amboy Street investor newsletter, Aug26",
+      "independence": "Venture portfolio signal; not proven SMB target",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "rejected_vault_matches": [
+        "brain/calls/2026-02-02-meeting-with-jeremy-black.md",
+        "brain/outputs/2026-03-21-target-discovery-tci.md"
+      ],
+      "identity_audit": "Substring/ordinary-word/other-context matches rejected; no verified prior vault history for this identity.",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a03f2e9df864a43"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Hey Jane",
+      "entity": "[[entities/hey-jane|Hey Jane]]",
+      "source": "RECENT Amboy Street investor newsletter, Aug26",
+      "independence": "Venture portfolio signal; not proven SMB target",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a03f2e9df864a43"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Unitex",
+      "entity": "[[entities/unitex|Unitex]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "DivergeIT",
+      "entity": "[[entities/divergeit|DivergeIT]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "DarkVision",
+      "entity": "[[entities/darkvision|DarkVision]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "VIPR",
+      "entity": "[[entities/vipr|VIPR]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Smith + Howard",
+      "entity": "[[entities/smith-howard|Smith + Howard]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Kering",
+      "entity": "[[entities/kering|Kering]]",
+      "source": "RECENT/HISTORICAL owner and team Granola calls",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [
+        "brain/calls/2026-08-27-camilla-de-sanna.md"
+      ],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://notes.granola.ai/d/a52d727e-6be6-4d11-88bb-2224c48bd24b",
+        "https://notes.granola.ai/d/8edd1384-f7b6-4ee7-b794-dc6e888ecc76"
+      ],
+      "crm_presence_flag": "VAULT_HISTORY",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Boucheron",
+      "entity": "[[entities/boucheron|Boucheron]]",
+      "source": "RECENT/HISTORICAL owner and team Granola calls",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://notes.granola.ai/d/a52d727e-6be6-4d11-88bb-2224c48bd24b",
+        "https://notes.granola.ai/d/8edd1384-f7b6-4ee7-b794-dc6e888ecc76"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Trade Risk Group",
+      "entity": "[[entities/trade-risk-group|Trade Risk Group]]",
+      "source": "HISTORICAL Jeremy trade-risk email/call",
+      "independence": "Independence unverified",
+      "routing_flag": "RESEARCH_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [
+        "brain/outputs/2026-03-21-target-discovery-tci.md",
+        "brain/outputs/2026-05-19-niche-intelligence-report.md",
+        "brain/outputs/2026-05-06-niche-intelligence-report.md",
+        "brain/outputs/2026-03-21-overnight-niche-deep-dive.md"
+      ],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/19c250d5143e6b7a"
+      ],
+      "crm_presence_flag": "VAULT_HISTORY",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Trade Acceptance Group",
+      "entity": "[[entities/trade-acceptance-group|Trade Acceptance Group]]",
+      "source": "HISTORICAL Jeremy trade-risk email/call",
+      "independence": "Independence unverified",
+      "routing_flag": "RESEARCH_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [
+        "brain/outputs/2026-03-21-target-discovery-tci.md",
+        "brain/outputs/2026-05-19-niche-intelligence-report.md",
+        "brain/outputs/2026-05-06-niche-intelligence-report.md",
+        "brain/outputs/2026-03-21-overnight-niche-deep-dive.md"
+      ],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/19c250d5143e6b7a"
+      ],
+      "crm_presence_flag": "VAULT_HISTORY",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Texel",
+      "entity": "[[entities/texel|Texel]]",
+      "source": "HISTORICAL Jeremy trade-risk email/call",
+      "independence": "Independence unverified",
+      "routing_flag": "RESEARCH_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [
+        "brain/outputs/2026-03-21-target-discovery-tci.md",
+        "brain/outputs/2026-05-19-niche-intelligence-report.md",
+        "brain/outputs/2026-05-06-niche-intelligence-report.md",
+        "brain/outputs/2026-03-21-overnight-niche-deep-dive.md"
+      ],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/19c250d5143e6b7a"
+      ],
+      "crm_presence_flag": "VAULT_HISTORY",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Allianz Trade",
+      "entity": "[[entities/allianz-trade|Allianz Trade]]",
+      "source": "HISTORICAL Jeremy trade-risk email/call",
+      "independence": "Independence unverified",
+      "routing_flag": "RESEARCH_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [
+        "brain/outputs/2026-03-21-target-discovery-tci.md",
+        "brain/outputs/2026-05-19-niche-intelligence-report.md",
+        "brain/outputs/2026-05-06-niche-intelligence-report.md",
+        "brain/outputs/2026-03-15-trade-credit-insurance-niche-research.md"
+      ],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/19c250d5143e6b7a"
+      ],
+      "crm_presence_flag": "VAULT_HISTORY",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Atradius",
+      "entity": "[[entities/atradius|Atradius]]",
+      "source": "HISTORICAL Jeremy trade-risk email/call",
+      "independence": "Independence unverified",
+      "routing_flag": "RESEARCH_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [
+        "brain/outputs/2026-03-21-target-discovery-tci.md",
+        "brain/outputs/2026-05-19-niche-intelligence-report.md",
+        "brain/outputs/2026-05-06-niche-intelligence-report.md",
+        "brain/outputs/2026-03-15-trade-credit-insurance-niche-research.md"
+      ],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/19c250d5143e6b7a"
+      ],
+      "crm_presence_flag": "VAULT_HISTORY",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Coface",
+      "entity": "[[entities/coface|Coface]]",
+      "source": "HISTORICAL Jeremy trade-risk email/call",
+      "independence": "Independence unverified",
+      "routing_flag": "RESEARCH_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [
+        "brain/outputs/2026-03-21-target-discovery-tci.md",
+        "brain/outputs/2026-05-19-niche-intelligence-report.md",
+        "brain/outputs/2026-05-06-niche-intelligence-report.md",
+        "brain/outputs/2026-03-15-trade-credit-insurance-niche-research.md"
+      ],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/19c250d5143e6b7a"
+      ],
+      "crm_presence_flag": "VAULT_HISTORY",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Acumen",
+      "entity": "[[entities/acumen-fine-art-logistics|Acumen]]",
+      "source": "HISTORICAL vault deal lifecycle and live tracker",
+      "independence": "Existing prior deal; lifecycle restrictions retained",
+      "routing_flag": "PRIOR_DEAL_STALLED_NO_OUTREACH",
+      "crm_exact_matches": [
+        {
+          "id": "81a797cf-cedf-4ee1-ab22-fbb2eddee02b",
+          "name": [
+            {
+              "active_from": "2026-03-30T23:38:33.130000000Z",
+              "active_until": null,
+              "created_by_actor": {
+                "type": "api-token",
+                "id": "00c125e3-9941-4162-86ec-f34e3b990939"
+              },
+              "value": "Acumen Fine Art Logistics",
+              "attribute_type": "text"
+            }
+          ]
+        }
+      ],
+      "vault_matches": [
+        "brain/entities/acumen-international.md",
+        "brain/entities/levi-phelps.md",
+        "brain/entities/voxme-software.md",
+        "brain/calls/2025-09-17-levi-acumen-discovery.md",
+        "brain/calls/2025-10-30-levi-acumen-industry-deep-dive.md",
+        "brain/calls/2026-02-17-camilla-i-kay.md",
+        "brain/calls/2026-01-29-amanda-i-kay.md",
+        "brain/calls/2026-08-31-team-tb-camilla-kay.md"
+      ],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [],
+      "crm_presence_flag": "ACTIVE_DEAL",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Hangman",
+      "entity": "[[entities/hangman|Hangman]]",
+      "source": "HISTORICAL vault deal lifecycle and live tracker",
+      "independence": "Existing prior deal; lifecycle restrictions retained",
+      "routing_flag": "PRIOR_DEAL_PASSED_NO_OUTREACH",
+      "crm_exact_matches": [
+        {
+          "id": "41a55515-60d8-4b18-9c1b-656abd86884b",
+          "name": [
+            {
+              "active_from": "2026-03-01T17:23:38.029000000Z",
+              "active_until": null,
+              "created_by_actor": {
+                "type": "system",
+                "id": null
+              },
+              "value": "HANGMAN",
+              "attribute_type": "text"
+            }
+          ]
+        }
+      ],
+      "vault_matches": [
+        "brain/outputs/2026-06-03-niche-intelligence-report.md",
+        "brain/outputs/2026-04-21-active-niche-ranking-6mo-reset.md"
+      ],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [],
+      "crm_presence_flag": "ACTIVE_DEAL",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Momart",
+      "entity": "[[entities/momart|Momart]]",
+      "source": "Web result excluded from RECENT window (Aug5 announcement); contextual only",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://www.marketscreener.com/news/fih-group-sells-art-storage-business-momart-for-gbp8-million-ce7f50dfda81f422"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Aon",
+      "entity": "[[entities/aon|Aon]]",
+      "source": "RECENT primary company/sponsor announcement",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [
+        "brain/calls/2026-01-22-call-with-chris-wise.md",
+        "brain/outputs/2026-03-21-target-discovery-tci.md",
+        "brain/outputs/2026-03-21-overnight-niche-deep-dive.md",
+        "brain/outputs/2026-03-15-trade-credit-insurance-niche-research.md"
+      ],
+      "revenue": null,
+      "location": "Not validated",
+      "identity_audit": "Whole-word Aon broker references verified; Aone Partners CRM result excluded.",
+      "source_urls": [
+        "https://aon.mediaroom.com/2026-08-31-Aon-to-acquire-USI-to-establish-the-premier-U-S-middle-market-platform"
+      ],
+      "crm_presence_flag": "VAULT_HISTORY",
+      "outreach_eligible": false
+    },
+    {
+      "name": "USI",
+      "entity": "[[entities/usi|USI]]",
+      "source": "RECENT primary company/sponsor announcement",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "rejected_vault_matches": [
+        "brain/entities/franzi.md",
+        "brain/entities/dino-beslic.md",
+        "brain/entities/warren-chan.md",
+        "brain/entities/archveo-advisors.md",
+        "brain/entities/transworld-business-advisors.md",
+        "brain/entities/peter-nofo-tick-control.md",
+        "brain/entities/rohit-tank-track.md",
+        "brain/entities/x.md"
+      ],
+      "identity_audit": "Substring/ordinary-word/other-context matches rejected; no verified prior vault history for this identity.",
+      "source_urls": [
+        "https://aon.mediaroom.com/2026-08-31-Aon-to-acquire-USI-to-establish-the-premier-U-S-middle-market-platform"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "MacKay",
+      "entity": "[[entities/mackay|MacKay]]",
+      "source": "RECENT primary company/sponsor announcement",
+      "independence": "Acquired; comp only",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://us.bbrown.com/blog/brown-brown-acquires-mackay-corporate-insurance-brokers"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Lincoln Investment",
+      "entity": "[[entities/lincoln-investment|Lincoln Investment]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Cordoba",
+      "entity": "[[entities/cordoba|Cordoba]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Queue-It",
+      "entity": "[[entities/queue-it|Queue-It]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Edita",
+      "entity": "[[entities/edita|Edita]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Acquired; comp only",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "rejected_vault_matches": [
+        "brain/outputs/2026-03-14-luxury-infrastructure-niche-scoring.md",
+        "brain/outputs/2026-05-17-discussion-daily-tab-tracker-rebuild.md",
+        "brain/outputs/2026-04-02-air-quality-monitoring-calibration-niche-research.md",
+        "brain/outputs/2026-03-30-collection-management-deep-research.md"
+      ],
+      "identity_audit": "Substring/ordinary-word/other-context matches rejected; no verified prior vault history for this identity.",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Carrot",
+      "entity": "[[entities/carrot|Carrot]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Acquired; comp only",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "rejected_vault_matches": [
+        "brain/calls/2026-02-12-zoom-katie-walker-plexus-kay-schneider-greenwich-b.md",
+        "brain/calls/2026-01-29-camilla-i-kay-tb.md"
+      ],
+      "identity_audit": "Substring/ordinary-word/other-context matches rejected; no verified prior vault history for this identity.",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "EPC Power",
+      "entity": "[[entities/epc-power|EPC Power]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Airswift",
+      "entity": "[[entities/airswift|Airswift]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "New Tech Global",
+      "entity": "[[entities/new-tech-global|New Tech Global]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Acquired; comp only",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "GreenArrow",
+      "entity": "[[entities/greenarrow|GreenArrow]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "MSL Electric",
+      "entity": "[[entities/msl-electric|MSL Electric]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Acquired; comp only",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Lumberworld",
+      "entity": "[[entities/lumberworld|Lumberworld]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Acquired; comp only",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Schatz Bearing",
+      "entity": "[[entities/schatz-bearing|Schatz Bearing]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Acquired; comp only",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "StratEdge",
+      "entity": "[[entities/stratedge|StratEdge]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Acquired; comp only",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Trident Solutions",
+      "entity": "[[entities/trident-solutions|Trident Solutions]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    },
+    {
+      "name": "Nordic Bioscience",
+      "entity": "[[entities/nordic-bioscience|Nordic Bioscience]]",
+      "source": "RECENT PE Hub Deals Wire newsletter, Sep4; claim not independently revalidated",
+      "independence": "Strategic/platform context; not independent supply",
+      "routing_flag": "COMP_ONLY_NO_OUTREACH",
+      "crm_exact_matches": [],
+      "vault_matches": [],
+      "revenue": null,
+      "location": "Not validated",
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a06d28dccc6d169"
+      ],
+      "crm_presence_flag": "UNVERIFIED_TARGET",
+      "outreach_eligible": false
+    }
+  ],
+  "convergence": [
+    {
+      "rank": 1,
+      "name": "Specialty outpatient rehabilitation billing, authorizations and payer revenue-cycle services",
+      "independent_source_count": 2,
+      "rationale": "Independent specialty-RCM transaction reporting and current clinic expansion/hiring suggest a necessary administrative supplier layer. Investigate outsourced rehab-specific vendors rather than the previously challenged venture clinic operators.",
+      "overlap": "Medical credentialing IDEATION; concierge back-office/healthcare SaaS TABLED. Separate full-service claim/authorization operations from credentialing-only or software.",
+      "risks": [
+        "PE saturation",
+        "rehab-specific target pool unverified",
+        "billing collection dependence"
+      ],
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a0344b1f5883c2c",
+        "https://mail.google.com/mail/u/0/#all/1a03f2e9df864a43"
+      ],
+      "validation_priority": true
+    },
+    {
+      "rank": 2,
+      "name": "Outsourced diagnostic medical physics testing and radiation-safety services for outpatient imaging",
+      "independent_source_count": 1,
+      "rationale": "A fresh regional testing-company acquisition identifies a necessary vendor, and its service catalog includes repeat physics inspections and outsourced safety roles. This is a focused technical service hypothesis; growth, standalone TAM and independent target pool require validation.",
+      "overlap": "Commercial Equipment Maintenance umbrella; Medical/Lab/IVF Cleaning does not perform physics QA.",
+      "risks": [
+        "Licensed talent dependence",
+        "PE platform competition",
+        "niche TAM unverified"
+      ],
+      "source_urls": [
+        "https://westphysics.com/west-physics-announces-acquisition-of-radiographic-testing-services-inc/"
+      ],
+      "validation_priority": true
+    },
+    {
+      "rank": 3,
+      "name": "Electrical power-system testing and preventive reliability services for installed commercial/industrial assets",
+      "independent_source_count": 1,
+      "rationale": "Historical seller teaser describes recurring maintenance, relay calibration and fluid testing rather than new construction. Recent inspection/power deal flow is adjacent context only; the unusually high seller margin must not become the industry assumption.",
+      "overlap": "Commercial Equipment Maintenance parent; existing water SCADA; killed fire protection and sign/lighting explicitly excluded.",
+      "risks": [
+        "Exceptional unverified seller margin",
+        "hazardous licensed labor",
+        "equipment/project mix"
+      ],
+      "source_urls": [
+        "https://mail.google.com/mail/u/0/#all/1a01bd7b7605d215"
+      ],
+      "validation_priority": true
+    },
+    {
+      "rank": 4,
+      "name": "Fine-jewelry incoming QA and inventory verification services for independent heritage brands",
+      "independent_source_count": 1.5,
+      "rationale": "Repeated owner and team evidence shows real defects, inventory and supplier-documentation pain with strong Kay access. Evidence comes from one active deal; outsourcing willingness, recurring vendor revenue and firm density remain unknown, with prior in-house confidentiality objections retained.",
+      "overlap": "Jewelry aftercare and pure authentication; do not rename an existing/killed lane.",
+      "risks": [
+        "Same-deal source concentration",
+        "in-house substitute",
+        "thin standalone pool"
+      ],
+      "source_urls": [
+        "https://notes.granola.ai/d/a52d727e-6be6-4d11-88bb-2224c48bd24b",
+        "https://notes.granola.ai/d/8edd1384-f7b6-4ee7-b794-dc6e888ecc76"
+      ],
+      "validation_priority": false
+    },
+    {
+      "rank": 5,
+      "name": "Primary consumer-health supplement contract packaging with lot-control and specialty-format services",
+      "independent_source_count": 2,
+      "rationale": "Multi-Pak and broader beauty-fulfillment transactions show suppliers capturing growth-related operational complexity. Existing beauty packaging and 3PL rows require strict deduplication: only a distinct primary fill/pack consumer-health service scope should proceed as new.",
+      "overlap": "High-End Beauty & Fragrance Packaging and MoCRA Beauty 3PL already Under Review.",
+      "risks": [
+        "Capital intensity",
+        "PE rollups",
+        "potential semantic duplicate"
+      ],
+      "source_urls": [
+        "https://www.truvant.com/news/truvant-acquires-new-jersey-based-multi-pak-packaging-a-specialist-in-vitamins-supplements-and-otc",
+        "https://fortpointcapital.com/news/ams-fulfillment-acquires-vox-fulfillment"
+      ],
+      "validation_priority": false
+    }
+  ],
+  "diagnostics": {
+    "recent": "6 buckets attempted; 96 Gmail threads,6 live calls; Reddit403",
+    "historical": "186 vault files screened;3 live older notes;4 email threads read; OneNote/ChatGPT unavailable",
+    "crm": "47 company-name queries; exact matches filtered; active-list snapshot; company absence not outreach eligibility",
+    "automatic_kills": 0,
+    "target_density": "Not yet validated; identifier required",
+    "source_concentration": "Same-deal and same-event duplicates explicitly discounted",
+    "registry_identity_audit": "Completed: five ambiguous-name vault sets rejected; Aon verified; specific source families added; all routing flags forbid outreach; Acumen/Hangman lifecycle corrected."
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "run_date": "2026-09-07",
+  "runtime": "Codex/systemd",
+  "tracker_updated": true,
+  "ideation_rows_written": 3,
+  "weekly_review_rows_written": 3,
+  "snapshots": [
+    "/tmp/niche-intel-2026-09-07-tracker-execution/pre-insert-IDEATION-FORMATTED_VALUE.json",
+    "/tmp/niche-intel-2026-09-07-tracker-execution/pre-insert-IDEATION-FORMULA.json",
+    "/tmp/niche-intel-2026-09-07-tracker-execution/pre-populate-IDEATION-FORMATTED_VALUE.json",
+    "/tmp/niche-intel-2026-09-07-tracker-execution/pre-populate-IDEATION-FORMULA.json",
+    "/tmp/niche-intel-2026-09-07-tracker-execution/post-IDEATION-FORMATTED_VALUE.json",
+    "/tmp/niche-intel-2026-09-07-tracker-execution/post-IDEATION-FORMULA.json",
+    "/tmp/niche-intel-2026-09-07-tracker-execution/pre-write-WEEKLY-REVIEW-FORMATTED_VALUE.json",
+    "/tmp/niche-intel-2026-09-07-tracker-execution/pre-write-WEEKLY-REVIEW-FORMULA.json",
+    "/tmp/niche-intel-2026-09-07-tracker-execution/post-WEEKLY-REVIEW-FORMATTED_VALUE.json",
+    "/tmp/niche-intel-2026-09-07-tracker-execution/post-WEEKLY-REVIEW-FORMULA.json"
+  ],
+  "operations": [
+    {
+      "type": "insert",
+      "tab": "IDEATION",
+      "before_row": 25,
+      "count": 3
+    },
+    {
+      "type": "write",
+      "range": "IDEATION!A25:L27",
+      "names": [
+        "Outsourced Billing, Denials and Authorization Services for Independent Outpatient PT, OT and Speech Therapy Practices",
+        "Outsourced Diagnostic Medical Physics QA and Radiation-Safety Services for Outpatient Imaging Facilities",
+        "Independent Electrical Power-System Testing and Preventive Reliability Services for Commercial and Industrial Facilities"
+      ]
+    },
+    {
+      "type": "write",
+      "range": "'WEEKLY REVIEW'!A46:K48",
+      "names": [
+        "Outsourced Billing, Denials and Authorization Services for Independent Outpatient PT, OT and Speech Therapy Practices",
+        "Outsourced Diagnostic Medical Physics QA and Radiation-Safety Services for Outpatient Imaging Facilities",
+        "Independent Electrical Power-System Testing and Preventive Reliability Services for Commercial and Industrial Facilities"
+      ]
+    }
+  ],
+  "verification": {
+    "ideation": {
+      "unrelated_contents_formulas_unchanged": true,
+      "exactly_once": true,
+      "name_count_delta": 3,
+      "range": "IDEATION!A25:L27"
+    },
+    "weekly_review": {
+      "unrelated_contents_formulas_unchanged": true,
+      "approved_channels_unchanged": true,
+      "existing_statuses_ranks_unchanged": true,
+      "new_status": "New",
+      "new_channel_blank": true,
+      "exactly_once": true,
+      "name_count_delta": 3,
+      "range": "'WEEKLY REVIEW'!A46:K48"
+    }
+  },
+  "gaps": [],
+  "niches": [
+    {
+      "name": "Outsourced Billing, Denials and Authorization Services for Independent Outpatient PT, OT and Speech Therapy Practices",
+      "slug": "outpatient-rehabilitation-revenue-cycle-services",
+      "score": 1.7925,
+      "display_score": 1.79,
+      "scorecard_url": "https://drive.google.com/file/d/1yFDguHucAs4GzeSrmJoeXmf2UBArPSkg/view",
+      "drive_folder": "https://drive.google.com/drive/folders/1PWSIDJ5jHIkoHI7wHr9FDxnmncuCGHZ5",
+      "lifecycle": "new"
+    },
+    {
+      "name": "Outsourced Diagnostic Medical Physics QA and Radiation-Safety Services for Outpatient Imaging Facilities",
+      "slug": "outpatient-diagnostic-medical-physics",
+      "score": 1.8275000000000001,
+      "display_score": 1.83,
+      "scorecard_url": "https://drive.google.com/file/d/10G33YObal28mUqA5mTOX-THINT3n2c5z/view",
+      "drive_folder": "https://drive.google.com/drive/folders/1LwrGK216ooVbfFE2D8v8XFELhlqFpWSh",
+      "lifecycle": "new"
+    },
+    {
+      "name": "Independent Electrical Power-System Testing and Preventive Reliability Services for Commercial and Industrial Facilities",
+      "slug": "electrical-power-reliability-testing",
+      "score": 1.9075000000000002,
+      "display_score": 1.91,
+      "scorecard_url": "https://drive.google.com/file/d/1RUQtRHyZeM5O1OU3UZXzVHNqjLuhQZMy/view",
+      "drive_folder": "https://drive.google.com/drive/folders/1N9YKYVqdMZbMLpvzjmZ8MbNUUtT1i7AI",
+      "lifecycle": "recovered_narrowed"
+    }
+  ]
+}

@@ -2,11 +2,11 @@
 schema_version: 1.1.0
 date: 2026-09-07
 type: trace
-tags: [date/2026-09-07, trace, topic/niche-intelligence, status/active]
+tags: [date/2026-09-07, trace, topic/niche-intelligence, status/completed]
 task: Monday full Niche Intelligence scheduled run
 agents: [niche-intel-recent, niche-intel-historical, niche-intel-synthesizer, niche-intel-identifier, niche-intel-onepager, niche-intel-scorer, niche-intel-tracker]
-status: active
-linked_trace: brain/traces/2026-09-07-niche-intelligence.md
+status: completed
+output: "[[outputs/2026-09-07-niche-intelligence-report]]"
 run_mode: monday
 runtime: Codex/systemd
 ---
@@ -444,3 +444,17 @@ Existing Sept1 folder and PPTX recovered and conservatively revised in place; or
 
 **READY**
 ---
+
+### SCORER READY — 2026-09-07
+
+INDUSTRY scoring completed 3/3. Eight weighted groups; target TAM unscored; incomplete screens retained. Workbook caches and in-place PPTX replacements verified. Handoff `/tmp/niche-intel-2026-09-07-scored.json` and `.md`. No activation or outreach.
+
+SCORER verification addendum: all three deck status cells now read Research / Scored, initial screen incomplete; stale Pending Scoring removed. Final replacements downloaded and byte-verified. Source hyperlink counts RCM20, physics16, electrical19. READY for tracker.
+
+## [TRACKER] — Codex/systemd 2026-09-07
+UPDATED Industry Research Tracker: three IDEATION rows at A25:L27 inserted inside Compliance section; three WEEKLY REVIEW rows at A46:K48, status New, blank Current Outreach Channel and DealsX Niche. Each contains verified scorecard/one-pager links, INCOMPLETE initial-screen language, unknown exact niche TAM/typical EBITDA/independent scaled pool, and five-provider-count caveat. Electrical explicitly marked recovered/narrowed Sept1 research, missing-row reconciliation. Full live values and FORMULA snapshots taken immediately before mutations; every existing unrelated cell/formula, channel, status and rank verified unchanged. Each niche exactly once in each destination; name-count delta +3 each. Actual tracker_updated=true. Detailed audit: `/tmp/niche-intel-2026-09-07-tracker-result.json`; backups `/tmp/niche-intel-2026-09-07-tracker-execution/`. No activation, channel selection or notifications.
+→ READY
+
+## [Finalization] orchestrator
+Three research candidates completed: two new, one recovered/narrowed. Three one-pagers and three industry scorecards verified. IDEATION and WEEKLY REVIEW each gained three deduplicated rows; existing formulas/status/channels preserved. [[outputs/2026-09-07-niche-intelligence-report]] and [[outputs/2026-09-07-niche-intelligence-supporting-evidence]] retain results. No notifications, activation or outreach.
+→ CLOSE

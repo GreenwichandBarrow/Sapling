@@ -1,0 +1,933 @@
+{
+  "run_date": "2026-09-07",
+  "runtime": "Codex/systemd",
+  "method": "Actual eight-group G&B INDUSTRY template; ratings +=3, +/-=2, -=1. Unknown empirical metrics assigned conservative 1 uncertainty penalty, not asserted adverse facts; unknown qualitative judgments generally 2. Target TAM excluded. Weighted average /3. Original category/total formulas retained; numeric rating inputs replace SWITCH and deterministic XML caches verified with openpyxl data_only. No initial-screen certification.",
+  "niches": [
+    {
+      "name": "Outsourced Billing, Denials and Authorization Services for Independent Outpatient PT, OT and Speech Therapy Practices",
+      "slug": "outpatient-rehabilitation-revenue-cycle-services",
+      "score": 1.7925,
+      "display_score": 1.79,
+      "percent": 59.8,
+      "category_scores": [
+        {
+          "name": "Growth, Penetration and Catalyst",
+          "weight": 0.25,
+          "score": 1.75,
+          "weighted_contribution": 0.4375
+        },
+        {
+          "name": "Size and Fragmentation",
+          "weight": 0.1,
+          "score": 1.0,
+          "weighted_contribution": 0.1
+        },
+        {
+          "name": "Industry Economics",
+          "weight": 0.1,
+          "score": 1.0,
+          "weighted_contribution": 0.1
+        },
+        {
+          "name": "Mission Criticality",
+          "weight": 0.15,
+          "score": 2.3333333333333335,
+          "weighted_contribution": 0.35000000000000003
+        },
+        {
+          "name": "Exogeneous Risks",
+          "weight": 0.1,
+          "score": 1.8,
+          "weighted_contribution": 0.18000000000000002
+        },
+        {
+          "name": "Porter's Five Forces",
+          "weight": 0.15,
+          "score": 1.6666666666666667,
+          "weighted_contribution": 0.25
+        },
+        {
+          "name": "Value Creation Opportunities",
+          "weight": 0.1,
+          "score": 2.5,
+          "weighted_contribution": 0.25
+        },
+        {
+          "name": "Impact and Externalities",
+          "weight": 0.05,
+          "score": 2.5,
+          "weighted_contribution": 0.125
+        }
+      ],
+      "subcriteria": [
+        {
+          "row": 9,
+          "criterion": "- Growth relative to GDP (5 yr CAGR)",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown niche revenue CAGR; BLS 12% employment growth over ten years is not revenue growth."
+        },
+        {
+          "row": 10,
+          "criterion": "- Industry penetration",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: payer workflow complexity offers a catalyst; penetration unknown."
+        },
+        {
+          "row": 11,
+          "criterion": "- future growth expectations",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: recurring demand offset by reimbursement pressure and automation."
+        },
+        {
+          "row": 12,
+          "criterion": "- Evidence to support a catalyst",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Specialist vendor offerings and clinic newsletter support workflow need, not measured acceleration."
+        },
+        {
+          "row": 14,
+          "criterion": "- Number of players",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown full industry population; five observed brands do not establish a population tier. Acquisition target TAM is unscored."
+        },
+        {
+          "row": 15,
+          "criterion": "- Market share concentration",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown narrow-niche share concentration."
+        },
+        {
+          "row": 17,
+          "criterion": "- Average industry gross margins",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown industry gross margins."
+        },
+        {
+          "row": 18,
+          "criterion": "- Average industry EBITDA margins",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown normalized industry EBITDA margins."
+        },
+        {
+          "row": 19,
+          "criterion": "- Average industry ROTC",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown industry ROTC."
+        },
+        {
+          "row": 21,
+          "criterion": "- Average customer feedback",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Vendor descriptions are not independent customer feedback; neutral assumption."
+        },
+        {
+          "row": 22,
+          "criterion": "- Clarity of value proposition",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment grounded in vendor services: collecting payer revenue is directly valuable."
+        },
+        {
+          "row": 23,
+          "criterion": "- Customer switching costs",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: workflow and payer-history migration require effort; retention unverified."
+        },
+        {
+          "row": 25,
+          "criterion": "- Visibility on tech adoption and obsolescence",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Judgment: AI and EMR bundling may commoditize basic claims work."
+        },
+        {
+          "row": 26,
+          "criterion": "- Regulatory risk and frequency of changes",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: changing payer rules create both demand and operating risk."
+        },
+        {
+          "row": 27,
+          "criterion": "- Liability risks",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: PHI and coding errors create liability; loss history unknown."
+        },
+        {
+          "row": 28,
+          "criterion": "- Cyclicality",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: repeat visits support demand but payer and clinic economics matter."
+        },
+        {
+          "row": 29,
+          "criterion": "- Exposure to trends",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: aging and outsourcing balanced by reimbursement and automation."
+        },
+        {
+          "row": 31,
+          "criterion": "- Prevalence of VC-backed startups",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Unknown exact-niche VC prevalence; neutral assumption."
+        },
+        {
+          "row": 32,
+          "criterion": "- Level of competition",
+          "rating": "-",
+          "score": 1,
+          "evidence": "WebPT offers competing bundled RCM; specialist competition observed."
+        },
+        {
+          "row": 33,
+          "criterion": "- State of new entrants",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: entry possible but therapy expertise and references matter."
+        },
+        {
+          "row": 34,
+          "criterion": "- Level of supplier power",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: biller talent and EMR access matter; concentration unknown."
+        },
+        {
+          "row": 35,
+          "criterion": "- Level of customer power",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: clinics can select competing billers; concentration unknown."
+        },
+        {
+          "row": 36,
+          "criterion": "- Threat of substitutes",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Judgment: in-house teams and platform bundles are substitutes."
+        },
+        {
+          "row": 38,
+          "criterion": "- General complexity of businesses",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: labor and payer processes create moderate operating complexity."
+        },
+        {
+          "row": 39,
+          "criterion": "- Professionalization opportunities",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: denial analytics, training and reporting offer improvement levers."
+        },
+        {
+          "row": 41,
+          "criterion": "- Net impact to society",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: better collections can support continuity of care."
+        },
+        {
+          "row": 42,
+          "criterion": "- Positive or negative externalities",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: administrative efficiency balanced by privacy and coding risk."
+        }
+      ],
+      "initial_screen": {
+        "margins": {
+          "status": "UNKNOWN",
+          "evidence": "No verified industry EBITDA margin distribution; do not assert 15%+."
+        },
+        "recurring_reoccurring_revenue": {
+          "status": "PASS_MODEL_ONLY",
+          "evidence": "Multiple specialist providers offer ongoing claims/denial/collections operations; usage-linked or collections-linked recurring services, not contracted revenue percentage or audited retention."
+        },
+        "industry_growth": {
+          "status": "UNKNOWN",
+          "evidence": "PT employment 12%/10years is approximately1.14% annualized labor growth, not above-GDP niche revenue evidence."
+        },
+        "growth_tam": {
+          "status": "UNKNOWN",
+          "evidence": "No defensible $500M+ US specialty service-only TAM established."
+        },
+        "verdict": "INCOMPLETE; retain for scored analyst review, not certified initial-screen pass"
+      },
+      "target_tam": {
+        "total_firms": "At least five distinct named service-provider brands directly verified; full universe unknown",
+        "independently_owned": "PT Billing Services .com describes independent/family ownership; other four ownership unverified. No buy-box-scale independent count established.",
+        "already_backed_or_acquired": "WebPT/BMS platform comp excluded; WebPT majority Warburg investment documented2019. Full backed count unknown.",
+        "pe_consolidation_risk": "High in broad RCM and rehab software/RCM bundling; narrow service specialists unquantified",
+        "sprint_duration": "Not assigned; target count not established",
+        "observed_provider_count": 5
+      },
+      "target_pool_display": "5 observed provider brands; independent scaled pool unknown",
+      "qsbs": "Unverified",
+      "status": "New",
+      "lifecycle": "new",
+      "drive_folder": "https://drive.google.com/drive/folders/1PWSIDJ5jHIkoHI7wHr9FDxnmncuCGHZ5",
+      "folder_id": "1PWSIDJ5jHIkoHI7wHr9FDxnmncuCGHZ5",
+      "scorecard_id": "1yFDguHucAs4GzeSrmJoeXmf2UBArPSkg",
+      "scorecard_url": "https://drive.google.com/file/d/1yFDguHucAs4GzeSrmJoeXmf2UBArPSkg/view",
+      "scorecard_path": "/tmp/niche-intel-2026-09-07-deliverables/outpatient-rehabilitation-revenue-cycle-services/outpatient-rehabilitation-revenue-cycle-services Scorecard September 2026.xlsx",
+      "pptx_id": "10nsJpj0t9EYdoPb3qGTZfUin3Y3cAjvT",
+      "pptx_url": "https://drive.google.com/file/d/10nsJpj0t9EYdoPb3qGTZfUin3Y3cAjvT/view",
+      "scorecard_verified": true,
+      "pptx_updated_verified": true,
+      "source_urls": [
+        "brain/traces/agents/2026-09-07-niche-intelligence.md",
+        "/tmp/niche-intel-2026-09-07-recent/summary.md",
+        "/tmp/niche-intel-2026-09-07-historical/consolidated.md",
+        "/tmp/niche-intel-2026-09-07-synthesis.md",
+        "/tmp/niche-intel-2026-09-07-identified.json",
+        "https://ptbillingservices.com/about-us/",
+        "https://ptbillingservices.com/",
+        "https://www.ptbillingservices.net/",
+        "https://www.4mbc.com/",
+        "https://www.4mbc.com/leadership/",
+        "https://ptpilotbilling.com/about/",
+        "https://www.ptoutsourcesolutions.com/",
+        "https://www.webpt.com/products/rcm-service",
+        "https://www.webpt.com/about/press/webpt-announces-significant-investment-from-warburg-pincus",
+        "https://www.bls.gov/ooh/healthcare/physical-therapists.htm",
+        "https://mail.google.com/mail/u/0/#all/1a0344b1f5883c2c",
+        "https://mail.google.com/mail/u/0/#all/1a03f2e9df864a43",
+        "https://docs.google.com/spreadsheets/d/1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins/edit",
+        "https://drive.google.com/file/d/1HfhQkl1-0iAZKIb7pIdIGEjw_o90DkaZ/view"
+      ],
+      "notes": "Actual eight-group G&B INDUSTRY template; ratings +=3, +/-=2, -=1. Unknown empirical metrics assigned conservative 1 uncertainty penalty, not asserted adverse facts; unknown qualitative judgments generally 2. Target TAM excluded. Weighted average /3. Original category/total formulas retained; numeric rating inputs replace SWITCH and deterministic XML caches verified with openpyxl data_only. No initial-screen certification."
+    },
+    {
+      "name": "Outsourced Diagnostic Medical Physics QA and Radiation-Safety Services for Outpatient Imaging Facilities",
+      "slug": "outpatient-diagnostic-medical-physics",
+      "score": 1.8275000000000001,
+      "display_score": 1.83,
+      "percent": 60.9,
+      "category_scores": [
+        {
+          "name": "Growth, Penetration and Catalyst",
+          "weight": 0.25,
+          "score": 1.75,
+          "weighted_contribution": 0.4375
+        },
+        {
+          "name": "Size and Fragmentation",
+          "weight": 0.1,
+          "score": 1.0,
+          "weighted_contribution": 0.1
+        },
+        {
+          "name": "Industry Economics",
+          "weight": 0.1,
+          "score": 1.0,
+          "weighted_contribution": 0.1
+        },
+        {
+          "name": "Mission Criticality",
+          "weight": 0.15,
+          "score": 2.3333333333333335,
+          "weighted_contribution": 0.35000000000000003
+        },
+        {
+          "name": "Exogeneous Risks",
+          "weight": 0.1,
+          "score": 2.4,
+          "weighted_contribution": 0.24
+        },
+        {
+          "name": "Porter's Five Forces",
+          "weight": 0.15,
+          "score": 2.0,
+          "weighted_contribution": 0.3
+        },
+        {
+          "name": "Value Creation Opportunities",
+          "weight": 0.1,
+          "score": 1.5,
+          "weighted_contribution": 0.15000000000000002
+        },
+        {
+          "name": "Impact and Externalities",
+          "weight": 0.05,
+          "score": 3.0,
+          "weighted_contribution": 0.15000000000000002
+        }
+      ],
+      "subcriteria": [
+        {
+          "row": 9,
+          "criterion": "- Growth relative to GDP (5 yr CAGR)",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown narrow-niche revenue CAGR."
+        },
+        {
+          "row": 10,
+          "criterion": "- Industry penetration",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: recurring imaging QA offers catalyst; penetration unknown."
+        },
+        {
+          "row": 11,
+          "criterion": "- future growth expectations",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: installed-base demand balanced by reimbursement and customer consolidation."
+        },
+        {
+          "row": 12,
+          "criterion": "- Evidence to support a catalyst",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "ACR recurring QA requirements and specialist offerings support repeat need."
+        },
+        {
+          "row": 14,
+          "criterion": "- Number of players",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown full industry population; observed providers do not establish a tier. Acquisition target TAM unscored."
+        },
+        {
+          "row": 15,
+          "criterion": "- Market share concentration",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown industry share concentration."
+        },
+        {
+          "row": 17,
+          "criterion": "- Average industry gross margins",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown industry gross margins."
+        },
+        {
+          "row": 18,
+          "criterion": "- Average industry EBITDA margins",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown industry EBITDA margins."
+        },
+        {
+          "row": 19,
+          "criterion": "- Average industry ROTC",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown industry ROTC."
+        },
+        {
+          "row": 21,
+          "criterion": "- Average customer feedback",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "No independent customer satisfaction dataset; neutral assumption."
+        },
+        {
+          "row": 22,
+          "criterion": "- Clarity of value proposition",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: safety and imaging quality are clear operating requirements."
+        },
+        {
+          "row": 23,
+          "criterion": "- Customer switching costs",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: technical records and scheduling create switching effort."
+        },
+        {
+          "row": 25,
+          "criterion": "- Visibility on tech adoption and obsolescence",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: physical measurement and specialist interpretation resist full automation."
+        },
+        {
+          "row": 26,
+          "criterion": "- Regulatory risk and frequency of changes",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: regulatory/accreditation changes create demand and compliance work."
+        },
+        {
+          "row": 27,
+          "criterion": "- Liability risks",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Judgment: radiation and diagnostic quality errors have material liability."
+        },
+        {
+          "row": 28,
+          "criterion": "- Cyclicality",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: repeat installed-base QA is relatively resilient; revenue mix unknown."
+        },
+        {
+          "row": 29,
+          "criterion": "- Exposure to trends",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: quality assurance and installed equipment support durable demand."
+        },
+        {
+          "row": 31,
+          "criterion": "- Prevalence of VC-backed startups",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Unknown exact-niche VC prevalence; neutral assumption."
+        },
+        {
+          "row": 32,
+          "criterion": "- Level of competition",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Multiple specialists observed; share and pricing unknown."
+        },
+        {
+          "row": 33,
+          "criterion": "- State of new entrants",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: qualifications, technical expertise and equipment constrain entry."
+        },
+        {
+          "row": 34,
+          "criterion": "- Level of supplier power",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Judgment: scarce qualified physicists have substantial supplier power."
+        },
+        {
+          "row": 35,
+          "criterion": "- Level of customer power",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: imaging groups can consolidate purchasing; mix unknown."
+        },
+        {
+          "row": 36,
+          "criterion": "- Threat of substitutes",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: internal physicists and OEM services provide partial alternatives."
+        },
+        {
+          "row": 38,
+          "criterion": "- General complexity of businesses",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Judgment: credentialed technical delivery and safety oversight are complex."
+        },
+        {
+          "row": 39,
+          "criterion": "- Professionalization opportunities",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: scheduling and reporting improvements possible; clinical expertise remains essential."
+        },
+        {
+          "row": 41,
+          "criterion": "- Net impact to society",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: improves patient and staff safety."
+        },
+        {
+          "row": 42,
+          "criterion": "- Positive or negative externalities",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: safer equipment and reliable measurements create positive externalities."
+        }
+      ],
+      "initial_screen": {
+        "margins": {
+          "status": "UNKNOWN",
+          "evidence": "No primary industry EBITDA margin evidence found."
+        },
+        "recurring_reoccurring_revenue": {
+          "status": "PASS_MODEL_ONLY",
+          "evidence": "ACR CT annual survey and vendors annual/periodic QA establish repeat work; contract share/retention unknown."
+        },
+        "industry_growth": {
+          "status": "UNKNOWN",
+          "evidence": "Installed-base/regulatory demand is supported, not measured above-GDP service revenue growth."
+        },
+        "growth_tam": {
+          "status": "UNKNOWN",
+          "evidence": "Narrow US outsourced diagnostic-only physics TAM unverified; total medical physics/radiotherapy budgets unsuitable proxy."
+        },
+        "verdict": "INCOMPLETE; review candidate with quantified gaps, not pass/activation"
+      },
+      "target_tam": {
+        "total_firms": "Five named US providers verified; directory includes equipment and other physics services so no unfiltered count used",
+        "independently_owned": "Unicon, RPS and Intermountain publicly describe independence; Vent describes independent consulting, which is professional independence not verified equity. All scale/ownership needs diligence.",
+        "already_backed_or_acquired": "RTS acquired by West Physics Sept2026 excluded; national West Physics platform comp excluded. Other count unknown.",
+        "pe_consolidation_risk": "Medium/High consolidation pressure; exact PE ownership of all platforms not verified",
+        "sprint_duration": "Unknown, no reliable independent scaled count",
+        "observed_provider_count": 5
+      },
+      "target_pool_display": "5 observed provider brands; independent scaled pool unknown",
+      "qsbs": "Unverified",
+      "status": "New",
+      "lifecycle": "new",
+      "drive_folder": "https://drive.google.com/drive/folders/1LwrGK216ooVbfFE2D8v8XFELhlqFpWSh",
+      "folder_id": "1LwrGK216ooVbfFE2D8v8XFELhlqFpWSh",
+      "scorecard_id": "10G33YObal28mUqA5mTOX-THINT3n2c5z",
+      "scorecard_url": "https://drive.google.com/file/d/10G33YObal28mUqA5mTOX-THINT3n2c5z/view",
+      "scorecard_path": "/tmp/niche-intel-2026-09-07-deliverables/outpatient-diagnostic-medical-physics/outpatient-diagnostic-medical-physics Scorecard September 2026.xlsx",
+      "pptx_id": "1GybDMX4zJ8TU8dxxX4FaYzJM7NLybAHR",
+      "pptx_url": "https://drive.google.com/file/d/1GybDMX4zJ8TU8dxxX4FaYzJM7NLybAHR/view",
+      "scorecard_verified": true,
+      "pptx_updated_verified": true,
+      "source_urls": [
+        "https://www.uniconmedicalphysics.com/",
+        "https://www.rps.nyc/post/hedge-fund-buyouts-medical-physics-prices-ny-nj",
+        "brain/traces/agents/2026-09-07-niche-intelligence.md",
+        "/tmp/niche-intel-2026-09-07-synthesis.md",
+        "https://ventmedicalphysics.com/",
+        "https://www.diagnosticradphys.com/locations/medical-physicist-new-jersey/",
+        "/tmp/niche-intel-2026-09-07-identified.md",
+        "https://www.kslab.com/wp-content/uploads/2018/10/KS-Capabilities-Statement.pdf",
+        "https://www.rps.nyc/",
+        "https://w3.aapm.org/corporate_affiliates/",
+        "https://www.census.gov/naics/reference_files_tools/2022_NAICS_Manual.pdf",
+        "https://accreditationsupport.acr.org/support/solutions/articles/11000056188-quality-control-ct",
+        "https://intermountainmedicalphysics.com/",
+        "https://docs.google.com/spreadsheets/d/1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins/edit",
+        "https://westphysics.com/west-physics-announces-acquisition-of-radiographic-testing-services-inc/"
+      ],
+      "notes": "Actual eight-group G&B INDUSTRY template; ratings +=3, +/-=2, -=1. Unknown empirical metrics assigned conservative 1 uncertainty penalty, not asserted adverse facts; unknown qualitative judgments generally 2. Target TAM excluded. Weighted average /3. Original category/total formulas retained; numeric rating inputs replace SWITCH and deterministic XML caches verified with openpyxl data_only. No initial-screen certification."
+    },
+    {
+      "name": "Independent Electrical Power-System Testing and Preventive Reliability Services for Commercial and Industrial Facilities",
+      "slug": "electrical-power-reliability-testing",
+      "score": 1.9075000000000002,
+      "display_score": 1.91,
+      "percent": 63.6,
+      "category_scores": [
+        {
+          "name": "Growth, Penetration and Catalyst",
+          "weight": 0.25,
+          "score": 2.25,
+          "weighted_contribution": 0.5625
+        },
+        {
+          "name": "Size and Fragmentation",
+          "weight": 0.1,
+          "score": 1.0,
+          "weighted_contribution": 0.1
+        },
+        {
+          "name": "Industry Economics",
+          "weight": 0.1,
+          "score": 1.0,
+          "weighted_contribution": 0.1
+        },
+        {
+          "name": "Mission Criticality",
+          "weight": 0.15,
+          "score": 2.3333333333333335,
+          "weighted_contribution": 0.35000000000000003
+        },
+        {
+          "name": "Exogeneous Risks",
+          "weight": 0.1,
+          "score": 2.2,
+          "weighted_contribution": 0.22000000000000003
+        },
+        {
+          "name": "Porter's Five Forces",
+          "weight": 0.15,
+          "score": 1.8333333333333333,
+          "weighted_contribution": 0.27499999999999997
+        },
+        {
+          "name": "Value Creation Opportunities",
+          "weight": 0.1,
+          "score": 1.5,
+          "weighted_contribution": 0.15000000000000002
+        },
+        {
+          "name": "Impact and Externalities",
+          "weight": 0.05,
+          "score": 3.0,
+          "weighted_contribution": 0.15000000000000002
+        }
+      ],
+      "subcriteria": [
+        {
+          "row": 9,
+          "criterion": "- Growth relative to GDP (5 yr CAGR)",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "North American broader testing proxy 6.5% CAGR; exact US niche unknown; provisional mid-band."
+        },
+        {
+          "row": 10,
+          "criterion": "- Industry penetration",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: reliability demand is a catalyst; installed-base penetration unknown."
+        },
+        {
+          "row": 11,
+          "criterion": "- future growth expectations",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: electrification and equipment reliability are tailwinds; exact growth unverified."
+        },
+        {
+          "row": 12,
+          "criterion": "- Evidence to support a catalyst",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "NETA scope and seller/deal evidence support need, not a validated industry forecast."
+        },
+        {
+          "row": 14,
+          "criterion": "- Number of players",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown full industry population; directory branches are not independent firms. Acquisition target TAM unscored."
+        },
+        {
+          "row": 15,
+          "criterion": "- Market share concentration",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown narrow industry shares."
+        },
+        {
+          "row": 17,
+          "criterion": "- Average industry gross margins",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown normalized industry gross margins."
+        },
+        {
+          "row": 18,
+          "criterion": "- Average industry EBITDA margins",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown industry EBITDA; seller 57.4% unverified outlier is not industry benchmark."
+        },
+        {
+          "row": 19,
+          "criterion": "- Average industry ROTC",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Unknown industry ROTC."
+        },
+        {
+          "row": 21,
+          "criterion": "- Average customer feedback",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "No independent customer feedback dataset; neutral assumption."
+        },
+        {
+          "row": 22,
+          "criterion": "- Clarity of value proposition",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: uptime and safe power equipment are essential."
+        },
+        {
+          "row": 23,
+          "criterion": "- Customer switching costs",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: maintenance history and site access create switching effort."
+        },
+        {
+          "row": 25,
+          "criterion": "- Visibility on tech adoption and obsolescence",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: field testing remains physical and technically specialized."
+        },
+        {
+          "row": 26,
+          "criterion": "- Regulatory risk and frequency of changes",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: standards changes create demand and compliance cost."
+        },
+        {
+          "row": 27,
+          "criterion": "- Liability risks",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Judgment: high voltage and outage errors create material liability."
+        },
+        {
+          "row": 28,
+          "criterion": "- Cyclicality",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: maintenance repeat demand mixed with cyclical projects."
+        },
+        {
+          "row": 29,
+          "criterion": "- Exposure to trends",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: electrification and aging equipment favor reliability work."
+        },
+        {
+          "row": 31,
+          "criterion": "- Prevalence of VC-backed startups",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Exact-niche VC prevalence unknown; PE activity is not VC count."
+        },
+        {
+          "row": 32,
+          "criterion": "- Level of competition",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Shermco platform activity demonstrates well-capitalized competition."
+        },
+        {
+          "row": 33,
+          "criterion": "- State of new entrants",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: qualified staff, equipment and credentials constrain entry."
+        },
+        {
+          "row": 34,
+          "criterion": "- Level of supplier power",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Judgment: specialist labor and test equipment confer supplier power."
+        },
+        {
+          "row": 35,
+          "criterion": "- Level of customer power",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: larger commercial/industrial buyers can exert pricing pressure."
+        },
+        {
+          "row": 36,
+          "criterion": "- Threat of substitutes",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: OEM and internal teams are partial substitutes."
+        },
+        {
+          "row": 38,
+          "criterion": "- General complexity of businesses",
+          "rating": "-",
+          "score": 1,
+          "evidence": "Judgment: high-voltage field work and staffing are operationally complex."
+        },
+        {
+          "row": 39,
+          "criterion": "- Professionalization opportunities",
+          "rating": "+/-",
+          "score": 2,
+          "evidence": "Judgment: scheduling, utilization and reporting offer levers; labor constraints persist."
+        },
+        {
+          "row": 41,
+          "criterion": "- Net impact to society",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: safe reliable power supports essential operations."
+        },
+        {
+          "row": 42,
+          "criterion": "- Positive or negative externalities",
+          "rating": "+",
+          "score": 3,
+          "evidence": "Judgment: fewer outages and equipment failures create positive externalities."
+        }
+      ],
+      "initial_screen": {
+        "margins": {
+          "status": "UNKNOWN",
+          "evidence": "Single teaser implies57.4% normalized EBITDA, exceptional/unverified. No typical-industry15%+ proof."
+        },
+        "recurring_reoccurring_revenue": {
+          "status": "PASS_MODEL_ONLY",
+          "evidence": "NETA explicitly describes routine testing/maintenance; A&F/Apparatus recurring programs. Actual contracted-share and renewal data unknown."
+        },
+        "industry_growth": {
+          "status": "PROXY_SUPPORT_ONLY",
+          "evidence": "EMR North America electrical testing6.5% forecast; includes broader geography/end-users, not measured niche growth."
+        },
+        "growth_tam": {
+          "status": "PROXY_SUPPORT_ONLY",
+          "evidence": "EMR North America broader electrical testing$2.66B2025; exact US C&I preventive-service TAM not carved out."
+        },
+        "verdict": "INCOMPLETE; promising growth/TAM proxy, no all-four pass"
+      },
+      "target_tam": {
+        "total_firms": "NETA directory demonstrates numerous company names and branches; at least five named service firms retained plus two platform/acquired comps",
+        "independently_owned": "Unknown. NETA third-party independence means independence from equipment/manufacturing conflicts, not absence of PE. A&F describes independent company but equity and scale unverified.",
+        "already_backed_or_acquired": "Shermco platform and Advanced Testing Systems/HIGHVOLT excluded from independent count; ABM branches excluded. Full count unknown.",
+        "pe_consolidation_risk": "High: Shermco $1.6B Blackstone transaction announced2025 plus strategic consolidation",
+        "sprint_duration": "Unknown until ownership/branch dedup and revenue-mix validation",
+        "observed_provider_count": 5
+      },
+      "target_pool_display": "5 observed provider brands; independent scaled pool unknown",
+      "qsbs": "Unverified",
+      "status": "New",
+      "lifecycle": "recovered_narrowed",
+      "drive_folder": "https://drive.google.com/drive/folders/1N9YKYVqdMZbMLpvzjmZ8MbNUUtT1i7AI",
+      "folder_id": "1N9YKYVqdMZbMLpvzjmZ8MbNUUtT1i7AI",
+      "scorecard_id": "1RUQtRHyZeM5O1OU3UZXzVHNqjLuhQZMy",
+      "scorecard_url": "https://drive.google.com/file/d/1RUQtRHyZeM5O1OU3UZXzVHNqjLuhQZMy/view",
+      "scorecard_path": "/tmp/niche-intel-2026-09-07-deliverables/electrical-power-reliability-testing/electrical-power-reliability-testing Scorecard September 2026.xlsx",
+      "pptx_id": "18OY6lg50DAdEGI11QNlDgHYBbnQidZ5H",
+      "pptx_url": "https://drive.google.com/file/d/18OY6lg50DAdEGI11QNlDgHYBbnQidZ5H/view",
+      "scorecard_verified": true,
+      "pptx_updated_verified": true,
+      "source_urls": [
+        "brain/traces/agents/2026-09-07-niche-intelligence.md",
+        "/tmp/niche-intel-2026-09-07-historical/hist-email.md",
+        "/tmp/niche-intel-2026-09-07-identified.json",
+        "https://netadev.netaworld.org/accreditation/overview",
+        "https://netaworldjournal.org/wp-content/uploads/2026/04/NWJ-spring-2026.pdf",
+        "https://netaworldjournal.org/wp-content/uploads/2026/05/NETA-World-SM26_FINAL.pdf",
+        "https://netaworldjournal.org/wp-content/uploads/2025/11/NETA-World_FL25.pdf",
+        "https://afelectricaltesting.com/",
+        "https://www.apparatustesting.com/",
+        "https://www.highvolt.com/en/ats",
+        "https://www.gryphon-inv.com/news/gryphon-investors-to-sell-shermco-to-blackstone-in-1-6-billion-transaction/",
+        "https://www.eia.gov/todayinenergy/detail.php?id=67344",
+        "https://www.expertmarketresearch.com/reports/north-america-electrical-testing-services-market",
+        "https://mail.google.com/mail/u/0/#all/1a01bd7b7605d215",
+        "/tmp/niche-intel-2026-09-07-deliverables/electrical-power-reliability-testing/prior-sept1.pptx",
+        ".agents/skills/niche-intelligence/references/one-pager-template.md",
+        "brain/library/internal/one-pager-template/customs-bonds-template.pptx",
+        "https://docs.google.com/spreadsheets/d/1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins/edit"
+      ],
+      "notes": "Actual eight-group G&B INDUSTRY template; ratings +=3, +/-=2, -=1. Unknown empirical metrics assigned conservative 1 uncertainty penalty, not asserted adverse facts; unknown qualitative judgments generally 2. Target TAM excluded. Weighted average /3. Original category/total formulas retained; numeric rating inputs replace SWITCH and deterministic XML caches verified with openpyxl data_only. No initial-screen certification."
+    }
+  ],
+  "scorecards_written": 3
+}

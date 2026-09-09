@@ -1,0 +1,42 @@
+{
+  "name": "Outsourced Diagnostic Medical Physics QA and Radiation-Safety Services for Outpatient Imaging Facilities",
+  "slug": "outpatient-diagnostic-medical-physics",
+  "folder_id": "1LwrGK216ooVbfFE2D8v8XFELhlqFpWSh",
+  "folder_url": "https://drive.google.com/drive/folders/1LwrGK216ooVbfFE2D8v8XFELhlqFpWSh",
+  "pptx_id": "1GybDMX4zJ8TU8dxxX4FaYzJM7NLybAHR",
+  "pptx_path": "/tmp/niche-intel-2026-09-07-deliverables/outpatient-diagnostic-medical-physics/Diagnostic Medical Physics QA September 2026.pptx",
+  "source_urls": [
+    "https://www.uniconmedicalphysics.com/",
+    "https://www.rps.nyc/post/hedge-fund-buyouts-medical-physics-prices-ny-nj",
+    "brain/traces/agents/2026-09-07-niche-intelligence.md",
+    "/tmp/niche-intel-2026-09-07-synthesis.md",
+    "https://ventmedicalphysics.com/",
+    "https://www.diagnosticradphys.com/locations/medical-physicist-new-jersey/",
+    "/tmp/niche-intel-2026-09-07-identified.md",
+    "https://www.kslab.com/wp-content/uploads/2018/10/KS-Capabilities-Statement.pdf",
+    "https://www.rps.nyc/",
+    "https://w3.aapm.org/corporate_affiliates/",
+    "https://www.census.gov/naics/reference_files_tools/2022_NAICS_Manual.pdf",
+    "https://accreditationsupport.acr.org/support/solutions/articles/11000056188-quality-control-ct",
+    "https://intermountainmedicalphysics.com/",
+    "https://docs.google.com/spreadsheets/d/1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins/edit",
+    "https://westphysics.com/west-physics-announces-acquisition-of-radiographic-testing-services-inc/"
+  ],
+  "verified": true,
+  "local_verification": {
+    "slides": 3,
+    "original_shapes_preserved": 6,
+    "hyperlinks": 15,
+    "all_sources_linked": true,
+    "pending_scoring": true
+  },
+  "folder_mapping": "User ACTIVE SPRINTS absent; established WEEKLY REVIEW used.",
+  "verification": "PPTX reopened, all source hyperlink relationships checked; live folder contains exactly one matching pptx",
+  "score": 1.8275000000000001,
+  "scorecard_id": "10G33YObal28mUqA5mTOX-THINT3n2c5z",
+  "scorecard_url": "https://drive.google.com/file/d/10G33YObal28mUqA5mTOX-THINT3n2c5z/view",
+  "scorecard_path": "/tmp/niche-intel-2026-09-07-deliverables/outpatient-diagnostic-medical-physics/outpatient-diagnostic-medical-physics Scorecard September 2026.xlsx",
+  "scorecard_verified": true,
+  "pptx_scored_verified": true,
+  "status": "Scored; initial screen incomplete"
+}

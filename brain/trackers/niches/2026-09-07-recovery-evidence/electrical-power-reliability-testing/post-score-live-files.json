@@ -1,0 +1,41 @@
+{
+  "files": [
+    {
+      "hasThumbnail": true,
+      "id": "18OY6lg50DAdEGI11QNlDgHYBbnQidZ5H",
+      "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "modifiedTime": "2026-09-09T00:37:16.902Z",
+      "name": "Electrical Testing and Power-System Services September 2026.pptx",
+      "owners": [
+        {
+          "emailAddress": "kay.s@greenwichandbarrow.com"
+        }
+      ],
+      "parents": [
+        "1N9YKYVqdMZbMLpvzjmZ8MbNUUtT1i7AI"
+      ],
+      "size": "170533",
+      "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBNugXILE9ZVts8CACN4i2iho8ID8KgCy8uoHN7qYMdWe4VRONXQn9JCcu--w_vzZ92IyVX005jnO50hUfmi0F2qx9pVuOYmnF17gMG_IvVKMyk=s220",
+      "webViewLink": "https://docs.google.com/presentation/d/18OY6lg50DAdEGI11QNlDgHYBbnQidZ5H/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true"
+    },
+    {
+      "hasThumbnail": true,
+      "id": "1RUQtRHyZeM5O1OU3UZXzVHNqjLuhQZMy",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "modifiedTime": "2026-09-09T00:37:15.062Z",
+      "name": "electrical-power-reliability-testing Scorecard September 2026.xlsx",
+      "owners": [
+        {
+          "emailAddress": "kay.s@greenwichandbarrow.com"
+        }
+      ],
+      "parents": [
+        "1N9YKYVqdMZbMLpvzjmZ8MbNUUtT1i7AI"
+      ],
+      "size": "15602",
+      "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBNx93USqpGakpJco-aQPnrrovYCDRL-rHr1mCuInroZudH3qURcVAhRERl3m5MoGSTGdv6AwGMtvTKvbLxzE0rVrH1OnWHauw_fFkjJ48aJJdE=s220",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/1RUQtRHyZeM5O1OU3UZXzVHNqjLuhQZMy/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true"
+    }
+  ],
+  "nextPageToken": ""
+}

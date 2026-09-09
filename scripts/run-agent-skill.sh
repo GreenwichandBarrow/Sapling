@@ -39,6 +39,10 @@ log() {
 
 post_failure() {
   local message="$1"
+  if [ "${SAPLING_NO_NOTIFICATIONS:-0}" = "1" ]; then
+    log "Notification suppressed for supervised recovery: $message"
+    return 0
+  fi
   if [ "$SKILL_NAME" = "health-monitor" ]; then
     log "Slack suppressed for health-monitor failure by Kay preference: $message"
     return 0
@@ -191,9 +195,14 @@ if [ -z "${CODEX_MODEL:-}" ]; then
     "niche-intelligence:monday"|\
     "niche-intelligence:tuesday"|\
     "target-discovery:phase2-sunday")
-      CODEX_MODEL="${CODEX_HEAVY_MODEL:-gpt-5.5}" ;;
+      CODEX_MODEL="${CODEX_HEAVY_MODEL:-gpt-6-astra}"
+      # The saved legacy heavy default was rejected during the September 7 run.
+      [ "$CODEX_MODEL" != "gpt-5.5" ] || CODEX_MODEL="gpt-6-astra"
+      ;;
     *)
-      CODEX_MODEL="${CODEX_ROUTINE_MODEL:-gpt-5.4-mini}" ;;
+      CODEX_MODEL="${CODEX_ROUTINE_MODEL:-gpt-5.6-luna}"
+      [ "$CODEX_MODEL" != "gpt-5.4-mini" ] || CODEX_MODEL="gpt-5.6-luna"
+      ;;
   esac
 fi
 log "Model: $CODEX_MODEL"
@@ -231,6 +240,13 @@ elif [ -z "$PROMPT_FILE" ]; then
   printf "Use the $%s skill. Arguments: %s\n\nRun this scheduled workflow faithfully in Sapling. NEVER send email. Drafts only where explicitly supported. Validate outputs and summarize results." "$SKILL_NAME" "$SKILL_ARGS" > "$PROMPT_FILE"
 fi
 
+if [ "${SAPLING_NO_NOTIFICATIONS:-0}" = "1" ]; then
+  RECOVERY_PROMPT_FILE="$(mktemp)"
+  cat "$PROMPT_FILE" > "$RECOVERY_PROMPT_FILE"
+  printf '\n\nSupervised recovery: Do not send Slack, email, text, or any external notification. Return results in artifacts and the final response only. Operating date: %s. Preserve prior partial work; verify live state and deduplicate before any write. Do not activate niches, change approved outreach channels, or initiate outreach.\n' "$TODAY" >> "$RECOVERY_PROMPT_FILE"
+  PROMPT_FILE="$RECOVERY_PROMPT_FILE"
+fi
+
 CODEX_CMD=(codex exec --cd "$WORKDIR" --dangerously-bypass-approvals-and-sandbox --json --output-last-message "$LOG_FILE.final")
 if [ -n "${CODEX_MODEL:-}" ]; then
   CODEX_CMD+=(--model "$CODEX_MODEL")
@@ -244,7 +260,8 @@ set -e
 
 if [ "$status" -ne 0 ]; then
   if grep -q "Selected model is at capacity" "$LOG_FILE" && [ -z "${CODEX_MODEL_FALLBACK_ATTEMPTED:-}" ]; then
-    FALLBACK_MODEL="${CODEX_FALLBACK_MODEL:-gpt-5.5}"
+    FALLBACK_MODEL="${CODEX_FALLBACK_MODEL:-gpt-6-astra}"
+    [ "$FALLBACK_MODEL" != "gpt-5.5" ] || FALLBACK_MODEL="gpt-6-astra"
     log "RETRY: codex exec hit model capacity on $CODEX_MODEL; retrying once with $FALLBACK_MODEL"
     CODEX_MODEL_FALLBACK_ATTEMPTED=1
     CODEX_CMD=(codex exec --cd "$WORKDIR" --dangerously-bypass-approvals-and-sandbox --json --output-last-message "$LOG_FILE.final" --model "$FALLBACK_MODEL")

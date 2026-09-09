@@ -88,7 +88,7 @@ PY_RC=$?
 
 if [[ $PY_RC -ne 0 ]] || ! [[ "$COUNTS" =~ ^[0-9]+\ [0-9]+$ ]]; then
   log "ERROR: queue filter failed (py_rc=$PY_RC) - NOT advancing checkpoint, will retry next fire"
-  if command -v op >/dev/null 2>&1 && SLACK_HOOK="$(op read 'op://GB Server/u2shpr72znynqh2s62jue25wzi/password' 2>/dev/null)" && [[ -n "$SLACK_HOOK" ]]; then
+  if [[ "${SAPLING_NO_NOTIFICATIONS:-0}" != "1" ]] && command -v op >/dev/null 2>&1 && SLACK_HOOK="$(op read 'op://GB Server/u2shpr72znynqh2s62jue25wzi/password' 2>/dev/null)" && [[ -n "$SLACK_HOOK" ]]; then
     curl -s -o /dev/null -X POST -H 'Content-Type: application/json' \
       -d "{\"text\":\":rotating_light: post-call-analyzer poll FAILED $TODAY - filter heredoc crashed (py_rc=$PY_RC). Calls NOT processed; checkpoint held.\"}" \
       "$SLACK_HOOK" || true

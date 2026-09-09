@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-08",
+  "updated_at": "2026-09-09",
   "items": [
     {
       "bucket": "thank",
@@ -1889,11 +1889,19 @@
       "email": "glavergne@ashfordventures.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-08-25",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Check In: SG LOI",
       "event_date": "2026-08-24",
-      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g64qj8d1h8oq3cghi6cok8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8h13cdpm6d23ih1k8kqjehhk6os3cghg6h1jgdho61230h9j852g"
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g64qj8d1h8oq3cghi6cok8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8h13cdpm6d23ih1k8kqjehhk6os3cghg6h1jgdho61230h9j852g",
+      "completed_at": "2026-09-08",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 1a0813885860b55a, subject 'Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL', sent 2026-09-08 09:34.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "1a0813885860b55a",
+        "subject": "Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL",
+        "sent_at": "2026-09-08 09:34"
+      }
     },
     {
       "bucket": "thank",
@@ -1913,11 +1921,19 @@
       "email": "glavergne@ashfordventures.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-08-26",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Check In: SG LOI",
       "event_date": "2026-08-25",
-      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g64qj8d1h8oq3cghi6cok8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8h13cdpm6d23ih1k8kqjehhk6os3cghg6h1jgdho61230h9j852g"
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g64qj8d1h8oq3cghi6cok8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8h13cdpm6d23ih1k8kqjehhk6os3cghg6h1jgdho61230h9j852g",
+      "completed_at": "2026-09-08",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 1a0813885860b55a, subject 'Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL', sent 2026-09-08 09:34.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "1a0813885860b55a",
+        "subject": "Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL",
+        "sent_at": "2026-09-08 09:34"
+      }
     },
     {
       "bucket": "thank",
@@ -1981,11 +1997,19 @@
       "email": "jeffstevens@anacapapartners.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-08-27",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Jeff I Kay",
       "event_date": "2026-08-26",
-      "calendar_event_id": "fofdohiiqcuesv75v7v85k2p8k"
+      "calendar_event_id": "fofdohiiqcuesv75v7v85k2p8k",
+      "completed_at": "2026-09-08",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 1a0813ae716a1e19, subject 'Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL', sent 2026-09-08 09:36.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "1a0813ae716a1e19",
+        "subject": "Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL",
+        "sent_at": "2026-09-08 09:36"
+      }
     },
     {
       "bucket": "thank",
@@ -2017,11 +2041,19 @@
       "email": "jeffstevens@anacapapartners.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-08-28",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Jeff I Kay",
       "event_date": "2026-08-27",
-      "calendar_event_id": "fofdohiiqcuesv75v7v85k2p8k"
+      "calendar_event_id": "fofdohiiqcuesv75v7v85k2p8k",
+      "completed_at": "2026-09-08",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 1a0813ae716a1e19, subject 'Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL', sent 2026-09-08 09:36.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "1a0813ae716a1e19",
+        "subject": "Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL",
+        "sent_at": "2026-09-08 09:36"
+      }
     },
     {
       "bucket": "thank",
@@ -2210,6 +2242,30 @@
       "event": "Relationship / Call Window",
       "event_date": "2026-09-07",
       "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260908T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-09",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-09-08",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260908T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-09",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-09-08",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260909T153000Z"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

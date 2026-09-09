@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-03T22:06:20.164386Z",
+  "last_updated": "2026-09-09T00:06:58.207Z",
   "processed": [
     {
       "attio_failed": false,
@@ -2081,6 +2081,30 @@
       "slack_posted": true,
       "slack_failed": false,
       "processed_archive": "brain/trackers/post-call-analyzer/processed/not_vhL3vLKOvXXmKo.json"
+    },
+    {
+      "id": "not_GUckD0rc4aKzdO",
+      "title": "Team TB Camilla I Kay",
+      "date": "2026-09-08",
+      "counterparty": "Camilla de Sanna",
+      "location": "remote",
+      "meeting_time": "2026-09-08 10:00-11:00 ET",
+      "granola_url": "https://notes.granola.ai/d/899ded36-30d5-4979-94e2-6817f45fa3b6",
+      "doc_url": "https://docs.google.com/document/d/1S3mGrw4AdiFl829ZMK-uP8MTp2guzmoD1VgP5XNC8Ww/edit",
+      "transcript_doc_url": "https://docs.google.com/document/d/1vCDyfXEp_6S07RB0RrebccJre3th2BT6pW9cIx6ogdU/edit",
+      "attio_notes": {
+        "people": ["52146e57-68cf-4681-927c-9c2ddcdc7ea3"],
+        "companies": ["1f3d7760-bafa-4f9e-996e-448dbff55ae9"]
+      },
+      "attio_failed": false,
+      "task_count": 4,
+      "tasks_failed": false,
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_GUckD0rc4aKzdO.json",
+      "vault_call_note": "brain/calls/2026-09-08-team-tb-camilla-kay.md",
+      "processed_at": "2026-09-09T00:06:58.207Z",
+      "slack_posted": false,
+      "slack_failed": true,
+      "slack_skip_reason": "Supervised recovery instruction: do not send external notifications"
     }
   ]
 }

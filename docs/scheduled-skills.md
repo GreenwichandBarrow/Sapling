@@ -30,6 +30,27 @@ Schedule changes happen via systemd unit edits + validator wrapper updates; this
 
 ## Infrastructure
 
+### Current Codex Recovery (2026-09-08)
+
+The VPS Codex runner is `scripts/run-agent-skill.sh`. Live account probes on
+September 8 verified `gpt-6-astra` for heavy jobs and `gpt-5.6-luna` for routine
+jobs. The September 7 niche run rejected `gpt-5.5`; the September 8 post-call
+run rejected `gpt-5.4-mini`. The runner maps those two legacy scheduled defaults
+to the verified replacements, including the legacy capacity fallback. An
+explicit `CODEX_MODEL` override is preserved. No timer schedule was changed.
+
+For supervised recovery without external messages, set
+`SAPLING_NO_NOTIFICATIONS=1`. This suppresses runner/detector failure alerts and
+adds a no-notification instruction to the worker prompt. Set `TODAY` explicitly
+when recovering a prior operating date. Validate outputs before calling a run
+recovered; a successful model probe is only an access check.
+
+The post-call detector now starts processing when any unprocessed queue entry
+remains, even if the latest poll finds no new notes. This repairs the September
+8 failure where the 18:00 poll skipped the call stranded by the 13:00 worker.
+
+Historical infrastructure and model-routing notes follow.
+
 - Wrapper: `scripts/run-skill.sh` (shared by all jobs)
 - Env: `scripts/.env.launchd` (secrets for headless runs, not committed)
 - Logs: `logs/scheduled/{skill}-{date}.log` (14-day rotation)

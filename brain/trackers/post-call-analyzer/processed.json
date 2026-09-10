@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-10T17:04:03.250238Z",
+  "last_updated": "2026-09-10T22:04:00.081295Z",
   "processed": [
     {
       "attio_failed": false,
@@ -2137,6 +2137,34 @@
       "tasks_failed": false,
       "slack_posted": true,
       "processed_at": "2026-09-10T17:04:03.250238Z"
+    },
+    {
+      "id": "not_pbW9xciAW0SYxt",
+      "title": "Guillermo I Kay Bi-Weekly Mtg",
+      "counterparty": "Guillermo Lavergne",
+      "date": "2026-09-10",
+      "time": "14:00 ET",
+      "location": "remote",
+      "granola_url": "https://notes.granola.ai/d/a953ad91-77d7-48ca-a427-acc758782b41",
+      "doc_url": "https://docs.google.com/document/d/1FXa2qZyOMtkbNl1B0eoptoOsbnYyWj_EQmFri8G5eIM/edit",
+      "transcript_doc_url": "https://docs.google.com/document/d/18r4LF9Cg0ATdu2QpVeqsUxvSmInYftE_hYZU5oGEdjo/edit?usp=drivesdk",
+      "doc_failed": false,
+      "transcript_failed": false,
+      "attio_failed": false,
+      "attio_notes": {
+        "people": [
+          "2b613b57-537c-4cef-8fc5-e053b51d7a98"
+        ],
+        "companies": [
+          "98e2059b-756c-4337-9883-d2ae9b5241d4"
+        ]
+      },
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_pbW9xciAW0SYxt.json",
+      "task_count": 1,
+      "tasks_failed": false,
+      "vault_call_note": "brain/calls/2026-09-10-guillermo-lavergne-bi-weekly-mtg.md",
+      "processed_at": "2026-09-10T22:04:00.081295Z",
+      "slack_posted": true
     }
   ]
 }

@@ -1,0 +1,14 @@
+[
+  {
+    "task_text": "Verify the Granola recording association and microphone/device setup before Guillermo's next bi-weekly meeting.",
+    "type": "Ops",
+    "project": "G&B Operating System",
+    "suggested_day": "Monday",
+    "suggested_due_date": "2026-09-14",
+    "notes_with_doc_link": "From Guillermo Lavergne 2026-09-10 mtg. The captured audio was unrelated to the scheduled investor meeting. Analysis: https://docs.google.com/document/d/1FXa2qZyOMtkbNl1B0eoptoOsbnYyWj_EQmFri8G5eIM/edit",
+    "source_call_id": "not_pbW9xciAW0SYxt",
+    "source_doc_url": "https://docs.google.com/document/d/1FXa2qZyOMtkbNl1B0eoptoOsbnYyWj_EQmFri8G5eIM/edit",
+    "source_transcript_url": "https://docs.google.com/document/d/18r4LF9Cg0ATdu2QpVeqsUxvSmInYftE_hYZU5oGEdjo/edit?usp=drivesdk",
+    "staged_at": "2026-09-10T22:04:00.081295Z"
+  }
+]

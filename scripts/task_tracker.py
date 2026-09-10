@@ -2554,15 +2554,27 @@ def cmd_archive(args) -> int:
 
 
 def _require_day_task_layout(client, day_names):
-    """Reject shifted headers before commands use fixed task-row boundaries."""
+    """Detect supported daily task frames; fail closed on missing/ambiguous labels.
+
+    September 7's approved expanded habit frame places task headers on row 22.
+    Read the entire used grid so overflow beyond row 80 still ends at NOTES.
+    """
+    layouts = {}
     for day_name in day_names:
-        rows = client.get_values(f"'{day_name}'!A{DAY_COL_HEADER_ROW}:E{DAY_COL_HEADER_ROW}")
-        if rows != [DAY_HEADERS]:
-            sys.exit(
-                f"task-tracker-manager: refused command - {day_name} task header "
-                f"does not match configured row {DAY_COL_HEADER_ROW}; "
-                "verify live layout and correct row boundaries before retrying"
-            )
+        rows = client.get_values(f"'{day_name}'!A:E") or []
+        headers = [i + 1 for i, row in enumerate(rows) if row == DAY_HEADERS]
+        if len(headers) != 1 or headers[0] not in (DAY_COL_HEADER_ROW, 22):
+            sys.exit(f"task-tracker-manager: refused command - {day_name} "
+                     "missing, unsupported, or ambiguous task header (expected row 20 or 22)")
+        header = headers[0]
+        notes = [i + 1 for i, row in enumerate(rows)
+                 if i + 1 > header and row
+                 and str(row[0]).strip().upper() == "NOTES"]
+        if len(notes) != 1 or notes[0] <= header + 1:
+            sys.exit(f"task-tracker-manager: refused command - {day_name} "
+                     "missing or ambiguous NOTES boundary")
+        layouts[day_name] = (header + 1, notes[0] - 1)
+    return layouts
 
 
 def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
@@ -2586,7 +2598,7 @@ def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
     if not day_tabs:
         sys.exit("task-tracker-manager: no day tabs present — run scripts/build_day_tabs.py first")
 
-    _require_day_task_layout(client, [name for name, _ in day_tabs])
+    layouts = _require_day_task_layout(client, [name for name, _ in day_tabs])
 
     # 1. Walk the 7 day tabs' 25 slots each — read A (status) + B (task) columns.
     #    MUST run BEFORE the Sunday clear (build-week) so completed items flow to
@@ -2594,11 +2606,12 @@ def cmd_sync_done_status(args, _client: "SheetsClient | None" = None,
     weekly_checked: list[dict] = []  # one entry per (day, slot) where checkbox=TRUE and task non-empty
     weekly_slots_scanned = 0
     for day_name, _props in day_tabs:
+        first_row, last_row = layouts[day_name]
         status_vals = client.get_values(
-            day_tab_range(day_name, DAY_COL_STATUS, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW))
+            day_tab_range(day_name, DAY_COL_STATUS, first_row, last_row))
         task_vals = client.get_values(
-            day_tab_range(day_name, DAY_COL_TASK, DAY_SLOT_FIRST_ROW, DAY_SLOT_LAST_ROW))
-        for slot_i in range(DAY_SLOT_COUNT):
+            day_tab_range(day_name, DAY_COL_TASK, first_row, last_row))
+        for slot_i in range(last_row - first_row + 1):
             status = status_vals[slot_i][0] if slot_i < len(status_vals) and status_vals[slot_i] else ""
             task = task_vals[slot_i][0] if slot_i < len(task_vals) and task_vals[slot_i] else ""
             task_text = (task or "").strip() if isinstance(task, str) else ""
@@ -3274,7 +3287,7 @@ def cmd_reformat(args) -> int:
 def cmd_report(args) -> int:
     client = SheetsClient()
     meta = client.get_metadata()
-    _require_day_task_layout(client, [name for name, _ in _iter_day_tabs(meta)])
+    layouts = _require_day_task_layout(client, [name for name, _ in _iter_day_tabs(meta)])
     today = date.today()
     today_iso = today.isoformat()
 
@@ -3316,14 +3329,14 @@ def cmd_report(args) -> int:
     carryover_total = 0
     tomorrow_tab = DAY_LABELS[(today.weekday() + 1) % 7]
     for day_name, _props in day_tabs:
-        last_task_row = max(DAY_SLOT_LAST_ROW, _day_task_last_row(client, day_name))
+        first_row, last_task_row = layouts[day_name]
         status_vals = client.get_values(
-            day_tab_range(day_name, DAY_COL_STATUS, DAY_SLOT_FIRST_ROW, last_task_row))
+            day_tab_range(day_name, DAY_COL_STATUS, first_row, last_task_row))
         task_vals = client.get_values(
-            day_tab_range(day_name, DAY_COL_TASK, DAY_SLOT_FIRST_ROW, last_task_row))
+            day_tab_range(day_name, DAY_COL_TASK, first_row, last_task_row))
         empty = 0
         day_incomplete: list[str] = []
-        row_count = last_task_row - DAY_SLOT_FIRST_ROW + 1
+        row_count = last_task_row - first_row + 1
         for si in range(row_count):
             st = status_vals[si][0] if si < len(status_vals) and status_vals[si] else ""
             tk = task_vals[si][0] if si < len(task_vals) and task_vals[si] else ""
@@ -3547,8 +3560,8 @@ def _day_task_row_count(last_row: int) -> int:
     return max(0, last_row - DAY_SLOT_FIRST_ROW + 1)
 
 
-def _day_task_values_block(day_name: str, last_row: int) -> str:
-    return day_tab_block(day_name, DAY_COL_STATUS, DAY_COL_LAST, DAY_SLOT_FIRST_ROW, last_row)
+def _day_task_values_block(day_name: str, last_row: int, first_row: int = DAY_SLOT_FIRST_ROW) -> str:
+    return day_tab_block(day_name, DAY_COL_STATUS, DAY_COL_LAST, first_row, last_row)
 
 
 def _day_task_format_requests(sheet_id: int, start_row: int, end_row: int) -> list[dict]:
@@ -3601,9 +3614,9 @@ def _pack_day_tab_checked_rows(client: SheetsClient, day_name: str) -> dict:
     of the middle of the day. Formatting/validation live on the sheet rows, so
     only values are rewritten. Overflow task rows above NOTES are included.
     """
-    task_last_row = _day_task_last_row(client, day_name)
-    task_row_count = _day_task_row_count(task_last_row)
-    vals = client.get_values(_day_task_values_block(day_name, task_last_row))
+    first_row, task_last_row = _require_day_task_layout(client, [day_name])[day_name]
+    task_row_count = task_last_row - first_row + 1
+    vals = client.get_values(_day_task_values_block(day_name, task_last_row, first_row))
     completed: list[list] = []
     active: list[list] = []
     for i in range(task_row_count):
@@ -3627,12 +3640,12 @@ def _pack_day_tab_checked_rows(client: SheetsClient, day_name: str) -> dict:
     packed = completed + active
     blank = [False, "", "", "", ""]
     values = packed + [blank[:] for _ in range(task_row_count - len(packed))]
-    client.values_update(_day_task_values_block(day_name, task_last_row), values)
+    client.values_update(_day_task_values_block(day_name, task_last_row, first_row), values)
     return {
         "completed": len(completed),
         "active": len(active),
         "blank": task_row_count - len(packed),
-        "rows": f"{DAY_SLOT_FIRST_ROW}:{task_last_row}",
+        "rows": f"{first_row}:{task_last_row}",
     }
 
 
@@ -3663,15 +3676,15 @@ def cmd_carry_forward_day(args) -> int:
     if find_day_tab(meta, dst_name) is None:
         sys.exit(f"task-tracker-manager: destination day tab '{dst_name}' not found")
 
-    _require_day_task_layout(client, [src_name, dst_name])
+    layouts = _require_day_task_layout(client, [src_name, dst_name])
 
-    src_last_row = _day_task_last_row(client, src_name)
-    dst_last_row = _day_task_last_row(client, dst_name)
-    src_row_count = _day_task_row_count(src_last_row)
-    dst_row_count = _day_task_row_count(dst_last_row)
+    src_first_row, src_last_row = layouts[src_name]
+    dst_first_row, dst_last_row = layouts[dst_name]
+    src_row_count = src_last_row - src_first_row + 1
+    dst_row_count = dst_last_row - dst_first_row + 1
 
-    src_vals = client.get_values(_day_task_values_block(src_name, src_last_row))
-    dst_tasks = client.get_values(day_tab_range(dst_name, DAY_COL_TASK, DAY_SLOT_FIRST_ROW, dst_last_row))
+    src_vals = client.get_values(_day_task_values_block(src_name, src_last_row, src_first_row))
+    dst_tasks = client.get_values(day_tab_range(dst_name, DAY_COL_TASK, dst_first_row, dst_last_row))
 
     dst_existing_tasks = {
         str(row[0]).strip().casefold()
@@ -3695,7 +3708,7 @@ def cmd_carry_forward_day(args) -> int:
         if task_key in dst_existing_tasks:
             moves.append({
                 "src_slot": i + 1,
-                "src_row": DAY_SLOT_FIRST_ROW + i,
+                "src_row": src_first_row + i,
                 "dst_slot": None,
                 "dst_row": None,
                 "task": task_text,
@@ -3718,9 +3731,9 @@ def cmd_carry_forward_day(args) -> int:
         dst_existing_tasks.add(task_key)
         moves.append({
             "src_slot": i + 1,
-            "src_row": DAY_SLOT_FIRST_ROW + i,
+            "src_row": src_first_row + i,
             "dst_slot": dst_slot,
-            "dst_row": DAY_SLOT_FIRST_ROW + dst_slot - 1,
+            "dst_row": dst_first_row + dst_slot - 1,
             "task": task_text,
             "payload": [
                 False,
@@ -3762,8 +3775,8 @@ def cmd_carry_forward_day(args) -> int:
         return 1
 
     snap = snapshot_ranges(client, "carry-forward-day", [
-        _day_task_values_block(src_name, src_last_row),
-        day_tab_block(dst_name, DAY_COL_STATUS, DAY_COL_LAST, DAY_SLOT_FIRST_ROW, dst_last_row + overflow_needed),
+        _day_task_values_block(src_name, src_last_row, src_first_row),
+        day_tab_block(dst_name, DAY_COL_STATUS, DAY_COL_LAST, dst_first_row, dst_last_row + overflow_needed),
     ])
 
     if overflow_needed:

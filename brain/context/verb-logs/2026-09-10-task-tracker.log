@@ -1,0 +1,25 @@
+
+[2026-09-10T10:51:12.710359] carry-forward-day — tue-to-thu
+  - moved: 17
+  - source: Tue
+  - destination: Thu
+  - source packed: {'completed': 4, 'active': 0, 'blank': 46, 'rows': '23:72'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260910-105108.json
+  
+  - Tue slot 1 → Thu slot 1: Email Jackie Hirsh: ask whether inventory is included in LOI offer or on top
+  - Tue slot 3 → Thu slot 2: Call IRS to confirm Form 8822-B address update
+  - Tue slot 4 → Thu slot 3: Email Melissa to assist with BK Growth contact and file folders
+  - Tue slot 5 → Thu slot 4: Locate holdco financial model
+  - Tue slot 7 → Thu slot 5: Add seller-alignment section to first pages of SIM
+  - Tue slot 8 → Thu slot 6: Live Deal / Model: track rolling 12-month file, salary detail, and org chart
+  - Tue slot 9 → Thu slot 7: Build buyer vs capital conviction checklist for SIM
+  - Tue slot 10 → Thu slot 8: Set up Sidney Garber shared Drive data room + request-list structure
+  - Tue slot 11 → Thu slot 9: Pick up my items from One Hanover Square
+  - Tue slot 12 → Thu slot 10: Pay Hetzner invoice
+  - Tue slot 13 → Thu slot 11: Pay DealsX invoice
+  - Tue slot 14 → Thu slot 12: Await receipt of track rolling 12-month file, salary detail, and org chart
+  - Tue slot 16 → Thu slot 13: Review new SLD video
+  - Tue slot 17 → Thu slot 14: Process conference registrations
+  - Tue slot 19 → Thu slot 15: Put fuel & recovery lists to refrigerator
+  - Tue slot 20 → Thu slot 16: Schedule exercise classes for the week
+  - Tue slot 21 → Thu slot 17: Submit Kaiden to: State Models, Zuri Models, Teri B and Stellar

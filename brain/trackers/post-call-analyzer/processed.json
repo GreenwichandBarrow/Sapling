@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-09T00:06:58.207Z",
+  "last_updated": "2026-09-10T17:04:03.250238Z",
   "processed": [
     {
       "attio_failed": false,
@@ -2093,8 +2093,12 @@
       "doc_url": "https://docs.google.com/document/d/1S3mGrw4AdiFl829ZMK-uP8MTp2guzmoD1VgP5XNC8Ww/edit",
       "transcript_doc_url": "https://docs.google.com/document/d/1vCDyfXEp_6S07RB0RrebccJre3th2BT6pW9cIx6ogdU/edit",
       "attio_notes": {
-        "people": ["52146e57-68cf-4681-927c-9c2ddcdc7ea3"],
-        "companies": ["1f3d7760-bafa-4f9e-996e-448dbff55ae9"]
+        "people": [
+          "52146e57-68cf-4681-927c-9c2ddcdc7ea3"
+        ],
+        "companies": [
+          "1f3d7760-bafa-4f9e-996e-448dbff55ae9"
+        ]
       },
       "attio_failed": false,
       "task_count": 4,
@@ -2105,6 +2109,34 @@
       "slack_posted": false,
       "slack_failed": true,
       "slack_skip_reason": "Supervised recovery instruction: do not send external notifications"
+    },
+    {
+      "id": "not_ZbsSsTm9M5xpuE",
+      "title": "Luka I Kay",
+      "counterparty": "Luka Salamunic",
+      "date": "2026-09-10",
+      "doc_url": "https://docs.google.com/document/d/1WJd8Xdd53OwyUnPB6vALCWApbrtabKLFACw2XHRCO9k/edit?usp=drivesdk",
+      "transcript_doc_url": "https://docs.google.com/document/d/1b5MDbVfYpXTOfzyVwB6RSZENetppM__4f7BmLs-tT7A/edit?usp=drivesdk",
+      "granola_url": "https://notes.granola.ai/d/c3c85b44-57ce-4d5d-808d-44d6d68dab2c",
+      "vault_call_note": "brain/calls/2026-09-10-luka-luxury-jewelry.md",
+      "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_ZbsSsTm9M5xpuE.json",
+      "task_count": 5,
+      "attio_notes": {
+        "people": [
+          "1b839ec5-7509-4704-bab3-c3b18623003c",
+          "b0919884-e7fd-4b6d-93a4-7bdf47ea0ff4"
+        ],
+        "companies": [
+          "c0ba96ca-c43d-4221-8477-b6510934d5e1",
+          "3a18061b-d159-4eda-9c48-0603360ac49b"
+        ]
+      },
+      "attio_failed": false,
+      "transcript_failed": false,
+      "doc_failed": false,
+      "tasks_failed": false,
+      "slack_posted": true,
+      "processed_at": "2026-09-10T17:04:03.250238Z"
     }
   ]
 }

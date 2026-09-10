@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-09",
+  "updated_at": "2026-09-10",
   "items": [
     {
       "bucket": "thank",
@@ -2266,6 +2266,54 @@
       "event": "Relationship / Call Window",
       "event_date": "2026-09-08",
       "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260909T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-10",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-09-09",
+      "calendar_event_id": "55dcb58b6f2840fbb8d5d6ac36609668_20260909T153000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Luka",
+      "email": "luka@esteliopartners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-10",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Luka I Kay",
+      "event_date": "2026-09-09",
+      "calendar_event_id": "3rfe31l8bjquitb8l71otc7cjg"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-10",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-09-09",
+      "calendar_event_id": "dc938987cf464e9a820624b314095dab_20260910T150000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Guillermo I Kay Bi-Weekly Mtg",
+      "email": "glavergne@ashfordventures.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-10",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Guillermo I Kay Bi-Weekly Mtg",
+      "event_date": "2026-09-09",
+      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260909T173000Z"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

@@ -1,47 +1,10 @@
 {
   "blocked": [],
-  "deal_items": 22,
+  "deal_items": 23,
   "drafts_missing_recipient": 0,
-  "drafts_pending": 1,
-  "fetched_at": "2026-09-09T06:50:45.246457-04:00",
-  "follow_through_completed_items": [
-    {
-      "bucket": "thank",
-      "completed_at": "2026-09-08",
-      "event": "Check In: SG LOI",
-      "person": "Check",
-      "sent_at": "2026-09-08 09:34",
-      "sent_subject": "Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL",
-      "sent_thread_id": "1a0813885860b55a"
-    },
-    {
-      "bucket": "thank",
-      "completed_at": "2026-09-08",
-      "event": "Check In: SG LOI",
-      "person": "Check",
-      "sent_at": "2026-09-08 09:34",
-      "sent_subject": "Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL",
-      "sent_thread_id": "1a0813885860b55a"
-    },
-    {
-      "bucket": "thank",
-      "completed_at": "2026-09-08",
-      "event": "Jeff I Kay",
-      "person": "Jeff",
-      "sent_at": "2026-09-08 09:36",
-      "sent_subject": "Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL",
-      "sent_thread_id": "1a0813ae716a1e19"
-    },
-    {
-      "bucket": "thank",
-      "completed_at": "2026-09-08",
-      "event": "Jeff I Kay",
-      "person": "Jeff",
-      "sent_at": "2026-09-08 09:36",
-      "sent_subject": "Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL",
-      "sent_thread_id": "1a0813ae716a1e19"
-    }
-  ],
+  "drafts_pending": 0,
+  "fetched_at": "2026-09-10T06:50:45.266006-04:00",
+  "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -84,30 +47,53 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-09-09.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-09-10.json",
   "input_status": "ok",
   "needs_kay": [
     "2 email-derived task candidate(s)",
-    "22 broker/listing row(s) extracted",
-    "2 prior-day thank-you(s) need approval: Relationship / Call Window; Relationship / Call Window",
-    "4 email follow-through row(s) auto-completed from sent-mail evidence: Check; Check; Jeff; Jeff",
+    "23 broker/listing row(s) extracted",
+    "4 prior-day thank-you(s) need approval: Guillermo I Kay Bi-Weekly Mtg; Luka; Relationship / Call Window; Relationship / Call Window",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Brooke (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting); Erin (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-09-09.md",
+  "source_artifact": "brain/context/email-scan-results-2026-09-10.md",
   "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 2,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-09-09",
+      "due_date": "2026-09-10",
+      "email": "glavergne@ashfordventures.com",
+      "event": "Guillermo I Kay Bi-Weekly Mtg",
+      "event_date": "2026-09-09",
+      "person": "Guillermo I Kay Bi-Weekly Mtg",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-09-10",
+      "email": "luka@esteliopartners.com",
+      "event": "Luka I Kay",
+      "event_date": "2026-09-09",
+      "person": "Luka",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-09-10",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-09-08",
+      "event_date": "2026-09-09",
       "person": "Relationship / Call Window",
       "sent_at": "",
       "sent_subject": "",
@@ -116,10 +102,10 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-09-09",
+      "due_date": "2026-09-10",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-09-08",
+      "event_date": "2026-09-09",
       "person": "Relationship / Call Window",
       "sent_at": "",
       "sent_subject": "",

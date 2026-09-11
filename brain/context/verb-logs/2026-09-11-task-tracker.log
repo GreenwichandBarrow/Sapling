@@ -5,7 +5,7 @@
   - destination: Fri
   - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '23:72'}
   - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260911-111218.json
-  
+
   - Thu slot 1 → Fri slot 11: Email Jackie Hirsh: ask whether inventory is included in LOI offer or on top
   - Thu slot 2 → Fri slot 12: Call IRS to confirm Form 8822-B address update
   - Thu slot 3 → Fri slot 13: Email Melissa to assist with BK Growth contact and file folders
@@ -26,3 +26,14 @@
   - Thu slot 18 → Fri slot 28: Send resume to Erika for review
   - Thu slot 19 → Fri slot 29: Send & Print resume for Brooke
   - Thu slot 20 → Fri slot 30: Print family photo for kids
+
+[2026-09-11T11:25:22.485910] carry-forward-day — wed-to-fri
+  - moved: 3
+  - source: Wed
+  - destination: Fri
+  - source packed: {'completed': 1, 'active': 0, 'blank': 49, 'rows': '23:72'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260911-112520.json
+
+  - Wed slot 2 → Fri slot 31: Change login info for operations folder + operations Gmail account
+  - Wed slot 3 → Fri slot 32: Contact the asset backed lender melissa mentioned
+  - Wed slot 4 → Fri slot 33: Niche intel review

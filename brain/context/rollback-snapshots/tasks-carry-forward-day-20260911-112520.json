@@ -1,0 +1,212 @@
+{
+  "verb": "carry-forward-day",
+  "timestamp": "20260911-112520",
+  "sheet_id": "1hsQlT0gkKHXF4pzw5sQiGNqXk9uzgE0PP5Ejx4ZBBJ4",
+  "ranges": {
+    "'Wed'!A23:E72": [
+      [
+        true,
+        "Reconnect with Andrew Freiman re: Chenmark intro",
+        "Work",
+        "G&B",
+        "Discuss Chenmark and whether an intro makes sense."
+      ],
+      [
+        false,
+        "Change login info for operations folder + operations Gmail account",
+        "Work",
+        "G&B",
+        "Update credentials/access details; use 1Password-backed credentials handling."
+      ],
+      [
+        false,
+        "Contact the asset backed lender melissa mentioned"
+      ],
+      [
+        false,
+        "Niche intel review",
+        "Work",
+        "G&B",
+        "Walk through niche-intelligence sprint status + new one-pagers"
+      ]
+    ],
+    "'Fri'!A23:E72": [
+      [
+        false,
+        "Create travel plans for July in Paris/France next year",
+        "Home"
+      ],
+      [
+        false,
+        "Look into GLP1",
+        "Home"
+      ],
+      [
+        false,
+        "Review Kai Grey Ventures renewal",
+        "Work"
+      ],
+      [
+        false,
+        "Submit new PSLF form",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Create project for French passports",
+        "Home",
+        "",
+        "(was LT: Idea)"
+      ],
+      [
+        false,
+        "Renew kids' work permits",
+        "Home",
+        "Home",
+        "Renew the kids' working permits."
+      ],
+      [
+        false,
+        "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning.",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan",
+        "Work",
+        "Myself Renewed",
+        "Friday container. Detailed steps live on the Myself Renewed Healthcare project tab: 501(c)(3)/Charities Bureau, board resolution, bank/PayPal, QuickBooks, donation processor/page, giving statement, Kay W-2 role/payroll, first donation/funding handling."
+      ],
+      [
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget",
+        "Work",
+        "G&B",
+        "Walk through health-monitor + M&A analytics dashboard + budget-manager output"
+      ],
+      [
+        false,
+        "Check NYC Housing Connect for new Manhattan lotteries",
+        "Home",
+        "Housing",
+        "Review https://housingconnect.nyc.gov/PublicWeb/search-lotteries for NYC - Manhattan lottery openings."
+      ],
+      [
+        false,
+        "Email Jackie Hirsh: ask whether inventory is included in LOI offer or on top",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Call IRS to confirm Form 8822-B address update",
+        "Home",
+        "Home",
+        "IRS business line: 800-829-4933. Ask to confirm business mailing address currently on file for EIN before updating bank address."
+      ],
+      [
+        false,
+        "Email Melissa to assist with BK Growth contact and file folders",
+        "Work",
+        "G&B",
+        "Draft only; Kay sends. Ask Melissa to assist with BK Growth contact and file folders."
+      ],
+      [
+        false,
+        "Locate holdco financial model",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Add seller-alignment section to first pages of SIM",
+        "Work",
+        "Sidney Garber",
+        "Outline what we know, what seller agrees with, and what still needs repetition/clarification."
+      ],
+      [
+        false,
+        "Live Deal / Model: track rolling 12-month file, salary detail, and org chart",
+        "Work",
+        "Sidney Garber"
+      ],
+      [
+        false,
+        "Build buyer vs capital conviction checklist for SIM",
+        "Work",
+        "Sidney Garber",
+        "Separate Kay/G&B go-no-go issues from investor/lender questions; make sure each is answered or mitigated in the SIM."
+      ],
+      [
+        false,
+        "Set up Sidney Garber shared Drive data room + request-list structure",
+        "Work",
+        "Sidney Garber",
+        "Use shared Google Drive; organize first-round and follow-up seller diligence requests."
+      ],
+      [
+        false,
+        "Pick up my items from One Hanover Square",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Pay Hetzner invoice",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Pay DealsX invoice",
+        "Work",
+        "G&B",
+        "Invoice #00700150, ,520.00 outstanding"
+      ],
+      [
+        false,
+        "Await receipt of track rolling 12-month file, salary detail, and org chart"
+      ],
+      [
+        false,
+        "Review new SLD video"
+      ],
+      [
+        false,
+        "Process conference registrations",
+        "Work",
+        "G&B"
+      ],
+      [
+        false,
+        "Put fuel & recovery lists to refrigerator",
+        "Home",
+        "Home"
+      ],
+      [
+        false,
+        "Schedule exercise classes for the week",
+        "Home",
+        "Myself Renewed"
+      ],
+      [
+        false,
+        "Submit Kaiden to: State Models, Zuri Models, Teri B and Stellar"
+      ],
+      [
+        false,
+        "Send resume to Erika for review"
+      ],
+      [
+        false,
+        "Send & Print resume for Brooke"
+      ],
+      [
+        false,
+        "Print family photo for kids"
+      ]
+    ]
+  }
+}

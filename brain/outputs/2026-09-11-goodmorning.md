@@ -21,17 +21,22 @@ Dashboard: [https://agent-vps-7731c88b.tail868ef9.ts.net](https://agent-vps-7731
 - Post-September10 Friday rhythm: personal finance09:30–11:00 receives liquidity review; nonprofit11:00–12:00 has no new system-generated request; family admin12:00–13:00 has no new system-generated request; systems13:00–15:00 receives metric/preservation review; weekly review15:00–16:00 receives Monday call preparation and task reconciliation;20:30 review captures actual call outcomes and remaining decisions.
 - Calendar exceptions: [[entities/michael-horowitz]]11:30–12:00 accepted; office pickup12:30 on calendar. The09:30 event without attendee evidence has elapsed; no attendance or brief request inferred. Tomorrow September12 has no events. No routine Friday cold/nurture outreach recommended.
 
-## Decisions
+## Decisions — user responses recorded
 
-1. RED [CFO] RECOMMEND: Reconcile live cash, September payments/deposits and payroll funding against the protected reserve. August31 cash was97,777.71 and the current reserve80,000 leaves17,777.71 above reserve; these are historical balances, not today's available cash. Monday transfer and Tuesday payroll make this current. YES / NO / DISCUSS.
-2. RED [Chief of Staff] RECOMMEND: Draft the unverified post-call reply to [[entities/luka-salamunic]] and capture the actual outcome of yesterday's [[entities/guillermo-lavergne]] call from the user or an alternate note. Do not infer commitment or fabricate an investor summary from the mismatched recording. YES / NO / DISCUSS.
-3. RED [CIO] RECOMMEND: Add preparation for Monday11:30 inventory-valuation call to the weekly-review block: scope, required data, valuation methodology and timing. Scheduling is already done; the preparation is a new actionable item from the latest call. YES / NO / DISCUSS.
-4. RED [COO] RECOMMEND: Approve moving the three existing Wednesday tasks to Friday: operations-login update, contact the asset-backed lender, and niche review. This is scheduling only, not execution of those actions. Prior specific approval remains absent. YES / NO / DISCUSS.
+The final user-facing briefing had five numbered items. The user's replies below supersede the earlier four-item operator draft; source [[context/session-decisions-2026-09-11]].
+
+1. REJECT: No brief for the11:30 call.
+2. PASS: Budget-manager already ran today; user asked that the completed run be recognized. Completion verified at06:43:42ET, triggered by August management-report delivery. No duplicate monthly run.
+3. PASS: Investor reply/follow-through already done per user. No new draft or repeat prompt; investor feedback content is not inferred.
+4. REJECT: No proposed Monday inventory-valuation preparation task or deliverable.
+5. APPROVE: Move the three existing Wednesday tasks into Friday (operations-login update, asset-backed lender contact, niche review); scheduling only.
+
+User also confirmed the deal reserve is40K. The earlier80K assumption is superseded; dependent budget corrections are recorded in the current report and today's decision ledger.
 
 ## Finance Evidence
 
 - [[outputs/2026-09-11-budget-report-aug-2026]] already processed the newly delivered August report. No duplicate budget run. [Budget Dashboard](https://docs.google.com/spreadsheets/d/1vTeGviuQk9zLqacJrdBZS2Bopk8kQZtmEHWheqpCdq0/edit).
-- Report model projects the reserve threshold September23 at normalized historical burn or September28 under approved-cut assumptions, anchored to August31. These are scenarios, not current bank forecasts; do not release reserve or change salary by inference.
+- The initially published reserve-threshold forecasts used an erroneous80K reserve. They are superseded by recalculation with the user-confirmed40K in the budget report. All forecasts remain anchored to August31 and are not current bank balances; no salary or funding action inferred.
 - Live September8/9 ACH withdrawal notices corroborate cash movements; targeted query found no subsequent deposit/correction. Current bank balance not queried. Old small transit declines are consolidated into liquidity review rather than repeated as separate tasks.
 
 ## Calendar, Email And Pipeline
@@ -54,9 +59,9 @@ Dashboard: [https://agent-vps-7731c88b.tail868ef9.ts.net](https://agent-vps-7731
 
 ## Task Manager
 
-- Completion sync preview: no pending backend updates; no live completion writes needed. Sun/Mon/Tue carry previews zero pending. Wednesday's three previously rejected moves remain untouched and were not retried.
+- Completion sync preview: no pending backend updates; no live completion writes needed. Sun/Mon/Tue carry previews zero pending. Wednesday's three moves were initially withheld; the user subsequently approved them explicitly. See today's decision ledger for the verified execution result.
 - Thursday20 unfinished existing tasks moved to Friday. Final live snapshot verified Week/ToDo/Sun/Mon/Tue/Wed/Sat unchanged; Thu/Fri habits, focus, headers and NOTES unchanged; task text/metadata/completion semantics preserved. Three blank unchecked values normalized to native FALSE by existing carry behavior. No new tasks, weekly redistribution or rebuild.
-- System Health: carry-forward PARTIAL solely because Wednesday's three moves lack the specific approval demanded previously. Report command hit shared read quota; final health/preservation derived from successful live batch snapshot. Existing report counts Dropped rows as outstanding; corrected interpretation used, no report code or wording edited.
+- At initial briefing, carry-forward was PARTIAL because Wednesday's three moves lacked specific approval. That approval has now been received; final execution evidence is in today's ledger. Report command hit shared read quota; final health/preservation derived from successful live batch snapshot. Existing report counts Dropped rows as outstanding; corrected interpretation used, no report code or wording edited.
 - Some carried unchecked labels resemble previously completed deliverables. Preserve checkbox state until reviewed; do not convert resemblance into completion or new work requests.
 - Evidence: [[context/rollback-snapshots/tasks-sync-done-status-20260911-111124.json]], [[context/rollback-snapshots/tasks-carry-forward-day-20260911-111218.json]], [[context/verb-logs/2026-09-11-task-tracker.log]]. Five historical snapshots pruned by retention were restored. No mechanical traces created.
 
@@ -74,3 +79,7 @@ Dashboard: [https://agent-vps-7731c88b.tail868ef9.ts.net](https://agent-vps-7731
 - [[context/session-decisions-2026-09-10]] recovered and committed as3f70938e. Bounded current-task inventory included; archived Good Morning task excluded. All prior unapproved decisions retained as unapproved.
 - Three trace candidates reviewed; zero new traces because explicit boundaries are already documented and the layout rule already lives in the directly affected learning. No new memory or stop-hook file added. New export repair belongs in tests; broader calibration proposals remain for review, not automatic business changes.
 - Existing unrelated six rolling snapshots and product/scripts/systemd/memory drafts are left untouched. Beads still unavailable; no new database created. Commit/push ledger is verified in the final response.
+
+## Post-brief execution
+
+The three specifically approved Wednesday tasks were moved to Friday and verified exactly once; Wednesday has no pending tasks. Existing task content, completed states, habits, notes and weekly plan were preserved. The prior carry-forward blocker is closed. Source: [[context/session-decisions-2026-09-11]].

@@ -26,7 +26,7 @@ import json
 import re
 import subprocess
 import sys
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 ARCHIVE_SHEET_ID = "1NGGZY_iq9h8cNzLAXSJ1vTcsfXWNU9oin2RiOMtl9NE"
@@ -89,6 +89,33 @@ def _gog_update(range_a1: str, values: list[list[str]]) -> None:
     )
     if out.returncode != 0:
         raise RuntimeError(f"gog update failed for {range_a1}: {out.stderr[:400]}")
+
+
+def _normalize_column(rows: list[list[str]], count: int) -> list[list[str]]:
+    """Sheets omits empty cells and trailing blank rows in read responses."""
+    return [[str(rows[i][0]) if i < len(rows) and rows[i] else ""] for i in range(count)]
+
+
+def _ensure_column_capacity(target_col: int) -> None:
+    """Extend only the right edge; preserve all existing archive cells."""
+    out = subprocess.run(
+        ["gog", "sheets", "metadata", "-a", GOG_ACCOUNT, ARCHIVE_SHEET_ID, "--json"],
+        capture_output=True, text=True, timeout=30,
+    )
+    if out.returncode:
+        raise RuntimeError("Could not inspect archive grid: " + out.stderr[:300])
+    metadata = json.loads(out.stdout)
+    sheet = next(s["properties"] for s in metadata["sheets"]
+                 if s["properties"]["title"] == TOPLINE_TAB)
+    columns = sheet["gridProperties"]["columnCount"]
+    if columns < target_col:
+        out = subprocess.run(
+            ["gog", "sheets", "insert", "-a", GOG_ACCOUNT, ARCHIVE_SHEET_ID,
+             TOPLINE_TAB, "columns", str(columns), "--after", "--count", str(target_col-columns)],
+            capture_output=True, text=True, timeout=30,
+        )
+        if out.returncode:
+            raise RuntimeError("Could not extend archive grid: " + out.stderr[:300])
 
 
 _FRONTMATTER_DATE_RE = re.compile(r"^date:\s*(\d{4}-\d{2}-\d{2})", re.MULTILINE)
@@ -156,7 +183,7 @@ def _column_header_for_week(week_ending: date) -> str:
 
 def _existing_headers() -> list[str]:
     """Return Weekly Topline row 1 (the headers row)."""
-    rows = _gog_get(f"'{TOPLINE_TAB}'!A1:Z1")
+    rows = _gog_get(f"'{TOPLINE_TAB}'!1:1")
     if not rows:
         return []
     return rows[0] if rows[0] else []
@@ -236,7 +263,19 @@ def main() -> int:
         print("DRY-RUN complete. Re-run with --commit to write to Sheet.")
         return 0
 
+    # Recheck the live headers and preserve a rollback snapshot before mutation.
+    if _existing_headers() != headers:
+        raise RuntimeError("Archive headers changed during preparation; retry from fresh state.")
+    before = _gog_get(f"'{TOPLINE_TAB}'!1:8")
+    backup = Path("/tmp") / f"weekly-archive-{week_ending}-{datetime.now().strftime('%Y%m%dT%H%M%S%f')}.json"
+    backup.write_text(json.dumps({"spreadsheet_id": ARCHIVE_SHEET_ID,
+                                 "range": f"'{TOPLINE_TAB}'!1:8", "values": before}))
+    print(f"Pre-write backup: {backup}")
+    _ensure_column_capacity(target_col)
     _gog_update(range_a1, values_column)
+    after = _gog_get(range_a1)
+    if _normalize_column(after, len(values_column)) != values_column:
+        raise RuntimeError(f"Archive readback does not match requested values: {range_a1}")
     print(f"Wrote column {target_letter} ('{header_text}') to '{TOPLINE_TAB}'.")
     return 0
 

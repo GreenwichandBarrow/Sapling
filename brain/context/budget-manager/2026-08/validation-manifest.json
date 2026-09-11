@@ -1,0 +1,31 @@
+{
+  "period": "2026-08",
+  "mode": "monthly",
+  "trigger": "email-intelligence automatic",
+  "checks": {
+    "agent1_ingestion": true,
+    "agent2_reconciliation": true,
+    "month_column": true,
+    "live_values_match": true,
+    "rollback_snapshot": true,
+    "tab1_bottom_block": true,
+    "tab2_new_month_row": true,
+    "tab2_runway": true,
+    "investor_fields": true,
+    "nonzero_fund_and_nonnegative_runway": true,
+    "vault_output": true,
+    "three_separate_sequential_agents": true,
+    "no_email": true
+  },
+  "slack_post": {
+    "passed": true,
+    "http_status": "200",
+    "curl_exit_code": 0,
+    "sent_at": "2026-09-11T10:43:42.074977+00:00"
+  },
+  "report_path": "brain/outputs/2026-09-11-budget-report-aug-2026.md",
+  "rollback_path": "brain/context/rollback-snapshots/budget-dashboard-2026-08-20260911T104127Z.json",
+  "cell_count": 1688,
+  "subagent_strategy_evidence": "Orchestrator handoff confirms separate sequential Document Ingester, Budget Reconciler, Report Writer spawns.",
+  "status": "success_with_flags"
+}

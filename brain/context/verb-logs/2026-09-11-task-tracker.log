@@ -1,0 +1,28 @@
+
+[2026-09-11T11:12:23.510122] carry-forward-day — thu-to-fri
+  - moved: 20
+  - source: Thu
+  - destination: Fri
+  - source packed: {'completed': 0, 'active': 0, 'blank': 50, 'rows': '23:72'}
+  - snapshot: /home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/tasks-carry-forward-day-20260911-111218.json
+  
+  - Thu slot 1 → Fri slot 11: Email Jackie Hirsh: ask whether inventory is included in LOI offer or on top
+  - Thu slot 2 → Fri slot 12: Call IRS to confirm Form 8822-B address update
+  - Thu slot 3 → Fri slot 13: Email Melissa to assist with BK Growth contact and file folders
+  - Thu slot 4 → Fri slot 14: Locate holdco financial model
+  - Thu slot 5 → Fri slot 15: Add seller-alignment section to first pages of SIM
+  - Thu slot 6 → Fri slot 16: Live Deal / Model: track rolling 12-month file, salary detail, and org chart
+  - Thu slot 7 → Fri slot 17: Build buyer vs capital conviction checklist for SIM
+  - Thu slot 8 → Fri slot 18: Set up Sidney Garber shared Drive data room + request-list structure
+  - Thu slot 9 → Fri slot 19: Pick up my items from One Hanover Square
+  - Thu slot 10 → Fri slot 20: Pay Hetzner invoice
+  - Thu slot 11 → Fri slot 21: Pay DealsX invoice
+  - Thu slot 12 → Fri slot 22: Await receipt of track rolling 12-month file, salary detail, and org chart
+  - Thu slot 13 → Fri slot 23: Review new SLD video
+  - Thu slot 14 → Fri slot 24: Process conference registrations
+  - Thu slot 15 → Fri slot 25: Put fuel & recovery lists to refrigerator
+  - Thu slot 16 → Fri slot 26: Schedule exercise classes for the week
+  - Thu slot 17 → Fri slot 27: Submit Kaiden to: State Models, Zuri Models, Teri B and Stellar
+  - Thu slot 18 → Fri slot 28: Send resume to Erika for review
+  - Thu slot 19 → Fri slot 29: Send & Print resume for Brooke
+  - Thu slot 20 → Fri slot 30: Print family photo for kids

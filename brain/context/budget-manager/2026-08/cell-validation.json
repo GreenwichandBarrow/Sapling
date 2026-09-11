@@ -1,0 +1,20 @@
+[
+  {
+    "range": "'Monthly Actuals vs Budget'!A1:X39",
+    "cells_checked": 936,
+    "mismatches": [],
+    "passed": true
+  },
+  {
+    "range": "'Monthly Actuals vs Budget'!A42:H54",
+    "cells_checked": 104,
+    "mismatches": [],
+    "passed": true
+  },
+  {
+    "range": "'Runway Forecast'!A1:F108",
+    "cells_checked": 648,
+    "mismatches": [],
+    "passed": true
+  }
+]

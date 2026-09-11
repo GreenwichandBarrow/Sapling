@@ -1,0 +1,55 @@
+                                                        Greenwich & Barrow
+                                                               Balance Sheet
+                                                             As of Aug 31, 2026
+
+
+
+
+                                                                                                            Total
+Assets
+ Current Assets
+  Bank Accounts
+   Cash                                                                                                      0.00
+   Checking 4538 - 1                                                                                     6,902.49
+   Savings 8125 - 1                                                                                     90,875.22
+  Total for Bank Accounts                                                                              $97,777.71
+  Accounts Receivable
+  Other Current Assets
+   Inventory Asset                                                                                           0.00
+  Total for Other Current Assets                                                                            $0.00
+
+ Total for Current Assets                                                                              $97,777.71
+ Fixed Assets
+  Equipment
+   Office Equipment                                                                                      1,321.75
+  Total for Equipment                                                                                   $1,321.75
+
+ Total for Fixed Assets                                                                                 $1,321.75
+ Other Assets
+Total for Assets                                                                                       $99,099.46
+Liabilities and Equity
+ Liabilities
+  Current Liabilities
+   Accounts Payable
+   Credit Cards
+   Other Current Liabilities
+    Owner Reimbursements                                                                                     0.00
+   Total for Other Current Liabilities                                                                      $0.00
+
+  Total for Current Liabilities                                                                             $0.00
+  Long-term Liabilities
+ Total for Liabilities                                                                                      $0.00
+ Equity
+  Net Income                                                                                           -219,227.19
+  Owner Distribution                                                                                       -139.10
+  Owner Investments                                                                                    551,845.01
+  Retained Earnings                                                                                    -233,379.26
+ Total for Equity                                                                                      $99,099.46
+
+Total for Liabilities and Equity                                                                       $99,099.46
+
+
+
+
+                                         Accrual Basis Friday, September 11, 2026 12:45 AM GMT+08:00          1/1
+

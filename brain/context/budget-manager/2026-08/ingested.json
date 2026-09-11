@@ -1,0 +1,1037 @@
+{
+  "status": "success",
+  "period": "2026-08",
+  "as_of_date": "2026-08-31",
+  "p_and_l": {
+    "advertising_marketing": 264.23,
+    "bank_fees_service_charges": 3.81,
+    "business_taxes_licenses": 0.0,
+    "contractors_contract_labor": 0.0,
+    "contractors_outsourcing": 0.0,
+    "databases_research": 233.0,
+    "general_business_memberships_subscriptions": 0.0,
+    "office_expenses_apps_software_crm_storage": 18.49,
+    "office_expenses_apps_software_office_use": 454.42,
+    "office_expenses_office_supplies": 407.42,
+    "office_expenses_postage": 170.4,
+    "office_expenses_rent_lease": 2000.0,
+    "office_expenses_small_tools_equipment": 0.0,
+    "payroll_expenses_business_insurance": 44.7,
+    "payroll_expenses_health_accident_plans": 2750.0,
+    "payroll_expenses_payroll_taxes": 970.96,
+    "owners_distribution_regular_wages": 12692.32,
+    "professional_fees_accounting": 247.0,
+    "professional_fees_consulting": 0.0,
+    "travel_car_rides": 60.93,
+    "travel_hotels": 0.0,
+    "travel_meals_entertainment": 1005.13,
+    "travel_parking_tolls": 2.5,
+    "travel_airfare": 0.0,
+    "operating_expenses": 21325.31,
+    "other_income_interest": 243.82,
+    "other_expenses_medical": 106.95,
+    "travel_vehicle_gas": 126.27,
+    "vehicle_repairs": 110.8,
+    "other_expenses_total": 344.02,
+    "net_income": -21425.51,
+    "total_expenses": 21669.33,
+    "net_burn": 21425.51
+  },
+  "p_and_l_ytd": {
+    "advertising_marketing": 6362.7,
+    "bank_fees_service_charges": 40.03,
+    "business_taxes_licenses": 1322.0,
+    "contractors_contract_labor": 1781.3,
+    "contractors_outsourcing": 5697.0,
+    "databases_research": 3977.6,
+    "general_business_memberships_subscriptions": 260.21,
+    "office_expenses_apps_software_crm_storage": 2031.04,
+    "office_expenses_apps_software_office_use": 4696.98,
+    "office_expenses_office_supplies": 803.79,
+    "office_expenses_postage": 887.88,
+    "office_expenses_rent_lease": 9000.0,
+    "office_expenses_small_tools_equipment": 53.23,
+    "payroll_expenses_business_insurance": 296.16,
+    "payroll_expenses_health_accident_plans": 41786.91,
+    "payroll_expenses_payroll_taxes": 9016.78,
+    "owners_distribution_regular_wages": 107884.72,
+    "professional_fees_accounting": 4829.0,
+    "professional_fees_consulting": 2911.25,
+    "travel_car_rides": 3320.56,
+    "travel_hotels": 1184.29,
+    "travel_meals_entertainment": 10199.21,
+    "travel_parking_tolls": 8.9,
+    "travel_airfare": 3359.08,
+    "operating_expenses": 221710.62,
+    "other_income_interest": 3491.19,
+    "other_expenses_medical": 480.96,
+    "travel_vehicle_gas": 416.0,
+    "vehicle_repairs": 110.8,
+    "other_expenses_total": 1007.76,
+    "net_income": -219227.19,
+    "total_expenses": 222718.38,
+    "net_burn": 219227.19
+  },
+  "monthly_history": {
+    "2026-01": {
+      "advertising_marketing": -116.2,
+      "bank_fees_service_charges": 3.84,
+      "business_taxes_licenses": 0.0,
+      "contractors_contract_labor": 386.65,
+      "contractors_outsourcing": 1537.0,
+      "databases_research": 1961.95,
+      "general_business_memberships_subscriptions": 0.0,
+      "office_expenses_apps_software_crm_storage": 219.98,
+      "office_expenses_apps_software_office_use": 226.98,
+      "office_expenses_office_supplies": 219.8,
+      "office_expenses_postage": 0.0,
+      "office_expenses_rent_lease": 1000.0,
+      "office_expenses_small_tools_equipment": 0.0,
+      "payroll_expenses_business_insurance": 0.0,
+      "payroll_expenses_health_accident_plans": 8786.91,
+      "payroll_expenses_payroll_taxes": 1533.36,
+      "owners_distribution_regular_wages": 12692.32,
+      "professional_fees_accounting": 0.0,
+      "professional_fees_consulting": 0.0,
+      "travel_car_rides": 428.62,
+      "travel_hotels": 0.0,
+      "travel_meals_entertainment": 1049.27,
+      "travel_parking_tolls": 0.0,
+      "travel_airfare": 2027.88,
+      "operating_expenses": 31958.36,
+      "other_income_interest": 654.42,
+      "other_expenses_medical": 0.0,
+      "travel_vehicle_gas": 0.0,
+      "vehicle_repairs": 0.0,
+      "other_expenses_total": 0.0,
+      "net_income": -31303.94,
+      "total_expenses": 31958.36,
+      "net_burn": 31303.94
+    },
+    "2026-02": {
+      "advertising_marketing": 315.55,
+      "bank_fees_service_charges": 4.56,
+      "business_taxes_licenses": 0.0,
+      "contractors_contract_labor": 490.0,
+      "contractors_outsourcing": 0.0,
+      "databases_research": 282.0,
+      "general_business_memberships_subscriptions": 0.0,
+      "office_expenses_apps_software_crm_storage": 250.09,
+      "office_expenses_apps_software_office_use": 584.56,
+      "office_expenses_office_supplies": -9.04,
+      "office_expenses_postage": 1.04,
+      "office_expenses_rent_lease": 1000.0,
+      "office_expenses_small_tools_equipment": 0.0,
+      "payroll_expenses_business_insurance": 54.78,
+      "payroll_expenses_health_accident_plans": 8250.0,
+      "payroll_expenses_payroll_taxes": 1172.17,
+      "owners_distribution_regular_wages": 12692.32,
+      "professional_fees_accounting": 3594.0,
+      "professional_fees_consulting": 0.0,
+      "travel_car_rides": 178.27,
+      "travel_hotels": 0.0,
+      "travel_meals_entertainment": 1720.16,
+      "travel_parking_tolls": 0.0,
+      "travel_airfare": 0.0,
+      "operating_expenses": 30580.46,
+      "other_income_interest": 532.0,
+      "other_expenses_medical": 0.0,
+      "travel_vehicle_gas": 47.92,
+      "vehicle_repairs": 0.0,
+      "other_expenses_total": 47.92,
+      "net_income": -30096.38,
+      "total_expenses": 30628.38,
+      "net_burn": 30096.38
+    },
+    "2026-03": {
+      "advertising_marketing": 244.39,
+      "bank_fees_service_charges": 6.39,
+      "business_taxes_licenses": 0.0,
+      "contractors_contract_labor": 316.65,
+      "contractors_outsourcing": 1040.0,
+      "databases_research": -1238.25,
+      "general_business_memberships_subscriptions": 0.0,
+      "office_expenses_apps_software_crm_storage": 1345.02,
+      "office_expenses_apps_software_office_use": 1223.89,
+      "office_expenses_office_supplies": 45.68,
+      "office_expenses_postage": 25.52,
+      "office_expenses_rent_lease": 1000.0,
+      "office_expenses_small_tools_equipment": 0.0,
+      "payroll_expenses_business_insurance": 48.48,
+      "payroll_expenses_health_accident_plans": 8250.0,
+      "payroll_expenses_payroll_taxes": 1213.7,
+      "owners_distribution_regular_wages": 15865.4,
+      "professional_fees_accounting": 0.0,
+      "professional_fees_consulting": 911.25,
+      "travel_car_rides": 818.94,
+      "travel_hotels": 0.0,
+      "travel_meals_entertainment": 1330.06,
+      "travel_parking_tolls": 0.0,
+      "travel_airfare": 0.0,
+      "operating_expenses": 32447.12,
+      "other_income_interest": 543.52,
+      "other_expenses_medical": 0.0,
+      "travel_vehicle_gas": 0.0,
+      "vehicle_repairs": 0.0,
+      "other_expenses_total": 0.0,
+      "net_income": -31903.6,
+      "total_expenses": 32447.12,
+      "net_burn": 31903.6
+    },
+    "2026-04": {
+      "advertising_marketing": 2422.32,
+      "bank_fees_service_charges": 0.0,
+      "business_taxes_licenses": 1322.0,
+      "contractors_contract_labor": 0.0,
+      "contractors_outsourcing": 1040.0,
+      "databases_research": 1451.0,
+      "general_business_memberships_subscriptions": 260.21,
+      "office_expenses_apps_software_crm_storage": 72.93,
+      "office_expenses_apps_software_office_use": 464.95,
+      "office_expenses_office_supplies": 93.6,
+      "office_expenses_postage": 681.0,
+      "office_expenses_rent_lease": 2000.0,
+      "office_expenses_small_tools_equipment": 0.0,
+      "payroll_expenses_business_insurance": 36.92,
+      "payroll_expenses_health_accident_plans": 8250.0,
+      "payroll_expenses_payroll_taxes": 970.96,
+      "owners_distribution_regular_wages": 12692.32,
+      "professional_fees_accounting": 247.0,
+      "professional_fees_consulting": 0.0,
+      "travel_car_rides": 510.78,
+      "travel_hotels": 0.0,
+      "travel_meals_entertainment": 891.26,
+      "travel_parking_tolls": 0.0,
+      "travel_airfare": 347.8,
+      "operating_expenses": 33755.05,
+      "other_income_interest": 458.58,
+      "other_expenses_medical": 0.0,
+      "travel_vehicle_gas": 0.0,
+      "vehicle_repairs": 0.0,
+      "other_expenses_total": 0.0,
+      "net_income": -33296.47,
+      "total_expenses": 33755.05,
+      "net_burn": 33296.47
+    },
+    "2026-05": {
+      "advertising_marketing": 89.19,
+      "bank_fees_service_charges": 20.58,
+      "business_taxes_licenses": 0.0,
+      "contractors_contract_labor": 0.0,
+      "contractors_outsourcing": 1040.0,
+      "databases_research": 1235.86,
+      "general_business_memberships_subscriptions": 0.0,
+      "office_expenses_apps_software_crm_storage": 82.92,
+      "office_expenses_apps_software_office_use": 636.09,
+      "office_expenses_office_supplies": 30.39,
+      "office_expenses_postage": 0.0,
+      "office_expenses_rent_lease": 0.0,
+      "office_expenses_small_tools_equipment": 0.0,
+      "payroll_expenses_business_insurance": 35.76,
+      "payroll_expenses_health_accident_plans": 0.0,
+      "payroll_expenses_payroll_taxes": 970.96,
+      "owners_distribution_regular_wages": 12692.32,
+      "professional_fees_accounting": 247.0,
+      "professional_fees_consulting": 1000.0,
+      "travel_car_rides": 835.03,
+      "travel_hotels": 1184.29,
+      "travel_meals_entertainment": 1464.42,
+      "travel_parking_tolls": 0.0,
+      "travel_airfare": 952.65,
+      "operating_expenses": 22517.46,
+      "other_income_interest": 418.36,
+      "other_expenses_medical": 0.0,
+      "travel_vehicle_gas": 40.43,
+      "vehicle_repairs": 0.0,
+      "other_expenses_total": 40.43,
+      "net_income": -22139.53,
+      "total_expenses": 22557.89,
+      "net_burn": 22139.53
+    },
+    "2026-06": {
+      "advertising_marketing": 133.54,
+      "bank_fees_service_charges": 0.41,
+      "business_taxes_licenses": 0.0,
+      "contractors_contract_labor": 436.5,
+      "contractors_outsourcing": 1040.0,
+      "databases_research": 52.04,
+      "general_business_memberships_subscriptions": 0.0,
+      "office_expenses_apps_software_crm_storage": 13.01,
+      "office_expenses_apps_software_office_use": 650.9,
+      "office_expenses_office_supplies": 0.0,
+      "office_expenses_postage": 9.92,
+      "office_expenses_rent_lease": 1000.0,
+      "office_expenses_small_tools_equipment": 0.0,
+      "payroll_expenses_business_insurance": 39.76,
+      "payroll_expenses_health_accident_plans": 2750.0,
+      "payroll_expenses_payroll_taxes": 1213.7,
+      "owners_distribution_regular_wages": 15865.4,
+      "professional_fees_accounting": 247.0,
+      "professional_fees_consulting": 1000.0,
+      "travel_car_rides": 383.99,
+      "travel_hotels": 0.0,
+      "travel_meals_entertainment": 1510.87,
+      "travel_parking_tolls": 0.0,
+      "travel_airfare": 27.5,
+      "operating_expenses": 26374.54,
+      "other_income_interest": 339.95,
+      "other_expenses_medical": 5.96,
+      "travel_vehicle_gas": 0.0,
+      "vehicle_repairs": 0.0,
+      "other_expenses_total": 5.96,
+      "net_income": -26040.55,
+      "total_expenses": 26380.5,
+      "net_burn": 26040.55
+    },
+    "2026-07": {
+      "advertising_marketing": 3009.68,
+      "bank_fees_service_charges": 0.44,
+      "business_taxes_licenses": 0.0,
+      "contractors_contract_labor": 151.5,
+      "contractors_outsourcing": 0.0,
+      "databases_research": 0.0,
+      "general_business_memberships_subscriptions": 0.0,
+      "office_expenses_apps_software_crm_storage": 28.6,
+      "office_expenses_apps_software_office_use": 455.19,
+      "office_expenses_office_supplies": 15.94,
+      "office_expenses_postage": 0.0,
+      "office_expenses_rent_lease": 1000.0,
+      "office_expenses_small_tools_equipment": 53.23,
+      "payroll_expenses_business_insurance": 35.76,
+      "payroll_expenses_health_accident_plans": 2750.0,
+      "payroll_expenses_payroll_taxes": 970.97,
+      "owners_distribution_regular_wages": 12692.32,
+      "professional_fees_accounting": 247.0,
+      "professional_fees_consulting": 0.0,
+      "travel_car_rides": 104.0,
+      "travel_hotels": 0.0,
+      "travel_meals_entertainment": 1228.04,
+      "travel_parking_tolls": 6.4,
+      "travel_airfare": 3.25,
+      "operating_expenses": 22752.32,
+      "other_income_interest": 300.54,
+      "other_expenses_medical": 368.05,
+      "travel_vehicle_gas": 201.38,
+      "vehicle_repairs": 0.0,
+      "other_expenses_total": 569.43,
+      "net_income": -23021.21,
+      "total_expenses": 23321.75,
+      "net_burn": 23021.21
+    },
+    "2026-08": {
+      "advertising_marketing": 264.23,
+      "bank_fees_service_charges": 3.81,
+      "business_taxes_licenses": 0.0,
+      "contractors_contract_labor": 0.0,
+      "contractors_outsourcing": 0.0,
+      "databases_research": 233.0,
+      "general_business_memberships_subscriptions": 0.0,
+      "office_expenses_apps_software_crm_storage": 18.49,
+      "office_expenses_apps_software_office_use": 454.42,
+      "office_expenses_office_supplies": 407.42,
+      "office_expenses_postage": 170.4,
+      "office_expenses_rent_lease": 2000.0,
+      "office_expenses_small_tools_equipment": 0.0,
+      "payroll_expenses_business_insurance": 44.7,
+      "payroll_expenses_health_accident_plans": 2750.0,
+      "payroll_expenses_payroll_taxes": 970.96,
+      "owners_distribution_regular_wages": 12692.32,
+      "professional_fees_accounting": 247.0,
+      "professional_fees_consulting": 0.0,
+      "travel_car_rides": 60.93,
+      "travel_hotels": 0.0,
+      "travel_meals_entertainment": 1005.13,
+      "travel_parking_tolls": 2.5,
+      "travel_airfare": 0.0,
+      "operating_expenses": 21325.31,
+      "other_income_interest": 243.82,
+      "other_expenses_medical": 106.95,
+      "travel_vehicle_gas": 126.27,
+      "vehicle_repairs": 110.8,
+      "other_expenses_total": 344.02,
+      "net_income": -21425.51,
+      "total_expenses": 21669.33,
+      "net_burn": 21425.51
+    }
+  },
+  "all_report_rows": [
+    {
+      "account": "Advertising & Marketing",
+      "monthly_values": [
+        -116.2,
+        315.55,
+        244.39,
+        2422.32,
+        89.19,
+        133.54,
+        3009.68,
+        264.23
+      ],
+      "ytd_total": 6362.7
+    },
+    {
+      "account": "Bank Fees",
+      "monthly_values": [
+        3.84,
+        4.56,
+        6.39,
+        0.0,
+        20.58,
+        0.41,
+        0.44,
+        3.81
+      ],
+      "ytd_total": 40.03
+    },
+    {
+      "account": "Total for Bank Fees & Service Charges",
+      "monthly_values": [
+        3.84,
+        4.56,
+        6.39,
+        0.0,
+        20.58,
+        0.41,
+        0.44,
+        3.81
+      ],
+      "ytd_total": 40.03
+    },
+    {
+      "account": "Business Taxes & Licenses",
+      "monthly_values": [
+        0.0,
+        0.0,
+        0.0,
+        1322.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ytd_total": 1322.0
+    },
+    {
+      "account": "Contract Labor",
+      "monthly_values": [
+        386.65,
+        490.0,
+        316.65,
+        0.0,
+        0.0,
+        436.5,
+        151.5,
+        0.0
+      ],
+      "ytd_total": 1781.3
+    },
+    {
+      "account": "Outsourcing",
+      "monthly_values": [
+        1537.0,
+        0.0,
+        1040.0,
+        1040.0,
+        1040.0,
+        1040.0,
+        0.0,
+        0.0
+      ],
+      "ytd_total": 5697.0
+    },
+    {
+      "account": "Total for Contractors",
+      "monthly_values": [
+        1923.65,
+        490.0,
+        1356.65,
+        1040.0,
+        1040.0,
+        1476.5,
+        151.5,
+        0.0
+      ],
+      "ytd_total": 7478.3
+    },
+    {
+      "account": "Databases & Research",
+      "monthly_values": [
+        1961.95,
+        282.0,
+        -1238.25,
+        1451.0,
+        1235.86,
+        52.04,
+        0.0,
+        233.0
+      ],
+      "ytd_total": 3977.6
+    },
+    {
+      "account": "Memberships & Subscriptions",
+      "monthly_values": [
+        0.0,
+        0.0,
+        0.0,
+        260.21,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ytd_total": 260.21
+    },
+    {
+      "account": "Total for General Business Expenses",
+      "monthly_values": [
+        0.0,
+        0.0,
+        0.0,
+        260.21,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ytd_total": 260.21
+    },
+    {
+      "account": "CRM & Storage",
+      "monthly_values": [
+        219.98,
+        250.09,
+        1345.02,
+        72.93,
+        82.92,
+        13.01,
+        28.6,
+        18.49
+      ],
+      "ytd_total": 2031.04
+    },
+    {
+      "account": "Office Use",
+      "monthly_values": [
+        226.98,
+        584.56,
+        1223.89,
+        464.95,
+        636.09,
+        650.9,
+        455.19,
+        454.42
+      ],
+      "ytd_total": 4696.98
+    },
+    {
+      "account": "Total for Apps & Software",
+      "monthly_values": [
+        446.96,
+        834.65,
+        2568.91,
+        537.88,
+        719.01,
+        663.91,
+        483.79,
+        472.91
+      ],
+      "ytd_total": 6728.02
+    },
+    {
+      "account": "Office Supplies",
+      "monthly_values": [
+        219.8,
+        -9.04,
+        45.68,
+        93.6,
+        30.39,
+        0.0,
+        15.94,
+        407.42
+      ],
+      "ytd_total": 803.79
+    },
+    {
+      "account": "Postage & Shipping",
+      "monthly_values": [
+        0.0,
+        1.04,
+        25.52,
+        681.0,
+        0.0,
+        9.92,
+        0.0,
+        170.4
+      ],
+      "ytd_total": 887.88
+    },
+    {
+      "account": "Rent/Lease Expense",
+      "monthly_values": [
+        1000.0,
+        1000.0,
+        1000.0,
+        2000.0,
+        0.0,
+        1000.0,
+        1000.0,
+        2000.0
+      ],
+      "ytd_total": 9000.0
+    },
+    {
+      "account": "Small Tools and Equipment",
+      "monthly_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        53.23,
+        0.0
+      ],
+      "ytd_total": 53.23
+    },
+    {
+      "account": "Total for Office Expenses",
+      "monthly_values": [
+        1666.76,
+        1826.65,
+        3640.11,
+        3312.48,
+        749.4,
+        1673.83,
+        1552.96,
+        3050.73
+      ],
+      "ytd_total": 17472.92
+    },
+    {
+      "account": "Business Insurance",
+      "monthly_values": [
+        0.0,
+        54.78,
+        48.48,
+        36.92,
+        35.76,
+        39.76,
+        35.76,
+        44.7
+      ],
+      "ytd_total": 296.16
+    },
+    {
+      "account": "Health & Accident Plans",
+      "monthly_values": [
+        8786.91,
+        8250.0,
+        8250.0,
+        8250.0,
+        0.0,
+        2750.0,
+        2750.0,
+        2750.0
+      ],
+      "ytd_total": 41786.91
+    },
+    {
+      "account": "Total for Employee Benefits",
+      "monthly_values": [
+        8786.91,
+        8250.0,
+        8250.0,
+        8250.0,
+        0.0,
+        2750.0,
+        2750.0,
+        2750.0
+      ],
+      "ytd_total": 41786.91
+    },
+    {
+      "account": "Payroll Taxes",
+      "monthly_values": [
+        1533.36,
+        1172.17,
+        1213.7,
+        970.96,
+        970.96,
+        1213.7,
+        970.97,
+        970.96
+      ],
+      "ytd_total": 9016.78
+    },
+    {
+      "account": "Regular Wages",
+      "monthly_values": [
+        12692.32,
+        12692.32,
+        15865.4,
+        12692.32,
+        12692.32,
+        15865.4,
+        12692.32,
+        12692.32
+      ],
+      "ytd_total": 107884.72
+    },
+    {
+      "account": "Total for Payroll Expenses",
+      "monthly_values": [
+        23012.59,
+        22169.27,
+        25377.58,
+        21950.2,
+        13699.04,
+        19868.86,
+        16449.05,
+        16457.98
+      ],
+      "ytd_total": 158984.57
+    },
+    {
+      "account": "Accounting Fees",
+      "monthly_values": [
+        0.0,
+        3594.0,
+        0.0,
+        247.0,
+        247.0,
+        247.0,
+        247.0,
+        247.0
+      ],
+      "ytd_total": 4829.0
+    },
+    {
+      "account": "Consulting Fees",
+      "monthly_values": [
+        0.0,
+        0.0,
+        911.25,
+        0.0,
+        1000.0,
+        1000.0,
+        0.0,
+        0.0
+      ],
+      "ytd_total": 2911.25
+    },
+    {
+      "account": "Total for Professional Fees",
+      "monthly_values": [
+        0.0,
+        3594.0,
+        911.25,
+        247.0,
+        1247.0,
+        1247.0,
+        247.0,
+        247.0
+      ],
+      "ytd_total": 7740.25
+    },
+    {
+      "account": "Car Rentals/Shared Rides",
+      "monthly_values": [
+        428.62,
+        178.27,
+        818.94,
+        510.78,
+        835.03,
+        383.99,
+        104.0,
+        60.93
+      ],
+      "ytd_total": 3320.56
+    },
+    {
+      "account": "Hotels",
+      "monthly_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1184.29,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ytd_total": 1184.29
+    },
+    {
+      "account": "Meals & Entertainment",
+      "monthly_values": [
+        1049.27,
+        1720.16,
+        1330.06,
+        891.26,
+        1464.42,
+        1510.87,
+        1228.04,
+        1005.13
+      ],
+      "ytd_total": 10199.21
+    },
+    {
+      "account": "Parking & Tolls",
+      "monthly_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        6.4,
+        2.5
+      ],
+      "ytd_total": 8.9
+    },
+    {
+      "account": "Travel Fare",
+      "monthly_values": [
+        2027.88,
+        0.0,
+        0.0,
+        347.8,
+        952.65,
+        27.5,
+        3.25,
+        0.0
+      ],
+      "ytd_total": 3359.08
+    },
+    {
+      "account": "Total for Travel & Business Development",
+      "monthly_values": [
+        3505.77,
+        1898.43,
+        2149.0,
+        1749.84,
+        4436.39,
+        1922.36,
+        1341.69,
+        1068.56
+      ],
+      "ytd_total": 18072.04
+    },
+    {
+      "account": "Total for Expenses",
+      "monthly_values": [
+        31958.36,
+        30580.46,
+        32447.12,
+        33755.05,
+        22517.46,
+        26374.54,
+        22752.32,
+        21325.31
+      ],
+      "ytd_total": 221710.62
+    },
+    {
+      "account": "Net Operating Income",
+      "monthly_values": [
+        -31958.36,
+        -30580.46,
+        -32447.12,
+        -33755.05,
+        -22517.46,
+        -26374.54,
+        -22752.32,
+        -21325.31
+      ],
+      "ytd_total": -221710.62
+    },
+    {
+      "account": "Interest Income",
+      "monthly_values": [
+        654.42,
+        532.0,
+        543.52,
+        458.58,
+        418.36,
+        339.95,
+        300.54,
+        243.82
+      ],
+      "ytd_total": 3491.19
+    },
+    {
+      "account": "Total for Other Income",
+      "monthly_values": [
+        654.42,
+        532.0,
+        543.52,
+        458.58,
+        418.36,
+        339.95,
+        300.54,
+        243.82
+      ],
+      "ytd_total": 3491.19
+    },
+    {
+      "account": "Total for Other Income",
+      "monthly_values": [
+        654.42,
+        532.0,
+        543.52,
+        458.58,
+        418.36,
+        339.95,
+        300.54,
+        243.82
+      ],
+      "ytd_total": 3491.19
+    },
+    {
+      "account": "Medical",
+      "monthly_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        5.96,
+        368.05,
+        106.95
+      ],
+      "ytd_total": 480.96
+    },
+    {
+      "account": "Vehicle Gas & Fuel",
+      "monthly_values": [
+        0.0,
+        47.92,
+        0.0,
+        0.0,
+        40.43,
+        0.0,
+        201.38,
+        126.27
+      ],
+      "ytd_total": 416.0
+    },
+    {
+      "account": "Vehicle Repairs",
+      "monthly_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        110.8
+      ],
+      "ytd_total": 110.8
+    },
+    {
+      "account": "Total for Vehicle Expenses",
+      "monthly_values": [
+        0.0,
+        47.92,
+        0.0,
+        0.0,
+        40.43,
+        0.0,
+        201.38,
+        237.07
+      ],
+      "ytd_total": 526.8
+    },
+    {
+      "account": "Total for Other Expenses",
+      "monthly_values": [
+        0.0,
+        47.92,
+        0.0,
+        0.0,
+        40.43,
+        5.96,
+        569.43,
+        344.02
+      ],
+      "ytd_total": 1007.76
+    },
+    {
+      "account": "Net Other Income",
+      "monthly_values": [
+        654.42,
+        484.08,
+        543.52,
+        458.58,
+        377.93,
+        333.99,
+        -268.89,
+        -100.2
+      ],
+      "ytd_total": 2483.43
+    },
+    {
+      "account": "Net Income",
+      "monthly_values": [
+        -31303.94,
+        -30096.38,
+        -31903.6,
+        -33296.47,
+        -22139.53,
+        -26040.55,
+        -23021.21,
+        -21425.51
+      ],
+      "ytd_total": -219227.19
+    }
+  ],
+  "balance_sheet": {
+    "cash": 0,
+    "checking": 6902.49,
+    "savings": 90875.22,
+    "total_cash": 97777.71,
+    "inventory_asset": 0,
+    "total_current_assets": 97777.71,
+    "office_equipment": 1321.75,
+    "total_fixed_assets": 1321.75,
+    "total_assets": 99099.46,
+    "owner_reimbursements": 0,
+    "total_liabilities": 0,
+    "net_income_ytd": -219227.19,
+    "owner_distribution": -139.1,
+    "owner_investments": 551845.01,
+    "retained_earnings": -233379.26,
+    "total_equity": 99099.46,
+    "total_liabilities_equity": 99099.46
+  },
+  "source_files": {
+    "monthly_profit_loss": "18Nu16iBzgO01eDqeLKeE8N5ps2eUM22R",
+    "ytd_profit_loss": "1dCZBI4nFvzGEUOAxQT19KWM95c9bpsZl",
+    "balance_sheet": "1H13RNVROBNNIOwNBJZ-3PHHdqB77CYKQ"
+  },
+  "source_directory": "/tmp/budget-manager-2026-08",
+  "coa_reference": "brain/context/budget.md",
+  "notes": [
+    "Two AUGUST 2026 Drive folders exist; 17WbZPie96wgjcB03rh08iGN3qNyBDQmG is empty; populated source is 1cTaIiBtlXBQlYXOMqa2rlGHO1PQQ9Osw.",
+    "Profit and Loss PDF is cumulative January-August; monthly values extracted from Monthly Profit and Loss August column.",
+    "Source reclassifies Regular Wages under Payroll Expenses; normalized legacy key retained to match skill.",
+    "total_expenses includes operating and other expenses to avoid understating burn; QBO Total for Expenses retained separately as operating_expenses.",
+    "Blank monthly cells in a displayed account treated as zero; each row validated against source YTD total.",
+    "August source BS Owner Investments is 551845.01, differing from immutable reference 551825 by 20.01.",
+    "Historical months in current source may be restated relative to existing dashboard. Reconciler must compare before updates."
+  ],
+  "stop_hooks": {
+    "both_required_pdfs_downloaded_and_parsed": true,
+    "major_categories_numeric": true,
+    "cash_extracted_nonzero": true,
+    "period_verified": true,
+    "all_monthly_rows_reconcile_ytd": true,
+    "net_income_reconciles": true
+  },
+  "file_sha256": {
+    "monthly-profit-loss.pdf": "24121a71be0f2334f66fe4768c664d7d6c71a7c6422a2e80398d4878d62c9ad0",
+    "balance-sheet.pdf": "91151afab914763705c7c780a21305b0753b180d48bcc93e301ec42307056e15",
+    "profit-loss.pdf": "c07e29d456cf5bf747e2f1e272ed5d7bfcafa0c5f20337f0be078a01e3adeecd"
+  }
+}

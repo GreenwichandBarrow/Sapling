@@ -1,0 +1,94 @@
+                                                         Greenwich & Barrow
+                                                                Profit and Loss
+                                                             January-August, 2026
+
+
+
+
+                                            Jan 2026    Feb 2026    Mar 2026    Apr 2026   May 2026    Jun 2026   Jul 2026   Aug 2026          Total
+Income
+Cost of Goods Sold
+Gross Profit
+Expenses
+ Advertising & Marketing                      -116.20     315.55      244.39    2,422.32      89.19      133.54   3,009.68     264.23       6,362.70
+ Bank Fees & Service Charges
+  Bank Fees                                      3.84       4.56        6.39                  20.58        0.41       0.44       3.81          40.03
+ Total for Bank Fees & Service Charges           3.84       4.56        6.39                  20.58        0.41       0.44       3.81        $40.03
+ Business Taxes & Licenses                                                      1,322.00                                                    1,322.00
+ Contractors
+  Contract Labor                              386.65      490.00      316.65                             436.50     151.50                  1,781.30
+  Outsourcing                                1,537.00                1,040.00   1,040.00    1,040.00   1,040.00                             5,697.00
+ Total for Contractors                       1,923.65     490.00     1,356.65   1,040.00    1,040.00   1,476.50     151.50                 $7,478.30
+ Databases & Research                        1,961.95     282.00    -1,238.25   1,451.00    1,235.86      52.04                233.00       3,977.60
+ General Business Expenses
+  Memberships & Subscriptions                                                     260.21                                                     260.21
+ Total for General Business Expenses                                              260.21                                                    $260.21
+ Office Expenses
+  Apps & Software
+   CRM & Storage                              219.98      250.09     1,345.02      72.93      82.92       13.01      28.60      18.49       2,031.04
+   Office Use                                 226.98      584.56     1,223.89     464.95     636.09      650.90     455.19     454.42       4,696.98
+  Total for Apps & Software                   446.96      834.65     2,568.91     537.88     719.01      663.91     483.79     472.91      $6,728.02
+  Office Supplies                             219.80        -9.04      45.68       93.60      30.39                  15.94     407.42        803.79
+  Postage & Shipping                                        1.04       25.52      681.00                   9.92                170.40        887.88
+  Rent/Lease Expense                         1,000.00    1,000.00    1,000.00   2,000.00               1,000.00   1,000.00    2,000.00      9,000.00
+  Small Tools and Equipment                                                                                          53.23                     53.23
+ Total for Office Expenses                   1,666.76    1,826.65    3,640.11   3,312.48     749.40    1,673.83   1,552.96    3,050.73    $17,472.92
+ Payroll Expenses
+  Business Insurance                                       54.78       48.48       36.92      35.76       39.76      35.76      44.70        296.16
+  Employee Benefits
+   Health & Accident Plans                   8,786.91    8,250.00    8,250.00   8,250.00               2,750.00   2,750.00    2,750.00     41,786.91
+  Total for Employee Benefits                8,786.91    8,250.00    8,250.00   8,250.00               2,750.00   2,750.00    2,750.00    $41,786.91
+  Payroll Taxes                              1,533.36    1,172.17    1,213.70     970.96     970.96    1,213.70     970.97     970.96       9,016.78
+  Regular Wages                             12,692.32 12,692.32 15,865.40 12,692.32        12,692.32 15,865.40 12,692.32 12,692.32        107,884.72
+ Total for Payroll Expenses                 23,012.59 22,169.27 25,377.58 21,950.20        13,699.04 19,868.86 16,449.05 16,457.98       $158,984.57
+ Professional Fees
+  Accounting Fees                                        3,594.00                 247.00     247.00      247.00     247.00     247.00       4,829.00
+  Consulting Fees                                                     911.25                1,000.00   1,000.00                             2,911.25
+ Total for Professional Fees                             3,594.00     911.25      247.00    1,247.00   1,247.00     247.00     247.00      $7,740.25
+
+
+
+                                         Accrual Basis Friday, September 11, 2026 12:46 AM GMT+08:00                                            1/2
+                                                           Greenwich & Barrow
+                                                                  Profit and Loss
+                                                               January-August, 2026
+
+
+
+
+                                              Jan 2026    Feb 2026    Mar 2026    Apr 2026   May 2026    Jun 2026   Jul 2026   Aug 2026          Total
+ Travel & Business Development
+  Car Rentals/Shared Rides                      428.62      178.27      818.94      510.78     835.03      383.99     104.00      60.93       3,320.56
+  Hotels                                                                                      1,184.29                                        1,184.29
+  Meals & Entertainment                        1,049.27    1,720.16    1,330.06     891.26    1,464.42   1,510.87   1,228.04    1,005.13     10,199.21
+  Parking & Tolls                                                                                                       6.40       2.50           8.90
+  Travel Fare                                  2,027.88                             347.80     952.65       27.50       3.25                  3,359.08
+ Total for Travel & Business Development       3,505.77    1,898.43    2,149.00   1,749.84    4,436.39   1,922.36   1,341.69    1,068.56    $18,072.04
+
+Total for Expenses                            31,958.36 30,580.46 32,447.12 33,755.05        22,517.46 26,374.54 22,752.32 21,325.31       $221,710.62
+
+Net Operating Income                         -31,958.36 -30,580.46 -32,447.12 -33,755.05 -22,517.46 -26,374.54 -22,752.32 -21,325.31 -$221,710.62
+Other Income
+ Other Income
+  Interest Income                               654.42      532.00      543.52      458.58     418.36      339.95     300.54     243.82       3,491.19
+ Total for Other Income                         654.42      532.00      543.52      458.58     418.36      339.95     300.54     243.82      $3,491.19
+
+Total for Other Income                          654.42      532.00      543.52      458.58     418.36      339.95     300.54     243.82      $3,491.19
+Other Expenses
+ Medical                                                                                                     5.96     368.05     106.95        480.96
+ Vehicle Expenses
+  Vehicle Gas & Fuel                                         47.92                              40.43                 201.38     126.27        416.00
+  Vehicle Repairs                                                                                                                110.80        110.80
+ Total for Vehicle Expenses                                  47.92                              40.43                 201.38     237.07       $526.80
+
+Total for Other Expenses                                     47.92                              40.43        5.96     569.43     344.02      $1,007.76
+
+Net Other Income                                654.42      484.08      543.52      458.58     377.93      333.99    -268.89     -100.20     $2,483.43
+
+Net Income                                   -31,303.94 -30,096.38 -31,903.60 -33,296.47 -22,139.53 -26,040.55 -23,021.21 -21,425.51 -$219,227.19
+
+
+
+
+                                           Accrual Basis Friday, September 11, 2026 12:46 AM GMT+08:00                                            2/2
+

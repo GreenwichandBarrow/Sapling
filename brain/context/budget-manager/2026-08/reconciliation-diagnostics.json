@@ -1,0 +1,455 @@
+{
+  "checks": {
+    "category_sum_matches_total_expenses": true,
+    "available_cash_math": true,
+    "runway_finite_nonnegative": true
+  },
+  "historical_changes": [
+    {
+      "cell": "E7",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "E9",
+      "old": "1537",
+      "new": 1537.0
+    },
+    {
+      "cell": "E14",
+      "old": "1000",
+      "new": 1000.0
+    },
+    {
+      "cell": "E16",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "E20",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "E22",
+      "old": "",
+      "new": 0.0
+    },
+    {
+      "cell": "E28",
+      "old": "",
+      "new": 0.0
+    },
+    {
+      "cell": "E30",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "E32",
+      "old": "",
+      "new": 0
+    },
+    {
+      "cell": "E33",
+      "old": "",
+      "new": 0
+    },
+    {
+      "cell": "E38",
+      "old": "264683.20",
+      "new": 264683.2
+    },
+    {
+      "cell": "G6",
+      "old": "8250",
+      "new": 8250.0
+    },
+    {
+      "cell": "G9",
+      "old": "394",
+      "new": 0.0
+    },
+    {
+      "cell": "G10",
+      "old": "490",
+      "new": 490.0
+    },
+    {
+      "cell": "G14",
+      "old": "1000",
+      "new": 1000.0
+    },
+    {
+      "cell": "G17",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "G22",
+      "old": "",
+      "new": 0.0
+    },
+    {
+      "cell": "G24",
+      "old": "318.25",
+      "new": 250.09
+    },
+    {
+      "cell": "G26",
+      "old": "282",
+      "new": 282.0
+    },
+    {
+      "cell": "G27",
+      "old": "247.39",
+      "new": 315.55
+    },
+    {
+      "cell": "G28",
+      "old": "",
+      "new": 0.0
+    },
+    {
+      "cell": "G36",
+      "old": "532.00",
+      "new": 532.0
+    },
+    {
+      "cell": "G30",
+      "old": "3200",
+      "new": 3594.0
+    },
+    {
+      "cell": "G32",
+      "old": "",
+      "new": 0
+    },
+    {
+      "cell": "G33",
+      "old": "",
+      "new": 0
+    },
+    {
+      "cell": "I6",
+      "old": "8250",
+      "new": 8250.0
+    },
+    {
+      "cell": "I9",
+      "old": "1040",
+      "new": 1040.0
+    },
+    {
+      "cell": "I14",
+      "old": "1000",
+      "new": 1000.0
+    },
+    {
+      "cell": "I17",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "I20",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "I22",
+      "old": "",
+      "new": 0.0
+    },
+    {
+      "cell": "I28",
+      "old": "",
+      "new": 0.0
+    },
+    {
+      "cell": "I37",
+      "old": "31903.60",
+      "new": 31903.6
+    },
+    {
+      "cell": "I32",
+      "old": "",
+      "new": 0
+    },
+    {
+      "cell": "I33",
+      "old": "",
+      "new": 0
+    },
+    {
+      "cell": "K6",
+      "old": "8250",
+      "new": 8250.0
+    },
+    {
+      "cell": "K9",
+      "old": "1287",
+      "new": 1040.0
+    },
+    {
+      "cell": "K10",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "K14",
+      "old": "2000",
+      "new": 2000.0
+    },
+    {
+      "cell": "K16",
+      "old": "681",
+      "new": 681.0
+    },
+    {
+      "cell": "K20",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "K21",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "K22",
+      "old": "",
+      "new": 0.0
+    },
+    {
+      "cell": "K26",
+      "old": "1451",
+      "new": 1451.0
+    },
+    {
+      "cell": "K28",
+      "old": "",
+      "new": 1582.21
+    },
+    {
+      "cell": "K11",
+      "old": "0",
+      "new": 247
+    },
+    {
+      "cell": "K30",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "K32",
+      "old": "",
+      "new": 0
+    },
+    {
+      "cell": "K33",
+      "old": "",
+      "new": 0
+    },
+    {
+      "cell": "M6",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "M9",
+      "old": "1287",
+      "new": 1040.0
+    },
+    {
+      "cell": "M10",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "M14",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "M16",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "M22",
+      "old": "",
+      "new": 1184.29
+    },
+    {
+      "cell": "M28",
+      "old": "",
+      "new": 0.0
+    },
+    {
+      "cell": "M11",
+      "old": "0",
+      "new": 247
+    },
+    {
+      "cell": "M30",
+      "old": "1000",
+      "new": 1000.0
+    },
+    {
+      "cell": "M32",
+      "old": "",
+      "new": 0
+    },
+    {
+      "cell": "M33",
+      "old": "",
+      "new": 0
+    },
+    {
+      "cell": "O6",
+      "old": "2750",
+      "new": 2750.0
+    },
+    {
+      "cell": "O9",
+      "old": "1287",
+      "new": 1040.0
+    },
+    {
+      "cell": "O14",
+      "old": "1000",
+      "new": 1000.0
+    },
+    {
+      "cell": "O15",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "O20",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "O22",
+      "old": "",
+      "new": 0.0
+    },
+    {
+      "cell": "O28",
+      "old": "",
+      "new": 5.96
+    },
+    {
+      "cell": "O35",
+      "old": "26374.54",
+      "new": 26380.5
+    },
+    {
+      "cell": "O11",
+      "old": "0",
+      "new": 247
+    },
+    {
+      "cell": "O30",
+      "old": "0",
+      "new": 1000.0
+    },
+    {
+      "cell": "O32",
+      "old": "",
+      "new": 0
+    },
+    {
+      "cell": "O33",
+      "old": "",
+      "new": 0
+    },
+    {
+      "cell": "Q6",
+      "old": "2750",
+      "new": 2750.0
+    },
+    {
+      "cell": "Q9",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "Q14",
+      "old": "1000",
+      "new": 1000.0
+    },
+    {
+      "cell": "Q16",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "Q18",
+      "old": "104",
+      "new": 104.0
+    },
+    {
+      "cell": "Q22",
+      "old": "",
+      "new": 6.4
+    },
+    {
+      "cell": "Q26",
+      "old": "0",
+      "new": 0.0
+    },
+    {
+      "cell": "Q28",
+      "old": "",
+      "new": 421.28
+    },
+    {
+      "cell": "Q35",
+      "old": "22752.32",
+      "new": 23321.75
+    },
+    {
+      "cell": "Q11",
+      "old": "0",
+      "new": 247
+    },
+    {
+      "cell": "Q30",
+      "old": "247",
+      "new": 0.0
+    },
+    {
+      "cell": "Q32",
+      "old": "",
+      "new": 0
+    },
+    {
+      "cell": "Q33",
+      "old": "",
+      "new": 0
+    }
+  ],
+  "data_quality_flags": [
+    "Owner Investments $551,845.01 differs from immutable reference $551,825 by $20.01. Percent uses source BS investments, retain discrepancy.",
+    "Earlier dashboard YTD wages/payroll totals were stale, restated account classifications differ, and June/July expense totals omitted below-the-line amounts; restate Jan-Aug P&L from latest source.",
+    "Prior month BS cash anchors are preserved; P&L cumulative spend excludes $139.10 owner distribution and $1,321.75 fixed asset, so cash is anchored to BS rather than inferred from P&L.",
+    "Historical normalized burn is conservative; approved vendor cuts forward plan remains separate.",
+    "Deadline day unspecified in reference; Feb1 convention retained from prior dashboard Aug->Feb six-month target."
+  ],
+  "reserve_evidence": {
+    "path": "brain/context/attio-pipeline-snapshot.json",
+    "fetched_at": "2026-09-11T00:01:09Z",
+    "company": "Sidney Garber",
+    "stage": "Submitted LOI",
+    "stage_since": "2026-09-01T16:25:21.066600000Z"
+  },
+  "source_paths": [
+    "brain/context/budget.md",
+    "brain/context/attio-pipeline-snapshot.json",
+    "/tmp/budget-manager-2026-08/ingested.json",
+    "/tmp/budget-manager-2026-08/live-tab1.json",
+    "/tmp/budget-manager-2026-08/live-tab2.json"
+  ]
+}

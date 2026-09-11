@@ -1,0 +1,24 @@
+{
+  "id": "not_j82IZ9sW0uV997",
+  "title": "Mike I Kay",
+  "counterparty": "Michael Horowitz",
+  "date": "2026-09-11",
+  "time": "11:30 AM ET",
+  "location": "remote",
+  "granola_url": "https://notes.granola.ai/d/8c07a4d1-b348-4efd-b638-d1fd6df26492",
+  "doc_url": "https://docs.google.com/document/d/1YgKJtg1lGdjUT4VjFTGBl6beMEjffv_TTECh4yOMCVg/edit?usp=drivesdk",
+  "transcript_doc_url": "https://docs.google.com/document/d/1VYxeVxQ8OV_Hq9x6QhNqJbIsjvSS-3NsQUzBQ6QSseo/edit?usp=drivesdk",
+  "attio_notes": {
+    "people": ["f05ff39e-2480-4869-b3cd-ce869a7250b1"],
+    "companies": ["4b50bf09-762a-4f3f-8301-20f18740a3ac"]
+  },
+  "attio_failed": false,
+  "task_count": 3,
+  "tasks_failed": false,
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_j82IZ9sW0uV997.json",
+  "vault_call_note": "brain/calls/2026-09-11-michael-horowitz.md",
+  "transcript_failed": false,
+  "doc_failed": false,
+  "slack_posted": true,
+  "processed_at": "2026-09-11T17:04:08.687144777Z"
+}

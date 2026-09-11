@@ -1,0 +1,30 @@
+{
+  "timestamp": "20260911T152706Z",
+  "status": "verified",
+  "reserve": 40000,
+  "available": 57777.71,
+  "rollback_path": "/home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/budget-reserve-correction-20260911-20260911T152706Z.json",
+  "ranges": [
+    "'Runway Forecast'!B3",
+    "'Runway Forecast'!B5",
+    "'Runway Forecast'!B6",
+    "'Runway Forecast'!B8",
+    "'Runway Forecast'!B9",
+    "'Runway Forecast'!B10",
+    "'Runway Forecast'!B11",
+    "'Runway Forecast'!B12",
+    "'Runway Forecast'!B13",
+    "'Runway Forecast'!B31",
+    "'Runway Forecast'!B32",
+    "'Runway Forecast'!B34",
+    "'Runway Forecast'!A37:F42"
+  ],
+  "checked_cells": 48,
+  "unrelated_cells_unchanged": true,
+  "source_financial_actuals_unchanged": true,
+  "no_external_messages": true,
+  "vault_schema_valid": true,
+  "wikilinks_exist": true,
+  "independent_recalculation_matches": true,
+  "skill_validator_limitation": "Bundled quick_validate rejects pre-existing Sapling metadata archetype/context_budget/user_invocable; metadata unchanged."
+}

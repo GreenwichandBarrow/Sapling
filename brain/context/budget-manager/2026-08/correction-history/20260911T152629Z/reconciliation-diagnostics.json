@@ -439,9 +439,11 @@
     "Deadline day unspecified in reference; Feb1 convention retained from prior dashboard Aug->Feb six-month target."
   ],
   "reserve_evidence": {
-    "source": "Kay, canonical Chief-of-Staff conversation, September 11, 2026",
-    "statement": "why did the deal reserve become 80K, when it was always 40K",
-    "policy": "$40,000 until explicit Kay change; deal stage does not change reserve"
+    "path": "brain/context/attio-pipeline-snapshot.json",
+    "fetched_at": "2026-09-11T00:01:09Z",
+    "company": "Sidney Garber",
+    "stage": "Submitted LOI",
+    "stage_since": "2026-09-01T16:25:21.066600000Z"
   },
   "source_paths": [
     "brain/context/budget.md",

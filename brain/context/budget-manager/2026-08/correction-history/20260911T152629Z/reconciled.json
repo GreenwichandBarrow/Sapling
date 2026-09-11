@@ -5,19 +5,19 @@
     "budget_remaining": 97777.71,
     "budget_pct": 17.7183,
     "burn_rate": 24523.38,
-    "runway_months": 2.356,
-    "dd_reserve": 40000,
-    "available_for_operations": 57777.71,
+    "runway_months": 0.7249,
+    "dd_reserve": 80000,
+    "available_for_operations": 17777.71,
     "as_of_date": "2026-08-31",
     "reserve_policy_as_of": "2026-09-11",
     "fund_deadline": "2027-02-01",
     "runway_anchor": "2026-09-01",
-    "projected_zero": "2026-11-12",
+    "projected_zero": "2026-09-23",
     "trailing_average_burn": 27403.4,
-    "target_burn": 11555.54,
-    "shortfall": 64839.19,
-    "monthly_savings_needed": 12967.84,
-    "buffer_months": -2.644,
+    "target_burn": 3555.54,
+    "shortfall": 104839.19,
+    "monthly_savings_needed": 20967.84,
+    "buffer_months": -4.2751,
     "ytd_net_burn": 219227.19,
     "monthly_net_burn": 21425.51,
     "cumulative_spend": 452606.45
@@ -128,49 +128,49 @@
     {
       "name": "Current trailing average",
       "burn_rate": 27403.4,
-      "available_for_operations": 57777.71,
-      "runway_months": 2.1084,
-      "projected_zero": "2026-11-04",
+      "available_for_operations": 17777.71,
+      "runway_months": 0.6487,
+      "projected_zero": "2026-09-20",
       "notes": ""
     },
     {
       "name": "Steady-state historical normalized",
       "burn_rate": 24523.38,
-      "available_for_operations": 57777.71,
-      "runway_months": 2.356,
-      "projected_zero": "2026-11-12",
+      "available_for_operations": 17777.71,
+      "runway_months": 0.7249,
+      "projected_zero": "2026-09-23",
       "notes": ""
     },
     {
       "name": "Approved cuts forward model",
       "burn_rate": 19635.76,
-      "available_for_operations": 57777.71,
-      "runway_months": 2.9425,
-      "projected_zero": "2026-11-29",
+      "available_for_operations": 17777.71,
+      "runway_months": 0.9054,
+      "projected_zero": "2026-09-28",
       "notes": "Retain Sep 4 live dashboard planning model; assumes approved rent/vendor cancellations and DealsX paused after September. August source does not validate every saving."
     },
     {
       "name": "Target to February 1",
-      "burn_rate": 11555.54,
-      "available_for_operations": 57777.71,
+      "burn_rate": 3555.54,
+      "available_for_operations": 17777.71,
       "runway_months": 5.0,
       "projected_zero": "2027-02-01",
       "notes": "Required mathematical target; no claim these savings are implemented."
     },
     {
-      "name": "Confirmed $40K reserve (same as steady-state)",
+      "name": "August month-end reserve sensitivity",
       "burn_rate": 24523.38,
       "available_for_operations": 57777.71,
       "runway_months": 2.356,
       "projected_zero": "2026-11-12",
-      "notes": "Kay reconfirmed $40K September 11. This equals the current-policy steady-state case; no automatic LOI-stage escalation."
+      "notes": "Uses pre-Sep-1 $40K reserve; current Submitted LOI policy requires $80K."
     },
     {
       "name": "Approved cuts plus known commitments",
       "burn_rate": 19635.76,
-      "available_for_operations": 53357.71,
-      "runway_months": 2.7174,
-      "projected_zero": "2026-11-23",
+      "available_for_operations": 13357.71,
+      "runway_months": 0.6803,
+      "projected_zero": "2026-09-21",
       "notes": "Deduct prior dashboard $3,120 known DealsX payables and $1,300 October conference as unverified outstanding commitments; exclude requested $2,000 deposit until received."
     }
   ],
@@ -183,7 +183,7 @@
   "mapping_notes": [
     "CPA/accounting maps to Office Supplies & Bookkeeping; consulting provisionally to Reserve/Diligence per crosswalk, without asserting deal-specific expense.",
     "Membership subscriptions map to Marketing/Software; medical, licenses and vehicle repair map to Contingency.",
-    "Cash is August 31; $40K reserve reconfirmed by Kay September 11."
+    "Cash period Aug31 and reserve state Sep11 are explicitly different dates."
   ],
   "data_quality_flags": [
     "Owner Investments $551,845.01 differs from immutable reference $551,825 by $20.01. Percent uses source BS investments, retain discrepancy.",
@@ -193,9 +193,11 @@
     "Deadline day unspecified in reference; Feb1 convention retained from prior dashboard Aug->Feb six-month target."
   ],
   "reserve_evidence": {
-    "source": "Kay, canonical Chief-of-Staff conversation, September 11, 2026",
-    "statement": "why did the deal reserve become 80K, when it was always 40K",
-    "policy": "$40,000 until explicit Kay change; deal stage does not change reserve"
+    "path": "brain/context/attio-pipeline-snapshot.json",
+    "fetched_at": "2026-09-11T00:01:09Z",
+    "company": "Sidney Garber",
+    "stage": "Submitted LOI",
+    "stage_since": "2026-09-01T16:25:21.066600000Z"
   },
   "source_paths": [
     "brain/context/budget.md",
@@ -1785,7 +1787,7 @@
         ],
         [
           "As of",
-          "2026-08-31 cash; $40K reserve reconfirmed Sep 11"
+          "2026-08-31 cash; Sep 11 LOI reserve policy"
         ],
         [
           "Fund Balance",
@@ -1793,11 +1795,11 @@
         ],
         [
           "DD Reserve",
-          40000
+          80000
         ],
         [
           "Available for Operations",
-          57777.71
+          17777.71
         ],
         [
           "Steady-State Monthly Burn",
@@ -1805,27 +1807,27 @@
         ],
         [
           "Months at Steady-State (from September 1)",
-          2.356
+          0.7249
         ],
         [
           "Projected Zero",
-          "2026-11-12"
+          "2026-09-23"
         ],
         [
           "Shortfall to Feb 2027",
-          64839.19
+          104839.19
         ],
         [
           "Monthly Savings Needed",
-          12967.84
+          20967.84
         ],
         [
           "Dashboard Source",
-          "August 2026 P&Ls and BS; Kay-confirmed $40K reserve"
+          "August 2026 P&Ls and BS; current Attio LOI snapshot"
         ],
         [
           "Notes",
-          "Reserve remains $40K until Kay explicitly changes it; deal stage does not change reserve. Excludes requested deposit. Deadline Feb 1, 2027; historical-normalized burn, approved-cuts scenario below."
+          "Reserve rises to $80K at Submitted LOI. Excludes requested deposit from cash. Deadline modeled Feb 1, 2027. Historical-normalized burn; approved-cuts scenario below."
         ],
         [],
         [
@@ -1889,11 +1891,11 @@
         ],
         [
           "runway_months",
-          2.356
+          0.7249
         ],
         [
           "projected_zero",
-          "2026-11-12"
+          "2026-09-23"
         ],
         [
           "target_cash_date",
@@ -1901,7 +1903,7 @@
         ],
         [
           "monthly_gap_to_target",
-          12967.84
+          20967.84
         ],
         [],
         [
@@ -1915,49 +1917,49 @@
         [
           "Current trailing average",
           27403.4,
-          57777.71,
-          2.1084,
-          "2026-11-04",
+          17777.71,
+          0.6487,
+          "2026-09-20",
           ""
         ],
         [
           "Steady-state historical normalized",
           24523.38,
-          57777.71,
-          2.356,
-          "2026-11-12",
+          17777.71,
+          0.7249,
+          "2026-09-23",
           ""
         ],
         [
           "Approved cuts forward model",
           19635.76,
-          57777.71,
-          2.9425,
-          "2026-11-29",
+          17777.71,
+          0.9054,
+          "2026-09-28",
           "Retain Sep 4 live dashboard planning model; assumes approved rent/vendor cancellations and DealsX paused after September. August source does not validate every saving."
         ],
         [
           "Target to February 1",
-          11555.54,
-          57777.71,
+          3555.54,
+          17777.71,
           5.0,
           "2027-02-01",
           "Required mathematical target; no claim these savings are implemented."
         ],
         [
-          "Confirmed $40K reserve (same as steady-state)",
+          "August month-end reserve sensitivity",
           24523.38,
           57777.71,
           2.356,
           "2026-11-12",
-          "Kay reconfirmed $40K September 11. This equals the current-policy steady-state case; no automatic LOI-stage escalation."
+          "Uses pre-Sep-1 $40K reserve; current Submitted LOI policy requires $80K."
         ],
         [
           "Approved cuts plus known commitments",
           19635.76,
-          53357.71,
-          2.7174,
-          "2026-11-23",
+          13357.71,
+          0.6803,
+          "2026-09-21",
           "Deduct prior dashboard $3,120 known DealsX payables and $1,300 October conference as unverified outstanding commitments; exclude requested $2,000 deposit until received."
         ],
         [],

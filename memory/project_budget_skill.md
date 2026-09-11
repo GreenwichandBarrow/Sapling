@@ -9,7 +9,7 @@ type: project
 
 **Fund Position (as of Feb 28, 2026):**
 - Cash: $255,724 (46.3% of $551,825)
-- DD Reserve: $40K (graduated to $80K at LOI stage)
+- DD Reserve: $40K; reconfirmed by Kay September 11, 2026, unchanged until explicit approval
 - Available for ops: $215,724
 - Target burn: $17,300/month (11 months to Feb 2027 deadline)
 - Current steady-state: $19,000-22,000/month
@@ -27,7 +27,7 @@ type: project
 
 **Key decisions:**
 - Health insurance: $33K/yr unbudgeted, paid in installments, one left
-- DD reserve: graduated ($40K now, $80K at LOI). 3rd LOI is statistical sweet spot.
+- DD reserve: $40K until Kay explicitly changes it. September 11 correction supersedes the unsupported automatic LOI-stage escalation.
 - Overseas support previously $2,500/mo (Jul-Dec 2025), replaced by JJ at $1,040/mo
 - JJ: 2-3 week cold calling evaluation starting now. If subpar, find cheaper alternative.
 - Bookkeeper: transition to Kick + Claude by June 2026 ($247/mo savings)

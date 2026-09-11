@@ -21,13 +21,13 @@ Automatic email-intelligence upstream trigger; reporting period **2026-08**. Thi
 |---|---:|
 | August 31 bank cash | $97,777.71 |
 | Fund remaining | 17.7183% |
-| Confirmed DD reserve | $40,000.00 |
-| Cash available for operations | $57,777.71 |
+| Current LOI reserve | $80,000.00 |
+| Cash available for operations | $17,777.71 |
 | August net burn | $21,425.51 |
 | January–August net burn | $219,227.19 |
 | Cumulative P&L spend since inception | $452,606.45 |
 
-**Evidence:** August 31 balance sheet cash is the historical anchor. Kay reconfirmed September 11 that the reserve is $40,000. It remains $40,000 until she explicitly changes it; the LOI stage of [[entities/sidney-garber|Sidney Garber]] does not alter [[context/budget|budget policy]]. This corrects the unsupported $80,000 escalation in the initial report. The August cash figure has not been reduced by assumed September spending. Current-policy runway below is measured from September 1, not from today's date, and represents depletion of operating cash above the protected reserve, not total bank cash reaching zero.
+**Evidence:** August 31 balance sheet cash is the historical anchor. The September 11 pipeline snapshot records [[entities/sidney-garber|Sidney Garber]] at Submitted LOI since September 1, so the current reserve is $80,000 under [[context/budget|budget policy]]. The August cash figure has not been reduced by assumed September spending. Current-policy runway below is measured from September 1, not from today's date, and represents depletion of operating cash above the protected reserve, not total bank cash reaching zero.
 
 The source balance sheet reports invested capital of $551,845.01 versus the established $551,825 reference, a $20.01 discrepancy. The dashboard's 17.7183% uses the source denominator; this does not revise the approved capital reference. Cash is anchored to the balance sheet: cumulative P&L burn omits $139.10 owner distribution and $1,321.75 fixed assets.
 
@@ -67,22 +67,22 @@ Historical normalized burn is **$24,523.38/month**: trailing January–August ne
 
 | Scenario | Monthly burn | Operating cash | Months from September 1 | Projected reserve threshold |
 |---|---:|---:|---:|---|
-| Current trailing average | $27,403.40 | $57,777.71 | 2.1084 | 2026-11-04 |
-| Steady-state historical normalized | $24,523.38 | $57,777.71 | 2.3560 | 2026-11-12 |
-| Approved cuts forward model | $19,635.76 | $57,777.71 | 2.9425 | 2026-11-29 |
-| Target to February 1 | $11,555.54 | $57,777.71 | 5.0000 | 2027-02-01 |
-| Confirmed $40K reserve (same as steady-state) | $24,523.38 | $57,777.71 | 2.3560 | 2026-11-12 |
-| Approved cuts plus known commitments | $19,635.76 | $53,357.71 | 2.7174 | 2026-11-23 |
+| Current trailing average | $27,403.40 | $17,777.71 | 0.6487 | 2026-09-20 |
+| Steady-state historical normalized | $24,523.38 | $17,777.71 | 0.7249 | 2026-09-23 |
+| Approved cuts forward model | $19,635.76 | $17,777.71 | 0.9054 | 2026-09-28 |
+| Target to February 1 | $3,555.54 | $17,777.71 | 5.0000 | 2027-02-01 |
+| August month-end reserve sensitivity | $24,523.38 | $57,777.71 | 2.3560 | 2026-11-12 |
+| Approved cuts plus known commitments | $19,635.76 | $13,357.71 | 0.6803 | 2026-09-21 |
 
-The approved-cuts forward model preserves the September 4 planning rate of **$19,635.76/month**, including approved rent/vendor cancellations and the pause after September. August actuals do not independently validate every saving. The historical normalized base is a separate scenario. The commitment sensitivity deducts $3,120 prior-dashboard payables and the $1,300 October conference; their outstanding status remains unverified. The requested $2,000 deposit is excluded until received. The confirmed-reserve row equals the current steady-state case; $40,000 is current policy.
+The approved-cuts forward model preserves the September 4 planning rate of **$19,635.76/month**, including approved rent/vendor cancellations and the pause after September. August actuals do not independently validate every saving. The historical normalized base is a separate scenario. The commitment sensitivity deducts $3,120 prior-dashboard payables and the $1,300 October conference; their outstanding status remains unverified. The requested $2,000 deposit is excluded until received. The $40,000 reserve sensitivity represents August month-end policy only.
 
-At current reserve and historical normalized burn, the five-month funding shortfall to February 1 is **$64,839.19** and the required monthly savings are **$12,967.84**. The $11,555.54/month target is arithmetic, not an implemented plan. Prior September planning notes are retained below the new dashboard block and explicitly labeled historical/superseded.
+At current reserve and historical normalized burn, the five-month funding shortfall to February 1 is **$104,839.19** and the required monthly savings are **$20,967.84**. The $3,555.54/month target is arithmetic, not an implemented plan. Prior September planning notes are retained below the new dashboard block and explicitly labeled historical/superseded.
 
 ## Action items
 
-- **CFO judgment:** Review reserve-protected liquidity using the corrected $40,000 reserve: the historical-normalized model reaches the reserve threshold November 12, and the approved-cuts model November 29, both measured from August 31 cash. This report does not authorize reserve release or salary changes.
+- **CFO judgment:** Review reserve-protected liquidity immediately: the historical-normalized model reaches the reserve threshold September 23, and the approved-cuts model September 28, both measured from August 31 cash. This report does not authorize reserve release or salary changes.
 - Verify September cash movements, remaining payables, deposit receipt, and implementation of approved cuts before treating either forward scenario as a current bank forecast.
 - Resolve the $20.01 capital-source discrepancy and confirm provisional consulting classification with the underlying ledger. No external email has been drafted or sent by this run.
 - Use only dollar balance and percentage in investor updates. Internal investor fields remain synchronized with the dashboard; burn and runway stay internal.
 
-Source evidence: [August monthly P&L](https://drive.google.com/file/d/18Nu16iBzgO01eDqeLKeE8N5ps2eUM22R/view), [January–August P&L](https://drive.google.com/file/d/1dCZBI4nFvzGEUOAxQT19KWM95c9bpsZl/view), [August balance sheet](https://drive.google.com/file/d/1H13RNVROBNNIOwNBJZ-3PHHdqB77CYKQ/view), and [live Budget Dashboard](https://docs.google.com/spreadsheets/d/1vTeGviuQk9zLqacJrdBZS2Bopk8kQZtmEHWheqpCdq0/edit). Durable source PDFs, extraction, reconciled metrics, live verification, and stop-hook manifest are stored in `brain/context/budget-manager/2026-08/`; reserve evidence is Kay’s September 11 correction in the canonical Chief-of-Staff conversation. See [[context/budget|approved budget and COA crosswalk]].
+Source evidence: [August monthly P&L](https://drive.google.com/file/d/18Nu16iBzgO01eDqeLKeE8N5ps2eUM22R/view), [January–August P&L](https://drive.google.com/file/d/1dCZBI4nFvzGEUOAxQT19KWM95c9bpsZl/view), [August balance sheet](https://drive.google.com/file/d/1H13RNVROBNNIOwNBJZ-3PHHdqB77CYKQ/view), and [live Budget Dashboard](https://docs.google.com/spreadsheets/d/1vTeGviuQk9zLqacJrdBZS2Bopk8kQZtmEHWheqpCdq0/edit). Durable source PDFs, extraction, reconciled metrics, live verification, and stop-hook manifest are stored in `brain/context/budget-manager/2026-08/`; reserve evidence comes from `brain/context/attio-pipeline-snapshot.json` fetched September 11. See [[context/budget|approved budget and COA crosswalk]].

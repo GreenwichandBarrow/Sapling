@@ -59,8 +59,8 @@ Always present multiple scenarios:
 ## DD Reserve Policy
 
 - **Default:** $40,000 held back from operational runway
-- **At LOI stage:** Escalate to $80,000
-- **Post-close or fund wind-down:** Release reserve back to operations
+- **Reserve changes:** Kay reconfirmed September 11, 2026: $40,000 remains reserved until she explicitly changes it. Deal stage does not change the reserve.
+- **Post-close or fund wind-down:** Keep the reserve until Kay explicitly approves a change or release.
 - **Typical DD costs per deal:**
   - Quality of Earnings (QofE): $15,000-25,000
   - Legal review: $5,000-10,000

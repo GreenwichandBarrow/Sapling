@@ -45,11 +45,10 @@ This is the approved budget for the Greenwich & Barrow search fund. It is the im
 | Bookkeeper (StartVirtual) | $2,964 | Anthony, started Mar 2026. $247/mo. Transition target to Kick + Claude by Jun 2026. |
 | CPA Annual Filing | $3,200 | One-time annual. Hit Feb 2026. |
 
-## DD Reserve Policy (Graduated)
+## DD Reserve Policy
 
 - **Current reserve:** $40,000 (held back from operational runway)
-- **At LOI stage:** Escalate to $80,000 (raise additional if needed)
-- **Rationale:** 3rd LOI is statistical sweet spot for close. First DD may not go deep. Budget for at least 2 full DD processes.
+- **Reserve changes:** Kay reconfirmed September 11, 2026: $40,000 remains reserved until she explicitly changes it. Deal stage does not change the reserve.
 - **Typical DD costs:** QofE ($15-25K), legal ($5-10K), environmental/other ($5-10K)
 
 ## QBO Chart of Accounts Mapping

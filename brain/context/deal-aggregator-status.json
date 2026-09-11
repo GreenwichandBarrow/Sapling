@@ -1,27 +1,32 @@
 {
-  "date": "2026-09-10",
+  "date": "2026-09-11",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-09-10.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-09-11.md",
   "email_scan_status": "live",
   "deals_found": 0,
-  "broker_opportunistic": 1,
-  "near_misses": 4,
+  "broker_opportunistic": 0,
+  "near_misses": 16,
   "sources_scanned": 16,
   "sources_covered": {
     "marketplace": 6,
-    "email_newsletters": 7,
+    "email_newsletters": 6,
     "direct_email": 3
   },
   "manual_check_sources": [
-    "DealForce buyer portal",
-    "Empire Flippers buyer detail"
+    "BizBuySell",
+    "Viking Mergers",
+    "Calder Capital",
+    "Empire Flippers"
   ],
-  "sources_blocked_verified": 0,
+  "sources_blocked_verified": 3,
   "sources_blocked_single_attempt": 0,
-  "volume_status": "BELOW TARGET",
+  "volume_status": "CRITICAL",
   "needs_attention": [
-    "DealsX weekly snapshot is stale; current DealsX dashboard/lead coverage is incomplete.",
-    "agent-browser is unavailable; login-gated/manual marketplace fallback was not automated.",
-    "No active-thesis PASS match surfaced today; 7-day rolling average is 0.0 against the 1-3/day target."
+    "0 surfaced deals; below the 1-3/day target",
+    "Browser fallback unavailable: agent-browser is not installed",
+    "BizBuySell web fetch blocked after two attempts (403)",
+    "Viking Mergers web fetch blocked after two attempts (403)",
+    "Calder Capital web fetch blocked after two attempts (406)",
+    "DealsX weekly snapshot has no current-week entry; deal-flow coverage is incomplete"
   ]
 }

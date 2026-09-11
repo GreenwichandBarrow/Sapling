@@ -1,10 +1,20 @@
 {
   "blocked": [],
-  "deal_items": 23,
+  "deal_items": 16,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-09-10T06:50:45.266006-04:00",
-  "follow_through_completed_items": [],
+  "fetched_at": "2026-09-11T06:50:44.943250-04:00",
+  "follow_through_completed_items": [
+    {
+      "bucket": "thank",
+      "completed_at": "2026-09-10",
+      "event": "Luka I Kay",
+      "person": "Luka",
+      "sent_at": "2026-09-10 11:55",
+      "sent_subject": "Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL",
+      "sent_thread_id": "1a0811ed8e7d2d04"
+    }
+  ],
   "follow_through_pending_items": [
     {
       "bucket": "eow",
@@ -47,29 +57,42 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-09-10.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-09-11.json",
   "input_status": "ok",
   "needs_kay": [
-    "2 email-derived task candidate(s)",
-    "23 broker/listing row(s) extracted",
-    "4 prior-day thank-you(s) need approval: Guillermo I Kay Bi-Weekly Mtg; Luka; Relationship / Call Window; Relationship / Call Window",
+    "3 email-derived task candidate(s)",
+    "16 broker/listing row(s) extracted",
+    "5 prior-day thank-you(s) need approval: Erin; Guillermo I Kay Bi-Weekly Mtg; Luka; Mike (+1 more)",
+    "1 email follow-through row(s) auto-completed from sent-mail evidence: Luka",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
-    "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Brooke (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting); Erin (24-hour thank-you after external meeting)"
+    "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Brooke (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting); Erin (24-hour thank-you after external meeting); Erin (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-09-10.md",
+  "source_artifact": "brain/context/email-scan-results-2026-09-11.md",
   "source_status": "ok",
   "stale_drafts": 0,
-  "task_candidates": 2,
+  "task_candidates": 3,
   "thank_you_items": [
     {
       "completed_at": "",
-      "due_date": "2026-09-10",
+      "due_date": "2026-09-11",
+      "email": "",
+      "event": "Erin I Kay",
+      "event_date": "2026-09-10",
+      "person": "Erin",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-09-11",
       "email": "glavergne@ashfordventures.com",
       "event": "Guillermo I Kay Bi-Weekly Mtg",
-      "event_date": "2026-09-09",
+      "event_date": "2026-09-10",
       "person": "Guillermo I Kay Bi-Weekly Mtg",
       "sent_at": "",
       "sent_subject": "",
@@ -78,10 +101,10 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-09-10",
+      "due_date": "2026-09-11",
       "email": "luka@esteliopartners.com",
       "event": "Luka I Kay",
-      "event_date": "2026-09-09",
+      "event_date": "2026-09-10",
       "person": "Luka",
       "sent_at": "",
       "sent_subject": "",
@@ -90,11 +113,11 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-09-10",
-      "email": "",
-      "event": "Relationship / Call Window",
-      "event_date": "2026-09-09",
-      "person": "Relationship / Call Window",
+      "due_date": "2026-09-11",
+      "email": "michael@streetlight-cap.com",
+      "event": "Mike I Kay",
+      "event_date": "2026-09-10",
+      "person": "Mike",
       "sent_at": "",
       "sent_subject": "",
       "sent_thread_id": "",
@@ -102,10 +125,10 @@
     },
     {
       "completed_at": "",
-      "due_date": "2026-09-10",
+      "due_date": "2026-09-11",
       "email": "",
       "event": "Relationship / Call Window",
-      "event_date": "2026-09-09",
+      "event_date": "2026-09-10",
       "person": "Relationship / Call Window",
       "sent_at": "",
       "sent_subject": "",
@@ -121,6 +144,7 @@
     "Brooke (24-hour thank-you after external meeting)",
     "Sarah (24-hour thank-you after external meeting)",
     "Sarah (24-hour thank-you after external meeting)",
+    "Erin (24-hour thank-you after external meeting)",
     "Erin (24-hour thank-you after external meeting)"
   ]
 }

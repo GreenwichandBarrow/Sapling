@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-10",
+  "updated_at": "2026-09-11",
   "items": [
     {
       "bucket": "thank",
@@ -2285,11 +2285,19 @@
       "email": "luka@esteliopartners.com",
       "context": "24-hour thank-you after external meeting",
       "due_date": "2026-09-10",
-      "status": "not drafted",
+      "status": "completed",
       "source": "calendar-prior-day-refresh",
       "event": "Luka I Kay",
       "event_date": "2026-09-09",
-      "calendar_event_id": "3rfe31l8bjquitb8l71otc7cjg"
+      "calendar_event_id": "3rfe31l8bjquitb8l71otc7cjg",
+      "completed_at": "2026-09-10",
+      "completed_note": "Auto-completed by email-orchestration refresh from Gmail sent-mail evidence; thread 1a0811ed8e7d2d04, subject 'Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL', sent 2026-09-10 11:55.",
+      "sent_evidence": {
+        "source": "gmail_sent_search",
+        "thread_id": "1a0811ed8e7d2d04",
+        "subject": "Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL",
+        "sent_at": "2026-09-10 11:55"
+      }
     },
     {
       "bucket": "thank",
@@ -2314,6 +2322,66 @@
       "event": "Guillermo I Kay Bi-Weekly Mtg",
       "event_date": "2026-09-09",
       "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260909T173000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Luka",
+      "email": "luka@esteliopartners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-11",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Luka I Kay",
+      "event_date": "2026-09-10",
+      "calendar_event_id": "3rfe31l8bjquitb8l71otc7cjg"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-11",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-09-10",
+      "calendar_event_id": "dc938987cf464e9a820624b314095dab_20260910T150000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Guillermo I Kay Bi-Weekly Mtg",
+      "email": "glavergne@ashfordventures.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-11",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Guillermo I Kay Bi-Weekly Mtg",
+      "event_date": "2026-09-10",
+      "calendar_event_id": "c5lkprltc210rp0inrorlhsibb_20260909T173000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Erin",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-11",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Erin I Kay",
+      "event_date": "2026-09-10",
+      "calendar_event_id": "_710kae236gpjab9p6cq46b9k6sq34ba16l332ba36ssk2h1o85236hhn6c"
+    },
+    {
+      "bucket": "thank",
+      "person": "Mike",
+      "email": "michael@streetlight-cap.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-11",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Mike I Kay",
+      "event_date": "2026-09-10",
+      "calendar_event_id": "44pvhfp9scm3gv7kcl1f4vh7pb"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

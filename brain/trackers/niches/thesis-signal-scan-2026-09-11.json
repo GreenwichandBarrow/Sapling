@@ -1,0 +1,37 @@
+{
+  "run_date": "2026-09-11",
+  "run_mode": "thursday_signal_scan",
+  "signals_reviewed": 5,
+  "recommendations_count": 2,
+  "urgent_fast_sprint_count": 0,
+  "queue_for_monday_count": 2,
+  "park_count": 3,
+  "sources_covered": {
+    "pe_news": "West Physics acquired Radiographic Testing Services on 2026-09-08; healthcare RCM activity included the Provana carve-out and new AI funding; broad TICC commentary was also reviewed.",
+    "email": "Read-only Gmail search with --gmail-no-send covered current-week deal flow, investor, subscription, and industry-research labels; no new thesis cleared the evidence bar beyond the queued RCM/medical-physics updates.",
+    "calls": "2026-09-10 Luka luxury-jewelry call reviewed; it produced active-deal inventory diligence, not a new thesis. Guillermo recording was mismatched and yielded no strategic content.",
+    "inbox": "No new pending topic/niche-signal inbox files since the 2026-09-07 full run.",
+    "conferences": "Existing September-November conference pipeline entries reviewed; no new attendee-level or thesis-changing signal available."
+  },
+  "edge_niches_considered": 2,
+  "recommendations": [
+    {
+      "bucket": "queue_for_monday",
+      "niche": "Outsourced diagnostic medical physics QA and radiation-safety services for outpatient imaging facilities",
+      "visible_end_market": "Outpatient imaging, hospitals, and radiation-equipment operators",
+      "operational_complexity": "Recurring modality testing, dose certification, RSO support, accreditation evidence, and scheduled site visits",
+      "second_order_beneficiary": "Independent QA/testing providers, regional outpatient-imaging compliance specialists, and outsourced RSO programs",
+      "tailwind": "Regulatory/accreditation requirements and the 2026-09-08 West Physics acquisition of RTS show active demand and expansion",
+      "why_not_urgent": "Fresh PE activity increases crowding risk; independent target density, margins, and credentialed-labor resilience remain unverified"
+    },
+    {
+      "bucket": "queue_for_monday",
+      "niche": "Specialty outpatient rehabilitation RCM, authorizations, and denials services",
+      "visible_end_market": "Independent outpatient PT, OT, and speech-therapy practices",
+      "operational_complexity": "Eligibility, authorizations, therapy coding, claims, denials, payment posting, AR, scheduling, and patient communication",
+      "second_order_beneficiary": "Specialty RCM/front-office operators with workflow and payer specialization",
+      "tailwind": "Sustainable Medical Billing's Provana carve-out and new healthcare administrative-AI funding confirm active demand and complexity",
+      "why_not_urgent": "AI automation and platform consolidation require a narrower defensible service wedge before any sprint"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "not_j82IZ9sW0uV997",
+  "title": "Mike I Kay",
+  "created_at": "2026-09-11T15:30:33.190Z",
+  "updated_at": "2026-09-11T16:01:25.632Z",
+  "owner": {
+    "name": "Kay Schneider",
+    "email": "kay.s@greenwichandbarrow.com"
+  },
+  "queued_at": "2026-09-11T13:00:45-04:00",
+  "detector": "granola-api-rest"
+}

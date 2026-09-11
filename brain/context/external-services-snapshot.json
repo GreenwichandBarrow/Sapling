@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-09-10T20:30:45-04:00",
+  "fetched_at": "2026-09-11T13:00:45-04:00",
   "services": {
     "linkt": {
       "status": "skip",
@@ -21,49 +21,49 @@
     },
     "launchd": {
       "status": "ok",
-      "latency_ms": 14,
+      "latency_ms": 31,
       "message": "21 timers registered",
-      "skip_reason": null
-    },
-    "vault": {
-      "status": "ok",
-      "latency_ms": 17,
-      "message": "2041 markdown files",
       "skip_reason": null
     },
     "mcp-processes": {
       "status": "skip",
-      "latency_ms": 35,
+      "latency_ms": 33,
       "message": "attio-mcp=0; manual-skip=attio-mcp",
       "skip_reason": "Attio MCP requires manual OAuth/browser reconnect"
     },
-    "openai-codex": {
+    "vault": {
       "status": "ok",
-      "latency_ms": 101,
-      "message": "Codex OAuth login active",
-      "skip_reason": null
-    },
-    "gog": {
-      "status": "ok",
-      "latency_ms": 112,
-      "message": "authenticated",
-      "skip_reason": null
-    },
-    "apollo": {
-      "status": "ok",
-      "latency_ms": 117,
-      "message": "200 OK",
+      "latency_ms": 40,
+      "message": "2057 markdown files",
       "skip_reason": null
     },
     "granola": {
       "status": "ok",
-      "latency_ms": 109,
+      "latency_ms": 153,
       "message": "HTTP 405",
+      "skip_reason": null
+    },
+    "gog": {
+      "status": "ok",
+      "latency_ms": 190,
+      "message": "authenticated",
+      "skip_reason": null
+    },
+    "openai-codex": {
+      "status": "ok",
+      "latency_ms": 191,
+      "message": "Codex OAuth login active",
+      "skip_reason": null
+    },
+    "apollo": {
+      "status": "ok",
+      "latency_ms": 200,
+      "message": "200 OK",
       "skip_reason": null
     },
     "github": {
       "status": "ok",
-      "latency_ms": 228,
+      "latency_ms": 262,
       "message": "gh authenticated",
       "skip_reason": null
     }

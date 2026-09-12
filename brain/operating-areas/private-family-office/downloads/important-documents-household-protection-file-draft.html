@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Important Documents / Household Protection File - Draft</title>
+  <style>
+    :root {
+      --paper: #f7f3ed;
+      --paper-deep: #efe6dc;
+      --ink: #30363b;
+      --muted: #626a70;
+      --line: #3a4146;
+      --soft-line: #d8cabc;
+      --peach: #b9907f;
+      --box: #fbf8f2;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; }
+
+    body {
+      background: #e7ded2;
+      color: var(--ink);
+      font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      letter-spacing: 0;
+      padding: 32px;
+    }
+
+    .page {
+      width: 816px;
+      min-height: 1056px;
+      margin: 0 auto 28px;
+      padding: 54px 62px 46px;
+      background: linear-gradient(180deg, var(--paper), var(--paper-deep));
+      border: 1px solid rgba(76, 66, 57, 0.22);
+      box-shadow: 0 18px 40px rgba(54, 47, 41, 0.2);
+      page-break-after: always;
+    }
+
+    .brand {
+      text-align: center;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      line-height: 0.95;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #343b42;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 8px;
+      font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      font-size: 8px;
+      letter-spacing: 0.28em;
+      color: var(--peach);
+    }
+
+    .kicker {
+      margin: 68px 0 16px;
+      color: var(--peach);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      color: #333a40;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 48px;
+      line-height: 1.02;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: 31px;
+      line-height: 1.12;
+    }
+
+    h3 {
+      margin: 24px 0 12px;
+      color: #a98273;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .rule {
+      height: 1px;
+      margin: 30px 0 30px;
+      background: var(--line);
+      opacity: 0.82;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 28px;
+      margin-top: 26px;
+    }
+
+    .toc div, .field {
+      min-height: 38px;
+      padding: 10px 12px;
+      border: 1px solid var(--soft-line);
+      background: rgba(255,255,255,0.16);
+      color: #3f464c;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .legend {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 12px 0 20px;
+      padding: 9px 13px;
+      border: 1px solid var(--soft-line);
+      background: rgba(255,255,255,0.22);
+      color: #5c6266;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .lock {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      margin-left: 7px;
+      vertical-align: -3px;
+    }
+
+    .lock svg { width: 16px; height: 16px; stroke-width: 1.8; }
+
+    .tempo {
+      margin-left: 8px;
+      color: #9e7d6f;
+      font-size: 12px;
+      font-style: italic;
+      white-space: nowrap;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 28px;
+      padding: 18px 20px 20px;
+      border: 1px solid var(--soft-line);
+      background: rgba(255,255,255,0.16);
+    }
+
+    .item {
+      min-height: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #363c41;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .box {
+      width: 13px;
+      height: 13px;
+      flex: 0 0 auto;
+      border: 1px solid #b99686;
+      background: #fbf8f2;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .wide { grid-column: 1 / -1; }
+
+    .line-field {
+      height: 34px;
+      border-bottom: 1px solid rgba(58,65,70,0.28);
+    }
+
+    .note-area {
+      height: 100px;
+      border: 1px solid rgba(216, 202, 188, 0.86);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .small {
+      color: #747a7f;
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    @media print {
+      body { padding: 0; background: white; }
+      .page { box-shadow: none; border: 0; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <section class="page">
+    <div class="brand">The Private<br>Family Office<small>The Modern Home</small></div>
+    <p class="kicker">Risk &amp; Protection</p>
+    <h1>Important Documents / Household Protection File</h1>
+    <div class="rule"></div>
+    <p>A printable system for organizing the identity records, insurance details, access notes, and continuity instructions that help a modern household stay clear and current.</p>
+    <p>This is an organizational resource. It is not legal, tax, insurance, investment, medical, or financial advice.</p>
+    <div class="toc">
+      <div>Identity Documents Checklist</div>
+      <div>Important Documents Inventory</div>
+      <div>Insurance Policy Register</div>
+      <div>Legal &amp; Estate Document Register</div>
+      <div>Emergency Information Sheet</div>
+      <div>Digital Access Locator</div>
+      <div>Property &amp; Asset Records Register</div>
+      <div>Beneficiaries &amp; Account Access Register</div>
+      <div>Continuity Instructions Starter</div>
+      <div>Review Rhythm Reference</div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="brand">The Private<br>Family Office<small>The Modern Home</small></div>
+    <p class="kicker">How To Use This File</p>
+    <h2>Build the system section by section.</h2>
+    <p>This file is designed to be completed over time. Start with the documents that are easiest to identify, then return to the registers as records are found, renewed, created, or updated.</p>
+    <p>For original documents, use a protected physical location that the right person can locate. For digital records, record where access is managed rather than writing sensitive passwords into an unsecured printable.</p>
+    <div class="rule"></div>
+    <h3>Working Notes</h3>
+    <div class="grid">
+      <div class="field">Primary storage location<div class="line-field"></div></div>
+      <div class="field">Digital copy location<div class="line-field"></div></div>
+      <div class="field">Person who knows where this file is<div class="line-field"></div></div>
+      <div class="field">Date started<div class="line-field"></div></div>
+      <div class="field wide">Notes<div class="note-area"></div></div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="brand">The Private<br>Family Office<small>The Modern Home</small></div>
+    <p class="kicker">Identity Documents</p>
+    <h2>Checklist</h2>
+    <p>Identity documents are the records that establish who each person is and how the household is legally connected. They should have a clear physical home, and the right person should know where to find them.</p>
+    <div class="legend">
+      <span class="lock" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="10" width="14" height="10" rx="1.5"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path><circle cx="12" cy="15" r="1"></circle></svg>
+      </span>
+      Secure storage: keep the original or current copy in a protected household document organizer.
+    </div>
+    <h3>Documents You Receive or Create Once</h3>
+    <div class="checklist">
+      <div class="item"><span class="box"></span><span>Birth certificates<span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="10" width="14" height="10" rx="1.5"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></span></span></div>
+      <div class="item"><span class="box"></span><span>Social Security cards<span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="10" width="14" height="10" rx="1.5"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></span></span></div>
+      <div class="item"><span class="box"></span><span>Marriage certificates<span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="10" width="14" height="10" rx="1.5"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></span></span></div>
+      <div class="item"><span class="box"></span><span>Adoption records<span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="10" width="14" height="10" rx="1.5"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></span></span></div>
+      <div class="item"><span class="box"></span><span>Citizenship or naturalization records<span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="10" width="14" height="10" rx="1.5"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></span></span></div>
+      <div class="item"><span class="box"></span><span>Divorce decrees<span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="10" width="14" height="10" rx="1.5"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></span></span></div>
+    </div>
+    <h3>Documents You Need to Renew or Keep Current</h3>
+    <div class="checklist">
+      <div class="item"><span class="box"></span><span>Passports<span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="10" width="14" height="10" rx="1.5"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></span><span class="tempo">multiyear</span></span></div>
+      <div class="item"><span class="box"></span><span>Driver licenses<span class="tempo">multiyear</span></span></div>
+      <div class="item"><span class="box"></span><span>State IDs<span class="tempo">multiyear</span></span></div>
+      <div class="item"><span class="box"></span><span>Immigration documents<span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="10" width="14" height="10" rx="1.5"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></span><span class="tempo">multiyear</span></span></div>
+      <div class="item"><span class="box"></span><span>School identity forms<span class="tempo">annually</span></span></div>
+      <div class="item"><span class="box"></span><span>Travel consent forms<span class="tempo">annually</span></span></div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="brand">The Private<br>Family Office<small>The Modern Home</small></div>
+    <p class="kicker">Important Documents Inventory</p>
+    <h2>Master Register</h2>
+    <p>Use this page to record what exists, where the original is stored, where a copy is kept, and when it should be reviewed.</p>
+    <div class="grid">
+      <div class="field">Document<div class="line-field"></div></div>
+      <div class="field">Person<div class="line-field"></div></div>
+      <div class="field">Original location<div class="line-field"></div></div>
+      <div class="field">Copy location<div class="line-field"></div></div>
+      <div class="field">Review timing<div class="line-field"></div></div>
+      <div class="field">Professional or institution<div class="line-field"></div></div>
+      <div class="field wide">Notes<div class="note-area"></div></div>
+    </div>
+    <div class="rule"></div>
+    <div class="grid">
+      <div class="field">Document<div class="line-field"></div></div>
+      <div class="field">Person<div class="line-field"></div></div>
+      <div class="field">Original location<div class="line-field"></div></div>
+      <div class="field">Copy location<div class="line-field"></div></div>
+      <div class="field">Review timing<div class="line-field"></div></div>
+      <div class="field">Professional or institution<div class="line-field"></div></div>
+      <div class="field wide">Notes<div class="note-area"></div></div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="brand">The Private<br>Family Office<small>The Modern Home</small></div>
+    <p class="kicker">Insurance Policies</p>
+    <h2>Policy Register</h2>
+    <p>Use this as a household-level index of policies, carriers, policy numbers, renewal dates, and contacts.</p>
+    <div class="grid">
+      <div class="field">Policy type<div class="line-field"></div></div>
+      <div class="field">Carrier<div class="line-field"></div></div>
+      <div class="field">Policy number<div class="line-field"></div></div>
+      <div class="field">Named insured<div class="line-field"></div></div>
+      <div class="field">Renewal date<div class="line-field"></div></div>
+      <div class="field">Agent or contact<div class="line-field"></div></div>
+      <div class="field wide">Notes<div class="note-area"></div></div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="brand">The Private<br>Family Office<small>The Modern Home</small></div>
+    <p class="kicker">Digital Access</p>
+    <h2>Access Locator</h2>
+    <p>Do not write sensitive passwords into an unsecured printable. Use this page to record where access is managed and who should know how to locate it.</p>
+    <div class="grid">
+      <div class="field">Account or system<div class="line-field"></div></div>
+      <div class="field">Where access is managed<div class="line-field"></div></div>
+      <div class="field">Recovery email or phone<div class="line-field"></div></div>
+      <div class="field">Person who can locate access<div class="line-field"></div></div>
+      <div class="field wide">Notes<div class="note-area"></div></div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="brand">The Private<br>Family Office<small>The Modern Home</small></div>
+    <p class="kicker">Continuity Instructions</p>
+    <h2>Starter Notes</h2>
+    <p>Use these prompts to create clear instructions for the person who may need to keep the household operating.</p>
+    <div class="grid">
+      <div class="field wide">Bills and recurring obligations<div class="note-area"></div></div>
+      <div class="field wide">School, dependent-care, or family routines<div class="note-area"></div></div>
+      <div class="field wide">Household vendors and property access<div class="note-area"></div></div>
+      <div class="field wide">Where key documents live<div class="note-area"></div></div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="brand">The Private<br>Family Office<small>The Modern Home</small></div>
+    <p class="kicker">Review Rhythm</p>
+    <h2>Keep the system current.</h2>
+    <div class="toc">
+      <div><strong>Monthly</strong><br>New documents, newly received statements, address or household changes.</div>
+      <div><strong>Quarterly</strong><br>Recurring household records, open claims, major vendor or service changes.</div>
+      <div><strong>Annually</strong><br>Insurance policies, beneficiaries, tax records, school forms, household continuity notes.</div>
+      <div><strong>Multiyear</strong><br>Passports, estate documents, long-term IDs, major property records.</div>
+      <div class="wide"><strong>Event-based</strong><br>Birth, adoption, marriage, divorce, move, name change, new dependent, property purchase, major diagnosis, death, or material financial change.</div>
+    </div>
+    <div class="rule"></div>
+    <p class="small">This product is an organizational resource. It is not legal, tax, insurance, investment, medical, or financial advice. For decisions that require professional judgment, consult the appropriate professional.</p>
+  </section>
+</body>
+</html>
+

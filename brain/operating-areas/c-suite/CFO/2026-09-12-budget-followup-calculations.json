@@ -1,0 +1,617 @@
+{
+  "status": "report and dashboard complete; verified",
+  "run_date": "2026-09-12",
+  "bank_anchor_date": "2026-08-31",
+  "target_date": "2027-02-07",
+  "target_inclusive": true,
+  "cash": {
+    "checking": 6902.49,
+    "savings": 90875.22,
+    "total": 97777.71,
+    "dd_reserve": 38000,
+    "operations_before_commitments": 59777.71000000001,
+    "operations_after_dealsx_conference": 55257.71000000001,
+    "operations_after_website": 54909.71000000001
+  },
+  "historical": {
+    "august_gross_expenses": 21669.33,
+    "august_interest": 243.82,
+    "august_net_burn": 21425.51,
+    "august_ingested": "2026-09-11",
+    "january_august_net_burn": 219227.19,
+    "annual_accounting_actual": 3200
+  },
+  "payroll": {
+    "weekly_gross": 3173.08,
+    "weekly_net": 2319.28,
+    "weekly_bank_tax": 1096.54,
+    "weekly_employee_withholding": 853.8,
+    "weekly_employer_tax": 242.74,
+    "weekly_employer_total": 3415.8199999999997,
+    "annual_gross": 165000.16,
+    "monthly_gross": 13750.01,
+    "monthly_employer_tax": 1051.87,
+    "monthly_total": 14801.89,
+    "incremental_savings_factor": 1.0764998046062502
+  },
+  "normalized_bridge": [
+    [
+      "August gross expenses",
+      21669.33
+    ],
+    [
+      "Remove rent paid in August; lease canceled September",
+      -2000
+    ],
+    [
+      "Remove Linkt",
+      -199.99
+    ],
+    [
+      "Remove Apollo / ZenLeads same vendor",
+      -64.24
+    ],
+    [
+      "Remove prepaid annual New Yorker",
+      -209
+    ],
+    [
+      "Replace four payroll runs with 52/12 average",
+      1138.61
+    ],
+    [
+      "Replace five weekly insurance charges with 52/12 average",
+      -5.96
+    ],
+    [
+      "Unverified recurring vendor allowances: Howie35, Voice10, Slack15",
+      60
+    ]
+  ],
+  "normalized_monthly_burn": 20388.75,
+  "normalized_other_monthly_allowance": 2798.12,
+  "normalized_interest": 0,
+  "timed": {
+    "payroll_dates": [
+      "2026-09-01",
+      "2026-09-08",
+      "2026-09-15",
+      "2026-09-22",
+      "2026-09-29",
+      "2026-10-06",
+      "2026-10-13",
+      "2026-10-20",
+      "2026-10-27",
+      "2026-11-03",
+      "2026-11-10",
+      "2026-11-17",
+      "2026-11-24",
+      "2026-12-01",
+      "2026-12-08",
+      "2026-12-15",
+      "2026-12-22",
+      "2026-12-29",
+      "2027-01-05",
+      "2027-01-12",
+      "2027-01-19",
+      "2027-01-26",
+      "2027-02-02"
+    ],
+    "payroll_count": 23,
+    "payroll_total": 78563.86,
+    "insurance_dates": [
+      "2026-09-07",
+      "2026-09-14",
+      "2026-09-21",
+      "2026-09-28",
+      "2026-10-05",
+      "2026-10-12",
+      "2026-10-19",
+      "2026-10-26",
+      "2026-11-02",
+      "2026-11-09",
+      "2026-11-16",
+      "2026-11-23",
+      "2026-11-30",
+      "2026-12-07",
+      "2026-12-14",
+      "2026-12-21",
+      "2026-12-28",
+      "2027-01-04",
+      "2027-01-11",
+      "2027-01-18",
+      "2027-01-25",
+      "2027-02-01"
+    ],
+    "insurance_count": 22,
+    "insurance_total": 196.68,
+    "health_dates": [
+      "2026-09-05",
+      "2026-10-05",
+      "2026-11-05",
+      "2026-12-05",
+      "2027-01-05",
+      "2027-02-05"
+    ],
+    "health_total": 16500,
+    "other_month_equivalents": 5.25,
+    "other_total": 14690.13,
+    "dealsx_unpaid": 3220,
+    "conference": 1300,
+    "website_renewal_pretax": 348,
+    "total_outflows": 114818.67,
+    "shortfall_to_protected_reserve": 55040.96,
+    "unfunded_end_cash": -17040.96,
+    "first_reserve_breach": "2026-11-17",
+    "projected_sep12_opening_cash_not_bank_fact": 87161.15
+  },
+  "scenarios": [
+    {
+      "label": "Salary only",
+      "effective": "2026-09-14",
+      "first_reduced_payment": "2026-09-15",
+      "reduced_payments": 21,
+      "health_monthly_reduction": 0,
+      "health_payments_reduced": 0,
+      "health_cash_savings": 0,
+      "gross_monthly_cut_exact": 10550.54386828494,
+      "gross_monthly_cut": 10550.54,
+      "gross_monthly_remaining": 3199.47,
+      "gross_cut_percent": 76.73,
+      "weekly_cut_rounded_up": 2434.75,
+      "weekly_gross_remaining": 738.33,
+      "gross_monthly_cut_no_employer_tax_savings": 11357.66,
+      "employer_tax_savings_monthly": 807.11,
+      "projected_bank_at_target_with_unrounded_cut": 38000
+    },
+    {
+      "label": "Combined: health reduced $1000 from January",
+      "effective": "2026-09-14",
+      "first_reduced_payment": "2026-09-15",
+      "reduced_payments": 21,
+      "health_monthly_reduction": 1000,
+      "health_payments_reduced": 2,
+      "health_cash_savings": 2000,
+      "gross_monthly_cut_exact": 10167.173234186808,
+      "gross_monthly_cut": 10167.17,
+      "gross_monthly_remaining": 3582.84,
+      "gross_cut_percent": 73.94,
+      "weekly_cut_rounded_up": 2346.28,
+      "weekly_gross_remaining": 826.8,
+      "gross_monthly_cut_no_employer_tax_savings": 10944.96,
+      "employer_tax_savings_monthly": 777.79,
+      "projected_bank_at_target_with_unrounded_cut": 38000
+    },
+    {
+      "label": "Combined: health reduced $2750 from January (upper bound)",
+      "effective": "2026-09-14",
+      "first_reduced_payment": "2026-09-15",
+      "reduced_payments": 21,
+      "health_monthly_reduction": 2750,
+      "health_payments_reduced": 2,
+      "health_cash_savings": 5500,
+      "gross_monthly_cut_exact": 9496.274624515077,
+      "gross_monthly_cut": 9496.27,
+      "gross_monthly_remaining": 4253.74,
+      "gross_cut_percent": 69.06,
+      "weekly_cut_rounded_up": 2191.45,
+      "weekly_gross_remaining": 981.63,
+      "gross_monthly_cut_no_employer_tax_savings": 10222.74,
+      "employer_tax_savings_monthly": 726.46,
+      "projected_bank_at_target_with_unrounded_cut": 38000
+    },
+    {
+      "label": "Combined: health reduced $1000 from October",
+      "effective": "2026-09-14",
+      "first_reduced_payment": "2026-09-15",
+      "reduced_payments": 21,
+      "health_monthly_reduction": 1000,
+      "health_payments_reduced": 5,
+      "health_cash_savings": 5000,
+      "gross_monthly_cut_exact": 9592.117283039612,
+      "gross_monthly_cut": 9592.12,
+      "gross_monthly_remaining": 4157.9,
+      "gross_cut_percent": 69.76,
+      "weekly_cut_rounded_up": 2213.57,
+      "weekly_gross_remaining": 959.51,
+      "gross_monthly_cut_no_employer_tax_savings": 10325.91,
+      "employer_tax_savings_monthly": 733.8,
+      "projected_bank_at_target_with_unrounded_cut": 38000
+    },
+    {
+      "label": "Salary only",
+      "effective": "2026-10-01",
+      "first_reduced_payment": "2026-10-06",
+      "reduced_payments": 18,
+      "health_monthly_reduction": 0,
+      "health_payments_reduced": 0,
+      "health_cash_savings": 0,
+      "gross_monthly_cut_exact": 12308.967846332429,
+      "gross_monthly_cut": 12308.97,
+      "gross_monthly_remaining": 1441.05,
+      "gross_cut_percent": 89.52,
+      "weekly_cut_rounded_up": 2840.54,
+      "weekly_gross_remaining": 332.54,
+      "gross_monthly_cut_no_employer_tax_savings": 13250.6,
+      "employer_tax_savings_monthly": 941.63,
+      "projected_bank_at_target_with_unrounded_cut": 38000
+    },
+    {
+      "label": "Combined: health reduced $1000 from January",
+      "effective": "2026-10-01",
+      "first_reduced_payment": "2026-10-06",
+      "reduced_payments": 18,
+      "health_monthly_reduction": 1000,
+      "health_payments_reduced": 2,
+      "health_cash_savings": 2000,
+      "gross_monthly_cut_exact": 11861.702106551276,
+      "gross_monthly_cut": 11861.7,
+      "gross_monthly_remaining": 1888.31,
+      "gross_cut_percent": 86.27,
+      "weekly_cut_rounded_up": 2737.32,
+      "weekly_gross_remaining": 435.76,
+      "gross_monthly_cut_no_employer_tax_savings": 12769.12,
+      "employer_tax_savings_monthly": 907.42,
+      "projected_bank_at_target_with_unrounded_cut": 38000
+    },
+    {
+      "label": "Combined: health reduced $2750 from January (upper bound)",
+      "effective": "2026-10-01",
+      "first_reduced_payment": "2026-10-06",
+      "reduced_payments": 18,
+      "health_monthly_reduction": 2750,
+      "health_payments_reduced": 2,
+      "health_cash_savings": 5500,
+      "gross_monthly_cut_exact": 11078.987061934256,
+      "gross_monthly_cut": 11078.99,
+      "gross_monthly_remaining": 2671.03,
+      "gross_cut_percent": 80.57,
+      "weekly_cut_rounded_up": 2556.69,
+      "weekly_gross_remaining": 616.39,
+      "gross_monthly_cut_no_employer_tax_savings": 11926.53,
+      "employer_tax_savings_monthly": 847.54,
+      "projected_bank_at_target_with_unrounded_cut": 38000
+    },
+    {
+      "label": "Combined: health reduced $1000 from October",
+      "effective": "2026-10-01",
+      "first_reduced_payment": "2026-10-06",
+      "reduced_payments": 18,
+      "health_monthly_reduction": 1000,
+      "health_payments_reduced": 5,
+      "health_cash_savings": 5000,
+      "gross_monthly_cut_exact": 11190.803496879545,
+      "gross_monthly_cut": 11190.8,
+      "gross_monthly_remaining": 2559.21,
+      "gross_cut_percent": 81.39,
+      "weekly_cut_rounded_up": 2582.5,
+      "weekly_gross_remaining": 590.58,
+      "gross_monthly_cut_no_employer_tax_savings": 12046.9,
+      "employer_tax_savings_monthly": 856.09,
+      "projected_bank_at_target_with_unrounded_cut": 38000
+    }
+  ],
+  "alternating_paychecks": [
+    {
+      "first_skipped": "2026-09-15",
+      "skipped_dates": [
+        "2026-09-15",
+        "2026-09-29",
+        "2026-10-13",
+        "2026-10-27",
+        "2026-11-10",
+        "2026-11-24",
+        "2026-12-08",
+        "2026-12-22",
+        "2027-01-05",
+        "2027-01-19",
+        "2027-02-02"
+      ],
+      "skipped_count": 11,
+      "retained_count": 12,
+      "savings": 37574.02,
+      "ending_cash": 20533.06,
+      "reserve_shortfall": 17466.94,
+      "first_reserve_breach": "2026-12-29"
+    },
+    {
+      "first_skipped": "2026-09-22",
+      "skipped_dates": [
+        "2026-09-22",
+        "2026-10-06",
+        "2026-10-20",
+        "2026-11-03",
+        "2026-11-17",
+        "2026-12-01",
+        "2026-12-15",
+        "2026-12-29",
+        "2027-01-12",
+        "2027-01-26"
+      ],
+      "skipped_count": 10,
+      "retained_count": 13,
+      "savings": 34158.2,
+      "ending_cash": 17117.24,
+      "reserve_shortfall": 20882.76,
+      "first_reserve_breach": "2026-12-22"
+    },
+    {
+      "first_skipped": "2026-10-06",
+      "skipped_dates": [
+        "2026-10-06",
+        "2026-10-20",
+        "2026-11-03",
+        "2026-11-17",
+        "2026-12-01",
+        "2026-12-15",
+        "2026-12-29",
+        "2027-01-12",
+        "2027-01-26"
+      ],
+      "skipped_count": 9,
+      "retained_count": 14,
+      "savings": 30742.38,
+      "ending_cash": 13701.42,
+      "reserve_shortfall": 24298.58,
+      "first_reserve_breach": "2026-12-14"
+    }
+  ],
+  "health_only": [
+    {
+      "effective": "2026-10-01",
+      "payments": 5,
+      "maximum_monthly_reduction": 2750,
+      "total_maximum": 13750,
+      "residual_gap": 41290.96
+    },
+    {
+      "effective": "2027-01-01",
+      "payments": 2,
+      "maximum_monthly_reduction": 2750,
+      "total_maximum": 5500,
+      "residual_gap": 49540.96
+    }
+  ],
+  "assumptions": [
+    "Cash forecast starts September 1 from August 31 bank anchor; no actual September feed. Elapsed September is included once, never restarted at September 12.",
+    "Tuesday payroll cadence inferred from August; September 14 effective date assumes payroll cutoff permits September 15 payment reduction. October 1 effective date modeled as first reduced payment October 6. Earned-wage/pay-period limits and payroll approval not verified.",
+    "Monday business insurance and day-5 health cadence inferred from August; timing not verified beyond August. February health is a full cash payment, not 7/28.",
+    "Other expenses prorated by calendar days; August variable spending retained as allowance, not a claim every charge recurs. Includes supplies407.42 postage170.40 travel1194.83 and other217.75.",
+    "DealsX3220 paid once on assumed September28; only August/September reduction approved. No October recurring charge is a planning assumption pending pause confirmation, supported by user-reported tracker row364 due September28.",
+    "Conference1300 placed October1; planned unbooked. Website348 expected November11 from prior renewal date and July2026 price notice; tax unknown and not added.",
+    "Attio prepaid through March26 2027; Canva April120 and 1Password May52.13 treated annual prepaid through horizon; Canva term should be verified. New Yorker209 annual renewal confirmed August6.",
+    "Howie35 Voice10 Slack15 per month are uncertainty allowances, not verified August charges. Google Voice may overlap Workspace. No further optional vendor research.",
+    "No future interest assumed. No deposit2000 or uncertain1500; no nonprofit salary income. Annual accounting3200 historical, not recurring; no future filing due date confirmed.",
+    "Employer-tax savings factor derives from observed payroll, not a payroll-engine quote. January tax resets and fixed payroll fees may differ. Gusto106.90 monthly fee retained unchanged.",
+    "Healthcare scenarios are hypothetical premium/reimbursement reductions, not current savings or elections. Reduced reimbursement alone shifts cost to household; only lower actual premium is household savings. January scenarios include Jan5 and Feb5 cash payments."
+  ],
+  "sources": {
+    "checking": "https://drive.google.com/file/d/1URb7XRndQaJKNmmWHlOL5SSLq3CnYiW-/view",
+    "savings": "https://drive.google.com/file/d/1zA85LZixlc90k2BHX3nKNYdZ2Eu8nBx4/view",
+    "monthly_pl": "https://drive.google.com/file/d/18Nu16iBzgO01eDqeLKeE8N5ps2eUM22R/view",
+    "ytd_pl": "https://drive.google.com/file/d/1dCZBI4nFvzGEUOAxQT19KWM95c9bpsZl/view",
+    "balance_sheet": "https://drive.google.com/file/d/1H13RNVROBNNIOwNBJZ-3PHHdqB77CYKQ/view",
+    "dashboard": "https://docs.google.com/spreadsheets/d/1vTeGviuQk9zLqacJrdBZS2Bopk8kQZtmEHWheqpCdq0/edit",
+    "claude_receipt": "https://mail.google.com/mail/u/0/#all/1a04432048f698da",
+    "attio_receipt": "https://mail.google.com/mail/u/0/#all/19d27f7678cc6473",
+    "howie_receipt": "https://mail.google.com/mail/u/0/#all/19c9ac4e0f48b895",
+    "squarespace_notice": "https://mail.google.com/mail/u/0/#all/19f698937aad858a",
+    "new_yorker": "https://mail.google.com/mail/u/0/#all/19f20f79f34be6aa"
+  },
+  "rollback_snapshot": "/home/ubuntu/projects/Sapling/brain/context/rollback-snapshots/budget-dashboard-2026-09-12-followup-1789258045643.json",
+  "inventory_audit": [
+    {
+      "tool": "Linkt",
+      "monthly_equivalent": 0,
+      "august_debit": 199.99,
+      "status": "CUT CANDIDATE / canceled but charged",
+      "evidence": "Aug01 LINKT AI199.99. Canceled per user; no refund observed. Forward0 conditional on stop; no September feed."
+    },
+    {
+      "tool": "Claude Code",
+      "monthly_equivalent": 21.78,
+      "august_debit": 21.78,
+      "status": "KEEP / billed amount verified",
+      "evidence": "Aug27 receipt2224-1411-2756: monthly Pro20 + NY tax1.78 =21.78. Advertised17 not this monthly bill; no annual switch assumed."
+    },
+    {
+      "tool": "Attio CRM",
+      "monthly_equivalent": 69.93,
+      "august_debit": 0,
+      "status": "KEEP / prepaid annual",
+      "evidence": "Mar26 paid839.20:828 annual less57.21 unused-time credit +68.41 tax; covers through Mar26 2027. Full uncredited renewal at same tax would901.49. No cash renewal before target."
+    },
+    {
+      "tool": "SquareSpace",
+      "monthly_equivalent": 29,
+      "august_debit": 0,
+      "status": "KEEP / renewal allowance",
+      "evidence": "No August debit. July16 price notice348 annual, next renewal after Aug12. Prior Nov11 renewal implies Nov11 2026; include348 once, tax unverified."
+    },
+    {
+      "tool": "QuickBooks",
+      "monthly_equivalent": 41.37,
+      "august_debit": 41.37,
+      "status": "KEEP",
+      "evidence": "Aug03 Intuit/QBooks41.37; retain with bookkeeping."
+    },
+    {
+      "tool": "Superhuman",
+      "monthly_equivalent": 0,
+      "august_debit": 0,
+      "status": "KEEP CANCELED",
+      "evidence": "No August debit; May22 cancellation recorded in prior inventory. No September feed; zero forecast, not current vendor confirmation."
+    },
+    {
+      "tool": "Howie",
+      "monthly_equivalent": 35,
+      "august_debit": 0,
+      "status": "EVALUATE / unverified ongoing",
+      "evidence": "No August debit. Feb26 3030 Labs receipt35 monthly Feb26-Mar26, disproves unsupported25/month or120/year. Reserve35/month pending current billing verification."
+    },
+    {
+      "tool": "Google Workspace",
+      "monthly_equivalent": 28.08,
+      "august_debit": 28.08,
+      "status": "KEEP",
+      "evidence": "Aug01 GOOGLE SVCS28.08, replaces28.85."
+    },
+    {
+      "tool": "Google One",
+      "monthly_equivalent": 2.16,
+      "august_debit": 2.16,
+      "status": "EVALUATE / possible overlap",
+      "evidence": "Aug17 Google One2.16; separate debit. Retain until storage need verified."
+    },
+    {
+      "tool": "Google Voice",
+      "monthly_equivalent": 10,
+      "august_debit": 0,
+      "status": "EVALUATE / allowance only",
+      "evidence": "No separate August debit or renewal receipt verified. Retain10/month uncertainty allowance; may overlap Workspace."
+    },
+    {
+      "tool": "ChatGPT / OpenAI",
+      "monthly_equivalent": 217.75,
+      "august_debit": 217.75,
+      "status": "CUT CANDIDATE / hypothetical downgrade",
+      "evidence": "Aug08 billed217.75; repeated elevated charge. Retained in base. Potential195.97/month only if reduced to21.78 all-in; no plan change made."
+    },
+    {
+      "tool": "Canva",
+      "monthly_equivalent": 10,
+      "august_debit": 0,
+      "status": "KEEP / assumed annual prepaid",
+      "evidence": "No August debit; Apr23 invoice120 paid. Annual cadence per prior inventory, term not stated in email; treated prepaid through target, renewal timing uncertain."
+    },
+    {
+      "tool": "Slack",
+      "monthly_equivalent": 15,
+      "august_debit": 0,
+      "status": "EVALUATE / allowance only",
+      "evidence": "No August debit or current invoice verified. Retain15/month uncertainty allowance, not verified annual billing."
+    },
+    {
+      "tool": "Granola",
+      "monthly_equivalent": 15.24,
+      "august_debit": 15.24,
+      "status": "KEEP",
+      "evidence": "Aug15 billed15.24; workflow uses meeting notes."
+    },
+    {
+      "tool": "GitHub",
+      "monthly_equivalent": 0,
+      "august_debit": 0,
+      "status": "KEEP / free per inventory",
+      "evidence": "No August debit; free-tier assumption retained."
+    },
+    {
+      "tool": "Cursor",
+      "monthly_equivalent": 0,
+      "august_debit": 0,
+      "status": "KEEP / free per inventory",
+      "evidence": "No August debit; free-tier assumption retained."
+    },
+    {
+      "tool": "Apollo",
+      "monthly_equivalent": 0,
+      "august_debit": 64.24,
+      "status": "KEEP CANCELED / September unverified",
+      "evidence": "Aug02 APOLLO.IO64.24. Apollo and ZenLeads are same vendor; count once. Canceled per user in September. Forward0; no September feed."
+    },
+    {
+      "tool": "Hetzner",
+      "monthly_equivalent": 15.03,
+      "august_debit": 15.03,
+      "status": "KEEP",
+      "evidence": "Aug14 debit14.59 + foreign fee0.44 =15.03. Fee already in bank-fee bridge; no duplicate addition."
+    },
+    {
+      "tool": "Tailscale",
+      "monthly_equivalent": 8.71,
+      "august_debit": 8.71,
+      "status": "KEEP",
+      "evidence": "Aug22 billed8.71."
+    },
+    {
+      "tool": "1Password",
+      "monthly_equivalent": 4.34,
+      "august_debit": 0,
+      "status": "KEEP / prepaid annual",
+      "evidence": "No August debit; prior May statement evidence52.13 annual. No renewal assumed before target; monthly equivalent is not future cash."
+    },
+    {
+      "tool": "DealsX / KeyReach",
+      "monthly_equivalent": 0,
+      "august_debit": 0,
+      "status": "PAUSE ASSUMPTION / pending confirmation",
+      "evidence": "UNPAID July1520 + August/September combined1700 =3220. Reduction approved only Aug/Sep. No recurring after September is assumption from prior pause and user-reported row364 dueSep28, NOT vendor-confirmed."
+    },
+    {
+      "tool": "AI Consultant / Dodo Digital",
+      "monthly_equivalent": 0,
+      "august_debit": 0,
+      "status": "KEEP STOPPED",
+      "evidence": "No August Dodo debit; user confirms1000/month removed July onward. Do not subtract again from August base."
+    },
+    {
+      "tool": "DocSend",
+      "monthly_equivalent": 16.33,
+      "august_debit": 16.33,
+      "status": "KEEP / bill above advertised",
+      "evidence": "Aug30 billed16.33 versus Personal15 pretax. Prior15.59 stale. Use16.33 cash; invoice tax breakdown unverified."
+    },
+    {
+      "tool": "BizBuySell",
+      "monthly_equivalent": 0,
+      "august_debit": 0,
+      "status": "KEEP FREE",
+      "evidence": "No August debit; June20 free downgrade per prior inventory. No September verification."
+    },
+    {
+      "tool": "StartVirtual VA",
+      "monthly_equivalent": 0,
+      "august_debit": 0,
+      "status": "KEEP STOPPED",
+      "evidence": "VA1040/month removed July onward; zero August outsourcing. Separate from active bookkeeping."
+    },
+    {
+      "tool": "StartVirtual bookkeeping",
+      "monthly_equivalent": 247,
+      "august_debit": 247,
+      "status": "KEEP",
+      "evidence": "Aug02 SVTRUEBOOKKEEPING247. Not the canceled VA."
+    },
+    {
+      "tool": "Gusto payroll service",
+      "monthly_equivalent": 106.9,
+      "august_debit": 106.9,
+      "status": "KEEP",
+      "evidence": "Aug04 service fee106.90. Fixed fee retained; do not reduce with wages."
+    },
+    {
+      "tool": "New Yorker",
+      "monthly_equivalent": 17.42,
+      "august_debit": 209,
+      "status": "KEEP / prepaid annual",
+      "evidence": "Aug06 annual209; July1 renewal email confirms one-year term. No repeat before target."
+    },
+    {
+      "tool": "The Art Newspaper",
+      "monthly_equivalent": 24.72,
+      "august_debit": 24.72,
+      "status": "EVALUATE",
+      "evidence": "Aug01 charge24 plus foreign fee0.72. Retained recurring allowance; cadence unverified."
+    }
+  ],
+  "validation": {
+    "live_cells_match": true,
+    "august_actuals_and_ytd_preserved": true,
+    "inventory_original_rows_audited": 24,
+    "additional_vendors": 5,
+    "no_email": true,
+    "no_slack": true,
+    "no_payroll_or_health_change": true
+  },
+  "report_path": "/home/ubuntu/projects/Sapling/brain/outputs/2026-09-12-budget-runway-followup-aug-2026.md"
+}

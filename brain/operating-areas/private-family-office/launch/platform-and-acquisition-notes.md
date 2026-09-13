@@ -97,6 +97,10 @@ Tradeoff:
 
 ## Recommended Weekend Choice
 
+### Current Decision
+
+Use **Gumroad direct checkout** for the first paid-product test and launch initially with **no advertising spend**. Do not publish or enable payment until Kay gives separate approval.
+
 For the weekend test, prepare for two paths:
 
 1. **Owned site + Gumroad or Payhip checkout** for brand-controlled sales and automatic delivery.

@@ -80,6 +80,23 @@ The first paid-product direction is:
 
 This name is still working language. It should describe a self-serve digital product that helps readers organize important household documents and continuity instructions.
 
+
+## Initial Paid Product Name
+
+### Decision
+
+The first paid product should be named:
+
+**TPFO Household Protection Binder**
+
+### Rationale
+
+"Binder" better describes the actual deliverable than "file" because the product is a printable set of checklists, registers, and instruction pages that can be organized physically or digitally. The name also connects naturally to the approved protected-document storage direction for the **Identity Documents** envelope.
+
+### Operating Implication
+
+Use **TPFO Household Protection Binder** in the Risk & Protection launch materials unless Kay revises the name.
+
 ## Open Questions
 
 - Final name for the paid product.
@@ -272,3 +289,32 @@ This keeps the printable compact and makes the timing guidance easier to use at 
 
 The printable does not need separate Review Rhythm cards. The checklist itself can carry both storage guidance and review rhythm through concise visual markers.
 
+
+## Initial Paid Product Price
+
+### Decision
+
+The first test price for **TPFO Household Protection Binder** is **$49**.
+
+### Rationale
+
+This price is accessible enough for a first self-serve digital product while still testing whether prospective customers value the product as a serious household organization system rather than only as a free checklist.
+
+### Operating Implication
+
+Use **$49** in launch-page drafts, checkout setup, and launch-readiness materials unless Kay revises the test price before publication.
+
+
+## Product Format Rule: Digital-First, Not Traditional Printable Binder
+
+### Decision
+
+The first paid product should not be treated as a traditional printable binder. The word **Binder** may remain in the product name for clarity and search familiarity, but the actual product should be developed as a **digital-first household document system**.
+
+### Rationale
+
+Kay does not want to build an antiquated paper-binder product. The underlying need is modern household document control: what exists, where it lives, how it is organized, who can access it, what must be reviewed, and which physical originals need protected storage.
+
+### Operating Implication
+
+Future product work should start from digital organization: folder structure, naming conventions, digital inventory, review rhythm, access locator, and guidance for protected physical originals. Printable reference pages may be included only as supporting materials, not as the primary product concept.

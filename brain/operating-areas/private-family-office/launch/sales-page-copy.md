@@ -1,6 +1,6 @@
 # Sales Page Copy Draft
 
-Product working title: **Important Documents / Household Protection File**
+Product working title: **TPFO Household Protection Binder**
 
 ## Page Positioning
 
@@ -8,7 +8,7 @@ The first paid product should be presented as an organizational system, not as a
 
 ## Headline
 
-Important Documents / Household Protection File
+TPFO Household Protection Binder
 
 ## Subheadline
 
@@ -50,6 +50,8 @@ This sample helps you gather the documents that establish identity and household
 For documents that should be kept physically protected, we recommend using a dedicated document organizer or safe household storage system. The Savor Folio Document Organizer is the product currently approved for recommendation because Kay has used and liked it.
 
 ## Purchase Section
+
+First test price: **$49**.
 
 Working button language:
 

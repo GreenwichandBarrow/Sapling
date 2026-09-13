@@ -24,10 +24,10 @@ Working date: September 11, 2026
 ### Still Missing
 
 - Final product name.
-- Final price.
+- Final price. **Set for first test: $49.**
 - Final PDF.
 - Final product preview images.
-- Payment and delivery platform.
+- Payment and delivery platform. **Selected for first test: Gumroad direct checkout.**
 - Email capture platform.
 - Domain/hosting decision.
 - Terms and privacy pages.
@@ -55,8 +55,8 @@ Working date: September 11, 2026
 
 ### Paid Product
 
-- Important Documents / Household Protection File.
-- PDF printable.
+- TPFO Household Protection Binder.
+- Digital-first household document system with supporting PDF reference pages.
 - Sold through a simple third-party checkout.
 - Delivered automatically by the checkout platform.
 
@@ -73,7 +73,7 @@ This is a recommendation for discussion, not a saved decision.
 
 ### Initial Test Price
 
-Test at **$37** or **$49**.
+Launch the first test at **$49**.
 
 Reason:
 
@@ -107,11 +107,15 @@ Create an Etsy listing if Kay approves the listing fee and marketplace positioni
 
 Build the owned site as the brand home. Use Pinterest and SEO to develop compounding discovery over time.
 
+## Deferred Tests
+
+Product-name testing is deferred until after launch weekend. The first test should use **TPFO Household Protection Binder** and focus on whether strangers will buy the product at all.
+
 ## Decisions Needed From Kay
 
 - Approve final product name.
-- Choose test price.
-- Choose checkout platform.
+- Test price selected: **$49**.
+- Checkout platform selected: **Gumroad direct checkout**.
 - Approve email platform.
 - Decide whether to test Etsy.
 - Confirm whether to proceed with launch before legal/search-agreement review or wait for review.
@@ -122,7 +126,7 @@ Build the owned site as the brand home. Use Pinterest and SEO to develop compoun
 - Publish the site.
 - Enable payment.
 - Publish an Etsy listing.
-- Spend money.
+- Spend money, including ads or marketplace fees.
 - Send emails.
 - Add affiliate links.
 - Use Kay's personal identity as part of the brand.

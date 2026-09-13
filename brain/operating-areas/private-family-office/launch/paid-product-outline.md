@@ -1,6 +1,6 @@
 # Paid Product Outline
 
-Working title: **Important Documents / Household Protection File**
+Working title: **TPFO Household Protection Binder**
 
 ## Product Promise
 
@@ -12,14 +12,19 @@ This is not legal, tax, insurance, medical, or financial advice. It is an organi
 
 A systems-oriented person who is newly managing, or newly formalizing, the financial and operational responsibilities of a modern family office.
 
+## First Test Price
+
+**$49**
+
 ## Product Format
 
 Recommended first version:
 
-- PDF printable.
-- Letter-size pages.
-- Minimalist neutral design matching the website.
-- Checklists and registers that can be printed and placed in a physical document organizer.
+- Digital-first household document system.
+- Editable inventory workbook.
+- Digital folder-structure guide.
+- Naming and review-rhythm guidance.
+- Supporting printable reference pages only where useful for physical originals.
 - No custom setup.
 - No personal advisory component.
 

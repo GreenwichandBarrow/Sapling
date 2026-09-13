@@ -39,7 +39,7 @@ Use the weekend to finish one paid PDF and one sales path, not the whole library
 
 Recommended test:
 
-- Product: **Important Documents / Household Protection File**
+- Product: **TPFO Household Protection Binder**
 - Free asset: **Identity Documents Checklist**
 - Public book: **Risk & Protection**
 - Unfinished books and envelopes: **Forthcoming**

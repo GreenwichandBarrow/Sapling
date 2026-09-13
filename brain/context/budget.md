@@ -47,8 +47,8 @@ This is the approved budget for the Greenwich & Barrow search fund. It is the im
 
 ## DD Reserve Policy
 
-- **Current reserve:** $40,000 (held back from operational runway)
-- **Reserve changes:** Kay reconfirmed September 11, 2026: $40,000 remains reserved until she explicitly changes it. Deal stage does not change the reserve.
+- **Current reserve:** $38,000 (held back from operational runway)
+- **Reserve changes:** Kay explicitly changed the reserve to $38,000 on September 12, 2026 and specified February 7, 2027 as the search end date. This supersedes September 11's $40,000 confirmation. LOI remains under negotiation; deal stage does not independently change the reserve. See [[outputs/2026-09-12-budget-runway-followup-aug-2026]].
 - **Typical DD costs:** QofE ($15-25K), legal ($5-10K), environmental/other ($5-10K)
 
 ## QBO Chart of Accounts Mapping

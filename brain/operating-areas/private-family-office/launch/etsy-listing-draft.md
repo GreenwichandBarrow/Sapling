@@ -10,7 +10,7 @@ The Private Family Office brand should not become Etsy-native. The listing shoul
 
 ## Draft Title
 
-Important Documents Binder Printable, Household Protection File, Family Document Organizer, Identity Documents Checklist, Home Records PDF
+Important Documents Binder Printable, TPFO Household Protection Binder, Family Document Organizer, Identity Documents Checklist, Home Records PDF
 
 ## Draft Short Description
 
@@ -18,7 +18,7 @@ A minimalist printable system for organizing important household documents, insu
 
 ## Draft Long Description
 
-The Important Documents / Household Protection File is a printable organizational system for the process-oriented person managing the financial and operational responsibilities of a modern family office.
+The TPFO Household Protection Binder is a printable organizational system for the process-oriented person managing the financial and operational responsibilities of a modern family office.
 
 Use it to gather important records, note where originals and copies are stored, track renewal timing, and create a clearer household reference file.
 

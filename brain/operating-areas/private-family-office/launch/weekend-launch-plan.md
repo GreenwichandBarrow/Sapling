@@ -4,7 +4,7 @@ Date: September 11, 2026
 
 ## Objective
 
-Launch a small, credible paid-product test for The Private Family Office: one useful digital product that a stranger can understand, purchase, and receive automatically.
+Launch a small, credible paid-product test for The Private Family Office: one useful digital-first household document system that a stranger can understand, purchase, and receive automatically.
 
 This is an income test, not proof of salary replacement. The goal is to collect evidence: visits, email signups, paid purchases, refunds, and buyer questions.
 
@@ -15,7 +15,7 @@ This is an income test, not proof of salary replacement. The goal is to collect 
 - First live book: **Risk & Protection**.
 - First envelope structure: confidential tie-envelope interface with a reading panel.
 - First free sample: **Identity Documents Checklist**.
-- First paid-product direction: **Important Documents / Household Protection File**.
+- First paid-product direction: **TPFO Household Protection Binder**.
 - Initial discovery channel: Pinterest as visual search, supported by SEO on the owned site.
 - Product recommendation standard: recommend only products Kay has personally used, tested, or directly vetted.
 - Personally vetted product: Savor Folio Document Organizer.
@@ -24,8 +24,8 @@ This is an income test, not proof of salary replacement. The goal is to collect 
 
 - Final product name.
 - Final product scope and exact included pages.
-- Final price.
-- Payment and delivery platform.
+- Final price. **Set for first test: $49.**
+- Payment and delivery platform. **Selected for first test: Gumroad direct checkout.**
 - Email capture platform or form destination.
 - Final product file in PDF format.
 - Product preview images.
@@ -40,7 +40,7 @@ This is an income test, not proof of salary replacement. The goal is to collect 
 The smallest credible test is not the full eight-book site. It is:
 
 - A simple homepage or product landing page using approved Private Family Office styling.
-- A Risk & Protection product page for **Important Documents / Household Protection File**.
+- A Risk & Protection product page for **TPFO Household Protection Binder**.
 - A free **Identity Documents Checklist** for email capture.
 - One paid PDF product with a clean preview and automatic delivery.
 - A small number of Pinterest assets pointing to the free checklist and paid product page.
@@ -61,7 +61,7 @@ The smallest credible test is not the full eight-book site. It is:
 
 - Approve final product name.
 - Approve exact product contents and disclaimers.
-- Approve final price.
+- Approve any change to the $49 first test price.
 - Choose payment/delivery platform.
 - Create or authorize platform accounts.
 - Approve any public website publication.
@@ -69,11 +69,15 @@ The smallest credible test is not the full eight-book site. It is:
 - Approve search-agreement/conflict review before commercial launch.
 - Confirm whether any product language relies on personal experience.
 
+## Post-Launch Testing
+
+After launch weekend, consider testing alternate product names only if there is enough traffic to make the results useful. Keep **TPFO Household Protection Binder** as the first launch name.
+
 ## Recommended Weekend Sequence
 
 1. Finalize product scope and price.
 2. Finalize the free Identity Documents Checklist.
-3. Finish the paid Important Documents / Household Protection File PDF.
+3. Finish the paid TPFO Household Protection Binder PDF.
 4. Build a simple sales page and email capture page.
 5. Choose payment and delivery platform.
 6. Connect checkout and delivery after approval.
@@ -91,7 +95,7 @@ Pinterest fits the brand because it acts more like visual search than personalit
 Initial Pinterest asset themes:
 
 - Important Documents Checklist
-- Household Protection File
+- TPFO Household Protection Binder
 - Family Office System for the Home
 - Identity Documents Checklist
 - Organizing Important Documents

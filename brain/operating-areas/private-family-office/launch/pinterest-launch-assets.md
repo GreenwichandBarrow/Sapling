@@ -29,15 +29,15 @@ Destination: free checklist page.
 
 ### Pin: Important Documents File
 
-Headline: Important Documents / Household Protection File
+Headline: TPFO Household Protection Binder
 
 Description: A printable system for organizing important household documents, insurance details, access notes, and continuity instructions.
 
 Destination: paid product page.
 
-### Pin: What Belongs In A Household Protection File
+### Pin: What Belongs In A TPFO Household Protection Binder
 
-Headline: What Belongs In A Household Protection File
+Headline: What Belongs In A TPFO Household Protection Binder
 
 Description: A clear starting point for organizing the documents and instructions that help a modern household stay current.
 

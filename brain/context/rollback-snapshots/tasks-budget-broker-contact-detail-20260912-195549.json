@@ -1,0 +1,19 @@
+{
+  "verb": "budget-broker-contact-detail",
+  "timestamp": "20260912-195549",
+  "sheet_id": "1hsQlT0gkKHXF4pzw5sQiGNqXk9uzgE0PP5Ejx4ZBBJ4",
+  "ranges": {
+    "'To Do'!A366:H366": [
+      [
+        "Not Completed",
+        "Contact NY health insurance broker to compare family coverage costs",
+        "Home",
+        "Healthcare",
+        "2026-09-14",
+        "Use https://nystateofhealth.ny.gov/agent/hx_brokerSearch . Compare current husband-employer coverage costing $2,750/month with alternatives; check family doctors, prescriptions, total annual costs and earliest effective date.",
+        "Short Term",
+        "Monday"
+      ]
+    ]
+  }
+}

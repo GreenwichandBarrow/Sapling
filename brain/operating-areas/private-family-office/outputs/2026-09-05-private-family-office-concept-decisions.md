@@ -459,6 +459,23 @@ Until the MVP is live, new ideas should be evaluated against this launch filter.
 - The Identity Documents Checklist can capture email demand before commerce is added.
 - The Important Documents / Household Protection File can become the first paid product after initial demand is validated.
 
+
+## Initial Paid Product Name
+
+### Decision
+
+The first paid product should be named:
+
+**TPFO Household Protection Binder**
+
+### Rationale
+
+This name keeps the relationship to The Private Family Office while making the deliverable more concrete than "file." "Binder" signals a printable, organized system that can live alongside a physical document organizer, while "Household Protection" keeps the product anchored in the **Risk & Protection** book.
+
+### Operating Implication
+
+Use **TPFO Household Protection Binder** as the working public product name across launch drafts, sales-page copy, product previews, and checkout setup unless Kay revises the name.
+
 ## MVP Site Map Interaction: Forthcoming Books Capture Interest
 
 ### Decision
@@ -658,3 +675,62 @@ Private Family Office downloads, checklists, registers, templates, and printable
 
 Create a reusable printable design pattern before producing multiple downloads. The first sample is the **Identity Documents Checklist** for the Risk & Protection book.
 
+
+## Post-Launch Product Name Testing
+
+### Decision
+
+Keep **TPFO Household Protection Binder** as the first launch name for now. Product-name testing should be added to a later part of the plan after launch weekend, once there is enough traffic to make the results meaningful.
+
+### Rationale
+
+The first launch should answer the more basic commercial question: whether prospective customers will buy this kind of product at all. Testing multiple names before there is meaningful traffic could create noise rather than useful evidence.
+
+### Operating Implication
+
+After the launch weekend, evaluate whether there is enough traffic to test alternate product names. Possible future test names include **The Household Protection Binder**, **Important Documents Binder**, **The Modern Household Binder**, and **Household Continuity Binder**.
+
+
+## Initial Paid Product Price
+
+### Decision
+
+The first test price for **TPFO Household Protection Binder** is **$49**.
+
+### Rationale
+
+This price is accessible enough for a first self-serve digital product while still testing whether prospective customers value the product as a serious household organization system rather than only as a free checklist.
+
+### Operating Implication
+
+Use **$49** in launch-page drafts, checkout setup, and launch-readiness materials unless Kay revises the test price before publication.
+
+
+## Initial Sales Platform And Launch Budget
+
+### Decision
+
+Use **Gumroad direct checkout** for the first paid-product test of **TPFO Household Protection Binder**. Launch the initial test with **no advertising spend**.
+
+### Rationale
+
+Gumroad is the fastest path to payment collection and automatic PDF delivery for a small paid-product test. A no-ad-spend launch keeps the experiment inexpensive and protects venture spending while the core question is still whether prospective customers will buy this product at all.
+
+### Operating Implication
+
+Do not enable live payments, publish the Gumroad product, run ads, or spend money without Kay's separate approval. Use the launch budget workbook to track expected fees, optional costs, and sales required for the stated household bridge targets.
+
+
+## Product Format Rule: Digital-First, Not Traditional Printable Binder
+
+### Decision
+
+The first paid product should not be treated as a traditional printable binder. The word **Binder** may remain in the product name for clarity and search familiarity, but the actual product should be developed as a **digital-first household document system**.
+
+### Rationale
+
+Kay does not want to build an antiquated paper-binder product. The underlying need is modern household document control: what exists, where it lives, how it is organized, who can access it, what must be reviewed, and which physical originals need protected storage.
+
+### Operating Implication
+
+Future product work should start from digital organization: folder structure, naming conventions, digital inventory, review rhythm, access locator, and guidance for protected physical originals. Printable reference pages may be included only as supporting materials, not as the primary product concept.

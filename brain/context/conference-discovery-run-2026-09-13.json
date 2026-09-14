@@ -1,0 +1,181 @@
+{
+  "run_date": "2026-09-13",
+  "status": "incomplete",
+  "snapshot": "brain/context/rollback-snapshots/conference-pipeline-pre-run-2026-09-13.json",
+  "archived_skipped": 2,
+  "archived_attended": 0,
+  "new_candidates": [
+    {
+      "Week Of": "9/14",
+      "Decision": "NEW",
+      "Niche": "ETA / M&A Intermediaries",
+      "Registration Paid": "No",
+      "Status": "Discovered",
+      "Agent Rec": "Attend",
+      "Date of Conference": "9/15/26",
+      "Event Name": "ACG NJ Breakfast Meeting | September 15, 2026",
+      "Location": "EisnerAmper Offices, 111 South Wood Avenue, Woodbridge Township, NJ 08830",
+      "Travel": "Train/car to Woodbridge NJ (estimate ~1hr; check route)",
+      "Registration Cost": "Not publicly shown; confirm before booking",
+      "Reg Deadline": "Not published; registration link open",
+      "Est. Attendees": "Not published; M&A advisors and business professionals",
+      "Attendee List": "Not publicly shown",
+      "Website": "https://www.acg.org/newjersey/events/acg-nj-breakfast-meeting-september-15-2026",
+      "Notes": "Tuesday 8:00-10:30am. Breakfast and rotating small-group discussions. Confirm price.",
+      "Agent Notes": "Evidence: organizer confirms venue, time and open member/non-member access. Roundtable leaders include Bridget Mackolin (Eisner), MJ Jolda and Laura Crothers. Judgment: strong intermediary fit and schedule fit; cost unresolved."
+    },
+    {
+      "Week Of": "9/14",
+      "Decision": "NEW",
+      "Niche": "ETA / M&A Intermediaries",
+      "Registration Paid": "No",
+      "Status": "Discovered",
+      "Agent Rec": "Attend",
+      "Date of Conference": "9/16/26",
+      "Event Name": "XPX New Jersey: Inside the Mind of Today's Business Owner",
+      "Location": "Park Ave Club, 184 Park Ave, Florham Park, NJ 07932",
+      "Travel": "Train/car to Florham Park NJ (estimate ~1hr; check route)",
+      "Registration Cost": "Non-member $60 through 9/13, $75 regular, $90 same-day; NJ/Tri-State members free",
+      "Reg Deadline": "9/13/26 early bird; advance registration required",
+      "Est. Attendees": "54 registered at discovery",
+      "Attendee List": "Public registered attendee list on event page",
+      "Website": "https://www.exitplanningexchange.com/event/6775390/",
+      "Notes": "Wednesday 8:00-9:30am breakfast. Early-bird rate ends today; regular registration remains available.",
+      "Agent Notes": "Evidence: organizer agenda and registrants show business brokers, CPAs, lawyers, lenders and wealth advisors. Judgment: high intermediary density, low cost and schedule fit. Includes breakfast; membership not required."
+    }
+  ],
+  "deferred_candidates": [
+    {
+      "date": "2026-09-24",
+      "event": "XPX Philadelphia Bucks & Montgomery County: One Deal. Same Agreement. Different Perspectives.",
+      "venue": "Kriescher Miller, 100 Witmer Road, Horsham PA",
+      "host": "XPX Philadelphia Bucks & Montgomery County",
+      "hours": "07:45-09:15 EDT",
+      "cost": "$75 non-member; $85 same day",
+      "registered": 50,
+      "recommendation": "Attend",
+      "source": "https://www.exitplanningexchange.com/event/6799458/",
+      "reason": "Verified M&A advisor audience; Thursday morning fits."
+    },
+    {
+      "date": "2026-10-14",
+      "event": "XPX New Jersey",
+      "venue": "Park Ave Club, 184 Park Ave, Florham Park NJ",
+      "host": "XPX New Jersey",
+      "hours": "08:00-09:30 EDT",
+      "cost": "Not verified",
+      "recommendation": "Investigate",
+      "source": "https://www.exitplanningexchange.com/national-calendar/",
+      "reason": "Date/venue/time confirmed on organizer calendar; detailed page unavailable."
+    },
+    {
+      "date": "2026-10-21",
+      "event": "XPX Connecticut - Save the date",
+      "venue": "The Patterson Club, 1118 Cross Hwy, Fairfield CT",
+      "host": "XPX Connecticut",
+      "hours": "08:00-10:00 EDT",
+      "cost": "$75 non-member early bird through10/18; $90 regular; $100 same day",
+      "recommendation": "Attend",
+      "source": "https://my.exitplanningexchange.com/event-6791550",
+      "reason": "Short local exit-planning advisor breakfast; detailed program forthcoming."
+    },
+    {
+      "date": "2026-10-22",
+      "event": "XPX New York October Breakfast",
+      "venue": "CLA, 60 E42nd St, Suite5100, New York NY",
+      "host": "XPX New York",
+      "hours": "08:30-10:00 EDT",
+      "cost": "$75 non-member early bird through10/19; $90 regular; $100 same day",
+      "recommendation": "Investigate",
+      "source": "https://www.exitplanningexchange.com/event/6797490/",
+      "reason": "Organizer calendar and detail page disagree on program title; registration not yet open."
+    },
+    {
+      "date": "2026-10-20",
+      "event": "ACG NJ Breakfast: Inside the 2026 FIFA World Cup Security Effort",
+      "venue": "Galloping Hill, 3 Golf Drive, Kenilworth NJ",
+      "host": "ACG New Jersey",
+      "hours": "08:00-10:30 EDT",
+      "cost": "Nonmember $115 through9/22; $125 through10/6; $135 late plus3% card fee",
+      "recommendation": "Attend",
+      "source": "https://www.acg.org/newjersey/events/acg-nj-breakfast-meeting-inside-2026-fifa-world-cup-security-effort-lessons",
+      "reason": "Verified ACG M&A professional audience, short morning program; speakers Cynthia Hetherington and Laura Crothers."
+    }
+  ],
+  "blocker": "Missing future week append zones: only July - August,9/7,9/14,TBD dividers exist; 9/14 already contains dates through Feb2027. Adding dated sections would regroup existing events. No existing events moved across sections. Full discovery not complete.",
+  "discovery_coverage": {
+    "tracker_tabs": [
+      "WEEKLY REVIEW",
+      "DEALSX"
+    ],
+    "sources": [
+      "IBBA",
+      "AMAA Long Island",
+      "XPX national/chapter calendars",
+      "ACG NJ",
+      "NEBBA",
+      "Pennsylvania Business Broker Association",
+      "LinkedIn public broker posts",
+      "M&A Source (retried successfully without www)"
+    ],
+    "unavailable": [
+      "TMA main events page"
+    ],
+    "vertical_checks": [
+      "Art/collectibles insurance",
+      "HNW personal risk",
+      "Estate management",
+      "Fine art logistics",
+      "High-value storage",
+      "CMAA / marina software adjacency"
+    ],
+    "excluded": [
+      "ICEFAT Bangkok: outside geography",
+      "Virtual IBBA/PRMA sessions: no in-person networking",
+      "Duplicate Sep23 CT and Sep24 NYC XPX events already in Pipeline",
+      "CMAA mid-management conference: not verified owner audience"
+    ]
+  },
+  "success_slack_sent": false,
+  "updated_at": "2026-09-13T21:06:49.816444-04:00",
+  "integrity_validator": "PASSED",
+  "added": 2,
+  "pruned": 0,
+  "formatting_warnings": {
+    "registration_paid_dropdown_missing": 23,
+    "divider_rows_with_dropdowns": 4,
+    "preexisting": true
+  },
+  "append_result": {
+    "format_warning_counts": {
+      "event_rows_missing_registration_paid_validation": 23,
+      "existing_dividers_with_dropdowns": 4
+    },
+    "added": 2,
+    "sort_writes": 18,
+    "pruned": 0,
+    "warnings": [
+      "Pre-existing Registration Paid validation absent; existing dividers retain existing dropdowns.",
+      "Unparseable July - August header preserved."
+    ]
+  },
+  "archive_result": [
+    {
+      "event": "SSA Self Storage Association Fall Conference & Trade Show 2026",
+      "source_row": 5,
+      "destination": "Skipped",
+      "destination_row": 117,
+      "updated_range": "Skipped!A117:N117",
+      "verified": true
+    },
+    {
+      "event": "PPMA Eastern Region Fall Seminar 2026",
+      "source_row": 6,
+      "destination": "Skipped",
+      "destination_row": 118,
+      "updated_range": "Skipped!A118:N118",
+      "verified": true
+    }
+  ],
+  "exit_code": 1
+}

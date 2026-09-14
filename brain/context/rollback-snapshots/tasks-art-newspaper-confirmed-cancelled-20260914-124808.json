@@ -1,0 +1,28 @@
+{
+  "verb": "art-newspaper-confirmed-cancelled",
+  "timestamp": "20260914-124808",
+  "sheet_id": "1AIUuFMQTgPA8jttANMqsMbIsvXSNnqJdh0kSbaa_BqA",
+  "ranges": {
+    "Mon!A36:E36": [
+      [
+        true,
+        "Request The Art Newspaper cancellation",
+        "Work",
+        "G&B",
+        "Kay sent cancellation email September 14. Request completed; vendor confirmation/effective date pending."
+      ]
+    ],
+    "'To Do'!A279:H279": [
+      [
+        "Completed",
+        "Request The Art Newspaper cancellation",
+        "Work",
+        "G&B",
+        "2026-09-14",
+        "Kay sent cancellation email September 14. Request completed; vendor confirmation/effective date pending.",
+        "Short Term",
+        "Monday"
+      ]
+    ]
+  }
+}

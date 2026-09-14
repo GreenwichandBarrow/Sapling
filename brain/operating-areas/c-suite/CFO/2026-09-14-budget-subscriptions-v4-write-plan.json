@@ -1,0 +1,442 @@
+[
+  {
+    "range": "'Runway Forecast'!B3",
+    "values": [
+      [
+        "Aug31 VERIFIED cash; Sep14 subscription v4 MODEL; no September feed"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B7",
+    "values": [
+      [
+        "18622.8"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B10",
+    "values": [
+      [
+        "46599.04"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B11",
+    "values": [
+      [
+        "9674.54"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B12",
+    "values": [
+      [
+        "August bank statements + v3 model + user-confirmed Art Newspaper cancellation Sep14"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B13",
+    "values": [
+      [
+        "Art Newspaper cancellation confirmed by user September14. Remove24 subscription plus0.72 bank fee monthly from September14 modeled current date; no past refund or retroactive savings. DocSend remains canceled. Howie no-charge pause Sep14-Dec13 assumed; UNVERIFIED35 allowance resumes Dec14, not confirmed billing. Prior cuts retained; historical actuals unchanged."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B25",
+    "values": [
+      [
+        "18622.8"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B30",
+    "values": [
+      [
+        "18622.8"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B34",
+    "values": [
+      [
+        "9674.54"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A41",
+    "values": [
+      [
+        "Other allowance:2798.12 to Sep13;1032.17 Sep14-Dec13;1067.17 Dec14 onward"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B41",
+    "values": [
+      [
+        "6248.21"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B45",
+    "values": [
+      [
+        "106376.75"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B47",
+    "values": [
+      [
+        "46599.04"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B51",
+    "values": [
+      [
+        "8932.35"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!C51",
+    "values": [
+      [
+        "4817.66"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!D51",
+    "values": [
+      [
+        "683.32"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B52",
+    "values": [
+      [
+        "8548.98"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!C52",
+    "values": [
+      [
+        "5201.03"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!D52",
+    "values": [
+      [
+        "654.0"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B53",
+    "values": [
+      [
+        "7878.08"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!C53",
+    "values": [
+      [
+        "5871.93"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!D53",
+    "values": [
+      [
+        "602.67"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B54",
+    "values": [
+      [
+        "7973.93"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!C54",
+    "values": [
+      [
+        "5776.09"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!D54",
+    "values": [
+      [
+        "610.0"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B55",
+    "values": [
+      [
+        "10421.08"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!C55",
+    "values": [
+      [
+        "3328.94"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!D55",
+    "values": [
+      [
+        "797.21"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B56",
+    "values": [
+      [
+        "9973.81"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!C56",
+    "values": [
+      [
+        "3776.2"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!D56",
+    "values": [
+      [
+        "762.99"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B57",
+    "values": [
+      [
+        "9191.1"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!C57",
+    "values": [
+      [
+        "4558.92"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!D57",
+    "values": [
+      [
+        "703.12"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B58",
+    "values": [
+      [
+        "9302.91"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!C58",
+    "values": [
+      [
+        "4447.1"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!D58",
+    "values": [
+      [
+        "711.67"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!E61",
+    "values": [
+      [
+        "28974.98"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!F61",
+    "values": [
+      [
+        "9025.02"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!E62",
+    "values": [
+      [
+        "25559.16"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!F62",
+    "values": [
+      [
+        "12440.84"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!E63",
+    "values": [
+      [
+        "22143.34"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!F63",
+    "values": [
+      [
+        "15856.66"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!C66",
+    "values": [
+      [
+        "32849.04"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!C67",
+    "values": [
+      [
+        "41099.04"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A78",
+    "values": [
+      [
+        "Rebuilt monthly base: v3 cuts plus canceled newspaper24 and bank fee0.72"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B78",
+    "values": [
+      [
+        "18622.8"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B80",
+    "values": [
+      [
+        "-1012.96"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B81",
+    "values": [
+      [
+        "11221.853333333334"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A83",
+    "values": [
+      [
+        "August31 verified cash anchor; no September feed. September1-13 unchanged. Office/postage577.82 already removed; incremental meals1005.13 plus one-off106.95 repeat allowance removed September14 inclusive. Actual-calendar-day proration; no retroactive savings. V3 removes DocSend16.33 and Howie35 from Sep14, restoring Howie35 allowance Dec14. Calendar-day proration retained. V4 removes newspaper24 and fee0.72 from September14, no refund."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A86",
+    "values": [
+      [
+        "Other allowance1032.17/month Sep14-Dec13;1067.17 from Dec14;2798.12 through Sep13. Meals zero per user. ChatGPT217.75 KEEP. Travel rides/parking/gas189.70 retained. User confirms Aug6 Walgreens106.95 was one-off computer setup items while traveling, NOT medical; no future purchase planned. Office Supplies/Computer Accessories is proposed classification, not bookkeeper-posted. Historical actuals/QBO unchanged pending Anthony."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A90",
+    "values": [
+      [
+        "Art Newspaper cancellation confirmed by user September14. Remove24 subscription plus0.72 bank fee monthly from September14 modeled current date; no past refund or retroactive savings. DocSend remains canceled. Howie no-charge pause Sep14-Dec13 assumed; UNVERIFIED35 allowance resumes Dec14, not confirmed billing. Voice10 and Slack15 unverified allowances retained; Voice may overlap Workspace."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A92",
+    "values": [
+      [
+        "Employer-tax savings factor derives from observed payroll, not a payroll-engine quote. January tax resets and fixed payroll fees may differ. Gusto106.90 monthly fee retained unchanged. During pause full18622.796667; hypothetical half11221.853333. From Dec14 full18657.796667; half11256.853333 includes UNVERIFIED Howie35 allowance, not confirmed actual billing. Weekly employer cash3415.82 unchanged."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B94",
+    "values": [
+      [
+        "2026-09-15: $35,700.87 / $2,299.13; 2026-09-22: $32,285.05 / $5,714.95; 2026-10-06: $28,869.23 / $9,130.77"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B95",
+    "values": [
+      [
+        "Additional monthly savings effective September14 through February7 inclusive; 4.816666667 calendar-month equivalents, not retroactive September1. During pause full18622.796667; hypothetical half11221.853333. From Dec14 full18657.796667; half11256.853333 includes UNVERIFIED Howie35 allowance, not confirmed actual billing. Weekly employer cash3415.82 unchanged. Newspaper24.72 removed from Sep14; cancellation confirmed, no past refund. No actual payroll changes; parent owns tracker note confirmation."
+      ]
+    ]
+  }
+]

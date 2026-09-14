@@ -58,8 +58,8 @@ Always present multiple scenarios:
 
 ## DD Reserve Policy
 
-- **Default:** $40,000 held back from operational runway
-- **Reserve changes:** Kay reconfirmed September 11, 2026: $40,000 remains reserved until she explicitly changes it. Deal stage does not change the reserve.
+- **Default:** $38,000 held back from operational runway (September 11 clarification; verify current `brain/context/budget.md`)
+- **Reserve changes:** Kay clarified $42K operations and $38K diligence on September 11, 2026, with contingency exhausted. This supersedes the rounded $40K. Deal stage does not change the reserve; hypothetical release is not approval.
 - **Post-close or fund wind-down:** Keep the reserve until Kay explicitly approves a change or release.
 - **Typical DD costs per deal:**
   - Quality of Earnings (QofE): $15,000-25,000

@@ -7,9 +7,16 @@ type: project
 **Built:** 2026-03-23
 **Skill:** `.claude/skills/budget-manager/SKILL.md` with 4 modes (monthly, runway, tech-audit, transition)
 
-**Fund Position (as of Feb 28, 2026):**
+**Current instructions (September 11 discussion plus September 12 CFO follow-up):**
+- $42K allocated to operations, $38K to diligence, contingency exhausted; not verified September bank cash.
+- Fund period: February 7, 2025 through February 7, 2027. Use anniversary years, not calendar years.
+- Rent ended August 31; $2K deposit pending receipt. DealsX prior pause is a forward assumption pending vendor confirmation; September 12 follow-up corrects unpaid invoices to $3,220. Avoid double-counting balances already net of these items.
+- September 12 payroll cadence scenarios were discussed, but none chosen or executed; annual salary remains unchanged and skipped weeks would have no catch-up intended. No diligence reserve release authorized.
+- Read `brain/outputs/2026-09-12-budget-runway-followup-aug-2026.md` before using older scenarios: rebuilt monthly forecast $20,388.75 before interest supersedes $19,635.76. Actual September cash and payroll cutoff remain unverified.
+
+**Historical Fund Position (as of Feb 28, 2026; superseded for current planning):**
 - Cash: $255,724 (46.3% of $551,825)
-- DD Reserve: $40K; reconfirmed by Kay September 11, 2026, unchanged until explicit approval
+- DD Reserve then: $40K (current clarified allocation is $38K)
 - Available for ops: $215,724
 - Target burn: $17,300/month (11 months to Feb 2027 deadline)
 - Current steady-state: $19,000-22,000/month
@@ -27,7 +34,7 @@ type: project
 
 **Key decisions:**
 - Health insurance: $33K/yr unbudgeted, paid in installments, one left
-- DD reserve: $40K until Kay explicitly changes it. September 11 correction supersedes the unsupported automatic LOI-stage escalation.
+- DD reserve: current $38K after the September 11 original-budget clarification. No automatic LOI-stage escalation.
 - Overseas support previously $2,500/mo (Jul-Dec 2025), replaced by JJ at $1,040/mo
 - JJ: 2-3 week cold calling evaluation starting now. If subpar, find cheaper alternative.
 - Bookkeeper: transition to Kick + Claude by June 2026 ($247/mo savings)

@@ -1,7 +1,7 @@
 {
   "verb": "schedule-from-todo-days",
-  "timestamp": "20260901-112804",
-  "sheet_id": "12dvGVZXYImCxF820pgVEXvAdwpm38i5SqzE3mn3rsFI",
+  "timestamp": "20260914-024721",
+  "sheet_id": "1AIUuFMQTgPA8jttANMqsMbIsvXSNnqJdh0kSbaa_BqA",
   "ranges": {
     "'To Do'!A1:H400": [
       [
@@ -173,15 +173,6 @@
       [
         "Not Completed",
         "Switch to higher-yield business savings account",
-        "Work",
-        "",
-        "",
-        "",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
-        "Update bank accounts with new G&B address",
         "Work",
         "",
         "",
@@ -631,16 +622,6 @@
       ],
       [
         "Not Completed",
-        "Reconnect with Andrew Freiman re: Chenmark intro",
-        "Work",
-        "G&B",
-        "",
-        "Discuss Chenmark and whether an intro makes sense.",
-        "Short Term",
-        "Wednesday"
-      ],
-      [
-        "Not Completed",
         "Complete Quarterly Update",
         "Work",
         "G&B",
@@ -680,16 +661,6 @@
       ],
       [
         "Not Completed",
-        "Complete paperwork for my passport renewal",
-        "Home",
-        "Home",
-        "2026-08-21",
-        "",
-        "Short Term",
-        "Friday"
-      ],
-      [
-        "Not Completed",
         "Put fuel & recovery lists to refrigerator",
         "Home",
         "Home",
@@ -720,15 +691,6 @@
       ],
       [
         "Not Completed",
-        "Family Admin: email afterschool program about waitlists and 9-5 coverage options.",
-        "Home",
-        "Home",
-        "",
-        "Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
-        "Short Term"
-      ],
-      [
-        "Not Completed",
         "Email Jackie Hirsh: ask whether inventory is included in LOI offer or on top",
         "Work",
         "G&B",
@@ -739,13 +701,250 @@
       ],
       [
         "Not Completed",
-        "Follow up on Boulay emails to schedule time",
+        "Add seller-alignment section to first pages of SIM",
+        "Work",
+        "Sidney Garber",
+        "",
+        "Outline what we know, what seller agrees with, and what still needs repetition/clarification.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Live Deal / Model: track rolling 12-month file, salary detail, and org chart",
+        "Work",
+        "Sidney Garber",
+        "",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Build buyer vs capital conviction checklist for SIM",
+        "Work",
+        "Sidney Garber",
+        "",
+        "Separate Kay/G&B go-no-go issues from investor/lender questions; make sure each is answered or mitigated in the SIM.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Set up Sidney Garber shared Drive data room + request-list structure",
+        "Work",
+        "Sidney Garber",
+        "",
+        "Use shared Google Drive; organize first-round and follow-up seller diligence requests.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Pick up my items from One Hanover Square",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Pay Hetzner invoice",
         "Work",
         "G&B",
         "",
         "",
         "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Pay DealsX invoice",
+        "Work",
+        "G&B",
+        "",
+        "Invoice #00700150, ,520.00 outstanding",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Await receipt of track rolling 12-month file, salary detail, and org chart",
+        "",
+        "",
+        "",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Pause DealsX before October billing",
+        "Work",
+        "G&B",
+        "2026-09-28",
+        "",
+        "Short Term",
         "Monday"
+      ],
+      [
+        "Not Completed",
+        "Book October conference",
+        "Work",
+        "G&B",
+        "2026-09-14",
+        "Monday September 14: book the planned October conference. Budget $1,300 one-time; not booked or paid as of September 12.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Contact NY health insurance broker to compare family coverage costs",
+        "Home",
+        "Healthcare",
+        "2026-09-14",
+        "Monday September 14: NY State of Health broker directory: https://nystateofhealth.ny.gov/agent/hx_brokerSearch . Enter ZIP code or county; select Broker and Families and Individuals under 65, then Show Results. NY State of Health assistance: 855-355-5777 (Mon-Fri 8am-8pm; Sat 9am-1pm). Certified broker application/enrollment help is free. Compare current coverage through husband's employer costing $2,750/month against alternatives; check family doctors, prescriptions, deductibles, out-of-pocket maximums, total annual cost and earliest coverage effective date. Ask whether family members can use different plans and what enrollment eligibility applies before assuming savings.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Submit Kaiden to: State Models, Zuri Models, Teri B and Stellar",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Not Completed",
+        "Send & Print resume for Brooke",
+        "",
+        "",
+        "",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Print family photo for kids",
+        "",
+        "",
+        "",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Reconnect with Andrew Freiman re: Chenmark intro",
+        "Work",
+        "G&B",
+        "",
+        "Discuss Chenmark and whether an intro makes sense.",
+        "Short Term",
+        "Wednesday"
+      ],
+      [
+        "Completed",
+        "Help Anthony with mapping in QuickBooks",
+        "Work",
+        "",
+        "2026-09-08",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Update bank accounts with new G&B address",
+        "Work",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Complete paperwork for my passport renewal",
+        "Home",
+        "Home",
+        "2026-08-21",
+        "",
+        "Short Term",
+        "Friday"
+      ],
+      [
+        "Completed",
+        "Family Admin: email afterschool program about waitlists and 9-5 coverage options.",
+        "Home",
+        "Home",
+        "",
+        "Dropped per Kay on 2026-08-30: calendar time blocks should live on the calendar, not in Task Manager.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Pipeline: confirm EPG closed / not proceeding",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Schedule Boulay/QOE scoping call: scope, cost, inventory diligence experience",
+        "Work",
+        "Sidney Garber",
+        "",
+        "From 2026-08-31 Camilla/Kay TB: stay slotted post-LOI, but do not start paid work before internal go/no-go gates.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Text Brooke to schedule seller feedback call + Monday cadence",
+        "Work",
+        "Sidney Garber",
+        "",
+        "If no seller response; schedule feedback call this week and establish recurring Monday seller meeting.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "DealsX / Pipeline Support: confirm Camilla is receiving interested-lead emails and channel updates",
+        "Work",
+        "DealsX",
+        "",
+        "",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Build Acumen-modeled pre/post-LOI diligence list + spend gates",
+        "Work",
+        "Sidney Garber",
+        "",
+        "Include first-round data request list, follow-up list, and stop/continue gates before QOE/legal/insurance/lending spend.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Completed",
+        "Pipeline: move Sidney Garber to LOI Submitted",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term",
+        "Tuesday"
       ],
       [
         "Completed",
@@ -2303,6 +2502,88 @@
         "Tuesday"
       ],
       [
+        "Completed",
+        "Download Start Virtual bank account statements",
+        "Work",
+        "Start Virtual",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Send lease break contract to Clayton",
+        "Home",
+        "Home",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Email PS3 about no longer attendings",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "pay health bills",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Submit Kilian to: State Models, Zuri Models, Teri B and Stellar",
+        "Home",
+        "Home",
+        "",
+        "Combined from To Do rows 34, 35, 36, 37, 38 based on Sat slot 5.",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Send Quarterly Update",
+        "Work",
+        "G&B",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Process Gusto Health Reimb",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Completed",
+        "Send resume to Erika for review",
+        "",
+        "",
+        "",
+        "",
+        "Short Term"
+      ],
+      [
+        "Dropped",
+        "Live Deal / SIM: flesh out growth and competition sections",
+        "Work",
+        "Sidney Garber",
+        "",
+        "Dropped from Kay To Do per 2026-08-31 transcript: Camilla owns growth and competition sections.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
         "Dropped",
         "Send new email outreach on dashboard (3 companies)",
         "Work",
@@ -3160,101 +3441,11 @@
         "",
         "Moved into daily tab checklist rows instead of recurring To Do task rows.",
         "Weekly Recurring Sat"
-      ],
-      [
-        "Not Completed",
-        "Live Deal / Sidney Garber: reach out to Brooke about LOI updates",
-        "Work",
-        "Sidney Garber",
-        "",
-        "",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Not Completed",
-        "Live Deal / Sidney Garber: work through Camilla | Kay TB agenda action items",
-        "Work",
-        "Sidney Garber",
-        "",
-        "",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Not Completed",
-        "DealsX / Pipeline Support: confirm Camilla is receiving interested-lead emails and channel updates",
-        "Work",
-        "DealsX",
-        "",
-        "",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Not Completed",
-        "Live Deal / Diligence: build pre- and post-LOI diligence list modeled on Acumen",
-        "Work",
-        "Sidney Garber",
-        "",
-        "",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Not Completed",
-        "Live Deal / SIM: flesh out growth and competition sections",
-        "Work",
-        "Sidney Garber",
-        "",
-        "",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Not Completed",
-        "Live Deal / Model: track rolling 12-month file, salary detail, and org chart",
-        "Work",
-        "Sidney Garber",
-        "",
-        "",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Not Completed",
-        "Live Deal / Conviction: separate buyer conviction from capital-side conviction",
-        "Work",
-        "Sidney Garber",
-        "",
-        "",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Not Completed",
-        "Pipeline: move Sidney Garber to LOI Submitted",
-        "Work",
-        "G&B",
-        "",
-        "",
-        "Short Term",
-        "Tuesday"
-      ],
-      [
-        "Not Completed",
-        "Pipeline: confirm EPG closed / not proceeding",
-        "Work",
-        "G&B",
-        "",
-        "",
-        "Short Term",
-        "Tuesday"
       ]
     ],
     "'Week'!A1:O38": [
       [
-        "WEEK OF Aug 30-Sep 5"
+        "WEEK OF Sep 13-19"
       ],
       [],
       [
@@ -3264,70 +3455,21 @@
       [],
       [
         "",
-        "SUNDAY \u00b7 Aug 30",
+        "SUNDAY \u00b7 Sep 13",
         "",
-        "MONDAY \u00b7 Aug 31",
+        "MONDAY \u00b7 Sep 14",
         "",
-        "TUESDAY \u00b7 Sep 1",
+        "TUESDAY \u00b7 Sep 15",
         "",
-        "WEDNESDAY \u00b7 Sep 2",
+        "WEDNESDAY \u00b7 Sep 16",
         "",
-        "THURSDAY \u00b7 Sep 3",
+        "THURSDAY \u00b7 Sep 17",
         "",
-        "FRIDAY \u00b7 Sep 4",
+        "FRIDAY \u00b7 Sep 18",
         "",
-        "SATURDAY \u00b7 Sep 5"
+        "SATURDAY \u00b7 Sep 19"
       ],
       [],
-      [
-        "",
-        false,
-        "Put fuel & recovery lists to refrigerator",
-        false,
-        "Email Jackie Hirsh: ask whether inventory is included in LOI offer or on top",
-        false,
-        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar",
-        false,
-        "Reconnect with Andrew Freiman re: Chenmark intro",
-        false,
-        "",
-        false,
-        "Create travel plans for July in Paris/France next year",
-        false,
-        "Buy gift for baby Ruby"
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "Follow up on Boulay emails to schedule time",
-        false,
-        "Call IRS to confirm Form 8822-B address update",
-        false,
-        "Change login info for operations folder + operations Gmail account",
-        false,
-        "",
-        false,
-        "Look into GLP1",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Email Melissa to assist with BK Growth contact and file folders",
-        false,
-        "Contact the asset backed lender melissa mentioned",
-        false,
-        "",
-        false,
-        "Review Kai Grey Ventures renewal",
-        false
-      ],
       [
         "",
         false,
@@ -3335,105 +3477,9 @@
         false,
         "Process payroll",
         false,
-        "Locate holdco financial model",
-        false,
-        "Niche intel review",
-        false,
-        "",
-        false,
-        "Submit new PSLF form",
-        false
-      ],
-      [
-        "",
-        false,
-        "Confirm LiveOak payroll transfer coverage",
-        false,
-        "Process conference registrations",
-        false,
-        "Complete Quarterly Update",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Create project for French passports",
-        false
-      ],
-      [
-        "",
-        false,
-        "Schedule exercise classes for the week",
-        false,
-        "",
-        false,
         "Review new SLD video",
         false,
-        "",
-        false,
-        "",
-        false,
-        "Renew kids' work permits",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning.",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Complete paperwork for my passport renewal",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
+        "Niche intel review",
         false,
         "",
         false,
@@ -3443,9 +3489,9 @@
       [
         "",
         false,
-        "",
+        "Confirm LiveOak payroll transfer coverage",
         false,
-        "",
+        "Process conference registrations",
         false,
         "",
         false,
@@ -3454,6 +3500,150 @@
         "",
         false,
         "Check NYC Housing Connect for new Manhattan lotteries",
+        false
+      ],
+      [
+        "",
+        false,
+        "Schedule exercise classes for the week",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "",
         false
       ],
       [
@@ -3698,1096 +3888,12 @@
         "notes \u00b7 ideas \u00b7 jot"
       ]
     ],
-    "'Sun'!A21:E70": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Mon'!A21:E70": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Tue'!A21:E70": [
-      [
-        false,
-        "Live Deal / Sidney Garber: reach out to Brooke about LOI updates",
-        "Work",
-        "Sidney Garber"
-      ],
-      [
-        false,
-        "Live Deal / Sidney Garber: work through Camilla | Kay TB agenda action items",
-        "Work",
-        "Sidney Garber"
-      ],
-      [
-        false,
-        "DealsX / Pipeline Support: confirm Camilla is receiving interested-lead emails and channel updates",
-        "Work",
-        "DealsX"
-      ],
-      [
-        false,
-        "Live Deal / Diligence: build pre- and post-LOI diligence list modeled on Acumen",
-        "Work",
-        "Sidney Garber"
-      ],
-      [
-        false,
-        "Live Deal / SIM: flesh out growth and competition sections",
-        "Work",
-        "Sidney Garber"
-      ],
-      [
-        false,
-        "Live Deal / Model: track rolling 12-month file, salary detail, and org chart",
-        "Work",
-        "Sidney Garber"
-      ],
-      [
-        false,
-        "Live Deal / Conviction: separate buyer conviction from capital-side conviction",
-        "Work",
-        "Sidney Garber"
-      ],
-      [
-        false,
-        "Pipeline: move Sidney Garber to LOI Submitted",
-        "Work",
-        "G&B"
-      ],
-      [
-        false,
-        "Pipeline: confirm EPG closed / not proceeding",
-        "Work",
-        "G&B"
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Wed'!A21:E70": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Thu'!A21:E70": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Fri'!A21:E70": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ],
-    "'Sat'!A21:E70": [
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ],
-      [
-        false
-      ]
-    ]
+    "'Sun'!A21:E70": [],
+    "'Mon'!A21:E70": [],
+    "'Tue'!A21:E70": [],
+    "'Wed'!A21:E70": [],
+    "'Thu'!A21:E70": [],
+    "'Fri'!A21:E70": [],
+    "'Sat'!A21:E70": []
   }
 }

@@ -41,3 +41,16 @@ For [[entities/kay-schneider]] and [[entities/greenwich-and-barrow]]. User's num
 - User's reserve correction and explicit numbered responses in this canonical task.
 - [[outputs/2026-09-11-goodmorning]], [[outputs/2026-09-11-budget-report-aug-2026]], [[context/budget]], and targeted reserve provenance audit.
 - Prior policy introduced March23 in commitb3ee6200; agent memory recorded a graduated reserve, but no direct user approval found in bounded review. No archived task read.
+
+## Later September 11 clarifications recovered September 14
+
+- UPDATED: [[entities/kay-schneider]] clarified the original budget: $42K operating allocation, $38K diligence allocation, contingency already exhausted. This supersedes the earlier rounded $40K; see [[context/budget]]. Neither allocation independently verifies current bank cash.
+- PASS: Fund runs February 7, 2025 through February 7, 2027. Calendar-year comparisons do not explain the full fund-period overrun. Full dated reconciliation remains open.
+- PASS: DealsX paused, with July $1,520 plus August $800 plus September $800 owed; rent ended August 31, $2K deposit remains expected until receipt is verified. Check net/gross balance basis before adding/subtracting again.
+- PASS: Cost-cut discussion excludes salary and health reimbursement. No subscription cancellation, conference cancellation, reserve release or new provider engagement authorized.
+- PASS: Goodwin engagement defers acquisition invoices to an acquisition close with wind-up exception; no Boulay transaction quote/payment schedule established. Total transaction fees and pre-close cash exposure must remain separate.
+- SENT: User reported emailing One Hanover Square about Saturday access; later confirmed it was open. Access question closed; physical pickup was not confirmed completed.
+- DEFER: Provider scope/payment terms and full anniversary-period cash reconciliation remain unresolved; earlier fee and runway figures are scenarios.
+- UPDATED: Recovery uses this canonical task and repo artifacts only; the old archived task was not read.
+
+- SUPERSEDED WHERE NOTED: The later [[outputs/2026-09-12-budget-runway-followup-aug-2026]] records another task’s September 12 CFO work: $3,220 DealsX liability, rebuilt $20,388.75 monthly forecast, and unchosen payroll-cadence scenarios. Use that newer evidence for current planning; the entries above preserve the earlier conversation, not current invoice totals.

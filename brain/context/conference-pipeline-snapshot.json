@@ -2,784 +2,1530 @@
   "account": "kay.s@greenwichandbarrow.com",
   "calendar_events": [
     {
-      "date": "2026-06-05",
-      "htmlLink": "https://www.google.com/calendar/event?eid=Xzcwc2pjaDI0ODRyajZiYTY2MTMzOGI5azZjbzQyYmEyNzBvamliOWs4OHM0MmgxazcwcWoyY2hnOGcga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Car to farmingdale"
-    },
-    {
-      "date": "2026-06-05",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MHZzZzJwcjU5N2o4ajF1YzBvcHNhYTVsYWkga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "Heritage Club at Bethpage|Tillinghast Reception Room| - 99 Quaker Meeting House Road | Farmingdale, NY 11735",
-      "status": "confirmed",
-      "summary": "XPX Long Island - Wrapping up the 2026 Case Study \u2013 How did it end up?"
-    },
-    {
-      "date": "2026-06-08",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzhvbzNpZTI1NnAxamNiYTQ2OTIzMmI5azZzcGoyYjlvNjEyazJiOWk2MHIzOGgyMTc0cGpjZTFnODhfMjAyNjA2MDgga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "date": "2026-08-31",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzhvbzNpZTI1NnAxamNiYTQ2OTIzMmI5azZzcGoyYjlvNjEyazJiOWk2MHIzOGgyMTc0cGpjZTFnODhfMjAyNjA4MzEga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
       "location": "",
       "status": "confirmed",
       "summary": "Auto transfer running to cover payroll (LiveOak)"
     },
     {
-      "date": "2026-06-08",
-      "htmlLink": "https://www.google.com/calendar/event?eid=NXN0OTQwYnZ2MmQ3Y2J2bjk1YTFoaGo5bjAga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "date": "2026-08-31",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzY4bzMyZHE1OGdvamdiYTE2NHM0NGI5azYwcTQyYjlvNnNxNDRiYTE2OHEzYWU5aDhvcjM2ZDlrOGNfMjAyNjA4MzFUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
-      "summary": "Harrison I Kay"
+      "summary": "Review Good Morning Brief"
     },
     {
-      "date": "2026-06-09",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzhncTNjZGE0NnQwazJiOWs4Z3JrOGI5azc0cTNjYjlwNm9xM2FiOXA2b3E0NmdhNjc0cjNpY3BnOGNfMjAyNjA2MDkga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Auto Payroll running (Gusto)"
-    },
-    {
-      "date": "2026-06-09",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc2OTM0MmhobzY4cDNjZGhnOG9xNDhncGc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnNzRvajRoMXA2c3NqNmhoazhkMGplY3BrODUxM2VkMjY4b3FrMmgyMTZjcGo2YzFuNmNvZyBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "https://us02web.zoom.us/j/82481519638?pwd=7e1KJ9kWvTYCMDLTzMoSbBQPCZyV43.1",
-      "status": "confirmed",
-      "summary": "Jay Davis <> Kay Schneider"
-    },
-    {
-      "date": "2026-06-09",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MnBiN29wb2w0dmFsa3BraXJrZzJlOGJndTQga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Kay/Warren- Art in Search"
-    },
-    {
-      "date": "2026-06-10",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MnU0dWcycnZscW1qcjIybG5mbWY3OGIzZTEga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "Rosie Dunn's Victorian Pub, 729 3rd Ave, New York, NY 10017, USA",
-      "status": "confirmed",
-      "summary": "Heels to Deals"
-    },
-    {
-      "date": "2026-06-10",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MjFrc2lzaTJ1NmU5ZzFxN20xNHZubDJwZ3Yga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "https://us06web.zoom.us/w/84501785145?tk=4cv6ostvA72Cc5uqdHX33oUiZ_2k0zO7eiORfvgroNg.DQkAAAATrLLqORZnTHpweExRdVRRaWFHMHhDdjJMd0tnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      "status": "confirmed",
-      "summary": "Debt & Deal Structuring"
-    },
-    {
-      "date": "2026-06-11",
-      "htmlLink": "https://www.google.com/calendar/event?eid=bTF2cm42c2hiYm1ocG1iMzM1cTQ0ZXVwZmVfMjAyNjA2MTBUMTYzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "date": "2026-08-31",
+      "htmlLink": "https://www.google.com/calendar/event?eid=Z3NlMXZmZGpkNDhuNGg0dWZyaDdvcjhidWFfMjAyNjA4MzFUMTQwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
       "summary": "Team TB Camilla I Kay"
     },
     {
-      "date": "2026-06-11",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzYwcmpnZ2hqNnAwazRiYTM2bDE0Y2I5azcxMWo4YjlvODRvM2diOWg4b3AzMGgxZzYxMmo2Y3EyOGMga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "date": "2026-08-31",
+      "htmlLink": "https://www.google.com/calendar/event?eid=YmFhMjhiYmVkNWY0NGQ3YWFlOTM1N2M3YWE4OGI1MGNfMjAyNjA4MzFUMTQzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
-      "summary": "Cancel DealsX"
+      "summary": "Outreach work"
     },
     {
-      "date": "2026-06-11",
-      "htmlLink": "https://www.google.com/calendar/event?eid=X2M4c2plcXJsZDhzbXVkcGtlZGw2aXAxaGRncjZlczlqY3RoamlyMzNjaG42cXNyazZjb202cDNoNmdvNzBzajljZG02aXJiamVocDNpb3I0ZGNyMzRzamE2aGhqaXByZTZocG1rcGo1ZWRuM2NkamllOWkwIGtheS5zQGdyZWVud2ljaGFuZGJhcnJvdy5jb20",
-      "location": "https://us02web.zoom.us/w/89994544815?tk=D3in29aAf3qAdqiLWhKEu8bavhzJrqPDJi4JvjGli7Y.DQkAAAAU9BfGrxZtLUZsNE9sZFRzR0RzUHpteG9FQ0NBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&pwd=s9rEhmypf3pGumAOOeTUdaFVOmTPc2.1&uuid=WN_0OWQTRsMSMKfHVQKEfD5HA",
-      "status": "confirmed",
-      "summary": "Score It or Skip It: A Framework for Fast Deal Evaluation"
-    },
-    {
-      "date": "2026-06-11",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc2Y28zaWU5bDhjb2pnZHE0OGtzNDhncGc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnNjkwazhkaGs3NG9qZ2NwajY0b2tjaDlrNmgwazRnaG02cDJqYWU5aThjcDM4ZDFvNjEzMCBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "white olive - 39 W 55th St",
-      "status": "confirmed",
-      "summary": "Lunch"
-    },
-    {
-      "date": "2026-06-12",
-      "htmlLink": "https://www.google.com/calendar/event?eid=X2M4c2plcXJsZDhzbjBkajdkc3BtMnA5aGQwcjY2czNhNzFpamlycjM2bGtqY3NiaGM5aWpnY2JhZG9xNzBvaGxjaG83NHJiOWR0cDNnb3BsZG9yM2dycmE2NWlqaXMxbWVscTcwcGIzY2huNnFzOCBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "https://zoom.us/w/94058133498?tk=hQwGIkVMmOHe6ZenHrMFTMd1qGb4mbnArRFeF0PnW1I.DQkAAAAV5k03-hZVRWRVVHdZYVFJMi1yM00zTEpYQUtBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&uuid=WN_hUsgM5BjSPq-51Y4Azv56Q",
-      "status": "confirmed",
-      "summary": "The Allergen Update: Bed Bugs"
-    },
-    {
-      "date": "2026-06-15",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzhvbzNpZTI1NnAxamNiYTQ2OTIzMmI5azZzcGoyYjlvNjEyazJiOWk2MHIzOGgyMTc0cGpjZTFnODhfMjAyNjA2MTUga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "date": "2026-08-31",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NTVkY2I1OGI2ZjI4NDBmYmI4ZDVkNmFjMzY2MDk2NjhfMjAyNjA4MzFUMTUzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
-      "summary": "Auto transfer running to cover payroll (LiveOak)"
+      "summary": "Relationship / Call Window"
     },
     {
-      "date": "2026-06-15",
-      "htmlLink": "https://www.google.com/calendar/event?eid=Xzhjcms0aGhsOGwwajZiYTY2OHJqNGI5azcwcDQ4YjlwOG9vamdiOW42Y3M0OGg5bzhjcjQ2Z3BqOGcga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "date": "2026-08-31",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MmQ0NTM5ZTkyMmQ5NGNmNDgzNzU0ODQ3ZGUwODhlOWJfMjAyNjA4MzFUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
-      "summary": "Tom I Kay"
+      "summary": "Strategy / Research"
     },
     {
-      "date": "2026-06-16",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzhncTNjZGE0NnQwazJiOWs4Z3JrOGI5azc0cTNjYjlwNm9xM2FiOXA2b3E0NmdhNjc0cjNpY3BnOGNfMjAyNjA2MTYga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "date": "2026-08-31",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MjdjNDBjNmUwYzIwNDQzZDhkYTM0MGY2OTI0Y2E1MTlfMjAyNjA5MDFUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-01",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzhncTNjZGE0NnQwazJiOWs4Z3JrOGI5azc0cTNjYjlwNm9xM2FiOXA2b3E0NmdhNjc0cjNpY3BnOGNfMjAyNjA5MDEga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
       "location": "",
       "status": "confirmed",
       "summary": "Auto Payroll running (Gusto)"
     },
     {
-      "date": "2026-06-16",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MHMwbDVnbGFtamhiZHA4cDNtdmZ2N3Jpamwga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "1108 Morris Tpke, Summit, NJ 07901",
-      "status": "confirmed",
-      "summary": "You're Invited:  Mind Your Business & Legacy | Smart Steps for Business Owners"
-    },
-    {
-      "date": "2026-06-16",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MHAzdGozZGs0bnA1M21uNTdicHNqdXVtOXIga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "date": "2026-09-01",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzY4bzMyZHE1OGdvamdiYTE2NHM0NGI5azYwcTQyYjlvNnNxNDRiYTE2OHEzYWU5aDhvcjM2ZDlrOGNfMjAyNjA5MDFUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
-      "summary": "Afternoon client visits (SoHo & Meatpacking)"
+      "summary": "Review Good Morning Brief"
     },
     {
-      "date": "2026-06-16",
-      "htmlLink": "https://www.google.com/calendar/event?eid=bTF2cm42c2hiYm1ocG1iMzM1cTQ0ZXVwZmVfMjAyNjA2MTdUMTYzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "date": "2026-09-01",
+      "htmlLink": "https://www.google.com/calendar/event?eid=YmFhMjhiYmVkNWY0NGQ3YWFlOTM1N2M3YWE4OGI1MGNfMjAyNjA5MDFUMTQzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
-      "summary": "Team TB Camilla I Kay"
+      "summary": "Outreach work"
     },
     {
-      "date": "2026-06-17",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MDFxdGdrdDZmNXZ1Y2JyNDdhOHR0ZWJ0am0ga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "date": "2026-09-01",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NTVkY2I1OGI2ZjI4NDBmYmI4ZDVkNmFjMzY2MDk2NjhfMjAyNjA5MDFUMTUzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
-      "summary": "Richard I Kay"
+      "summary": "Relationship / Call Window"
     },
     {
-      "date": "2026-06-17",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc2NHEzaWdxNTZnczQ0Y3BsOHAyNDhncGc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnOGdyazZjMWo4b3NqNmMxbThjczMwaDlrNjhzM2NlOW83MTJrY2MyMzZvb2ppY2hsOGNwZyBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "date": "2026-09-01",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MmQ0NTM5ZTkyMmQ5NGNmNDgzNzU0ODQ3ZGUwODhlOWJfMjAyNjA5MDFUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-01",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MjdjNDBjNmUwYzIwNDQzZDhkYTM0MGY2OTI0Y2E1MTlfMjAyNjA5MDJUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-02",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzY4bzMyZHE1OGdvamdiYTE2NHM0NGI5azYwcTQyYjlvNnNxNDRiYTE2OHEzYWU5aDhvcjM2ZDlrOGNfMjAyNjA5MDJUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-02",
+      "htmlLink": "https://www.google.com/calendar/event?eid=YmFhMjhiYmVkNWY0NGQ3YWFlOTM1N2M3YWE4OGI1MGNfMjAyNjA5MDJUMTQzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-02",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NTVkY2I1OGI2ZjI4NDBmYmI4ZDVkNmFjMzY2MDk2NjhfMjAyNjA5MDJUMTUzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-02",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MmQ0NTM5ZTkyMmQ5NGNmNDgzNzU0ODQ3ZGUwODhlOWJfMjAyNjA5MDJUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-02",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MjdjNDBjNmUwYzIwNDQzZDhkYTM0MGY2OTI0Y2E1MTlfMjAyNjA5MDNUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-03",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzY4bzMyZHE1OGdvamdiYTE2NHM0NGI5azYwcTQyYjlvNnNxNDRiYTE2OHEzYWU5aDhvcjM2ZDlrOGNfMjAyNjA5MDNUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-03",
+      "htmlLink": "https://www.google.com/calendar/event?eid=YmFhMjhiYmVkNWY0NGQ3YWFlOTM1N2M3YWE4OGI1MGNfMjAyNjA5MDNUMTQzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-03",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc2bDIzOGNoaDc1MTQ2ZGkzNmNzazhoMWc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnNzUwamdoaG02MHFqY2dhNTYwcDNlZ2hrOGdzNGNjMXA4NTM0YWRwcDhvcmthZzlnOG9vMCBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "Microsoft Teams Meeting",
       "status": "confirmed",
-      "summary": "Kay Schneider"
+      "summary": "Greenwich & Barrow <> Boulay"
     },
     {
-      "date": "2026-06-17",
-      "htmlLink": "https://www.google.com/calendar/event?eid=YXBsOWY4ZWZrcXNubDlqcWNvNjd1NTFrbW8ga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "date": "2026-09-03",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NTVkY2I1OGI2ZjI4NDBmYmI4ZDVkNmFjMzY2MDk2NjhfMjAyNjA5MDNUMTUzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
-      "summary": "G&B Industry Brainstorm"
+      "summary": "Relationship / Call Window"
     },
     {
-      "date": "2026-06-17",
-      "htmlLink": "https://www.google.com/calendar/event?eid=NGc2amdha21sYmllbnMwY3Frb2o5bnFjdjcga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "date": "2026-09-03",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MmQ0NTM5ZTkyMmQ5NGNmNDgzNzU0ODQ3ZGUwODhlOWJfMjAyNjA5MDNUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
-      "summary": "Melissa I Kay"
+      "summary": "Strategy / Research"
     },
     {
-      "date": "2026-06-17",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc2aDFqYWRhNDZzc2syY2htOGNvazhncGc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnNzBvamVjMW02NTBqZWg5bzhoMzM2ZTFrNzEwazJkcGw3NHEzOGRwaTZvcTQ4Z3BtOHAzMF8yMDI2MDYxN1QxNzAwMDBaIGtheS5zQGdyZWVud2ljaGFuZGJhcnJvdy5jb20",
-      "location": "",
-      "status": "confirmed",
-      "summary": "WSN Group"
-    },
-    {
-      "date": "2026-06-17",
-      "htmlLink": "https://www.google.com/calendar/event?eid=NW42OHRhdjMya2pmNWduODMyZnJmbDdlNmcga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Carlos I Kay checkin"
-    },
-    {
-      "date": "2026-06-18",
-      "htmlLink": "https://www.google.com/calendar/event?eid=NHAzYWg4M3R2Z2E3OXBkbnJha2Y2MWFrNHAga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "https://us02web.zoom.us/w/81583725938?tk=7sqqRjm_2E_wxp7XtWu-f-f9WlFRZY78-6kKcgbDrhI.DQkAAAAS_sTdchZzcC1KYzFvX1FtbXlpQ2RzZW5SY013AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&pwd=itjTdd2LaPcxIqbiDOc9bzuK1lq4yY.1&uuid=WN_W29KIMBNQGivXlDhuLryzA",
-      "status": "confirmed",
-      "summary": "Understanding a Quality of Earnings Analysis: What's Included and Why"
-    },
-    {
-      "date": "2026-06-18",
-      "htmlLink": "https://www.google.com/calendar/event?eid=c2NnMDRpa2ZsbjhzMTNhdWNldTQ5dDRjcmdfMjAyNjA2MjRUMTYwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Jeff I Kay Mtg"
-    },
-    {
-      "date": "2026-06-18",
-      "htmlLink": "https://www.google.com/calendar/event?eid=NDJhZDdwcGE0ZWZidWJlNjdlbWdxcGdqNzQga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Luka I Kay"
-    },
-    {
-      "date": "2026-06-18",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MWl0MHEwY2FqZnJsZ24wZW9qNjAwbmhsZmgga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Sara I Kay"
-    },
-    {
-      "date": "2026-06-22",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzhvbzNpZTI1NnAxamNiYTQ2OTIzMmI5azZzcGoyYjlvNjEyazJiOWk2MHIzOGgyMTc0cGpjZTFnODhfMjAyNjA2MjIga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Auto transfer running to cover payroll (LiveOak)"
-    },
-    {
-      "date": "2026-06-22",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MG1jc2NuaW83cXA4ODVtaDNtYjR2ZjBsc2Qga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Sam I Steuart I Kay"
-    },
-    {
-      "date": "2026-06-22",
-      "htmlLink": "https://www.google.com/calendar/event?eid=NmJrcGNxaDJnMGFmcDQ4dTM0MTRiNWVuazAga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "One Hanover, 1 Hanover Square, New York, NY 10004, USA",
-      "status": "confirmed",
-      "summary": "Mike I Kay"
-    },
-    {
-      "date": "2026-06-23",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzhncTNjZGE0NnQwazJiOWs4Z3JrOGI5azc0cTNjYjlwNm9xM2FiOXA2b3E0NmdhNjc0cjNpY3BnOGNfMjAyNjA2MjMga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Auto Payroll running (Gusto)"
-    },
-    {
-      "date": "2026-06-23",
-      "htmlLink": "https://www.google.com/calendar/event?eid=Xzg0cGs0Y3BoNjByazJiYTY2NG80MmI5azYxMjM4YmEyNjhxM2ViYTU4cDIzZWMxajcwcjM2Y2hqNmMga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "Chelsea Market\n75 Ninth Ave, New York, NY 10011, United States",
-      "status": "confirmed",
-      "summary": "Juan I Kay"
-    },
-    {
-      "date": "2026-06-23",
-      "htmlLink": "https://www.google.com/calendar/event?eid=X2M4c2plcXJsZDhzbjBkamZkdGwzOG9waGQwcjMwczlqY2xobWdyajM2bGtqY3NiaGM5aWpnY2JhZG9xNzBvaGxjaG83NHJiOWR0cDNnb3BsZG9yM2dycmE2NWlqaXMxbWVscTcwcGIzY2huNnFzOCBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "https://cornell.zoom.us/w/96120104727?tk=7eQXBOe-lotuiVsWMN1wwJSQ1OVkHdxQseqpH9G8DsM.DQkAAAAWYTRnFxZxdldUdGV3WlFsYTdkdmpJeldpSlJnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&pwd=CJmEELbiaWCRogUWXvfFp99B97ssF0.1&uuid=WN_hsrYPrtBS6a7bbCW0neIbg",
-      "status": "confirmed",
-      "summary": "Cornell Alumni Career Programs: Financial Literacy - Starting a Business"
-    },
-    {
-      "date": "2026-06-24",
-      "htmlLink": "https://www.google.com/calendar/event?eid=X2Nscjc4YmFvYTByNTB0YmplZDc2Y3Qya2V0YjRtcGkwY2xyNmFyamtlY242b3Q5ZWRsZ2cga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "Baton, 432 Park Ave S 10th Floor, New York, NY 10016, USA",
-      "status": "confirmed",
-      "summary": "ETA Deal Team Day: NYC"
-    },
-    {
-      "date": "2026-06-24",
-      "htmlLink": "https://www.google.com/calendar/event?eid=NGl0bGxsMTg0cWZjYWQ1Z3VzMnRuNjE4bWwga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Kay / Alex - meet up at SFC event reminder"
-    },
-    {
-      "date": "2026-06-24",
-      "htmlLink": "https://www.google.com/calendar/event?eid=cjQzdWZkcjNlNW8xbWlpcmVxZjY4dXNmMHVfMjAyNjA2MjRUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Team TB JJ I Kay"
-    },
-    {
-      "date": "2026-06-24",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzYwcmsyYzI2OGtvajBiOXA4ZDMzY2I5azhrcmo2YmEyNjRzMzhiOWw2NG9rNGNoaTYwcWphZzlvODgga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Jeff I Kay Mtg"
-    },
-    {
-      "date": "2026-06-24",
-      "htmlLink": "https://www.google.com/calendar/event?eid=bTF2cm42c2hiYm1ocG1iMzM1cTQ0ZXVwZmVfMjAyNjA2MjRUMTYzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Team TB Camilla I Kay"
-    },
-    {
-      "date": "2026-06-25",
-      "htmlLink": "https://www.google.com/calendar/event?eid=NjJibmVyNmplNDUxbzBjZHBuNWIybnRjZGgga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "Smith & Wollensky, 797 3rd Ave, New York, NY 10022, USA",
-      "status": "confirmed",
-      "summary": "Lunch James I Kay"
-    },
-    {
-      "date": "2026-06-29",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzhvbzNpZTI1NnAxamNiYTQ2OTIzMmI5azZzcGoyYjlvNjEyazJiOWk2MHIzOGgyMTc0cGpjZTFnODhfMjAyNjA2Mjkga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Auto transfer running to cover payroll (LiveOak)"
-    },
-    {
-      "date": "2026-06-29",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzY1MmppZGE2NnNvNDJiYTQ4OHFrNmI5azhvcDQ2YjlwNjBvMzJiOWk2ZDE0OGNobjYwcjQyaGE2NjBfMjAyNjA2MjlUMTczMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Megan <> Kay"
-    },
-    {
-      "date": "2026-06-30",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzhncTNjZGE0NnQwazJiOWs4Z3JrOGI5azc0cTNjYjlwNm9xM2FiOXA2b3E0NmdhNjc0cjNpY3BnOGNfMjAyNjA2MzAga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Auto Payroll running (Gusto)"
-    },
-    {
-      "date": "2026-06-30",
-      "htmlLink": "https://www.google.com/calendar/event?eid=NDFmMjhyaHJxa2pnNWZhdTA3MW8ybGZtMzhfMjAyNjA2MzBUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Coffee w/ Robe"
-    },
-    {
-      "date": "2026-07-01",
-      "htmlLink": "https://www.google.com/calendar/event?eid=bTF2cm42c2hiYm1ocG1iMzM1cTQ0ZXVwZmVfMjAyNjA3MDFUMTYzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Team TB Camilla I Kay"
-    },
-    {
-      "date": "2026-07-01",
-      "htmlLink": "https://www.google.com/calendar/event?eid=YzVsa3BybHRjMjEwcnAwaW5yb3JsaHNpYmJfMjAyNjA3MDFUMTczMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Guillermo I Kay Bi-Weekly Mtg"
-    },
-    {
-      "date": "2026-07-05",
-      "htmlLink": "https://www.google.com/calendar/event?eid=YXRrbjZkYjgzbzdlMzU2azAwZGt2aWEwMHNfMjAyNjA3MDUga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Rachel Olszewski's birthday"
-    },
-    {
-      "date": "2026-07-06",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzhvbzNpZTI1NnAxamNiYTQ2OTIzMmI5azZzcGoyYjlvNjEyazJiOWk2MHIzOGgyMTc0cGpjZTFnODhfMjAyNjA3MDYga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Auto transfer running to cover payroll (LiveOak)"
-    },
-    {
-      "date": "2026-07-07",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzhncTNjZGE0NnQwazJiOWs4Z3JrOGI5azc0cTNjYjlwNm9xM2FiOXA2b3E0NmdhNjc0cjNpY3BnOGNfMjAyNjA3MDcga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Auto Payroll running (Gusto)"
-    },
-    {
-      "date": "2026-07-07",
-      "htmlLink": "https://www.google.com/calendar/event?eid=NDFmMjhyaHJxa2pnNWZhdTA3MW8ybGZtMzhfMjAyNjA3MDdUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Coffee w/ Robe"
-    },
-    {
-      "date": "2026-07-08",
-      "htmlLink": "https://www.google.com/calendar/event?eid=cjQzdWZkcjNlNW8xbWlpcmVxZjY4dXNmMHVfMjAyNjA3MDhUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Team TB JJ I Kay"
-    },
-    {
-      "date": "2026-07-08",
-      "htmlLink": "https://www.google.com/calendar/event?eid=bTF2cm42c2hiYm1ocG1iMzM1cTQ0ZXVwZmVfMjAyNjA3MDhUMTYzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "",
-      "status": "confirmed",
-      "summary": "Team TB Camilla I Kay"
-    },
-    {
-      "date": "2026-07-08",
-      "htmlLink": "https://www.google.com/calendar/event?eid=M25udXM0cWg4ZG5xYXY3anVjYmJtazEwMWpfMjAyNjA3MDJUMjAwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "date": "2026-09-03",
+      "htmlLink": "https://www.google.com/calendar/event?eid=M25udXM0cWg4ZG5xYXY3anVjYmJtazEwMWpfMjAyNjA5MDNUMjAwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "https://zoom.us/j/94351650061",
       "status": "confirmed",
       "summary": "BK Growth 1st Thursday Zoom"
     },
     {
-      "date": "2026-07-09",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MXA2MmkwcWVtajloMm5idG83bHZwcjgxdW5fMjAyNjA3MDlUMjEzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
-      "location": "Stone Street, Stone St, New York, NY 10004, USA",
-      "status": "confirmed",
-      "summary": "One Hanover Happy Hour"
-    },
-    {
-      "date": "2026-07-12",
-      "htmlLink": "https://www.google.com/calendar/event?eid=YXFvaGd2ZmxtYjFkM3RtYmU1NWQ1M2Z0N29fMjAyNjA3MTIga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "date": "2026-09-03",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MjdjNDBjNmUwYzIwNDQzZDhkYTM0MGY2OTI0Y2E1MTlfMjAyNjA5MDRUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
-      "summary": "Melanie Olszewski's birthday"
+      "summary": "Decision Review"
     },
     {
-      "date": "2026-07-13",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzhvbzNpZTI1NnAxamNiYTQ2OTIzMmI5azZzcGoyYjlvNjEyazJiOWk2MHIzOGgyMTc0cGpjZTFnODhfMjAyNjA3MTMga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "date": "2026-09-04",
+      "htmlLink": "https://www.google.com/calendar/event?eid=OTk3YTkzYzA2NDkxNDZjNmFiMDdmMDg3Nzc5NDJmY2ZfMjAyNjA5MDRUMTQwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-04",
+      "htmlLink": "https://www.google.com/calendar/event?eid=Xzg4cjNlZHEyNjUyazZiOW84Z3IzOGI5azhrcmowYjlvNjRzamdiYTQ4OHNrYWNpNDY1MGpnaDIzNjAga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Erin I Kay"
+    },
+    {
+      "date": "2026-09-04",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MTA3MWFjOTE0M2M3NDQ1MmEyZDJkMTQ1NDUyM2E2ZGZfMjAyNjA5MDRUMTQzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Personal Finance / Wealth Monitor"
+    },
+    {
+      "date": "2026-09-04",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MWU3NGY3N2UxZDEwNDBhYWE0NDg4ZTRlZjM0NGUyZWJfMjAyNjA5MDRUMTUzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Nonprofit Operations"
+    },
+    {
+      "date": "2026-09-04",
+      "htmlLink": "https://www.google.com/calendar/event?eid=OGZiZGNhODgxZDBlNGU0YWI4MzQyNjNhZGFmMDJhZDhfMjAyNjA5MDRUMTYzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Family Admin"
+    },
+    {
+      "date": "2026-09-04",
+      "htmlLink": "https://www.google.com/calendar/event?eid=YjA5NTQyMTA3MDVhNDY3YmI3NGU1OTkzZjNjOTI2N2ZfMjAyNjA5MDRUMTczMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Systems / G&B Housekeeping"
+    },
+    {
+      "date": "2026-09-04",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MmIzNWU1ZTNkOWY0NDMxYjg4YmM5MTdhYWIwNmJiYmRfMjAyNjA5MDVUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-06",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZmNoNmdiazdqOGcxNmRnOHBvcTE3ZWl1bTBfMjAyNjA5MDYga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Pete Touhill's birthday"
+    },
+    {
+      "date": "2026-09-07",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzhvbzNpZTI1NnAxamNiYTQ2OTIzMmI5azZzcGoyYjlvNjEyazJiOWk2MHIzOGgyMTc0cGpjZTFnODhfMjAyNjA5MDcga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
       "location": "",
       "status": "confirmed",
       "summary": "Auto transfer running to cover payroll (LiveOak)"
     },
     {
-      "date": "2026-07-14",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzhncTNjZGE0NnQwazJiOWs4Z3JrOGI5azc0cTNjYjlwNm9xM2FiOXA2b3E0NmdhNjc0cjNpY3BnOGNfMjAyNjA3MTQga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "date": "2026-09-07",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MjdjNDBjNmUwYzIwNDQzZDhkYTM0MGY2OTI0Y2E1MTlfMjAyNjA5MDhUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-08",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzhncTNjZGE0NnQwazJiOWs4Z3JrOGI5azc0cTNjYjlwNm9xM2FiOXA2b3E0NmdhNjc0cjNpY3BnOGNfMjAyNjA5MDgga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
       "location": "",
       "status": "confirmed",
       "summary": "Auto Payroll running (Gusto)"
     },
     {
-      "date": "2026-07-14",
-      "htmlLink": "https://www.google.com/calendar/event?eid=NDFmMjhyaHJxa2pnNWZhdTA3MW8ybGZtMzhfMjAyNjA3MTRUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "date": "2026-09-08",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzY4bzMyZHE1OGdvamdiYTE2NHM0NGI5azYwcTQyYjlvNnNxNDRiYTE2OHEzYWU5aDhvcjM2ZDlrOGNfMjAyNjA5MDhUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
-      "summary": "Coffee w/ Robe"
+      "summary": "Review Good Morning Brief"
     },
     {
-      "date": "2026-07-15",
-      "htmlLink": "https://www.google.com/calendar/event?eid=bTF2cm42c2hiYm1ocG1iMzM1cTQ0ZXVwZmVfMjAyNjA3MTVUMTYzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "date": "2026-09-08",
+      "htmlLink": "https://www.google.com/calendar/event?eid=Z3NlMXZmZGpkNDhuNGg0dWZyaDdvcjhidWFfMjAyNjA5MDdUMTQwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
       "summary": "Team TB Camilla I Kay"
     },
     {
-      "date": "2026-07-15",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc2aDFqYWRhNDZzc2syY2htOGNvazhncGc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnNzBvamVjMW02NTBqZWg5bzhoMzM2ZTFrNzEwazJkcGw3NHEzOGRwaTZvcTQ4Z3BtOHAzMF8yMDI2MDcxNVQxNzAwMDBaIGtheS5zQGdyZWVud2ljaGFuZGJhcnJvdy5jb20",
-      "location": "TBD",
+      "date": "2026-09-08",
+      "htmlLink": "https://www.google.com/calendar/event?eid=YmFhMjhiYmVkNWY0NGQ3YWFlOTM1N2M3YWE4OGI1MGNfMjAyNjA5MDhUMTQzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
       "status": "confirmed",
-      "summary": "WSN Group"
+      "summary": "Outreach work"
     },
     {
-      "date": "2026-07-15",
-      "htmlLink": "https://www.google.com/calendar/event?eid=YzVsa3BybHRjMjEwcnAwaW5yb3JsaHNpYmJfMjAyNjA3MTVUMTczMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "date": "2026-09-08",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NTVkY2I1OGI2ZjI4NDBmYmI4ZDVkNmFjMzY2MDk2NjhfMjAyNjA5MDhUMTUzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-08",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MmQ0NTM5ZTkyMmQ5NGNmNDgzNzU0ODQ3ZGUwODhlOWJfMjAyNjA5MDhUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-08",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MjdjNDBjNmUwYzIwNDQzZDhkYTM0MGY2OTI0Y2E1MTlfMjAyNjA5MDlUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-09",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzY4bzMyZHE1OGdvamdiYTE2NHM0NGI5azYwcTQyYjlvNnNxNDRiYTE2OHEzYWU5aDhvcjM2ZDlrOGNfMjAyNjA5MDlUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-09",
+      "htmlLink": "https://www.google.com/calendar/event?eid=YmFhMjhiYmVkNWY0NGQ3YWFlOTM1N2M3YWE4OGI1MGNfMjAyNjA5MDlUMTQzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-09",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NTVkY2I1OGI2ZjI4NDBmYmI4ZDVkNmFjMzY2MDk2NjhfMjAyNjA5MDlUMTUzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-09",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MmQ0NTM5ZTkyMmQ5NGNmNDgzNzU0ODQ3ZGUwODhlOWJfMjAyNjA5MDlUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-09",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MjdjNDBjNmUwYzIwNDQzZDhkYTM0MGY2OTI0Y2E1MTlfMjAyNjA5MTBUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-10",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjA5MTBUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-10",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjA5MTBUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-10",
+      "htmlLink": "https://www.google.com/calendar/event?eid=M3JmZTMxbDhianF1aXRiOGw3MW90Yzdjamcga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Luka I Kay"
+    },
+    {
+      "date": "2026-09-10",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjA5MTBUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-10",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzY1MGs2aDI0ODhwM2FiOWg3MHNqY2I5azZjcGsyYmEyOGQyMzRiOW42bDEzNmgxbThvcTQyaGEyNmcga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "WSC Coffee Chat: Twenty Minutes is the New Hour with Fran Hauser"
+    },
+    {
+      "date": "2026-09-10",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjA5MTBUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-10",
+      "htmlLink": "https://www.google.com/calendar/event?eid=YzVsa3BybHRjMjEwcnAwaW5yb3JsaHNpYmJfMjAyNjA5MDlUMTczMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
       "summary": "Guillermo I Kay Bi-Weekly Mtg"
     },
     {
-      "date": "2026-07-16",
-      "htmlLink": "https://www.google.com/calendar/event?eid=cWRsZmlzampqbjN2dTNzYTRwbGhkOGhqdjhfMjAyNjA3MTYga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "date": "2026-09-10",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MXA2MmkwcWVtajloMm5idG83bHZwcjgxdW5fMjAyNjA5MTBUMjEzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "Stone Street, Stone St, New York, NY 10004, USA",
+      "status": "confirmed",
+      "summary": "One Hanover Happy Hour"
+    },
+    {
+      "date": "2026-09-10",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjA5MTFUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
       "location": "",
       "status": "confirmed",
-      "summary": "Jana Raphael's birthday"
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-11",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NjU3MDdlMzlkZjgxNDNjNmIwMzE0MDhiYTdiZDQ2MDNfMjAyNjA5MTFUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-11",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzQ0ZTQ1M2QwZGFjNDJhYmI2ODY5OGVjYTIwM2YwODJfMjAyNjA5MTFUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Personal Finance / Wealth Monitor"
+    },
+    {
+      "date": "2026-09-11",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MWY3Nzk3MmYxOWY2NDQ3MWJhYTM0NGNlOGIxMjYwYzVfMjAyNjA5MTFUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Nonprofit Operations"
+    },
+    {
+      "date": "2026-09-11",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NDRwdmhmcDlzY20zZ3Y3a2NsMWY0dmg3cGIga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Mike I Kay"
+    },
+    {
+      "date": "2026-09-11",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MzdlNjU1NWE3OWM0NGJiMWJiMjY0NzI5MTc1Y2EyOGRfMjAyNjA5MTFUMTYwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Family Admin"
+    },
+    {
+      "date": "2026-09-11",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGtmNnRkbGFhajNhdnZkOWVtc3QxNjFndmsga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "One Hanover, 1 Hanover Square, New York, NY 10004, USA",
+      "status": "confirmed",
+      "summary": "Pick up items from Office"
+    },
+    {
+      "date": "2026-09-11",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ODg4OWI0ZmM5NTNiNDAzNDhhNThhMTgyYmI1ZTliNWNfMjAyNjA5MTFUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Systems / Website / G&B Housekeeping"
+    },
+    {
+      "date": "2026-09-11",
+      "htmlLink": "https://www.google.com/calendar/event?eid=OGZhZjI1YWE1ODUyNDdiOGI3YTA0OWQyODY0NjY2OGNfMjAyNjA5MTFUMTkwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Weekly Review + Next Week Setup"
+    },
+    {
+      "date": "2026-09-11",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZTIxM2I4Nzc0NjAyNDg1ODkwYjQ3MTY5YWYxODU5MDRfMjAyNjA5MTJUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzhvbzNpZTI1NnAxamNiYTQ2OTIzMmI5azZzcGoyYjlvNjEyazJiOWk2MHIzOGgyMTc0cGpjZTFnODhfMjAyNjA5MTQga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Auto transfer running to cover payroll (LiveOak)"
+    },
+    {
+      "date": "2026-09-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjA5MTRUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjA5MTRUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc3NG8zaWNwajcwczRhYzFrNmdvazhoMWc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnOHAyMzRkMWk4a3M0YWgyMzhrcDRhaGhrOHAwamdjaGc4Z3EzMGU5bTg4cWo2ZTIxNmQwZyBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "617-917-4906 (Conference line - no code needed)",
+      "status": "confirmed",
+      "summary": "Kay<>Sam/Steuart"
+    },
+    {
+      "date": "2026-09-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjA5MTRUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc2c3A0NGdobjZsMGowZTlvNmQzNDhoMWc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnNjBvamFoOW82dDEzMGg5azcxMjM2aDFrOGtzMzZlMjU4a3JrYWNwbjg4bzNjZDlsODUzMCBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "Microsoft Teams Meeting",
+      "status": "confirmed",
+      "summary": "Greenwich and Barrow <> Boulay"
+    },
+    {
+      "date": "2026-09-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjA5MTRUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzcxMGthZTIzNmdwamFiOXA2Y3E0NmI5azZzcTM0YmExNmwzMzJiYTM2c3NrMmgxbzg1MjM2aGhuNmMga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Erin I Kay"
+    },
+    {
+      "date": "2026-09-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzY5Mmo0ZTI0NjhzajJiOW02NTEzNmI5azZzcjQ2YmEyODhwa2FiYTI4NHMzOGRxMTcwcDQ2Z3E0NmMga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "P/u items at office"
+    },
+    {
+      "date": "2026-09-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NmZkZjRmOGNkc2NkM3Ztb2xtZnRrcWw2Z2Yga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Andrew I Kay"
+    },
+    {
+      "date": "2026-09-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjA5MTVUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-15",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzhncTNjZGE0NnQwazJiOWs4Z3JrOGI5azc0cTNjYjlwNm9xM2FiOXA2b3E0NmdhNjc0cjNpY3BnOGNfMjAyNjA5MTUga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Auto Payroll running (Gusto)"
+    },
+    {
+      "date": "2026-09-15",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjA5MTVUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-15",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjA5MTVUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-15",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjA5MTVUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-15",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc4Y28zMmdhNjZjcGsyZ3BpNjhzNDhoMWc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnNjExa2NlOWw4Z3AzY2Nwbjg4czM2ZHBrNjBzajJncGs2c280MmQ5bThrcTM0aGEyNjBzZyBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "TBD",
+      "status": "confirmed",
+      "summary": "Kay & Stan Lunch"
+    },
+    {
+      "date": "2026-09-15",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjA5MTVUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-15",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjA5MTZUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-16",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjA5MTZUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-16",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjA5MTZUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-16",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjA5MTZUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-16",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjA5MTZUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-16",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc2a29qNGQ5bjg5MTNpYzI2NmNvNDhoMWc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnODhzM2VkMjY3NTFrYWdwbTY0cTM4YzlrOGdzamljOXA4Y3IzZ2U5azhwMzRjZ3E2NjBwZ18yMDI2MDkxNlQxNzAwMDBaIGtheS5zQGdyZWVud2ljaGFuZGJhcnJvdy5jb20",
+      "location": "TBD",
+      "status": "confirmed",
+      "summary": "WSN Group"
+    },
+    {
+      "date": "2026-09-16",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjA5MTdUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-17",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjA5MTdUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-17",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjA5MTdUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-17",
+      "htmlLink": "https://www.google.com/calendar/event?eid=Z3NlMXZmZGpkNDhuNGg0dWZyaDdvcjhidWFfMjAyNjA5MTRUMTQwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Team TB Camilla I Kay"
+    },
+    {
+      "date": "2026-09-17",
+      "htmlLink": "https://www.google.com/calendar/event?eid=Xzg1bzcwcnI5ZHBxNnFwYmVlZ21qNGNoZzYwbzNlZDFnNmtxajhjMXA3MHJrMGszaWR0aTJxYzlpZWhybWFyamtmNG42NnJyZCBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "https://nyu.zoom.us/s/6463196424#success",
+      "status": "confirmed",
+      "summary": "WP Career Coach: Erika Teresko - Appointment"
+    },
+    {
+      "date": "2026-09-17",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjA5MTdUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-17",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjA5MTdUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-17",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjA5MThUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-18",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NjU3MDdlMzlkZjgxNDNjNmIwMzE0MDhiYTdiZDQ2MDNfMjAyNjA5MThUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-18",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzQ0ZTQ1M2QwZGFjNDJhYmI2ODY5OGVjYTIwM2YwODJfMjAyNjA5MThUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Personal Finance / Wealth Monitor"
+    },
+    {
+      "date": "2026-09-18",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MWY3Nzk3MmYxOWY2NDQ3MWJhYTM0NGNlOGIxMjYwYzVfMjAyNjA5MThUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Nonprofit Operations"
+    },
+    {
+      "date": "2026-09-18",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MzdlNjU1NWE3OWM0NGJiMWJiMjY0NzI5MTc1Y2EyOGRfMjAyNjA5MThUMTYwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Family Admin"
+    },
+    {
+      "date": "2026-09-18",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ODg4OWI0ZmM5NTNiNDAzNDhhNThhMTgyYmI1ZTliNWNfMjAyNjA5MThUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Systems / Website / G&B Housekeeping"
+    },
+    {
+      "date": "2026-09-18",
+      "htmlLink": "https://www.google.com/calendar/event?eid=OGZhZjI1YWE1ODUyNDdiOGI3YTA0OWQyODY0NjY2OGNfMjAyNjA5MThUMTkwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Weekly Review + Next Week Setup"
+    },
+    {
+      "date": "2026-09-18",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZTIxM2I4Nzc0NjAyNDg1ODkwYjQ3MTY5YWYxODU5MDRfMjAyNjA5MTlUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-21",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzhvbzNpZTI1NnAxamNiYTQ2OTIzMmI5azZzcGoyYjlvNjEyazJiOWk2MHIzOGgyMTc0cGpjZTFnODhfMjAyNjA5MjEga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Auto transfer running to cover payroll (LiveOak)"
+    },
+    {
+      "date": "2026-09-21",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZTB1ZjA2NWc3bXZtb3JzZDk5NmgwOWwwOWNfMjAyNjA5MjEga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Caitlin Walker's birthday"
+    },
+    {
+      "date": "2026-09-21",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjA5MjFUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-21",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjA5MjFUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-21",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjA5MjFUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-21",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjA5MjFUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-21",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjA5MjJUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-22",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzhncTNjZGE0NnQwazJiOWs4Z3JrOGI5azc0cTNjYjlwNm9xM2FiOXA2b3E0NmdhNjc0cjNpY3BnOGNfMjAyNjA5MjIga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Auto Payroll running (Gusto)"
+    },
+    {
+      "date": "2026-09-22",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjA5MjJUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-22",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjA5MjJUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-22",
+      "htmlLink": "https://www.google.com/calendar/event?eid=Z3NlMXZmZGpkNDhuNGg0dWZyaDdvcjhidWFfMjAyNjA5MjFUMTQwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Team TB Camilla I Kay"
+    },
+    {
+      "date": "2026-09-22",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjA5MjJUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-22",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjA5MjJUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-22",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjA5MjNUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-23",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjA5MjNUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-23",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjA5MjNUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-23",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjA5MjNUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-23",
+      "htmlLink": "https://www.google.com/calendar/event?eid=c2NnMDRpa2ZsbjhzMTNhdWNldTQ5dDRjcmdfMjAyNjA5MjNUMTYwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Jeff I Kay Mtg"
+    },
+    {
+      "date": "2026-09-23",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjA5MjNUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-23",
+      "htmlLink": "https://www.google.com/calendar/event?eid=YzVsa3BybHRjMjEwcnAwaW5yb3JsaHNpYmJfMjAyNjA5MjNUMTczMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Guillermo I Kay Bi-Weekly Mtg"
+    },
+    {
+      "date": "2026-09-23",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjA5MjRUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-24",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjA5MjRUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-24",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjA5MjRUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-24",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjA5MjRUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-24",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjA5MjRUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-24",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjA5MjVUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-25",
+      "htmlLink": "https://www.google.com/calendar/event?eid=Mm5pdGNzNWRsNnNpcHBwbXVmZjlvMWwwNmNfMjAyNjA5MjUga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Joe Whelski's birthday"
+    },
+    {
+      "date": "2026-09-25",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NjU3MDdlMzlkZjgxNDNjNmIwMzE0MDhiYTdiZDQ2MDNfMjAyNjA5MjVUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-25",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzQ0ZTQ1M2QwZGFjNDJhYmI2ODY5OGVjYTIwM2YwODJfMjAyNjA5MjVUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Personal Finance / Wealth Monitor"
+    },
+    {
+      "date": "2026-09-25",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MWY3Nzk3MmYxOWY2NDQ3MWJhYTM0NGNlOGIxMjYwYzVfMjAyNjA5MjVUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Nonprofit Operations"
+    },
+    {
+      "date": "2026-09-25",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MzdlNjU1NWE3OWM0NGJiMWJiMjY0NzI5MTc1Y2EyOGRfMjAyNjA5MjVUMTYwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Family Admin"
+    },
+    {
+      "date": "2026-09-25",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ODg4OWI0ZmM5NTNiNDAzNDhhNThhMTgyYmI1ZTliNWNfMjAyNjA5MjVUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Systems / Website / G&B Housekeeping"
+    },
+    {
+      "date": "2026-09-25",
+      "htmlLink": "https://www.google.com/calendar/event?eid=OGZhZjI1YWE1ODUyNDdiOGI3YTA0OWQyODY0NjY2OGNfMjAyNjA5MjVUMTkwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Weekly Review + Next Week Setup"
+    },
+    {
+      "date": "2026-09-25",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZTIxM2I4Nzc0NjAyNDg1ODkwYjQ3MTY5YWYxODU5MDRfMjAyNjA5MjZUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-28",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzhvbzNpZTI1NnAxamNiYTQ2OTIzMmI5azZzcGoyYjlvNjEyazJiOWk2MHIzOGgyMTc0cGpjZTFnODhfMjAyNjA5Mjgga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Auto transfer running to cover payroll (LiveOak)"
+    },
+    {
+      "date": "2026-09-28",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjA5MjhUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-28",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjA5MjhUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-28",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjA5MjhUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-28",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjA5MjhUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-28",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjA5MjlUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-29",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzhncTNjZGE0NnQwazJiOWs4Z3JrOGI5azc0cTNjYjlwNm9xM2FiOXA2b3E0NmdhNjc0cjNpY3BnOGNfMjAyNjA5Mjkga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Auto Payroll running (Gusto)"
+    },
+    {
+      "date": "2026-09-29",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjA5MjlUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-29",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjA5MjlUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-29",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjA5MjlUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-29",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjA5MjlUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-29",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjA5MzBUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-09-30",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjA5MzBUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-09-30",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjA5MzBUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-09-30",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjA5MzBUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-09-30",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjA5MzBUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-09-30",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjEwMDFUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-10-01",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjEwMDFUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-10-01",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjEwMDFUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-10-01",
+      "htmlLink": "https://www.google.com/calendar/event?eid=Z3NlMXZmZGpkNDhuNGg0dWZyaDdvcjhidWFfMjAyNjA5MjhUMTQwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Team TB Camilla I Kay"
+    },
+    {
+      "date": "2026-10-01",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjEwMDFUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-10-01",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjEwMDFUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-10-01",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjEwMDJUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-10-02",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NjU3MDdlMzlkZjgxNDNjNmIwMzE0MDhiYTdiZDQ2MDNfMjAyNjEwMDJUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-10-02",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzQ0ZTQ1M2QwZGFjNDJhYmI2ODY5OGVjYTIwM2YwODJfMjAyNjEwMDJUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Personal Finance / Wealth Monitor"
+    },
+    {
+      "date": "2026-10-02",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MWY3Nzk3MmYxOWY2NDQ3MWJhYTM0NGNlOGIxMjYwYzVfMjAyNjEwMDJUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Nonprofit Operations"
+    },
+    {
+      "date": "2026-10-02",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MzdlNjU1NWE3OWM0NGJiMWJiMjY0NzI5MTc1Y2EyOGRfMjAyNjEwMDJUMTYwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Family Admin"
+    },
+    {
+      "date": "2026-10-02",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ODg4OWI0ZmM5NTNiNDAzNDhhNThhMTgyYmI1ZTliNWNfMjAyNjEwMDJUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Systems / Website / G&B Housekeeping"
+    },
+    {
+      "date": "2026-10-02",
+      "htmlLink": "https://www.google.com/calendar/event?eid=M25udXM0cWg4ZG5xYXY3anVjYmJtazEwMWpfMjAyNjEwMDFUMjAwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "https://zoom.us/j/94351650061",
+      "status": "confirmed",
+      "summary": "BK Growth 1st Thursday Zoom"
+    },
+    {
+      "date": "2026-10-02",
+      "htmlLink": "https://www.google.com/calendar/event?eid=OGZhZjI1YWE1ODUyNDdiOGI3YTA0OWQyODY0NjY2OGNfMjAyNjEwMDJUMTkwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Weekly Review + Next Week Setup"
+    },
+    {
+      "date": "2026-10-02",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZTIxM2I4Nzc0NjAyNDg1ODkwYjQ3MTY5YWYxODU5MDRfMjAyNjEwMDNUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-10-05",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzhvbzNpZTI1NnAxamNiYTQ2OTIzMmI5azZzcGoyYjlvNjEyazJiOWk2MHIzOGgyMTc0cGpjZTFnODhfMjAyNjEwMDUga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Auto transfer running to cover payroll (LiveOak)"
+    },
+    {
+      "date": "2026-10-05",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjEwMDVUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-10-05",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjEwMDVUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-10-05",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjEwMDVUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-10-05",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjEwMDVUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-10-05",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjEwMDZUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-10-06",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzhncTNjZGE0NnQwazJiOWs4Z3JrOGI5azc0cTNjYjlwNm9xM2FiOXA2b3E0NmdhNjc0cjNpY3BnOGNfMjAyNjEwMDYga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Auto Payroll running (Gusto)"
+    },
+    {
+      "date": "2026-10-06",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjEwMDZUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-10-06",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjEwMDZUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-10-06",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjEwMDZUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-10-06",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjEwMDZUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-10-06",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjEwMDdUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-10-07",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjEwMDdUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-10-07",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjEwMDdUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-10-07",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjEwMDdUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-10-07",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjEwMDdUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-10-07",
+      "htmlLink": "https://www.google.com/calendar/event?eid=YzVsa3BybHRjMjEwcnAwaW5yb3JsaHNpYmJfMjAyNjEwMDdUMTczMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Guillermo I Kay Bi-Weekly Mtg"
+    },
+    {
+      "date": "2026-10-07",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjEwMDhUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-10-08",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjEwMDhUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-10-08",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjEwMDhUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-10-08",
+      "htmlLink": "https://www.google.com/calendar/event?eid=Z3NlMXZmZGpkNDhuNGg0dWZyaDdvcjhidWFfMjAyNjEwMDVUMTQwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Team TB Camilla I Kay"
+    },
+    {
+      "date": "2026-10-08",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjEwMDhUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-10-08",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjEwMDhUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-10-08",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjEwMDlUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-10-09",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NjU3MDdlMzlkZjgxNDNjNmIwMzE0MDhiYTdiZDQ2MDNfMjAyNjEwMDlUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-10-09",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzQ0ZTQ1M2QwZGFjNDJhYmI2ODY5OGVjYTIwM2YwODJfMjAyNjEwMDlUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Personal Finance / Wealth Monitor"
+    },
+    {
+      "date": "2026-10-09",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MWY3Nzk3MmYxOWY2NDQ3MWJhYTM0NGNlOGIxMjYwYzVfMjAyNjEwMDlUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Nonprofit Operations"
+    },
+    {
+      "date": "2026-10-09",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MzdlNjU1NWE3OWM0NGJiMWJiMjY0NzI5MTc1Y2EyOGRfMjAyNjEwMDlUMTYwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Family Admin"
+    },
+    {
+      "date": "2026-10-09",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ODg4OWI0ZmM5NTNiNDAzNDhhNThhMTgyYmI1ZTliNWNfMjAyNjEwMDlUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Systems / Website / G&B Housekeeping"
+    },
+    {
+      "date": "2026-10-09",
+      "htmlLink": "https://www.google.com/calendar/event?eid=OGZhZjI1YWE1ODUyNDdiOGI3YTA0OWQyODY0NjY2OGNfMjAyNjEwMDlUMTkwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Weekly Review + Next Week Setup"
+    },
+    {
+      "date": "2026-10-09",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZTIxM2I4Nzc0NjAyNDg1ODkwYjQ3MTY5YWYxODU5MDRfMjAyNjEwMTBUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-10-12",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzhvbzNpZTI1NnAxamNiYTQ2OTIzMmI5azZzcGoyYjlvNjEyazJiOWk2MHIzOGgyMTc0cGpjZTFnODhfMjAyNjEwMTIga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Auto transfer running to cover payroll (LiveOak)"
+    },
+    {
+      "date": "2026-10-12",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjEwMTJUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-10-12",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjEwMTJUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-10-12",
+      "htmlLink": "https://www.google.com/calendar/event?eid=Z3NlMXZmZGpkNDhuNGg0dWZyaDdvcjhidWFfMjAyNjEwMTJUMTQwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Team TB Camilla I Kay"
+    },
+    {
+      "date": "2026-10-12",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjEwMTJUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-10-12",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjEwMTJUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-10-12",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjEwMTNUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-10-13",
+      "htmlLink": "https://www.google.com/calendar/event?eid=XzhncTNjZGE0NnQwazJiOWs4Z3JrOGI5azc0cTNjYjlwNm9xM2FiOXA2b3E0NmdhNjc0cjNpY3BnOGNfMjAyNjEwMTMga2F5LnNAZ3JlZW53aWNoYW5kYmFycm93LmNvbQ",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Auto Payroll running (Gusto)"
+    },
+    {
+      "date": "2026-10-13",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjEwMTNUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-10-13",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjEwMTNUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-10-13",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjEwMTNUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-10-13",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjEwMTNUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-10-13",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjEwMTRUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
+    },
+    {
+      "date": "2026-10-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZjNlYzlhNjMwZWZjNDEzY2ExYjY4OTAxZjIyNDE3YTBfMjAyNjEwMTRUMTMwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Review Good Morning Brief"
+    },
+    {
+      "date": "2026-10-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MDRmMDViODllNjkyNDJhM2JhNjFlNjE1MDRmNjZiZTBfMjAyNjEwMTRUMTMzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Outreach work"
+    },
+    {
+      "date": "2026-10-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=ZGM5Mzg5ODdjZjQ2NGU5YTgyMDYyNGIzMTQwOTVkYWJfMjAyNjEwMTRUMTUwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Relationship / Call Window"
+    },
+    {
+      "date": "2026-10-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NzA3ZmEzYzIzNDAwNDZjOThiM2E3NzUyNzlhNmQwMjdfMjAyNjEwMTRUMTcwMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Strategy / Research"
+    },
+    {
+      "date": "2026-10-14",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGI1M2ZhOTA0Zjc5NDM0OWExNWM5YWM0ZjlkM2Y0MTdfMjAyNjEwMTVUMDAzMDAwWiBrYXkuc0BncmVlbndpY2hhbmRiYXJyb3cuY29t",
+      "location": "",
+      "status": "confirmed",
+      "summary": "Decision Review"
     }
   ],
   "events": [
     {
       "agent_notes": "",
-      "date": "2026-06-15",
-      "decision": "NEW",
-      "event_name": "ACG CT Annual Golf & Tennis Outing",
-      "location": "Rockrimmon Country Club, Stamford, CT",
-      "niche": "Intermediary networking",
-      "notes": "",
-      "registration_paid": "No",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.acg.org/connecticut/events"
-    },
-    {
-      "agent_notes": "Manual add from Kay 2026-06-09.",
-      "date": "2026-06-16",
-      "decision": "Attending",
-      "event_name": "Peapack Wealth Breakfast",
-      "location": "TBD",
-      "niche": "Wealth Management / River Guides",
-      "notes": "Kay already registered; morning event on 6/16.",
-      "registration_paid": "Yes",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": ""
-    },
-    {
-      "agent_notes": "THE event for art advisors. APAA members. Peak art week.",
-      "date": "2026-06-16",
-      "decision": "Evaluating",
-      "event_name": "NJCPA Convention and Expo",
-      "location": "Borgata",
-      "niche": "Fractional CFO / Advisory Accounting",
-      "notes": "Owner-operators and company leaders. Kays profile as female acquirer in pest mgmt is differentiated. Brain Dates + Dine Arounds networking.",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "njcpa.org"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-06-16",
-      "decision": "Evaluating",
-      "event_name": "NPMA Executive Leadership Forum",
-      "location": "Atlantic City",
-      "niche": "Premium Pest Management",
-      "notes": "",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": ""
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-06-16",
-      "decision": "Evaluating",
-      "event_name": "ACG NJ Breakfast Meeting",
-      "location": "EisnerAmper Offices, Woodbridge Township NJ",
-      "niche": "Corporate Growth",
-      "notes": "",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.acg.org/newjersey/events"
-    },
-    {
-      "agent_notes": "Small senior-level. Boston.",
-      "date": "2026-06-17",
-      "decision": "Evaluating",
-      "event_name": "Greater NJ EPC - Year End Tax & Estate Planning (Breakfast or Lunch TBD)",
-      "location": "TBD NJ",
-      "niche": "Estate Planning / Tax",
-      "notes": "Free. Thousands of SMB owners from NYC metro. Broad industry mix. 10am-5pm",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.gnjepc.org/events/event/28267"
-    },
-    {
-      "agent_notes": "Full-day DealSource ends exactly 5pm Thu (hard limit). Off-thesis for luxury but strong LMM deal-maker density.",
-      "date": "2026-06-17",
-      "decision": "Evaluating",
-      "event_name": "ACG New York Family Office & Limited Partner Series - Summer Edition",
-      "location": "Explorers Club, 46 East 70th Street, NYC",
-      "niche": "Family Office / LP Network (G&B investor-side intel)",
-      "notes": "Thu 10am-5pm DealSource",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.acg.org/nyc/events"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-06-17",
-      "decision": "Evaluating",
-      "event_name": "EPC Long Island Study Group/Webinar - The New Legacy: Strategic Estate Planning with Art & Collectibles",
-      "location": "Virtual (webinar)",
-      "niche": "Private Art Advisory Firms / Specialty Insurance Brokerage (Art & Collectibles)",
-      "notes": "Thu = leave by 4:30pm.",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.epclongisland.org/events"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-06-17",
-      "decision": "NEW",
-      "event_name": "XPX Philadelphia - The Fine Print That Bites: Managing Risk Through Reps, Warranties, and Indemnities",
-      "location": "Armanino, 1600 Market Street, Philadelphia, PA",
-      "niche": "Intermediary networking",
-      "notes": "",
-      "registration_paid": "No",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.exitplanningexchange.com/philadelphia/events/"
-    },
-    {
-      "agent_notes": "Withum client breakfast - CPA firm river guides. Topic (cyber) tangential but Withum NYC dealmaker crowd worth morning touch.",
-      "date": "2026-06-23",
-      "decision": "Evaluating",
-      "event_name": "ACG NY PE Summit",
-      "location": "Westchester Country Club, Rye NY",
-      "niche": "Private Equity",
-      "notes": "Tue 8am ET in-person NYC. Tue daytime + morning = fits cutoff.",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.acg.org/nyc/events"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-06-24",
-      "decision": "Evaluating",
-      "event_name": "XPX - Making the Most of Your Membership",
-      "location": "Virtual",
-      "niche": "General M&A / Exit Planning",
-      "notes": "NY P&C insurance professionals. Need to verify independent agency owners attend vs carrier-heavy. Resort setting good for relationships.",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.exitplanningexchange.com/event/6566900"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-06-24",
-      "decision": "Need to Book",
-      "event_name": "XPX New Jersey - The Human Side of Succession Planning",
-      "location": "Park Ave Club, 184 Park Ave, Florham Park, NJ",
-      "niche": "Intermediary Networking - XPX",
-      "notes": "",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://exitplanningexchange.com/chapter/new-jersey/events/"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-06-24",
-      "decision": "NEW",
-      "event_name": "IVYFON New York Family Office Forum",
-      "location": "New York, NY",
-      "niche": "Family Office",
-      "notes": "",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://ivyfon.com/"
-    },
-    {
-      "agent_notes": "Source: IBBA events calendar lists Recasting & Pricing Virtual Summit June 24-26, 2026.",
-      "date": "2026-06-24",
-      "decision": "NEW",
-      "event_name": "IBBA Recasting & Pricing Virtual Summit",
-      "location": "Virtual",
-      "niche": "Intermediary / Business Brokers",
-      "notes": "IBBA educational summit for business brokers; virtual Wed-Fri. High intermediary relevance, no public attendee list found.",
-      "registration_paid": "No",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.ibba.org/events/"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-06-25",
-      "decision": "NEW",
-      "event_name": "XPX Philadelphia Bucks & Montgomery County - The Fine Print That Bites: Managing Risk Through Reps, Warranties, and Indemnities",
-      "location": "Kreischer Miller, 100 Witmer Road, Horsham, PA",
-      "niche": "Intermediary networking",
-      "notes": "",
-      "registration_paid": "No",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.exitplanningexchange.com/philadelphia/events/"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-06-29",
-      "decision": "NEW",
-      "event_name": "ACG Philadelphia Annual Member-Guest Golf Outing",
-      "location": "Llanerch Country Club, Havertown, PA",
-      "niche": "Intermediary Networking - ACG",
-      "notes": "",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.acg.org/philadelphia/events#member-guest-golf-2026"
-    },
-    {
-      "agent_notes": "Source: M&A Source events calendar lists Course #477 on July 2, 2026 from 1:00-5:00pm ET.",
-      "date": "2026-07-02",
-      "decision": "NEW",
-      "event_name": "M&A Source Course #477: Helping Sellers Identify the Most Suitable Buyer & Type of Transaction",
-      "location": "Virtual",
-      "niche": "Intermediary / Business Brokers",
-      "notes": "Thursday 1-5pm ET; business-broker/M&A advisor audience around seller buyer-fit decisions.",
-      "registration_paid": "No",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://masource.org/events/"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-07-09",
-      "decision": "NEW",
-      "event_name": "Hamptons Fine Art Fair",
-      "location": "Southampton Fairgrounds, Southampton, NY",
-      "niche": "Private Art Advisory",
-      "notes": "",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://hamptonsfineartfair.com/"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-07-11",
-      "decision": "NEW",
-      "event_name": "PWIPM NY Summer Gathering (Professional Women in Pest Management)",
-      "location": "Susan B. Anthony Museum, Rochester, NY",
-      "niche": "Premium Pest Management",
-      "notes": "",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.npmapestworld.org/attend/industry-events-calendar/stateprovince-events/pwipm-ny-summer-gathering/"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-07-14",
-      "decision": "NEW",
-      "event_name": "XPX Next 2026: AI in Action - Advisor and Client Perspectives",
-      "location": "Virtual via Zoom (half-day)",
-      "niche": "Intermediary Networking - XPX",
-      "notes": "",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://exitplanningexchange.com/chapter/new-york/events/"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-07-15",
-      "decision": "NEW",
-      "event_name": "EPCLI Study Group: Family Dynamics Under Stress",
-      "location": "Virtual (Webinar)",
-      "niche": "HNW Estate Planning",
-      "notes": "",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.epclongisland.org/events/event/29284"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-07-21",
-      "decision": "NEW",
-      "event_name": "NPMA Academy 2026",
-      "location": "Hilton Orlando Lake Buena Vista, FL",
-      "niche": "Premium Pest Management",
-      "notes": "",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.npmapestworld.org/attend/industry-events-calendar/2026-academy/"
-    },
-    {
-      "agent_notes": "Museum professionals. Collection managers. Adjacent.",
-      "date": "2026-07-27",
-      "decision": "Need to Register",
-      "event_name": "Opal Group Family Office & Private Wealth Management Forum",
-      "location": "",
-      "niche": "Art Advisory / Insurance",
-      "notes": "CFO peer group national conference. Fractional CFO firm founders attend as members. NE corridor.",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": ""
-    },
-    {
-      "agent_notes": "NJ/NY insurance agency OWNERS. High value.",
-      "date": "2026-07-28",
-      "decision": "Evaluating",
-      "event_name": "ACG NY Summer Dealmaking Conference",
-      "location": "NYC (venue TBD)",
-      "niche": "ETA / M&A Intermediaries",
-      "notes": "Estate planners and trust officers who refer UHNW clients to art advisory firms. Client-side pipeline. Same day as Frieze VIP preview.",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://www.acg.org/nyc/events"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-08-15",
-      "decision": "Evaluating",
-      "event_name": "NJPMA Annual Clinic, Trade Show & Clambake",
-      "location": "TBD NJ Shore (annual host)",
-      "niche": "Premium Pest Management",
-      "notes": "",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://njpma.com/workshops/clinic-trade-show-and-clambake/"
-    },
-    {
-      "agent_notes": "",
       "date": "2026-09-08",
-      "decision": "Evaluating",
+      "decision": "Need to Book",
       "event_name": "NJPMA Fall Conference (date TBD - typically late Oct)",
       "location": "TBD NJ",
       "niche": "Premium Pest Management",
@@ -790,17 +1536,17 @@
       "website": "https://njpma.com/workshops/njpma-fall-conference/"
     },
     {
-      "agent_notes": "HIGH FIT: Tue breakfast ends 10:30am (under 2pm limit). EisnerAmper hosted - CPA referral source.",
-      "date": "2026-09-08",
-      "decision": "Evaluating",
-      "event_name": "SSA Self Storage Association Fall Conference & Trade Show 2026",
-      "location": "ARIA Resort & Casino, Las Vegas NV",
-      "niche": "Storage & Related Services",
-      "notes": "Tue 8-10:30am breakfast",
-      "registration_paid": "",
+      "agent_notes": "TMA LI page confirms 9/14/26 5:30-7:00 PM at Hilltop Kitchen & Bar. Chapter audience includes turnaround practitioners, interim company officers, financial advisers, accountants, attorneys, lenders, bank workout officers and investors; event cost is $10 members / $25 non-members. Strong intermediary-networking fit.",
+      "date": "2026-09-14",
+      "decision": "NEW",
+      "event_name": "TMA Long Island September Happy Hour",
+      "location": "Hilltop Kitchen & Bar, Syosset, NY",
+      "niche": "ETA / M&A Intermediaries",
+      "notes": "Monday evening fits Kay schedule; cheap intermediary networking.",
+      "registration_paid": "No",
       "status": "Discovered",
       "tab": "Pipeline",
-      "website": "https://www.selfstorage.org/Events-Education/Events/National-Fall-Conference"
+      "website": "https://my.turnaround.org/Events/Calendar-Of-Events/Meeting-Home-Page?meetingid=%7BD52B4D14-D797-F011-B4CC-7C1E527D4B1D%7D"
     },
     {
       "agent_notes": "GNJEPC monthly - tax/estate planning advisors are classic river guides for owner exits. Flag cost + exact time.",
@@ -829,6 +1575,84 @@
       "website": "https://nyselfstorage.org/events/fall-conference-program/"
     },
     {
+      "agent_notes": "CTPCA site describes the association as serving licensed pest management professionals and providing training/CEU/networking; homepage lists Annual Fall Training Seminar 2026 on Sep 15 at 8:00 AM at Aria Banquet Facility. Wildlife Control Supplies trade-show calendar also lists Sep 15, 2026 CT Pest Association Fall Seminar in Prospect, CT.",
+      "date": "2026-09-15",
+      "decision": "NEW",
+      "event_name": "CT Pest Association Annual Fall Training Seminar 2026",
+      "location": "Aria Banquet Facility, Prospect, CT",
+      "niche": "Premium Pest Management",
+      "notes": "High-fit pest-operator room; confirm end time before recommending because Tuesday window ends 2pm.",
+      "registration_paid": "No",
+      "status": "Discovered",
+      "tab": "Pipeline",
+      "website": "https://www.ctpestcontrolassociation.org/"
+    },
+    {
+      "agent_notes": "Evidence: organizer confirms venue, time and open member/non-member access. Roundtable leaders include Bridget Mackolin (Eisner), MJ Jolda and Laura Crothers. Judgment: strong intermediary fit and schedule fit; cost unresolved.",
+      "date": "2026-09-15",
+      "decision": "NEW",
+      "event_name": "ACG NJ Breakfast Meeting | September 15, 2026",
+      "location": "EisnerAmper Offices, 111 South Wood Avenue, Woodbridge Township, NJ 08830",
+      "niche": "ETA / M&A Intermediaries",
+      "notes": "Tuesday 8:00-10:30am. Breakfast and rotating small-group discussions. Confirm price.",
+      "registration_paid": "No",
+      "status": "Discovered",
+      "tab": "Pipeline",
+      "website": "https://www.acg.org/newjersey/events/acg-nj-breakfast-meeting-september-15-2026"
+    },
+    {
+      "agent_notes": "Evidence: organizer agenda and registrants show business brokers, CPAs, lawyers, lenders and wealth advisors. Judgment: high intermediary density, low cost and schedule fit. Includes breakfast; membership not required.",
+      "date": "2026-09-16",
+      "decision": "NEW",
+      "event_name": "XPX New Jersey: Inside the Mind of Today's Business Owner",
+      "location": "Park Ave Club, 184 Park Ave, Florham Park, NJ 07932",
+      "niche": "ETA / M&A Intermediaries",
+      "notes": "Wednesday 8:00-9:30am breakfast. Early-bird rate ends today; regular registration remains available.",
+      "registration_paid": "No",
+      "status": "Discovered",
+      "tab": "Pipeline",
+      "website": "https://www.exitplanningexchange.com/event/6775390/"
+    },
+    {
+      "agent_notes": "XPX Fairfield County page lists Sep 23, 2026, 8:00-10:00 AM at The Patterson Club. Registration page confirms venue and time; attendee page shows 23 registered attendees. XPX chapter audience is exit-planning advisors to private companies, which matches intermediary/river-guide priority.",
+      "date": "2026-09-23",
+      "decision": "NEW",
+      "event_name": "XPX Connecticut: Where do the Markets go from here - Save the Date",
+      "location": "The Patterson Club, 1118 Cross Hwy, Fairfield, CT",
+      "niche": "ETA / M&A Intermediaries",
+      "notes": "Wednesday 8-10am fits Kay schedule; CT intermediary room with public attendee list.",
+      "registration_paid": "No",
+      "status": "Discovered",
+      "tab": "Pipeline",
+      "website": "https://my.exitplanningexchange.com/event-6791510"
+    },
+    {
+      "agent_notes": "XPX New York chapter page lists Sep 24, 2026, 8:30-10:00 AM EDT at CLA, 60 E 42nd St, Ste 5100. XPX audience is exit-planning advisors/intermediaries; exact program title is still save-the-date.",
+      "date": "2026-09-24",
+      "decision": "NEW",
+      "event_name": "XPX New York City September Breakfast - Save the Date",
+      "location": "The Offices of CLA, 60 E 42nd St, Ste 5100, New York, NY",
+      "niche": "ETA / M&A Intermediaries",
+      "notes": "Thursday 8:30-10:00 breakfast fits Kay schedule; intimate exit-planning advisor room.",
+      "registration_paid": "No",
+      "status": "Discovered",
+      "tab": "Pipeline",
+      "website": "https://www.exitplanningexchange.com/new-york/"
+    },
+    {
+      "agent_notes": "Flyer: Wednesday, September 30, 2026, 7:30am-4:00pm. Education, networking, exhibits. Keynote: Bobby Corrigan, Ph.D.; topics include mouse control, trapping, rodent biology, device placement, NYDEC update. Breakfast, lunch, refreshments included.",
+      "date": "2026-09-30",
+      "decision": "Need to Book",
+      "event_name": "NYPMA Rodent Combat Workshop",
+      "location": "Terrace on the Park, Flushing Meadows, NY",
+      "niche": "Premium Pest Management",
+      "notes": "Kay wants to attend. Do not register or pay without explicit approval.",
+      "registration_paid": "No",
+      "status": "Discovered",
+      "tab": "Pipeline",
+      "website": "https://irp.cdn-website.com/d55d3dba/files/uploaded/Rodent+Combat+Program.png"
+    },
+    {
       "agent_notes": "PE Summit - Tue partial day may fit (before 2pm); Wed likely violates 2pm Wed end. Confirm agenda before registering.",
       "date": "2026-10-13",
       "decision": "Evaluating",
@@ -853,6 +1677,19 @@
       "status": "Discovered",
       "tab": "Pipeline",
       "website": "https://www.theartbusinessconference.com/"
+    },
+    {
+      "agent_notes": "PRMA Summit 2026 in Indianapolis, Oct 18-20. Audience is private risk professionals serving successful individuals/families: insurers, brokers, advisors, and service providers. Agenda includes exhibit hall, chapter networking breakfast, broker/client mainstage sessions, Women in Leadership, CE, and receptions. High relevance for HNW personal insurance brokerage and family-office risk ecosystem; geographic override required.",
+      "date": "2026-10-18",
+      "decision": "Need to Register",
+      "event_name": "2026 PRMA Annual Summit",
+      "location": "JW Marriott Indianapolis, 10 S West St, Indianapolis, IN",
+      "niche": "Specialty Insurance Brokerage / HNW Personal Risk",
+      "notes": "Kay plans to register this week. Do not register or pay without explicit approval.",
+      "registration_paid": "No",
+      "status": "Discovered",
+      "tab": "Pipeline",
+      "website": "https://www.privateriskmanagement.org/prmasummit"
     },
     {
       "agent_notes": "",
@@ -884,19 +1721,6 @@
       "agent_notes": "",
       "date": "2026-11-09",
       "decision": "Evaluating",
-      "event_name": "PPMA Annual Conference 2026",
-      "location": "Wind Creek Casino, Bethlehem PA",
-      "niche": "Premium Pest Management",
-      "notes": "",
-      "registration_paid": "",
-      "status": "Discovered",
-      "tab": "Pipeline",
-      "website": "https://ppma.wildapricot.org/eventsandedu"
-    },
-    {
-      "agent_notes": "",
-      "date": "2026-11-09",
-      "decision": "Evaluating",
       "event_name": "ACG NY Middle Market Week 2026 (incl. 22nd Annual Wine Tasting Gala)",
       "location": "Gotham Hall, NYC (1356 Broadway)",
       "niche": "ETA / M&A Intermediaries",
@@ -905,6 +1729,19 @@
       "status": "Discovered",
       "tab": "Pipeline",
       "website": "https://www.acg.org/nyc/events/acg-ny-2026-middle-market-week"
+    },
+    {
+      "agent_notes": "",
+      "date": "2026-11-09",
+      "decision": "Evaluating",
+      "event_name": "PPMA Annual Conference 2026",
+      "location": "Wind Creek Casino, Bethlehem PA",
+      "niche": "Premium Pest Management",
+      "notes": "",
+      "registration_paid": "",
+      "status": "Discovered",
+      "tab": "Pipeline",
+      "website": "https://ppma.wildapricot.org/eventsandedu"
     },
     {
       "agent_notes": "",
@@ -1373,8 +2210,47 @@
       "status": "Discovered",
       "tab": "Attended",
       "website": ""
+    },
+    {
+      "agent_notes": "",
+      "date": "2026-06-16",
+      "decision": "Attended",
+      "event_name": "Peapack Wealth Breakfast",
+      "location": "TBD",
+      "niche": "Wealth Management / River Guides",
+      "notes": "Kay already registered; morning event on 6/16.",
+      "registration_paid": "",
+      "status": "Attended",
+      "tab": "Attended",
+      "website": ""
+    },
+    {
+      "agent_notes": "",
+      "date": "2026-07-28",
+      "decision": "Attended",
+      "event_name": "XPX New Jersey: Inaugural Women in Exit Networking Lunch",
+      "location": "J.P. Morgan Private Bank, 25 Deforest Ave, 3rd Floor, Summit, NJ",
+      "niche": "Intermediary Networking - XPX",
+      "notes": "Kay registered. Event runs 12:00 PM-1:30 PM. No further registration/payment action needed unless receipt follow-up is requested.",
+      "registration_paid": "",
+      "status": "Attended",
+      "tab": "Attended",
+      "website": "https://my.exitplanningexchange.com/event-6748684"
+    },
+    {
+      "agent_notes": "",
+      "date": "2026-07-11",
+      "decision": "Attended",
+      "event_name": "PWIPM NY Summer Gathering (Professional Women in Pest Management)",
+      "location": "Susan B. Anthony Museum & House, Rochester, NY",
+      "niche": "Premium Pest Management",
+      "notes": "Kay wants to attend. Do not register or pay without explicit approval.",
+      "registration_paid": "",
+      "status": "Attended",
+      "tab": "Attended",
+      "website": "https://www.newyorkpma.com/pwipm-summer-2026"
     }
   ],
-  "fetched_at": "2026-06-19T18:49:20.386093+00:00",
+  "fetched_at": "2026-09-14T06:45:03.990292+00:00",
   "sheet_id": "1bdf7xlcRjOTlVkuXA-HNGOQgjtDRmVN2RfDf9aUsDpY"
 }

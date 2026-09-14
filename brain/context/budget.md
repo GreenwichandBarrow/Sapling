@@ -18,7 +18,7 @@ This is the approved budget for the Greenwich & Barrow search fund. It is the im
 
 - **Total Raised:** $551,825 (Owner Investments per Balance Sheet)
 - **Fund Launch:** February 7, 2025
-- **Fund Deadline:** February 2027 (24 months)
+- **Fund Deadline:** February 7, 2027 (24 months from February 7, 2025)
 - **Fund Entity:** Greenwich & Barrow LLC (Delaware)
 - **Investors:** 12 (9.7 units at ~$55K each)
 

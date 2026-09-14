@@ -87,8 +87,8 @@ Kay does not want to be in the weeds of bookkeeping. She wants a monthly "here's
 ## Key Financial Parameters
 
 - **Fund total:** $551,825
-- **Fund deadline:** February 2027
-- **DD reserve:** $40,000. Kay reconfirmed September 11, 2026: $40,000 remains reserved until she explicitly changes it. Deal stage does not change the reserve.
+- **Fund deadline:** February 7, 2027
+- **DD reserve:** $38,000. Kay clarified September 11, 2026: $42,000 operations, $38,000 diligence, contingency exhausted. This supersedes the rounded $40K. Read current `brain/context/budget.md`; deal stage cannot change the reserve. Budget allocations are not verified bank balances.
 - **Target monthly burn:** $17,300 (based on $190K available / 11 remaining months)
 - **Steady-state burn (current):** $20,500-23,500/month (includes DealsX $1,500/mo)
 - **DealsX (Sam Singh):** $1,500/mo + $25K success fee (contingent on deal close — not in monthly burn)
@@ -181,7 +181,7 @@ Kay does not want to be in the weeds of bookkeeping. She wants a monthly "here's
    - Trailing average (all months available)
    - Steady-state (exclude one-time items: health installments, CPA filing, contractor onboarding)
 7. Calculate runway:
-   - Available for operations = Fund Balance - DD Reserve ($40K until Kay explicitly changes it; no automatic LOI-stage escalation)
+   - Available for operations = Fund Balance - DD Reserve (current approved amount from `brain/context/budget.md`; no automatic LOI-stage escalation)
    - Months remaining = Available / Steady-state burn
    - Projected zero date
    - Buffer vs fund deadline

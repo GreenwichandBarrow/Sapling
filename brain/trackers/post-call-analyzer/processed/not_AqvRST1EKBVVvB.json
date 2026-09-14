@@ -1,0 +1,27 @@
+{
+  "id": "not_AqvRST1EKBVVvB",
+  "title": "Greenwich and Barrow <> Boulay",
+  "counterparty": "Boulay",
+  "date": "2026-09-14",
+  "granola_url": "https://notes.granola.ai/d/1424ae1d-f5d8-48f0-a676-e54628748bab",
+  "doc_url": "https://docs.google.com/document/d/11c4ewgN6GuVsnGaPBram2tGioTlnLv_8igLmZnDlDaU/edit",
+  "transcript_doc_url": "https://docs.google.com/document/d/1STL4O2jC4OGubMo1vo4ARrI7IXuPqw66CBL5Jb9SRY4/edit",
+  "vault_call_note": "brain/calls/2026-09-14-boulay-meeting.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_AqvRST1EKBVVvB.json",
+  "task_count": 4,
+  "attio_notes": {
+    "people": [
+      "d0af1af9-705a-49e2-a446-cf623eca1c10",
+      "546512b6-7524-4c00-90c0-8f003329401e"
+    ],
+    "companies": [
+      "f5c6c01d-c0c2-4034-a4e3-5cc6ccc8bb48",
+      "f5c6c01d-c0c2-4034-a4e3-5cc6ccc8bb48"
+    ]
+  },
+  "attio_failed": false,
+  "doc_failed": false,
+  "transcript_failed": false,
+  "slack_posted": true,
+  "processed_at": "2026-09-14T17:10:43.447986+00:00"
+}

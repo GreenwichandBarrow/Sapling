@@ -1,0 +1,27 @@
+{
+  "id": "not_8N0trgDTnYGXWI",
+  "title": "Kay<>Sam/Steuart",
+  "counterparty": "Ultima Search Partners",
+  "date": "2026-09-14",
+  "granola_url": "https://notes.granola.ai/d/ac6181a0-ff8a-4ef9-89e2-aa530a6afcfd",
+  "doc_url": "https://docs.google.com/document/d/1qt0AsPl9d07GzwmY2sOXyJ7maU-DxTqqqLQXnzJFuBs/edit",
+  "transcript_doc_url": "https://docs.google.com/document/d/1sduFCvohNt03XfbWlnVkWEVu16PVchGWM19YUGNrLmQ/edit",
+  "vault_call_note": "brain/calls/2026-09-14-ultima-search-partners-meeting.md",
+  "tasks_file": "brain/trackers/post-call-analyzer/pending-tasks/not_8N0trgDTnYGXWI.json",
+  "task_count": 3,
+  "attio_notes": {
+    "people": [
+      "def77eae-8e43-45bd-b8b7-68e243515056",
+      "595d2d87-6930-4f2b-97d1-62576bbde7fb"
+    ],
+    "companies": [
+      "06308f65-b006-4bda-b6eb-7d03deefc23f",
+      "06308f65-b006-4bda-b6eb-7d03deefc23f"
+    ]
+  },
+  "attio_failed": false,
+  "doc_failed": false,
+  "transcript_failed": false,
+  "slack_posted": true,
+  "processed_at": "2026-09-14T17:10:30.413329+00:00"
+}

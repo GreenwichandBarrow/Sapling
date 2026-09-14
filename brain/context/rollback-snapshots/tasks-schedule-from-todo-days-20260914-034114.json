@@ -1,6 +1,6 @@
 {
   "verb": "schedule-from-todo-days",
-  "timestamp": "20260914-024532",
+  "timestamp": "20260914-034114",
   "sheet_id": "1AIUuFMQTgPA8jttANMqsMbIsvXSNnqJdh0kSbaa_BqA",
   "ranges": {
     "'To Do'!A1:H400": [
@@ -171,7 +171,7 @@
         "Friday"
       ],
       [
-        "Not Completed",
+        "Dropped",
         "Switch to higher-yield business savings account",
         "Work",
         "",
@@ -180,7 +180,7 @@
         "Short Term"
       ],
       [
-        "Not Completed",
+        "Completed",
         "Cancel Motion (or downgrade to monthly)",
         "Work",
         "",
@@ -217,7 +217,7 @@
         "Short Term"
       ],
       [
-        "Not Completed",
+        "Completed",
         "Submit the boys to: State Models, Zuri Models, Teri B and Stellar",
         "Home",
         "Home",
@@ -347,13 +347,14 @@
         "Short Term"
       ],
       [
-        "Not Completed",
-        "Verify Howie plan and update budget run-rate",
+        "Completed",
+        "Pause Howie for three months",
         "Work",
         "G&B",
-        "2026-06-21",
-        "Budget cleanup: confirm whether Howie is 5/mo or annual 20/yr (0/mo); update Budget Dashboard if needed.",
-        "Short Term"
+        "2026-09-14",
+        "Kay confirmed three-month pause with no charge September 14. Not a permanent cancellation.",
+        "Short Term",
+        "Monday"
       ],
       [
         "Not Completed",
@@ -393,7 +394,7 @@
         "Friday"
       ],
       [
-        "Not Completed",
+        "Dropped",
         "Email Melissa to assist with BK Growth contact and file folders",
         "Work",
         "G&B",
@@ -403,7 +404,7 @@
         "Tuesday"
       ],
       [
-        "Not Completed",
+        "Dropped",
         "Draft/schedule Greg thank-you and insurance contacts follow-up",
         "Work",
         "60-Day LOI Sprint",
@@ -412,7 +413,7 @@
         "Short Term"
       ],
       [
-        "Not Completed",
+        "Dropped",
         "Check beauty supply chain conference app for fragrance/beauty testing and packaging target lists",
         "Work",
         "60-Day LOI Sprint",
@@ -448,7 +449,7 @@
         "Short Term"
       ],
       [
-        "Not Completed",
+        "Completed",
         "Fasting rhythm shifts to 7:45pm kitchen closed / 8:30am latte",
         "Home",
         "Body Reset",
@@ -601,7 +602,7 @@
         "Short Term"
       ],
       [
-        "Not Completed",
+        "Completed",
         "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning.",
         "Work",
         "G&B",
@@ -611,7 +612,7 @@
         "Friday"
       ],
       [
-        "Not Completed",
+        "Dropped",
         "Locate holdco financial model",
         "Work",
         "G&B",
@@ -621,7 +622,7 @@
         "Tuesday"
       ],
       [
-        "Not Completed",
+        "Completed",
         "Complete Quarterly Update",
         "Work",
         "G&B",
@@ -667,7 +668,7 @@
         "",
         "",
         "Short Term",
-        "Sunday"
+        "Friday"
       ],
       [
         "Not Completed",
@@ -677,7 +678,7 @@
         "",
         "",
         "Short Term",
-        "Wednesday"
+        "Monday"
       ],
       [
         "Not Completed",
@@ -747,7 +748,7 @@
         "",
         "",
         "Short Term",
-        "Tuesday"
+        "Monday"
       ],
       [
         "Not Completed",
@@ -757,7 +758,7 @@
         "",
         "",
         "Short Term",
-        "Tuesday"
+        "Monday"
       ],
       [
         "Not Completed",
@@ -786,8 +787,7 @@
         "G&B",
         "2026-09-28",
         "",
-        "Short Term",
-        "Monday"
+        "Short Term"
       ],
       [
         "Not Completed",
@@ -811,22 +811,13 @@
       ],
       [
         "Not Completed",
-        "Task",
-        "",
-        "Project",
-        "",
-        "Notes",
-        "Short Term",
-        "Friday"
-      ],
-      [
-        "Not Completed",
         "Submit Kaiden to: State Models, Zuri Models, Teri B and Stellar",
         "",
         "",
         "",
         "",
-        "Short Term"
+        "Short Term",
+        "Friday"
       ],
       [
         "Not Completed",
@@ -846,7 +837,7 @@
         "",
         "",
         "Short Term",
-        "Tuesday"
+        "Monday"
       ],
       [
         "Completed",
@@ -3451,6 +3442,75 @@
         "",
         "Moved into daily tab checklist rows instead of recurring To Do task rows.",
         "Weekly Recurring Sat"
+      ],
+      [
+        "Not Completed",
+        "Ask investors/network for CFO or operating-partner introductions with inventory-heavy business experience",
+        "Work",
+        "G&B",
+        "2026-09-15",
+        "Source: Guillermo call. Ask investors/network for CFO or operating-partner introductions with inventory-heavy and capital-intensive businesses experience. Approved capture only; outreach not executed.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Scope operating cash and growth funding needs with QoE team; distinguish from non-cash working capital",
+        "Work",
+        "G&B",
+        "2026-09-15",
+        "Source: Guillermo call. Scope normalized operating cash needs and additional growth funding with the QoE team; distinguish from non-cash working capital and clarify transaction treatment. Approved capture only; work not executed.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Ask Brooke about including her husband in the next deal discussion",
+        "Work",
+        "G&B",
+        "2026-09-15",
+        "Source: Guillermo call. Coordinate through Brooke about including her husband in the next deal discussion to hear his perspective and questions. Approved capture only; outreach not executed.",
+        "Short Term",
+        "Tuesday"
+      ],
+      [
+        "Not Completed",
+        "Email follow-up to Doug",
+        "Work",
+        "G&B",
+        "2026-09-14",
+        "Source: user request on September 14, 2026. Email follow-up to Doug for Monday, September 14, 2026. Capture only; no drafting or sending performed.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Completed",
+        "Cancel DocSend",
+        "Work",
+        "G&B",
+        "2026-09-14",
+        "Kay confirmed canceled September 14. Forward cost removed.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Completed",
+        "Request The Art Newspaper cancellation",
+        "Work",
+        "G&B",
+        "2026-09-14",
+        "Kay sent cancellation email September 14. Request completed; vendor confirmation/effective date pending.",
+        "Short Term",
+        "Monday"
+      ],
+      [
+        "Not Completed",
+        "Identify 2\u20133 warm luxury M&A advisor introductions",
+        "Work",
+        "G&B",
+        "",
+        "Approved September 14 for this week. Use Camilla research and Michael\u2019s September 11 call. Research existing warm paths only; no outreach. Michael reconnect remains held until LOI signature. Source analysis: https://docs.google.com/document/d/1YgKJtg1lGdjUT4VjFTGBl6beMEjffv_TTECh4yOMCVg/edit",
+        "Short Term"
       ]
     ],
     "'Week'!A1:O38": [
@@ -3483,17 +3543,66 @@
       [
         "",
         false,
+        "Put fuel & recovery lists to refrigerator",
+        false,
+        "Email Jackie Hirsh: ask whether inventory is included in LOI offer or on top",
+        false,
+        "Submit the boys to: State Models, Zuri Models, Teri B and Stellar",
+        false,
+        "Change login info for operations folder + operations Gmail account",
+        false,
+        "",
+        false,
+        "Create travel plans for July in Paris/France next year",
+        false,
+        "Buy gift for baby Ruby"
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Book October conference",
+        false,
+        "Call IRS to confirm Form 8822-B address update",
+        false,
+        "Contact the asset backed lender melissa mentioned",
+        false,
+        "",
+        false,
+        "Look into GLP1",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "Contact NY health insurance broker to compare family coverage costs",
+        false,
+        "Email Melissa to assist with BK Growth contact and file folders",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Review Kai Grey Ventures renewal",
+        false
+      ],
+      [
+        "",
+        false,
         "Create weekly schedule",
         false,
         "Process payroll",
         false,
-        "Review new SLD video",
+        "Locate holdco financial model",
         false,
         "Niche intel review",
         false,
         "",
         false,
-        "Weekly review \u2014 system health, M&A activities, budget",
+        "Submit new PSLF form",
         false
       ],
       [
@@ -3503,7 +3612,87 @@
         false,
         "Process conference registrations",
         false,
+        "Complete Quarterly Update",
+        false,
         "",
+        false,
+        "",
+        false,
+        "Create project for French passports",
+        false
+      ],
+      [
+        "",
+        false,
+        "Schedule exercise classes for the week",
+        false,
+        "Email follow-up to Doug",
+        false,
+        "Add seller-alignment section to first pages of SIM",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Renew kids' work permits",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Live Deal / Model: track rolling 12-month file, salary detail, and org chart",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Systems / G&B Housekeeping: clean up the Slack/system failures from this morning.",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Build buyer vs capital conviction checklist for SIM",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Nonprofit Operations: finalize Myself Renewed launch and W-2/payroll next-step plan",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Set up Sidney Garber shared Drive data room + request-list structure",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Weekly review \u2014 system health, M&A activities, budget",
+        false
+      ],
+      [
+        "",
+        false,
+        "",
+        false,
+        "",
+        false,
+        "Pick up my items from One Hanover Square",
         false,
         "",
         false,
@@ -3515,27 +3704,11 @@
       [
         "",
         false,
-        "Schedule exercise classes for the week",
-        false,
         "",
         false,
         "",
         false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
+        "Pay Hetzner invoice",
         false,
         "",
         false,
@@ -3551,7 +3724,7 @@
         false,
         "",
         false,
-        "",
+        "Pay DealsX invoice",
         false,
         "",
         false,
@@ -3567,7 +3740,7 @@
         false,
         "",
         false,
-        "",
+        "Await receipt of track rolling 12-month file, salary detail, and org chart",
         false,
         "",
         false,
@@ -3583,7 +3756,7 @@
         false,
         "",
         false,
-        "",
+        "Send & Print resume for Brooke",
         false,
         "",
         false,
@@ -3599,7 +3772,7 @@
         false,
         "",
         false,
-        "",
+        "Print family photo for kids",
         false,
         "",
         false,
@@ -3615,7 +3788,7 @@
         false,
         "",
         false,
-        "",
+        "Review new SLD video",
         false,
         "",
         false,
@@ -3631,7 +3804,7 @@
         false,
         "",
         false,
-        "",
+        "Ask investors/network for CFO or operating-partner introductions with inventory-heavy business experience",
         false,
         "",
         false,
@@ -3647,7 +3820,7 @@
         false,
         "",
         false,
-        "",
+        "Scope operating cash and growth funding needs with QoE team; distinguish from non-cash working capital",
         false,
         "",
         false,
@@ -3663,119 +3836,7 @@
         false,
         "",
         false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
-        false
-      ],
-      [
-        "",
-        false,
-        "",
-        false,
-        "",
-        false,
-        "",
+        "Ask Brooke about including her husband in the next deal discussion",
         false,
         "",
         false,
@@ -3898,12 +3959,1085 @@
         "notes \u00b7 ideas \u00b7 jot"
       ]
     ],
-    "'Sun'!A21:E70": [],
-    "'Mon'!A21:E70": [],
-    "'Tue'!A21:E70": [],
-    "'Wed'!A21:E70": [],
-    "'Thu'!A21:E70": [],
-    "'Fri'!A21:E70": [],
-    "'Sat'!A21:E70": []
+    "'Sun'!A21:E70": [
+      [
+        "\u2713",
+        "Task",
+        "Type",
+        "Project",
+        "Notes"
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Mon'!A21:E70": [
+      [
+        true,
+        "Cancel DocSend",
+        "Work",
+        "G&B",
+        "Kay confirmed canceled September 14. Forward cost removed."
+      ],
+      [
+        true,
+        "Pause Howie for three months",
+        "Work",
+        "G&B",
+        "Kay confirmed three-month pause with no charge September 14. Not a permanent cancellation."
+      ],
+      [
+        true,
+        "Request The Art Newspaper cancellation",
+        "Work",
+        "G&B",
+        "Kay sent cancellation email September 14. Request completed; vendor confirmation/effective date pending."
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Tue'!A21:E70": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Wed'!A21:E70": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Thu'!A21:E70": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Fri'!A21:E70": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ],
+    "'Sat'!A21:E70": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ]
   }
 }

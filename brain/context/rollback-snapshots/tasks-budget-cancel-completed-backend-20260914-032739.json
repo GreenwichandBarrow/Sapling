@@ -1,0 +1,19 @@
+{
+  "verb": "budget-cancel-completed-backend",
+  "timestamp": "20260914-032739",
+  "sheet_id": "1AIUuFMQTgPA8jttANMqsMbIsvXSNnqJdh0kSbaa_BqA",
+  "ranges": {
+    "To Do!A379:H379": [
+      [
+        "Not Completed",
+        "Cancel The Art Newspaper",
+        "Work",
+        "G&B",
+        "2026-09-14",
+        "Save cancellation confirmation and effective date.",
+        "Short Term",
+        "Monday"
+      ]
+    ]
+  }
+}

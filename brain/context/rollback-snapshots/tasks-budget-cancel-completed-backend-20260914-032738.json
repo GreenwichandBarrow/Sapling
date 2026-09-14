@@ -1,0 +1,18 @@
+{
+  "verb": "budget-cancel-completed-backend",
+  "timestamp": "20260914-032738",
+  "sheet_id": "1AIUuFMQTgPA8jttANMqsMbIsvXSNnqJdh0kSbaa_BqA",
+  "ranges": {
+    "To Do!A378:H378": [
+      [
+        "Not Completed",
+        "Cancel DocSend",
+        "Work",
+        "G&B",
+        "2026-09-14",
+        "Monday: cancel DocSend and save confirmation/effective date. Last observed bill $16.33.",
+        "Short Term"
+      ]
+    ]
+  }
+}

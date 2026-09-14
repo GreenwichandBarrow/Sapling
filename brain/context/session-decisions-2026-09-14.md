@@ -11,11 +11,17 @@ tags: [date/2026-09-14, daily, output/session-decisions, topic/goodmorning, stat
 For [[entities/kay-schneider]] and [[entities/greenwich-and-barrow]]. Full morning findings: [[outputs/2026-09-14-goodmorning]].
 
 ## Decisions
+- APPROVE: Kay finalized Week and requested distribution to individual day tabs.
+- APPROVE: Kay approved morning item 5: capture one task to identify 2–3 warm luxury M&A advisor introductions using existing Camilla research and the September 11 Michael call. No outreach or day assignment authorized.
+- APPROVE: Kay updated To Do and explicitly requested flowing her assignments into Week only.
 - APPROVE: User requested full Good Morning and recovery of Sunday's weekly scheduling. This authorizes preparation of the weekly canvas, not arbitrary new day assignments or distribution of an unreviewed Week plan.
 - PASS: Preserve prior declined briefs and completed follow-through from [[context/session-decisions-2026-09-11]].
 - PASS: [[outputs/2026-09-12-budget-runway-followup-aug-2026]] supersedes earlier cash forecasts and invoice amounts. No payroll cadence selected, no reserve release authorized.
 
 ## Actions Taken
+- UPDATED: Approved Week tasks distributed to all seven daily tabs through a snapshot-protected preserving merge; three existing checked Monday records retained with metadata, Sunday header and all habits/focus/notes preserved. Exact readback verified.
+- UPDATED: Week refreshed from Kay’s live To Do day assignments through the approved scheduling verb; every Week task verified against the current backend and all daily tabs unchanged.
+- CREATED: One approved luxury M&A advisor-introduction task in To Do, with source analysis link, blank day assignment, and no outreach; Michael reconnect remains held until LOI signature. One blank validated backend row added to accommodate the task.
 - CREATED: New weekly tracker and preserved prior history using the approved process; verified current Week ready for review.
 - UPDATED: Conference dashboard refreshed; future-week sheet layout remains incomplete.
 - UPDATED: Morning email date/timing guards repaired with three regression tests; no external messages or production backlog bulk changes.
@@ -23,12 +29,13 @@ For [[entities/kay-schneider]] and [[entities/greenwich-and-barrow]]. Full morni
 - CREATED: [[traces/2026-09-14-budget-period-and-cash-basis]] records one durable learning. Mechanical tracker artifacts remain rollback receipts.
 
 ## Deferred
-- DEFER: Week-to-day distribution until user approves the Week plan.
-- DEFER: Proposed briefs, warm advisor-path task and conference layout repair await the morning decisions.
+- RESOLVED: Week-to-day distribution approved and completed September 14.
+- DEFER: Proposed briefs and conference layout repair await the morning decisions.
 - DEFER: Payroll action requires an explicit choice and current Gusto check before today's19:00ET cutoff; no automatic payroll execution.
 - DEFER: Older staged tasks retain individual trigger/completion/approval requirements; no bulk processing.
 
 ## Open Loops
+- OPEN: `schedule-from-todo-days` unexpectedly clears live daily rows despite Week-only intent. This run restored four affected rows from its fresh snapshot and verified all seven daily tabs unchanged; fix the helper before its next use.
 - OPEN: Current bank cash, accounting engagement/payment terms and future provider liabilities remain unverified where identified by Saturday CFO work.
 - OPEN: Physical office pickup not confirmed complete; calendar now places it today15:00.
 - OPEN: Full anniversary-period expense attribution remains distinct from forward cash modeling.

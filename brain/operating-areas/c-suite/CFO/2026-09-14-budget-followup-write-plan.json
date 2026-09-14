@@ -1,0 +1,352 @@
+[
+  {
+    "range": "'Runway Forecast'!B2:B2",
+    "values": [
+      [
+        "2026-09-14"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B3:B3",
+    "values": [
+      [
+        "Aug31 VERIFIED cash; Sep14 MODEL update, no September feed"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B7:B7",
+    "values": [
+      [
+        "19810.93"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A8:B8",
+    "values": [
+      [
+        "Normalized runway comparison; Aug31 operations / new monthly base",
+        "3.02"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A9:A9",
+    "values": [
+      [
+        "Projected first DD reserve breach (dated ledger)"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B10:B10",
+    "values": [
+      [
+        "52257.79"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A11:B11",
+    "values": [
+      [
+        "Additional monthly savings needed from Sep14",
+        "10849.37"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B12:B12",
+    "values": [
+      [
+        "August bank statements + Sep12 model + user-confirmed Sep14 cuts"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B13:B13",
+    "values": [
+      [
+        "Office407.42 + printing/postage170.40 stopped Sep14; no retroactive savings. ChatGPT217.75 KEEP; meals1005.13 retained. Salary/health scenarios hypothetical; no changes executed."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B25:B25",
+    "values": [
+      [
+        "19810.93"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B30:B30",
+    "values": [
+      [
+        "19810.93"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B31:B31",
+    "values": [
+      [
+        "3.02"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B34:B34",
+    "values": [
+      [
+        "10849.37"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A41:B41",
+    "values": [
+      [
+        "Other allowance:2798.12 to Sep13;2220.30 from Sep14",
+        "11906.96"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A43:A43",
+    "values": [
+      [
+        "Conference planned/unbooked pending decision"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B45:B45",
+    "values": [
+      [
+        "112035.5"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B47:B47",
+    "values": [
+      [
+        "52257.79"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A48:B48",
+    "values": [
+      [
+        "Projected Sep14 opening NOT BANK FACT",
+        "86974.61"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B51:D51",
+    "values": [
+      [
+        "10017.05",
+        "3732.96",
+        "766.3"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B52:D52",
+    "values": [
+      [
+        "9633.68",
+        "4116.33",
+        "736.97"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B53:D53",
+    "values": [
+      [
+        "8962.78",
+        "4787.23",
+        "685.65"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B54:D54",
+    "values": [
+      [
+        "9058.63",
+        "4691.39",
+        "692.98"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B55:D55",
+    "values": [
+      [
+        "11686.56",
+        "2063.45",
+        "894.02"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B56:D56",
+    "values": [
+      [
+        "11239.29",
+        "2510.72",
+        "859.8"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B57:D57",
+    "values": [
+      [
+        "10456.58",
+        "3293.43",
+        "799.93"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B58:D58",
+    "values": [
+      [
+        "10568.4",
+        "3181.62",
+        "808.48"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!E61:G61",
+    "values": [
+      [
+        "23316.23",
+        "14683.77",
+        "2027-01-05"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!E62:G62",
+    "values": [
+      [
+        "19900.41",
+        "18099.59",
+        "2027-01-05"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!E63:G63",
+    "values": [
+      [
+        "16484.59",
+        "21515.41",
+        "2026-12-22"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!C66:C66",
+    "values": [
+      [
+        "38507.79"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!C67:C67",
+    "values": [
+      [
+        "46757.79"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A78:B78",
+    "values": [
+      [
+        "Rebuilt monthly base after office407.42 + postage170.40 cuts",
+        "19810.93"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B80:B80",
+    "values": [
+      [
+        "175.17"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A81:B81",
+    "values": [
+      [
+        "Half-pay monthly equivalent (exact components)",
+        "12409.983333333334"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A83:A83",
+    "values": [
+      [
+        "Cash forecast starts September1 from August31 verified bank anchor; no September feed. Sep1-13 unchanged; approved577.82/month cuts start September14, prorated by actual calendar-month days. No retroactive savings."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A86:A86",
+    "values": [
+      [
+        "Other allowance2220.30/month from Sep14 (previous2798.12 through Sep13). Office407.42 and printing/postage170.40 stopped. ChatGPT217.75 KEEP essential daily. Meals1005.13 retained; cut NOT approved. Travel1194.83 is allowance, not a recurring bill."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A88:A88",
+    "values": [
+      [
+        "Conference1300 planned/unbooked pending decision, modeled once October1, not a booked obligation. Website348 expected November11; tax unknown. No conference savings assumed."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A92:A92",
+    "values": [
+      [
+        "Employer-tax savings factor derives from observed payroll, not a payroll-engine quote. January tax resets and fixed payroll fees may differ. Gusto106.90 monthly fee retained unchanged. Unrounded monthly payroll14801.886667; full base19810.926667; half12409.983333."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A94:B94",
+    "values": [
+      [
+        "Jan23 every-other-pay cash / DD gap (first skipped date)",
+        "2026-09-15: $30,627.98 / $7,372.02; 2026-09-22: $27,212.16 / $10,787.84; 2026-10-06: $23,796.34 / $14,203.66"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A95:B95",
+    "values": [
+      [
+        "Monthly gap basis / scope",
+        "Additional monthly savings effective September14 through February7 inclusive; 4.816666667 calendar-month equivalents, not retroactive September1. No payroll, health, task, tech-sheet, email or Slack changes."
+      ]
+    ]
+  }
+]

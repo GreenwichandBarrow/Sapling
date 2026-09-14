@@ -1,0 +1,23 @@
+{
+  "verb": "week-daily-preservation-repair",
+  "timestamp": "20260914-034355",
+  "sheet_id": "1AIUuFMQTgPA8jttANMqsMbIsvXSNnqJdh0kSbaa_BqA",
+  "ranges": {
+    "'Sun'!A21:F21": [
+      [
+        false
+      ]
+    ],
+    "'Mon'!A21:F23": [
+      [
+        false
+      ],
+      [
+        false
+      ],
+      [
+        false
+      ]
+    ]
+  }
+}

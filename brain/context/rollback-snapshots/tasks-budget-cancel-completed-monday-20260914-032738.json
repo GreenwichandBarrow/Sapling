@@ -1,0 +1,30 @@
+{
+  "verb": "budget-cancel-completed-monday",
+  "timestamp": "20260914-032738",
+  "sheet_id": "1AIUuFMQTgPA8jttANMqsMbIsvXSNnqJdh0kSbaa_BqA",
+  "ranges": {
+    "Mon!A21:E23": [
+      [
+        false,
+        "Cancel DocSend",
+        "Work",
+        "G&B",
+        "Save cancellation confirmation and effective date. Last observed bill $16.33."
+      ],
+      [
+        false,
+        "Cancel Howie",
+        "Work",
+        "G&B",
+        "Not being used. Supersedes old verify-plan task. Confirm cancellation and effective date."
+      ],
+      [
+        false,
+        "Cancel The Art Newspaper",
+        "Work",
+        "G&B",
+        "Save cancellation confirmation. Last observed bill $24 plus $0.72 fee."
+      ]
+    ]
+  }
+}

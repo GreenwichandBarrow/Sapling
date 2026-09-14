@@ -1,0 +1,375 @@
+[
+  {
+    "range": "'Runway Forecast'!B3:B3",
+    "values": [
+      [
+        "Aug31 VERIFIED cash; Sep14 subscription v3 MODEL; no September feed"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B7:B7",
+    "values": [
+      [
+        "18647.52"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B8:B8",
+    "values": [
+      [
+        "3.21"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B10:B10",
+    "values": [
+      [
+        "46718.11"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B11:B11",
+    "values": [
+      [
+        "9699.26"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B12:B12",
+    "values": [
+      [
+        "August bank statements + v2 model + user-confirmed subscription changes Sep14"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B13:B13",
+    "values": [
+      [
+        "User Sep14: DocSend canceled, zero from Sep14. Howie paused3 months no charge; assumed Sep14-Dec13 inclusive; reinstate UNVERIFIED35 allowance Dec14 absent renewal cancellation, NOT confirmed actual billing. Newspaper cancellation email sent only; retain24 plus0.72 already in bank fees pending confirmed effective date. Prior office/postage, meals and one-off removals retained; historical actuals unchanged."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B25:B25",
+    "values": [
+      [
+        "18647.52"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B30:B30",
+    "values": [
+      [
+        "18647.52"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B31:B31",
+    "values": [
+      [
+        "3.21"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B34:B34",
+    "values": [
+      [
+        "9699.26"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A41:B41",
+    "values": [
+      [
+        "Other allowance:2798.12 to Sep13;1056.89 Sep14-Dec13;1091.89 Dec14 onward",
+        "6367.28"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B45:B45",
+    "values": [
+      [
+        "106495.82"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B47:B47",
+    "values": [
+      [
+        "46718.11"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B51:D51",
+    "values": [
+      [
+        "8955.18",
+        "4794.84",
+        "685.07"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B52:D52",
+    "values": [
+      [
+        "8571.8",
+        "5178.21",
+        "655.74"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B53:D53",
+    "values": [
+      [
+        "7900.91",
+        "5849.11",
+        "604.42"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B54:D54",
+    "values": [
+      [
+        "7996.75",
+        "5753.26",
+        "611.75"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B55:D55",
+    "values": [
+      [
+        "10447.7",
+        "3302.31",
+        "799.25"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B56:D56",
+    "values": [
+      [
+        "10000.44",
+        "3749.57",
+        "765.03"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B57:D57",
+    "values": [
+      [
+        "9217.72",
+        "4532.29",
+        "705.15"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B58:D58",
+    "values": [
+      [
+        "9329.54",
+        "4420.47",
+        "713.71"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!E61:F61",
+    "values": [
+      [
+        "28855.91",
+        "9144.09"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!E62:F62",
+    "values": [
+      [
+        "25440.09",
+        "12559.91"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!E63:F63",
+    "values": [
+      [
+        "22024.27",
+        "15975.73"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!C66:C66",
+    "values": [
+      [
+        "32968.11"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!C67:C67",
+    "values": [
+      [
+        "41218.11"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A77:A77",
+    "values": [
+      [
+        "V2 bridge unverified allowances60; Howie35 removed in v3 total during pause"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A78:B78",
+    "values": [
+      [
+        "Rebuilt monthly base: v2 cuts plus DocSend16.33 canceled and Howie35 paused",
+        "18647.52"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B80:B80",
+    "values": [
+      [
+        "-988.24"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B81:B81",
+    "values": [
+      [
+        "11246.573333333334"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A83:A83",
+    "values": [
+      [
+        "August31 verified cash anchor; no September feed. September1-13 unchanged. Office/postage577.82 already removed; incremental meals1005.13 plus one-off106.95 repeat allowance removed September14 inclusive. Actual-calendar-day proration; no retroactive savings. V3 removes DocSend16.33 and Howie35 from Sep14, restoring Howie35 allowance Dec14. Calendar-day proration retained."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A86:A86",
+    "values": [
+      [
+        "Other allowance1056.89/month Sep14-Dec13;1091.89 from Dec14;2798.12 through Sep13. Meals zero per user. ChatGPT217.75 KEEP. Travel rides/parking/gas189.70 retained. User confirms Aug6 Walgreens106.95 was one-off computer setup items while traveling, NOT medical; no future purchase planned. Office Supplies/Computer Accessories is proposed classification, not bookkeeper-posted. Historical actuals/QBO unchanged pending Anthony."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A90:A90",
+    "values": [
+      [
+        "User Sep14: DocSend canceled, zero from Sep14. Howie paused3 months no charge; assumed Sep14-Dec13 inclusive; reinstate UNVERIFIED35 allowance Dec14 absent renewal cancellation, NOT confirmed actual billing. Newspaper cancellation email sent only; retain24 plus0.72 already in bank fees pending confirmed effective date. Voice10 and Slack15 unverified allowances retained; Voice may overlap Workspace."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!A92:A92",
+    "values": [
+      [
+        "Employer-tax savings factor derives from observed payroll, not a payroll-engine quote. January tax resets and fixed payroll fees may differ. Gusto106.90 monthly fee retained unchanged. During pause full18647.516667; hypothetical half11246.573333. From Dec14 full18682.516667; half11281.573333 includes UNVERIFIED Howie35 allowance, not confirmed actual billing. Weekly employer cash3415.82 unchanged."
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B94:B94",
+    "values": [
+      [
+        "2026-09-15: $35,594.36 / $2,405.64; 2026-09-22: $32,178.54 / $5,821.46; 2026-10-06: $28,762.72 / $9,237.28"
+      ]
+    ]
+  },
+  {
+    "range": "'Runway Forecast'!B95:B95",
+    "values": [
+      [
+        "Additional monthly savings effective September14 through February7 inclusive; 4.816666667 calendar-month equivalents, not retroactive September1. During pause full18647.516667; hypothetical half11246.573333. From Dec14 full18682.516667; half11281.573333 includes UNVERIFIED Howie35 allowance, not confirmed actual billing. Weekly employer cash3415.82 unchanged. Newspaper24.72 retained. No actual payroll changes; parent owns task completion."
+      ]
+    ]
+  },
+  {
+    "range": "'Tech Stack Inventory'!C8:E8",
+    "values": [
+      [
+        "No-charge pause Sep14-Dec13 assumed; UNVERIFIED35 allowance resumes Dec14 absent renewal cancellation; not confirmed actual billing",
+        "0",
+        "0"
+      ]
+    ]
+  },
+  {
+    "range": "'Tech Stack Inventory'!G8:G8",
+    "values": [
+      [
+        "PAUSED / no charge"
+      ]
+    ]
+  },
+  {
+    "range": "'Tech Stack Inventory'!I8:K8",
+    "values": [
+      [
+        "No-charge pause Sep14-Dec13 assumed; UNVERIFIED35 allowance resumes Dec14 absent renewal cancellation; not confirmed actual billing",
+        "0",
+        "0"
+      ]
+    ]
+  },
+  {
+    "range": "'Tech Stack Inventory'!C24:E24",
+    "values": [
+      [
+        "User confirms canceled Sep14; no forward charge. Historical Aug30 debit16.33 unchanged",
+        "0",
+        "0"
+      ]
+    ]
+  },
+  {
+    "range": "'Tech Stack Inventory'!G24:G24",
+    "values": [
+      [
+        "CANCELED"
+      ]
+    ]
+  },
+  {
+    "range": "'Tech Stack Inventory'!I24:K24",
+    "values": [
+      [
+        "User confirms canceled Sep14; no forward charge. Historical Aug30 debit16.33 unchanged",
+        "0",
+        "0"
+      ]
+    ]
+  }
+]

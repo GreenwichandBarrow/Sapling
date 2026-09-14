@@ -42,3 +42,5 @@ For [[entities/kay-schneider]] and [[entities/greenwich-and-barrow]]. Full morni
 ## Repo verification
 - Follow-through fix committed as226b52df; three focused tests passed and isolated live evidence confirmed correct date/completion behavior.
 - Vault schema validation and diff checks passed. Routine rollback retention deletions belong to the approved tracker helper. Unrelated pre-existing website, dashboard, helper and schedule-unit work remains untouched and unstaged.
+
+- BLOCKED: Automatic approval review rejected git push because destination/payload were unverified. Subsequent read-only check confirmed origin is public GreenwichandBarrow/Sapling. Commits226b52df andbd022152 remain local; no retry, no remote visibility change. User approval required before making the repository private and pushing sensitive operating artifacts.

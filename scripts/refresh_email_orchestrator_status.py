@@ -312,6 +312,8 @@ def email_evidence_completes(record: dict, evidence: list[dict[str, str]]) -> bo
     person_tokens = tokens(person)
     context_tokens = tokens(" ".join([str(record.get("context") or ""), str(record.get("event") or "")]))
     for row in evidence:
+        if not thank_you_sent_after_event(record, row.get("date", "")):
+            continue
         row_date = date_key(row.get("date", ""))
         if due and row_date and row_date < due:
             continue
@@ -404,20 +406,42 @@ def is_external_calendar_event(event: dict) -> bool:
     return external_attendee or kay_pair_pattern
 
 
+def event_timestamp(value: str) -> datetime | None:
+    """Parse a dated timestamp; date-only evidence cannot prove post-call timing."""
+    if not value or not re.search(r"[T ]\d{2}:\d{2}", value):
+        return None
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    return parsed.replace(tzinfo=DASHBOARD_TZ) if parsed.tzinfo is None else parsed
+
+
+def thank_you_sent_after_event(record: dict, sent_at: str) -> bool:
+    if record.get("bucket") != "thank":
+        return True
+    ended = event_timestamp(str(record.get("event_end") or ""))
+    sent = event_timestamp(sent_at)
+    # Older rows were seeded without reliable event timing. Leave them for review.
+    return ended is not None and sent is not None and sent > ended
+
+
 def seed_prior_day_thank_yous() -> int:
     data = load_json(BACKLOG_PATH)
     items = data.get("items", [])
     if not isinstance(items, list):
         return 0
-    yesterday = (now_et().date() - timedelta(days=1)).isoformat()
-    today = now_et().date().isoformat()
+    midnight = now_et().replace(hour=0, minute=0, second=0, microsecond=0)
+    prior_midnight = midnight - timedelta(days=1)
+    yesterday = prior_midnight.date().isoformat()
+    today = midnight.date().isoformat()
     payload = run_gog_json([
         "calendar",
         "events",
         "--from",
-        yesterday,
+        prior_midnight.isoformat(),
         "--to",
-        today,
+        midnight.isoformat(),
         "--account",
         GOG_ACCOUNT,
         "--json",
@@ -437,6 +461,12 @@ def seed_prior_day_thank_yous() -> int:
     added = 0
     for event in events:
         if not isinstance(event, dict) or not is_external_calendar_event(event):
+            continue
+        started = event_timestamp(str((event.get("start") or {}).get("dateTime") or ""))
+        ended = event_timestamp(str((event.get("end") or {}).get("dateTime") or ""))
+        if started is None or started.astimezone(DASHBOARD_TZ).date().isoformat() != yesterday:
+            continue
+        if ended is None or ended > now_et():
             continue
         summary = str(event.get("summary") or "").strip()
         person = external_meeting_person(summary)
@@ -463,6 +493,8 @@ def seed_prior_day_thank_yous() -> int:
             "source": "calendar-prior-day-refresh",
             "event": summary,
             "event_date": yesterday,
+            "event_start": started.isoformat(),
+            "event_end": ended.isoformat(),
             "calendar_event_id": event_id,
         })
         existing_keys.add(key)
@@ -515,6 +547,8 @@ def sent_thread_after_due(record: dict) -> dict | None:
     for thread in payload.get("threads", []) or []:
         thread_date = date_key(str(thread.get("date") or ""))
         if due and thread_date and thread_date < due:
+            continue
+        if not thank_you_sent_after_event(record, str(thread.get("date") or "")):
             continue
         if thread.get("id"):
             return thread

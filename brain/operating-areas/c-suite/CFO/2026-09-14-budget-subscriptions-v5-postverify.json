@@ -1,0 +1,1098 @@
+{
+  "runway": {
+    "values": [
+      [
+        "Budget Dashboard",
+        "Greenwich & Barrow"
+      ],
+      [
+        "Last Updated",
+        "2026-09-14"
+      ],
+      [
+        "As of",
+        "Aug31 VERIFIED cash; Sep14 subscription v5 MODEL; no September feed"
+      ],
+      [
+        "Fund Balance",
+        97777.71
+      ],
+      [
+        "DD Reserve",
+        38000
+      ],
+      [
+        "Available for Operations",
+        59777.71000000001
+      ],
+      [
+        "Steady-State Monthly Burn",
+        "18622.8"
+      ],
+      [
+        "Normalized runway comparison; Aug31 operations / new monthly base",
+        "3.21"
+      ],
+      [
+        "Projected first DD reserve breach (dated ledger)",
+        "2026-11-24"
+      ],
+      [
+        "Shortfall to Feb 2027",
+        "46534.97"
+      ],
+      [
+        "Additional monthly savings needed from Sep14",
+        "9661.24"
+      ],
+      [
+        "Dashboard Source",
+        "August bank statements + v4 model + user-confirmed permanent Howie cancellation; DocSend reconfirmed zero"
+      ],
+      [
+        "Notes",
+        "Howie permanently CANCELLED, user confirmed September14; supersedes three-month pause. Zero forward cost, no December14 restart. DocSend cancellation reconfirmed; already zero in v4, no additional savings or refund. Other prior cuts retained; historical actuals unchanged."
+      ],
+      [],
+      [
+        "BURN RATE"
+      ],
+      [
+        "January 2026 Net Burn",
+        "31303.94"
+      ],
+      [
+        "February 2026 Net Burn",
+        "30096.38"
+      ],
+      [
+        "March 2026 Net Burn",
+        "31903.6"
+      ],
+      [
+        "April 2026 Net Burn",
+        "33296.47"
+      ],
+      [
+        "May 2026 Net Burn",
+        "22139.53"
+      ],
+      [
+        "June 2026 Net Burn",
+        "26040.55"
+      ],
+      [
+        "July 2026 Net Burn",
+        "23021.21"
+      ],
+      [
+        "August 2026 Net Burn",
+        "21425.51"
+      ],
+      [
+        "Trailing Average Burn",
+        "27403.4"
+      ],
+      [
+        "Steady-State Monthly Burn",
+        "18622.8"
+      ],
+      [],
+      [
+        "INVESTOR REPORTING"
+      ],
+      [
+        "budget_remaining",
+        97777.71
+      ],
+      [
+        "budget_pct",
+        17.72
+      ],
+      [
+        "burn_rate",
+        "18622.8"
+      ],
+      [
+        "runway_months",
+        "3.21"
+      ],
+      [
+        "projected_zero",
+        "2026-11-24"
+      ],
+      [
+        "target_cash_date",
+        "2027-02-07"
+      ],
+      [
+        "monthly_gap_to_target",
+        "9661.24"
+      ],
+      [],
+      [
+        "CASH-TIMED MODEL",
+        "Amount / Count"
+      ],
+      [
+        "Payroll payments Sep1-Feb2",
+        23
+      ],
+      [
+        "Payroll total",
+        78563.86
+      ],
+      [
+        "Health full payments Sep5-Feb5",
+        16500
+      ],
+      [
+        "Weekly insurance22 payments",
+        196.68
+      ],
+      [
+        "Other allowance:2798.12 to Sep13;1032.17 Sep14 onward; no Howie restart",
+        "6184.14"
+      ],
+      [
+        "DealsX unpaid ONCE",
+        3220
+      ],
+      [
+        "Conference planned/unbooked pending decision",
+        1300
+      ],
+      [
+        "Website expected November renewal pretax",
+        348
+      ],
+      [
+        "Total modeled outflows",
+        "106312.68"
+      ],
+      [
+        "Target DD reserve",
+        38000
+      ],
+      [
+        "Cash funding gap",
+        "46534.97"
+      ],
+      [
+        "Projected Sep14 opening NOT BANK FACT",
+        "86974.61"
+      ],
+      [],
+      [
+        "HYPOTHETICAL SCENARIOS",
+        "Gross monthly cut",
+        "Gross remaining",
+        "Employer tax saving/mo",
+        "Health cash savings",
+        "First reduced payment",
+        "Payroll runs"
+      ],
+      [
+        "Salary only / 2026-09-14",
+        "8920.07",
+        "4829.94",
+        "682.38",
+        0,
+        "2026-09-15",
+        21
+      ],
+      [
+        "Combined: health reduced $1000 from January / 2026-09-14",
+        "8536.7",
+        "5213.31",
+        "653.06",
+        2000,
+        "2026-09-15",
+        21
+      ],
+      [
+        "Combined: health reduced $2750 from January (upper bound) / 2026-09-14",
+        "7865.8",
+        "5884.21",
+        "601.73",
+        5500,
+        "2026-09-15",
+        21
+      ],
+      [
+        "Combined: health reduced $1000 from October / 2026-09-14",
+        "7961.64",
+        "5788.37",
+        "609.06",
+        5000,
+        "2026-09-15",
+        21
+      ],
+      [
+        "Salary only / 2026-10-01",
+        "10406.75",
+        "3343.27",
+        "796.11",
+        0,
+        "2026-10-06",
+        18
+      ],
+      [
+        "Combined: health reduced $1000 from January / 2026-10-01",
+        "9959.48",
+        "3790.53",
+        "761.9",
+        2000,
+        "2026-10-06",
+        18
+      ],
+      [
+        "Combined: health reduced $2750 from January (upper bound) / 2026-10-01",
+        "9176.77",
+        "4573.25",
+        "702.02",
+        5500,
+        "2026-10-06",
+        18
+      ],
+      [
+        "Combined: health reduced $1000 from October / 2026-10-01",
+        "9288.58",
+        "4461.43",
+        "710.57",
+        5000,
+        "2026-10-06",
+        18
+      ],
+      [],
+      [
+        "ALTERNATING WEEKLY PAYCHECKS; monthly healthcare unchanged",
+        "Skipped",
+        "Retained incl elapsed Sep",
+        "Cash saved",
+        "Feb7 cash",
+        "Gap to38000 DD",
+        "First DD breach"
+      ],
+      [
+        "2026-09-15",
+        11,
+        12,
+        37574.02,
+        "29039.05",
+        "8960.95",
+        "2027-01-12"
+      ],
+      [
+        "2026-09-22",
+        10,
+        13,
+        34158.2,
+        "25623.23",
+        "12376.77",
+        "2027-01-05"
+      ],
+      [
+        "2026-10-06",
+        9,
+        14,
+        30742.38,
+        "22207.41",
+        "15792.59",
+        "2027-01-05"
+      ],
+      [],
+      [
+        "HEALTH ONLY",
+        "Max cash savings",
+        "Remaining gap"
+      ],
+      [
+        "October1:2750 reduction x5",
+        13750,
+        "32784.97"
+      ],
+      [
+        "January1:2750 reduction x2",
+        5500,
+        "41034.97"
+      ],
+      [],
+      [
+        "NORMALIZED BRIDGE",
+        "Monthly change"
+      ],
+      [
+        "August gross expenses",
+        21669.33
+      ],
+      [
+        "Remove rent paid in August; lease canceled September",
+        -2000
+      ],
+      [
+        "Remove Linkt",
+        -199.99
+      ],
+      [
+        "Remove Apollo / ZenLeads same vendor",
+        -64.24
+      ],
+      [
+        "Remove prepaid annual New Yorker",
+        -209
+      ],
+      [
+        "Replace four payroll runs with 52/12 average",
+        1138.61
+      ],
+      [
+        "Replace five weekly insurance charges with 52/12 average",
+        -5.96
+      ],
+      [
+        "V2 bridge unverified allowances60; Howie35 removed in v3 total during pause",
+        60
+      ],
+      [
+        "Rebuilt monthly base: v4 unchanged; Howie permanently canceled, no December restart",
+        "18622.8"
+      ],
+      [
+        "Old unvalidated forward figure superseded",
+        19635.76
+      ],
+      [
+        "Difference to old figure",
+        "-1012.96"
+      ],
+      [
+        "Half-pay monthly equivalent (exact components)",
+        "11221.853333333334"
+      ],
+      [
+        "ASSUMPTIONS / LIMITATIONS"
+      ],
+      [
+        "August31 verified cash anchor; no September feed. September1-13 unchanged. Office/postage577.82 already removed; incremental meals1005.13 plus one-off106.95 repeat allowance removed September14 inclusive. Actual-calendar-day proration; no retroactive savings. V3 removes DocSend16.33 and Howie35 from Sep14, v5 permanently removes the previously assumed Howie35 restart Dec14. Calendar-day proration retained. V4 removes newspaper24 and fee0.72 from September14, no refund."
+      ],
+      [
+        "Tuesday payroll cadence inferred from August; September 14 effective date assumes payroll cutoff permits September 15 payment reduction. October 1 effective date modeled as first reduced payment October 6. Earned-wage/pay-period limits and payroll approval not verified."
+      ],
+      [
+        "Monday business insurance and day-5 health cadence inferred from August; timing not verified beyond August. February health is a full cash payment, not 7/28."
+      ],
+      [
+        "Other allowance1032.17/month from Sep14 onward; no Howie restart;2798.12 through Sep13. Meals zero per user. ChatGPT217.75 KEEP. Travel rides/parking/gas189.70 retained. User confirms Aug6 Walgreens106.95 was one-off computer setup items while traveling, NOT medical; no future purchase planned. Office Supplies/Computer Accessories is proposed classification, not bookkeeper-posted. Historical actuals/QBO unchanged pending Anthony."
+      ],
+      [
+        "DealsX3220 paid once on assumed September28; only August/September reduction approved. No October recurring charge is a planning assumption pending pause confirmation, supported by user-reported tracker row364 due September28."
+      ],
+      [
+        "Conference1300 planned/unbooked pending decision, modeled once October1, not a booked obligation. Website348 expected November11; tax unknown. No conference savings assumed."
+      ],
+      [
+        "Attio prepaid through March26 2027; Canva April120 and 1Password May52.13 treated annual prepaid through horizon; Canva term should be verified. New Yorker209 annual renewal confirmed August6."
+      ],
+      [
+        "Howie permanently CANCELLED, user confirmed September14; supersedes three-month pause. Zero forward cost, no December14 restart. DocSend cancellation reconfirmed; already zero in v4, no additional savings or refund. Art Newspaper24 and bank fee0.72 cancellation already reflected in v4. Voice10 and Slack15 unverified allowances retained; Voice may overlap Workspace."
+      ],
+      [
+        "No future interest assumed. No deposit2000 or uncertain1500; no nonprofit salary income. Annual accounting3200 historical, not recurring; no future filing due date confirmed."
+      ],
+      [
+        "Employer-tax savings factor derives from observed payroll, not a payroll-engine quote. January tax resets and fixed payroll fees may differ. Gusto106.90 monthly fee retained unchanged. Full18622.796667; hypothetical half11221.853333 monthly from September14 onward, including after December14. Howie permanently canceled; no restart. Weekly employer cash3415.82 unchanged."
+      ],
+      [
+        "Healthcare scenarios are hypothetical premium/reimbursement reductions, not current savings or elections. Reduced reimbursement alone shifts cost to household; only lower actual premium is household savings. January scenarios include Jan5 and Feb5 cash payments."
+      ],
+      [
+        "Jan23 every-other-pay cash / DD gap (first skipped date)",
+        "2026-09-15: $35,747.16 / $2,252.84; 2026-09-22: $32,331.34 / $5,668.66; 2026-10-06: $28,915.52 / $9,084.48"
+      ],
+      [
+        "Monthly gap basis / scope",
+        "Additional monthly savings effective September14 through February7 inclusive; 4.816666667 calendar-month equivalents, not retroactive September1. Full18622.796667; hypothetical half11221.853333 monthly from September14 onward, including after December14. Howie permanently canceled; no restart. Weekly employer cash3415.82 unchanged. Half of each weekly payroll from Sep15: first DD reserve breach 2027-01-08. No actual payroll changes; parent owns task updates."
+      ],
+      [],
+      [
+        "PRIOR PLANNING CONTEXT - SUPERSEDED BY SEPTEMBER 12 MODEL"
+      ],
+      [
+        "RUNWAY SCENARIOS",
+        "Burn",
+        "Operating Cash",
+        "Months",
+        "Projected Zero",
+        "Assumptions"
+      ],
+      [
+        "Current trailing average",
+        "27403.4",
+        "57777.71",
+        "2.1084",
+        "2026-11-04"
+      ],
+      [
+        "Steady-state historical normalized",
+        "24523.38",
+        "57777.71",
+        "2.356",
+        "2026-11-12"
+      ],
+      [
+        "Approved cuts forward model",
+        "19635.76",
+        "57777.71",
+        "2.9425",
+        "2026-11-29",
+        "Retain Sep 4 live dashboard planning model; assumes approved rent/vendor cancellations and DealsX paused after September. August source does not validate every saving."
+      ],
+      [
+        "Target to February 1",
+        "11555.54",
+        "57777.71",
+        "5",
+        "2027-02-01",
+        "Required mathematical target; no claim these savings are implemented."
+      ],
+      [
+        "Confirmed $40K reserve (same as steady-state)",
+        "24523.38",
+        "57777.71",
+        "2.356",
+        "2026-11-12",
+        "Kay reconfirmed $40K September 11. This equals the current-policy steady-state case; no automatic LOI-stage escalation."
+      ],
+      [
+        "Approved cuts plus known commitments",
+        "19635.76",
+        "53357.71",
+        "2.7174",
+        "2026-11-23",
+        "Deduct prior dashboard $3,120 known DealsX payables and $1,300 October conference as unverified outstanding commitments; exclude requested $2,000 deposit until received."
+      ],
+      [],
+      [
+        "PRIOR SEPTEMBER 4 PLANNING CONTEXT - HISTORICAL, SUPERSEDED MAIN METRICS"
+      ],
+      [
+        "Budget Dashboard",
+        "Greenwich & Barrow"
+      ],
+      [
+        "Last Updated",
+        "2026-09-04"
+      ],
+      [
+        "As of",
+        "2026-07-31 plus known Sep 4 commitments and requested receivable"
+      ],
+      [
+        "Fund Balance",
+        "119203.22"
+      ],
+      [
+        "DD Reserve",
+        "40000"
+      ],
+      [
+        "Available for Operations",
+        "78083.22"
+      ],
+      [
+        "Steady-State Monthly Burn",
+        "19635.76"
+      ],
+      [
+        "Months at Steady-State (from Aug 1)",
+        "3.98"
+      ],
+      [
+        "Projected Zero",
+        "Early Dec 2026"
+      ],
+      [
+        "Shortfall to Feb 2027",
+        "39731"
+      ],
+      [
+        "Monthly Savings Needed",
+        "6622"
+      ],
+      [
+        "Dashboard Source",
+        "July 2026 P&L + Kay corrections: Payoneer/DealsX paused after Sep; Aug/Sep negotiated to $800/mo; Apollo/ZenLeads canceled; office lease cancellation approved Sep 2; $2K security deposit requested"
+      ],
+      [
+        "Notes",
+        "Available operating cash is pro forma: deducts known DealsX payables of $3,120 and adds requested $2,000 security-deposit return; bank balance itself unchanged until cash is received"
+      ],
+      [],
+      [
+        "BURN RATE"
+      ],
+      [
+        "Jan 2026 Net Burn",
+        "31303.94"
+      ],
+      [
+        "Feb 2026 Net Burn",
+        "30096.38"
+      ],
+      [
+        "Mar 2026 Net Burn",
+        "31903.60"
+      ],
+      [
+        "Apr 2026 Net Burn",
+        "33296.47"
+      ],
+      [
+        "May 2026 Net Burn",
+        "22139.53"
+      ],
+      [
+        "June 2026 Net Burn",
+        "26040.55"
+      ],
+      [
+        "Jul 2026 Net Burn",
+        "23021.21"
+      ],
+      [
+        "Trailing Average Burn",
+        "28257.38"
+      ],
+      [
+        "Steady-State Monthly Burn",
+        "19635.76"
+      ],
+      [
+        "Office Rent Risk Case",
+        "Retired - cancellation approved Sep 2; September rent waived"
+      ],
+      [],
+      [
+        "Investor Reporting Snapshot"
+      ],
+      [
+        "budget_remaining",
+        "119203.22"
+      ],
+      [
+        "budget_pct",
+        "21.60%"
+      ],
+      [
+        "burn_rate",
+        "19635.76"
+      ],
+      [
+        "runway_months",
+        "3.98"
+      ],
+      [
+        "projected_zero",
+        "Early Dec 2026"
+      ],
+      [
+        "target_cash_date",
+        "Feb 2027"
+      ],
+      [
+        "monthly_gap_to_target",
+        "6622"
+      ],
+      [
+        "material_cuts_applied",
+        "Office rent removed and September rent waived; $2K security deposit requested; StartVirtual VA, AI consultant, Apollo/ZenLeads, and Linkt removed; DealsX only included as known Aug/Sep payable, not recurring after Sep"
+      ],
+      [
+        "watch_items",
+        "Confirm security deposit receipt; lower July DealsX invoice if possible; Linkt charge recovery/cancellation confirmation; OpenAI/ChatGPT $217.75; travel discipline; October conference $1,300 one-time"
+      ],
+      [],
+      [
+        "JULY MONTH-END NORMALIZED RUN-RATE",
+        "Updated 2026-09-01 after Kay correction"
+      ],
+      [
+        "Source",
+        "Anthony/StartVirtual July P&L, July Balance Sheet, July checking statement, Kay correction",
+        "April accrual; health $0 fwd"
+      ],
+      [
+        "Cash anchor: Jul 31 fund balance",
+        "$119,203.22",
+        "communicated"
+      ],
+      [
+        "Less DD reserve",
+        "-$40,000",
+        "notice mid-June; PAYPAL*PAYONEERINC actual"
+      ],
+      [
+        "Available for operations",
+        "$79,203.22",
+        "friend space; full-cancel = backstop"
+      ],
+      [
+        "July P&L net burn",
+        "$23,021.21",
+        "conferences NOT trimmed"
+      ],
+      [
+        "Below-the-line other expenses included",
+        "$569.43",
+        "local cadence; big regs + out-of-region = one-offs"
+      ],
+      [
+        "Normalize payroll to monthly budget",
+        "+$920",
+        "immaterial"
+      ],
+      [
+        "Remove Linkt if stopped/refunded",
+        "-$200"
+      ],
+      [
+        "Reclassify Payoneer as DealsX recurring",
+        "+$1,250/mo forward"
+      ],
+      [
+        "Remove one catch-up DealsX month from July",
+        "-$1,326",
+        "End Balance",
+        "Ops Cash (-40K)"
+      ],
+      [
+        "Remove office rent from forward plan",
+        "-$1,000",
+        "169472",
+        "129472"
+      ],
+      [
+        "Normalize travel to smaller-event base",
+        "-$467",
+        "148420",
+        "108420"
+      ],
+      [
+        "OpenAI/ChatGPT",
+        "Keep $217.75/mo in base because June and July were both elevated",
+        "130068",
+        "90068"
+      ],
+      [
+        "Health insurance",
+        "Normalized at $2,750/mo",
+        "113297",
+        "73297"
+      ],
+      [
+        "Office rent",
+        "Removed from base assuming lease break/no further Stone Street charges",
+        "95526",
+        "55526"
+      ],
+      [
+        "DealsX",
+        "Modeled at $1,250/mo unless price reduction lands",
+        "77755",
+        "37755"
+      ],
+      [
+        "Recommended normalized monthly burn",
+        "$20,950",
+        "59984",
+        "19984"
+      ],
+      [
+        "Runway at normalized burn",
+        "3.78 months from Aug 1",
+        "42213",
+        "2213"
+      ],
+      [
+        "Projected zero cash",
+        "Nov 2026",
+        "24442",
+        "-15558"
+      ],
+      [
+        "Risk case if office rent continues",
+        "$21,950/mo burn; ~3.6 months runway",
+        "6671",
+        "-33329"
+      ],
+      [
+        "Target monthly burn to reach Feb 2027",
+        "$13,200"
+      ],
+      [
+        "Additional monthly savings needed",
+        "$7,750",
+        "Reaches Feb 2027 on total cash (+$6,671), no salary cut"
+      ],
+      [
+        "Cancel/verify",
+        "Linkt charge, DealsX price reduction, OpenAI plan/cap, lease break effective date",
+        "Ops cash (reserve-protected) thins ~early Jan; office full-cancel or deeper trim closes it"
+      ],
+      [
+        "No-email rule",
+        "No emails sent",
+        "Salary pause kept in pocket as emergency backstop only"
+      ],
+      [],
+      [
+        "",
+        "",
+        "Local 1-3/wk fits $700/mo (most $0-90); recent ran hot from InsurTech $1,695 + Boston + Charlotte trips"
+      ]
+    ]
+  },
+  "tech": {
+    "values": [
+      [
+        "Tool",
+        "Category",
+        "Billing Now",
+        "Current $/Mo",
+        "If Annual $/Mo",
+        "Saves $/Mo",
+        "Status",
+        "Overlaps",
+        "Notes",
+        "Annual Total",
+        "If Annual/Yr"
+      ],
+      [
+        "Linkt",
+        "List Building",
+        "Aug01 LINKT AI199.99. Canceled per user; no refund observed. Forward0 conditional on stop; no September feed.",
+        0,
+        0,
+        0,
+        "CUT CANDIDATE / canceled but charged",
+        "Apollo",
+        "August cash $199.99. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        0,
+        0
+      ],
+      [
+        "Claude Code",
+        "AI Coding",
+        "Aug27 receipt2224-1411-2756: monthly Pro20 + NY tax1.78 =21.78. Advertised17 not this monthly bill; no annual switch assumed.",
+        21.78,
+        21.78,
+        0,
+        "KEEP / billed amount verified",
+        "ANTHROPIC* CLAUDE SUB charged $21.78 on Jun 27; use cash charge until invoice proves lower",
+        "August cash $21.78. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        261.36,
+        261.36
+      ],
+      [
+        "Attio CRM",
+        "CRM",
+        "Mar26 paid839.20:828 annual less57.21 unused-time credit +68.41 tax; covers through Mar26 2027. Full uncredited renewal at same tax would901.49. No cash renewal before target.",
+        69.93,
+        69.93,
+        0,
+        "KEEP / prepaid annual",
+        "",
+        "August cash $0.00. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        839.2,
+        839.2
+      ],
+      [
+        "SquareSpace",
+        "Website",
+        "No August debit. July16 price notice348 annual, next renewal after Aug12. Prior Nov11 renewal implies Nov11 2026; include348 once, tax unverified.",
+        29,
+        29,
+        0,
+        "KEEP / renewal allowance",
+        "",
+        "August cash $0.00. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        348,
+        348
+      ],
+      [
+        "QuickBooks",
+        "Accounting",
+        "Aug03 Intuit/QBooks41.37; retain with bookkeeping.",
+        41.37,
+        41.37,
+        0,
+        "KEEP",
+        "Kick",
+        "August cash $41.37. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        496.44,
+        496.44
+      ],
+      [
+        "Superhuman",
+        "Email",
+        "No August debit; May22 cancellation recorded in prior inventory. No September feed; zero forecast, not current vendor confirmation.",
+        0,
+        0,
+        0,
+        "KEEP CANCELED",
+        "Gmail",
+        "August cash $0.00. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        0,
+        0
+      ],
+      [
+        "Howie",
+        "Scheduling",
+        "Howie permanently CANCELLED per user September14; supersedes three-month pause. Remove only35/month restart allowance from December14 onward; zero forward billing modeled.",
+        "0",
+        "0",
+        0,
+        "PERMANENTLY CANCELLED",
+        "Calendar",
+        "Howie permanently CANCELLED per user September14; supersedes three-month pause. Remove only35/month restart allowance from December14 onward; zero forward billing modeled.",
+        "0",
+        "0"
+      ],
+      [
+        "Google Workspace",
+        "Email",
+        "Aug01 GOOGLE SVCS28.08, replaces28.85.",
+        28.08,
+        28.08,
+        0,
+        "KEEP",
+        "",
+        "August cash $28.08. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        336.96,
+        336.96
+      ],
+      [
+        "Google One",
+        "Storage",
+        "Aug17 Google One2.16; separate debit. Retain until storage need verified.",
+        2.16,
+        2.16,
+        0,
+        "EVALUATE / possible overlap",
+        "Google Workspace",
+        "August cash $2.16. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        25.92,
+        25.92
+      ],
+      [
+        "Google Voice",
+        "Phone",
+        "No separate August debit or renewal receipt verified. Retain10/month uncertainty allowance; may overlap Workspace.",
+        10,
+        10,
+        0,
+        "EVALUATE / allowance only",
+        "",
+        "August cash $0.00. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        120,
+        120
+      ],
+      [
+        "ChatGPT / OpenAI",
+        "AI",
+        "Aug08 billed217.75; repeated elevated charge. Retained in base. Potential195.97/month only if reduced to21.78 all-in; no plan change made.",
+        217.75,
+        217.75,
+        195.97,
+        "CUT CANDIDATE / hypothetical downgrade",
+        "June and July both had elevated OpenAI/ChatGPT charges; downgrade/cap if deal-cost capacity is priority",
+        "August cash $217.75. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        2613,
+        2613
+      ],
+      [
+        "Canva",
+        "Design",
+        "No August debit; Apr23 invoice120 paid. Annual cadence per prior inventory, term not stated in email; treated prepaid through target, renewal timing uncertain.",
+        10,
+        10,
+        0,
+        "KEEP / assumed annual prepaid",
+        "",
+        "August cash $0.00. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        120,
+        120
+      ],
+      [
+        "Slack",
+        "Comms",
+        "No August debit or current invoice verified. Retain15/month uncertainty allowance, not verified annual billing.",
+        15,
+        15,
+        0,
+        "EVALUATE / allowance only",
+        "",
+        "August cash $0.00. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        180,
+        180
+      ],
+      [
+        "Granola",
+        "Meetings",
+        "Aug15 billed15.24; workflow uses meeting notes.",
+        15.24,
+        15.24,
+        0,
+        "KEEP",
+        "",
+        "August cash $15.24. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        182.88,
+        182.88
+      ],
+      [
+        "GitHub",
+        "Code Hosting",
+        "No August debit; free-tier assumption retained.",
+        0,
+        0,
+        0,
+        "KEEP / free per inventory",
+        "",
+        "August cash $0.00. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        0,
+        0
+      ],
+      [
+        "Cursor",
+        "Coding IDE",
+        "No August debit; free-tier assumption retained.",
+        0,
+        0,
+        0,
+        "KEEP / free per inventory",
+        "Claude Code",
+        "August cash $0.00. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        0,
+        0
+      ],
+      [
+        "Apollo",
+        "List Building",
+        "Aug02 APOLLO.IO64.24. Apollo and ZenLeads are same vendor; count once. Canceled per user in September. Forward0; no September feed.",
+        0,
+        0,
+        0,
+        "KEEP CANCELED / September unverified",
+        "Linkt also canceled; use manual/web research only while preserving cash",
+        "August cash $64.24. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        0,
+        0
+      ],
+      [
+        "Hetzner",
+        "Infrastructure",
+        "Aug14 debit14.59 + foreign fee0.44 =15.03. Fee already in bank-fee bridge; no duplicate addition.",
+        15.03,
+        15.03,
+        0,
+        "KEEP",
+        "",
+        "August cash $15.03. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        180.36,
+        180.36
+      ],
+      [
+        "Tailscale",
+        "Infrastructure",
+        "Aug22 billed8.71.",
+        8.71,
+        8.71,
+        0,
+        "KEEP",
+        "",
+        "August cash $8.71. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        104.52,
+        104.52
+      ],
+      [
+        "1Password",
+        "Security",
+        "No August debit; prior May statement evidence52.13 annual. No renewal assumed before target; monthly equivalent is not future cash.",
+        4.34,
+        4.34,
+        0,
+        "KEEP / prepaid annual",
+        "",
+        "August cash $0.00. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        52.13,
+        52.13
+      ],
+      [
+        "DealsX / KeyReach",
+        "Outreach",
+        "UNPAID July1520 + August/September combined1700 =3220. Reduction approved only Aug/Sep. No recurring after September is assumption from prior pause and user-reported row364 dueSep28, NOT vendor-confirmed.",
+        0,
+        0,
+        0,
+        "PAUSE ASSUMPTION / pending confirmation",
+        "Known payables: July invoice $1,520 still outstanding, Aug $800, Sep $800; exclude from recurring run-rate unless continued after Sep",
+        "August cash $0.00. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        0,
+        0
+      ],
+      [
+        "AI Consultant / Dodo Digital",
+        "AI/Consulting",
+        "No August Dodo debit; user confirms1000/month removed July onward. Do not subtract again from August base.",
+        0,
+        0,
+        0,
+        "KEEP STOPPED",
+        "Claude / internal ops",
+        "August cash $0.00. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        0,
+        0
+      ],
+      [
+        "DocSend",
+        "Document Sharing",
+        "DocSend cancellation reconfirmed by user September14. Already zero in v4; incremental savings0. Historical August30 debit16.33 unchanged.",
+        "0",
+        "0",
+        0,
+        "CANCELED",
+        "",
+        "DocSend cancellation reconfirmed by user September14. Already zero in v4; incremental savings0. Historical August30 debit16.33 unchanged.",
+        "0",
+        "0"
+      ],
+      [
+        "BizBuySell",
+        "Marketplace",
+        "No August debit; June20 free downgrade per prior inventory. No September verification.",
+        0,
+        0,
+        0,
+        "KEEP FREE",
+        "",
+        "August cash $0.00. Prepaid allocations and unverified allowances are not future monthly cash debits; see runway report.",
+        0,
+        0
+      ],
+      [
+        "TOTAL COSTS",
+        "",
+        "Planning equivalents; includes prepaid allocations",
+        539.72,
+        539.72,
+        195.97,
+        "Updated 2026-09-12",
+        "",
+        "New savings are hypothetical; canceled savings already reflected.",
+        6476.64,
+        6476.64
+      ]
+    ]
+  }
+}

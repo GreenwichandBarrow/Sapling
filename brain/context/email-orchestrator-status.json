@@ -1,9 +1,9 @@
 {
   "blocked": [],
-  "deal_items": 46,
+  "deal_items": 30,
   "drafts_missing_recipient": 0,
   "drafts_pending": 0,
-  "fetched_at": "2026-09-14T06:50:44.968652-04:00",
+  "fetched_at": "2026-09-15T06:50:45.238928-04:00",
   "follow_through_completed_items": [],
   "follow_through_pending_items": [
     {
@@ -47,22 +47,72 @@
       "status": "not drafted"
     }
   ],
-  "input_artifact": "brain/context/email-intelligence-input-2026-09-14.json",
+  "input_artifact": "brain/context/email-intelligence-input-2026-09-15.json",
   "input_status": "ok",
   "needs_kay": [
     "3 email-derived task candidate(s)",
-    "46 broker/listing row(s) extracted",
+    "30 broker/listing row(s) extracted",
+    "4 prior-day thank-you(s) need approval: Andrew; Greenwich and Barrow <> Boulay; Kay<>Sam/Steuart; Relationship / Call Window",
     "4 EOW/follow-up row(s) still active after sent-mail check: Brooke Neidich; Denning; Paul; Greg",
     "Clarify email follow-through identity/source: Lisa (24-hour thank-you after external call); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Camilla (24-hour thank-you after external meeting); Brooke (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting); Sarah (24-hour thank-you after external meeting); Erin (24-hour thank-you after external meeting); Erin (24-hour thank-you after external meeting)"
   ],
   "pipeline_items": 0,
   "relationship_items": 0,
   "send_blockers": 0,
-  "source_artifact": "brain/context/email-scan-results-2026-09-14.md",
+  "source_artifact": "brain/context/email-scan-results-2026-09-15.md",
   "source_status": "ok",
   "stale_drafts": 0,
   "task_candidates": 3,
-  "thank_you_items": [],
+  "thank_you_items": [
+    {
+      "completed_at": "",
+      "due_date": "2026-09-15",
+      "email": "andrew@saltouncapital.com",
+      "event": "Andrew I Kay",
+      "event_date": "2026-09-14",
+      "person": "Andrew",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-09-15",
+      "email": "cbrownlee@boulaygroup.com",
+      "event": "Greenwich and Barrow <> Boulay",
+      "event_date": "2026-09-14",
+      "person": "Greenwich and Barrow <> Boulay",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-09-15",
+      "email": "sam@ultimasearchpartners.com",
+      "event": "Kay<>Sam/Steuart",
+      "event_date": "2026-09-14",
+      "person": "Kay<>Sam/Steuart",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    },
+    {
+      "completed_at": "",
+      "due_date": "2026-09-15",
+      "email": "",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-09-14",
+      "person": "Relationship / Call Window",
+      "sent_at": "",
+      "sent_subject": "",
+      "sent_thread_id": "",
+      "status": "not drafted"
+    }
+  ],
   "unclear_followthrough_items": [
     "Lisa (24-hour thank-you after external call)",
     "Camilla (24-hour thank-you after external meeting)",

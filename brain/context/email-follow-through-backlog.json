@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-11",
+  "updated_at": "2026-09-15",
   "items": [
     {
       "bucket": "thank",
@@ -2382,6 +2382,62 @@
       "event": "Mike I Kay",
       "event_date": "2026-09-10",
       "calendar_event_id": "44pvhfp9scm3gv7kcl1f4vh7pb"
+    },
+    {
+      "bucket": "thank",
+      "person": "Kay<>Sam/Steuart",
+      "email": "sam@ultimasearchpartners.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-15",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Kay<>Sam/Steuart",
+      "event_date": "2026-09-14",
+      "event_start": "2026-09-14T10:30:00-04:00",
+      "event_end": "2026-09-14T11:00:00-04:00",
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g74o3icpj70s4ac1k6gok8h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8p234d1i8ks4ah238kp4ahhk8p0jgchg8gq30e9m88qj6e216d0g"
+    },
+    {
+      "bucket": "thank",
+      "person": "Relationship / Call Window",
+      "email": "",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-15",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Relationship / Call Window",
+      "event_date": "2026-09-14",
+      "event_start": "2026-09-14T11:00:00-04:00",
+      "event_end": "2026-09-14T13:00:00-04:00",
+      "calendar_event_id": "dc938987cf464e9a820624b314095dab_20260914T150000Z"
+    },
+    {
+      "bucket": "thank",
+      "person": "Greenwich and Barrow <> Boulay",
+      "email": "cbrownlee@boulaygroup.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-15",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Greenwich and Barrow <> Boulay",
+      "event_date": "2026-09-14",
+      "event_start": "2026-09-14T11:30:00-04:00",
+      "event_end": "2026-09-14T12:00:00-04:00",
+      "calendar_event_id": "_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6sp44ghn6l0j0e9o6d348h1g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g60ojah9o6t130h9k71236h1k8ks36e258krkacpn88o3cd9l8530"
+    },
+    {
+      "bucket": "thank",
+      "person": "Andrew",
+      "email": "andrew@saltouncapital.com",
+      "context": "24-hour thank-you after external meeting",
+      "due_date": "2026-09-15",
+      "status": "not drafted",
+      "source": "calendar-prior-day-refresh",
+      "event": "Andrew I Kay",
+      "event_date": "2026-09-14",
+      "event_start": "2026-09-14T17:00:00-04:00",
+      "event_end": "2026-09-14T17:30:00-04:00",
+      "calendar_event_id": "6fdf4f8cdscd3vmolmftkql6gf"
     }
   ],
   "targeted_outreach_draft_doc_id": "1YnBjBj9l-Dqm_ggPDKHVE3l-rRDRKQepWamckYKPVEA",

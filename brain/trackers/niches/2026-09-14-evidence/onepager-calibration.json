@@ -1,0 +1,120 @@
+{
+  "slug": "dimensional-metrology-gauge-calibration",
+  "name": "Independent Dimensional Metrology and Gauge-Calibration Services for Precision Manufacturers",
+  "local_path": "/tmp/niche-intel-2026-09-14/Dimensional Metrology and Gauge Calibration September 2026.pptx",
+  "file_id": "1ZRP2PSPfPEcE8ZYOWRimlx74GdfczcLd",
+  "file_url": "https://docs.google.com/presentation/d/1ZRP2PSPfPEcE8ZYOWRimlx74GdfczcLd/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true",
+  "folder_id": "18iQj87-InZYCBAJVTg3bOt-Qlzg-OOJ9",
+  "folder_url": "https://drive.google.com/drive/folders/18iQj87-InZYCBAJVTg3bOt-Qlzg-OOJ9",
+  "parent_id": "1qQzPD1RTPn4kCLbNnECeHA-CjETJgWJX",
+  "uploaded": true,
+  "verified": true,
+  "slides": 5,
+  "first_slide_shapes": 6,
+  "source_count": 16,
+  "sources": [
+    {
+      "id": "I1",
+      "title": "Sequential synthesis and expansion",
+      "url": "brain/traces/agents/2026-09-14-niche-intelligence.md",
+      "evidence": "Gathering posts and sequential synthesis context for the calibration-service hypothesis."
+    },
+    {
+      "id": "I2",
+      "title": "Live Industry Research Tracker",
+      "url": "https://docs.google.com/spreadsheets/d/1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins/edit",
+      "evidence": "Fresh four-tab duplicate/lifecycle check; neither proposed niche appears; killed generic BPO remains excluded."
+    },
+    {
+      "id": "C1",
+      "title": "Northeast Metrology owner and operating history",
+      "url": "https://www.nemetrology.com/about.cfm",
+      "evidence": "Owner Mark Kuehl, took over from father in 2008; hundreds of yearly customers, thousands of certificates; manufacturing measurement repair/calibration; East Longmeadow MA."
+    },
+    {
+      "id": "C2",
+      "title": "Americal calibration services",
+      "url": "https://americalinc.com/",
+      "evidence": "Self-described family-owned since 1997; mechanical/dimensional scope, service lab and on-site work, records portal; Danvers MA."
+    },
+    {
+      "id": "C3",
+      "title": "United Standards Lab services",
+      "url": "https://www.unitedstandardslab.com/",
+      "evidence": "Dimensional/mechanical accredited calibration; service-only model; Bloomington MN."
+    },
+    {
+      "id": "C4",
+      "title": "United Standards Lab ownership",
+      "url": "https://www.unitedstandardslab.com/about-us",
+      "evidence": "Family-owned operation established 1965; A 2LA accreditation claim."
+    },
+    {
+      "id": "C5",
+      "title": "MTA acquires Cal-Tec; MicronPA already acquired",
+      "url": "https://mtausa.com/news/medical-technology-associates-acquires-cal-tec-labs-inc",
+      "evidence": "Acquirer primary announcement identifies Cal-Tec and earlier MicronPA acquisitions. These are comps, not independent targets despite stale provider ownership copy."
+    },
+    {
+      "id": "C6",
+      "title": "Transcat FY2025 SEC annual report",
+      "url": "https://www.sec.gov/Archives/edgar/data/99302/000143774925018483/trns20250331_10k.htm",
+      "evidence": "Broad service segment FY 2025 revenue $181.428M, 7.0% growth, 33.4% gross margin. NOT standalone dimensional industry EBITDA or market CAGR."
+    },
+    {
+      "id": "C7",
+      "title": "Transcat FY2026 annual report",
+      "url": "https://www.sec.gov/Archives/edgar/data/99302/000114036126029373/edge20075511x3_ars.pdf",
+      "evidence": "FY 2026 consolidated revenue$331.9M and adjusted EBITDA$48.7M; service revenue+20% includes acquisition effects; recurrent calibration demand. Company comp only, not industry margin."
+    },
+    {
+      "id": "C8",
+      "title": "NIST recommended calibration interval",
+      "url": "https://www.nist.gov/calibrations/recommended-calibration-interval",
+      "evidence": "No universal NIST recalibration interval; cadence depends on instrument stability, use, accuracy, contracts and applicable requirements."
+    },
+    {
+      "id": "C9",
+      "title": "A2LA calibration program",
+      "url": "https://a2la.org/accreditation/calibration/",
+      "evidence": "Accreditation assesses technical calibration competence; supports manufacturer/lab measurement confidence."
+    },
+    {
+      "id": "C10",
+      "title": "A2LA accredited organization directory",
+      "url": "https://customer.a2la.org/index.cfm?event=directory.index",
+      "evidence": "Live searchable taxonomy/density route; no filtered independent US dimensional-firm count produced."
+    },
+    {
+      "id": "C11",
+      "title": "Trescal acquisition announcements",
+      "url": "https://www.trescal.com/news/?category=press-release",
+      "evidence": "January 2026 release lists 14 global acquisitions; clear consolidator activity, not 14 US dimensional firms."
+    },
+    {
+      "id": "C12",
+      "title": "Calder September 9 metrology teaser",
+      "url": "https://mail.google.com/mail/u/0/#all/1a08729e03bcfb82",
+      "evidence": "Anonymous dimensional/metrology provider embedded in distributor; seller cashflow not treated as EBITDA/industry margin."
+    },
+    {
+      "id": "C13",
+      "title": "MicronPA service description",
+      "url": "https://micronpa.com/gage-calibration-services/",
+      "evidence": "York PA dimensional/gage services, stale privately-owned copy superseded by acquirer announcement."
+    },
+    {
+      "id": "C14",
+      "title": "Cal-Tec provider description",
+      "url": "https://cal-tec.com/",
+      "evidence": "Pittsburgh PA dimensional/electronic/process services, family-owned copy superseded by MTA announcement."
+    }
+  ],
+  "score_pending": false,
+  "render_pdf": "/tmp/niche-intel-2026-09-14/calibration-render/Dimensional Metrology and Gauge Calibration September 2026.pdf",
+  "visual_review": "Main slide and sources inspected; inherited rotated footer corrected; all table text fits; no unsupported screen pass or score.",
+  "score": 1.7325,
+  "score_status": "Scored; screen incomplete; pending analyst review",
+  "scorecard_file_id": "1pCKeGrEUqsqanwfdj5JvPBqU1x9tLOdF",
+  "scorecard_url": "https://docs.google.com/spreadsheets/d/1pCKeGrEUqsqanwfdj5JvPBqU1x9tLOdF/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true"
+}

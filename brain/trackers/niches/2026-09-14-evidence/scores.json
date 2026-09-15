@@ -1,0 +1,843 @@
+{
+  "run_date": "2026-09-14",
+  "scoring_policy": "Provisional evidence-weighted research score, not an activation decision. Missing quantitative facts receive - (1) as an uncertainty penalty, not a measured adverse result. +/- (2) and + (3) express explicit source-supported judgments; operator claims are labeled. Unknown initial-screen facts remain Unknown. Template category weights and rating mapping unchanged. Target TAM and G&B fit are informational, not extra weighted score inputs.",
+  "category_count": 8,
+  "subcriteria_count": 27,
+  "niches": [
+    {
+      "name": "Independent Dimensional Metrology and Gauge-Calibration Services for Precision Manufacturers",
+      "slug": "dimensional-metrology-gauge-calibration",
+      "score": 1.7325,
+      "score_display": 1.73,
+      "score_percent": 57.75,
+      "categories": [
+        {
+          "row": 8,
+          "category": "Growth, Penetration and Catalyst",
+          "weight": 0.25,
+          "score": 1.75,
+          "weighted_score": 0.4375
+        },
+        {
+          "row": 13,
+          "category": "Size and Fragmentation",
+          "weight": 0.1,
+          "score": 1.0,
+          "weighted_score": 0.1
+        },
+        {
+          "row": 16,
+          "category": "Industry Economics",
+          "weight": 0.1,
+          "score": 1.0,
+          "weighted_score": 0.1
+        },
+        {
+          "row": 20,
+          "category": "Mission Criticality",
+          "weight": 0.15,
+          "score": 2.0,
+          "weighted_score": 0.3
+        },
+        {
+          "row": 24,
+          "category": "Exogeneous Risks",
+          "weight": 0.1,
+          "score": 2.2,
+          "weighted_score": 0.22000000000000003
+        },
+        {
+          "row": 30,
+          "category": "Porter's Five Forces",
+          "weight": 0.15,
+          "score": 1.6666666666666667,
+          "weighted_score": 0.25
+        },
+        {
+          "row": 37,
+          "category": "Value Creation Opportunities",
+          "weight": 0.1,
+          "score": 2.0,
+          "weighted_score": 0.2
+        },
+        {
+          "row": 40,
+          "category": "Impact and Externalities",
+          "weight": 0.05,
+          "score": 2.5,
+          "weighted_score": 0.125
+        }
+      ],
+      "criteria": [
+        {
+          "row": 9,
+          "criterion": "- Growth relative to GDP (5 yr CAGR)",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Unknown exact dimensional-service CAGR. Broad Transcat company growth is not market growth. C6/C7"
+        },
+        {
+          "row": 10,
+          "criterion": "- Industry penetration",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: repeat quality/documentation work is a potential catalyst; penetration unknown. C1/C2/C8/C9"
+        },
+        {
+          "row": 11,
+          "criterion": "- future growth expectations",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: precision requirements supportive; competing in-house/OEM options and unverified niche outlook temper tailwinds. C6/C8/C11"
+        },
+        {
+          "row": 12,
+          "criterion": "- Evidence to support a catalyst",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Provider records and corporate demand establish need, not a quantified catalyst for this precise niche. C1/C2/C6"
+        },
+        {
+          "row": 14,
+          "criterion": "- Number of players",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Unknown independent national population. Three ownership claims among five examples are not market size. C1-C5/C10"
+        },
+        {
+          "row": 15,
+          "criterion": "- Market share concentration",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Unknown largest-player share; consolidation proves presence, not concentration percentage. C5/C11"
+        },
+        {
+          "row": 17,
+          "criterion": "- Average industry gross margins",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Unknown typical niche gross margin. Broad-company service gross margin33.4% is only a proxy. C6"
+        },
+        {
+          "row": 18,
+          "criterion": "- Average industry EBITDA margins",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Unknown typical niche EBITDA margin; no public peer sample. C6/C7"
+        },
+        {
+          "row": 19,
+          "criterion": "- Average industry ROTC",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Unknown typical industry return on tangible capital; reference equipment requires investment. No measured ROTC."
+        },
+        {
+          "row": 21,
+          "criterion": "- Average customer feedback",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "No independently collected representative customer feedback. Provider testimonials not an industry survey. C1/C2"
+        },
+        {
+          "row": 22,
+          "criterion": "- Clarity of value proposition",
+          "rating": "+",
+          "numeric_score": 3,
+          "evidence": "Judgment: trustworthy dimensional measurement and certificates directly support manufacturing quality decisions. C3/C8/C9"
+        },
+        {
+          "row": 23,
+          "criterion": "- Customer switching costs",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: replacing a qualified lab requires scope/quality and records checks but alternatives exist. C1/C2/C9"
+        },
+        {
+          "row": 25,
+          "criterion": "- Visibility on tech adoption and obsolescence",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: physical measurement and repair protected from text automation; documentation/productivity tools changing. C2/C6"
+        },
+        {
+          "row": 26,
+          "criterion": "- Regulatory risk and frequency of changes",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: accreditation/quality requirements support demand but require continuing technical compliance. C8/C9"
+        },
+        {
+          "row": 27,
+          "criterion": "- Liability risks",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: bad measurements may propagate quality errors; liability is material and not measured. C8"
+        },
+        {
+          "row": 28,
+          "criterion": "- Cyclicality",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: repeat measurement persists but manufacturing volumes/capex are cyclical. C1/C6"
+        },
+        {
+          "row": 29,
+          "criterion": "- Exposure to trends",
+          "rating": "+",
+          "numeric_score": 3,
+          "evidence": "Judgment: physical measurement confidence is durable across product fashions. C8/C9"
+        },
+        {
+          "row": 31,
+          "criterion": "- Prevalence of VC-backed startups",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Unknown prevalence of VC-backed startups; PE examples do not prove absence. C5/C11"
+        },
+        {
+          "row": 32,
+          "criterion": "- Level of competition",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Judgment: established national and sponsor-backed buyers compete with local labs. C5/C6/C11"
+        },
+        {
+          "row": 33,
+          "criterion": "- State of new entrants",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: accreditation/technical standards constrain entry without preventing local providers. C1/C9"
+        },
+        {
+          "row": 34,
+          "criterion": "- Level of supplier power",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: standards/equipment and specialist labor needed; no evidence of extreme supplier concentration. C1/C8/C9"
+        },
+        {
+          "row": 35,
+          "criterion": "- Level of customer power",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: manufacturing buyers can qualify alternatives; trust and turnaround moderate bargaining power. C1/C2"
+        },
+        {
+          "row": 36,
+          "criterion": "- Threat of substitutes",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: OEM/in-house calibration substitutes for third-party work; trust/capability differentiates. C6"
+        },
+        {
+          "row": 38,
+          "criterion": "- General complexity of businesses",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: specialist metrology and quality systems create moderate technical complexity. C1/C9"
+        },
+        {
+          "row": 39,
+          "criterion": "- Professionalization opportunities",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: repeat scheduling, certificate records and turnaround are tangible process levers; not a proven turnaround plan. C1/C2"
+        },
+        {
+          "row": 41,
+          "criterion": "- Net impact to society",
+          "rating": "+",
+          "numeric_score": 3,
+          "evidence": "Judgment: reliable measurements support product quality and safety. C8/C9"
+        },
+        {
+          "row": 42,
+          "criterion": "- Positive or negative externalities",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: quality benefits possible; no measured environmental/social externality study. C8/C9"
+        }
+      ],
+      "initial_screen": {
+        "margins": {
+          "status": "Unknown",
+          "evidence": "Typical EBITDA>=15% unverified. Transcat FY2025 broad service gross margin33.4% is not EBITDA; FY2026 consolidated adjusted EBITDA48.7/331.9=14.7% is mixed-business company data, not niche margin."
+        },
+        "recurring_revenue": {
+          "status": "Pass",
+          "evidence": "Repeated calibration/certification and equipment records supported by provider practices and Transcat. Contracted share, retention and frequency unknown. NIST specifies no universal annual mandate."
+        },
+        "industry_growth": {
+          "status": "Unknown",
+          "evidence": "Company growth7% FY2025 /20% FY2026 supports tailwind proxy only; exact niche CAGR unverified."
+        },
+        "growth_tam": {
+          "status": "Unknown",
+          "evidence": "Exact US dimensional calibration service TAM unknown; broader calibration figures cannot establish $500M niche floor."
+        },
+        "verdict": "INCOMPLETE; proceed for human review under headless instruction, not a passed investment screen"
+      },
+      "target_pool": "5 named service providers reviewed: 3 current family-owned claims, 2 acquired comps excluded; independent scaled US pool unknown",
+      "target_tam": {
+        "total_firms": null,
+        "independent_targets": null,
+        "observed_providers": 5,
+        "self_reported_independent_examples": 3,
+        "known_acquired_examples": 2,
+        "target_pool_text": "5 named service providers reviewed: 3 current family-owned claims, 2 acquired comps excluded; independent scaled US pool unknown",
+        "sprint_duration": "Unassigned until independent target supply verified; do not treat observed examples as entire market",
+        "directory_method": "A2LA calibration taxonomy and five provider/acquirer checks; certificate counts, disciplines and branches not counted as firms",
+        "pe_consolidation_risk": "High",
+        "pe_evidence": "MTA acquired both Cal-Tec and MicronPA; Trescal acquisition program; Transcat consolidates regional laboratories."
+      },
+      "margins": "Unknown",
+      "recurring_revenue": "Repeat service supported; contracted share unknown",
+      "ai_defensibility": "Medium/High physical service; documentation automation possible",
+      "right_to_win": "Medium/Weak",
+      "network_access": "No verified warm owner path",
+      "qsbs": "Unverified",
+      "recommendation": "Review only; no activation",
+      "channel": {
+        "tracker": "No outreach yet",
+        "execution": "no outreach yet",
+        "secondary": "None",
+        "do_not_use": "No cold email, DealsX or call campaign before thesis/channel authorization",
+        "owner": "G&B thesis decision; Codex research; technical operator not identified"
+      },
+      "risks": [
+        "Exact niche TAM/growth and typical EBITDA unverified",
+        "High PE/strategic consolidation",
+        "Only3 independent ownership claims found among5 reviewed providers",
+        "No warm seller access or operator yet",
+        "Lab quality/liability and standards capex"
+      ],
+      "section": "Compliance",
+      "xlsx_local_path": "/tmp/niche-intel-2026-09-14/Dimensional Metrology and Gauge Calibration Scorecard September 2026.xlsx",
+      "pptx_local_path": "/tmp/niche-intel-2026-09-14/Dimensional Metrology and Gauge Calibration September 2026.pptx",
+      "pptx_file_id": "1ZRP2PSPfPEcE8ZYOWRimlx74GdfczcLd",
+      "pptx_url": "https://docs.google.com/presentation/d/1ZRP2PSPfPEcE8ZYOWRimlx74GdfczcLd/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true",
+      "drive_folder": "18iQj87-InZYCBAJVTg3bOt-Qlzg-OOJ9",
+      "drive_folder_url": "https://drive.google.com/drive/folders/18iQj87-InZYCBAJVTg3bOt-Qlzg-OOJ9",
+      "scorecard_uploaded": true,
+      "pptx_updated": true,
+      "sources": [
+        {
+          "id": "I1",
+          "title": "Sequential synthesis and expansion",
+          "url": "brain/outputs/2026-09-14-niche-intelligence-report.md",
+          "evidence": "Gathering and six-output synthesis; original working evidence /tmp/niche-intel-2026-09-14/synthesis.md"
+        },
+        {
+          "id": "I2",
+          "title": "Live Industry Research Tracker",
+          "url": "https://docs.google.com/spreadsheets/d/1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins/edit",
+          "evidence": "Fresh four-tab duplicate/lifecycle check; neither proposed niche appears; killed generic BPO remains excluded."
+        },
+        {
+          "id": "C1",
+          "title": "Northeast Metrology owner and operating history",
+          "url": "https://www.nemetrology.com/about.cfm",
+          "evidence": "Owner Mark Kuehl, took over from father in2008; hundreds of yearly customers, thousands of certificates; manufacturing measurement repair/calibration; East Longmeadow MA."
+        },
+        {
+          "id": "C2",
+          "title": "Americal calibration services",
+          "url": "https://americalinc.com/",
+          "evidence": "Self-described family-owned since1997; mechanical/dimensional scope, service lab and on-site work, records portal; Danvers MA."
+        },
+        {
+          "id": "C3",
+          "title": "United Standards Lab services",
+          "url": "https://www.unitedstandardslab.com/",
+          "evidence": "Dimensional/mechanical accredited calibration; service-only model; Bloomington MN."
+        },
+        {
+          "id": "C4",
+          "title": "United Standards Lab ownership",
+          "url": "https://www.unitedstandardslab.com/about-us",
+          "evidence": "Family-owned operation established1965; A2LA accreditation claim."
+        },
+        {
+          "id": "C5",
+          "title": "MTA acquires Cal-Tec; MicronPA already acquired",
+          "url": "https://mtausa.com/news/medical-technology-associates-acquires-cal-tec-labs-inc",
+          "evidence": "Acquirer primary announcement identifies Cal-Tec and earlier MicronPA acquisitions. These are comps, not independent targets despite stale provider ownership copy."
+        },
+        {
+          "id": "C6",
+          "title": "Transcat FY2025 SEC annual report",
+          "url": "https://www.sec.gov/Archives/edgar/data/99302/000143774925018483/trns20250331_10k.htm",
+          "evidence": "Broad service segment FY2025 revenue $181.428M, 7.0% growth, 33.4% gross margin. NOT standalone dimensional industry EBITDA or market CAGR."
+        },
+        {
+          "id": "C7",
+          "title": "Transcat FY2026 annual report",
+          "url": "https://www.sec.gov/Archives/edgar/data/99302/000114036126029373/edge20075511x3_ars.pdf",
+          "evidence": "FY2026 consolidated revenue$331.9M and adjusted EBITDA$48.7M; service revenue+20% includes acquisition effects; recurrent calibration demand. Company comp only, not industry margin."
+        },
+        {
+          "id": "C8",
+          "title": "NIST recommended calibration interval",
+          "url": "https://www.nist.gov/calibrations/recommended-calibration-interval",
+          "evidence": "No universal NIST recalibration interval; cadence depends on instrument stability, use, accuracy, contracts and applicable requirements."
+        },
+        {
+          "id": "C9",
+          "title": "A2LA calibration program",
+          "url": "https://a2la.org/accreditation/calibration/",
+          "evidence": "Accreditation assesses technical calibration competence; supports manufacturer/lab measurement confidence."
+        },
+        {
+          "id": "C10",
+          "title": "A2LA accredited organization directory",
+          "url": "https://customer.a2la.org/index.cfm?event=directory.index",
+          "evidence": "Live searchable taxonomy/density route; no filtered independent US dimensional-firm count produced."
+        },
+        {
+          "id": "C11",
+          "title": "Trescal acquisition announcements",
+          "url": "https://www.trescal.com/news/?category=press-release",
+          "evidence": "January2026 release lists14 global acquisitions; clear consolidator activity, not 14 US dimensional firms."
+        },
+        {
+          "id": "C12",
+          "title": "Current Calder teaser (gathered evidence)",
+          "url": "/tmp/niche-intel-2026-09-14/recent.md",
+          "evidence": "Anonymous dimensional/metrology provider embedded in distributor; seller cashflow not treated as EBITDA/industry margin."
+        },
+        {
+          "id": "C13",
+          "title": "MicronPA service description",
+          "url": "https://micronpa.com/gage-calibration-services/",
+          "evidence": "York PA dimensional/gage services, stale privately-owned copy superseded by acquirer announcement."
+        },
+        {
+          "id": "C14",
+          "title": "Cal-Tec provider description",
+          "url": "https://cal-tec.com/",
+          "evidence": "Pittsburgh PA dimensional/electronic/process services, family-owned copy superseded by MTA announcement."
+        }
+      ],
+      "scorecard_file_id": "1pCKeGrEUqsqanwfdj5JvPBqU1x9tLOdF",
+      "scorecard_url": "https://docs.google.com/spreadsheets/d/1pCKeGrEUqsqanwfdj5JvPBqU1x9tLOdF/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true",
+      "folder_verified": true,
+      "durable_scorecard_path": "brain/trackers/niches/2026-09-14-evidence/dimensional-metrology-gauge-calibration/Dimensional Metrology and Gauge Calibration Scorecard September 2026.xlsx",
+      "durable_pptx_path": "brain/trackers/niches/2026-09-14-evidence/dimensional-metrology-gauge-calibration/Dimensional Metrology and Gauge Calibration September 2026.pptx"
+    },
+    {
+      "name": "Robotic-Milking Equipment Preventive Maintenance and Consumable Route Services for Dairy Farms",
+      "slug": "robotic-milking-maintenance-consumables",
+      "score": 1.7425000000000002,
+      "score_display": 1.74,
+      "score_percent": 58.08333333333334,
+      "categories": [
+        {
+          "row": 8,
+          "category": "Growth, Penetration and Catalyst",
+          "weight": 0.25,
+          "score": 2.25,
+          "weighted_score": 0.5625
+        },
+        {
+          "row": 13,
+          "category": "Size and Fragmentation",
+          "weight": 0.1,
+          "score": 1.0,
+          "weighted_score": 0.1
+        },
+        {
+          "row": 16,
+          "category": "Industry Economics",
+          "weight": 0.1,
+          "score": 1.0,
+          "weighted_score": 0.1
+        },
+        {
+          "row": 20,
+          "category": "Mission Criticality",
+          "weight": 0.15,
+          "score": 2.0,
+          "weighted_score": 0.3
+        },
+        {
+          "row": 24,
+          "category": "Exogeneous Risks",
+          "weight": 0.1,
+          "score": 1.8,
+          "weighted_score": 0.18000000000000002
+        },
+        {
+          "row": 30,
+          "category": "Porter's Five Forces",
+          "weight": 0.15,
+          "score": 1.6666666666666667,
+          "weighted_score": 0.25
+        },
+        {
+          "row": 37,
+          "category": "Value Creation Opportunities",
+          "weight": 0.1,
+          "score": 1.5,
+          "weighted_score": 0.15000000000000002
+        },
+        {
+          "row": 40,
+          "category": "Impact and Externalities",
+          "weight": 0.05,
+          "score": 2.0,
+          "weighted_score": 0.1
+        }
+      ],
+      "criteria": [
+        {
+          "row": 9,
+          "criterion": "- Growth relative to GDP (5 yr CAGR)",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Unknown current service-market CAGR;2016-21 robot adoption is not service growth. D1"
+        },
+        {
+          "row": 10,
+          "criterion": "- Industry penetration",
+          "rating": "+",
+          "numeric_score": 3,
+          "evidence": "Judgment: independently measured historic automation uptake expands installed technical support needs. D1/D2"
+        },
+        {
+          "row": 11,
+          "criterion": "- future growth expectations",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: automation supportive, but farm consolidation/financial conditions may offset dealer expansion. D1/D10"
+        },
+        {
+          "row": 12,
+          "criterion": "- Evidence to support a catalyst",
+          "rating": "+",
+          "numeric_score": 3,
+          "evidence": "USDA primary evidence of adoption plus observed maintenance providers establish installed-base catalyst; old-data limitation explicit. D1/D3/D5"
+        },
+        {
+          "row": 14,
+          "criterion": "- Number of players",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Unknown independent national vendor count;39 OEM directory locations are not39 firms. D2"
+        },
+        {
+          "row": 15,
+          "criterion": "- Market share concentration",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Unknown service-provider market shares. OEM dealer territories not measured concentration. D2"
+        },
+        {
+          "row": 17,
+          "criterion": "- Average industry gross margins",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Unknown typical standalone service gross margins; product/dealer mix differs. D11"
+        },
+        {
+          "row": 18,
+          "criterion": "- Average industry EBITDA margins",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Unknown typical service EBITDA; one anonymous17.7% dealer listing is not industry proof. D11"
+        },
+        {
+          "row": 19,
+          "criterion": "- Average industry ROTC",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Unknown industry ROTC; spares/vehicles/working capital vary. D3/D5"
+        },
+        {
+          "row": 21,
+          "criterion": "- Average customer feedback",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "No independent representative customer-feedback dataset; vendor descriptions are not satisfaction measurements. D3/D5"
+        },
+        {
+          "row": 22,
+          "criterion": "- Clarity of value proposition",
+          "rating": "+",
+          "numeric_score": 3,
+          "evidence": "Judgment: robot uptime and hygiene support continuing milking operations. D5/D9"
+        },
+        {
+          "row": 23,
+          "criterion": "- Customer switching costs",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: local trained technicians and installed OEM systems create switching effort; provider contracts unknown. D2/D5/D7"
+        },
+        {
+          "row": 25,
+          "criterion": "- Visibility on tech adoption and obsolescence",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: robot complexity/software evolves; hands-on repair persists. D2/D5"
+        },
+        {
+          "row": 26,
+          "criterion": "- Regulatory risk and frequency of changes",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: hygiene and machine-service protocols create ongoing obligations; no specific new legal claim. D5/D9"
+        },
+        {
+          "row": 27,
+          "criterion": "- Liability risks",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Judgment: service failures threaten herd/milk quality and uptime; significant liability and emergency coverage. D5/D9"
+        },
+        {
+          "row": 28,
+          "criterion": "- Cyclicality",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: installed servicing persists but farm financial cycles can pressure spend and losses. D1/D5"
+        },
+        {
+          "row": 29,
+          "criterion": "- Exposure to trends",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: automation trend supports demand but equipment/commodity customer exposure persists. D1/D2"
+        },
+        {
+          "row": 31,
+          "criterion": "- Prevalence of VC-backed startups",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Unknown VC provider prevalence; cannot infer absence from directory. D2/D10"
+        },
+        {
+          "row": 32,
+          "criterion": "- Level of competition",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: regional service territories/local response differentiate, but OEM dealers compete; pricing data unknown. D2/D3/D5"
+        },
+        {
+          "row": 33,
+          "criterion": "- State of new entrants",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: certification, parts and local technician footprint limit entry. D2/D7"
+        },
+        {
+          "row": 34,
+          "criterion": "- Level of supplier power",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Judgment: OEM parts/software/training and dealer consent create supplier power. D2/D7"
+        },
+        {
+          "row": 35,
+          "criterion": "- Level of customer power",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: downtime makes service critical; concentrated farm/customer dependence not measured. D5/D9"
+        },
+        {
+          "row": 36,
+          "criterion": "- Threat of substitutes",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: trained farm staff can do daily care, but faults/parts still need specialist support. D9"
+        },
+        {
+          "row": 38,
+          "criterion": "- General complexity of businesses",
+          "rating": "-",
+          "numeric_score": 1,
+          "evidence": "Judgment:24/7 rural dispatch, technical staff, spares and robot protocols are complex. D5/D9"
+        },
+        {
+          "row": 39,
+          "criterion": "- Professionalization opportunities",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: planned service agreements and routes offer levers but flat-fee repair risks must be priced. D5/D9"
+        },
+        {
+          "row": 41,
+          "criterion": "- Net impact to society",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Judgment: labor support/uptime benefit farms; broader environmental/welfare outcomes not established. D1"
+        },
+        {
+          "row": 42,
+          "criterion": "- Positive or negative externalities",
+          "rating": "+/-",
+          "numeric_score": 2,
+          "evidence": "Unknown net externality; no quantified effect inferred from dairy automation. D1"
+        }
+      ],
+      "initial_screen": {
+        "margins": {
+          "status": "Unknown",
+          "evidence": "Typical service EBITDA>=15% unverified. Anonymous listing implies17.7% across mixed dealer/service business; seller assertion, not industry or standalone service metric."
+        },
+        "recurring_revenue": {
+          "status": "Pass",
+          "evidence": "Consumable routes and installed-base maintenance observable; Mid-Atlantic provider describes monthly-fee service pilot. Contract penetration, retention and mature contract profitability unknown."
+        },
+        "industry_growth": {
+          "status": "Unknown",
+          "evidence": "Primary USDA historical automation adoption tailwind supported; exact current service CAGR above GDP not established."
+        },
+        "growth_tam": {
+          "status": "Unknown",
+          "evidence": "US robot-maintenance/consumables service TAM unverified; robot hardware or total dairy output cannot substitute."
+        },
+        "verdict": "INCOMPLETE; full pipeline review with explicit flags, not pass/activation"
+      },
+      "target_pool": "5 named providers;4 current family/named-owner claims,1 historical2021 ownership claim; Lely directory39 locations includes branches; scaled independent service-heavy pool unknown",
+      "target_tam": {
+        "total_firms": null,
+        "independent_targets": null,
+        "observed_providers": 5,
+        "self_reported_independent_examples": 4,
+        "known_acquired_examples": 0,
+        "historical_ownership_examples": 1,
+        "target_pool_text": "5 named providers;4 current family/named-owner claims,1 historical2021 ownership claim; Lely directory39 locations includes branches; scaled independent service-heavy pool unknown",
+        "sprint_duration": "Unassigned; directory locations are not independent target count",
+        "directory_method": "Lely US location directory plus independent provider sites and one DeLaval dealer; deduplicated multi-location firms",
+        "pe_consolidation_risk": "Medium / uncertain",
+        "pe_evidence": "Schneider Resources owns Foxland dairy equipment/services; OEM dealer control and investment-backed competition exist. No comprehensive transaction census."
+      },
+      "margins": "Unknown",
+      "recurring_revenue": "Repeat service supported; contracted share unknown",
+      "ai_defensibility": "Medium/High physical service; documentation automation possible",
+      "right_to_win": "Weak",
+      "network_access": "No verified warm owner path",
+      "qsbs": "Unverified",
+      "recommendation": "Review only; no activation",
+      "channel": {
+        "tracker": "No outreach yet",
+        "execution": "no outreach yet",
+        "secondary": "None",
+        "do_not_use": "No cold email, DealsX or call campaign before thesis/channel authorization",
+        "owner": "G&B thesis decision; Codex research; technical operator not identified"
+      },
+      "risks": [
+        "Strong travel-intensive soft-exclude",
+        "Weak G&B domain/access fit",
+        "Exact service TAM, margins and current CAGR unknown",
+        "OEM control and change-of-control approval",
+        "Customer concentration/farm financial stress",
+        "Five providers are not five buy-box targets"
+      ],
+      "section": "Other",
+      "xlsx_local_path": "/tmp/niche-intel-2026-09-14/Robotic-Milking Maintenance and Consumables Scorecard September 2026.xlsx",
+      "pptx_local_path": "/tmp/niche-intel-2026-09-14/Robotic-Milking Maintenance and Consumables September 2026.pptx",
+      "pptx_file_id": "1ZEnGFTrX13VXYXu4SVeSjgviSWqJR-23",
+      "pptx_url": "https://docs.google.com/presentation/d/1ZEnGFTrX13VXYXu4SVeSjgviSWqJR-23/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true",
+      "drive_folder": "1m02mXNTr0V4zO8gRezpgz4hHSUMON2PD",
+      "drive_folder_url": "https://drive.google.com/drive/folders/1m02mXNTr0V4zO8gRezpgz4hHSUMON2PD",
+      "scorecard_uploaded": true,
+      "pptx_updated": true,
+      "sources": [
+        {
+          "id": "I1",
+          "title": "Sequential synthesis and expansion",
+          "url": "brain/outputs/2026-09-14-niche-intelligence-report.md",
+          "evidence": "Gathering and six-output synthesis; original working evidence /tmp/niche-intel-2026-09-14/synthesis.md"
+        },
+        {
+          "id": "I2",
+          "title": "Live Industry Research Tracker",
+          "url": "https://docs.google.com/spreadsheets/d/1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins/edit",
+          "evidence": "Fresh four-tab duplicate/lifecycle check; neither proposed niche appears; killed generic BPO remains excluded."
+        },
+        {
+          "id": "D1",
+          "title": "USDA ERS robotic-milking adoption",
+          "url": "https://ers.usda.gov/data-products/charts-of-note/114194",
+          "evidence": "Published June2 2026 using2016/2021 farm data: robotic systems share of US milk4%\u21926%;13% adoption for150\u2013499 cow farms in2021. Not a2026 adoption level or service-market CAGR."
+        },
+        {
+          "id": "D2",
+          "title": "Lely US center directory and services",
+          "url": "https://www.lelyna.com/us/",
+          "evidence": "39 listed locations; repeats/branches present, not39 independent companies. Technical services and consumables offered."
+        },
+        {
+          "id": "D3",
+          "title": "JBZ Dairy Advantage services",
+          "url": "https://www.jbzdairy.com/",
+          "evidence": "Family-owned DeLaval dealership, VMS robotics and maintenance/route service."
+        },
+        {
+          "id": "D4",
+          "title": "JBZ locations",
+          "url": "https://www.jbzdairy.com/contact",
+          "evidence": "Blue Ball/New Holland and Orangeville PA, count as one firm."
+        },
+        {
+          "id": "D5",
+          "title": "Gorter Clay and Dairy",
+          "url": "https://www.gortersclayanddairy.com/",
+          "evidence": "Pipestone MN; current named owner Rusty Hartke; robotic maintenance,24/7 emergency and consumable routes."
+        },
+        {
+          "id": "D6",
+          "title": "Thomson Services",
+          "url": "https://www.thomsonservices.com/supplies",
+          "evidence": "Family-owned dairy maintenance/installation/supplies, Dublin TX; service plans and40+ farm clients provider claim."
+        },
+        {
+          "id": "D7",
+          "title": "Lely Center New England",
+          "url": "https://www.lelyna.com/us/centers/new-england/",
+          "evidence": "OEM names owner Paul Godin and regional technician team; milking robots/consumables services; New England location and NY service technician role."
+        },
+        {
+          "id": "D8",
+          "title": "Progressive Dairy Service and Supplies",
+          "url": "https://www.lelylife.com/progressive-dairy-service-supply",
+          "evidence": "Lely2021 announcement names Tobin Millican founder/owner and Wendell Idaho family-owned dealership. Ownership evidence historical,2026 status unverified."
+        },
+        {
+          "id": "D9",
+          "title": "Mid-Atlantic robotic service-agreement pilot",
+          "url": "https://www.lelycentermidatlantic.com/index.php/2025/08/01/10-minutes-to-better-robot-performance-lely-center-mid-atlantics-daily-checklist/",
+          "evidence": "Provider describes five-farm pilot and flat monthly fee per robot covering maintenance/parts/labor. Mixed crawl/date metadata; do not assert rollout completed."
+        },
+        {
+          "id": "D10",
+          "title": "Schneider Resources portfolio",
+          "url": "https://schneiderresources.com/",
+          "evidence": "Private investment firm lists Foxland dairy-equipment/service portfolio company; no claim of untouched sector."
+        },
+        {
+          "id": "D11",
+          "title": "Historical source newsletter",
+          "url": "https://mail.google.com/mail/u/0/#all/19e656820ec74fd6",
+          "evidence": "Anonymous UT/ID dealer/service listing:2.5M revenue/442888 EBITDA seller claims; do not conflate with named providers or industry margin."
+        },
+        {
+          "id": "D12",
+          "title": "Historical gathered context",
+          "url": "/tmp/niche-intel-2026-09-14/hist-email.md",
+          "evidence": "Original robotic-maintenance hypothesis and source limitations."
+        }
+      ],
+      "scorecard_file_id": "1HUfpKoqtbLawW7QctgfHcumMOJtP5m8e",
+      "scorecard_url": "https://docs.google.com/spreadsheets/d/1HUfpKoqtbLawW7QctgfHcumMOJtP5m8e/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true",
+      "folder_verified": true,
+      "durable_scorecard_path": "brain/trackers/niches/2026-09-14-evidence/robotic-milking-maintenance-consumables/Robotic-Milking Maintenance and Consumables Scorecard September 2026.xlsx",
+      "durable_pptx_path": "brain/trackers/niches/2026-09-14-evidence/robotic-milking-maintenance-consumables/Robotic-Milking Maintenance and Consumables September 2026.pptx"
+    }
+  ],
+  "scorecards_written": 2,
+  "one_pagers_updated": 2,
+  "errors": []
+}

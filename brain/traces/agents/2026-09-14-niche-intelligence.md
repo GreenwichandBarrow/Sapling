@@ -168,3 +168,8 @@ Metadata: /tmp/niche-intel-2026-09-14/onepager-dairy.json
 ## [niche-intel-scorer] — 2026-09-14
 Two INDUSTRY scorecards complete: dimensional calibration1.73/3; robotic milking maintenance1.74/3. Both provisional, incomplete initial screens. Eight weighted categories/27 actual template subcriteria scored; unknowns conservatively penalized without fabricating adverse facts. Output-only D34 formula fixed, formula caches injected and independently verified, inherited company example rows removed. Uploaded2 XLSX; replaced2 PPTX preserving IDs/URLs. Rendered score headers visually checked. Fresh folder listings confirm exactly1 PPTX and1 XLSX each. No Sheet writes. /tmp/niche-intel-2026-09-14/scores.json and scored-summary.md.
 → READY
+
+
+## niche-intel-tracker — READY
+
+Step 5 completed after final industry scoring. IDEATION A28:L28 created for dimensional metrology/calibration (Compliance, 1.73); A30:L30 created for robotic-milking maintenance/consumables (Other / Watch List, 1.74). Both carry live one-pager, industry scorecard and Drive-folder links plus incomplete-screen flags. Populated-range rows 52 → 54; exactly one row per new niche. All prior IDEATION data/formulas preserved; WEEKLY REVIEW, TABLED and KILLED unchanged. Promotions 0 because both screens remain incomplete. No automatic tabling/killing or outreach activation. Fresh four-tab FORMULA + formatted snapshots, payloads, receipts and complete post-state comparisons are under `brain/trackers/niches/2026-09-14-evidence/tracker-snapshots/`. Result: `/tmp/niche-intel-2026-09-14/tracker-result.json`, `tracker_updated: true`. Audit and rollback procedure: [[traces/2026-09-14-tracker-manager-niche-intelligence]].

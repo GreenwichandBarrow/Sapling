@@ -1,0 +1,47 @@
+{
+  "run_date": "2026-09-14",
+  "tracker_updated": true,
+  "ideation_rows_added": 2,
+  "weekly_review_promotions": 0,
+  "actions": [
+    {
+      "slug": "dimensional-metrology-gauge-calibration",
+      "name": "Independent Dimensional Metrology and Gauge-Calibration Services for Precision Manufacturers",
+      "row": 28,
+      "range": "'IDEATION'!A28:L28",
+      "section": "Compliance",
+      "inserted": true,
+      "populated": true,
+      "score": 1.73,
+      "verified": true
+    },
+    {
+      "slug": "robotic-milking-maintenance-consumables",
+      "name": "Robotic-Milking Equipment Preventive Maintenance and Consumable Route Services for Dairy Farms",
+      "row": 30,
+      "range": "'IDEATION'!A30:L30",
+      "section": "Other",
+      "inserted": true,
+      "populated": true,
+      "score": 1.74,
+      "verified": true
+    }
+  ],
+  "errors": [],
+  "existing_data_unchanged": true,
+  "formula_cells_preserved": true,
+  "pre_ideation_row_count": 52,
+  "post_ideation_row_count": 54,
+  "net_row_delta": 2,
+  "unchanged_tabs": [
+    "WEEKLY REVIEW",
+    "TABLED",
+    "KILLED"
+  ],
+  "spreadsheet_id": "1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins",
+  "snapshot_directory": "brain/trackers/niches/2026-09-14-evidence/tracker-snapshots",
+  "rollback": "After fresh read verifies exact inserted records, delete current dairy row 30 first and calibration row 28 second; stop if positions/content changed. No rollback executed.",
+  "trace_path": "brain/traces/2026-09-14-tracker-manager-niche-intelligence.md",
+  "retry_count": 0,
+  "rollback_executed": false
+}

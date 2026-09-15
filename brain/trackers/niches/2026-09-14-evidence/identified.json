@@ -1,0 +1,485 @@
+{
+  "run_date": "2026-09-14",
+  "run_mode": "monday",
+  "runtime": "Codex/systemd",
+  "niches_identified": 2,
+  "candidate_universe_count": 25,
+  "edge_niches_considered": 21,
+  "niches": [
+    {
+      "name": "Independent Dimensional Metrology and Gauge-Calibration Services for Precision Manufacturers",
+      "slug": "dimensional-metrology-gauge-calibration",
+      "umbrella_theme": "Trust, Compliance & Verification",
+      "section": "Compliance",
+      "status": "New",
+      "recommended_action": "Review only; initial screen incomplete; no sourcing activation",
+      "thesis": "Precision manufacturers repeatedly need trusted dimensional measurements and audit-ready gauge records. Independent calibration laboratories can own the recurring equipment-service relationship without manufacturing the instruments or operating customers factories.",
+      "growth_tailwind": "Verified adjacent-company demand: Transcat FY2025 service revenue grew7%; FY2026 broad service revenue grew20%, including acquisitions. Ongoing precision quality requirements support demand, but exact dimensional-service market CAGR above GDP is unverified.",
+      "operational_complexity": "More controlled measuring assets create calibration schedules, shipping/return coordination, uncertainty documentation, out-of-tolerance investigations and certificate retention.",
+      "second_order_beneficiary": "The vendor earns fees maintaining measurement confidence and equipment records across customers production cycles, rather than selling the end products being manufactured.",
+      "scope": "Dimensional gauges, micrometers/calipers, mechanical measuring tools, periodic calibration/repair and certificate administration. Prefer existing accredited service-heavy labs. Exclude instrument distributors without meaningful service, electrical power testing, medical-physics QA, cosmetic/package product testing, water controls and construction-materials testing.",
+      "initial_screen": {
+        "margins": {
+          "status": "Unknown",
+          "evidence": "Typical EBITDA>=15% unverified. Transcat FY2025 broad service gross margin33.4% is not EBITDA; FY2026 consolidated adjusted EBITDA48.7/331.9=14.7% is mixed-business company data, not niche margin."
+        },
+        "recurring_revenue": {
+          "status": "Pass",
+          "evidence": "Repeated calibration/certification and equipment records supported by provider practices and Transcat. Contracted share, retention and frequency unknown. NIST specifies no universal annual mandate."
+        },
+        "industry_growth": {
+          "status": "Unknown",
+          "evidence": "Company growth7% FY2025 /20% FY2026 supports tailwind proxy only; exact niche CAGR unverified."
+        },
+        "growth_tam": {
+          "status": "Unknown",
+          "evidence": "Exact US dimensional calibration service TAM unknown; broader calibration figures cannot establish $500M niche floor."
+        },
+        "verdict": "INCOMPLETE; proceed for human review under headless instruction, not a passed investment screen"
+      },
+      "target_tam": {
+        "total_firms": null,
+        "independent_targets": null,
+        "observed_providers": 5,
+        "self_reported_independent_examples": 3,
+        "known_acquired_examples": 2,
+        "target_pool_text": "5 named service providers reviewed: 3 current family-owned claims, 2 acquired comps excluded; independent scaled US pool unknown",
+        "sprint_duration": "Unassigned until independent target supply verified; do not treat observed examples as entire market",
+        "directory_method": "A2LA calibration taxonomy and five provider/acquirer checks; certificate counts, disciplines and branches not counted as firms",
+        "pe_consolidation_risk": "High",
+        "pe_evidence": "MTA acquired both Cal-Tec and MicronPA; Trescal acquisition program; Transcat consolidates regional laboratories."
+      },
+      "market_tam": {
+        "market_size_usd": null,
+        "year": 2026,
+        "growth_cagr": null,
+        "status": "Exact niche market unverified",
+        "context": "Broader calibration is a commercial category, but neither national-company revenue nor old broad market estimates measure US dimensional services."
+      },
+      "named_providers": [
+        {
+          "name": "Northeast Metrology Inc.",
+          "location": "East Longmeadow, Massachusetts",
+          "ownership": "Current provider names owner Mark Kuehl; family succession in2008; cap table and sale interest unverified",
+          "role": "Potential independent provider, scale unknown",
+          "source_ids": [
+            "C1"
+          ]
+        },
+        {
+          "name": "Americal Inc.",
+          "location": "Danvers, Massachusetts",
+          "ownership": "Current provider family-owned claim; ownership not independently audited",
+          "role": "Potential independent provider, scale unknown",
+          "source_ids": [
+            "C2"
+          ]
+        },
+        {
+          "name": "United Standards Lab Inc.",
+          "location": "Bloomington, Minnesota",
+          "ownership": "Family-owned provider claim; no current transaction found in bounded search, not proof of no backing",
+          "role": "Potential independent provider, scale unknown",
+          "source_ids": [
+            "C3",
+            "C4"
+          ]
+        },
+        {
+          "name": "Cal-Tec Labs Inc.",
+          "location": "Pittsburgh, Pennsylvania",
+          "ownership": "Acquired by MTA; exclude independent supply",
+          "role": "Acquired comp",
+          "source_ids": [
+            "C5",
+            "C14"
+          ]
+        },
+        {
+          "name": "MicronPA",
+          "location": "York, Pennsylvania",
+          "ownership": "Acquired by MTA; exclude independent supply",
+          "role": "Acquired comp",
+          "source_ids": [
+            "C5",
+            "C13"
+          ]
+        }
+      ],
+      "searcher_fit": {
+        "rating": "Medium/Weak",
+        "seller_credibility": "Transferable B2B service-quality/process skills; no proven precision-manufacturing domain credibility",
+        "access": "No verified warm owner path or committed technical operator",
+        "operator_requirement": "Experienced lab quality/technical leader must remain or be recruited; named available person not identified",
+        "lifestyle": "Bench/mail-in lab reduces field dispatch relative to farm service, but on-site work still exists"
+      },
+      "j_curve": {
+        "hair": [
+          "Technical-manager dependency",
+          "Accreditation scope and quality-system transfer",
+          "Reference-equipment capex",
+          "Customer concentration and turnaround pressure",
+          "Consolidator bidding"
+        ],
+        "absorber": "Repeat installed-base measurement needs and switching effort around reliable certificates may preserve demand; cash-generation resilience remains unverified.",
+        "evidence_level": "Inference from service workflows, not measured retention"
+      },
+      "economics": "Fee per instrument/batch, repair and scheduled service management. Public narrow-price and typical EBITDA evidence unavailable. Reference standards and technicians are real operating costs; not zero-capex.",
+      "customers": "Precision manufacturers and their quality departments; independent laboratories needing dimensional equipment calibration.",
+      "barriers": "Technical competence, accreditation scope, traceability standards, turnaround reliability and trusted quality records; customers can still change labs.",
+      "success_factors": "Retain technical leadership; verify scope and certificates; maintain quick turnaround, calibrated standards and repeat scheduling; separate service profit from equipment resale.",
+      "exit": "Existing strategic/PE-backed consolidators including Transcat, Trescal and MTA demonstrate buyer activity; no exit price/multiple assured.",
+      "risks": [
+        "Exact niche TAM/growth and typical EBITDA unverified",
+        "High PE/strategic consolidation",
+        "Only3 independent ownership claims found among5 reviewed providers",
+        "No warm seller access or operator yet",
+        "Lab quality/liability and standards capex"
+      ],
+      "channel": {
+        "tracker": "No outreach yet",
+        "execution": "no outreach yet",
+        "secondary": "None",
+        "do_not_use": "No cold email, DealsX or call campaign before thesis/channel authorization",
+        "owner": "G&B thesis decision; Codex research; technical operator not identified"
+      },
+      "sources": [
+        {
+          "id": "I1",
+          "title": "Sequential synthesis and expansion",
+          "url": "brain/outputs/2026-09-14-niche-intelligence-report.md",
+          "evidence": "Gathering and six-output synthesis; original working evidence /tmp/niche-intel-2026-09-14/synthesis.md"
+        },
+        {
+          "id": "I2",
+          "title": "Live Industry Research Tracker",
+          "url": "https://docs.google.com/spreadsheets/d/1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins/edit",
+          "evidence": "Fresh four-tab duplicate/lifecycle check; neither proposed niche appears; killed generic BPO remains excluded."
+        },
+        {
+          "id": "C1",
+          "title": "Northeast Metrology owner and operating history",
+          "url": "https://www.nemetrology.com/about.cfm",
+          "evidence": "Owner Mark Kuehl, took over from father in2008; hundreds of yearly customers, thousands of certificates; manufacturing measurement repair/calibration; East Longmeadow MA."
+        },
+        {
+          "id": "C2",
+          "title": "Americal calibration services",
+          "url": "https://americalinc.com/",
+          "evidence": "Self-described family-owned since1997; mechanical/dimensional scope, service lab and on-site work, records portal; Danvers MA."
+        },
+        {
+          "id": "C3",
+          "title": "United Standards Lab services",
+          "url": "https://www.unitedstandardslab.com/",
+          "evidence": "Dimensional/mechanical accredited calibration; service-only model; Bloomington MN."
+        },
+        {
+          "id": "C4",
+          "title": "United Standards Lab ownership",
+          "url": "https://www.unitedstandardslab.com/about-us",
+          "evidence": "Family-owned operation established1965; A2LA accreditation claim."
+        },
+        {
+          "id": "C5",
+          "title": "MTA acquires Cal-Tec; MicronPA already acquired",
+          "url": "https://mtausa.com/news/medical-technology-associates-acquires-cal-tec-labs-inc",
+          "evidence": "Acquirer primary announcement identifies Cal-Tec and earlier MicronPA acquisitions. These are comps, not independent targets despite stale provider ownership copy."
+        },
+        {
+          "id": "C6",
+          "title": "Transcat FY2025 SEC annual report",
+          "url": "https://www.sec.gov/Archives/edgar/data/99302/000143774925018483/trns20250331_10k.htm",
+          "evidence": "Broad service segment FY2025 revenue $181.428M, 7.0% growth, 33.4% gross margin. NOT standalone dimensional industry EBITDA or market CAGR."
+        },
+        {
+          "id": "C7",
+          "title": "Transcat FY2026 annual report",
+          "url": "https://www.sec.gov/Archives/edgar/data/99302/000114036126029373/edge20075511x3_ars.pdf",
+          "evidence": "FY2026 consolidated revenue$331.9M and adjusted EBITDA$48.7M; service revenue+20% includes acquisition effects; recurrent calibration demand. Company comp only, not industry margin."
+        },
+        {
+          "id": "C8",
+          "title": "NIST recommended calibration interval",
+          "url": "https://www.nist.gov/calibrations/recommended-calibration-interval",
+          "evidence": "No universal NIST recalibration interval; cadence depends on instrument stability, use, accuracy, contracts and applicable requirements."
+        },
+        {
+          "id": "C9",
+          "title": "A2LA calibration program",
+          "url": "https://a2la.org/accreditation/calibration/",
+          "evidence": "Accreditation assesses technical calibration competence; supports manufacturer/lab measurement confidence."
+        },
+        {
+          "id": "C10",
+          "title": "A2LA accredited organization directory",
+          "url": "https://customer.a2la.org/index.cfm?event=directory.index",
+          "evidence": "Live searchable taxonomy/density route; no filtered independent US dimensional-firm count produced."
+        },
+        {
+          "id": "C11",
+          "title": "Trescal acquisition announcements",
+          "url": "https://www.trescal.com/news/?category=press-release",
+          "evidence": "January2026 release lists14 global acquisitions; clear consolidator activity, not 14 US dimensional firms."
+        },
+        {
+          "id": "C12",
+          "title": "Current Calder teaser (gathered evidence)",
+          "url": "/tmp/niche-intel-2026-09-14/recent.md",
+          "evidence": "Anonymous dimensional/metrology provider embedded in distributor; seller cashflow not treated as EBITDA/industry margin."
+        },
+        {
+          "id": "C13",
+          "title": "MicronPA service description",
+          "url": "https://micronpa.com/gage-calibration-services/",
+          "evidence": "York PA dimensional/gage services, stale privately-owned copy superseded by acquirer announcement."
+        },
+        {
+          "id": "C14",
+          "title": "Cal-Tec provider description",
+          "url": "https://cal-tec.com/",
+          "evidence": "Pittsburgh PA dimensional/electronic/process services, family-owned copy superseded by MTA announcement."
+        }
+      ]
+    },
+    {
+      "name": "Robotic-Milking Equipment Preventive Maintenance and Consumable Route Services for Dairy Farms",
+      "slug": "robotic-milking-maintenance-consumables",
+      "umbrella_theme": "Trust, Compliance & Verification",
+      "section": "Other",
+      "status": "New",
+      "recommended_action": "Review only with travel/OEM/fit flags; initial screen incomplete; no sourcing activation",
+      "thesis": "Dairy robots require reliable technical support, scheduled maintenance and consumable replenishment throughout their installed life. Regional service providers may earn repeat revenue tied to farm uptime without owning dairy farms or manufacturing robots.",
+      "growth_tailwind": "USDA2026 publication documents robotic-milking share of US milk rising4% in2016 to6% in2021;13% of150\u2013499-cow farms adopted by2021. This establishes historical adoption tailwind, not current service-market growth.",
+      "operational_complexity": "Automation replaces some milking labor with robot troubleshooting, hygiene routines, wear-part replacement, diagnostic records and round-the-clock uptime obligations.",
+      "second_order_beneficiary": "Technicians and consumable routes earn revenue supporting installed robots after farm automation investment; avoid confusing farm ownership, robot manufacturing and service revenue.",
+      "scope": "Preventive maintenance, emergency repair, wear parts and recurring hygiene-consumable routes for installed robotic milking systems. Existing multi-OEM dealerships may house services; distinguish service earnings from new equipment installation, buildings and real estate.",
+      "initial_screen": {
+        "margins": {
+          "status": "Unknown",
+          "evidence": "Typical service EBITDA>=15% unverified. Anonymous listing implies17.7% across mixed dealer/service business; seller assertion, not industry or standalone service metric."
+        },
+        "recurring_revenue": {
+          "status": "Pass",
+          "evidence": "Consumable routes and installed-base maintenance observable; Mid-Atlantic provider describes monthly-fee service pilot. Contract penetration, retention and mature contract profitability unknown."
+        },
+        "industry_growth": {
+          "status": "Unknown",
+          "evidence": "Primary USDA historical automation adoption tailwind supported; exact current service CAGR above GDP not established."
+        },
+        "growth_tam": {
+          "status": "Unknown",
+          "evidence": "US robot-maintenance/consumables service TAM unverified; robot hardware or total dairy output cannot substitute."
+        },
+        "verdict": "INCOMPLETE; full pipeline review with explicit flags, not pass/activation"
+      },
+      "target_tam": {
+        "total_firms": null,
+        "independent_targets": null,
+        "observed_providers": 5,
+        "self_reported_independent_examples": 4,
+        "known_acquired_examples": 0,
+        "historical_ownership_examples": 1,
+        "target_pool_text": "5 named providers;4 current family/named-owner claims,1 historical2021 ownership claim; Lely directory39 locations includes branches; scaled independent service-heavy pool unknown",
+        "sprint_duration": "Unassigned; directory locations are not independent target count",
+        "directory_method": "Lely US location directory plus independent provider sites and one DeLaval dealer; deduplicated multi-location firms",
+        "pe_consolidation_risk": "Medium / uncertain",
+        "pe_evidence": "Schneider Resources owns Foxland dairy equipment/services; OEM dealer control and investment-backed competition exist. No comprehensive transaction census."
+      },
+      "market_tam": {
+        "market_size_usd": null,
+        "year": 2026,
+        "growth_cagr": null,
+        "status": "Exact US service niche TAM unknown",
+        "context": "Installed robotics growth supports service hypothesis; no broad robot-hardware TAM imported to pass service TAM floor."
+      },
+      "named_providers": [
+        {
+          "name": "JBZ Dairy Advantage",
+          "location": "Blue Ball/New Holland and Orangeville, Pennsylvania",
+          "ownership": "Current family-owned claim; two branches counted once",
+          "role": "Potential independent dealer/service firm; service share and scale unknown",
+          "source_ids": [
+            "D3",
+            "D4"
+          ]
+        },
+        {
+          "name": "Gorter Clay and Dairy Equipment",
+          "location": "Pipestone, Minnesota",
+          "ownership": "Current provider names owner Rusty Hartke; ultimate cap table unverified",
+          "role": "Potential independent dealer/service firm; service share and scale unknown",
+          "source_ids": [
+            "D5"
+          ]
+        },
+        {
+          "name": "Thomson Services",
+          "location": "Dublin, Texas",
+          "ownership": "Current family-owned provider claim",
+          "role": "Potential independent multi-OEM dealer/service firm; service share unknown",
+          "source_ids": [
+            "D6"
+          ]
+        },
+        {
+          "name": "Lely Center New England",
+          "location": "New England region; exact street/head-office city not verified",
+          "ownership": "Current OEM page names owner Paul Godin; dealer-contract transferability unknown",
+          "role": "Potential independent regional dealer/service firm",
+          "source_ids": [
+            "D7"
+          ]
+        },
+        {
+          "name": "Progressive Dairy Service and Supplies",
+          "location": "Wendell, Idaho",
+          "ownership": "Tobin Millican owner/family-owned per2021 OEM release; current ownership unverified",
+          "role": "Historical independent example requiring revalidation",
+          "source_ids": [
+            "D8"
+          ]
+        }
+      ],
+      "searcher_fit": {
+        "rating": "Weak",
+        "seller_credibility": "No demonstrated dairy technical/customer fluency",
+        "access": "No warm named owner route or operating partner verified",
+        "operator_requirement": "Experienced dairy service manager and OEM-certified technicians required; none committed",
+        "lifestyle": "SOFT-EXCLUDE: travel-intensive field dispatch, rural service geography and24/7 calls. Not Kay-directed; preserve flag for review."
+      },
+      "j_curve": {
+        "hair": [
+          "24/7 uptime staffing",
+          "Rural travel and route density",
+          "OEM parts/software dependence and dealer transfer approval",
+          "Equipment/parts working capital",
+          "Commodity-sensitive farm customers and consolidation"
+        ],
+        "absorber": "Installed machines require ongoing uptime, parts and hygiene; recurring service plans can cushion transition if contracts, margins and technician retention are verified.",
+        "evidence_level": "Inference, not measured post-acquisition resilience"
+      },
+      "economics": "Labor/service plans plus consumable/part replenishment; new robot sales/installations can distort apparent margins and cash flow. Flat-fee contracts transfer repair-cost risk to provider.",
+      "customers": "Dairy farms operating robotic milking systems, with some dealers serving conventional parlors too; verify installed robot mix.",
+      "barriers": "OEM technician training, access to parts/software, local response capability and farm trust. Dealer consent and territory can constrain transfer or cross-selling.",
+      "success_factors": "Retain certified technicians; map route density and farm contracts; separate service and equipment financials; validate OEM agreements and emergency coverage.",
+      "exit": "Strategic dealers, OEM-linked networks or specialist private investors may buy service operations; Foxland portfolio supports investor presence but no exit multiple.",
+      "risks": [
+        "Strong travel-intensive soft-exclude",
+        "Weak G&B domain/access fit",
+        "Exact service TAM, margins and current CAGR unknown",
+        "OEM control and change-of-control approval",
+        "Customer concentration/farm financial stress",
+        "Five providers are not five buy-box targets"
+      ],
+      "channel": {
+        "tracker": "No outreach yet",
+        "execution": "no outreach yet",
+        "secondary": "None",
+        "do_not_use": "No cold email, DealsX or call campaign before thesis/channel authorization",
+        "owner": "G&B thesis decision; Codex research; technical operator not identified"
+      },
+      "sources": [
+        {
+          "id": "I1",
+          "title": "Sequential synthesis and expansion",
+          "url": "brain/outputs/2026-09-14-niche-intelligence-report.md",
+          "evidence": "Gathering and six-output synthesis; original working evidence /tmp/niche-intel-2026-09-14/synthesis.md"
+        },
+        {
+          "id": "I2",
+          "title": "Live Industry Research Tracker",
+          "url": "https://docs.google.com/spreadsheets/d/1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins/edit",
+          "evidence": "Fresh four-tab duplicate/lifecycle check; neither proposed niche appears; killed generic BPO remains excluded."
+        },
+        {
+          "id": "D1",
+          "title": "USDA ERS robotic-milking adoption",
+          "url": "https://ers.usda.gov/data-products/charts-of-note/114194",
+          "evidence": "Published June2 2026 using2016/2021 farm data: robotic systems share of US milk4%\u21926%;13% adoption for150\u2013499 cow farms in2021. Not a2026 adoption level or service-market CAGR."
+        },
+        {
+          "id": "D2",
+          "title": "Lely US center directory and services",
+          "url": "https://www.lelyna.com/us/",
+          "evidence": "39 listed locations; repeats/branches present, not39 independent companies. Technical services and consumables offered."
+        },
+        {
+          "id": "D3",
+          "title": "JBZ Dairy Advantage services",
+          "url": "https://www.jbzdairy.com/",
+          "evidence": "Family-owned DeLaval dealership, VMS robotics and maintenance/route service."
+        },
+        {
+          "id": "D4",
+          "title": "JBZ locations",
+          "url": "https://www.jbzdairy.com/contact",
+          "evidence": "Blue Ball/New Holland and Orangeville PA, count as one firm."
+        },
+        {
+          "id": "D5",
+          "title": "Gorter Clay and Dairy",
+          "url": "https://www.gortersclayanddairy.com/",
+          "evidence": "Pipestone MN; current named owner Rusty Hartke; robotic maintenance,24/7 emergency and consumable routes."
+        },
+        {
+          "id": "D6",
+          "title": "Thomson Services",
+          "url": "https://www.thomsonservices.com/supplies",
+          "evidence": "Family-owned dairy maintenance/installation/supplies, Dublin TX; service plans and40+ farm clients provider claim."
+        },
+        {
+          "id": "D7",
+          "title": "Lely Center New England",
+          "url": "https://www.lelyna.com/us/centers/new-england/",
+          "evidence": "OEM names owner Paul Godin and regional technician team; milking robots/consumables services; New England location and NY service technician role."
+        },
+        {
+          "id": "D8",
+          "title": "Progressive Dairy Service and Supplies",
+          "url": "https://www.lelylife.com/progressive-dairy-service-supply",
+          "evidence": "Lely2021 announcement names Tobin Millican founder/owner and Wendell Idaho family-owned dealership. Ownership evidence historical,2026 status unverified."
+        },
+        {
+          "id": "D9",
+          "title": "Mid-Atlantic robotic service-agreement pilot",
+          "url": "https://www.lelycentermidatlantic.com/index.php/2025/08/01/10-minutes-to-better-robot-performance-lely-center-mid-atlantics-daily-checklist/",
+          "evidence": "Provider describes five-farm pilot and flat monthly fee per robot covering maintenance/parts/labor. Mixed crawl/date metadata; do not assert rollout completed."
+        },
+        {
+          "id": "D10",
+          "title": "Schneider Resources portfolio",
+          "url": "https://schneiderresources.com/",
+          "evidence": "Private investment firm lists Foxland dairy-equipment/service portfolio company; no claim of untouched sector."
+        },
+        {
+          "id": "D11",
+          "title": "Historical source newsletter",
+          "url": "https://mail.google.com/mail/u/0/#all/19e656820ec74fd6",
+          "evidence": "Anonymous UT/ID dealer/service listing:2.5M revenue/442888 EBITDA seller claims; do not conflate with named providers or industry margin."
+        },
+        {
+          "id": "D12",
+          "title": "Historical gathered context",
+          "url": "/tmp/niche-intel-2026-09-14/hist-email.md",
+          "evidence": "Original robotic-maintenance hypothesis and source limitations."
+        }
+      ]
+    }
+  ],
+  "not_advanced": [
+    {
+      "name": "Delegated-authority bordereaux validation/exception management",
+      "reason": "Conditional alternate; only incumbent/sponsor-backed service evidence from synthesis, no independent US target pool established; killed generic BPO theory-without-targets overlap unresolved. Not killed/tabled by this run."
+    }
+  ],
+  "gaps": [
+    "Exact US niche TAM/current CAGR and typical industry EBITDA unknown for both candidates",
+    "Acquisition-ready independent population, size and warm-owner access unverified",
+    "Transcat PDFs web open failed/retried; SEC FY2025 HTML and indexed FY2026 annual-report text used as comp evidence",
+    "A2LA dynamic directory not enumerated into independent firm counts",
+    "Progressive Dairy2021 ownership not revalidated; New England street/head-office city unverified"
+  ],
+  "duplicate_check": "Four tabs freshly fetched at identifier completion; zero name matches for calibration/metrology/dairy/milking/bordereaux; generic BPO explicitly killed. Adjacent electrical/medical/product labs are separately scoped.",
+  "automated_status_changes": false
+}

@@ -1,0 +1,41 @@
+{
+  "files": [
+    {
+      "hasThumbnail": true,
+      "id": "1ZEnGFTrX13VXYXu4SVeSjgviSWqJR-23",
+      "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "modifiedTime": "2026-09-15T02:59:17.386Z",
+      "name": "Robotic-Milking Maintenance and Consumables September 2026.pptx",
+      "owners": [
+        {
+          "emailAddress": "kay.s@greenwichandbarrow.com"
+        }
+      ],
+      "parents": [
+        "1m02mXNTr0V4zO8gRezpgz4hHSUMON2PD"
+      ],
+      "size": "169477",
+      "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBMhqzgDKV8eGO5S_4PjaZQu3nZ8khBju0-5YT1m8YKBf1A6dbEGDrOc65CAZkoRvKqWuDhUsR6Cg0IgC-wmNarWX8Jajfg1kVXDQDaRiQCLY9gT=s220",
+      "webViewLink": "https://docs.google.com/presentation/d/1ZEnGFTrX13VXYXu4SVeSjgviSWqJR-23/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true"
+    },
+    {
+      "hasThumbnail": true,
+      "id": "1HUfpKoqtbLawW7QctgfHcumMOJtP5m8e",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "modifiedTime": "2026-09-15T02:59:15.878Z",
+      "name": "Robotic-Milking Maintenance and Consumables Scorecard September 2026.xlsx",
+      "owners": [
+        {
+          "emailAddress": "kay.s@greenwichandbarrow.com"
+        }
+      ],
+      "parents": [
+        "1m02mXNTr0V4zO8gRezpgz4hHSUMON2PD"
+      ],
+      "size": "17205",
+      "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBNsPxIhGBEJaVg6DuX8d3E-ooW4EgyT0Pv66i0yfF6K6vfH0CfEGGfzGEENT0nFLWzfbe98TA_22rCgwA9N4N34C4vCymt3C08PXkXcp5pIED26=s220",
+      "webViewLink": "https://docs.google.com/spreadsheets/d/1HUfpKoqtbLawW7QctgfHcumMOJtP5m8e/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true"
+    }
+  ],
+  "nextPageToken": ""
+}

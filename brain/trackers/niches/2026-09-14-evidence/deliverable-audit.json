@@ -1,0 +1,63 @@
+{
+  "run_date": "2026-09-14",
+  "runtime": "Codex/systemd",
+  "status": "passed",
+  "one_pagers_written": 2,
+  "scorecards_written": 2,
+  "niches_scored": 2,
+  "all_formula_caches_verified": true,
+  "all_pptx_scores_match": true,
+  "all_sources_linked": true,
+  "all_folders_exact_one_each": true,
+  "verification": "Local copies refreshed from final scored artifacts, SHA256 identical;27 cached criteria/eight category scores/weighted total each compared independently against scores.json; PPTX assessment and source manifests verified. External folder listings preserved from post-write verification.",
+  "niches": [
+    {
+      "slug": "dimensional-metrology-gauge-calibration",
+      "score": 1.7325,
+      "cached_score": 1.7325,
+      "pptx_assessment": "Assessment: 1.73 / 3.0 (58%)",
+      "criteria_verified": 27,
+      "categories_verified": 8,
+      "pptx_slides": 5,
+      "template_shapes_preserved": 6,
+      "manifest_sources": 16,
+      "missing_source_links": [],
+      "hyperlink_count": 32,
+      "source_links_complete": true,
+      "durable_files": {
+        "pptx": "brain/trackers/niches/2026-09-14-evidence/dimensional-metrology-gauge-calibration/Dimensional Metrology and Gauge Calibration September 2026.pptx",
+        "xlsx": "brain/trackers/niches/2026-09-14-evidence/dimensional-metrology-gauge-calibration/Dimensional Metrology and Gauge Calibration Scorecard September 2026.xlsx"
+      },
+      "sha256": {
+        "pptx": "84a4c534ca3857f41959daaccb6cecb0fd8c07bcf88705a067e50693707991d1",
+        "xlsx": "4ee8f6dba1b15ba8051b0a57d57b12ce485d651e1de88accc65aa2635c19d104"
+      },
+      "drive_folder": "18iQj87-InZYCBAJVTg3bOt-Qlzg-OOJ9",
+      "folder_verified_exact_one_each": true
+    },
+    {
+      "slug": "robotic-milking-maintenance-consumables",
+      "score": 1.7425000000000002,
+      "cached_score": 1.7425000000000002,
+      "pptx_assessment": "Assessment: 1.74 / 3.0 (58%)",
+      "criteria_verified": 27,
+      "categories_verified": 8,
+      "pptx_slides": 5,
+      "template_shapes_preserved": 6,
+      "manifest_sources": 19,
+      "missing_source_links": [],
+      "hyperlink_count": 38,
+      "source_links_complete": true,
+      "durable_files": {
+        "pptx": "brain/trackers/niches/2026-09-14-evidence/robotic-milking-maintenance-consumables/Robotic-Milking Maintenance and Consumables September 2026.pptx",
+        "xlsx": "brain/trackers/niches/2026-09-14-evidence/robotic-milking-maintenance-consumables/Robotic-Milking Maintenance and Consumables Scorecard September 2026.xlsx"
+      },
+      "sha256": {
+        "pptx": "3e5a03be5320ab5fbd109cf9f7cb814015388fb47b47a2bb027840576d98e2b7",
+        "xlsx": "7bd845cbe73e1a55a555ecbe342223a9327a0003acbc26b65ed765b8502dc09f"
+      },
+      "drive_folder": "1m02mXNTr0V4zO8gRezpgz4hHSUMON2PD",
+      "folder_verified_exact_one_each": true
+    }
+  ]
+}

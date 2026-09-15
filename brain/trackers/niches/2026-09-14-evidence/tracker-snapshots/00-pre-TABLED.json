@@ -1,0 +1,221 @@
+{
+  "range": "TABLED!A1:Y990",
+  "values": [
+    [],
+    [
+      "Niche Hypothesis",
+      "Start Date",
+      "Current Status",
+      "Score",
+      "Date tabled",
+      "Why Tabled",
+      "Red flags noted",
+      "Quick notes",
+      "Rank",
+      "Outreach Channel",
+      "QSBS",
+      "Target Pool",
+      "Days in Review"
+    ],
+    [
+      "EV Software/Charging",
+      "",
+      "Tabled",
+      "",
+      "",
+      "",
+      "Political sentiment towards EV/climate",
+      "Growing; high investment, still fragmented with lots of players (West coast/Canada; Netherlands)"
+    ],
+    [
+      "Other Computer Related Services (e.g., hosting, cybersecurity, IT consulting)",
+      "",
+      "Tabled",
+      "",
+      "",
+      "",
+      "",
+      "Cybersecurity, recurring revenue"
+    ],
+    [
+      "Escrow & Custodial software",
+      "",
+      "Tabled",
+      "",
+      "",
+      "",
+      "Slow-moving buyers (law/accounting), integration requirements.",
+      "Core Function: Record-keeping, audits, reconciliations, reporting for fiduciaries and estate managers.\nRegulatory complexity = sticky customers.\nRecurring B2B revenue from law firms, accountants, and trust officers."
+    ],
+    [
+      "Specialized Document Lifecycle & Archival Services",
+      "",
+      "Tabled"
+    ],
+    [
+      "Corporate Entity & Record Management",
+      "",
+      "Tabled"
+    ],
+    [
+      "Yacht/Fleet Maintenance Software",
+      "",
+      "Tabled",
+      "",
+      "",
+      "",
+      "",
+      "Core Function: Crew management, maintenance logs, budgeting, compliance, charter scheduling\nRecurring B2B revenue (yacht managers, marinas, charter operators).\nHighly loyal client base \u2014 switching is painful mid-season.\nSimilar client overlap with your art & HNW ecosystem."
+    ],
+    [
+      "Legal Software",
+      "",
+      "Tabled"
+    ],
+    [
+      "High End Property Management platform",
+      "",
+      "Tabled",
+      "",
+      "",
+      "",
+      "Early market education required; long sales cycle.",
+      "Examples: EstateSpace, Nines, LincWare, ProperKey\nCore Function: Workflow and asset tracking for estates, private households, family offices.\nSubscription-based SaaS with high stickiness once embedded.\nNatural B2B layer with concierge, staffing, and family office operators"
+    ],
+    [
+      "High-End Electrical & Lighting",
+      "7/20/25",
+      "Tabled",
+      "",
+      "",
+      "",
+      "Fragmented and hyperlocal. Requires local licenses. Recurring model is unclear unless built around service contracts.",
+      "Luxury electrical services that include lighting installation for art preservation, potentially recurring through maintenance."
+    ],
+    [
+      "High-End Property & Asset Management Services",
+      "",
+      "Tabled",
+      "",
+      "",
+      "",
+      "",
+      "Whether traditional property management, or if its monitoring safety, or safety assessment"
+    ],
+    [
+      "Landscape Services for HNW Clients",
+      "7/20/25",
+      "Tabled",
+      "",
+      "",
+      "",
+      "Labor intensive; weather-dependent; perceived as a cost center unless paired with sustainability or aesthetic ROI.",
+      "Residential garden services positioned as subscriptions for affluent properties; recurring nature and scheduling important."
+    ],
+    [
+      "Surgical Episode Management SaaS",
+      "7/20/25",
+      "Tabled",
+      "",
+      "",
+      "",
+      "Long sales cycles, need deep clinical validation. Some payer-facing models still evolving.",
+      "Tech-enabled platforms that manage post-op care, patient communication, and recovery tracking \u2014 often sold to health systems."
+    ],
+    [
+      "Back Office Systems for Concierge Practices",
+      "7/20/25",
+      "Tabled",
+      "",
+      "",
+      "",
+      "Fragmentation in vendor offerings; lack of interoperability. Limited budgets unless paired with cash-pay or PE-backed practices.",
+      "Digital infrastructure enabling concierge medicine (e.g., CRM, scheduling, billing) targeting high-income private pay groups."
+    ],
+    [
+      "Compliance & Packaging SaaS",
+      "7/20/25",
+      "Tabled",
+      "",
+      "",
+      "",
+      "Regulatory risk is high. Market may not support many players. Execution risk around narrow vertical.",
+      "Workflow and regulatory management software for niche CPG like menopause supplements; SaaS model likely B2B."
+    ],
+    [
+      "(Backup) Care services",
+      "",
+      "Tabled"
+    ],
+    [
+      "Healthcare SaaS (Dermatology, aesthetics)",
+      "",
+      "Tabled"
+    ],
+    [
+      "Pest Management Compliance Software",
+      "4/9/2026",
+      "Tabled",
+      "2.57",
+      "4/12/26",
+      "Moved by nightly audit",
+      "Top-end consolidation (ServiceTitan, EverCommerce, WorkWave). SMB price sensitivity.",
+      "Vertical SaaS for pest control compliance: pesticide tracking, EPA reporting, state licensing, HACCP docs. People+platform model. Synergy with Premium Pest Mgmt."
+    ],
+    [
+      "SEC filing preparation & XBRL tagging",
+      "3/31/2026",
+      "Tabled",
+      "2.13",
+      "4/2/2026",
+      "Moved from Under Review 2026-04-02"
+    ],
+    [
+      "Domestic Trade Credit Insurance",
+      "3/21/2026",
+      "Tabled",
+      "2.6",
+      "4/4/2026",
+      "Small target pool (20-50), QSBS excluded, limited growth path",
+      "",
+      "Jeremy Black referral. Trade Acceptance Group + Texel. Fashion/textile is top vertical."
+    ],
+    [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Fractional CFO / Advisory Accounting"
+    ],
+    [
+      "Premium Pest Management (Luxury Hospitality & Commercial Properties)",
+      46116,
+      "Tabled",
+      2.73,
+      46257,
+      "Food safety/HACCP compliance pest mgmt. Luxury hospitality focus. 25-35% EBITDA, 70-85% recurring. Mosquito searcher investors as validation contacts. Non-union",
+      "",
+      "Food safety/HACCP compliance pest mgmt. Luxury hospitality focus. 25-35% EBITDA, 70-85% recurring. Mosquito searcher investors as validation contacts. Non-union",
+      1,
+      "JJ-Call-Only",
+      "Likely Eligible",
+      "21800+",
+      11
+    ],
+    [
+      "High-End Commercial Cleaning",
+      46223,
+      "Tabled",
+      "",
+      46257,
+      "Launching 7/20/2026. High-end commercial cleaning for luxury hospitality, Class-A properties, cultural institutions.",
+      "",
+      "Launching 7/20/2026. High-end commercial cleaning for luxury hospitality, Class-A properties, cultural institutions.",
+      3,
+      "DealsX Email"
+    ]
+  ]
+}

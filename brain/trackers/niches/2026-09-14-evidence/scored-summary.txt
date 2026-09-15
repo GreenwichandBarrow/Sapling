@@ -1,0 +1,100 @@
+# Scored industries — September 14, 2026
+
+Codex/systemd. Two industries, eight weighted categories and27 subcriteria each. Two XLSX uploads and two PPTX replacements verified; zero errors.
+
+## Methodology
+Provisional evidence-weighted research score, not an activation decision. Missing quantitative facts receive - (1) as an uncertainty penalty, not a measured adverse result. +/- (2) and + (3) express explicit source-supported judgments; operator claims are labeled. Unknown initial-screen facts remain Unknown. Template category weights and rating mapping unchanged. Target TAM and G&B fit are informational, not extra weighted score inputs.
+
+Formula integrity: output-only missing D34 supplier-power mapping repaired; category and C43 formulas preserved. Stale company examples removed, old bookmark names removed. Numeric caches for27 ratings/eight category totals/C43 injected into output XML because LibreOffice Calc unavailable, then reloaded data_only and independently recomputed. Original template unchanged. C43 already /3. Both PPTX score headers rendered and visually checked. Links preserved with upload --replace.
+
+## Independent Dimensional Metrology and Gauge-Calibration Services for Precision Manufacturers
+Score: **1.73/3 (57.8%)**, provisional; screen incomplete. Target pool: 5 named service providers reviewed: 3 current family-owned claims, 2 acquired comps excluded; independent scaled US pool unknown
+
+[Scorecard](https://docs.google.com/spreadsheets/d/1pCKeGrEUqsqanwfdj5JvPBqU1x9tLOdF/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true) | [One-pager](https://docs.google.com/presentation/d/1ZRP2PSPfPEcE8ZYOWRimlx74GdfczcLd/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true) | [Folder](https://drive.google.com/drive/folders/18iQj87-InZYCBAJVTg3bOt-Qlzg-OOJ9)
+
+| Category | Weight | Score /3 |
+|---|---:|---:|
+| Growth, Penetration and Catalyst | 25% | 1.750 |
+| Size and Fragmentation | 10% | 1.000 |
+| Industry Economics | 10% | 1.000 |
+| Mission Criticality | 15% | 2.000 |
+| Exogeneous Risks | 10% | 2.200 |
+| Porter's Five Forces | 15% | 1.667 |
+| Value Creation Opportunities | 10% | 2.000 |
+| Impact and Externalities | 5% | 2.500 |
+
+| Criterion | Rating | Evidence / judgment |
+|---|---|---|
+| - Growth relative to GDP (5 yr CAGR) | - | Unknown exact dimensional-service CAGR. Broad Transcat company growth is not market growth. C6/C7 |
+| - Industry penetration | +/- | Judgment: repeat quality/documentation work is a potential catalyst; penetration unknown. C1/C2/C8/C9 |
+| - future growth expectations | +/- | Judgment: precision requirements supportive; competing in-house/OEM options and unverified niche outlook temper tailwinds. C6/C8/C11 |
+| - Evidence to support a catalyst | +/- | Provider records and corporate demand establish need, not a quantified catalyst for this precise niche. C1/C2/C6 |
+| - Number of players | - | Unknown independent national population. Three ownership claims among five examples are not market size. C1-C5/C10 |
+| - Market share concentration | - | Unknown largest-player share; consolidation proves presence, not concentration percentage. C5/C11 |
+| - Average industry gross margins | - | Unknown typical niche gross margin. Broad-company service gross margin33.4% is only a proxy. C6 |
+| - Average industry EBITDA margins | - | Unknown typical niche EBITDA margin; no public peer sample. C6/C7 |
+| - Average industry ROTC | - | Unknown typical industry return on tangible capital; reference equipment requires investment. No measured ROTC. |
+| - Average customer feedback | - | No independently collected representative customer feedback. Provider testimonials not an industry survey. C1/C2 |
+| - Clarity of value proposition | + | Judgment: trustworthy dimensional measurement and certificates directly support manufacturing quality decisions. C3/C8/C9 |
+| - Customer switching costs | +/- | Judgment: replacing a qualified lab requires scope/quality and records checks but alternatives exist. C1/C2/C9 |
+| - Visibility on tech adoption and obsolescence | +/- | Judgment: physical measurement and repair protected from text automation; documentation/productivity tools changing. C2/C6 |
+| - Regulatory risk and frequency of changes | +/- | Judgment: accreditation/quality requirements support demand but require continuing technical compliance. C8/C9 |
+| - Liability risks | +/- | Judgment: bad measurements may propagate quality errors; liability is material and not measured. C8 |
+| - Cyclicality | +/- | Judgment: repeat measurement persists but manufacturing volumes/capex are cyclical. C1/C6 |
+| - Exposure to trends | + | Judgment: physical measurement confidence is durable across product fashions. C8/C9 |
+| - Prevalence of VC-backed startups | - | Unknown prevalence of VC-backed startups; PE examples do not prove absence. C5/C11 |
+| - Level of competition | - | Judgment: established national and sponsor-backed buyers compete with local labs. C5/C6/C11 |
+| - State of new entrants | +/- | Judgment: accreditation/technical standards constrain entry without preventing local providers. C1/C9 |
+| - Level of supplier power | +/- | Judgment: standards/equipment and specialist labor needed; no evidence of extreme supplier concentration. C1/C8/C9 |
+| - Level of customer power | +/- | Judgment: manufacturing buyers can qualify alternatives; trust and turnaround moderate bargaining power. C1/C2 |
+| - Threat of substitutes | +/- | Judgment: OEM/in-house calibration substitutes for third-party work; trust/capability differentiates. C6 |
+| - General complexity of businesses | +/- | Judgment: specialist metrology and quality systems create moderate technical complexity. C1/C9 |
+| - Professionalization opportunities | +/- | Judgment: repeat scheduling, certificate records and turnaround are tangible process levers; not a proven turnaround plan. C1/C2 |
+| - Net impact to society | + | Judgment: reliable measurements support product quality and safety. C8/C9 |
+| - Positive or negative externalities | +/- | Judgment: quality benefits possible; no measured environmental/social externality study. C8/C9 |
+
+## Robotic-Milking Equipment Preventive Maintenance and Consumable Route Services for Dairy Farms
+Score: **1.74/3 (58.1%)**, provisional; screen incomplete. Target pool: 5 named providers;4 current family/named-owner claims,1 historical2021 ownership claim; Lely directory39 locations includes branches; scaled independent service-heavy pool unknown
+
+[Scorecard](https://docs.google.com/spreadsheets/d/1HUfpKoqtbLawW7QctgfHcumMOJtP5m8e/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true) | [One-pager](https://docs.google.com/presentation/d/1ZEnGFTrX13VXYXu4SVeSjgviSWqJR-23/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true) | [Folder](https://drive.google.com/drive/folders/1m02mXNTr0V4zO8gRezpgz4hHSUMON2PD)
+
+| Category | Weight | Score /3 |
+|---|---:|---:|
+| Growth, Penetration and Catalyst | 25% | 2.250 |
+| Size and Fragmentation | 10% | 1.000 |
+| Industry Economics | 10% | 1.000 |
+| Mission Criticality | 15% | 2.000 |
+| Exogeneous Risks | 10% | 1.800 |
+| Porter's Five Forces | 15% | 1.667 |
+| Value Creation Opportunities | 10% | 1.500 |
+| Impact and Externalities | 5% | 2.000 |
+
+| Criterion | Rating | Evidence / judgment |
+|---|---|---|
+| - Growth relative to GDP (5 yr CAGR) | - | Unknown current service-market CAGR;2016-21 robot adoption is not service growth. D1 |
+| - Industry penetration | + | Judgment: independently measured historic automation uptake expands installed technical support needs. D1/D2 |
+| - future growth expectations | +/- | Judgment: automation supportive, but farm consolidation/financial conditions may offset dealer expansion. D1/D10 |
+| - Evidence to support a catalyst | + | USDA primary evidence of adoption plus observed maintenance providers establish installed-base catalyst; old-data limitation explicit. D1/D3/D5 |
+| - Number of players | - | Unknown independent national vendor count;39 OEM directory locations are not39 firms. D2 |
+| - Market share concentration | - | Unknown service-provider market shares. OEM dealer territories not measured concentration. D2 |
+| - Average industry gross margins | - | Unknown typical standalone service gross margins; product/dealer mix differs. D11 |
+| - Average industry EBITDA margins | - | Unknown typical service EBITDA; one anonymous17.7% dealer listing is not industry proof. D11 |
+| - Average industry ROTC | - | Unknown industry ROTC; spares/vehicles/working capital vary. D3/D5 |
+| - Average customer feedback | - | No independent representative customer-feedback dataset; vendor descriptions are not satisfaction measurements. D3/D5 |
+| - Clarity of value proposition | + | Judgment: robot uptime and hygiene support continuing milking operations. D5/D9 |
+| - Customer switching costs | +/- | Judgment: local trained technicians and installed OEM systems create switching effort; provider contracts unknown. D2/D5/D7 |
+| - Visibility on tech adoption and obsolescence | +/- | Judgment: robot complexity/software evolves; hands-on repair persists. D2/D5 |
+| - Regulatory risk and frequency of changes | +/- | Judgment: hygiene and machine-service protocols create ongoing obligations; no specific new legal claim. D5/D9 |
+| - Liability risks | - | Judgment: service failures threaten herd/milk quality and uptime; significant liability and emergency coverage. D5/D9 |
+| - Cyclicality | +/- | Judgment: installed servicing persists but farm financial cycles can pressure spend and losses. D1/D5 |
+| - Exposure to trends | +/- | Judgment: automation trend supports demand but equipment/commodity customer exposure persists. D1/D2 |
+| - Prevalence of VC-backed startups | - | Unknown VC provider prevalence; cannot infer absence from directory. D2/D10 |
+| - Level of competition | +/- | Judgment: regional service territories/local response differentiate, but OEM dealers compete; pricing data unknown. D2/D3/D5 |
+| - State of new entrants | +/- | Judgment: certification, parts and local technician footprint limit entry. D2/D7 |
+| - Level of supplier power | - | Judgment: OEM parts/software/training and dealer consent create supplier power. D2/D7 |
+| - Level of customer power | +/- | Judgment: downtime makes service critical; concentrated farm/customer dependence not measured. D5/D9 |
+| - Threat of substitutes | +/- | Judgment: trained farm staff can do daily care, but faults/parts still need specialist support. D9 |
+| - General complexity of businesses | - | Judgment:24/7 rural dispatch, technical staff, spares and robot protocols are complex. D5/D9 |
+| - Professionalization opportunities | +/- | Judgment: planned service agreements and routes offer levers but flat-fee repair risks must be priced. D5/D9 |
+| - Net impact to society | +/- | Judgment: labor support/uptime benefit farms; broader environmental/welfare outcomes not established. D1 |
+| - Positive or negative externalities | +/- | Unknown net externality; no quantified effect inferred from dairy automation. D1 |

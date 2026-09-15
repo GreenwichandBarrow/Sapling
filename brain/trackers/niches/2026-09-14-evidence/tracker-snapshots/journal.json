@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "dimensional-metrology-gauge-calibration",
+    "name": "Independent Dimensional Metrology and Gauge-Calibration Services for Precision Manufacturers",
+    "row": 28,
+    "range": "'IDEATION'!A28:L28",
+    "section": "Compliance",
+    "inserted": true,
+    "populated": true,
+    "score": 1.73,
+    "verified": true
+  },
+  {
+    "slug": "robotic-milking-maintenance-consumables",
+    "name": "Robotic-Milking Equipment Preventive Maintenance and Consumable Route Services for Dairy Farms",
+    "row": 30,
+    "range": "'IDEATION'!A30:L30",
+    "section": "Other",
+    "inserted": true,
+    "populated": true,
+    "score": 1.74,
+    "verified": true
+  }
+]

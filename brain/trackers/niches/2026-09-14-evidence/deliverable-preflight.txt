@@ -1,0 +1,27 @@
+# Deliverable preflight — 2026-09-14
+
+Read-only source preflight; no external mutations or template modifications.
+
+## Drive nesting
+- Live metadata confirms `1eq7FjekjFhkV0RoBfgr9n6AXPtENEenT` is named **WEEKLY REVIEW**, parent `1tiAc7lVveBwi_DlYcFUX2tFP6FVwYKmQ` (INDUSTRY RESEARCH).
+- INDUSTRY RESEARCH children: WEEKLY REVIEW, IDEATION, TABLED, KILLED, DRAFTS, SAMPLE, plus tracker/workbook files. No ACTIVE SPRINTS child.
+- Exact global folder query `name = 'ACTIVE SPRINTS' and mimeType = 'application/vnd.google-apps.folder' and trashed = false` returned zero files, no next page. Raw result: drive-active-sprints-search.json.
+- To meet explicit user wording, root decided to create ACTIVE SPRINTS under INDUSTRY RESEARCH, then candidate folders inside it. Existing WEEKLY REVIEW is not silently treated as an alias. Preflight created no folders.
+
+## PPTX
+- Local canonical `brain/library/internal/one-pager-template/customs-bonds-template.pptx` loads, 163668 bytes, one portrait slide, 6 shapes, 16x2 table. Dimensions 6858000x9144000 EMU (7.5x10in).
+- Title row0, assessment row1, overview3, thesis5, trends/risks7, economics/competition9, customers/barriers11, success13, exit15.
+- Clone retains six shapes. Replace stale source content in all body cells, preserve black title and formatting; Sources needs additional slide(s), since table has no sources row. User requires every source linked.
+- python-pptx, openpyxl, Pillow installed. LibreOffice Impress and pdftoppm available; PyMuPDF and mutool absent.
+- Headless Impress successfully rendered template PDF at preflight-render/customs-bonds-template.pdf. javaldx warning nonfatal. This tests renderer availability, not new candidate layout.
+
+## Industry XLSX
+- Canonical `brain/library/internal/scorecard/G&B Industry & Company Scorecard Template.xlsx` loads, 14159 bytes; sheets INITIAL SCREEN and TEMPLATE.
+- Industry area TEMPLATE rows8:43 has **eight** weighted categories (despite stale prose saying seven): category rows8,13,16,20,24,30,37,40; weights25%,10%,10%,15%,10%,15%,10%,5%=100%.
+- Subcriteria rows9–12,14–15,17–19,21–23,25–29,31–36,38–39,41–42. Ratings E; evidence J; numeric mapped rating D; category score C. Only rows8:43 are industry scoring. Rows45:99 are prefilled company examples; clear/remove those in candidate output rather than presenting them as industry analysis.
+- Mapping e.g. D9 is openpyxl ArrayFormula(ref='D9', text='=_xlfn.SWITCH(E9,"+",3,"+/-",2,"-",1)'). Other populated subcriterion D cells use corresponding row.
+- **D34 supplier power numeric formula is absent** while E34 contains inherited N/A. Category C30 averages D31:D36; leaving D34 blank silently excludes supplier power. For candidate output with real E34 rating, repair D34 using matching ArrayFormula(ref='D34', text='=_xlfn.SWITCH(E34,"+",3,"+/-",2,"-",1)') or equivalent IF mapping in that output only. Do not edit original template. Document repair.
+- Category formulas average relevant subcriterion D cells. C43 =SUMPRODUCT(C8:C42,D8:D42), producing already-normalized /3 score since category weights sum1. Do NOT divide again by3 unless reporting percentage.
+- TEMPLATE rename to Industry Scorecard leaves no stale TEMPLATE references and no #REF formula cells in copied workbook. Two unrelated legacy `_bdm...` defined-name bookmark references already equal #REF! in original; these do not feed industry score formulas. Record/remove only in output if needed.
+- Workbook fullCalcOnLoad true. openpyxl does not calculate formulas or populate caches.
+- **LibreOffice Calc is not installed** (Impress only). Recalculation attempt and explicit xlsx filter retry both returned source could not be loaded. Do not assume available LibreOffice binary implies XLSX formula recalc. Need a supported calculation route or separately compute/verify rating-weight result while preserving formulas and truthfully documenting uncached output.

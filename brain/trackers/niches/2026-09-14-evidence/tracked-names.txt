@@ -1,0 +1,157 @@
+tracker-WEEKLY-REVIEW: 45
+Specialty Insurance Brokerage (Art & Collectibles)
+HNW Personal Lines Concierge Insurance Brokerage
+Estate Management Companies
+Fine-Art Logistics Services
+Storage & Related Services for High Value Assets
+Fragrance & Cosmetic Product Testing Labs
+Luxury Package Testing & Validation Labs
+Property Management (Residential & Commercial Rental)
+Luxury Leather Goods, Handbag, Footwear, and Garment Aftercare Services
+Luxury Amenity Management for Commercial/Residential Real Estate
+Insurance-Driven Contents Restoration, Pack-Out, Inventory, and Storage Services
+Asset-Light Boat and Yacht Transport Coordination for Marinas, Dealers, Brokers, and Seasonal Owners
+MoCRA-Compliant Beauty 3PL, Kitting, and Fulfillment for Independent Cosmetics Brands
+Yacht Property Management for Private Yacht Owners in Coastal HNW Markets
+High-End Beauty & Fragrance Packaging
+Value-Added Fragrance Distribution
+Jeweler's Block Insurance Brokerage for Independent Jewelry Retailers, Wholesalers, and Pawn/Jewelry Trade Businesses
+Trade Credit, Customs Bonds & Cargo Insurance Brokerage
+Property Tax Appeal Services (Commercial-Property)
+Building Energy & Emissions Compliance Services
+Stormwater Control Measure Inspection, Maintenance, and Compliance O&M for HOAs, Multifamily, Retail Centers, and Commercial Campuses
+Water/Wastewater SCADA & Controls Compliance Service Providers
+HOA / Community Association Management
+Commercial/Industrial Air Purification Installed-Base Service and Compliance Maintenance
+Facilities Management / Commercial Building Services
+Medical/Lab/IVF Specialty Cleaning
+Reserve Study & Building Engineering Studies (Condo/HOA)
+Broker-Dealer Compliance and Outsourced FinOp Services
+Truck Licensing & Compliance Platform (IFTA/IRP/DOT)
+CMMC / FAR Managed Compliance Services for SMB Federal Contractors
+Outsourced Insurance SIU and Fraud Investigation Services
+Geotechnical Engineering & Construction Materials Testing for Infrastructure/Commercial Construction
+Premium Physical Security Integration & Lifecycle Maintenance for Luxury Retail and Class-A Commercial Portfolios
+Insurance FMO/IMO Distribution-Aggregator
+Surplus Lines Compliance & Tax Filing Services
+Art-Dealer Cultural-Goods Compliance and Back-Office Operations
+Permit Expediting & Zoning/Land-Use Consulting
+Independent Electrical Power-System Testing and Preventive Reliability Services for Commercial and Industrial Facilities
+Lease Administration & RE Back-Office Services
+Outsourced Diagnostic Medical Physics QA and Radiation-Safety Services for Outpatient Imaging Facilities
+Outsourced Billing, Denials and Authorization Services for Independent Outpatient PT, OT and Speech Therapy Practices
+AED
+AEROSPACE DEFENSE
+Submetering & Utility Billing (Multifamily)
+Environmental Field Sampling & Compliance Services
+
+tracker-TABLED: 21
+EV Software/Charging
+Other Computer Related Services (e.g., hosting, cybersecurity, IT consulting)
+Escrow & Custodial software
+Specialized Document Lifecycle & Archival Services
+Corporate Entity & Record Management
+Yacht/Fleet Maintenance Software
+Legal Software
+High End Property Management platform
+High-End Electrical & Lighting
+High-End Property & Asset Management Services
+Landscape Services for HNW Clients
+Surgical Episode Management SaaS
+Back Office Systems for Concierge Practices
+Compliance & Packaging SaaS
+(Backup) Care services
+Healthcare SaaS (Dermatology, aesthetics)
+Pest Management Compliance Software
+SEC filing preparation & XBRL tagging
+Domestic Trade Credit Insurance
+Premium Pest Management (Luxury Hospitality & Commercial Properties)
+High-End Commercial Cleaning
+
+tracker-KILLED: 44
+Family Office Enablement Services
+Luxury Property Maintenance
+Art Tech Platforms
+Birthing Facility Compliance Auditing Services
+Fertility Clinic Software
+Concierge medicine
+Software Publishers (true SaaS models sold at scale with minimal customization)
+Interior Design Services (e.g., lighting and display for fine art or collectible assets)
+Administrative & General Management Consulting
+All Other Personal Services
+Tech-Enabled Fiduciary Services
+Trust, Fiduciary, and Custody Activities
+All Other Miscellaneous Ambulatory Health Care Services
+Administrative & General Management Consulting (for enablement)
+Condition Reporting Tools
+Children playrooms, co-working and play spaces, climbing circuits
+Fine Art Escrow Software
+Conservation/Restoration Services
+Insurance Claims Specialist Firms
+Premium Finance Companies
+BPO / Business Support Services
+Sustainability Consulting
+Wine Storage
+Fashion Storage
+Pool/Spa Health Compliance
+Collection Mgmt / Risk Doc Platforms
+3rd Party Licensing (TECH PLATFORMS ONLY)
+Subscription Gardening Services
+ADA Accessibility & Doc Remediation
+Compliance E-Learning (General)
+Document Lifecycle & Archival
+Customs Bonds & Cargo Insurance
+Insurance Producer License Compliance
+Workplace Health & Safety Compliance Training (eLearning)
+Aviation Insurance Brokerage
+Funeral Home Management Software
+Private art advisory firms
+Specialty Coffee Equipment Service
+Vertical SaaS for Luxury & High-Value Asset Service Industries
+NY Metro Multi-Location Independent Auto Repair Succession
+Commercial Fire & Life Safety Inspection/Compliance + EV-Charging Garage/Lot Wedge
+Fire-Protection-Adjacent Industrial MRO: Hose, Fluid-Power & Fire-Pump/Hydrant Testing Equipment
+Utility and Commercial Vegetation Management / Right-of-Way Tree Care
+Sign and Lighting Maintenance Programs for Multi-Location Commercial Brands
+
+tracker-IDEATION: 40
+Food safety compliance consulting (FSMA/HACCP)
+Compliance e-learning for hospitality (bundled)
+Insurance licensing/CE compliance SaaS+Service
+AML compliance training for luxury sectors
+Luxury residence concierge operators
+Private art advisory firms
+Collection management consultants
+SEC filing preparation & XBRL tagging
+Safety Data Sheet (SDS) management
+Medical credentialing mgmt
+Outsourced compliance officers / monitoring
+Workplace Health & Safety Compliance Training (eLearning)
+Managed Cybersecurity Compliance Services
+Premium Audit & Loss Control Services (Outsourced)
+Surplus Lines Compliance & Tax Filing Services
+Commercial Equipment Maintenance (asset-light, service-only)
+Medical/Lab/IVF Specialty Cleaning
+Outsourced Billing, Denials and Authorization Services for Independent Outpatient PT, OT and Speech Therapy Practices
+Outsourced Diagnostic Medical Physics QA and Radiation-Safety Services for Outpatient Imaging Facilities
+Independent Electrical Power-System Testing and Preventive Reliability Services for Commercial and Industrial Facilities
+Concierge medicine practices
+Escrow & custodial software
+Compliance & packaging SaaS (luxury CPG)
+Corporate entity & record management
+Estate Management Companies
+Environmental Compliance Consulting
+Commercial Property Tax Appeal Services
+HNW Personal Lines Concierge Insurance Brokerage
+Insurance Marketing Organization (IMO/FMO) Aggregator
+Insurance Back-Office Outsourcing & SIU Services
+Healthcare Regulatory Compliance SaaS
+Funeral Home Management Software
+Veterinary Practice Management Software
+Digital Accessibility Compliance Services
+Childcare Center / Daycare Management Software
+Home Health Agency Software
+Behavioral Health Practice Management
+PT Clinic Software
+Fertility / IVF Clinic Software
+Senior Living & Home Care Operating Software

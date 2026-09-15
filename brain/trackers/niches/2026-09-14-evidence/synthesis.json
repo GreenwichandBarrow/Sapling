@@ -1,0 +1,98 @@
+{
+  "run_date": "2026-09-14",
+  "runtime": "Codex/systemd",
+  "status": "READY",
+  "niches_evaluated": 25,
+  "edge_niches_considered": 21,
+  "edge_niches": [
+    "inventory reconciliation",
+    "outsourced merchandise planning",
+    "repair coordination",
+    "returns grading",
+    "independent appraisal",
+    "chain-of-custody documentation",
+    "origin documentation",
+    "bordereaux exception administration",
+    "delegated-authority data validation",
+    "private-art deal coordination",
+    "beauty lot reconciliation",
+    "rework and kitting",
+    "packaging validation",
+    "estate inventory cataloging",
+    "private-property maintenance coordination",
+    "collection transfer administration",
+    "dimensional calibration and gauge maintenance",
+    "calibration-program administration",
+    "robotic-milking maintenance and consumables",
+    "septic compliance documentation and billing",
+    "chute sanitation and compactor maintenance"
+  ],
+  "umbrella_themes_reviewed": [
+    "Luxury, Heritage & Personal Goods",
+    "Asset Protection & Stewardship",
+    "Beauty, Wellness & Longevity Infrastructure",
+    "Family Wealth, Legacy & Life Infrastructure",
+    "Trust, Compliance & Verification"
+  ],
+  "workflow_environments": 1,
+  "workflow_touchpoints": 50,
+  "convergence_empty": false,
+  "primary_candidates": [
+    {
+      "name": "Independent Dimensional Metrology and Gauge-Calibration Services for Manufacturers and Laboratories",
+      "signal": "Current Calder sale teaser",
+      "screen_status": "UNVERIFIED",
+      "validation": [
+        "industry growth",
+        "typical EBITDA",
+        "exact TAM",
+        "service recurring mix",
+        "independent US target density",
+        "PE heat",
+        "distinct from tracked laboratory rows"
+      ]
+    },
+    {
+      "name": "Robotic-Milking Equipment Preventive Maintenance and Consumable Services for Dairy Operators",
+      "signal": "Historical May26 seller newsletter",
+      "screen_status": "UNVERIFIED; travel/equipment/OEM fit flags",
+      "validation": [
+        "robot adoption trend",
+        "US independent dealers",
+        "OEM permissions",
+        "contract recurrence",
+        "travel burden",
+        "inventory/real-estate mix",
+        "industry margin and exact TAM"
+      ]
+    }
+  ],
+  "conditional_alternate": {
+    "name": "Delegated-Authority Insurance Bordereaux Validation and Exception-Management Services",
+    "condition": "Only if independent US service targets and non-generic scope resolve killed-BPO theory-without-targets objection"
+  },
+  "discovery_funnel": {
+    "candidate_universe_reviewed": 25,
+    "preliminary_evidence_candidates": 3,
+    "new_candidates_screened_out_for_verified_no_tailwind": 0,
+    "new_candidates_screened_out_for_verified_no_target_density": 0,
+    "new_candidates_screened_out_for_verified_PE_saturation": 0,
+    "new_candidates_screened_out_for_revenue_quality_or_transactional_model": 0,
+    "new_candidates_screened_out_for_weak_fit": 2,
+    "note": "Zero verified no-tailwind/no-target counts mean insufficient measurement, not passing screens. Two weak-fit lane exclusions are HVAC and flooring/renovation. Remaining lanes are existing, challenged or unverified. No tracker statuses changed."
+  },
+  "coverage": {
+    "recent": "76 newsletter/12 industry/63 deal-flow/16 investor threads screened; 10 Granola fetched,8 substantive; Reddit403; no passive signals",
+    "historical": "192 call inventory selected reads;150 pre-dedup email hits7 threads; OneNote0/17; ChatGPT0/16; incomplete Granola discovery",
+    "crm": "19 company queries manually disambiguated;159 Active Deals entries; unchecked companies explicitly flagged"
+  },
+  "open_loops_infra": [
+    "Reddit403 after retry",
+    "OneNote missing0/17",
+    "ChatGPT export absent0/16",
+    "Historical Granola listing incomplete",
+    "Two recent Granola capture failures",
+    "GroupCollect attachment not analyzed",
+    "Registry CRM checks incomplete for smaller comps"
+  ]
+}

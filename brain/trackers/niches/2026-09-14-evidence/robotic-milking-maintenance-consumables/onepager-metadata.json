@@ -1,0 +1,110 @@
+{
+  "run_date": "2026-09-14",
+  "slug": "robotic-milking-maintenance-consumables",
+  "status": "uploaded",
+  "name": "Robotic-Milking Equipment Preventive Maintenance and Consumable Route Services for Dairy Farms",
+  "local_path": "/tmp/niche-intel-2026-09-14/Robotic-Milking Maintenance and Consumables September 2026.pptx",
+  "durable_path": "/home/ubuntu/projects/Sapling/brain/trackers/niches/2026-09-14-evidence/robotic-milking-maintenance-consumables/Robotic-Milking Maintenance and Consumables September 2026.pptx",
+  "drive_folder": "1m02mXNTr0V4zO8gRezpgz4hHSUMON2PD",
+  "drive_folder_url": "https://drive.google.com/drive/folders/1m02mXNTr0V4zO8gRezpgz4hHSUMON2PD",
+  "file_id": "1ZEnGFTrX13VXYXu4SVeSjgviSWqJR-23",
+  "file_url": "https://docs.google.com/presentation/d/1ZEnGFTrX13VXYXu4SVeSjgviSWqJR-23/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true",
+  "sources": [
+    {
+      "title": "Historical gathering: source and limitations",
+      "url": "brain/trackers/niches/2026-09-14-evidence/historical.txt"
+    },
+    {
+      "title": "Recent gathering: source coverage",
+      "url": "brain/trackers/niches/2026-09-14-evidence/recent.txt"
+    },
+    {
+      "title": "Six-output synthesis and edge expansion",
+      "url": "brain/trackers/niches/2026-09-14-evidence/synthesis.txt"
+    },
+    {
+      "title": "Gathering chatroom and sequential handoffs",
+      "url": "brain/traces/agents/2026-09-14-niche-intelligence.md"
+    },
+    {
+      "title": "Live Industry Research Tracker",
+      "url": "https://docs.google.com/spreadsheets/d/1vHx4E1tRTR6V3k7NQeHdCrUjDITJVtZA5YPSIFeSins/edit",
+      "evidence": "Fresh four-tab duplicate/lifecycle check; neither proposed niche appears; killed generic BPO remains excluded."
+    },
+    {
+      "title": "USDA ERS robotic-milking adoption",
+      "url": "https://ers.usda.gov/data-products/charts-of-note/114194",
+      "evidence": "Published June2 2026 using2016/2021 farm data: robotic systems share of US milk4%\u21926%;13% adoption for150\u2013499 cow farms in2021. Not a2026 adoption level or service-market CAGR."
+    },
+    {
+      "title": "Lely US center directory and services",
+      "url": "https://www.lelyna.com/us/",
+      "evidence": "39 listed locations; repeats/branches present, not39 independent companies. Technical services and consumables offered."
+    },
+    {
+      "title": "JBZ Dairy Advantage services",
+      "url": "https://www.jbzdairy.com/",
+      "evidence": "Family-owned DeLaval dealership, VMS robotics and maintenance/route service."
+    },
+    {
+      "title": "JBZ locations",
+      "url": "https://www.jbzdairy.com/contact",
+      "evidence": "Blue Ball/New Holland and Orangeville PA, count as one firm."
+    },
+    {
+      "title": "Gorter Clay and Dairy",
+      "url": "https://www.gortersclayanddairy.com/",
+      "evidence": "Pipestone MN; current named owner Rusty Hartke; robotic maintenance,24/7 emergency and consumable routes."
+    },
+    {
+      "title": "Thomson Services",
+      "url": "https://www.thomsonservices.com/supplies",
+      "evidence": "Family-owned dairy maintenance/installation/supplies, Dublin TX; service plans and40+ farm clients provider claim."
+    },
+    {
+      "title": "Lely Center New England",
+      "url": "https://www.lelyna.com/us/centers/new-england/",
+      "evidence": "OEM names owner Paul Godin and regional technician team; milking robots/consumables services; New England location and NY service technician role."
+    },
+    {
+      "title": "Progressive Dairy Service and Supplies",
+      "url": "https://www.lelylife.com/progressive-dairy-service-supply",
+      "evidence": "Lely2021 announcement names Tobin Millican founder/owner and Wendell Idaho family-owned dealership. Ownership evidence historical,2026 status unverified."
+    },
+    {
+      "title": "Mid-Atlantic robotic service-agreement pilot",
+      "url": "https://www.lelycentermidatlantic.com/index.php/2025/08/01/10-minutes-to-better-robot-performance-lely-center-mid-atlantics-daily-checklist/",
+      "evidence": "Provider describes five-farm pilot and flat monthly fee per robot covering maintenance/parts/labor. Mixed crawl/date metadata; do not assert rollout completed."
+    },
+    {
+      "title": "Schneider Resources portfolio",
+      "url": "https://schneiderresources.com/",
+      "evidence": "Private investment firm lists Foxland dairy-equipment/service portfolio company; no claim of untouched sector."
+    },
+    {
+      "title": "Historical source newsletter",
+      "url": "https://mail.google.com/mail/u/0/#all/19e656820ec74fd6",
+      "evidence": "Anonymous UT/ID dealer/service listing:2.5M revenue/442888 EBITDA seller claims; do not conflate with named providers or industry margin."
+    },
+    {
+      "title": "Travel-intensive screening preference",
+      "url": "memory/feedback_niche_screen_soft_excludes_construction_adjacent_travel.md"
+    },
+    {
+      "title": "Industry template layout",
+      "url": "brain/library/internal/one-pager-template/customs-bonds-template.pptx"
+    },
+    {
+      "title": "Source coverage diagnostics",
+      "url": "brain/trackers/niches/2026-09-14-evidence/source-coverage.json"
+    }
+  ],
+  "source_count": 19,
+  "slides": 5,
+  "first_slide_shapes": 6,
+  "hyperlink_relationships": 19,
+  "score_status": "Pending industry scoring",
+  "visual_check": "Rendered PDF; main and sources slides visually reviewed; readable black title, on-page footer, no clipping observed",
+  "upload_verified": true,
+  "one_pagers_written": 1
+}

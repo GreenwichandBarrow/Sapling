@@ -1,0 +1,220 @@
+# Niche Intelligence Synthesis - 2026-09-14
+
+Codex/systemd. Both gather tracks READY before this sequential synthesis. Sources: recent.md, historical.md, hist-calls.md, hist-email.md, chatroom, all four live tracker snapshots, lifecycle collisions, learnings, screening memories.
+
+## Customer environment map (completed before niche conclusions)
+
+Credible environment: independent heritage jewelry brand with wholesale, retail and private-client channels. Anchored in recent operating calls; these50 workflows are analytical prompts, not50 verified outsourced service categories. Each repeats as orders, stock, customers or reporting periods recur; this does not prove contracted supplier revenue.
+
+1. annual assortment planning
+2. core SKU replenishment
+3. bespoke order intake
+4. stone specification capture
+5. supplier quotation comparison
+6. supplier purchase-order confirmation
+7. supplier lead-time tracking
+8. production milestone checks
+9. manufacturing quality inspection
+10. repair intake triage
+11. warranty eligibility check
+12. gem authentication booking
+13. appraisal intake
+14. insurance replacement-value updates
+15. inventory physical counts
+16. cycle counts by location
+17. inventory aging review
+18. consignment reconciliation
+19. wholesale memo tracking
+20. store transfer reconciliation
+21. customs documentation assembly
+22. landed cost allocation
+23. insured shipping arrangement
+24. shipment chain-of-custody records
+25. receipt damage inspection
+26. secure storage access logs
+27. vitrine stock reconciliation
+28. trunk-show inventory checkout
+29. trunk-show stock return checks
+30. loss and shrink investigation
+31. POS-to-ledger reconciliation
+32. payment exceptions resolution
+33. accounts-receivable follow-up
+34. wholesale account chargeback review
+35. vendor invoice matching
+36. sales-tax documentation
+37. cash transaction control checks
+38. returns quality inspection
+39. stone resetting scheduling
+40. engraving job coordination
+41. repair parts procurement
+42. repair subcontractor quality checks
+43. repair turnaround reporting
+44. customer care status messages
+45. customer purchase-history cleanup
+46. clienteling appointment coordination
+47. CRM consent maintenance
+48. channel profitability reporting
+49. staff product training
+50. estate ownership-document collection
+
+## Output 1: Cross-Source Signal Matrix
+
+Counts represent independent observations supporting the precise lane, not search hits. A newsletter and copied press release count once; a call and its vault mirror count once. Same person's distinct call/email context can count1.5, but no such uplift is needed here. Historical August31 call is assigned RECENT to remove boundary duplication. Strength labels follow skill counting rules; strength does not mean approved fit.
+
+| Niche/industry | RECENT sources | HISTORICAL sources | Independent count | Strength / treatment |
+|---|---|---|---:|---|
+| Jewelry inventory/merchandise operations | One underlying deal discussed in calls; independent provider service pages | Earlier same-deal discussions | 2 | STRONG operating-pain theme; exact outsourced recurring niche unproven |
+| Luxury authentication/appraisal | Provider pages; same jewelry call | June17 challenge | 2 | STRONG discussion, challenged; no automatic revival |
+| Delegated-authority insurance data operations | VIPR service site and related deal announcement | No independent same-lane evidence | 1 | MODERATE incumbent-volume evidence, US targets unknown |
+| Beauty3PL/kitting | AMS/Vox announcement | Generic Axial3PL teaser; cosmetics call | 2 | STRONG broad logistics, exact beauty specialization only one; tracked |
+| Private-art transaction execution | CounterA newsletter | Prior escrow/collection concerns | 1 | WEAK positive source; killed/tabled overlap |
+| Dimensional metrology/calibration services | Calder current teaser | None | 1 | MODERATE seller figures; new validation candidate |
+| Medical-physics QA | West Physics Sept2 announcement | None | 1 | MODERATE; already tracked; Sept8 date corrected |
+| Septic administrative services | Tank Track call about software; invite derivative | None | 1 | WEAK service hypothesis; software deal itself quantitative but irrelevant to service TAM |
+| Dairy robotic-milking maintenance | None | May26 newsletter listing | 1 | MODERATE listing seed; new validation candidate with travel flag |
+| Chute/compactor sanitation | None | June17 proposal immediately challenged | 1 | WEAK, no endorsement |
+| Industrial PPE distribution | None | Aug3 teaser | 1 | MODERATE seller profit undefined; no service evidence |
+| Medical animation | None | Aug12 teaser | 1 | MODERATE seller EBITDA; project/AI risk |
+| Leather/garment/handbag aftercare | Aug31 call | Aug12 call | 1 | WEAK repeated same-team exploration; tracked |
+| Cosmetic/fragrance product testing | Existing context only | July8 Clayton call | 1 | WEAK fresh evidence; tracked |
+| Luxury package validation testing | Existing context only | July8 Clayton call | 1 | WEAK fresh evidence; tracked |
+| Fragrance distribution | Existing context only | July8 Clayton call | 1 | WEAK fresh evidence; tracked |
+| Trade credit/customs/cargo brokerage | Current tracker status only | Jeremy February correspondence | 1 | MODERATE buyer premium example; unified lane tracked |
+| Air-purification maintenance | Current tracker only | Aug12 listing | 1 | MODERATE seller EBITDA; tracked |
+| Medical/lab specialty cleaning | Current tracker only | June17 call | 1 | WEAK fresh evidence; tracked |
+| Truck licensing/compliance | Current tracker only | May26 newsletter | 1 | MODERATE seller figures; tracked |
+| Premium pest | Current tracker only | June/July calls | 2 | STRONG proposal/challenge record; TABLED |
+| Fashion supply-chain testing | None | June17 proposal/rejection | 1 | WEAK; rejected broad lane |
+| HVAC operating businesses | Two Acquiring Minds profiles | None | 2 | STRONG deal-existence, construction/turnaround mismatch |
+| High-end flooring/home renovation | Two SMB profiles | None | 2 | STRONG deal-existence, construction mismatch |
+| High-value asset storage/logistics | No fresh reliable event | Prior investor/call concerns | 2 | STRONG lifecycle evidence; active existing lanes, no new candidate |
+
+**25 distinct lane-level observations evaluated.** No niche has4+ independently corroborating sources in this bounded sample. Separate physical-security Hong Kong teaser and foam-distribution SBA listing are analogs, not independent evidence for any US service target pool.
+
+## Output 2: Named Company Registry
+
+Live Attio company queries and all159 Active Deals list entries fetched read-only. Company substring matches manually reviewed; IGI results were unrelated digital agencies, not IGI. Registry below distinguishes exact query checks from explicit unverified CRM gaps. Presence on the Active Deals list does not imply still-live stage: terminal records remain in that list. Raw response: synthesis-crm.json. No outreach authorized or started.
+
+| Company / comp | Niche and source | Revenue / location | Ownership / suitability | CRM / route and warm-path status |
+|---|---|---|---|---|
+| Sidney/Sydney Garber | Jewelry; recent/historical calls | ~$18M call claim; NY/Chicago | Existing deal; do not prospect | Exact CRM and list match, LOI / Offer Submitted; ACTIVE_DEAL; direct seller relationship |
+| VIPR | Insurance data; website/Sept transaction | Unknown; UK/US office | Sponsor-backed comp, not independent target | No exact CRM query match; VAULT_HISTORY entity exists; no warm path |
+| AMS Fulfillment | Beauty3PL; Fort Point | Unknown; US | Sponsor-backed comp | IN_CRM; no list match; no warm path verified |
+| Vox Fulfillment | Beauty3PL; Sept3 acquisition | Unknown; Utah | Recently acquired, exclude target supply | No CRM match; warm path unverified |
+| CounterA | Art settlement; newsletter | Unknown | Product/fintech vendor, service economics unknown | IN_CRM as countera.co; no list match; newsletter not relationship proof |
+| West Physics | Medical QA; primary announcement | Unknown; Atlanta/national | Sponsor-backed consolidator comp | No CRM match; no warm path verified |
+| Radiographic Testing Services | Medical QA; same announcement | Unknown; Albany | Acquired, not independent target | No CRM match; no warm path verified |
+| IGI | Appraisal; own site | Unknown | Large lab comp, ownership not reverified | Four unrelated substring hits excluded; CRM identity unverified |
+| New Jersey Jewelry Appraisers & Consultants / Barbara Nevius | Appraisal; provider page | Unknown; NJ | Independent-practice claim; size unverified | CRM unchecked; no warm path; research-only |
+| Jewelry Appraisal Services / Gina D'Onofrio | Appraisal; provider page | Unknown; LA | Practice, scale unknown; geography flag | CRM unchecked; no warm path; research-only |
+| Texas Precious Metals | Precious goods; Sept1 release | Unknown; Texas | Acquirer comp | CRM unchecked; no warm path |
+| Nebu | Wearable bullion; Sept1 release | Unknown | Acquired brand, not service candidate | No CRM match; no warm path |
+| David Webb | Jewelry; call appraisal example | Unknown | Brand/in-house department comp | CRM unchecked; no vendor warm introduction evidenced |
+| Tank Track | Septic software; Sept3 call | Unknown; deal EV<$5M call claim | Already searcher-acquired software | No company query match, VAULT_HISTORY; owners appeared in group call, not owner-intro proof |
+| Cardinal Heating & Air | HVAC profile | $12-15M revenue claim; Washington | Distressed acquired business, exclude | No CRM match; no warm path |
+| Heritage Flooring | High-end flooring profile | ~$1M cashflow claim; Charleston | Acquired construction-adjacent business, exclude | No CRM match; no warm path |
+| Trade Risk Guaranty / Trade Risk Group alias | Trade insurance; Jeremy email | Unknown | Market participant, status/identity needs alias resolution | No exact query match; VAULT_HISTORY trade-risk-group entity; Jeremy is category contact, not promised intro |
+| Trade Acceptance Group | Trade insurance; Jeremy email | Unknown | Ownership not verified | No CRM match; VAULT_HISTORY; no promised introduction |
+| Meridian / Texel | Trade insurance; Jeremy email | Unknown | Separate name/brand identities require verification | No query match; Texel VAULT_HISTORY; no promised introduction |
+| Allianz Trade / Euler Hermes | Trade insurer comp | Unknown | Carrier, not brokerage acquisition target | CRM unchecked; no warm path |
+| Atradius | Trade insurer comp | Unknown | Carrier, not target | CRM unchecked |
+| Coface | Trade insurer comp | Unknown | Carrier, not target | CRM unchecked |
+| Datacor | Clayton domain context | Unknown | Domain guide's business, not candidate target | IN_CRM, no list match; Clayton direct contact |
+| Hangman | Art-logistics historical comp | Historical5-8% EBITDA claim not reverified | Prior pass, not revived | CRM/list match, verified Closed / Not Proceeding; VAULT_HISTORY |
+| Acumen variants | Art-logistics historical comp | Unknown | Prior partner-structure/stalled deal | Three CRM/list matches, all Closed / Not Proceeding; alias/duplicate records; do not re-enroll |
+| Constellation/Volaris, ArtBinder, Gallery Systems | Art software historical consolidation comps | Unknown | Incumbent/owned software, not targets | CRM unchecked; no new warm path |
+| Risk Strategies | Insurance roll-up historical comp | Unknown | Consolidator, not target | CRM unchecked |
+| Iron Mountain | Storage historical comp | Unknown | Large public incumbent, not target | CRM unchecked |
+| Allyant | Compliance archetype in learnings | Unknown | Benchmark only | CRM unchecked |
+| Kantola, Traliant/PSG | Training historical comps | Unknown | Acquired/consolidated, killed training lane | CRM unchecked; Sarah Rowell historical mentor context is not target-intro permission |
+| Anonymous Great Lakes metrology provider | Current Calder teaser | $2,288,008 revenue/$514,885 cashflow | Distributor+lab mix, identity withheld | CRM impossible without identity; no warm path |
+| Anonymous dairy service business | Historical newsletter | $2.5M/$442,888 EBITDA seller claim; UT/ID | Service/equipment/real estate mix | CRM impossible without identity; no warm path |
+| Anonymous PPE distributor | Historical teaser | $2M/$650K undefined profit; PA | Product-heavy, no service proof | CRM impossible without identity |
+| Anonymous medical-animation business | Historical teaser | $5.5M/$1M EBITDA seller claim | Project/AI exposure | CRM impossible without identity |
+| Anonymous air-purification business | Historical teaser | $8M/$2.5M EBITDA seller claim; Mid-Atlantic | Existing niche | CRM impossible without identity |
+| Anonymous 3PL | Historical Axial teaser | 2025$9.4M/$1.6M; LTM$8.7M/$1M | Earnings declined; generic, not proven beauty | CRM impossible without identity |
+| Anonymous security-systems company | Recent E&K teaser | $7.1M/$1.5M EBITDA; HK/Macau | Non-US exclusion | CRM impossible; comp only |
+| Anonymous foam/upholstery distributor | SBA listing | $2.2M ask; Texas | Product-heavy listing, no service proof | CRM impossible |
+
+Customer/channel references Cartier, Chelsea Market, Google, Bergdorf Goodman, Hirshleifers, Kering, Saks/Bloomingdale's, London Jewelers, The Row and hotel/yacht retail partners are not acquisition targets in this synthesis. Sponsor/advisor references Fort Point, Bridgepoint, Tenzing, Blackstone, DFO/Sequence, Boulay and Cayne Crossing are context, not target supply. Unchecked companies remain CRM_UNVERIFIED, never automatically NEW_TARGET.
+
+## Output 3: Contact-to-Niche Map
+
+Warmth concerns observed contact only; category knowledge does not prove a particular-owner introduction. No external messages drafted/sent.
+
+| Contact | Warmth / evidence | Relevant niche | Potential validation question | Last evidenced contact |
+|---|---|---|---|---|
+| Camilla de Sanna | HOT direct working calls | Luxury operating workflows/aftercare | Which tasks are actually outsourced, and to whom? | Sept8 |
+| Guillermo Lavergne | HOT investor calls/manual note | Property-service differentiation, jewelry underwriting | What distinguishes existing outsourced service firms from labor subcontractors? | Sept10 manual note |
+| Clayton Sachs | HOT direct call evidence; recency aging | Cosmetic/packaging testing | Which independent specialty labs serve repeated launch/QA work? | July8 |
+| Jeremy Black | WARM direct correspondence | Trade-insurance workflows | Which service bureaus do brokers use for administration? | Feb3-4; no recent check |
+| Andrew Saltoun | HOT direct call | Inventory diligence/provider routes | Which inventory-control tasks recur after acquisition? | Sept14 |
+| Melissa Rosenblatt | Direct historical call context | Searcher/network, operating models | Does any known owner operate a differentiated maintenance route? | Exact latest date unverified |
+| Jeff Stevens | HOT historical investor calls | Jewelry/art-logistics risk | What cashflow/recurrence concerns remain? | Aug27 in historical sample |
+| Luka Salamunic | HOT direct call | Jewelry inventory underwriting | What specific valuation evidence changes his assessment? | Sept10; no commitment inferred |
+| Michael Horowitz | HOT direct call | Luxury buyer/network context | Which transaction specialists understand independent luxury scale? | Sept11; conditional post-LOI introduction only |
+| Brooke Garber Neidich | HOT existing seller relationship | Jewelry operational environment | Existing deal diligence, not new-niche outreach | Recent calls report ongoing LOI discussion |
+| Rohit Datta / Austin Fruchter | Group-session exposure; direct relationship unverified | Septic contractor workflows | Are outsourced compliance administrators real independent businesses? | Sept3 group call |
+| Amanda Lo Iacono | COLD/relationship unverified despite CRM company | Art settlement | Revenue structure and outsourcing needs, if separately authorized | Sept10 newsletter, not contact |
+| Barbara Nevius / Gina D'Onofrio | COLD provider discovery | Appraisal | Business size, recurring dealer programs, owner dependence | None |
+| Helen Viljoen | COLD public release only | Wearable bullion | No outreach proposed; founder comp | Sept1 publication, not contact |
+| Sarah Rowell | Historical mentor context only | Training | Do not use to revive killed eLearning lane | Current contact date unverified |
+| Georgina Adam, Melanie Gerlis, Cornelia Grassi, Rakeb Sile, Naomi Rea, Margaret Carrigan, Patrick Mestdagh | COLD conference-speaker listings | Art ecosystem | No assumed introductions; event/year needs verification | Newsletter dates inconsistent |
+| Rob Brooks, Mike Bourgeois, Ronnie/Louann, Deborah/Donald | COLD publisher profiles | HVAC/flooring/renovation | Comp evidence only, no prospecting | Sept9-14 publication dates |
+
+## Output 4: Lead Lifecycle Tracker
+
+| Lane/strategy | Proposal | Challenge/rejection | Reason | Governing status / treatment |
+|---|---|---|---|---|
+| Jewelry brand deal | Kay ongoing 2026 | Jeff July29/Aug27; other investor hesitation | Nonrecurring/cyclical, inventory/capital | LIVE existing deal; investor pass is not Kay kill |
+| Jewelry authentication/appraisal | June17 and Sept8 examples | Kay June17 | AI, brands internalizing, weak economics | CHALLENGED; recent examples do not yet resolve objections; do not advance |
+| Fashion supply-chain testing | Guillermo June17 | Kay/Guillermo same call | Customer margin pressure/in-house confidentiality | Rejected broad strategy; no revival; logistics carved out separately |
+| Chute/compactor cleaning | June17 discussion | Kay immediately | No clear differentiation | CHALLENGED seed, not Kay-directed queue; no forced advancement |
+| Broad women's-health/fertility operators | June17 brainstorming | Same discussion | Nascent targets/fit | Rejected broad lane; does not kill existing medical/lab cleaning |
+| Premium pest | June narrowing | July saturation challenge; live TABLED Aug23 | Crowding | TABLED, no resurrection |
+| High-end commercial cleaning | Historical interest | Live TABLED Aug23 | Differentiation concerns | TABLED; chute seed cannot silently bypass |
+| Trade credit/customs/cargo | Jeremy February | Component lanes TABLED/KILLED | Small pool/QSBS/no RTW | Unified later WEEKLY REVIEW New governs; no duplicate |
+| Private art advisory | Old IDEATION2.5 | KILLED June18 | Explicit removal from lane | KILLED despite stale positive score |
+| Fine-art escrow software | Prior proposal | KILLED March16 | No market/targets | KILLED; CounterA is not permission to revive |
+| Escrow/custodial software | Historical IDEATION | Live TABLED | Slow buyers/integrations | TABLED |
+| Corporate entity/record management | Historical IDEATION | Live TABLED | Current status governs | TABLED |
+| SEC/XBRL | Historical IDEATION | TABLED April2 | Status change | TABLED |
+| Workplace health/safety eLearning | Historical positive score | KILLED May31 | Status authoritative even positive rationale text | KILLED |
+| Funeral software | Historical positive score | KILLED May31 | Status authoritative | KILLED |
+| Generic BPO | Historical theory | KILLED March16 | Theory without targets | Insurance data edge must prove real independent providers, not rename generic BPO |
+| Condition-reporting/collection-risk software | Historical idea | KILLED | Startup-only/theory without targets | Do not revive via jewelry inventory software |
+| Luxury aftercare / beauty testing | Prior directed exploration | Scale/margin caveats | Existing work | Existing Under Review, no duplicate |
+| Construction/travel-intensive agent ideas | Prior examples | Durable screening memories | Kay fit and operating constraints | Flag/decline candidacy as appropriate; no sheet status mutation |
+
+## Output 5: Picks-and-Shovels / Edge-Niche Expansion
+
+Required question applied: who earns revenue when the source trend creates operational complexity? Trends below are evidence-linked observations or explicit hypotheses; growth percentages remain unverified. Target-density clues are not independently filtered buy-box counts.
+
+| Umbrella theme | Trend / evidence level | Operational complexity | Visible end-market | Edge / back-end beneficiaries | Compliance/risk layer | Density clues | G&B fit judgment |
+|---|---|---|---|---|---|---|---|
+| Luxury, Heritage & Personal Goods | One jewelry deal's channel expansion/aging owner; not measured market growth | Stock count, location transfers, aged inventory, supplier QA | Jewelry brands/retailers | Inventory reconciliation; outsourced merchandise planning; repair coordination; returns grading | Independent appraisal; chain-of-custody; origin documentation | NAJA/provider pages show individuals; scaled firms unproven | Strong Kay access, weak target and recurring proof; authentication challenge persists |
+| Asset Protection & Stewardship | Actual recent insurance data investment and ongoing dealer settlement offerings | Multi-party records and exceptions | Insurers/art dealers | Bordereaux exception administration; delegated-authority data validation; private-art deal coordination | Audit-ready reconciliation; verified parties/payment conditions | VIPR managed services proves incumbent category, not fragmented pool; CounterA one product firm | Medium adjacency; high AI/PE and killed-BPO/escrow overlap |
+| Beauty, Wellness & Longevity Infrastructure | AMS/Vox Sept3 acquisition; existing testing conversations | Omnichannel inventory, assembly, product launches, rework | Cosmetics brands/retailers | Beauty returns inspection; lot reconciliation; rework/kitting; packaging validation | Batch traceability; testing documentation | Existing beauty3PL/test rows; only acquired provider in fresh source | Strong conceptual fit but mostly duplicates; separate service targets unproved |
+| Family Wealth, Legacy & Life Infrastructure | Estate transitions are historical context, not fresh quantified trend | Ownership records, multi-residence custody, heir documentation | Family offices/estate managers | Estate inventory cataloging; private-property maintenance coordination; collection transfer administration | Replacement valuations; disposition documentation | Existing estate-management/aftercare lanes; killed bespoke family-office enablement | Medium adjacency, weak fresh signal; custom/transactional concerns |
+| Trust, Compliance & Verification | Current metrology sale demonstrates installed-base service; growth unverified | Repeated calibration, certificates, equipment uptime, audit evidence | Manufacturers/labs using instruments | Independent dimensional calibration; gauge maintenance; outsourced calibration-program administration | Traceable measurement certificates and recall scheduling | Current accredited-lab teaser, Census541380; directory count needs identifier | Medium operations/science fit; strongest distinct research candidate, not passing screen yet |
+| Trust, Compliance & Verification | Historical dairy automation/labor-shortage thesis, publisher claim | Installed robots need technicians, cleaning, parts, uptime | Dairy farms/robot manufacturers | Robotic-milking preventive maintenance; cleaning-chemical replenishment; remote diagnostic support | Hygiene/measurement/maintenance records | One anonymous Utah/Idaho seller; OEM dealer directory validation required | Weak Kay access; travel, inventory and OEM power flags |
+| Trust, Compliance & Verification | Septic software acquisition describes administrative burden | Permit cycles, service records, invoicing, payment reconciliation | Septic operators | Septic compliance documentation bureau; outsourced billing | Discharge/inspection evidence | Only software provider named, no service target pool | Weak, startup/theory-without-targets risk; do not advance now |
+| Trust, Compliance & Verification | June17 chute-sanitation discussion; no current growth evidence | Odor, access, sanitation schedule, compactor upkeep | Building managers | Chute sanitation routes; compactor maintenance | Cleaning records/safety | No named vendors, existing cleaning TABLED | Weak; prior differentiation challenge unresolved |
+
+**21 edge categories considered**, counting the distinct operational-service buckets explicitly listed in synthesis.json, not every synonym. Mainline distribution/medical animation/HVAC listings inspected but do not become second-order recurring services by relabeling.
+
+Discovery passes: workflow map50 touchpoints above completed before conclusions; Census541380 taxonomy lead checked; recent Calder/E&K/BizBuySell and historical broker artifacts examined for saleability; NAJA/provider pages inspected for presence; sponsor-owned VIPR/AMS/Vox/West Physics establish PE heat; all four live tracker snapshots and six lifecycle collisions checked. Taxonomy breadth, directories, exact US counts and industry financial validation remain incomplete and are assigned to identifier.
+
+## Output 6: Convergence Report
+
+**Evaluated niches25; edge niches considered21; convergence nonempty; two primary candidates for identifier validation, one conditional alternate.** This is prioritization of research, not approval/activation or fabricated pass-screen evidence.
+
+1. **Jewelry operating documentation theme (2 independent observations, not a candidate revival).** A direct deal environment plus provider service pages reveals real operating pain. Existing authentication objections and lack of scaled recurring targets prevent advancing appraisal or inventory software merely because the brand deal is live; retain as context for expansion, not a duplicate niche.
+2. **Beauty fulfillment / product-control theme (2 broad independent observations, already tracked).** Actual acquisition plus historical logistics seller evidence supports outsourcing and exit activity, while incumbent ownership makes crowding visible. Product-return/rework service might be an edge only if identifier finds separate firms; the broad3PL lane remains existing research.
+3. **Independent dimensional metrology and gauge-calibration services for manufacturers and laboratories (primary new candidate).** Current saleable lab/service capability exists inside a distributor+service group. A service-only niche is defensibly distinct from medical physics, cosmetic/package labs, electrical testing and water controls, but industry growth, >15% typical EBITDA, customer recurrence, exact TAM and independent target count require primary verification.
+4. **Robotic-milking equipment preventive maintenance and consumable service for dairy operators (primary new candidate with strong fit caveats).** Historical seller evidence ties an installed asset to uptime, parts and cleaning needs; this is a genuine second-order beneficiary hypothesis rather than buying farms. Identifier must verify adoption tailwind, recurring service economics, US independent dealers, OEM restrictions, travel burden and inventory/real-estate exclusions; no forced pass.
+5. **Delegated-authority insurance bordereaux validation and exception-management services (conditional alternate).** A current incumbent explicitly sells managed operations, establishing the function is commercial. Advance only if independent US service suppliers materially overcome the prior generic-BPO 'theory without targets' rejection and AI/PE concentration; otherwise document why it does not advance.
+
+No owner interview within two weeks is claimed feasible: no named calibration/dairy owner warm path verified. Kay's existing luxury/investor contacts are topical validation resources, not seller-introduction promises. Identifier should produce1-5 candidates from nonempty convergence, prioritizing primary two but transparently recording incomplete/failed screens rather than fabricating TAM or bypassing excludes. No niche status changed.
+
+Coverage diagnostics: RECENT76 newsletters,12 industry,63 deal-flow,16 investors screened;10 Granola notes8 substantive; HISTORICAL192 call files inventoried with selected reads,150 pre-dedup email hits7 threads; OneNote0/17 and ChatGPT0/16 missing; historical Granola list incomplete despite direct retrieval. Reddit403 twice. No source gap is treated as zero market demand.

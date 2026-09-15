@@ -1,0 +1,432 @@
+{
+  "range": "KILLED!A1:Z988",
+  "values": [
+    [],
+    [
+      "Niche Hypothesis",
+      "Start Date",
+      "Current Status",
+      "Score",
+      "Date Killed",
+      "Why Killed",
+      "Red flags noted",
+      "Quick notes",
+      "Rank",
+      "Outreach Channel",
+      "QSBS",
+      "Target Pool",
+      "Days in Review"
+    ],
+    [
+      "Family Office Enablement Services",
+      "",
+      "",
+      "",
+      "7/19/25",
+      "Revisit only if paired with highly repeatable product or M&A roll-up.",
+      "Custom-heavy business models, limited repeatability. High client expectations, challenging to build standardized SaaS.",
+      "Serves operational, non-investment needs of family offices (reporting, admin, HR, concierge). Fragmented market, but hard to scale due to idiosyncratic nature of client needs."
+    ],
+    [
+      "Luxury Property Maintenance",
+      "",
+      "",
+      "",
+      "7/19/25",
+      "Deprioritized for now – revisit if operational model proves scalable.",
+      "Difficult to scale, often people-heavy, reliant on labor availability. Fragmented and local.",
+      "B2C or B2B2C companies offering services for HNW home maintenance (electrical, HVAC, security, etc.). High retention but geographically limited."
+    ],
+    [
+      "Art Tech Platforms",
+      "",
+      "",
+      "",
+      "7/20/25",
+      "None – passed",
+      "Shrinking market; costly platform maintenance; cultural resistance to change; low TAM; collectors and galleries reluctant to pay.",
+      "Fragmented and difficult to grow. Low willingness to pay, especially from collectors. High onboarding friction. Consolidation exists but platforms are hard to integrate."
+    ],
+    [
+      "Birthing Facility Compliance Auditing Services",
+      "",
+      "",
+      "",
+      "7/20/25",
+      "None – passed",
+      "Dependent on government policy; difficult to scale; niche focus; low pricing power.",
+      "Third-party firms may support hospitals in earning certifications like 'Birthing-Friendly.'"
+    ],
+    [
+      "Fertility Clinic Software",
+      "",
+      "",
+      "",
+      "7/20/25",
+      "None – passed",
+      "Not defensible enough; EMR switching friction; risk of commoditization.",
+      "Existing platforms offer workflow, EMR, and patient engagement tools. Competition present."
+    ],
+    [
+      "Concierge medicine"
+    ],
+    [
+      "Software Publishers (true SaaS models sold at scale with minimal customization)",
+      "",
+      "",
+      "",
+      "7/14/25 Shared with Josh",
+      "Too broad, redefining niche"
+    ],
+    [
+      "Interior Design Services (e.g., lighting and display for fine art or collectible assets)",
+      "",
+      "",
+      "",
+      "7/14/25 Shared with Josh",
+      "Too broad, redefining niche"
+    ],
+    [
+      "Administrative & General Management Consulting",
+      "",
+      "",
+      "",
+      "7/14/25 Shared with Josh",
+      "Too broad, redefining niche"
+    ],
+    [
+      "All Other Personal Services",
+      "",
+      "",
+      "",
+      "7/14/25 Shared with Josh",
+      "Too broad, redefining niche"
+    ],
+    [
+      "Tech-Enabled Fiduciary Services",
+      "",
+      "",
+      "",
+      "07/20/25",
+      "Find operators blending services + tech and evaluate acquisition potential. Find tools that service advisors ",
+      "Hard to evaluate quality of proprietary tech. Integration risk if consolidating firms with bespoke workflows.",
+      "Hybrid model with recurring revenue + operational leverage through tech. May allow acquisition and differentiation from old-school trust boutiques."
+    ],
+    [
+      "Trust, Fiduciary, and Custody Activities",
+      "",
+      "",
+      "",
+      "7/14/25 Shared with Josh",
+      "Too broad, redefining niche"
+    ],
+    [
+      "All Other Miscellaneous Ambulatory Health Care Services",
+      "",
+      "",
+      "",
+      "7/14/25 Shared with Josh",
+      "Too broad, redefining niche"
+    ],
+    [
+      "Administrative & General Management Consulting (for enablement)",
+      "",
+      "",
+      "",
+      "7/14/25 Shared with Josh",
+      "Too broad, redefining niche"
+    ],
+    [
+      "Condition Reporting Tools",
+      "",
+      "",
+      "",
+      "7/20/25",
+      "Passed becasuse its all startup",
+      "Niche market, uncertain buyer persona, may be limited to high-value asset holders.",
+      "Tools to track the condition of physical assets such as art, jewelry, and collectibles. May support insurance or conservation planning."
+    ],
+    [
+      "Children playrooms, co-working and play spaces, climbing circuits",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Trend driver, high capital intensity, site specfic"
+    ],
+    [
+      "Fine Art Escrow Software",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "No market",
+      "",
+      "TAM ~15-30M. No targets exist."
+    ],
+    [
+      "Conservation/Restoration Services",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "Labor model doesn't scale",
+      "",
+      "Labor-constrained; not recurring; not scalable."
+    ],
+    [
+      "Insurance Claims Specialist Firms",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "Revenue quality insufficient"
+    ],
+    [
+      "Premium Finance Companies",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "Wrong business model"
+    ],
+    [
+      "BPO / Business Support Services",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "Theory without targets"
+    ],
+    [
+      "Sustainability Consulting",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "Never validated"
+    ],
+    [
+      "Wine Storage",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "TAM too small"
+    ],
+    [
+      "Fashion Storage",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "TAM too small"
+    ],
+    [
+      "Pool/Spa Health Compliance",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "No moat"
+    ],
+    [
+      "Collection Mgmt / Risk Doc Platforms",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "Theory without targets"
+    ],
+    [
+      "3rd Party Licensing (TECH PLATFORMS ONLY)",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "Incumbents too large for search fund",
+      "",
+      "Big platforms killed. Small service bureaus resurrected to top 5."
+    ],
+    [
+      "Subscription Gardening Services",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "Not mission-critical"
+    ],
+    [
+      "ADA Accessibility & Doc Remediation",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "PE consolidated + AI disruption"
+    ],
+    [
+      "Compliance E-Learning (General)",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "No edge; consolidated"
+    ],
+    [
+      "Document Lifecycle & Archival",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "Nothing compelling"
+    ],
+    [
+      "Customs Bonds & Cargo Insurance",
+      "",
+      "",
+      "",
+      "3/16/26",
+      "No right-to-win",
+      "",
+      "Good economics but no network leverage."
+    ],
+    [
+      "Insurance Producer License Compliance",
+      "3/21/2026",
+      "Killed",
+      "2.5",
+      "4/4/2026",
+      "Only 4-6 targets, half PE-acquired, too small for sprint",
+      "",
+      "NLC Group (10.6M / 12 employees). Serves your insurance niche customers."
+    ],
+    [
+      "Workplace Health & Safety Compliance Training (eLearning)",
+      "5/12/2026",
+      "Killed",
+      "2.56",
+      "5/31/2026",
+      "RESURFACE. OSHA carve sized standalone ($2.5B→$5.1B, 8.5% CAGR). 70-85% SaaS margins, 90%+ retention. Sarah Rowell mentor (Kantola/PSG playbook). 30-50 indie targets. Strong RTW + Network."
+    ],
+    [
+      "Aviation Insurance Brokerage",
+      "5/12/2026",
+      "Killed",
+      "2.54",
+      "5/31/2026",
+      "Luxury infrastructure extension of active Specialty Insurance (Art). $1.80B→$3.32B US TAM, 6.31% CAGR, 85-90% renewals. 50-100 indie brokerages. Brokers control 75.68% distribution. Reuses Art Insurance broker capability stack."
+    ],
+    [
+      "Funeral Home Management Software",
+      "5/12/2026",
+      "Killed",
+      "2.41",
+      "5/31/2026",
+      "RESURFACE (scored 2.68 on 4/14, silently dropped). $475M-$1.86B TAM, 10.3% CAGR, ZERO PE in SW layer. 10-15 vendors. Cold network -- JJ-Call-Only candidate."
+    ],
+    [
+      "Private art advisory firms",
+      "3/21/2026",
+      "Killed",
+      "2.73",
+      "2026-06-18",
+      "Killed per Kay: no longer active niche-intel lane; remove from tabled/watch consideration.",
+      "",
+      "Previously tabled: recurring retainers for collection strategy; strong right-to-win, but now killed."
+    ],
+    [
+      "Specialty Coffee Equipment Service",
+      "4/19/2026",
+      "Killed",
+      "2.55",
+      "2026-06-18",
+      "Killed per Kay: no longer active niche-intel lane; remove from tabled/watch consideration.",
+      "",
+      "Previously tabled: international-OEM authorized-dealer moat; 60-70% recurring PM/contracts/water/parts/retained."
+    ],
+    [
+      "Vertical SaaS for Luxury & High-Value Asset Service Industries",
+      "5/6/2026",
+      "Killed",
+      "",
+      "2026-06-18",
+      "Killed per Kay: SaaS for luxury / high-value asset service industries no longer active niche-intel lane.",
+      "",
+      "Previously tabled by nightly audit."
+    ],
+    [
+      "NY Metro Multi-Location Independent Auto Repair Succession",
+      "6/9/2026",
+      "Killed",
+      "1.92",
+      "8/23/2026",
+      "Corrected 6/10: evaluates the original auto repair signal, not fleet maintenance. Owner-in-70s succession, multi-location NY Metro. Consumer/local service; repeat demand but not contractual; technician-dependent and highly competitive. Proceed only if target-specific economics and culture are strong; not yet a broad roll-up thesis.",
+      "",
+      "Corrected 6/10: evaluates the original auto repair signal, not fleet maintenance. Owner-in-70s succession, multi-location NY Metro. Consumer/local service; repeat demand but not contractual; technician-dependent and highly competitive. Proceed only if target-specific economics and culture are strong; not yet a broad roll-up thesis.",
+      "7",
+      "",
+      "Potentially yes",
+      "Likely 100+ NY Metro independents; buy-box-scale multi-location pool unproven"
+    ],
+    [
+      "Commercial Fire & Life Safety Inspection/Compliance + EV-Charging Garage/Lot Wedge",
+      "",
+      "Killed",
+      "",
+      "8/23/2026",
+      "TBD",
+      "",
+      "TBD",
+      "8",
+      "",
+      "TBD",
+      "TBD",
+      "2026-06-15"
+    ],
+    [
+      "Fire-Protection-Adjacent Industrial MRO: Hose, Fluid-Power & Fire-Pump/Hydrant Testing Equipment",
+      "",
+      "Killed",
+      "",
+      "8/23/2026",
+      "TBD",
+      "",
+      "TBD",
+      "10",
+      "",
+      "TBD",
+      "TBD",
+      "2026-06-15"
+    ],
+    [
+      "Utility and Commercial Vegetation Management / Right-of-Way Tree Care",
+      "8/4/2026",
+      "Killed",
+      "2.15",
+      "8/23/2026",
+      "Strong recurring infrastructure need, but labor/fleet/safety intensity and utility customer power make this less clean for G&B. Folder: https://drive.google.com/drive/folders/138IVauuT6Yqexj7AfawGdXyA0kU695eM",
+      "",
+      "Strong recurring infrastructure need, but labor/fleet/safety intensity and utility customer power make this less clean for G&B. Folder: https://drive.google.com/drive/folders/138IVauuT6Yqexj7AfawGdXyA0kU695eM",
+      "36",
+      "",
+      "Likely QSBS-eligible if service business; verify fleet/equipment asset intensity.",
+      "75-200 regional contract operators"
+    ],
+    [
+      "Sign and Lighting Maintenance Programs for Multi-Location Commercial Brands",
+      "6/16/2026",
+      "Killed",
+      "2.13",
+      "8/23/2026",
+      "Moderate/watchlist. Narrow sign/lighting maintenance, repair, LED retrofit, inspection and program management for multi-location brands; not broad sign manufacturing. Recurring/reoccurring potential through planned maintenance, emergency repair, LED retrofit cycles and national-account service. Main diligence gaps: maintenance revenue mix, standalone service TAM, licensing/electrical constraints, bucket-truck/fleet intensity, customer concentration and G&B right-to-win.",
+      "",
+      "Moderate/watchlist. Narrow sign/lighting maintenance, repair, LED retrofit, inspection and program management for multi-location brands; not broad sign manufacturing. Recurring/reoccurring potential through planned maintenance, emergency repair, LED retrofit cycles and national-account service. Main diligence gaps: maintenance revenue mix, standalone service TAM, licensing/electrical constraints, bucket-truck/fleet intensity, customer concentration and G&B right-to-win.",
+      "39",
+      "",
+      "Likely Eligible",
+      "200-500+ likely independents; serviceable subset needs list-build validation",
+      "0"
+    ]
+  ]
+}

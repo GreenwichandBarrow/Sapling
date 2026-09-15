@@ -1,0 +1,81 @@
+[
+  {
+    "name": "workplace health & safety compliance training (elearning)",
+    "current_tab": "KILLED",
+    "ideation_is_historical": true,
+    "row": {
+      "niche hypothesis": "Workplace Health & Safety Compliance Training (eLearning)",
+      "start date": "5/12/2026",
+      "current status": "Killed",
+      "score": "2.56",
+      "date killed": "5/31/2026",
+      "why killed": "RESURFACE. OSHA carve sized standalone ($2.5B\u2192$5.1B, 8.5% CAGR). 70-85% SaaS margins, 90%+ retention. Sarah Rowell mentor (Kantola/PSG playbook). 30-50 indie targets. Strong RTW + Network."
+    }
+  },
+  {
+    "name": "funeral home management software",
+    "current_tab": "KILLED",
+    "ideation_is_historical": true,
+    "row": {
+      "niche hypothesis": "Funeral Home Management Software",
+      "start date": "5/12/2026",
+      "current status": "Killed",
+      "score": "2.41",
+      "date killed": "5/31/2026",
+      "why killed": "RESURFACE (scored 2.68 on 4/14, silently dropped). $475M-$1.86B TAM, 10.3% CAGR, ZERO PE in SW layer. 10-15 vendors. Cold network -- JJ-Call-Only candidate."
+    }
+  },
+  {
+    "name": "private art advisory firms",
+    "current_tab": "KILLED",
+    "ideation_is_historical": true,
+    "row": {
+      "niche hypothesis": "Private art advisory firms",
+      "start date": "3/21/2026",
+      "current status": "Killed",
+      "score": "2.73",
+      "date killed": "2026-06-18",
+      "why killed": "Killed per Kay: no longer active niche-intel lane; remove from tabled/watch consideration.",
+      "red flags noted": "",
+      "quick notes": "Previously tabled: recurring retainers for collection strategy; strong right-to-win, but now killed."
+    }
+  },
+  {
+    "name": "escrow & custodial software",
+    "current_tab": "TABLED",
+    "ideation_is_historical": true,
+    "row": {
+      "niche hypothesis": "Escrow & Custodial software",
+      "start date": "",
+      "current status": "Tabled",
+      "score": "",
+      "date tabled": "",
+      "why tabled": "",
+      "red flags noted": "Slow-moving buyers (law/accounting), integration requirements.",
+      "quick notes": "Core Function: Record-keeping, audits, reconciliations, reporting for fiduciaries and estate managers.\nRegulatory complexity = sticky customers.\nRecurring B2B revenue from law firms, accountants, and trust officers."
+    }
+  },
+  {
+    "name": "corporate entity & record management",
+    "current_tab": "TABLED",
+    "ideation_is_historical": true,
+    "row": {
+      "niche hypothesis": "Corporate Entity & Record Management",
+      "start date": "",
+      "current status": "Tabled"
+    }
+  },
+  {
+    "name": "sec filing preparation & xbrl tagging",
+    "current_tab": "TABLED",
+    "ideation_is_historical": true,
+    "row": {
+      "niche hypothesis": "SEC filing preparation & XBRL tagging",
+      "start date": "3/31/2026",
+      "current status": "Tabled",
+      "score": "2.13",
+      "date tabled": "4/2/2026",
+      "why tabled": "Moved from Under Review 2026-04-02"
+    }
+  }
+]

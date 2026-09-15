@@ -1,0 +1,60 @@
+# Recent intelligence - 2026-09-14
+
+Runtime: Codex/systemd. Window August31-September14 ET. All Google reads used resolved 1Password credentials and Gmail --gmail-no-send. Auth check true. No external mutations.
+
+## Six-source coverage
+
+1. Web/social: last30days three-topic acquisition plan plus each of five live Active tracker niches executed. General plan 26 HN stories; active searches17 HN items and one unrelated Polymarket item. No relevant niche social evidence. Reddit403 repeated on retry. Engine UTC date range Sept1-15; no out-of-window claim used. Web supplemented all active niches; no reliable fresh estate-management/fine-art-logistics event. Excluded a market-report page containing future October assertions.
+2. Newsletters: all pages80 retrieved,76 within window after excluding four Aug30 boundary spills. Industry-research12. Screened counts, not all full-message reads;14 selected body reads available in mail-*.json/txt plus recent-samplemail.json. CounterA substantive; much other industry mail is events/logistics.
+3. Granola:10 notes fetched and summaries reviewed,8 substantive. Sam/Steuart duplicate pre-call recording empty; Guillermo recording unrelated, so manual corrected vault note supersedes it. Andrew begins with unrelated audio then real meeting.
+4. Deal flow63 threads all pages screened,16 investor threads screened; selected bodies read. GroupCollect forwarded databook attachment not analyzed, body has no niche economics.
+5. Vault: dated files enumerated; recent jewelry calls and Sept11 scan reviewed. Sept7 outputs are prior-run leads only, not independent signal evidence. Current Granola supersedes snapshots where available.
+6. Passive:0 dated niche-signal/idea files Aug31-Sept14. No processing mutations.
+
+## R1: Precious-goods inventory valuation, authentication, merchandise control
+
+Themes: Luxury/Heritage, Asset Protection, Trust/Verification. Sept8 Camilla/Kay names missing aged inventory, merchandise planning and analytics; David Webb $900 appraisal is call claim, not verified market pricing. Sept14 Boulay needs physical counts/valuation. Inventory values $13M book, ~$4M distressed and ~$6M market differ; none independently appraised. Luka Sept10 and Michael Sept11 flag inventory/exit risk. This proves ONE company's operating pain, not industry growth. Hypothesis: dealer-facing recurring inventory reconciliation and documentation benefits from high-value stock and estate/insurance workflows.
+
+Negative evidence: Sept8 call says aftercare/repair generally in-house, no standalone businesses found in their inquiry. Do not turn this into universal nonexistence, or recycle leather/garment aftercare as jewelry validation.
+
+Density observations: [NAJA directory](https://najaappraisers.com/appraisers/) proves profession, not scaled acquisition pool. [Barbara Nevius](https://weappraisejewelry.com/) and [Gina D'Onofrio](https://www.lajewelryappraiser.com/about) document independent practices, not acquisition size. [IGI](https://appraisals.igi.org/) offers inventory and dealer appraisal bundles, not independent target evidence. Appraisers Association search snippet900+ includes all personal-property professionals, not900 jewelry businesses.
+
+Fresh separate demand context: [Texas Precious Metals acquired Nebu Sept1](https://www.globenewswire.com/news-release/2026/09/01/3354448/0/en/texas-precious-metals-acquires-neb%C3%BC-expanding-physical-gold-ownership-into-wearable-bullion.html), wearable bullion with measurable intrinsic value. Does not establish service TAM.
+
+Files: granola-not_GUckD0rc4aKzdO, granola-not_AqvRST1EKBVVvB, granola-not_ZbsSsTm9M5xpuE, granola-not_j82IZ9sW0uV997.
+
+## R2: Delegated-authority insurance data/exception managed operations
+
+Themes: Trust/Verification, Asset Protection. Sept4 PEHub newsletter reports Bridgepoint/VIPR investment, [Sept9 transaction adviser confirms](https://www.simmons-simmons.de/en/about-us/news/simmons-simmons-advises-tenzing-on-bridgepoint-s-investment-in-vipr). [VIPR](https://www.viprsolutions.com/) directly offers expert-led bordereaux processing/validation/query management. Bordereaux are periodic insurance transaction reports. Incompatible MGA/broker/insurer handoffs create recurring exceptions work. Hypothesis: specialized human-supervised operations, excluding generic data entry and software.
+
+VIPR self-reports500,000+ annual bordereaux and50% Lloyd's managing-agent penetration; incumbent volume, not TAM or target count. Global/UK weight needs US filtering. Advertised98% processing-speed improvement shows strong AI threat. Service-company directory proof still needed. Newsletter and press about same deal count once. File mail-1a06d28dccc6d169.
+
+## R3: Beauty fulfillment/kitting and inventory visibility
+
+[Fort Point Sept3](https://fortpointcapital.com/news/ams-fulfillment-acquires-vox-fulfillment) confirms AMS/Vox acquisition. Vox offers warehousing, kitting, order fulfillment and integrations; >200,000 sq ft Provo. Existing MoCRA beauty3PL row covers lane. Fresh PE heat, not net-new niche. Hypothesis edges: returns inspection/rework, lot exceptions, inventory reconciliation. No independent target pool established. Newsletter mail-1a06d28dccc6d169 is same-source derivative.
+
+## R4: Private-art transaction verification/execution
+
+[CounterA Sept10](https://countera.substack.com/p/a-deal-agreed-isnt-a-deal-done) structures parties, documentation, conditions and non-custodial settlement through regulated provider. Actual provider workflow; recurring revenue/acquisition eligibility unknown. Likely existing art-dealer back-office row overlap. Transactional and fintech concerns. Amanda Lo Iacono newsletter contact does not imply warm relationship. File mail-1a08b5b76563de67.
+
+## R5: Service-only metrology/calibration
+
+[Calder Sept9 teaser](https://mail.google.com/mail/u/0/#all/1a08729e03bcfb82): Great Lakes combined equipment distributor and inspection/calibration/engineering/training/support, revenue$2,288,008, cash flow$514,885 (not labeled EBITDA). Gage/hand-tool calibration expansion. Saleability evidence, not industry margin, recurring contracts or target population. File mail-1a08729e03bcfb82.
+
+[Security teaser Sept14](https://mail.google.com/mail/u/0/#all/1a0a0af02ee8344e): Hong Kong/Macau$7.1M revenue,$1.5M normalized EBITDA, almost450 systems under service contracts. OUTSIDE US; model analog only. File mail-1a0a0af02ee8344e.
+
+[Census NAICS541380](https://www.census.gov/naics/?input=541380&year=2022&details=541380) testing laboratories/services taxonomy lead, not exact niche TAM. Further taxonomy/density with synthesizer/identifier.
+
+## R6: Medical physics correction
+
+[Primary West Physics announcement](https://www.prnewswire.com/news-releases/west-physics-announces-acquisition-of-radiographic-testing-services-inc-302868011.html) is SEPTEMBER2, not Sept8 as Sept11 vault scan said. Existing outpatient QA row40 already covers. Do not count as new post-Sept7 event. Diagnostic/nuclear/radiation oncology/CRESO services, >6,000 West Physics client sites (not acquisition targets). [West Physics news](https://westphysics.com/about/news-events/) has dental CBCT angle, but overlaps outpatient row unless distinct evidence.
+
+## R7: Septic administrative workflows
+
+Sept3 BK Growth call: Rohit Datta/Austin Fruchter acquired Tank Track septic SOFTWARE sub-$5M EV;2-3 viable software targets reported. Service environment requires scheduling, billing, compliance, government integrations, payments; porta-potty cross-sell requested. Hypothesis: outsourced documentation/permit/billing service niche, no independent providers proved. Software itself excluded. File granola-not_vhL3vLKOvXXmKo; mail-1a0685da1c551b6d event invite is derivative.
+
+## Saleability caveats and handoff
+
+Sept10 BizBuySell SBA-eligible batch offered Texas foam fabrication/upholstery distributor asking$2.2M plus restaurants, dealership, hospitality,ecommerce; lender-review marketing badge not financing commitment. File mail-1a08b7550208265b. Sept14 Rob Brooks HVAC profile revenue$1.9M/$340K SDE to >$5M run-rate/$1.3M EBITDA uses different earnings definitions. Sept9 Cardinal HVAC distressed acquisition$12-15M revenue/~$3M losses; Sept11 Heritage Flooring$3.5M purchase/~$1M cashflow shows relationship-led project revenue, not industry recurring economics. All publisher claims, not independently verified financials.
+
+Fresh candidate hypotheses for identifier: jewelry inventory/documentation, insurance delegated-authority managed exceptions, calibration service-only wedge. None already proven investment fit. Multiple investors repeating ONE jewelry deal are not independent demand sources. Current WEEKLY overlaps noted; HISTORICAL owns live KILLED/TABLED negative-memory crosscheck. No auto-killing/tabling. Synthesizer owns50-touchpoint expansion. Infra gaps: Reddit403, partial social relevance, two Granola capture failures, unread GroupCollect attachment, no verified industry TAM/margins/scaled targets for new edges.

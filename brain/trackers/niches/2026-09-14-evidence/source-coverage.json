@@ -1,0 +1,33 @@
+{
+  "run_date": "2026-09-14",
+  "runtime": "Codex/systemd",
+  "recent": {
+    "newsletters_screened": 76,
+    "industry_screened": 12,
+    "deal_flow_screened": 63,
+    "investor_screened": 16,
+    "granola_fetched": 10,
+    "granola_substantive": 8,
+    "passive_signals": 0
+  },
+  "historical": {
+    "call_files_inventoried": 192,
+    "email_hits_before_dedup": 150,
+    "full_email_threads_read": 7,
+    "onenote_sections_covered": 0,
+    "onenote_sections_expected": 17,
+    "chatgpt_conversations_covered": 0,
+    "chatgpt_conversations_expected": 16
+  },
+  "limitations": [
+    "Counts describe screening and selected reads, not exhaustive full-body review.",
+    "Historical email pagination remains.",
+    "Historical Granola list returned only10 recent notes twice; direct older-note retrieval works.",
+    "Reddit403 persisted on retry; HN and Polymarket results lacked relevant niche evidence.",
+    "Two recent Granola captures lack substantive meeting content; manual Guillermo correction governs.",
+    "GroupCollect attached workbook not analyzed.",
+    "Beads database missing, as reported by root preflight.",
+    "Deliverable preflight issue reported by root; exact detail to be supplied by root.",
+    "Market TAM, typical margins and buy-box target counts unresolved at synthesis; identifier owns verification."
+  ]
+}

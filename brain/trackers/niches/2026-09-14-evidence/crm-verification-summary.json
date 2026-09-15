@@ -1,0 +1,185 @@
+{
+  "date": "2026-09-14",
+  "query_count": 19,
+  "list_entries_checked": 159,
+  "company_checks": {
+    "Sidney Garber": {
+      "http": 200,
+      "matches": [
+        {
+          "record_id": "68293dcd-c897-4803-92dd-3f52f96ef76c",
+          "name": [
+            "Sidney Garber"
+          ],
+          "pipeline_stages": [
+            "LOI / Offer Submitted"
+          ]
+        }
+      ]
+    },
+    "VIPR": {
+      "http": 200,
+      "matches": []
+    },
+    "AMS Fulfillment": {
+      "http": 200,
+      "matches": [
+        {
+          "record_id": "2e7cd96d-ec63-48da-a793-bf8e41293c8b",
+          "name": [
+            "AMS Fulfillment"
+          ],
+          "pipeline_stages": []
+        }
+      ]
+    },
+    "Vox Fulfillment": {
+      "http": 200,
+      "matches": []
+    },
+    "CounterA": {
+      "http": 200,
+      "matches": [
+        {
+          "record_id": "648c496f-f8c6-4ebf-9a1e-51f11e42cb82",
+          "name": [
+            "countera.co"
+          ],
+          "pipeline_stages": []
+        }
+      ]
+    },
+    "Tank Track": {
+      "http": 200,
+      "matches": []
+    },
+    "Trade Risk Guaranty": {
+      "http": 200,
+      "matches": []
+    },
+    "Trade Acceptance Group": {
+      "http": 200,
+      "matches": []
+    },
+    "Texel": {
+      "http": 200,
+      "matches": []
+    },
+    "Meridian": {
+      "http": 200,
+      "matches": []
+    },
+    "Datacor": {
+      "http": 200,
+      "matches": [
+        {
+          "record_id": "c61df01e-8b3b-4f45-b14a-e7b3420a5df5",
+          "name": [
+            "Datacor"
+          ],
+          "pipeline_stages": []
+        }
+      ]
+    },
+    "West Physics": {
+      "http": 200,
+      "matches": []
+    },
+    "Radiographic Testing Services": {
+      "http": 200,
+      "matches": []
+    },
+    "IGI": {
+      "http": 200,
+      "matches": [
+        {
+          "record_id": "0e6e67d9-8c6a-455b-81c4-ea6b63b6a4b7",
+          "name": [
+            "Digital Capital Advisors,"
+          ],
+          "pipeline_stages": []
+        },
+        {
+          "record_id": "c1e61ca5-cba6-417c-a6b6-088407c73dfb",
+          "name": [
+            "Dodo Digital"
+          ],
+          "pipeline_stages": []
+        },
+        {
+          "record_id": "e47d62cb-aea0-4c31-8775-d879203905bc",
+          "name": [
+            "Digital Arts Agency"
+          ],
+          "pipeline_stages": []
+        },
+        {
+          "record_id": "f570b68c-149c-4765-8ead-67bef381cb94",
+          "name": [
+            "Digital Agency Business"
+          ],
+          "pipeline_stages": []
+        }
+      ]
+    },
+    "Nebu": {
+      "http": 200,
+      "matches": []
+    },
+    "Heritage Flooring": {
+      "http": 200,
+      "matches": []
+    },
+    "Cardinal Heating": {
+      "http": 200,
+      "matches": []
+    },
+    "Hangman": {
+      "http": 200,
+      "matches": [
+        {
+          "record_id": "41a55515-60d8-4b18-9c1b-656abd86884b",
+          "name": [
+            "HANGMAN"
+          ],
+          "pipeline_stages": [
+            "Closed / Not Proceeding"
+          ]
+        }
+      ]
+    },
+    "Acumen": {
+      "http": 200,
+      "matches": [
+        {
+          "record_id": "35d63c11-15b3-4cc5-9977-b817a482fbac",
+          "name": [
+            "Acumen International, Inc."
+          ],
+          "pipeline_stages": [
+            "Closed / Not Proceeding"
+          ]
+        },
+        {
+          "record_id": "5ae1bb13-e8a2-4c97-87be-d40525a2a3f1",
+          "name": [
+            "Acumen International"
+          ],
+          "pipeline_stages": [
+            "Closed / Not Proceeding"
+          ]
+        },
+        {
+          "record_id": "81a797cf-cedf-4ee1-ab22-fbb2eddee02b",
+          "name": [
+            "Acumen Fine Art Logistics"
+          ],
+          "pipeline_stages": [
+            "Closed / Not Proceeding"
+          ]
+        }
+      ]
+    }
+  },
+  "limitations": "Name-query sample, not comprehensive CRM audit. IGI substring matches are unrelated and excluded. Unchecked companies remain unverified."
+}

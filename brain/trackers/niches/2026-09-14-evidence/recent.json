@@ -1,0 +1,21 @@
+{
+  "run_date": "2026-09-14",
+  "status": "ready",
+  "detail_path": "/tmp/niche-intel-2026-09-14/recent.md",
+  "coverage": {
+    "newsletters_screened": 76,
+    "industry_screened": 12,
+    "deal_flow_screened": 63,
+    "investor_screened": 16,
+    "granola_fetched": 10,
+    "granola_substantive": 8,
+    "passive_signals": 0
+  },
+  "gaps": [
+    "Reddit 403 after retry",
+    "Low-relevance HN/Polymarket results",
+    "Two Granola capture failures",
+    "GroupCollect attachment not analyzed",
+    "New edge TAM/margins/scaled targets unverified"
+  ]
+}

@@ -1,0 +1,11 @@
+# Historical ChatGPT export — 2026-09-14
+
+Status: source unavailable; zero raw conversations covered.
+
+Read the hist-chatgpt instructions. Expected file is selected_business_conversations.json under a Downloads export directory, containing Search Fund 1–10, COACH Search Fund 11–14, Specialty Insurance Market Analysis and Revenue Quality Explained (16 conversations, September2023–March2026).
+
+Discovery pass: filename search across expected Downloads location, Sapling workspace and temporary workspace found no selected export or conversations.json. Downloads directory does not exist.
+
+Retry: filename-only search beneath non-hidden home directories backups, projects, last30days-output and go found no selected_business_conversations.json. Credential/config content was not read. No raw export available for ingestion.
+
+No memory summaries, prior reports or vault mirrors substituted for original dialogue. Consequently no new niche, economic metric, target/company, contact, or proposal-to-rejection lifecycle is asserted from ChatGPT in this run. Infrastructure/source gap: expected raw ChatGPT export missing from this VPS; restore the raw export before claiming historical ChatGPT coverage.

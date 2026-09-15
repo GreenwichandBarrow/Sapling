@@ -1,0 +1,11 @@
+# Historical OneNote — 2026-09-14
+
+Status: unavailable; zero live pages covered.
+
+Callable tool catalog discovery and retry found no OneNote tools. Value-suppressed configuration inspection found no top-level MCP servers in the legacy or Codex user configuration; repo MCP configuration absent. Filename discovery in scripts, local binaries and Codex directories found no OneNote wrapper. Resources and templates exposed no OneNote source. This is missing integration access, not a verified authentication outage. No credential values printed or auth changes attempted.
+
+Read memory/project_onenote_setup.md: historical getPage bug returned the same Mike Horowitz content for different page IDs. This bug could not be reproduced or cleared without access. Restored access needs distinct-page verification before using evidence. No vault mirrors counted as live OneNote coverage.
+
+All 17 sections remain uncovered: ACQUISITIONS I ADMIRE; COMPANY MEMOS; DEAL CONV; G AND B; G I B INVESTORS CONVOS; INDUSTRY CONFERENCE LISTS; INDUSTRY MEMOS; INTERMEDIARY CONVOS; INTERMEDIARY MEMOS; INVESTOR CONVOS; MISC CONVOS; OPERATOR CONVOS; R AND D - OPERATING STAGE; R AND D - PRE-SEARCH; R AND D - SEARCH STAGE; SEARCHER CONVOS; SUPPORT TEAM CONVOS.
+
+Prompt says 16 but enumerates 17; explicit list and setup memory govern count. Priority sections all unread. No niche, company, market metric, lifecycle decision or contact inferred from missing source. Infrastructure open loop: restore callable OneNote integration and validate distinct-page retrieval.

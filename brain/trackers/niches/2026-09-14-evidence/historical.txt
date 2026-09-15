@@ -1,0 +1,50 @@
+# HISTORICAL intelligence — 2026-09-14
+
+Run: Codex/systemd Monday full run. Requested historical window September 2023 through August 31, 2026, excluding the recent 14 days. Historical evidence is partial and sampled; this is not an exhaustive review.
+
+## Coverage and execution
+- Four specialist roles executed sequentially in one reusable child because total four-agent capacity and thread-limit rejection prevented new child threads. RECENT ran concurrently with HISTORICAL. Logical role posts retain hist-calls, hist-email, hist-onenote, hist-chatgpt names.
+- Live tracker: valid 1Password resolution and `gog auth list --check`; all four tabs fetched. WEEKLY REVIEW 45 named rows, IDEATION 40 including historical moved/retired rows, TABLED 21, KILLED 44. Snapshots tracker-*.json, header maps in tracker-summary.txt, names in tracked-names.txt. Exact stale IDEATION collisions with KILLED/TABLED in tracker-lifecycle-collisions.json; do not revive these from older positive mentions.
+- Calls: 192 dated vault records inventoried, earliest April2025; selected full strategy calls plus targeted corpus search. Direct June17 Granola source retrieved. Full archive listing returned only 10 recent notes after retry; earlier history discovery incomplete, not total API outage.
+- Email: all five query groups completed, fixed absolute cutoff, 150 hits before cross-query deduplication, seven full threads read; pagination remains. Every Gmail command read-only with --gmail-no-send. Stale syntax corrected after help inspection. No authentication outage.
+- OneNote: unavailable after discovery retry; 0 live pages, all 17 enumerated sections uncovered. No tools/server/wrapper found. Known historical same-page bug cannot be cleared or reproduced without access; restored integration must verify distinct-page retrieval. No vault mirror counted as OneNote.
+- ChatGPT: raw export absent after filename discovery and retry; Downloads directory missing; zero of 16 conversations covered. No summaries substituted.
+
+## Niche-level consolidation and source strength
+
+| Niche | Sources | Evidence / lifecycle | Contacts | Treatment |
+|---|---|---|---|---|
+| Robotic-milking equipment maintenance and consumables for dairy operators | Historical Gmail newsletter, one source | Anonymous Utah/Idaho service/equipment business; newsletter posits robotic adoption and technician demand. Seller numbers $2.5M revenue/$442,888 EBITDA do not establish typical margins. No independently verified growth, exact TAM, recurring mix or target pool. | No named owner or warm introduction | New expansion seed, hypothesis only; OEM dependence, field travel, equipment/inventory and farm customer concentration require review. |
+| Trash chute/compactor sanitation for commercial buildings | June17 original call, one source | Kay repeats operator add-on example then immediately questions differentiation. Proposed and challenged in same conversation; not a directed queue item. No vendor count or economics. | Guillermo discussed; neither is verified vendor warm path | New challenged expansion seed; seek independent current support, do not frame as endorsed. |
+| Industrial PPE/safety products distribution | Aug3 broker teaser, one source | $2M revenue/$650K undefined profit for anonymous Philadelphia business. No inspection/replenishment service claimed; cannot invent it. | Anonymous | Weak listing-only seed; no proven service model. |
+| Medical animation/science visualization | Aug12 broker teaser, one source | $5.5M revenue/$1M normalized EBITDA for anonymous firm. No repeat revenue/retention, growth or AI defensibility proven. | Anonymous | Weak listing-only seed. |
+| Luxury aftercare | August12/August31 call history | Explicit service preservation interest; no separate untracked vendor category substantiated. | Camilla de Sanna | Already WEEKLY REVIEW Under Review; no duplicate. |
+| Cosmetic/fragrance testing, packaging testing and value-added distribution | July8 call history | Clayton Sachs identified service adjacency and owner-density angle; no new independently verified economics. | Clayton Sachs / Datacor | Already WEEKLY REVIEW; expand trend into distinct vendor workflow, do not rename as new. |
+| Trade-risk brokerage | Jeremy Black February Gmail + existing call/history context | Proposed February; domestic trade credit later TABLED and customs historically KILLED; unified brokerage now explicitly New 2.75 in live tracker. | Jeremy Black; Trade Risk Guaranty, Trade Acceptance Group, Meridian/Texel named as market participants | Existing active research row governs; not a new niche. |
+| Air-purification installed-base services | Aug12 broker teaser | Single anonymous firm's $8M revenue/$2.5M EBITDA does not establish industry margin. | Anonymous | Already tracked New. |
+| Medical/lab/IVF specialty cleaning | June17 call | Differentiated from challenged luxury-boutique cleaning; broad fertility clinic idea rejected, not every B2B lab service. | Guillermo | Already tracked. |
+| Beauty-specialized 3PL | Aug12 Axial generic 3PL teaser + existing research | Long-term contracts claimed; latest earnings below prior year. Generic listing has no MoCRA specialization. | Anonymous | Existing beauty 3PL row; no new niche from generic logistics listing. |
+
+## Primary sources
+- Original June17 call: https://notes.granola.ai/d/377f30ce-efde-4174-877e-7a63ded7e9b8 (chute/compactor 15:49:50–15:50:40Z; differentiation challenged).
+- Dairy robotic-milking service newsletter: https://mail.google.com/mail/u/0/#all/19e656820ec74fd6 .
+- PPE teaser: https://mail.google.com/mail/u/0/#all/19fc990427feded4 .
+- Medical animation teaser: https://mail.google.com/mail/u/0/#all/19ff7d96b526088a .
+- Trade credit conversation: https://mail.google.com/mail/u/0/#all/19c250d5143e6b7a .
+- Air purification teaser: https://mail.google.com/mail/u/0/#all/19ff7628e003cc90 .
+- 3PL teaser: https://mail.google.com/mail/u/0/#all/19ff831431cef048 .
+- July8 Clayton call: https://notes.granola.ai/d/28824524-798c-4cc5-95ce-c19c9a612400 .
+- August12 aftercare call: https://notes.granola.ai/d/bc89d6b9-c70f-4bd2-893a-22caa158f321 .
+- Full context and additional source references: hist-calls.md, hist-email.md, hist-onenote.md, hist-chatgpt.md in this run directory.
+
+## Lifecycle protections
+- Fashion supply-chain testing proposed then rejected in June17 conversation; warehousing/logistics explicitly carved out later. Do not turn earlier proposal into current endorsement.
+- Authentication challenged for AI/in-house substitution and weak economics; no confirmed revival.
+- Broad fertility/women's health market lane rejected for time being in June17; distinguish existing specialized cleaning research.
+- Jeff's July29 investor-side jewelry pass is not Kay's kill: subsequent July/August calls continue deal work. Sidney/Sydney Garber is an existing deal, not new niche/target.
+- Premium pest faces saturated-market challenges and is TABLED in live tracker; no proposed premium variant here warrants resurrection.
+- Advisory/art software/SEC filing/XBRL/corporate-records/escrow records may retain old IDEATION enthusiasm despite KILLED/TABLED state. Live tracker status and complete lifecycle govern.
+- Kay-directed overrides apply only to explicit queue/name instruction; merely discussing an idea then challenging it does not establish such direction.
+
+## Conclusions for synthesis
+No untracked candidate has independent cross-source corroboration within this historical sample. Two concrete expansion seeds (robotic-milking maintenance and challenged chute sanitation) and two weak listing seeds exist; these must be tested against RECENT evidence and second-order expansion before identification. No historical evidence alone establishes verified industry margins, exact market TAM, or independent acquisition-ready target supply. Sources support inspecting hypotheses, not fabricated pass screens.

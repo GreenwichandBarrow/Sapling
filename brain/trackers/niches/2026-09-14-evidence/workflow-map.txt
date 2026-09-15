@@ -1,0 +1,50 @@
+1. annual assortment planning
+2. core SKU replenishment
+3. bespoke order intake
+4. stone specification capture
+5. supplier quotation comparison
+6. supplier purchase-order confirmation
+7. supplier lead-time tracking
+8. production milestone checks
+9. manufacturing quality inspection
+10. repair intake triage
+11. warranty eligibility check
+12. gem authentication booking
+13. appraisal intake
+14. insurance replacement-value updates
+15. inventory physical counts
+16. cycle counts by location
+17. inventory aging review
+18. consignment reconciliation
+19. wholesale memo tracking
+20. store transfer reconciliation
+21. customs documentation assembly
+22. landed cost allocation
+23. insured shipping arrangement
+24. shipment chain-of-custody records
+25. receipt damage inspection
+26. secure storage access logs
+27. vitrine stock reconciliation
+28. trunk-show inventory checkout
+29. trunk-show stock return checks
+30. loss and shrink investigation
+31. POS-to-ledger reconciliation
+32. payment exceptions resolution
+33. accounts-receivable follow-up
+34. wholesale account chargeback review
+35. vendor invoice matching
+36. sales-tax documentation
+37. cash transaction control checks
+38. returns quality inspection
+39. stone resetting scheduling
+40. engraving job coordination
+41. repair parts procurement
+42. repair subcontractor quality checks
+43. repair turnaround reporting
+44. customer care status messages
+45. customer purchase-history cleanup
+46. clienteling appointment coordination
+47. CRM consent maintenance
+48. channel profitability reporting
+49. staff product training
+50. estate ownership-document collection

@@ -1,0 +1,30 @@
+{
+  "run_date": "2026-09-14",
+  "runtime": "Codex/systemd",
+  "purpose": "Durable gathering and synthesis evidence, before identifier and external writes",
+  "files": [
+    "crm-verification-summary.json",
+    "hist-calls.txt",
+    "hist-chatgpt.txt",
+    "hist-email.txt",
+    "hist-onenote.txt",
+    "historical.txt",
+    "recent.json",
+    "recent.txt",
+    "source-coverage.json",
+    "synthesis.json",
+    "synthesis.txt",
+    "tracked-names.txt",
+    "tracker-IDEATION.json",
+    "tracker-KILLED.json",
+    "tracker-TABLED.json",
+    "tracker-WEEKLY-REVIEW.json",
+    "tracker-lifecycle-collisions.json",
+    "tracker-summary.txt",
+    "workflow-map.txt"
+  ],
+  "raw_email_bodies_archived": false,
+  "raw_crm_payload_archived": false,
+  "final_report_written": false,
+  "integrity_sidecar_written": false
+}

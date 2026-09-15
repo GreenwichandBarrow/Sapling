@@ -1,0 +1,79 @@
+{
+  "run_date": "2026-09-14",
+  "run_mode": "monday",
+  "runtime": "Codex/systemd",
+  "niches_evaluated": 25,
+  "niches_identified": 2,
+  "one_pagers_written": 2,
+  "scorecards_written": 2,
+  "tracker_updated": true,
+  "runtime_seconds": 2504,
+  "sources_covered": {
+    "recent_track": "76 newsletter/12 industry/63 deal-flow/16 investor threads screened; 10 Granola fetched,8 substantive; Reddit403; no passive signals",
+    "historical_track": "192 call inventory selected reads;150 pre-dedup email hits7 threads; OneNote0/17; ChatGPT0/16; incomplete Granola discovery"
+  },
+  "source_coverage_status": "partial",
+  "source_coverage_diagnostics": {
+    "run_date": "2026-09-14",
+    "status": "ready",
+    "detail_path": "/tmp/niche-intel-2026-09-14/recent.md",
+    "coverage": {
+      "newsletters_screened": 76,
+      "industry_screened": 12,
+      "deal_flow_screened": 63,
+      "investor_screened": 16,
+      "granola_fetched": 10,
+      "granola_substantive": 8,
+      "passive_signals": 0
+    },
+    "gaps": [
+      "Reddit 403 after retry",
+      "Low-relevance HN/Polymarket results",
+      "Two Granola capture failures",
+      "GroupCollect attachment not analyzed",
+      "New edge TAM/margins/scaled targets unverified"
+    ]
+  },
+  "umbrella_themes_reviewed": [
+    "Luxury, Heritage & Personal Goods",
+    "Asset Protection & Stewardship",
+    "Beauty, Wellness & Longevity Infrastructure",
+    "Family Wealth, Legacy & Life Infrastructure",
+    "Trust, Compliance & Verification"
+  ],
+  "edge_niches_considered": 21,
+  "open_loops_infra": [
+    "Reddit403 after retry",
+    "OneNote missing0/17",
+    "ChatGPT export absent0/16",
+    "Historical Granola listing incomplete",
+    "Two recent Granola capture failures",
+    "GroupCollect attachment not analyzed",
+    "Registry CRM checks incomplete for smaller comps",
+    "Beads database absent; task creation unavailable",
+    "Four-agent capacity required historical role reuse",
+    "LibreOffice Calc unavailable; output workbook formula caches independently verified; missing template D34 repaired in output copies"
+  ],
+  "ideation_rows_added": 2,
+  "weekly_review_promotions": 0,
+  "existing_tracker_data_preserved": true,
+  "deliverable_audit": "brain/trackers/niches/2026-09-14-evidence/deliverable-audit.json",
+  "niches": [
+    {
+      "name": "Independent Dimensional Metrology and Gauge-Calibration Services for Precision Manufacturers",
+      "score": 1.7325,
+      "drive_folder": "https://drive.google.com/drive/folders/18iQj87-InZYCBAJVTg3bOt-Qlzg-OOJ9",
+      "initial_screen": "incomplete",
+      "tracker_section": "Compliance",
+      "tracker_row": 28
+    },
+    {
+      "name": "Robotic-Milking Equipment Preventive Maintenance and Consumable Route Services for Dairy Farms",
+      "score": 1.7425000000000002,
+      "drive_folder": "https://drive.google.com/drive/folders/1m02mXNTr0V4zO8gRezpgz4hHSUMON2PD",
+      "initial_screen": "incomplete",
+      "tracker_section": "Other",
+      "tracker_row": 30
+    }
+  ]
+}

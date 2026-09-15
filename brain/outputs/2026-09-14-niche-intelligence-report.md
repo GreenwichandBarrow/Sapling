@@ -182,11 +182,24 @@ Names, locations and ownership: [[trackers/niches/2026-09-14-evidence/identified
 
 **Provisional research scores, not activation decisions.** The detailed template has eight weighted categories and 27 subcriteria. Missing quantitative facts receive a conservative “− / 1” uncertainty penalty, not a claim of measured adverse performance. Supported judgments receive “+/− / 2” or “+ / 3” with evidence notes. Target TAM and searcher fit are informational, without extra score weights. Both initial screens remain incomplete.
 
-<!-- CATEGORY_TABLE -->
+| Industry category | Weight | Calibration /3 | Dairy service /3 |
+|---|---:|---:|---:|
+| Growth, Penetration and Catalyst | 25% | 1.75 | 2.25 |
+| Size and Fragmentation | 10% | 1.00 | 1.00 |
+| Industry Economics | 10% | 1.00 | 1.00 |
+| Mission Criticality | 15% | 2.00 | 2.00 |
+| Exogeneous Risks | 10% | 2.20 | 1.80 |
+| Porter's Five Forces | 15% | 1.67 | 1.67 |
+| Value Creation Opportunities | 10% | 2.00 | 1.50 |
+| Impact and Externalities | 5% | 2.50 | 2.00 |
+| **Weighted overall** | **100%** | **1.73 (57.75%)** | **1.74 (58.08%)** |
 
 The small difference between the two scores is not a meaningful ranking given shared evidence gaps. [[trackers/niches/2026-09-14-evidence/scored-summary.txt|Full scored criteria and evidence]].
 
-<!-- DELIVERABLE_LINKS -->
+| Niche | PowerPoint | Industry scorecard |
+|---|---|---|
+| Calibration | [Open PPTX](https://docs.google.com/presentation/d/1ZRP2PSPfPEcE8ZYOWRimlx74GdfczcLd/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true) | [Open XLSX](https://docs.google.com/spreadsheets/d/1pCKeGrEUqsqanwfdj5JvPBqU1x9tLOdF/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true) |
+| Dairy service | [Open PPTX](https://docs.google.com/presentation/d/1ZEnGFTrX13VXYXu4SVeSjgviSWqJR-23/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true) | [Open XLSX](https://docs.google.com/spreadsheets/d/1HUfpKoqtbLawW7QctgfHcumMOJtP5m8e/edit?usp=drivesdk&ouid=108110832334532716154&rtpof=true&sd=true) |
 
 Both PowerPoints preserve six main-slide template shapes, include four Sources slides and display final scores. All 16 calibration and 19 dairy source entries have hyperlinks. Final PPTX/XLSX copies, research JSON and verification scripts are archived in `brain/trackers/niches/2026-09-14-evidence/`.
 

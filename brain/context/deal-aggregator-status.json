@@ -1,27 +1,27 @@
 {
-  "date": "2026-09-14",
+  "date": "2026-09-15",
   "mode": "morning",
-  "artifact": "brain/context/deal-aggregator-scan-2026-09-14.md",
+  "artifact": "brain/context/deal-aggregator-scan-2026-09-15.md",
   "email_scan_status": "live",
   "deals_found": 0,
-  "broker_opportunistic": 1,
-  "near_misses": 14,
-  "sources_scanned": 17,
+  "broker_opportunistic": 2,
+  "near_misses": 4,
+  "sources_scanned": 15,
   "sources_covered": {
     "marketplace": 5,
-    "email_newsletters": 9,
+    "email_newsletters": 8,
     "direct_email": 3
   },
   "manual_check_sources": [
     "DealForce buyer portal",
     "Empire Flippers buyer detail"
   ],
-  "sources_blocked_verified": 0,
+  "sources_blocked_verified": 1,
   "sources_blocked_single_attempt": 0,
   "volume_status": "BELOW TARGET",
   "needs_attention": [
-    "DealsX snapshot is stale; sourcing coverage incomplete",
-    "agent-browser unavailable; login-gated/manual marketplace detail not automated",
-    "No active-thesis PASS match today; 7-day rolling average is 0.0"
+    "DealsX weekly snapshot is stale (latest week ending 2026-05-22); sourcing coverage incomplete",
+    "Browser automation unavailable for login-gated DealForce and Empire Flippers detail",
+    "BizBuySell returned HTTP 403 after primary and fallback attempts"
   ]
 }

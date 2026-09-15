@@ -1,0 +1,1620 @@
+{
+  "account": "kay.s@greenwichandbarrow.com",
+  "candidate_threads": [
+    {
+      "bookkeeper_already_processed": true,
+      "bookkeeper_period": "2026-08",
+      "candidate_reason": "bookkeeper_monthly_report_metadata",
+      "date": "2026-09-10 12:50",
+      "existing_budget_outputs": [
+        "2026-09-11-budget-report-aug-2026.md"
+      ],
+      "from": "Anthony James Balleras Bacagan <anthony.b@startvirtual.com>",
+      "id": "1a08c3acb3f9a424",
+      "labels": [
+        "auto/team",
+        "IMPORTANT",
+        "CATEGORY_PERSONAL"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [
+            "G&B Quarterly Profit and Loss - August 2026.pdf",
+            "G&B Monthly Profit and Loss - August 2026.pdf",
+            "G&B Quarterly Balance Sheet - August 2026.pdf",
+            "G&B Profit and Loss - August 2026.pdf",
+            "G&B Balance Sheet - August 2026.pdf"
+          ],
+          "date": "Fri, 11 Sep 2026 00:50:45 +0800",
+          "from": "Anthony James Balleras Bacagan <anthony.b@startvirtual.com>",
+          "message_id": "1a08c3acb3f9a424",
+          "size_estimate": 156962,
+          "snippet": "Hi Kay, Good day! Please find your August 2026 Financial Reports attached. They provide an accurate view of your business&#39;s financial performance. Attached Reports: 1. Profit &amp; Loss Statement -",
+          "subject": "Management Report: Greenwich & Barrow - August 2026",
+          "text_excerpt": "Hi Kay,\n\nGood day!\n\nPlease find your August 2026 Financial Reports attached. They provide an\n\naccurate view of your business\u2019s financial performance.\n\nAttached Reports:\n\n1. Profit & Loss Statement - August 2026 (Total, Quarterly, Monthly)\n\n2. Balance Sheet - August 2026 (Total, Quarterly)\n\nWe reviewed and prepared these reports to accurately reflect your financial\n\nactivity. If you have any questions, notice anything that needs updating,\n\nor need clarification, please let us know.\n\nThanks, and we appreciate your bookkeeping needs.\n\nBest regards,\n\nAJ\n\n-- \n\nAnthony James Bacagan\n\nBookkeeper\n\nBookkeeping | StartVirtual\n\nCheck Us Out <http://www.startvirtual.com/>",
+          "to": "Kay Schneider <kay.s@greenwichandbarrow.com>"
+        }
+      ],
+      "raw_body_bytes_seen": 7163,
+      "snippet": "",
+      "subject": "Management Report: Greenwich & Barrow - August 2026"
+    },
+    {
+      "bookkeeper_already_processed": false,
+      "bookkeeper_period": null,
+      "candidate_reason": "bookkeeper_sender_check_attachments",
+      "date": "2026-09-11 18:00",
+      "existing_budget_outputs": [],
+      "from": "Anthony James Balleras Bacagan <anthony.b@startvirtual.com>",
+      "id": "1a0927dee07a6a45",
+      "labels": [
+        "auto/team",
+        "IMPORTANT",
+        "CATEGORY_PERSONAL"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Sat, 12 Sep 2026 06:00:00 +0800",
+          "from": "Anthony James Balleras Bacagan <anthony.b@startvirtual.com>",
+          "message_id": "1a0927dee07a6a45",
+          "size_estimate": 53537,
+          "snippet": "Hi Kay! Hope your week&#39;s going well! Stay on top of your numbers with this quick EOW financial update: THIS WEEK&#39;S ACCOMPLISHMENTS A quick look at the progress we&#39;ve made to keep your",
+          "subject": "Start Virtual - End Of Week Report: Greenwich & Barrow",
+          "text_excerpt": "Hi Kay!\n\nHope your week\u2019s going well!\n\nStay on top of your numbers with this quick EOW financial update:\n\nTHIS WEEK\u2019S ACCOMPLISHMENTS\n\nA quick look at the progress we\u2019ve made to keep your financials on track.\n\n1. Greenwich & Barrow\n\n\u25cb Updated the Bank Feeds\n\n\u25cb Recorded All Transactions\n\n\u25cb Fixed mapping Gusto Payroll Accounts\n\n\u25cb Sent Management Report\n\nPENDING ITEMS\n\nBy providing the requested documents promptly, you help us keep your\n\nfinancial records precise, giving you the insights to make confident\n\nbusiness decisions.\n\nGreenwich & Barrow\n\n\u2022 NA\n\nGOALS NEXT WEEK\n\nEnsuring full compliance and accurate financial reporting for all LLC\n\nentities\n\nFinish Bank Reconciliations\n\nLevel-Up Productivity\n\nAccomplish all Month-end Tasks\n\nNEXT STEPS AND ACTION ITEMS\n\nKey priorities to drive our success in the coming weeks.\n\n1.\n\nUpdate the Bank Feeds\n\n2.\n\nRecord Next Week\u2019s Activities\n\n3.\n\nBook Review\n\n4.\n\nSend Information Request, if there\u2019s any\n\n5.\n\nSend End-Of-Week Reporting\n\nThank you!\n\nFeel free to reach out if you have any questions.\n\nWe are grateful for your partnership in every step of this journey.\n\n<http://www.startvirtual.com>",
+          "to": "Kay Schneider <kay.s@greenwichandbarrow.com>"
+        }
+      ],
+      "raw_body_bytes_seen": 42566,
+      "snippet": "",
+      "subject": "Start Virtual - End Of Week Report: Greenwich & Barrow"
+    },
+    {
+      "candidate_reason": "deal_keyword_in_metadata",
+      "date": "2026-09-09 17:28",
+      "from": "\"Helen Guo \u2747\ufe0f SMB Deal Hunter\" <helen@mail.smbdealhunter.xyz>",
+      "id": "1a08812b3ff479ab",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Wed, 09 Sep 2026 21:28:40 +0000 (UTC)",
+          "from": "\"Helen Guo \u2747\ufe0f SMB Deal Hunter\" <helen@mail.smbdealhunter.xyz>",
+          "message_id": "1a08812b3ff479ab",
+          "size_estimate": 139689,
+          "snippet": "An absentee-run drive-through beer distributor, custom sign company with 26 years of repeat business, and 3 other finds... \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "subject": "New Off-Market Businesses For Sale",
+          "text_excerpt": "635)\n\nFollow image link: (https://smbdealexchange.com)\n\nCaption: Today\u2019s Sponsor\n\n[Sign Up](https://join.smbdealhunter.xyz/?utm_source=Newsletter&utm_medium=Email&utm_campaign=Header&utm_id=SMBDealHunterEmailHeader) | [Podcast](https://www.youtube.com/playlist?list=PLvwLAOd5dsd5L5ds9iwk9m8u-D4ispAbd) | [Sell Your Business ](https://match.smbdealhunter.xyz/)| [Work With Me](https://pro.smbdealhunter.xyz)\n\n----------\n\n**Hello SMB Deal Hunters!**\n\n==I\u2019m excited to share 5 new off-market businesses for sale sourced directly by our team in today's ==_Off The Grid _==issue==_._\n\n==\ud83d\udc47== **In Today's Issue: **\n\n#1: [Drive-Through Beer Distributor in PA with Absentee Owner and $250K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=recTRkYVivKoPkHQU)\n\n#2: [Custom Graphics and Sign Company in MN with 26 Years of Anchor Accounts and $900K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=recynaBylNUioPKC8)\n\n#3: [High-Voltage Electrical and Solar Site Contractor in NM with $1M of Equipment and $746K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=recs0MTmK3729Emd5)\n\n#4: [Jewelry Tools and Supplies Distributor in NJ with 5,000+ SKUs and $700K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=recABmvlOyQLK23Mx)\n\n#5: [Charter Bus Company in FL with Flixbus Contracts and $300K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=receiLV04B7WvPDYV)\n\n\ud83d\udd0e **Looking for deals in your area?** [We can source them for you](https://pro.smbdealhunter.xyz).\n\nThis issue is proudly sponsored by [SMB Deal Exchange](https://www.smbdealexchange.com), our new platform for connecting buyers and sellers of off-market businesses.\n\n--------------------\n\n**COMMUNITY WINS**\n\nHere\u2019s what one [SMB Deal Hunter Pro](https://pro.smbdealhunter.xyz/)**\u00a0**member shared this past week:\n\nView image: (https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/d7465321-69aa-4571-8a03-24a3023a585f/Screenshot_2026-09-09_211226.png?t=1788959561)\n\nCaption: \n\n\ud83d\udc40 **August was supposed to be a \u201cslow month,\u201d but 35 Pro members went under contract** **on more than $46M of businesses, and 10 more deals closed worth over $14M. **\n\nIf that's what a slow month looks like, September should be interes\n\n---\n\n&utm_id=SMBDealHunterEmailHeader) | [Podcast](https://www.youtube.com/playlist?list=PLvwLAOd5dsd5L5ds9iwk9m8u-D4ispAbd) | [Sell Your Business ](https://match.smbdealhunter.xyz/)| [Work With Me](https://pro.smbdealhunter.xyz)\n\n----------\n\n**Hello SMB Deal Hunters!**\n\n==I\u2019m excited to share 5 new off-market businesses for sale sourced directly by our team in today's ==_Off The Grid _==issue==_._\n\n==\ud83d\udc47== **In Today's Issue: **\n\n#1: [Drive-Through Beer Distributor in PA with Absentee Owner and $250K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=recTRkYVivKoPkHQU)\n\n#2: [Custom Graphics and Sign Company in MN with 26 Years of Anchor Accounts and $900K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=recynaBylNUioPKC8)\n\n#3: [High-Voltage Electrical and Solar Site Contractor in NM with $1M of Equipment and $746K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=recs0MTmK3729Emd5)\n\n#4: [Jewelry Tools and Supplies Distributor in NJ with 5,000+ SKUs and $700K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=recABmvlOyQLK23Mx)\n\n#5: [Charter Bus Company in FL with Flixbus Contracts and $300K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=receiLV04B7WvPDYV)\n\n\ud83d\udd0e **Looking for deals in your area?** [We can source them for you](https://pro.smbdealhunter.xyz).\n\nThis issue is proudly sponsored by [SMB Deal Exchange](https://www.smbdealexchange.com), our new platform for connecting buyers and sellers of off-market businesses.\n\n--------------------\n\n**COMMUNITY WINS**\n\nHere\u2019s what one [SMB Deal Hunter Pro](https://pro.smbdealhunter.xyz/)**\u00a0**member shared this past week:\n\nView image: (https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/d7465321-69aa-4571-8a03-24a3023a585f/Screenshot_2026-09-09_211226.png?t=1788959561)\n\nCaption: \n\n\ud83d\udc40 **August was supposed to be a \u201cslow month,\u201d but 35 Pro members went under contract** **on more than $46M of businesses, and 10 more deals closed worth over $14M. **\n\nIf that's what a slow month looks like, September should be interesting now that sellers are back from vacation and deal flow is picking up.\n\nThe next 90 days are also the last real window before the holidays, so to get buyers off the sidelines, ==*\n\n---\n\nro.smbdealhunter.xyz) and we'll build your search together: what you can realistically afford, the deals that fit, and your financing options.\n\n----------\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\n\n**NEW OFF-MARKET DEALS**\n\n_T__hese deals span the country. For custom-sourced deals in your area, __[click here](https://pro.smbdealhunter.xyz/?utm_source=newsletter&utm_medium=email&utm_content=pre-deals-link)__._\n\n### **1/ Drive-Through Beer Distributor**\n\n\ud83d\udccd **Location:** Pennsylvania\n\n\ud83d\udcbc **EBITDA:** $250,000\n\n\ud83d\udcca **Revenue:** $1,500,000\n\n\ud83d\udcc5 **Established:** 2006\n\n\ud83d\udcad **My 2 Cents:** In Pennsylvania a beer distributor is a store you buy beer from and carry home, and it is the only kind of store allowed to sell you a full case. Everyone else is capped at 192 ounces per sale, 16 twelve-ounce cans, eight short of a 24-can case. And when money gets tight, drinking moves toward exactly this kind of store: in 2009 sales at bars and restaurants fell 4.6% while sales at liquor stores, supermarkets and other off-premise retailers rose 1.2%. This one has run since 2006 out of a building with a drive-through lane, and three people cover the whole operation, the full-time one ==**a salaried manager who does the ordering, receiving, and banking while the owner does not work in the business at all**==. That said, I'd want cases moved by year rather than dollars, because shelf prices have been rising an",
+          "to": "\"admin@greenwichandbarrow.com\" <admin@greenwichandbarrow.com>"
+        }
+      ],
+      "raw_body_bytes_seen": 123146,
+      "snippet": "",
+      "subject": "New Off-Market Businesses For Sale"
+    },
+    {
+      "candidate_reason": "deal_keyword_in_metadata",
+      "date": "2026-09-12 12:25",
+      "from": "\"Helen Guo \u2747\ufe0f SMB Deal Hunter\" <helen@mail.smbdealhunter.xyz>",
+      "id": "1a0967081b0e8bf4",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Sat, 12 Sep 2026 16:25:48 +0000 (UTC)",
+          "from": "\"Helen Guo \u2747\ufe0f SMB Deal Hunter\" <helen@mail.smbdealhunter.xyz>",
+          "message_id": "1a0967081b0e8bf4",
+          "size_estimate": 139835,
+          "snippet": "Absentee-run 3-location trampoline park, HVAC company with 2000 maintenance contracts, and 3 other finds... \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "subject": "New Off-Market Businesses For Sale",
+          "text_excerpt": "635)\n\nFollow image link: (https://smbdealexchange.com)\n\nCaption: Today\u2019s Sponsor\n\n[Sign Up](https://join.smbdealhunter.xyz/?utm_source=Newsletter&utm_medium=Email&utm_campaign=Header&utm_id=SMBDealHunterEmailHeader) | [Podcast](https://www.youtube.com/playlist?list=PLvwLAOd5dsd5L5ds9iwk9m8u-D4ispAbd) | [Sell Your Business ](https://match.smbdealhunter.xyz/)| [Work With Me](https://pro.smbdealhunter.xyz)\n\n----------\n\n**Hello SMB Deal Hunters!**\n\n==I\u2019m excited to share 5 new off-market businesses for sale sourced directly by our team in today's ==_Off The Grid _==issue==_._\n\n==\ud83d\udc47== **In Today's Issue: **\n\n#1: [Three Trampoline Parks in ID and MT with Absentee Owners and $600K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=recBgWaVgKS8j6T8e)\n\n#2: [Truck and Trailer Repair and Towing Company in NC with Federally-Mandated Demand and $800K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=rec0yLs3RatSfHEq1)\n\n#3: [HVAC Business in VA with 2,000 Maintenance Contracts and $600K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=rec3yOcVLKbjfPnlg)\n\n#4: [Cabinetry and Stone Fabrication Businesses in IN with $2M of Contracted Work and $400K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=recwIpui77gVygq9c)\n\n#5: [30-Year-Old Flooring and Bath Remodeling Company in WI with $450K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=rec3l8d0AaWyXFfJl)\n\n\ud83d\udd0e **Looking for deals in your area?** [We can source them for you](https://pro.smbdealhunter.xyz).\n\nThis issue is proudly sponsored by [SMB Deal Exchange](https://www.smbdealexchange.com), our new platform for connecting buyers and sellers of off-market businesses.\n\n--------------------\n\n**COMMUNITY WINS**\n\nHere\u2019s what one [SMB Deal Hunter Pro](https://pro.smbdealhunter.xyz/)**\u00a0**member shared this past week:\n\nView image: (https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/12db220e-a596-4bf1-89fb-9da961b077dd/Screenshot_2026-09-12_000011.png?t=1789142425)\n\nCaption: \n\n\ud83d\udc40** Heads up: **We\u2019re not even halfway into September, and 3 Pro members have already closed deals with another 12 under LOI.\n\n==Kerigo\u2019s is one of them. ====**She found her deal on SMB Deal Exchange, our off-market deal platform\n\n---\n\n&utm_id=SMBDealHunterEmailHeader) | [Podcast](https://www.youtube.com/playlist?list=PLvwLAOd5dsd5L5ds9iwk9m8u-D4ispAbd) | [Sell Your Business ](https://match.smbdealhunter.xyz/)| [Work With Me](https://pro.smbdealhunter.xyz)\n\n----------\n\n**Hello SMB Deal Hunters!**\n\n==I\u2019m excited to share 5 new off-market businesses for sale sourced directly by our team in today's ==_Off The Grid _==issue==_._\n\n==\ud83d\udc47== **In Today's Issue: **\n\n#1: [Three Trampoline Parks in ID and MT with Absentee Owners and $600K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=recBgWaVgKS8j6T8e)\n\n#2: [Truck and Trailer Repair and Towing Company in NC with Federally-Mandated Demand and $800K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=rec0yLs3RatSfHEq1)\n\n#3: [HVAC Business in VA with 2,000 Maintenance Contracts and $600K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=rec3yOcVLKbjfPnlg)\n\n#4: [Cabinetry and Stone Fabrication Businesses in IN with $2M of Contracted Work and $400K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=recwIpui77gVygq9c)\n\n#5: [30-Year-Old Flooring and Bath Remodeling Company in WI with $450K EBITDA](https://www.smbdealexchange.com/listing-details?recordId=rec3l8d0AaWyXFfJl)\n\n\ud83d\udd0e **Looking for deals in your area?** [We can source them for you](https://pro.smbdealhunter.xyz).\n\nThis issue is proudly sponsored by [SMB Deal Exchange](https://www.smbdealexchange.com), our new platform for connecting buyers and sellers of off-market businesses.\n\n--------------------\n\n**COMMUNITY WINS**\n\nHere\u2019s what one [SMB Deal Hunter Pro](https://pro.smbdealhunter.xyz/)**\u00a0**member shared this past week:\n\nView image: (https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/12db220e-a596-4bf1-89fb-9da961b077dd/Screenshot_2026-09-12_000011.png?t=1789142425)\n\nCaption: \n\n\ud83d\udc40** Heads up: **We\u2019re not even halfway into September, and 3 Pro members have already closed deals with another 12 under LOI.\n\n==Kerigo\u2019s is one of them. ====**She found her deal on SMB Deal Exchange, our off-market deal platform only available for Pro members**====, which is why you didn't see her business on BizBuySell.==\n\nThe next 90 days are also the last real window before the holidays, so to get buyers\n\n---\n\nl build your search together: what you can realistically afford, the deals that fit, and your financing options.\n\n----------\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\n\n**NEW OFF-MARKET DEALS**\n\n_T__hese deals span the country. For custom-sourced deals in your area, __[click here](https://pro.smbdealhunter.xyz/?utm_source=newsletter&utm_medium=email&utm_content=pre-deals-link)__._\n\n### **1/ Three Trampoline Parks and Family Entertainment Centers**\n\n\ud83d\udccd **Location:** Idaho and Montana\n\n\ud83d\udcbc **EBITDA:** $600,000\n\n\ud83d\udcca **Revenue:** $3,478,000\n\n\ud83d\udcc5 **Established:** 2011\n\n\ud83d\udcad **My 2 Cents:** A trampoline park sells the same floor three different ways: walk-up jumping, birthday parties, and school field trips. They are not worth the same. ==**Parties run 35 to 45% of revenue at a healthy park and earn roughly triple per hour what a walk-in jumper does**==, so the mix decides the year more than the door count does. These three sit across Idaho and Montana, and Idaho is now the second-fastest-growing state in the country. ==**The owners attend a weekly meeting with staff and stay out of daily operations entirely.**== Two parks run on rosters of about 25 people, mostly part time, while the smallest runs on 6 or 7 and roughly doubles when the season turns, marketing at all three is handled by an outside agency, and the owners will sell the three together or one at a time. That said, I'd want revenue a",
+          "to": "\"admin@greenwichandbarrow.com\" <admin@greenwichandbarrow.com>"
+        }
+      ],
+      "raw_body_bytes_seen": 123195,
+      "snippet": "",
+      "subject": "New Off-Market Businesses For Sale"
+    },
+    {
+      "candidate_reason": "deal_keyword_in_metadata",
+      "date": "2026-09-14 13:01",
+      "from": "\"Women's Search Network\" <info@womenssearchnetwork.com>",
+      "id": "1a0a0ddcb27fa526",
+      "labels": [
+        "CATEGORY_PROMOTIONS"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Mon, 14 Sep 2026 17:01:21 +0000",
+          "from": "\"Women's Search Network\" <info@womenssearchnetwork.com>",
+          "message_id": "1a0a0ddcb27fa526",
+          "size_estimate": 104522,
+          "snippet": "Register Now! Join us for a candid CEO AMA with Leyla Sudbury &amp; Ali Platon. \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f",
+          "subject": "Join Us Next Monday: CEO AMA with Leyla Sudbury & Ali Platon",
+          "text_excerpt": "http://womenssearchnetwork.com\n\nJoin Us Next Monday: CEO AMA with Leyla Sudbury & Ali Platon\n\nhttps://womenssearchnetwork.com/resource/ceo-ama-with-leyla-sudbury-and-ali-platon\n\nCEO Ask Me Anything\n\nDate: Monday, September 21st\n\nTime: 12:00 PM - 1:00 PM ET\n\nLocation: Virtual\n\nREGISTER (https://us06web.zoom.us/meeting/register/p0Fe0lKRTc6MspAmM7MovA)\n\nThis webinar will be an Ask Me Anything (AMA) featuring CEOs Leyla Sudbury (https://linkedin.com/in/leyla-sudbury-6575b382) and Ali Platon (https://www.linkedin.com/in/ali-platon-8479903a/) . Through a moderated Q&A, we'll explore their journeys from launching their search funds to acquiring businesses and now leading their companies as CEOs. They'll share candid insights, lessons learned, and practical advice on navigating the search process, closing an acquisition, and transitioning into the operator role. Attendees will also have the opportunity to ask their own questions during the session.\n\nFor those who register, we\u2019ll send out a Google Form in advance so you can submit your questions for the panelists ahead of time.\n\n\u2728 Stay tuned for more details on these upcoming Q4 events! \u2728\n\n* IESE 3rd Women in Search Forum (October 14th)\n\n* Kellogg/Booth ETA Conference Happy Hour (October 30th)\n\n* HBS ETA Conference Welcome Event (November 13th)\n\n* CEO Offsite (December)\n\n* Family Planning Webinar (December)\n\n\ud83c\udfa7 Have you listened to our latest podcast episode? \ud83c\udfa7\n\nhttps://podcasts.apple.com/us/podcast/womens-search-network-the-podcast/id1772487851\n\nGreat CEOs learn where they can have the most impact and build the right team around them. In this episode, Carla Larin shares what she has learned since stepping in as CEO of MaxRTE and growing the healthcare software company. Carla discusses how she identified her strengths, built a leadership team to complement them, and learned to value potential and fit over experience alone. Carla shares candid lessons from hiring mistakes and reflects on her unexpected discovery that enterprise sales was one of her strengths. She also explains why getting clear on your ideal customer profile is so important before building a sales team. Throughout the conversation, she offers a practical look at growing into the CEO role and building a team that can scale.\n\nLISTEN ON APPLE (https://podcasts.apple.com/us/podcast/maximizing-your-impact-as-ceo-with-carla-larin/id1772487851?i=1000785576990)\n\nLISTEN ON SPOTIFY (https://open.spotify.com/episode/1fyLOZZnE3hdhm20sNdtR6)\n\nDid you recently acquire a company? Did you recently launch your search? Please make sure to update your WSN Profile at www.womenssearchnetwork.com (https://www.womenssearchnetwork.com/login) to stay up to date on events! Not sure how to do that or have other questions?\n\nPlease reach out to andrea@womenssearchnetwork.com. (mailto:andrea@womenssearchnetwork.com?subject=&body=)\n\nJoin us on WhatsApp to Chat & Connect (https://womenssearchnetwork.us17.list-manage.com/track/click?u=d304b1b4d9d47429e56f0b05b&id=dd3883dd55&e=eb37beb431) with other Searchers*!\n\n*The community is open to everyone! Please note that the Active Searcher and CEO groups are by request only as they are geared towards serving Active Searchers and CEOs specifically. If you are an Active Searcher or CEO, please make sure your WhatsApp profile has your full name, and that your status is updated with the WSN so your request to join is readily accepted!\n\nTHANK YOU TO OUR SPONSORS\n\nhttps://www.pfbt.com/parkside-launches-search-fund-lending-with-expert-team-acquisition\n\nhttps://www.paulhastings.com/\n\nhttps://plexuscap.com/\n\nhttps://boulaygroup.com/\n\nhttps://oberle-risk.com/\n\nEMPOWERING FEMALE SEARCH ENTREPRENEURS\n\nWomen\u2019s Search Network aims to empower women through education and to create meaningful opportunities for women in ETA to connect with, learn from, and support one another on their leadership journey.\n\nFIND OUT MORE (https://www.womenssearchnetwork.com/)\n\nhttps://linkedin.com/https://www.linkedin.com/company/womenssearchnetwork/\n\nhttps://www.womenssearchnetwork.com/\n\nmailto:andrea@womenssearchnetwork.com\n\nhttps://womenssearchnetwork.com\n\nView in browser (https://mailchi.mp/womenssearchnetwork.com/join-us-in-2025-the-womens-search-network-q1-lineup-14206927?e=4e194675fc)\n\nCopyright (C) 2026 Women's Search Network. All rights reserved.\n\nYou are receiving this email because you opted in via our website.\n\nOur mailing address is:\n\nWomen's Search Network\n\n160 Bovet Rd\n\nSan Mateo, CA 94402-3100\n\nUSA\n\nWant to change how you receive these emails?\n\nYou can update your preferences (https://womenssearchnetwork.us17.list-manage.com/profile?u=d304b1b4d9d47429e56f0b05b&id=6b87b8d278&e=4e194675fc&c=6c468b5902) or unsubscribe (https://womenssearchnetwork.us17.list-manage.com/unsubscribe?u=d304b1b4d9d47429e56f0b05b&id=6b87b8d278&t=b&e=4e194675fc&c=6c468b5902)",
+          "to": "<kay.s@greenwichandbarrow.com>"
+        },
+        {
+          "attachment_filenames": [],
+          "date": "Mon, 14 Sep 2026 17:01:22 +0000",
+          "from": "\"Women's Search Network\" <info@womenssearchnetwork.com>",
+          "message_id": "1a0a0ddcb296883b",
+          "size_estimate": 104514,
+          "snippet": "Register Now! Join us for a candid CEO AMA with Leyla Sudbury &amp; Ali Platon. \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f",
+          "subject": "Join Us Next Monday: CEO AMA with Leyla Sudbury & Ali Platon",
+          "text_excerpt": "http://womenssearchnetwork.com\n\nJoin Us Next Monday: CEO AMA with Leyla Sudbury & Ali Platon\n\nhttps://womenssearchnetwork.com/resource/ceo-ama-with-leyla-sudbury-and-ali-platon\n\nCEO Ask Me Anything\n\nDate: Monday, September 21st\n\nTime: 12:00 PM - 1:00 PM ET\n\nLocation: Virtual\n\nREGISTER (https://us06web.zoom.us/meeting/register/p0Fe0lKRTc6MspAmM7MovA)\n\nThis webinar will be an Ask Me Anything (AMA) featuring CEOs Leyla Sudbury (https://linkedin.com/in/leyla-sudbury-6575b382) and Ali Platon (https://www.linkedin.com/in/ali-platon-8479903a/) . Through a moderated Q&A, we'll explore their journeys from launching their search funds to acquiring businesses and now leading their companies as CEOs. They'll share candid insights, lessons learned, and practical advice on navigating the search process, closing an acquisition, and transitioning into the operator role. Attendees will also have the opportunity to ask their own questions during the session.\n\nFor those who register, we\u2019ll send out a Google Form in advance so you can submit your questions for the panelists ahead of time.\n\n\u2728 Stay tuned for more details on these upcoming Q4 events! \u2728\n\n* IESE 3rd Women in Search Forum (October 14th)\n\n* Kellogg/Booth ETA Conference Happy Hour (October 30th)\n\n* HBS ETA Conference Welcome Event (November 13th)\n\n* CEO Offsite (December)\n\n* Family Planning Webinar (December)\n\n\ud83c\udfa7 Have you listened to our latest podcast episode? \ud83c\udfa7\n\nhttps://podcasts.apple.com/us/podcast/womens-search-network-the-podcast/id1772487851\n\nGreat CEOs learn where they can have the most impact and build the right team around them. In this episode, Carla Larin shares what she has learned since stepping in as CEO of MaxRTE and growing the healthcare software company. Carla discusses how she identified her strengths, built a leadership team to complement them, and learned to value potential and fit over experience alone. Carla shares candid lessons from hiring mistakes and reflects on her unexpected discovery that enterprise sales was one of her strengths. She also explains why getting clear on your ideal customer profile is so important before building a sales team. Throughout the conversation, she offers a practical look at growing into the CEO role and building a team that can scale.\n\nLISTEN ON APPLE (https://podcasts.apple.com/us/podcast/maximizing-your-impact-as-ceo-with-carla-larin/id1772487851?i=1000785576990)\n\nLISTEN ON SPOTIFY (https://open.spotify.com/episode/1fyLOZZnE3hdhm20sNdtR6)\n\nDid you recently acquire a company? Did you recently launch your search? Please make sure to update your WSN Profile at www.womenssearchnetwork.com (https://www.womenssearchnetwork.com/login) to stay up to date on events! Not sure how to do that or have other questions?\n\nPlease reach out to andrea@womenssearchnetwork.com. (mailto:andrea@womenssearchnetwork.com?subject=&body=)\n\nJoin us on WhatsApp to Chat & Connect (https://womenssearchnetwork.us17.list-manage.com/track/click?u=d304b1b4d9d47429e56f0b05b&id=dd3883dd55&e=eb37beb431) with other Searchers*!\n\n*The community is open to everyone! Please note that the Active Searcher and CEO groups are by request only as they are geared towards serving Active Searchers and CEOs specifically. If you are an Active Searcher or CEO, please make sure your WhatsApp profile has your full name, and that your status is updated with the WSN so your request to join is readily accepted!\n\nTHANK YOU TO OUR SPONSORS\n\nhttps://www.pfbt.com/parkside-launches-search-fund-lending-with-expert-team-acquisition\n\nhttps://www.paulhastings.com/\n\nhttps://plexuscap.com/\n\nhttps://boulaygroup.com/\n\nhttps://oberle-risk.com/\n\nEMPOWERING FEMALE SEARCH ENTREPRENEURS\n\nWomen\u2019s Search Network aims to empower women through education and to create meaningful opportunities for women in ETA to connect with, learn from, and support one another on their leadership journey.\n\nFIND OUT MORE (https://www.womenssearchnetwork.com/)\n\nhttps://linkedin.com/https://www.linkedin.com/company/womenssearchnetwork/\n\nhttps://www.womenssearchnetwork.com/\n\nmailto:andrea@womenssearchnetwork.com\n\nhttps://womenssearchnetwork.com\n\nView in browser (https://mailchi.mp/womenssearchnetwork.com/join-us-in-2025-the-womens-search-network-q1-lineup-14206927?e=4aea63a4c5)\n\nCopyright (C) 2026 Women's Search Network. All rights reserved.\n\nYou are receiving this email because you opted in via our website.\n\nOur mailing address is:\n\nWomen's Search Network\n\n160 Bovet Rd\n\nSan Mateo, CA 94402-3100\n\nUSA\n\nWant to change how you receive these emails?\n\nYou can update your preferences (https://womenssearchnetwork.us17.list-manage.com/profile?u=d304b1b4d9d47429e56f0b05b&id=6b87b8d278&e=4aea63a4c5&c=6c468b5902) or unsubscribe (https://womenssearchnetwork.us17.list-manage.com/unsubscribe?u=d304b1b4d9d47429e56f0b05b&id=6b87b8d278&t=b&e=4aea63a4c5&c=6c468b5902)",
+          "to": "<admin@greenwichandbarrow.com>"
+        }
+      ],
+      "raw_body_bytes_seen": 166396,
+      "snippet": "",
+      "subject": "Join Us Next Monday: CEO AMA with Leyla Sudbury & Ali Platon"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-06 09:00",
+      "from": "BizBuySell <news@bizbuysell.com>",
+      "id": "1a082047766a5661",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Sun, 06 Sep 2026 06:00:00 -0700",
+          "from": "BizBuySell <news@bizbuysell.com>",
+          "message_id": "1a082047766a5661",
+          "size_estimate": 87481,
+          "snippet": "Don&#39;t miss your opportunity to be your own boss \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f",
+          "subject": "4 Hot Franchises to Own on BizBuySell for August 2026",
+          "text_excerpt": "Email from BizBuySell \n\n \n\n \n\n \n\n \n\n 96 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n 96 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n 96 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Don't miss your opportunity to be your own boss \n\n \n\n \n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00a0\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u200a \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n September's 4 Hot\n\n Franchises to Own on BizBuySell\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n School of Rock \n\n \n\n \n\n As\n\n low as\n\n $150,000 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Learn\n\n more \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Mr. Electric\n\n \n\n \n\n As\n\n low as\n\n $65,000 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Learn\n\n more \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n HOODZ\n\n \n\n \n\n As\n\n low as\n\n $100,000 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Learn\n\n more \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Blingle!\n\n \n\n \n\n As\n\n low as\n\n $60,000 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Learn\n\n more \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Franchise Agreements \n\n \n\n \n\n \n\n Everything you need to know about the legal document that governs your franchise relationship.\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Learn\n\n More \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Was this email helpful?\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Unsubscribe \u00a0\u00a0 | \u00a0 Email\u00a0Preferences \n\n \u00a0 | \u00a0\u00a0 Terms\u00a0of\u00a0Use \n\n \u00a0 | \u00a0\n\n Privacy\u00a0Notice \n\n \u00a0 | \u00a0\n\n \n\n Contact\u00a0Us \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n This\n\n commercial email was sent to admin@greenwichandbarrow.com \n\n by BizBuySell. \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n 425\n\n Market Street, 7th Fl, San\n\n Francisco, CA, 94105",
+          "to": "admin@greenwichandbarrow.com"
+        }
+      ],
+      "raw_body_bytes_seen": 78872,
+      "snippet": "",
+      "subject": "4 Hot Franchises to Own on BizBuySell for August 2026"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-08 09:00",
+      "from": "Baton <no-reply@alerts.baton.com>",
+      "id": "1a0811b86e67f991",
+      "labels": [
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Tue, 08 Sep 2026 13:00:45 +0000",
+          "from": "Baton <no-reply@alerts.baton.com>",
+          "message_id": "1a0811b86e67f991",
+          "size_estimate": 41993,
+          "snippet": "Baton You have a new listing match \ud83e\udef6\ud83c\udffb Hi Kay, New listings matching your saved search: NY Search have hit the Baton Marketplace. Premium home automation design and installation business Other",
+          "subject": "New business listings matching NY Search",
+          "text_excerpt": "96 \n\n \n\n \n\n \n\n \n\n \n\n You have a new listing match \ud83e\udef6\ud83c\udffb Hi Kay, New listings matching your saved search: NY Search have hit the Baton Marketplace. Premium home automation design and installation business Other professional services in NY $12,142,454 ASKING PRICE $5,264,273 GROSS REVENUE $2,239,169 ADJ. CASH FLOW 5.42X C.F. MULTIPLE VIEW OFF-MARKET PROFILE What are off-market profiles? Off-Market Profiles are owners who\u2019ve received a valuation but aren\u2019t actively selling. Owners are notified of offers and interest, but may not engage. Learn more Want to see the rest? See all results Update your saved searches and alerts any time from Your Profile > Saved searches Is this deal not the right fit for you? Forward to a fellow business buyer! Baton - The best place to buy or sell a small business 432 Park Ave South, 10th floor, New York, NY 10016 \u00a9 2026 Baton Market Inc. All rights reserved. Click here to unsubscribe",
+          "to": "admin@greenwichandbarrow.com"
+        }
+      ],
+      "raw_body_bytes_seen": 33717,
+      "snippet": "",
+      "subject": "New business listings matching NY Search"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-08 10:11",
+      "from": "Jon Hainstock <jon@quietlight.com>",
+      "id": "1a0815c263569620",
+      "labels": [
+        "auto/deal flow",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Tue, 8 Sep 2026 14:11:34 +0000",
+          "from": "Jon Hainstock <jon@quietlight.com>",
+          "message_id": "1a0815c263569620",
+          "size_estimate": 86330,
+          "snippet": "This subscription video-editing service helps companies, agencies, and creators produce regular content without hiring an in-house team. September 8th, 2026 Listing Alert. Web Business SBA Pre-",
+          "subject": "SBA Pre-Qualified: Subscription Video-Editing Service | 65 Active Accounts | 4.8/5 Average Ticket Rating | Manager-Led Operations",
+          "text_excerpt": "This subscription video-editing service helps companies, agencies, and creators\n\nproduce regular content without hiring an in-house team.\n\n\u00a0\n\nhttps://quietlight.com \u00a0 September 8th, 2026 Listing Alert.\n\n\u00a0\n\nWeb Business \u00a0 SBA Pre-Qualified: Subscription Video-Editing Service | 65 Active\n\nAccounts | 4.8/5 Average Ticket Rating | Manager-Led Operations \u00a0\n\n\u00a0\n\nFinancial Quickview. \u00a0\n\n\u00a0 Revenue \u00a0 $1,726,196\n\n\u00a0 Earnings \u00a0 $445,188\n\n\u00a0 Asking Price \u00a0 $1,670,000\n\nWant to sign the NDA and access the materials for this listing?\n\nInquire Now\n\nhttps://quietlight.com/listings/18830116?utm_source=launch_email&utm_medium=email&utm_campaign=18830116\n\n\u00a0\n\nDetailed Description. \u00a0 This subscription video-editing service helps companies,\n\nagencies, and creators produce regular content without hiring an in-house team.\n\nCustomers choose between two monthly packages, and the business serves 65 active\n\naccounts.\n\nEach account receives an editor, project manager, and quality control. Every\n\ndraft is reviewed before delivery, and internal ticket ratings average 4.8 out\n\nof 5. The largest account represents about 3% of trailing-12-month net customer\n\nrevenue, and the top 10 represent about 23%.\n\nAn operations manager oversees project management, quality control, and a\n\npart-time sales contractor. SOPs, training guides, scorecards, and backup\n\ncoverage support daily execution. The team handles fulfillment, customer\n\ncommunication, hiring, staffing, and daily management. The buyer's role centers\n\non budgeting, marketing oversight, and strategic decisions.\n\nThe owner intentionally built the company for eventual sale and is now ready to\n\nfocus on personal priorities and future projects.\n\nCustomer retention is one of the clearest areas for improvement. More than half\n\nof recorded churn cases came from customers who lacked enough content, faced\n\ninternal challenges, or paused seasonally. Existing onboarding, quality review,\n\nand account coverage give a buyer a starting point to target customers with\n\nsteady content calendars, qualify expected production volume, and build\n\nreactivation outreach for seasonal accounts.\n\nGoogle and Meta were attributed 87 of 108 new customers during the trailing 12\n\nmonths, providing established paid channels with room to diversify. Pricing has\n\nbeen unchanged for roughly three years, and outbound, white-label, and\n\nenterprise sales remain lightly developed. With core delivery covered, a buyer\n\nwith agency-sales and paid-acquisition experience can focus on pricing, customer\n\nfit, outbound capacity, and larger accounts. \u00a0\n\n\u00a0\n\n\u00a0\n\nRequest an info packet. \u00a0 The average Quiet Light listing receives 3 offers,\n\noften within days of listing. Inquire now to get a leg up on other buyers. \u00a0\n\nInquire Now\n\nhttps://quietlight.com/listings/18830116?utm_source=launch_email&utm_medium=email&utm_campaign=18830116\n\n\u00a0 No obligation or financial commitment.\n\nKey Benefits. \u00a0\n\n65 Active Subscription Accounts \u00a0 The current customer base includes 28\n\nsmaller-package accounts and 37 larger-package accounts.\n\n4.8 Average Ticket Rating \u00a0 Internal ticket ratings average 4.8 out of 5 on\n\ncompleted work after every draft passes through creative quality control.\n\nLow Customer Concentration \u00a0 The largest customer represents about 3% of\n\ntrailing-12-month net customer revenue. The top 10 represent about 23%.\n\nManager-Led Delivery \u00a0 An operations manager oversees project management,\n\nquality control, staffing, daily execution, and a part-time sales contractor.\n\nEstablished Paid Acquisition \u00a0 Google and Meta were attributed 87 of 108 new\n\ncustomers during the trailing 12 months.\n\nThree-Year Pricing Gap \u00a0 Both packages have used their current pricing for\n\nroughly three years, giving a buyer a defined pricing review to test.\n\n\u00a0\n\nThis listing has been prepared by: \u00a0\n\nJon Hainstock Advisor\n\n\u00a0\n\n631 Brawley School Road\n\nSuite 300\n\nMooresville, NC 28117 \u00a0\n\nhttps://www.facebook.com/QuietLightAdvisors https://twitter.com/quietlightinc\n\nhttps://www.instagram.com/quietlightb/\n\nUnsubscribe https://ac.qlbadmin.com/unsubscribe/?email=admin@greenwichandbarrow.com",
+          "to": "admin@greenwichandbarrow.com"
+        }
+      ],
+      "raw_body_bytes_seen": 79968,
+      "snippet": "",
+      "subject": "SBA Pre-Qualified: Subscription Video-Editing Service | 65 Active Accounts | 4.8/5 Average Ticket Rating | Manager-Led Operations"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-08 14:10",
+      "from": "Chris Wozniak <woz@quietlight.com>",
+      "id": "1a08236a262aae39",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Tue, 8 Sep 2026 18:10:13 +0000",
+          "from": "Chris Wozniak <woz@quietlight.com>",
+          "message_id": "1a08236a262aae39",
+          "size_estimate": 95695,
+          "snippet": "This 20-year-old Amazon FBA business sells UV-protective umbrellas that keep people cool and safe from the sun without chemicals. September 8th, 2026 Listing Alert. Amazon FBA 20-Year-Old UV-Protection",
+          "subject": "20-Year-Old UV-Protection Umbrella Brand | Medical-Grade, AATCC-Certified | 69% Revenue & 142% SDE YoY Growth",
+          "text_excerpt": "This 20-year-old Amazon FBA business sells UV-protective umbrellas that keep\n\npeople cool and safe from the sun without chemicals.\n\n\u00a0\n\nhttps://quietlight.com \u00a0 September 8th, 2026 Listing Alert.\n\n\u00a0\n\nAmazon FBA \u00a0 20-Year-Old UV-Protection Umbrella Brand | Medical-Grade,\n\nAATCC-Certified | 69% Revenue & 142% SDE YoY Growth \u00a0\n\n\u00a0\n\nFinancial Quickview. \u00a0\n\n\u00a0 Revenue \u00a0 $941,618\n\n\u00a0 Earnings \u00a0 $235,791\n\n\u00a0 Asking Price \u00a0 $710,000\n\n+ Inventory\n\nWant to sign the NDA and access the materials for this listing?\n\nInquire Now\n\nhttps://quietlight.com/listings/18829173?utm_source=launch_email&utm_medium=email&utm_campaign=18829173\n\n\u00a0\n\nDetailed Description. \u00a0 This 20-year-old Amazon FBA business sells UV-protective\n\numbrellas that keep people cool and safe from the sun without chemicals. Revenue\n\nis up 69%, and SDE is up 142% over the TTM, driven by an SEO and AI-search\n\nstrategy that lifted AI prompt visibility from 5% to 54%.\n\nWhat sets the company apart is real substance behind the marketing. Its\n\numbrellas carry AATCC TM183-2020 certification, blocking 100% of UVB and 99.97%\n\nof UVA rays via a patented coating exclusive to its longtime supplier, and hold\n\nthe Melanoma International Foundation Seal of Approval. The brand is also\n\nrecommended by multiple practicing dermatologists and has drawn organic\n\nattention from public figures, all without paid promotion. Its umbrellas qualify\n\nfor FSA and HSA reimbursement as a medical device, a distinction that generic\n\numbrella brands cannot claim. Trademarks are already registered across the US,\n\nMexico, China, Japan, and the EU.\n\nThe most immediate growth opportunity is shifting more volume to the company's\n\nShopify store, which already carries a higher average order value, stronger\n\nmargins, and a repeat-customer rate as high as 40%, yet it represents only 17%\n\nof revenue today. From there, additional Amazon storefronts in the UK, Spain,\n\nSoutheast Asia, and Australia can build on trademarks already in place. A formal\n\ndermatologist referral program and an affiliate program have both been\n\nidentified but never built. A West Coast distribution center would cut shipping\n\ncosts and delivery times to a large existing customer base. A new OSHA-compliant\n\nproduct line for HVAC technicians, launched this year, opens an entirely new B2B\n\nbuyer segment built on the same manufacturing the company already runs at scale.\n\nThe business carries low transfer risk. It has no employees and runs on about 20\n\nhours per week per owner in season, with well-documented processes a buyer can\n\ntake on directly or outsource for about $47K per year, plus a 30-day training\n\nperiod and ongoing consulting support. \u00a0\n\n\u00a0\n\n\u00a0\n\nRequest an info packet. \u00a0 The average Quiet Light listing receives 3 offers,\n\noften within days of listing. Inquire now to get a leg up on other buyers. \u00a0\n\nInquire Now\n\nhttps://quietlight.com/listings/18829173?utm_source=launch_email&utm_medium=email&utm_campaign=18829173\n\n\u00a0 No obligation or financial commitment.\n\nKey Benefits. \u00a0\n\nExplosive Revenue and SDE Growth \u00a0 Revenue is up 69% to $941,618, and SDE is up\n\n142% to $235,791 over the trailing 12 months, with TTM gross profit of 65.3%.\n\nProven Organic Growth Engine \u00a0 AI search visibility jumped from 5% to 54%,\n\norganic orders grew 18x to a peak of 300 per month, and site traffic peaked at\n\n34,000 visits monthly, all from a documented, repeatable SEO strategy.\n\nDiverse, High-Margin Channel Mix \u00a0 Shopify orders average $83.18 versus $52.53\n\non Amazon, with a repeat rate up to 40%. Revenue also flows through Amazon\n\nMexico and Canada, and distributor relationships across real channels.\n\nTrusted, Proven Reputation \u00a0 Amazon product ratings run 4.6 to 4.7 stars across\n\nroughly 3,000 reviews, backed by dermatologist recommendations and organic\n\nexposure from public figures, all earned without paid promotion.\n\nCertified Medical-Grade Protection \u00a0 AATCC-certified UPF 50-plus umbrellas block\n\n100% of UVB and 99.97% of UVA rays, qualify for FSA/HSA reimbursement, and carry\n\na Melanoma Foundation Seal of Approval that competitors lack.\n\nSimple, Low-Hour Operations \u00a0 This business has no employees and runs on about\n\n20 hours per week per owner in season, with well-documented processes a buyer\n\ncan take on directly or outsource for about $47,600 per year.\n\nReady-Made International Footprint \u00a0 Trademarks are already registered in the\n\nUS, Mexico, China, Japan, and the EU, giving a buyer a ready legal foundation to\n\nexpand into new international storefronts without starting from scratch.\n\nNew B2B Growth Vertical \u00a0 The new product line, launched this year for\n\nOSHA-compliant heat safety, opens an entirely new industrial buyer segment built\n\non the same manufacturing the company already runs at scale.\n\n\u00a0\n\nThis listing has been prepared by: \u00a0\n\nChris Wozniak Advisor\n\n\u00a0\n\n631 Brawley School Road\n\nSuite 300\n\nMooresville, NC 28117 \u00a0\n\nhttps://www.facebook.com/QuietLightAdvisors https://twitter.com/quietlightinc\n\nhttps://www.instagram.com/quietlightb/\n\nUnsubscribe https://ac.qlbadmin.com/unsubscribe/?email=admin@greenwichandbarrow.com",
+          "to": "admin@greenwichandbarrow.com"
+        }
+      ],
+      "raw_body_bytes_seen": 89325,
+      "snippet": "",
+      "subject": "20-Year-Old UV-Protection Umbrella Brand | Medical-Grade, AATCC-Certified | 69% Revenue & 142% SDE YoY Growth"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-09 10:11",
+      "from": "Chris Wozniak <woz@quietlight.com>",
+      "id": "1a08682be0f5b1b5",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Wed, 9 Sep 2026 14:11:50 +0000",
+          "from": "Chris Wozniak <woz@quietlight.com>",
+          "message_id": "1a08682be0f5b1b5",
+          "size_estimate": 99820,
+          "snippet": "This 6-year-old SBA- and pari passu-prequalified Shopify store sells non-toxic pest control products, led by a proprietary mosquito trap and a mice eliminator pouch line. September 9th, 2026 Listing",
+          "subject": "SBA & Pari Passu Pre-Qualified | DTC Pest Control Brand | Regulatory Moat in 45+ States | $10.7M TTM Revenue | 46% Revenue and 55% SDE YoY Growth",
+          "text_excerpt": "This 6-year-old SBA- and pari passu-prequalified Shopify store sells non-toxic\n\npest control products, led by a proprietary mosquito trap and a mice eliminator\n\npouch line.\n\n\u00a0\n\nhttps://quietlight.com \u00a0 September 9th, 2026 Listing Alert.\n\n\u00a0\n\nEcommerce \u00a0 SBA & Pari Passu Pre-Qualified | DTC Pest Control Brand | Regulatory\n\nMoat in 45+ States | $10.7M TTM Revenue | 46% Revenue and 55% SDE YoY Growth \u00a0\n\n\u00a0\n\nFinancial Quickview. \u00a0\n\n\u00a0 Revenue \u00a0 $10,715,242\n\n\u00a0 Earnings \u00a0 $2,400,109\n\n\u00a0 Asking Price \u00a0 $10,800,000\n\n+ Inventory\n\nWant to sign the NDA and access the materials for this listing?\n\nInquire Now\n\nhttps://quietlight.com/listings/18830047?utm_source=launch_email&utm_medium=email&utm_campaign=18830047\n\n\u00a0\n\nDetailed Description. \u00a0 This 6-year-old SBA- and pari passu-prequalified Shopify\n\nstore sells non-toxic pest control products, led by a proprietary mosquito trap\n\nand a mice eliminator pouch line. Its target buyer is the homeowner who wants\n\npests gone without dangerous chemicals in the house. Over the TTM, revenue grew\n\n45% year over year to $10.7 million, while seller's discretionary earnings grew\n\n55% to $2.4 million. That growth in 2025 and 2026 followed a temporary pause in\n\nthe flagship product line in 2024 while the business resolved a state\n\nregistration matter, and the recovery since has been sharp and sustained.\n\nThat regulatory work became a real moat. Every product is registered under the\n\nEPA's FIFRA Section 25(b) exemption across more than 45 states, a lengthy\n\nprocess that keeps most competitors out of the category entirely, and Amazon\n\nenforces its own compliance standards just as strictly.\n\nSeveral growth levers are already scoped out, not just theorized. Pricing has\n\nnever moved since launch, despite sitting well below competitors. An affiliate\n\nand creator program remains almost entirely unbuilt, with room to scale for well\n\nunder $1,000 per month. A fully sourced, all-season spray with subscription\n\npotential sits ready to launch for the slower fall-to-winter season.\n\nBrick-and-mortar, QVC and HSN, YouTube, and TikTok remain largely untapped\n\nbeyond the business's single paid social channel.\n\nDay-to-day operations run independently of ownership. A small, established team\n\nspanning marketing, operations, and customer service produces roughly 20 new ad\n\nconcepts each week; documentation and standard procedures are in place across\n\nthe business; and the owner spends only a few hours weekly on oversight. Most\n\nteam members have stayed for years and will continue under new ownership. The\n\ncurrent owner is selling due to health issues, is committed to a thorough\n\ntransition, and has agreed to a non-compete. The ideal buyer understands paid\n\nsocial advertising or has someone on their team who does. \u00a0\n\n\u00a0\n\n\u00a0\n\nRequest an info packet. \u00a0 The average Quiet Light listing receives 3 offers,\n\noften within days of listing. Inquire now to get a leg up on other buyers. \u00a0\n\nInquire Now\n\nhttps://quietlight.com/listings/18830047?utm_source=launch_email&utm_medium=email&utm_campaign=18830047\n\n\u00a0 No obligation or financial commitment.\n\nKey Benefits. \u00a0\n\nConversion Rate Beats Industry Average \u00a0 The site has converted at 4.4% this\n\nyear, above the industry average, meaning every dollar spent on ads goes further\n\nand turns into more paying customers than the typical DTC competitor ever sees.\n\nFull Regulatory Compliance Moat \u00a0 Every product is registered under the EPA's\n\nFIFRA Section 25(b) exemption across more than 45 states, a costly, multi-year\n\nprocess most competitors never fully complete, and Amazon enforces it strictly,\n\ntoo.\n\nLoyal Team with Years of Tenure \u00a0 Most team members have stayed with the\n\nbusiness for years, including through the 2024 downturn, when the company kept\n\npaying them in full despite reduced profitability. The owner spends ~3 hours per\n\nweek on the business.\n\nCapital-Efficient Inventory Model \u00a0 The business carries roughly $350,000 in\n\ninventory against over $10 million in trailing-12-month revenue, a notably lean\n\nworking capital footprint relative to the size of the business today.\n\nLow-Fee, Flexible Fulfillment Partner \u00a0 The 3PL charges only for pick, pack, and\n\nshipping, with no fees for storage, container unloading, or special requests,\n\nand has been a responsive, flexible partner for years that runs smoothly.\n\nTwo Straight Years of Strong Growth \u00a0 Trailing-12-month revenue and seller's\n\ndiscretionary earnings both grew meaningfully year over year in 2024\u20132025, and\n\nagain in 2025\u20132026, showing a two-year growth trend, not a single strong year.\n\nReturn Rate Near Rock Bottom \u00a0 Returns and refunds run around 1.25%, a rate the\n\nseller describes as consistently low year after year, well below what is typical\n\nfor the pest control and broader consumer products category.\n\nSBA- and Pari Passu-Prequalified \u00a0 This listing is prequalified for the SBA 7(a)\n\nmaximum and pari passu financing, opening the door to a much wider pool of\n\nqualified buyers who don't need to bring all cash to the table to compete for\n\nthis deal.\n\n\u00a0\n\nThis listing has been prepared by: \u00a0\n\nChris Wozniak Advisor\n\n\u00a0\n\n631 Brawley School Road\n\nSuite 300\n\nMooresville, NC 28117 \u00a0\n\nhttps://www.facebook.com/QuietLightAdvisors https://twitter.com/quietlightinc\n\nhttps://www.instagram.com/quietlightb/\n\nUnsubscribe https://ac.qlbadmin.com/unsubscribe/?email=admin@greenwichandbarrow.com",
+          "to": "admin@greenwichandbarrow.com"
+        }
+      ],
+      "raw_body_bytes_seen": 89907,
+      "snippet": "",
+      "subject": "SBA & Pari Passu Pre-Qualified | DTC Pest Control Brand | Regulatory Moat in 45+ States | $10.7M TTM Revenue | 46% Revenue and 55% SDE YoY Growth"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-09 13:14",
+      "from": "Max Friar <info@caldergr.com>",
+      "id": "1a08729e03bcfb82",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Wed, 9 Sep 2026 13:14:17 -0400 (EDT)",
+          "from": "Max Friar <info@caldergr.com>",
+          "message_id": "1a08729e03bcfb82",
+          "size_estimate": 171136,
+          "snippet": "Integrated metrology solutions provider, accredited laboratory, long-standing OEM relationships, experienced engineering team For Sale:Integrated Metrology Solutions Provider Revenue $2288008 Cash Flow",
+          "subject": "Integrated metrology solutions provider for sale",
+          "text_excerpt": "der, accredited laboratory, long-standing OEM relationships, experienced engineering team \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n For S al e: Integrated Metrology Solutions Provider \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Revenue \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n $2,288,008 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Cash Flow \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n $514,885 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Geography \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Great Lakes \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n The Integrated Metrology Solutions Provider consists of two complementary Businesses serving industrial customers across several precision-driven end markets. One Business distributes advanced measurement equipment, while the other provides dimensional inspection, calibration, engineering, installation, training, programming, and ongoing technical support.\n\n \n\n \n\n An experienced engineering team manages daily laboratory operations, reducing reliance on ownership and supporting service continuity. Ownership is seeking a transition and is prepared to remain involved in sales to preserve key customer and supplier relationships. Both Businesses operate from a shared facility, with the affiliated real estate available for lease or purchase as part of a transaction\n\n---\n\n\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Revenue \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n $2,288,008 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Cash Flow \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n $514,885 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Geography \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Great Lakes \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n The Integrated Metrology Solutions Provider consists of two complementary Businesses serving industrial customers across several precision-driven end markets. One Business distributes advanced measurement equipment, while the other provides dimensional inspection, calibration, engineering, installation, training, programming, and ongoing technical support.\n\n \n\n \n\n An experienced engineering team manages daily laboratory operations, reducing reliance on ownership and supporting service continuity. Ownership is seeking a transition and is prepared to remain involved in sales to preserve key customer and supplier relationships. Both Businesses operate from a shared facility, with the affiliated real estate available for lease or purchase as part of a transaction. \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n New to Calder? \n\n Inquire Here! \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n NDA on File? \n\n Inquire Here! \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Not\u00a0Interested\n\n---\n\nnd supporting service continuity. Ownership is seeking a transition and is prepared to remain involved in sales to preserve key customer and supplier relationships. Both Businesses operate from a shared facility, with the affiliated real estate available for lease or purchase as part of a transaction. \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n New to Calder? \n\n Inquire Here! \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n NDA on File? \n\n Inquire Here! \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Not\u00a0Interested? \n\n Click Here. \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Investment Highlights \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n 1. Full-Service Metrology Platform \n\n 2. Diversified Customer Base \n\n 3. Hard-to-Replicate Business Model \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Growth Opportunities \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n 1. Sales and Marketing Expansion \n\n 2. Gage and Hand-Tool Calibration Line \n\n 3. Capacity Utilization \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n ",
+          "to": "<contact@greenwichandbarrow.com>"
+        }
+      ],
+      "raw_body_bytes_seen": 155916,
+      "snippet": "",
+      "subject": "Integrated metrology solutions provider for sale"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-09 14:10",
+      "from": "Brad Wayland <brad@quietlight.com>",
+      "id": "1a0875cf723c21ba",
+      "labels": [
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Wed, 9 Sep 2026 18:10:10 +0000",
+          "from": "Brad Wayland <brad@quietlight.com>",
+          "message_id": "1a0875cf723c21ba",
+          "size_estimate": 85533,
+          "snippet": "This business dominates the resume and career services category on Thumbtack. September 9th, 2026 Listing Alert. Membership &amp; Coaching Thumbtack-Dominant Career Services Business | Resumes &amp;",
+          "subject": "Thumbtack-Dominant Career Services Business | Resumes & Career Coaching | 4,000+ Five-Star Reviews | 33%+ Net Margins",
+          "text_excerpt": "This business dominates the resume and career services category on Thumbtack.\n\n\u00a0\n\nhttps://quietlight.com \u00a0 September 9th, 2026 Listing Alert.\n\n\u00a0\n\nMembership & Coaching \u00a0 Thumbtack-Dominant Career Services Business | Resumes &\n\nCareer Coaching | 4,000+ Five-Star Reviews | 33%+ Net Margins \u00a0\n\n\u00a0\n\nFinancial Quickview. \u00a0\n\n\u00a0 Revenue \u00a0 $633,729\n\n\u00a0 Earnings \u00a0 $218,629\n\n\u00a0 Asking Price \u00a0 $710,500\n\nWant to sign the NDA and access the materials for this listing?\n\nInquire Now\n\nhttps://quietlight.com/listings/18830117?utm_source=launch_email&utm_medium=email&utm_campaign=18830117\n\n\u00a0\n\nDetailed Description. \u00a0 This business dominates the resume and career services\n\ncategory on Thumbtack. Since 2020, it has accumulated over 4,000 five-star\n\nreviews and has been recognized as a Top Pro for six consecutive years. The\n\nservice provides custom resumes, career coaching, and interview preparation for\n\njob seekers, from entry-level to executive.\n\nA buyer with marketing skills inherits a proven service model and extraordinary\n\nsocial proof, with immediate, low-cost levers to diversify revenue. Demand\n\nalready exists for services well beyond the core resume offering. In the past\n\nyear, a high-ticket Job Placement Service priced at $2,449 per client reached\n\nfull capacity within four months and now carries a nine-person waitlist.\n\nAdditionally, Thumbtack allows new service categories to be added to existing\n\nprofiles while retaining all reviews, enabling instant credibility in adjacent\n\nmarkets like recruiting.\n\nApproximately 85% of leads come through Thumbtack, with the remainder from\n\nreferrals, LinkedIn, and Instagram. No real marketing engine has ever been\n\nimplemented. The seller built this business with no marketing background, no\n\nwebsite, no email strategy, and no paid advertising outside of Thumbtack. An\n\nuntouched email list of over 5,000 engaged contacts has never been marketed to.\n\nRevenue has pulled back from its 2023 peak because the seller stepped away from\n\ndaily operations and, in 2025, hired an Operations Manager, allowing the seller\n\nto travel and spend only about 30 minutes per day on the business. Despite this,\n\nnet margins climbed to over 33% for 2025 and have continued that upward trend\n\nfor 2026. The company is supported by a fully trained contractor team, with\n\nestablished systems and processes in place to manage day-to-day operations. The\n\ncurrent owner is selling to focus on starting a family and is committed to a\n\nfull transition. \u00a0\n\n\u00a0\n\n\u00a0\n\nRequest an info packet. \u00a0 The average Quiet Light listing receives 3 offers,\n\noften within days of listing. Inquire now to get a leg up on other buyers. \u00a0\n\nInquire Now\n\nhttps://quietlight.com/listings/18830117?utm_source=launch_email&utm_medium=email&utm_campaign=18830117\n\n\u00a0 No obligation or financial commitment.\n\nKey Benefits. \u00a0\n\nHuman-Quality Differentiation \u00a0 The business charges $240 per resume, with a\n\nfully human, personalized process, differentiating it from AI competitors.\n\nA Wide Review Moat \u00a0 The nearest competitor on Thumbtack has approximately 3,000\n\nreviews, and the third-ranked resume service has only 300, giving the business a\n\ndominant and widening lead.\n\nFully Location-Independent \u00a0 The seller has operated the business from Los\n\nAngeles, Thailand, Sweden, and Chicago without any disruption to operations or\n\nrevenue.\n\nMinimal Seasonality \u00a0 The business generates leads year-round, with only brief\n\nslowdowns around Thanksgiving and Christmas.\n\nHuge Lead Database \u00a0 The business has approximately 50,000 Thumbtack leads\n\naccumulated since being on the platform, with 10,000\u201320,000 including phone\n\nnumbers. A new owner will have a head start for any outbound campaigns.\n\n\u00a0\n\nThis listing has been prepared by: \u00a0\n\nBrad Wayland Advisor\n\n\u00a0\n\n631 Brawley School Road\n\nSuite 300\n\nMooresville, NC 28117 \u00a0\n\nhttps://www.facebook.com/QuietLightAdvisors https://twitter.com/quietlightinc\n\nhttps://www.instagram.com/quietlightb/\n\nUnsubscribe https://ac.qlbadmin.com/unsubscribe/?email=admin@greenwichandbarrow.com",
+          "to": "admin@greenwichandbarrow.com"
+        }
+      ],
+      "raw_body_bytes_seen": 76183,
+      "snippet": "",
+      "subject": "Thumbtack-Dominant Career Services Business | Resumes & Career Coaching | 4,000+ Five-Star Reviews | 33%+ Net Margins"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-10 09:00",
+      "from": "BizBuySell <news@bizbuysell.com>",
+      "id": "1a08b7550208265b",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Thu, 10 Sep 2026 06:00:00 -0700",
+          "from": "BizBuySell <news@bizbuysell.com>",
+          "message_id": "1a08b7550208265b",
+          "size_estimate": 114363,
+          "snippet": "See this week&#39;s standout businesses with SBA financing potential. \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f",
+          "subject": "Top 5 SBA-Eligible Listings on BizBuySell",
+          "text_excerpt": "Email from BizBuySell \n\n \n\n \n\n \n\n \n\n 96 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n 96 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n 96 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n See this week's standout businesses with SBA financing potential.\n\n \n\n \n\n \n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f \u2007\u034f\n\n \u2007\u034f \u2007\u034f \u2007\u034f \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad \u00ad\n\n \u00ad \u00ad \u00a0\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Top 5 SBA Loan Eligible Listings\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u200a \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Mexican Restaurants | Two(2) Locations | Real Estate(Land & Building) \n\n \n\n \n\n \u2705SBA Loan Eligible \n\n Asking Price: $8,000,000 \n\n Location: California\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n View Listing \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Premium Pre-Owned Car Dealership-Diverse Inventory with lots of Trucks \n\n \n\n \n\n \u2705SBA Loan Eligible \n\nAsking Price: $4,000,000 \n\n Location: Florida\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n View Listing \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Profitable Hospitality Opportunity Coastal Region\n\n \n\n \n\n \n\n \u2705SBA Loan Eligible \n\nAsking Price: $2,900,000 \n\n Location: North Carolina\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n View Listing \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Foam Fabrication and Upholstery Distribution Company \n\n \n\n \n\n \u2705SBA Loan Eligible \n\nAsking Price: $2,200,000 \n\n Location: Texas\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n View Listing \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Online-Focused Apparel & Home Goods Retailer\n\n \n\n \n\n \n\n \u2705SBA Loan Eligible \n\n Asking Price: $2,250,000\n\n \n\n Location: Texas\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n View Listing \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Browse\n\n business for sale \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Listings with the SBA Loan Eligible badge show the financials have been reviewed by a verified lender and may support SBA 7(a) financing for qualified buyers. \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Unsubscribe \u00a0\u00a0 | \u00a0 Email\u00a0Preferences \n\n \u00a0 | \u00a0\u00a0 Terms\u00a0of\u00a0Use \n\n \u00a0 | \u00a0\n\n Privacy\u00a0Notice \n\n \u00a0 | \u00a0\n\n \n\n Contact\u00a0Us \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n This commercial\n\n email was sent to admin@greenwichandbarrow.com \n\n by BizBuySell. \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n 425 Market\n\n Street, 7th Fl, San Francisco\n\n CA, 94105",
+          "to": "admin@greenwichandbarrow.com"
+        }
+      ],
+      "raw_body_bytes_seen": 104958,
+      "snippet": "",
+      "subject": "Top 5 SBA-Eligible Listings on BizBuySell"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-10 10:09",
+      "from": "Brad Wayland <brad@quietlight.com>",
+      "id": "1a08ba75e1e29372",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Thu, 10 Sep 2026 14:09:56 +0000",
+          "from": "Brad Wayland <brad@quietlight.com>",
+          "message_id": "1a08ba75e1e29372",
+          "size_estimate": 81995,
+          "snippet": "This business is a 14-year-old online training platform offering free courses for CPR and first aid. September 10th, 2026 Listing Alert. Content Site 14-Year-Old Free CPR &amp; First Aid Training Site",
+          "subject": "14-Year-Old Free CPR & First Aid Training Site | Owner Working Zero Hours | 800K Users | 45K Email List | Monetized with AdSense Only",
+          "text_excerpt": "This business is a 14-year-old online training platform offering free courses\n\nfor CPR and first aid.\n\n\u00a0\n\nhttps://quietlight.com \u00a0 September 10th, 2026 Listing Alert.\n\n\u00a0\n\nContent Site \u00a0 14-Year-Old Free CPR & First Aid Training Site | Owner Working\n\nZero Hours | 800K Users | 45K Email List | Monetized with AdSense Only \u00a0\n\n\u00a0\n\nFinancial Quickview. \u00a0\n\n\u00a0 Revenue \u00a0 $74,304\n\n\u00a0 Earnings \u00a0 $72,078\n\n\u00a0 Asking Price \u00a0 $287,500\n\nWant to sign the NDA and access the materials for this listing?\n\nInquire Now\n\nhttps://quietlight.com/listings/18830527?utm_source=launch_email&utm_medium=email&utm_campaign=18830527\n\n\u00a0\n\nDetailed Description. \u00a0 This business is a 14-year-old online training platform\n\noffering free courses for CPR and first aid. While competitors charge for\n\ncompletion certificates, this business offers them at no cost, driving strong\n\norganic demand and repeat traffic. The site appears on school syllabi and in\n\noccupational training programs as a preferred resource.\n\nThe seller spends absolutely no time on the business. Zero hours. It is a truly\n\npassive resource that has maintained steady revenue, showing resilience even in\n\nthe face of AI disruption.\n\nA buyer with even rudimentary digital marketing skills could reactivate this\n\nasset and drive growth. One hundred percent of revenue currently comes from\n\nAdSense. No other ad network has ever been tested. RPMs are high enough that\n\neven arbitrage from social media ads could make sense. The email list has 45,000\n\nsubscribers, and approximately 500 more are added every month through a pop-up,\n\nwith no active marketing. The seller hasn't sent an email since 2023.\n\nAdditionally, the website has over 800,000 registered users that are waiting to\n\nbe nurtured.\n\nDuring his first year of ownership, the seller outsourced content creation, and\n\nmonthly earnings climbed above $12,000, proving that a well-executed content\n\nstrategy could pay dividends. A new owner could resume content creation through\n\nAI or with a contractor and see a lift in revenue.\n\nThe seller is a real estate developer who acquired the site at the end of 2022\n\nand is selling to redeploy capital. No special training is required to run the\n\nbusiness. The site runs on WordPress, and a transfer of assets will be\n\nrelatively simple. \u00a0\n\n\u00a0\n\n\u00a0\n\nRequest an info packet. \u00a0 The average Quiet Light listing receives 3 offers,\n\noften within days of listing. Inquire now to get a leg up on other buyers. \u00a0\n\nInquire Now\n\nhttps://quietlight.com/listings/18830527?utm_source=launch_email&utm_medium=email&utm_campaign=18830527\n\n\u00a0 No obligation or financial commitment.\n\nKey Benefits. \u00a0\n\nHuge Display RPMs \u00a0 Current AdSense RPMs are near $40. The traffic is very\n\nvaluable for advertisers.\n\nPhysician-Authored Curriculum \u00a0 The original training content was composed by a\n\nBritish doctor, providing a layer of clinical authority and credibility.\n\nProven Stability \u00a0 The business maintained its earnings trajectory after\n\ntransferring from the original creator to the seller, showing that performance\n\nis not dependent on any single operator's involvement or expertise.\n\nImmediate Hosting Savings \u00a0 The site doesn't need much to run, yet the current\n\nhosting provider charges $250 per month. A new owner could improve margins on\n\nday one.\n\nGrowing Email List \u00a0 The email list grows reliably month to month, providing an\n\nowned audience and protection from algorithm changes.\n\n\u00a0\n\nThis listing has been prepared by: \u00a0\n\nBrad Wayland Advisor\n\n\u00a0\n\n631 Brawley School Road\n\nSuite 300\n\nMooresville, NC 28117 \u00a0\n\nhttps://www.facebook.com/QuietLightAdvisors https://twitter.com/quietlightinc\n\nhttps://www.instagram.com/quietlightb/\n\nUnsubscribe https://ac.qlbadmin.com/unsubscribe/?email=admin@greenwichandbarrow.com",
+          "to": "admin@greenwichandbarrow.com"
+        }
+      ],
+      "raw_body_bytes_seen": 75639,
+      "snippet": "",
+      "subject": "14-Year-Old Free CPR & First Aid Training Site | Owner Working Zero Hours | 800K Users | 45K Email List | Monetized with AdSense Only"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-10 13:17",
+      "from": "Max Friar <info@caldergr.com>",
+      "id": "1a08c530f98fd199",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Thu, 10 Sep 2026 13:17:25 -0400 (EDT)",
+          "from": "Max Friar <info@caldergr.com>",
+          "message_id": "1a08c530f98fd199",
+          "size_estimate": 171786,
+          "snippet": "HVAC and Plumbing Contractor, multi-service platform, established regional market presence, and vertically integrated project execution capabilities For Sale: HVAC and Plumbing Contractor Revenue",
+          "subject": "HVAC and plumbing contractor for sale",
+          "text_excerpt": "96 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n HVAC and Plumbing Contractor, multi-service platform, established regional market presence, and vertically integrated project execution capabilities \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n For Sale: HVAC and Plumbing Contractor \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Revenue \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n $8,932,152 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Cash Flow \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n $1,050,773 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Geography \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Midwest \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Founded in the early 1990s and headquartered in the Midwest, the Company is a mechanical contractor providing plumbing, mechanical piping, HVAC, and related services for commercial, industrial, institutional, municipal, healthcare, and residential customers. The Business maintains approximately $4.9 million in remaining contract value across active projects and benefits from a highly absentee ownership structure, with the owner dedicating approximately 10 hours per week to financial oversight and strategic direction. \n\n \u00a0 \n\n \n\n\n---\n\natform, established regional market presence, and vertically integrated project execution capabilities \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n For Sale: HVAC and Plumbing Contractor \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Revenue \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n $8,932,152 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Cash Flow \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n $1,050,773 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Geography \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Midwest \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Founded in the early 1990s and headquartered in the Midwest, the Company is a mechanical contractor providing plumbing, mechanical piping, HVAC, and related services for commercial, industrial, institutional, municipal, healthcare, and residential customers. The Business maintains approximately $4.9 million in remaining contract value across active projects and benefits from a highly absentee ownership structure, with the owner dedicating approximately 10 hours per week to financial oversight and strategic direction. \n\n \u00a0 \n\n \n\n The Business operates through a largely self-performing model supported by a tenured union workforce cultivated since 1991, providing reliable skilled labor and supporting consistent project execution. Recent investments in technology an\n\n---\n\n\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Revenue \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n $8,932,152 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Cash Flow \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n $1,050,773 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Geography \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Midwest \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \u00a0 \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Founded in the early 1990s and headquartered in the Midwest, the Company is a mechanical contractor providing plumbing, mechanical piping, HVAC, and related services for commercial, industrial, institutional, municipal, healthcare, and residential customers. The Business maintains approximately $4.9 million in remai",
+          "to": "<contact@greenwichandbarrow.com>"
+        }
+      ],
+      "raw_body_bytes_seen": 156528,
+      "snippet": "",
+      "subject": "HVAC and plumbing contractor for sale"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-10 14:10",
+      "from": "Ethan Alexander <ethan@quietlight.com>",
+      "id": "1a08c8380fa1306a",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Thu, 10 Sep 2026 18:10:22 +0000",
+          "from": "Ethan Alexander <ethan@quietlight.com>",
+          "message_id": "1a08c8380fa1306a",
+          "size_estimate": 93701,
+          "snippet": "This mission-driven, Shark Tank-featured travel brand focusing on backpacks and totes has more than 10 years of history. September 10th, 2026 Listing Alert. Ecommerce 10-Year-Old Shark Tank Shopify",
+          "subject": "10-Year-Old Shark Tank Shopify Travel Brand | ~50% Repeat-Customer Rate | Low Capital Investment | Marketing Needed",
+          "text_excerpt": "This mission-driven, Shark Tank-featured travel brand focusing on backpacks and\n\ntotes has more than 10 years of history.\n\n\u00a0\n\nhttps://quietlight.com \u00a0 September 10th, 2026 Listing Alert.\n\n\u00a0\n\nEcommerce \u00a0 10-Year-Old Shark Tank Shopify Travel Brand | ~50% Repeat-Customer\n\nRate | Low Capital Investment | Marketing Needed \u00a0\n\n\u00a0\n\nFinancial Quickview. \u00a0\n\n\u00a0 Revenue \u00a0 $48,473\n\n\u00a0 Earnings \u00a0 $7,027\n\n\u00a0 Asking Price \u00a0 $20,000\n\n+ Inventory\n\nWant to sign the NDA and access the materials for this listing?\n\nInquire Now\n\nhttps://quietlight.com/listings/18829042?utm_source=launch_email&utm_medium=email&utm_campaign=18829042\n\n\u00a0\n\nDetailed Description. \u00a0 This mission-driven, Shark Tank-featured travel brand\n\nfocusing on backpacks and totes has more than 10 years of history. With a proven\n\nability to inspire passionate product collectors and an almost 50%\n\nrepeat-customer rate, it offers a promising opportunity to scale through new\n\nproduct development and expanded marketing.\n\nDespite minimal marketing investment throughout its history, the business has\n\nmaintained stable operations through primarily organic channels, word of mouth,\n\nand repeat customers, with some passionate customers purchasing 10\u201330 times. The\n\ncompany's commitment to quality and social impact has earned nearly 2,500\n\npredominantly five-star reviews, building a loyal community of customers who\n\nappreciate the product's uniqueness and purpose.\n\nMultiple growth areas await activation by a dedicated owner: product expansion\n\nplans with new ideas ready for implementation; untapped sales channels,\n\nincluding Amazon, TikTok, and wholesale opportunities; and unoptimized paid\n\nmarketing efforts, as the company comes with a comprehensive library of product\n\nand lifestyle imagery.\n\nInventory transfers on consignment with seller-provided fulfillment for up to 18\n\nmonths, so a buyer can focus entirely on growth from day one.\n\nThe current owner has been focused on a different business, hasn\u2019t invested the\n\ntime necessary for this brand to grow, and has decided it is best to let a new\n\nowner step in. This is an opportunity to acquire a proven brand with\n\ndemonstrated seven-figure revenue potential, a loyal customer base, newly\n\noptimized operations, and multiple clear paths to scale.\n\nThis company is not SBA pre-qualified, as it is too small. \u00a0\n\n\u00a0\n\n\u00a0\n\nRequest an info packet. \u00a0 The average Quiet Light listing receives 3 offers,\n\noften within days of listing. Inquire now to get a leg up on other buyers. \u00a0\n\nInquire Now\n\nhttps://quietlight.com/listings/18829042?utm_source=launch_email&utm_medium=email&utm_campaign=18829042\n\n\u00a0 No obligation or financial commitment.\n\nKey Benefits. \u00a0\n\nProven Seven-Figure Brand \u00a0 Reaching $1M-plus in sales with zero paid\n\nadvertising annually has been achieved before. The ceiling is proven; consistent\n\nmarketing is the only untested lever.\n\nHigh Returning-Customer Rate \u00a0 Nearly half of YTD orders come from repeat\n\nbuyers, with collectors ordering 10 to 30 times. A subscription box could\n\nconvert this loyalty into recurring revenue.\n\n67%\u201376% Margins, Underpriced Versus Rivals \u00a0 Landed costs run $12.57 to $29.27\n\nagainst an $89 price; competitors charge $150 to $250. Raising prices expands\n\nmargins without acquiring a single new customer.\n\nShark Tank Success Story \u00a0 Regular episode re-airs continue driving sales.\n\nMore Than 2,500 Reviews, 2.6% Return Rate \u00a0 Nearly all reviews are five stars,\n\nand returns are rare, handing a buyer ready-made social proof for paid ads and\n\nnew channel launches.\n\nProven Back Catalog of Sellouts \u00a0 Limited runs of 10 to 50 units drive collector\n\nurgency, no SKU exceeds 5% of sales, and years of sold-out styles provide proven\n\nwinners to reintroduce.\n\nMultiple Growth Opportunities \u00a0 These include growth through increased paid\n\nsocial marketing efforts, sales channel expansion, inventory management, new\n\nproducts, and more.\n\n\u00a0\n\nThis listing has been prepared by: \u00a0\n\nEthan Alexander Advisor\n\n\u00a0\n\n631 Brawley School Road\n\nSuite 300\n\nMooresville, NC 28117 \u00a0\n\nhttps://www.facebook.com/QuietLightAdvisors https://twitter.com/quietlightinc\n\nhttps://www.instagram.com/quietlightb/\n\nUnsubscribe https://ac.qlbadmin.com/unsubscribe/?email=admin@greenwichandbarrow.com",
+          "to": "admin@greenwichandbarrow.com"
+        }
+      ],
+      "raw_body_bytes_seen": 84037,
+      "snippet": "",
+      "subject": "10-Year-Old Shark Tank Shopify Travel Brand | ~50% Repeat-Customer Rate | Low Capital Investment | Marketing Needed"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-11 02:50",
+      "from": "Samuel Curcio <SamuelCurcio@sydney.tworld.com>",
+      "id": "1a08f3bba1df80c2",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow",
+        "IMPORTANT"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Fri, 11 Sep 2026 06:50:50 +0000",
+          "from": "Samuel Curcio <SamuelCurcio@sydney.tworld.com>",
+          "message_id": "1a08f3bba1df80c2",
+          "size_estimate": 211299,
+          "snippet": "Recent Business Listings 2026-09-08 This new &amp; updated listings report is provided by: Samuel Curcio | (646) 470-9433 | scurcio@tworld.com SBA Pre Qual Multi- Restaurant Portfolio In MA Price:",
+          "subject": "Transworld Business Listings",
+          "text_excerpt": " \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Absentee Pair of Edible Arrangements Stores - Nassau County \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Price: $200,000 \n\n Down Payment: $200,000 \n\n Sellers Discretionary Earnings: $173,167 \n\n Location: Nassau County, New York United States \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Two profitable Edible Arrangements franchises in Nassau County are available together for sale. Combined, the locations generate approximately $1.18M... \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n LEARN MORE \n\n \n\n \n\n \n\n If the link above does not work, please copy and paste this URL into your browser: https://tworld.com/agents/samuelcurcio/listings/Absentee-Pair-of-Edible-Arrangements-Stores-Nassau-County \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Get email alerts for new listings that match your preferences\u2014sign up for Buyer Match today! \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Sign Up! \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n New Episodes Weekly \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Learn through conversations with successful entrepreneurs who share their experiences, lessons learned, and tips from personal business endeavors. \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Enrich your journey as an entrepreneur! \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Letter from the President of Transworld NY \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Transworld's Weekly Newsletter contains this week's newest listings and listing updates (usually price reductions). If you see an opportunity that sparks your interests, act fast! New listings quickly go under contract! \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Contact your local Transworld team member to arrange a visit to tour the business. You can do this b\n\n---\n\n\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Established Kitchen and Bath Cabinet Manufacturer \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Price: $1,500,000 \n\n Down Payment: $750,000 \n\n Sellers Discretionary Earnings: $0 \n\n Location: Northeastern Connecticut Planning Region, Connecticut United States \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n The sale includes\u00a0a total of $3,494,105 in assets\u00a0($1,414,265 in equipment and $2,079,840 in inventory),\u00a0offered at an asking price of only\u00a0$1,50... \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n LEARN MORE \n\n \n\n \n\n \n\n If the link above does not work, please copy and paste this URL into your browser: https://tworld.com/agents/samuelcurcio/listings/Established-Kitchen-and-Bath-Cabinet-Manufacturer \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Absentee Run Recording Studio Established 20-Year in Brooklyn \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Price: $325,000 \n\n Down Payment: $275,000 \n\n Sellers Discretionary Earnings: $134,988 \n\n Location: Kings County, New York United States \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Own a legendary Brooklyn recording studio with 20 years of history, strong recurring clientele, and diversified revenue streams - all while operating... \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n LEARN MORE \n\n \n\n \n\n \n\n If the link above does not work, please copy and paste this URL into your browser: https://tworld.com/agents/samuelcurcio/listings/Absentee-Run-Recording-Studio-Established-20-Year-in-Brooklyn \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n High-Growth Distribution Co. Operating Partner Needed! \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Price: $2,500,000 \n\n Down Payment: $2,500,000 \n\n Sellers Discretionary Earnings: $1,446,050 \n\n Location: Suffolk County, New York United States \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n About the Business: - Fast-growing distribution company with a strong and expanding customer base serving mostly Manhattan & Brooklyn. - Strategi... \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n---\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n SBA Pre Qual Multi- Restaurant Portfolio In MA \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Price: $750,000 \n\n Down Payment: $79,400 \n\n Sellers Discretionary Earnings: $459,435 \n\n Location: Norfolk County, Massachusetts United States \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n SBA Pre-Qualified Restaurant Portfolio with Management in place.\u00a0\n\n On track to do $4,000,000 in Revenue in 2026\n\n Three complementary concepts captu... \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n LEARN MORE \n\n \n\n \n\n \n\n If the link above does not work, please copy and paste this URL into your browser: https://tworld.com/agents/samuelcurcio/listings/SBA-Pre-Qual-Multi-Restaurant-Portfolio-In-MA \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Established Commercial Restroom Partitions Business \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Price: $150,000 \n\n Down Payment: $150,000 \n\n Sellers Discretionary Earnings: $-25,256 \n\n Location: Suffolk County, New York United States \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n - $2.3M annual sales with consistent demand\n\n- Includes $50,000 in FF&E and $5,000 in inventory\n\n- Four trained full-time employees in pl",
+          "to": "kay.s@greenwichandbarrow.com"
+        }
+      ],
+      "raw_body_bytes_seen": 195416,
+      "snippet": "",
+      "subject": "Transworld Business Listings"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-12 10:08",
+      "from": "\"Tory @ Flippa\" <marketing@mh.flippa.com>",
+      "id": "1a095f31bc1be9fe",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow"
+      ],
+      "message_count": null,
+      "messages": [
+        {
+          "attachment_filenames": [],
+          "date": "Sat, 12 Sep 2026 14:08:50 +0000 (UTC)",
+          "from": "\"Tory @ Flippa\" <marketing@mh.flippa.com>",
+          "message_id": "1a095f31bc1be9fe",
+          "size_estimate": 118770,
+          "snippet": "View in browser Own an online business? Find out what it&#39;s worth with a free valuation &gt; EN - The Daily - Desktop - Insights report-1 Curated for Kay, on 12th of September 2026. View email in",
+          "subject": "Patented Hair Removal FBA + 10-Year-Old Fashion Blog + Award-winning CBD Brand + $98K ARR B2B SaaS",
+          "text_excerpt": "_Jpfxa--ZtW_31SRAAAAAiljYW1wYWlnbi04MjE1YWM3MWE0NzE0YmE0YTUyYmZlMWRiYWYzNTBkYy9jYW1wYWlnbi1lbWFpbC0xZWEwMzYyNWEwZGY0ZDE3YTAxNGJiMWUzMDA5YzU5NiQ1NWRmM2Y4My05ZGE1LTQ0NmUtYjNkNC1mZTBiZTBiMjE5NGRodHRwczovL2ZsaXBwYS5jb20vMTIyNDU2NDI_YnV5X3NlbGw9RW1haWxfRGFpbHlLKiv50JKie_K1K7BXS7s6) 6-year-old Shopify & Amazon FBA brand specializing in a unique gadget for removing hair from vacuums and hairbrushes. Operated by a lean team with streamlined workflows and automated fulfillment. Key Metrics: $571K annual revenue, $11 AOV, 49% profit margin [View Business >](https://t.mh.flippa.com/t/click/AgFFe2Rp_Jpfxa--ZtW_31SRAAAAAyljYW1wYWlnbi04MjE1YWM3MWE0NzE0YmE0YTUyYmZlMWRiYWYzNTBkYy9jYW1wYWlnbi1lbWFpbC0xZWEwMzYyNWEwZGY0ZDE3YTAxNGJiMWUzMDA5YzU5NiQ1NWRmM2Y4My05ZGE1LTQ0NmUtYjNkNC1mZTBiZTBiMjE5NGRodHRwczovL2ZsaXBwYS5jb20vMTIyNDU2NDI_YnV5X3NlbGw9RW1haWxfRGFpbHkQDVAJp6C9gk1BNsSHxYrR)\n\nDeal Brokered by Sebastien Stanley Jones. Interested? [Book a Call.](https://t.mh.flippa.com/t/click/AgFFe2Rp_Jpfxa--ZtW_31SRAAAABCljYW1wYWlnbi04MjE1YWM3MWE0NzE0YmE0YTUyYmZlMWRiYWYzNTBkYy9jYW1wYWlnbi1lbWFpbC0xZWEwMzYyNWEwZGY0ZDE3YTAxNGJiMWUzMDA5YzU5NiQ1NWRmM2Y4My05ZGE1LTQ0NmUtYjNkNC1mZTBiZTBiMjE5NGRodHRwczovL2ZsaXBwYS5jb20vYnVzaW5lc3MtYnJva2Vycz9idXlfc2VsbD1FbWFpbF9EYWlseU5eTdr3uTGiDCE_WFpEHGw)\n\nSebastien Stanley Jones Business Broker \ud83c\uddf3\ud83c\uddf1 Netherlands\n\nEDITORS CHOICE: [Award-winning CBD Shopify Brand](https://t.mh.flippa.com/t/click/AgFFe2Rp_Jpfxa--ZtW_31SRAAAABiljYW1wYWlnbi04MjE1YWM3MWE0NzE0YmE0YTUyYmZlMWRiYWYzNTBkYy9jYW1wYWlnbi1lbWFpbC0xZWEwMzYyNWEwZGY0ZDE3YTAxNGJiMWUzMDA5YzU5NiQ1NWRmM2Y4My05ZGE1LTQ0NmUtYjNkNC1mZTBiZTBiMjE5NGRodHRwczovL2ZsaXBwYS5jb20vMTIyMDM0OTY_YnV5X3NlbGw9RW1haWxfRGFpbHmysL0smwyccgXi1O9EtV6G) 10-year-old Shopify brand selling non-psychoactive cannabinoid. Earned three Jack Herer Cup awards for its No.15 CBG and No.15 CBN oils, along with five Amsterdam Coffeeshop Awards, including Best CBD Brand. Key Metrics: $597K annual revenue, 75% profit margin, 10K email subscribers [View Business >](https://t.mh.flippa.com/t/click/AgFFe2Rp_Jpfxa--ZtW_31SRAAAAByljYW1wYWlnbi04MjE1YWM3MWE0NzE0YmE0YTUyYmZlMWRiYWYzNTBkYy9jYW1wYWlnbi1lbWFpbC0xZWEwMzYyNWEwZGY0ZDE3YTAxNGJiMWUzMDA5YzU5NiQ1NWRmM2Y4My05ZGE1LTQ0NmUtYjNkNC1mZTBiZTBiMjE5NGRodHRwczovL2ZsaXBwYS5jb20vMTIyMDM0OTY_YnV5X3NlbGw9RW1haWxfRGFpbHl5sEVj07",
+          "to": "admin@greenwichandbarrow.com"
+        }
+      ],
+      "raw_body_bytes_seen": 104346,
+      "snippet": "",
+      "subject": "Patented Hair Removal FBA + 10-Year-Old Fashion Blog + Award-winning CBD Brand + $98K ARR B2B SaaS"
+    }
+  ],
+  "date": "2026-09-15",
+  "draft_details": [
+    {
+      "draft_id": "r-7094060480458988527",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "internal_date_utc": "2026-09-14T21:04:59+00:00",
+      "labels": [
+        "DRAFT"
+      ],
+      "latest_message_id": "1a0a1bccbe362b21",
+      "message_id": "1a0a1bccbe362b21",
+      "snippet": "Hi Will, Hope you had a great weekend. Would you have some time to connect this week or next? Kay Schneider Founder, Greenwich &amp; Barrow Email: kay.s@greenwichandbarrow.com Website: www.",
+      "subject": "Re: Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL",
+      "thread_id": "1a08132b854675aa",
+      "to": "Will Bressman <will@bkgrowth.com>"
+    },
+    {
+      "draft_id": "r4334791634181327604",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "internal_date_utc": "2026-08-20T17:04:56+00:00",
+      "labels": [
+        "DRAFT"
+      ],
+      "latest_message_id": "1a02022097c85a57",
+      "message_id": "1a02022097c85a57",
+      "snippet": "Hi Lacey, How are you? It has been a minute since we last talked. I hope you are doing well and having a great summer. I wanted to reach out because I am exploring a deal that came to me unexpectedly",
+      "subject": "",
+      "thread_id": "1a02021f0de75c11",
+      "to": ""
+    }
+  ],
+  "drafts": {
+    "drafts": [
+      {
+        "id": "r-7094060480458988527",
+        "messageId": "1a0a1bccbe362b21",
+        "threadId": "1a08132b854675aa"
+      },
+      {
+        "id": "r4334791634181327604",
+        "messageId": "1a02022097c85a57",
+        "threadId": "1a02021f0de75c11"
+      }
+    ],
+    "nextPageToken": ""
+  },
+  "generated_at": "2026-09-15T10:31:21+00:00",
+  "inbound": [
+    {
+      "candidate_reason": null,
+      "date": "2026-09-15 06:08",
+      "from": "Mike Allen <mike@axios.com>",
+      "id": "1a0a48b34424687d",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "\ud83e\udd4a Axios AM: Trump's war on doomers"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-15 01:11",
+      "from": "Harvard Business Review <emailteam@emails.hbr.org>",
+      "id": "1a0a37ae8d613692",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Keep top management advice within reach"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 21:29",
+      "from": "Mike Allen <mike@axios.com>",
+      "id": "1a0a2aee3bfb8a9d",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "\ud83e\ude84 Axios Finish Line: Simplify your life"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 21:22",
+      "from": "Stanley Rodos <stan@cratecapital.com>",
+      "id": "19cfd4af6169b00d",
+      "labels": [
+        "auto/team",
+        "IMPORTANT",
+        "CATEGORY_PERSONAL"
+      ],
+      "message_count": 9,
+      "snippet": "",
+      "subject": "FW: Acquisition Opportunity \u2013 Art Restoration Services"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 18:27",
+      "from": "\"Helen Guo \u2747\ufe0f SMB Deal Hunter\" <helen@mail.smbdealhunter.xyz>",
+      "id": "1a0a2086d7772fcd",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "$246K/yr. She never quit her job."
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 18:04",
+      "from": "Andrew Saltoun <andrew@saltouncapital.com>",
+      "id": "1a0a1f364b13beb5",
+      "labels": [
+        "IMPORTANT",
+        "CATEGORY_PERSONAL",
+        "auto/investors",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "FW: GroupCollect Draft Databook 06.23.26"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-14 16:00",
+      "from": "\"Tory @ Flippa\" <marketing@mh.flippa.com>",
+      "id": "1a0a182000ba1100",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "$1.2M Portable Cooling Brand + 22K Listeners Audiobook + 8-Yr XR Studio + Jewelry Brand w/ 23% repeat customer rate"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 15:51",
+      "from": "\"Amazon.com\" <order-update@amazon.com>",
+      "id": "1a0a179c2e5bde32",
+      "labels": [
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Delivered: 3 \"DENSET HBTDM Spiral...\""
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 15:04",
+      "from": "Apollo <hello@mail.apollo.io>",
+      "id": "1a0a1582b65a31c5",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/tech stack",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Apollo now lives in Slack"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-14 14:10",
+      "from": "Brad Wayland <brad@quietlight.com>",
+      "id": "1a0a11d4126205c1",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "15-Year-Old Promotional Flyer Subscription Business | Minimal Workload | Aged Domains | Seller Financing Offered with $40,000 Down Payment"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-14 13:47",
+      "from": "Will Smith <will@acquiringminds.co>",
+      "id": "1a0a107e5cf21c5c",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "$340k to $1.3m of Earnings in 14 Months"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 13:04",
+      "from": "Josie from Attio <success@mail.attio.com>",
+      "id": "1a0a0e04d499f2e3",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/tech stack",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "How Attio's sales team uses Attio."
+    },
+    {
+      "candidate_reason": "deal_keyword_in_metadata",
+      "date": "2026-09-14 13:01",
+      "from": "\"Women's Search Network\" <info@womenssearchnetwork.com>",
+      "id": "1a0a0ddcb27fa526",
+      "labels": [
+        "CATEGORY_PROMOTIONS"
+      ],
+      "message_count": 2,
+      "snippet": "",
+      "subject": "Join Us Next Monday: CEO AMA with Leyla Sudbury & Ali Platon"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 12:10",
+      "from": "\"Everingham & Kerr, Inc.\" <admin1@everkerr.com>",
+      "id": "1a0a0af02ee8344e",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "E&K: New Acquisition Opportunity - Provider of Security Solutions"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 11:51",
+      "from": "NJPMA <classes+njpma@neonemails.com>",
+      "id": "1a0a09df51863b9e",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "NJPMA \u2013 Need NJDEP Core, Category 7B, Category 13, Category 3A, or Category 8B recertification credits? Check out our September 2026 classes. \u2013 REGISTER NOW!!"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 11:44",
+      "from": "Karen Spencer <karen@fetchstrategies.com>",
+      "id": "1a0a0977c6cbafba",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 2,
+      "snippet": "",
+      "subject": "September update: Panel discussion tomorrow + a more supported way to practice ETA sourcing"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 11:00",
+      "from": "PE Hub Top Stories <news@e.pehub.com>",
+      "id": "1a0a06fb262d5221",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Bain's Max de Groen: 'Transformational nature of AI has put an increased focus on quality' in tech investments"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 10:05",
+      "from": "Gusto <no-reply@info.gusto.com>",
+      "id": "1a0a03c9e38f3bda",
+      "labels": [
+        "auto/finance & legal",
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "1 day left: $0 employer fees on your 401(k)."
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 12:55",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "1a09186d1db25386",
+      "labels": [
+        "SENT"
+      ],
+      "message_count": 4,
+      "snippet": "",
+      "subject": "Resume updated"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 09:35",
+      "from": "\"Peapack Private Bank & Trust\" <info@peapackprivate.com>",
+      "id": "1a0a02153b13e361",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "The Weekly | 3 Market Risks: Oil, Rates & Inflation"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 08:32",
+      "from": "The Scalable Company <connect@scalable.co>",
+      "id": "1a09fe7917e70213",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Are you still building this yourself?"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 08:09",
+      "from": "XPX <XPX@my.exitplanningexchange.com>",
+      "id": "1a09fd2aef1b2a23",
+      "labels": [
+        "UNREAD",
+        "auto/industry research",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Last Call! XPX New Jersey: Inside the Mind of Today's Business Owner"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 06:53",
+      "from": "Accounting - Hetzner Online GmbH <billing@hetzner.com>",
+      "id": "1a09f8ca6050ecc7",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Payment Reminder (K0512992426)"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-14 06:17",
+      "from": "searchagent@bizquest.com",
+      "id": "1a09f6c3be177a15",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Your BizQuest Search Agent for New York Businesses For Sale has found 33 new listings!"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 05:57",
+      "from": "Mike Allen <mike@axios.com>",
+      "id": "1a09f597bacbef26",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_UPDATES",
+        "auto/subscriptions & education",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "\u2728 Axios AM: AI paralysis"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 03:25",
+      "from": "DocSend Support <support@docsend.com>",
+      "id": "1a09ecec2d6a3e89",
+      "labels": [
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "You've cancelled your DocSend subscription"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 03:19",
+      "from": "The Art Newspaper <support@theartnewspaper.zendesk.com>",
+      "id": "1a09ec9624ca7239",
+      "labels": [
+        "UNREAD",
+        "CATEGORY_PERSONAL",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "[Request received]"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 12:44",
+      "from": "DealsX <dealsx.notifaction@gmail.com>",
+      "id": "1a0a0ce4e9960042",
+      "labels": [
+        "auto/deal flow",
+        "IMPORTANT",
+        "CATEGORY_PERSONAL"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "5 interested lead(s) awaiting your decision"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 09:57",
+      "from": "notifications@axial.net",
+      "id": "1a0a035d126930bd",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Action Summary for 09/07/2026 - 09/14/2026"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-13 19:39",
+      "from": "\"Helen Guo \u2747\ufe0f SMB Deal Hunter\" <helen@mail.smbdealhunter.xyz>",
+      "id": "1a09d238ba3bedad",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "$26M closed. 17 days left."
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-12 13:33",
+      "from": "New Deal via Axial <newdeal@axial.net>",
+      "id": "1a096aea084ce0a9",
+      "labels": [
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Established Greater Boston Landscaping Provider"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-12 12:30",
+      "from": "\"Everingham & Kerr, Inc\" <admin1@everkerr.com>",
+      "id": "1a09674b7c5e6005",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Everingham & Kerr: Provider of Cyber Security Software"
+    },
+    {
+      "candidate_reason": "deal_keyword_in_metadata",
+      "date": "2026-09-12 12:25",
+      "from": "\"Helen Guo \u2747\ufe0f SMB Deal Hunter\" <helen@mail.smbdealhunter.xyz>",
+      "id": "1a0967081b0e8bf4",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "New Off-Market Businesses For Sale"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-12 10:45",
+      "from": "\"Everingham & Kerr, Inc\" <admin1@everkerr.com>",
+      "id": "1a09614d291de747",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "auto/deal flow"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Everingham & Kerr: Specialty / Niche Monthly International Trade Publication"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-12 10:08",
+      "from": "\"Tory @ Flippa\" <marketing@mh.flippa.com>",
+      "id": "1a095f31bc1be9fe",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Patented Hair Removal FBA + 10-Year-Old Fashion Blog + Award-winning CBD Brand + $98K ARR B2B SaaS"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-11 18:25",
+      "from": "\"Helen Guo \u2747\ufe0f SMB Deal Hunter\" <helen@mail.smbdealhunter.xyz>",
+      "id": "1a0929332e5cabb0",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Healthcare Exec -> $1M/yr Flooring Biz"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-11 13:30",
+      "from": "ba@svhcapital.com",
+      "id": "1a0918557ee9109d",
+      "labels": [
+        "auto/deal flow",
+        "CATEGORY_PERSONAL",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "EPG \u2013 IOI Submission"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 03:08",
+      "from": "\"Everingham & Kerr, Inc\" <admin1@everkerr.com>",
+      "id": "1a0915c50d77b052",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "auto/deal flow"
+      ],
+      "message_count": 2,
+      "snippet": "",
+      "subject": "Everingham & Kerr - MONTHLY PROJECT REPORT SEPTEMBER 2026"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-11 10:49",
+      "from": "\"Everingham & Kerr, Inc.\" <admin1@everkerr.com>",
+      "id": "1a090f1ae9b90af9",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "auto/deal flow"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "New Acquisition Opportunity - Boat Club Company"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-11 09:14",
+      "from": "DealsX <dealsx.notifaction@gmail.com>",
+      "id": "1a0909abff010e45",
+      "labels": [
+        "auto/deal flow",
+        "IMPORTANT",
+        "CATEGORY_PERSONAL"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "5 interested lead(s) awaiting your decision"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-11 02:50",
+      "from": "Samuel Curcio <SamuelCurcio@sydney.tworld.com>",
+      "id": "1a08f3bba1df80c2",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow",
+        "IMPORTANT"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Transworld Business Listings"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-10 16:16",
+      "from": "\"Helen Guo \u2747\ufe0f SMB Deal Hunter\" <helen@mail.smbdealhunter.xyz>",
+      "id": "1a08cf764ec7aa15",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "New Deals: A pool service company with manager, pawn shop with growing demand, and 3 other finds..."
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-10 14:10",
+      "from": "Ethan Alexander <ethan@quietlight.com>",
+      "id": "1a08c8380fa1306a",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "10-Year-Old Shark Tank Shopify Travel Brand | ~50% Repeat-Customer Rate | Low Capital Investment | Marketing Needed"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-10 14:00",
+      "from": "\"Everingham & Kerr, Inc\" <admin1@everkerr.com>",
+      "id": "1a08c7abedce742d",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Everingham & Kerr: B2B Trade Magazine Publisher"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-10 13:17",
+      "from": "Max Friar <info@caldergr.com>",
+      "id": "1a08c530f98fd199",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "HVAC and plumbing contractor for sale"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-10 10:26",
+      "from": "\"Everingham & Kerr, Inc.\" <admin1@everkerr.com>",
+      "id": "1a08bb6c896fc361",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "auto/deal flow"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "E&K: New Acquisition Opportunity - Social Networking and AI Technology Company focused on Sobriety"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-10 10:09",
+      "from": "Brad Wayland <brad@quietlight.com>",
+      "id": "1a08ba75e1e29372",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "14-Year-Old Free CPR & First Aid Training Site | Owner Working Zero Hours | 800K Users | 45K Email List | Monetized with AdSense Only"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-10 09:00",
+      "from": "BizBuySell <news@bizbuysell.com>",
+      "id": "1a08b7550208265b",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Top 5 SBA-Eligible Listings on BizBuySell"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-09 21:20",
+      "from": "Rejigg <info@notifications.rejigg.com>",
+      "id": "1a088e6f901a54ea",
+      "labels": [
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "New lead: Arborist Tree Care Business"
+    },
+    {
+      "candidate_reason": "deal_keyword_in_metadata",
+      "date": "2026-09-09 17:28",
+      "from": "\"Helen Guo \u2747\ufe0f SMB Deal Hunter\" <helen@mail.smbdealhunter.xyz>",
+      "id": "1a08812b3ff479ab",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "New Off-Market Businesses For Sale"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-09 14:10",
+      "from": "Brad Wayland <brad@quietlight.com>",
+      "id": "1a0875cf723c21ba",
+      "labels": [
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Thumbtack-Dominant Career Services Business | Resumes & Career Coaching | 4,000+ Five-Star Reviews | 33%+ Net Margins"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-09 13:14",
+      "from": "Max Friar <info@caldergr.com>",
+      "id": "1a08729e03bcfb82",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Integrated metrology solutions provider for sale"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-09 13:03",
+      "from": "\"Everingham & Kerr, Inc\" <admin1@everkerr.com>",
+      "id": "1a0871fa11976e6b",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Everingham & Kerr: Residential & Commercial Plumbing Contractor"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-09 10:11",
+      "from": "Chris Wozniak <woz@quietlight.com>",
+      "id": "1a08682be0f5b1b5",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "SBA & Pari Passu Pre-Qualified | DTC Pest Control Brand | Regulatory Moat in 45+ States | $10.7M TTM Revenue | 46% Revenue and 55% SDE YoY Growth"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-09 10:11",
+      "from": "\"Everingham & Kerr, Inc.\" <admin1@everkerr.com>",
+      "id": "1a086826fe764e53",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "New Acquisition Opportunity - Full-Service HVAC Sheet Metal Fabricator"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-09 09:46",
+      "from": "DealsX <dealsx.notifaction@gmail.com>",
+      "id": "1a0866c0196837ea",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "IMPORTANT",
+        "CATEGORY_PERSONAL"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "5 interested lead(s) awaiting your decision"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-08 17:57",
+      "from": "\"Helen Guo \u2747\ufe0f SMB Deal Hunter\" <helen@mail.smbdealhunter.xyz>",
+      "id": "1a08306d1bdaabfc",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "New Deals: A laundromat portfolio with real estate, pilates studios with management, and 3 other finds..."
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-08 14:10",
+      "from": "Chris Wozniak <woz@quietlight.com>",
+      "id": "1a08236a262aae39",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "20-Year-Old UV-Protection Umbrella Brand | Medical-Grade, AATCC-Certified | 69% Revenue & 142% SDE YoY Growth"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-06 09:00",
+      "from": "BizBuySell <news@bizbuysell.com>",
+      "id": "1a082047766a5661",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "UNREAD",
+        "auto/deal flow"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "4 Hot Franchises to Own on BizBuySell for August 2026"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-08 10:11",
+      "from": "Jon Hainstock <jon@quietlight.com>",
+      "id": "1a0815c263569620",
+      "labels": [
+        "auto/deal flow",
+        "CATEGORY_UPDATES",
+        "INBOX"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "SBA Pre-Qualified: Subscription Video-Editing Service | 65 Active Accounts | 4.8/5 Average Ticket Rating | Manager-Led Operations"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-08 09:42",
+      "from": "DealsX <dealsx.notifaction@gmail.com>",
+      "id": "1a081417dd989c54",
+      "labels": [
+        "UNREAD",
+        "auto/deal flow",
+        "IMPORTANT",
+        "CATEGORY_PERSONAL"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "5 interested lead(s) awaiting your decision"
+    },
+    {
+      "candidate_reason": "known_deal_or_marketplace_sender",
+      "date": "2026-09-08 09:00",
+      "from": "Baton <no-reply@alerts.baton.com>",
+      "id": "1a0811b86e67f991",
+      "labels": [
+        "auto/deal flow",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "New business listings matching NY Search"
+    },
+    {
+      "bookkeeper_already_processed": false,
+      "bookkeeper_period": null,
+      "candidate_reason": "bookkeeper_sender_check_attachments",
+      "date": "2026-09-11 18:00",
+      "existing_budget_outputs": [],
+      "from": "Anthony James Balleras Bacagan <anthony.b@startvirtual.com>",
+      "id": "1a0927dee07a6a45",
+      "labels": [
+        "auto/team",
+        "IMPORTANT",
+        "CATEGORY_PERSONAL"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Start Virtual - End Of Week Report: Greenwich & Barrow"
+    },
+    {
+      "bookkeeper_already_processed": true,
+      "bookkeeper_period": "2026-08",
+      "candidate_reason": "bookkeeper_monthly_report_metadata",
+      "date": "2026-09-10 12:50",
+      "existing_budget_outputs": [
+        "2026-09-11-budget-report-aug-2026.md"
+      ],
+      "from": "Anthony James Balleras Bacagan <anthony.b@startvirtual.com>",
+      "id": "1a08c3acb3f9a424",
+      "labels": [
+        "auto/team",
+        "IMPORTANT",
+        "CATEGORY_PERSONAL"
+      ],
+      "message_count": 1,
+      "snippet": "",
+      "subject": "Management Report: Greenwich & Barrow - August 2026"
+    }
+  ],
+  "outbound": [
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 21:22",
+      "from": "Stanley Rodos <stan@cratecapital.com>",
+      "id": "19cfd4af6169b00d",
+      "labels": [
+        "auto/team",
+        "IMPORTANT",
+        "CATEGORY_PERSONAL"
+      ],
+      "message_count": 9,
+      "snippet": "",
+      "subject": "FW: Acquisition Opportunity \u2013 Art Restoration Services"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 17:04",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "1a08132b854675aa",
+      "labels": [
+        "SENT"
+      ],
+      "message_count": 5,
+      "snippet": "",
+      "subject": "Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 17:13",
+      "from": "Andrew Saltoun <andrew@saltouncapital.com>",
+      "id": "1a08d43a9604ada9",
+      "labels": [
+        "IMPORTANT",
+        "CATEGORY_PERSONAL",
+        "auto/investors"
+      ],
+      "message_count": 9,
+      "snippet": "",
+      "subject": "RE: Andrew I Kay"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 12:55",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "1a09186d1db25386",
+      "labels": [
+        "SENT"
+      ],
+      "message_count": 4,
+      "snippet": "",
+      "subject": "Resume updated"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 11:15",
+      "from": "Granola <invoice+statements+acct_1OmfmSCilWDhJZLI@stripe.com>",
+      "id": "1a0a024e7b42decf",
+      "labels": [
+        "auto/finance & legal",
+        "IMPORTANT",
+        "CATEGORY_UPDATES"
+      ],
+      "message_count": 2,
+      "snippet": "",
+      "subject": "Your receipt from Granola #2143-8865"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 10:28",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "1a09ec84e02cb96b",
+      "labels": [
+        "SENT"
+      ],
+      "message_count": 2,
+      "snippet": "",
+      "subject": "Cancellaiton"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 03:08",
+      "from": "\"Everingham & Kerr, Inc\" <admin1@everkerr.com>",
+      "id": "1a0915c50d77b052",
+      "labels": [
+        "CATEGORY_PROMOTIONS",
+        "auto/deal flow"
+      ],
+      "message_count": 2,
+      "snippet": "",
+      "subject": "Everingham & Kerr - MONTHLY PROJECT REPORT SEPTEMBER 2026"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 22:09",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "19404efe49e2eb07",
+      "labels": [
+        "auto/finance & legal",
+        "SENT"
+      ],
+      "message_count": 77,
+      "snippet": "",
+      "subject": "Re: Kay // Boulay"
+    },
+    {
+      "candidate_reason": null,
+      "date": "2026-09-14 02:56",
+      "from": "Kay Schneider <kay.s@greenwichandbarrow.com>",
+      "id": "1a0811ff5e0d6c36",
+      "labels": [
+        "SENT"
+      ],
+      "message_count": 6,
+      "snippet": "",
+      "subject": "Greenwich & Barrow Update 9.8.26 - CONFIDENTIAL"
+    }
+  ],
+  "queries": {
+    "bookkeeper_reports": "newer_than:14d (from:startvirtual.com OR from:anthony.b@startvirtual.com) (\"Management Report\" OR \"Monthly Report\" OR \"Profit and Loss\" OR \"Balance Sheet\" OR \"P&L\")",
+    "deal_flow_label": "newer_than:7d label:\"auto/deal flow\"",
+    "inbound": "newer_than:2d label:INBOX",
+    "outbound": "from:kay.s@greenwichandbarrow.com newer_than:2d"
+  },
+  "safety": {
+    "gmail_no_send": true,
+    "max_body_chars_per_candidate_message": 6000,
+    "max_candidate_threads_enriched": 18,
+    "raw_thread_bodies_printed_to_stdout": false
+  }
+}
